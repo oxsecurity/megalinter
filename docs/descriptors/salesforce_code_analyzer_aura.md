@@ -31,7 +31,7 @@ See more details in [Help](#help-content)
 
 ## code-analyzer-aura documentation
 
-- Version in MegaLinter: **5.8.0**
+- Version in MegaLinter: **5.9.0**
 - Visit [Official Web Site](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html){target=_blank}
 - See [How to configure code-analyzer-aura rules](https://eslint.org/docs/latest/use/configure){target=_blank}
   - If custom `code-analyzer.yml` config file isn't found, [code-analyzer.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/code-analyzer.yml){target=_blank} will be used
@@ -103,7 +103,6 @@ sf code-analyzer run --rule-selector eslint --workspace . --file-glob '**/aura/*
 ### Help content
 
 ```shell
- ›   Warning: @salesforce/cli update available from 2.117.7 to 2.120.3.
 Analyze your code with a selection of rules to ensure good coding practices.
 
 USAGE
@@ -135,12 +134,11 @@ FLAGS
 GLOBAL FLAGS
   --flags-dir=<value>  Import flag values from a directory.
 
- ›   Warning: @salesforce/cli update available from 2.117.7 to 2.120.3.
 
 Streaming logs in real time to:
-    /tmp/sfca-2026_02_01_15_40_25_408.log
+    /tmp/sfca-2026_02_02_11_44_18_786.log
 
-Selecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 0%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 14%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 28%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 30%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 31%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 32%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 33%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 34%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 35%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 36%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 37%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 38%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 39%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 40%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 41%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 42%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 53%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 57%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 61%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 71%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 72%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 74%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 75%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 75%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 84%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 85%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 87%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 96%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 98%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 99%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 100%; Elapsed time: 1sSelecting rules... done.
+Selecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 0%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 14%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 28%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 30%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 31%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 32%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 33%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 34%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 35%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 36%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 37%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 38%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 39%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 40%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 41%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 42%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 53%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 57%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 62%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 72%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 74%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 75%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 75%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 84%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 85%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 87%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 96%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 98%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 99%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 100%; Elapsed time: 1sSelecting rules... done.
 
   #     Name                                                              Engine   Severity       Tag
  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -328,242 +326,243 @@ Selecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, s
   182   @typescript-eslint/restrict-template-expressions                  eslint   2 (High)       ErrorProne, TypeScript
   183   @typescript-eslint/return-await                                   eslint   2 (High)       ErrorProne, TypeScript
   184   @typescript-eslint/strict-boolean-expressions                     eslint   3 (Moderate)   BestPractices, TypeScript
-  185   @typescript-eslint/switch-exhaustiveness-check                    eslint   3 (Moderate)   BestPractices, TypeScript
-  186   @typescript-eslint/triple-slash-reference                         eslint   3 (Moderate)   Recommended, BestPractices, TypeScript
-  187   @typescript-eslint/unbound-method                                 eslint   2 (High)       ErrorProne, TypeScript
-  188   @typescript-eslint/unified-signatures                             eslint   3 (Moderate)   BestPractices, TypeScript
-  189   @typescript-eslint/use-unknown-in-catch-callback-variable         eslint   3 (Moderate)   BestPractices, TypeScript
-  190   accessor-pairs                                                    eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  191   array-callback-return                                             eslint   2 (High)       ErrorProne, JavaScript, TypeScript
-  192   arrow-body-style                                                  eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  193   block-scoped-var                                                  eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  194   camelcase                                                         eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  195   capitalized-comments                                              eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  196   class-methods-use-this                                            eslint   3 (Moderate)   BestPractices, JavaScript
-  197   complexity                                                        eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  198   consistent-return                                                 eslint   3 (Moderate)   BestPractices, JavaScript
-  199   consistent-this                                                   eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  200   constructor-super                                                 eslint   2 (High)       Recommended, ErrorProne, JavaScript
-  201   curly                                                             eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  202   default-case                                                      eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  203   default-case-last                                                 eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  204   default-param-last                                                eslint   3 (Moderate)   BestPractices, JavaScript
-  205   dot-notation                                                      eslint   3 (Moderate)   BestPractices, JavaScript
-  206   eqeqeq                                                            eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  207   for-direction                                                     eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  208   func-name-matching                                                eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  209   func-names                                                        eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  210   func-style                                                        eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  211   getter-return                                                     eslint   2 (High)       Recommended, ErrorProne, JavaScript
-  212   grouped-accessor-pairs                                            eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  213   guard-for-in                                                      eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  214   id-denylist                                                       eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  215   id-length                                                         eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  216   id-match                                                          eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  217   import/default                                                    eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
-  218   import/export                                                     eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
-  219   import/named                                                      eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
-  220   import/namespace                                                  eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
-  221   init-declarations                                                 eslint   3 (Moderate)   BestPractices, JavaScript
-  222   jest/expect-expect                                                eslint   5 (Info)       Recommended, LWC, BestPractices, JavaScript
-  223   jest/no-alias-methods                                             eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  224   jest/no-commented-out-tests                                       eslint   5 (Info)       Recommended, LWC, BestPractices, JavaScript
-  225   jest/no-conditional-expect                                        eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
-  226   jest/no-disabled-tests                                            eslint   5 (Info)       Recommended, LWC, BestPractices, JavaScript
-  227   jest/no-done-callback                                             eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  228   jest/no-export                                                    eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  229   jest/no-focused-tests                                             eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  230   jest/no-identical-title                                           eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  231   jest/no-interpolation-in-snapshots                                eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
-  232   jest/no-jasmine-globals                                           eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  233   jest/no-mocks-import                                              eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
-  234   jest/no-standalone-expect                                         eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  235   jest/no-test-prefixes                                             eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  236   jest/valid-describe-callback                                      eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
-  237   jest/valid-expect                                                 eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  238   jest/valid-expect-in-promise                                      eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  239   jest/valid-title                                                  eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  240   logical-assignment-operators                                      eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  241   max-classes-per-file                                              eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  242   max-depth                                                         eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  243   max-lines                                                         eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  244   max-lines-per-function                                            eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  245   max-nested-callbacks                                              eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  246   max-params                                                        eslint   3 (Moderate)   BestPractices, JavaScript
-  247   max-statements                                                    eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  248   new-cap                                                           eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  249   no-alert                                                          eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  250   no-array-constructor                                              eslint   3 (Moderate)   BestPractices, JavaScript
-  251   no-async-promise-executor                                         eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  252   no-await-in-loop                                                  eslint   2 (High)       ErrorProne, JavaScript, TypeScript
-  253   no-bitwise                                                        eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  254   no-caller                                                         eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  255   no-case-declarations                                              eslint   3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
-  256   no-class-assign                                                   eslint   2 (High)       Recommended, ErrorProne, JavaScript
-  257   no-compare-neg-zero                                               eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  258   no-cond-assign                                                    eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  259   no-console                                                        eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  260   no-const-assign                                                   eslint   2 (High)       Recommended, ErrorProne, JavaScript
-  261   no-constant-binary-expression                                     eslint   2 (High)       ErrorProne, JavaScript, TypeScript
-  262   no-constant-condition                                             eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  263   no-constructor-return                                             eslint   2 (High)       ErrorProne, JavaScript, TypeScript
-  264   no-continue                                                       eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  265   no-control-regex                                                  eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  266   no-debugger                                                       eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  267   no-delete-var                                                     eslint   3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
-  268   no-div-regex                                                      eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  269   no-dupe-args                                                      eslint   2 (High)       Recommended, ErrorProne, JavaScript
-  270   no-dupe-class-members                                             eslint   2 (High)       Recommended, ErrorProne, JavaScript
-  271   no-dupe-else-if                                                   eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  272   no-dupe-keys                                                      eslint   2 (High)       Recommended, ErrorProne, JavaScript
-  273   no-duplicate-case                                                 eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  274   no-duplicate-imports                                              eslint   2 (High)       ErrorProne, JavaScript, TypeScript
-  275   no-else-return                                                    eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  276   no-empty                                                          eslint   3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
-  277   no-empty-character-class                                          eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  278   no-empty-function                                                 eslint   3 (Moderate)   BestPractices, JavaScript
-  279   no-empty-pattern                                                  eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  280   no-empty-static-block                                             eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  281   no-eq-null                                                        eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  282   no-eval                                                           eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  283   no-ex-assign                                                      eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  284   no-extend-native                                                  eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  285   no-extra-bind                                                     eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  286   no-extra-boolean-cast                                             eslint   3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
-  287   no-extra-label                                                    eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  288   no-fallthrough                                                    eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  289   no-func-assign                                                    eslint   2 (High)       Recommended, ErrorProne, JavaScript
-  290   no-global-assign                                                  eslint   3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
-  291   no-implicit-coercion                                              eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  292   no-implicit-globals                                               eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  293   no-implied-eval                                                   eslint   3 (Moderate)   BestPractices, JavaScript
-  294   no-import-assign                                                  eslint   2 (High)       Recommended, ErrorProne, JavaScript
-  295   no-inline-comments                                                eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  296   no-inner-declarations                                             eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  297   no-invalid-regexp                                                 eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  298   no-invalid-this                                                   eslint   3 (Moderate)   BestPractices, JavaScript
-  299   no-irregular-whitespace                                           eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  300   no-iterator                                                       eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  301   no-label-var                                                      eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  302   no-labels                                                         eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  303   no-lone-blocks                                                    eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  304   no-lonely-if                                                      eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  305   no-loop-func                                                      eslint   3 (Moderate)   BestPractices, JavaScript
-  306   no-loss-of-precision                                              eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  307   no-magic-numbers                                                  eslint   3 (Moderate)   BestPractices, JavaScript
-  308   no-misleading-character-class                                     eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  309   no-multi-assign                                                   eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  310   no-multi-str                                                      eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  311   no-negated-condition                                              eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  312   no-nested-ternary                                                 eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  313   no-new                                                            eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  314   no-new-func                                                       eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  315   no-new-native-nonconstructor                                      eslint   2 (High)       ErrorProne, JavaScript
-  316   no-new-wrappers                                                   eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  317   no-nonoctal-decimal-escape                                        eslint   3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
-  318   no-obj-calls                                                      eslint   2 (High)       Recommended, ErrorProne, JavaScript
-  319   no-object-constructor                                             eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  320   no-octal                                                          eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  321   no-octal-escape                                                   eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  322   no-param-reassign                                                 eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  323   no-plusplus                                                       eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  324   no-promise-executor-return                                        eslint   2 (High)       ErrorProne, JavaScript, TypeScript
-  325   no-proto                                                          eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  326   no-prototype-builtins                                             eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  327   no-redeclare                                                      eslint   3 (Moderate)   Recommended, BestPractices, JavaScript
-  328   no-regex-spaces                                                   eslint   3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
-  329   no-restricted-exports                                             eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  330   no-restricted-globals                                             eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  331   no-restricted-imports                                             eslint   3 (Moderate)   BestPractices, JavaScript
-  332   no-restricted-properties                                          eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  333   no-restricted-syntax                                              eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  334   no-return-assign                                                  eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  335   no-script-url                                                     eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  336   no-self-assign                                                    eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  337   no-self-compare                                                   eslint   2 (High)       ErrorProne, JavaScript, TypeScript
-  338   no-sequences                                                      eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  339   no-setter-return                                                  eslint   2 (High)       Recommended, ErrorProne, JavaScript
-  340   no-shadow                                                         eslint   3 (Moderate)   BestPractices, JavaScript
-  341   no-shadow-restricted-names                                        eslint   3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
-  342   no-sparse-arrays                                                  eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  343   no-template-curly-in-string                                       eslint   2 (High)       ErrorProne, JavaScript, TypeScript
-  344   no-ternary                                                        eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  345   no-this-before-super                                              eslint   2 (High)       Recommended, ErrorProne, JavaScript
-  346   no-throw-literal                                                  eslint   3 (Moderate)   BestPractices, JavaScript
-  347   no-unassigned-vars                                                eslint   2 (High)       ErrorProne, JavaScript, TypeScript
-  348   no-undef                                                          eslint   2 (High)       Recommended, ErrorProne, JavaScript
-  349   no-undef-init                                                     eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  350   no-undefined                                                      eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  351   no-underscore-dangle                                              eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  352   no-unexpected-multiline                                           eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  353   no-unmodified-loop-condition                                      eslint   2 (High)       ErrorProne, JavaScript, TypeScript
-  354   no-unneeded-ternary                                               eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  355   no-unreachable                                                    eslint   2 (High)       Recommended, ErrorProne, JavaScript
-  356   no-unreachable-loop                                               eslint   2 (High)       ErrorProne, JavaScript, TypeScript
-  357   no-unsafe-finally                                                 eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  358   no-unsafe-negation                                                eslint   2 (High)       Recommended, ErrorProne, JavaScript
-  359   no-unsafe-optional-chaining                                       eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  360   no-unused-expressions                                             eslint   3 (Moderate)   BestPractices, JavaScript
-  361   no-unused-labels                                                  eslint   3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
-  362   no-unused-private-class-members                                   eslint   2 (High)       ErrorProne, JavaScript, TypeScript
-  363   no-unused-vars                                                    eslint   2 (High)       Recommended, ErrorProne, JavaScript
-  364   no-use-before-define                                              eslint   2 (High)       ErrorProne, JavaScript
-  365   no-useless-assignment                                             eslint   2 (High)       ErrorProne, JavaScript, TypeScript
-  366   no-useless-backreference                                          eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  367   no-useless-call                                                   eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  368   no-useless-catch                                                  eslint   3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
-  369   no-useless-computed-key                                           eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  370   no-useless-concat                                                 eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  371   no-useless-constructor                                            eslint   3 (Moderate)   BestPractices, JavaScript
-  372   no-useless-escape                                                 eslint   3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
-  373   no-useless-rename                                                 eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  374   no-useless-return                                                 eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  375   no-var                                                            eslint   3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
-  376   no-void                                                           eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  377   no-warning-comments                                               eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  378   no-with                                                           eslint   3 (Moderate)   Recommended, BestPractices, JavaScript
-  379   object-shorthand                                                  eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  380   one-var                                                           eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  381   operator-assignment                                               eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  382   prefer-arrow-callback                                             eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  383   prefer-const                                                      eslint   3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
-  384   prefer-destructuring                                              eslint   3 (Moderate)   BestPractices, JavaScript
-  385   prefer-exponentiation-operator                                    eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  386   prefer-named-capture-group                                        eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  387   prefer-numeric-literals                                           eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  388   prefer-object-has-own                                             eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  389   prefer-object-spread                                              eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  390   prefer-promise-reject-errors                                      eslint   3 (Moderate)   BestPractices, JavaScript
-  391   prefer-regex-literals                                             eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  392   prefer-rest-params                                                eslint   3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
-  393   prefer-spread                                                     eslint   3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
-  394   prefer-template                                                   eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  395   preserve-caught-error                                             eslint   4 (Low)        BestPractices, JavaScript, TypeScript
-  396   radix                                                             eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  397   require-atomic-updates                                            eslint   2 (High)       ErrorProne, JavaScript, TypeScript
-  398   require-await                                                     eslint   3 (Moderate)   BestPractices, JavaScript
-  399   require-unicode-regexp                                            eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  400   require-yield                                                     eslint   3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
-  401   sort-imports                                                      eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  402   sort-keys                                                         eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  403   sort-vars                                                         eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  404   strict                                                            eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  405   symbol-description                                                eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  406   unicode-bom                                                       eslint   4 (Low)        CodeStyle, JavaScript, TypeScript
-  407   use-isnan                                                         eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  408   valid-typeof                                                      eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
-  409   vars-on-top                                                       eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
-  410   yoda                                                              eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  185   @typescript-eslint/strict-void-return                             eslint   2 (High)       ErrorProne, TypeScript
+  186   @typescript-eslint/switch-exhaustiveness-check                    eslint   3 (Moderate)   BestPractices, TypeScript
+  187   @typescript-eslint/triple-slash-reference                         eslint   3 (Moderate)   Recommended, BestPractices, TypeScript
+  188   @typescript-eslint/unbound-method                                 eslint   2 (High)       ErrorProne, TypeScript
+  189   @typescript-eslint/unified-signatures                             eslint   3 (Moderate)   BestPractices, TypeScript
+  190   @typescript-eslint/use-unknown-in-catch-callback-variable         eslint   3 (Moderate)   BestPractices, TypeScript
+  191   accessor-pairs                                                    eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  192   array-callback-return                                             eslint   2 (High)       ErrorProne, JavaScript, TypeScript
+  193   arrow-body-style                                                  eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  194   block-scoped-var                                                  eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  195   camelcase                                                         eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  196   capitalized-comments                                              eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  197   class-methods-use-this                                            eslint   3 (Moderate)   BestPractices, JavaScript
+  198   complexity                                                        eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  199   consistent-return                                                 eslint   3 (Moderate)   BestPractices, JavaScript
+  200   consistent-this                                                   eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  201   constructor-super                                                 eslint   2 (High)       Recommended, ErrorProne, JavaScript
+  202   curly                                                             eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  203   default-case                                                      eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  204   default-case-last                                                 eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  205   default-param-last                                                eslint   3 (Moderate)   BestPractices, JavaScript
+  206   dot-notation                                                      eslint   3 (Moderate)   BestPractices, JavaScript
+  207   eqeqeq                                                            eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  208   for-direction                                                     eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  209   func-name-matching                                                eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  210   func-names                                                        eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  211   func-style                                                        eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  212   getter-return                                                     eslint   2 (High)       Recommended, ErrorProne, JavaScript
+  213   grouped-accessor-pairs                                            eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  214   guard-for-in                                                      eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  215   id-denylist                                                       eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  216   id-length                                                         eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  217   id-match                                                          eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  218   import/default                                                    eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
+  219   import/export                                                     eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
+  220   import/named                                                      eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
+  221   import/namespace                                                  eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
+  222   init-declarations                                                 eslint   3 (Moderate)   BestPractices, JavaScript
+  223   jest/expect-expect                                                eslint   5 (Info)       Recommended, LWC, BestPractices, JavaScript
+  224   jest/no-alias-methods                                             eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  225   jest/no-commented-out-tests                                       eslint   5 (Info)       Recommended, LWC, BestPractices, JavaScript
+  226   jest/no-conditional-expect                                        eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
+  227   jest/no-disabled-tests                                            eslint   5 (Info)       Recommended, LWC, BestPractices, JavaScript
+  228   jest/no-done-callback                                             eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  229   jest/no-export                                                    eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  230   jest/no-focused-tests                                             eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  231   jest/no-identical-title                                           eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  232   jest/no-interpolation-in-snapshots                                eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
+  233   jest/no-jasmine-globals                                           eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  234   jest/no-mocks-import                                              eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
+  235   jest/no-standalone-expect                                         eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  236   jest/no-test-prefixes                                             eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  237   jest/valid-describe-callback                                      eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
+  238   jest/valid-expect                                                 eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  239   jest/valid-expect-in-promise                                      eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  240   jest/valid-title                                                  eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  241   logical-assignment-operators                                      eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  242   max-classes-per-file                                              eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  243   max-depth                                                         eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  244   max-lines                                                         eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  245   max-lines-per-function                                            eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  246   max-nested-callbacks                                              eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  247   max-params                                                        eslint   3 (Moderate)   BestPractices, JavaScript
+  248   max-statements                                                    eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  249   new-cap                                                           eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  250   no-alert                                                          eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  251   no-array-constructor                                              eslint   3 (Moderate)   BestPractices, JavaScript
+  252   no-async-promise-executor                                         eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  253   no-await-in-loop                                                  eslint   2 (High)       ErrorProne, JavaScript, TypeScript
+  254   no-bitwise                                                        eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  255   no-caller                                                         eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  256   no-case-declarations                                              eslint   3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
+  257   no-class-assign                                                   eslint   2 (High)       Recommended, ErrorProne, JavaScript
+  258   no-compare-neg-zero                                               eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  259   no-cond-assign                                                    eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  260   no-console                                                        eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  261   no-const-assign                                                   eslint   2 (High)       Recommended, ErrorProne, JavaScript
+  262   no-constant-binary-expression                                     eslint   2 (High)       ErrorProne, JavaScript, TypeScript
+  263   no-constant-condition                                             eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  264   no-constructor-return                                             eslint   2 (High)       ErrorProne, JavaScript, TypeScript
+  265   no-continue                                                       eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  266   no-control-regex                                                  eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  267   no-debugger                                                       eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  268   no-delete-var                                                     eslint   3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
+  269   no-div-regex                                                      eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  270   no-dupe-args                                                      eslint   2 (High)       Recommended, ErrorProne, JavaScript
+  271   no-dupe-class-members                                             eslint   2 (High)       Recommended, ErrorProne, JavaScript
+  272   no-dupe-else-if                                                   eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  273   no-dupe-keys                                                      eslint   2 (High)       Recommended, ErrorProne, JavaScript
+  274   no-duplicate-case                                                 eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  275   no-duplicate-imports                                              eslint   2 (High)       ErrorProne, JavaScript, TypeScript
+  276   no-else-return                                                    eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  277   no-empty                                                          eslint   3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
+  278   no-empty-character-class                                          eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  279   no-empty-function                                                 eslint   3 (Moderate)   BestPractices, JavaScript
+  280   no-empty-pattern                                                  eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  281   no-empty-static-block                                             eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  282   no-eq-null                                                        eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  283   no-eval                                                           eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  284   no-ex-assign                                                      eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  285   no-extend-native                                                  eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  286   no-extra-bind                                                     eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  287   no-extra-boolean-cast                                             eslint   3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
+  288   no-extra-label                                                    eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  289   no-fallthrough                                                    eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  290   no-func-assign                                                    eslint   2 (High)       Recommended, ErrorProne, JavaScript
+  291   no-global-assign                                                  eslint   3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
+  292   no-implicit-coercion                                              eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  293   no-implicit-globals                                               eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  294   no-implied-eval                                                   eslint   3 (Moderate)   BestPractices, JavaScript
+  295   no-import-assign                                                  eslint   2 (High)       Recommended, ErrorProne, JavaScript
+  296   no-inline-comments                                                eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  297   no-inner-declarations                                             eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  298   no-invalid-regexp                                                 eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  299   no-invalid-this                                                   eslint   3 (Moderate)   BestPractices, JavaScript
+  300   no-irregular-whitespace                                           eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  301   no-iterator                                                       eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  302   no-label-var                                                      eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  303   no-labels                                                         eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  304   no-lone-blocks                                                    eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  305   no-lonely-if                                                      eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  306   no-loop-func                                                      eslint   3 (Moderate)   BestPractices, JavaScript
+  307   no-loss-of-precision                                              eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  308   no-magic-numbers                                                  eslint   3 (Moderate)   BestPractices, JavaScript
+  309   no-misleading-character-class                                     eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  310   no-multi-assign                                                   eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  311   no-multi-str                                                      eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  312   no-negated-condition                                              eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  313   no-nested-ternary                                                 eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  314   no-new                                                            eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  315   no-new-func                                                       eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  316   no-new-native-nonconstructor                                      eslint   2 (High)       ErrorProne, JavaScript
+  317   no-new-wrappers                                                   eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  318   no-nonoctal-decimal-escape                                        eslint   3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
+  319   no-obj-calls                                                      eslint   2 (High)       Recommended, ErrorProne, JavaScript
+  320   no-object-constructor                                             eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  321   no-octal                                                          eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  322   no-octal-escape                                                   eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  323   no-param-reassign                                                 eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  324   no-plusplus                                                       eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  325   no-promise-executor-return                                        eslint   2 (High)       ErrorProne, JavaScript, TypeScript
+  326   no-proto                                                          eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  327   no-prototype-builtins                                             eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  328   no-redeclare                                                      eslint   3 (Moderate)   Recommended, BestPractices, JavaScript
+  329   no-regex-spaces                                                   eslint   3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
+  330   no-restricted-exports                                             eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  331   no-restricted-globals                                             eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  332   no-restricted-imports                                             eslint   3 (Moderate)   BestPractices, JavaScript
+  333   no-restricted-properties                                          eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  334   no-restricted-syntax                                              eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  335   no-return-assign                                                  eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  336   no-script-url                                                     eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  337   no-self-assign                                                    eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  338   no-self-compare                                                   eslint   2 (High)       ErrorProne, JavaScript, TypeScript
+  339   no-sequences                                                      eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  340   no-setter-return                                                  eslint   2 (High)       Recommended, ErrorProne, JavaScript
+  341   no-shadow                                                         eslint   3 (Moderate)   BestPractices, JavaScript
+  342   no-shadow-restricted-names                                        eslint   3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
+  343   no-sparse-arrays                                                  eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  344   no-template-curly-in-string                                       eslint   2 (High)       ErrorProne, JavaScript, TypeScript
+  345   no-ternary                                                        eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  346   no-this-before-super                                              eslint   2 (High)       Recommended, ErrorProne, JavaScript
+  347   no-throw-literal                                                  eslint   3 (Moderate)   BestPractices, JavaScript
+  348   no-unassigned-vars                                                eslint   2 (High)       ErrorProne, JavaScript, TypeScript
+  349   no-undef                                                          eslint   2 (High)       Recommended, ErrorProne, JavaScript
+  350   no-undef-init                                                     eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  351   no-undefined                                                      eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  352   no-underscore-dangle                                              eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  353   no-unexpected-multiline                                           eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  354   no-unmodified-loop-condition                                      eslint   2 (High)       ErrorProne, JavaScript, TypeScript
+  355   no-unneeded-ternary                                               eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  356   no-unreachable                                                    eslint   2 (High)       Recommended, ErrorProne, JavaScript
+  357   no-unreachable-loop                                               eslint   2 (High)       ErrorProne, JavaScript, TypeScript
+  358   no-unsafe-finally                                                 eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  359   no-unsafe-negation                                                eslint   2 (High)       Recommended, ErrorProne, JavaScript
+  360   no-unsafe-optional-chaining                                       eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  361   no-unused-expressions                                             eslint   3 (Moderate)   BestPractices, JavaScript
+  362   no-unused-labels                                                  eslint   3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
+  363   no-unused-private-class-members                                   eslint   2 (High)       ErrorProne, JavaScript, TypeScript
+  364   no-unused-vars                                                    eslint   2 (High)       Recommended, ErrorProne, JavaScript
+  365   no-use-before-define                                              eslint   2 (High)       ErrorProne, JavaScript
+  366   no-useless-assignment                                             eslint   2 (High)       ErrorProne, JavaScript, TypeScript
+  367   no-useless-backreference                                          eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  368   no-useless-call                                                   eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  369   no-useless-catch                                                  eslint   3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
+  370   no-useless-computed-key                                           eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  371   no-useless-concat                                                 eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  372   no-useless-constructor                                            eslint   3 (Moderate)   BestPractices, JavaScript
+  373   no-useless-escape                                                 eslint   3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
+  374   no-useless-rename                                                 eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  375   no-useless-return                                                 eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  376   no-var                                                            eslint   3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
+  377   no-void                                                           eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  378   no-warning-comments                                               eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  379   no-with                                                           eslint   3 (Moderate)   Recommended, BestPractices, JavaScript
+  380   object-shorthand                                                  eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  381   one-var                                                           eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  382   operator-assignment                                               eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  383   prefer-arrow-callback                                             eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  384   prefer-const                                                      eslint   3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
+  385   prefer-destructuring                                              eslint   3 (Moderate)   BestPractices, JavaScript
+  386   prefer-exponentiation-operator                                    eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  387   prefer-named-capture-group                                        eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  388   prefer-numeric-literals                                           eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  389   prefer-object-has-own                                             eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  390   prefer-object-spread                                              eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  391   prefer-promise-reject-errors                                      eslint   3 (Moderate)   BestPractices, JavaScript
+  392   prefer-regex-literals                                             eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  393   prefer-rest-params                                                eslint   3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
+  394   prefer-spread                                                     eslint   3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
+  395   prefer-template                                                   eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  396   preserve-caught-error                                             eslint   4 (Low)        BestPractices, JavaScript, TypeScript
+  397   radix                                                             eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  398   require-atomic-updates                                            eslint   2 (High)       ErrorProne, JavaScript, TypeScript
+  399   require-await                                                     eslint   3 (Moderate)   BestPractices, JavaScript
+  400   require-unicode-regexp                                            eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  401   require-yield                                                     eslint   3 (Moderate)   Recommended, BestPractices, JavaScript, TypeScript
+  402   sort-imports                                                      eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  403   sort-keys                                                         eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  404   sort-vars                                                         eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  405   strict                                                            eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  406   symbol-description                                                eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  407   unicode-bom                                                       eslint   4 (Low)        CodeStyle, JavaScript, TypeScript
+  408   use-isnan                                                         eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  409   valid-typeof                                                      eslint   2 (High)       Recommended, ErrorProne, JavaScript, TypeScript
+  410   vars-on-top                                                       eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
+  411   yoda                                                              eslint   3 (Moderate)   BestPractices, JavaScript, TypeScript
 
 
 
 === Summary
 
-Found 410 rule(s) from 1 engine(s):
-    410 eslint rule(s) found.
+Found 411 rule(s) from 1 engine(s):
+    411 eslint rule(s) found.
 
 Additional log information written to:
-    /tmp/sfca-2026_02_01_15_40_25_408.log
+    /tmp/sfca-2026_02_02_11_44_18_786.log
 ```
 
 ### Installation on mega-linter Docker image
@@ -572,7 +571,7 @@ Additional log information written to:
 ```dockerfile
 # Parent descriptor install
 # renovate: datasource=npm depName=@salesforce/cli
-ARG NPM_SALESFORCE_CLI_VERSION=2.117.7
+ARG NPM_SALESFORCE_CLI_VERSION=2.120.3
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.24.10
 # renovate: datasource=npm depName=sfdx-hardis
@@ -586,7 +585,7 @@ RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACK
 ENV SF_AUTOUPDATE_DISABLE=true SF_CLI_DISABLE_AUTOUPDATE=true
 # Linter install
 # renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
-ARG SALESFORCE_CODE_ANALYZER_VERSION=5.8.0
+ARG SALESFORCE_CODE_ANALYZER_VERSION=5.9.0
 RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
     && (npm cache clean --force || true) \
     && rm -rf /root/.npm/_cacache
