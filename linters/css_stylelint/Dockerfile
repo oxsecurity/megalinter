@@ -63,7 +63,7 @@ ARG NPM_STYLELINT_SCSS_VERSION=6.14.0
 # renovate: datasource=pypi depName=cpplint
 ARG PIP_CPPLINT_VERSION=2.0.2
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=25.3
+ARG PIP_PIP_VERSION=26.0
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=20.36.1
 #ARG__END
