@@ -129,6 +129,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [code-analyzer-aura](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.8.0 to **5.9.0** on 2026-02-02
   - [code-analyzer-lwc](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.8.0 to **5.9.0** on 2026-02-02
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.4.0 to **9.6.2** on 2026-02-02
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 4.0.7 to **4.0.8** on 2026-02-02
+  - [rumdl](https://github.com/rvben/rumdl) from 0.0.224 to **0.1.10** on 2026-02-02
+  - [sqlfluff](https://www.sqlfluff.com/) from 3.5.0 to **4.0.0** on 2026-02-02
 <!-- linter-versions-end -->
 
 ## [v9.3.0] - 2026-01-04

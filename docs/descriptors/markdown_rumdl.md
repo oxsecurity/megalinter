@@ -23,7 +23,7 @@ description: How to use rumdl (configure, ignore files, ignore errors, help & ve
 
 ## rumdl documentation
 
-- Version in MegaLinter: **0.0.224**
+- Version in MegaLinter: **0.1.10**
 - Visit [Official Web Site](https://github.com/rvben/rumdl#readme){target=_blank}
 - See [How to configure rumdl rules](https://github.com/rvben/rumdl/blob/main/docs/global-settings.md){target=_blank}
 - See [How to disable rumdl rules in files](https://github.com/rvben/rumdl/blob/main/docs/inline-configuration.md){target=_blank}
@@ -124,19 +124,20 @@ A fast Markdown linter written in Rust (Ru(st) MarkDown Linter)
 Usage: rumdl [OPTIONS] <COMMAND>
 
 Commands:
-  check    Lint Markdown files and print warnings/errors
-  fmt      Format Markdown files (alias for check --fix)
-  init     Initialize a new configuration file
-  rule     Show information about a rule or list all rules
-  explain  Explain a rule with detailed information and examples
-  config   Show configuration or query a specific key
-  server   Start the Language Server Protocol server
-  schema   Generate or check JSON schema for rumdl.toml
-  import   Import and convert markdownlint configuration files
-  vscode   Install the rumdl VS Code extension
-  clean    Clear the cache
-  version  Show version information
-  help     Print this message or the help of the given subcommand(s)
+  check        Lint Markdown files and print warnings/errors
+  fmt          Format Markdown files (alias for check --fix)
+  init         Initialize a new configuration file
+  rule         Show information about a rule or list all rules
+  explain      Explain a rule with detailed information and examples
+  config       Show configuration or query a specific key
+  server       Start the Language Server Protocol server
+  schema       Generate or check JSON schema for rumdl.toml
+  import       Import and convert markdownlint configuration files
+  vscode       Install the rumdl VS Code extension
+  completions  Generate shell completion scripts
+  clean        Clear the cache
+  version      Show version information
+  help         Print this message or the help of the given subcommand(s)
 
 Options:
       --color <COLOR>    Control colored output: auto, always, never [default: auto] [possible values: auto, always, never]
@@ -152,8 +153,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.0.224
+ARG PIP_RUMDL_VERSION=0.1.10
 ```
 
 - PIP packages (Python):
-  - [rumdl==0.0.224](https://pypi.org/project/rumdl/0.0.224)
+  - [rumdl==0.1.10](https://pypi.org/project/rumdl/0.1.10)
