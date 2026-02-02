@@ -94,7 +94,7 @@ ARG NPM_SALESFORCE_CLI_VERSION=2.120.3
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.24.10
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=6.23.5
+ARG SFDX_HARDIS_VERSION=6.24.0
 # renovate: datasource=pypi depName=ansible-lint
 ARG PIP_ANSIBLE_LINT_VERSION=26.1.1
 # renovate: datasource=npm depName=@stoplight/spectral-cli
