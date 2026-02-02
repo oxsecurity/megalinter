@@ -96,7 +96,7 @@ ARG NPM_SPECTRAL_CLI_VERSION=6.15.0
 # renovate: datasource=crate depName=shellcheck-sarif
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
 # renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=4.0.7
+ARG NPM_JSCPD_VERSION=4.0.8
 # renovate: datasource=npm depName=stylelint
 ARG NPM_STYLELINT_VERSION=16.26.1
 # renovate: datasource=npm depName=stylelint-config-standard
