@@ -53,7 +53,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 #############################################################################################
 #ARG__START
 # renovate: datasource=pypi depName=black
-ARG PIP_BLACK_VERSION=25.12.0
+ARG PIP_BLACK_VERSION=26.1.0
 # renovate: datasource=pypi depName=isort
 ARG PIP_ISORT_VERSION=7.0.0
 # renovate: datasource=pypi depName=pip
