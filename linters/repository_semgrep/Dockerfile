@@ -55,7 +55,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 # renovate: datasource=pypi depName=semgrep
 ARG PIP_SEMGREP_VERSION=1.150.0
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=25.3
+ARG PIP_PIP_VERSION=26.0
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=20.36.1
 #ARG__END
