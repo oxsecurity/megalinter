@@ -469,6 +469,68 @@ linters:
       vscode:
         - name: Mypy
           url: https://marketplace.visualstudio.com/items?itemName=matangover.mypy
+  # NBQA-MYPY
+  - linter_name: nbqa
+    name: PYTHON_NBQA_MYPY
+    file_extensions:
+      - ".ipynb"
+    cli_lint_mode: list_of_files
+    cli_lint_extra_args:
+      - "mypy"
+      - "--install-types"
+      - "--non-interactive"
+    cli_lint_errors_count: regex_sum
+    cli_lint_errors_regex: "Found ([0-9]+) error"
+    cli_version_arg_name: "--version"
+    version_extract_regex: "(?<=nbqa )\\d+(\\.\\d+)+"
+    cli_config_arg_name: "--config-file"
+    config_file_name: ".mypy.ini"
+    test_folder: python_nbqa_mypy
+    linter_text: |
+      **nbqa + mypy** provides static type checking for Jupyter notebooks.
+
+      **nbqa** (NoteBook QA) runs standard Python linters on Jupyter notebooks by extracting code cells and running the linter on them. Combined with **mypy**, it brings static type checking to notebook development.
+
+      **Key features:**
+
+      - **Type Checking in Notebooks**: Catch type errors in notebook cells before execution
+      - **Cell-Aware Errors**: Error messages reference correct cell and line numbers
+      - **Mypy Integration**: Uses your existing mypy configuration
+      - **Supports Complex Types**: Handles generics, protocols, type inference, etc.
+      - **Gradual Typing**: Add type hints incrementally to notebooks
+      - **IDE Integration**: Works with Jupyter Lab, VS Code, and other notebook editors
+
+      **Common use cases:**
+      - Type-check data science notebooks before production deployment
+      - Catch type errors in ML model training code
+      - Ensure type consistency across notebook projects
+      - Validate notebook code in CI/CD pipelines
+
+      **Note**: This linter only checks `.ipynb` files. Use PYTHON_MYPY for `.py` and `.pyi` files.
+    linter_url: https://github.com/nbQA-dev/nbQA
+    linter_repo: https://github.com/nbQA-dev/nbQA
+    linter_rules_url: https://github.com/nbQA-dev/nbQA
+    linter_spdx_license: MIT
+    linter_speed: 2
+    examples:
+      - "nbqa mypy myfile.ipynb"
+      - "nbqa mypy --config-file .mypy.ini myfile.ipynb"
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=nbqa
+          ARG PIP_NBQA_VERSION=1.9.1
+        - |-
+          # renovate: datasource=pypi depName=mypy
+          ARG PIP_MYPY_VERSION=1.19.1
+        - ENV MYPY_CACHE_DIR=/tmp # Avoid mypy cache to mess with other linters
+      pip:
+        - nbqa==${PIP_NBQA_VERSION}
+        - mypy==${PIP_MYPY_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
   # PyType # NV Not working yet, if anyone wants to complete it, please be my guest :)
   # - linter_name: pytype
   #   name: PYTHON_PYTYPE
