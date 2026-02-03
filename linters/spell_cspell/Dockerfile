@@ -53,7 +53,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 #############################################################################################
 #ARG__START
 # renovate: datasource=npm depName=cspell
-ARG NPM_CSPELL_VERSION=9.4.0
+ARG NPM_CSPELL_VERSION=9.6.2
 #ARG__END
 
 ####################

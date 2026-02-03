@@ -15,6 +15,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - If there are more than 500 .gitignored files, advise to add more excluded directories using variable ADDITIONAL_EXCLUDED_DIRECTORIES, to improve performances
 
 - New linters
+  - Add [PYTHON_NBQA_MYPY](https://nbqa.readthedocs.io/) for type-checking Jupyter notebooks using nbqa + mypy
 
 - Disabled linters
   - LUA_SELENE: <https://github.com/Kampfkarren/selene/issues/662>
@@ -122,6 +123,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/astral-sh/ruff) from 0.14.13 to **0.14.14** on 2026-02-01
   - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.68.2 to **0.69.0** on 2026-02-01
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.68.2 to **0.69.0** on 2026-02-01
+  - [checkov](https://www.checkov.io/) from 3.2.499 to **3.2.500** on 2026-02-02
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.73.0 to **1.76.0** on 2026-02-02
+  - [secretlint](https://github.com/secretlint/secretlint) from 11.2.5 to **11.3.1** on 2026-02-02
+  - [code-analyzer-apex](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.8.0 to **5.9.0** on 2026-02-02
+  - [code-analyzer-aura](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.8.0 to **5.9.0** on 2026-02-02
+  - [code-analyzer-lwc](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.8.0 to **5.9.0** on 2026-02-02
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.4.0 to **9.6.2** on 2026-02-02
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 4.0.7 to **4.0.8** on 2026-02-02
+  - [rumdl](https://github.com/rvben/rumdl) from 0.0.224 to **0.1.10** on 2026-02-02
+  - [sqlfluff](https://www.sqlfluff.com/) from 3.5.0 to **4.0.0** on 2026-02-02
 <!-- linter-versions-end -->
 
 ## [v9.3.0] - 2026-01-04

@@ -158,7 +158,7 @@ Flags:
       --server string         Backend discovery server URL
 
 Use "kubescape [command] --help" for more information about a command.
-{"level":"info","ts":"2026-02-01T15:39:55Z","msg":"Received interrupt signal, exiting..."}
+{"level":"info","ts":"2026-02-02T13:22:51Z","msg":"Received interrupt signal, exiting..."}
 ```
 
 ### Installation on mega-linter Docker image
