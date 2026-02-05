@@ -321,9 +321,9 @@ ARG PIP_SEMGREP_VERSION=1.150.0
 # renovate: datasource=github-tags depName=anchore/syft
 ARG REPOSITORY_SYFT_VERSION=1.41.2
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_VERSION=0.69.0
+ARG REPOSITORY_TRIVY_VERSION=0.69.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_SBOM_VERSION=0.69.0
+ARG REPOSITORY_TRIVY_SBOM_VERSION=0.69.1
 # renovate: datasource=github-tags depName=mongodb/kingfisher
 ARG REPOSITORY_KINGFISHER_VERSION=1.76.0
 # renovate: datasource=pypi depName=robotframework-robocop
