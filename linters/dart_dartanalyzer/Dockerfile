@@ -56,7 +56,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 ARG ALPINE_GLIBC_PACKAGE_VERSION=2.34-r0
 ARG TARGETPLATFORM
 # renovate: datasource=dart-version depName=dart
-ARG DART_VERSION='3.10.8'
+ARG DART_VERSION='3.10.9'
 #ARG__END
 
 ####################
