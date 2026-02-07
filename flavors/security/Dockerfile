@@ -120,7 +120,7 @@ ARG REPOSITORY_TRIVY_SBOM_VERSION=0.69.1
 # renovate: datasource=github-tags depName=mongodb/kingfisher
 ARG REPOSITORY_KINGFISHER_VERSION=1.76.0
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=26.0
+ARG PIP_PIP_VERSION=26.0.1
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=20.36.1
 # renovate: datasource=github-tags depName=rust-lang/rust

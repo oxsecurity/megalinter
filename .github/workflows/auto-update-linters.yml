@@ -121,6 +121,13 @@ jobs:
             docs
             megalinter-reports
 
+      # Track generated files so branch switches in create-pull-request do not fail on untracked outputs
+      - name: Stage generated changes
+        if: (github.event_name == 'workflow_dispatch' || steps.compute_versions.outputs.has_updated_versions == 1)
+        run: |
+          git add -A
+          git status --short
+
       # Create pull request if there are updates or if the workflow has been launched manually
       - name: Create Pull Request
         id: cpr
