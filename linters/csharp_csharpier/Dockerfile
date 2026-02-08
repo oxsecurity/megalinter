@@ -53,7 +53,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 #############################################################################################
 #ARG__START
 # renovate: datasource=nuget depName=csharpier
-ARG CSHARP_CSHARPIER_VERSION=1.2.5
+ARG CSHARP_CSHARPIER_VERSION=1.2.6
 #ARG__END
 
 ####################

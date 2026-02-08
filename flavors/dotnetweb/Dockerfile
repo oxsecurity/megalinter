@@ -121,7 +121,7 @@ ARG NPM_COFFEELINT_CLI_VERSION=5.2.11
 # renovate: datasource=npm depName=jscpd
 ARG NPM_JSCPD_VERSION=4.0.8
 # renovate: datasource=nuget depName=csharpier
-ARG CSHARP_CSHARPIER_VERSION=1.2.5
+ARG CSHARP_CSHARPIER_VERSION=1.2.6
 # renovate: datasource=nuget depName=roslynator.dotnet.cli
 ARG CSHARP_ROSLYNATOR_VERSION=0.12.0
 # renovate: datasource=npm depName=stylelint
