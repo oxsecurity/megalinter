@@ -20,7 +20,7 @@ description: How to use dartanalyzer (configure, ignore files, ignore errors, he
 
 ## dartanalyzer documentation
 
-- Version in MegaLinter: **3.10.8**
+- Version in MegaLinter: **3.10.9**
 - Visit [Official Web Site](https://dart.dev/tools/dart-analyze){target=_blank}
 - See [How to configure dartanalyzer rules](https://dart.dev/tools/analysis){target=_blank}
 - See [How to disable dartanalyzer rules in files](https://dart.dev/tools/analysis#ignoring-rules){target=_blank}

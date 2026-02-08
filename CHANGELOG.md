@@ -133,6 +133,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 4.0.7 to **4.0.8** on 2026-02-02
   - [rumdl](https://github.com/rvben/rumdl) from 0.0.224 to **0.1.10** on 2026-02-02
   - [sqlfluff](https://www.sqlfluff.com/) from 3.5.0 to **4.0.0** on 2026-02-02
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.43.4 to **1.44.0** on 2026-02-08
+  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.10.8 to **3.10.9** on 2026-02-08
+  - [rumdl](https://github.com/rvben/rumdl) from 0.1.10 to **0.1.13** on 2026-02-08
+  - [grype](https://github.com/anchore/grype) from 0.107.0 to **0.107.1** on 2026-02-08
+  - [syft](https://github.com/anchore/syft) from 1.41.1 to **1.41.2** on 2026-02-08
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.69.0 to **0.69.1** on 2026-02-08
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.69.0 to **0.69.1** on 2026-02-08
+  - [rubocop](https://rubocop.org/) from 1.84.0 to **1.84.1** on 2026-02-08
+  - [snakemake](https://snakemake.github.io/) from 9.16.2 to **9.16.3** on 2026-02-08
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.6.2 to **9.6.3** on 2026-02-08
 <!-- linter-versions-end -->
 
 ## [v9.3.0] - 2026-01-04
