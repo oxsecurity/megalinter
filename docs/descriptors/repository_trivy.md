@@ -43,7 +43,7 @@ REPOSITORY_TRIVY_ARGUMENTS:
 
 ## trivy documentation
 
-- Version in MegaLinter: **0.69.0**
+- Version in MegaLinter: **0.69.1**
 - Visit [Official Web Site](https://aquasecurity.github.io/trivy/){target=_blank}
 - See [How to configure trivy rules](https://aquasecurity.github.io/trivy/latest/docs/configuration/){target=_blank}
 - See [How to ignore files and directories with trivy](https://aquasecurity.github.io/trivy/latest/docs/configuration/filtering/#by-inline-comments){target=_blank}
