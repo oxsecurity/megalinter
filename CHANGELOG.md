@@ -143,6 +143,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rubocop](https://rubocop.org/) from 1.84.0 to **1.84.1** on 2026-02-08
   - [snakemake](https://snakemake.github.io/) from 9.16.2 to **9.16.3** on 2026-02-08
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.6.2 to **9.6.3** on 2026-02-08
+  - [csharpier](https://csharpier.com/) from 1.2.5 to **1.2.6** on 2026-02-08
+  - [rumdl](https://github.com/rvben/rumdl) from 0.1.13 to **0.1.15** on 2026-02-08
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.6.3 to **9.6.4** on 2026-02-08
 <!-- linter-versions-end -->
 
 ## [v9.3.0] - 2026-01-04
