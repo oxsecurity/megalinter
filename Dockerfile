@@ -216,9 +216,9 @@ ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.5
 # renovate: datasource=npm depName=eslint-plugin-promise
 ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=6.6.0
 # renovate: datasource=npm depName=eslint-plugin-vue
-ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.7.0
+ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.6.2
 # renovate: datasource=npm depName=@babel/core
-ARG NPM_BABEL_CORE_VERSION=7.29.0
+ARG NPM_BABEL_CORE_VERSION=7.28.6
 # renovate: datasource=npm depName=@babel/eslint-parser
 ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.28.6
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
@@ -226,7 +226,7 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 # renovate: datasource=npm depName=standard
 ARG NPM_STANDARD_VERSION=17.1.2
 # renovate: datasource=npm depName=prettier
-ARG NPM_PRETTIER_VERSION=3.8.1
+ARG NPM_PRETTIER_VERSION=3.7.4
 # renovate: datasource=npm depName=@prantlf/jsonlint
 ARG NPM_PRANTLF_JSONLINT_VERSION=17.0.1
 # renovate: datasource=npm depName=v8r
@@ -372,6 +372,12 @@ ARG SQL_TSQLLINT_VERSION=1.16.0
 ARG NPM_IBM_TEKTON_LINT_VERSION=1.1.0
 # renovate: datasource=npm depName=prettyjson
 ARG NPM_PRETTYJSON_VERSION=1.2.5
+# renovate: datasource=npm depName=@typescript-eslint/eslint-plugin
+ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.52.0
+# renovate: datasource=npm depName=@typescript-eslint/parser
+ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.52.0
+# renovate: datasource=npm depName=prettier
+ARG NPM_PRETTIER_VERSION=3.8.1
 # renovate: datasource=npm depName=@typescript-eslint/eslint-plugin
 ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.54.0
 # renovate: datasource=npm depName=@typescript-eslint/parser

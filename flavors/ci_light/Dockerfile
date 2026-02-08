@@ -81,7 +81,7 @@ ARG NPM_PRANTLF_JSONLINT_VERSION=17.0.1
 # renovate: datasource=npm depName=v8r
 ARG NPM_V8R_VERSION=5.1.0
 # renovate: datasource=npm depName=prettier
-ARG NPM_PRETTIER_VERSION=3.8.1
+ARG NPM_PRETTIER_VERSION=3.7.4
 # renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.107.1
 # renovate: datasource=npm depName=@ls-lint/ls-lint
@@ -98,6 +98,8 @@ ARG REPOSITORY_SYFT_VERSION=1.41.2
 ARG REPOSITORY_TRIVY_VERSION=0.69.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.69.1
+# renovate: datasource=npm depName=prettier
+ARG NPM_PRETTIER_VERSION=3.8.1
 # renovate: datasource=pypi depName=yamllint
 ARG PIP_YAMLLINT_VERSION=1.38.0
 # renovate: datasource=pypi depName=pip

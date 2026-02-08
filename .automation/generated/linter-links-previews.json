@@ -339,6 +339,11 @@
     "image": null,
     "title": "Welcome to mypy documentation! \u2014 Mypy 0.910 documentation"
   },
+  "nbqa": {
+    "description": "Run ruff, isort, pyupgrade, mypy, pylint, flake8, and more on Jupyter Notebooks - nbQA-dev/nbQA",
+    "image": "https://opengraph.githubassets.com/05cfe64df0b48cdeb133494d4a49d16a0d0999ab9fb3532678755711f383de44/nbQA-dev/nbQA",
+    "title": "GitHub - nbQA-dev/nbQA: Run ruff, isort, pyupgrade, mypy, pylint, flake8, and more on Jupyter Notebooks"
+  },
   "npm-groovy-lint": {
     "description": "Lint, format and auto-fix your Groovy / Jenkinsfile / Gradle files using command line - nvuillam/npm-groovy-lint",
     "image": "https://repository-images.githubusercontent.com/240214900/1dcdef80-773c-11ea-8c94-305acc58f5c6",

@@ -71,7 +71,7 @@ ARG CSHARP_CSHARPIER_VERSION=1.2.5
 # renovate: datasource=nuget depName=roslynator.dotnet.cli
 ARG CSHARP_ROSLYNATOR_VERSION=0.12.0
 # renovate: datasource=npm depName=prettier
-ARG NPM_PRETTIER_VERSION=3.8.1
+ARG NPM_PRETTIER_VERSION=3.7.4
 # renovate: datasource=npm depName=markdownlint-cli
 ARG NPM_MARKDOWNLINT_CLI_VERSION=0.47.0
 # renovate: datasource=npm depName=markdown-table-formatter
@@ -91,6 +91,8 @@ ARG PIP_RUFF_VERSION=0.14.14
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=0.11.3
+# renovate: datasource=npm depName=prettier
+ARG NPM_PRETTIER_VERSION=3.8.1
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=26.0.1
 # renovate: datasource=pypi depName=virtualenv

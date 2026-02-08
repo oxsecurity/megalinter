@@ -369,6 +369,7 @@
         "PYTHON_FLAKE8",
         "PYTHON_ISORT",
         "PYTHON_MYPY",
+        "PYTHON_NBQA_MYPY",
         "PYTHON_PYLINT",
         "PYTHON_PYRIGHT",
         "PYTHON_RUFF",
@@ -19183,7 +19184,7 @@
       "$id": "#/properties/POWERSHELL_POWERSHELL_CLI_EXECUTABLE",
       "default": [
         [
-          "pwsh"
+          "powershell"
         ]
       ],
       "description": "POWERSHELL_POWERSHELL: Override CLI executable used to build the linter command line (rarely needed)",
@@ -19349,7 +19350,7 @@
       "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_CLI_EXECUTABLE",
       "default": [
         [
-          "pwsh"
+          "powershell"
         ]
       ],
       "description": "POWERSHELL_POWERSHELL_FORMATTER: Override CLI executable used to build the linter command line (rarely needed)",
@@ -21454,6 +21455,233 @@
       "title": "PYTHON_MYPY: Unsecured env variables",
       "type": "array",
       "x-category": "PYTHON_MYPY",
+      "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
+      "x-order": 600000,
+      "x-section": "SECURITY"
+    },
+    "PYTHON_NBQA_MYPY_ARGUMENTS": {
+      "$id": "#/properties/PYTHON_NBQA_MYPY_ARGUMENTS",
+      "description": "PYTHON_NBQA_MYPY: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_NBQA_MYPY: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ],
+      "x-category": "PYTHON_NBQA_MYPY",
+      "x-order": 200020,
+      "x-section": "LINTER_COMMAND"
+    },
+    "PYTHON_NBQA_MYPY_CLI_EXECUTABLE": {
+      "$id": "#/properties/PYTHON_NBQA_MYPY_CLI_EXECUTABLE",
+      "default": [
+        [
+          "nbqa"
+        ]
+      ],
+      "description": "PYTHON_NBQA_MYPY: Override CLI executable used to build the linter command line (rarely needed)",
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_NBQA_MYPY: CLI Executable",
+      "type": "array",
+      "x-category": "PYTHON_NBQA_MYPY",
+      "x-order": 200060,
+      "x-section": "LINTER_COMMAND"
+    },
+    "PYTHON_NBQA_MYPY_CLI_LINT_MODE": {
+      "$id": "#/properties/PYTHON_NBQA_MYPY_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "description": "PYTHON_NBQA_MYPY: Override default CLI lint mode used to call the linter (rarely needed)",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
+      "title": "PYTHON_NBQA_MYPY: CLI lint mode",
+      "type": "string",
+      "x-category": "PYTHON_NBQA_MYPY",
+      "x-doc-key": "config-cli-lint-mode",
+      "x-order": 200050,
+      "x-section": "LINTER_COMMAND"
+    },
+    "PYTHON_NBQA_MYPY_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/PYTHON_NBQA_MYPY_COMMAND_REMOVE_ARGUMENTS",
+      "description": "PYTHON_NBQA_MYPY: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_NBQA_MYPY: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ],
+      "x-category": "PYTHON_NBQA_MYPY",
+      "x-order": 200020,
+      "x-section": "LINTER_COMMAND"
+    },
+    "PYTHON_NBQA_MYPY_CONFIG_FILE": {
+      "$id": "#/properties/PYTHON_NBQA_MYPY_CONFIG_FILE",
+      "default": ".mypy.ini",
+      "description": "PYTHON_NBQA_MYPY: User custom config file name if different from default",
+      "title": "PYTHON_NBQA_MYPY: Custom config file name",
+      "type": "string",
+      "x-category": "PYTHON_NBQA_MYPY",
+      "x-order": 200010,
+      "x-section": "LINTER_COMMAND"
+    },
+    "PYTHON_NBQA_MYPY_DISABLE_ERRORS": {
+      "$id": "#/properties/PYTHON_NBQA_MYPY_DISABLE_ERRORS",
+      "default": false,
+      "description": "PYTHON_NBQA_MYPY: If true, PYTHON_NBQA_MYPY doesn't make MegaLinter fail even if errors are found",
+      "title": "PYTHON_NBQA_MYPY: Disable errors",
+      "type": "boolean",
+      "x-category": "PYTHON_NBQA_MYPY",
+      "x-order": 400000,
+      "x-section": "ERRORS"
+    },
+    "PYTHON_NBQA_MYPY_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/PYTHON_NBQA_MYPY_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "description": "PYTHON_NBQA_MYPY: If the number of errors found is less than this value, PYTHON_NBQA_MYPY doesn't make MegaLinter fail",
+      "title": "PYTHON_NBQA_MYPY: Maximum number of errors allowed",
+      "type": "number",
+      "x-category": "PYTHON_NBQA_MYPY",
+      "x-order": 400010,
+      "x-section": "ERRORS"
+    },
+    "PYTHON_NBQA_MYPY_FILE_EXTENSIONS": {
+      "$id": "#/properties/PYTHON_NBQA_MYPY_FILE_EXTENSIONS",
+      "default": [
+        ".ipynb"
+      ],
+      "description": "PYTHON_NBQA_MYPY: Override descriptor/linter matching files extensions that will be used to select files to lint",
+      "examples": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_NBQA_MYPY: Matching files extensions",
+      "type": "array",
+      "x-category": "PYTHON_NBQA_MYPY",
+      "x-order": 300020,
+      "x-section": "SCOPE"
+    },
+    "PYTHON_NBQA_MYPY_FILE_NAMES_REGEX": {
+      "$id": "#/properties/PYTHON_NBQA_MYPY_FILE_NAMES_REGEX",
+      "default": [],
+      "description": "PYTHON_NBQA_MYPY: Override descriptor/linter matching file name regexes that will be used to select files to lint",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_NBQA_MYPY: Matching file name regexes",
+      "type": "array",
+      "x-category": "PYTHON_NBQA_MYPY",
+      "x-order": 300030,
+      "x-section": "SCOPE"
+    },
+    "PYTHON_NBQA_MYPY_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/PYTHON_NBQA_MYPY_FILTER_REGEX_EXCLUDE",
+      "description": "PYTHON_NBQA_MYPY: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "title": "PYTHON_NBQA_MYPY: Excluding Regex",
+      "type": "string",
+      "x-category": "PYTHON_NBQA_MYPY",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "PYTHON_NBQA_MYPY_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/PYTHON_NBQA_MYPY_FILTER_REGEX_INCLUDE",
+      "description": "PYTHON_NBQA_MYPY: Custom regex including filter: only files matching this regex will be linted",
+      "title": "PYTHON_NBQA_MYPY: Including Regex",
+      "type": "string",
+      "x-category": "PYTHON_NBQA_MYPY",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
+    },
+    "PYTHON_NBQA_MYPY_POST_COMMANDS": {
+      "$id": "#/properties/PYTHON_NBQA_MYPY_POST_COMMANDS",
+      "description": "PYTHON_NBQA_MYPY: Define bash commands to run after running PYTHON_NBQA_MYPY",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "PYTHON_NBQA_MYPY: Post-run commands",
+      "type": "array",
+      "x-category": "PYTHON_NBQA_MYPY",
+      "x-order": 500010,
+      "x-section": "PREPOSTCOMMANDS"
+    },
+    "PYTHON_NBQA_MYPY_PRE_COMMANDS": {
+      "$id": "#/properties/PYTHON_NBQA_MYPY_PRE_COMMANDS",
+      "description": "PYTHON_NBQA_MYPY: Define bash commands to run before running PYTHON_NBQA_MYPY",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "PYTHON_NBQA_MYPY: Pre-run commands",
+      "type": "array",
+      "x-category": "PYTHON_NBQA_MYPY",
+      "x-order": 500000,
+      "x-section": "PREPOSTCOMMANDS"
+    },
+    "PYTHON_NBQA_MYPY_RULES_PATH": {
+      "$id": "#/properties/PYTHON_NBQA_MYPY_RULES_PATH",
+      "description": "PYTHON_NBQA_MYPY: Path where to find linter configuration file",
+      "title": "PYTHON_NBQA_MYPY: Custom config file path",
+      "type": "string",
+      "x-category": "PYTHON_NBQA_MYPY",
+      "x-order": 200040,
+      "x-section": "LINTER_COMMAND"
+    },
+    "PYTHON_NBQA_MYPY_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/PYTHON_NBQA_MYPY_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling PYTHON_NBQA_MYPY and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_NBQA_MYPY: Unsecured env variables",
+      "type": "array",
+      "x-category": "PYTHON_NBQA_MYPY",
       "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
       "x-order": 600000,
       "x-section": "SECURITY"
