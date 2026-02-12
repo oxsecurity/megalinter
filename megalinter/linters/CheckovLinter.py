@@ -10,25 +10,27 @@ from megalinter import Linter, config
 
 class CheckovLinter(Linter):
     def build_lint_command(self, file=None) -> list:
-        cmd = super().build_lint_command(file)
-
         if (
             config.get(self.request_id, "VALIDATE_ALL_CODEBASE") == "false"
             and utils.is_pr()
         ):
-            for file_path in self.files:
-                cmd.append("--file")
-                cmd.append(file_path)
-        else:
-            if self.cli_lint_mode == "file":
-                cmd.append("--file")
-                cmd.append(file)
-            elif self.cli_lint_mode == "list_of_files":
-                for file_path in self.files:
-                    cmd.append("--file")
-                    cmd.append(file_path)
-            if self.cli_lint_mode == "project":
-                cmd.append("--directory")
-                cmd.append(".")
+            self.cli_lint_extra_args_after.append("--file")
 
-        return cmd
+            for file_to_lint in self.files:
+                self.cli_lint_extra_args_after.append(file_to_lint)
+        else:
+            if self.cli_lint_mode == "file" or self.cli_lint_mode == "list_of_files":
+                self.cli_lint_extra_args_after.append("--file")
+            else:
+                self.cli_lint_extra_args_after.append("--directory")
+                self.cli_lint_extra_args_after.append(".")
+
+        return super().build_lint_command(file)
+
+    def pre_test(self, test_name):
+        config.set_value(
+            self.request_id, "REPOSITORY_CHECKOV_FILE_NAMES_REGEX", ["Dockerfile"]
+        )
+        config.set_value(
+            self.request_id, "REPOSITORY_CHECKOV_FILE_EXTENSIONS", [".tf"]
+        )
