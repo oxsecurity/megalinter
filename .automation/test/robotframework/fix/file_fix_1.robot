@@ -11,7 +11,6 @@ Valid Login
     Submit Credentials
     Welcome Page Should Be Open
     *** Test Cases ***
-
 Test
     FOR    ${x}    IN    foo    bar
         Log    ${x}
