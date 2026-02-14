@@ -41,6 +41,8 @@ linters:
     cli_lint_errors_regex: ".cs\\([0-9]+,[0-9]+\\):\\s(?:warning|error)"
     cli_executable: dotnet
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
     cli_lint_extra_args:
       - "format"
     cli_lint_extra_args_after:
@@ -62,7 +64,8 @@ linters:
         - linux/amd64
         - linux/arm64
   # CSharpier
-  - linter_name: csharpier
+  - class: CSharpierLinter
+    linter_name: csharpier
     linter_text: |
       **CSharpier** is the definitive opinionated code formatter for C# that eliminates formatting debates by automatically standardizing code style across entire projects. Inspired by Prettier's philosophy, it provides zero-configuration formatting that just works.
 
@@ -94,6 +97,10 @@ linters:
     cli_config_arg_name: "--config-path"
     cli_executable: csharpier
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_extra_args:
       - "check"
     cli_lint_fix_arg_name: "format"
@@ -154,6 +161,9 @@ linters:
       - "analyze"
     cli_lint_fix_remove_args:
       - "analyze"
+    cli_lint_mode: file
+    supported_cli_lint_modes:
+      - file
     test_folder: csharp_roslynator
     test_format_fix_file_extensions:
       - ".cs"

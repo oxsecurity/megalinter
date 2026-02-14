@@ -51,6 +51,9 @@ linters:
     cli_executable_help: bash
     cli_executable_version: bash
     cli_help_arg_name: "--help"
+    cli_lint_mode: file
+    supported_cli_lint_modes:
+      - file
     examples:
       - "bash-exec myfile.sh"
     install:

@@ -50,6 +50,9 @@ linters:
     linter_rules_configuration_url: https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/test-toolkit#customize-tests
     linter_spdx_license: MIT
     config_file_name: .arm-ttk.psd1
+    cli_lint_mode: file
+    supported_cli_lint_modes:
+      - file
     linter_version_cache: "0.0.0" # TODO: retrieve arm-ttk version
     examples:
       - |

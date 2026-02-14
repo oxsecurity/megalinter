@@ -50,6 +50,8 @@ linters:
     linter_megalinter_ref_url: https://github.com/kucherenko/jscpd#who-uses-jscpd
     config_file_name: .jscpd.json
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
     cli_lint_extra_args:
       - --gitignore
       - "--reporters"
