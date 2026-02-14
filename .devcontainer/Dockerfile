@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/python:2-3.12-bullseye
+FROM mcr.microsoft.com/devcontainers/python:3-3.12-trixie
 
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
