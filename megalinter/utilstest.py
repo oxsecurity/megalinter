@@ -144,6 +144,23 @@ def call_mega_linter(env_vars):
     print_output(output)
     return mega_linter, output
 
+def test_linter_success_file_lint_mode(linter, test_self):
+    if "file" not in linter.supported_lint_modes:
+        raise unittest.SkipTest("Linter does not support lint_mode: file")
+
+    test_linter_success(linter, test_self)
+
+def test_linter_success_list_of_files_lint_mode(linter, test_self):
+    if "list_of_files" not in linter.supported_lint_modes:
+        raise unittest.SkipTest("Linter does not support lint_mode: list_of_files")
+
+    test_linter_success(linter, test_self)
+
+def test_linter_success_project_lint_mode(linter, test_self):
+    if "project" not in linter.supported_lint_modes:
+        raise unittest.SkipTest("Linter does not support lint_mode: project")
+
+    test_linter_success(linter, test_self)
 
 def test_linter_success(linter, test_self):
     if (
