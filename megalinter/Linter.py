@@ -99,7 +99,7 @@ class Linter:
         self.ignore_for_flavor_suggestions = False
 
         self.cli_lint_mode = "file"
-        self.supported_cli_lint_modes = ["file"]
+        self.supported_cli_lint_modes = []
         self.cli_docker_image = None
         self.cli_docker_image_version = "latest"
         self.cli_docker_args = []
