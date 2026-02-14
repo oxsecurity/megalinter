@@ -33,6 +33,10 @@ linters:
     linter_rules_inline_disable_url: https://djlint.com/docs/ignoring-code/
     linter_megalinter_ref_url: https://djlint.com/docs/integrations/#megalinter
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "found ([0-9]+) errors"
     examples:
@@ -81,6 +85,10 @@ linters:
     linter_rules_inline_disable_url: https://htmlhint.com/configuration/
     linter_megalinter_ref_url: https://htmlhint.com/integrations/task-runner/
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     config_file_name: .htmlhintrc
     cli_config_arg_name: "--config"
     cli_lint_errors_count: regex_number

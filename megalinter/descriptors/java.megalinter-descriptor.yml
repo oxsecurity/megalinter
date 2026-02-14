@@ -42,6 +42,10 @@ linters:
     config_file_name: sun_checks.xml
     cli_executable: java
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_extra_args:
       - "-jar"
       - "/usr/bin/checkstyle"
@@ -107,6 +111,10 @@ linters:
     linter_image_url: https://pmd.github.io/img/pmd-logo-white-600px.png
     linter_megalinter_ref_url: https://pmd.sourceforge.io/pmd-6.55.0/pmd_userdocs_tools_ci.html
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_executable: /usr/bin/pmd/bin/pmd
     config_file_name: java-pmd-ruleset.xml
     cli_config_arg_name: "--rulesets"
