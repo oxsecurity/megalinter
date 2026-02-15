@@ -23,7 +23,7 @@ dependencies = [
   "gitpython",
   "importlib-metadata>=3.10; python_version < '3.9'",
   "jsonpickle",
-  "langchain-core~=1.2.5",
+  "langchain-core~=1.2.11",
   "langchain-openai~=1.1.6",
   "langchain-anthropic~=1.3.0",
   "langchain-google-genai~=4.2.0",
