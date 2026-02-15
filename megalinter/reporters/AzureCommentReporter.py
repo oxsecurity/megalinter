@@ -125,7 +125,7 @@ class AzureCommentReporter(Reporter):
                 [build_markdown_summary(self, artifacts_url), "", marker, ""]
             )
 
-            comment_status = "fixed" if self.master.return_code == 0 else 1
+            comment_status = 2 if self.master.return_code == 0 else 1
             thread_data = {
                 "comments": [
                     {"parentCommentId": 0, "content": p_r_msg, "commentType": 1}
