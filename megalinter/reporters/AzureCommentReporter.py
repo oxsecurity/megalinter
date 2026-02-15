@@ -203,12 +203,10 @@ class AzureCommentReporter(Reporter):
 
             existing_threads = threads["value"]
             existing_thread_id = None
-            existing_thread_comment = None
             existing_thread_comment_id = None
             for existing_thread in existing_threads:
                 for comment in existing_thread["comments"] or []:
                     if marker in (comment.get("content") or ""):
-                        existing_thread_comment = existing_thread
                         existing_thread_comment_id = existing_thread["comments"][0][
                             "id"
                         ]
