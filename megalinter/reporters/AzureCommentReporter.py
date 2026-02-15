@@ -6,9 +6,9 @@ Post a comment on Azure Pipelines Pull Requests
 
 import logging
 import urllib.parse
+from typing import Any
 
 from azure.devops.connection import Connection
-from azure.devops.released.git.git_client import GitClient
 from megalinter import Reporter, config
 from megalinter.utils_reporter import build_markdown_summary
 from msrest.authentication import BasicTokenAuthentication
@@ -136,7 +136,7 @@ class AzureCommentReporter(Reporter):
                 base_url=f"{SYSTEM_COLLECTIONURI}",
                 creds=credentials,
             )
-            git_client: GitClient = connection.clients.get_git_client()
+            git_client: Any = connection.clients.get_git_client()
 
             # Get repository id
             if SYSTEM_PULLREQUEST_SOURCEREPOSITORYURI == "":
