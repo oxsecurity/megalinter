@@ -128,7 +128,6 @@ MegaLinter uses **uv** (fast Python package installer) and **hatch** (modern Pyt
 
    ```toml
    dependencies = [
-     "azure-devops==7.1.0b4",
      "new-package>=1.0.0",  # Add your package here
      "commentjson",
      # ... other dependencies
