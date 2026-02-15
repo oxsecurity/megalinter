@@ -166,7 +166,7 @@ class AzureCommentReporter(Reporter):
                     repository_name = repository_name.replace("%20", " ")
                 try:
                     get_repository_response = requests.get(
-                        f"{SYSTEM_COLLECTIONURI}/{SYSTEM_TEAMPROJECT}/_apis" +
+                        f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_apis" +
                         "/git" +
                         f"/repositories/{repository_name}" +
                         f"?api-version={self.api_version}",
@@ -187,7 +187,7 @@ class AzureCommentReporter(Reporter):
 
             # Look for existing MegaLinter thread
             get_threads_response = requests.get(
-                f"{SYSTEM_COLLECTIONURI}/{SYSTEM_TEAMPROJECT}/_apis" +
+                f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_apis" +
                 "/git" +
                 f"/repositories/{repository_id}" +
                 f"/pullRequests/{SYSTEM_PULLREQUEST_PULLREQUESTID}" +
@@ -218,9 +218,9 @@ class AzureCommentReporter(Reporter):
             # Remove previous MegaLinter thread if existing
             if existing_thread_id is not None:
                 deleted_comment_response = requests.delete(
-                    f"{SYSTEM_COLLECTIONURI}/{SYSTEM_TEAMPROJECT}/_apis" +
+                    f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_apis" +
                     "/git" +
-                    f"/repositories/{repository_name}" +
+                    f"/repositories/{repository_id}" +
                     f"/pullRequests/{SYSTEM_PULLREQUEST_PULLREQUESTID}" +
                     f"/threads/{existing_thread_id}" +
                     f"/comments/{existing_thread_comment_id}" +
@@ -232,9 +232,9 @@ class AzureCommentReporter(Reporter):
                     deleted_comment_response.raise_for_status()
                 
                 get_pull_request_thread_response = requests.get(
-                    f"{SYSTEM_COLLECTIONURI}/{SYSTEM_TEAMPROJECT}/_apis" +
+                    f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_apis" +
                     "/git" +
-                    f"/repositories/{repository_name}" +
+                    f"/repositories/{repository_id}" +
                     f"/pullRequests/{SYSTEM_PULLREQUEST_PULLREQUESTID}" +
                     f"/threads/{existing_thread_id}" +
                     f"?api-version={self.api_version}",
@@ -252,9 +252,9 @@ class AzureCommentReporter(Reporter):
                 }
 
                 update_pull_request_thread_response = requests.patch(
-                    f"{SYSTEM_COLLECTIONURI}/{SYSTEM_TEAMPROJECT}/_apis" +
+                    f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_apis" +
                     "/git" +
-                    f"/repositories/{repository_name}" +
+                    f"/repositories/{repository_id}" +
                     f"/pullRequests/{SYSTEM_PULLREQUEST_PULLREQUESTID}" +
                     f"/threads/{existing_thread_id}" +
                     f"?api-version={self.api_version}",
@@ -267,9 +267,9 @@ class AzureCommentReporter(Reporter):
 
             # Post thread
             create_pull_request_thread_response = requests.post(
-                f"{SYSTEM_COLLECTIONURI}/{SYSTEM_TEAMPROJECT}/_apis" +
+                f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_apis" +
                 "/git" +
-                f"/repositories/{repository_name}" +
+                f"/repositories/{repository_id}" +
                 f"/pullRequests/{SYSTEM_PULLREQUEST_PULLREQUESTID}" +
                 "/threads" +
                 f"?api-version={self.api_version}",
