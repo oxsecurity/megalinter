@@ -233,23 +233,7 @@ class AzureCommentReporter(Reporter):
                 if deleted_comment_response.status_code != 200:
                     deleted_comment_response.raise_for_status()
 
-                get_pull_request_thread_response = requests.get(
-                    f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_apis"
-                    + "/git"
-                    + f"/repositories/{repository_id}"
-                    + f"/pullRequests/{SYSTEM_PULLREQUEST_PULLREQUESTID}"
-                    + f"/threads/{existing_thread_id}"
-                    + f"?api-version={self.api_version}",
-                    headers=headers,
-                )
-
-                if get_pull_request_thread_response.status_code != 200:
-                    get_pull_request_thread_response.raise_for_status()
-
-                pull_request_thread = get_pull_request_thread_response.json()
-
-                existing_thread_comment = {
-                    "id": pull_request_thread["id"],
+                existing_thread_data = {
                     "status": 4,  # = Closed
                 }
 
@@ -261,7 +245,7 @@ class AzureCommentReporter(Reporter):
                     + f"/threads/{existing_thread_id}"
                     + f"?api-version={self.api_version}",
                     headers=headers,
-                    json=existing_thread_comment,
+                    json=existing_thread_data,
                 )
 
                 if update_pull_request_thread_response.status_code != 200:
