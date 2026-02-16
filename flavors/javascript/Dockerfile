@@ -122,7 +122,7 @@ ARG NPM_GROOVY_LINT_VERSION=16.2.0
 # renovate: datasource=pypi depName=djlint
 ARG PIP_DJLINT_VERSION=1.36.4
 # renovate: datasource=npm depName=htmlhint
-ARG NPM_HTMLHINT_VERSION=1.8.0
+ARG NPM_HTMLHINT_VERSION=1.9.1
 # renovate: datasource=npm depName=eslint
 ARG NPM_ESLINT_VERSION=8.57.1
 # renovate: datasource=npm depName=eslint-config-airbnb
