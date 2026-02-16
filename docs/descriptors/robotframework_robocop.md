@@ -24,7 +24,7 @@ RoboCop is a linter and code formatter for the Robot Framework. It helps maintai
 
 ## robocop documentation
 
-- Version in MegaLinter: **7.2.0**
+- Version in MegaLinter: **8.0.0**
 - Visit [Official Web Site](https://github.com/MarketSquare/robotframework-robocop#readme){target=_blank}
 - See [How to configure robocop rules](https://robocop.dev/stable/configuration/){target=_blank}
 - See [How to disable robocop rules in files](https://robocop.dev/stable/configuration/disablers/){target=_blank}
@@ -103,16 +103,11 @@ robocop check myfile.robot
  Full documentation available at https://robocop.dev.
 
 ╭─ Options ────────────────────────────────────────────────────────────────────╮
-│ --version                                            Show the version and    │
-│                                                      exit.                   │
-│ --install-completion          [bash|zsh|fish|powers  Install completion for  │
-│                               hell|pwsh]             the specified shell.    │
-│ --show-completion             [bash|zsh|fish|powers  Show completion for the │
-│                               hell|pwsh]             specified shell, to     │
-│                                                      copy it or customize    │
-│                                                      the installation.       │
-│ --help                -h                             Show this message and   │
-│                                                      exit.                   │
+│ --version                       Show the version and exit.                   │
+│ --install-completion            Install completion for the current shell.    │
+│ --show-completion               Show completion for the current shell, to    │
+│                                 copy it or customize the installation.       │
+│ --help                -h        Show this message and exit.                  │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ╭─ Commands ───────────────────────────────────────────────────────────────────╮
 │ check          Lint Robot Framework files.                                   │
@@ -131,8 +126,8 @@ robocop check myfile.robot
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=robotframework-robocop
-ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=7.2.0
+ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=8.0.0
 ```
 
 - PIP packages (Python):
-  - [robotframework-robocop==7.2.0](https://pypi.org/project/robotframework-robocop/7.2.0)
+  - [robotframework-robocop==8.0.0](https://pypi.org/project/robotframework-robocop/8.0.0)
