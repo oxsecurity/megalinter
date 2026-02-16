@@ -53,7 +53,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 #############################################################################################
 #ARG__START
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.107.1
+ARG REPOSITORY_GRYPE_VERSION=0.108.0
 #ARG__END
 
 ####################
