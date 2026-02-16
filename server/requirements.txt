@@ -4,5 +4,5 @@ fastapi==0.129.0
 python-multipart==0.0.22
 pygments==2.19.2
 uvicorn[standard]==0.40.0
-redis==7.1.0
+redis==7.1.1
 rq==2.6.1
