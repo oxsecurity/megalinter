@@ -49,7 +49,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=robotframework-robocop
-          ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=7.2.0
+          ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=8.0.0
       pip:
         - robotframework-robocop==${PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION}
     supported_platforms:
