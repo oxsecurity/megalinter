@@ -29,7 +29,7 @@ description: How to use syft (configure, ignore files, ignore errors, help & ver
 
 ## syft documentation
 
-- Version in MegaLinter: **1.41.2**
+- Version in MegaLinter: **1.42.0**
 - Visit [Official Web Site](https://github.com/anchore/syft#readme){target=_blank}
 
 [![syft - GitHub](https://gh-card.dev/repos/anchore/syft.svg?fullname=)](https://github.com/anchore/syft){target=_blank}
@@ -133,6 +133,7 @@ Examples:
     syft scan oci-archive:path/to/yourimage.tar        use a tarball from disk for OCI archives (from Skopeo or otherwise)
     syft scan oci-dir:path/to/yourimage                read directly from a path on disk for OCI layout directories (from Skopeo or otherwise)
     syft scan singularity:path/to/yourimage.sif        read directly from a Singularity Image Format (SIF) container on disk
+    syft scan oci-model-registry:ai/llama3.2           scan an OCI model artifact from a registry (e.g. Docker Hub AI models)
     syft scan dir:path/to/yourproject                  read directly from a path on disk (any directory)
     syft scan file:path/to/yourproject/file            read directly from a path on disk (any single file)
 
