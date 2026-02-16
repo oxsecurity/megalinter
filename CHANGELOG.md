@@ -146,6 +146,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [csharpier](https://csharpier.com/) from 1.2.5 to **1.2.6** on 2026-02-08
   - [rumdl](https://github.com/rvben/rumdl) from 0.1.13 to **0.1.15** on 2026-02-08
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.6.3 to **9.6.4** on 2026-02-08
+  - [grype](https://github.com/anchore/grype) from 0.107.1 to **0.108.0** on 2026-02-16
+  - [syft](https://github.com/anchore/syft) from 1.41.2 to **1.42.0** on 2026-02-16
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 7.2.0 to **8.0.0** on 2026-02-16
+  - [vale](https://vale.sh/) from 3.13.0 to **3.13.1** on 2026-02-16
 <!-- linter-versions-end -->
 
 ## [v9.3.0] - 2026-01-04
