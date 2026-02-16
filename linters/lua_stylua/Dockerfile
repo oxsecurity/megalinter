@@ -55,7 +55,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 # renovate: datasource=crate depName=stylua
 ARG CARGO_STYLUA_VERSION=2.0.0
 # renovate: datasource=github-tags depName=rust-lang/rust
-ARG RUST_RUST_VERSION=1.93.0
+ARG RUST_RUST_VERSION=1.93.1
 #ARG__END
 
 ####################
