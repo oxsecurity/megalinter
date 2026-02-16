@@ -50,6 +50,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - CI
   - Free more space on GitHub Actions runners to avoid build failures
+  - Ignore .isorted files in secretlint to avoid scanning transient files created by other linters
 
 - mega-linter-runner
   - If variables are defined in a local .env file, send their values to docker/podman run command (can be useful for secret variables)
