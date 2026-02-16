@@ -41,6 +41,7 @@ concurrency:
 jobs:
   get-linters-matrix:
     name: Get Linters Matrix
+    if: ${{ vars.BETA_LINTERS_ENABLED != 'false' }}
     runs-on: ubuntu-latest
     outputs:
       linters: ${{ steps.set-matrix.outputs.linters }}
@@ -73,6 +74,7 @@ jobs:
            github.repository == 'oxsecurity/megalinter'
         && !contains(github.event.head_commit.message, 'skip deploy')
         && !contains(github.event.head_commit.message, 'Release MegaLinter v')
+        && vars.BETA_LINTERS_ENABLED != 'false'
       )
     ##################
     # Load all steps #
