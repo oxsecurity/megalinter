@@ -173,6 +173,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.14.4 to **1.14.5** on 2026-02-17
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.99.1 to **0.99.2** on 2026-02-17
   - [tflint](https://github.com/terraform-linters/tflint) from 0.60.0 to **0.61.0** on 2026-02-17
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.14.14 to **0.15.1** on 2026-02-17
+  - [ruff](https://github.com/astral-sh/ruff) from 0.14.14 to **0.15.1** on 2026-02-17
 <!-- linter-versions-end -->
 
 ## [v9.3.0] - 2026-01-04
