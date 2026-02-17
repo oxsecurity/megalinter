@@ -154,6 +154,25 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 1.41.2 to **1.42.0** on 2026-02-16
   - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 7.2.0 to **8.0.0** on 2026-02-16
   - [vale](https://vale.sh/) from 3.13.0 to **3.13.1** on 2026-02-16
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.7.10 to **1.7.11** on 2026-02-17
+  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.10.9 to **3.11.0** on 2026-02-17
+  - [golangci-lint](https://golangci-lint.run/) from 2.8.0 to **2.9.0** on 2026-02-17
+  - [revive](https://revive.run/) from 1.13.0 to **1.14.0** on 2026-02-17
+  - [htmlhint](https://htmlhint.com/) from 1.8.0 to **1.9.1** on 2026-02-17
+  - [rumdl](https://github.com/rvben/rumdl) from 0.1.15 to **0.1.22** on 2026-02-17
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.93.1 to **3.94.0** on 2026-02-17
+  - [phpstan](https://phpstan.org/) from 2.1.38 to **2.1.39** on 2026-02-17
+  - [psalm](https://psalm.dev) from Psalm.6.15.0@ to **Psalm.6.15.1@** on 2026-02-17
+  - [checkov](https://www.checkov.io/) from 3.2.500 to **3.2.502** on 2026-02-17
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.76.0 to **1.82.0** on 2026-02-17
+  - [semgrep](https://semgrep.dev/) from 3.13 to **1.151.0** on 2026-02-17
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.92.5 to **3.93.3** on 2026-02-17
+  - [rubocop](https://rubocop.org/) from 1.84.1 to **1.84.2** on 2026-02-17
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.11.3 to **0.11.4** on 2026-02-17
+  - [sqlfluff](https://www.sqlfluff.com/) from 4.0.0 to **4.0.4** on 2026-02-17
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.14.4 to **1.14.5** on 2026-02-17
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.99.1 to **0.99.2** on 2026-02-17
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.60.0 to **0.61.0** on 2026-02-17
 <!-- linter-versions-end -->
 
 ## [v9.3.0] - 2026-01-04

@@ -98,8 +98,6 @@ ARG REPOSITORY_SYFT_VERSION=1.42.0
 ARG REPOSITORY_TRIVY_VERSION=0.69.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.69.1
-# renovate: datasource=npm depName=prettier
-ARG NPM_PRETTIER_VERSION=3.8.1
 # renovate: datasource=pypi depName=yamllint
 ARG PIP_YAMLLINT_VERSION=1.38.0
 # renovate: datasource=pypi depName=pip
