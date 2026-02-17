@@ -4,7 +4,6 @@ Use Checkov to lint Infrastructure as Code
 """
 
 import megalinter.utils as utils
-
 from megalinter import Linter, config
 
 
@@ -31,6 +30,4 @@ class CheckovLinter(Linter):
         config.set_value(
             self.request_id, "REPOSITORY_CHECKOV_FILE_NAMES_REGEX", ["Dockerfile"]
         )
-        config.set_value(
-            self.request_id, "REPOSITORY_CHECKOV_FILE_EXTENSIONS", [".tf"]
-        )
+        config.set_value(self.request_id, "REPOSITORY_CHECKOV_FILE_EXTENSIONS", [".tf"])
