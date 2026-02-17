@@ -250,7 +250,7 @@ Other options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=prettier
-ARG NPM_PRETTIER_VERSION=3.7.4
+ARG NPM_PRETTIER_VERSION=3.8.1
 ```
 
 - NPM packages (node.js):
