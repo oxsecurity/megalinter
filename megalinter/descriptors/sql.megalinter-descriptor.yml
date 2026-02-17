@@ -51,7 +51,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=sqlfluff
-          ARG PIP_SQLFLUFF_VERSION=4.0.0
+          ARG PIP_SQLFLUFF_VERSION=4.0.4
       pip:
         - sqlfluff==${PIP_SQLFLUFF_VERSION}
     supported_platforms:

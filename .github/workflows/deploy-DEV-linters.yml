@@ -92,6 +92,7 @@ jobs:
       (github.event_name == 'push' && github.repository == 'oxsecurity/megalinter')
       )
       && !contains(github.event.head_commit.message, 'skip deploy')
+      && !contains(github.event.head_commit.message, 'skip linters')
 
     ##################
     # Load all steps #

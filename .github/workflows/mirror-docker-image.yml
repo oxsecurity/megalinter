@@ -14,6 +14,10 @@ on:
         required: false
         default: 'true'
 
+concurrency:
+  group: mirror-docker-image-${{ github.event.inputs.target-image }}
+  cancel-in-progress: true
+
 jobs:
 
   copy-to-docker-hub-alpha:

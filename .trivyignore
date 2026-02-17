@@ -194,6 +194,8 @@ CVE-2026-25128
 CVE-2026-24842
 # https://avd.aquasec.com/nvd/cve-2026-25547: @isaacs/brace-expansion , not risky in MegaLinter context
 CVE-2026-25547
+# https://avd.aquasec.com/nvd/cve-2026-25639: axios denial of service, not applicable in MegaLinter context
+CVE-2026-25639
 # Dockerfile
 DS001
 DS-0001
