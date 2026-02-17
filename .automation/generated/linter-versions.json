@@ -53,7 +53,7 @@
     "kingfisher": "1.82.0",
     "ktlint": "1.8.0",
     "kubeconform": "0.7.0",
-    "kubescape": "3.0.48",
+    "kubescape": "4.0.1",
     "kubeval": "0.16.1",
     "lightning-flow-scanner": "3.29.0",
     "lintr": "0.0.0",
