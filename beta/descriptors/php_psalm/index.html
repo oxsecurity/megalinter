@@ -12520,7 +12520,7 @@
 </ul>
 <h2 id="psalm-documentation">psalm documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>Psalm.6.15.0@</strong></li>
+<li>Version in MegaLinter: <strong>Psalm.6.15.1@</strong></li>
 <li>Visit <a href="https://psalm.dev" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://psalm.dev/docs/running_psalm/configuration/" target="_blank">How to configure psalm rules</a><ul>
 <li>If custom <code>psalm.xml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/psalm.xml" target="_blank">psalm.xml</a> will be used</li>
@@ -12895,7 +12895,7 @@ COPY --from=composer/composer:2-bin /composer /usr/bin/composer
 ENV PATH="/root/.composer/vendor/bin:${PATH}"
 # Linter install
 # renovate: datasource=packagist depName=vimeo/psalm
-ARG PHP_VIMEO_PSALM_VERSION=6.15.0
+ARG PHP_VIMEO_PSALM_VERSION=6.15.1
 RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" &amp;&amp; export GITHUB_AUTH_TOKEN &amp;&amp; composer global require vimeo/psalm:${PHP_VIMEO_PSALM_VERSION}
 
 </code></pre>

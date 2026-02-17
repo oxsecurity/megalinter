@@ -12497,7 +12497,7 @@
 </ul>
 <h2 id="checkov-documentation">checkov documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.2.500</strong></li>
+<li>Version in MegaLinter: <strong>3.2.502</strong></li>
 <li>Visit <a href="https://www.checkov.io/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/bridgecrewio/checkov#configuration-using-a-config-file" target="_blank">How to configure checkov rules</a><ul>
 <li>If custom <code>.checkov.yml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.checkov.yml" target="_blank">.checkov.yml</a> will be used</li>
@@ -12762,7 +12762,7 @@
                [--secrets-scan-file-type SECRETS_SCAN_FILE_TYPE]
                [--enable-secret-scan-all-files]
                [--block-list-secret-scan BLOCK_LIST_SECRET_SCAN]
-               [--summary-position {top,bottom}]
+               [--summary-position {bottom,top}]
                [--skip-resources-without-violations] [--deep-analysis]
                [--no-fail-on-crash] [--mask MASK] [--scan-secrets-history]
                [--secrets-history-timeout SECRETS_HISTORY_TIMEOUT]
@@ -13074,7 +13074,7 @@ options:
   --block-list-secret-scan BLOCK_LIST_SECRET_SCAN
                         List of files to filter out from the secret scanner
                         [env var: CKV_SECRETS_SCAN_BLOCK_LIST]
-  --summary-position {top,bottom}
+  --summary-position {bottom,top}
                         Chose whether the summary will be appended on top
                         (before the checks results) or on bottom (after check
                         results), default is on top.
@@ -13115,11 +13115,11 @@ config file values which override defaults.
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.2.500
+ARG PIP_CHECKOV_VERSION=3.2.502
 </code></pre>
 <ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/checkov/3.2.500">checkov==3.2.500</a></li>
+<li><a href="https://pypi.org/project/checkov/3.2.502">checkov==3.2.502</a></li>
 </ul>
 </li>
 </ul>

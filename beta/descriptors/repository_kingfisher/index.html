@@ -12496,7 +12496,7 @@
 </ul>
 <h2 id="kingfisher-documentation">kingfisher documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.76.0</strong></li>
+<li>Version in MegaLinter: <strong>1.82.0</strong></li>
 <li>Visit <a href="https://github.com/mongodb/kingfisher#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/mongodb/kingfisher?tab=readme-ov-file#inline-ignore-directives" target="_blank">How to disable kingfisher rules in files</a></li>
 <li>See <a href="https://github.com/mongodb/kingfisher/tree/main/data/rules" target="_blank">Index of problems detected by kingfisher</a></li>
@@ -12616,19 +12616,23 @@ Usage: kingfisher [OPTIONS] &lt;COMMAND&gt;
 Commands:
   scan        Scan content for secrets and sensitive information
   rules       Manage rules
+  validate    Directly validate a known secret against a rule's validator (bypasses pattern
+              matching)
+  revoke      Directly revoke a known secret against a rule's revocation config
   access-map  Map a cloud credential to its identity, permissions, and blast radius
   view        View Kingfisher JSON/JSONL reports in a local web UI
   update      Update the Kingfisher binary
   help        Print this message or the help of the given subcommand(s)
 
 Options:
-  -h, --help     Print help
+  -h, --help     Print help (see more with '--help')
   -V, --version  Print version
 
 Global Options:
   -v, --verbose...                  Enable verbose output (up to 3 times for more detail)
   -q, --quiet                       Suppress non-error messages and disable progress bars
-      --ignore-certs                Ignore TLS certificate validation
+      --tls-mode &lt;TLS_MODE&gt;         TLS certificate validation mode for secret validation requests
+                                    [default: strict] [possible values: strict, lax, off]
       --self-update                 Update the Kingfisher binary to the latest release
       --no-update-check             Disable automatic update checks
       --user-agent-suffix &lt;SUFFIX&gt;  Append a custom suffix to the default Kingfisher user-agent
@@ -12639,7 +12643,7 @@ Global Options:
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=github-tags depName=mongodb/kingfisher
-ARG REPOSITORY_KINGFISHER_VERSION=1.76.0
+ARG REPOSITORY_KINGFISHER_VERSION=1.82.0
 RUN curl --silent --location https://raw.githubusercontent.com/mongodb/kingfisher/main/scripts/install-kingfisher.sh | bash -s -- /usr/local/bin --tag "v${REPOSITORY_KINGFISHER_VERSION}"
 
 </code></pre>
