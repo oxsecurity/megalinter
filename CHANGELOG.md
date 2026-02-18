@@ -176,6 +176,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff-format](https://github.com/astral-sh/ruff) from 0.14.14 to **0.15.1** on 2026-02-17
   - [ruff](https://github.com/astral-sh/ruff) from 0.14.14 to **0.15.1** on 2026-02-17
   - [kubescape](https://github.com/kubescape/kubescape) from 3.0.48 to **4.0.1** on 2026-02-17
+  - [syft](https://github.com/anchore/syft) from 1.42.0 to **1.42.1** on 2026-02-18
 <!-- linter-versions-end -->
 
 ## [v9.3.0] - 2026-01-04
