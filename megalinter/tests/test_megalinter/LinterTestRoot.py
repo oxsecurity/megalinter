@@ -30,10 +30,15 @@ class LinterTestRoot:
                 "request_id": request_id,
             },
         )
-    
+
     def lint_mode_setup(self, mode):
         config.set_value(
-            self.request_id, self.descriptor_id.upper() + "_" + self.linter_name.upper() + "_CLI_LINT_MODE", mode
+            self.request_id,
+            self.descriptor_id.upper()
+            + "_"
+            + self.linter_name.upper()
+            + "_CLI_LINT_MODE",
+            mode,
         )
 
     def test_success_file_lint_mode(self):
