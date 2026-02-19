@@ -10,6 +10,12 @@ from megalinter import Linter, config, utils
 
 
 class ShellcheckLinter(Linter):
+    def build_lint_command(self, file=None):
+        if self.cli_lint_mode == "project":
+            self.cli_lint_extra_args_after += ["*" + item for item in self.file_extensions]
+        
+        return super().build_lint_command(file)
+
     # Call shellcheck-sarif to convert default output to sarif
     # https://crates.io/crates/shellcheck-sarif
     def manage_sarif_output(self, return_stdout):

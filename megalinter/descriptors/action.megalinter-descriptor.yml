@@ -33,7 +33,6 @@ linters:
     supported_cli_lint_modes:
       - file
       - list_of_files
-      - project
     cli_config_arg_name: "-config-file"
     cli_version_arg_name: "-version"
     cli_lint_errors_count: regex_count
