@@ -4,19 +4,20 @@ Azure Comment reporter
 Post a comment on Azure Pipelines Pull Requests
 """
 
+import base64
 import logging
 import urllib.parse
 
-from azure.devops.connection import Connection
-from azure.devops.released.git.git_client import GitClient
+import requests
 from megalinter import Reporter, config
 from megalinter.utils_reporter import build_markdown_summary
-from msrest.authentication import BasicTokenAuthentication
 
 
 class AzureCommentReporter(Reporter):
     name = "AZURE_COMMENT"
     scope = "mega-linter"
+
+    api_version = "7.1"
 
     def manage_activation(self):
         if not config.exists(self.master.request_id, "SYSTEM_COLLECTIONURI"):
@@ -74,6 +75,9 @@ class AzureCommentReporter(Reporter):
         # Post thread on Azure pull request
         if config.get(self.master.request_id, "SYSTEM_ACCESSTOKEN", "") != "":
             # Collect variables
+            SYSTEM_ACCESSTOKEN = config.get(
+                self.master.request_id, "SYSTEM_ACCESSTOKEN"
+            )
             SYSTEM_COLLECTIONURI = config.get(
                 self.master.request_id, "SYSTEM_COLLECTIONURI"
             )
@@ -121,7 +125,7 @@ class AzureCommentReporter(Reporter):
                 [build_markdown_summary(self, artifacts_url), "", marker, ""]
             )
 
-            comment_status = "fixed" if self.master.return_code == 0 else 1
+            comment_status = 2 if self.master.return_code == 0 else 1
             thread_data = {
                 "comments": [
                     {"parentCommentId": 0, "content": p_r_msg, "commentType": 1}
@@ -129,14 +133,11 @@ class AzureCommentReporter(Reporter):
                 "status": comment_status,
             }
 
-            # Create connection to Azure API
-            access_token = config.get(self.master.request_id, "SYSTEM_ACCESSTOKEN")
-            credentials = BasicTokenAuthentication({"access_token": access_token})
-            connection = Connection(
-                base_url=f"{SYSTEM_COLLECTIONURI}",
-                creds=credentials,
-            )
-            git_client: GitClient = connection.clients.get_git_client()
+            encoded_credentials = base64.b64encode(
+                f":{SYSTEM_ACCESSTOKEN}".encode("utf-8")
+            ).decode("utf-8")
+
+            headers = {"Authorization": f"Basic {encoded_credentials}"}
 
             # Get repository id
             if SYSTEM_PULLREQUEST_SOURCEREPOSITORYURI == "":
@@ -164,10 +165,18 @@ class AzureCommentReporter(Reporter):
                 ):
                     repository_name = repository_name.replace("%20", " ")
                 try:
-                    repository = git_client.get_repository(
-                        repository_name, SYSTEM_TEAMPROJECT
+                    get_repository_response = requests.get(
+                        f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_apis"
+                        + "/git"
+                        + f"/repositories/{repository_name}"
+                        + f"?api-version={self.api_version}",
+                        headers=headers,
                     )
-                    repository_id = repository.id
+
+                    if get_repository_response.status_code != 200:
+                        get_repository_response.raise_for_status()
+
+                    repository_id = get_repository_response.json()["id"]
                 except Exception as err:
                     logging.warning(
                         f"[Azure Comment Reporter] Unable to find repo {repository_name}:"
@@ -177,51 +186,87 @@ class AzureCommentReporter(Reporter):
                     repository_id = BUILD_REPOSITORY_ID
 
             # Look for existing MegaLinter thread
-            existing_threads = git_client.get_threads(
-                repository_id, SYSTEM_PULLREQUEST_PULLREQUESTID
+            get_threads_response = requests.get(
+                f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_apis"
+                + "/git"
+                + f"/repositories/{repository_id}"
+                + f"/pullRequests/{SYSTEM_PULLREQUEST_PULLREQUESTID}"
+                + "/threads"
+                + f"?api-version={self.api_version}",
+                headers=headers,
             )
+
+            if get_threads_response.status_code != 200:
+                get_threads_response.raise_for_status()
+
+            threads = get_threads_response.json()
+
+            existing_threads = threads["value"]
             existing_thread_id = None
-            existing_thread_comment = None
             existing_thread_comment_id = None
             for existing_thread in existing_threads:
-                for comment in existing_thread.comments or []:
-                    if marker in (comment.content or ""):
-                        existing_thread_comment = existing_thread
-                        existing_thread_comment_id = existing_thread.comments[0].id
-                        existing_thread_id = existing_thread.id
+                for comment in existing_thread["comments"] or []:
+                    if marker in (comment.get("content") or ""):
+                        existing_thread_comment_id = existing_thread["comments"][0][
+                            "id"
+                        ]
+                        existing_thread_id = existing_thread["id"]
                         break
                 if existing_thread_id is not None:
                     break
 
             # Remove previous MegaLinter thread if existing
             if existing_thread_id is not None:
-                git_client.delete_comment(
-                    repository_id,
-                    SYSTEM_PULLREQUEST_PULLREQUESTID,
-                    existing_thread_id,
-                    existing_thread_comment_id,
-                )
-                existing_thread_comment = git_client.get_pull_request_thread(
-                    repository_id,
-                    SYSTEM_PULLREQUEST_PULLREQUESTID,
-                    existing_thread_id,
-                )
-                existing_thread_comment = {
-                    "id": existing_thread_comment.id,
-                    "status": 4,  # = Closed
-                }
-                git_client.update_thread(
-                    existing_thread_comment,
-                    repository_id,
-                    SYSTEM_PULLREQUEST_PULLREQUESTID,
-                    existing_thread_id,
+                deleted_comment_response = requests.delete(
+                    f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_apis"
+                    + "/git"
+                    + f"/repositories/{repository_id}"
+                    + f"/pullRequests/{SYSTEM_PULLREQUEST_PULLREQUESTID}"
+                    + f"/threads/{existing_thread_id}"
+                    + f"/comments/{existing_thread_comment_id}"
+                    + f"?api-version={self.api_version}",
+                    headers=headers,
                 )
 
+                if deleted_comment_response.status_code != 200:
+                    deleted_comment_response.raise_for_status()
+
+                existing_thread_data = {
+                    "status": 4,  # = Closed
+                }
+
+                update_pull_request_thread_response = requests.patch(
+                    f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_apis"
+                    + "/git"
+                    + f"/repositories/{repository_id}"
+                    + f"/pullRequests/{SYSTEM_PULLREQUEST_PULLREQUESTID}"
+                    + f"/threads/{existing_thread_id}"
+                    + f"?api-version={self.api_version}",
+                    headers=headers,
+                    json=existing_thread_data,
+                )
+
+                if update_pull_request_thread_response.status_code != 200:
+                    update_pull_request_thread_response.raise_for_status()
+
             # Post thread
-            new_thread_result = git_client.create_thread(
-                thread_data, repository_id, SYSTEM_PULLREQUEST_PULLREQUESTID
+            create_pull_request_thread_response = requests.post(
+                f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_apis"
+                + "/git"
+                + f"/repositories/{repository_id}"
+                + f"/pullRequests/{SYSTEM_PULLREQUEST_PULLREQUESTID}"
+                + "/threads"
+                + f"?api-version={self.api_version}",
+                headers=headers,
+                json=thread_data,
             )
-            if new_thread_result.id is not None and new_thread_result.id > 0:
+
+            if create_pull_request_thread_response.status_code != 200:
+                create_pull_request_thread_response.raise_for_status()
+
+            created_thread = create_pull_request_thread_response.json()
+
+            if created_thread.get("id") is not None and created_thread["id"] > 0:
                 logging.debug(f"Posted Azure Pipelines comment: {thread_data}")
                 logging.info(
                     "[Azure Comment Reporter] Posted summary as comment on "
@@ -230,7 +275,7 @@ class AzureCommentReporter(Reporter):
             else:
                 logging.warning(
                     "[Azure Comment Reporter] Error while posting comment:"
-                    + str(new_thread_result)
+                    + str(created_thread)
                     + "\n"
                     + "See https://megalinter.io/latest/reporters/AzureCommentReporter/"
                 )

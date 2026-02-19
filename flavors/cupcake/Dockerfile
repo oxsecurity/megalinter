@@ -13,7 +13,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=rhysd/actionlint
-ARG ACTION_ACTIONLINT_VERSION=1.7.10
+ARG ACTION_ACTIONLINT_VERSION=1.7.11
 # renovate: datasource=docker depName=koalaman/shellcheck
 ARG BASH_SHELLCHECK_VERSION=v0.11.0
 # renovate: datasource=docker depName=mvdan/shfmt
@@ -23,7 +23,7 @@ ARG DOCKERFILE_HADOLINT_VERSION=v2.14.0-alpine
 # renovate: datasource=docker depName=mstruebing/editorconfig-checker
 ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.6.1
 # renovate: datasource=github-tags depName=mgechev/revive
-ARG GO_REVIVE_VERSION=v1.13.0
+ARG GO_REVIVE_VERSION=v1.14.0
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.7.0-alpine
 # renovate: datasource=docker depName=zricethezav/gitleaks
@@ -31,15 +31,15 @@ ARG REPOSITORY_GITLEAKS_VERSION=v8.30.0
 # renovate: datasource=docker depName=checkmarx/kics
 ARG REPOSITORY_KICS_VERSION=v2.1.19-alpine
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.92.5
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.93.3
 # renovate: datasource=docker depName=lycheeverse/lychee
 ARG SPELL_LYCHEE_VERSION=sha-7c4b132-alpine
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
-ARG TERRAFORM_TFLINT_VERSION=0.60.0
+ARG TERRAFORM_TFLINT_VERSION=0.61.0
 # renovate: datasource=docker depName=tenable/terrascan
 ARG TERRAFORM_TERRASCAN_VERSION=1.19.9
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.14.4
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.14.5
 #ARGTOP__END
 
 #############################################################################################
@@ -76,7 +76,7 @@ FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.9.30 AS uv
+FROM ghcr.io/astral-sh/uv:0.10.3 AS uv
 FROM python:3.13-alpine3.23 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
@@ -136,7 +136,7 @@ ARG NPM_STYLELINT_SCSS_VERSION=6.14.0
 # renovate: datasource=github-tags depName=dotenv-linter/dotenv-linter
 ARG DOTENV_LINTER_VERSION=4.0.0
 # renovate: datasource=github-tags depName=golangci/golangci-lint
-ARG GO_GOLANGCI_LINT_VERSION=2.8.0
+ARG GO_GOLANGCI_LINT_VERSION=2.9.0
 # renovate: datasource=npm depName=graphql
 ARG NPM_GRAPHQL_VERSION=16.12.0
 # renovate: datasource=npm depName=graphql-schema-linter
@@ -146,7 +146,7 @@ ARG NPM_GROOVY_LINT_VERSION=16.2.0
 # renovate: datasource=pypi depName=djlint
 ARG PIP_DJLINT_VERSION=1.36.4
 # renovate: datasource=npm depName=htmlhint
-ARG NPM_HTMLHINT_VERSION=1.8.0
+ARG NPM_HTMLHINT_VERSION=1.9.1
 # renovate: datasource=github-releases depName=checkstyle/checkstyle
 ARG JAVA_CHECKSTYLE_VERSION=12.1.0
 # renovate: datasource=github-tags depName=pmd/pmd extractVersion=^pmd_releases/(?<version>.*)$
@@ -163,7 +163,7 @@ ARG NPM_ESLINT_CONFIG_STANDARD_VERSION=17.1.0
 # renovate: datasource=npm depName=eslint-plugin-import
 ARG NPM_ESLINT_PLUGIN_IMPORT_VERSION=2.32.0
 # renovate: datasource=npm depName=eslint-plugin-jest
-ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.12.1
+ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.14.0
 # renovate: datasource=npm depName=eslint-plugin-n
 ARG NPM_ESLINT_PLUGIN_N_VERSION=16.6.2
 # renovate: datasource=npm depName=eslint-plugin-prettier
@@ -171,9 +171,9 @@ ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.5
 # renovate: datasource=npm depName=eslint-plugin-promise
 ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=6.6.0
 # renovate: datasource=npm depName=eslint-plugin-vue
-ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.6.2
+ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.7.0
 # renovate: datasource=npm depName=@babel/core
-ARG NPM_BABEL_CORE_VERSION=7.28.6
+ARG NPM_BABEL_CORE_VERSION=7.29.0
 # renovate: datasource=npm depName=@babel/eslint-parser
 ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.28.6
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
@@ -181,7 +181,7 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 # renovate: datasource=npm depName=standard
 ARG NPM_STANDARD_VERSION=17.1.2
 # renovate: datasource=npm depName=prettier
-ARG NPM_PRETTIER_VERSION=3.7.4
+ARG NPM_PRETTIER_VERSION=3.8.1
 # renovate: datasource=npm depName=@prantlf/jsonlint
 ARG NPM_PRANTLF_JSONLINT_VERSION=17.0.1
 # renovate: datasource=npm depName=v8r
@@ -201,27 +201,27 @@ ARG KTLINT_VERSION=1.8.0
 ARG DETEKT_VERSION=1.23.8
 
 # renovate: datasource=github-tags depName=kubescape/kubescape
-ARG KUBERNETES_KUBESCAPE_VERSION=3.0.48
+ARG KUBERNETES_KUBESCAPE_VERSION=4.0.1
 # renovate: datasource=npm depName=markdownlint-cli
 ARG NPM_MARKDOWNLINT_CLI_VERSION=0.47.0
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.1.15
+ARG PIP_RUMDL_VERSION=0.1.22
 # renovate: datasource=packagist depName=squizlabs/php_codesniffer
 ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=4.0.1
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
 ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.5.0
 # renovate: datasource=packagist depName=phpstan/phpstan
-ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.1.38
+ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.1.39
 # renovate: datasource=packagist depName=phpstan/extension-installer
 ARG PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION=1.4.3
 # renovate: datasource=packagist depName=vimeo/psalm
-ARG PHP_VIMEO_PSALM_VERSION=6.15.0
+ARG PHP_VIMEO_PSALM_VERSION=6.15.1
 # renovate: datasource=packagist depName=overtrue/phplint
 ARG PHP_OVERTRUE_PHPLINT_VERSION=9.7.1
 # renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
-ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.93.1
+ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.94.0
 # renovate: datasource=pypi depName=pylint
 ARG PIP_PYLINT_VERSION=4.0.4
 # renovate: datasource=pypi depName=typing-extensions
@@ -237,11 +237,11 @@ ARG PIP_MYPY_VERSION=1.19.1
 # renovate: datasource=npm depName=pyright
 ARG NPM_PYRIGHT_VERSION=1.1.408
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.14.14
+ARG PIP_RUFF_VERSION=0.15.1
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.2.500
+ARG PIP_CHECKOV_VERSION=3.2.502
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.107.1
+ARG REPOSITORY_GRYPE_VERSION=0.108.0
 # renovate: datasource=npm depName=@ls-lint/ls-lint
 ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.1
 # renovate: datasource=npm depName=secretlint
@@ -251,15 +251,15 @@ ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=11.3.1
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
 ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=11.3.1
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.150.0
+ARG PIP_SEMGREP_VERSION=1.151.0
 # renovate: datasource=github-tags depName=anchore/syft
-ARG REPOSITORY_SYFT_VERSION=1.41.2
+ARG REPOSITORY_SYFT_VERSION=1.42.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_VERSION=0.69.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.69.1
 # renovate: datasource=pypi depName=robotframework-robocop
-ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=7.2.0
+ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=8.0.0
 # renovate: datasource=pypi depName=Pygments
 ARG PIP_PYGMENTS_VERSION=2.19.2
 # renovate: datasource=pypi depName=restructuredtext_lint
@@ -271,7 +271,7 @@ ARG PIP_RSTCHECK_CLICK_VERSION=8.3.1
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=rubygems depName=rubocop
-ARG GEM_RUBOCOP_VERSION=1.84.1
+ARG GEM_RUBOCOP_VERSION=1.84.2
 # renovate: datasource=rubygems depName=rubocop-github
 ARG GEM_RUBOCOP_GITHUB_VERSION=0.26.0
 # renovate: datasource=rubygems depName=rubocop-performance
@@ -289,19 +289,13 @@ ARG PIP_PROSELINT_VERSION=0.14.0
 # renovate: datasource=pypi depName=codespell
 ARG PIP_CODESPELL_VERSION=2.4.1
 # renovate: datasource=pypi depName=sqlfluff
-ARG PIP_SQLFLUFF_VERSION=4.0.0
+ARG PIP_SQLFLUFF_VERSION=4.0.4
 # renovate: datasource=npm depName=prettyjson
 ARG NPM_PRETTYJSON_VERSION=1.2.5
 # renovate: datasource=npm depName=@typescript-eslint/eslint-plugin
-ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.52.0
+ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.55.0
 # renovate: datasource=npm depName=@typescript-eslint/parser
-ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.52.0
-# renovate: datasource=npm depName=prettier
-ARG NPM_PRETTIER_VERSION=3.8.1
-# renovate: datasource=npm depName=@typescript-eslint/eslint-plugin
-ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.54.0
-# renovate: datasource=npm depName=@typescript-eslint/parser
-ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.54.0
+ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.55.0
 # renovate: datasource=npm depName=ts-standard
 ARG NPM_TS_STANDARD_VERSION=12.0.2
 # renovate: datasource=pypi depName=yamllint
@@ -311,7 +305,7 @@ ARG PIP_PIP_VERSION=26.0.1
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=20.36.1
 # renovate: datasource=github-tags depName=rust-lang/rust
-ARG RUST_RUST_VERSION=1.93.0
+ARG RUST_RUST_VERSION=1.93.1
 
 ARG ACTION_ACTIONLINT_VERSION
 ARG BASH_SHELLCHECK_VERSION

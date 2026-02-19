@@ -24,7 +24,7 @@
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.9.30 AS uv
+FROM ghcr.io/astral-sh/uv:0.10.3 AS uv
 FROM python:3.13-alpine3.23 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
@@ -53,7 +53,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 #############################################################################################
 #ARG__START
 # renovate: datasource=github-tags depName=mongodb/kingfisher
-ARG REPOSITORY_KINGFISHER_VERSION=1.76.0
+ARG REPOSITORY_KINGFISHER_VERSION=1.82.0
 #ARG__END
 
 ####################
