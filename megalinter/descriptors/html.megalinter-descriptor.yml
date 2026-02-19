@@ -9,7 +9,8 @@ file_extensions:
   - ".htm"
 linters:
   # DJLINT
-  - linter_name: djlint
+  - class: DjlintLinter
+    linter_name: djlint
     linter_text: |
       **djLint** is a comprehensive linter and formatter for HTML templates that supports multiple template languages. Originally created for use in the Atlas projects, it helps you find common syntax errors and reformat your HTML templates to make them shine.
 
