@@ -200,6 +200,8 @@ CVE-2026-25639
 CVE-2026-26278
 # https://avd.aquasec.com/nvd/cve-2026-26960 : node-tar, not applicable in MegaLinter context
 CVE-2026-26960 
+# https://avd.aquasec.com/nvd/cve-2026-26996 : minimatch Redos risk, not applicable in MegaLinter context
+CVE-2026-26996
 # Dockerfile
 DS001
 DS-0001
