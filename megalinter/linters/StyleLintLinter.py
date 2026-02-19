@@ -14,7 +14,7 @@ class StyleLintLinter(Linter):
         return super().build_lint_command(file)
 
     def pre_test(self, test_name):
-        if test_name.startsWith("test_failure"):
+        if test_name.startswith("test_failure"):
             config.set_value(
                 self.request_id, "CSS_STYLELINT_CONFIG_FILE", ".stylelintrc_bad.json"
             )
