@@ -196,6 +196,10 @@ CVE-2026-24842
 CVE-2026-25547
 # https://avd.aquasec.com/nvd/cve-2026-25639: axios denial of service, not applicable in MegaLinter context
 CVE-2026-25639
+# https://avd.aquasec.com/nvd/cve-2026-26278 : fast-xml-parser, DDOS attack, not applicable in MegaLinter context
+CVE-2026-26278
+# https://avd.aquasec.com/nvd/cve-2026-26960 : node-tar, not applicable in MegaLinter context
+CVE-2026-26960 
 # Dockerfile
 DS001
 DS-0001
