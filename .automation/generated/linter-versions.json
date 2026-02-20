@@ -42,7 +42,7 @@
     "golangci-lint": "2.9.0",
     "goodcheck": "3.1.0",
     "graphql-schema-linter": "3.0.1",
-    "grype": "0.108.0",
+    "grype": "0.109.0",
     "hadolint": "2.14.0",
     "helm": "3.19.0",
     "htmlhint": "1.9.1",
