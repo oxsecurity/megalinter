@@ -818,7 +818,7 @@
         "               [--secrets-scan-file-type SECRETS_SCAN_FILE_TYPE]",
         "               [--enable-secret-scan-all-files]",
         "               [--block-list-secret-scan BLOCK_LIST_SECRET_SCAN]",
-        "               [--summary-position {top,bottom}]",
+        "               [--summary-position {bottom,top}]",
         "               [--skip-resources-without-violations] [--deep-analysis]",
         "               [--no-fail-on-crash] [--mask MASK] [--scan-secrets-history]",
         "               [--secrets-history-timeout SECRETS_HISTORY_TIMEOUT]",
@@ -1130,7 +1130,7 @@
         "  --block-list-secret-scan BLOCK_LIST_SECRET_SCAN",
         "                        List of files to filter out from the secret scanner",
         "                        [env var: CKV_SECRETS_SCAN_BLOCK_LIST]",
-        "  --summary-position {top,bottom}",
+        "  --summary-position {bottom,top}",
         "                        Chose whether the summary will be appended on top",
         "                        (before the checks results) or on bottom (after check",
         "                        results), default is on top.",
@@ -1583,7 +1583,7 @@
         " \u203a   Warning: @salesforce/cli update available from 2.122.6 to 2.123.1.",
         "",
         "Streaming logs in real time to:",
-        "    /tmp/sfca-2026_02_19_22_39_12_683.log",
+        "    /tmp/sfca-2026_02_22_22_20_28_542.log",
         "",
         "Selecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 0%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 14%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 28%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 30%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 31%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 32%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 33%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 34%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 35%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 36%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 37%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 38%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 39%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 40%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 41%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 42%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 53%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 57%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 62%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 72%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 74%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 75%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 75%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 84%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 85%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 87%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 96%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 98%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 99%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 100%; Elapsed time: 1sSelecting rules... done.",
         "",
@@ -1860,7 +1860,7 @@
         "    4 cpd rule(s) found.",
         "",
         "Additional log information written to:",
-        "    /tmp/sfca-2026_02_19_22_39_12_683.log"
+        "    /tmp/sfca-2026_02_22_22_20_28_542.log"
     ],
     "code-analyzer-aura": [
         " \u203a   Warning: @salesforce/cli update available from 2.122.6 to 2.123.1.",
@@ -1898,7 +1898,7 @@
         " \u203a   Warning: @salesforce/cli update available from 2.122.6 to 2.123.1.",
         "",
         "Streaming logs in real time to:",
-        "    /tmp/sfca-2026_02_19_22_39_20_954.log",
+        "    /tmp/sfca-2026_02_22_22_20_36_874.log",
         "",
         "Selecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 0%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 14%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 28%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 30%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 31%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 32%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 33%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 34%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 35%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 36%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 37%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 38%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 39%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 40%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 41%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 42%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 53%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 57%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 62%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 72%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 74%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 75%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 75%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 84%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 85%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 87%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 96%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 98%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 99%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 100%; Elapsed time: 1sSelecting rules... done.",
         "",
@@ -2324,7 +2324,7 @@
         "    411 eslint rule(s) found.",
         "",
         "Additional log information written to:",
-        "    /tmp/sfca-2026_02_19_22_39_20_954.log"
+        "    /tmp/sfca-2026_02_22_22_20_36_874.log"
     ],
     "code-analyzer-lwc": [
         " \u203a   Warning: @salesforce/cli update available from 2.122.6 to 2.123.1.",
@@ -2362,7 +2362,7 @@
         " \u203a   Warning: @salesforce/cli update available from 2.122.6 to 2.123.1.",
         "",
         "Streaming logs in real time to:",
-        "    /tmp/sfca-2026_02_19_22_39_29_475.log",
+        "    /tmp/sfca-2026_02_22_22_20_45_451.log",
         "",
         "Selecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 0%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 14%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 28%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 30%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 31%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 32%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 33%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 34%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 35%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 36%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 37%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 38%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 39%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 40%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 41%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 42%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 53%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 57%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 61%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 71%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 72%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 74%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 75%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 75%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 84%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 85%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 87%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 96%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 98%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 99%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 100%; Elapsed time: 1sSelecting rules... done.",
         "",
@@ -2447,7 +2447,7 @@
         "    70 eslint rule(s) found.",
         "",
         "Additional log information written to:",
-        "    /tmp/sfca-2026_02_19_22_39_29_475.log"
+        "    /tmp/sfca-2026_02_22_22_20_45_451.log"
     ],
     "codespell": [
         "usage: codespell [-h] [--version] [-d] [-c] [-w] [-D DICTIONARY]",
@@ -4934,8 +4934,7 @@
         "  -l, --logger string         Logger level. Supported: debug/info/success/warning/error/fatal [$KS_LOGGER] (default \"info\")",
         "      --server string         Backend discovery server URL",
         "",
-        "Use \"kubescape [command] --help\" for more information about a command.",
-        "{\"level\":\"info\",\"ts\":\"2026-02-19T22:38:51Z\",\"msg\":\"Received interrupt signal, exiting...\"}"
+        "Use \"kubescape [command] --help\" for more information about a command."
     ],
     "kubeval": [
         "Validate a Kubernetes YAML file against the relevant schema",
@@ -10826,7 +10825,7 @@
         "                 [--summary] [--detailed-summary] [--archive FILE]",
         "                 [--cleanup-metadata FILE [FILE ...]] [--cleanup-shadow]",
         "                 [--skip-script-cleanup] [--unlock]",
-        "                 [--list-changes {input,code,params}] [--list-input-changes]",
+        "                 [--list-changes {params,input,code}] [--list-input-changes]",
         "                 [--list-params-changes] [--list-untracked]",
         "                 [--delete-all-output | --delete-temp-output]",
         "                 [--keep-incomplete] [--drop-metadata] [--version]",
@@ -10872,7 +10871,7 @@
         "                 [--apptainer-args ARGS] [--use-envmodules]",
         "                 [--deploy-sources QUERY CHECKSUM]",
         "                 [--target-jobs TARGET_JOBS [TARGET_JOBS ...]]",
-        "                 [--mode {remote,subprocess,default}]",
+        "                 [--mode {default,remote,subprocess}]",
         "                 [--scheduler-solver-path SCHEDULER_SOLVER_PATH]",
         "                 [--max-jobs-per-second MAX_JOBS_PER_SECOND]",
         "                 [--report-html-path VALUE]",
@@ -11362,7 +11361,7 @@
         "                        (default: False)",
         "  --unlock              Remove a lock on the working directory. (default:",
         "                        False)",
-        "  --list-changes, --lc {input,code,params}",
+        "  --list-changes, --lc {params,input,code}",
         "                        List all output files for which the given items (code,",
         "                        input, params) have changed since creation.",
         "  --list-input-changes, --li",
@@ -11721,7 +11720,7 @@
         "  --target-jobs TARGET_JOBS [TARGET_JOBS ...]",
         "                        Internal use only: Target particular jobs by",
         "                        RULE:WILDCARD1=VALUE,WILDCARD2=VALUE,...",
-        "  --mode {remote,subprocess,default}",
+        "  --mode {default,remote,subprocess}",
         "                        Internal use only: Set execution mode of Snakemake.",
         "                        (default: default)",
         "  --scheduler-solver-path SCHEDULER_SOLVER_PATH",
@@ -12431,7 +12430,7 @@
         "   --help, -h                 Show help. (default: false)",
         "   --version, -v              Show terragrunt version. (default: false)",
         "",
-        "Version: v0.99.2",
+        "Version: v0.99.4",
         "",
         "Author: Gruntwork <www.gruntwork.io>"
     ],
