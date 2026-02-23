@@ -34,9 +34,9 @@ termcolor==3.3.0
 urllib3==2.6.3
 webpreview==1.7.2
 yq==3.4.3
-langchain_core==1.2.13
+langchain_core==1.2.14
 langchain_anthropic==1.3.3
 langchain_deepseek==1.0.1
-langchain_google_genai==4.2.0
+langchain_google_genai==4.2.1
 langchain_mistralai==1.1.1
 langchain_community==0.4.1
