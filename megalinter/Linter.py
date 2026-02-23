@@ -146,12 +146,12 @@ class Linter:
         # If linter --version doesn't return 0 when it's in success, override. ex: 1
         self.version_command_return_code = 0
 
-        self.log_lines_pre: list(str) = []
-        self.log_lines_post: list(str) = []
+        self.log_lines_pre: list[str] = []
+        self.log_lines_post: list[str] = []
 
         self.report_folder = ""
         self.reporters = []
-        self.lint_command_log: list(str) = []
+        self.lint_command_log: list[str] = []
         self.lint_cwd_log = ""
 
         # Initialize parameters
@@ -417,9 +417,6 @@ class Linter:
         elif self.descriptor_id in params["disable_descriptors"]:
             self.is_active = False
             strategies["DISABLE"] = True
-        elif self.name in params["disable_linters"]:
-            self.is_active = False
-            strategies["DISABLE_LINTERS"] = True
         elif self.descriptor_id in params["enable_descriptors"]:
             self.is_active = True
             strategies["ENABLE"] = True

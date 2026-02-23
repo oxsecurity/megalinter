@@ -644,7 +644,7 @@ class Megalinter:
                 if linter.cli_lint_mode in skip_cli_lint_modes:
                     logging.info(
                         f"{linter.name} has been skipped because its CLI lint mode"
-                        " {linter.cli_lint_mode} is in SKIP_CLI_LINT_MODES variable."
+                        f" {linter.cli_lint_mode} is in SKIP_CLI_LINT_MODES variable."
                     )
                 continue
             self.linters += [linter]

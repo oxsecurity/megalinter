@@ -13,7 +13,9 @@ RUN_CONFIGS = {}  # type: ignore[var-annotated]
 SKIP_DELETE_CONFIG = False
 
 
-def init_config(request_id, workspace=None, params={}):
+def init_config(request_id, workspace=None, params=None):
+    if params is None:
+        params = {}
     global RUN_CONFIGS
     if request_id in RUN_CONFIGS:
         existing_config = get_config(request_id)
@@ -49,9 +51,10 @@ def init_config(request_id, workspace=None, params={}):
                 + config_file_name.rsplit("/", 1)[-1]
             )
             r = requests.get(config_file_name, allow_redirects=True)
-            assert (
-                r.status_code == 200
-            ), f"Unable to retrieve config file {config_file_name}"
+            if r.status_code != 200:
+                raise RuntimeError(
+                    f"Unable to retrieve config file {config_file_name}"
+                )
             with open(config_file, "wb") as f:
                 f.write(r.content)
         # Hardcoded path to config file

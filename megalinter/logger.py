@@ -146,7 +146,7 @@ def display_header(mega_linter):
         logging.info("GITHUB_REF: " + config.get(None, "GITHUB_REF", ""))
         # logging.info("GITHUB_TOKEN: " + os.environ.get("GITHUB_TOKEN", ""))
         logging.info("GITHUB_RUN_ID: " + config.get(None, "GITHUB_RUN_ID", ""))
-        logging.info("PAT: " + "set" if config.get(None, "PAT", "") != "" else "")
+        logging.info("PAT: " + ("set" if config.get(None, "PAT", "") != "" else "not set"))
         if config.exists(None, "PAT"):
             logging.warning(
                 "You should not use PAT anymore, please use Github Permissions in your Github Actions job"

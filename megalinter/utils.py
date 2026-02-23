@@ -410,8 +410,7 @@ def get_git_context_info(request_id, path):
                 path,
                 search_parent_directories=True,
             )
-            repo_name_1 = repo.working_tree_dir.split("/")[-1]
-            branch = repo_name_1.active_branch
+            branch = repo.active_branch
             branch_name = branch.name
         except Exception:
             branch_name = "?"
