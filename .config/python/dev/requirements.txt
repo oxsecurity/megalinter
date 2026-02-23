@@ -2,7 +2,7 @@
 aiofiles==25.1.0
 beautifulsoup4==4.14.3
 commentjson==0.9.0
-fastapi==0.129.0
+fastapi==0.129.2
 gitpython==3.1.46
 giturlparse==0.14.0
 importlib-metadata==8.7.1
