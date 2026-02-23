@@ -202,6 +202,8 @@ CVE-2026-26278
 CVE-2026-26960 
 # https://avd.aquasec.com/nvd/cve-2026-26996 : minimatch Redos risk, not applicable in MegaLinter context
 CVE-2026-26996
+# https://avd.aquasec.com/nvd/cve-2026-25896 : fast-xml-parser, not applicable in MegaLinter context as XML files are Salesforce metadatas
+CVE-2026-25896
 # Dockerfile
 DS001
 DS-0001

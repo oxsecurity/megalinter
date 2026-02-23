@@ -178,6 +178,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [kubescape](https://github.com/kubescape/kubescape) from 3.0.48 to **4.0.1** on 2026-02-17
   - [syft](https://github.com/anchore/syft) from 1.42.0 to **1.42.1** on 2026-02-18
   - [grype](https://github.com/anchore/grype) from 0.108.0 to **0.109.0** on 2026-02-19
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 9.0.113 to **9.0.114** on 2026-02-22
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.99.2 to **0.99.4** on 2026-02-22
 <!-- linter-versions-end -->
 
 ## [v9.3.0] - 2026-01-04
