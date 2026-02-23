@@ -180,6 +180,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [grype](https://github.com/anchore/grype) from 0.108.0 to **0.109.0** on 2026-02-19
   - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 9.0.113 to **9.0.114** on 2026-02-22
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.99.2 to **0.99.4** on 2026-02-22
+  - [isort](https://pycqa.github.io/isort/) from 7.0.0 to **8.0.0** on 2026-02-23
+  - [pylint](https://pylint.readthedocs.io) from 4.0.4 to **4.0.5** on 2026-02-23
+  - [checkov](https://www.checkov.io/) from 3.2.502 to **3.2.506** on 2026-02-23
 <!-- linter-versions-end -->
 
 ## [v9.3.0] - 2026-01-04
