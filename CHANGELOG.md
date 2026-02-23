@@ -13,6 +13,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Optimize parallel linter processing and improve grouping logic
   - Improve performance of listing .gitignored files by sending excluded directories to git ls-files
   - If there are more than 500 .gitignored files, advise to add more excluded directories using variable ADDITIONAL_EXCLUDED_DIRECTORIES, to improve performances
+  - Reduce redundant config lookups, environment copies, and dict rebuilds across config, linter, and utils modules
+  - Cache subprocess environment per linter run and excluded directories per request
+  - Optimize parallel linter result update from O(n²) to O(n)
 
 - New linters
   - Add [PYTHON_NBQA_MYPY](https://nbqa.readthedocs.io/) for type-checking Jupyter notebooks using nbqa + mypy
@@ -35,6 +38,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Fix issue with plugins ignored when FLAVOR_SUGGESTIONS=false
   - Fix wrong tagging `apply_fixes=True` when linter has no fix options configured
   - Python mypy: Remove `.ipynb` from file extensions (mypy doesn't support notebooks directly) - fixes #6904
+  - Fix operator precedence bug in pre_post_factory pre/post command logic
+  - Fix file handle leak in GitleaksLinter
+  - Fix variable name bug in utils.get_git_context_info
+  - Minor fixes in logger, SqlFluffLinter, PowershellLinter, TrivyLinter
 
 - Reporters
   - Add a link inviting to star MegaLinter
