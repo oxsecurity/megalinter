@@ -11,12 +11,15 @@ import yaml
 
 RUN_CONFIGS = {}  # type: ignore[var-annotated]
 SKIP_DELETE_CONFIG = False
+_ENV_CACHE = None  # Cached copy of os.environ to avoid repeated copies
 
 
 def init_config(request_id, workspace=None, params=None):
     if params is None:
         params = {}
     global RUN_CONFIGS
+    global _ENV_CACHE
+    _ENV_CACHE = None  # Invalidate env cache on config init
     if request_id in RUN_CONFIGS:
         existing_config = get_config(request_id)
         new_config = existing_config | params
@@ -172,6 +175,7 @@ def is_initialized_for(request_id):
 
 def get_config(request_id=None):
     global RUN_CONFIGS
+    global _ENV_CACHE
     if request_id is not None and request_id in RUN_CONFIGS:
         # Return request config
         return RUN_CONFIGS[request_id]
@@ -180,8 +184,10 @@ def get_config(request_id=None):
             f"Internal error: there should be a config for request_id {request_id}"
         )
     else:
-        # Return ENV
-        return os.environ.copy()
+        # Return cached ENV snapshot (refreshed on init_config calls)
+        if _ENV_CACHE is None:
+            _ENV_CACHE = os.environ.copy()
+        return _ENV_CACHE
 
 
 def set_config(request_id, runtime_config):
@@ -282,9 +288,11 @@ def copy(request_id):
 def delete(request_id=None, key=None):
     global RUN_CONFIGS
     global SKIP_DELETE_CONFIG
+    global _ENV_CACHE
     # Global delete (used for tests)
     if request_id is None:
         RUN_CONFIGS = {}
+        _ENV_CACHE = None
         return
     if key is None:
         if SKIP_DELETE_CONFIG is not True:
@@ -305,12 +313,17 @@ def build_env(request_id, secured=True, allow_list=[]):
         secured_env_variables_regex = list_secured_variables_regexes(
             secured_env_variables
         )
+    # Build a frozenset of plain variable names (non-regex) for O(1) lookup
+    secured_plain_vars = frozenset(
+        v for v in secured_env_variables if not v.startswith("(")
+    )
+    allow_set = frozenset(allow_list)
     env_dict = {}
     for key, value in get_config(request_id).items():
-        if (
-            key in secured_env_variables
+        if key not in allow_set and (
+            key in secured_plain_vars
             or match_variable_regexes(key, secured_env_variables_regex)
-        ) and key not in allow_list:
+        ):
             env_dict[key] = "HIDDEN_BY_MEGALINTER"
         elif not isinstance(value, str):
             env_dict[key] = str(value)

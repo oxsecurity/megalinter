@@ -513,47 +513,45 @@ class Linter:
 
     # Manage configuration variables
     def load_config_vars(self, params):
+        _sentinel = object()
         # Configuration file name: try first NAME + _FILE_NAME, then LANGUAGE + _FILE_NAME
         # _CONFIG_FILE = _FILE_NAME (config renaming but keeping config ascending compatibility)
-        if config.exists(self.request_id, self.name + "_CONFIG_FILE"):
-            self.config_file_name = config.get(
-                self.request_id, self.name + "_CONFIG_FILE"
-            )
+        _val = config.get(self.request_id, self.name + "_CONFIG_FILE", _sentinel)
+        if _val is not _sentinel:
+            self.config_file_name = _val
             self.update_active_if_file_found()
-        elif config.exists(self.request_id, self.descriptor_id + "_CONFIG_FILE"):
-            self.config_file_name = config.get(
-                self.request_id, self.descriptor_id + "_CONFIG_FILE"
-            )
-            self.update_active_if_file_found()
-        elif config.exists(self.request_id, self.name + "_FILE_NAME"):
-            self.config_file_name = config.get(
-                self.request_id, self.name + "_FILE_NAME"
-            )
-            self.update_active_if_file_found()
-        elif config.exists(self.request_id, self.descriptor_id + "_FILE_NAME"):
-            self.config_file_name = config.get(
-                self.request_id, self.descriptor_id + "_FILE_NAME"
-            )
-            self.update_active_if_file_found()
+        else:
+            _val = config.get(self.request_id, self.descriptor_id + "_CONFIG_FILE", _sentinel)
+            if _val is not _sentinel:
+                self.config_file_name = _val
+                self.update_active_if_file_found()
+            else:
+                _val = config.get(self.request_id, self.name + "_FILE_NAME", _sentinel)
+                if _val is not _sentinel:
+                    self.config_file_name = _val
+                    self.update_active_if_file_found()
+                else:
+                    _val = config.get(self.request_id, self.descriptor_id + "_FILE_NAME", _sentinel)
+                    if _val is not _sentinel:
+                        self.config_file_name = _val
+                        self.update_active_if_file_found()
         # Ignore file name: try first NAME + _FILE_NAME, then LANGUAGE + _FILE_NAME
         if self.cli_lint_ignore_arg_name is not None:
-            if config.exists(self.request_id, self.name + "_IGNORE_FILE"):
-                self.ignore_file_name = config.get(
-                    self.request_id, self.name + "_IGNORE_FILE"
-                )
-            elif config.exists(self.request_id, self.descriptor_id + "_IGNORE_FILE"):
-                self.ignore_file_name = config.get(
-                    self.request_id, self.descriptor_id + "_IGNORE_FILE"
-                )
+            _val = config.get(self.request_id, self.name + "_IGNORE_FILE", _sentinel)
+            if _val is not _sentinel:
+                self.ignore_file_name = _val
+            else:
+                _val = config.get(self.request_id, self.descriptor_id + "_IGNORE_FILE", _sentinel)
+                if _val is not _sentinel:
+                    self.ignore_file_name = _val
         # Linter rules path: try first NAME + _RULE_PATH, then LANGUAGE + _RULE_PATH
-        if config.exists(self.request_id, self.name + "_RULES_PATH"):
-            self.linter_rules_path = config.get(
-                self.request_id, self.name + "_RULES_PATH"
-            )
-        elif config.exists(self.request_id, self.descriptor_id + "_RULES_PATH"):
-            self.linter_rules_path = config.get(
-                self.request_id, self.descriptor_id + "_RULES_PATH"
-            )
+        _val = config.get(self.request_id, self.name + "_RULES_PATH", _sentinel)
+        if _val is not _sentinel:
+            self.linter_rules_path = _val
+        else:
+            _val = config.get(self.request_id, self.descriptor_id + "_RULES_PATH", _sentinel)
+            if _val is not _sentinel:
+                self.linter_rules_path = _val
         # Linter config file:
         # 0: LINTER_DEFAULT set in user config: let the linter find it, don't reference it in cli arguments
         # 1: http rules path: fetch remove file and copy it locally (then delete it after linting)
@@ -836,6 +834,13 @@ class Linter:
     def run(self, run_commands_before_linters=None, run_commands_after_linters=None):
         self.start_perf = perf_counter()
 
+        # Pre-compute subprocess environment once per linter run to avoid
+        # rebuilding secured-variable regexes on every file
+        self._cached_subprocess_env = {
+            **config.build_env(self.request_id, True, self.unsecured_env_variables),
+            "FORCE_COLOR": "0",
+        }
+
         # Initialize linter reports
         for reporter in self.reporters:
             reporter.initialize()
@@ -1111,10 +1116,13 @@ class Linter:
         cwd = os.path.abspath(self.workspace)
         self.lint_cwd_log = cwd
         logging.debug(f"[{self.linter_name}] CWD: {cwd}")
-        subprocess_env = {
-            **config.build_env(self.request_id, True, self.unsecured_env_variables),
-            "FORCE_COLOR": "0",
-        }
+        # Use pre-computed env from run(), fall back to building it if called standalone
+        subprocess_env = getattr(self, "_cached_subprocess_env", None)
+        if subprocess_env is None:
+            subprocess_env = {
+                **config.build_env(self.request_id, True, self.unsecured_env_variables),
+                "FORCE_COLOR": "0",
+            }
         if isinstance(command, str):
             self.lint_command_log.append(command)
             # Call linter with a sub-process
