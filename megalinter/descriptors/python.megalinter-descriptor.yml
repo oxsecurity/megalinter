@@ -472,8 +472,6 @@ linters:
   # NBQA-MYPY
   - linter_name: nbqa
     name: PYTHON_NBQA_MYPY
-    disabled: true
-    disabled_reason: Failing test cases, to fix before enabling again
     file_extensions:
       - ".ipynb"
     cli_lint_mode: list_of_files
@@ -485,8 +483,8 @@ linters:
     cli_lint_errors_regex: "Found ([0-9]+) error"
     cli_version_arg_name: "--version"
     version_extract_regex: "(?<=nbqa )\\d+(\\.\\d+)+"
-    cli_config_arg_name: "--config-file"
-    config_file_name: ".mypy.ini"
+    # Note: nbqa passes args to the underlying tool (mypy), so we don't use cli_config_arg_name
+    # MyPy will auto-detect config files (pyproject.toml, .mypy.ini, setup.cfg, etc.)
     test_folder: python_nbqa_mypy
     linter_text: |
       **nbqa + mypy** provides static type checking for Jupyter notebooks.
