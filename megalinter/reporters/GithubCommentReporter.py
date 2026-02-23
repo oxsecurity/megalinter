@@ -118,11 +118,17 @@ class GithubCommentReporter(Reporter):
                     logging.warning(f"Could not fetch PR#{pr_id}: {e}")
             if pr_list is None or len(pr_list) == 0:
                 # If not found with GITHUB_REF, try to find PR from commit
-                commit = repo.get_commit(sha=sha)
-                pr_list = commit.get_pulls()
-                if pr_list.totalCount == 0:
-                    logging.info(
-                        "[GitHub Comment Reporter] No pull request has been found, so no comment has been posted"
+                try:
+                    commit = repo.get_commit(sha=sha)
+                    pr_list = commit.get_pulls()
+                    if pr_list.totalCount == 0:
+                        logging.info(
+                            "[GitHub Comment Reporter] No pull request has been found, so no comment has been posted"
+                        )
+                        return
+                except Exception as e:
+                    logging.warning(
+                        f"[GitHub Comment Reporter] Unable to fetch pull requests for commit {sha}: {e}"
                     )
                     return
             for pr in pr_list:
