@@ -61,6 +61,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Avoid duplicate jobs "Mirror docker image"
   - Allow to skip linters build using `skip linters` in latest commit text
   - Allow to disable build & push of standalone linters docker images using variable `BETA_LINTERS_ENABLED=false`
+  - Improve performances of formatting markdown tables during build
 
 - mega-linter-runner
   - If variables are defined in a local .env file, send their values to docker/podman run command (can be useful for secret variables)
