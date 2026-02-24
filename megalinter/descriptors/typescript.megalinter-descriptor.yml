@@ -97,9 +97,6 @@ linters:
           # renovate: datasource=npm depName=eslint-plugin-promise
           ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=6.6.0
         - |-
-          # renovate: datasource=npm depName=@babel/eslint-parser
-          ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.28.6
-        - |-
           # renovate: datasource=npm depName=prettier
           ARG NPM_PRETTIER_VERSION=3.8.1
         - |-
@@ -123,7 +120,6 @@ linters:
         - eslint-plugin-n@${NPM_ESLINT_PLUGIN_N_VERSION}
         - eslint-plugin-prettier@${NPM_ESLINT_PLUGIN_PRETTIER_VERSION}
         - eslint-plugin-promise@${NPM_ESLINT_PLUGIN_PROMISE_VERSION}
-        - "@babel/eslint-parser@${NPM_BABEL_ESLINT_PARSER_VERSION}"
         - prettier@${NPM_PRETTIER_VERSION}
         - prettyjson@${NPM_PRETTYJSON_VERSION}
         - "@typescript-eslint/eslint-plugin@${NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION}"
