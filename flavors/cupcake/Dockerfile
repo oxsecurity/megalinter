@@ -184,8 +184,6 @@ ARG NPM_V8R_VERSION=5.1.0
 ARG NPM_PACKAGE_JSON_LINT_VERSION=9.1.0
 # renovate: datasource=npm depName=npm-package-json-lint-config-default
 ARG NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION=8.0.1
-# renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=10.0.1
 # renovate: datasource=github-tags depName=pinterest/ktlint
 ARG KTLINT_VERSION=1.8.0
 
@@ -284,6 +282,10 @@ ARG PIP_PROSELINT_VERSION=0.14.0
 ARG PIP_CODESPELL_VERSION=2.4.1
 # renovate: datasource=pypi depName=sqlfluff
 ARG PIP_SQLFLUFF_VERSION=4.0.4
+# renovate: datasource=npm depName=eslint
+ARG NPM_ESLINT_VERSION=10.0.1
+# renovate: datasource=npm depName=eslint-config-standard
+ARG NPM_ESLINT_CONFIG_STANDARD_VERSION=17.1.0
 # renovate: datasource=npm depName=eslint-plugin-jest
 ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.15.0
 # renovate: datasource=npm depName=prettyjson
@@ -292,8 +294,6 @@ ARG NPM_PRETTYJSON_VERSION=1.2.5
 ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.56.0
 # renovate: datasource=npm depName=@typescript-eslint/parser
 ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.56.0
-# renovate: datasource=npm depName=eslint-config-standard
-ARG NPM_ESLINT_CONFIG_STANDARD_VERSION=17.1.0
 # renovate: datasource=npm depName=ts-standard
 ARG NPM_TS_STANDARD_VERSION=12.0.2
 # renovate: datasource=pypi depName=yamllint
@@ -537,10 +537,10 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 @secretlint/secretlint-rule-preset-recommend@${NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION} \
                 @secretlint/secretlint-formatter-sarif@${NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION} \
                 cspell@${NPM_CSPELL_VERSION} \
+                eslint-config-standard@${NPM_ESLINT_CONFIG_STANDARD_VERSION} \
                 prettyjson@${NPM_PRETTYJSON_VERSION} \
                 @typescript-eslint/eslint-plugin@${NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION} \
                 @typescript-eslint/parser@${NPM_TYPESCRIPT_ESLINT_PARSER_VERSION} \
-                eslint-config-standard@${NPM_ESLINT_CONFIG_STANDARD_VERSION} \
                 ts-standard@${NPM_TS_STANDARD_VERSION} && \
     echo "Cleaning npm cache…" \
     && (npm cache clean --force || true) \
@@ -761,8 +761,6 @@ RUN curl --retry 5 --retry-delay 5 -sSL \
 #
 # npm-package-json-lint installation
 #
-# eslint installation
-#
 # ktlint installation
     && curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/download/${KTLINT_VERSION}/ktlint && \
     chmod a+x ktlint && \
@@ -899,8 +897,6 @@ ENV SWIFT_SWIFTLINT_VERSION=0.63.2
 #
 # terraform-fmt installation
 # Managed with COPY --link --from=terragrunt /bin/terraform /usr/bin/
-#
-# eslint installation
 #
 # eslint installation
 #
