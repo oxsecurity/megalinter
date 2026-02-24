@@ -62,8 +62,6 @@ ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.1.8
 ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.15.0
 # renovate: datasource=npm depName=eslint-plugin-prettier
 ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.5
-# renovate: datasource=npm depName=eslint-plugin-react
-ARG NPM_ESLINT_PLUGIN_REACT_VERSION=7.37.5
 # renovate: datasource=npm depName=@babel/eslint-parser
 ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.28.6
 # renovate: datasource=npm depName=prettier
@@ -153,7 +151,6 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 eslint-config-prettier@${NPM_ESLINT_CONFIG_PRETTIER_VERSION} \
                 eslint-plugin-jest@${NPM_ESLINT_PLUGIN_JEST_VERSION} \
                 eslint-plugin-prettier@${NPM_ESLINT_PLUGIN_PRETTIER_VERSION} \
-                eslint-plugin-react@${NPM_ESLINT_PLUGIN_REACT_VERSION} \
                 @babel/eslint-parser@${NPM_BABEL_ESLINT_PARSER_VERSION} \
                 prettier@${NPM_PRETTIER_VERSION} \
                 prettyjson@${NPM_PRETTYJSON_VERSION} \
