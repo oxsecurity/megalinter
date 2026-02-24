@@ -55,9 +55,7 @@ def init_config(request_id, workspace=None, params=None):
             )
             r = requests.get(config_file_name, allow_redirects=True)
             if r.status_code != 200:
-                raise RuntimeError(
-                    f"Unable to retrieve config file {config_file_name}"
-                )
+                raise RuntimeError(f"Unable to retrieve config file {config_file_name}")
             with open(config_file, "wb") as f:
                 f.write(r.content)
         # Hardcoded path to config file

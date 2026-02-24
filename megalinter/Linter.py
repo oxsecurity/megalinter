@@ -521,7 +521,9 @@ class Linter:
             self.config_file_name = _val
             self.update_active_if_file_found()
         else:
-            _val = config.get(self.request_id, self.descriptor_id + "_CONFIG_FILE", _sentinel)
+            _val = config.get(
+                self.request_id, self.descriptor_id + "_CONFIG_FILE", _sentinel
+            )
             if _val is not _sentinel:
                 self.config_file_name = _val
                 self.update_active_if_file_found()
@@ -531,7 +533,9 @@ class Linter:
                     self.config_file_name = _val
                     self.update_active_if_file_found()
                 else:
-                    _val = config.get(self.request_id, self.descriptor_id + "_FILE_NAME", _sentinel)
+                    _val = config.get(
+                        self.request_id, self.descriptor_id + "_FILE_NAME", _sentinel
+                    )
                     if _val is not _sentinel:
                         self.config_file_name = _val
                         self.update_active_if_file_found()
@@ -541,7 +545,9 @@ class Linter:
             if _val is not _sentinel:
                 self.ignore_file_name = _val
             else:
-                _val = config.get(self.request_id, self.descriptor_id + "_IGNORE_FILE", _sentinel)
+                _val = config.get(
+                    self.request_id, self.descriptor_id + "_IGNORE_FILE", _sentinel
+                )
                 if _val is not _sentinel:
                     self.ignore_file_name = _val
         # Linter rules path: try first NAME + _RULE_PATH, then LANGUAGE + _RULE_PATH
@@ -549,7 +555,9 @@ class Linter:
         if _val is not _sentinel:
             self.linter_rules_path = _val
         else:
-            _val = config.get(self.request_id, self.descriptor_id + "_RULES_PATH", _sentinel)
+            _val = config.get(
+                self.request_id, self.descriptor_id + "_RULES_PATH", _sentinel
+            )
             if _val is not _sentinel:
                 self.linter_rules_path = _val
         # Linter config file:

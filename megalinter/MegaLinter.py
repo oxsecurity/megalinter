@@ -521,7 +521,9 @@ class Megalinter:
     def load_config_vars(self):
         _sentinel = object()
         # Linter rules root path
-        linter_rules_path_val = config.get(self.request_id, "LINTER_RULES_PATH", _sentinel)
+        linter_rules_path_val = config.get(
+            self.request_id, "LINTER_RULES_PATH", _sentinel
+        )
         if linter_rules_path_val is not _sentinel:
             if linter_rules_path_val.startswith("http"):
                 self.linter_rules_path = linter_rules_path_val
@@ -551,11 +553,11 @@ class Megalinter:
         # Manage IGNORE_GITIGNORED_FILES
         _val = config.get(self.request_id, "IGNORE_GITIGNORED_FILES", _sentinel)
         if _val is not _sentinel:
-            self.ignore_gitignore_files = (_val == "true")
+            self.ignore_gitignore_files = _val == "true"
         # Manage IGNORE_GENERATED_FILES
         _val = config.get(self.request_id, "IGNORE_GENERATED_FILES", _sentinel)
         if _val is not _sentinel:
-            self.ignore_generated_files = (_val == "true")
+            self.ignore_generated_files = _val == "true"
         # Manage SARIF output
         if config.get(self.request_id, "SARIF_REPORTER", "") == "true":
             self.output_sarif = True
