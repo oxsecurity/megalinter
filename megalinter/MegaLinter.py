@@ -383,13 +383,14 @@ class Megalinter:
         pool.close()
         pool.join()
         # Update self.linters objects with results from async processing
+        # Build index for O(1) lookup by linter name
+        linter_index = {linter.name: i for i, linter in enumerate(self.linters)}
         for pool_result in pool_results:
             updated_linters = pool_result.get()
             for updated_linter in updated_linters:
-                for i in range(0, len(self.linters)):
-                    if self.linters[i].name == updated_linter.name:
-                        self.linters[i] = updated_linter
-                        break
+                idx = linter_index.get(updated_linter.name)
+                if idx is not None:
+                    self.linters[idx] = updated_linter
         uninstall_mp_handler()
 
     # noinspection PyMethodMayBeStatic
@@ -518,9 +519,12 @@ class Megalinter:
 
     # Manage configuration variables
     def load_config_vars(self):
+        _sentinel = object()
         # Linter rules root path
-        if config.exists(self.request_id, "LINTER_RULES_PATH"):
-            linter_rules_path_val = config.get(self.request_id, "LINTER_RULES_PATH")
+        linter_rules_path_val = config.get(
+            self.request_id, "LINTER_RULES_PATH", _sentinel
+        )
+        if linter_rules_path_val is not _sentinel:
             if linter_rules_path_val.startswith("http"):
                 self.linter_rules_path = linter_rules_path_val
             elif os.path.isdir(
@@ -536,31 +540,24 @@ class Megalinter:
                     f"LINTER_RULES_PATH should be a valid directory ({linter_rules_path_val})"
                 )
         # Filtering regex (inclusion)
-        if config.exists(self.request_id, "FILTER_REGEX_INCLUDE"):
-            self.filter_regex_include = config.get(
-                self.request_id, "FILTER_REGEX_INCLUDE"
-            )
+        _val = config.get(self.request_id, "FILTER_REGEX_INCLUDE", _sentinel)
+        if _val is not _sentinel:
+            self.filter_regex_include = _val
         # Filtering regex (exclusion)
-        if config.exists(self.request_id, "FILTER_REGEX_EXCLUDE"):
-            self.filter_regex_exclude = config.get(
-                self.request_id, "FILTER_REGEX_EXCLUDE"
-            )
+        _val = config.get(self.request_id, "FILTER_REGEX_EXCLUDE", _sentinel)
+        if _val is not _sentinel:
+            self.filter_regex_exclude = _val
         # Disable all fields validation if VALIDATE_ALL_CODEBASE is 'false'
-        if (
-            config.exists(self.request_id, "VALIDATE_ALL_CODEBASE")
-            and config.get(self.request_id, "VALIDATE_ALL_CODEBASE") == "false"
-        ):
+        if config.get(self.request_id, "VALIDATE_ALL_CODEBASE") == "false":
             self.validate_all_code_base = False
         # Manage IGNORE_GITIGNORED_FILES
-        if config.exists(self.request_id, "IGNORE_GITIGNORED_FILES"):
-            self.ignore_gitignore_files = (
-                config.get(self.request_id, "IGNORE_GITIGNORED_FILES", "true") == "true"
-            )
+        _val = config.get(self.request_id, "IGNORE_GITIGNORED_FILES", _sentinel)
+        if _val is not _sentinel:
+            self.ignore_gitignore_files = _val == "true"
         # Manage IGNORE_GENERATED_FILES
-        if config.exists(self.request_id, "IGNORE_GENERATED_FILES"):
-            self.ignore_generated_files = (
-                config.get(self.request_id, "IGNORE_GENERATED_FILES", "false") == "true"
-            )
+        _val = config.get(self.request_id, "IGNORE_GENERATED_FILES", _sentinel)
+        if _val is not _sentinel:
+            self.ignore_generated_files = _val == "true"
         # Manage SARIF output
         if config.get(self.request_id, "SARIF_REPORTER", "") == "true":
             self.output_sarif = True
@@ -644,7 +641,7 @@ class Megalinter:
                 if linter.cli_lint_mode in skip_cli_lint_modes:
                     logging.info(
                         f"{linter.name} has been skipped because its CLI lint mode"
-                        " {linter.cli_lint_mode} is in SKIP_CLI_LINT_MODES variable."
+                        f" {linter.cli_lint_mode} is in SKIP_CLI_LINT_MODES variable."
                     )
                 continue
             self.linters += [linter]
@@ -838,19 +835,13 @@ class Megalinter:
         logging.info(
             "Listing all files in directory [" + self.workspace + "], then filter with:"
         )
-        all_files = [
-            file
-            for file in sorted(os.listdir(self.workspace))
-            if os.path.isfile(os.path.join(self.workspace, file))
-        ]
-        if logging.getLogger().isEnabledFor(logging.DEBUG):
-            logging.debug("Root dir content:" + utils.format_bullet_list(all_files))
         excluded_directories = utils.get_excluded_directories(self.request_id)
+        all_files = []
         for dirpath, dirnames, filenames in os.walk(
             self.workspace, topdown=True, followlinks=False
         ):
             rel_dirpath = os.path.relpath(dirpath, self.workspace)
-            if rel_dirpath in excluded_directories:
+            if rel_dirpath != "." and rel_dirpath in excluded_directories:
                 continue
             dirnames[:] = [
                 d
@@ -863,7 +854,7 @@ class Megalinter:
                 os.path.relpath(os.path.join(dirpath, file), self.workspace)
                 for file in sorted(filenames)
             ]
-        return list(dict.fromkeys(all_files))
+        return all_files
 
     def list_git_ignored_files(self):
         dirpath = os.path.realpath(self.github_workspace)

@@ -92,7 +92,14 @@ def get_descriptor_dir():
         return descriptor_dir
 
 
+_excluded_directories_cache: dict[str, set[str]] = {}
+
+
 def get_excluded_directories(request_id):
+    cache_key = str(request_id)
+    cached = _excluded_directories_cache.get(cache_key)
+    if cached is not None:
+        return cached
     default_excluded_dirs = [
         "__pycache__",
         ".git",
@@ -110,7 +117,9 @@ def get_excluded_directories(request_id):
         request_id, "EXCLUDED_DIRECTORIES", default_excluded_dirs
     )
     excluded_dirs += config.get_list(request_id, "ADDITIONAL_EXCLUDED_DIRECTORIES", [])
-    return set(excluded_dirs)
+    result = set(excluded_dirs)
+    _excluded_directories_cache[cache_key] = result
+    return result
 
 
 def filter_files(
@@ -402,6 +411,12 @@ def get_git_context_info(request_id, path):
                 search_parent_directories=True,
             )
             repo_name = repo.working_tree_dir.split("/")[-1]
+            if branch_name is None:
+                try:
+                    branch = repo.active_branch
+                    branch_name = branch.name
+                except Exception:
+                    branch_name = "?"
         except Exception:
             repo_name = "?"
     if branch_name is None:
@@ -410,8 +425,7 @@ def get_git_context_info(request_id, path):
                 path,
                 search_parent_directories=True,
             )
-            repo_name_1 = repo.working_tree_dir.split("/")[-1]
-            branch = repo_name_1.active_branch
+            branch = repo.active_branch
             branch_name = branch.name
         except Exception:
             branch_name = "?"

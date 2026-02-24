@@ -10,7 +10,7 @@ from megalinter import Linter
 
 class SqlFluffLinter(Linter):
 
-    # Manage case when we want semgrep rulesets to be selected related to security
+    # Manage case when we want to add --show-lint-violations when fix mode is active
     def build_lint_command(self, file=None):
         cmd = super().build_lint_command(file)
         # if fix arg is in the arguments, add --show-lint-violations just after
