@@ -29,7 +29,7 @@ description: How to use isort (configure, ignore files, ignore errors, help & ve
 
 ## isort documentation
 
-- Version in MegaLinter: **7.0.0**
+- Version in MegaLinter: **8.0.0**
 - Visit [Official Web Site](https://pycqa.github.io/isort/){target=_blank}
 - See [How to configure isort rules](https://pycqa.github.io/isort/docs/configuration/config_files.html){target=_blank}
   - If custom `.isort.cfg` config file isn't found, [.isort.cfg](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.isort.cfg){target=_blank} will be used
@@ -117,8 +117,8 @@ isort --profile black --settings-file .isort.cfg myfile.py
 usage: isort [-h] [-V] [--vn] [-v] [--only-modified] [--dedup-headings] [-q]
              [-d] [--overwrite-in-place] [--show-config] [--show-files] [--df]
              [-c] [--ws] [--sp SETTINGS_PATH] [--cr CONFIG_ROOT]
-             [--resolve-all-configs] [--profile PROFILE] [--old-finders]
-             [-j [JOBS]] [--ac] [--interactive] [--format-error FORMAT_ERROR]
+             [--resolve-all-configs] [--profile PROFILE] [-j [JOBS]] [--ac]
+             [--interactive] [--format-error FORMAT_ERROR]
              [--format-success FORMAT_SUCCESS] [--srx] [--filter-files]
              [-s SKIP] [--extend-skip EXTEND_SKIP] [--sg SKIP_GLOB]
              [--extend-skip-glob EXTEND_SKIP_GLOB] [--gitignore]
@@ -207,9 +207,6 @@ general options:
                         include: black, django, pycharm, google, open_stack,
                         plone, attrs, hug, wemake, appnexus. As well as any
                         shared profiles.
-  --old-finders, --magic-placement
-                        Use the old deprecated finder logic that relies on
-                        environment introspection magic.
   -j, --jobs [JOBS]     Number of files to process in parallel. Negative value
                         means use number of CPUs.
   --ac, --atomic        Ensures the output doesn't save if the resulting file

@@ -28,7 +28,7 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
 
 ## checkov documentation
 
-- Version in MegaLinter: **3.2.502**
+- Version in MegaLinter: **3.2.506**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to configure checkov rules](https://github.com/bridgecrewio/checkov#configuration-using-a-config-file){target=_blank}
   - If custom `.checkov.yml` config file isn't found, [.checkov.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.checkov.yml){target=_blank} will be used
@@ -494,8 +494,8 @@ config file values which override defaults.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.2.502
+ARG PIP_CHECKOV_VERSION=3.2.506
 ```
 
 - PIP packages (Python):
-  - [checkov==3.2.502](https://pypi.org/project/checkov/3.2.502)
+  - [checkov==3.2.506](https://pypi.org/project/checkov/3.2.506)
