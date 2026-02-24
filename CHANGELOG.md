@@ -41,6 +41,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Display in the console reporter the working directory from which the commands are executed by @bdovaz
   - Update WebHook reporter so it can send more events for a better integration with UI
   - When truncating long comments in markdown reports, keep the end of the text instead of the beginning (which usually contains less useful information)
+  - In case GitHub Api returns 500, do not make the whole MegaLinter fail, display a warning instead
 
 - Doc
   - JSON Schema: add default values for file extensions and file names variables + improve descriptions
