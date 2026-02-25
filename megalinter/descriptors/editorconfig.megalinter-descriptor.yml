@@ -11,7 +11,8 @@ active_only_if_file_found:
 test_folder: editorconfig-checker
 linters:
   # EDITORCONFIG-CHECKER
-  - linter_name: editorconfig-checker
+  - class: EditorconfigCheckerLinter
+    linter_name: editorconfig-checker
     linter_text: |
       **editorconfig-checker** is a language-agnostic tool that validates files against EditorConfig definitions to ensure consistent formatting across your entire codebase. Unlike language-specific linters, it works for every file type and programming language.
 
@@ -32,6 +33,10 @@ linters:
     linter_spdx_license: MIT
     config_file_name: .editorconfig-checker.json
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_config_arg_name: "-config"
     cli_version_arg_name: "-version"
     examples:

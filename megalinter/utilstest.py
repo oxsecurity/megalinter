@@ -145,6 +145,39 @@ def call_mega_linter(env_vars):
     return mega_linter, output
 
 
+def test_linter_success_file_lint_mode(linter, test_self):
+    if (
+        "file" not in linter.supported_cli_lint_modes
+        if len(linter.supported_cli_lint_modes) > 0
+        else linter.descriptor_cli_lint_mode != "file"
+    ):
+        raise unittest.SkipTest("Linter does not support lint_mode: file")
+
+    test_linter_success(linter, test_self)
+
+
+def test_linter_success_list_of_files_lint_mode(linter, test_self):
+    if (
+        "list_of_files" not in linter.supported_cli_lint_modes
+        if len(linter.supported_cli_lint_modes) > 0
+        else linter.descriptor_cli_lint_mode != "list_of_files"
+    ):
+        raise unittest.SkipTest("Linter does not support lint_mode: list_of_files")
+
+    test_linter_success(linter, test_self)
+
+
+def test_linter_success_project_lint_mode(linter, test_self):
+    if (
+        "project" not in linter.supported_cli_lint_modes
+        if len(linter.supported_cli_lint_modes) > 0
+        else linter.descriptor_cli_lint_mode != "project"
+    ):
+        raise unittest.SkipTest("Linter does not support lint_mode: project")
+
+    test_linter_success(linter, test_self)
+
+
 def test_linter_success(linter, test_self):
     if (
         linter.disabled is True
@@ -211,6 +244,39 @@ def test_linter_success(linter, test_self):
             f"Unable to find text report {text_report_file}",
         )
         copy_logs_for_doc(text_report_file, test_folder, report_file_name)
+
+
+def test_linter_failure_file_lint_mode(linter, test_self):
+    if (
+        "file" not in linter.supported_cli_lint_modes
+        if len(linter.supported_cli_lint_modes) > 0
+        else linter.descriptor_cli_lint_mode != "file"
+    ):
+        raise unittest.SkipTest("Linter does not support lint_mode: file")
+
+    test_linter_failure(linter, test_self)
+
+
+def test_linter_failure_list_of_files_lint_mode(linter, test_self):
+    if (
+        "list_of_files" not in linter.supported_cli_lint_modes
+        if len(linter.supported_cli_lint_modes) > 0
+        else linter.descriptor_cli_lint_mode != "list_of_files"
+    ):
+        raise unittest.SkipTest("Linter does not support lint_mode: list_of_files")
+
+    test_linter_failure(linter, test_self)
+
+
+def test_linter_failure_project_lint_mode(linter, test_self):
+    if (
+        "project" not in linter.supported_cli_lint_modes
+        if len(linter.supported_cli_lint_modes) > 0
+        else linter.descriptor_cli_lint_mode != "project"
+    ):
+        raise unittest.SkipTest("Linter does not support lint_mode: project")
+
+    test_linter_failure(linter, test_self)
 
 
 def test_linter_failure(linter, test_self):

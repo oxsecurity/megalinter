@@ -50,7 +50,8 @@ install:
               "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME"
 linters:
   # Dart Analyzer
-  - linter_name: dartanalyzer
+  - class: DartAnalyzerLinter
+    linter_name: dartanalyzer
     linter_text: |
       **Dart Analyzer** performs comprehensive static analysis on Dart code to identify errors, warnings, and style issues before execution. It's the same powerful analysis engine used by IDEs and editors with Dart support.
 
@@ -78,6 +79,11 @@ linters:
       - "--fatal-warnings"
     cli_help_extra_args:
       - "analyze"
+    cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     version_extract_regex: "(?<=Dart SDK version: )(\\d+)\\.(\\d+)\\.(\\d+)"
     examples:
       - "dart analyze --fatal-infos --fatal-warnings myfile.dart"

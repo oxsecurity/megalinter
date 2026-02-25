@@ -704,7 +704,7 @@
           "cli_lint_mode": {
             "$id": "#/properties/linters/items/properties/cli_lint_mode",
             "default": "file",
-            "description": "Defines how the linter is called: file,  list_of_files, project",
+            "description": "Defines how the linter is called: file, list_of_files, project",
             "enum": [
               "file",
               "project",
@@ -712,6 +712,35 @@
             ],
             "title": "Linting mode",
             "type": "string"
+          },
+          "supported_cli_lint_modes": {
+            "$id": "#/properties/linters/items/properties/supported_cli_lint_modes",
+            "default": [
+              "file"
+            ],
+            "description": "Define the possible ways in which a linter can be called: file, list_of_files, project",
+            "examples": [
+              [
+                "file",
+                "list_of_files"
+              ],
+              [
+                "project"
+              ]
+            ],
+            "items": {
+              "default": "file",
+              "enum": [
+                "file",
+                "project",
+                "list_of_files"
+              ],
+              "title": "Linting mode",
+              "type": "string"
+            },
+            "title": "Linting modes",
+            "type": "array",
+            "uniqueItems": true
           },
           "cli_lint_warnings_count": {
             "$id": "#/properties/linters/items/properties/cli_lint_warnings_count",
