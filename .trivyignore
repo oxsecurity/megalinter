@@ -204,6 +204,12 @@ CVE-2026-26960
 CVE-2026-26996
 # https://avd.aquasec.com/nvd/cve-2026-25896 : fast-xml-parser, not applicable in MegaLinter context as XML files are Salesforce metadatas
 CVE-2026-25896
+# https://avd.aquasec.com/nvd/cve-2025-12183 :  lz4-java DDOS risk, not applicable in MegaLinter context
+CVE-2025-12183
+# https://avd.aquasec.com/nvd/cve-2026-27606  : node rollup , not applicable in MegaLinter context
+CVE-2026-27606
+# https://avd.aquasec.com/nvd/cve-2026-27699 : in Salesforce/cli, they will fix that soon, but as linters do not connect to Salesforce orgs, this is not applicable in MegaLinter context
+CVE-2026-27699
 # Dockerfile
 DS001
 DS-0001
