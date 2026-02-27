@@ -19,7 +19,7 @@ description: How to use v8r (configure, ignore files, ignore errors, help & vers
 
 ## v8r documentation
 
-- Version in MegaLinter: **5.1.0**
+- Version in MegaLinter: **6.0.0**
 - Visit [Official Web Site](https://github.com/chris48s/v8r#readme){target=_blank}
 - See [Index of problems detected by v8r](https://www.schemastore.org/){target=_blank}
 
@@ -150,8 +150,8 @@ Examples:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=v8r
-ARG NPM_V8R_VERSION=5.1.0
+ARG NPM_V8R_VERSION=6.0.0
 ```
 
 - NPM packages (node.js):
-  - [v8r@5.1.0](https://www.npmjs.com/package/v8r/v/5.1.0)
+  - [v8r@6.0.0](https://www.npmjs.com/package/v8r/v/6.0.0)

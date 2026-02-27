@@ -105,7 +105,7 @@ sf code-analyzer run --rule-selector pmd:Recommended --workspace . --output-file
 ### Help content
 
 ```shell
- ›   Warning: @salesforce/cli update available from 2.123.1 to 2.124.7.
+ ›   Warning: @salesforce/cli update available from 2.124.6 to 2.124.7.
 Analyze your code with a selection of rules to ensure good coding practices.
 
 USAGE
@@ -137,12 +137,12 @@ FLAGS
 GLOBAL FLAGS
   --flags-dir=<value>  Import flag values from a directory.
 
- ›   Warning: @salesforce/cli update available from 2.123.1 to 2.124.7.
+ ›   Warning: @salesforce/cli update available from 2.124.6 to 2.124.7.
 
 Streaming logs in real time to:
-    /tmp/sfca-2026_02_26_22_26_49_423.log
+    /tmp/sfca-2026_02_27_13_53_49_735.log
 
-Selecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 0%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 14%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 28%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 29%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 30%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 31%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 32%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 33%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 34%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 35%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 36%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 37%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 38%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 39%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 40%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 41%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 42%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 43%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 44%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 45%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 50%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 59%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 70%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 74%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 75%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 75%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 84%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 85%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 87%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 96%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 98%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 99%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 100%; Elapsed time: 1sSelecting rules... done.
+Selecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 0%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 14%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 28%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 30%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 31%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 32%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 33%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 34%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 35%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 36%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 37%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 38%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 39%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 40%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 41%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 42%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 53%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 57%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 62%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 72%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 74%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 75%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 75%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 84%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 85%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 87%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 96%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 98%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 99%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 100%; Elapsed time: 1sSelecting rules... done.
 
   #     Name                                                              Engine      Severity       Tag
  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -385,76 +385,76 @@ Selecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, s
   237   TriggerCallout                                                    flow        2 (High)       Recommended, Performance, XML
   238   TriggerEntryCriteria                                              flow        2 (High)       Recommended, Performance, XML
   239   TriggerWaitEvent                                                  flow        2 (High)       Recommended, Performance, XML
-  240   DetectCopyPasteForApex                                            cpd         5 (Info)       Recommended, Design, Apex
-  241   DetectCopyPasteForJavascript                                      cpd         5 (Info)       Recommended, Design, Javascript
-  242   DetectCopyPasteForTypescript                                      cpd         5 (Info)       Recommended, Design, Typescript
-  243   DetectCopyPasteForVisualforce                                     cpd         5 (Info)       Recommended, Design, Visualforce
-  244   AnnotationsNamingConventions                                      pmd         4 (Low)        Recommended, CodeStyle, Apex
-  245   ApexBadCrypto                                                     pmd         2 (High)       Recommended, Security, Apex
-  246   ApexCRUDViolation                                                 pmd         2 (High)       Recommended, Security, Apex
-  247   ApexCSRF                                                          pmd         1 (Critical)   Recommended, Security, Apex
-  248   ApexDangerousMethods                                              pmd         3 (Moderate)   Recommended, Security, Apex
-  249   ApexDoc                                                           pmd         4 (Low)        Recommended, Documentation, Apex
-  250   ApexInsecureEndpoint                                              pmd         2 (High)       Recommended, Security, Apex
-  251   ApexOpenRedirect                                                  pmd         2 (High)       Recommended, Security, Apex
-  252   ApexSharingViolations                                             pmd         3 (Moderate)   Recommended, Security, Apex
-  253   ApexSOQLInjection                                                 pmd         2 (High)       Recommended, Security, Apex
-  254   ApexSuggestUsingNamedCred                                         pmd         2 (High)       Recommended, Security, Apex
-  255   ApexUnitTestClassShouldHaveAsserts                                pmd         3 (Moderate)   Recommended, BestPractices, Apex
-  256   ApexUnitTestClassShouldHaveRunAs                                  pmd         4 (Low)        Recommended, BestPractices, Apex
-  257   ApexUnitTestMethodShouldHaveIsTestAnnotation                      pmd         2 (High)       Recommended, BestPractices, Apex
-  258   ApexUnitTestShouldNotUseSeeAllDataTrue                            pmd         2 (High)       Recommended, BestPractices, Apex
-  259   ApexXSSFromEscapeFalse                                            pmd         2 (High)       Recommended, Security, Apex
-  260   ApexXSSFromURLParam                                               pmd         2 (High)       Recommended, Security, Apex
-  261   AvoidBooleanMethodParameters                                      pmd         3 (Moderate)   Recommended, Design, Apex
-  262   AvoidDebugStatements                                              pmd         4 (Low)        Recommended, Performance, Apex
-  263   AvoidDeeplyNestedIfStmts                                          pmd         3 (Moderate)   Recommended, Design, Apex
-  264   AvoidDirectAccessTriggerMap                                       pmd         3 (Moderate)   Recommended, ErrorProne, Apex
-  265   AvoidFutureAnnotation                                             pmd         4 (Low)        Recommended, BestPractices, Apex
-  266   AvoidGlobalModifier                                               pmd         3 (Moderate)   Recommended, BestPractices, Apex
-  267   AvoidHardcodingId                                                 pmd         3 (Moderate)   Recommended, ErrorProne, Apex
-  268   AvoidLogicInTrigger                                               pmd         3 (Moderate)   Recommended, BestPractices, Apex
-  269   AvoidNonExistentAnnotations                                       pmd         4 (Low)        Recommended, ErrorProne, Apex
-  270   AvoidNonRestrictiveQueries                                        pmd         4 (Low)        Recommended, Performance, Apex
-  271   AvoidStatefulDatabaseResult                                       pmd         3 (Moderate)   Recommended, ErrorProne, Apex
-  272   ClassNamingConventions                                            pmd         3 (Moderate)   Recommended, CodeStyle, Apex
-  273   CognitiveComplexity                                               pmd         3 (Moderate)   Recommended, Design, Apex
-  274   CyclomaticComplexity                                              pmd         3 (Moderate)   Recommended, Design, Apex
-  275   DebugsShouldUseLoggingLevel                                       pmd         4 (Low)        Recommended, BestPractices, Apex
-  276   EagerlyLoadedDescribeSObjectResult                                pmd         2 (High)       Recommended, Performance, Apex
-  277   EmptyCatchBlock                                                   pmd         2 (High)       Recommended, ErrorProne, Apex
-  278   EmptyIfStmt                                                       pmd         3 (Moderate)   Recommended, ErrorProne, Apex
-  279   EmptyStatementBlock                                               pmd         3 (Moderate)   Recommended, ErrorProne, Apex
-  280   EmptyTryOrFinallyBlock                                            pmd         3 (Moderate)   Recommended, ErrorProne, Apex
-  281   EmptyWhileStmt                                                    pmd         3 (Moderate)   Recommended, ErrorProne, Apex
-  282   ExcessiveParameterList                                            pmd         3 (Moderate)   Recommended, Design, Apex
-  283   ExcessivePublicCount                                              pmd         3 (Moderate)   Recommended, Design, Apex
-  284   FieldDeclarationsShouldBeAtStart                                  pmd         3 (Moderate)   Recommended, CodeStyle, Apex
-  285   FieldNamingConventions                                            pmd         3 (Moderate)   Recommended, CodeStyle, Apex
-  286   ForLoopsMustUseBraces                                             pmd         3 (Moderate)   Recommended, CodeStyle, Apex
-  287   FormalParameterNamingConventions                                  pmd         3 (Moderate)   Recommended, CodeStyle, Apex
-  288   IfElseStmtsMustUseBraces                                          pmd         3 (Moderate)   Recommended, CodeStyle, Apex
-  289   IfStmtsMustUseBraces                                              pmd         3 (Moderate)   Recommended, CodeStyle, Apex
-  290   InaccessibleAuraEnabledGetter                                     pmd         3 (Moderate)   Recommended, ErrorProne, Apex
-  291   LocalVariableNamingConventions                                    pmd         3 (Moderate)   Recommended, CodeStyle, Apex
-  292   MethodNamingConventions                                           pmd         3 (Moderate)   Recommended, CodeStyle, Apex
-  293   MethodWithSameNameAsEnclosingClass                                pmd         3 (Moderate)   Recommended, ErrorProne, Apex
-  294   NcssCount                                                         pmd         3 (Moderate)   Recommended, Apex, Custom
-  295   OneDeclarationPerLine                                             pmd         3 (Moderate)   Recommended, CodeStyle, Apex
-  296   OperationWithHighCostInLoop                                       pmd         3 (Moderate)   Recommended, Performance, Apex
-  297   OperationWithLimitsInLoop                                         pmd         3 (Moderate)   Recommended, Performance, Apex
-  298   OverrideBothEqualsAndHashcode                                     pmd         2 (High)       Recommended, ErrorProne, Apex
-  299   PropertyNamingConventions                                         pmd         3 (Moderate)   Recommended, CodeStyle, Apex
-  300   QueueableWithoutFinalizer                                         pmd         4 (Low)        Recommended, BestPractices, Apex
-  301   TestMethodsMustBeInTestClasses                                    pmd         3 (Moderate)   Recommended, ErrorProne, Apex
-  302   TooManyFields                                                     pmd         3 (Moderate)   Recommended, Design, Apex
-  303   TypeShadowsBuiltInNamespace                                       pmd         2 (High)       Recommended, ErrorProne, Apex
-  304   UnusedLocalVariable                                               pmd         3 (Moderate)   Recommended, BestPractices, Apex
-  305   UnusedMethod                                                      pmd         3 (Moderate)   Recommended, Design, Apex
-  306   VfCsrf                                                            pmd         2 (High)       Recommended, Security, Visualforce
-  307   VfHtmlStyleTagXss                                                 pmd         2 (High)       Recommended, Security, Visualforce
-  308   VfUnescapeEl                                                      pmd         2 (High)       Recommended, Security, Visualforce
-  309   WhileLoopsMustUseBraces                                           pmd         3 (Moderate)   Recommended, CodeStyle, Apex
+  240   AnnotationsNamingConventions                                      pmd         4 (Low)        Recommended, CodeStyle, Apex
+  241   ApexBadCrypto                                                     pmd         2 (High)       Recommended, Security, Apex
+  242   ApexCRUDViolation                                                 pmd         2 (High)       Recommended, Security, Apex
+  243   ApexCSRF                                                          pmd         1 (Critical)   Recommended, Security, Apex
+  244   ApexDangerousMethods                                              pmd         3 (Moderate)   Recommended, Security, Apex
+  245   ApexDoc                                                           pmd         4 (Low)        Recommended, Documentation, Apex
+  246   ApexInsecureEndpoint                                              pmd         2 (High)       Recommended, Security, Apex
+  247   ApexOpenRedirect                                                  pmd         2 (High)       Recommended, Security, Apex
+  248   ApexSharingViolations                                             pmd         3 (Moderate)   Recommended, Security, Apex
+  249   ApexSOQLInjection                                                 pmd         2 (High)       Recommended, Security, Apex
+  250   ApexSuggestUsingNamedCred                                         pmd         2 (High)       Recommended, Security, Apex
+  251   ApexUnitTestClassShouldHaveAsserts                                pmd         3 (Moderate)   Recommended, BestPractices, Apex
+  252   ApexUnitTestClassShouldHaveRunAs                                  pmd         4 (Low)        Recommended, BestPractices, Apex
+  253   ApexUnitTestMethodShouldHaveIsTestAnnotation                      pmd         2 (High)       Recommended, BestPractices, Apex
+  254   ApexUnitTestShouldNotUseSeeAllDataTrue                            pmd         2 (High)       Recommended, BestPractices, Apex
+  255   ApexXSSFromEscapeFalse                                            pmd         2 (High)       Recommended, Security, Apex
+  256   ApexXSSFromURLParam                                               pmd         2 (High)       Recommended, Security, Apex
+  257   AvoidBooleanMethodParameters                                      pmd         3 (Moderate)   Recommended, Design, Apex
+  258   AvoidDebugStatements                                              pmd         4 (Low)        Recommended, Performance, Apex
+  259   AvoidDeeplyNestedIfStmts                                          pmd         3 (Moderate)   Recommended, Design, Apex
+  260   AvoidDirectAccessTriggerMap                                       pmd         3 (Moderate)   Recommended, ErrorProne, Apex
+  261   AvoidFutureAnnotation                                             pmd         4 (Low)        Recommended, BestPractices, Apex
+  262   AvoidGlobalModifier                                               pmd         3 (Moderate)   Recommended, BestPractices, Apex
+  263   AvoidHardcodingId                                                 pmd         3 (Moderate)   Recommended, ErrorProne, Apex
+  264   AvoidLogicInTrigger                                               pmd         3 (Moderate)   Recommended, BestPractices, Apex
+  265   AvoidNonExistentAnnotations                                       pmd         4 (Low)        Recommended, ErrorProne, Apex
+  266   AvoidNonRestrictiveQueries                                        pmd         4 (Low)        Recommended, Performance, Apex
+  267   AvoidStatefulDatabaseResult                                       pmd         3 (Moderate)   Recommended, ErrorProne, Apex
+  268   ClassNamingConventions                                            pmd         3 (Moderate)   Recommended, CodeStyle, Apex
+  269   CognitiveComplexity                                               pmd         3 (Moderate)   Recommended, Design, Apex
+  270   CyclomaticComplexity                                              pmd         3 (Moderate)   Recommended, Design, Apex
+  271   DebugsShouldUseLoggingLevel                                       pmd         4 (Low)        Recommended, BestPractices, Apex
+  272   EagerlyLoadedDescribeSObjectResult                                pmd         2 (High)       Recommended, Performance, Apex
+  273   EmptyCatchBlock                                                   pmd         2 (High)       Recommended, ErrorProne, Apex
+  274   EmptyIfStmt                                                       pmd         3 (Moderate)   Recommended, ErrorProne, Apex
+  275   EmptyStatementBlock                                               pmd         3 (Moderate)   Recommended, ErrorProne, Apex
+  276   EmptyTryOrFinallyBlock                                            pmd         3 (Moderate)   Recommended, ErrorProne, Apex
+  277   EmptyWhileStmt                                                    pmd         3 (Moderate)   Recommended, ErrorProne, Apex
+  278   ExcessiveParameterList                                            pmd         3 (Moderate)   Recommended, Design, Apex
+  279   ExcessivePublicCount                                              pmd         3 (Moderate)   Recommended, Design, Apex
+  280   FieldDeclarationsShouldBeAtStart                                  pmd         3 (Moderate)   Recommended, CodeStyle, Apex
+  281   FieldNamingConventions                                            pmd         3 (Moderate)   Recommended, CodeStyle, Apex
+  282   ForLoopsMustUseBraces                                             pmd         3 (Moderate)   Recommended, CodeStyle, Apex
+  283   FormalParameterNamingConventions                                  pmd         3 (Moderate)   Recommended, CodeStyle, Apex
+  284   IfElseStmtsMustUseBraces                                          pmd         3 (Moderate)   Recommended, CodeStyle, Apex
+  285   IfStmtsMustUseBraces                                              pmd         3 (Moderate)   Recommended, CodeStyle, Apex
+  286   InaccessibleAuraEnabledGetter                                     pmd         3 (Moderate)   Recommended, ErrorProne, Apex
+  287   LocalVariableNamingConventions                                    pmd         3 (Moderate)   Recommended, CodeStyle, Apex
+  288   MethodNamingConventions                                           pmd         3 (Moderate)   Recommended, CodeStyle, Apex
+  289   MethodWithSameNameAsEnclosingClass                                pmd         3 (Moderate)   Recommended, ErrorProne, Apex
+  290   NcssCount                                                         pmd         3 (Moderate)   Recommended, Apex, Custom
+  291   OneDeclarationPerLine                                             pmd         3 (Moderate)   Recommended, CodeStyle, Apex
+  292   OperationWithHighCostInLoop                                       pmd         3 (Moderate)   Recommended, Performance, Apex
+  293   OperationWithLimitsInLoop                                         pmd         3 (Moderate)   Recommended, Performance, Apex
+  294   OverrideBothEqualsAndHashcode                                     pmd         2 (High)       Recommended, ErrorProne, Apex
+  295   PropertyNamingConventions                                         pmd         3 (Moderate)   Recommended, CodeStyle, Apex
+  296   QueueableWithoutFinalizer                                         pmd         4 (Low)        Recommended, BestPractices, Apex
+  297   TestMethodsMustBeInTestClasses                                    pmd         3 (Moderate)   Recommended, ErrorProne, Apex
+  298   TooManyFields                                                     pmd         3 (Moderate)   Recommended, Design, Apex
+  299   TypeShadowsBuiltInNamespace                                       pmd         2 (High)       Recommended, ErrorProne, Apex
+  300   UnusedLocalVariable                                               pmd         3 (Moderate)   Recommended, BestPractices, Apex
+  301   UnusedMethod                                                      pmd         3 (Moderate)   Recommended, Design, Apex
+  302   VfCsrf                                                            pmd         2 (High)       Recommended, Security, Visualforce
+  303   VfHtmlStyleTagXss                                                 pmd         2 (High)       Recommended, Security, Visualforce
+  304   VfUnescapeEl                                                      pmd         2 (High)       Recommended, Security, Visualforce
+  305   WhileLoopsMustUseBraces                                           pmd         3 (Moderate)   Recommended, CodeStyle, Apex
+  306   DetectCopyPasteForApex                                            cpd         5 (Info)       Recommended, Design, Apex
+  307   DetectCopyPasteForJavascript                                      cpd         5 (Info)       Recommended, Design, Javascript
+  308   DetectCopyPasteForTypescript                                      cpd         5 (Info)       Recommended, Design, Typescript
+  309   DetectCopyPasteForVisualforce                                     cpd         5 (Info)       Recommended, Design, Visualforce
 
 
 
@@ -465,11 +465,11 @@ Found 309 rule(s) from 6 engine(s):
     5 regex rule(s) found.
     219 eslint rule(s) found.
     11 flow rule(s) found.
-    4 cpd rule(s) found.
     66 pmd rule(s) found.
+    4 cpd rule(s) found.
 
 Additional log information written to:
-    /tmp/sfca-2026_02_26_22_26_49_423.log
+    /tmp/sfca-2026_02_27_13_53_49_735.log
 ```
 
 ### Installation on mega-linter Docker image
@@ -478,11 +478,11 @@ Additional log information written to:
 ```dockerfile
 # Parent descriptor install
 # renovate: datasource=npm depName=@salesforce/cli
-ARG NPM_SALESFORCE_CLI_VERSION=2.123.1
+ARG NPM_SALESFORCE_CLI_VERSION=2.124.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.25.5
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=6.26.1
+ARG SFDX_HARDIS_VERSION=6.26.2
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION} \
