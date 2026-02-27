@@ -221,6 +221,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.93.4 to **3.93.5** on 2026-02-27
   - [rubocop](https://rubocop.org/) from 1.84.2 to **1.85.0** on 2026-02-27
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.6.4 to **9.7.0** on 2026-02-27
+  - [rumdl](https://github.com/rvben/rumdl) from 0.1.30 to **0.1.31** on 2026-02-27
+  - [semgrep](https://semgrep.dev/) from 1.153.0 to **1.153.1** on 2026-02-27
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.93.5 to **3.93.6** on 2026-02-27
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 8.2.0 to **8.2.2** on 2026-02-27
 <!-- linter-versions-end -->
 
 ## [v9.3.0] - 2026-01-04
