@@ -116,7 +116,7 @@ ARG PIP_CPPLINT_VERSION=2.0.2
 # renovate: datasource=github-tags depName=dotenv-linter/dotenv-linter
 ARG DOTENV_LINTER_VERSION=4.0.0
 # renovate: datasource=npm depName=graphql
-ARG NPM_GRAPHQL_VERSION=16.12.0
+ARG NPM_GRAPHQL_VERSION=16.13.0
 # renovate: datasource=npm depName=graphql-schema-linter
 ARG NPM_GRAPHQL_SCHEMA_LINTER_VERSION=3.0.1
 # renovate: datasource=npm depName=npm-groovy-lint
