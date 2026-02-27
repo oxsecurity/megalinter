@@ -132,7 +132,7 @@ ARG NPM_HTMLHINT_VERSION=1.9.1
 # renovate: datasource=github-releases depName=checkstyle/checkstyle
 ARG JAVA_CHECKSTYLE_VERSION=12.1.0
 # renovate: datasource=github-tags depName=pmd/pmd extractVersion=^pmd_releases/(?<version>.*)$
-ARG PMD_VERSION=7.21.0
+ARG PMD_VERSION=7.22.0
 
 # renovate: datasource=npm depName=@prantlf/jsonlint
 ARG NPM_PRANTLF_JSONLINT_VERSION=17.0.1
