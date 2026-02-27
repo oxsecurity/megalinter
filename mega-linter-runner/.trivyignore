@@ -7,6 +7,14 @@ CVE-2021-44906
 CVE-2023-26115
 CVE-2023-42282
 CVE-2024-28863
+# https://avd.aquasec.com/nvd/cve-2026-26996 : minimatch Redos risk, not applicable in MegaLinter context
+CVE-2026-26996
+# https://avd.aquasec.com/nvd/cve-2026-27903 : minimatch ReDoS vulnerability, not applicable in MegaLinter context
+CVE-2026-27903
+# https://avd.aquasec.com/nvd/cve-2026-27904 : minimatch ReDoS vulnerability, not applicable in MegaLinter context
+CVE-2026-27904
+
+
 
 # Misc
 # Not fixed yet https://avd.aquasec.com/nvd/2024/cve-2024-29415/

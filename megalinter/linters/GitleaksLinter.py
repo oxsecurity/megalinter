@@ -71,9 +71,8 @@ class GitleaksLinter(Linter):
         return repo.commit(target_branch_name.replace("refs/heads", "origin"))
 
     def get_github_sha(self):
-        gh_event_file = open(config.get(self.request_id, "GITHUB_EVENT_PATH"))
-        gh_event = json.load(gh_event_file)
-        gh_event_file.close()
+        with open(config.get(self.request_id, "GITHUB_EVENT_PATH")) as gh_event_file:
+            gh_event = json.load(gh_event_file)
         return (
             # event.pull_request.head.sha -> SHA of the last commit of the PR
             gh_event["pull_request"]["head"]["sha"],

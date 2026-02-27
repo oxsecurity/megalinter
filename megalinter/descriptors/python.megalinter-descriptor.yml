@@ -67,7 +67,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=pylint
-          ARG PIP_PYLINT_VERSION=4.0.4
+          ARG PIP_PYLINT_VERSION=4.0.5
         - |-
           # renovate: datasource=pypi depName=typing-extensions
           ARG PIP_TYPING_EXTENSIONS_VERSION=4.15.0
@@ -287,7 +287,7 @@ linters:
           ARG PIP_BLACK_VERSION=26.1.0
         - |-
           # renovate: datasource=pypi depName=isort
-          ARG PIP_ISORT_VERSION=7.0.0
+          ARG PIP_ISORT_VERSION=8.0.0
       pip:
         - black==${PIP_BLACK_VERSION}
         - isort==${PIP_ISORT_VERSION}
@@ -377,7 +377,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=bandit
-          ARG PIP_BANDIT_VERSION=1.9.3
+          ARG PIP_BANDIT_VERSION=1.9.4
         - |-
           # renovate: datasource=pypi depName=bandit_sarif_formatter
           ARG PIP_BANDIT_SARIF_FORMATTER_VERSION=1.1.1
@@ -472,8 +472,6 @@ linters:
   # NBQA-MYPY
   - linter_name: nbqa
     name: PYTHON_NBQA_MYPY
-    disabled: true
-    disabled_reason: Failing test cases, to fix before enabling again
     file_extensions:
       - ".ipynb"
     cli_lint_mode: list_of_files
@@ -485,8 +483,8 @@ linters:
     cli_lint_errors_regex: "Found ([0-9]+) error"
     cli_version_arg_name: "--version"
     version_extract_regex: "(?<=nbqa )\\d+(\\.\\d+)+"
-    cli_config_arg_name: "--config-file"
-    config_file_name: ".mypy.ini"
+    # Note: nbqa passes args to the underlying tool (mypy), so we don't use cli_config_arg_name
+    # MyPy will auto-detect config files (pyproject.toml, .mypy.ini, setup.cfg, etc.)
     test_folder: python_nbqa_mypy
     linter_text: |
       **nbqa + mypy** provides static type checking for Jupyter notebooks.
@@ -673,7 +671,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=ruff
-          ARG PIP_RUFF_VERSION=0.15.1
+          ARG PIP_RUFF_VERSION=0.15.4
       pip:
         - ruff==${PIP_RUFF_VERSION}
     supported_platforms:
@@ -738,7 +736,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=ruff
-          ARG PIP_RUFF_VERSION=0.15.1
+          ARG PIP_RUFF_VERSION=0.15.4
       pip:
         - ruff==${PIP_RUFF_VERSION}
     supported_platforms:

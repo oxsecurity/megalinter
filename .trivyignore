@@ -196,6 +196,24 @@ CVE-2026-24842
 CVE-2026-25547
 # https://avd.aquasec.com/nvd/cve-2026-25639: axios denial of service, not applicable in MegaLinter context
 CVE-2026-25639
+# https://avd.aquasec.com/nvd/cve-2026-26278 : fast-xml-parser, DDOS attack, not applicable in MegaLinter context
+CVE-2026-26278
+# https://avd.aquasec.com/nvd/cve-2026-26960 : node-tar, not applicable in MegaLinter context
+CVE-2026-26960 
+# https://avd.aquasec.com/nvd/cve-2026-26996 : minimatch Redos risk, not applicable in MegaLinter context
+CVE-2026-26996
+# https://avd.aquasec.com/nvd/cve-2026-25896 : fast-xml-parser, not applicable in MegaLinter context as XML files are Salesforce metadatas
+CVE-2026-25896
+# https://avd.aquasec.com/nvd/cve-2025-12183 :  lz4-java DDOS risk, not applicable in MegaLinter context
+CVE-2025-12183
+# https://avd.aquasec.com/nvd/cve-2026-27606  : node rollup , not applicable in MegaLinter context
+CVE-2026-27606
+# https://avd.aquasec.com/nvd/cve-2026-27699 : in Salesforce/cli, they will fix that soon, but as linters do not connect to Salesforce orgs, this is not applicable in MegaLinter context
+CVE-2026-27699
+# https://avd.aquasec.com/nvd/cve-2026-27903 : minimatch ReDoS vulnerability, not applicable in MegaLinter context
+CVE-2026-27903
+# https://avd.aquasec.com/nvd/cve-2026-27904 : minimatch ReDoS vulnerability, not applicable in MegaLinter context
+CVE-2026-27904
 # Dockerfile
 DS001
 DS-0001
