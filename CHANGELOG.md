@@ -9,7 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Core
-  - Improve files browsing performances
+  - Improve files browsing performances (2 PRs)
   - Optimize parallel linter processing and improve grouping logic
   - Improve performance of listing .gitignored files by sending excluded directories to git ls-files
   - If there are more than 500 .gitignored files, advise to add more excluded directories using variable ADDITIONAL_EXCLUDED_DIRECTORIES, to improve performances
@@ -63,6 +63,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Allow to skip linters build using `skip linters` in latest commit text
   - Allow to disable build & push of standalone linters docker images using variable `BETA_LINTERS_ENABLED=false`
   - Improve performances of formatting markdown tables during build
+  - Improve test classes performances and fix race conditions
 
 - mega-linter-runner
   - If variables are defined in a local .env file, send their values to docker/podman run command (can be useful for secret variables)
@@ -192,6 +193,24 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [isort](https://pycqa.github.io/isort/) from 7.0.0 to **8.0.0** on 2026-02-23
   - [pylint](https://pylint.readthedocs.io) from 4.0.4 to **4.0.5** on 2026-02-23
   - [checkov](https://www.checkov.io/) from 3.2.502 to **3.2.506** on 2026-02-23
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.44.0 to **1.45.0** on 2026-02-26
+  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.11.0 to **3.11.1** on 2026-02-26
+  - [golangci-lint](https://golangci-lint.run/) from 2.9.0 to **2.10.1** on 2026-02-26
+  - [kubescape](https://github.com/kubescape/kubescape) from 4.0.1 to **4.0.2** on 2026-02-26
+  - [rumdl](https://github.com/rvben/rumdl) from 0.1.22 to **0.1.28** on 2026-02-26
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.94.0 to **3.94.2** on 2026-02-26
+  - [phpstan](https://phpstan.org/) from 2.1.39 to **2.1.40** on 2026-02-26
+  - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.9.3 to **1.9.4** on 2026-02-26
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.1 to **0.15.2** on 2026-02-26
+  - [ruff](https://github.com/astral-sh/ruff) from 0.15.1 to **0.15.2** on 2026-02-26
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.82.0 to **1.84.0** on 2026-02-26
+  - [semgrep](https://semgrep.dev/) from 1.151.0 to **1.152.0** on 2026-02-26
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.93.3 to **3.93.4** on 2026-02-26
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 8.0.0 to **8.2.0** on 2026-02-26
+  - [code-analyzer-apex](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.9.0 to **5.10.0** on 2026-02-26
+  - [code-analyzer-aura](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.9.0 to **5.10.0** on 2026-02-26
+  - [code-analyzer-lwc](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.9.0 to **5.10.0** on 2026-02-26
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.14.5 to **0.14.6** on 2026-02-26
 <!-- linter-versions-end -->
 
 ## [v9.3.0] - 2026-01-04

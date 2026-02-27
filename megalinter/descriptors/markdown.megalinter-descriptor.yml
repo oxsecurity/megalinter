@@ -167,6 +167,7 @@ linters:
       - "markdown-table-formatter --check myfile.md" # Check only
       - "markdown-table-formatter myfile.md" # Apply formatting
       - "markdown-table-formatter myfile.md myfile2.md myfile3.md" # Apply formatting
+    test_folder: markdown_markdown_table_formatter
     install:
       dockerfile:
         - |-

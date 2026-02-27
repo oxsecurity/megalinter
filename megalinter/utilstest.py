@@ -35,16 +35,23 @@ REPO_HOME = (
 )
 
 
+# Cached root directory to avoid repeated git operations
+_ROOT_DIR_CACHE = None
+
+
 # Returns root dir depending we are locally or in CI
 def get_root_dir():
-    root_dir = (
+    global _ROOT_DIR_CACHE
+    if _ROOT_DIR_CACHE is not None:
+        return _ROOT_DIR_CACHE
+    _ROOT_DIR_CACHE = (
         DEFAULT_DOCKER_WORKSPACE_DIR
         if os.path.isdir(DEFAULT_DOCKER_WORKSPACE_DIR)
         else Repo(__file__, search_parent_directories=True).git.rev_parse(
             "--show-toplevel"
         )
     )
-    return root_dir
+    return _ROOT_DIR_CACHE
 
 
 # Define env variables before any test case
@@ -367,48 +374,55 @@ def test_get_linter_version(linter, test_self):
         version == version_cache, "Version not found in linter instance cache"
     )
     # Write in linter-versions.json
+    # Note: wrapped in try/except because parallel test workers (pytest-xdist)
+    # may read/write this shared file concurrently, causing JSON parse errors.
     root_dir = get_root_dir()
     versions_file = (
         root_dir + os.path.sep + "/.automation/generated/linter-versions.json"
     )
-    data = {}
-    if os.path.isfile(versions_file):
-        with open(versions_file, "r", encoding="utf-8") as json_file:
-            data = json.load(json_file)
-    if (
-        linter.linter_name in data and data[linter.linter_name] != version
-    ) or linter.linter_name not in data:
-        prev_version = None
-        if linter.linter_name in data and data[linter.linter_name] != version:
-            prev_version = data[linter.linter_name]
-        data[linter.linter_name] = version
-        with open(versions_file, "w", encoding="utf-8") as outfile:
-            json.dump(data, outfile, indent=4, sort_keys=True)
-        # Upgrade version in changelog
-        if prev_version is not None:
-            changelog_file = root_dir + os.path.sep + "/CHANGELOG.md"
-            with open(changelog_file, "r", encoding="utf-8") as md_file:
-                changelog_content = md_file.read()
-            start = "- Linter versions upgrades"
-            end = "<!-- linter-versions-end -->"
-            regex = rf"{start}([\s\S]*?){end}"
-            existing_text_find = re.findall(regex, changelog_content, re.DOTALL)
-            if existing_text_find is None:
-                raise Exception(
-                    f"CHANGELOG.md must contain a single block scoped by '{start}' and '{end}'"
+    try:
+        data = {}
+        if os.path.isfile(versions_file):
+            with open(versions_file, "r", encoding="utf-8") as json_file:
+                data = json.load(json_file)
+        if (
+            linter.linter_name in data and data[linter.linter_name] != version
+        ) or linter.linter_name not in data:
+            prev_version = None
+            if linter.linter_name in data and data[linter.linter_name] != version:
+                prev_version = data[linter.linter_name]
+            data[linter.linter_name] = version
+            with open(versions_file, "w", encoding="utf-8") as outfile:
+                json.dump(data, outfile, indent=4, sort_keys=True)
+            # Upgrade version in changelog
+            if prev_version is not None:
+                changelog_file = root_dir + os.path.sep + "/CHANGELOG.md"
+                with open(changelog_file, "r", encoding="utf-8") as md_file:
+                    changelog_content = md_file.read()
+                start = "- Linter versions upgrades"
+                end = "<!-- linter-versions-end -->"
+                regex = rf"{start}([\s\S]*?){end}"
+                existing_text_find = re.findall(regex, changelog_content, re.DOTALL)
+                if existing_text_find is None:
+                    raise Exception(
+                        f"CHANGELOG.md must contain a single block scoped by '{start}' and '{end}'"
+                    )
+                versions_text = existing_text_find[0]
+                versions_text += (
+                    f"  - [{linter.linter_name}]({linter.linter_url}) from {prev_version} to **{version}**"
+                    f" on {datetime.today().strftime('%Y-%m-%d')}\n"
                 )
-            versions_text = existing_text_find[0]
-            versions_text += (
-                f"  - [{linter.linter_name}]({linter.linter_url}) from {prev_version} to **{version}**"
-                f" on {datetime.today().strftime('%Y-%m-%d')}\n"
-            )
-            versions_block = f"{start}{versions_text}{end}"
-            changelog_content = re.sub(
-                regex, versions_block, changelog_content, re.DOTALL
-            )
-            with open(changelog_file, "w", encoding="utf-8") as md_file:
-                md_file.write(changelog_content)
-            logging.info(f"Updated {linter.linter_name} in CHANGELOG.md")
+                versions_block = f"{start}{versions_text}{end}"
+                changelog_content = re.sub(
+                    regex, versions_block, changelog_content, re.DOTALL
+                )
+                with open(changelog_file, "w", encoding="utf-8") as md_file:
+                    md_file.write(changelog_content)
+                logging.info(f"Updated {linter.linter_name} in CHANGELOG.md")
+    except (json.JSONDecodeError, OSError) as e:
+        logging.warning(
+            f"Unable to update linter-versions.json for {linter.linter_name}: {e}"
+        )
 
 
 def test_get_linter_help(linter, test_self):
@@ -443,15 +457,22 @@ def test_get_linter_help(linter, test_self):
         )
         line_clean = utils.normalize_log_string(line_clean)
         help_lines_clean += [line_clean]
-    if os.path.isfile(helps_file):
-        with open(helps_file, "r", encoding="utf-8") as json_file:
-            data = json.load(json_file)
-    if (
-        linter.linter_name in data and data[linter.linter_name] != help_lines_clean
-    ) or linter.linter_name not in data:
-        data[linter.linter_name] = help_lines_clean
-        with open(helps_file, "w", encoding="utf-8") as outfile:
-            json.dump(data, outfile, indent=4, sort_keys=True)
+    # Note: wrapped in try/except because parallel test workers (pytest-xdist)
+    # may read/write this shared file concurrently, causing JSON parse errors.
+    try:
+        if os.path.isfile(helps_file):
+            with open(helps_file, "r", encoding="utf-8") as json_file:
+                data = json.load(json_file)
+        if (
+            linter.linter_name in data and data[linter.linter_name] != help_lines_clean
+        ) or linter.linter_name not in data:
+            data[linter.linter_name] = help_lines_clean
+            with open(helps_file, "w", encoding="utf-8") as outfile:
+                json.dump(data, outfile, indent=4, sort_keys=True)
+    except (json.JSONDecodeError, OSError) as e:
+        logging.warning(
+            f"Unable to update linter-helps.json for {linter.linter_name}: {e}"
+        )
 
 
 def test_linter_report_tap(linter, test_self):
@@ -638,20 +659,6 @@ def assert_is_skipped(skipped_item, output, test_self):
     )
 
 
-def assert_file_has_been_updated(file_name, bool_val, test_self):
-    repo = Repo(os.path.realpath(REPO_HOME))
-    changed_files = [item.a_path for item in repo.index.diff(None)]
-    logging.info("Updated files (git):\n" + "\n".join(changed_files))
-    updated = False
-    for changed_file in changed_files:
-        if file_name in changed_file:
-            updated = True
-    if bool_val is True:
-        test_self.assertTrue(updated, f"{file_name} has been updated")
-    else:
-        test_self.assertFalse(updated, f"{file_name} has not been updated")
-
-
 def test_linter_format_fix(linter, test_self):
     if (
         linter.disabled is True
@@ -666,12 +673,20 @@ def test_linter_format_fix(linter, test_self):
     # Special cases when files must be copied in a temp directory before being linted
     if os.path.isdir(workspace + os.path.sep + "fix"):
         workspace = workspace + os.path.sep + "fix"
-    tmp_report_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
     assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"
+
+    # Copy workspace to an isolated temp directory to avoid race conditions
+    # when multiple linters sharing the same test_folder run test_format_fix
+    # in parallel (e.g. black, isort, ruff-format all share "python").
+    # This eliminates the need for git checkout restoration after each test.
+    tmp_workspace = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
+    copytree(workspace, tmp_workspace)
+
+    tmp_report_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
 
     file_map = {}
 
-    search_glob_pattern = workspace.replace("\\", "/") + "/**/*"
+    search_glob_pattern = tmp_workspace.replace("\\", "/") + "/**/*"
 
     files = glob.glob(search_glob_pattern, recursive=True)
 
@@ -701,12 +716,13 @@ def test_linter_format_fix(linter, test_self):
             file_map[file] = content_expected
 
     if len(file_map) == 0:
+        shutil.rmtree(tmp_workspace, ignore_errors=True)
         raise Exception(f"[test] No files found in: {workspace}")
 
     linter_name = linter.linter_name
     env_vars = {
         "APPLY_FIXES": linter.name,
-        "DEFAULT_WORKSPACE": workspace,
+        "DEFAULT_WORKSPACE": tmp_workspace,
         "FILTER_REGEX_INCLUDE": r"(fix)",
         "TEXT_REPORTER": "true",
         "UPDATED_SOURCES_REPORTER": "false",
@@ -753,9 +769,7 @@ def test_linter_format_fix(linter, test_self):
     )
     copy_logs_for_doc(text_report_file, test_folder, report_file_name)
 
-    repo = Repo(os.path.realpath(REPO_HOME))
-
-    # Check files content
+    # Check files content: verify the linter actually made changes
     for file in file_map:
         with open(file, "r", encoding="utf-8") as f_produced:
             content_expected = file_map[file]
@@ -767,9 +781,8 @@ def test_linter_format_fix(linter, test_self):
             ]
             assert (len(list(diffs))) > 0, f"No changes in the {file} file"
 
-        repo.index.checkout(
-            [os.path.join(os.path.realpath(REPO_HOME), file)], force=True
-        )
+    # Clean up the temp workspace (no git checkout needed)
+    shutil.rmtree(tmp_workspace, ignore_errors=True)
 
 
 def write_eslintignore():

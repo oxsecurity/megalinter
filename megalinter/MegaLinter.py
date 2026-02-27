@@ -841,8 +841,10 @@ class Megalinter:
             self.workspace, topdown=True, followlinks=False
         ):
             rel_dirpath = os.path.relpath(dirpath, self.workspace)
-            if rel_dirpath != "." and rel_dirpath in excluded_directories:
-                continue
+            # Always prune excluded directories to prevent os.walk from
+            # descending into them (e.g. node_modules, .git, .venv, …).
+            # This must happen before any `continue` to avoid walking
+            # thousands of entries inside excluded trees.
             dirnames[:] = [
                 d
                 for d in dirnames
@@ -850,6 +852,8 @@ class Megalinter:
                 and os.path.join(rel_dirpath, d).replace(".\\", "").replace("./", "")
                 not in excluded_directories
             ]
+            if rel_dirpath != "." and rel_dirpath in excluded_directories:
+                continue
             all_files += [
                 os.path.relpath(os.path.join(dirpath, file), self.workspace)
                 for file in sorted(filenames)
