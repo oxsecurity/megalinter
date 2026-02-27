@@ -146,6 +146,8 @@ linters:
       - **Custom Rule Creation**: Powerful rule engine allows you to create and share custom style rules tailored to your organization
       - **Industry-Tested**: Trusted by thousands of writers, editors, and developers worldwide across different industries
 
+      Beyond the built-in style guides, the community maintains additional Vale packages for specialized use cases such as [inclusive language](https://vale.sh/hub/) and [speciesist language](https://github.com/Open-Paws/vale-speciesism) checks. These can be installed via `vale sync` and added to your `.vale.ini`.
+
       To be active within MegaLinter, you need to [initialize a .vale.ini configuration file](https://vale.sh/docs/vale-cli/structure/) at the root of your repository.
       MegaLinter analyze markdown and restructuredText files by default, you can change that using SPELL_VALE_FILE_EXTENSIONS variable.
     linter_url: https://vale.sh/
