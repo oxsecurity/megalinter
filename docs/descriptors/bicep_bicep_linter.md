@@ -24,7 +24,7 @@ By default, Bicep linter errors are set as warnings. To customize linter setting
 
 ## bicep_linter documentation
 
-- Version in MegaLinter: **0.40.2**
+- Version in MegaLinter: **0.41.2**
 - Visit [Official Web Site](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter){target=_blank}
 - See [How to configure bicep_linter rules](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config){target=_blank}
 - See [How to disable bicep_linter rules in files](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#silencing-false-positives){target=_blank}
@@ -98,7 +98,7 @@ az bicep build -f infra.bicep
 ### Help content
 
 ```shell
-Bicep CLI version 0.40.2 (271b0e1d4b)
+Bicep CLI version 0.41.2 (3e403ea7c1)
 
 Usage:
   bicep build [options] [<file>]
@@ -302,6 +302,28 @@ Usage:
       bicep jsonrpc --socket 9853
       bicep jsonrpc --stdio
 
+  bicep snapshot [options] <file>
+    Generates or validates a deployment snapshot from a .bicepparam file.
+
+    Arguments:
+      <file>        The input .bicepparam file
+
+    Options:
+      --mode <mode>              Sets the snapshot mode. Valid values are ( overwrite | validate ).
+                                   Overwrite: Generates a new snapshot and saves it to <file>.snapshot.json.
+                                   Validate: Compares the generated snapshot against an existing snapshot file.
+      --tenant-id <id>           The tenant ID to use for the deployment.
+      --subscription-id <id>     The subscription ID to use for the deployment.
+      --resource-group <name>    The resource group name to use for the deployment.
+      --location <location>      The location to use for the deployment.
+      --deployment-name <name>   The deployment name to use.
+
+    Examples:
+      bicep snapshot params.bicepparam
+      bicep snapshot params.bicepparam --mode overwrite
+      bicep snapshot params.bicepparam --mode validate
+      bicep snapshot params.bicepparam --subscription-id 00000000-0000-0000-0000-000000000000 --resource-group my-rg
+
 ```
 
 ### Installation on mega-linter Docker image
@@ -310,7 +332,7 @@ Usage:
 ```dockerfile
 ARG TARGETPLATFORM
 # renovate: datasource=github-tags depName=Azure/bicep
-ARG BICEP_VERSION=0.40.2
+ARG BICEP_VERSION=0.41.2
 ARG BICEP_EXE='bicep'
 ARG BICEP_DIR='/usr/local/bin'
 FROM multiarch/qemu-user-static:x86_64-aarch64 AS qemu

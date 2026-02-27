@@ -29,7 +29,7 @@ description: How to use trufflehog (configure, ignore files, ignore errors, help
 
 ## trufflehog documentation
 
-- Version in MegaLinter: **3.93.4**
+- Version in MegaLinter: **3.93.5**
 - Visit [Official Web Site](https://github.com/trufflesecurity/trufflehog#readme){target=_blank}
 - See [How to configure trufflehog rules](https://github.com/trufflesecurity/trufflehog#regex-detector-alpha){target=_blank}
 
@@ -139,6 +139,10 @@ Flags:
       --filter-entropy=FILTER-ENTROPY
                                  Filter unverified results with Shannon entropy.
                                  Start with 3.0.
+      --max-decode-depth=5       Maximum depth of iterative decoding.
+                                 Each decoder's output is fed back through all
+                                 decoders, up to this limit. 1 = single pass, 2+
+                                 = chained decoding (e.g., base64 inside utf16).
       --config=CONFIG            Path to configuration file.
       --[no-]print-avg-detector-time
                                  Print the average time spent on each detector.
@@ -250,7 +254,7 @@ analyze
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.93.4
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.93.5
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 ```

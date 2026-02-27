@@ -211,6 +211,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [code-analyzer-aura](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.9.0 to **5.10.0** on 2026-02-26
   - [code-analyzer-lwc](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.9.0 to **5.10.0** on 2026-02-26
   - [scalafix](https://scalacenter.github.io/scalafix/) from 0.14.5 to **0.14.6** on 2026-02-26
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 26.1.1 to **26.2.0** on 2026-02-27
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.40.2 to **0.41.2** on 2026-02-27
+  - [v8r](https://github.com/chris48s/v8r) from 5.1.0 to **6.0.0** on 2026-02-27
+  - [rumdl](https://github.com/rvben/rumdl) from 0.1.28 to **0.1.30** on 2026-02-27
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.2 to **0.15.4** on 2026-02-27
+  - [ruff](https://github.com/astral-sh/ruff) from 0.15.2 to **0.15.4** on 2026-02-27
+  - [semgrep](https://semgrep.dev/) from 1.152.0 to **1.153.0** on 2026-02-27
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.93.4 to **3.93.5** on 2026-02-27
+  - [rubocop](https://rubocop.org/) from 1.84.2 to **1.85.0** on 2026-02-27
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.6.4 to **9.7.0** on 2026-02-27
 <!-- linter-versions-end -->
 
 ## [v9.3.0] - 2026-01-04
