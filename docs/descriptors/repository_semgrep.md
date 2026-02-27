@@ -29,7 +29,7 @@ Exception for standalone and security flavors docker images, that use a list of 
 
 ## semgrep documentation
 
-- Version in MegaLinter: **1.153.0**
+- Version in MegaLinter: **1.153.1**
 - Visit [Official Web Site](https://semgrep.dev/){target=_blank}
 - See [How to configure semgrep rules](https://semgrep.dev/docs/running-rules/){target=_blank}
 - See [How to disable semgrep rules in files](https://semgrep.dev/docs/ignoring-findings/#inline-comments){target=_blank}
@@ -737,8 +737,8 @@ BUGS
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.153.0
+ARG PIP_SEMGREP_VERSION=1.153.1
 ```
 
 - PIP packages (Python):
-  - [semgrep==1.153.0](https://pypi.org/project/semgrep/1.153.0)
+  - [semgrep==1.153.1](https://pypi.org/project/semgrep/1.153.1)
