@@ -9,7 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Core
-  - Improve files browsing performances
+  - Improve files browsing performances (2 PRs)
   - Optimize parallel linter processing and improve grouping logic
   - Improve performance of listing .gitignored files by sending excluded directories to git ls-files
   - If there are more than 500 .gitignored files, advise to add more excluded directories using variable ADDITIONAL_EXCLUDED_DIRECTORIES, to improve performances
