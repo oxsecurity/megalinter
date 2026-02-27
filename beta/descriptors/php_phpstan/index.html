@@ -12496,7 +12496,7 @@
 </ul>
 <h2 id="phpstan-documentation">phpstan documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>2.1.39</strong></li>
+<li>Version in MegaLinter: <strong>2.1.40</strong></li>
 <li>Visit <a href="https://phpstan.org/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://phpstan.org/config-reference#neon-format" target="_blank">How to configure phpstan rules</a><ul>
 <li>If custom <code>phpstan.neon.dist</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/phpstan.neon.dist" target="_blank">phpstan.neon.dist</a> will be used</li>
@@ -12620,7 +12620,7 @@
 <td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" data-desc-position="bottom"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/cupcake/">cupcake</a></td>
 <td style="text-align: left;">MegaLinter for the most commonly used languages</td>
-<td style="text-align: center;">90</td>
+<td style="text-align: center;">91</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta" data-desc-position="bottom"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"></a> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake" data-desc-position="bottom"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"></a></td>
 </tr>
 <tr>
@@ -12697,7 +12697,7 @@ COPY --from=composer/composer:2-bin /composer /usr/bin/composer
 ENV PATH="/root/.composer/vendor/bin:${PATH}"
 # Linter install
 # renovate: datasource=packagist depName=phpstan/phpstan
-ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.1.39
+ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.1.40
 # renovate: datasource=packagist depName=phpstan/extension-installer
 ARG PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION=1.4.3
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters

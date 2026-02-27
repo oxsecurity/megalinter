@@ -12545,7 +12545,7 @@
 <p>Golangci-lint is the industry standard for Go code quality and is used by thousands of Go projects for maintaining high code standards and catching issues early in the development process.</p>
 <h2 id="golangci-lint-documentation">golangci-lint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>2.9.0</strong></li>
+<li>Version in MegaLinter: <strong>2.10.1</strong></li>
 <li>Visit <a href="https://golangci-lint.run/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://golangci-lint.run/usage/configuration/#config-file" target="_blank">How to configure golangci-lint rules</a><ul>
 <li>If custom <code>.golangci.yml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.golangci.yml" target="_blank">.golangci.yml</a> will be used</li>
@@ -12713,7 +12713,7 @@
 <td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" data-desc-position="bottom"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/cupcake/">cupcake</a></td>
 <td style="text-align: left;">MegaLinter for the most commonly used languages</td>
-<td style="text-align: center;">90</td>
+<td style="text-align: center;">91</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta" data-desc-position="bottom"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"></a> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake" data-desc-position="bottom"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"></a></td>
 </tr>
 <tr>
@@ -12776,7 +12776,7 @@ Use "golangci-lint [command] --help" for more information about a command.
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=github-tags depName=golangci/golangci-lint
-ARG GO_GOLANGCI_LINT_VERSION=2.9.0
+ARG GO_GOLANGCI_LINT_VERSION=2.10.1
 RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s "v${GO_GOLANGCI_LINT_VERSION}" \
     &amp;&amp; golangci-lint --version
 

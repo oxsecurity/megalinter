@@ -12520,7 +12520,7 @@
 </ul>
 <h2 id="kubescape-documentation">kubescape documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>4.0.1</strong></li>
+<li>Version in MegaLinter: <strong>4.0.2</strong></li>
 <li>Visit <a href="https://github.com/kubescape/kubescape#readme" target="_blank">Official Web Site</a></li>
 </ul>
 <p><a href="https://github.com/kubescape/kubescape" target="_blank"><img alt="kubescape - GitHub" src="https://gh-card.dev/repos/kubescape/kubescape.svg?fullname="></a></p>
@@ -12651,7 +12651,7 @@
 <td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" data-desc-position="bottom"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/cupcake/">cupcake</a></td>
 <td style="text-align: left;">MegaLinter for the most commonly used languages</td>
-<td style="text-align: center;">90</td>
+<td style="text-align: center;">91</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta" data-desc-position="bottom"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"></a> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake" data-desc-position="bottom"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"></a></td>
 </tr>
 <tr>
@@ -12707,7 +12707,7 @@
 <td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" data-desc-position="bottom"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/python/">python</a></td>
 <td style="text-align: left;">Optimized for PYTHON based projects</td>
-<td style="text-align: center;">67</td>
+<td style="text-align: center;">68</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta" data-desc-position="bottom"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta"></a> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-python" data-desc-position="bottom"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-python"></a></td>
 </tr>
 <tr>
@@ -12818,13 +12818,14 @@ Flags:
       --server string         Backend discovery server URL
 
 Use "kubescape [command] --help" for more information about a command.
+{"level":"info","ts":"2026-02-26T22:26:27Z","msg":"Received interrupt signal, exiting..."}
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=github-tags depName=kubescape/kubescape
-ARG KUBERNETES_KUBESCAPE_VERSION=4.0.1
+ARG KUBERNETES_KUBESCAPE_VERSION=4.0.2
 RUN ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 &amp;&amp; \
     curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v "v${KUBERNETES_KUBESCAPE_VERSION}"
 </code></pre>
