@@ -177,6 +177,17 @@ with open(MAIN_DOCKERFILE, "r", encoding="utf-8") as main_dockerfile_file:
     for match in matches:
         MAIN_DOCKERFILE_ARGS_MAP[match.group(1)] = match.group(2)
 
+PYTHON_VERSION = ""
+PYTHON_MAJOR_MINOR = ""
+
+with open(f"{REPO_HOME}/.python-version", "r", encoding="utf-8") as python_version_file:
+    PYTHON_VERSION = python_version_file.read().strip()
+    version_parts = PYTHON_VERSION.split(".")
+    if len(version_parts) >= 2:
+        PYTHON_MAJOR_MINOR = f"{version_parts[0]}.{version_parts[1]}"
+    else:
+        logging.critical("Invalid Python version in .python-version file")
+
 
 # Generate one Dockerfile by MegaLinter flavor
 def generate_all_flavors():
@@ -663,7 +674,7 @@ def build_dockerfile(
                 + f'    && VIRTUAL_ENV="/venvs/{pip_linter}" uv pip install --no-cache --upgrade '
                 + '"wheel>=0.46.2" "setuptools>=75.8.0" \\\n'
                 + f'    && VIRTUAL_ENV="/venvs/{pip_linter}" rm -rf '
-                + f"/venvs/{pip_linter}/lib/python3.13/site-packages/setuptools/_vendor/wheel* \\\n"
+                + f"/venvs/{pip_linter}/lib/python{PYTHON_MAJOR_MINOR}/site-packages/setuptools/_vendor/wheel* \\\n"
             )
             env_path_command += f":/venvs/{pip_linter}/bin"
         pipenv_install_command = pipenv_install_command[:-2]  # remove last \
