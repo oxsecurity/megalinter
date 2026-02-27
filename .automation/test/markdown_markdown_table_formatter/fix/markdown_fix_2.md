@@ -16,8 +16,8 @@ ls -la
 
 | this | is a          good | table    |
 |------|--------------------|----------|
-| haha | yesssssss          | good !   |
-| haha | yesssssss          | gooood ! |
+| haha                | yesssssss          | good !   |
+| haha |               yesssssss          | gooood ! |
 
 ### Walk away
 
