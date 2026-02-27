@@ -12330,20 +12330,18 @@
 <li>Update your GitHub Actions workflow to add the environment name</li>
 </ul>
 </li>
-<li>Method 2: Easier, but any contributor with write access can see your Personal Access Token, so use it only on private repositories.</li>
-<li><a href="https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token#creating-a-token">Create a Classic Personal Access Token</a>, then copy the PAT value</li>
-<li><a href="https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository">Define secret variable</a> named <strong>PAT</strong> on your repository, and paste the PAT value</li>
 </ul>
+<p>-- Method 2: Easier, but any contributor with write access can see your Personal Access Token, so use it only on private repositories.
+- <a href="https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token#creating-a-token">Create a Classic Personal Access Token</a>, then copy the PAT value
+- <a href="https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository">Define secret variable</a> named <strong>PAT</strong> on your repository, and paste the PAT value</p>
 <h2 id="notes">Notes</h2>
 <ul>
 <li>You can use the <a href="../reporters/UpdatedSourcesReporter/">Updated sources reporter</a> if you don't want fixes to be automatically applied on the Git branch. Instead, download them in a ZIP file and manually extract them into your project.</li>
 <li>If used, <code>APPLY_FIXES_EVENT</code> and <code>APPLY_FIXES_MODE</code> cannot be defined in the <code>.mega-linter.yml</code> config file; they must be set as environment variables.</li>
-<li>
-<p>If you use <code>APPLY_FIXES</code>, add the following line to your <code>.gitignore</code> file:</p>
-<p><code>shell
-megalinter-reports/</code></p>
-</li>
+<li>If you use <code>APPLY_FIXES</code>, add the following line to your <code>.gitignore</code> file:</li>
 </ul>
+<pre><code class="language-shell">megalinter-reports/
+</code></pre>
 <!-- config-apply-fixes-section-end -->
 
 
