@@ -63,6 +63,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Allow to skip linters build using `skip linters` in latest commit text
   - Allow to disable build & push of standalone linters docker images using variable `BETA_LINTERS_ENABLED=false`
   - Improve performances of formatting markdown tables during build
+  - Improve test classes performances and fix race conditions
 
 - mega-linter-runner
   - If variables are defined in a local .env file, send their values to docker/podman run command (can be useful for secret variables)
