@@ -12518,7 +12518,7 @@
 </ul>
 <h2 id="rubocop-documentation">rubocop documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.84.2</strong></li>
+<li>Version in MegaLinter: <strong>1.85.0</strong></li>
 <li>Visit <a href="https://rubocop.org/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://docs.rubocop.org/rubocop/configuration.html" target="_blank">How to configure rubocop rules</a><ul>
 <li>If custom <code>.ruby-lint.yml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruby-lint.yml" target="_blank">.ruby-lint.yml</a> will be used</li>
@@ -12787,6 +12787,10 @@ Caching:
 LSP Option:
         --lsp                        Start a language server listening on STDIN.
 
+MCP Option:
+        --mcp                        Start an MCP (Model Context Protocol) server that
+                                     communicates over stdio.
+
 Server Options:
         --[no-]server                If a server process has not been started yet, start
                                      the server process and execute inspection with server.
@@ -12910,7 +12914,7 @@ Profiling Options:
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=rubygems depName=rubocop
-ARG GEM_RUBOCOP_VERSION=1.84.2
+ARG GEM_RUBOCOP_VERSION=1.85.0
 # renovate: datasource=rubygems depName=rubocop-github
 ARG GEM_RUBOCOP_GITHUB_VERSION=0.26.0
 # renovate: datasource=rubygems depName=rubocop-performance
@@ -12924,7 +12928,7 @@ ARG GEM_RUBOCOP_RSPEC_VERSION=3.9.0
 </code></pre>
 <ul>
 <li>GEM packages (Ruby) :<ul>
-<li><a href="https://rubygems.org/gems/rubocop/versions/1.84.2">rubocop:1.84.2</a></li>
+<li><a href="https://rubygems.org/gems/rubocop/versions/1.85.0">rubocop:1.85.0</a></li>
 <li><a href="https://rubygems.org/gems/rubocop-github/versions/0.26.0">rubocop-github:0.26.0</a></li>
 <li><a href="https://rubygems.org/gems/rubocop-performance/versions/1.26.1">rubocop-performance:1.26.1</a></li>
 <li><a href="https://rubygems.org/gems/rubocop-rails/versions/2.34.3">rubocop-rails:2.34.3</a></li>

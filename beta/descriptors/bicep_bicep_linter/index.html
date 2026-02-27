@@ -12519,7 +12519,7 @@
 <p>By default, Bicep linter errors are set as warnings. To customize linter settings, use a <code>bicepconfig.json</code> file. For more information, see the <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config-linter#customize-linter">documentation for the Bicep Linter</a></p>
 <h2 id="bicep_linter-documentation">bicep_linter documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.40.2</strong></li>
+<li>Version in MegaLinter: <strong>0.41.2</strong></li>
 <li>Visit <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config" target="_blank">How to configure bicep_linter rules</a></li>
 <li>See <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#silencing-false-positives" target="_blank">How to disable bicep_linter rules in files</a></li>
@@ -12683,7 +12683,7 @@ az bicep build -f infra.bicep
 
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">Bicep CLI version 0.40.2 (271b0e1d4b)
+<pre><code class="language-shell">Bicep CLI version 0.41.2 (3e403ea7c1)
 
 Usage:
   bicep build [options] [&lt;file&gt;]
@@ -12887,6 +12887,28 @@ Usage:
       bicep jsonrpc --socket 9853
       bicep jsonrpc --stdio
 
+  bicep snapshot [options] &lt;file&gt;
+    Generates or validates a deployment snapshot from a .bicepparam file.
+
+    Arguments:
+      &lt;file&gt;        The input .bicepparam file
+
+    Options:
+      --mode &lt;mode&gt;              Sets the snapshot mode. Valid values are ( overwrite | validate ).
+                                   Overwrite: Generates a new snapshot and saves it to &lt;file&gt;.snapshot.json.
+                                   Validate: Compares the generated snapshot against an existing snapshot file.
+      --tenant-id &lt;id&gt;           The tenant ID to use for the deployment.
+      --subscription-id &lt;id&gt;     The subscription ID to use for the deployment.
+      --resource-group &lt;name&gt;    The resource group name to use for the deployment.
+      --location &lt;location&gt;      The location to use for the deployment.
+      --deployment-name &lt;name&gt;   The deployment name to use.
+
+    Examples:
+      bicep snapshot params.bicepparam
+      bicep snapshot params.bicepparam --mode overwrite
+      bicep snapshot params.bicepparam --mode validate
+      bicep snapshot params.bicepparam --subscription-id 00000000-0000-0000-0000-000000000000 --resource-group my-rg
+
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
@@ -12894,7 +12916,7 @@ Usage:
 </ul>
 <pre><code class="language-dockerfile">ARG TARGETPLATFORM
 # renovate: datasource=github-tags depName=Azure/bicep
-ARG BICEP_VERSION=0.40.2
+ARG BICEP_VERSION=0.41.2
 ARG BICEP_EXE='bicep'
 ARG BICEP_DIR='/usr/local/bin'
 FROM multiarch/qemu-user-static:x86_64-aarch64 AS qemu
