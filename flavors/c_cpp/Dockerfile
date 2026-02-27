@@ -166,7 +166,7 @@ ARG PIP_SNAKEMAKE_VERSION=9.16.3
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=0.11.4
 # renovate: datasource=npm depName=cspell
-ARG NPM_CSPELL_VERSION=9.6.4
+ARG NPM_CSPELL_VERSION=9.7.0
 # renovate: datasource=pypi depName=proselint
 ARG PIP_PROSELINT_VERSION=0.14.0
 # renovate: datasource=pypi depName=codespell
