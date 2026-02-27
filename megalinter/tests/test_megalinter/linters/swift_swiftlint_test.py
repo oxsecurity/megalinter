@@ -12,3 +12,6 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 class swift_swiftlint_test(TestCase, LinterTestRoot):
     descriptor_id = "SWIFT"
     linter_name = "swiftlint"
+
+    def test_format_fix(self):
+        raise unittest.SkipTest("Mess with docker and local files, skip the test")
