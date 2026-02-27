@@ -29,7 +29,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-python@v6
         with:
-          python-version: 3.12.12
+          python-version: 3.14.3
       - run: pip install --upgrade -r .config/python/dev/requirements.txt
       - run: cd .automation && bash build_schemas_doc.sh && cd ..
       # - run: mkdocs gh-deploy --force
