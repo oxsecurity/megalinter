@@ -83,7 +83,7 @@ runs:
 
     - name: Upload build artifacts
       if: always()
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v7
       with:
         name: megalinter-custom-flavor-artifacts
         path: |
