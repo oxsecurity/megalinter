@@ -210,6 +210,10 @@ CVE-2025-12183
 CVE-2026-27606
 # https://avd.aquasec.com/nvd/cve-2026-27699 : in Salesforce/cli, they will fix that soon, but as linters do not connect to Salesforce orgs, this is not applicable in MegaLinter context
 CVE-2026-27699
+# https://avd.aquasec.com/nvd/cve-2026-27903 : minimatch ReDoS vulnerability, not applicable in MegaLinter context
+CVE-2026-27903
+# https://avd.aquasec.com/nvd/cve-2026-27904 : minimatch ReDoS vulnerability, not applicable in MegaLinter context
+CVE-2026-27904
 # Dockerfile
 DS001
 DS-0001
