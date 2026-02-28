@@ -190,7 +190,7 @@ jobs:
     # Name the Job
     name: Deploy Docker Image (Custom Flavor Builder) - RELEASE
     # Set the agent to run on
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.runner }}
     # Only run on main repo
     if: github.repository == 'oxsecurity/megalinter' && !contains(github.event.head_commit.message, 'skip deploy')
     permissions:
@@ -230,6 +230,7 @@ jobs:
         run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> ${GITHUB_ENV}
 
       - name: Build Flavor Builder Image
+        id: build
         uses: docker/build-push-action@v6
         with:
           context: .
@@ -239,14 +240,10 @@ jobs:
             BUILD_DATE=${{ env.BUILD_DATE }}
             BUILD_REVISION=${{ github.sha }}
             BUILD_VERSION=${{ github.event.release.tag_name }}
-          load: false
-          push: true
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           # MAJOR-RELEASE-IMPACTED
-          tags: |
-            ghcr.io/${{ github.repository }}-custom-flavor-builder
-          outputs: type=image,push-by-digest=true,name-canonical=true,push=true
+          outputs: type=image,"name=ghcr.io/${{ github.repository }}-custom-flavor-builder",push-by-digest=true,name-canonical=true,push=true
 
       - name: Export digest
         run: |

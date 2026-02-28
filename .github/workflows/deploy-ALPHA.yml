@@ -217,9 +217,7 @@ jobs:
             BUILD_VERSION=alpha
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          tags: |
-            ghcr.io/${{ github.repository }}-custom-flavor-builder
-          outputs: type=image,push-by-digest=true,name-canonical=true,push=true
+          outputs: type=image,"name=ghcr.io/${{ github.repository }}-custom-flavor-builder",push-by-digest=true,name-canonical=true,push=true
 
       - name: Export digest
         run: |
