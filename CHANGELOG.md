@@ -225,6 +225,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [semgrep](https://semgrep.dev/) from 1.153.0 to **1.153.1** on 2026-02-27
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.93.5 to **3.93.6** on 2026-02-27
   - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 8.2.0 to **8.2.2** on 2026-02-27
+  - [pmd](https://pmd.github.io/) from 7.21.0 to **7.22.0** on 2026-02-28
+  - [rumdl](https://github.com/rvben/rumdl) from 0.1.31 to **0.1.32** on 2026-02-28
 <!-- linter-versions-end -->
 
 ## [v9.3.0] - 2026-01-04
