@@ -3097,9 +3097,9 @@ sigstore@^4.0.0:
     "@sigstore/verify" "^3.1.0"
 
 simple-git@^3.20.0, simple-git@^3.28.0:
-  version "3.32.2"
-  resolved "https://registry.yarnpkg.com/simple-git/-/simple-git-3.32.2.tgz#fb0260126d03d329cc8f9ed56d5883415aa11bd9"
-  integrity "sha1-+wJgEm0D0ynMj57VbViDQVqhG9k= sha512-n/jhNmvYh8dwyfR6idSfpXrFazuyd57jwNMzgjGnKZV/1lTh0HKvPq20v4AQ62rP+l19bWjjXPTCdGHMt0AdrQ=="
+  version "3.32.3"
+  resolved "https://registry.yarnpkg.com/simple-git/-/simple-git-3.32.3.tgz#1dd6030fd03df4533a9e5a941314335e6265055d"
+  integrity sha512-56a5oxFdWlsGygOXHWrG+xjj5w9ZIt2uQbzqiIGdR/6i5iococ7WQ/bNPzWxCJdEUGUCmyMH0t9zMpRJTaKxmw==
   dependencies:
     "@kwsites/file-exists" "^1.1.1"
     "@kwsites/promise-deferred" "^1.1.1"
