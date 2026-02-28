@@ -35,6 +35,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - mega-linter-runner
 
 - Linter versions upgrades (N)
+  - [isort](https://pycqa.github.io/isort/) from 8.0.0 to **8.0.1** on 2026-02-28
 <!-- linter-versions-end -->
 
 ## [v9.4.0] - 2026-02-28

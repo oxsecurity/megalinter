@@ -46,7 +46,7 @@
     "hadolint": "2.14.0",
     "helm": "3.19.0",
     "htmlhint": "1.9.1",
-    "isort": "8.0.0",
+    "isort": "8.0.1",
     "jscpd": "4.0.8",
     "jsonlint": "17.0.1",
     "kics": "2.1.19",
