@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Use Azure Resource Manager Template Toolkit to lint ARM files
-https://github.com/Azure/arm-ttk
+https://github.com/Azure/arm-ttk yeah
 """
 
 import sys
