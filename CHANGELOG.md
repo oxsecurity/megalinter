@@ -89,6 +89,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Update default secured env variables documentation
   - Fix banner img in json_prettier and yaml_prettier docs
   - Explain better how to run tests locally
+  - Vale: Mention community style packages in linter description
 
 - CI
   - Free more space on GitHub Actions runners to avoid build failures
