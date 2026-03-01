@@ -798,7 +798,7 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
         "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" \
 #
 # CSHARP installation
-    && apk add --no-cache dotnet9-sdk
+    && apk add --no-cache dotnet10-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
 #
 # DART installation
@@ -902,7 +902,7 @@ RUN curl --retry-all-errors --retry 10 -fLo coursier https://git.io/coursier-cli
 #
 # VBDOTNET installation
 # Next line commented because already managed by another linter
-# RUN apk add --no-cache dotnet9-sdk
+# RUN apk add --no-cache dotnet10-sdk
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools"
 #
@@ -1171,7 +1171,7 @@ ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$
 #
 # devskim installation
 # Next line commented because already managed by another linter
-# RUN apk add --no-cache dotnet9-sdk
+# RUN apk add --no-cache dotnet10-sdk
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools"
 RUN dotnet tool install --allow-roll-forward --global Microsoft.CST.DevSkim.CLI --version ${REPOSITORY_DEVSKIM_VERSION} \

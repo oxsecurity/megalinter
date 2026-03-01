@@ -246,7 +246,7 @@ COPY --link --from=terragrunt /bin/terraform /usr/bin/
 #############################################################################################
 #OTHER__START
 # CSHARP installation
-RUN apk add --no-cache dotnet9-sdk
+RUN apk add --no-cache dotnet10-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
 #
 # POWERSHELL installation
@@ -264,7 +264,7 @@ esac \
 #
 # VBDOTNET installation
 # Next line commented because already managed by another linter
-# RUN apk add --no-cache dotnet9-sdk
+# RUN apk add --no-cache dotnet10-sdk
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools"
 #
