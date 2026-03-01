@@ -207,7 +207,7 @@ ARG NPM_MARKDOWNLINT_CLI_VERSION=0.47.0
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.1.32
+ARG PIP_RUMDL_VERSION=0.1.33
 # renovate: datasource=packagist depName=squizlabs/php_codesniffer
 ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=4.0.1
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
@@ -231,7 +231,7 @@ ARG PIP_BLACK_VERSION=26.1.0
 # renovate: datasource=pypi depName=flake8
 ARG PIP_FLAKE8_VERSION=7.3.0
 # renovate: datasource=pypi depName=isort
-ARG PIP_ISORT_VERSION=8.0.0
+ARG PIP_ISORT_VERSION=8.0.1
 # renovate: datasource=pypi depName=mypy
 ARG PIP_MYPY_VERSION=1.19.1
 # renovate: datasource=pypi depName=nbqa

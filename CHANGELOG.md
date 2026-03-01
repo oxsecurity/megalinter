@@ -35,6 +35,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - mega-linter-runner
 
 - Linter versions upgrades (N)
+  - [isort](https://pycqa.github.io/isort/) from 8.0.0 to **8.0.1** on 2026-02-28
 <!-- linter-versions-end -->
 
 ## [v9.4.0] - 2026-02-28
@@ -89,6 +90,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Update default secured env variables documentation
   - Fix banner img in json_prettier and yaml_prettier docs
   - Explain better how to run tests locally
+  - Vale: Mention community style packages in linter description
 
 - CI
   - Free more space on GitHub Actions runners to avoid build failures

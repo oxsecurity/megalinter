@@ -53,7 +53,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 #############################################################################################
 #ARG__START
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.1.32
+ARG PIP_RUMDL_VERSION=0.1.33
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=26.0.1
 # renovate: datasource=pypi depName=virtualenv
