@@ -138,7 +138,7 @@ ARG NPM_MARKDOWNLINT_CLI_VERSION=0.47.0
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.1.32
+ARG PIP_RUMDL_VERSION=0.1.33
 # renovate: datasource=pypi depName=pylint
 ARG PIP_PYLINT_VERSION=4.0.5
 # renovate: datasource=pypi depName=typing-extensions
@@ -148,7 +148,7 @@ ARG PIP_BLACK_VERSION=26.1.0
 # renovate: datasource=pypi depName=flake8
 ARG PIP_FLAKE8_VERSION=7.3.0
 # renovate: datasource=pypi depName=isort
-ARG PIP_ISORT_VERSION=8.0.0
+ARG PIP_ISORT_VERSION=8.0.1
 # renovate: datasource=pypi depName=bandit
 ARG PIP_BANDIT_VERSION=1.9.4
 # renovate: datasource=pypi depName=bandit_sarif_formatter
