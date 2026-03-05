@@ -216,6 +216,8 @@ CVE-2026-27903
 CVE-2026-27904
 # https://avd.aquasec.com/nvd/cve-2026-27601 : underscore Redos vulnerability, not applicable in MegaLinter context  
 CVE-2026-27601
+# https://avd.aquasec.com/nvd/cve-2026-24051 : go telemetry PATH vulnerability, not applicable in MegaLinter context as we don't allow to send custom paths to this library
+CVE-2026-24051
 # Dockerfile
 DS001
 DS-0001
