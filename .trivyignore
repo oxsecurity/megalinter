@@ -214,6 +214,8 @@ CVE-2026-27699
 CVE-2026-27903
 # https://avd.aquasec.com/nvd/cve-2026-27904 : minimatch ReDoS vulnerability, not applicable in MegaLinter context
 CVE-2026-27904
+# https://avd.aquasec.com/nvd/cve-2026-27601 : underscore Redos vulnerability, not applicable in MegaLinter context  
+CVE-2026-27601
 # Dockerfile
 DS001
 DS-0001
