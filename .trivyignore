@@ -218,6 +218,8 @@ CVE-2026-27904
 CVE-2026-27601
 # https://avd.aquasec.com/nvd/cve-2026-24051 : go telemetry PATH vulnerability, not applicable in MegaLinter context as we don't allow to send custom paths to this library
 CVE-2026-24051
+# https://github.com/advisories/GHSA-72hv-8253-57qq: com.fasterxml.jackson.core:jackson-core DDOS vulnerability, not applicable in MegaLinter context
+GHSA-72hv-8253-57qq
 # Dockerfile
 DS001
 DS-0001
