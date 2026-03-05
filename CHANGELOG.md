@@ -36,6 +36,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Linter versions upgrades (N)
   - [isort](https://pycqa.github.io/isort/) from 8.0.0 to **8.0.1** on 2026-02-28
+  - [rumdl](https://github.com/rvben/rumdl) from 0.1.32 to **0.1.33** on 2026-03-04
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.69.1 to **0.69.2** on 2026-03-04
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.69.1 to **0.69.2** on 2026-03-04
 <!-- linter-versions-end -->
 
 ## [v9.4.0] - 2026-02-28
