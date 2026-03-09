@@ -224,6 +224,8 @@ GHSA-72hv-8253-57qq
 GHSA-qffp-2rhf-9h96
 # https://avd.aquasec.com/nvd/cve-2026-29786 : tar, not applicable in MegaLinter context as we don't use tar in a way that could be vulnerable to this issue
 CVE-2026-29786
+# https://avd.aquasec.com/nvd/2026/cve-2026-29786/: Docker for windows, this issue does not impact non-Windows binaries
+CVE-2025-15558
 # Dockerfile
 DS001
 DS-0001
