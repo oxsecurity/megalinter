@@ -39,6 +39,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rumdl](https://github.com/rvben/rumdl) from 0.1.32 to **0.1.33** on 2026-03-04
   - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.69.1 to **0.69.2** on 2026-03-04
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.69.1 to **0.69.2** on 2026-03-04
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.45.0 to **1.46.0** on 2026-03-09
+  - [rumdl](https://github.com/rvben/rumdl) from 0.1.33 to **0.1.42** on 2026-03-09
+  - [black](https://black.readthedocs.io/en/stable/) from 26.1.0 to **26.3.0** on 2026-03-09
+  - [grype](https://github.com/anchore/grype) from 0.109.0 to **0.109.1** on 2026-03-09
+  - [syft](https://github.com/anchore/syft) from 1.42.1 to **1.42.2** on 2026-03-09
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.93 to **0.1.94** on 2026-03-09
 <!-- linter-versions-end -->
 
 ## [v9.4.0] - 2026-02-28
