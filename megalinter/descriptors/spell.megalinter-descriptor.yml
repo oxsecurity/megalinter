@@ -328,7 +328,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=codespell
-          ARG PIP_CODESPELL_VERSION=2.4.1
+          ARG PIP_CODESPELL_VERSION=2.4.2
       pip:
         - codespell==${PIP_CODESPELL_VERSION}
     supported_platforms:
