@@ -15,7 +15,7 @@ See the [codespell documentation](https://github.com/codespell-project/codespell
 
 ## codespell documentation
 
-- Version in MegaLinter: **2.4.1**
+- Version in MegaLinter: **2.4.2**
 - Visit [Official Web Site](https://github.com/codespell-project/codespell#readme){target=_blank}
 - See [How to configure codespell rules](https://github.com/codespell-project/codespell?tab=readme-ov-file#using-a-config-file){target=_blank}
 - See [How to disable codespell rules in files](https://github.com/codespell-project/codespell?tab=readme-ov-file#inline-ignore){target=_blank}
@@ -141,6 +141,7 @@ options:
                           uint)
                         - 'names' for valid proper names that might be typos
                         - 'en-GB_to_en-US' for corrections from en-GB to en-US
+                        - 'en_to_en-OX' for corrections from en to en-OX
                         The default is 'clear,rare'.
   --ignore-regex IGNORE_REGEX
                         regular expression that is used to find patterns to
@@ -227,6 +228,8 @@ options:
                         stdin mode
   --config CONFIG       path to config file.
   --toml TOML           path to a pyproject.toml file.
+
+Use @PATH to read additional arguments from file PATH.
 ```
 
 ### Installation on mega-linter Docker image
@@ -234,8 +237,8 @@ options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=codespell
-ARG PIP_CODESPELL_VERSION=2.4.1
+ARG PIP_CODESPELL_VERSION=2.4.2
 ```
 
 - PIP packages (Python):
-  - [codespell==2.4.1](https://pypi.org/project/codespell/2.4.1)
+  - [codespell==2.4.2](https://pypi.org/project/codespell/2.4.2)

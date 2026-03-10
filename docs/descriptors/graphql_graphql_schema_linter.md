@@ -122,11 +122,11 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=graphql
-ARG NPM_GRAPHQL_VERSION=16.13.0
+ARG NPM_GRAPHQL_VERSION=16.13.1
 # renovate: datasource=npm depName=graphql-schema-linter
 ARG NPM_GRAPHQL_SCHEMA_LINTER_VERSION=3.0.1
 ```
 
 - NPM packages (node.js):
-  - [graphql@16.13.0](https://www.npmjs.com/package/graphql/v/16.13.0)
+  - [graphql@16.13.1](https://www.npmjs.com/package/graphql/v/16.13.1)
   - [graphql-schema-linter@3.0.1](https://www.npmjs.com/package/graphql-schema-linter/v/3.0.1)

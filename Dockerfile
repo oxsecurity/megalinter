@@ -1280,7 +1280,7 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOS
 #
 # tsqllint installation
 # Next line commented because already managed by another linter
-# RUN apk add --no-cache dotnet9-sdk
+# RUN apk add --no-cache dotnet10-sdk
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/root/.dotnet/tools"
     && dotnet tool install --allow-roll-forward --global TSQLLint --version ${SQL_TSQLLINT_VERSION}

@@ -123,7 +123,7 @@ Run 'roslynator help [command]' for more information on a command.
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
-RUN apk add --no-cache dotnet9-sdk
+RUN apk add --no-cache dotnet10-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
 # Linter install
 # renovate: datasource=nuget depName=roslynator.dotnet.cli
