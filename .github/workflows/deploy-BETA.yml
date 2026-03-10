@@ -94,7 +94,7 @@ jobs:
           sudo rm -rf /opt/hostedtoolcache/go # Go toolcache
 
       - name: Docker Metadata action
-        uses: docker/metadata-action@v5.10.0
+        uses: docker/metadata-action@v6
         id: meta
         with:
           images: |
@@ -103,7 +103,7 @@ jobs:
             type=raw,value=beta
 
       - name: Docker Metadata action (Docker Hub)
-        uses: docker/metadata-action@v5.10.0
+        uses: docker/metadata-action@v6
         id: meta-dhub
         with:
           images: |
@@ -112,7 +112,7 @@ jobs:
             type=raw,value=beta
 
       - name: Docker Metadata action (Server)
-        uses: docker/metadata-action@v5.10.0
+        uses: docker/metadata-action@v6
         id: meta-s
         with:
           images: |
@@ -121,7 +121,7 @@ jobs:
             type=raw,value=beta
 
       - name: Docker Metadata action (Server Docker Hub)
-        uses: docker/metadata-action@v5.10.0
+        uses: docker/metadata-action@v6
         id: meta-s-dhub
         with:
           images: |
@@ -139,7 +139,7 @@ jobs:
       #       type=raw,value=beta
 
       - name: Docker Metadata action (Worker Server)
-        uses: docker/metadata-action@v5.10.0
+        uses: docker/metadata-action@v6
         id: meta-w-dhub
         with:
           images: |
@@ -362,7 +362,7 @@ jobs:
 
       - name: Docker meta
         id: meta
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@v6
         with:
           images: ghcr.io/${{ github.repository }}-custom-flavor-builder
           tags: |

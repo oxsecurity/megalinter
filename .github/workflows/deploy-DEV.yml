@@ -65,7 +65,7 @@ jobs:
           sudo rm -rf /opt/hostedtoolcache/go # Go toolcache
 
       - name: Docker Metadata action
-        uses: docker/metadata-action@v5.10.0
+        uses: docker/metadata-action@v6
         id: meta
         with:
           images: |
