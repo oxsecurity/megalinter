@@ -45,6 +45,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [grype](https://github.com/anchore/grype) from 0.109.0 to **0.109.1** on 2026-03-09
   - [syft](https://github.com/anchore/syft) from 1.42.1 to **1.42.2** on 2026-03-09
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.93 to **0.1.94** on 2026-03-09
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 16.2.0 to **17.0.0** on 2026-03-10
 <!-- linter-versions-end -->
 
 ## [v9.4.0] - 2026-02-28
