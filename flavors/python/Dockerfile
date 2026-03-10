@@ -200,7 +200,7 @@ ARG NPM_CSPELL_VERSION=9.7.0
 # renovate: datasource=pypi depName=proselint
 ARG PIP_PROSELINT_VERSION=0.14.0
 # renovate: datasource=pypi depName=codespell
-ARG PIP_CODESPELL_VERSION=2.4.1
+ARG PIP_CODESPELL_VERSION=2.4.2
 # renovate: datasource=pypi depName=sqlfluff
 ARG PIP_SQLFLUFF_VERSION=4.0.4
 # renovate: datasource=npm depName=@ibm/tekton-lint
