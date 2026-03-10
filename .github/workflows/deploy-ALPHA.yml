@@ -102,7 +102,7 @@ jobs:
         run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> ${GITHUB_ENV}
 
       - name: Build & Push Docker Image (Server)
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: .
           file: server/Dockerfile
@@ -120,7 +120,7 @@ jobs:
           # ghcr.io/oxsecurity/megalinter-server:alpha-${{ github.sha }}
 
       - name: Build & Push Docker Image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: .
           file: Dockerfile
@@ -138,7 +138,7 @@ jobs:
           # ghcr.io/oxsecurity/megalinter:alpha-${{ github.sha }}
 
       # - name: Build & Push Worker Docker Image
-      #   uses: docker/build-push-action@v6
+      #   uses: docker/build-push-action@v7
       #   with:
       #     context: .
       #     file: Dockerfile-worker
@@ -206,7 +206,7 @@ jobs:
 
       - name: Build Flavor Builder Image
         id: build
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: .
           file: Dockerfile-custom-flavor
