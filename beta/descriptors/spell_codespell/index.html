@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../assets/images/mega-linter-square.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
     
     
       
@@ -12487,7 +12487,7 @@
 <p>See the <a href="https://github.com/codespell-project/codespell">codespell documentation</a> for details.</p>
 <h2 id="codespell-documentation">codespell documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>2.4.1</strong></li>
+<li>Version in MegaLinter: <strong>2.4.2</strong></li>
 <li>Visit <a href="https://github.com/codespell-project/codespell#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/codespell-project/codespell?tab=readme-ov-file#using-a-config-file" target="_blank">How to configure codespell rules</a></li>
 <li>See <a href="https://github.com/codespell-project/codespell?tab=readme-ov-file#inline-ignore" target="_blank">How to disable codespell rules in files</a></li>
@@ -12774,6 +12774,7 @@ options:
                           uint)
                         - 'names' for valid proper names that might be typos
                         - 'en-GB_to_en-US' for corrections from en-GB to en-US
+                        - 'en_to_en-OX' for corrections from en to en-OX
                         The default is 'clear,rare'.
   --ignore-regex IGNORE_REGEX
                         regular expression that is used to find patterns to
@@ -12860,17 +12861,19 @@ options:
                         stdin mode
   --config CONFIG       path to config file.
   --toml TOML           path to a pyproject.toml file.
+
+Use @PATH to read additional arguments from file PATH.
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=pypi depName=codespell
-ARG PIP_CODESPELL_VERSION=2.4.1
+ARG PIP_CODESPELL_VERSION=2.4.2
 </code></pre>
 <ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/codespell/2.4.1">codespell==2.4.1</a></li>
+<li><a href="https://pypi.org/project/codespell/2.4.2">codespell==2.4.2</a></li>
 </ul>
 </li>
 </ul>
