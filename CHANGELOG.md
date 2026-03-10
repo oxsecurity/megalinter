@@ -46,6 +46,17 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 1.42.1 to **1.42.2** on 2026-03-09
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.93 to **0.1.94** on 2026-03-09
   - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 16.2.0 to **17.0.0** on 2026-03-10
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 9.0.114 to **10.0.103** on 2026-03-10
+  - [htmlhint](https://htmlhint.com/) from 1.9.1 to **1.9.2** on 2026-03-10
+  - [rumdl](https://github.com/rvben/rumdl) from 0.1.42 to **0.1.44** on 2026-03-10
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.4 to **0.15.5** on 2026-03-10
+  - [ruff](https://github.com/astral-sh/ruff) from 0.15.4 to **0.15.5** on 2026-03-10
+  - [checkov](https://www.checkov.io/) from 3.2.506 to **3.2.508** on 2026-03-10
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.69.2 to **0.69.3** on 2026-03-10
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.69.2 to **0.69.3** on 2026-03-10
+  - [rubocop](https://rubocop.org/) from 1.85.0 to **1.85.1** on 2026-03-10
+  - [codespell](https://github.com/codespell-project/codespell) from 2.4.1 to **2.4.2** on 2026-03-10
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.14.5 to **1.14.6** on 2026-03-10
 <!-- linter-versions-end -->
 
 ## [v9.4.0] - 2026-02-28
