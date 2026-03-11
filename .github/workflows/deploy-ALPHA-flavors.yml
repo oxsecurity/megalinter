@@ -101,7 +101,7 @@ jobs:
         run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> ${GITHUB_ENV}
 
       - name: Build Image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: .
           file: flavors/${{ matrix.flavor }}/Dockerfile
@@ -118,7 +118,7 @@ jobs:
             ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:alpha
 
       # - name: Build Worker Image
-      #   uses: docker/build-push-action@v6
+      #   uses: docker/build-push-action@v7
       #   with:
       #     context: .
       #     file: Dockerfile-worker
