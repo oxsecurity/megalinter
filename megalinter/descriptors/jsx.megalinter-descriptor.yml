@@ -11,6 +11,8 @@ linters:
   # ESLINT
   - class: EslintLinter
     linter_name: eslint
+    disabled: true
+    disabled_reason: "eslint-plugin-react not compliant with eslint 10: https://github.com/jsx-eslint/eslint-plugin-react/issues/3977"
     can_output_sarif: true
     linter_text: |
       **ESLint with React Plugin** provides comprehensive linting for JSX files, combining ESLint's powerful static analysis with React-specific rules to ensure high-quality React applications written in JavaScript.
@@ -66,20 +68,12 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=eslint
-          ARG NPM_ESLINT_VERSION=8.57.1
-        - |-
-          # renovate: datasource=npm depName=eslint-plugin-react
-          ARG NPM_ESLINT_PLUGIN_REACT_VERSION=7.37.5
-        - |-
-          # renovate: datasource=npm depName=eslint-plugin-jsx-a11y
-          ARG NPM_ESLINT_PLUGIN_JSX_ALLY_VERSION=6.10.2
+          ARG NPM_ESLINT_VERSION=10.0.1
         - |-
           # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
           ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
       npm:
         - eslint@${NPM_ESLINT_VERSION}
-        - eslint-plugin-react@${NPM_ESLINT_PLUGIN_REACT_VERSION}
-        - eslint-plugin-jsx-a11y@${NPM_ESLINT_PLUGIN_JSX_ALLY_VERSION}
         - "@microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION}"
     supported_platforms:
       platform:
