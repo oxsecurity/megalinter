@@ -57,6 +57,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rubocop](https://rubocop.org/) from 1.85.0 to **1.85.1** on 2026-03-10
   - [codespell](https://github.com/codespell-project/codespell) from 2.4.1 to **2.4.2** on 2026-03-10
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.14.5 to **1.14.6** on 2026-03-10
+  - [kics](https://www.kics.io) from 2.1.19 to **2.1.20** on 2026-03-10
 <!-- linter-versions-end -->
 
 ## [v9.4.0] - 2026-02-28
