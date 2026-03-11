@@ -1,0 +1,1 @@
+{"diagnostics": [{"id": "R001", "message": "Example issue", "file": "src/foo.cs", "line": 10}]}
