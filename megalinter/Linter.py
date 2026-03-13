@@ -99,6 +99,7 @@ class Linter:
         self.ignore_for_flavor_suggestions = False
 
         self.cli_lint_mode = "file"
+        self.supported_cli_lint_modes = []
         self.cli_docker_image = None
         self.cli_docker_image_version = "latest"
         self.cli_docker_args = []
@@ -173,6 +174,7 @@ class Linter:
         # Initialize with configuration data
         for key, value in linter_config.items():
             self.__setattr__(key, value)
+        self.descriptor_cli_lint_mode = self.cli_lint_mode
         if "request_id" in params:
             self.request_id = params["request_id"]
         elif self.master is not None:

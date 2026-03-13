@@ -22,7 +22,8 @@ file_extensions:
   - ".cuh"
 linters:
   # Cppcheck
-  - linter_name: cppcheck
+  - class: CppcheckLinter
+    linter_name: cppcheck
     linter_text: |
       **Cppcheck** is a powerful static analysis tool for C and C++ code that detects bugs and undefined behavior that compilers typically miss. It performs deep code analysis without requiring code execution or special build configurations.
 
@@ -44,6 +45,11 @@ linters:
       - --error-exitcode=1
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: "error:"
+    cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     examples:
       - "cppcheck myfile.cpp"
     install:
@@ -74,6 +80,9 @@ linters:
     linter_spdx_license: BSD-3-Clause
     linter_rules_url: https://google.github.io/styleguide/cppguide.html
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
     cli_help_arg_name: "--help"
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "Total errors found: ([0-9]+)"
@@ -113,6 +122,9 @@ linters:
     linter_rules_configuration_url: https://releases.llvm.org/21.1.0/tools/clang/docs/ClangFormatStyleOptions.html
     linter_rules_inline_disable_url: https://releases.llvm.org/21.1.0/tools/clang/docs/ClangFormatStyleOptions.html#disabling-formatting-on-a-piece-of-code
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
     cli_help_arg_name: "--help"
     cli_lint_extra_args:
       - "--Werror"

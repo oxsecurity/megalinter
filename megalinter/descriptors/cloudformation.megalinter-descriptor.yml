@@ -13,7 +13,8 @@ file_contains_regex:
   - "(AWS|Alexa|Custom)::"
 linters:
   # AWS CloudFormation Lint
-  - linter_name: cfn-lint
+  - class: CfnLintLinter
+    linter_name: cfn-lint
     linter_text: |
       **CFN-Lint** (CloudFormation Linter) is the official AWS tool for validating AWS CloudFormation yaml/json templates against the AWS CloudFormation resource provider schemas and additional best practice checks.
 
@@ -57,6 +58,10 @@ linters:
     config_file_name: .cfnlintrc.yml
     cli_config_arg_name: "--config-file"
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_sarif_args:
       - --format
       - sarif
