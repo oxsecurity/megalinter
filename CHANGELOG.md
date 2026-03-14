@@ -58,6 +58,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [codespell](https://github.com/codespell-project/codespell) from 2.4.1 to **2.4.2** on 2026-03-10
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.14.5 to **1.14.6** on 2026-03-10
   - [kics](https://www.kics.io) from 2.1.19 to **2.1.20** on 2026-03-10
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 10.0.103 to **10.0.104** on 2026-03-14
+  - [black](https://black.readthedocs.io/en/stable/) from 26.3.0 to **26.3.1** on 2026-03-14
 <!-- linter-versions-end -->
 
 ## [v9.4.0] - 2026-02-28
