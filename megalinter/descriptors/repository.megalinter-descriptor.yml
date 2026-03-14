@@ -675,7 +675,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=semgrep
-          ARG PIP_SEMGREP_VERSION=1.153.1
+          ARG PIP_SEMGREP_VERSION=1.155.0
       pip:
         - semgrep==${PIP_SEMGREP_VERSION}
     variables:
