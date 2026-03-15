@@ -82,7 +82,7 @@ ARG PIP_RUMDL_VERSION=0.1.44
 ARG PSSA_VERSION='1.24.0'
 
 # renovate: datasource=pypi depName=black
-ARG PIP_BLACK_VERSION=26.1.0
+ARG PIP_BLACK_VERSION=26.3.1
 # renovate: datasource=pypi depName=isort
 ARG PIP_ISORT_VERSION=8.0.1
 # renovate: datasource=pypi depName=ruff
