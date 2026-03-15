@@ -33,6 +33,7 @@ dependencies = [
   "langchain-community~=0.4.1",
   "multiprocessing_logging",
   "pygithub",
+  "pyjwt>=2.12.0",
   "pytablewriter",
   "python-gitlab",
   "pyyaml",
