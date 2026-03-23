@@ -25,6 +25,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Fixes
 
 - Reporters
+  - Update Bitbucket pipeline generator template to trigger builds on pull requests from any branch, by @yermulnik in <https://github.com/oxsecurity/megalinter/pull/7421>
 
 - Flavors
 
