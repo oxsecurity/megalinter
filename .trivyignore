@@ -226,6 +226,8 @@ GHSA-qffp-2rhf-9h96
 CVE-2026-29786
 # https://avd.aquasec.com/nvd/2026/cve-2026-29786/: Docker for windows, this issue does not impact non-Windows binaries
 CVE-2025-15558
+# https://avd.aquasec.com/nvd/cve-2026-30922 : pyasn1, DDOS attack risk, not applicable in MegaLinter context
+CVE-2026-30922
 # Dockerfile
 DS001
 DS-0001
