@@ -4,7 +4,7 @@
 image: atlassian/default-image:5
 
 pipelines:
-  pull-requests: # Note: MegaLinter can post comments to pull requests only
+  pull-requests: # Note: Bitbucket PR comment reporting requires pull request context
     "**": # Run on PRs for any branch (the source branch of the pull request)
       - parallel:
           - step:
