@@ -13,6 +13,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - New linters
 
 - Disabled linters
+  - Disable trivy until their security issue is solved
 
 - Deprecated linters
 
@@ -31,6 +32,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Doc
 
 - CI
+  - Disable trivy-action until their security issue is solved
 
 - mega-linter-runner
 

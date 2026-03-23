@@ -155,10 +155,6 @@ ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=11.3.1
 ARG PIP_SEMGREP_VERSION=1.155.0
 # renovate: datasource=github-tags depName=anchore/syft
 ARG REPOSITORY_SYFT_VERSION=1.42.2
-# renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_VERSION=0.69.3
-# renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_SBOM_VERSION=0.69.3
 # renovate: datasource=pypi depName=snakemake
 ARG PIP_SNAKEMAKE_VERSION=9.16.3
 # renovate: datasource=pypi depName=snakefmt
@@ -486,16 +482,7 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 # semgrep installation
 #
 # syft installation
-    && curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOSITORY_SYFT_VERSION}/install.sh | sh -s -- -b /usr/local/bin \
-#
-# trivy installation
-    && wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_VERSION}" \
-    && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress) \
-#
-# trivy-sbom installation
-    && wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_SBOM_VERSION}" \
-    && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
-
+    && curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOSITORY_SYFT_VERSION}/install.sh | sh -s -- -b /usr/local/bin
 #
 # trufflehog installation
 # Managed with COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
