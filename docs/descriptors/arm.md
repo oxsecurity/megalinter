@@ -39,7 +39,7 @@ description: arm-ttk is available to analyze ARM files in MegaLinter
 ```dockerfile
 ARG TARGETPLATFORM
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
-ARG POWERSHELL_VERSION=7.5.4
+ARG POWERSHELL_VERSION=7.5.5
 RUN case ${TARGETPLATFORM} in \
   "linux/amd64")  POWERSHELL_ARCH=musl-x64 ;; \
   "linux/arm64")  POWERSHELL_ARCH=arm64    ;; \
