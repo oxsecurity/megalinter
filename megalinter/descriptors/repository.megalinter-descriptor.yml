@@ -747,6 +747,8 @@ linters:
         - linux/arm64
   # TRIVY
   - linter_name: trivy
+    disabled: true
+    disabled_reason: https://github.com/aquasecurity/trivy/discussions/10425
     class: TrivyLinter
     can_output_sarif: true
     descriptor_flavors:
@@ -827,6 +829,8 @@ linters:
 
   # TRIVY SBOM
   - linter_name: trivy-sbom
+    disabled: true
+    disabled_reason: https://github.com/aquasecurity/trivy/discussions/10425
     class: TrivySbomLinter
     can_output_sarif: true
     is_sbom: true

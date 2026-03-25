@@ -86,8 +86,6 @@
   "repository_secretlint",
   "repository_semgrep",
   "repository_syft",
-  "repository_trivy",
-  "repository_trivy_sbom",
   "repository_trufflehog",
   "repository_kingfisher",
   "robotframework_robocop",

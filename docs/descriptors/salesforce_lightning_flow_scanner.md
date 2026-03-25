@@ -137,7 +137,7 @@ GLOBAL FLAGS
 ```dockerfile
 # Parent descriptor install
 # renovate: datasource=npm depName=@salesforce/cli
-ARG NPM_SALESFORCE_CLI_VERSION=2.124.7
+ARG NPM_SALESFORCE_CLI_VERSION=2.126.4
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.25.5
 # renovate: datasource=npm depName=sfdx-hardis
