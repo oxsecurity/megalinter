@@ -114,7 +114,7 @@ ARG PIP_SEMGREP_VERSION=1.156.0
 # renovate: datasource=github-tags depName=anchore/syft
 ARG REPOSITORY_SYFT_VERSION=1.42.3
 # renovate: datasource=github-tags depName=mongodb/kingfisher
-ARG REPOSITORY_KINGFISHER_VERSION=1.88.0
+ARG REPOSITORY_KINGFISHER_VERSION=1.90.0
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=26.0.1
 # renovate: datasource=pypi depName=virtualenv
