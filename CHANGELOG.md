@@ -123,7 +123,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Azure Reporter: Use Azure DevOps Services REST API instead of unmaintained python wrapper lib
 
 - Flavors
-  - Custom flavor builder:
+  - Custom flavor builder
     - Add support for SSH remotes
     - Allow selection of platforms to build the custom flavor on (ex: linux/amd64, linux/arm64) and build compatible linters on these platforms
     - Build & release custom flavor builder image for linux/arm64
