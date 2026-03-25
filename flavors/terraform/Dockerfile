@@ -31,7 +31,7 @@ ARG REPOSITORY_GITLEAKS_VERSION=v8.30.1
 # renovate: datasource=docker depName=checkmarx/kics
 ARG REPOSITORY_KICS_VERSION=v2.1.20-alpine
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.93.8
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.94.0
 # renovate: datasource=docker depName=jdkato/vale
 ARG SPELL_VALE_VERSION=v3.14.0
 # renovate: datasource=docker depName=lycheeverse/lychee
