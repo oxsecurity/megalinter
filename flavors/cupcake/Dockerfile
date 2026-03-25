@@ -255,7 +255,7 @@ ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=11.3.1
 # renovate: datasource=pypi depName=semgrep
 ARG PIP_SEMGREP_VERSION=1.155.0
 # renovate: datasource=github-tags depName=anchore/syft
-ARG REPOSITORY_SYFT_VERSION=1.42.2
+ARG REPOSITORY_SYFT_VERSION=1.42.3
 # renovate: datasource=pypi depName=robotframework-robocop
 ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=8.2.2
 # renovate: datasource=pypi depName=Pygments
