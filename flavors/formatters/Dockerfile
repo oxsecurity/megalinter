@@ -79,7 +79,7 @@ ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
 ARG PIP_RUMDL_VERSION=0.1.51
 # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
-ARG PSSA_VERSION='1.24.0'
+ARG PSSA_VERSION='1.25.0'
 
 # renovate: datasource=pypi depName=black
 ARG PIP_BLACK_VERSION=26.3.1
