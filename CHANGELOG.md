@@ -62,6 +62,23 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [kics](https://www.kics.io) from 2.1.19 to **2.1.20** on 2026-03-10
   - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 10.0.103 to **10.0.104** on 2026-03-14
   - [black](https://black.readthedocs.io/en/stable/) from 26.3.0 to **26.3.1** on 2026-03-14
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 26.2.0 to **26.3.0** on 2026-03-24
+  - [shfmt](https://github.com/mvdan/sh) from 3.12.0 to **3.13.0** on 2026-03-24
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 10.0.104 to **10.0.105** on 2026-03-24
+  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.11.1 to **3.11.2** on 2026-03-24
+  - [golangci-lint](https://golangci-lint.run/) from 2.10.1 to **2.11.3** on 2026-03-24
+  - [revive](https://revive.run/) from 1.14.0 to **1.15.0** on 2026-03-24
+  - [rumdl](https://github.com/rvben/rumdl) from 0.1.44 to **0.1.51** on 2026-03-24
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.5.4 to **7.5.5** on 2026-03-24
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.5.4 to **7.5.5** on 2026-03-24
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.5 to **0.15.6** on 2026-03-24
+  - [ruff](https://github.com/astral-sh/ruff) from 0.15.5 to **0.15.6** on 2026-03-24
+  - [grype](https://github.com/anchore/grype) from 0.109.1 to **0.110.0** on 2026-03-24
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.84.0 to **1.88.0** on 2026-03-24
+  - [semgrep](https://semgrep.dev/) from 1.153.1 to **1.155.0** on 2026-03-24
+  - [syft](https://github.com/anchore/syft) from 1.42.2 to **1.42.3** on 2026-03-24
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.93.6 to **3.93.8** on 2026-03-24
+  - [vale](https://vale.sh/) from 3.13.1 to **3.14.0** on 2026-03-24
 <!-- linter-versions-end -->
 
 ## [v9.4.0] - 2026-02-28
@@ -106,7 +123,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Azure Reporter: Use Azure DevOps Services REST API instead of unmaintained python wrapper lib
 
 - Flavors
-  - Custom flavor builder:
+  - Custom flavor builder
     - Add support for SSH remotes
     - Allow selection of platforms to build the custom flavor on (ex: linux/amd64, linux/arm64) and build compatible linters on these platforms
     - Build & release custom flavor builder image for linux/arm64
