@@ -172,7 +172,7 @@ ARG SALESFORCE_SFDX_SCANNER_VERSION=4.12.0
 # renovate: datasource=pypi depName=snakemake
 ARG PIP_SNAKEMAKE_VERSION=9.18.1
 # renovate: datasource=pypi depName=snakefmt
-ARG PIP_SNAKEFMT_VERSION=0.11.5
+ARG PIP_SNAKEFMT_VERSION=1.0.0
 # renovate: datasource=npm depName=cspell
 ARG NPM_CSPELL_VERSION=9.7.0
 # renovate: datasource=pypi depName=proselint
