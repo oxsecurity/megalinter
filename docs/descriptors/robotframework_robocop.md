@@ -24,7 +24,7 @@ RoboCop is a linter and code formatter for the Robot Framework. It helps maintai
 
 ## robocop documentation
 
-- Version in MegaLinter: **8.2.2**
+- Version in MegaLinter: **8.2.3**
 - Visit [Official Web Site](https://github.com/MarketSquare/robotframework-robocop#readme){target=_blank}
 - See [How to configure robocop rules](https://robocop.dev/stable/configuration/){target=_blank}
 - See [How to disable robocop rules in files](https://robocop.dev/stable/configuration/disablers/){target=_blank}
@@ -126,8 +126,8 @@ robocop check myfile.robot
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=robotframework-robocop
-ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=8.2.2
+ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=8.2.3
 ```
 
 - PIP packages (Python):
-  - [robotframework-robocop==8.2.2](https://pypi.org/project/robotframework-robocop/8.2.2)
+  - [robotframework-robocop==8.2.3](https://pypi.org/project/robotframework-robocop/8.2.3)

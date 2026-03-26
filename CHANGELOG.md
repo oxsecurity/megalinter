@@ -79,6 +79,32 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 1.42.2 to **1.42.3** on 2026-03-24
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.93.6 to **3.93.8** on 2026-03-24
   - [vale](https://vale.sh/) from 3.13.1 to **3.14.0** on 2026-03-24
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.46.0 to **1.47.1** on 2026-03-26
+  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.11.2 to **3.11.4** on 2026-03-26
+  - [kubescape](https://github.com/kubescape/kubescape) from 4.0.2 to **4.0.3** on 2026-03-26
+  - [rumdl](https://github.com/rvben/rumdl) from 0.1.51 to **0.1.60** on 2026-03-26
+  - [phpstan](https://phpstan.org/) from 2.1.40 to **2.1.44** on 2026-03-26
+  - [psalm](https://psalm.dev) from Psalm.6.15.1@ to **Psalm.6.16.1@** on 2026-03-26
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.5.5 to **7.6.0** on 2026-03-26
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.5.5 to **7.6.0** on 2026-03-26
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.6 to **0.15.7** on 2026-03-26
+  - [ruff](https://github.com/astral-sh/ruff) from 0.15.6 to **0.15.7** on 2026-03-26
+  - [checkov](https://www.checkov.io/) from 3.2.508 to **3.2.510** on 2026-03-26
+  - [gitleaks](https://github.com/gitleaks/gitleaks) from 8.30.0 to **8.30.1** on 2026-03-26
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.88.0 to **1.90.0** on 2026-03-26
+  - [secretlint](https://github.com/secretlint/secretlint) from 11.3.1 to **11.4.0** on 2026-03-26
+  - [semgrep](https://semgrep.dev/) from 1.155.0 to **1.156.0** on 2026-03-26
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.93.8 to **3.94.0** on 2026-03-26
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 8.2.2 to **8.2.3** on 2026-03-26
+  - [rubocop](https://rubocop.org/) from 1.85.1 to **1.86.0** on 2026-03-26
+  - [code-analyzer-apex](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.10.0 to **5.10.2** on 2026-03-26
+  - [code-analyzer-aura](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.10.0 to **5.10.2** on 2026-03-26
+  - [code-analyzer-lwc](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.10.0 to **5.10.2** on 2026-03-26
+  - [snakemake](https://snakemake.github.io/) from 9.16.3 to **9.18.1** on 2026-03-26
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.11.4 to **1.0.0** on 2026-03-26
+  - [lychee](https://lychee.cli.rs) from 0.18.0 to **0.23.0** on 2026-03-26
+  - [vale](https://vale.sh/) from 3.14.0 to **3.14.1** on 2026-03-26
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.14.6 to **1.14.7** on 2026-03-26
 <!-- linter-versions-end -->
 
 ## [v9.4.0] - 2026-02-28

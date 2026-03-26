@@ -29,7 +29,7 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 
 ## snakemake documentation
 
-- Version in MegaLinter: **9.16.3**
+- Version in MegaLinter: **9.18.1**
 - Visit [Official Web Site](https://snakemake.github.io/){target=_blank}
 - See [How to configure snakemake rules](https://snakemake.readthedocs.io/en/stable/snakefiles/configuration.html){target=_blank}
 
@@ -143,13 +143,13 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--reporter PLUGIN] [--draft-notebook TARGET]
                  [--edit-notebook TARGET] [--notebook-listen IP:PORT]
                  [--lint [{text,json}]] [--generate-unit-tests [TESTPATH]]
-                 [--containerize] [--export-cwl FILE] [--list-rules]
-                 [--list-target-rules] [--dag [{dot,mermaid-js}]]
-                 [--rulegraph [{dot,mermaid-js}]] [--filegraph] [--d3dag]
-                 [--summary] [--detailed-summary] [--archive FILE]
-                 [--cleanup-metadata FILE [FILE ...]] [--cleanup-shadow]
-                 [--skip-script-cleanup] [--unlock]
-                 [--list-changes {code,input,params}] [--list-input-changes]
+                 [--containerize [{dockerfile,apptainer}]] [--export-cwl FILE]
+                 [--list-rules] [--list-target-rules]
+                 [--dag [{dot,mermaid-js}]] [--rulegraph [{dot,mermaid-js}]]
+                 [--filegraph] [--d3dag] [--summary] [--detailed-summary]
+                 [--archive FILE] [--cleanup-metadata FILE [FILE ...]]
+                 [--cleanup-shadow] [--skip-script-cleanup] [--unlock]
+                 [--list-changes {params,code,input}] [--list-input-changes]
                  [--list-params-changes] [--list-untracked]
                  [--delete-all-output | --delete-temp-output]
                  [--keep-incomplete] [--drop-metadata] [--version]
@@ -183,6 +183,8 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--local-groupid LOCAL_GROUPID] [--attempt ATTEMPT]
                  [--show-failed-logs] [--logger {} [{} ...]]
                  [--job-deploy-sources] [--benchmark-extended]
+                 [--persistence-backend {db,file}]
+                 [--persistence-backend-db-url PERSISTENCE_BACKEND_DB_URL]
                  [--container-image IMAGE] [--immediate-submit]
                  [--jobscript SCRIPT] [--jobname NAME]
                  [--software-deployment-method {apptainer,conda,env-modules} [{apptainer,conda,env-modules} ...]]
@@ -603,9 +605,11 @@ UTILITIES:
                         rule, one test case will be created and, after
                         successful execution, tests can be run with `pytest
                         TESTPATH`.
-  --containerize        Print a Dockerfile that provides an execution
-                        environment for the workflow, including all conda
-                        environments. (default: False)
+  --containerize [{dockerfile,apptainer}]
+                        Print a container definition that provides an
+                        execution environment for the workflow, including all
+                        conda environments. Supported formats: dockerfile
+                        (default), apptainer.
   --export-cwl FILE     Compile workflow to CWL and store it in given FILE.
   --list-rules, --list, -l
                         Show available rules in given Snakefile. (default:
@@ -685,7 +689,7 @@ UTILITIES:
                         (default: False)
   --unlock              Remove a lock on the working directory. (default:
                         False)
-  --list-changes, --lc {code,input,params}
+  --list-changes, --lc {params,code,input}
                         List all output files for which the given items (code,
                         input, params) have changed since creation.
   --list-input-changes, --li
@@ -843,8 +847,6 @@ BEHAVIOR:
                         URL prefix for wrapper directive. Set this to use your
                         fork or a local clone of the repository, e.g., use a
                         git URL like `git+file://path/to/your/local/clone@`.
-                        (default: https://github.com/snakemake/snakemake-
-                        wrappers/raw/)
   --default-storage-provider DEFAULT_STORAGE_PROVIDER
                         Specify default storage provider to be used for all
                         input and output files that don't yet specify one
@@ -919,6 +921,16 @@ BEHAVIOR:
                         fs` is set or executors are used that imply no shared
                         FS (e.g. the kubernetes executor). (default: False)
   --benchmark-extended  Write extended benchmarking metrics. (default: False)
+  --persistence-backend {db,file}
+                        The backend to use for Snakemake's metadata
+                        persistence. The 'file' backend uses a file system
+                        directory structure. The 'db' backend uses a
+                        relational database via SQLAlchemy. (default: file)
+  --persistence-backend-db-url PERSISTENCE_BACKEND_DB_URL
+                        The database URL to use for the 'db' persistence
+                        backend (e.g., 'sqlite:///.snakemake/metadata.db',
+                        'postgresql://user@host/db'). Only used if
+                        --persistence-backend is 'db'.
 
 REMOTE EXECUTION:
   --container-image IMAGE
@@ -931,7 +943,7 @@ REMOTE EXECUTION:
                         contain a working snakemake installation that is
                         compatible with (or ideally the same as) the currently
                         running version. (default:
-                        snakemake/snakemake:v9.16.3)
+                        snakemake/snakemake:v9.18.1)
   --immediate-submit, --is
                         Immediately submit all jobs to the cluster instead of
                         waiting for present input files. This will fail,
@@ -1094,8 +1106,8 @@ defaults.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.16.3
+ARG PIP_SNAKEMAKE_VERSION=9.18.1
 ```
 
 - PIP packages (Python):
-  - [snakemake==9.16.3](https://pypi.org/project/snakemake/9.16.3)
+  - [snakemake==9.18.1](https://pypi.org/project/snakemake/9.18.1)

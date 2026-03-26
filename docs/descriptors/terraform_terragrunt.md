@@ -157,7 +157,7 @@ Author: Gruntwork <www.gruntwork.io>
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.14.6
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.14.7
 FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 ```

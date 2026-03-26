@@ -137,11 +137,11 @@ GLOBAL FLAGS
 ```dockerfile
 # Parent descriptor install
 # renovate: datasource=npm depName=@salesforce/cli
-ARG NPM_SALESFORCE_CLI_VERSION=2.126.4
+ARG NPM_SALESFORCE_CLI_VERSION=2.128.5
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.25.5
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.25.12
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=6.27.0
+ARG SFDX_HARDIS_VERSION=6.27.2
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION} \
