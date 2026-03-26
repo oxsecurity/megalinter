@@ -29,7 +29,7 @@ description: How to use psalm (configure, ignore files, ignore errors, help & ve
 
 ## psalm documentation
 
-- Version in MegaLinter: **Psalm.6.15.1@**
+- Version in MegaLinter: **Psalm.6.16.1@**
 - Visit [Official Web Site](https://psalm.dev){target=_blank}
 - See [How to configure psalm rules](https://psalm.dev/docs/running_psalm/configuration/){target=_blank}
   - If custom `psalm.xml` config file isn't found, [psalm.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/psalm.xml){target=_blank} will be used
@@ -131,7 +131,7 @@ Basic configuration:
         Used to disable certain extensions while Psalm is running.
 
     --force-jit
-        If set, requires JIT acceleration to be available in order to run Psalm, exiting immediately if it cannot be enabled.
+        Enable JIT acceleration. Exits immediately if JIT cannot be enabled.
 
     --threads=INT
         If greater than one, Psalm will run the scan and analysis on multiple threads, speeding things up.
@@ -306,7 +306,7 @@ COPY --from=composer/composer:2-bin /composer /usr/bin/composer
 ENV PATH="/root/.composer/vendor/bin:${PATH}"
 # Linter install
 # renovate: datasource=packagist depName=vimeo/psalm
-ARG PHP_VIMEO_PSALM_VERSION=6.15.1
+ARG PHP_VIMEO_PSALM_VERSION=6.16.1
 RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require vimeo/psalm:${PHP_VIMEO_PSALM_VERSION}
 
 ```

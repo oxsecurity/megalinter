@@ -34,18 +34,18 @@ If MegaLinter with gitleaks runs against a PR on a platform not listed above, an
 
 You can still choose to scan only PR commits in your CI/CD platform by setting the following MegaLinter environment variables:
 
-- `PULL_REQUEST=true`\*
-- `REPOSITORY_GITLEAKS_PR_COMMITS_SCAN: true`
-- `REPOSITORY_GITLEAKS_PR_SOURCE_SHA` with last commit sha from your PR and `REPOSITORY_GITLEAKS_PR_TARGET_SHA` commit sha from your target branch (for example, `main` if you do PR to main branch)
+  - `PULL_REQUEST=true`\*
+  - `REPOSITORY_GITLEAKS_PR_COMMITS_SCAN: true`
+  - `REPOSITORY_GITLEAKS_PR_SOURCE_SHA` with last commit sha from your PR and `REPOSITORY_GITLEAKS_PR_TARGET_SHA` commit sha from your target branch (for example, `main` if you do PR to main branch)
 
     Example commands:
 
-  - Source commit SHA:
+      - Source commit SHA:
         ```bash
         git rev-list -n 1 refs/remotes/origin/<source_branch>
         ```
 
-  - Target commit SHA:
+      - Target commit SHA:
         ```bash
         git rev-parse refs/remotes/origin/<target_branch>
         ```
@@ -102,7 +102,7 @@ git fetch --depth=0
 
 ## gitleaks documentation
 
-- Version in MegaLinter: **8.30.0**
+- Version in MegaLinter: **8.30.1**
 - Visit [Official Web Site](https://github.com/gitleaks/gitleaks#readme){target=_blank}
 - See [How to configure gitleaks rules](https://github.com/gitleaks/gitleaks#configuration){target=_blank}
   - If custom `.gitleaks.toml` config file isn't found, [.gitleaks.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.gitleaks.toml){target=_blank} will be used
@@ -238,7 +238,7 @@ Use "gitleaks [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=zricethezav/gitleaks
-ARG REPOSITORY_GITLEAKS_VERSION=v8.30.0
+ARG REPOSITORY_GITLEAKS_VERSION=v8.30.1
 FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 ```
