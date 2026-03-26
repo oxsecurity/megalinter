@@ -12,7 +12,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=lycheeverse/lychee
-ARG SPELL_LYCHEE_VERSION=sha-7c4b132-alpine
+ARG SPELL_LYCHEE_VERSION=0.23.0-alpine
 #ARGTOP__END
 
 #############################################################################################
