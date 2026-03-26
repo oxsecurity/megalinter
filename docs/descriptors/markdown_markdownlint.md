@@ -23,7 +23,7 @@ description: How to use markdownlint (configure, ignore files, ignore errors, he
 
 ## markdownlint documentation
 
-- Version in MegaLinter: **0.47.0**
+- Version in MegaLinter: **0.48.0**
 - Visit [Official Web Site](https://github.com/DavidAnson/markdownlint#readme){target=_blank}
 - See [How to configure markdownlint rules](https://github.com/igorshubovych/markdownlint-cli#configuration){target=_blank}
   - If custom `.markdownlint.json` config file isn't found, [.markdownlint.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.markdownlint.json){target=_blank} will be used
@@ -135,7 +135,7 @@ Options:
   -c, --config <configFile>                  configuration file (JSON, JSONC, JS, YAML, or TOML)
   --configPointer <pointer>                  JSON Pointer to object within configuration file (default: "")
   -d, --dot                                  include files/folders with a dot (for example `.github`)
-  -f, --fix                                  fix basic errors (does not work with STDIN)
+  -f, --fix                                  fix basic issues (does not work with STDIN)
   -i, --ignore <file|directory|glob>         file(s) to ignore/exclude (default: [])
   -j, --json                                 write issues in json format
   -o, --output <outputFile>                  write issues to file (no console)
@@ -153,8 +153,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=markdownlint-cli
-ARG NPM_MARKDOWNLINT_CLI_VERSION=0.47.0
+ARG NPM_MARKDOWNLINT_CLI_VERSION=0.48.0
 ```
 
 - NPM packages (node.js):
-  - [markdownlint-cli@0.47.0](https://www.npmjs.com/package/markdownlint-cli/v/0.47.0)
+  - [markdownlint-cli@0.48.0](https://www.npmjs.com/package/markdownlint-cli/v/0.48.0)

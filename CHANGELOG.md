@@ -105,6 +105,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [lychee](https://lychee.cli.rs) from 0.18.0 to **0.23.0** on 2026-03-26
   - [vale](https://vale.sh/) from 3.14.0 to **3.14.1** on 2026-03-26
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.14.6 to **1.14.7** on 2026-03-26
+  - [golangci-lint](https://golangci-lint.run/) from 2.11.3 to **2.11.4** on 2026-03-26
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.47.0 to **0.48.0** on 2026-03-26
+  - [checkov](https://www.checkov.io/) from 3.2.510 to **3.2.511** on 2026-03-26
 <!-- linter-versions-end -->
 
 ## [v9.4.0] - 2026-02-28
