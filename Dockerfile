@@ -305,7 +305,7 @@ ARG RAKU_RAKU_VERSION=2025.11
 ARG RAKU_RAKU_ALPINE_VERSION=3.22
 
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.2.508
+ARG PIP_CHECKOV_VERSION=3.2.510
 # renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
 ARG REPOSITORY_DEVSKIM_VERSION=1.0.70
 # renovate: datasource=github-tags depName=anchore/grype
