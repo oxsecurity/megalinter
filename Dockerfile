@@ -253,7 +253,7 @@ ARG LUA_LUACHECK_VERSION=3.3.1
 # renovate: datasource=crate depName=stylua
 ARG CARGO_STYLUA_VERSION=2.0.0
 # renovate: datasource=npm depName=markdownlint-cli
-ARG NPM_MARKDOWNLINT_CLI_VERSION=0.47.0
+ARG NPM_MARKDOWNLINT_CLI_VERSION=0.48.0
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
