@@ -104,11 +104,11 @@ ARG REPOSITORY_DEVSKIM_VERSION=1.0.70
 # renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.110.0
 # renovate: datasource=npm depName=secretlint
-ARG NPM_SECRETLINT_VERSION=11.3.1
+ARG NPM_SECRETLINT_VERSION=11.4.0
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
-ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=11.3.1
+ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=11.4.0
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
-ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=11.3.1
+ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=11.4.0
 # renovate: datasource=pypi depName=semgrep
 ARG PIP_SEMGREP_VERSION=1.156.0
 # renovate: datasource=github-tags depName=anchore/syft
