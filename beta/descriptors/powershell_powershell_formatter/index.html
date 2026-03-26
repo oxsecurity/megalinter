@@ -12516,7 +12516,7 @@
 </ul>
 <h2 id="powershell_formatter-documentation">powershell_formatter documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>7.5.5</strong></li>
+<li>Version in MegaLinter: <strong>7.6.0</strong></li>
 <li>Visit <a href="https://github.com/PowerShell/PSScriptAnalyzer#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#explicit" target="_blank">How to configure powershell_formatter rules</a></li>
 <li>See <a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#suppressing-rules" target="_blank">How to disable powershell_formatter rules in files</a></li>
@@ -13024,7 +13024,7 @@ All parameters are case-insensitive.
 -WindowStyle | -w
 
     Sets the window style for the session. Valid values are Normal, Minimized,
-    Maximized and Hidden.
+    Maximized, and Hidden.
 
 -WorkingDirectory | -wd
 
@@ -13046,7 +13046,7 @@ All parameters are case-insensitive.
 <pre><code class="language-dockerfile"># Parent descriptor install
 ARG TARGETPLATFORM
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
-ARG POWERSHELL_VERSION=7.5.5
+ARG POWERSHELL_VERSION=7.6.0
 
 RUN case ${TARGETPLATFORM} in \
   "linux/amd64")  POWERSHELL_ARCH=musl-x64 ;; \
@@ -13060,7 +13060,7 @@ esac \
 
 # Linter install
 # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
-ARG PSSA_VERSION='1.24.0'
+ARG PSSA_VERSION='1.25.0'
 
 FROM multiarch/qemu-user-static:x86_64-aarch64 AS qemu
 COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/

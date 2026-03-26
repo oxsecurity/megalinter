@@ -12497,7 +12497,7 @@
 </ul>
 <h2 id="secretlint-documentation">secretlint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>11.3.1</strong></li>
+<li>Version in MegaLinter: <strong>11.4.0</strong></li>
 <li>Visit <a href="https://github.com/secretlint/secretlint#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/secretlint/secretlint#configuration" target="_blank">How to configure secretlint rules</a><ul>
 <li>If custom <code>.secretlintrc.json</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.secretlintrc.json" target="_blank">.secretlintrc.json</a> will be used</li>
@@ -12756,6 +12756,7 @@ Options
   --no-color         disable ANSI-color of output.
   --no-terminalLink  disable terminalLink of output.
   --no-maskSecrets   disable masking of secret values; secrets are masked by default.
+  --no-glob          disable glob pattern interpretation; treat all inputs as literal file paths.
   --secretlintrc     [path:String] path to .secretlintrc config file. Default: .secretlintrc.*
   --secretlintignore [path:String] path to .secretlintignore file. Default: .secretlintignore
   --stdinFileName    [String] filename to process STDIN content. Some rules depend on filename to check content.
@@ -12794,17 +12795,17 @@ Exit Status
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=npm depName=secretlint
-ARG NPM_SECRETLINT_VERSION=11.3.1
+ARG NPM_SECRETLINT_VERSION=11.4.0
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
-ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=11.3.1
+ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=11.4.0
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
-ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=11.3.1
+ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=11.4.0
 </code></pre>
 <ul>
 <li>NPM packages (node.js):<ul>
-<li><a href="https://www.npmjs.com/package/secretlint/v/11.3.1">secretlint@11.3.1</a></li>
-<li><a href="https://www.npmjs.com/package/@secretlint/secretlint-rule-preset-recommend/v/11.3.1">@secretlint/secretlint-rule-preset-recommend@11.3.1</a></li>
-<li><a href="https://www.npmjs.com/package/@secretlint/secretlint-formatter-sarif/v/11.3.1">@secretlint/secretlint-formatter-sarif@11.3.1</a></li>
+<li><a href="https://www.npmjs.com/package/secretlint/v/11.4.0">secretlint@11.4.0</a></li>
+<li><a href="https://www.npmjs.com/package/@secretlint/secretlint-rule-preset-recommend/v/11.4.0">@secretlint/secretlint-rule-preset-recommend@11.4.0</a></li>
+<li><a href="https://www.npmjs.com/package/@secretlint/secretlint-formatter-sarif/v/11.4.0">@secretlint/secretlint-formatter-sarif@11.4.0</a></li>
 </ul>
 </li>
 </ul>
