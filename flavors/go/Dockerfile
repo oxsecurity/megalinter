@@ -166,7 +166,7 @@ ARG PIP_SEMGREP_VERSION=1.156.0
 # renovate: datasource=github-tags depName=anchore/syft
 ARG REPOSITORY_SYFT_VERSION=1.42.3
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.18.1
+ARG PIP_SNAKEMAKE_VERSION=9.18.2
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=1.0.0
 # renovate: datasource=npm depName=cspell
