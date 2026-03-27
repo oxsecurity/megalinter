@@ -1,6 +1,6 @@
 {
   "name": "mega-linter-runner",
-  "version": "9.3.0",
+  "version": "9.4.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/oxsecurity/megalinter.git"
@@ -94,8 +94,8 @@
     "simple-git": "^3.28.0",
     "uuid": "^13.0.0",
     "which": "^6.0.0",
-    "yeoman-environment": "^5.0.0",
-    "yeoman-generator": "^7.1.0"
+    "yeoman-environment": "^6.0.0",
+    "yeoman-generator": "^8.0.0"
   },
   "devDependencies": {
     "assert": "^2.1.0",

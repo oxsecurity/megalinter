@@ -114,6 +114,9 @@
       ],
     },
   ],
+  ignorePaths: [
+    '.automation/test/**',
+  ],
   dockerfile: {
     managerFilePatterns: [
       '/^\\.automation/test/Dockerfile-megalinter-custom$/'

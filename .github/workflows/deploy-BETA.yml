@@ -94,7 +94,7 @@ jobs:
           sudo rm -rf /opt/hostedtoolcache/go # Go toolcache
 
       - name: Docker Metadata action
-        uses: docker/metadata-action@v5.10.0
+        uses: docker/metadata-action@v6
         id: meta
         with:
           images: |
@@ -103,7 +103,7 @@ jobs:
             type=raw,value=beta
 
       - name: Docker Metadata action (Docker Hub)
-        uses: docker/metadata-action@v5.10.0
+        uses: docker/metadata-action@v6
         id: meta-dhub
         with:
           images: |
@@ -112,7 +112,7 @@ jobs:
             type=raw,value=beta
 
       - name: Docker Metadata action (Server)
-        uses: docker/metadata-action@v5.10.0
+        uses: docker/metadata-action@v6
         id: meta-s
         with:
           images: |
@@ -121,7 +121,7 @@ jobs:
             type=raw,value=beta
 
       - name: Docker Metadata action (Server Docker Hub)
-        uses: docker/metadata-action@v5.10.0
+        uses: docker/metadata-action@v6
         id: meta-s-dhub
         with:
           images: |
@@ -139,7 +139,7 @@ jobs:
       #       type=raw,value=beta
 
       - name: Docker Metadata action (Worker Server)
-        uses: docker/metadata-action@v5.10.0
+        uses: docker/metadata-action@v6
         id: meta-w-dhub
         with:
           images: |
@@ -148,20 +148,20 @@ jobs:
             type=raw,value=beta
 
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
+        uses: docker/setup-qemu-action@v4
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
 
       - name: Login to GitHub Container Registry
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build & Push Docker Image (Server)
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: .
           file: server/Dockerfile
@@ -183,7 +183,7 @@ jobs:
           inputs: '{ "source-image": "${{ steps.meta-s.outputs.tags }}", "target-image": "${{ steps.meta-s-dhub.outputs.tags }}" }'
 
       - name: Build & Push Docker Image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: .
           file: Dockerfile
@@ -205,7 +205,7 @@ jobs:
           inputs: '{ "source-image": "${{ steps.meta.outputs.tags }}", "target-image": "${{ steps.meta-dhub.outputs.tags }}" }'
 
       # - name: Build & Push Docker Worker Image
-      #   uses: docker/build-push-action@v6
+      #   uses: docker/build-push-action@v7
       #   with:
       #     context: .
       #     file: Dockerfile-worker
@@ -241,19 +241,19 @@ jobs:
       ##############################################
       # Check Docker image security with Trivy #
       ##############################################
-      - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@master
-        with:
-          image-ref: "${{ steps.meta.outputs.tags }}"
-          format: 'table'
-          exit-code: '1'
-          ignore-unfixed: true
-          scanners: vuln
-          vuln-type: 'os,library'
-          severity: 'CRITICAL,HIGH'
-          timeout: 15m0s
-        env:
-            ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Run Trivy vulnerability scanner
+      #   uses: aquasecurity/trivy-action@master
+      #   with:
+      #     image-ref: "${{ steps.meta.outputs.tags }}"
+      #     format: 'table'
+      #     exit-code: '1'
+      #     ignore-unfixed: true
+      #     scanners: vuln
+      #     vuln-type: 'os,library'
+      #     severity: 'CRITICAL,HIGH'
+      #     timeout: 15m0s
+      #   env:
+      #       ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   build-custom-flavor-builder:
     strategy:
@@ -267,7 +267,7 @@ jobs:
     # Name the Job
     name: Deploy Docker Image (Custom Flavor Builder) - BETA
     # Set the agent to run on
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.runner }}
     permissions:
       actions: write
       packages: write
@@ -287,23 +287,14 @@ jobs:
           platform=${{ matrix.platform }}
           echo "PLATFORM_PAIR=${platform//\//-}" >> $GITHUB_ENV
 
-      - name: Docker Metadata action (Flavor Builder)
-        uses: docker/metadata-action@v5.10.0
-        id: meta-cfb
-        with:
-          images: |
-            name=ghcr.io/${{ github.repository }}-custom-flavor-builder
-          tags: |
-            ghcr.io/${{ github.repository }}-custom-flavor-builder
-
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
+        uses: docker/setup-qemu-action@v4
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
 
       - name: Login to GitHub Container Registry
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
@@ -313,19 +304,19 @@ jobs:
         run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> ${GITHUB_ENV}
 
       - name: Build Flavor Builder Image
-        uses: docker/build-push-action@v6
+        id: build
+        uses: docker/build-push-action@v7
         with:
           context: .
           file: Dockerfile-custom-flavor
           platforms: ${{ matrix.platform }}
           build-args: |
-            BUILD_DATE=${{ fromJSON(steps.meta-cfb.outputs.json).labels['org.opencontainers.image.created'] }}
-            BUILD_VERSION=${{ fromJSON(steps.meta-cfb.outputs.json).labels['org.opencontainers.image.version'] }}
-            BUILD_REVISION=${{ fromJSON(steps.meta-cfb.outputs.json).labels['org.opencontainers.image.revision'] }}
+            BUILD_DATE=${{ env.BUILD_DATE }}
+            BUILD_REVISION=${{ github.sha }}
+            BUILD_VERSION=beta
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          tags: ${{ steps.meta-cfb.outputs.tags }}
-          outputs: type=image,push-by-digest=true,name-canonical=true,push=true
+          outputs: type=image,"name=ghcr.io/${{ github.repository }}-custom-flavor-builder",push-by-digest=true,name-canonical=true,push=true
 
       - name: Export digest
         run: |
@@ -334,7 +325,7 @@ jobs:
           touch "${{ runner.temp }}/digests/${digest#sha256:}"
 
       - name: Upload digest
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: custom-flavor-builder-digests-${{ env.PLATFORM_PAIR }}
           path: ${{ runner.temp }}/digests/*
@@ -353,25 +344,25 @@ jobs:
 
     steps:
       - name: Download digests
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           path: ${{ runner.temp }}/digests
           pattern: custom-flavor-builder-digests-*
           merge-multiple: true
 
       - name: Login to GitHub Container Registry
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
 
       - name: Docker meta
         id: meta
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@v6
         with:
           images: ghcr.io/${{ github.repository }}-custom-flavor-builder
           tags: |

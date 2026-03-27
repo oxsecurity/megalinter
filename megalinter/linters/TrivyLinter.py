@@ -10,21 +10,22 @@ from megalinter import Linter
 
 
 class TrivyLinter(Linter):
-    counter = 0
 
     def execute_lint_command(self, command):
-        return_code, return_output = super().execute_lint_command(command)
-        if (
-            ("TOOMANYREQUESTS" in return_output)
-            or ("failed to download Java DB" in return_output)
-            or ("BLOB_UNKNOWN" in return_output)
-        ):
-            # Try 5 times
-            if self.counter < 5:
+        max_retries = 5
+        for attempt in range(max_retries):
+            return_code, return_output = super().execute_lint_command(command)
+            if not (
+                ("TOOMANYREQUESTS" in return_output)
+                or ("failed to download Java DB" in return_output)
+                or ("BLOB_UNKNOWN" in return_output)
+            ):
+                return return_code, return_output
+            if attempt < max_retries - 1:
                 time.sleep(3.0)
-                logging.info("[Trivy] Hit TOOMANYREQUESTS: try again")
-                self.counter = self.counter + 1
-                return_code, return_output = self.execute_lint_command(command)
+                logging.info(
+                    f"[Trivy] Hit TOOMANYREQUESTS: try again (attempt {attempt + 2}/{max_retries})"
+                )
             else:
                 logging.warning(
                     "[Trivy] Hit TOOMANYREQUESTS 5 times: Run trivy "
