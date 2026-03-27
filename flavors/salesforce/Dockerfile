@@ -170,7 +170,7 @@ ARG SALESFORCE_CODE_ANALYZER_VERSION=5.10.2
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
 ARG SALESFORCE_SFDX_SCANNER_VERSION=4.12.0
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.18.1
+ARG PIP_SNAKEMAKE_VERSION=9.18.2
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=1.0.0
 # renovate: datasource=npm depName=cspell
