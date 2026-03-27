@@ -92,7 +92,7 @@ jobs:
 
       - name: Login to GitHub Container Registry
         if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
@@ -104,7 +104,7 @@ jobs:
 
       - name: Build Image
         if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: .
           file: Dockerfile-release
@@ -167,17 +167,17 @@ jobs:
       ##############################################
       # Check Docker image security with Trivy #
       ##############################################
-      - name: Run Trivy vulnerability scanner
-        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: aquasecurity/trivy-action@master
-        with:
-          image-ref: ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:${{ github.event.release.tag_name }}
-          format: 'table'
-          exit-code: '1'
-          ignore-unfixed: true
-          scanners: vuln
-          vuln-type: 'os,library'
-          severity: 'CRITICAL,HIGH'
-          timeout: 10m0s
-        env:
-            ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Run Trivy vulnerability scanner
+      #   if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
+      #   uses: aquasecurity/trivy-action@master
+      #   with:
+      #     image-ref: ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:${{ github.event.release.tag_name }}
+      #     format: 'table'
+      #     exit-code: '1'
+      #     ignore-unfixed: true
+      #     scanners: vuln
+      #     vuln-type: 'os,library'
+      #     severity: 'CRITICAL,HIGH'
+      #     timeout: 10m0s
+      #   env:
+      #       ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}

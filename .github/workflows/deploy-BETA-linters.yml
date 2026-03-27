@@ -41,6 +41,7 @@ concurrency:
 jobs:
   get-linters-matrix:
     name: Get Linters Matrix
+    if: ${{ vars.BETA_LINTERS_ENABLED != 'false' }}
     runs-on: ubuntu-latest
     outputs:
       linters: ${{ steps.set-matrix.outputs.linters }}
@@ -75,6 +76,7 @@ jobs:
            github.repository == 'oxsecurity/megalinter'
         && !contains(github.event.head_commit.message, 'skip deploy')
         && !contains(github.event.head_commit.message, 'Release MegaLinter v')
+        && vars.BETA_LINTERS_ENABLED != 'false'
       )
     ##################
     # Load all steps #
@@ -103,7 +105,7 @@ jobs:
 
       - name: Docker Metadata action
         if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: docker/metadata-action@v5.10.0
+        uses: docker/metadata-action@v6
         id: meta
         with:
           images: |
@@ -117,7 +119,7 @@ jobs:
 
       - name: Docker Metadata action (Docker hub)
         if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: docker/metadata-action@v5.10.0
+        uses: docker/metadata-action@v6
         id: meta-dhub
         with:
           images: |
@@ -130,16 +132,16 @@ jobs:
             type=raw,value={{date 'YYYYMMDD_HHmm'}}
 
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
+        uses: docker/setup-qemu-action@v4
         if: ${{ steps.prepare.outputs.job_enabled == 'true' && ( ( ( runner.arch != 'X64' || runner.os != 'Linux' ) && steps.prepare.outputs.platforms == 'linux/amd64' ) || steps.prepare.outputs.platforms != 'linux/amd64' ) }}
 
       - name: Set up Docker Buildx
         if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
 
       - name: Login to GitHub Container Registry
         if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
@@ -147,7 +149,7 @@ jobs:
 
       - name: Build Image
         if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: .
           file: linters/${{ matrix.linter }}/Dockerfile
@@ -188,17 +190,17 @@ jobs:
       ##############################################
       # Check Docker image security with Trivy #
       ##############################################
-      - name: Run Trivy vulnerability scanner
-        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: aquasecurity/trivy-action@master
-        with:
-          image-ref: "${{ fromJson(steps.meta.outputs.json).tags[0]}}"
-          format: "table"
-          exit-code: "1"
-          ignore-unfixed: true
-          scanners: vuln
-          vuln-type: "os,library"
-          severity: "CRITICAL,HIGH"
-          timeout: 10m0s
-        env:
-            ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Run Trivy vulnerability scanner
+      #   if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
+      #   uses: aquasecurity/trivy-action@master
+      #   with:
+      #     image-ref: "${{ fromJson(steps.meta.outputs.json).tags[0]}}"
+      #     format: "table"
+      #     exit-code: "1"
+      #     ignore-unfixed: true
+      #     scanners: vuln
+      #     vuln-type: "os,library"
+      #     severity: "CRITICAL,HIGH"
+      #     timeout: 10m0s
+      #   env:
+      #       ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}

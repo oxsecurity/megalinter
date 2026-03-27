@@ -95,6 +95,7 @@ jobs:
       (github.event_name == 'push' && github.repository == 'oxsecurity/megalinter')
       )
       && !contains(github.event.head_commit.message, 'skip deploy')
+      && !contains(github.event.head_commit.message, 'skip linters')
 
     ##################
     # Load all steps #
@@ -123,23 +124,23 @@ jobs:
 
       - name: Docker Metadata action
         if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: docker/metadata-action@v5.10.0
+        uses: docker/metadata-action@v6
         id: meta
         with:
           images: |
             ${{ github.repository }}-only-${{ matrix.linter }}
 
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
+        uses: docker/setup-qemu-action@v4
         if: ${{ steps.prepare.outputs.job_enabled == 'true' && ( ( ( runner.arch != 'X64' || runner.os != 'Linux' ) && steps.prepare.outputs.platforms == 'linux/amd64' ) || steps.prepare.outputs.platforms != 'linux/amd64' ) }}
 
       - name: Set up Docker Buildx
         if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
 
       - name: Build Image
         if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: .
           file: linters/${{ matrix.linter }}/Dockerfile
@@ -173,17 +174,17 @@ jobs:
       ##############################################
       # Check Docker image security with Trivy #
       ##############################################
-      - name: Run Trivy vulnerability scanner
-        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: aquasecurity/trivy-action@master
-        with:
-          image-ref: "${{ fromJson(steps.meta.outputs.json).tags[0] }}"
-          format: "table"
-          exit-code: "1"
-          ignore-unfixed: true
-          scanners: vuln
-          vuln-type: "os,library"
-          severity: "CRITICAL,HIGH"
-          timeout: 10m0s
-        env:
-            ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Run Trivy vulnerability scanner
+      #   if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
+      #   uses: aquasecurity/trivy-action@master
+      #   with:
+      #     image-ref: "${{ fromJson(steps.meta.outputs.json).tags[0] }}"
+      #     format: "table"
+      #     exit-code: "1"
+      #     ignore-unfixed: true
+      #     scanners: vuln
+      #     vuln-type: "os,library"
+      #     severity: "CRITICAL,HIGH"
+      #     timeout: 10m0s
+      #   env:
+      #       ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}

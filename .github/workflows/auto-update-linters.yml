@@ -64,10 +64,10 @@ jobs:
       # Docker Buildx setup #
       #######################
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
+        uses: docker/setup-qemu-action@v4
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
 
       ########################
       # Get the current date #
@@ -79,7 +79,7 @@ jobs:
       # Build image locally for testing #
       ###################################
       - name: Build MegaLinter Docker Image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: .
           file: Dockerfile
@@ -113,13 +113,20 @@ jobs:
       # Upload MegaLinter artifacts
       - name: Archive production artifacts
         if: success() || failure()
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: MegaLinter reports
           include-hidden-files: "true"
           path: |
             docs
             megalinter-reports
+
+      # Track generated files so branch switches in create-pull-request do not fail on untracked outputs
+      - name: Stage generated changes
+        if: (github.event_name == 'workflow_dispatch' || steps.compute_versions.outputs.has_updated_versions == 1)
+        run: |
+          git add -A
+          git status --short
 
       # Create pull request if there are updates or if the workflow has been launched manually
       - name: Create Pull Request

@@ -87,6 +87,7 @@
         "PYTHON_FLAKE8",
         "PYTHON_ISORT",
         "PYTHON_MYPY",
+        "PYTHON_NBQA_MYPY",
         "PYTHON_PYLINT",
         "PYTHON_PYRIGHT",
         "PYTHON_RUFF",

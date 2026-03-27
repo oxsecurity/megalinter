@@ -48,7 +48,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=cspell
-          ARG NPM_CSPELL_VERSION=9.4.0
+          ARG NPM_CSPELL_VERSION=9.7.0
       npm:
         - "cspell@${NPM_CSPELL_VERSION}"
     supported_platforms:
@@ -146,6 +146,8 @@ linters:
       - **Custom Rule Creation**: Powerful rule engine allows you to create and share custom style rules tailored to your organization
       - **Industry-Tested**: Trusted by thousands of writers, editors, and developers worldwide across different industries
 
+      Beyond the built-in style guides, the community maintains additional Vale packages for specialized use cases such as [inclusive language](https://vale.sh/hub/) and [speciesist language](https://github.com/Open-Paws/vale-speciesism) checks. These can be installed via `vale sync` and added to your `.vale.ini`.
+
       To be active within MegaLinter, you need to [initialize a .vale.ini configuration file](https://vale.sh/docs/vale-cli/structure/) at the root of your repository.
       MegaLinter analyze markdown and restructuredText files by default, you can change that using SPELL_VALE_FILE_EXTENSIONS variable.
     linter_url: https://vale.sh/
@@ -168,7 +170,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=jdkato/vale
-          ARG SPELL_VALE_VERSION=v3.13.0
+          ARG SPELL_VALE_VERSION=v3.14.1
         - FROM jdkato/vale:${SPELL_VALE_VERSION} AS vale
         - COPY --link --from=vale /bin/vale /bin/vale
     supported_platforms:
@@ -268,7 +270,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=lycheeverse/lychee
-          ARG SPELL_LYCHEE_VERSION=sha-7c4b132-alpine
+          ARG SPELL_LYCHEE_VERSION=0.23.0-alpine
         - FROM lycheeverse/lychee:${SPELL_LYCHEE_VERSION} AS lychee
         - COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
     supported_platforms:
@@ -326,7 +328,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=codespell
-          ARG PIP_CODESPELL_VERSION=2.4.1
+          ARG PIP_CODESPELL_VERSION=2.4.2
       pip:
         - codespell==${PIP_CODESPELL_VERSION}
     supported_platforms:
