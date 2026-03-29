@@ -108,6 +108,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [golangci-lint](https://golangci-lint.run/) from 2.11.3 to **2.11.4** on 2026-03-26
   - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.47.0 to **0.48.0** on 2026-03-26
   - [checkov](https://www.checkov.io/) from 3.2.510 to **3.2.511** on 2026-03-26
+  - [pmd](https://pmd.github.io/) from 7.22.0 to **7.23.0** on 2026-03-29
+  - [rumdl](https://github.com/rvben/rumdl) from 0.1.60 to **0.1.62** on 2026-03-29
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.7 to **0.15.8** on 2026-03-29
+  - [ruff](https://github.com/astral-sh/ruff) from 0.15.7 to **0.15.8** on 2026-03-29
+  - [checkov](https://www.checkov.io/) from 3.2.511 to **3.2.513** on 2026-03-29
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.94.0 to **3.94.1** on 2026-03-29
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 8.2.3 to **8.2.4** on 2026-03-29
+  - [snakemake](https://snakemake.github.io/) from 9.18.1 to **9.18.2** on 2026-03-29
 <!-- linter-versions-end -->
 
 ## [v9.4.0] - 2026-02-28
