@@ -1,0 +1,1 @@
+if(!greeting){return null};

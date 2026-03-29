@@ -64,6 +64,10 @@ linters:
       - ".eslintrc.cjs"
       - "package.json:eslintConfig"
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     config_file_name: .eslintrc.json
     cli_config_extra_args:
       - "--no-eslintrc"
@@ -197,6 +201,10 @@ linters:
     linter_banner_image_url: https://github.com/standard/standard/raw/master/sticker.png
     name: JAVASCRIPT_STANDARD
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_fix_arg_name: "--fix"
     test_folder: javascript_standard
     examples:
@@ -229,7 +237,8 @@ linters:
         - name: vscode-standard
           url: https://marketplace.visualstudio.com/items?itemName=standard.vscode-standard
   # PRETTIER
-  - linter_name: prettier
+  - class: JavaScriptPrettierLinter
+    linter_name: prettier
     linter_text: |
       **Prettier** is the industry-leading opinionated code formatter that brings consistency to JavaScript and many other languages by automatically reformatting code according to proven formatting principles. It eliminates formatting debates and ensures uniform code style across entire development teams.
 
@@ -258,6 +267,10 @@ linters:
     linter_banner_image_url: https://unpkg.com/prettier-logo@1.0.3/images/prettier-banner-light.svg
     config_file_name: ".prettierrc.json"
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_config_arg_name: "--config"
     cli_lint_extra_args:
       - "--check"
