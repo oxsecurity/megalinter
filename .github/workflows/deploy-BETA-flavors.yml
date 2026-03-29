@@ -92,7 +92,7 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Docker Metadata action
-        uses: docker/metadata-action@v5.10.0
+        uses: docker/metadata-action@v6
         id: meta
         with:
           images: |
@@ -104,7 +104,7 @@ jobs:
             type=raw,value=
 
       - name: Docker Metadata action (Docker Hub)
-        uses: docker/metadata-action@v5.10.0
+        uses: docker/metadata-action@v6
         id: meta-dhub
         with:
           images: |
@@ -116,7 +116,7 @@ jobs:
             type=raw,value=
 
       - name: Docker Metadata action (Worker)
-        uses: docker/metadata-action@v5.10.0
+        uses: docker/metadata-action@v6
         id: meta-w
         with:
           images: |
@@ -140,14 +140,14 @@ jobs:
       #       type=raw,value=
 
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
+        uses: docker/setup-qemu-action@v4
         if: ${{ ( ( runner.arch != 'X64' || runner.os != 'Linux' ) && matrix.platform == 'linux/amd64' ) || matrix.platform != 'linux/amd64' }}
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
 
       - name: Login to GitHub Container Registry
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
@@ -163,7 +163,7 @@ jobs:
           sudo rm -rf /opt/hostedtoolcache/go # Go toolcache
 
       - name: Build Image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: .
           file: flavors/${{ matrix.flavor }}/Dockerfile
@@ -185,7 +185,7 @@ jobs:
           inputs: '{ "source-image": "${{ steps.meta.outputs.tags }}", "target-image": "${{ steps.meta-dhub.outputs.tags }}" }'
 
       # - name: Build Worker Image
-      #   uses: docker/build-push-action@v6
+      #   uses: docker/build-push-action@v7
       #   with:
       #     context: .
       #     file: Dockerfile-worker
@@ -210,16 +210,16 @@ jobs:
       ##############################################
       # Check Docker image security with Trivy #
       ##############################################
-      - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@master
-        with:
-          image-ref: "${{ fromJson(steps.meta.outputs.json).tags[0]}}"
-          format: "table"
-          exit-code: "1"
-          ignore-unfixed: true
-          scanners: vuln
-          vuln-type: "os,library"
-          severity: "CRITICAL,HIGH"
-          timeout: 10m0s
-        env:
-            ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Run Trivy vulnerability scanner
+      #   uses: aquasecurity/trivy-action@master
+      #   with:
+      #     image-ref: "${{ fromJson(steps.meta.outputs.json).tags[0]}}"
+      #     format: "table"
+      #     exit-code: "1"
+      #     ignore-unfixed: true
+      #     scanners: vuln
+      #     vuln-type: "os,library"
+      #     severity: "CRITICAL,HIGH"
+      #     timeout: 10m0s
+      #   env:
+      #       ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}

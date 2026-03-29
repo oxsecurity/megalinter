@@ -22,7 +22,7 @@ description: How to use scalafix (configure, ignore files, ignore errors, help &
 
 ## scalafix documentation
 
-- Version in MegaLinter: **0.14.5**
+- Version in MegaLinter: **0.14.6**
 - Visit [Official Web Site](https://scalacenter.github.io/scalafix/){target=_blank}
 - See [How to configure scalafix rules](https://scalacenter.github.io/scalafix/docs/users/configuration.html){target=_blank}
   - If custom `.scalafix.conf` config file isn't found, [.scalafix.conf](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.scalafix.conf){target=_blank} will be used
@@ -92,7 +92,7 @@ scalafix --config .scalafix.conf myfile.scala
 ### Help content
 
 ```shell
-Scalafix 0.14.5
+Scalafix 0.14.6
 Usage: scalafix [options] [<path> ...]
 
 Scalafix is a refactoring and linting tool. Scalafix supports both syntactic and
@@ -129,7 +129,7 @@ Common options:
     If set, only apply scalafix to added and edited files in git diff against a
     provided branch, commit or tag.
 
-  --scala-version ScalaVersion (default: "2.13.18")
+  --scala-version ScalaVersion (default: "3.8.2")
     The major or binary Scala version that the provided files are targeting, or the
     full version that was used to compile them when a classpath is provided.
 
