@@ -10,8 +10,7 @@ file_extensions:
   - ".json"
 linters:
   # JSONLINT
-  - class: JsonLintLinter
-    linter_name: jsonlint
+  - linter_name: jsonlint
     linter_text: |
       **jsonlint** is a comprehensive JSON validation tool that provides command-line interface for ensuring JSON files conform to specifications and maintain proper structure. It serves as the essential validator for JSON data integrity across web applications, APIs, and configuration systems.
 
@@ -39,6 +38,8 @@ linters:
     config_file_name: .jsonlintrc
     cli_lint_extra_args:
       - --quiet
+    cli_lint_mode_project_extra_args_after:
+      - "{{WORKSPACE}}"
     test_folder: json_jsonlint
     examples:
       - "jsonlint myfile1.json myfile2.json"
@@ -237,8 +238,7 @@ linters:
         - name: native support
           url: https://code.visualstudio.com/
   # PRETTIER
-  - class: JsonPrettierLinter
-    linter_name: prettier
+  - linter_name: prettier
     linter_text: |
       **Prettier** is the industry-standard opinionated code formatter with excellent JSON support that automatically formats JSON files for consistency and readability. It brings professional formatting standards to JSON data across configuration files, APIs, and data structures.
 
@@ -269,6 +269,8 @@ linters:
       - project
     cli_lint_extra_args:
       - "--check"
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_lint_fix_arg_name: "--write" # Workaround for MegaLinter
     cli_lint_fix_remove_args:
       - "--check"
@@ -354,8 +356,8 @@ linters:
     ignore_file_name: .npmpackagejsonlintignore
     cli_lint_extra_args:
       - --quiet
-    cli_lint_extra_args_after:
-      - "."
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_help_arg_name: --help
     test_folder: npm_package_json_lint
     examples:

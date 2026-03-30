@@ -667,6 +667,36 @@
             "title": "CLI Lint extra arguments (after config args)",
             "type": "array"
           },
+          "cli_lint_mode_file_extra_args_after": {
+            "$id": "#/properties/linters/items/properties/cli_lint_mode_file_extra_args_after",
+            "default": [],
+            "description": "When linter CLI is call for linting on file lint mode, send these additional arguments after config args",
+            "items": {
+              "type": "string"
+            },
+            "title": "CLI Lint extra arguments (after config args)",
+            "type": "array"
+          },
+          "cli_lint_mode_list_of_files_extra_args_after": {
+            "$id": "#/properties/linters/items/properties/cli_lint_mode_list_of_files_extra_args_after",
+            "default": [],
+            "description": "When linter CLI is call for linting on list_of_files lint mode, send these additional arguments after config args",
+            "items": {
+              "type": "string"
+            },
+            "title": "CLI Lint extra arguments (after config args)",
+            "type": "array"
+          },
+          "cli_lint_mode_project_extra_args_after": {
+            "$id": "#/properties/linters/items/properties/cli_lint_mode_project_extra_args_after",
+            "default": [],
+            "description": "When linter CLI is call for linting on project lint mode, send these additional arguments after config args",
+            "items": {
+              "type": "string"
+            },
+            "title": "CLI Lint extra arguments (after config args)",
+            "type": "array"
+          },
           "cli_lint_fix_arg_name": {
             "$id": "#/properties/linters/items/properties/cli_lint_fix_arg_name",
             "examples": [

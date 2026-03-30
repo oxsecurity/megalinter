@@ -9,8 +9,7 @@ file_extensions:
   - ".htm"
 linters:
   # DJLINT
-  - class: DjlintLinter
-    linter_name: djlint
+  - linter_name: djlint
     linter_text: |
       **djLint** is a comprehensive linter and formatter for HTML templates that supports multiple template languages. Originally created for use in the Atlas projects, it helps you find common syntax errors and reformat your HTML templates to make them shine.
 
@@ -38,6 +37,8 @@ linters:
       - file
       - list_of_files
       - project
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "found ([0-9]+) errors"
     examples:

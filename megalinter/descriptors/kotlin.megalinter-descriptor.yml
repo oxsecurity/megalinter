@@ -40,6 +40,10 @@ linters:
     linter_megalinter_ref_url: https://github.com/pinterest/ktlint#-with-continuous-integration
     cli_lint_fix_arg_name: "--format"
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: '\s+[\w\-_]+:[\w\-_]+: ([0-9]+)'
     cli_sarif_args:
@@ -99,6 +103,14 @@ linters:
     config_file_name: detekt-config.yml
     cli_executable: detekt-cli
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_mode_file_extra_args_after:
+      - --input
+    cli_lint_mode_list_of_files_extra_args_after:
+      - --input
     cli_lint_errors_count: total_lines
     cli_sarif_args:
       - --report

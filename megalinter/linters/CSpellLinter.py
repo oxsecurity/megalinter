@@ -52,13 +52,7 @@ class CSpellLinter(Linter):
                     "[cspell] Unable to check file names on a readonly workspace: "
                     + str(e)
                 )
-        # Add . parameter if cli_lint_mode is project
-        if (
-            self.cli_lint_mode == "project"
-            and "." not in self.cli_lint_extra_args_after
-            and "." not in self.cli_lint_extra_args
-        ):
-            self.cli_lint_extra_args_after.append(".")
+ 
         return super().build_lint_command(file)
 
     def execute_lint_command(self, command):

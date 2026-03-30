@@ -206,6 +206,8 @@ linters:
       - list_of_files
       - project
     cli_lint_fix_arg_name: "--fix"
+    cli_lint_mode_project_extra_args_after:
+      - .
     test_folder: javascript_standard
     examples:
       - "standard myfile.js"
@@ -237,8 +239,7 @@ linters:
         - name: vscode-standard
           url: https://marketplace.visualstudio.com/items?itemName=standard.vscode-standard
   # PRETTIER
-  - class: JavaScriptPrettierLinter
-    linter_name: prettier
+  - linter_name: prettier
     linter_text: |
       **Prettier** is the industry-leading opinionated code formatter that brings consistency to JavaScript and many other languages by automatically reformatting code according to proven formatting principles. It eliminates formatting debates and ensures uniform code style across entire development teams.
 
@@ -274,6 +275,8 @@ linters:
     cli_config_arg_name: "--config"
     cli_lint_extra_args:
       - "--check"
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_lint_fix_arg_name: "--write" # Workaround for MegaLinter
     cli_lint_fix_remove_args:
       - "--check"

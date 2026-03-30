@@ -9,8 +9,7 @@ file_extensions:
 test_folder: coffeescript
 linters:
   # Coffee Lint
-  - class: CoffeeLintLinter
-    linter_name: coffeelint
+  - linter_name: coffeelint
     linter_text: |
       **CoffeeLint** is a style checker that helps keep CoffeeScript code clean and consistent. While CoffeeScript insulates programmers from many of JavaScript's problematic features, it doesn't enforce consistent style across a codebase - that's where CoffeeLint comes in.
 
@@ -35,6 +34,8 @@ linters:
       - file
       - list_of_files
       - project
+    cli_lint_mode_project_extra_args_after:
+      - .
     examples:
       - "coffeelint myfile.coffee"
       - "coffeelint -f .coffee-lint.json myfile.coffee"

@@ -83,7 +83,7 @@ linters:
       - "--rule-selector"
       - "pmd:Recommended"
       - "--workspace"
-      - "."
+      - .
       - --severity-threshold
       - "Moderate"
       - "--output-file"
@@ -169,7 +169,7 @@ linters:
       - "--rule-selector"
       - "eslint"
       - "--workspace"
-      - "."
+      - .
       - "--target"
       - "**/aura/**/*.js"
       - "--severity-threshold"
@@ -248,7 +248,7 @@ linters:
       - "--rule-selector"
       - "eslint:LWC"
       - "--workspace"
-      - "."
+      - .
       - "--target"
       - "**/lwc/**/*.js"
       - "--severity-threshold"

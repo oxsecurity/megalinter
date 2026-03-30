@@ -22,8 +22,7 @@ file_extensions:
   - ".cuh"
 linters:
   # Cppcheck
-  - class: CppcheckLinter
-    linter_name: cppcheck
+  - linter_name: cppcheck
     linter_text: |
       **Cppcheck** is a powerful static analysis tool for C and C++ code that detects bugs and undefined behavior that compilers typically miss. It performs deep code analysis without requiring code execution or special build configurations.
 
@@ -50,6 +49,8 @@ linters:
       - file
       - list_of_files
       - project
+    cli_lint_mode_project_extra_args_after:
+      - .
     examples:
       - "cppcheck myfile.cpp"
     install:

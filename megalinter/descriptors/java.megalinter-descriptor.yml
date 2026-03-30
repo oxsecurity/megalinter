@@ -18,8 +18,7 @@ install:
     - ENV PATH="$JAVA_HOME/bin:${PATH}"
 linters:
   # Java Checkstyle
-  - class: CheckstyleLinter
-    linter_name: checkstyle
+  - linter_name: checkstyle
     linter_text: |
       **Checkstyle** is a comprehensive development tool that helps programmers write Java code adhering to coding standards. It automates the tedious but crucial task of checking Java code for style violations, making it ideal for projects that want to enforce consistent coding practices.
 
@@ -50,6 +49,8 @@ linters:
     cli_lint_extra_args:
       - "-jar"
       - "/usr/bin/checkstyle"
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_sarif_args:
       - -f
       - sarif

@@ -56,8 +56,7 @@ install:
               "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME"
 linters:
   # clj-kondo
-  - class: CljKondoLinter
-    linter_name: clj-kondo
+  - linter_name: clj-kondo
     linter_text: |
       **clj-kondo** is a static analyzer and linter for Clojure code that sparks joy. It performs static analysis on Clojure, ClojureScript and EDN files to detect potential errors without executing your program.
 
@@ -85,6 +84,8 @@ linters:
     cli_config_arg_name: "--config"
     cli_lint_extra_args_after:
       - "--lint"
+    cli_lint_mode_project_extra_args_after:
+      - .
     examples:
       - "clj-kondo --lint myfile.clj"
       - "clj-kondo --lint --config .clj-kondo/config.edn myfile.clj"
@@ -118,8 +119,7 @@ linters:
           url: https://github.com/marcomorain/clojure-lint
 
     # cljstyle
-  - class: CljStyleLinter
-    linter_name: cljstyle
+  - linter_name: cljstyle
     linter_text: |
       **cljstyle** is a comprehensive tool for formatting Clojure code that transforms messy, inconsistent code into beautifully formatted, readable source files. It's a rewrite of the original cljfmt tool with enhanced capabilities and native compilation.
 
@@ -148,6 +148,8 @@ linters:
       - project
     cli_lint_extra_args:
       - "check"
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_lint_fix_arg_name: "fix"
     cli_lint_fix_remove_args:
       - "check"

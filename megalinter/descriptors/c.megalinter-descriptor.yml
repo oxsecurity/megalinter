@@ -12,8 +12,7 @@ file_extensions:
   - ".h"
 linters:
   # Cppcheck
-  - class: CppcheckLinter
-    linter_name: cppcheck
+  - linter_name: cppcheck
     linter_text: |
       **Cppcheck** is a static analysis tool for C/C++ code that provides unique code analysis to detect bugs and focuses on detecting undefined behaviour and dangerous coding constructs. The goal is to have very few false positives.
 

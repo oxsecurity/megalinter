@@ -85,6 +85,7 @@ class Linter:
         self.cli_lint_ignore_arg_name = None
         self.final_ignore_file = None
         # Other
+        self.files_separator = None
         self.files_sub_directory = None
         self.file_contains_regex = []
         self.file_contains_regex_extensions = []
@@ -99,7 +100,7 @@ class Linter:
         self.ignore_for_flavor_suggestions = False
 
         self.cli_lint_mode = "file"
-        self.supported_cli_lint_modes = []
+        self.supported_cli_lint_modes = ["file"]
         self.cli_docker_image = None
         self.cli_docker_image_version = "latest"
         self.cli_docker_args = []
@@ -131,6 +132,9 @@ class Linter:
         )  # Arguments from config, defined in <LINTER_KEY>_ARGUMENTS variable
         # Extra arguments to send to cli everytime, just before file argument
         self.cli_lint_extra_args_after = []
+        self.cli_lint_mode_file_extra_args_after = []
+        self.cli_lint_mode_list_of_files_extra_args_after = []
+        self.cli_lint_mode_project_extra_args_after = []
         self.cli_lint_errors_count = None
         self.cli_lint_errors_regex = None
         self.cli_lint_warnings_count = None
@@ -1449,6 +1453,25 @@ class Linter:
         )
         cmd += self.cli_lint_extra_args_after
 
+        if self.cli_lint_mode == "file":
+            self.cli_lint_mode_file_extra_args_after = self.replace_vars(
+                self.cli_lint_mode_file_extra_args_after
+            )
+
+            cmd += self.cli_lint_mode_file_extra_args_after
+        elif self.cli_lint_mode == "list_of_files":
+            self.cli_lint_mode_list_of_files_extra_args_after = self.replace_vars(
+                self.cli_lint_mode_list_of_files_extra_args_after
+            )
+
+            cmd += self.cli_lint_mode_list_of_files_extra_args_after
+        elif self.cli_lint_mode == "project":
+            self.cli_lint_mode_project_extra_args_after = self.replace_vars(
+                self.cli_lint_mode_project_extra_args_after
+            )
+
+            cmd += self.cli_lint_mode_project_extra_args_after
+
         # Some linters/formatters update files by default.
         # To avoid that, declare -megalinter-fix-flag as cli_lint_fix_arg_name
         if self.try_fix is True:
@@ -1467,7 +1490,10 @@ class Linter:
 
         # If mode is "list of files", append all files as cli arguments
         elif self.cli_lint_mode == "list_of_files":
-            cmd += self.files
+            if self.files_separator is not None:
+                cmd += [self.files_separator.join(self.files)]
+            else:
+                cmd += self.files
         return self.manage_docker_command(cmd)
 
     # Manage ignore arguments

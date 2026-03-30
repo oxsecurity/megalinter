@@ -56,8 +56,8 @@ linters:
       - --gitignore
       - "--reporters"
       - "console,html"
-    cli_lint_extra_args_after:
-      - "."
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "Found ([0-9]+) clones"
     examples:
