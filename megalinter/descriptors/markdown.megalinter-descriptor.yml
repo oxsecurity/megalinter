@@ -51,7 +51,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=markdownlint-cli
-          ARG NPM_MARKDOWNLINT_CLI_VERSION=0.47.0
+          ARG NPM_MARKDOWNLINT_CLI_VERSION=0.48.0
       npm:
         - markdownlint-cli@${NPM_MARKDOWNLINT_CLI_VERSION}
     supported_platforms:
@@ -167,6 +167,7 @@ linters:
       - "markdown-table-formatter --check myfile.md" # Check only
       - "markdown-table-formatter myfile.md" # Apply formatting
       - "markdown-table-formatter myfile.md myfile2.md myfile3.md" # Apply formatting
+    test_folder: markdown_markdown_table_formatter
     install:
       dockerfile:
         - |-
@@ -230,7 +231,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=rumdl
-          ARG PIP_RUMDL_VERSION=0.1.22
+          ARG PIP_RUMDL_VERSION=0.1.62
       pip:
         - rumdl==${PIP_RUMDL_VERSION}
     supported_platforms:

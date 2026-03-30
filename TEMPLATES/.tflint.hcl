@@ -12,19 +12,19 @@ plugin "terraform" {
 
 plugin "azurerm" {
     enabled = true
-    version = "0.30.0"
+    version = "0.31.1"
     source  = "github.com/terraform-linters/tflint-ruleset-azurerm"
 }
 
 plugin "aws" {
     enabled = true
-    version = "0.45.0"
+    version = "0.46.0"
     source  = "github.com/terraform-linters/tflint-ruleset-aws"
 }
 
 plugin "google" {
     enabled = true
-    version = "0.38.0"
+    version = "0.39.0"
     source  = "github.com/terraform-linters/tflint-ruleset-google"
 }
 
