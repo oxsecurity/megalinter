@@ -41,6 +41,13 @@ linters:
     linter_megalinter_ref_url: "no"
     config_file_name: .luacheckrc
     cli_config_arg_name: "--config"
+    cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_mode_project_extra_args_after:
+      - .
     examples:
       - "luacheck myfile.lua"
       - "luacheck --config .chktexrc myfile.lua"
@@ -109,6 +116,13 @@ linters:
     linter_megalinter_ref_url: "no"
     config_file_name: selene.toml
     cli_config_arg_name: "--config"
+    cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_mode_project_extra_args_after:
+      - .
     examples:
       - "selene myfile.lua"
       - "selene --config chktexrc.toml myfile.lua"
@@ -161,6 +175,12 @@ linters:
     config_file_name: stylua.toml
     cli_config_arg_name: "--config-path"
     cli_version_arg_name: "-V"
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_lint_extra_args:
       - "--check"
     examples:

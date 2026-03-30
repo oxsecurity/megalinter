@@ -33,6 +33,11 @@ linters:
     linter_megalinter_ref_url: https://github.com/cjoudrey/graphql-schema-linter/pull/272
     config_file_name: .graphql-schema-linterrc
     cli_config_arg_name: ""
+    cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     examples:
       - "graphql-schema-linter myfile.graphql"
     install:

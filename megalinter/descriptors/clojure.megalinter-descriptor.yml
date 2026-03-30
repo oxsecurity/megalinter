@@ -77,9 +77,15 @@ linters:
     linter_rules_inline_disable_url: https://github.com/clj-kondo/clj-kondo/blob/master/doc/config.md#ignore-warnings-in-an-expression
     linter_megalinter_ref_url: https://github.com/borkdude/clj-kondo/blob/master/doc/ci-integration.md#github
     config_file_name: .clj-kondo/config.edn
+    cli_lint_mode: file
+    supported_cli_lint_modes:
+      - file
+      - project
     cli_config_arg_name: "--config"
     cli_lint_extra_args_after:
       - "--lint"
+    cli_lint_mode_project_extra_args_after:
+      - .
     examples:
       - "clj-kondo --lint myfile.clj"
       - "clj-kondo --lint --config .clj-kondo/config.edn myfile.clj"
@@ -130,8 +136,15 @@ linters:
     linter_megalinter_ref_url: https://github.com/greglook/cljstyle/blob/main/doc/integrations.md
     config_file_name: .cljstyle
     cli_config_arg_name: ""
+    cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_extra_args:
       - "check"
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_lint_fix_arg_name: "fix"
     cli_lint_fix_remove_args:
       - "check"

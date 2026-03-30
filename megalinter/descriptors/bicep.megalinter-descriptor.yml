@@ -13,6 +13,9 @@ linters:
     cli_lint_extra_args:
       - "build"
     cli_version_arg_name: --version
+    cli_lint_mode: file
+    supported_cli_lint_modes:
+      - file
     file_extensions:
       - ".bicep"
     linter_image_url: https://raw.githubusercontent.com/Azure/bicep/main/docs/images/BicepLogoImage.png

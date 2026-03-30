@@ -15,11 +15,25 @@ class repository_trivy_sbom_test(TestCase, LinterTestRoot):
     descriptor_id = "REPOSITORY"
     linter_name = "trivy-sbom"
 
-    def test_success(self):
+    def test_success_file_lint_mode(self):
         self.check_if_another_test_suite()
-        super().test_success()
+        super().test_success_file_lint_mode()
 
-    def test_failure(self):
+    def test_success_list_of_files_lint_mode(self):
+        self.check_if_another_test_suite()
+        super().test_success_list_of_files_lint_mode()
+
+    def test_success_project_lint_mode(self):
+        self.check_if_another_test_suite()
+        super().test_success_project_lint_mode()
+
+    def test_failure_file_lint_mode(self):
+        raise unittest.SkipTest("Skipped because SBOM generation can not fail")
+
+    def test_failure_list_of_files_lint_mode(self):
+        raise unittest.SkipTest("Skipped because SBOM generation can not fail")
+
+    def test_failure_project_lint_mode(self):
         raise unittest.SkipTest("Skipped because SBOM generation can not fail")
 
     def test_get_linter_version(self):

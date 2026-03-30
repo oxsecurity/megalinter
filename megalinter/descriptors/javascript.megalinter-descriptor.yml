@@ -64,6 +64,10 @@ linters:
       - ".eslintrc.cjs"
       - "package.json:eslintConfig"
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     config_file_name: .eslintrc.json
     cli_config_extra_args:
       - "--no-eslintrc"
@@ -197,7 +201,13 @@ linters:
     linter_banner_image_url: https://github.com/standard/standard/raw/master/sticker.png
     name: JAVASCRIPT_STANDARD
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_fix_arg_name: "--fix"
+    cli_lint_mode_project_extra_args_after:
+      - .
     test_folder: javascript_standard
     examples:
       - "standard myfile.js"
@@ -258,9 +268,15 @@ linters:
     linter_banner_image_url: https://unpkg.com/prettier-logo@1.0.3/images/prettier-banner-light.svg
     config_file_name: ".prettierrc.json"
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_config_arg_name: "--config"
     cli_lint_extra_args:
       - "--check"
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_lint_fix_arg_name: "--write" # Workaround for MegaLinter
     cli_lint_fix_remove_args:
       - "--check"

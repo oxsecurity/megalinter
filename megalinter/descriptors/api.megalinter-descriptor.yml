@@ -39,6 +39,9 @@ linters:
     linter_spdx_license: Apache-2.0
     config_file_name: .spectral.yaml
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
     cli_config_arg_name: "-r"
     cli_lint_extra_args:
       - "lint"

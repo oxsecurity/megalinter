@@ -50,7 +50,7 @@ linters:
     sarif_default_output_file: results_sarif.sarif
     cli_lint_extra_args:
       - "--directory"
-      - "."
+      - .
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: ", Failed checks: ([0-9]+), Skipped checks"
     examples:
@@ -119,9 +119,9 @@ linters:
     cli_sarif_args:
       - --file-format
       - sarif
-    cli_lint_extra_args_after:
+    cli_lint_mode_project_extra_args_after:
       - --source-code
-      - "."
+      - .
       - -E
     cli_help_arg_name: --help
     cli_version_arg_name: --version
@@ -353,10 +353,10 @@ linters:
       - sarif
       - --report-path
       - "{{SARIF_OUTPUT_FILE}}"
-    cli_lint_extra_args_after:
+    cli_lint_mode_project_extra_args_after:
       - "--verbose"
       - "--source"
-      - "."
+      - .
     cli_help_arg_name: help
     cli_version_arg_name: version
     cli_lint_errors_count: regex_sum
@@ -420,7 +420,7 @@ linters:
     cli_lint_mode: project
     cli_config_arg_name: "--config"
     config_file_name: .grype.yaml
-    cli_lint_extra_args_after:
+    cli_lint_mode_project_extra_args_after:
       - dir:.
     cli_sarif_args:
       - --output
@@ -480,10 +480,10 @@ linters:
     cli_executable: kics
     cli_lint_extra_args:
       - scan
-    cli_lint_extra_args_after:
+    cli_lint_mode_project_extra_args_after:
       - --no-progress
       - --path
-      - "."
+      - .
     sarif_default_output_file: kics-results.sarif
     cli_sarif_args:
       - --output-name
@@ -590,7 +590,7 @@ linters:
     ignore_file_name: .secretlintignore
     cli_lint_ignore_arg_name: --secretlintignore
     cli_lint_mode: project
-    cli_lint_extra_args_after:
+    cli_lint_mode_project_extra_args_after:
       - "**/*"
     cli_sarif_args:
       - --format
@@ -656,7 +656,7 @@ linters:
     ignore_file_name: .semgrepignore
     cli_lint_extra_args:
       - --error # Exit 1 when errors are found
-    cli_lint_extra_args_after:
+    cli_lint_mode_project_extra_args_after:
       - "{{WORKSPACE}}"
     # cli_lint_fix_arg_name: --autofix # Disable for now as some "fixes" are actually breaking ML code
     cli_sarif_args:
@@ -805,8 +805,8 @@ linters:
       - vuln,misconfig
       - --exit-code
       - "1"
-    cli_lint_extra_args_after:
-      - "."
+    cli_lint_mode_project_extra_args_after:
+      - .
     test_folder: trivy
     examples:
       - "trivy fs --scanners vuln,misconfig ."
@@ -868,8 +868,8 @@ linters:
       - fs
       - --format
       - cyclonedx
-    cli_lint_extra_args_after:
-      - "."
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_sarif_args:
       - --output
       - "{{SARIF_OUTPUT_FILE}}.trivy-sbom.json"
@@ -927,7 +927,7 @@ linters:
     config_file_name: .trufflehog.yml
     cli_lint_extra_args:
       - filesystem
-      - "."
+      - .
       - --fail
       - --only-verified
       - --no-update
@@ -975,7 +975,7 @@ linters:
     cli_lint_mode: project
     cli_lint_extra_args:
       - "scan"
-      - "."
+      - .
       - "--redact"
       - "--git-history=none"
     cli_sarif_args:

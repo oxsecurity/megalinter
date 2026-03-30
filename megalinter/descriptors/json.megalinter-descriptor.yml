@@ -30,10 +30,17 @@ linters:
     linter_rules_url: https://github.com/prantlf/jsonlint#configuration
     linter_rules_configuration_url: https://github.com/prantlf/jsonlint#configuration
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_config_arg_name: --config
     config_file_name: .jsonlintrc
     cli_lint_extra_args:
       - --quiet
+    cli_lint_mode_project_extra_args_after:
+      - "{{WORKSPACE}}"
+    test_folder: json_jsonlint
     examples:
       - "jsonlint myfile1.json myfile2.json"
     install:
@@ -124,6 +131,10 @@ linters:
     linter_rules_ignore_config_url: https://eslint.org/docs/latest/user-guide/configuring/ignoring-code#the-eslintignore-file
     linter_megalinter_ref_url: https://eslint.org/docs/latest/use/integrations#source-control
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_executable: eslint
     config_file_name: .eslintrc-json.json
     cli_config_extra_args:
@@ -173,7 +184,8 @@ linters:
         - name: vscode-eslint
           url: https://github.com/ota-meshi/eslint-plugin-jsonc#visual-studio-code
     # V8R
-  - linter_name: v8r
+  - class: V8rLinter
+    linter_name: v8r
     linter_url: https://github.com/chris48s/v8r
     linter_repo: https://github.com/chris48s/v8r
     linter_spdx_license: MIT
@@ -191,6 +203,10 @@ linters:
     linter_rules_url: https://www.schemastore.org/
     linter_megalinter_ref_url: "no"
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_extra_args:
       - "--ignore-errors"
     cli_help_arg_name: "--help"
@@ -247,8 +263,14 @@ linters:
     config_file_name: ".prettierrc.json"
     cli_config_arg_name: "--config"
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_extra_args:
       - "--check"
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_lint_fix_arg_name: "--write" # Workaround for MegaLinter
     cli_lint_fix_remove_args:
       - "--check"
@@ -326,14 +348,16 @@ linters:
     active_only_if_file_found:
       - "package.json"
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
     cli_executable: npmPkgJsonLint
     cli_config_arg_name: --configFile
     config_file_name: .npmpackagejsonlintrc.json
     ignore_file_name: .npmpackagejsonlintignore
     cli_lint_extra_args:
       - --quiet
-    cli_lint_extra_args_after:
-      - "."
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_help_arg_name: --help
     test_folder: npm_package_json_lint
     examples:
