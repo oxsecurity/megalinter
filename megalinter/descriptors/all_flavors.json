@@ -7,6 +7,7 @@
         "label": "Optimized for pure C/C++ projects",
         "linters": [
             "ACTION_ACTIONLINT",
+            "ACTION_ZIZMOR",
             "ANSIBLE_ANSIBLE_LINT",
             "BASH_EXEC",
             "BASH_SHELLCHECK",
@@ -106,6 +107,7 @@
         "label": "MegaLinter for the most commonly used languages",
         "linters": [
             "ACTION_ACTIONLINT",
+            "ACTION_ZIZMOR",
             "ANSIBLE_ANSIBLE_LINT",
             "BASH_EXEC",
             "BASH_SHELLCHECK",
@@ -204,6 +206,7 @@
         "label": "MegaLinter for documentation projects",
         "linters": [
             "ACTION_ACTIONLINT",
+            "ACTION_ZIZMOR",
             "ANSIBLE_ANSIBLE_LINT",
             "BASH_EXEC",
             "BASH_SHELLCHECK",
@@ -266,6 +269,7 @@
         "label": "Optimized for C, C++, C# or VB based projects",
         "linters": [
             "ACTION_ACTIONLINT",
+            "ACTION_ZIZMOR",
             "ANSIBLE_ANSIBLE_LINT",
             "ARM_ARM_TTK",
             "BASH_EXEC",
@@ -344,6 +348,7 @@
         "label": "Optimized for C, C++, C# or VB based projects with JS/TS",
         "linters": [
             "ACTION_ACTIONLINT",
+            "ACTION_ZIZMOR",
             "ANSIBLE_ANSIBLE_LINT",
             "ARM_ARM_TTK",
             "BASH_EXEC",
@@ -458,6 +463,7 @@
         "label": "Optimized for GO based projects",
         "linters": [
             "ACTION_ACTIONLINT",
+            "ACTION_ZIZMOR",
             "ANSIBLE_ANSIBLE_LINT",
             "BASH_EXEC",
             "BASH_SHELLCHECK",
@@ -520,6 +526,7 @@
         "label": "Optimized for JAVA based projects",
         "linters": [
             "ACTION_ACTIONLINT",
+            "ACTION_ZIZMOR",
             "ANSIBLE_ANSIBLE_LINT",
             "BASH_EXEC",
             "BASH_SHELLCHECK",
@@ -584,6 +591,7 @@
         "label": "Optimized for JAVASCRIPT or TYPESCRIPT based projects",
         "linters": [
             "ACTION_ACTIONLINT",
+            "ACTION_ZIZMOR",
             "ANSIBLE_ANSIBLE_LINT",
             "BASH_EXEC",
             "BASH_SHELLCHECK",
@@ -653,6 +661,7 @@
         "label": "Optimized for PHP based projects",
         "linters": [
             "ACTION_ACTIONLINT",
+            "ACTION_ZIZMOR",
             "ANSIBLE_ANSIBLE_LINT",
             "BASH_EXEC",
             "BASH_SHELLCHECK",
@@ -716,6 +725,7 @@
         "label": "Optimized for PYTHON based projects",
         "linters": [
             "ACTION_ACTIONLINT",
+            "ACTION_ZIZMOR",
             "ANSIBLE_ANSIBLE_LINT",
             "BASH_EXEC",
             "BASH_SHELLCHECK",
@@ -791,6 +801,7 @@
         "label": "Optimized for RUBY based projects",
         "linters": [
             "ACTION_ACTIONLINT",
+            "ACTION_ZIZMOR",
             "ANSIBLE_ANSIBLE_LINT",
             "BASH_EXEC",
             "BASH_SHELLCHECK",
@@ -850,6 +861,7 @@
         "label": "Optimized for RUST based projects",
         "linters": [
             "ACTION_ACTIONLINT",
+            "ACTION_ZIZMOR",
             "ANSIBLE_ANSIBLE_LINT",
             "BASH_EXEC",
             "BASH_SHELLCHECK",
@@ -910,6 +922,7 @@
         "label": "Optimized for Salesforce based projects",
         "linters": [
             "ACTION_ACTIONLINT",
+            "ACTION_ZIZMOR",
             "ANSIBLE_ANSIBLE_LINT",
             "BASH_EXEC",
             "BASH_SHELLCHECK",
@@ -1004,6 +1017,7 @@
         "label": "Optimized for SWIFT based projects",
         "linters": [
             "ACTION_ACTIONLINT",
+            "ACTION_ZIZMOR",
             "ANSIBLE_ANSIBLE_LINT",
             "BASH_EXEC",
             "BASH_SHELLCHECK",
@@ -1063,6 +1077,7 @@
         "label": "Optimized for TERRAFORM based projects",
         "linters": [
             "ACTION_ACTIONLINT",
+            "ACTION_ZIZMOR",
             "ANSIBLE_ANSIBLE_LINT",
             "BASH_EXEC",
             "BASH_SHELLCHECK",

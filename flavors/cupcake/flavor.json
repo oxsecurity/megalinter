@@ -11,6 +11,7 @@
     "label": "MegaLinter for the most commonly used languages",
     "linters": [
         "ACTION_ACTIONLINT",
+        "ACTION_ZIZMOR",
         "ANSIBLE_ANSIBLE_LINT",
         "BASH_EXEC",
         "BASH_SHELLCHECK",
