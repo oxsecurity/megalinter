@@ -6,6 +6,7 @@
     "label": "MegaLinter for documentation projects",
     "linters": [
         "ACTION_ACTIONLINT",
+        "ACTION_ZIZMOR",
         "ANSIBLE_ANSIBLE_LINT",
         "API_SPECTRAL",
         "BASH_EXEC",

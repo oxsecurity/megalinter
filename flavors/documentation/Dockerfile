@@ -89,6 +89,8 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 #ARG__START
 # renovate: datasource=crate depName=sarif-fmt
 ARG CARGO_SARIF_FMT_VERSION=0.8.0
+# renovate: datasource=crate depName=zizmor
+ARG CARGO_ZIZMOR_VERSION=1.23.1
 # renovate: datasource=pypi depName=ansible-lint
 ARG PIP_ANSIBLE_LINT_VERSION=26.3.0
 # renovate: datasource=npm depName=@stoplight/spectral-cli
@@ -249,7 +251,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain ${RUST_RUST_VERSION} \
     && export PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}" \
     && rustup default stable \
-    && cargo install --force --locked sarif-fmt@${CARGO_SARIF_FMT_VERSION} shellcheck-sarif@${CARGO_SHELLCHECK_SARIF_VERSION} \
+    && cargo install --force --locked sarif-fmt@${CARGO_SARIF_FMT_VERSION} zizmor@${CARGO_ZIZMOR_VERSION} shellcheck-sarif@${CARGO_SHELLCHECK_SARIF_VERSION} \
     && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache /root/.rustup
 ENV PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}"
 #CARGO__END
@@ -394,6 +396,8 @@ ENV PATH="$JAVA_HOME/bin:${PATH}"
 # Managed with COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
 #              # shellcheck is a dependency for actionlint
 # Managed with COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
+#
+# zizmor installation
 #
 # ansible-lint installation
 #
