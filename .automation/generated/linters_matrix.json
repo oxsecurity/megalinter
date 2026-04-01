@@ -1,6 +1,7 @@
 {
   "linux/amd64": [
     "action_actionlint",
+    "action_zizmor",
     "ansible_ansible_lint",
     "api_spectral",
     "arm_arm_ttk",
@@ -129,6 +130,7 @@
   ],
   "linux/arm64": [
     "action_actionlint",
+    "action_zizmor",
     "ansible_ansible_lint",
     "api_spectral",
     "bash_exec",
