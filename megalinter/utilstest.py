@@ -688,7 +688,7 @@ def test_linter_format_fix(linter, test_self):
 
     search_glob_pattern = tmp_workspace.replace("\\", "/") + "/**/*"
 
-    files = glob.glob(search_glob_pattern, recursive=True)
+    files = glob.glob(search_glob_pattern, recursive=True, include_hidden=True)
 
     filter_regex_exclude = []
 
