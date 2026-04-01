@@ -11,6 +11,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Core
 
 - New linters
+  - Add [zizmor](https://docs.zizmor.sh/) GitHub Actions static analysis.
 
 - Disabled linters
   - Disable trivy until their security issue is solved
