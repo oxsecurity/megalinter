@@ -69,7 +69,7 @@ linters:
 
       - **Expression Analysis**: Identifies template injection vulnerabilities, which can lead to attacker-controlled code execution.
       - **Disk Credential Review**: Prevent accidental credential persistence and leakage.
-      - **Overprivilege Detection**: Identify excessive permission scopes and credential grants to runners.
+      - **Overprivileged Runner Detection**: Identify excessive permission scopes and credential grants to runners.
       - **Invalid Reference Discovery**: Locate impostor commits and confusable git references.
 
       > If you are using the GitHub action please use the `ACTION_ZIZMOR_UNSECURED_ENV_VARIABLES: GITHUB_TOKEN` to prevent plugin download issues
