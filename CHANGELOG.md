@@ -116,6 +116,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.94.0 to **3.94.1** on 2026-03-29
   - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 8.2.3 to **8.2.4** on 2026-03-29
   - [snakemake](https://snakemake.github.io/) from 9.18.1 to **9.18.2** on 2026-03-29
+  - [raku](https://raku.org/) from 2025.11 to **2026.03** on 2026-04-08
+  - [sqlfluff](https://www.sqlfluff.com/) from 4.0.4 to **4.1.0** on 2026-04-08
 <!-- linter-versions-end -->
 
 ## [v9.4.0] - 2026-02-28
