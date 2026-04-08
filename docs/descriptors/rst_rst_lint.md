@@ -113,11 +113,11 @@ options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=Pygments
-ARG PIP_PYGMENTS_VERSION=2.19.2
+ARG PIP_PYGMENTS_VERSION=2.20.0
 # renovate: datasource=pypi depName=restructuredtext_lint
 ARG PIP_RESTRUCTUREDTEXT_LINT_VERSION=2.0.2
 ```
 
 - PIP packages (Python):
-  - [Pygments==2.19.2](https://pypi.org/project/Pygments/2.19.2)
+  - [Pygments==2.20.0](https://pypi.org/project/Pygments/2.20.0)
   - [restructuredtext_lint==2.0.2](https://pypi.org/project/restructuredtext_lint/2.0.2)
