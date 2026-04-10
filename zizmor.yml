@@ -1,0 +1,16 @@
+# TODO: These rules have been disabled as part of introducing zizmor in #7497. They will be addressed or configured a follow-up change.
+rules:
+  artipacked:
+    disable: true
+  dependabot-cooldown:
+    disable: true
+  excessive-permissions:
+    disable: true
+  superfluous-actions:
+    disable: true
+  template-injection:
+    disable: true
+  unpinned-uses:
+    disable: true
+  unsound-condition:
+    disable: true
