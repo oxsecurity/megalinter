@@ -1,0 +1,23 @@
+# MegaLinter default configuration for gommitlint
+# Override by placing your own .gommitlint.yaml in the repository root
+# Full options: https://codeberg.org/itiquette/gommitlint#configuration
+gommitlint:
+  rules:
+    enabled:
+      - conventional
+      - subject
+    disabled:
+      - branchahead
+      - commitbody
+      - cryptosignature
+      - identity
+      - jirareference
+      - linearhistory
+      - signoff
+      - spell
+  message:
+    subject:
+      max_length: 100
+      case: lower
+  conventional:
+    max_description_length: 72

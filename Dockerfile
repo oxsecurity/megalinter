@@ -31,6 +31,8 @@ ARG PROTOBUF_PROTOLINT_VERSION=0.56.4
 ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.30.1
+# renovate: datasource=docker depName=codeberg.org/itiquette/gommitlint
+ARG REPOSITORY_GOMMITLINT_VERSION=0.9.11
 # renovate: datasource=docker depName=checkmarx/kics
 ARG REPOSITORY_KICS_VERSION=v2.1.20-alpine
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
@@ -72,6 +74,7 @@ FROM golang:alpine AS dustilock
 ARG REPOSITORY_DUSTILOCK_VERSION
 RUN apk add --no-cache git && GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v${REPOSITORY_DUSTILOCK_VERSION}
 FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
+FROM codeberg.org/itiquette/gommitlint:v${REPOSITORY_GOMMITLINT_VERSION} AS gommitlint
 FROM checkmarx/kics:${REPOSITORY_KICS_VERSION} AS kics
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
 FROM jdkato/vale:${SPELL_VALE_VERSION} AS vale
@@ -392,6 +395,7 @@ ARG KUBERNETES_KUBECONFORM_VERSION
 ARG PROTOBUF_PROTOLINT_VERSION
 ARG REPOSITORY_DUSTILOCK_VERSION
 ARG REPOSITORY_GITLEAKS_VERSION
+ARG REPOSITORY_GOMMITLINT_VERSION
 ARG REPOSITORY_KICS_VERSION
 ARG REPOSITORY_TRUFFLEHOG_VERSION
 ARG SPELL_VALE_VERSION
@@ -706,6 +710,7 @@ COPY --link --from=chktex /usr/bin/chktex /usr/bin/
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
+COPY --link --from=gommitlint /usr/local/bin/gommitlint /usr/bin/gommitlint
 COPY --link --from=kics /app/bin/kics /usr/bin/kics
 COPY --from=kics /app/bin/assets /usr/bin/assets
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
@@ -1149,6 +1154,9 @@ RUN dotnet tool install --allow-roll-forward --global Microsoft.CST.DevSkim.CLI 
 #
 # gitleaks installation
 # Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
+#
+# gommitlint installation
+# Managed with COPY --link --from=gommitlint /usr/local/bin/gommitlint /usr/bin/gommitlint
 #
 # grype installation
     && curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin

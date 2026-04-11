@@ -1,0 +1,21 @@
+# Permissive gommitlint config for MegaLinter test (should pass)
+gommitlint:
+  rules:
+    enabled:
+      - conventional
+      - subject
+    disabled:
+      - branchahead
+      - commitbody
+      - cryptosignature
+      - identity
+      - jirareference
+      - linearhistory
+      - signoff
+      - spell
+  message:
+    subject:
+      max_length: 200
+      case: any
+  conventional:
+    max_description_length: 200

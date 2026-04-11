@@ -40,6 +40,7 @@
     "git_diff": "2.52.0",
     "gitleaks": "8.30.1",
     "golangci-lint": "2.11.4",
+    "gommitlint": "0.9.11",
     "goodcheck": "3.1.0",
     "graphql-schema-linter": "3.0.1",
     "grype": "0.111.0",

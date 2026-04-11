@@ -28,6 +28,8 @@ ARG GO_REVIVE_VERSION=v1.15.0
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.7.0-alpine
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.30.1
+# renovate: datasource=docker depName=codeberg.org/itiquette/gommitlint
+ARG REPOSITORY_GOMMITLINT_VERSION=0.9.11
 # renovate: datasource=docker depName=checkmarx/kics
 ARG REPOSITORY_KICS_VERSION=v2.1.20-alpine
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
@@ -62,6 +64,7 @@ ARG GO_REVIVE_VERSION
 RUN GOBIN=/usr/bin go install github.com/mgechev/revive@$GO_REVIVE_VERSION
 FROM ghcr.io/yannh/kubeconform:${KUBERNETES_KUBECONFORM_VERSION} AS kubeconform
 FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
+FROM codeberg.org/itiquette/gommitlint:v${REPOSITORY_GOMMITLINT_VERSION} AS gommitlint
 FROM checkmarx/kics:${REPOSITORY_KICS_VERSION} AS kics
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
 FROM lycheeverse/lychee:${SPELL_LYCHEE_VERSION} AS lychee
@@ -312,6 +315,7 @@ ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION
 ARG GO_REVIVE_VERSION
 ARG KUBERNETES_KUBECONFORM_VERSION
 ARG REPOSITORY_GITLEAKS_VERSION
+ARG REPOSITORY_GOMMITLINT_VERSION
 ARG REPOSITORY_KICS_VERSION
 ARG REPOSITORY_TRUFFLEHOG_VERSION
 ARG SPELL_LYCHEE_VERSION
@@ -595,6 +599,7 @@ COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checke
 COPY --link --from=revive /usr/bin/revive /usr/bin/revive
 COPY --link --from=kubeconform /kubeconform /usr/bin/
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
+COPY --link --from=gommitlint /usr/local/bin/gommitlint /usr/bin/gommitlint
 COPY --link --from=kics /app/bin/kics /usr/bin/kics
 COPY --from=kics /app/bin/assets /usr/bin/assets
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
@@ -831,6 +836,9 @@ ENV MYPY_CACHE_DIR=/tmp
 #
 # gitleaks installation
 # Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
+#
+# gommitlint installation
+# Managed with COPY --link --from=gommitlint /usr/local/bin/gommitlint /usr/bin/gommitlint
 #
 # grype installation
 RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin
