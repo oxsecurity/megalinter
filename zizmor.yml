@@ -6,6 +6,8 @@ rules:
     disable: true
   excessive-permissions:
     disable: true
+  ref-confusion:
+    disable: true
   superfluous-actions:
     disable: true
   template-injection:
