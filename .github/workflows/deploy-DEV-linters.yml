@@ -29,9 +29,12 @@ jobs:
     outputs:
       linters: ${{ steps.set-matrix.outputs.linters }}
       linters_arm: ${{ steps.set-matrix.outputs.linters_arm }}
+      runners: ${{ steps.set-matrix.outputs.runners }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
       - name: Get PR title or commit message
         id: get-title
         run: |
@@ -57,10 +60,20 @@ jobs:
             echo "$pkg"
           }
           title="${{ steps.get-title.outputs.title }}"
+          latest_commit_message=$(git log -1 --pretty=%B)
+
           echo "title=$title"
+          echo "latest_commit_message=$latest_commit_message"
           matrix=$(cat .automation/generated/linters_matrix.json | jq -c '[.["linux/amd64"][]]')
           matrix_arm=$(cat .automation/generated/linters_matrix.json | jq -c '[.["linux/arm64"][]]')
           echo "linters_arm=$matrix_arm" >> $GITHUB_OUTPUT
+
+          if echo "$latest_commit_message" | grep -q 'ARM'; then
+            echo 'runners=["ubuntu-latest","ubuntu-24.04-arm"]' >> $GITHUB_OUTPUT
+          else
+            echo 'runners=["ubuntu-latest"]' >> $GITHUB_OUTPUT
+          fi
+
           pkg=$(extract_pkg "$title")
           echo "Extracted package: $pkg"
           if [ -n "$pkg" ] && echo "$title" | grep -iq '^chore(deps)'; then
@@ -87,7 +100,7 @@ jobs:
       max-parallel: 18
       matrix:
         linter: ${{ fromJson(needs.get-linters-matrix.outputs.linters) }}
-        runner: ["ubuntu-latest", "ubuntu-24.04-arm"]
+        runner: ${{ fromJson(needs.get-linters-matrix.outputs.runners) }}
     # Only run this on the main repo
     if: |
       (

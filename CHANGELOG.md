@@ -33,6 +33,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - CI
   - Disable trivy-action until their security issue is solved
+  - Run ARM linter jobs only if the latest commit message contains "ARM"
 
 - mega-linter-runner
 
