@@ -15,7 +15,7 @@ description: How to use trivy-sbom (configure, ignore files, ignore errors, help
 
 _This linter has been disabled in this version_
 
-_Disabled reason: <https://github.com/aquasecurity/trivy/discussions/10425>_
+_Disabled reason: https://github.com/aquasecurity/trivy/discussions/10425_
 
 **Trivy SBOM** is a specialized component of Trivy that generates comprehensive Software Bill of Materials (SBOM) documents for enhanced supply chain security and compliance. It provides detailed inventory management for software components and dependencies.
 

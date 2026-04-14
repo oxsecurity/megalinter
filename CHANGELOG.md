@@ -33,6 +33,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - CI
   - Disable trivy-action until their security issue is solved
+  - Run ARM linter jobs only if the latest commit message contains "ARM" (to avoid 200 jobs for each PR)
+  - Prevent MegaLinter to push a new commit if the only updates are on markdown files
 
 - mega-linter-runner
 
@@ -118,6 +120,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.github.io/) from 9.18.1 to **9.18.2** on 2026-03-29
   - [raku](https://raku.org/) from 2025.11 to **2026.03** on 2026-04-08
   - [sqlfluff](https://www.sqlfluff.com/) from 4.0.4 to **4.1.0** on 2026-04-08
+  - [grype](https://github.com/anchore/grype) from 0.110.0 to **0.111.0** on 2026-04-13
+  - [syft](https://github.com/anchore/syft) from 1.42.3 to **1.42.4** on 2026-04-13
 <!-- linter-versions-end -->
 
 ## [v9.4.0] - 2026-02-28
