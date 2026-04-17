@@ -28,7 +28,7 @@ dependencies = [
   "langchain-anthropic~=1.4.0",
   "langchain-google-genai~=4.2.0",
   "langchain-mistralai~=1.1.1",
-  "langchain-ollama~=1.0.1",
+  "langchain-ollama~=1.1.0",
   "langchain-deepseek~=1.0.1",
   "langchain-community~=0.4.1",
   "multiprocessing_logging",
