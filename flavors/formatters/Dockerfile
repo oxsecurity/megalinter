@@ -70,7 +70,7 @@ ARG CSHARP_CSHARPIER_VERSION=1.2.6
 # renovate: datasource=nuget depName=roslynator.dotnet.cli
 ARG CSHARP_ROSLYNATOR_VERSION=0.12.0
 # renovate: datasource=npm depName=prettier
-ARG NPM_PRETTIER_VERSION=3.8.1
+ARG NPM_PRETTIER_VERSION=3.8.2
 # renovate: datasource=npm depName=markdownlint-cli
 ARG NPM_MARKDOWNLINT_CLI_VERSION=0.48.0
 # renovate: datasource=npm depName=markdown-table-formatter
