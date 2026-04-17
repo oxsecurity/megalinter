@@ -154,7 +154,7 @@ ARG PIP_SEMGREP_VERSION=1.156.0
 # renovate: datasource=github-tags depName=anchore/syft
 ARG REPOSITORY_SYFT_VERSION=1.42.3
 # renovate: datasource=rubygems depName=rubocop
-ARG GEM_RUBOCOP_VERSION=1.86.0
+ARG GEM_RUBOCOP_VERSION=1.86.1
 # renovate: datasource=rubygems depName=rubocop-github
 ARG GEM_RUBOCOP_GITHUB_VERSION=0.27.0
 # renovate: datasource=rubygems depName=rubocop-performance
