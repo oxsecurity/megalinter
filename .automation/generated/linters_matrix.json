@@ -2,7 +2,6 @@
   "linux/amd64": [
     "action_actionlint",
     "ansible_ansible_lint",
-    "api_spectral",
     "arm_arm_ttk",
     "bash_exec",
     "bash_shellcheck",
@@ -130,7 +129,6 @@
   "linux/arm64": [
     "action_actionlint",
     "ansible_ansible_lint",
-    "api_spectral",
     "bash_exec",
     "bash_shellcheck",
     "bash_shfmt",

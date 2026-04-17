@@ -97,8 +97,6 @@ ARG POWERSHELL_VERSION=7.6.0
 
 # renovate: datasource=pypi depName=ansible-lint
 ARG PIP_ANSIBLE_LINT_VERSION=26.3.0
-# renovate: datasource=npm depName=@stoplight/spectral-cli
-ARG NPM_SPECTRAL_CLI_VERSION=6.15.0
 # renovate: datasource=github-tags depName=Azure/arm-ttk
 ARG ARM_TTK_VERSION=20250401
 ARG ARM_TTK_NAME='arm-ttk.zip'
@@ -348,7 +346,6 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
 #NPM__START
 WORKDIR /node-deps
 RUN npm --no-cache install --ignore-scripts --omit=dev \
-                @stoplight/spectral-cli@${NPM_SPECTRAL_CLI_VERSION} \
                 jscpd@${NPM_JSCPD_VERSION} \
                 stylelint@${NPM_STYLELINT_VERSION} \
                 stylelint-config-standard@${NPM_STYLELINT_CONFIG_STANDARD_VERSION} \
@@ -466,8 +463,6 @@ ENV PATH="$JAVA_HOME/bin:${PATH}"
 # Managed with COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 #
 # ansible-lint installation
-#
-# spectral installation
 #
 # arm-ttk installation
 ENV ARM_TTK_PSD1="${ARM_TTK_DIRECTORY}/arm-ttk/arm-ttk/arm-ttk.psd1"
