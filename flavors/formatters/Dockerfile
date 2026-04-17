@@ -15,7 +15,7 @@
 # renovate: datasource=docker depName=mvdan/shfmt
 ARG BASH_SHFMT_VERSION=v3.13.1-alpine
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.14.7
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.14.8
 #ARGTOP__END
 
 #############################################################################################
