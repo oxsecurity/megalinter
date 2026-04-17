@@ -320,7 +320,7 @@ ARG REPOSITORY_SYFT_VERSION=1.42.3
 # renovate: datasource=github-tags depName=mongodb/kingfisher
 ARG REPOSITORY_KINGFISHER_VERSION=1.90.0
 # renovate: datasource=pypi depName=robotframework-robocop
-ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=8.2.4
+ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=8.2.7
 # renovate: datasource=pypi depName=Pygments
 ARG PIP_PYGMENTS_VERSION=2.20.0
 # renovate: datasource=pypi depName=restructuredtext_lint
