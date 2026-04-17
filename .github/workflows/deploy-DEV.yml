@@ -251,3 +251,9 @@ jobs:
       #     vuln-type: 'os,library'
       #     severity: 'CRITICAL,HIGH'
       #     timeout: 15m0s
+
+      - name: Run OSV-Scanner vulnerability scanner
+        uses: google/osv-scanner-action/osv-scanner-action@v2.3.5
+        with:
+          scan-args: |-
+            scan image "${{ fromJson(steps.meta.outputs.json).tags[0]}}"

@@ -36,6 +36,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Disable trivy-action until their security issue is solved
   - Run ARM linter jobs only if the latest commit message contains "ARM" (to avoid 200 jobs for each PR)
   - Prevent MegaLinter to push a new commit if the only updates are on markdown files
+  - Add osv-scanner github actions in MegaLinter own workflows
 
 - mega-linter-runner
 
