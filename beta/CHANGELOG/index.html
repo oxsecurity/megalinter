@@ -15601,6 +15601,7 @@
 <ul>
 <li>Disabled linters<ul>
 <li>Disable trivy until their security issue is solved</li>
+<li>Disable spectral which is crashing</li>
 </ul>
 </li>
 </ul>
@@ -15631,6 +15632,8 @@
 <ul>
 <li>CI<ul>
 <li>Disable trivy-action until their security issue is solved</li>
+<li>Run ARM linter jobs only if the latest commit message contains "ARM" (to avoid 200 jobs for each PR)</li>
+<li>Prevent MegaLinter to push a new commit if the only updates are on markdown files</li>
 </ul>
 </li>
 </ul>
@@ -15720,6 +15723,8 @@
 <li><a href="https://snakemake.github.io/">snakemake</a> from 9.18.1 to <strong>9.18.2</strong> on 2026-03-29</li>
 <li><a href="https://raku.org/">raku</a> from 2025.11 to <strong>2026.03</strong> on 2026-04-08</li>
 <li><a href="https://www.sqlfluff.com/">sqlfluff</a> from 4.0.4 to <strong>4.1.0</strong> on 2026-04-08</li>
+<li><a href="https://github.com/anchore/grype">grype</a> from 0.110.0 to <strong>0.111.0</strong> on 2026-04-13</li>
+<li><a href="https://github.com/anchore/syft">syft</a> from 1.42.3 to <strong>1.42.4</strong> on 2026-04-13</li>
 </ul>
 </li>
 </ul>
