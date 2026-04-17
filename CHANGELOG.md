@@ -15,6 +15,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Disabled linters
   - Disable trivy until their security issue is solved
+  - Disable spectral which is currently crashing with its latest version
 
 - Deprecated linters
 

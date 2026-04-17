@@ -91,8 +91,6 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 ARG CARGO_SARIF_FMT_VERSION=0.8.0
 # renovate: datasource=pypi depName=ansible-lint
 ARG PIP_ANSIBLE_LINT_VERSION=26.3.0
-# renovate: datasource=npm depName=@stoplight/spectral-cli
-ARG NPM_SPECTRAL_CLI_VERSION=6.15.0
 # renovate: datasource=crate depName=shellcheck-sarif
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
 # renovate: datasource=pypi depName=cpplint
@@ -387,7 +385,6 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
 #NPM__START
 WORKDIR /node-deps
 RUN npm --no-cache install --ignore-scripts --omit=dev \
-                @stoplight/spectral-cli@${NPM_SPECTRAL_CLI_VERSION} \
                 jscpd@${NPM_JSCPD_VERSION} \
                 stylelint@${NPM_STYLELINT_VERSION} \
                 stylelint-config-standard@${NPM_STYLELINT_CONFIG_STANDARD_VERSION} \
@@ -470,8 +467,6 @@ ENV PATH="$JAVA_HOME/bin:${PATH}"
 # Managed with COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 #
 # ansible-lint installation
-#
-# spectral installation
 #
 # bash-exec installation
 RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: File:[$1] is not executable"; exit 1; fi' > /usr/bin/bash-exec \
