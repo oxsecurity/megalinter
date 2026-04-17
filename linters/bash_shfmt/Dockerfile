@@ -12,7 +12,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=mvdan/shfmt
-ARG BASH_SHFMT_VERSION=v3.13.0-alpine
+ARG BASH_SHFMT_VERSION=v3.13.1-alpine
 #ARGTOP__END
 
 #############################################################################################
