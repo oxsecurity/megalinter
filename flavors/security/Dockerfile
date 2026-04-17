@@ -160,6 +160,7 @@ RUN apk -U --no-cache upgrade \
                 helm \
                 gcompat \
                 libstdc++ \
+                osv-scanner \
                 npm \
                 nodejs-current \
                 yarn \

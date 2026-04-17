@@ -465,6 +465,7 @@ RUN apk -U --no-cache upgrade \
                 R \
                 R-dev \
                 R-doc \
+                osv-scanner \
                 npm \
                 nodejs-current \
                 yarn \

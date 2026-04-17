@@ -354,6 +354,11 @@
     "image": null,
     "title": "npm-package-json-lint | npm-package-json-lint"
   },
+  "osv-scanner": {
+    "description": "Use OSV-Scanner to find existing vulnerabilities affecting your project\u2019s dependencies.",
+    "image": null,
+    "title": "OSV-Scanner"
+  },
   "perlcritic": {
     "description": "Critique Perl source code for best-practices.",
     "image": null,

@@ -11,6 +11,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Core
 
 - New linters
+  - osv-scanner (trivy-like security linter, by Google)
 
 - Disabled linters
   - Disable trivy until their security issue is solved

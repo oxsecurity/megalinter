@@ -295,6 +295,7 @@ RUN apk -U --no-cache upgrade \
                 helm \
                 gcompat \
                 libstdc++ \
+                osv-scanner \
                 libxml2-dev \
                 libxml2-utils \
                 libgcc \
