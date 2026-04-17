@@ -210,4 +210,4 @@ jobs:
         uses: google/osv-scanner-action/osv-scanner-action@v2.3.5
         with:
           scan-args: |-
-            scan image ${{ fromJson(steps.meta.outputs.json).tags[0] }}
+            --docker ${{ fromJson(steps.meta.outputs.json).tags[0] }}
