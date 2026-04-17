@@ -47,6 +47,8 @@ jobs:
     permissions:
       actions: write
       packages: write
+      # Require writing security events to upload SARIF file to security tab
+      security-events: write
     environment:
       name: beta
     strategy:
@@ -223,6 +225,9 @@ jobs:
       #     timeout: 10m0s
       #   env:
       #       ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Docker
+        uses: docker/setup-docker-action@v5
 
       - name: Run OSV-Scanner vulnerability scanner
         uses: google/osv-scanner-action/osv-scanner-action@v2.3.5
