@@ -85,7 +85,7 @@ ARG PIP_BLACK_VERSION=26.3.1
 # renovate: datasource=pypi depName=isort
 ARG PIP_ISORT_VERSION=8.0.1
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.15.8
+ARG PIP_RUFF_VERSION=0.15.11
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=pypi depName=snakefmt
