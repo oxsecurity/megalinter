@@ -53,7 +53,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 #############################################################################################
 #ARG__START
 # renovate: datasource=npm depName=prettier
-ARG NPM_PRETTIER_VERSION=3.8.2
+ARG NPM_PRETTIER_VERSION=3.8.3
 #ARG__END
 
 ####################
