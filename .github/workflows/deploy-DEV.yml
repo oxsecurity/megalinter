@@ -255,11 +255,8 @@ jobs:
       #     severity: 'CRITICAL,HIGH'
       #     timeout: 15m0s
 
-      - name: Set up Docker
-        uses: docker/setup-docker-action@v5
-
       - name: Run OSV-Scanner vulnerability scanner
         uses: google/osv-scanner-action/osv-scanner-action@v2.3.5
         with:
           scan-args: |-
-            scan image "${{ fromJson(steps.meta.outputs.json).tags[0]}}"
+            scan image ${{ fromJson(steps.meta.outputs.json).tags[0] }}

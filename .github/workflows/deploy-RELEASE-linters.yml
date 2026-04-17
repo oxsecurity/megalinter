@@ -184,10 +184,6 @@ jobs:
       #   env:
       #       ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Set up Docker
-        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: docker/setup-docker-action@v5
-
       - name: Run OSV-Scanner vulnerability scanner
         if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
         uses: google/osv-scanner-action/osv-scanner-action@v2.3.5
