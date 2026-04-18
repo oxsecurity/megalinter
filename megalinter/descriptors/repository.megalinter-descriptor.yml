@@ -596,6 +596,7 @@ linters:
       - --format
       - sarif
     cli_help_arg_name: --help
+    help_command_return_code: 127
     cli_version_arg_name: --version
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: "(osv\\.dev/GHSA-)"
