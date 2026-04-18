@@ -35,41 +35,41 @@ description: How to use cljstyle (configure, ignore files, ignore errors, help &
 
 - Enable **autofixes** by adding `CLOJURE_CLJSTYLE` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
-| Variable                                     | Description                                                                                                                                                                                  | Default value                                   |
-|----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| CLOJURE_CLJSTYLE_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                 |
-| CLOJURE_CLJSTYLE_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                         |                                                 |
-| CLOJURE_CLJSTYLE_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file                              |
-| CLOJURE_CLJSTYLE_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file                                 |
-| CLOJURE_CLJSTYLE_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project                                                    | `file`                                          |
-| CLOJURE_CLJSTYLE_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".clj", ".cljs", ".cljc", ".edn"]`            |
-| CLOJURE_CLJSTYLE_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                              |
-| CLOJURE_CLJSTYLE_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                                            |
-| CLOJURE_CLJSTYLE_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None                                            |
-| CLOJURE_CLJSTYLE_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling CLOJURE_CLJSTYLE and its pre/post commands                                                                                      | None                                            |
-| CLOJURE_CLJSTYLE_CONFIG_FILE                 | cljstyle configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                          | `.cljstyle`                                     |
-| CLOJURE_CLJSTYLE_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
-| CLOJURE_CLJSTYLE_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
-| CLOJURE_CLJSTYLE_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
-| CLOJURE_CLJSTYLE_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['cljstyle']`                                  |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| CLOJURE_CLJSTYLE_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| CLOJURE_CLJSTYLE_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"` |  |
+| CLOJURE_CLJSTYLE_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)` | Include every file |
+| CLOJURE_CLJSTYLE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` | Exclude no file |
+| CLOJURE_CLJSTYLE_CLI_LINT_MODE | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project | `file` |
+| CLOJURE_CLJSTYLE_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".clj", ".cljs", ".cljc", ".edn"]` |
+| CLOJURE_CLJSTYLE_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
+| CLOJURE_CLJSTYLE_PRE_COMMANDS | List of bash commands to run before the linter| None |
+| CLOJURE_CLJSTYLE_POST_COMMANDS | List of bash commands to run after the linter| None |
+| CLOJURE_CLJSTYLE_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling CLOJURE_CLJSTYLE and its pre/post commands| None |
+| CLOJURE_CLJSTYLE_CONFIG_FILE | cljstyle configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.cljstyle` |
+| CLOJURE_CLJSTYLE_RULES_PATH | Path where to find linter configuration file | Workspace folder, then MegaLinter default rules |
+| CLOJURE_CLJSTYLE_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
+| CLOJURE_CLJSTYLE_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
+| CLOJURE_CLJSTYLE_CLI_EXECUTABLE | Override CLI executable | `['cljstyle']` |
 
 ## IDE Integration
 
 Use cljstyle in your favorite IDE to catch errors before MegaLinter !
 
-|                                                                  <!-- -->                                                                  | IDE                                          | Extension Name                                                                            |                                                  Install                                                  |
-|:------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------|-------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------:|
+| <!-- --> | IDE | Extension Name | Install |
+| :--: | ----------------- | -------------- | :------: |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a> | [Emacs](https://www.gnu.org/software/emacs/) | [cljstyle-mode](https://github.com/greglook/cljstyle/blob/main/doc/integrations.md#emacs) | [Visit Web Site](https://github.com/greglook/cljstyle/blob/main/doc/integrations.md#emacs){target=_blank} |
 
 ## MegaLinter Flavors
 
 This linter is available in the following flavors
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       134        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        89        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)       | Optimized for JAVA based projects               |        53        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
+| <!-- --> | Flavor | Description | Embedded linters | Info |
+| :------: | :----- | :---------- | :--------------: | ---: |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor | 134 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a> | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages | 89 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a> | [java](https://megalinter.io/beta/flavors/java/) | Optimized for JAVA based projects | 53 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
 
 ## Behind the scenes
 

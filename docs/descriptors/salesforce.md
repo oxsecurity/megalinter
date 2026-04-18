@@ -9,26 +9,26 @@ description: code-analyzer-apex, code-analyzer-aura, code-analyzer-lwc, sfdx-sca
 
 ## Linters
 
-| Linter                                                                                                                                             | Additional                                                                                                                                                                                                                          |
-|----------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [**code-analyzer-apex**](salesforce_code_analyzer_apex.md)<br/>[_SALESFORCE_CODE_ANALYZER_APEX_](salesforce_code_analyzer_apex.md)                 | [![GitHub stars](https://img.shields.io/github/stars/forcedotcom/code-analyzer?cacheSeconds=3600)](https://github.com/forcedotcom/code-analyzer)                                                                                    |
-| [**code-analyzer-aura**](salesforce_code_analyzer_aura.md)<br/>[_SALESFORCE_CODE_ANALYZER_AURA_](salesforce_code_analyzer_aura.md)                 | [![GitHub stars](https://img.shields.io/github/stars/forcedotcom/code-analyzer?cacheSeconds=3600)](https://github.com/forcedotcom/code-analyzer)                                                                                    |
-| [**code-analyzer-lwc**](salesforce_code_analyzer_lwc.md)<br/>[_SALESFORCE_CODE_ANALYZER_LWC_](salesforce_code_analyzer_lwc.md)                     | [![GitHub stars](https://img.shields.io/github/stars/forcedotcom/code-analyzer?cacheSeconds=3600)](https://github.com/forcedotcom/code-analyzer)                                                                                    |
-| [**sfdx-scanner-apex**](salesforce_sfdx_scanner_apex.md)<br/>[_SALESFORCE_SFDX_SCANNER_APEX_](salesforce_sfdx_scanner_apex.md)                     | ![deprecated](https://shields.io/badge/-deprecated-red) [![GitHub stars](https://img.shields.io/github/stars/forcedotcom/code-analyzer?cacheSeconds=3600)](https://github.com/forcedotcom/code-analyzer)                            |
-| [**sfdx-scanner-aura**](salesforce_sfdx_scanner_aura.md)<br/>[_SALESFORCE_SFDX_SCANNER_AURA_](salesforce_sfdx_scanner_aura.md)                     | ![deprecated](https://shields.io/badge/-deprecated-red) [![GitHub stars](https://img.shields.io/github/stars/forcedotcom/code-analyzer?cacheSeconds=3600)](https://github.com/forcedotcom/code-analyzer)                            |
-| [**sfdx-scanner-lwc**](salesforce_sfdx_scanner_lwc.md)<br/>[_SALESFORCE_SFDX_SCANNER_LWC_](salesforce_sfdx_scanner_lwc.md)                         | ![deprecated](https://shields.io/badge/-deprecated-red) [![GitHub stars](https://img.shields.io/github/stars/forcedotcom/code-analyzer?cacheSeconds=3600)](https://github.com/forcedotcom/code-analyzer)                            |
+| Linter | Additional |
+| ------ | ---------- |
+| [**code-analyzer-apex**](salesforce_code_analyzer_apex.md)<br/>[_SALESFORCE_CODE_ANALYZER_APEX_](salesforce_code_analyzer_apex.md) | [![GitHub stars](https://img.shields.io/github/stars/forcedotcom/code-analyzer?cacheSeconds=3600)](https://github.com/forcedotcom/code-analyzer) |
+| [**code-analyzer-aura**](salesforce_code_analyzer_aura.md)<br/>[_SALESFORCE_CODE_ANALYZER_AURA_](salesforce_code_analyzer_aura.md) | [![GitHub stars](https://img.shields.io/github/stars/forcedotcom/code-analyzer?cacheSeconds=3600)](https://github.com/forcedotcom/code-analyzer) |
+| [**code-analyzer-lwc**](salesforce_code_analyzer_lwc.md)<br/>[_SALESFORCE_CODE_ANALYZER_LWC_](salesforce_code_analyzer_lwc.md) | [![GitHub stars](https://img.shields.io/github/stars/forcedotcom/code-analyzer?cacheSeconds=3600)](https://github.com/forcedotcom/code-analyzer) |
+| [**sfdx-scanner-apex**](salesforce_sfdx_scanner_apex.md)<br/>[_SALESFORCE_SFDX_SCANNER_APEX_](salesforce_sfdx_scanner_apex.md) | ![deprecated](https://shields.io/badge/-deprecated-red) [![GitHub stars](https://img.shields.io/github/stars/forcedotcom/code-analyzer?cacheSeconds=3600)](https://github.com/forcedotcom/code-analyzer) |
+| [**sfdx-scanner-aura**](salesforce_sfdx_scanner_aura.md)<br/>[_SALESFORCE_SFDX_SCANNER_AURA_](salesforce_sfdx_scanner_aura.md) | ![deprecated](https://shields.io/badge/-deprecated-red) [![GitHub stars](https://img.shields.io/github/stars/forcedotcom/code-analyzer?cacheSeconds=3600)](https://github.com/forcedotcom/code-analyzer) |
+| [**sfdx-scanner-lwc**](salesforce_sfdx_scanner_lwc.md)<br/>[_SALESFORCE_SFDX_SCANNER_LWC_](salesforce_sfdx_scanner_lwc.md) | ![deprecated](https://shields.io/badge/-deprecated-red) [![GitHub stars](https://img.shields.io/github/stars/forcedotcom/code-analyzer?cacheSeconds=3600)](https://github.com/forcedotcom/code-analyzer) |
 | [**lightning-flow-scanner**](salesforce_lightning_flow_scanner.md)<br/>[_SALESFORCE_LIGHTNING_FLOW_SCANNER_](salesforce_lightning_flow_scanner.md) | ![disabled](https://shields.io/badge/-disabled-orange) [![GitHub stars](https://img.shields.io/github/stars/Flow-Scanner/lightning-flow-scanner-cli?cacheSeconds=3600)](https://github.com/Flow-Scanner/lightning-flow-scanner-cli) |
 
 ## Linted files
 
 ## Configuration in MegaLinter
 
-| Variable                        | Description                                     | Default value |
-|---------------------------------|-------------------------------------------------|---------------|
-| SALESFORCE_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
-| SALESFORCE_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
-| SALESFORCE_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
-| SALESFORCE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| SALESFORCE_PRE_COMMANDS | List of bash commands to run before the linters | None |
+| SALESFORCE_POST_COMMANDS | List of bash commands to run after the linters | None |
+| SALESFORCE_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| SALESFORCE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
 
 ## Behind the scenes

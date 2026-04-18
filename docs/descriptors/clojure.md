@@ -9,10 +9,10 @@ description: clj-kondo, cljstyle are available to analyze CLOJURE files in MegaL
 
 ## Linters
 
-| Linter                                                                                | Additional                                                                                                                                                                           |
-|---------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [**clj-kondo**](clojure_clj_kondo.md)<br/>[_CLOJURE_CLJ_KONDO_](clojure_clj_kondo.md) | [![GitHub stars](https://img.shields.io/github/stars/borkdude/clj-kondo?cacheSeconds=3600)](https://github.com/borkdude/clj-kondo)                                                   |
-| [**cljstyle**](clojure_cljstyle.md)<br/>[_CLOJURE_CLJSTYLE_](clojure_cljstyle.md)     | [![GitHub stars](https://img.shields.io/github/stars/greglook/cljstyle?cacheSeconds=3600)](https://github.com/greglook/cljstyle) ![autofix](https://shields.io/badge/-autofix-green) |
+| Linter | Additional |
+| ------ | ---------- |
+| [**clj-kondo**](clojure_clj_kondo.md)<br/>[_CLOJURE_CLJ_KONDO_](clojure_clj_kondo.md) | [![GitHub stars](https://img.shields.io/github/stars/borkdude/clj-kondo?cacheSeconds=3600)](https://github.com/borkdude/clj-kondo) |
+| [**cljstyle**](clojure_cljstyle.md)<br/>[_CLOJURE_CLJSTYLE_](clojure_cljstyle.md) | [![GitHub stars](https://img.shields.io/github/stars/greglook/cljstyle?cacheSeconds=3600)](https://github.com/greglook/cljstyle) ![autofix](https://shields.io/badge/-autofix-green) |
 
 ## Linted files
 
@@ -24,12 +24,12 @@ description: clj-kondo, cljstyle are available to analyze CLOJURE files in MegaL
 
 ## Configuration in MegaLinter
 
-| Variable                     | Description                                     | Default value |
-|------------------------------|-------------------------------------------------|---------------|
-| CLOJURE_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
-| CLOJURE_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
-| CLOJURE_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
-| CLOJURE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| CLOJURE_PRE_COMMANDS | List of bash commands to run before the linters | None |
+| CLOJURE_POST_COMMANDS | List of bash commands to run after the linters | None |
+| CLOJURE_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| CLOJURE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
 
 ## Behind the scenes

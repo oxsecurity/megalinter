@@ -9,11 +9,11 @@ description: luacheck, selene, stylua are available to analyze LUA files in Mega
 
 ## Linters
 
-| Linter                                                                | Additional                                                                                                                                                                                |
-|-----------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [**luacheck**](lua_luacheck.md)<br/>[_LUA_LUACHECK_](lua_luacheck.md) | [![GitHub stars](https://img.shields.io/github/stars/lunarmodules/luacheck?cacheSeconds=3600)](https://github.com/lunarmodules/luacheck)                                                  |
-| [**selene**](lua_selene.md)<br/>[_LUA_SELENE_](lua_selene.md)         | ![disabled](https://shields.io/badge/-disabled-orange) [![GitHub stars](https://img.shields.io/github/stars/Kampfkarren/selene?cacheSeconds=3600)](https://github.com/Kampfkarren/selene) |
-| [**stylua**](lua_stylua.md)<br/>[_LUA_STYLUA_](lua_stylua.md)         | [![GitHub stars](https://img.shields.io/github/stars/JohnnyMorganz/StyLua?cacheSeconds=3600)](https://github.com/JohnnyMorganz/StyLua)                                                    |
+| Linter | Additional |
+| ------ | ---------- |
+| [**luacheck**](lua_luacheck.md)<br/>[_LUA_LUACHECK_](lua_luacheck.md) | [![GitHub stars](https://img.shields.io/github/stars/lunarmodules/luacheck?cacheSeconds=3600)](https://github.com/lunarmodules/luacheck) |
+| [**selene**](lua_selene.md)<br/>[_LUA_SELENE_](lua_selene.md) | ![disabled](https://shields.io/badge/-disabled-orange) [![GitHub stars](https://img.shields.io/github/stars/Kampfkarren/selene?cacheSeconds=3600)](https://github.com/Kampfkarren/selene) |
+| [**stylua**](lua_stylua.md)<br/>[_LUA_STYLUA_](lua_stylua.md) | [![GitHub stars](https://img.shields.io/github/stars/JohnnyMorganz/StyLua?cacheSeconds=3600)](https://github.com/JohnnyMorganz/StyLua) |
 
 ## Linted files
 
@@ -22,12 +22,12 @@ description: luacheck, selene, stylua are available to analyze LUA files in Mega
 
 ## Configuration in MegaLinter
 
-| Variable                 | Description                                     | Default value |
-|--------------------------|-------------------------------------------------|---------------|
-| LUA_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
-| LUA_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
-| LUA_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
-| LUA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| LUA_PRE_COMMANDS | List of bash commands to run before the linters | None |
+| LUA_POST_COMMANDS | List of bash commands to run after the linters | None |
+| LUA_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| LUA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
 
 ## Behind the scenes

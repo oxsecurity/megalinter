@@ -9,11 +9,11 @@ description: dotnet-format, csharpier, roslynator are available to analyze CSHAR
 
 ## Linters
 
-| Linter                                                                                             | Additional                                                                                                                                                                             |
-|----------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [**dotnet-format**](csharp_dotnet_format.md)<br/>[_CSHARP_DOTNET_FORMAT_](csharp_dotnet_format.md) | [![GitHub stars](https://img.shields.io/github/stars/dotnet/sdk?cacheSeconds=3600)](https://github.com/dotnet/sdk) ![formatter](https://shields.io/badge/-format-yellow)               |
-| [**csharpier**](csharp_csharpier.md)<br/>[_CSHARP_CSHARPIER_](csharp_csharpier.md)                 | [![GitHub stars](https://img.shields.io/github/stars/belav/csharpier?cacheSeconds=3600)](https://github.com/belav/csharpier) ![formatter](https://shields.io/badge/-format-yellow)     |
-| [**roslynator**](csharp_roslynator.md)<br/>[_CSHARP_ROSLYNATOR_](csharp_roslynator.md)             | [![GitHub stars](https://img.shields.io/github/stars/dotnet/Roslynator?cacheSeconds=3600)](https://github.com/dotnet/Roslynator) ![formatter](https://shields.io/badge/-format-yellow) |
+| Linter | Additional |
+| ------ | ---------- |
+| [**dotnet-format**](csharp_dotnet_format.md)<br/>[_CSHARP_DOTNET_FORMAT_](csharp_dotnet_format.md) | [![GitHub stars](https://img.shields.io/github/stars/dotnet/sdk?cacheSeconds=3600)](https://github.com/dotnet/sdk) ![formatter](https://shields.io/badge/-format-yellow) |
+| [**csharpier**](csharp_csharpier.md)<br/>[_CSHARP_CSHARPIER_](csharp_csharpier.md) | [![GitHub stars](https://img.shields.io/github/stars/belav/csharpier?cacheSeconds=3600)](https://github.com/belav/csharpier) ![formatter](https://shields.io/badge/-format-yellow) |
+| [**roslynator**](csharp_roslynator.md)<br/>[_CSHARP_ROSLYNATOR_](csharp_roslynator.md) | [![GitHub stars](https://img.shields.io/github/stars/dotnet/Roslynator?cacheSeconds=3600)](https://github.com/dotnet/Roslynator) ![formatter](https://shields.io/badge/-format-yellow) |
 
 ## Linted files
 
@@ -22,12 +22,12 @@ description: dotnet-format, csharpier, roslynator are available to analyze CSHAR
 
 ## Configuration in MegaLinter
 
-| Variable                    | Description                                     | Default value |
-|-----------------------------|-------------------------------------------------|---------------|
-| CSHARP_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
-| CSHARP_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
-| CSHARP_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
-| CSHARP_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| CSHARP_PRE_COMMANDS | List of bash commands to run before the linters | None |
+| CSHARP_POST_COMMANDS | List of bash commands to run after the linters | None |
+| CSHARP_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| CSHARP_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
 
 ## Behind the scenes

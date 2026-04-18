@@ -9,8 +9,8 @@ description: eslint is available to analyze JSX files in MegaLinter
 
 ## Linters
 
-| Linter                                                        | Additional                                                                                                                                                                                                                                                    |
-|---------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Linter | Additional |
+| ------ | ---------- |
 | [**eslint**](jsx_eslint.md)<br/>[_JSX_ESLINT_](jsx_eslint.md) | [![GitHub stars](https://img.shields.io/github/stars/yannickcr/eslint-plugin-react?cacheSeconds=3600)](https://github.com/yannickcr/eslint-plugin-react) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) |
 
 ## Linted files
@@ -20,10 +20,10 @@ description: eslint is available to analyze JSX files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                 | Description                                     | Default value |
-|--------------------------|-------------------------------------------------|---------------|
-| JSX_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
-| JSX_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
-| JSX_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
-| JSX_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| JSX_PRE_COMMANDS | List of bash commands to run before the linters | None |
+| JSX_POST_COMMANDS | List of bash commands to run after the linters | None |
+| JSX_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| JSX_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 

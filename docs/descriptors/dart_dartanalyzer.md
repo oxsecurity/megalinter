@@ -33,40 +33,40 @@ description: How to use dartanalyzer (configure, ignore files, ignore errors, he
 - Enable dartanalyzer by adding `DART_DARTANALYZER` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable dartanalyzer by adding `DART_DARTANALYZER` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                      | Description                                                                                                                                                                                  | Default value                                   |
-|-----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| DART_DARTANALYZER_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                 |
-| DART_DARTANALYZER_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                         |                                                 |
-| DART_DARTANALYZER_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file                              |
-| DART_DARTANALYZER_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file                                 |
-| DART_DARTANALYZER_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project                                                    | `file`                                          |
-| DART_DARTANALYZER_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".dart"]`                                     |
-| DART_DARTANALYZER_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                              |
-| DART_DARTANALYZER_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                                            |
-| DART_DARTANALYZER_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None                                            |
-| DART_DARTANALYZER_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling DART_DARTANALYZER and its pre/post commands                                                                                     | None                                            |
-| DART_DARTANALYZER_CONFIG_FILE                 | dartanalyzer configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                      | `analysis_options.yaml`                         |
-| DART_DARTANALYZER_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
-| DART_DARTANALYZER_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
-| DART_DARTANALYZER_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
-| DART_DARTANALYZER_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['dart']`                                      |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| DART_DARTANALYZER_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| DART_DARTANALYZER_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"` |  |
+| DART_DARTANALYZER_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)` | Include every file |
+| DART_DARTANALYZER_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` | Exclude no file |
+| DART_DARTANALYZER_CLI_LINT_MODE | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project | `file` |
+| DART_DARTANALYZER_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".dart"]` |
+| DART_DARTANALYZER_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
+| DART_DARTANALYZER_PRE_COMMANDS | List of bash commands to run before the linter| None |
+| DART_DARTANALYZER_POST_COMMANDS | List of bash commands to run after the linter| None |
+| DART_DARTANALYZER_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling DART_DARTANALYZER and its pre/post commands| None |
+| DART_DARTANALYZER_CONFIG_FILE | dartanalyzer configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `analysis_options.yaml` |
+| DART_DARTANALYZER_RULES_PATH | Path where to find linter configuration file | Workspace folder, then MegaLinter default rules |
+| DART_DARTANALYZER_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
+| DART_DARTANALYZER_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
+| DART_DARTANALYZER_CLI_EXECUTABLE | Override CLI executable | `['dart']` |
 
 ## IDE Integration
 
 Use dartanalyzer in your favorite IDE to catch errors before MegaLinter !
 
-|                                                                  <!-- -->                                                                   | IDE                                                      | Extension Name                                                                       |                                                                                 Install                                                                                  |
-|:-------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|--------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>  | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [dart-jetbrains-plugin](https://plugins.jetbrains.com/plugin/6351-dart)              |                       <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/6351"></iframe>                       |
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/)     | [dart-code](https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/Dart-Code.dart-code){target=_blank} |
+| <!-- --> | IDE | Extension Name | Install |
+| :--: | ----------------- | -------------- | :------: |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [dart-jetbrains-plugin](https://plugins.jetbrains.com/plugin/6351-dart) | <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/6351"></iframe> |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [dart-code](https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/Dart-Code.dart-code){target=_blank} |
 
 ## MegaLinter Flavors
 
 This linter is available in the following flavors
 
-|                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       134        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <!-- --> | Flavor | Description | Embedded linters | Info |
+| :------: | :----- | :---------- | :--------------: | ---: |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor | 134 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 

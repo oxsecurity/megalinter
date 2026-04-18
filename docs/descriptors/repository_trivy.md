@@ -15,7 +15,7 @@ description: How to use trivy (configure, ignore files, ignore errors, help & ve
 
 _This linter has been disabled in this version_
 
-_Disabled reason: <https://github.com/aquasecurity/trivy/discussions/10425>_
+_Disabled reason: https://github.com/aquasecurity/trivy/discussions/10425_
 
 **Trivy** is a comprehensive security scanner that detects vulnerabilities, misconfigurations, secrets, and license issues in container images, filesystems, and git repositories. It serves as an all-in-one security solution for modern development workflows.
 
@@ -59,35 +59,35 @@ REPOSITORY_TRIVY_ARGUMENTS:
 - Enable trivy by adding `REPOSITORY_TRIVY` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable trivy by adding `REPOSITORY_TRIVY` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                     | Description                                                                                                                                                                                                                                                                           | Default value                                   |
-|----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| REPOSITORY_TRIVY_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                                              |                                                 |
-| REPOSITORY_TRIVY_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                  |                                                 |
-| REPOSITORY_TRIVY_CLI_LINT_MODE               | Override default CLI lint mode<br/>⚠️ As default value is **project**, overriding might not work<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `project`                                       |
-| REPOSITORY_TRIVY_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                                                                                        | None                                            |
-| REPOSITORY_TRIVY_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                                                                                         | None                                            |
-| REPOSITORY_TRIVY_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling REPOSITORY_TRIVY and its pre/post commands                                                                                                                                                                               | None                                            |
-| REPOSITORY_TRIVY_CONFIG_FILE                 | trivy configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                                                                                      | `trivy.yaml`                                    |
-| REPOSITORY_TRIVY_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                                                                                          | Workspace folder, then MegaLinter default rules |
-| REPOSITORY_TRIVY_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                                                                                            | `false`                                         |
-| REPOSITORY_TRIVY_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                                                                                      | `0`                                             |
-| REPOSITORY_TRIVY_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                                                                                               | `['trivy']`                                     |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| REPOSITORY_TRIVY_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| REPOSITORY_TRIVY_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"` |  |
+| REPOSITORY_TRIVY_CLI_LINT_MODE | Override default CLI lint mode<br/>⚠️ As default value is **project**, overriding might not work<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `project` |
+| REPOSITORY_TRIVY_PRE_COMMANDS | List of bash commands to run before the linter| None |
+| REPOSITORY_TRIVY_POST_COMMANDS | List of bash commands to run after the linter| None |
+| REPOSITORY_TRIVY_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling REPOSITORY_TRIVY and its pre/post commands| None |
+| REPOSITORY_TRIVY_CONFIG_FILE | trivy configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `trivy.yaml` |
+| REPOSITORY_TRIVY_RULES_PATH | Path where to find linter configuration file | Workspace folder, then MegaLinter default rules |
+| REPOSITORY_TRIVY_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
+| REPOSITORY_TRIVY_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
+| REPOSITORY_TRIVY_CLI_EXECUTABLE | Override CLI executable | `['trivy']` |
 
 ## IDE Integration
 
 Use trivy in your favorite IDE to catch errors before MegaLinter !
 
-|                                                                  <!-- -->                                                                   | IDE                                                  | Extension Name                                                                                                       |                                                                                                Install                                                                                                |
-|:-------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <!-- --> | IDE | Extension Name | Install |
+| :--: | ----------------- | -------------- | :------: |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [VSCode Trivy](https://marketplace.visualstudio.com/items?itemName=AquaSecurityOfficial.trivy-vulnerability-scanner) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/AquaSecurityOfficial.trivy-vulnerability-scanner){target=_blank} |
 
 ## MegaLinter Flavors
 
 This linter is available in the following flavors
 
-|                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       134        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <!-- --> | Flavor | Description | Embedded linters | Info |
+| :------: | :----- | :---------- | :--------------: | ---: |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor | 134 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 

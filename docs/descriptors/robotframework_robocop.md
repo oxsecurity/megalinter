@@ -39,40 +39,40 @@ RoboCop is a linter and code formatter for the Robot Framework. It helps maintai
 
 - Enable **autofixes** by adding `ROBOTFRAMEWORK_ROBOCOP` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
-| Variable                                           | Description                                                                                                                                                                                                         | Default value                                   |
-|----------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| ROBOTFRAMEWORK_ROBOCOP_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
-| ROBOTFRAMEWORK_ROBOCOP_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                                                 |
-| ROBOTFRAMEWORK_ROBOCOP_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
-| ROBOTFRAMEWORK_ROBOCOP_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
-| ROBOTFRAMEWORK_ROBOCOP_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
-| ROBOTFRAMEWORK_ROBOCOP_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".robot", ".resource"]`                       |
-| ROBOTFRAMEWORK_ROBOCOP_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
-| ROBOTFRAMEWORK_ROBOCOP_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
-| ROBOTFRAMEWORK_ROBOCOP_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
-| ROBOTFRAMEWORK_ROBOCOP_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling ROBOTFRAMEWORK_ROBOCOP and its pre/post commands                                                                                                       | None                                            |
-| ROBOTFRAMEWORK_ROBOCOP_CONFIG_FILE                 | robocop configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                  | `robocop.toml`                                  |
-| ROBOTFRAMEWORK_ROBOCOP_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
-| ROBOTFRAMEWORK_ROBOCOP_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
-| ROBOTFRAMEWORK_ROBOCOP_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
-| ROBOTFRAMEWORK_ROBOCOP_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['robocop']`                                   |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| ROBOTFRAMEWORK_ROBOCOP_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| ROBOTFRAMEWORK_ROBOCOP_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"` |  |
+| ROBOTFRAMEWORK_ROBOCOP_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)` | Include every file |
+| ROBOTFRAMEWORK_ROBOCOP_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` | Exclude no file |
+| ROBOTFRAMEWORK_ROBOCOP_CLI_LINT_MODE | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files` |
+| ROBOTFRAMEWORK_ROBOCOP_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".robot", ".resource"]` |
+| ROBOTFRAMEWORK_ROBOCOP_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
+| ROBOTFRAMEWORK_ROBOCOP_PRE_COMMANDS | List of bash commands to run before the linter| None |
+| ROBOTFRAMEWORK_ROBOCOP_POST_COMMANDS | List of bash commands to run after the linter| None |
+| ROBOTFRAMEWORK_ROBOCOP_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling ROBOTFRAMEWORK_ROBOCOP and its pre/post commands| None |
+| ROBOTFRAMEWORK_ROBOCOP_CONFIG_FILE | robocop configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `robocop.toml` |
+| ROBOTFRAMEWORK_ROBOCOP_RULES_PATH | Path where to find linter configuration file | Workspace folder, then MegaLinter default rules |
+| ROBOTFRAMEWORK_ROBOCOP_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
+| ROBOTFRAMEWORK_ROBOCOP_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
+| ROBOTFRAMEWORK_ROBOCOP_CLI_EXECUTABLE | Override CLI executable | `['robocop']` |
 
 ## IDE Integration
 
 Use robocop in your favorite IDE to catch errors before MegaLinter !
 
-|                                                                  <!-- -->                                                                   | IDE                                                  | Extension Name                                                                     |                                                                                Install                                                                                 |
-|:-------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <!-- --> | IDE | Extension Name | Install |
+| :--: | ----------------- | -------------- | :------: |
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [RobotCode](https://marketplace.visualstudio.com/items?itemName=d-biehl.robotcode) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/d-biehl.robotcode){target=_blank} |
 
 ## MegaLinter Flavors
 
 This linter is available in the following flavors
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       134        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        89        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+| <!-- --> | Flavor | Description | Embedded linters | Info |
+| :------: | :----- | :---------- | :--------------: | ---: |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor | 134 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a> | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages | 89 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 
 ## Behind the scenes
 

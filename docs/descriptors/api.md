@@ -9,8 +9,8 @@ description: spectral is available to analyze API files in MegaLinter
 
 ## Linters
 
-| Linter                                                                | Additional                                                                                                                                                                                                                                     |
-|-----------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Linter | Additional |
+| ------ | ---------- |
 | [**spectral**](api_spectral.md)<br/>[_API_SPECTRAL_](api_spectral.md) | ![disabled](https://shields.io/badge/-disabled-orange) [![GitHub stars](https://img.shields.io/github/stars/stoplightio/spectral?cacheSeconds=3600)](https://github.com/stoplightio/spectral) ![sarif](https://shields.io/badge/-SARIF-orange) |
 
 ## Linted files
@@ -30,10 +30,10 @@ description: spectral is available to analyze API files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                 | Description                                     | Default value |
-|--------------------------|-------------------------------------------------|---------------|
-| API_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
-| API_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
-| API_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
-| API_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| API_PRE_COMMANDS | List of bash commands to run before the linters | None |
+| API_POST_COMMANDS | List of bash commands to run after the linters | None |
+| API_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| API_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 

@@ -9,22 +9,22 @@ description: cspell, proselint, vale, lychee, codespell are available to analyze
 
 ## Linters
 
-| Linter                                                                          | Additional                                                                                                                                                                                               |
-|---------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [**cspell**](spell_cspell.md)<br/>[_SPELL_CSPELL_](spell_cspell.md)             | [![GitHub stars](https://img.shields.io/github/stars/streetsidesoftware/cspell?cacheSeconds=3600)](https://github.com/streetsidesoftware/cspell)                                                         |
-| [**proselint**](spell_proselint.md)<br/>[_SPELL_PROSELINT_](spell_proselint.md) | [![GitHub stars](https://img.shields.io/github/stars/amperser/proselint?cacheSeconds=3600)](https://github.com/amperser/proselint)                                                                       |
-| [**vale**](spell_vale.md)<br/>[_SPELL_VALE_](spell_vale.md)                     | [![GitHub stars](https://img.shields.io/github/stars/errata-ai/vale?cacheSeconds=3600)](https://github.com/errata-ai/vale)                                                                               |
-| [**lychee**](spell_lychee.md)<br/>[_SPELL_LYCHEE_](spell_lychee.md)             | [![GitHub stars](https://img.shields.io/github/stars/lycheeverse/lychee?cacheSeconds=3600)](https://github.com/lycheeverse/lychee)                                                                       |
+| Linter | Additional |
+| ------ | ---------- |
+| [**cspell**](spell_cspell.md)<br/>[_SPELL_CSPELL_](spell_cspell.md) | [![GitHub stars](https://img.shields.io/github/stars/streetsidesoftware/cspell?cacheSeconds=3600)](https://github.com/streetsidesoftware/cspell) |
+| [**proselint**](spell_proselint.md)<br/>[_SPELL_PROSELINT_](spell_proselint.md) | [![GitHub stars](https://img.shields.io/github/stars/amperser/proselint?cacheSeconds=3600)](https://github.com/amperser/proselint) |
+| [**vale**](spell_vale.md)<br/>[_SPELL_VALE_](spell_vale.md) | [![GitHub stars](https://img.shields.io/github/stars/errata-ai/vale?cacheSeconds=3600)](https://github.com/errata-ai/vale) |
+| [**lychee**](spell_lychee.md)<br/>[_SPELL_LYCHEE_](spell_lychee.md) | [![GitHub stars](https://img.shields.io/github/stars/lycheeverse/lychee?cacheSeconds=3600)](https://github.com/lycheeverse/lychee) |
 | [**codespell**](spell_codespell.md)<br/>[_SPELL_CODESPELL_](spell_codespell.md) | [![GitHub stars](https://img.shields.io/github/stars/codespell-project/codespell?cacheSeconds=3600)](https://github.com/codespell-project/codespell) ![autofix](https://shields.io/badge/-autofix-green) |
 
 ## Linted files
 
 ## Configuration in MegaLinter
 
-| Variable                   | Description                                     | Default value |
-|----------------------------|-------------------------------------------------|---------------|
-| SPELL_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
-| SPELL_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
-| SPELL_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
-| SPELL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| SPELL_PRE_COMMANDS | List of bash commands to run before the linters | None |
+| SPELL_POST_COMMANDS | List of bash commands to run after the linters | None |
+| SPELL_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| SPELL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 

@@ -9,8 +9,8 @@ description: actionlint is available to analyze ACTION files in MegaLinter
 
 ## Linters
 
-| Linter                                                                                 | Additional                                                                                                                     |
-|----------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| Linter | Additional |
+| ------ | ---------- |
 | [**actionlint**](action_actionlint.md)<br/>[_ACTION_ACTIONLINT_](action_actionlint.md) | [![GitHub stars](https://img.shields.io/github/stars/rhysd/actionlint?cacheSeconds=3600)](https://github.com/rhysd/actionlint) |
 
 ## Linted files
@@ -21,10 +21,10 @@ description: actionlint is available to analyze ACTION files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                    | Description                                     | Default value |
-|-----------------------------|-------------------------------------------------|---------------|
-| ACTION_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
-| ACTION_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
-| ACTION_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
-| ACTION_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| ACTION_PRE_COMMANDS | List of bash commands to run before the linters | None |
+| ACTION_POST_COMMANDS | List of bash commands to run after the linters | None |
+| ACTION_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| ACTION_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 

@@ -9,8 +9,8 @@ description: cfn-lint is available to analyze CLOUDFORMATION files in MegaLinter
 
 ## Linters
 
-| Linter                                                                                                 | Additional                                                                                                                                                                                            |
-|--------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Linter | Additional |
+| ------ | ---------- |
 | [**cfn-lint**](cloudformation_cfn_lint.md)<br/>[_CLOUDFORMATION_CFN_LINT_](cloudformation_cfn_lint.md) | [![GitHub stars](https://img.shields.io/github/stars/aws-cloudformation/cfn-lint?cacheSeconds=3600)](https://github.com/aws-cloudformation/cfn-lint) ![sarif](https://shields.io/badge/-SARIF-orange) |
 
 ## Linted files
@@ -26,10 +26,10 @@ description: cfn-lint is available to analyze CLOUDFORMATION files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                            | Description                                     | Default value |
-|-------------------------------------|-------------------------------------------------|---------------|
-| CLOUDFORMATION_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
-| CLOUDFORMATION_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
-| CLOUDFORMATION_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
-| CLOUDFORMATION_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| CLOUDFORMATION_PRE_COMMANDS | List of bash commands to run before the linters | None |
+| CLOUDFORMATION_POST_COMMANDS | List of bash commands to run after the linters | None |
+| CLOUDFORMATION_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| CLOUDFORMATION_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 

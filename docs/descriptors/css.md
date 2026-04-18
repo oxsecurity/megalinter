@@ -9,8 +9,8 @@ description: stylelint is available to analyze CSS files in MegaLinter
 
 ## Linters
 
-| Linter                                                                    | Additional                                                                                                                                                                               |
-|---------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Linter | Additional |
+| ------ | ---------- |
 | [**stylelint**](css_stylelint.md)<br/>[_CSS_STYLELINT_](css_stylelint.md) | [![GitHub stars](https://img.shields.io/github/stars/stylelint/stylelint?cacheSeconds=3600)](https://github.com/stylelint/stylelint) ![autofix](https://shields.io/badge/-autofix-green) |
 
 ## Linted files
@@ -22,10 +22,10 @@ description: stylelint is available to analyze CSS files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                 | Description                                     | Default value |
-|--------------------------|-------------------------------------------------|---------------|
-| CSS_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
-| CSS_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
-| CSS_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
-| CSS_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| CSS_PRE_COMMANDS | List of bash commands to run before the linters | None |
+| CSS_POST_COMMANDS | List of bash commands to run after the linters | None |
+| CSS_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| CSS_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 

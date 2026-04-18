@@ -9,10 +9,10 @@ description: sqlfluff, tsqllint are available to analyze SQL files in MegaLinter
 
 ## Linters
 
-| Linter                                                                | Additional                                                                                                                                                                           |
-|-----------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Linter | Additional |
+| ------ | ---------- |
 | [**sqlfluff**](sql_sqlfluff.md)<br/>[_SQL_SQLFLUFF_](sql_sqlfluff.md) | [![GitHub stars](https://img.shields.io/github/stars/sqlfluff/sqlfluff?cacheSeconds=3600)](https://github.com/sqlfluff/sqlfluff) ![autofix](https://shields.io/badge/-autofix-green) |
-| [**tsqllint**](sql_tsqllint.md)<br/>[_SQL_TSQLLINT_](sql_tsqllint.md) | [![GitHub stars](https://img.shields.io/github/stars/tsqllint/tsqllint?cacheSeconds=3600)](https://github.com/tsqllint/tsqllint)                                                     |
+| [**tsqllint**](sql_tsqllint.md)<br/>[_SQL_TSQLLINT_](sql_tsqllint.md) | [![GitHub stars](https://img.shields.io/github/stars/tsqllint/tsqllint?cacheSeconds=3600)](https://github.com/tsqllint/tsqllint) |
 
 ## Linted files
 
@@ -21,10 +21,10 @@ description: sqlfluff, tsqllint are available to analyze SQL files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                 | Description                                     | Default value |
-|--------------------------|-------------------------------------------------|---------------|
-| SQL_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
-| SQL_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
-| SQL_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
-| SQL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| SQL_PRE_COMMANDS | List of bash commands to run before the linters | None |
+| SQL_POST_COMMANDS | List of bash commands to run after the linters | None |
+| SQL_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| SQL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 

@@ -9,7 +9,7 @@ description: How to use selene (configure, ignore files, ignore errors, help & v
 
 _This linter has been disabled in this version_
 
-_Disabled reason: <https://github.com/Kampfkarren/selene/issues/662>_
+_Disabled reason: https://github.com/Kampfkarren/selene/issues/662_
 
 **Selene** is a blazing-fast modern Lua linter written in Rust that provides comprehensive static analysis for Lua code. It offers extensive configurability and can be tailored to specific Lua environments like Roblox, World of Warcraft addons, or standard Lua.
 
@@ -42,42 +42,42 @@ _Disabled reason: <https://github.com/Kampfkarren/selene/issues/662>_
 - Enable selene by adding `LUA_SELENE` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable selene by adding `LUA_SELENE` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                               | Description                                                                                                                                                                                  | Default value                                   |
-|----------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| LUA_SELENE_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                 |
-| LUA_SELENE_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                         |                                                 |
-| LUA_SELENE_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file                              |
-| LUA_SELENE_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file                                 |
-| LUA_SELENE_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project                                                    | `file`                                          |
-| LUA_SELENE_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".lua"]`                                      |
-| LUA_SELENE_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                              |
-| LUA_SELENE_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                                            |
-| LUA_SELENE_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None                                            |
-| LUA_SELENE_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling LUA_SELENE and its pre/post commands                                                                                            | None                                            |
-| LUA_SELENE_CONFIG_FILE                 | selene configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                            | `selene.toml`                                   |
-| LUA_SELENE_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
-| LUA_SELENE_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
-| LUA_SELENE_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
-| LUA_SELENE_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['selene']`                                    |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| LUA_SELENE_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| LUA_SELENE_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"` |  |
+| LUA_SELENE_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)` | Include every file |
+| LUA_SELENE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` | Exclude no file |
+| LUA_SELENE_CLI_LINT_MODE | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project | `file` |
+| LUA_SELENE_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".lua"]` |
+| LUA_SELENE_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
+| LUA_SELENE_PRE_COMMANDS | List of bash commands to run before the linter| None |
+| LUA_SELENE_POST_COMMANDS | List of bash commands to run after the linter| None |
+| LUA_SELENE_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling LUA_SELENE and its pre/post commands| None |
+| LUA_SELENE_CONFIG_FILE | selene configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `selene.toml` |
+| LUA_SELENE_RULES_PATH | Path where to find linter configuration file | Workspace folder, then MegaLinter default rules |
+| LUA_SELENE_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
+| LUA_SELENE_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
+| LUA_SELENE_CLI_EXECUTABLE | Override CLI executable | `['selene']` |
 
 ## IDE Integration
 
 Use selene in your favorite IDE to catch errors before MegaLinter !
 
-|                                                                   <!-- -->                                                                   | IDE                                                  | Extension Name                                                                                  |                                                                                    Install                                                                                     |
-|:--------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | neovim                                               | [nvim-lint](https://github.com/mfussenegger/nvim-lint)                                          |                                                   [Visit Web Site](https://github.com/mfussenegger/nvim-lint){target=_blank}                                                   |
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | neovim                                               | [none-ls](https://github.com/nvimtools/none-ls.nvim)                                            |                                                   [Visit Web Site](https://github.com/nvimtools/none-ls.nvim){target=_blank}                                                   |
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)         | [SublimeLinter-contrib-selene](https://packagecontrol.io/packages/SublimeLinter-contrib-selene) |                                        [Visit Web Site](https://packagecontrol.io/packages/SublimeLinter-contrib-selene){target=_blank}                                        |
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [selene-vscode](https://marketplace.visualstudio.com/items?itemName=Kampfkarren.selene-vscode)  | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/Kampfkarren.selene-vscode){target=_blank} |
+| <!-- --> | IDE | Extension Name | Install |
+| :--: | ----------------- | -------------- | :------: |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | neovim | [nvim-lint](https://github.com/mfussenegger/nvim-lint) | [Visit Web Site](https://github.com/mfussenegger/nvim-lint){target=_blank} |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | neovim | [none-ls](https://github.com/nvimtools/none-ls.nvim) | [Visit Web Site](https://github.com/nvimtools/none-ls.nvim){target=_blank} |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/) | [SublimeLinter-contrib-selene](https://packagecontrol.io/packages/SublimeLinter-contrib-selene) | [Visit Web Site](https://packagecontrol.io/packages/SublimeLinter-contrib-selene){target=_blank} |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [selene-vscode](https://marketplace.visualstudio.com/items?itemName=Kampfkarren.selene-vscode) | [![Install in VSCode](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/Kampfkarren.selene-vscode){target=_blank} |
 
 ## MegaLinter Flavors
 
 This linter is available in the following flavors
 
-|                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       134        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <!-- --> | Flavor | Description | Embedded linters | Info |
+| :------: | :----- | :---------- | :--------------: | ---: |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor | 134 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 

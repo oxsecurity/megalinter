@@ -9,8 +9,8 @@ description: puppet-lint is available to analyze PUPPET files in MegaLinter
 
 ## Linters
 
-| Linter                                                                                     | Additional                                                                                                                                                                                                                                            |
-|--------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Linter | Additional |
+| ------ | ---------- |
 | [**puppet-lint**](puppet_puppet_lint.md)<br/>[_PUPPET_PUPPET_LINT_](puppet_puppet_lint.md) | ![disabled](https://shields.io/badge/-disabled-orange) [![GitHub stars](https://img.shields.io/github/stars/puppetlabs/puppet-lint?cacheSeconds=3600)](https://github.com/puppetlabs/puppet-lint) ![autofix](https://shields.io/badge/-autofix-green) |
 
 ## Linted files
@@ -20,10 +20,10 @@ description: puppet-lint is available to analyze PUPPET files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                    | Description                                     | Default value |
-|-----------------------------|-------------------------------------------------|---------------|
-| PUPPET_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
-| PUPPET_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
-| PUPPET_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
-| PUPPET_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| PUPPET_PRE_COMMANDS | List of bash commands to run before the linters | None |
+| PUPPET_POST_COMMANDS | List of bash commands to run after the linters | None |
+| PUPPET_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| PUPPET_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 

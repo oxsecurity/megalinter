@@ -9,13 +9,13 @@ description: phpcs, phpstan, psalm, phplint, php-cs-fixer are available to analy
 
 ## Linters
 
-| Linter                                                                              | Additional                                                                                                                                                                                                  |
-|-------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [**phpcs**](php_phpcs.md)<br/>[_PHP_PHPCS_](php_phpcs.md)                           | [![GitHub stars](https://img.shields.io/github/stars/PHPCSStandards/PHP_CodeSniffer?cacheSeconds=3600)](https://github.com/PHPCSStandards/PHP_CodeSniffer) ![sarif](https://shields.io/badge/-SARIF-orange) |
-| [**phpstan**](php_phpstan.md)<br/>[_PHP_PHPSTAN_](php_phpstan.md)                   | [![GitHub stars](https://img.shields.io/github/stars/phpstan/phpstan?cacheSeconds=3600)](https://github.com/phpstan/phpstan) ![sarif](https://shields.io/badge/-SARIF-orange)                               |
-| [**psalm**](php_psalm.md)<br/>[_PHP_PSALM_](php_psalm.md)                           | [![GitHub stars](https://img.shields.io/github/stars/vimeo/psalm?cacheSeconds=3600)](https://github.com/vimeo/psalm) ![sarif](https://shields.io/badge/-SARIF-orange)                                       |
-| [**phplint**](php_phplint.md)<br/>[_PHP_PHPLINT_](php_phplint.md)                   | [![GitHub stars](https://img.shields.io/github/stars/overtrue/phplint?cacheSeconds=3600)](https://github.com/overtrue/phplint) ![sarif](https://shields.io/badge/-SARIF-orange)                             |
-| [**php-cs-fixer**](php_php_cs_fixer.md)<br/>[_PHP_PHPCSFIXER_](php_php_cs_fixer.md) | [![GitHub stars](https://img.shields.io/github/stars/PHP-CS-Fixer/PHP-CS-Fixer?cacheSeconds=3600)](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer)                                                            |
+| Linter | Additional |
+| ------ | ---------- |
+| [**phpcs**](php_phpcs.md)<br/>[_PHP_PHPCS_](php_phpcs.md) | [![GitHub stars](https://img.shields.io/github/stars/PHPCSStandards/PHP_CodeSniffer?cacheSeconds=3600)](https://github.com/PHPCSStandards/PHP_CodeSniffer) ![sarif](https://shields.io/badge/-SARIF-orange) |
+| [**phpstan**](php_phpstan.md)<br/>[_PHP_PHPSTAN_](php_phpstan.md) | [![GitHub stars](https://img.shields.io/github/stars/phpstan/phpstan?cacheSeconds=3600)](https://github.com/phpstan/phpstan) ![sarif](https://shields.io/badge/-SARIF-orange) |
+| [**psalm**](php_psalm.md)<br/>[_PHP_PSALM_](php_psalm.md) | [![GitHub stars](https://img.shields.io/github/stars/vimeo/psalm?cacheSeconds=3600)](https://github.com/vimeo/psalm) ![sarif](https://shields.io/badge/-SARIF-orange) |
+| [**phplint**](php_phplint.md)<br/>[_PHP_PHPLINT_](php_phplint.md) | [![GitHub stars](https://img.shields.io/github/stars/overtrue/phplint?cacheSeconds=3600)](https://github.com/overtrue/phplint) ![sarif](https://shields.io/badge/-SARIF-orange) |
+| [**php-cs-fixer**](php_php_cs_fixer.md)<br/>[_PHP_PHPCSFIXER_](php_php_cs_fixer.md) | [![GitHub stars](https://img.shields.io/github/stars/PHP-CS-Fixer/PHP-CS-Fixer?cacheSeconds=3600)](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer) |
 
 ## Linted files
 
@@ -24,12 +24,12 @@ description: phpcs, phpstan, psalm, phplint, php-cs-fixer are available to analy
 
 ## Configuration in MegaLinter
 
-| Variable                 | Description                                     | Default value |
-|--------------------------|-------------------------------------------------|---------------|
-| PHP_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
-| PHP_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
-| PHP_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
-| PHP_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| PHP_PRE_COMMANDS | List of bash commands to run before the linters | None |
+| PHP_POST_COMMANDS | List of bash commands to run after the linters | None |
+| PHP_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| PHP_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
 
 ## Behind the scenes

@@ -7,8 +7,12 @@ descriptor_flavors:
 file_extensions:
   - ".go"
 install:
-  apk:
-    - go
+  dockerfile:
+    - |-
+      # renovate: datasource=docker depName=golang
+      ARG GO_VERSION=1.26.1-alpine
+    - FROM golang:${GO_VERSION} AS go-lang
+    - COPY --link --from=go-lang /usr/local/go /usr/local/go
 test_folder: golang
 linters:
   # GOLANG CI LINT

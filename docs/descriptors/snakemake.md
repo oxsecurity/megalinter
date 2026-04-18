@@ -9,9 +9,9 @@ description: snakemake, snakefmt are available to analyze SNAKEMAKE files in Meg
 
 ## Linters
 
-| Linter                                                                                  | Additional                                                                                                                                                                               |
-|-----------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [**snakemake**](snakemake_snakemake.md)<br/>[_SNAKEMAKE_LINT_](snakemake_snakemake.md)  | [![GitHub stars](https://img.shields.io/github/stars/snakemake/snakemake?cacheSeconds=3600)](https://github.com/snakemake/snakemake)                                                     |
+| Linter | Additional |
+| ------ | ---------- |
+| [**snakemake**](snakemake_snakemake.md)<br/>[_SNAKEMAKE_LINT_](snakemake_snakemake.md) | [![GitHub stars](https://img.shields.io/github/stars/snakemake/snakemake?cacheSeconds=3600)](https://github.com/snakemake/snakemake) |
 | [**snakefmt**](snakemake_snakefmt.md)<br/>[_SNAKEMAKE_SNAKEFMT_](snakemake_snakefmt.md) | [![GitHub stars](https://img.shields.io/github/stars/snakemake/snakefmt?cacheSeconds=3600)](https://github.com/snakemake/snakefmt) ![formatter](https://shields.io/badge/-format-yellow) |
 
 ## Linted files
@@ -24,10 +24,10 @@ description: snakemake, snakefmt are available to analyze SNAKEMAKE files in Meg
 
 ## Configuration in MegaLinter
 
-| Variable                       | Description                                     | Default value |
-|--------------------------------|-------------------------------------------------|---------------|
-| SNAKEMAKE_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
-| SNAKEMAKE_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
-| SNAKEMAKE_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
-| SNAKEMAKE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| SNAKEMAKE_PRE_COMMANDS | List of bash commands to run before the linters | None |
+| SNAKEMAKE_POST_COMMANDS | List of bash commands to run after the linters | None |
+| SNAKEMAKE_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| SNAKEMAKE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 

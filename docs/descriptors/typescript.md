@@ -9,11 +9,11 @@ description: eslint, ts-standard, prettier are available to analyze TYPESCRIPT f
 
 ## Linters
 
-| Linter                                                                                              | Additional                                                                                                                                                                                                                                                                |
-|-----------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [**eslint**](typescript_eslint.md)<br/>[_TYPESCRIPT_ES_](typescript_eslint.md)                      | [![GitHub stars](https://img.shields.io/github/stars/typescript-eslint/typescript-eslint?cacheSeconds=3600)](https://github.com/typescript-eslint/typescript-eslint) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) |
-| [**ts-standard**](typescript_ts_standard.md)<br/>[_TYPESCRIPT_STANDARD_](typescript_ts_standard.md) | [![GitHub stars](https://img.shields.io/github/stars/standard/ts-standard?cacheSeconds=3600)](https://github.com/standard/ts-standard) ![autofix](https://shields.io/badge/-autofix-green)                                                                                |
-| [**prettier**](typescript_prettier.md)<br/>[_TYPESCRIPT_PRETTIER_](typescript_prettier.md)          | [![GitHub stars](https://img.shields.io/github/stars/prettier/prettier?cacheSeconds=3600)](https://github.com/prettier/prettier) ![formatter](https://shields.io/badge/-format-yellow)                                                                                    |
+| Linter | Additional |
+| ------ | ---------- |
+| [**eslint**](typescript_eslint.md)<br/>[_TYPESCRIPT_ES_](typescript_eslint.md) | [![GitHub stars](https://img.shields.io/github/stars/typescript-eslint/typescript-eslint?cacheSeconds=3600)](https://github.com/typescript-eslint/typescript-eslint) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) |
+| [**ts-standard**](typescript_ts_standard.md)<br/>[_TYPESCRIPT_STANDARD_](typescript_ts_standard.md) | [![GitHub stars](https://img.shields.io/github/stars/standard/ts-standard?cacheSeconds=3600)](https://github.com/standard/ts-standard) ![autofix](https://shields.io/badge/-autofix-green) |
+| [**prettier**](typescript_prettier.md)<br/>[_TYPESCRIPT_PRETTIER_](typescript_prettier.md) | [![GitHub stars](https://img.shields.io/github/stars/prettier/prettier?cacheSeconds=3600)](https://github.com/prettier/prettier) ![formatter](https://shields.io/badge/-format-yellow) |
 
 ## Linted files
 
@@ -22,12 +22,12 @@ description: eslint, ts-standard, prettier are available to analyze TYPESCRIPT f
 
 ## Configuration in MegaLinter
 
-| Variable                        | Description                                     | Default value |
-|---------------------------------|-------------------------------------------------|---------------|
-| TYPESCRIPT_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
-| TYPESCRIPT_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
-| TYPESCRIPT_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
-| TYPESCRIPT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| TYPESCRIPT_PRE_COMMANDS | List of bash commands to run before the linters | None |
+| TYPESCRIPT_POST_COMMANDS | List of bash commands to run after the linters | None |
+| TYPESCRIPT_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| TYPESCRIPT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
 
 ## Behind the scenes

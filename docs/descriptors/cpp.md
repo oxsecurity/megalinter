@@ -9,10 +9,10 @@ description: cppcheck, cpplint, clang-format are available to analyze CPP files 
 
 ## Linters
 
-| Linter                                                                                | Additional                                                                                                                                                                           |
-|---------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [**cppcheck**](cpp_cppcheck.md)<br/>[_CPP_CPPCHECK_](cpp_cppcheck.md)                 |                                                                                                                                                                                      |
-| [**cpplint**](cpp_cpplint.md)<br/>[_CPP_CPPLINT_](cpp_cpplint.md)                     | [![GitHub stars](https://img.shields.io/github/stars/cpplint/cpplint?cacheSeconds=3600)](https://github.com/cpplint/cpplint)                                                         |
+| Linter | Additional |
+| ------ | ---------- |
+| [**cppcheck**](cpp_cppcheck.md)<br/>[_CPP_CPPCHECK_](cpp_cppcheck.md) |  |
+| [**cpplint**](cpp_cpplint.md)<br/>[_CPP_CPPLINT_](cpp_cpplint.md) | [![GitHub stars](https://img.shields.io/github/stars/cpplint/cpplint?cacheSeconds=3600)](https://github.com/cpplint/cpplint) |
 | [**clang-format**](cpp_clang_format.md)<br/>[_CPP_CLANG_FORMAT_](cpp_clang_format.md) | [![GitHub stars](https://img.shields.io/github/stars/llvm/llvm-project?cacheSeconds=3600)](https://github.com/llvm/llvm-project) ![autofix](https://shields.io/badge/-autofix-green) |
 
 ## Linted files
@@ -32,10 +32,10 @@ description: cppcheck, cpplint, clang-format are available to analyze CPP files 
 
 ## Configuration in MegaLinter
 
-| Variable                 | Description                                     | Default value |
-|--------------------------|-------------------------------------------------|---------------|
-| CPP_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
-| CPP_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
-| CPP_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
-| CPP_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| CPP_PRE_COMMANDS | List of bash commands to run before the linters | None |
+| CPP_POST_COMMANDS | List of bash commands to run after the linters | None |
+| CPP_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| CPP_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 

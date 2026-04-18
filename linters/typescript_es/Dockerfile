@@ -116,7 +116,7 @@ RUN apk -U --no-cache upgrade \
 #APK__END
 
 # PATH for golang & python
-ENV GOROOT=/usr/lib/go \
+ENV GOROOT=/usr/local/go \
     GOPATH=/go
     # PYTHONPYCACHEPREFIX="$HOME/.cache/cpython/" NV: not working for all packages :/
 # hadolint ignore=DL3044

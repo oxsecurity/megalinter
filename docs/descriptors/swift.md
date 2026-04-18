@@ -9,8 +9,8 @@ description: swiftlint is available to analyze SWIFT files in MegaLinter
 
 ## Linters
 
-| Linter                                                                          | Additional                                                                                                                                                                       |
-|---------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Linter | Additional |
+| ------ | ---------- |
 | [**swiftlint**](swift_swiftlint.md)<br/>[_SWIFT_SWIFTLINT_](swift_swiftlint.md) | [![GitHub stars](https://img.shields.io/github/stars/realm/SwiftLint?cacheSeconds=3600)](https://github.com/realm/SwiftLint) ![autofix](https://shields.io/badge/-autofix-green) |
 
 ## Linted files
@@ -20,10 +20,10 @@ description: swiftlint is available to analyze SWIFT files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                   | Description                                     | Default value |
-|----------------------------|-------------------------------------------------|---------------|
-| SWIFT_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
-| SWIFT_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
-| SWIFT_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
-| SWIFT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| SWIFT_PRE_COMMANDS | List of bash commands to run before the linters | None |
+| SWIFT_POST_COMMANDS | List of bash commands to run after the linters | None |
+| SWIFT_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| SWIFT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
