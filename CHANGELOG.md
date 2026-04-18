@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Core
+  - Security: add [more default hidden environment variables](https://megalinter.io/beta/config-variables-security/), so in case one of the 100+ linters is hacked, the attacker won't get your secrets anyway
 
 - New linters
 
