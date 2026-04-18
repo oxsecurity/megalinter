@@ -9745,6 +9745,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../repository_osv_scanner/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    osv-scanner
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../repository_secretlint/" class="md-nav__link">
         
   
@@ -12454,11 +12482,15 @@
 <h2 id="behind-the-scenes">Behind the scenes</h2>
 <h3 id="installation">Installation</h3>
 <ul>
-<li>APK packages (Linux):<ul>
-<li><a href="https://pkgs.alpinelinux.org/packages?branch=v3.23&amp;arch=x86_64&amp;name=go">go</a></li>
+<li>Dockerfile commands :</li>
 </ul>
-</li>
-</ul>
+<pre><code class="language-dockerfile"># renovate: datasource=repology depName=alpine_edge/go versioning=loose
+ARG GO_ALPINE_VERSION=1.26.2-r0
+RUN apk add --no-cache \
+    --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main \
+    --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
+    go=${GO_ALPINE_VERSION}
+</code></pre>
 
 
 
