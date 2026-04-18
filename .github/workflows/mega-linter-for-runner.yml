@@ -166,6 +166,37 @@ jobs:
         if: env.APPLY_FIXES_IF_COMMIT == 'true'
         run: sudo chown -Rc $UID .git/
 
+      - name: Skip markdown-only fix commit for bot branches
+        if: env.APPLY_FIXES_IF_COMMIT == 'true'
+        shell: bash
+        run: |
+          branch="${{ github.event.pull_request.head.ref || github.head_ref || github.ref_name }}"
+
+          case "$branch" in
+            create-pull-request/patch|dependabot/*|renovate/*)
+              ;;
+            *)
+              exit 0
+              ;;
+          esac
+
+          changed_files=$(
+            {
+              git diff --name-only --diff-filter=ACMR HEAD
+              git ls-files --others --exclude-standard
+            } | sort -u
+          )
+
+          if [ -z "$changed_files" ]; then
+            exit 0
+          fi
+
+          if echo "$changed_files" | grep -viE '\.md$' > /dev/null; then
+            exit 0
+          fi
+
+          echo 'APPLY_FIXES_IF_COMMIT=false' >> "${GITHUB_ENV}"
+
       - name: Commit and push applied linter fixes
         uses: stefanzweifel/git-auto-commit-action@v7
         if: env.APPLY_FIXES_IF_COMMIT == 'true'

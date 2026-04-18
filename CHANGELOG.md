@@ -14,6 +14,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Disabled linters
   - Disable trivy until their security issue is solved
+  - Disable spectral which is crashing
 
 - Deprecated linters
 
@@ -33,6 +34,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - CI
   - Disable trivy-action until their security issue is solved
+  - Run ARM linter jobs only if the latest commit message contains "ARM" (to avoid 200 jobs for each PR)
+  - Prevent MegaLinter to push a new commit if the only updates are on markdown files
 
 - mega-linter-runner
 
@@ -108,6 +111,18 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [golangci-lint](https://golangci-lint.run/) from 2.11.3 to **2.11.4** on 2026-03-26
   - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.47.0 to **0.48.0** on 2026-03-26
   - [checkov](https://www.checkov.io/) from 3.2.510 to **3.2.511** on 2026-03-26
+  - [pmd](https://pmd.github.io/) from 7.22.0 to **7.23.0** on 2026-03-29
+  - [rumdl](https://github.com/rvben/rumdl) from 0.1.60 to **0.1.62** on 2026-03-29
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.7 to **0.15.8** on 2026-03-29
+  - [ruff](https://github.com/astral-sh/ruff) from 0.15.7 to **0.15.8** on 2026-03-29
+  - [checkov](https://www.checkov.io/) from 3.2.511 to **3.2.513** on 2026-03-29
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.94.0 to **3.94.1** on 2026-03-29
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 8.2.3 to **8.2.4** on 2026-03-29
+  - [snakemake](https://snakemake.github.io/) from 9.18.1 to **9.18.2** on 2026-03-29
+  - [raku](https://raku.org/) from 2025.11 to **2026.03** on 2026-04-08
+  - [sqlfluff](https://www.sqlfluff.com/) from 4.0.4 to **4.1.0** on 2026-04-08
+  - [grype](https://github.com/anchore/grype) from 0.110.0 to **0.111.0** on 2026-04-13
+  - [syft](https://github.com/anchore/syft) from 1.42.3 to **1.42.4** on 2026-04-13
 <!-- linter-versions-end -->
 
 ## [v9.4.0] - 2026-02-28

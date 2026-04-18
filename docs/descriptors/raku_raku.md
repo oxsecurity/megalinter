@@ -22,7 +22,7 @@ description: How to use raku (configure, ignore files, ignore errors, help & ver
 
 ## raku documentation
 
-- Version in MegaLinter: **2025.11**
+- Version in MegaLinter: **2026.03**
 - Visit [Official Web Site](https://raku.org/){target=_blank}
 - See [How to configure raku rules](https://docs.raku.org/language/pragmas){target=_blank}
 - See [How to disable raku rules in files](https://docs.raku.org/language/pragmas#no){target=_blank}
@@ -107,7 +107,7 @@ and, by default, also executes the compiled code.
   -I path              adds the path to the module search path
   -M module            loads the module prior to running the program
   --target=stage       specify compilation stage to emit
-  --optimize=level     use the given level of optimization (0..3)
+  --optimize=level     use the given level of optimization (off, 0..3)
   --rakudo-home=path   Override the path of the Rakudo runtime files
   -o, --output=name    specify name of output file
   -v, --version        display version information
@@ -182,13 +182,18 @@ The following environment variables are respected:
 
 - Dockerfile commands :
 ```dockerfile
+ARG TARGETPLATFORM
 # renovate: datasource=github-tags depName=nxadm/rakudo-pkg
-ARG RAKU_RAKU_VERSION=2025.11
-ARG RAKU_RAKU_ALPINE_VERSION=3.22
+ARG RAKU_RAKU_VERSION=2026.03
+ARG RAKU_RAKU_ALPINE_VERSION=3.23
 
-RUN curl -L "https://github.com/nxadm/rakudo-pkg/releases/download/v${RAKU_RAKU_VERSION}/rakudo-pkg-Alpine${RAKU_RAKU_ALPINE_VERSION}_${RAKU_RAKU_VERSION}-01_x86_64.apk" > "rakudo-pkg-Alpine${RAKU_RAKU_ALPINE_VERSION}_${RAKU_RAKU_VERSION}-01_x86_64.apk" \
-    && apk add --no-cache --allow-untrusted "rakudo-pkg-Alpine${RAKU_RAKU_ALPINE_VERSION}_${RAKU_RAKU_VERSION}-01_x86_64.apk" \
-    && rm "rakudo-pkg-Alpine${RAKU_RAKU_ALPINE_VERSION}_${RAKU_RAKU_VERSION}-01_x86_64.apk"
+RUN case ${TARGETPLATFORM} in \
+  "linux/amd64")  RAKU_RAKU_ARCH=x86_64  ;; \
+  "linux/arm64")  RAKU_RAKU_ARCH=aarch64 ;; \
+esac \
+    && curl -L "https://github.com/nxadm/rakudo-pkg/releases/download/v${RAKU_RAKU_VERSION}/rakudo-pkg-Alpine${RAKU_RAKU_ALPINE_VERSION}_${RAKU_RAKU_VERSION}-01_${RAKU_RAKU_ARCH}.apk" > "rakudo-pkg-Alpine${RAKU_RAKU_ALPINE_VERSION}_${RAKU_RAKU_VERSION}-01_${RAKU_RAKU_ARCH}.apk" \
+    && apk add --no-cache --allow-untrusted "rakudo-pkg-Alpine${RAKU_RAKU_ALPINE_VERSION}_${RAKU_RAKU_VERSION}-01_${RAKU_RAKU_ARCH}.apk" \
+    && rm "rakudo-pkg-Alpine${RAKU_RAKU_ALPINE_VERSION}_${RAKU_RAKU_VERSION}-01_${RAKU_RAKU_ARCH}.apk"
 
 ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$PATH"
 ```

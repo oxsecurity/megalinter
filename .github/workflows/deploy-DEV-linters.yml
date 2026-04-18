@@ -28,9 +28,13 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       linters: ${{ steps.set-matrix.outputs.linters }}
+      linters_arm: ${{ steps.set-matrix.outputs.linters_arm }}
+      runners: ${{ steps.set-matrix.outputs.runners }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
       - name: Get PR title or commit message
         id: get-title
         run: |
@@ -56,8 +60,20 @@ jobs:
             echo "$pkg"
           }
           title="${{ steps.get-title.outputs.title }}"
+          latest_commit_message=$(git log -1 --pretty=%B)
+
           echo "title=$title"
-          matrix=$(cat .automation/generated/linters_matrix.json | jq -c)
+          echo "latest_commit_message=$latest_commit_message"
+          matrix=$(cat .automation/generated/linters_matrix.json | jq -c '[.["linux/amd64"][]]')
+          matrix_arm=$(cat .automation/generated/linters_matrix.json | jq -c '[.["linux/arm64"][]]')
+          echo "linters_arm=$matrix_arm" >> $GITHUB_OUTPUT
+
+          if echo "$latest_commit_message" | grep -q 'ARM'; then
+            echo 'runners=["ubuntu-latest","ubuntu-24.04-arm"]' >> $GITHUB_OUTPUT
+          else
+            echo 'runners=["ubuntu-latest"]' >> $GITHUB_OUTPUT
+          fi
+
           pkg=$(extract_pkg "$title")
           echo "Extracted package: $pkg"
           if [ -n "$pkg" ] && echo "$title" | grep -iq '^chore(deps)'; then
@@ -76,7 +92,7 @@ jobs:
     # Name the Job
     name: DEV/Linters
     # Set the agent to run on
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.runner }}
     needs: get-linters-matrix
     permissions: read-all
     strategy:
@@ -84,7 +100,7 @@ jobs:
       max-parallel: 18
       matrix:
         linter: ${{ fromJson(needs.get-linters-matrix.outputs.linters) }}
-        platform: ["linux/amd64"]
+        runner: ${{ fromJson(needs.get-linters-matrix.outputs.runners) }}
     # Only run this on the main repo
     if: |
       (
@@ -98,10 +114,29 @@ jobs:
     # Load all steps #
     ##################
     steps:
+      # https://github.com/actions/runner/issues/1985
+      - name: Prepare
+        id: prepare
+        run: |
+          job_enabled=true
+          platforms=linux/amd64
+
+          ARM_RUNNER_REGEX="^ubuntu-.*-arm$"
+
+          if [[ "${{ matrix.runner }}" =~ $ARM_RUNNER_REGEX ]]; then
+            job_enabled="${{ contains(fromJson(needs.get-linters-matrix.outputs.linters_arm), matrix.linter) }}"
+            platforms=linux/arm64
+          fi
+
+          echo "job_enabled=$job_enabled" >> $GITHUB_OUTPUT
+          echo "platforms=$platforms" >> $GITHUB_OUTPUT
+
       - name: Checkout Code
+        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
         uses: actions/checkout@v6
 
       - name: Docker Metadata action
+        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
         uses: docker/metadata-action@v6
         id: meta
         with:
@@ -110,17 +145,19 @@ jobs:
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v4
-        if: ${{ ( ( runner.arch != 'X64' || runner.os != 'Linux' ) && matrix.platform == 'linux/amd64' ) || matrix.platform != 'linux/amd64' }}
+        if: ${{ steps.prepare.outputs.job_enabled == 'true' && ( ( ( runner.arch != 'X64' || runner.os != 'Linux' ) && steps.prepare.outputs.platforms == 'linux/amd64' ) || steps.prepare.outputs.platforms != 'linux/amd64' ) }}
 
       - name: Set up Docker Buildx
+        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
         uses: docker/setup-buildx-action@v4
 
       - name: Build Image
+        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
         uses: docker/build-push-action@v7
         with:
           context: .
           file: linters/${{ matrix.linter }}/Dockerfile
-          platforms: ${{ matrix.platform }}
+          platforms: ${{ steps.prepare.outputs.platforms }}
           build-args: |
             BUILD_DATE=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.created'] }}
             BUILD_VERSION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
@@ -135,6 +172,7 @@ jobs:
       # Run Linter test cases #
       #####################################
       - name: Run Test Cases
+        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
         shell: bash
         run: |
           GITHUB_REPOSITORY=$([ "${{ github.event_name }}" == "pull_request" ] && echo "${{ github.event.pull_request.head.repo.full_name }}" || echo "${{ github.repository }}")
@@ -150,6 +188,7 @@ jobs:
       # Check Docker image security with Trivy #
       ##############################################
       # - name: Run Trivy vulnerability scanner
+      #   if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
       #   uses: aquasecurity/trivy-action@master
       #   with:
       #     image-ref: "${{ fromJson(steps.meta.outputs.json).tags[0] }}"
