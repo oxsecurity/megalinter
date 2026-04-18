@@ -20,6 +20,8 @@ ARG DOCKERFILE_HADOLINT_VERSION=v2.14.0-alpine
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.7.0-alpine
 # renovate: datasource=github-tags depName=checkmarx/dustilock
 ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
+# renovate: datasource=docker depName=golang versioning=semver
+ARG GO_IMAGE_VERSION=1.26.2
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.30.1
 # renovate: datasource=docker depName=checkmarx/kics
@@ -41,9 +43,9 @@ ARG TERRAFORM_TERRAGRUNT_VERSION=1.14.8
 FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
 FROM hadolint/hadolint:${DOCKERFILE_HADOLINT_VERSION} AS hadolint
 FROM ghcr.io/yannh/kubeconform:${KUBERNETES_KUBECONFORM_VERSION} AS kubeconform
-FROM golang:alpine AS dustilock
+FROM golang:${GO_IMAGE_VERSION}-alpine AS dustilock
 ARG REPOSITORY_DUSTILOCK_VERSION
-RUN apk add --no-cache git && GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v${REPOSITORY_DUSTILOCK_VERSION}
+RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v${REPOSITORY_DUSTILOCK_VERSION}
 FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
 FROM checkmarx/kics:${REPOSITORY_KICS_VERSION} AS kics
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
@@ -105,6 +107,8 @@ ARG REPOSITORY_DEVSKIM_VERSION=1.0.70
 ARG REPOSITORY_GRYPE_VERSION=0.111.0
 # renovate: datasource=github-tags depName=google/osv-scanner
 ARG REPOSITORY_OSV_SCANNER_VERSION=v2.3.5
+# renovate: datasource=repology depName=alpine_edge/go versioning=loose
+ARG GO_ALPINE_VERSION=1.26.2-r0
 # renovate: datasource=npm depName=secretlint
 ARG NPM_SECRETLINT_VERSION=11.7.1
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
@@ -128,6 +132,7 @@ ARG BASH_SHELLCHECK_VERSION
 ARG DOCKERFILE_HADOLINT_VERSION
 ARG KUBERNETES_KUBECONFORM_VERSION
 ARG REPOSITORY_DUSTILOCK_VERSION
+ARG GO_IMAGE_VERSION
 ARG REPOSITORY_GITLEAKS_VERSION
 ARG REPOSITORY_KICS_VERSION
 ARG REPOSITORY_TRUFFLEHOG_VERSION
@@ -162,7 +167,6 @@ RUN apk -U --no-cache upgrade \
                 helm \
                 gcompat \
                 libstdc++ \
-                go \
                 npm \
                 nodejs-current \
                 yarn \
@@ -329,7 +333,11 @@ ENV KICS_QUERIES_PATH=/usr/bin/assets/queries KICS_LIBRARIES_PATH=/usr/bin/asset
 # Managed with COPY --from=kics /app/bin/assets /usr/bin/assets
 #
 # osv-scanner installation
-RUN go install github.com/google/osv-scanner/v2/cmd/osv-scanner@${REPOSITORY_OSV_SCANNER_VERSION} \
+RUN apk add --no-cache \
+    --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main \
+    --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
+    go=${GO_ALPINE_VERSION} \
+    && GOBIN=/usr/bin go install github.com/google/osv-scanner/v2/cmd/osv-scanner@${REPOSITORY_OSV_SCANNER_VERSION} \
 #
 # secretlint installation
 #

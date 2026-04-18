@@ -54,6 +54,8 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 #ARG__START
 # renovate: datasource=github-tags depName=google/osv-scanner
 ARG REPOSITORY_OSV_SCANNER_VERSION=v2.3.5
+# renovate: datasource=repology depName=alpine_edge/go versioning=loose
+ARG GO_ALPINE_VERSION=1.26.2-r0
 #ARG__END
 
 ####################
@@ -79,7 +81,6 @@ RUN apk -U --no-cache upgrade \
                 make \
                 musl-dev \
                 openssh \
-                go \
     && git config --global core.autocrlf true
 #APK__END
 
@@ -154,7 +155,11 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 #OTHER__START
 # osv-scanner installation
-RUN go install github.com/google/osv-scanner/v2/cmd/osv-scanner@${REPOSITORY_OSV_SCANNER_VERSION}
+RUN apk add --no-cache \
+    --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main \
+    --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
+    go=${GO_ALPINE_VERSION} \
+    && GOBIN=/usr/bin go install github.com/google/osv-scanner/v2/cmd/osv-scanner@${REPOSITORY_OSV_SCANNER_VERSION}
 #
 #OTHER__END
 

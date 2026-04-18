@@ -189,12 +189,15 @@ linters:
         - |-
           # renovate: datasource=github-tags depName=checkmarx/dustilock
           ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
+        - |-
+          # renovate: datasource=docker depName=golang versioning=semver
+          ARG GO_IMAGE_VERSION=1.26.2
         # The golang image used as a builder is a temporary workaround
         # Dustilock is not released as a binary or container
         - |-
-          FROM golang:alpine AS dustilock
+          FROM golang:${GO_IMAGE_VERSION}-alpine AS dustilock
           ARG REPOSITORY_DUSTILOCK_VERSION
-          RUN apk add --no-cache git && GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v${REPOSITORY_DUSTILOCK_VERSION}
+          RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v${REPOSITORY_DUSTILOCK_VERSION}
         - COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
     supported_platforms:
       platform:
@@ -601,14 +604,19 @@ linters:
       - "osv-scanner scan source --recursive ."
       - "osv-scanner scan source --format sarif --output-file report.sarif --recursive ."
     install:
-      apk:
-        - go
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=google/osv-scanner
           ARG REPOSITORY_OSV_SCANNER_VERSION=v2.3.5
         - |-
-          RUN go install github.com/google/osv-scanner/v2/cmd/osv-scanner@${REPOSITORY_OSV_SCANNER_VERSION}
+          # renovate: datasource=repology depName=alpine_edge/go versioning=loose
+          ARG GO_ALPINE_VERSION=1.26.2-r0
+        - |-
+          RUN apk add --no-cache \
+              --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main \
+              --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
+              go=${GO_ALPINE_VERSION} \
+              && GOBIN=/usr/bin go install github.com/google/osv-scanner/v2/cmd/osv-scanner@${REPOSITORY_OSV_SCANNER_VERSION}
     supported_platforms:
       platform:
         - linux/amd64
