@@ -8,7 +8,6 @@ descriptor_flavors:
   - c_cpp
   - formatters
 file_extensions:
-  - ""
   - ".sh"
   - ".bash"
   - ".dash"
@@ -51,6 +50,9 @@ linters:
     cli_executable_help: bash
     cli_executable_version: bash
     cli_help_arg_name: "--help"
+    cli_lint_mode: file
+    supported_cli_lint_modes:
+      - file
     examples:
       - "bash-exec myfile.sh"
     install:
@@ -97,7 +99,11 @@ linters:
     linter_rules_inline_disable_url: https://github.com/koalaman/shellcheck/wiki/Ignore
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/shellcheck.png
     linter_megalinter_ref_url: never
-    cli_lint_mode: list_of_files
+    cli_lint_mode: project
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_extra_args:
       - "--color=auto"
       - "--external-sources"

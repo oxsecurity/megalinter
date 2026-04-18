@@ -57,6 +57,12 @@ linters:
     config_file_name: .cfnlintrc.yml
     cli_config_arg_name: "--config-file"
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_sarif_args:
       - --format
       - sarif

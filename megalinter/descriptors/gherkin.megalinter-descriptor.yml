@@ -35,6 +35,13 @@ linters:
     linter_rules_configuration_url: https://github.com/gherkin-lint/gherkin-lint#rule-configuration
     linter_rules_inline_disable_url: https://github.com/gherkin-lint/gherkin-lint#ignoring-feature-files
     config_file_name: ".gherkin-lintrc"
+    cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_mode_project_extra_args_after:
+      - .
     linter_version_cache: "0.0.0" # Not implemented on gherkin-lint
     examples:
       - "gherkin-lint myfile.feature"
