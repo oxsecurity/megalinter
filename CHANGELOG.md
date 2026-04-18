@@ -153,6 +153,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.7.0 to **10.0.0** on 2026-04-18
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.14.7 to **1.14.8** on 2026-04-18
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.99.4 to **1.0.0** on 2026-04-18
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.48.1 to **3.14** on 2026-04-18
+  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.11.4 to **3.11.5** on 2026-04-18
+  - [npm-package-json-lint](https://npmpackagejsonlint.org/) from 9.1.0 to **10.2.1** on 2026-04-18
+  - [kubescape](https://github.com/kubescape/kubescape) from 4.0.3 to **4.0.5** on 2026-04-18
 <!-- linter-versions-end -->
 
 ## [v9.4.0] - 2026-02-28
