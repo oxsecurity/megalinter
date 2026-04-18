@@ -8,7 +8,6 @@
         "linters": [
             "ACTION_ACTIONLINT",
             "ANSIBLE_ANSIBLE_LINT",
-            "API_SPECTRAL",
             "BASH_EXEC",
             "BASH_SHELLCHECK",
             "BASH_SHFMT",
@@ -204,7 +203,6 @@
         "linters": [
             "ACTION_ACTIONLINT",
             "ANSIBLE_ANSIBLE_LINT",
-            "API_SPECTRAL",
             "BASH_EXEC",
             "BASH_SHELLCHECK",
             "BASH_SHFMT",
@@ -266,7 +264,6 @@
         "linters": [
             "ACTION_ACTIONLINT",
             "ANSIBLE_ANSIBLE_LINT",
-            "API_SPECTRAL",
             "ARM_ARM_TTK",
             "BASH_EXEC",
             "BASH_SHELLCHECK",
@@ -344,7 +341,6 @@
         "linters": [
             "ACTION_ACTIONLINT",
             "ANSIBLE_ANSIBLE_LINT",
-            "API_SPECTRAL",
             "ARM_ARM_TTK",
             "BASH_EXEC",
             "BASH_SHELLCHECK",
@@ -458,7 +454,6 @@
         "linters": [
             "ACTION_ACTIONLINT",
             "ANSIBLE_ANSIBLE_LINT",
-            "API_SPECTRAL",
             "BASH_EXEC",
             "BASH_SHELLCHECK",
             "BASH_SHFMT",
@@ -520,7 +515,6 @@
         "linters": [
             "ACTION_ACTIONLINT",
             "ANSIBLE_ANSIBLE_LINT",
-            "API_SPECTRAL",
             "BASH_EXEC",
             "BASH_SHELLCHECK",
             "BASH_SHFMT",
@@ -584,7 +578,6 @@
         "linters": [
             "ACTION_ACTIONLINT",
             "ANSIBLE_ANSIBLE_LINT",
-            "API_SPECTRAL",
             "BASH_EXEC",
             "BASH_SHELLCHECK",
             "BASH_SHFMT",
@@ -653,7 +646,6 @@
         "linters": [
             "ACTION_ACTIONLINT",
             "ANSIBLE_ANSIBLE_LINT",
-            "API_SPECTRAL",
             "BASH_EXEC",
             "BASH_SHELLCHECK",
             "BASH_SHFMT",
@@ -716,7 +708,6 @@
         "linters": [
             "ACTION_ACTIONLINT",
             "ANSIBLE_ANSIBLE_LINT",
-            "API_SPECTRAL",
             "BASH_EXEC",
             "BASH_SHELLCHECK",
             "BASH_SHFMT",
@@ -791,7 +782,6 @@
         "linters": [
             "ACTION_ACTIONLINT",
             "ANSIBLE_ANSIBLE_LINT",
-            "API_SPECTRAL",
             "BASH_EXEC",
             "BASH_SHELLCHECK",
             "BASH_SHFMT",
@@ -850,7 +840,6 @@
         "linters": [
             "ACTION_ACTIONLINT",
             "ANSIBLE_ANSIBLE_LINT",
-            "API_SPECTRAL",
             "BASH_EXEC",
             "BASH_SHELLCHECK",
             "BASH_SHFMT",
@@ -910,7 +899,6 @@
         "linters": [
             "ACTION_ACTIONLINT",
             "ANSIBLE_ANSIBLE_LINT",
-            "API_SPECTRAL",
             "BASH_EXEC",
             "BASH_SHELLCHECK",
             "BASH_SHFMT",
@@ -1004,7 +992,6 @@
         "linters": [
             "ACTION_ACTIONLINT",
             "ANSIBLE_ANSIBLE_LINT",
-            "API_SPECTRAL",
             "BASH_EXEC",
             "BASH_SHELLCHECK",
             "BASH_SHFMT",
@@ -1063,7 +1050,6 @@
         "linters": [
             "ACTION_ACTIONLINT",
             "ANSIBLE_ANSIBLE_LINT",
-            "API_SPECTRAL",
             "BASH_EXEC",
             "BASH_SHELLCHECK",
             "BASH_SHFMT",

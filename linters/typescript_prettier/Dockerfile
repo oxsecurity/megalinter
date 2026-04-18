@@ -24,8 +24,8 @@
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.10.10 AS uv
-FROM python:3.13-alpine3.23 AS build-ml-core
+FROM ghcr.io/astral-sh/uv:0.11.7 AS uv
+FROM python:3.14-alpine3.23 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
 WORKDIR /
@@ -44,7 +44,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 ##################
 # Get base image #
 ##################
-FROM python:3.13-alpine3.23
+FROM python:3.14-alpine3.23
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
 
@@ -53,9 +53,9 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 #############################################################################################
 #ARG__START
 # renovate: datasource=npm depName=typescript
-ARG NPM_TYPESCRIPT_VERSION=5.9.3
+ARG NPM_TYPESCRIPT_VERSION=6.0.2
 # renovate: datasource=npm depName=prettier
-ARG NPM_PRETTIER_VERSION=3.8.1
+ARG NPM_PRETTIER_VERSION=3.8.3
 #ARG__END
 
 ####################

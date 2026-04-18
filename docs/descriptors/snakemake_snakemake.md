@@ -29,7 +29,7 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 
 ## snakemake documentation
 
-- Version in MegaLinter: **9.16.3**
+- Version in MegaLinter: **9.19.0**
 - Visit [Official Web Site](https://snakemake.github.io/){target=_blank}
 - See [How to configure snakemake rules](https://snakemake.readthedocs.io/en/stable/snakefiles/configuration.html){target=_blank}
 
@@ -72,20 +72,20 @@ This linter is available in the following flavors
 |                                                                         <!-- -->                                                                         | Flavor                                                             | Description                                              | Embedded linters |                                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)               | Default MegaLinter Flavor                                |       134        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico" alt="" height="32px" class="megalinter-icon"></a>        | [c_cpp](https://megalinter.io/beta/flavors/c_cpp/)                 | Optimized for pure C/C++ projects                        |        58        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp) |
-|    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.io/beta/flavors/documentation/) | MegaLinter for documentation projects                    |        51        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects            |        66        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS |        75        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
-|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)                       | Optimized for GO based projects                          |        53        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                        |        56        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        61        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
-|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)                     | Optimized for PHP based projects                         |        56        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)               | Optimized for PYTHON based projects                      |        68        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.io/beta/flavors/ruby/)                   | Optimized for RUBY based projects                        |        52        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://megalinter.io/beta/flavors/rust/)                   | Optimized for RUST based projects                        |        52        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/)       | Optimized for Salesforce based projects                  |        58        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>        | [swift](https://megalinter.io/beta/flavors/swift/)                 | Optimized for SWIFT based projects                       |        52        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/)         | Optimized for TERRAFORM based projects                   |        56        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico" alt="" height="32px" class="megalinter-icon"></a>        | [c_cpp](https://megalinter.io/beta/flavors/c_cpp/)                 | Optimized for pure C/C++ projects                        |        55        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp) |
+|    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.io/beta/flavors/documentation/) | MegaLinter for documentation projects                    |        48        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects            |        63        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS |        72        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
+|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)                       | Optimized for GO based projects                          |        50        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                        |        53        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        58        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
+|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)                     | Optimized for PHP based projects                         |        53        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)               | Optimized for PYTHON based projects                      |        65        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.io/beta/flavors/ruby/)                   | Optimized for RUBY based projects                        |        49        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://megalinter.io/beta/flavors/rust/)                   | Optimized for RUST based projects                        |        49        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/)       | Optimized for Salesforce based projects                  |        55        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>        | [swift](https://megalinter.io/beta/flavors/swift/)                 | Optimized for SWIFT based projects                       |        49        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/)         | Optimized for TERRAFORM based projects                   |        53        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
 
 ## Behind the scenes
 
@@ -143,12 +143,12 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--reporter PLUGIN] [--draft-notebook TARGET]
                  [--edit-notebook TARGET] [--notebook-listen IP:PORT]
                  [--lint [{text,json}]] [--generate-unit-tests [TESTPATH]]
-                 [--containerize] [--export-cwl FILE] [--list-rules]
-                 [--list-target-rules] [--dag [{dot,mermaid-js}]]
-                 [--rulegraph [{dot,mermaid-js}]] [--filegraph] [--d3dag]
-                 [--summary] [--detailed-summary] [--archive FILE]
-                 [--cleanup-metadata FILE [FILE ...]] [--cleanup-shadow]
-                 [--skip-script-cleanup] [--unlock]
+                 [--containerize [{dockerfile,apptainer}]] [--export-cwl FILE]
+                 [--list-rules] [--list-target-rules]
+                 [--dag [{dot,mermaid-js}]] [--rulegraph [{dot,mermaid-js}]]
+                 [--filegraph] [--d3dag] [--summary] [--detailed-summary]
+                 [--archive FILE] [--cleanup-metadata FILE [FILE ...]]
+                 [--cleanup-shadow] [--skip-script-cleanup] [--unlock]
                  [--list-changes {code,input,params}] [--list-input-changes]
                  [--list-params-changes] [--list-untracked]
                  [--delete-all-output | --delete-temp-output]
@@ -183,6 +183,8 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--local-groupid LOCAL_GROUPID] [--attempt ATTEMPT]
                  [--show-failed-logs] [--logger {} [{} ...]]
                  [--job-deploy-sources] [--benchmark-extended]
+                 [--persistence-backend {db,file}]
+                 [--persistence-backend-db-url PERSISTENCE_BACKEND_DB_URL]
                  [--container-image IMAGE] [--immediate-submit]
                  [--jobscript SCRIPT] [--jobname NAME]
                  [--software-deployment-method {apptainer,conda,env-modules} [{apptainer,conda,env-modules} ...]]
@@ -195,7 +197,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--apptainer-args ARGS] [--use-envmodules]
                  [--deploy-sources QUERY CHECKSUM]
                  [--target-jobs TARGET_JOBS [TARGET_JOBS ...]]
-                 [--mode {subprocess,default,remote}]
+                 [--mode {default,remote,subprocess}]
                  [--scheduler-solver-path SCHEDULER_SOLVER_PATH]
                  [--max-jobs-per-second MAX_JOBS_PER_SECOND]
                  [--report-html-path VALUE]
@@ -219,43 +221,82 @@ EXECUTION:
                         done. If you have a very large workflow, use `--dry-
                         run --quiet` to just print a summary of the DAG of
                         jobs. (default: False)
-  --profile PROFILE     Name of profile to use for configuring Snakemake.
-                        Snakemake will search for a corresponding folder in
-                        `/etc/xdg/snakemake` and `/root/.config/snakemake`.
-                        Alternatively, this can be an absolute or relative
-                        path. The profile folder has to contain a file
-                        `config.yaml`. This file can be used to set default
-                        values for command line options in YAML format. For
-                        example, `--cluster qsub` becomes `cluster: qsub` in
-                        the YAML file. Profiles can be obtained from
-                        https://github.com/snakemake-profiles. The profile can
-                        also be set via the environment variable
-                        `$SNAKEMAKE_PROFILE`. To override this variable and
-                        use no profile at all, provide the value `none` to
-                        this argument. [env var: SNAKEMAKE_PROFILE]
+  --profile PROFILE     Profile to use for configuring the Snakemake run with
+                        settings regarding the compute environment. Every key
+                        in this YAML file gets parsed into the respective
+                        command line argument: `executor: slurm` gets parsed
+                        to `--executor slurm`, `default-resources: mem_mb:
+                        16000` is interpreted as `--default-resources
+                        mem_mb=16000`, etc. You can specify a Snakemake
+                        profile as (i) a profile name, (ii) a relative path to
+                        a folder or (iii) the relative path to the profile
+                        YAML file itself. Snakemake will look for a folder
+                        with the profile name or the existence of the relative
+                        path in `/etc/xdg/snakemake`,
+                        `/root/.config/snakemake` and the current working
+                        directory. Alternatively, you can also specify
+                        absolute paths. If a profile name or folder is given,
+                        it has to contain a file `profile.yaml` (or a
+                        `config.yaml` file, for backwards compatibility). This
+                        file can have an optional infix specifying a minimal
+                        snakemake version (for example `profile.v9+.yaml`).
+                        The profile can also be set via the environment
+                        variable `$SNAKEMAKE_PROFILE`. However, once you
+                        provide a profile via the command line argument
+                        `--profile`, this environment variable is ignored. And
+                        to override this variable without setting another one,
+                        provide the value `none` to this argument. Finally,
+                        you can specify this argument multiple times. In this
+                        case, the profiles get merged with the later
+                        `--profile` instances overriding top-level entries in
+                        profiles specified earlier. For example, if the last
+                        `--profile` specifies the top level `default-
+                        resources:` keyword, all entries under that keyword
+                        from previous `--profile`s will be ignored. Similarly,
+                        also specifying any of the top-level keys from your
+                        profile as a command line argument will overwrite this
+                        whole top-level key. Example profiles for certain
+                        compute infrastructure can be obtained at
+                        https://github.com/snakemake/snakemake-cluster-
+                        profiles. [env var: SNAKEMAKE_PROFILE]
   --workflow-profile WORKFLOW_PROFILE
-                        Path (relative to current directory) to workflow
-                        specific profile folder to use for configuring
-                        Snakemake with parameters specific for this workflow
-                        (like resources). If this flag is not used, Snakemake
-                        will by default use `profiles/default` if present
-                        (searched both relative to current directory and
-                        relative to Snakefile, in this order). For skipping
-                        any workflow specific profile provide the special
-                        value `none`. Settings made in the workflow profile
-                        will override settings made in the general profile
-                        (see `--profile`). The profile folder has to contain a
-                        file `config.yaml`. This file can be used to set
-                        default values for command line options in YAML
-                        format. For example, `--executor slurm` becomes
-                        `executor: slurm` in the YAML file. It is advisable to
-                        use the workflow profile to set or overwrite e.g.
-                        workflow specific resources like the amount of threads
-                        of a particular rule or the amount of memory needed.
-                        Note that in such cases, the arguments may be given as
-                        nested YAML mappings in the profile, e.g. `set-
-                        threads: myrule: 4` instead of `set-threads:
-                        myrule=4`.
+                        Profile to use for configuring this Snakemake run with
+                        parameters specific for this workflow (like
+                        resources). For settings specific to the compute
+                        environment (for example a specific compute cluster),
+                        use global `--profile`s. Generally, an entry like
+                        `set-resources: a: mem_mb=8` in the YAML file, will
+                        become `--set-resources a:mem_mb=8` for the
+                        `snakemake` run. The profile can be specified as a
+                        file name with a full relative path from the current
+                        working directory. In this case, the YAML profile file
+                        can be named arbitrarily. In all other cases the
+                        respective folder(s) will be searched for a
+                        `profile.yaml` file (or a `config.yaml` file, for
+                        backwards compatibility). This file can have an
+                        optional infix specifying a minimal snakemake version
+                        (for example `profile.v9+.yaml`). And any of the
+                        following options will always search relative to both
+                        the current working directory and the location of the
+                        Snakefile: (i) If this option is not provided, the
+                        directory `profiles/default/` will be searched (and
+                        used, if a profile is present; override this implicit
+                        usage with `--workflow-profile none`). (ii) If a
+                        profile name is given, the subdirectory of that name
+                        under `profiles/` will be searched. (iii) If a full
+                        relative path is given, this directory will be
+                        searched. Settings made in the workflow profile will
+                        override settings made in the general profile (see
+                        `--profile`) on a per-key basis. For example, if you
+                        specify `default-resources:` in the workflow profile,
+                        all `default-resources:` entries from other profiles
+                        will be ignored; but if you don't specify `default-
+                        resources` in your workflow profile, `default-
+                        resources` from other profiles will get passed
+                        through. Similarly, also specifying any of the top-
+                        level keys from your workflow specific profile via
+                        command line arguments will completely overwrite their
+                        entries.
   --cache [RULE ...]    Store output files of given rules in a central cache
                         given by the environment variable
                         `$SNAKEMAKE_OUTPUT_CACHE`. Likewise, retrieve output
@@ -603,9 +644,11 @@ UTILITIES:
                         rule, one test case will be created and, after
                         successful execution, tests can be run with `pytest
                         TESTPATH`.
-  --containerize        Print a Dockerfile that provides an execution
-                        environment for the workflow, including all conda
-                        environments. (default: False)
+  --containerize [{dockerfile,apptainer}]
+                        Print a container definition that provides an
+                        execution environment for the workflow, including all
+                        conda environments. Supported formats: dockerfile
+                        (default), apptainer.
   --export-cwl FILE     Compile workflow to CWL and store it in given FILE.
   --list-rules, --list, -l
                         Show available rules in given Snakefile. (default:
@@ -843,8 +886,6 @@ BEHAVIOR:
                         URL prefix for wrapper directive. Set this to use your
                         fork or a local clone of the repository, e.g., use a
                         git URL like `git+file://path/to/your/local/clone@`.
-                        (default: https://github.com/snakemake/snakemake-
-                        wrappers/raw/)
   --default-storage-provider DEFAULT_STORAGE_PROVIDER
                         Specify default storage provider to be used for all
                         input and output files that don't yet specify one
@@ -919,6 +960,16 @@ BEHAVIOR:
                         fs` is set or executors are used that imply no shared
                         FS (e.g. the kubernetes executor). (default: False)
   --benchmark-extended  Write extended benchmarking metrics. (default: False)
+  --persistence-backend {db,file}
+                        The backend to use for Snakemake's metadata
+                        persistence. The 'file' backend uses a file system
+                        directory structure. The 'db' backend uses a
+                        relational database via SQLAlchemy. (default: file)
+  --persistence-backend-db-url PERSISTENCE_BACKEND_DB_URL
+                        The database URL to use for the 'db' persistence
+                        backend (e.g., 'sqlite:///.snakemake/metadata.db',
+                        'postgresql://user@host/db'). Only used if
+                        --persistence-backend is 'db'.
 
 REMOTE EXECUTION:
   --container-image IMAGE
@@ -931,7 +982,7 @@ REMOTE EXECUTION:
                         contain a working snakemake installation that is
                         compatible with (or ideally the same as) the currently
                         running version. (default:
-                        snakemake/snakemake:v9.16.3)
+                        snakemake/snakemake:v9.19.0)
   --immediate-submit, --is
                         Immediately submit all jobs to the cluster instead of
                         waiting for present input files. This will fail,
@@ -1044,7 +1095,7 @@ INTERNAL:
   --target-jobs TARGET_JOBS [TARGET_JOBS ...]
                         Internal use only: Target particular jobs by
                         RULE:WILDCARD1=VALUE,WILDCARD2=VALUE,...
-  --mode {subprocess,default,remote}
+  --mode {default,remote,subprocess}
                         Internal use only: Set execution mode of Snakemake.
                         (default: default)
   --scheduler-solver-path SCHEDULER_SOLVER_PATH
@@ -1094,8 +1145,8 @@ defaults.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.16.3
+ARG PIP_SNAKEMAKE_VERSION=9.19.0
 ```
 
 - PIP packages (Python):
-  - [snakemake==9.16.3](https://pypi.org/project/snakemake/9.16.3)
+  - [snakemake==9.19.0](https://pypi.org/project/snakemake/9.19.0)

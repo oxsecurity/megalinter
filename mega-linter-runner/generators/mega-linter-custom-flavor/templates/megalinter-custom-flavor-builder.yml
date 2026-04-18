@@ -103,6 +103,10 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
         continue-on-error: true
 
+      - name: Set Lowercase Repository Name
+        id: lowercase-repo
+        run: echo "repo=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
+
       - name: Build MegaLinter Custom Flavor
         uses: oxsecurity/megalinter/flavors/custom-builder@main
         with:
@@ -114,6 +118,6 @@ jobs:
           dockerhub-repo: ${{ vars.DOCKERHUB_REPO }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CUSTOM_FLAVOR_BUILD_REPO: ${{ github.repository }}
+          CUSTOM_FLAVOR_BUILD_REPO: ${{ steps.lowercase-repo.outputs.repo }}
           CUSTOM_FLAVOR_BUILD_REPO_URL: ${{ github.repositoryUrl }}
           CUSTOM_FLAVOR_BUILD_USER: ${{ github.actor }}

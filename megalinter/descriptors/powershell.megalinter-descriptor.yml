@@ -23,7 +23,7 @@ install:
     - ARG TARGETPLATFORM
     - |
       # renovate: datasource=github-tags depName=PowerShell/PowerShell
-      ARG POWERSHELL_VERSION=7.5.5
+      ARG POWERSHELL_VERSION=7.6.0
     - |
       RUN case ${TARGETPLATFORM} in \
         "linux/amd64")  POWERSHELL_ARCH=musl-x64 ;; \
@@ -71,17 +71,13 @@ linters:
       dockerfile:
         - |
           # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
-          ARG PSSA_VERSION='1.24.0'
-        # https://stackoverflow.com/a/73711302
-        - FROM multiarch/qemu-user-static:x86_64-aarch64 AS qemu
-        - |
-          COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
-          RUN apk add --no-cache libc6-compat
+          ARG PSSA_VERSION='1.25.0'
         - RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
     supported_platforms:
       platform:
         - linux/amd64
-        - linux/arm64
+        # https://github.com/PowerShell/PowerShell/issues/25762
+        #- linux/arm64
     ide:
       vscode:
         - name: VSCode PowerShell extension
@@ -124,17 +120,13 @@ linters:
       dockerfile:
         - |
           # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
-          ARG PSSA_VERSION='1.24.0'
-        # https://stackoverflow.com/a/73711302
-        - FROM multiarch/qemu-user-static:x86_64-aarch64 AS qemu
-        - |
-          COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
-          RUN apk add --no-cache libc6-compat
+          ARG PSSA_VERSION='1.25.0'
         - RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
     supported_platforms:
       platform:
         - linux/amd64
-        - linux/arm64
+        # https://github.com/PowerShell/PowerShell/issues/25762
+        #- linux/arm64
     ide:
       vscode:
         - name: VSCode PowerShell extension

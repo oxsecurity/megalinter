@@ -39,7 +39,7 @@ jobs:
       actions: write
     steps:
       - name: Trigger deploy-mega-linter-runner workflow
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
@@ -336,7 +336,7 @@ jobs:
           echo "curr ver ${{ steps.version.outputs.cversion }}"
       - uses: actions/setup-python@v6
         with:
-          python-version: 3.12.13
+          python-version: 3.14.4
       - run: pip install --upgrade -r .config/python/dev/requirements.txt
       - run: cd .automation && bash build_schemas_doc.sh && cd ..
       # - run: mkdocs gh-deploy --force
