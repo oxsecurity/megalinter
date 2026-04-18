@@ -387,6 +387,133 @@ linters:
         description: Target commit SHA of the Pull Request/Merge Request
         default_value: ""
 
+  # GOMMITLINT
+  - class: GommitlintLinter
+    linter_name: gommitlint
+    descriptor_flavors:
+      - all_flavors
+      - ci_light
+      - cupcake
+      - security
+    linter_url: https://codeberg.org/itiquette/gommitlint
+    linter_repo: https://codeberg.org/itiquette/gommitlint
+    linter_speed: 4
+    linter_spdx_license: EUPL-1.2
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/gommitlint.png
+    linter_rules_configuration_url: https://codeberg.org/itiquette/gommitlint#configuration
+    linter_text: |
+      **gommitlint** is a commit message linter that validates Git commits against configurable rules aligned with Conventional Commits and best practices.
+
+      **Key Features:**
+
+      - **Conventional Commits**: Validates type, scope, and description format with customizable types and scopes
+      - **Subject Line Validation**: Enforces length limits, case rules, forbidden suffixes, and imperative mood
+      - **Sign-off (DCO)**: Checks for Developer Certificate of Origin sign-off trailers
+      - **Cryptographic Signatures**: Validates GPG/SSH commit signatures with key strength requirements
+      - **Spell Checking**: Detects spelling errors in commit messages with locale support (US/UK)
+      - **JIRA References**: Validates JIRA ticket references in subject or body
+      - **Identity Validation**: Restricts commits to allowed author emails with domain wildcards
+      - **Linear History**: Rejects merge commits to enforce rebase workflow
+      - **Branch Ahead Limits**: Prevents oversized feature branches
+      - **Commit Body Rules**: Enforces body presence, length, and line width requirements
+      - **CI/CD Integration**: Native output formats for GitHub Actions and GitLab CI
+      - **Preset Configurations**: Built-in presets (minimal, conventional, ambitious, secure) for quick setup
+
+      ## MegaLinter default rules
+
+      MegaLinter ships a default `.gommitlint.yaml` that enables only the most universally useful rules:
+
+      - **ConventionalCommit** — validates commit type (`feat:`, `fix:`, etc.) and description length
+      - **Subject** — enforces length limit (100 chars) and lowercase first letter
+
+      Rules like **Sign-off**, **CryptoSignature**, **Spell**, and **BranchAhead** are disabled by default because they require project-specific setup.
+
+      To enable additional rules, add your own `.gommitlint.yaml` to the repository root. See [gommitlint configuration](https://codeberg.org/itiquette/gommitlint#configuration) for all available options, or run `gommitlint config init` to generate a full template.
+
+      ## Commit validation scope
+
+      By default, gommitlint validates only the **HEAD commit**.
+
+      ### On CI (automatic)
+
+      On CI platforms, gommitlint **natively auto-detects** the pull request context and validates **every commit in the PR** — no configuration needed.
+
+      This works out of the box on:
+
+      * **GitHub Actions** (including Forgejo Actions and Gitea Actions)
+      * **GitLab CI** (merge requests and external pull requests)
+
+      ### Local runs and other CI platforms
+
+      To validate all commits on your feature branch against one or more base branches (same behavior as CI), set:
+
+      ```yaml
+      REPOSITORY_GOMMITLINT_BASE_BRANCH: main
+      ```
+
+      Or provide multiple branches with gommitlint 0.9.11+:
+
+      ```yaml
+      REPOSITORY_GOMMITLINT_BASE_BRANCH:
+        - main
+        - release/1.x
+      ```
+
+      This is useful when running MegaLinter locally to check your branch before pushing.
+
+      ### Disable multi-commit validation
+
+      To disable auto-detection and only validate the HEAD commit, set:
+
+      ```yaml
+      REPOSITORY_GOMMITLINT_BASE_BRANCH: none
+      ```
+
+      Auto-detection can also be disabled via gommitlint's own `GOMMITLINT_NO_CI_DETECT` environment variable.
+
+      ### Repository checkout depth
+
+      When validating PR commits, the full commit history between the base branch and HEAD must be available. Make sure your CI checkout fetches enough history:
+
+      ```yaml
+      # GitHub Actions / Forgejo Actions
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # GitLab CI
+      variables:
+        GIT_DEPTH: 0
+      ```
+    cli_lint_mode: project
+    cli_executable: gommitlint
+    cli_lint_extra_args:
+      - "validate"
+    cli_config_arg_name: "--gommitconfig"
+    config_file_name: .gommitlint.yaml
+    cli_version_arg_name: --version
+    test_folder: gommitlint
+    examples:
+      - "gommitlint validate"
+      - "gommitlint validate --base-branch main"
+      - "gommitlint validate --base-branch main,release/1.x"
+      - "gommitlint validate --format json"
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=docker depName=codeberg.org/itiquette/gommitlint
+          ARG REPOSITORY_GOMMITLINT_VERSION=0.9.11
+        - FROM codeberg.org/itiquette/gommitlint:v${REPOSITORY_GOMMITLINT_VERSION} AS gommitlint
+        - COPY --link --from=gommitlint /usr/local/bin/gommitlint /usr/bin/gommitlint
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
+    variables:
+      - name: REPOSITORY_GOMMITLINT_BASE_BRANCH
+        description: "Base branch or branches for comparison (auto-detected on CI). Set to `none` to disable auto-detection"
+        default_value: ""
+
   # GRYPE
   - linter_name: grype
     linter_text: |

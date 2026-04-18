@@ -1,0 +1,30 @@
+# Strict gommitlint config for MegaLinter test (should fail on bad commits)
+# This fixture is intentionally stricter than MegaLinter's default template.
+gommitlint:
+  rules:
+    enabled:
+      - conventional
+      - subject
+    disabled:
+      - branchahead
+      - commitbody
+      - cryptosignature
+      - identity
+      - jirareference
+      - linearhistory
+      - signoff
+      - spell
+  message:
+    subject:
+      # Default template uses 100; this lower limit helps exercise failures.
+      max_length: 50
+      case: lower
+      forbid_endings:
+        - "."
+        - ","
+        - ";"
+        - ":"
+        - "!"
+        - "?"
+  conventional:
+    max_description_length: 40

@@ -380,6 +380,7 @@
         "REPOSITORY_DUSTILOCK",
         "REPOSITORY_GITLEAKS",
         "REPOSITORY_GIT_DIFF",
+        "REPOSITORY_GOMMITLINT",
         "REPOSITORY_GOODCHECK",
         "REPOSITORY_GRYPE",
         "REPOSITORY_KICS",
@@ -23846,6 +23847,193 @@
       "title": "REPOSITORY_GIT_DIFF: Unsecured env variables",
       "type": "array",
       "x-category": "REPOSITORY_GIT_DIFF",
+      "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
+      "x-order": 600000,
+      "x-section": "SECURITY"
+    },
+    "REPOSITORY_GOMMITLINT_ARGUMENTS": {
+      "$id": "#/properties/REPOSITORY_GOMMITLINT_ARGUMENTS",
+      "description": "REPOSITORY_GOMMITLINT: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_GOMMITLINT: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ],
+      "x-category": "REPOSITORY_GOMMITLINT",
+      "x-order": 200020,
+      "x-section": "LINTER_COMMAND"
+    },
+    "REPOSITORY_GOMMITLINT_BASE_BRANCH": {
+      "$id": "#/properties/REPOSITORY_GOMMITLINT_BASE_BRANCH",
+      "default": "",
+      "description": "REPOSITORY_GOMMITLINT: Base branch or branches for comparison (auto-detected on CI). Set to `none` to disable auto-detection",
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_GOMMITLINT: Base branch or branches for comparison (auto-detected on CI). Set to `none` to disable auto-detection",
+      "type": [
+        "array",
+        "string"
+      ],
+      "x-category": "REPOSITORY_GOMMITLINT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
+    "REPOSITORY_GOMMITLINT_CLI_EXECUTABLE": {
+      "$id": "#/properties/REPOSITORY_GOMMITLINT_CLI_EXECUTABLE",
+      "default": [
+        [
+          "gommitlint"
+        ]
+      ],
+      "description": "REPOSITORY_GOMMITLINT: Override CLI executable used to build the linter command line (rarely needed)",
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_GOMMITLINT: CLI Executable",
+      "type": "array",
+      "x-category": "REPOSITORY_GOMMITLINT",
+      "x-order": 200060,
+      "x-section": "LINTER_COMMAND"
+    },
+    "REPOSITORY_GOMMITLINT_CLI_LINT_MODE": {
+      "$id": "#/properties/REPOSITORY_GOMMITLINT_CLI_LINT_MODE",
+      "default": "project",
+      "description": "REPOSITORY_GOMMITLINT: Override default CLI lint mode used to call the linter (rarely needed)",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
+      "title": "REPOSITORY_GOMMITLINT: CLI lint mode",
+      "type": "string",
+      "x-category": "REPOSITORY_GOMMITLINT",
+      "x-doc-key": "config-cli-lint-mode",
+      "x-order": 200050,
+      "x-section": "LINTER_COMMAND"
+    },
+    "REPOSITORY_GOMMITLINT_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/REPOSITORY_GOMMITLINT_COMMAND_REMOVE_ARGUMENTS",
+      "description": "REPOSITORY_GOMMITLINT: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_GOMMITLINT: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ],
+      "x-category": "REPOSITORY_GOMMITLINT",
+      "x-order": 200020,
+      "x-section": "LINTER_COMMAND"
+    },
+    "REPOSITORY_GOMMITLINT_CONFIG_FILE": {
+      "$id": "#/properties/REPOSITORY_GOMMITLINT_CONFIG_FILE",
+      "default": ".gommitlint.yaml",
+      "description": "REPOSITORY_GOMMITLINT: User custom config file name if different from default",
+      "title": "REPOSITORY_GOMMITLINT: Custom config file name",
+      "type": "string",
+      "x-category": "REPOSITORY_GOMMITLINT",
+      "x-order": 200010,
+      "x-section": "LINTER_COMMAND"
+    },
+    "REPOSITORY_GOMMITLINT_DISABLE_ERRORS": {
+      "$id": "#/properties/REPOSITORY_GOMMITLINT_DISABLE_ERRORS",
+      "default": false,
+      "description": "REPOSITORY_GOMMITLINT: If true, REPOSITORY_GOMMITLINT doesn't make MegaLinter fail even if errors are found",
+      "title": "REPOSITORY_GOMMITLINT: Disable errors",
+      "type": "boolean",
+      "x-category": "REPOSITORY_GOMMITLINT",
+      "x-order": 400000,
+      "x-section": "ERRORS"
+    },
+    "REPOSITORY_GOMMITLINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/REPOSITORY_GOMMITLINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "description": "REPOSITORY_GOMMITLINT: If the number of errors found is less than this value, REPOSITORY_GOMMITLINT doesn't make MegaLinter fail",
+      "title": "REPOSITORY_GOMMITLINT: Maximum number of errors allowed",
+      "type": "number",
+      "x-category": "REPOSITORY_GOMMITLINT",
+      "x-order": 400010,
+      "x-section": "ERRORS"
+    },
+    "REPOSITORY_GOMMITLINT_POST_COMMANDS": {
+      "$id": "#/properties/REPOSITORY_GOMMITLINT_POST_COMMANDS",
+      "description": "REPOSITORY_GOMMITLINT: Define bash commands to run after running REPOSITORY_GOMMITLINT",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "REPOSITORY_GOMMITLINT: Post-run commands",
+      "type": "array",
+      "x-category": "REPOSITORY_GOMMITLINT",
+      "x-order": 500010,
+      "x-section": "PREPOSTCOMMANDS"
+    },
+    "REPOSITORY_GOMMITLINT_PRE_COMMANDS": {
+      "$id": "#/properties/REPOSITORY_GOMMITLINT_PRE_COMMANDS",
+      "description": "REPOSITORY_GOMMITLINT: Define bash commands to run before running REPOSITORY_GOMMITLINT",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "REPOSITORY_GOMMITLINT: Pre-run commands",
+      "type": "array",
+      "x-category": "REPOSITORY_GOMMITLINT",
+      "x-order": 500000,
+      "x-section": "PREPOSTCOMMANDS"
+    },
+    "REPOSITORY_GOMMITLINT_RULES_PATH": {
+      "$id": "#/properties/REPOSITORY_GOMMITLINT_RULES_PATH",
+      "description": "REPOSITORY_GOMMITLINT: Path where to find linter configuration file",
+      "title": "REPOSITORY_GOMMITLINT: Custom config file path",
+      "type": "string",
+      "x-category": "REPOSITORY_GOMMITLINT",
+      "x-order": 200040,
+      "x-section": "LINTER_COMMAND"
+    },
+    "REPOSITORY_GOMMITLINT_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/REPOSITORY_GOMMITLINT_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling REPOSITORY_GOMMITLINT and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_GOMMITLINT: Unsecured env variables",
+      "type": "array",
+      "x-category": "REPOSITORY_GOMMITLINT",
       "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
       "x-order": 600000,
       "x-section": "SECURITY"

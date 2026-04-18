@@ -209,6 +209,11 @@
     "image": "https://repository-images.githubusercontent.com/132145189/05239680-dfaf-11e9-9646-2c3ef2f5f8d4",
     "title": "golangci/golangci-lint"
   },
+  "gommitlint": {
+    "description": "Git commit message linter with best-practice defaults. Configurable rules, CI-ready, works as CLI or pre-commit hook.",
+    "image": "https://codeberg.org/Itiquette/gommitlint/-/summary-card",
+    "title": "gommitlint"
+  },
   "goodcheck": {
     "description": "None",
     "image": null,
