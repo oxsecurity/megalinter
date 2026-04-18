@@ -55,7 +55,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 # renovate: datasource=pypi depName=nbqa
 ARG PIP_NBQA_VERSION=1.9.1
 # renovate: datasource=pypi depName=mypy
-ARG PIP_MYPY_VERSION=1.19.1
+ARG PIP_MYPY_VERSION=1.20.1
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=26.0.1
 # renovate: datasource=pypi depName=virtualenv
