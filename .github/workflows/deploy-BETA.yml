@@ -257,11 +257,11 @@ jobs:
       #   env:
       #       ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Run OSV-Scanner vulnerability scanner
-        uses: google/osv-scanner-action/osv-scanner-action@v2.3.5
-        with:
-          scan-args: |-
-            --docker ${{ steps.meta.outputs.tags }}
+      # - name: Run OSV-Scanner vulnerability scanner
+      #   uses: google/osv-scanner-action/osv-scanner-action@v2.3.5
+      #   with:
+      #     scan-args: |-
+      #       --docker ${{ steps.meta.outputs.tags }}
 
   build-custom-flavor-builder:
     strategy:

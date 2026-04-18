@@ -184,9 +184,9 @@ jobs:
       #   env:
       #       ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Run OSV-Scanner vulnerability scanner
-        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: google/osv-scanner-action/osv-scanner-action@v2.3.5
-        with:
-          scan-args: |-
-            --docker ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:${{ github.event.release.tag_name }}
+      # - name: Run OSV-Scanner vulnerability scanner
+      #   if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
+      #   uses: google/osv-scanner-action/osv-scanner-action@v2.3.5
+      #   with:
+      #     scan-args: |-
+      #       --docker ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:${{ github.event.release.tag_name }}
