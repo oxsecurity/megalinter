@@ -103,6 +103,8 @@
     "mocha": "^11.0.0"
   },
   "resolutions": {
+    "diff": "^8.0.3",
+    "serialize-javascript": "^7.0.5",
     "semver": "7.7.4",
     "tmp": "0.2.5"
   }
