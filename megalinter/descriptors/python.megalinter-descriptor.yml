@@ -443,7 +443,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=mypy
-          ARG PIP_MYPY_VERSION=1.19.1
+          ARG PIP_MYPY_VERSION=1.20.1
         - ENV MYPY_CACHE_DIR=/tmp # Avoid mypy cache to mess with other linters
       pip:
         - mypy==${PIP_MYPY_VERSION}
@@ -522,7 +522,7 @@ linters:
           ARG PIP_NBQA_VERSION=1.9.1
         - |-
           # renovate: datasource=pypi depName=mypy
-          ARG PIP_MYPY_VERSION=1.19.1
+          ARG PIP_MYPY_VERSION=1.20.1
         - ENV MYPY_CACHE_DIR=/tmp # Avoid mypy cache to mess with other linters
       pip:
         - nbqa==${PIP_NBQA_VERSION}
