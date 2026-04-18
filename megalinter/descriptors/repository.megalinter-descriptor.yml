@@ -579,6 +579,7 @@ linters:
     linter_repo: https://github.com/google/osv-scanner
     linter_spdx_license: Apache-2.0
     linter_rules_configuration_url: https://google.github.io/osv-scanner/configuration/
+    linter_rules_ignore_config_url: https://google.github.io/osv-scanner/usage/scan-source#ignored-files
     config_file_name: osv-scanner.toml
     cli_config_arg_name: --config
     cli_lint_mode: project
@@ -601,7 +602,13 @@ linters:
       - "osv-scanner scan source --format sarif --output-file report.sarif --recursive ."
     install:
       apk:
-        - osv-scanner
+        - go
+      dockerfile:
+        - |-
+          # renovate: datasource=github-tags depName=google/osv-scanner
+          ARG REPOSITORY_OSV_SCANNER_VERSION=v2.3.5
+        - |-
+          RUN go install github.com/google/osv-scanner/v2/cmd/osv-scanner@${REPOSITORY_OSV_SCANNER_VERSION}
     supported_platforms:
       platform:
         - linux/amd64

@@ -86,6 +86,8 @@ ARG NPM_PRETTIER_VERSION=3.8.3
 ARG REPOSITORY_GRYPE_VERSION=0.111.0
 # renovate: datasource=npm depName=@ls-lint/ls-lint
 ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.1
+# renovate: datasource=github-tags depName=google/osv-scanner
+ARG REPOSITORY_OSV_SCANNER_VERSION=v2.3.5
 # renovate: datasource=npm depName=secretlint
 ARG NPM_SECRETLINT_VERSION=11.7.1
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
@@ -134,7 +136,7 @@ RUN apk -U --no-cache upgrade \
                 musl-dev \
                 openssh \
                 openjdk17 \
-                osv-scanner \
+                go \
                 libxml2-dev \
                 libxml2-utils \
                 libgcc \
@@ -277,6 +279,9 @@ ENV JAVA_HOME_17=/usr/lib/jvm/java-17-openjdk
 RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin \
 #
 # ls-lint installation
+#
+# osv-scanner installation
+    && go install github.com/google/osv-scanner/v2/cmd/osv-scanner@${REPOSITORY_OSV_SCANNER_VERSION} \
 #
 # secretlint installation
 #

@@ -245,6 +245,8 @@ ARG PIP_CHECKOV_VERSION=3.2.521
 ARG REPOSITORY_GRYPE_VERSION=0.111.0
 # renovate: datasource=npm depName=@ls-lint/ls-lint
 ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.1
+# renovate: datasource=github-tags depName=google/osv-scanner
+ARG REPOSITORY_OSV_SCANNER_VERSION=v2.3.5
 # renovate: datasource=npm depName=secretlint
 ARG NPM_SECRETLINT_VERSION=11.7.1
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
@@ -368,7 +370,6 @@ RUN apk -U --no-cache upgrade \
                 helm \
                 gcompat \
                 libstdc++ \
-                osv-scanner \
                 libxml2-dev \
                 libxml2-utils \
                 libgcc \
@@ -843,12 +844,15 @@ ENV KICS_QUERIES_PATH=/usr/bin/assets/queries KICS_LIBRARIES_PATH=/usr/bin/asset
 #
 # ls-lint installation
 #
+# osv-scanner installation
+RUN go install github.com/google/osv-scanner/v2/cmd/osv-scanner@${REPOSITORY_OSV_SCANNER_VERSION} \
+#
 # secretlint installation
 #
 # semgrep installation
 #
 # syft installation
-RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOSITORY_SYFT_VERSION}/install.sh | sh -s -- -b /usr/local/bin
+    && curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOSITORY_SYFT_VERSION}/install.sh | sh -s -- -b /usr/local/bin
 #
 # trufflehog installation
 # Managed with COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/

@@ -103,6 +103,8 @@ ARG PIP_CHECKOV_VERSION=3.2.521
 ARG REPOSITORY_DEVSKIM_VERSION=1.0.70
 # renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.111.0
+# renovate: datasource=github-tags depName=google/osv-scanner
+ARG REPOSITORY_OSV_SCANNER_VERSION=v2.3.5
 # renovate: datasource=npm depName=secretlint
 ARG NPM_SECRETLINT_VERSION=11.7.1
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
@@ -160,7 +162,7 @@ RUN apk -U --no-cache upgrade \
                 helm \
                 gcompat \
                 libstdc++ \
-                osv-scanner \
+                go \
                 npm \
                 nodejs-current \
                 yarn \
@@ -326,12 +328,15 @@ RUN dotnet tool install --allow-roll-forward --global Microsoft.CST.DevSkim.CLI 
 ENV KICS_QUERIES_PATH=/usr/bin/assets/queries KICS_LIBRARIES_PATH=/usr/bin/assets/libraries
 # Managed with COPY --from=kics /app/bin/assets /usr/bin/assets
 #
+# osv-scanner installation
+RUN go install github.com/google/osv-scanner/v2/cmd/osv-scanner@${REPOSITORY_OSV_SCANNER_VERSION} \
+#
 # secretlint installation
 #
 # semgrep installation
 #
 # syft installation
-RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOSITORY_SYFT_VERSION}/install.sh | sh -s -- -b /usr/local/bin \
+    && curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOSITORY_SYFT_VERSION}/install.sh | sh -s -- -b /usr/local/bin \
 #
 # trufflehog installation
 # Managed with COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
