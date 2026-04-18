@@ -560,7 +560,7 @@ linters:
   # OSV-SCANNER
   - linter_name: osv-scanner
     name: REPOSITORY_OSV_SCANNER
-    can_output_sarif: true
+    can_output_sarif: false # disabled until it works !
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
       - ci_light
