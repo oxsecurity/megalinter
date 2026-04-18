@@ -12496,7 +12496,7 @@
 </ul>
 <h2 id="kingfisher-documentation">kingfisher documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.90.0</strong></li>
+<li>Version in MegaLinter: <strong>1.95.0</strong></li>
 <li>Visit <a href="https://github.com/mongodb/kingfisher#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/mongodb/kingfisher?tab=readme-ov-file#inline-ignore-directives" target="_blank">How to disable kingfisher rules in files</a></li>
 <li>See <a href="https://github.com/mongodb/kingfisher/tree/main/data/rules" target="_blank">Index of problems detected by kingfisher</a></li>
@@ -12633,6 +12633,7 @@ Global Options:
   -q, --quiet                       Suppress non-error messages and disable progress bars
       --tls-mode &lt;TLS_MODE&gt;         TLS certificate validation mode for secret validation requests
                                     [default: strict] [possible values: strict, lax, off]
+      --allow-internal-ips          Allow validation requests to internal/private IP addresses
       --self-update                 Update the Kingfisher binary to the latest release
       --no-update-check             Disable automatic update checks
       --user-agent-suffix &lt;SUFFIX&gt;  Append a custom suffix to the default Kingfisher user-agent
@@ -12643,7 +12644,7 @@ Global Options:
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=github-tags depName=mongodb/kingfisher
-ARG REPOSITORY_KINGFISHER_VERSION=1.90.0
+ARG REPOSITORY_KINGFISHER_VERSION=1.95.0
 RUN curl --silent --location https://raw.githubusercontent.com/mongodb/kingfisher/main/scripts/install-kingfisher.sh | bash -s -- /usr/local/bin --tag "v${REPOSITORY_KINGFISHER_VERSION}"
 
 </code></pre>
