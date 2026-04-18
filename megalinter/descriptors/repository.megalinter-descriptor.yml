@@ -591,12 +591,10 @@ linters:
     cli_sarif_args:
       - --format
       - sarif
-      - --output-file
-      - "{{SARIF_OUTPUT_FILE}}"
     cli_help_arg_name: --help
     cli_version_arg_name: --version
-    cli_lint_errors_count: sarif
-    cli_lint_warnings_count: sarif
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: "(osv\\.dev/GHSA-)"
     test_folder: repository_osv_scanner
     examples:
       - "osv-scanner scan source --recursive ."
