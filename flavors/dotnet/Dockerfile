@@ -187,7 +187,7 @@ ARG PIP_SNAKEFMT_VERSION=1.0.0
 # renovate: datasource=npm depName=cspell
 ARG NPM_CSPELL_VERSION=10.0.0
 # renovate: datasource=pypi depName=proselint
-ARG PIP_PROSELINT_VERSION=0.14.0
+ARG PIP_PROSELINT_VERSION=0.16.0
 # renovate: datasource=pypi depName=codespell
 ARG PIP_CODESPELL_VERSION=2.4.2
 # renovate: datasource=pypi depName=sqlfluff
