@@ -17,6 +17,8 @@ file_contains_regex:
 linters:
   # Spectral
   - linter_name: spectral
+    disabled: true
+    disabled_reason: crashing
     can_output_sarif: true
     linter_text: |
       **Spectral** is a flexible JSON/YAML linter for creating automated style guides, with built-in support for **OpenAPI** (v3.1, v3.0, and v2.0), **Arazzo** v1.0, and **AsyncAPI** v2.x specifications.

@@ -184,7 +184,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=mvdan/shfmt
-          ARG BASH_SHFMT_VERSION=v3.12.0-alpine
+          ARG BASH_SHFMT_VERSION=v3.13.1-alpine
         - FROM mvdan/shfmt:${BASH_SHFMT_VERSION} AS shfmt
         - COPY --link --from=shfmt /bin/shfmt /usr/bin/
     supported_platforms:
