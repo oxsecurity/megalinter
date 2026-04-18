@@ -1042,6 +1042,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#security-boundaries-and-threat-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Security boundaries and threat model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#unhide-variables-for-linters" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -12324,6 +12335,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#security-boundaries-and-threat-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Security boundaries and threat model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#unhide-variables-for-linters" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -12387,13 +12409,47 @@
 <p>SECURED_ENV_VARIABLES_DEFAULT contains exact names and (regular expressions) matching patterns for commonly used sensitive environment variables:</p>
 <ul>
 <li>PAT</li>
-<li>GIT_AUTHORIZATION_BEARER</li>
-<li>GITLAB_CUSTOM_CERTIFICATE</li>
-<li>(USERNAME)</li>
-<li>(PASSWORD)</li>
-<li>(TOKEN)</li>
+<li>SYSTEM_ACCESSTOKEN</li>
+<li>(^|<em>)(USERNAME)($|</em>)</li>
+<li>(^|<em>)(PASSWORD|PASSWD|PASS|PWD)($|</em>)</li>
+<li>(^|<em>)(TOKEN|ID_TOKEN|ACCESS_TOKEN|REFRESH_TOKEN|BEARER)($|</em>)</li>
+<li>(^|<em>)(SECRET|SECRETS)($|</em>)</li>
+<li>(^|<em>)(API_KEY|APP_KEY|CLIENT_ID|CLIENT_SECRET|CLIENT_KEY|SECRET_KEY|ACCESS_KEY|ACCESS_KEY_ID|PRIVATE_KEY|SSH_KEY|SIGNING_KEY|ENCRYPTION_KEY|LICENSE_KEY)($|</em>)</li>
+<li>(^|<em>)(AUTH|AUTHORIZATION)($|</em>)</li>
+<li>(^|<em>)(CERT|CERTIFICATE|CA_BUNDLE|KUBECONFIG)($|</em>)</li>
+<li>(^|<em>)(CONNECTION_STRING|DATABASE_URL|DB_URL|DSN)($|</em>)</li>
+<li>(GOOGLE_APPLICATION_CREDENTIALS)</li>
+<li>(GCP_SERVICE_ACCOUNT.*)</li>
 <li>(SFDX_CLIENT_ID_.*)</li>
 <li>(SFDX_CLIENT_KEY_.*)</li>
+<li>(^|<em>)(SLACK|DISCORD|TEAMS|WEBHOOK)_URL($|</em>)</li>
+</ul>
+<p>This compact list is intentionally pattern-based: variables such as <code>GITHUB_TOKEN</code>, <code>CI_JOB_TOKEN</code>, <code>NPM_TOKEN</code>, <code>GIT_AUTHORIZATION_BEARER</code>, <code>AWS_SECRET_ACCESS_KEY</code>, <code>AZURE_CLIENT_SECRET</code>, <code>OPENAI_API_KEY</code>, <code>DOCKER_PASSWORD</code>, and <code>SMTP_PASSWORD</code> are hidden through these broader matchers.</p>
+<h2 id="security-boundaries-and-threat-model">Security boundaries and threat model</h2>
+<p>When a linter or plugin command is executed, MegaLinter builds a child-process environment where matched sensitive variables are replaced with <code>HIDDEN_BY_MEGALINTER</code>.</p>
+<p>This means:</p>
+<ul>
+<li>The original value of a matched environment variable is not accessible from that environment variable entry in the child process.</li>
+</ul>
+<p>This does not mean full sandboxing. A malicious dependency can still attempt to collect secrets from other channels, such as:</p>
+<ul>
+<li>Unmatched variables (for example after custom overrides of <code>SECURED_ENV_VARIABLES_DEFAULT</code>)</li>
+<li>Variables explicitly unhidden with <code>(linter-key)_UNSECURED_ENV_VARIABLES</code></li>
+<li>Files mounted in the workspace, command arguments, or generated config files</li>
+<li>External credential sources (cloud metadata services, secret managers, network endpoints)</li>
+</ul>
+<p>To maximize protection:</p>
+<ul>
+<li>Keep <code>SECURED_ENV_VARIABLES_DEFAULT</code> unchanged when possible</li>
+<li>Add your project-specific patterns with <code>SECURED_ENV_VARIABLES</code></li>
+<li>Minimize extra credentials exposed to the MegaLinter runtime</li>
+</ul>
+<p>Example (compromised dependency scenario):</p>
+<ul>
+<li>If a linter dependency (for example <code>axios</code>) is compromised and executes malicious code, it can read the environment passed to that linter process.</li>
+<li>In that environment, matched variables are already replaced by <code>HIDDEN_BY_MEGALINTER</code>.</li>
+<li>So reading <code>GITHUB_TOKEN</code>, <code>NPM_TOKEN</code>, <code>OPENAI_API_KEY</code>, or <code>AWS_SECRET_ACCESS_KEY</code> from the process environment returns <code>HIDDEN_BY_MEGALINTER</code>, not the original secret value.</li>
+<li>The same attack could still try to obtain secrets from other channels listed above (files, arguments, external services, etc.).</li>
 </ul>
 <h2 id="unhide-variables-for-linters">Unhide variables for linters</h2>
 <p>You can configure exceptions for a specific linter by defining <code>(linter-key)_UNSECURED_ENV_VARIABLES</code>.</p>
