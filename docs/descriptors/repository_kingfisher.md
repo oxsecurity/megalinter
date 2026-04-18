@@ -22,7 +22,7 @@ description: How to use kingfisher (configure, ignore files, ignore errors, help
 
 ## kingfisher documentation
 
-- Version in MegaLinter: **1.90.0**
+- Version in MegaLinter: **1.95.0**
 - Visit [Official Web Site](https://github.com/mongodb/kingfisher#readme){target=_blank}
 - See [How to disable kingfisher rules in files](https://github.com/mongodb/kingfisher?tab=readme-ov-file#inline-ignore-directives){target=_blank}
 - See [Index of problems detected by kingfisher](https://github.com/mongodb/kingfisher/tree/main/data/rules){target=_blank}
@@ -104,6 +104,7 @@ Global Options:
   -q, --quiet                       Suppress non-error messages and disable progress bars
       --tls-mode <TLS_MODE>         TLS certificate validation mode for secret validation requests
                                     [default: strict] [possible values: strict, lax, off]
+      --allow-internal-ips          Allow validation requests to internal/private IP addresses
       --self-update                 Update the Kingfisher binary to the latest release
       --no-update-check             Disable automatic update checks
       --user-agent-suffix <SUFFIX>  Append a custom suffix to the default Kingfisher user-agent
@@ -115,7 +116,7 @@ Global Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=github-tags depName=mongodb/kingfisher
-ARG REPOSITORY_KINGFISHER_VERSION=1.90.0
+ARG REPOSITORY_KINGFISHER_VERSION=1.95.0
 RUN curl --silent --location https://raw.githubusercontent.com/mongodb/kingfisher/main/scripts/install-kingfisher.sh | bash -s -- /usr/local/bin --tag "v${REPOSITORY_KINGFISHER_VERSION}"
 
 ```
