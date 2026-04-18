@@ -53,7 +53,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 #############################################################################################
 #ARG__START
 # renovate: datasource=npm depName=npm-package-json-lint
-ARG NPM_PACKAGE_JSON_LINT_VERSION=9.1.0
+ARG NPM_PACKAGE_JSON_LINT_VERSION=10.2.1
 # renovate: datasource=npm depName=npm-package-json-lint-config-default
 ARG NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION=8.0.1
 #ARG__END
