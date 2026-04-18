@@ -36,7 +36,7 @@ PRE_COMMANDS:
 | Property               | Description                                                                                                                                      | Default value |
 |------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
 | **command**            | Command line to run                                                                                                                              | Mandatory     |
-| **cwd**                | Directory where to run the command (`workspace` or `root`)                                                                                       | `workspace`   |
+| **cwd**                | Directory where to run the command (`workspace` or `root`)                                                                                       | `root`        |
 | **run_before_linters** | If set to `true`, runs the command before the execution of the linters themselves, required for npm/pip commands that cannot be run in parallel  | `false`       |
 | **run_after_linters**  | If set to `true`, runs the command after the execution of the linters themselves                                                                 | `false`       |
 | **secured_env**        | Apply filtering of secured environment variables before calling the command (default true).<br/>Be careful if you disable it!                    | `true`        |
