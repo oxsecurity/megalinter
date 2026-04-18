@@ -131,7 +131,7 @@ ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.25.17
 # renovate: datasource=npm depName=sfdx-hardis
 ARG SFDX_HARDIS_VERSION=7.7.1
 # renovate: datasource=npm depName=typescript
-ARG NPM_TYPESCRIPT_VERSION=5.9.3
+ARG NPM_TYPESCRIPT_VERSION=6.0.2
 # renovate: datasource=pypi depName=ansible-lint
 ARG PIP_ANSIBLE_LINT_VERSION=26.4.0
 # renovate: datasource=github-tags depName=Azure/arm-ttk
