@@ -53,9 +53,9 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 #############################################################################################
 #ARG__START
 # renovate: datasource=npm depName=@salesforce/cli
-ARG NPM_SALESFORCE_CLI_VERSION=2.128.5
+ARG NPM_SALESFORCE_CLI_VERSION=2.130.9
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.25.17
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.27.2
 # renovate: datasource=npm depName=sfdx-hardis
 ARG SFDX_HARDIS_VERSION=7.7.1
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner

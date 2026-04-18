@@ -90,9 +90,9 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 # renovate: datasource=crate depName=sarif-fmt
 ARG CARGO_SARIF_FMT_VERSION=0.8.0
 # renovate: datasource=npm depName=@salesforce/cli
-ARG NPM_SALESFORCE_CLI_VERSION=2.128.5
+ARG NPM_SALESFORCE_CLI_VERSION=2.130.9
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.25.17
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.27.2
 # renovate: datasource=npm depName=sfdx-hardis
 ARG SFDX_HARDIS_VERSION=7.7.1
 # renovate: datasource=pypi depName=ansible-lint
@@ -164,7 +164,7 @@ ARG PIP_SEMGREP_VERSION=1.159.0
 # renovate: datasource=github-tags depName=anchore/syft
 ARG REPOSITORY_SYFT_VERSION=1.42.4
 # renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
-ARG SALESFORCE_CODE_ANALYZER_VERSION=5.10.2
+ARG SALESFORCE_CODE_ANALYZER_VERSION=5.11.1
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
 ARG SALESFORCE_SFDX_SCANNER_VERSION=4.12.0
 # renovate: datasource=pypi depName=snakemake
