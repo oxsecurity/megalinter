@@ -1334,6 +1334,34 @@ SECURED_ENV_VARIABLES_DEFAULT contains exact names and (regular expressions) mat
 
 This compact list is intentionally pattern-based: variables such as `GITHUB_TOKEN`, `CI_JOB_TOKEN`, `NPM_TOKEN`, `GIT_AUTHORIZATION_BEARER`, `AWS_SECRET_ACCESS_KEY`, `AZURE_CLIENT_SECRET`, `OPENAI_API_KEY`, `DOCKER_PASSWORD`, and `SMTP_PASSWORD` are hidden through these broader matchers.
 
+#### Security boundaries and threat model
+
+When a linter or plugin command is executed, MegaLinter builds a child-process environment where matched sensitive variables are replaced with `HIDDEN_BY_MEGALINTER`.
+
+This means:
+
+- The original value of a matched environment variable is not accessible from that environment variable entry in the child process.
+
+This does not mean full sandboxing. A malicious dependency can still attempt to collect secrets from other channels, such as:
+
+- Unmatched variables (for example after custom overrides of `SECURED_ENV_VARIABLES_DEFAULT`)
+- Variables explicitly unhidden with `(linter-key)_UNSECURED_ENV_VARIABLES`
+- Files mounted in the workspace, command arguments, or generated config files
+- External credential sources (cloud metadata services, secret managers, network endpoints)
+
+To maximize protection:
+
+- Keep `SECURED_ENV_VARIABLES_DEFAULT` unchanged when possible
+- Add your project-specific patterns with `SECURED_ENV_VARIABLES`
+- Minimize extra credentials exposed to the MegaLinter runtime
+
+Example (compromised dependency scenario):
+
+- If a linter dependency (for example `axios`) is compromised and executes malicious code, it can read the environment passed to that linter process.
+- In that environment, matched variables are already replaced by `HIDDEN_BY_MEGALINTER`.
+- So reading `GITHUB_TOKEN`, `NPM_TOKEN`, `OPENAI_API_KEY`, or `AWS_SECRET_ACCESS_KEY` from the process environment returns `HIDDEN_BY_MEGALINTER`, not the original secret value.
+- The same attack could still try to obtain secrets from other channels listed above (files, arguments, external services, etc.).
+
 #### Unhide variables for linters
 
 You can configure exceptions for a specific linter by defining `(linter-key)_UNSECURED_ENV_VARIABLES`.
