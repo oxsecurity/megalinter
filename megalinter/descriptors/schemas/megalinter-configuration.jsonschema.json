@@ -24628,6 +24628,177 @@
       "x-order": 600000,
       "x-section": "SECURITY"
     },
+    "REPOSITORY_OSV_SCANNER_ARGUMENTS": {
+      "$id": "#/properties/REPOSITORY_OSV_SCANNER_ARGUMENTS",
+      "description": "REPOSITORY_OSV_SCANNER: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_OSV_SCANNER: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ],
+      "x-category": "REPOSITORY_OSV_SCANNER",
+      "x-order": 200020,
+      "x-section": "LINTER_COMMAND"
+    },
+    "REPOSITORY_OSV_SCANNER_CLI_EXECUTABLE": {
+      "$id": "#/properties/REPOSITORY_OSV_SCANNER_CLI_EXECUTABLE",
+      "default": [
+        [
+          "osv-scanner"
+        ]
+      ],
+      "description": "REPOSITORY_OSV_SCANNER: Override CLI executable used to build the linter command line (rarely needed)",
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_OSV_SCANNER: CLI Executable",
+      "type": "array",
+      "x-category": "REPOSITORY_OSV_SCANNER",
+      "x-order": 200060,
+      "x-section": "LINTER_COMMAND"
+    },
+    "REPOSITORY_OSV_SCANNER_CLI_LINT_MODE": {
+      "$id": "#/properties/REPOSITORY_OSV_SCANNER_CLI_LINT_MODE",
+      "default": "project",
+      "description": "REPOSITORY_OSV_SCANNER: Override default CLI lint mode used to call the linter (rarely needed)",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
+      "title": "REPOSITORY_OSV_SCANNER: CLI lint mode",
+      "type": "string",
+      "x-category": "REPOSITORY_OSV_SCANNER",
+      "x-doc-key": "config-cli-lint-mode",
+      "x-order": 200050,
+      "x-section": "LINTER_COMMAND"
+    },
+    "REPOSITORY_OSV_SCANNER_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/REPOSITORY_OSV_SCANNER_COMMAND_REMOVE_ARGUMENTS",
+      "description": "REPOSITORY_OSV_SCANNER: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_OSV_SCANNER: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ],
+      "x-category": "REPOSITORY_OSV_SCANNER",
+      "x-order": 200020,
+      "x-section": "LINTER_COMMAND"
+    },
+    "REPOSITORY_OSV_SCANNER_CONFIG_FILE": {
+      "$id": "#/properties/REPOSITORY_OSV_SCANNER_CONFIG_FILE",
+      "default": "osv-scanner.toml",
+      "description": "REPOSITORY_OSV_SCANNER: User custom config file name if different from default",
+      "title": "REPOSITORY_OSV_SCANNER: Custom config file name",
+      "type": "string",
+      "x-category": "REPOSITORY_OSV_SCANNER",
+      "x-order": 200010,
+      "x-section": "LINTER_COMMAND"
+    },
+    "REPOSITORY_OSV_SCANNER_DISABLE_ERRORS": {
+      "$id": "#/properties/REPOSITORY_OSV_SCANNER_DISABLE_ERRORS",
+      "default": false,
+      "description": "REPOSITORY_OSV_SCANNER: If true, REPOSITORY_OSV_SCANNER doesn't make MegaLinter fail even if errors are found",
+      "title": "REPOSITORY_OSV_SCANNER: Disable errors",
+      "type": "boolean",
+      "x-category": "REPOSITORY_OSV_SCANNER",
+      "x-order": 400000,
+      "x-section": "ERRORS"
+    },
+    "REPOSITORY_OSV_SCANNER_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/REPOSITORY_OSV_SCANNER_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "description": "REPOSITORY_OSV_SCANNER: If the number of errors found is less than this value, REPOSITORY_OSV_SCANNER doesn't make MegaLinter fail",
+      "title": "REPOSITORY_OSV_SCANNER: Maximum number of errors allowed",
+      "type": "number",
+      "x-category": "REPOSITORY_OSV_SCANNER",
+      "x-order": 400010,
+      "x-section": "ERRORS"
+    },
+    "REPOSITORY_OSV_SCANNER_POST_COMMANDS": {
+      "$id": "#/properties/REPOSITORY_OSV_SCANNER_POST_COMMANDS",
+      "description": "REPOSITORY_OSV_SCANNER: Define bash commands to run after running REPOSITORY_OSV_SCANNER",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "REPOSITORY_OSV_SCANNER: Post-run commands",
+      "type": "array",
+      "x-category": "REPOSITORY_OSV_SCANNER",
+      "x-order": 500010,
+      "x-section": "PREPOSTCOMMANDS"
+    },
+    "REPOSITORY_OSV_SCANNER_PRE_COMMANDS": {
+      "$id": "#/properties/REPOSITORY_OSV_SCANNER_PRE_COMMANDS",
+      "description": "REPOSITORY_OSV_SCANNER: Define bash commands to run before running REPOSITORY_OSV_SCANNER",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "REPOSITORY_OSV_SCANNER: Pre-run commands",
+      "type": "array",
+      "x-category": "REPOSITORY_OSV_SCANNER",
+      "x-order": 500000,
+      "x-section": "PREPOSTCOMMANDS"
+    },
+    "REPOSITORY_OSV_SCANNER_RULES_PATH": {
+      "$id": "#/properties/REPOSITORY_OSV_SCANNER_RULES_PATH",
+      "description": "REPOSITORY_OSV_SCANNER: Path where to find linter configuration file",
+      "title": "REPOSITORY_OSV_SCANNER: Custom config file path",
+      "type": "string",
+      "x-category": "REPOSITORY_OSV_SCANNER",
+      "x-order": 200040,
+      "x-section": "LINTER_COMMAND"
+    },
+    "REPOSITORY_OSV_SCANNER_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/REPOSITORY_OSV_SCANNER_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling REPOSITORY_OSV_SCANNER and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_OSV_SCANNER: Unsecured env variables",
+      "type": "array",
+      "x-category": "REPOSITORY_OSV_SCANNER",
+      "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
+      "x-order": 600000,
+      "x-section": "SECURITY"
+    },
     "REPOSITORY_POST_COMMANDS": {
       "$id": "#/properties/REPOSITORY_POST_COMMANDS",
       "description": "REPOSITORY: List of bash commands to run after the linters",
