@@ -10,8 +10,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Core
   - Security: add [more default hidden environment variables](https://megalinter.io/beta/config-variables-security/), so in case one of the 100+ linters is hacked, the attacker won't get your secrets anyway
+  - Upgrade GO version to 1.26.2
 
 - New linters
+  - osv-scanner (trivy-like security linter, by Google)
 
 - Disabled linters
   - Disable trivy until their security issue is solved
