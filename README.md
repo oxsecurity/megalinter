@@ -1317,13 +1317,22 @@ If you override `SECURED_ENV_VARIABLES_DEFAULT`, it replaces the default list, s
 SECURED_ENV_VARIABLES_DEFAULT contains exact names and (regular expressions) matching patterns for commonly used sensitive environment variables:
 
 - PAT
-- GIT_AUTHORIZATION_BEARER
-- GITLAB_CUSTOM_CERTIFICATE
-- (USERNAME)
-- (PASSWORD)
-- (TOKEN)
+- SYSTEM_ACCESSTOKEN
+- (^|_)(USERNAME)($|_)
+- (^|_)(PASSWORD|PASSWD|PASS|PWD)($|_)
+- (^|_)(TOKEN|ID_TOKEN|ACCESS_TOKEN|REFRESH_TOKEN|BEARER)($|_)
+- (^|_)(SECRET|SECRETS)($|_)
+- (^|_)(API_KEY|APP_KEY|CLIENT_ID|CLIENT_SECRET|CLIENT_KEY|SECRET_KEY|ACCESS_KEY|ACCESS_KEY_ID|PRIVATE_KEY|SSH_KEY|SIGNING_KEY|ENCRYPTION_KEY|LICENSE_KEY)($|_)
+- (^|_)(AUTH|AUTHORIZATION)($|_)
+- (^|_)(CERT|CERTIFICATE|CA_BUNDLE|KUBECONFIG)($|_)
+- (^|_)(CONNECTION_STRING|DATABASE_URL|DB_URL|DSN)($|_)
+- (GOOGLE_APPLICATION_CREDENTIALS)
+- (GCP_SERVICE_ACCOUNT.*)
 - (SFDX_CLIENT_ID_.*)
 - (SFDX_CLIENT_KEY_.*)
+- (^|_)(SLACK|DISCORD|TEAMS|WEBHOOK)_URL($|_)
+
+This compact list is intentionally pattern-based: variables such as `GITHUB_TOKEN`, `CI_JOB_TOKEN`, `NPM_TOKEN`, `GIT_AUTHORIZATION_BEARER`, `AWS_SECRET_ACCESS_KEY`, `AZURE_CLIENT_SECRET`, `OPENAI_API_KEY`, `DOCKER_PASSWORD`, and `SMTP_PASSWORD` are hidden through these broader matchers.
 
 #### Unhide variables for linters
 

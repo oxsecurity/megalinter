@@ -12,6 +12,23 @@ import yaml
 RUN_CONFIGS = {}  # type: ignore[var-annotated]
 SKIP_DELETE_CONFIG = False
 _ENV_CACHE = None  # Cached copy of os.environ to avoid repeated copies
+DEFAULT_SECURED_ENV_VARIABLES = (
+    "PAT",
+    "SYSTEM_ACCESSTOKEN",
+    "(^|_)(USERNAME)($|_)",
+    "(^|_)(PASSWORD|PASSWD|PASS|PWD)($|_)",
+    "(^|_)(TOKEN|ID_TOKEN|ACCESS_TOKEN|REFRESH_TOKEN|BEARER)($|_)",
+    "(^|_)(SECRET|SECRETS)($|_)",
+    "(^|_)(API_KEY|APP_KEY|CLIENT_ID|CLIENT_SECRET|CLIENT_KEY|SECRET_KEY|ACCESS_KEY|ACCESS_KEY_ID|PRIVATE_KEY|SSH_KEY|SIGNING_KEY|ENCRYPTION_KEY|LICENSE_KEY)($|_)",
+    "(^|_)(AUTH|AUTHORIZATION)($|_)",
+    "(^|_)(CERT|CERTIFICATE|CA_BUNDLE|KUBECONFIG)($|_)",
+    "(^|_)(CONNECTION_STRING|DATABASE_URL|DB_URL|DSN)($|_)",
+    "(GOOGLE_APPLICATION_CREDENTIALS)",
+    "(GCP_SERVICE_ACCOUNT.*)",
+    "(SFDX_CLIENT_ID_.*)",
+    "(SFDX_CLIENT_KEY_.*)",
+    "(^|_)(SLACK|DISCORD|TEAMS|WEBHOOK)_URL($|_)",
+)
 
 
 def init_config(request_id, workspace=None, params=None):
@@ -334,16 +351,7 @@ def list_secured_variables(request_id) -> list[str]:
     secured_env_variables_default = get_list(
         request_id,
         "SECURED_ENV_VARIABLES_DEFAULT",
-        [
-            "PAT",
-            "GIT_AUTHORIZATION_BEARER",
-            "GITLAB_CUSTOM_CERTIFICATE",
-            "(USERNAME)",
-            "(PASSWORD)",
-            "(TOKEN)",
-            "(SFDX_CLIENT_ID_.*)",
-            "(SFDX_CLIENT_KEY_.*)",
-        ],
+        list(DEFAULT_SECURED_ENV_VARIABLES),
     )
     secured_env_variables = get_list(
         request_id,

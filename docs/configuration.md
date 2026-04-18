@@ -194,23 +194,25 @@ Thanks to this feature, you only need to [**trust MegaLinter and its internal py
 
 You can add secured variables to the default list using configuration property **SECURED_ENV_VARIABLES** in .mega-linter.yml or in an environment variable (priority is given to ENV variables above `.mega-linter.yml` property).
 
-SECURED_ENV_VARIABLES_DEFAULT contains:
+SECURED_ENV_VARIABLES_DEFAULT contains exact names and (regular expressions) matching patterns for commonly used sensitive environment variables:
 
-- GITHUB_TOKEN
 - PAT
 - SYSTEM_ACCESSTOKEN
-- GIT_AUTHORIZATION_BEARER
-- CI_JOB_TOKEN
-- GITLAB_ACCESS_TOKEN_MEGALINTER
-- GITLAB_CUSTOM_CERTIFICATE
-- WEBHOOK_REPORTER_BEARER_TOKEN
-- NPM_TOKEN
-- DOCKER_USERNAME
-- DOCKER_PASSWORD
-- CODECOV_TOKEN
-- GCR_USERNAME
-- GCR_PASSWORD
-- SMTP_PASSWORD
+- (^|_)(USERNAME)($|_)
+- (^|_)(PASSWORD|PASSWD|PASS|PWD)($|_)
+- (^|_)(TOKEN|ID_TOKEN|ACCESS_TOKEN|REFRESH_TOKEN|BEARER)($|_)
+- (^|_)(SECRET|SECRETS)($|_)
+- (^|_)(API_KEY|APP_KEY|CLIENT_ID|CLIENT_SECRET|CLIENT_KEY|SECRET_KEY|ACCESS_KEY|ACCESS_KEY_ID|PRIVATE_KEY|SSH_KEY|SIGNING_KEY|ENCRYPTION_KEY|LICENSE_KEY)($|_)
+- (^|_)(AUTH|AUTHORIZATION)($|_)
+- (^|_)(CERT|CERTIFICATE|CA_BUNDLE|KUBECONFIG)($|_)
+- (^|_)(CONNECTION_STRING|DATABASE_URL|DB_URL|DSN)($|_)
+- (GOOGLE_APPLICATION_CREDENTIALS)
+- (GCP_SERVICE_ACCOUNT.*)
+- (SFDX_CLIENT_ID_.*)
+- (SFDX_CLIENT_KEY_.*)
+- (^|_)(SLACK|DISCORD|TEAMS|WEBHOOK)_URL($|_)
+
+This compact list is intentionally pattern-based: variables such as GITHUB_TOKEN, CI_JOB_TOKEN, NPM_TOKEN, GIT_AUTHORIZATION_BEARER, AWS_SECRET_ACCESS_KEY, AZURE_CLIENT_SECRET, OPENAI_API_KEY, DOCKER_PASSWORD, and SMTP_PASSWORD are hidden through these broader matchers.
 
 Example of adding extra secured variables `.mega-linter.yml`:
 
