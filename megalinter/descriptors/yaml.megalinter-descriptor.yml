@@ -141,6 +141,7 @@ linters:
           url: https://github.com/w0rp/ale
   # V8R
   - linter_name: v8r
+    class: V8rLinter
     linter_url: https://github.com/chris48s/v8r
     linter_repo: https://github.com/chris48s/v8r
     linter_spdx_license: MIT

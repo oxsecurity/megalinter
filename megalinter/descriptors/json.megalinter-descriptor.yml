@@ -174,6 +174,7 @@ linters:
           url: https://github.com/ota-meshi/eslint-plugin-jsonc#visual-studio-code
     # V8R
   - linter_name: v8r
+    class: V8rLinter
     linter_url: https://github.com/chris48s/v8r
     linter_repo: https://github.com/chris48s/v8r
     linter_spdx_license: MIT
@@ -190,6 +191,8 @@ linters:
       - **Detailed Error Reporting**: Provides clear, actionable validation error messages with line and column information
     linter_rules_url: https://www.schemastore.org/
     linter_megalinter_ref_url: "no"
+    config_file_name: ".v8rrc.yml"
+    cli_config_arg_name: ""
     cli_lint_mode: list_of_files
     cli_lint_extra_args:
       - "--ignore-errors"
