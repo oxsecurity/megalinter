@@ -7,6 +7,7 @@
     "label": "Optimized for Salesforce based projects",
     "linters": [
         "ACTION_ACTIONLINT",
+        "ACTION_ZIZMOR",
         "ANSIBLE_ANSIBLE_LINT",
         "BASH_EXEC",
         "BASH_SHELLCHECK",

@@ -113,6 +113,8 @@ ARG ALPINE_GLIBC_PACKAGE_VERSION=2.34-r0
 ARG GO_ALPINE_VERSION=1.26.2-r0
 # renovate: datasource=npm depName=typescript
 ARG NPM_TYPESCRIPT_VERSION=6.0.2
+# renovate: datasource=crate depName=zizmor
+ARG CARGO_ZIZMOR_VERSION=1.23.1
 # renovate: datasource=pypi depName=ansible-lint
 ARG PIP_ANSIBLE_LINT_VERSION=26.4.0
 # renovate: datasource=crate depName=shellcheck-sarif
@@ -407,7 +409,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain ${RUST_RUST_VERSION} \
     && export PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}" \
     && rustup default stable \
-    && rustup component add clippy && cargo install --force --locked sarif-fmt@${CARGO_SARIF_FMT_VERSION} shellcheck-sarif@${CARGO_SHELLCHECK_SARIF_VERSION} \
+    && rustup component add clippy && cargo install --force --locked sarif-fmt@${CARGO_SARIF_FMT_VERSION} zizmor@${CARGO_ZIZMOR_VERSION} shellcheck-sarif@${CARGO_SHELLCHECK_SARIF_VERSION} \
     && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache
 ENV PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}"
 #CARGO__END
@@ -684,6 +686,8 @@ ENV PATH="/root/.composer/vendor/bin:${PATH}"
 # Managed with COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
 #              # shellcheck is a dependency for actionlint
 # Managed with COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
+#
+# zizmor installation
 #
 # ansible-lint installation
 #

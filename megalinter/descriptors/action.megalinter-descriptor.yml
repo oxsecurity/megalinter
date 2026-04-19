@@ -4,11 +4,9 @@ descriptor_type: tooling_format
 descriptor_flavors:
   - all_flavors # Applicable to CI in any language project
   - cupcake
-files_sub_directory: .github/workflows
 file_extensions:
   - ".yml"
   - ".yaml"
-test_folder: action
 linters:
   # ACTIONLINT
   - linter_name: actionlint
@@ -28,6 +26,8 @@ linters:
     linter_repo: https://github.com/rhysd/actionlint
     linter_rules_configuration_url: https://github.com/rhysd/actionlint/blob/main/docs/config.md
     linter_spdx_license: MIT
+    files_sub_directory: .github/workflows
+    test_folder: action
     config_file_name: actionlint.yml
     cli_lint_mode: list_of_files
     cli_config_arg_name: "-config-file"
@@ -55,6 +55,52 @@ linters:
           COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
           # shellcheck is a dependency for actionlint
         - COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
+  # ZIZMOR
+  - class: ZizmorLinter
+    linter_name: zizmor
+    linter_text: |
+      **zizmor** is a static analysis tool for GitHub Actions. It can find many common security issues in typical GitHub Actions CI/CD setups.
+
+      **Key Features:**
+
+      - **Expression Analysis**: Identifies template injection vulnerabilities, which can lead to attacker-controlled code execution.
+      - **Disk Credential Review**: Prevent accidental credential persistence and leakage.
+      - **Overprivileged Runner Detection**: Identify excessive permission scopes and credential grants to runners.
+      - **Invalid Reference Discovery**: Locate impostor commits and confusable git references.
+
+      > If you are using the GitHub action please use the `ACTION_ZIZMOR_UNSECURED_ENV_VARIABLES: GITHUB_TOKEN` to prevent plugin download issues
+    linter_url: https://zizmor.sh/
+    linter_repo: https://github.com/zizmorcore/zizmor
+    linter_image_url: https://docs.zizmor.sh/assets/rainbow.svg
+    linter_rules_url: https://docs.zizmor.sh/audits/
+    linter_rules_configuration_url: https://docs.zizmor.sh/configuration/
+    linter_rules_inline_disable_url: https://docs.zizmor.sh/usage/#with-comments
+    linter_spdx_license: MIT
+    files_sub_directory: .github
+    test_folder: action_zizmor
+    config_file_name: zizmor.yml
+    cli_config_arg_name: --config
+    cli_lint_fix_arg_name: --fix
+    cli_lint_mode: list_of_files
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: ([0-9]+) findings?
+    cli_version_arg_name: --version
+    examples:
+      - "zizmor ci.yml tests.yml lint.yml action.yml"
+      - "zizmor ./subdir/ci.yml ../sibling/tests.yml ./action/action.yml"
+      - "zizmor ."
+      - "zizmor --config zizmor.yml ."
+    install:
+      cargo:
+        - zizmor@${CARGO_ZIZMOR_VERSION}
+      dockerfile:
+        - |-
+          # renovate: datasource=crate depName=zizmor
+          ARG CARGO_ZIZMOR_VERSION=1.23.1
     supported_platforms:
       platform:
         - linux/amd64
