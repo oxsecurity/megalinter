@@ -13,11 +13,12 @@ class V8rLinter(Linter):
         # Instead, it reads the V8R_CONFIG_FILE environment variable.
         # When MegaLinter has resolved a config file, pass it via that env var.
         if self.config_file is not None:
+            # _cached_subprocess_env is pre-built by Linter.run() before any files are linted.
+            # If it hasn't been set yet (e.g. in standalone/test scenarios), build it here.
             cached_env = getattr(self, "_cached_subprocess_env", None)
             if cached_env is not None:
                 cached_env["V8R_CONFIG_FILE"] = self.config_file
             else:
-                # Standalone case: build the env ourselves so we can inject V8R_CONFIG_FILE
                 self._cached_subprocess_env = {
                     **config.build_env(
                         self.request_id, True, self.unsecured_env_variables
