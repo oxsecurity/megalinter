@@ -19,7 +19,10 @@ class CheckovLinter(Linter):
             for file_to_lint in self.master.all_diff_files:
                 self.cli_lint_extra_args_after.append(file_to_lint)
         else:
-            if (self.cli_lint_mode == "file" and "--file" not in self.cli_lint_extra_args_after) or self.cli_lint_mode == "list_of_files":
+            if (
+                self.cli_lint_mode == "file"
+                and "--file" not in self.cli_lint_extra_args_after
+            ) or self.cli_lint_mode == "list_of_files":
                 self.cli_lint_extra_args_after.append("--file")
             elif self.cli_lint_mode == "project":
                 self.cli_lint_extra_args_after.append("--directory")
