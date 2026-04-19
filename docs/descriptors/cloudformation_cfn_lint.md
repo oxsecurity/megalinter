@@ -46,7 +46,7 @@ CFN-Lint helps ensure your CloudFormation templates are valid, secure, and follo
 
 ## cfn-lint documentation
 
-- Version in MegaLinter: **1.48.1**
+- Version in MegaLinter: **3.14**
 - Visit [Official Web Site](https://github.com/aws-cloudformation/cfn-lint#readme){target=_blank}
 - See [How to configure cfn-lint rules](https://github.com/aws-cloudformation/cfn-lint#configuration){target=_blank}
   - If custom `.cfnlintrc.yml` config file isn't found, [.cfnlintrc.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.cfnlintrc.yml){target=_blank} will be used
@@ -94,9 +94,9 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                   | Description                                     | Embedded linters |                                                                                                                                                                                         Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------|:------------------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor                       |       134        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)   | MegaLinter for the most commonly used languages |        89        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/) | Optimized for security                          |        23        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor                       |       135        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)   | MegaLinter for the most commonly used languages |        90        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/) | Optimized for security                          |        24        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 
 ## Behind the scenes
 
@@ -125,7 +125,9 @@ cfn-lint --config-file .cfnlintrc.yml myfile.yml
 ### Help content
 
 ```shell
-usage:
+/venvs/cfn-lint/lib/python3.14/site-packages/samtranslator/compat.py:2: UserWarning: Core Pydantic V1 functionality isn't compatible with Python 3.14 or greater.
+  from pydantic import v1 as pydantic
+usage: 
 Basic: cfn-lint test.yaml
 Ignore a rule: cfn-lint -i E3012 -- test.yaml
 Configure a rule: cfn-lint -x E3012:strict=true -t test.yaml

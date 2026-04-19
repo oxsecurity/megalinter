@@ -79,10 +79,10 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                                     | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                       |       134        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)       | MegaLinter for the most commonly used languages |        89        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                       |       135        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)       | MegaLinter for the most commonly used languages |        90        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/formatters.ico" alt="" height="32px" class="megalinter-icon"></a>      | [formatters](https://megalinter.io/beta/flavors/formatters/) | Contains only formatters                        |        19        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-formatters/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-formatters) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)         | Optimized for PYTHON based projects             |        65        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)         | Optimized for PYTHON based projects             |        66        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
 
@@ -131,10 +131,10 @@ usage: isort [-h] [-V] [--vn] [-v] [--only-modified] [--dedup-headings] [-q]
              [--lbi LINES_BEFORE_IMPORTS] [--lai LINES_AFTER_IMPORTS]
              [--lbt LINES_BETWEEN_TYPES] [--le LINE_ENDING] [--ls] [--lss]
              [-m {GRID,VERTICAL,HANGING_INDENT,VERTICAL_HANGING_INDENT,VERTICAL_GRID,VERTICAL_GRID_GROUPED,VERTICAL_GRID_GROUPED_NO_COMMA,NOQA,VERTICAL_HANGING_INDENT_BRACKET,VERTICAL_PREFIX_FROM_MODULE_IMPORT,HANGING_INDENT_WITH_PARENTHESES,BACKSLASH_GRID,0,1,2,3,4,5,6,7,8,9,10,11}]
-             [-n] [--nis] [--ot] [--dt] [--rr] [--reverse-sort]
-             [--sort-order SORT_ORDER] [--sl] [--nsl SINGLE_LINE_EXCLUSIONS]
-             [--tc] [--up] [-l LINE_LENGTH] [--wl WRAP_LENGTH]
-             [--case-sensitive] [--remove-redundant-aliases] [--honor-noqa]
+             [-n] [--nis | --sl] [--ot] [--dt] [--rr] [--reverse-sort]
+             [--sort-order SORT_ORDER] [--nsl SINGLE_LINE_EXCLUSIONS] [--tc]
+             [--up] [-l LINE_LENGTH] [--wl WRAP_LENGTH] [--case-sensitive]
+             [--remove-redundant-aliases] [--honor-noqa]
              [--treat-comment-as-code TREAT_COMMENTS_AS_CODE]
              [--treat-all-comment-as-code] [--formatter FORMATTER] [--color]
              [--ext-format EXT_FORMAT] [--star-first]
@@ -479,7 +479,7 @@ section output options:
                         Python 3 version could be the target, and use a union
                         of all stdlib modules across versions. If auto is
                         specified, the version of the interpreter used to run
-                        isort (currently: 313) will be used.
+                        isort (currently: 314) will be used.
 ```
 
 ### Installation on mega-linter Docker image

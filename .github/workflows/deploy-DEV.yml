@@ -40,7 +40,10 @@ jobs:
     name: Tests + Deploy Docker Image - DEV
     # Set the agent to run on
     runs-on: ubuntu-latest
-    permissions: read-all
+    permissions:
+      contents: read
+      # Require writing security events to upload SARIF file to security tab
+      security-events: write
     # Prevent duplicate run from happening when a forked push is committed
     if: (github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository) && !contains(github.event.head_commit.message, 'skip deploy')
     # Set max build time for the job
@@ -251,3 +254,9 @@ jobs:
       #     vuln-type: 'os,library'
       #     severity: 'CRITICAL,HIGH'
       #     timeout: 15m0s
+
+      # - name: Run OSV-Scanner vulnerability scanner
+      #   uses: google/osv-scanner-action/osv-scanner-action@v2.3.5
+      #   with:
+      #     scan-args: |-
+      #       --docker ${{ fromJson(steps.meta.outputs.json).tags[0] }}

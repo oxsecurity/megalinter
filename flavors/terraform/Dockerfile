@@ -74,7 +74,7 @@ FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 # Build wheel for megalinter python package
 ##################
 FROM ghcr.io/astral-sh/uv:0.11.7 AS uv
-FROM python:3.13-alpine3.23 AS build-ml-core
+FROM python:3.14-alpine3.23 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
 WORKDIR /
@@ -93,7 +93,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 ##################
 # Get base image #
 ##################
-FROM python:3.13-alpine3.23
+FROM python:3.14-alpine3.23
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
 
@@ -150,13 +150,15 @@ ARG NPM_MARKDOWNLINT_CLI_VERSION=0.48.0
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.1.73
+ARG PIP_RUMDL_VERSION=0.1.75
 # renovate: datasource=pypi depName=checkov
 ARG PIP_CHECKOV_VERSION=3.2.521
 # renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.111.0
 # renovate: datasource=npm depName=@ls-lint/ls-lint
 ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.1
+# renovate: datasource=repology depName=alpine_edge/osv-scanner versioning=loose
+ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.5-r2
 # renovate: datasource=npm depName=secretlint
 ARG NPM_SECRETLINT_VERSION=11.7.1
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
@@ -501,12 +503,18 @@ ENV KICS_QUERIES_PATH=/usr/bin/assets/queries KICS_LIBRARIES_PATH=/usr/bin/asset
 #
 # ls-lint installation
 #
+# osv-scanner installation
+RUN apk add --no-cache \
+    --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main \
+    --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
+    osv-scanner=${REPOSITORY_OSV_SCANNER_VERSION} \
+#
 # secretlint installation
 #
 # semgrep installation
 #
 # syft installation
-RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOSITORY_SYFT_VERSION}/install.sh | sh -s -- -b /usr/local/bin
+    && curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOSITORY_SYFT_VERSION}/install.sh | sh -s -- -b /usr/local/bin
 #
 # trufflehog installation
 # Managed with COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/

@@ -47,6 +47,8 @@ jobs:
     permissions:
       actions: write
       packages: write
+      # Require writing security events to upload SARIF file to security tab
+      security-events: write
     strategy:
       fail-fast: false
       max-parallel: 10
@@ -151,3 +153,9 @@ jobs:
       #     timeout: 10m0s
       #   env:
       #       ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # - name: Run OSV-Scanner vulnerability scanner
+      #   uses: google/osv-scanner-action/osv-scanner-action@v2.3.5
+      #   with:
+      #     scan-args: |-
+      #       --docker ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:alpha

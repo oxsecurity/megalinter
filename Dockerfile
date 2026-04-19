@@ -23,6 +23,8 @@ ARG DOCKERFILE_HADOLINT_VERSION=v2.14.0-alpine
 ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.6.1
 # renovate: datasource=github-tags depName=mgechev/revive
 ARG GO_REVIVE_VERSION=v1.15.0
+# renovate: datasource=docker depName=golang versioning=semver
+ARG GO_IMAGE_VERSION=1.26.2
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.7.0-alpine
 # renovate: datasource=docker depName=yoheimuta/protolint
@@ -59,7 +61,7 @@ FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
 FROM mvdan/shfmt:${BASH_SHFMT_VERSION} AS shfmt
 FROM hadolint/hadolint:${DOCKERFILE_HADOLINT_VERSION} AS hadolint
 FROM mstruebing/editorconfig-checker:${EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION} AS editorconfig-checker
-FROM golang:1-alpine AS revive
+FROM golang:${GO_IMAGE_VERSION}-alpine AS revive
 ## The golang image used as a builder is a temporary workaround (https://github.com/mgechev/revive/issues/787)
 ## for the released revive binaries not returning version numbers (devel).
 ## The install command should then be what is commented in the go.megalinter-descriptor.yml
@@ -68,9 +70,9 @@ RUN GOBIN=/usr/bin go install github.com/mgechev/revive@$GO_REVIVE_VERSION
 FROM ghcr.io/yannh/kubeconform:${KUBERNETES_KUBECONFORM_VERSION} AS kubeconform
 FROM ghcr.io/assignuser/chktex-alpine:latest AS chktex
 FROM yoheimuta/protolint:${PROTOBUF_PROTOLINT_VERSION} AS protolint
-FROM golang:alpine AS dustilock
+FROM golang:${GO_IMAGE_VERSION}-alpine AS dustilock
 ARG REPOSITORY_DUSTILOCK_VERSION
-RUN apk add --no-cache git && GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v${REPOSITORY_DUSTILOCK_VERSION}
+RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v${REPOSITORY_DUSTILOCK_VERSION}
 FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
 FROM checkmarx/kics:${REPOSITORY_KICS_VERSION} AS kics
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
@@ -87,7 +89,7 @@ FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 # Build wheel for megalinter python package
 ##################
 FROM ghcr.io/astral-sh/uv:0.11.7 AS uv
-FROM python:3.13-alpine3.23 AS build-ml-core
+FROM python:3.14-alpine3.23 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
 WORKDIR /
@@ -106,7 +108,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 ##################
 # Get base image #
 ##################
-FROM python:3.13-alpine3.23
+FROM python:3.14-alpine3.23
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
 
@@ -121,6 +123,8 @@ ARG TARGETPLATFORM
 ARG POWERSHELL_VERSION=7.6.0
 # renovate: datasource=github-tags depName=sgerrand/alpine-pkg-glibc
 ARG ALPINE_GLIBC_PACKAGE_VERSION=2.34-r0
+# renovate: datasource=repology depName=alpine_edge/go versioning=loose
+ARG GO_ALPINE_VERSION=1.26.2-r0
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
 ARG POWERSHELL_VERSION=7.6.0
 
@@ -227,9 +231,9 @@ ARG NPM_PRANTLF_JSONLINT_VERSION=17.0.1
 # renovate: datasource=npm depName=v8r
 ARG NPM_V8R_VERSION=6.0.0
 # renovate: datasource=npm depName=npm-package-json-lint
-ARG NPM_PACKAGE_JSON_LINT_VERSION=9.1.0
+ARG NPM_PACKAGE_JSON_LINT_VERSION=10.2.1
 # renovate: datasource=npm depName=npm-package-json-lint-config-default
-ARG NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION=8.0.1
+ARG NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION=9.0.1
 # renovate: datasource=npm depName=eslint-plugin-react
 ARG NPM_ESLINT_PLUGIN_REACT_VERSION=7.37.5
 # renovate: datasource=npm depName=eslint-plugin-jsx-a11y
@@ -252,7 +256,7 @@ ARG NPM_MARKDOWNLINT_CLI_VERSION=0.48.0
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.1.73
+ARG PIP_RUMDL_VERSION=0.1.75
 # renovate: datasource=github-tags depName=skaji/cpm
 ARG PERL_PERLCRITIC_VERSION=0.998003
 
@@ -307,6 +311,8 @@ ARG REPOSITORY_DEVSKIM_VERSION=1.0.70
 ARG REPOSITORY_GRYPE_VERSION=0.111.0
 # renovate: datasource=npm depName=@ls-lint/ls-lint
 ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.1
+# renovate: datasource=repology depName=alpine_edge/osv-scanner versioning=loose
+ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.5-r2
 # renovate: datasource=npm depName=secretlint
 ARG NPM_SECRETLINT_VERSION=11.7.1
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
@@ -386,6 +392,7 @@ ARG BASH_SHFMT_VERSION
 ARG DOCKERFILE_HADOLINT_VERSION
 ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION
 ARG GO_REVIVE_VERSION
+ARG GO_IMAGE_VERSION
 ARG KUBERNETES_KUBECONFORM_VERSION
 ARG PROTOBUF_PROTOLINT_VERSION
 ARG REPOSITORY_DUSTILOCK_VERSION
@@ -425,7 +432,6 @@ RUN apk -U --no-cache upgrade \
                 docker \
                 openrc \
                 icu-libs \
-                go \
                 openjdk21 \
                 readline-dev \
                 perl \
@@ -819,6 +825,12 @@ ENV PATH="${PATH}:/root/.dotnet/tools"
 #         "$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
 #         "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME"
 #
+# GO installation
+RUN apk add --no-cache \
+    --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main \
+    --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
+    go=${GO_ALPINE_VERSION}
+#
 # JAVA installation
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
@@ -1155,12 +1167,18 @@ ENV KICS_QUERIES_PATH=/usr/bin/assets/queries KICS_LIBRARIES_PATH=/usr/bin/asset
 #
 # ls-lint installation
 #
+# osv-scanner installation
+RUN apk add --no-cache \
+    --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main \
+    --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
+    osv-scanner=${REPOSITORY_OSV_SCANNER_VERSION} \
+#
 # secretlint installation
 #
 # semgrep installation
 #
 # syft installation
-RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOSITORY_SYFT_VERSION}/install.sh | sh -s -- -b /usr/local/bin \
+    && curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOSITORY_SYFT_VERSION}/install.sh | sh -s -- -b /usr/local/bin \
 #
 # trufflehog installation
 # Managed with COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/

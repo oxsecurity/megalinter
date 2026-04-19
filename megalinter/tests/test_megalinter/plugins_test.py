@@ -139,6 +139,12 @@ class plugins_test(unittest.TestCase):
             }
         )
 
+    def _assert_test_plugin_linted(self, output: str) -> None:
+        self.assertRegex(
+            output,
+            r"Linted \[TEST\] files|\|\s*[^|]*\bTEST\b\s*\|\s*jsonlint\s*\|",
+        )
+
     def test_load_plugin_success(self):
         # Get the current git repository and branch dynamically
         # This allows tests to work correctly on forks and feature branches
@@ -160,7 +166,7 @@ class plugins_test(unittest.TestCase):
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
-        self.assertIn("Linted [TEST] files", output)
+        self._assert_test_plugin_linted(output)
         self.assertIn("[Plugins] Loaded plugin descriptor", output)
         self.assertIn("[Plugins] Successful initialization of TEST", output)
 
@@ -178,7 +184,7 @@ class plugins_test(unittest.TestCase):
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
-        self.assertIn("Linted [TEST] files", output)
+        self._assert_test_plugin_linted(output)
         self.assertIn("[Plugins] Loaded plugin descriptor", output)
         self.assertIn("[Plugins] Successful initialization of TEST", output)
 
