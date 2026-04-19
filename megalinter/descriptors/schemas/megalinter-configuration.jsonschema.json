@@ -12819,6 +12819,16 @@
       "x-order": 200020,
       "x-section": "LINTER_COMMAND"
     },
+    "JSON_V8R_CONFIG_FILE": {
+      "$id": "#/properties/JSON_V8R_CONFIG_FILE",
+      "default": ".v8rrc.yml",
+      "description": "JSON_V8R: User custom config file name if different from default",
+      "title": "JSON_V8R: Custom config file name",
+      "type": "string",
+      "x-category": "JSON_V8R",
+      "x-order": 200010,
+      "x-section": "LINTER_COMMAND"
+    },
     "JSON_V8R_DISABLE_ERRORS": {
       "$id": "#/properties/JSON_V8R_DISABLE_ERRORS",
       "default": false,
@@ -12936,6 +12946,15 @@
       "x-category": "JSON_V8R",
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
+    },
+    "JSON_V8R_RULES_PATH": {
+      "$id": "#/properties/JSON_V8R_RULES_PATH",
+      "description": "JSON_V8R: Path where to find linter configuration file",
+      "title": "JSON_V8R: Custom config file path",
+      "type": "string",
+      "x-category": "JSON_V8R",
+      "x-order": 200040,
+      "x-section": "LINTER_COMMAND"
     },
     "JSON_V8R_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/JSON_V8R_UNSECURED_ENV_VARIABLES",

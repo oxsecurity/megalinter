@@ -15,7 +15,7 @@ description: How to use trivy (configure, ignore files, ignore errors, help & ve
 
 _This linter has been disabled in this version_
 
-_Disabled reason: <https://github.com/aquasecurity/trivy/discussions/10425>_
+_Disabled reason: https://github.com/aquasecurity/trivy/discussions/10425_
 
 **Trivy** is a comprehensive security scanner that detects vulnerabilities, misconfigurations, secrets, and license issues in container images, filesystems, and git repositories. It serves as an all-in-one security solution for modern development workflows.
 
