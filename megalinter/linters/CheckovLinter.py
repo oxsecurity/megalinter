@@ -13,14 +13,15 @@ class CheckovLinter(Linter):
             config.get(self.request_id, "VALIDATE_ALL_CODEBASE") == "false"
             and utils.is_pr()
         ):
-            self.cli_lint_extra_args_after.append("--file")
+            if "--file" not in self.cli_lint_extra_args_after:
+                self.cli_lint_extra_args_after.append("--file")
 
-            for file_to_lint in self.files:
+            for file_to_lint in self.master.all_diff_files:
                 self.cli_lint_extra_args_after.append(file_to_lint)
         else:
-            if self.cli_lint_mode == "file" or self.cli_lint_mode == "list_of_files":
+            if (self.cli_lint_mode == "file" and "--file" not in self.cli_lint_extra_args_after) or self.cli_lint_mode == "list_of_files":
                 self.cli_lint_extra_args_after.append("--file")
-            else:
+            elif self.cli_lint_mode == "project":
                 self.cli_lint_extra_args_after.append("--directory")
                 self.cli_lint_extra_args_after.append(".")
 
