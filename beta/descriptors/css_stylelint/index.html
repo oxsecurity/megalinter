@@ -12547,7 +12547,7 @@
 </ul>
 <h2 id="stylelint-documentation">stylelint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>16.26.1</strong></li>
+<li>Version in MegaLinter: <strong>17.8.0</strong></li>
 <li>Visit <a href="https://stylelint.io" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://stylelint.io/user-guide/configure" target="_blank">How to configure stylelint rules</a><ul>
 <li>If custom <code>.stylelintrc.json</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.stylelintrc.json" target="_blank">.stylelintrc.json</a> will be used</li>
@@ -12863,8 +12863,8 @@
 
         - a "stylelint" property in "package.json"
         - a ".stylelintrc" file
-        - a ".stylelintrc.{cjs,mjs,js,json,yaml,yml}" file
-        - a "stylelint.config.{cjs,mjs,js}" file
+        - a ".stylelintrc.{cjs,mjs,js,ts,json,yaml,yml}" file
+        - a "stylelint.config.{cjs,mjs,js,ts}" file
 
       The search will begin in the working directory and move up the directory
       tree until a configuration file is found.
@@ -12895,8 +12895,8 @@
 
       Automatically fix problems of certain rules. The modes are as follows:
 
-        lax          attempting to fix as much as possible even with syntax errors (default)
-        strict       only fixing when there are no syntax errors
+        strict       only fixing when there are no syntax errors (default)
+        lax          attempting to fix as much as possible even with syntax errors
 
     --compute-edit-info, --cei
 
@@ -12957,7 +12957,6 @@
 
         string       human-readable strings (default)
         compact      similar to ESLint's compact formatter
-        github       workflow commands for GitHub Actions (DEPRECATED)
         json         JSON format
         tap          TAP format
         unix         C compiler-like format
@@ -13044,11 +13043,11 @@
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=npm depName=stylelint
-ARG NPM_STYLELINT_VERSION=16.26.1
+ARG NPM_STYLELINT_VERSION=17.8.0
 # renovate: datasource=npm depName=stylelint-config-standard
-ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=39.0.1
+ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=40.0.0
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
-ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=12.1.0
+ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=13.0.0
 # renovate: datasource=npm depName=stylelint-scss
 ARG NPM_STYLELINT_SCSS_VERSION=7.0.0
 # renovate: datasource=pypi depName=cpplint
@@ -13056,9 +13055,9 @@ ARG PIP_CPPLINT_VERSION=2.0.2
 </code></pre>
 <ul>
 <li>NPM packages (node.js):<ul>
-<li><a href="https://www.npmjs.com/package/stylelint/v/16.26.1">stylelint@16.26.1</a></li>
-<li><a href="https://www.npmjs.com/package/stylelint-config-standard/v/39.0.1">stylelint-config-standard@39.0.1</a></li>
-<li><a href="https://www.npmjs.com/package/stylelint-config-sass-guidelines/v/12.1.0">stylelint-config-sass-guidelines@12.1.0</a></li>
+<li><a href="https://www.npmjs.com/package/stylelint/v/17.8.0">stylelint@17.8.0</a></li>
+<li><a href="https://www.npmjs.com/package/stylelint-config-standard/v/40.0.0">stylelint-config-standard@40.0.0</a></li>
+<li><a href="https://www.npmjs.com/package/stylelint-config-sass-guidelines/v/13.0.0">stylelint-config-sass-guidelines@13.0.0</a></li>
 <li><a href="https://www.npmjs.com/package/stylelint-scss/v/7.0.0">stylelint-scss@7.0.0</a></li>
 </ul>
 </li>
