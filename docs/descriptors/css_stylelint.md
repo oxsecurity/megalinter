@@ -28,7 +28,7 @@ description: How to use stylelint (configure, ignore files, ignore errors, help 
 
 ## stylelint documentation
 
-- Version in MegaLinter: **16.26.1**
+- Version in MegaLinter: **17.8.0**
 - Visit [Official Web Site](https://stylelint.io){target=_blank}
 - See [How to configure stylelint rules](https://stylelint.io/user-guide/configure){target=_blank}
   - If custom `.stylelintrc.json` config file isn't found, [.stylelintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.stylelintrc.json){target=_blank} will be used
@@ -149,8 +149,8 @@ stylelint --fix --config .stylelintrc.json myfile.css myfile2.css myfile3.css
 
         - a "stylelint" property in "package.json"
         - a ".stylelintrc" file
-        - a ".stylelintrc.{cjs,mjs,js,json,yaml,yml}" file
-        - a "stylelint.config.{cjs,mjs,js}" file
+        - a ".stylelintrc.{cjs,mjs,js,ts,json,yaml,yml}" file
+        - a "stylelint.config.{cjs,mjs,js,ts}" file
 
       The search will begin in the working directory and move up the directory
       tree until a configuration file is found.
@@ -181,8 +181,8 @@ stylelint --fix --config .stylelintrc.json myfile.css myfile2.css myfile3.css
 
       Automatically fix problems of certain rules. The modes are as follows:
 
-        lax          attempting to fix as much as possible even with syntax errors (default)
-        strict       only fixing when there are no syntax errors
+        strict       only fixing when there are no syntax errors (default)
+        lax          attempting to fix as much as possible even with syntax errors
 
     --compute-edit-info, --cei
 
@@ -243,7 +243,6 @@ stylelint --fix --config .stylelintrc.json myfile.css myfile2.css myfile3.css
 
         string       human-readable strings (default)
         compact      similar to ESLint's compact formatter
-        github       workflow commands for GitHub Actions (DEPRECATED)
         json         JSON format
         tap          TAP format
         unix         C compiler-like format
@@ -331,11 +330,11 @@ stylelint --fix --config .stylelintrc.json myfile.css myfile2.css myfile3.css
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=stylelint
-ARG NPM_STYLELINT_VERSION=16.26.1
+ARG NPM_STYLELINT_VERSION=17.8.0
 # renovate: datasource=npm depName=stylelint-config-standard
-ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=39.0.1
+ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=40.0.0
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
-ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=12.1.0
+ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=13.0.0
 # renovate: datasource=npm depName=stylelint-scss
 ARG NPM_STYLELINT_SCSS_VERSION=7.0.0
 # renovate: datasource=pypi depName=cpplint
@@ -343,9 +342,9 @@ ARG PIP_CPPLINT_VERSION=2.0.2
 ```
 
 - NPM packages (node.js):
-  - [stylelint@16.26.1](https://www.npmjs.com/package/stylelint/v/16.26.1)
-  - [stylelint-config-standard@39.0.1](https://www.npmjs.com/package/stylelint-config-standard/v/39.0.1)
-  - [stylelint-config-sass-guidelines@12.1.0](https://www.npmjs.com/package/stylelint-config-sass-guidelines/v/12.1.0)
+  - [stylelint@17.8.0](https://www.npmjs.com/package/stylelint/v/17.8.0)
+  - [stylelint-config-standard@40.0.0](https://www.npmjs.com/package/stylelint-config-standard/v/40.0.0)
+  - [stylelint-config-sass-guidelines@13.0.0](https://www.npmjs.com/package/stylelint-config-sass-guidelines/v/13.0.0)
   - [stylelint-scss@7.0.0](https://www.npmjs.com/package/stylelint-scss/v/7.0.0)
 - PIP packages (Python):
   - [cpplint==2.0.2](https://pypi.org/project/cpplint/2.0.2)
