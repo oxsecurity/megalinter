@@ -4,6 +4,7 @@
         "**/.cspell.json",
         "**/.gitignore",
         "**/.trivyignore",
+        "**/.claude/**",
         "**/.git/**",
         "**/all_users.md",
         "**/alpaca.py",
