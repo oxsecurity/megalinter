@@ -197,3 +197,4 @@ dmypy.json
 
 # LSP config files
 pyrightconfig.json
+.claude/settings.local.json
