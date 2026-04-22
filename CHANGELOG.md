@@ -162,6 +162,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rumdl](https://github.com/rvben/rumdl) from 0.1.73 to **0.1.75** on 2026-04-19
   - [terragrunt](https://terragrunt.gruntwork.io) from 1.0.0 to **1.0.1** on 2026-04-19
   - [stylelint](https://stylelint.io) from 16.26.1 to **17.8.0** on 2026-04-20
+  - [shellcheck](https://github.com/koalaman/shellcheck) from 0.11.0 to **0.9.0** on 2026-04-22
 <!-- linter-versions-end -->
 
 ## [v9.4.0] - 2026-02-28
