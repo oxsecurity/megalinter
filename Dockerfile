@@ -296,7 +296,7 @@ ARG PIP_MYPY_VERSION=1.19.1
 # renovate: datasource=pypi depName=nbqa
 ARG PIP_NBQA_VERSION=1.9.1
 # renovate: datasource=npm depName=pyright
-ARG NPM_PYRIGHT_VERSION=1.1.408
+ARG NPM_PYRIGHT_VERSION=1.1.409
 # renovate: datasource=pypi depName=ruff
 ARG PIP_RUFF_VERSION=0.15.11
 # renovate: datasource=github-tags depName=nxadm/rakudo-pkg
