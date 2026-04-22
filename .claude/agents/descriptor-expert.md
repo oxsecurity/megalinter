@@ -41,6 +41,7 @@ Fill in as many as applicable when creating or reviewing a descriptor:
 **For each linter entry, fill in ALL applicable fields.** Even though the JSON schema only requires `linter_name`, `linter_url`, and `examples`, aim for maximum completeness:
 
 ### Identity (always fill)
+
 | Property      | Required | Description                                                                                    |
 |---------------|----------|------------------------------------------------------------------------------------------------|
 | `linter_name` | **Yes**  | CLI executable name, lowercase (e.g., `pylint`)                                                |
@@ -51,6 +52,7 @@ Fill in as many as applicable when creating or reviewing a descriptor:
 | `linter_repo` |          | GitHub/source repository URL                                                                   |
 
 ### Documentation (always fill for good docs)
+
 | Property                          | Description                                            |
 |-----------------------------------|--------------------------------------------------------|
 | `linter_rules_url`                | URL listing all rules/checks                           |
@@ -62,6 +64,7 @@ Fill in as many as applicable when creating or reviewing a descriptor:
 | `linter_speed`                    | Performance rating: 1 (very slow) to 5 (very fast)     |
 
 ### Images (fill when available)
+
 | Property                  | Description                      |
 |---------------------------|----------------------------------|
 | `linter_image_url`        | Logo/image for docs              |
@@ -69,6 +72,7 @@ Fill in as many as applicable when creating or reviewing a descriptor:
 | `linter_banner_image_url` | Banner image for doc page header |
 
 ### CLI Configuration (always fill)
+
 | Property                    | Description                                           |
 |-----------------------------|-------------------------------------------------------|
 | `cli_lint_mode`             | **Always set**: `file`, `list_of_files`, or `project` |
@@ -92,6 +96,7 @@ Fill in as many as applicable when creating or reviewing a descriptor:
 | `cli_help_extra_commands`   | Extra commands for help                               |
 
 ### Error Parsing (fill for accurate error counts)
+
 | Property                  | Description                                                           |
 |---------------------------|-----------------------------------------------------------------------|
 | `cli_lint_errors_count`   | `regex_count`, `regex_number`, `regex_sum`, `total_lines`, or `sarif` |
@@ -100,6 +105,7 @@ Fill in as many as applicable when creating or reviewing a descriptor:
 | `cli_lint_warnings_regex` | Regex to extract warning count                                        |
 
 ### SARIF Support (fill if linter supports it)
+
 | Property                    | Description                                                     |
 |-----------------------------|-----------------------------------------------------------------|
 | `can_output_sarif`          | `true` if linter can output SARIF                               |
@@ -107,6 +113,7 @@ Fill in as many as applicable when creating or reviewing a descriptor:
 | `sarif_default_output_file` | Default SARIF output path                                       |
 
 ### Behavior Flags
+
 | Property                 | Description                                           |
 |--------------------------|-------------------------------------------------------|
 | `is_formatter`           | `true` if it's a formatter (errors count as warnings) |
@@ -120,6 +127,7 @@ Fill in as many as applicable when creating or reviewing a descriptor:
 | `downgraded_reason`      | Why it was downgraded                                 |
 
 ### File Filtering (override descriptor defaults)
+
 | Property                       | Description                              |
 |--------------------------------|------------------------------------------|
 | `file_extensions`              | Override descriptor's file extensions    |
@@ -132,6 +140,7 @@ Fill in as many as applicable when creating or reviewing a descriptor:
 | `activation_rules`             | Rules based on env var values            |
 
 ### Flavors
+
 | Property                        | Description                                   |
 |---------------------------------|-----------------------------------------------|
 | `descriptor_flavors`            | Override descriptor-level flavor assignment   |
@@ -139,6 +148,7 @@ Fill in as many as applicable when creating or reviewing a descriptor:
 | `ignore_for_flavor_suggestions` | `true` to exclude from flavor recommendations |
 
 ### Testing
+
 | Property                          | Description                                                                 |
 |-----------------------------------|-----------------------------------------------------------------------------|
 | `test_folder`                     | Override descriptor's test folder                                           |
@@ -147,6 +157,7 @@ Fill in as many as applicable when creating or reviewing a descriptor:
 | `test_format_fix_regex_exclude`   | Exclude regex for format/fix tests                                          |
 
 ### Advanced
+
 | Property                      | Description                                                     |
 |-------------------------------|-----------------------------------------------------------------|
 | `variables`                   | Custom extra variables with name, default_value, description    |
@@ -164,6 +175,7 @@ Fill in as many as applicable when creating or reviewing a descriptor:
 | `supported_platforms`         | Platform support with optional `install_override` per platform  |
 
 ### IDE Integration (always fill)
+
 | Property | Description                                                                                                                                            |
 |----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `ide`    | Object with IDE-specific extensions. Keys: `vscode`, `idea`, `eclipse`, `sublime`, `emacs`, `atom`, `visual_studio`. Each is an array of `{name, url}` |
