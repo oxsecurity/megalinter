@@ -24,6 +24,8 @@ ARG DOCKERFILE_HADOLINT_VERSION=v2.14.0-alpine
 ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.6.1
 # renovate: datasource=github-tags depName=mgechev/revive
 ARG GO_REVIVE_VERSION=v1.15.0
+# renovate: datasource=docker depName=golang versioning=semver
+ARG GO_IMAGE_VERSION=1.26.2
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.7.0-alpine
 # renovate: datasource=docker depName=yoheimuta/protolint
@@ -50,7 +52,7 @@ FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
 FROM mvdan/shfmt:${BASH_SHFMT_VERSION} AS shfmt
 FROM hadolint/hadolint:${DOCKERFILE_HADOLINT_VERSION} AS hadolint
 FROM mstruebing/editorconfig-checker:${EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION} AS editorconfig-checker
-FROM golang:1-alpine AS revive
+FROM golang:${GO_IMAGE_VERSION}-alpine AS revive
 ## The golang image used as a builder is a temporary workaround (https://github.com/mgechev/revive/issues/787)
 ## for the released revive binaries not returning version numbers (devel).
 ## The install command should then be what is commented in the go.megalinter-descriptor.yml
@@ -68,7 +70,7 @@ FROM lycheeverse/lychee:${SPELL_LYCHEE_VERSION} AS lychee
 # Build wheel for megalinter python package
 ##################
 FROM ghcr.io/astral-sh/uv:0.11.7 AS uv
-FROM python:3.13-alpine3.23 AS build-ml-core
+FROM python:3.14-alpine3.23 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
 WORKDIR /
@@ -87,7 +89,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 ##################
 # Get base image #
 ##################
-FROM python:3.13-alpine3.23
+FROM python:3.14-alpine3.23
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
 
@@ -97,6 +99,8 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 #ARG__START
 # renovate: datasource=crate depName=sarif-fmt
 ARG CARGO_SARIF_FMT_VERSION=0.8.0
+# renovate: datasource=repology depName=alpine_edge/go versioning=loose
+ARG GO_ALPINE_VERSION=1.26.2-r0
 # renovate: datasource=pypi depName=ansible-lint
 ARG PIP_ANSIBLE_LINT_VERSION=26.4.0
 # renovate: datasource=crate depName=shellcheck-sarif
@@ -104,11 +108,11 @@ ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
 # renovate: datasource=npm depName=jscpd
 ARG NPM_JSCPD_VERSION=4.0.9
 # renovate: datasource=npm depName=stylelint
-ARG NPM_STYLELINT_VERSION=16.26.1
+ARG NPM_STYLELINT_VERSION=17.8.0
 # renovate: datasource=npm depName=stylelint-config-standard
-ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=39.0.1
+ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=40.0.0
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
-ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=12.1.0
+ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=13.0.0
 # renovate: datasource=npm depName=stylelint-scss
 ARG NPM_STYLELINT_SCSS_VERSION=7.0.0
 # renovate: datasource=pypi depName=cpplint
@@ -140,19 +144,21 @@ ARG KTLINT_VERSION=1.8.0
 ARG DETEKT_VERSION=1.23.8
 
 # renovate: datasource=github-tags depName=kubescape/kubescape
-ARG KUBERNETES_KUBESCAPE_VERSION=4.0.3
+ARG KUBERNETES_KUBESCAPE_VERSION=4.0.5
 # renovate: datasource=npm depName=markdownlint-cli
 ARG NPM_MARKDOWNLINT_CLI_VERSION=0.48.0
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.1.73
+ARG PIP_RUMDL_VERSION=0.1.78
 # renovate: datasource=pypi depName=checkov
 ARG PIP_CHECKOV_VERSION=3.2.521
 # renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.111.0
 # renovate: datasource=npm depName=@ls-lint/ls-lint
 ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.1
+# renovate: datasource=repology depName=alpine_edge/osv-scanner versioning=loose
+ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.5-r2
 # renovate: datasource=npm depName=secretlint
 ARG NPM_SECRETLINT_VERSION=11.7.1
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
@@ -184,7 +190,7 @@ ARG PIP_PIP_VERSION=26.0.1
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=21.2.4
 # renovate: datasource=github-tags depName=rust-lang/rust
-ARG RUST_RUST_VERSION=1.94.1
+ARG RUST_RUST_VERSION=1.95.0
 
 ARG ACTION_ACTIONLINT_VERSION
 ARG BASH_SHELLCHECK_VERSION
@@ -192,6 +198,7 @@ ARG BASH_SHFMT_VERSION
 ARG DOCKERFILE_HADOLINT_VERSION
 ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION
 ARG GO_REVIVE_VERSION
+ARG GO_IMAGE_VERSION
 ARG KUBERNETES_KUBECONFORM_VERSION
 ARG PROTOBUF_PROTOLINT_VERSION
 ARG REPOSITORY_GITLEAKS_VERSION
@@ -223,7 +230,6 @@ RUN apk -U --no-cache upgrade \
                 make \
                 musl-dev \
                 openssh \
-                go \
                 openjdk21 \
                 py3-pyflakes \
                 openjdk17 \
@@ -396,6 +402,12 @@ COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
 ## @generated by .automation/build.py using descriptor files, please do not update manually ##
 #############################################################################################
 #OTHER__START
+# GO installation
+RUN apk add --no-cache \
+    --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main \
+    --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
+    go=${GO_ALPINE_VERSION}
+#
 # KOTLIN installation
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
@@ -492,6 +504,12 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
     && curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin \
 #
 # ls-lint installation
+#
+# osv-scanner installation
+    && apk add --no-cache \
+    --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main \
+    --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
+    osv-scanner=${REPOSITORY_OSV_SCANNER_VERSION} \
 #
 # secretlint installation
 #

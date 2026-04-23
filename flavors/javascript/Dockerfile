@@ -60,7 +60,7 @@ FROM lycheeverse/lychee:${SPELL_LYCHEE_VERSION} AS lychee
 # Build wheel for megalinter python package
 ##################
 FROM ghcr.io/astral-sh/uv:0.11.7 AS uv
-FROM python:3.13-alpine3.23 AS build-ml-core
+FROM python:3.14-alpine3.23 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
 WORKDIR /
@@ -79,7 +79,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 ##################
 # Get base image #
 ##################
-FROM python:3.13-alpine3.23
+FROM python:3.14-alpine3.23
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
 
@@ -90,7 +90,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 # renovate: datasource=crate depName=sarif-fmt
 ARG CARGO_SARIF_FMT_VERSION=0.8.0
 # renovate: datasource=npm depName=typescript
-ARG NPM_TYPESCRIPT_VERSION=5.9.3
+ARG NPM_TYPESCRIPT_VERSION=6.0.2
 # renovate: datasource=pypi depName=ansible-lint
 ARG PIP_ANSIBLE_LINT_VERSION=26.4.0
 # renovate: datasource=crate depName=shellcheck-sarif
@@ -100,11 +100,11 @@ ARG NPM_COFFEELINT_CLI_VERSION=5.2.11
 # renovate: datasource=npm depName=jscpd
 ARG NPM_JSCPD_VERSION=4.0.9
 # renovate: datasource=npm depName=stylelint
-ARG NPM_STYLELINT_VERSION=16.26.1
+ARG NPM_STYLELINT_VERSION=17.8.0
 # renovate: datasource=npm depName=stylelint-config-standard
-ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=39.0.1
+ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=40.0.0
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
-ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=12.1.0
+ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=13.0.0
 # renovate: datasource=npm depName=stylelint-scss
 ARG NPM_STYLELINT_SCSS_VERSION=7.0.0
 # renovate: datasource=pypi depName=cpplint
@@ -156,9 +156,9 @@ ARG NPM_PRANTLF_JSONLINT_VERSION=17.0.1
 # renovate: datasource=npm depName=v8r
 ARG NPM_V8R_VERSION=6.0.0
 # renovate: datasource=npm depName=npm-package-json-lint
-ARG NPM_PACKAGE_JSON_LINT_VERSION=9.1.0
+ARG NPM_PACKAGE_JSON_LINT_VERSION=10.2.1
 # renovate: datasource=npm depName=npm-package-json-lint-config-default
-ARG NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION=8.0.1
+ARG NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION=9.0.1
 # renovate: datasource=npm depName=eslint-plugin-react
 ARG NPM_ESLINT_PLUGIN_REACT_VERSION=7.37.5
 # renovate: datasource=npm depName=eslint-plugin-jsx-a11y
@@ -170,19 +170,21 @@ ARG KTLINT_VERSION=1.8.0
 ARG DETEKT_VERSION=1.23.8
 
 # renovate: datasource=github-tags depName=kubescape/kubescape
-ARG KUBERNETES_KUBESCAPE_VERSION=4.0.3
+ARG KUBERNETES_KUBESCAPE_VERSION=4.0.5
 # renovate: datasource=npm depName=markdownlint-cli
 ARG NPM_MARKDOWNLINT_CLI_VERSION=0.48.0
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.1.73
+ARG PIP_RUMDL_VERSION=0.1.78
 # renovate: datasource=pypi depName=checkov
 ARG PIP_CHECKOV_VERSION=3.2.521
 # renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.111.0
 # renovate: datasource=npm depName=@ls-lint/ls-lint
 ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.1
+# renovate: datasource=repology depName=alpine_edge/osv-scanner versioning=loose
+ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.5-r2
 # renovate: datasource=npm depName=secretlint
 ARG NPM_SECRETLINT_VERSION=11.7.1
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
@@ -222,7 +224,7 @@ ARG PIP_PIP_VERSION=26.0.1
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=21.2.4
 # renovate: datasource=github-tags depName=rust-lang/rust
-ARG RUST_RUST_VERSION=1.94.1
+ARG RUST_RUST_VERSION=1.95.0
 
 ARG ACTION_ACTIONLINT_VERSION
 ARG BASH_SHELLCHECK_VERSION
@@ -557,6 +559,12 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
     && curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin \
 #
 # ls-lint installation
+#
+# osv-scanner installation
+    && apk add --no-cache \
+    --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main \
+    --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
+    osv-scanner=${REPOSITORY_OSV_SCANNER_VERSION} \
 #
 # secretlint installation
 #

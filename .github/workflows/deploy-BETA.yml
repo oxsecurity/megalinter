@@ -71,6 +71,8 @@ jobs:
     permissions:
       actions: write
       packages: write
+      # Require writing security events to upload SARIF file to security tab
+      security-events: write
     # Only run this on the main repo
     if: github.repository == 'oxsecurity/megalinter' && !contains(github.event.head_commit.message, 'skip deploy') && !contains(github.event.head_commit.message, 'Release MegaLinter v')
     environment:
@@ -254,6 +256,12 @@ jobs:
       #     timeout: 15m0s
       #   env:
       #       ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # - name: Run OSV-Scanner vulnerability scanner
+      #   uses: google/osv-scanner-action/osv-scanner-action@v2.3.5
+      #   with:
+      #     scan-args: |-
+      #       --docker ${{ steps.meta.outputs.tags }}
 
   build-custom-flavor-builder:
     strategy:

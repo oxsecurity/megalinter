@@ -39,7 +39,7 @@ FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
 # Build wheel for megalinter python package
 ##################
 FROM ghcr.io/astral-sh/uv:0.11.7 AS uv
-FROM python:3.13-alpine3.23 AS build-ml-core
+FROM python:3.14-alpine3.23 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
 WORKDIR /
@@ -58,7 +58,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 ##################
 # Get base image #
 ##################
-FROM python:3.13-alpine3.23
+FROM python:3.14-alpine3.23
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
 
@@ -86,6 +86,8 @@ ARG NPM_PRETTIER_VERSION=3.8.3
 ARG REPOSITORY_GRYPE_VERSION=0.111.0
 # renovate: datasource=npm depName=@ls-lint/ls-lint
 ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.1
+# renovate: datasource=repology depName=alpine_edge/osv-scanner versioning=loose
+ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.5-r2
 # renovate: datasource=npm depName=secretlint
 ARG NPM_SECRETLINT_VERSION=11.7.1
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
@@ -101,7 +103,7 @@ ARG PIP_PIP_VERSION=26.0.1
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=21.2.4
 # renovate: datasource=github-tags depName=rust-lang/rust
-ARG RUST_RUST_VERSION=1.94.1
+ARG RUST_RUST_VERSION=1.95.0
 
 ARG BASH_SHELLCHECK_VERSION
 ARG BASH_SHFMT_VERSION
@@ -276,6 +278,12 @@ ENV JAVA_HOME_17=/usr/lib/jvm/java-17-openjdk
 RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin \
 #
 # ls-lint installation
+#
+# osv-scanner installation
+    && apk add --no-cache \
+    --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main \
+    --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
+    osv-scanner=${REPOSITORY_OSV_SCANNER_VERSION} \
 #
 # secretlint installation
 #

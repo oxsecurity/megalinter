@@ -25,7 +25,7 @@
 # Build wheel for megalinter python package
 ##################
 FROM ghcr.io/astral-sh/uv:0.11.7 AS uv
-FROM python:3.13-alpine3.23 AS build-ml-core
+FROM python:3.14-alpine3.23 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
 WORKDIR /
@@ -44,7 +44,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 ##################
 # Get base image #
 ##################
-FROM python:3.13-alpine3.23
+FROM python:3.14-alpine3.23
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
 
@@ -53,11 +53,11 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 #############################################################################################
 #ARG__START
 # renovate: datasource=npm depName=stylelint
-ARG NPM_STYLELINT_VERSION=16.26.1
+ARG NPM_STYLELINT_VERSION=17.8.0
 # renovate: datasource=npm depName=stylelint-config-standard
-ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=39.0.1
+ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=40.0.0
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
-ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=12.1.0
+ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=13.0.0
 # renovate: datasource=npm depName=stylelint-scss
 ARG NPM_STYLELINT_SCSS_VERSION=7.0.0
 # renovate: datasource=pypi depName=cpplint

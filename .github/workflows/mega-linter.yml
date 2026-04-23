@@ -190,7 +190,7 @@ jobs:
         if: env.APPLY_FIXES_IF_COMMIT == 'true'
         run: sudo chown -Rc $UID .git/
 
-      - name: Skip markdown-only fix commit for bot branches
+      - name: Skip markdown/json-only fix commit for bot branches
         if: env.APPLY_FIXES_IF_COMMIT == 'true'
         shell: bash
         run: |
@@ -215,7 +215,7 @@ jobs:
             exit 0
           fi
 
-          if echo "$changed_files" | grep -viE '\.md$' > /dev/null; then
+          if echo "$changed_files" | grep -viE '\.(md|json)$' > /dev/null; then
             exit 0
           fi
 

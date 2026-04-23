@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Glob",
+      "Grep",
+      "Bash(make *)",
+      "Bash(ls *)",
+      "Bash(git *)",
+      "Bash(python *)",
+      "Bash(uv *)",
+      "Bash(hatch *)",
+      "Bash(npx mega-linter-runner *)",
+      "Bash(docker buildx build *)",
+      "Bash(docker run *)"
+    ]
+  }
+}

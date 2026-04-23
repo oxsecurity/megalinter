@@ -9,8 +9,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Core
+  - Security: add [more default hidden environment variables](https://megalinter.io/beta/config-variables-security/), so in case one of the 100+ linters is hacked, the attacker won't get your secrets anyway
+  - Upgrade GO version to 1.26.2
 
 - New linters
+  - osv-scanner (trivy-like security linter, by Google)
 
 - Disabled linters
   - Disable trivy until their security issue is solved
@@ -36,6 +39,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Disable trivy-action until their security issue is solved
   - Run ARM linter jobs only if the latest commit message contains "ARM" (to avoid 200 jobs for each PR)
   - Prevent MegaLinter to push a new commit if the only updates are on markdown files
+  - Activate osv-scanner on own sources
+  - Exclude test dependencies from dependabot
 
 - mega-linter-runner
 
@@ -123,6 +128,40 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sqlfluff](https://www.sqlfluff.com/) from 4.0.4 to **4.1.0** on 2026-04-08
   - [grype](https://github.com/anchore/grype) from 0.110.0 to **0.111.0** on 2026-04-13
   - [syft](https://github.com/anchore/syft) from 1.42.3 to **1.42.4** on 2026-04-13
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.7.11 to **1.7.12** on 2026-04-18
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 26.3.0 to **26.4.0** on 2026-04-18
+  - [shfmt](https://github.com/mvdan/sh) from 3.13.0 to **3.13.1** on 2026-04-18
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.41.2 to **0.42.1** on 2026-04-18
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2026.01.19 to **2026.04.15** on 2026-04-18
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.47.1 to **1.48.1** on 2026-04-18
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 4.0.8 to **4.0.9** on 2026-04-18
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 10.0.105 to **10.0.106** on 2026-04-18
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 17.0.0 to **17.0.4** on 2026-04-18
+  - [prettier](https://prettier.io/) from 3.8.1 to **3.8.3** on 2026-04-18
+  - [rumdl](https://github.com/rvben/rumdl) from 0.1.62 to **0.1.73** on 2026-04-18
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.94.2 to **3.95.1** on 2026-04-18
+  - [phpstan](https://phpstan.org/) from 2.1.44 to **2.1.50** on 2026-04-18
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.8 to **0.15.11** on 2026-04-18
+  - [ruff](https://github.com/astral-sh/ruff) from 0.15.8 to **0.15.11** on 2026-04-18
+  - [checkov](https://www.checkov.io/) from 3.2.513 to **3.2.521** on 2026-04-18
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.90.0 to **1.95.0** on 2026-04-18
+  - [secretlint](https://github.com/secretlint/secretlint) from 11.4.0 to **11.7.1** on 2026-04-18
+  - [semgrep](https://semgrep.dev/) from 1.156.0 to **1.159.0** on 2026-04-18
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.94.1 to **3.94.3** on 2026-04-18
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 8.2.4 to **8.2.7** on 2026-04-18
+  - [rubocop](https://rubocop.org/) from 1.86.0 to **1.86.1** on 2026-04-18
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.94 to **0.1.95** on 2026-04-18
+  - [snakemake](https://snakemake.github.io/) from 9.18.2 to **9.19.0** on 2026-04-18
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.7.0 to **10.0.0** on 2026-04-18
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.14.7 to **1.14.8** on 2026-04-18
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.99.4 to **1.0.0** on 2026-04-18
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.48.1 to **3.14** on 2026-04-18
+  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.11.4 to **3.11.5** on 2026-04-18
+  - [npm-package-json-lint](https://npmpackagejsonlint.org/) from 9.1.0 to **10.2.1** on 2026-04-18
+  - [kubescape](https://github.com/kubescape/kubescape) from 4.0.3 to **4.0.5** on 2026-04-18
+  - [rumdl](https://github.com/rvben/rumdl) from 0.1.73 to **0.1.75** on 2026-04-19
+  - [terragrunt](https://terragrunt.gruntwork.io) from 1.0.0 to **1.0.1** on 2026-04-19
+  - [stylelint](https://stylelint.io) from 16.26.1 to **17.8.0** on 2026-04-20
 <!-- linter-versions-end -->
 
 ## [v9.4.0] - 2026-02-28

@@ -23,7 +23,7 @@ description: How to use rumdl (configure, ignore files, ignore errors, help & ve
 
 ## rumdl documentation
 
-- Version in MegaLinter: **0.1.62**
+- Version in MegaLinter: **0.1.75**
 - Visit [Official Web Site](https://github.com/rvben/rumdl#readme){target=_blank}
 - See [How to configure rumdl rules](https://github.com/rvben/rumdl/blob/main/docs/global-settings.md){target=_blank}
 - See [How to disable rumdl rules in files](https://github.com/rvben/rumdl/blob/main/docs/inline-configuration.md){target=_blank}
@@ -71,9 +71,9 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                             | Description                                              | Embedded linters |                                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)               | Default MegaLinter Flavor                                |       134        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)               | Default MegaLinter Flavor                                |       135        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico" alt="" height="32px" class="megalinter-icon"></a>        | [c_cpp](https://megalinter.io/beta/flavors/c_cpp/)                 | Optimized for pure C/C++ projects                        |        56        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)             | MegaLinter for the most commonly used languages          |        89        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)             | MegaLinter for the most commonly used languages          |        90        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.io/beta/flavors/documentation/) | MegaLinter for documentation projects                    |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects            |        64        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS |        73        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
@@ -125,7 +125,7 @@ Usage: rumdl [OPTIONS] <COMMAND>
 
 Commands:
   check        Lint Markdown files and print warnings/errors
-  fmt          Format Markdown files (alias for check --fix)
+  fmt          Format Markdown files and apply fixes with formatter-style exit codes
   init         Initialize a new configuration file
   rule         Show information about a rule or list all rules
   explain      Explain a rule with detailed information and examples
@@ -141,9 +141,8 @@ Commands:
 
 Options:
       --color <COLOR>    Control colored output [default: auto] [possible values: auto, always, never]
-      --config <CONFIG>  Path to configuration file
-      --no-config        Ignore all configuration files and use built-in defaults
-      --isolated         Ignore all configuration files (alias for --no-config)
+  -c, --config <CONFIG>  Path to configuration file
+      --no-config        Ignore all configuration files and use built-in defaults (--isolated is also accepted)
   -h, --help             Print help
   -V, --version          Print version
 ```
@@ -153,8 +152,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.1.62
+ARG PIP_RUMDL_VERSION=0.1.75
 ```
 
 - PIP packages (Python):
-  - [rumdl==0.1.62](https://pypi.org/project/rumdl/0.1.62)
+  - [rumdl==0.1.75](https://pypi.org/project/rumdl/0.1.75)

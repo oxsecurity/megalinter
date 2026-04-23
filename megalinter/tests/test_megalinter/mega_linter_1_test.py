@@ -120,9 +120,12 @@ class mega_linter_1_test(unittest.TestCase):
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
-        self.assertIn("Linted [JAVASCRIPT] files", output)
-        self.assertIn("Using [eslint", output)
-        self.assertIn("Using [standard", output)
+        self.assertRegex(
+            output,
+            r"Linted \[JAVASCRIPT\] files|\|\s*[^|]*\bJAVASCRIPT\b\s*\|",
+        )
+        self.assertRegex(output, r"\|\s*JAVASCRIPT\s*\|\s*eslint\s*\|")
+        self.assertRegex(output, r"\|\s*JAVASCRIPT\s*\|\s*standard\s*\|")
         utilstest.assert_is_skipped("GROOVY", output, self)
 
     def test_enable_only_one_language_legacy(self):
@@ -133,9 +136,12 @@ class mega_linter_1_test(unittest.TestCase):
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
-        self.assertIn("Linted [JAVASCRIPT] files", output)
-        self.assertIn("Using [eslint", output)
-        self.assertIn("Using [standard", output)
+        self.assertRegex(
+            output,
+            r"Linted \[JAVASCRIPT\] files|\|\s*[^|]*\bJAVASCRIPT\b\s*\|",
+        )
+        self.assertRegex(output, r"\|\s*JAVASCRIPT\s*\|\s*eslint\s*\|")
+        self.assertRegex(output, r"\|\s*JAVASCRIPT\s*\|\s*standard\s*\|")
         utilstest.assert_is_skipped("GROOVY", output, self)
 
     def test_validate_all_code_base_false(self):
