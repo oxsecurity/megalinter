@@ -17,6 +17,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Disabled linters
   - Disable trivy until their security issue is solved
+  - Disable KICS until their security issue is solved
   - Disable spectral which is crashing
 
 - Deprecated linters
@@ -34,6 +35,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Flavors
 
 - Doc
+  - Migrate copilot-instructions into Claude Code Agents & Skills
 
 - CI
   - Disable trivy-action until their security issue is solved

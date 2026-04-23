@@ -449,6 +449,8 @@ linters:
 
   # KICS
   - linter_name: kics
+    disabled: true
+    disabled_reason: Supply chain compromise - https://socket.dev/blog/checkmarx-supply-chain-compromise
     linter_text: |
       **KICS** (Keeping Infrastructure as Code Secure) is a comprehensive open-source security scanner that identifies security vulnerabilities, compliance issues, and infrastructure misconfigurations in Infrastructure as Code files. It serves as a critical tool for preventing security risks before deployment to production environments.
 
