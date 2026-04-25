@@ -36,6 +36,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Doc
   - Migrate copilot-instructions into Claude Code Agents & Skills
+  - Add documentation for [megalinter-ado](https://github.com/DownAtTheBottomOfTheMoleHole/megalinter-ado) Azure DevOps extension
+  - Add documentation for [megalinter-mcp-server](https://github.com/DownAtTheBottomOfTheMoleHole/megalinter-mcp) MCP server
 
 - CI
   - Disable trivy-action until their security issue is solved
