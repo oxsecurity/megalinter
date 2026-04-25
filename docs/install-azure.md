@@ -8,28 +8,7 @@ description: Manual instructions to setup MegaLinter as an Azure Pipelines job
 
 # Azure Pipelines
 
-## Azure DevOps Extension
-
-The community-maintained [MegaLinter Azure DevOps Extension](https://marketplace.visualstudio.com/items?itemName=DownAtTheBottomOfTheMoleHole.megalinter-ado) provides a native Azure DevOps task for running MegaLinter, with built-in support for PR comments, auto-fix PRs, and visual pipeline configuration.
-
-Install from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=DownAtTheBottomOfTheMoleHole.megalinter-ado), then add the task to your pipeline:
-
-```yaml
-- task: MegaLinter@1
-  displayName: Run MegaLinter
-  inputs:
-    flavor: all
-    fix: true
-    createFixPR: true
-  env:
-    SYSTEM_ACCESSTOKEN: $(System.AccessToken)
-```
-
-See the [extension documentation](https://github.com/DownAtTheBottomOfTheMoleHole/megalinter-ado) for the full list of task inputs and configuration options.
-
-## Manual Configuration
-
-Alternatively, use the following Azure Pipelines [YAML template](https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema)
+Use the following Azure Pipelines [YAML template](https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema)
 
 You can configure a [build validation](https://learn.microsoft.com/en-us/azure/devops/repos/git/branch-policies?view=azure-devops&tabs=browser#build-validation) branch policy against a single repository or across all repositories. If you configure across all repositories then your pipeline is stored in a central repository.
 
@@ -119,5 +98,26 @@ Note: If your pipelines run on Azure DevOps but your source code is hosted on Gi
 ## Detailed Tutorial
 
 You can also follow this [detailed tutorial](https://github.com/DonKoning/megaLinter) by [DonKoning](https://github.com/DonKoning).
+
+## Alternative: Azure DevOps Extension (Community)
+
+> **Note:** This is a community-maintained extension and is **not** affiliated with or maintained by the MegaLinter team.
+
+As an alternative to the manual Docker configuration above, the community-maintained [megalinter-ado](https://marketplace.visualstudio.com/items?itemName=DownAtTheBottomOfTheMoleHole.megalinter-ado) Azure DevOps extension provides a native Azure Pipelines task for running MegaLinter.
+
+Install from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=DownAtTheBottomOfTheMoleHole.megalinter-ado), then add the task to your pipeline:
+
+```yaml
+- task: MegaLinter@1
+  displayName: Run MegaLinter
+  inputs:
+    flavor: all
+    fix: true
+    createFixPR: true
+  env:
+    SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+```
+
+See the [extension repository](https://github.com/DownAtTheBottomOfTheMoleHole/megalinter-ado) for full configuration options.
 
 <!-- install-azure-section-end -->

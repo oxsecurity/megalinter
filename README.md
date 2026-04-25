@@ -675,6 +675,27 @@ Note: If your pipelines run on Azure DevOps but your source code is hosted on Gi
 
 You can also follow this [detailed tutorial](https://github.com/DonKoning/megaLinter) by [DonKoning](https://github.com/DonKoning).
 
+#### Alternative: Azure DevOps Extension (Community)
+
+> **Note:** This is a community-maintained extension and is **not** affiliated with or maintained by the MegaLinter team.
+
+As an alternative to the manual Docker configuration above, the community-maintained [megalinter-ado](https://marketplace.visualstudio.com/items?itemName=DownAtTheBottomOfTheMoleHole.megalinter-ado) Azure DevOps extension provides a native Azure Pipelines task for running MegaLinter.
+
+Install from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=DownAtTheBottomOfTheMoleHole.megalinter-ado), then add the task to your pipeline:
+
+```yaml
+- task: MegaLinter@1
+  displayName: Run MegaLinter
+  inputs:
+    flavor: all
+    fix: true
+    createFixPR: true
+  env:
+    SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+```
+
+See the [extension repository](https://github.com/DownAtTheBottomOfTheMoleHole/megalinter-ado) for full configuration options.
+
 <!-- install-azure-section-end -->
 <!-- install-bitbucket-section-start -->
 <!-- markdown-headers
@@ -1588,6 +1609,19 @@ You can implement your own descriptors and load them as plugins during MegaLinte
 #### Limitations
 
 - For now, the only `install` attributes managed are `dockerfile` instructions starting by `RUN`
+
+### Community Tools
+
+Beyond plugins, the community has built additional tools that integrate with MegaLinter. These are independently maintained and **not** affiliated with the MegaLinter team.
+
+<!-- markdownlint-disable MD060 -->
+
+| Name | Description | Author |
+|:-----|:------------|:------:|
+| [**megalinter-mcp-server**](https://github.com/DownAtTheBottomOfTheMoleHole/megalinter-mcp) | An MCP server for running MegaLinter via [mega-linter-runner](https://megalinter.io/mega-linter-runner/). Provides 15 MCP tools for execution, discovery, and analysis. Works with VS Code Copilot Chat and other MCP-compatible clients. Available on [npm](https://www.npmjs.com/package/@downatthebottomofthemolehole/megalinter-mcp-server). | [DownAtTheBottomOfTheMoleHole](https://github.com/DownAtTheBottomOfTheMoleHole) |
+| [**megalinter-ado**](https://github.com/DownAtTheBottomOfTheMoleHole/megalinter-ado) | Azure DevOps extension providing a native pipeline task for running MegaLinter. Supports flavor selection, auto-fix PRs, and PR comments. Available on the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=DownAtTheBottomOfTheMoleHole.megalinter-ado). | [DownAtTheBottomOfTheMoleHole](https://github.com/DownAtTheBottomOfTheMoleHole) |
+
+<!-- markdownlint-enable MD060 -->
 
 <!-- plugins-section-end -->
 
