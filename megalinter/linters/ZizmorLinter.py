@@ -4,8 +4,6 @@ Use zizmor to lint GitHub Actions files
 https://zizmor.sh/
 """
 
-import logging
-
 import megalinter
 from megalinter import config
 

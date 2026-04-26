@@ -1,0 +1,3 @@
+# TODO: This file has been added to override disabled rule configuration for tests.
+#       This file should be removed once zizmor configuration is finalized in a follow-up change.
+rules: {}
