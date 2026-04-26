@@ -91,7 +91,7 @@ This linter is available in the following flavors
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       135        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        90        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        89        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        66        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
@@ -318,51 +318,24 @@ Messages control:
                         Warning level messages displayed, use "--disable=all
                         --enable=classes --disable=W".
 
-Miscellaneous:
-  BaseChecker for encoding issues and fixme notes.
+Refactoring:
+  Looks for code which can be refactored.
 
-  --notes <comma separated values>
-                        List of note tags to take in consideration, separated
-                        by a comma. (default: ('FIXME', 'XXX', 'TODO'))
-  --notes-rgx <regexp>  Regular expression of note tags to take in
-                        consideration. (default: )
-  --check-fixme-in-docstring <y or n>
-                        Whether or not to search for fixme's in docstrings.
-                        (default: False)
-
-Logging:
-  Checks use of the logging module.
-
-  --logging-modules <comma separated list>
-                        Logging modules to check that the string format
-                        arguments are in logging function parameter format.
-                        (default: ('logging',))
-  --logging-format-style <old (%) or new ({)>
-                        The type of string formatting that logging methods do.
-                        `old` means using % formatting, `new` is for `{}`
-                        formatting. (default: old)
-
-Exceptions:
-  Exception related checks.
-
-  --overgeneral-exceptions <comma-separated class names>
-                        Exceptions that will emit a warning when caught.
-                        (default: ('builtins.BaseException',
-                        'builtins.Exception'))
-
-String:
-  Check string literals.
-
-  --check-str-concat-over-line-jumps <y or n>
-                        This flag controls whether the implicit-str-concat
-                        should generate a warning on implicit string
-                        concatenation in sequences defined over several lines.
-                        (default: False)
-  --check-quote-consistency <y or n>
-                        This flag controls whether inconsistent-quotes
-                        generates a warning when the character used as a quote
-                        delimiter is used inconsistently within a module.
-                        (default: False)
+  --max-nested-blocks <int>
+                        Maximum number of nested blocks for function / method
+                        body (default: 5)
+  --never-returning-functions <members names>
+                        Complete name of functions that never returns. When
+                        checking for inconsistent-return-statements if a never
+                        returning function is called then it will be
+                        considered as an explicit return statement and no
+                        message will be printed. (default: ('sys.exit',
+                        'argparse.parse_error'))
+  --suggest-join-with-non-empty-separator <y or n>
+                        Let 'consider-using-join' be raised when the separator
+                        to join on would be non-empty (resulting in expected
+                        fixes of the type: ``"- " + " - ".join(items)``)
+                        (default: True)
 
 Classes:
   Checker for class nodes.
@@ -385,6 +358,44 @@ Classes:
   --check-protected-access-in-special-methods <y or n>
                         Warn about protected attribute access inside special
                         methods (default: False)
+
+Logging:
+  Checks use of the logging module.
+
+  --logging-modules <comma separated list>
+                        Logging modules to check that the string format
+                        arguments are in logging function parameter format.
+                        (default: ('logging',))
+  --logging-format-style <old (%) or new ({)>
+                        The type of string formatting that logging methods do.
+                        `old` means using % formatting, `new` is for `{}`
+                        formatting. (default: old)
+
+Spelling:
+  Check spelling in comments and docstrings.
+
+  --spelling-dict <dict name>
+                        Spelling dictionary name. No available dictionaries :
+                        You need to install both the python package and the
+                        system dependency for enchant to work. (default: )
+  --spelling-ignore-words <comma separated words>
+                        List of comma separated words that should not be
+                        checked. (default: )
+  --spelling-private-dict-file <path to file>
+                        A path to a file that contains the private dictionary;
+                        one word per line. (default: )
+  --spelling-store-unknown-words <y or n>
+                        Tells whether to store unknown words to the private
+                        dictionary (see the --spelling-private-dict-file
+                        option) instead of raising a message. (default: n)
+  --max-spelling-suggestions N
+                        Limits count of emitted suggestions for spelling
+                        mistakes. (default: 4)
+  --spelling-ignore-comment-directives <comma separated words>
+                        List of comma separated words that should be
+                        considered directives if they appear at the beginning
+                        of a comment and should not be checked. (default: fmt:
+                        on,fmt: off,noqa:,noqa,nosec,isort:skip,mypy:)
 
 Imports:
   BaseChecker for import statements.
@@ -424,54 +435,81 @@ Imports:
                         Allow explicit reexports by alias from a package
                         __init__. (default: False)
 
-Format:
-  Formatting checker.
+String:
+  Check string literals.
 
-  --max-line-length <int>
-                        Maximum number of characters on a single line.
-                        Pylint's default of 100 is based on PEP 8's guidance
-                        that teams may choose line lengths up to 99
-                        characters. (default: 100)
-  --ignore-long-lines <regexp>
-                        Regexp for a line that is allowed to be longer than
-                        the limit. (default: ^\s*(# )?<?https?://\S+>?$)
-  --single-line-if-stmt <y or n>
-                        Allow the body of an if to be on the same line as the
-                        test if there is no else. (default: False)
-  --single-line-class-stmt <y or n>
-                        Allow the body of a class to be on the same line as
-                        the declaration if body contains single statement.
+  --check-str-concat-over-line-jumps <y or n>
+                        This flag controls whether the implicit-str-concat
+                        should generate a warning on implicit string
+                        concatenation in sequences defined over several lines.
                         (default: False)
-  --max-module-lines <int>
-                        Maximum number of lines in a module. (default: 1000)
-  --indent-string <string>
-                        String used as indentation unit. This is usually " "
-                        (4 spaces) or "  " (1 tab). (default: )
-  --indent-after-paren <int>
-                        Number of spaces of indent required inside a hanging
-                        or continued line. (default: 4)
-  --expected-line-ending-format <empty or LF or CRLF>
-                        Expected format of line ending, e.g. empty (any line
-                        ending), LF or CRLF. (default: )
+  --check-quote-consistency <y or n>
+                        This flag controls whether inconsistent-quotes
+                        generates a warning when the character used as a quote
+                        delimiter is used inconsistently within a module.
+                        (default: False)
 
-Refactoring:
-  Looks for code which can be refactored.
+Typecheck:
+  Try to find bugs in the code using type inference.
 
-  --max-nested-blocks <int>
-                        Maximum number of nested blocks for function / method
-                        body (default: 5)
-  --never-returning-functions <members names>
-                        Complete name of functions that never returns. When
-                        checking for inconsistent-return-statements if a never
-                        returning function is called then it will be
-                        considered as an explicit return statement and no
-                        message will be printed. (default: ('sys.exit',
-                        'argparse.parse_error'))
-  --suggest-join-with-non-empty-separator <y or n>
-                        Let 'consider-using-join' be raised when the separator
-                        to join on would be non-empty (resulting in expected
-                        fixes of the type: ``"- " + " - ".join(items)``)
+  --ignore-on-opaque-inference <y or n>
+                        This flag controls whether pylint should warn about
+                        no-member and similar checks whenever an opaque object
+                        is returned when inferring. The inference can return
+                        multiple potential results while evaluating a Python
+                        object, but some branches might not be evaluated,
+                        which results in partial inference. In that case, it
+                        might be useful to still emit no-member and other
+                        checks for the rest of the inferred objects. (default:
+                        True)
+  --mixin-class-rgx <regexp>
+                        Regex pattern to define which classes are considered
+                        mixins. (default: .*[Mm]ixin)
+  --ignore-mixin-members <y or n>
+                        Tells whether missing members accessed in mixin class
+                        should be ignored. A class is considered mixin if its
+                        name matches the mixin-class-rgx option. (default:
+                        True)
+  --ignored-checks-for-mixins <list of messages names>
+                        List of symbolic message names to ignore for Mixin
+                        members. (default: ['no-member', 'not-async-context-
+                        manager', 'not-context-manager', 'attribute-defined-
+                        outside-init'])
+  --ignore-none <y or n>
+                        Tells whether to warn about missing members when the
+                        owner of the attribute is inferred to be None.
                         (default: True)
+  --ignored-classes <members names>
+                        List of class names for which member attributes should
+                        not be checked (useful for classes with dynamically
+                        set attributes). This supports the use of qualified
+                        names. (default: ('optparse.Values', 'thread._local',
+                        '_thread._local', 'argparse.Namespace'))
+  --generated-members <members names>
+                        List of members which are set dynamically and missed
+                        by pylint inference system, and so shouldn't trigger
+                        E1101 when accessed. Python regular expressions are
+                        accepted. (default: ())
+  --contextmanager-decorators <decorator names>
+                        List of decorators that produce context managers, such
+                        as contextlib.contextmanager. Add to this list to
+                        register other decorators that produce valid context
+                        managers. (default: ['contextlib.contextmanager'])
+  --missing-member-hint-distance <member hint edit distance>
+                        The maximum edit distance a name should have in order
+                        to be considered a similar match for a missing member
+                        name. (default: 1)
+  --missing-member-max-choices <member hint max choices>
+                        The total number of similar names that should be taken
+                        in consideration when showing a hint for a missing
+                        member. (default: 1)
+  --missing-member-hint <missing member hint>
+                        Show a hint with possible names when a member name was
+                        not found. The aspect of finding the hint is based on
+                        edit distance. (default: True)
+  --signature-mutators <decorator names>
+                        List of decorators that change the signature of a
+                        decorated function. (default: [])
 
 Design:
   Checker of potential misdesigns.
@@ -669,6 +707,48 @@ Similarities:
                         Signatures are removed from the similarity computation
                         (default: True)
 
+Miscellaneous:
+  BaseChecker for encoding issues and fixme notes.
+
+  --notes <comma separated values>
+                        List of note tags to take in consideration, separated
+                        by a comma. (default: ('FIXME', 'XXX', 'TODO'))
+  --notes-rgx <regexp>  Regular expression of note tags to take in
+                        consideration. (default: )
+  --check-fixme-in-docstring <y or n>
+                        Whether or not to search for fixme's in docstrings.
+                        (default: False)
+
+Format:
+  Formatting checker.
+
+  --max-line-length <int>
+                        Maximum number of characters on a single line.
+                        Pylint's default of 100 is based on PEP 8's guidance
+                        that teams may choose line lengths up to 99
+                        characters. (default: 100)
+  --ignore-long-lines <regexp>
+                        Regexp for a line that is allowed to be longer than
+                        the limit. (default: ^\s*(# )?<?https?://\S+>?$)
+  --single-line-if-stmt <y or n>
+                        Allow the body of an if to be on the same line as the
+                        test if there is no else. (default: False)
+  --single-line-class-stmt <y or n>
+                        Allow the body of a class to be on the same line as
+                        the declaration if body contains single statement.
+                        (default: False)
+  --max-module-lines <int>
+                        Maximum number of lines in a module. (default: 1000)
+  --indent-string <string>
+                        String used as indentation unit. This is usually " "
+                        (4 spaces) or "  " (1 tab). (default: )
+  --indent-after-paren <int>
+                        Number of spaces of indent required inside a hanging
+                        or continued line. (default: 4)
+  --expected-line-ending-format <empty or LF or CRLF>
+                        Expected format of line ending, e.g. empty (any line
+                        ending), LF or CRLF. (default: )
+
 Method_args:
   BaseChecker for method_args.
 
@@ -714,93 +794,13 @@ Variables:
   --allowed-redefined-builtins <comma separated list>
                         List of names allowed to shadow builtins (default: ())
 
-Typecheck:
-  Try to find bugs in the code using type inference.
+Exceptions:
+  Exception related checks.
 
-  --ignore-on-opaque-inference <y or n>
-                        This flag controls whether pylint should warn about
-                        no-member and similar checks whenever an opaque object
-                        is returned when inferring. The inference can return
-                        multiple potential results while evaluating a Python
-                        object, but some branches might not be evaluated,
-                        which results in partial inference. In that case, it
-                        might be useful to still emit no-member and other
-                        checks for the rest of the inferred objects. (default:
-                        True)
-  --mixin-class-rgx <regexp>
-                        Regex pattern to define which classes are considered
-                        mixins. (default: .*[Mm]ixin)
-  --ignore-mixin-members <y or n>
-                        Tells whether missing members accessed in mixin class
-                        should be ignored. A class is considered mixin if its
-                        name matches the mixin-class-rgx option. (default:
-                        True)
-  --ignored-checks-for-mixins <list of messages names>
-                        List of symbolic message names to ignore for Mixin
-                        members. (default: ['no-member', 'not-async-context-
-                        manager', 'not-context-manager', 'attribute-defined-
-                        outside-init'])
-  --ignore-none <y or n>
-                        Tells whether to warn about missing members when the
-                        owner of the attribute is inferred to be None.
-                        (default: True)
-  --ignored-classes <members names>
-                        List of class names for which member attributes should
-                        not be checked (useful for classes with dynamically
-                        set attributes). This supports the use of qualified
-                        names. (default: ('optparse.Values', 'thread._local',
-                        '_thread._local', 'argparse.Namespace'))
-  --generated-members <members names>
-                        List of members which are set dynamically and missed
-                        by pylint inference system, and so shouldn't trigger
-                        E1101 when accessed. Python regular expressions are
-                        accepted. (default: ())
-  --contextmanager-decorators <decorator names>
-                        List of decorators that produce context managers, such
-                        as contextlib.contextmanager. Add to this list to
-                        register other decorators that produce valid context
-                        managers. (default: ['contextlib.contextmanager'])
-  --missing-member-hint-distance <member hint edit distance>
-                        The maximum edit distance a name should have in order
-                        to be considered a similar match for a missing member
-                        name. (default: 1)
-  --missing-member-max-choices <member hint max choices>
-                        The total number of similar names that should be taken
-                        in consideration when showing a hint for a missing
-                        member. (default: 1)
-  --missing-member-hint <missing member hint>
-                        Show a hint with possible names when a member name was
-                        not found. The aspect of finding the hint is based on
-                        edit distance. (default: True)
-  --signature-mutators <decorator names>
-                        List of decorators that change the signature of a
-                        decorated function. (default: [])
-
-Spelling:
-  Check spelling in comments and docstrings.
-
-  --spelling-dict <dict name>
-                        Spelling dictionary name. No available dictionaries :
-                        You need to install both the python package and the
-                        system dependency for enchant to work. (default: )
-  --spelling-ignore-words <comma separated words>
-                        List of comma separated words that should not be
-                        checked. (default: )
-  --spelling-private-dict-file <path to file>
-                        A path to a file that contains the private dictionary;
-                        one word per line. (default: )
-  --spelling-store-unknown-words <y or n>
-                        Tells whether to store unknown words to the private
-                        dictionary (see the --spelling-private-dict-file
-                        option) instead of raising a message. (default: n)
-  --max-spelling-suggestions N
-                        Limits count of emitted suggestions for spelling
-                        mistakes. (default: 4)
-  --spelling-ignore-comment-directives <comma separated words>
-                        List of comma separated words that should be
-                        considered directives if they appear at the beginning
-                        of a comment and should not be checked. (default: fmt:
-                        on,fmt: off,noqa:,noqa,nosec,isort:skip,mypy:)
+  --overgeneral-exceptions <comma-separated class names>
+                        Exceptions that will emit a warning when caught.
+                        (default: ('builtins.BaseException',
+                        'builtins.Exception'))
 ```
 
 ### Installation on mega-linter Docker image

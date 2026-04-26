@@ -170,6 +170,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [pyright](https://github.com/Microsoft/pyright) from 1.1.408 to **1.1.409** on 2026-04-23
   - [grype](https://github.com/anchore/grype) from 0.111.0 to **0.111.1** on 2026-04-23
   - [syft](https://github.com/anchore/syft) from 1.42.4 to **1.43.0** on 2026-04-23
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.14.8 to **1.14.9** on 2026-04-26
+  - [terragrunt](https://terragrunt.gruntwork.io) from 1.0.1 to **1.0.2** on 2026-04-26
 <!-- linter-versions-end -->
 
 ## [v9.4.0] - 2026-02-28
