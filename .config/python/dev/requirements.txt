@@ -3,8 +3,8 @@ aiofiles==25.1.0
 aiohttp==3.13.5
 beautifulsoup4==4.14.3
 commentjson==0.9.0
-fastapi==0.136.0
-gitpython==3.1.46
+fastapi==0.136.1
+gitpython==3.1.47
 giturlparse==0.14.0
 importlib-metadata==9.0.0
 json-schema-for-humans==1.5.1
@@ -40,8 +40,8 @@ langchain_anthropic==1.4.1
 langchain_deepseek==1.0.1
 langchain_google_genai==4.2.2
 langchain_mistralai==1.1.2
-langchain_openai==1.1.14
+langchain_openai==1.2.1
 langchain_community==0.4.1
-langsmith==0.7.32
+langsmith==0.7.36
 orjson==3.11.8
 pyjwt==2.12.1

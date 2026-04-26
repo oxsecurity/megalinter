@@ -2174,6 +2174,16 @@
       "x-order": 200020,
       "x-section": "LINTER_COMMAND"
     },
+    "BASH_SHELLCHECK_CONFIG_FILE": {
+      "$id": "#/properties/BASH_SHELLCHECK_CONFIG_FILE",
+      "default": ".shellcheckrc",
+      "description": "BASH_SHELLCHECK: User custom config file name if different from default",
+      "title": "BASH_SHELLCHECK: Custom config file name",
+      "type": "string",
+      "x-category": "BASH_SHELLCHECK",
+      "x-order": 200010,
+      "x-section": "LINTER_COMMAND"
+    },
     "BASH_SHELLCHECK_DISABLE_ERRORS": {
       "$id": "#/properties/BASH_SHELLCHECK_DISABLE_ERRORS",
       "default": false,
@@ -2295,6 +2305,15 @@
       "x-category": "BASH_SHELLCHECK",
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
+    },
+    "BASH_SHELLCHECK_RULES_PATH": {
+      "$id": "#/properties/BASH_SHELLCHECK_RULES_PATH",
+      "description": "BASH_SHELLCHECK: Path where to find linter configuration file",
+      "title": "BASH_SHELLCHECK: Custom config file path",
+      "type": "string",
+      "x-category": "BASH_SHELLCHECK",
+      "x-order": 200040,
+      "x-section": "LINTER_COMMAND"
     },
     "BASH_SHELLCHECK_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/BASH_SHELLCHECK_UNSECURED_ENV_VARIABLES",

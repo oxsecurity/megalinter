@@ -15,7 +15,7 @@
 # renovate: datasource=docker depName=mvdan/shfmt
 ARG BASH_SHFMT_VERSION=v3.13.1-alpine
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.14.8
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.14.9
 #ARGTOP__END
 
 #############################################################################################
@@ -61,7 +61,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 ARG CARGO_SARIF_FMT_VERSION=0.8.0
 ARG TARGETPLATFORM
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
-ARG POWERSHELL_VERSION=7.6.0
+ARG POWERSHELL_VERSION=7.6.1
 
 # renovate: datasource=npm depName=typescript
 ARG NPM_TYPESCRIPT_VERSION=6.0.2
