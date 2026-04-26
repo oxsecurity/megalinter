@@ -20,7 +20,7 @@ description: How to use powershell_formatter (configure, ignore files, ignore er
 
 ## powershell_formatter documentation
 
-- Version in MegaLinter: **7.6.0**
+- Version in MegaLinter: **7.6.1**
 - Visit [Official Web Site](https://github.com/PowerShell/PSScriptAnalyzer#readme){target=_blank}
 - See [How to configure powershell_formatter rules](https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#explicit){target=_blank}
 - See [How to disable powershell_formatter rules in files](https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#suppressing-rules){target=_blank}
@@ -444,7 +444,7 @@ All parameters are case-insensitive.
 # Parent descriptor install
 ARG TARGETPLATFORM
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
-ARG POWERSHELL_VERSION=7.6.0
+ARG POWERSHELL_VERSION=7.6.1
 
 RUN case ${TARGETPLATFORM} in \
   "linux/amd64")  POWERSHELL_ARCH=musl-x64 ;; \

@@ -172,6 +172,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 1.42.4 to **1.43.0** on 2026-04-23
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.14.8 to **1.14.9** on 2026-04-26
   - [terragrunt](https://terragrunt.gruntwork.io) from 1.0.1 to **1.0.2** on 2026-04-26
+  - [phpstan](https://phpstan.org/) from 2.1.50 to **2.1.51** on 2026-04-26
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.0 to **7.6.1** on 2026-04-26
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.0 to **7.6.1** on 2026-04-26
 <!-- linter-versions-end -->
 
 ## [v9.4.0] - 2026-02-28
