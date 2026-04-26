@@ -29,6 +29,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linters enhancements
 
 - Fixes
+  - Fix linter output by section in Console reporter
 
 - Reporters
 

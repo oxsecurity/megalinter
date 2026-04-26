@@ -55,7 +55,10 @@ class ConsoleLinterReporter(Reporter):
                 )
             )
         elif self.master.return_code == 0 and self.master.status != "success":
-            logging.warning(
+            # Always use logging.info for section markers so CI systems (GitHub Actions, GitLab CI…)
+            # recognise the annotation command at the start of the line. The ⚠️ in the title
+            # already communicates the warning status.
+            logging.info(
                 log_section_start(
                     f"processed-{self.master.name}",
                     utils.yellow(
@@ -65,7 +68,10 @@ class ConsoleLinterReporter(Reporter):
                 )
             )
         elif self.master.return_code != 0 and self.master.status != "success":
-            logging.error(
+            # Always use logging.info for section markers so CI systems (GitHub Actions, GitLab CI…)
+            # recognise the annotation command at the start of the line. The ❌ in the title
+            # already communicates the error status.
+            logging.info(
                 log_section_start(
                     f"processed-{self.master.name}",
                     utils.red(
@@ -74,7 +80,7 @@ class ConsoleLinterReporter(Reporter):
                 )
             )
         else:
-            logging.error(
+            logging.info(
                 log_section_start(
                     f"processed-{self.master.name}",
                     f"❌ There is a MegaLinter issue, please report it: {self.master.return_code}"
