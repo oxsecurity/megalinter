@@ -13,6 +13,7 @@ DISABLE:
   - JAVASCRIPT
   - TEKTON
 DISABLE_LINTERS:
+  - API_SPECTRAL
   - JSON_PRETTIER
   - MARKDOWN_RUMDL
   - PYTHON_PYRIGHT
@@ -59,6 +60,8 @@ REPOSITORY_KINGFISHER_ARGUMENTS:
   - "docs"
   - "--exclude"
   - "gitleaks-default.toml"
+REPOSITORY_OSV_SCANNER_ARGUMENTS:
+  - "--experimental-exclude=g:**/.automation/test/**"
 REPORTERS_MARKDOWN_SUMMARY_TYPE: sections
 SHOW_ELAPSED_TIME: true
 FLAVOR_SUGGESTIONS: false

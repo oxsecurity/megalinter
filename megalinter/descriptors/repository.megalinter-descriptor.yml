@@ -62,7 +62,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=checkov
-          ARG PIP_CHECKOV_VERSION=3.2.513
+          ARG PIP_CHECKOV_VERSION=3.2.521
       pip:
         - checkov==${PIP_CHECKOV_VERSION}
     supported_platforms:
@@ -189,12 +189,15 @@ linters:
         - |-
           # renovate: datasource=github-tags depName=checkmarx/dustilock
           ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
+        - |-
+          # renovate: datasource=docker depName=golang versioning=semver
+          ARG GO_IMAGE_VERSION=1.26.2
         # The golang image used as a builder is a temporary workaround
         # Dustilock is not released as a binary or container
         - |-
-          FROM golang:alpine AS dustilock
+          FROM golang:${GO_IMAGE_VERSION}-alpine AS dustilock
           ARG REPOSITORY_DUSTILOCK_VERSION
-          RUN apk add --no-cache git && GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v${REPOSITORY_DUSTILOCK_VERSION}
+          RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v${REPOSITORY_DUSTILOCK_VERSION}
         - COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
     supported_platforms:
       platform:
@@ -436,7 +439,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=anchore/grype
-          ARG REPOSITORY_GRYPE_VERSION=0.110.0
+          ARG REPOSITORY_GRYPE_VERSION=0.111.1
         - RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin
     supported_platforms:
       platform:
@@ -446,6 +449,8 @@ linters:
 
   # KICS
   - linter_name: kics
+    disabled: true
+    disabled_reason: Supply chain compromise - https://socket.dev/blog/checkmarx-supply-chain-compromise
     linter_text: |
       **KICS** (Keeping Infrastructure as Code Secure) is a comprehensive open-source security scanner that identifies security vulnerabilities, compliance issues, and infrastructure misconfigurations in Infrastructure as Code files. It serves as a critical tool for preventing security risks before deployment to production environments.
 
@@ -554,6 +559,68 @@ linters:
         - linux/amd64
         - linux/arm64
 
+  # OSV-SCANNER
+  - linter_name: osv-scanner
+    name: REPOSITORY_OSV_SCANNER
+    can_output_sarif: false # disabled until it works !
+    descriptor_flavors:
+      - all_flavors # Applicable to CI in any language project
+      - ci_light
+      - cupcake
+      - security
+    linter_speed: 2
+    linter_text: |
+      **OSV-Scanner** is a dependency vulnerability scanner from Google that detects known vulnerabilities in open-source dependencies by matching project manifests and lock files against the OSV database.
+
+      **Key Features:**
+
+      - **Broad ecosystem support**: Scans dependencies from multiple package managers and lockfile formats
+      - **Source project scanning**: Recursively scans source directories for vulnerable packages
+      - **SARIF output**: Exports findings in SARIF format for CI and security platform integrations
+      - **Configurable behavior**: Supports repository-level configuration using `osv-scanner.toml`
+      - **Reliable vulnerability data**: Uses OSV.dev vulnerability records maintained by the open source security community
+      - **Fast CI usage**: Designed for automated security checks in pipelines and pre-commit workflows
+    linter_url: https://google.github.io/osv-scanner/
+    linter_repo: https://github.com/google/osv-scanner
+    linter_spdx_license: Apache-2.0
+    linter_rules_configuration_url: https://google.github.io/osv-scanner/configuration/
+    linter_rules_ignore_config_url: https://google.github.io/osv-scanner/usage/scan-source#ignored-files
+    config_file_name: osv-scanner.toml
+    cli_config_arg_name: --config
+    cli_lint_mode: project
+    cli_lint_extra_args:
+      - scan
+      - source
+      - --recursive
+    cli_lint_extra_args_after:
+      - .
+    cli_sarif_args:
+      - --format
+      - sarif
+    cli_help_arg_name: --help
+    help_command_return_code: 127
+    cli_version_arg_name: --version
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: "(osv\\.dev/GHSA-)"
+    test_folder: repository_osv_scanner
+    examples:
+      - "osv-scanner scan source --recursive ."
+      - "osv-scanner scan source --format sarif --output-file report.sarif --recursive ."
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=repology depName=alpine_edge/osv-scanner versioning=loose
+          ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.5-r2
+        - |-
+          RUN apk add --no-cache \
+              --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main \
+              --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
+              osv-scanner=${REPOSITORY_OSV_SCANNER_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
+
   # SECRETLINT
   - class: SecretLintLinter
     linter_name: secretlint
@@ -604,13 +671,13 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=secretlint
-          ARG NPM_SECRETLINT_VERSION=11.4.0
+          ARG NPM_SECRETLINT_VERSION=11.7.1
         - |-
           # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
-          ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=11.4.0
+          ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=11.7.1
         - |-
           # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
-          ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=11.4.0
+          ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=11.7.1
       npm:
         - secretlint@${NPM_SECRETLINT_VERSION}
         - "@secretlint/secretlint-rule-preset-recommend@${NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION}"
@@ -675,7 +742,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=semgrep
-          ARG PIP_SEMGREP_VERSION=1.156.0
+          ARG PIP_SEMGREP_VERSION=1.159.0
       pip:
         - semgrep==${PIP_SEMGREP_VERSION}
     variables:
@@ -739,7 +806,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=anchore/syft
-          ARG REPOSITORY_SYFT_VERSION=1.42.3
+          ARG REPOSITORY_SYFT_VERSION=1.42.4
         - RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOSITORY_SYFT_VERSION}/install.sh | sh -s -- -b /usr/local/bin
     supported_platforms:
       platform:
@@ -939,7 +1006,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=trufflesecurity/trufflehog
-          ARG REPOSITORY_TRUFFLEHOG_VERSION=3.94.1
+          ARG REPOSITORY_TRUFFLEHOG_VERSION=3.94.3
         - FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
         - COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
     supported_platforms:
@@ -987,7 +1054,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=mongodb/kingfisher
-          ARG REPOSITORY_KINGFISHER_VERSION=1.90.0
+          ARG REPOSITORY_KINGFISHER_VERSION=1.95.0
         - |
           RUN curl --silent --location https://raw.githubusercontent.com/mongodb/kingfisher/main/scripts/install-kingfisher.sh | bash -s -- /usr/local/bin --tag "v${REPOSITORY_KINGFISHER_VERSION}"
     supported_platforms:

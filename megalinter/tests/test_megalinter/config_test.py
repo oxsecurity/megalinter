@@ -275,6 +275,13 @@ class config_test(unittest.TestCase):
                 "VISIBLE_VAR": "VALUE",
                 "GITHUB_TOKEN": "GITHUB_TOKEN_VALUE",
                 "GITLAB_ACCESS_TOKEN_MEGALINTER": "GITLAB_ACCESS_TOKEN_MEGALINTER_VALUE",
+                "NPM_TOKEN": "NPM_TOKEN_VALUE",
+                "GITLAB_CUSTOM_CERTIFICATE": "CERT_VALUE",
+                "SYSTEM_ACCESSTOKEN": "SYSTEM_ACCESSTOKEN_VALUE",
+                "AWS_ACCESS_KEY_ID": "AWS_ACCESS_KEY_ID_VALUE",
+                "AWS_SECRET_ACCESS_KEY": "AWS_SECRET_ACCESS_KEY_VALUE",
+                "OPENAI_API_KEY": "OPENAI_API_KEY_VALUE",
+                "DATABASE_URL": "postgres://user:pass@example.invalid:5432/db",
                 "LOG_LEVEL": "DEBUG",
             },
         )
@@ -287,6 +294,34 @@ class config_test(unittest.TestCase):
         self.assertTrue(
             cli_env["GITLAB_ACCESS_TOKEN_MEGALINTER"] == "HIDDEN_BY_MEGALINTER",
             "GITLAB_ACCESS_TOKEN_MEGALINTER is not visible",
+        )
+        self.assertTrue(
+            cli_env["NPM_TOKEN"] == "HIDDEN_BY_MEGALINTER",
+            "NPM_TOKEN is not visible",
+        )
+        self.assertTrue(
+            cli_env["GITLAB_CUSTOM_CERTIFICATE"] == "HIDDEN_BY_MEGALINTER",
+            "GITLAB_CUSTOM_CERTIFICATE is not visible",
+        )
+        self.assertTrue(
+            cli_env["SYSTEM_ACCESSTOKEN"] == "HIDDEN_BY_MEGALINTER",
+            "SYSTEM_ACCESSTOKEN is not visible",
+        )
+        self.assertTrue(
+            cli_env["AWS_ACCESS_KEY_ID"] == "HIDDEN_BY_MEGALINTER",
+            "AWS_ACCESS_KEY_ID is not visible",
+        )
+        self.assertTrue(
+            cli_env["AWS_SECRET_ACCESS_KEY"] == "HIDDEN_BY_MEGALINTER",
+            "AWS_SECRET_ACCESS_KEY is not visible",
+        )
+        self.assertTrue(
+            cli_env["OPENAI_API_KEY"] == "HIDDEN_BY_MEGALINTER",
+            "OPENAI_API_KEY is not visible",
+        )
+        self.assertTrue(
+            cli_env["DATABASE_URL"] == "HIDDEN_BY_MEGALINTER",
+            "DATABASE_URL is not visible",
         )
         usage_stdout = io.StringIO()
         with contextlib.redirect_stdout(usage_stdout):
@@ -306,6 +341,34 @@ class config_test(unittest.TestCase):
         self.assertTrue(
             "GITLAB_ACCESS_TOKEN_MEGALINTER=HIDDEN_BY_MEGALINTER" in output,
             "GITLAB_ACCESS_TOKEN_MEGALINTER is not visible",
+        )
+        self.assertTrue(
+            "NPM_TOKEN=HIDDEN_BY_MEGALINTER" in output,
+            "NPM_TOKEN is not visible",
+        )
+        self.assertTrue(
+            "GITLAB_CUSTOM_CERTIFICATE=HIDDEN_BY_MEGALINTER" in output,
+            "GITLAB_CUSTOM_CERTIFICATE is not visible",
+        )
+        self.assertTrue(
+            "SYSTEM_ACCESSTOKEN=HIDDEN_BY_MEGALINTER" in output,
+            "SYSTEM_ACCESSTOKEN is not visible",
+        )
+        self.assertTrue(
+            "AWS_ACCESS_KEY_ID=HIDDEN_BY_MEGALINTER" in output,
+            "AWS_ACCESS_KEY_ID is not visible",
+        )
+        self.assertTrue(
+            "AWS_SECRET_ACCESS_KEY=HIDDEN_BY_MEGALINTER" in output,
+            "AWS_SECRET_ACCESS_KEY is not visible",
+        )
+        self.assertTrue(
+            "OPENAI_API_KEY=HIDDEN_BY_MEGALINTER" in output,
+            "OPENAI_API_KEY is not visible",
+        )
+        self.assertTrue(
+            "DATABASE_URL=HIDDEN_BY_MEGALINTER" in output,
+            "DATABASE_URL is not visible",
         )
 
     def test_config_secure_env_vars_custom(self):

@@ -113,8 +113,11 @@ linters:
     cli_help_arg_name: "--help"
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: "In .* line .*:.*\\n"
+    config_file_name: .shellcheckrc
+    cli_config_arg_name: "--rcfile="
     examples:
       - "shellcheck --color=auto --external-sources myfile.sh"
+      - "shellcheck --color=auto --external-sources --rcfile=.shellcheckrc myfile.sh"
     install:
       cargo:
         - shellcheck-sarif@${CARGO_SHELLCHECK_SARIF_VERSION}
@@ -190,7 +193,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=mvdan/shfmt
-          ARG BASH_SHFMT_VERSION=v3.13.0-alpine
+          ARG BASH_SHFMT_VERSION=v3.13.1-alpine
         - FROM mvdan/shfmt:${BASH_SHFMT_VERSION} AS shfmt
         - COPY --link --from=shfmt /bin/shfmt /usr/bin/
     supported_platforms:

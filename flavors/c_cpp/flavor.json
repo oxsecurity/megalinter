@@ -7,7 +7,6 @@
     "linters": [
         "ACTION_ACTIONLINT",
         "ANSIBLE_ANSIBLE_LINT",
-        "API_SPECTRAL",
         "BASH_EXEC",
         "BASH_SHELLCHECK",
         "BASH_SHFMT",
@@ -44,6 +43,7 @@
         "REPOSITORY_GITLEAKS",
         "REPOSITORY_GRYPE",
         "REPOSITORY_LS_LINT",
+        "REPOSITORY_OSV_SCANNER",
         "REPOSITORY_SECRETLINT",
         "REPOSITORY_SEMGREP",
         "REPOSITORY_SYFT",

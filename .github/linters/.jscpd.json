@@ -3,6 +3,7 @@
   "reporters": ["html", "markdown"],
   "ignore": [
     "**/node_modules/**",
+    "**/.claude/**",
     "**/.git/**",
     "**/.rbenv/**",
     "**/.venv/**",
