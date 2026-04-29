@@ -42,6 +42,13 @@ linters:
     linter_banner_image_url: https://chrisdolan.net/madmongers/images/perl-critic-logo.gif
     linter_rules_configuration_url: https://metacpan.org/pod/Perl::Critic#CONFIGURATION
     linter_rules_inline_disable_url: https://metacpan.org/pod/Perl::Critic#BENDING-THE-RULES
+    cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_help_arg_name: "--help"
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: "\\(Severity: [0-9]+\\)"

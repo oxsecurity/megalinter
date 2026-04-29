@@ -29,6 +29,12 @@ linters:
     linter_rules_configuration_url: https://github.com/puppetlabs/puppet-lint#configuration-file
     linter_rules_inline_disable_url: https://github.com/puppetlabs/puppet-lint#disable-checks-within-puppet-code
     config_file_name: .puppet-lint.rc
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_config_arg_name: ""
     cli_lint_fix_arg_name: "--fix"
     cli_lint_extra_args:

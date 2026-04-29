@@ -29,6 +29,13 @@ linters:
     linter_rules_inline_disable_url: https://github.com/yoheimuta/protolint#configuring
     linter_spdx_license: MIT
     config_file_name: .protolintrc.yml
+    cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_config_arg_name: "--config_path"
     cli_lint_extra_args:
       - "lint"
