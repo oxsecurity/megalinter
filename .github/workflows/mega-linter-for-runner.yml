@@ -169,8 +169,10 @@ jobs:
       - name: Skip markdown/json-only fix commit for bot branches
         if: env.APPLY_FIXES_IF_COMMIT == 'true'
         shell: bash
+        env:
+          HEAD_REF: ${{ github.event.pull_request.head.ref || github.head_ref || github.ref_name }}
         run: |
-          branch="${{ github.event.pull_request.head.ref || github.head_ref || github.ref_name }}"
+          branch="${HEAD_REF}"
 
           case "$branch" in
             create-pull-request/patch|dependabot/*|renovate/*)
