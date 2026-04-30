@@ -49,6 +49,8 @@ linters:
       - file
       - list_of_files
       - project
+    cli_lint_mode_project_extra_args_after:
+      - .
     examples:
       - "cppcheck myfile.cpp"
     install:

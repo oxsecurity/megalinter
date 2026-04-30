@@ -161,6 +161,12 @@ linters:
     config_file_name: ".v8rrc.yml"
     cli_config_arg_name: ""
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_mode_project_extra_args_after:
+      - "**/*.{yml,yaml}"
     cli_lint_extra_args:
       - "--ignore-errors"
     cli_help_arg_name: "--help"

@@ -16,7 +16,7 @@ class StyleLintLinter(Linter):
             self.cli_lint_extra_args_after.append(
                 f"**/*{self.file_extensions[0]}"
                 if len(self.file_extensions) == 1
-                else f"**/*.{{{self.file_extensions.join(",").replace(".", "")}}}"
+                else f"**/*.{{{",".join(self.file_extensions).replace(".", "")}}}"
             )
 
         cmd = super().build_lint_command(file)

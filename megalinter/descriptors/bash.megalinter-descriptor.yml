@@ -99,11 +99,13 @@ linters:
     linter_rules_inline_disable_url: https://github.com/koalaman/shellcheck/wiki/Ignore
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/shellcheck.png
     linter_megalinter_ref_url: never
-    cli_lint_mode: project
+    cli_lint_mode: list_of_files
     supported_cli_lint_modes:
       - file
       - list_of_files
       - project
+    cli_lint_mode_project_extra_args_after:
+      - "*.sh"
     cli_lint_extra_args:
       - "--color=auto"
       - "--external-sources"
@@ -127,7 +129,7 @@ linters:
           ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
         # Also update shellcheck version in action.megalinter-descriptor.yml
         - |-
-          # renovate: datasource=docker depName=koalaman/shellcheck
+          # renovate: datasource=docker depName=koalaman/shellcheck-alpine
           ARG BASH_SHELLCHECK_VERSION=v0.11.0
         - FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
         - COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
