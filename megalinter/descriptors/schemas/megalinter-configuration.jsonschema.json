@@ -890,6 +890,244 @@
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
     },
+    "ACTION_ZIZMOR_ARGUMENTS": {
+      "$id": "#/properties/ACTION_ZIZMOR_ARGUMENTS",
+      "description": "ACTION_ZIZMOR: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "ACTION_ZIZMOR: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ],
+      "x-category": "ACTION_ZIZMOR",
+      "x-order": 200020,
+      "x-section": "LINTER_COMMAND"
+    },
+    "ACTION_ZIZMOR_CLI_EXECUTABLE": {
+      "$id": "#/properties/ACTION_ZIZMOR_CLI_EXECUTABLE",
+      "default": [
+        [
+          "zizmor"
+        ]
+      ],
+      "description": "ACTION_ZIZMOR: Override CLI executable used to build the linter command line (rarely needed)",
+      "items": {
+        "type": "string"
+      },
+      "title": "ACTION_ZIZMOR: CLI Executable",
+      "type": "array",
+      "x-category": "ACTION_ZIZMOR",
+      "x-order": 200060,
+      "x-section": "LINTER_COMMAND"
+    },
+    "ACTION_ZIZMOR_CLI_LINT_MODE": {
+      "$id": "#/properties/ACTION_ZIZMOR_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "description": "ACTION_ZIZMOR: Override default CLI lint mode used to call the linter (rarely needed)",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
+      "title": "ACTION_ZIZMOR: CLI lint mode",
+      "type": "string",
+      "x-category": "ACTION_ZIZMOR",
+      "x-doc-key": "config-cli-lint-mode",
+      "x-order": 200050,
+      "x-section": "LINTER_COMMAND"
+    },
+    "ACTION_ZIZMOR_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/ACTION_ZIZMOR_COMMAND_REMOVE_ARGUMENTS",
+      "description": "ACTION_ZIZMOR: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "ACTION_ZIZMOR: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ],
+      "x-category": "ACTION_ZIZMOR",
+      "x-order": 200020,
+      "x-section": "LINTER_COMMAND"
+    },
+    "ACTION_ZIZMOR_CONFIG_FILE": {
+      "$id": "#/properties/ACTION_ZIZMOR_CONFIG_FILE",
+      "default": "zizmor.yml",
+      "description": "ACTION_ZIZMOR: User custom config file name if different from default",
+      "title": "ACTION_ZIZMOR: Custom config file name",
+      "type": "string",
+      "x-category": "ACTION_ZIZMOR",
+      "x-order": 200010,
+      "x-section": "LINTER_COMMAND"
+    },
+    "ACTION_ZIZMOR_DIRECTORY": {
+      "$id": "#/properties/ACTION_ZIZMOR_DIRECTORY",
+      "default": ".github",
+      "description": "Directory that must be found to activate linter. Use value \"any\" to always activate",
+      "title": "ACTION_ZIZMOR: Directory containing ACTION files",
+      "type": "string",
+      "x-category": "ACTION_ZIZMOR",
+      "x-order": 100000,
+      "x-section": "ACTIVATION"
+    },
+    "ACTION_ZIZMOR_DISABLE_ERRORS": {
+      "$id": "#/properties/ACTION_ZIZMOR_DISABLE_ERRORS",
+      "default": false,
+      "description": "ACTION_ZIZMOR: If true, ACTION_ZIZMOR doesn't make MegaLinter fail even if errors are found",
+      "title": "ACTION_ZIZMOR: Disable errors",
+      "type": "boolean",
+      "x-category": "ACTION_ZIZMOR",
+      "x-order": 400000,
+      "x-section": "ERRORS"
+    },
+    "ACTION_ZIZMOR_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/ACTION_ZIZMOR_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "description": "ACTION_ZIZMOR: If the number of errors found is less than this value, ACTION_ZIZMOR doesn't make MegaLinter fail",
+      "title": "ACTION_ZIZMOR: Maximum number of errors allowed",
+      "type": "number",
+      "x-category": "ACTION_ZIZMOR",
+      "x-order": 400010,
+      "x-section": "ERRORS"
+    },
+    "ACTION_ZIZMOR_FILE_EXTENSIONS": {
+      "$id": "#/properties/ACTION_ZIZMOR_FILE_EXTENSIONS",
+      "default": [
+        ".yml",
+        ".yaml"
+      ],
+      "description": "ACTION_ZIZMOR: Override descriptor/linter matching files extensions that will be used to select files to lint",
+      "examples": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "ACTION_ZIZMOR: Matching files extensions",
+      "type": "array",
+      "x-category": "ACTION_ZIZMOR",
+      "x-order": 300020,
+      "x-section": "SCOPE"
+    },
+    "ACTION_ZIZMOR_FILE_NAMES_REGEX": {
+      "$id": "#/properties/ACTION_ZIZMOR_FILE_NAMES_REGEX",
+      "default": [],
+      "description": "ACTION_ZIZMOR: Override descriptor/linter matching file name regexes that will be used to select files to lint",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "ACTION_ZIZMOR: Matching file name regexes",
+      "type": "array",
+      "x-category": "ACTION_ZIZMOR",
+      "x-order": 300030,
+      "x-section": "SCOPE"
+    },
+    "ACTION_ZIZMOR_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/ACTION_ZIZMOR_FILTER_REGEX_EXCLUDE",
+      "description": "ACTION_ZIZMOR: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "title": "ACTION_ZIZMOR: Excluding Regex",
+      "type": "string",
+      "x-category": "ACTION_ZIZMOR",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "ACTION_ZIZMOR_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/ACTION_ZIZMOR_FILTER_REGEX_INCLUDE",
+      "description": "ACTION_ZIZMOR: Custom regex including filter: only files matching this regex will be linted",
+      "title": "ACTION_ZIZMOR: Including Regex",
+      "type": "string",
+      "x-category": "ACTION_ZIZMOR",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
+    },
+    "ACTION_ZIZMOR_POST_COMMANDS": {
+      "$id": "#/properties/ACTION_ZIZMOR_POST_COMMANDS",
+      "description": "ACTION_ZIZMOR: Define bash commands to run after running ACTION_ZIZMOR",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "ACTION_ZIZMOR: Post-run commands",
+      "type": "array",
+      "x-category": "ACTION_ZIZMOR",
+      "x-order": 500010,
+      "x-section": "PREPOSTCOMMANDS"
+    },
+    "ACTION_ZIZMOR_PRE_COMMANDS": {
+      "$id": "#/properties/ACTION_ZIZMOR_PRE_COMMANDS",
+      "description": "ACTION_ZIZMOR: Define bash commands to run before running ACTION_ZIZMOR",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "ACTION_ZIZMOR: Pre-run commands",
+      "type": "array",
+      "x-category": "ACTION_ZIZMOR",
+      "x-order": 500000,
+      "x-section": "PREPOSTCOMMANDS"
+    },
+    "ACTION_ZIZMOR_RULES_PATH": {
+      "$id": "#/properties/ACTION_ZIZMOR_RULES_PATH",
+      "description": "ACTION_ZIZMOR: Path where to find linter configuration file",
+      "title": "ACTION_ZIZMOR: Custom config file path",
+      "type": "string",
+      "x-category": "ACTION_ZIZMOR",
+      "x-order": 200040,
+      "x-section": "LINTER_COMMAND"
+    },
+    "ACTION_ZIZMOR_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/ACTION_ZIZMOR_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling ACTION_ZIZMOR and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "ACTION_ZIZMOR: Unsecured env variables",
+      "type": "array",
+      "x-category": "ACTION_ZIZMOR",
+      "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
+      "x-order": 600000,
+      "x-section": "SECURITY"
+    },
     "ADDITIONAL_EXCLUDED_DIRECTORIES": {
       "$id": "#/properties/ADDITIONAL_EXCLUDED_DIRECTORIES",
       "description": "List of additional excluded directory basenames to add to MegaLinter default excluded directories. They are excluded at any nested level.",
@@ -19224,7 +19462,7 @@
       "$id": "#/properties/POWERSHELL_POWERSHELL_CLI_EXECUTABLE",
       "default": [
         [
-          "pwsh"
+          "powershell"
         ]
       ],
       "description": "POWERSHELL_POWERSHELL: Override CLI executable used to build the linter command line (rarely needed)",
@@ -19390,7 +19628,7 @@
       "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_CLI_EXECUTABLE",
       "default": [
         [
-          "pwsh"
+          "powershell"
         ]
       ],
       "description": "POWERSHELL_POWERSHELL_FORMATTER: Override CLI executable used to build the linter command line (rarely needed)",
