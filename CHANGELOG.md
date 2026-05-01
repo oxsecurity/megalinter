@@ -10,11 +10,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Core
   - Security: add [more default hidden environment variables](https://megalinter.io/beta/config-variables-security/), so in case one of the 100+ linters is hacked, the attacker won't get your secrets anyway
+  - Upgrade GO version to 1.26.2
 
 - New linters
+  - osv-scanner (trivy-like security linter, by Google)
+  - Add [zizmor](https://docs.zizmor.sh/) GitHub Actions static analysis.
 
 - Disabled linters
   - Disable trivy until their security issue is solved
+  - Disable KICS until their security issue is solved
   - Disable spectral which is crashing
 
 - Deprecated linters
@@ -26,6 +30,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linters enhancements
 
 - Fixes
+  - Fix linter output by section in Console reporter
 
 - Reporters
   - Update Bitbucket pipeline generator template to trigger builds on pull requests from any branch, by @yermulnik in <https://github.com/oxsecurity/megalinter/pull/7421>
@@ -33,11 +38,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Flavors
 
 - Doc
+  - Migrate copilot-instructions into Claude Code Agents & Skills
+  - Add documentation for [megalinter-ado](https://github.com/DownAtTheBottomOfTheMoleHole/megalinter-ado) Azure DevOps extension
+  - Add documentation for [megalinter-mcp-server](https://github.com/DownAtTheBottomOfTheMoleHole/megalinter-mcp) MCP server
 
 - CI
   - Disable trivy-action until their security issue is solved
   - Run ARM linter jobs only if the latest commit message contains "ARM" (to avoid 200 jobs for each PR)
   - Prevent MegaLinter to push a new commit if the only updates are on markdown files
+  - Activate osv-scanner on own sources
+  - Exclude test dependencies from dependabot
 
 - mega-linter-runner
 
@@ -152,6 +162,23 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 9.7.0 to **10.0.0** on 2026-04-18
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.14.7 to **1.14.8** on 2026-04-18
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.99.4 to **1.0.0** on 2026-04-18
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.48.1 to **3.14** on 2026-04-18
+  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.11.4 to **3.11.5** on 2026-04-18
+  - [npm-package-json-lint](https://npmpackagejsonlint.org/) from 9.1.0 to **10.2.1** on 2026-04-18
+  - [kubescape](https://github.com/kubescape/kubescape) from 4.0.3 to **4.0.5** on 2026-04-18
+  - [rumdl](https://github.com/rvben/rumdl) from 0.1.73 to **0.1.75** on 2026-04-19
+  - [terragrunt](https://terragrunt.gruntwork.io) from 1.0.0 to **1.0.1** on 2026-04-19
+  - [stylelint](https://stylelint.io) from 16.26.1 to **17.8.0** on 2026-04-20
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 10.0.106 to **10.0.107** on 2026-04-23
+  - [rumdl](https://github.com/rvben/rumdl) from 0.1.75 to **0.1.78** on 2026-04-23
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.408 to **1.1.409** on 2026-04-23
+  - [grype](https://github.com/anchore/grype) from 0.111.0 to **0.111.1** on 2026-04-23
+  - [syft](https://github.com/anchore/syft) from 1.42.4 to **1.43.0** on 2026-04-23
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.14.8 to **1.14.9** on 2026-04-26
+  - [terragrunt](https://terragrunt.gruntwork.io) from 1.0.1 to **1.0.2** on 2026-04-26
+  - [phpstan](https://phpstan.org/) from 2.1.50 to **2.1.51** on 2026-04-26
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.0 to **7.6.1** on 2026-04-26
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.0 to **7.6.1** on 2026-04-26
 <!-- linter-versions-end -->
 
 ## [v9.4.0] - 2026-02-28

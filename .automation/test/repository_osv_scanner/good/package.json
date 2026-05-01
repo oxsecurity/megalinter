@@ -1,0 +1,83 @@
+{
+  "name": "mega-linter-runner",
+  "version": "5.6.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oxsecurity/megalinter.git"
+  },
+  "description": "Local runner for MegaLinter",
+  "main": "index.js",
+  "files": [
+    "lib",
+    "generators"
+  ],
+  "bin": {
+    "mega-linter-runner": "lib/index.js"
+  },
+  "scripts": {
+    "test": "mocha \"test/**/*.test.js\""
+  },
+  "keywords": [
+    "mega-linter",
+    "code",
+    "quality",
+    "runner",
+    "aggregator",
+    "javascript",
+    "typescript",
+    "python",
+    "c",
+    "java",
+    "csharp",
+    "yaml",
+    "json",
+    "rst",
+    "markdown",
+    "dotnet",
+    "lua",
+    "r",
+    "c++",
+    "dockerfile",
+    "bash",
+    "dart",
+    "go",
+    "groovy",
+    "react",
+    "perl",
+    "php",
+    "powershell",
+    "kotlin",
+    "scala",
+    "linter",
+    "lint",
+    "technical",
+    "debt",
+    "raku",
+    "ruby",
+    "rust",
+    "sql",
+    "basic",
+    "puppet",
+    "cloudformation",
+    "css",
+    "env",
+    "dotenv",
+    "graphql",
+    "latex",
+    "protocol",
+    "buffer",
+    "kubernetes",
+    "gherkin",
+    "cucumber",
+    "terraform",
+    "snakemake",
+    "ansible",
+    "jsonschema",
+    "swift"
+  ],
+  "author": "Nicolas Vuillamy",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^5.3.0"
+  }
+}

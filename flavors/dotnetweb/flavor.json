@@ -11,6 +11,7 @@
     "label": "Optimized for C, C++, C# or VB based projects with JS/TS",
     "linters": [
         "ACTION_ACTIONLINT",
+        "ACTION_ZIZMOR",
         "ANSIBLE_ANSIBLE_LINT",
         "ARM_ARM_TTK",
         "BASH_EXEC",
@@ -59,6 +60,7 @@
         "REPOSITORY_GITLEAKS",
         "REPOSITORY_GRYPE",
         "REPOSITORY_LS_LINT",
+        "REPOSITORY_OSV_SCANNER",
         "REPOSITORY_SECRETLINT",
         "REPOSITORY_SEMGREP",
         "REPOSITORY_SYFT",

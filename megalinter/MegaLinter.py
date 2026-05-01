@@ -40,6 +40,18 @@ def init_worker(request_config_in):
     global REQUEST_CONFIG
     # store argument in the global variable for this process
     REQUEST_CONFIG = request_config_in
+    # Re-apply the %(message)s formatter in every worker process.
+    # On Linux, fork() inherits the parent logger config, but multiprocessing_logging's
+    # install_mp_handler() replaces handlers with QueueHandlers whose formatter may not
+    # be propagated correctly to forked children, causing the default
+    # "%(levelname)s:%(name)s:%(message)s" format to appear in output instead of the
+    # plain message — which breaks CI annotation commands like "::group::" that must
+    # appear at the very start of a line.
+    formatter = logging.Formatter("%(message)s")
+    for handler in logging.root.handlers:
+        handler.setFormatter(formatter)
+    if not logging.root.handlers:
+        logging.basicConfig(format="%(message)s", stream=sys.stdout)
 
 
 # Function to run linters using multiprocessing pool

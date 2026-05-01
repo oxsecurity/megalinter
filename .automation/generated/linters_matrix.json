@@ -1,6 +1,7 @@
 {
   "linux/amd64": [
     "action_actionlint",
+    "action_zizmor",
     "ansible_ansible_lint",
     "arm_arm_ttk",
     "bash_exec",
@@ -81,8 +82,8 @@
     "repository_git_diff",
     "repository_gitleaks",
     "repository_grype",
-    "repository_kics",
     "repository_ls_lint",
+    "repository_osv_scanner",
     "repository_secretlint",
     "repository_semgrep",
     "repository_syft",
@@ -128,6 +129,7 @@
   ],
   "linux/arm64": [
     "action_actionlint",
+    "action_zizmor",
     "ansible_ansible_lint",
     "bash_exec",
     "bash_shellcheck",
@@ -200,8 +202,8 @@
     "repository_git_diff",
     "repository_gitleaks",
     "repository_grype",
-    "repository_kics",
     "repository_ls_lint",
+    "repository_osv_scanner",
     "repository_secretlint",
     "repository_semgrep",
     "repository_syft",

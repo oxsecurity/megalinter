@@ -6,6 +6,7 @@
     "label": "Optimized for TERRAFORM based projects",
     "linters": [
         "ACTION_ACTIONLINT",
+        "ACTION_ZIZMOR",
         "ANSIBLE_ANSIBLE_LINT",
         "BASH_EXEC",
         "BASH_SHELLCHECK",
@@ -35,8 +36,8 @@
         "REPOSITORY_GIT_DIFF",
         "REPOSITORY_GITLEAKS",
         "REPOSITORY_GRYPE",
-        "REPOSITORY_KICS",
         "REPOSITORY_LS_LINT",
+        "REPOSITORY_OSV_SCANNER",
         "REPOSITORY_SECRETLINT",
         "REPOSITORY_SEMGREP",
         "REPOSITORY_SYFT",

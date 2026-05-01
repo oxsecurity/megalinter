@@ -340,6 +340,7 @@ nav:
               - "grype": "descriptors/repository_grype.md"
               - "kics": "descriptors/repository_kics.md"
               - "ls-lint": "descriptors/repository_ls_lint.md"
+              - "osv-scanner": "descriptors/repository_osv_scanner.md"
               - "secretlint": "descriptors/repository_secretlint.md"
               - "semgrep": "descriptors/repository_semgrep.md"
               - "syft": "descriptors/repository_syft.md"
@@ -421,7 +422,6 @@ nav:
   - "Contribute":
       - "How-to Contribute": "how-to-contribute.md"
       - "Contributing Guide": "contributing.md"
-      - "Copilot Instructions ": "copilot-instructions.md"
   - "License":
       - "AGPL V3 License": "license.md"
       - "License explanations": "license-explanations.md"
