@@ -203,7 +203,7 @@ ARG PIP_RUMDL_VERSION=0.1.78
 ARG PSSA_VERSION='1.25.0'
 
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.2.521
+ARG PIP_CHECKOV_VERSION=3.2.526
 # renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.111.1
 # renovate: datasource=npm depName=@ls-lint/ls-lint
