@@ -27,18 +27,44 @@ class V8rLinter(Linter):
                     "V8R_CONFIG_FILE": self.config_file,
                 }
         return_code, return_stdout = super().execute_lint_command(command)
-        # Filter v8r output to show only validation errors:
-        # - Remove success lines (✔ file is valid)
-        # - Remove info lines (ℹ Could not find a schema...)
-        # Only actual validation error lines (✖) and their details are kept.
-        # Combined with --ignore-errors, "no schema found" produces no
-        # output and exit code 0.
         if return_stdout:
-            filtered_lines = []
-            for line in return_stdout.splitlines():
-                stripped = line.strip()
-                if stripped.startswith("✔") or stripped.startswith("ℹ"):
-                    continue
-                filtered_lines.append(line)
-            return_stdout = "\n".join(filtered_lines)
+            return_stdout = V8rLinter._filter_output(return_stdout)
         return return_code, return_stdout
+
+    @staticmethod
+    def _filter_output(output):
+        lines = output.splitlines()
+        noise = set()
+        for i, line in enumerate(lines):
+            s = line.strip()
+            if (
+                s.startswith("✔")
+                or s.startswith("ℹ")
+                or "Could not find a schema to validate" in s
+                or ("unknown format" in s and "ignored in schema" in s)
+                or ("schema with key or id" in s and "already exists" in s)
+            ):
+                noise.add(i)
+            elif "Found multiple possible schemas to validate" in s:
+                noise.add(i)
+                # Walk backwards to discard the candidate schema-list lines that precede this
+                j = i - 1
+                while j >= 0:
+                    prev = lines[j].strip()
+                    if prev == "" or not prev.startswith("✖"):
+                        noise.add(j)
+                        j -= 1
+                    else:
+                        break
+        # Build filtered output, collapsing consecutive blank lines
+        result = []
+        prev_blank = False
+        for i, line in enumerate(lines):
+            if i in noise:
+                continue
+            is_blank = line.strip() == ""
+            if is_blank and prev_blank:
+                continue
+            result.append(line)
+            prev_blank = is_blank
+        return "\n".join(result).strip()
