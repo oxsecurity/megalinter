@@ -80,7 +80,7 @@ linters:
     linter_rules_configuration_url: https://docs.zizmor.sh/configuration/
     linter_rules_inline_disable_url: https://docs.zizmor.sh/usage/#with-comments
     linter_spdx_license: MIT
-    files_sub_directory: .github
+    files_sub_directory: .github/workflows
     test_folder: action_zizmor
     config_file_name: zizmor.yml
     cli_config_arg_name: --config
