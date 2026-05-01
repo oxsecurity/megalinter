@@ -47,6 +47,10 @@ class ConsoleLinterReporter(Reporter):
         elapse = str(round(self.master.elapsed_time_s, 2)) + "s"
         total_errors = str(self.master.total_number_errors)
         total_warnings = str(self.master.total_number_warnings)
+        # Always use logging.info for section markers so CI platforms
+        # (GitHub Actions, GitLab CI, Azure Pipelines) correctly interpret
+        # the annotation commands (e.g. ::group::). Visual status cues
+        # (emojis and colors) still indicate warning/error statuses.
         if self.master.return_code == 0 and self.master.status == "success":
             logging.info(
                 log_section_start(
@@ -55,7 +59,7 @@ class ConsoleLinterReporter(Reporter):
                 )
             )
         elif self.master.return_code == 0 and self.master.status != "success":
-            logging.warning(
+            logging.info(
                 log_section_start(
                     f"processed-{self.master.name}",
                     utils.yellow(
@@ -65,7 +69,7 @@ class ConsoleLinterReporter(Reporter):
                 )
             )
         elif self.master.return_code != 0 and self.master.status != "success":
-            logging.error(
+            logging.info(
                 log_section_start(
                     f"processed-{self.master.name}",
                     utils.red(
@@ -74,7 +78,7 @@ class ConsoleLinterReporter(Reporter):
                 )
             )
         else:
-            logging.error(
+            logging.info(
                 log_section_start(
                     f"processed-{self.master.name}",
                     f"❌ There is a MegaLinter issue, please report it: {self.master.return_code}"

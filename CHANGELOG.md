@@ -30,7 +30,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linters enhancements
 
 - Fixes
-  - Fix linter output by section in Console reporter
+  - Fix ConsoleLinterReporter to display log sections for all linters (not just errors)
+  - Fix ConsoleReporter to output results table and reporters logs after linters run
+  - Produce linter console reports sequentially in main process for parallel runs to avoid interleaved CI log sections
 
 - Reporters
 

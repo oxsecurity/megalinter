@@ -59,7 +59,16 @@ def run_linters(linters, request_id):
     global REQUEST_CONFIG
     config.set_config(request_id, REQUEST_CONFIG)
     for linter in linters:
-        linter.run(run_commands_before_linters=False, run_commands_after_linters=False)
+        # Skip console reporter in workers: output will be produced in the
+        # main process to avoid interleaved CI log section markers
+        linter.run(
+            run_commands_before_linters=False,
+            run_commands_after_linters=False,
+            skip_console_reporter=True,
+        )
+        # Pre-cache linter version so the main process console report
+        # does not need to run the linter executable
+        linter.get_linter_version()
     return linters
 
 
@@ -247,10 +256,11 @@ class Megalinter:
         for active_descriptor_id in active_descriptor_ids:
             pre_post_factory.run_descriptor_pre_commands(self, active_descriptor_id)
 
-        if (
+        ran_parallel = (
             config.get(self.request_id, "PARALLEL", "true") == "true"
             and len(self.active_linters) > 1
-        ):
+        )
+        if ran_parallel:
             for active_linter in self.active_linters:
                 pre_post_factory.run_linter_pre_commands(
                     active_linter.master, active_linter, run_before_linters=True
@@ -301,6 +311,25 @@ class Megalinter:
         self.linters = sorted(
             self.linters, key=lambda lamb: (lamb.descriptor_id, lamb.name)
         )
+
+        # Produce console linter reports in main process for parallel runs.
+        # When linters run in parallel workers, console output (including CI
+        # log section markers like ::group::/::endgroup::) would be interleaved
+        # across linters, breaking CI log sections. By deferring to the main
+        # process, output is sequential and sections are properly nested.
+        if ran_parallel:
+            for linter in self.linters:
+                if linter.is_active is True:
+                    for reporter in linter.reporters:
+                        if reporter.name == "CONSOLE" and reporter.is_active:
+                            try:
+                                reporter.produce_report()
+                            except Exception as e:
+                                logging.error(
+                                    "Unable to process reporter "
+                                    + reporter.name
+                                    + str(e)
+                                )
 
         # Check if a MegaLinter flavor can be used for this repo, except if:
         # - FLAVOR_SUGGESTIONS: false is defined
