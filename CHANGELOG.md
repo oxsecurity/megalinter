@@ -28,6 +28,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Media
 
 - Linters enhancements
+  - v8r (JSON/YAML schema validation): filter output to show only validation errors, suppressing "no schema found" info and success messages
 
 - Fixes
   - Fix ConsoleLinterReporter to display log sections for all linters (not just errors)

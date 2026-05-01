@@ -26,4 +26,19 @@ class V8rLinter(Linter):
                     "FORCE_COLOR": "0",
                     "V8R_CONFIG_FILE": self.config_file,
                 }
-        return super().execute_lint_command(command)
+        return_code, return_stdout = super().execute_lint_command(command)
+        # Filter v8r output to show only validation errors:
+        # - Remove success lines (✔ file is valid)
+        # - Remove info lines (ℹ Could not find a schema...)
+        # Only actual validation error lines (✖) and their details are kept.
+        # Combined with --ignore-errors, "no schema found" produces no
+        # output and exit code 0.
+        if return_stdout:
+            filtered_lines = []
+            for line in return_stdout.splitlines():
+                stripped = line.strip()
+                if stripped.startswith("✔") or stripped.startswith("ℹ"):
+                    continue
+                filtered_lines.append(line)
+            return_stdout = "\n".join(filtered_lines)
+        return return_code, return_stdout
