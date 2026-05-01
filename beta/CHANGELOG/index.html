@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="MegaLinter is an open-source tool for CI/CD workflows that analyzes the consistency of your code, IaC, configuration, and scripts in your repository to ensure all your project sources are clean and formatted, no matter which IDE or toolbox is used by your developers. Powered by OX Security.Supports 69 languages, 23 formats, 21 tooling formats, and is ready to use out of the box as a GitHub Action or with any CI system. It is highly configurable and free for all uses.MegaLinter has native integrations with many major CI/CD tools.">
+        <meta name="description" content="MegaLinter is an open-source tool for CI/CD workflows that analyzes the consistency of your code, IaC, configuration, and scripts in your repository to ensure all your project sources are clean and formatted, no matter which IDE or toolbox is used by your developers. Powered by OX Security.Supports 69 languages, 23 formats, 22 tooling formats, and is ready to use out of the box as a GitHub Action or with any CI system. It is highly configurable and free for all uses.MegaLinter has native integrations with many major CI/CD tools.">
       
       
         <meta name="author" content="Nicolas Vuillamy">
@@ -7389,6 +7389,34 @@
     
   
     actionlint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../descriptors/action_zizmor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    zizmor
   
 
     
@@ -15602,6 +15630,7 @@
 <ul>
 <li>New linters<ul>
 <li>osv-scanner (trivy-like security linter, by Google)</li>
+<li>Add <a href="https://docs.zizmor.sh/">zizmor</a> GitHub Actions static analysis.</li>
 </ul>
 </li>
 </ul>
@@ -15623,11 +15652,16 @@
 <li>Media</li>
 </ul>
 <ul>
-<li>Linters enhancements</li>
+<li>Linters enhancements<ul>
+<li>v8r (JSON/YAML schema validation): filter output to show only validation errors, suppressing "no schema found" info and success messages</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Fixes<ul>
-<li>Fix linter output by section in Console reporter</li>
+<li>Fix ConsoleLinterReporter to display log sections for all linters (not just errors)</li>
+<li>Fix ConsoleReporter to output results table and reporters logs after linters run</li>
+<li>Produce linter console reports sequentially in main process for parallel runs to avoid interleaved CI log sections</li>
 </ul>
 </li>
 </ul>
@@ -15640,6 +15674,8 @@
 <ul>
 <li>Doc<ul>
 <li>Migrate copilot-instructions into Claude Code Agents &amp; Skills</li>
+<li>Add documentation for <a href="https://github.com/DownAtTheBottomOfTheMoleHole/megalinter-ado">megalinter-ado</a> Azure DevOps extension</li>
+<li>Add documentation for <a href="https://github.com/DownAtTheBottomOfTheMoleHole/megalinter-mcp">megalinter-mcp-server</a> MCP server</li>
 </ul>
 </li>
 </ul>
@@ -15780,6 +15816,11 @@
 <li><a href="https://github.com/Microsoft/pyright">pyright</a> from 1.1.408 to <strong>1.1.409</strong> on 2026-04-23</li>
 <li><a href="https://github.com/anchore/grype">grype</a> from 0.111.0 to <strong>0.111.1</strong> on 2026-04-23</li>
 <li><a href="https://github.com/anchore/syft">syft</a> from 1.42.4 to <strong>1.43.0</strong> on 2026-04-23</li>
+<li><a href="https://developer.hashicorp.com/terraform/cli/commands/fmt">terraform-fmt</a> from 1.14.8 to <strong>1.14.9</strong> on 2026-04-26</li>
+<li><a href="https://terragrunt.gruntwork.io">terragrunt</a> from 1.0.1 to <strong>1.0.2</strong> on 2026-04-26</li>
+<li><a href="https://phpstan.org/">phpstan</a> from 2.1.50 to <strong>2.1.51</strong> on 2026-04-26</li>
+<li><a href="https://github.com/PowerShell/PSScriptAnalyzer">powershell_formatter</a> from 7.6.0 to <strong>7.6.1</strong> on 2026-04-26</li>
+<li><a href="https://github.com/PowerShell/PSScriptAnalyzer">powershell</a> from 7.6.0 to <strong>7.6.1</strong> on 2026-04-26</li>
 </ul>
 </li>
 </ul>

@@ -578,6 +578,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#alternative-azure-devops-extension-community" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alternative: Azure DevOps Extension (Community)
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -7494,6 +7505,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../descriptors/action_zizmor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    zizmor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -12334,6 +12373,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#alternative-azure-devops-extension-community" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alternative: Azure DevOps Extension (Community)
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12431,6 +12481,22 @@ steps:
 <p>Note: If your pipelines run on Azure DevOps but your source code is hosted on GitHub, and you want status reports to appear on GitHub, you must provide additional repository information to the pipeline. See this <a href="https://github.com/firedigger/megalinter-azure-pipelines-with-github-repository">example</a> for guidance.</p>
 <h2 id="detailed-tutorial">Detailed Tutorial</h2>
 <p>You can also follow this <a href="https://github.com/DonKoning/megaLinter">detailed tutorial</a> by <a href="https://github.com/DonKoning">DonKoning</a>.</p>
+<h2 id="alternative-azure-devops-extension-community">Alternative: Azure DevOps Extension (Community)</h2>
+<blockquote>
+<p><strong>Note:</strong> This is a community-maintained extension and is <strong>not</strong> affiliated with or maintained by the MegaLinter team.</p>
+</blockquote>
+<p>As an alternative to the manual Docker configuration above, the community-maintained <a href="https://marketplace.visualstudio.com/items?itemName=DownAtTheBottomOfTheMoleHole.megalinter-ado">megalinter-ado</a> Azure DevOps extension provides a native Azure Pipelines task for running MegaLinter.</p>
+<p>Install from the <a href="https://marketplace.visualstudio.com/items?itemName=DownAtTheBottomOfTheMoleHole.megalinter-ado">Visual Studio Marketplace</a>, then add the task to your pipeline:</p>
+<pre><code class="language-yaml">- task: MegaLinter@1
+  displayName: Run MegaLinter
+  inputs:
+    flavor: all
+    fix: true
+    createFixPR: true
+  env:
+    SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+</code></pre>
+<p>See the <a href="https://github.com/DownAtTheBottomOfTheMoleHole/megalinter-ado">extension repository</a> for full configuration options.</p>
 <!-- install-azure-section-end -->
 
 
