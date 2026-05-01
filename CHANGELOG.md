@@ -181,6 +181,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 2.1.50 to **2.1.51** on 2026-04-26
   - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.0 to **7.6.1** on 2026-04-26
   - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.0 to **7.6.1** on 2026-04-26
+  - [checkov](https://www.checkov.io/) from 3.2.521 to **3.2.526** on 2026-05-01
+  - [grype](https://github.com/anchore/grype) from 0.111.1 to **0.112.0** on 2026-05-01
+  - [syft](https://github.com/anchore/syft) from 1.43.0 to **1.44.0** on 2026-05-01
 <!-- linter-versions-end -->
 
 ## [v9.4.0] - 2026-02-28

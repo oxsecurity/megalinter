@@ -15,7 +15,7 @@ description: How to use kics (configure, ignore files, ignore errors, help & ver
 
 _This linter has been disabled in this version_
 
-_Disabled reason: Supply chain compromise - <https://socket.dev/blog/checkmarx-supply-chain-compromise>_
+_Disabled reason: Supply chain compromise - https://socket.dev/blog/checkmarx-supply-chain-compromise_
 
 **KICS** (Keeping Infrastructure as Code Secure) is a comprehensive open-source security scanner that identifies security vulnerabilities, compliance issues, and infrastructure misconfigurations in Infrastructure as Code files. It serves as a critical tool for preventing security risks before deployment to production environments.
 

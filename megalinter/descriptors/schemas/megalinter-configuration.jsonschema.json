@@ -978,7 +978,7 @@
     },
     "ACTION_ZIZMOR_DIRECTORY": {
       "$id": "#/properties/ACTION_ZIZMOR_DIRECTORY",
-      "default": ".github",
+      "default": ".github/workflows",
       "description": "Directory that must be found to activate linter. Use value \"any\" to always activate",
       "title": "ACTION_ZIZMOR: Directory containing ACTION files",
       "type": "string",
@@ -19462,7 +19462,7 @@
       "$id": "#/properties/POWERSHELL_POWERSHELL_CLI_EXECUTABLE",
       "default": [
         [
-          "powershell"
+          "pwsh"
         ]
       ],
       "description": "POWERSHELL_POWERSHELL: Override CLI executable used to build the linter command line (rarely needed)",
@@ -19628,7 +19628,7 @@
       "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_CLI_EXECUTABLE",
       "default": [
         [
-          "powershell"
+          "pwsh"
         ]
       ],
       "description": "POWERSHELL_POWERSHELL_FORMATTER: Override CLI executable used to build the linter command line (rarely needed)",
