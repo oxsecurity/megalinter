@@ -72,7 +72,12 @@ linters:
       - **Overprivileged Runner Detection**: Identify excessive permission scopes and credential grants to runners.
       - **Invalid Reference Discovery**: Locate impostor commits and confusable git references.
 
-      > If you are using the GitHub action please use the `ACTION_ZIZMOR_UNSECURED_ENV_VARIABLES: GITHUB_TOKEN` to prevent plugin download issues
+      > To allow zizmor to use GITHUB_TOKEN for online audits, add the following to your `.mega-linter.yml`:
+      >
+      > ```yaml
+      > ACTION_ZIZMOR_UNSECURED_ENV_VARIABLES:
+      >   - GITHUB_TOKEN
+      > ```
     linter_url: https://zizmor.sh/
     linter_repo: https://github.com/zizmorcore/zizmor
     linter_image_url: https://docs.zizmor.sh/assets/rainbow.svg

@@ -65,7 +65,7 @@ jobs:
 
         # You can override MegaLinter flavor used to have faster performances
         # More info at https://megalinter.io/latest/flavors/
-        uses: oxsecurity/megalinter@v8
+        uses: oxsecurity/megalinter@v9
 
         id: ml
 
@@ -151,9 +151,12 @@ jobs:
 
       - name: Create PR output
         if: env.APPLY_FIXES_IF_PR == 'true'
+        env:
+          PR_NUMBER: ${{ steps.cpr.outputs.pull-request-number }}
+          PR_URL: ${{ steps.cpr.outputs.pull-request-url }}
         run: |
-          echo "PR Number - ${{ steps.cpr.outputs.pull-request-number }}"
-          echo "PR URL - ${{ steps.cpr.outputs.pull-request-url }}"
+          echo "PR Number - ${PR_NUMBER}"
+          echo "PR URL - ${PR_URL}"
 
       # Push new commit if applicable
       # (for now works only on PR from same repository, not from forks)

@@ -157,9 +157,12 @@ jobs:
             github.event.pull_request.head.repo.full_name == github.repository
           ) &&
           !contains(github.event.head_commit.message, 'skip fix')
+        env:
+          PR_NUMBER: ${{ steps.cpr.outputs.pull-request-number }}
+          PR_URL: ${{ steps.cpr.outputs.pull-request-url }}
         run: |
-          echo "PR Number - ${{ steps.cpr.outputs.pull-request-number }}"
-          echo "PR URL - ${{ steps.cpr.outputs.pull-request-url }}"
+          echo "PR Number - ${PR_NUMBER}"
+          echo "PR URL - ${PR_URL}"
 
       # Push new commit if applicable
       # (for now works only on PR from same repository, not from forks)
