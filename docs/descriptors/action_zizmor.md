@@ -16,7 +16,12 @@ description: How to use zizmor (configure, ignore files, ignore errors, help & v
 - **Overprivileged Runner Detection**: Identify excessive permission scopes and credential grants to runners.
 - **Invalid Reference Discovery**: Locate impostor commits and confusable git references.
 
-> If you are using the GitHub action please use the `ACTION_ZIZMOR_UNSECURED_ENV_VARIABLES: GITHUB_TOKEN` to prevent plugin download issues
+> To allow zizmor to use GITHUB_TOKEN for online audits, add the following to your `.mega-linter.yml`:
+>
+> ```yaml
+> ACTION_ZIZMOR_UNSECURED_ENV_VARIABLES:
+>   - GITHUB_TOKEN
+> ```
 
 ## zizmor documentation
 

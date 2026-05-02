@@ -184,6 +184,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.2.521 to **3.2.526** on 2026-05-01
   - [grype](https://github.com/anchore/grype) from 0.111.1 to **0.112.0** on 2026-05-01
   - [syft](https://github.com/anchore/syft) from 1.43.0 to **1.44.0** on 2026-05-01
+  - [npm-package-json-lint](https://npmpackagejsonlint.org/) from 10.2.1 to **10.2.2** on 2026-05-02
+  - [phpstan](https://phpstan.org/) from 2.1.51 to **2.1.54** on 2026-05-02
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.11 to **0.15.12** on 2026-05-02
+  - [ruff](https://github.com/astral-sh/ruff) from 0.15.11 to **0.15.12** on 2026-05-02
 <!-- linter-versions-end -->
 
 ## [v9.4.0] - 2026-02-28

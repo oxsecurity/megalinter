@@ -22,7 +22,7 @@ description: How to use npm-package-json-lint (configure, ignore files, ignore e
 
 ## npm-package-json-lint documentation
 
-- Version in MegaLinter: **10.2.1**
+- Version in MegaLinter: **10.2.2**
 - Visit [Official Web Site](https://npmpackagejsonlint.org/){target=_blank}
 - See [How to configure npm-package-json-lint rules](https://npmpackagejsonlint.org/docs/configuration){target=_blank}
   - If custom `.npmpackagejsonlintrc.json` config file isn't found, [.npmpackagejsonlintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.npmpackagejsonlintrc.json){target=_blank} will be used
@@ -132,11 +132,11 @@ npmPkgJsonLint --configFile .npmpackagejsonlintrc.json .
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=npm-package-json-lint
-ARG NPM_PACKAGE_JSON_LINT_VERSION=10.2.1
+ARG NPM_PACKAGE_JSON_LINT_VERSION=10.2.2
 # renovate: datasource=npm depName=npm-package-json-lint-config-default
 ARG NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION=9.0.1
 ```
 
 - NPM packages (node.js):
-  - [npm-package-json-lint@10.2.1](https://www.npmjs.com/package/npm-package-json-lint/v/10.2.1)
+  - [npm-package-json-lint@10.2.2](https://www.npmjs.com/package/npm-package-json-lint/v/10.2.2)
   - [npm-package-json-lint-config-default@9.0.1](https://www.npmjs.com/package/npm-package-json-lint-config-default/v/9.0.1)
