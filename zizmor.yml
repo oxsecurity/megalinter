@@ -1,6 +1,6 @@
 rules:
   artipacked:
     ignore:
-      - .github/workflows/build-command.yml
-      - .github/workflows/mega-linter-for-runner.yml
-      - .github/workflows/mega-linter.yml
+      - build-command.yml
+      - mega-linter-for-runner.yml
+      - mega-linter.yml
