@@ -477,6 +477,8 @@ jobs:
         uses: actions/checkout@v6
         with:
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
+          persist-credentials: false # Comment this line and uncomment the next one if you use APPLY_FIXES
+          # persist-credentials: true # zizmor: ignore[artipacked]
           fetch-depth: 0 # If you use VALIDATE_ALL_CODEBASE = true, you can remove this line to improve performances
 
       # MegaLinter

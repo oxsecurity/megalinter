@@ -59,6 +59,8 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
+          # persist-credentials: false # Comment this line and uncomment the next one if you use APPLY_FIXES
+          persist-credentials: true # zizmor: ignore[artipacked]
 
           # If you use VALIDATE_ALL_CODEBASE = true, you can remove this line to
           # improve performance
