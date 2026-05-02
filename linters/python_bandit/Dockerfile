@@ -57,7 +57,7 @@ ARG PIP_BANDIT_VERSION=1.9.4
 # renovate: datasource=pypi depName=bandit_sarif_formatter
 ARG PIP_BANDIT_SARIF_FORMATTER_VERSION=1.1.1
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=26.0.1
+ARG PIP_PIP_VERSION=26.1
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=21.2.4
 #ARG__END

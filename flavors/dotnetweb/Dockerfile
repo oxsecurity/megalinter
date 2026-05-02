@@ -203,7 +203,7 @@ ARG PIP_RUMDL_VERSION=0.1.78
 ARG PSSA_VERSION='1.25.0'
 
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.2.521
+ARG PIP_CHECKOV_VERSION=3.2.526
 # renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.111.1
 # renovate: datasource=npm depName=@ls-lint/ls-lint
@@ -247,7 +247,7 @@ ARG NPM_TS_STANDARD_VERSION=12.0.2
 # renovate: datasource=pypi depName=yamllint
 ARG PIP_YAMLLINT_VERSION=1.38.0
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=26.0.1
+ARG PIP_PIP_VERSION=26.1
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=21.2.4
 # renovate: datasource=github-tags depName=rust-lang/rust

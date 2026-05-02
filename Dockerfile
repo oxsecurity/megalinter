@@ -303,7 +303,7 @@ ARG RAKU_RAKU_VERSION=2026.03
 ARG RAKU_RAKU_ALPINE_VERSION=3.23
 
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.2.521
+ARG PIP_CHECKOV_VERSION=3.2.526
 # renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
 ARG REPOSITORY_DEVSKIM_VERSION=1.0.70
 # renovate: datasource=github-tags depName=anchore/grype
@@ -379,7 +379,7 @@ ARG NPM_TS_STANDARD_VERSION=12.0.2
 # renovate: datasource=pypi depName=yamllint
 ARG PIP_YAMLLINT_VERSION=1.38.0
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=26.0.1
+ARG PIP_PIP_VERSION=26.1
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=21.2.4
 # renovate: datasource=github-tags depName=rust-lang/rust

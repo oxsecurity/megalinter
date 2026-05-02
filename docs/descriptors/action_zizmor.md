@@ -52,7 +52,7 @@ description: How to use zizmor (configure, ignore files, ignore errors, help & v
 | ACTION_ZIZMOR_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | ACTION_ZIZMOR_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
 | ACTION_ZIZMOR_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['zizmor']`                                    |
-| ACTION_DIRECTORY                          | Directory containing ACTION files (use `any` to always activate the linter)                                                                                                                                         | `.github`                                       |
+| ACTION_DIRECTORY                          | Directory containing ACTION files (use `any` to always activate the linter)                                                                                                                                         | `.github/workflows`                             |
 
 ## MegaLinter Flavors
 
@@ -81,7 +81,7 @@ This linter is available in the following flavors
 
 ### How are identified applicable files
 
-- Activated only if sub-directory `.github` is found. (directory name can be overridden with `ACTION_DIRECTORY`)
+- Activated only if sub-directory `.github/workflows` is found. (directory name can be overridden with `ACTION_DIRECTORY`)
 - File extensions: `.yml`, `.yaml`
 
 <!-- markdownlint-disable -->
