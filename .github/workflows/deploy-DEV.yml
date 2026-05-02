@@ -30,6 +30,8 @@ on:
 ###############
 # Set the Job #
 ###############
+permissions: {}
+
 concurrency:
   group: ${{ github.ref_name }}-${{ github.workflow }}
   cancel-in-progress: true
@@ -180,7 +182,8 @@ jobs:
           GITHUB_REPOSITORY=$([ "$EVENT_NAME" == "pull_request" ] && echo "$PR_HEAD_REPO" || echo "$GH_REPOSITORY")
           GITHUB_BRANCH=$([ "$EVENT_NAME" == "pull_request" ] && echo "$HEAD_REF" || echo "$REF_NAME")
 
-          export CI_ENV="$(bash <(curl -s https://codecov.io/env)) -e GITHUB_ACTIONS"
+          CI_ENV="$(bash <(curl -s https://codecov.io/env)) -e GITHUB_ACTIONS"
+          export CI_ENV
           TEST_KEYWORDS_TO_USE=""
           if [[ "${COMMIT_MSG}" == *"TEST_KEYWORDS="* ]]; then
             TEST_KEYWORDS_TO_USE=${COMMIT_MSG#*TEST_KEYWORDS=}
@@ -191,7 +194,8 @@ jobs:
             fi
           fi
           docker image ls
-          docker run $CI_ENV -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER="${GH_SHA}" -e OUTPUT_DETAIL=detailed -e GITHUB_SHA="${GH_SHA}" -e GITHUB_REPOSITORY="${GITHUB_REPOSITORY}" -e GITHUB_BRANCH="${GITHUB_BRANCH}" -e GITHUB_TOKEN="${GITHUB_TOKEN}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint "${DOCKER_IMAGE}"
+          # shellcheck disable=SC2086
+          docker run $CI_ENV -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER="${GH_SHA}" -e OUTPUT_DETAIL=detailed -e GITHUB_SHA="${GH_SHA}" -e GITHUB_REPOSITORY="${GITHUB_REPOSITORY}" -e GITHUB_BRANCH="${GITHUB_BRANCH}" -e GITHUB_TOKEN="${GITHUB_TOKEN}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v "${GITHUB_WORKSPACE}:/tmp/lint" "${DOCKER_IMAGE}"
         timeout-minutes: 120
 
       #####################################
@@ -207,7 +211,7 @@ jobs:
           GH_TOKEN_VALUE: ${{ github.token }}
           GH_RUN_ID: ${{ github.run_id }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: docker run -e GITHUB_REPOSITORY="${GH_REPOSITORY}" -e GITHUB_SHA="${GH_SHA}" -e GITHUB_TOKEN="${GH_TOKEN_VALUE}" -e GITHUB_RUN_ID="${GH_RUN_ID}" -e GITHUB_TOKEN="${GITHUB_TOKEN}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint "${DOCKER_IMAGE}"
+        run: docker run -e GITHUB_REPOSITORY="${GH_REPOSITORY}" -e GITHUB_SHA="${GH_SHA}" -e GITHUB_TOKEN="${GH_TOKEN_VALUE}" -e GITHUB_RUN_ID="${GH_RUN_ID}" -e GITHUB_TOKEN="${GITHUB_TOKEN}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v "${GITHUB_WORKSPACE}:/tmp/lint" "${DOCKER_IMAGE}"
         timeout-minutes: 15
 
       # Upload MegaLinter artifacts
@@ -225,7 +229,7 @@ jobs:
 
       - name: debug
         if: success() || failure()
-        run: echo ${STEPS_DOCKER_BUILD_OUTCOME}
+        run: echo "${STEPS_DOCKER_BUILD_OUTCOME}"
         env:
           STEPS_DOCKER_BUILD_OUTCOME: ${{ steps.docker_build.outcome }}
 

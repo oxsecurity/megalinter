@@ -18,17 +18,12 @@ on:
   release:
     # Want to run the automation when a release is created
     types: ["created"]
-    paths:
-      - "Dockerfile"
-      - "megalinter/**"
-      - "mega-linter-runner/**"
-      - "flavors/**"
-      - "**/linter-versions.json"
-      - "**/.sh"
 
 ###############
 # Set the Job #
 ###############
+permissions: {}
+
 jobs:
   publish_runner:
     name: Publish mega-linter-runner (release)
@@ -98,7 +93,7 @@ jobs:
           sudo rm -rf /opt/hostedtoolcache/go # Go toolcache
 
       - name: Get current date
-        run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> ${GITHUB_ENV}
+        run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> "${GITHUB_ENV}"
 
       - name: Build Image
         uses: docker/build-push-action@bcafcacb16a39f128d818304e6c9c0c18556b85f # v7
@@ -215,7 +210,7 @@ jobs:
       - name: Prepare
         run: |
           platform=${{ matrix.platform }}
-          echo "PLATFORM_PAIR=${platform//\//-}" >> $GITHUB_ENV
+          echo "PLATFORM_PAIR=${platform//\//-}" >> "${GITHUB_ENV}"
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@ce360397dd3f832beb865e1373c09c0e9f86d70a # v4
@@ -231,7 +226,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Get current date
-        run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> ${GITHUB_ENV}
+        run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> "${GITHUB_ENV}"
 
       - name: Build Flavor Builder Image
         id: build
@@ -307,12 +302,13 @@ jobs:
       - name: Create manifest list and push
         working-directory: ${{ runner.temp }}/digests
         run: |
+          # shellcheck disable=SC2046
           docker buildx imagetools create $(jq -cr '.tags | map("-t " + .) | join(" ")' <<< "$DOCKER_METADATA_OUTPUT_JSON") \
             $(printf 'ghcr.io/${{ github.repository }}-custom-flavor-builder@sha256:%s ' *)
 
       - name: Inspect image
         run: |
-          docker buildx imagetools inspect ghcr.io/${{ github.repository }}-custom-flavor-builder:${STEPS_META_OUTPUTS_VERSION}
+          docker buildx imagetools inspect ghcr.io/${{ github.repository }}-custom-flavor-builder:"${STEPS_META_OUTPUTS_VERSION}"
         env:
           STEPS_META_OUTPUTS_VERSION: ${{ steps.meta.outputs.version }}
 
@@ -361,18 +357,18 @@ jobs:
           git stash
       - name: Checkout previous tag
         run: |
-          git checkout ${STEPS_VERSION_OUTPUTS_PTAG}
+          git checkout "${STEPS_VERSION_OUTPUTS_PTAG}"
         env:
           STEPS_VERSION_OUTPUTS_PTAG: ${{ steps.version.outputs.ptag }}
       - name: Mike deploy previous version
         run: |
-          mike delete ${STEPS_VERSION_OUTPUTS_PVERSION} || echo 'version does not exists yet'
-          mike deploy ${STEPS_VERSION_OUTPUTS_PVERSION}
+          mike delete "${STEPS_VERSION_OUTPUTS_PVERSION}" || echo 'version does not exists yet'
+          mike deploy "${STEPS_VERSION_OUTPUTS_PVERSION}"
         env:
           STEPS_VERSION_OUTPUTS_PVERSION: ${{ steps.version.outputs.pversion }}
       - name: Checkout current tag
         run: |
-          git checkout ${STEPS_VERSION_OUTPUTS_CTAG}
+          git checkout "${STEPS_VERSION_OUTPUTS_CTAG}"
         env:
           STEPS_VERSION_OUTPUTS_CTAG: ${{ steps.version.outputs.ctag }}
       - name: Mike deploy current version
@@ -381,6 +377,6 @@ jobs:
           mike delete latest
           mike delete v9 || true
           mike deploy v9 || true
-          mike deploy --push latest ${STEPS_VERSION_OUTPUTS_CVERSION}
+          mike deploy --push latest "${STEPS_VERSION_OUTPUTS_CVERSION}"
         env:
           STEPS_VERSION_OUTPUTS_CVERSION: ${{ steps.version.outputs.cversion }}

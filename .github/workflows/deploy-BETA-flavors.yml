@@ -34,6 +34,8 @@ on:
 ###############
 # Set the Job #
 ###############
+permissions: {}
+
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
   cancel-in-progress: true

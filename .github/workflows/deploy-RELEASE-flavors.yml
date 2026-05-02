@@ -18,16 +18,12 @@ on:
   release:
     # Want to run the automation when a release is created
     types: ["created"]
-    paths:
-      - "Dockerfile"
-      - "megalinter/**"
-      - "flavors/**"
-      - "**/linter-versions.json"
-      - "**/.sh"
 
 ###############
 # Set the Job #
 ###############
+permissions: {}
+
 jobs:
   build:
     # Name the Job
@@ -100,7 +96,7 @@ jobs:
           sudo rm -rf /opt/hostedtoolcache/go # Go toolcache
 
       - name: Get current date
-        run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> ${GITHUB_ENV}
+        run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> "${GITHUB_ENV}"
 
       - name: Build Image
         uses: docker/build-push-action@bcafcacb16a39f128d818304e6c9c0c18556b85f # v7

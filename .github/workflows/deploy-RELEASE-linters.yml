@@ -16,12 +16,6 @@ on:
   release:
     # Want to run the automation when a release is created
     types: ["created"]
-    paths:
-      - "Dockerfile"
-      - "megalinter/**"
-      - "flavors/**"
-      - "**/linter-versions.json"
-      - "**/.sh"
 
 ###############
 # Set the Job #
@@ -48,8 +42,8 @@ jobs:
       - name: Read linters_matrix.json
         id: set-matrix
         run: |
-          echo "linters=$(cat .automation/generated/linters_matrix.json | jq -c '[.["linux/amd64"][]]')" >> $GITHUB_OUTPUT
-          echo "linters_arm=$(cat .automation/generated/linters_matrix.json | jq -c '[.["linux/arm64"][]]')" >> $GITHUB_OUTPUT
+          echo "linters=$(jq -c '[.["linux/amd64"][]]'  .automation/generated/linters_matrix.json)" >> "${GITHUB_OUTPUT}"
+          echo "linters_arm=$(jq -c '[.["linux/arm64"][]]'  .automation/generated/linters_matrix.json)" >> "${GITHUB_OUTPUT}"
 
   build:
     name: Deploy Docker Image - Release - Linters
@@ -87,8 +81,8 @@ jobs:
             platforms=linux/arm64
           fi
 
-          echo "job_enabled=$job_enabled" >> $GITHUB_OUTPUT
-          echo "platforms=$platforms" >> $GITHUB_OUTPUT
+          echo "job_enabled=$job_enabled" >> "${GITHUB_OUTPUT}"
+          echo "platforms=$platforms" >> "${GITHUB_OUTPUT}"
 
       ##########################
       # Checkout the code base #
@@ -109,7 +103,7 @@ jobs:
 
       - name: Get current date
         if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> ${GITHUB_ENV}
+        run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> "${GITHUB_ENV}"
 
       - name: Build Image
         if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
@@ -180,7 +174,7 @@ jobs:
           TEST_KEYWORDS_TO_USE_UPPER="${MATRIX_LINTER}"
           TEST_KEYWORDS_TO_USE="${TEST_KEYWORDS_TO_USE_UPPER,,}"
 
-          docker run -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER="${GH_SHA}" -e OUTPUT_DETAIL=detailed -e GITHUB_SHA="${GH_SHA}" -e GITHUB_REPOSITORY="${GITHUB_REPOSITORY}" -e GITHUB_BRANCH="${GITHUB_BRANCH}" -e GITHUB_TOKEN="${GITHUB_TOKEN}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint ghcr.io/oxsecurity/megalinter-only-${MATRIX_LINTER}:${GITHUB_EVENT_RELEASE_TAG_NAME}
+          docker run -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER="${GH_SHA}" -e OUTPUT_DETAIL=detailed -e GITHUB_SHA="${GH_SHA}" -e GITHUB_REPOSITORY="${GITHUB_REPOSITORY}" -e GITHUB_BRANCH="${GITHUB_BRANCH}" -e GITHUB_TOKEN="${GITHUB_TOKEN}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v "${GITHUB_WORKSPACE}:/tmp/lint" "ghcr.io/oxsecurity/megalinter-only-${MATRIX_LINTER}:${GITHUB_EVENT_RELEASE_TAG_NAME}"
         timeout-minutes: 30
 
       ##############################################

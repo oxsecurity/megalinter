@@ -47,9 +47,9 @@ jobs:
           HEAD_COMMIT_MSG: ${{ github.event.head_commit.message }}
         run: |
           if [ "$EVENT_NAME" = "pull_request" ]; then
-            echo "title=${PR_TITLE}" >> $GITHUB_OUTPUT
+            echo "title=${PR_TITLE}" >> "${GITHUB_OUTPUT}"
           else
-            echo "title=${HEAD_COMMIT_MSG}" >> $GITHUB_OUTPUT
+            echo "title=${HEAD_COMMIT_MSG}" >> "${GITHUB_OUTPUT}"
           fi
       - name: Read linters_matrix.json and filter
         id: set-matrix
@@ -72,14 +72,14 @@ jobs:
 
           echo "title=$title"
           echo "latest_commit_message=$latest_commit_message"
-          matrix=$(cat .automation/generated/linters_matrix.json | jq -c '[.["linux/amd64"][]]')
-          matrix_arm=$(cat .automation/generated/linters_matrix.json | jq -c '[.["linux/arm64"][]]')
-          echo "linters_arm=$matrix_arm" >> $GITHUB_OUTPUT
+          matrix=$(jq -c '[.["linux/amd64"][]]'  .automation/generated/linters_matrix.json)
+          matrix_arm=$(jq -c '[.["linux/arm64"][]]'  .automation/generated/linters_matrix.json)
+          echo "linters_arm=$matrix_arm" >> "${GITHUB_OUTPUT}"
 
           if echo "$latest_commit_message" | grep -q 'ARM'; then
-            echo 'runners=["ubuntu-latest","ubuntu-24.04-arm"]' >> $GITHUB_OUTPUT
+            echo 'runners=["ubuntu-latest","ubuntu-24.04-arm"]' >> "${GITHUB_OUTPUT}"
           else
-            echo 'runners=["ubuntu-latest"]' >> $GITHUB_OUTPUT
+            echo 'runners=["ubuntu-latest"]' >> "${GITHUB_OUTPUT}"
           fi
 
           pkg=$(extract_pkg "$title")
@@ -88,13 +88,13 @@ jobs:
             matches=$(echo "$matrix" | jq -c --arg pkg "$pkg" '[.[] | select(tostring | match($pkg;"i"))]')
             if [ "$(echo "$matches" | jq 'length')" -gt 0 ]; then
               echo "Filtered linters: $matches"
-              echo "linters=$matches" >> $GITHUB_OUTPUT
+              echo "linters=$matches" >> "${GITHUB_OUTPUT}"
               exit 0
             fi
           fi
           # Default: return all
           echo "No specific package found or not a chore(deps) commit, using all linters."
-          echo "linters=$matrix" >> $GITHUB_OUTPUT
+          echo "linters=$matrix" >> "${GITHUB_OUTPUT}"
         env:
           STEPS_GET_TITLE_OUTPUTS_TITLE: ${{ steps.get-title.outputs.title }}
 
@@ -144,8 +144,8 @@ jobs:
             platforms=linux/arm64
           fi
 
-          echo "job_enabled=$job_enabled" >> $GITHUB_OUTPUT
-          echo "platforms=$platforms" >> $GITHUB_OUTPUT
+          echo "job_enabled=$job_enabled" >> "${GITHUB_OUTPUT}"
+          echo "platforms=$platforms" >> "${GITHUB_OUTPUT}"
 
       - name: Checkout Code
         if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
@@ -209,7 +209,7 @@ jobs:
           TEST_KEYWORDS_TO_USE_UPPER="${MATRIX_LINTER}"
           TEST_KEYWORDS_TO_USE="${TEST_KEYWORDS_TO_USE_UPPER,,}"
           docker image ls
-          docker run -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER="${GH_SHA}" -e OUTPUT_DETAIL=detailed -e GITHUB_SHA="${GH_SHA}" -e GITHUB_REPOSITORY="${GITHUB_REPOSITORY}" -e GITHUB_BRANCH="${GITHUB_BRANCH}" -e GITHUB_TOKEN="${GITHUB_TOKEN}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint "${DOCKER_IMAGE}"
+          docker run -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER="${GH_SHA}" -e OUTPUT_DETAIL=detailed -e GITHUB_SHA="${GH_SHA}" -e GITHUB_REPOSITORY="${GITHUB_REPOSITORY}" -e GITHUB_BRANCH="${GITHUB_BRANCH}" -e GITHUB_TOKEN="${GITHUB_TOKEN}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v "${GITHUB_WORKSPACE}:/tmp/lint" "${DOCKER_IMAGE}"
         timeout-minutes: 30
 
       ##############################################

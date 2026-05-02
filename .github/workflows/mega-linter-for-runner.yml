@@ -17,6 +17,8 @@ on:
       - alpha # ml workflow addition
 
 # Comment env block if you do not want to apply fixes
+permissions: {}
+
 env:
   # Apply linter fixes configuration
   #

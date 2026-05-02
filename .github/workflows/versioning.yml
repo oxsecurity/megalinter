@@ -25,6 +25,8 @@ on:
 #################
 # Start the job #
 #################
+permissions: {}
+
 jobs:
   actions-tagger:
     runs-on: windows-latest
