@@ -49,6 +49,8 @@ concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
   cancel-in-progress: true
 
+permissions: {}
+
 jobs:
   megalinter:
     name: MegaLinter

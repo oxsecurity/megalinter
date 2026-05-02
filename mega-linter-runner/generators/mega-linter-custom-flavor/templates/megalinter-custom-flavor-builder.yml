@@ -45,6 +45,8 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+permissions: {}
+
 jobs:
   build-custom-flavor:
     name: Build Custom MegaLinter Flavor
