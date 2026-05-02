@@ -62,18 +62,37 @@ jobs:
             checkout-repository=${{ steps.get-pr.outputs.head_repo_full_name }}
       - name: Edit comment with error message
         if: (success() || failure()) && steps.scd.outputs.error-message
-        uses: peter-evans/create-or-update-comment@e8674b075228eee787fea43ef493e45ece1004c9 # v5
-        with:
-          comment-id: ${{ github.event.comment.id }}
-          body: |
-            > ${{ steps.scd.outputs.error-message }}
-          reactions: confused
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COMMENT_ID: ${{ github.event.comment.id }}
+          ERROR_MESSAGE: ${{ steps.scd.outputs.error-message }}
+        run: |
+          gh api \
+            --method PATCH \
+            -H "Accept: application/vnd.github+json" \
+            "/repos/${GITHUB_REPOSITORY}/issues/comments/${COMMENT_ID}" \
+            -f "body=> ${ERROR_MESSAGE}"
+          gh api \
+            --method POST \
+            -H "Accept: application/vnd.github+json" \
+            "/repos/${GITHUB_REPOSITORY}/issues/comments/${COMMENT_ID}/reactions" \
+            -f content="confused"
       - name: Add failure reaction
         if: failure()
-        uses: peter-evans/create-or-update-comment@e8674b075228eee787fea43ef493e45ece1004c9 # v5
-        with:
-          comment-id: ${{ github.event.comment.id }}
-          reactions: -1
-          body: |
-            > Command dispatch failed.
-            > [Command run output](${{ steps.vars.outputs.run-url }})
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COMMENT_ID: ${{ github.event.comment.id }}
+          RUN_URL: ${{ steps.vars.outputs.run-url }}
+        run: |
+          body="> Command dispatch failed.
+          > [Command run output](${RUN_URL})"
+          gh api \
+            --method PATCH \
+            -H "Accept: application/vnd.github+json" \
+            "/repos/${GITHUB_REPOSITORY}/issues/comments/${COMMENT_ID}" \
+            -f "body=${body}"
+          gh api \
+            --method POST \
+            -H "Accept: application/vnd.github+json" \
+            "/repos/${GITHUB_REPOSITORY}/issues/comments/${COMMENT_ID}/reactions" \
+            -f content="-1"
