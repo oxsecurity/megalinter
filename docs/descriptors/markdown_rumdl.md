@@ -23,7 +23,7 @@ description: How to use rumdl (configure, ignore files, ignore errors, help & ve
 
 ## rumdl documentation
 
-- Version in MegaLinter: **0.1.78**
+- Version in MegaLinter: **0.1.86**
 - Visit [Official Web Site](https://github.com/rvben/rumdl#readme){target=_blank}
 - See [How to configure rumdl rules](https://github.com/rvben/rumdl/blob/main/docs/global-settings.md){target=_blank}
 - See [How to disable rumdl rules in files](https://github.com/rvben/rumdl/blob/main/docs/inline-configuration.md){target=_blank}
@@ -140,11 +140,11 @@ Commands:
   help         Print this message or the help of the given subcommand(s)
 
 Options:
-      --color <COLOR>    Control colored output [default: auto] [possible values: auto, always, never]
-  -c, --config <CONFIG>  Path to configuration file
-      --no-config        Ignore all configuration files and use built-in defaults (--isolated is also accepted)
-  -h, --help             Print help
-  -V, --version          Print version
+      --color <COLOR>           Control colored output [default: auto] [possible values: auto, always, never]
+  -c, --config <CONFIG_OPTION>  Path to a configuration file, or an inline TOML override (e.g. `MD013.reflow=true`). Can be passed multiple times.
+      --no-config               Ignore all configuration files and use built-in defaults (--isolated is also accepted)
+  -h, --help                    Print help (see more with '--help')
+  -V, --version                 Print version
 ```
 
 ### Installation on mega-linter Docker image
@@ -152,8 +152,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.1.78
+ARG PIP_RUMDL_VERSION=0.1.86
 ```
 
 - PIP packages (Python):
-  - [rumdl==0.1.78](https://pypi.org/project/rumdl/0.1.78)
+  - [rumdl==0.1.86](https://pypi.org/project/rumdl/0.1.86)

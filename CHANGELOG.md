@@ -188,6 +188,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 2.1.51 to **2.1.54** on 2026-05-02
   - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.11 to **0.15.12** on 2026-05-02
   - [ruff](https://github.com/astral-sh/ruff) from 0.15.11 to **0.15.12** on 2026-05-02
+  - [rumdl](https://github.com/rvben/rumdl) from 0.1.78 to **0.1.86** on 2026-05-03
 <!-- linter-versions-end -->
 
 ## [v9.4.0] - 2026-02-28

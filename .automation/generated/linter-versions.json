@@ -96,7 +96,7 @@
     "rubocop": "1.86.1",
     "ruff": "0.15.12",
     "ruff-format": "0.15.12",
-    "rumdl": "0.1.78",
+    "rumdl": "0.1.86",
     "scalafix": "0.14.6",
     "scss-lint": "0.60.0",
     "secretlint": "11.7.1",
