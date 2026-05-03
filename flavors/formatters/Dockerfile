@@ -64,7 +64,7 @@ ARG TARGETPLATFORM
 ARG POWERSHELL_VERSION=7.6.1
 
 # renovate: datasource=npm depName=typescript
-ARG NPM_TYPESCRIPT_VERSION=6.0.2
+ARG NPM_TYPESCRIPT_VERSION=6.0.3
 # renovate: datasource=nuget depName=csharpier
 ARG CSHARP_CSHARPIER_VERSION=1.2.6
 # renovate: datasource=nuget depName=roslynator.dotnet.cli

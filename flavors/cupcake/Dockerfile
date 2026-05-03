@@ -109,7 +109,7 @@ ARG ALPINE_GLIBC_PACKAGE_VERSION=2.34-r0
 # renovate: datasource=repology depName=alpine_edge/go versioning=loose
 ARG GO_ALPINE_VERSION=1.26.2-r0
 # renovate: datasource=npm depName=typescript
-ARG NPM_TYPESCRIPT_VERSION=6.0.2
+ARG NPM_TYPESCRIPT_VERSION=6.0.3
 # renovate: datasource=crate depName=zizmor
 ARG CARGO_ZIZMOR_VERSION=1.23.1
 # renovate: datasource=pypi depName=ansible-lint

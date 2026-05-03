@@ -96,7 +96,7 @@ ARG POWERSHELL_VERSION=7.6.1
 ARG POWERSHELL_VERSION=7.6.1
 
 # renovate: datasource=npm depName=typescript
-ARG NPM_TYPESCRIPT_VERSION=6.0.2
+ARG NPM_TYPESCRIPT_VERSION=6.0.3
 # renovate: datasource=crate depName=zizmor
 ARG CARGO_ZIZMOR_VERSION=1.23.1
 # renovate: datasource=pypi depName=ansible-lint
