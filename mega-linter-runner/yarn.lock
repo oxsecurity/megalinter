@@ -549,7 +549,7 @@
     "@tufjs/canonical-json" "2.0.0"
     minimatch "^10.1.1"
 
-"@types/debug@^4.1.12":
+"@types/debug@^4.1.13":
   version "4.1.13"
   resolved "https://registry.yarnpkg.com/@types/debug/-/debug-4.1.13.tgz#22d1cc9d542d3593caea764f974306ab36286ee7"
   integrity sha512-KSVgmQmzMwPlmtljOomayoR89W4FynCAi3E8PPs7vmDVPe84hT+vGPKkJfThkmXs0x0jAaa9U8uW8bbfyS2fWw==
@@ -654,11 +654,6 @@
     pretty-bytes "^7.1.0"
     slash "^5.1.0"
     textextensions "^6.11.0"
-
-"@yeoman/namespace@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@yeoman/namespace/-/namespace-1.0.1.tgz#8034277c4a62bdf41e05e2d890bc674bc320eb99"
-  integrity sha512-XGdYL0HCoPvrzW7T8bxD6RbCY/B8uvR2jpOzJc/yEwTueKHwoVhjSLjVXkokQAO0LNl8nQFLVZ1aKfr2eFWZeA==
 
 "@yeoman/namespace@^2.1.0":
   version "2.1.0"
@@ -1994,7 +1989,7 @@ locate-path@^8.0.0:
   dependencies:
     p-locate "^6.0.0"
 
-lodash-es@^4.17.23, lodash-es@^4.18.1:
+lodash-es@^4.18.1:
   version "4.18.1"
   resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.18.1.tgz#b962eeb80d9d983a900bf342961fb7418ca10b1d"
   integrity sha512-J8xewKD/Gk22OZbhpOVSwcs60zhd95ESDwezOFuA3/099925PdHJ7OFHNTGtajL3AlZkykD32HykiMo+BIBI8A==
@@ -2053,7 +2048,7 @@ math-intrinsics@^1.1.0:
   resolved "https://registry.yarnpkg.com/math-intrinsics/-/math-intrinsics-1.1.0.tgz#a0dd74be81e2aa5c2f27e65ce283605ee4e2b7f9"
   integrity sha512-/IXtbwEk5HTPyEwyKX6hGkYXxM9nbj64B+ilVJnC/R6B0pH5G4V3b0pVbL7DBj4tkhBAppbQUlf6F6Xl9LHu1g==
 
-mem-fs-editor@^12.0.2, mem-fs-editor@^12.0.4:
+mem-fs-editor@^12.0.4:
   version "12.0.4"
   resolved "https://registry.yarnpkg.com/mem-fs-editor/-/mem-fs-editor-12.0.4.tgz#234bcb93109be2e36b45930a20e83a86a547ee9a"
   integrity sha512-gc8b4VlisaGp5W+ot2f4Xc8jUgKnMn5UR2mKsdm8UdbESYCdSiQKqioktPu8gJ0Uxd8gV/m/M16Pp5n1Ge8pjA==
@@ -2846,7 +2841,7 @@ sigstore@^4.0.0:
     "@sigstore/tuf" "^4.0.1"
     "@sigstore/verify" "^3.1.0"
 
-simple-git@^3.28.0, simple-git@^3.32.3:
+simple-git@^3.28.0, simple-git@^3.36.0:
   version "3.36.0"
   resolved "https://registry.yarnpkg.com/simple-git/-/simple-git-3.36.0.tgz#019b28c0a35847ee34299c6fb63770ab1b2dffb7"
   integrity sha512-cGQjLjK8bxJw4QuYT7gxHw3/IouVESbhahSsHrX97MzCL1gu2u7oy38W6L2ZIGECEfIBG4BabsWDPjBxJENv9Q==
@@ -3144,10 +3139,10 @@ type-fest@^4.39.1:
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-4.41.0.tgz#6ae1c8e5731273c2bf1f58ad39cbae2c91a46c58"
   integrity sha512-TeTSQ6H5YHvpqVwBRcnLDCBnDOHWYu7IvGbHT6N8AOymcr9PJGjc1GTtiWZTYg0NCgYwvnYWEkVChQAr9bjfwA==
 
-type-fest@^5.2.0, type-fest@^5.4.4:
-  version "5.5.0"
-  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-5.5.0.tgz#78fca72f3a1f9ec964e6ae260db492b070c56f3b"
-  integrity sha512-PlBfpQwiUvGViBNX84Yxwjsdhd1TUlXr6zjX7eoirtCPIr08NAmxwa+fcYBTeRQxHo9YC9wwF3m9i700sHma8g==
+type-fest@^5.2.0, type-fest@^5.4.4, type-fest@^5.6.0:
+  version "5.6.0"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-5.6.0.tgz#502f7a003b7309e96a7e17052cc2ab2c7e5c7a31"
+  integrity sha512-8ZiHFm91orbSAe2PSAiSVBVko18pbhbiB3U9GglSzF/zCGkR+rxpHx6sEMCUm4kxY4LjDIUGgCfUMtwfZfjfUA==
   dependencies:
     tagged-tag "^1.0.0"
 
@@ -3410,26 +3405,26 @@ yeoman-environment@^6.0.0:
     which-package-manager "^1.0.1"
 
 yeoman-generator@^8.0.0:
-  version "8.1.2"
-  resolved "https://registry.yarnpkg.com/yeoman-generator/-/yeoman-generator-8.1.2.tgz#a855bbe3b2af3cec9169fb9d85ca983766f6e5df"
-  integrity sha512-5e9jK2EPm6/c/zaYnuKnCLbRWfD9XwJYup1VzdJMgj010cgDn3YJWDfOIczabLfSoRSXRFxTDHfx1MEdIJEcGQ==
+  version "8.2.2"
+  resolved "https://registry.yarnpkg.com/yeoman-generator/-/yeoman-generator-8.2.2.tgz#8bfde12fc6ae77ea92080b258f79073446ee9a92"
+  integrity sha512-GIvRULf09VrTyJ1nMIxCRFTI8gzW9zsAxVXTHOmsWVKZ7QYPdByRQvFtnp0XOObM6dvDSoAwBhuYR6i5inp/ig==
   dependencies:
-    "@types/debug" "^4.1.12"
+    "@types/debug" "^4.1.13"
     "@types/lodash-es" "^4.17.12"
-    "@yeoman/namespace" "^1.0.1"
+    "@yeoman/namespace" "^2.1.0"
     chalk "^5.6.2"
     debug "^4.4.3"
     execa "^9.6.1"
     latest-version "^9.0.0"
-    lodash-es "^4.17.23"
-    mem-fs-editor "^12.0.2"
+    lodash-es "^4.18.1"
+    mem-fs-editor "^12.0.4"
     minimist "^1.2.8"
     read-package-up "^12.0.0"
     semver "^7.7.4"
-    simple-git "^3.32.3"
+    simple-git "^3.36.0"
     sort-keys "^6.0.0"
     text-table "^0.2.0"
-    type-fest "^5.4.4"
+    type-fest "^5.6.0"
 
 yocto-queue@^0.1.0:
   version "0.1.0"
