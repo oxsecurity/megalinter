@@ -38,9 +38,7 @@ def apply_jenkins_ci_vars(request_id):
 
     parsed = _parse_git_url(git_url)
     if parsed is None:
-        logging.warning(
-            f"[Jenkins CI Vars] Could not parse GIT_URL: {git_url}"
-        )
+        logging.warning(f"[Jenkins CI Vars] Could not parse GIT_URL: {git_url}")
         return
 
     mappers = {

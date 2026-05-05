@@ -19,11 +19,10 @@ class GitlabCommentReporter(Reporter):
     gitlab_server_url = "https://gitlab.com"
 
     def manage_activation(self):
-        if (
-            not config.exists(self.master.request_id, "CI_JOB_TOKEN")
-            and not config.exists(
-                self.master.request_id, "GITLAB_ACCESS_TOKEN_MEGALINTER"
-            )
+        if not config.exists(
+            self.master.request_id, "CI_JOB_TOKEN"
+        ) and not config.exists(
+            self.master.request_id, "GITLAB_ACCESS_TOKEN_MEGALINTER"
         ):
             self.is_active = False
         elif (
@@ -61,9 +60,7 @@ class GitlabCommentReporter(Reporter):
         # Post comment on Gitlab pull request
         if (
             config.get(self.master.request_id, "CI_JOB_TOKEN", "") != ""
-            or config.get(
-                self.master.request_id, "GITLAB_ACCESS_TOKEN_MEGALINTER", ""
-            )
+            or config.get(self.master.request_id, "GITLAB_ACCESS_TOKEN_MEGALINTER", "")
             != ""
         ):
             gitlab_repo = config.get(self.master.request_id, "CI_PROJECT_NAME")

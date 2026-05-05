@@ -24,13 +24,13 @@ from megalinter import (
     utils,
 )
 from megalinter.alpaca import alpaca
-from megalinter.reporters.jenkins_ci_vars import apply_jenkins_ci_vars
 from megalinter.constants import (
     DEFAULT_DOCKER_WORKSPACE_DIR,
     DEFAULT_REPORT_FOLDER_NAME,
     ML_DOC_URL,
 )
 from megalinter.logger import display_header, initialize_logger, manage_upgrade_message
+from megalinter.reporters.jenkins_ci_vars import apply_jenkins_ci_vars
 from megalinter.utils_reporter import log_section_end, log_section_start
 from multiprocessing_logging import install_mp_handler, uninstall_mp_handler
 

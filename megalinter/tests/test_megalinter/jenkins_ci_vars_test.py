@@ -73,9 +73,7 @@ class JenkinsCiVarsTest(unittest.TestCase):
         apply_jenkins_ci_vars(self.request_id)
         assert self._get("GITHUB_REPOSITORY") == "team/project"
         assert self._get("GITHUB_SERVER_URL") == "https://github.mycompany.com"
-        assert (
-            self._get("GITHUB_API_URL") == "https://github.mycompany.com/api/v3"
-        )
+        assert self._get("GITHUB_API_URL") == "https://github.mycompany.com/api/v3"
 
     def test_github_no_change_id(self):
         self._set_jenkins()
@@ -123,9 +121,7 @@ class JenkinsCiVarsTest(unittest.TestCase):
 
     def test_azure_dev_azure_com(self):
         self._set_jenkins()
-        self._set(
-            "GIT_URL", "https://dev.azure.com/myorg/myproject/_git/myrepo"
-        )
+        self._set("GIT_URL", "https://dev.azure.com/myorg/myproject/_git/myrepo")
         self._set("CHANGE_ID", "99")
         self._set("BUILD_ID", "5678")
         apply_jenkins_ci_vars(self.request_id)
@@ -182,9 +178,7 @@ class JenkinsCiVarsTest(unittest.TestCase):
 
     def test_bitbucket_self_hosted(self):
         self._set_jenkins()
-        self._set(
-            "GIT_URL", "https://bitbucket.mycompany.com/scm/proj/repo.git"
-        )
+        self._set("GIT_URL", "https://bitbucket.mycompany.com/scm/proj/repo.git")
         self._set("CHANGE_ID", "3")
         apply_jenkins_ci_vars(self.request_id)
         assert self._get("BITBUCKET_REPO_FULL_NAME") == "scm/proj"

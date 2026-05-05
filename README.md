@@ -785,12 +785,12 @@ MegaLinter auto-detects the git hosting platform by inspecting the `GIT_URL` env
 
 #### Platform Configuration
 
-| Platform | Required Token Variable | Notes |
-|---|---|---|
-| GitHub | `GITHUB_TOKEN` (or `PAT`) | Token needs `repo` scope (or `issues:write` + `pull-requests:write` for fine-grained tokens) |
-| GitLab | `GITLAB_ACCESS_TOKEN_MEGALINTER` | Personal access token with `api` scope |
-| Azure DevOps | `SYSTEM_ACCESSTOKEN` | Personal access token with **Code (Read & Write)** permission |
-| Bitbucket | `BITBUCKET_REPO_ACCESS_TOKEN` | Repository access token with **Pull-requests: Write** scope |
+| Platform     | Required Token Variable          | Notes                                                                                        |
+|--------------|----------------------------------|----------------------------------------------------------------------------------------------|
+| GitHub       | `GITHUB_TOKEN` (or `PAT`)        | Token needs `repo` scope (or `issues:write` + `pull-requests:write` for fine-grained tokens) |
+| GitLab       | `GITLAB_ACCESS_TOKEN_MEGALINTER` | Personal access token with `api` scope                                                       |
+| Azure DevOps | `SYSTEM_ACCESSTOKEN`             | Personal access token with **Code (Read & Write)** permission                                |
+| Bitbucket    | `BITBUCKET_REPO_ACCESS_TOKEN`    | Repository access token with **Pull-requests: Write** scope                                  |
 
 #### Jenkinsfile Example with GitHub PR Comments
 
