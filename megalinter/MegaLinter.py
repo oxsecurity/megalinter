@@ -24,6 +24,7 @@ from megalinter import (
     utils,
 )
 from megalinter.alpaca import alpaca
+from megalinter.reporters.jenkins_ci_vars import apply_jenkins_ci_vars
 from megalinter.constants import (
     DEFAULT_DOCKER_WORKSPACE_DIR,
     DEFAULT_REPORT_FOLDER_NAME,
@@ -95,6 +96,9 @@ class Megalinter:
         self.workspace = self.get_workspace(params)
         # Do not send secrets to linter executables
         config.init_config(self.request_id, self.workspace, params)
+
+        # Map Jenkins CI env vars to native platform vars for comment reporters
+        apply_jenkins_ci_vars(self.request_id)
 
         # Guess who's there ? :)
         if self.cli is True:
