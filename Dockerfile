@@ -257,7 +257,7 @@ ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
 ARG PIP_RUMDL_VERSION=0.1.86
 # renovate: datasource=github-tags depName=skaji/cpm
-ARG PERL_PERLCRITIC_VERSION=0.998003
+ARG PERL_PERLCRITIC_VERSION=v1.0.3
 
 # renovate: datasource=packagist depName=squizlabs/php_codesniffer
 ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=4.0.1
