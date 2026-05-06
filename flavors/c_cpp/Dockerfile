@@ -162,7 +162,7 @@ ARG REPOSITORY_SYFT_VERSION=1.42.4
 # renovate: datasource=pypi depName=snakemake
 ARG PIP_SNAKEMAKE_VERSION=9.19.0
 # renovate: datasource=pypi depName=snakefmt
-ARG PIP_SNAKEFMT_VERSION=1.0.0
+ARG PIP_SNAKEFMT_VERSION=1.1.0
 # renovate: datasource=npm depName=cspell
 ARG NPM_CSPELL_VERSION=10.0.0
 # renovate: datasource=pypi depName=proselint
