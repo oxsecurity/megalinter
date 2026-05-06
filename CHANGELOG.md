@@ -192,6 +192,20 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.11 to **0.15.12** on 2026-05-02
   - [ruff](https://github.com/astral-sh/ruff) from 0.15.11 to **0.15.12** on 2026-05-02
   - [rumdl](https://github.com/rvben/rumdl) from 0.1.78 to **0.1.86** on 2026-05-03
+  - [stylelint](https://stylelint.io) from 17.8.0 to **17.9.1** on 2026-05-06
+  - [pmd](https://pmd.github.io/) from 7.23.0 to **7.24.0** on 2026-05-06
+  - [npm-package-json-lint](https://npmpackagejsonlint.org/) from 10.2.2 to **10.4.0** on 2026-05-06
+  - [kubescape](https://github.com/kubescape/kubescape) from 4.0.5 to **4.0.6** on 2026-05-06
+  - [rumdl](https://github.com/rvben/rumdl) from 0.1.86 to **0.1.89** on 2026-05-06
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.95.0 to **1.99.0** on 2026-05-06
+  - [semgrep](https://semgrep.dev/) from 1.159.0 to **1.161.0** on 2026-05-06
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.94.3 to **3.95.2** on 2026-05-06
+  - [snakemake](https://snakemake.github.io/) from 9.19.0 to **9.20.0** on 2026-05-06
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 1.0.0 to **1.1.0** on 2026-05-06
+  - [lychee](https://lychee.cli.rs) from 0.23.0 to **0.24.2** on 2026-05-06
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.14.9 to **1.15.1** on 2026-05-06
+  - [terragrunt](https://terragrunt.gruntwork.io) from 1.0.2 to **1.0.3** on 2026-05-06
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.61.0 to **0.62.0** on 2026-05-06
 <!-- linter-versions-end -->
 
 ## [v9.4.0] - 2026-02-28

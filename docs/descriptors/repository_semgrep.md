@@ -29,7 +29,7 @@ Exception for standalone and security flavors docker images, that use a list of 
 
 ## semgrep documentation
 
-- Version in MegaLinter: **1.159.0**
+- Version in MegaLinter: **1.161.0**
 - Visit [Official Web Site](https://semgrep.dev/){target=_blank}
 - See [How to configure semgrep rules](https://semgrep.dev/docs/running-rules/){target=_blank}
 - See [How to disable semgrep rules in files](https://semgrep.dev/docs/ignoring-findings/#inline-comments){target=_blank}
@@ -297,12 +297,12 @@ OPTIONS
        --incremental-output
            Output results incrementally. REQUIRES --experimental
 
-       --interfile-timeout=VAL (absent=0)
+       --interfile-timeout=INT (absent=0)
            Maximum time to spend on interfile analysis. If set to 0 will not
            have time limit. Defaults to 0 s for all CLI scans. For CI scans,
            it defaults to 3 hours.
 
-       -j VAL, --jobs=VAL (absent=3)
+       -j VALUE, --jobs=VALUE (absent=3)
            Degree of parallelism to use for parallel scanning, either using
            shared-memory threads (the default) or the legacy process-based
            parallelism (enabled with the deprecated --x-parmap flag). Semgrep
@@ -337,30 +337,30 @@ OPTIONS
            different parts of a rule are matched (a.k.a., "Inspect Rule" in
            the Semgrep playground)
 
-       --max-chars-per-line=VAL (absent=160)
+       --max-chars-per-line=INT (absent=160)
            Maximum number of characters to show per line.
 
-       --max-lines-per-finding=VAL (absent=10)
+       --max-lines-per-finding=INT (absent=10)
            Maximum number of lines of code that will be shown for each match
            before trimming (set to 0 for unlimited).
 
-       --max-log-list-entries=VAL (absent=100)
+       --max-log-list-entries=INT (absent=100)
            Maximum number of entries that will be shown in the log (e.g.,
            list of rule ids, list of skipped files). A zero or negative value
            disables this filter. Defaults to 100
 
-       --max-memory=VAL (absent=0)
+       --max-memory=INT (absent=0)
            Maximum system memory in MiB to use during the interfile
            pre-processing phase, or when running a rule on a single file. If
            set to 0, will not have memory limit. Defaults to 0. For CI scans
            that use the Pro Engine, defaults to 5000 MiB.
 
-       --max-target-bytes=VAL (absent=1000000)
+       --max-target-bytes=VALUE (absent=1000000)
            Maximum size for a file to be scanned by Semgrep, e.g '1.5MB'. Any
            input program larger than this will be ignored. A zero or negative
            value disables this filter. Defaults to 1000000 bytes
 
-       --metrics=VAL (absent=auto or SEMGREP_SEND_METRICS env)
+       --metrics=ENUM (absent=auto or SEMGREP_SEND_METRICS env)
            Configures how usage metrics are sent to the Semgrep server. If
            'auto', metrics are sent whenever the --config value pulls from
            the Semgrep server or if the user is logged in. If 'on', metrics
@@ -412,7 +412,7 @@ OPTIONS
            Save search results to a file or post to URL. Default is to print
            to stdout.
 
-       --optimizations=VAL (absent=all)
+       --optimizations=VALUE (absent=all)
            Turn on/off optimizations. Default = 'all'. Use 'none' to turn all
            optimizations off.
 
@@ -492,7 +492,7 @@ OPTIONS
            validation. Requires access to Secrets, contact
            support@semgrep.com for more information.
 
-       --secrets-timeout=VAL (absent=30)
+       --secrets-timeout=INT (absent=30)
            Timeout in seconds for each secrets validation HTTP request. If
            set to 0, no timeout is applied. Defaults to 30.
 
@@ -503,7 +503,7 @@ OPTIONS
            The transitional option '--no-semgrepignore-v2' is no longer
            available.
 
-       --severity=VAL
+       --severity=ENUM
            Report findings only from rules matching the supplied severity
            level. By default all applicable rules are run. Can add multiple
            times. Each should be one of INFO, WARNING, or ERROR.
@@ -538,11 +538,11 @@ OPTIONS
            meant for internal use and may be changed or removed without
            warning. At the current moment, --trace is better supported.
 
-       --timeout=VAL (absent=5.)
+       --timeout=DOUBLE (absent=5.)
            Maximum time to spend running a rule on a single file in seconds.
            If set to 0 will not have time limit. Defaults to 5.0 s.
 
-       --timeout-threshold=VAL (absent=3)
+       --timeout-threshold=INT (absent=3)
            Maximum number of rules that can time out on a file before the
            file is skipped. If set to 0 will not have limit. Defaults to 3.
 
@@ -605,14 +605,13 @@ COMMON OPTIONS
        --trace
            Record traces from Semgrep scans to help debugging. This feature
            is meant for internal use and may be changed or removed without
-           warning. Currently only used by `semgrep lsp`.
+           warning.
 
        --trace-endpoint=VAL
            Endpoint to send OpenTelemetry traces to, if `--trace` is present.
            The value may be `semgrep-prod` (default), `semgrep-dev`,
            `semgrep-local`, or any valid URL. This feature is meant for
            internal use and may be changed or removed without warning.
-           Currently only used by `semgrep lsp`.
 
        -v, --verbose
            Show more details about what rules are running, which files failed
@@ -747,8 +746,8 @@ BUGS
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.159.0
+ARG PIP_SEMGREP_VERSION=1.161.0
 ```
 
 - PIP packages (Python):
-  - [semgrep==1.159.0](https://pypi.org/project/semgrep/1.159.0)
+  - [semgrep==1.161.0](https://pypi.org/project/semgrep/1.161.0)

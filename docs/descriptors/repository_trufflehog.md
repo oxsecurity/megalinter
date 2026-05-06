@@ -29,7 +29,7 @@ description: How to use trufflehog (configure, ignore files, ignore errors, help
 
 ## trufflehog documentation
 
-- Version in MegaLinter: **3.94.3**
+- Version in MegaLinter: **3.95.2**
 - Visit [Official Web Site](https://github.com/trufflesecurity/trufflehog#readme){target=_blank}
 - See [How to configure trufflehog rules](https://github.com/trufflesecurity/trufflehog#regex-detector-alpha){target=_blank}
 
@@ -104,9 +104,10 @@ trufflehog filesystem .
 ### Help content
 
 ```shell
-usage: TruffleHog [<flags>] <command> [<args> ...]
+usage: trufflehog [<flags>] <command> [<args> ...]
 
-TruffleHog is a tool for finding credentials.
+TruffleHog is a tool for finding credentials. Run without a command for
+interactive mode.
 
 
 Flags:
@@ -120,7 +121,7 @@ Flags:
       --[no-]json-legacy         Use the pre-v3.0 JSON format. Only works with
                                  git, gitlab, and github sources.
       --[no-]github-actions      Output in GitHub Actions format.
-      --concurrency=4            Number of concurrent workers.
+      --concurrency=N            Number of concurrent workers.
       --[no-]no-verification     Don't verify the results.
       --results=RESULTS          Specifies which type(s) of results to output:
                                  verified (confirmed valid by API),
@@ -254,7 +255,7 @@ analyze
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.94.3
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.95.2
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 ```
