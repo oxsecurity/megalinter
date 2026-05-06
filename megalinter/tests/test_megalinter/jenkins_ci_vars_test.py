@@ -1,4 +1,6 @@
+import os
 import unittest
+from unittest.mock import patch
 from uuid import uuid1
 
 from megalinter import config
@@ -8,7 +10,10 @@ from megalinter.reporters.jenkins_ci_vars import apply_jenkins_ci_vars
 class JenkinsCiVarsTest(unittest.TestCase):
     def setUp(self):
         self.request_id = str(uuid1())
-        config.init_config(self.request_id, None, {})
+        # Isolate from real environment variables (e.g. GITHUB_REPOSITORY in
+        # GitHub Actions CI) so they don't leak into the config under test.
+        with patch.dict(os.environ, {}, clear=True):
+            config.init_config(self.request_id, None, {})
 
     def tearDown(self):
         config.delete(self.request_id)
