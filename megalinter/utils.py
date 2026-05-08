@@ -622,6 +622,10 @@ def is_jenkins() -> bool:
     )
 
 
+def is_jenkins_pr() -> bool:
+    return is_jenkins() and config.get(None, "CHANGE_ID") is not None
+
+
 def is_ci() -> bool:
     return (
         True
@@ -630,6 +634,7 @@ def is_ci() -> bool:
             or is_github_actions()
             or is_gitlab_ci()
             or is_azure_pipelines()
+            or is_jenkins()
         )
         else False
     )
@@ -644,6 +649,7 @@ def is_pr() -> bool:
             or is_gitlab_mr()
             or is_gitlab_external_pr()
             or is_azure_devops_pr()
+            or is_jenkins_pr()
         )
         else False
     )

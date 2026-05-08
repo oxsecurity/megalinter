@@ -39,6 +39,10 @@ If you really want a new MR comment for each MegaLinter run, define variable `GI
 | JOB_SUMMARY_ADDITIONAL_MARKDOWN           | Custom markdown to add at the end of the summary message                                                | <!-- -->         |
 | MEGALINTER_MULTIRUN_KEY                   | Key to identify multirun when multiple MegaLinter runs are executed in the same pipeline (ex: `java`)   | <!-- -->         |
 
+## Jenkins Support
+
+This reporter also works when MegaLinter is triggered from a Jenkins Multibranch Pipeline. See [Jenkins installation guide](../install-jenkins.md#pr-comment-reporting-from-jenkins) for details.
+
 ## Special Thanks
 
 - Special thanks to [John Berkers](https://github.com/jberkers42) for his assistance in making Gitlab reporter work with self-hosted gitlab instances secured by certificates :)

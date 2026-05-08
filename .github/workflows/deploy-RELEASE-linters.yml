@@ -16,16 +16,13 @@ on:
   release:
     # Want to run the automation when a release is created
     types: ["created"]
-    paths:
-      - "Dockerfile"
-      - "megalinter/**"
-      - "flavors/**"
-      - "**/linter-versions.json"
-      - "**/.sh"
 
 ###############
 # Set the Job #
 ###############
+permissions:
+  contents: read
+
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
   cancel-in-progress: true
@@ -39,12 +36,14 @@ jobs:
       linters_arm: ${{ steps.set-matrix.outputs.linters_arm }}
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          persist-credentials: false
       - name: Read linters_matrix.json
         id: set-matrix
         run: |
-          echo "linters=$(cat .automation/generated/linters_matrix.json | jq -c '[.["linux/amd64"][]]')" >> $GITHUB_OUTPUT
-          echo "linters_arm=$(cat .automation/generated/linters_matrix.json | jq -c '[.["linux/arm64"][]]')" >> $GITHUB_OUTPUT
+          echo "linters=$(jq -c '[.["linux/amd64"][]]'  .automation/generated/linters_matrix.json)" >> "${GITHUB_OUTPUT}"
+          echo "linters_arm=$(jq -c '[.["linux/arm64"][]]'  .automation/generated/linters_matrix.json)" >> "${GITHUB_OUTPUT}"
 
   build:
     name: Deploy Docker Image - Release - Linters
@@ -82,19 +81,21 @@ jobs:
             platforms=linux/arm64
           fi
 
-          echo "job_enabled=$job_enabled" >> $GITHUB_OUTPUT
-          echo "platforms=$platforms" >> $GITHUB_OUTPUT
+          echo "job_enabled=$job_enabled" >> "${GITHUB_OUTPUT}"
+          echo "platforms=$platforms" >> "${GITHUB_OUTPUT}"
 
       ##########################
       # Checkout the code base #
       ##########################
       - name: Checkout Code
         if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          persist-credentials: false
 
       - name: Login to GitHub Container Registry
         if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: docker/login-action@v4
+        uses: docker/login-action@4907a6ddec9925e35a0a9e82d7399ccc52663121 # v4
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
@@ -102,11 +103,11 @@ jobs:
 
       - name: Get current date
         if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> ${GITHUB_ENV}
+        run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> "${GITHUB_ENV}"
 
       - name: Build Image
         if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: docker/build-push-action@v7
+        uses: docker/build-push-action@bcafcacb16a39f128d818304e6c9c0c18556b85f # v7
         with:
           context: .
           file: Dockerfile-release
@@ -128,7 +129,7 @@ jobs:
 
       - name: Invoke Mirror docker image workflow (Standalone image)
         if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: benc-uk/workflow-dispatch@v1
+        uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1
         with:
           workflow: mirror-docker-image.yml
           # MAJOR-RELEASE-IMPACTED
@@ -136,7 +137,7 @@ jobs:
           ref: main
       - name: Invoke Mirror docker image workflow (Standalone image)
         if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: benc-uk/workflow-dispatch@v1
+        uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1
         with:
           workflow: mirror-docker-image.yml
           # MAJOR-RELEASE-IMPACTED
@@ -144,7 +145,7 @@ jobs:
           ref: main
       - name: Invoke Mirror docker image workflow (Standalone image)
         if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: benc-uk/workflow-dispatch@v1
+        uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1
         with:
           workflow: mirror-docker-image.yml
           # MAJOR-RELEASE-IMPACTED
@@ -162,14 +163,18 @@ jobs:
           GH_REPOSITORY: ${{ github.repository }}
           HEAD_REF: ${{ github.head_ref }}
           REF_NAME: ${{ github.ref_name }}
+          MATRIX_LINTER: ${{ matrix.linter }}
+          GITHUB_EVENT_RELEASE_TAG_NAME: ${{ github.event.release.tag_name }}
+          GH_SHA: ${{ github.sha }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           GITHUB_REPOSITORY=$([ "$EVENT_NAME" == "pull_request" ] && echo "$PR_HEAD_REPO" || echo "$GH_REPOSITORY")
           GITHUB_BRANCH=$([ "$EVENT_NAME" == "pull_request" ] && echo "$HEAD_REF" || echo "$REF_NAME")
 
-          TEST_KEYWORDS_TO_USE_UPPER="${{ matrix.linter }}"
+          TEST_KEYWORDS_TO_USE_UPPER="${MATRIX_LINTER}"
           TEST_KEYWORDS_TO_USE="${TEST_KEYWORDS_TO_USE_UPPER,,}"
 
-          docker run -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${{ github.sha }} -e OUTPUT_DETAIL=detailed -e GITHUB_SHA=${{ github.sha }} -e GITHUB_REPOSITORY="${GITHUB_REPOSITORY}" -e GITHUB_BRANCH="${GITHUB_BRANCH}" -e GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:${{ github.event.release.tag_name }}
+          docker run -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER="${GH_SHA}" -e OUTPUT_DETAIL=detailed -e GITHUB_SHA="${GH_SHA}" -e GITHUB_REPOSITORY="${GITHUB_REPOSITORY}" -e GITHUB_BRANCH="${GITHUB_BRANCH}" -e GITHUB_TOKEN="${GITHUB_TOKEN}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v "${GITHUB_WORKSPACE}:/tmp/lint" "ghcr.io/oxsecurity/megalinter-only-${MATRIX_LINTER}:${GITHUB_EVENT_RELEASE_TAG_NAME}"
         timeout-minutes: 30
 
       ##############################################

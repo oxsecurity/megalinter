@@ -678,5 +678,10 @@
     "description": "A linter for YAML files. Contribute to adrienverge/yamllint development by creating an account on GitHub.",
     "image": "https://avatars3.githubusercontent.com/u/5244945?s=400&v=4",
     "title": "adrienverge/yamllint"
+  },
+  "zizmor": {
+    "description": "Find and fix potential vulnerabilities in your GitHub workflows and action definitions with zizmor's powerful static analysis.",
+    "image": "https://zizmor.sh/assets/zizmor-demo.gif",
+    "title": "zizmor - Static Analysis for GitHub Actions"
   }
 }

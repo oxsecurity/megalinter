@@ -34,15 +34,23 @@ jobs:
       pull-requests: write
     steps:
       - name: Update comment
-        uses: peter-evans/create-or-update-comment@v5
-        with:
-          repository: ${{ github.event.inputs.repository }}
-          comment-id: ${{ github.event.inputs.comment-id }}
-          issue-number: ${{ github.event.inputs.issue-number }}
-          body: |
-            > Command | Description
-            > --- | ---
-            > /build | Updates the Dockerfile, documentation, and other files from the yml descriptors
-            > /build [ref=...]| Same as /build, but executes workflow in any branch using the ref named argument. The reference can be a branch, tag, or a commit SHA. This can be useful to test workflows in PR branches before merging.
-            > /help | Returns this help message
-          reactions: hooray
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPOSITORY: ${{ github.event.inputs.repository }}
+          COMMENT_ID: ${{ github.event.inputs.comment-id }}
+        run: |
+          body='> Command | Description
+          > --- | ---
+          > /build | Updates the Dockerfile, documentation, and other files from the yml descriptors
+          > /build [ref=...]| Same as /build, but executes workflow in any branch using the ref named argument. The reference can be a branch, tag, or a commit SHA. This can be useful to test workflows in PR branches before merging.
+          > /help | Returns this help message'
+          gh api \
+            --method PATCH \
+            -H "Accept: application/vnd.github+json" \
+            "/repos/${REPOSITORY}/issues/comments/${COMMENT_ID}" \
+            -f "body=${body}"
+          gh api \
+            --method POST \
+            -H "Accept: application/vnd.github+json" \
+            "/repos/${REPOSITORY}/issues/comments/${COMMENT_ID}/reactions" \
+            -f content="hooray"

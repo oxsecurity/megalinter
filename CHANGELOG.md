@@ -11,9 +11,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Core
   - Security: add [more default hidden environment variables](https://megalinter.io/beta/config-variables-security/), so in case one of the 100+ linters is hacked, the attacker won't get your secrets anyway
   - Upgrade GO version to 1.26.2
+  - Enable comment reporters (GitHub, GitLab, Azure DevOps, Bitbucket) when running MegaLinter from Jenkins CI
+  - Fix: use `config.get()` instead of `os.environ.get()` for `GITHUB_REF` in GithubCommentReporter
+  - GitlabCommentReporter now activates when `GITLAB_ACCESS_TOKEN_MEGALINTER` is set (no longer requires `CI_JOB_TOKEN`)
 
 - New linters
   - osv-scanner (trivy-like security linter, by Google)
+  - Add [zizmor](https://docs.zizmor.sh/) GitHub Actions static analysis.
 
 - Disabled linters
   - Disable trivy until their security issue is solved
@@ -27,9 +31,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Media
 
 - Linters enhancements
+  - v8r (JSON/YAML schema validation): filter output to show only validation errors, suppressing "no schema found" info and success messages
 
 - Fixes
-  - Fix linter output by section in Console reporter
+  - Fix ConsoleLinterReporter to display log sections for all linters (not just errors)
+  - Fix ConsoleReporter to output results table and reporters logs after linters run
+  - Produce linter console reports sequentially in main process for parallel runs to avoid interleaved CI log sections
 
 - Reporters
 
@@ -37,6 +44,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Doc
   - Migrate copilot-instructions into Claude Code Agents & Skills
+  - Add documentation for [megalinter-ado](https://github.com/DownAtTheBottomOfTheMoleHole/megalinter-ado) Azure DevOps extension
+  - Add documentation for [megalinter-mcp-server](https://github.com/DownAtTheBottomOfTheMoleHole/megalinter-mcp) MCP server
 
 - CI
   - Disable trivy-action until their security issue is solved
@@ -175,6 +184,28 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 2.1.50 to **2.1.51** on 2026-04-26
   - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.0 to **7.6.1** on 2026-04-26
   - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.0 to **7.6.1** on 2026-04-26
+  - [checkov](https://www.checkov.io/) from 3.2.521 to **3.2.526** on 2026-05-01
+  - [grype](https://github.com/anchore/grype) from 0.111.1 to **0.112.0** on 2026-05-01
+  - [syft](https://github.com/anchore/syft) from 1.43.0 to **1.44.0** on 2026-05-01
+  - [npm-package-json-lint](https://npmpackagejsonlint.org/) from 10.2.1 to **10.2.2** on 2026-05-02
+  - [phpstan](https://phpstan.org/) from 2.1.51 to **2.1.54** on 2026-05-02
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.11 to **0.15.12** on 2026-05-02
+  - [ruff](https://github.com/astral-sh/ruff) from 0.15.11 to **0.15.12** on 2026-05-02
+  - [rumdl](https://github.com/rvben/rumdl) from 0.1.78 to **0.1.86** on 2026-05-03
+  - [stylelint](https://stylelint.io) from 17.8.0 to **17.9.1** on 2026-05-06
+  - [pmd](https://pmd.github.io/) from 7.23.0 to **7.24.0** on 2026-05-06
+  - [npm-package-json-lint](https://npmpackagejsonlint.org/) from 10.2.2 to **10.4.0** on 2026-05-06
+  - [kubescape](https://github.com/kubescape/kubescape) from 4.0.5 to **4.0.6** on 2026-05-06
+  - [rumdl](https://github.com/rvben/rumdl) from 0.1.86 to **0.1.89** on 2026-05-06
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.95.0 to **1.99.0** on 2026-05-06
+  - [semgrep](https://semgrep.dev/) from 1.159.0 to **1.161.0** on 2026-05-06
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.94.3 to **3.95.2** on 2026-05-06
+  - [snakemake](https://snakemake.github.io/) from 9.19.0 to **9.20.0** on 2026-05-06
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 1.0.0 to **1.1.0** on 2026-05-06
+  - [lychee](https://lychee.cli.rs) from 0.23.0 to **0.24.2** on 2026-05-06
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.14.9 to **1.15.1** on 2026-05-06
+  - [terragrunt](https://terragrunt.gruntwork.io) from 1.0.2 to **1.0.3** on 2026-05-06
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.61.0 to **0.62.0** on 2026-05-06
 <!-- linter-versions-end -->
 
 ## [v9.4.0] - 2026-02-28

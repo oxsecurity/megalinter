@@ -1,6 +1,7 @@
 {
   "linux/amd64": [
     "action_actionlint",
+    "action_zizmor",
     "ansible_ansible_lint",
     "arm_arm_ttk",
     "bash_exec",
@@ -128,6 +129,7 @@
   ],
   "linux/arm64": [
     "action_actionlint",
+    "action_zizmor",
     "ansible_ansible_lint",
     "bash_exec",
     "bash_shellcheck",

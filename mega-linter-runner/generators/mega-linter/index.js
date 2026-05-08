@@ -191,6 +191,14 @@ When you don't know what option to select, please use default values`
       this.validateAllCodeBaseGha += "              github.ref == 'refs/heads/main'"
       this.validateAllCodeBaseGha += "            }}";
     }
+    // persist-credentials
+    if (this.props.applyFixes === true) {
+      this.persistCredentials =
+        "# persist-credentials: false # Comment this line and uncomment the next one if you use APPLY_FIXES\n          persist-credentials: true # zizmor: ignore[artipacked]";
+    } else {
+      this.persistCredentials =
+        "persist-credentials: false # Comment this line and uncomment the next one if you use APPLY_FIXES\n          # persist-credentials: true # zizmor: ignore[artipacked]";
+    }
     this.disable = false;
     // COPY PASTES
     if (this.props.copyPaste === true) {
@@ -224,6 +232,7 @@ When you don't know what option to select, please use default values`
         DEFAULT_BRANCH: this.props.defaultBranch,
         GITHUB_ACTION_NAME: this.gitHubActionName,
         GITHUB_ACTION_VERSION: this.gitHubActionVersion,
+        PERSIST_CREDENTIALS: this.persistCredentials,
         VALIDATE_ALL_CODE_BASE_GHA: this.validateAllCodeBaseGha,
       }
     );

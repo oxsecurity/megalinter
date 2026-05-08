@@ -28,3 +28,7 @@ If [LLM Advisor](../llm-advisor.md) is activated, it will also show its suggesti
 | REPORTERS_ACTION_RUN_URL                   | Override default URL of the CI job visualization page                                                           | <!-- -->         |
 | JOB_SUMMARY_ADDITIONAL_MARKDOWN              | Custom markdown to add at the end of the summary message                                     | <!-- -->      |
 | MEGALINTER_MULTIRUN_KEY                    | Key to identify multirun when multiple MegaLinter runs are executed in the same pipeline (ex: `java`)   | <!-- -->         |
+
+## Jenkins Support
+
+This reporter also works when MegaLinter is triggered from a Jenkins Multibranch Pipeline. See [Jenkins installation guide](../install-jenkins.md#pr-comment-reporting-from-jenkins) for details.
