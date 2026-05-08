@@ -56,6 +56,12 @@ linters:
     linter_rules_configuration_url: https://pylint.readthedocs.io/en/stable/user_guide/configuration/index.html
     linter_rules_inline_disable_url: https://pylint.readthedocs.io/en/stable/user_guide/messages/message_control.html
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_mode_project_extra_args_after:
+      - .
     config_file_name: .pylintrc
     cli_config_arg_name: "--rcfile"
     cli_lint_errors_count: regex_count
@@ -148,6 +154,12 @@ linters:
     config_file_name: pyproject.toml
     cli_config_arg_name: "--config"
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_lint_extra_args:
       - "--diff"
       - "--check"
@@ -211,6 +223,12 @@ linters:
     linter_rules_configuration_url: https://flake8.pycqa.org/en/latest/user/configuration.html#project-configuration
     linter_rules_inline_disable_url: https://flake8.pycqa.org/en/3.1.1/user/ignoring-errors.html#in-line-ignoring-errors
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_mode_project_extra_args_after:
+      - .
     config_file_name: .flake8
     cli_config_arg_name: "--config"
     cli_lint_errors_count: total_lines
@@ -263,6 +281,12 @@ linters:
     linter_rules_configuration_url: https://pycqa.github.io/isort/docs/configuration/config_files.html
     linter_rules_inline_disable_url: https://pycqa.github.io/isort/docs/configuration/action_comments.html
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_mode_project_extra_args_after:
+      - .
     config_file_name: .isort.cfg
     cli_config_arg_name: "--settings-file"
     cli_lint_extra_args:
@@ -358,6 +382,13 @@ linters:
     linter_rules_configuration_url: https://bandit.readthedocs.io/en/latest/config.html#
     linter_rules_inline_disable_url: https://bandit.readthedocs.io/en/latest/config.html#suppressing-individual-lines
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_mode_project_extra_args_after:
+      - --recursive
+      - .
     config_file_name: ".bandit.yml"
     cli_lint_extra_args:
       - --quiet
@@ -426,6 +457,12 @@ linters:
     linter_rules_inline_disable_url: https://mypy.readthedocs.io/en/stable/inline_config.html#inline-config
     linter_megalinter_ref_url: never
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_lint_extra_args:
       - "--install-types"
       - "--non-interactive"
@@ -475,6 +512,12 @@ linters:
     file_extensions:
       - ".ipynb"
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_lint_extra_args:
       - "mypy"
       - "--install-types"
@@ -543,6 +586,12 @@ linters:
   #   linter_speed: 1
   #   linter_rules_inline_disable_url: https://google.github.io/pytype/user_guide.html#silencing-errors
   #   cli_lint_mode: list_of_files
+  #   supported_cli_lint_modes:
+  #     - file
+  #     - list_of_files
+  #     - project
+  #   cli_lint_mode_project_extra_args_after:
+  #     - .
   #   config_file_name: pytype.cfg
   #   cli_lint_errors_count: regex_sum
   #   cli_lint_errors_regex: "Found ([0-9]+) error"
@@ -588,6 +637,12 @@ linters:
     linter_rules_configuration_url: https://github.com/microsoft/pyright/blob/main/docs/configuration.md
     linter_rules_inline_disable_url: https://github.com/microsoft/pyright/blob/main/docs/comments.md#file-level-type-controls
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_mode_project_extra_args_after:
+      - .
     config_file_name: pyrightconfig.json
     cli_config_arg_name: -p
     cli_lint_errors_count: regex_sum
@@ -649,6 +704,12 @@ linters:
     linter_rules_configuration_url: https://docs.astral.sh/ruff/configuration/
     linter_rules_inline_disable_url: https://docs.astral.sh/ruff/linter/#error-suppression
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_config_arg_name: "--config"
     cli_help_arg_name: "help"
     cli_lint_fix_arg_name: "--fix"
@@ -720,6 +781,12 @@ linters:
     linter_rules_inline_disable_url: https://docs.astral.sh/ruff/linter/#error-suppression
     cli_executable: ruff
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_config_arg_name: "--config"
     cli_help_arg_name: "help"
     cli_version_arg_name: "--version"
