@@ -248,6 +248,9 @@ CVE-2026-41520
 # kubescape: docker CVE is a Moby authorization plugin bypass, not applicable as kubescape is a static scanner that does not interact with Docker auth plugins
 CVE-2026-34040
 
+# protolint: grpc-go v1.72.1 embedded in latest release v0.56.4; CVE-2026-33186 requires a running gRPC server with grpc/authz interceptors - protolint runs as a CLI static linter and never starts an authorized gRPC server; remove when protolint upgrades grpc-go to >=1.79.3
+CVE-2026-33186
+
 # Dockerfile
 DS001
 DS-0001

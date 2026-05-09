@@ -24,7 +24,7 @@ Always activate the venv before running Python scripts manually:
 ```bash
 # Build (regenerate Dockerfiles, docs, etc. from descriptors)
 make megalinter-build           # Regenerate Dockerfiles from YAML descriptors
-# Never run make megalinter-build-with-doc — docs are handled by auto-update workflows (avoids PR conflicts)
+# Never run make megalinter-build-with-doc - docs are handled by auto-update workflows (avoids PR conflicts)
 
 # Run MegaLinter locally
 npx mega-linter-runner --flavor python --release beta
