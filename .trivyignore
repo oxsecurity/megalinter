@@ -234,6 +234,20 @@ CVE-2026-32281
 CVE-2026-32283
 CVE-2026-33810
 
+# editorconfig-checker: compiled with Go 1.24.0 (latest release v3.6.1), CVE is incorrect IPv6 parsing in net/url, not applicable as editorconfig-checker validates file formatting only and makes no URL/network calls
+CVE-2026-25679
+
+# lodash: CVE-2026-4800 is arbitrary code execution via _.template() with untrusted input; not applicable in MegaLinter context as linters do not process untrusted data through lodash templates
+CVE-2026-4800
+
+# protobufjs: CVE-2026-41242 is arbitrary code execution via injected protobuf type fields; not applicable in MegaLinter context as linters do not process untrusted protobuf definitions
+CVE-2026-41242
+
+# kubescape: cilium CVE is about cilium-bugtool debug archive info leak, not applicable as kubescape is used as a static scanner only
+CVE-2026-41520
+# kubescape: docker CVE is a Moby authorization plugin bypass, not applicable as kubescape is a static scanner that does not interact with Docker auth plugins
+CVE-2026-34040
+
 # Dockerfile
 DS001
 DS-0001

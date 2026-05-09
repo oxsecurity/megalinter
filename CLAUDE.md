@@ -137,6 +137,7 @@ Skills in `.claude/skills/` invocable via `/project:<skill>`:
 - `/project:add-flavor [name]` - Add a new Docker flavor
 - `/project:build` - Run the build system
 - `/project:diagnose-config` - Debug `.mega-linter.yml` configuration issues
+- `/project:fix-security-issue [CVE or description]` - Handle CVE/vulnerability reports from trivy, osv-scanner, etc.
 
 ## Rules
 
