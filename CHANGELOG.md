@@ -20,9 +20,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Add [zizmor](https://docs.zizmor.sh/) GitHub Actions static analysis.
 
 - Disabled linters
-  - Disable trivy until their security issue is solved
   - Disable KICS until their security issue is solved
   - Disable spectral which is crashing
+
+- Re-enabled linters
+  - Re-enable trivy (v0.70.0) now that the supply chain security incident (GHSA-69fq-xp46-6x23) is resolved
 
 - Deprecated linters
 
@@ -48,7 +50,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Add documentation for [megalinter-mcp-server](https://github.com/DownAtTheBottomOfTheMoleHole/megalinter-mcp) MCP server
 
 - CI
-  - Disable trivy-action until their security issue is solved
+  - Re-enable trivy-action (v0.36.0) now that the supply chain security incident is resolved
   - Run ARM linter jobs only if the latest commit message contains "ARM" (to avoid 200 jobs for each PR)
   - Prevent MegaLinter to push a new commit if the only updates are on markdown files
   - Activate osv-scanner on own sources
