@@ -9,17 +9,17 @@ MegaLinter ships with a [`CLAUDE.md`](../CLAUDE.md) file and a set of Claude Cod
 
 ### Available skills
 
-| Skill | What it does |
-|---|---|
-| `/add-linter [name]` | Guided workflow: descriptor, fixtures, build, changelog |
-| `/update-linter-version [linter] [version]` | Bump a linter's pinned version and rebuild |
-| `/review-descriptor [name]` | Audit a descriptor YAML for completeness and correctness |
-| `/fix-linter-test [name]` | Debug a failing linter test (fixtures, regex, Docker) |
-| `/add-reporter [name]` | Add a new output reporter |
-| `/add-flavor [name]` | Add a new Docker flavor |
-| `/build` | Run `make megalinter-build` to regenerate all generated files |
-| `/diagnose-config` | Debug a `.mega-linter.yml` configuration |
-| `/fix-security-issue [CVE]` | Handle CVE reports from trivy / osv-scanner (upgrade or justified ignore) |
+| Skill                                       | What it does                                                              |
+|---------------------------------------------|---------------------------------------------------------------------------|
+| `/add-linter [name]`                        | Guided workflow: descriptor, fixtures, build, changelog                   |
+| `/update-linter-version [linter] [version]` | Bump a linter's pinned version and rebuild                                |
+| `/review-descriptor [name]`                 | Audit a descriptor YAML for completeness and correctness                  |
+| `/fix-linter-test [name]`                   | Debug a failing linter test (fixtures, regex, Docker)                     |
+| `/add-reporter [name]`                      | Add a new output reporter                                                 |
+| `/add-flavor [name]`                        | Add a new Docker flavor                                                   |
+| `/build`                                    | Run `make megalinter-build` to regenerate all generated files             |
+| `/diagnose-config`                          | Debug a `.mega-linter.yml` configuration                                  |
+| `/fix-security-issue [CVE]`                 | Handle CVE reports from trivy / osv-scanner (upgrade or justified ignore) |
 
 See [`CLAUDE.md`](../CLAUDE.md) for architecture notes, coding conventions, and the full list of agents and rules that Claude Code uses in this repository.
 
