@@ -191,7 +191,7 @@ linters:
           ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
         - |-
           # renovate: datasource=docker depName=golang versioning=semver
-          ARG GO_IMAGE_VERSION=1.26.2
+          ARG GO_IMAGE_VERSION=1.26.3
         # The golang image used as a builder is a temporary workaround
         # Dustilock is not released as a binary or container
         - |-

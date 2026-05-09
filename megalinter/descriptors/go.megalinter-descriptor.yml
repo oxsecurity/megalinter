@@ -160,7 +160,7 @@ linters:
           ARG GO_REVIVE_VERSION=v1.15.0
         - |-
           # renovate: datasource=docker depName=golang versioning=semver
-          ARG GO_IMAGE_VERSION=1.26.2
+          ARG GO_IMAGE_VERSION=1.26.3
         - |-
           FROM golang:${GO_IMAGE_VERSION}-alpine AS revive
           ## The golang image used as a builder is a temporary workaround (https://github.com/mgechev/revive/issues/787)
