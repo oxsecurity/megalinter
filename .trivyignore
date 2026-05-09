@@ -228,6 +228,12 @@ CVE-2026-29786
 CVE-2025-15558
 # https://avd.aquasec.com/nvd/cve-2026-30922 : pyasn1, DDOS attack risk, not applicable in MegaLinter context
 CVE-2026-30922
+# actionlint: compiled with Go 1.26.1 (latest release), no newer version yet; CVEs are DoS in crypto/x509 & crypto/tls, not applicable as actionlint makes no TLS connections
+CVE-2026-32280
+CVE-2026-32281
+CVE-2026-32283
+CVE-2026-33810
+
 # Dockerfile
 DS001
 DS-0001
