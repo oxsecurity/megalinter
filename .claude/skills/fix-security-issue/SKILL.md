@@ -86,6 +86,8 @@ Always include:
 
 ## Step 7 — Update CHANGELOG
 
-Add an entry under the appropriate section in `CHANGELOG.md` (repository root):
-- Under **Linter versions upgrades** if you bumped a version
-- Under **Security** or **Fixes** if you added an ignore with justification
+**Do NOT update CHANGELOG.md** in either of these cases:
+- You added a CVE ignore entry (ignored CVEs are not user-facing changes worth logging)
+- You bumped a linter version (the auto-upgrade workflow handles linter version changelog entries)
+
+Only update `CHANGELOG.md` if you made a non-trivial code or behavior change that users would need to know about (e.g. a linter was disabled, a new workaround was implemented in Python code).
