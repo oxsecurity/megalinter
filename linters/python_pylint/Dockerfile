@@ -57,7 +57,7 @@ ARG PIP_PYLINT_VERSION=4.0.5
 # renovate: datasource=pypi depName=typing-extensions
 ARG PIP_TYPING_EXTENSIONS_VERSION=4.15.0
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=26.1
+ARG PIP_PIP_VERSION=26.1.1
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=21.3.1
 #ARG__END
