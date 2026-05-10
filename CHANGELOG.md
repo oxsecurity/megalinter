@@ -220,6 +220,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.14.9 to **1.15.1** on 2026-05-06
   - [terragrunt](https://terragrunt.gruntwork.io) from 1.0.2 to **1.0.3** on 2026-05-06
   - [tflint](https://github.com/terraform-linters/tflint) from 0.61.0 to **0.62.0** on 2026-05-06
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.42.1 to **0.43.8** on 2026-05-10
+  - [stylelint](https://stylelint.io) from 17.9.1 to **17.11.0** on 2026-05-10
+  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.11.5 to **3.11.6** on 2026-05-10
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 17.0.4 to **17.0.5** on 2026-05-10
+  - [kubescape](https://github.com/kubescape/kubescape) from 4.0.6 to **4.0.8** on 2026-05-10
+  - [rumdl](https://github.com/rvben/rumdl) from 0.1.89 to **0.1.91** on 2026-05-10
+  - [checkov](https://www.checkov.io/) from 3.2.526 to **3.2.527** on 2026-05-10
+  - [semgrep](https://semgrep.dev/) from 1.161.0 to **1.162.0** on 2026-05-10
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.69.3 to **0.70.0** on 2026-05-10
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.69.3 to **0.70.0** on 2026-05-10
 <!-- linter-versions-end -->
 
 ## [v9.4.0] - 2026-02-28
