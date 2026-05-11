@@ -41,6 +41,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Enable comment reporters (GitHub, GitLab, Azure DevOps, Bitbucket) when running MegaLinter from Jenkins CI
   - Fix: use `config.get()` instead of `os.environ.get()` for `GITHUB_REF` in GithubCommentReporter
   - GitlabCommentReporter now activates when `GITLAB_ACCESS_TOKEN_MEGALINTER` is set (no longer requires `CI_JOB_TOKEN`)
+  - BitbucketCommentReporter: render per-linter sections as `###` headings instead of `<details>/<summary>`, since Bitbucket Cloud markdown strips raw HTML and was displaying the tags as literal text
 
 - Flavors
 

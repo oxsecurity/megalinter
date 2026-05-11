@@ -13,6 +13,9 @@ class Reporter:
     name: Optional[str] = None
     report_folder: Optional[str] = None
     scope: Optional[str] = None  # Can be megalinter or linter
+    # Whether the target platform's markdown renderer accepts <details>/<summary> HTML.
+    # Bitbucket Cloud strips raw HTML, so its reporter overrides this to False.
+    markdown_supports_html_details: bool = True
 
     # Constructor: Initialize Linter instance with name and config variables
     def __init__(self, params=None):
