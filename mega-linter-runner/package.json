@@ -106,7 +106,7 @@
     "diff": "^9.0.0",
     "ip-address": "^10.1.1",
     "serialize-javascript": "^7.0.5",
-    "semver": "7.7.4",
+    "semver": "7.8.0",
     "tmp": "0.2.5"
   }
 }
