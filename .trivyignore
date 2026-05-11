@@ -295,6 +295,18 @@ CVE-2026-34040
 # protolint + terrascan: both embed grpc-go; CVE-2026-33186 requires a running gRPC server with grpc/authz interceptors - both tools run as CLI static linters and never start an authorized gRPC server; remove when upgraded to grpc-go >=1.79.3
 CVE-2026-33186
 
+# shfmt: Go stdlib CVEs in v3.13.1 (latest release, compiled with Go 1.26.1). shfmt is a pure shell script formatter that reads files and writes formatted output - it makes no DNS lookups, HTTP/2 connections, network dials, or email address parsing. Remove when shfmt releases a build with Go >=1.26.3.
+# CVE-2026-33811: LookupCNAME (cgo DNS resolver) - not used by shfmt
+CVE-2026-33811
+# CVE-2026-33814: HTTP/2 SETTINGS frames infinite loop in net/http transport - not used by shfmt
+CVE-2026-33814
+# CVE-2026-39820: net/mail ParseAddress/ParseAddressList DoS - not used by shfmt
+CVE-2026-39820
+# CVE-2026-39836: net.Dial/LookupPort NUL byte panic on Windows - not used by shfmt (Linux Alpine container, no network dialing)
+CVE-2026-39836
+# CVE-2026-42499: net/mail consumePhrase DoS - not used by shfmt
+CVE-2026-42499
+
 # Dockerfile
 DS001
 DS-0001
