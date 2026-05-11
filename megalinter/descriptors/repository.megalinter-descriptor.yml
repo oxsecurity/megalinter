@@ -376,17 +376,14 @@ linters:
       # https://github.com/gitleaks/gitleaks/issues/1234
       #- list_of_files
       - project
-    cli_lint_mode_file_extra_args_after:
-      - "--verbose"
-      - "--source"
     cli_lint_mode_project_extra_args_after:
-      - "--verbose"
-      - "--source"
+      - --source
       - .
     cli_lint_extra_args:
       - detect
       - --redact
       - --no-git
+      - --verbose
     cli_sarif_args:
       - --report-format
       - sarif
@@ -423,7 +420,8 @@ linters:
         default_value: ""
 
   # GRYPE
-  - linter_name: grype
+  - class: GrypeLinter
+    linter_name: grype
     linter_text: |
       **Grype** is a comprehensive vulnerability scanner for container images and filesystems that quickly identifies known security vulnerabilities in packages and dependencies. It serves as an essential tool for supply chain security by detecting CVEs across multiple vulnerability databases.
 
@@ -453,10 +451,17 @@ linters:
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/grype.png
     linter_rules_configuration_url: https://github.com/anchore/grype#configuration
     cli_lint_mode: project
-    cli_config_arg_name: "--config"
-    config_file_name: .grype.yaml
+    supported_cli_lint_modes:
+      - file
+      # https://github.com/anchore/grype/issues/562
+      #- list_of_files
+      - project
+    cli_lint_mode_file_extra_args_after:
+      - file:{{FILE}}
     cli_lint_mode_project_extra_args_after:
       - dir:.
+    cli_config_arg_name: "--config"
+    config_file_name: .grype.yaml
     cli_sarif_args:
       - --output
       - sarif
@@ -465,8 +470,6 @@ linters:
     cli_lint_errors_regex: "(Low|Medium|High|Critical)"
     examples:
       - "grype dir:."
-    downgraded_version: true
-    downgraded_reason: Crash for failure test class with https://github.com/anchore/grype/releases/tag/v0.79.6
     install:
       dockerfile:
         - |-
