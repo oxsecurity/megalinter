@@ -28,7 +28,7 @@ python-gitlab==8.3.0
 python-multipart==0.0.27
 pyyaml==6.0.3
 redis==7.4.0
-regex==2026.4.4
+regex==2026.5.9
 requests==2.33.1
 terminaltables==3.1.10
 termcolor==3.3.0
