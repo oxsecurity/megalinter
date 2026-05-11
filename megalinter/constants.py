@@ -70,11 +70,11 @@ DEFAULT_DOCKERFILE_GEM_APK_PACKAGES = [
 ]
 
 DEFAULT_DOCKERFILE_PIP_ARGS = [
-    "# renovate: datasource=pypi depName=pip\nARG PIP_PIP_VERSION=26.0.1",
+    "# renovate: datasource=pypi depName=pip\nARG PIP_PIP_VERSION=26.1.1",
 ]
 
 DEFAULT_DOCKERFILE_PIPENV_ARGS = [
-    "# renovate: datasource=pypi depName=virtualenv\nARG PIP_VIRTUALENV_VERSION=21.2.4",
+    "# renovate: datasource=pypi depName=virtualenv\nARG PIP_VIRTUALENV_VERSION=21.3.1",
 ]
 
 DEFAULT_DOCKERFILE_RUST_ARGS = [

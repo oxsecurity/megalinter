@@ -97,6 +97,42 @@ CVE-2025-55163
 CVE-2025-59419
 CVE-2025-64756
 
+# code-analyzer (@salesforce/plugin-code-analyzer) - Java: Netty embedded in PMD engine used for static analysis only
+# code-analyzer runs as a static CLI tool and never starts an HTTP/HTTP2/DNS server, so all Netty network/server CVEs are unreachable
+CVE-2026-42583
+CVE-2026-42579
+CVE-2026-33870
+CVE-2026-42584
+CVE-2026-42587
+CVE-2026-33871
+CVE-2026-42577
+
+# code-analyzer (@salesforce/plugin-code-analyzer) - Node.js transitive dependencies: not exploitable in static analysis context
+# basic-ftp: code-analyzer performs no FTP operations during Apex/JS analysis
+CVE-2026-41324
+CVE-2026-44240
+GHSA-6v7q-wjvx-w8wg
+CVE-2026-39983
+# fast-uri: path traversal - only trusted workspace paths from MegaLinter are passed to code-analyzer
+CVE-2026-6321
+CVE-2026-6322
+# fast-xml-builder: processes user's own Salesforce metadata XML, never attacker-controlled XML fed from outside
+CVE-2026-44665
+# fast-xml-parser: XML entity expansion DoS - parses user's own Salesforce metadata XML files in CI context
+CVE-2026-33036
+# flatted: DoS/prototype pollution via crafted JSON - JSON data comes from user's own workspace files only
+CVE-2026-32141
+CVE-2026-33228
+# picomatch: ReDoS via extglob - patterns come from MegaLinter config/descriptor, not attacker-controlled input
+CVE-2026-33671
+# simple-git: RCE via git URL - code-analyzer uses git only on the local workspace, no attacker-controlled remote URLs
+CVE-2026-6951
+# tar: file overwrite via drive-relative symlink - code-analyzer performs no external archive extraction during analysis
+CVE-2026-31802
+# undici: WebSocket DoS - code-analyzer doesn't use WebSocket connections during static analysis
+CVE-2026-1526
+CVE-2026-2229
+
 # octokit
 CVE-2025-25288
 CVE-2025-25289
@@ -115,6 +151,14 @@ CVE-2024-23652
 CVE-2024-23653
 CVE-2024-23651
 CVE-2024-26147
+# terrascan repo is archived (no new releases); go-getter only processes local workspace sources in MegaLinter CI context, not attacker-controlled URLs
+CVE-2026-4660
+# terrascan embeds moby/buildkit only for static Dockerfile/IaC parsing; never runs as a BuildKit server, so arbitrary file write/read paths are unreachable
+CVE-2026-33747
+CVE-2026-33748
+
+# terragrunt: alpine/terragrunt:1.15.1 (latest) compiled with Go 1.26.0; CVE-2026-27137 is crypto/x509 email-constraint enforcement - terragrunt in MegaLinter runs `hcl fmt --check` on local files only, no TLS/certificate validation involved
+CVE-2026-27137
 
 # tflint
 CVE-2024-3817
@@ -228,6 +272,29 @@ CVE-2026-29786
 CVE-2025-15558
 # https://avd.aquasec.com/nvd/cve-2026-30922 : pyasn1, DDOS attack risk, not applicable in MegaLinter context
 CVE-2026-30922
+# actionlint: compiled with Go 1.26.1 (latest release), no newer version yet; CVEs are DoS in crypto/x509 & crypto/tls, not applicable as actionlint makes no TLS connections
+CVE-2026-32280
+CVE-2026-32281
+CVE-2026-32283
+CVE-2026-33810
+
+# editorconfig-checker: compiled with Go 1.24.0 (latest release v3.6.1), CVE is incorrect IPv6 parsing in net/url, not applicable as editorconfig-checker validates file formatting only and makes no URL/network calls
+CVE-2026-25679
+
+# lodash: CVE-2026-4800 is arbitrary code execution via _.template() with untrusted input; not applicable in MegaLinter context as linters do not process untrusted data through lodash templates
+CVE-2026-4800
+
+# protobufjs: CVE-2026-41242 is arbitrary code execution via injected protobuf type fields; not applicable in MegaLinter context as linters do not process untrusted protobuf definitions
+CVE-2026-41242
+
+# kubescape: cilium CVE is about cilium-bugtool debug archive info leak, not applicable as kubescape is used as a static scanner only
+CVE-2026-41520
+# kubescape: docker CVE is a Moby authorization plugin bypass, not applicable as kubescape is a static scanner that does not interact with Docker auth plugins
+CVE-2026-34040
+
+# protolint + terrascan: both embed grpc-go; CVE-2026-33186 requires a running gRPC server with grpc/authz interceptors - both tools run as CLI static linters and never start an authorized gRPC server; remove when upgraded to grpc-go >=1.79.3
+CVE-2026-33186
+
 # Dockerfile
 DS001
 DS-0001

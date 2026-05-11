@@ -12,6 +12,7 @@ on:
       - "**.md"
       - "**.json"
 
+permissions: {}
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
   cancel-in-progress: true
@@ -24,10 +25,11 @@ jobs:
       contents: write
     if: github.repository == 'oxsecurity/megalinter'
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
           fetch-depth: 0
-      - uses: actions/setup-python@v6
+          persist-credentials: false
+      - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
         with:
           python-version: 3.14.4
       - run: pip install --upgrade -r .config/python/dev/requirements.txt

@@ -7,6 +7,7 @@
     "label": "Optimized for Salesforce based projects",
     "linters": [
         "ACTION_ACTIONLINT",
+        "ACTION_ZIZMOR",
         "ANSIBLE_ANSIBLE_LINT",
         "BASH_EXEC",
         "BASH_SHELLCHECK",
@@ -42,6 +43,8 @@
         "REPOSITORY_SECRETLINT",
         "REPOSITORY_SEMGREP",
         "REPOSITORY_SYFT",
+        "REPOSITORY_TRIVY",
+        "REPOSITORY_TRIVY_SBOM",
         "REPOSITORY_TRUFFLEHOG",
         "SALESFORCE_CODE_ANALYZER_APEX",
         "SALESFORCE_CODE_ANALYZER_AURA",

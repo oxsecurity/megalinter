@@ -45,6 +45,8 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+permissions: {}
+
 jobs:
   build-custom-flavor:
     name: Build Custom MegaLinter Flavor
@@ -61,12 +63,17 @@ jobs:
 
       - name: Determine MegaLinter Version Tag
         id: determine-tag
+        env:
+          INPUT_MEGALINTER_VERSION: ${{ inputs.megalinter-version }}
+          INPUT_IS_LATEST: ${{ inputs.is-latest }}
+          EVENT_NAME: ${{ github.event_name }}
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
         run: |
-          if [ -n "${{ inputs.megalinter-version }}" ]; then
-            TAG="${{ inputs.megalinter-version }}"
+          if [ -n "${INPUT_MEGALINTER_VERSION}" ]; then
+            TAG="${INPUT_MEGALINTER_VERSION}"
             echo "Using workflow input version: $TAG"
-          elif [ "${{ github.event_name }}" == "release" ]; then
-            TAG="${{ github.event.release.tag_name }}"
+          elif [ "${EVENT_NAME}" == "release" ]; then
+            TAG="${RELEASE_TAG}"
             echo "Using release tag: $TAG"
           else
             TAG="beta"
@@ -75,10 +82,10 @@ jobs:
           echo "tag=$TAG" >> $GITHUB_OUTPUT
 
           # Determine is-latest flag
-          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
-            IS_LATEST="${{ inputs.is-latest }}"
+          if [ "${EVENT_NAME}" == "workflow_dispatch" ]; then
+            IS_LATEST="${INPUT_IS_LATEST}"
             echo "Using workflow input is-latest: $IS_LATEST"
-          elif [ "${{ github.event_name }}" == "release" ]; then
+          elif [ "${EVENT_NAME}" == "release" ]; then
             IS_LATEST="true"
             echo "Release event - is-latest: true"
           else
@@ -105,7 +112,7 @@ jobs:
 
       - name: Set Lowercase Repository Name
         id: lowercase-repo
-        run: echo "repo=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
+        run: echo "repo=$(echo "${GITHUB_REPOSITORY}" | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
 
       - name: Build MegaLinter Custom Flavor
         uses: oxsecurity/megalinter/flavors/custom-builder@main

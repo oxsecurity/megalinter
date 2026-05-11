@@ -25,22 +25,27 @@ on:
 #################
 # Start the job #
 #################
+permissions: {}
+
 jobs:
   actions-tagger:
     runs-on: windows-latest
     environment:
       name: release-tag
-    permissions: write-all
+    permissions:
+      contents: write
     steps:
       #############################
       # Check out the latest code #
       #############################
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          persist-credentials: false
 
       ######################
       # Run the tag action #
       ######################
-      - uses: Actions-R-Us/actions-tagger@v2.0.3
+      - uses: Actions-R-Us/actions-tagger@330ddfac760021349fef7ff62b372f2f691c20fb # v2.0.3
         with:
           publish_latest_tag: true
 

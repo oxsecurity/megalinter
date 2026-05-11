@@ -18,17 +18,12 @@ on:
   release:
     # Want to run the automation when a release is created
     types: ["created"]
-    paths:
-      - "Dockerfile"
-      - "megalinter/**"
-      - "mega-linter-runner/**"
-      - "flavors/**"
-      - "**/linter-versions.json"
-      - "**/.sh"
 
 ###############
 # Set the Job #
 ###############
+permissions: {}
+
 jobs:
   publish_runner:
     name: Publish mega-linter-runner (release)
@@ -39,7 +34,7 @@ jobs:
       actions: write
     steps:
       - name: Trigger deploy-mega-linter-runner workflow
-        uses: actions/github-script@v9
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
@@ -75,10 +70,12 @@ jobs:
       # Checkout the code base #
       ##########################
       - name: Checkout Code
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          persist-credentials: false
 
       - name: Login to GitHub Container Registry
-        uses: docker/login-action@v4
+        uses: docker/login-action@4907a6ddec9925e35a0a9e82d7399ccc52663121 # v4
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
@@ -96,10 +93,10 @@ jobs:
           sudo rm -rf /opt/hostedtoolcache/go # Go toolcache
 
       - name: Get current date
-        run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> ${GITHUB_ENV}
+        run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> "${GITHUB_ENV}"
 
       - name: Build Image
-        uses: docker/build-push-action@v7
+        uses: docker/build-push-action@bcafcacb16a39f128d818304e6c9c0c18556b85f # v7
         with:
           context: .
           file: Dockerfile-release
@@ -120,21 +117,21 @@ jobs:
             ghcr.io/oxsecurity/megalinter:latest
 
       - name: Invoke Mirror docker image workflow (Main image)
-        uses: benc-uk/workflow-dispatch@v1
+        uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1
         with:
           workflow: mirror-docker-image.yml
           # MAJOR-RELEASE-IMPACTED
           inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter:v9", "target-image": "docker.io/oxsecurity/megalinter:v9" }'
           ref: main
       - name: Invoke Mirror docker image workflow (Main image)
-        uses: benc-uk/workflow-dispatch@v1
+        uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1
         with:
           workflow: mirror-docker-image.yml
           # MAJOR-RELEASE-IMPACTED
           inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter:v9", "target-image": "docker.io/oxsecurity/megalinter:${{ github.event.release.tag_name }}" }'
           ref: main
       - name: Invoke Mirror docker image workflow (Main image)
-        uses: benc-uk/workflow-dispatch@v1
+        uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1
         with:
           workflow: mirror-docker-image.yml
           # MAJOR-RELEASE-IMPACTED
@@ -206,32 +203,34 @@ jobs:
       # Checkout the code base #
       ##########################
       - name: Checkout Code
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          persist-credentials: false
 
       - name: Prepare
         run: |
           platform=${{ matrix.platform }}
-          echo "PLATFORM_PAIR=${platform//\//-}" >> $GITHUB_ENV
+          echo "PLATFORM_PAIR=${platform//\//-}" >> "${GITHUB_ENV}"
 
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v4
+        uses: docker/setup-qemu-action@ce360397dd3f832beb865e1373c09c0e9f86d70a # v4
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v4
+        uses: docker/setup-buildx-action@4d04d5d9486b7bd6fa91e7baf45bbb4f8b9deedd # v4
 
       - name: Login to GitHub Container Registry
-        uses: docker/login-action@v4
+        uses: docker/login-action@4907a6ddec9925e35a0a9e82d7399ccc52663121 # v4
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Get current date
-        run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> ${GITHUB_ENV}
+        run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> "${GITHUB_ENV}"
 
       - name: Build Flavor Builder Image
         id: build
-        uses: docker/build-push-action@v7
+        uses: docker/build-push-action@bcafcacb16a39f128d818304e6c9c0c18556b85f # v7
         with:
           context: .
           file: Dockerfile-custom-flavor
@@ -246,13 +245,16 @@ jobs:
           outputs: type=image,"name=ghcr.io/${{ github.repository }}-custom-flavor-builder",push-by-digest=true,name-canonical=true,push=true
 
       - name: Export digest
+        env:
+          RUNNER_TEMP: ${{ runner.temp }}
+          BUILD_DIGEST: ${{ steps.build.outputs.digest }}
         run: |
-          mkdir -p ${{ runner.temp }}/digests
-          digest="${{ steps.build.outputs.digest }}"
-          touch "${{ runner.temp }}/digests/${digest#sha256:}"
+          mkdir -p "${RUNNER_TEMP}/digests"
+          digest="${BUILD_DIGEST}"
+          touch "${RUNNER_TEMP}/digests/${digest#sha256:}"
 
       - name: Upload digest
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: custom-flavor-builder-digests-${{ env.PLATFORM_PAIR }}
           path: ${{ runner.temp }}/digests/*
@@ -271,25 +273,25 @@ jobs:
 
     steps:
       - name: Download digests
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
         with:
           path: ${{ runner.temp }}/digests
           pattern: custom-flavor-builder-digests-*
           merge-multiple: true
 
       - name: Login to GitHub Container Registry
-        uses: docker/login-action@v4
+        uses: docker/login-action@4907a6ddec9925e35a0a9e82d7399ccc52663121 # v4
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v4
+        uses: docker/setup-buildx-action@4d04d5d9486b7bd6fa91e7baf45bbb4f8b9deedd # v4
 
       - name: Docker meta
         id: meta
-        uses: docker/metadata-action@v6
+        uses: docker/metadata-action@030e881283bb7a6894de51c315a6bfe6a94e05cf # v6
         with:
           images: ghcr.io/${{ github.repository }}-custom-flavor-builder
           tags: |
@@ -300,12 +302,15 @@ jobs:
       - name: Create manifest list and push
         working-directory: ${{ runner.temp }}/digests
         run: |
+          # shellcheck disable=SC2046
           docker buildx imagetools create $(jq -cr '.tags | map("-t " + .) | join(" ")' <<< "$DOCKER_METADATA_OUTPUT_JSON") \
             $(printf 'ghcr.io/${{ github.repository }}-custom-flavor-builder@sha256:%s ' *)
 
       - name: Inspect image
         run: |
-          docker buildx imagetools inspect ghcr.io/${{ github.repository }}-custom-flavor-builder:${{ steps.meta.outputs.version }}
+          docker buildx imagetools inspect ghcr.io/${{ github.repository }}-custom-flavor-builder:"${STEPS_META_OUTPUTS_VERSION}"
+        env:
+          STEPS_META_OUTPUTS_VERSION: ${{ steps.meta.outputs.version }}
 
   deploy_doc:
     runs-on: ubuntu-latest
@@ -316,9 +321,10 @@ jobs:
     environment:
       name: release
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
           fetch-depth: 0
+          persist-credentials: false
       - name: Get release version
         id: version
         run: |
@@ -330,11 +336,16 @@ jobs:
           } >>"$GITHUB_OUTPUT"
       - name: Print tags
         run: |
-          echo "prev tag ${{ steps.version.outputs.ptag }}"
-          echo "curr tag ${{ steps.version.outputs.ctag }}"
-          echo "prev ver ${{ steps.version.outputs.pversion }}"
-          echo "curr ver ${{ steps.version.outputs.cversion }}"
-      - uses: actions/setup-python@v6
+          echo "prev tag ${STEPS_VERSION_OUTPUTS_PTAG}"
+          echo "curr tag ${STEPS_VERSION_OUTPUTS_CTAG}"
+          echo "prev ver ${STEPS_VERSION_OUTPUTS_PVERSION}"
+          echo "curr ver ${STEPS_VERSION_OUTPUTS_CVERSION}"
+        env:
+          STEPS_VERSION_OUTPUTS_PTAG: ${{ steps.version.outputs.ptag }}
+          STEPS_VERSION_OUTPUTS_CTAG: ${{ steps.version.outputs.ctag }}
+          STEPS_VERSION_OUTPUTS_PVERSION: ${{ steps.version.outputs.pversion }}
+          STEPS_VERSION_OUTPUTS_CVERSION: ${{ steps.version.outputs.cversion }}
+      - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
         with:
           python-version: 3.14.4
       - run: pip install --upgrade -r .config/python/dev/requirements.txt
@@ -346,18 +357,26 @@ jobs:
           git stash
       - name: Checkout previous tag
         run: |
-          git checkout ${{ steps.version.outputs.ptag }}
+          git checkout "${STEPS_VERSION_OUTPUTS_PTAG}"
+        env:
+          STEPS_VERSION_OUTPUTS_PTAG: ${{ steps.version.outputs.ptag }}
       - name: Mike deploy previous version
         run: |
-          mike delete ${{ steps.version.outputs.pversion }} || echo 'version does not exists yet'
-          mike deploy ${{ steps.version.outputs.pversion }}
+          mike delete "${STEPS_VERSION_OUTPUTS_PVERSION}" || echo 'version does not exists yet'
+          mike deploy "${STEPS_VERSION_OUTPUTS_PVERSION}"
+        env:
+          STEPS_VERSION_OUTPUTS_PVERSION: ${{ steps.version.outputs.pversion }}
       - name: Checkout current tag
         run: |
-          git checkout ${{ steps.version.outputs.ctag }}
+          git checkout "${STEPS_VERSION_OUTPUTS_CTAG}"
+        env:
+          STEPS_VERSION_OUTPUTS_CTAG: ${{ steps.version.outputs.ctag }}
       - name: Mike deploy current version
         # MAJOR-RELEASE-IMPACTED
         run: |
           mike delete latest
           mike delete v9 || true
           mike deploy v9 || true
-          mike deploy --push latest ${{ steps.version.outputs.cversion }}
+          mike deploy --push latest "${STEPS_VERSION_OUTPUTS_CVERSION}"
+        env:
+          STEPS_VERSION_OUTPUTS_CVERSION: ${{ steps.version.outputs.cversion }}

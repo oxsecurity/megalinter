@@ -22,7 +22,7 @@ description: How to use kingfisher (configure, ignore files, ignore errors, help
 
 ## kingfisher documentation
 
-- Version in MegaLinter: **1.95.0**
+- Version in MegaLinter: **1.99.0**
 - Visit [Official Web Site](https://github.com/mongodb/kingfisher#readme){target=_blank}
 - See [How to disable kingfisher rules in files](https://github.com/mongodb/kingfisher?tab=readme-ov-file#inline-ignore-directives){target=_blank}
 - See [Index of problems detected by kingfisher](https://github.com/mongodb/kingfisher/tree/main/data/rules){target=_blank}
@@ -52,8 +52,8 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                   | Description               | Embedded linters |                                                                                                                                                                                         Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor |       135        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/) | Optimized for security    |        23        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor |       136        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/) | Optimized for security    |        25        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 
 ## Behind the scenes
 
@@ -92,6 +92,7 @@ Commands:
   revoke      Directly revoke a known secret against a rule's revocation config
   access-map  Map a cloud credential to its identity, permissions, and blast radius
   view        View Kingfisher JSON/JSONL reports in a local web UI
+  config      Generate or inspect `kingfisher.yaml` project config files
   update      Update the Kingfisher binary
   help        Print this message or the help of the given subcommand(s)
 
@@ -109,6 +110,10 @@ Global Options:
       --no-update-check             Disable automatic update checks
       --user-agent-suffix <SUFFIX>  Append a custom suffix to the default Kingfisher user-agent
                                     string
+      --endpoint <PROVIDER=URL>     Override provider API endpoints for validation/revocation
+                                    (PROVIDER=URL), repeatable
+      --endpoint-config <FILE>      YAML file containing provider endpoint overrides
+      --config <FILE>               Path to a `kingfisher.yaml` project config file
 ```
 
 ### Installation on mega-linter Docker image
@@ -116,7 +121,7 @@ Global Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=github-tags depName=mongodb/kingfisher
-ARG REPOSITORY_KINGFISHER_VERSION=1.95.0
+ARG REPOSITORY_KINGFISHER_VERSION=1.99.0
 RUN curl --silent --location https://raw.githubusercontent.com/mongodb/kingfisher/main/scripts/install-kingfisher.sh | bash -s -- /usr/local/bin --tag "v${REPOSITORY_KINGFISHER_VERSION}"
 
 ```

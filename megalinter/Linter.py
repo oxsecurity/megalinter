@@ -839,7 +839,12 @@ class Linter:
             self.active_only_if_file_found.append(self.config_file_name)
 
     # Processes the linter
-    def run(self, run_commands_before_linters=None, run_commands_after_linters=None):
+    def run(
+        self,
+        run_commands_before_linters=None,
+        run_commands_after_linters=None,
+        skip_console_reporter=False,
+    ):
         self.start_perf = perf_counter()
 
         # Pre-compute subprocess environment once per linter run to avoid
@@ -994,6 +999,11 @@ class Linter:
         self.elapsed_time_s = perf_counter() - self.start_perf
         for reporter in self.reporters:
             try:
+                # Skip console reporter when running in parallel workers;
+                # it will be produced in the main process to avoid interleaved
+                # CI log section markers (::group::/::endgroup::)
+                if skip_console_reporter and reporter.name == "CONSOLE":
+                    continue
                 reporter.produce_report()
             except Exception as e:
                 logging.error("Unable to process reporter " + reporter.name + str(e))

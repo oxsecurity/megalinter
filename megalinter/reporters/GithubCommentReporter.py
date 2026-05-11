@@ -5,7 +5,6 @@ Post a comment on Github Pull Requests
 """
 
 import logging
-import os
 import re
 
 import github
@@ -107,7 +106,7 @@ class GithubCommentReporter(Reporter):
                 return
             # Try to get PR from GITHUB_REF
             pr_list = []
-            ref = os.environ.get("GITHUB_REF", "")
+            ref = config.get(self.master.request_id, "GITHUB_REF", "")
             m = re.compile("refs/pull/(\\d+)/merge").match(ref)
             if m is not None:
                 pr_id = m.group(1)

@@ -1,0 +1,6 @@
+rules:
+  artipacked:
+    ignore:
+      - build-command.yml
+      - mega-linter-for-runner.yml
+      - mega-linter.yml

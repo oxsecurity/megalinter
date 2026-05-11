@@ -3,6 +3,26 @@
 :wave: Hi there!
 We're thrilled that you'd like to contribute to this project. Your help is essential for keeping it great.
 
+## Claude Code
+
+MegaLinter ships with a [`CLAUDE.md`](../CLAUDE.md) file and a set of Claude Code skills that automate the most common contribution tasks. If you use [Claude Code](https://claude.ai/code), these skills handle the repetitive work so you can focus on the logic.
+
+### Available skills
+
+| Skill                                       | What it does                                                              |
+|---------------------------------------------|---------------------------------------------------------------------------|
+| `/add-linter [name]`                        | Guided workflow: descriptor, fixtures, build, changelog                   |
+| `/update-linter-version [linter] [version]` | Bump a linter's pinned version and rebuild                                |
+| `/review-descriptor [name]`                 | Audit a descriptor YAML for completeness and correctness                  |
+| `/fix-linter-test [name]`                   | Debug a failing linter test (fixtures, regex, Docker)                     |
+| `/add-reporter [name]`                      | Add a new output reporter                                                 |
+| `/add-flavor [name]`                        | Add a new Docker flavor                                                   |
+| `/build`                                    | Run `make megalinter-build` to regenerate all generated files             |
+| `/diagnose-config`                          | Debug a `.mega-linter.yml` configuration                                  |
+| `/fix-security-issue [CVE]`                 | Handle CVE reports from trivy / osv-scanner (upgrade or justified ignore) |
+
+See [`CLAUDE.md`](../CLAUDE.md) for architecture notes, coding conventions, and the full list of agents and rules that Claude Code uses in this repository.
+
 ## How to Contribute
 
 ### 1. Create an issue
@@ -238,6 +258,8 @@ Every time a change is made to a `.md` file it will automatically update if the 
 Once you think everything is correct run `make megalinter-build --doc` or  `bash build.sh --doc` and it will generate all the rest!
 
 ### Add a new linter
+
+> **With Claude Code**: run `/add-linter [name]` for a guided, step-by-step workflow that handles the descriptor, fixtures, build, and changelog automatically.
 
 Each linter must:
 

@@ -18,6 +18,9 @@ on:
       - .github/workflows/help-command.yml
       - .github/workflows/build-command.yml
 
+permissions:
+  contents: read
+
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
   cancel-in-progress: true
@@ -33,9 +36,11 @@ jobs:
     timeout-minutes: 60
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          persist-credentials: false
       - name: Setup Node
-        uses: actions/setup-node@v6.4.0
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
         with:
           node-version: "24.x"
       - name: Install dependencies

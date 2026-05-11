@@ -17,6 +17,8 @@ on:
       - alpha # ml workflow addition
 
 # Comment env block if you do not want to apply fixes
+permissions: {}
+
 env:
   # Apply linter fixes configuration
   #
@@ -54,9 +56,11 @@ jobs:
 
       # Git Checkout
       - name: Checkout Code
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
+          # persist-credentials: false # Comment this line and uncomment the next one if you use APPLY_FIXES
+          persist-credentials: true # zizmor: ignore[artipacked]
 
           # If you use VALIDATE_ALL_CODEBASE = true, you can remove this line to
           # improve performance
@@ -67,7 +71,7 @@ jobs:
 
         # You can override MegaLinter flavor used to have faster performances
         # More info at https://megalinter.io/flavors/
-        uses: oxsecurity/megalinter/flavors/javascript@beta # ml workflow change
+        uses: oxsecurity/megalinter/flavors/javascript@beta # zizmor: ignore[unpinned-uses,ref-confusion]
 
         id: ml
 
@@ -105,7 +109,7 @@ jobs:
 
       # Upload MegaLinter artifacts
       - name: Archive production artifacts
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         if: success() || failure()
         with:
           name: MegaLinter reports
@@ -145,7 +149,7 @@ jobs:
       # Create pull request if applicable
       # (for now works only on PR from same repository, not from forks)
       - name: Create Pull Request with applied fixes
-        uses: peter-evans/create-pull-request@v8
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8
         id: cpr
         if: env.APPLY_FIXES_IF_PR == 'true'
         with:
@@ -157,8 +161,11 @@ jobs:
       - name: Create PR output
         if: env.APPLY_FIXES_IF_PR == 'true'
         run: |
-          echo "PR Number - ${{ steps.cpr.outputs.pull-request-number }}"
-          echo "PR URL - ${{ steps.cpr.outputs.pull-request-url }}"
+          echo "PR Number - ${STEPS_CPR_OUTPUTS_PULL_REQUEST_NUMBER}"
+          echo "PR URL - ${STEPS_CPR_OUTPUTS_PULL_REQUEST_URL}"
+        env:
+          STEPS_CPR_OUTPUTS_PULL_REQUEST_NUMBER: ${{ steps.cpr.outputs.pull-request-number }}
+          STEPS_CPR_OUTPUTS_PULL_REQUEST_URL: ${{ steps.cpr.outputs.pull-request-url }}
 
       # Push new commit if applicable
       # (for now works only on PR from same repository, not from forks)
@@ -169,8 +176,10 @@ jobs:
       - name: Skip markdown/json-only fix commit for bot branches
         if: env.APPLY_FIXES_IF_COMMIT == 'true'
         shell: bash
+        env:
+          HEAD_REF: ${{ github.event.pull_request.head.ref || github.head_ref || github.ref_name }}
         run: |
-          branch="${{ github.event.pull_request.head.ref || github.head_ref || github.ref_name }}"
+          branch="${HEAD_REF}"
 
           case "$branch" in
             create-pull-request/patch|dependabot/*|renovate/*)
@@ -198,7 +207,7 @@ jobs:
           echo 'APPLY_FIXES_IF_COMMIT=false' >> "${GITHUB_ENV}"
 
       - name: Commit and push applied linter fixes
-        uses: stefanzweifel/git-auto-commit-action@v7
+        uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7
         if: env.APPLY_FIXES_IF_COMMIT == 'true'
         with:
           branch: >-
