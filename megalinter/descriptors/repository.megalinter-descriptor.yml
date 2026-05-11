@@ -81,7 +81,8 @@ linters:
     test_folder: repository_checkov
 
   # DEVSKIM
-  - linter_name: devskim
+  - class: DevskimLinter
+    linter_name: devskim
     can_output_sarif: true
     descriptor_flavors:
       - all
@@ -123,15 +124,25 @@ linters:
     config_file_name: .devskim.json
     cli_config_arg_name: "--options-json"
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_extra_args:
       - analyze
     cli_sarif_args:
       - --file-format
       - sarif
+    cli_lint_mode_file_extra_args_after:
+      - -E
+      - --source-code
+    cli_lint_mode_list_of_files_extra_args_after:
+      - -E
+      - --source-code
     cli_lint_mode_project_extra_args_after:
+      - -E
       - --source-code
       - .
-      - -E
     cli_help_arg_name: --help
     cli_version_arg_name: --version
     cli_lint_errors_count: sarif
@@ -185,6 +196,8 @@ linters:
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/dustilock.png
     linter_spdx_license: Apache-2.0
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
     cli_lint_extra_args:
       - --recursive
     cli_lint_errors_count: regex_count
@@ -233,6 +246,8 @@ linters:
     cli_config_arg_name: ""
     cli_executable: git
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
     cli_lint_extra_args:
       - "diff"
       - "--check"
