@@ -371,6 +371,18 @@ linters:
     config_file_name: .gitleaks.toml
     cli_config_arg_name: "-c"
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - file
+      # https://github.com/gitleaks/gitleaks/issues/1234
+      #- list_of_files
+      - project
+    cli_lint_mode_file_extra_args_after:
+      - "--verbose"
+      - "--source"
+    cli_lint_mode_project_extra_args_after:
+      - "--verbose"
+      - "--source"
+      - .
     cli_lint_extra_args:
       - detect
       - --redact
@@ -380,10 +392,6 @@ linters:
       - sarif
       - --report-path
       - "{{SARIF_OUTPUT_FILE}}"
-    cli_lint_mode_project_extra_args_after:
-      - "--verbose"
-      - "--source"
-      - .
     cli_help_arg_name: help
     cli_version_arg_name: version
     cli_lint_errors_count: regex_sum
