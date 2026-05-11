@@ -291,6 +291,8 @@ CVE-2026-41242
 CVE-2026-41520
 # kubescape: docker CVE is a Moby authorization plugin bypass, not applicable as kubescape is a static scanner that does not interact with Docker auth plugins
 CVE-2026-34040
+# kubescape: go-git CVE-2026-45022 is improper parsing of malformed git commit/tag objects affecting commit signature verification; kubescape v4.0.8 (latest) still uses go-git v5.18.0. Not applicable as kubescape is used as a static k8s YAML scanner and does not parse attacker-controlled git objects or perform commit signature verification. Remove when kubescape upgrades to go-git >=5.19.0.
+CVE-2026-45022
 
 # protolint + terrascan: both embed grpc-go; CVE-2026-33186 requires a running gRPC server with grpc/authz interceptors - both tools run as CLI static linters and never start an authorized gRPC server; remove when upgraded to grpc-go >=1.79.3
 CVE-2026-33186
