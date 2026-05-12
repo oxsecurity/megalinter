@@ -924,7 +924,6 @@ linters:
     cli_lint_mode: project
     supported_cli_lint_modes:
       - file
-      - list_of_files
       - project
     config_file_name: trivy.yaml
     cli_config_arg_name: --config
@@ -996,7 +995,6 @@ linters:
     cli_lint_mode: project
     supported_cli_lint_modes:
       - file
-      - list_of_files
       - project
     config_file_name: trivy-sbom.yaml
     cli_config_arg_name: --config
@@ -1087,7 +1085,7 @@ linters:
       platform:
         - linux/amd64
         - linux/arm64
-    test_folder: gitleaks
+    test_folder: repository_trufflehog
   # kingfisher
   - class: KingfisherLinter
     linter_name: kingfisher
