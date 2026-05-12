@@ -231,6 +231,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [semgrep](https://semgrep.dev/) from 1.161.0 to **1.162.0** on 2026-05-10
   - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.69.3 to **0.70.0** on 2026-05-10
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.69.3 to **0.70.0** on 2026-05-10
+  - [checkov](https://www.checkov.io/) from 3.2.527 to **3.2.528** on 2026-05-12
+  - [osv-scanner](https://google.github.io/osv-scanner/) from 2.3.5 to **2.3.8** on 2026-05-12
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.95.2 to **3.95.3** on 2026-05-12
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 8.2.7 to **8.2.8** on 2026-05-12
+  - [code-analyzer-apex](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.10.2 to **5.12.0** on 2026-05-12
+  - [code-analyzer-aura](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.10.2 to **5.12.0** on 2026-05-12
+  - [code-analyzer-lwc](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.10.2 to **5.12.0** on 2026-05-12
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.15.1 to **1.15.2** on 2026-05-12
+  - [terragrunt](https://terragrunt.gruntwork.io) from 1.0.3 to **1.0.4** on 2026-05-12
 <!-- linter-versions-end -->
 
 ## [v9.4.0] - 2026-02-28

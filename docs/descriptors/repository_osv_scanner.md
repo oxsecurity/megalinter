@@ -20,7 +20,7 @@ description: How to use osv-scanner (configure, ignore files, ignore errors, hel
 
 ## osv-scanner documentation
 
-- Version in MegaLinter: **2.3.5**
+- Version in MegaLinter: **2.3.8**
 - Visit [Official Web Site](https://google.github.io/osv-scanner/){target=_blank}
 - See [How to configure osv-scanner rules](https://google.github.io/osv-scanner/configuration/){target=_blank}
 - See [How to ignore files and directories with osv-scanner](https://google.github.io/osv-scanner/usage/scan-source#ignored-files){target=_blank}
@@ -112,7 +112,7 @@ EXAMPLES:
   $ osv-scanner scan source -r <source_directory>
 
   # Scan a source directory in offline mode
-  $ osv-scanner scan source --offline-vulnerabilities --download-offline-database -r <source_directory>
+  $ osv-scanner scan source --offline-vulnerabilities --download-offline-databases -r <source_directory>
 
   # Scan a container image
   $ osv-scanner scan image <image_name>
@@ -128,7 +128,7 @@ EXAMPLES:
   Alternatively, you can access the detailed documentation here: https://google.github.io/osv-scanner/
 
 VERSION:
-  2.3.5
+  2.3.8
 
 COMMANDS:
   scan              scans projects and container images for dependencies, and checks them against the OSV database.
@@ -146,7 +146,7 @@ GLOBAL OPTIONS:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=repology depName=alpine_edge/osv-scanner versioning=loose
-ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.5-r2
+ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.8-r0
 RUN apk add --no-cache \
     --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main \
     --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
