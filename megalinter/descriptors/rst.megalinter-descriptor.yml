@@ -33,6 +33,11 @@ linters:
     linter_rules_configuration_url: https://github.com/twolfson/restructuredtext-lint#cli-utility
     linter_rules_inline_disable_url: https://docutils.sourceforge.io/docs/ref/rst/directives.html#raw-data-pass-through
     linter_megalinter_ref_url: https://github.com/twolfson/restructuredtext-lint/wiki/Integration-in-other-tools#integration-in-other-tools
+    cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     examples:
       - "rst-lint myfile.rst"
     install:
@@ -75,6 +80,14 @@ linters:
     linter_rules_configuration_url: https://github.com/myint/rstcheck#configuration-file
     linter_rules_inline_disable_url: https://github.com/myint/rstcheck#ignore-specific-errors
     linter_megalinter_ref_url: https://rstcheck.readthedocs.io/en/latest/usage/integration/#use-with-mega-linter
+    cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_mode_project_extra_args_after:
+      - --recursive
+      - .
     cli_config_arg_name: --config
     cli_help_arg_name: --help
     examples:
@@ -119,8 +132,15 @@ linters:
     linter_spdx_license: MIT
     linter_rules_configuration_url: https://github.com/dzhu/rstfmt#usage
     linter_megalinter_ref_url: https://github.com/dzhu/rstfmt/pull/1
+    cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_extra_args:
       - "--check"
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for MegaLinter
     cli_lint_fix_remove_args:
       - "--check"
