@@ -11,18 +11,17 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Core
   - Security: add [more default hidden environment variables](https://megalinter.io/beta/config-variables-security/), so in case one of the 100+ linters is hacked, the attacker won't get your secrets anyway
   - Upgrade GO version to 1.26.2
-  - Enable comment reporters (GitHub, GitLab, Azure DevOps, Bitbucket) when running MegaLinter from Jenkins CI
-  - Fix: use `config.get()` instead of `os.environ.get()` for `GITHUB_REF` in GithubCommentReporter
-  - GitlabCommentReporter now activates when `GITLAB_ACCESS_TOKEN_MEGALINTER` is set (no longer requires `CI_JOB_TOKEN`)
 
 - New linters
   - osv-scanner (trivy-like security linter, by Google)
   - Add [zizmor](https://docs.zizmor.sh/) GitHub Actions static analysis.
 
 - Disabled linters
-  - Disable trivy until their security issue is solved
   - Disable KICS until their security issue is solved
   - Disable spectral which is crashing
+
+- Re-enabled linters
+  - Re-enable trivy (v0.70.0) now that the supply chain security incident (GHSA-69fq-xp46-6x23) is resolved
 
 - Deprecated linters
 
@@ -39,6 +38,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Produce linter console reports sequentially in main process for parallel runs to avoid interleaved CI log sections
 
 - Reporters
+  - Enable comment reporters (GitHub, GitLab, Azure DevOps, Bitbucket) when running MegaLinter from Jenkins CI
+  - Fix: use `config.get()` instead of `os.environ.get()` for `GITHUB_REF` in GithubCommentReporter
+  - GitlabCommentReporter now activates when `GITLAB_ACCESS_TOKEN_MEGALINTER` is set (no longer requires `CI_JOB_TOKEN`)
+  - BitbucketCommentReporter: render per-linter sections as `###` headings instead of `<details>/<summary>`, since Bitbucket Cloud markdown strips raw HTML and was displaying the tags as literal text
 
 - Flavors
 
@@ -47,8 +50,20 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Add documentation for [megalinter-ado](https://github.com/DownAtTheBottomOfTheMoleHole/megalinter-ado) Azure DevOps extension
   - Add documentation for [megalinter-mcp-server](https://github.com/DownAtTheBottomOfTheMoleHole/megalinter-mcp) MCP server
 
+- Dev
+  - Add CLAUDE.md and list of skills to help working on MegaLinter using Coding Agents (Claude Code, Github Copilot, Codex, Gemini-cli...)
+    - `/add-linter [name]` - Guided workflow for adding a new linter
+    - `/update-linter-version [linter] [version]` - Update a linter's pinned version
+    - `/review-descriptor [name]` - Audit a descriptor YAML for completeness
+    - `/fix-linter-test [name]` - Debug a failing linter test
+    - `/add-reporter [name]` - Add a new output reporter
+    - `/add-flavor [name]` - Add a new Docker flavor
+    - `/build` - Run the build system
+    - `/diagnose-config` - Debug `.mega-linter.yml` configuration issues
+    - `/fix-security-issue [CVE or description]` - Handle CVE/vulnerability reports from trivy, osv-scanner, etc.
+
 - CI
-  - Disable trivy-action until their security issue is solved
+  - Re-enable trivy-action (v0.36.0) now that the supply chain security incident is resolved
   - Run ARM linter jobs only if the latest commit message contains "ARM" (to avoid 200 jobs for each PR)
   - Prevent MegaLinter to push a new commit if the only updates are on markdown files
   - Activate osv-scanner on own sources
@@ -206,6 +221,25 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.14.9 to **1.15.1** on 2026-05-06
   - [terragrunt](https://terragrunt.gruntwork.io) from 1.0.2 to **1.0.3** on 2026-05-06
   - [tflint](https://github.com/terraform-linters/tflint) from 0.61.0 to **0.62.0** on 2026-05-06
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.42.1 to **0.43.8** on 2026-05-10
+  - [stylelint](https://stylelint.io) from 17.9.1 to **17.11.0** on 2026-05-10
+  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.11.5 to **3.11.6** on 2026-05-10
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 17.0.4 to **17.0.5** on 2026-05-10
+  - [kubescape](https://github.com/kubescape/kubescape) from 4.0.6 to **4.0.8** on 2026-05-10
+  - [rumdl](https://github.com/rvben/rumdl) from 0.1.89 to **0.1.91** on 2026-05-10
+  - [checkov](https://www.checkov.io/) from 3.2.526 to **3.2.527** on 2026-05-10
+  - [semgrep](https://semgrep.dev/) from 1.161.0 to **1.162.0** on 2026-05-10
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.69.3 to **0.70.0** on 2026-05-10
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.69.3 to **0.70.0** on 2026-05-10
+  - [checkov](https://www.checkov.io/) from 3.2.527 to **3.2.528** on 2026-05-12
+  - [osv-scanner](https://google.github.io/osv-scanner/) from 2.3.5 to **2.3.8** on 2026-05-12
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.95.2 to **3.95.3** on 2026-05-12
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 8.2.7 to **8.2.8** on 2026-05-12
+  - [code-analyzer-apex](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.10.2 to **5.12.0** on 2026-05-12
+  - [code-analyzer-aura](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.10.2 to **5.12.0** on 2026-05-12
+  - [code-analyzer-lwc](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.10.2 to **5.12.0** on 2026-05-12
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.15.1 to **1.15.2** on 2026-05-12
+  - [terragrunt](https://terragrunt.gruntwork.io) from 1.0.3 to **1.0.4** on 2026-05-12
 <!-- linter-versions-end -->
 
 ## [v9.4.0] - 2026-02-28

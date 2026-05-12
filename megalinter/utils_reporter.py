@@ -724,7 +724,10 @@ def _build_sections_content(
         else:
             # If LLM_ADVISOR_POSITION is before_linter_output, put AI suggestions first
             details_content = ai_suggestion_content + linter_output
-        content += f"<details>\n<summary>{summary_text}</summary>\n\n{details_content}\n\n</details>\n\n"
+        if getattr(reporter_self, "markdown_supports_html_details", True):
+            content += f"<details>\n<summary>{summary_text}</summary>\n\n{details_content}\n\n</details>\n\n"
+        else:
+            content += f"### {summary_text}\n\n{details_content}\n\n"
 
     # Add summary section for OK linters
     if linters_ok:

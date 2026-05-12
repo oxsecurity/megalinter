@@ -24,7 +24,7 @@
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.11.11 AS uv
+FROM ghcr.io/astral-sh/uv:0.11.13 AS uv
 FROM python:3.14-alpine3.23 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
@@ -79,9 +79,9 @@ ARG NPM_PRETTIER_VERSION=3.8.3
 # renovate: datasource=npm depName=prettyjson
 ARG NPM_PRETTYJSON_VERSION=1.2.5
 # renovate: datasource=npm depName=@typescript-eslint/eslint-plugin
-ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.59.1
+ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.59.2
 # renovate: datasource=npm depName=@typescript-eslint/parser
-ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.59.1
+ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.59.2
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 #ARG__END

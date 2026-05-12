@@ -29,7 +29,7 @@ ARG PROTOBUF_PROTOLINT_VERSION=0.56.4
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.30.1
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.95.2
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.95.3
 # renovate: datasource=docker depName=jdkato/vale
 ARG SPELL_VALE_VERSION=v3.14.1
 # renovate: datasource=docker depName=lycheeverse/lychee
@@ -59,7 +59,7 @@ FROM lycheeverse/lychee:${SPELL_LYCHEE_VERSION} AS lychee
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.11.11 AS uv
+FROM ghcr.io/astral-sh/uv:0.11.13 AS uv
 FROM python:3.14-alpine3.23 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
@@ -98,7 +98,7 @@ ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
 # renovate: datasource=npm depName=jscpd
 ARG NPM_JSCPD_VERSION=4.0.9
 # renovate: datasource=npm depName=stylelint
-ARG NPM_STYLELINT_VERSION=17.9.1
+ARG NPM_STYLELINT_VERSION=17.11.0
 # renovate: datasource=npm depName=stylelint-config-standard
 ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=40.0.0
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
@@ -110,11 +110,11 @@ ARG PIP_CPPLINT_VERSION=2.0.2
 # renovate: datasource=github-tags depName=dotenv-linter/dotenv-linter
 ARG DOTENV_LINTER_VERSION=4.0.0
 # renovate: datasource=npm depName=graphql
-ARG NPM_GRAPHQL_VERSION=16.13.2
+ARG NPM_GRAPHQL_VERSION=16.14.0
 # renovate: datasource=npm depName=graphql-schema-linter
 ARG NPM_GRAPHQL_SCHEMA_LINTER_VERSION=3.0.1
 # renovate: datasource=npm depName=npm-groovy-lint
-ARG NPM_GROOVY_LINT_VERSION=17.0.4
+ARG NPM_GROOVY_LINT_VERSION=17.0.5
 # renovate: datasource=pypi depName=djlint
 ARG PIP_DJLINT_VERSION=1.36.4
 # renovate: datasource=npm depName=htmlhint
@@ -132,17 +132,17 @@ ARG KTLINT_VERSION=1.8.0
 ARG DETEKT_VERSION=1.23.8
 
 # renovate: datasource=github-tags depName=kubescape/kubescape
-ARG KUBERNETES_KUBESCAPE_VERSION=4.0.6
+ARG KUBERNETES_KUBESCAPE_VERSION=4.0.8
 # renovate: datasource=npm depName=markdownlint-cli
 ARG NPM_MARKDOWNLINT_CLI_VERSION=0.48.0
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.1.89
+ARG PIP_RUMDL_VERSION=0.1.91
 # renovate: datasource=packagist depName=squizlabs/php_codesniffer
 ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=4.0.1
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
-ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.5.0
+ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.6.0
 # renovate: datasource=packagist depName=phpstan/phpstan
 ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.1.54
 # renovate: datasource=packagist depName=phpstan/extension-installer
@@ -154,13 +154,13 @@ ARG PHP_OVERTRUE_PHPLINT_VERSION=9.7.1
 # renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
 ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.95.1
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.2.526
+ARG PIP_CHECKOV_VERSION=3.2.528
 # renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.112.0
 # renovate: datasource=npm depName=@ls-lint/ls-lint
 ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.1
 # renovate: datasource=repology depName=alpine_edge/osv-scanner versioning=loose
-ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.5-r2
+ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.8-r0
 # renovate: datasource=npm depName=secretlint
 ARG NPM_SECRETLINT_VERSION=11.7.1
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
@@ -168,9 +168,13 @@ ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=11.7.1
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
 ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=11.7.1
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.161.0
+ARG PIP_SEMGREP_VERSION=1.162.0
 # renovate: datasource=github-tags depName=anchore/syft
 ARG REPOSITORY_SYFT_VERSION=1.44.0
+# renovate: datasource=github-tags depName=aquasecurity/trivy
+ARG REPOSITORY_TRIVY_VERSION=0.70.0
+# renovate: datasource=github-tags depName=aquasecurity/trivy
+ARG REPOSITORY_TRIVY_SBOM_VERSION=0.70.0
 # renovate: datasource=pypi depName=snakemake
 ARG PIP_SNAKEMAKE_VERSION=9.20.0
 # renovate: datasource=pypi depName=snakefmt
@@ -188,7 +192,7 @@ ARG NPM_IBM_TEKTON_LINT_VERSION=1.1.0
 # renovate: datasource=pypi depName=yamllint
 ARG PIP_YAMLLINT_VERSION=1.38.0
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=26.1
+ARG PIP_PIP_VERSION=26.1.1
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=21.3.1
 # renovate: datasource=github-tags depName=rust-lang/rust
@@ -543,7 +547,16 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPO
 # semgrep installation
 #
 # syft installation
-    && curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOSITORY_SYFT_VERSION}/install.sh | sh -s -- -b /usr/local/bin
+    && curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOSITORY_SYFT_VERSION}/install.sh | sh -s -- -b /usr/local/bin \
+#
+# trivy installation
+    && wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_VERSION}" \
+    && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress) \
+#
+# trivy-sbom installation
+    && wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_SBOM_VERSION}" \
+    && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
+
 #
 # trufflehog installation
 # Managed with COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/

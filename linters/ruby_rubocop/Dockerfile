@@ -24,7 +24,7 @@
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.11.11 AS uv
+FROM ghcr.io/astral-sh/uv:0.11.13 AS uv
 FROM python:3.14-alpine3.23 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
@@ -59,7 +59,7 @@ ARG GEM_RUBOCOP_GITHUB_VERSION=0.27.0
 # renovate: datasource=rubygems depName=rubocop-performance
 ARG GEM_RUBOCOP_PERFORMANCE_VERSION=1.26.1
 # renovate: datasource=rubygems depName=rubocop-rails
-ARG GEM_RUBOCOP_RAILS_VERSION=2.34.3
+ARG GEM_RUBOCOP_RAILS_VERSION=2.35.0
 # renovate: datasource=rubygems depName=rubocop-rake
 ARG GEM_RUBOCOP_RAKE_VERSION=0.7.1
 # renovate: datasource=rubygems depName=rubocop-rspec

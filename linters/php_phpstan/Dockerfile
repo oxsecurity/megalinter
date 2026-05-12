@@ -24,7 +24,7 @@
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.11.11 AS uv
+FROM ghcr.io/astral-sh/uv:0.11.13 AS uv
 FROM python:3.14-alpine3.23 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
@@ -57,7 +57,7 @@ ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.1.54
 # renovate: datasource=packagist depName=phpstan/extension-installer
 ARG PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION=1.4.3
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
-ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.5.0
+ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.6.0
 #ARG__END
 
 ####################

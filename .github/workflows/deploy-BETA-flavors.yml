@@ -216,19 +216,19 @@ jobs:
       ##############################################
       # Check Docker image security with Trivy #
       ##############################################
-      # - name: Run Trivy vulnerability scanner
-      #   uses: aquasecurity/trivy-action@master
-      #   with:
-      #     image-ref: "${{ fromJson(steps.meta.outputs.json).tags[0]}}"
-      #     format: "table"
-      #     exit-code: "1"
-      #     ignore-unfixed: true
-      #     scanners: vuln
-      #     vuln-type: "os,library"
-      #     severity: "CRITICAL,HIGH"
-      #     timeout: 10m0s
-      #   env:
-      #       ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
+        with:
+          image-ref: "${{ fromJson(steps.meta.outputs.json).tags[0]}}"
+          format: "table"
+          exit-code: "1"
+          ignore-unfixed: true
+          scanners: vuln
+          vuln-type: "os,library"
+          severity: "CRITICAL,HIGH"
+          timeout: 10m0s
+        env:
+            ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # - name: Run OSV-Scanner vulnerability scanner
       #   uses: google/osv-scanner-action/osv-scanner-action@v2.3.5

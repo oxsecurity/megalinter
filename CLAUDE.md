@@ -24,7 +24,7 @@ Always activate the venv before running Python scripts manually:
 ```bash
 # Build (regenerate Dockerfiles, docs, etc. from descriptors)
 make megalinter-build           # Regenerate Dockerfiles from YAML descriptors
-# Never run make megalinter-build-with-doc — docs are handled by auto-update workflows (avoids PR conflicts)
+# Never run make megalinter-build-with-doc - docs are handled by auto-update workflows (avoids PR conflicts)
 
 # Run MegaLinter locally
 npx mega-linter-runner --flavor python --release beta
@@ -127,16 +127,17 @@ Custom agents in `.claude/agents/` for delegating specialized tasks:
 
 ## Claude Code Skills
 
-Skills in `.claude/skills/` invocable via `/project:<skill>`:
+Skills in `.claude/skills/` invocable by name (e.g. `/add-linter`):
 
-- `/project:add-linter [name]` - Guided workflow for adding a new linter
-- `/project:update-linter-version [linter] [version]` - Update a linter's pinned version
-- `/project:review-descriptor [name]` - Audit a descriptor YAML for completeness
-- `/project:fix-linter-test [name]` - Debug a failing linter test
-- `/project:add-reporter [name]` - Add a new output reporter
-- `/project:add-flavor [name]` - Add a new Docker flavor
-- `/project:build` - Run the build system
-- `/project:diagnose-config` - Debug `.mega-linter.yml` configuration issues
+- `/add-linter [name]` - Guided workflow for adding a new linter
+- `/update-linter-version [linter] [version]` - Update a linter's pinned version
+- `/review-descriptor [name]` - Audit a descriptor YAML for completeness
+- `/fix-linter-test [name]` - Debug a failing linter test
+- `/add-reporter [name]` - Add a new output reporter
+- `/add-flavor [name]` - Add a new Docker flavor
+- `/build` - Run the build system
+- `/diagnose-config` - Debug `.mega-linter.yml` configuration issues
+- `/fix-security-issue [CVE or description]` - Handle CVE/vulnerability reports from trivy, osv-scanner, etc.
 
 ## Rules
 

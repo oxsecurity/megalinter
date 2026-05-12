@@ -71,7 +71,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=checkov
-          ARG PIP_CHECKOV_VERSION=3.2.526
+          ARG PIP_CHECKOV_VERSION=3.2.528
       pip:
         - checkov==${PIP_CHECKOV_VERSION}
     supported_platforms:
@@ -213,7 +213,7 @@ linters:
           ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
         - |-
           # renovate: datasource=docker depName=golang versioning=semver
-          ARG GO_IMAGE_VERSION=1.26.2
+          ARG GO_IMAGE_VERSION=1.26.3
         # The golang image used as a builder is a temporary workaround
         # Dustilock is not released as a binary or container
         - |-
@@ -659,7 +659,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=repology depName=alpine_edge/osv-scanner versioning=loose
-          ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.5-r2
+          ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.8-r0
         - |-
           RUN apk add --no-cache \
               --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main \
@@ -799,7 +799,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=semgrep
-          ARG PIP_SEMGREP_VERSION=1.161.0
+          ARG PIP_SEMGREP_VERSION=1.162.0
       pip:
         - semgrep==${PIP_SEMGREP_VERSION}
     variables:
@@ -880,8 +880,6 @@ linters:
   # TRIVY
   - class: TrivyLinter
     linter_name: trivy
-    disabled: true
-    disabled_reason: https://github.com/aquasecurity/trivy/discussions/10425
     can_output_sarif: true
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
@@ -950,7 +948,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=aquasecurity/trivy
-          ARG REPOSITORY_TRIVY_VERSION=0.69.3
+          ARG REPOSITORY_TRIVY_VERSION=0.70.0
         - |
           RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_VERSION}" \
               && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
@@ -966,8 +964,6 @@ linters:
   # TRIVY SBOM
   - class: TrivySbomLinter
     linter_name: trivy-sbom
-    disabled: true
-    disabled_reason: https://github.com/aquasecurity/trivy/discussions/10425
     can_output_sarif: true
     is_sbom: true
     name: REPOSITORY_TRIVY_SBOM
@@ -1021,7 +1017,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=aquasecurity/trivy
-          ARG REPOSITORY_TRIVY_SBOM_VERSION=0.69.3
+          ARG REPOSITORY_TRIVY_SBOM_VERSION=0.70.0
         - |
           RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_SBOM_VERSION}" \
               && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
@@ -1084,7 +1080,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=trufflesecurity/trufflehog
-          ARG REPOSITORY_TRUFFLEHOG_VERSION=3.95.2
+          ARG REPOSITORY_TRUFFLEHOG_VERSION=3.95.3
         - FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
         - COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
     supported_platforms:

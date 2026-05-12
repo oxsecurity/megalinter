@@ -15,6 +15,8 @@ from megalinter.utils_reporter import build_markdown_summary
 class BitbucketCommentReporter(Reporter):
     name = "BITBUCKET_COMMENT"
     scope = "mega-linter"
+    # Bitbucket Cloud markdown strips raw HTML; render sections as ### headings instead.
+    markdown_supports_html_details = False
 
     BITBUCKET_API = "https://api.bitbucket.org/2.0"
 

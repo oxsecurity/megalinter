@@ -24,7 +24,7 @@
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.11.11 AS uv
+FROM ghcr.io/astral-sh/uv:0.11.13 AS uv
 FROM python:3.14-alpine3.23 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
@@ -57,7 +57,7 @@ ARG PIP_NBQA_VERSION=1.9.1
 # renovate: datasource=pypi depName=mypy
 ARG PIP_MYPY_VERSION=1.19.1
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=26.1
+ARG PIP_PIP_VERSION=26.1.1
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=21.3.1
 #ARG__END
