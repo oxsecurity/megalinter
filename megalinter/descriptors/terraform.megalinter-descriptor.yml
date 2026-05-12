@@ -50,7 +50,7 @@ linters:
     cli_lint_warnings_count: regex_count
     cli_lint_warnings_regex: "Warning:"
     config_file_name: .tflint.hcl
-    cli_config_extra_args:
+    cli_lint_mode_project_extra_args_after:
       - --recursive
     cli_sarif_args:
       - --format
