@@ -240,6 +240,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [code-analyzer-lwc](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.10.2 to **5.12.0** on 2026-05-12
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.15.1 to **1.15.2** on 2026-05-12
   - [terragrunt](https://terragrunt.gruntwork.io) from 1.0.3 to **1.0.4** on 2026-05-12
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 4.0.9 to **4.1.0** on 2026-05-12
 <!-- linter-versions-end -->
 
 ## [v9.4.0] - 2026-02-28

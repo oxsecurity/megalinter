@@ -45,7 +45,7 @@ Example:
 
 ## jscpd documentation
 
-- Version in MegaLinter: **4.0.9**
+- Version in MegaLinter: **4.1.0**
 - Visit [Official Web Site](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#readme){target=_blank}
 - See [How to configure jscpd rules](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#config-file){target=_blank}
   - If custom `.jscpd.json` config file isn't found, [.jscpd.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.jscpd.json){target=_blank} will be used
@@ -174,6 +174,8 @@ Options:
                              cross folders duplications
   --exitCode [number]        exit code to use when code duplications are
                              detected
+  --noTips                   do not print tips and promotional messages after
+                             detection
   -h, --help                 display help for command
 ```
 
@@ -182,8 +184,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=4.0.9
+ARG NPM_JSCPD_VERSION=4.1.0
 ```
 
 - NPM packages (node.js):
-  - [jscpd@4.0.9](https://www.npmjs.com/package/jscpd/v/4.0.9)
+  - [jscpd@4.1.0](https://www.npmjs.com/package/jscpd/v/4.1.0)
