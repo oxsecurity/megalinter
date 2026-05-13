@@ -165,10 +165,10 @@ linters:
       - file
       - list_of_files
       - project
-    cli_lint_mode_project_extra_args_after:
-      - "**/*.{yml,yaml}"
     cli_lint_extra_args:
       - "--ignore-errors"
+    cli_lint_mode_project_extra_args_after:
+      - "**/*.{yml,yaml}"
     cli_help_arg_name: "--help"
     test_folder: yaml_schema
     examples:

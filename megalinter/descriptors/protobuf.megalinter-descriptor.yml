@@ -34,11 +34,11 @@ linters:
       - file
       - list_of_files
       - project
-    cli_lint_mode_project_extra_args_after:
-      - .
     cli_config_arg_name: "--config_path"
     cli_lint_extra_args:
       - "lint"
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_lint_fix_arg_name: "--fix"
     cli_version_arg_name: "version"
     help_command_return_code: 0

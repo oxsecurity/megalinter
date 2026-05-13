@@ -110,13 +110,13 @@ linters:
       - file
       - list_of_files
       - project
-    cli_lint_mode_project_extra_args_after:
-      - .
     config_file_name: ".remarkrc"
     cli_executable: remark
     cli_config_arg_name: "--rc-path"
     cli_lint_extra_args:
       - "--frail"
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_lint_fix_arg_name: "-o"
     test_folder: markdown_remark
     test_variables:

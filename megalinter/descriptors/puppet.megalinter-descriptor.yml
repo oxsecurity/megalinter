@@ -33,13 +33,13 @@ linters:
       - file
       - list_of_files
       - project
-    cli_lint_mode_project_extra_args_after:
-      - .
     cli_config_arg_name: ""
     cli_lint_fix_arg_name: "--fix"
     cli_lint_extra_args:
       - "--fail-on-warnings"
       - "--no-autoloader_layout-check"
+    cli_lint_mode_project_extra_args_after:
+      - .
     examples:
       - "puppet-lint --fail-on-warnings --no-autoloader_layout-check myfile.pp"
       - "puppet-lint --fail-on-warnings --no-autoloader_layout-check --fix myfile.pp"

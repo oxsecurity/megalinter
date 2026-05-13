@@ -130,14 +130,14 @@ linters:
       - file
       - list_of_files
       - project
-    cli_lint_mode_project_extra_args_after:
-      - .
     cli_lint_extra_args:
       - "analyse"
       - "--no-progress"
       - "--no-ansi"
       - "--memory-limit"
       - "1G"
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_sarif_args:
       - "--error-format=sarif"
     cli_lint_errors_count: regex_number
@@ -200,10 +200,10 @@ linters:
       - file
       - list_of_files
       - project
-    cli_lint_mode_project_extra_args_after:
-      - .
     cli_lint_extra_args:
       - --output-format=console
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_config_arg_name: "--config="
     cli_sarif_args:
       - "--report={{SARIF_OUTPUT_FILE}}"
@@ -316,13 +316,13 @@ linters:
       - file
       - list_of_files
       - project
-    cli_lint_mode_project_extra_args_after:
-      - .
     cli_lint_extra_args:
       - "fix"
       - "--dry-run"
       - "--verbose"
       - "--show-progress=none"
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_config_arg_name: "--config"
     cli_lint_fix_remove_args:
       - "--dry-run"

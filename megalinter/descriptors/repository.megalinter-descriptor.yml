@@ -130,9 +130,6 @@ linters:
       - project
     cli_lint_extra_args:
       - analyze
-    cli_sarif_args:
-      - --file-format
-      - sarif
     cli_lint_mode_file_extra_args_after:
       - -E
       - --source-code
@@ -143,6 +140,9 @@ linters:
       - -E
       - --source-code
       - .
+    cli_sarif_args:
+      - --file-format
+      - sarif
     cli_help_arg_name: --help
     cli_version_arg_name: --version
     cli_lint_errors_count: sarif
@@ -376,14 +376,14 @@ linters:
       # https://github.com/gitleaks/gitleaks/issues/1234
       #- list_of_files
       - project
-    cli_lint_mode_project_extra_args_after:
-      - --source
-      - .
     cli_lint_extra_args:
       - detect
       - --redact
       - --no-git
       - --verbose
+    cli_lint_mode_project_extra_args_after:
+      - --source
+      - .
     cli_sarif_args:
       - --report-format
       - sarif

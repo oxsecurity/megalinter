@@ -40,8 +40,6 @@ linters:
     linter_spdx_license: GPL-3.0
     linter_rules_url: https://sourceforge.net/p/cppcheck/wiki/ListOfChecks/
     linter_rules_configuration_url: https://cppcheck.sourceforge.io/manual.html#configuration
-    cli_lint_extra_args:
-      - --error-exitcode=1
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: "error:"
     cli_lint_mode: list_of_files
@@ -49,6 +47,8 @@ linters:
       - file
       - list_of_files
       - project
+    cli_lint_extra_args:
+      - --error-exitcode=1
     cli_lint_mode_project_extra_args_after:
       - .
     examples:

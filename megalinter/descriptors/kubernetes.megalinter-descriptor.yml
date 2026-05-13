@@ -41,15 +41,15 @@ linters:
       - **CI/CD Ready**: Optimized for integration with GitHub Actions, GitLab CI, and other continuous integration platforms
     cli_version_arg_name: -v
     cli_help_arg_name: -h
-    cli_lint_extra_args:
-      - -summary
-      - -cache
-      - /tmp/
     cli_lint_mode: list_of_files
     supported_cli_lint_modes:
       - file
       - list_of_files
       - project
+    cli_lint_extra_args:
+      - -summary
+      - -cache
+      - /tmp/
     cli_lint_mode_project_extra_args_after:
       - .
     # Count errors when either file is invalid, or an error occurred (e.g. couldn't find schema for this object)

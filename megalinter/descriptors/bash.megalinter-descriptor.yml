@@ -104,11 +104,11 @@ linters:
       - file
       - list_of_files
       - project
-    cli_lint_mode_project_extra_args_after:
-      - "*.sh"
     cli_lint_extra_args:
       - "--color=auto"
       - "--external-sources"
+    cli_lint_mode_project_extra_args_after:
+      - "*.sh"
     cli_sarif_args:
       - -f
       - json

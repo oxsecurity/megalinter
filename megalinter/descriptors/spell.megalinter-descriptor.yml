@@ -39,6 +39,10 @@ linters:
     linter_megalinter_ref_url: https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#mega-linter
     config_file_name: ".cspell.json"
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_mode_project_extra_args_after:
       - .
     cli_lint_errors_count: regex_number
@@ -93,6 +97,12 @@ linters:
     cli_config_arg_name: --config
     config_file_name: .proselintrc
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: ":([0-9]+):([0-9]+): (.*)"
     cli_version_arg_name: "-v"
@@ -158,6 +168,12 @@ linters:
     linter_rules_configuration_url: https://vale.sh/explorer/
     linter_rules_inline_disable_url: https://vale.sh/docs/topics/vocab/
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_config_arg_name: "--config"
     config_file_name: .vale.ini
     cli_lint_errors_count: regex_number
@@ -254,12 +270,18 @@ linters:
     cli_help_arg_name: --help
     cli_version_arg_name: --version
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "Errors\\.+([0-9]+)"
     cli_lint_extra_args:
       - --format
       - detailed
       - --no-progress
+    cli_lint_mode_project_extra_args_after:
+      - .
     examples:
       - lychee --format detailed --no-progress README.md info.txt test.html
       - lychee --format detailed --no-progress README.md
@@ -321,6 +343,10 @@ linters:
     cli_lint_fix_arg_name: --write-changes
     cli_version_arg_name: --version
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_errors_count: total_lines
     examples:
       - codespell

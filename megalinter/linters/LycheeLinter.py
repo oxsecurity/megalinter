@@ -45,7 +45,4 @@ class LycheeLinter(Linter):
             cmd.pop(cmd.index("-o") + 1)
             cmd.pop(cmd.index("-o"))
 
-        if self.cli_lint_mode == "project":
-            cmd.append(".")
-
         return cmd

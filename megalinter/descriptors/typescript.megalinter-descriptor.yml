@@ -56,6 +56,8 @@ linters:
       - "--no-eslintrc"
     cli_lint_extra_args:
       - "--no-ignore"
+    cli_lint_mode_project_extra_args_after:
+      - .
     ignore_file_name: .eslintignore
     cli_lint_ignore_arg_name: --ignore-path
     cli_lint_fix_arg_name: "--fix"
