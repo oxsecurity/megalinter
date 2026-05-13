@@ -91,6 +91,8 @@ linters:
       - "--view"
       - "table"
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
     cli_help_extra_args:
       - "code-analyzer"
       - "run"
@@ -184,6 +186,8 @@ linters:
       - "--view"
       - "table"
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
     cli_help_extra_args:
       - "code-analyzer"
       - "run"
@@ -268,6 +272,8 @@ linters:
       - "--view"
       - "table"
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
     cli_help_extra_args:
       - "code-analyzer"
       - "run"
@@ -349,6 +355,8 @@ linters:
       - "--format"
       - "csv"
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
     cli_help_extra_args:
       - "scanner:run"
     cli_help_extra_commands:
@@ -440,6 +448,8 @@ linters:
       - "--format"
       - "csv"
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
     cli_help_extra_args:
       - "scanner:run"
     cli_help_extra_commands:
@@ -522,6 +532,8 @@ linters:
       - "--format"
       - "csv"
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
     cli_help_extra_args:
       - "scanner:run"
     cli_help_extra_commands:
@@ -586,6 +598,8 @@ linters:
     cli_lint_extra_args:
       - "flow:scan"
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
     cli_help_extra_args:
       - "flow:scan"
     cli_version_extra_args:
