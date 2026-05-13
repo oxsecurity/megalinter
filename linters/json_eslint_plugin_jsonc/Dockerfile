@@ -53,7 +53,9 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 #############################################################################################
 #ARG__START
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=8.57.1
+ARG NPM_ESLINT_VERSION=9.39.4
+# renovate: datasource=npm depName=@eslint/eslintrc
+ARG NPM_ESLINT_ESLINTRC_VERSION=3.3.5
 # renovate: datasource=npm depName=eslint-plugin-jsonc
 ARG NPM_ESLINT_PLUGIN_JSONC_VERSION=3.1.2
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
@@ -131,6 +133,7 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
 WORKDIR /node-deps
 RUN npm --no-cache install --ignore-scripts --omit=dev \
                 eslint@${NPM_ESLINT_VERSION} \
+                @eslint/eslintrc@${NPM_ESLINT_ESLINTRC_VERSION} \
                 eslint-plugin-jsonc@${NPM_ESLINT_PLUGIN_JSONC_VERSION} \
                 @microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION} && \
     echo "Cleaning npm cache…" \
