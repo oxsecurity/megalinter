@@ -31,11 +31,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Linters enhancements
   - v8r (JSON/YAML schema validation): filter output to show only validation errors, suppressing "no schema found" info and success messages
+  - **ESLint upgraded from 8.57.1 (EOL) to 9.39.4 (maintenance LTS)** across `JAVASCRIPT_ES`, `TYPESCRIPT_ES`, `JSX_ESLINT`, `TSX_ESLINT`, and `JSON_ESLINT_PLUGIN_JSONC`. Legacy `.eslintrc.*` configs continue to work via the `@eslint/eslintrc` FlatCompat shim baked into each image; `eslint.config.js` flat configs are detected first. The `--no-eslintrc` and `--ignore-path` CLI flags (removed in ESLint 9) are no longer auto-injected. Required plugin bumps: `eslint-plugin-n` 16.6.2 → 18.0.1, `eslint-plugin-promise` 6.6.0 → 7.3.0.
+  - **BREAKING:** `eslint-config-airbnb@19.0.4` replaced with `eslint-config-airbnb-extended@3.1.0`; `eslint-config-standard@17.1.0` replaced with `neostandard@0.13.0`. Both predecessor packages never shipped ESLint 9 support. End-users extending the legacy names must rename `extends: ["airbnb"]` → `extends: ["airbnb-extended"]` and `extends: ["standard"]` → `extends: ["neostandard"]`.
 
 - Fixes
   - Fix ConsoleLinterReporter to display log sections for all linters (not just errors)
   - Fix ConsoleReporter to output results table and reporters logs after linters run
   - Produce linter console reports sequentially in main process for parallel runs to avoid interleaved CI log sections
+  - Resolve latent peer-dependency conflict where `eslint-plugin-jsonc@3.1.2` required `eslint >= 9.38.0` but the image shipped `eslint@8.57.1`; the ESLint 9 upgrade fixes the mismatch.
 
 - Reporters
   - Enable comment reporters (GitHub, GitLab, Azure DevOps, Bitbucket) when running MegaLinter from Jenkins CI
