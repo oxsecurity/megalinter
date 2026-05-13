@@ -33,7 +33,7 @@
     "dotnet-format": "10.0.107",
     "dustilock": "1.2.0",
     "editorconfig-checker": "3.6.1",
-    "eslint": "8.57.1",
+    "eslint": "9.39.4",
     "eslint-plugin-jsonc": "2.15.1",
     "flake8": "7.3.0",
     "gherkin-lint": "0.0.0",
