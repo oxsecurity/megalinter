@@ -31,6 +31,10 @@ linters:
     active_only_if_file_found:
       - ".swiftlint.yml"
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_extra_args:
       - "lint"
     cli_lint_extra_args_after:

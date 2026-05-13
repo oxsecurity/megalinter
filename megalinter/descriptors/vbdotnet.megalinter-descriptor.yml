@@ -40,6 +40,8 @@ linters:
     cli_lint_errors_regex: ".vb\\([0-9]+,[0-9]+\\):\\s(?:warning|error)"
     cli_executable: dotnet
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
     cli_lint_extra_args:
       - "format"
     cli_lint_mode_project_extra_args_after:

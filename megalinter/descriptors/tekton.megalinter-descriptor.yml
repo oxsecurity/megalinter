@@ -31,6 +31,11 @@ linters:
     config_file_name: .tektonlintrc.yaml
     cli_config_arg_name: ""
     cli_help_arg_name: --help
+    cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     examples:
       - "tekton-lint myfile.yml"
     install:

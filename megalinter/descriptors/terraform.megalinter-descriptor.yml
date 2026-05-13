@@ -45,6 +45,10 @@ linters:
       The default configuration enables all supported languages and rules, which may not be optimal for every project.
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/tflint.png
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: "Error:"
     cli_lint_warnings_count: regex_count
@@ -111,6 +115,10 @@ linters:
     config_file_name: terrascan.toml
     cli_config_arg_name: "--config-path"
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_extra_args:
       - "scan"
       - "--iac-type"
@@ -160,7 +168,7 @@ linters:
       - cupcake
       - terraform
       - security
-    linter_url: https://terragrunt.gruntwork.io
+    linter_url: https://docs.terragrunt.com/reference/cli/commands/hcl/fmt/
     linter_repo: https://github.com/gruntwork-io/terragrunt
     linter_rules_configuration_url: https://terragrunt.gruntwork.io/docs/getting-started/quick-start/#add-terragrunthcl-to-your-project
     linter_image_url: https://github.com/gruntwork-io/terragrunt/blob/master/docs/assets/img/favicon/ms-icon-310x310.png
@@ -171,6 +179,9 @@ linters:
       - "hcl"
       - "fmt"
       - "--check"
+    cli_lint_mode: file
+    supported_cli_lint_modes:
+      - file
     cli_lint_mode_file_extra_args_after:
       - "--file"
     cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for MegaLinter
@@ -215,6 +226,9 @@ linters:
     linter_repo: https://github.com/hashicorp/terraform
     linter_banner_image_url: https://www.datocms-assets.com/2885/1629941242-logo-terraform-main.svg
     cli_executable: terraform
+    cli_lint_mode: file
+    supported_cli_lint_modes:
+      - file
     cli_lint_extra_args:
       - "fmt"
       - "--diff"

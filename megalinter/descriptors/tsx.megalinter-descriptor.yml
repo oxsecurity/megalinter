@@ -42,6 +42,10 @@ linters:
       - ".eslintrc.cjs"
       - "package.json:eslintConfig"
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     config_file_name: .eslintrc.json
     cli_config_extra_args:
       - "--no-eslintrc"
