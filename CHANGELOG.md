@@ -81,6 +81,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - RELEASE workflows now read the warm `beta-*` caches and skip `cache-to` entirely (release builds are one-shot per tag; their per-release scopes were rarely repopulated before eviction)
     - Single-writer cache policy: only BETA / BETA-linters / BETA-flavors write the GHA buildx cache; DEV, DEV-linters, ALPHA, ALPHA-flavors, and all RELEASE workflows now read BETA's warm cache and never `cache-to`. The single-writer model holds the cache footprint near `size(beta-*)` instead of the prior sum of every branch's PR-scoped blobs, dramatically reducing GHA's 10 GB-cap LRU evictions of the warm cache
     - Removed cache handling entirely for the megalinter-server image and the custom-flavor-builder image: they're niche, build quickly from scratch, and were burning cache headroom that the main image's warm cache needs more
+    - Drop `fetch-depth: 0` from workflows that don't need git history (the 3 DEV jobs, `deploy-mega-linter-runner`, `build-deploy-docs`) — each cloned the full repo history (~2 min per job) but only used the working tree. Workflows that genuinely walk history (`deploy-RELEASE` doc-deploy using `git describe --tags`, the two MegaLinter workflows that diff against main) keep `fetch-depth: 0`
 
 - mega-linter-runner
 
