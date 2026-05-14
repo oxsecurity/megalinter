@@ -121,7 +121,7 @@ ARG POWERSHELL_VERSION=7.6.1
 # renovate: datasource=github-tags depName=sgerrand/alpine-pkg-glibc
 ARG ALPINE_GLIBC_PACKAGE_VERSION=2.34-r0
 # renovate: datasource=repology depName=alpine_edge/go versioning=loose
-ARG GO_ALPINE_VERSION=1.26.2-r0
+ARG GO_ALPINE_VERSION=1.26.3-r0
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
 ARG POWERSHELL_VERSION=7.6.1
 

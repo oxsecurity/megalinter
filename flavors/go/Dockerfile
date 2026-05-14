@@ -100,7 +100,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 # renovate: datasource=crate depName=sarif-fmt
 ARG CARGO_SARIF_FMT_VERSION=0.8.0
 # renovate: datasource=repology depName=alpine_edge/go versioning=loose
-ARG GO_ALPINE_VERSION=1.26.2-r0
+ARG GO_ALPINE_VERSION=1.26.3-r0
 # renovate: datasource=crate depName=zizmor
 ARG CARGO_ZIZMOR_VERSION=1.23.1
 # renovate: datasource=pypi depName=ansible-lint
