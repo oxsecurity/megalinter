@@ -17,5 +17,8 @@ Steps:
    - `flavors/$ARGUMENTS/action.yml`
    - `flavors/$ARGUMENTS/flavor.json`
 5. **Verify** the generated Dockerfile includes exactly the intended linters (check `flavor.json` for the linter list)
-6. **Update documentation** and `CHANGELOG.md` in the repository root (not docs/)
+6. **Update `CHANGELOG.md`** in the repository root (not docs/) — add one line under **Flavors** in the beta section:
+   ```
+   - Add new `<flavor-name>` flavor for <what languages/tools it targets>
+   ```
 7. **Branch naming**: use `user/add-<flavor-name>-flavor`

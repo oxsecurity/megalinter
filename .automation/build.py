@@ -469,6 +469,9 @@ def build_dockerfile(
                     is_docker_other_run = False
                     docker_other += [dockerfile_item]
                 all_dockerfile_items += [dockerfile_item]
+            # Break the cross-linter RUN chain so each linter's install
+            # becomes its own Docker layer (better cache locality).
+            is_docker_other_run = False
             docker_other += ["#"]
         # Collect python packages
         if "apk" in item["install"]:
@@ -502,6 +505,56 @@ def build_dockerfile(
         docker_arg += DEFAULT_DOCKERFILE_PIPENV_ARGS.copy()
     if len(cargo_packages) > 0:
         docker_arg += DEFAULT_DOCKERFILE_RUST_ARGS.copy()
+    # cargo packages — emit multi-stage builders BEFORE we compute
+    # FROM/COPY blocks so the added FROM stages and COPY lines are picked up.
+    # The runtime cargo install RUN (#CARGO__START block) is emitted later
+    # alongside the other package-manager RUNs.
+    cargo_install_command = ""
+    keep_rustup = False
+    if len(cargo_packages) > 0:
+        rust_commands = []
+        if "clippy" in cargo_packages:
+            cargo_packages.remove("clippy")
+            rust_commands += ["rustup component add clippy"]
+            keep_rustup = True
+        if "COMPILER_ONLY" in cargo_packages:
+            cargo_packages = [p for p in cargo_packages if p != "COMPILER_ONLY"]
+            keep_rustup = True
+            if not rust_commands:
+                rust_commands += [
+                    'echo "No cargo package to install, we just need rust for dependencies"'
+                ]
+        for cargo_pkg in list(dict.fromkeys(cargo_packages)):
+            m = re.match(r"^([\w.+-]+)@\$\{(\w+)\}$", cargo_pkg)
+            if m:
+                crate_name, arg_name = m.group(1), m.group(2)
+            else:
+                crate_name, arg_name = cargo_pkg.split("@", 1)[0], None
+            stage_name = f"cargo-build-{crate_name}"
+            stage_block = f"FROM rust:${{RUST_RUST_VERSION}}-alpine AS {stage_name}\n"
+            if arg_name is not None:
+                stage_block += f"ARG {arg_name}\n"
+            stage_block += (
+                "RUN apk add --no-cache build-base musl-dev openssl-dev"
+                + " openssl-libs-static pkgconfig bash perl\n"
+                + f"RUN cargo install --force --locked --root /out {cargo_pkg}"
+            )
+            docker_from += [stage_block]
+            docker_copy += [
+                f"COPY --link --from={stage_name} /out/bin/{crate_name} /usr/bin/{crate_name}"
+            ]
+        if keep_rustup is True:
+            rustup_cargo_cmd = " && ".join(rust_commands)
+            cargo_install_command = (
+                "RUN curl https://sh.rustup.rs -sSf |"
+                + " sh -s -- -y --profile minimal --default-toolchain ${RUST_RUST_VERSION} \\\n"
+                + '    && export PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}" \\\n'
+                + "    && rustup default stable \\\n"
+                + f"    && {rustup_cargo_cmd} \\\n"
+                + "    && rm -rf /root/.cargo/registry /root/.cargo/git "
+                + "/root/.cache/sccache\n"
+                + 'ENV PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}"'
+            )
     # Separate args used in FROM instructions from others
     all_from_instructions = "\n".join(list(dict.fromkeys(docker_from)))
     docker_arg_top = []
@@ -567,43 +620,6 @@ def build_dockerfile(
             + " \\\n    && git config --global core.autocrlf true"
         )
     replace_in_file(dockerfile, "#APK__START", "#APK__END", apk_install_command)
-    # cargo packages
-    cargo_install_command = ""
-    keep_rustup = False
-    if len(cargo_packages) > 0:
-        rust_commands = []
-        if "clippy" in cargo_packages:
-            cargo_packages.remove("clippy")
-            rust_commands += ["rustup component add clippy"]
-            keep_rustup = True
-        # Only COMPILER_ONLY in descriptors just to have rust toolchain in the Dockerfile
-        if all(p == "COMPILER_ONLY" for p in cargo_packages):
-            rust_commands += [
-                'echo "No cargo package to install, we just need rust for dependencies"'
-            ]
-            keep_rustup = True
-        # Cargo packages to install minus empty package
-        elif len(cargo_packages) > 0:
-            cargo_packages = [
-                p for p in cargo_packages if p != "COMPILER_ONLY"
-            ]  # remove empty string packages
-            cargo_cmd = "cargo install --force --locked " + " ".join(
-                list(dict.fromkeys(cargo_packages))
-            )
-            rust_commands += [cargo_cmd]
-        rustup_cargo_cmd = " && ".join(rust_commands)
-        cargo_install_command = (
-            "RUN curl https://sh.rustup.rs -sSf |"
-            + " sh -s -- -y --profile minimal --default-toolchain ${RUST_RUST_VERSION} \\\n"
-            + '    && export PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}" \\\n'
-            + "    && rustup default stable \\\n"
-            + f"    && {rustup_cargo_cmd} \\\n"
-            + "    && rm -rf /root/.cargo/registry /root/.cargo/git "
-            + "/root/.cache/sccache"
-            + (" /root/.rustup" if keep_rustup is False else "")
-            + "\n"
-            + 'ENV PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}"'
-        )
     replace_in_file(dockerfile, "#CARGO__START", "#CARGO__END", cargo_install_command)
     # NPM packages
     npm_install_command = ""
@@ -647,33 +663,31 @@ def build_dockerfile(
             + "rm -rf /root/.cache"
         )
     replace_in_file(dockerfile, "#PIP__START", "#PIP__END", pip_install_command)
-    # Python packages in venv
+    # Python packages in venv — emit one RUN per linter so each venv is its own
+    # cacheable layer. A single descriptor or version change only invalidates
+    # that linter's layer instead of the entire pipvenv chain.
     if len(pipvenv_packages.items()) > 0:
         pipenv_install_command = (
-            "RUN uv pip install --system"
-            " --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \\\n"
+            "RUN uv pip install --system --no-cache "
+            "pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION}\n"
         )
         env_path_command = 'ENV PATH="${PATH}"'
         for pip_linter, pip_linter_packages in pipvenv_packages.items():
             pipenv_install_command += (
-                f'    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/{pip_linter}" '
-                + f'&& VIRTUAL_ENV="/venvs/{pip_linter}" uv pip install --no-cache '
+                f'RUN uv venv --seed --no-project --no-managed-python --no-cache "/venvs/{pip_linter}" \\\n'
+                + f'    && VIRTUAL_ENV="/venvs/{pip_linter}" uv pip install --no-cache '
                 + (" ".join(pip_linter_packages))
                 + " \\\n"
                 + f'    && VIRTUAL_ENV="/venvs/{pip_linter}" uv pip install --no-cache --upgrade '
                 + '"wheel>=0.46.2" "setuptools>=75.8.0" \\\n'
                 + f'    && VIRTUAL_ENV="/venvs/{pip_linter}" rm -rf '
                 + f"/venvs/{pip_linter}/lib/python3.13/site-packages/setuptools/_vendor/wheel* \\\n"
+                + f"    && find /venvs/{pip_linter} "
+                + r"\( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete"
+                + " \\\n    && rm -rf /root/.cache\n"
             )
             env_path_command += f":/venvs/{pip_linter}/bin"
-        pipenv_install_command = pipenv_install_command[:-2]  # remove last \
-        pipenv_install_command += (
-            " \\\n    && "
-            + r"find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete"
-            + " \\\n    && "
-            + "rm -rf /root/.cache\n"
-            + env_path_command
-        )
+        pipenv_install_command += env_path_command
     else:
         pipenv_install_command = ""
     replace_in_file(
