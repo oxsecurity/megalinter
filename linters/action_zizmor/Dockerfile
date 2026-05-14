@@ -26,7 +26,7 @@ RUN set -eu; mkdir -p /out/bin; \
     apk add --no-cache curl ca-certificates; \
     if [ "$TARGETARCH" = "amd64" ]; then \
       apk add --no-cache tar gzip && \
-      curl -fsSL "https://github.com/zizmorcore/zizmor/releases/download/v${CARGO_ZIZMOR_VERSION}/zizmor-x86_64-unknown-linux-gnu.tar.gz" \
+      curl -fsSL "https://github.com/zizmorcore/zizmor/releases/download/v${CARGO_ZIZMOR_VERSION}/zizmor-x86_64-unknown-linux-musl.tar.gz" \
         | tar xz -C /out/bin; \
     else \
       apk add --no-cache build-base musl-dev openssl-dev openssl-libs-static pkgconfig bash perl rust cargo && \
