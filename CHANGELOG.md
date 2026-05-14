@@ -73,6 +73,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Split the DEV deploy workflow into a `build` producer job and 4 parallel consumer jobs (test cases, run-against-all-code, mega-linter-runner tests, Trivy scan) that share the image via the buildx cache (no registry push)
     - Restructure `.automation/build.py` so per-linter Python venv installs (`#PIPVENV`) and per-linter install snippets (`#OTHER`) are emitted as individual Docker `RUN` layers — a version bump or descriptor change now invalidates only its own layer instead of the entire chain
     - Build cargo-installed tools (sarif-fmt, zizmor, shellcheck-sarif, stylua) in dedicated multi-stage builders (`FROM rust:VERSION-alpine`) built in parallel by buildx, copying only the final binaries into the runtime image — Rust toolchain no longer ships in the final image unless a linter (clippy) needs it at runtime
+    - Add `cache-cleanup` workflow that reclaims a PR's GHA cache scope immediately when the PR closes (per-PR concurrency), plus a daily sweep that drops orphan-branch caches and evicts oldest non-main blobs above an 8 GB soft limit — protects the warm `refs/heads/main` cache that every PR reads from
+    - Switch GHA buildx cache to zstd compression on all DEV/BETA/RELEASE/ALPHA deploy workflows for faster cache I/O than the default gzip
+    - In the DEV workflow, transport the built image to consumer jobs (test cases, run-all-code, runner tests, Trivy) via a zstd-compressed `docker save` artifact instead of having each consumer reassemble the image from `cache-from` — the four consumer jobs now `docker load` a single tarball in parallel
 
 - mega-linter-runner
 

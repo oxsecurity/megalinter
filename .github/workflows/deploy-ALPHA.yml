@@ -125,7 +125,7 @@ jobs:
           cache-from: |
             type=gha,scope=alpha-server
             type=gha,scope=beta-server
-          cache-to: type=gha,mode=max,scope=alpha-server
+          cache-to: type=gha,mode=max,scope=alpha-server,compression=zstd
 
       - name: Build & Push Docker Image
         uses: docker/build-push-action@bcafcacb16a39f128d818304e6c9c0c18556b85f # v7
@@ -148,7 +148,7 @@ jobs:
             type=gha,scope=alpha-main
             type=gha,scope=beta-main
             type=gha,scope=dev-main
-          cache-to: type=gha,mode=max,scope=alpha-main
+          cache-to: type=gha,mode=max,scope=alpha-main,compression=zstd
 
       # - name: Build & Push Worker Docker Image
       #   uses: docker/build-push-action@v7
@@ -235,7 +235,7 @@ jobs:
           cache-from: |
             type=gha,scope=alpha-flavor-builder-${{ env.PLATFORM_PAIR }}
             type=gha,scope=beta-flavor-builder-${{ env.PLATFORM_PAIR }}
-          cache-to: type=gha,mode=max,scope=alpha-flavor-builder-${{ env.PLATFORM_PAIR }}
+          cache-to: type=gha,mode=max,scope=alpha-flavor-builder-${{ env.PLATFORM_PAIR }},compression=zstd
           outputs: type=image,"name=ghcr.io/${{ github.repository }}-custom-flavor-builder",push-by-digest=true,name-canonical=true,push=true
 
       - name: Export digest

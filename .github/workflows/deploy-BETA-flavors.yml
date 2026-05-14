@@ -184,7 +184,7 @@ jobs:
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           tags: ${{ steps.meta.outputs.tags }}
           cache-from: type=gha,scope=beta-flavor-${{ matrix.flavor }}-${{ matrix.platform }}
-          cache-to: type=gha,mode=max,scope=beta-flavor-${{ matrix.flavor }}-${{ matrix.platform }}
+          cache-to: type=gha,mode=max,scope=beta-flavor-${{ matrix.flavor }}-${{ matrix.platform }},compression=zstd
 
       - name: Invoke Mirror docker image workflow (Main image)
         uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1

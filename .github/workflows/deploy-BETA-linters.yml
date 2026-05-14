@@ -175,7 +175,7 @@ jobs:
           cache-from: |
             type=gha,scope=beta-linter-${{ matrix.linter }}-${{ steps.prepare.outputs.platforms }}
             type=gha,scope=linter-${{ matrix.linter }}-${{ steps.prepare.outputs.platforms }}
-          cache-to: type=gha,mode=max,scope=beta-linter-${{ matrix.linter }}-${{ steps.prepare.outputs.platforms }}
+          cache-to: type=gha,mode=max,scope=beta-linter-${{ matrix.linter }}-${{ steps.prepare.outputs.platforms }},compression=zstd
 
       #####################################
       # Run Linter test cases #
