@@ -118,7 +118,16 @@ In CI, filter tests via commit message body: `TEST_KEYWORDS=python_ruff_test`. U
 
 ## Claude Code Agents
 
-Custom agents in `.claude/agents/` for delegating specialized tasks:
+Custom agents in `.claude/agents/` for delegating specialized tasks.
+
+**Contribution workflow agents** (general-purpose, four-phase flow):
+
+- **analyze** - Requirements analyst: clarifies scope before any change
+- **design** - Architect: writes a tech spec from the analysis
+- **implement** - Developer: applies the change, respecting descriptor-first patterns
+- **test** - QA: regenerates from descriptors and validates inside Docker
+
+**Specialist agents** (invoked by the workflow agents when their topic comes up):
 
 - **descriptor-expert** - Creates, edits, and validates YAML descriptor files
 - **test-debugger** - Diagnoses and fixes failing linter tests
@@ -127,7 +136,16 @@ Custom agents in `.claude/agents/` for delegating specialized tasks:
 
 ## Claude Code Skills
 
-Skills in `.claude/skills/` invocable by name (e.g. `/add-linter`):
+Skills in `.claude/skills/` invocable by name (e.g. `/add-linter`).
+
+**Contribution workflow** (run in order, or skip phases for small focused changes):
+
+- `/analyze [description]` - Step 1: gather requirements via clarifying questions
+- `/design [context]` - Step 2: produce a tech spec
+- `/implement [change]` - Step 3: apply the change (delegates to specialist skills below when applicable)
+- `/test [linter or focus]` - Step 4: build the linter image and run tests in Docker
+
+**Specialist skills** (used directly or delegated to from `/implement`):
 
 - `/add-linter [name]` - Guided workflow for adding a new linter
 - `/update-linter-version [linter] [version]` - Update a linter's pinned version
