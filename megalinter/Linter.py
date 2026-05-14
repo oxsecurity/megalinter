@@ -1010,18 +1010,23 @@ class Linter:
 
         return self
 
-    def replace_vars(self, variables):
-        variables_with_replacements = []
-        for txt in variables:
-            if "{{SARIF_OUTPUT_FILE}}" in txt:
-                txt = txt.replace("{{SARIF_OUTPUT_FILE}}", self.sarif_output_file)
-            elif "{{REPORT_FOLDER}}" in txt:
-                txt = txt.replace("{{REPORT_FOLDER}}", self.report_folder)
-            elif "{{WORKSPACE}}" in txt:
-                txt = txt.replace("{{WORKSPACE}}", self.workspace)
-            variables_with_replacements += [txt]
+    def replace_vars(self, args, additional_variables=None):
+        default_variables = {
+            "{{SARIF_OUTPUT_FILE}}": self.sarif_output_file,
+            "{{REPORT_FOLDER}}": self.report_folder,
+            "{{WORKSPACE}}": self.workspace
+        }
+        merged_map = default_variables
+        if additional_variables is not None:
+            merged_map.update(additional_variables)
+        args_with_replacements = []
+        for txt in args:
+            for key in merged_map:
+                if key in txt:
+                    txt = txt.replace(key, merged_map[key])
+            args_with_replacements += [txt]
 
-        return variables_with_replacements
+        return args_with_replacements
 
     def update_files_lint_results(
         self,
@@ -1411,8 +1416,12 @@ class Linter:
     def build_lint_command(self, file=None) -> list:
         cmd = [*self.cli_executable]
 
+        additional_replace_variables = {
+            "{{FILE}}": file,
+        }
+
         # Add other lint cli arguments if defined
-        self.cli_lint_extra_args = self.replace_vars(self.cli_lint_extra_args)
+        self.cli_lint_extra_args = self.replace_vars(self.cli_lint_extra_args, additional_replace_variables)
         cmd += self.cli_lint_extra_args
 
         # Add fix argument if defined
@@ -1429,7 +1438,7 @@ class Linter:
             self.try_fix = True
 
         # Add user-defined extra arguments if defined
-        self.cli_lint_user_args = self.replace_vars(self.cli_lint_user_args)
+        self.cli_lint_user_args = self.replace_vars(self.cli_lint_user_args, additional_replace_variables)
         cmd += self.cli_lint_user_args
 
         # Add config arguments if defined (except for case when no_config_if_fix is True)
@@ -1466,7 +1475,8 @@ class Linter:
 
         # Add other lint cli arguments after other arguments if defined
         self.cli_lint_extra_args_after = self.replace_vars(
-            self.cli_lint_extra_args_after
+            self.cli_lint_extra_args_after,
+            additional_replace_variables
         )
         cmd += self.cli_lint_extra_args_after
 
