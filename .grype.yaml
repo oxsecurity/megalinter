@@ -8,7 +8,7 @@ fail-on-severity: "high"
 # These directories contain deliberately old/vulnerable packages to exercise the security scanners;
 # they are not real MegaLinter dependencies.
 exclude:
-  - './.automation/test/**'
+  - "./.automation/test/**"
 
 ignore:
   # Ignored by default; disputed and unwarranted CVE that causes Megalinter to fail
