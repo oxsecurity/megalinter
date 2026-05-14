@@ -122,10 +122,6 @@ jobs:
           tags: |
             ghcr.io/oxsecurity/megalinter-server:alpha
           # ghcr.io/oxsecurity/megalinter-server:alpha-${{ github.sha }}
-          cache-from: |
-            type=gha,scope=alpha-server
-            type=gha,scope=beta-server
-          cache-to: type=gha,mode=max,scope=alpha-server
 
       - name: Build & Push Docker Image
         uses: docker/build-push-action@bcafcacb16a39f128d818304e6c9c0c18556b85f # v7
@@ -144,11 +140,7 @@ jobs:
           tags: |
             ghcr.io/oxsecurity/megalinter:alpha
           # ghcr.io/oxsecurity/megalinter:alpha-${{ github.sha }}
-          cache-from: |
-            type=gha,scope=alpha-main
-            type=gha,scope=beta-main
-            type=gha,scope=dev-main
-          cache-to: type=gha,mode=max,scope=alpha-main
+          cache-from: type=gha,scope=beta-main
 
       # - name: Build & Push Worker Docker Image
       #   uses: docker/build-push-action@v7
@@ -232,10 +224,6 @@ jobs:
             BUILD_VERSION=alpha
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          cache-from: |
-            type=gha,scope=alpha-flavor-builder-${{ env.PLATFORM_PAIR }}
-            type=gha,scope=beta-flavor-builder-${{ env.PLATFORM_PAIR }}
-          cache-to: type=gha,mode=max,scope=alpha-flavor-builder-${{ env.PLATFORM_PAIR }}
           outputs: type=image,"name=ghcr.io/${{ github.repository }}-custom-flavor-builder",push-by-digest=true,name-canonical=true,push=true
 
       - name: Export digest

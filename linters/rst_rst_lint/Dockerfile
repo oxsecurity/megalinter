@@ -79,6 +79,7 @@ RUN apk -U --no-cache upgrade \
                 ca-certificates \
                 curl \
                 gcc \
+                gcompat \
                 git \
                 git-lfs \
                 libffi-dev \
@@ -115,12 +116,12 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #############################################################################################
 
 #PIPVENV__START
-RUN uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION}
-RUN uv venv --seed --no-project --no-managed-python --no-cache "/venvs/rst-lint" \
+RUN uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
+    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/rst-lint" \
     && VIRTUAL_ENV="/venvs/rst-lint" uv pip install --no-cache Pygments==${PIP_PYGMENTS_VERSION} restructuredtext_lint==${PIP_RESTRUCTUREDTEXT_LINT_VERSION} \
     && VIRTUAL_ENV="/venvs/rst-lint" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/rst-lint" rm -rf /venvs/rst-lint/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && find /venvs/rst-lint \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
+    && find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
     && rm -rf /root/.cache
 ENV PATH="${PATH}":/venvs/rst-lint/bin
 #PIPVENV__END
@@ -166,7 +167,6 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 #OTHER__START
 # rst-lint installation
-#
 #OTHER__END
 
 ################################

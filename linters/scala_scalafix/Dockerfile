@@ -72,6 +72,7 @@ RUN apk -U --no-cache upgrade \
                 ca-certificates \
                 curl \
                 gcc \
+                gcompat \
                 git \
                 git-lfs \
                 libffi-dev \
@@ -156,12 +157,9 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN curl --retry-all-errors --retry 10 -fLo coursier https://git.io/coursier-cli && \
-        chmod +x coursier
-
-#
+        chmod +x coursier \
 # scalafix installation
-RUN ./coursier install scalafix --quiet --install-dir /usr/bin && rm -rf /root/.cache
-#
+    && ./coursier install scalafix --quiet --install-dir /usr/bin && rm -rf /root/.cache
 #OTHER__END
 
 ################################

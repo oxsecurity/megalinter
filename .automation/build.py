@@ -35,6 +35,8 @@ from megalinter.constants import (
     DEFAULT_DOCKERFILE_DOCKER_ARGS,
     DEFAULT_DOCKERFILE_FLAVOR_ARGS,
     DEFAULT_DOCKERFILE_FLAVOR_CARGO_PACKAGES,
+    DEFAULT_DOCKERFILE_FLAVOR_COPY_LINES,
+    DEFAULT_DOCKERFILE_FLAVOR_FROM_STAGES,
     DEFAULT_DOCKERFILE_GEM_APK_PACKAGES,
     DEFAULT_DOCKERFILE_GEM_ARGS,
     DEFAULT_DOCKERFILE_NPM_APK_PACKAGES,
@@ -343,7 +345,11 @@ branding:
         flavor,
         extra_lines,
         DEFAULT_DOCKERFILE_FLAVOR_ARGS.copy(),
-        {"cargo": DEFAULT_DOCKERFILE_FLAVOR_CARGO_PACKAGES.copy()},
+        {
+            "cargo": DEFAULT_DOCKERFILE_FLAVOR_CARGO_PACKAGES.copy(),
+            "from": DEFAULT_DOCKERFILE_FLAVOR_FROM_STAGES.copy(),
+            "copy": DEFAULT_DOCKERFILE_FLAVOR_COPY_LINES.copy(),
+        },
     )
     return dockerfile
 
@@ -360,11 +366,11 @@ def build_dockerfile(
     if extra_packages is None:
         extra_packages = {}
     # Gather all dockerfile commands
-    docker_from = []
+    docker_from = list(extra_packages.get("from", []))
     docker_arg = DEFAULT_DOCKERFILE_ARGS.copy()
     if extra_args is not None:
         docker_arg += extra_args
-    docker_copy = []
+    docker_copy = list(extra_packages.get("copy", []))
     docker_other = []
     all_dockerfile_items = []
     apk_packages = DEFAULT_DOCKERFILE_APK_PACKAGES.copy()
@@ -469,10 +475,6 @@ def build_dockerfile(
                     is_docker_other_run = False
                     docker_other += [dockerfile_item]
                 all_dockerfile_items += [dockerfile_item]
-            # Break the cross-linter RUN chain so each linter's install
-            # becomes its own Docker layer (better cache locality).
-            is_docker_other_run = False
-            docker_other += ["#"]
         # Collect python packages
         if "apk" in item["install"]:
             apk_packages += item["install"]["apk"]
@@ -663,18 +665,21 @@ def build_dockerfile(
             + "rm -rf /root/.cache"
         )
     replace_in_file(dockerfile, "#PIP__START", "#PIP__END", pip_install_command)
-    # Python packages in venv — emit one RUN per linter so each venv is its own
-    # cacheable layer. A single descriptor or version change only invalidates
-    # that linter's layer instead of the entire pipvenv chain.
+    # Python packages in venv — one chained RUN. A single-RUN chain keeps
+    # layer count low (less cache export overhead per build); cache locality
+    # for one-linter-version-bumps was a net loss once the per-layer GHA
+    # cache I/O was measured.
+    pipenv_install_command = ""
     if len(pipvenv_packages.items()) > 0:
         pipenv_install_command = (
             "RUN uv pip install --system --no-cache "
-            "pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION}\n"
+            "pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \\\n"
         )
         env_path_command = 'ENV PATH="${PATH}"'
+        venv_install_segments = []
         for pip_linter, pip_linter_packages in pipvenv_packages.items():
-            pipenv_install_command += (
-                f'RUN uv venv --seed --no-project --no-managed-python --no-cache "/venvs/{pip_linter}" \\\n'
+            venv_install_segments.append(
+                f'    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/{pip_linter}" \\\n'
                 + f'    && VIRTUAL_ENV="/venvs/{pip_linter}" uv pip install --no-cache '
                 + (" ".join(pip_linter_packages))
                 + " \\\n"
@@ -682,14 +687,15 @@ def build_dockerfile(
                 + '"wheel>=0.46.2" "setuptools>=75.8.0" \\\n'
                 + f'    && VIRTUAL_ENV="/venvs/{pip_linter}" rm -rf '
                 + f"/venvs/{pip_linter}/lib/python3.13/site-packages/setuptools/_vendor/wheel* \\\n"
-                + f"    && find /venvs/{pip_linter} "
-                + r"\( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete"
-                + " \\\n    && rm -rf /root/.cache\n"
             )
             env_path_command += f":/venvs/{pip_linter}/bin"
+        pipenv_install_command += "".join(venv_install_segments)
+        pipenv_install_command += (
+            "    && find /venvs "
+            + r"\( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete"
+            + " \\\n    && rm -rf /root/.cache\n"
+        )
         pipenv_install_command += env_path_command
-    else:
-        pipenv_install_command = ""
     replace_in_file(
         dockerfile, "#PIPVENV__START", "#PIPVENV__END", pipenv_install_command
     )

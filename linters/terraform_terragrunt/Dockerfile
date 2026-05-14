@@ -74,6 +74,7 @@ RUN apk -U --no-cache upgrade \
                 ca-certificates \
                 curl \
                 gcc \
+                gcompat \
                 git \
                 git-lfs \
                 libffi-dev \
@@ -155,7 +156,6 @@ COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 #OTHER__START
 # terragrunt installation
 # Managed with COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
-#
 #OTHER__END
 
 ################################

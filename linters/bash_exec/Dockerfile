@@ -72,6 +72,7 @@ RUN apk -U --no-cache upgrade \
                 ca-certificates \
                 curl \
                 gcc \
+                gcompat \
                 git \
                 git-lfs \
                 libffi-dev \
@@ -155,7 +156,6 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: File:[$1] is not executable"; exit 1; fi' > /usr/bin/bash-exec \
     && chmod +x /usr/bin/bash-exec
 
-#
 #OTHER__END
 
 ################################

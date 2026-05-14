@@ -77,6 +77,7 @@ RUN apk -U --no-cache upgrade \
                 ca-certificates \
                 curl \
                 gcc \
+                gcompat \
                 git \
                 git-lfs \
                 libffi-dev \
@@ -113,12 +114,12 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #############################################################################################
 
 #PIPVENV__START
-RUN uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION}
-RUN uv venv --seed --no-project --no-managed-python --no-cache "/venvs/flake8" \
+RUN uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
+    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/flake8" \
     && VIRTUAL_ENV="/venvs/flake8" uv pip install --no-cache flake8==${PIP_FLAKE8_VERSION} \
     && VIRTUAL_ENV="/venvs/flake8" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/flake8" rm -rf /venvs/flake8/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && find /venvs/flake8 \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
+    && find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
     && rm -rf /root/.cache
 ENV PATH="${PATH}":/venvs/flake8/bin
 #PIPVENV__END
@@ -164,7 +165,6 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 #OTHER__START
 # flake8 installation
-#
 #OTHER__END
 
 ################################

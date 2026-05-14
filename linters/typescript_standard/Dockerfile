@@ -75,6 +75,7 @@ RUN apk -U --no-cache upgrade \
                 ca-certificates \
                 curl \
                 gcc \
+                gcompat \
                 git \
                 git-lfs \
                 libffi-dev \
@@ -169,9 +170,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 #OTHER__START
 # TYPESCRIPT installation
-#
 # ts-standard installation
-#
 #OTHER__END
 
 ################################
