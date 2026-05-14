@@ -1210,8 +1210,7 @@ RUN dotnet tool install --allow-roll-forward --global Microsoft.CST.DevSkim.CLI 
 #     && (npm cache clean --force || true) \
 #     && rm -rf /root/.npm/_cacache
 # scalafix installation
-RUN ./coursier install scalafix:${SCALA_SCALAFIX_VERSION} --quiet --install-dir /usr/bin && rm -rf /root/.cache
-#
+    && ./coursier install scalafix:${SCALA_SCALAFIX_VERSION} --quiet --install-dir /usr/bin && rm -rf /root/.cache \
 # snakemake installation
 # snakefmt installation
 # cspell installation
