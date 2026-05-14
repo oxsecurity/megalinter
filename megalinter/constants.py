@@ -116,7 +116,7 @@ DEFAULT_DOCKERFILE_FLAVOR_COPY_LINES = [
     "COPY --link --from=cargo-bin-sarif-fmt /out/bin/sarif-fmt /usr/bin/sarif-fmt",
 ]
 
-DEFAULT_DOCKERFILE_FLAVOR_CARGO_PACKAGES = []
+DEFAULT_DOCKERFILE_FLAVOR_CARGO_PACKAGES: list[str] = []
 
 OX_MARKDOWN_LINK = (
     "[![MegaLinter is graciously provided by OX Security]"
