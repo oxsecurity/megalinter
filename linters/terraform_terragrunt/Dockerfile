@@ -155,7 +155,6 @@ COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 #OTHER__START
 # terragrunt installation
 # Managed with COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
-#
 #OTHER__END
 
 ################################

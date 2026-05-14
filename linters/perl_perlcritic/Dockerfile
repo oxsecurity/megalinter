@@ -159,7 +159,6 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 RUN curl -fsSL https://raw.githubusercontent.com/skaji/cpm/refs/tags/${PERL_PERLCRITIC_VERSION}/cpm | perl - install -g --show-build-log-on-failure --without-build --without-test --without-runtime Perl::Critic \
     && rm -rf /root/.perl-cpm
 
-#
 #OTHER__END
 
 ################################

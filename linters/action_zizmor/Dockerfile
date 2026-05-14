@@ -168,7 +168,6 @@ COPY --link --from=cargo-bin-zizmor /out/bin/zizmor /usr/bin/zizmor
 #OTHER__START
 # zizmor installation
 # Managed with COPY --link --from=cargo-bin-zizmor /out/bin/zizmor /usr/bin/zizmor
-#
 #OTHER__END
 
 ################################

@@ -155,7 +155,6 @@ COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 #OTHER__START
 # trufflehog installation
 # Managed with COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
-#
 #OTHER__END
 
 ################################

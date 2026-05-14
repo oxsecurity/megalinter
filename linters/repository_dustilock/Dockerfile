@@ -160,7 +160,6 @@ COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 #OTHER__START
 # dustilock installation
 # Managed with COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
-#
 #OTHER__END
 
 ################################

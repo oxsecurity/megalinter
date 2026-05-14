@@ -155,7 +155,6 @@ COPY --link --from=terragrunt /bin/terraform /usr/bin/
 #OTHER__START
 # terraform-fmt installation
 # Managed with COPY --link --from=terragrunt /bin/terraform /usr/bin/
-#
 #OTHER__END
 
 ################################

@@ -155,7 +155,6 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 # kingfisher installation
 RUN curl --silent --location https://raw.githubusercontent.com/mongodb/kingfisher/main/scripts/install-kingfisher.sh | bash -s -- /usr/local/bin --tag "v${REPOSITORY_KINGFISHER_VERSION}"
 
-#
 #OTHER__END
 
 ################################

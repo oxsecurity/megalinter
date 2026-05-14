@@ -169,7 +169,6 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 #OTHER__START
 # npm-package-json-lint installation
-#
 #OTHER__END
 
 ################################

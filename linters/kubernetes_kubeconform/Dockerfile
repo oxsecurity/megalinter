@@ -155,7 +155,6 @@ COPY --link --from=kubeconform /kubeconform /usr/bin/
 #OTHER__START
 # kubeconform installation
 # Managed with COPY --link --from=kubeconform /kubeconform /usr/bin/
-#
 #OTHER__END
 
 ################################

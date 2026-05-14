@@ -155,7 +155,6 @@ COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 #OTHER__START
 # checkmake installation
 # Managed with COPY --link --from=checkmake /checkmake /usr/bin/checkmake
-#
 #OTHER__END
 
 ################################

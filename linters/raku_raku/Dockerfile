@@ -165,7 +165,6 @@ esac \
     && rm "rakudo-pkg-Alpine${RAKU_RAKU_ALPINE_VERSION}_${RAKU_RAKU_VERSION}-01_${RAKU_RAKU_ARCH}.apk"
 
 ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$PATH"
-#
 #OTHER__END
 
 ################################

@@ -168,10 +168,8 @@ RUN apk add --no-cache \
     --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main \
     --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
     go=${GO_ALPINE_VERSION}
-#
 # revive installation
 # Managed with COPY --link --from=revive /usr/bin/revive /usr/bin/revive
-#
 #OTHER__END
 
 ################################

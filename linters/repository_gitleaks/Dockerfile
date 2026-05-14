@@ -155,7 +155,6 @@ COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 #OTHER__START
 # gitleaks installation
 # Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
-#
 #OTHER__END
 
 ################################

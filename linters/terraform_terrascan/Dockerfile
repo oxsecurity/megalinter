@@ -155,7 +155,6 @@ COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
 #OTHER__START
 # terrascan installation
 # Managed with COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
-#
 #OTHER__END
 
 ################################

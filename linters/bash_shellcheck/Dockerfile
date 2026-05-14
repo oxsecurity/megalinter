@@ -173,7 +173,6 @@ COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 # shellcheck installation
 # Managed with COPY --link --from=cargo-bin-shellcheck-sarif /out/bin/shellcheck-sarif /usr/bin/shellcheck-sarif
 # Managed with COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
-#
 #OTHER__END
 
 ################################

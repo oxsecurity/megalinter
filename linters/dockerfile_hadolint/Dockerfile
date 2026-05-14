@@ -155,7 +155,6 @@ COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 #OTHER__START
 # hadolint installation
 # Managed with COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
-#
 #OTHER__END
 
 ################################

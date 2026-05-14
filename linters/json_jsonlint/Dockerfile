@@ -166,7 +166,6 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 #OTHER__START
 # jsonlint installation
-#
 #OTHER__END
 
 ################################

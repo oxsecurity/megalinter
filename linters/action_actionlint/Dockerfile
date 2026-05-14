@@ -165,7 +165,6 @@ COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 # Managed with COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
 #              # shellcheck is a dependency for actionlint
 # Managed with COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
-#
 #OTHER__END
 
 ################################

@@ -169,7 +169,6 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 #OTHER__START
 # remark-lint installation
-#
 #OTHER__END
 
 ################################

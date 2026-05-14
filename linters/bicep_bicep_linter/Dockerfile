@@ -165,7 +165,6 @@ esac \
 && chmod +x "${BICEP_EXE}" \
 && mv "${BICEP_EXE}" "${BICEP_DIR}"
 
-#
 #OTHER__END
 
 ################################

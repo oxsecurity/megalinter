@@ -155,7 +155,6 @@ COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 #OTHER__START
 # protolint installation
 # Managed with COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
-#
 #OTHER__END
 
 ################################

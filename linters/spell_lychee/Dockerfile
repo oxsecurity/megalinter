@@ -155,7 +155,6 @@ COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
 #OTHER__START
 # lychee installation
 # Managed with COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
-#
 #OTHER__END
 
 ################################

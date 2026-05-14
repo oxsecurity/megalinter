@@ -155,7 +155,6 @@ COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
 #OTHER__START
 # tflint installation
 # Managed with COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
-#
 #OTHER__END
 
 ################################

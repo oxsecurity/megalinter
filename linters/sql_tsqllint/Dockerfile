@@ -156,7 +156,6 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 RUN apk add --no-cache dotnet10-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
 RUN dotnet tool install --allow-roll-forward --global TSQLLint --version ${SQL_TSQLLINT_VERSION}
-#
 #OTHER__END
 
 ################################

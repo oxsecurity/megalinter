@@ -169,9 +169,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 #OTHER__START
 # TYPESCRIPT installation
-#
 # ts-standard installation
-#
 #OTHER__END
 
 ################################

@@ -154,7 +154,6 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 # CSHARP installation
 RUN apk add --no-cache dotnet10-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
-#
 #OTHER__END
 
 ################################

@@ -155,7 +155,6 @@ COPY --link --from=shfmt /bin/shfmt /usr/bin/
 #OTHER__START
 # shfmt installation
 # Managed with COPY --link --from=shfmt /bin/shfmt /usr/bin/
-#
 #OTHER__END
 
 ################################

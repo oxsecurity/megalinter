@@ -155,7 +155,6 @@ COPY --link --from=vale /bin/vale /bin/vale
 #OTHER__START
 # vale installation
 # Managed with COPY --link --from=vale /bin/vale /bin/vale
-#
 #OTHER__END
 
 ################################
