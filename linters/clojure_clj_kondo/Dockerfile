@@ -157,7 +157,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 # clj-kondo installation
 RUN curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/clj-kondo/clj-kondo/refs/tags/v${CLJ_KONDO_VERSION}/script/install-clj-kondo \
     && chmod +x install-clj-kondo \
-    && ./install-clj-kondo --static --version "$CLJ_KONDO_VERSION"
+    && ./install-clj-kondo --version "$CLJ_KONDO_VERSION"
 
 #OTHER__END
 
