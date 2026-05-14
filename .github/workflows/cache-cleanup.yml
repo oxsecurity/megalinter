@@ -2,18 +2,13 @@
 ##########################################################################
 # Prune GHA caches to stay under the 10 GB per-repo limit.               #
 #                                                                        #
-# Two triggers:                                                          #
-#   1. On PR close (merged or not) — immediately reclaim that PR's       #
-#      cache scope. This is the primary mechanism, since main's warm    #
-#      cache is what every new build reads from.                         #
-#   2. Daily sweep — catch orphan branches, never-closed PRs, and        #
-#      enforce a soft-limit eviction of oldest non-main caches.          #
+# Daily sweep — catch orphan branches and enforce a soft-limit eviction  #
+# of oldest non-main caches. PR builds are read-only (no cache-to), so  #
+# no PR-scoped caches are ever written and no per-PR cleanup is needed.  #
 ##########################################################################
 name: "Cache cleanup"
 
 on:
-  pull_request:
-    types: [closed]
   schedule:
     # Daily at 03:00 UTC, off-peak.
     - cron: "0 3 * * *"
@@ -22,46 +17,9 @@ on:
 permissions: {}
 
 jobs:
-  prune-pr-cache:
-    name: Prune cache for closed PR
-    if: github.event_name == 'pull_request' && github.repository == 'oxsecurity/megalinter'
-    runs-on: ubuntu-latest
-    permissions:
-      actions: write
-    concurrency:
-      # Serialize per PR to keep logs clean (the API itself is idempotent).
-      group: cache-cleanup-pr-${{ github.event.pull_request.number }}
-      cancel-in-progress: false
-    steps:
-      - name: Delete PR cache entries
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_REPO: ${{ github.repository }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          REF="refs/pull/${PR_NUMBER}/merge"
-          echo "Pruning caches for ${REF}..."
-
-          deleted=0
-          freed=0
-          while IFS=$'\t' read -r id size key; do
-            [[ -z "$id" ]] && continue
-            if gh api -X DELETE "repos/${GH_REPO}/actions/caches/${id}" \
-               >/dev/null 2>&1; then
-              deleted=$((deleted + 1))
-              freed=$((freed + size))
-            fi
-          done < <(gh api --paginate \
-            "repos/${GH_REPO}/actions/caches?ref=${REF}&per_page=100" \
-            --jq '.actions_caches[] | [.id, .size_in_bytes, .key] | @tsv')
-
-          echo "Deleted ${deleted} caches, freed ${freed} bytes for ${REF}"
-
   prune-scheduled:
     name: Daily cache sweep
-    if: github.event_name != 'pull_request' && github.repository == 'oxsecurity/megalinter'
+    if: github.repository == 'oxsecurity/megalinter'
     runs-on: ubuntu-latest
     permissions:
       actions: write
@@ -111,7 +69,7 @@ jobs:
           }
 
           # Pass 1: drop caches tied to closed PRs or vanished branches.
-          while IFS=$'\t' read -r id key ref size created; do
+          while IFS=$'\t' read -r id key ref size _; do
             [[ -z "$id" ]] && continue
             if [[ "$ref" =~ ^refs/pull/([0-9]+)/ ]]; then
               pr_num="${BASH_REMATCH[1]}"
