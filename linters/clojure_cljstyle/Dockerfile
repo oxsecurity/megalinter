@@ -75,6 +75,7 @@ RUN apk -U --no-cache upgrade \
                 ca-certificates \
                 curl \
                 gcc \
+                gcompat \
                 git \
                 git-lfs \
                 libffi-dev \
@@ -193,15 +194,12 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
     rm \
         "$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
         "$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
-        "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME"
-
-#
+        "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" \
 # cljstyle installation
-RUN curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/greglook/cljstyle/main/util/install-cljstyle \
+    && curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/greglook/cljstyle/main/util/install-cljstyle \
     && chmod +x install-cljstyle \
     && ./install-cljstyle --static --version "$CLJ_STYLE_VERSION"
 
-#
 #OTHER__END
 
 ################################

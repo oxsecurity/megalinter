@@ -74,6 +74,7 @@ RUN apk -U --no-cache upgrade \
                 ca-certificates \
                 curl \
                 gcc \
+                gcompat \
                 git \
                 git-lfs \
                 libffi-dev \
@@ -155,7 +156,6 @@ COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 #OTHER__START
 # hadolint installation
 # Managed with COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
-#
 #OTHER__END
 
 ################################

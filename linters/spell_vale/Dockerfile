@@ -74,6 +74,7 @@ RUN apk -U --no-cache upgrade \
                 ca-certificates \
                 curl \
                 gcc \
+                gcompat \
                 git \
                 git-lfs \
                 libffi-dev \
@@ -155,7 +156,6 @@ COPY --link --from=vale /bin/vale /bin/vale
 #OTHER__START
 # vale installation
 # Managed with COPY --link --from=vale /bin/vale /bin/vale
-#
 #OTHER__END
 
 ################################

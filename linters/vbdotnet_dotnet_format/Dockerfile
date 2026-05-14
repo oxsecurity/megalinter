@@ -72,6 +72,7 @@ RUN apk -U --no-cache upgrade \
                 ca-certificates \
                 curl \
                 gcc \
+                gcompat \
                 git \
                 git-lfs \
                 libffi-dev \
@@ -154,7 +155,6 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 # VBDOTNET installation
 RUN apk add --no-cache dotnet10-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
-#
 #OTHER__END
 
 ################################

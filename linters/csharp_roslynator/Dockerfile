@@ -73,6 +73,7 @@ RUN apk -U --no-cache upgrade \
                 ca-certificates \
                 curl \
                 gcc \
+                gcompat \
                 git \
                 git-lfs \
                 libffi-dev \
@@ -155,10 +156,8 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 # CSHARP installation
 RUN apk add --no-cache dotnet10-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
-#
 # roslynator installation
 RUN dotnet tool install --allow-roll-forward --global roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}"
-#
 #OTHER__END
 
 ################################

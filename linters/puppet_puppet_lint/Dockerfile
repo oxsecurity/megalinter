@@ -73,6 +73,7 @@ RUN apk -U --no-cache upgrade \
                 ca-certificates \
                 curl \
                 gcc \
+                gcompat \
                 git \
                 git-lfs \
                 libffi-dev \
@@ -159,7 +160,6 @@ RUN echo 'gem: --no-document' >> ~/.gemrc && \
 #############################################################################################
 #OTHER__START
 # puppet-lint installation
-#
 #OTHER__END
 
 ################################

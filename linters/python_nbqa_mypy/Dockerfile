@@ -79,6 +79,7 @@ RUN apk -U --no-cache upgrade \
                 ca-certificates \
                 curl \
                 gcc \
+                gcompat \
                 git \
                 git-lfs \
                 libffi-dev \
@@ -115,12 +116,12 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #############################################################################################
 
 #PIPVENV__START
-RUN uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION}
-RUN uv venv --seed --no-project --no-managed-python --no-cache "/venvs/nbqa" \
+RUN uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
+    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/nbqa" \
     && VIRTUAL_ENV="/venvs/nbqa" uv pip install --no-cache nbqa==${PIP_NBQA_VERSION} mypy==${PIP_MYPY_VERSION} \
     && VIRTUAL_ENV="/venvs/nbqa" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/nbqa" rm -rf /venvs/nbqa/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && find /venvs/nbqa \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
+    && find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
     && rm -rf /root/.cache
 ENV PATH="${PATH}":/venvs/nbqa/bin
 #PIPVENV__END
@@ -167,7 +168,6 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #OTHER__START
 # nbqa installation
 ENV MYPY_CACHE_DIR=/tmp
-#
 #OTHER__END
 
 ################################

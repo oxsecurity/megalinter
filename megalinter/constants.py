@@ -37,6 +37,10 @@ DEFAULT_DOCKERFILE_APK_PACKAGES = [
     "ca-certificates",
     "curl",
     "gcc",
+    # glibc compatibility shim so prebuilt linux-x86_64-unknown-linux-gnu
+    # binaries (zizmor, sarif-fmt, shellcheck-sarif, …) run on the Alpine
+    # base, including in standalone per-linter images.
+    "gcompat",
     "git",
     "git-lfs",
     "libffi-dev",
@@ -85,9 +89,34 @@ DEFAULT_DOCKERFILE_FLAVOR_ARGS = [
     "# renovate: datasource=crate depName=sarif-fmt\nARG CARGO_SARIF_FMT_VERSION=0.8.0",
 ]
 
-DEFAULT_DOCKERFILE_FLAVOR_CARGO_PACKAGES = [
-    "sarif-fmt@${CARGO_SARIF_FMT_VERSION}",
+# sarif-fmt: on amd64 download the prebuilt linux-x86_64 binary from
+# sarif-rs Releases (~5 s). On arm64 the project ships no prebuilt, so
+# fall back to compiling from source with Alpine's rust toolchain.
+# The runtime image installs `gcompat` so the glibc binary runs on Alpine.
+DEFAULT_DOCKERFILE_FLAVOR_FROM_STAGES = [
+    "FROM alpine:3.23 AS cargo-bin-sarif-fmt\n"
+    "ARG TARGETARCH\n"
+    "ARG CARGO_SARIF_FMT_VERSION\n"
+    "RUN set -eu; mkdir -p /out/bin; \\\n"
+    "    apk add --no-cache curl ca-certificates; \\\n"
+    '    if [ "$TARGETARCH" = "amd64" ]; then \\\n'
+    "      curl -fsSL -o /out/bin/sarif-fmt"
+    ' "https://github.com/psastras/sarif-rs/releases/download/'
+    'sarif-fmt-v${CARGO_SARIF_FMT_VERSION}/sarif-fmt-x86_64-unknown-linux-gnu"; \\\n'
+    "    else \\\n"
+    "      apk add --no-cache build-base musl-dev openssl-dev"
+    " openssl-libs-static pkgconfig bash perl rust cargo && \\\n"
+    "      cargo install --force --locked --root /out"
+    ' "sarif-fmt@${CARGO_SARIF_FMT_VERSION}"; \\\n'
+    "    fi; \\\n"
+    "    chmod +x /out/bin/sarif-fmt",
 ]
+
+DEFAULT_DOCKERFILE_FLAVOR_COPY_LINES = [
+    "COPY --link --from=cargo-bin-sarif-fmt /out/bin/sarif-fmt /usr/bin/sarif-fmt",
+]
+
+DEFAULT_DOCKERFILE_FLAVOR_CARGO_PACKAGES: list[str] = []
 
 OX_MARKDOWN_LINK = (
     "[![MegaLinter is graciously provided by OX Security]"

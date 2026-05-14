@@ -74,6 +74,7 @@ RUN apk -U --no-cache upgrade \
                 ca-certificates \
                 curl \
                 gcc \
+                gcompat \
                 git \
                 git-lfs \
                 libffi-dev \
@@ -157,7 +158,6 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 # JAVA installation
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
-#
 # pmd installation
 RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-dist-${PMD_VERSION}-bin.zip && \
     unzip pmd-dist-${PMD_VERSION}-bin.zip || echo "Error unzipping" && \
@@ -165,7 +165,6 @@ RUN wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${P
     mv pmd-bin-${PMD_VERSION} /usr/bin/pmd || echo "Error mv" && \
     chmod +x /usr/bin/pmd/bin/pmd || echo "Error chmod"
 
-#
 #OTHER__END
 
 ################################
