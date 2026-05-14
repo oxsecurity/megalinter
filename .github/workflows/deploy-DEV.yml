@@ -59,7 +59,6 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
-          fetch-depth: 0
           persist-credentials: false
 
       - name: Free Disk space
@@ -119,6 +118,11 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@4d04d5d9486b7bd6fa91e7baf45bbb4f8b9deedd # v4
 
+      # Build once and export the image as a Docker tarball.
+      # DEV is read-only on the layer cache: it consumes the warm caches
+      # produced by the BETA workflow on main and never writes back. Writing
+      # a fresh cache for a throwaway PR branch costs ~14 min of cache export
+      # per build that nobody else reads, so we skip `cache-to` entirely here.
       - name: Build MegaLinter Docker Image
         id: docker_build
         uses: docker/build-push-action@bcafcacb16a39f128d818304e6c9c0c18556b85f # v7
@@ -127,14 +131,28 @@ jobs:
           file: ${{ steps.setup.outputs.dockerfile }}
           platforms: linux/amd64
           build-args: ${{ steps.setup.outputs.build-args }}
-          load: false
-          push: false
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           tags: ${{ steps.meta.outputs.tags }}
-          cache-from: type=gha,scope=${{ steps.setup.outputs.cache-scope }}
-          cache-to: type=gha,mode=max,scope=${{ steps.setup.outputs.cache-scope }}
+          cache-from: type=gha,scope=beta-main
+          outputs: type=docker,dest=/tmp/megalinter-image.tar
         timeout-minutes: 90
+
+      - name: Compress image tarball
+        shell: bash
+        run: |
+          set -euo pipefail
+          zstd -3 -T0 --rm /tmp/megalinter-image.tar -o /tmp/megalinter-image.tar.zst
+          ls -lh /tmp/megalinter-image.tar.zst
+
+      - name: Upload image artifact
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: megalinter-image
+          path: /tmp/megalinter-image.tar.zst
+          retention-days: 1
+          if-no-files-found: error
+          compression-level: 0
 
   ###############################################################
   # Consumer: Run linter test cases against the cached image    #
@@ -152,7 +170,6 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
-          fetch-depth: 0
           persist-credentials: false
 
       - name: Free Disk space
@@ -165,27 +182,20 @@ jobs:
           sudo rm -rf /opt/hostedtoolcache/CodeQL
           sudo rm -rf /opt/hostedtoolcache/go
 
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@ce360397dd3f832beb865e1373c09c0e9f86d70a # v4
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@4d04d5d9486b7bd6fa91e7baf45bbb4f8b9deedd # v4
-
-      # Rebuild from GHA cache so the image lands in this runner's local Docker daemon.
-      # All layers should hit cache, making this a fast manifest assembly + load.
-      - name: Load image from buildx cache
-        uses: docker/build-push-action@bcafcacb16a39f128d818304e6c9c0c18556b85f # v7
+      - name: Download image artifact
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
         with:
-          context: .
-          file: ${{ needs.build.outputs.dockerfile }}
-          platforms: linux/amd64
-          build-args: ${{ needs.build.outputs.build-args }}
-          load: true
-          push: false
-          secrets: |
-            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          tags: ${{ needs.build.outputs.image-tag }}
-          cache-from: type=gha,scope=${{ needs.build.outputs.cache-scope }}
+          name: megalinter-image
+          path: /tmp
+
+      - name: Load Docker image
+        shell: bash
+        run: |
+          set -euo pipefail
+          zstd -d --rm /tmp/megalinter-image.tar.zst -o /tmp/megalinter-image.tar
+          docker load -i /tmp/megalinter-image.tar
+          rm -f /tmp/megalinter-image.tar
+          docker image ls
 
       - name: Run Test Cases
         shell: bash
@@ -246,7 +256,6 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
-          fetch-depth: 0
           persist-credentials: false
 
       - name: Free Disk space
@@ -259,25 +268,20 @@ jobs:
           sudo rm -rf /opt/hostedtoolcache/CodeQL
           sudo rm -rf /opt/hostedtoolcache/go
 
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@ce360397dd3f832beb865e1373c09c0e9f86d70a # v4
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@4d04d5d9486b7bd6fa91e7baf45bbb4f8b9deedd # v4
-
-      - name: Load image from buildx cache
-        uses: docker/build-push-action@bcafcacb16a39f128d818304e6c9c0c18556b85f # v7
+      - name: Download image artifact
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
         with:
-          context: .
-          file: ${{ needs.build.outputs.dockerfile }}
-          platforms: linux/amd64
-          build-args: ${{ needs.build.outputs.build-args }}
-          load: true
-          push: false
-          secrets: |
-            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          tags: ${{ needs.build.outputs.image-tag }}
-          cache-from: type=gha,scope=${{ needs.build.outputs.cache-scope }}
+          name: megalinter-image
+          path: /tmp
+
+      - name: Load Docker image
+        shell: bash
+        run: |
+          set -euo pipefail
+          zstd -d --rm /tmp/megalinter-image.tar.zst -o /tmp/megalinter-image.tar
+          docker load -i /tmp/megalinter-image.tar
+          rm -f /tmp/megalinter-image.tar
+          docker image ls
 
       - name: Run against all code base
         shell: bash
@@ -330,25 +334,20 @@ jobs:
           sudo rm -rf /opt/hostedtoolcache/CodeQL
           sudo rm -rf /opt/hostedtoolcache/go
 
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@ce360397dd3f832beb865e1373c09c0e9f86d70a # v4
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@4d04d5d9486b7bd6fa91e7baf45bbb4f8b9deedd # v4
-
-      - name: Load image from buildx cache
-        uses: docker/build-push-action@bcafcacb16a39f128d818304e6c9c0c18556b85f # v7
+      - name: Download image artifact
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
         with:
-          context: .
-          file: ${{ needs.build.outputs.dockerfile }}
-          platforms: linux/amd64
-          build-args: ${{ needs.build.outputs.build-args }}
-          load: true
-          push: false
-          secrets: |
-            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          tags: ${{ needs.build.outputs.image-tag }}
-          cache-from: type=gha,scope=${{ needs.build.outputs.cache-scope }}
+          name: megalinter-image
+          path: /tmp
+
+      - name: Load Docker image
+        shell: bash
+        run: |
+          set -euo pipefail
+          zstd -d --rm /tmp/megalinter-image.tar.zst -o /tmp/megalinter-image.tar
+          docker load -i /tmp/megalinter-image.tar
+          rm -f /tmp/megalinter-image.tar
+          docker image ls
 
       - name: Setup Node
         uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
@@ -391,25 +390,20 @@ jobs:
           sudo rm -rf /opt/hostedtoolcache/CodeQL
           sudo rm -rf /opt/hostedtoolcache/go
 
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@ce360397dd3f832beb865e1373c09c0e9f86d70a # v4
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@4d04d5d9486b7bd6fa91e7baf45bbb4f8b9deedd # v4
-
-      - name: Load image from buildx cache
-        uses: docker/build-push-action@bcafcacb16a39f128d818304e6c9c0c18556b85f # v7
+      - name: Download image artifact
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
         with:
-          context: .
-          file: ${{ needs.build.outputs.dockerfile }}
-          platforms: linux/amd64
-          build-args: ${{ needs.build.outputs.build-args }}
-          load: true
-          push: false
-          secrets: |
-            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          tags: ${{ needs.build.outputs.image-tag }}
-          cache-from: type=gha,scope=${{ needs.build.outputs.cache-scope }}
+          name: megalinter-image
+          path: /tmp
+
+      - name: Load Docker image
+        shell: bash
+        run: |
+          set -euo pipefail
+          zstd -d --rm /tmp/megalinter-image.tar.zst -o /tmp/megalinter-image.tar
+          docker load -i /tmp/megalinter-image.tar
+          rm -f /tmp/megalinter-image.tar
+          docker image ls
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0

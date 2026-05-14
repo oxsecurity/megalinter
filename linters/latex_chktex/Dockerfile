@@ -72,6 +72,7 @@ RUN apk -U --no-cache upgrade \
                 ca-certificates \
                 curl \
                 gcc \
+                gcompat \
                 git \
                 git-lfs \
                 libffi-dev \
@@ -154,7 +155,6 @@ COPY --link --from=chktex /usr/bin/chktex /usr/bin/
 # chktex installation
 # Managed with COPY --link --from=chktex /usr/bin/chktex /usr/bin/
 RUN cd ~ && touch .chktexrc && cd /
-#
 #OTHER__END
 
 ################################

@@ -1,0 +1,110 @@
+---
+##########################################################################
+# Prune GHA caches to stay under the 10 GB per-repo limit.               #
+#                                                                        #
+# Daily sweep — catch orphan branches and enforce a soft-limit eviction  #
+# of oldest non-main caches. PR builds are read-only (no cache-to), so  #
+# no PR-scoped caches are ever written and no per-PR cleanup is needed.  #
+##########################################################################
+name: "Cache cleanup"
+
+on:
+  schedule:
+    # Daily at 03:00 UTC, off-peak.
+    - cron: "0 3 * * *"
+  workflow_dispatch: {}
+
+permissions: {}
+
+jobs:
+  prune-scheduled:
+    name: Daily cache sweep
+    if: github.repository == 'oxsecurity/megalinter'
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      contents: read
+      pull-requests: read
+    concurrency:
+      group: cache-cleanup-scheduled
+      cancel-in-progress: false
+    steps:
+      - name: Prune orphan and over-quota caches
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          SOFT_LIMIT_BYTES: "8589934592"  # 8 GB
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          echo "Fetching cache list..."
+          caches_json=$(gh api --paginate \
+            "repos/${GH_REPO}/actions/caches?per_page=100" \
+            --jq '.actions_caches[] | {id, key, ref, size_in_bytes, created_at}' \
+            | jq -s '.')
+
+          total_count=$(jq 'length' <<<"$caches_json")
+          total_size=$(jq '[.[].size_in_bytes] | add // 0' <<<"$caches_json")
+          echo "Found ${total_count} caches totalling ${total_size} bytes."
+
+          # PRs still open — keep their caches.
+          live_prs=$(gh api --paginate \
+            "repos/${GH_REPO}/pulls?state=open&per_page=100" \
+            --jq '.[].number' | sort -u || true)
+          echo "Open PRs to preserve: $(echo "$live_prs" | wc -w)"
+
+          deleted=0
+          freed=0
+          delete_cache() {
+            local id="$1" reason="$2" key="$3" size="$4"
+            if gh api -X DELETE "repos/${GH_REPO}/actions/caches/${id}" \
+               >/dev/null 2>&1; then
+              deleted=$((deleted + 1))
+              freed=$((freed + size))
+              echo "  deleted [${reason}] id=${id} size=${size} key=${key}"
+            else
+              echo "  failed to delete id=${id}"
+            fi
+          }
+
+          # Pass 1: drop caches tied to closed PRs or vanished branches.
+          while IFS=$'\t' read -r id key ref size _; do
+            [[ -z "$id" ]] && continue
+            if [[ "$ref" =~ ^refs/pull/([0-9]+)/ ]]; then
+              pr_num="${BASH_REMATCH[1]}"
+              if ! grep -qx "$pr_num" <<<"$live_prs"; then
+                delete_cache "$id" "closed PR #${pr_num}" "$key" "$size"
+              fi
+            elif [[ "$ref" != "refs/heads/main" \
+                 && "$ref" != "refs/heads/dbgbeta" \
+                 && "$ref" != refs/tags/* ]]; then
+              branch="${ref#refs/heads/}"
+              if ! gh api "repos/${GH_REPO}/branches/${branch}" \
+                 >/dev/null 2>&1; then
+                delete_cache "$id" "orphan ref ${ref}" "$key" "$size"
+              fi
+            fi
+          done < <(jq -r '.[] | [.id, .key, .ref, .size_in_bytes, .created_at] | @tsv' \
+                   <<<"$caches_json")
+
+          remaining=$((total_size - freed))
+          echo "After pass 1: deleted=${deleted} freed=${freed} remaining=${remaining}"
+
+          # Pass 2: enforce soft limit by evicting oldest non-main caches.
+          if (( remaining > SOFT_LIMIT_BYTES )); then
+            echo "Above soft limit, evicting oldest non-main caches..."
+            evict_list=$(jq -r --arg main "refs/heads/main" '
+              [ .[] | select(.ref != $main) ]
+              | sort_by(.created_at)
+              | .[] | [.id, .key, .ref, .size_in_bytes] | @tsv
+            ' <<<"$caches_json")
+            while IFS=$'\t' read -r id key ref size; do
+              [[ -z "$id" ]] && continue
+              (( remaining <= SOFT_LIMIT_BYTES )) && break
+              delete_cache "$id" "size eviction ${ref}" "$key" "$size"
+              remaining=$((remaining - size))
+            done <<<"$evict_list"
+          fi
+
+          echo "Done. deleted=${deleted} freed=${freed} final_estimate=${remaining}"

@@ -73,6 +73,7 @@ RUN apk -U --no-cache upgrade \
                 ca-certificates \
                 curl \
                 gcc \
+                gcompat \
                 git \
                 git-lfs \
                 libffi-dev \
@@ -157,7 +158,6 @@ RUN apk add --no-cache \
     --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main \
     --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
     osv-scanner=${REPOSITORY_OSV_SCANNER_VERSION}
-#
 #OTHER__END
 
 ################################

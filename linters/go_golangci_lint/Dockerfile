@@ -75,6 +75,7 @@ RUN apk -U --no-cache upgrade \
                 ca-certificates \
                 curl \
                 gcc \
+                gcompat \
                 git \
                 git-lfs \
                 libffi-dev \
@@ -158,13 +159,11 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 RUN apk add --no-cache \
     --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main \
     --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
-    go=${GO_ALPINE_VERSION}
-#
+    go=${GO_ALPINE_VERSION} \
 # golangci-lint installation
-RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s "v${GO_GOLANGCI_LINT_VERSION}" \
+    && wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s "v${GO_GOLANGCI_LINT_VERSION}" \
     && golangci-lint --version
 
-#
 #OTHER__END
 
 ################################
