@@ -455,10 +455,10 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
 # Managed with COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 # dotenv-linter installation
     && set -eu; \
-    case "$TARGETARCH" in \
-      amd64) ARCH=x86_64 ;; \
-      arm64) ARCH=aarch64 ;; \
-      *) echo "unsupported arch: $TARGETARCH" >&2; exit 1 ;; \
+    case "$TARGETPLATFORM" in \
+      linux/amd64) ARCH=x86_64 ;; \
+      linux/arm64) ARCH=aarch64 ;; \
+      *) echo "unsupported platform: $TARGETPLATFORM" >&2; exit 1 ;; \
     esac; \
     curl --retry 5 --retry-delay 5 -fsSL \
       "https://github.com/dotenv-linter/dotenv-linter/releases/download/v${DOTENV_LINTER_VERSION}/dotenv-linter-alpine-${ARCH}.tar.gz" \
@@ -486,8 +486,13 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 # Managed with COPY --link --from=kubeconform /kubeconform /usr/bin/
 # kubescape installation
     && set -eu; \
+    case "$TARGETPLATFORM" in \
+      linux/amd64) ARCH=amd64 ;; \
+      linux/arm64) ARCH=arm64 ;; \
+      *) echo "unsupported platform: $TARGETPLATFORM" >&2; exit 1 ;; \
+    esac; \
     curl --retry 5 --retry-delay 5 -fsSL -o /tmp/kubescape.apk \
-      "https://github.com/kubescape/kubescape/releases/download/v${KUBERNETES_KUBESCAPE_VERSION}/kubescape_${KUBERNETES_KUBESCAPE_VERSION}_linux_${TARGETARCH}.apk" && \
+      "https://github.com/kubescape/kubescape/releases/download/v${KUBERNETES_KUBESCAPE_VERSION}/kubescape_${KUBERNETES_KUBESCAPE_VERSION}_linux_${ARCH}.apk" && \
     apk add --no-cache --allow-untrusted /tmp/kubescape.apk && \
     rm /tmp/kubescape.apk \
 # markdownlint installation
@@ -502,10 +507,15 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
     && curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin \
 # ls-lint installation
     && set -eu; \
+    case "$TARGETPLATFORM" in \
+      linux/amd64) ARCH=amd64 ;; \
+      linux/arm64) ARCH=arm64 ;; \
+      *) echo "unsupported platform: $TARGETPLATFORM" >&2; exit 1 ;; \
+    esac; \
     curl --retry 5 --retry-delay 5 -fsSL -o /tmp/ls-lint.tar.gz \
-      "https://github.com/loeffel-io/ls-lint/releases/download/v${REPOSITORY_LS_LINT_VERSION}/ls-lint-linux-${TARGETARCH}.tar.gz" && \
+      "https://github.com/loeffel-io/ls-lint/releases/download/v${REPOSITORY_LS_LINT_VERSION}/ls-lint-linux-${ARCH}.tar.gz" && \
     tar -xzf /tmp/ls-lint.tar.gz -C /tmp && \
-    mv "/tmp/ls-lint-linux-${TARGETARCH}" /usr/bin/ls-lint && \
+    mv "/tmp/ls-lint-linux-${ARCH}" /usr/bin/ls-lint && \
     chmod +x /usr/bin/ls-lint && \
     rm /tmp/ls-lint.tar.gz \
 # osv-scanner installation

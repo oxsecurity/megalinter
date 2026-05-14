@@ -155,10 +155,10 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #OTHER__START
 # dotenv-linter installation
 RUN set -eu; \
-    case "$TARGETARCH" in \
-      amd64) ARCH=x86_64 ;; \
-      arm64) ARCH=aarch64 ;; \
-      *) echo "unsupported arch: $TARGETARCH" >&2; exit 1 ;; \
+    case "$TARGETPLATFORM" in \
+      linux/amd64) ARCH=x86_64 ;; \
+      linux/arm64) ARCH=aarch64 ;; \
+      *) echo "unsupported platform: $TARGETPLATFORM" >&2; exit 1 ;; \
     esac; \
     curl --retry 5 --retry-delay 5 -fsSL \
       "https://github.com/dotenv-linter/dotenv-linter/releases/download/v${DOTENV_LINTER_VERSION}/dotenv-linter-alpine-${ARCH}.tar.gz" \

@@ -155,8 +155,13 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #OTHER__START
 # kubescape installation
 RUN set -eu; \
+    case "$TARGETPLATFORM" in \
+      linux/amd64) ARCH=amd64 ;; \
+      linux/arm64) ARCH=arm64 ;; \
+      *) echo "unsupported platform: $TARGETPLATFORM" >&2; exit 1 ;; \
+    esac; \
     curl --retry 5 --retry-delay 5 -fsSL -o /tmp/kubescape.apk \
-      "https://github.com/kubescape/kubescape/releases/download/v${KUBERNETES_KUBESCAPE_VERSION}/kubescape_${KUBERNETES_KUBESCAPE_VERSION}_linux_${TARGETARCH}.apk" && \
+      "https://github.com/kubescape/kubescape/releases/download/v${KUBERNETES_KUBESCAPE_VERSION}/kubescape_${KUBERNETES_KUBESCAPE_VERSION}_linux_${ARCH}.apk" && \
     apk add --no-cache --allow-untrusted /tmp/kubescape.apk && \
     rm /tmp/kubescape.apk
 #OTHER__END
