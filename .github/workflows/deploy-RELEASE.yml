@@ -115,6 +115,8 @@ jobs:
             ghcr.io/oxsecurity/megalinter:v9
             ghcr.io/oxsecurity/megalinter:${{ github.event.release.tag_name }}
             ghcr.io/oxsecurity/megalinter:latest
+          cache-from: type=gha,scope=release-main
+          cache-to: type=gha,mode=max,scope=release-main
 
       - name: Invoke Mirror docker image workflow (Main image)
         uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1
@@ -243,6 +245,10 @@ jobs:
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           # MAJOR-RELEASE-IMPACTED
           outputs: type=image,"name=ghcr.io/${{ github.repository }}-custom-flavor-builder",push-by-digest=true,name-canonical=true,push=true
+          cache-from: |
+            type=gha,scope=release-flavor-builder-${{ env.PLATFORM_PAIR }}
+            type=gha,scope=beta-flavor-builder-${{ env.PLATFORM_PAIR }}
+          cache-to: type=gha,mode=max,scope=release-flavor-builder-${{ env.PLATFORM_PAIR }}
 
       - name: Export digest
         env:

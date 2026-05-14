@@ -68,6 +68,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Prevent MegaLinter to push a new commit if the only updates are on markdown files
   - Activate osv-scanner on own sources
   - Exclude test dependencies from dependabot
+  - CI/Build performance:
+    - Enable GitHub Actions buildx layer cache (`type=gha`) on all DEV/BETA/RELEASE/ALPHA deploy workflows so warm Docker image builds reuse cached layers instead of rebuilding from scratch
+    - Split the DEV deploy workflow into a `build` producer job and 4 parallel consumer jobs (test cases, run-against-all-code, mega-linter-runner tests, Trivy scan) that share the image via the buildx cache (no registry push)
+    - Restructure `.automation/build.py` so per-linter Python venv installs (`#PIPVENV`) and per-linter install snippets (`#OTHER`) are emitted as individual Docker `RUN` layers — a version bump or descriptor change now invalidates only its own layer instead of the entire chain
+    - Build cargo-installed tools (sarif-fmt, zizmor, shellcheck-sarif, stylua) in dedicated multi-stage builders (`FROM rust:VERSION-alpine`) built in parallel by buildx, copying only the final binaries into the runtime image — Rust toolchain no longer ships in the final image unless a linter (clippy) needs it at runtime
 
 - mega-linter-runner
 
