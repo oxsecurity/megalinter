@@ -181,6 +181,8 @@ jobs:
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           tags: ${{ steps.meta-s.outputs.tags }}
+          cache-from: type=gha,scope=beta-server
+          cache-to: type=gha,mode=max,scope=beta-server
 
       - name: Invoke Mirror docker image workflow (Server image)
         uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1
@@ -203,6 +205,10 @@ jobs:
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           tags: ${{ steps.meta.outputs.tags }}
+          cache-from: |
+            type=gha,scope=beta-main
+            type=gha,scope=dev-main
+          cache-to: type=gha,mode=max,scope=beta-main
 
       - name: Invoke Mirror docker image workflow (Main image)
         uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1
@@ -331,6 +337,8 @@ jobs:
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           outputs: type=image,"name=ghcr.io/${{ github.repository }}-custom-flavor-builder",push-by-digest=true,name-canonical=true,push=true
+          cache-from: type=gha,scope=beta-flavor-builder-${{ env.PLATFORM_PAIR }}
+          cache-to: type=gha,mode=max,scope=beta-flavor-builder-${{ env.PLATFORM_PAIR }}
 
       - name: Export digest
         env:

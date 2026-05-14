@@ -37,3 +37,8 @@ Steps:
    --env TEST_KEYWORDS="${LINTER}_test and test_failure"
    ```
 8. In CI, filter tests via commit message body: `TEST_KEYWORDS=<linter>_test`
+9. **Update `CHANGELOG.md`** only if the fix changes user-visible linter behavior (wrong error count, missed files, broken output). Add one line under **Fixes** in the beta section:
+   ```
+   - Fix <linter-name>: <what was wrong and what users now get>
+   ```
+   Do NOT add an entry for test-infrastructure-only fixes (fixture paths, test class regeneration, etc.).

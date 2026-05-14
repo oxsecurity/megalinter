@@ -286,6 +286,11 @@ CVE-2026-4800
 
 # protobufjs: CVE-2026-41242 is arbitrary code execution via injected protobuf type fields; not applicable in MegaLinter context as linters do not process untrusted protobuf definitions
 CVE-2026-41242
+# protobufjs: DoS/code-injection CVEs (44289/44290/44291/44293) require attacker-controlled protobuf data or prototype pollution; not applicable as MegaLinter linters analyze static source files and never parse untrusted protobuf definitions. Remove when parent npm linter upgrades to protobufjs >=7.5.6.
+CVE-2026-44289
+CVE-2026-44290
+CVE-2026-44291
+CVE-2026-44293
 
 # kubescape: cilium CVE is about cilium-bugtool debug archive info leak, not applicable as kubescape is used as a static scanner only
 CVE-2026-41520

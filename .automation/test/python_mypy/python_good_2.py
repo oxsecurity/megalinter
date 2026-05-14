@@ -3,6 +3,7 @@ import json
 import sys
 from os import getenv, path
 from pprint import pprint
+from typing import Any, Dict, cast
 
 import click  # pylint: disable=import-error
 import requests  # pylint: disable=import-error
@@ -20,14 +21,14 @@ if github_token is None:
     )
 
 client_id = getenv("CLIENT_ID", default="copy_labels.py")
-headers = {
+headers = cast(Dict[str, Any], {
     "Authorization": "bearer {github_token}".format(github_token=github_token),
     "Accept": "application/vnd.github.bane-preview+json",
     "Content-Type": "application/json",
-}
+})
 
 
-def make_request(query, query_variables):
+def make_request(query: str, query_variables: Any) -> requests.Response:
     payload = {"query": query, "variables": query_variables}
     response = requests.post(api_url, data=json.dumps(payload), headers=headers)
     return response
