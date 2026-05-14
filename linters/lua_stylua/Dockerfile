@@ -20,13 +20,21 @@ ARG CARGO_STYLUA_VERSION=2.0.0
 #############################################################################################
 #FROM__START
 FROM alpine:3.23 AS cargo-bin-stylua
+ARG TARGETARCH
 ARG CARGO_STYLUA_VERSION
-RUN apk add --no-cache curl unzip \
- && mkdir -p /out/bin \
- && curl -fsSL -o /tmp/stylua.zip https://github.com/JohnnyMorganz/StyLua/releases/download/v${CARGO_STYLUA_VERSION}/stylua-linux-x86_64-musl.zip \
- && unzip /tmp/stylua.zip -d /out/bin \
- && chmod +x /out/bin/stylua \
- && rm /tmp/stylua.zip
+RUN set -eu; mkdir -p /out/bin; \
+    apk add --no-cache curl ca-certificates; \
+    if [ "$TARGETARCH" = "amd64" ]; then \
+      apk add --no-cache unzip && \
+      curl -fsSL -o /tmp/stylua.zip \
+        "https://github.com/JohnnyMorganz/StyLua/releases/download/v${CARGO_STYLUA_VERSION}/stylua-linux-x86_64-musl.zip" && \
+      unzip /tmp/stylua.zip -d /out/bin && \
+      rm /tmp/stylua.zip; \
+    else \
+      apk add --no-cache build-base musl-dev openssl-dev openssl-libs-static pkgconfig bash perl rust cargo && \
+      cargo install --force --locked --root /out "stylua@${CARGO_STYLUA_VERSION}"; \
+    fi; \
+    chmod +x /out/bin/stylua
 #FROM__END
 
 ##################

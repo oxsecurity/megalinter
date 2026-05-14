@@ -60,26 +60,47 @@ ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.2
 #############################################################################################
 #FROM__START
 FROM alpine:3.23 AS cargo-bin-sarif-fmt
+ARG TARGETARCH
 ARG CARGO_SARIF_FMT_VERSION
-RUN apk add --no-cache curl \
- && mkdir -p /out/bin \
- && curl -fsSL -o /out/bin/sarif-fmt https://github.com/psastras/sarif-rs/releases/download/sarif-fmt-v${CARGO_SARIF_FMT_VERSION}/sarif-fmt-x86_64-unknown-linux-gnu \
- && chmod +x /out/bin/sarif-fmt
+RUN set -eu; mkdir -p /out/bin; \
+    apk add --no-cache curl ca-certificates; \
+    if [ "$TARGETARCH" = "amd64" ]; then \
+      curl -fsSL -o /out/bin/sarif-fmt "https://github.com/psastras/sarif-rs/releases/download/sarif-fmt-v${CARGO_SARIF_FMT_VERSION}/sarif-fmt-x86_64-unknown-linux-gnu"; \
+    else \
+      apk add --no-cache build-base musl-dev openssl-dev openssl-libs-static pkgconfig bash perl rust cargo && \
+      cargo install --force --locked --root /out "sarif-fmt@${CARGO_SARIF_FMT_VERSION}"; \
+    fi; \
+    chmod +x /out/bin/sarif-fmt
 FROM rhysd/actionlint:${ACTION_ACTIONLINT_VERSION} AS actionlint
 # shellcheck is a dependency for actionlint
 FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
 FROM alpine:3.23 AS cargo-bin-zizmor
+ARG TARGETARCH
 ARG CARGO_ZIZMOR_VERSION
-RUN apk add --no-cache curl tar gzip \
- && mkdir -p /out/bin \
- && curl -fsSL https://github.com/zizmorcore/zizmor/releases/download/v${CARGO_ZIZMOR_VERSION}/zizmor-x86_64-unknown-linux-gnu.tar.gz | tar xz -C /out/bin \
- && chmod +x /out/bin/zizmor
+RUN set -eu; mkdir -p /out/bin; \
+    apk add --no-cache curl ca-certificates; \
+    if [ "$TARGETARCH" = "amd64" ]; then \
+      apk add --no-cache tar gzip && \
+      curl -fsSL "https://github.com/zizmorcore/zizmor/releases/download/v${CARGO_ZIZMOR_VERSION}/zizmor-x86_64-unknown-linux-gnu.tar.gz" \
+        | tar xz -C /out/bin; \
+    else \
+      apk add --no-cache build-base musl-dev openssl-dev openssl-libs-static pkgconfig bash perl rust cargo && \
+      cargo install --force --locked --root /out "zizmor@${CARGO_ZIZMOR_VERSION}"; \
+    fi; \
+    chmod +x /out/bin/zizmor
 FROM alpine:3.23 AS cargo-bin-shellcheck-sarif
+ARG TARGETARCH
 ARG CARGO_SHELLCHECK_SARIF_VERSION
-RUN apk add --no-cache curl \
- && mkdir -p /out/bin \
- && curl -fsSL -o /out/bin/shellcheck-sarif https://github.com/psastras/sarif-rs/releases/download/shellcheck-sarif-v${CARGO_SHELLCHECK_SARIF_VERSION}/shellcheck-sarif-x86_64-unknown-linux-gnu \
- && chmod +x /out/bin/shellcheck-sarif
+RUN set -eu; mkdir -p /out/bin; \
+    apk add --no-cache curl ca-certificates; \
+    if [ "$TARGETARCH" = "amd64" ]; then \
+      curl -fsSL -o /out/bin/shellcheck-sarif \
+        "https://github.com/psastras/sarif-rs/releases/download/shellcheck-sarif-v${CARGO_SHELLCHECK_SARIF_VERSION}/shellcheck-sarif-x86_64-unknown-linux-gnu"; \
+    else \
+      apk add --no-cache build-base musl-dev openssl-dev openssl-libs-static pkgconfig bash perl rust cargo && \
+      cargo install --force --locked --root /out "shellcheck-sarif@${CARGO_SHELLCHECK_SARIF_VERSION}"; \
+    fi; \
+    chmod +x /out/bin/shellcheck-sarif
 # Next FROM line commented because already managed by another linter
 # FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
 FROM mvdan/shfmt:${BASH_SHFMT_VERSION} AS shfmt
@@ -94,13 +115,21 @@ RUN GOBIN=/usr/bin go install github.com/mgechev/revive@$GO_REVIVE_VERSION
 FROM ghcr.io/yannh/kubeconform:${KUBERNETES_KUBECONFORM_VERSION} AS kubeconform
 FROM ghcr.io/assignuser/chktex-alpine:latest AS chktex
 FROM alpine:3.23 AS cargo-bin-stylua
+ARG TARGETARCH
 ARG CARGO_STYLUA_VERSION
-RUN apk add --no-cache curl unzip \
- && mkdir -p /out/bin \
- && curl -fsSL -o /tmp/stylua.zip https://github.com/JohnnyMorganz/StyLua/releases/download/v${CARGO_STYLUA_VERSION}/stylua-linux-x86_64-musl.zip \
- && unzip /tmp/stylua.zip -d /out/bin \
- && chmod +x /out/bin/stylua \
- && rm /tmp/stylua.zip
+RUN set -eu; mkdir -p /out/bin; \
+    apk add --no-cache curl ca-certificates; \
+    if [ "$TARGETARCH" = "amd64" ]; then \
+      apk add --no-cache unzip && \
+      curl -fsSL -o /tmp/stylua.zip \
+        "https://github.com/JohnnyMorganz/StyLua/releases/download/v${CARGO_STYLUA_VERSION}/stylua-linux-x86_64-musl.zip" && \
+      unzip /tmp/stylua.zip -d /out/bin && \
+      rm /tmp/stylua.zip; \
+    else \
+      apk add --no-cache build-base musl-dev openssl-dev openssl-libs-static pkgconfig bash perl rust cargo && \
+      cargo install --force --locked --root /out "stylua@${CARGO_STYLUA_VERSION}"; \
+    fi; \
+    chmod +x /out/bin/stylua
 FROM yoheimuta/protolint:${PROTOBUF_PROTOLINT_VERSION} AS protolint
 FROM golang:${GO_IMAGE_VERSION}-alpine AS dustilock
 ARG REPOSITORY_DUSTILOCK_VERSION

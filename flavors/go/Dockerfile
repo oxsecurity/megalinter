@@ -51,26 +51,47 @@ ARG SPELL_LYCHEE_VERSION=0.24.2-alpine
 #############################################################################################
 #FROM__START
 FROM alpine:3.23 AS cargo-bin-sarif-fmt
+ARG TARGETARCH
 ARG CARGO_SARIF_FMT_VERSION
-RUN apk add --no-cache curl \
- && mkdir -p /out/bin \
- && curl -fsSL -o /out/bin/sarif-fmt https://github.com/psastras/sarif-rs/releases/download/sarif-fmt-v${CARGO_SARIF_FMT_VERSION}/sarif-fmt-x86_64-unknown-linux-gnu \
- && chmod +x /out/bin/sarif-fmt
+RUN set -eu; mkdir -p /out/bin; \
+    apk add --no-cache curl ca-certificates; \
+    if [ "$TARGETARCH" = "amd64" ]; then \
+      curl -fsSL -o /out/bin/sarif-fmt "https://github.com/psastras/sarif-rs/releases/download/sarif-fmt-v${CARGO_SARIF_FMT_VERSION}/sarif-fmt-x86_64-unknown-linux-gnu"; \
+    else \
+      apk add --no-cache build-base musl-dev openssl-dev openssl-libs-static pkgconfig bash perl rust cargo && \
+      cargo install --force --locked --root /out "sarif-fmt@${CARGO_SARIF_FMT_VERSION}"; \
+    fi; \
+    chmod +x /out/bin/sarif-fmt
 FROM rhysd/actionlint:${ACTION_ACTIONLINT_VERSION} AS actionlint
 # shellcheck is a dependency for actionlint
 FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
 FROM alpine:3.23 AS cargo-bin-zizmor
+ARG TARGETARCH
 ARG CARGO_ZIZMOR_VERSION
-RUN apk add --no-cache curl tar gzip \
- && mkdir -p /out/bin \
- && curl -fsSL https://github.com/zizmorcore/zizmor/releases/download/v${CARGO_ZIZMOR_VERSION}/zizmor-x86_64-unknown-linux-gnu.tar.gz | tar xz -C /out/bin \
- && chmod +x /out/bin/zizmor
+RUN set -eu; mkdir -p /out/bin; \
+    apk add --no-cache curl ca-certificates; \
+    if [ "$TARGETARCH" = "amd64" ]; then \
+      apk add --no-cache tar gzip && \
+      curl -fsSL "https://github.com/zizmorcore/zizmor/releases/download/v${CARGO_ZIZMOR_VERSION}/zizmor-x86_64-unknown-linux-gnu.tar.gz" \
+        | tar xz -C /out/bin; \
+    else \
+      apk add --no-cache build-base musl-dev openssl-dev openssl-libs-static pkgconfig bash perl rust cargo && \
+      cargo install --force --locked --root /out "zizmor@${CARGO_ZIZMOR_VERSION}"; \
+    fi; \
+    chmod +x /out/bin/zizmor
 FROM alpine:3.23 AS cargo-bin-shellcheck-sarif
+ARG TARGETARCH
 ARG CARGO_SHELLCHECK_SARIF_VERSION
-RUN apk add --no-cache curl \
- && mkdir -p /out/bin \
- && curl -fsSL -o /out/bin/shellcheck-sarif https://github.com/psastras/sarif-rs/releases/download/shellcheck-sarif-v${CARGO_SHELLCHECK_SARIF_VERSION}/shellcheck-sarif-x86_64-unknown-linux-gnu \
- && chmod +x /out/bin/shellcheck-sarif
+RUN set -eu; mkdir -p /out/bin; \
+    apk add --no-cache curl ca-certificates; \
+    if [ "$TARGETARCH" = "amd64" ]; then \
+      curl -fsSL -o /out/bin/shellcheck-sarif \
+        "https://github.com/psastras/sarif-rs/releases/download/shellcheck-sarif-v${CARGO_SHELLCHECK_SARIF_VERSION}/shellcheck-sarif-x86_64-unknown-linux-gnu"; \
+    else \
+      apk add --no-cache build-base musl-dev openssl-dev openssl-libs-static pkgconfig bash perl rust cargo && \
+      cargo install --force --locked --root /out "shellcheck-sarif@${CARGO_SHELLCHECK_SARIF_VERSION}"; \
+    fi; \
+    chmod +x /out/bin/shellcheck-sarif
 # Next FROM line commented because already managed by another linter
 # FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
 FROM mvdan/shfmt:${BASH_SHFMT_VERSION} AS shfmt
