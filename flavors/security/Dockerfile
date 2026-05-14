@@ -57,11 +57,11 @@ FROM tenable/terrascan:${TERRAFORM_TERRASCAN_VERSION} AS terrascan
 FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 FROM rust:${RUST_RUST_VERSION}-alpine AS cargo-build-sarif-fmt
 ARG CARGO_SARIF_FMT_VERSION
-RUN apk add --no-cache musl-dev openssl-dev openssl-libs-static pkgconfig
+RUN apk add --no-cache build-base musl-dev openssl-dev openssl-libs-static pkgconfig bash perl
 RUN cargo install --force --locked --root /out sarif-fmt@${CARGO_SARIF_FMT_VERSION}
 FROM rust:${RUST_RUST_VERSION}-alpine AS cargo-build-shellcheck-sarif
 ARG CARGO_SHELLCHECK_SARIF_VERSION
-RUN apk add --no-cache musl-dev openssl-dev openssl-libs-static pkgconfig
+RUN apk add --no-cache build-base musl-dev openssl-dev openssl-libs-static pkgconfig bash perl
 RUN cargo install --force --locked --root /out shellcheck-sarif@${CARGO_SHELLCHECK_SARIF_VERSION}
 #FROM__END
 

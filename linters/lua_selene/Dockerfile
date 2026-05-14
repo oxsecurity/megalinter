@@ -23,7 +23,7 @@ ARG RUST_RUST_VERSION=1.95.0
 #FROM__START
 FROM rust:${RUST_RUST_VERSION}-alpine AS cargo-build-selene
 ARG CARGO_SELENE_VERSION
-RUN apk add --no-cache musl-dev openssl-dev openssl-libs-static pkgconfig
+RUN apk add --no-cache build-base musl-dev openssl-dev openssl-libs-static pkgconfig bash perl
 RUN cargo install --force --locked --root /out selene@${CARGO_SELENE_VERSION}
 #FROM__END
 

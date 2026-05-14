@@ -535,7 +535,8 @@ def build_dockerfile(
             if arg_name is not None:
                 stage_block += f"ARG {arg_name}\n"
             stage_block += (
-                "RUN apk add --no-cache musl-dev openssl-dev openssl-libs-static pkgconfig\n"
+                "RUN apk add --no-cache build-base musl-dev openssl-dev"
+                + " openssl-libs-static pkgconfig bash perl\n"
                 + f"RUN cargo install --force --locked --root /out {cargo_pkg}"
             )
             docker_from += [stage_block]

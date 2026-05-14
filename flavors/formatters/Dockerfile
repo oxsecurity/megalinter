@@ -30,7 +30,7 @@ FROM mvdan/shfmt:${BASH_SHFMT_VERSION} AS shfmt
 FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 FROM rust:${RUST_RUST_VERSION}-alpine AS cargo-build-sarif-fmt
 ARG CARGO_SARIF_FMT_VERSION
-RUN apk add --no-cache musl-dev openssl-dev openssl-libs-static pkgconfig
+RUN apk add --no-cache build-base musl-dev openssl-dev openssl-libs-static pkgconfig bash perl
 RUN cargo install --force --locked --root /out sarif-fmt@${CARGO_SARIF_FMT_VERSION}
 #FROM__END
 

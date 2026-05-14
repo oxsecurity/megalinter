@@ -89,10 +89,10 @@ jobs:
           META_REVISION: ${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.revision'] }}
         run: |
           if [[ "${COMMIT_MSG}" == *"quick build"* ]]; then
-            echo "is-quick=true" >> "${GITHUB_OUTPUT}"
-            echo "dockerfile=Dockerfile-quick" >> "${GITHUB_OUTPUT}"
-            echo "cache-scope=dev-quick" >> "${GITHUB_OUTPUT}"
             {
+              echo "is-quick=true"
+              echo "dockerfile=Dockerfile-quick"
+              echo "cache-scope=dev-quick"
               echo "build-args<<EOF"
               echo "BUILD_DATE=${META_CREATED}"
               echo "BUILD_VERSION=${META_VERSION}"
@@ -101,10 +101,10 @@ jobs:
               echo "EOF"
             } >> "${GITHUB_OUTPUT}"
           else
-            echo "is-quick=false" >> "${GITHUB_OUTPUT}"
-            echo "dockerfile=Dockerfile" >> "${GITHUB_OUTPUT}"
-            echo "cache-scope=dev-main" >> "${GITHUB_OUTPUT}"
             {
+              echo "is-quick=false"
+              echo "dockerfile=Dockerfile"
+              echo "cache-scope=dev-main"
               echo "build-args<<EOF"
               echo "BUILD_DATE=${META_CREATED}"
               echo "BUILD_VERSION=${META_VERSION}"
