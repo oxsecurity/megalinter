@@ -27,13 +27,29 @@ ARG BASH_SHFMT_VERSION=v3.13.1-alpine
 ARG DOCKERFILE_HADOLINT_VERSION=v2.14.0-alpine
 # renovate: datasource=docker depName=mstruebing/editorconfig-checker
 ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.6.1
+ARG TARGETARCH
+RUN set -eu; \
+    case "$TARGETARCH" in \
+      amd64) ARCH=x86_64 ;; \
+      arm64) ARCH=aarch64 ;; \
+      *) echo "unsupported arch: $TARGETARCH" >&2; exit 1 ;; \
+    esac; \
+    curl --retry 5 --retry-delay 5 -fsSL \
+      "https://github.com/dotenv-linter/dotenv-linter/releases/download/v${DOTENV_LINTER_VERSION}/dotenv-linter-alpine-${ARCH}.tar.gz" \
+      | tar -xz -C /usr/local/bin
 # renovate: datasource=github-tags depName=mgechev/revive
 ARG GO_REVIVE_VERSION=v1.15.0
 # renovate: datasource=docker depName=golang versioning=semver
 ARG GO_IMAGE_VERSION=1.26.3
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.7.0-alpine
-# renovate: datasource=crate depName=stylua
+ARG TARGETARCH
+RUN set -eu; \
+    curl --retry 5 --retry-delay 5 -fsSL -o /tmp/kubescape.apk \
+      "https://github.com/kubescape/kubescape/releases/download/v${KUBERNETES_KUBESCAPE_VERSION}/kubescape_${KUBERNETES_KUBESCAPE_VERSION}_linux_${TARGETARCH}.apk" && \
+    apk add --no-cache --allow-untrusted /tmp/kubescape.apk && \
+    rm /tmp/kubescape.apk
+# renovate: datasource=github-releases depName=JohnnyMorganz/StyLua extractVersion=^v(?<version>.+)$
 ARG CARGO_STYLUA_VERSION=2.0.0
 # renovate: datasource=docker depName=yoheimuta/protolint
 ARG PROTOBUF_PROTOLINT_VERSION=0.56.4
@@ -41,6 +57,14 @@ ARG PROTOBUF_PROTOLINT_VERSION=0.56.4
 ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.30.1
+ARG TARGETARCH
+RUN set -eu; \
+    curl --retry 5 --retry-delay 5 -fsSL -o /tmp/ls-lint.tar.gz \
+      "https://github.com/loeffel-io/ls-lint/releases/download/v${REPOSITORY_LS_LINT_VERSION}/ls-lint-linux-${TARGETARCH}.tar.gz" && \
+    tar -xzf /tmp/ls-lint.tar.gz -C /tmp && \
+    mv "/tmp/ls-lint-linux-${TARGETARCH}" /usr/bin/ls-lint && \
+    chmod +x /usr/bin/ls-lint && \
+    rm /tmp/ls-lint.tar.gz
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
 ARG REPOSITORY_TRUFFLEHOG_VERSION=3.95.3
 # renovate: datasource=docker depName=jdkato/vale
@@ -104,17 +128,16 @@ FROM alpine:3.23 AS cargo-bin-stylua
 ARG TARGETARCH
 ARG CARGO_STYLUA_VERSION
 RUN set -eu; mkdir -p /out/bin; \
-    apk add --no-cache curl ca-certificates; \
-    if [ "$TARGETARCH" = "amd64" ]; then \
-      apk add --no-cache unzip && \
-      curl -fsSL -o /tmp/stylua.zip \
-        "https://github.com/JohnnyMorganz/StyLua/releases/download/v${CARGO_STYLUA_VERSION}/stylua-linux-x86_64-musl.zip" && \
-      unzip /tmp/stylua.zip -d /out/bin && \
-      rm /tmp/stylua.zip; \
-    else \
-      apk add --no-cache build-base musl-dev openssl-dev openssl-libs-static pkgconfig bash perl rust cargo && \
-      cargo install --force --locked --root /out "stylua@${CARGO_STYLUA_VERSION}"; \
-    fi; \
+    apk add --no-cache curl ca-certificates unzip; \
+    case "$TARGETARCH" in \
+      amd64) ARCH=x86_64 ;; \
+      arm64) ARCH=aarch64 ;; \
+      *) echo "unsupported arch: $TARGETARCH" >&2; exit 1 ;; \
+    esac; \
+    curl -fsSL -o /tmp/stylua.zip \
+      "https://github.com/JohnnyMorganz/StyLua/releases/download/v${CARGO_STYLUA_VERSION}/stylua-linux-${ARCH}-musl.zip" && \
+    unzip /tmp/stylua.zip -d /out/bin && \
+    rm /tmp/stylua.zip && \
     chmod +x /out/bin/stylua
 FROM yoheimuta/protolint:${PROTOBUF_PROTOLINT_VERSION} AS protolint
 FROM golang:${GO_IMAGE_VERSION}-alpine AS dustilock
@@ -217,7 +240,7 @@ ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=13.0.0
 ARG NPM_STYLELINT_SCSS_VERSION=7.0.0
 # renovate: datasource=dart-version depName=dart
 ARG DART_VERSION='3.11.6'
-# renovate: datasource=github-tags depName=dotenv-linter/dotenv-linter
+# renovate: datasource=github-releases depName=dotenv-linter/dotenv-linter extractVersion=^v(?<version>.+)$
 ARG DOTENV_LINTER_VERSION=4.0.0
 # renovate: datasource=npm depName=gherkin-lint
 ARG NPM_GHERKIN_LINT_VERSION=4.2.4
@@ -286,7 +309,7 @@ ARG KTLINT_VERSION=1.8.0
 # renovate: datasource=github-tags depName=detekt/detekt
 ARG DETEKT_VERSION=1.23.8
 
-# renovate: datasource=github-tags depName=kubescape/kubescape
+# renovate: datasource=github-releases depName=kubescape/kubescape extractVersion=^v(?<version>.+)$
 ARG KUBERNETES_KUBESCAPE_VERSION=4.0.8
 # renovate: datasource=github-tags depName=cvega/luarocks
 ARG LUA_LUACHECK_VERSION=3.3.1
@@ -349,8 +372,8 @@ ARG PIP_CHECKOV_VERSION=3.2.528
 ARG REPOSITORY_DEVSKIM_VERSION=1.0.70
 # renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.112.0
-# renovate: datasource=npm depName=@ls-lint/ls-lint
-ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.1
+# renovate: datasource=github-releases depName=loeffel-io/ls-lint extractVersion=^v(?<version>.+)$
+ARG REPOSITORY_LS_LINT_VERSION=2.3.1
 # renovate: datasource=repology depName=alpine_edge/osv-scanner versioning=loose
 ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.8-r1
 # renovate: datasource=npm depName=secretlint
@@ -438,6 +461,7 @@ ARG CARGO_SHELLCHECK_SARIF_VERSION
 ARG BASH_SHFMT_VERSION
 ARG DOCKERFILE_HADOLINT_VERSION
 ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION
+ARG TARGETARCH
 ARG GO_REVIVE_VERSION
 ARG GO_IMAGE_VERSION
 ARG KUBERNETES_KUBECONFORM_VERSION
@@ -481,6 +505,8 @@ RUN apk -U --no-cache upgrade \
                 openrc \
                 icu-libs \
                 openjdk21 \
+                lua5.3 \
+                lua5.3-dev \
                 readline-dev \
                 perl \
                 perl-dev \
@@ -505,7 +531,6 @@ RUN apk -U --no-cache upgrade \
                 cmd:clang-format \
                 openjdk17 \
                 helm \
-                libstdc++ \
                 openssl \
                 g++ \
                 libcurl \
@@ -720,7 +745,6 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 markdownlint-cli@${NPM_MARKDOWNLINT_CLI_VERSION} \
                 markdown-table-formatter@${NPM_MARKDOWN_TABLE_FORMATTER_VERSION} \
                 pyright@${NPM_PYRIGHT_VERSION} \
-                @ls-lint/ls-lint@${NPM_LS_LINT_LS_LINT_VERSION} \
                 secretlint@${NPM_SECRETLINT_VERSION} \
                 @secretlint/secretlint-rule-preset-recommend@${NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION} \
                 @secretlint/secretlint-formatter-sarif@${NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION} \
@@ -810,9 +834,11 @@ esac \
     && mkdir -p /opt/microsoft/powershell/7 \
     && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
     && chmod +x /opt/microsoft/powershell/7/pwsh \
-    && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
-
-# CLOJURE installation
+    && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh \
+# CSHARP installation
+    && apk add --no-cache dotnet10-sdk
+ENV PATH="${PATH}:/root/.dotnet/tools"
+# DART installation
 ENV LANG=C.UTF-8
 RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases/download" && \
     ALPINE_GLIBC_BASE_PACKAGE_FILENAME="glibc-$ALPINE_GLIBC_PACKAGE_VERSION.apk" && \
@@ -852,53 +878,8 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
         "$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
         "$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
         "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" \
-# CSHARP installation
-    && apk add --no-cache dotnet10-sdk
-ENV PATH="${PATH}:/root/.dotnet/tools"
-# DART installation
-# Next line commented because already managed by another linter
-# ENV LANG=C.UTF-8
-# Next line commented because already managed by another linter
-# RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases/download" && \
-#     ALPINE_GLIBC_BASE_PACKAGE_FILENAME="glibc-$ALPINE_GLIBC_PACKAGE_VERSION.apk" && \
-#     ALPINE_GLIBC_BIN_PACKAGE_FILENAME="glibc-bin-$ALPINE_GLIBC_PACKAGE_VERSION.apk" && \
-#     ALPINE_GLIBC_I18N_PACKAGE_FILENAME="glibc-i18n-$ALPINE_GLIBC_PACKAGE_VERSION.apk" && \
-#     apk add --no-cache --virtual=.build-dependencies wget ca-certificates && \
-#     echo \
-#         "-----BEGIN PUBLIC KEY-----\
-#         MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApZ2u1KJKUu/fW4A25y9m\
-#         y70AGEa/J3Wi5ibNVGNn1gT1r0VfgeWd0pUybS4UmcHdiNzxJPgoWQhV2SSW1JYu\
-#         tOqKZF5QSN6X937PTUpNBjUvLtTQ1ve1fp39uf/lEXPpFpOPL88LKnDBgbh7wkCp\
-#         m2KzLVGChf83MS0ShL6G9EQIAUxLm99VpgRjwqTQ/KfzGtpke1wqws4au0Ab4qPY\
-#         KXvMLSPLUp7cfulWvhmZSegr5AdhNw5KNizPqCJT8ZrGvgHypXyiFvvAH5YRtSsc\
-#         Zvo9GI2e2MaZyo9/lvb+LbLEJZKEQckqRj4P26gmASrZEPStwc+yqy1ShHLA0j6m\
-#         1QIDAQAB\
-#         -----END PUBLIC KEY-----" | sed 's/   */\n/g' > "/etc/apk/keys/sgerrand.rsa.pub" && \
-#     wget --quiet --tries=10 --waitretry=10 \
-#         "$ALPINE_GLIBC_BASE_URL/$ALPINE_GLIBC_PACKAGE_VERSION/$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
-#         "$ALPINE_GLIBC_BASE_URL/$ALPINE_GLIBC_PACKAGE_VERSION/$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
-#         "$ALPINE_GLIBC_BASE_URL/$ALPINE_GLIBC_PACKAGE_VERSION/$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" && \
-#     mv /etc/nsswitch.conf /etc/nsswitch.conf.bak && \
-#     apk add --no-cache --force-overwrite \
-#         "$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
-#         "$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
-#         "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" && \
-#     \
-#     mv /etc/nsswitch.conf.bak /etc/nsswitch.conf && \
-#     rm "/etc/apk/keys/sgerrand.rsa.pub" && \
-#     (/usr/glibc-compat/bin/localedef --force --inputfile POSIX --charmap UTF-8 "$LANG" || true) && \
-#     echo "export LANG=$LANG" > /etc/profile.d/locale.sh && \
-#     \
-#     apk del glibc-i18n && \
-#     \
-#     rm "/root/.wget-hsts" && \
-#     apk del .build-dependencies && \
-#     rm \
-#         "$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
-#         "$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
-#         "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME"
 # GO installation
-RUN apk add --no-cache \
+    && apk add --no-cache \
     --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main \
     --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
     go=${GO_ALPINE_VERSION}
@@ -910,14 +891,8 @@ ENV PATH="$JAVA_HOME/bin:${PATH}"
 # ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 # Next line commented because already managed by another linter
 # ENV PATH="$JAVA_HOME/bin:${PATH}"
-# LUA installation
-RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf - \
-    && cd lua-5.3.5 \
-    && make linux \
-    && make install \
-    && cd .. && rm -r lua-5.3.5/ \
 # PHP installation
-    && update-alternatives --install /usr/bin/php php /usr/bin/php84 110
+RUN update-alternatives --install /usr/bin/php php /usr/bin/php84 110
 # Managed with COPY --from=composer/composer:2-bin /composer /usr/bin/composer
 ENV PATH="/root/.composer/vendor/bin:${PATH}"
 # POWERSHELL installation
@@ -990,7 +965,7 @@ esac \
 # clj-kondo installation
     && curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/clj-kondo/clj-kondo/refs/tags/v${CLJ_KONDO_VERSION}/script/install-clj-kondo \
     && chmod +x install-clj-kondo \
-    && ./install-clj-kondo \
+    && ./install-clj-kondo --static --version "$CLJ_KONDO_VERSION" \
 # cljstyle installation
     && curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/greglook/cljstyle/main/util/install-cljstyle \
     && chmod +x install-cljstyle \
@@ -1022,10 +997,9 @@ ENV PATH="/usr/lib/dart/bin:${PATH}"
 # editorconfig-checker installation
 # Managed with COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 # dotenv-linter installation
-RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s -- -b /usr/local/bin "v${DOTENV_LINTER_VERSION}" \
 # gherkin-lint installation
 # golangci-lint installation
-    && wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s "v${GO_GOLANGCI_LINT_VERSION}" \
+RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s "v${GO_GOLANGCI_LINT_VERSION}" \
     && golangci-lint --version
 
 # revive installation
@@ -1067,8 +1041,6 @@ RUN curl --retry 5 --retry-delay 5 -sSL \
 # kubeconform installation
 # Managed with COPY --link --from=kubeconform /kubeconform /usr/bin/
 # kubescape installation
-    && ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
-    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v "v${KUBERNETES_KUBESCAPE_VERSION}" \
 # chktex installation
 # Managed with COPY --link --from=chktex /usr/bin/chktex /usr/bin/
     && cd ~ && touch .chktexrc && cd / \

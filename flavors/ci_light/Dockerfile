@@ -22,8 +22,26 @@ ARG BASH_SHELLCHECK_VERSION=v0.11.0
 ARG BASH_SHFMT_VERSION=v3.13.1-alpine
 # renovate: datasource=docker depName=hadolint/hadolint
 ARG DOCKERFILE_HADOLINT_VERSION=v2.14.0-alpine
+ARG TARGETARCH
+RUN set -eu; \
+    case "$TARGETARCH" in \
+      amd64) ARCH=x86_64 ;; \
+      arm64) ARCH=aarch64 ;; \
+      *) echo "unsupported arch: $TARGETARCH" >&2; exit 1 ;; \
+    esac; \
+    curl --retry 5 --retry-delay 5 -fsSL \
+      "https://github.com/dotenv-linter/dotenv-linter/releases/download/v${DOTENV_LINTER_VERSION}/dotenv-linter-alpine-${ARCH}.tar.gz" \
+      | tar -xz -C /usr/local/bin
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.30.1
+ARG TARGETARCH
+RUN set -eu; \
+    curl --retry 5 --retry-delay 5 -fsSL -o /tmp/ls-lint.tar.gz \
+      "https://github.com/loeffel-io/ls-lint/releases/download/v${REPOSITORY_LS_LINT_VERSION}/ls-lint-linux-${TARGETARCH}.tar.gz" && \
+    tar -xzf /tmp/ls-lint.tar.gz -C /tmp && \
+    mv "/tmp/ls-lint-linux-${TARGETARCH}" /usr/bin/ls-lint && \
+    chmod +x /usr/bin/ls-lint && \
+    rm /tmp/ls-lint.tar.gz
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
 ARG REPOSITORY_TRUFFLEHOG_VERSION=3.95.3
 #ARGTOP__END
@@ -90,7 +108,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 #ARG__START
 # renovate: datasource=npm depName=jscpd
 ARG NPM_JSCPD_VERSION=4.1.0
-# renovate: datasource=github-tags depName=dotenv-linter/dotenv-linter
+# renovate: datasource=github-releases depName=dotenv-linter/dotenv-linter extractVersion=^v(?<version>.+)$
 ARG DOTENV_LINTER_VERSION=4.0.0
 # renovate: datasource=npm depName=npm-groovy-lint
 ARG NPM_GROOVY_LINT_VERSION=17.0.5
@@ -102,8 +120,8 @@ ARG NPM_V8R_VERSION=6.0.0
 ARG NPM_PRETTIER_VERSION=3.8.3
 # renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.112.0
-# renovate: datasource=npm depName=@ls-lint/ls-lint
-ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.1
+# renovate: datasource=github-releases depName=loeffel-io/ls-lint extractVersion=^v(?<version>.+)$
+ARG REPOSITORY_LS_LINT_VERSION=2.3.1
 # renovate: datasource=repology depName=alpine_edge/osv-scanner versioning=loose
 ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.8-r1
 # renovate: datasource=npm depName=secretlint
@@ -130,6 +148,7 @@ ARG CARGO_SHELLCHECK_SARIF_VERSION
 ARG BASH_SHELLCHECK_VERSION
 ARG BASH_SHFMT_VERSION
 ARG DOCKERFILE_HADOLINT_VERSION
+ARG TARGETARCH
 ARG REPOSITORY_GITLEAKS_VERSION
 ARG REPOSITORY_TRUFFLEHOG_VERSION
 #ARG__END
@@ -221,7 +240,6 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 @prantlf/jsonlint@${NPM_PRANTLF_JSONLINT_VERSION} \
                 v8r@${NPM_V8R_VERSION} \
                 prettier@${NPM_PRETTIER_VERSION} \
-                @ls-lint/ls-lint@${NPM_LS_LINT_LS_LINT_VERSION} \
                 secretlint@${NPM_SECRETLINT_VERSION} \
                 @secretlint/secretlint-rule-preset-recommend@${NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION} \
                 @secretlint/secretlint-formatter-sarif@${NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION} && \
@@ -278,7 +296,6 @@ COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 # hadolint installation
 # Managed with COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 # dotenv-linter installation
-RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s -- -b /usr/local/bin "v${DOTENV_LINTER_VERSION}"
 # npm-groovy-lint installation
 ENV JAVA_HOME_17=/usr/lib/jvm/java-17-openjdk
 # jsonlint installation

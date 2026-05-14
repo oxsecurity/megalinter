@@ -22,6 +22,12 @@ ARG BASH_SHELLCHECK_VERSION=v0.11.0
 ARG DOCKERFILE_HADOLINT_VERSION=v2.14.0-alpine
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.7.0-alpine
+ARG TARGETARCH
+RUN set -eu; \
+    curl --retry 5 --retry-delay 5 -fsSL -o /tmp/kubescape.apk \
+      "https://github.com/kubescape/kubescape/releases/download/v${KUBERNETES_KUBESCAPE_VERSION}/kubescape_${KUBERNETES_KUBESCAPE_VERSION}_linux_${TARGETARCH}.apk" && \
+    apk add --no-cache --allow-untrusted /tmp/kubescape.apk && \
+    rm /tmp/kubescape.apk
 # renovate: datasource=github-tags depName=checkmarx/dustilock
 ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
 # renovate: datasource=docker depName=golang versioning=semver
@@ -108,7 +114,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 ARG PIP_ANSIBLE_LINT_VERSION=26.4.0
 # renovate: datasource=pypi depName=cfn-lint
 ARG PIP_CFN_LINT_VERSION=1.50.1
-# renovate: datasource=github-tags depName=kubescape/kubescape
+# renovate: datasource=github-releases depName=kubescape/kubescape extractVersion=^v(?<version>.+)$
 ARG KUBERNETES_KUBESCAPE_VERSION=4.0.8
 # renovate: datasource=pypi depName=bandit
 ARG PIP_BANDIT_VERSION=1.9.4
@@ -148,6 +154,7 @@ ARG CARGO_SHELLCHECK_SARIF_VERSION
 ARG BASH_SHELLCHECK_VERSION
 ARG DOCKERFILE_HADOLINT_VERSION
 ARG KUBERNETES_KUBECONFORM_VERSION
+ARG TARGETARCH
 ARG REPOSITORY_DUSTILOCK_VERSION
 ARG GO_IMAGE_VERSION
 ARG REPOSITORY_GITLEAKS_VERSION
@@ -182,7 +189,6 @@ RUN apk -U --no-cache upgrade \
                 musl-dev \
                 openssh \
                 helm \
-                libstdc++ \
                 npm \
                 nodejs-current \
                 yarn \
@@ -317,8 +323,6 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
 # kubeconform installation
 # Managed with COPY --link --from=kubeconform /kubeconform /usr/bin/
 # kubescape installation
-    && ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
-    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v "v${KUBERNETES_KUBESCAPE_VERSION}" \
 # bandit installation
 # checkov installation
 # devskim installation

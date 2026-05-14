@@ -28,12 +28,36 @@ ARG BASH_SHFMT_VERSION=v3.13.1-alpine
 ARG DOCKERFILE_HADOLINT_VERSION=v2.14.0-alpine
 # renovate: datasource=docker depName=mstruebing/editorconfig-checker
 ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.6.1
+ARG TARGETARCH
+RUN set -eu; \
+    case "$TARGETARCH" in \
+      amd64) ARCH=x86_64 ;; \
+      arm64) ARCH=aarch64 ;; \
+      *) echo "unsupported arch: $TARGETARCH" >&2; exit 1 ;; \
+    esac; \
+    curl --retry 5 --retry-delay 5 -fsSL \
+      "https://github.com/dotenv-linter/dotenv-linter/releases/download/v${DOTENV_LINTER_VERSION}/dotenv-linter-alpine-${ARCH}.tar.gz" \
+      | tar -xz -C /usr/local/bin
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.7.0-alpine
+ARG TARGETARCH
+RUN set -eu; \
+    curl --retry 5 --retry-delay 5 -fsSL -o /tmp/kubescape.apk \
+      "https://github.com/kubescape/kubescape/releases/download/v${KUBERNETES_KUBESCAPE_VERSION}/kubescape_${KUBERNETES_KUBESCAPE_VERSION}_linux_${TARGETARCH}.apk" && \
+    apk add --no-cache --allow-untrusted /tmp/kubescape.apk && \
+    rm /tmp/kubescape.apk
 # renovate: datasource=docker depName=yoheimuta/protolint
 ARG PROTOBUF_PROTOLINT_VERSION=0.56.4
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.30.1
+ARG TARGETARCH
+RUN set -eu; \
+    curl --retry 5 --retry-delay 5 -fsSL -o /tmp/ls-lint.tar.gz \
+      "https://github.com/loeffel-io/ls-lint/releases/download/v${REPOSITORY_LS_LINT_VERSION}/ls-lint-linux-${TARGETARCH}.tar.gz" && \
+    tar -xzf /tmp/ls-lint.tar.gz -C /tmp && \
+    mv "/tmp/ls-lint-linux-${TARGETARCH}" /usr/bin/ls-lint && \
+    chmod +x /usr/bin/ls-lint && \
+    rm /tmp/ls-lint.tar.gz
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
 ARG REPOSITORY_TRUFFLEHOG_VERSION=3.95.3
 # renovate: datasource=docker depName=jdkato/vale
@@ -154,7 +178,7 @@ ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=40.0.0
 ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=13.0.0
 # renovate: datasource=npm depName=stylelint-scss
 ARG NPM_STYLELINT_SCSS_VERSION=7.0.0
-# renovate: datasource=github-tags depName=dotenv-linter/dotenv-linter
+# renovate: datasource=github-releases depName=dotenv-linter/dotenv-linter extractVersion=^v(?<version>.+)$
 ARG DOTENV_LINTER_VERSION=4.0.0
 # renovate: datasource=npm depName=gherkin-lint
 ARG NPM_GHERKIN_LINT_VERSION=4.2.4
@@ -216,7 +240,7 @@ ARG KTLINT_VERSION=1.8.0
 # renovate: datasource=github-tags depName=detekt/detekt
 ARG DETEKT_VERSION=1.23.8
 
-# renovate: datasource=github-tags depName=kubescape/kubescape
+# renovate: datasource=github-releases depName=kubescape/kubescape extractVersion=^v(?<version>.+)$
 ARG KUBERNETES_KUBESCAPE_VERSION=4.0.8
 # renovate: datasource=npm depName=markdownlint-cli
 ARG NPM_MARKDOWNLINT_CLI_VERSION=0.48.0
@@ -231,8 +255,8 @@ ARG PSSA_VERSION='1.25.0'
 ARG PIP_CHECKOV_VERSION=3.2.528
 # renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.112.0
-# renovate: datasource=npm depName=@ls-lint/ls-lint
-ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.1
+# renovate: datasource=github-releases depName=loeffel-io/ls-lint extractVersion=^v(?<version>.+)$
+ARG REPOSITORY_LS_LINT_VERSION=2.3.1
 # renovate: datasource=repology depName=alpine_edge/osv-scanner versioning=loose
 ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.8-r1
 # renovate: datasource=npm depName=secretlint
@@ -288,6 +312,7 @@ ARG CARGO_SHELLCHECK_SARIF_VERSION
 ARG BASH_SHFMT_VERSION
 ARG DOCKERFILE_HADOLINT_VERSION
 ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION
+ARG TARGETARCH
 ARG KUBERNETES_KUBECONFORM_VERSION
 ARG PROTOBUF_PROTOLINT_VERSION
 ARG REPOSITORY_GITLEAKS_VERSION
@@ -326,7 +351,6 @@ RUN apk -U --no-cache upgrade \
                 cppcheck \
                 openjdk17 \
                 helm \
-                libstdc++ \
                 libxml2-dev \
                 libxml2-utils \
                 libgcc \
@@ -467,7 +491,6 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 eslint-plugin-jsx-a11y@${NPM_ESLINT_PLUGIN_JSX_ALLY_VERSION} \
                 markdownlint-cli@${NPM_MARKDOWNLINT_CLI_VERSION} \
                 markdown-table-formatter@${NPM_MARKDOWN_TABLE_FORMATTER_VERSION} \
-                @ls-lint/ls-lint@${NPM_LS_LINT_LS_LINT_VERSION} \
                 secretlint@${NPM_SECRETLINT_VERSION} \
                 @secretlint/secretlint-rule-preset-recommend@${NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION} \
                 @secretlint/secretlint-formatter-sarif@${NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION} \
@@ -602,14 +625,13 @@ esac \
 # csharpier installation
     && dotnet tool install --allow-roll-forward --global csharpier --version "${CSHARP_CSHARPIER_VERSION}" \
 # roslynator installation
-    && dotnet tool install --allow-roll-forward --global roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}" \
+    && dotnet tool install --allow-roll-forward --global roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}"
 # stylelint installation
 # hadolint installation
 # Managed with COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 # editorconfig-checker installation
 # Managed with COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 # dotenv-linter installation
-    && wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s -- -b /usr/local/bin "v${DOTENV_LINTER_VERSION}"
 # gherkin-lint installation
 # graphql-schema-linter installation
 # npm-groovy-lint installation
@@ -638,8 +660,6 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 # kubeconform installation
 # Managed with COPY --link --from=kubeconform /kubeconform /usr/bin/
 # kubescape installation
-    && ln -s /lib/libc.so.6 /usr/lib/libresolv.so.2 && \
-    curl --retry 5 --retry-delay 5 -sLv https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash -s -- -v "v${KUBERNETES_KUBESCAPE_VERSION}" \
 # markdownlint installation
 # markdown-table-formatter installation
 # rumdl installation

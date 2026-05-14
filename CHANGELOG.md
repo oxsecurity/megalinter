@@ -31,6 +31,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Linters enhancements
   - v8r (JSON/YAML schema validation): filter output to show only validation errors, suppressing "no schema found" info and success messages
+  - Faster builds: switched several linters to pre-built Alpine-compatible binaries / packages instead of source compilation or interpreter installs (`LUA_STYLUA` arm64, Lua runtime, `CLOJURE_CLJ_KONDO`, `KUBERNETES_KUBESCAPE`, `REPOSITORY_LS_LINT`, `ENV_DOTENV_LINTER`); also removed the sgerrand glibc-compat layer from the Clojure descriptor
 
 - Fixes
   - Fix ConsoleLinterReporter to display log sections for all linters (not just errors)
