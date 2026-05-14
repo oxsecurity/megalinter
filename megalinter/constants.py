@@ -99,15 +99,15 @@ DEFAULT_DOCKERFILE_FLAVOR_FROM_STAGES = [
     "ARG CARGO_SARIF_FMT_VERSION\n"
     "RUN set -eu; mkdir -p /out/bin; \\\n"
     "    apk add --no-cache curl ca-certificates; \\\n"
-    "    if [ \"$TARGETARCH\" = \"amd64\" ]; then \\\n"
+    '    if [ "$TARGETARCH" = "amd64" ]; then \\\n'
     "      curl -fsSL -o /out/bin/sarif-fmt"
-    " \"https://github.com/psastras/sarif-rs/releases/download/"
-    "sarif-fmt-v${CARGO_SARIF_FMT_VERSION}/sarif-fmt-x86_64-unknown-linux-gnu\"; \\\n"
+    ' "https://github.com/psastras/sarif-rs/releases/download/'
+    'sarif-fmt-v${CARGO_SARIF_FMT_VERSION}/sarif-fmt-x86_64-unknown-linux-gnu"; \\\n'
     "    else \\\n"
     "      apk add --no-cache build-base musl-dev openssl-dev"
     " openssl-libs-static pkgconfig bash perl rust cargo && \\\n"
     "      cargo install --force --locked --root /out"
-    " \"sarif-fmt@${CARGO_SARIF_FMT_VERSION}\"; \\\n"
+    ' "sarif-fmt@${CARGO_SARIF_FMT_VERSION}"; \\\n'
     "    fi; \\\n"
     "    chmod +x /out/bin/sarif-fmt",
 ]
