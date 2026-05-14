@@ -69,17 +69,10 @@ RUN set -eu; \
     cargo install --force --locked --root /out "zizmor@${CARGO_ZIZMOR_VERSION}" && \
     chmod +x /out/bin/zizmor
 FROM alpine:3.23 AS cargo-bin-shellcheck-sarif
-ARG TARGETARCH
 ARG CARGO_SHELLCHECK_SARIF_VERSION
 RUN set -eu; mkdir -p /out/bin; \
-    apk add --no-cache curl ca-certificates; \
-    if [ "$TARGETARCH" = "amd64" ]; then \
-      curl -fsSL -o /out/bin/shellcheck-sarif \
-        "https://github.com/psastras/sarif-rs/releases/download/shellcheck-sarif-v${CARGO_SHELLCHECK_SARIF_VERSION}/shellcheck-sarif-x86_64-unknown-linux-gnu"; \
-    else \
-      apk add --no-cache build-base musl-dev openssl-dev openssl-libs-static pkgconfig bash perl rust cargo && \
-      cargo install --force --locked --root /out "shellcheck-sarif@${CARGO_SHELLCHECK_SARIF_VERSION}"; \
-    fi; \
+    apk add --no-cache build-base musl-dev openssl-dev openssl-libs-static pkgconfig bash perl rust cargo; \
+    cargo install --force --locked --root /out "shellcheck-sarif@${CARGO_SHELLCHECK_SARIF_VERSION}"; \
     chmod +x /out/bin/shellcheck-sarif
 # Next FROM line commented because already managed by another linter
 # FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
