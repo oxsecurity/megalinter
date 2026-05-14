@@ -35,6 +35,8 @@ from megalinter.constants import (
     DEFAULT_DOCKERFILE_DOCKER_ARGS,
     DEFAULT_DOCKERFILE_FLAVOR_ARGS,
     DEFAULT_DOCKERFILE_FLAVOR_CARGO_PACKAGES,
+    DEFAULT_DOCKERFILE_FLAVOR_COPY_LINES,
+    DEFAULT_DOCKERFILE_FLAVOR_FROM_STAGES,
     DEFAULT_DOCKERFILE_GEM_APK_PACKAGES,
     DEFAULT_DOCKERFILE_GEM_ARGS,
     DEFAULT_DOCKERFILE_NPM_APK_PACKAGES,
@@ -343,7 +345,11 @@ branding:
         flavor,
         extra_lines,
         DEFAULT_DOCKERFILE_FLAVOR_ARGS.copy(),
-        {"cargo": DEFAULT_DOCKERFILE_FLAVOR_CARGO_PACKAGES.copy()},
+        {
+            "cargo": DEFAULT_DOCKERFILE_FLAVOR_CARGO_PACKAGES.copy(),
+            "from": DEFAULT_DOCKERFILE_FLAVOR_FROM_STAGES.copy(),
+            "copy": DEFAULT_DOCKERFILE_FLAVOR_COPY_LINES.copy(),
+        },
     )
     return dockerfile
 
@@ -360,11 +366,11 @@ def build_dockerfile(
     if extra_packages is None:
         extra_packages = {}
     # Gather all dockerfile commands
-    docker_from = []
+    docker_from = list(extra_packages.get("from", []))
     docker_arg = DEFAULT_DOCKERFILE_ARGS.copy()
     if extra_args is not None:
         docker_arg += extra_args
-    docker_copy = []
+    docker_copy = list(extra_packages.get("copy", []))
     docker_other = []
     all_dockerfile_items = []
     apk_packages = DEFAULT_DOCKERFILE_APK_PACKAGES.copy()

@@ -85,9 +85,26 @@ DEFAULT_DOCKERFILE_FLAVOR_ARGS = [
     "# renovate: datasource=crate depName=sarif-fmt\nARG CARGO_SARIF_FMT_VERSION=0.8.0",
 ]
 
-DEFAULT_DOCKERFILE_FLAVOR_CARGO_PACKAGES = [
-    "sarif-fmt@${CARGO_SARIF_FMT_VERSION}",
+# sarif-fmt is downloaded as a prebuilt linux-x86_64 binary from the
+# sarif-rs GitHub Releases instead of being compiled by `cargo install`,
+# which used to add ~5 min per build. The runtime image installs `gcompat`
+# so the glibc binary runs on the Alpine base.
+DEFAULT_DOCKERFILE_FLAVOR_FROM_STAGES = [
+    "FROM alpine:3.23 AS cargo-bin-sarif-fmt\n"
+    "ARG CARGO_SARIF_FMT_VERSION\n"
+    "RUN apk add --no-cache curl \\\n"
+    " && mkdir -p /out/bin \\\n"
+    " && curl -fsSL -o /out/bin/sarif-fmt"
+    " https://github.com/psastras/sarif-rs/releases/download/"
+    "sarif-fmt-v${CARGO_SARIF_FMT_VERSION}/sarif-fmt-x86_64-unknown-linux-gnu \\\n"
+    " && chmod +x /out/bin/sarif-fmt",
 ]
+
+DEFAULT_DOCKERFILE_FLAVOR_COPY_LINES = [
+    "COPY --link --from=cargo-bin-sarif-fmt /out/bin/sarif-fmt /usr/bin/sarif-fmt",
+]
+
+DEFAULT_DOCKERFILE_FLAVOR_CARGO_PACKAGES = []
 
 OX_MARKDOWN_LINK = (
     "[![MegaLinter is graciously provided by OX Security]"

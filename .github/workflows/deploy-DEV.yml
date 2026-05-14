@@ -120,10 +120,10 @@ jobs:
         uses: docker/setup-buildx-action@4d04d5d9486b7bd6fa91e7baf45bbb4f8b9deedd # v4
 
       # Build once and export the image as a Docker tarball.
-      # `cache-to` populates the GHA layer cache for cross-build reuse;
-      # `outputs: type=docker,dest=...` writes the tarball that consumer
-      # jobs will load — much faster than each consumer re-running
-      # `docker/build-push-action` with `cache-from` to reassemble the image.
+      # DEV is read-only on the layer cache: it consumes the warm caches
+      # produced by the BETA workflow on main and never writes back. Writing
+      # a fresh cache for a throwaway PR branch costs ~14 min of cache export
+      # per build that nobody else reads, so we skip `cache-to` entirely here.
       - name: Build MegaLinter Docker Image
         id: docker_build
         uses: docker/build-push-action@bcafcacb16a39f128d818304e6c9c0c18556b85f # v7
@@ -135,8 +135,9 @@ jobs:
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           tags: ${{ steps.meta.outputs.tags }}
-          cache-from: type=gha,scope=${{ steps.setup.outputs.cache-scope }}
-          cache-to: type=gha,mode=max,scope=${{ steps.setup.outputs.cache-scope }},compression=zstd
+          cache-from: |
+            type=gha,scope=${{ steps.setup.outputs.cache-scope }}
+            type=gha,scope=beta-main
           outputs: type=docker,dest=/tmp/megalinter-image.tar
         timeout-minutes: 90
 

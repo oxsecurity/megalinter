@@ -167,12 +167,20 @@ linters:
       - "stylua --check myfile.lua"
       - "stylua --config-path chktexrc.toml --check myfile.lua"
     install:
-      cargo:
-        - stylua@${CARGO_STYLUA_VERSION}
       dockerfile:
         - |-
           # renovate: datasource=crate depName=stylua
           ARG CARGO_STYLUA_VERSION=2.0.0
+        - |-
+          FROM alpine:3.23 AS cargo-bin-stylua
+          ARG CARGO_STYLUA_VERSION
+          RUN apk add --no-cache curl unzip \
+           && mkdir -p /out/bin \
+           && curl -fsSL -o /tmp/stylua.zip https://github.com/JohnnyMorganz/StyLua/releases/download/v${CARGO_STYLUA_VERSION}/stylua-linux-x86_64-musl.zip \
+           && unzip /tmp/stylua.zip -d /out/bin \
+           && chmod +x /out/bin/stylua \
+           && rm /tmp/stylua.zip
+        - COPY --link --from=cargo-bin-stylua /out/bin/stylua /usr/bin/stylua
     supported_platforms:
       platform:
         - linux/amd64

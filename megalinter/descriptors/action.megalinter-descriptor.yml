@@ -100,12 +100,18 @@ linters:
       - "zizmor ."
       - "zizmor --config zizmor.yml ."
     install:
-      cargo:
-        - zizmor@${CARGO_ZIZMOR_VERSION}
       dockerfile:
         - |-
           # renovate: datasource=crate depName=zizmor
           ARG CARGO_ZIZMOR_VERSION=1.23.1
+        - |-
+          FROM alpine:3.23 AS cargo-bin-zizmor
+          ARG CARGO_ZIZMOR_VERSION
+          RUN apk add --no-cache curl tar gzip \
+           && mkdir -p /out/bin \
+           && curl -fsSL https://github.com/zizmorcore/zizmor/releases/download/v${CARGO_ZIZMOR_VERSION}/zizmor-x86_64-unknown-linux-gnu.tar.gz | tar xz -C /out/bin \
+           && chmod +x /out/bin/zizmor
+        - COPY --link --from=cargo-bin-zizmor /out/bin/zizmor /usr/bin/zizmor
     supported_platforms:
       platform:
         - linux/amd64
