@@ -28,38 +28,14 @@ ARG BASH_SHFMT_VERSION=v3.13.1-alpine
 ARG DOCKERFILE_HADOLINT_VERSION=v2.14.0-alpine
 # renovate: datasource=docker depName=mstruebing/editorconfig-checker
 ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.6.1
-ARG TARGETARCH
-RUN set -eu; \
-    case "$TARGETARCH" in \
-      amd64) ARCH=x86_64 ;; \
-      arm64) ARCH=aarch64 ;; \
-      *) echo "unsupported arch: $TARGETARCH" >&2; exit 1 ;; \
-    esac; \
-    curl --retry 5 --retry-delay 5 -fsSL \
-      "https://github.com/dotenv-linter/dotenv-linter/releases/download/v${DOTENV_LINTER_VERSION}/dotenv-linter-alpine-${ARCH}.tar.gz" \
-      | tar -xz -C /usr/local/bin
 # renovate: datasource=github-tags depName=mgechev/revive
 ARG GO_REVIVE_VERSION=v1.15.0
 # renovate: datasource=docker depName=golang versioning=semver
 ARG GO_IMAGE_VERSION=1.26.3
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.7.0-alpine
-ARG TARGETARCH
-RUN set -eu; \
-    curl --retry 5 --retry-delay 5 -fsSL -o /tmp/kubescape.apk \
-      "https://github.com/kubescape/kubescape/releases/download/v${KUBERNETES_KUBESCAPE_VERSION}/kubescape_${KUBERNETES_KUBESCAPE_VERSION}_linux_${TARGETARCH}.apk" && \
-    apk add --no-cache --allow-untrusted /tmp/kubescape.apk && \
-    rm /tmp/kubescape.apk
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.30.1
-ARG TARGETARCH
-RUN set -eu; \
-    curl --retry 5 --retry-delay 5 -fsSL -o /tmp/ls-lint.tar.gz \
-      "https://github.com/loeffel-io/ls-lint/releases/download/v${REPOSITORY_LS_LINT_VERSION}/ls-lint-linux-${TARGETARCH}.tar.gz" && \
-    tar -xzf /tmp/ls-lint.tar.gz -C /tmp && \
-    mv "/tmp/ls-lint-linux-${TARGETARCH}" /usr/bin/ls-lint && \
-    chmod +x /usr/bin/ls-lint && \
-    rm /tmp/ls-lint.tar.gz
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
 ARG REPOSITORY_TRUFFLEHOG_VERSION=3.95.3
 # renovate: datasource=docker depName=lycheeverse/lychee
@@ -368,7 +344,6 @@ ARG CARGO_SHELLCHECK_SARIF_VERSION
 ARG BASH_SHFMT_VERSION
 ARG DOCKERFILE_HADOLINT_VERSION
 ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION
-ARG TARGETARCH
 ARG GO_REVIVE_VERSION
 ARG GO_IMAGE_VERSION
 ARG KUBERNETES_KUBECONFORM_VERSION
@@ -744,6 +719,15 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
 # editorconfig-checker installation
 # Managed with COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 # dotenv-linter installation
+    && set -eu; \
+    case "$TARGETARCH" in \
+      amd64) ARCH=x86_64 ;; \
+      arm64) ARCH=aarch64 ;; \
+      *) echo "unsupported arch: $TARGETARCH" >&2; exit 1 ;; \
+    esac; \
+    curl --retry 5 --retry-delay 5 -fsSL \
+      "https://github.com/dotenv-linter/dotenv-linter/releases/download/v${DOTENV_LINTER_VERSION}/dotenv-linter-alpine-${ARCH}.tar.gz" \
+      | tar -xz -C /usr/local/bin \
 # golangci-lint installation
     && wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s "v${GO_GOLANGCI_LINT_VERSION}" \
     && golangci-lint --version
@@ -783,11 +767,15 @@ RUN curl --retry 5 --retry-delay 5 -sSL \
     chmod a+x detekt-cli-${DETEKT_VERSION}/bin/* && \
     chmod a+x detekt-cli-${DETEKT_VERSION}/lib/* && \
     mv -n detekt-cli-${DETEKT_VERSION}/bin/* usr/bin && \
-    mv -n detekt-cli-${DETEKT_VERSION}/lib/* usr/lib
-
+    mv -n detekt-cli-${DETEKT_VERSION}/lib/* usr/lib \
 # kubeconform installation
 # Managed with COPY --link --from=kubeconform /kubeconform /usr/bin/
 # kubescape installation
+    && set -eu; \
+    curl --retry 5 --retry-delay 5 -fsSL -o /tmp/kubescape.apk \
+      "https://github.com/kubescape/kubescape/releases/download/v${KUBERNETES_KUBESCAPE_VERSION}/kubescape_${KUBERNETES_KUBESCAPE_VERSION}_linux_${TARGETARCH}.apk" && \
+    apk add --no-cache --allow-untrusted /tmp/kubescape.apk && \
+    rm /tmp/kubescape.apk
 # markdownlint installation
 # markdown-table-formatter installation
 # rumdl installation
@@ -823,6 +811,13 @@ ENV MYPY_CACHE_DIR=/tmp
 # grype installation
 RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin \
 # ls-lint installation
+    && set -eu; \
+    curl --retry 5 --retry-delay 5 -fsSL -o /tmp/ls-lint.tar.gz \
+      "https://github.com/loeffel-io/ls-lint/releases/download/v${REPOSITORY_LS_LINT_VERSION}/ls-lint-linux-${TARGETARCH}.tar.gz" && \
+    tar -xzf /tmp/ls-lint.tar.gz -C /tmp && \
+    mv "/tmp/ls-lint-linux-${TARGETARCH}" /usr/bin/ls-lint && \
+    chmod +x /usr/bin/ls-lint && \
+    rm /tmp/ls-lint.tar.gz \
 # osv-scanner installation
     && apk add --no-cache \
     --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main \

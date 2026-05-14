@@ -22,26 +22,8 @@ ARG BASH_SHELLCHECK_VERSION=v0.11.0
 ARG BASH_SHFMT_VERSION=v3.13.1-alpine
 # renovate: datasource=docker depName=hadolint/hadolint
 ARG DOCKERFILE_HADOLINT_VERSION=v2.14.0-alpine
-ARG TARGETARCH
-RUN set -eu; \
-    case "$TARGETARCH" in \
-      amd64) ARCH=x86_64 ;; \
-      arm64) ARCH=aarch64 ;; \
-      *) echo "unsupported arch: $TARGETARCH" >&2; exit 1 ;; \
-    esac; \
-    curl --retry 5 --retry-delay 5 -fsSL \
-      "https://github.com/dotenv-linter/dotenv-linter/releases/download/v${DOTENV_LINTER_VERSION}/dotenv-linter-alpine-${ARCH}.tar.gz" \
-      | tar -xz -C /usr/local/bin
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.30.1
-ARG TARGETARCH
-RUN set -eu; \
-    curl --retry 5 --retry-delay 5 -fsSL -o /tmp/ls-lint.tar.gz \
-      "https://github.com/loeffel-io/ls-lint/releases/download/v${REPOSITORY_LS_LINT_VERSION}/ls-lint-linux-${TARGETARCH}.tar.gz" && \
-    tar -xzf /tmp/ls-lint.tar.gz -C /tmp && \
-    mv "/tmp/ls-lint-linux-${TARGETARCH}" /usr/bin/ls-lint && \
-    chmod +x /usr/bin/ls-lint && \
-    rm /tmp/ls-lint.tar.gz
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
 ARG REPOSITORY_TRUFFLEHOG_VERSION=3.95.3
 #ARGTOP__END
@@ -148,7 +130,6 @@ ARG CARGO_SHELLCHECK_SARIF_VERSION
 ARG BASH_SHELLCHECK_VERSION
 ARG BASH_SHFMT_VERSION
 ARG DOCKERFILE_HADOLINT_VERSION
-ARG TARGETARCH
 ARG REPOSITORY_GITLEAKS_VERSION
 ARG REPOSITORY_TRUFFLEHOG_VERSION
 #ARG__END
@@ -296,6 +277,15 @@ COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 # hadolint installation
 # Managed with COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 # dotenv-linter installation
+RUN set -eu; \
+    case "$TARGETARCH" in \
+      amd64) ARCH=x86_64 ;; \
+      arm64) ARCH=aarch64 ;; \
+      *) echo "unsupported arch: $TARGETARCH" >&2; exit 1 ;; \
+    esac; \
+    curl --retry 5 --retry-delay 5 -fsSL \
+      "https://github.com/dotenv-linter/dotenv-linter/releases/download/v${DOTENV_LINTER_VERSION}/dotenv-linter-alpine-${ARCH}.tar.gz" \
+      | tar -xz -C /usr/local/bin
 # npm-groovy-lint installation
 ENV JAVA_HOME_17=/usr/lib/jvm/java-17-openjdk
 # jsonlint installation
@@ -306,6 +296,13 @@ ENV JAVA_HOME_17=/usr/lib/jvm/java-17-openjdk
 # grype installation
 RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin \
 # ls-lint installation
+    && set -eu; \
+    curl --retry 5 --retry-delay 5 -fsSL -o /tmp/ls-lint.tar.gz \
+      "https://github.com/loeffel-io/ls-lint/releases/download/v${REPOSITORY_LS_LINT_VERSION}/ls-lint-linux-${TARGETARCH}.tar.gz" && \
+    tar -xzf /tmp/ls-lint.tar.gz -C /tmp && \
+    mv "/tmp/ls-lint-linux-${TARGETARCH}" /usr/bin/ls-lint && \
+    chmod +x /usr/bin/ls-lint && \
+    rm /tmp/ls-lint.tar.gz \
 # osv-scanner installation
     && apk add --no-cache \
     --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main \

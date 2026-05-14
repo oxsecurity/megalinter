@@ -22,12 +22,6 @@ ARG BASH_SHELLCHECK_VERSION=v0.11.0
 ARG DOCKERFILE_HADOLINT_VERSION=v2.14.0-alpine
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.7.0-alpine
-ARG TARGETARCH
-RUN set -eu; \
-    curl --retry 5 --retry-delay 5 -fsSL -o /tmp/kubescape.apk \
-      "https://github.com/kubescape/kubescape/releases/download/v${KUBERNETES_KUBESCAPE_VERSION}/kubescape_${KUBERNETES_KUBESCAPE_VERSION}_linux_${TARGETARCH}.apk" && \
-    apk add --no-cache --allow-untrusted /tmp/kubescape.apk && \
-    rm /tmp/kubescape.apk
 # renovate: datasource=github-tags depName=checkmarx/dustilock
 ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
 # renovate: datasource=docker depName=golang versioning=semver
@@ -154,7 +148,6 @@ ARG CARGO_SHELLCHECK_SARIF_VERSION
 ARG BASH_SHELLCHECK_VERSION
 ARG DOCKERFILE_HADOLINT_VERSION
 ARG KUBERNETES_KUBECONFORM_VERSION
-ARG TARGETARCH
 ARG REPOSITORY_DUSTILOCK_VERSION
 ARG GO_IMAGE_VERSION
 ARG REPOSITORY_GITLEAKS_VERSION
@@ -323,6 +316,11 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
 # kubeconform installation
 # Managed with COPY --link --from=kubeconform /kubeconform /usr/bin/
 # kubescape installation
+    && set -eu; \
+    curl --retry 5 --retry-delay 5 -fsSL -o /tmp/kubescape.apk \
+      "https://github.com/kubescape/kubescape/releases/download/v${KUBERNETES_KUBESCAPE_VERSION}/kubescape_${KUBERNETES_KUBESCAPE_VERSION}_linux_${TARGETARCH}.apk" && \
+    apk add --no-cache --allow-untrusted /tmp/kubescape.apk && \
+    rm /tmp/kubescape.apk \
 # bandit installation
 # checkov installation
 # devskim installation

@@ -54,14 +54,6 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 #ARG__START
 # renovate: datasource=github-releases depName=loeffel-io/ls-lint extractVersion=^v(?<version>.+)$
 ARG REPOSITORY_LS_LINT_VERSION=2.3.1
-ARG TARGETARCH
-RUN set -eu; \
-    curl --retry 5 --retry-delay 5 -fsSL -o /tmp/ls-lint.tar.gz \
-      "https://github.com/loeffel-io/ls-lint/releases/download/v${REPOSITORY_LS_LINT_VERSION}/ls-lint-linux-${TARGETARCH}.tar.gz" && \
-    tar -xzf /tmp/ls-lint.tar.gz -C /tmp && \
-    mv "/tmp/ls-lint-linux-${TARGETARCH}" /usr/bin/ls-lint && \
-    chmod +x /usr/bin/ls-lint && \
-    rm /tmp/ls-lint.tar.gz
 #ARG__END
 
 ####################
@@ -162,6 +154,13 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 #OTHER__START
 # ls-lint installation
+RUN set -eu; \
+    curl --retry 5 --retry-delay 5 -fsSL -o /tmp/ls-lint.tar.gz \
+      "https://github.com/loeffel-io/ls-lint/releases/download/v${REPOSITORY_LS_LINT_VERSION}/ls-lint-linux-${TARGETARCH}.tar.gz" && \
+    tar -xzf /tmp/ls-lint.tar.gz -C /tmp && \
+    mv "/tmp/ls-lint-linux-${TARGETARCH}" /usr/bin/ls-lint && \
+    chmod +x /usr/bin/ls-lint && \
+    rm /tmp/ls-lint.tar.gz
 #OTHER__END
 
 ################################
