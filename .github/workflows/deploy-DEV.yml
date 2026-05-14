@@ -135,21 +135,14 @@ jobs:
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           tags: ${{ steps.meta.outputs.tags }}
           cache-from: type=gha,scope=beta-main
-          outputs: type=docker,dest=/tmp/megalinter-image.tar
+          outputs: type=docker,dest=/tmp/megalinter-image.tar,compression=zstd,compression-level=3,force-compression=true
         timeout-minutes: 90
-
-      - name: Compress image tarball
-        shell: bash
-        run: |
-          set -euo pipefail
-          zstd -3 -T0 --rm /tmp/megalinter-image.tar -o /tmp/megalinter-image.tar.zst
-          ls -lh /tmp/megalinter-image.tar.zst
 
       - name: Upload image artifact
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: megalinter-image
-          path: /tmp/megalinter-image.tar.zst
+          path: /tmp/megalinter-image.tar
           retention-days: 1
           if-no-files-found: error
           compression-level: 0
@@ -192,7 +185,6 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          zstd -d --rm /tmp/megalinter-image.tar.zst -o /tmp/megalinter-image.tar
           docker load -i /tmp/megalinter-image.tar
           rm -f /tmp/megalinter-image.tar
           docker image ls
@@ -278,7 +270,6 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          zstd -d --rm /tmp/megalinter-image.tar.zst -o /tmp/megalinter-image.tar
           docker load -i /tmp/megalinter-image.tar
           rm -f /tmp/megalinter-image.tar
           docker image ls
@@ -344,7 +335,6 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          zstd -d --rm /tmp/megalinter-image.tar.zst -o /tmp/megalinter-image.tar
           docker load -i /tmp/megalinter-image.tar
           rm -f /tmp/megalinter-image.tar
           docker image ls
@@ -400,7 +390,6 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          zstd -d --rm /tmp/megalinter-image.tar.zst -o /tmp/megalinter-image.tar
           docker load -i /tmp/megalinter-image.tar
           rm -f /tmp/megalinter-image.tar
           docker image ls
