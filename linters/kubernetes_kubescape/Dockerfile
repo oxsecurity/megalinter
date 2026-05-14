@@ -73,13 +73,13 @@ RUN apk -U --no-cache upgrade \
                 ca-certificates \
                 curl \
                 gcc \
+                gcompat \
                 git \
                 git-lfs \
                 libffi-dev \
                 make \
                 musl-dev \
                 openssh \
-                gcompat \
                 libstdc++ \
     && git config --global core.autocrlf true
 #APK__END

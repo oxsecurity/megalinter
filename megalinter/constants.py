@@ -37,6 +37,10 @@ DEFAULT_DOCKERFILE_APK_PACKAGES = [
     "ca-certificates",
     "curl",
     "gcc",
+    # glibc compatibility shim so prebuilt linux-x86_64-unknown-linux-gnu
+    # binaries (zizmor, sarif-fmt, shellcheck-sarif, …) run on the Alpine
+    # base, including in standalone per-linter images.
+    "gcompat",
     "git",
     "git-lfs",
     "libffi-dev",

@@ -283,6 +283,7 @@ RUN apk -U --no-cache upgrade \
                 ca-certificates \
                 curl \
                 gcc \
+                gcompat \
                 git \
                 git-lfs \
                 libffi-dev \
@@ -295,7 +296,6 @@ RUN apk -U --no-cache upgrade \
                 cppcheck \
                 openjdk17 \
                 helm \
-                gcompat \
                 libstdc++ \
                 libxml2-dev \
                 libxml2-utils \
