@@ -53,7 +53,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 #############################################################################################
 #ARG__START
 # renovate: datasource=repology depName=alpine_edge/go versioning=loose
-ARG GO_ALPINE_VERSION=1.26.2-r0
+ARG GO_ALPINE_VERSION=1.26.3-r0
 # renovate: datasource=github-tags depName=golangci/golangci-lint
 ARG GO_GOLANGCI_LINT_VERSION=2.11.4
 #ARG__END
