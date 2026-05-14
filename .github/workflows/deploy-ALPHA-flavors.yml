@@ -122,6 +122,10 @@ jobs:
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           tags: |
             ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:alpha
+          cache-from: |
+            type=gha,scope=alpha-flavor-${{ matrix.flavor }}
+            type=gha,scope=beta-flavor-${{ matrix.flavor }}-linux/amd64
+          cache-to: type=gha,mode=max,scope=alpha-flavor-${{ matrix.flavor }}
 
       # - name: Build Worker Image
       #   uses: docker/build-push-action@v7

@@ -53,7 +53,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 #############################################################################################
 #ARG__START
 # renovate: datasource=repology depName=alpine_edge/osv-scanner versioning=loose
-ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.8-r0
+ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.8-r1
 #ARG__END
 
 ####################
