@@ -126,8 +126,8 @@ jobs:
             ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:v9
             ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:${{ github.event.release.tag_name }}
             ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:latest
-          cache-from: type=gha,scope=release-linter-${{ matrix.linter }}-${{ steps.prepare.outputs.platforms }}
-          cache-to: type=gha,mode=max,scope=release-linter-${{ matrix.linter }}-${{ steps.prepare.outputs.platforms }}
+          # One-shot per release; read BETA-linters' warm cache only.
+          cache-from: type=gha,scope=beta-linter-${{ matrix.linter }}-${{ steps.prepare.outputs.platforms }}
 
       - name: Invoke Mirror docker image workflow (Standalone image)
         if: ${{ steps.prepare.outputs.job_enabled == 'true' }}

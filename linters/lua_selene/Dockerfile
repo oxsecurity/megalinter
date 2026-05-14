@@ -80,6 +80,7 @@ RUN apk -U --no-cache upgrade \
                 ca-certificates \
                 curl \
                 gcc \
+                gcompat \
                 git \
                 git-lfs \
                 libffi-dev \
@@ -167,9 +168,7 @@ RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf -
     && make install \
     && cd .. && rm -r lua-5.3.5/
 
-#
 # selene installation
-#
 #OTHER__END
 
 ################################

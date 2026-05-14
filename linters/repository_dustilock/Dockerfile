@@ -79,6 +79,7 @@ RUN apk -U --no-cache upgrade \
                 ca-certificates \
                 curl \
                 gcc \
+                gcompat \
                 git \
                 git-lfs \
                 libffi-dev \
@@ -160,7 +161,6 @@ COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 #OTHER__START
 # dustilock installation
 # Managed with COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
-#
 #OTHER__END
 
 ################################
