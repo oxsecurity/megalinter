@@ -86,8 +86,11 @@ Always include:
 
 ## Step 7 — Update CHANGELOG
 
-**Do NOT update CHANGELOG.md** in either of these cases:
-- You added a CVE ignore entry (ignored CVEs are not user-facing changes worth logging)
-- You bumped a linter version (the auto-upgrade workflow handles linter version changelog entries)
+Do **not** update `CHANGELOG.md` for:
+- CVE ignore entries — not user-facing
+- Linter version bumps — the auto-upgrade workflow owns **Linter versions upgrades**
 
-Only update `CHANGELOG.md` if you made a non-trivial code or behavior change that users would need to know about (e.g. a linter was disabled, a new workaround was implemented in Python code).
+If you made a real behavior change (e.g. a linter disabled due to a security incident, a config workaround added), add one line under **Fixes** in the beta section:
+```
+- Fix <linter/component>: <what changed and why, one sentence for users>
+```

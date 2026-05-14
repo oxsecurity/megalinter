@@ -185,6 +185,9 @@ jobs:
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           tags: ${{ steps.meta.outputs.tags }}
+          cache-from: |
+            type=gha,scope=linter-${{ matrix.linter }}-${{ steps.prepare.outputs.platforms }}
+          cache-to: type=gha,mode=max,scope=linter-${{ matrix.linter }}-${{ steps.prepare.outputs.platforms }}
 
       #####################################
       # Run Linter test cases #
