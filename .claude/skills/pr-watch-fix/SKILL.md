@@ -11,6 +11,12 @@ Watch the open PR for the current branch, wait for CI, and fix failures.
 
 Repeat until the PR is fully green or you stop intentionally:
 
+### 0. Stop any prior PR-watch Monitor
+
+Before doing anything else, cancel a previous run's still-running poller. Re-invoking `/pr-watch-fix` always wins — the new run resets state.
+
+Use `TaskList` to find Monitors whose description starts with `PR watch:` (the convention used by step 3) and call `TaskStop` on each. Do not stop tasks that don't start with this prefix — they belong to other work.
+
 ### 1. Find the PR
 
 ```bash
@@ -42,13 +48,39 @@ Decide:
 
 ### 3. Wait for running jobs
 
-Poll with backoff: 5 minutes → 10 minutes → 10 minutes → … capped at 60 minutes between polls. Use Bash with `run_in_background: true` so you do not block the conversation, or `Monitor` with an `until` loop if available. Example:
+Poll every **5 minutes**, fixed interval. No backoff — the user explicitly wants a 5-minute cadence so failures surface fast. Use a persistent `Monitor` with a description that starts with `PR watch:` so step 0 of a future invocation can find and stop it.
 
-```bash
-sleep 300 && gh pr checks "$PR_NUMBER" --json name,bucket,state
+Example:
+
+```
+Monitor:
+  description: "PR watch: PR #7790 CI"
+  persistent: true
+  command: |
+    while true; do
+      state="$(gh pr checks 7790 --json name,bucket 2>/dev/null || echo '[]')"
+      counts="$(jq -r '[.[] | .bucket] | group_by(.) | map("\(.[0])=\(length)") | join(" ")' <<<"$state")"
+      pending="$(jq -r '[.[] | select(.bucket=="pending")] | length' <<<"$state")"
+      fail_now="$(jq -r '[.[] | select(.bucket=="fail" or .bucket=="cancel") | .name] | sort | join(",")' <<<"$state")"
+
+      # Emit on new failures
+      if [ -n "$fail_now" ] && [ "$fail_now" != "${prev_fail:-}" ]; then
+        echo "[failures] $fail_now ($counts)"
+        prev_fail="$fail_now"
+      fi
+
+      # Done condition: nothing pending
+      if [ "$pending" = "0" ]; then
+        echo "[final] $counts"
+        break
+      fi
+      sleep 300
+    done
 ```
 
-Between polls, re-run step 2. If the same check has been "in_progress" for more than 90 minutes total without a state change, **ask the user** whether to keep waiting or treat it as hung.
+The monitor emits notifications only on state changes (new failures or completion). It does not emit a notification every 5 minutes — that would be noise. If the user wants a heartbeat, they can ask.
+
+If the same check has been pending for more than **90 minutes total** without a state change, the monitor must emit a `[stalled]` event and the agent should **ask the user** whether to keep waiting.
 
 Do not poll faster than 5 minutes — it wastes API quota and produces no signal.
 
