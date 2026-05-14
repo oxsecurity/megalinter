@@ -892,7 +892,7 @@ ENV PATH="$JAVA_HOME/bin:${PATH}"
 # Next line commented because already managed by another linter
 # ENV PATH="$JAVA_HOME/bin:${PATH}"
 # PHP installation
-RUN update-alternatives --install /usr/bin/php php /usr/bin/php84 110
+    && update-alternatives --install /usr/bin/php php /usr/bin/php84 110
 # Managed with COPY --from=composer/composer:2-bin /composer /usr/bin/composer
 ENV PATH="/root/.composer/vendor/bin:${PATH}"
 # POWERSHELL installation
@@ -999,7 +999,7 @@ ENV PATH="/usr/lib/dart/bin:${PATH}"
 # dotenv-linter installation
 # gherkin-lint installation
 # golangci-lint installation
-RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s "v${GO_GOLANGCI_LINT_VERSION}" \
+    && wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s "v${GO_GOLANGCI_LINT_VERSION}" \
     && golangci-lint --version
 
 # revive installation
