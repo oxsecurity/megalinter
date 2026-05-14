@@ -53,9 +53,9 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 #############################################################################################
 #ARG__START
 # renovate: datasource=github-tags depName=coursier/coursier
-ARG COURSIER_VERSION=2.1.24
+ARG SCALA_COURSIER_VERSION=2.1.24
 # renovate: datasource=github-tags depName=scalacenter/scalafix
-ARG SCALAFIX_VERSION=0.14.6
+ARG SCALA_SCALAFIX_VERSION=0.14.6
 #ARG__END
 
 ####################
@@ -158,11 +158,11 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 # SCALA installation
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
-RUN curl --retry-all-errors --retry 10 -fLo coursier https://github.com/coursier/coursier/releases/download/v${COURSIER_VERSION}/coursier.jar && \
+RUN curl --retry-all-errors --retry 10 -fLo coursier https://github.com/coursier/coursier/releases/download/v${SCALA_COURSIER_VERSION}/coursier.jar && \
         chmod +x coursier \
 #
 # scalafix installation
-    && ./coursier install scalafix:${SCALAFIX_VERSION} --quiet --install-dir /usr/bin && rm -rf /root/.cache
+    && ./coursier install scalafix:${SCALA_SCALAFIX_VERSION} --quiet --install-dir /usr/bin && rm -rf /root/.cache
 #
 #OTHER__END
 
