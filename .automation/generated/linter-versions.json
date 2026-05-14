@@ -47,7 +47,7 @@
     "helm": "3.19.0",
     "htmlhint": "1.9.2",
     "isort": "8.0.1",
-    "jscpd": "4.0.9",
+    "jscpd": "4.1.0",
     "jsonlint": "17.0.1",
     "kics": "2.1.20",
     "kingfisher": "1.99.0",
