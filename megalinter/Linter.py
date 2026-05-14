@@ -85,6 +85,7 @@ class Linter:
         self.cli_lint_ignore_arg_name = None
         self.final_ignore_file = None
         # Other
+        self.files_separator = None
         self.files_sub_directory = None
         self.file_contains_regex = []
         self.file_contains_regex_extensions = []
@@ -1488,7 +1489,10 @@ class Linter:
 
         # If mode is "list of files", append all files as cli arguments
         elif self.cli_lint_mode == "list_of_files":
-            cmd += self.files
+            if self.files_separator is not None:
+                cmd += [self.files_separator.join(self.files)]
+            else:
+                cmd += self.files
         return self.manage_docker_command(cmd)
 
     # Manage ignore arguments

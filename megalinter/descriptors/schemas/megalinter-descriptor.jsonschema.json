@@ -928,6 +928,15 @@
             "title": "File name regex filters",
             "type": "array"
           },
+          "files_separator": {
+            "$id": "#/properties/linters/items/properties/files_separator",
+            "description": "Separator used to split file paths in the linter command",
+            "examples": [
+              ","
+            ],
+            "title": "Files separator",
+            "type": "string"
+          },
           "files_sub_directory": {
             "$id": "#/properties/linters/items/files_sub_directory",
             "description": "Set when a linter only lints a sub-directory",
