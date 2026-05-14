@@ -113,11 +113,12 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #############################################################################################
 
 #PIPVENV__START
-RUN uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/semgrep" && VIRTUAL_ENV="/venvs/semgrep" uv pip install --no-cache semgrep==${PIP_SEMGREP_VERSION} \
+RUN uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION}
+RUN uv venv --seed --no-project --no-managed-python --no-cache "/venvs/semgrep" \
+    && VIRTUAL_ENV="/venvs/semgrep" uv pip install --no-cache semgrep==${PIP_SEMGREP_VERSION} \
     && VIRTUAL_ENV="/venvs/semgrep" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
-    && VIRTUAL_ENV="/venvs/semgrep" rm -rf /venvs/semgrep/lib/python3.13/site-packages/setuptools/_vendor/wheel*  \
-    && find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
+    && VIRTUAL_ENV="/venvs/semgrep" rm -rf /venvs/semgrep/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
+    && find /venvs/semgrep \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
     && rm -rf /root/.cache
 ENV PATH="${PATH}":/venvs/semgrep/bin
 #PIPVENV__END

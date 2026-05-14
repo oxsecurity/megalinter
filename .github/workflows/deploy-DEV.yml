@@ -37,22 +37,24 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  ##################################################################
+  # Producer: build the image, populate GHA buildx cache (no push) #
+  ##################################################################
   build:
-    # Name the Job
-    name: Tests + Deploy Docker Image - DEV
-    # Set the agent to run on
+    name: Build Docker Image - DEV
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      # Require writing security events to upload SARIF file to security tab
-      security-events: write
     # Prevent duplicate run from happening when a forked push is committed
     if: (github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository) && !contains(github.event.head_commit.message, 'skip deploy')
-    # Set max build time for the job
-    timeout-minutes: 120
-    ##################
-    # Load all steps #
-    ##################
+    timeout-minutes: 90
+    outputs:
+      image-tag: ${{ steps.meta.outputs.tags }}
+      image-version: ${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
+      dockerfile: ${{ steps.setup.outputs.dockerfile }}
+      cache-scope: ${{ steps.setup.outputs.cache-scope }}
+      build-args: ${{ steps.setup.outputs.build-args }}
+      is-quick: ${{ steps.setup.outputs.is-quick }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
@@ -77,95 +79,114 @@ jobs:
           images: |
             ${{ github.repository }}
 
+      - name: Select Dockerfile, cache scope, and build args
+        id: setup
+        shell: bash
+        env:
+          COMMIT_MSG: ${{ github.event.head_commit.message }}
+          META_CREATED: ${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.created'] }}
+          META_VERSION: ${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
+          META_REVISION: ${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.revision'] }}
+        run: |
+          if [[ "${COMMIT_MSG}" == *"quick build"* ]]; then
+            {
+              echo "is-quick=true"
+              echo "dockerfile=Dockerfile-quick"
+              echo "cache-scope=dev-quick"
+              echo "build-args<<EOF"
+              echo "BUILD_DATE=${META_CREATED}"
+              echo "BUILD_VERSION=${META_VERSION}"
+              echo "BUILD_REVISION=${META_REVISION}"
+              echo "MEGA_LINTER_BASE_IMAGE=oxsecurity/megalinter:beta"
+              echo "EOF"
+            } >> "${GITHUB_OUTPUT}"
+          else
+            {
+              echo "is-quick=false"
+              echo "dockerfile=Dockerfile"
+              echo "cache-scope=dev-main"
+              echo "build-args<<EOF"
+              echo "BUILD_DATE=${META_CREATED}"
+              echo "BUILD_VERSION=${META_VERSION}"
+              echo "BUILD_REVISION=${META_REVISION}"
+              echo "EOF"
+            } >> "${GITHUB_OUTPUT}"
+          fi
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@ce360397dd3f832beb865e1373c09c0e9f86d70a # v4
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@4d04d5d9486b7bd6fa91e7baf45bbb4f8b9deedd # v4
 
-      ###################################
-      # Build image locally for testing #
-      ###################################
-      - name: Build MegaLinter Docker Image (quick)
-        if: ${{ contains(github.event.head_commit.message, 'quick build') }}
-        id: docker_build_quick
-        uses: docker/build-push-action@bcafcacb16a39f128d818304e6c9c0c18556b85f # v7
-        with:
-          context: .
-          file: Dockerfile-quick
-          platforms: linux/amd64
-          build-args: |
-            BUILD_DATE=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.created'] }}
-            BUILD_VERSION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
-            BUILD_REVISION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.revision'] }}
-            MEGA_LINTER_BASE_IMAGE="oxsecurity/megalinter:beta"
-          load: true
-          push: false
-          secrets: |
-            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          tags: ${{ steps.meta.outputs.tags }}
-        timeout-minutes: 90
-
-      #######################################
-      # Build image (full for forked repos) #
-      #######################################
-      - name: Build MegaLinter Docker Image (full from forks)
-        if: |
-          (
-          (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository) ||
-          (github.event_name == 'push' && github.repository != 'oxsecurity/megalinter')
-          )
-          &&
-          !contains(github.event.head_commit.message, 'quick build')
+      - name: Build MegaLinter Docker Image
         id: docker_build
         uses: docker/build-push-action@bcafcacb16a39f128d818304e6c9c0c18556b85f # v7
         with:
           context: .
-          file: Dockerfile
+          file: ${{ steps.setup.outputs.dockerfile }}
           platforms: linux/amd64
-          build-args: |
-            BUILD_DATE=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.created'] }}
-            BUILD_VERSION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
-            BUILD_REVISION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.revision'] }}
-          load: true
+          build-args: ${{ steps.setup.outputs.build-args }}
+          load: false
           push: false
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           tags: ${{ steps.meta.outputs.tags }}
+          cache-from: type=gha,scope=${{ steps.setup.outputs.cache-scope }}
+          cache-to: type=gha,mode=max,scope=${{ steps.setup.outputs.cache-scope }}
         timeout-minutes: 90
 
-      ####################################
-      # Build image (full for main repo) #
-      ####################################
-      - name: Build MegaLinter Docker Image (full from main repo) & push
-        if: |
-          (
-          (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository) ||
-          (github.event_name == 'push' && github.repository == 'oxsecurity/megalinter')
-          )
-          &&
-          !contains(github.event.head_commit.message, 'quick build')
+  ###############################################################
+  # Consumer: Run linter test cases against the cached image    #
+  ###############################################################
+  test-cases:
+    name: Run Test Cases - DEV
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      # Require writing security events to upload SARIF file to security tab
+      security-events: write
+    timeout-minutes: 120
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Free Disk space
+        shell: bash
+        run: |
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+          sudo rm -rf /opt/hostedtoolcache/CodeQL
+          sudo rm -rf /opt/hostedtoolcache/go
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@ce360397dd3f832beb865e1373c09c0e9f86d70a # v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@4d04d5d9486b7bd6fa91e7baf45bbb4f8b9deedd # v4
+
+      # Rebuild from GHA cache so the image lands in this runner's local Docker daemon.
+      # All layers should hit cache, making this a fast manifest assembly + load.
+      - name: Load image from buildx cache
         uses: docker/build-push-action@bcafcacb16a39f128d818304e6c9c0c18556b85f # v7
         with:
           context: .
-          file: Dockerfile
+          file: ${{ needs.build.outputs.dockerfile }}
           platforms: linux/amd64
-          build-args: |
-            BUILD_DATE=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.created'] }}
-            BUILD_VERSION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
-            BUILD_REVISION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.revision'] }}
+          build-args: ${{ needs.build.outputs.build-args }}
           load: true
           push: false
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: ${{ needs.build.outputs.image-tag }}
+          cache-from: type=gha,scope=${{ needs.build.outputs.cache-scope }}
 
-      - name: Clean docker buildx cache
-        run: docker buildx prune --force
-
-      #####################################
-      # Run Linter test cases #
-      #####################################
       - name: Run Test Cases
         shell: bash
         env:
@@ -175,7 +196,7 @@ jobs:
           HEAD_REF: ${{ github.head_ref }}
           REF_NAME: ${{ github.ref_name }}
           COMMIT_MSG: ${{ github.event.head_commit.message }}
-          DOCKER_IMAGE: ${{ fromJson(steps.meta.outputs.json).tags[0] }}
+          DOCKER_IMAGE: ${{ needs.build.outputs.image-tag }}
           GH_SHA: ${{ github.sha }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -198,14 +219,70 @@ jobs:
           docker run $CI_ENV -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER="${GH_SHA}" -e OUTPUT_DETAIL=detailed -e GITHUB_SHA="${GH_SHA}" -e GITHUB_REPOSITORY="${GITHUB_REPOSITORY}" -e GITHUB_BRANCH="${GITHUB_BRANCH}" -e GITHUB_TOKEN="${GITHUB_TOKEN}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v "${GITHUB_WORKSPACE}:/tmp/lint" "${DOCKER_IMAGE}"
         timeout-minutes: 120
 
-      #####################################
-      # Run Linter against ALL code base  #
-      #####################################
+      - name: Archive production artifacts (test-cases)
+        if: success() || failure()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: MegaLinter reports (test-cases)
+          include-hidden-files: "true"
+          path: |
+            megalinter-reports
+            mega-linter.log
+            linter-helps.json
+            linter-versions.json
+
+  ###############################################################
+  # Consumer: Run megalinter against the entire code base       #
+  ###############################################################
+  run-all-code:
+    name: Run against all code base - DEV
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    if: needs.build.outputs.is-quick != 'true'
+    timeout-minutes: 30
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Free Disk space
+        shell: bash
+        run: |
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+          sudo rm -rf /opt/hostedtoolcache/CodeQL
+          sudo rm -rf /opt/hostedtoolcache/go
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@ce360397dd3f832beb865e1373c09c0e9f86d70a # v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@4d04d5d9486b7bd6fa91e7baf45bbb4f8b9deedd # v4
+
+      - name: Load image from buildx cache
+        uses: docker/build-push-action@bcafcacb16a39f128d818304e6c9c0c18556b85f # v7
+        with:
+          context: .
+          file: ${{ needs.build.outputs.dockerfile }}
+          platforms: linux/amd64
+          build-args: ${{ needs.build.outputs.build-args }}
+          load: true
+          push: false
+          secrets: |
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          tags: ${{ needs.build.outputs.image-tag }}
+          cache-from: type=gha,scope=${{ needs.build.outputs.cache-scope }}
+
       - name: Run against all code base
-        if: "!contains(github.event.head_commit.message, 'quick build')"
         shell: bash
         env:
-          DOCKER_IMAGE: ${{ fromJson(steps.meta.outputs.json).tags[0] }}
+          DOCKER_IMAGE: ${{ needs.build.outputs.image-tag }}
           GH_REPOSITORY: ${{ github.repository }}
           GH_SHA: ${{ github.sha }}
           GH_TOKEN_VALUE: ${{ github.token }}
@@ -214,12 +291,11 @@ jobs:
         run: docker run -e GITHUB_REPOSITORY="${GH_REPOSITORY}" -e GITHUB_SHA="${GH_SHA}" -e GITHUB_TOKEN="${GH_TOKEN_VALUE}" -e GITHUB_RUN_ID="${GH_RUN_ID}" -e GITHUB_TOKEN="${GITHUB_TOKEN}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v "${GITHUB_WORKSPACE}:/tmp/lint" "${DOCKER_IMAGE}"
         timeout-minutes: 15
 
-      # Upload MegaLinter artifacts
-      - name: Archive production artifacts
+      - name: Archive production artifacts (run-all-code)
         if: success() || failure()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
-          name: MegaLinter reports
+          name: MegaLinter reports (run-all-code)
           include-hidden-files: "true"
           path: |
             megalinter-reports
@@ -227,51 +303,118 @@ jobs:
             linter-helps.json
             linter-versions.json
 
-      - name: debug
-        if: success() || failure()
-        run: echo "${STEPS_DOCKER_BUILD_OUTCOME}"
-        env:
-          STEPS_DOCKER_BUILD_OUTCOME: ${{ steps.docker_build.outcome }}
+  ###############################################################
+  # Consumer: mega-linter-runner tests against the cached image #
+  ###############################################################
+  runner-tests:
+    name: mega-linter-runner tests - DEV
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    if: needs.build.outputs.is-quick != 'true'
+    timeout-minutes: 30
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          persist-credentials: false
 
-      # Clean disk space
-      - name: Clear disk space
+      - name: Free Disk space
+        shell: bash
         run: |
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /usr/share/dotnet
           sudo rm -rf /opt/ghc
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
-          sudo swapoff -a || true
-          sudo rm -f /swapfile || true
-          sudo apt clean || true
+          sudo rm -rf /opt/hostedtoolcache/CodeQL
+          sudo rm -rf /opt/hostedtoolcache/go
 
-      # Test mega-linter-runner with newly created image
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@ce360397dd3f832beb865e1373c09c0e9f86d70a # v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@4d04d5d9486b7bd6fa91e7baf45bbb4f8b9deedd # v4
+
+      - name: Load image from buildx cache
+        uses: docker/build-push-action@bcafcacb16a39f128d818304e6c9c0c18556b85f # v7
+        with:
+          context: .
+          file: ${{ needs.build.outputs.dockerfile }}
+          platforms: linux/amd64
+          build-args: ${{ needs.build.outputs.build-args }}
+          load: true
+          push: false
+          secrets: |
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          tags: ${{ needs.build.outputs.image-tag }}
+          cache-from: type=gha,scope=${{ needs.build.outputs.cache-scope }}
+
       - name: Setup Node
-        if: steps.docker_build.outcome == 'success' && !contains(github.event.head_commit.message, 'quick build')
         uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
         with:
           node-version: "24.x"
+
       - name: Install NPM dependencies
-        if: steps.docker_build.outcome == 'success' && !contains(github.event.head_commit.message, 'quick build')
         run: cd mega-linter-runner && yarn install --frozen-lockfile && npm link
+
       - name: Run mega-linter-runner tests
-        if: steps.docker_build.outcome == 'success' && !contains(github.event.head_commit.message, 'quick build')
         env:
-          MEGALINTER_RELEASE: ${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
-          MEGALINTER_IMAGE: ${{ fromJson(steps.meta.outputs.json).tags[0] }}
+          MEGALINTER_RELEASE: ${{ needs.build.outputs.image-version }}
+          MEGALINTER_IMAGE: ${{ needs.build.outputs.image-tag }}
         run: cd mega-linter-runner && MEGALINTER_RELEASE="${MEGALINTER_RELEASE}" MEGALINTER_IMAGE="${MEGALINTER_IMAGE}" MEGALINTER_NO_DOCKER_PULL=true npm run test
 
-      # - name: free disk space
-      #   run: |
-      #     sudo swapoff -a || true
-      #     sudo rm -f /swapfile || true
-      #     sudo apt clean || true
+  ###############################################################
+  # Consumer: Trivy vulnerability scan                          #
+  ###############################################################
+  trivy:
+    name: Trivy scan - DEV
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+    timeout-minutes: 30
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          persist-credentials: false
 
-      ##############################################
-      # Check Docker image security with Trivy #
-      ##############################################
+      - name: Free Disk space
+        shell: bash
+        run: |
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+          sudo rm -rf /opt/hostedtoolcache/CodeQL
+          sudo rm -rf /opt/hostedtoolcache/go
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@ce360397dd3f832beb865e1373c09c0e9f86d70a # v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@4d04d5d9486b7bd6fa91e7baf45bbb4f8b9deedd # v4
+
+      - name: Load image from buildx cache
+        uses: docker/build-push-action@bcafcacb16a39f128d818304e6c9c0c18556b85f # v7
+        with:
+          context: .
+          file: ${{ needs.build.outputs.dockerfile }}
+          platforms: linux/amd64
+          build-args: ${{ needs.build.outputs.build-args }}
+          load: true
+          push: false
+          secrets: |
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          tags: ${{ needs.build.outputs.image-tag }}
+          cache-from: type=gha,scope=${{ needs.build.outputs.cache-scope }}
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
         with:
-          image-ref: "${{ fromJson(steps.meta.outputs.json).tags[0]}}"
+          image-ref: "${{ needs.build.outputs.image-tag }}"
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
@@ -284,4 +427,4 @@ jobs:
       #   uses: google/osv-scanner-action/osv-scanner-action@v2.3.5
       #   with:
       #     scan-args: |-
-      #       --docker ${{ fromJson(steps.meta.outputs.json).tags[0] }}
+      #       --docker ${{ needs.build.outputs.image-tag }}
