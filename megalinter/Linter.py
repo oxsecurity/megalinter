@@ -1510,7 +1510,7 @@ class Linter:
 
         # If mode is "list of files", append all files as cli arguments
         elif self.cli_lint_mode == "list_of_files":
-                cmd += self.files
+            cmd += self.files
         return self.manage_docker_command(cmd)
 
     # Manage ignore arguments
