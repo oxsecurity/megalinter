@@ -76,6 +76,7 @@ RUN apk -U --no-cache upgrade \
                 ca-certificates \
                 curl \
                 gcc \
+                gcompat \
                 git \
                 git-lfs \
                 libffi-dev \
@@ -165,7 +166,6 @@ esac \
 && chmod +x "${BICEP_EXE}" \
 && mv "${BICEP_EXE}" "${BICEP_DIR}"
 
-#
 #OTHER__END
 
 ################################

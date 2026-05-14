@@ -74,6 +74,7 @@ RUN apk -U --no-cache upgrade \
                 ca-certificates \
                 curl \
                 gcc \
+                gcompat \
                 git \
                 git-lfs \
                 libffi-dev \
@@ -158,7 +159,6 @@ COPY --from=kics /app/bin/assets /usr/bin/assets
 # Managed with COPY --link --from=kics /app/bin/kics /usr/bin/kics
 ENV KICS_QUERIES_PATH=/usr/bin/assets/queries KICS_LIBRARIES_PATH=/usr/bin/assets/libraries
 # Managed with COPY --from=kics /app/bin/assets /usr/bin/assets
-#
 #OTHER__END
 
 ################################
