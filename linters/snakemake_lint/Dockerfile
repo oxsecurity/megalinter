@@ -55,11 +55,11 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.20.0
+ARG PIP_SNAKEMAKE_VERSION=9.21.0
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=26.1.1
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=21.3.1
+ARG PIP_VIRTUALENV_VERSION=21.3.3
 #ARG__END
 
 ####################

@@ -44,6 +44,7 @@ jobs:
         env:
           EVENT_NAME: ${{ github.event_name }}
           PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_USER: ${{ github.event.pull_request.user.login }}
           HEAD_COMMIT_MSG: ${{ github.event.head_commit.message }}
         run: |
           if [ "$EVENT_NAME" = "pull_request" ]; then
@@ -51,6 +52,7 @@ jobs:
           else
             echo "title=${HEAD_COMMIT_MSG}" >> "${GITHUB_OUTPUT}"
           fi
+          echo "pr_user=${PR_USER}" >> "${GITHUB_OUTPUT}"
       - name: Read linters_matrix.json and filter
         id: set-matrix
         run: |
@@ -84,6 +86,18 @@ jobs:
 
           pkg=$(extract_pkg "$title")
           echo "Extracted package: $pkg"
+
+          # Detect dependabot / renovate PRs: bot author OR chore(deps) title prefix.
+          is_bot_pr=false
+          case "$PR_USER" in
+            dependabot|"dependabot[bot]"|renovate|"renovate[bot]")
+              is_bot_pr=true
+              ;;
+          esac
+          if echo "$title" | grep -iq '^chore(deps)'; then
+            is_bot_pr=true
+          fi
+
           if [ -n "$pkg" ] && echo "$title" | grep -iq '^chore(deps)'; then
             matches=$(echo "$matrix" | jq -c --arg pkg "$pkg" '[.[] | select(tostring | match($pkg;"i"))]')
             if [ "$(echo "$matches" | jq 'length')" -gt 0 ]; then
@@ -92,11 +106,22 @@ jobs:
               exit 0
             fi
           fi
+
+          # Bot PR with no matching linter: skip linter jobs entirely.
+          # deploy-DEV.yml runs the full test suite on merge, so re-running
+          # every linter image on each dependabot/renovate PR is wasted CI.
+          if [ "$is_bot_pr" = "true" ]; then
+            echo "Bot PR with no matching linter, skipping per-linter jobs (deploy-DEV will run full tests)."
+            echo "linters=[]" >> "${GITHUB_OUTPUT}"
+            exit 0
+          fi
+
           # Default: return all
-          echo "No specific package found or not a chore(deps) commit, using all linters."
+          echo "No specific package found and not a bot PR, using all linters."
           echo "linters=$matrix" >> "${GITHUB_OUTPUT}"
         env:
           STEPS_GET_TITLE_OUTPUTS_TITLE: ${{ steps.get-title.outputs.title }}
+          PR_USER: ${{ steps.get-title.outputs.pr_user }}
 
   build:
     # Name the Job
