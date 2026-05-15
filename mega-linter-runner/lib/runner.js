@@ -1,4 +1,6 @@
-import { optionsDefinition } from "./options.js"
+import { optionsDefinition, KNOWN_CONTAINER_ENGINES } from "./options.js"
+import { expandEnvEntries } from "./env-parser.js";
+import { listVars } from "./list-vars.js";
 import { spawnSync } from "child_process";
 import { default as c } from 'chalk';
 import * as path from 'path';
@@ -26,6 +28,14 @@ export class MegaLinterRunner {
       }
       console.info(outputString);
       return { status: 0, stdout: outputString };
+    }
+
+    // List MegaLinter env variables (optionally filtered)
+    if (options.listVars) {
+      const pattern = options._ && options._.length ? options._[0] : null;
+      const { stdout } = listVars({ pattern, asJson: options.json === true });
+      console.log(stdout);
+      return { status: 0, stdout };
     }
 
     // Show version
@@ -79,6 +89,11 @@ export class MegaLinterRunner {
     }
 
     if (options.codetotal) {
+      console.warn(
+        c.yellow(
+          "[WARNING] CodeTotal is not actively maintained. The --codetotal integration is kept for legacy users and may be removed in a future major release.",
+        ),
+      );
       const codeTotalRunner = new CodeTotalRunner(options);
       await codeTotalRunner.run();
       return { status: 0 }
@@ -86,8 +101,10 @@ export class MegaLinterRunner {
 
     // Build MegaLinter docker image name with flavor and release version
     this.containerEngine = options.containerEngine || "docker";
-    if (this.containerEngine !== "docker" && this.containerEngine !== "podman") {
-      throw new Error(`Invalid container engine: ${this.containerEngine}. Supported engines are 'docker' and 'podman'.`);
+    if (!KNOWN_CONTAINER_ENGINES.includes(this.containerEngine)) {
+      throw new Error(
+        `Invalid container engine: ${this.containerEngine}. Supported engines are ${KNOWN_CONTAINER_ENGINES.join(", ")}.`,
+      );
     }
     const release = options.release in ["stable"] ? DEFAULT_RELEASE : options.release;
     const dockerImageName =
@@ -219,7 +236,7 @@ export class MegaLinterRunner {
       }
     }
     if (options.env) {
-      for (const envVarEqualsValue of options.env) {
+      for (const envVarEqualsValue of expandEnvEntries(options.env)) {
         commandArgs.push(...["-e", envVarEqualsValue]);
       }
     }

@@ -149,6 +149,8 @@ downloads/
 eggs/
 .eggs/
 lib/
+!mega-linter-runner/lib/
+!mega-linter-runner/lib/**
 lib64/
 parts/
 sdist/
