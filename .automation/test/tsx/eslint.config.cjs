@@ -1,7 +1,6 @@
-import reactPlugin from '@eslint-react/eslint-plugin';
-import tsParser from '@typescript-eslint/parser';
+const tsParser = require('@typescript-eslint/parser');
 
-export default [
+module.exports = [
     {
         files: ['**/*.{ts,tsx}'],
         languageOptions: {
@@ -15,5 +14,4 @@ export default [
             },
         },
     },
-    reactPlugin.configs['recommended-typescript'],
 ];
