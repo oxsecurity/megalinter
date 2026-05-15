@@ -548,12 +548,22 @@ linters:
     test_folder: repository_file
     cli_lint_errors_count: "total_lines"
     install:
+      apk:
+        - curl
       dockerfile:
         - |-
-          # renovate: datasource=npm depName=@ls-lint/ls-lint
-          ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.1
-      npm:
-        - "@ls-lint/ls-lint@${NPM_LS_LINT_LS_LINT_VERSION}"
+          # renovate: datasource=github-releases depName=loeffel-io/ls-lint extractVersion=^v(?<version>.+)$
+          ARG REPOSITORY_LS_LINT_VERSION=2.3.1
+        - |-
+          RUN set -eu; \
+              case "$TARGETPLATFORM" in \
+                linux/amd64) ARCH=amd64 ;; \
+                linux/arm64) ARCH=arm64 ;; \
+                *) echo "unsupported platform: $TARGETPLATFORM" >&2; exit 1 ;; \
+              esac; \
+              curl --retry 5 --retry-delay 5 -fsSL -o /usr/bin/ls-lint \
+                "https://github.com/loeffel-io/ls-lint/releases/download/v${REPOSITORY_LS_LINT_VERSION}/ls-lint-linux-${ARCH}" && \
+              chmod +x /usr/bin/ls-lint
     supported_platforms:
       platform:
         - linux/amd64

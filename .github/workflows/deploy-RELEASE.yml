@@ -117,7 +117,7 @@ jobs:
             ghcr.io/oxsecurity/megalinter:latest
           # Release is one-shot per tag — read BETA's warm cache only. No
           # cache-to since nobody reads release-* entries.
-          cache-from: type=gha,scope=beta-main
+          cache-from: type=gha,scope=beta-main,ignore-error=true
 
       - name: Invoke Mirror docker image workflow (Main image)
         uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1

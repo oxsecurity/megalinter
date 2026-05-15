@@ -126,6 +126,7 @@ jobs:
       - name: Build MegaLinter Docker Image
         id: docker_build
         uses: docker/build-push-action@bcafcacb16a39f128d818304e6c9c0c18556b85f # v7
+        continue-on-error: true
         with:
           context: .
           file: ${{ steps.setup.outputs.dockerfile }}
@@ -134,22 +135,33 @@ jobs:
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           tags: ${{ steps.meta.outputs.tags }}
-          cache-from: type=gha,scope=beta-main
-          outputs: type=docker,dest=/tmp/megalinter-image.tar
+          cache-from: type=gha,scope=beta-main,ignore-error=true
+          outputs: type=docker,dest=/tmp/megalinter-image.tar,compression=zstd,compression-level=3,force-compression=true
         timeout-minutes: 90
 
-      - name: Compress image tarball
-        shell: bash
-        run: |
-          set -euo pipefail
-          zstd -3 -T0 --rm /tmp/megalinter-image.tar -o /tmp/megalinter-image.tar.zst
-          ls -lh /tmp/megalinter-image.tar.zst
+      # Fallback: if the cached build above failed (e.g. GHA cache returned a
+      # stale manifest pointing to an evicted blob — buildx surfaces this as
+      # 'ERROR: blob sha256:...: not found'), rebuild from scratch with no
+      # cache-from. Slower but never blocks on cache corruption.
+      - name: Build MegaLinter Docker Image (no-cache fallback)
+        if: steps.docker_build.outcome == 'failure'
+        uses: docker/build-push-action@bcafcacb16a39f128d818304e6c9c0c18556b85f # v7
+        with:
+          context: .
+          file: ${{ steps.setup.outputs.dockerfile }}
+          platforms: linux/amd64
+          build-args: ${{ steps.setup.outputs.build-args }}
+          secrets: |
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          tags: ${{ steps.meta.outputs.tags }}
+          outputs: type=docker,dest=/tmp/megalinter-image.tar,compression=zstd,compression-level=3,force-compression=true
+        timeout-minutes: 90
 
       - name: Upload image artifact
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: megalinter-image
-          path: /tmp/megalinter-image.tar.zst
+          path: /tmp/megalinter-image.tar
           retention-days: 1
           if-no-files-found: error
           compression-level: 0
@@ -192,7 +204,6 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          zstd -d --rm /tmp/megalinter-image.tar.zst -o /tmp/megalinter-image.tar
           docker load -i /tmp/megalinter-image.tar
           rm -f /tmp/megalinter-image.tar
           docker image ls
@@ -278,7 +289,6 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          zstd -d --rm /tmp/megalinter-image.tar.zst -o /tmp/megalinter-image.tar
           docker load -i /tmp/megalinter-image.tar
           rm -f /tmp/megalinter-image.tar
           docker image ls
@@ -344,7 +354,6 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          zstd -d --rm /tmp/megalinter-image.tar.zst -o /tmp/megalinter-image.tar
           docker load -i /tmp/megalinter-image.tar
           rm -f /tmp/megalinter-image.tar
           docker image ls
@@ -400,7 +409,6 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          zstd -d --rm /tmp/megalinter-image.tar.zst -o /tmp/megalinter-image.tar
           docker load -i /tmp/megalinter-image.tar
           rm -f /tmp/megalinter-image.tar
           docker image ls
