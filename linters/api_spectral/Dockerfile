@@ -55,7 +55,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=npm depName=@stoplight/spectral-cli
-ARG NPM_SPECTRAL_CLI_VERSION=6.15.1
+ARG NPM_SPECTRAL_CLI_VERSION=6.16.0
 #ARG__END
 
 ####################
