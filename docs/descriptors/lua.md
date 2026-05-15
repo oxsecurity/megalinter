@@ -34,15 +34,7 @@ description: luacheck, selene, stylua are available to analyze LUA files in Mega
 
 ### Installation
 
-- Dockerfile commands :
-```dockerfile
-RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf - \
-    && cd lua-5.3.5 \
-    && make linux \
-    && make install \
-    && cd .. && rm -r lua-5.3.5/
-
-```
-
 - APK packages (Linux):
+  - [lua5.3](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=lua5.3)
+  - [lua5.3-dev](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=lua5.3-dev)
   - [readline-dev](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=readline-dev)

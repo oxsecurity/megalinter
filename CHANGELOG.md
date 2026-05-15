@@ -256,6 +256,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.15.1 to **1.15.2** on 2026-05-12
   - [terragrunt](https://terragrunt.gruntwork.io) from 1.0.3 to **1.0.4** on 2026-05-12
   - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 4.0.9 to **4.1.0** on 2026-05-12
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2026.04.15 to **2025.01.16** on 2026-05-15
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 10.0.107 to **10.0.108** on 2026-05-15
 <!-- linter-versions-end -->
 
 ## [v9.4.0] - 2026-02-28
