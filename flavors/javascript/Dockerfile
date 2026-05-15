@@ -591,12 +591,9 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
       linux/arm64) ARCH=arm64 ;; \
       *) echo "unsupported platform: $TARGETPLATFORM" >&2; exit 1 ;; \
     esac; \
-    curl --retry 5 --retry-delay 5 -fsSL -o /tmp/ls-lint.tar.gz \
-      "https://github.com/loeffel-io/ls-lint/releases/download/v${REPOSITORY_LS_LINT_VERSION}/ls-lint-linux-${ARCH}.tar.gz" && \
-    tar -xzf /tmp/ls-lint.tar.gz -C /tmp && \
-    mv "/tmp/ls-lint-linux-${ARCH}" /usr/bin/ls-lint && \
-    chmod +x /usr/bin/ls-lint && \
-    rm /tmp/ls-lint.tar.gz \
+    curl --retry 5 --retry-delay 5 -fsSL -o /usr/bin/ls-lint \
+      "https://github.com/loeffel-io/ls-lint/releases/download/v${REPOSITORY_LS_LINT_VERSION}/ls-lint-linux-${ARCH}" && \
+    chmod +x /usr/bin/ls-lint \
 # osv-scanner installation
     && apk add --no-cache \
     --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main \
