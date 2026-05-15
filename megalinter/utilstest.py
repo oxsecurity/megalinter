@@ -222,15 +222,19 @@ def test_linter_success(linter, test_self):
     test_self.assertTrue(
         len(mega_linter.linters) > 0, "Linters have been created and run"
     )
-    
+
     mega_linter_linter = mega_linter.linters[0]
 
     # Check console output
     if linter.cli_lint_mode == "file":
         # There are environment variables that appear to be set only after the call to "call_mega_linter"
-        if len(mega_linter_linter.file_names_regex) > 0 and len(mega_linter_linter.file_extensions) == 0:
+        if (
+            len(mega_linter_linter.file_names_regex) > 0
+            and len(mega_linter_linter.file_extensions) == 0
+        ):
             test_self.assertRegex(
-                output, rf"\[{linter_name}\] .*{mega_linter_linter.file_names_regex[0]}.* - SUCCESS"
+                output,
+                rf"\[{linter_name}\] .*{mega_linter_linter.file_names_regex[0]}.* - SUCCESS",
             )
         else:
             test_self.assertRegex(output, rf"\[{linter_name}\] .*good.* - SUCCESS")
@@ -337,12 +341,17 @@ def test_linter_failure(linter, test_self):
     # Check console output
     if linter.cli_lint_mode == "file":
         # There are environment variables that appear to be set only after the call to "call_mega_linter"
-        if len(mega_linter_linter.file_names_regex) > 0 and len(mega_linter_linter.file_extensions) == 0:
+        if (
+            len(mega_linter_linter.file_names_regex) > 0
+            and len(mega_linter_linter.file_extensions) == 0
+        ):
             test_self.assertRegex(
-                output, rf"\[{linter_name}\] .*{mega_linter_linter.file_names_regex[0]}.* - ERROR"
+                output,
+                rf"\[{linter_name}\] .*{mega_linter_linter.file_names_regex[0]}.* - ERROR",
             )
             test_self.assertNotRegex(
-                output, rf"\[{linter_name}\] .*{mega_linter_linter.file_names_regex[0]}.* - SUCCESS"
+                output,
+                rf"\[{linter_name}\] .*{mega_linter_linter.file_names_regex[0]}.* - SUCCESS",
             )
         else:
             test_self.assertRegex(output, rf"\[{linter_name}\] .*bad.* - ERROR")

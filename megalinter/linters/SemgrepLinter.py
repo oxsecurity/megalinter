@@ -78,7 +78,9 @@ class SemgrepLinter(Linter):
 
     def pre_test(self, test_name):
         if test_name.endswith(("file_lint_mode", "list_of_files_lint_mode")):
-            config.set_value(self.request_id, "REPOSITORY_SEMGREP_FILE_EXTENSIONS", [".go", ".py"])
+            config.set_value(
+                self.request_id, "REPOSITORY_SEMGREP_FILE_EXTENSIONS", [".go", ".py"]
+            )
 
         # The file must be in the root of the repository so we create it temporarily for the test.
         # By default semgrep ignores files with "test" so we override this behavior
