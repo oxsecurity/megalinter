@@ -206,8 +206,8 @@ Advanced / Debugging:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=cfn-lint
-ARG PIP_CFN_LINT_VERSION=1.50.1
+ARG PIP_CFN_LINT_VERSION=1.51.0
 ```
 
 - PIP packages (Python):
-  - [cfn-lint[sarif]==1.50.1](https://pypi.org/project/cfn-lint[sarif]/1.50.1)
+  - [cfn-lint[sarif]==1.51.0](https://pypi.org/project/cfn-lint[sarif]/1.51.0)
