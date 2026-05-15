@@ -178,6 +178,8 @@ ARG NPM_SALESFORCE_CLI_VERSION=2.134.6
 ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.27.17
 # renovate: datasource=npm depName=sfdx-hardis
 ARG SFDX_HARDIS_VERSION=7.13.0
+# renovate: datasource=github-tags depName=coursier/coursier
+ARG SCALA_COURSIER_VERSION=2.1.24
 # renovate: datasource=npm depName=typescript
 ARG NPM_TYPESCRIPT_VERSION=6.0.3
 # renovate: datasource=pypi depName=ansible-lint
@@ -397,6 +399,8 @@ ARG GEM_RUBOCOP_RSPEC_VERSION=3.9.0
 ARG SALESFORCE_CODE_ANALYZER_VERSION=5.12.0
 # renovate: datasource=npm depName=@salesforce/sfdx-scanner
 ARG SALESFORCE_SFDX_SCANNER_VERSION=4.12.0
+# renovate: datasource=github-tags depName=scalacenter/scalafix
+ARG SCALA_SCALAFIX_VERSION=0.14.6
 # renovate: datasource=pypi depName=snakemake
 ARG PIP_SNAKEMAKE_VERSION=9.21.0
 # renovate: datasource=pypi depName=snakefmt
@@ -898,7 +902,7 @@ ENV SF_AUTOUPDATE_DISABLE=true SF_CLI_DISABLE_AUTOUPDATE=true
 # ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 # Next line commented because already managed by another linter
 # ENV PATH="$JAVA_HOME/bin:${PATH}"
-RUN curl --retry-all-errors --retry 10 -fLo coursier https://git.io/coursier-cli && \
+RUN curl --retry-all-errors --retry 10 -fLo coursier https://github.com/coursier/coursier/releases/download/v${SCALA_COURSIER_VERSION}/coursier.jar && \
         chmod +x coursier
 
 # TYPESCRIPT installation
@@ -1183,7 +1187,7 @@ RUN dotnet tool install --allow-roll-forward --global Microsoft.CST.DevSkim.CLI 
 #     && (npm cache clean --force || true) \
 #     && rm -rf /root/.npm/_cacache
 # scalafix installation
-    && ./coursier install scalafix --quiet --install-dir /usr/bin && rm -rf /root/.cache \
+    && ./coursier install scalafix:${SCALA_SCALAFIX_VERSION} --quiet --install-dir /usr/bin && rm -rf /root/.cache \
 # snakemake installation
 # snakefmt installation
 # cspell installation
