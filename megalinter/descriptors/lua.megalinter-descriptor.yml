@@ -165,7 +165,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-releases depName=JohnnyMorganz/StyLua extractVersion=^v(?<version>.+)$
-          ARG CARGO_STYLUA_VERSION=2.0.0
+          ARG CARGO_STYLUA_VERSION=2.0.2
         - |-
           FROM alpine:3.23 AS cargo-bin-stylua
           ARG TARGETARCH

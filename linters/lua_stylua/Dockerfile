@@ -13,7 +13,7 @@
 #ARGTOP__START
 ARG TARGETARCH
 # renovate: datasource=github-releases depName=JohnnyMorganz/StyLua extractVersion=^v(?<version>.+)$
-ARG CARGO_STYLUA_VERSION=2.0.0
+ARG CARGO_STYLUA_VERSION=2.0.2
 #ARGTOP__END
 
 #############################################################################################
@@ -40,7 +40,7 @@ RUN set -eu; mkdir -p /out/bin; \
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.11.13 AS uv
+FROM ghcr.io/astral-sh/uv:0.11.14 AS uv
 FROM python:3.14-alpine3.23 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
