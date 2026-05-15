@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset xmlns="http://pmd.sourceforge.net/ruleset/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Default ruleset used by the CodeClimate Engine for Salesforce.com Apex" xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
+
+    <description>RuleSet for MegaLinter</description>
+
+    <!-- IGNORE FILES -->
+    <exclude-pattern>.*/apex-domainbuilder/*.*</exclude-pattern>
+    <exclude-pattern>.*/app-setup/*.*</exclude-pattern>
+    <exclude-pattern>.*/fflib_*.*</exclude-pattern>
+    <exclude-pattern>.*/json2apex/*.*</exclude-pattern>
+
+    <!-- STANDARD RULES -->
+    <rule ref="category/apex/design.xml">
+        <exclude name="ExcessiveParameterList" />
+        <exclude name="ExcessivePublicCount" />
+        <exclude name="TooManyFields" />
+        <exclude name="CyclomaticComplexity" />
+    </rule>
+    <rule ref="category/apex/performance.xml" />
+    <rule ref="category/apex/codestyle.xml">
+        <exclude name="FieldNamingConventions"/>
+        <exclude name="LocalVariableNamingConventions" />
+    </rule>
+    <rule ref="category/apex/security.xml">
+        <priority>1</priority>
+        <exclude name="ApexCRUDViolation" />
+    </rule>
+    <rule ref="category/apex/bestpractices.xml">
+        <exclude name="ApexAssertionsShouldIncludeMessage" />
+        <exclude name="DebugsShouldUseLoggingLevel" />
+    </rule>
+    <rule ref="category/apex/documentation.xml">
+        <exclude name="ApexDoc"/>
+    </rule>
+
+</ruleset>

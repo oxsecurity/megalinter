@@ -128,9 +128,18 @@ Options:
 
 - Dockerfile commands :
 ```dockerfile
-# renovate: datasource=npm depName=@ls-lint/ls-lint
-ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.1
+# renovate: datasource=github-releases depName=loeffel-io/ls-lint extractVersion=^v(?<version>.+)$
+ARG REPOSITORY_LS_LINT_VERSION=2.3.1
+RUN set -eu; \
+    case "$TARGETPLATFORM" in \
+      linux/amd64) ARCH=amd64 ;; \
+      linux/arm64) ARCH=arm64 ;; \
+      *) echo "unsupported platform: $TARGETPLATFORM" >&2; exit 1 ;; \
+    esac; \
+    curl --retry 5 --retry-delay 5 -fsSL -o /usr/bin/ls-lint \
+      "https://github.com/loeffel-io/ls-lint/releases/download/v${REPOSITORY_LS_LINT_VERSION}/ls-lint-linux-${ARCH}" && \
+    chmod +x /usr/bin/ls-lint
 ```
 
-- NPM packages (node.js):
-  - [@ls-lint/ls-lint@2.3.1](https://www.npmjs.com/package/@ls-lint/ls-lint/v/2.3.1)
+- APK packages (Linux):
+  - [curl](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=curl)

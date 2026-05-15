@@ -5,14 +5,9 @@ file_extensions:
   - ".lua"
 install:
   apk:
+    - lua5.3
+    - lua5.3-dev
     - readline-dev
-  dockerfile:
-    - |
-      RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf - \
-          && cd lua-5.3.5 \
-          && make linux \
-          && make install \
-          && cd .. && rm -r lua-5.3.5/
 linters:
   # LUACHECK
   - linter_name: luacheck
@@ -54,7 +49,7 @@ linters:
         - |
           RUN wget --tries=5 https://github.com/cvega/luarocks/archive/v${LUA_LUACHECK_VERSION}-super-linter.tar.gz -O - -q | tar -xzf - \
               && cd luarocks-${LUA_LUACHECK_VERSION}-super-linter \
-              && ./configure --with-lua-include=/usr/local/include \
+              && ./configure --with-lua-include=/usr/include/lua5.3 \
               && make \
               && make -b install \
               && cd .. && rm -r luarocks-${LUA_LUACHECK_VERSION}-super-linter/ \
@@ -167,12 +162,27 @@ linters:
       - "stylua --check myfile.lua"
       - "stylua --config-path chktexrc.toml --check myfile.lua"
     install:
-      cargo:
-        - stylua@${CARGO_STYLUA_VERSION}
       dockerfile:
         - |-
-          # renovate: datasource=crate depName=stylua
+          # renovate: datasource=github-releases depName=JohnnyMorganz/StyLua extractVersion=^v(?<version>.+)$
           ARG CARGO_STYLUA_VERSION=2.0.0
+        - |-
+          FROM alpine:3.23 AS cargo-bin-stylua
+          ARG TARGETARCH
+          ARG CARGO_STYLUA_VERSION
+          RUN set -eu; mkdir -p /out/bin; \
+              apk add --no-cache curl ca-certificates unzip; \
+              case "$TARGETARCH" in \
+                amd64) ARCH=x86_64 ;; \
+                arm64) ARCH=aarch64 ;; \
+                *) echo "unsupported arch: $TARGETARCH" >&2; exit 1 ;; \
+              esac; \
+              curl -fsSL -o /tmp/stylua.zip \
+                "https://github.com/JohnnyMorganz/StyLua/releases/download/v${CARGO_STYLUA_VERSION}/stylua-linux-${ARCH}-musl.zip" && \
+              unzip /tmp/stylua.zip -d /out/bin && \
+              rm /tmp/stylua.zip && \
+              chmod +x /out/bin/stylua
+        - COPY --link --from=cargo-bin-stylua /out/bin/stylua /usr/bin/stylua
     supported_platforms:
       platform:
         - linux/amd64

@@ -100,12 +100,21 @@ linters:
       - "zizmor ."
       - "zizmor --config zizmor.yml ."
     install:
-      cargo:
-        - zizmor@${CARGO_ZIZMOR_VERSION}
       dockerfile:
         - |-
           # renovate: datasource=crate depName=zizmor
           ARG CARGO_ZIZMOR_VERSION=1.23.1
+        # zizmor ships only glibc-linked binaries (linux-gnu); no musl/static build.
+        # Compile from source on Alpine so the result is musl-native on all arches.
+        - |-
+          FROM alpine:3.23 AS cargo-bin-zizmor
+          ARG CARGO_ZIZMOR_VERSION
+          RUN set -eu; \
+              apk add --no-cache build-base musl-dev openssl-dev openssl-libs-static pkgconfig bash perl rust cargo && \
+              mkdir -p /out/bin && \
+              cargo install --force --locked --root /out "zizmor@${CARGO_ZIZMOR_VERSION}" && \
+              chmod +x /out/bin/zizmor
+        - COPY --link --from=cargo-bin-zizmor /out/bin/zizmor /usr/bin/zizmor
     supported_platforms:
       platform:
         - linux/amd64
