@@ -36,6 +36,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Faster builds: switched several linters to pre-built Alpine-compatible binaries / packages instead of source compilation or interpreter installs (`LUA_STYLUA` arm64, Lua runtime, `CLOJURE_CLJ_KONDO`, `KUBERNETES_KUBESCAPE`, `REPOSITORY_LS_LINT`, `ENV_DOTENV_LINTER`); also removed the sgerrand glibc-compat layer from the Clojure descriptor
 
 - Fixes
+  - **mega-linter-runner**: Fix `-e ENABLE_LINTERS=YAML_PRETTIER,YAML_YAMLLINT` silently dropping every value after the first comma (issue [#7500](https://github.com/oxsecurity/megalinter/issues/7500)). Commas inside an env var value are now preserved whether or not the value is shell-quoted, and the `--env=KEY=VALUE` long form is accepted. The legacy `-e KEY1=val1,KEY2=val2` shorthand for passing several env vars in one flag keeps working.
   - Fix ConsoleLinterReporter to display log sections for all linters (not just errors)
   - Fix ConsoleReporter to output results table and reporters logs after linters run
   - Produce linter console reports sequentially in main process for parallel runs to avoid interleaved CI log sections
@@ -81,6 +82,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - For dependabot and renovate PRs, optimize the list of linter jobs that are triggered
 
 - mega-linter-runner
+  - Make mega-linter-runner easier to call from Agents
+    - New `--list-vars [pattern]` flag prints every MegaLinter env variable that can be passed via `-e`, with type, default, allowed values, examples, category and section. Add `--json` for machine-readable output (agent-friendly).
+    - The variable catalog is generated from `megalinter-configuration.jsonschema.json` during `make megalinter-build`
+    - Add many new test classes
 
 - Linter versions upgrades (N)
   - [isort](https://pycqa.github.io/isort/) from 8.0.0 to **8.0.1** on 2026-02-28
