@@ -75,5 +75,5 @@ class TrivySbomLinter(Linter):
                     outfile.write("\n")
 
     def pre_test(self, test_name):
-        if test_name.endswith("file_lint_mode") or test_name.endswith("list_of_files_lint_mode"):
+        if test_name.endswith(("file_lint_mode", "list_of_files_lint_mode")):
             config.set_value(self.request_id, "REPOSITORY_TRIVY_SBOM_FILE_NAMES_REGEX", ["package.*json"])

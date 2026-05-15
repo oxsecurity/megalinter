@@ -115,6 +115,7 @@ linters:
     cli_sarif_args:
       - --report
       - "sarif:{{SARIF_OUTPUT_FILE}}"
+    files_separator: ","
     examples:
       - "detekt-cli"
       - "detekt-cli --report html:folder/kotlin_detekt_result.html"
