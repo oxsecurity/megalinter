@@ -84,7 +84,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - mega-linter-runner
   - Make mega-linter-runner easier to call from Agents
       - New `--list-vars [pattern]` flag prints every MegaLinter env variable that can be passed via `-e`, with type, default, allowed values, examples, category and section. Add `--json` for machine-readable output (agent-friendly).
-      - The variable catalog is generated from `megalinter-configuration.jsonschema.json` during `make megalinter-build` via the new `.automation/generate_runner_vars.py` script and bundled in `mega-linter-runner/lib/megalinter-vars.json`.
+      - The variable catalog is generated from `megalinter-configuration.jsonschema.json` during `make megalinter-build`
 
 - Linter versions upgrades (N)
   - [isort](https://pycqa.github.io/isort/) from 8.0.0 to **8.0.1** on 2026-02-28
