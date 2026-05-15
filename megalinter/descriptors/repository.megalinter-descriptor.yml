@@ -279,18 +279,18 @@ linters:
 
       You can still choose to scan only PR commits in your CI/CD platform by setting the following MegaLinter environment variables:
 
-        - `PULL_REQUEST=true`\*
-        - `REPOSITORY_GITLEAKS_PR_COMMITS_SCAN: true`
-        - `REPOSITORY_GITLEAKS_PR_SOURCE_SHA` with last commit sha from your PR and `REPOSITORY_GITLEAKS_PR_TARGET_SHA` commit sha from your target branch (for example, `main` if you do PR to main branch)
+      - `PULL_REQUEST=true`\*
+      - `REPOSITORY_GITLEAKS_PR_COMMITS_SCAN: true`
+      - `REPOSITORY_GITLEAKS_PR_SOURCE_SHA` with last commit sha from your PR and `REPOSITORY_GITLEAKS_PR_TARGET_SHA` commit sha from your target branch (for example, `main` if you do PR to main branch)
 
           Example commands:
 
-            - Source commit SHA:
+          - Source commit SHA:
               ```bash
               git rev-list -n 1 refs/remotes/origin/<source_branch>
               ```
 
-            - Target commit SHA:
+          - Target commit SHA:
               ```bash
               git rev-parse refs/remotes/origin/<target_branch>
               ```
@@ -450,7 +450,7 @@ linters:
   # KICS
   - linter_name: kics
     disabled: true
-    disabled_reason: Supply chain compromise - https://socket.dev/blog/checkmarx-supply-chain-compromise
+    disabled_reason: Supply chain compromise - <https://socket.dev/blog/checkmarx-supply-chain-compromise>
     linter_text: |
       **KICS** (Keeping Infrastructure as Code Secure) is a comprehensive open-source security scanner that identifies security vulnerabilities, compliance issues, and infrastructure misconfigurations in Infrastructure as Code files. It serves as a critical tool for preventing security risks before deployment to production environments.
 
