@@ -4100,6 +4100,7 @@ if __name__ == "__main__":
         manage_output_variables()
         reformat_markdown_tables()
         from generate_runner_vars import generate as generate_runner_vars
+
         generate_runner_vars()
         if RELEASE is True:
             generate_version()
