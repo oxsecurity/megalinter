@@ -3,7 +3,7 @@
 Use Kingfisher Linter to find secrets
 """
 
-from megalinter import Linter, config, utils
+from megalinter import Linter, config
 
 
 class KingfisherLinter(Linter):
