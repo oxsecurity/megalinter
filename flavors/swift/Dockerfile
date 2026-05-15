@@ -20,7 +20,7 @@ ARG ACTION_ACTIONLINT_VERSION=1.7.12
 # renovate: datasource=docker depName=koalaman/shellcheck
 ARG BASH_SHELLCHECK_VERSION=v0.11.0
 # renovate: datasource=crate depName=zizmor
-ARG CARGO_ZIZMOR_VERSION=1.23.1
+ARG CARGO_ZIZMOR_VERSION=1.25.0
 # renovate: datasource=crate depName=shellcheck-sarif
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
 # renovate: datasource=docker depName=mvdan/shfmt

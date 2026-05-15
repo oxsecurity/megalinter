@@ -103,7 +103,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=crate depName=zizmor
-          ARG CARGO_ZIZMOR_VERSION=1.23.1
+          ARG CARGO_ZIZMOR_VERSION=1.25.0
         # zizmor ships only glibc-linked binaries (linux-gnu); no musl/static build.
         # Compile from source on Alpine so the result is musl-native on all arches.
         - |-
