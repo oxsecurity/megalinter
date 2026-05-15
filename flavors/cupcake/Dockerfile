@@ -20,7 +20,7 @@ ARG ACTION_ACTIONLINT_VERSION=1.7.12
 # renovate: datasource=docker depName=koalaman/shellcheck
 ARG BASH_SHELLCHECK_VERSION=v0.11.0
 # renovate: datasource=crate depName=zizmor
-ARG CARGO_ZIZMOR_VERSION=1.23.1
+ARG CARGO_ZIZMOR_VERSION=1.25.0
 # renovate: datasource=crate depName=shellcheck-sarif
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
 # renovate: datasource=docker depName=mvdan/shfmt
@@ -42,7 +42,7 @@ ARG REPOSITORY_TRUFFLEHOG_VERSION=3.95.3
 # renovate: datasource=docker depName=lycheeverse/lychee
 ARG SPELL_LYCHEE_VERSION=0.24.2-alpine
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
-ARG TERRAFORM_TFLINT_VERSION=0.62.0
+ARG TERRAFORM_TFLINT_VERSION=0.62.1
 # renovate: datasource=docker depName=tenable/terrascan
 ARG TERRAFORM_TERRASCAN_VERSION=1.19.9
 # renovate: datasource=docker depName=alpine/terragrunt
@@ -106,7 +106,7 @@ FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.11.13 AS uv
+FROM ghcr.io/astral-sh/uv:0.11.14 AS uv
 FROM python:3.14-alpine3.23 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
@@ -149,9 +149,9 @@ ARG CLJ_KONDO_VERSION=2025.01.16
 # renovate: datasource=github-tags depName=greglook/cljstyle
 ARG CLJ_STYLE_VERSION=0.17.642
 # renovate: datasource=pypi depName=cfn-lint
-ARG PIP_CFN_LINT_VERSION=1.50.1
+ARG PIP_CFN_LINT_VERSION=1.51.0
 # renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=4.1.0
+ARG NPM_JSCPD_VERSION=4.1.1
 # renovate: datasource=npm depName=stylelint
 ARG NPM_STYLELINT_VERSION=17.11.0
 # renovate: datasource=npm depName=stylelint-config-standard
@@ -159,7 +159,7 @@ ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=40.0.0
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
 ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=13.0.0
 # renovate: datasource=npm depName=stylelint-scss
-ARG NPM_STYLELINT_SCSS_VERSION=7.0.0
+ARG NPM_STYLELINT_SCSS_VERSION=7.1.1
 # renovate: datasource=github-releases depName=dotenv-linter/dotenv-linter extractVersion=^v(?<version>.+)$
 ARG DOTENV_LINTER_VERSION=4.0.0
 # renovate: datasource=github-tags depName=golangci/golangci-lint
@@ -180,23 +180,25 @@ ARG JAVA_CHECKSTYLE_VERSION=12.1.0
 ARG PMD_VERSION=7.24.0
 
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=8.57.1
-# renovate: datasource=npm depName=eslint-config-airbnb
-ARG NPM_ESLINT_CONFIG_AIRBNB_VERSION=19.0.4
+ARG NPM_ESLINT_VERSION=9.39.4
+# renovate: datasource=npm depName=@eslint/eslintrc
+ARG NPM_ESLINT_ESLINTRC_VERSION=3.3.5
+# renovate: datasource=npm depName=eslint-config-airbnb-extended
+ARG NPM_ESLINT_CONFIG_AIRBNB_EXTENDED_VERSION=3.1.0
 # renovate: datasource=npm depName=eslint-config-prettier
 ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.1.8
-# renovate: datasource=npm depName=eslint-config-standard
-ARG NPM_ESLINT_CONFIG_STANDARD_VERSION=17.1.0
+# renovate: datasource=npm depName=neostandard
+ARG NPM_NEOSTANDARD_VERSION=0.13.0
 # renovate: datasource=npm depName=eslint-plugin-import
 ARG NPM_ESLINT_PLUGIN_IMPORT_VERSION=2.32.0
 # renovate: datasource=npm depName=eslint-plugin-jest
 ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.15.2
 # renovate: datasource=npm depName=eslint-plugin-n
-ARG NPM_ESLINT_PLUGIN_N_VERSION=16.6.2
+ARG NPM_ESLINT_PLUGIN_N_VERSION=18.0.1
 # renovate: datasource=npm depName=eslint-plugin-prettier
 ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.5
 # renovate: datasource=npm depName=eslint-plugin-promise
-ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=6.6.0
+ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=7.3.0
 # renovate: datasource=npm depName=eslint-plugin-vue
 ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.9.1
 # renovate: datasource=npm depName=@babel/core
@@ -234,7 +236,7 @@ ARG NPM_MARKDOWNLINT_CLI_VERSION=0.48.0
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.1.91
+ARG PIP_RUMDL_VERSION=0.1.92
 # renovate: datasource=packagist depName=squizlabs/php_codesniffer
 ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=4.0.1
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
@@ -248,7 +250,7 @@ ARG PHP_VIMEO_PSALM_VERSION=6.16.1
 # renovate: datasource=packagist depName=overtrue/phplint
 ARG PHP_OVERTRUE_PHPLINT_VERSION=9.7.1
 # renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
-ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.95.1
+ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.95.2
 # renovate: datasource=pypi depName=pylint
 ARG PIP_PYLINT_VERSION=4.0.5
 # renovate: datasource=pypi depName=typing-extensions
@@ -266,9 +268,9 @@ ARG PIP_NBQA_VERSION=1.9.1
 # renovate: datasource=npm depName=pyright
 ARG NPM_PYRIGHT_VERSION=1.1.409
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.15.12
+ARG PIP_RUFF_VERSION=0.15.13
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.2.528
+ARG PIP_CHECKOV_VERSION=3.2.529
 # renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.112.0
 # renovate: datasource=github-releases depName=loeffel-io/ls-lint extractVersion=^v(?<version>.+)$
@@ -282,7 +284,7 @@ ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=11.7.1
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
 ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=11.7.1
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.162.0
+ARG PIP_SEMGREP_VERSION=1.163.0
 # renovate: datasource=github-tags depName=anchore/syft
 ARG REPOSITORY_SYFT_VERSION=1.44.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
@@ -302,7 +304,7 @@ ARG PIP_RSTCHECK_CLICK_VERSION=8.3.3
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=rubygems depName=rubocop
-ARG GEM_RUBOCOP_VERSION=1.86.1
+ARG GEM_RUBOCOP_VERSION=1.86.2
 # renovate: datasource=rubygems depName=rubocop-github
 ARG GEM_RUBOCOP_GITHUB_VERSION=0.27.0
 # renovate: datasource=rubygems depName=rubocop-performance
@@ -320,13 +322,13 @@ ARG PIP_PROSELINT_VERSION=0.14.0
 # renovate: datasource=pypi depName=codespell
 ARG PIP_CODESPELL_VERSION=2.4.2
 # renovate: datasource=pypi depName=sqlfluff
-ARG PIP_SQLFLUFF_VERSION=4.1.0
+ARG PIP_SQLFLUFF_VERSION=4.2.1
 # renovate: datasource=npm depName=prettyjson
 ARG NPM_PRETTYJSON_VERSION=1.2.5
 # renovate: datasource=npm depName=@typescript-eslint/eslint-plugin
-ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.59.2
+ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.59.3
 # renovate: datasource=npm depName=@typescript-eslint/parser
-ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.59.2
+ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.59.3
 # renovate: datasource=npm depName=ts-standard
 ARG NPM_TS_STANDARD_VERSION=12.0.2
 # renovate: datasource=pypi depName=yamllint
@@ -334,7 +336,7 @@ ARG PIP_YAMLLINT_VERSION=1.38.0
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=26.1.1
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=21.3.1
+ARG PIP_VIRTUALENV_VERSION=21.3.3
 # renovate: datasource=github-tags depName=rust-lang/rust
 ARG RUST_RUST_VERSION=1.95.0
 
@@ -441,6 +443,53 @@ RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-too
     && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache
 ENV PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}"
 #CARGO__END
+
+##############################
+# COPY instructions #
+#############################################################################################
+## @generated by .automation/build.py using descriptor files, please do not update manually ##
+#############################################################################################
+
+#COPY__START
+COPY --link --from=cargo-bin-sarif-fmt /out/bin/sarif-fmt /usr/bin/sarif-fmt
+COPY --link --from=composer/composer:2-bin /composer /usr/bin/composer
+COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
+# shellcheck is a dependency for actionlint
+COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
+COPY --link --from=cargo-bin-zizmor /out/bin/zizmor /usr/bin/zizmor
+COPY --link --from=cargo-bin-shellcheck-sarif /out/bin/shellcheck-sarif /usr/bin/shellcheck-sarif
+# Next COPY line commented because already managed by another linter
+# COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
+COPY --link --from=shfmt /bin/shfmt /usr/bin/
+COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
+COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
+COPY --link --from=revive /usr/bin/revive /usr/bin/revive
+COPY --link --from=kubeconform /kubeconform /usr/bin/
+COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
+COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
+COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
+COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
+COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
+COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
+COPY --link --from=terragrunt /bin/terraform /usr/bin/
+#COPY__END
+
+##############################
+# Installs ruby dependencies #
+#############################################################################################
+## @generated by .automation/build.py using descriptor files, please do not update manually ##
+#############################################################################################
+
+#GEM__START
+RUN echo 'gem: --no-document' >> ~/.gemrc && \
+    gem install \
+          rubocop:${GEM_RUBOCOP_VERSION} \
+          rubocop-github:${GEM_RUBOCOP_GITHUB_VERSION} \
+          rubocop-performance:${GEM_RUBOCOP_PERFORMANCE_VERSION} \
+          rubocop-rails:${GEM_RUBOCOP_RAILS_VERSION} \
+          rubocop-rake:${GEM_RUBOCOP_RAKE_VERSION} \
+          rubocop-rspec:${GEM_RUBOCOP_RSPEC_VERSION}
+#GEM__END
 
 ################################
 # Installs python dependencies #
@@ -573,9 +622,10 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 npm-groovy-lint@${NPM_GROOVY_LINT_VERSION} \
                 htmlhint@${NPM_HTMLHINT_VERSION} \
                 eslint@${NPM_ESLINT_VERSION} \
-                eslint-config-airbnb@${NPM_ESLINT_CONFIG_AIRBNB_VERSION} \
+                @eslint/eslintrc@${NPM_ESLINT_ESLINTRC_VERSION} \
+                eslint-config-airbnb-extended@${NPM_ESLINT_CONFIG_AIRBNB_EXTENDED_VERSION} \
                 eslint-config-prettier@${NPM_ESLINT_CONFIG_PRETTIER_VERSION} \
-                eslint-config-standard@${NPM_ESLINT_CONFIG_STANDARD_VERSION} \
+                neostandard@${NPM_NEOSTANDARD_VERSION} \
                 eslint-plugin-import@${NPM_ESLINT_PLUGIN_IMPORT_VERSION} \
                 eslint-plugin-jest@${NPM_ESLINT_PLUGIN_JEST_VERSION} \
                 eslint-plugin-n@${NPM_ESLINT_PLUGIN_N_VERSION} \
@@ -618,53 +668,6 @@ WORKDIR /
 ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
     NODE_PATH="/node-deps/node_modules"
 
-##############################
-# Installs ruby dependencies #
-#############################################################################################
-## @generated by .automation/build.py using descriptor files, please do not update manually ##
-#############################################################################################
-
-#GEM__START
-RUN echo 'gem: --no-document' >> ~/.gemrc && \
-    gem install \
-          rubocop:${GEM_RUBOCOP_VERSION} \
-          rubocop-github:${GEM_RUBOCOP_GITHUB_VERSION} \
-          rubocop-performance:${GEM_RUBOCOP_PERFORMANCE_VERSION} \
-          rubocop-rails:${GEM_RUBOCOP_RAILS_VERSION} \
-          rubocop-rake:${GEM_RUBOCOP_RAKE_VERSION} \
-          rubocop-rspec:${GEM_RUBOCOP_RSPEC_VERSION}
-#GEM__END
-
-##############################
-# COPY instructions #
-#############################################################################################
-## @generated by .automation/build.py using descriptor files, please do not update manually ##
-#############################################################################################
-
-#COPY__START
-COPY --link --from=cargo-bin-sarif-fmt /out/bin/sarif-fmt /usr/bin/sarif-fmt
-COPY --from=composer/composer:2-bin /composer /usr/bin/composer
-COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
-# shellcheck is a dependency for actionlint
-COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
-COPY --link --from=cargo-bin-zizmor /out/bin/zizmor /usr/bin/zizmor
-COPY --link --from=cargo-bin-shellcheck-sarif /out/bin/shellcheck-sarif /usr/bin/shellcheck-sarif
-# Next COPY line commented because already managed by another linter
-# COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
-COPY --link --from=shfmt /bin/shfmt /usr/bin/
-COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
-COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
-COPY --link --from=revive /usr/bin/revive /usr/bin/revive
-COPY --link --from=kubeconform /kubeconform /usr/bin/
-COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
-COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
-COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
-COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
-COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
-COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
-COPY --link --from=terragrunt /bin/terraform /usr/bin/
-#COPY__END
-
 #############################################################################################
 ## @generated by .automation/build.py using descriptor files, please do not update manually ##
 #############################################################################################
@@ -685,7 +688,7 @@ ENV PATH="$JAVA_HOME/bin:${PATH}"
 # ENV PATH="$JAVA_HOME/bin:${PATH}"
 # PHP installation
 RUN update-alternatives --install /usr/bin/php php /usr/bin/php84 110
-# Managed with COPY --from=composer/composer:2-bin /composer /usr/bin/composer
+# Managed with COPY --link --from=composer/composer:2-bin /composer /usr/bin/composer
 ENV PATH="/root/.composer/vendor/bin:${PATH}"
 # TYPESCRIPT installation
 # actionlint installation
