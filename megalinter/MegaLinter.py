@@ -128,6 +128,10 @@ class Megalinter:
         self.default_linter_activation = True
         self.output_sarif = False
         self.result_message = ""
+        # Migration notices raised by linters during activation
+        # (e.g. ESLint v10 flat-config migration). Surfaced in console logs
+        # and PR comment reporters.
+        self.migration_warnings: list[str] = []
 
         # Get enable / disable vars
         self.enable_descriptors = config.get_list(self.request_id, "ENABLE", [])

@@ -177,6 +177,13 @@ def build_markdown_summary_footer(reporter_self, action_run_url=""):
     if reporter_self.master.result_message != "":
         footer += reporter_self.master.result_message + os.linesep
 
+    migration_warnings = getattr(reporter_self.master, "migration_warnings", None)
+    if migration_warnings:
+        footer += os.linesep + "### Migration notices" + os.linesep + os.linesep
+        for warning in migration_warnings:
+            footer += f"- {warning}" + os.linesep
+        footer += os.linesep
+
     if action_run_url != "":
         footer += (
             "See detailed reports in [MegaLinter artifacts"

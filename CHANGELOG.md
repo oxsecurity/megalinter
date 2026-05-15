@@ -8,6 +8,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
+- (Not) breaking changes, but has to be handled
+  - **ESlint-based linters have been upgraded to v10+**, so legacy .eslintrc-based config files are no longer supported, to keep using ESLint in MegaLinter you need to [migrate to flat-config](https://eslint.org/docs/latest/use/configure/migration-guide).
+
 - Core
   - Security: add [more default hidden environment variables](https://megalinter.io/beta/config-variables-security/), so in case one of the 100+ linters is hacked, the attacker won't get your secrets anyway
   - Upgrade GO version to 1.26.3
