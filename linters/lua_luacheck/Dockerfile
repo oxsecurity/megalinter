@@ -163,7 +163,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 # luacheck installation
 RUN wget --tries=5 https://github.com/cvega/luarocks/archive/v${LUA_LUACHECK_VERSION}-super-linter.tar.gz -O - -q | tar -xzf - \
     && cd luarocks-${LUA_LUACHECK_VERSION}-super-linter \
-    && ./configure --with-lua-include=/usr/local/include \
+    && ./configure --with-lua-include=/usr/include/lua5.3 \
     && make \
     && make -b install \
     && cd .. && rm -r luarocks-${LUA_LUACHECK_VERSION}-super-linter/ \
