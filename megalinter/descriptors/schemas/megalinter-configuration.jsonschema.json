@@ -10844,7 +10844,7 @@
     },
     "JAVASCRIPT_ES_CONFIG_FILE": {
       "$id": "#/properties/JAVASCRIPT_ES_CONFIG_FILE",
-      "default": ".eslintrc.json",
+      "default": "eslint.config.js",
       "description": "JAVASCRIPT_ES: User custom config file name if different from default",
       "title": "JAVASCRIPT_ES: Custom config file name",
       "type": "string",
@@ -34360,7 +34360,7 @@
     },
     "TSX_ESLINT_CONFIG_FILE": {
       "$id": "#/properties/TSX_ESLINT_CONFIG_FILE",
-      "default": ".eslintrc.json",
+      "default": "eslint.config.js",
       "description": "TSX_ESLINT: User custom config file name if different from default",
       "title": "TSX_ESLINT: Custom config file name",
       "type": "string",
@@ -34671,7 +34671,7 @@
     },
     "TYPESCRIPT_ES_CONFIG_FILE": {
       "$id": "#/properties/TYPESCRIPT_ES_CONFIG_FILE",
-      "default": ".eslintrc.json",
+      "default": "eslint.config.js",
       "description": "TYPESCRIPT_ES: User custom config file name if different from default",
       "title": "TYPESCRIPT_ES: Custom config file name",
       "type": "string",
