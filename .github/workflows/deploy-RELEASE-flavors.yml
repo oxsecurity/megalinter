@@ -119,7 +119,7 @@ jobs:
             ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:${{ github.event.release.tag_name }}
             ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:latest
           # One-shot per release; read BETA-flavors' warm cache only.
-          cache-from: type=gha,scope=beta-flavor-${{ matrix.flavor }}-linux/amd64
+          cache-from: type=gha,scope=beta-flavor-${{ matrix.flavor }}-linux/amd64,ignore-error=true
 
       - name: Invoke Mirror docker image workflow (Main image)
         uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1

@@ -134,7 +134,7 @@ jobs:
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           tags: ${{ steps.meta.outputs.tags }}
-          cache-from: type=gha,scope=beta-main
+          cache-from: type=gha,scope=beta-main,ignore-error=true
           outputs: type=docker,dest=/tmp/megalinter-image.tar,compression=zstd,compression-level=3,force-compression=true
         timeout-minutes: 90
 

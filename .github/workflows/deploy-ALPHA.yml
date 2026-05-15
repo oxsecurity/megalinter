@@ -140,7 +140,7 @@ jobs:
           tags: |
             ghcr.io/oxsecurity/megalinter:alpha
           # ghcr.io/oxsecurity/megalinter:alpha-${{ github.sha }}
-          cache-from: type=gha,scope=beta-main
+          cache-from: type=gha,scope=beta-main,ignore-error=true
 
       # - name: Build & Push Worker Docker Image
       #   uses: docker/build-push-action@v7
