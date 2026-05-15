@@ -28,12 +28,11 @@ ESLint requires a custom configuration file applicable to your project. You can 
 
 ## eslint documentation
 
-- Version in MegaLinter: **8.57.1**
+- Version in MegaLinter: **9.39.4**
 - Visit [Official Web Site](https://github.com/yannickcr/eslint-plugin-react#readme){target=_blank}
 - See [How to configure eslint rules](https://github.com/yannickcr/eslint-plugin-react#configuration){target=_blank}
 - See [How to disable eslint rules in files](https://eslint.org/docs/latest/use/configure/rules#disabling-rules){target=_blank}
 - See [How to ignore files and directories with eslint](https://eslint.org/docs/latest/user-guide/configuring/ignoring-code#the-eslintignore-file){target=_blank}
-  - You can define a `.eslintignore` file to ignore files and folders
 - See [Index of problems detected by eslint](https://github.com/yannickcr/eslint-plugin-react#list-of-supported-rules){target=_blank}
 
 [![eslint-plugin-react - GitHub](https://gh-card.dev/repos/yannickcr/eslint-plugin-react.svg?fullname=)](https://github.com/yannickcr/eslint-plugin-react){target=_blank}
@@ -93,7 +92,7 @@ This linter is available in the following flavors
 
 ### How are identified applicable files
 
-- Activated only if one of these files is found: `eslint.config.js, eslint.config.mjs, eslint.config.cjs, .eslintrc.json, .eslintrc.yml, .eslintrc.yaml, .eslintrc.js, .eslintrc.cjs, package.json:eslintConfig`
+- Activated only if one of these files is found: `eslint.config.js, eslint.config.mjs, eslint.config.cjs, eslint.config.ts, .eslintrc.json, .eslintrc.yml, .eslintrc.yaml, .eslintrc.js, .eslintrc.cjs, package.json:eslintConfig`
 - File extensions: `.jsx`
 
 <!-- markdownlint-disable -->
@@ -109,11 +108,11 @@ eslint myfile.jsx
 ```
 
 ```shell
-eslint -c .eslintrc.json --no-eslintrc --no-ignore myfile.jsx
+eslint -c eslint.config.js --no-ignore myfile.jsx
 ```
 
 ```shell
-eslint --fix -c .eslintrc.json --no-eslintrc --no-ignore myfile.jsx
+eslint --fix -c eslint.config.js --no-ignore myfile.jsx
 ```
 
 
@@ -123,19 +122,17 @@ eslint --fix -c .eslintrc.json --no-eslintrc --no-ignore myfile.jsx
 eslint [options] file.js [file.js] [dir]
 
 Basic configuration:
-  --no-eslintrc                    Disable use of configuration from .eslintrc.*
-  -c, --config path::String        Use this configuration, overriding .eslintrc.* config options if present
-  --env [String]                   Specify environments
-  --ext [String]                   Specify JavaScript file extensions
+  --no-config-lookup               Disable look up for eslint.config.js
+  -c, --config path::String        Use this configuration instead of eslint.config.js, eslint.config.mjs, or eslint.config.cjs
+  --inspect-config                 Open the config inspector with the current configuration
+  --ext [String]                   Specify additional file extensions to lint
   --global [String]                Define global variables
   --parser String                  Specify the parser to be used
   --parser-options Object          Specify parser options
-  --resolve-plugins-relative-to path::String  A folder where plugins should be resolved from, CWD by default
 
 Specify Rules and Plugins:
   --plugin [String]                Specify plugins
   --rule Object                    Specify rules
-  --rulesdir [path::String]        Load additional rules from this directory. Deprecated: Use rules from plugins
 
 Fix Problems:
   --fix                            Automatically fix problems
@@ -143,9 +140,8 @@ Fix Problems:
   --fix-type Array                 Specify the types of fixes to apply (directive, problem, suggestion, layout)
 
 Ignore Files:
-  --ignore-path path::String       Specify path of ignore file
   --no-ignore                      Disable use of ignore files and patterns
-  --ignore-pattern [String]        Pattern of files to ignore (in addition to those in .eslintignore)
+  --ignore-pattern [String]        Patterns of files to ignore
 
 Use stdin:
   --stdin                          Lint code provided on <STDIN> - default: false
@@ -164,6 +160,7 @@ Inline configuration comments:
   --no-inline-config               Prevent comments from changing config or rules
   --report-unused-disable-directives  Adds reported errors for unused eslint-disable and eslint-enable directives
   --report-unused-disable-directives-severity String  Chooses severity level for reporting unused eslint-disable and eslint-enable directives - either: off, warn, error, 0, 1, or 2
+  --report-unused-inline-configs String  Adds reported errors for unused eslint inline config comments - either: off, warn, error, 0, 1, or 2
 
 Caching:
   --cache                          Only check changed files - default: false
@@ -171,15 +168,28 @@ Caching:
   --cache-location path::String    Path to the cache file or directory
   --cache-strategy String          Strategy to use for detecting changed files in the cache - either: metadata or content - default: metadata
 
+Suppressing Violations:
+  --suppress-all                   Suppress all violations - default: false
+  --suppress-rule [String]         Suppress specific rules
+  --suppressions-location path::String  Specify the location of the suppressions file
+  --prune-suppressions             Prune unused suppressions - default: false
+  --pass-on-unpruned-suppressions  Ignore unused suppressions - default: false
+
 Miscellaneous:
   --init                           Run config initialization wizard - default: false
   --env-info                       Output execution environment information - default: false
   --no-error-on-unmatched-pattern  Prevent errors when pattern is unmatched
   --exit-on-fatal-error            Exit with exit code 2 in case of fatal error - default: false
+  --no-warn-ignored                Suppress warnings when the file list includes ignored files
+  --pass-on-no-patterns            Exit with exit code 0 in case no file patterns are passed
   --debug                          Output debugging information
   -h, --help                       Show help
   -v, --version                    Output the version number
   --print-config path::String      Print the configuration for the given file
+  --stats                          Add statistics to the lint report - default: false
+  --flag [String]                  Enable a feature flag
+  --mcp                            Start the ESLint MCP server
+  --concurrency Int|String         Number of linting threads, auto to choose automatically, off for no multithreading - default: off
 ```
 
 ### Installation on mega-linter Docker image
@@ -187,7 +197,9 @@ Miscellaneous:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=8.57.1
+ARG NPM_ESLINT_VERSION=9.39.4
+# renovate: datasource=npm depName=@eslint/eslintrc
+ARG NPM_ESLINT_ESLINTRC_VERSION=3.3.5
 # renovate: datasource=npm depName=eslint-plugin-react
 ARG NPM_ESLINT_PLUGIN_REACT_VERSION=7.37.5
 # renovate: datasource=npm depName=eslint-plugin-jsx-a11y
@@ -197,7 +209,8 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 ```
 
 - NPM packages (node.js):
-  - [eslint@8.57.1](https://www.npmjs.com/package/eslint/v/8.57.1)
+  - [eslint@9.39.4](https://www.npmjs.com/package/eslint/v/9.39.4)
+  - [@eslint/eslintrc@3.3.5](https://www.npmjs.com/package/@eslint/eslintrc/v/3.3.5)
   - [eslint-plugin-react@7.37.5](https://www.npmjs.com/package/eslint-plugin-react/v/7.37.5)
   - [eslint-plugin-jsx-a11y@6.10.2](https://www.npmjs.com/package/eslint-plugin-jsx-a11y/v/6.10.2)
   - [@microsoft/eslint-formatter-sarif@3.1.0](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/3.1.0)

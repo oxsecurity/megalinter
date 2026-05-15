@@ -45,12 +45,11 @@ Used by companies like Microsoft, Airbnb, Netflix, and Facebook, ESLint helps ma
 
 ## eslint documentation
 
-- Version in MegaLinter: **8.57.1**
+- Version in MegaLinter: **9.39.4**
 - Visit [Official Web Site](https://eslint.org){target=_blank}
 - See [How to configure eslint rules](https://eslint.org/docs/latest/use/configure){target=_blank}
 - See [How to disable eslint rules in files](https://eslint.org/docs/latest/use/configure/rules#disabling-rules){target=_blank}
 - See [How to ignore files and directories with eslint](https://eslint.org/docs/latest/use/configure/ignore#the-eslintignore-file){target=_blank}
-  - You can define a `.eslintignore` file to ignore files and folders
 - See [Index of problems detected by eslint](https://eslint.org/docs/latest/rules/){target=_blank}
 
 [![eslint - GitHub](https://gh-card.dev/repos/eslint/eslint.svg?fullname=)](https://github.com/eslint/eslint){target=_blank}
@@ -74,7 +73,7 @@ Used by companies like Microsoft, Airbnb, Netflix, and Facebook, ESLint helps ma
 | JAVASCRIPT_ES_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
 | JAVASCRIPT_ES_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
 | JAVASCRIPT_ES_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling JAVASCRIPT_ES and its pre/post commands                                                                                                                | None                                            |
-| JAVASCRIPT_ES_CONFIG_FILE                 | eslint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                   | `.eslintrc.json`                                |
+| JAVASCRIPT_ES_CONFIG_FILE                 | eslint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                   | `eslint.config.js`                              |
 | JAVASCRIPT_ES_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | JAVASCRIPT_ES_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | JAVASCRIPT_ES_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
@@ -110,7 +109,7 @@ This linter is available in the following flavors
 
 ### How are identified applicable files
 
-- Activated only if one of these files is found: `.eslintrc.json, .eslintrc.yml, .eslintrc.yaml, .eslintrc.js, .eslintrc.cjs, package.json:eslintConfig`
+- Activated only if one of these files is found: `eslint.config.js, eslint.config.mjs, eslint.config.cjs, eslint.config.ts, .eslintrc.json, .eslintrc.yml, .eslintrc.yaml, .eslintrc.js, .eslintrc.cjs, package.json:eslintConfig`
 - File extensions: `.js`, `.vue`
 
 <!-- markdownlint-disable -->
@@ -126,11 +125,11 @@ eslint myfile.js
 ```
 
 ```shell
-eslint -c .eslintrc.json --no-eslintrc --no-ignore myfile.js
+eslint -c eslint.config.js --no-ignore myfile.js
 ```
 
 ```shell
-eslint --fix -c .eslintrc.json --no-eslintrc --no-ignore myfile.js
+eslint --fix -c eslint.config.js --no-ignore myfile.js
 ```
 
 
@@ -140,19 +139,17 @@ eslint --fix -c .eslintrc.json --no-eslintrc --no-ignore myfile.js
 eslint [options] file.js [file.js] [dir]
 
 Basic configuration:
-  --no-eslintrc                    Disable use of configuration from .eslintrc.*
-  -c, --config path::String        Use this configuration, overriding .eslintrc.* config options if present
-  --env [String]                   Specify environments
-  --ext [String]                   Specify JavaScript file extensions
+  --no-config-lookup               Disable look up for eslint.config.js
+  -c, --config path::String        Use this configuration instead of eslint.config.js, eslint.config.mjs, or eslint.config.cjs
+  --inspect-config                 Open the config inspector with the current configuration
+  --ext [String]                   Specify additional file extensions to lint
   --global [String]                Define global variables
   --parser String                  Specify the parser to be used
   --parser-options Object          Specify parser options
-  --resolve-plugins-relative-to path::String  A folder where plugins should be resolved from, CWD by default
 
 Specify Rules and Plugins:
   --plugin [String]                Specify plugins
   --rule Object                    Specify rules
-  --rulesdir [path::String]        Load additional rules from this directory. Deprecated: Use rules from plugins
 
 Fix Problems:
   --fix                            Automatically fix problems
@@ -160,9 +157,8 @@ Fix Problems:
   --fix-type Array                 Specify the types of fixes to apply (directive, problem, suggestion, layout)
 
 Ignore Files:
-  --ignore-path path::String       Specify path of ignore file
   --no-ignore                      Disable use of ignore files and patterns
-  --ignore-pattern [String]        Pattern of files to ignore (in addition to those in .eslintignore)
+  --ignore-pattern [String]        Patterns of files to ignore
 
 Use stdin:
   --stdin                          Lint code provided on <STDIN> - default: false
@@ -181,6 +177,7 @@ Inline configuration comments:
   --no-inline-config               Prevent comments from changing config or rules
   --report-unused-disable-directives  Adds reported errors for unused eslint-disable and eslint-enable directives
   --report-unused-disable-directives-severity String  Chooses severity level for reporting unused eslint-disable and eslint-enable directives - either: off, warn, error, 0, 1, or 2
+  --report-unused-inline-configs String  Adds reported errors for unused eslint inline config comments - either: off, warn, error, 0, 1, or 2
 
 Caching:
   --cache                          Only check changed files - default: false
@@ -188,15 +185,28 @@ Caching:
   --cache-location path::String    Path to the cache file or directory
   --cache-strategy String          Strategy to use for detecting changed files in the cache - either: metadata or content - default: metadata
 
+Suppressing Violations:
+  --suppress-all                   Suppress all violations - default: false
+  --suppress-rule [String]         Suppress specific rules
+  --suppressions-location path::String  Specify the location of the suppressions file
+  --prune-suppressions             Prune unused suppressions - default: false
+  --pass-on-unpruned-suppressions  Ignore unused suppressions - default: false
+
 Miscellaneous:
   --init                           Run config initialization wizard - default: false
   --env-info                       Output execution environment information - default: false
   --no-error-on-unmatched-pattern  Prevent errors when pattern is unmatched
   --exit-on-fatal-error            Exit with exit code 2 in case of fatal error - default: false
+  --no-warn-ignored                Suppress warnings when the file list includes ignored files
+  --pass-on-no-patterns            Exit with exit code 0 in case no file patterns are passed
   --debug                          Output debugging information
   -h, --help                       Show help
   -v, --version                    Output the version number
   --print-config path::String      Print the configuration for the given file
+  --stats                          Add statistics to the lint report - default: false
+  --flag [String]                  Enable a feature flag
+  --mcp                            Start the ESLint MCP server
+  --concurrency Int|String         Number of linting threads, auto to choose automatically, off for no multithreading - default: off
 ```
 
 ### Installation on mega-linter Docker image
@@ -204,23 +214,25 @@ Miscellaneous:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=8.57.1
-# renovate: datasource=npm depName=eslint-config-airbnb
-ARG NPM_ESLINT_CONFIG_AIRBNB_VERSION=19.0.4
+ARG NPM_ESLINT_VERSION=9.39.4
+# renovate: datasource=npm depName=@eslint/eslintrc
+ARG NPM_ESLINT_ESLINTRC_VERSION=3.3.5
+# renovate: datasource=npm depName=eslint-config-airbnb-extended
+ARG NPM_ESLINT_CONFIG_AIRBNB_EXTENDED_VERSION=3.1.0
 # renovate: datasource=npm depName=eslint-config-prettier
 ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.1.8
-# renovate: datasource=npm depName=eslint-config-standard
-ARG NPM_ESLINT_CONFIG_STANDARD_VERSION=17.1.0
+# renovate: datasource=npm depName=neostandard
+ARG NPM_NEOSTANDARD_VERSION=0.13.0
 # renovate: datasource=npm depName=eslint-plugin-import
 ARG NPM_ESLINT_PLUGIN_IMPORT_VERSION=2.32.0
 # renovate: datasource=npm depName=eslint-plugin-jest
 ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.15.2
 # renovate: datasource=npm depName=eslint-plugin-n
-ARG NPM_ESLINT_PLUGIN_N_VERSION=16.6.2
+ARG NPM_ESLINT_PLUGIN_N_VERSION=18.0.1
 # renovate: datasource=npm depName=eslint-plugin-prettier
 ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.5
 # renovate: datasource=npm depName=eslint-plugin-promise
-ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=6.6.0
+ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=7.3.0
 # renovate: datasource=npm depName=eslint-plugin-vue
 ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.9.1
 # renovate: datasource=npm depName=@babel/core
@@ -232,15 +244,16 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 ```
 
 - NPM packages (node.js):
-  - [eslint@8.57.1](https://www.npmjs.com/package/eslint/v/8.57.1)
-  - [eslint-config-airbnb@19.0.4](https://www.npmjs.com/package/eslint-config-airbnb/v/19.0.4)
+  - [eslint@9.39.4](https://www.npmjs.com/package/eslint/v/9.39.4)
+  - [@eslint/eslintrc@3.3.5](https://www.npmjs.com/package/@eslint/eslintrc/v/3.3.5)
+  - [eslint-config-airbnb-extended@3.1.0](https://www.npmjs.com/package/eslint-config-airbnb-extended/v/3.1.0)
   - [eslint-config-prettier@10.1.8](https://www.npmjs.com/package/eslint-config-prettier/v/10.1.8)
-  - [eslint-config-standard@17.1.0](https://www.npmjs.com/package/eslint-config-standard/v/17.1.0)
+  - [neostandard@0.13.0](https://www.npmjs.com/package/neostandard/v/0.13.0)
   - [eslint-plugin-import@2.32.0](https://www.npmjs.com/package/eslint-plugin-import/v/2.32.0)
   - [eslint-plugin-jest@29.15.2](https://www.npmjs.com/package/eslint-plugin-jest/v/29.15.2)
-  - [eslint-plugin-n@16.6.2](https://www.npmjs.com/package/eslint-plugin-n/v/16.6.2)
+  - [eslint-plugin-n@18.0.1](https://www.npmjs.com/package/eslint-plugin-n/v/18.0.1)
   - [eslint-plugin-prettier@5.5.5](https://www.npmjs.com/package/eslint-plugin-prettier/v/5.5.5)
-  - [eslint-plugin-promise@6.6.0](https://www.npmjs.com/package/eslint-plugin-promise/v/6.6.0)
+  - [eslint-plugin-promise@7.3.0](https://www.npmjs.com/package/eslint-plugin-promise/v/7.3.0)
   - [eslint-plugin-vue@10.9.1](https://www.npmjs.com/package/eslint-plugin-vue/v/10.9.1)
   - [@babel/core@7.29.0](https://www.npmjs.com/package/@babel/core/v/7.29.0)
   - [@babel/eslint-parser@7.28.6](https://www.npmjs.com/package/@babel/eslint-parser/v/7.28.6)

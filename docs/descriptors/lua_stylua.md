@@ -24,7 +24,7 @@ description: How to use stylua (configure, ignore files, ignore errors, help & v
 
 ## stylua documentation
 
-- Version in MegaLinter: **2.0.2**
+- Version in MegaLinter: **2.4.1**
 - Visit [Official Web Site](https://github.com/JohnnyMorganz/StyLua#readme){target=_blank}
 - See [How to configure stylua rules](https://github.com/JohnnyMorganz/StyLua?tab=readme-ov-file#configuration){target=_blank}
 - See [How to disable stylua rules in files](https://github.com/JohnnyMorganz/StyLua?tab=readme-ov-file#ignoring-parts-of-a-file){target=_blank}
@@ -99,7 +99,7 @@ stylua --config-path chktexrc.toml --check myfile.lua
 ### Help content
 
 ```shell
-stylua 2.0.2
+stylua 2.4.1
 A utility to format Lua code
 
 USAGE:
@@ -127,8 +127,15 @@ OPTIONS:
     -h, --help
             Print help information
 
+        --lsp
+            Run Stylua as a language server (following LSP protocol)
+
         --no-editorconfig
             Disables the EditorConfig feature
+
+        --no-ignore-vcs
+            Whether to continue formatting files that are excluded from version control (e.g.,
+            listed in .gitignore)
 
         --num-threads <NUM_THREADS>
             The number of threads to use to format files in parallel [default: 4]
@@ -184,6 +191,10 @@ FORMATTING OPTIONS:
         --line-endings <LINE_ENDINGS>
             The type of line endings to use [possible values: Unix, Windows]
 
+        --preserve-block-newline-gaps <PRESERVE_BLOCK_NEWLINE_GAPS>
+            Specify whether to preserve leading and trailing newline gaps for blocks [possible
+            values: Never, Preserve]
+
         --quote-style <QUOTE_STYLE>
             The style of quotes to use in string literals [possible values: AutoPreferDouble,
             AutoPreferSingle, ForceDouble, ForceSingle]
@@ -196,7 +207,7 @@ FORMATTING OPTIONS:
 
         --syntax <SYNTAX>
             The type of Lua syntax to parse [possible values: All, Lua51, Lua52, Lua53, Lua54, Luau,
-            LuaJit]
+            LuaJit, CfxLua]
 ```
 
 ### Installation on mega-linter Docker image
@@ -204,7 +215,7 @@ FORMATTING OPTIONS:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=github-releases depName=JohnnyMorganz/StyLua extractVersion=^v(?<version>.+)$
-ARG CARGO_STYLUA_VERSION=2.0.2
+ARG CARGO_STYLUA_VERSION=2.4.1
 FROM alpine:3.23 AS cargo-bin-stylua
 ARG TARGETARCH
 ARG CARGO_STYLUA_VERSION

@@ -263,6 +263,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.github.io/) from 9.20.0 to **9.21.0** on 2026-05-15
   - [sqlfluff](https://www.sqlfluff.com/) from 4.1.0 to **4.2.1** on 2026-05-15
   - [tflint](https://github.com/terraform-linters/tflint) from 0.62.0 to **0.62.1** on 2026-05-15
+  - [zizmor](https://zizmor.sh/) from 1.23.1 to **1.25.0** on 2026-05-15
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 4.1.0 to **4.1.1** on 2026-05-15
+  - [stylua](https://github.com/JohnnyMorganz/StyLua) from 2.0.2 to **2.4.1** on 2026-05-15
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.1 to **3.95.2** on 2026-05-15
+  - [rubocop](https://rubocop.org/) from 1.86.1 to **1.86.2** on 2026-05-15
 <!-- linter-versions-end -->
 
 ## [v9.4.0] - 2026-02-28

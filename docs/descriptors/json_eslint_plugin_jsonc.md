@@ -82,7 +82,6 @@ DISABLE_LINTERS:
   - If custom `.eslintrc-json.json` config file isn't found, [.eslintrc-json.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.eslintrc-json.json){target=_blank} will be used
 - See [How to disable eslint-plugin-jsonc rules in files](https://eslint.org/docs/latest/use/configure/rules#disabling-rules){target=_blank}
 - See [How to ignore files and directories with eslint-plugin-jsonc](https://eslint.org/docs/latest/user-guide/configuring/ignoring-code#the-eslintignore-file){target=_blank}
-  - You can define a `.eslintignore` file to ignore files and folders
 - See [Index of problems detected by eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/rules/){target=_blank}
 
 [![eslint-plugin-jsonc - GitHub](https://gh-card.dev/repos/ota-meshi/eslint-plugin-jsonc.svg?fullname=)](https://github.com/ota-meshi/eslint-plugin-jsonc){target=_blank}
@@ -147,19 +146,19 @@ eslint myfile.json
 ```
 
 ```shell
-eslint -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.json
+eslint -c .eslintrc-json.json --no-ignore myfile.json
 ```
 
 ```shell
-eslint -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.json5
+eslint -c .eslintrc-json.json --no-ignore myfile.json5
 ```
 
 ```shell
-eslint -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.jsonc
+eslint -c .eslintrc-json.json --no-ignore myfile.jsonc
 ```
 
 ```shell
-eslint --fix -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.json
+eslint --fix -c .eslintrc-json.json --no-ignore myfile.json
 ```
 
 
@@ -233,7 +232,9 @@ Miscellaneous:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=8.57.1
+ARG NPM_ESLINT_VERSION=9.39.4
+# renovate: datasource=npm depName=@eslint/eslintrc
+ARG NPM_ESLINT_ESLINTRC_VERSION=3.3.5
 # renovate: datasource=npm depName=eslint-plugin-jsonc
 ARG NPM_ESLINT_PLUGIN_JSONC_VERSION=3.1.2
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
@@ -241,6 +242,7 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 ```
 
 - NPM packages (node.js):
-  - [eslint@8.57.1](https://www.npmjs.com/package/eslint/v/8.57.1)
+  - [eslint@9.39.4](https://www.npmjs.com/package/eslint/v/9.39.4)
+  - [@eslint/eslintrc@3.3.5](https://www.npmjs.com/package/@eslint/eslintrc/v/3.3.5)
   - [eslint-plugin-jsonc](https://www.npmjs.com/package/eslint-plugin-jsonc)
   - [@microsoft/eslint-formatter-sarif@3.1.0](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/3.1.0)
