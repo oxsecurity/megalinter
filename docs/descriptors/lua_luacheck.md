@@ -295,20 +295,12 @@ Links:
 
 - Dockerfile commands :
 ```dockerfile
-# Parent descriptor install
-RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf - \
-    && cd lua-5.3.5 \
-    && make linux \
-    && make install \
-    && cd .. && rm -r lua-5.3.5/
-
-# Linter install
 # renovate: datasource=github-tags depName=cvega/luarocks
 ARG LUA_LUACHECK_VERSION=3.3.1
 
 RUN wget --tries=5 https://github.com/cvega/luarocks/archive/v${LUA_LUACHECK_VERSION}-super-linter.tar.gz -O - -q | tar -xzf - \
     && cd luarocks-${LUA_LUACHECK_VERSION}-super-linter \
-    && ./configure --with-lua-include=/usr/local/include \
+    && ./configure --with-lua-include=/usr/include/lua5.3 \
     && make \
     && make -b install \
     && cd .. && rm -r luarocks-${LUA_LUACHECK_VERSION}-super-linter/ \
@@ -318,5 +310,7 @@ RUN wget --tries=5 https://github.com/cvega/luarocks/archive/v${LUA_LUACHECK_VER
 ```
 
 - APK packages (Linux):
+  - [lua5.3](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=lua5.3)
+  - [lua5.3-dev](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=lua5.3-dev)
   - [readline-dev](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=readline-dev)
   - [openssl](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=openssl)

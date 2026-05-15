@@ -36,7 +36,7 @@ description: golangci-lint, revive are available to analyze GO files in MegaLint
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=repology depName=alpine_edge/go versioning=loose
-ARG GO_ALPINE_VERSION=1.26.2-r0
+ARG GO_ALPINE_VERSION=1.26.3-r0
 RUN apk add --no-cache \
     --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main \
     --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \

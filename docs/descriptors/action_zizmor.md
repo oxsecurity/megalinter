@@ -187,7 +187,13 @@ Options:
 ```dockerfile
 # renovate: datasource=crate depName=zizmor
 ARG CARGO_ZIZMOR_VERSION=1.23.1
+FROM alpine:3.23 AS cargo-bin-zizmor
+ARG CARGO_ZIZMOR_VERSION
+RUN set -eu; \
+    apk add --no-cache build-base musl-dev openssl-dev openssl-libs-static pkgconfig bash perl rust cargo && \
+    mkdir -p /out/bin && \
+    cargo install --force --locked --root /out "zizmor@${CARGO_ZIZMOR_VERSION}" && \
+    chmod +x /out/bin/zizmor
+COPY --link --from=cargo-bin-zizmor /out/bin/zizmor /usr/bin/zizmor
 ```
 
-- Cargo packages (Rust):
-  - [zizmor@1.23.1](https://crates.io/crates/zizmor/1.23.1)

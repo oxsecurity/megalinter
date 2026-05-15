@@ -195,24 +195,31 @@ FORMATTING OPTIONS:
             [possible values: Never, Definitions, Calls, Always]
 
         --syntax <SYNTAX>
-            The type of Lua syntax to parse [possible values: All, Lua51]
+            The type of Lua syntax to parse [possible values: All, Lua51, Lua52, Lua53, Lua54, Luau,
+            LuaJit]
 ```
 
 ### Installation on mega-linter Docker image
 
 - Dockerfile commands :
 ```dockerfile
-# Parent descriptor install
-RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf - \
-    && cd lua-5.3.5 \
-    && make linux \
-    && make install \
-    && cd .. && rm -r lua-5.3.5/
-
-# Linter install
-# renovate: datasource=crate depName=stylua
+# renovate: datasource=github-releases depName=JohnnyMorganz/StyLua extractVersion=^v(?<version>.+)$
 ARG CARGO_STYLUA_VERSION=2.0.0
+FROM alpine:3.23 AS cargo-bin-stylua
+ARG TARGETARCH
+ARG CARGO_STYLUA_VERSION
+RUN set -eu; mkdir -p /out/bin; \
+    apk add --no-cache curl ca-certificates unzip; \
+    case "$TARGETARCH" in \
+      amd64) ARCH=x86_64 ;; \
+      arm64) ARCH=aarch64 ;; \
+      *) echo "unsupported arch: $TARGETARCH" >&2; exit 1 ;; \
+    esac; \
+    curl -fsSL -o /tmp/stylua.zip \
+      "https://github.com/JohnnyMorganz/StyLua/releases/download/v${CARGO_STYLUA_VERSION}/stylua-linux-${ARCH}-musl.zip" && \
+    unzip /tmp/stylua.zip -d /out/bin && \
+    rm /tmp/stylua.zip && \
+    chmod +x /out/bin/stylua
+COPY --link --from=cargo-bin-stylua /out/bin/stylua /usr/bin/stylua
 ```
 
-- Cargo packages (Rust):
-  - [stylua@2.0.0](https://crates.io/crates/stylua/2.0.0)

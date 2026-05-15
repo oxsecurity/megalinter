@@ -36,7 +36,7 @@ accept = ["200", "206", "429"]
 scheme = [ "https", "http" ]
 
 # Custom request headers
-headers = ['Accept-Encoding: deflate, compress, gzip, br, zstd']
+header = { "Accept-Encoding" = "deflate, compress, gzip, br, zstd" }
 
 #############################  Exclusions  ##########################
 
