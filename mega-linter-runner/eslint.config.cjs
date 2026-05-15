@@ -20,6 +20,8 @@ module.exports = [
             ecmaVersion: 2021,
             sourceType: 'module',
         },
-        rules: {},
+        rules: {
+            'no-unused-vars': ['error', { caughtErrors: 'none' }],
+        },
     }),
 ];
