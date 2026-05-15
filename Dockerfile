@@ -35,7 +35,7 @@ ARG GO_IMAGE_VERSION=1.26.3
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.7.0-alpine
 # renovate: datasource=github-releases depName=JohnnyMorganz/StyLua extractVersion=^v(?<version>.+)$
-ARG CARGO_STYLUA_VERSION=2.0.0
+ARG CARGO_STYLUA_VERSION=2.0.2
 # renovate: datasource=docker depName=yoheimuta/protolint
 ARG PROTOBUF_PROTOLINT_VERSION=0.56.4
 # renovate: datasource=github-tags depName=checkmarx/dustilock
