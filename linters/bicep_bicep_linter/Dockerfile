@@ -53,6 +53,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 #############################################################################################
 #ARG__START
 ARG TARGETPLATFORM
+ARG TARGETARCH
 # renovate: datasource=github-tags depName=Azure/bicep
 ARG BICEP_VERSION=0.43.8
 ARG BICEP_EXE='bicep'
@@ -76,6 +77,7 @@ RUN apk -U --no-cache upgrade \
                 ca-certificates \
                 curl \
                 gcc \
+                gcompat \
                 git \
                 git-lfs \
                 libffi-dev \
@@ -165,7 +167,6 @@ esac \
 && chmod +x "${BICEP_EXE}" \
 && mv "${BICEP_EXE}" "${BICEP_DIR}"
 
-#
 #OTHER__END
 
 ################################

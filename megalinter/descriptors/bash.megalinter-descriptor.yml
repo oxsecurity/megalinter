@@ -113,12 +113,20 @@ linters:
       - "shellcheck --color=auto --external-sources myfile.sh"
       - "shellcheck --color=auto --external-sources --rcfile=.shellcheckrc myfile.sh"
     install:
-      cargo:
-        - shellcheck-sarif@${CARGO_SHELLCHECK_SARIF_VERSION}
       dockerfile:
         - |-
           # renovate: datasource=crate depName=shellcheck-sarif
           ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
+        # amd64: download prebuilt linux-x86_64 binary.
+        # arm64: compile from source — sarif-rs ships no aarch64-linux binary.
+        - |-
+          FROM alpine:3.23 AS cargo-bin-shellcheck-sarif
+          ARG CARGO_SHELLCHECK_SARIF_VERSION
+          RUN set -eu; mkdir -p /out/bin; \
+              apk add --no-cache build-base musl-dev openssl-dev openssl-libs-static pkgconfig bash perl rust cargo; \
+              cargo install --force --locked --root /out "shellcheck-sarif@${CARGO_SHELLCHECK_SARIF_VERSION}"; \
+              chmod +x /out/bin/shellcheck-sarif
+        - COPY --link --from=cargo-bin-shellcheck-sarif /out/bin/shellcheck-sarif /usr/bin/shellcheck-sarif
         # Also update shellcheck version in action.megalinter-descriptor.yml
         - |-
           # renovate: datasource=docker depName=koalaman/shellcheck

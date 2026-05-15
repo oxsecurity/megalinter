@@ -133,8 +133,18 @@ Options:
 
 - Dockerfile commands :
 ```dockerfile
-# renovate: datasource=github-tags depName=dotenv-linter/dotenv-linter
+# renovate: datasource=github-releases depName=dotenv-linter/dotenv-linter extractVersion=^v(?<version>.+)$
 ARG DOTENV_LINTER_VERSION=4.0.0
-RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s -- -b /usr/local/bin "v${DOTENV_LINTER_VERSION}"
+RUN set -eu; \
+    case "$TARGETPLATFORM" in \
+      linux/amd64) ARCH=x86_64 ;; \
+      linux/arm64) ARCH=aarch64 ;; \
+      *) echo "unsupported platform: $TARGETPLATFORM" >&2; exit 1 ;; \
+    esac; \
+    curl --retry 5 --retry-delay 5 -fsSL \
+      "https://github.com/dotenv-linter/dotenv-linter/releases/download/v${DOTENV_LINTER_VERSION}/dotenv-linter-alpine-${ARCH}.tar.gz" \
+      | tar -xz -C /usr/local/bin
 ```
 
+- APK packages (Linux):
+  - [curl](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=curl)

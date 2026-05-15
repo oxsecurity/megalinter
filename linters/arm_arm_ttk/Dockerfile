@@ -53,6 +53,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 #############################################################################################
 #ARG__START
 ARG TARGETPLATFORM
+ARG TARGETARCH
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
 ARG POWERSHELL_VERSION=7.6.1
 # renovate: datasource=github-tags depName=Azure/arm-ttk
@@ -78,6 +79,7 @@ RUN apk -U --no-cache upgrade \
                 ca-certificates \
                 curl \
                 gcc \
+                gcompat \
                 git \
                 git-lfs \
                 libffi-dev \
@@ -169,7 +171,6 @@ esac \
     && chmod +x /opt/microsoft/powershell/7/pwsh \
     && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
 
-#
 # arm-ttk installation
 ENV ARM_TTK_PSD1="${ARM_TTK_DIRECTORY}/arm-ttk/arm-ttk/arm-ttk.psd1"
 RUN curl --retry 5 --retry-delay 5 -sLO "https://github.com/Azure/arm-ttk/releases/download/${ARM_TTK_VERSION}/${ARM_TTK_NAME}" \
@@ -178,7 +179,6 @@ RUN curl --retry 5 --retry-delay 5 -sLO "https://github.com/Azure/arm-ttk/releas
     && ln -sTf "${ARM_TTK_PSD1}" /usr/bin/arm-ttk \
     && chmod a+x /usr/bin/arm-ttk
 
-#
 #OTHER__END
 
 ################################

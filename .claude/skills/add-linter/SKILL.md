@@ -124,7 +124,10 @@ docker run --rm --env TEST_CASE_RUN=true --env OUTPUT_DETAIL=detailed \
 
 ## Step 7 — Finalize
 
-- Update `CHANGELOG.md` in the **repository root** (not docs/)
+- Add one line under **New linters** in `CHANGELOG.md` (repo root, beta section):
+  ```
+  - Add [linter-name](linter_url) linter for <language> — <what it detects, one sentence>
+  ```
 - Branch naming: `user/add-<linter-name>`
 - Use `quick build` + `TEST_KEYWORDS=<linter>_test` in commit message body during dev
 - Last commit before PR merge must be a full build (~45 min)

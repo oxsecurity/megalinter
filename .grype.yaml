@@ -1,0 +1,16 @@
+# MegaLinter repo-local grype configuration
+# Extends the defaults in TEMPLATES/.grype.yaml with exclusions specific to this repository.
+
+# upon scanning, if a severity is found at or above the given severity then the return code will be 1
+fail-on-severity: "high"
+
+# Exclude intentionally-vulnerable test fixtures used by trivy/grype/osv-scanner/syft linter tests.
+# These directories contain deliberately old/vulnerable packages to exercise the security scanners;
+# they are not real MegaLinter dependencies.
+exclude:
+  - "./.automation/test/**"
+
+ignore:
+  # Ignored by default; disputed and unwarranted CVE that causes Megalinter to fail
+  # @link https://nvd.nist.gov/vuln/detail/CVE-2018-20225
+  - vulnerability: CVE-2018-20225

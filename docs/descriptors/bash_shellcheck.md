@@ -146,11 +146,16 @@ Usage: shellcheck [OPTIONS...] FILES...
 ```dockerfile
 # renovate: datasource=crate depName=shellcheck-sarif
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
+FROM alpine:3.23 AS cargo-bin-shellcheck-sarif
+ARG CARGO_SHELLCHECK_SARIF_VERSION
+RUN set -eu; mkdir -p /out/bin; \
+    apk add --no-cache build-base musl-dev openssl-dev openssl-libs-static pkgconfig bash perl rust cargo; \
+    cargo install --force --locked --root /out "shellcheck-sarif@${CARGO_SHELLCHECK_SARIF_VERSION}"; \
+    chmod +x /out/bin/shellcheck-sarif
+COPY --link --from=cargo-bin-shellcheck-sarif /out/bin/shellcheck-sarif /usr/bin/shellcheck-sarif
 # renovate: datasource=docker depName=koalaman/shellcheck
 ARG BASH_SHELLCHECK_VERSION=v0.11.0
 FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
 COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 ```
 
-- Cargo packages (Rust):
-  - [shellcheck-sarif@0.8.0](https://crates.io/crates/shellcheck-sarif/0.8.0)

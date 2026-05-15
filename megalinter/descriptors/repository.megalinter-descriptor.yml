@@ -62,7 +62,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=checkov
-          ARG PIP_CHECKOV_VERSION=3.2.528
+          ARG PIP_CHECKOV_VERSION=3.2.529
       pip:
         - checkov==${PIP_CHECKOV_VERSION}
     supported_platforms:
@@ -548,12 +548,22 @@ linters:
     test_folder: repository_file
     cli_lint_errors_count: "total_lines"
     install:
+      apk:
+        - curl
       dockerfile:
         - |-
-          # renovate: datasource=npm depName=@ls-lint/ls-lint
-          ARG NPM_LS_LINT_LS_LINT_VERSION=2.3.1
-      npm:
-        - "@ls-lint/ls-lint@${NPM_LS_LINT_LS_LINT_VERSION}"
+          # renovate: datasource=github-releases depName=loeffel-io/ls-lint extractVersion=^v(?<version>.+)$
+          ARG REPOSITORY_LS_LINT_VERSION=2.3.1
+        - |-
+          RUN set -eu; \
+              case "$TARGETPLATFORM" in \
+                linux/amd64) ARCH=amd64 ;; \
+                linux/arm64) ARCH=arm64 ;; \
+                *) echo "unsupported platform: $TARGETPLATFORM" >&2; exit 1 ;; \
+              esac; \
+              curl --retry 5 --retry-delay 5 -fsSL -o /usr/bin/ls-lint \
+                "https://github.com/loeffel-io/ls-lint/releases/download/v${REPOSITORY_LS_LINT_VERSION}/ls-lint-linux-${ARCH}" && \
+              chmod +x /usr/bin/ls-lint
     supported_platforms:
       platform:
         - linux/amd64
@@ -610,7 +620,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=repology depName=alpine_edge/osv-scanner versioning=loose
-          ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.8-r0
+          ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.8-r1
         - |-
           RUN apk add --no-cache \
               --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main \
@@ -742,7 +752,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=semgrep
-          ARG PIP_SEMGREP_VERSION=1.162.0
+          ARG PIP_SEMGREP_VERSION=1.163.0
       pip:
         - semgrep==${PIP_SEMGREP_VERSION}
     variables:

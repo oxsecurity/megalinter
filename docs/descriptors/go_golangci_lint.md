@@ -173,7 +173,7 @@ Use "golangci-lint [command] --help" for more information about a command.
 ```dockerfile
 # Parent descriptor install
 # renovate: datasource=repology depName=alpine_edge/go versioning=loose
-ARG GO_ALPINE_VERSION=1.26.2-r0
+ARG GO_ALPINE_VERSION=1.26.3-r0
 RUN apk add --no-cache \
     --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main \
     --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
