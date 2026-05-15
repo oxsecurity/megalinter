@@ -55,17 +55,15 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=9.39.4
+ARG NPM_ESLINT_VERSION=10.3.0
 # renovate: datasource=npm depName=@eslint/eslintrc
 ARG NPM_ESLINT_ESLINTRC_VERSION=3.3.5
-# renovate: datasource=npm depName=eslint-config-airbnb-extended
-ARG NPM_ESLINT_CONFIG_AIRBNB_EXTENDED_VERSION=3.1.0
+# renovate: datasource=npm depName=@eslint/js
+ARG NPM_ESLINT_JS_VERSION=10.0.1
 # renovate: datasource=npm depName=eslint-config-prettier
 ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.1.8
-# renovate: datasource=npm depName=neostandard
-ARG NPM_NEOSTANDARD_VERSION=0.13.0
-# renovate: datasource=npm depName=eslint-plugin-import
-ARG NPM_ESLINT_PLUGIN_IMPORT_VERSION=2.32.0
+# renovate: datasource=npm depName=eslint-plugin-import-x
+ARG NPM_ESLINT_PLUGIN_IMPORT_X_VERSION=4.16.2
 # renovate: datasource=npm depName=eslint-plugin-jest
 ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.15.2
 # renovate: datasource=npm depName=eslint-plugin-n
@@ -76,10 +74,6 @@ ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.5
 ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=7.3.0
 # renovate: datasource=npm depName=eslint-plugin-vue
 ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.9.1
-# renovate: datasource=npm depName=@babel/core
-ARG NPM_BABEL_CORE_VERSION=7.29.0
-# renovate: datasource=npm depName=@babel/eslint-parser
-ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.28.6
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 #ARG__END
@@ -177,17 +171,14 @@ WORKDIR /node-deps
 RUN npm --no-cache install --ignore-scripts --omit=dev \
                 eslint@${NPM_ESLINT_VERSION} \
                 @eslint/eslintrc@${NPM_ESLINT_ESLINTRC_VERSION} \
-                eslint-config-airbnb-extended@${NPM_ESLINT_CONFIG_AIRBNB_EXTENDED_VERSION} \
+                @eslint/js@${NPM_ESLINT_JS_VERSION} \
                 eslint-config-prettier@${NPM_ESLINT_CONFIG_PRETTIER_VERSION} \
-                neostandard@${NPM_NEOSTANDARD_VERSION} \
-                eslint-plugin-import@${NPM_ESLINT_PLUGIN_IMPORT_VERSION} \
+                eslint-plugin-import-x@${NPM_ESLINT_PLUGIN_IMPORT_X_VERSION} \
                 eslint-plugin-jest@${NPM_ESLINT_PLUGIN_JEST_VERSION} \
                 eslint-plugin-n@${NPM_ESLINT_PLUGIN_N_VERSION} \
                 eslint-plugin-prettier@${NPM_ESLINT_PLUGIN_PRETTIER_VERSION} \
                 eslint-plugin-promise@${NPM_ESLINT_PLUGIN_PROMISE_VERSION} \
                 eslint-plugin-vue@${NPM_ESLINT_PLUGIN_VUE_VERSION} \
-                @babel/core@${NPM_BABEL_CORE_VERSION} \
-                @babel/eslint-parser@${NPM_BABEL_ESLINT_PARSER_VERSION} \
                 @microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION} && \
     echo "Cleaning npm cache…" \
     && (npm cache clean --force || true) \

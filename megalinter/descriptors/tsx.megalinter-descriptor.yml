@@ -17,19 +17,18 @@ linters:
 
       **Key Features:**
 
-      - **React-Specific Linting**: 90+ rules covering React best practices, hooks usage, JSX syntax, and component lifecycle patterns
+      - **React-Specific Linting**: Comprehensive rules covering React best practices, hooks usage, JSX syntax, and component lifecycle patterns
       - **TypeScript Integration**: Full TypeScript support for type-aware linting in React components with proper TSX syntax validation
       - **Hooks Rules**: Comprehensive validation of React Hooks usage patterns, dependencies, and effect cleanup
-      - **Accessibility Integration**: Built-in support for jsx-a11y plugin ensuring accessible React components
       - **Performance Optimization**: Rules to detect unnecessary re-renders, missing dependency arrays, and performance anti-patterns
       - **Modern React Patterns**: Support for latest React features including Suspense, Error Boundaries, and concurrent features
 
       ESLint requires a custom configuration file applicable to your project. You can create it by typing `npx eslint --init` in the root of your repository
-    linter_url: https://github.com/jsx-eslint/eslint-plugin-react
-    linter_repo: https://github.com/jsx-eslint/eslint-plugin-react
-    linter_rules_url: https://github.com/jsx-eslint/eslint-plugin-react#list-of-supported-rules
+    linter_url: https://github.com/Rel1cx/eslint-react
+    linter_repo: https://github.com/Rel1cx/eslint-react
+    linter_rules_url: https://eslint-react.xyz/docs/rules/overview
     linter_banner_image_url: https://d33wubrfki0l68.cloudfront.net/3b5ac7586466159bb6f237b633bfc4f5a8d5acf8/ee0a1/assets/img/posts/eslint-collective.png
-    linter_rules_configuration_url: https://github.com/jsx-eslint/eslint-plugin-react#configuration-legacy-eslintrc
+    linter_rules_configuration_url: https://eslint-react.xyz/docs/getting-started/installation
     linter_rules_inline_disable_url: https://eslint.org/docs/latest/use/configure/rules#disabling-rules
     linter_rules_ignore_config_url: https://eslint.org/docs/latest/use/configure/ignore#the-eslintignore-file
     linter_megalinter_ref_url: https://eslint.org/docs/latest/use/integrations#source-control
@@ -46,7 +45,7 @@ linters:
       - ".eslintrc.cjs"
       - "package.json:eslintConfig"
     cli_lint_mode: list_of_files
-    config_file_name: eslint.config.js
+    config_file_name: eslint.config.cjs
     cli_lint_extra_args:
       - "--no-ignore"
     cli_lint_fix_arg_name: "--fix"
@@ -68,13 +67,10 @@ linters:
           ARG NPM_TYPESCRIPT_VERSION=6.0.3
         - |-
           # renovate: datasource=npm depName=eslint
-          ARG NPM_ESLINT_VERSION=9.39.4
+          ARG NPM_ESLINT_VERSION=10.3.0
         - |-
           # renovate: datasource=npm depName=@eslint/eslintrc
           ARG NPM_ESLINT_ESLINTRC_VERSION=3.3.5
-        - |-
-          # renovate: datasource=npm depName=eslint-config-airbnb-extended
-          ARG NPM_ESLINT_CONFIG_AIRBNB_EXTENDED_VERSION=3.1.0
         - |-
           # renovate: datasource=npm depName=eslint-config-prettier
           ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.1.8
@@ -85,11 +81,8 @@ linters:
           # renovate: datasource=npm depName=eslint-plugin-prettier
           ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.5
         - |-
-          # renovate: datasource=npm depName=eslint-plugin-react
-          ARG NPM_ESLINT_PLUGIN_REACT_VERSION=7.37.5
-        - |-
-          # renovate: datasource=npm depName=@babel/eslint-parser
-          ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.28.6
+          # renovate: datasource=npm depName=@eslint-react/eslint-plugin
+          ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.7.8
         - |-
           # renovate: datasource=npm depName=prettier
           ARG NPM_PRETTIER_VERSION=3.8.3
@@ -109,12 +102,10 @@ linters:
         - typescript@${NPM_TYPESCRIPT_VERSION}
         - eslint@${NPM_ESLINT_VERSION}
         - "@eslint/eslintrc@${NPM_ESLINT_ESLINTRC_VERSION}"
-        - eslint-config-airbnb-extended@${NPM_ESLINT_CONFIG_AIRBNB_EXTENDED_VERSION}
         - eslint-config-prettier@${NPM_ESLINT_CONFIG_PRETTIER_VERSION}
         - eslint-plugin-jest@${NPM_ESLINT_PLUGIN_JEST_VERSION}
         - eslint-plugin-prettier@${NPM_ESLINT_PLUGIN_PRETTIER_VERSION}
-        - eslint-plugin-react@${NPM_ESLINT_PLUGIN_REACT_VERSION}
-        - "@babel/eslint-parser@${NPM_BABEL_ESLINT_PARSER_VERSION}"
+        - "@eslint-react/eslint-plugin@${NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION}"
         - prettier@${NPM_PRETTIER_VERSION}
         - prettyjson@${NPM_PRETTYJSON_VERSION}
         - "@typescript-eslint/eslint-plugin@${NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION}"

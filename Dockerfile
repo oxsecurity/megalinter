@@ -241,17 +241,15 @@ ARG JAVA_CHECKSTYLE_VERSION=12.1.0
 ARG PMD_VERSION=7.24.0
 
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=9.39.4
+ARG NPM_ESLINT_VERSION=10.3.0
 # renovate: datasource=npm depName=@eslint/eslintrc
 ARG NPM_ESLINT_ESLINTRC_VERSION=3.3.5
-# renovate: datasource=npm depName=eslint-config-airbnb-extended
-ARG NPM_ESLINT_CONFIG_AIRBNB_EXTENDED_VERSION=3.1.0
+# renovate: datasource=npm depName=@eslint/js
+ARG NPM_ESLINT_JS_VERSION=10.0.1
 # renovate: datasource=npm depName=eslint-config-prettier
 ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.1.8
-# renovate: datasource=npm depName=neostandard
-ARG NPM_NEOSTANDARD_VERSION=0.13.0
-# renovate: datasource=npm depName=eslint-plugin-import
-ARG NPM_ESLINT_PLUGIN_IMPORT_VERSION=2.32.0
+# renovate: datasource=npm depName=eslint-plugin-import-x
+ARG NPM_ESLINT_PLUGIN_IMPORT_X_VERSION=4.16.2
 # renovate: datasource=npm depName=eslint-plugin-jest
 ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.15.2
 # renovate: datasource=npm depName=eslint-plugin-n
@@ -262,10 +260,6 @@ ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.5
 ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=7.3.0
 # renovate: datasource=npm depName=eslint-plugin-vue
 ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.9.1
-# renovate: datasource=npm depName=@babel/core
-ARG NPM_BABEL_CORE_VERSION=7.29.0
-# renovate: datasource=npm depName=@babel/eslint-parser
-ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.28.6
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 # renovate: datasource=npm depName=standard
@@ -280,10 +274,8 @@ ARG NPM_V8R_VERSION=6.0.0
 ARG NPM_PACKAGE_JSON_LINT_VERSION=10.4.0
 # renovate: datasource=npm depName=npm-package-json-lint-config-default
 ARG NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION=9.0.1
-# renovate: datasource=npm depName=eslint-plugin-react
-ARG NPM_ESLINT_PLUGIN_REACT_VERSION=7.37.5
-# renovate: datasource=npm depName=eslint-plugin-jsx-a11y
-ARG NPM_ESLINT_PLUGIN_JSX_ALLY_VERSION=6.10.2
+# renovate: datasource=npm depName=@eslint-react/eslint-plugin
+ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.7.8
 # renovate: datasource=github-tags depName=pinterest/ktlint
 ARG KTLINT_VERSION=1.8.0
 
@@ -758,17 +750,14 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 htmlhint@${NPM_HTMLHINT_VERSION} \
                 eslint@${NPM_ESLINT_VERSION} \
                 @eslint/eslintrc@${NPM_ESLINT_ESLINTRC_VERSION} \
-                eslint-config-airbnb-extended@${NPM_ESLINT_CONFIG_AIRBNB_EXTENDED_VERSION} \
+                @eslint/js@${NPM_ESLINT_JS_VERSION} \
                 eslint-config-prettier@${NPM_ESLINT_CONFIG_PRETTIER_VERSION} \
-                neostandard@${NPM_NEOSTANDARD_VERSION} \
-                eslint-plugin-import@${NPM_ESLINT_PLUGIN_IMPORT_VERSION} \
+                eslint-plugin-import-x@${NPM_ESLINT_PLUGIN_IMPORT_X_VERSION} \
                 eslint-plugin-jest@${NPM_ESLINT_PLUGIN_JEST_VERSION} \
                 eslint-plugin-n@${NPM_ESLINT_PLUGIN_N_VERSION} \
                 eslint-plugin-prettier@${NPM_ESLINT_PLUGIN_PRETTIER_VERSION} \
                 eslint-plugin-promise@${NPM_ESLINT_PLUGIN_PROMISE_VERSION} \
                 eslint-plugin-vue@${NPM_ESLINT_PLUGIN_VUE_VERSION} \
-                @babel/core@${NPM_BABEL_CORE_VERSION} \
-                @babel/eslint-parser@${NPM_BABEL_ESLINT_PARSER_VERSION} \
                 @microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION} \
                 standard@${NPM_STANDARD_VERSION} \
                 prettier@${NPM_PRETTIER_VERSION} \
@@ -776,8 +765,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 v8r@${NPM_V8R_VERSION} \
                 npm-package-json-lint@${NPM_PACKAGE_JSON_LINT_VERSION} \
                 npm-package-json-lint-config-default@${NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION} \
-                eslint-plugin-react@${NPM_ESLINT_PLUGIN_REACT_VERSION} \
-                eslint-plugin-jsx-a11y@${NPM_ESLINT_PLUGIN_JSX_ALLY_VERSION} \
+                @eslint-react/eslint-plugin@${NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION} \
                 markdownlint-cli@${NPM_MARKDOWNLINT_CLI_VERSION} \
                 markdown-table-formatter@${NPM_MARKDOWN_TABLE_FORMATTER_VERSION} \
                 pyright@${NPM_PYRIGHT_VERSION} \
