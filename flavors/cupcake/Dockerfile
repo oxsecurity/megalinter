@@ -151,7 +151,7 @@ ARG CLJ_STYLE_VERSION=0.17.642
 # renovate: datasource=pypi depName=cfn-lint
 ARG PIP_CFN_LINT_VERSION=1.51.0
 # renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=4.1.0
+ARG NPM_JSCPD_VERSION=4.1.1
 # renovate: datasource=npm depName=stylelint
 ARG NPM_STYLELINT_VERSION=17.11.0
 # renovate: datasource=npm depName=stylelint-config-standard
