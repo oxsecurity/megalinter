@@ -74,7 +74,8 @@ def generate(schema_path: str = SCHEMA_PATH, output_path: str = OUTPUT_PATH) -> 
     enums = resolve_enums(schema.get("definitions", {}))
     properties = schema.get("properties", {})
     variables = {
-        name: slim_variable(name, raw, enums) for name, raw in sorted(properties.items())
+        name: slim_variable(name, raw, enums)
+        for name, raw in sorted(properties.items())
     }
 
     categories: dict[str, int] = {}
