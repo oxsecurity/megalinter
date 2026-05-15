@@ -1020,7 +1020,7 @@ class Linter:
         default_variables = {
             "{{SARIF_OUTPUT_FILE}}": self.sarif_output_file,
             "{{REPORT_FOLDER}}": self.report_folder,
-            "{{WORKSPACE}}": self.workspace
+            "{{WORKSPACE}}": self.workspace,
         }
         merged_map = default_variables
         if additional_variables is not None:
@@ -1427,7 +1427,9 @@ class Linter:
         }
 
         # Add other lint cli arguments if defined
-        self.cli_lint_extra_args = self.replace_vars(self.cli_lint_extra_args, additional_replace_variables)
+        self.cli_lint_extra_args = self.replace_vars(
+            self.cli_lint_extra_args, additional_replace_variables
+        )
         cmd += self.cli_lint_extra_args
 
         # Add fix argument if defined
@@ -1444,7 +1446,9 @@ class Linter:
             self.try_fix = True
 
         # Add user-defined extra arguments if defined
-        self.cli_lint_user_args = self.replace_vars(self.cli_lint_user_args, additional_replace_variables)
+        self.cli_lint_user_args = self.replace_vars(
+            self.cli_lint_user_args, additional_replace_variables
+        )
         cmd += self.cli_lint_user_args
 
         # Add config arguments if defined (except for case when no_config_if_fix is True)
@@ -1481,8 +1485,7 @@ class Linter:
 
         # Add other lint cli arguments after other arguments if defined
         self.cli_lint_extra_args_after = self.replace_vars(
-            self.cli_lint_extra_args_after,
-            additional_replace_variables
+            self.cli_lint_extra_args_after, additional_replace_variables
         )
         cmd += self.cli_lint_extra_args_after
 
