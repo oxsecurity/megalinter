@@ -251,6 +251,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 4.0.9 to **4.1.0** on 2026-05-12
   - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2026.04.15 to **2025.01.16** on 2026-05-15
   - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 10.0.107 to **10.0.108** on 2026-05-15
+  - [stylua](https://github.com/JohnnyMorganz/StyLua) from 2.0.0 to **2.0.2** on 2026-05-15
+  - [rumdl](https://github.com/rvben/rumdl) from 0.1.91 to **0.1.92** on 2026-05-15
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.12 to **0.15.13** on 2026-05-15
+  - [ruff](https://github.com/astral-sh/ruff) from 0.15.12 to **0.15.13** on 2026-05-15
+  - [checkov](https://www.checkov.io/) from 3.2.528 to **3.2.529** on 2026-05-15
+  - [semgrep](https://semgrep.dev/) from 1.162.0 to **1.163.0** on 2026-05-15
+  - [snakemake](https://snakemake.github.io/) from 9.20.0 to **9.21.0** on 2026-05-15
+  - [sqlfluff](https://www.sqlfluff.com/) from 4.1.0 to **4.2.1** on 2026-05-15
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.62.0 to **0.62.1** on 2026-05-15
 <!-- linter-versions-end -->
 
 ## [v9.4.0] - 2026-02-28

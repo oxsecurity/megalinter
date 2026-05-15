@@ -24,7 +24,7 @@ description: How to use stylua (configure, ignore files, ignore errors, help & v
 
 ## stylua documentation
 
-- Version in MegaLinter: **2.0.0**
+- Version in MegaLinter: **2.0.2**
 - Visit [Official Web Site](https://github.com/JohnnyMorganz/StyLua#readme){target=_blank}
 - See [How to configure stylua rules](https://github.com/JohnnyMorganz/StyLua?tab=readme-ov-file#configuration){target=_blank}
 - See [How to disable stylua rules in files](https://github.com/JohnnyMorganz/StyLua?tab=readme-ov-file#ignoring-parts-of-a-file){target=_blank}
@@ -99,7 +99,7 @@ stylua --config-path chktexrc.toml --check myfile.lua
 ### Help content
 
 ```shell
-stylua 2.0.0
+stylua 2.0.2
 A utility to format Lua code
 
 USAGE:
@@ -204,7 +204,7 @@ FORMATTING OPTIONS:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=github-releases depName=JohnnyMorganz/StyLua extractVersion=^v(?<version>.+)$
-ARG CARGO_STYLUA_VERSION=2.0.0
+ARG CARGO_STYLUA_VERSION=2.0.2
 FROM alpine:3.23 AS cargo-bin-stylua
 ARG TARGETARCH
 ARG CARGO_STYLUA_VERSION
