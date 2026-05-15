@@ -298,6 +298,8 @@ CVE-2026-41520
 CVE-2026-34040
 # kubescape + grype + syft + trivy: go-git CVE-2026-45022 is improper parsing of malformed git commit/tag objects affecting commit signature verification. Affected tools at their latest releases (kubescape v4.0.8, grype v0.112.0, syft v1.44.0, trivy v0.70.0) still pin go-git v5.17.x/v5.18.0. Not applicable as all four are used as static scanners on local files and do not parse attacker-controlled git objects or perform commit signature verification. Remove when upstream tools upgrade to go-git >=5.19.0.
 CVE-2026-45022
+# kubescape + grype + syft + trivy: go-billy CVE-2026-44973 is path traversal in osfs.ChrootOS when attacker-controlled paths are passed. In MegaLinter these tools run as local static scanners and do not expose go-billy filesystem APIs to untrusted external input. Remove when upstream tools upgrade to go-billy >=5.9.0.
+CVE-2026-44973
 
 # grype + syft + trivy + terragrunt: go-billy CVE-2026-44973 is a path traversal vulnerability (fixed in go-billy/v5 >=5.9.0 and go-billy/v6 >=6.0.0-alpha.1). Affected tools at their latest releases (grype v0.112.0, syft v1.44.0, trivy v0.70.0, terragrunt via alpine/terragrunt:1.15.2) still embed vulnerable versions. Not applicable as all four run as static CLI scanners on local workspace files only; they do not accept attacker-controlled filesystem paths through go-billy. Remove when upstream tools release with go-billy >=5.9.0 / >=6.0.0-alpha.1.
 CVE-2026-44973
@@ -332,5 +334,4 @@ DS014
 DS-0014
 DS026
 DS-0026
-
 
