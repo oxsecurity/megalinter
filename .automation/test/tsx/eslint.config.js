@@ -1,13 +1,19 @@
-const { FlatCompat } = require('@eslint/eslintrc');
-const js = require('@eslint/js');
-
-const compat = new FlatCompat({
-    baseDirectory: __dirname,
-    resolvePluginsRelativeTo: __dirname,
-    recommendedConfig: js.configs.recommended,
-    allConfig: js.configs.all,
-});
+const reactPlugin = require('@eslint-react/eslint-plugin');
+const tsParser = require('@typescript-eslint/parser');
 
 module.exports = [
-    ...compat.config(require('./.eslintrc.json')),
+    {
+        files: ['**/*.{ts,tsx}'],
+        languageOptions: {
+            parser: tsParser,
+            parserOptions: {
+                ecmaFeatures: {
+                    jsx: true,
+                },
+                ecmaVersion: 12,
+                sourceType: 'module',
+            },
+        },
+    },
+    reactPlugin.configs['recommended-typescript'],
 ];

@@ -1,8 +1,3 @@
-const reactPlugin = require('eslint-plugin-react');
+const reactPlugin = require('@eslint-react/eslint-plugin');
 
-module.exports = [
-    {
-        files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
-        ...reactPlugin.configs.flat.recommended, // This is not a plugin object, but a shareable config object
-    }
-];
+module.exports = [reactPlugin.configs.recommended];
