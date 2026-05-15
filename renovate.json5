@@ -101,6 +101,16 @@
   customManagers: [
     {
       customType: 'regex',
+      description: 'Update version inputs in GitHub Actions workflow files (e.g. trivy version)',
+      managerFilePatterns: [
+        '/(^|/)\\.github/workflows/.*\\.ya?ml$/',
+      ],
+      matchStrings: [
+        '# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (?:lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?\\s+version: ["\']?(?<currentValue>[^"\'\\s]+)["\']?',
+      ],
+    },
+    {
+      customType: 'regex',
       description: 'Update dockerfile sections in .megalinter-descriptor.yml files',
       managerFilePatterns: [
         '/(^|/).*megalinter(\\\\|/)constants\\.py$/',
