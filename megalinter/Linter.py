@@ -1491,22 +1491,21 @@ class Linter:
 
         if self.cli_lint_mode == "file":
             self.cli_lint_mode_file_extra_args_after = self.replace_vars(
-                self.cli_lint_mode_file_extra_args_after,
-                additional_replace_variables
+                self.cli_lint_mode_file_extra_args_after, additional_replace_variables
             )
 
             cmd += self.cli_lint_mode_file_extra_args_after
         elif self.cli_lint_mode == "list_of_files":
             self.cli_lint_mode_list_of_files_extra_args_after = self.replace_vars(
                 self.cli_lint_mode_list_of_files_extra_args_after,
-                additional_replace_variables
+                additional_replace_variables,
             )
 
             cmd += self.cli_lint_mode_list_of_files_extra_args_after
         elif self.cli_lint_mode == "project":
             self.cli_lint_mode_project_extra_args_after = self.replace_vars(
                 self.cli_lint_mode_project_extra_args_after,
-                additional_replace_variables
+                additional_replace_variables,
             )
 
             cmd += self.cli_lint_mode_project_extra_args_after
