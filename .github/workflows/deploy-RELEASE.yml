@@ -328,7 +328,8 @@ jobs:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
           fetch-depth: 0
-          persist-credentials: false
+          # Keep the GITHUB_TOKEN in the git config so `mike deploy --push` can push to gh-pages.
+          persist-credentials: true
       - name: Get release version
         id: version
         # Match only full semver tags (vN.N.N) so the moving major-version tag (e.g. `v9`) is ignored.
