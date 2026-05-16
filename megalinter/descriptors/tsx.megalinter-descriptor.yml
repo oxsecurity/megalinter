@@ -24,6 +24,38 @@ linters:
       - **Modern React Patterns**: Support for latest React features including Suspense, Error Boundaries, and concurrent features
 
       ESLint requires a custom configuration file applicable to your project. You can create it by typing `npx eslint --init` in the root of your repository
+
+      ### ESLint v10 — resolving bare imports from `eslint.config.mjs`
+
+      ESLint v10 dropped support for the legacy `.eslintrc.*` format and only loads the new flat config (`eslint.config.*`). When MegaLinter runs ESLint from its own container install (`/node-deps/node_modules`) instead of your project's local `node_modules`, Node's ESM resolver may fail to locate bare imports such as `import js from '@eslint/js'` (upstream limitation tracked in [eslint/eslint#18465](https://github.com/eslint/eslint/issues/18465)), producing errors like:
+
+      ```text
+      Error [ERR_MODULE_NOT_FOUND]: Cannot find package '@eslint/js' imported from /github/workspace/eslint.config.mjs
+      ```
+
+      Two recommended workarounds:
+
+      1. **Use `createRequire` in `eslint.config.mjs`** so bare imports fall back to CommonJS resolution (which honors `NODE_PATH` and will pick up MegaLinter's bundled `@eslint/js`, `@typescript-eslint/eslint-plugin`, etc.):
+
+          ```js
+          import { createRequire } from 'module';
+          const require = createRequire(import.meta.url);
+          const js = require('@eslint/js');
+          const tsPlugin = require('@typescript-eslint/eslint-plugin');
+          const reactPlugin = require('@eslint-react/eslint-plugin');
+          ```
+
+      2. **Install your project's dependencies in a pre-command and point MegaLinter at the project-local ESLint binary**, so ESLint runs from `<workspace>/node_modules` and resolves your config's imports naturally:
+
+          ```yaml
+          TSX_ESLINT_PRE_COMMANDS:
+            - command: yarn install --frozen-lockfile --ignore-scripts
+              cwd: workspace
+              continue_if_failed: false
+          TSX_ESLINT_CLI_EXECUTABLE: node_modules/.bin/eslint
+          ```
+
+          Replace `yarn install --frozen-lockfile --ignore-scripts` with `npm ci` (or `npm install --include=dev`) if your project uses npm.
     linter_url: https://github.com/Rel1cx/eslint-react
     linter_repo: https://github.com/Rel1cx/eslint-react
     linter_rules_url: https://eslint-react.xyz/docs/rules/overview
