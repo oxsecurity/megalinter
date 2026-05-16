@@ -82,7 +82,11 @@ Commit and push the generated files to GitHub.
 
 ### Configure Personal Access Token (Required)
 
-To enable automatic version checking and release creation, you need to configure a **repository-scoped fine-grained Personal Access Token**:
+> **Security warning — Personal Access Tokens (PAT) come with risk.**
+> Open-source projects have been heavily targeted by supply-chain attacks in recent months, and a leaked or compromised PAT can give attackers broad write access to your repository — better safe than sorry!
+> If you do not need fully automatic version sync, you can **skip the PAT entirely** and trigger the workflow manually instead (Actions tab → run the `check-new-megalinter-version` workflow, or push a commit on a branch to rebuild). Only set up a PAT if automatic daily releases are worth the trade-off.
+
+If you choose to proceed, configure a **repository-scoped fine-grained Personal Access Token**:
 
 1. Go to [GitHub Settings > Personal access tokens > Fine-grained tokens](https://github.com/settings/personal-access-tokens/new)
 2. Token name: `MegaLinter Auto-Release`

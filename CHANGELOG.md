@@ -8,23 +8,28 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
-- (Not) breaking changes, but has to be handled
-  - **ESlint-based linters have been upgraded to v10+**, so legacy .eslintrc-based config files are no longer supported, to keep using ESLint in MegaLinter you need to [migrate to flat-config](https://eslint.org/docs/latest/use/configure/migration-guide).
+[**Take 2 mn to read MegaLinter v9.5.0 announcements**](https://github.com/oxsecurity/megalinter/issues/7835)
+
+- Breaking changes
+  - **ESLint-based linters upgraded to v10+**. Legacy `.eslintrc.*` configs are no longer supported: you must [migrate to flat-config](https://eslint.org/docs/latest/use/configure/migration-guide) (`eslint.config.js`) to keep using `JAVASCRIPT_ES`, `TYPESCRIPT_ES`, `JSX_ESLINT`, `TSX_ESLINT`, and `JSON_ESLINT_PLUGIN_JSONC`.
+  - **Airbnb and Standard ESLint configs replaced** (they never shipped ESLint 9+ support):
+    - `extends: ["airbnb"]` → `extends: ["airbnb-extended"]`
+    - `extends: ["standard"]` → `extends: ["neostandard"]`
 
 - Core
-  - Security: add [more default hidden environment variables](https://megalinter.io/beta/config-variables-security/), so in case one of the 100+ linters is hacked, the attacker won't get your secrets anyway
-  - Upgrade GO version to 1.26.3
+  - Security: more [default hidden environment variables](https://megalinter.io/beta/config-variables-security/), so a compromised linter cannot leak your secrets
+  - Upgrade GO runtime to 1.26.3
 
 - New linters
-  - osv-scanner (trivy-like security linter, by Google)
-  - Add [zizmor](https://docs.zizmor.sh/) GitHub Actions static analysis.
+  - [osv-scanner](https://google.github.io/osv-scanner/): trivy-like vulnerability scanner by Google
+  - [zizmor](https://docs.zizmor.sh/): GitHub Actions static analysis
 
 - Disabled linters
-  - Disable KICS until their security issue is solved
-  - Disable spectral which is crashing
+  - KICS (until upstream security issue is fixed)
+  - Spectral (crashing)
 
 - Re-enabled linters
-  - Re-enable trivy (v0.70.0) now that the supply chain security incident (GHSA-69fq-xp46-6x23) is resolved
+  - Trivy (v0.70.0): the [supply chain security incident](https://github.com/aquasecurity/trivy-action/security/advisories/GHSA-69fq-xp46-6x23) is resolved
 
 - Deprecated linters
 
@@ -33,62 +38,38 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Media
 
 - Linters enhancements
-  - v8r (JSON/YAML schema validation): filter output to show only validation errors, suppressing "no schema found" info and success messages
-  - **ESLint upgraded from 8.57.1 (EOL) to 9.39.4 (maintenance LTS)** across `JAVASCRIPT_ES`, `TYPESCRIPT_ES`, `JSX_ESLINT`, `TSX_ESLINT`, and `JSON_ESLINT_PLUGIN_JSONC`. Legacy `.eslintrc.*` configs continue to work via the `@eslint/eslintrc` FlatCompat shim baked into each image; `eslint.config.js` flat configs are detected first. The `--no-eslintrc` and `--ignore-path` CLI flags (removed in ESLint 9) are no longer auto-injected. Required plugin bumps: `eslint-plugin-n` 16.6.2 → 18.0.1, `eslint-plugin-promise` 6.6.0 → 7.3.0.
-  - **BREAKING:** `eslint-config-airbnb@19.0.4` replaced with `eslint-config-airbnb-extended@3.1.0`; `eslint-config-standard@17.1.0` replaced with `neostandard@0.13.0`. Both predecessor packages never shipped ESLint 9 support. End-users extending the legacy names must rename `extends: ["airbnb"]` → `extends: ["airbnb-extended"]` and `extends: ["standard"]` → `extends: ["neostandard"]`.
-  - Faster builds: switched several linters to pre-built Alpine-compatible binaries / packages instead of source compilation or interpreter installs (`LUA_STYLUA` arm64, Lua runtime, `CLOJURE_CLJ_KONDO`, `KUBERNETES_KUBESCAPE`, `REPOSITORY_LS_LINT`, `ENV_DOTENV_LINTER`); also removed the sgerrand glibc-compat layer from the Clojure descriptor
+  - v8r (JSON/YAML schema validation): output now shows only validation errors (no more "no schema found" or success noise)
+  - Faster image pulls: several linters (Lua/StyLua arm64, clj-kondo, kubescape, ls-lint, dotenv-linter) now use pre-built Alpine binaries instead of compiling from source
 
 - Fixes
-  - **mega-linter-runner**: Fix `-e ENABLE_LINTERS=YAML_PRETTIER,YAML_YAMLLINT` silently dropping every value after the first comma (issue [#7500](https://github.com/oxsecurity/megalinter/issues/7500)). Commas inside an env var value are now preserved whether or not the value is shell-quoted, and the `--env=KEY=VALUE` long form is accepted. The legacy `-e KEY1=val1,KEY2=val2` shorthand for passing several env vars in one flag keeps working.
-  - Fix ConsoleLinterReporter to display log sections for all linters (not just errors)
-  - Fix ConsoleReporter to output results table and reporters logs after linters run
-  - Produce linter console reports sequentially in main process for parallel runs to avoid interleaved CI log sections
-  - Resolve latent peer-dependency conflict where `eslint-plugin-jsonc@3.1.2` required `eslint >= 9.38.0` but the image shipped `eslint@8.57.1`; the ESLint 9 upgrade fixes the mismatch.
+  - Console output: linters now show their log sections (not only on errors), the results table and reporter logs are printed after linters complete, and parallel-run logs are no longer interleaved
 
 - Reporters
-  - Enable comment reporters (GitHub, GitLab, Azure DevOps, Bitbucket) when running MegaLinter from Jenkins CI
-  - Fix: use `config.get()` instead of `os.environ.get()` for `GITHUB_REF` in GithubCommentReporter
-  - GitlabCommentReporter now activates when `GITLAB_ACCESS_TOKEN_MEGALINTER` is set (no longer requires `CI_JOB_TOKEN`)
-  - BitbucketCommentReporter: render per-linter sections as `###` headings instead of `<details>/<summary>`, since Bitbucket Cloud markdown strips raw HTML and was displaying the tags as literal text
+  - Comment reporters (GitHub, GitLab, Azure DevOps, Bitbucket) now work when running MegaLinter from **Jenkins CI**
+  - **GitlabCommentReporter** activates as soon as `GITLAB_ACCESS_TOKEN_MEGALINTER` is set (no longer requires `CI_JOB_TOKEN`)
+  - **BitbucketCommentReporter**: per-linter sections rendered as `###` headings (Bitbucket Cloud markdown was displaying the previous `<details>` HTML tags as literal text)
 
 - Flavors
 
 - Doc
-  - Migrate copilot-instructions into Claude Code Agents & Skills
-  - Add documentation for [megalinter-ado](https://github.com/DownAtTheBottomOfTheMoleHole/megalinter-ado) Azure DevOps extension
-  - Add documentation for [megalinter-mcp-server](https://github.com/DownAtTheBottomOfTheMoleHole/megalinter-mcp) MCP server
-
-- Dev
-  - Add CLAUDE.md and list of skills to help working on MegaLinter using Coding Agents (Claude Code, Github Copilot, Codex, Gemini-cli...)
-    - `/add-linter [name]` - Guided workflow for adding a new linter
-    - `/update-linter-version [linter] [version]` - Update a linter's pinned version
-    - `/review-descriptor [name]` - Audit a descriptor YAML for completeness
-    - `/fix-linter-test [name]` - Debug a failing linter test
-    - `/add-reporter [name]` - Add a new output reporter
-    - `/add-flavor [name]` - Add a new Docker flavor
-    - `/build` - Run the build system
-    - `/diagnose-config` - Debug `.mega-linter.yml` configuration issues
-    - `/fix-security-issue [CVE or description]` - Handle CVE/vulnerability reports from trivy, osv-scanner, etc.
-
-- CI
-  - Re-enable trivy-action (v0.36.0) now that the supply chain security incident is resolved
-  - Run ARM linter jobs only if the latest commit message contains "ARM" (to avoid 200 jobs for each PR)
-  - Prevent MegaLinter to push a new commit if the only updates are on markdown files
-  - Activate osv-scanner on own sources
-  - Exclude test dependencies from dependabot
-  - CI/Build performance:
-    - Enable GitHub Actions buildx layer cache (`type=gha`) on all DEV/BETA/RELEASE/ALPHA deploy workflows so warm Docker image builds reuse cached layers instead of rebuilding from scratch
-    - Split the DEV deploy workflow into a `build` producer job and 4 parallel consumer jobs (test cases, run-against-all-code, mega-linter-runner tests, Trivy scan) that share the image via the buildx cache (no registry push)
-    - Build cargo-installed tools (sarif-fmt, zizmor, shellcheck-sarif, stylua) in dedicated multi-stage builders (`FROM rust:VERSION-alpine`) built in parallel by buildx, copying only the final binaries into the runtime image — Rust toolchain no longer ships in the final image unless a linter (clippy) needs it at runtime
-    - Switch GHA buildx cache to zstd compression on all DEV/BETA/RELEASE/ALPHA deploy workflows for faster cache I/O than the default gzip
-    - Drop `fetch-depth: 0` from workflows that don't need git history (the 3 DEV jobs, `deploy-mega-linter-runner`, `build-deploy-docs`) — each cloned the full repo history (~2 min per job) but only used the working tree. Workflows that genuinely walk history (`deploy-RELEASE` doc-deploy using `git describe --tags`, the two MegaLinter workflows that diff against main) keep `fetch-depth: 0`
-    - For dependabot and renovate PRs, optimize the list of linter jobs that are triggered
+  - Add documentation for the [megalinter-ado](https://github.com/DownAtTheBottomOfTheMoleHole/megalinter-ado) Azure DevOps extension and the [megalinter-mcp-server](https://github.com/DownAtTheBottomOfTheMoleHole/megalinter-mcp) MCP server
+  - Explicitly discourage the use of Personal Access Tokens (PAT) in workflows for security reasons
 
 - mega-linter-runner
-  - Make mega-linter-runner easier to call from Agents
-    - New `--list-vars [pattern]` flag prints every MegaLinter env variable that can be passed via `-e`, with type, default, allowed values, examples, category and section. Add `--json` for machine-readable output (agent-friendly).
-    - The variable catalog is generated from `megalinter-configuration.jsonschema.json` during `make megalinter-build`
-    - Add many new test classes
+  - New `--list-vars [pattern]` flag (with `--json`) lists every MegaLinter env variable that can be passed via `-e`, with type, default, allowed values and examples (handy for AI coding agents)
+  - `-e ENABLE_LINTERS=YAML_PRETTIER,YAML_YAMLLINT` no longer silently drops values after the first comma ([#7500](https://github.com/oxsecurity/megalinter/issues/7500)). The `--env=KEY=VALUE` long form is also accepted.
+
+- Dev
+  - Add `CLAUDE.md` and a set of `/add-linter`, `/update-linter-version`, `/review-descriptor`, `/fix-linter-test`, `/add-reporter`, `/add-flavor`, `/build`, `/diagnose-config`, `/fix-security-issue` skills to help work on MegaLinter with coding agents (Claude Code, GitHub Copilot, Codex, gemini-cli…)
+  - Migrate copilot-instructions into Claude Code Agents & Skills
+
+- CI
+  - Run ARM linter jobs only when the commit message contains "ARM" (avoids 200 jobs per PR)
+  - Do not push a fix commit if only markdown files were updated
+  - Run osv-scanner on MegaLinter's own sources
+  - Optimize the linter-job matrix for dependabot and renovate PRs
+  - Exclude test dependencies from dependabot
+  - Faster Docker image builds: enable buildx layer cache (`type=gha`, zstd-compressed) on all deploy workflows, split the DEV pipeline into parallel jobs sharing the image via cache, and build cargo-based tools (sarif-fmt, zizmor, shellcheck-sarif, stylua) in parallel multi-stage builders so the Rust toolchain no longer ships in the final image (except for clippy)
 
 - Linter versions upgrades (N)
   - [isort](https://pycqa.github.io/isort/) from 8.0.0 to **8.0.1** on 2026-02-28

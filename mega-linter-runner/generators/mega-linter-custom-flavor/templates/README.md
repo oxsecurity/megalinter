@@ -33,13 +33,19 @@ This custom flavor is automatically kept up to date with MegaLinter releases:
 
 ## Configuration requirements
 
-### Required: Personal Access Token
+### Optional: Personal Access Token (use with care)
 
-For automatic version checking to work, a `PAT_TOKEN` secret must be configured as a **repository-scoped fine-grained token** with:
+> **Security warning**: Using a Personal Access Token (PAT) is **not recommended**. Open-source projects have been heavily targeted by supply-chain attacks in recent months, and a leaked or compromised PAT can give attackers broad write access to your repository — better safe than sorry!
+> If you do not need fully automatic daily version sync, you can skip the PAT entirely and trigger the `check-new-megalinter-version` workflow manually whenever you want to upgrade.
+
+If you decide automatic daily releases are worth the trade-off, configure a `PAT_TOKEN` secret as a **repository-scoped fine-grained token** with:
+
 - **Repository access**: Only select repositories (select this repository)
 - **Repository permissions**:
   - Contents: Read and write
   - Actions: Read and write
+
+Rotate the token regularly.
 
 See the [Custom Flavors documentation](https://megalinter.io/beta/custom-flavors/) for detailed setup instructions.
 
