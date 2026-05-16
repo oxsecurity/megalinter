@@ -194,6 +194,19 @@ class UserNotificationsTest(unittest.TestCase):
         register_user_notification(master, key="demo", template="{values}", value=None)
         self.assertEqual(build_user_notifications(master), [])
 
+    def test_template_without_values_placeholder_renders_without_values(self):
+        master = _Master()
+        register_user_notification(
+            master,
+            key="announcement",
+            template="📣 Read the announcement at https://example.com",
+            value=None,
+        )
+        rendered = build_user_notifications(master)
+        self.assertEqual(
+            rendered, ["📣 Read the announcement at https://example.com"]
+        )
+
     def test_build_returns_empty_when_no_notifications(self):
         master = _Master()
         self.assertEqual(build_user_notifications(master), [])

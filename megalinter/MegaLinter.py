@@ -31,8 +31,23 @@ from megalinter.constants import (
 )
 from megalinter.logger import display_header, initialize_logger, manage_upgrade_message
 from megalinter.reporters.jenkins_ci_vars import apply_jenkins_ci_vars
-from megalinter.utils_reporter import log_section_end, log_section_start
+from megalinter.utils_reporter import (
+    log_section_end,
+    log_section_start,
+    register_user_notification,
+)
 from multiprocessing_logging import install_mp_handler, uninstall_mp_handler
+
+MEGALINTER_9_5_ANNOUNCEMENT_KEY = "megalinter_9_5_announcement"
+MEGALINTER_9_5_ANNOUNCEMENT_URL = (
+    "https://github.com/oxsecurity/megalinter/issues/7835"
+)
+MEGALINTER_9_5_ANNOUNCEMENT_TEMPLATE = (
+    "📣 **MegaLinter 9.5.0 is out!** "
+    "Discover the new features and security recommendations in the "
+    f"[release announcement]({MEGALINTER_9_5_ANNOUNCEMENT_URL}). "
+    "(Skip this info by defining `SECURITY_SUGGESTIONS: false`)"
+)
 
 
 # initialize worker processes
@@ -350,6 +365,17 @@ class Megalinter:
         ):
             self.flavor_suggestions = flavor_factory.get_megalinter_flavor_suggestions(
                 self.active_linters
+            )
+
+        # Register default MegaLinter 9.5.0 release announcement notification.
+        # Disabled when SECURITY_SUGGESTIONS=false.
+        if (
+            config.get(self.request_id, "SECURITY_SUGGESTIONS", "true") == "true"
+        ):
+            register_user_notification(
+                self,
+                key=MEGALINTER_9_5_ANNOUNCEMENT_KEY,
+                template=MEGALINTER_9_5_ANNOUNCEMENT_TEMPLATE,
             )
 
         # Run user-defined commands

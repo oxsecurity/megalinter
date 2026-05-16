@@ -102,6 +102,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Comment reporters (GitHub, GitLab, Azure DevOps, Bitbucket) now work when running MegaLinter from **Jenkins CI**
   - **GitlabCommentReporter** activates as soon as `GITLAB_ACCESS_TOKEN_MEGALINTER` is set (no longer requires `CI_JOB_TOKEN`)
   - **BitbucketCommentReporter**: per-linter sections rendered as `###` headings (Bitbucket Cloud markdown was displaying the previous `<details>` HTML tags as literal text)
+  - Display a default user notification on PR/console reports inviting users to read the [MegaLinter 9.5.0 release announcement](https://github.com/oxsecurity/megalinter/issues/7835). Can be disabled by setting `SECURITY_SUGGESTIONS: false`.
 
 - Flavors
   - **Multi-arch images**: In custom flavors, linters can now build for `linux/arm64` in addition to `linux/amd64` whenever possible (Apple Silicon, AWS Graviton, Ampere…)

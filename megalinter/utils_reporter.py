@@ -302,16 +302,18 @@ def build_user_notifications(master):
     rendered = []
     for entry in notifications.values():
         values = sorted(set(entry.get("values", [])))
-        if not values:
+        template = entry.get("template", "") or ""
+        # Skip entries whose template expects values but has none
+        if not values and "{values}" in template:
             continue
-        formatted_values = ", ".join(f"`{v}`" for v in values)
+        formatted_values = ", ".join(f"`{v}`" for v in values) if values else ""
         try:
-            line = entry["template"].format(
+            line = template.format(
                 values=formatted_values, **(entry.get("extras", {}) or {})
             )
         except (KeyError, IndexError):
             # Fall back to the raw template if a placeholder is missing
-            line = entry["template"]
+            line = template
         rendered.append(line)
     return rendered
 

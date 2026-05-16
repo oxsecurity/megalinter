@@ -29788,6 +29788,16 @@
       "x-order": 800010,
       "x-section": "SECURITY"
     },
+    "SECURITY_SUGGESTIONS": {
+      "$id": "#/properties/SECURITY_SUGGESTIONS",
+      "default": true,
+      "description": "Provides security-related suggestions and MegaLinter release announcements in reports",
+      "title": "Security suggestions",
+      "type": "boolean",
+      "x-category": "GENERAL",
+      "x-order": 700120,
+      "x-section": "OUTPUT"
+    },
     "SHOW_ELAPSED_TIME": {
       "$id": "#/properties/SHOW_ELAPSED_TIME",
       "default": false,
