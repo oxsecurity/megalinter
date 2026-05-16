@@ -48,9 +48,7 @@ class EslintLinterTest(unittest.TestCase):
 
             linter = _make_linter()
             master = _Master()
-            linter._gate_on_eslint10_config(
-                {"workspace": workspace, "master": master}
-            )
+            linter._gate_on_eslint10_config({"workspace": workspace, "master": master})
 
             self.assertTrue(linter.is_active)
             self.assertFalse(linter.disabled)
@@ -65,9 +63,7 @@ class EslintLinterTest(unittest.TestCase):
 
             linter = _make_linter("JAVASCRIPT_ES")
             master = _Master()
-            linter._gate_on_eslint10_config(
-                {"workspace": workspace, "master": master}
-            )
+            linter._gate_on_eslint10_config({"workspace": workspace, "master": master})
 
             self.assertFalse(linter.is_active)
             self.assertTrue(linter.disabled)
@@ -89,9 +85,7 @@ class EslintLinterTest(unittest.TestCase):
 
             linter = _make_linter("TYPESCRIPT_ES")
             master = _Master()
-            linter._gate_on_eslint10_config(
-                {"workspace": workspace, "master": master}
-            )
+            linter._gate_on_eslint10_config({"workspace": workspace, "master": master})
 
             self.assertFalse(linter.is_active)
             entry = master.user_notifications[ESLINT10_NOTIFICATION_KEY]
@@ -104,9 +98,7 @@ class EslintLinterTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as workspace:
             linter = _make_linter()
             master = _Master()
-            linter._gate_on_eslint10_config(
-                {"workspace": workspace, "master": master}
-            )
+            linter._gate_on_eslint10_config({"workspace": workspace, "master": master})
 
             self.assertTrue(linter.is_active)
             self.assertFalse(linter.disabled)
@@ -136,9 +128,7 @@ class EslintLinterTest(unittest.TestCase):
             rendered = build_user_notifications(master)
             self.assertEqual(len(rendered), 1)
             notice = rendered[0]
-            self.assertIn(
-                "`JAVASCRIPT_ES`, `JSX_ESLINT`, `TYPESCRIPT_ES`", notice
-            )
+            self.assertIn("`JAVASCRIPT_ES`, `JSX_ESLINT`, `TYPESCRIPT_ES`", notice)
             self.assertIn(".eslintrc.yml", notice)
             self.assertIn(ESLINT_FLAT_CONFIG_MIGRATION_URL, notice)
 
@@ -197,15 +187,11 @@ class UserNotificationsTest(unittest.TestCase):
             value="y",
             extras={"detail": "second"},
         )
-        self.assertEqual(
-            master.user_notifications["demo"]["extras"]["detail"], "first"
-        )
+        self.assertEqual(master.user_notifications["demo"]["extras"]["detail"], "first")
 
     def test_empty_values_are_skipped(self):
         master = _Master()
-        register_user_notification(
-            master, key="demo", template="{values}", value=None
-        )
+        register_user_notification(master, key="demo", template="{values}", value=None)
         self.assertEqual(build_user_notifications(master), [])
 
     def test_build_returns_empty_when_no_notifications(self):
@@ -214,12 +200,8 @@ class UserNotificationsTest(unittest.TestCase):
 
     def test_renders_multiple_independent_notifications(self):
         master = _Master()
-        register_user_notification(
-            master, key="a", template="A: {values}", value="1"
-        )
-        register_user_notification(
-            master, key="b", template="B: {values}", value="2"
-        )
+        register_user_notification(master, key="a", template="A: {values}", value="1")
+        register_user_notification(master, key="b", template="B: {values}", value="2")
         rendered = build_user_notifications(master)
         self.assertIn("A: `1`", rendered)
         self.assertIn("B: `2`", rendered)
