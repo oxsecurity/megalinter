@@ -12072,6 +12072,34 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#claude-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Claude Code
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Claude Code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#available-skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Available skills
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#how-to-contribute" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -12571,6 +12599,34 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#claude-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Claude Code
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Claude Code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#available-skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Available skills
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#how-to-contribute" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -12886,6 +12942,56 @@
 <h1 id="contributing">Contributing</h1>
 <p><img alt="👋" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44b.svg" title=":wave:"> Hi there!
 We're thrilled that you'd like to contribute to this project. Your help is essential for keeping it great.</p>
+<h2 id="claude-code">Claude Code</h2>
+<p>MegaLinter ships with a <a href="../CLAUDE.md"><code>CLAUDE.md</code></a> file and a set of Claude Code skills that automate the most common contribution tasks. If you use <a href="https://claude.ai/code">Claude Code</a>, these skills handle the repetitive work so you can focus on the logic.</p>
+<h3 id="available-skills">Available skills</h3>
+<table>
+<thead>
+<tr>
+<th>Skill</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/add-linter [name]</code></td>
+<td>Guided workflow: descriptor, fixtures, build, changelog</td>
+</tr>
+<tr>
+<td><code>/update-linter-version [linter] [version]</code></td>
+<td>Bump a linter's pinned version and rebuild</td>
+</tr>
+<tr>
+<td><code>/review-descriptor [name]</code></td>
+<td>Audit a descriptor YAML for completeness and correctness</td>
+</tr>
+<tr>
+<td><code>/fix-linter-test [name]</code></td>
+<td>Debug a failing linter test (fixtures, regex, Docker)</td>
+</tr>
+<tr>
+<td><code>/add-reporter [name]</code></td>
+<td>Add a new output reporter</td>
+</tr>
+<tr>
+<td><code>/add-flavor [name]</code></td>
+<td>Add a new Docker flavor</td>
+</tr>
+<tr>
+<td><code>/build</code></td>
+<td>Run <code>make megalinter-build</code> to regenerate all generated files</td>
+</tr>
+<tr>
+<td><code>/diagnose-config</code></td>
+<td>Debug a <code>.mega-linter.yml</code> configuration</td>
+</tr>
+<tr>
+<td><code>/fix-security-issue [CVE]</code></td>
+<td>Handle CVE reports from trivy / osv-scanner (upgrade or justified ignore)</td>
+</tr>
+</tbody>
+</table>
+<p>See <a href="../CLAUDE.md"><code>CLAUDE.md</code></a> for architecture notes, coding conventions, and the full list of agents and rules that Claude Code uses in this repository.</p>
 <h2 id="how-to-contribute">How to Contribute</h2>
 <h3 id="1-create-an-issue">1. Create an issue</h3>
 <p>Report problems or suggest improvements by <a href="https://github.com/oxsecurity/megalinter/issues">creating an issue</a>.</p>
@@ -13095,6 +13201,9 @@ hatch shell
 <p>Every time a change is made to a <code>.md</code> file it will automatically update if the server is up.</p>
 <p>Once you think everything is correct run <code>make megalinter-build --doc</code> or  <code>bash build.sh --doc</code> and it will generate all the rest!</p>
 <h3 id="add-a-new-linter">Add a new linter</h3>
+<blockquote>
+<p><strong>With Claude Code</strong>: run <code>/add-linter [name]</code> for a guided, step-by-step workflow that handles the descriptor, fixtures, build, and changelog automatically.</p>
+</blockquote>
 <p>Each linter must:</p>
 <ul>
 <li>Be defined in a descriptor file. Few properties are required (<a href="https://megalinter.io/json-schemas/descriptor.html">see json schema documentation</a>), but please think to input doc URLs and <code>ide</code> section for documentation</li>

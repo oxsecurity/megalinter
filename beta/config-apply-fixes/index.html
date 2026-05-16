@@ -12350,16 +12350,26 @@
 </ul>
 <h2 id="apply-fixes-issues">Apply fixes issues</h2>
 <p>You may see GitHub permission errors, or workflows not running on the new commit.</p>
+<blockquote>
+<p><strong>Security warning — Personal Access Tokens (PAT) are NOT recommended.</strong>
+Open-source projects have been heavily targeted by supply-chain attacks in recent months, and a leaked or compromised PAT can give attackers broad write access to your repository — better safe than sorry!
+Before adding a <code>PAT</code> secret, ask yourself if you really need workflows to re-trigger automatically after MegaLinter pushes a fix commit. In most cases the simpler and safer workaround is enough:</p>
+<ul>
+<li><strong>Manually re-run the failed workflow</strong> from the GitHub Actions tab, or</li>
+<li><strong>Push another commit</strong> on the branch (even an empty one: <code>git commit --allow-empty -m "trigger CI"</code>) so GitHub re-runs the workflows.</li>
+</ul>
+<p>Only set up a PAT if you fully understand the trade-off. If you do, use a <strong>fine-grained token scoped to a single repository</strong> with the <strong>minimum required permissions</strong>, and rotate it regularly.</p>
+</blockquote>
 <p>To solve these issues, apply one of the following solutions.</p>
 <ul>
-<li>Method 1: The most secured<ul>
+<li>Method 1: The most secured (still discouraged — read the warning above)<ul>
 <li><a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-fine-grained-personal-access-token">Create a Fine-Grained Personal Access Token</a>, scoped only to your repository and with <strong>Contents: Read/Write</strong>, then copy the PAT value</li>
 <li><a href="https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-an-environment">Define environment secret variable</a> named <strong>PAT</strong> on your repository, and paste the PAT value</li>
 <li>Update your GitHub Actions workflow to add the environment name</li>
 </ul>
 </li>
 </ul>
-<p>-- Method 2: Easier, but any contributor with write access can see your Personal Access Token, so use it only on private repositories.
+<p>-- Method 2: Easier, but <strong>strongly discouraged</strong> — any contributor with write access can see your Personal Access Token, so use it only on private repositories.
 - <a href="https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token#creating-a-token">Create a Classic Personal Access Token</a>, then copy the PAT value
 - <a href="https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository">Define secret variable</a> named <strong>PAT</strong> on your repository, and paste the PAT value</p>
 <h2 id="notes">Notes</h2>

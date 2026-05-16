@@ -12552,7 +12552,7 @@
 <p><strong>Workaround: Restricted to LWC</strong></p>
 <h2 id="code-analyzer-lwc-documentation">code-analyzer-lwc documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>5.10.2</strong></li>
+<li>Version in MegaLinter: <strong>5.12.0</strong></li>
 <li>Visit <a href="https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://eslint.org/docs/latest/use/configure" target="_blank">How to configure code-analyzer-lwc rules</a><ul>
 <li>If custom <code>code-analyzer.yml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/code-analyzer.yml" target="_blank">code-analyzer.yml</a> will be used</li>
@@ -12682,7 +12682,7 @@
 <td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" data-desc-position="bottom"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/salesforce/">salesforce</a></td>
 <td style="text-align: left;">Optimized for Salesforce based projects</td>
-<td style="text-align: center;">57</td>
+<td style="text-align: center;">59</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta" data-desc-position="bottom"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta"></a> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce" data-desc-position="bottom"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce"></a></td>
 </tr>
 </tbody>
@@ -12705,12 +12705,12 @@
 <pre><code class="language-shell">sf code-analyzer run --rule-selector eslint:LWC --workspace . --target '**/lwc/**/*.js' --output-file report.csv
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell"> ›   Warning: @salesforce/cli update available from 2.128.5 to 2.132.14.
-Analyze your code with a selection of rules to ensure good coding practices.
+<pre><code class="language-shell">Analyze your code with a selection of rules to ensure good coding practices.
 
 USAGE
   $ sf code-analyzer run [--flags-dir &lt;value&gt;] [-w &lt;value&gt;...] [-t &lt;value&gt;...]
     [-r &lt;value&gt;...] [-s &lt;value&gt;] [-v detail|table] [-f &lt;value&gt;...] [-c &lt;value&gt;]
+    [--include-fixes] [--include-suggestions] [--no-suppressions]
 
 FLAGS
   -c, --config-file=&lt;value&gt;         Path to the configuration file used to
@@ -12733,19 +12733,24 @@ FLAGS
                                     &lt;options: detail|table&gt;
   -w, --workspace=&lt;value&gt;...        [default: .] Set of files that make up your
                                     workspace.
+      --include-fixes               Include fix data for violations when
+                                    available.
+      --include-suggestions         Include suggestion data for violations when
+                                    available.
+      --no-suppressions             Disable processing of inline and bulk
+                                    suppression markers.
 
 GLOBAL FLAGS
   --flags-dir=&lt;value&gt;  Import flag values from a directory.
 
- ›   Warning: @salesforce/cli update available from 2.128.5 to 2.132.14.
 
 Streaming logs in real time to:
-    /tmp/sfca-2026_05_01_19_57_28_225.log
+    /tmp/sfca-2026_05_16_14_19_09_597.log
 
-Selecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 0%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 14%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 28%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 30%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 31%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 32%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 33%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 34%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 35%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 36%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 37%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 38%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 39%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 40%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 41%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 42%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 53%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 57%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 62%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 72%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 74%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 75%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 75%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 84%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 85%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 87%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 96%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 98%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 99%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 100%; Elapsed time: 1sSelecting rules... done.
+Selecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 0%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 14%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 28%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 30%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 31%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 32%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 33%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 34%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 35%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 36%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 37%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 38%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 39%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 40%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 41%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 42%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 53%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 57%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 58%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 59%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 64%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 74%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 75%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 75%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 84%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 85%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 87%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 96%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 98%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 99%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, sfge; Completion: 100%; Elapsed time: 1sSelecting rules... done.
 
   #    Name                                                              Engine   Severity       Tag
- ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
   1    @lwc/lwc-platform/no-aura                                         eslint   3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
   2    @lwc/lwc-platform/no-aura-libs                                    eslint   3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
   3    @lwc/lwc-platform/no-community-import                             eslint   3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
@@ -12776,7 +12781,7 @@ Selecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, s
   28   @lwc/lwc-platform/no-site-import                                  eslint   3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
   29   @lwc/lwc-platform/no-wire-service                                 eslint   3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
   30   @lwc/lwc-platform/valid-dynamic-import-hint                       eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  31   @lwc/lwc/newer-version-available                                  eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  31   @lwc/lwc/newer-version-available                                  eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript, Fixable
   32   @lwc/lwc/no-api-reassignments                                     eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
   33   @lwc/lwc/no-async-operation                                       eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
   34   @lwc/lwc/no-attributes-during-construction                        eslint   3 (Moderate)   Recommended, LWC, ErrorProne, JavaScript
@@ -12799,7 +12804,7 @@ Selecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, s
   51   import/named                                                      eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
   52   import/namespace                                                  eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
   53   jest/expect-expect                                                eslint   5 (Info)       Recommended, LWC, BestPractices, JavaScript
-  54   jest/no-alias-methods                                             eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  54   jest/no-alias-methods                                             eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript, Fixable
   55   jest/no-commented-out-tests                                       eslint   5 (Info)       Recommended, LWC, BestPractices, JavaScript
   56   jest/no-conditional-expect                                        eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
   57   jest/no-disabled-tests                                            eslint   5 (Info)       Recommended, LWC, BestPractices, JavaScript
@@ -12808,14 +12813,14 @@ Selecting rules... Eligible engines: retire-js, regex, eslint, flow, pmd, cpd, s
   60   jest/no-focused-tests                                             eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
   61   jest/no-identical-title                                           eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
   62   jest/no-interpolation-in-snapshots                                eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
-  63   jest/no-jasmine-globals                                           eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  63   jest/no-jasmine-globals                                           eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript, Fixable
   64   jest/no-mocks-import                                              eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
   65   jest/no-standalone-expect                                         eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  66   jest/no-test-prefixes                                             eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  66   jest/no-test-prefixes                                             eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript, Fixable
   67   jest/valid-describe-callback                                      eslint   2 (High)       Recommended, LWC, ErrorProne, JavaScript
-  68   jest/valid-expect                                                 eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  68   jest/valid-expect                                                 eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript, Fixable
   69   jest/valid-expect-in-promise                                      eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
-  70   jest/valid-title                                                  eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript
+  70   jest/valid-title                                                  eslint   3 (Moderate)   Recommended, LWC, BestPractices, JavaScript, Fixable
 
 
 
@@ -12825,7 +12830,7 @@ Found 70 rule(s) from 1 engine(s):
     70 eslint rule(s) found.
 
 Additional log information written to:
-    /tmp/sfca-2026_05_01_19_57_28_225.log
+    /tmp/sfca-2026_05_16_14_19_09_597.log
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
@@ -12833,11 +12838,11 @@ Additional log information written to:
 </ul>
 <pre><code class="language-dockerfile"># Parent descriptor install
 # renovate: datasource=npm depName=@salesforce/cli
-ARG NPM_SALESFORCE_CLI_VERSION=2.128.5
+ARG NPM_SALESFORCE_CLI_VERSION=2.134.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.25.17
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.27.17
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=7.7.1
+ARG SFDX_HARDIS_VERSION=7.13.0
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION} \
@@ -12847,7 +12852,7 @@ RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACK
 ENV SF_AUTOUPDATE_DISABLE=true SF_CLI_DISABLE_AUTOUPDATE=true
 # Linter install
 # renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
-ARG SALESFORCE_CODE_ANALYZER_VERSION=5.10.2
+ARG SALESFORCE_CODE_ANALYZER_VERSION=5.12.0
 RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
     &amp;&amp; (npm cache clean --force || true) \
     &amp;&amp; rm -rf /root/.npm/_cacache

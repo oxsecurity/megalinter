@@ -10371,6 +10371,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#jenkins-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Jenkins Support
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12318,6 +12329,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#jenkins-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Jenkins Support
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12362,7 +12384,7 @@
             -e BUILD_BUILD_ID=$(Build.BuildId) \
             -e BUILD_REPOSITORY_ID=$(Build.Repository.ID) \
             -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
-            oxsecurity/megalinter:v9
+            ghcr.io/oxsecurity/megalinter:v9
         displayName: Run MegaLinter
 </code></pre>
 <ul>
@@ -12428,6 +12450,8 @@
 </tr>
 </tbody>
 </table>
+<h2 id="jenkins-support">Jenkins Support</h2>
+<p>This reporter also works when MegaLinter is triggered from a Jenkins Multibranch Pipeline. See <a href="../../install-jenkins/#pr-comment-reporting-from-jenkins">Jenkins installation guide</a> for details.</p>
 
 
 

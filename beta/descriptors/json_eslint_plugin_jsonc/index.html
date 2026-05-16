@@ -12601,10 +12601,7 @@
 </ul>
 </li>
 <li>See <a href="https://eslint.org/docs/latest/use/configure/rules#disabling-rules" target="_blank">How to disable eslint-plugin-jsonc rules in files</a></li>
-<li>See <a href="https://eslint.org/docs/latest/user-guide/configuring/ignoring-code#the-eslintignore-file" target="_blank">How to ignore files and directories with eslint-plugin-jsonc</a><ul>
-<li>You can define a <code>.eslintignore</code> file to ignore files and folders</li>
-</ul>
-</li>
+<li>See <a href="https://eslint.org/docs/latest/user-guide/configuring/ignoring-code#the-eslintignore-file" target="_blank">How to ignore files and directories with eslint-plugin-jsonc</a></li>
 <li>See <a href="https://ota-meshi.github.io/eslint-plugin-jsonc/rules/" target="_blank">Index of problems detected by eslint-plugin-jsonc</a></li>
 </ul>
 <p><a href="https://github.com/ota-meshi/eslint-plugin-jsonc" target="_blank"><img alt="eslint-plugin-jsonc - GitHub" src="https://gh-card.dev/repos/ota-meshi/eslint-plugin-jsonc.svg?fullname="></a></p>
@@ -12758,13 +12755,13 @@
 <h3 id="example-calls">Example calls</h3>
 <pre><code class="language-shell">eslint myfile.json
 </code></pre>
-<pre><code class="language-shell">eslint -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.json
+<pre><code class="language-shell">eslint -c .eslintrc-json.json --no-ignore myfile.json
 </code></pre>
-<pre><code class="language-shell">eslint -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.json5
+<pre><code class="language-shell">eslint -c .eslintrc-json.json --no-ignore myfile.json5
 </code></pre>
-<pre><code class="language-shell">eslint -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.jsonc
+<pre><code class="language-shell">eslint -c .eslintrc-json.json --no-ignore myfile.jsonc
 </code></pre>
-<pre><code class="language-shell">eslint --fix -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.json
+<pre><code class="language-shell">eslint --fix -c .eslintrc-json.json --no-ignore myfile.json
 </code></pre>
 <h3 id="help-content">Help content</h3>
 <pre><code class="language-shell">eslint [options] file.js [file.js] [dir]
@@ -12833,7 +12830,9 @@ Miscellaneous:
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=8.57.1
+ARG NPM_ESLINT_VERSION=10.3.0
+# renovate: datasource=npm depName=@eslint/eslintrc
+ARG NPM_ESLINT_ESLINTRC_VERSION=3.3.5
 # renovate: datasource=npm depName=eslint-plugin-jsonc
 ARG NPM_ESLINT_PLUGIN_JSONC_VERSION=3.1.2
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
@@ -12841,7 +12840,8 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 </code></pre>
 <ul>
 <li>NPM packages (node.js):<ul>
-<li><a href="https://www.npmjs.com/package/eslint/v/8.57.1">eslint@8.57.1</a></li>
+<li><a href="https://www.npmjs.com/package/eslint/v/10.3.0">eslint@10.3.0</a></li>
+<li><a href="https://www.npmjs.com/package/@eslint/eslintrc/v/3.3.5">@eslint/eslintrc@3.3.5</a></li>
 <li><a href="https://www.npmjs.com/package/eslint-plugin-jsonc">eslint-plugin-jsonc</a></li>
 <li><a href="https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/3.1.0">@microsoft/eslint-formatter-sarif@3.1.0</a></li>
 </ul>

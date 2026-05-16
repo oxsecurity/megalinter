@@ -12545,7 +12545,7 @@
 </ul>
 <h2 id="clj-kondo-documentation">clj-kondo documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>2026.04.15</strong></li>
+<li>Version in MegaLinter: <strong>2025.01.16</strong></li>
 <li>Visit <a href="https://github.com/borkdude/clj-kondo#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/borkdude/clj-kondo/blob/master/doc/config.md#configuration" target="_blank">How to configure clj-kondo rules</a><ul>
 <li>If custom <code>.clj-kondo/config.edn</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.clj-kondo/config.edn" target="_blank">.clj-kondo/config.edn</a> will be used</li>
@@ -12702,14 +12702,14 @@
 <td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" data-desc-position="bottom"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/cupcake/">cupcake</a></td>
 <td style="text-align: left;">MegaLinter for the most commonly used languages</td>
-<td style="text-align: center;">90</td>
+<td style="text-align: center;">92</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta" data-desc-position="bottom"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"></a> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake" data-desc-position="bottom"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"></a></td>
 </tr>
 <tr>
 <td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" data-desc-position="bottom"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/java/">java</a></td>
 <td style="text-align: left;">Optimized for JAVA based projects</td>
-<td style="text-align: center;">55</td>
+<td style="text-align: center;">57</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta" data-desc-position="bottom"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta"></a> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-java" data-desc-position="bottom"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-java"></a></td>
 </tr>
 </tbody>
@@ -12731,7 +12731,7 @@
 <pre><code class="language-shell">clj-kondo --lint --config .clj-kondo/config.edn myfile.clj
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">clj-kondo v2026.04.15
+<pre><code class="language-shell">clj-kondo v2025.01.16
 
 Options:
 
@@ -12749,19 +12749,17 @@ Options:
     directory. If --cache is false, this option will be ignored.
 
   --cache: if false, won't use cache. Otherwise, will try to resolve cache
-    using `--cache-dir`. If `--cache-dir` is not set, cache is resolved using the
-    nearest `.clj-kondo` directory in the current and parent directories.
+  using `--cache-dir`. If `--cache-dir` is not set, cache is resolved using the
+  nearest `.clj-kondo` directory in the current and parent directories.
 
-  --config &lt;config&gt;: extra config that is merged. May be a file or an EDN expression.
-    See https://github.com/clj-kondo/clj-kondo/blob/master/doc/config.md.
+  --config &lt;config&gt;: extra config that is merged. May be a file or an EDN expression. See https://github.com/clj-kondo/clj-kondo/blob/master/doc/config.md.
 
   --config-dir &lt;config-dir&gt;: use this config directory instead of auto-detected
     .clj-kondo dir.
 
   --parallel: lint sources in parallel.
 
-  --dependencies: don't report any findings. Useful for populating cache while linting
-    dependencies.
+  --dependencies: don't report any findings. Useful for populating cache while linting dependencies.
 
   --copy-configs: copy configs from dependencies while linting.
 
@@ -12773,8 +12771,6 @@ Options:
   --report-level &lt;level&gt;: minimum severity for which to report.  Supported values:
     info, warning, error.  The default level if unspecified is info.
 
-  --repro: ignore home dir configuration
-
   --debug: print debug information.
 
 </code></pre>
@@ -12782,56 +12778,12 @@ Options:
 <ul>
 <li>Dockerfile commands :</li>
 </ul>
-<pre><code class="language-dockerfile"># Parent descriptor install
-# renovate: datasource=github-tags depName=sgerrand/alpine-pkg-glibc
-ARG ALPINE_GLIBC_PACKAGE_VERSION=2.34-r0
-ENV LANG=C.UTF-8
-RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases/download" &amp;&amp; \
-    ALPINE_GLIBC_BASE_PACKAGE_FILENAME="glibc-$ALPINE_GLIBC_PACKAGE_VERSION.apk" &amp;&amp; \
-    ALPINE_GLIBC_BIN_PACKAGE_FILENAME="glibc-bin-$ALPINE_GLIBC_PACKAGE_VERSION.apk" &amp;&amp; \
-    ALPINE_GLIBC_I18N_PACKAGE_FILENAME="glibc-i18n-$ALPINE_GLIBC_PACKAGE_VERSION.apk" &amp;&amp; \
-    apk add --no-cache --virtual=.build-dependencies wget ca-certificates &amp;&amp; \
-    echo \
-        "-----BEGIN PUBLIC KEY-----\
-        MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApZ2u1KJKUu/fW4A25y9m\
-        y70AGEa/J3Wi5ibNVGNn1gT1r0VfgeWd0pUybS4UmcHdiNzxJPgoWQhV2SSW1JYu\
-        tOqKZF5QSN6X937PTUpNBjUvLtTQ1ve1fp39uf/lEXPpFpOPL88LKnDBgbh7wkCp\
-        m2KzLVGChf83MS0ShL6G9EQIAUxLm99VpgRjwqTQ/KfzGtpke1wqws4au0Ab4qPY\
-        KXvMLSPLUp7cfulWvhmZSegr5AdhNw5KNizPqCJT8ZrGvgHypXyiFvvAH5YRtSsc\
-        Zvo9GI2e2MaZyo9/lvb+LbLEJZKEQckqRj4P26gmASrZEPStwc+yqy1ShHLA0j6m\
-        1QIDAQAB\
-        -----END PUBLIC KEY-----" | sed 's/   */\\n/g' &gt; "/etc/apk/keys/sgerrand.rsa.pub" &amp;&amp; \
-    wget --quiet --tries=10 --waitretry=10 \
-        "$ALPINE_GLIBC_BASE_URL/$ALPINE_GLIBC_PACKAGE_VERSION/$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
-        "$ALPINE_GLIBC_BASE_URL/$ALPINE_GLIBC_PACKAGE_VERSION/$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
-        "$ALPINE_GLIBC_BASE_URL/$ALPINE_GLIBC_PACKAGE_VERSION/$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" &amp;&amp; \
-    mv /etc/nsswitch.conf /etc/nsswitch.conf.bak &amp;&amp; \
-    apk add --no-cache --force-overwrite \
-        "$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
-        "$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
-        "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" &amp;&amp; \
-    \
-    mv /etc/nsswitch.conf.bak /etc/nsswitch.conf &amp;&amp; \
-    rm "/etc/apk/keys/sgerrand.rsa.pub" &amp;&amp; \
-    (/usr/glibc-compat/bin/localedef --force --inputfile POSIX --charmap UTF-8 "$LANG" || true) &amp;&amp; \
-    echo "export LANG=$LANG" &gt; /etc/profile.d/locale.sh &amp;&amp; \
-    \
-    apk del glibc-i18n &amp;&amp; \
-    \
-    rm "/root/.wget-hsts" &amp;&amp; \
-    apk del .build-dependencies &amp;&amp; \
-    rm \
-        "$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
-        "$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
-        "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME"
-
-# Linter install
-# renovate: datasource=github-tags depName=clj-kondo/clj-kondo
+<pre><code class="language-dockerfile"># renovate: datasource=github-tags depName=clj-kondo/clj-kondo
 ARG CLJ_KONDO_VERSION=2025.01.16
 
 RUN curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/clj-kondo/clj-kondo/refs/tags/v${CLJ_KONDO_VERSION}/script/install-clj-kondo \
     &amp;&amp; chmod +x install-clj-kondo \
-    &amp;&amp; ./install-clj-kondo
+    &amp;&amp; ./install-clj-kondo --version "$CLJ_KONDO_VERSION"
 
 </code></pre>
 

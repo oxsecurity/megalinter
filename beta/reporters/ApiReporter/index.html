@@ -12652,6 +12652,8 @@
 <li><strong>API_REPORTER_BEARER_TOKEN</strong> : Bearer token <em>(if using bearer auth)</em></li>
 </ul>
 <p>Examples of configuration:</p>
+<!-- secretlint-disable -->
+
 <pre><code class="language-sh">API_REPORTER_URL=https://logs-prod-012.grafana.net/loki/api/v1/push
 API_REPORTER_BASIC_AUTH_USERNAME=3435645645
 API_REPORTER_BASIC_AUTH_PASSWORD=GHTRGDHDHdhghg23345DFG^sfg!ss
@@ -12659,6 +12661,8 @@ API_REPORTER_BASIC_AUTH_PASSWORD=GHTRGDHDHdhghg23345DFG^sfg!ss
 <pre><code class="language-sh">API_REPORTER_URL=https://my.custom.endpoint.net
 API_REPORTER_BEARER_TOKEN=DDHGHfgfgjfhQESRDTHFKGKHFswgFHDHGDH
 </code></pre>
+<!-- secretlint-enable -->
+
 <p>Example of logs sent to Loki:</p>
 <pre><code class="language-json">{ 
   "streams": [

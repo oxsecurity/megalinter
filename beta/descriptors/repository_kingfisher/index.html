@@ -12524,7 +12524,7 @@
 </ul>
 <h2 id="kingfisher-documentation">kingfisher documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.95.0</strong></li>
+<li>Version in MegaLinter: <strong>1.99.0</strong></li>
 <li>Visit <a href="https://github.com/mongodb/kingfisher#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/mongodb/kingfisher?tab=readme-ov-file#inline-ignore-directives" target="_blank">How to disable kingfisher rules in files</a></li>
 <li>See <a href="https://github.com/mongodb/kingfisher/tree/main/data/rules" target="_blank">Index of problems detected by kingfisher</a></li>
@@ -12615,7 +12615,7 @@
 <td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" data-desc-position="bottom"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/security/">security</a></td>
 <td style="text-align: left;">Optimized for security</td>
-<td style="text-align: center;">23</td>
+<td style="text-align: center;">25</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta" data-desc-position="bottom"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta"></a> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-security" data-desc-position="bottom"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-security"></a></td>
 </tr>
 </tbody>
@@ -12649,6 +12649,7 @@ Commands:
   revoke      Directly revoke a known secret against a rule's revocation config
   access-map  Map a cloud credential to its identity, permissions, and blast radius
   view        View Kingfisher JSON/JSONL reports in a local web UI
+  config      Generate or inspect `kingfisher.yaml` project config files
   update      Update the Kingfisher binary
   help        Print this message or the help of the given subcommand(s)
 
@@ -12666,13 +12667,17 @@ Global Options:
       --no-update-check             Disable automatic update checks
       --user-agent-suffix &lt;SUFFIX&gt;  Append a custom suffix to the default Kingfisher user-agent
                                     string
+      --endpoint &lt;PROVIDER=URL&gt;     Override provider API endpoints for validation/revocation
+                                    (PROVIDER=URL), repeatable
+      --endpoint-config &lt;FILE&gt;      YAML file containing provider endpoint overrides
+      --config &lt;FILE&gt;               Path to a `kingfisher.yaml` project config file
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=github-tags depName=mongodb/kingfisher
-ARG REPOSITORY_KINGFISHER_VERSION=1.95.0
+ARG REPOSITORY_KINGFISHER_VERSION=1.99.0
 RUN curl --silent --location https://raw.githubusercontent.com/mongodb/kingfisher/main/scripts/install-kingfisher.sh | bash -s -- /usr/local/bin --tag "v${REPOSITORY_KINGFISHER_VERSION}"
 
 </code></pre>

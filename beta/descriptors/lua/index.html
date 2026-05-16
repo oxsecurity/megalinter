@@ -12486,17 +12486,9 @@
 <h2 id="behind-the-scenes">Behind the scenes</h2>
 <h3 id="installation">Installation</h3>
 <ul>
-<li>Dockerfile commands :</li>
-</ul>
-<pre><code class="language-dockerfile">RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf - \
-    &amp;&amp; cd lua-5.3.5 \
-    &amp;&amp; make linux \
-    &amp;&amp; make install \
-    &amp;&amp; cd .. &amp;&amp; rm -r lua-5.3.5/
-
-</code></pre>
-<ul>
 <li>APK packages (Linux):<ul>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=v3.23&amp;arch=x86_64&amp;name=lua5.3">lua5.3</a></li>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=v3.23&amp;arch=x86_64&amp;name=lua5.3-dev">lua5.3-dev</a></li>
 <li><a href="https://pkgs.alpinelinux.org/packages?branch=v3.23&amp;arch=x86_64&amp;name=readline-dev">readline-dev</a></li>
 </ul>
 </li>

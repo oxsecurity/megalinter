@@ -12256,7 +12256,7 @@
 stage('MegaLinter') {
     agent {
         docker {
-            image 'oxsecurity/megalinter:v9'
+            image 'ghcr.io/oxsecurity/megalinter:v9'
             args "-u root -e VALIDATE_ALL_CODEBASE=true -v ${WORKSPACE}:/tmp/lint --entrypoint=''"
             reuseNode true
         }
@@ -12274,6 +12274,84 @@ stage('MegaLinter') {
 <p>CloudBees has a helpful tutorial about how to use MegaLinter with Jenkins!</p>
 <div style="text-align:center"><iframe width="560" height="315" src="https://www.youtube.com/embed/KhkNf2tQ3hM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 
+<h1 id="pr-comment-reporting-from-jenkins">PR Comment Reporting from Jenkins</h1>
+<p>When MegaLinter runs from a <strong>Jenkins Multibranch Pipeline</strong>, it can automatically post results as comments on pull requests / merge requests hosted on GitHub, GitLab, Azure DevOps, or Bitbucket.</p>
+<p>MegaLinter auto-detects the git hosting platform by inspecting the <code>GIT_URL</code> environment variable (provided by Jenkins Git plugin). It then maps Jenkins environment variables (<code>CHANGE_ID</code>, <code>GIT_COMMIT</code>, <code>BUILD_URL</code>, etc.) to the native CI variables each comment reporter expects.</p>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li><strong>Jenkins Multibranch Pipeline</strong> with the appropriate Branch Source plugin (GitHub Branch Source, GitLab Branch Source, or Bitbucket Branch Source)</li>
+<li>The pipeline must be triggered by a <strong>pull request / merge request</strong> (so <code>CHANGE_ID</code> is set by Jenkins)</li>
+<li>An <strong>authentication token</strong> for the target platform, stored as a Jenkins credential</li>
+</ul>
+<h2 id="platform-configuration">Platform Configuration</h2>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Required Token Variable</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GitHub</td>
+<td><code>GITHUB_TOKEN</code> (recommended) — <code>PAT</code> only if strictly required</td>
+<td>Prefer <code>GITHUB_TOKEN</code>. Personal Access Tokens (PAT) are <strong>not recommended</strong> due to recent supply-chain attacks on open-source projects; a leaked PAT can give attackers broad write access to your repository. Token needs <code>repo</code> scope (or <code>issues:write</code> + <code>pull-requests:write</code> for fine-grained tokens).</td>
+</tr>
+<tr>
+<td>GitLab</td>
+<td><code>GITLAB_ACCESS_TOKEN_MEGALINTER</code></td>
+<td>Personal access token with <code>api</code> scope</td>
+</tr>
+<tr>
+<td>Azure DevOps</td>
+<td><code>SYSTEM_ACCESSTOKEN</code></td>
+<td>Personal access token with <strong>Code (Read &amp; Write)</strong> permission</td>
+</tr>
+<tr>
+<td>Bitbucket</td>
+<td><code>BITBUCKET_REPO_ACCESS_TOKEN</code></td>
+<td>Repository access token with <strong>Pull-requests: Write</strong> scope</td>
+</tr>
+</tbody>
+</table>
+<h2 id="jenkinsfile-example-with-github-pr-comments">Jenkinsfile Example with GitHub PR Comments</h2>
+<pre><code class="language-groovy">// Lint with MegaLinter: https://megalinter.io/
+stage('MegaLinter') {
+    agent {
+        docker {
+            image 'ghcr.io/oxsecurity/megalinter:v9'
+            args "-u root -e VALIDATE_ALL_CODEBASE=true -v ${WORKSPACE}:/tmp/lint --entrypoint=''"
+            reuseNode true
+        }
+    }
+    environment {
+        GITHUB_TOKEN = credentials('github-token')
+    }
+    steps {
+        sh '/entrypoint.sh'
+    }
+    post {
+        always {
+            archiveArtifacts allowEmptyArchive: true, artifacts: 'mega-linter.log,megalinter-reports/**/*', defaultExcludes: false, followSymlinks: false
+        }
+    }
+}
+</code></pre>
+<h2 id="self-hosted-on-premise-platforms">Self-hosted / On-premise Platforms</h2>
+<p>MegaLinter detects the platform by looking for keywords in the <code>GIT_URL</code> hostname (e.g., <code>gitlab.mycompany.com</code> is detected as GitLab, <code>github.internal.corp.com</code> as GitHub).</p>
+<p>If your self-hosted instance uses a hostname without the platform name (e.g., <code>git.mycompany.com</code>), set the <code>JENKINS_REPO_PLATFORM</code> environment variable to explicitly tell MegaLinter which platform to use:</p>
+<pre><code class="language-groovy">environment {
+    JENKINS_REPO_PLATFORM = 'gitlab'  // or 'github', 'azure', 'bitbucket'
+    GITLAB_ACCESS_TOKEN_MEGALINTER = credentials('gitlab-token')
+}
+</code></pre>
+<h2 id="additional-variables">Additional Variables</h2>
+<p>For most setups, MegaLinter derives all needed variables automatically. In rare cases, you may need to set additional platform-specific variables:</p>
+<ul>
+<li><strong>GitLab</strong>: Set <code>CI_PROJECT_ID</code> if the project path cannot be parsed from <code>GIT_URL</code></li>
+<li><strong>Azure DevOps</strong>: Set <code>SYSTEM_ACCESSTOKEN</code> as a Jenkins credential</li>
+</ul>
 <!-- install-jenkins-section-end -->
 
 

@@ -12740,7 +12740,12 @@ You can work directly on <strong>main</strong> branch, or create a sub-branch if
 <p>Commit and push the generated files to GitHub.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/custom-flavor-commit-push.png" data-desc-position="bottom"><img alt="Commit in VS Code" src="../assets/images/custom-flavor-commit-push.png"></a></p>
 <h3 id="configure-personal-access-token-required">Configure Personal Access Token (Required)</h3>
-<p>To enable automatic version checking and release creation, you need to configure a <strong>repository-scoped fine-grained Personal Access Token</strong>:</p>
+<blockquote>
+<p><strong>Security warning — Personal Access Tokens (PAT) come with risk.</strong>
+Open-source projects have been heavily targeted by supply-chain attacks in recent months, and a leaked or compromised PAT can give attackers broad write access to your repository — better safe than sorry!
+If you do not need fully automatic version sync, you can <strong>skip the PAT entirely</strong> and trigger the workflow manually instead (Actions tab → run the <code>check-new-megalinter-version</code> workflow, or push a commit on a branch to rebuild). Only set up a PAT if automatic daily releases are worth the trade-off.</p>
+</blockquote>
+<p>If you choose to proceed, configure a <strong>repository-scoped fine-grained Personal Access Token</strong>:</p>
 <ol>
 <li>Go to <a href="https://github.com/settings/personal-access-tokens/new">GitHub Settings &gt; Personal access tokens &gt; Fine-grained tokens</a></li>
 <li>Token name: <code>MegaLinter Auto-Release</code></li>
