@@ -203,9 +203,7 @@ class UserNotificationsTest(unittest.TestCase):
             value=None,
         )
         rendered = build_user_notifications(master)
-        self.assertEqual(
-            rendered, ["📣 Read the announcement at https://example.com"]
-        )
+        self.assertEqual(rendered, ["📣 Read the announcement at https://example.com"])
 
     def test_build_returns_empty_when_no_notifications(self):
         master = _Master()

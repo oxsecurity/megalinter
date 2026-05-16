@@ -39,9 +39,7 @@ from megalinter.utils_reporter import (
 from multiprocessing_logging import install_mp_handler, uninstall_mp_handler
 
 MEGALINTER_9_5_ANNOUNCEMENT_KEY = "megalinter_9_5_announcement"
-MEGALINTER_9_5_ANNOUNCEMENT_URL = (
-    "https://github.com/oxsecurity/megalinter/issues/7835"
-)
+MEGALINTER_9_5_ANNOUNCEMENT_URL = "https://github.com/oxsecurity/megalinter/issues/7835"
 MEGALINTER_9_5_ANNOUNCEMENT_TEMPLATE = (
     "📣 **MegaLinter 9.5.0 is out!** "
     "Discover the new features and security recommendations in the "
@@ -369,9 +367,7 @@ class Megalinter:
 
         # Register default MegaLinter 9.5.0 release announcement notification.
         # Disabled when SECURITY_SUGGESTIONS=false.
-        if (
-            config.get(self.request_id, "SECURITY_SUGGESTIONS", "true") == "true"
-        ):
+        if config.get(self.request_id, "SECURITY_SUGGESTIONS", "true") == "true":
             register_user_notification(
                 self,
                 key=MEGALINTER_9_5_ANNOUNCEMENT_KEY,
