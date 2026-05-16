@@ -9147,7 +9147,7 @@
       "type": "string",
       "title": "JAVASCRIPT_ES: Custom config file name",
       "description": "JAVASCRIPT_ES: User custom config file name if different from default",
-      "default": ".eslintrc.json",
+      "default": "eslint.config.js",
       "category": "JAVASCRIPT_ES",
       "section": "LINTER_COMMAND"
     },
@@ -11069,7 +11069,7 @@
       "type": "string",
       "title": "JSX_ESLINT: Custom config file name",
       "description": "JSX_ESLINT: User custom config file name if different from default",
-      "default": "eslint.config.js",
+      "default": "eslint.config.cjs",
       "category": "JSX_ESLINT",
       "section": "LINTER_COMMAND"
     },
@@ -27928,7 +27928,7 @@
       "type": "string",
       "title": "TSX_ESLINT: Custom config file name",
       "description": "TSX_ESLINT: User custom config file name if different from default",
-      "default": ".eslintrc.json",
+      "default": "eslint.config.cjs",
       "category": "TSX_ESLINT",
       "section": "LINTER_COMMAND"
     },
@@ -28172,7 +28172,7 @@
       "type": "string",
       "title": "TYPESCRIPT_ES: Custom config file name",
       "description": "TYPESCRIPT_ES: User custom config file name if different from default",
-      "default": ".eslintrc.json",
+      "default": "eslint.config.js",
       "category": "TYPESCRIPT_ES",
       "section": "LINTER_COMMAND"
     },

@@ -13306,7 +13306,7 @@
     },
     "JSX_ESLINT_CONFIG_FILE": {
       "$id": "#/properties/JSX_ESLINT_CONFIG_FILE",
-      "default": "eslint.config.js",
+      "default": "eslint.config.cjs",
       "description": "JSX_ESLINT: User custom config file name if different from default",
       "title": "JSX_ESLINT: Custom config file name",
       "type": "string",
@@ -34360,7 +34360,7 @@
     },
     "TSX_ESLINT_CONFIG_FILE": {
       "$id": "#/properties/TSX_ESLINT_CONFIG_FILE",
-      "default": "eslint.config.js",
+      "default": "eslint.config.cjs",
       "description": "TSX_ESLINT: User custom config file name if different from default",
       "title": "TSX_ESLINT: Custom config file name",
       "type": "string",

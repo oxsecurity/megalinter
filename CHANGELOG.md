@@ -276,6 +276,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [stylua](https://github.com/JohnnyMorganz/StyLua) from 2.0.2 to **2.4.1** on 2026-05-15
   - [php-cs-fixer](https://cs.symfony.com/) from 3.95.1 to **3.95.2** on 2026-05-15
   - [rubocop](https://rubocop.org/) from 1.86.1 to **1.86.2** on 2026-05-15
+  - [eslint](https://eslint.org) from 9.39.4 to **10.3.0** on 2026-05-16
+  - [rumdl](https://github.com/rvben/rumdl) from 0.1.92 to **0.1.93** on 2026-05-16
 <!-- linter-versions-end -->
 
 ## [v9.4.0] - 2026-02-28

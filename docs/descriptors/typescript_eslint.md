@@ -28,7 +28,7 @@ ESLint requires a custom configuration file applicable to your project. You can 
 
 ## eslint documentation
 
-- Version in MegaLinter: **9.39.4**
+- Version in MegaLinter: **10.3.0**
 - Visit [Official Web Site](https://typescript-eslint.io/){target=_blank}
 - See [How to configure eslint rules](https://typescript-eslint.io/getting-started/#configuration-values){target=_blank}
 - See [How to disable eslint rules in files](https://eslint.org/docs/latest/use/configure/rules#disabling-rules){target=_blank}
@@ -201,17 +201,15 @@ Miscellaneous:
 ARG NPM_TYPESCRIPT_VERSION=6.0.3
 # Linter install
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=9.39.4
+ARG NPM_ESLINT_VERSION=10.3.0
 # renovate: datasource=npm depName=@eslint/eslintrc
 ARG NPM_ESLINT_ESLINTRC_VERSION=3.3.5
-# renovate: datasource=npm depName=eslint-config-airbnb-extended
-ARG NPM_ESLINT_CONFIG_AIRBNB_EXTENDED_VERSION=3.1.0
+# renovate: datasource=npm depName=@eslint/js
+ARG NPM_ESLINT_JS_VERSION=10.0.1
 # renovate: datasource=npm depName=eslint-config-prettier
 ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.1.8
-# renovate: datasource=npm depName=neostandard
-ARG NPM_NEOSTANDARD_VERSION=0.13.0
-# renovate: datasource=npm depName=eslint-plugin-import
-ARG NPM_ESLINT_PLUGIN_IMPORT_VERSION=2.32.0
+# renovate: datasource=npm depName=eslint-plugin-import-x
+ARG NPM_ESLINT_PLUGIN_IMPORT_X_VERSION=4.16.2
 # renovate: datasource=npm depName=eslint-plugin-jest
 ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.15.2
 # renovate: datasource=npm depName=eslint-plugin-n
@@ -220,8 +218,6 @@ ARG NPM_ESLINT_PLUGIN_N_VERSION=18.0.1
 ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.5
 # renovate: datasource=npm depName=eslint-plugin-promise
 ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=7.3.0
-# renovate: datasource=npm depName=@babel/eslint-parser
-ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.28.6
 # renovate: datasource=npm depName=prettier
 ARG NPM_PRETTIER_VERSION=3.8.3
 # renovate: datasource=npm depName=prettyjson
@@ -236,17 +232,15 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 
 - NPM packages (node.js):
   - [typescript@6.0.3](https://www.npmjs.com/package/typescript/v/6.0.3)
-  - [eslint@9.39.4](https://www.npmjs.com/package/eslint/v/9.39.4)
+  - [eslint@10.3.0](https://www.npmjs.com/package/eslint/v/10.3.0)
   - [@eslint/eslintrc@3.3.5](https://www.npmjs.com/package/@eslint/eslintrc/v/3.3.5)
-  - [eslint-config-airbnb-extended@3.1.0](https://www.npmjs.com/package/eslint-config-airbnb-extended/v/3.1.0)
+  - [@eslint/js@10.0.1](https://www.npmjs.com/package/@eslint/js/v/10.0.1)
   - [eslint-config-prettier@10.1.8](https://www.npmjs.com/package/eslint-config-prettier/v/10.1.8)
-  - [neostandard@0.13.0](https://www.npmjs.com/package/neostandard/v/0.13.0)
-  - [eslint-plugin-import@2.32.0](https://www.npmjs.com/package/eslint-plugin-import/v/2.32.0)
+  - [eslint-plugin-import-x@4.16.2](https://www.npmjs.com/package/eslint-plugin-import-x/v/4.16.2)
   - [eslint-plugin-jest@29.15.2](https://www.npmjs.com/package/eslint-plugin-jest/v/29.15.2)
   - [eslint-plugin-n@18.0.1](https://www.npmjs.com/package/eslint-plugin-n/v/18.0.1)
   - [eslint-plugin-prettier@5.5.5](https://www.npmjs.com/package/eslint-plugin-prettier/v/5.5.5)
   - [eslint-plugin-promise@7.3.0](https://www.npmjs.com/package/eslint-plugin-promise/v/7.3.0)
-  - [@babel/eslint-parser@7.28.6](https://www.npmjs.com/package/@babel/eslint-parser/v/7.28.6)
   - [prettier@3.8.3](https://www.npmjs.com/package/prettier/v/3.8.3)
   - [prettyjson@1.2.5](https://www.npmjs.com/package/prettyjson/v/1.2.5)
   - [@typescript-eslint/eslint-plugin@8.59.3](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin/v/8.59.3)
