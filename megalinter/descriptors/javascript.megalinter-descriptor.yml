@@ -59,25 +59,29 @@ linters:
 
       Two recommended workarounds:
 
-      1. **Use `createRequire` in `eslint.config.mjs`** so bare imports fall back to CommonJS resolution (which honors `NODE_PATH` and will pick up MegaLinter's bundled `@eslint/js` and related plugins):
+      #### Workaround 1 — Use `createRequire` in `eslint.config.mjs`
 
-          ```js
-          import { createRequire } from 'module';
-          const require = createRequire(import.meta.url);
-          const js = require('@eslint/js');
-          ```
+      Bare imports fall back to CommonJS resolution (which honors `NODE_PATH` and will pick up MegaLinter's bundled `@eslint/js` and related plugins):
 
-      2. **Install your project's dependencies in a pre-command and point MegaLinter at the project-local ESLint binary**, so ESLint runs from `<workspace>/node_modules` and resolves your config's imports naturally:
+      ```js
+      import { createRequire } from 'module';
+      const require = createRequire(import.meta.url);
+      const js = require('@eslint/js');
+      ```
 
-          ```yaml
-          JAVASCRIPT_ES_PRE_COMMANDS:
-            - command: yarn install --frozen-lockfile --ignore-scripts
-              cwd: workspace
-              continue_if_failed: false
-          JAVASCRIPT_ES_CLI_EXECUTABLE: node_modules/.bin/eslint
-          ```
+      #### Workaround 2 — Install dependencies in a pre-command and use the project-local ESLint binary
 
-          Replace `yarn install --frozen-lockfile --ignore-scripts` with `npm ci` (or `npm install --include=dev`) if your project uses npm.
+      ESLint then runs from `<workspace>/node_modules` and resolves your config's imports naturally:
+
+      ```yaml
+      JAVASCRIPT_ES_PRE_COMMANDS:
+        - command: yarn install --frozen-lockfile --ignore-scripts
+          cwd: workspace
+          continue_if_failed: false
+      JAVASCRIPT_ES_CLI_EXECUTABLE: node_modules/.bin/eslint
+      ```
+
+      Replace `yarn install --frozen-lockfile --ignore-scripts` with `npm ci` (or `npm install --include=dev`) if your project uses npm.
     linter_url: https://eslint.org
     linter_repo: https://github.com/eslint/eslint
     linter_rules_url: https://eslint.org/docs/latest/rules/
