@@ -40,12 +40,12 @@ You can still choose to scan only PR commits in your CI/CD platform by setting t
 
     Example commands:
 
-    - Source commit SHA:
+  - Source commit SHA:
         ```bash
         git rev-list -n 1 refs/remotes/origin/<source_branch>
         ```
 
-    - Target commit SHA:
+  - Target commit SHA:
         ```bash
         git rev-parse refs/remotes/origin/<target_branch>
         ```
