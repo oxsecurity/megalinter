@@ -1669,6 +1669,7 @@
         "xmlwriter",
         "xrange",
         "xtest",
+        "backticked",
         "loeffel",
         "yamllint",
         "yann",
