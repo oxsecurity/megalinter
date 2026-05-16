@@ -177,12 +177,11 @@ def build_markdown_summary_footer(reporter_self, action_run_url=""):
     if reporter_self.master.result_message != "":
         footer += reporter_self.master.result_message + os.linesep
 
-    migration_warnings = getattr(reporter_self.master, "migration_warnings", None)
-    if migration_warnings:
-        footer += os.linesep + "### Migration notices" + os.linesep + os.linesep
-        for warning in migration_warnings:
-            footer += f"- {warning}" + os.linesep
-        footer += os.linesep
+    user_notifications = build_user_notifications(reporter_self.master)
+    if user_notifications:
+        footer += os.linesep + "### Notices" + os.linesep + os.linesep
+        for notice in user_notifications:
+            footer += notice + os.linesep + os.linesep
 
     if action_run_url != "":
         footer += (
@@ -269,6 +268,52 @@ def build_markdown_summary_footer(reporter_self, action_run_url=""):
         )
 
     return footer
+
+
+def register_user_notification(master, key, template, value=None, extras=None):
+    """Register or extend a user-facing notification on a Megalinter instance.
+
+    A notification has a stable ``key`` so multiple callers can contribute to
+    the same message. ``template`` is a ``str.format`` string that may
+    reference ``{values}`` (joined, backticked list) and any extra
+    placeholder defined in ``extras``.
+    """
+    if not hasattr(master, "user_notifications") or master.user_notifications is None:
+        master.user_notifications = {}
+    entry = master.user_notifications.setdefault(
+        key,
+        {"template": template, "values": [], "extras": {}},
+    )
+    # First registration wins for template / extras so the message stays
+    # consistent across contributors. New extras keys are still merged in.
+    if not entry.get("template"):
+        entry["template"] = template
+    if extras:
+        for extra_key, extra_value in extras.items():
+            entry["extras"].setdefault(extra_key, extra_value)
+    if value is not None and value not in entry["values"]:
+        entry["values"].append(value)
+    return entry
+
+
+def build_user_notifications(master):
+    """Render all registered user notifications as a list of strings."""
+    notifications = getattr(master, "user_notifications", None) or {}
+    rendered = []
+    for entry in notifications.values():
+        values = sorted(set(entry.get("values", [])))
+        if not values:
+            continue
+        formatted_values = ", ".join(f"`{v}`" for v in values)
+        try:
+            line = entry["template"].format(
+                values=formatted_values, **(entry.get("extras", {}) or {})
+            )
+        except (KeyError, IndexError):
+            # Fall back to the raw template if a placeholder is missing
+            line = entry["template"]
+        rendered.append(line)
+    return rendered
 
 
 def log_link(label, url):

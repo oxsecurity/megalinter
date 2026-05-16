@@ -16,7 +16,10 @@ from megalinter.constants import (
 )
 from megalinter.flavor_factory import is_custom_flavor
 from megalinter.utils import blue
-from megalinter.utils_reporter import log_section_end
+from megalinter.utils_reporter import (
+    build_user_notifications,
+    log_section_end,
+)
 
 
 class ConsoleReporter(Reporter):
@@ -126,11 +129,10 @@ class ConsoleReporter(Reporter):
         for table_line in table.table.splitlines():
             logging.info(table_line)
         logging.info("")
-        migration_warnings = getattr(self.master, "migration_warnings", None)
-        if migration_warnings:
-            logging.warning(blue("Migration notices:"))
-            for warning in migration_warnings:
-                logging.warning(blue(f"- {warning}"))
+        user_notifications = build_user_notifications(self.master)
+        if user_notifications:
+            for notice in user_notifications:
+                logging.warning(blue(notice))
             logging.info("")
         if self.master.flavor_suggestions is not None:
             active_linter_names = [linter.name for linter in self.master.active_linters]

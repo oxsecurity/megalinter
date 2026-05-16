@@ -8,6 +8,7 @@ import logging
 import os
 
 from megalinter import Linter
+from megalinter.utils_reporter import register_user_notification
 
 LEGACY_ESLINTRC_FILES = (
     ".eslintrc",
@@ -29,6 +30,15 @@ FLAT_ESLINT_FILES = (
 
 ESLINT_FLAT_CONFIG_MIGRATION_URL = (
     "https://eslint.org/docs/latest/use/configure/migration-guide"
+)
+
+ESLINT10_NOTIFICATION_KEY = "eslint10_flat_config_migration"
+ESLINT10_NOTIFICATION_TEMPLATE = (
+    "⚠️ **ESLint v10 flat-config migration required** — "
+    "the following linters are disabled until you migrate: {values}. "
+    "Only legacy `{legacy_config}` was detected; ESLint v10 dropped support "
+    "for the `.eslintrc.*` format. Please migrate to `eslint.config.mjs`. "
+    "See the [ESLint migration guide]({migration_url})."
 )
 
 
@@ -95,20 +105,16 @@ class EslintLinter(Linter):
 
         master = params.get("master") if params else None
         if master is not None:
-            if (
-                not hasattr(master, "migration_warnings")
-                or master.migration_warnings is None
-            ):
-                master.migration_warnings = []
-            pr_message = (
-                f"⚠️ **{self.name}**: migrate to ESLint v10 flat config. "
-                f"Detected legacy `{legacy_found}` only — ESLint v10 dropped support "
-                f"for `.eslintrc.*`. `{self.name}` is disabled until the project "
-                f"migrates to `eslint.config.mjs`. "
-                f"See the [ESLint migration guide]({ESLINT_FLAT_CONFIG_MIGRATION_URL})."
+            register_user_notification(
+                master,
+                key=ESLINT10_NOTIFICATION_KEY,
+                template=ESLINT10_NOTIFICATION_TEMPLATE,
+                value=self.name,
+                extras={
+                    "legacy_config": legacy_found,
+                    "migration_url": ESLINT_FLAT_CONFIG_MIGRATION_URL,
+                },
             )
-            if pr_message not in master.migration_warnings:
-                master.migration_warnings.append(pr_message)
 
     # Drop ESLint v8-only flags that v9 removed.
     # Keep --no-ignore stripping when an explicit ignore source is present.
