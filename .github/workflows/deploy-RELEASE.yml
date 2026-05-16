@@ -331,12 +331,13 @@ jobs:
           persist-credentials: false
       - name: Get release version
         id: version
+        # Match only full semver tags (vN.N.N) so the moving major-version tag (e.g. `v9`) is ignored.
         run: |
           {
-            echo "cversion=$(git describe --tags --match='v*' --abbrev=0 | cut -c2-)"
-            echo "ctag=$(git describe --tags --match='v*' --abbrev=0)"
-            echo "pversion=$(git describe --abbrev=0 --match='v*' --tags "$(git rev-list --tags --skip=1 --max-count=1)" | cut -c2-)"
-            echo "ptag=$(git describe --abbrev=0 --match='v*' --tags "$(git rev-list --tags --skip=1 --max-count=1)")"
+            echo "cversion=$(git describe --tags --match='v[0-9]*.[0-9]*.[0-9]*' --abbrev=0 | cut -c2-)"
+            echo "ctag=$(git describe --tags --match='v[0-9]*.[0-9]*.[0-9]*' --abbrev=0)"
+            echo "pversion=$(git describe --abbrev=0 --match='v[0-9]*.[0-9]*.[0-9]*' --tags "$(git rev-list --tags='v[0-9]*.[0-9]*.[0-9]*' --skip=1 --max-count=1)" | cut -c2-)"
+            echo "ptag=$(git describe --abbrev=0 --match='v[0-9]*.[0-9]*.[0-9]*' --tags "$(git rev-list --tags='v[0-9]*.[0-9]*.[0-9]*' --skip=1 --max-count=1)")"
           } >>"$GITHUB_OUTPUT"
       - name: Print tags
         run: |
@@ -377,10 +378,13 @@ jobs:
           STEPS_VERSION_OUTPUTS_CTAG: ${{ steps.version.outputs.ctag }}
       - name: Mike deploy current version
         # MAJOR-RELEASE-IMPACTED
+        # mike version names are the major number without the "v" prefix (e.g. "9", not "v9").
+        # The final command deploys the "latest" version with the full release as an alias
+        # (matches the historical layout in versions.json: {"version": "latest", "aliases": ["x.y.z"]}).
         run: |
-          mike delete latest
-          mike delete v9 || true
-          mike deploy v9 || true
+          mike delete latest || true
+          mike delete 9 || true
+          mike deploy 9
           mike deploy --push latest "${STEPS_VERSION_OUTPUTS_CVERSION}"
         env:
           STEPS_VERSION_OUTPUTS_CVERSION: ${{ steps.version.outputs.cversion }}
