@@ -16189,7 +16189,7 @@
       "description": "POWERSHELL_POWERSHELL: Override CLI executable used to build the linter command line (rarely needed)",
       "default": [
         [
-          "powershell"
+          "pwsh"
         ]
       ],
       "category": "POWERSHELL_POWERSHELL",
@@ -16319,7 +16319,7 @@
       "description": "POWERSHELL_POWERSHELL_FORMATTER: Override CLI executable used to build the linter command line (rarely needed)",
       "default": [
         [
-          "powershell"
+          "pwsh"
         ]
       ],
       "category": "POWERSHELL_POWERSHELL_FORMATTER",
