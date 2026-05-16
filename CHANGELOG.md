@@ -48,13 +48,19 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 [**Take 2 mn to read MegaLinter v9.5.0 announcements**](https://github.com/oxsecurity/megalinter/issues/7835)
 
 - Breaking changes
+  - **Docker images published only to GitHub Container Registry (`ghcr.io`)** until OIDC-based publishing to Docker Hub is implemented. The Docker Hub registry (`docker.io/oxsecurity/megalinter`) is **frozen at v9.4.0**: pulls of `oxsecurity/megalinter:v9` (or `:beta`, or any flavor tag) will keep returning v9.4.0. To get v9.5.0 and later from CI tools other than GitHub Actions (GitLab CI, Azure Pipelines, Bitbucket, Jenkins, Drone, raw `docker run`, …), switch your image references:
+    - `oxsecurity/megalinter:v9` → `ghcr.io/oxsecurity/megalinter:v9`
+    - `oxsecurity/megalinter:beta` → `ghcr.io/oxsecurity/megalinter:beta`
+    - `oxsecurity/megalinter-<flavor>:v9` → `ghcr.io/oxsecurity/megalinter-<flavor>:v9`
+
+    GitHub Action users (`uses: oxsecurity/megalinter@v9`) and `mega-linter-runner` users are **not affected**, as both already pull from `ghcr.io`.
   - **ESLint-based linters upgraded to v10+**. Legacy `.eslintrc.*` configs are no longer supported: you must [migrate to flat-config](https://eslint.org/docs/latest/use/configure/migration-guide) (`eslint.config.js`) to keep using `JAVASCRIPT_ES`, `TYPESCRIPT_ES`, `JSX_ESLINT`, `TSX_ESLINT`, and `JSON_ESLINT_PLUGIN_JSONC`.
   - **Airbnb and Standard ESLint configs replaced** (they never shipped ESLint 9+ support):
     - `extends: ["airbnb"]` → `extends: ["airbnb-extended"]`
     - `extends: ["standard"]` → `extends: ["neostandard"]`
 
 - Core
-  - **User notifications system**: linters can surface structured "Notices" to end users in the PR comment / report footer (used for ESLint migration, deprecated options, etc.) — replaces the ad-hoc migration warnings
+  - **User notifications system**: linters can surface structured "Notices" to end users in the PR comment / report footer (used for ESLint migration, deprecated options, etc.), replaces the ad-hoc migration warnings
   - Security: more [default hidden environment variables](https://megalinter.io/beta/config-variables-security/), so a compromised linter cannot leak your secrets
   - Upgrade .NET runtime to **10.0** (csharpier, dotnet-format, roslynator, devskim, tsqllint, vbdotnet-format)
   - Upgrade GO runtime to 1.26.3

@@ -399,14 +399,18 @@ description: You can use latest release or beta version of MegaLinter, know the 
 
 <!-- # MAJOR-RELEASE-IMPACTED -->
 
+> **Docker registry change (since v9.5.0)**: MegaLinter Docker images are **published only to GitHub Container Registry (`ghcr.io`)**. The Docker Hub registry (`docker.io/oxsecurity/megalinter`, formerly `oxsecurity/megalinter:*`) is **frozen at v9.4.0** until we implement OIDC-based publishing to Docker Hub.
+> If you pull `oxsecurity/megalinter:v9` from Docker Hub you will stay on v9.4.0. To get v9.5.0 and later, switch your `image:` / `docker pull` references to `ghcr.io/oxsecurity/megalinter:v9` (same applies to `:beta` and all [flavor](#flavors) tags like `ghcr.io/oxsecurity/megalinter-python:v9`).
+> GitHub Action users (`uses: oxsecurity/megalinter@v9`) are not affected, as the action already pulls from `ghcr.io`.
+
 The following instructions examples are using latest MegaLinter stable version (**v9** , always corresponding to the [latest release](https://github.com/oxsecurity/megalinter/releases))
 
-- Docker image: `oxsecurity/megalinter:v9`
+- Docker image: `ghcr.io/oxsecurity/megalinter:v9`
 - GitHub Action: `oxsecurity/megalinter@v9`
 
 You can also use **beta** version (corresponding to the content of main branch)
 
-- Docker image: `oxsecurity/megalinter:beta`
+- Docker image: `ghcr.io/oxsecurity/megalinter:beta`
 - GitHub Action: `oxsecurity/megalinter@beta`
 
 <!-- install-version-section-end -->
@@ -479,7 +483,7 @@ jobs:
           # SECURITY NOTE: Using a Personal Access Token (PAT) is NOT
           # recommended. Open-source projects have been heavily targeted by
           # supply-chain attacks in recent months, and a leaked PAT can give
-          # attackers broad write access to your repository — better safe
+          # attackers broad write access to your repository: better safe
           # than sorry! If you only need workflows to re-trigger after
           # MegaLinter applies fixes, prefer one of these safer alternatives:
           #   - Manually re-run the workflow from the GitHub Actions tab, or
@@ -575,7 +579,7 @@ mega-linter:
   stage: test
   # You can override MegaLinter flavor used to have faster performances
   # More info at https://megalinter.io/flavors/
-  image: oxsecurity/megalinter:v9
+  image: ghcr.io/oxsecurity/megalinter:v9
   script: [ "true" ] # if script: ["true"] doesn't work, you may try ->  script: [ "/bin/bash /entrypoint.sh" ]
   variables:
     # All available variables are described in documentation
@@ -623,7 +627,7 @@ Add the following to an `azure-pipelines.yaml` file within your code repository:
       - checkout: self
 
       # Pull MegaLinter docker image
-      - script: docker pull oxsecurity/megalinter:v9
+      - script: docker pull ghcr.io/oxsecurity/megalinter:v9
         displayName: Pull MegaLinter
 
       # Run MegaLinter
@@ -632,7 +636,7 @@ Add the following to an `azure-pipelines.yaml` file within your code repository:
             --env-file <(env | grep -e SYSTEM_ -e BUILD_ -e TF_ -e AGENT_) \
             -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
             -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
-            oxsecurity/megalinter:v9
+            ghcr.io/oxsecurity/megalinter:v9
         displayName: Run MegaLinter
 
       # Upload MegaLinter reports
@@ -665,7 +669,7 @@ steps:
     displayName: Checkout Triggering Repository
 
   # Pull MegaLinter docker image
-  - script: docker pull oxsecurity/megalinter:v9
+  - script: docker pull ghcr.io/oxsecurity/megalinter:v9
     displayName: Pull MegaLinter
 
   # Run MegaLinter
@@ -674,7 +678,7 @@ steps:
         --env-file <(env | grep -e SYSTEM_ -e BUILD_ -e TF_ -e AGENT_) \
         -e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \
         -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \
-        oxsecurity/megalinter:v9
+        ghcr.io/oxsecurity/megalinter:v9
     displayName: Run MegaLinter
 
   # Upload MegaLinter reports
@@ -738,7 +742,7 @@ pipelines:
     - parallel:
       - step:
           name: Run MegaLinter
-          image: oxsecurity/megalinter:v9
+          image: ghcr.io/oxsecurity/megalinter:v9
           script:
             - export DEFAULT_WORKSPACE=$BITBUCKET_CLONE_DIR && bash /entrypoint.sh
           artifacts:
@@ -764,7 +768,7 @@ You may activate the [File.io reporter](https://megalinter.io/reporters/FileIoRe
 stage('MegaLinter') {
     agent {
         docker {
-            image 'oxsecurity/megalinter:v9'
+            image 'ghcr.io/oxsecurity/megalinter:v9'
             args "-u root -e VALIDATE_ALL_CODEBASE=true -v ${WORKSPACE}:/tmp/lint --entrypoint=''"
             reuseNode true
         }
@@ -812,7 +816,7 @@ MegaLinter auto-detects the git hosting platform by inspecting the `GIT_URL` env
 stage('MegaLinter') {
     agent {
         docker {
-            image 'oxsecurity/megalinter:v9'
+            image 'ghcr.io/oxsecurity/megalinter:v9'
             args "-u root -e VALIDATE_ALL_CODEBASE=true -v ${WORKSPACE}:/tmp/lint --entrypoint=''"
             reuseNode true
         }
@@ -990,7 +994,7 @@ workspace:
 steps:
 
 - name: megalinter
-  image: oxsecurity/megalinter:v9
+  image: ghcr.io/oxsecurity/megalinter:v9
   environment:
     DEFAULT_WORKSPACE: /tmp/lint
 ```
@@ -1012,7 +1016,7 @@ workspace:
 steps:
 
 - name: megalinter
-  image: oxsecurity/megalinter:v9
+  image: ghcr.io/oxsecurity/megalinter:v9
   environment:
     DEFAULT_WORKSPACE: /tmp/lint
 
@@ -1035,14 +1039,14 @@ description: Manual instructions to run MegaLinter as a docker image
 
 You can also run MegaLinter with its Docker container. Execute this command:
 
-`docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:rw -v $(pwd):/tmp/lint:rw oxsecurity/megalinter:v9`
+`docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:rw -v $(pwd):/tmp/lint:rw ghcr.io/oxsecurity/megalinter:v9`
 
 No extra arguments are needed; however, MegaLinter will lint all files inside the `/tmp/lint` folder. You may need to configure your tool of choice to use `/tmp/lint` as its workspace.
 This can be changed:
 
 _Example:_
 
-`docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:rw -v $(pwd):/example/folder:rw oxsecurity/megalinter:v9`
+`docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:rw -v $(pwd):/example/folder:rw ghcr.io/oxsecurity/megalinter:v9`
 
 <!-- install-docker-section-end -->
 <!-- install-locally-section-start -->

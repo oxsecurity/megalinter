@@ -46,7 +46,7 @@ def init_worker(request_config_in):
     # install_mp_handler() replaces handlers with QueueHandlers whose formatter may not
     # be propagated correctly to forked children, causing the default
     # "%(levelname)s:%(name)s:%(message)s" format to appear in output instead of the
-    # plain message — which breaks CI annotation commands like "::group::" that must
+    # plain message - which breaks CI annotation commands like "::group::" that must
     # appear at the very start of a line.
     formatter = logging.Formatter("%(message)s")
     for handler in logging.root.handlers:

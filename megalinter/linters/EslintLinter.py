@@ -34,7 +34,7 @@ ESLINT_FLAT_CONFIG_MIGRATION_URL = (
 
 ESLINT10_NOTIFICATION_KEY = "eslint10_flat_config_migration"
 ESLINT10_NOTIFICATION_TEMPLATE = (
-    "⚠️ **ESLint v10 flat-config migration required** — "
+    "⚠️ **ESLint v10 flat-config migration required** - "
     "the following linters are disabled until you migrate: {values}. "
     "Only legacy `{legacy_config}` was detected; ESLint v10 dropped support "
     "for the `.eslintrc.*` format. Please migrate to `eslint.config.mjs`. "

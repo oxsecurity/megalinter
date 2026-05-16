@@ -507,7 +507,7 @@ def build_dockerfile(
         docker_arg += DEFAULT_DOCKERFILE_PIPENV_ARGS.copy()
     if len(cargo_packages) > 0:
         docker_arg += DEFAULT_DOCKERFILE_RUST_ARGS.copy()
-    # cargo packages — emit multi-stage builders BEFORE we compute
+    # cargo packages: emit multi-stage builders BEFORE we compute
     # FROM/COPY blocks so the added FROM stages and COPY lines are picked up.
     # The runtime cargo install RUN (#CARGO__START block) is emitted later
     # alongside the other package-manager RUNs.
@@ -665,7 +665,7 @@ def build_dockerfile(
             + "rm -rf /root/.cache"
         )
     replace_in_file(dockerfile, "#PIP__START", "#PIP__END", pip_install_command)
-    # Python packages in venv — one chained RUN. A single-RUN chain keeps
+    # Python packages in venv: one chained RUN. A single-RUN chain keeps
     # layer count low (less cache export overhead per build); cache locality
     # for one-linter-version-bumps was a net loss once the per-layer GHA
     # cache I/O was measured.
