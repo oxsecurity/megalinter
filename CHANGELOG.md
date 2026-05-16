@@ -278,6 +278,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rubocop](https://rubocop.org/) from 1.86.1 to **1.86.2** on 2026-05-15
   - [eslint](https://eslint.org) from 9.39.4 to **10.3.0** on 2026-05-16
   - [rumdl](https://github.com/rvben/rumdl) from 0.1.92 to **0.1.93** on 2026-05-16
+  - [vale](https://vale.sh/) from 3.14.1 to **3.14.2** on 2026-05-16
 <!-- linter-versions-end -->
 
 ## [v9.4.0] - 2026-02-28

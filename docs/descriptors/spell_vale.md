@@ -24,7 +24,7 @@ MegaLinter analyze markdown and restructuredText files by default, you can chang
 
 ## vale documentation
 
-- Version in MegaLinter: **3.14.1**
+- Version in MegaLinter: **3.14.2**
 - Visit [Official Web Site](https://vale.sh/){target=_blank}
 - See [How to configure vale rules](https://vale.sh/explorer/){target=_blank}
 - See [How to disable vale rules in files](https://vale.sh/docs/topics/vocab/){target=_blank}
@@ -153,11 +153,11 @@ Flags:
 
 Commands:
 
- ls-config        Print the current configuration to stdout.
- ls-dirs          Print the default configuration directories to stdout.
- ls-metrics       Print the given file's internal metrics to stdout.
- ls-vars          Print the supported environment variables to stdout.
- sync             Download and install external configuration sources.
+ ls-config   Print the current configuration to stdout.
+ ls-dirs     Print the default configuration directories to stdout.
+ ls-metrics  Print the given file's internal metrics to stdout.
+ ls-vars     Print the supported environment variables to stdout.
+ sync        Download and install external configuration sources.
 
 ```
 
@@ -166,7 +166,7 @@ Commands:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=jdkato/vale
-ARG SPELL_VALE_VERSION=v3.14.1
+ARG SPELL_VALE_VERSION=v3.14.2
 FROM jdkato/vale:${SPELL_VALE_VERSION} AS vale
 COPY --link --from=vale /bin/vale /bin/vale
 ```
