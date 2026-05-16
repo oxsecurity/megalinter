@@ -42,9 +42,7 @@ class EslintLinterTest(unittest.TestCase):
 
             linter = _make_linter()
             master = _Master()
-            linter._gate_on_eslint10_config(
-                {"workspace": workspace, "master": master}
-            )
+            linter._gate_on_eslint10_config({"workspace": workspace, "master": master})
 
             self.assertTrue(linter.is_active)
             self.assertFalse(linter.disabled)
@@ -59,9 +57,7 @@ class EslintLinterTest(unittest.TestCase):
 
             linter = _make_linter("JAVASCRIPT_ES")
             master = _Master()
-            linter._gate_on_eslint10_config(
-                {"workspace": workspace, "master": master}
-            )
+            linter._gate_on_eslint10_config({"workspace": workspace, "master": master})
 
             self.assertFalse(linter.is_active)
             self.assertTrue(linter.disabled)
@@ -81,9 +77,7 @@ class EslintLinterTest(unittest.TestCase):
 
             linter = _make_linter("TYPESCRIPT_ES")
             master = _Master()
-            linter._gate_on_eslint10_config(
-                {"workspace": workspace, "master": master}
-            )
+            linter._gate_on_eslint10_config({"workspace": workspace, "master": master})
 
             self.assertFalse(linter.is_active)
             self.assertTrue(linter.disabled)
@@ -93,9 +87,7 @@ class EslintLinterTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as workspace:
             linter = _make_linter()
             master = _Master()
-            linter._gate_on_eslint10_config(
-                {"workspace": workspace, "master": master}
-            )
+            linter._gate_on_eslint10_config({"workspace": workspace, "master": master})
 
             self.assertTrue(linter.is_active)
             self.assertFalse(linter.disabled)
