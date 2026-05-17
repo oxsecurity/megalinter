@@ -5,7 +5,7 @@
     "bandit": "1.9.4",
     "bash-exec": "5.3.3",
     "bicep_linter": "0.43.8",
-    "black": "26.3.1",
+    "black": "26.5.0",
     "cfn-lint": "3.14",
     "checkmake": "0.2.0",
     "checkov": "3.2.529",

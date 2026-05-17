@@ -41,6 +41,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - CI
 
 - Linter versions upgrades (N)
+  - [black](https://black.readthedocs.io/en/stable/) from 26.3.1 to **26.5.0** on 2026-05-16
 <!-- linter-versions-end -->
 
 ## [v9.5.0] - 2026-05-16
