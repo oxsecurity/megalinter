@@ -11,7 +11,7 @@ import re
 import shutil
 import subprocess
 import sys
-from datetime import date, datetime
+from datetime import datetime
 from pathlib import Path
 from shutil import copyfile, which
 from typing import Any
