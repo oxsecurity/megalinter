@@ -5338,6 +5338,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="ESLint v10 — resolving bare imports from eslint.config.mjs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#workaround-1-use-createrequire-in-eslintconfigmjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workaround 1 — Use createRequire in eslint.config.mjs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workaround-2-install-dependencies-in-a-pre-command-and-use-the-project-local-eslint-binary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workaround 2 — Install dependencies in a pre-command and use the project-local ESLint binary
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -12408,6 +12436,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="ESLint v10 — resolving bare imports from eslint.config.mjs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#workaround-1-use-createrequire-in-eslintconfigmjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workaround 1 — Use createRequire in eslint.config.mjs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workaround-2-install-dependencies-in-a-pre-command-and-use-the-project-local-eslint-binary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workaround 2 — Install dependencies in a pre-command and use the project-local ESLint binary
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -12570,27 +12626,23 @@
 <pre><code class="language-text">Error [ERR_MODULE_NOT_FOUND]: Cannot find package '@eslint/js' imported from /github/workspace/eslint.config.mjs
 </code></pre>
 <p>Two recommended workarounds:</p>
-<ol>
-<li>
-<p><strong>Use <code>createRequire</code> in <code>eslint.config.mjs</code></strong> so bare imports fall back to CommonJS resolution (which honors <code>NODE_PATH</code> and will pick up MegaLinter's bundled <code>@eslint/js</code>, <code>@typescript-eslint/eslint-plugin</code>, etc.):</p>
-<p><code>js
-  import { createRequire } from 'module';
-  const require = createRequire(import.meta.url);
-  const js = require('@eslint/js');
-  const tsPlugin = require('@typescript-eslint/eslint-plugin');
-  const reactPlugin = require('@eslint-react/eslint-plugin');</code></p>
-</li>
-<li>
-<p><strong>Install your project's dependencies in a pre-command and point MegaLinter at the project-local ESLint binary</strong>, so ESLint runs from <code>&lt;workspace&gt;/node_modules</code> and resolves your config's imports naturally:</p>
-<p><code>yaml
-  TSX_ESLINT_PRE_COMMANDS:
-    - command: yarn install --frozen-lockfile --ignore-scripts
-      cwd: workspace
-      continue_if_failed: false
-  TSX_ESLINT_CLI_EXECUTABLE: node_modules/.bin/eslint</code></p>
+<h4 id="workaround-1-use-createrequire-in-eslintconfigmjs">Workaround 1 — Use <code>createRequire</code> in <code>eslint.config.mjs</code></h4>
+<p>Bare imports fall back to CommonJS resolution (which honors <code>NODE_PATH</code> and will pick up MegaLinter's bundled <code>@eslint/js</code>, <code>@typescript-eslint/eslint-plugin</code>, etc.):</p>
+<pre><code class="language-js">import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const js = require('@eslint/js');
+const tsPlugin = require('@typescript-eslint/eslint-plugin');
+const reactPlugin = require('@eslint-react/eslint-plugin');
+</code></pre>
+<h4 id="workaround-2-install-dependencies-in-a-pre-command-and-use-the-project-local-eslint-binary">Workaround 2 — Install dependencies in a pre-command and use the project-local ESLint binary</h4>
+<p>ESLint then runs from <code>&lt;workspace&gt;/node_modules</code> and resolves your config's imports naturally:</p>
+<pre><code class="language-yaml">TSX_ESLINT_PRE_COMMANDS:
+  - command: yarn install --frozen-lockfile --ignore-scripts
+    cwd: workspace
+    continue_if_failed: false
+TSX_ESLINT_CLI_EXECUTABLE: node_modules/.bin/eslint
+</code></pre>
 <p>Replace <code>yarn install --frozen-lockfile --ignore-scripts</code> with <code>npm ci</code> (or <code>npm install --include=dev</code>) if your project uses npm.</p>
-</li>
-</ol>
 <h2 id="eslint-documentation">eslint documentation</h2>
 <ul>
 <li>Version in MegaLinter: <strong>10.3.0</strong></li>

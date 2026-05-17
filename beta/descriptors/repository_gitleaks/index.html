@@ -12712,19 +12712,13 @@
 <ul>
 <li><code>PULL_REQUEST=true</code>*</li>
 <li><code>REPOSITORY_GITLEAKS_PR_COMMITS_SCAN: true</code></li>
-<li>
-<p><code>REPOSITORY_GITLEAKS_PR_SOURCE_SHA</code> with last commit sha from your PR and <code>REPOSITORY_GITLEAKS_PR_TARGET_SHA</code> commit sha from your target branch (for example, <code>main</code> if you do PR to main branch)</p>
-<p>Example commands:</p>
-<ul>
-<li>Source commit SHA:
+<li><code>REPOSITORY_GITLEAKS_PR_SOURCE_SHA</code> with last commit sha from your PR and <code>REPOSITORY_GITLEAKS_PR_TARGET_SHA</code> commit sha from your target branch (for example, <code>main</code> if you do PR to main branch)<p>Example commands:</p>
+<p>- Source commit SHA:
       <code>bash
-      git rev-list -n 1 refs/remotes/origin/&lt;source_branch&gt;</code></li>
-</ul>
-<ul>
-<li>Target commit SHA:
+      git rev-list -n 1 refs/remotes/origin/&lt;source_branch&gt;</code></p>
+<p>- Target commit SHA:
       <code>bash
-      git rev-parse refs/remotes/origin/&lt;target_branch&gt;</code></li>
-</ul>
+      git rev-parse refs/remotes/origin/&lt;target_branch&gt;</code></p>
 </li>
 </ul>
 <p>* <code>PULL_REQUEST</code> environment variable must be set to <code>true</code> only on Pull Requests, so you must calculate the value in your pipeline and pass the outcome.</p>
