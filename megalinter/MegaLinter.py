@@ -902,12 +902,36 @@ class Megalinter:
                 all_files += [diff_line]
         return all_files
 
+    def _normalize_excluded_directories(self, excluded_directories):
+        # Convert absolute paths located inside the workspace into
+        # workspace-relative paths so they match the values produced by
+        # os.walk(). Workspace-relative entries are kept unchanged; absolute
+        # paths outside the workspace are dropped (they can never match).
+        workspace_abs = os.path.abspath(self.workspace)
+        normalized = set()
+        for excluded_dir in excluded_directories:
+            if not excluded_dir:
+                continue
+            if os.path.isabs(excluded_dir):
+                try:
+                    rel = os.path.relpath(excluded_dir, workspace_abs)
+                except ValueError:
+                    continue
+                if rel == "." or rel.startswith(".."):
+                    continue
+                normalized.add(rel.replace("\\", "/"))
+            else:
+                normalized.add(excluded_dir)
+        return normalized
+
     def list_files_all(self):
         # List all files under workspace root directory
         logging.info(
             "Listing all files in directory [" + self.workspace + "], then filter with:"
         )
-        excluded_directories = utils.get_excluded_directories(self.request_id)
+        excluded_directories = self._normalize_excluded_directories(
+            utils.get_excluded_directories(self.request_id)
+        )
         all_files = []
         for dirpath, dirnames, filenames in os.walk(
             self.workspace, topdown=True, followlinks=False
