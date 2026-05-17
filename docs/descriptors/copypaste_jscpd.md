@@ -45,7 +45,7 @@ Example:
 
 ## jscpd documentation
 
-- Version in MegaLinter: **4.1.1**
+- Version in MegaLinter: **4.2.0**
 - Visit [Official Web Site](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#readme){target=_blank}
 - See [How to configure jscpd rules](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#config-file){target=_blank}
   - If custom `.jscpd.json` config file isn't found, [.jscpd.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.jscpd.json){target=_blank} will be used
@@ -160,12 +160,17 @@ Options:
                              console
   --store [string]           use for define custom store (e.g. --store leveldb
                              used for big codebase)
+  --store-path [string]      directory to use for store cache (e.g.
+                             --store-path /tmp/jscpd-cache, useful when running
+                             multiple instances in parallel)
   -a, --absolute             use absolute path in reports
   -n, --noSymlinks           dont use symlinks for detection in files
   --ignoreCase               ignore case of symbols in code (experimental)
   -g, --gitignore            ignore all files from .gitignore file
   --formats-exts [string]    list of formats with file extensions
                              (javascript:es,es6;dart:dt)
+  --formats-names [string]   list of formats with specific filenames
+                             (makefile:Makefile,GNUmakefile;docker:Dockerfile)
   -d, --debug                show debug information, not run detection
                              process(options list and selected files)
   -v, --verbose              show full information during detection process
@@ -176,6 +181,8 @@ Options:
                              detected
   --noTips                   do not print tips and promotional messages after
                              detection
+  --skipComments             ignore comments during detection (alias for --mode
+                             weak)
   -h, --help                 display help for command
 ```
 
@@ -184,8 +191,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=4.1.1
+ARG NPM_JSCPD_VERSION=4.2.0
 ```
 
 - NPM packages (node.js):
-  - [jscpd@4.1.1](https://www.npmjs.com/package/jscpd/v/4.1.1)
+  - [jscpd@4.2.0](https://www.npmjs.com/package/jscpd/v/4.2.0)

@@ -46,6 +46,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [black](https://black.readthedocs.io/en/stable/) from 26.3.1 to **26.5.0** on 2026-05-16
   - [stylua](https://github.com/JohnnyMorganz/StyLua) from 2.4.1 to **2.5.2** on 2026-05-17
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.15.2 to **1.15.3** on 2026-05-17
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 4.1.1 to **4.2.0** on 2026-05-17
+  - [stylelint](https://stylelint.io) from 17.11.0 to **17.11.1** on 2026-05-17
 <!-- linter-versions-end -->
 
 ## [v9.5.0] - 2026-05-16
