@@ -11,7 +11,7 @@ import re
 import shutil
 import subprocess
 import sys
-from datetime import date, datetime
+from datetime import datetime
 from pathlib import Path
 from shutil import copyfile, which
 from typing import Any
@@ -26,6 +26,7 @@ import terminaltables
 import webpreview
 import yaml
 from bs4 import BeautifulSoup
+from docker_stats import update_docker_pulls_counter
 from giturlparse import parse
 from megalinter import config, utils
 from megalinter.constants import (
@@ -46,14 +47,9 @@ from megalinter.constants import (
     DEFAULT_DOCKERFILE_RUST_ARGS,
     DEFAULT_RELEASE,
     DEFAULT_REPORT_FOLDER_NAME,
-    DOCKER_PACKAGES_ROOT_URL,
-    GHCR_PACKAGES_ROOT_URL,
     ML_DOC_URL_BASE,
     ML_DOCKER_IMAGE,
-    ML_DOCKER_IMAGE_LEGACY,
-    ML_DOCKER_IMAGE_LEGACY_V5,
     ML_DOCKER_IMAGE_WITH_HOST,
-    ML_DOCKER_NAME,
     ML_REPO,
     ML_REPO_URL,
 )
@@ -110,7 +106,6 @@ LICENSES_FILE = REPO_HOME + "/.automation/generated/linter-licenses.json"
 USERS_FILE = REPO_HOME + "/.automation/generated/megalinter-users.json"
 HELPS_FILE = REPO_HOME + "/.automation/generated/linter-helps.json"
 LINKS_PREVIEW_FILE = REPO_HOME + "/.automation/generated/linter-links-previews.json"
-DOCKER_STATS_FILE = REPO_HOME + "/.automation/generated/flavors-stats.json"
 PLUGINS_FILE = REPO_HOME + "/.automation/plugins.yml"
 FLAVORS_DIR = REPO_HOME + "/flavors"
 LINTERS_DIR = REPO_HOME + "/linters"
@@ -2213,86 +2208,6 @@ def update_mkdocs_and_workflow_yml_with_flavors():
     )
 
 
-def update_docker_pulls_counter():
-    logging.info("Fetching docker pull counters on flavors images")
-    total_count = 0
-    all_flavors_ids = list(megalinter.flavor_factory.get_all_flavors().keys())
-    all_flavors_ids.insert(0, "all")
-    with open(DOCKER_STATS_FILE, "r", encoding="utf-8") as json_stats:
-        docker_stats = json.load(json_stats)
-    now_str = datetime.now().replace(microsecond=0).isoformat()
-    for flavor_id in all_flavors_ids:
-        if flavor_id == "all":
-            ghcr_image_url = f"{GHCR_PACKAGES_ROOT_URL}/{ML_DOCKER_NAME}"
-            docker_image_url = f"{DOCKER_PACKAGES_ROOT_URL}/{ML_DOCKER_IMAGE}"
-            legacy_docker_image_url = (
-                f"{DOCKER_PACKAGES_ROOT_URL}/{ML_DOCKER_IMAGE_LEGACY}"
-            )
-            legacy_v5_docker_image_url = (
-                f"{DOCKER_PACKAGES_ROOT_URL}/{ML_DOCKER_IMAGE_LEGACY_V5}"
-            )
-        else:
-            ghcr_image_url = f"{GHCR_PACKAGES_ROOT_URL}/{ML_DOCKER_NAME}-{flavor_id}"
-            docker_image_url = (
-                f"{DOCKER_PACKAGES_ROOT_URL}/{ML_DOCKER_IMAGE}-{flavor_id}"
-            )
-            legacy_docker_image_url = (
-                f"{DOCKER_PACKAGES_ROOT_URL}/{ML_DOCKER_IMAGE_LEGACY}-{flavor_id}"
-            )
-            legacy_v5_docker_image_url = (
-                f"{DOCKER_PACKAGES_ROOT_URL}/"
-                + f"{ML_DOCKER_IMAGE_LEGACY_V5}-{flavor_id}"
-            )
-
-        flavor_count_0 = perform_count_request(ghcr_image_url)
-        flavor_count_1 = perform_count_request(docker_image_url)
-        flavor_count_2 = perform_count_request(legacy_docker_image_url)
-        flavor_count_3 = perform_count_request(legacy_v5_docker_image_url)
-        flavor_count = flavor_count_0 + flavor_count_1 + flavor_count_2 + flavor_count_3
-        logging.info(f"- docker pulls for {flavor_id}: {flavor_count}")
-        total_count = total_count + flavor_count
-        flavor_stats = list(docker_stats.get(flavor_id, []))
-        flavor_stats.append([now_str, flavor_count])
-        flavor_stats = keep_one_stat_by_day(flavor_stats)
-        docker_stats[flavor_id] = flavor_stats
-    total_count_human = number_human_format(total_count)
-    logging.info(f"Total docker pulls: {total_count_human} ({total_count})")
-    # Update total badge counters
-    replace_in_file(
-        f"{REPO_HOME}/README.md", "pulls-", "-blue", total_count_human, False
-    )
-    replace_in_file(
-        f"{REPO_HOME}/mega-linter-runner/README.md",
-        "pulls-",
-        "-blue",
-        total_count_human,
-        False,
-    )
-    # Write docker stats
-    with open(DOCKER_STATS_FILE, "w", encoding="utf-8") as jsonstats:
-        json.dump(docker_stats, jsonstats, indent=4, sort_keys=True)
-
-
-def perform_count_request(docker_image_url):
-    r = requests_retry_session().get(docker_image_url)
-    resp = r.json()
-    flavor_count = resp["pull_count"] if "pull_count" in resp else 0
-    logging.info(f"{docker_image_url}: {flavor_count}")
-    return flavor_count
-
-
-def keep_one_stat_by_day(flavor_stats):
-    filtered_flavor_stats = []
-    prev_date = date.min
-    for [count_date_iso, count_date_number] in flavor_stats:
-        count_date = datetime.fromisoformat(count_date_iso).date()
-        if count_date == prev_date:
-            filtered_flavor_stats.pop()
-        filtered_flavor_stats.append([count_date_iso, count_date_number])
-        prev_date = count_date
-    return filtered_flavor_stats
-
-
 def requests_retry_session(
     retries=3,
     backoff_factor=0.5,
@@ -2311,16 +2226,6 @@ def requests_retry_session(
     session.mount("http://", adapter)
     session.mount("https://", adapter)
     return session
-
-
-def number_human_format(num, round_to=1):
-    magnitude = 0
-    while abs(num) >= 1000:
-        magnitude += 1
-        num = round(num / 1000.0, round_to)
-    return "{:.{}f}{}".format(
-        round(num, round_to), round_to, ["", "k", "M", "G", "T", "P"][magnitude]
-    )
 
 
 def get_linter_base_info(linter):

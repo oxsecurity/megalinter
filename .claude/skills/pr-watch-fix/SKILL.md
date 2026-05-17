@@ -154,7 +154,8 @@ NEW_REMOTE_COMMITS="$(git log --format='%s' HEAD..origin/"$BRANCH")"
 if printf '%s\n' "$NEW_REMOTE_COMMITS" | grep -q '^\[MegaLinter\] Apply linters fixes'; then
     # Auto-fix bot pushed — try to rebase onto it (keeps the bot's fixes)
     if git pull --rebase origin "$BRANCH"; then
-        git push
+        # Amend the bot commit to add an emoji prefix, then push to re-trigger workflows
+        _amend_megalinter_bot_commit_and_push "$BRANCH"
     else
         # Rebase failed with conflicts — abort and force-push our commit
         git rebase --abort
@@ -165,11 +166,29 @@ else
 fi
 ```
 
+**Amend the MegaLinter bot commit with an emoji** to re-trigger CI workflows. The auto-fix commit often lands without triggering all required checks; amending its subject line forces a new workflow run:
+
+```bash
+_amend_megalinter_bot_commit_and_push() {
+    local branch="$1"
+    local orig_msg
+    orig_msg="$(git log -1 --format='%s')"
+    # Only amend if it's the bot commit (idempotent — skip if emoji already present)
+    if printf '%s' "$orig_msg" | grep -q '^\[MegaLinter\]' && ! printf '%s' "$orig_msg" | grep -qP '^[\x{1F300}-\x{1FFFF}]'; then
+        git commit --amend -m "$(printf '🤖 %s\n\nCo-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>' "$orig_msg")"
+        git push --force-with-lease
+    else
+        git push
+    fi
+}
+```
+
 Notes:
 
 - `--force-with-lease` (not `--force`) so we refuse to overwrite anything we haven't seen, except the bot commit we just observed
 - This is the **only** authorized force-push path. Any other force-push needs explicit user permission
 - If `NEW_REMOTE_COMMITS` contains commits that are **not** from the MegaLinter bot, **STOP** and ask the user — someone else pushed work, don't silently overwrite
+- The emoji amendment is idempotent: if the commit already starts with an emoji, it is not amended again
 
 After the push, capture the new `HEAD` SHA so you can wait for **its** workflow runs (not the previous ones). GitHub takes ~30s to register new runs; sleep 60 before re-entering step 2.
 

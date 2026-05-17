@@ -34,6 +34,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Flavors
 
 - Doc
+  - Update Docker pull counters in README badges and `flavors-stats.json` with latest ghcr.io stats
 
 - mega-linter-runner
 
