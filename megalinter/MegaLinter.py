@@ -31,8 +31,21 @@ from megalinter.constants import (
 )
 from megalinter.logger import display_header, initialize_logger, manage_upgrade_message
 from megalinter.reporters.jenkins_ci_vars import apply_jenkins_ci_vars
-from megalinter.utils_reporter import log_section_end, log_section_start
+from megalinter.utils_reporter import (
+    log_section_end,
+    log_section_start,
+    register_user_notification,
+)
 from multiprocessing_logging import install_mp_handler, uninstall_mp_handler
+
+MEGALINTER_9_5_ANNOUNCEMENT_KEY = "megalinter_9_5_announcement"
+MEGALINTER_9_5_ANNOUNCEMENT_URL = "https://github.com/oxsecurity/megalinter/issues/7835"
+MEGALINTER_9_5_ANNOUNCEMENT_TEMPLATE = (
+    "📣 **MegaLinter 9.5.0 is out!** "
+    "Discover the new features and security recommendations in the "
+    f"[release announcement]({MEGALINTER_9_5_ANNOUNCEMENT_URL}). "
+    "(Skip this info by defining `SECURITY_SUGGESTIONS: false`)"
+)
 
 
 # initialize worker processes
@@ -46,7 +59,7 @@ def init_worker(request_config_in):
     # install_mp_handler() replaces handlers with QueueHandlers whose formatter may not
     # be propagated correctly to forked children, causing the default
     # "%(levelname)s:%(name)s:%(message)s" format to appear in output instead of the
-    # plain message — which breaks CI annotation commands like "::group::" that must
+    # plain message - which breaks CI annotation commands like "::group::" that must
     # appear at the very start of a line.
     formatter = logging.Formatter("%(message)s")
     for handler in logging.root.handlers:
@@ -128,6 +141,11 @@ class Megalinter:
         self.default_linter_activation = True
         self.output_sarif = False
         self.result_message = ""
+        # Generic user notifications raised during the run. Each entry is
+        # keyed by a stable id and holds a template, a list of collected
+        # values, and optional extra placeholders. Rendered once per id by
+        # console and PR comment reporters via `build_user_notifications()`.
+        self.user_notifications: dict = {}
 
         # Get enable / disable vars
         self.enable_descriptors = config.get_list(self.request_id, "ENABLE", [])
@@ -345,6 +363,15 @@ class Megalinter:
         ):
             self.flavor_suggestions = flavor_factory.get_megalinter_flavor_suggestions(
                 self.active_linters
+            )
+
+        # Register default MegaLinter 9.5.0 release announcement notification.
+        # Disabled when SECURITY_SUGGESTIONS=false.
+        if config.get(self.request_id, "SECURITY_SUGGESTIONS", "true") == "true":
+            register_user_notification(
+                self,
+                key=MEGALINTER_9_5_ANNOUNCEMENT_KEY,
+                template=MEGALINTER_9_5_ANNOUNCEMENT_TEMPLATE,
             )
 
         # Run user-defined commands
@@ -875,12 +902,36 @@ class Megalinter:
                 all_files += [diff_line]
         return all_files
 
+    def _normalize_excluded_directories(self, excluded_directories):
+        # Convert absolute paths located inside the workspace into
+        # workspace-relative paths so they match the values produced by
+        # os.walk(). Workspace-relative entries are kept unchanged; absolute
+        # paths outside the workspace are dropped (they can never match).
+        workspace_abs = os.path.abspath(self.workspace)
+        normalized = set()
+        for excluded_dir in excluded_directories:
+            if not excluded_dir:
+                continue
+            if os.path.isabs(excluded_dir):
+                try:
+                    rel = os.path.relpath(excluded_dir, workspace_abs)
+                except ValueError:
+                    continue
+                if rel == "." or rel.startswith(".."):
+                    continue
+                normalized.add(rel.replace("\\", "/"))
+            else:
+                normalized.add(excluded_dir)
+        return normalized
+
     def list_files_all(self):
         # List all files under workspace root directory
         logging.info(
             "Listing all files in directory [" + self.workspace + "], then filter with:"
         )
-        excluded_directories = utils.get_excluded_directories(self.request_id)
+        excluded_directories = self._normalize_excluded_directories(
+            utils.get_excluded_directories(self.request_id)
+        )
         all_files = []
         for dirpath, dirnames, filenames in os.walk(
             self.workspace, topdown=True, followlinks=False

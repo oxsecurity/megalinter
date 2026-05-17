@@ -186,11 +186,12 @@ jobs:
           cache-from: type=gha,scope=beta-flavor-${{ matrix.flavor }}-${{ matrix.platform }},ignore-error=true
           cache-to: type=gha,mode=max,scope=beta-flavor-${{ matrix.flavor }}-${{ matrix.platform }},compression=zstd
 
-      - name: Invoke Mirror docker image workflow (Main image)
-        uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1
-        with:
-          workflow: mirror-docker-image.yml
-          inputs: '{ "source-image": "${{ steps.meta.outputs.tags }}", "target-image": "${{ steps.meta-dhub.outputs.tags }}" }'
+      # Docker Hub mirroring is disabled — MegaLinter is published to ghcr.io only.
+      # - name: Invoke Mirror docker image workflow (Main image)
+      #   uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1
+      #   with:
+      #     workflow: mirror-docker-image.yml
+      #     inputs: '{ "source-image": "${{ steps.meta.outputs.tags }}", "target-image": "${{ steps.meta-dhub.outputs.tags }}" }'
 
       # - name: Build Worker Image
       #   uses: docker/build-push-action@v7

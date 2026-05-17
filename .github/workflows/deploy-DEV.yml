@@ -96,7 +96,7 @@ jobs:
               echo "BUILD_DATE=${META_CREATED}"
               echo "BUILD_VERSION=${META_VERSION}"
               echo "BUILD_REVISION=${META_REVISION}"
-              echo "MEGA_LINTER_BASE_IMAGE=oxsecurity/megalinter:beta"
+              echo "MEGALINTER_BASE_IMAGE=ghcr.io/oxsecurity/megalinter:beta"
               echo "EOF"
             } >> "${GITHUB_OUTPUT}"
           else

@@ -137,6 +137,15 @@ jobs:
         if: (github.event_name == 'workflow_dispatch' || steps.compute_versions.outputs.has_updated_versions == 1)
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8
         with:
+          # SECURITY NOTE: A Personal Access Token (PAT) is used here so the
+          # auto-update PR can trigger downstream CI workflows. End-users
+          # should NOT copy this pattern — using a PAT is NOT recommended
+          # because open-source projects have been heavily targeted by
+          # supply-chain attacks recently, and a leaked PAT can give
+          # attackers broad write access to your repository.
+          # If you only need workflows to re-trigger after MegaLinter pushes
+          # a fix, manually re-run the workflow or push another commit on
+          # the branch instead of configuring a PAT.
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN  }}
           author: "Nicolas Vuillamy <nicolas.vuillamy@gmail.com>"
           commit-message: "[automation] Auto-update linters version, help and documentation"

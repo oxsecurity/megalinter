@@ -201,12 +201,13 @@ jobs:
           docker run -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER="${GH_SHA}" -e OUTPUT_DETAIL=detailed -e GITHUB_SHA="${GH_SHA}" -e GITHUB_REPOSITORY="${GITHUB_REPOSITORY}" -e GITHUB_BRANCH="${GITHUB_BRANCH}" -e GITHUB_TOKEN="${GITHUB_TOKEN}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v "${GITHUB_WORKSPACE}:/tmp/lint" "${DOCKER_IMAGE}"
         timeout-minutes: 30
 
-      - name: Invoke Mirror docker image workflow (Standalone linter image)
-        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1
-        with:
-          workflow: mirror-docker-image.yml
-          inputs: '{ "source-image": "${{ fromJson(steps.meta.outputs.json).tags[0]}}", "target-image": "${{ fromJson(steps.meta-dhub.outputs.json).tags[0]}}", "free-space-before": "false" }'
+      # Docker Hub mirroring is disabled — MegaLinter is published to ghcr.io only.
+      # - name: Invoke Mirror docker image workflow (Standalone linter image)
+      #   if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
+      #   uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1
+      #   with:
+      #     workflow: mirror-docker-image.yml
+      #     inputs: '{ "source-image": "${{ fromJson(steps.meta.outputs.json).tags[0]}}", "target-image": "${{ fromJson(steps.meta-dhub.outputs.json).tags[0]}}", "free-space-before": "false" }'
 
       ##############################################
       # Check Docker image security with Trivy #

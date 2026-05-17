@@ -50,7 +50,7 @@ Black is successfully used by many projects, small and big, and has become the d
 
 ## black documentation
 
-- Version in MegaLinter: **26.3.1**
+- Version in MegaLinter: **26.5.0**
 - Visit [Official Web Site](https://black.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure black rules](https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-format){target=_blank}
   - If custom `pyproject.toml` config file isn't found, [pyproject.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/pyproject.toml){target=_blank} will be used
@@ -145,7 +145,7 @@ Options:
   -c, --code TEXT                 Format the code passed in as a string.
   -l, --line-length INTEGER       How many characters per line to allow.
                                   [default: 88]
-  -t, --target-version [py33|py34|py35|py36|py37|py38|py39|py310|py311|py312|py313|py314]
+  -t, --target-version [py33|py34|py35|py36|py37|py38|py39|py310|py311|py312|py313|py314|py315]
                                   Python versions that should be supported by
                                   Black's output. You should include all
                                   versions that your code supports. By
@@ -179,7 +179,7 @@ Options:
                                   expected to make it into the stable style
                                   Black's next major release. Implies
                                   --preview.
-  --enable-unstable-feature [string_processing|hug_parens_with_braces_and_square_brackets|wrap_comprehension_in|simplify_power_operator_hugging|wrap_long_dict_values_in_parens|fix_if_guard_explosion_in_case_statement]
+  --enable-unstable-feature [string_processing|hug_parens_with_braces_and_square_brackets|wrap_comprehension_in|simplify_power_operator_hugging|wrap_long_dict_values_in_parens|fix_if_guard_explosion_in_case_statement|pyi_overload_group_blank_lines|pyi_blank_line_before_decorated_class]
                                   Enable specific features included in the
                                   `--unstable` style. Requires `--preview`. No
                                   compatibility guarantees are provided on the
@@ -281,8 +281,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=black
-ARG PIP_BLACK_VERSION=26.3.1
+ARG PIP_BLACK_VERSION=26.5.0
 ```
 
 - PIP packages (Python):
-  - [black[jupyter]==26.3.1](https://pypi.org/project/black[jupyter]/26.3.1)
+  - [black[jupyter]==26.5.0](https://pypi.org/project/black[jupyter]/26.5.0)

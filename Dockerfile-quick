@@ -9,7 +9,7 @@
 # Get base image #
 ##################
 ARG GITHUB_TOKEN
-ARG MEGALINTER_BASE_IMAGE=oxsecurity/megalinter:beta
+ARG MEGALINTER_BASE_IMAGE=ghcr.io/oxsecurity/megalinter:beta
 FROM $MEGALINTER_BASE_IMAGE as base
 
 ##################

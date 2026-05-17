@@ -35,7 +35,7 @@ ARG GO_IMAGE_VERSION=1.26.3
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.7.0-alpine
 # renovate: datasource=github-releases depName=JohnnyMorganz/StyLua extractVersion=^v(?<version>.+)$
-ARG CARGO_STYLUA_VERSION=2.4.1
+ARG CARGO_STYLUA_VERSION=2.5.2
 # renovate: datasource=docker depName=yoheimuta/protolint
 ARG PROTOBUF_PROTOLINT_VERSION=0.56.4
 # renovate: datasource=github-tags depName=checkmarx/dustilock
@@ -45,7 +45,7 @@ ARG REPOSITORY_GITLEAKS_VERSION=v8.30.1
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
 ARG REPOSITORY_TRUFFLEHOG_VERSION=3.95.3
 # renovate: datasource=docker depName=jdkato/vale
-ARG SPELL_VALE_VERSION=v3.14.1
+ARG SPELL_VALE_VERSION=v3.14.2
 # renovate: datasource=docker depName=lycheeverse/lychee
 ARG SPELL_LYCHEE_VERSION=0.24.2-alpine
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
@@ -53,7 +53,7 @@ ARG TERRAFORM_TFLINT_VERSION=0.62.1
 # renovate: datasource=docker depName=tenable/terrascan
 ARG TERRAFORM_TERRASCAN_VERSION=1.19.9
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.2
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.3
 #ARGTOP__END
 
 #############################################################################################
@@ -241,17 +241,15 @@ ARG JAVA_CHECKSTYLE_VERSION=12.1.0
 ARG PMD_VERSION=7.24.0
 
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=9.39.4
+ARG NPM_ESLINT_VERSION=10.3.0
 # renovate: datasource=npm depName=@eslint/eslintrc
 ARG NPM_ESLINT_ESLINTRC_VERSION=3.3.5
-# renovate: datasource=npm depName=eslint-config-airbnb-extended
-ARG NPM_ESLINT_CONFIG_AIRBNB_EXTENDED_VERSION=3.1.0
+# renovate: datasource=npm depName=@eslint/js
+ARG NPM_ESLINT_JS_VERSION=10.0.1
 # renovate: datasource=npm depName=eslint-config-prettier
 ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.1.8
-# renovate: datasource=npm depName=neostandard
-ARG NPM_NEOSTANDARD_VERSION=0.13.0
-# renovate: datasource=npm depName=eslint-plugin-import
-ARG NPM_ESLINT_PLUGIN_IMPORT_VERSION=2.32.0
+# renovate: datasource=npm depName=eslint-plugin-import-x
+ARG NPM_ESLINT_PLUGIN_IMPORT_X_VERSION=4.16.2
 # renovate: datasource=npm depName=eslint-plugin-jest
 ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.15.2
 # renovate: datasource=npm depName=eslint-plugin-n
@@ -262,10 +260,6 @@ ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.5
 ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=7.3.0
 # renovate: datasource=npm depName=eslint-plugin-vue
 ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.9.1
-# renovate: datasource=npm depName=@babel/core
-ARG NPM_BABEL_CORE_VERSION=7.29.0
-# renovate: datasource=npm depName=@babel/eslint-parser
-ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.28.6
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 # renovate: datasource=npm depName=standard
@@ -280,10 +274,8 @@ ARG NPM_V8R_VERSION=6.0.0
 ARG NPM_PACKAGE_JSON_LINT_VERSION=10.4.0
 # renovate: datasource=npm depName=npm-package-json-lint-config-default
 ARG NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION=9.0.1
-# renovate: datasource=npm depName=eslint-plugin-react
-ARG NPM_ESLINT_PLUGIN_REACT_VERSION=7.37.5
-# renovate: datasource=npm depName=eslint-plugin-jsx-a11y
-ARG NPM_ESLINT_PLUGIN_JSX_ALLY_VERSION=6.10.2
+# renovate: datasource=npm depName=@eslint-react/eslint-plugin
+ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.7.8
 # renovate: datasource=github-tags depName=pinterest/ktlint
 ARG KTLINT_VERSION=1.8.0
 
@@ -300,7 +292,7 @@ ARG NPM_MARKDOWNLINT_CLI_VERSION=0.48.0
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.1.92
+ARG PIP_RUMDL_VERSION=0.1.93
 # renovate: datasource=github-tags depName=skaji/cpm
 ARG PERL_PERLCRITIC_VERSION=v1.1.0
 
@@ -326,7 +318,7 @@ ARG PIP_PYLINT_VERSION=4.0.5
 # renovate: datasource=pypi depName=typing-extensions
 ARG PIP_TYPING_EXTENSIONS_VERSION=4.15.0
 # renovate: datasource=pypi depName=black
-ARG PIP_BLACK_VERSION=26.3.1
+ARG PIP_BLACK_VERSION=26.5.0
 # renovate: datasource=pypi depName=flake8
 ARG PIP_FLAKE8_VERSION=7.3.0
 # renovate: datasource=pypi depName=isort
@@ -382,7 +374,7 @@ ARG PIP_RESTRUCTUREDTEXT_LINT_VERSION=2.0.2
 # renovate: datasource=pypi depName=rstcheck
 ARG PIP_RSTCHECK_VERSION=6.2.5
 # renovate: datasource=pypi depName=click
-ARG PIP_RSTCHECK_CLICK_VERSION=8.3.3
+ARG PIP_RSTCHECK_CLICK_VERSION=8.4.0
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=rubygems depName=rubocop
@@ -392,7 +384,7 @@ ARG GEM_RUBOCOP_GITHUB_VERSION=0.27.0
 # renovate: datasource=rubygems depName=rubocop-performance
 ARG GEM_RUBOCOP_PERFORMANCE_VERSION=1.26.1
 # renovate: datasource=rubygems depName=rubocop-rails
-ARG GEM_RUBOCOP_RAILS_VERSION=2.35.0
+ARG GEM_RUBOCOP_RAILS_VERSION=2.35.1
 # renovate: datasource=rubygems depName=rubocop-rake
 ARG GEM_RUBOCOP_RAKE_VERSION=0.7.1
 # renovate: datasource=rubygems depName=rubocop-rspec
@@ -758,17 +750,14 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 htmlhint@${NPM_HTMLHINT_VERSION} \
                 eslint@${NPM_ESLINT_VERSION} \
                 @eslint/eslintrc@${NPM_ESLINT_ESLINTRC_VERSION} \
-                eslint-config-airbnb-extended@${NPM_ESLINT_CONFIG_AIRBNB_EXTENDED_VERSION} \
+                @eslint/js@${NPM_ESLINT_JS_VERSION} \
                 eslint-config-prettier@${NPM_ESLINT_CONFIG_PRETTIER_VERSION} \
-                neostandard@${NPM_NEOSTANDARD_VERSION} \
-                eslint-plugin-import@${NPM_ESLINT_PLUGIN_IMPORT_VERSION} \
+                eslint-plugin-import-x@${NPM_ESLINT_PLUGIN_IMPORT_X_VERSION} \
                 eslint-plugin-jest@${NPM_ESLINT_PLUGIN_JEST_VERSION} \
                 eslint-plugin-n@${NPM_ESLINT_PLUGIN_N_VERSION} \
                 eslint-plugin-prettier@${NPM_ESLINT_PLUGIN_PRETTIER_VERSION} \
                 eslint-plugin-promise@${NPM_ESLINT_PLUGIN_PROMISE_VERSION} \
                 eslint-plugin-vue@${NPM_ESLINT_PLUGIN_VUE_VERSION} \
-                @babel/core@${NPM_BABEL_CORE_VERSION} \
-                @babel/eslint-parser@${NPM_BABEL_ESLINT_PARSER_VERSION} \
                 @microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION} \
                 standard@${NPM_STANDARD_VERSION} \
                 prettier@${NPM_PRETTIER_VERSION} \
@@ -776,8 +765,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 v8r@${NPM_V8R_VERSION} \
                 npm-package-json-lint@${NPM_PACKAGE_JSON_LINT_VERSION} \
                 npm-package-json-lint-config-default@${NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION} \
-                eslint-plugin-react@${NPM_ESLINT_PLUGIN_REACT_VERSION} \
-                eslint-plugin-jsx-a11y@${NPM_ESLINT_PLUGIN_JSX_ALLY_VERSION} \
+                @eslint-react/eslint-plugin@${NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION} \
                 markdownlint-cli@${NPM_MARKDOWNLINT_CLI_VERSION} \
                 markdown-table-formatter@${NPM_MARKDOWN_TABLE_FORMATTER_VERSION} \
                 pyright@${NPM_PYRIGHT_VERSION} \

@@ -26,7 +26,17 @@
 #     This is required to trigger the builder workflow. Without it, the workflow
 #     will fail and the release will be deleted (to be recreated once the token is set).
 #
-# To create a Fine-grained PAT (recommended - more secure):
+# SECURITY WARNING: Using a PAT comes with risk. Open-source projects have been
+# heavily targeted by supply-chain attacks in recent months, and a leaked or
+# compromised PAT can give attackers broad write access to your repository —
+# better safe than sorry! If you do not need fully automatic daily version
+# sync, you can skip the PAT entirely and trigger this workflow manually
+# (Actions tab → "Check for New MegaLinter Version" → "Run workflow") whenever
+# you want to bump to a new MegaLinter release. Only configure PAT_TOKEN if
+# the daily automation is worth the trade-off, and always scope it to this
+# single repository with the minimum required permissions.
+#
+# To create a Fine-grained PAT (still discouraged unless you need automation):
 #   1. Go to GitHub Settings > Developer settings > Personal access tokens > Fine-grained tokens
 #   2. Click "Generate new token"
 #   3. Give it a descriptive name (e.g., "MegaLinter Auto-Release")

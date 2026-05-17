@@ -21,14 +21,23 @@ Only for the GitHub Actions workflow file, if you use it:
 
 You may see GitHub permission errors, or workflows not running on the new commit.
 
+> **Security warning — Personal Access Tokens (PAT) are NOT recommended.**
+> Open-source projects have been heavily targeted by supply-chain attacks in recent months, and a leaked or compromised PAT can give attackers broad write access to your repository — better safe than sorry!
+> Before adding a `PAT` secret, ask yourself if you really need workflows to re-trigger automatically after MegaLinter pushes a fix commit. In most cases the simpler and safer workaround is enough:
+>
+> - **Manually re-run the failed workflow** from the GitHub Actions tab, or
+> - **Push another commit** on the branch (even an empty one: `git commit --allow-empty -m "trigger CI"`) so GitHub re-runs the workflows.
+>
+> Only set up a PAT if you fully understand the trade-off. If you do, use a **fine-grained token scoped to a single repository** with the **minimum required permissions**, and rotate it regularly.
+
 To solve these issues, apply one of the following solutions.
 
-- Method 1: The most secured
+- Method 1: The most secured (still discouraged — read the warning above)
   - [Create a Fine-Grained Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-fine-grained-personal-access-token), scoped only to your repository and with **Contents: Read/Write**, then copy the PAT value
   - [Define environment secret variable](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-an-environment) named **PAT** on your repository, and paste the PAT value
   - Update your GitHub Actions workflow to add the environment name
 
--- Method 2: Easier, but any contributor with write access can see your Personal Access Token, so use it only on private repositories.
+-- Method 2: Easier, but **strongly discouraged** — any contributor with write access can see your Personal Access Token, so use it only on private repositories.
 - [Create a Classic Personal Access Token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token#creating-a-token), then copy the PAT value
 - [Define secret variable](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository) named **PAT** on your repository, and paste the PAT value
 

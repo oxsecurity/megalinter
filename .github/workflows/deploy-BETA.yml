@@ -182,11 +182,12 @@ jobs:
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           tags: ${{ steps.meta-s.outputs.tags }}
 
-      - name: Invoke Mirror docker image workflow (Server image)
-        uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1
-        with:
-          workflow: mirror-docker-image.yml
-          inputs: '{ "source-image": "${{ steps.meta-s.outputs.tags }}", "target-image": "${{ steps.meta-s-dhub.outputs.tags }}" }'
+      # Docker Hub mirroring is disabled — MegaLinter is published to ghcr.io only.
+      # - name: Invoke Mirror docker image workflow (Server image)
+      #   uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1
+      #   with:
+      #     workflow: mirror-docker-image.yml
+      #     inputs: '{ "source-image": "${{ steps.meta-s.outputs.tags }}", "target-image": "${{ steps.meta-s-dhub.outputs.tags }}" }'
 
       - name: Build & Push Docker Image
         uses: docker/build-push-action@bcafcacb16a39f128d818304e6c9c0c18556b85f # v7
@@ -206,11 +207,12 @@ jobs:
           cache-from: type=gha,scope=beta-main,ignore-error=true
           cache-to: type=gha,mode=max,scope=beta-main,compression=zstd
 
-      - name: Invoke Mirror docker image workflow (Main image)
-        uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1
-        with:
-          workflow: mirror-docker-image.yml
-          inputs: '{ "source-image": "${{ steps.meta.outputs.tags }}", "target-image": "${{ steps.meta-dhub.outputs.tags }}" }'
+      # Docker Hub mirroring is disabled — MegaLinter is published to ghcr.io only.
+      # - name: Invoke Mirror docker image workflow (Main image)
+      #   uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1
+      #   with:
+      #     workflow: mirror-docker-image.yml
+      #     inputs: '{ "source-image": "${{ steps.meta.outputs.tags }}", "target-image": "${{ steps.meta-dhub.outputs.tags }}" }'
 
       # - name: Build & Push Docker Worker Image
       #   uses: docker/build-push-action@v7

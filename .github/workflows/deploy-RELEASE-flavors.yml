@@ -105,7 +105,7 @@ jobs:
           file: Dockerfile-release
           platforms: linux/amd64
           build-args: |
-            MEGALINTER_BASE_IMAGE=docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:beta
+            MEGALINTER_BASE_IMAGE=ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:beta
             BUILD_DATE=${{ env.BUILD_DATE }}
             BUILD_REVISION=${{ github.sha }}
             BUILD_VERSION=${{ github.event.release.tag_name }}
@@ -121,27 +121,28 @@ jobs:
           # One-shot per release; read BETA-flavors' warm cache only.
           cache-from: type=gha,scope=beta-flavor-${{ matrix.flavor }}-linux/amd64,ignore-error=true
 
-      - name: Invoke Mirror docker image workflow (Main image)
-        uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1
-        with:
-          workflow: mirror-docker-image.yml
-          # MAJOR-RELEASE-IMPACTED
-          inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:v9", "target-image": "docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:v9" }'
-          ref: main
-      - name: Invoke Mirror docker image workflow (Main image)
-        uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1
-        with:
-          workflow: mirror-docker-image.yml
-          # MAJOR-RELEASE-IMPACTED
-          inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:v9", "target-image": "docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:${{ github.event.release.tag_name }}" }'
-          ref: main
-      - name: Invoke Mirror docker image workflow (Main image)
-        uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1
-        with:
-          workflow: mirror-docker-image.yml
-          # MAJOR-RELEASE-IMPACTED
-          inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:v9", "target-image": "docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:latest" }'
-          ref: main
+      # Docker Hub mirroring is disabled — MegaLinter is published to ghcr.io only.
+      # - name: Invoke Mirror docker image workflow (Main image)
+      #   uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1
+      #   with:
+      #     workflow: mirror-docker-image.yml
+      #     # MAJOR-RELEASE-IMPACTED
+      #     inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:v9", "target-image": "docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:v9" }'
+      #     ref: main
+      # - name: Invoke Mirror docker image workflow (Main image)
+      #   uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1
+      #   with:
+      #     workflow: mirror-docker-image.yml
+      #     # MAJOR-RELEASE-IMPACTED
+      #     inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:v9", "target-image": "docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:${{ github.event.release.tag_name }}" }'
+      #     ref: main
+      # - name: Invoke Mirror docker image workflow (Main image)
+      #   uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1
+      #   with:
+      #     workflow: mirror-docker-image.yml
+      #     # MAJOR-RELEASE-IMPACTED
+      #     inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-${{ matrix.flavor }}:v9", "target-image": "docker.io/oxsecurity/megalinter-${{ matrix.flavor }}:latest" }'
+      #     ref: main
       # - name: Build Worker Image
       #   uses: docker/build-push-action@v7
       #   with:
@@ -149,7 +150,7 @@ jobs:
       #     file: Dockerfile-release
       #     platforms: linux/amd64
       #     build-args: |
-      #       MEGALINTER_BASE_IMAGE=docker.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:beta
+      #       MEGALINTER_BASE_IMAGE=ghcr.io/oxsecurity/megalinter-worker-${{ matrix.flavor }}:beta
       #       BUILD_DATE=${{ env.BUILD_DATE }}
       #       BUILD_REVISION=${{ github.sha }}
       #       BUILD_VERSION=${{ github.event.release.tag_name }}
