@@ -24,8 +24,8 @@ from urllib3.util import Retry
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
-import megalinter.flavor_factory
-from megalinter.constants import (
+import megalinter.flavor_factory  # noqa: E402
+from megalinter.constants import (  # noqa: E402
     DOCKER_PACKAGES_ROOT_URL,
     ML_DOCKER_IMAGE,
     ML_DOCKER_IMAGE_LEGACY,
