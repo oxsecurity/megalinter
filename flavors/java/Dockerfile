@@ -130,7 +130,7 @@ ARG CLJ_STYLE_VERSION=0.17.642
 # renovate: datasource=npm depName=jscpd
 ARG NPM_JSCPD_VERSION=4.1.1
 # renovate: datasource=npm depName=stylelint
-ARG NPM_STYLELINT_VERSION=17.11.0
+ARG NPM_STYLELINT_VERSION=17.11.1
 # renovate: datasource=npm depName=stylelint-config-standard
 ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=40.0.0
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
