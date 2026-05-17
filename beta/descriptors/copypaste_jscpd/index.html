@@ -12538,7 +12538,7 @@
 </code></pre>
 <h2 id="jscpd-documentation">jscpd documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>4.1.1</strong></li>
+<li>Version in MegaLinter: <strong>4.2.0</strong></li>
 <li>Visit <a href="https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#config-file" target="_blank">How to configure jscpd rules</a><ul>
 <li>If custom <code>.jscpd.json</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.jscpd.json" target="_blank">.jscpd.json</a> will be used</li>
@@ -12806,12 +12806,17 @@ Options:
                              console
   --store [string]           use for define custom store (e.g. --store leveldb
                              used for big codebase)
+  --store-path [string]      directory to use for store cache (e.g.
+                             --store-path /tmp/jscpd-cache, useful when running
+                             multiple instances in parallel)
   -a, --absolute             use absolute path in reports
   -n, --noSymlinks           dont use symlinks for detection in files
   --ignoreCase               ignore case of symbols in code (experimental)
   -g, --gitignore            ignore all files from .gitignore file
   --formats-exts [string]    list of formats with file extensions
                              (javascript:es,es6;dart:dt)
+  --formats-names [string]   list of formats with specific filenames
+                             (makefile:Makefile,GNUmakefile;docker:Dockerfile)
   -d, --debug                show debug information, not run detection
                              process(options list and selected files)
   -v, --verbose              show full information during detection process
@@ -12822,6 +12827,8 @@ Options:
                              detected
   --noTips                   do not print tips and promotional messages after
                              detection
+  --skipComments             ignore comments during detection (alias for --mode
+                             weak)
   -h, --help                 display help for command
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
@@ -12829,11 +12836,11 @@ Options:
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=4.1.1
+ARG NPM_JSCPD_VERSION=4.2.0
 </code></pre>
 <ul>
 <li>NPM packages (node.js):<ul>
-<li><a href="https://www.npmjs.com/package/jscpd/v/4.1.1">jscpd@4.1.1</a></li>
+<li><a href="https://www.npmjs.com/package/jscpd/v/4.2.0">jscpd@4.2.0</a></li>
 </ul>
 </li>
 </ul>
