@@ -17,8 +17,8 @@ import re
 import sys
 from datetime import date, datetime
 
-import urllib3
 import requests
+import urllib3
 from requests.adapters import HTTPAdapter
 from urllib3.util import Retry
 

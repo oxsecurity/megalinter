@@ -26,6 +26,7 @@ import terminaltables
 import webpreview
 import yaml
 from bs4 import BeautifulSoup
+from docker_stats import update_docker_pulls_counter
 from giturlparse import parse
 from megalinter import config, utils
 from megalinter.constants import (
@@ -52,7 +53,6 @@ from megalinter.constants import (
     ML_REPO,
     ML_REPO_URL,
 )
-from docker_stats import update_docker_pulls_counter
 from requests.adapters import HTTPAdapter
 from urllib3.util import Retry
 from webpreview import web_preview
@@ -2226,7 +2226,6 @@ def requests_retry_session(
     session.mount("http://", adapter)
     session.mount("https://", adapter)
     return session
-
 
 
 def get_linter_base_info(linter):
