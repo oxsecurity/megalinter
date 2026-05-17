@@ -27,6 +27,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linters enhancements
 
 - Fixes
+  - Exclude `REPORT_OUTPUT_FOLDER` from linting when configured as an absolute path inside the workspace (e.g. `/tmp/lint/megalinter-reports`), fixing #7845.
 
 - Reporters
 
