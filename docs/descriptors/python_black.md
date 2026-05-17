@@ -281,8 +281,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=black
-ARG PIP_BLACK_VERSION=26.3.1
+ARG PIP_BLACK_VERSION=26.5.0
 ```
 
 - PIP packages (Python):
-  - [black[jupyter]==26.3.1](https://pypi.org/project/black[jupyter]/26.3.1)
+  - [black[jupyter]==26.5.0](https://pypi.org/project/black[jupyter]/26.5.0)
