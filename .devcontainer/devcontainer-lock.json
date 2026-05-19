@@ -1,0 +1,14 @@
+{
+  "features": {
+    "ghcr.io/devcontainers-extra/features/coverage-py:2": {
+      "version": "2.0.18",
+      "resolved": "ghcr.io/devcontainers-extra/features/coverage-py@sha256:db88648a89e957a766df526663f4dd978a667e0387e9b47805c3c21514a3449d",
+      "integrity": "sha256:db88648a89e957a766df526663f4dd978a667e0387e9b47805c3c21514a3449d"
+    },
+    "ghcr.io/devcontainers/features/node:2": {
+      "version": "2.0.0",
+      "resolved": "ghcr.io/devcontainers/features/node@sha256:fedd4c11f7adfb64283b578dddc7da906728daa25fa293351c9d913231acf12f",
+      "integrity": "sha256:fedd4c11f7adfb64283b578dddc7da906728daa25fa293351c9d913231acf12f"
+    }
+  }
+}

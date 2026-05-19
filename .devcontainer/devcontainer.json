@@ -1,11 +1,23 @@
 {
   "name": "MegaLinter",
-  "build": {
-    "dockerfile": "Dockerfile",
-    "context": ".."
+  "image": "mcr.microsoft.com/devcontainers/python:3-3.14-trixie",
+  "containerEnv": {
+    // renovate: datasource=npm depName=markdown-table-formatter
+    "NPM_MARKDOWN_TABLE_FORMATTER_VERSION": "1.7.0"
   },
   "features": {
-    "ghcr.io/devcontainers-extra/features/coverage-py:2": {}
+    "ghcr.io/devcontainers-extra/features/coverage-py:2": {},
+    "ghcr.io/devcontainers/features/node:2": {
+      "version": "24.15.0"
+    }
+  },
+  "remoteEnv": {
+    "NVM_DIR": "/usr/local/share/nvm",
+    "PATH": "${containerEnv:PATH}:/usr/local/share/nvm/current/bin"
+  },
+  "postCreateCommand": {
+    "pip_install_dev_requirements": "pip3 --disable-pip-version-check --no-cache-dir install -r .config/python/dev/requirements.txt",
+    "npm_install_markdown-table-formatter": "npm install markdown-table-formatter@${NPM_MARKDOWN_TABLE_FORMATTER_VERSION} -g"
   },
   "customizations": {
     "vscode": {
