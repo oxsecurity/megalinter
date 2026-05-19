@@ -77,7 +77,6 @@
       "JAVA_CHECKSTYLE": 15,
       "JAVA_PMD": 15,
       "JSON": 6,
-      "JSON_ESLINT_PLUGIN_JSONC": 15,
       "JSON_JSONLINT": 15,
       "JSON_NPM_PACKAGE_JSON_LINT": 13,
       "JSON_PRETTIER": 15,
@@ -1173,7 +1172,6 @@
         "JAVASCRIPT_STANDARD",
         "JAVA_CHECKSTYLE",
         "JAVA_PMD",
-        "JSON_ESLINT_PLUGIN_JSONC",
         "JSON_JSONLINT",
         "JSON_NPM_PACKAGE_JSON_LINT",
         "JSON_PRETTIER",
@@ -5861,7 +5859,6 @@
         "JAVASCRIPT_STANDARD",
         "JAVA_CHECKSTYLE",
         "JAVA_PMD",
-        "JSON_ESLINT_PLUGIN_JSONC",
         "JSON_JSONLINT",
         "JSON_NPM_PACKAGE_JSON_LINT",
         "JSON_PRETTIER",
@@ -6026,7 +6023,6 @@
         "JAVASCRIPT_STANDARD",
         "JAVA_CHECKSTYLE",
         "JAVA_PMD",
-        "JSON_ESLINT_PLUGIN_JSONC",
         "JSON_JSONLINT",
         "JSON_NPM_PACKAGE_JSON_LINT",
         "JSON_PRETTIER",
@@ -6922,7 +6918,6 @@
         "JAVASCRIPT_STANDARD",
         "JAVA_CHECKSTYLE",
         "JAVA_PMD",
-        "JSON_ESLINT_PLUGIN_JSONC",
         "JSON_JSONLINT",
         "JSON_NPM_PACKAGE_JSON_LINT",
         "JSON_PRETTIER",
@@ -7087,7 +7082,6 @@
         "JAVASCRIPT_STANDARD",
         "JAVA_CHECKSTYLE",
         "JAVA_PMD",
-        "JSON_ESLINT_PLUGIN_JSONC",
         "JSON_JSONLINT",
         "JSON_NPM_PACKAGE_JSON_LINT",
         "JSON_PRETTIER",
@@ -10067,185 +10061,6 @@
       "category": "GENERAL",
       "section": "OUTPUT"
     },
-    "JSON_ESLINT_PLUGIN_JSONC_ARGUMENTS": {
-      "name": "JSON_ESLINT_PLUGIN_JSONC_ARGUMENTS",
-      "type": [
-        "array",
-        "string"
-      ],
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Custom arguments",
-      "description": "JSON_ESLINT_PLUGIN_JSONC: User custom arguments to add in linter CLI call",
-      "category": "JSON_ESLINT_PLUGIN_JSONC",
-      "section": "LINTER_COMMAND",
-      "items_type": "string"
-    },
-    "JSON_ESLINT_PLUGIN_JSONC_CLI_EXECUTABLE": {
-      "name": "JSON_ESLINT_PLUGIN_JSONC_CLI_EXECUTABLE",
-      "type": "array",
-      "title": "JSON_ESLINT_PLUGIN_JSONC: CLI Executable",
-      "description": "JSON_ESLINT_PLUGIN_JSONC: Override CLI executable used to build the linter command line (rarely needed)",
-      "default": [
-        [
-          "eslint"
-        ]
-      ],
-      "category": "JSON_ESLINT_PLUGIN_JSONC",
-      "section": "LINTER_COMMAND",
-      "items_type": "string"
-    },
-    "JSON_ESLINT_PLUGIN_JSONC_CLI_LINT_MODE": {
-      "name": "JSON_ESLINT_PLUGIN_JSONC_CLI_LINT_MODE",
-      "type": "string",
-      "title": "JSON_ESLINT_PLUGIN_JSONC: CLI lint mode",
-      "description": "JSON_ESLINT_PLUGIN_JSONC: Override default CLI lint mode used to call the linter (rarely needed)",
-      "default": "list_of_files",
-      "enum": [
-        "file",
-        "list_of_files",
-        "project"
-      ],
-      "category": "JSON_ESLINT_PLUGIN_JSONC",
-      "section": "LINTER_COMMAND"
-    },
-    "JSON_ESLINT_PLUGIN_JSONC_COMMAND_REMOVE_ARGUMENTS": {
-      "name": "JSON_ESLINT_PLUGIN_JSONC_COMMAND_REMOVE_ARGUMENTS",
-      "type": [
-        "array",
-        "string"
-      ],
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Custom remove arguments",
-      "description": "JSON_ESLINT_PLUGIN_JSONC: User custom arguments to remove before calling linter",
-      "category": "JSON_ESLINT_PLUGIN_JSONC",
-      "section": "LINTER_COMMAND",
-      "items_type": "string"
-    },
-    "JSON_ESLINT_PLUGIN_JSONC_CONFIG_FILE": {
-      "name": "JSON_ESLINT_PLUGIN_JSONC_CONFIG_FILE",
-      "type": "string",
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Custom config file name",
-      "description": "JSON_ESLINT_PLUGIN_JSONC: User custom config file name if different from default",
-      "default": ".eslintrc-json.json",
-      "category": "JSON_ESLINT_PLUGIN_JSONC",
-      "section": "LINTER_COMMAND"
-    },
-    "JSON_ESLINT_PLUGIN_JSONC_DISABLE_ERRORS": {
-      "name": "JSON_ESLINT_PLUGIN_JSONC_DISABLE_ERRORS",
-      "type": "boolean",
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Disable errors",
-      "description": "JSON_ESLINT_PLUGIN_JSONC: If true, JSON_ESLINT_PLUGIN_JSONC doesn't make MegaLinter fail even if errors are found",
-      "default": false,
-      "category": "JSON_ESLINT_PLUGIN_JSONC",
-      "section": "ERRORS"
-    },
-    "JSON_ESLINT_PLUGIN_JSONC_DISABLE_ERRORS_IF_LESS_THAN": {
-      "name": "JSON_ESLINT_PLUGIN_JSONC_DISABLE_ERRORS_IF_LESS_THAN",
-      "type": "number",
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Maximum number of errors allowed",
-      "description": "JSON_ESLINT_PLUGIN_JSONC: If the number of errors found is less than this value, JSON_ESLINT_PLUGIN_JSONC doesn't make MegaLinter fail",
-      "default": 0,
-      "category": "JSON_ESLINT_PLUGIN_JSONC",
-      "section": "ERRORS"
-    },
-    "JSON_ESLINT_PLUGIN_JSONC_FILE_EXTENSIONS": {
-      "name": "JSON_ESLINT_PLUGIN_JSONC_FILE_EXTENSIONS",
-      "type": "array",
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Matching files extensions",
-      "description": "JSON_ESLINT_PLUGIN_JSONC: Override descriptor/linter matching files extensions that will be used to select files to lint",
-      "default": [
-        ".json",
-        ".json5",
-        ".jsonc"
-      ],
-      "examples": [
-        ".py",
-        ".myext"
-      ],
-      "category": "JSON_ESLINT_PLUGIN_JSONC",
-      "section": "SCOPE",
-      "items_type": "string"
-    },
-    "JSON_ESLINT_PLUGIN_JSONC_FILE_NAMES_REGEX": {
-      "name": "JSON_ESLINT_PLUGIN_JSONC_FILE_NAMES_REGEX",
-      "type": "array",
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Matching file name regexes",
-      "description": "JSON_ESLINT_PLUGIN_JSONC: Override descriptor/linter matching file name regexes that will be used to select files to lint",
-      "default": [],
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
-      "category": "JSON_ESLINT_PLUGIN_JSONC",
-      "section": "SCOPE",
-      "items_type": "string"
-    },
-    "JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_EXCLUDE": {
-      "name": "JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_EXCLUDE",
-      "type": "string",
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Excluding Regex",
-      "description": "JSON_ESLINT_PLUGIN_JSONC: Custom regex excluding filter: files matching this regex will NOT be linted",
-      "category": "JSON_ESLINT_PLUGIN_JSONC",
-      "section": "SCOPE"
-    },
-    "JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_INCLUDE": {
-      "name": "JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_INCLUDE",
-      "type": "string",
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Including Regex",
-      "description": "JSON_ESLINT_PLUGIN_JSONC: Custom regex including filter: only files matching this regex will be linted",
-      "category": "JSON_ESLINT_PLUGIN_JSONC",
-      "section": "SCOPE"
-    },
-    "JSON_ESLINT_PLUGIN_JSONC_POST_COMMANDS": {
-      "name": "JSON_ESLINT_PLUGIN_JSONC_POST_COMMANDS",
-      "type": "array",
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Post-run commands",
-      "description": "JSON_ESLINT_PLUGIN_JSONC: Define bash commands to run after running JSON_ESLINT_PLUGIN_JSONC",
-      "examples": [
-        [
-          {
-            "command": "npm run test",
-            "continue_if_failed": false,
-            "cwd": "workspace"
-          }
-        ]
-      ],
-      "category": "JSON_ESLINT_PLUGIN_JSONC",
-      "section": "PREPOSTCOMMANDS"
-    },
-    "JSON_ESLINT_PLUGIN_JSONC_PRE_COMMANDS": {
-      "name": "JSON_ESLINT_PLUGIN_JSONC_PRE_COMMANDS",
-      "type": "array",
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Pre-run commands",
-      "description": "JSON_ESLINT_PLUGIN_JSONC: Define bash commands to run before running JSON_ESLINT_PLUGIN_JSONC",
-      "examples": [
-        [
-          {
-            "command": "tflint --init",
-            "continue_if_failed": false,
-            "cwd": "workspace"
-          }
-        ]
-      ],
-      "category": "JSON_ESLINT_PLUGIN_JSONC",
-      "section": "PREPOSTCOMMANDS"
-    },
-    "JSON_ESLINT_PLUGIN_JSONC_RULES_PATH": {
-      "name": "JSON_ESLINT_PLUGIN_JSONC_RULES_PATH",
-      "type": "string",
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Custom config file path",
-      "description": "JSON_ESLINT_PLUGIN_JSONC: Path where to find linter configuration file",
-      "category": "JSON_ESLINT_PLUGIN_JSONC",
-      "section": "LINTER_COMMAND"
-    },
-    "JSON_ESLINT_PLUGIN_JSONC_UNSECURED_ENV_VARIABLES": {
-      "name": "JSON_ESLINT_PLUGIN_JSONC_UNSECURED_ENV_VARIABLES",
-      "type": "array",
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Unsecured env variables",
-      "description": "List of env variables explicitly not filtered before calling JSON_ESLINT_PLUGIN_JSONC and its pre/post commands",
-      "default": [],
-      "category": "JSON_ESLINT_PLUGIN_JSONC",
-      "section": "SECURITY",
-      "items_type": "string"
-    },
     "JSON_FILTER_REGEX_EXCLUDE": {
       "name": "JSON_FILTER_REGEX_EXCLUDE",
       "type": "string",
@@ -12574,7 +12389,6 @@
         "JAVASCRIPT_STANDARD",
         "JAVA_CHECKSTYLE",
         "JAVA_PMD",
-        "JSON_ESLINT_PLUGIN_JSONC",
         "JSON_JSONLINT",
         "JSON_NPM_PACKAGE_JSON_LINT",
         "JSON_PRETTIER",
@@ -12752,7 +12566,6 @@
         "JAVASCRIPT_STANDARD",
         "JAVA_CHECKSTYLE",
         "JAVA_PMD",
-        "JSON_ESLINT_PLUGIN_JSONC",
         "JSON_JSONLINT",
         "JSON_NPM_PACKAGE_JSON_LINT",
         "JSON_PRETTIER",
@@ -23997,7 +23810,6 @@
         "JAVASCRIPT_STANDARD",
         "JAVA_CHECKSTYLE",
         "JAVA_PMD",
-        "JSON_ESLINT_PLUGIN_JSONC",
         "JSON_JSONLINT",
         "JSON_NPM_PACKAGE_JSON_LINT",
         "JSON_PRETTIER",

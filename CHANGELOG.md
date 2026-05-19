@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Breaking changes
+  - **`@eslint/eslintrc` shim removed** from JavaScript/TypeScript/JSX/TSX Docker images (was only needed for legacy `FlatCompat`); MegaLinter's bundled test fixtures use native flat config. Projects still on legacy `.eslintrc.*` get a clear migration notice and the linter is disabled — see [ESLint flat-config migration guide](https://eslint.org/docs/latest/use/configure/migration-guide).
+  - **`JSON_ESLINT_PLUGIN_JSONC` removed**: upstream bug [ota-meshi/eslint-plugin-jsonc#328](https://github.com/ota-meshi/eslint-plugin-jsonc/issues/328) blocks ESLint v10 compatibility and will not be fixed. Use `JSON_JSONLINT`, `JSON_PRETTIER`, or `JSON_V8R` for JSON validation instead.
 
 - Core
 
@@ -21,6 +23,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Deprecated linters
 
 - Removed linters
+  - `JSON_ESLINT_PLUGIN_JSONC` — permanently broken by upstream bug (see Breaking changes)
 
 - Media
 

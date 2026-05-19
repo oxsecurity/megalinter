@@ -74,6 +74,9 @@ linters:
       - "eslint.config.mjs"
       - "eslint.config.cjs"
       - "eslint.config.ts"
+      - "eslint.config.mts"
+      - "eslint.config.cts"
+      - ".eslintrc"
       - ".eslintrc.json"
       - ".eslintrc.yml"
       - ".eslintrc.yaml"
@@ -105,9 +108,6 @@ linters:
           # renovate: datasource=npm depName=eslint
           ARG NPM_ESLINT_VERSION=10.3.0
         - |-
-          # renovate: datasource=npm depName=@eslint/eslintrc
-          ARG NPM_ESLINT_ESLINTRC_VERSION=3.3.5
-        - |-
           # renovate: datasource=npm depName=eslint-config-prettier
           ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.1.8
         - |-
@@ -137,7 +137,6 @@ linters:
       npm:
         - typescript@${NPM_TYPESCRIPT_VERSION}
         - eslint@${NPM_ESLINT_VERSION}
-        - "@eslint/eslintrc@${NPM_ESLINT_ESLINTRC_VERSION}"
         - eslint-config-prettier@${NPM_ESLINT_CONFIG_PRETTIER_VERSION}
         - eslint-plugin-jest@${NPM_ESLINT_PLUGIN_JEST_VERSION}
         - eslint-plugin-prettier@${NPM_ESLINT_PLUGIN_PRETTIER_VERSION}
