@@ -50,7 +50,7 @@ Black is successfully used by many projects, small and big, and has become the d
 
 ## black documentation
 
-- Version in MegaLinter: **26.5.0**
+- Version in MegaLinter: **26.5.1**
 - Visit [Official Web Site](https://black.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure black rules](https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-format){target=_blank}
   - If custom `pyproject.toml` config file isn't found, [pyproject.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/pyproject.toml){target=_blank} will be used
@@ -281,8 +281,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=black
-ARG PIP_BLACK_VERSION=26.5.0
+ARG PIP_BLACK_VERSION=26.5.1
 ```
 
 - PIP packages (Python):
-  - [black[jupyter]==26.5.0](https://pypi.org/project/black[jupyter]/26.5.0)
+  - [black[jupyter]==26.5.1](https://pypi.org/project/black[jupyter]/26.5.1)
