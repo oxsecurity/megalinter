@@ -123,7 +123,7 @@ ARG TARGETPLATFORM
 # renovate: datasource=pypi depName=ansible-lint
 ARG PIP_ANSIBLE_LINT_VERSION=26.4.0
 # renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=4.2.1
+ARG NPM_JSCPD_VERSION=4.2.2
 # renovate: datasource=npm depName=stylelint
 ARG NPM_STYLELINT_VERSION=17.11.1
 # renovate: datasource=npm depName=stylelint-config-standard
