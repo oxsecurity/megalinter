@@ -45,6 +45,8 @@ linters:
     cli_lint_warnings_regex: "\\[warn\\]"
     cli_lint_extra_args:
       - "--check"
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_lint_fix_arg_name: "--write"
     cli_lint_fix_remove_args:
       - "--check"
@@ -122,6 +124,8 @@ linters:
     cli_lint_extra_args:
       - --format
       - standard
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: "[0-9]+:[0-9]+:?\\s*(?:\\[?warning\\]?|\\[?error\\]?)|(?:::warning file=|::error file=)"
     examples:
