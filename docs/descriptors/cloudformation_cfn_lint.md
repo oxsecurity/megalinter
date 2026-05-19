@@ -46,7 +46,7 @@ CFN-Lint helps ensure your CloudFormation templates are valid, secure, and follo
 
 ## cfn-lint documentation
 
-- Version in MegaLinter: **3.14**
+- Version in MegaLinter: **1.51.0**
 - Visit [Official Web Site](https://github.com/aws-cloudformation/cfn-lint#readme){target=_blank}
 - See [How to configure cfn-lint rules](https://github.com/aws-cloudformation/cfn-lint#configuration){target=_blank}
   - If custom `.cfnlintrc.yml` config file isn't found, [.cfnlintrc.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.cfnlintrc.yml){target=_blank} will be used
@@ -125,8 +125,6 @@ cfn-lint --config-file .cfnlintrc.yml myfile.yml
 ### Help content
 
 ```shell
-/venvs/cfn-lint/lib/python3.14/site-packages/samtranslator/compat.py:2: UserWarning: Core Pydantic V1 functionality isn't compatible with Python 3.14 or greater.
-  from pydantic import v1 as pydantic
 usage: 
 Basic: cfn-lint test.yaml
 Ignore a rule: cfn-lint -i E3012 -- test.yaml

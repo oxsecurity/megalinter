@@ -52,6 +52,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 4.2.0 to **4.2.2** on 2026-05-19
   - [phpstan](https://phpstan.org/) from 2.1.54 to **2.1.55** on 2026-05-19
   - [black](https://black.readthedocs.io/en/stable/) from 26.5.0 to **26.5.1** on 2026-05-19
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 3.14 to **1.51.0** on 2026-05-19
 <!-- linter-versions-end -->
 
 ## [v9.5.0] - 2026-05-16
