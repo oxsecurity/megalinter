@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Unit tests for EslintLinter ESLint v10 activation gate and the generic
+Unit tests for EslintLinter ESLint v10 migration gate and the generic
 user-notifications system on Megalinter.
 """
 
@@ -25,36 +25,47 @@ class _Master:
         self.user_notifications = {}
 
 
-def _make_linter(name="TEST_ESLINT"):
+def _make_linter(name="TEST_ESLINT", descriptor_id="JAVASCRIPT"):
     linter = EslintLinter.__new__(EslintLinter)
     linter.name = name
-    linter.is_active = True
+    linter.descriptor_id = descriptor_id
+    linter.is_active = False  # default: descriptor allows but no flat config found
     linter.disabled = False
     linter.disabled_reason = None
+    linter.eslint10_legacy_config = None
     return linter
 
 
 class EslintLinterTest(unittest.TestCase):
-    def test_gate_with_flat_config_keeps_linter_active(self):
+    def test_gate_with_flat_config_is_noop(self):
         with tempfile.TemporaryDirectory() as workspace:
             with open(
                 os.path.join(workspace, "eslint.config.mjs"), "w", encoding="utf-8"
             ) as fh:
                 fh.write("export default [];\n")
+            # Legacy config also present — flat config wins, no migration gate.
             with open(
                 os.path.join(workspace, ".eslintrc.json"), "w", encoding="utf-8"
             ) as fh:
                 fh.write("{}\n")
 
             linter = _make_linter()
+            linter.is_active = True  # flat config matched in descriptor activation
             master = _Master()
-            linter._gate_on_eslint10_config({"workspace": workspace, "master": master})
+            linter._apply_eslint10_migration_gate(
+                {
+                    "workspace": workspace,
+                    "master": master,
+                    "disable_linters": [],
+                    "disable_descriptors": [],
+                }
+            )
 
             self.assertTrue(linter.is_active)
-            self.assertFalse(linter.disabled)
+            self.assertIsNone(linter.eslint10_legacy_config)
             self.assertEqual(master.user_notifications, {})
 
-    def test_gate_with_legacy_eslintrc_disables_and_registers_notification(self):
+    def test_gate_with_legacy_eslintrc_force_activates_for_failure(self):
         with tempfile.TemporaryDirectory() as workspace:
             with open(
                 os.path.join(workspace, ".eslintrc.json"), "w", encoding="utf-8"
@@ -63,11 +74,17 @@ class EslintLinterTest(unittest.TestCase):
 
             linter = _make_linter("JAVASCRIPT_ES")
             master = _Master()
-            linter._gate_on_eslint10_config({"workspace": workspace, "master": master})
+            linter._apply_eslint10_migration_gate(
+                {
+                    "workspace": workspace,
+                    "master": master,
+                    "disable_linters": [],
+                    "disable_descriptors": [],
+                }
+            )
 
-            self.assertFalse(linter.is_active)
-            self.assertTrue(linter.disabled)
-            self.assertIn(".eslintrc.json", linter.disabled_reason or "")
+            self.assertTrue(linter.is_active)
+            self.assertEqual(linter.eslint10_legacy_config, ".eslintrc.json")
             self.assertIn(ESLINT10_NOTIFICATION_KEY, master.user_notifications)
             entry = master.user_notifications[ESLINT10_NOTIFICATION_KEY]
             self.assertEqual(entry["values"], ["JAVASCRIPT_ES"])
@@ -76,32 +93,90 @@ class EslintLinterTest(unittest.TestCase):
                 entry["extras"]["migration_url"], ESLINT_FLAT_CONFIG_MIGRATION_URL
             )
 
-    def test_gate_with_package_json_eslintconfig_registers_notification(self):
+    def test_gate_with_package_json_eslintconfig_force_activates(self):
         with tempfile.TemporaryDirectory() as workspace:
             with open(
                 os.path.join(workspace, "package.json"), "w", encoding="utf-8"
             ) as fh:
                 json.dump({"name": "demo", "eslintConfig": {"rules": {}}}, fh)
 
-            linter = _make_linter("TYPESCRIPT_ES")
+            linter = _make_linter("TYPESCRIPT_ES", "TYPESCRIPT")
             master = _Master()
-            linter._gate_on_eslint10_config({"workspace": workspace, "master": master})
+            linter._apply_eslint10_migration_gate(
+                {
+                    "workspace": workspace,
+                    "master": master,
+                    "disable_linters": [],
+                    "disable_descriptors": [],
+                }
+            )
 
-            self.assertFalse(linter.is_active)
+            self.assertTrue(linter.is_active)
+            self.assertEqual(
+                linter.eslint10_legacy_config, "package.json#eslintConfig"
+            )
             entry = master.user_notifications[ESLINT10_NOTIFICATION_KEY]
             self.assertEqual(entry["values"], ["TYPESCRIPT_ES"])
-            self.assertEqual(
-                entry["extras"]["legacy_config"], "package.json#eslintConfig"
-            )
 
     def test_gate_with_no_config_files_is_noop(self):
         with tempfile.TemporaryDirectory() as workspace:
             linter = _make_linter()
             master = _Master()
-            linter._gate_on_eslint10_config({"workspace": workspace, "master": master})
+            linter._apply_eslint10_migration_gate(
+                {
+                    "workspace": workspace,
+                    "master": master,
+                    "disable_linters": [],
+                    "disable_descriptors": [],
+                }
+            )
 
-            self.assertTrue(linter.is_active)
-            self.assertFalse(linter.disabled)
+            self.assertFalse(linter.is_active)
+            self.assertIsNone(linter.eslint10_legacy_config)
+            self.assertEqual(master.user_notifications, {})
+
+    def test_gate_respects_explicit_disable_linters(self):
+        with tempfile.TemporaryDirectory() as workspace:
+            with open(
+                os.path.join(workspace, ".eslintrc.json"), "w", encoding="utf-8"
+            ) as fh:
+                fh.write("{}\n")
+
+            linter = _make_linter("JAVASCRIPT_ES")
+            master = _Master()
+            linter._apply_eslint10_migration_gate(
+                {
+                    "workspace": workspace,
+                    "master": master,
+                    "disable_linters": ["JAVASCRIPT_ES"],
+                    "disable_descriptors": [],
+                }
+            )
+
+            self.assertFalse(linter.is_active)
+            self.assertIsNone(linter.eslint10_legacy_config)
+            self.assertEqual(master.user_notifications, {})
+
+    def test_gate_respects_explicit_disable_descriptors(self):
+        with tempfile.TemporaryDirectory() as workspace:
+            with open(
+                os.path.join(workspace, ".eslintrc.yml"), "w", encoding="utf-8"
+            ) as fh:
+                fh.write("rules: {}\n")
+
+            linter = _make_linter("JAVASCRIPT_ES", "JAVASCRIPT")
+            master = _Master()
+            linter._apply_eslint10_migration_gate(
+                {
+                    "workspace": workspace,
+                    "master": master,
+                    "disable_linters": [],
+                    "disable_descriptors": ["JAVASCRIPT"],
+                }
+            )
+
+            self.assertFalse(linter.is_active)
+            self.assertIsNone(linter.eslint10_legacy_config)
             self.assertEqual(master.user_notifications, {})
 
     def test_gate_collects_multiple_linters_into_single_notice(self):
@@ -114,8 +189,13 @@ class EslintLinterTest(unittest.TestCase):
             master = _Master()
             for name in ("JAVASCRIPT_ES", "TYPESCRIPT_ES", "JSX_ESLINT"):
                 linter = _make_linter(name)
-                linter._gate_on_eslint10_config(
-                    {"workspace": workspace, "master": master}
+                linter._apply_eslint10_migration_gate(
+                    {
+                        "workspace": workspace,
+                        "master": master,
+                        "disable_linters": [],
+                        "disable_descriptors": [],
+                    }
                 )
 
             entry = master.user_notifications[ESLINT10_NOTIFICATION_KEY]
@@ -131,23 +211,17 @@ class EslintLinterTest(unittest.TestCase):
             self.assertIn("`JAVASCRIPT_ES`, `JSX_ESLINT`, `TYPESCRIPT_ES`", notice)
             self.assertIn(".eslintrc.yml", notice)
             self.assertIn(ESLINT_FLAT_CONFIG_MIGRATION_URL, notice)
+            self.assertIn("fail until you migrate", notice)
 
-    def test_gate_deduplicates_linter_names(self):
-        with tempfile.TemporaryDirectory() as workspace:
-            with open(
-                os.path.join(workspace, ".eslintrc.yml"), "w", encoding="utf-8"
-            ) as fh:
-                fh.write("rules: {}\n")
-
-            master = _Master()
-            for _ in range(3):
-                linter = _make_linter("JAVASCRIPT_ES")
-                linter._gate_on_eslint10_config(
-                    {"workspace": workspace, "master": master}
-                )
-
-            entry = master.user_notifications[ESLINT10_NOTIFICATION_KEY]
-            self.assertEqual(entry["values"], ["JAVASCRIPT_ES"])
+    def test_process_linter_fails_when_legacy_detected(self):
+        linter = _make_linter()
+        linter.eslint10_legacy_config = ".eslintrc.json"
+        return_code, stdout = linter.process_linter()
+        self.assertEqual(return_code, 1)
+        self.assertIn("migration required", stdout)
+        self.assertIn(".eslintrc.json", stdout)
+        self.assertIn("✖ 1 problem", stdout)
+        self.assertIn(ESLINT_FLAT_CONFIG_MIGRATION_URL, stdout)
 
 
 class UserNotificationsTest(unittest.TestCase):

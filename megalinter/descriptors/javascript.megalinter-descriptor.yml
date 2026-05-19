@@ -97,13 +97,6 @@ linters:
       - "eslint.config.ts"
       - "eslint.config.mts"
       - "eslint.config.cts"
-      - ".eslintrc"
-      - ".eslintrc.json"
-      - ".eslintrc.yml"
-      - ".eslintrc.yaml"
-      - ".eslintrc.js"
-      - ".eslintrc.cjs"
-      - "package.json:eslintConfig"
     cli_lint_mode: list_of_files
     config_file_name: eslint.config.js
     cli_lint_extra_args:
