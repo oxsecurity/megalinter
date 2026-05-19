@@ -1,0 +1,10 @@
+[
+  {
+    "patterns": ["**/*.json"],
+    "mode": "json"
+  },
+  {
+    "patterns": [".devcontainer/devcontainer.json"],
+    "mode": "cjson"
+  }
+]
