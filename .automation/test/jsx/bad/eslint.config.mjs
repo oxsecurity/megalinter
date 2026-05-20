@@ -1,4 +1,6 @@
-module.exports = [
+import { defineConfig } from 'eslint';
+
+export default defineConfig([
     {
         files: ['**/*.jsx'],
         languageOptions: {
@@ -11,4 +13,4 @@ module.exports = [
             },
         },
     },
-];
+]);
