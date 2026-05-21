@@ -1276,6 +1276,7 @@ source = { editable = "." }
 dependencies = [
     { name = "commentjson" },
     { name = "gitpython" },
+    { name = "idna" },
     { name = "jsonpickle" },
     { name = "langchain-anthropic" },
     { name = "langchain-community" },
@@ -1315,6 +1316,7 @@ huggingface = [
 requires-dist = [
     { name = "commentjson" },
     { name = "gitpython" },
+    { name = "idna", specifier = ">=3.15" },
     { name = "importlib-metadata", marker = "python_full_version < '3.9'", specifier = ">=3.10" },
     { name = "jsonpickle" },
     { name = "langchain-anthropic", specifier = "~=1.4.0" },

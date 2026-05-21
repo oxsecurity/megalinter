@@ -21,6 +21,7 @@ classifiers = [
 dependencies = [
   "commentjson",
   "gitpython",
+  "idna>=3.15",
   "importlib-metadata>=3.10; python_version < '3.9'",
   "jsonpickle",
   "langchain-core~=1.4.0",
