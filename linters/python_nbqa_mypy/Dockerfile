@@ -57,7 +57,7 @@ ARG TARGETARCH
 # renovate: datasource=pypi depName=nbqa
 ARG PIP_NBQA_VERSION=1.9.1
 # renovate: datasource=pypi depName=mypy
-ARG PIP_MYPY_VERSION=1.19.1
+ARG PIP_MYPY_VERSION=2.1.0
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=26.1.1
 # renovate: datasource=pypi depName=virtualenv
