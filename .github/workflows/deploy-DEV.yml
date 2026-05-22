@@ -125,7 +125,7 @@ jobs:
       # per build that nobody else reads, so we skip `cache-to` entirely here.
       - name: Build MegaLinter Docker Image
         id: docker_build
-        uses: docker/build-push-action@bcafcacb16a39f128d818304e6c9c0c18556b85f # v7
+        uses: docker/build-push-action@f9f3042f7e2789586610d6e8b85c8f03e5195baf # v7
         continue-on-error: true
         with:
           context: .
@@ -145,7 +145,7 @@ jobs:
       # cache-from. Slower but never blocks on cache corruption.
       - name: Build MegaLinter Docker Image (no-cache fallback)
         if: steps.docker_build.outcome == 'failure'
-        uses: docker/build-push-action@bcafcacb16a39f128d818304e6c9c0c18556b85f # v7
+        uses: docker/build-push-action@f9f3042f7e2789586610d6e8b85c8f03e5195baf # v7
         with:
           context: .
           file: ${{ steps.setup.outputs.dockerfile }}
