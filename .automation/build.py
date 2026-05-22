@@ -787,6 +787,12 @@ def generate_linter_dockerfiles():
         )
         # Browse descriptor linters
         for linter in descriptor_linters:
+            # Skip disabled linters: they are already excluded from flavor and
+            # main Dockerfiles via match_flavor(), and their per-linter image
+            # is excluded from linters_matrix.json below — so the Dockerfile
+            # is dead code on disk and only confuses contributors.
+            if hasattr(linter, "disabled") and linter.disabled is True:
+                continue
             # Unique linter dockerfile
             linter_lower_name = linter.name.lower()
             dockerfile = f"{LINTERS_DIR}/{linter_lower_name}/Dockerfile"

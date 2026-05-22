@@ -140,13 +140,6 @@ CVE-2021-24112
 # specific entries listed here.
 CVE-2023-29331
 
-# --- Lightning Flow Scanner ---
-# Repo archived upstream (descriptor sets `disabled: true`) but the SF
-# plugin is still installed in the salesforce flavor image, so trivy
-# still scans it. CVE-2020-26226 is a prototype pollution in a node
-# transitive dep; LFS only reads local Flow XML files.
-CVE-2020-26226
-
 # --- sfdx (Salesforce CLI) ---
 # CVE-2025-24970 (Netty SslHandler crash via crafted certificate),
 # CVE-2025-59343 / GHSA-xpw8-rcwv-8f8p (sfdx-cli session token leak).
@@ -216,13 +209,6 @@ CVE-2026-2229
 CVE-2025-25288
 CVE-2025-25289
 CVE-2025-25290
-
-# --- spectral (OpenAPI linter) ---
-# CVE-2024-47068 / CVE-2025-1302: prototype pollution and ReDoS when
-# linting attacker-supplied OpenAPI documents. Spectral only lints
-# files committed in the repo being tested.
-CVE-2024-47068
-CVE-2025-1302
 
 # --- terraform ---
 # CVE-2025-0377: arbitrary file read via crafted module source. MegaLinter
