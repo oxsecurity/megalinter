@@ -169,6 +169,8 @@ CVE-2024-0056
 
 # vale
 CVE-2025-29786
+# vale: dasel/v3 v3.3.2 DoS in selector lexer via infinite loop; vale embeds dasel for static document analysis only and never parses attacker-controlled selectors. Remove when vale releases a build with dasel/v3 >=3.10.1.
+CVE-2026-46378
 
 # Misc
 # Not fixed yet https://avd.aquasec.com/nvd/2024/cve-2024-29415/

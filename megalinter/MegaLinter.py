@@ -694,6 +694,12 @@ class Megalinter:
         )
         for linter in all_linters:
             linter.master = self
+            # When only fetching standalone linter version (build-time call),
+            # bypass activation filtering — the per-linter Docker image always
+            # wants its single linter even if activation files are absent.
+            if self.linter_version_only is True:
+                self.linters += [linter]
+                continue
             if (
                 linter.is_active is False
                 or linter.disabled is True
