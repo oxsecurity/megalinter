@@ -38,9 +38,9 @@ yq==3.4.3
 langchain_core==1.4.0
 langchain_anthropic==1.4.3
 langchain_deepseek==1.0.1
-langchain_google_genai==4.2.2
+langchain_google_genai==4.2.3
 langchain_mistralai==1.1.4
-langchain_openai==1.2.1
+langchain_openai==1.2.2
 langchain_community==0.4.1
 langsmith==0.8.5
 orjson==3.11.9
