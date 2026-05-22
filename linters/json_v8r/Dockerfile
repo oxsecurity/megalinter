@@ -55,7 +55,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=npm depName=v8r
-ARG NPM_V8R_VERSION=6.0.0
+ARG NPM_V8R_VERSION=6.1.0
 #ARG__END
 
 ####################
