@@ -59,7 +59,7 @@ ARG NPM_ESLINT_VERSION=10.3.0
 # renovate: datasource=npm depName=@eslint/eslintrc
 ARG NPM_ESLINT_ESLINTRC_VERSION=3.3.5
 # renovate: datasource=npm depName=@eslint-react/eslint-plugin
-ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.7.9
+ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.7.10
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 #ARG__END
