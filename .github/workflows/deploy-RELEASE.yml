@@ -102,7 +102,7 @@ jobs:
           file: Dockerfile-release
           platforms: linux/amd64
           build-args: |
-            MEGALINTER_BASE_IMAGE=docker.io/oxsecurity/megalinter:beta
+            MEGALINTER_BASE_IMAGE=ghcr.io/oxsecurity/megalinter:beta
             BUILD_DATE=${{ env.BUILD_DATE }}
             BUILD_REVISION=${{ github.sha }}
             BUILD_VERSION=${{ github.event.release.tag_name }}
@@ -119,27 +119,28 @@ jobs:
           # cache-to since nobody reads release-* entries.
           cache-from: type=gha,scope=beta-main,ignore-error=true
 
-      - name: Invoke Mirror docker image workflow (Main image)
-        uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1
-        with:
-          workflow: mirror-docker-image.yml
-          # MAJOR-RELEASE-IMPACTED
-          inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter:v9", "target-image": "docker.io/oxsecurity/megalinter:v9" }'
-          ref: main
-      - name: Invoke Mirror docker image workflow (Main image)
-        uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1
-        with:
-          workflow: mirror-docker-image.yml
-          # MAJOR-RELEASE-IMPACTED
-          inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter:v9", "target-image": "docker.io/oxsecurity/megalinter:${{ github.event.release.tag_name }}" }'
-          ref: main
-      - name: Invoke Mirror docker image workflow (Main image)
-        uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1
-        with:
-          workflow: mirror-docker-image.yml
-          # MAJOR-RELEASE-IMPACTED
-          inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter:v9", "target-image": "docker.io/oxsecurity/megalinter:latest" }'
-          ref: main
+      # Docker Hub mirroring is disabled — MegaLinter is published to ghcr.io only.
+      # - name: Invoke Mirror docker image workflow (Main image)
+      #   uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1
+      #   with:
+      #     workflow: mirror-docker-image.yml
+      #     # MAJOR-RELEASE-IMPACTED
+      #     inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter:v9", "target-image": "docker.io/oxsecurity/megalinter:v9" }'
+      #     ref: main
+      # - name: Invoke Mirror docker image workflow (Main image)
+      #   uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1
+      #   with:
+      #     workflow: mirror-docker-image.yml
+      #     # MAJOR-RELEASE-IMPACTED
+      #     inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter:v9", "target-image": "docker.io/oxsecurity/megalinter:${{ github.event.release.tag_name }}" }'
+      #     ref: main
+      # - name: Invoke Mirror docker image workflow (Main image)
+      #   uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1
+      #   with:
+      #     workflow: mirror-docker-image.yml
+      #     # MAJOR-RELEASE-IMPACTED
+      #     inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter:v9", "target-image": "docker.io/oxsecurity/megalinter:latest" }'
+      #     ref: main
 
       # - name: Build Worker Image
       #   uses: docker/build-push-action@v7
@@ -148,7 +149,7 @@ jobs:
       #     file: Dockerfile-release
       #     platforms: linux/amd64
       #     build-args: |
-      #       MEGALINTER_BASE_IMAGE=docker.io/oxsecurity/megalinter-worker:beta
+      #       MEGALINTER_BASE_IMAGE=ghcr.io/oxsecurity/megalinter-worker:beta
       #       BUILD_DATE=${{ env.BUILD_DATE }}
       #       BUILD_REVISION=${{ github.sha }}
       #       BUILD_VERSION=${{ github.event.release.tag_name }}
@@ -327,15 +328,17 @@ jobs:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
           fetch-depth: 0
-          persist-credentials: false
+          # Keep the GITHUB_TOKEN in the git config so `mike deploy --push` can push to gh-pages.
+          persist-credentials: true
       - name: Get release version
         id: version
+        # Match only full semver tags (vN.N.N) so the moving major-version tag (e.g. `v9`) is ignored.
         run: |
           {
-            echo "cversion=$(git describe --tags --match='v*' --abbrev=0 | cut -c2-)"
-            echo "ctag=$(git describe --tags --match='v*' --abbrev=0)"
-            echo "pversion=$(git describe --abbrev=0 --match='v*' --tags "$(git rev-list --tags --skip=1 --max-count=1)" | cut -c2-)"
-            echo "ptag=$(git describe --abbrev=0 --match='v*' --tags "$(git rev-list --tags --skip=1 --max-count=1)")"
+            echo "cversion=$(git describe --tags --match='v[0-9]*.[0-9]*.[0-9]*' --abbrev=0 | cut -c2-)"
+            echo "ctag=$(git describe --tags --match='v[0-9]*.[0-9]*.[0-9]*' --abbrev=0)"
+            echo "pversion=$(git describe --abbrev=0 --match='v[0-9]*.[0-9]*.[0-9]*' --tags "$(git rev-list --tags='v[0-9]*.[0-9]*.[0-9]*' --skip=1 --max-count=1)" | cut -c2-)"
+            echo "ptag=$(git describe --abbrev=0 --match='v[0-9]*.[0-9]*.[0-9]*' --tags "$(git rev-list --tags='v[0-9]*.[0-9]*.[0-9]*' --skip=1 --max-count=1)")"
           } >>"$GITHUB_OUTPUT"
       - name: Print tags
         run: |
@@ -376,10 +379,13 @@ jobs:
           STEPS_VERSION_OUTPUTS_CTAG: ${{ steps.version.outputs.ctag }}
       - name: Mike deploy current version
         # MAJOR-RELEASE-IMPACTED
+        # mike version names are the major number without the "v" prefix (e.g. "9", not "v9").
+        # The final command deploys the "latest" version with the full release as an alias
+        # (matches the historical layout in versions.json: {"version": "latest", "aliases": ["x.y.z"]}).
         run: |
-          mike delete latest
-          mike delete v9 || true
-          mike deploy v9 || true
+          mike delete latest || true
+          mike delete 9 || true
+          mike deploy 9
           mike deploy --push latest "${STEPS_VERSION_OUTPUTS_CVERSION}"
         env:
           STEPS_VERSION_OUTPUTS_CVERSION: ${{ steps.version.outputs.cversion }}

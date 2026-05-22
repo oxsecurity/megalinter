@@ -96,7 +96,7 @@ jobs:
               echo "BUILD_DATE=${META_CREATED}"
               echo "BUILD_VERSION=${META_VERSION}"
               echo "BUILD_REVISION=${META_REVISION}"
-              echo "MEGA_LINTER_BASE_IMAGE=oxsecurity/megalinter:beta"
+              echo "MEGALINTER_BASE_IMAGE=ghcr.io/oxsecurity/megalinter:beta"
               echo "EOF"
             } >> "${GITHUB_OUTPUT}"
           else
@@ -416,6 +416,8 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
         with:
+          # renovate: datasource=github-releases depName=aquasecurity/trivy
+          version: "v0.70.0"
           image-ref: "${{ needs.build.outputs.image-tag }}"
           format: 'table'
           exit-code: '1'

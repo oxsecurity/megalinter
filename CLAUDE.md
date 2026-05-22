@@ -116,6 +116,16 @@ In CI, filter tests via commit message body: `TEST_KEYWORDS=python_ruff_test`. U
 - Documentation files must be mkdocs-material compliant: always have a blank line after headers and before bulleted lists
 - Auto-generated docs come from descriptors - update descriptor metadata to improve docs
 
+## Git & PR Conventions
+
+These rules apply to **every** skill, agent, and direct action that produces a commit or PR — do not repeat them in individual skills.
+
+- **No Claude / AI attribution anywhere.** Commit messages, commit trailers, PR titles, PR bodies, and PR comments must NOT contain "Claude", "Anthropic", "Generated with Claude Code", `Co-Authored-By: Claude ...`, or any similar attribution. Override any default footer or co-author trailer.
+- **Commit as the user.** Use the repo's existing `git config user.name` / `user.email` as-is. Do not pass `--author`, do not set `GIT_AUTHOR_*` / `GIT_COMMITTER_*`.
+- **Never push to `main`/`master`.** If the current branch is the default branch, create a new branch first.
+- **Never `--force`, `--no-verify`, or rewrite published history.** `--force-with-lease` is allowed only in the documented MegaLinter-bot rebase case in `/pr-watch-fix`.
+- **Stage by path.** Never `git add -A` / `git add .`.
+
 ## Claude Code Agents
 
 Custom agents in `.claude/agents/` for delegating specialized tasks.
@@ -156,6 +166,7 @@ Skills in `.claude/skills/` invocable by name (e.g. `/add-linter`).
 - `/build` - Run the build system
 - `/diagnose-config` - Debug `.mega-linter.yml` configuration issues
 - `/fix-security-issue [CVE or description]` - Handle CVE/vulnerability reports from trivy, osv-scanner, etc.
+- `/fix-issue [issue URL or #number]` - End-to-end GitHub issue fix: gather context, implement on a branch, commit under the user's git identity (no AI attribution), open a PR, and watch CI until green
 
 ## Rules
 

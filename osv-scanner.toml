@@ -1,0 +1,120 @@
+# osv-scanner ignore list
+# Format reference: https://google.github.io/osv-scanner/configuration/
+
+# langchain-community 0.4.1 - no upstream fixed version available
+[[IgnoredVulns]]
+id = "PYSEC-2024-278"
+reason = "No fixed version published upstream as of 2026-05-20; transitive dependency"
+
+# markdown 3.10.2 - no upstream fixed version available
+[[IgnoredVulns]]
+id = "PYSEC-2026-89"
+reason = "No fixed version published upstream as of 2026-05-20; transitive dependency"
+
+# pyjwt 2.12.1 - no upstream fixed version available
+[[IgnoredVulns]]
+id = "PYSEC-2025-183"
+reason = "No fixed version published upstream as of 2026-05-20; transitive dependency"
+
+# ollama 0.6.2 - no upstream fixed version available
+[[IgnoredVulns]]
+id = "PYSEC-2025-144"
+reason = "ollama: no fixed version published upstream as of 2026-05-20"
+
+[[IgnoredVulns]]
+id = "PYSEC-2025-145"
+reason = "ollama: no fixed version published upstream as of 2026-05-20"
+
+[[IgnoredVulns]]
+id = "PYSEC-2025-146"
+reason = "ollama: no fixed version published upstream as of 2026-05-20"
+
+[[IgnoredVulns]]
+id = "PYSEC-2025-147"
+reason = "ollama: no fixed version published upstream as of 2026-05-20"
+
+[[IgnoredVulns]]
+id = "PYSEC-2026-101"
+reason = "ollama: no fixed version published upstream as of 2026-05-20"
+
+[[IgnoredVulns]]
+id = "PYSEC-2026-102"
+reason = "ollama: no fixed version published upstream as of 2026-05-20"
+
+# torch 2.12.0 - no upstream fixed version available
+[[IgnoredVulns]]
+id = "PYSEC-2025-189"
+reason = "torch: no fixed version published upstream as of 2026-05-20"
+
+[[IgnoredVulns]]
+id = "PYSEC-2025-190"
+reason = "torch: no fixed version published upstream as of 2026-05-20"
+
+[[IgnoredVulns]]
+id = "PYSEC-2025-191"
+reason = "torch: no fixed version published upstream as of 2026-05-20"
+
+[[IgnoredVulns]]
+id = "PYSEC-2025-192"
+reason = "torch: no fixed version published upstream as of 2026-05-20"
+
+[[IgnoredVulns]]
+id = "PYSEC-2025-193"
+reason = "torch: no fixed version published upstream as of 2026-05-20"
+
+[[IgnoredVulns]]
+id = "PYSEC-2025-194"
+reason = "torch: no fixed version published upstream as of 2026-05-20"
+
+[[IgnoredVulns]]
+id = "PYSEC-2025-195"
+reason = "torch: no fixed version published upstream as of 2026-05-20"
+
+[[IgnoredVulns]]
+id = "PYSEC-2025-196"
+reason = "torch: no fixed version published upstream as of 2026-05-20"
+
+[[IgnoredVulns]]
+id = "PYSEC-2025-197"
+reason = "torch: no fixed version published upstream as of 2026-05-20"
+
+[[IgnoredVulns]]
+id = "PYSEC-2025-210"
+reason = "torch: no fixed version published upstream as of 2026-05-20"
+
+[[IgnoredVulns]]
+id = "PYSEC-2026-139"
+reason = "torch: no fixed version published upstream as of 2026-05-20"
+
+# transformers 5.8.1 - no upstream fixed version available
+[[IgnoredVulns]]
+id = "PYSEC-2025-211"
+reason = "transformers: no fixed version published upstream as of 2026-05-20"
+
+[[IgnoredVulns]]
+id = "PYSEC-2025-212"
+reason = "transformers: no fixed version published upstream as of 2026-05-20"
+
+[[IgnoredVulns]]
+id = "PYSEC-2025-213"
+reason = "transformers: no fixed version published upstream as of 2026-05-20"
+
+[[IgnoredVulns]]
+id = "PYSEC-2025-214"
+reason = "transformers: no fixed version published upstream as of 2026-05-20"
+
+[[IgnoredVulns]]
+id = "PYSEC-2025-215"
+reason = "transformers: no fixed version published upstream as of 2026-05-20"
+
+[[IgnoredVulns]]
+id = "PYSEC-2025-216"
+reason = "transformers: no fixed version published upstream as of 2026-05-20"
+
+[[IgnoredVulns]]
+id = "PYSEC-2025-217"
+reason = "transformers: no fixed version published upstream as of 2026-05-20"
+
+[[IgnoredVulns]]
+id = "PYSEC-2025-218"
+reason = "transformers: no fixed version published upstream as of 2026-05-20"

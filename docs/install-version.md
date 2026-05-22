@@ -10,14 +10,18 @@ description: You can use latest release or beta version of MegaLinter, know the 
 
 <!-- # MAJOR-RELEASE-IMPACTED -->
 
+> **Docker registry change (since v9.5.0)**: MegaLinter Docker images are **published only to GitHub Container Registry (`ghcr.io`)**. The Docker Hub registry (`docker.io/oxsecurity/megalinter`, formerly `oxsecurity/megalinter:*`) is **frozen at v9.4.0** until we implement OIDC-based publishing to Docker Hub.
+> If you pull `oxsecurity/megalinter:v9` from Docker Hub you will stay on v9.4.0. To get v9.5.0 and later, switch your `image:` / `docker pull` references to `ghcr.io/oxsecurity/megalinter:v9` (same applies to `:beta` and all [flavor](flavors.md) tags like `ghcr.io/oxsecurity/megalinter-python:v9`).
+> GitHub Action users (`uses: oxsecurity/megalinter@v9`) are not affected, as the action already pulls from `ghcr.io`.
+
 The following instructions examples are using latest MegaLinter stable version (**v9** , always corresponding to the [latest release](https://github.com/oxsecurity/megalinter/releases))
 
-- Docker image: `oxsecurity/megalinter:v9`
+- Docker image: `ghcr.io/oxsecurity/megalinter:v9`
 - GitHub Action: `oxsecurity/megalinter@v9`
 
 You can also use **beta** version (corresponding to the content of main branch)
 
-- Docker image: `oxsecurity/megalinter:beta`
+- Docker image: `ghcr.io/oxsecurity/megalinter:beta`
 - GitHub Action: `oxsecurity/megalinter@beta`
 
 

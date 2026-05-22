@@ -20,7 +20,7 @@ ARG ACTION_ACTIONLINT_VERSION=1.7.12
 # renovate: datasource=docker depName=koalaman/shellcheck
 ARG BASH_SHELLCHECK_VERSION=v0.11.0
 # renovate: datasource=crate depName=zizmor
-ARG CARGO_ZIZMOR_VERSION=1.23.1
+ARG CARGO_ZIZMOR_VERSION=1.25.0
 # renovate: datasource=crate depName=shellcheck-sarif
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
 # renovate: datasource=docker depName=mvdan/shfmt
@@ -38,7 +38,7 @@ ARG REPOSITORY_GITLEAKS_VERSION=v8.30.1
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
 ARG REPOSITORY_TRUFFLEHOG_VERSION=3.95.3
 # renovate: datasource=docker depName=jdkato/vale
-ARG SPELL_VALE_VERSION=v3.14.1
+ARG SPELL_VALE_VERSION=v3.14.2
 # renovate: datasource=docker depName=lycheeverse/lychee
 ARG SPELL_LYCHEE_VERSION=0.24.2-alpine
 #ARGTOP__END
@@ -91,7 +91,7 @@ FROM lycheeverse/lychee:${SPELL_LYCHEE_VERSION} AS lychee
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.11.13 AS uv
+FROM ghcr.io/astral-sh/uv:0.11.14 AS uv
 FROM python:3.14-alpine3.23 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
@@ -127,15 +127,15 @@ ARG PIP_ANSIBLE_LINT_VERSION=26.4.0
 # renovate: datasource=npm depName=@coffeelint/cli
 ARG NPM_COFFEELINT_CLI_VERSION=5.2.11
 # renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=4.1.0
+ARG NPM_JSCPD_VERSION=4.2.2
 # renovate: datasource=npm depName=stylelint
-ARG NPM_STYLELINT_VERSION=17.11.0
+ARG NPM_STYLELINT_VERSION=17.11.1
 # renovate: datasource=npm depName=stylelint-config-standard
 ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=40.0.0
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
 ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=13.0.0
 # renovate: datasource=npm depName=stylelint-scss
-ARG NPM_STYLELINT_SCSS_VERSION=7.0.0
+ARG NPM_STYLELINT_SCSS_VERSION=7.1.1
 # renovate: datasource=pypi depName=cpplint
 ARG PIP_CPPLINT_VERSION=2.0.2
 # renovate: datasource=github-releases depName=dotenv-linter/dotenv-linter extractVersion=^v(?<version>.+)$
@@ -151,29 +151,25 @@ ARG PIP_DJLINT_VERSION=1.36.4
 # renovate: datasource=npm depName=htmlhint
 ARG NPM_HTMLHINT_VERSION=1.9.2
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=8.57.1
-# renovate: datasource=npm depName=eslint-config-airbnb
-ARG NPM_ESLINT_CONFIG_AIRBNB_VERSION=19.0.4
+ARG NPM_ESLINT_VERSION=10.3.0
+# renovate: datasource=npm depName=@eslint/eslintrc
+ARG NPM_ESLINT_ESLINTRC_VERSION=3.3.5
+# renovate: datasource=npm depName=@eslint/js
+ARG NPM_ESLINT_JS_VERSION=10.0.1
 # renovate: datasource=npm depName=eslint-config-prettier
 ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.1.8
-# renovate: datasource=npm depName=eslint-config-standard
-ARG NPM_ESLINT_CONFIG_STANDARD_VERSION=17.1.0
-# renovate: datasource=npm depName=eslint-plugin-import
-ARG NPM_ESLINT_PLUGIN_IMPORT_VERSION=2.32.0
+# renovate: datasource=npm depName=eslint-plugin-import-x
+ARG NPM_ESLINT_PLUGIN_IMPORT_X_VERSION=4.16.2
 # renovate: datasource=npm depName=eslint-plugin-jest
 ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.15.2
 # renovate: datasource=npm depName=eslint-plugin-n
-ARG NPM_ESLINT_PLUGIN_N_VERSION=16.6.2
+ARG NPM_ESLINT_PLUGIN_N_VERSION=18.0.1
 # renovate: datasource=npm depName=eslint-plugin-prettier
 ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.5
 # renovate: datasource=npm depName=eslint-plugin-promise
-ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=6.6.0
+ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=7.3.0
 # renovate: datasource=npm depName=eslint-plugin-vue
 ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.9.1
-# renovate: datasource=npm depName=@babel/core
-ARG NPM_BABEL_CORE_VERSION=7.29.0
-# renovate: datasource=npm depName=@babel/eslint-parser
-ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.28.6
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 # renovate: datasource=npm depName=standard
@@ -188,10 +184,8 @@ ARG NPM_V8R_VERSION=6.0.0
 ARG NPM_PACKAGE_JSON_LINT_VERSION=10.4.0
 # renovate: datasource=npm depName=npm-package-json-lint-config-default
 ARG NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION=9.0.1
-# renovate: datasource=npm depName=eslint-plugin-react
-ARG NPM_ESLINT_PLUGIN_REACT_VERSION=7.37.5
-# renovate: datasource=npm depName=eslint-plugin-jsx-a11y
-ARG NPM_ESLINT_PLUGIN_JSX_ALLY_VERSION=6.10.2
+# renovate: datasource=npm depName=@eslint-react/eslint-plugin
+ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.7.9
 # renovate: datasource=github-tags depName=pinterest/ktlint
 ARG KTLINT_VERSION=1.8.0
 
@@ -205,9 +199,9 @@ ARG NPM_MARKDOWNLINT_CLI_VERSION=0.48.0
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.1.91
+ARG PIP_RUMDL_VERSION=0.1.93
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.2.528
+ARG PIP_CHECKOV_VERSION=3.2.529
 # renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.112.0
 # renovate: datasource=github-releases depName=loeffel-io/ls-lint extractVersion=^v(?<version>.+)$
@@ -221,7 +215,7 @@ ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=11.7.1
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
 ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=11.7.1
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.162.0
+ARG PIP_SEMGREP_VERSION=1.163.0
 # renovate: datasource=github-tags depName=anchore/syft
 ARG REPOSITORY_SYFT_VERSION=1.44.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
@@ -229,7 +223,7 @@ ARG REPOSITORY_TRIVY_VERSION=0.70.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.70.0
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.20.0
+ARG PIP_SNAKEMAKE_VERSION=9.21.0
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=1.1.0
 # renovate: datasource=npm depName=cspell
@@ -239,15 +233,15 @@ ARG PIP_PROSELINT_VERSION=0.14.0
 # renovate: datasource=pypi depName=codespell
 ARG PIP_CODESPELL_VERSION=2.4.2
 # renovate: datasource=pypi depName=sqlfluff
-ARG PIP_SQLFLUFF_VERSION=4.1.0
+ARG PIP_SQLFLUFF_VERSION=4.2.1
 # renovate: datasource=npm depName=@ibm/tekton-lint
 ARG NPM_IBM_TEKTON_LINT_VERSION=1.1.0
 # renovate: datasource=npm depName=prettyjson
 ARG NPM_PRETTYJSON_VERSION=1.2.5
 # renovate: datasource=npm depName=@typescript-eslint/eslint-plugin
-ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.59.2
+ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.59.3
 # renovate: datasource=npm depName=@typescript-eslint/parser
-ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.59.2
+ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.59.3
 # renovate: datasource=npm depName=ts-standard
 ARG NPM_TS_STANDARD_VERSION=12.0.2
 # renovate: datasource=pypi depName=yamllint
@@ -255,7 +249,7 @@ ARG PIP_YAMLLINT_VERSION=1.38.0
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=26.1.1
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=21.3.1
+ARG PIP_VIRTUALENV_VERSION=21.3.3
 
 ARG TARGETARCH
 ARG CARGO_SARIF_FMT_VERSION
@@ -330,6 +324,42 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #CARGO__START
 
 #CARGO__END
+
+##############################
+# COPY instructions #
+#############################################################################################
+## @generated by .automation/build.py using descriptor files, please do not update manually ##
+#############################################################################################
+
+#COPY__START
+COPY --link --from=cargo-bin-sarif-fmt /out/bin/sarif-fmt /usr/bin/sarif-fmt
+COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
+# shellcheck is a dependency for actionlint
+COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
+COPY --link --from=cargo-bin-zizmor /out/bin/zizmor /usr/bin/zizmor
+COPY --link --from=cargo-bin-shellcheck-sarif /out/bin/shellcheck-sarif /usr/bin/shellcheck-sarif
+# Next COPY line commented because already managed by another linter
+# COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
+COPY --link --from=shfmt /bin/shfmt /usr/bin/
+COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
+COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
+COPY --link --from=kubeconform /kubeconform /usr/bin/
+COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
+COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
+COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
+COPY --link --from=vale /bin/vale /bin/vale
+COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
+#COPY__END
+
+##############################
+# Installs ruby dependencies #
+#############################################################################################
+## @generated by .automation/build.py using descriptor files, please do not update manually ##
+#############################################################################################
+
+#GEM__START
+
+#GEM__END
 
 ################################
 # Installs python dependencies #
@@ -415,17 +445,15 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 npm-groovy-lint@${NPM_GROOVY_LINT_VERSION} \
                 htmlhint@${NPM_HTMLHINT_VERSION} \
                 eslint@${NPM_ESLINT_VERSION} \
-                eslint-config-airbnb@${NPM_ESLINT_CONFIG_AIRBNB_VERSION} \
+                @eslint/eslintrc@${NPM_ESLINT_ESLINTRC_VERSION} \
+                @eslint/js@${NPM_ESLINT_JS_VERSION} \
                 eslint-config-prettier@${NPM_ESLINT_CONFIG_PRETTIER_VERSION} \
-                eslint-config-standard@${NPM_ESLINT_CONFIG_STANDARD_VERSION} \
-                eslint-plugin-import@${NPM_ESLINT_PLUGIN_IMPORT_VERSION} \
+                eslint-plugin-import-x@${NPM_ESLINT_PLUGIN_IMPORT_X_VERSION} \
                 eslint-plugin-jest@${NPM_ESLINT_PLUGIN_JEST_VERSION} \
                 eslint-plugin-n@${NPM_ESLINT_PLUGIN_N_VERSION} \
                 eslint-plugin-prettier@${NPM_ESLINT_PLUGIN_PRETTIER_VERSION} \
                 eslint-plugin-promise@${NPM_ESLINT_PLUGIN_PROMISE_VERSION} \
                 eslint-plugin-vue@${NPM_ESLINT_PLUGIN_VUE_VERSION} \
-                @babel/core@${NPM_BABEL_CORE_VERSION} \
-                @babel/eslint-parser@${NPM_BABEL_ESLINT_PARSER_VERSION} \
                 @microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION} \
                 standard@${NPM_STANDARD_VERSION} \
                 prettier@${NPM_PRETTIER_VERSION} \
@@ -433,8 +461,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 v8r@${NPM_V8R_VERSION} \
                 npm-package-json-lint@${NPM_PACKAGE_JSON_LINT_VERSION} \
                 npm-package-json-lint-config-default@${NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION} \
-                eslint-plugin-react@${NPM_ESLINT_PLUGIN_REACT_VERSION} \
-                eslint-plugin-jsx-a11y@${NPM_ESLINT_PLUGIN_JSX_ALLY_VERSION} \
+                @eslint-react/eslint-plugin@${NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION} \
                 markdownlint-cli@${NPM_MARKDOWNLINT_CLI_VERSION} \
                 markdown-table-formatter@${NPM_MARKDOWN_TABLE_FORMATTER_VERSION} \
                 secretlint@${NPM_SECRETLINT_VERSION} \
@@ -459,42 +486,6 @@ WORKDIR /
 # Add node packages to path #
 ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
     NODE_PATH="/node-deps/node_modules"
-
-##############################
-# Installs ruby dependencies #
-#############################################################################################
-## @generated by .automation/build.py using descriptor files, please do not update manually ##
-#############################################################################################
-
-#GEM__START
-
-#GEM__END
-
-##############################
-# COPY instructions #
-#############################################################################################
-## @generated by .automation/build.py using descriptor files, please do not update manually ##
-#############################################################################################
-
-#COPY__START
-COPY --link --from=cargo-bin-sarif-fmt /out/bin/sarif-fmt /usr/bin/sarif-fmt
-COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
-# shellcheck is a dependency for actionlint
-COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
-COPY --link --from=cargo-bin-zizmor /out/bin/zizmor /usr/bin/zizmor
-COPY --link --from=cargo-bin-shellcheck-sarif /out/bin/shellcheck-sarif /usr/bin/shellcheck-sarif
-# Next COPY line commented because already managed by another linter
-# COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
-COPY --link --from=shfmt /bin/shfmt /usr/bin/
-COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
-COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
-COPY --link --from=kubeconform /kubeconform /usr/bin/
-COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
-COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
-COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
-COPY --link --from=vale /bin/vale /bin/vale
-COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
-#COPY__END
 
 #############################################################################################
 ## @generated by .automation/build.py using descriptor files, please do not update manually ##

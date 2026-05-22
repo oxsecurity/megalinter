@@ -29,6 +29,12 @@ jobs:
     environment:
       name: alpha
     steps:
+      # Login to docker hub
+      - name: Login to Docker Hub
+        uses: docker/login-action@4907a6ddec9925e35a0a9e82d7399ccc52663121 # v4
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
       # Free disk space
       - name: Free Disk space
         if: github.event.inputs.free-space-before == 'true'
@@ -38,12 +44,6 @@ jobs:
           sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
           sudo rm -rf /opt/hostedtoolcache/CodeQL # large cache
           sudo rm -rf /opt/hostedtoolcache/go # Go toolcache
-      # Login to docker hub
-      - name: Login to Docker Hub
-        uses: docker/login-action@4907a6ddec9925e35a0a9e82d7399ccc52663121 # v4
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
       # Copy ghrc.io image to Docker Hub
       - name: Pull image from GHCR
         run: docker pull "${GITHUB_EVENT_INPUTS_SOURCE_IMAGE}"

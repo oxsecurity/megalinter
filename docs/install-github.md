@@ -66,6 +66,15 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v6
         with:
+          # SECURITY NOTE: Using a Personal Access Token (PAT) is NOT
+          # recommended. Open-source projects have been heavily targeted by
+          # supply-chain attacks in recent months, and a leaked PAT can give
+          # attackers broad write access to your repository: better safe
+          # than sorry! If you only need workflows to re-trigger after
+          # MegaLinter applies fixes, prefer one of these safer alternatives:
+          #   - Manually re-run the workflow from the GitHub Actions tab, or
+          #   - Push another commit on the branch to trigger workflows again.
+          # Only define `secrets.PAT` if you fully understand the trade-off.
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
           persist-credentials: false # Comment this line and uncomment the next one if you use APPLY_FIXES
           # persist-credentials: true # zizmor: ignore[artipacked]
@@ -103,6 +112,10 @@ jobs:
         if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'pull_request' && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository) && !contains(github.event.head_commit.message, 'skip fix')
         uses: peter-evans/create-pull-request@v7
         with:
+          # SECURITY NOTE: see the warning on the checkout step above —
+          # using `secrets.PAT` is NOT recommended for security reasons.
+          # Prefer manually re-running the workflow or pushing another
+          # commit on the branch to trigger workflows again.
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
           commit-message: "[MegaLinter] Apply linters automatic fixes"
           title: "[MegaLinter] Apply linters automatic fixes"

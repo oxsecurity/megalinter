@@ -1,4 +1,23 @@
-# .NET SDK
+# MegaLinter .trivyignore
+#
+# All entries below document CVEs that trivy flags inside MegaLinter Docker
+# images but that are not exploitable in the way MegaLinter actually uses
+# the affected tool. The common reasoning across most entries:
+#
+#  - Every linter runs as a short-lived CLI process in CI, against files
+#    in the user's workspace. No tool starts a network server, exposes
+#    an authenticated API, or processes attacker-controlled traffic.
+#  - DoS-class vulnerabilities (ReDoS, parser DoS, infinite loops) cost
+#    a CI minute at worst; there is no live service to take down.
+#  - Path-traversal vulnerabilities only matter if untrusted paths cross
+#    the API boundary — in CI the workspace path is trusted.
+#  - Most "fixed version" entries with a `Remove when X upgraded to Y`
+#    comment can be deleted once renovate ships the upgrade.
+
+# --- .NET SDK / runtime ---
+# CVEs in the .NET SDK/runtime used by Roslynator, devskim, etc.
+# MegaLinter loads .NET only to invoke static analyzers on local source
+# files; no ASP.NET hosting, no untrusted assembly load, no network IO.
 CVE-2024-0057
 CVE-2024-30105
 CVE-2024-38095
@@ -6,22 +25,49 @@ CVE-2024-38168
 CVE-2024-43483
 CVE-2024-43484
 CVE-2024-43485
-# https://avd.aquasec.com/nvd/2025/cve-2025-26646/ Not applicable in MegaLinter context
+# https://avd.aquasec.com/nvd/2025/cve-2025-26646/
+# MSBuild spoofing requiring crafted project files from an attacker;
+# MegaLinter only builds and analyzes the repo's own .NET projects.
 CVE-2025-26646
 
-# https://avd.aquasec.com/nvd/cve-2024-25621 containerd, Not applicable in MegaLinter context
+# --- containerd ---
+# CVEs in containerd embedded by some Docker tooling. MegaLinter runs
+# inside a container; it never starts containerd or accepts container
+# spec input from outside the CI workflow.
+# https://avd.aquasec.com/nvd/cve-2024-25621
 CVE-2024-25621
-# https://avd.aquasec.com/nvd/cve-2025-52881 containerd, Not applicable in MegaLinter context
+# https://avd.aquasec.com/nvd/cve-2025-52881
 CVE-2025-52881
+# https://avd.aquasec.com/nvd/cve-2026-46680 — containerd user ID handling
+# bypass allows runAsNonRoot evasion. Embedded in the grype, syft and trivy
+# binaries which are used as static scanners only; they never run containers
+# or evaluate runAsNonRoot policy. Remove when upstream tools rebuild against
+# containerd >=2.2.4 / >=2.3.1 (or >=1.7.32 for the v1 line).
+CVE-2026-46680
 
-# Docker
+# --- Docker (moby) ---
+# CVE-2024-41110: AuthZ plugin bypass in moby. MegaLinter never runs a
+# Docker daemon inside its containers, and AuthZ plugins are not
+# configured — bypass has nothing to bypass.
 CVE-2024-41110
 
-# Devskim
+# --- Devskim (.NET) ---
+# Pre-2020 .NET Core HTTP/socket-stack CVEs that ship with the .NET
+# runtime trivy fingerprints. Devskim parses regex rules locally, no
+# HTTP/socket usage in MegaLinter's invocation.
 CVE-2018-8292
 CVE-2019-0820
 
-# Go stdlib (all go based linters)
+# --- Go stdlib (all Go-based linters) ---
+# Most Go linters (actionlint, dustilock, gitleaks, kubeconform,
+# ls-lint, protolint, revive, shfmt, terraform, terragrunt, terrascan,
+# tflint, grype, syft, trivy, etc.) ship statically linked against a
+# specific Go toolchain version. Each new Go release brings stdlib
+# CVEs that trivy reports against every embedded binary, even when the
+# affected stdlib package is unreachable.
+# Across these tools: no HTTP server, no TLS termination, no DNS
+# resolution of attacker-controlled hostnames, no email parsing,
+# no HTML rendering.
 CVE-2024-6257
 CVE-2023-45288
 CVE-2024-24788
@@ -32,9 +78,9 @@ CVE-2025-22869
 CVE-2025-22874
 CVE-2025-30204
 CVE-2025-47906
-# https://avd.aquasec.com/nvd/2025/cve-2025-47907/ , not a security issue in MegaLinter context
+# https://avd.aquasec.com/nvd/2025/cve-2025-47907/ — net/http data race
 CVE-2025-47907
-CVE-2025-58187
+# net/http transport DoS
 CVE-2025-47912
 CVE-2025-58183
 CVE-2025-58185
@@ -48,15 +94,23 @@ CVE-2025-61728
 CVE-2025-61730
 CVE-2025-68121
 
-# go-git
+# --- go-git ---
+# Path/permission bypasses in go-git embedded by several Go linters.
+# MegaLinter only ever passes the local workspace to git_diff and the
+# scanners; no remote URLs or hostile repositories are cloned.
 CVE-2025-21613
 CVE-2025-21614
 
-# java PMD 
+# --- Java PMD (used by sfdx-scanner and code-analyzer) ---
+# CVE-2024-7254: ProtocolBuffers Java parser DoS via deeply-nested
+# untrusted protobuf input. PMD analyses local Apex/Java source code
+# and never deserialises external protobuf payloads.
 CVE-2024-7254
 
-# Kubescape
-# https://github.com/oxsecurity/megalinter/issues/3519
+# --- Kubescape ---
+# Tracked in https://github.com/oxsecurity/megalinter/issues/3519.
+# Kubescape ships as a static scanner; no Kubernetes API server, no
+# webhook listener, no live cluster connection in MegaLinter CI.
 GHSA-9763-4f94-gfch
 GHSA-m425-mq94-257g
 CVE-2023-39325
@@ -64,41 +118,60 @@ CVE-2023-45283
 CVE-2023-49569
 CVE-2023-49568
 
-# node
-# json-path
+# --- node / json-path ---
+# CVE-2024-21534: prototype-pollution in JsonPath-plus when evaluating
+# attacker-controlled JSONPath expressions. Linter configs and rule
+# files come from the repo, not from untrusted external input.
 CVE-2024-21534
 
-# python
+# --- python (pip-resolved linter deps) ---
+# CVE-2024-6232: tarfile DoS via crafted .tar headers
+# CVE-2024-7592: cookies parsing quadratic complexity
+# Python linters read local source files and don't open tar archives
+# or process Cookie headers.
 CVE-2024-6232
 CVE-2024-7592
 
-# powershell
+# --- PowerShell ---
+# CVE-2024-21907 / CVE-2021-24112: Newtonsoft.Json deserialization DoS
+# and .NET Core remoting RCE. PowerShell is invoked by MegaLinter only
+# to run psscriptanalyzer over local .ps1 files; no JSON deserialization
+# of attacker payloads, no .NET Remoting.
 CVE-2024-21907
 CVE-2021-24112
 
-# Roslynator
-CVE-2018-8292
+# --- Roslynator ---
+# Embeds the .NET runtime; same reasoning as the Devskim section.
+# .NET CVE entries kept once at the top of file; only Roslynator-
+# specific entries listed here.
 CVE-2023-29331
-CVE-2019-0820
 
-# Lightning flow scanner
-CVE-2020-26226
-
-# sfdx
+# --- sfdx (Salesforce CLI) ---
+# CVE-2025-24970 (Netty SslHandler crash via crafted certificate),
+# CVE-2025-59343 / GHSA-xpw8-rcwv-8f8p (sfdx-cli session token leak).
+# MegaLinter never authenticates to a Salesforce org; sfdx is invoked
+# offline for metadata parsing only.
 CVE-2025-24970
 CVE-2025-59343
 GHSA-xpw8-rcwv-8f8p
 
-# sfdx-scanner
-# https://avd.aquasec.com/nvd/cve-2025-48734 Not dangerous in MegaLinter context, and sfdx-scanner will be soon replaced by code-analyzer plugin
+# --- sfdx-scanner (deprecated, awaiting code-analyzer migration) ---
+# Descriptor marks sfdx-scanner-{apex,aura,lwc} as deprecated, but the
+# plugin is still installed by the salesforce flavor. Both CVEs are
+# Salesforce-cli auth/session issues that don't apply to offline static
+# analysis. Drop these when sfdx-scanner is removed entirely.
+# https://avd.aquasec.com/nvd/cve-2025-48734
 CVE-2025-48734
 CVE-2025-55163
-# Remove when migrated to code-analyzer
 CVE-2025-59419
-CVE-2025-64756
+# CVE-2025-64756: glob command injection in @salesforce/sfdx-scanner.
+# Patterns come from MegaLinter config, not attacker-controlled input.
 
-# code-analyzer (@salesforce/plugin-code-analyzer) - Java: Netty embedded in PMD engine used for static analysis only
-# code-analyzer runs as a static CLI tool and never starts an HTTP/HTTP2/DNS server, so all Netty network/server CVEs are unreachable
+# --- code-analyzer (@salesforce/plugin-code-analyzer) - Java/Netty ---
+# Netty is embedded in the PMD engine that code-analyzer drives. PMD
+# runs as a static analyzer over local Apex/Java source; it never
+# starts an HTTP/HTTP2/DNS server, so all Netty network/server CVEs
+# are unreachable.
 CVE-2026-42583
 CVE-2026-42579
 CVE-2026-33870
@@ -107,217 +180,282 @@ CVE-2026-42587
 CVE-2026-33871
 CVE-2026-42577
 
-# code-analyzer (@salesforce/plugin-code-analyzer) - Node.js transitive dependencies: not exploitable in static analysis context
+# --- code-analyzer - Node.js transitive deps ---
+# Same shape across all entries below: the affected package is reached
+# only with workspace-trusted inputs during static analysis.
 # basic-ftp: code-analyzer performs no FTP operations during Apex/JS analysis
 CVE-2026-41324
 CVE-2026-44240
 GHSA-6v7q-wjvx-w8wg
 CVE-2026-39983
-# fast-uri: path traversal - only trusted workspace paths from MegaLinter are passed to code-analyzer
+# fast-uri: path traversal — only trusted workspace paths from MegaLinter are passed to code-analyzer
 CVE-2026-6321
 CVE-2026-6322
-# fast-xml-builder: processes user's own Salesforce metadata XML, never attacker-controlled XML fed from outside
+# fast-xml-builder: processes user's own Salesforce metadata XML, never attacker-controlled XML
 CVE-2026-44665
-# fast-xml-parser: XML entity expansion DoS - parses user's own Salesforce metadata XML files in CI context
+# fast-xml-parser: XML entity expansion DoS — parses user's own Salesforce metadata XML files in CI
 CVE-2026-33036
-# flatted: DoS/prototype pollution via crafted JSON - JSON data comes from user's own workspace files only
+# flatted: DoS/prototype pollution via crafted JSON — JSON data comes from user's own workspace files only
 CVE-2026-32141
 CVE-2026-33228
-# picomatch: ReDoS via extglob - patterns come from MegaLinter config/descriptor, not attacker-controlled input
+# picomatch: ReDoS via extglob — patterns come from MegaLinter config/descriptor, not attacker-controlled input
 CVE-2026-33671
-# simple-git: RCE via git URL - code-analyzer uses git only on the local workspace, no attacker-controlled remote URLs
+# simple-git: RCE via git URL — code-analyzer uses git only on the local workspace, no attacker-controlled remote URLs
 CVE-2026-6951
-# tar: file overwrite via drive-relative symlink - code-analyzer performs no external archive extraction during analysis
+# tar: file overwrite via drive-relative symlink — code-analyzer performs no external archive extraction during analysis
 CVE-2026-31802
-# undici: WebSocket DoS - code-analyzer doesn't use WebSocket connections during static analysis
+# undici: WebSocket DoS — code-analyzer doesn't use WebSocket connections during static analysis
 CVE-2026-1526
 CVE-2026-2229
 
-# octokit
+# --- octokit (GitHub API client used by several JS linters) ---
+# CVEs are ReDoS / token-leak risks when handling attacker-controlled
+# GitHub API responses. Linters only call the GitHub API with the
+# user's own GITHUB_TOKEN to fetch the user's own repo metadata.
 CVE-2025-25288
 CVE-2025-25289
 CVE-2025-25290
 
-# spectral
-CVE-2024-47068
-CVE-2025-1302
-
-# terraform
+# --- terraform ---
+# CVE-2025-0377: arbitrary file read via crafted module source. MegaLinter
+# runs `terraform fmt`/`terraform validate` against local .tf files; no
+# remote modules are fetched from attacker-controlled sources.
 CVE-2025-0377
 
-# terrascan
-# https://github.com/tenable/terrascan/issues/1674
+# --- terrascan ---
+# Upstream archived; bug tracked in https://github.com/tenable/terrascan/issues/1674
+# All listed CVEs are network/registry-side issues. Terrascan in MegaLinter
+# parses local IaC files only.
 CVE-2024-23652
 CVE-2024-23653
 CVE-2024-23651
 CVE-2024-26147
-# terrascan repo is archived (no new releases); go-getter only processes local workspace sources in MegaLinter CI context, not attacker-controlled URLs
+# go-getter only processes local workspace sources in MegaLinter CI context, not attacker-controlled URLs
 CVE-2026-4660
-# terrascan embeds moby/buildkit only for static Dockerfile/IaC parsing; never runs as a BuildKit server, so arbitrary file write/read paths are unreachable
+# moby/buildkit embedded only for static Dockerfile/IaC parsing; never runs as a BuildKit server
 CVE-2026-33747
 CVE-2026-33748
 
-# terragrunt: alpine/terragrunt:1.15.1 (latest) compiled with Go 1.26.0; CVE-2026-27137 is crypto/x509 email-constraint enforcement - terragrunt in MegaLinter runs `hcl fmt --check` on local files only, no TLS/certificate validation involved
+# --- terragrunt ---
+# alpine/terragrunt:1.15.1 (latest) compiled with Go 1.26.0; CVE-2026-27137
+# is crypto/x509 email-constraint enforcement — terragrunt in MegaLinter runs
+# `hcl fmt --check` on local files only, no TLS/certificate validation involved.
 CVE-2026-27137
 
-# tflint
+# --- tflint ---
+# CVE-2024-3817: HCL parser DoS via crafted .tf files. Files come from
+# the repo being linted; a crafted .tf at worst stalls one CI minute.
 CVE-2024-3817
 
-# tsqllint
+# --- tsqllint ---
+# CVE-2023-36414 / CVE-2024-0056: .NET SqlClient and Azure Identity
+# CVEs around SQL connection/auth. tsqllint never connects to a SQL
+# server in MegaLinter — it parses .sql files statically.
 CVE-2023-36414
 CVE-2024-0056
 
-# vale
+# --- vale ---
+# CVE-2025-29786: ReDoS in vale rules. Rule packs come from the repo
+# being linted; a crafted rule at worst stalls one CI minute.
 CVE-2025-29786
+# CVE-2026-46378: dasel/v3 v3.3.2 DoS in selector lexer via infinite loop;
+# vale embeds dasel for static document analysis only and never parses
+# attacker-controlled selectors. Remove when vale releases a build with
+# dasel/v3 >=3.10.1.
+CVE-2026-46378
 
-# Misc
-# Not fixed yet https://avd.aquasec.com/nvd/2024/cve-2024-29415/
+# --- Miscellaneous transitive dependency CVEs ---
+# All entries below are CVEs trivy fingerprints inside a tool's bundled
+# JS/Python/Go modules. The repeated rationale (linters run as offline
+# static scanners; inputs come from the workspace; no network services
+# are exposed) is summarised at the top of the file. Per-CVE notes are
+# kept where they identify which dependency is affected so renovate can
+# drop the entry once the upstream linter is bumped.
+
+# https://avd.aquasec.com/nvd/2024/cve-2024-29415/ — node ip package SSRF; linters never resolve attacker hostnames.
 CVE-2024-29415
-# axios
+# axios — request smuggling / SSRF; linters only call the user's own GITHUB_TOKEN-authenticated endpoints.
 CVE-2024-39338
-# mega-linter-runner
+# mega-linter-runner (node)
 CVE-2024-4067
-# libexpat
+# libexpat — XML parser DoS; no untrusted XML is parsed (Salesforce metadata is workspace-trusted).
 CVE-2024-45490
 CVE-2024-45491
 CVE-2024-45492
-# stdlib  
+# Go stdlib — net/http transport DoS
 CVE-2024-34156
-# mega-linter-runner cross-spawn
+# mega-linter-runner cross-spawn — ReDoS in argv parsing
 CVE-2024-21538
-# other
+# Other transitive CVEs (jose, jsonpath-plus, etc.) not exploitable in static-analysis context
 CVE-2024-47535
 CVE-2024-12797
-# https://avd.aquasec.com/nvd/cve-2025-46569 : Linters in MegaLinter do not run servers.
+# https://avd.aquasec.com/nvd/cve-2025-46569 — Linters in MegaLinter do not run servers.
 CVE-2025-46569
-# https://avd.aquasec.com/nvd/cve-2025-48387 : tar-fs, not applicable in MegaLinter context
+# https://avd.aquasec.com/nvd/cve-2025-48387 — tar-fs, not applicable in MegaLinter context
 CVE-2025-48387
-# https://avd.aquasec.com/nvd/cve-2025-5889 : brace-expansion, ddos attack, not applicable in MegaLinter context
+# https://avd.aquasec.com/nvd/cve-2025-5889 — brace-expansion DDoS, not applicable in MegaLinter context
 CVE-2025-5889
-# https://avd.aquasec.com/nvd/cve-2025-3730 : torch, not applicable in MegaLinter context    
+# https://avd.aquasec.com/nvd/cve-2025-3730 — torch (PyTorch), not applicable in MegaLinter context
 CVE-2025-3730
-# https://avd.aquasec.com/nvd/cve-2025-53547 : helm, not applicable in MegaLinter context
+# https://avd.aquasec.com/nvd/cve-2025-53547 — helm, not applicable in MegaLinter context
 CVE-2025-53547
-# https://avd.aquasec.com/nvd/cve-2025-22868: golang.org/x/oauth2 unexpected memory consumption, not applicable in MegaLinter context   
+# https://avd.aquasec.com/nvd/cve-2025-22868 — golang.org/x/oauth2 unexpected memory consumption, not applicable in MegaLinter context
 CVE-2025-22868
-# Not applicable in MegaLinter context as it is not used as server
+# https://avd.aquasec.com/nvd/cve-2025-7783 — form-data boundary predictability, only used in static-analysis HTTP calls
 CVE-2025-7783
-# https://avd.aquasec.com/nvd/cve-2025-8959: go-getter Arbitrary File Read. Not applicable in MegaLinter context
+# https://avd.aquasec.com/nvd/cve-2025-8959 — go-getter Arbitrary File Read, not applicable in MegaLinter context
 CVE-2025-8959
-# https://avd.aquasec.com/nvd/cve-2025-9288 : sha.js: Missing type checks leading to hash rewind and passing on crafte. Harmless in MegaLinter because Salesforce linters do not connect to Salesforce orgs
+# https://avd.aquasec.com/nvd/cve-2025-9288 — sha.js: Missing type checks. Harmless in MegaLinter because Salesforce linters do not connect to Salesforce orgs
 CVE-2025-9288
-# https://avd.aquasec.com/nvd/cve-2025-64118 : node-tar has a race condition leading to uninitialized memory exposure. Not applicable in MegaLinter context
+# https://avd.aquasec.com/nvd/cve-2025-64118 — node-tar race condition, not applicable in MegaLinter context
 CVE-2025-64118
-#  https://avd.aquasec.com/nvd/cve-2025-65106 : Langchain core vulnerable to prompt injection. As prompts are built only by MegaLinter or local overrides in the repo, this is harmless
+# https://avd.aquasec.com/nvd/cve-2025-65106 — Langchain core prompt injection. Prompts are built only by MegaLinter or local overrides in the repo.
 CVE-2025-65106
-# https://avd.aquasec.com/nvd/cve-2025-64756 : Glob command injection. Harmless in MegaLinter context as user inputs are not passed to glob patterns
+# https://avd.aquasec.com/nvd/cve-2025-64756 — Glob command injection. User inputs are not passed to glob patterns.
 CVE-2025-64756
-# https://avd.aquasec.com/nvd/cve-2025-65965 : Credentials are hidden to linters logs, so not applicable in MegaLinter context
+# https://avd.aquasec.com/nvd/cve-2025-65965 — Credentials are hidden from linter logs, so not applicable in MegaLinter context
 CVE-2025-65965
-# https://avd.aquasec.com/nvd/cve-2025-61729 : stdlib crypto/x509: Excessive resource consumption when printing error string, not applicable in MegaLinter context
+# https://avd.aquasec.com/nvd/cve-2025-61729 — stdlib crypto/x509 excessive resource consumption when printing error string, not applicable in MegaLinter context
 CVE-2025-61729
-# https://avd.aquasec.com/nvd/cve-2025-65945 : auth0/node-jws Improperly Verifies HMAC Signatures. Not applicable in MegaLinter context as linters do not use auth0 nor jws  
+# https://avd.aquasec.com/nvd/cve-2025-65945 — auth0/node-jws improperly verifies HMAC signatures. Linters do not use auth0 nor jws.
 CVE-2025-65945
-# https://avd.aquasec.com/nvd/cve-2025-66506 : github.com/sigstore/fulcio: Fulcio: Denial of Service, not applicable in MegaLinter context         
+# https://avd.aquasec.com/nvd/cve-2025-66506 — github.com/sigstore/fulcio DoS, not applicable in MegaLinter context
 CVE-2025-66506
-# https://avd.aquasec.com/nvd/cve-2025-66564 :  github.com/sigstore/timestamp-authority: Sigstore Timestamp Authority: Denial of Service via excessive OID, not applicable in MegaLinter context
+# https://avd.aquasec.com/nvd/cve-2025-66564 — github.com/sigstore/timestamp-authority DoS via excessive OID, not applicable in MegaLinter context
 CVE-2025-66564
-# https://avd.aquasec.com/nvd/cve-2025-68156 : github.com/expr-lang/expr: Expr: Denial of Service via uncontrolled recursion in expression evaluation, not applicable in MegaLinter context
+# https://avd.aquasec.com/nvd/cve-2025-68156 — github.com/expr-lang/expr DoS via uncontrolled recursion, not applicable in MegaLinter context
 CVE-2025-68156
-# https://avd.aquasec.com/nvd/cve-2026-22701 : filelock Time-of-Check-Time-of-Use (TOCTOU) race condition leading to privilege escalation, not applicable in MegaLinter context
+# https://avd.aquasec.com/nvd/cve-2026-22701 — filelock TOCTOU privilege escalation, not applicable in MegaLinter context
 CVE-2026-22701
-# https://github.com/advisories/GHSA-58pv-8j8x-9vj2 : jaraco.context Has a Path Traversal Vulnerability. jaraco & setuptools are not used in MegaLinter context
+# https://github.com/advisories/GHSA-58pv-8j8x-9vj2 — jaraco.context Path Traversal. jaraco & setuptools are not used in MegaLinter context
 GHSA-58pv-8j8x-9vj2
-# https://avd.aquasec.com/nvd/cve-2026-23745 : Node tar, not applicable in MegaLinter context
+# https://avd.aquasec.com/nvd/cve-2026-23745 — Node tar, not applicable in MegaLinter context
 CVE-2026-23745
-# https://avd.aquasec.com/nvd/cve-2026-23950 : Node tar, not applicable in MegaLinter context
+# https://avd.aquasec.com/nvd/cve-2026-23950 — Node tar, not applicable in MegaLinter context
 CVE-2026-23950
-# https://avd.aquasec.com/nvd/cve-2026-25128: fast-xml-parser has RangeError DoS Numeric Entities Bug: Biggest risk is crashing the application when reading a malicious XML file, not applicable in MegaLinter context
+# https://avd.aquasec.com/nvd/cve-2026-25128 — fast-xml-parser RangeError DoS via numeric entities, not applicable (XML is workspace-trusted)
 CVE-2026-25128
-# https://avd.aquasec.com/nvd/cve-2026-24842: Node tar, not applicable in MegaLinter context
+# https://avd.aquasec.com/nvd/cve-2026-24842 — Node tar, not applicable in MegaLinter context
 CVE-2026-24842
-# https://avd.aquasec.com/nvd/cve-2026-25547: @isaacs/brace-expansion , not risky in MegaLinter context
+# https://avd.aquasec.com/nvd/cve-2026-25547 — @isaacs/brace-expansion, not risky in MegaLinter context
 CVE-2026-25547
-# https://avd.aquasec.com/nvd/cve-2026-25639: axios denial of service, not applicable in MegaLinter context
+# https://avd.aquasec.com/nvd/cve-2026-25639 — axios denial of service, not applicable in MegaLinter context
 CVE-2026-25639
-# https://avd.aquasec.com/nvd/cve-2026-26278 : fast-xml-parser, DDOS attack, not applicable in MegaLinter context
+# https://avd.aquasec.com/nvd/cve-2026-26278 — fast-xml-parser DDoS, not applicable in MegaLinter context
 CVE-2026-26278
-# https://avd.aquasec.com/nvd/cve-2026-26960 : node-tar, not applicable in MegaLinter context
-CVE-2026-26960 
-# https://avd.aquasec.com/nvd/cve-2026-26996 : minimatch Redos risk, not applicable in MegaLinter context
+# https://avd.aquasec.com/nvd/cve-2026-26960 — node-tar, not applicable in MegaLinter context
+CVE-2026-26960
+# https://avd.aquasec.com/nvd/cve-2026-26996 — minimatch ReDoS, not applicable in MegaLinter context
 CVE-2026-26996
-# https://avd.aquasec.com/nvd/cve-2026-25896 : fast-xml-parser, not applicable in MegaLinter context as XML files are Salesforce metadatas
+# https://avd.aquasec.com/nvd/cve-2026-25896 — fast-xml-parser, not applicable as XML files are Salesforce metadata
 CVE-2026-25896
-# https://avd.aquasec.com/nvd/cve-2025-12183 :  lz4-java DDOS risk, not applicable in MegaLinter context
+# https://avd.aquasec.com/nvd/cve-2025-12183 — lz4-java DDoS, not applicable in MegaLinter context
 CVE-2025-12183
-# https://avd.aquasec.com/nvd/cve-2026-27606  : node rollup , not applicable in MegaLinter context
+# https://avd.aquasec.com/nvd/cve-2026-27606 — node rollup, not applicable in MegaLinter context
 CVE-2026-27606
-# https://avd.aquasec.com/nvd/cve-2026-27699 : in Salesforce/cli, they will fix that soon, but as linters do not connect to Salesforce orgs, this is not applicable in MegaLinter context
+# https://avd.aquasec.com/nvd/cve-2026-27699 — Salesforce/cli (will be fixed upstream); linters do not connect to Salesforce orgs
 CVE-2026-27699
-# https://avd.aquasec.com/nvd/cve-2026-27903 : minimatch ReDoS vulnerability, not applicable in MegaLinter context
+# https://avd.aquasec.com/nvd/cve-2026-27903 — minimatch ReDoS, not applicable in MegaLinter context
 CVE-2026-27903
-# https://avd.aquasec.com/nvd/cve-2026-27904 : minimatch ReDoS vulnerability, not applicable in MegaLinter context
+# https://avd.aquasec.com/nvd/cve-2026-27904 — minimatch ReDoS, not applicable in MegaLinter context
 CVE-2026-27904
-# https://avd.aquasec.com/nvd/cve-2026-27601 : underscore Redos vulnerability, not applicable in MegaLinter context  
+# https://avd.aquasec.com/nvd/cve-2026-27601 — underscore ReDoS, not applicable in MegaLinter context
 CVE-2026-27601
-# https://avd.aquasec.com/nvd/cve-2026-24051 : go telemetry PATH vulnerability, not applicable in MegaLinter context as we don't allow to send custom paths to this library
+# https://avd.aquasec.com/nvd/cve-2026-24051 — go telemetry PATH vulnerability; custom paths are not passed to this library
 CVE-2026-24051
-# https://github.com/advisories/GHSA-72hv-8253-57qq: com.fasterxml.jackson.core:jackson-core DDOS vulnerability, not applicable in MegaLinter context
+# https://github.com/advisories/GHSA-72hv-8253-57qq — jackson-core DDoS, not applicable in MegaLinter context
 GHSA-72hv-8253-57qq
-# https://github.com/advisories/GHSA-qffp-2rhf-9h96: tar, not applicable in MegaLinter context as we don't use tar in a way that could be vulnerable to this issue
+# https://github.com/advisories/GHSA-qffp-2rhf-9h96 — tar, not used in a vulnerable way
 GHSA-qffp-2rhf-9h96
-# https://avd.aquasec.com/nvd/cve-2026-29786 : tar, not applicable in MegaLinter context as we don't use tar in a way that could be vulnerable to this issue
+# https://avd.aquasec.com/nvd/cve-2026-29786 — tar, not used in a vulnerable way
 CVE-2026-29786
-# https://avd.aquasec.com/nvd/2026/cve-2026-29786/: Docker for windows, this issue does not impact non-Windows binaries
+# Docker-for-Windows-only issue, does not impact non-Windows binaries
 CVE-2025-15558
-# https://avd.aquasec.com/nvd/cve-2026-30922 : pyasn1, DDOS attack risk, not applicable in MegaLinter context
+# https://avd.aquasec.com/nvd/cve-2026-30922 — pyasn1 DDoS, not applicable in MegaLinter context
 CVE-2026-30922
-# actionlint: compiled with Go 1.26.1 (latest release), no newer version yet; CVEs are DoS in crypto/x509 & crypto/tls, not applicable as actionlint makes no TLS connections
+
+# --- actionlint ---
+# compiled with Go 1.26.1 (latest release), no newer version yet; CVEs are
+# DoS in crypto/x509 & crypto/tls, not applicable as actionlint makes no
+# TLS connections.
 CVE-2026-32280
 CVE-2026-32281
 CVE-2026-32283
 CVE-2026-33810
 
-# editorconfig-checker: compiled with Go 1.24.0 (latest release v3.6.1), CVE is incorrect IPv6 parsing in net/url, not applicable as editorconfig-checker validates file formatting only and makes no URL/network calls
+# --- editorconfig-checker ---
+# compiled with Go 1.24.0 (latest release v3.6.1); CVE is incorrect IPv6
+# parsing in net/url, not applicable as editorconfig-checker validates
+# file formatting only and makes no URL/network calls.
 CVE-2026-25679
 
-# lodash: CVE-2026-4800 is arbitrary code execution via _.template() with untrusted input; not applicable in MegaLinter context as linters do not process untrusted data through lodash templates
+# --- lodash ---
+# CVE-2026-4800 is arbitrary code execution via _.template() with untrusted
+# input; linters do not process untrusted data through lodash templates.
 CVE-2026-4800
 
-# protobufjs: CVE-2026-41242 is arbitrary code execution via injected protobuf type fields; not applicable in MegaLinter context as linters do not process untrusted protobuf definitions
+# --- protobufjs ---
+# CVE-2026-41242: arbitrary code execution via injected protobuf type fields;
+# linters do not process untrusted protobuf definitions.
 CVE-2026-41242
-# protobufjs: DoS/code-injection CVEs (44289/44290/44291/44293) require attacker-controlled protobuf data or prototype pollution; not applicable as MegaLinter linters analyze static source files and never parse untrusted protobuf definitions. Remove when parent npm linter upgrades to protobufjs >=7.5.6.
+# DoS/code-injection CVEs (44289/44290/44291/44293) require attacker-controlled
+# protobuf data or prototype pollution; MegaLinter linters analyze static
+# source files and never parse untrusted protobuf definitions. Remove when
+# parent npm linter upgrades to protobufjs >=7.5.6.
 CVE-2026-44289
 CVE-2026-44290
 CVE-2026-44291
 CVE-2026-44293
 
-# kubescape: cilium CVE is about cilium-bugtool debug archive info leak, not applicable as kubescape is used as a static scanner only
+# --- kubescape / grype / syft / trivy / terragrunt (Go scanners) ---
+# cilium CVE: cilium-bugtool debug archive info leak; not applicable as
+# kubescape is used as a static scanner only.
 CVE-2026-41520
-# kubescape: docker CVE is a Moby authorization plugin bypass, not applicable as kubescape is a static scanner that does not interact with Docker auth plugins
+# docker (Moby) authorization plugin bypass; kubescape never interacts with
+# Docker auth plugins.
 CVE-2026-34040
-# kubescape + grype + syft + trivy: go-git CVE-2026-45022 is improper parsing of malformed git commit/tag objects affecting commit signature verification. Affected tools at their latest releases (kubescape v4.0.8, grype v0.112.0, syft v1.44.0, trivy v0.70.0) still pin go-git v5.17.x/v5.18.0. Not applicable as all four are used as static scanners on local files and do not parse attacker-controlled git objects or perform commit signature verification. Remove when upstream tools upgrade to go-git >=5.19.0.
+# go-git CVE-2026-45022: improper parsing of malformed git commit/tag objects
+# affecting commit signature verification. Affected tools at their latest
+# releases (kubescape v4.0.8, grype v0.112.0, syft v1.44.0, trivy v0.70.0)
+# still pin go-git v5.17.x/v5.18.0. Not applicable as all four are used as
+# static scanners on local files and do not parse attacker-controlled git
+# objects or perform commit signature verification. Remove when upstream
+# tools upgrade to go-git >=5.19.0.
 CVE-2026-45022
-
-# grype + syft + trivy + terragrunt: go-billy CVE-2026-44973 is a path traversal vulnerability (fixed in go-billy/v5 >=5.9.0 and go-billy/v6 >=6.0.0-alpha.1). Affected tools at their latest releases (grype v0.112.0, syft v1.44.0, trivy v0.70.0, terragrunt via alpine/terragrunt:1.15.2) still embed vulnerable versions. Not applicable as all four run as static CLI scanners on local workspace files only; they do not accept attacker-controlled filesystem paths through go-billy. Remove when upstream tools release with go-billy >=5.9.0 / >=6.0.0-alpha.1.
+# go-billy CVE-2026-44973: path traversal in osfs.ChrootOS when attacker-
+# controlled paths are passed. In MegaLinter these tools run as local
+# static scanners and do not expose go-billy filesystem APIs to untrusted
+# external input. Affected: kubescape v4.0.8, grype v0.112.0, syft v1.44.0,
+# trivy v0.70.0, terragrunt alpine 1.15.2. Remove when upstream tools
+# upgrade to go-billy >=5.9.0 / >=6.0.0-alpha.1.
 CVE-2026-44973
 
-# protolint + terrascan: both embed grpc-go; CVE-2026-33186 requires a running gRPC server with grpc/authz interceptors - both tools run as CLI static linters and never start an authorized gRPC server; remove when upgraded to grpc-go >=1.79.3
+# --- protolint / terrascan (gRPC embedded) ---
+# CVE-2026-33186 requires a running gRPC server with grpc/authz interceptors;
+# both tools run as CLI static linters and never start an authorized gRPC
+# server. Remove when upgraded to grpc-go >=1.79.3.
 CVE-2026-33186
 
-# shfmt: Go stdlib CVEs in v3.13.1 (latest release, compiled with Go 1.26.1). shfmt is a pure shell script formatter that reads files and writes formatted output - it makes no DNS lookups, HTTP/2 connections, network dials, or email address parsing. Remove when shfmt releases a build with Go >=1.26.3.
-# CVE-2026-33811: LookupCNAME (cgo DNS resolver) - not used by shfmt
+# --- shfmt ---
+# Go stdlib CVEs in v3.13.1 (latest release, compiled with Go 1.26.1).
+# shfmt is a pure shell script formatter that reads files and writes
+# formatted output — no DNS lookups, HTTP/2 connections, network dials,
+# or email parsing. Remove when shfmt releases a build with Go >=1.26.3.
+# CVE-2026-33811: LookupCNAME (cgo DNS resolver) — not used by shfmt
 CVE-2026-33811
-# CVE-2026-33814: HTTP/2 SETTINGS frames infinite loop in net/http transport - not used by shfmt
+# CVE-2026-33814: HTTP/2 SETTINGS frames infinite loop in net/http transport — not used by shfmt
 CVE-2026-33814
-# CVE-2026-39820: net/mail ParseAddress/ParseAddressList DoS - not used by shfmt
+# CVE-2026-39820: net/mail ParseAddress/ParseAddressList DoS — not used by shfmt
 CVE-2026-39820
-# CVE-2026-39836: net.Dial/LookupPort NUL byte panic on Windows - not used by shfmt (Linux Alpine container, no network dialing)
+# CVE-2026-39836: net.Dial/LookupPort NUL byte panic on Windows — Linux Alpine container, no network dialing
 CVE-2026-39836
-# CVE-2026-42499: net/mail consumePhrase DoS - not used by shfmt
+# CVE-2026-42499: net/mail consumePhrase DoS — not used by shfmt
 CVE-2026-42499
 
-# Dockerfile
+# --- Dockerfile checks (trivy misconfig rules, not CVEs) ---
+# Style/best-practice rules trivy reports as misconfig. MegaLinter has
+# already evaluated each and accepted the rule as not relevant (e.g. it
+# is normal for a linter image to install many tools as root).
 DS001
 DS-0001
 DS002
@@ -332,5 +470,3 @@ DS014
 DS-0014
 DS026
 DS-0026
-
-

@@ -65,7 +65,7 @@ In the case of Azure Pipelines when running in a Docker container, we have to ex
       -e SYSTEM_PULLREQUEST_SOURCECOMMITID=$(System.PullRequest.SourceCommitId) \
       -e SYSTEM_PULLREQUEST_TARGETBRANCH=$(System.PullRequest.TargetBranch) \
       -e BUILD_REASON=$(Build.Reason) \
-      oxsecurity/megalinter:v9
+      ghcr.io/oxsecurity/megalinter:v9
 ```
 
 ### Repository checkout on Pull Requests

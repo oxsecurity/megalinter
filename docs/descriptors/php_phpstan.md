@@ -22,7 +22,7 @@ description: How to use phpstan (configure, ignore files, ignore errors, help & 
 
 ## phpstan documentation
 
-- Version in MegaLinter: **2.1.54**
+- Version in MegaLinter: **2.1.55**
 - Visit [Official Web Site](https://phpstan.org/){target=_blank}
 - See [How to configure phpstan rules](https://phpstan.org/config-reference#neon-format){target=_blank}
   - If custom `phpstan.neon.dist` config file isn't found, [phpstan.neon.dist](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/phpstan.neon.dist){target=_blank} will be used
@@ -138,11 +138,11 @@ Options:
 ```dockerfile
 # Parent descriptor install
 RUN update-alternatives --install /usr/bin/php php /usr/bin/php84 110
-COPY --from=composer/composer:2-bin /composer /usr/bin/composer
+COPY --link --from=composer/composer:2-bin /composer /usr/bin/composer
 ENV PATH="/root/.composer/vendor/bin:${PATH}"
 # Linter install
 # renovate: datasource=packagist depName=phpstan/phpstan
-ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.1.54
+ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.1.55
 # renovate: datasource=packagist depName=phpstan/extension-installer
 ARG PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION=1.4.3
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters

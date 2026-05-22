@@ -203,7 +203,7 @@ class mega_linter_1_test(unittest.TestCase):
         self.assertIn("Using [eslint", output)
         self.assertIn(
             f"- Rules config: [https://raw.githubusercontent.com/{ML_REPO}/main/"
-            ".automation/test/sample_project/.eslintrc.json]",
+            ".automation/test/sample_project/eslint.config.js]",
             output,
         )
 

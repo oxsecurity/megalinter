@@ -17,7 +17,7 @@ You may activate the [File.io reporter](https://megalinter.io/reporters/FileIoRe
 stage('MegaLinter') {
     agent {
         docker {
-            image 'oxsecurity/megalinter:v9'
+            image 'ghcr.io/oxsecurity/megalinter:v9'
             args "-u root -e VALIDATE_ALL_CODEBASE=true -v ${WORKSPACE}:/tmp/lint --entrypoint=''"
             reuseNode true
         }
@@ -51,12 +51,12 @@ MegaLinter auto-detects the git hosting platform by inspecting the `GIT_URL` env
 
 ## Platform Configuration
 
-| Platform     | Required Token Variable          | Notes                                                                                        |
-|--------------|----------------------------------|----------------------------------------------------------------------------------------------|
-| GitHub       | `GITHUB_TOKEN` (or `PAT`)        | Token needs `repo` scope (or `issues:write` + `pull-requests:write` for fine-grained tokens) |
-| GitLab       | `GITLAB_ACCESS_TOKEN_MEGALINTER` | Personal access token with `api` scope                                                       |
-| Azure DevOps | `SYSTEM_ACCESSTOKEN`             | Personal access token with **Code (Read & Write)** permission                                |
-| Bitbucket    | `BITBUCKET_REPO_ACCESS_TOKEN`    | Repository access token with **Pull-requests: Write** scope                                  |
+| Platform     | Required Token Variable                                        | Notes                                                                                                                                                                                                                                                                                                        |
+|--------------|----------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| GitHub       | `GITHUB_TOKEN` (recommended) — `PAT` only if strictly required | Prefer `GITHUB_TOKEN`. Personal Access Tokens (PAT) are **not recommended** due to recent supply-chain attacks on open-source projects; a leaked PAT can give attackers broad write access to your repository. Token needs `repo` scope (or `issues:write` + `pull-requests:write` for fine-grained tokens). |
+| GitLab       | `GITLAB_ACCESS_TOKEN_MEGALINTER`                               | Personal access token with `api` scope                                                                                                                                                                                                                                                                       |
+| Azure DevOps | `SYSTEM_ACCESSTOKEN`                                           | Personal access token with **Code (Read & Write)** permission                                                                                                                                                                                                                                                |
+| Bitbucket    | `BITBUCKET_REPO_ACCESS_TOKEN`                                  | Repository access token with **Pull-requests: Write** scope                                                                                                                                                                                                                                                  |
 
 ## Jenkinsfile Example with GitHub PR Comments
 
@@ -65,7 +65,7 @@ MegaLinter auto-detects the git hosting platform by inspecting the `GIT_URL` env
 stage('MegaLinter') {
     agent {
         docker {
-            image 'oxsecurity/megalinter:v9'
+            image 'ghcr.io/oxsecurity/megalinter:v9'
             args "-u root -e VALIDATE_ALL_CODEBASE=true -v ${WORKSPACE}:/tmp/lint --entrypoint=''"
             reuseNode true
         }

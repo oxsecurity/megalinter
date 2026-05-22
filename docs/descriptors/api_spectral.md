@@ -137,7 +137,7 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=@stoplight/spectral-cli
-ARG NPM_SPECTRAL_CLI_VERSION=6.15.1
+ARG NPM_SPECTRAL_CLI_VERSION=6.16.0
 ```
 
 - NPM packages (node.js):

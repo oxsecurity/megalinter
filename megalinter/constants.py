@@ -15,7 +15,6 @@ ML_DOCKER_OWNER = "oxsecurity"
 ML_DOCKER_NAME = "megalinter"
 ML_DOCKER_IMAGE_HOST = "ghcr.io"
 DOCKER_PACKAGES_ROOT_URL = "https://hub.docker.com/v2/repositories"
-GHCR_PACKAGES_ROOT_URL = "https://github.com/oxsecurity/megalinter/pkgs/container"
 ML_DOCKER_IMAGE_WITH_HOST = f"{ML_DOCKER_IMAGE_HOST}/{ML_DOCKER_OWNER}/{ML_DOCKER_NAME}"
 ML_DOCKER_IMAGE = f"{ML_DOCKER_OWNER}/{ML_DOCKER_NAME}"
 ML_DOCKER_IMAGE_LEGACY = "nvuillam/mega-linter"
@@ -81,7 +80,7 @@ DEFAULT_DOCKERFILE_PIP_ARGS = [
 ]
 
 DEFAULT_DOCKERFILE_PIPENV_ARGS = [
-    "# renovate: datasource=pypi depName=virtualenv\nARG PIP_VIRTUALENV_VERSION=21.3.1",
+    "# renovate: datasource=pypi depName=virtualenv\nARG PIP_VIRTUALENV_VERSION=21.3.3",
 ]
 
 DEFAULT_DOCKERFILE_RUST_ARGS = [
