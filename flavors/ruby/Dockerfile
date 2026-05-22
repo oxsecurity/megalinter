@@ -123,7 +123,7 @@ ARG TARGETPLATFORM
 # renovate: datasource=pypi depName=ansible-lint
 ARG PIP_ANSIBLE_LINT_VERSION=26.4.0
 # renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=4.2.1
+ARG NPM_JSCPD_VERSION=4.2.2
 # renovate: datasource=npm depName=stylelint
 ARG NPM_STYLELINT_VERSION=17.11.1
 # renovate: datasource=npm depName=stylelint-config-standard
@@ -195,7 +195,7 @@ ARG GEM_RUBOCOP_GITHUB_VERSION=0.27.0
 # renovate: datasource=rubygems depName=rubocop-performance
 ARG GEM_RUBOCOP_PERFORMANCE_VERSION=1.26.1
 # renovate: datasource=rubygems depName=rubocop-rails
-ARG GEM_RUBOCOP_RAILS_VERSION=2.35.1
+ARG GEM_RUBOCOP_RAILS_VERSION=2.35.2
 # renovate: datasource=rubygems depName=rubocop-rake
 ARG GEM_RUBOCOP_RAKE_VERSION=0.7.1
 # renovate: datasource=rubygems depName=rubocop-rspec
