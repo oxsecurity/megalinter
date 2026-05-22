@@ -235,7 +235,7 @@ ARG NPM_ESLINT_VERSION=10.3.0
 # renovate: datasource=npm depName=@eslint/eslintrc
 ARG NPM_ESLINT_ESLINTRC_VERSION=3.3.5
 # renovate: datasource=npm depName=@eslint-react/eslint-plugin
-ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.7.9
+ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.8.2
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 ```
@@ -243,5 +243,5 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 - NPM packages (node.js):
   - [eslint@10.3.0](https://www.npmjs.com/package/eslint/v/10.3.0)
   - [@eslint/eslintrc@3.3.5](https://www.npmjs.com/package/@eslint/eslintrc/v/3.3.5)
-  - [@eslint-react/eslint-plugin@5.7.9](https://www.npmjs.com/package/@eslint-react/eslint-plugin/v/5.7.9)
+  - [@eslint-react/eslint-plugin@5.8.2](https://www.npmjs.com/package/@eslint-react/eslint-plugin/v/5.8.2)
   - [@microsoft/eslint-formatter-sarif@3.1.0](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/3.1.0)
