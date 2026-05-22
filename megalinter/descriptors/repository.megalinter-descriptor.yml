@@ -8,7 +8,8 @@ descriptor_flavors:
 lint_all_files: true
 linters:
   # CHECKOV
-  - linter_name: checkov
+  - class: CheckovLinter
+    linter_name: checkov
     linter_text: |
       **Checkov** is a comprehensive static code analysis tool for Infrastructure as Code (IaC) that prevents cloud security misconfigurations before they reach production.
 
@@ -48,9 +49,6 @@ linters:
       - --output-file-path
       - "{{REPORT_FOLDER}}"
     sarif_default_output_file: results_sarif.sarif
-    cli_lint_extra_args:
-      - "--directory"
-      - "."
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: ", Failed checks: ([0-9]+), Skipped checks"
     examples:
