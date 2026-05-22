@@ -151,7 +151,7 @@ ARG PIP_DJLINT_VERSION=1.36.4
 # renovate: datasource=npm depName=htmlhint
 ARG NPM_HTMLHINT_VERSION=1.9.2
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=10.3.0
+ARG NPM_ESLINT_VERSION=10.4.0
 # renovate: datasource=npm depName=@eslint/eslintrc
 ARG NPM_ESLINT_ESLINTRC_VERSION=3.3.5
 # renovate: datasource=npm depName=@eslint/js

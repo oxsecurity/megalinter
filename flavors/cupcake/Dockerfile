@@ -180,7 +180,7 @@ ARG JAVA_CHECKSTYLE_VERSION=12.1.0
 ARG PMD_VERSION=7.24.0
 
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=10.3.0
+ARG NPM_ESLINT_VERSION=10.4.0
 # renovate: datasource=npm depName=@eslint/eslintrc
 ARG NPM_ESLINT_ESLINTRC_VERSION=3.3.5
 # renovate: datasource=npm depName=@eslint/js
