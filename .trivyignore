@@ -38,6 +38,12 @@ CVE-2025-26646
 CVE-2024-25621
 # https://avd.aquasec.com/nvd/cve-2025-52881
 CVE-2025-52881
+# https://avd.aquasec.com/nvd/cve-2026-46680 — containerd user ID handling
+# bypass allows runAsNonRoot evasion. Embedded in the grype, syft and trivy
+# binaries which are used as static scanners only; they never run containers
+# or evaluate runAsNonRoot policy. Remove when upstream tools rebuild against
+# containerd >=2.2.4 / >=2.3.1 (or >=1.7.32 for the v1 line).
+CVE-2026-46680
 
 # --- Docker (moby) ---
 # CVE-2024-41110: AuthZ plugin bypass in moby. MegaLinter never runs a
