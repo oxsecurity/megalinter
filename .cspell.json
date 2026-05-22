@@ -996,6 +996,7 @@
         "htmlhintrc",
         "htmlout",
         "huggingface",
+        "idna",
         "ignorepattern",
         "imagepath",
         "importlib",
