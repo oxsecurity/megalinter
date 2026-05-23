@@ -62,7 +62,7 @@ Replace `yarn install --frozen-lockfile --ignore-scripts` with `npm ci` (or `npm
 
 ## eslint documentation
 
-- Version in MegaLinter: **10.3.0**
+- Version in MegaLinter: **10.4.0**
 - Visit [Official Web Site](https://github.com/Rel1cx/eslint-react#readme){target=_blank}
 - See [How to configure eslint rules](https://eslint-react.xyz/docs/getting-started/installation){target=_blank}
 - See [How to disable eslint rules in files](https://eslint.org/docs/latest/use/configure/rules#disabling-rules){target=_blank}
@@ -231,17 +231,17 @@ Miscellaneous:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=10.3.0
+ARG NPM_ESLINT_VERSION=10.4.0
 # renovate: datasource=npm depName=@eslint/eslintrc
 ARG NPM_ESLINT_ESLINTRC_VERSION=3.3.5
 # renovate: datasource=npm depName=@eslint-react/eslint-plugin
-ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.8.2
+ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.8.3
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 ```
 
 - NPM packages (node.js):
-  - [eslint@10.3.0](https://www.npmjs.com/package/eslint/v/10.3.0)
+  - [eslint@10.4.0](https://www.npmjs.com/package/eslint/v/10.4.0)
   - [@eslint/eslintrc@3.3.5](https://www.npmjs.com/package/@eslint/eslintrc/v/3.3.5)
-  - [@eslint-react/eslint-plugin@5.8.2](https://www.npmjs.com/package/@eslint-react/eslint-plugin/v/5.8.2)
+  - [@eslint-react/eslint-plugin@5.8.3](https://www.npmjs.com/package/@eslint-react/eslint-plugin/v/5.8.3)
   - [@microsoft/eslint-formatter-sarif@3.1.0](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/3.1.0)

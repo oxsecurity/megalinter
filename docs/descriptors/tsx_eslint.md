@@ -63,7 +63,7 @@ Replace `yarn install --frozen-lockfile --ignore-scripts` with `npm ci` (or `npm
 
 ## eslint documentation
 
-- Version in MegaLinter: **10.3.0**
+- Version in MegaLinter: **10.4.0**
 - Visit [Official Web Site](https://github.com/Rel1cx/eslint-react#readme){target=_blank}
 - See [How to configure eslint rules](https://eslint-react.xyz/docs/getting-started/installation){target=_blank}
 - See [How to disable eslint rules in files](https://eslint.org/docs/latest/use/configure/rules#disabling-rules){target=_blank}
@@ -234,7 +234,7 @@ Miscellaneous:
 # renovate: datasource=npm depName=typescript
 ARG NPM_TYPESCRIPT_VERSION=6.0.3
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=10.3.0
+ARG NPM_ESLINT_VERSION=10.4.0
 # renovate: datasource=npm depName=@eslint/eslintrc
 ARG NPM_ESLINT_ESLINTRC_VERSION=3.3.5
 # renovate: datasource=npm depName=eslint-config-prettier
@@ -244,7 +244,7 @@ ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.15.2
 # renovate: datasource=npm depName=eslint-plugin-prettier
 ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.5
 # renovate: datasource=npm depName=@eslint-react/eslint-plugin
-ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.8.2
+ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.8.3
 # renovate: datasource=npm depName=prettier
 ARG NPM_PRETTIER_VERSION=3.8.3
 # renovate: datasource=npm depName=prettyjson
@@ -259,12 +259,12 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 
 - NPM packages (node.js):
   - [typescript@6.0.3](https://www.npmjs.com/package/typescript/v/6.0.3)
-  - [eslint@10.3.0](https://www.npmjs.com/package/eslint/v/10.3.0)
+  - [eslint@10.4.0](https://www.npmjs.com/package/eslint/v/10.4.0)
   - [@eslint/eslintrc@3.3.5](https://www.npmjs.com/package/@eslint/eslintrc/v/3.3.5)
   - [eslint-config-prettier@10.1.8](https://www.npmjs.com/package/eslint-config-prettier/v/10.1.8)
   - [eslint-plugin-jest@29.15.2](https://www.npmjs.com/package/eslint-plugin-jest/v/29.15.2)
   - [eslint-plugin-prettier@5.5.5](https://www.npmjs.com/package/eslint-plugin-prettier/v/5.5.5)
-  - [@eslint-react/eslint-plugin@5.8.2](https://www.npmjs.com/package/@eslint-react/eslint-plugin/v/5.8.2)
+  - [@eslint-react/eslint-plugin@5.8.3](https://www.npmjs.com/package/@eslint-react/eslint-plugin/v/5.8.3)
   - [prettier@3.8.3](https://www.npmjs.com/package/prettier/v/3.8.3)
   - [prettyjson@1.2.5](https://www.npmjs.com/package/prettyjson/v/1.2.5)
   - [@typescript-eslint/eslint-plugin@8.59.4](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin/v/8.59.4)

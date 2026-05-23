@@ -67,6 +67,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/astral-sh/ruff) from 0.15.13 to **0.15.14** on 2026-05-22
   - [kingfisher](https://github.com/mongodb/kingfisher) from 1.99.0 to **1.100.0** on 2026-05-22
   - [snakefmt](https://github.com/snakemake/snakefmt) from 1.1.0 to **2.0.0** on 2026-05-22
+  - [eslint](https://eslint.org) from 10.3.0 to **10.4.0** on 2026-05-23
 <!-- linter-versions-end -->
 
 ## [v9.5.0] - 2026-05-16
