@@ -610,6 +610,17 @@ linters:
     cli_version_arg_name: --version
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: "(osv\\.dev/GHSA-)"
+    common_linter_errors:
+      - identifier: REPOSITORY_OSV_SCANNER_ERROR_SERVICE_UNAVAILABLE
+        regex: "rpc error: code = Unavailable"
+        message: |-
+          osv-scanner could not reach the deps.dev / OSV transitive-dependency resolution service (gRPC "service unavailable").
+          This is a transient remote service issue, not a vulnerability finding.
+          Workarounds:
+            - Retry the run later.
+            - Temporarily mark the linter as non-blocking by adding to your .mega-linter.yml:
+                DISABLE_ERRORS_LINTERS:
+                  - REPOSITORY_OSV_SCANNER
     test_folder: repository_osv_scanner
     examples:
       - "osv-scanner scan source --recursive ."

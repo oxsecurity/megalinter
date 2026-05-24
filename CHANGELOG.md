@@ -11,6 +11,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Breaking changes
 
 - Core
+  - New linter descriptor property `common_linter_errors`: declare known non-lint failure patterns (config issue, remote service down, missing credentials…) and the guidance message shown to users, directly in YAML — no custom Python class needed.
 
 - New linters
 
