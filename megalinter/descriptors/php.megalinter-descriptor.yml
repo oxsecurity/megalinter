@@ -148,7 +148,7 @@ linters:
     cli_lint_errors_regex: "Found ([0-9]+) error"
     common_linter_errors:
       - identifier: PHP_PHPSTAN_ERROR_MEMORY_EXHAUSTED
-        regex: 'Allowed memory size of [0-9]+ bytes exhausted'
+        regex: "Allowed memory size of [0-9]+ bytes exhausted"
         message: |-
           phpstan ran out of memory while analysing the codebase. The default `--memory-limit` MegaLinter passes is `1G`.
           Resolutions:
@@ -156,7 +156,7 @@ linters:
             - Reduce analysis scope by tightening `paths`/`excludePaths` in `phpstan.neon`.
             - Lower the strictness `level` in `phpstan.neon` if you are analysing a very large codebase.
       - identifier: PHP_PHPSTAN_ERROR_CONFIG_INVALID
-        regex: '(Invalid configuration|Unexpected option .* in your configuration|Missing configuration file)'
+        regex: "(Invalid configuration|Unexpected option .* in your configuration|Missing configuration file)"
         message: |-
           phpstan could not parse `phpstan.neon` / `phpstan.neon.dist`.
           Resolutions:
@@ -227,7 +227,7 @@ linters:
     cli_lint_errors_regex: "([0-9]+) error"
     common_linter_errors:
       - identifier: PHP_PSALM_ERROR_MEMORY_EXHAUSTED
-        regex: 'Allowed memory size of [0-9]+ bytes exhausted'
+        regex: "Allowed memory size of [0-9]+ bytes exhausted"
         message: |-
           psalm ran out of PHP memory while analysing the codebase.
           Resolutions:
@@ -235,7 +235,7 @@ linters:
             - Reduce scope via the `<projectFiles>` / `<ignoreFiles>` directives in `psalm.xml`.
             - Run with `--no-cache` once to rebuild a corrupt cache, then re-enable caching.
       - identifier: PHP_PSALM_ERROR_CONFIG_INVALID
-        regex: '(Could not locate config XML|Invalid Psalm configuration|ConfigException)'
+        regex: "(Could not locate config XML|Invalid Psalm configuration|ConfigException)"
         message: |-
           psalm could not load `psalm.xml` (missing, unreadable, or invalid).
           Resolutions:
@@ -349,7 +349,7 @@ linters:
     version_extract_regex: "(?<=PHP CS Fixer )\\d+(\\.\\d+)+"
     common_linter_errors:
       - identifier: PHP_PHPCSFIXER_ERROR_MEMORY_EXHAUSTED
-        regex: 'Allowed memory size of [0-9]+ bytes exhausted'
+        regex: "Allowed memory size of [0-9]+ bytes exhausted"
         message: |-
           php-cs-fixer ran out of PHP memory while fixing the codebase.
           Resolutions:

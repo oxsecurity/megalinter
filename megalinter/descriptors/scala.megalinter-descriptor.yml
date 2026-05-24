@@ -60,7 +60,7 @@ linters:
             - MegaLinter runs scalafix without the project's classpath, so **semantic** rules (those needing a SemanticDB) cannot be loaded — use only syntactic rules in `.scalafix.conf`.
             - Third-party rule artifacts are not available in MegaLinter; vendor the rule source into the repo or remove it.
       - identifier: SCALA_SCALAFIX_ERROR_NO_SEMANTICDB
-        regex: '(SemanticDB not found|Missing SemanticDB|semanticdb-scalac)'
+        regex: "(SemanticDB not found|Missing SemanticDB|semanticdb-scalac)"
         message: |-
           scalafix tried to run a semantic rule but no SemanticDB was produced.
           MegaLinter does not compile your project, so semantic rules cannot run here.

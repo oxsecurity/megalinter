@@ -116,7 +116,7 @@ linters:
     cli_lint_fix_arg_name: "-o"
     common_linter_errors:
       - identifier: MARKDOWN_REMARK_LINT_ERROR_PRESET_NOT_FOUND
-        regex: "Could not find (module|preset|plugin) [`'\"]"
+        regex: 'Could not find (module|preset|plugin) [`''"]'
         message: |-
           remark could not resolve a preset or plugin referenced in your `.remarkrc` (or equivalent config). Every plugin/preset listed in remark configuration must also be installed in `node_modules` next to remark.
           Resolutions:

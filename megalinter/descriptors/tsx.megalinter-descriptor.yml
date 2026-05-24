@@ -94,7 +94,7 @@ linters:
     cli_lint_errors_regex: "✖ ([0-9]+) problem"
     common_linter_errors:
       - identifier: TSX_ESLINT_ERROR_PLUGIN_NOT_FOUND
-        regex: "(Failed to load plugin '|ESLint couldn't find the plugin \"|Cannot find module 'eslint-plugin-)"
+        regex: '(Failed to load plugin ''|ESLint couldn''t find the plugin "|Cannot find module ''eslint-plugin-)'
         message: |-
           ESLint could not load a plugin referenced in your config (e.g. `eslint-plugin-react`, `eslint-plugin-react-hooks`, `@eslint-react/eslint-plugin`, `@typescript-eslint/eslint-plugin`). The plugin is not installed in MegaLinter's bundled `node_modules`.
           Resolutions:

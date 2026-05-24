@@ -103,7 +103,7 @@ linters:
     cli_lint_errors_regex: "✖ ([0-9]+) problem"
     common_linter_errors:
       - identifier: TYPESCRIPT_ES_ERROR_PLUGIN_NOT_FOUND
-        regex: "(Failed to load plugin '|ESLint couldn't find the plugin \"|Cannot find module 'eslint-plugin-)"
+        regex: '(Failed to load plugin ''|ESLint couldn''t find the plugin "|Cannot find module ''eslint-plugin-)'
         message: |-
           ESLint could not load a plugin referenced in your config. The plugin is not installed in MegaLinter's bundled `node_modules` (`/node-deps/node_modules`).
           Resolutions:
@@ -119,7 +119,7 @@ linters:
                     continue_if_failed: false
                 TYPESCRIPT_ES_CLI_EXECUTABLE: node_modules/.bin/eslint
       - identifier: TYPESCRIPT_ES_ERROR_CONFIG_NOT_FOUND
-        regex: "(ESLint couldn't find the config \"|Failed to load config \"|Cannot find module 'eslint-config-)"
+        regex: '(ESLint couldn''t find the config "|Failed to load config "|Cannot find module ''eslint-config-)'
         message: |-
           ESLint could not resolve a shareable config referenced via `extends` (e.g. `airbnb-typescript`, `standard-with-typescript`).
           Resolutions:

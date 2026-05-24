@@ -154,7 +154,7 @@ linters:
                     continue_if_failed: false
                 JSON_ESLINT_PLUGIN_JSONC_CLI_EXECUTABLE: node_modules/.bin/eslint
       - identifier: JSON_ESLINT_PLUGIN_JSONC_ERROR_CONFIG_OVERRIDES_MISSING
-        regex: "(ESLint couldn't find the config|Failed to load config \"plugin:jsonc/)"
+        regex: '(ESLint couldn''t find the config|Failed to load config "plugin:jsonc/)'
         message: |-
           ESLint could not resolve a `plugin:jsonc/recommended-*` config referenced from your project's `.eslintrc`. This usually means you have a workspace ESLint config that overrides MegaLinter's bundled one but does not list `jsonc` in `plugins`.
           Resolutions:

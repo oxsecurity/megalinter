@@ -33,7 +33,7 @@ linters:
     cli_lint_fix_arg_name: "--safe-auto-correct"
     common_linter_errors:
       - identifier: RUBY_RUBOCOP_ERROR_UNABLE_TO_LOAD_PLUGIN
-        regex: 'unable to load plugin|cannot load such file -- rubocop-[a-z]+'
+        regex: "unable to load plugin|cannot load such file -- rubocop-[a-z]+"
         message: |-
           RuboCop could not load a plugin listed in `require:` or `plugins:` of your `.rubocop.yml`.
           MegaLinter preinstalls these plugins: `rubocop-github`, `rubocop-performance`, `rubocop-rails`, `rubocop-rake`, `rubocop-rspec`.
@@ -54,7 +54,7 @@ linters:
             - Run `rubocop --show-cops` locally to confirm a cop exists in the installed version.
             - Check YAML indentation and that the file is valid YAML.
       - identifier: RUBY_RUBOCOP_ERROR_OBSOLETE_CONFIG
-        regex: 'obsolete (configuration|parameter|cop)'
+        regex: "obsolete (configuration|parameter|cop)"
         message: |-
           Your `.rubocop.yml` uses configuration that has been removed in a newer RuboCop release.
           Resolutions:

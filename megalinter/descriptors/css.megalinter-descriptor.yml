@@ -44,7 +44,7 @@ linters:
     cli_lint_warnings_regex: "([0-9]+) warnings"
     common_linter_errors:
       - identifier: CSS_STYLELINT_ERROR_PLUGIN_NOT_FOUND
-        regex: "(Could not find \"?stylelint-|Cannot find module 'stylelint-|Could not load plugin)"
+        regex: '(Could not find "?stylelint-|Cannot find module ''stylelint-|Could not load plugin)'
         message: |-
           stylelint could not load a plugin referenced in your `.stylelintrc.*` (e.g. `stylelint-order`, `stylelint-scss`, `stylelint-prettier`). The plugin is not installed in MegaLinter's bundled `node_modules` (`/node-deps/node_modules`).
           Resolutions:
@@ -61,7 +61,7 @@ linters:
                     continue_if_failed: false
                 CSS_STYLELINT_CLI_EXECUTABLE: node_modules/.bin/stylelint
       - identifier: CSS_STYLELINT_ERROR_CONFIG_NOT_FOUND
-        regex: "(Could not find \"?stylelint-config-|Cannot find module 'stylelint-config-|Could not (find|load) config|Failed to extend)"
+        regex: '(Could not find "?stylelint-config-|Cannot find module ''stylelint-config-|Could not (find|load) config|Failed to extend)'
         message: |-
           stylelint could not resolve a shareable config referenced via `extends` (e.g. `stylelint-config-recommended`, `stylelint-config-prettier`).
           Resolutions:
@@ -73,7 +73,7 @@ linters:
             - Note: `stylelint-config-standard` and `stylelint-config-sass-guidelines` are already bundled.
             - Verify the config name in `.stylelintrc.*` matches the published npm package name exactly.
       - identifier: CSS_STYLELINT_ERROR_CUSTOM_SYNTAX_NOT_FOUND
-        regex: "(Cannot resolve custom syntax|Could not load \"?customSyntax|Cannot find module 'postcss-)"
+        regex: '(Cannot resolve custom syntax|Could not load "?customSyntax|Cannot find module ''postcss-)'
         message: |-
           stylelint could not load the `customSyntax` plugin referenced in your config (e.g. `postcss-scss`, `postcss-less`, `postcss-html`).
           Resolutions:
@@ -84,7 +84,7 @@ linters:
                     continue_if_failed: false
             - For `.scss` files, stylelint v15+ auto-loads `postcss-scss` if `stylelint-scss` is present (bundled in MegaLinter); explicit `customSyntax` is usually unnecessary.
       - identifier: CSS_STYLELINT_ERROR_NO_CONFIG
-        regex: "(No configuration provided|No \"stylelint\" configuration)"
+        regex: '(No configuration provided|No "stylelint" configuration)'
         message: |-
           stylelint ran but no configuration was found. stylelint requires a config file (no built-in default rules).
           Resolutions:

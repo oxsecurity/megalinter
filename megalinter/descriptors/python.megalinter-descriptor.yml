@@ -245,7 +245,7 @@ linters:
     cli_lint_errors_count: total_lines
     common_linter_errors:
       - identifier: PYTHON_FLAKE8_ERROR_PLUGIN_LOAD
-        regex: "\"[A-Za-z0-9_-]+\" failed during execution due to"
+        regex: '"[A-Za-z0-9_-]+" failed during execution due to'
         message: |-
           A flake8 plugin (e.g. flake8-bugbear, flake8-docstrings) crashed while loading or running.
           This usually means the plugin version is incompatible with the pinned flake8 version, or the plugin is not installed.
