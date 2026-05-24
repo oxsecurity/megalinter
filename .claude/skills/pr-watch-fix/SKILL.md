@@ -102,6 +102,14 @@ Then read the tail of `/tmp/pr-watch-fail.log` and grep for the first concrete e
 
 If multiple jobs fail with **different** errors, handle them in this order: build failures → test failures → lint failures → flaky/intermittent. Group jobs that fail with the **same** error and treat them as one fix.
 
+**For the MegaLinter job specifically: only act on linters MegaLinter marks as ❌ (blocking).** MegaLinter prints a per-linter summary like `✅ Linted [X] files with [linter] successfully`, `⚠️ Linted [X] files with [linter]: Found N non blocking error(s)`, or `❌ Linted [X] files with [linter]: Found N error(s)`. The individual log lines from a warning linter still say `error` next to each finding, but those findings do **not** fail the build — fixing them is wasted churn. Filter the log to lines containing `❌ Linted` first, then collect per-file errors only from those linters. Example:
+
+```bash
+# Identify failing (blocking) linters from MegaLinter's own verdict
+grep '❌ Linted' /tmp/pr-watch-fail.log
+# Then pull per-file errors only from those linters
+```
+
 ### 5. Decide if you can fix it
 
 Apply the **"can I fix this cleanly?"** test before editing:
