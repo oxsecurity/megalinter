@@ -4,9 +4,12 @@ description: Update a linter's pinned version in its descriptor YAML. Use when u
 allowed-tools: Read Grep Glob Edit Bash
 argument-hint: [linter-name] [new-version]
 arguments: [linter, version]
+model: haiku
 ---
 
 Update the version of linter `$linter` to `$version`.
+
+> **Delegation hint** — this is a mechanical edit. If you need a sub-agent for the pin change, use `version-bumper` (haiku). The build step at the end can be delegated to `build-runner` (haiku).
 
 Steps:
 

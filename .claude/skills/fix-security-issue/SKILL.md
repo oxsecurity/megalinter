@@ -3,9 +3,12 @@ name: fix-security-issue
 description: Handle CVE/vulnerability reports from security linters (trivy, osv-scanner, etc.). Tries to upgrade first; ignores only when safe and justified.
 allowed-tools: Read Grep Glob Edit Write Bash WebFetch WebSearch
 argument-hint: "[CVE-ID or vulnerability description]"
+model: opus
 ---
 
 Investigate and fix the security issue `$ARGUMENTS` reported by trivy, osv-scanner, or another security linter.
+
+> **Delegation hint** — for non-trivial CVEs, delegate the applicability/exploitability analysis to the `security-analyst` agent (opus) and the mechanical version bump (once decided) to the `version-bumper` agent (haiku). This keeps deep reasoning on opus and pin edits on haiku, minimising token spend.
 
 ## Step 1 — Research the CVE
 
@@ -68,7 +71,7 @@ Ask:
 
 Append to the appropriate section (or create a new one):
 
-```
+```text
 # <linter/package>: <one-line explanation of why not exploitable in MegaLinter>
 CVE-XXXX-XXXXX
 ```
@@ -91,6 +94,6 @@ Do **not** update `CHANGELOG.md` for:
 - Linter version bumps — the auto-upgrade workflow owns **Linter versions upgrades**
 
 If you made a real behavior change (e.g. a linter disabled due to a security incident, a config workaround added), add one line under **Fixes** in the beta section:
-```
+```text
 - Fix <linter/component>: <what changed and why, one sentence for users>
 ```

@@ -3,6 +3,7 @@ name: add-flavor
 description: Add a new MegaLinter flavor (language-specific Docker image). Use when creating a new specialized Docker image variant.
 allowed-tools: Read Grep Glob Bash Edit Write
 argument-hint: [flavor-name]
+model: sonnet
 ---
 
 Guide through adding a new flavor named `$ARGUMENTS`.
@@ -18,7 +19,7 @@ Steps:
    - `flavors/$ARGUMENTS/flavor.json`
 5. **Verify** the generated Dockerfile includes exactly the intended linters (check `flavor.json` for the linter list)
 6. **Update `CHANGELOG.md`** in the repository root (not docs/) — add one line under **Flavors** in the beta section:
-   ```
+   ```text
    - Add new `<flavor-name>` flavor for <what languages/tools it targets>
    ```
 7. **Branch naming**: use `user/add-<flavor-name>-flavor`

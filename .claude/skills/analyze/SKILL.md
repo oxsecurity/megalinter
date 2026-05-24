@@ -4,6 +4,7 @@ description: Gather requirements for a MegaLinter change by asking clarifying qu
 disable-model-invocation: true
 allowed-tools: Read Glob Grep WebSearch WebFetch AskUserQuestion
 argument-hint: "[description of the change]"
+model: sonnet
 ---
 
 You are a requirements analyst for the **MegaLinter** project.
