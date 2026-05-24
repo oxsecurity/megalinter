@@ -127,12 +127,12 @@ linters:
     cli_lint_warnings_count: sarif
     common_linter_errors:
       - identifier: REPOSITORY_DEVSKIM_ERROR_RULES_NOT_FOUND
-        regex: "Could not find (the )?rule(s)? (file|directory|path)"
+        regex: "Error: (No rules were loaded|Rules failed validation)"
         message: |-
-          DevSkim could not locate its rules. This usually means a custom rules path passed via configuration does not exist inside the container.
+          DevSkim could not load its rules. This usually means a custom rules path passed via `-r` / configuration is invalid, or the rule files at that path failed validation.
           Resolutions:
-            - Remove or correct any custom rule paths in `.devskim.json`.
-            - Ensure custom rule files are committed to the repository and reachable from the workspace root.
+            - Remove or correct any custom rule paths in `.devskim.json` or the `-r` argument.
+            - Ensure custom rule files are committed to the repository, reachable from the workspace root, and conform to the DevSkim rule schema.
     test_folder: devskim
     examples:
       - "devskim analyze --source-code ."
@@ -595,6 +595,14 @@ linters:
       - "ls-lint --workdir src"
     test_folder: repository_file
     cli_lint_errors_count: "total_lines"
+    common_linter_errors:
+      - identifier: REPOSITORY_LS_LINT_ERROR_CONFIG_INVALID
+        regex: "(yaml: (unmarshal errors|line [0-9]+:)|cannot unmarshal|rule [a-zA-Z_-]+ not exists)"
+        message: |-
+          ls-lint could not parse `.ls-lint.yml`. The YAML is malformed or references an unknown naming rule.
+          Resolutions:
+            - Validate the YAML syntax of `.ls-lint.yml`.
+            - Check that each rule (e.g. `camelCase`, `snake_case`, `regex:...`) is supported by the installed ls-lint version.
     install:
       apk:
         - curl
@@ -680,7 +688,7 @@ linters:
             - Verify the repository actually contains a supported lockfile (package-lock.json, go.sum, Gemfile.lock, Pipfile.lock, etc.) at the scanned path.
             - If this is expected for some sub-projects, disable osv-scanner for the affected paths or mark it non-blocking via `DISABLE_ERRORS_LINTERS`.
       - identifier: REPOSITORY_OSV_SCANNER_ERROR_LOCKFILE_PARSE
-        regex: "failed to parse (lockfile|SBOM)"
+        regex: "(?i)failed to parse (lockfile|sbom)"
         message: |-
           osv-scanner failed to parse a lockfile or SBOM. The file is likely malformed or in an unsupported format/version.
           Resolutions:
@@ -1215,7 +1223,7 @@ linters:
                   - KF_GITHUB_TOKEN
             - For org-scoped resources, ensure the token has the required scopes (e.g. `repo`, `read:org`).
       - identifier: REPOSITORY_KINGFISHER_ERROR_RULES_LOAD_FAILED
-        regex: "(failed to (load|parse|compile) rule|invalid rule definition)"
+        regex: "(Failed to load (builtin )?rules|Failed to parse YAML from|Failed to build regex|Unknown rule:)"
         message: |-
           kingfisher failed to load its detection rules. This typically means a custom YAML rules file passed via `--rules-path` is malformed.
           Resolutions:

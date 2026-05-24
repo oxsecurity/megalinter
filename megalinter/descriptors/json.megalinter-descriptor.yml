@@ -136,6 +136,34 @@ linters:
       - "{{SARIF_OUTPUT_FILE}}"
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: "✖ ([0-9]+) problem"
+    common_linter_errors:
+      - identifier: JSON_ESLINT_PLUGIN_JSONC_ERROR_PARSER_NOT_FOUND
+        regex: "(Cannot find module 'jsonc-eslint-parser'|Failed to load parser 'jsonc-eslint-parser')"
+        message: |-
+          ESLint could not load `jsonc-eslint-parser` referenced in your `.eslintrc-json.json` config. This parser is required by `eslint-plugin-jsonc` to parse JSON/JSONC/JSON5 files.
+          Resolutions:
+            - Pre-install the parser into MegaLinter's npm root via a pre-command in your .mega-linter.yml:
+                JSON_ESLINT_PLUGIN_JSONC_PRE_COMMANDS:
+                  - command: "npm install jsonc-eslint-parser"
+                    cwd: "root"
+                    continue_if_failed: false
+            - Or use the project-local ESLint binary after installing your dependencies:
+                JSON_ESLINT_PLUGIN_JSONC_PRE_COMMANDS:
+                  - command: yarn install --frozen-lockfile --ignore-scripts
+                    cwd: workspace
+                    continue_if_failed: false
+                JSON_ESLINT_PLUGIN_JSONC_CLI_EXECUTABLE: node_modules/.bin/eslint
+      - identifier: JSON_ESLINT_PLUGIN_JSONC_ERROR_CONFIG_OVERRIDES_MISSING
+        regex: "(ESLint couldn't find the config|Failed to load config \"plugin:jsonc/)"
+        message: |-
+          ESLint could not resolve a `plugin:jsonc/recommended-*` config referenced from your project's `.eslintrc`. This usually means you have a workspace ESLint config that overrides MegaLinter's bundled one but does not list `jsonc` in `plugins`.
+          Resolutions:
+            - Add `JSON_ESLINT_PLUGIN_JSONC_FILE_NAME: .eslintrc.json` (or your config filename) to `.mega-linter.yml` and add a `jsonc` `overrides` block to your own ESLint config (see the linter documentation above for a full example).
+            - Or pre-install `eslint-plugin-jsonc` into the project's `node_modules`:
+                JSON_ESLINT_PLUGIN_JSONC_PRE_COMMANDS:
+                  - command: yarn install --frozen-lockfile --ignore-scripts
+                    cwd: workspace
+                    continue_if_failed: false
     cli_executable_version: "npm"
     cli_version_arg_name: ""
     cli_version_extra_args: ["list", "eslint-plugin-jsonc", "--prefix", "/node-deps"]

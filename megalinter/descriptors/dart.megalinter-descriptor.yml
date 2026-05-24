@@ -89,7 +89,12 @@ linters:
         regex: "(pub get|pub upgrade).*(failed|not found)|Some packages .* are not available"
         message: |-
           dart analyze could not resolve the package dependencies declared in pubspec.yaml.
-          Run `dart pub get` in the package directory (or pre-cache `.dart_tool/package_config.json`) before running MegaLinter so the analyzer can locate dependencies.
+          Resolution: pre-install dependencies (against the pubspec.yaml in your repo) via a pre-command in your .mega-linter.yml:
+            DART_DARTANALYZER_PRE_COMMANDS:
+              - command: "dart pub get"
+                cwd: "workspace"
+                continue_if_failed: false
+          Or pre-cache `.dart_tool/package_config.json` so the analyzer can locate dependencies.
     install:
       ## stable dart sdk: https://dart.dev/get-dart#release-channels
       ## install alpine-pkg-glibc (glibc compatibility layer package for Alpine Linux)

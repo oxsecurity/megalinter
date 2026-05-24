@@ -53,10 +53,13 @@ linters:
           Increase the heap by setting the KOTLIN_KTLINT_ARGUMENTS variable in your .mega-linter.yml, for example:
           KOTLIN_KTLINT_ARGUMENTS: "--jvm-target=17 -J-Xmx2g"
       - identifier: KOTLIN_KTLINT_ERROR_RULESET_NOT_FOUND
-        regex: "Ruleset '[^']+' not found"
+        regex: "(JAR .* does not contain an implementation of (RuleSetProviderV3|the RuleSetProviderV3)|RuleSetProviderV3 is not found|Number of custom rule sets loaded does not match the expected number)"
         message: |-
-          ktlint could not load a custom ruleset.
-          Verify the ruleset JAR path is correct and accessible inside the MegaLinter container.
+          ktlint could not load a custom ruleset JAR.
+          A custom ruleset JAR must declare a `RuleSetProviderV3` implementation in `META-INF/services/com.pinterest.ktlint.cli.ruleset.core.api.RuleSetProviderV3`.
+          Resolutions:
+            - Verify the ruleset JAR path is correct and accessible inside the MegaLinter container.
+            - Confirm the JAR is built against the same major ktlint version pinned in MegaLinter (older `RuleSetProviderV2` JARs no longer load).
           See https://pinterest.github.io/ktlint/latest/api/custom-rule-set/ for how to package and reference custom rulesets.
     examples:
       - "ktlint myfile.kt"

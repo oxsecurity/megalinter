@@ -66,7 +66,7 @@ linters:
       - sarif
     common_linter_errors:
       - identifier: DOCKERFILE_HADOLINT_ERROR_CONFIG_PARSE
-        regex: "Failed to parse .*hadolint"
+        regex: "Error parsing your config file in"
         message: |-
           Hadolint could not parse its configuration file (.hadolint.yaml / .hadolint.yml).
           Validate the YAML syntax and ensure all keys (`ignored`, `trustedRegistries`, `override`, `failure-threshold`) match the hadolint config schema.

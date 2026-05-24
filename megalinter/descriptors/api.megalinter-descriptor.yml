@@ -54,7 +54,7 @@ linters:
       - "lint"
     common_linter_errors:
       - identifier: API_SPECTRAL_ERROR_RULESET_PARSE_FAILED
-        regex: "(Could not parse .* as ruleset|Provided ruleset .* is not valid)"
+        regex: "(Could not read ruleset at|No ruleset has been found|Provided ruleset is not an object|RulesetValidationError)"
         message: |-
           Spectral could not parse the ruleset file.
           Checks:

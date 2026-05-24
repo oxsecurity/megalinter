@@ -43,6 +43,15 @@ linters:
       - ".robot"
       - ".resource"
     sarif_default_output_file: .sarif.json
+    common_linter_errors:
+      - identifier: ROBOTFRAMEWORK_ROBOCOP_ERROR_CONFIG_INVALID
+        regex: "(InvalidConfigurationError|InvalidConfigurationFormatError|InvalidParameterValueError|Provided rule '[^']+' does not exist|Circular reference found in 'extends')"
+        message: |-
+          Robocop could not load its configuration (CLI args or `robocop.toml`) or referenced an unknown rule.
+          Resolutions:
+            - Validate the TOML syntax of `robocop.toml`.
+            - Check that all rule names under `include`/`exclude`/`configure` exist in the installed Robocop version (rule names were reorganized in Robocop 5+ / 6+).
+            - See <https://robocop.dev/stable/rules_list/>.
     examples:
       - "robocop check myfile.robot"
     install:

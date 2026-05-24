@@ -64,7 +64,7 @@ linters:
             - Skip specific kinds with `-skip Kind1,Kind2`.
             - Make sure `-kubernetes-version` is a full X.Y.Z version (X.Y is not supported).
       - identifier: KUBERNETES_KUBECONFORM_ERROR_SCHEMA_DOWNLOAD_FAILED
-        regex: "(failed downloading schema|could not (?:open|read) schema|no such host)"
+        regex: "(failed downloading schema|error while downloading schema|failed parsing schema|no such host)"
         message: |-
           kubeconform could not download a schema from its remote schema location (network/DNS failure).
           This is a transient remote-service issue, not a manifest problem.
@@ -108,13 +108,14 @@ linters:
       - "lint"
     common_linter_errors:
       - identifier: KUBERNETES_HELM_ERROR_MISSING_DEPENDENCIES
-        regex: "found in Chart\\.yaml, but missing in charts/ directory"
+        regex: "chart (directory|metadata) is missing these dependencies"
         message: |-
           helm lint failed because a chart dependency declared in Chart.yaml is not present under charts/.
           Run `helm dependency update <chart-path>` (or `helm dependency build`) before linting so subcharts are vendored into charts/.
-          In CI, add a pre-command in your .mega-linter.yml:
+          In CI, add a pre-command in your .mega-linter.yml (run in your repo workspace where the chart lives):
             KUBERNETES_HELM_PRE_COMMANDS:
               - command: "helm dependency update ."
+                cwd: "workspace"
                 continue_if_failed: false
       - identifier: KUBERNETES_HELM_ERROR_CHART_YAML_MISSING
         regex: "(Chart\\.yaml file is missing|no Chart\\.yaml exists in directory|unable to check Chart\\.yaml)"

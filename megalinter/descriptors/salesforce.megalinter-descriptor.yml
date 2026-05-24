@@ -104,10 +104,10 @@ linters:
     cli_lint_errors_regex: "Found ([0-9]+) violation\\(s\\)"
     common_linter_errors:
       - identifier: SALESFORCE_CODE_ANALYZER_APEX_ERROR_CONFIG_INVALID
-        regex: "(Failed to parse the config file|code-analyzer.yml.*invalid|config_root.*does not exist|The provided config file)"
+        regex: "(Failed to parse the configuration content|The specified configuration file .* does not exist|The specified configuration file .* has an unsupported file extension|The configuration content is invalid)"
         message: |-
           code-analyzer could not load the configuration file (code-analyzer.yml).
-          Verify the file is valid v5 YAML.
+          Verify the file is valid v5 YAML and that its path is reachable from the workspace.
           Generate a starter config with: sf code-analyzer config -f code-analyzer.yml
     examples:
       - "sf code-analyzer run --rule-selector pmd:Recommended --workspace . --output-file results.csv"
@@ -204,13 +204,13 @@ linters:
     cli_lint_errors_regex: "Found ([0-9]+) violation\\(s\\)"
     common_linter_errors:
       - identifier: SALESFORCE_CODE_ANALYZER_AURA_ERROR_CONFIG_INVALID
-        regex: "(Failed to parse the config file|code-analyzer.yml.*invalid|config_root.*does not exist|The provided config file)"
+        regex: "(Failed to parse the configuration content|The specified configuration file .* does not exist|The specified configuration file .* has an unsupported file extension|The configuration content is invalid)"
         message: |-
           code-analyzer could not load the configuration file (code-analyzer.yml).
-          Verify the file is valid v5 YAML.
+          Verify the file is valid v5 YAML and that its path is reachable from the workspace.
           Generate a starter config with: sf code-analyzer config -f code-analyzer.yml
       - identifier: SALESFORCE_CODE_ANALYZER_AURA_ERROR_NO_TARGET_FILES
-        regex: "(No workspace files were found|0 files were targeted by the selected rules|workspace.*did not match any files)"
+        regex: "(At least one file or folder must be included in the workspace|The specified target .* does not exist underneath any of the specified workspace paths|The file or folder .* does not exist)"
         message: |-
           code-analyzer could not find any Aura JavaScript files matching `**/aura/**/*.js`.
           Verify that your Aura components live under the workspace (default `force-app`) and that `SALESFORCE_CODE_ANALYZER_AURA_DIRECTORY` points to the correct root.
@@ -300,13 +300,13 @@ linters:
     cli_lint_errors_regex: "Found ([0-9]+) violation\\(s\\)"
     common_linter_errors:
       - identifier: SALESFORCE_CODE_ANALYZER_LWC_ERROR_CONFIG_INVALID
-        regex: "(Failed to parse the config file|code-analyzer.yml.*invalid|config_root.*does not exist|The provided config file)"
+        regex: "(Failed to parse the configuration content|The specified configuration file .* does not exist|The specified configuration file .* has an unsupported file extension|The configuration content is invalid)"
         message: |-
           code-analyzer could not load the configuration file (code-analyzer.yml).
-          Verify the file is valid v5 YAML.
+          Verify the file is valid v5 YAML and that its path is reachable from the workspace.
           Generate a starter config with: sf code-analyzer config -f code-analyzer.yml
       - identifier: SALESFORCE_CODE_ANALYZER_LWC_ERROR_NO_TARGET_FILES
-        regex: "(No workspace files were found|0 files were targeted by the selected rules|workspace.*did not match any files)"
+        regex: "(At least one file or folder must be included in the workspace|The specified target .* does not exist underneath any of the specified workspace paths|The file or folder .* does not exist)"
         message: |-
           code-analyzer could not find any LWC JavaScript files matching `**/lwc/**/*.js`.
           Verify that your Lightning Web Components live under the workspace (default `force-app`) and that `SALESFORCE_CODE_ANALYZER_LWC_DIRECTORY` points to the correct root.

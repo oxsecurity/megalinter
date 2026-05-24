@@ -42,6 +42,15 @@ linters:
     config_file_name: .markdownlint.json
     cli_lint_fix_arg_name: "--fix"
     cli_lint_errors_count: total_lines
+    common_linter_errors:
+      - identifier: MARKDOWN_MARKDOWNLINT_ERROR_CONFIG_PARSE
+        regex: "Cannot read or parse config file"
+        message: |-
+          markdownlint could not parse its configuration file. This is typically a syntax error in `.markdownlint.json` / `.markdownlintrc`, most often a `//` or `/* */` comment in a strict-JSON file, a trailing comma, or unbalanced braces.
+          Resolutions:
+            - Validate the configuration file with a JSON linter and remove comments / trailing commas.
+            - If you need comments, rename the file to `.markdownlint.jsonc`, `.markdownlint.yaml`, or `.markdownlint.cjs` (those formats support comments).
+            - Reference docs: https://github.com/igorshubovych/markdownlint-cli#configuration
     test_folder: markdown_markdownlint
     examples:
       - "markdownlint myfile.md"
@@ -105,6 +114,19 @@ linters:
     cli_lint_extra_args:
       - "--frail"
     cli_lint_fix_arg_name: "-o"
+    common_linter_errors:
+      - identifier: MARKDOWN_REMARK_LINT_ERROR_PRESET_NOT_FOUND
+        regex: "Could not find (module|preset|plugin) [`'\"]"
+        message: |-
+          remark could not resolve a preset or plugin referenced in your `.remarkrc` (or equivalent config). Every plugin/preset listed in remark configuration must also be installed in `node_modules` next to remark.
+          Resolutions:
+            - Pre-install the missing preset/plugin into MegaLinter's npm root (`/node-deps`) via a pre-command in your .mega-linter.yml:
+                MARKDOWN_REMARK_LINT_PRE_COMMANDS:
+                  - command: "npm install remark-preset-lint-recommended"
+                    cwd: "root"
+                    continue_if_failed: false
+            - Verify the package name in `.remarkrc` matches the actual published name exactly.
+            - If you only use built-in / bundled presets, remove the custom entry from your config.
     test_folder: markdown_remark
     test_variables:
       MARKDOWN_DEFAULT_STYLE: remark-lint

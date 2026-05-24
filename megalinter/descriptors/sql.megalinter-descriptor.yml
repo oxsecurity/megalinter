@@ -44,6 +44,39 @@ linters:
     cli_config_arg_name: "--config"
     cli_help_arg_name: "--help"
     cli_version_arg_name: "--version"
+    common_linter_errors:
+      - identifier: SQL_SQLFLUFF_ERROR_DIALECT_NOT_SET
+        regex: "(Must specify '--dialect' or specify dialect in config|No dialect was specified)"
+        message: |-
+          sqlfluff requires an explicit SQL dialect to parse files. Without one, it cannot lint anything.
+          Resolutions:
+            - Add a `.sqlfluff` config at the repository root with the appropriate dialect, e.g.:
+                [sqlfluff]
+                dialect = postgres
+            - Or pass `--dialect <name>` via `SQL_SQLFLUFF_ARGUMENTS` (e.g. ansi, postgres, snowflake, bigquery, mysql, tsql).
+      - identifier: SQL_SQLFLUFF_ERROR_TEMPLATING_FAILED
+        regex: "(templating/parsing errors found|Unrecoverable failure in Jinja templating|dbt compilation [Ee]rror|Have you configured your variables\\?)"
+        message: |-
+          sqlfluff could not render a templated SQL file (Jinja, dbt, Python templater).
+          This is a templating/environment issue, not a lint finding.
+          Resolutions:
+            - For dbt projects, pre-install dbt and prepare the dbt project via pre-commands in your .mega-linter.yml:
+                SQL_SQLFLUFF_PRE_COMMANDS:
+                  - command: "pip install dbt-core dbt-postgres"
+                    venv: sqlfluff
+                    continue_if_failed: false
+                  - command: "dbt deps && dbt compile"
+                    cwd: "workspace"
+                    continue_if_failed: false
+            - For Jinja, define missing variables under `[sqlfluff:templater:jinja:context]` in `.sqlfluff`.
+            - For files that should not be templated, set `templater = raw` in `.sqlfluff`.
+      - identifier: SQL_SQLFLUFF_ERROR_CONFIG_INVALID
+        regex: "(Error loading config|Configuration (error|failed)|Unable to parse \\.sqlfluff)"
+        message: |-
+          sqlfluff failed to load its configuration file.
+          Resolutions:
+            - Validate `.sqlfluff` syntax (INI format) and check for typos in section headers like `[sqlfluff]` or `[sqlfluff:rules]`.
+            - Ensure rule references (e.g. `exclude_rules`, `rules`) point to existing rule codes for the installed sqlfluff version.
     examples:
       - "sqlfluff myfile.sql"
       - "sqlfluff --config .sqlfluff myfile.sql myfile2.sql"
@@ -92,6 +125,15 @@ linters:
     cli_config_arg_name: "--config"
     cli_help_arg_name: "--help"
     cli_version_arg_name: "--version"
+    common_linter_errors:
+      - identifier: SQL_TSQLLINT_ERROR_CONFIG_INVALID
+        regex: "(Config file .* is not valid|Invalid Json in config file|Error parsing config(uration)? file)"
+        message: |-
+          tsqllint could not parse its configuration file (`.tsqllintrc`, which is JSON).
+          Resolutions:
+            - Validate the JSON syntax of `.tsqllintrc` (trailing commas and unquoted keys are not allowed).
+            - Regenerate a baseline config by running `tsqllint --init` and merging your custom rules back in.
+            - Make sure all rule names and severities (`error`, `warning`, `off`) are spelled correctly.
     test_folder: sql_tsql
     examples:
       - "tsqllint myfile.sql"
