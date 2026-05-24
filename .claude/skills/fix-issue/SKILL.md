@@ -71,7 +71,7 @@ If `git status --short` shows unrelated uncommitted changes, stop and ask.
 
 Match the repo's commit style (`git log --oneline -10`). Format:
 
-```
+```text
 <type>: <imperative one-line summary> (#<ISSUE_NUMBER>)
 
 <optional body, 1–3 lines>

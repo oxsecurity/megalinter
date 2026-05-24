@@ -71,7 +71,7 @@ Ask:
 
 Append to the appropriate section (or create a new one):
 
-```
+```text
 # <linter/package>: <one-line explanation of why not exploitable in MegaLinter>
 CVE-XXXX-XXXXX
 ```
@@ -94,6 +94,6 @@ Do **not** update `CHANGELOG.md` for:
 - Linter version bumps — the auto-upgrade workflow owns **Linter versions upgrades**
 
 If you made a real behavior change (e.g. a linter disabled due to a security incident, a config workaround added), add one line under **Fixes** in the beta section:
-```
+```text
 - Fix <linter/component>: <what changed and why, one sentence for users>
 ```

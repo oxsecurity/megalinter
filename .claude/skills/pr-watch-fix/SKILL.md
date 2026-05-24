@@ -55,7 +55,7 @@ Poll every **5 minutes**, fixed interval. No backoff — the user explicitly wan
 
 Example:
 
-```
+```yaml
 Monitor:
   description: "PR watch: PR #7790 CI"
   persistent: true
@@ -208,7 +208,7 @@ Go back to step 1. The loop ends when:
 
 Each time you wake from a poll or finish a fix cycle, give the user **one short line**:
 
-```
+```text
 Cycle 2: build-deploy-dev failed (hadolint), pushed e0a44f1. Waiting 5m.
 ```
 

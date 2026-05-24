@@ -126,7 +126,7 @@ docker run --rm --env TEST_CASE_RUN=true --env OUTPUT_DETAIL=detailed \
 ## Step 7 — Finalize
 
 - Add one line under **New linters** in `CHANGELOG.md` (repo root, beta section):
-  ```
+  ```text
   - Add [linter-name](linter_url) linter for <language> — <what it detects, one sentence>
   ```
 - Branch naming: `user/add-<linter-name>`

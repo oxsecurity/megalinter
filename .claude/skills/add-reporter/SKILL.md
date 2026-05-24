@@ -23,7 +23,7 @@ Steps:
    - External service: `ApiReporter.py`, `EmailReporter.py`
 5. **Update documentation** — add a docs page describing configuration
 6. **Update `CHANGELOG.md`** in the repository root (not docs/) — add one line under **Reporters** in the beta section:
-   ```
+   ```text
    - Add <ReporterName>: <what CI system or output format it supports, one sentence>
    ```
 7. **Branch naming**: use `user/add-<reporter-name>-reporter`
