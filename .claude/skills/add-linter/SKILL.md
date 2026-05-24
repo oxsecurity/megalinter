@@ -3,6 +3,7 @@ name: add-linter
 description: Guided workflow for adding a new linter to MegaLinter. Use when a contributor needs to add support for a new linting tool.
 allowed-tools: Read Grep Glob Bash Edit Write WebSearch WebFetch
 argument-hint: [linter-name]
+model: sonnet
 ---
 
 Guide me through adding the linter `$ARGUMENTS` to MegaLinter. If no linter name was provided, ask me for:

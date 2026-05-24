@@ -3,9 +3,12 @@ name: pr-watch-fix
 description: Watch the GitHub PR for the current branch, wait for CI to finish, and autonomously fix failing jobs by reading logs, editing sources, and pushing. Stops cleanly when stuck.
 allowed-tools: Bash Read Grep Glob Edit Write AskUserQuestion
 user-invocable: true
+model: sonnet
 ---
 
 Watch the open PR for the current branch, wait for CI, and fix failures.
+
+> **Delegation hint** — to gather CI status and failure excerpts cheaply, delegate the polling/log-fetch step to the `pr-monitor` agent (haiku). Use it instead of running `gh pr checks` + log-fetch loops directly from this skill. Reserve this skill's main loop (sonnet) for deciding fixes, editing code, and pushing.
 
 ## Loop
 

@@ -4,6 +4,7 @@ description: Design a MegaLinter solution and write a technical specification. S
 disable-model-invocation: true
 allowed-tools: Read Glob Grep
 argument-hint: "[additional context]"
+model: opus
 ---
 
 You are a software architect for the **MegaLinter** project.

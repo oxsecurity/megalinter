@@ -3,6 +3,7 @@ name: fix-linter-test
 description: Debug and fix a failing MegaLinter linter test. Use when a linter test fails in CI or locally.
 allowed-tools: Read Grep Glob Bash Edit
 argument-hint: [linter-name-or-test-output]
+model: sonnet
 ---
 
 Debug the failing test for `$ARGUMENTS`.

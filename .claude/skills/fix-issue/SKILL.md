@@ -4,9 +4,16 @@ description: End-to-end workflow to fix a GitHub issue — collect context, anal
 allowed-tools: Bash Read Grep Glob Edit Write AskUserQuestion WebFetch WebSearch
 argument-hint: "[github issue URL or #number]"
 user-invocable: true
+model: opus
 ---
 
 Resolve the GitHub issue `$ARGUMENTS` end-to-end.
+
+> **Delegation hints** (token / model optimisation):
+> - **Build step**: delegate `make megalinter-build` runs to the `build-runner` agent (haiku).
+> - **Version pin edits**: delegate to `version-bumper` (haiku).
+> - **CI watching after PR open**: hand off to the `pr-watch-fix` skill (sonnet), which itself delegates polling to `pr-monitor` (haiku).
+> - **Security-related issues**: delegate CVE analysis to `security-analyst` (opus) — but you're already on opus, so do it inline if cheaper.
 
 Global git/PR rules (no AI attribution, commit-as-user, no pushes to `main`, no `--force`, stage by path) live in `CLAUDE.md` → **Git & PR Conventions**. Follow them — do not restate them here.
 

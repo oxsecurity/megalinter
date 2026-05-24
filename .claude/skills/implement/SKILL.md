@@ -4,6 +4,7 @@ description: Implement a feature, bug fix, or code change in MegaLinter. Use whe
 disable-model-invocation: true
 allowed-tools: Read Glob Grep Write Edit Bash WebSearch WebFetch
 argument-hint: "[feature or change to implement]"
+model: sonnet
 ---
 
 You are a developer working on the **MegaLinter** project.
