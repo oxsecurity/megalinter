@@ -55,6 +55,26 @@ linters:
     cli_version_extra_args:
       - "-jar"
       - "/usr/bin/checkstyle"
+    common_linter_errors:
+      - identifier: JAVA_CHECKSTYLE_ERROR_OUT_OF_MEMORY
+        regex: "java\\.lang\\.OutOfMemoryError"
+        message: |-
+          Checkstyle ran out of JVM heap memory while parsing your sources.
+          This typically happens on very large files or large rule sets.
+          Increase the heap by setting the JAVA_CHECKSTYLE_ARGUMENTS variable in your .mega-linter.yml, for example:
+          JAVA_CHECKSTYLE_ARGUMENTS: "-Xmx2g"
+      - identifier: JAVA_CHECKSTYLE_ERROR_UNABLE_TO_PARSE_CONFIGURATION
+        regex: "unable to parse configuration stream"
+        message: |-
+          Checkstyle could not parse the configuration file (sun_checks.xml or your custom config).
+          Check that the file is valid XML and that the DOCTYPE / module names match the installed Checkstyle version.
+          See https://checkstyle.org/config.html for the expected format.
+      - identifier: JAVA_CHECKSTYLE_ERROR_CANNOT_INITIALIZE_MODULE
+        regex: "cannot initialize module"
+        message: |-
+          Checkstyle failed to initialize a module declared in your configuration file.
+          This usually means a module name is misspelled, was removed in your Checkstyle version, or requires a custom checks JAR not on the classpath.
+          Verify the module names at https://checkstyle.org/checks.html and ensure any third-party check JAR is referenced via the classpath.
     examples:
       - "java -jar /usr/bin/checkstyle myfile.java"
       - "java -jar /usr/bin/checkstyle -c sun_checks.xml myfile.java"

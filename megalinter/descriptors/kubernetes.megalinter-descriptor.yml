@@ -48,6 +48,32 @@ linters:
     # Count errors when either file is invalid, or an error occurred (e.g. couldn't find schema for this object)
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: "(?:Invalid|Errors): ([0-9]+)"
+    common_linter_errors:
+      - identifier: KUBERNETES_KUBECONFORM_ERROR_SCHEMA_NOT_FOUND
+        regex: "could not find schema for"
+        message: |-
+          kubeconform could not find a JSON schema for a Kubernetes resource (typically a CustomResourceDefinition / CRD).
+          Fixes:
+            - Pass additional schema locations via `KUBERNETES_KUBECONFORM_ARGUMENTS`, e.g.:
+                KUBERNETES_KUBECONFORM_ARGUMENTS:
+                  - -schema-location
+                  - default
+                  - -schema-location
+                  - "https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json"
+            - Ignore missing CRD schemas with `-ignore-missing-schemas`.
+            - Skip specific kinds with `-skip Kind1,Kind2`.
+            - Make sure `-kubernetes-version` is a full X.Y.Z version (X.Y is not supported).
+      - identifier: KUBERNETES_KUBECONFORM_ERROR_SCHEMA_DOWNLOAD_FAILED
+        regex: "(failed downloading schema|could not (?:open|read) schema|no such host)"
+        message: |-
+          kubeconform could not download a schema from its remote schema location (network/DNS failure).
+          This is a transient remote-service issue, not a manifest problem.
+          Workarounds:
+            - Retry the run later.
+            - Pre-cache schemas locally and point `-schema-location` to a local path.
+            - Temporarily mark the linter as non-blocking by adding to your .mega-linter.yml:
+                DISABLE_ERRORS_LINTERS:
+                  - KUBERNETES_KUBECONFORM
     examples:
       - kubeconform myfile.yml
       - kubeconform -ignore-missing-schemas -skip SomeCRD,AnotherCRD -kubernetes-version '1.18.0' -strict myfile.yml
@@ -80,6 +106,24 @@ linters:
     cli_version_arg_name: version
     cli_lint_extra_args:
       - "lint"
+    common_linter_errors:
+      - identifier: KUBERNETES_HELM_ERROR_MISSING_DEPENDENCIES
+        regex: "found in Chart\\.yaml, but missing in charts/ directory"
+        message: |-
+          helm lint failed because a chart dependency declared in Chart.yaml is not present under charts/.
+          Run `helm dependency update <chart-path>` (or `helm dependency build`) before linting so subcharts are vendored into charts/.
+          In CI, add a pre-command in your .mega-linter.yml:
+            KUBERNETES_HELM_PRE_COMMANDS:
+              - command: "helm dependency update ."
+                continue_if_failed: false
+      - identifier: KUBERNETES_HELM_ERROR_CHART_YAML_MISSING
+        regex: "(Chart\\.yaml file is missing|no Chart\\.yaml exists in directory|unable to check Chart\\.yaml)"
+        message: |-
+          helm lint could not find a valid Chart.yaml in the target directory.
+          Checks:
+            - Make sure `Chart.yaml` exists at the root of the chart (not just Chart.yml).
+            - If the chart is under a subfolder, scope helm via `KUBERNETES_HELM_FILTER_REGEX_INCLUDE` or move it.
+            - Verify Chart.yaml has the required keys `apiVersion`, `name`, and `version`.
     linter_banner_image_url: https://helm.sh/img/helm.svg
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/helm.png
     linter_text: |

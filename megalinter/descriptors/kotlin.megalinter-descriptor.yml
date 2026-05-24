@@ -44,6 +44,20 @@ linters:
     cli_lint_errors_regex: '\s+[\w\-_]+:[\w\-_]+: ([0-9]+)'
     cli_sarif_args:
       - --reporter=sarif,output={{SARIF_OUTPUT_FILE}}
+    common_linter_errors:
+      - identifier: KOTLIN_KTLINT_ERROR_OUT_OF_MEMORY
+        regex: "java\\.lang\\.OutOfMemoryError"
+        message: |-
+          ktlint ran out of JVM heap memory.
+          This can happen on large Kotlin codebases.
+          Increase the heap by setting the KOTLIN_KTLINT_ARGUMENTS variable in your .mega-linter.yml, for example:
+          KOTLIN_KTLINT_ARGUMENTS: "--jvm-target=17 -J-Xmx2g"
+      - identifier: KOTLIN_KTLINT_ERROR_RULESET_NOT_FOUND
+        regex: "Ruleset '[^']+' not found"
+        message: |-
+          ktlint could not load a custom ruleset.
+          Verify the ruleset JAR path is correct and accessible inside the MegaLinter container.
+          See https://pinterest.github.io/ktlint/latest/api/custom-rule-set/ for how to package and reference custom rulesets.
     examples:
       - "ktlint myfile.kt"
       - "ktlint --format myfile.kt"

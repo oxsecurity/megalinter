@@ -102,6 +102,13 @@ linters:
     version_extract_regex: "(?<=code-analyzer )\\d+(\\.\\d+)+"
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "Found ([0-9]+) violation\\(s\\)"
+    common_linter_errors:
+      - identifier: SALESFORCE_CODE_ANALYZER_APEX_ERROR_CONFIG_INVALID
+        regex: "(Failed to parse the config file|code-analyzer.yml.*invalid|config_root.*does not exist|The provided config file)"
+        message: |-
+          code-analyzer could not load the configuration file (code-analyzer.yml).
+          Verify the file is valid v5 YAML.
+          Generate a starter config with: sf code-analyzer config -f code-analyzer.yml
     examples:
       - "sf code-analyzer run --rule-selector pmd:Recommended --workspace . --output-file results.csv"
     install:
@@ -195,6 +202,18 @@ linters:
     version_extract_regex: "(?<=code-analyzer )\\d+(\\.\\d+)+"
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "Found ([0-9]+) violation\\(s\\)"
+    common_linter_errors:
+      - identifier: SALESFORCE_CODE_ANALYZER_AURA_ERROR_CONFIG_INVALID
+        regex: "(Failed to parse the config file|code-analyzer.yml.*invalid|config_root.*does not exist|The provided config file)"
+        message: |-
+          code-analyzer could not load the configuration file (code-analyzer.yml).
+          Verify the file is valid v5 YAML.
+          Generate a starter config with: sf code-analyzer config -f code-analyzer.yml
+      - identifier: SALESFORCE_CODE_ANALYZER_AURA_ERROR_NO_TARGET_FILES
+        regex: "(No workspace files were found|0 files were targeted by the selected rules|workspace.*did not match any files)"
+        message: |-
+          code-analyzer could not find any Aura JavaScript files matching `**/aura/**/*.js`.
+          Verify that your Aura components live under the workspace (default `force-app`) and that `SALESFORCE_CODE_ANALYZER_AURA_DIRECTORY` points to the correct root.
     examples:
       - "sf code-analyzer run --rule-selector eslint --workspace . --file-glob '**/aura/**/*.js' --output-file results.csv"
     install:
@@ -279,6 +298,18 @@ linters:
     version_extract_regex: "(?<=code-analyzer )\\d+(\\.\\d+)+"
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "Found ([0-9]+) violation\\(s\\)"
+    common_linter_errors:
+      - identifier: SALESFORCE_CODE_ANALYZER_LWC_ERROR_CONFIG_INVALID
+        regex: "(Failed to parse the config file|code-analyzer.yml.*invalid|config_root.*does not exist|The provided config file)"
+        message: |-
+          code-analyzer could not load the configuration file (code-analyzer.yml).
+          Verify the file is valid v5 YAML.
+          Generate a starter config with: sf code-analyzer config -f code-analyzer.yml
+      - identifier: SALESFORCE_CODE_ANALYZER_LWC_ERROR_NO_TARGET_FILES
+        regex: "(No workspace files were found|0 files were targeted by the selected rules|workspace.*did not match any files)"
+        message: |-
+          code-analyzer could not find any LWC JavaScript files matching `**/lwc/**/*.js`.
+          Verify that your Lightning Web Components live under the workspace (default `force-app`) and that `SALESFORCE_CODE_ANALYZER_LWC_DIRECTORY` points to the correct root.
     examples:
       - "sf code-analyzer run --rule-selector eslint:LWC --workspace . --target '**/lwc/**/*.js' --output-file report.csv"
     install:
@@ -359,6 +390,13 @@ linters:
     version_extract_regex: "(?<=@salesforce/sfdx-scanner )\\d+(\\.\\d+)+"
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: "found ([0-9]+) violation"
+    common_linter_errors:
+      - identifier: SALESFORCE_SFDX_SCANNER_APEX_ERROR_INVALID_PMD_RULESET
+        regex: "(Cannot load ruleset|RuleSetNotFoundException|PMD failed to load|Invalid ruleset)"
+        message: |-
+          PMD could not load the provided Apex ruleset.
+          Verify the file referenced by `apex-pmd-ruleset.xml` exists and is valid PMD XML.
+          You can generate a starter ruleset with: sf scanner:rule:list --engine pmd
     examples:
       - "sf scanner:run"
     install:
@@ -450,6 +488,13 @@ linters:
     version_extract_regex: "(?<=@salesforce/sfdx-scanner )\\d+(\\.\\d+)+"
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: "found ([0-9]+) violation"
+    common_linter_errors:
+      - identifier: SALESFORCE_SFDX_SCANNER_AURA_ERROR_ESLINT_CONFIG_INVALID
+        regex: "(Cannot read config file|ESLint configuration .* is invalid|Failed to load config|Parsing error: Cannot find module)"
+        message: |-
+          ESLint could not load the configuration referenced by `.eslintrc-aura.json`.
+          Verify the file exists at the repository root and contains valid ESLint JSON.
+          See https://eslint.org/docs/latest/use/configure for configuration guidance.
     examples:
       - "sf scanner:run"
     install:
@@ -532,6 +577,13 @@ linters:
     version_extract_regex: "(?<=@salesforce/sfdx-scanner )\\d+(\\.\\d+)+"
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: "found ([0-9]+) violation"
+    common_linter_errors:
+      - identifier: SALESFORCE_SFDX_SCANNER_LWC_ERROR_ESLINT_CONFIG_INVALID
+        regex: "(Cannot read config file|ESLint configuration .* is invalid|Failed to load config|Parsing error: Cannot find module)"
+        message: |-
+          ESLint could not load the configuration referenced by `.eslintrc-lwc.json`.
+          Verify the file exists at the repository root and contains valid ESLint JSON for the eslint-lwc engine.
+          See https://github.com/salesforce/eslint-plugin-lwc#configuration for guidance.
     examples:
       - "sf scanner:run"
     install:
@@ -595,6 +647,17 @@ linters:
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "- error: ([0-9]+)"
     test_folder: salesforce-lfs
+    common_linter_errors:
+      - identifier: SALESFORCE_LIGHTNING_FLOW_SCANNER_ERROR_CONFIG_INVALID
+        regex: "(Could not parse .* \\.flow-scanner|Invalid JSON in .flow-scanner|Failed to load .flow-scanner)"
+        message: |-
+          The `.flow-scanner.json` configuration file could not be parsed.
+          Verify it contains valid JSON and conforms to the schema documented at https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx#configuration
+      - identifier: SALESFORCE_LIGHTNING_FLOW_SCANNER_ERROR_NO_FLOW_FILES
+        regex: "(No flows found|0 flows scanned|No \\.flow(-meta\\.xml)? files found)"
+        message: |-
+          lightning-flow-scanner did not find any `.flow-meta.xml` files to scan.
+          Verify the flows live under your workspace (default `force-app`) and that `SALESFORCE_LIGHTNING_FLOW_SCANNER_DIRECTORY` points to the correct root.
     examples:
       - "sf flow:scan"
     install:

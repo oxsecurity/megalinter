@@ -64,6 +64,17 @@ linters:
     cli_sarif_args:
       - --format
       - sarif
+    common_linter_errors:
+      - identifier: DOCKERFILE_HADOLINT_ERROR_CONFIG_PARSE
+        regex: "Failed to parse .*hadolint"
+        message: |-
+          Hadolint could not parse its configuration file (.hadolint.yaml / .hadolint.yml).
+          Validate the YAML syntax and ensure all keys (`ignored`, `trustedRegistries`, `override`, `failure-threshold`) match the hadolint config schema.
+      - identifier: DOCKERFILE_HADOLINT_ERROR_CONFIG_READ
+        regex: "Failed reading .*\\.hadolint"
+        message: |-
+          Hadolint could not read the configuration file passed via `--config`.
+          Check that the file path exists inside the container and that the file is readable.
     examples:
       - "hadolint Dockerfile"
       - "hadolint --config .hadolint.yml Dockerfile"

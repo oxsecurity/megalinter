@@ -179,6 +179,12 @@ linters:
     cli_lint_extra_args_after:
       - "--file"
     test_folder: terraform_terragrunt
+    common_linter_errors:
+      - identifier: TERRAFORM_TERRAGRUNT_ERROR_CONFIG_PARSE
+        regex: "Error parsing Terragrunt config"
+        message: |-
+          Terragrunt could not parse a referenced terragrunt.hcl configuration file.
+          Verify that include/dependency blocks resolve and that referenced files exist relative to the working directory.
     examples:
       - "terragrunt hcl fmt --check --file myfile.hcl"
       - "terragrunt hcl fmt --check --config terragrunt.hcl --file myfile.hcl"
