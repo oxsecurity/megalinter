@@ -79,6 +79,8 @@ linters:
     cli_help_extra_args:
       - "analyze"
     version_extract_regex: "(?<=Dart SDK version: )(\\d+)\\.(\\d+)\\.(\\d+)"
+    examples:
+      - "dart analyze --fatal-infos --fatal-warnings myfile.dart"
     common_linter_errors:
       - identifier: DART_DARTANALYZER_ERROR_MISSING_PUBSPEC
         regex: 'Could not find a file named "pubspec.yaml"'
