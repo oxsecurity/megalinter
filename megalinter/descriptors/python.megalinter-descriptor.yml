@@ -60,6 +60,35 @@ linters:
     cli_config_arg_name: "--rcfile"
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: ":([0-9]+):([0-9]+):"
+    common_linter_errors:
+      - identifier: PYTHON_PYLINT_ERROR_CONFIG_PARSE
+        regex: "(Error in provided config file|Unable to load configuration|Error while parsing|argument --[A-Za-z-]+: )"
+        message: |-
+          pylint could not parse the configuration file (e.g. `.pylintrc`, `pyproject.toml`).
+          Resolutions:
+            - Validate the TOML/INI syntax of your pylint config.
+            - Make sure option names and section headers (`[MESSAGES CONTROL]`, `[tool.pylint.*]`) are correct for the pinned pylint version.
+            - Run `pylint --generate-rcfile` to compare with a known-good template.
+      - identifier: PYTHON_PYLINT_ERROR_PLUGIN_LOAD
+        regex: "(Unable to load plugin|Problem importing module)"
+        message: |-
+          pylint failed to load a plugin declared in `load-plugins` (e.g. `pylint-django`, `pylint-pydantic`).
+          Resolutions:
+            - Check the plugin name spelling in your pylint config.
+            - Pre-install the missing plugin into pylint's venv via a pre-command in your .mega-linter.yml:
+                PYTHON_PYLINT_PRE_COMMANDS:
+                  - command: "pip install pylint-django"
+                    venv: pylint
+                    continue_if_failed: false
+            - Or remove the plugin from `load-plugins` if it is not needed.
+      - identifier: PYTHON_PYLINT_ERROR_ASTROID_CRASH
+        regex: "(astroid-error|Fatal error while checking |F0002|AstroidError)"
+        message: |-
+          pylint crashed inside its astroid AST parser. This is usually a pylint/astroid bug, not a problem with your code.
+          Resolutions:
+            - Run pylint with `--errors-only` to narrow the offending file.
+            - Disable astroid plugins (`load-plugins`) one by one to find the culprit.
+            - Report the traceback to https://github.com/pylint-dev/pylint/issues.
     examples:
       - "pylint myfile.py"
       - "pylint --rcfile .python-lint myfile.py"
@@ -214,6 +243,28 @@ linters:
     config_file_name: .flake8
     cli_config_arg_name: "--config"
     cli_lint_errors_count: total_lines
+    common_linter_errors:
+      - identifier: PYTHON_FLAKE8_ERROR_PLUGIN_LOAD
+        regex: '"[A-Za-z0-9_-]+" failed during execution due to'
+        message: |-
+          A flake8 plugin (e.g. flake8-bugbear, flake8-docstrings) crashed while loading or running.
+          This usually means the plugin version is incompatible with the pinned flake8 version, or the plugin is not installed.
+          Resolutions:
+            - Pre-install the missing/compatible plugin into flake8's venv via a pre-command in your .mega-linter.yml:
+                PYTHON_FLAKE8_PRE_COMMANDS:
+                  - command: "pip install flake8-bugbear"
+                    venv: flake8
+                    continue_if_failed: false
+            - Temporarily remove the plugin from your flake8 config to confirm the trigger.
+            - Run with `--verbose` locally to see which plugin emitted the error.
+      - identifier: PYTHON_FLAKE8_ERROR_CONFIG_INVALID
+        regex: "(There was a critical error during execution of Flake8|Error: Invalid value for|tomllib(\\.|: ).+(Invalid|Error)|Error parsing config file)"
+        message: |-
+          flake8 could not parse its configuration file (`.flake8`, `setup.cfg`, or `pyproject.toml`).
+          Resolutions:
+            - Validate the INI/TOML syntax of the config file.
+            - Make sure option keys (e.g. `max-line-length`, `select`, `ignore`) are spelled correctly.
+            - Remove the custom config to confirm the issue is config-related.
     examples:
       - "flake8 myfile.py"
       - "flake8 --config .flake8 myfile.py"
@@ -368,6 +419,28 @@ linters:
       - "{{SARIF_OUTPUT_FILE}}"
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: ">> Issue: \\["
+    common_linter_errors:
+      - identifier: PYTHON_BANDIT_ERROR_CONFIG_NOT_FOUND
+        regex: "(Could not read config file|Unable to read config file|could not find config file)"
+        message: |-
+          bandit could not read the configuration file referenced via `--configfile` (or `.bandit.yml` / `pyproject.toml`).
+          Resolutions:
+            - Confirm the config file is committed to the repository and visible at the expected path.
+            - If you customised `PYTHON_BANDIT_CONFIG_FILE`, double-check the value points to a valid file in the workspace.
+      - identifier: PYTHON_BANDIT_ERROR_CONFIG_INVALID
+        regex: "(Error parsing file:|yaml\\.scanner\\.ScannerError|yaml\\.parser\\.ParserError|tomllib\\.TOMLDecodeError|Invalid YAML)"
+        message: |-
+          bandit found the config file but failed to parse it (invalid YAML or TOML).
+          Resolutions:
+            - Run a YAML/TOML linter against `.bandit.yml` or the `[tool.bandit]` section of `pyproject.toml`.
+            - Make sure indentation and option keys (`tests`, `skips`, `exclude_dirs`) follow the bandit schema.
+      - identifier: PYTHON_BANDIT_ERROR_PROFILE_NOT_FOUND
+        regex: "(Unable to find profile|No tests would be run)"
+        message: |-
+          bandit could not load the requested test profile or every test was excluded.
+          Resolutions:
+            - Check the profile name in your config.
+            - Make sure `tests` / `skips` lists reference valid plugin IDs (B101, B602, ...).
     version_extract_regex: "(?<=bandit )\\d+(\\.\\d+)+"
     test_folder: python_bandit
     examples:
@@ -434,6 +507,35 @@ linters:
     cli_config_arg_name: "--config-file"
     cli_version_arg_name: "--version"
     config_file_name: ".mypy.ini"
+    common_linter_errors:
+      - identifier: PYTHON_MYPY_ERROR_STUBS_INSTALL_FAILED
+        regex: "(error installing types|installation of type stubs (failed|did not succeed)|mypy: error: --install-types)"
+        message: |-
+          mypy attempted to auto-install missing type stubs (`--install-types`) but the pip step failed.
+          This is usually a network issue or a missing stub package on PyPI.
+          Resolutions:
+            - Pre-install the required `types-*` stub packages into mypy's venv via a pre-command in your .mega-linter.yml:
+                PYTHON_MYPY_PRE_COMMANDS:
+                  - command: "pip install types-requests types-PyYAML"
+                    venv: mypy
+                    continue_if_failed: false
+            - For libraries with no published stubs, silence the import with `# type: ignore[import]` or add them to `ignore_missing_imports` in your mypy config.
+      - identifier: PYTHON_MYPY_ERROR_CONFIG_INVALID
+        regex: "(mypy: error: Invalid (config|option)|mypy: error: Configuration file|configparser\\.(Error|ParsingError)|tomllib\\.TOMLDecodeError.+mypy)"
+        message: |-
+          mypy could not parse its configuration file (`.mypy.ini`, `mypy.ini`, `pyproject.toml [tool.mypy]`, or `setup.cfg`).
+          Resolutions:
+            - Validate INI/TOML syntax of the mypy config.
+            - Check option names match the pinned mypy version's documentation.
+            - Remove the custom config to confirm the issue is config-related.
+      - identifier: PYTHON_MYPY_ERROR_DAEMON_CRASH
+        regex: "(INTERNAL ERROR|Traceback \\(most recent call last\\)|mypy crashed)"
+        message: |-
+          mypy crashed with an internal error. This usually indicates a bug in mypy or an interaction with a plugin.
+          Resolutions:
+            - Clear the mypy cache (MegaLinter sets `MYPY_CACHE_DIR=/tmp`, but stale data can persist between runs in long-lived environments).
+            - Disable mypy plugins (`plugins = ...` in your config) one by one to narrow the cause.
+            - Report the traceback to https://github.com/python/mypy/issues.
     version_extract_regex: "(?<=mypy )\\d+(\\.\\d+)+"
     test_folder: python_mypy
     examples:
@@ -485,6 +587,22 @@ linters:
     version_extract_regex: "(?<=nbqa )\\d+(\\.\\d+)+"
     # Note: nbqa passes args to the underlying tool (mypy), so we don't use cli_config_arg_name
     # MyPy will auto-detect config files (pyproject.toml, .mypy.ini, setup.cfg, etc.)
+    common_linter_errors:
+      - identifier: PYTHON_NBQA_MYPY_ERROR_NOTEBOOK_INVALID
+        regex: "(NotJSONError|nbformat\\.reader\\.NotJSONError|Notebook does not appear to be JSON|Failed to read notebook|nbformat\\.validator\\.ValidationError)"
+        message: |-
+          nbqa could not read a Jupyter notebook because the `.ipynb` file is not valid JSON or violates the nbformat schema.
+          Resolutions:
+            - Open the notebook in JupyterLab/VS Code and re-save it to fix the JSON structure.
+            - Check for merge conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`) committed inside the notebook.
+            - Validate the notebook with `jupyter nbformat --validate path/to/notebook.ipynb`.
+      - identifier: PYTHON_NBQA_MYPY_ERROR_TOOL_CRASH
+        regex: "(An error occurred while running nbQA|nbqa\\.cmdline\\.|UnsupportedPackageVersionError)"
+        message: |-
+          nbqa crashed while invoking mypy on a notebook. This typically means the bundled nbqa and mypy versions disagree on calling conventions or an unsupported notebook feature was hit.
+          Resolutions:
+            - Confirm the notebook does not contain Jupyter magic commands (`%%bash`, `!pip ...`) at module scope; nbqa skips them but malformed cells can still trip it up.
+            - Report the traceback to https://github.com/nbQA-dev/nbQA/issues including the failing cell.
     test_folder: python_nbqa_mypy
     linter_text: |
       **nbqa + mypy** provides static type checking for Jupyter notebooks.
@@ -658,6 +776,22 @@ linters:
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "Found ([0-9]+) error"
     config_file_name: ".ruff.toml"
+    common_linter_errors:
+      - identifier: PYTHON_RUFF_ERROR_CONFIG_PARSE
+        regex: "(Failed to parse .*(ruff\\.toml|pyproject\\.toml)|TOML parse error|invalid type: |unknown field )"
+        message: |-
+          ruff could not parse its configuration file (`ruff.toml`, `.ruff.toml`, or `pyproject.toml`).
+          Resolutions:
+            - Validate the TOML syntax of the file.
+            - Make sure option keys under `[tool.ruff]` / `[tool.ruff.lint]` match the pinned ruff version's schema; deprecated keys are removed in newer releases.
+            - Check for committed merge conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`) in the file.
+      - identifier: PYTHON_RUFF_ERROR_UNKNOWN_RULE
+        regex: "(Unknown rule selector|unknown rule code|Unknown rule:|unrecognized selector)"
+        message: |-
+          ruff's configuration references a rule code that the pinned ruff version does not know about (renamed, deleted, or not yet released).
+          Resolutions:
+            - Check the ruff changelog for renames around the version pinned in MegaLinter.
+            - Update the rule code in your `select` / `ignore` / `extend-select` list to the new name.
     cli_sarif_args:
       - --output-format
       - sarif

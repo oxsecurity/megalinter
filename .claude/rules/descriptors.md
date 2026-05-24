@@ -17,6 +17,7 @@ When creating or modifying a linter entry, **search the internet** to gather all
 - **Metadata**: `linter_spdx_license`, `linter_speed` (1-5), `linter_image_url`, `linter_icon_png_url`, `linter_banner_image_url`
 - **CLI config**: `cli_lint_mode`, `cli_executable`, `config_file_name`, `cli_config_arg_name`, `cli_lint_extra_args`, `cli_lint_fix_arg_name`, `cli_lint_fix_remove_args`, `ignore_file_name`, `cli_lint_ignore_arg_name`
 - **Error parsing**: `cli_lint_errors_count`, `cli_lint_errors_regex`
+- **Known non-lint failures**: `common_linter_errors` — list of `{identifier, regex, message}` entries for config/environment errors (service unavailable, missing credentials, malformed config, etc.) that should surface guidance to the user. Only evaluated on non-success. Each entry MUST have an `identifier` starting with the linter key followed by `_ERROR_` (e.g. `REPOSITORY_OSV_SCANNER_ERROR_SERVICE_UNAVAILABLE`). Each `regex` must be specific enough not to match normal lint output; avoid `.*` or single-word patterns. Entries are rendered as a "Known errors and resolutions" section at the end of the generated linter doc page.
 - **SARIF**: `can_output_sarif`, `cli_sarif_args`, `sarif_default_output_file`
 - **Behavior**: `is_formatter`, `activation_rules`, `active_only_if_file_found`
 - **IDE**: `ide` with entries for `vscode`, `idea`, `eclipse`, `sublime`, `emacs` etc.

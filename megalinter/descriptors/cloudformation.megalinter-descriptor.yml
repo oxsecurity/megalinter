@@ -62,6 +62,22 @@ linters:
       - sarif
       - --output-file
       - "{{SARIF_OUTPUT_FILE}}"
+    common_linter_errors:
+      - identifier: CLOUDFORMATION_CFN_LINT_ERROR_SCHEMA_DOWNLOAD
+        regex: "(Failed downloading [a-z0-9-]+:|All regions failed to download)"
+        message: |-
+          cfn-lint failed to download the AWS CloudFormation resource schemas.
+          This usually means the build had no network access. Pre-cache schemas in your image or run cfn-lint with `--update-specs` during image build.
+      - identifier: CLOUDFORMATION_CFN_LINT_ERROR_CUSTOM_RULE_IMPORT
+        regex: "Failed to load (rule|custom rule) "
+        message: |-
+          cfn-lint failed to load a custom rule module referenced via `--append-rules` or `.cfnlintrc.yml`.
+          Verify the module path is correct, importable from the container's Python environment, and that all its Python dependencies are installed.
+      - identifier: CLOUDFORMATION_CFN_LINT_ERROR_CONFIG_INVALID
+        regex: "(Invalid (configuration( key)?|type|configuration in) .*\\.cfnlintrc|Missing required property .* in \\.cfnlintrc)"
+        message: |-
+          The .cfnlintrc configuration file could not be parsed.
+          Verify YAML syntax and that all keys (`include_checks`, `ignore_checks`, `regions`, etc.) match the cfn-lint configuration schema.
     examples:
       - "cfn-lint myfile.yml"
       - "cfn-lint --config-file .cfnlintrc.yml myfile.yml"

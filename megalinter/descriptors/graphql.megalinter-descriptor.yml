@@ -33,6 +33,15 @@ linters:
     linter_megalinter_ref_url: https://github.com/cjoudrey/graphql-schema-linter/pull/272
     config_file_name: .graphql-schema-linterrc
     cli_config_arg_name: ""
+    common_linter_errors:
+      - identifier: GRAPHQL_GRAPHQL_SCHEMA_LINTER_ERROR_CUSTOM_RULE_NOT_FOUND
+        regex: "There was an issue loading the specified custom rules"
+        message: |-
+          graphql-schema-linter could not resolve a Node.js module. This almost always points to a `--custom-rule-paths` entry (or `customRulePaths` in `.graphql-schema-linterrc`) referencing a file or package that does not exist inside the container.
+          Resolutions:
+            - Verify every glob in `customRulePaths` resolves to files that are committed to the repository and visible from the workspace root.
+            - Remove the custom rules path and rely on the built-in rules.
+            - Reference docs: https://github.com/cjoudrey/graphql-schema-linter#custom-rules
     examples:
       - "graphql-schema-linter myfile.graphql"
     install:
