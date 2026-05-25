@@ -129,7 +129,7 @@ ARG NPM_COFFEELINT_CLI_VERSION=5.2.11
 # renovate: datasource=npm depName=jscpd
 ARG NPM_JSCPD_VERSION=4.2.3
 # renovate: datasource=npm depName=stylelint
-ARG NPM_STYLELINT_VERSION=17.11.1
+ARG NPM_STYLELINT_VERSION=17.12.0
 # renovate: datasource=npm depName=stylelint-config-standard
 ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=40.0.0
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
