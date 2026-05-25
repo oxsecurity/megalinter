@@ -6755,6 +6755,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#markdown_remark_lint_error_preset_not_found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MARKDOWN_REMARK_LINT_ERROR_PRESET_NOT_FOUND
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12510,6 +12538,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#markdown_remark_lint_error_preset_not_found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MARKDOWN_REMARK_LINT_ERROR_PRESET_NOT_FOUND
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12790,6 +12846,23 @@ ARG NPM_REMARK_PRESET_LINT_RECOMMENDED_VERSION=7.0.1
 </ul>
 </li>
 </ul>
+<h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
+<p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
+<h3 id="markdown_remark_lint_error_preset_not_found">MARKDOWN_REMARK_LINT_ERROR_PRESET_NOT_FOUND</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">Could not find (module|preset|plugin) [`'"]
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">remark could not resolve a preset or plugin referenced in your `.remarkrc` (or equivalent config). Every plugin/preset listed in remark configuration must also be installed in `node_modules` next to remark.
+Resolutions:
+  - Pre-install the missing preset/plugin into MegaLinter's npm root (`/node-deps`) via a pre-command in your .mega-linter.yml:
+      MARKDOWN_REMARK_LINT_PRE_COMMANDS:
+        - command: "npm install remark-preset-lint-recommended"
+          cwd: "root"
+          continue_if_failed: false
+  - Verify the package name in `.remarkrc` matches the actual published name exactly.
+  - If you only use built-in / bundled presets, remove the custom entry from your config.
+</code></pre>
 
 
 

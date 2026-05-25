@@ -9644,6 +9644,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#repository_devskim_error_rules_not_found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        REPOSITORY_DEVSKIM_ERROR_RULES_NOT_FOUND
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12510,6 +12538,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#repository_devskim_error_rules_not_found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        REPOSITORY_DEVSKIM_ERROR_RULES_NOT_FOUND
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12729,6 +12785,18 @@ ARG REPOSITORY_DEVSKIM_VERSION=1.0.70
 RUN apk add --no-cache dotnet10-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
 RUN dotnet tool install --allow-roll-forward --global Microsoft.CST.DevSkim.CLI --version ${REPOSITORY_DEVSKIM_VERSION}
+</code></pre>
+<h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
+<p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
+<h3 id="repository_devskim_error_rules_not_found">REPOSITORY_DEVSKIM_ERROR_RULES_NOT_FOUND</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">Error: (No rules were loaded|Rules failed validation)
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">DevSkim could not load its rules. This usually means a custom rules path passed via `-r` / configuration is invalid, or the rule files at that path failed validation.
+Resolutions:
+  - Remove or correct any custom rule paths in `.devskim.json` or the `-r` argument.
+  - Ensure custom rule files are committed to the repository, reachable from the workspace root, and conform to the DevSkim rule schema.
 </code></pre>
 
 

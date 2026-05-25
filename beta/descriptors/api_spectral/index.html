@@ -7807,6 +7807,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api_spectral_error_ruleset_parse_failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API_SPECTRAL_ERROR_RULESET_PARSE_FAILED
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api_spectral_error_function_not_defined" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API_SPECTRAL_ERROR_FUNCTION_NOT_DEFINED
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api_spectral_error_ruleset_ref_unreachable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API_SPECTRAL_ERROR_RULESET_REF_UNREACHABLE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12504,6 +12554,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api_spectral_error_ruleset_parse_failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API_SPECTRAL_ERROR_RULESET_PARSE_FAILED
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api_spectral_error_function_not_defined" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API_SPECTRAL_ERROR_FUNCTION_NOT_DEFINED
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api_spectral_error_ruleset_ref_unreachable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API_SPECTRAL_ERROR_RULESET_REF_UNREACHABLE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12751,6 +12851,44 @@ ARG NPM_SPECTRAL_CLI_VERSION=6.16.0
 </ul>
 </li>
 </ul>
+<h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
+<p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
+<h3 id="api_spectral_error_ruleset_parse_failed">API_SPECTRAL_ERROR_RULESET_PARSE_FAILED</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(Could not read ruleset at|No ruleset has been found|Provided ruleset is not an object|RulesetValidationError)
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">Spectral could not parse the ruleset file.
+Checks:
+  - Verify the file passed via `-r` / `API_SPECTRAL_CONFIG_FILE` is valid YAML or JSON.
+  - Ensure `extends:` references resolvable rulesets (e.g. `spectral:oas`, `spectral:asyncapi`, or an installed npm package).
+  - If the ruleset is loaded over HTTP/HTTPS, confirm the URL is reachable from the MegaLinter container.
+</code></pre>
+<h3 id="api_spectral_error_function_not_defined">API_SPECTRAL_ERROR_FUNCTION_NOT_DEFINED</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(Function .* is not defined|Cannot find module .*functions)
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">Spectral could not resolve a function referenced by a rule.
+Fixes:
+  - For core functions, double-check the spelling (e.g. `truthy`, `pattern`, `length`).
+  - For custom functions, list them under `functions:` in the ruleset and place the JS files under `functions/` next to the ruleset.
+  - When loading a ruleset over HTTP, custom functions are not auto-fetched — vendor the ruleset locally and point `-r` at it.
+</code></pre>
+<h3 id="api_spectral_error_ruleset_ref_unreachable">API_SPECTRAL_ERROR_RULESET_REF_UNREACHABLE</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(ENOTFOUND|ECONNREFUSED|ETIMEDOUT|getaddrinfo ENOTFOUND|fetch failed)
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">Spectral could not resolve a remote `$ref` or remote ruleset (network/DNS failure).
+This is a transient remote-service issue.
+Workarounds:
+  - Retry the run later.
+  - Vendor the referenced documents locally and update the `$ref` to a relative path.
+  - Temporarily mark the linter as non-blocking by adding to your .mega-linter.yml:
+      DISABLE_ERRORS_LINTERS:
+        - API_SPECTRAL
+</code></pre>
 
 
 

@@ -9948,6 +9948,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#repository_trivy_error_toomanyrequests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        REPOSITORY_TRIVY_ERROR_TOOMANYREQUESTS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repository_trivy_error_db_download_failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        REPOSITORY_TRIVY_ERROR_DB_DOWNLOAD_FAILED
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repository_trivy_error_registry_unauthorized" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        REPOSITORY_TRIVY_ERROR_REGISTRY_UNAUTHORIZED
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12504,6 +12554,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#repository_trivy_error_toomanyrequests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        REPOSITORY_TRIVY_ERROR_TOOMANYREQUESTS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repository_trivy_error_db_download_failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        REPOSITORY_TRIVY_ERROR_DB_DOWNLOAD_FAILED
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repository_trivy_error_registry_unauthorized" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        REPOSITORY_TRIVY_ERROR_REGISTRY_UNAUTHORIZED
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12879,6 +12979,54 @@ ARG REPOSITORY_TRIVY_VERSION=0.70.0
 RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_VERSION}" \
     &amp;&amp; (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
 
+</code></pre>
+<h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
+<p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
+<h3 id="repository_trivy_error_toomanyrequests">REPOSITORY_TRIVY_ERROR_TOOMANYREQUESTS</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">TOOMANYREQUESTS
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">trivy was rate-limited by GitHub Container Registry (ghcr.io) while downloading the vulnerability database.
+This is a registry rate limit, not a vulnerability finding.
+Workarounds:
+  - Retry the run later (the limit is per-namespace and resets quickly).
+  - Authenticate pulls so requests count against your own quota. MegaLinter strips token/password env vars by default, so whitelist them for this linter in your .mega-linter.yml:
+      REPOSITORY_TRIVY_UNSECURED_ENV_VARIABLES:
+        - GITHUB_TOKEN
+        - TRIVY_USERNAME
+        - TRIVY_PASSWORD
+  - Mirror the trivy-db to your own registry and point trivy at it via `TRIVY_DB_REPOSITORY`.
+  - Cache `~/.cache/trivy` across CI runs.
+  - Temporarily mark the linter as non-blocking by adding to your .mega-linter.yml:
+      DISABLE_ERRORS_LINTERS:
+        - REPOSITORY_TRIVY
+</code></pre>
+<h3 id="repository_trivy_error_db_download_failed">REPOSITORY_TRIVY_ERROR_DB_DOWNLOAD_FAILED</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(failed to download (vulnerability )?(DB|database)|database download error|could not pull image)
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">trivy could not download or refresh its vulnerability database from the configured registry.
+Workarounds:
+  - Retry the run; this is often transient.
+  - Set `TRIVY_DB_REPOSITORY` to an alternative mirror (e.g. an internal registry or AWS ECR Public Gallery).
+  - Pre-populate `~/.cache/trivy` in CI.
+</code></pre>
+<h3 id="repository_trivy_error_registry_unauthorized">REPOSITORY_TRIVY_ERROR_REGISTRY_UNAUTHORIZED</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(UNAUTHORIZED: authentication required|unexpected status (code )?401|status 401 Unauthorized)
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">trivy received a 401 Unauthorized response from a container registry while pulling the DB or an image to scan.
+Resolutions:
+  - Provide credentials. MegaLinter strips token/password env vars by default, so whitelist them for this linter in your .mega-linter.yml:
+      REPOSITORY_TRIVY_UNSECURED_ENV_VARIABLES:
+        - TRIVY_USERNAME
+        - TRIVY_PASSWORD
+        - GITHUB_TOKEN
+  - For AWS ECR, ensure the runner has IAM permissions to pull from the registry.
+  - Verify `TRIVY_DB_REPOSITORY` points to a repository you can actually access.
 </code></pre>
 
 

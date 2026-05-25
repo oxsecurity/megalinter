@@ -6727,6 +6727,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#markdown_markdownlint_error_config_parse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MARKDOWN_MARKDOWNLINT_ERROR_CONFIG_PARSE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12510,6 +12538,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#markdown_markdownlint_error_config_parse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MARKDOWN_MARKDOWNLINT_ERROR_CONFIG_PARSE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12878,6 +12934,19 @@ ARG NPM_MARKDOWNLINT_CLI_VERSION=0.48.0
 </ul>
 </li>
 </ul>
+<h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
+<p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
+<h3 id="markdown_markdownlint_error_config_parse">MARKDOWN_MARKDOWNLINT_ERROR_CONFIG_PARSE</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">Cannot read or parse config file
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">markdownlint could not parse its configuration file. This is typically a syntax error in `.markdownlint.json` / `.markdownlintrc`, most often a `//` or `/* */` comment in a strict-JSON file, a trailing comma, or unbalanced braces.
+Resolutions:
+  - Validate the configuration file with a JSON linter and remove comments / trailing commas.
+  - If you need comments, rename the file to `.markdownlint.jsonc`, `.markdownlint.yaml`, or `.markdownlint.cjs` (those formats support comments).
+  - Reference docs: https://github.com/igorshubovych/markdownlint-cli#configuration
+</code></pre>
 
 
 

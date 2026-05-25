@@ -5227,6 +5227,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sql_tsqllint_error_config_invalid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SQL_TSQLLINT_ERROR_CONFIG_INVALID
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12510,6 +12538,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sql_tsqllint_error_config_invalid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SQL_TSQLLINT_ERROR_CONFIG_INVALID
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12745,6 +12801,19 @@ ARG SQL_TSQLLINT_VERSION=1.16.0
 RUN apk add --no-cache dotnet10-sdk
 ENV PATH="${PATH}:/root/.dotnet/tools"
 RUN dotnet tool install --allow-roll-forward --global TSQLLint --version ${SQL_TSQLLINT_VERSION}
+</code></pre>
+<h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
+<p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
+<h3 id="sql_tsqllint_error_config_invalid">SQL_TSQLLINT_ERROR_CONFIG_INVALID</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(Config file .* is not valid|Invalid Json in config file|Error parsing config(uration)? file)
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">tsqllint could not parse its configuration file (`.tsqllintrc`, which is JSON).
+Resolutions:
+  - Validate the JSON syntax of `.tsqllintrc` (trailing commas and unquoted keys are not allowed).
+  - Regenerate a baseline config by running `tsqllint --init` and merging your custom rules back in.
+  - Make sure all rule names and severities (`error`, `warning`, `off`) are spelled correctly.
 </code></pre>
 
 

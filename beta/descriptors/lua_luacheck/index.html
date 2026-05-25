@@ -3251,6 +3251,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lua_luacheck_error_config_invalid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LUA_LUACHECK_ERROR_CONFIG_INVALID
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12510,6 +12538,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lua_luacheck_error_config_invalid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LUA_LUACHECK_ERROR_CONFIG_INVALID
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12946,6 +13002,19 @@ RUN wget --tries=5 https://github.com/cvega/luarocks/archive/v${LUA_LUACHECK_VER
 </ul>
 </li>
 </ul>
+<h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
+<p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
+<h3 id="lua_luacheck_error_config_invalid">LUA_LUACHECK_ERROR_CONFIG_INVALID</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(Couldn't load configuration|Critical error: .*\.luacheckrc|Errors? in config file)
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">luacheck could not load its configuration file (`.luacheckrc` is Lua source).
+Resolutions:
+  - Run `lua -l .luacheckrc -e ''` locally (or `luac -p .luacheckrc`) to check the file for syntax errors.
+  - Ensure the file only sets allowed luacheck options (`std`, `globals`, `ignore`, `files`, etc.).
+  - Use `luacheck --no-config` via `LUA_LUACHECK_ARGUMENTS` to confirm the failure is config-related.
+</code></pre>
 
 
 

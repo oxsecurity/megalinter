@@ -5917,6 +5917,67 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#css_stylelint_error_plugin_not_found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CSS_STYLELINT_ERROR_PLUGIN_NOT_FOUND
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#css_stylelint_error_config_not_found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CSS_STYLELINT_ERROR_CONFIG_NOT_FOUND
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#css_stylelint_error_custom_syntax_not_found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CSS_STYLELINT_ERROR_CUSTOM_SYNTAX_NOT_FOUND
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#css_stylelint_error_no_config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CSS_STYLELINT_ERROR_NO_CONFIG
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12504,6 +12565,67 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#css_stylelint_error_plugin_not_found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CSS_STYLELINT_ERROR_PLUGIN_NOT_FOUND
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#css_stylelint_error_config_not_found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CSS_STYLELINT_ERROR_CONFIG_NOT_FOUND
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#css_stylelint_error_custom_syntax_not_found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CSS_STYLELINT_ERROR_CUSTOM_SYNTAX_NOT_FOUND
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#css_stylelint_error_no_config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CSS_STYLELINT_ERROR_NO_CONFIG
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -13066,6 +13188,70 @@ ARG PIP_CPPLINT_VERSION=2.0.2
 </ul>
 </li>
 </ul>
+<h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
+<p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
+<h3 id="css_stylelint_error_plugin_not_found">CSS_STYLELINT_ERROR_PLUGIN_NOT_FOUND</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(Could not find "?stylelint-|Cannot find module 'stylelint-|Could not load plugin)
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">stylelint could not load a plugin referenced in your `.stylelintrc.*` (e.g. `stylelint-order`, `stylelint-scss`, `stylelint-prettier`). The plugin is not installed in MegaLinter's bundled `node_modules` (`/node-deps/node_modules`).
+Resolutions:
+  - Pre-install the missing plugin into MegaLinter's npm root via a pre-command in your .mega-linter.yml:
+      CSS_STYLELINT_PRE_COMMANDS:
+        - command: "npm install stylelint-order"
+          cwd: "root"
+          continue_if_failed: false
+  - Note: `stylelint-scss` and `stylelint-config-sass-guidelines` are already bundled and do not need to be re-installed.
+  - Or install your project's dependencies and run stylelint from the workspace binary:
+      CSS_STYLELINT_PRE_COMMANDS:
+        - command: yarn install --frozen-lockfile --ignore-scripts
+          cwd: workspace
+          continue_if_failed: false
+      CSS_STYLELINT_CLI_EXECUTABLE: node_modules/.bin/stylelint
+</code></pre>
+<h3 id="css_stylelint_error_config_not_found">CSS_STYLELINT_ERROR_CONFIG_NOT_FOUND</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(Could not find "?stylelint-config-|Cannot find module 'stylelint-config-|Could not (find|load) config|Failed to extend)
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">stylelint could not resolve a shareable config referenced via `extends` (e.g. `stylelint-config-recommended`, `stylelint-config-prettier`).
+Resolutions:
+  - Pre-install the config package via a pre-command in your .mega-linter.yml:
+      CSS_STYLELINT_PRE_COMMANDS:
+        - command: "npm install stylelint-config-recommended"
+          cwd: "root"
+          continue_if_failed: false
+  - Note: `stylelint-config-standard` and `stylelint-config-sass-guidelines` are already bundled.
+  - Verify the config name in `.stylelintrc.*` matches the published npm package name exactly.
+</code></pre>
+<h3 id="css_stylelint_error_custom_syntax_not_found">CSS_STYLELINT_ERROR_CUSTOM_SYNTAX_NOT_FOUND</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(Cannot resolve custom syntax|Could not load "?customSyntax|Cannot find module 'postcss-)
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">stylelint could not load the `customSyntax` plugin referenced in your config (e.g. `postcss-scss`, `postcss-less`, `postcss-html`).
+Resolutions:
+  - Pre-install the postcss syntax plugin via a pre-command in your .mega-linter.yml:
+      CSS_STYLELINT_PRE_COMMANDS:
+        - command: "npm install postcss-scss postcss-html"
+          cwd: "root"
+          continue_if_failed: false
+  - For `.scss` files, stylelint v15+ auto-loads `postcss-scss` if `stylelint-scss` is present (bundled in MegaLinter); explicit `customSyntax` is usually unnecessary.
+</code></pre>
+<h3 id="css_stylelint_error_no_config">CSS_STYLELINT_ERROR_NO_CONFIG</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(No configuration provided|No "stylelint" configuration)
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">stylelint ran but no configuration was found. stylelint requires a config file (no built-in default rules).
+Resolutions:
+  - Add a `.stylelintrc.json` (or `.stylelintrc.yml`, `stylelint.config.js`, or `stylelint` key in `package.json`) to your repository root, e.g.:
+      {
+        "extends": "stylelint-config-standard"
+      }
+  - `stylelint-config-standard` is bundled in MegaLinter and can be used directly.
+</code></pre>
 
 
 

@@ -2334,6 +2334,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dart_dartanalyzer_error_missing_pubspec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DART_DARTANALYZER_ERROR_MISSING_PUBSPEC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dart_dartanalyzer_error_packages_not_resolved" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DART_DARTANALYZER_ERROR_PACKAGES_NOT_RESOLVED
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12510,6 +12549,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dart_dartanalyzer_error_missing_pubspec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DART_DARTANALYZER_ERROR_MISSING_PUBSPEC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dart_dartanalyzer_error_packages_not_resolved" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DART_DARTANALYZER_ERROR_PACKAGES_NOT_RESOLVED
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12778,6 +12856,29 @@ esac \
     &amp;&amp; rm -r dart-sdk/
 
 ENV PATH="/usr/lib/dart/bin:${PATH}"
+</code></pre>
+<h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
+<p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
+<h3 id="dart_dartanalyzer_error_missing_pubspec">DART_DARTANALYZER_ERROR_MISSING_PUBSPEC</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">Could not find a file named "pubspec.yaml"
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">dart analyze requires a Dart package: no pubspec.yaml was found for the analyzed file(s).
+Add a pubspec.yaml at the package root, or restrict DART_DARTANALYZER_FILTER_REGEX_INCLUDE to a directory that contains one.
+</code></pre>
+<h3 id="dart_dartanalyzer_error_packages_not_resolved">DART_DARTANALYZER_ERROR_PACKAGES_NOT_RESOLVED</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(pub get|pub upgrade).*(failed|not found)|Some packages .* are not available
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">dart analyze could not resolve the package dependencies declared in pubspec.yaml.
+Resolution: pre-install dependencies (against the pubspec.yaml in your repo) via a pre-command in your .mega-linter.yml:
+  DART_DARTANALYZER_PRE_COMMANDS:
+    - command: "dart pub get"
+      cwd: "workspace"
+      continue_if_failed: false
+Or pre-cache `.dart_tool/package_config.json` so the analyzer can locate dependencies.
 </code></pre>
 
 

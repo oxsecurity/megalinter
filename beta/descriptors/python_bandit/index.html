@@ -4110,6 +4110,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_bandit_error_config_not_found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PYTHON_BANDIT_ERROR_CONFIG_NOT_FOUND
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python_bandit_error_config_invalid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PYTHON_BANDIT_ERROR_CONFIG_INVALID
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python_bandit_error_profile_not_found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PYTHON_BANDIT_ERROR_PROFILE_NOT_FOUND
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12504,6 +12554,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_bandit_error_config_not_found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PYTHON_BANDIT_ERROR_CONFIG_NOT_FOUND
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python_bandit_error_config_invalid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PYTHON_BANDIT_ERROR_CONFIG_INVALID
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python_bandit_error_profile_not_found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PYTHON_BANDIT_ERROR_PROFILE_NOT_FOUND
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12933,6 +13033,38 @@ ARG PIP_BANDIT_SARIF_FORMATTER_VERSION=1.1.1
 </ul>
 </li>
 </ul>
+<h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
+<p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
+<h3 id="python_bandit_error_config_not_found">PYTHON_BANDIT_ERROR_CONFIG_NOT_FOUND</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(Could not read config file|Unable to read config file|could not find config file)
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">bandit could not read the configuration file referenced via `--configfile` (or `.bandit.yml` / `pyproject.toml`).
+Resolutions:
+  - Confirm the config file is committed to the repository and visible at the expected path.
+  - If you customised `PYTHON_BANDIT_CONFIG_FILE`, double-check the value points to a valid file in the workspace.
+</code></pre>
+<h3 id="python_bandit_error_config_invalid">PYTHON_BANDIT_ERROR_CONFIG_INVALID</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(Error parsing file:|yaml\.scanner\.ScannerError|yaml\.parser\.ParserError|tomllib\.TOMLDecodeError|Invalid YAML)
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">bandit found the config file but failed to parse it (invalid YAML or TOML).
+Resolutions:
+  - Run a YAML/TOML linter against `.bandit.yml` or the `[tool.bandit]` section of `pyproject.toml`.
+  - Make sure indentation and option keys (`tests`, `skips`, `exclude_dirs`) follow the bandit schema.
+</code></pre>
+<h3 id="python_bandit_error_profile_not_found">PYTHON_BANDIT_ERROR_PROFILE_NOT_FOUND</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(Unable to find profile|No tests would be run)
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">bandit could not load the requested test profile or every test was excluded.
+Resolutions:
+  - Check the profile name in your config.
+  - Make sure `tests` / `skips` lists reference valid plugin IDs (B101, B602, ...).
+</code></pre>
 
 
 

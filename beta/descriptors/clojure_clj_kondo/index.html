@@ -1746,6 +1746,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clojure_clj_kondo_error_config_invalid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLOJURE_CLJ_KONDO_ERROR_CONFIG_INVALID
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12504,6 +12532,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clojure_clj_kondo_error_config_invalid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLOJURE_CLJ_KONDO_ERROR_CONFIG_INVALID
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12785,6 +12841,19 @@ RUN curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/clj-ko
     &amp;&amp; chmod +x install-clj-kondo \
     &amp;&amp; ./install-clj-kondo --version "$CLJ_KONDO_VERSION"
 
+</code></pre>
+<h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
+<p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
+<h3 id="clojure_clj_kondo_error_config_invalid">CLOJURE_CLJ_KONDO_ERROR_CONFIG_INVALID</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(error while reading .*\.clj-kondo|No reader function for tag|Invalid (token|leading character|EDN)|Unmatched delimiter)
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">clj-kondo could not read its configuration file (`.clj-kondo/config.edn`).
+Resolutions:
+  - Validate the EDN syntax (balanced `{}`, `[]`, `()`, no trailing commas; keys are usually keywords like `:linters`).
+  - Run `clj-kondo --config '{}' --lint &lt;file&gt;` to confirm the failure is config-related.
+  - Compare against the reference config at &lt;https://github.com/clj-kondo/clj-kondo/blob/master/doc/config.md&gt;.
 </code></pre>
 
 

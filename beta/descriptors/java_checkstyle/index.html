@@ -2691,6 +2691,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#java_checkstyle_error_out_of_memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JAVA_CHECKSTYLE_ERROR_OUT_OF_MEMORY
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#java_checkstyle_error_unable_to_parse_configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JAVA_CHECKSTYLE_ERROR_UNABLE_TO_PARSE_CONFIGURATION
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#java_checkstyle_error_cannot_initialize_module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JAVA_CHECKSTYLE_ERROR_CANNOT_INITIALIZE_MODULE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12504,6 +12554,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#java_checkstyle_error_out_of_memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JAVA_CHECKSTYLE_ERROR_OUT_OF_MEMORY
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#java_checkstyle_error_unable_to_parse_configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JAVA_CHECKSTYLE_ERROR_UNABLE_TO_PARSE_CONFIGURATION
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#java_checkstyle_error_cannot_initialize_module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JAVA_CHECKSTYLE_ERROR_CANNOT_INITIALIZE_MODULE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12845,6 +12945,36 @@ ARG JAVA_CHECKSTYLE_VERSION=12.1.0
 RUN curl --retry 5 --retry-delay 5 -sSL \
     "https://github.com/checkstyle/checkstyle/releases/download/checkstyle-${JAVA_CHECKSTYLE_VERSION}/checkstyle-${JAVA_CHECKSTYLE_VERSION}-all.jar" \
     --output /usr/bin/checkstyle
+</code></pre>
+<h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
+<p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
+<h3 id="java_checkstyle_error_out_of_memory">JAVA_CHECKSTYLE_ERROR_OUT_OF_MEMORY</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">java\.lang\.OutOfMemoryError
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">Checkstyle ran out of JVM heap memory while parsing your sources.
+This typically happens on very large files or large rule sets.
+Increase the heap by setting the JAVA_CHECKSTYLE_ARGUMENTS variable in your .mega-linter.yml, for example:
+JAVA_CHECKSTYLE_ARGUMENTS: "-Xmx2g"
+</code></pre>
+<h3 id="java_checkstyle_error_unable_to_parse_configuration">JAVA_CHECKSTYLE_ERROR_UNABLE_TO_PARSE_CONFIGURATION</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">unable to parse configuration stream
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">Checkstyle could not parse the configuration file (sun_checks.xml or your custom config).
+Check that the file is valid XML and that the DOCTYPE / module names match the installed Checkstyle version.
+See https://checkstyle.org/config.html for the expected format.
+</code></pre>
+<h3 id="java_checkstyle_error_cannot_initialize_module">JAVA_CHECKSTYLE_ERROR_CANNOT_INITIALIZE_MODULE</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">cannot initialize module
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">Checkstyle failed to initialize a module declared in your configuration file.
+This usually means a module name is misspelled, was removed in your Checkstyle version, or requires a custom checks JAR not on the classpath.
+Verify the module names at https://checkstyle.org/checks.html and ensure any third-party check JAR is referenced via the classpath.
 </code></pre>
 
 

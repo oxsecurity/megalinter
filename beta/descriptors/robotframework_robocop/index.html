@@ -8866,6 +8866,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#robotframework_robocop_error_config_invalid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ROBOTFRAMEWORK_ROBOCOP_ERROR_CONFIG_INVALID
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12510,6 +12538,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#robotframework_robocop_error_config_invalid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ROBOTFRAMEWORK_ROBOCOP_ERROR_CONFIG_INVALID
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12750,6 +12806,19 @@ ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=8.2.8
 </ul>
 </li>
 </ul>
+<h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
+<p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
+<h3 id="robotframework_robocop_error_config_invalid">ROBOTFRAMEWORK_ROBOCOP_ERROR_CONFIG_INVALID</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(InvalidConfigurationError|InvalidConfigurationFormatError|InvalidParameterValueError|Provided rule '[^']+' does not exist|Circular reference found in 'extends')
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">Robocop could not load its configuration (CLI args or `robocop.toml`) or referenced an unknown rule.
+Resolutions:
+  - Validate the TOML syntax of `robocop.toml`.
+  - Check that all rule names under `include`/`exclude`/`configure` exist in the installed Robocop version (rule names were reorganized in Robocop 5+ / 6+).
+  - See &lt;https://robocop.dev/stable/rules_list/&gt;.
+</code></pre>
 
 
 

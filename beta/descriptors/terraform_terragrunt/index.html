@@ -9272,6 +9272,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terraform_terragrunt_error_config_parse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TERRAFORM_TERRAGRUNT_ERROR_CONFIG_PARSE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12488,6 +12516,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terraform_terragrunt_error_config_parse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TERRAFORM_TERRAGRUNT_ERROR_CONFIG_PARSE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12752,6 +12808,16 @@ Author: Gruntwork &lt;www.gruntwork.io&gt;
 ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.3
 FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
+</code></pre>
+<h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
+<p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
+<h3 id="terraform_terragrunt_error_config_parse">TERRAFORM_TERRAGRUNT_ERROR_CONFIG_PARSE</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">Error parsing Terragrunt config
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">Terragrunt could not parse a referenced terragrunt.hcl configuration file.
+Verify that include/dependency blocks resolve and that referenced files exist relative to the working directory.
 </code></pre>
 
 

@@ -4583,6 +4583,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ruby_rubocop_error_unable_to_load_plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RUBY_RUBOCOP_ERROR_UNABLE_TO_LOAD_PLUGIN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ruby_rubocop_error_invalid_config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RUBY_RUBOCOP_ERROR_INVALID_CONFIG
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ruby_rubocop_error_obsolete_config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RUBY_RUBOCOP_ERROR_OBSOLETE_CONFIG
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12504,6 +12554,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ruby_rubocop_error_unable_to_load_plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RUBY_RUBOCOP_ERROR_UNABLE_TO_LOAD_PLUGIN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ruby_rubocop_error_invalid_config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RUBY_RUBOCOP_ERROR_INVALID_CONFIG
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ruby_rubocop_error_obsolete_config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RUBY_RUBOCOP_ERROR_OBSOLETE_CONFIG
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12967,6 +13067,45 @@ ARG GEM_RUBOCOP_RSPEC_VERSION=3.9.0
 </ul>
 </li>
 </ul>
+<h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
+<p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
+<h3 id="ruby_rubocop_error_unable_to_load_plugin">RUBY_RUBOCOP_ERROR_UNABLE_TO_LOAD_PLUGIN</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">unable to load plugin|cannot load such file -- rubocop-[a-z]+
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">RuboCop could not load a plugin listed in `require:` or `plugins:` of your `.rubocop.yml`.
+MegaLinter preinstalls these plugins: `rubocop-github`, `rubocop-performance`, `rubocop-rails`, `rubocop-rake`, `rubocop-rspec`.
+Resolutions:
+  - Pre-install the missing plugin via a pre-command in your .mega-linter.yml (gem installs globally):
+      RUBY_RUBOCOP_PRE_COMMANDS:
+        - command: "gem install rubocop-thread_safety"
+          cwd: "root"
+          continue_if_failed: false
+  - Or remove unsupported plugin references from `.rubocop.yml`.
+  - For a project-pinned setup, run RuboCop via a project Gemfile + bundler instead.
+</code></pre>
+<h3 id="ruby_rubocop_error_invalid_config">RUBY_RUBOCOP_ERROR_INVALID_CONFIG</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(unrecognized cop or department|Malformed configuration|Error: \S+ is not a valid cop name)
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">RuboCop rejected an entry in `.rubocop.yml`.
+Resolutions:
+  - Verify cop names against the [RuboCop cops catalogue](https://docs.rubocop.org/rubocop/cops.html). Renamed cops often need a department prefix (e.g. `Layout/`, `Lint/`).
+  - Run `rubocop --show-cops` locally to confirm a cop exists in the installed version.
+  - Check YAML indentation and that the file is valid YAML.
+</code></pre>
+<h3 id="ruby_rubocop_error_obsolete_config">RUBY_RUBOCOP_ERROR_OBSOLETE_CONFIG</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">obsolete (configuration|parameter|cop)
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">Your `.rubocop.yml` uses configuration that has been removed in a newer RuboCop release.
+Resolutions:
+  - Follow the migration hints printed above the error (RuboCop usually states the new cop/parameter name).
+  - Run `rubocop --auto-gen-config` locally to regenerate a baseline against the bundled RuboCop version.
+</code></pre>
 
 
 

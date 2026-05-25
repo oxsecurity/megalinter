@@ -4226,6 +4226,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_ruff_error_config_parse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PYTHON_RUFF_ERROR_CONFIG_PARSE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python_ruff_error_unknown_rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PYTHON_RUFF_ERROR_UNKNOWN_RULE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12510,6 +12549,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_ruff_error_config_parse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PYTHON_RUFF_ERROR_CONFIG_PARSE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python_ruff_error_unknown_rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PYTHON_RUFF_ERROR_UNKNOWN_RULE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12795,6 +12873,29 @@ ARG PIP_RUFF_VERSION=0.15.14
 </ul>
 </li>
 </ul>
+<h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
+<p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
+<h3 id="python_ruff_error_config_parse">PYTHON_RUFF_ERROR_CONFIG_PARSE</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(Failed to parse .*(ruff\.toml|pyproject\.toml)|TOML parse error|invalid type: |unknown field )
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">ruff could not parse its configuration file (`ruff.toml`, `.ruff.toml`, or `pyproject.toml`).
+Resolutions:
+  - Validate the TOML syntax of the file.
+  - Make sure option keys under `[tool.ruff]` / `[tool.ruff.lint]` match the pinned ruff version's schema; deprecated keys are removed in newer releases.
+  - Check for committed merge conflict markers (`&lt;&lt;&lt;&lt;&lt;&lt;&lt;`, `=======`, `&gt;&gt;&gt;&gt;&gt;&gt;&gt;`) in the file.
+</code></pre>
+<h3 id="python_ruff_error_unknown_rule">PYTHON_RUFF_ERROR_UNKNOWN_RULE</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(Unknown rule selector|unknown rule code|Unknown rule:|unrecognized selector)
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">ruff's configuration references a rule code that the pinned ruff version does not know about (renamed, deleted, or not yet released).
+Resolutions:
+  - Check the ruff changelog for renames around the version pinned in MegaLinter.
+  - Update the rule code in your `select` / `ignore` / `extend-select` list to the new name.
+</code></pre>
 
 
 

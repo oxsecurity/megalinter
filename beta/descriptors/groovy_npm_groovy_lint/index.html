@@ -2584,6 +2584,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#groovy_npm_groovy_lint_error_codenarc_server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GROOVY_NPM_GROOVY_LINT_ERROR_CODENARC_SERVER
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12510,6 +12538,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#groovy_npm_groovy_lint_error_codenarc_server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GROOVY_NPM_GROOVY_LINT_ERROR_CODENARC_SERVER
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12882,6 +12938,17 @@ ARG NPM_GROOVY_LINT_VERSION=17.0.5
 </ul>
 </li>
 </ul>
+<h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
+<p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
+<h3 id="groovy_npm_groovy_lint_error_codenarc_server">GROOVY_NPM_GROOVY_LINT_ERROR_CODENARC_SERVER</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">CodeNarcServer
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">npm-groovy-lint failed to start or communicate with the embedded CodeNarcServer (Java process).
+Common causes: port already in use, or a stale lock file in the temp directory.
+Try setting GROOVY_NPM_GROOVY_LINT_ARGUMENTS to "--noserver" in your .mega-linter.yml to bypass the server.
+</code></pre>
 
 
 

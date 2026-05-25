@@ -3514,6 +3514,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#perl_perlcritic_error_config_invalid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PERL_PERLCRITIC_ERROR_CONFIG_INVALID
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#perl_perlcritic_error_policy_not_found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PERL_PERLCRITIC_ERROR_POLICY_NOT_FOUND
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12482,6 +12521,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#perl_perlcritic_error_config_invalid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PERL_PERLCRITIC_ERROR_CONFIG_INVALID
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#perl_perlcritic_error_policy_not_found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PERL_PERLCRITIC_ERROR_POLICY_NOT_FOUND
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12687,6 +12765,33 @@ ARG PERL_PERLCRITIC_VERSION=v1.1.0
 RUN curl -fsSL https://raw.githubusercontent.com/skaji/cpm/refs/tags/${PERL_PERLCRITIC_VERSION}/cpm | perl - install -g --show-build-log-on-failure --without-build --without-test --without-runtime Perl::Critic \
     &amp;&amp; rm -rf /root/.perl-cpm
 
+</code></pre>
+<h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
+<p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
+<h3 id="perl_perlcritic_error_config_invalid">PERL_PERLCRITIC_ERROR_CONFIG_INVALID</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(Unable to parse profile|Invalid (option|setting) .* in profile|Perl::Critic::ConfigErrors)
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">perlcritic could not parse its configuration file (`.perlcriticrc`, INI-like format).
+Resolutions:
+  - Verify `.perlcriticrc` syntax: global settings at the top, then policy sections like `[Subroutines::ProhibitExplicitReturnUndef]`.
+  - Make sure every referenced policy is actually installed (try `perlcritic --list` to see available policies).
+  - Run with `perlcritic --profile /dev/null myfile.pl` to confirm the failure is config-related.
+</code></pre>
+<h3 id="perl_perlcritic_error_policy_not_found">PERL_PERLCRITIC_ERROR_POLICY_NOT_FOUND</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">Policy '[^']+' is not installed
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">perlcritic's profile references a policy module that is not installed in the MegaLinter image.
+Resolutions:
+  - Remove the unknown policy section from `.perlcriticrc`, or
+  - Pre-install the missing CPAN module via a pre-command in your .mega-linter.yml (cpanm installs globally):
+      PERL_PERLCRITIC_PRE_COMMANDS:
+        - command: "cpanm --notest Perl::Critic::Policy::YourPolicy"
+          cwd: "root"
+          continue_if_failed: false
 </code></pre>
 
 

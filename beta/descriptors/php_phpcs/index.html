@@ -3640,6 +3640,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#php_phpcs_error_standard_not_installed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PHP_PHPCS_ERROR_STANDARD_NOT_INSTALLED
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#php_phpcs_error_referenced_sniff_not_found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PHP_PHPCS_ERROR_REFERENCED_SNIFF_NOT_FOUND
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12510,6 +12549,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#php_phpcs_error_standard_not_installed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PHP_PHPCS_ERROR_STANDARD_NOT_INSTALLED
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#php_phpcs_error_referenced_sniff_not_found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PHP_PHPCS_ERROR_REFERENCED_SNIFF_NOT_FOUND
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12893,6 +12971,29 @@ ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=4.0.1
 ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.6.0
 RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" &amp;&amp; export GITHUB_AUTH_TOKEN &amp;&amp; composer global require squizlabs/php_codesniffer:${PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION}
 
+</code></pre>
+<h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
+<p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
+<h3 id="php_phpcs_error_standard_not_installed">PHP_PHPCS_ERROR_STANDARD_NOT_INSTALLED</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">ERROR: the "[^"]+" coding standard is not installed
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">phpcs could not find the coding standard referenced by `--standard=` (or your `phpcs.xml`).
+Resolutions:
+  - Check the value of `--standard=` in `PHP_PHPCS_ARGUMENTS` or the `&lt;arg name="standard" .../&gt;` in `phpcs.xml`.
+  - Use one of the built-in standards (PSR1, PSR2, PSR12, PEAR, Squiz, Zend, MySource) or commit the custom standard XML/PHP file to the repository and reference it by relative path.
+  - Custom standards installed via Composer are not preinstalled in MegaLinter — vendor them in the repo, or rely on a built-in standard.
+</code></pre>
+<h3 id="php_phpcs_error_referenced_sniff_not_found">PHP_PHPCS_ERROR_REFERENCED_SNIFF_NOT_FOUND</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">Referenced sniff "[^"]+" does not exist
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">phpcs failed to load a sniff listed in your ruleset.
+Resolutions:
+  - Verify the `&lt;rule ref="..."/&gt;` entries in your `phpcs.xml` (typo, removed sniff, wrong standard prefix).
+  - If the sniff comes from a third-party standard, commit that standard's files into the repository so phpcs can find them.
 </code></pre>
 
 

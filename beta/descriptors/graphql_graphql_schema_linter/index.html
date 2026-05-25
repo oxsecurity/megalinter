@@ -6132,6 +6132,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#graphql_graphql_schema_linter_error_custom_rule_not_found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GRAPHQL_GRAPHQL_SCHEMA_LINTER_ERROR_CUSTOM_RULE_NOT_FOUND
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12488,6 +12516,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#graphql_graphql_schema_linter_error_custom_rule_not_found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GRAPHQL_GRAPHQL_SCHEMA_LINTER_ERROR_CUSTOM_RULE_NOT_FOUND
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12798,6 +12854,19 @@ ARG NPM_GRAPHQL_SCHEMA_LINTER_VERSION=3.0.1
 </ul>
 </li>
 </ul>
+<h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
+<p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
+<h3 id="graphql_graphql_schema_linter_error_custom_rule_not_found">GRAPHQL_GRAPHQL_SCHEMA_LINTER_ERROR_CUSTOM_RULE_NOT_FOUND</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">There was an issue loading the specified custom rules
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">graphql-schema-linter could not resolve a Node.js module. This almost always points to a `--custom-rule-paths` entry (or `customRulePaths` in `.graphql-schema-linterrc`) referencing a file or package that does not exist inside the container.
+Resolutions:
+  - Verify every glob in `customRulePaths` resolves to files that are committed to the repository and visible from the workspace root.
+  - Remove the custom rules path and rely on the built-in rules.
+  - Reference docs: https://github.com/cjoudrey/graphql-schema-linter#custom-rules
+</code></pre>
 
 
 

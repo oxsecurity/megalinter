@@ -3036,6 +3036,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jsx_eslint_error_plugin_not_found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JSX_ESLINT_ERROR_PLUGIN_NOT_FOUND
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jsx_eslint_error_config_not_found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JSX_ESLINT_ERROR_CONFIG_NOT_FOUND
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jsx_eslint_error_flat_config_module_not_found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JSX_ESLINT_ERROR_FLAT_CONFIG_MODULE_NOT_FOUND
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12582,6 +12632,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jsx_eslint_error_plugin_not_found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JSX_ESLINT_ERROR_PLUGIN_NOT_FOUND
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jsx_eslint_error_config_not_found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JSX_ESLINT_ERROR_CONFIG_NOT_FOUND
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jsx_eslint_error_flat_config_module_not_found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JSX_ESLINT_ERROR_FLAT_CONFIG_MODULE_NOT_FOUND
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12965,6 +13065,56 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 </ul>
 </li>
 </ul>
+<h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
+<p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
+<h3 id="jsx_eslint_error_plugin_not_found">JSX_ESLINT_ERROR_PLUGIN_NOT_FOUND</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(Failed to load plugin '|ESLint couldn't find the plugin "|Cannot find module 'eslint-plugin-)
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">ESLint could not load a plugin referenced in your config (e.g. `eslint-plugin-react`, `eslint-plugin-react-hooks`, `@eslint-react/eslint-plugin`). The plugin is not installed in MegaLinter's bundled `node_modules` (`/node-deps/node_modules`).
+Resolutions:
+  - Pre-install the missing plugin via a pre-command in your .mega-linter.yml:
+      JSX_ESLINT_PRE_COMMANDS:
+        - command: "npm install eslint-plugin-react eslint-plugin-react-hooks"
+          cwd: "root"
+          continue_if_failed: false
+  - Or install your project's dependencies and run the project-local ESLint binary:
+      JSX_ESLINT_PRE_COMMANDS:
+        - command: yarn install --frozen-lockfile --ignore-scripts
+          cwd: workspace
+          continue_if_failed: false
+      JSX_ESLINT_CLI_EXECUTABLE: node_modules/.bin/eslint
+</code></pre>
+<h3 id="jsx_eslint_error_config_not_found">JSX_ESLINT_ERROR_CONFIG_NOT_FOUND</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(ESLint couldn't find the config "|Failed to load config "|Cannot find module 'eslint-config-)
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">ESLint could not resolve a shareable config referenced via `extends` (e.g. `airbnb`, `react-app`).
+Resolutions:
+  - Pre-install the config package via a pre-command in your .mega-linter.yml:
+      JSX_ESLINT_PRE_COMMANDS:
+        - command: "npm install eslint-config-NAME"
+          cwd: "root"
+          continue_if_failed: false
+  - Or install your project's dependencies and use the workspace ESLint binary (see ESLint v10 section above).
+</code></pre>
+<h3 id="jsx_eslint_error_flat_config_module_not_found">JSX_ESLINT_ERROR_FLAT_CONFIG_MODULE_NOT_FOUND</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">ERR_MODULE_NOT_FOUND.+eslint\.config\.
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">ESLint v9+/v10 flat config (`eslint.config.mjs`) uses native ESM resolution, which does not honor `NODE_PATH`. Bare imports like `import reactPlugin from '@eslint-react/eslint-plugin'` fail when ESLint runs from MegaLinter's bundled install.
+Resolutions:
+  - Use `createRequire` in your `eslint.config.mjs` (see the "ESLint v10" section in this linter's documentation above).
+  - Or install your project's dependencies and run the project-local ESLint binary:
+      JSX_ESLINT_PRE_COMMANDS:
+        - command: yarn install --frozen-lockfile --ignore-scripts
+          cwd: workspace
+          continue_if_failed: false
+      JSX_ESLINT_CLI_EXECUTABLE: node_modules/.bin/eslint
+</code></pre>
 
 
 

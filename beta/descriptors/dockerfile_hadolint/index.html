@@ -8255,6 +8255,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dockerfile_hadolint_error_config_parse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DOCKERFILE_HADOLINT_ERROR_CONFIG_PARSE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dockerfile_hadolint_error_config_read" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DOCKERFILE_HADOLINT_ERROR_CONFIG_READ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12510,6 +12549,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dockerfile_hadolint_error_config_parse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DOCKERFILE_HADOLINT_ERROR_CONFIG_PARSE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dockerfile_hadolint_error_config_read" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DOCKERFILE_HADOLINT_ERROR_CONFIG_READ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12903,6 +12981,24 @@ Available options:
 ARG DOCKERFILE_HADOLINT_VERSION=v2.14.0-alpine
 FROM hadolint/hadolint:${DOCKERFILE_HADOLINT_VERSION} AS hadolint
 COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
+</code></pre>
+<h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
+<p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
+<h3 id="dockerfile_hadolint_error_config_parse">DOCKERFILE_HADOLINT_ERROR_CONFIG_PARSE</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">Error parsing your config file in
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">Hadolint could not parse its configuration file (.hadolint.yaml / .hadolint.yml).
+Validate the YAML syntax and ensure all keys (`ignored`, `trustedRegistries`, `override`, `failure-threshold`) match the hadolint config schema.
+</code></pre>
+<h3 id="dockerfile_hadolint_error_config_read">DOCKERFILE_HADOLINT_ERROR_CONFIG_READ</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">Failed reading .*\.hadolint
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">Hadolint could not read the configuration file passed via `--config`.
+Check that the file path exists inside the container and that the file is readable.
 </code></pre>
 
 

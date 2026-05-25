@@ -4138,6 +4138,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_mypy_error_stubs_install_failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PYTHON_MYPY_ERROR_STUBS_INSTALL_FAILED
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python_mypy_error_config_invalid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PYTHON_MYPY_ERROR_CONFIG_INVALID
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python_mypy_error_daemon_crash" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PYTHON_MYPY_ERROR_DAEMON_CRASH
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12504,6 +12554,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_mypy_error_stubs_install_failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PYTHON_MYPY_ERROR_STUBS_INSTALL_FAILED
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python_mypy_error_config_invalid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PYTHON_MYPY_ERROR_CONFIG_INVALID
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python_mypy_error_daemon_crash" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PYTHON_MYPY_ERROR_DAEMON_CRASH
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -13076,6 +13176,45 @@ ENV MYPY_CACHE_DIR=/tmp
 </ul>
 </li>
 </ul>
+<h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
+<p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
+<h3 id="python_mypy_error_stubs_install_failed">PYTHON_MYPY_ERROR_STUBS_INSTALL_FAILED</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(error installing types|installation of type stubs (failed|did not succeed)|mypy: error: --install-types)
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">mypy attempted to auto-install missing type stubs (`--install-types`) but the pip step failed.
+This is usually a network issue or a missing stub package on PyPI.
+Resolutions:
+  - Pre-install the required `types-*` stub packages into mypy's venv via a pre-command in your .mega-linter.yml:
+      PYTHON_MYPY_PRE_COMMANDS:
+        - command: "pip install types-requests types-PyYAML"
+          venv: mypy
+          continue_if_failed: false
+  - For libraries with no published stubs, silence the import with `# type: ignore[import]` or add them to `ignore_missing_imports` in your mypy config.
+</code></pre>
+<h3 id="python_mypy_error_config_invalid">PYTHON_MYPY_ERROR_CONFIG_INVALID</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(mypy: error: Invalid (config|option)|mypy: error: Configuration file|configparser\.(Error|ParsingError)|tomllib\.TOMLDecodeError.+mypy)
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">mypy could not parse its configuration file (`.mypy.ini`, `mypy.ini`, `pyproject.toml [tool.mypy]`, or `setup.cfg`).
+Resolutions:
+  - Validate INI/TOML syntax of the mypy config.
+  - Check option names match the pinned mypy version's documentation.
+  - Remove the custom config to confirm the issue is config-related.
+</code></pre>
+<h3 id="python_mypy_error_daemon_crash">PYTHON_MYPY_ERROR_DAEMON_CRASH</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(INTERNAL ERROR|Traceback \(most recent call last\)|mypy crashed)
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">mypy crashed with an internal error. This usually indicates a bug in mypy or an interaction with a plugin.
+Resolutions:
+  - Clear the mypy cache (MegaLinter sets `MYPY_CACHE_DIR=/tmp`, but stale data can persist between runs in long-lived environments).
+  - Disable mypy plugins (`plugins = ...` in your config) one by one to narrow the cause.
+  - Report the traceback to https://github.com/python/mypy/issues.
+</code></pre>
 
 
 

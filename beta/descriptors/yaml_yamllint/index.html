@@ -7339,6 +7339,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#yaml_yamllint_error_config_invalid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        YAML_YAMLLINT_ERROR_CONFIG_INVALID
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12510,6 +12538,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#yaml_yamllint_error_config_invalid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        YAML_YAMLLINT_ERROR_CONFIG_INVALID
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12871,6 +12927,19 @@ ARG PIP_YAMLLINT_VERSION=1.38.0
 </ul>
 </li>
 </ul>
+<h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
+<p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
+<h3 id="yaml_yamllint_error_config_invalid">YAML_YAMLLINT_ERROR_CONFIG_INVALID</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(invalid config: (no such rule|unknown option)|cannot read config file|YamlLintConfigError)
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">yamllint could not load `.yamllint.yml` or it references an unknown rule/option.
+Resolutions:
+  - Validate the YAML syntax of `.yamllint.yml`.
+  - Check rule names against &lt;https://yamllint.readthedocs.io/en/stable/rules.html&gt;.
+  - When extending a preset, use `extends: default` (or `relaxed`), not arbitrary file paths.
+</code></pre>
 
 
 

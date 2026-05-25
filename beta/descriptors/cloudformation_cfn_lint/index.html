@@ -8140,6 +8140,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cloudformation_cfn_lint_error_schema_download" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLOUDFORMATION_CFN_LINT_ERROR_SCHEMA_DOWNLOAD
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cloudformation_cfn_lint_error_custom_rule_import" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLOUDFORMATION_CFN_LINT_ERROR_CUSTOM_RULE_IMPORT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cloudformation_cfn_lint_error_config_invalid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLOUDFORMATION_CFN_LINT_ERROR_CONFIG_INVALID
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12504,6 +12554,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cloudformation_cfn_lint_error_schema_download" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLOUDFORMATION_CFN_LINT_ERROR_SCHEMA_DOWNLOAD
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cloudformation_cfn_lint_error_custom_rule_import" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLOUDFORMATION_CFN_LINT_ERROR_CUSTOM_RULE_IMPORT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cloudformation_cfn_lint_error_config_invalid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLOUDFORMATION_CFN_LINT_ERROR_CONFIG_INVALID
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12837,6 +12937,32 @@ ARG PIP_CFN_LINT_VERSION=1.51.1
 </ul>
 </li>
 </ul>
+<h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
+<p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
+<h3 id="cloudformation_cfn_lint_error_schema_download">CLOUDFORMATION_CFN_LINT_ERROR_SCHEMA_DOWNLOAD</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(Failed downloading [a-z0-9-]+:|All regions failed to download)
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">cfn-lint failed to download the AWS CloudFormation resource schemas.
+This usually means the build had no network access. Pre-cache schemas in your image or run cfn-lint with `--update-specs` during image build.
+</code></pre>
+<h3 id="cloudformation_cfn_lint_error_custom_rule_import">CLOUDFORMATION_CFN_LINT_ERROR_CUSTOM_RULE_IMPORT</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">Failed to load (rule|custom rule) 
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">cfn-lint failed to load a custom rule module referenced via `--append-rules` or `.cfnlintrc.yml`.
+Verify the module path is correct, importable from the container's Python environment, and that all its Python dependencies are installed.
+</code></pre>
+<h3 id="cloudformation_cfn_lint_error_config_invalid">CLOUDFORMATION_CFN_LINT_ERROR_CONFIG_INVALID</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(Invalid (configuration( key)?|type|configuration in) .*\.cfnlintrc|Missing required property .* in \.cfnlintrc)
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">The .cfnlintrc configuration file could not be parsed.
+Verify YAML syntax and that all keys (`include_checks`, `ignore_checks`, `regions`, etc.) match the cfn-lint configuration schema.
+</code></pre>
 
 
 

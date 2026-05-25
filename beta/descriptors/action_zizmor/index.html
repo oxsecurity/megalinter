@@ -7578,6 +7578,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#action_zizmor_error_github_api_unreachable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ACTION_ZIZMOR_ERROR_GITHUB_API_UNREACHABLE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12488,6 +12516,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#action_zizmor_error_github_api_unreachable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ACTION_ZIZMOR_ERROR_GITHUB_API_UNREACHABLE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12838,6 +12894,19 @@ RUN set -eu; \
     cargo install --force --locked --root /out "zizmor@${CARGO_ZIZMOR_VERSION}" &amp;&amp; \
     chmod +x /out/bin/zizmor
 COPY --link --from=cargo-bin-zizmor /out/bin/zizmor /usr/bin/zizmor
+</code></pre>
+<h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
+<p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
+<h3 id="action_zizmor_error_github_api_unreachable">ACTION_ZIZMOR_ERROR_GITHUB_API_UNREACHABLE</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(can't access [^:]+: missing or you have no access|couldn't list branches for)
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">Zizmor could not access a repository referenced by a `uses:` clause via the GitHub API (missing token, insufficient scope, or cross-repo private access).
+To allow zizmor to authenticate with GITHUB_TOKEN (or a PAT with `Contents: read-only`), whitelist the variable in your .mega-linter.yml:
+ACTION_ZIZMOR_UNSECURED_ENV_VARIABLES:
+  - GITHUB_TOKEN
+If the referenced workflow is in a private repo outside the current one, provide a PAT with cross-repo access instead of the default GITHUB_TOKEN, or run zizmor in offline mode.
 </code></pre>
 
 

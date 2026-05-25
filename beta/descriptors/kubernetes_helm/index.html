@@ -8601,6 +8601,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes_helm_error_missing_dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        KUBERNETES_HELM_ERROR_MISSING_DEPENDENCIES
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes_helm_error_chart_yaml_missing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        KUBERNETES_HELM_ERROR_CHART_YAML_MISSING
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12482,6 +12521,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes_helm_error_missing_dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        KUBERNETES_HELM_ERROR_MISSING_DEPENDENCIES
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes_helm_error_chart_yaml_missing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        KUBERNETES_HELM_ERROR_CHART_YAML_MISSING
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12873,6 +12951,32 @@ Use "helm [command] --help" for more information about a command.
 </ul>
 </li>
 </ul>
+<h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
+<p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
+<h3 id="kubernetes_helm_error_missing_dependencies">KUBERNETES_HELM_ERROR_MISSING_DEPENDENCIES</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">chart (directory|metadata) is missing these dependencies
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">helm lint failed because a chart dependency declared in Chart.yaml is not present under charts/.
+Run `helm dependency update &lt;chart-path&gt;` (or `helm dependency build`) before linting so subcharts are vendored into charts/.
+In CI, add a pre-command in your .mega-linter.yml (run in your repo workspace where the chart lives):
+  KUBERNETES_HELM_PRE_COMMANDS:
+    - command: "helm dependency update ."
+      cwd: "workspace"
+      continue_if_failed: false
+</code></pre>
+<h3 id="kubernetes_helm_error_chart_yaml_missing">KUBERNETES_HELM_ERROR_CHART_YAML_MISSING</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(Chart\.yaml file is missing|no Chart\.yaml exists in directory|unable to check Chart\.yaml)
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">helm lint could not find a valid Chart.yaml in the target directory.
+Checks:
+  - Make sure `Chart.yaml` exists at the root of the chart (not just Chart.yml).
+  - If the chart is under a subfolder, scope helm via `KUBERNETES_HELM_FILTER_REGEX_INCLUDE` or move it.
+  - Verify Chart.yaml has the required keys `apiVersion`, `name`, and `version`.
+</code></pre>
 
 
 

@@ -8466,6 +8466,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gherkin_gherkin_lint_error_config_invalid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GHERKIN_GHERKIN_LINT_ERROR_CONFIG_INVALID
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12488,6 +12516,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gherkin_gherkin_lint_error_config_invalid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GHERKIN_GHERKIN_LINT_ERROR_CONFIG_INVALID
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12720,6 +12776,18 @@ ARG NPM_GHERKIN_LINT_VERSION=4.2.4
 </ul>
 </li>
 </ul>
+<h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
+<p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
+<h3 id="gherkin_gherkin_lint_error_config_invalid">GHERKIN_GHERKIN_LINT_ERROR_CONFIG_INVALID</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(Could not find (specified |default )?config file|Error\(s\) in configuration file:|Rule ".*" does not (match any|exist))
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">gherkin-lint could not load `.gherkin-lintrc` or it references a rule that does not exist.
+Resolutions:
+  - Validate that `.gherkin-lintrc` is valid JSON.
+  - Check rule names against &lt;https://github.com/gherkin-lint/gherkin-lint#available-rules&gt;.
+</code></pre>
 
 
 

@@ -6417,6 +6417,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#json_eslint_plugin_jsonc_error_parser_not_found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JSON_ESLINT_PLUGIN_JSONC_ERROR_PARSER_NOT_FOUND
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json_eslint_plugin_jsonc_error_config_overrides_missing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JSON_ESLINT_PLUGIN_JSONC_ERROR_CONFIG_OVERRIDES_MISSING
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12504,6 +12543,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#json_eslint_plugin_jsonc_error_parser_not_found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JSON_ESLINT_PLUGIN_JSONC_ERROR_PARSER_NOT_FOUND
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json_eslint_plugin_jsonc_error_config_overrides_missing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JSON_ESLINT_PLUGIN_JSONC_ERROR_CONFIG_OVERRIDES_MISSING
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12847,6 +12925,41 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 </ul>
 </li>
 </ul>
+<h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
+<p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
+<h3 id="json_eslint_plugin_jsonc_error_parser_not_found">JSON_ESLINT_PLUGIN_JSONC_ERROR_PARSER_NOT_FOUND</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(Cannot find module 'jsonc-eslint-parser'|Failed to load parser 'jsonc-eslint-parser')
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">ESLint could not load `jsonc-eslint-parser` referenced in your `.eslintrc-json.json` config. This parser is required by `eslint-plugin-jsonc` to parse JSON/JSONC/JSON5 files.
+Resolutions:
+  - Pre-install the parser into MegaLinter's npm root via a pre-command in your .mega-linter.yml:
+      JSON_ESLINT_PLUGIN_JSONC_PRE_COMMANDS:
+        - command: "npm install jsonc-eslint-parser"
+          cwd: "root"
+          continue_if_failed: false
+  - Or use the project-local ESLint binary after installing your dependencies:
+      JSON_ESLINT_PLUGIN_JSONC_PRE_COMMANDS:
+        - command: yarn install --frozen-lockfile --ignore-scripts
+          cwd: workspace
+          continue_if_failed: false
+      JSON_ESLINT_PLUGIN_JSONC_CLI_EXECUTABLE: node_modules/.bin/eslint
+</code></pre>
+<h3 id="json_eslint_plugin_jsonc_error_config_overrides_missing">JSON_ESLINT_PLUGIN_JSONC_ERROR_CONFIG_OVERRIDES_MISSING</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(ESLint couldn't find the config|Failed to load config "plugin:jsonc/)
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">ESLint could not resolve a `plugin:jsonc/recommended-*` config referenced from your project's `.eslintrc`. This usually means you have a workspace ESLint config that overrides MegaLinter's bundled one but does not list `jsonc` in `plugins`.
+Resolutions:
+  - Add `JSON_ESLINT_PLUGIN_JSONC_FILE_NAME: .eslintrc.json` (or your config filename) to `.mega-linter.yml` and add a `jsonc` `overrides` block to your own ESLint config (see the linter documentation above for a full example).
+  - Or pre-install `eslint-plugin-jsonc` into the project's `node_modules`:
+      JSON_ESLINT_PLUGIN_JSONC_PRE_COMMANDS:
+        - command: yarn install --frozen-lockfile --ignore-scripts
+          cwd: workspace
+          continue_if_failed: false
+</code></pre>
 
 
 

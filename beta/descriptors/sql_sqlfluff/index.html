@@ -5184,6 +5184,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sql_sqlfluff_error_dialect_not_set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SQL_SQLFLUFF_ERROR_DIALECT_NOT_SET
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql_sqlfluff_error_templating_failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SQL_SQLFLUFF_ERROR_TEMPLATING_FAILED
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql_sqlfluff_error_config_invalid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SQL_SQLFLUFF_ERROR_CONFIG_INVALID
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12482,6 +12532,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sql_sqlfluff_error_dialect_not_set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SQL_SQLFLUFF_ERROR_DIALECT_NOT_SET
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql_sqlfluff_error_templating_failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SQL_SQLFLUFF_ERROR_TEMPLATING_FAILED
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql_sqlfluff_error_config_invalid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SQL_SQLFLUFF_ERROR_CONFIG_INVALID
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12816,6 +12916,49 @@ ARG PIP_SQLFLUFF_VERSION=4.2.1
 </ul>
 </li>
 </ul>
+<h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
+<p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
+<h3 id="sql_sqlfluff_error_dialect_not_set">SQL_SQLFLUFF_ERROR_DIALECT_NOT_SET</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(Must specify '--dialect' or specify dialect in config|No dialect was specified)
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">sqlfluff requires an explicit SQL dialect to parse files. Without one, it cannot lint anything.
+Resolutions:
+  - Add a `.sqlfluff` config at the repository root with the appropriate dialect, e.g.:
+      [sqlfluff]
+      dialect = postgres
+  - Or pass `--dialect &lt;name&gt;` via `SQL_SQLFLUFF_ARGUMENTS` (e.g. ansi, postgres, snowflake, bigquery, mysql, tsql).
+</code></pre>
+<h3 id="sql_sqlfluff_error_templating_failed">SQL_SQLFLUFF_ERROR_TEMPLATING_FAILED</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(templating/parsing errors found|Unrecoverable failure in Jinja templating|dbt compilation [Ee]rror|Have you configured your variables\?)
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">sqlfluff could not render a templated SQL file (Jinja, dbt, Python templater).
+This is a templating/environment issue, not a lint finding.
+Resolutions:
+  - For dbt projects, pre-install dbt and prepare the dbt project via pre-commands in your .mega-linter.yml:
+      SQL_SQLFLUFF_PRE_COMMANDS:
+        - command: "pip install dbt-core dbt-postgres"
+          venv: sqlfluff
+          continue_if_failed: false
+        - command: "dbt deps &amp;&amp; dbt compile"
+          cwd: "workspace"
+          continue_if_failed: false
+  - For Jinja, define missing variables under `[sqlfluff:templater:jinja:context]` in `.sqlfluff`.
+  - For files that should not be templated, set `templater = raw` in `.sqlfluff`.
+</code></pre>
+<h3 id="sql_sqlfluff_error_config_invalid">SQL_SQLFLUFF_ERROR_CONFIG_INVALID</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(Error loading config|Configuration (error|failed)|Unable to parse \.sqlfluff)
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">sqlfluff failed to load its configuration file.
+Resolutions:
+  - Validate `.sqlfluff` syntax (INI format) and check for typos in section headers like `[sqlfluff]` or `[sqlfluff:rules]`.
+  - Ensure rule references (e.g. `exclude_rules`, `rules`) point to existing rule codes for the installed sqlfluff version.
+</code></pre>
 
 
 

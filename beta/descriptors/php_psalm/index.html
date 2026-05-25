@@ -3692,6 +3692,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#php_psalm_error_memory_exhausted" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PHP_PSALM_ERROR_MEMORY_EXHAUSTED
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#php_psalm_error_config_invalid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PHP_PSALM_ERROR_CONFIG_INVALID
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12504,6 +12543,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#php_psalm_error_memory_exhausted" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PHP_PSALM_ERROR_MEMORY_EXHAUSTED
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#php_psalm_error_config_invalid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PHP_PSALM_ERROR_CONFIG_INVALID
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12926,6 +13004,30 @@ ENV PATH="/root/.composer/vendor/bin:${PATH}"
 ARG PHP_VIMEO_PSALM_VERSION=6.16.1
 RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" &amp;&amp; export GITHUB_AUTH_TOKEN &amp;&amp; composer global require vimeo/psalm:${PHP_VIMEO_PSALM_VERSION}
 
+</code></pre>
+<h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
+<p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
+<h3 id="php_psalm_error_memory_exhausted">PHP_PSALM_ERROR_MEMORY_EXHAUSTED</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">Allowed memory size of [0-9]+ bytes exhausted
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">psalm ran out of PHP memory while analysing the codebase.
+Resolutions:
+  - Add `--memory-limit=2G` (or higher) via `PHP_PSALM_ARGUMENTS`.
+  - Reduce scope via the `&lt;projectFiles&gt;` / `&lt;ignoreFiles&gt;` directives in `psalm.xml`.
+  - Run with `--no-cache` once to rebuild a corrupt cache, then re-enable caching.
+</code></pre>
+<h3 id="php_psalm_error_config_invalid">PHP_PSALM_ERROR_CONFIG_INVALID</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(Could not locate config XML|Invalid Psalm configuration|ConfigException)
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">psalm could not load `psalm.xml` (missing, unreadable, or invalid).
+Resolutions:
+  - Ensure `psalm.xml` exists at the repository root, or pass `--config=` to the file you want.
+  - Validate the XML against the [Psalm config schema](https://psalm.dev/docs/running_psalm/configuration/).
+  - Check that every `&lt;projectFiles&gt;` / `&lt;extraFiles&gt;` path exists relative to the config file.
 </code></pre>
 
 

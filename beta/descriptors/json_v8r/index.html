@@ -6449,6 +6449,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#json_v8r_error_schemastore_unreachable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JSON_V8R_ERROR_SCHEMASTORE_UNREACHABLE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12510,6 +12538,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#json_v8r_error_schemastore_unreachable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JSON_V8R_ERROR_SCHEMASTORE_UNREACHABLE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12880,6 +12936,22 @@ ARG NPM_V8R_VERSION=6.1.0
 </ul>
 </li>
 </ul>
+<h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
+<p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
+<h3 id="json_v8r_error_schemastore_unreachable">JSON_V8R_ERROR_SCHEMASTORE_UNREACHABLE</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(ENOTFOUND|ECONNREFUSED|ETIMEDOUT|getaddrinfo|fetch failed).*(schemastore|json\.schemastore\.org)
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">v8r could not download a schema from https://www.schemastore.org/ (network/DNS failure).
+This is a transient remote-service / network issue, not a real lint error.
+Workarounds:
+  - Retry the run later.
+  - Pre-cache schemas locally and pass them via `--schema` in `JSON_V8R_ARGUMENTS`.
+  - Temporarily mark the linter as non-blocking by adding to your .mega-linter.yml:
+      DISABLE_ERRORS_LINTERS:
+        - JSON_V8R
+</code></pre>
 
 
 

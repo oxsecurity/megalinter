@@ -9741,6 +9741,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#repository_grype_error_db_update_failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        REPOSITORY_GRYPE_ERROR_DB_UPDATE_FAILED
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repository_grype_error_db_corrupt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        REPOSITORY_GRYPE_ERROR_DB_CORRUPT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repository_grype_error_tls_timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        REPOSITORY_GRYPE_ERROR_TLS_TIMEOUT
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12482,6 +12532,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#repository_grype_error_db_update_failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        REPOSITORY_GRYPE_ERROR_DB_UPDATE_FAILED
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repository_grype_error_db_corrupt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        REPOSITORY_GRYPE_ERROR_DB_CORRUPT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repository_grype_error_tls_timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        REPOSITORY_GRYPE_ERROR_TLS_TIMEOUT
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12837,6 +12937,40 @@ Use "grype [command] --help" for more information about a command.
 <pre><code class="language-dockerfile"># renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.112.0
 RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin
+</code></pre>
+<h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
+<p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
+<h3 id="repository_grype_error_db_update_failed">REPOSITORY_GRYPE_ERROR_DB_UPDATE_FAILED</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">unable to (update|check for) vulnerability database( update)?
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">grype could not update its vulnerability database (network, TLS, or CDN issue talking to grype.anchore.io).
+This is an environment issue, not a vulnerability finding.
+Workarounds:
+  - Retry the run later (issue is often transient).
+  - Pre-populate the grype DB in a cached layer / volume in CI.
+  - Temporarily mark the linter as non-blocking by adding to your .mega-linter.yml:
+      DISABLE_ERRORS_LINTERS:
+        - REPOSITORY_GRYPE
+</code></pre>
+<h3 id="repository_grype_error_db_corrupt">REPOSITORY_GRYPE_ERROR_DB_CORRUPT</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(vulnerability database is (corrupt|invalid)|database (disk image is malformed|metadata not found))
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">grype's local vulnerability database is corrupt or incomplete.
+Resolutions:
+  - In a long-lived environment, run `grype db delete &amp;&amp; grype db update`.
+  - In CI, clear any cached `~/.cache/grype` directory and re-run.
+</code></pre>
+<h3 id="repository_grype_error_tls_timeout">REPOSITORY_GRYPE_ERROR_TLS_TIMEOUT</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">net/http: TLS handshake timeout
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">grype timed out during the TLS handshake while downloading the database listing or release info.
+This is a transient network issue. Retry the run, or set up a self-hosted DB mirror for reliability.
 </code></pre>
 
 

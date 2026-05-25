@@ -5338,6 +5338,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#swift_swiftlint_error_invalid_config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SWIFT_SWIFTLINT_ERROR_INVALID_CONFIG
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#swift_swiftlint_error_no_lintable_files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SWIFT_SWIFTLINT_ERROR_NO_LINTABLE_FILES
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#swift_swiftlint_error_custom_rule_regex" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SWIFT_SWIFTLINT_ERROR_CUSTOM_RULE_REGEX
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12510,6 +12560,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#known-errors-and-resolutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known errors and resolutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known errors and resolutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#swift_swiftlint_error_invalid_config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SWIFT_SWIFTLINT_ERROR_INVALID_CONFIG
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#swift_swiftlint_error_no_lintable_files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SWIFT_SWIFTLINT_ERROR_NO_LINTABLE_FILES
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#swift_swiftlint_error_custom_rule_regex" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SWIFT_SWIFTLINT_ERROR_CUSTOM_RULE_REGEX
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12797,6 +12897,39 @@ OPTIONS:
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=docker depName=ghcr.io/realm/swiftlint
 ENV SWIFT_SWIFTLINT_VERSION=0.63.2
+</code></pre>
+<h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
+<p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
+<h3 id="swift_swiftlint_error_invalid_config">SWIFT_SWIFTLINT_ERROR_INVALID_CONFIG</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">(Could not read configuration|Invalid configuration|YAML.*at line [0-9]+, column [0-9]+)
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">SwiftLint could not parse `.swiftlint.yml`.
+Resolutions:
+  - Validate the YAML (indentation, quoting) — SwiftLint requires a strict YAML document.
+  - Verify every rule identifier under `opt_in_rules`, `disabled_rules`, and `only_rules` against `swiftlint rules` or the [rule directory](https://realm.github.io/SwiftLint/rule-directory.html).
+  - Check `included` / `excluded` paths are relative to the config file and exist in the repository.
+</code></pre>
+<h3 id="swift_swiftlint_error_no_lintable_files">SWIFT_SWIFTLINT_ERROR_NO_LINTABLE_FILES</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">No lintable files found at paths
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">SwiftLint started but found no `.swift` files to analyse.
+Resolutions:
+  - Check the `included:` / `excluded:` patterns in `.swiftlint.yml` — they may be filtering out every file.
+  - Confirm Swift files exist in the workspace and were not filtered out by `FILTER_REGEX_INCLUDE` / `FILTER_REGEX_EXCLUDE`.
+</code></pre>
+<h3 id="swift_swiftlint_error_custom_rule_regex">SWIFT_SWIFTLINT_ERROR_CUSTOM_RULE_REGEX</h3>
+<p><strong>Detection pattern (regex):</strong></p>
+<pre><code class="language-text">Invalid configuration for .* custom rule|regex .* is invalid
+</code></pre>
+<p><strong>Resolution guidance:</strong></p>
+<pre><code class="language-text">A `custom_rules` entry in `.swiftlint.yml` has an invalid regular expression or shape.
+Resolutions:
+  - Test the `regex:` value with an NSRegularExpression-compatible tester.
+  - Ensure every custom rule has the required keys (`regex`, optional `name`/`message`/`severity`).
 </code></pre>
 
 
