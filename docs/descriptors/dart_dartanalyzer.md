@@ -166,3 +166,43 @@ esac \
 ENV PATH="/usr/lib/dart/bin:${PATH}"
 ```
 
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### DART_DARTANALYZER_ERROR_MISSING_PUBSPEC
+
+**Detection pattern (regex):**
+
+```text
+Could not find a file named "pubspec.yaml"
+```
+
+**Resolution guidance:**
+
+```text
+dart analyze requires a Dart package: no pubspec.yaml was found for the analyzed file(s).
+Add a pubspec.yaml at the package root, or restrict DART_DARTANALYZER_FILTER_REGEX_INCLUDE to a directory that contains one.
+```
+
+### DART_DARTANALYZER_ERROR_PACKAGES_NOT_RESOLVED
+
+**Detection pattern (regex):**
+
+```text
+(pub get|pub upgrade).*(failed|not found)|Some packages .* are not available
+```
+
+**Resolution guidance:**
+
+```text
+dart analyze could not resolve the package dependencies declared in pubspec.yaml.
+Resolution: pre-install dependencies (against the pubspec.yaml in your repo) via a pre-command in your .mega-linter.yml:
+  DART_DARTANALYZER_PRE_COMMANDS:
+    - command: "dart pub get"
+      cwd: "workspace"
+      continue_if_failed: false
+Or pre-cache `.dart_tool/package_config.json` so the analyzer can locate dependencies.
+```
+

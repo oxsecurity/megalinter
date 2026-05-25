@@ -182,3 +182,61 @@ ARG REPOSITORY_GRYPE_VERSION=0.112.0
 RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin
 ```
 
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### REPOSITORY_GRYPE_ERROR_DB_UPDATE_FAILED
+
+**Detection pattern (regex):**
+
+```text
+unable to (update|check for) vulnerability database( update)?
+```
+
+**Resolution guidance:**
+
+```text
+grype could not update its vulnerability database (network, TLS, or CDN issue talking to grype.anchore.io).
+This is an environment issue, not a vulnerability finding.
+Workarounds:
+  - Retry the run later (issue is often transient).
+  - Pre-populate the grype DB in a cached layer / volume in CI.
+  - Temporarily mark the linter as non-blocking by adding to your .mega-linter.yml:
+      DISABLE_ERRORS_LINTERS:
+        - REPOSITORY_GRYPE
+```
+
+### REPOSITORY_GRYPE_ERROR_DB_CORRUPT
+
+**Detection pattern (regex):**
+
+```text
+(vulnerability database is (corrupt|invalid)|database (disk image is malformed|metadata not found))
+```
+
+**Resolution guidance:**
+
+```text
+grype's local vulnerability database is corrupt or incomplete.
+Resolutions:
+  - In a long-lived environment, run `grype db delete && grype db update`.
+  - In CI, clear any cached `~/.cache/grype` directory and re-run.
+```
+
+### REPOSITORY_GRYPE_ERROR_TLS_TIMEOUT
+
+**Detection pattern (regex):**
+
+```text
+net/http: TLS handshake timeout
+```
+
+**Resolution guidance:**
+
+```text
+grype timed out during the TLS handshake while downloading the database listing or release info.
+This is a transient network issue. Retry the run, or set up a self-hosted DB mirror for reliability.
+```
+

@@ -254,3 +254,61 @@ ARG SCALA_SCALAFIX_VERSION=0.14.6
 RUN ./coursier install scalafix:${SCALA_SCALAFIX_VERSION} --quiet --install-dir /usr/bin && rm -rf /root/.cache
 ```
 
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### SCALA_SCALAFIX_ERROR_RULE_NOT_FOUND
+
+**Detection pattern (regex):**
+
+```text
+(Unknown rule|rule not found|Rule \S+ not found)
+```
+
+**Resolution guidance:**
+
+```text
+scalafix could not find a rule referenced in your `.scalafix.conf` (or `--rules` argument).
+Resolutions:
+  - Check the spelling against the [scalafix built-in rules](https://scalacenter.github.io/scalafix/docs/rules/overview.html).
+  - MegaLinter runs scalafix without the project's classpath, so **semantic** rules (those needing a SemanticDB) cannot be loaded — use only syntactic rules in `.scalafix.conf`.
+  - Third-party rule artifacts are not available in MegaLinter; vendor the rule source into the repo or remove it.
+```
+
+### SCALA_SCALAFIX_ERROR_NO_SEMANTICDB
+
+**Detection pattern (regex):**
+
+```text
+(SemanticDB not found|Missing SemanticDB|semanticdb-scalac)
+```
+
+**Resolution guidance:**
+
+```text
+scalafix tried to run a semantic rule but no SemanticDB was produced.
+MegaLinter does not compile your project, so semantic rules cannot run here.
+Resolutions:
+  - Remove semantic rules from `.scalafix.conf` (keep only syntactic ones such as `DisableSyntax`, `LeakingImplicitClassVal`, `NoAutoTupling`, `NoValInForComprehension`, `ProcedureSyntax`, `RemoveUnused`).
+  - Run semantic-rule scalafix from your build tool (sbt/Mill) outside MegaLinter.
+```
+
+### SCALA_SCALAFIX_ERROR_CONFIG_PARSE
+
+**Detection pattern (regex):**
+
+```text
+ConfError|Invalid config|expected .* at .*\.scalafix\.conf
+```
+
+**Resolution guidance:**
+
+```text
+scalafix could not parse `.scalafix.conf`.
+Resolutions:
+  - Validate the HOCON syntax of `.scalafix.conf` (quoting, braces, commas).
+  - Confirm each rule key exists; see the [scalafix configuration guide](https://scalacenter.github.io/scalafix/docs/users/configuration.html).
+```
+

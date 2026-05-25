@@ -162,3 +162,23 @@ FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 ```
 
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### TERRAFORM_TERRAGRUNT_ERROR_CONFIG_PARSE
+
+**Detection pattern (regex):**
+
+```text
+Error parsing Terragrunt config
+```
+
+**Resolution guidance:**
+
+```text
+Terragrunt could not parse a referenced terragrunt.hcl configuration file.
+Verify that include/dependency blocks resolve and that referenced files exist relative to the working directory.
+```
+

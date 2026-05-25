@@ -283,3 +283,120 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
   - [eslint-plugin-promise@7.3.0](https://www.npmjs.com/package/eslint-plugin-promise/v/7.3.0)
   - [eslint-plugin-vue@10.9.1](https://www.npmjs.com/package/eslint-plugin-vue/v/10.9.1)
   - [@microsoft/eslint-formatter-sarif@3.1.0](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/3.1.0)
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### JAVASCRIPT_ES_ERROR_PLUGIN_NOT_FOUND
+
+**Detection pattern (regex):**
+
+```text
+(Failed to load plugin '|ESLint couldn't find the plugin "|Cannot find module 'eslint-plugin-)
+```
+
+**Resolution guidance:**
+
+```text
+ESLint could not load a plugin referenced in your config. The plugin is not installed in MegaLinter's bundled `node_modules` (`/node-deps/node_modules`).
+Resolutions:
+  - Pre-install the missing plugin into MegaLinter's npm root via a pre-command in your .mega-linter.yml:
+      JAVASCRIPT_ES_PRE_COMMANDS:
+        - command: "npm install eslint-plugin-NAME"
+          cwd: "root"
+          continue_if_failed: false
+  - Or install your project's full dependency tree and run ESLint from the workspace `node_modules`:
+      JAVASCRIPT_ES_PRE_COMMANDS:
+        - command: yarn install --frozen-lockfile --ignore-scripts
+          cwd: workspace
+          continue_if_failed: false
+      JAVASCRIPT_ES_CLI_EXECUTABLE: node_modules/.bin/eslint
+  - Verify the plugin name in your ESLint config matches the published npm package name.
+```
+
+### JAVASCRIPT_ES_ERROR_CONFIG_NOT_FOUND
+
+**Detection pattern (regex):**
+
+```text
+(ESLint couldn't find the config "|Failed to load config "|Cannot find module 'eslint-config-)
+```
+
+**Resolution guidance:**
+
+```text
+ESLint could not resolve a shareable config referenced via `extends` (e.g. `airbnb`, `standard`, `prettier`). The config package is not installed in MegaLinter's bundled `node_modules`.
+Resolutions:
+  - Pre-install the missing config package via a pre-command in your .mega-linter.yml:
+      JAVASCRIPT_ES_PRE_COMMANDS:
+        - command: "npm install eslint-config-NAME"
+          cwd: "root"
+          continue_if_failed: false
+  - Or install your project's dependencies and run ESLint from the workspace binary (see ESLint v10 section above).
+```
+
+### JAVASCRIPT_ES_ERROR_PARSER_NOT_FOUND
+
+**Detection pattern (regex):**
+
+```text
+(Cannot find module '@?[A-Za-z0-9_/.-]*parser'|Failed to load parser '|Could not resolve parser)
+```
+
+**Resolution guidance:**
+
+```text
+ESLint could not load the parser referenced in your config (e.g. `@babel/eslint-parser`, `vue-eslint-parser`). The parser package is not bundled in MegaLinter and must be installed.
+Resolutions:
+  - Pre-install the parser via a pre-command in your .mega-linter.yml:
+      JAVASCRIPT_ES_PRE_COMMANDS:
+        - command: "npm install @babel/eslint-parser"
+          cwd: "root"
+          continue_if_failed: false
+  - Or install the full project tree and use the workspace ESLint binary (see ESLint v10 section above).
+```
+
+### JAVASCRIPT_ES_ERROR_FLAT_CONFIG_MODULE_NOT_FOUND
+
+**Detection pattern (regex):**
+
+```text
+ERR_MODULE_NOT_FOUND.+eslint\.config\.
+```
+
+**Resolution guidance:**
+
+```text
+ESLint v9+/v10 flat config (`eslint.config.mjs`) uses native ESM resolution, which does not honor `NODE_PATH`. Bare imports like `import js from '@eslint/js'` fail when ESLint runs from MegaLinter's bundled install.
+Resolutions:
+  - Use `createRequire` in your `eslint.config.mjs` (see the "ESLint v10" section in this linter's documentation above).
+  - Or install your project's dependencies and run the project-local ESLint binary:
+      JAVASCRIPT_ES_PRE_COMMANDS:
+        - command: yarn install --frozen-lockfile --ignore-scripts
+          cwd: workspace
+          continue_if_failed: false
+      JAVASCRIPT_ES_CLI_EXECUTABLE: node_modules/.bin/eslint
+```
+
+### JAVASCRIPT_ES_ERROR_OUT_OF_MEMORY
+
+**Detection pattern (regex):**
+
+```text
+(JavaScript heap out of memory|FATAL ERROR:.+Allocation failed|Reached heap limit Allocation failed)
+```
+
+**Resolution guidance:**
+
+```text
+ESLint ran out of Node.js heap memory. This typically happens on very large codebases or when type-aware rules (`parserOptions.project`) load the entire TypeScript program.
+Resolutions:
+  - Raise the Node.js heap and whitelist the var for this linter (MegaLinter strips most env vars by default):
+      JAVASCRIPT_ES_UNSECURED_ENV_VARIABLES:
+        - NODE_OPTIONS
+      NODE_OPTIONS: "--max-old-space-size=8192"
+  - Reduce scope via `JAVASCRIPT_ES_FILTER_REGEX_INCLUDE` / `JAVASCRIPT_ES_FILTER_REGEX_EXCLUDE`.
+  - Disable type-aware rules or remove `parserOptions.project` if it is not strictly required.
+```
+

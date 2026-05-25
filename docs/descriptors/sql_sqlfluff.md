@@ -152,3 +152,70 @@ ARG PIP_SQLFLUFF_VERSION=4.2.1
 
 - PIP packages (Python):
   - [sqlfluff==4.2.1](https://pypi.org/project/sqlfluff/4.2.1)
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### SQL_SQLFLUFF_ERROR_DIALECT_NOT_SET
+
+**Detection pattern (regex):**
+
+```text
+(Must specify '--dialect' or specify dialect in config|No dialect was specified)
+```
+
+**Resolution guidance:**
+
+```text
+sqlfluff requires an explicit SQL dialect to parse files. Without one, it cannot lint anything.
+Resolutions:
+  - Add a `.sqlfluff` config at the repository root with the appropriate dialect, e.g.:
+      [sqlfluff]
+      dialect = postgres
+  - Or pass `--dialect <name>` via `SQL_SQLFLUFF_ARGUMENTS` (e.g. ansi, postgres, snowflake, bigquery, mysql, tsql).
+```
+
+### SQL_SQLFLUFF_ERROR_TEMPLATING_FAILED
+
+**Detection pattern (regex):**
+
+```text
+(templating/parsing errors found|Unrecoverable failure in Jinja templating|dbt compilation [Ee]rror|Have you configured your variables\?)
+```
+
+**Resolution guidance:**
+
+```text
+sqlfluff could not render a templated SQL file (Jinja, dbt, Python templater).
+This is a templating/environment issue, not a lint finding.
+Resolutions:
+  - For dbt projects, pre-install dbt and prepare the dbt project via pre-commands in your .mega-linter.yml:
+      SQL_SQLFLUFF_PRE_COMMANDS:
+        - command: "pip install dbt-core dbt-postgres"
+          venv: sqlfluff
+          continue_if_failed: false
+        - command: "dbt deps && dbt compile"
+          cwd: "workspace"
+          continue_if_failed: false
+  - For Jinja, define missing variables under `[sqlfluff:templater:jinja:context]` in `.sqlfluff`.
+  - For files that should not be templated, set `templater = raw` in `.sqlfluff`.
+```
+
+### SQL_SQLFLUFF_ERROR_CONFIG_INVALID
+
+**Detection pattern (regex):**
+
+```text
+(Error loading config|Configuration (error|failed)|Unable to parse \.sqlfluff)
+```
+
+**Resolution guidance:**
+
+```text
+sqlfluff failed to load its configuration file.
+Resolutions:
+  - Validate `.sqlfluff` syntax (INI format) and check for typos in section headers like `[sqlfluff]` or `[sqlfluff:rules]`.
+  - Ensure rule references (e.g. `exclude_rules`, `rules`) point to existing rule codes for the installed sqlfluff version.
+```
+

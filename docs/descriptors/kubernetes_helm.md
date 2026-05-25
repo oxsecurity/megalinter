@@ -219,3 +219,46 @@ Use "helm [command] --help" for more information about a command.
 
 - APK packages (Linux):
   - [helm](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=helm)
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### KUBERNETES_HELM_ERROR_MISSING_DEPENDENCIES
+
+**Detection pattern (regex):**
+
+```text
+chart (directory|metadata) is missing these dependencies
+```
+
+**Resolution guidance:**
+
+```text
+helm lint failed because a chart dependency declared in Chart.yaml is not present under charts/.
+Run `helm dependency update <chart-path>` (or `helm dependency build`) before linting so subcharts are vendored into charts/.
+In CI, add a pre-command in your .mega-linter.yml (run in your repo workspace where the chart lives):
+  KUBERNETES_HELM_PRE_COMMANDS:
+    - command: "helm dependency update ."
+      cwd: "workspace"
+      continue_if_failed: false
+```
+
+### KUBERNETES_HELM_ERROR_CHART_YAML_MISSING
+
+**Detection pattern (regex):**
+
+```text
+(Chart\.yaml file is missing|no Chart\.yaml exists in directory|unable to check Chart\.yaml)
+```
+
+**Resolution guidance:**
+
+```text
+helm lint could not find a valid Chart.yaml in the target directory.
+Checks:
+  - Make sure `Chart.yaml` exists at the root of the chart (not just Chart.yml).
+  - If the chart is under a subfolder, scope helm via `KUBERNETES_HELM_FILTER_REGEX_INCLUDE` or move it.
+  - Verify Chart.yaml has the required keys `apiVersion`, `name`, and `version`.
+```
+
