@@ -281,3 +281,120 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
   - [@typescript-eslint/eslint-plugin@8.59.4](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin/v/8.59.4)
   - [@typescript-eslint/parser@8.59.4](https://www.npmjs.com/package/@typescript-eslint/parser/v/8.59.4)
   - [@microsoft/eslint-formatter-sarif@3.1.0](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/3.1.0)
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### TYPESCRIPT_ES_ERROR_PLUGIN_NOT_FOUND
+
+**Detection pattern (regex):**
+
+```text
+(Failed to load plugin '|ESLint couldn't find the plugin "|Cannot find module 'eslint-plugin-)
+```
+
+**Resolution guidance:**
+
+```text
+ESLint could not load a plugin referenced in your config. The plugin is not installed in MegaLinter's bundled `node_modules` (`/node-deps/node_modules`).
+Resolutions:
+  - Pre-install the missing plugin into MegaLinter's npm root via a pre-command in your .mega-linter.yml:
+      TYPESCRIPT_ES_PRE_COMMANDS:
+        - command: "npm install eslint-plugin-NAME"
+          cwd: "root"
+          continue_if_failed: false
+  - Or install your project's full dependency tree and run ESLint from the workspace `node_modules`:
+      TYPESCRIPT_ES_PRE_COMMANDS:
+        - command: yarn install --frozen-lockfile --ignore-scripts
+          cwd: workspace
+          continue_if_failed: false
+      TYPESCRIPT_ES_CLI_EXECUTABLE: node_modules/.bin/eslint
+```
+
+### TYPESCRIPT_ES_ERROR_CONFIG_NOT_FOUND
+
+**Detection pattern (regex):**
+
+```text
+(ESLint couldn't find the config "|Failed to load config "|Cannot find module 'eslint-config-)
+```
+
+**Resolution guidance:**
+
+```text
+ESLint could not resolve a shareable config referenced via `extends` (e.g. `airbnb-typescript`, `standard-with-typescript`).
+Resolutions:
+  - Pre-install the missing config package via a pre-command in your .mega-linter.yml:
+      TYPESCRIPT_ES_PRE_COMMANDS:
+        - command: "npm install eslint-config-NAME"
+          cwd: "root"
+          continue_if_failed: false
+  - Or install the full project dependency tree and use the workspace ESLint binary (see ESLint v10 section above).
+```
+
+### TYPESCRIPT_ES_ERROR_PARSER_NOT_FOUND
+
+**Detection pattern (regex):**
+
+```text
+(Cannot find module '@typescript-eslint/parser'|Failed to load parser '|parserOptions\.project.+(does not exist|was not found)|Cannot read file 'tsconfig)
+```
+
+**Resolution guidance:**
+
+```text
+ESLint could not load `@typescript-eslint/parser` or could not locate the `tsconfig.json` referenced via `parserOptions.project`.
+Resolutions:
+  - If the parser is missing, install your project's dependencies (the bundled `@typescript-eslint/parser` is also available in `/node-deps/node_modules`):
+      TYPESCRIPT_ES_PRE_COMMANDS:
+        - command: yarn install --frozen-lockfile --ignore-scripts
+          cwd: workspace
+          continue_if_failed: false
+      TYPESCRIPT_ES_CLI_EXECUTABLE: node_modules/.bin/eslint
+  - If `parserOptions.project` is unresolved, make the path workspace-relative (e.g. `./tsconfig.json`) or remove it to disable type-aware linting.
+```
+
+### TYPESCRIPT_ES_ERROR_FLAT_CONFIG_MODULE_NOT_FOUND
+
+**Detection pattern (regex):**
+
+```text
+ERR_MODULE_NOT_FOUND.+eslint\.config\.
+```
+
+**Resolution guidance:**
+
+```text
+ESLint v9+/v10 flat config (`eslint.config.mjs`) uses native ESM resolution, which does not honor `NODE_PATH`. Bare imports like `import tsPlugin from '@typescript-eslint/eslint-plugin'` fail when ESLint runs from MegaLinter's bundled install.
+Resolutions:
+  - Use `createRequire` in your `eslint.config.mjs` (see the "ESLint v10" section in this linter's documentation above).
+  - Or install your project's dependencies and run the project-local ESLint binary:
+      TYPESCRIPT_ES_PRE_COMMANDS:
+        - command: yarn install --frozen-lockfile --ignore-scripts
+          cwd: workspace
+          continue_if_failed: false
+      TYPESCRIPT_ES_CLI_EXECUTABLE: node_modules/.bin/eslint
+```
+
+### TYPESCRIPT_ES_ERROR_OUT_OF_MEMORY
+
+**Detection pattern (regex):**
+
+```text
+(JavaScript heap out of memory|FATAL ERROR:.+Allocation failed|Reached heap limit Allocation failed)
+```
+
+**Resolution guidance:**
+
+```text
+ESLint ran out of Node.js heap memory. With TypeScript, this is most often caused by type-aware rules (`parserOptions.project`) that load the entire TypeScript program for every lint run.
+Resolutions:
+  - Raise the Node.js heap and whitelist the var (MegaLinter strips most env vars by default):
+      TYPESCRIPT_ES_UNSECURED_ENV_VARIABLES:
+        - NODE_OPTIONS
+      NODE_OPTIONS: "--max-old-space-size=8192"
+  - Disable type-aware rules or remove `parserOptions.project` if it is not strictly required.
+  - Reduce scope via `TYPESCRIPT_ES_FILTER_REGEX_INCLUDE` / `TYPESCRIPT_ES_FILTER_REGEX_EXCLUDE`.
+```
+

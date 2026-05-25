@@ -314,3 +314,26 @@ RUN wget --tries=5 https://github.com/cvega/luarocks/archive/v${LUA_LUACHECK_VER
   - [lua5.3-dev](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=lua5.3-dev)
   - [readline-dev](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=readline-dev)
   - [openssl](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=openssl)
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### LUA_LUACHECK_ERROR_CONFIG_INVALID
+
+**Detection pattern (regex):**
+
+```text
+(Couldn't load configuration|Critical error: .*\.luacheckrc|Errors? in config file)
+```
+
+**Resolution guidance:**
+
+```text
+luacheck could not load its configuration file (`.luacheckrc` is Lua source).
+Resolutions:
+  - Run `lua -l .luacheckrc -e ''` locally (or `luac -p .luacheckrc`) to check the file for syntax errors.
+  - Ensure the file only sets allowed luacheck options (`std`, `globals`, `ignore`, `files`, etc.).
+  - Use `luacheck --no-config` via `LUA_LUACHECK_ARGUMENTS` to confirm the failure is config-related.
+```
+

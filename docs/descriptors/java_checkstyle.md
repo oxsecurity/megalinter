@@ -221,3 +221,57 @@ RUN curl --retry 5 --retry-delay 5 -sSL \
     --output /usr/bin/checkstyle
 ```
 
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### JAVA_CHECKSTYLE_ERROR_OUT_OF_MEMORY
+
+**Detection pattern (regex):**
+
+```text
+java\.lang\.OutOfMemoryError
+```
+
+**Resolution guidance:**
+
+```text
+Checkstyle ran out of JVM heap memory while parsing your sources.
+This typically happens on very large files or large rule sets.
+Increase the heap by setting the JAVA_CHECKSTYLE_ARGUMENTS variable in your .mega-linter.yml, for example:
+JAVA_CHECKSTYLE_ARGUMENTS: "-Xmx2g"
+```
+
+### JAVA_CHECKSTYLE_ERROR_UNABLE_TO_PARSE_CONFIGURATION
+
+**Detection pattern (regex):**
+
+```text
+unable to parse configuration stream
+```
+
+**Resolution guidance:**
+
+```text
+Checkstyle could not parse the configuration file (sun_checks.xml or your custom config).
+Check that the file is valid XML and that the DOCTYPE / module names match the installed Checkstyle version.
+See https://checkstyle.org/config.html for the expected format.
+```
+
+### JAVA_CHECKSTYLE_ERROR_CANNOT_INITIALIZE_MODULE
+
+**Detection pattern (regex):**
+
+```text
+cannot initialize module
+```
+
+**Resolution guidance:**
+
+```text
+Checkstyle failed to initialize a module declared in your configuration file.
+This usually means a module name is misspelled, was removed in your Checkstyle version, or requires a custom checks JAR not on the classpath.
+Verify the module names at https://checkstyle.org/checks.html and ensure any third-party check JAR is referenced via the classpath.
+```
+

@@ -270,3 +270,99 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
   - [@typescript-eslint/eslint-plugin@8.59.4](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin/v/8.59.4)
   - [@typescript-eslint/parser@8.59.4](https://www.npmjs.com/package/@typescript-eslint/parser/v/8.59.4)
   - [@microsoft/eslint-formatter-sarif@3.1.0](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/3.1.0)
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### TSX_ESLINT_ERROR_PLUGIN_NOT_FOUND
+
+**Detection pattern (regex):**
+
+```text
+(Failed to load plugin '|ESLint couldn't find the plugin "|Cannot find module 'eslint-plugin-)
+```
+
+**Resolution guidance:**
+
+```text
+ESLint could not load a plugin referenced in your config (e.g. `eslint-plugin-react`, `eslint-plugin-react-hooks`, `@eslint-react/eslint-plugin`, `@typescript-eslint/eslint-plugin`). The plugin is not installed in MegaLinter's bundled `node_modules`.
+Resolutions:
+  - Pre-install the missing plugin via a pre-command in your .mega-linter.yml:
+      TSX_ESLINT_PRE_COMMANDS:
+        - command: "npm install eslint-plugin-react eslint-plugin-react-hooks"
+          cwd: "root"
+          continue_if_failed: false
+  - Or install your project's dependencies and run the project-local ESLint binary:
+      TSX_ESLINT_PRE_COMMANDS:
+        - command: yarn install --frozen-lockfile --ignore-scripts
+          cwd: workspace
+          continue_if_failed: false
+      TSX_ESLINT_CLI_EXECUTABLE: node_modules/.bin/eslint
+```
+
+### TSX_ESLINT_ERROR_PARSER_NOT_FOUND
+
+**Detection pattern (regex):**
+
+```text
+(Cannot find module '@typescript-eslint/parser'|Failed to load parser '|parserOptions\.project.+(does not exist|was not found)|Cannot read file 'tsconfig)
+```
+
+**Resolution guidance:**
+
+```text
+ESLint could not load `@typescript-eslint/parser` or could not locate the `tsconfig.json` referenced via `parserOptions.project`.
+Resolutions:
+  - Install your project's dependencies and run the project-local ESLint binary (the bundled parser is also available in `/node-deps`):
+      TSX_ESLINT_PRE_COMMANDS:
+        - command: yarn install --frozen-lockfile --ignore-scripts
+          cwd: workspace
+          continue_if_failed: false
+      TSX_ESLINT_CLI_EXECUTABLE: node_modules/.bin/eslint
+  - If `parserOptions.project` is unresolved, make the path workspace-relative (e.g. `./tsconfig.json`) or remove it to disable type-aware linting.
+```
+
+### TSX_ESLINT_ERROR_FLAT_CONFIG_MODULE_NOT_FOUND
+
+**Detection pattern (regex):**
+
+```text
+ERR_MODULE_NOT_FOUND.+eslint\.config\.
+```
+
+**Resolution guidance:**
+
+```text
+ESLint v9+/v10 flat config (`eslint.config.mjs`) uses native ESM resolution, which does not honor `NODE_PATH`. Bare imports like `import tsPlugin from '@typescript-eslint/eslint-plugin'` fail when ESLint runs from MegaLinter's bundled install.
+Resolutions:
+  - Use `createRequire` in your `eslint.config.mjs` (see the "ESLint v10" section in this linter's documentation above).
+  - Or install your project's dependencies and run the project-local ESLint binary:
+      TSX_ESLINT_PRE_COMMANDS:
+        - command: yarn install --frozen-lockfile --ignore-scripts
+          cwd: workspace
+          continue_if_failed: false
+      TSX_ESLINT_CLI_EXECUTABLE: node_modules/.bin/eslint
+```
+
+### TSX_ESLINT_ERROR_OUT_OF_MEMORY
+
+**Detection pattern (regex):**
+
+```text
+(JavaScript heap out of memory|FATAL ERROR:.+Allocation failed|Reached heap limit Allocation failed)
+```
+
+**Resolution guidance:**
+
+```text
+ESLint ran out of Node.js heap memory. Type-aware rules (`parserOptions.project`) that load the entire TypeScript program are the most common cause.
+Resolutions:
+  - Raise the Node.js heap and whitelist the var (MegaLinter strips most env vars by default):
+      TSX_ESLINT_UNSECURED_ENV_VARIABLES:
+        - NODE_OPTIONS
+      NODE_OPTIONS: "--max-old-space-size=8192"
+  - Disable type-aware rules or remove `parserOptions.project` if not strictly required.
+  - Reduce scope via `TSX_ESLINT_FILTER_REGEX_INCLUDE` / `TSX_ESLINT_FILTER_REGEX_EXCLUDE`.
+```
+

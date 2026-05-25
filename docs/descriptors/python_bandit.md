@@ -311,3 +311,59 @@ ARG PIP_BANDIT_SARIF_FORMATTER_VERSION=1.1.1
   - [bandit==1.9.4](https://pypi.org/project/bandit/1.9.4)
   - [bandit_sarif_formatter==1.1.1](https://pypi.org/project/bandit_sarif_formatter/1.1.1)
   - [bandit[toml]==1.9.4](https://pypi.org/project/bandit[toml]/1.9.4)
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### PYTHON_BANDIT_ERROR_CONFIG_NOT_FOUND
+
+**Detection pattern (regex):**
+
+```text
+(Could not read config file|Unable to read config file|could not find config file)
+```
+
+**Resolution guidance:**
+
+```text
+bandit could not read the configuration file referenced via `--configfile` (or `.bandit.yml` / `pyproject.toml`).
+Resolutions:
+  - Confirm the config file is committed to the repository and visible at the expected path.
+  - If you customised `PYTHON_BANDIT_CONFIG_FILE`, double-check the value points to a valid file in the workspace.
+```
+
+### PYTHON_BANDIT_ERROR_CONFIG_INVALID
+
+**Detection pattern (regex):**
+
+```text
+(Error parsing file:|yaml\.scanner\.ScannerError|yaml\.parser\.ParserError|tomllib\.TOMLDecodeError|Invalid YAML)
+```
+
+**Resolution guidance:**
+
+```text
+bandit found the config file but failed to parse it (invalid YAML or TOML).
+Resolutions:
+  - Run a YAML/TOML linter against `.bandit.yml` or the `[tool.bandit]` section of `pyproject.toml`.
+  - Make sure indentation and option keys (`tests`, `skips`, `exclude_dirs`) follow the bandit schema.
+```
+
+### PYTHON_BANDIT_ERROR_PROFILE_NOT_FOUND
+
+**Detection pattern (regex):**
+
+```text
+(Unable to find profile|No tests would be run)
+```
+
+**Resolution guidance:**
+
+```text
+bandit could not load the requested test profile or every test was excluded.
+Resolutions:
+  - Check the profile name in your config.
+  - Make sure `tests` / `skips` lists reference valid plugin IDs (B101, B602, ...).
+```
+

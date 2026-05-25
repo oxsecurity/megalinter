@@ -186,3 +186,52 @@ RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/
 
 ```
 
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### REPOSITORY_TRIVY_SBOM_ERROR_TOOMANYREQUESTS
+
+**Detection pattern (regex):**
+
+```text
+TOOMANYREQUESTS
+```
+
+**Resolution guidance:**
+
+```text
+trivy-sbom was rate-limited by GitHub Container Registry (ghcr.io) while downloading the trivy DB.
+This is a registry rate limit, not an SBOM error.
+Workarounds:
+  - Retry the run later.
+  - Authenticate pulls. MegaLinter strips token/password env vars by default, so whitelist them for this linter in your .mega-linter.yml:
+      REPOSITORY_TRIVY_SBOM_UNSECURED_ENV_VARIABLES:
+        - GITHUB_TOKEN
+        - TRIVY_USERNAME
+        - TRIVY_PASSWORD
+  - Mirror trivy-db to your own registry via `TRIVY_DB_REPOSITORY`.
+  - Temporarily mark the linter as non-blocking by adding to your .mega-linter.yml:
+      DISABLE_ERRORS_LINTERS:
+        - REPOSITORY_TRIVY_SBOM
+```
+
+### REPOSITORY_TRIVY_SBOM_ERROR_DB_DOWNLOAD_FAILED
+
+**Detection pattern (regex):**
+
+```text
+(failed to download (vulnerability )?(DB|database)|database download error)
+```
+
+**Resolution guidance:**
+
+```text
+trivy-sbom could not download or refresh its vulnerability database.
+Workarounds:
+  - Retry the run; this is often transient.
+  - Set `TRIVY_DB_REPOSITORY` to an alternative mirror.
+  - Pre-populate `~/.cache/trivy` in CI.
+```
+

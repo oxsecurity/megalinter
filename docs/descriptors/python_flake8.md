@@ -217,3 +217,49 @@ ARG PIP_FLAKE8_VERSION=7.3.0
 
 - PIP packages (Python):
   - [flake8==7.3.0](https://pypi.org/project/flake8/7.3.0)
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### PYTHON_FLAKE8_ERROR_PLUGIN_LOAD
+
+**Detection pattern (regex):**
+
+```text
+"[A-Za-z0-9_-]+" failed during execution due to
+```
+
+**Resolution guidance:**
+
+```text
+A flake8 plugin (e.g. flake8-bugbear, flake8-docstrings) crashed while loading or running.
+This usually means the plugin version is incompatible with the pinned flake8 version, or the plugin is not installed.
+Resolutions:
+  - Pre-install the missing/compatible plugin into flake8's venv via a pre-command in your .mega-linter.yml:
+      PYTHON_FLAKE8_PRE_COMMANDS:
+        - command: "pip install flake8-bugbear"
+          venv: flake8
+          continue_if_failed: false
+  - Temporarily remove the plugin from your flake8 config to confirm the trigger.
+  - Run with `--verbose` locally to see which plugin emitted the error.
+```
+
+### PYTHON_FLAKE8_ERROR_CONFIG_INVALID
+
+**Detection pattern (regex):**
+
+```text
+(There was a critical error during execution of Flake8|Error: Invalid value for|tomllib(\.|: ).+(Invalid|Error)|Error parsing config file)
+```
+
+**Resolution guidance:**
+
+```text
+flake8 could not parse its configuration file (`.flake8`, `setup.cfg`, or `pyproject.toml`).
+Resolutions:
+  - Validate the INI/TOML syntax of the config file.
+  - Make sure option keys (e.g. `max-line-length`, `select`, `ignore`) are spelled correctly.
+  - Remove the custom config to confirm the issue is config-related.
+```
+

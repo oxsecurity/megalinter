@@ -165,3 +165,43 @@ ARG PIP_RUFF_VERSION=0.15.14
 
 - PIP packages (Python):
   - [ruff==0.15.14](https://pypi.org/project/ruff/0.15.14)
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### PYTHON_RUFF_ERROR_CONFIG_PARSE
+
+**Detection pattern (regex):**
+
+```text
+(Failed to parse .*(ruff\.toml|pyproject\.toml)|TOML parse error|invalid type: |unknown field )
+```
+
+**Resolution guidance:**
+
+```text
+ruff could not parse its configuration file (`ruff.toml`, `.ruff.toml`, or `pyproject.toml`).
+Resolutions:
+  - Validate the TOML syntax of the file.
+  - Make sure option keys under `[tool.ruff]` / `[tool.ruff.lint]` match the pinned ruff version's schema; deprecated keys are removed in newer releases.
+  - Check for committed merge conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`) in the file.
+```
+
+### PYTHON_RUFF_ERROR_UNKNOWN_RULE
+
+**Detection pattern (regex):**
+
+```text
+(Unknown rule selector|unknown rule code|Unknown rule:|unrecognized selector)
+```
+
+**Resolution guidance:**
+
+```text
+ruff's configuration references a rule code that the pinned ruff version does not know about (renamed, deleted, or not yet released).
+Resolutions:
+  - Check the ruff changelog for renames around the version pinned in MegaLinter.
+  - Update the rule code in your `select` / `ignore` / `extend-select` list to the new name.
+```
+

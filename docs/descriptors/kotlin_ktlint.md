@@ -239,3 +239,44 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 
 ```
 
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### KOTLIN_KTLINT_ERROR_OUT_OF_MEMORY
+
+**Detection pattern (regex):**
+
+```text
+java\.lang\.OutOfMemoryError
+```
+
+**Resolution guidance:**
+
+```text
+ktlint ran out of JVM heap memory.
+This can happen on large Kotlin codebases.
+Increase the heap by setting the KOTLIN_KTLINT_ARGUMENTS variable in your .mega-linter.yml, for example:
+KOTLIN_KTLINT_ARGUMENTS: "--jvm-target=17 -J-Xmx2g"
+```
+
+### KOTLIN_KTLINT_ERROR_RULESET_NOT_FOUND
+
+**Detection pattern (regex):**
+
+```text
+(JAR .* does not contain an implementation of (RuleSetProviderV3|the RuleSetProviderV3)|RuleSetProviderV3 is not found|Number of custom rule sets loaded does not match the expected number)
+```
+
+**Resolution guidance:**
+
+```text
+ktlint could not load a custom ruleset JAR.
+A custom ruleset JAR must declare a `RuleSetProviderV3` implementation in `META-INF/services/com.pinterest.ktlint.cli.ruleset.core.api.RuleSetProviderV3`.
+Resolutions:
+  - Verify the ruleset JAR path is correct and accessible inside the MegaLinter container.
+  - Confirm the JAR is built against the same major ktlint version pinned in MegaLinter (older `RuleSetProviderV2` JARs no longer load).
+See https://pinterest.github.io/ktlint/latest/api/custom-rule-set/ for how to package and reference custom rulesets.
+```
+

@@ -173,3 +173,24 @@ ARG NPM_GROOVY_LINT_VERSION=17.0.5
   - [openjdk17](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=openjdk17)
 - NPM packages (node.js):
   - [npm-groovy-lint@17.0.5](https://www.npmjs.com/package/npm-groovy-lint/v/17.0.5)
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### GROOVY_NPM_GROOVY_LINT_ERROR_CODENARC_SERVER
+
+**Detection pattern (regex):**
+
+```text
+CodeNarcServer
+```
+
+**Resolution guidance:**
+
+```text
+npm-groovy-lint failed to start or communicate with the embedded CodeNarcServer (Java process).
+Common causes: port already in use, or a stale lock file in the temp directory.
+Try setting GROOVY_NPM_GROOVY_LINT_ARGUMENTS to "--noserver" in your .mega-linter.yml to bypass the server.
+```
+

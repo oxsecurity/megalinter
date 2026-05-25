@@ -199,3 +199,68 @@ ARG PIP_ANSIBLE_LINT_VERSION=26.4.0
 
 - PIP packages (Python):
   - [ansible-lint==26.4.0](https://pypi.org/project/ansible-lint/26.4.0)
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### ANSIBLE_ANSIBLE_LINT_ERROR_GALAXY_INSTALL_FAILED
+
+**Detection pattern (regex):**
+
+```text
+(ERROR! - galaxy:|Failed to (find|install) (collection|role)|Galaxy server.*returned)
+```
+
+**Resolution guidance:**
+
+```text
+ansible-lint failed while installing required Ansible Galaxy collections or roles before linting.
+This is a network/dependency-resolution problem, not a lint finding.
+Resolutions:
+  - Retry the run; Galaxy outages are usually transient.
+  - Pin collection/role versions in `requirements.yml` to avoid resolution drift.
+  - If a Galaxy server requires auth, whitelist the relevant env var for this linter in your .mega-linter.yml (MegaLinter strips token-like env vars by default):
+      ANSIBLE_ANSIBLE_LINT_UNSECURED_ENV_VARIABLES:
+        - ANSIBLE_GALAXY_SERVER_LIST
+        - ANSIBLE_GALAXY_TOKEN
+```
+
+### ANSIBLE_ANSIBLE_LINT_ERROR_SYNTAX_CHECK
+
+**Detection pattern (regex):**
+
+```text
+(syntax-check\[specific\]|the (role|playbook) .* was not found|couldn't resolve (module|action))
+```
+
+**Resolution guidance:**
+
+```text
+ansible-lint's `syntax-check` rule could not resolve a referenced role, module, or playbook.
+Resolutions:
+  - Pre-install required collections/roles from `requirements.yml` (in your repo) via a pre-command in your .mega-linter.yml:
+      ANSIBLE_ANSIBLE_LINT_PRE_COMMANDS:
+        - command: "ansible-galaxy install -r requirements.yml"
+          cwd: "workspace"
+          continue_if_failed: false
+  - Adjust `roles_path` / `collections_path` in `ansible.cfg` so ansible-lint can find them.
+```
+
+### ANSIBLE_ANSIBLE_LINT_ERROR_CONFIG_INVALID
+
+**Detection pattern (regex):**
+
+```text
+(Invalid (configuration|rule|profile)|configuration file .* is malformed|failed to load .*\.ansible-lint)
+```
+
+**Resolution guidance:**
+
+```text
+ansible-lint could not load its configuration file (`.ansible-lint` or `.config/ansible-lint.yml`).
+Resolutions:
+  - Validate the YAML syntax of your `.ansible-lint` file.
+  - Check that referenced rules, tags, and profile names exist in the installed ansible-lint version.
+```
+
