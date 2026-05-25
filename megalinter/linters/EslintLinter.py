@@ -45,29 +45,24 @@ ESLINT10_NOTIFICATION_TEMPLATE = (
 class EslintLinter(Linter):
     def __init__(self, params=None, linter_config=None):
         super().__init__(params, linter_config)
-        # Independent scan: descriptor's active_only_if_file_found only lists
-        # flat configs (v10-native). When a legacy .eslintrc.* is found we
-        # force-activate the linter and synthesize a hard error in
-        # process_linter() so users are forced to migrate.
+        # The descriptor's active_only_if_file_found lists both flat (v10-native)
+        # and legacy .eslintrc.* configs, so the linter activates whenever any
+        # ESLint config is present. When only a legacy config is found we
+        # synthesize a hard error in process_linter() to force migration.
         self.eslint10_legacy_config = None
-        self._apply_eslint10_migration_gate(params)
+        self._detect_eslint10_legacy_config(params)
 
-    def _apply_eslint10_migration_gate(self, params):
-        if params is None:
+    def _detect_eslint10_legacy_config(self, params):
+        # Activation (including user disables) is already resolved by the
+        # descriptor's active_only_if_file_found and base manage_activation();
+        # only inspect the workspace when the linter is active.
+        if not self.is_active or params is None:
             return
         workspace = params.get("workspace")
         if not workspace:
             return
 
-        # Respect explicit user disables; never override.
-        if self.disabled:
-            return
-        if self.name in (params.get("disable_linters") or []):
-            return
-        if self.descriptor_id in (params.get("disable_descriptors") or []):
-            return
-
-        # If flat config exists, nothing to do — normal flow.
+        # If a flat config exists, ESLint v10 runs normally — nothing to do.
         if any(
             os.path.isfile(os.path.join(workspace, name))
             for name in FLAT_ESLINT_FILES
@@ -96,9 +91,9 @@ class EslintLinter(Linter):
         if legacy_found is None:
             return
 
-        # Force-activate so process_linter() runs and emits a failure.
+        # Only a legacy config is present: process_linter() will synthesize a
+        # hard failure instead of invoking ESLint.
         self.eslint10_legacy_config = legacy_found
-        self.is_active = True
         # No real ESLint is invoked, so don't try to parse SARIF from the synthetic stdout.
         self.output_sarif = False
 
