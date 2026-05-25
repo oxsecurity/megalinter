@@ -331,6 +331,7 @@
         "JAVASCRIPT_STANDARD",
         "JAVA_CHECKSTYLE",
         "JAVA_PMD",
+        "JSON_ESLINT_PLUGIN_JSONC",
         "JSON_JSONLINT",
         "JSON_NPM_PACKAGE_JSON_LINT",
         "JSON_PRETTIER",
