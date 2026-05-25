@@ -139,3 +139,25 @@ ENV PATH="${PATH}:/root/.dotnet/tools"
 RUN dotnet tool install --allow-roll-forward --global Microsoft.CST.DevSkim.CLI --version ${REPOSITORY_DEVSKIM_VERSION}
 ```
 
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### REPOSITORY_DEVSKIM_ERROR_RULES_NOT_FOUND
+
+**Detection pattern (regex):**
+
+```text
+Error: (No rules were loaded|Rules failed validation)
+```
+
+**Resolution guidance:**
+
+```text
+DevSkim could not load its rules. This usually means a custom rules path passed via `-r` / configuration is invalid, or the rule files at that path failed validation.
+Resolutions:
+  - Remove or correct any custom rule paths in `.devskim.json` or the `-r` argument.
+  - Ensure custom rule files are committed to the repository, reachable from the workspace root, and conform to the DevSkim rule schema.
+```
+

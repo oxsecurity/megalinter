@@ -195,3 +195,38 @@ FROM hadolint/hadolint:${DOCKERFILE_HADOLINT_VERSION} AS hadolint
 COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 ```
 
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### DOCKERFILE_HADOLINT_ERROR_CONFIG_PARSE
+
+**Detection pattern (regex):**
+
+```text
+Error parsing your config file in
+```
+
+**Resolution guidance:**
+
+```text
+Hadolint could not parse its configuration file (.hadolint.yaml / .hadolint.yml).
+Validate the YAML syntax and ensure all keys (`ignored`, `trustedRegistries`, `override`, `failure-threshold`) match the hadolint config schema.
+```
+
+### DOCKERFILE_HADOLINT_ERROR_CONFIG_READ
+
+**Detection pattern (regex):**
+
+```text
+Failed reading .*\.hadolint
+```
+
+**Resolution guidance:**
+
+```text
+Hadolint could not read the configuration file passed via `--config`.
+Check that the file path exists inside the container and that the file is readable.
+```
+

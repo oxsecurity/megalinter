@@ -391,11 +391,11 @@ Warning: Starting May 1, 2025, we no longer support v4.x of Code Analyzer. You s
 ```dockerfile
 # Parent descriptor install
 # renovate: datasource=npm depName=@salesforce/cli
-ARG NPM_SALESFORCE_CLI_VERSION=2.134.6
+ARG NPM_SALESFORCE_CLI_VERSION=2.135.7
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.27.17
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.28.0
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=7.13.0
+ARG SFDX_HARDIS_VERSION=7.14.1
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION} \
@@ -409,5 +409,26 @@ ARG SALESFORCE_SFDX_SCANNER_VERSION=4.12.0
 RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
     && (npm cache clean --force || true) \
     && rm -rf /root/.npm/_cacache
+```
+
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### SALESFORCE_SFDX_SCANNER_LWC_ERROR_ESLINT_CONFIG_INVALID
+
+**Detection pattern (regex):**
+
+```text
+(Cannot read config file|ESLint configuration .* is invalid|Failed to load config|Parsing error: Cannot find module)
+```
+
+**Resolution guidance:**
+
+```text
+ESLint could not load the configuration referenced by `.eslintrc-lwc.json`.
+Verify the file exists at the repository root and contains valid ESLint JSON for the eslint-lwc engine.
+See https://github.com/salesforce/eslint-plugin-lwc#configuration for guidance.
 ```
 

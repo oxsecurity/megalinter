@@ -36,6 +36,15 @@ linters:
     linter_megalinter_ref_url: "no"
     config_file_name: .luacheckrc
     cli_config_arg_name: "--config"
+    common_linter_errors:
+      - identifier: LUA_LUACHECK_ERROR_CONFIG_INVALID
+        regex: "(Couldn't load configuration|Critical error: .*\\.luacheckrc|Errors? in config file)"
+        message: |-
+          luacheck could not load its configuration file (`.luacheckrc` is Lua source).
+          Resolutions:
+            - Run `lua -l .luacheckrc -e ''` locally (or `luac -p .luacheckrc`) to check the file for syntax errors.
+            - Ensure the file only sets allowed luacheck options (`std`, `globals`, `ignore`, `files`, etc.).
+            - Use `luacheck --no-config` via `LUA_LUACHECK_ARGUMENTS` to confirm the failure is config-related.
     examples:
       - "luacheck myfile.lua"
       - "luacheck --config .chktexrc myfile.lua"
@@ -113,7 +122,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=crate depName=selene
-          ARG CARGO_SELENE_VERSION=0.30.0
+          ARG CARGO_SELENE_VERSION=0.31.0
     supported_platforms:
       platform:
         - linux/amd64

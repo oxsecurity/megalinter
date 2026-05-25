@@ -14,6 +14,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **`JSON_ESLINT_PLUGIN_JSONC` removed**: upstream bug [ota-meshi/eslint-plugin-jsonc#328](https://github.com/ota-meshi/eslint-plugin-jsonc/issues/328) blocks ESLint v10 compatibility and will not be fixed. Use `JSON_JSONLINT`, `JSON_PRETTIER`, or `JSON_V8R` for JSON validation instead.
 
 - Core
+  - New linter descriptor property `common_linter_errors`: declare known non-lint failure patterns (config issue, remote service down, missing credentials…) and the guidance message shown to users, directly in YAML — no custom Python class needed.
 
 - New linters
 
@@ -60,6 +61,19 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 2.1.54 to **2.1.55** on 2026-05-19
   - [black](https://black.readthedocs.io/en/stable/) from 26.5.0 to **26.5.1** on 2026-05-19
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 3.14 to **1.51.0** on 2026-05-19
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.51.0 to **1.51.1** on 2026-05-22
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 4.2.2 to **4.2.3** on 2026-05-22
+  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.11.6 to **3.12.0** on 2026-05-22
+  - [v8r](https://github.com/chris48s/v8r) from 6.0.0 to **6.1.0** on 2026-05-22
+  - [rumdl](https://github.com/rvben/rumdl) from 0.1.93 to **0.1.96** on 2026-05-22
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.1 to **7.6.2** on 2026-05-22
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.1 to **7.6.2** on 2026-05-22
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.13 to **0.15.14** on 2026-05-22
+  - [ruff](https://github.com/astral-sh/ruff) from 0.15.13 to **0.15.14** on 2026-05-22
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.99.0 to **1.100.0** on 2026-05-22
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 1.1.0 to **2.0.0** on 2026-05-22
+  - [eslint](https://eslint.org) from 10.3.0 to **10.4.0** on 2026-05-23
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.100.0 to **1.101.0** on 2026-05-25
 <!-- linter-versions-end -->
 
 ## [v9.5.0] - 2026-05-16

@@ -118,3 +118,25 @@ ARG NPM_GHERKIN_LINT_VERSION=4.2.4
 
 - NPM packages (node.js):
   - [gherkin-lint@4.2.4](https://www.npmjs.com/package/gherkin-lint/v/4.2.4)
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### GHERKIN_GHERKIN_LINT_ERROR_CONFIG_INVALID
+
+**Detection pattern (regex):**
+
+```text
+(Could not find (specified |default )?config file|Error\(s\) in configuration file:|Rule ".*" does not (match any|exist))
+```
+
+**Resolution guidance:**
+
+```text
+gherkin-lint could not load `.gherkin-lintrc` or it references a rule that does not exist.
+Resolutions:
+  - Validate that `.gherkin-lintrc` is valid JSON.
+  - Check rule names against <https://github.com/gherkin-lint/gherkin-lint#available-rules>.
+```
+

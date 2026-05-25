@@ -311,3 +311,44 @@ RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_T
 
 ```
 
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### PHP_PSALM_ERROR_MEMORY_EXHAUSTED
+
+**Detection pattern (regex):**
+
+```text
+Allowed memory size of [0-9]+ bytes exhausted
+```
+
+**Resolution guidance:**
+
+```text
+psalm ran out of PHP memory while analysing the codebase.
+Resolutions:
+  - Add `--memory-limit=2G` (or higher) via `PHP_PSALM_ARGUMENTS`.
+  - Reduce scope via the `<projectFiles>` / `<ignoreFiles>` directives in `psalm.xml`.
+  - Run with `--no-cache` once to rebuild a corrupt cache, then re-enable caching.
+```
+
+### PHP_PSALM_ERROR_CONFIG_INVALID
+
+**Detection pattern (regex):**
+
+```text
+(Could not locate config XML|Invalid Psalm configuration|ConfigException)
+```
+
+**Resolution guidance:**
+
+```text
+psalm could not load `psalm.xml` (missing, unreadable, or invalid).
+Resolutions:
+  - Ensure `psalm.xml` exists at the repository root, or pass `--config=` to the file you want.
+  - Validate the XML against the [Psalm config schema](https://psalm.dev/docs/running_psalm/configuration/).
+  - Check that every `<projectFiles>` / `<extraFiles>` path exists relative to the config file.
+```
+

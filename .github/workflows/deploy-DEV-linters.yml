@@ -180,7 +180,7 @@ jobs:
 
       - name: Docker Metadata action
         if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: docker/metadata-action@030e881283bb7a6894de51c315a6bfe6a94e05cf # v6
+        uses: docker/metadata-action@80c7e94dd9b9319bd5eb7a0e0fe9291e23a2a2e9 # v6
         id: meta
         with:
           images: |
@@ -192,12 +192,12 @@ jobs:
 
       - name: Set up Docker Buildx
         if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: docker/setup-buildx-action@4d04d5d9486b7bd6fa91e7baf45bbb4f8b9deedd # v4
+        uses: docker/setup-buildx-action@d7f5e7f509e45cec5c76c4d5afdd7de93d0b3df5 # v4
 
       - name: Build Image
         id: build_linter
         if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: docker/build-push-action@bcafcacb16a39f128d818304e6c9c0c18556b85f # v7
+        uses: docker/build-push-action@f9f3042f7e2789586610d6e8b85c8f03e5195baf # v7
         continue-on-error: true
         with:
           context: .
@@ -223,7 +223,7 @@ jobs:
       # manifest with evicted blobs ('blob sha256:...: not found').
       - name: Build Image (no-cache fallback)
         if: ${{ steps.prepare.outputs.job_enabled == 'true' && steps.build_linter.outcome == 'failure' }}
-        uses: docker/build-push-action@bcafcacb16a39f128d818304e6c9c0c18556b85f # v7
+        uses: docker/build-push-action@f9f3042f7e2789586610d6e8b85c8f03e5195baf # v7
         with:
           context: .
           file: linters/${{ matrix.linter }}/Dockerfile

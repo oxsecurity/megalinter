@@ -20,7 +20,7 @@ description: How to use ruff (configure, ignore files, ignore errors, help & ver
 
 ## ruff documentation
 
-- Version in MegaLinter: **0.15.13**
+- Version in MegaLinter: **0.15.14**
 - Visit [Official Web Site](https://github.com/astral-sh/ruff#readme){target=_blank}
 - See [How to configure ruff rules](https://docs.astral.sh/ruff/configuration/){target=_blank}
   - If custom `.ruff.toml` config file isn't found, [.ruff.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruff.toml){target=_blank} will be used
@@ -160,8 +160,48 @@ For help with a specific command, see: `ruff help <command>`.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.15.13
+ARG PIP_RUFF_VERSION=0.15.14
 ```
 
 - PIP packages (Python):
-  - [ruff==0.15.13](https://pypi.org/project/ruff/0.15.13)
+  - [ruff==0.15.14](https://pypi.org/project/ruff/0.15.14)
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### PYTHON_RUFF_ERROR_CONFIG_PARSE
+
+**Detection pattern (regex):**
+
+```text
+(Failed to parse .*(ruff\.toml|pyproject\.toml)|TOML parse error|invalid type: |unknown field )
+```
+
+**Resolution guidance:**
+
+```text
+ruff could not parse its configuration file (`ruff.toml`, `.ruff.toml`, or `pyproject.toml`).
+Resolutions:
+  - Validate the TOML syntax of the file.
+  - Make sure option keys under `[tool.ruff]` / `[tool.ruff.lint]` match the pinned ruff version's schema; deprecated keys are removed in newer releases.
+  - Check for committed merge conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`) in the file.
+```
+
+### PYTHON_RUFF_ERROR_UNKNOWN_RULE
+
+**Detection pattern (regex):**
+
+```text
+(Unknown rule selector|unknown rule code|Unknown rule:|unrecognized selector)
+```
+
+**Resolution guidance:**
+
+```text
+ruff's configuration references a rule code that the pinned ruff version does not know about (renamed, deleted, or not yet released).
+Resolutions:
+  - Check the ruff changelog for renames around the version pinned in MegaLinter.
+  - Update the rule code in your `select` / `ignore` / `extend-select` list to the new name.
+```
+

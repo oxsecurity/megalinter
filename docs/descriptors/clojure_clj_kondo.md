@@ -161,3 +161,26 @@ RUN curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/clj-ko
 
 ```
 
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### CLOJURE_CLJ_KONDO_ERROR_CONFIG_INVALID
+
+**Detection pattern (regex):**
+
+```text
+(error while reading .*\.clj-kondo|No reader function for tag|Invalid (token|leading character|EDN)|Unmatched delimiter)
+```
+
+**Resolution guidance:**
+
+```text
+clj-kondo could not read its configuration file (`.clj-kondo/config.edn`).
+Resolutions:
+  - Validate the EDN syntax (balanced `{}`, `[]`, `()`, no trailing commas; keys are usually keywords like `:linters`).
+  - Run `clj-kondo --config '{}' --lint <file>` to confirm the failure is config-related.
+  - Compare against the reference config at <https://github.com/clj-kondo/clj-kondo/blob/master/doc/config.md>.
+```
+

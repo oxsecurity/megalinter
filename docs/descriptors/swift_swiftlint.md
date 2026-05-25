@@ -177,3 +177,60 @@ OPTIONS:
 ENV SWIFT_SWIFTLINT_VERSION=0.63.2
 ```
 
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### SWIFT_SWIFTLINT_ERROR_INVALID_CONFIG
+
+**Detection pattern (regex):**
+
+```text
+(Could not read configuration|Invalid configuration|YAML.*at line [0-9]+, column [0-9]+)
+```
+
+**Resolution guidance:**
+
+```text
+SwiftLint could not parse `.swiftlint.yml`.
+Resolutions:
+  - Validate the YAML (indentation, quoting) — SwiftLint requires a strict YAML document.
+  - Verify every rule identifier under `opt_in_rules`, `disabled_rules`, and `only_rules` against `swiftlint rules` or the [rule directory](https://realm.github.io/SwiftLint/rule-directory.html).
+  - Check `included` / `excluded` paths are relative to the config file and exist in the repository.
+```
+
+### SWIFT_SWIFTLINT_ERROR_NO_LINTABLE_FILES
+
+**Detection pattern (regex):**
+
+```text
+No lintable files found at paths
+```
+
+**Resolution guidance:**
+
+```text
+SwiftLint started but found no `.swift` files to analyse.
+Resolutions:
+  - Check the `included:` / `excluded:` patterns in `.swiftlint.yml` — they may be filtering out every file.
+  - Confirm Swift files exist in the workspace and were not filtered out by `FILTER_REGEX_INCLUDE` / `FILTER_REGEX_EXCLUDE`.
+```
+
+### SWIFT_SWIFTLINT_ERROR_CUSTOM_RULE_REGEX
+
+**Detection pattern (regex):**
+
+```text
+Invalid configuration for .* custom rule|regex .* is invalid
+```
+
+**Resolution guidance:**
+
+```text
+A `custom_rules` entry in `.swiftlint.yml` has an invalid regular expression or shape.
+Resolutions:
+  - Test the `regex:` value with an NSRegularExpression-compatible tester.
+  - Ensure every custom rule has the required keys (`regex`, optional `name`/`message`/`severity`).
+```
+

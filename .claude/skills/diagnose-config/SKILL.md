@@ -3,6 +3,7 @@ name: diagnose-config
 description: Diagnose MegaLinter .mega-linter.yml configuration issues. Use when linters aren't running as expected or configuration seems wrong.
 allowed-tools: Read Grep Glob
 argument-hint: [config-file-path]
+model: sonnet
 ---
 
 Diagnose MegaLinter configuration. Read the `.mega-linter.yml` (or path provided in `$ARGUMENTS`) and check for:

@@ -72,6 +72,18 @@ linters:
     cli_lint_extra_args:
       - "--ignore-errors"
     cli_help_arg_name: "--help"
+    common_linter_errors:
+      - identifier: JSON_V8R_ERROR_SCHEMASTORE_UNREACHABLE
+        regex: "(ENOTFOUND|ECONNREFUSED|ETIMEDOUT|getaddrinfo|fetch failed).*(schemastore|json\\.schemastore\\.org)"
+        message: |-
+          v8r could not download a schema from https://www.schemastore.org/ (network/DNS failure).
+          This is a transient remote-service / network issue, not a real lint error.
+          Workarounds:
+            - Retry the run later.
+            - Pre-cache schemas locally and pass them via `--schema` in `JSON_V8R_ARGUMENTS`.
+            - Temporarily mark the linter as non-blocking by adding to your .mega-linter.yml:
+                DISABLE_ERRORS_LINTERS:
+                  - JSON_V8R
     test_folder: json_schema
     examples:
       - "v8r --ignore-errors myfile.json"
@@ -79,7 +91,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=v8r
-          ARG NPM_V8R_VERSION=6.0.0
+          ARG NPM_V8R_VERSION=6.1.0
       npm:
         - v8r@${NPM_V8R_VERSION}
     supported_platforms:

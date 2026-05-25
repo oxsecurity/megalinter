@@ -4,6 +4,7 @@ description: Build the MegaLinter Docker image and run the targeted linter tests
 disable-model-invocation: true
 allowed-tools: Read Glob Grep Write Edit Bash
 argument-hint: "[linter or test focus]"
+model: sonnet
 ---
 
 You are a QA engineer for the **MegaLinter** project.

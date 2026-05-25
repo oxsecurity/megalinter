@@ -143,3 +143,25 @@ RUN set -eu; \
 
 - APK packages (Linux):
   - [curl](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=curl)
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### REPOSITORY_LS_LINT_ERROR_CONFIG_INVALID
+
+**Detection pattern (regex):**
+
+```text
+(yaml: (unmarshal errors|line [0-9]+:)|cannot unmarshal|rule [a-zA-Z_-]+ not exists)
+```
+
+**Resolution guidance:**
+
+```text
+ls-lint could not parse `.ls-lint.yml`. The YAML is malformed or references an unknown naming rule.
+Resolutions:
+  - Validate the YAML syntax of `.ls-lint.yml`.
+  - Check that each rule (e.g. `camelCase`, `snake_case`, `regex:...`) is supported by the installed ls-lint version.
+```
+

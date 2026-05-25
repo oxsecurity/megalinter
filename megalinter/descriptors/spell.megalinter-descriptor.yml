@@ -320,6 +320,21 @@ linters:
     cli_version_arg_name: --version
     cli_lint_mode: list_of_files
     cli_lint_errors_count: total_lines
+    common_linter_errors:
+      - identifier: SPELL_CODESPELL_ERROR_DICT_NOT_FOUND
+        regex: "(ERROR: (cannot find the|Could not load) dictionary|No such file or directory: '.*\\.txt'.*--ignore-words)"
+        message: |-
+          codespell could not load a custom dictionary or ignore-words file referenced from `.codespellrc`.
+          Resolutions:
+            - Ensure files passed via `--ignore-words`, `--ignore-words-list`, or `--builtin` exist in the repository at the expected path.
+            - Use repository-relative paths in `.codespellrc`.
+      - identifier: SPELL_CODESPELL_ERROR_CONFIG_INVALID
+        regex: "(configparser\\.(Error|MissingSectionHeaderError|ParsingError)|invalid (option|value) in .codespellrc)"
+        message: |-
+          codespell could not parse `.codespellrc`.
+          Resolutions:
+            - Validate INI syntax; ensure the file starts with the `[codespell]` section header.
+            - Check option names against <https://github.com/codespell-project/codespell#using-a-config-file>.
     examples:
       - codespell
       - codespell ./my_file ./my_directory

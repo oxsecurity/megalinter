@@ -164,3 +164,43 @@ RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_T
 
 ```
 
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### PHP_PHPCSFIXER_ERROR_MEMORY_EXHAUSTED
+
+**Detection pattern (regex):**
+
+```text
+Allowed memory size of [0-9]+ bytes exhausted
+```
+
+**Resolution guidance:**
+
+```text
+php-cs-fixer ran out of PHP memory while fixing the codebase.
+Resolutions:
+  - Raise the PHP memory limit by adding `-d memory_limit=2G` (or higher) via `PHP_PHPCSFIXER_ARGUMENTS`.
+  - Narrow the `Finder` in your `.php-cs-fixer.dist.php` to exclude vendor / generated directories.
+```
+
+### PHP_PHPCSFIXER_ERROR_INVALID_CONFIG
+
+**Detection pattern (regex):**
+
+```text
+(InvalidConfigurationException|The rule "[^"]+" is not defined|Unknown configurator|configuration .* (is|are) invalid)
+```
+
+**Resolution guidance:**
+
+```text
+php-cs-fixer rejected your configuration.
+Resolutions:
+  - Verify every rule name in `.php-cs-fixer.dist.php` against the [official rules list](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/blob/master/doc/rules/index.rst).
+  - Some rules require `--allow-risky=yes` — add it to `PHP_PHPCSFIXER_ARGUMENTS` if your config enables risky fixers.
+  - Check the PHP version constraint in your config matches the runtime (PHP 8.4 in MegaLinter).
+```
+

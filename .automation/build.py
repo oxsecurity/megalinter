@@ -793,6 +793,7 @@ def generate_linter_dockerfiles():
             # is dead code on disk and only confuses contributors.
             if hasattr(linter, "disabled") and linter.disabled is True:
                 continue
+            validate_common_linter_errors(linter)
             # Unique linter dockerfile
             linter_lower_name = linter.name.lower()
             dockerfile = f"{LINTERS_DIR}/{linter_lower_name}/Dockerfile"
@@ -2095,12 +2096,60 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             linter_doc_md += success_log_file_content.splitlines()
             linter_doc_md += ["```"]
 
+        # Known non-lint errors (common_linter_errors)
+        linter_doc_md += build_common_linter_errors_md(linter)
+
         # Write md file
         file = Path(f"{REPO_HOME}/docs/descriptors/{lang_lower}_{linter_name_lower}.md")
         file.write_text("\n".join(linter_doc_md) + "\n", encoding="utf-8")
         logging.info("Updated " + file.name)
     linters_tables_md += [""]
     return linters_tables_md
+
+
+def validate_common_linter_errors(linter):
+    entries = getattr(linter, "common_linter_errors", None) or []
+    if not entries:
+        return
+    linter_key = (getattr(linter, "name", None) or "").upper()
+    if not linter_key:
+        return
+    expected_prefix = f"{linter_key}_ERROR_"
+    for entry in entries:
+        identifier = entry.get("identifier", "")
+        if not identifier.startswith(expected_prefix):
+            raise ValueError(
+                f"common_linter_errors identifier '{identifier}' for linter "
+                f"'{linter_key}' must start with '{expected_prefix}'"
+            )
+
+
+def build_common_linter_errors_md(linter):
+    entries = getattr(linter, "common_linter_errors", None) or []
+    if not entries:
+        return []
+    validate_common_linter_errors(linter)
+    md = [
+        "",
+        "## Known errors and resolutions",
+        "",
+        (
+            "When this linter fails for a known non-lint reason "
+            "(remote service unavailable, malformed config, missing credentials, etc.), "
+            "MegaLinter detects the pattern below in the linter output and surfaces the matching guidance."
+        ),
+        "",
+    ]
+    for entry in entries:
+        identifier = entry.get("identifier", "")
+        regex = entry.get("regex", "")
+        message = entry.get("message", "")
+        md += [f"### {identifier}", ""]
+        md += ["**Detection pattern (regex):**", "", "```text", regex, "```", ""]
+        md += ["**Resolution guidance:**", "", "```text"]
+        md += message.splitlines()
+        md += ["```", ""]
+    return md
 
 
 def build_flavors_md_table(filter_linter_name=None, replace_link=False):

@@ -150,3 +150,43 @@ ENV MYPY_CACHE_DIR=/tmp
 - PIP packages (Python):
   - [nbqa==1.9.1](https://pypi.org/project/nbqa/1.9.1)
   - [mypy==1.19.1](https://pypi.org/project/mypy/1.19.1)
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### PYTHON_NBQA_MYPY_ERROR_NOTEBOOK_INVALID
+
+**Detection pattern (regex):**
+
+```text
+(NotJSONError|nbformat\.reader\.NotJSONError|Notebook does not appear to be JSON|Failed to read notebook|nbformat\.validator\.ValidationError)
+```
+
+**Resolution guidance:**
+
+```text
+nbqa could not read a Jupyter notebook because the `.ipynb` file is not valid JSON or violates the nbformat schema.
+Resolutions:
+  - Open the notebook in JupyterLab/VS Code and re-save it to fix the JSON structure.
+  - Check for merge conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`) committed inside the notebook.
+  - Validate the notebook with `jupyter nbformat --validate path/to/notebook.ipynb`.
+```
+
+### PYTHON_NBQA_MYPY_ERROR_TOOL_CRASH
+
+**Detection pattern (regex):**
+
+```text
+(An error occurred while running nbQA|nbqa\.cmdline\.|UnsupportedPackageVersionError)
+```
+
+**Resolution guidance:**
+
+```text
+nbqa crashed while invoking mypy on a notebook. This typically means the bundled nbqa and mypy versions disagree on calling conventions or an unsupported notebook feature was hit.
+Resolutions:
+  - Confirm the notebook does not contain Jupyter magic commands (`%%bash`, `!pip ...`) at module scope; nbqa skips them but malformed cells can still trip it up.
+  - Report the traceback to https://github.com/nbQA-dev/nbQA/issues including the failing cell.
+```
+

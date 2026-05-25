@@ -3,6 +3,7 @@ name: add-linter
 description: Guided workflow for adding a new linter to MegaLinter. Use when a contributor needs to add support for a new linting tool.
 allowed-tools: Read Grep Glob Bash Edit Write WebSearch WebFetch
 argument-hint: [linter-name]
+model: sonnet
 ---
 
 Guide me through adding the linter `$ARGUMENTS` to MegaLinter. If no linter name was provided, ask me for:
@@ -125,7 +126,7 @@ docker run --rm --env TEST_CASE_RUN=true --env OUTPUT_DETAIL=detailed \
 ## Step 7 — Finalize
 
 - Add one line under **New linters** in `CHANGELOG.md` (repo root, beta section):
-  ```
+  ```text
   - Add [linter-name](linter_url) linter for <language> — <what it detects, one sentence>
   ```
 - Branch naming: `user/add-<linter-name>`

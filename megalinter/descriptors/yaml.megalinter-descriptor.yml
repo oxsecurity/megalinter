@@ -116,6 +116,15 @@ linters:
       - standard
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: "[0-9]+:[0-9]+:?\\s*(?:\\[?warning\\]?|\\[?error\\]?)|(?:::warning file=|::error file=)"
+    common_linter_errors:
+      - identifier: YAML_YAMLLINT_ERROR_CONFIG_INVALID
+        regex: "(invalid config: (no such rule|unknown option)|cannot read config file|YamlLintConfigError)"
+        message: |-
+          yamllint could not load `.yamllint.yml` or it references an unknown rule/option.
+          Resolutions:
+            - Validate the YAML syntax of `.yamllint.yml`.
+            - Check rule names against <https://yamllint.readthedocs.io/en/stable/rules.html>.
+            - When extending a preset, use `extends: default` (or `relaxed`), not arbitrary file paths.
     examples:
       - "yamllint myfile.yaml"
       - "yamllint -c .yamllint.yml myfile.yaml"
@@ -172,7 +181,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=v8r
-          ARG NPM_V8R_VERSION=6.0.0
+          ARG NPM_V8R_VERSION=6.1.0
       npm:
         - v8r@${NPM_V8R_VERSION}
     supported_platforms:

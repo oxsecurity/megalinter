@@ -3,9 +3,12 @@ name: pr-watch-fix
 description: Watch the GitHub PR for the current branch, wait for CI to finish, and autonomously fix failing jobs by reading logs, editing sources, and pushing. Stops cleanly when stuck.
 allowed-tools: Bash Read Grep Glob Edit Write AskUserQuestion
 user-invocable: true
+model: sonnet
 ---
 
 Watch the open PR for the current branch, wait for CI, and fix failures.
+
+> **Delegation hint** — to gather CI status and failure excerpts cheaply, delegate the polling/log-fetch step to the `pr-monitor` agent (haiku). Use it instead of running `gh pr checks` + log-fetch loops directly from this skill. Reserve this skill's main loop (sonnet) for deciding fixes, editing code, and pushing.
 
 ## Loop
 
@@ -52,7 +55,7 @@ Poll every **5 minutes**, fixed interval. No backoff — the user explicitly wan
 
 Example:
 
-```
+```yaml
 Monitor:
   description: "PR watch: PR #7790 CI"
   persistent: true
@@ -98,6 +101,14 @@ gh run view "$RUN_ID" --log-failed > /tmp/pr-watch-fail.log
 Then read the tail of `/tmp/pr-watch-fail.log` and grep for the first concrete error (compiler error, test assertion, lint rule, missing file). Don't read the whole log if it's huge — find the actionable line.
 
 If multiple jobs fail with **different** errors, handle them in this order: build failures → test failures → lint failures → flaky/intermittent. Group jobs that fail with the **same** error and treat them as one fix.
+
+**For the MegaLinter job specifically: only act on linters MegaLinter marks as ❌ (blocking).** MegaLinter prints a per-linter summary like `✅ Linted [X] files with [linter] successfully`, `⚠️ Linted [X] files with [linter]: Found N non blocking error(s)`, or `❌ Linted [X] files with [linter]: Found N error(s)`. The individual log lines from a warning linter still say `error` next to each finding, but those findings do **not** fail the build — fixing them is wasted churn. Filter the log to lines containing `❌ Linted` first, then collect per-file errors only from those linters. Example:
+
+```bash
+# Identify failing (blocking) linters from MegaLinter's own verdict
+grep '❌ Linted' /tmp/pr-watch-fail.log
+# Then pull per-file errors only from those linters
+```
 
 ### 5. Decide if you can fix it
 
@@ -205,7 +216,7 @@ Go back to step 1. The loop ends when:
 
 Each time you wake from a poll or finish a fix cycle, give the user **one short line**:
 
-```
+```text
 Cycle 2: build-deploy-dev failed (hadolint), pushed e0a44f1. Waiting 5m.
 ```
 
