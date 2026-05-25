@@ -61,6 +61,10 @@ REPOSITORY_KINGFISHER_ARGUMENTS:
   - "gitleaks-default.toml"
 REPOSITORY_OSV_SCANNER_ARGUMENTS:
   - "--experimental-exclude=g:**/.automation/test/**"
+  # Skip plain requirements.txt: transitive deps need deps.dev (frequently
+  # 'service unavailable'). All deps are also pinned in uv.lock, which is scanned.
+  - "--experimental-exclude=g:**/.config/python/dev/requirements.txt"
+  - "--experimental-exclude=g:**/server/requirements.txt"
 REPORTERS_MARKDOWN_SUMMARY_TYPE: sections
 SHOW_ELAPSED_TIME: true
 FLAVOR_SUGGESTIONS: false
