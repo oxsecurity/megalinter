@@ -75,6 +75,8 @@ CVE-2024-24790
 CVE-2024-45337
 CVE-2024-45338
 CVE-2025-22869
+# https://avd.aquasec.com/nvd/cve-2025-22871 — net/http bare LF line terminator (request smuggling); linters do not run HTTP servers
+CVE-2025-22871
 CVE-2025-22874
 CVE-2025-30204
 CVE-2025-47906
@@ -87,9 +89,15 @@ CVE-2025-58185
 CVE-2025-58186
 CVE-2025-58187
 CVE-2025-58188
+# https://avd.aquasec.com/nvd/cve-2025-58189 — crypto/tls ALPN handshake error leak; linters do not accept inbound TLS
+CVE-2025-58189
 CVE-2025-61723
 CVE-2025-61724
+# https://avd.aquasec.com/nvd/cve-2025-61725 — net/mail ParseAddress domain-literal DoS; linters do not parse email addresses
+CVE-2025-61725
 CVE-2025-61726
+# https://avd.aquasec.com/nvd/cve-2025-61727 — crypto/x509 excluded subdomain constraint bypass; linters perform no certificate validation
+CVE-2025-61727
 CVE-2025-61728
 CVE-2025-61730
 CVE-2025-68121

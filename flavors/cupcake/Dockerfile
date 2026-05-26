@@ -46,7 +46,7 @@ ARG TERRAFORM_TFLINT_VERSION=0.62.1
 # renovate: datasource=docker depName=tenable/terrascan
 ARG TERRAFORM_TERRASCAN_VERSION=1.19.9
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.3
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.4
 #ARGTOP__END
 
 #############################################################################################
@@ -284,7 +284,7 @@ ARG REPOSITORY_TRIVY_VERSION=0.70.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.70.0
 # renovate: datasource=pypi depName=robotframework-robocop
-ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=8.2.8
+ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=8.2.9
 # renovate: datasource=pypi depName=Pygments
 ARG PIP_PYGMENTS_VERSION=2.20.0
 # renovate: datasource=pypi depName=restructuredtext_lint

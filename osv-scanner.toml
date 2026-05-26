@@ -1,16 +1,8 @@
 # osv-scanner ignore list
 # Format reference: https://google.github.io/osv-scanner/configuration/
 
-# ollama 0.6.2 - no upstream fixed version available (affected through 0.6.7)
+# fastapi 0.136.3 - false positive (malicious package report disputed upstream)
+# See https://github.com/fastapi/fastapi/issues/15612
 [[IgnoredVulns]]
-id = "PYSEC-2025-147"
-reason = "ollama: no fixed version published upstream as of 2026-05-25"
-
-# ollama 0.6.2 - no upstream fixed version available (affected through 0.12.10)
-[[IgnoredVulns]]
-id = "PYSEC-2026-101"
-reason = "ollama: no fixed version published upstream as of 2026-05-25"
-
-[[IgnoredVulns]]
-id = "PYSEC-2026-102"
-reason = "ollama: no fixed version published upstream as of 2026-05-25"
+id = "MAL-2026-4750"
+reason = "fastapi: false positive, see https://github.com/fastapi/fastapi/issues/15612"
