@@ -46,7 +46,7 @@ ARG TERRAFORM_TFLINT_VERSION=0.62.1
 # renovate: datasource=docker depName=tenable/terrascan
 ARG TERRAFORM_TERRASCAN_VERSION=1.19.9
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.3
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.4
 #ARGTOP__END
 
 #############################################################################################
