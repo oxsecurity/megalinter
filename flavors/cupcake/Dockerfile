@@ -153,7 +153,7 @@ ARG PIP_CFN_LINT_VERSION=1.51.1
 # renovate: datasource=npm depName=jscpd
 ARG NPM_JSCPD_VERSION=4.2.3
 # renovate: datasource=npm depName=stylelint
-ARG NPM_STYLELINT_VERSION=17.11.1
+ARG NPM_STYLELINT_VERSION=17.12.0
 # renovate: datasource=npm depName=stylelint-config-standard
 ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=40.0.0
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
@@ -212,7 +212,7 @@ ARG NPM_PACKAGE_JSON_LINT_VERSION=10.4.0
 # renovate: datasource=npm depName=npm-package-json-lint-config-default
 ARG NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION=9.0.1
 # renovate: datasource=npm depName=@eslint-react/eslint-plugin
-ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.8.3
+ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.8.4
 # renovate: datasource=github-tags depName=pinterest/ktlint
 ARG KTLINT_VERSION=1.8.0
 
@@ -226,7 +226,7 @@ ARG NPM_MARKDOWNLINT_CLI_VERSION=0.48.0
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.1.96
+ARG PIP_RUMDL_VERSION=0.2.0
 # renovate: datasource=packagist depName=squizlabs/php_codesniffer
 ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=4.0.1
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters

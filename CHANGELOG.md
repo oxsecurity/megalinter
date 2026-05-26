@@ -74,6 +74,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakefmt](https://github.com/snakemake/snakefmt) from 1.1.0 to **2.0.0** on 2026-05-22
   - [eslint](https://eslint.org) from 10.3.0 to **10.4.0** on 2026-05-23
   - [kingfisher](https://github.com/mongodb/kingfisher) from 1.100.0 to **1.101.0** on 2026-05-25
+  - [stylelint](https://stylelint.io) from 17.11.1 to **17.12.0** on 2026-05-26
+  - [rumdl](https://github.com/rvben/rumdl) from 0.1.96 to **0.2.0** on 2026-05-26
 <!-- linter-versions-end -->
 
 ## [v9.5.0] - 2026-05-16
