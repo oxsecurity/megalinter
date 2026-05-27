@@ -459,6 +459,12 @@ CVE-2026-39820
 CVE-2026-39836
 # CVE-2026-42499: net/mail consumePhrase DoS — not used by shfmt
 CVE-2026-42499
+# CVE-2026-39823: net/url URL parsing regression — shfmt does not parse URLs
+CVE-2026-39823
+# CVE-2026-39825: net/http/httputil ReverseProxy query forwarding — shfmt is not an HTTP proxy
+CVE-2026-39825
+# CVE-2026-39826: html/template code injection via trusted template author — shfmt does not render HTML templates
+CVE-2026-39826
 
 # --- Dockerfile checks (trivy misconfig rules, not CVEs) ---
 # Style/best-practice rules trivy reports as misconfig. MegaLinter has
