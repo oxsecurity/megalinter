@@ -64,8 +64,7 @@ class EslintLinter(Linter):
 
         # If a flat config exists, ESLint v10 runs normally — nothing to do.
         if any(
-            os.path.isfile(os.path.join(workspace, name))
-            for name in FLAT_ESLINT_FILES
+            os.path.isfile(os.path.join(workspace, name)) for name in FLAT_ESLINT_FILES
         ):
             return
 
