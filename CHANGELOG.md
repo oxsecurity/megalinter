@@ -76,6 +76,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [kingfisher](https://github.com/mongodb/kingfisher) from 1.100.0 to **1.101.0** on 2026-05-25
   - [stylelint](https://stylelint.io) from 17.11.1 to **17.12.0** on 2026-05-26
   - [rumdl](https://github.com/rvben/rumdl) from 0.1.96 to **0.2.0** on 2026-05-26
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.0 to **0.2.2** on 2026-05-27
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 8.2.8 to **8.2.9** on 2026-05-27
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.15.3 to **1.15.4** on 2026-05-27
+  - [terragrunt](https://terragrunt.gruntwork.io) from 1.0.4 to **1.0.5** on 2026-05-27
 <!-- linter-versions-end -->
 
 ## [v9.5.0] - 2026-05-16
