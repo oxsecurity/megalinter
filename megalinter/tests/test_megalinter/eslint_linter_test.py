@@ -102,9 +102,7 @@ class EslintLinterTest(unittest.TestCase):
                 {"workspace": workspace, "master": master}
             )
 
-            self.assertEqual(
-                linter.eslint10_legacy_config, "package.json#eslintConfig"
-            )
+            self.assertEqual(linter.eslint10_legacy_config, "package.json#eslintConfig")
             entry = master.user_notifications[ESLINT10_NOTIFICATION_KEY]
             self.assertEqual(entry["values"], ["TYPESCRIPT_ES"])
 

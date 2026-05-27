@@ -3447,7 +3447,7 @@ To upgrade to MegaLinter v7, run `npx mega-linter-runner@latest --upgrade` , com
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.8 to **1.2.9**
   - [tflint](https://github.com/terraform-linters/tflint) from 0.39.3 to **0.40.0**
 
-_Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker image sizes were not optimized enough._
+*Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker image sizes were not optimized enough.*
 
 ## [v6.8.0] - 2022-09-04
 
@@ -4836,7 +4836,7 @@ _Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker i
 - Add openssh apk for git repos using ssh
 - Change default yamllint config file name from `.yaml-lint.yml` to `.yamllint.yml`
 - Allow to disable console reporter using `CONSOLE_REPORTER: false`
-- Override `cli_lint_mode` of linters using configuration : _LINTER_\_CLI_LINT_MODE
+- Override `cli_lint_mode` of linters using configuration : *LINTER*\_CLI_LINT_MODE
 - Performances
   - Use list_of_files linting mode for yamllint , black and prettier
 - Fixes
