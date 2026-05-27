@@ -713,35 +713,6 @@
             "title": "Linting mode",
             "type": "string"
           },
-          "supported_cli_lint_modes": {
-            "$id": "#/properties/linters/items/properties/supported_cli_lint_modes",
-            "default": [
-              "file"
-            ],
-            "description": "Define the possible ways in which a linter can be called: file, list_of_files, project",
-            "examples": [
-              [
-                "file",
-                "list_of_files"
-              ],
-              [
-                "project"
-              ]
-            ],
-            "items": {
-              "default": "file",
-              "enum": [
-                "file",
-                "project",
-                "list_of_files"
-              ],
-              "title": "Linting mode",
-              "type": "string"
-            },
-            "title": "Linting modes",
-            "type": "array",
-            "uniqueItems": true
-          },
           "cli_lint_mode_file_extra_args_after": {
             "$id": "#/properties/linters/items/properties/cli_lint_mode_file_extra_args_after",
             "default": [],
@@ -1417,6 +1388,35 @@
             ],
             "title": "SARIF default output file",
             "type": "string"
+          },
+          "supported_cli_lint_modes": {
+            "$id": "#/properties/linters/items/properties/supported_cli_lint_modes",
+            "default": [
+              "file"
+            ],
+            "description": "Define the possible ways in which a linter can be called: file, list_of_files, project",
+            "examples": [
+              [
+                "file",
+                "list_of_files"
+              ],
+              [
+                "project"
+              ]
+            ],
+            "items": {
+              "default": "file",
+              "enum": [
+                "file",
+                "project",
+                "list_of_files"
+              ],
+              "title": "Linting mode",
+              "type": "string"
+            },
+            "title": "Linting modes",
+            "type": "array",
+            "uniqueItems": true
           },
           "supported_platforms": {
             "$id": "#/properties/linters/items/properties/supported_platforms",

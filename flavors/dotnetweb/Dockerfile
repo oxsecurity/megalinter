@@ -23,6 +23,8 @@ ARG BASH_SHELLCHECK_VERSION=v0.11.0
 ARG CARGO_ZIZMOR_VERSION=1.25.0
 # renovate: datasource=crate depName=shellcheck-sarif
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
+# renovate: datasource=docker depName=koalaman/shellcheck-alpine
+ARG BASH_SHELLCHECK_VERSION=v0.11.0
 # renovate: datasource=docker depName=mvdan/shfmt
 ARG BASH_SHFMT_VERSION=v3.13.1-alpine
 # renovate: datasource=docker depName=hadolint/hadolint
@@ -31,6 +33,8 @@ ARG DOCKERFILE_HADOLINT_VERSION=v2.14.0-alpine
 ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.6.1
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.7.0-alpine
+# renovate: datasource=docker depName=quay.io/checkmake/checkmake
+ARG MAKEFILE_CHECKMAKE_VERSION=v0.3.2
 # renovate: datasource=docker depName=yoheimuta/protolint
 ARG PROTOBUF_PROTOLINT_VERSION=0.56.4
 # renovate: datasource=docker depName=zricethezav/gitleaks
@@ -81,6 +85,7 @@ FROM mvdan/shfmt:${BASH_SHFMT_VERSION} AS shfmt
 FROM hadolint/hadolint:${DOCKERFILE_HADOLINT_VERSION} AS hadolint
 FROM mstruebing/editorconfig-checker:${EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION} AS editorconfig-checker
 FROM ghcr.io/yannh/kubeconform:${KUBERNETES_KUBECONFORM_VERSION} AS kubeconform
+FROM quay.io/checkmake/checkmake:${MAKEFILE_CHECKMAKE_VERSION} AS checkmake
 FROM yoheimuta/protolint:${PROTOBUF_PROTOLINT_VERSION} AS protolint
 FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
@@ -264,6 +269,8 @@ ARG NPM_PRETTYJSON_VERSION=1.2.5
 ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.59.4
 # renovate: datasource=npm depName=@typescript-eslint/parser
 ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.59.4
+# renovate: datasource=npm depName=typescript-eslint
+ARG NPM_TYPESCRIPT_ESLINT_VERSION=8.59.4
 # renovate: datasource=npm depName=ts-standard
 ARG NPM_TS_STANDARD_VERSION=12.0.2
 # renovate: datasource=pypi depName=yamllint
@@ -283,6 +290,7 @@ ARG BASH_SHFMT_VERSION
 ARG DOCKERFILE_HADOLINT_VERSION
 ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION
 ARG KUBERNETES_KUBECONFORM_VERSION
+ARG MAKEFILE_CHECKMAKE_VERSION
 ARG PROTOBUF_PROTOLINT_VERSION
 ARG REPOSITORY_GITLEAKS_VERSION
 ARG REPOSITORY_TRUFFLEHOG_VERSION
@@ -368,6 +376,7 @@ COPY --link --from=shfmt /bin/shfmt /usr/bin/
 COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 COPY --link --from=kubeconform /kubeconform /usr/bin/
+COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
@@ -500,6 +509,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 prettyjson@${NPM_PRETTYJSON_VERSION} \
                 @typescript-eslint/eslint-plugin@${NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION} \
                 @typescript-eslint/parser@${NPM_TYPESCRIPT_ESLINT_PARSER_VERSION} \
+                typescript-eslint@${NPM_TYPESCRIPT_ESLINT_VERSION} \
                 ts-standard@${NPM_TS_STANDARD_VERSION} && \
     echo "Cleaning npm cache…" \
     && (npm cache clean --force || true) \
@@ -644,6 +654,8 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
       "https://github.com/kubescape/kubescape/releases/download/v${KUBERNETES_KUBESCAPE_VERSION}/kubescape_${KUBERNETES_KUBESCAPE_VERSION}_linux_${ARCH}.apk" && \
     apk add --no-cache --allow-untrusted /tmp/kubescape.apk && \
     rm /tmp/kubescape.apk \
+# checkmake installation
+# Managed with COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 # markdownlint installation
 # markdown-table-formatter installation
 # rumdl installation

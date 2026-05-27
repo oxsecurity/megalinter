@@ -17,12 +17,14 @@ ARG TARGETARCH
 ARG CARGO_SARIF_FMT_VERSION=0.8.0
 # renovate: datasource=crate depName=shellcheck-sarif
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
-# renovate: datasource=docker depName=koalaman/shellcheck
+# renovate: datasource=docker depName=koalaman/shellcheck-alpine
 ARG BASH_SHELLCHECK_VERSION=v0.11.0
 # renovate: datasource=docker depName=mvdan/shfmt
 ARG BASH_SHFMT_VERSION=v3.13.1-alpine
 # renovate: datasource=docker depName=hadolint/hadolint
 ARG DOCKERFILE_HADOLINT_VERSION=v2.14.0-alpine
+# renovate: datasource=docker depName=quay.io/checkmake/checkmake
+ARG MAKEFILE_CHECKMAKE_VERSION=v0.3.2
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.30.1
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
@@ -54,6 +56,7 @@ RUN set -eu; mkdir -p /out/bin; \
 FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
 FROM mvdan/shfmt:${BASH_SHFMT_VERSION} AS shfmt
 FROM hadolint/hadolint:${DOCKERFILE_HADOLINT_VERSION} AS hadolint
+FROM quay.io/checkmake/checkmake:${MAKEFILE_CHECKMAKE_VERSION} AS checkmake
 FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
 #FROM__END
@@ -133,6 +136,7 @@ ARG CARGO_SHELLCHECK_SARIF_VERSION
 ARG BASH_SHELLCHECK_VERSION
 ARG BASH_SHFMT_VERSION
 ARG DOCKERFILE_HADOLINT_VERSION
+ARG MAKEFILE_CHECKMAKE_VERSION
 ARG REPOSITORY_GITLEAKS_VERSION
 ARG REPOSITORY_TRUFFLEHOG_VERSION
 #ARG__END
@@ -203,6 +207,7 @@ COPY --link --from=cargo-bin-shellcheck-sarif /out/bin/shellcheck-sarif /usr/bin
 COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 COPY --link --from=shfmt /bin/shfmt /usr/bin/
 COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
+COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 #COPY__END
@@ -294,6 +299,8 @@ ENV JAVA_HOME_17=/usr/lib/jvm/java-17-openjdk
 # jsonlint installation
 # v8r installation
 # prettier installation
+# checkmake installation
+# Managed with COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 # gitleaks installation
 # Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 # grype installation
