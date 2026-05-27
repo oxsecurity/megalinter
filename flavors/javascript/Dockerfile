@@ -152,8 +152,6 @@ ARG PIP_DJLINT_VERSION=1.36.4
 ARG NPM_HTMLHINT_VERSION=1.9.2
 # renovate: datasource=npm depName=eslint
 ARG NPM_ESLINT_VERSION=10.4.0
-# renovate: datasource=npm depName=@eslint/eslintrc
-ARG NPM_ESLINT_ESLINTRC_VERSION=3.3.5
 # renovate: datasource=npm depName=@eslint/js
 ARG NPM_ESLINT_JS_VERSION=10.0.1
 # renovate: datasource=npm depName=eslint-config-prettier
@@ -445,7 +443,6 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 npm-groovy-lint@${NPM_GROOVY_LINT_VERSION} \
                 htmlhint@${NPM_HTMLHINT_VERSION} \
                 eslint@${NPM_ESLINT_VERSION} \
-                @eslint/eslintrc@${NPM_ESLINT_ESLINTRC_VERSION} \
                 @eslint/js@${NPM_ESLINT_JS_VERSION} \
                 eslint-config-prettier@${NPM_ESLINT_CONFIG_PRETTIER_VERSION} \
                 eslint-plugin-import-x@${NPM_ESLINT_PLUGIN_IMPORT_X_VERSION} \

@@ -1,13 +1,23 @@
-const { FlatCompat } = require('@eslint/eslintrc');
 const js = require('@eslint/js');
-
-const compat = new FlatCompat({
-    baseDirectory: __dirname,
-    resolvePluginsRelativeTo: __dirname,
-    recommendedConfig: js.configs.recommended,
-    allConfig: js.configs.all,
-});
+const globals = require('globals');
+const tsParser = require('@typescript-eslint/parser');
+const tsPlugin = require('@typescript-eslint/eslint-plugin');
 
 module.exports = [
-    ...compat.config(require('./.eslintrc.json')),
+    js.configs.recommended,
+    {
+        files: ['**/*.ts'],
+        languageOptions: {
+            parser: tsParser,
+            ecmaVersion: 2021,
+            sourceType: 'module',
+            globals: {
+                ...globals.browser,
+            },
+        },
+        plugins: {
+            '@typescript-eslint': tsPlugin,
+        },
+        rules: tsPlugin.configs.recommended.rules,
+    },
 ];

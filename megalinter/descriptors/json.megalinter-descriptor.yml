@@ -51,6 +51,8 @@ linters:
   - class: EslintLinter
     disabled: true
     disabled_reason: "Bug in eslint-plugin-jsonc: <https://github.com/ota-meshi/eslint-plugin-jsonc/issues/328>"
+    deprecated: true
+    deprecated_description: "Kept disabled due to a long-standing bug in eslint-plugin-jsonc (<https://github.com/ota-meshi/eslint-plugin-jsonc/issues/328>). Use JSON_PRETTIER or JSON_JSONLINT instead."
     linter_name: eslint-plugin-jsonc
     linter_spdx_license: MIT
     can_output_sarif: true
