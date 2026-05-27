@@ -324,3 +324,66 @@ ARG GEM_RUBOCOP_RSPEC_VERSION=3.9.0
   - [rubocop-rails:2.35.2](https://rubygems.org/gems/rubocop-rails/versions/2.35.2)
   - [rubocop-rake:0.7.1](https://rubygems.org/gems/rubocop-rake/versions/0.7.1)
   - [rubocop-rspec:3.9.0](https://rubygems.org/gems/rubocop-rspec/versions/3.9.0)
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### RUBY_RUBOCOP_ERROR_UNABLE_TO_LOAD_PLUGIN
+
+**Detection pattern (regex):**
+
+```text
+unable to load plugin|cannot load such file -- rubocop-[a-z]+
+```
+
+**Resolution guidance:**
+
+```text
+RuboCop could not load a plugin listed in `require:` or `plugins:` of your `.rubocop.yml`.
+MegaLinter preinstalls these plugins: `rubocop-github`, `rubocop-performance`, `rubocop-rails`, `rubocop-rake`, `rubocop-rspec`.
+Resolutions:
+  - Pre-install the missing plugin via a pre-command in your .mega-linter.yml (gem installs globally):
+      RUBY_RUBOCOP_PRE_COMMANDS:
+        - command: "gem install rubocop-thread_safety"
+          cwd: "root"
+          continue_if_failed: false
+  - Or remove unsupported plugin references from `.rubocop.yml`.
+  - For a project-pinned setup, run RuboCop via a project Gemfile + bundler instead.
+```
+
+### RUBY_RUBOCOP_ERROR_INVALID_CONFIG
+
+**Detection pattern (regex):**
+
+```text
+(unrecognized cop or department|Malformed configuration|Error: \S+ is not a valid cop name)
+```
+
+**Resolution guidance:**
+
+```text
+RuboCop rejected an entry in `.rubocop.yml`.
+Resolutions:
+  - Verify cop names against the [RuboCop cops catalogue](https://docs.rubocop.org/rubocop/cops.html). Renamed cops often need a department prefix (e.g. `Layout/`, `Lint/`).
+  - Run `rubocop --show-cops` locally to confirm a cop exists in the installed version.
+  - Check YAML indentation and that the file is valid YAML.
+```
+
+### RUBY_RUBOCOP_ERROR_OBSOLETE_CONFIG
+
+**Detection pattern (regex):**
+
+```text
+obsolete (configuration|parameter|cop)
+```
+
+**Resolution guidance:**
+
+```text
+Your `.rubocop.yml` uses configuration that has been removed in a newer RuboCop release.
+Resolutions:
+  - Follow the migration hints printed above the error (RuboCop usually states the new cop/parameter name).
+  - Run `rubocop --auto-gen-config` locally to regenerate a baseline against the bundled RuboCop version.
+```
+

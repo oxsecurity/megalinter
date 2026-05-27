@@ -131,3 +131,26 @@ ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=8.2.8
 
 - PIP packages (Python):
   - [robotframework-robocop==8.2.8](https://pypi.org/project/robotframework-robocop/8.2.8)
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### ROBOTFRAMEWORK_ROBOCOP_ERROR_CONFIG_INVALID
+
+**Detection pattern (regex):**
+
+```text
+(InvalidConfigurationError|InvalidConfigurationFormatError|InvalidParameterValueError|Provided rule '[^']+' does not exist|Circular reference found in 'extends')
+```
+
+**Resolution guidance:**
+
+```text
+Robocop could not load its configuration (CLI args or `robocop.toml`) or referenced an unknown rule.
+Resolutions:
+  - Validate the TOML syntax of `robocop.toml`.
+  - Check that all rule names under `include`/`exclude`/`configure` exist in the installed Robocop version (rule names were reorganized in Robocop 5+ / 6+).
+  - See <https://robocop.dev/stable/rules_list/>.
+```
+

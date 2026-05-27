@@ -162,3 +162,26 @@ ARG PIP_YAMLLINT_VERSION=1.38.0
 
 - PIP packages (Python):
   - [yamllint==1.38.0](https://pypi.org/project/yamllint/1.38.0)
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### YAML_YAMLLINT_ERROR_CONFIG_INVALID
+
+**Detection pattern (regex):**
+
+```text
+(invalid config: (no such rule|unknown option)|cannot read config file|YamlLintConfigError)
+```
+
+**Resolution guidance:**
+
+```text
+yamllint could not load `.yamllint.yml` or it references an unknown rule/option.
+Resolutions:
+  - Validate the YAML syntax of `.yamllint.yml`.
+  - Check rule names against <https://yamllint.readthedocs.io/en/stable/rules.html>.
+  - When extending a preset, use `extends: default` (or `relaxed`), not arbitrary file paths.
+```
+

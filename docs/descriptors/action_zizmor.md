@@ -177,3 +177,26 @@ RUN set -eu; \
 COPY --link --from=cargo-bin-zizmor /out/bin/zizmor /usr/bin/zizmor
 ```
 
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### ACTION_ZIZMOR_ERROR_GITHUB_API_UNREACHABLE
+
+**Detection pattern (regex):**
+
+```text
+(can't access [^:]+: missing or you have no access|couldn't list branches for)
+```
+
+**Resolution guidance:**
+
+```text
+Zizmor could not access a repository referenced by a `uses:` clause via the GitHub API (missing token, insufficient scope, or cross-repo private access).
+To allow zizmor to authenticate with GITHUB_TOKEN (or a PAT with `Contents: read-only`), whitelist the variable in your .mega-linter.yml:
+ACTION_ZIZMOR_UNSECURED_ENV_VARIABLES:
+  - GITHUB_TOKEN
+If the referenced workflow is in a private repo outside the current one, provide a PAT with cross-repo access instead of the default GITHUB_TOKEN, or run zizmor in offline mode.
+```
+

@@ -43,6 +43,14 @@ linters:
     cli_lint_mode_project_extra_args_after:
       - .
     linter_version_cache: "0.0.0" # Not implemented on gherkin-lint
+    common_linter_errors:
+      - identifier: GHERKIN_GHERKIN_LINT_ERROR_CONFIG_INVALID
+        regex: "(Could not find (specified |default )?config file|Error\\(s\\) in configuration file:|Rule \".*\" does not (match any|exist))"
+        message: |-
+          gherkin-lint could not load `.gherkin-lintrc` or it references a rule that does not exist.
+          Resolutions:
+            - Validate that `.gherkin-lintrc` is valid JSON.
+            - Check rule names against <https://github.com/gherkin-lint/gherkin-lint#available-rules>.
     examples:
       - "gherkin-lint myfile.feature"
       - "gherkin-lint -c .gherkin-lintrc myfile.feature"

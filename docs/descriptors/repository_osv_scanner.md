@@ -153,3 +153,63 @@ RUN apk add --no-cache \
     osv-scanner=${REPOSITORY_OSV_SCANNER_VERSION}
 ```
 
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### REPOSITORY_OSV_SCANNER_ERROR_SERVICE_UNAVAILABLE
+
+**Detection pattern (regex):**
+
+```text
+rpc error: code = Unavailable
+```
+
+**Resolution guidance:**
+
+```text
+osv-scanner could not reach the deps.dev / OSV transitive-dependency resolution service (gRPC "service unavailable").
+This is a transient remote service issue, not a vulnerability finding.
+Workarounds:
+  - Retry the run later.
+  - Temporarily mark the linter as non-blocking by adding to your .mega-linter.yml:
+      DISABLE_ERRORS_LINTERS:
+        - REPOSITORY_OSV_SCANNER
+```
+
+### REPOSITORY_OSV_SCANNER_ERROR_NO_PACKAGE_SOURCES
+
+**Detection pattern (regex):**
+
+```text
+no package sources found
+```
+
+**Resolution guidance:**
+
+```text
+osv-scanner found no lockfiles, manifests, or SBOMs to scan in the repository.
+This is a configuration/scope issue, not a vulnerability finding.
+Resolutions:
+  - Verify the repository actually contains a supported lockfile (package-lock.json, go.sum, Gemfile.lock, Pipfile.lock, etc.) at the scanned path.
+  - If this is expected for some sub-projects, disable osv-scanner for the affected paths or mark it non-blocking via `DISABLE_ERRORS_LINTERS`.
+```
+
+### REPOSITORY_OSV_SCANNER_ERROR_LOCKFILE_PARSE
+
+**Detection pattern (regex):**
+
+```text
+(?i)failed to parse (lockfile|sbom)
+```
+
+**Resolution guidance:**
+
+```text
+osv-scanner failed to parse a lockfile or SBOM. The file is likely malformed or in an unsupported format/version.
+Resolutions:
+  - Regenerate the lockfile with the project's package manager.
+  - For SBOMs, ensure the CycloneDX/SPDX version is supported by the current osv-scanner release.
+```
+

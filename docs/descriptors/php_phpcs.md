@@ -261,3 +261,43 @@ RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_T
 
 ```
 
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### PHP_PHPCS_ERROR_STANDARD_NOT_INSTALLED
+
+**Detection pattern (regex):**
+
+```text
+ERROR: the "[^"]+" coding standard is not installed
+```
+
+**Resolution guidance:**
+
+```text
+phpcs could not find the coding standard referenced by `--standard=` (or your `phpcs.xml`).
+Resolutions:
+  - Check the value of `--standard=` in `PHP_PHPCS_ARGUMENTS` or the `<arg name="standard" .../>` in `phpcs.xml`.
+  - Use one of the built-in standards (PSR1, PSR2, PSR12, PEAR, Squiz, Zend, MySource) or commit the custom standard XML/PHP file to the repository and reference it by relative path.
+  - Custom standards installed via Composer are not preinstalled in MegaLinter — vendor them in the repo, or rely on a built-in standard.
+```
+
+### PHP_PHPCS_ERROR_REFERENCED_SNIFF_NOT_FOUND
+
+**Detection pattern (regex):**
+
+```text
+Referenced sniff "[^"]+" does not exist
+```
+
+**Resolution guidance:**
+
+```text
+phpcs failed to load a sniff listed in your ruleset.
+Resolutions:
+  - Verify the `<rule ref="..."/>` entries in your `phpcs.xml` (typo, removed sniff, wrong standard prefix).
+  - If the sniff comes from a third-party standard, commit that standard's files into the repository so phpcs can find them.
+```
+

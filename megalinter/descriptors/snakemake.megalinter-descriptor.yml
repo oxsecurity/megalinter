@@ -37,6 +37,14 @@ linters:
     cli_lint_extra_args:
       - "--lint"
       - "-s"
+    common_linter_errors:
+      - identifier: SNAKEMAKE_LINT_ERROR_WORKFLOW_PARSE
+        regex: "(WorkflowError|SyntaxError in (file|line)|Error in (rule|line) .*:)"
+        message: |-
+          Snakemake could not parse the workflow before linting.
+          Resolutions:
+            - Run `snakemake --lint -s Snakefile` locally and fix the underlying syntax/workflow error.
+            - Validate any included sub-Snakefiles and `configfile:` references resolve relative to the workflow root.
     examples:
       - "snakemake --lint -s Snakefile"
     install:
@@ -102,7 +110,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=snakefmt
-          ARG PIP_SNAKEFMT_VERSION=1.1.0
+          ARG PIP_SNAKEFMT_VERSION=2.0.0
       pip:
         - snakefmt==${PIP_SNAKEFMT_VERSION}
     supported_platforms:

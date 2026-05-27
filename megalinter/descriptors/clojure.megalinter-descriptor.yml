@@ -44,6 +44,15 @@ linters:
       - "--lint"
     cli_lint_mode_project_extra_args_after:
       - .
+    common_linter_errors:
+      - identifier: CLOJURE_CLJ_KONDO_ERROR_CONFIG_INVALID
+        regex: "(error while reading .*\\.clj-kondo|No reader function for tag|Invalid (token|leading character|EDN)|Unmatched delimiter)"
+        message: |-
+          clj-kondo could not read its configuration file (`.clj-kondo/config.edn`).
+          Resolutions:
+            - Validate the EDN syntax (balanced `{}`, `[]`, `()`, no trailing commas; keys are usually keywords like `:linters`).
+            - Run `clj-kondo --config '{}' --lint <file>` to confirm the failure is config-related.
+            - Compare against the reference config at <https://github.com/clj-kondo/clj-kondo/blob/master/doc/config.md>.
     examples:
       - "clj-kondo --lint myfile.clj"
       - "clj-kondo --lint --config .clj-kondo/config.edn myfile.clj"

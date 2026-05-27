@@ -155,3 +155,53 @@ FROM ghcr.io/yannh/kubeconform:${KUBERNETES_KUBECONFORM_VERSION} AS kubeconform
 COPY --link --from=kubeconform /kubeconform /usr/bin/
 ```
 
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### KUBERNETES_KUBECONFORM_ERROR_SCHEMA_NOT_FOUND
+
+**Detection pattern (regex):**
+
+```text
+could not find schema for
+```
+
+**Resolution guidance:**
+
+```text
+kubeconform could not find a JSON schema for a Kubernetes resource (typically a CustomResourceDefinition / CRD).
+Fixes:
+  - Pass additional schema locations via `KUBERNETES_KUBECONFORM_ARGUMENTS`, e.g.:
+      KUBERNETES_KUBECONFORM_ARGUMENTS:
+        - -schema-location
+        - default
+        - -schema-location
+        - "https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json"
+  - Ignore missing CRD schemas with `-ignore-missing-schemas`.
+  - Skip specific kinds with `-skip Kind1,Kind2`.
+  - Make sure `-kubernetes-version` is a full X.Y.Z version (X.Y is not supported).
+```
+
+### KUBERNETES_KUBECONFORM_ERROR_SCHEMA_DOWNLOAD_FAILED
+
+**Detection pattern (regex):**
+
+```text
+(failed downloading schema|error while downloading schema|failed parsing schema|no such host)
+```
+
+**Resolution guidance:**
+
+```text
+kubeconform could not download a schema from its remote schema location (network/DNS failure).
+This is a transient remote-service issue, not a manifest problem.
+Workarounds:
+  - Retry the run later.
+  - Pre-cache schemas locally and point `-schema-location` to a local path.
+  - Temporarily mark the linter as non-blocking by adding to your .mega-linter.yml:
+      DISABLE_ERRORS_LINTERS:
+        - KUBERNETES_KUBECONFORM
+```
+

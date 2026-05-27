@@ -75,6 +75,8 @@ CVE-2024-24790
 CVE-2024-45337
 CVE-2024-45338
 CVE-2025-22869
+# https://avd.aquasec.com/nvd/cve-2025-22871 — net/http bare LF line terminator (request smuggling); linters do not run HTTP servers
+CVE-2025-22871
 CVE-2025-22874
 CVE-2025-30204
 CVE-2025-47906
@@ -87,9 +89,15 @@ CVE-2025-58185
 CVE-2025-58186
 CVE-2025-58187
 CVE-2025-58188
+# https://avd.aquasec.com/nvd/cve-2025-58189 — crypto/tls ALPN handshake error leak; linters do not accept inbound TLS
+CVE-2025-58189
 CVE-2025-61723
 CVE-2025-61724
+# https://avd.aquasec.com/nvd/cve-2025-61725 — net/mail ParseAddress domain-literal DoS; linters do not parse email addresses
+CVE-2025-61725
 CVE-2025-61726
+# https://avd.aquasec.com/nvd/cve-2025-61727 — crypto/x509 excluded subdomain constraint bypass; linters perform no certificate validation
+CVE-2025-61727
 CVE-2025-61728
 CVE-2025-61730
 CVE-2025-68121
@@ -451,6 +459,23 @@ CVE-2026-39820
 CVE-2026-39836
 # CVE-2026-42499: net/mail consumePhrase DoS — not used by shfmt
 CVE-2026-42499
+# CVE-2026-39823: net/url URL parsing regression — shfmt does not parse URLs
+CVE-2026-39823
+# CVE-2026-39825: net/http/httputil ReverseProxy query forwarding — shfmt is not an HTTP proxy
+CVE-2026-39825
+# CVE-2026-39826: html/template code injection via trusted template author — shfmt does not render HTML templates
+CVE-2026-39826
+
+# --- sfdx-hardis (transitive mega-linter-runner@9.4.0 dependency) ---
+# sfdx-hardis depends on mega-linter-runner@9.4.0 (published), which still uses
+# yeoman-environment@^5.0.0. mega-linter-runner@9.5.0 upgrades to ^6.0.0.
+# Remove when sfdx-hardis releases a version depending on mega-linter-runner>=9.5.0.
+# CVE-2026-42089: yeoman-environment arbitrary package install without confirmation —
+# generators run in MegaLinter are trusted (bundled with mega-linter-runner itself)
+CVE-2026-42089
+# CVE-2026-44705: tmp path traversal via attacker-controlled prefix/postfix —
+# prefix/postfix values come from trusted generator code, not external input
+CVE-2026-44705
 
 # --- Dockerfile checks (trivy misconfig rules, not CVEs) ---
 # Style/best-practice rules trivy reports as misconfig. MegaLinter has

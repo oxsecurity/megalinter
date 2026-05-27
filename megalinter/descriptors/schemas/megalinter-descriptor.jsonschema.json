@@ -833,6 +833,36 @@
             "title": "CLI Version extra arguments",
             "type": "array"
           },
+          "common_linter_errors": {
+            "$id": "#/properties/linters/items/properties/common_linter_errors",
+            "description": "Patterns matched against a non-successful linter output to surface known non-lint failures (config issue, remote service down, missing credentials, etc.) with a guidance message. Does not affect exit code or error counts.",
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "identifier": {
+                  "pattern": "^[A-Z][A-Z0-9_]*_ERROR_[A-Z0-9_]+$",
+                  "title": "Stable identifier for this known error. Must start with the linter key followed by _ERROR_ (e.g. ACTION_ZIZMOR_ERROR_GITHUB_API_UNREACHABLE).",
+                  "type": "string"
+                },
+                "message": {
+                  "title": "Explanation and resolution shown to the user when the regex matches",
+                  "type": "string"
+                },
+                "regex": {
+                  "title": "Pattern matched against linter stdout (Python re.search)",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "identifier",
+                "regex",
+                "message"
+              ],
+              "type": "object"
+            },
+            "title": "Known non-lint error patterns with user guidance",
+            "type": "array"
+          },
           "config_file_name": {
             "$id": "#/properties/linters/items/properties/config_file_name",
             "description": "An explanation about the purpose of this instance.",

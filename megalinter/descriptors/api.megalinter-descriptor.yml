@@ -55,6 +55,34 @@ linters:
       - "{{SARIF_OUTPUT_FILE}}"
     cli_help_extra_args:
       - "lint"
+    common_linter_errors:
+      - identifier: API_SPECTRAL_ERROR_RULESET_PARSE_FAILED
+        regex: "(Could not read ruleset at|No ruleset has been found|Provided ruleset is not an object|RulesetValidationError)"
+        message: |-
+          Spectral could not parse the ruleset file.
+          Checks:
+            - Verify the file passed via `-r` / `API_SPECTRAL_CONFIG_FILE` is valid YAML or JSON.
+            - Ensure `extends:` references resolvable rulesets (e.g. `spectral:oas`, `spectral:asyncapi`, or an installed npm package).
+            - If the ruleset is loaded over HTTP/HTTPS, confirm the URL is reachable from the MegaLinter container.
+      - identifier: API_SPECTRAL_ERROR_FUNCTION_NOT_DEFINED
+        regex: "(Function .* is not defined|Cannot find module .*functions)"
+        message: |-
+          Spectral could not resolve a function referenced by a rule.
+          Fixes:
+            - For core functions, double-check the spelling (e.g. `truthy`, `pattern`, `length`).
+            - For custom functions, list them under `functions:` in the ruleset and place the JS files under `functions/` next to the ruleset.
+            - When loading a ruleset over HTTP, custom functions are not auto-fetched — vendor the ruleset locally and point `-r` at it.
+      - identifier: API_SPECTRAL_ERROR_RULESET_REF_UNREACHABLE
+        regex: "(ENOTFOUND|ECONNREFUSED|ETIMEDOUT|getaddrinfo ENOTFOUND|fetch failed)"
+        message: |-
+          Spectral could not resolve a remote `$ref` or remote ruleset (network/DNS failure).
+          This is a transient remote-service issue.
+          Workarounds:
+            - Retry the run later.
+            - Vendor the referenced documents locally and update the `$ref` to a relative path.
+            - Temporarily mark the linter as non-blocking by adding to your .mega-linter.yml:
+                DISABLE_ERRORS_LINTERS:
+                  - API_SPECTRAL
     examples:
       - "spectral lint myfile.yml"
       - "spectral lint -r .spectral.yaml myfile.yml"

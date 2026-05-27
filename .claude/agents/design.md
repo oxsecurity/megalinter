@@ -2,7 +2,7 @@
 name: design
 description: Design a MegaLinter solution and write a technical specification based on requirements analysis. Use after /analyze.
 tools: Read, Grep, Glob
-model: sonnet
+model: opus
 ---
 
 You are a software architect for the **MegaLinter** project.

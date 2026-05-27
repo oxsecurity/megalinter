@@ -88,6 +88,22 @@ linters:
     version_extract_regex: "(?<=Dart SDK version: )(\\d+)\\.(\\d+)\\.(\\d+)"
     examples:
       - "dart analyze --fatal-infos --fatal-warnings myfile.dart"
+    common_linter_errors:
+      - identifier: DART_DARTANALYZER_ERROR_MISSING_PUBSPEC
+        regex: 'Could not find a file named "pubspec.yaml"'
+        message: |-
+          dart analyze requires a Dart package: no pubspec.yaml was found for the analyzed file(s).
+          Add a pubspec.yaml at the package root, or restrict DART_DARTANALYZER_FILTER_REGEX_INCLUDE to a directory that contains one.
+      - identifier: DART_DARTANALYZER_ERROR_PACKAGES_NOT_RESOLVED
+        regex: "(pub get|pub upgrade).*(failed|not found)|Some packages .* are not available"
+        message: |-
+          dart analyze could not resolve the package dependencies declared in pubspec.yaml.
+          Resolution: pre-install dependencies (against the pubspec.yaml in your repo) via a pre-command in your .mega-linter.yml:
+            DART_DARTANALYZER_PRE_COMMANDS:
+              - command: "dart pub get"
+                cwd: "workspace"
+                continue_if_failed: false
+          Or pre-cache `.dart_tool/package_config.json` so the analyzer can locate dependencies.
     install:
       ## stable dart sdk: https://dart.dev/get-dart#release-channels
       ## install alpine-pkg-glibc (glibc compatibility layer package for Alpine Linux)
@@ -95,7 +111,7 @@ linters:
         - ARG TARGETPLATFORM
         - |-
           # renovate: datasource=dart-version depName=dart
-          ARG DART_VERSION='3.11.6'
+          ARG DART_VERSION='3.12.0'
         - |
           RUN case ${TARGETPLATFORM} in \
             "linux/amd64")  DART_ARCH=x64   ;; \

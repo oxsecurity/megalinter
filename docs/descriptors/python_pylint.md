@@ -816,3 +816,66 @@ ARG PIP_TYPING_EXTENSIONS_VERSION=4.15.0
 - PIP packages (Python):
   - [pylint==4.0.5](https://pypi.org/project/pylint/4.0.5)
   - [typing-extensions==4.15.0](https://pypi.org/project/typing-extensions/4.15.0)
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### PYTHON_PYLINT_ERROR_CONFIG_PARSE
+
+**Detection pattern (regex):**
+
+```text
+(Error in provided config file|Unable to load configuration|Error while parsing|argument --[A-Za-z-]+: )
+```
+
+**Resolution guidance:**
+
+```text
+pylint could not parse the configuration file (e.g. `.pylintrc`, `pyproject.toml`).
+Resolutions:
+  - Validate the TOML/INI syntax of your pylint config.
+  - Make sure option names and section headers (`[MESSAGES CONTROL]`, `[tool.pylint.*]`) are correct for the pinned pylint version.
+  - Run `pylint --generate-rcfile` to compare with a known-good template.
+```
+
+### PYTHON_PYLINT_ERROR_PLUGIN_LOAD
+
+**Detection pattern (regex):**
+
+```text
+(Unable to load plugin|Problem importing module)
+```
+
+**Resolution guidance:**
+
+```text
+pylint failed to load a plugin declared in `load-plugins` (e.g. `pylint-django`, `pylint-pydantic`).
+Resolutions:
+  - Check the plugin name spelling in your pylint config.
+  - Pre-install the missing plugin into pylint's venv via a pre-command in your .mega-linter.yml:
+      PYTHON_PYLINT_PRE_COMMANDS:
+        - command: "pip install pylint-django"
+          venv: pylint
+          continue_if_failed: false
+  - Or remove the plugin from `load-plugins` if it is not needed.
+```
+
+### PYTHON_PYLINT_ERROR_ASTROID_CRASH
+
+**Detection pattern (regex):**
+
+```text
+(astroid-error|Fatal error while checking |F0002|AstroidError)
+```
+
+**Resolution guidance:**
+
+```text
+pylint crashed inside its astroid AST parser. This is usually a pylint/astroid bug, not a problem with your code.
+Resolutions:
+  - Run pylint with `--errors-only` to narrow the offending file.
+  - Disable astroid plugins (`load-plugins`) one by one to find the culprit.
+  - Report the traceback to https://github.com/pylint-dev/pylint/issues.
+```
+

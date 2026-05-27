@@ -19,7 +19,7 @@ description: How to use v8r (configure, ignore files, ignore errors, help & vers
 
 ## v8r documentation
 
-- Version in MegaLinter: **6.0.0**
+- Version in MegaLinter: **6.1.0**
 - Visit [Official Web Site](https://github.com/chris48s/v8r#readme){target=_blank}
 - See [Index of problems detected by v8r](https://www.schemastore.org/){target=_blank}
 
@@ -152,8 +152,34 @@ Examples:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=v8r
-ARG NPM_V8R_VERSION=6.0.0
+ARG NPM_V8R_VERSION=6.1.0
 ```
 
 - NPM packages (node.js):
-  - [v8r@6.0.0](https://www.npmjs.com/package/v8r/v/6.0.0)
+  - [v8r@6.1.0](https://www.npmjs.com/package/v8r/v/6.1.0)
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### JSON_V8R_ERROR_SCHEMASTORE_UNREACHABLE
+
+**Detection pattern (regex):**
+
+```text
+(ENOTFOUND|ECONNREFUSED|ETIMEDOUT|getaddrinfo|fetch failed).*(schemastore|json\.schemastore\.org)
+```
+
+**Resolution guidance:**
+
+```text
+v8r could not download a schema from https://www.schemastore.org/ (network/DNS failure).
+This is a transient remote-service / network issue, not a real lint error.
+Workarounds:
+  - Retry the run later.
+  - Pre-cache schemas locally and pass them via `--schema` in `JSON_V8R_ARGUMENTS`.
+  - Temporarily mark the linter as non-blocking by adding to your .mega-linter.yml:
+      DISABLE_ERRORS_LINTERS:
+        - JSON_V8R
+```
+

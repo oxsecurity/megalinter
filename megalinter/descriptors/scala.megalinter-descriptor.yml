@@ -55,6 +55,30 @@ linters:
       # cli_lint_fix_arg_name: '--megalinter-fix-flag' # MegaLinter workaround
       # cli_lint_fix_remove_args:
       # - "--check"
+    common_linter_errors:
+      - identifier: SCALA_SCALAFIX_ERROR_RULE_NOT_FOUND
+        regex: '(Unknown rule|rule not found|Rule \S+ not found)'
+        message: |-
+          scalafix could not find a rule referenced in your `.scalafix.conf` (or `--rules` argument).
+          Resolutions:
+            - Check the spelling against the [scalafix built-in rules](https://scalacenter.github.io/scalafix/docs/rules/overview.html).
+            - MegaLinter runs scalafix without the project's classpath, so **semantic** rules (those needing a SemanticDB) cannot be loaded — use only syntactic rules in `.scalafix.conf`.
+            - Third-party rule artifacts are not available in MegaLinter; vendor the rule source into the repo or remove it.
+      - identifier: SCALA_SCALAFIX_ERROR_NO_SEMANTICDB
+        regex: "(SemanticDB not found|Missing SemanticDB|semanticdb-scalac)"
+        message: |-
+          scalafix tried to run a semantic rule but no SemanticDB was produced.
+          MegaLinter does not compile your project, so semantic rules cannot run here.
+          Resolutions:
+            - Remove semantic rules from `.scalafix.conf` (keep only syntactic ones such as `DisableSyntax`, `LeakingImplicitClassVal`, `NoAutoTupling`, `NoValInForComprehension`, `ProcedureSyntax`, `RemoveUnused`).
+            - Run semantic-rule scalafix from your build tool (sbt/Mill) outside MegaLinter.
+      - identifier: SCALA_SCALAFIX_ERROR_CONFIG_PARSE
+        regex: 'ConfError|Invalid config|expected .* at .*\.scalafix\.conf'
+        message: |-
+          scalafix could not parse `.scalafix.conf`.
+          Resolutions:
+            - Validate the HOCON syntax of `.scalafix.conf` (quoting, braces, commas).
+            - Confirm each rule key exists; see the [scalafix configuration guide](https://scalacenter.github.io/scalafix/docs/users/configuration.html).
     examples:
       - "scalafix --check myfile.scala"
       - "scalafix --check --config .scalafix.conf myfile.scala"

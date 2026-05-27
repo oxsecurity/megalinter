@@ -158,3 +158,26 @@ ARG NPM_MARKDOWNLINT_CLI_VERSION=0.48.0
 
 - NPM packages (node.js):
   - [markdownlint-cli@0.48.0](https://www.npmjs.com/package/markdownlint-cli/v/0.48.0)
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### MARKDOWN_MARKDOWNLINT_ERROR_CONFIG_PARSE
+
+**Detection pattern (regex):**
+
+```text
+Cannot read or parse config file
+```
+
+**Resolution guidance:**
+
+```text
+markdownlint could not parse its configuration file. This is typically a syntax error in `.markdownlint.json` / `.markdownlintrc`, most often a `//` or `/* */` comment in a strict-JSON file, a trailing comma, or unbalanced braces.
+Resolutions:
+  - Validate the configuration file with a JSON linter and remove comments / trailing commas.
+  - If you need comments, rename the file to `.markdownlint.jsonc`, `.markdownlint.yaml`, or `.markdownlint.cjs` (those formats support comments).
+  - Reference docs: https://github.com/igorshubovych/markdownlint-cli#configuration
+```
+

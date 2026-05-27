@@ -65,6 +65,37 @@ linters:
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: ": ([0-9]+) failure\\(s\\), .* warning\\(s\\) in .* files processed"
     cli_version_arg_name: "--version"
+    common_linter_errors:
+      - identifier: ANSIBLE_ANSIBLE_LINT_ERROR_GALAXY_INSTALL_FAILED
+        regex: "(ERROR! - galaxy:|Failed to (find|install) (collection|role)|Galaxy server.*returned)"
+        message: |-
+          ansible-lint failed while installing required Ansible Galaxy collections or roles before linting.
+          This is a network/dependency-resolution problem, not a lint finding.
+          Resolutions:
+            - Retry the run; Galaxy outages are usually transient.
+            - Pin collection/role versions in `requirements.yml` to avoid resolution drift.
+            - If a Galaxy server requires auth, whitelist the relevant env var for this linter in your .mega-linter.yml (MegaLinter strips token-like env vars by default):
+                ANSIBLE_ANSIBLE_LINT_UNSECURED_ENV_VARIABLES:
+                  - ANSIBLE_GALAXY_SERVER_LIST
+                  - ANSIBLE_GALAXY_TOKEN
+      - identifier: ANSIBLE_ANSIBLE_LINT_ERROR_SYNTAX_CHECK
+        regex: "(syntax-check\\[specific\\]|the (role|playbook) .* was not found|couldn't resolve (module|action))"
+        message: |-
+          ansible-lint's `syntax-check` rule could not resolve a referenced role, module, or playbook.
+          Resolutions:
+            - Pre-install required collections/roles from `requirements.yml` (in your repo) via a pre-command in your .mega-linter.yml:
+                ANSIBLE_ANSIBLE_LINT_PRE_COMMANDS:
+                  - command: "ansible-galaxy install -r requirements.yml"
+                    cwd: "workspace"
+                    continue_if_failed: false
+            - Adjust `roles_path` / `collections_path` in `ansible.cfg` so ansible-lint can find them.
+      - identifier: ANSIBLE_ANSIBLE_LINT_ERROR_CONFIG_INVALID
+        regex: "(Invalid (configuration|rule|profile)|configuration file .* is malformed|failed to load .*\\.ansible-lint)"
+        message: |-
+          ansible-lint could not load its configuration file (`.ansible-lint` or `.config/ansible-lint.yml`).
+          Resolutions:
+            - Validate the YAML syntax of your `.ansible-lint` file.
+            - Check that referenced rules, tags, and profile names exist in the installed ansible-lint version.
     examples:
       - "ansible-lint -v"
       - "ansible-lint -v -c .ansible-lint"

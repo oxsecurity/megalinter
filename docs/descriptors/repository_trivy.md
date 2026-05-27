@@ -197,3 +197,75 @@ RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/
 
 ```
 
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### REPOSITORY_TRIVY_ERROR_TOOMANYREQUESTS
+
+**Detection pattern (regex):**
+
+```text
+TOOMANYREQUESTS
+```
+
+**Resolution guidance:**
+
+```text
+trivy was rate-limited by GitHub Container Registry (ghcr.io) while downloading the vulnerability database.
+This is a registry rate limit, not a vulnerability finding.
+Workarounds:
+  - Retry the run later (the limit is per-namespace and resets quickly).
+  - Authenticate pulls so requests count against your own quota. MegaLinter strips token/password env vars by default, so whitelist them for this linter in your .mega-linter.yml:
+      REPOSITORY_TRIVY_UNSECURED_ENV_VARIABLES:
+        - GITHUB_TOKEN
+        - TRIVY_USERNAME
+        - TRIVY_PASSWORD
+  - Mirror the trivy-db to your own registry and point trivy at it via `TRIVY_DB_REPOSITORY`.
+  - Cache `~/.cache/trivy` across CI runs.
+  - Temporarily mark the linter as non-blocking by adding to your .mega-linter.yml:
+      DISABLE_ERRORS_LINTERS:
+        - REPOSITORY_TRIVY
+```
+
+### REPOSITORY_TRIVY_ERROR_DB_DOWNLOAD_FAILED
+
+**Detection pattern (regex):**
+
+```text
+(failed to download (vulnerability )?(DB|database)|database download error|could not pull image)
+```
+
+**Resolution guidance:**
+
+```text
+trivy could not download or refresh its vulnerability database from the configured registry.
+Workarounds:
+  - Retry the run; this is often transient.
+  - Set `TRIVY_DB_REPOSITORY` to an alternative mirror (e.g. an internal registry or AWS ECR Public Gallery).
+  - Pre-populate `~/.cache/trivy` in CI.
+```
+
+### REPOSITORY_TRIVY_ERROR_REGISTRY_UNAUTHORIZED
+
+**Detection pattern (regex):**
+
+```text
+(UNAUTHORIZED: authentication required|unexpected status (code )?401|status 401 Unauthorized)
+```
+
+**Resolution guidance:**
+
+```text
+trivy received a 401 Unauthorized response from a container registry while pulling the DB or an image to scan.
+Resolutions:
+  - Provide credentials. MegaLinter strips token/password env vars by default, so whitelist them for this linter in your .mega-linter.yml:
+      REPOSITORY_TRIVY_UNSECURED_ENV_VARIABLES:
+        - TRIVY_USERNAME
+        - TRIVY_PASSWORD
+        - GITHUB_TOKEN
+  - For AWS ECR, ensure the runner has IAM permissions to pull from the registry.
+  - Verify `TRIVY_DB_REPOSITORY` points to a repository you can actually access.
+```
+
