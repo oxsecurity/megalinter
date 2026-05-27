@@ -15643,7 +15643,12 @@
 <h2 id="unreleased-beta-main-branch-content">[Unreleased] (beta, main branch content)</h2>
 <p>Note: Can be used with <code>oxsecurity/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>oxsecurity/megalinter:beta</code> docker image</p>
 <ul>
-<li>Breaking changes</li>
+<li>Breaking changes<ul>
+<li><strong><code>@eslint/eslintrc</code> shim removed</strong> from JavaScript/TypeScript/JSX/TSX Docker images (was only needed for legacy <code>FlatCompat</code>); MegaLinter's bundled test fixtures use native flat config.</li>
+<li><strong>ESLint linters now force migration off <code>.eslintrc.*</code></strong>: <code>JAVASCRIPT_ES</code>, <code>TYPESCRIPT_ES</code>, <code>JSX_ESLINT</code>, <code>TSX_ESLINT</code> activate when they find any <code>eslint.config.*</code> <em>or</em> any deprecated <code>.eslintrc.*</code> / <code>package.json#eslintConfig</code>. In the legacy case the linter does not call ESLint at all — it emits a single hard failure with a migration message so the build stays red until the config is migrated to flat config. See the <a href="https://eslint.org/docs/latest/use/configure/migration-guide">ESLint flat-config migration guide</a>. To opt out, set <code>DISABLE_LINTERS</code> or <code>DISABLE</code> to exclude the affected linter/descriptor.</li>
+<li><strong><code>JSON_ESLINT_PLUGIN_JSONC</code> removed</strong>: upstream bug <a href="https://github.com/ota-meshi/eslint-plugin-jsonc/issues/328">ota-meshi/eslint-plugin-jsonc#328</a> blocks ESLint v10 compatibility and will not be fixed. Use <code>JSON_JSONLINT</code>, <code>JSON_PRETTIER</code>, or <code>JSON_V8R</code> for JSON validation instead.</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Core<ul>
@@ -15664,7 +15669,10 @@
 <li>Deprecated linters</li>
 </ul>
 <ul>
-<li>Removed linters</li>
+<li>Removed linters<ul>
+<li><code>JSON_ESLINT_PLUGIN_JSONC</code> — permanently broken by upstream bug (see Breaking changes)</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Media</li>
