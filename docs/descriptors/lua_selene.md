@@ -144,7 +144,7 @@ SUBCOMMANDS:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=crate depName=selene
-ARG CARGO_SELENE_VERSION=0.30.0
+ARG CARGO_SELENE_VERSION=0.31.0
 ```
 
 - Cargo packages (Rust):

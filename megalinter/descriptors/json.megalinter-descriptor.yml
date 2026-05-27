@@ -51,6 +51,8 @@ linters:
   - class: EslintLinter
     disabled: true
     disabled_reason: "Bug in eslint-plugin-jsonc: <https://github.com/ota-meshi/eslint-plugin-jsonc/issues/328>"
+    deprecated: true
+    deprecated_description: "Kept disabled due to a long-standing bug in eslint-plugin-jsonc (<https://github.com/ota-meshi/eslint-plugin-jsonc/issues/328>). Use JSON_PRETTIER or JSON_JSONLINT instead."
     linter_name: eslint-plugin-jsonc
     linter_spdx_license: MIT
     can_output_sarif: true
@@ -136,6 +138,34 @@ linters:
       - "{{SARIF_OUTPUT_FILE}}"
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: "✖ ([0-9]+) problem"
+    common_linter_errors:
+      - identifier: JSON_ESLINT_PLUGIN_JSONC_ERROR_PARSER_NOT_FOUND
+        regex: "(Cannot find module 'jsonc-eslint-parser'|Failed to load parser 'jsonc-eslint-parser')"
+        message: |-
+          ESLint could not load `jsonc-eslint-parser` referenced in your `.eslintrc-json.json` config. This parser is required by `eslint-plugin-jsonc` to parse JSON/JSONC/JSON5 files.
+          Resolutions:
+            - Pre-install the parser into MegaLinter's npm root via a pre-command in your .mega-linter.yml:
+                JSON_ESLINT_PLUGIN_JSONC_PRE_COMMANDS:
+                  - command: "npm install jsonc-eslint-parser"
+                    cwd: "root"
+                    continue_if_failed: false
+            - Or use the project-local ESLint binary after installing your dependencies:
+                JSON_ESLINT_PLUGIN_JSONC_PRE_COMMANDS:
+                  - command: yarn install --frozen-lockfile --ignore-scripts
+                    cwd: workspace
+                    continue_if_failed: false
+                JSON_ESLINT_PLUGIN_JSONC_CLI_EXECUTABLE: node_modules/.bin/eslint
+      - identifier: JSON_ESLINT_PLUGIN_JSONC_ERROR_CONFIG_OVERRIDES_MISSING
+        regex: '(ESLint couldn''t find the config|Failed to load config "plugin:jsonc/)'
+        message: |-
+          ESLint could not resolve a `plugin:jsonc/recommended-*` config referenced from your project's `.eslintrc`. This usually means you have a workspace ESLint config that overrides MegaLinter's bundled one but does not list `jsonc` in `plugins`.
+          Resolutions:
+            - Add `JSON_ESLINT_PLUGIN_JSONC_FILE_NAME: .eslintrc.json` (or your config filename) to `.mega-linter.yml` and add a `jsonc` `overrides` block to your own ESLint config (see the linter documentation above for a full example).
+            - Or pre-install `eslint-plugin-jsonc` into the project's `node_modules`:
+                JSON_ESLINT_PLUGIN_JSONC_PRE_COMMANDS:
+                  - command: yarn install --frozen-lockfile --ignore-scripts
+                    cwd: workspace
+                    continue_if_failed: false
     cli_executable_version: "npm"
     cli_version_arg_name: ""
     cli_version_extra_args: ["list", "eslint-plugin-jsonc", "--prefix", "/node-deps"]
@@ -149,7 +179,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=eslint
-          ARG NPM_ESLINT_VERSION=10.3.0
+          ARG NPM_ESLINT_VERSION=10.4.0
         - |-
           # renovate: datasource=npm depName=@eslint/eslintrc
           ARG NPM_ESLINT_ESLINTRC_VERSION=3.3.5
@@ -197,6 +227,18 @@ linters:
     cli_lint_extra_args:
       - "--ignore-errors"
     cli_help_arg_name: "--help"
+    common_linter_errors:
+      - identifier: JSON_V8R_ERROR_SCHEMASTORE_UNREACHABLE
+        regex: "(ENOTFOUND|ECONNREFUSED|ETIMEDOUT|getaddrinfo|fetch failed).*(schemastore|json\\.schemastore\\.org)"
+        message: |-
+          v8r could not download a schema from https://www.schemastore.org/ (network/DNS failure).
+          This is a transient remote-service / network issue, not a real lint error.
+          Workarounds:
+            - Retry the run later.
+            - Pre-cache schemas locally and pass them via `--schema` in `JSON_V8R_ARGUMENTS`.
+            - Temporarily mark the linter as non-blocking by adding to your .mega-linter.yml:
+                DISABLE_ERRORS_LINTERS:
+                  - JSON_V8R
     test_folder: json_schema
     examples:
       - "v8r --ignore-errors myfile.json"
@@ -204,7 +246,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=v8r
-          ARG NPM_V8R_VERSION=6.0.0
+          ARG NPM_V8R_VERSION=6.1.0
       npm:
         - v8r@${NPM_V8R_VERSION}
     supported_platforms:

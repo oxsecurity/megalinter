@@ -94,6 +94,15 @@ linters:
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: ([0-9]+) findings?
     cli_version_arg_name: --version
+    common_linter_errors:
+      - identifier: ACTION_ZIZMOR_ERROR_GITHUB_API_UNREACHABLE
+        regex: "(can't access [^:]+: missing or you have no access|couldn't list branches for)"
+        message: |-
+          Zizmor could not access a repository referenced by a `uses:` clause via the GitHub API (missing token, insufficient scope, or cross-repo private access).
+          To allow zizmor to authenticate with GITHUB_TOKEN (or a PAT with `Contents: read-only`), whitelist the variable in your .mega-linter.yml:
+          ACTION_ZIZMOR_UNSECURED_ENV_VARIABLES:
+            - GITHUB_TOKEN
+          If the referenced workflow is in a private repo outside the current one, provide a PAT with cross-repo access instead of the default GITHUB_TOKEN, or run zizmor in offline mode.
     examples:
       - "zizmor ci.yml tests.yml lint.yml action.yml"
       - "zizmor ./subdir/ci.yml ../sibling/tests.yml ./action/action.yml"

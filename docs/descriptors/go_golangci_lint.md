@@ -186,3 +186,87 @@ RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master
 
 ```
 
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### GO_GOLANGCI_LINT_ERROR_MODULE_DOWNLOAD
+
+**Detection pattern (regex):**
+
+```text
+(go: .*: (reading|module .*: Get) .*: (dial tcp|TLS handshake|connection refused)|module lookup disabled by GOPROXY=off|verifying .*: checksum mismatch)
+```
+
+**Resolution guidance:**
+
+```text
+golangci-lint could not download Go module dependencies before typechecking.
+This is a network/proxy issue, not a lint finding.
+Resolutions:
+  - Retry the run; module proxy outages are usually transient.
+  - If your project uses a private Go module proxy, set `GOPROXY` / `GOPRIVATE` and whitelist them for this linter in your .mega-linter.yml:
+      GO_GOLANGCI_LINT_UNSECURED_ENV_VARIABLES:
+        - GOPROXY
+        - GOPRIVATE
+        - GOSUMDB
+        - GONOSUMCHECK
+  - Pre-populate `$GOPATH/pkg/mod` in CI cache to avoid downloads on each run.
+```
+
+### GO_GOLANGCI_LINT_ERROR_CONFIG_INVALID
+
+**Detection pattern (regex):**
+
+```text
+(can't load config:|failed to load config|unsupported version of the configuration|is not a linter, it cannot be enabled or disabled|is a formatter)
+```
+
+**Resolution guidance:**
+
+```text
+golangci-lint could not load the `.golangci.yml` configuration file.
+Resolutions:
+  - Validate the YAML syntax and indentation of `.golangci.yml`.
+  - Ensure all linter names referenced under `enable:` / `disable:` exist in the installed golangci-lint version (some linters were renamed/removed across major versions).
+  - Run `golangci-lint config verify` locally to reproduce.
+```
+
+### GO_GOLANGCI_LINT_ERROR_TYPECHECK
+
+**Detection pattern (regex):**
+
+```text
+(typecheck.*could not (import|load)|level=error.*build (failed|error)|# .*\n.*: undefined:)
+```
+
+**Resolution guidance:**
+
+```text
+golangci-lint's typecheck stage failed to build the Go program. golangci-lint requires the code to compile in order to run most analyzers.
+Resolutions:
+  - Run `go build ./...` locally; fix the underlying compilation errors first.
+  - Ensure all required packages are in `go.mod` and the module cache is reachable.
+```
+
+### GO_GOLANGCI_LINT_ERROR_OUT_OF_MEMORY
+
+**Detection pattern (regex):**
+
+```text
+(runtime: out of memory|fatal error: runtime: out of memory|signal: killed)
+```
+
+**Resolution guidance:**
+
+```text
+golangci-lint was killed (OOM) while analyzing a large Go project.
+Resolutions:
+  - Increase the memory available to the MegaLinter container/runner.
+  - Reduce scope by setting `GO_GOLANGCI_LINT_FILTER_REGEX_INCLUDE` / `..._EXCLUDE` or by enabling fewer linters in `.golangci.yml`.
+  - Temporarily mark the linter as non-blocking by adding to your .mega-linter.yml:
+      DISABLE_ERRORS_LINTERS:
+        - GO_GOLANGCI_LINT
+```
+

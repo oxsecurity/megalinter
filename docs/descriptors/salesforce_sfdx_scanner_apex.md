@@ -393,11 +393,11 @@ Warning: Starting May 1, 2025, we no longer support v4.x of Code Analyzer. You s
 ```dockerfile
 # Parent descriptor install
 # renovate: datasource=npm depName=@salesforce/cli
-ARG NPM_SALESFORCE_CLI_VERSION=2.134.6
+ARG NPM_SALESFORCE_CLI_VERSION=2.135.7
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.27.17
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.28.2
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=7.13.0
+ARG SFDX_HARDIS_VERSION=7.14.1
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION} \
@@ -411,5 +411,26 @@ ARG SALESFORCE_SFDX_SCANNER_VERSION=4.12.0
 RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
     && (npm cache clean --force || true) \
     && rm -rf /root/.npm/_cacache
+```
+
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### SALESFORCE_SFDX_SCANNER_APEX_ERROR_INVALID_PMD_RULESET
+
+**Detection pattern (regex):**
+
+```text
+(Cannot load ruleset|RuleSetNotFoundException|PMD failed to load|Invalid ruleset)
+```
+
+**Resolution guidance:**
+
+```text
+PMD could not load the provided Apex ruleset.
+Verify the file referenced by `apex-pmd-ruleset.xml` exists and is valid PMD XML.
+You can generate a starter ruleset with: sf scanner:rule:list --engine pmd
 ```
 

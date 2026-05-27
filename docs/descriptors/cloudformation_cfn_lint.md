@@ -46,7 +46,7 @@ CFN-Lint helps ensure your CloudFormation templates are valid, secure, and follo
 
 ## cfn-lint documentation
 
-- Version in MegaLinter: **3.14**
+- Version in MegaLinter: **1.51.1**
 - Visit [Official Web Site](https://github.com/aws-cloudformation/cfn-lint#readme){target=_blank}
 - See [How to configure cfn-lint rules](https://github.com/aws-cloudformation/cfn-lint#configuration){target=_blank}
   - If custom `.cfnlintrc.yml` config file isn't found, [.cfnlintrc.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.cfnlintrc.yml){target=_blank} will be used
@@ -125,8 +125,6 @@ cfn-lint --config-file .cfnlintrc.yml myfile.yml
 ### Help content
 
 ```shell
-/venvs/cfn-lint/lib/python3.14/site-packages/samtranslator/compat.py:2: UserWarning: Core Pydantic V1 functionality isn't compatible with Python 3.14 or greater.
-  from pydantic import v1 as pydantic
 usage: 
 Basic: cfn-lint test.yaml
 Ignore a rule: cfn-lint -i E3012 -- test.yaml
@@ -206,8 +204,58 @@ Advanced / Debugging:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=cfn-lint
-ARG PIP_CFN_LINT_VERSION=1.51.0
+ARG PIP_CFN_LINT_VERSION=1.51.1
 ```
 
 - PIP packages (Python):
-  - [cfn-lint[sarif]==1.51.0](https://pypi.org/project/cfn-lint[sarif]/1.51.0)
+  - [cfn-lint[sarif]==1.51.1](https://pypi.org/project/cfn-lint[sarif]/1.51.1)
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### CLOUDFORMATION_CFN_LINT_ERROR_SCHEMA_DOWNLOAD
+
+**Detection pattern (regex):**
+
+```text
+(Failed downloading [a-z0-9-]+:|All regions failed to download)
+```
+
+**Resolution guidance:**
+
+```text
+cfn-lint failed to download the AWS CloudFormation resource schemas.
+This usually means the build had no network access. Pre-cache schemas in your image or run cfn-lint with `--update-specs` during image build.
+```
+
+### CLOUDFORMATION_CFN_LINT_ERROR_CUSTOM_RULE_IMPORT
+
+**Detection pattern (regex):**
+
+```text
+Failed to load (rule|custom rule) 
+```
+
+**Resolution guidance:**
+
+```text
+cfn-lint failed to load a custom rule module referenced via `--append-rules` or `.cfnlintrc.yml`.
+Verify the module path is correct, importable from the container's Python environment, and that all its Python dependencies are installed.
+```
+
+### CLOUDFORMATION_CFN_LINT_ERROR_CONFIG_INVALID
+
+**Detection pattern (regex):**
+
+```text
+(Invalid (configuration( key)?|type|configuration in) .*\.cfnlintrc|Missing required property .* in \.cfnlintrc)
+```
+
+**Resolution guidance:**
+
+```text
+The .cfnlintrc configuration file could not be parsed.
+Verify YAML syntax and that all keys (`include_checks`, `ignore_checks`, `regions`, etc.) match the cfn-lint configuration schema.
+```
+

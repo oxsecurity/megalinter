@@ -174,6 +174,7 @@ class Megalinter:
         self.reporters = []
         self.linters: list[Linter] = []
         self.active_linters: list[Linter] = []
+        self.all_diff_files = []
         self.file_extensions = []
         self.file_names_regex = []
         self.status = "success"
@@ -694,6 +695,12 @@ class Megalinter:
         )
         for linter in all_linters:
             linter.master = self
+            # When only fetching standalone linter version (build-time call),
+            # bypass activation filtering — the per-linter Docker image always
+            # wants its single linter even if activation files are absent.
+            if self.linter_version_only is True:
+                self.linters += [linter]
+                continue
             if (
                 linter.is_active is False
                 or linter.disabled is True
@@ -770,6 +777,7 @@ class Megalinter:
             # List files using git diff
             try:
                 all_files = self.list_files_git_diff()
+                self.all_diff_files = all_files
             except git.InvalidGitRepositoryError as git_err:
                 logging.warning(
                     "Unable to list updated files from git diff. Switch to VALIDATE_ALL_CODE_BASE=true"

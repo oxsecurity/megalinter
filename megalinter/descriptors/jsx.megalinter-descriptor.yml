@@ -73,6 +73,8 @@ linters:
       - eslint.config.mjs
       - eslint.config.cjs
       - eslint.config.ts
+      - eslint.config.mts
+      - eslint.config.cts
       - ".eslintrc.json"
       - ".eslintrc.yml"
       - ".eslintrc.yaml"
@@ -91,6 +93,46 @@ linters:
       - "{{SARIF_OUTPUT_FILE}}"
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: "✖ ([0-9]+) problem"
+    common_linter_errors:
+      - identifier: JSX_ESLINT_ERROR_PLUGIN_NOT_FOUND
+        regex: '(Failed to load plugin ''|ESLint couldn''t find the plugin "|Cannot find module ''eslint-plugin-)'
+        message: |-
+          ESLint could not load a plugin referenced in your config (e.g. `eslint-plugin-react`, `eslint-plugin-react-hooks`, `@eslint-react/eslint-plugin`). The plugin is not installed in MegaLinter's bundled `node_modules` (`/node-deps/node_modules`).
+          Resolutions:
+            - Pre-install the missing plugin via a pre-command in your .mega-linter.yml:
+                JSX_ESLINT_PRE_COMMANDS:
+                  - command: "npm install eslint-plugin-react eslint-plugin-react-hooks"
+                    cwd: "root"
+                    continue_if_failed: false
+            - Or install your project's dependencies and run the project-local ESLint binary:
+                JSX_ESLINT_PRE_COMMANDS:
+                  - command: yarn install --frozen-lockfile --ignore-scripts
+                    cwd: workspace
+                    continue_if_failed: false
+                JSX_ESLINT_CLI_EXECUTABLE: node_modules/.bin/eslint
+      - identifier: JSX_ESLINT_ERROR_CONFIG_NOT_FOUND
+        regex: '(ESLint couldn''t find the config "|Failed to load config "|Cannot find module ''eslint-config-)'
+        message: |-
+          ESLint could not resolve a shareable config referenced via `extends` (e.g. `airbnb`, `react-app`).
+          Resolutions:
+            - Pre-install the config package via a pre-command in your .mega-linter.yml:
+                JSX_ESLINT_PRE_COMMANDS:
+                  - command: "npm install eslint-config-NAME"
+                    cwd: "root"
+                    continue_if_failed: false
+            - Or install your project's dependencies and use the workspace ESLint binary (see ESLint v10 section above).
+      - identifier: JSX_ESLINT_ERROR_FLAT_CONFIG_MODULE_NOT_FOUND
+        regex: "ERR_MODULE_NOT_FOUND.+eslint\\.config\\."
+        message: |-
+          ESLint v9+/v10 flat config (`eslint.config.mjs`) uses native ESM resolution, which does not honor `NODE_PATH`. Bare imports like `import reactPlugin from '@eslint-react/eslint-plugin'` fail when ESLint runs from MegaLinter's bundled install.
+          Resolutions:
+            - Use `createRequire` in your `eslint.config.mjs` (see the "ESLint v10" section in this linter's documentation above).
+            - Or install your project's dependencies and run the project-local ESLint binary:
+                JSX_ESLINT_PRE_COMMANDS:
+                  - command: yarn install --frozen-lockfile --ignore-scripts
+                    cwd: workspace
+                    continue_if_failed: false
+                JSX_ESLINT_CLI_EXECUTABLE: node_modules/.bin/eslint
     examples:
       - "eslint myfile.jsx"
       - "eslint -c eslint.config.js --no-ignore myfile.jsx"
@@ -99,19 +141,15 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=eslint
-          ARG NPM_ESLINT_VERSION=10.3.0
-        - |-
-          # renovate: datasource=npm depName=@eslint/eslintrc
-          ARG NPM_ESLINT_ESLINTRC_VERSION=3.3.5
+          ARG NPM_ESLINT_VERSION=10.4.0
         - |-
           # renovate: datasource=npm depName=@eslint-react/eslint-plugin
-          ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.7.9
+          ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.8.4
         - |-
           # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
           ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
       npm:
         - eslint@${NPM_ESLINT_VERSION}
-        - "@eslint/eslintrc@${NPM_ESLINT_ESLINTRC_VERSION}"
         - "@eslint-react/eslint-plugin@${NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION}"
         - "@microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION}"
     supported_platforms:

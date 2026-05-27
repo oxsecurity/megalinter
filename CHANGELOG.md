@@ -9,8 +9,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Breaking changes
+  - **`@eslint/eslintrc` shim removed** from JavaScript/TypeScript/JSX/TSX Docker images (was only needed for legacy `FlatCompat`); MegaLinter's bundled test fixtures use native flat config.
+  - **ESLint linters now force migration off `.eslintrc.*`**: `JAVASCRIPT_ES`, `TYPESCRIPT_ES`, `JSX_ESLINT`, `TSX_ESLINT` activate when they find any `eslint.config.*` *or* any deprecated `.eslintrc.*` / `package.json#eslintConfig`. In the legacy case the linter does not call ESLint at all — it emits a single hard failure with a migration message so the build stays red until the config is migrated to flat config. See the [ESLint flat-config migration guide](https://eslint.org/docs/latest/use/configure/migration-guide). To opt out, set `DISABLE_LINTERS` or `DISABLE` to exclude the affected linter/descriptor.
+  - **`JSON_ESLINT_PLUGIN_JSONC` removed**: upstream bug [ota-meshi/eslint-plugin-jsonc#328](https://github.com/ota-meshi/eslint-plugin-jsonc/issues/328) blocks ESLint v10 compatibility and will not be fixed. Use `JSON_JSONLINT`, `JSON_PRETTIER`, or `JSON_V8R` for JSON validation instead.
 
 - Core
+  - New linter descriptor property `common_linter_errors`: declare known non-lint failure patterns (config issue, remote service down, missing credentials…) and the guidance message shown to users, directly in YAML — no custom Python class needed.
 
 - New linters
 
@@ -21,6 +25,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Deprecated linters
 
 - Removed linters
+  - `JSON_ESLINT_PLUGIN_JSONC` — permanently broken by upstream bug (see Breaking changes)
 
 - Media
 
@@ -29,6 +34,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Fixes
   - Exclude `REPORT_OUTPUT_FOLDER` from linting when configured as an absolute path inside the workspace (e.g. `/tmp/lint/megalinter-reports`), fixing #7845.
   - Fix command injection in Roslynator linter (`DOTNET_ROSLYNATOR`) where a crafted `.csproj` filename could break out of `dotnet restore` arguments and execute arbitrary shell commands. The command is now invoked via argv list instead of a shell string. Reported by Francesco Sabiu.
+  - Fix `IndexError` when building the single-linter Docker image for a linter whose activation depends on a file (e.g. `SPELL_VALE` requires `.vale.ini`): `python -m megalinter.run --linterversion` now bypasses activation filtering since the per-linter image is built for that linter unconditionally.
 
 - Reporters
 
@@ -40,8 +46,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - mega-linter-runner
 
 - Dev
+  - Stop generating per-linter Dockerfiles for linters marked `disabled: true` in their descriptor. The matching images were already excluded from the build matrix (`linters_matrix.json`) and never published, so the on-disk `linters/<linter>/Dockerfile` was dead code. Deleted the 8 corresponding stale Dockerfile directories.
 
 - CI
+  - Suppress the new `ref-version-mismatch` audit introduced by zizmor 1.25.0 for the project's pinned `uses:` action references. The SHA pins are correct (the supply-chain property); only the inline `# vX` comments lag behind exact subversions, and renovate maintains the hashes.
 
 - Linter versions upgrades (N)
   - [black](https://black.readthedocs.io/en/stable/) from 26.3.1 to **26.5.0** on 2026-05-16
@@ -52,6 +60,22 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 4.2.0 to **4.2.2** on 2026-05-19
   - [phpstan](https://phpstan.org/) from 2.1.54 to **2.1.55** on 2026-05-19
   - [black](https://black.readthedocs.io/en/stable/) from 26.5.0 to **26.5.1** on 2026-05-19
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 3.14 to **1.51.0** on 2026-05-19
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.51.0 to **1.51.1** on 2026-05-22
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 4.2.2 to **4.2.3** on 2026-05-22
+  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.11.6 to **3.12.0** on 2026-05-22
+  - [v8r](https://github.com/chris48s/v8r) from 6.0.0 to **6.1.0** on 2026-05-22
+  - [rumdl](https://github.com/rvben/rumdl) from 0.1.93 to **0.1.96** on 2026-05-22
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.1 to **7.6.2** on 2026-05-22
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.1 to **7.6.2** on 2026-05-22
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.13 to **0.15.14** on 2026-05-22
+  - [ruff](https://github.com/astral-sh/ruff) from 0.15.13 to **0.15.14** on 2026-05-22
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.99.0 to **1.100.0** on 2026-05-22
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 1.1.0 to **2.0.0** on 2026-05-22
+  - [eslint](https://eslint.org) from 10.3.0 to **10.4.0** on 2026-05-23
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.100.0 to **1.101.0** on 2026-05-25
+  - [stylelint](https://stylelint.io) from 17.11.1 to **17.12.0** on 2026-05-26
+  - [rumdl](https://github.com/rvben/rumdl) from 0.1.96 to **0.2.0** on 2026-05-26
 <!-- linter-versions-end -->
 
 ## [v9.5.0] - 2026-05-16

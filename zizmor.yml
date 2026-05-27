@@ -4,3 +4,34 @@ rules:
       - build-command.yml
       - mega-linter-for-runner.yml
       - mega-linter.yml
+  # ref-version-mismatch flags cosmetic mismatches between pinned SHA refs
+  # and their inline "# vX" comments. Hashes themselves are correctly pinned
+  # (the actual supply-chain property); the trailing comments are docs only,
+  # and renovate updates the hashes without rewriting them. New audit added
+  # in zizmor 1.25.0 (#7816).
+  ref-version-mismatch:
+    ignore:
+      - auto-update-linters.yml
+      - build-command.yml
+      - build-deploy-docs.yml
+      - cache-cleanup.yml
+      - deploy-ALPHA.yml
+      - deploy-ALPHA-flavors.yml
+      - deploy-BETA.yml
+      - deploy-BETA-flavors.yml
+      - deploy-BETA-linters.yml
+      - deploy-DEV.yml
+      - deploy-DEV-linters.yml
+      - deploy-mega-linter-runner.yml
+      - deploy-RELEASE.yml
+      - deploy-RELEASE-flavors.yml
+      - deploy-RELEASE-linters.yml
+      - help-command.yml
+      - mega-linter.yml
+      - mega-linter-for-runner.yml
+      - mirror-docker-image.yml
+      - slash-command-dispatch.yml
+      - stale.yml
+      - test-mega-linter-runner.yml
+      - test-mkdocs.yml
+      - versioning.yml

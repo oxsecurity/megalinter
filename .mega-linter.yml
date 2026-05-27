@@ -61,6 +61,10 @@ REPOSITORY_KINGFISHER_ARGUMENTS:
   - "gitleaks-default.toml"
 REPOSITORY_OSV_SCANNER_ARGUMENTS:
   - "--experimental-exclude=g:**/.automation/test/**"
+  # Disable transitive-dep resolution: it calls deps.dev which has been
+  # returning 'service unavailable'. Direct deps from uv.lock, yarn.lock,
+  # and requirements.txt are still scanned against OSV.
+  - "--no-resolve"
 REPORTERS_MARKDOWN_SUMMARY_TYPE: sections
 SHOW_ELAPSED_TIME: true
 FLAVOR_SUGGESTIONS: false

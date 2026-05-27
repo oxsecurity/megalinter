@@ -1,0 +1,8 @@
+# osv-scanner ignore list
+# Format reference: https://google.github.io/osv-scanner/configuration/
+
+# fastapi 0.136.3 - false positive (malicious package report disputed upstream)
+# See https://github.com/fastapi/fastapi/issues/15612
+[[IgnoredVulns]]
+id = "MAL-2026-4750"
+reason = "fastapi: false positive, see https://github.com/fastapi/fastapi/issues/15612"

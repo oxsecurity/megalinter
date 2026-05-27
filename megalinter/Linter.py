@@ -138,6 +138,7 @@ class Linter:
         self.cli_lint_errors_regex = None
         self.cli_lint_warnings_count = None
         self.cli_lint_warnings_regex = None
+        self.common_linter_errors = []
         # Default arg name for configurations to use in linter version call
         self.cli_version_arg_name = "--version"
         self.cli_version_extra_args = []  # Extra arguments to send to cli everytime
@@ -1200,8 +1201,26 @@ class Linter:
                 return_stdout = (
                     f"Fatal error while calling {self.linter_name}: {str(err)}"
                 )
+        return_code, return_stdout = self.apply_common_linter_errors(
+            return_code, return_stdout
+        )
         self.manage_sarif_output(return_stdout)
         # Return linter result
+        return return_code, return_stdout
+
+    def apply_common_linter_errors(self, return_code, return_stdout):
+        if return_code == 0 or not self.common_linter_errors:
+            return return_code, return_stdout
+        for entry in self.common_linter_errors:
+            identifier = entry.get("identifier", "")
+            pattern = entry.get("regex")
+            message = entry.get("message", "")
+            if not pattern or not message:
+                continue
+            if re.search(pattern, return_stdout or ""):
+                block = f"[{identifier}] {message}" if identifier else message
+                return_stdout = (return_stdout or "") + "\n\n" + block
+                logging.warning(f"[{self.linter_name}] {block}")
         return return_code, return_stdout
 
     def manage_sarif_output(self, return_stdout):

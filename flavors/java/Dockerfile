@@ -91,7 +91,7 @@ FROM lycheeverse/lychee:${SPELL_LYCHEE_VERSION} AS lychee
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.11.14 AS uv
+FROM ghcr.io/astral-sh/uv:0.11.16 AS uv
 FROM python:3.14-alpine3.23 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
@@ -128,9 +128,9 @@ ARG CLJ_KONDO_VERSION=2025.01.16
 # renovate: datasource=github-tags depName=greglook/cljstyle
 ARG CLJ_STYLE_VERSION=0.17.642
 # renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=4.2.2
+ARG NPM_JSCPD_VERSION=4.2.3
 # renovate: datasource=npm depName=stylelint
-ARG NPM_STYLELINT_VERSION=17.11.1
+ARG NPM_STYLELINT_VERSION=17.12.0
 # renovate: datasource=npm depName=stylelint-config-standard
 ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=40.0.0
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
@@ -161,7 +161,7 @@ ARG PMD_VERSION=7.24.0
 # renovate: datasource=npm depName=@prantlf/jsonlint
 ARG NPM_PRANTLF_JSONLINT_VERSION=17.0.1
 # renovate: datasource=npm depName=v8r
-ARG NPM_V8R_VERSION=6.0.0
+ARG NPM_V8R_VERSION=6.1.0
 # renovate: datasource=npm depName=prettier
 ARG NPM_PRETTIER_VERSION=3.8.3
 # renovate: datasource=github-tags depName=pinterest/ktlint
@@ -177,7 +177,7 @@ ARG NPM_MARKDOWNLINT_CLI_VERSION=0.48.0
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.1.93
+ARG PIP_RUMDL_VERSION=0.2.2
 # renovate: datasource=pypi depName=checkov
 ARG PIP_CHECKOV_VERSION=3.2.529
 # renovate: datasource=github-tags depName=anchore/grype
@@ -203,7 +203,7 @@ ARG REPOSITORY_TRIVY_SBOM_VERSION=0.70.0
 # renovate: datasource=pypi depName=snakemake
 ARG PIP_SNAKEMAKE_VERSION=9.21.0
 # renovate: datasource=pypi depName=snakefmt
-ARG PIP_SNAKEFMT_VERSION=1.1.0
+ARG PIP_SNAKEFMT_VERSION=2.0.0
 # renovate: datasource=npm depName=cspell
 ARG NPM_CSPELL_VERSION=10.0.0
 # renovate: datasource=pypi depName=proselint

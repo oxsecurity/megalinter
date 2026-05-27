@@ -62,7 +62,7 @@ Replace `yarn install --frozen-lockfile --ignore-scripts` with `npm ci` (or `npm
 
 ## eslint documentation
 
-- Version in MegaLinter: **10.3.0**
+- Version in MegaLinter: **10.4.0**
 - Visit [Official Web Site](https://github.com/Rel1cx/eslint-react#readme){target=_blank}
 - See [How to configure eslint rules](https://eslint-react.xyz/docs/getting-started/installation){target=_blank}
 - See [How to disable eslint rules in files](https://eslint.org/docs/latest/use/configure/rules#disabling-rules){target=_blank}
@@ -231,17 +231,91 @@ Miscellaneous:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=10.3.0
+ARG NPM_ESLINT_VERSION=10.4.0
 # renovate: datasource=npm depName=@eslint/eslintrc
 ARG NPM_ESLINT_ESLINTRC_VERSION=3.3.5
 # renovate: datasource=npm depName=@eslint-react/eslint-plugin
-ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.7.8
+ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.8.4
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 ```
 
 - NPM packages (node.js):
-  - [eslint@10.3.0](https://www.npmjs.com/package/eslint/v/10.3.0)
+  - [eslint@10.4.0](https://www.npmjs.com/package/eslint/v/10.4.0)
   - [@eslint/eslintrc@3.3.5](https://www.npmjs.com/package/@eslint/eslintrc/v/3.3.5)
-  - [@eslint-react/eslint-plugin@5.7.8](https://www.npmjs.com/package/@eslint-react/eslint-plugin/v/5.7.8)
+  - [@eslint-react/eslint-plugin@5.8.4](https://www.npmjs.com/package/@eslint-react/eslint-plugin/v/5.8.4)
   - [@microsoft/eslint-formatter-sarif@3.1.0](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/3.1.0)
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### JSX_ESLINT_ERROR_PLUGIN_NOT_FOUND
+
+**Detection pattern (regex):**
+
+```text
+(Failed to load plugin '|ESLint couldn't find the plugin "|Cannot find module 'eslint-plugin-)
+```
+
+**Resolution guidance:**
+
+```text
+ESLint could not load a plugin referenced in your config (e.g. `eslint-plugin-react`, `eslint-plugin-react-hooks`, `@eslint-react/eslint-plugin`). The plugin is not installed in MegaLinter's bundled `node_modules` (`/node-deps/node_modules`).
+Resolutions:
+  - Pre-install the missing plugin via a pre-command in your .mega-linter.yml:
+      JSX_ESLINT_PRE_COMMANDS:
+        - command: "npm install eslint-plugin-react eslint-plugin-react-hooks"
+          cwd: "root"
+          continue_if_failed: false
+  - Or install your project's dependencies and run the project-local ESLint binary:
+      JSX_ESLINT_PRE_COMMANDS:
+        - command: yarn install --frozen-lockfile --ignore-scripts
+          cwd: workspace
+          continue_if_failed: false
+      JSX_ESLINT_CLI_EXECUTABLE: node_modules/.bin/eslint
+```
+
+### JSX_ESLINT_ERROR_CONFIG_NOT_FOUND
+
+**Detection pattern (regex):**
+
+```text
+(ESLint couldn't find the config "|Failed to load config "|Cannot find module 'eslint-config-)
+```
+
+**Resolution guidance:**
+
+```text
+ESLint could not resolve a shareable config referenced via `extends` (e.g. `airbnb`, `react-app`).
+Resolutions:
+  - Pre-install the config package via a pre-command in your .mega-linter.yml:
+      JSX_ESLINT_PRE_COMMANDS:
+        - command: "npm install eslint-config-NAME"
+          cwd: "root"
+          continue_if_failed: false
+  - Or install your project's dependencies and use the workspace ESLint binary (see ESLint v10 section above).
+```
+
+### JSX_ESLINT_ERROR_FLAT_CONFIG_MODULE_NOT_FOUND
+
+**Detection pattern (regex):**
+
+```text
+ERR_MODULE_NOT_FOUND.+eslint\.config\.
+```
+
+**Resolution guidance:**
+
+```text
+ESLint v9+/v10 flat config (`eslint.config.mjs`) uses native ESM resolution, which does not honor `NODE_PATH`. Bare imports like `import reactPlugin from '@eslint-react/eslint-plugin'` fail when ESLint runs from MegaLinter's bundled install.
+Resolutions:
+  - Use `createRequire` in your `eslint.config.mjs` (see the "ESLint v10" section in this linter's documentation above).
+  - Or install your project's dependencies and run the project-local ESLint binary:
+      JSX_ESLINT_PRE_COMMANDS:
+        - command: yarn install --frozen-lockfile --ignore-scripts
+          cwd: workspace
+          continue_if_failed: false
+      JSX_ESLINT_CLI_EXECUTABLE: node_modules/.bin/eslint
+```
+

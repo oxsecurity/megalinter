@@ -150,3 +150,44 @@ ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.6.0
 RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer config --global allow-plugins.phpstan/extension-installer true && composer global require phpstan/phpstan:${PHP_PHPSTAN_PHPSTAN_VERSION} phpstan/extension-installer:${PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION}
 ```
 
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### PHP_PHPSTAN_ERROR_MEMORY_EXHAUSTED
+
+**Detection pattern (regex):**
+
+```text
+Allowed memory size of [0-9]+ bytes exhausted
+```
+
+**Resolution guidance:**
+
+```text
+phpstan ran out of memory while analysing the codebase. The default `--memory-limit` MegaLinter passes is `1G`.
+Resolutions:
+  - Raise the memory limit via `PHP_PHPSTAN_ARGUMENTS` (e.g. `--memory-limit=2G` or `4G`).
+  - Reduce analysis scope by tightening `paths`/`excludePaths` in `phpstan.neon`.
+  - Lower the strictness `level` in `phpstan.neon` if you are analysing a very large codebase.
+```
+
+### PHP_PHPSTAN_ERROR_CONFIG_INVALID
+
+**Detection pattern (regex):**
+
+```text
+(Invalid configuration|Unexpected option .* in your configuration|Missing configuration file)
+```
+
+**Resolution guidance:**
+
+```text
+phpstan could not parse `phpstan.neon` / `phpstan.neon.dist`.
+Resolutions:
+  - Validate the NEON syntax (indentation, quoting) of your phpstan config.
+  - Check the spelling of every option against the [phpstan config reference](https://phpstan.org/config-reference).
+  - Make sure any included files (e.g. `includes: - phpstan-baseline.neon`) exist relative to the config file.
+```
+

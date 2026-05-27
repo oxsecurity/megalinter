@@ -1,13 +1,16 @@
-const { FlatCompat } = require('@eslint/eslintrc');
 const js = require('@eslint/js');
-
-const compat = new FlatCompat({
-    baseDirectory: __dirname,
-    resolvePluginsRelativeTo: __dirname,
-    recommendedConfig: js.configs.recommended,
-    allConfig: js.configs.all,
-});
+const globals = require('globals');
 
 module.exports = [
-    ...compat.config(require('./.eslintrc.json')),
+    js.configs.recommended,
+    {
+        languageOptions: {
+            ecmaVersion: 2021,
+            sourceType: 'commonjs',
+            globals: {
+                ...globals.node,
+                ...globals.commonjs,
+            },
+        },
+    },
 ];

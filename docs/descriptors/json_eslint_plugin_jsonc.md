@@ -232,7 +232,7 @@ Miscellaneous:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=10.3.0
+ARG NPM_ESLINT_VERSION=10.4.0
 # renovate: datasource=npm depName=@eslint/eslintrc
 ARG NPM_ESLINT_ESLINTRC_VERSION=3.3.5
 # renovate: datasource=npm depName=eslint-plugin-jsonc
@@ -242,7 +242,59 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 ```
 
 - NPM packages (node.js):
-  - [eslint@10.3.0](https://www.npmjs.com/package/eslint/v/10.3.0)
+  - [eslint@10.4.0](https://www.npmjs.com/package/eslint/v/10.4.0)
   - [@eslint/eslintrc@3.3.5](https://www.npmjs.com/package/@eslint/eslintrc/v/3.3.5)
   - [eslint-plugin-jsonc](https://www.npmjs.com/package/eslint-plugin-jsonc)
   - [@microsoft/eslint-formatter-sarif@3.1.0](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/3.1.0)
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### JSON_ESLINT_PLUGIN_JSONC_ERROR_PARSER_NOT_FOUND
+
+**Detection pattern (regex):**
+
+```text
+(Cannot find module 'jsonc-eslint-parser'|Failed to load parser 'jsonc-eslint-parser')
+```
+
+**Resolution guidance:**
+
+```text
+ESLint could not load `jsonc-eslint-parser` referenced in your `.eslintrc-json.json` config. This parser is required by `eslint-plugin-jsonc` to parse JSON/JSONC/JSON5 files.
+Resolutions:
+  - Pre-install the parser into MegaLinter's npm root via a pre-command in your .mega-linter.yml:
+      JSON_ESLINT_PLUGIN_JSONC_PRE_COMMANDS:
+        - command: "npm install jsonc-eslint-parser"
+          cwd: "root"
+          continue_if_failed: false
+  - Or use the project-local ESLint binary after installing your dependencies:
+      JSON_ESLINT_PLUGIN_JSONC_PRE_COMMANDS:
+        - command: yarn install --frozen-lockfile --ignore-scripts
+          cwd: workspace
+          continue_if_failed: false
+      JSON_ESLINT_PLUGIN_JSONC_CLI_EXECUTABLE: node_modules/.bin/eslint
+```
+
+### JSON_ESLINT_PLUGIN_JSONC_ERROR_CONFIG_OVERRIDES_MISSING
+
+**Detection pattern (regex):**
+
+```text
+(ESLint couldn't find the config|Failed to load config "plugin:jsonc/)
+```
+
+**Resolution guidance:**
+
+```text
+ESLint could not resolve a `plugin:jsonc/recommended-*` config referenced from your project's `.eslintrc`. This usually means you have a workspace ESLint config that overrides MegaLinter's bundled one but does not list `jsonc` in `plugins`.
+Resolutions:
+  - Add `JSON_ESLINT_PLUGIN_JSONC_FILE_NAME: .eslintrc.json` (or your config filename) to `.mega-linter.yml` and add a `jsonc` `overrides` block to your own ESLint config (see the linter documentation above for a full example).
+  - Or pre-install `eslint-plugin-jsonc` into the project's `node_modules`:
+      JSON_ESLINT_PLUGIN_JSONC_PRE_COMMANDS:
+        - command: yarn install --frozen-lockfile --ignore-scripts
+          cwd: workspace
+          continue_if_failed: false
+```
+

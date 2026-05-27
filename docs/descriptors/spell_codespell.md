@@ -242,3 +242,42 @@ ARG PIP_CODESPELL_VERSION=2.4.2
 
 - PIP packages (Python):
   - [codespell==2.4.2](https://pypi.org/project/codespell/2.4.2)
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### SPELL_CODESPELL_ERROR_DICT_NOT_FOUND
+
+**Detection pattern (regex):**
+
+```text
+(ERROR: (cannot find the|Could not load) dictionary|No such file or directory: '.*\.txt'.*--ignore-words)
+```
+
+**Resolution guidance:**
+
+```text
+codespell could not load a custom dictionary or ignore-words file referenced from `.codespellrc`.
+Resolutions:
+  - Ensure files passed via `--ignore-words`, `--ignore-words-list`, or `--builtin` exist in the repository at the expected path.
+  - Use repository-relative paths in `.codespellrc`.
+```
+
+### SPELL_CODESPELL_ERROR_CONFIG_INVALID
+
+**Detection pattern (regex):**
+
+```text
+(configparser\.(Error|MissingSectionHeaderError|ParsingError)|invalid (option|value) in .codespellrc)
+```
+
+**Resolution guidance:**
+
+```text
+codespell could not parse `.codespellrc`.
+Resolutions:
+  - Validate INI syntax; ensure the file starts with the `[codespell]` section header.
+  - Check option names against <https://github.com/codespell-project/codespell#using-a-config-file>.
+```
+

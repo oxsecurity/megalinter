@@ -128,3 +128,26 @@ ENV PATH="${PATH}:/root/.dotnet/tools"
 RUN dotnet tool install --allow-roll-forward --global TSQLLint --version ${SQL_TSQLLINT_VERSION}
 ```
 
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### SQL_TSQLLINT_ERROR_CONFIG_INVALID
+
+**Detection pattern (regex):**
+
+```text
+(Config file .* is not valid|Invalid Json in config file|Error parsing config(uration)? file)
+```
+
+**Resolution guidance:**
+
+```text
+tsqllint could not parse its configuration file (`.tsqllintrc`, which is JSON).
+Resolutions:
+  - Validate the JSON syntax of `.tsqllintrc` (trailing commas and unquoted keys are not allowed).
+  - Regenerate a baseline config by running `tsqllint --init` and merging your custom rules back in.
+  - Make sure all rule names and severities (`error`, `warning`, `off`) are spelled correctly.
+```
+

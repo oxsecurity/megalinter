@@ -22,7 +22,7 @@ description: How to use kingfisher (configure, ignore files, ignore errors, help
 
 ## kingfisher documentation
 
-- Version in MegaLinter: **1.99.0**
+- Version in MegaLinter: **1.101.0**
 - Visit [Official Web Site](https://github.com/mongodb/kingfisher#readme){target=_blank}
 - See [How to disable kingfisher rules in files](https://github.com/mongodb/kingfisher?tab=readme-ov-file#inline-ignore-directives){target=_blank}
 - See [Index of problems detected by kingfisher](https://github.com/mongodb/kingfisher/tree/main/data/rules){target=_blank}
@@ -121,8 +121,72 @@ Global Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=github-tags depName=mongodb/kingfisher
-ARG REPOSITORY_KINGFISHER_VERSION=1.99.0
+ARG REPOSITORY_KINGFISHER_VERSION=1.101.0
 RUN curl --silent --location https://raw.githubusercontent.com/mongodb/kingfisher/main/scripts/install-kingfisher.sh | bash -s -- /usr/local/bin --tag "v${REPOSITORY_KINGFISHER_VERSION}"
 
+```
+
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### REPOSITORY_KINGFISHER_ERROR_GITHUB_API_RATE_LIMIT
+
+**Detection pattern (regex):**
+
+```text
+(API rate limit exceeded|GitHub API.*rate limit|secondary rate limit)
+```
+
+**Resolution guidance:**
+
+```text
+kingfisher hit the GitHub API rate limit while resolving or validating findings.
+This is an API quota issue, not a code finding.
+Resolutions:
+  - Provide a token via `KF_GITHUB_TOKEN` to raise the rate limit. Because MegaLinter strips token-like env vars by default, you must also whitelist it for this linter in your .mega-linter.yml:
+      REPOSITORY_KINGFISHER_UNSECURED_ENV_VARIABLES:
+        - KF_GITHUB_TOKEN
+  - Retry the run later once the quota resets.
+  - Temporarily mark the linter as non-blocking by adding to your .mega-linter.yml:
+      DISABLE_ERRORS_LINTERS:
+        - REPOSITORY_KINGFISHER
+```
+
+### REPOSITORY_KINGFISHER_ERROR_GITHUB_TOKEN_UNAUTHORIZED
+
+**Detection pattern (regex):**
+
+```text
+(401 Unauthorized|Bad credentials)
+```
+
+**Resolution guidance:**
+
+```text
+kingfisher could not authenticate to the GitHub API while validating a secret or fetching repo metadata.
+Resolutions:
+  - Verify `KF_GITHUB_TOKEN` is set, is not expired, and is whitelisted for this linter (MegaLinter strips token-like env vars by default):
+      REPOSITORY_KINGFISHER_UNSECURED_ENV_VARIABLES:
+        - KF_GITHUB_TOKEN
+  - For org-scoped resources, ensure the token has the required scopes (e.g. `repo`, `read:org`).
+```
+
+### REPOSITORY_KINGFISHER_ERROR_RULES_LOAD_FAILED
+
+**Detection pattern (regex):**
+
+```text
+(Failed to load (builtin )?rules|Failed to parse YAML from|Failed to build regex|Unknown rule:)
+```
+
+**Resolution guidance:**
+
+```text
+kingfisher failed to load its detection rules. This typically means a custom YAML rules file passed via `--rules-path` is malformed.
+Resolutions:
+  - Remove the custom rules path and rely on the built-in rules.
+  - Validate your custom YAML rules against `docs/RULES.md` in the kingfisher repo.
 ```
 

@@ -8,7 +8,8 @@ descriptor_flavors:
 lint_all_files: true
 linters:
   # CHECKOV
-  - linter_name: checkov
+  - class: CheckovLinter
+    linter_name: checkov
     linter_text: |
       **Checkov** is a comprehensive static code analysis tool for Infrastructure as Code (IaC) that prevents cloud security misconfigurations before they reach production.
 
@@ -48,9 +49,6 @@ linters:
       - --output-file-path
       - "{{REPORT_FOLDER}}"
     sarif_default_output_file: results_sarif.sarif
-    cli_lint_extra_args:
-      - "--directory"
-      - "."
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: ", Failed checks: ([0-9]+), Skipped checks"
     examples:
@@ -127,6 +125,14 @@ linters:
     cli_version_arg_name: --version
     cli_lint_errors_count: sarif
     cli_lint_warnings_count: sarif
+    common_linter_errors:
+      - identifier: REPOSITORY_DEVSKIM_ERROR_RULES_NOT_FOUND
+        regex: "Error: (No rules were loaded|Rules failed validation)"
+        message: |-
+          DevSkim could not load its rules. This usually means a custom rules path passed via `-r` / configuration is invalid, or the rule files at that path failed validation.
+          Resolutions:
+            - Remove or correct any custom rule paths in `.devskim.json` or the `-r` argument.
+            - Ensure custom rule files are committed to the repository, reachable from the workspace root, and conform to the DevSkim rule schema.
     test_folder: devskim
     examples:
       - "devskim analyze --source-code ."
@@ -431,6 +437,30 @@ linters:
     cli_version_arg_name: version
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: "(Low|Medium|High|Critical)"
+    common_linter_errors:
+      - identifier: REPOSITORY_GRYPE_ERROR_DB_UPDATE_FAILED
+        regex: "unable to (update|check for) vulnerability database( update)?"
+        message: |-
+          grype could not update its vulnerability database (network, TLS, or CDN issue talking to grype.anchore.io).
+          This is an environment issue, not a vulnerability finding.
+          Workarounds:
+            - Retry the run later (issue is often transient).
+            - Pre-populate the grype DB in a cached layer / volume in CI.
+            - Temporarily mark the linter as non-blocking by adding to your .mega-linter.yml:
+                DISABLE_ERRORS_LINTERS:
+                  - REPOSITORY_GRYPE
+      - identifier: REPOSITORY_GRYPE_ERROR_DB_CORRUPT
+        regex: "(vulnerability database is (corrupt|invalid)|database (disk image is malformed|metadata not found))"
+        message: |-
+          grype's local vulnerability database is corrupt or incomplete.
+          Resolutions:
+            - In a long-lived environment, run `grype db delete && grype db update`.
+            - In CI, clear any cached `~/.cache/grype` directory and re-run.
+      - identifier: REPOSITORY_GRYPE_ERROR_TLS_TIMEOUT
+        regex: "net/http: TLS handshake timeout"
+        message: |-
+          grype timed out during the TLS handshake while downloading the database listing or release info.
+          This is a transient network issue. Retry the run, or set up a self-hosted DB mirror for reliability.
     examples:
       - "grype dir:."
     downgraded_version: true
@@ -500,6 +530,24 @@ linters:
     cli_version_arg_name: "version"
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "TOTAL: ([0-9]+)"
+    common_linter_errors:
+      - identifier: REPOSITORY_KICS_ERROR_LIBRARY_REGO_MISSING
+        regex: "(failed to load|could not load) (queries|library\\.rego)"
+        message: |-
+          kics failed to load its Rego query library. This typically happens when a custom `--queries-path` is set but the required `library.rego` is missing at that path.
+          Resolutions:
+            - Remove the custom `--queries-path` override and use the bundled queries (default).
+            - If you need custom queries, place them alongside KICS's built-in queries (e.g. `-q "/your/queries,/usr/bin/assets/queries"`).
+      - identifier: REPOSITORY_KICS_ERROR_OUT_OF_MEMORY
+        regex: "(runtime: out of memory|fatal error: runtime: out of memory|signal: killed)"
+        message: |-
+          kics ran out of memory while scanning. Large Infrastructure-as-Code repositories can exceed the default container memory limit.
+          Resolutions:
+            - Increase the memory available to the MegaLinter container/runner.
+            - Reduce the scan scope via `REPOSITORY_KICS_FILE_EXTENSIONS` or by setting `REPOSITORY_KICS_ARGUMENTS` with `--exclude-paths`.
+            - Temporarily mark the linter as non-blocking by adding to your .mega-linter.yml:
+                DISABLE_ERRORS_LINTERS:
+                  - REPOSITORY_KICS
     examples:
       - "kics scan --path ."
     install:
@@ -547,6 +595,14 @@ linters:
       - "ls-lint --workdir src"
     test_folder: repository_file
     cli_lint_errors_count: "total_lines"
+    common_linter_errors:
+      - identifier: REPOSITORY_LS_LINT_ERROR_CONFIG_INVALID
+        regex: "(yaml: (unmarshal errors|line [0-9]+:)|cannot unmarshal|rule [a-zA-Z_-]+ not exists)"
+        message: |-
+          ls-lint could not parse `.ls-lint.yml`. The YAML is malformed or references an unknown naming rule.
+          Resolutions:
+            - Validate the YAML syntax of `.ls-lint.yml`.
+            - Check that each rule (e.g. `camelCase`, `snake_case`, `regex:...`) is supported by the installed ls-lint version.
     install:
       apk:
         - curl
@@ -612,6 +668,32 @@ linters:
     cli_version_arg_name: --version
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: "(osv\\.dev/GHSA-)"
+    common_linter_errors:
+      - identifier: REPOSITORY_OSV_SCANNER_ERROR_SERVICE_UNAVAILABLE
+        regex: "rpc error: code = Unavailable"
+        message: |-
+          osv-scanner could not reach the deps.dev / OSV transitive-dependency resolution service (gRPC "service unavailable").
+          This is a transient remote service issue, not a vulnerability finding.
+          Workarounds:
+            - Retry the run later.
+            - Temporarily mark the linter as non-blocking by adding to your .mega-linter.yml:
+                DISABLE_ERRORS_LINTERS:
+                  - REPOSITORY_OSV_SCANNER
+      - identifier: REPOSITORY_OSV_SCANNER_ERROR_NO_PACKAGE_SOURCES
+        regex: "no package sources found"
+        message: |-
+          osv-scanner found no lockfiles, manifests, or SBOMs to scan in the repository.
+          This is a configuration/scope issue, not a vulnerability finding.
+          Resolutions:
+            - Verify the repository actually contains a supported lockfile (package-lock.json, go.sum, Gemfile.lock, Pipfile.lock, etc.) at the scanned path.
+            - If this is expected for some sub-projects, disable osv-scanner for the affected paths or mark it non-blocking via `DISABLE_ERRORS_LINTERS`.
+      - identifier: REPOSITORY_OSV_SCANNER_ERROR_LOCKFILE_PARSE
+        regex: "(?i)failed to parse (lockfile|sbom)"
+        message: |-
+          osv-scanner failed to parse a lockfile or SBOM. The file is likely malformed or in an unsupported format/version.
+          Resolutions:
+            - Regenerate the lockfile with the project's package manager.
+            - For SBOMs, ensure the CycloneDX/SPDX version is supported by the current osv-scanner release.
     test_folder: repository_osv_scanner
     examples:
       - "osv-scanner scan source --recursive ."
@@ -882,6 +964,44 @@ linters:
       - "1"
     cli_lint_extra_args_after:
       - "."
+    common_linter_errors:
+      - identifier: REPOSITORY_TRIVY_ERROR_TOOMANYREQUESTS
+        regex: "TOOMANYREQUESTS"
+        message: |-
+          trivy was rate-limited by GitHub Container Registry (ghcr.io) while downloading the vulnerability database.
+          This is a registry rate limit, not a vulnerability finding.
+          Workarounds:
+            - Retry the run later (the limit is per-namespace and resets quickly).
+            - Authenticate pulls so requests count against your own quota. MegaLinter strips token/password env vars by default, so whitelist them for this linter in your .mega-linter.yml:
+                REPOSITORY_TRIVY_UNSECURED_ENV_VARIABLES:
+                  - GITHUB_TOKEN
+                  - TRIVY_USERNAME
+                  - TRIVY_PASSWORD
+            - Mirror the trivy-db to your own registry and point trivy at it via `TRIVY_DB_REPOSITORY`.
+            - Cache `~/.cache/trivy` across CI runs.
+            - Temporarily mark the linter as non-blocking by adding to your .mega-linter.yml:
+                DISABLE_ERRORS_LINTERS:
+                  - REPOSITORY_TRIVY
+      - identifier: REPOSITORY_TRIVY_ERROR_DB_DOWNLOAD_FAILED
+        regex: "(failed to download (vulnerability )?(DB|database)|database download error|could not pull image)"
+        message: |-
+          trivy could not download or refresh its vulnerability database from the configured registry.
+          Workarounds:
+            - Retry the run; this is often transient.
+            - Set `TRIVY_DB_REPOSITORY` to an alternative mirror (e.g. an internal registry or AWS ECR Public Gallery).
+            - Pre-populate `~/.cache/trivy` in CI.
+      - identifier: REPOSITORY_TRIVY_ERROR_REGISTRY_UNAUTHORIZED
+        regex: "(UNAUTHORIZED: authentication required|unexpected status (code )?401|status 401 Unauthorized)"
+        message: |-
+          trivy received a 401 Unauthorized response from a container registry while pulling the DB or an image to scan.
+          Resolutions:
+            - Provide credentials. MegaLinter strips token/password env vars by default, so whitelist them for this linter in your .mega-linter.yml:
+                REPOSITORY_TRIVY_UNSECURED_ENV_VARIABLES:
+                  - TRIVY_USERNAME
+                  - TRIVY_PASSWORD
+                  - GITHUB_TOKEN
+            - For AWS ECR, ensure the runner has IAM permissions to pull from the registry.
+            - Verify `TRIVY_DB_REPOSITORY` points to a repository you can actually access.
     test_folder: trivy
     examples:
       - "trivy fs --scanners vuln,misconfig ."
@@ -946,6 +1066,31 @@ linters:
     cli_sarif_args:
       - --output
       - "{{SARIF_OUTPUT_FILE}}.trivy-sbom.json"
+    common_linter_errors:
+      - identifier: REPOSITORY_TRIVY_SBOM_ERROR_TOOMANYREQUESTS
+        regex: "TOOMANYREQUESTS"
+        message: |-
+          trivy-sbom was rate-limited by GitHub Container Registry (ghcr.io) while downloading the trivy DB.
+          This is a registry rate limit, not an SBOM error.
+          Workarounds:
+            - Retry the run later.
+            - Authenticate pulls. MegaLinter strips token/password env vars by default, so whitelist them for this linter in your .mega-linter.yml:
+                REPOSITORY_TRIVY_SBOM_UNSECURED_ENV_VARIABLES:
+                  - GITHUB_TOKEN
+                  - TRIVY_USERNAME
+                  - TRIVY_PASSWORD
+            - Mirror trivy-db to your own registry via `TRIVY_DB_REPOSITORY`.
+            - Temporarily mark the linter as non-blocking by adding to your .mega-linter.yml:
+                DISABLE_ERRORS_LINTERS:
+                  - REPOSITORY_TRIVY_SBOM
+      - identifier: REPOSITORY_TRIVY_SBOM_ERROR_DB_DOWNLOAD_FAILED
+        regex: "(failed to download (vulnerability )?(DB|database)|database download error)"
+        message: |-
+          trivy-sbom could not download or refresh its vulnerability database.
+          Workarounds:
+            - Retry the run; this is often transient.
+            - Set `TRIVY_DB_REPOSITORY` to an alternative mirror.
+            - Pre-populate `~/.cache/trivy` in CI.
     test_folder: trivy
     examples:
       - "trivy fs --format cyclonedx ."
@@ -1054,13 +1199,43 @@ linters:
     cli_sarif_args:
       - --format
       - sarif
+    common_linter_errors:
+      - identifier: REPOSITORY_KINGFISHER_ERROR_GITHUB_API_RATE_LIMIT
+        regex: "(API rate limit exceeded|GitHub API.*rate limit|secondary rate limit)"
+        message: |-
+          kingfisher hit the GitHub API rate limit while resolving or validating findings.
+          This is an API quota issue, not a code finding.
+          Resolutions:
+            - Provide a token via `KF_GITHUB_TOKEN` to raise the rate limit. Because MegaLinter strips token-like env vars by default, you must also whitelist it for this linter in your .mega-linter.yml:
+                REPOSITORY_KINGFISHER_UNSECURED_ENV_VARIABLES:
+                  - KF_GITHUB_TOKEN
+            - Retry the run later once the quota resets.
+            - Temporarily mark the linter as non-blocking by adding to your .mega-linter.yml:
+                DISABLE_ERRORS_LINTERS:
+                  - REPOSITORY_KINGFISHER
+      - identifier: REPOSITORY_KINGFISHER_ERROR_GITHUB_TOKEN_UNAUTHORIZED
+        regex: "(401 Unauthorized|Bad credentials)"
+        message: |-
+          kingfisher could not authenticate to the GitHub API while validating a secret or fetching repo metadata.
+          Resolutions:
+            - Verify `KF_GITHUB_TOKEN` is set, is not expired, and is whitelisted for this linter (MegaLinter strips token-like env vars by default):
+                REPOSITORY_KINGFISHER_UNSECURED_ENV_VARIABLES:
+                  - KF_GITHUB_TOKEN
+            - For org-scoped resources, ensure the token has the required scopes (e.g. `repo`, `read:org`).
+      - identifier: REPOSITORY_KINGFISHER_ERROR_RULES_LOAD_FAILED
+        regex: "(Failed to load (builtin )?rules|Failed to parse YAML from|Failed to build regex|Unknown rule:)"
+        message: |-
+          kingfisher failed to load its detection rules. This typically means a custom YAML rules file passed via `--rules-path` is malformed.
+          Resolutions:
+            - Remove the custom rules path and rely on the built-in rules.
+            - Validate your custom YAML rules against `docs/RULES.md` in the kingfisher repo.
     examples:
       - "kingfisher scan ."
     install:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=mongodb/kingfisher
-          ARG REPOSITORY_KINGFISHER_VERSION=1.99.0
+          ARG REPOSITORY_KINGFISHER_VERSION=1.101.0
         - |
           RUN curl --silent --location https://raw.githubusercontent.com/mongodb/kingfisher/main/scripts/install-kingfisher.sh | bash -s -- /usr/local/bin --tag "v${REPOSITORY_KINGFISHER_VERSION}"
     supported_platforms:
