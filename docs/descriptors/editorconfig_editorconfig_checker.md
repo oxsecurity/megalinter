@@ -26,7 +26,7 @@ description: How to use editorconfig-checker (configure, ignore files, ignore er
 
 ## editorconfig-checker documentation
 
-- Version in MegaLinter: **3.6.1**
+- Version in MegaLinter: **3.7.0**
 - Visit [Official Web Site](https://editorconfig-checker.github.io/){target=_blank}
 - See [How to configure editorconfig-checker rules](https://github.com/editorconfig-checker/editorconfig-checker#configuration){target=_blank}
 - See [How to disable editorconfig-checker rules in files](https://github.com/editorconfig-checker/editorconfig-checker#excluding){target=_blank}
@@ -103,6 +103,13 @@ editorconfig-checker myfile.js
 
 ```shell
 USAGE:
+  editorconfig-checker [OPTIONS] [FILE...]
+
+With no FILE arguments, all files tracked by git are checked. When one or
+more FILE arguments are given, only those files are checked (the configured
+exclude patterns still apply).
+
+OPTIONS:
   -color
       enables printing color
   -config string
@@ -128,7 +135,7 @@ USAGE:
   -dry-run
       show which files would be checked
   -exclude string
-      a regex which files should be excluded from checking - needs to be a valid regular expression
+      a regex which files should be excluded from checking - needs to be a valid regular expression. Combine patterns with | (pipe): -exclude "vendor|testdata"
   -f value
       specify the output format: default, codeclimate, gcc, github-actions (default default)
   -format value
@@ -154,7 +161,7 @@ USAGE:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=mstruebing/editorconfig-checker
-ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.6.1
+ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.7.0
 FROM mstruebing/editorconfig-checker:${EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION} AS editorconfig-checker
 COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 ```
