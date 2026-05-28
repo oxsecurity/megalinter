@@ -12548,7 +12548,7 @@ Exception for standalone and security flavors docker images, that use a list of 
 </ul>
 <h2 id="semgrep-documentation">semgrep documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.163.0</strong></li>
+<li>Version in MegaLinter: <strong>1.164.0</strong></li>
 <li>Visit <a href="https://semgrep.dev/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://semgrep.dev/docs/running-rules/" target="_blank">How to configure semgrep rules</a></li>
 <li>See <a href="https://semgrep.dev/docs/ignoring-findings/#inline-comments" target="_blank">How to disable semgrep rules in files</a></li>
@@ -13037,7 +13037,9 @@ OPTIONS
            Maximum system memory in MiB to use during the interfile
            pre-processing phase, or when running a rule on a single file. If
            set to 0, will not have memory limit. Defaults to 0. For CI scans
-           that use the Pro Engine, defaults to 5000 MiB.
+           that use the Pro Engine, defaults to either 90 percent of the
+           container's available memory; or 8 GiB if querying the available
+           system memory is not feasible.
 
        --max-target-bytes=VALUE (absent=1000000)
            Maximum size for a file to be scanned by Semgrep, e.g '1.5MB'. Any
@@ -13429,11 +13431,11 @@ BUGS
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.163.0
+ARG PIP_SEMGREP_VERSION=1.164.0
 </code></pre>
 <ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/semgrep/1.163.0">semgrep==1.163.0</a></li>
+<li><a href="https://pypi.org/project/semgrep/1.164.0">semgrep==1.164.0</a></li>
 </ul>
 </li>
 </ul>
