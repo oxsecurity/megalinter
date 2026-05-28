@@ -12523,7 +12523,7 @@
 </ul>
 <h2 id="editorconfig-checker-documentation">editorconfig-checker documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.6.1</strong></li>
+<li>Version in MegaLinter: <strong>3.7.0</strong></li>
 <li>Visit <a href="https://editorconfig-checker.github.io/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/editorconfig-checker/editorconfig-checker#configuration" target="_blank">How to configure editorconfig-checker rules</a></li>
 <li>See <a href="https://github.com/editorconfig-checker/editorconfig-checker#excluding" target="_blank">How to disable editorconfig-checker rules in files</a></li>
@@ -12764,6 +12764,13 @@
 </code></pre>
 <h3 id="help-content">Help content</h3>
 <pre><code class="language-shell">USAGE:
+  editorconfig-checker [OPTIONS] [FILE...]
+
+With no FILE arguments, all files tracked by git are checked. When one or
+more FILE arguments are given, only those files are checked (the configured
+exclude patterns still apply).
+
+OPTIONS:
   -color
       enables printing color
   -config string
@@ -12789,7 +12796,7 @@
   -dry-run
       show which files would be checked
   -exclude string
-      a regex which files should be excluded from checking - needs to be a valid regular expression
+      a regex which files should be excluded from checking - needs to be a valid regular expression. Combine patterns with | (pipe): -exclude "vendor|testdata"
   -f value
       specify the output format: default, codeclimate, gcc, github-actions (default default)
   -format value
@@ -12814,7 +12821,7 @@
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=docker depName=mstruebing/editorconfig-checker
-ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.6.1
+ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.7.0
 FROM mstruebing/editorconfig-checker:${EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION} AS editorconfig-checker
 COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 </code></pre>
