@@ -76,6 +76,21 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [kingfisher](https://github.com/mongodb/kingfisher) from 1.100.0 to **1.101.0** on 2026-05-25
   - [stylelint](https://stylelint.io) from 17.11.1 to **17.12.0** on 2026-05-26
   - [rumdl](https://github.com/rvben/rumdl) from 0.1.96 to **0.2.0** on 2026-05-26
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.0 to **0.2.2** on 2026-05-27
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 8.2.8 to **8.2.9** on 2026-05-27
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.15.3 to **1.15.4** on 2026-05-27
+  - [terragrunt](https://terragrunt.gruntwork.io) from 1.0.4 to **1.0.5** on 2026-05-27
+  - [phpstan](https://phpstan.org/) from 2.1.55 to **2.1.56** on 2026-05-28
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.63.2 to **0.63.3** on 2026-05-28
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.51.1 to **1.51.2** on 2026-05-28
+  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.12.0 to **3.12.1** on 2026-05-28
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.6.1 to **3.7.0** on 2026-05-28
+  - [code-analyzer-apex](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.12.0 to **5.13.0** on 2026-05-28
+  - [code-analyzer-aura](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.12.0 to **5.13.0** on 2026-05-28
+  - [code-analyzer-lwc](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.12.0 to **5.13.0** on 2026-05-28
+  - [tekton-lint](https://github.com/IBM/tekton-lint) from 1.1.0 to **1.2.0** on 2026-05-28
+  - [semgrep](https://semgrep.dev/) from 1.163.0 to **1.164.0** on 2026-05-28
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 2.0.0 to **2.0.1** on 2026-05-28
 <!-- linter-versions-end -->
 
 ## [v9.5.0] - 2026-05-16

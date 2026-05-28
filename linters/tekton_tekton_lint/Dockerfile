@@ -55,7 +55,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=npm depName=@ibm/tekton-lint
-ARG NPM_IBM_TEKTON_LINT_VERSION=1.1.0
+ARG NPM_IBM_TEKTON_LINT_VERSION=1.2.0
 #ARG__END
 
 ####################

@@ -110,7 +110,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=snakefmt
-          ARG PIP_SNAKEFMT_VERSION=2.0.0
+          ARG PIP_SNAKEFMT_VERSION=2.0.1
       pip:
         - snakefmt==${PIP_SNAKEFMT_VERSION}
     supported_platforms:

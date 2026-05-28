@@ -12027,7 +12027,7 @@
       "items": {
         "type": "string"
       },
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Custom arguments",
+      "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Custom arguments",
       "type": [
         "array",
         "string"
@@ -12047,7 +12047,7 @@
       "items": {
         "type": "string"
       },
-      "title": "JSON_ESLINT_PLUGIN_JSONC: CLI Executable",
+      "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: CLI Executable",
       "type": "array",
       "x-category": "JSON_ESLINT_PLUGIN_JSONC",
       "x-order": 200060,
@@ -12067,7 +12067,7 @@
         "List of Files",
         "Project"
       ],
-      "title": "JSON_ESLINT_PLUGIN_JSONC: CLI lint mode",
+      "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: CLI lint mode",
       "type": "string",
       "x-category": "JSON_ESLINT_PLUGIN_JSONC",
       "x-doc-key": "config-cli-lint-mode",
@@ -12084,7 +12084,7 @@
       "items": {
         "type": "string"
       },
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Custom remove arguments",
+      "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Custom remove arguments",
       "type": [
         "array",
         "string"
@@ -12097,7 +12097,7 @@
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_CONFIG_FILE",
       "default": ".eslintrc-json.json",
       "description": "JSON_ESLINT_PLUGIN_JSONC: User custom config file name if different from default",
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Custom config file name",
+      "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Custom config file name",
       "type": "string",
       "x-category": "JSON_ESLINT_PLUGIN_JSONC",
       "x-order": 200010,
@@ -12107,7 +12107,7 @@
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_DISABLE_ERRORS",
       "default": false,
       "description": "JSON_ESLINT_PLUGIN_JSONC: If true, JSON_ESLINT_PLUGIN_JSONC doesn't make MegaLinter fail even if errors are found",
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Disable errors",
+      "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Disable errors",
       "type": "boolean",
       "x-category": "JSON_ESLINT_PLUGIN_JSONC",
       "x-order": 400000,
@@ -12117,7 +12117,7 @@
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
       "description": "JSON_ESLINT_PLUGIN_JSONC: If the number of errors found is less than this value, JSON_ESLINT_PLUGIN_JSONC doesn't make MegaLinter fail",
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Maximum number of errors allowed",
+      "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Maximum number of errors allowed",
       "type": "number",
       "x-category": "JSON_ESLINT_PLUGIN_JSONC",
       "x-order": 400010,
@@ -12138,7 +12138,7 @@
       "items": {
         "type": "string"
       },
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Matching files extensions",
+      "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Matching files extensions",
       "type": "array",
       "x-category": "JSON_ESLINT_PLUGIN_JSONC",
       "x-order": 300020,
@@ -12155,7 +12155,7 @@
       "items": {
         "type": "string"
       },
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Matching file name regexes",
+      "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Matching file name regexes",
       "type": "array",
       "x-category": "JSON_ESLINT_PLUGIN_JSONC",
       "x-order": 300030,
@@ -12164,7 +12164,7 @@
     "JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_EXCLUDE",
       "description": "JSON_ESLINT_PLUGIN_JSONC: Custom regex excluding filter: files matching this regex will NOT be linted",
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Excluding Regex",
+      "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Excluding Regex",
       "type": "string",
       "x-category": "JSON_ESLINT_PLUGIN_JSONC",
       "x-doc-key": "config-filtering",
@@ -12174,7 +12174,7 @@
     "JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_INCLUDE",
       "description": "JSON_ESLINT_PLUGIN_JSONC: Custom regex including filter: only files matching this regex will be linted",
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Including Regex",
+      "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Including Regex",
       "type": "string",
       "x-category": "JSON_ESLINT_PLUGIN_JSONC",
       "x-doc-key": "config-filtering",
@@ -12183,7 +12183,7 @@
     },
     "JSON_ESLINT_PLUGIN_JSONC_POST_COMMANDS": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_POST_COMMANDS",
-      "description": "JSON_ESLINT_PLUGIN_JSONC: Define bash commands to run after running JSON_ESLINT_PLUGIN_JSONC",
+      "description": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Define bash commands to run after running JSON_ESLINT_PLUGIN_JSONC",
       "examples": [
         [
           {
@@ -12204,7 +12204,7 @@
     },
     "JSON_ESLINT_PLUGIN_JSONC_PRE_COMMANDS": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_PRE_COMMANDS",
-      "description": "JSON_ESLINT_PLUGIN_JSONC: Define bash commands to run before running JSON_ESLINT_PLUGIN_JSONC",
+      "description": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Define bash commands to run before running JSON_ESLINT_PLUGIN_JSONC",
       "examples": [
         [
           {
@@ -12226,7 +12226,7 @@
     "JSON_ESLINT_PLUGIN_JSONC_RULES_PATH": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_RULES_PATH",
       "description": "JSON_ESLINT_PLUGIN_JSONC: Path where to find linter configuration file",
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Custom config file path",
+      "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Custom config file path",
       "type": "string",
       "x-category": "JSON_ESLINT_PLUGIN_JSONC",
       "x-order": 200040,
@@ -12239,7 +12239,7 @@
       "items": {
         "type": "string"
       },
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Unsecured env variables",
+      "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Unsecured env variables",
       "type": "array",
       "x-category": "JSON_ESLINT_PLUGIN_JSONC",
       "x-doc-key": "config-variables-security/#unhide-variables-for-linters",

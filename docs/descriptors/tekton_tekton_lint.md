@@ -21,7 +21,7 @@ description: How to use tekton-lint (configure, ignore files, ignore errors, hel
 
 ## tekton-lint documentation
 
-- Version in MegaLinter: **1.1.0**
+- Version in MegaLinter: **1.2.0**
 - Visit [Official Web Site](https://github.com/IBM/tekton-lint#readme){target=_blank}
 - See [How to configure tekton-lint rules](https://github.com/IBM/tekton-lint#configuring-tekton-lint){target=_blank}
 - See [Index of problems detected by tekton-lint](https://github.com/IBM/tekton-lint#rules){target=_blank}
@@ -126,8 +126,8 @@ Examples:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=@ibm/tekton-lint
-ARG NPM_IBM_TEKTON_LINT_VERSION=1.1.0
+ARG NPM_IBM_TEKTON_LINT_VERSION=1.2.0
 ```
 
 - NPM packages (node.js):
-  - [@ibm/tekton-lint@1.1.0](https://www.npmjs.com/package/@ibm/tekton-lint/v/1.1.0)
+  - [@ibm/tekton-lint@1.2.0](https://www.npmjs.com/package/@ibm/tekton-lint/v/1.2.0)
