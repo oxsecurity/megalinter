@@ -127,7 +127,7 @@ This linter is available in the following flavors
 
 ### How are identified applicable files
 
-- Activated only if one of these files is found: `eslint.config.js, eslint.config.mjs, eslint.config.cjs, eslint.config.ts, .eslintrc.json, .eslintrc.yml, .eslintrc.yaml, .eslintrc.js, .eslintrc.cjs, package.json:eslintConfig`
+- Activated only if one of these files is found: `eslint.config.js, eslint.config.mjs, eslint.config.cjs, eslint.config.ts, eslint.config.mts, eslint.config.cts, .eslintrc.json, .eslintrc.yml, .eslintrc.yaml, .eslintrc.js, .eslintrc.cjs, package.json:eslintConfig`
 - File extensions: `.tsx`
 
 <!-- markdownlint-disable -->
@@ -235,8 +235,6 @@ Miscellaneous:
 ARG NPM_TYPESCRIPT_VERSION=6.0.3
 # renovate: datasource=npm depName=eslint
 ARG NPM_ESLINT_VERSION=10.4.0
-# renovate: datasource=npm depName=@eslint/eslintrc
-ARG NPM_ESLINT_ESLINTRC_VERSION=3.3.5
 # renovate: datasource=npm depName=eslint-config-prettier
 ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.1.8
 # renovate: datasource=npm depName=eslint-plugin-jest
@@ -260,7 +258,6 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 - NPM packages (node.js):
   - [typescript@6.0.3](https://www.npmjs.com/package/typescript/v/6.0.3)
   - [eslint@10.4.0](https://www.npmjs.com/package/eslint/v/10.4.0)
-  - [@eslint/eslintrc@3.3.5](https://www.npmjs.com/package/@eslint/eslintrc/v/3.3.5)
   - [eslint-config-prettier@10.1.8](https://www.npmjs.com/package/eslint-config-prettier/v/10.1.8)
   - [eslint-plugin-jest@29.15.2](https://www.npmjs.com/package/eslint-plugin-jest/v/29.15.2)
   - [eslint-plugin-prettier@5.5.5](https://www.npmjs.com/package/eslint-plugin-prettier/v/5.5.5)
