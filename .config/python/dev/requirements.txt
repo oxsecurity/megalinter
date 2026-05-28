@@ -45,4 +45,4 @@ langchain_community==0.4.2
 langsmith==0.8.6
 orjson==3.11.9
 pyjwt==2.13.0
-idna==3.16
+idna==3.17
