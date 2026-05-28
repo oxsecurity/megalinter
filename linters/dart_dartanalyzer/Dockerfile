@@ -57,7 +57,7 @@ ARG TARGETARCH
 # renovate: datasource=github-tags depName=sgerrand/alpine-pkg-glibc
 ARG ALPINE_GLIBC_PACKAGE_VERSION=2.34-r0
 # renovate: datasource=dart-version depName=dart
-ARG DART_VERSION='3.12.0'
+ARG DART_VERSION='3.12.1'
 #ARG__END
 
 ####################
