@@ -12954,7 +12954,7 @@ JSX_ESLINT_CLI_EXECUTABLE: node_modules/.bin/eslint
 <h2 id="behind-the-scenes">Behind the scenes</h2>
 <h3 id="how-are-identified-applicable-files">How are identified applicable files</h3>
 <ul>
-<li>Activated only if one of these files is found: <code>eslint.config.js, eslint.config.mjs, eslint.config.cjs, eslint.config.ts, .eslintrc.json, .eslintrc.yml, .eslintrc.yaml, .eslintrc.js, .eslintrc.cjs, package.json:eslintConfig</code></li>
+<li>Activated only if one of these files is found: <code>eslint.config.js, eslint.config.mjs, eslint.config.cjs, eslint.config.ts, eslint.config.mts, eslint.config.cts, .eslintrc.json, .eslintrc.yml, .eslintrc.yaml, .eslintrc.js, .eslintrc.cjs, package.json:eslintConfig</code></li>
 <li>File extensions: <code>.jsx</code></li>
 </ul>
 <!-- markdownlint-disable -->
@@ -13049,8 +13049,6 @@ Miscellaneous:
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=npm depName=eslint
 ARG NPM_ESLINT_VERSION=10.4.0
-# renovate: datasource=npm depName=@eslint/eslintrc
-ARG NPM_ESLINT_ESLINTRC_VERSION=3.3.5
 # renovate: datasource=npm depName=@eslint-react/eslint-plugin
 ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.8.4
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
@@ -13059,7 +13057,6 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 <ul>
 <li>NPM packages (node.js):<ul>
 <li><a href="https://www.npmjs.com/package/eslint/v/10.4.0">eslint@10.4.0</a></li>
-<li><a href="https://www.npmjs.com/package/@eslint/eslintrc/v/3.3.5">@eslint/eslintrc@3.3.5</a></li>
 <li><a href="https://www.npmjs.com/package/@eslint-react/eslint-plugin/v/5.8.4">@eslint-react/eslint-plugin@5.8.4</a></li>
 <li><a href="https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/3.1.0">@microsoft/eslint-formatter-sarif@3.1.0</a></li>
 </ul>
