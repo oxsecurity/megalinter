@@ -212,7 +212,7 @@ ARG PIP_CODESPELL_VERSION=2.4.2
 # renovate: datasource=pypi depName=sqlfluff
 ARG PIP_SQLFLUFF_VERSION=4.2.1
 # renovate: datasource=npm depName=@ibm/tekton-lint
-ARG NPM_IBM_TEKTON_LINT_VERSION=1.1.0
+ARG NPM_IBM_TEKTON_LINT_VERSION=1.2.0
 # renovate: datasource=pypi depName=yamllint
 ARG PIP_YAMLLINT_VERSION=1.38.0
 # renovate: datasource=pypi depName=pip

@@ -257,7 +257,7 @@ ARG PIP_SQLFLUFF_VERSION=4.2.1
 # renovate: datasource=nuget depName=TSQLLint
 ARG SQL_TSQLLINT_VERSION=1.16.0
 # renovate: datasource=npm depName=@ibm/tekton-lint
-ARG NPM_IBM_TEKTON_LINT_VERSION=1.1.0
+ARG NPM_IBM_TEKTON_LINT_VERSION=1.2.0
 # renovate: datasource=npm depName=prettyjson
 ARG NPM_PRETTYJSON_VERSION=1.2.5
 # renovate: datasource=npm depName=@typescript-eslint/eslint-plugin
