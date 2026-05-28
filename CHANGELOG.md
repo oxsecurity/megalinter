@@ -80,6 +80,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 8.2.8 to **8.2.9** on 2026-05-27
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.15.3 to **1.15.4** on 2026-05-27
   - [terragrunt](https://terragrunt.gruntwork.io) from 1.0.4 to **1.0.5** on 2026-05-27
+  - [phpstan](https://phpstan.org/) from 2.1.55 to **2.1.56** on 2026-05-28
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.63.2 to **0.63.3** on 2026-05-28
 <!-- linter-versions-end -->
 
 ## [v9.5.0] - 2026-05-16
