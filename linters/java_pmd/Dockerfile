@@ -55,7 +55,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=github-tags depName=pmd/pmd extractVersion=^pmd_releases/(?<version>.*)$
-ARG PMD_VERSION=7.24.0
+ARG PMD_VERSION=7.25.0
 
 #ARG__END
 
