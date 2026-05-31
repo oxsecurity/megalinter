@@ -7,4 +7,4 @@ pygments==2.20.0
 uvicorn[standard]==0.48.0
 redis==7.4.0
 rq==2.9.0
-idna==3.16
+idna==3.17
