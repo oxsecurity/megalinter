@@ -55,7 +55,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=npm depName=pyright
-ARG NPM_PYRIGHT_VERSION=1.1.409
+ARG NPM_PYRIGHT_VERSION=1.1.410
 #ARG__END
 
 ####################
