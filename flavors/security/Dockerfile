@@ -111,7 +111,7 @@ ARG PIP_ANSIBLE_LINT_VERSION=26.4.0
 # renovate: datasource=pypi depName=cfn-lint
 ARG PIP_CFN_LINT_VERSION=1.51.2
 # renovate: datasource=github-releases depName=kubescape/kubescape extractVersion=^v(?<version>.+)$
-ARG KUBERNETES_KUBESCAPE_VERSION=4.0.8
+ARG KUBERNETES_KUBESCAPE_VERSION=4.0.9
 # renovate: datasource=pypi depName=bandit
 ARG PIP_BANDIT_VERSION=1.9.4
 # renovate: datasource=pypi depName=bandit_sarif_formatter
