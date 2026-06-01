@@ -12548,7 +12548,7 @@
 </ul>
 <h2 id="kubescape-documentation">kubescape documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>4.0.8</strong></li>
+<li>Version in MegaLinter: <strong>4.0.9</strong></li>
 <li>Visit <a href="https://github.com/kubescape/kubescape#readme" target="_blank">Official Web Site</a></li>
 </ul>
 <p><a href="https://github.com/kubescape/kubescape" target="_blank"><img alt="kubescape - GitHub" src="https://gh-card.dev/repos/kubescape/kubescape.svg?fullname="></a></p>
@@ -12825,13 +12825,14 @@ Examples:
 Available Commands:
   completion    Generate autocompletion script
   config        Handle cached configurations
+  diff          Compare two Kubescape scan JSON reports and show what changed
   download      Download artifacts,attack-tracks,control,controls-inputs,exceptions,framework
   fix           Propose a fix for the misconfiguration found when scanning Kubernetes manifest files
   help          Help about any command
   list          List frameworks/controls will list the supported frameworks and controls
   mcpserver     Start the Kubescape MCP server
   operator      The operator is used to communicate with the Kubescape Operator within the cluster components.
-  patch         Patch container images with vulnerabilities
+  patch         Patch container images to fix known OS-level vulnerabilities
   prerequisites Check prerequisites for installing Kubescape Operator
   scan          Scan a Kubernetes cluster or YAML files for image vulnerabilities and misconfigurations
   update        Update to latest release version
@@ -12852,7 +12853,7 @@ Use "kubescape [command] --help" for more information about a command.
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=github-releases depName=kubescape/kubescape extractVersion=^v(?&lt;version&gt;.+)$
-ARG KUBERNETES_KUBESCAPE_VERSION=4.0.8
+ARG KUBERNETES_KUBESCAPE_VERSION=4.0.9
 RUN set -eu; \
     case "$TARGETPLATFORM" in \
       linux/amd64) ARCH=amd64 ;; \
