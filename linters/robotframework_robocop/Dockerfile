@@ -57,7 +57,7 @@ ARG TARGETARCH
 # renovate: datasource=pypi depName=robotframework-robocop
 ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=8.2.9
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=26.1.1
+ARG PIP_PIP_VERSION=26.1.2
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=21.3.3
 #ARG__END
