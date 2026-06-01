@@ -57,7 +57,7 @@ ARG TARGETARCH
 # renovate: datasource=pypi depName=ansible-lint
 ARG PIP_ANSIBLE_LINT_VERSION=26.4.0
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=26.1.1
+ARG PIP_PIP_VERSION=26.1.2
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=21.3.3
 #ARG__END
