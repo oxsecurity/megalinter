@@ -113,14 +113,32 @@
       customType: 'regex',
       description: 'Update dockerfile sections in .megalinter-descriptor.yml files',
       managerFilePatterns: [
-        '/(^|/).*megalinter(\\\\|/)constants\\.py$/',
         '/(^|/).*\\.devcontainer(\\\\|/)Dockerfile$/',
         '/(^|/).*\\.megalinter-descriptor\\.ya?ml$/',
       ],
       matchStrings: [
         '# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?\\s(?:ENV|ARG)\\s+[A-Za-z0-9_]+?_VERSION[ =]["\']?(?<currentValue>.+?)["\']?\\s',
         '# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?\\s+(?:ENV|ARG)\\s+[A-Za-z0-9_]+?_VERSION[ =]["\']?(?<currentValue>.+?)["\']?\\s',
+      ],
+    },
+    {
+      customType: 'regex',
+      description: 'Update dependencies configured in constants.py file',
+      managerFilePatterns: [
+        '/(^|/).*megalinter(\\\\|/)constants\\.py$/',
+      ],
+      matchStrings: [
         '# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?\\\\n(?:ENV|ARG)\\s+[A-Za-z0-9_]+?_VERSION[ =]["\']?(?<currentValue>.+?)["\']?,',
+      ],
+    },
+    {
+      customType: 'regex',
+      description: 'Update dependencies configured with containerEnv in devcontainer.json file',
+      managerFilePatterns: [
+        '/(^|/).*\\.devcontainer(\\\\|/)devcontainer\\.json$/',
+      ],
+      matchStrings: [
+        '\/\/ renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?\\s+["\']?[A-Za-z0-9_]+?["\']?:\\s["\']?(?<currentValue>.+?)["\']?\\s',
       ],
     },
   ],
