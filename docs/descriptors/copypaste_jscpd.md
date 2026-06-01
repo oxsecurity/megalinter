@@ -45,7 +45,7 @@ Example:
 
 ## jscpd documentation
 
-- Version in MegaLinter: **4.2.3**
+- Version in MegaLinter: **4.2.4**
 - Visit [Official Web Site](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#readme){target=_blank}
 - See [How to configure jscpd rules](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#config-file){target=_blank}
   - If custom `.jscpd.json` config file isn't found, [.jscpd.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.jscpd.json){target=_blank} will be used
@@ -166,7 +166,9 @@ Options:
   -a, --absolute             use absolute path in reports
   -n, --noSymlinks           dont use symlinks for detection in files
   --ignoreCase               ignore case of symbols in code (experimental)
-  -g, --gitignore            ignore all files from .gitignore file
+  -g, --gitignore            respect .gitignore files (default: enabled, use
+                             --no-gitignore to disable)
+  --no-gitignore             do not respect .gitignore files
   --formats-exts [string]    list of formats with file extensions
                              (javascript:es,es6;dart:dt)
   --formats-names [string]   list of formats with specific filenames
@@ -191,8 +193,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=4.2.3
+ARG NPM_JSCPD_VERSION=4.2.4
 ```
 
 - NPM packages (node.js):
-  - [jscpd@4.2.3](https://www.npmjs.com/package/jscpd/v/4.2.3)
+  - [jscpd@4.2.4](https://www.npmjs.com/package/jscpd/v/4.2.4)
