@@ -31,7 +31,7 @@ DISABLE_ERRORS_LINTERS:
   - YAML_YAMLLINT
 PRINT_ALL_FILES: false
 FILTER_REGEX_EXCLUDE: '(\.automation/test|\.automation/generated|\.venv|docs/javascripts|docs/overrides|docs/json-schemas|flavors|clj-kondo|TEMPLATES)'
-JSON_JSONLINT_FILTER_REGEX_EXCLUDE: '(\.vscode/)'
+JSON_JSONLINT_FILTER_REGEX_EXCLUDE: '(\.devcontainer/devcontainer\.json|\.vscode/)'
 YAML_YAMLLINT_FILTER_REGEX_EXCLUDE: '(templates/\.mega-linter\.yml|\.github/workflows)'
 YAML_PRETTIER_FILTER_REGEX_EXCLUDE: '(templates/\.mega-linter\.yml|mkdocs\.yml|\.github/workflows)'
 YAML_V8R_FILTER_REGEX_EXCLUDE: '(descriptors|templates/\.mega-linter\.yml|\.codecov\.yml|\.github/workflows)'

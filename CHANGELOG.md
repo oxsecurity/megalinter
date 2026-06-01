@@ -91,6 +91,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [tekton-lint](https://github.com/IBM/tekton-lint) from 1.1.0 to **1.2.0** on 2026-05-28
   - [semgrep](https://semgrep.dev/) from 1.163.0 to **1.164.0** on 2026-05-28
   - [snakefmt](https://github.com/snakemake/snakefmt) from 2.0.0 to **2.0.1** on 2026-05-28
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.2 to **0.2.3** on 2026-05-28
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.14 to **0.15.15** on 2026-05-28
+  - [ruff](https://github.com/astral-sh/ruff) from 0.15.14 to **0.15.15** on 2026-05-28
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.95 to **0.1.96** on 2026-05-28
 <!-- linter-versions-end -->
 
 ## [v9.5.0] - 2026-05-16
