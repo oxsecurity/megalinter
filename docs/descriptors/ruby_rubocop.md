@@ -27,7 +27,7 @@ description: How to use rubocop (configure, ignore files, ignore errors, help & 
 
 ## rubocop documentation
 
-- Version in MegaLinter: **1.86.2**
+- Version in MegaLinter: **1.87.0**
 - Visit [Official Web Site](https://rubocop.org/){target=_blank}
 - See [How to configure rubocop rules](https://docs.rubocop.org/rubocop/configuration.html){target=_blank}
   - If custom `.ruby-lint.yml` config file isn't found, [.ruby-lint.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruby-lint.yml){target=_blank} will be used
@@ -129,6 +129,14 @@ Basic Options:
                                      containing offenses.
         --disable-pending-cops       Run without pending cops.
         --enable-pending-cops        Run with pending cops.
+        --disable-all-cops           Run with all cops disabled by default,
+                                     except `Lint/Syntax`. Overrides
+                                     `AllCops/EnabledByDefault` and
+                                     `AllCops/DisabledByDefault` in config files.
+        --enable-all-cops            Run with all cops enabled, including those
+                                     disabled by default. Overrides
+                                     `AllCops/EnabledByDefault` and
+                                     `AllCops/DisabledByDefault` in config files.
         --ignore-disable-comments    Report offenses even if they have been manually disabled
                                      with a `rubocop:disable` or `rubocop:todo` directive.
         --force-exclusion            Any files excluded by `Exclude` in configuration
@@ -304,7 +312,7 @@ Profiling Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=rubygems depName=rubocop
-ARG GEM_RUBOCOP_VERSION=1.86.2
+ARG GEM_RUBOCOP_VERSION=1.87.0
 # renovate: datasource=rubygems depName=rubocop-github
 ARG GEM_RUBOCOP_GITHUB_VERSION=0.27.0
 # renovate: datasource=rubygems depName=rubocop-performance
@@ -318,7 +326,7 @@ ARG GEM_RUBOCOP_RSPEC_VERSION=3.9.0
 ```
 
 - GEM packages (Ruby) :
-  - [rubocop:1.86.2](https://rubygems.org/gems/rubocop/versions/1.86.2)
+  - [rubocop:1.87.0](https://rubygems.org/gems/rubocop/versions/1.87.0)
   - [rubocop-github:0.27.0](https://rubygems.org/gems/rubocop-github/versions/0.27.0)
   - [rubocop-performance:1.26.1](https://rubygems.org/gems/rubocop-performance/versions/1.26.1)
   - [rubocop-rails:2.35.3](https://rubygems.org/gems/rubocop-rails/versions/2.35.3)

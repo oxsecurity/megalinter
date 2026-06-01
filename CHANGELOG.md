@@ -95,6 +95,19 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.14 to **0.15.15** on 2026-05-28
   - [ruff](https://github.com/astral-sh/ruff) from 0.15.14 to **0.15.15** on 2026-05-28
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.95 to **0.1.96** on 2026-05-28
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 4.2.3 to **4.2.4** on 2026-06-01
+  - [pmd](https://pmd.github.io/) from 7.24.0 to **7.25.0** on 2026-06-01
+  - [kubescape](https://github.com/kubescape/kubescape) from 4.0.8 to **4.0.9** on 2026-06-01
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.3 to **0.2.4** on 2026-06-01
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.2 to **3.95.3** on 2026-06-01
+  - [phpstan](https://phpstan.org/) from 2.1.56 to **2.2.1** on 2026-06-01
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.409 to **1.1.410** on 2026-06-01
+  - [checkov](https://www.checkov.io/) from 3.2.529 to **3.2.530** on 2026-06-01
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.101.0 to **1.102.0** on 2026-06-01
+  - [rubocop](https://rubocop.org/) from 1.86.2 to **1.87.0** on 2026-06-01
+  - [snakemake](https://snakemake.github.io/) from 9.21.0 to **9.21.1** on 2026-06-01
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.15.4 to **1.15.5** on 2026-06-01
+  - [terragrunt](https://terragrunt.gruntwork.io) from 1.0.5 to **1.0.6** on 2026-06-01
 <!-- linter-versions-end -->
 
 ## [v9.5.0] - 2026-05-16
