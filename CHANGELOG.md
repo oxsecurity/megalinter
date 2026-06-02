@@ -108,6 +108,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.github.io/) from 9.21.0 to **9.21.1** on 2026-06-01
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.15.4 to **1.15.5** on 2026-06-01
   - [terragrunt](https://terragrunt.gruntwork.io) from 1.0.5 to **1.0.6** on 2026-06-01
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.51.2 to **1.51.3** on 2026-06-02
+  - [syft](https://github.com/anchore/syft) from 1.44.0 to **1.45.0** on 2026-06-02
 <!-- linter-versions-end -->
 
 ## [v9.5.0] - 2026-05-16
