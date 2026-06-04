@@ -28,7 +28,7 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
 
 ## checkov documentation
 
-- Version in MegaLinter: **3.2.530**
+- Version in MegaLinter: **3.2.532**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to configure checkov rules](https://github.com/bridgecrewio/checkov#configuration-using-a-config-file){target=_blank}
   - If custom `.checkov.yml` config file isn't found, [.checkov.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.checkov.yml){target=_blank} will be used
@@ -112,7 +112,8 @@ checkov --directory . --output --sarif
 usage: checkov [-h] [-v] [--support] [-d DIRECTORY] [--add-check]
                [-f FILE [FILE ...]] [--skip-path SKIP_PATH]
                [--external-checks-dir EXTERNAL_CHECKS_DIR]
-               [--external-checks-git EXTERNAL_CHECKS_GIT] [-l]
+               [--external-checks-git EXTERNAL_CHECKS_GIT]
+               [--external-checks-public-key EXTERNAL_CHECKS_PUBLIC_KEY] [-l]
                [-o {cli,csv,cyclonedx,cyclonedx_json,json,junitxml,github_failed_only,gitlab_sast,sarif,spdx}]
                [--output-file-path OUTPUT_FILE_PATH] [--output-bc-ids]
                [--include-all-checkov-policies] [--quiet] [--compact]
@@ -186,6 +187,18 @@ options:
                         this will run Python code from the specified
                         directory, so only use this option with trusted
                         repositories.
+  --external-checks-public-key EXTERNAL_CHECKS_PUBLIC_KEY
+                        Path to a PEM-encoded ECDSA P-256 public key used to
+                        verify every .py file under --external-checks-dir /
+                        --external-checks-git before it is loaded. Can be
+                        specified multiple times to rotate keys. When set, any
+                        file without a valid '# checkov-digest: <hex>' trailer
+                        signed by one of the configured keys causes Checkov to
+                        exit with code 2 before scanning (or 0 if --no-fail-
+                        on-crash is also set; the diagnostic message is still
+                        produced on stderr). When unset, no verification is
+                        performed (backward compatible). [env var:
+                        CKV_EXTERNAL_CHECKS_PUBLIC_KEY]
   -l, --list            List checks
   -o, --output {cli,csv,cyclonedx,cyclonedx_json,json,junitxml,github_failed_only,gitlab_sast,sarif,spdx}
                         Report output format. Add multiple outputs by using
@@ -496,8 +509,8 @@ config file values which override defaults.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.2.530
+ARG PIP_CHECKOV_VERSION=3.2.532
 ```
 
 - PIP packages (Python):
-  - [checkov==3.2.530](https://pypi.org/project/checkov/3.2.530)
+  - [checkov==3.2.532](https://pypi.org/project/checkov/3.2.532)
