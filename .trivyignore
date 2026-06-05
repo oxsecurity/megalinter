@@ -355,6 +355,15 @@ CVE-2026-44492
 # https://avd.aquasec.com/nvd/cve-2026-44494 — axios MITM via Prototype Pollution in config.proxy; linters only
 # call the user's own GITHUB_TOKEN-authenticated endpoints and do not process attacker-controlled prototypes.
 CVE-2026-44494
+# https://avd.aquasec.com/nvd/cve-2026-44486 — axios Proxy-Authorization header leaks to redirect target; linters are
+# static-analysis tools that do not make proxy-mediated requests to attacker-controlled hosts.
+CVE-2026-44486
+# https://avd.aquasec.com/nvd/cve-2026-44487 — axios Proxy-Authorization credential leak to origin server; same rationale as CVE-2026-44486.
+CVE-2026-44487
+# https://avd.aquasec.com/nvd/cve-2026-44488 — axios allocation without limits (DoS); not applicable in MegaLinter static-analysis context.
+CVE-2026-44488
+# https://avd.aquasec.com/nvd/cve-2026-44496 — axios ReDoS; not applicable in MegaLinter static-analysis context.
+CVE-2026-44496
 # https://avd.aquasec.com/nvd/cve-2026-26278 — fast-xml-parser DDoS, not applicable in MegaLinter context
 CVE-2026-26278
 # https://avd.aquasec.com/nvd/cve-2026-26960 — node-tar, not applicable in MegaLinter context
