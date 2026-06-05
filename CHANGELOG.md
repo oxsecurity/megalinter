@@ -114,6 +114,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.2.530 to **3.2.532** on 2026-06-04
   - [grype](https://github.com/anchore/grype) from 0.112.0 to **0.113.0** on 2026-06-04
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.95.3 to **3.95.5** on 2026-06-05
+  - [grype](https://github.com/anchore/grype) from 0.113.0 to **0.114.0** on 2026-06-05
+  - [syft](https://github.com/anchore/syft) from 1.45.0 to **1.45.1** on 2026-06-05
 <!-- linter-versions-end -->
 
 ## [v9.5.0] - 2026-05-16

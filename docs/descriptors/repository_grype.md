@@ -30,7 +30,7 @@ description: How to use grype (configure, ignore files, ignore errors, help & ve
 
 ## grype documentation
 
-- Version in MegaLinter: **0.113.0**
+- Version in MegaLinter: **0.114.0**
 - Visit [Official Web Site](https://github.com/anchore/grype#readme){target=_blank}
 - See [How to configure grype rules](https://github.com/anchore/grype#configuration){target=_blank}
   - If custom `.grype.yaml` config file isn't found, [.grype.yaml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.grype.yaml){target=_blank} will be used
@@ -128,6 +128,7 @@ You can also explicitly specify the scheme to use:
     grype PURL                                   read a single package PURL directly (e.g. pkg:apk/openssl@3.2.1?distro=alpine-3.20.3)
     grype cpes:path/to/cpes/file                 read a newline separated file of package CPEs from a path on disk
     grype CPE                                    read a single CPE directly (e.g. cpe:2.3:a:openssl:openssl:3.0.14:*:*:*:*:*)
+    grype zarf:path/to/package.tar.zst           scan all SBOMs within a Zarf package archive
 
 You can also pipe in Syft JSON directly:
   syft yourimage:tag -o json | grype
