@@ -137,9 +137,9 @@ GLOBAL FLAGS
 ```dockerfile
 # Parent descriptor install
 # renovate: datasource=npm depName=@salesforce/cli
-ARG NPM_SALESFORCE_CLI_VERSION=2.136.8
+ARG NPM_SALESFORCE_CLI_VERSION=2.137.7
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.28.3
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.28.6
 # renovate: datasource=npm depName=sfdx-hardis
 ARG SFDX_HARDIS_VERSION=7.15.0
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk

@@ -117,6 +117,19 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [grype](https://github.com/anchore/grype) from 0.113.0 to **0.114.0** on 2026-06-05
   - [syft](https://github.com/anchore/syft) from 1.45.0 to **1.45.1** on 2026-06-05
   - [terragrunt](https://terragrunt.gruntwork.io) from 1.0.6 to **1.0.7** on 2026-06-07
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.51.3 to **1.51.4** on 2026-06-07
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.4 to **0.2.9** on 2026-06-07
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.3 to **3.95.4** on 2026-06-07
+  - [phplint](https://github.com/overtrue/phplint) from 9.7.1 to **9.7.2** on 2026-06-07
+  - [phpstan](https://phpstan.org/) from 2.2.1 to **2.2.2** on 2026-06-07
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.15 to **0.15.16** on 2026-06-07
+  - [ruff](https://github.com/astral-sh/ruff) from 0.15.15 to **0.15.16** on 2026-06-07
+  - [checkov](https://www.checkov.io/) from 3.2.532 to **3.2.533** on 2026-06-07
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 8.2.9 to **8.2.10** on 2026-06-07
+  - [snakemake](https://snakemake.github.io/) from 9.21.1 to **9.22.0** on 2026-06-07
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 10.0.0 to **10.0.1** on 2026-06-07
+  - [sqlfluff](https://www.sqlfluff.com/) from 4.2.1 to **4.2.2** on 2026-06-07
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.62.1 to **0.63.1** on 2026-06-07
 <!-- linter-versions-end -->
 
 ## [v9.5.0] - 2026-05-16
