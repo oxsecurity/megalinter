@@ -44,6 +44,11 @@ linters:
     linter_image_url: https://scalacenter.github.io/scalafix/img/scalacenter2x.png
     linter_megalinter_ref_url: https://scalacenter.github.io/scalafix/docs/users/installation.html#plugins-for-other-build-tools
     config_file_name: .scalafix.conf
+    cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_config_arg_name: "--config"
     cli_lint_extra_args:
       - "--check"

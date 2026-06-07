@@ -1,2 +1,2 @@
 ls:
-  .txt: lowercase
+  .txt: camelcase

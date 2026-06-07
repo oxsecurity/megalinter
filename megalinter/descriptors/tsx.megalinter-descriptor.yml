@@ -83,9 +83,15 @@ linters:
       - ".eslintrc.cjs"
       - "package.json:eslintConfig"
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     config_file_name: eslint.config.cjs
     cli_lint_extra_args:
       - "--no-ignore"
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_lint_fix_arg_name: "--fix"
     cli_sarif_args:
       - --format

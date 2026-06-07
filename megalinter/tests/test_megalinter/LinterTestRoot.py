@@ -6,7 +6,7 @@ Unit tests for Linter class (and sub-classes)
 import uuid
 from typing import Optional
 
-from megalinter import linter_factory, utilstest
+from megalinter import config, linter_factory, utilstest
 
 
 class LinterTestRoot:
@@ -31,21 +31,69 @@ class LinterTestRoot:
             },
         )
 
-    def test_success(self):
-        self.request_id = str(uuid.uuid1())
-        utilstest.linter_test_setup({"request_id": self.request_id})
-        linter = self.get_linter_instance(self.request_id)
-        linter.pre_test("test_success")
-        utilstest.test_linter_success(linter, self)
-        linter.post_test("test_success")
+    def lint_mode_setup(self, mode):
+        config.set_value(
+            self.request_id,
+            self.descriptor_id.upper()
+            + "_"
+            + self.linter_name.upper()
+            + "_CLI_LINT_MODE",
+            mode,
+        )
 
-    def test_failure(self):
+    def test_success_file_lint_mode(self):
         self.request_id = str(uuid.uuid1())
         utilstest.linter_test_setup({"request_id": self.request_id})
+        self.lint_mode_setup("file")
         linter = self.get_linter_instance(self.request_id)
-        linter.pre_test("test_failure")
-        utilstest.test_linter_failure(linter, self)
-        linter.post_test("test_failure")
+        linter.pre_test("test_success_file_lint_mode")
+        utilstest.test_linter_success_file_lint_mode(linter, self)
+        linter.post_test("test_success_file_lint_mode")
+
+    def test_success_list_of_files_lint_mode(self):
+        self.request_id = str(uuid.uuid1())
+        utilstest.linter_test_setup({"request_id": self.request_id})
+        self.lint_mode_setup("list_of_files")
+        linter = self.get_linter_instance(self.request_id)
+        linter.pre_test("test_success_list_of_files_lint_mode")
+        utilstest.test_linter_success_list_of_files_lint_mode(linter, self)
+        linter.post_test("test_success_list_of_files_lint_mode")
+
+    def test_success_project_lint_mode(self):
+        self.request_id = str(uuid.uuid1())
+        utilstest.linter_test_setup({"request_id": self.request_id})
+        self.lint_mode_setup("project")
+        linter = self.get_linter_instance(self.request_id)
+        linter.pre_test("test_success_project_lint_mode")
+        utilstest.test_linter_success_project_lint_mode(linter, self)
+        linter.post_test("test_success_project_lint_mode")
+
+    def test_failure_file_lint_mode(self):
+        self.request_id = str(uuid.uuid1())
+        utilstest.linter_test_setup({"request_id": self.request_id})
+        self.lint_mode_setup("file")
+        linter = self.get_linter_instance(self.request_id)
+        linter.pre_test("test_failure_file_lint_mode")
+        utilstest.test_linter_failure_file_lint_mode(linter, self)
+        linter.post_test("test_failure_file_lint_mode")
+
+    def test_failure_list_of_files_lint_mode(self):
+        self.request_id = str(uuid.uuid1())
+        utilstest.linter_test_setup({"request_id": self.request_id})
+        self.lint_mode_setup("list_of_files")
+        linter = self.get_linter_instance(self.request_id)
+        linter.pre_test("test_failure_list_of_files_lint_mode")
+        utilstest.test_linter_failure_list_of_files_lint_mode(linter, self)
+        linter.post_test("test_failure_list_of_files_lint_mode")
+
+    def test_failure_project_lint_mode(self):
+        self.request_id = str(uuid.uuid1())
+        utilstest.linter_test_setup({"request_id": self.request_id})
+        self.lint_mode_setup("project")
+        linter = self.get_linter_instance(self.request_id)
+        linter.pre_test("test_failure_project_lint_mode")
+        utilstest.test_linter_failure_project_lint_mode(linter, self)
+        linter.post_test("test_failure_project_lint_mode")
 
     def test_get_linter_version(self):
         self.request_id = str(uuid.uuid1())

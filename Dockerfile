@@ -22,6 +22,8 @@ ARG BASH_SHELLCHECK_VERSION=v0.11.0
 ARG CARGO_ZIZMOR_VERSION=1.25.0
 # renovate: datasource=crate depName=shellcheck-sarif
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
+# renovate: datasource=docker depName=koalaman/shellcheck-alpine
+ARG BASH_SHELLCHECK_VERSION=v0.11.0
 # renovate: datasource=docker depName=mvdan/shfmt
 ARG BASH_SHFMT_VERSION=v3.13.1-alpine
 # renovate: datasource=docker depName=hadolint/hadolint
@@ -36,6 +38,8 @@ ARG GO_IMAGE_VERSION=1.26.3
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.7.0-alpine
 # renovate: datasource=github-releases depName=JohnnyMorganz/StyLua extractVersion=^v(?<version>.+)$
 ARG CARGO_STYLUA_VERSION=2.5.2
+# renovate: datasource=docker depName=quay.io/checkmake/checkmake
+ARG MAKEFILE_CHECKMAKE_VERSION=v0.3.2
 # renovate: datasource=docker depName=yoheimuta/protolint
 ARG PROTOBUF_PROTOLINT_VERSION=0.56.4
 # renovate: datasource=github-tags depName=checkmarx/dustilock
@@ -116,6 +120,7 @@ RUN set -eu; mkdir -p /out/bin; \
     unzip /tmp/stylua.zip -d /out/bin && \
     rm /tmp/stylua.zip && \
     chmod +x /out/bin/stylua
+FROM quay.io/checkmake/checkmake:${MAKEFILE_CHECKMAKE_VERSION} AS checkmake
 FROM yoheimuta/protolint:${PROTOBUF_PROTOLINT_VERSION} AS protolint
 FROM golang:${GO_IMAGE_VERSION}-alpine AS dustilock
 ARG REPOSITORY_DUSTILOCK_VERSION
@@ -415,6 +420,8 @@ ARG NPM_PRETTYJSON_VERSION=1.2.5
 ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.60.0
 # renovate: datasource=npm depName=@typescript-eslint/parser
 ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.60.0
+# renovate: datasource=npm depName=typescript-eslint
+ARG NPM_TYPESCRIPT_ESLINT_VERSION=8.60.0
 # renovate: datasource=npm depName=ts-standard
 ARG NPM_TS_STANDARD_VERSION=12.0.2
 # renovate: datasource=pypi depName=yamllint
@@ -439,6 +446,7 @@ ARG GO_REVIVE_VERSION
 ARG GO_IMAGE_VERSION
 ARG KUBERNETES_KUBECONFORM_VERSION
 ARG CARGO_STYLUA_VERSION
+ARG MAKEFILE_CHECKMAKE_VERSION
 ARG PROTOBUF_PROTOLINT_VERSION
 ARG REPOSITORY_DUSTILOCK_VERSION
 ARG REPOSITORY_GITLEAKS_VERSION
@@ -572,6 +580,7 @@ COPY --link --from=revive /usr/bin/revive /usr/bin/revive
 COPY --link --from=kubeconform /kubeconform /usr/bin/
 COPY --link --from=chktex /usr/bin/chktex /usr/bin/
 COPY --link --from=cargo-bin-stylua /out/bin/stylua /usr/bin/stylua
+COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
@@ -774,6 +783,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 prettyjson@${NPM_PRETTYJSON_VERSION} \
                 @typescript-eslint/eslint-plugin@${NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION} \
                 @typescript-eslint/parser@${NPM_TYPESCRIPT_ESLINT_PARSER_VERSION} \
+                typescript-eslint@${NPM_TYPESCRIPT_ESLINT_VERSION} \
                 ts-standard@${NPM_TS_STANDARD_VERSION} && \
     echo "Cleaning npm cache…" \
     && (npm cache clean --force || true) \
@@ -1043,6 +1053,8 @@ RUN curl --retry 5 --retry-delay 5 -sSL \
     && cd / \
 # stylua installation
 # Managed with COPY --link --from=cargo-bin-stylua /out/bin/stylua /usr/bin/stylua
+# checkmake installation
+# Managed with COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 # markdownlint installation
 # markdown-table-formatter installation
 # rumdl installation

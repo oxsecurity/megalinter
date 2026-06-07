@@ -76,10 +76,8 @@ ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=7.3.0
 ARG NPM_PRETTIER_VERSION=3.8.3
 # renovate: datasource=npm depName=prettyjson
 ARG NPM_PRETTYJSON_VERSION=1.2.5
-# renovate: datasource=npm depName=@typescript-eslint/eslint-plugin
-ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.60.0
-# renovate: datasource=npm depName=@typescript-eslint/parser
-ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.60.0
+# renovate: datasource=npm depName=typescript-eslint
+ARG NPM_TYPESCRIPT_ESLINT_VERSION=8.60.0
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 #ARG__END
@@ -186,8 +184,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev \
                 eslint-plugin-promise@${NPM_ESLINT_PLUGIN_PROMISE_VERSION} \
                 prettier@${NPM_PRETTIER_VERSION} \
                 prettyjson@${NPM_PRETTYJSON_VERSION} \
-                @typescript-eslint/eslint-plugin@${NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION} \
-                @typescript-eslint/parser@${NPM_TYPESCRIPT_ESLINT_PARSER_VERSION} \
+                typescript-eslint@${NPM_TYPESCRIPT_ESLINT_VERSION} \
                 @microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION} && \
     echo "Cleaning npm cache…" \
     && (npm cache clean --force || true) \

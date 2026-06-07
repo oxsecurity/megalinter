@@ -41,6 +41,17 @@ linters:
     linter_megalinter_ref_url: "no"
     linter_spdx_license: Apache-2.0
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_mode_file_extra_args_after:
+      - --file
+    cli_lint_mode_list_of_files_extra_args_after:
+      - --file
+    cli_lint_mode_project_extra_args_after:
+      - --directory
+      - .
     cli_config_arg_name: "--config-file"
     config_file_name: .checkov.yml
     cli_sarif_args:
@@ -70,7 +81,8 @@ linters:
     test_folder: repository_checkov
 
   # DEVSKIM
-  - linter_name: devskim
+  - class: DevskimLinter
+    linter_name: devskim
     can_output_sarif: true
     descriptor_flavors:
       - all
@@ -112,15 +124,25 @@ linters:
     config_file_name: .devskim.json
     cli_config_arg_name: "--options-json"
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_extra_args:
       - analyze
+    cli_lint_mode_file_extra_args_after:
+      - -E
+      - --source-code
+    cli_lint_mode_list_of_files_extra_args_after:
+      - -E
+      - --source-code
+    cli_lint_mode_project_extra_args_after:
+      - -E
+      - --source-code
+      - .
     cli_sarif_args:
       - --file-format
       - sarif
-    cli_lint_extra_args_after:
-      - --source-code
-      - "."
-      - -E
     cli_help_arg_name: --help
     cli_version_arg_name: --version
     cli_lint_errors_count: sarif
@@ -182,7 +204,9 @@ linters:
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/dustilock.png
     linter_spdx_license: Apache-2.0
     cli_lint_mode: project
-    cli_lint_extra_args:
+    supported_cli_lint_modes:
+      - project
+    cli_lint_mode_project_extra_args_after:
       - --recursive
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: "(error )"
@@ -230,6 +254,8 @@ linters:
     cli_config_arg_name: ""
     cli_executable: git
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
     cli_lint_extra_args:
       - "diff"
       - "--check"
@@ -353,19 +379,24 @@ linters:
     config_file_name: .gitleaks.toml
     cli_config_arg_name: "-c"
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - file
+      # https://github.com/gitleaks/gitleaks/issues/1234
+      #- list_of_files
+      - project
     cli_lint_extra_args:
       - detect
       - --redact
       - --no-git
+      - --verbose
+    cli_lint_mode_project_extra_args_after:
+      - --source
+      - .
     cli_sarif_args:
       - --report-format
       - sarif
       - --report-path
       - "{{SARIF_OUTPUT_FILE}}"
-    cli_lint_extra_args_after:
-      - "--verbose"
-      - "--source"
-      - "."
     cli_help_arg_name: help
     cli_version_arg_name: version
     cli_lint_errors_count: regex_sum
@@ -397,7 +428,8 @@ linters:
         default_value: ""
 
   # GRYPE
-  - linter_name: grype
+  - class: GrypeLinter
+    linter_name: grype
     linter_text: |
       **Grype** is a comprehensive vulnerability scanner for container images and filesystems that quickly identifies known security vulnerabilities in packages and dependencies. It serves as an essential tool for supply chain security by detecting CVEs across multiple vulnerability databases.
 
@@ -427,10 +459,17 @@ linters:
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/grype.png
     linter_rules_configuration_url: https://github.com/anchore/grype#configuration
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - file
+      # https://github.com/anchore/grype/issues/562
+      #- list_of_files
+      - project
+    cli_lint_mode_file_extra_args_after:
+      - file:{{FILE}}
+    cli_lint_mode_project_extra_args_after:
+      - dir:.
     cli_config_arg_name: "--config"
     config_file_name: .grype.yaml
-    cli_lint_extra_args_after:
-      - dir:.
     cli_sarif_args:
       - --output
       - sarif
@@ -463,8 +502,6 @@ linters:
           This is a transient network issue. Retry the run, or set up a self-hosted DB mirror for reliability.
     examples:
       - "grype dir:."
-    downgraded_version: true
-    downgraded_reason: Crash for failure test class with https://github.com/anchore/grype/releases/tag/v0.79.6
     install:
       dockerfile:
         - |-
@@ -478,7 +515,8 @@ linters:
     test_folder: repository_grype
 
   # KICS
-  - linter_name: kics
+  - class: KicsLinter
+    linter_name: kics
     disabled: true
     disabled_reason: Supply chain compromise - <https://socket.dev/blog/checkmarx-supply-chain-compromise>
     linter_text: |
@@ -510,15 +548,19 @@ linters:
     linter_rules_inline_disable_url: https://docs.kics.io/latest/running-kics/#using_commands_on_scanned_files_as_comments
     linter_megalinter_ref_url: https://docs.kics.io/latest/integrations/
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_config_arg_name: "--config"
     config_file_name: kics.config
     cli_executable: kics
     cli_lint_extra_args:
       - scan
-    cli_lint_extra_args_after:
       - --no-progress
       - --path
-      - "."
+    cli_lint_mode_project_extra_args_after:
+      - .
     sarif_default_output_file: kics-results.sarif
     cli_sarif_args:
       - --output-name
@@ -530,6 +572,7 @@ linters:
     cli_version_arg_name: "version"
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "TOTAL: ([0-9]+)"
+    files_separator: ","
     common_linter_errors:
       - identifier: REPOSITORY_KICS_ERROR_LIBRARY_REGO_MISSING
         regex: "(failed to load|could not load) (queries|library\\.rego)"
@@ -588,6 +631,10 @@ linters:
     active_only_if_file_found:
       - ".ls-lint.yml"
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_config_arg_name: "--config"
     config_file_name: ".ls-lint.yml"
     examples:
@@ -626,7 +673,8 @@ linters:
         - linux/arm64
 
   # OSV-SCANNER
-  - linter_name: osv-scanner
+  - class: OsvScannerLinter
+    linter_name: osv-scanner
     name: REPOSITORY_OSV_SCANNER
     can_output_sarif: false # disabled until it works !
     descriptor_flavors:
@@ -654,11 +702,15 @@ linters:
     config_file_name: osv-scanner.toml
     cli_config_arg_name: --config
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_extra_args:
       - scan
       - source
+    cli_lint_mode_project_extra_args_after:
       - --recursive
-    cli_lint_extra_args_after:
       - .
     cli_sarif_args:
       - --format
@@ -749,7 +801,11 @@ linters:
     ignore_file_name: .secretlintignore
     cli_lint_ignore_arg_name: --secretlintignore
     cli_lint_mode: project
-    cli_lint_extra_args_after:
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_mode_project_extra_args_after:
       - "**/*"
     cli_sarif_args:
       - --format
@@ -810,12 +866,16 @@ linters:
     linter_banner_image_url: https://raw.githubusercontent.com/returntocorp/semgrep/develop/semgrep.svg
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/semgrep.png
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_config_arg_name: --config
     cli_config_default_value: auto
     ignore_file_name: .semgrepignore
     cli_lint_extra_args:
       - --error # Exit 1 when errors are found
-    cli_lint_extra_args_after:
+    cli_lint_mode_project_extra_args_after:
       - "{{WORKSPACE}}"
     # cli_lint_fix_arg_name: --autofix # Disable for now as some "fixes" are actually breaking ML code
     cli_sarif_args:
@@ -881,11 +941,19 @@ linters:
       - **Integration Friendly**: Seamlessly integrates with vulnerability scanners and security tools for comprehensive analysis
     linter_banner_image_url: https://user-images.githubusercontent.com/5199289/136844524-1527b09f-c5cb-4aa9-be54-5aa92a6086c1.png
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - file
+      # https://github.com/anchore/syft/pull/1218
+      #- list_of_files
+      - project
     config_file_name: .syft.yaml
     cli_config_arg_name: --config
     cli_lint_extra_args:
       - scan
-      - .
+    cli_lint_mode_file_extra_args_after:
+      - file:{{FILE}}
+    cli_lint_mode_project_extra_args_after:
+      - dir:.
     cli_sarif_args:
       - --output
       - json
@@ -905,8 +973,8 @@ linters:
         - linux/amd64
         - linux/arm64
   # TRIVY
-  - linter_name: trivy
-    class: TrivyLinter
+  - class: TrivyLinter
+    linter_name: trivy
     can_output_sarif: true
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
@@ -949,6 +1017,9 @@ linters:
     linter_rules_configuration_url: https://aquasecurity.github.io/trivy/latest/docs/configuration/
     linter_rules_ignore_config_url: https://aquasecurity.github.io/trivy/latest/docs/configuration/filtering/#by-inline-comments
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - file
+      - project
     config_file_name: trivy.yaml
     cli_config_arg_name: --config
     cli_sarif_args:
@@ -962,8 +1033,8 @@ linters:
       - vuln,misconfig
       - --exit-code
       - "1"
-    cli_lint_extra_args_after:
-      - "."
+    cli_lint_mode_project_extra_args_after:
+      - .
     common_linter_errors:
       - identifier: REPOSITORY_TRIVY_ERROR_TOOMANYREQUESTS
         regex: "TOOMANYREQUESTS"
@@ -1023,8 +1094,8 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=AquaSecurityOfficial.trivy-vulnerability-scanner
 
   # TRIVY SBOM
-  - linter_name: trivy-sbom
-    class: TrivySbomLinter
+  - class: TrivySbomLinter
+    linter_name: trivy-sbom
     can_output_sarif: true
     is_sbom: true
     name: REPOSITORY_TRIVY_SBOM
@@ -1055,14 +1126,17 @@ linters:
     linter_rules_configuration_url: https://aquasecurity.github.io/trivy/latest/docs/configuration/
     linter_rules_ignore_config_url: https://aquasecurity.github.io/trivy/latest/docs/configuration/filtering/#by-inline-comments
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - file
+      - project
     config_file_name: trivy-sbom.yaml
     cli_config_arg_name: --config
     cli_lint_extra_args:
       - fs
       - --format
       - cyclonedx
-    cli_lint_extra_args_after:
-      - "."
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_sarif_args:
       - --output
       - "{{SARIF_OUTPUT_FILE}}.trivy-sbom.json"
@@ -1141,14 +1215,19 @@ linters:
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/trufflehog.png
     linter_rules_configuration_url: https://github.com/trufflesecurity/trufflehog#regex-detector-alpha
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_config_arg_name: "--config"
     config_file_name: .trufflehog.yml
     cli_lint_extra_args:
-      - filesystem
-      - "."
       - --fail
       - --only-verified
       - --no-update
+      - filesystem
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_help_arg_name: --help
     cli_version_arg_name: --version
     examples:
@@ -1164,9 +1243,10 @@ linters:
       platform:
         - linux/amd64
         - linux/arm64
-    test_folder: gitleaks
+    test_folder: repository_trufflehog
   # kingfisher
-  - linter_name: kingfisher
+  - class: KingfisherLinter
+    linter_name: kingfisher
     can_output_sarif: true
     descriptor_flavors:
       - all
@@ -1191,11 +1271,16 @@ linters:
     linter_rules_inline_disable_url: https://github.com/mongodb/kingfisher?tab=readme-ov-file#inline-ignore-directives
     test_folder: repository_kingfisher
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_extra_args:
       - "scan"
-      - "."
       - "--redact"
       - "--git-history=none"
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_sarif_args:
       - --format
       - sarif

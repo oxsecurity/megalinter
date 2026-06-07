@@ -31,6 +31,10 @@ linters:
     linter_rules_inline_disable_url: https://robocop.dev/stable/configuration/disablers/
     config_file_name: robocop.toml
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     # robocop 8.2.9 ships a broken `--version` flag, so read the installed version
     # via the venv's Python and importlib.metadata until upstream restores it.
     cli_executable_version: /venvs/robocop/bin/python

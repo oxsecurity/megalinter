@@ -100,6 +100,7 @@ class Linter:
         self.ignore_for_flavor_suggestions = False
 
         self.cli_lint_mode = "file"
+        self.supported_cli_lint_modes = ["file"]
         self.cli_docker_image = None
         self.cli_docker_image_version = "latest"
         self.cli_docker_args = []
@@ -178,6 +179,7 @@ class Linter:
         # Initialize with configuration data
         for key, value in linter_config.items():
             self.__setattr__(key, value)
+        self.descriptor_cli_lint_mode = self.cli_lint_mode
         if "request_id" in params:
             self.request_id = params["request_id"]
         elif self.master is not None:
@@ -1508,19 +1510,21 @@ class Linter:
 
         if self.cli_lint_mode == "file":
             self.cli_lint_mode_file_extra_args_after = self.replace_vars(
-                self.cli_lint_mode_file_extra_args_after,
+                self.cli_lint_mode_file_extra_args_after, additional_replace_variables
             )
 
             cmd += self.cli_lint_mode_file_extra_args_after
         elif self.cli_lint_mode == "list_of_files":
             self.cli_lint_mode_list_of_files_extra_args_after = self.replace_vars(
                 self.cli_lint_mode_list_of_files_extra_args_after,
+                additional_replace_variables,
             )
 
             cmd += self.cli_lint_mode_list_of_files_extra_args_after
         elif self.cli_lint_mode == "project":
             self.cli_lint_mode_project_extra_args_after = self.replace_vars(
                 self.cli_lint_mode_project_extra_args_after,
+                additional_replace_variables,
             )
 
             cmd += self.cli_lint_mode_project_extra_args_after

@@ -8,7 +8,6 @@ descriptor_flavors:
   - c_cpp
   - formatters
 file_extensions:
-  - ""
   - ".sh"
   - ".bash"
   - ".dash"
@@ -51,6 +50,9 @@ linters:
     cli_executable_help: bash
     cli_executable_version: bash
     cli_help_arg_name: "--help"
+    cli_lint_mode: file
+    supported_cli_lint_modes:
+      - file
     examples:
       - "bash-exec myfile.sh"
     install:
@@ -98,9 +100,15 @@ linters:
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/shellcheck.png
     linter_megalinter_ref_url: never
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_extra_args:
       - "--color=auto"
       - "--external-sources"
+    cli_lint_mode_project_extra_args_after:
+      - "*.sh"
     cli_sarif_args:
       - -f
       - json
@@ -129,7 +137,7 @@ linters:
         - COPY --link --from=cargo-bin-shellcheck-sarif /out/bin/shellcheck-sarif /usr/bin/shellcheck-sarif
         # Also update shellcheck version in action.megalinter-descriptor.yml
         - |-
-          # renovate: datasource=docker depName=koalaman/shellcheck
+          # renovate: datasource=docker depName=koalaman/shellcheck-alpine
           ARG BASH_SHELLCHECK_VERSION=v0.11.0
         - FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
         - COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck

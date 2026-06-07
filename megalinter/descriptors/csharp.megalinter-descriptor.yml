@@ -41,9 +41,11 @@ linters:
     cli_lint_errors_regex: ".cs\\([0-9]+,[0-9]+\\):\\s(?:warning|error)"
     cli_executable: dotnet
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
     cli_lint_extra_args:
       - "format"
-    cli_lint_extra_args_after:
+    cli_lint_mode_project_extra_args_after:
       - "--include **/*.cs"
       - "--verify-no-changes"
     cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for DotnetFormatLinter class behavior
@@ -94,8 +96,14 @@ linters:
     cli_config_arg_name: "--config-path"
     cli_executable: csharpier
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_extra_args:
       - "check"
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_lint_fix_arg_name: "format"
     cli_lint_fix_remove_args:
       - "check"
@@ -154,6 +162,9 @@ linters:
       - "analyze"
     cli_lint_fix_remove_args:
       - "analyze"
+    cli_lint_mode: file
+    supported_cli_lint_modes:
+      - file
     test_folder: csharp_roslynator
     test_format_fix_file_extensions:
       - ".cs"

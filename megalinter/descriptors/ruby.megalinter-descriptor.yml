@@ -30,6 +30,13 @@ linters:
     linter_rules_inline_disable_url: https://docs.rubocop.org/rubocop/configuration.html#disabling-cops-within-source-code
     linter_megalinter_ref_url: https://docs.rubocop.org/rubocop/integration_with_other_tools.html#mega-linter-integration
     config_file_name: .ruby-lint.yml
+    cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_lint_fix_arg_name: "--safe-auto-correct"
     common_linter_errors:
       - identifier: RUBY_RUBOCOP_ERROR_UNABLE_TO_LOAD_PLUGIN
