@@ -42,7 +42,7 @@ langchain_google_genai==4.2.4
 langchain_mistralai==1.1.4
 langchain_openai==1.2.2
 langchain_community==0.4.2
-langsmith==0.8.8
+langsmith==0.8.9
 orjson==3.11.9
 pyjwt==2.13.0
 idna==3.17
