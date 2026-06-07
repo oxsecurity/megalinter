@@ -221,7 +221,7 @@ ARG PIP_RUMDL_VERSION=0.2.4
 ARG PSSA_VERSION='1.25.0'
 
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.2.532
+ARG PIP_CHECKOV_VERSION=3.2.533
 # renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.112.0
 # renovate: datasource=github-releases depName=loeffel-io/ls-lint extractVersion=^v(?<version>.+)$
