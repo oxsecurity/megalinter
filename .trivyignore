@@ -480,6 +480,8 @@ CVE-2026-39823
 CVE-2026-39825
 # CVE-2026-39826: html/template code injection via trusted template author — shfmt does not render HTML templates
 CVE-2026-39826
+# CVE-2026-42504: mime.WordDecoder.DecodeHeader DoS — shfmt/grype/syft/trivy do not decode MIME headers
+CVE-2026-42504
 
 # --- sfdx-hardis (transitive mega-linter-runner@9.4.0 dependency) ---
 # sfdx-hardis depends on mega-linter-runner@9.4.0 (published), which still uses
