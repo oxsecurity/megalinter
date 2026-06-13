@@ -30,7 +30,7 @@
     "djlint": "1.36.4",
     "dockerfilelint": "1.8.0",
     "dotenv-linter": "4.0.0",
-    "dotnet-format": "10.0.108",
+    "dotnet-format": "10.0.109",
     "dustilock": "1.2.0",
     "editorconfig-checker": "3.7.0",
     "eslint": "10.4.1",
