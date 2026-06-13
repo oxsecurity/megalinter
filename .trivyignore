@@ -199,6 +199,8 @@ CVE-2026-45416
 CVE-2026-45674
 CVE-2026-46340
 CVE-2026-47691
+CVE-2026-48006
+CVE-2026-48059
 
 # --- code-analyzer - Node.js transitive deps ---
 # Same shape across all entries below: the affected package is reached
