@@ -552,6 +552,19 @@ def build_dockerfile(
                 + "/root/.cache/sccache\n"
                 + 'ENV PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}"'
             )
+    # Pin every standalone `FROM alpine:X.Y` build stage to the runtime image's
+    # Alpine version (parsed from the python base image) so helper stages can never
+    # drift from the base — single source of truth, and avoids musl ABI mismatches
+    # between binaries compiled in a helper stage and the runtime they are copied into.
+    if ALPINE_VERSION != "":
+        docker_from = [
+            re.sub(
+                r"FROM alpine:\d+\.\d+(?:\.\d+)?",
+                f"FROM alpine:{ALPINE_VERSION}",
+                from_stage,
+            )
+            for from_stage in docker_from
+        ]
     # Separate args used in FROM instructions from others
     all_from_instructions = "\n".join(list(dict.fromkeys(docker_from)))
     docker_arg_top = []

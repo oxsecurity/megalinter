@@ -701,12 +701,10 @@ linters:
     install:
       dockerfile:
         - |-
-          # renovate: datasource=repology depName=alpine_edge/osv-scanner versioning=loose
+          # renovate: datasource=repology depName=alpine_3_24/osv-scanner versioning=loose
           ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.8-r1
         - |-
           RUN apk add --no-cache \
-              --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main \
-              --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
               osv-scanner=${REPOSITORY_OSV_SCANNER_VERSION}
     supported_platforms:
       platform:
