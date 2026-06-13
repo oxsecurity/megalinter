@@ -317,6 +317,8 @@ CVE-2025-48387
 CVE-2025-5889
 # https://avd.aquasec.com/nvd/cve-2025-3730 — torch (PyTorch), not applicable in MegaLinter context
 CVE-2025-3730
+# https://avd.aquasec.com/nvd/cve-2025-3000 — torch (PyTorch), not applicable in MegaLinter context
+CVE-2025-3000
 # https://avd.aquasec.com/nvd/cve-2025-53547 — helm, not applicable in MegaLinter context
 CVE-2025-53547
 # https://avd.aquasec.com/nvd/cve-2025-22868 — golang.org/x/oauth2 unexpected memory consumption, not applicable in MegaLinter context
