@@ -33,15 +33,15 @@ linters:
     linter_rules_inline_disable_url: https://djlint.com/docs/ignoring-code/
     linter_megalinter_ref_url: https://djlint.com/docs/integrations/#megalinter
     cli_lint_mode: list_of_files
-    cli_lint_errors_count: regex_number
-    cli_lint_errors_regex: "found ([0-9]+) errors"
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: "[A-Z][0-9]{3} "
     examples:
       - "djlint myfile1.html myfile2.html"
     install:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=djlint
-          ARG PIP_DJLINT_VERSION=1.36.4
+          ARG PIP_DJLINT_VERSION=1.39.0
       pip:
         - djlint==${PIP_DJLINT_VERSION}
     supported_platforms:
