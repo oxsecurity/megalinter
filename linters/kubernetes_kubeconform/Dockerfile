@@ -12,7 +12,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
-ARG KUBERNETES_KUBECONFORM_VERSION=v0.7.0-alpine
+ARG KUBERNETES_KUBECONFORM_VERSION=v0.8.0-alpine
 #ARGTOP__END
 
 #############################################################################################
