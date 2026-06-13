@@ -29,7 +29,7 @@ Exception for standalone and security flavors docker images, that use a list of 
 
 ## semgrep documentation
 
-- Version in MegaLinter: **1.164.0**
+- Version in MegaLinter: **1.166.0**
 - Visit [Official Web Site](https://semgrep.dev/){target=_blank}
 - See [How to configure semgrep rules](https://semgrep.dev/docs/running-rules/){target=_blank}
 - See [How to disable semgrep rules in files](https://semgrep.dev/docs/ignoring-findings/#inline-comments){target=_blank}
@@ -349,6 +349,11 @@ OPTIONS
            list of rule ids, list of skipped files). A zero or negative value
            disables this filter. Defaults to 100
 
+       --max-match-context-size=INT (absent=0)
+           Maximum number of characters of source code to include as context
+           surrounding the match in output. Prevents enormous output for
+           minified files. 0 means unlimited. Defaults to 0
+
        --max-memory=INT (absent=0)
            Maximum system memory in MiB to use during the interfile
            pre-processing phase, or when running a rule on a single file. If
@@ -666,14 +671,20 @@ EXPERIMENTAL OPTIONS
            send its own metrics.
 
        --x-no-python-schema-validation
-           [INTERNAL] Skip JSON schema validation; rely on osemgrep parser to
-           validate rules files
+           [DEPRECATED] No-op alias kept for backward compatibility. Use
+           --x-rule-validation=core-only instead.
 
        --x-parmap
            [INTERNAL] Rely on legacy Parmap-based parallelism
 
        --x-pro-naming
            [INTERNAL] Do not use
+
+       --x-rule-validation=VAL (absent=full)
+           [INTERNAL] Control rule pre-validation. 'full' (default) runs
+           Python jsonschema + semgrep-core RPC validation. 'core-only' runs
+           only the RPC validation. 'none' skips both; rule errors surface
+           from the scan subprocess instead.
 
        --x-run-taint-once
            [INTERNAL] Run taint analysis just once (default: true)
@@ -748,8 +759,8 @@ BUGS
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.164.0
+ARG PIP_SEMGREP_VERSION=1.166.0
 ```
 
 - PIP packages (Python):
-  - [semgrep==1.164.0](https://pypi.org/project/semgrep/1.164.0)
+  - [semgrep==1.166.0](https://pypi.org/project/semgrep/1.166.0)
