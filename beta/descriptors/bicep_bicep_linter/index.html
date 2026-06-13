@@ -12547,7 +12547,7 @@
 <p>By default, Bicep linter errors are set as warnings. To customize linter settings, use a <code>bicepconfig.json</code> file. For more information, see the <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config-linter#customize-linter">documentation for the Bicep Linter</a></p>
 <h2 id="bicep_linter-documentation">bicep_linter documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.43.8</strong></li>
+<li>Version in MegaLinter: <strong>0.44.1</strong></li>
 <li>Visit <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config" target="_blank">How to configure bicep_linter rules</a></li>
 <li>See <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#silencing-false-positives" target="_blank">How to disable bicep_linter rules in files</a></li>
@@ -12711,231 +12711,37 @@ az bicep build -f infra.bicep
 
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">Bicep CLI version 0.43.8 (310735909d)
+<pre><code class="language-shell">Description:
+  Bicep CLI
 
 Usage:
-  bicep build [options] [&lt;file&gt;]
-    Builds a .bicep file.
+  bicep [command] [options]
 
-    Arguments:
-      &lt;file&gt;        The input file
+Options:
+  -v, --version          Shows bicep version information.
+  --license              Prints license information.
+  --third-party-notices  Prints third-party notices.
+  -?, -h, --help         Show help and usage information
 
-    Options:
-      --outdir &lt;dir&gt;                 Saves the output at the specified directory.
-      --outfile &lt;file&gt;               Saves the output as the specified file path.
-      --stdout                       Prints the output to stdout.
-      --no-restore                   Builds the bicep file without restoring external modules.
-      --diagnostics-format &lt;format&gt;  Sets the format with which diagnostics are displayed. Valid values are ( Default | Sarif ).
-      --pattern &lt;pattern&gt;            Builds all files matching the specified glob pattern.
-
-    Examples:
-      bicep build file.bicep
-      bicep build file.bicep --stdout
-      bicep build file.bicep --outdir dir1
-      bicep build file.bicep --outfile file.json
-      bicep build file.bicep --no-restore
-      bicep build file.bicep --diagnostics-format sarif
-      bicep build --pattern './dir/**/*.bicep'
-
-  bicep format [options] [&lt;file&gt;]
-    Formats a .bicep file.
-
-    Arguments:
-      &lt;file&gt;        The input file
-
-    Options:
-      --outdir &lt;dir&gt;            Saves the output at the specified directory.
-      --outfile &lt;file&gt;          Saves the output as the specified file path.
-      --stdout                  Prints the output to stdout.
-      --newline                 Set newline char. Valid values are ( Auto | LF | CRLF | CR ).
-      --indent-kind             Set indentation kind. Valid values are ( Space | Tab ).
-      --indent-size             Number of spaces to indent with (Only valid with --indentKind set to Space).
-      --insert-final-newline    Insert a final newline.
-      --pattern &lt;pattern&gt;       Formats all files matching the specified glob pattern.
-
-    Examples:
-      bicep format file.bicep
-      bicep format file.bicep --stdout
-      bicep format file.bicep --outdir dir1
-      bicep format file.bicep --outfile file.json
-      bicep format file.bicep --indent-kind Tab
-      bicep format --pattern './dir/**/*.bicep'
-
-  bicep decompile [options] &lt;file&gt;
-    Attempts to decompile a template .json file to .bicep.
-
-    Arguments:
-      &lt;file&gt;        The input file
-
-    Options:
-      --outdir &lt;dir&gt;    Saves the output at the specified directory.
-      --outfile &lt;file&gt;  Saves the output as the specified file path.
-      --stdout          Prints the output to stdout.
-      --force           Allows overwriting the output file if it exists (applies only to 'bicep decompile' or 'bicep decompile-params').
-
-    Examples:
-      bicep decompile file.json
-      bicep decompile file.json --stdout
-      bicep decompile file.json --outdir dir1
-      bicep decompile file.json --force
-      bicep decompile file.json --outfile file.bicep
-
-  bicep lint [options] [&lt;file&gt;]
-    Lints a .bicep file.
-
-    Arguments:
-      &lt;file&gt;        The input file
-
-    Options:
-      --no-restore                   Skips restoring external modules.
-      --diagnostics-format &lt;format&gt;  Sets the format with which diagnostics are displayed. Valid values are ( Default | Sarif ).
-      --pattern &lt;pattern&gt;            Lints all files matching the specified glob pattern.
-
-    Examples:
-      bicep lint file.bicep
-      bicep lint file.bicep --no-restore
-      bicep lint file.bicep --diagnostics-format sarif
-      bicep lint --pattern './dir/**/*.bicep'
-
-  bicep decompile-params [options] &lt;file&gt;
-    Attempts to decompile a parameters .json file to .bicepparam.
-
-    Arguments:
-      &lt;file&gt;        The input file
-
-    Options:
-      --outdir &lt;dir&gt;    Saves the output at the specified directory.
-      --outfile &lt;file&gt;  Saves the output as the specified file path.
-      --stdout          Prints the output to stdout.
-      --force           Allows overwriting the output file if it exists (applies only to 'bicep decompile' or 'bicep decompile-params').
-      --bicep-file      Path to the bicep template file that will be referenced in the using declaration
-
-    Examples:
-      bicep decompile-params file.json
-      bicep decompile-params file.json --bicep-file ./dir/main.bicep
-      bicep decompile-params file.json --stdout
-      bicep decompile-params file.json --outdir dir1
-      bicep decompile-params file.json --force
-      bicep decompile-params file.json --outfile file.bicepparam
-
-  bicep generate-params [options] &lt;file&gt;
-    Builds parameters file from the given bicep file, updates if there is an existing parameters file.
-
-    Arguments:
-      &lt;file&gt;        The input file
-
-    Options:
-      --no-restore      Generates the parameters file without restoring external modules.
-      --outdir &lt;dir&gt;    Saves the output at the specified directory.
-      --outfile &lt;file&gt;  Saves the output as the specified file path.
-      --stdout          Prints the output to stdout.
-      --output-format   Selects the output format {json, bicepparam}
-      --include-params  Selects which parameters to include into output {requiredonly, all}
-
-    Examples:
-      bicep generate-params file.bicep
-      bicep generate-params file.bicep --no-restore
-      bicep generate-params file.bicep --stdout
-      bicep generate-params file.bicep --outdir dir1
-      bicep generate-params file.bicep --outfile file.parameters.json
-      bicep generate-params file.bicep --output-format bicepparam --include-params all
-
-  bicep publish &lt;file&gt; --target &lt;ref&gt;
-    Publishes the .bicep file to the module registry.
-
-    Arguments:
-      &lt;file&gt;        The input file (can be a Bicep file or an ARM template file)
-      &lt;ref&gt;         The module reference
-
-    Options:
-      --documentation-uri  Module documentation uri
-      --with-source       [Experimental] Publish source code with the module
-      --force             Overwrite existing published module or file
-
-    Examples:
-      bicep publish file.bicep --target br:example.azurecr.io/hello/world:v1
-      bicep publish file.bicep --target br:example.azurecr.io/hello/world:v1 --force
-      bicep publish file.bicep --target br:example.azurecr.io/hello/world:v1 --documentation-uri https://github.com/hello-world/README.md --with-source
-      bicep publish file.json --target br:example.azurecr.io/hello/world:v1 --documentation-uri https://github.com/hello-world/README.md
-
-  bicep restore [&lt;file&gt;]
-    Restores external modules from the specified Bicep file to the local module cache.
-
-    Arguments:
-      &lt;file&gt;        The input file
-
-    Options:
-      --pattern &lt;pattern&gt;  Restores all files matching the specified glob pattern.
-
-    Examples:
-      bicep restore main.bicep
-      bicep restore --pattern './dir/**/*.bicep'
-
-  bicep [options]
-    Options:
-      --version              -v   Shows bicep version information
-      --help                 -h   Shows this usage information
-      --license                   Prints license information
-      --third-party-notices       Prints third-party notices
-
-  bicep build-params [&lt;file&gt;]
-    Builds a .json file from a .bicepparam file.
-
-    Arguments:
-      &lt;file&gt;        The input Bicepparam file
-
-    Options:
-      --bicep-file &lt;file&gt;            Verifies if the specified bicep file path matches the one provided in the params file using declaration
-      --outdir &lt;dir&gt;                 Saves the output of building the parameter file only (.bicepparam) as json to the specified directory.
-      --outfile &lt;file&gt;               Saves the output of building the parameter file only (.bicepparam) as json to the specified file path.
-      --stdout                       Prints the output of building both the parameter file (.bicepparam) and the template it points to (.bicep) as json to stdout.
-      --no-restore                   Builds the bicep file (referenced in using declaration) without restoring external modules.
-      --diagnostics-format &lt;format&gt;  Sets the format with which diagnostics are displayed. Valid values are ( Default | Sarif ).
-      --pattern &lt;pattern&gt;            Builds all files matching the specified glob pattern.
-
-    Examples:
-      bicep build-params params.bicepparam
-      bicep build-params params.bicepparam --stdout
-      bicep build-params params.bicepparam --outdir dir1
-      bicep build-params params.bicepparam --outfile otherParams.json
-      bicep build-params params.bicepparam --no-restore
-      bicep build-params params.bicepparam --diagnostics-format sarif
-      bicep build-params --pattern './dir/**/*.bicepparam'
-
-  bicep jsonrpc [options]
-    Starts the Bicep CLI listening for JSONRPC messages, for programatically interacting with Bicep. See https://aka.ms/bicep/jsonrpc for more information.
-
-    Options:
-      --pipe &lt;name&gt;    Bicep CLI will connect to the supplied named pipe as a client, and start listening for JSONRPC requests.
-      --socket &lt;port&gt;  Bicep CLI will connect to the supplied TCP port on the loopback interface as a client, and start listening for JSONRPC requests.
-      --stdio          Bicep CLI will use stdin/stdout for JSONRPC requests.
-
-    Examples:
-      bicep jsonrpc --pipe /path/to/pipe.sock
-      bicep jsonrpc --socket 9853
-      bicep jsonrpc --stdio
-
-  bicep snapshot [options] &lt;file&gt;
-    Generates or validates a deployment snapshot from a .bicepparam file.
-
-    Arguments:
-      &lt;file&gt;        The input .bicepparam file
-
-    Options:
-      --mode &lt;mode&gt;              Sets the snapshot mode. Valid values are ( overwrite | validate ).
-                                   Overwrite: Generates a new snapshot and saves it to &lt;file&gt;.snapshot.json.
-                                   Validate: Compares the generated snapshot against an existing snapshot file.
-      --tenant-id &lt;id&gt;           The tenant ID to use for the deployment.
-      --subscription-id &lt;id&gt;     The subscription ID to use for the deployment.
-      --resource-group &lt;name&gt;    The resource group name to use for the deployment.
-      --location &lt;location&gt;      The location to use for the deployment.
-      --deployment-name &lt;name&gt;   The deployment name to use.
-
-    Examples:
-      bicep snapshot params.bicepparam
-      bicep snapshot params.bicepparam --mode overwrite
-      bicep snapshot params.bicepparam --mode validate
-      bicep snapshot params.bicepparam --subscription-id 00000000-0000-0000-0000-000000000000 --resource-group my-rg
+Commands:
+  build &lt;Input file&gt;              Builds a .bicep file.
+  test &lt;Input file&gt;               Runs tests in a .bicep file.
+  build-params &lt;Input file&gt;       Builds a .json file from a .bicepparam file.
+  format &lt;Input file&gt;             Formats a .bicep file.
+  generate-params &lt;Input file&gt;    Builds parameters file from the given bicep file, updates if there is an existing parameters file.
+  decompile &lt;Input file&gt;          Attempts to decompile a template .json file to .bicep.
+  decompile-params &lt;Input file&gt;   Attempts to decompile a parameters .json file to .bicepparam.
+  publish &lt;Input file&gt;            Publishes the .bicep file to the module registry.
+  publish-extension &lt;Index file&gt;  [Experimental] Publishes a Bicep extension to a registry.
+  restore &lt;Input file&gt;            Restores external modules from the specified Bicep file to the local module cache.
+  lint &lt;Input file&gt;               Lints a .bicep file.
+  jsonrpc                         Starts the Bicep CLI listening for JSONRPC messages, for programatically interacting with Bicep.
+  local-deploy &lt;Parameters file&gt;  [Experimental] Performs a local deployment.
+  snapshot &lt;Parameters file&gt;      Generates or validates a deployment snapshot from a .bicepparam file.
+  deploy &lt;Parameters file&gt;        [Experimental] Deploys infrastructure using a .bicepparam file.
+  what-if &lt;Parameters file&gt;       [Experimental] Previews the changes a deployment would make.
+  teardown &lt;Parameters file&gt;      [Experimental] Tears down resources deployed by a .bicepparam file.
+  console                         Opens an interactive Bicep console.
 
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
@@ -12944,7 +12750,7 @@ Usage:
 </ul>
 <pre><code class="language-dockerfile">ARG TARGETPLATFORM
 # renovate: datasource=github-tags depName=Azure/bicep
-ARG BICEP_VERSION=0.43.8
+ARG BICEP_VERSION=0.44.1
 ARG BICEP_EXE='bicep'
 ARG BICEP_DIR='/usr/local/bin'
 RUN case ${TARGETPLATFORM} in \
