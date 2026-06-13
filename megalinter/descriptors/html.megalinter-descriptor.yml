@@ -33,8 +33,8 @@ linters:
     linter_rules_inline_disable_url: https://djlint.com/docs/ignoring-code/
     linter_megalinter_ref_url: https://djlint.com/docs/integrations/#megalinter
     cli_lint_mode: list_of_files
-    cli_lint_errors_count: regex_number
-    cli_lint_errors_regex: "found ([0-9]+) error"
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: "[A-Z][0-9]+ [0-9]+:[0-9]+"
     examples:
       - "djlint myfile1.html myfile2.html"
     install:
