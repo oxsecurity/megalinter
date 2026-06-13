@@ -389,8 +389,6 @@ ARG GEM_RUBOCOP_RAKE_VERSION=0.7.1
 ARG GEM_RUBOCOP_RSPEC_VERSION=3.10.2
 # renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
 ARG SALESFORCE_CODE_ANALYZER_VERSION=5.13.0
-# renovate: datasource=npm depName=@salesforce/sfdx-scanner
-ARG SALESFORCE_SFDX_SCANNER_VERSION=4.12.0
 # renovate: datasource=github-tags depName=scalacenter/scalafix
 ARG SCALA_SCALAFIX_VERSION=0.14.6
 # renovate: datasource=pypi depName=snakemake
@@ -1154,20 +1152,6 @@ RUN dotnet tool install --allow-roll-forward --global Microsoft.CST.DevSkim.CLI 
 # code-analyzer-lwc installation
 # Next line commented because already managed by another linter
 # RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
-#     && (npm cache clean --force || true) \
-#     && rm -rf /root/.npm/_cacache
-# sfdx-scanner-apex installation
-    && sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
-    && (npm cache clean --force || true) \
-    && rm -rf /root/.npm/_cacache \
-# sfdx-scanner-aura installation
-# Next line commented because already managed by another linter
-# RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
-#     && (npm cache clean --force || true) \
-#     && rm -rf /root/.npm/_cacache
-# sfdx-scanner-lwc installation
-# Next line commented because already managed by another linter
-# RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
 #     && (npm cache clean --force || true) \
 #     && rm -rf /root/.npm/_cacache
 # scalafix installation

@@ -333,6 +333,8 @@ linters:
 
   # SFDX Scanner Apex
   - linter_name: sfdx-scanner-apex
+    disabled: true
+    disabled_reason: "sfdx-scanner is incompatible with Node.js 22+ (TypeError: Cannot read properties of undefined (reading 'prototype')). Use SALESFORCE_CODE_ANALYZER_APEX instead."
     deprecated: true
     deprecated_description: sfdx-scanner has been deprecated by Salesforce and will be soon be removed from MegaLinter. Please use SALESFORCE_CODE_ANALYZER_APEX instead.
     name: SALESFORCE_SFDX_SCANNER_APEX
@@ -430,6 +432,8 @@ linters:
 
   # SFDX Scanner Aura
   - linter_name: sfdx-scanner-aura
+    disabled: true
+    disabled_reason: "sfdx-scanner is incompatible with Node.js 22+ (TypeError: Cannot read properties of undefined (reading 'prototype')). Use SALESFORCE_CODE_ANALYZER_AURA instead."
     deprecated: true
     deprecated_description: sfdx-scanner has been deprecated by Salesforce and will be soon be removed from MegaLinter. Please use SALESFORCE_CODE_ANALYZER_AURA instead.
     name: SALESFORCE_SFDX_SCANNER_AURA
@@ -518,6 +522,8 @@ linters:
 
   # SFDX Scanner LWC
   - linter_name: sfdx-scanner-lwc
+    disabled: true
+    disabled_reason: "sfdx-scanner is incompatible with Node.js 22+ (TypeError: Cannot read properties of undefined (reading 'prototype')). Use SALESFORCE_CODE_ANALYZER_LWC instead."
     deprecated: true
     deprecated_description: sfdx-scanner has been deprecated by Salesforce and will be soon be removed from MegaLinter. Please use SALESFORCE_CODE_ANALYZER_LWC instead.
     name: SALESFORCE_SFDX_SCANNER_LWC

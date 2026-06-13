@@ -200,8 +200,6 @@ ARG REPOSITORY_TRIVY_VERSION=0.70.0
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.70.0
 # renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
 ARG SALESFORCE_CODE_ANALYZER_VERSION=5.13.0
-# renovate: datasource=npm depName=@salesforce/sfdx-scanner
-ARG SALESFORCE_SFDX_SCANNER_VERSION=4.12.0
 # renovate: datasource=pypi depName=snakemake
 ARG PIP_SNAKEMAKE_VERSION=9.22.0
 # renovate: datasource=pypi depName=snakefmt
@@ -562,7 +560,7 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 # code-analyzer-apex installation
     && sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
     && (npm cache clean --force || true) \
-    && rm -rf /root/.npm/_cacache \
+    && rm -rf /root/.npm/_cacache
 # code-analyzer-aura installation
 # Next line commented because already managed by another linter
 # RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
@@ -571,20 +569,6 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 # code-analyzer-lwc installation
 # Next line commented because already managed by another linter
 # RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
-#     && (npm cache clean --force || true) \
-#     && rm -rf /root/.npm/_cacache
-# sfdx-scanner-apex installation
-    && sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
-    && (npm cache clean --force || true) \
-    && rm -rf /root/.npm/_cacache
-# sfdx-scanner-aura installation
-# Next line commented because already managed by another linter
-# RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
-#     && (npm cache clean --force || true) \
-#     && rm -rf /root/.npm/_cacache
-# sfdx-scanner-lwc installation
-# Next line commented because already managed by another linter
-# RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
 #     && (npm cache clean --force || true) \
 #     && rm -rf /root/.npm/_cacache
 # snakemake installation
