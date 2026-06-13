@@ -57,7 +57,7 @@ ARG TARGETARCH
 # renovate: datasource=repology depName=alpine_edge/go versioning=loose
 ARG GO_ALPINE_VERSION=1.26.3-r0
 # renovate: datasource=github-tags depName=golangci/golangci-lint
-ARG GO_GOLANGCI_LINT_VERSION=2.11.4
+ARG GO_GOLANGCI_LINT_VERSION=2.12.2
 #ARG__END
 
 ####################
