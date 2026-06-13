@@ -27,7 +27,7 @@
     "dartanalyzer": "3.12.1",
     "detekt": "1.23.8",
     "devskim": "1.0.70",
-    "djlint": "1.36.4",
+    "djlint": "1.39.0",
     "dockerfilelint": "1.8.0",
     "dotenv-linter": "4.0.0",
     "dotnet-format": "10.0.109",

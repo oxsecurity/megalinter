@@ -29,7 +29,7 @@ For example, define `HTML_DJLINT_ARGUMENTS: ["--profile", "django"]` to select d
 
 ## djlint documentation
 
-- Version in MegaLinter: **1.36.4**
+- Version in MegaLinter: **1.39.0**
 - Visit [Official Web Site](https://djlint.com/){target=_blank}
 - See [How to configure djlint rules](https://djlint.com/docs/configuration/){target=_blank}
 - See [How to disable djlint rules in files](https://djlint.com/docs/ignoring-code/){target=_blank}
@@ -134,10 +134,21 @@ Options:
   --warn                          Return errors as warnings.
   --preserve-leading-space        Attempt to preserve leading space on text.
   --preserve-blank-lines          Attempt to preserve blank lines.
+  --preserve-class-newlines       Preserve line breaks inside multiline class
+                                  attributes.
   --format-css                    Also format contents of <style> tags.
   --format-js                     Also format contents of <script> tags.
+  --format-attribute-js-json      Also format JavaScript/JSON inside HTML
+                                  attributes.
+  --format-attribute-js-json-pattern TEXT
+                                  Regex pattern to match JavaScript
+                                  attributes.
+  --format-attribute-js-json-min-props INTEGER
+                                  Minimum number of properties to treat
+                                  attribute content as JS/JSON.
   --configuration FILE            Path to global configuration file in
-                                  djlint.toml or .djlintrc format
+                                  djlint.toml, .djlint.toml, or .djlintrc
+                                  format
   --statistics                    Count the number of occurrences of each
                                   error/warning code.
   --include TEXT                  Codes to include. ex: "H014,H017"
@@ -166,13 +177,15 @@ Options:
   --indent-css INTEGER            Set CSS indent level.
   --indent-js INTEGER             Set JS indent level.
   --close-void-tags               Add closing mark on known void tags. Ex:
-                                  <img> becomse <img />
+                                  <img> becomes <img />
   --no-line-after-yaml            Do not add a blank line after yaml front
                                   matter.
   --no-function-formatting        Do not attempt to format function contents.
   --no-set-formatting             Do not attempt to format set contents.
   --max-blank-lines INTEGER       Consolidate blank lines down to x lines.
                                   [default: 0]
+  --github-output / --no-github-output
+                                  Output GitHub-compatible formatting.
   -h, --help                      Show this message and exit.
 ```
 
@@ -181,8 +194,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=djlint
-ARG PIP_DJLINT_VERSION=1.36.4
+ARG PIP_DJLINT_VERSION=1.39.0
 ```
 
 - PIP packages (Python):
-  - [djlint==1.36.4](https://pypi.org/project/djlint/1.36.4)
+  - [djlint==1.39.0](https://pypi.org/project/djlint/1.39.0)
