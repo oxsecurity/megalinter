@@ -28,7 +28,7 @@ description: How to use kubeconform (configure, ignore files, ignore errors, hel
 
 ## kubeconform documentation
 
-- Version in MegaLinter: **0.7.0**
+- Version in MegaLinter: **0.8.0**
 - Visit [Official Web Site](https://github.com/yannh/kubeconform#readme){target=_blank}
 - See [How to configure kubeconform rules](https://github.com/yannh/kubeconform#usage){target=_blank}
 - See [How to disable kubeconform rules in files](https://github.com/yannh/kubeconform#disabling-validation-for-specific-resources){target=_blank}
@@ -150,7 +150,7 @@ Usage: kubeconform [OPTION]... [FILE OR FOLDER]...
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
-ARG KUBERNETES_KUBECONFORM_VERSION=v0.7.0-alpine
+ARG KUBERNETES_KUBECONFORM_VERSION=v0.8.0-alpine
 FROM ghcr.io/yannh/kubeconform:${KUBERNETES_KUBECONFORM_VERSION} AS kubeconform
 COPY --link --from=kubeconform /kubeconform /usr/bin/
 ```

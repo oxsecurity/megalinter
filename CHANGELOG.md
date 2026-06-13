@@ -134,6 +134,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [djlint](https://djlint.com/) from 1.36.4 to **1.39.0** on 2026-06-13
   - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.43.8 to **0.44.1** on 2026-06-13
   - [semgrep](https://semgrep.dev/) from 1.164.0 to **1.166.0** on 2026-06-13
+  - [kubeconform](https://github.com/yannh/kubeconform) from 0.7.0 to **0.8.0** on 2026-06-13
 <!-- linter-versions-end -->
 
 ## [v9.5.0] - 2026-05-16
