@@ -131,6 +131,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sqlfluff](https://www.sqlfluff.com/) from 4.2.1 to **4.2.2** on 2026-06-07
   - [tflint](https://github.com/terraform-linters/tflint) from 0.62.1 to **0.63.1** on 2026-06-07
   - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 10.0.108 to **10.0.109** on 2026-06-12
+  - [djlint](https://djlint.com/) from 1.36.4 to **1.39.0** on 2026-06-13
 <!-- linter-versions-end -->
 
 ## [v9.5.0] - 2026-05-16
