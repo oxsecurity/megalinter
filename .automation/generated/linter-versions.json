@@ -52,7 +52,7 @@
     "kics": "2.1.20",
     "kingfisher": "1.102.0",
     "ktlint": "1.8.0",
-    "kubeconform": "0.7.0",
+    "kubeconform": "0.8.0",
     "kubescape": "4.0.9",
     "kubeval": "0.16.1",
     "lightning-flow-scanner": "3.29.0",
