@@ -19,6 +19,10 @@ Always activate the venv before running Python scripts manually:
 - Linux/macOS: `source .venv/bin/activate`
 - Windows: `source .venv/Scripts/activate`
 
+## Shell Commands — Use rtk
+
+If `rtk` (Rust Token Killer) is installed, it is important to prefix all bash/shell commands with `rtk` (e.g. `rtk git status`, `rtk ls`, `rtk grep`, `rtk find`). It is a token-optimizing proxy that saves 60-90% of tokens on output-heavy commands. Use `rtk proxy <cmd>` (or run raw) only when you need exact, unfiltered output such as a diff you will edit from or a full stack trace. Verify availability with `rtk --version`.
+
 ## Key Commands
 
 ```bash

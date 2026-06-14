@@ -25,7 +25,7 @@
 # Build wheel for megalinter python package
 ##################
 FROM ghcr.io/astral-sh/uv:0.11.21 AS uv
-FROM python:3.14-alpine3.23 AS build-ml-core
+FROM python:3.14-alpine3.24 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
 WORKDIR /
@@ -44,7 +44,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 ##################
 # Get base image #
 ##################
-FROM python:3.14-alpine3.23
+FROM python:3.14-alpine3.24
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
 
@@ -54,7 +54,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 #ARG__START
 ARG TARGETPLATFORM
 ARG TARGETARCH
-# renovate: datasource=repology depName=alpine_edge/go versioning=loose
+# renovate: datasource=repology depName=alpine_3_24/go versioning=loose
 ARG GO_ALPINE_VERSION=1.26.3-r0
 # renovate: datasource=github-tags depName=golangci/golangci-lint
 ARG GO_GOLANGCI_LINT_VERSION=2.11.4
@@ -159,8 +159,6 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #OTHER__START
 # GO installation
 RUN apk add --no-cache \
-    --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main \
-    --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
     go=${GO_ALPINE_VERSION} \
 # golangci-lint installation
     && wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s "v${GO_GOLANGCI_LINT_VERSION}" \

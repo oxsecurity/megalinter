@@ -33,7 +33,7 @@ RUN GOBIN=/usr/bin go install github.com/mgechev/revive@$GO_REVIVE_VERSION
 # Build wheel for megalinter python package
 ##################
 FROM ghcr.io/astral-sh/uv:0.11.21 AS uv
-FROM python:3.14-alpine3.23 AS build-ml-core
+FROM python:3.14-alpine3.24 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
 WORKDIR /
@@ -52,7 +52,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 ##################
 # Get base image #
 ##################
-FROM python:3.14-alpine3.23
+FROM python:3.14-alpine3.24
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
 
@@ -62,7 +62,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 #ARG__START
 ARG TARGETPLATFORM
 ARG TARGETARCH
-# renovate: datasource=repology depName=alpine_edge/go versioning=loose
+# renovate: datasource=repology depName=alpine_3_24/go versioning=loose
 ARG GO_ALPINE_VERSION=1.26.3-r0
 
 ARG GO_REVIVE_VERSION
@@ -168,8 +168,6 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #OTHER__START
 # GO installation
 RUN apk add --no-cache \
-    --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main \
-    --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
     go=${GO_ALPINE_VERSION}
 # revive installation
 # Managed with COPY --link --from=revive /usr/bin/revive /usr/bin/revive

@@ -62,7 +62,7 @@ FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
 # Build wheel for megalinter python package
 ##################
 FROM ghcr.io/astral-sh/uv:0.11.21 AS uv
-FROM python:3.14-alpine3.23 AS build-ml-core
+FROM python:3.14-alpine3.24 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
 WORKDIR /
@@ -81,7 +81,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 ##################
 # Get base image #
 ##################
-FROM python:3.14-alpine3.23
+FROM python:3.14-alpine3.24
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
 
@@ -106,7 +106,7 @@ ARG NPM_PRETTIER_VERSION=3.8.3
 ARG REPOSITORY_GRYPE_VERSION=0.114.0
 # renovate: datasource=github-releases depName=loeffel-io/ls-lint extractVersion=^v(?<version>.+)$
 ARG REPOSITORY_LS_LINT_VERSION=2.3.1
-# renovate: datasource=repology depName=alpine_edge/osv-scanner versioning=loose
+# renovate: datasource=repology depName=alpine_3_24/osv-scanner versioning=loose
 ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.8-r1
 # renovate: datasource=npm depName=secretlint
 ARG NPM_SECRETLINT_VERSION=11.7.1
@@ -310,8 +310,6 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPO
     chmod +x /usr/bin/ls-lint \
 # osv-scanner installation
     && apk add --no-cache \
-    --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main \
-    --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
     osv-scanner=${REPOSITORY_OSV_SCANNER_VERSION} \
 # secretlint installation
 # syft installation

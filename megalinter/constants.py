@@ -96,7 +96,7 @@ DEFAULT_DOCKERFILE_FLAVOR_ARGS = [
 # fall back to compiling from source with Alpine's rust toolchain.
 # The runtime image installs `gcompat` so the glibc binary runs on Alpine.
 DEFAULT_DOCKERFILE_FLAVOR_FROM_STAGES = [
-    "FROM alpine:3.23 AS cargo-bin-sarif-fmt\n"
+    "FROM alpine:3.24 AS cargo-bin-sarif-fmt\n"
     "ARG TARGETARCH\n"
     "ARG CARGO_SARIF_FMT_VERSION\n"
     "RUN set -eu; mkdir -p /out/bin; \\\n"
