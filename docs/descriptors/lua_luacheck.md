@@ -310,10 +310,10 @@ RUN wget --tries=5 https://github.com/cvega/luarocks/archive/v${LUA_LUACHECK_VER
 ```
 
 - APK packages (Linux):
-  - [lua5.3](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=lua5.3)
-  - [lua5.3-dev](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=lua5.3-dev)
-  - [readline-dev](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=readline-dev)
-  - [openssl](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=openssl)
+  - [lua5.3](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=lua5.3)
+  - [lua5.3-dev](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=lua5.3-dev)
+  - [readline-dev](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=readline-dev)
+  - [openssl](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=openssl)
 
 ## Known errors and resolutions
 

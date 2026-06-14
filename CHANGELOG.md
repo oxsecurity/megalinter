@@ -135,6 +135,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [djlint](https://djlint.com/) from 1.36.4 to **1.39.0** on 2026-06-13
   - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.43.8 to **0.44.1** on 2026-06-13
   - [semgrep](https://semgrep.dev/) from 1.164.0 to **1.166.0** on 2026-06-13
+  - [bash-exec](https://www.gnu.org/software/bash/) from 5.3.3 to **5.3.9** on 2026-06-14
+  - [clang-format](https://releases.llvm.org/21.1.0/tools/clang/docs/ClangFormat.html) from 21.1.2 to **22.1.3** on 2026-06-14
+  - [cppcheck](https://cppcheck.sourceforge.io/) from 2.18.3 to **2.21.0** on 2026-06-14
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 10.0.109 to **10.0.301** on 2026-06-14
+  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.12.1 to **3.12.2** on 2026-06-14
+  - [djlint](https://djlint.com/) from 1.39.0 to **1.39.2** on 2026-06-14
+  - [kubeconform](https://github.com/yannh/kubeconform) from 0.7.0 to **0.8.0** on 2026-06-14
+  - [git_diff](https://git-scm.com) from 2.52.0 to **2.54.0** on 2026-06-14
 <!-- linter-versions-end -->
 
 ## [v9.5.0] - 2026-05-16

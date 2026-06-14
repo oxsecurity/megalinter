@@ -37,4 +37,4 @@ description: clj-kondo, cljstyle are available to analyze CLOJURE files in MegaL
 ### Installation
 
 - APK packages (Linux):
-  - [curl](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=curl)
+  - [curl](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=curl)
