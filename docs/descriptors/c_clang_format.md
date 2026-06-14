@@ -22,7 +22,7 @@ description: How to use clang-format (configure, ignore files, ignore errors, he
 
 ## clang-format documentation
 
-- Version in MegaLinter: **21.1.2**
+- Version in MegaLinter: **22.1.3**
 - Visit [Official Web Site](https://releases.llvm.org/21.1.0/tools/clang/docs/ClangFormat.html){target=_blank}
 - See [How to configure clang-format rules](https://releases.llvm.org/21.1.0/tools/clang/docs/ClangFormatStyleOptions.html){target=_blank}
 - See [How to disable clang-format rules in files](https://releases.llvm.org/21.1.0/tools/clang/docs/ClangFormatStyleOptions.html#disabling-formatting-on-a-piece-of-code){target=_blank}
@@ -127,7 +127,7 @@ Clang-format options:
                                      CSharp: .cs
                                      Java: .java
                                      JavaScript: .js .mjs .cjs .ts
-                                     Json: .json .ipynb
+                                     JSON: .json .ipynb
                                      Objective-C: .m .mm
                                      Proto: .proto .protodevel
                                      TableGen: .td
@@ -197,4 +197,4 @@ Generic Options:
 ### Installation on mega-linter Docker image
 
 - APK packages (Linux):
-  - [cmd:clang-format](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=cmd:clang-format)
+  - [cmd:clang-format](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=cmd:clang-format)

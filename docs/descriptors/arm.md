@@ -53,4 +53,4 @@ esac \
 ```
 
 - APK packages (Linux):
-  - [icu-libs](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=icu-libs)
+  - [icu-libs](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=icu-libs)
