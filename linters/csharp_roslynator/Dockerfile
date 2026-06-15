@@ -156,10 +156,10 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 #OTHER__START
 # CSHARP installation
-RUN apk add --no-cache dotnet10-sdk
-ENV PATH="${PATH}:/root/.dotnet/tools"
+RUN apk add --no-cache dotnet10-sdk && install -d /usr/local/dotnet-tools
+ENV PATH="${PATH}:/usr/local/dotnet-tools"
 # roslynator installation
-RUN dotnet tool install --allow-roll-forward --global roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}"
+RUN dotnet tool install --allow-roll-forward --tool-path /usr/local/dotnet-tools roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}"
 #OTHER__END
 
 ################################

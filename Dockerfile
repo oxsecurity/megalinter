@@ -803,8 +803,8 @@ esac \
     && chmod +x /opt/microsoft/powershell/7/pwsh \
     && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh \
 # CSHARP installation
-    && apk add --no-cache dotnet10-sdk
-ENV PATH="${PATH}:/root/.dotnet/tools"
+    && apk add --no-cache dotnet10-sdk && install -d /usr/local/dotnet-tools
+ENV PATH="${PATH}:/usr/local/dotnet-tools"
 # DART installation
 ENV LANG=C.UTF-8
 RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases/download" && \
@@ -892,9 +892,9 @@ RUN curl --retry-all-errors --retry 10 -fLo coursier https://github.com/coursier
 # TYPESCRIPT installation
 # VBDOTNET installation
 # Next line commented because already managed by another linter
-# RUN apk add --no-cache dotnet10-sdk
+# RUN apk add --no-cache dotnet10-sdk && install -d /usr/local/dotnet-tools
 # Next line commented because already managed by another linter
-# ENV PATH="${PATH}:/root/.dotnet/tools"
+# ENV PATH="${PATH}:/usr/local/dotnet-tools"
 # actionlint installation
 # Managed with COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
 #              # shellcheck is a dependency for actionlint
@@ -940,9 +940,9 @@ esac \
 # jscpd installation
 # cpplint installation
 # csharpier installation
-    && dotnet tool install --allow-roll-forward --global csharpier --version "${CSHARP_CSHARPIER_VERSION}" \
+    && dotnet tool install --allow-roll-forward --tool-path /usr/local/dotnet-tools csharpier --version "${CSHARP_CSHARPIER_VERSION}" \
 # roslynator installation
-    && dotnet tool install --allow-roll-forward --global roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}" \
+    && dotnet tool install --allow-roll-forward --tool-path /usr/local/dotnet-tools roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}" \
 # stylelint installation
 # dartanalyzer installation
     && case ${TARGETPLATFORM} in \
@@ -1098,10 +1098,10 @@ ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$
 # checkov installation
 # devskim installation
 # Next line commented because already managed by another linter
-# RUN apk add --no-cache dotnet10-sdk
+# RUN apk add --no-cache dotnet10-sdk && install -d /usr/local/dotnet-tools
 # Next line commented because already managed by another linter
-# ENV PATH="${PATH}:/root/.dotnet/tools"
-RUN dotnet tool install --allow-roll-forward --global Microsoft.CST.DevSkim.CLI --version ${REPOSITORY_DEVSKIM_VERSION} \
+# ENV PATH="${PATH}:/usr/local/dotnet-tools"
+RUN dotnet tool install --allow-roll-forward --tool-path /usr/local/dotnet-tools Microsoft.CST.DevSkim.CLI --version ${REPOSITORY_DEVSKIM_VERSION} \
 # dustilock installation
 # Managed with COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 # gitleaks installation
@@ -1168,10 +1168,10 @@ RUN dotnet tool install --allow-roll-forward --global Microsoft.CST.DevSkim.CLI 
 # sqlfluff installation
 # tsqllint installation
 # Next line commented because already managed by another linter
-# RUN apk add --no-cache dotnet10-sdk
+# RUN apk add --no-cache dotnet10-sdk && install -d /usr/local/dotnet-tools
 # Next line commented because already managed by another linter
-# ENV PATH="${PATH}:/root/.dotnet/tools"
-    && dotnet tool install --allow-roll-forward --global TSQLLint --version ${SQL_TSQLLINT_VERSION}
+# ENV PATH="${PATH}:/usr/local/dotnet-tools"
+    && dotnet tool install --allow-roll-forward --tool-path /usr/local/dotnet-tools TSQLLint --version ${SQL_TSQLLINT_VERSION}
 # swiftlint installation
 # renovate: datasource=docker depName=ghcr.io/realm/swiftlint
 ENV SWIFT_SWIFTLINT_VERSION=0.63.3
