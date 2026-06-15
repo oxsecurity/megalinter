@@ -1048,7 +1048,7 @@
             "examples": [
               {
                 "dockerfile": [
-                  "FROM accurics/terrascan:latest as terrascan",
+                  "FROM accurics/terrascan:latest AS terrascan",
                   "COPY --from=terrascan /go/bin/terrascan /usr/bin/",
                   "RUN terrascan init"
                 ]
@@ -1102,7 +1102,7 @@
                 "description": "Will be automatically integrated in generated Dockerfile",
                 "examples": [
                   [
-                    "FROM accurics/terrascan:latest as terrascan",
+                    "FROM accurics/terrascan:latest AS terrascan",
                     "COPY --from=terrascan /go/bin/terrascan /usr/bin/",
                     "RUN terrascan init"
                   ]
