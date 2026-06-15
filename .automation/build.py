@@ -545,14 +545,17 @@ def build_dockerfile(
         if keep_rustup is True:
             rustup_cargo_cmd = " && ".join(rust_commands)
             cargo_install_command = (
-                "RUN curl https://sh.rustup.rs -sSf |"
-                + " sh -s -- -y --profile minimal --default-toolchain ${RUST_RUST_VERSION} \\\n"
-                + '    && export PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}" \\\n'
+                "RUN export RUSTUP_HOME=/usr/local/rustup CARGO_HOME=/usr/local/cargo \\\n"
+                + "    && curl https://sh.rustup.rs -sSf |"
+                + " sh -s -- -y --profile minimal --default-toolchain ${RUST_RUST_VERSION} --no-modify-path \\\n"
+                + '    && export PATH="${CARGO_HOME}/bin:${PATH}" \\\n'
                 + "    && rustup default stable \\\n"
                 + f"    && {rustup_cargo_cmd} \\\n"
-                + "    && rm -rf /root/.cargo/registry /root/.cargo/git "
-                + "/root/.cache/sccache\n"
-                + 'ENV PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}"'
+                + '    && for bin in "${CARGO_HOME}"/bin/*; do ln -sf "$bin" /usr/local/bin/"$(basename "$bin")"; done \\\n'
+                + '    && rm -rf "${CARGO_HOME}/registry" "${CARGO_HOME}/git" /root/.cache/sccache\n'
+                + "ENV RUSTUP_HOME=/usr/local/rustup\n"
+                + "ENV CARGO_HOME=/usr/local/cargo\n"
+                + 'ENV PATH="/usr/local/cargo/bin:${PATH}"'
             )
     # Pin every standalone `FROM alpine:X.Y` build stage to the runtime image's
     # Alpine version (parsed from the python base image) so helper stages can never
