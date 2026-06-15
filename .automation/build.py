@@ -641,7 +641,8 @@ def build_dockerfile(
     if len(npm_packages) > 0:
         npm_install_command = (
             "WORKDIR /node-deps\n"
-            + "RUN npm --no-cache install --ignore-scripts --omit=dev \\\n                "
+            + "RUN npm config set prefix /usr/local \\\n"
+            + "    && npm --no-cache install --ignore-scripts --omit=dev \\\n                "
             + " \\\n                ".join(list(dict.fromkeys(npm_packages)))
             + " && \\\n"
             #    + '       echo "Fixing audit issues with npm…" \\\n'
