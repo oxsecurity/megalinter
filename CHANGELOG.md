@@ -36,6 +36,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Exclude `REPORT_OUTPUT_FOLDER` from linting when configured as an absolute path inside the workspace (e.g. `/tmp/lint/megalinter-reports`), fixing #7845.
   - Fix command injection in Roslynator linter (`DOTNET_ROSLYNATOR`) where a crafted `.csproj` filename could break out of `dotnet restore` arguments and execute arbitrary shell commands. The command is now invoked via argv list instead of a shell string. Reported by Francesco Sabiu.
   - Fix `IndexError` when building the single-linter Docker image for a linter whose activation depends on a file (e.g. `SPELL_VALE` requires `.vale.ini`): `python -m megalinter.run --linterversion` now bypasses activation filtering since the per-linter image is built for that linter unconditionally.
+  - Fix `make bootstrap` appearing to hang because exported Make color variables re-evaluated `tput` during recursive `make` invocations.
 
 - Reporters
 
