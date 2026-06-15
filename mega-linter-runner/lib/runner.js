@@ -218,6 +218,15 @@ export class MegaLinterRunner {
     }
     commandArgs.push(...["-v", "/var/run/docker.sock:/var/run/docker.sock:rw"]);
     commandArgs.push(...["-v", `${lintPath}:/tmp/lint:rw`]);
+    if (options["userMap"] === true) {
+      const runtimeUid =
+        typeof process.getuid === "function" ? process.getuid() : 1000;
+      const runtimeGid =
+        typeof process.getgid === "function" ? process.getgid() : 1000;
+      commandArgs.push(...["-e", `MEGALINTER_UID=${runtimeUid}`]);
+      commandArgs.push(...["-e", `MEGALINTER_GID=${runtimeGid}`]);
+      commandArgs.push(...["-e", "HOME=/home/megalinter"]);
+    }
     if (emptyEnvFile) {
       commandArgs.push(...["-v", `${emptyEnvFile}:/tmp/lint/.env:ro`]);
     }
