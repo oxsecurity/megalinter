@@ -282,12 +282,16 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #############################################################################################
 
 #CARGO__START
-RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain ${RUST_RUST_VERSION} \
-    && export PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}" \
+RUN export RUSTUP_HOME=/usr/local/rustup CARGO_HOME=/usr/local/cargo \
+    && curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain ${RUST_RUST_VERSION} --no-modify-path \
+    && export PATH="${CARGO_HOME}/bin:${PATH}" \
     && rustup default stable \
     && rustup component add clippy \
-    && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache
-ENV PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}"
+    && for bin in "${CARGO_HOME}"/bin/*; do ln -sf "$bin" /usr/local/bin/"$(basename "$bin")"; done \
+    && rm -rf "${CARGO_HOME}/registry" "${CARGO_HOME}/git" /root/.cache/sccache
+ENV RUSTUP_HOME=/usr/local/rustup
+ENV CARGO_HOME=/usr/local/cargo
+ENV PATH="/usr/local/cargo/bin:${PATH}"
 #CARGO__END
 
 ##############################
