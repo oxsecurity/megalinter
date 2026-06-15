@@ -676,7 +676,8 @@ ENV PATH="$JAVA_HOME/bin:${PATH}"
 # PHP installation
 RUN update-alternatives --install /usr/bin/php php /usr/bin/php84 110
 # Managed with COPY --link --from=composer/composer:2-bin /composer /usr/bin/composer
-ENV PATH="/root/.composer/vendor/bin:${PATH}"
+ENV COMPOSER_HOME=/usr/local/composer
+ENV PATH="/usr/local/composer/vendor/bin:${PATH}"
 # TYPESCRIPT installation
 # actionlint installation
 # Managed with COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
