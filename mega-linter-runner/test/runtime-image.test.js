@@ -4,7 +4,6 @@ import fs from "fs-extra";
 import os from "os";
 import path from "path";
 import { fileURLToPath } from "url";
-import { MegaLinterRunner } from "../lib/index.js";
 
 const image = process.env.MEGALINTER_IMAGE;
 const release = process.env.MEGALINTER_RELEASE || "beta";
@@ -12,6 +11,40 @@ const nodockerpull =
   process.env.MEGALINTER_NO_DOCKER_PULL === "true" ? true : false;
 const testDir = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(testDir, "..", "..");
+const runnerCli = path.join(repoRoot, "mega-linter-runner", "lib", "index.js");
+const supportsUserMap =
+  typeof process.getuid === "function" && typeof process.getgid === "function";
+const runtimeModes = [
+  {
+    id: "root",
+    label: "root",
+    dockerArgs: [],
+    envArgs: [],
+    sshPort: "22",
+    sshUser: "root",
+    sshExpectedUid: "0",
+  },
+  ...(supportsUserMap
+    ? [
+        {
+          id: "non-root",
+          label: "non-root",
+          dockerArgs: [],
+          envArgs: [
+            "-e",
+            `MEGALINTER_UID=${process.getuid()}`,
+            "-e",
+            `MEGALINTER_GID=${process.getgid()}`,
+            "-e",
+            "HOME=/home/megalinter",
+          ],
+          sshPort: "2222",
+          sshUser: "megalinter",
+          sshExpectedUid: `${process.getuid()}`,
+        },
+      ]
+    : []),
+];
 
 function runCommand(command, args, options = {}) {
   return spawnSync(command, args, {
@@ -27,6 +60,11 @@ function assertSuccess(result, message) {
     0,
     details ? `${message}\n${details}` : message,
   );
+}
+
+function readDockerLogs(containerName) {
+  const res = runCommand("docker", ["logs", containerName]);
+  return [res.stderr, res.stdout].filter(Boolean).join("\n");
 }
 
 function cleanupPathWithDocker(targetPath) {
@@ -65,12 +103,11 @@ async function preparePhpFixture() {
   return tempDir;
 }
 
-async function runFixture(pathToLint, enabledLinter) {
+async function runFixture(pathToLint, enabledLinter, runtimeMode) {
   const res = runCommand("docker", [
     "run",
     "--rm",
-    "--platform",
-    "linux/amd64",
+    ...runtimeMode.dockerArgs,
     "-v",
     `${pathToLint}:/tmp/lint:rw`,
     "-e",
@@ -79,6 +116,7 @@ async function runFixture(pathToLint, enabledLinter) {
     `ENABLE_LINTERS=${enabledLinter}`,
     "-e",
     "PLUGINS=",
+    ...runtimeMode.envArgs,
     image,
   ]);
   const details = [res.stderr, res.stdout].filter(Boolean).join("\n");
@@ -93,21 +131,30 @@ async function runFixture(pathToLint, enabledLinter) {
 }
 
 async function runFixtureWithRunner(pathToLint, enabledLinter) {
-  const options = {
-    path: pathToLint,
+  const args = [
+    runnerCli,
+    "--path",
+    pathToLint,
+    "--release",
     release,
-    nodockerpull,
-    env: [`ENABLE_LINTERS=${enabledLinter}`, "PLUGINS="],
-  };
-  if (image) {
-    options.image = image;
+    "--env",
+    `ENABLE_LINTERS=${enabledLinter}`,
+    "--env",
+    "PLUGINS=",
+  ];
+  if (nodockerpull) {
+    args.push("--nodockerpull");
   }
-  const res = await new MegaLinterRunner().run(options);
+  if (image) {
+    args.push("--image", image);
+  }
+  const res = runCommand("node", args, { cwd: repoRoot });
+  const details = [res.stderr, res.stdout].filter(Boolean).join("\n");
   assert.strictEqual(
     res.status,
     0,
-    res.errorMsg
-      ? `status is 0 (${res.status} returned)\n${res.errorMsg}`
+    details
+      ? `status is 0 (${res.status} returned)\n${details}`
       : `status is 0 (${res.status} returned)`,
   );
 }
@@ -183,14 +230,22 @@ describe("Runtime image", function () {
     return;
   }
 
-  for (const testCase of runtimeFixtureCases) {
-    it(`runs ${testCase.title} on the good fixture with docker run`, async () => {
-      await withFixtureDir(testCase.prepare, async (tempDir) => {
-        const details = await runFixture(tempDir, testCase.enabledLinter);
-        assert.match(details, testCase.successPattern);
-      });
-    }).timeout(600000);
+  for (const runtimeMode of runtimeModes) {
+    for (const testCase of runtimeFixtureCases) {
+      it(`runs ${testCase.title} on the good fixture in ${runtimeMode.label} mode`, async () => {
+        await withFixtureDir(testCase.prepare, async (tempDir) => {
+          const details = await runFixture(
+            tempDir,
+            testCase.enabledLinter,
+            runtimeMode,
+          );
+          assert.match(details, testCase.successPattern);
+        });
+      }).timeout(600000);
+    }
+  }
 
+  for (const testCase of runtimeFixtureCases) {
     it(`runs ${testCase.title} on the good fixture with mega-linter-runner`, async () => {
       await withFixtureDir(testCase.prepare, async (tempDir) => {
         await runFixtureWithRunner(tempDir, testCase.enabledLinter);
@@ -198,73 +253,115 @@ describe("Runtime image", function () {
     }).timeout(600000);
   }
 
-  it("accepts an SSH connection in root mode", async () => {
-    const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "megalinter-ssh-"));
-    const containerName = `megalinter-ssh-${Date.now()}`;
-    const privateKey = path.join(tempDir, "id_rsa");
-    const publicKey = path.join(tempDir, "id_rsa.pub");
-    try {
-      assertSuccess(
-        runCommand("ssh-keygen", [
-          "-q",
-          "-t",
-          "ed25519",
-          "-N",
-          "",
-          "-f",
-          privateKey,
-        ]),
-        "expected ssh-keygen to create a temporary test key",
-      );
+  for (const runtimeMode of runtimeModes) {
+    it(`accepts an SSH connection in ${runtimeMode.label} mode`, async () => {
+      const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "megalinter-ssh-"));
+      const containerName = `megalinter-ssh-${runtimeMode.id}-${Date.now()}`;
+      const privateKey = path.join(tempDir, "id_rsa");
+      const publicKey = path.join(tempDir, "id_rsa.pub");
+      try {
+        assertSuccess(
+          runCommand("ssh-keygen", [
+            "-q",
+            "-t",
+            "ed25519",
+            "-N",
+            "",
+            "-f",
+            privateKey,
+          ]),
+          "expected ssh-keygen to create a temporary test key",
+        );
 
-      const runRes = runCommand("docker", [
-        "run",
-        "-d",
-        "--rm",
-        "--name",
-        containerName,
-        "-e",
-        "MEGALINTER_SSH=true",
-        "-v",
-        `${tempDir}:/root/docker_ssh:ro`,
-        "-p",
-        "127.0.0.1::22",
-        image,
-      ]);
-      assertSuccess(runRes, "expected SSH test container to start");
-
-      const portRes = runCommand("docker", ["port", containerName, "22/tcp"]);
-      assertSuccess(portRes, "expected SSH test container to publish port 22");
-      const publishedPort = portRes.stdout.trim().split(":").pop();
-      assert(publishedPort, "expected a published SSH port");
-
-      let sshResult = null;
-      for (let attempt = 0; attempt < 30; attempt += 1) {
-        sshResult = runCommand("ssh", [
-          "-o",
-          "StrictHostKeyChecking=no",
-          "-o",
-          "UserKnownHostsFile=/dev/null",
-          "-i",
-          privateKey,
+        const runRes = runCommand("docker", [
+          "run",
+          "-d",
+          "--rm",
+          "--name",
+          containerName,
+          ...runtimeMode.dockerArgs,
+          "-e",
+          "MEGALINTER_SSH=true",
+          ...runtimeMode.envArgs,
+          "-v",
+          `${tempDir}:/tmp/docker_ssh:ro`,
           "-p",
-          publishedPort,
-          "root@127.0.0.1",
-          "id -u",
+          `127.0.0.1::${runtimeMode.sshPort}`,
+          image,
         ]);
-        if (sshResult.status === 0) {
-          break;
+        if (runRes.status !== 0) {
+          const details = [runRes.stderr, runRes.stdout].filter(Boolean).join("\n");
+          const logs = readDockerLogs(containerName);
+          assert.strictEqual(
+            runRes.status,
+            0,
+            [details, logs].filter(Boolean).join("\n"),
+          );
         }
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-      }
 
-      assertSuccess(sshResult, "expected SSH login to succeed");
-      assert.strictEqual(sshResult.stdout.trim(), "0");
-      assert(await fs.pathExists(publicKey), "expected SSH public key to exist");
-    } finally {
-      runCommand("docker", ["rm", "-f", containerName]);
-      cleanupPathWithDocker(tempDir);
-      await fs.remove(tempDir);
-    }
-  }).timeout(180000);
+        const portRes = runCommand("docker", [
+          "port",
+          containerName,
+          `${runtimeMode.sshPort}/tcp`,
+        ]);
+        if (portRes.status !== 0) {
+          const details = [portRes.stderr, portRes.stdout].filter(Boolean).join("\n");
+          const logs = readDockerLogs(containerName);
+          assert.strictEqual(
+            portRes.status,
+            0,
+            [
+              `expected SSH test container to publish port ${runtimeMode.sshPort}`,
+              details,
+              logs,
+            ]
+              .filter(Boolean)
+              .join("\n"),
+          );
+        }
+        const publishedPort = portRes.stdout.trim().split(":").pop();
+        assert(publishedPort, "expected a published SSH port");
+
+        let sshResult = null;
+        for (let attempt = 0; attempt < 30; attempt += 1) {
+          sshResult = runCommand("ssh", [
+            "-o",
+            "StrictHostKeyChecking=no",
+            "-o",
+            "UserKnownHostsFile=/dev/null",
+            "-i",
+            privateKey,
+            "-p",
+            publishedPort,
+            `${runtimeMode.sshUser}@127.0.0.1`,
+            "id -u",
+          ]);
+          if (sshResult.status === 0) {
+            break;
+          }
+          await new Promise((resolve) => setTimeout(resolve, 1000));
+        }
+
+        if (sshResult.status !== 0) {
+          assert.strictEqual(
+            sshResult.status,
+            0,
+            [
+              "expected SSH login to succeed",
+              [sshResult.stderr, sshResult.stdout].filter(Boolean).join("\n"),
+              readDockerLogs(containerName),
+            ]
+              .filter(Boolean)
+              .join("\n"),
+          );
+        }
+        assert.strictEqual(sshResult.stdout.trim(), runtimeMode.sshExpectedUid);
+        assert(await fs.pathExists(publicKey), "expected SSH public key to exist");
+      } finally {
+        runCommand("docker", ["rm", "-f", containerName]);
+        cleanupPathWithDocker(tempDir);
+        await fs.remove(tempDir);
+      }
+    }).timeout(180000);
+  }
 });
