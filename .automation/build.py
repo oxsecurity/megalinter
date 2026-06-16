@@ -839,7 +839,7 @@ def generate_linter_dockerfiles():
                 "    CONFIG_REPORTER=false \\",
                 "    SARIF_TO_HUMAN=false" "",
                 # "EXPOSE 80",
-                "RUN mkdir /root/docker_ssh && mkdir /usr/bin/megalinter-sh",
+                "RUN mkdir /tmp/docker_ssh && mkdir /usr/bin/megalinter-sh",
                 "EXPOSE 22",
                 "COPY entrypoint.sh /entrypoint.sh",
                 "COPY sh /usr/bin/megalinter-sh",
