@@ -12394,7 +12394,7 @@
                          - List of Dockerfile instructions packages
                          - _Will be automatically integrated in generated Dockerfile_
                          - Type:</code>array<code>- Example values: 
-                             1.</code>FROM accurics/terrascan:d182f1c as terrascan<code>2.</code>COPY --from=terrascan /go/bin/terrascan /usr/bin/<code>3.</code>RUN terrascan init<code>- **_Items_**
+                             1.</code>FROM accurics/terrascan:d182f1c AS terrascan<code>2.</code>COPY --from=terrascan /go/bin/terrascan /usr/bin/<code>3.</code>RUN terrascan init<code>- **_Items_**
                              - Type:</code>string<code>- &lt;b id="/properties/linters/items/properties/install/properties/apk"&gt;apk&lt;/b&gt;
                          - List of APK packages (Linux)
                          - _APK packages identifiers (with or without version)_
