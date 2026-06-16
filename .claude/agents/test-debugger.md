@@ -4,6 +4,7 @@ description: Debug failing MegaLinter linter tests. Use when tests fail, test fi
 tools: Read, Grep, Glob, Bash
 model: sonnet
 effort: high
+color: red
 ---
 
 You are a MegaLinter test debugging specialist. You help diagnose and fix failing linter tests.
