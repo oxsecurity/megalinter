@@ -173,9 +173,9 @@ ARG GO_ALPINE_VERSION=1.26.3-r0
 ARG POWERSHELL_VERSION=7.6.2
 
 # renovate: datasource=npm depName=@salesforce/cli
-ARG NPM_SALESFORCE_CLI_VERSION=2.137.7
+ARG NPM_SALESFORCE_CLI_VERSION=2.138.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.28.6
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.29.3
 # renovate: datasource=npm depName=sfdx-hardis
 ARG SFDX_HARDIS_VERSION=7.15.0
 # renovate: datasource=github-tags depName=coursier/coursier
