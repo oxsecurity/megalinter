@@ -327,6 +327,8 @@ CVE-2025-53547
 CVE-2025-22868
 # https://avd.aquasec.com/nvd/cve-2025-7783 — form-data boundary predictability, only used in static-analysis HTTP calls
 CVE-2025-7783
+# https://avd.aquasec.com/nvd/cve-2026-12143 — form-data CRLF injection via unescaped multipart field names; linters build multipart bodies with fixed field names, not attacker-controlled input. Remove when parent linters upgrade to form-data >=4.0.6.
+CVE-2026-12143
 # https://avd.aquasec.com/nvd/cve-2025-8959 — go-getter Arbitrary File Read, not applicable in MegaLinter context
 CVE-2025-8959
 # https://avd.aquasec.com/nvd/cve-2025-9288 — sha.js: Missing type checks. Harmless in MegaLinter because Salesforce linters do not connect to Salesforce orgs
@@ -445,6 +447,12 @@ CVE-2026-44289
 CVE-2026-44290
 CVE-2026-44291
 CVE-2026-44293
+# https://avd.aquasec.com/nvd/cve-2026-48712 — protobufjs DoS via unbounded Any expansion; requires attacker-controlled protobuf data. Linters analyze static source files and never parse untrusted protobuf definitions. Remove when parent npm linter upgrades to protobufjs >=7.6.1 / >=8.4.1.
+CVE-2026-48712
+
+# --- ws ---
+# https://avd.aquasec.com/nvd/cve-2026-48779 — ws WebSocket memory exhaustion DoS; linters run as offline static scanners and open no WebSocket connections handling attacker traffic. Remove when parent linters upgrade to ws >=8.21.0.
+CVE-2026-48779
 
 # --- kubescape / grype / syft / trivy / terragrunt (Go scanners) ---
 # cilium CVE: cilium-bugtool debug archive info leak; not applicable as
