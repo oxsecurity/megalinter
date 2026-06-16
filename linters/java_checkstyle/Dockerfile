@@ -240,10 +240,12 @@ EXPOSE 22
 COPY entrypoint.sh /entrypoint.sh
 COPY sh /usr/bin/megalinter-sh
 COPY sh/megalinter_exec /usr/bin/megalinter_exec
+COPY sh/setup-runtime-user /usr/bin/setup-runtime-user
 COPY sh/motd /etc/motd
 RUN find /usr/bin/megalinter-sh/ -type f -iname "*.sh" -exec chmod +x {} \; && \
     chmod +x entrypoint.sh && \
     chmod +x /usr/bin/megalinter_exec && \
+    chmod u+x /usr/bin/setup-runtime-user && \
     echo "alias megalinter='python -m megalinter.run'" >> ~/.bashrc && source ~/.bashrc && \
     echo "alias megalinter_exec='/usr/bin/megalinter_exec'" >> ~/.bashrc && source ~/.bashrc
 RUN export STANDALONE_LINTER_VERSION="$(python -m megalinter.run --input /tmp --linterversion)" && \

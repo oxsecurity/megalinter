@@ -651,6 +651,8 @@ LABEL com.github.actions.name="MegaLinter" \
 
 #EXTRA_DOCKERFILE_LINES__START
 COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x entrypoint.sh
+COPY sh/setup-runtime-user /usr/bin/setup-runtime-user
+RUN chmod +x entrypoint.sh && \
+    chmod u+x /usr/bin/setup-runtime-user
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
 #EXTRA_DOCKERFILE_LINES__END
