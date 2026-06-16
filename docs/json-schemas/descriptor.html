@@ -5252,7 +5252,7 @@
 <div class="badge badge-secondary">Examples:</div>
 <br/><button class="btn btn-light example-show collapsed" data-toggle="collapse" data-target="#linters_items_install_ex1" aria-controls="linters_items_install_ex1"></button><div id="linters_items_install_ex1" class="collapse jumbotron examples"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="s2">&quot;dockerfile&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">&quot;FROM accurics/terrascan:latest as terrascan&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;FROM accurics/terrascan:latest AS terrascan&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="s2">&quot;COPY --from=terrascan /go/bin/terrascan /usr/bin/&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="s2">&quot;RUN terrascan init&quot;</span>
 <span class="w">    </span><span class="p">]</span>
@@ -5594,7 +5594,7 @@
     </div><br/>
 <div class="badge badge-secondary">Example:</div>
 <br/><div id="linters_items_install_dockerfile_ex1" class="jumbotron examples"><div class="highlight"><pre><span></span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;FROM accurics/terrascan:latest as terrascan&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;FROM accurics/terrascan:latest AS terrascan&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;COPY --from=terrascan /go/bin/terrascan /usr/bin/&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;RUN terrascan init&quot;</span>
 <span class="p">]</span>
@@ -8136,7 +8136,7 @@ These special installation steps replace the instructions in the <a href="#linte
 <div class="badge badge-secondary">Examples:</div>
 <br/><button class="btn btn-light example-show collapsed" data-toggle="collapse" data-target="#linters_items_supported_platforms_install_override_items_install_ex1" aria-controls="linters_items_supported_platforms_install_override_items_install_ex1"></button><div id="linters_items_supported_platforms_install_override_items_install_ex1" class="collapse jumbotron examples"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="s2">&quot;dockerfile&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">&quot;FROM accurics/terrascan:latest as terrascan&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;FROM accurics/terrascan:latest AS terrascan&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="s2">&quot;COPY --from=terrascan /go/bin/terrascan /usr/bin/&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="s2">&quot;RUN terrascan init&quot;</span>
 <span class="w">    </span><span class="p">]</span>
@@ -8604,7 +8604,7 @@ These special installation steps replace the instructions in the <a href="#linte
     </div><br/>
 <div class="badge badge-secondary">Example:</div>
 <br/><div id="linters_items_supported_platforms_install_override_items_install_dockerfile_ex1" class="jumbotron examples"><div class="highlight"><pre><span></span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;FROM accurics/terrascan:latest as terrascan&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;FROM accurics/terrascan:latest AS terrascan&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;COPY --from=terrascan /go/bin/terrascan /usr/bin/&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;RUN terrascan init&quot;</span>
 <span class="p">]</span>
