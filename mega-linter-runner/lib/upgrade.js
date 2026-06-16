@@ -462,10 +462,10 @@ jobs:
       },
       // Create pull request action
       {
-        regex: /peter-evans\/create-pull-request@v(3|4|5|6)/gm,
-        replacement: `peter-evans/create-pull-request@v7`,
-        test: "peter-evans/create-pull-request@v6",
-        testRes: `peter-evans/create-pull-request@v7`,
+        regex: /peter-evans\/create-pull-request@v(3|4|5|6|7)/gm,
+        replacement: `peter-evans/create-pull-request@v8`,
+        test: "peter-evans/create-pull-request@v7",
+        testRes: `peter-evans/create-pull-request@v8`,
       },
       // Auto-commit action
       {
