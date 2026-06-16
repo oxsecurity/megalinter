@@ -96,7 +96,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=pylint
-          ARG PIP_PYLINT_VERSION=4.0.5
+          ARG PIP_PYLINT_VERSION=4.0.6
         - |-
           # renovate: datasource=pypi depName=typing-extensions
           ARG PIP_TYPING_EXTENSIONS_VERSION=4.15.0
