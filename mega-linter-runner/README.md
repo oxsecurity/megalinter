@@ -108,7 +108,8 @@ The options are only related to mega-linter-runner. For MegaLinter options, plea
 | `--container-name`        | Specify MegaLinter container name                                                                                                                                                               | <!-- -->          |
 | `--remove-container`      | Remove MegaLinter Docker container when done                                                                                                                                                    | <!-- -->          |
 | `-i` <br/> `--install`    | Generate [MegaLinter local configuration](https://megalinter.io/beta/install-assisted/) files and CI/CD workflows                                                                               | <!-- -->          |
-| `-i` <br/> `--upgrade`    | Upgrade your MegaLinter configuration files to use the latest version                                                                                                                           | <!-- -->          |
+| `-u` <br/> `--upgrade`    | Upgrade your MegaLinter configuration files to use the latest version. Use `--no-prompt` to run non-interactively and skip upgrade confirmation prompts.                                        | <!-- -->          |
+| `--no-prompt`             | Disable interactive prompts. With `--upgrade`, automatically proceed with the upgrade and skip optional follow-up prompts.                                                                      | <!-- -->          |
 | `--custom-flavor-setup`   | Initialize a new repository to generate a [custom flavor](https://megalinter.io/beta/custom-flavors/)                                                                                           | <!-- -->          |
 | `--custom-flavor-linters` | Comma-separated list of linter keys if using `--custom-flavor-setup`                                                                                                                            | <!-- -->          |
 
@@ -134,6 +135,11 @@ mega-linter-runner -r beta -e "'ENABLE=MARKDOWN,YAML'" -e 'SHOW_ELAPSED_TIME=tru
 ```shell
 # Use python flavor beta version, only on some files
 mega-linter-runner --flavor python --release beta --filesonly path/to/my/file1.py another/path/to/a/file.js and/another/file.py
+```
+
+```shell
+# Upgrade configuration files non-interactively
+mega-linter-runner --upgrade --no-prompt
 ```
 
 ```shell

@@ -83,7 +83,9 @@ export class MegaLinterRunner {
 
     // Run upgrader from v4 to v5
     if (options.upgrade) {
-      const megaLinterUpgrader = new MegaLinterUpgrader();
+      const megaLinterUpgrader = new MegaLinterUpgrader({
+        noPrompt: options.prompt === false,
+      });
       await megaLinterUpgrader.run();
       return { status: 0 };
     }
