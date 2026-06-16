@@ -256,9 +256,9 @@ ARG NPM_PRETTIER_VERSION=3.8.3
 # renovate: datasource=npm depName=prettyjson
 ARG NPM_PRETTYJSON_VERSION=1.2.5
 # renovate: datasource=npm depName=@typescript-eslint/eslint-plugin
-ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.60.1
+ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.61.0
 # renovate: datasource=npm depName=@typescript-eslint/parser
-ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.60.1
+ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.61.0
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 ```
@@ -275,8 +275,8 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
   - [eslint-plugin-promise@7.3.0](https://www.npmjs.com/package/eslint-plugin-promise/v/7.3.0)
   - [prettier@3.8.3](https://www.npmjs.com/package/prettier/v/3.8.3)
   - [prettyjson@1.2.5](https://www.npmjs.com/package/prettyjson/v/1.2.5)
-  - [@typescript-eslint/eslint-plugin@8.60.1](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin/v/8.60.1)
-  - [@typescript-eslint/parser@8.60.1](https://www.npmjs.com/package/@typescript-eslint/parser/v/8.60.1)
+  - [@typescript-eslint/eslint-plugin@8.61.0](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin/v/8.61.0)
+  - [@typescript-eslint/parser@8.61.0](https://www.npmjs.com/package/@typescript-eslint/parser/v/8.61.0)
   - [@microsoft/eslint-formatter-sarif@3.1.0](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/3.1.0)
 
 ## Known errors and resolutions
