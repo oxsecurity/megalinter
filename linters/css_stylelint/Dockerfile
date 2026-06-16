@@ -167,7 +167,8 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
     NODE_ENV=production
 #NPM__START
 WORKDIR /node-deps
-RUN npm --no-cache install --ignore-scripts --omit=dev \
+RUN npm config set prefix /usr/local \
+    && npm --no-cache install --ignore-scripts --omit=dev \
                 stylelint@${NPM_STYLELINT_VERSION} \
                 stylelint-config-standard@${NPM_STYLELINT_CONFIG_STANDARD_VERSION} \
                 stylelint-config-sass-guidelines@${NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION} \

@@ -152,7 +152,8 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
     NODE_ENV=production
 #NPM__START
 WORKDIR /node-deps
-RUN npm --no-cache install --ignore-scripts --omit=dev \
+RUN npm config set prefix /usr/local \
+    && npm --no-cache install --ignore-scripts --omit=dev \
                 eslint@${NPM_ESLINT_VERSION} \
                 @eslint-react/eslint-plugin@${NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION} \
                 @microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION} && \

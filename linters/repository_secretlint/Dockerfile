@@ -152,7 +152,8 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
     NODE_ENV=production
 #NPM__START
 WORKDIR /node-deps
-RUN npm --no-cache install --ignore-scripts --omit=dev \
+RUN npm config set prefix /usr/local \
+    && npm --no-cache install --ignore-scripts --omit=dev \
                 secretlint@${NPM_SECRETLINT_VERSION} \
                 @secretlint/secretlint-rule-preset-recommend@${NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION} \
                 @secretlint/secretlint-formatter-sarif@${NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION} && \

@@ -244,7 +244,8 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
     NODE_ENV=production
 #NPM__START
 WORKDIR /node-deps
-RUN npm --no-cache install --ignore-scripts --omit=dev \
+RUN npm config set prefix /usr/local \
+    && npm --no-cache install --ignore-scripts --omit=dev \
                 jscpd@${NPM_JSCPD_VERSION} \
                 npm-groovy-lint@${NPM_GROOVY_LINT_VERSION} \
                 @prantlf/jsonlint@${NPM_PRANTLF_JSONLINT_VERSION} \

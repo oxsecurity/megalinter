@@ -148,7 +148,8 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
     NODE_ENV=production
 #NPM__START
 WORKDIR /node-deps
-RUN npm --no-cache install --ignore-scripts --omit=dev \
+RUN npm config set prefix /usr/local \
+    && npm --no-cache install --ignore-scripts --omit=dev \
                 v8r@${NPM_V8R_VERSION} && \
     echo "Cleaning npm cache…" \
     && (npm cache clean --force || true) \

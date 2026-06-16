@@ -166,7 +166,8 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
     NODE_ENV=production
 #NPM__START
 WORKDIR /node-deps
-RUN npm --no-cache install --ignore-scripts --omit=dev \
+RUN npm config set prefix /usr/local \
+    && npm --no-cache install --ignore-scripts --omit=dev \
                 eslint@${NPM_ESLINT_VERSION} \
                 @eslint/js@${NPM_ESLINT_JS_VERSION} \
                 eslint-config-prettier@${NPM_ESLINT_CONFIG_PRETTIER_VERSION} \

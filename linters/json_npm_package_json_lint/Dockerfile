@@ -150,7 +150,8 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
     NODE_ENV=production
 #NPM__START
 WORKDIR /node-deps
-RUN npm --no-cache install --ignore-scripts --omit=dev \
+RUN npm config set prefix /usr/local \
+    && npm --no-cache install --ignore-scripts --omit=dev \
                 npm-package-json-lint@${NPM_PACKAGE_JSON_LINT_VERSION} \
                 npm-package-json-lint-config-default@${NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION} && \
     echo "Cleaning npm cache…" \
