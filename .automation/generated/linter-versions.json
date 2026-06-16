@@ -71,7 +71,7 @@
     "osv-scanner": "2.3.8",
     "perlcritic": "1.156",
     "php": "7.4.26",
-    "php-cs-fixer": "3.95.4",
+    "php-cs-fixer": "3.95.7",
     "phpcs": "4.0.1",
     "phplint": "9.7.2",
     "phpstan": "2.2.2",
