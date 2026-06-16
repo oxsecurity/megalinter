@@ -67,13 +67,13 @@ ARG NPM_ESLINT_PLUGIN_IMPORT_X_VERSION=4.16.2
 # renovate: datasource=npm depName=eslint-plugin-jest
 ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.15.2
 # renovate: datasource=npm depName=eslint-plugin-n
-ARG NPM_ESLINT_PLUGIN_N_VERSION=18.0.1
+ARG NPM_ESLINT_PLUGIN_N_VERSION=18.1.0
 # renovate: datasource=npm depName=eslint-plugin-prettier
 ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.6
 # renovate: datasource=npm depName=eslint-plugin-promise
 ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=7.3.0
 # renovate: datasource=npm depName=prettier
-ARG NPM_PRETTIER_VERSION=3.8.3
+ARG NPM_PRETTIER_VERSION=3.8.4
 # renovate: datasource=npm depName=prettyjson
 ARG NPM_PRETTYJSON_VERSION=1.2.5
 # renovate: datasource=npm depName=@typescript-eslint/eslint-plugin

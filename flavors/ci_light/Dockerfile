@@ -91,7 +91,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 #ARG__START
 ARG TARGETPLATFORM
 # renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=4.2.4
+ARG NPM_JSCPD_VERSION=4.2.5
 # renovate: datasource=github-releases depName=dotenv-linter/dotenv-linter extractVersion=^v(?<version>.+)$
 ARG DOTENV_LINTER_VERSION=4.0.0
 # renovate: datasource=npm depName=npm-groovy-lint
@@ -101,7 +101,7 @@ ARG NPM_PRANTLF_JSONLINT_VERSION=17.0.1
 # renovate: datasource=npm depName=v8r
 ARG NPM_V8R_VERSION=6.1.0
 # renovate: datasource=npm depName=prettier
-ARG NPM_PRETTIER_VERSION=3.8.3
+ARG NPM_PRETTIER_VERSION=3.8.4
 # renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.114.0
 # renovate: datasource=github-releases depName=loeffel-io/ls-lint extractVersion=^v(?<version>.+)$

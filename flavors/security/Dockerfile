@@ -36,7 +36,7 @@ ARG TERRAFORM_TFLINT_VERSION=0.63.1
 # renovate: datasource=docker depName=tenable/terrascan
 ARG TERRAFORM_TERRASCAN_VERSION=1.19.9
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.5
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.6
 #ARGTOP__END
 
 #############################################################################################
@@ -117,7 +117,7 @@ ARG PIP_BANDIT_VERSION=1.9.4
 # renovate: datasource=pypi depName=bandit_sarif_formatter
 ARG PIP_BANDIT_SARIF_FORMATTER_VERSION=1.1.1
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.2.533
+ARG PIP_CHECKOV_VERSION=3.3.1
 # renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
 ARG REPOSITORY_DEVSKIM_VERSION=1.0.70
 # renovate: datasource=github-tags depName=anchore/grype

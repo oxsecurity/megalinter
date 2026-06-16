@@ -18,7 +18,7 @@ ARG CARGO_SARIF_FMT_VERSION=0.8.0
 # renovate: datasource=docker depName=mvdan/shfmt
 ARG BASH_SHFMT_VERSION=v3.13.1-alpine
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.5
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.6
 #ARGTOP__END
 
 #############################################################################################
@@ -83,13 +83,13 @@ ARG CSHARP_CSHARPIER_VERSION=1.2.6
 # renovate: datasource=nuget depName=roslynator.dotnet.cli
 ARG CSHARP_ROSLYNATOR_VERSION=0.12.0
 # renovate: datasource=npm depName=prettier
-ARG NPM_PRETTIER_VERSION=3.8.3
+ARG NPM_PRETTIER_VERSION=3.8.4
 # renovate: datasource=npm depName=markdownlint-cli
 ARG NPM_MARKDOWNLINT_CLI_VERSION=0.48.0
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.2.9
+ARG PIP_RUMDL_VERSION=0.2.17
 # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
 ARG PSSA_VERSION='1.25.0'
 
@@ -98,7 +98,7 @@ ARG PIP_BLACK_VERSION=26.5.1
 # renovate: datasource=pypi depName=isort
 ARG PIP_ISORT_VERSION=8.0.1
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.15.16
+ARG PIP_RUFF_VERSION=0.15.17
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=pypi depName=snakefmt
