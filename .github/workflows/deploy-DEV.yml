@@ -384,11 +384,6 @@ jobs:
       security-events: write
     timeout-minutes: 30
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
-        with:
-          persist-credentials: false
-
       - name: Free Disk space
         shell: bash
         run: |
@@ -405,20 +400,12 @@ jobs:
           name: megalinter-image
           path: /tmp
 
-      - name: Load Docker image
-        shell: bash
-        run: |
-          set -euo pipefail
-          docker load -i /tmp/megalinter-image.tar
-          rm -f /tmp/megalinter-image.tar
-          docker image ls
-
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
         with:
           # renovate: datasource=github-releases depName=aquasecurity/trivy
           version: "v0.71.0"
-          image-ref: "${{ needs.build.outputs.image-tag }}"
+          input: /tmp/megalinter-image.tar
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
