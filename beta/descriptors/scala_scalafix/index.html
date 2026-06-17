@@ -12623,7 +12623,7 @@
 <p><strong>Note</strong>: In MegaLinter, only syntactic rules are applied as there is no prior compilation or semantic database generation. Semantic options cannot be used in this context.</p>
 <h2 id="scalafix-documentation">scalafix documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.14.6</strong></li>
+<li>Version in MegaLinter: <strong>0.14.7</strong></li>
 <li>Visit <a href="https://scalacenter.github.io/scalafix/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://scalacenter.github.io/scalafix/docs/users/configuration.html" target="_blank">How to configure scalafix rules</a><ul>
 <li>If custom <code>.scalafix.conf</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.scalafix.conf" target="_blank">.scalafix.conf</a> will be used</li>
@@ -12765,7 +12765,7 @@
 <pre><code class="language-shell">scalafix --config .scalafix.conf myfile.scala
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">Scalafix 0.14.6
+<pre><code class="language-shell">Scalafix 0.14.7
 Usage: scalafix [options] [&lt;path&gt; ...]
 
 Scalafix is a refactoring and linting tool. Scalafix supports both syntactic and
@@ -12802,7 +12802,7 @@ Common options:
     If set, only apply scalafix to added and edited files in git diff against a
     provided branch, commit or tag.
 
-  --scala-version ScalaVersion (default: "3.8.2")
+  --scala-version ScalaVersion (default: "3.8.4")
     The major or binary Scala version that the provided files are targeting, or the
     full version that was used to compile them when a classpath is provided.
 
@@ -12922,7 +12922,7 @@ RUN curl --retry-all-errors --retry 10 -fLo coursier https://github.com/coursier
 
 # Linter install
 # renovate: datasource=github-tags depName=scalacenter/scalafix
-ARG SCALA_SCALAFIX_VERSION=0.14.6
+ARG SCALA_SCALAFIX_VERSION=0.14.7
 RUN ./coursier install scalafix:${SCALA_SCALAFIX_VERSION} --quiet --install-dir /usr/bin &amp;&amp; rm -rf /root/.cache
 </code></pre>
 <h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>

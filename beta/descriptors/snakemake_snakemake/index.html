@@ -12604,7 +12604,7 @@
 </ul>
 <h2 id="snakemake-documentation">snakemake documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>9.22.0</strong></li>
+<li>Version in MegaLinter: <strong>9.23.0</strong></li>
 <li>Visit <a href="https://snakemake.github.io/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://snakemake.readthedocs.io/en/stable/snakefiles/configuration.html" target="_blank">How to configure snakemake rules</a></li>
 </ul>
@@ -12891,7 +12891,7 @@
                  [--filegraph] [--d3dag] [--summary] [--detailed-summary]
                  [--archive FILE] [--cleanup-metadata FILE [FILE ...]]
                  [--cleanup-shadow] [--skip-script-cleanup] [--unlock]
-                 [--list-changes {params,input,code}] [--list-input-changes]
+                 [--list-changes {params,code,input}] [--list-input-changes]
                  [--list-params-changes] [--list-untracked]
                  [--delete-all-output | --delete-temp-output]
                  [--keep-incomplete] [--drop-metadata] [--version]
@@ -12939,7 +12939,7 @@
                  [--apptainer-args ARGS] [--use-envmodules]
                  [--deploy-sources QUERY CHECKSUM]
                  [--target-jobs TARGET_JOBS [TARGET_JOBS ...]]
-                 [--mode {remote,default,subprocess}]
+                 [--mode {subprocess,default,remote}]
                  [--scheduler-solver-path SCHEDULER_SOLVER_PATH]
                  [--max-jobs-per-second MAX_JOBS_PER_SECOND]
                  [--report-html-path VALUE]
@@ -13470,7 +13470,7 @@ UTILITIES:
                         (default: False)
   --unlock              Remove a lock on the working directory. (default:
                         False)
-  --list-changes, --lc {params,input,code}
+  --list-changes, --lc {params,code,input}
                         List all output files for which the given items (code,
                         input, params) have changed since creation.
   --list-input-changes, --li
@@ -13724,7 +13724,7 @@ REMOTE EXECUTION:
                         contain a working snakemake installation that is
                         compatible with (or ideally the same as) the currently
                         running version. (default:
-                        snakemake/snakemake:v9.22.0)
+                        snakemake/snakemake:v9.23.0)
   --immediate-submit, --is
                         Immediately submit all jobs to the cluster instead of
                         waiting for present input files. This will fail,
@@ -13837,7 +13837,7 @@ INTERNAL:
   --target-jobs TARGET_JOBS [TARGET_JOBS ...]
                         Internal use only: Target particular jobs by
                         RULE:WILDCARD1=VALUE,WILDCARD2=VALUE,...
-  --mode {remote,default,subprocess}
+  --mode {subprocess,default,remote}
                         Internal use only: Set execution mode of Snakemake.
                         (default: default)
   --scheduler-solver-path SCHEDULER_SOLVER_PATH
@@ -13886,11 +13886,11 @@ defaults.
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.22.0
+ARG PIP_SNAKEMAKE_VERSION=9.23.0
 </code></pre>
 <ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/snakemake/9.22.0">snakemake==9.22.0</a></li>
+<li><a href="https://pypi.org/project/snakemake/9.23.0">snakemake==9.23.0</a></li>
 </ul>
 </li>
 </ul>
