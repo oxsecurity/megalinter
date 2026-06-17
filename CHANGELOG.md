@@ -144,6 +144,18 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [kubeconform](https://github.com/yannh/kubeconform) from 0.7.0 to **0.8.0** on 2026-06-14
   - [git_diff](https://git-scm.com) from 2.52.0 to **2.54.0** on 2026-06-14
   - [php-cs-fixer](https://cs.symfony.com/) from 3.95.4 to **3.95.7** on 2026-06-16
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 4.2.4 to **4.2.5** on 2026-06-17
+  - [stylelint](https://stylelint.io) from 17.12.0 to **17.13.0** on 2026-06-17
+  - [prettier](https://prettier.io/) from 3.8.3 to **3.8.4** on 2026-06-17
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.9 to **0.2.17** on 2026-06-17
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.16 to **0.15.17** on 2026-06-17
+  - [ruff](https://github.com/astral-sh/ruff) from 0.15.16 to **0.15.17** on 2026-06-17
+  - [checkov](https://www.checkov.io/) from 3.2.533 to **3.3.1** on 2026-06-17
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 8.2.10 to **8.2.11** on 2026-06-17
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.14.6 to **0.14.7** on 2026-06-17
+  - [snakemake](https://snakemake.github.io/) from 9.22.0 to **9.23.0** on 2026-06-17
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.15.5 to **1.15.6** on 2026-06-17
+  - [terragrunt](https://terragrunt.gruntwork.io) from 1.0.7 to **1.0.8** on 2026-06-17
 <!-- linter-versions-end -->
 
 ## [v9.5.0] - 2026-05-16
