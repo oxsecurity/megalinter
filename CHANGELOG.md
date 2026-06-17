@@ -145,6 +145,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [djlint](https://djlint.com/) from 1.39.0 to **1.39.2** on 2026-06-14
   - [kubeconform](https://github.com/yannh/kubeconform) from 0.7.0 to **0.8.0** on 2026-06-14
   - [git_diff](https://git-scm.com) from 2.52.0 to **2.54.0** on 2026-06-14
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.4 to **3.95.7** on 2026-06-16
 <!-- linter-versions-end -->
 
 ## [v9.5.0] - 2026-05-16
