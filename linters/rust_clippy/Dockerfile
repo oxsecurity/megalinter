@@ -107,7 +107,9 @@ RUN export RUSTUP_HOME=/usr/local/rustup CARGO_HOME=/usr/local/cargo \
     && export PATH="${CARGO_HOME}/bin:${PATH}" \
     && rustup default stable \
     && rustup component add clippy \
-    && for bin in "${CARGO_HOME}"/bin/*; do ln -sf "$bin" /usr/local/bin/"$(basename "$bin")"; done \
+    && for bin in "${CARGO_HOME}"/bin/*; do \
+         ln -sf "$bin" /usr/local/bin/"$(basename "$bin")"; \
+       done \
     && rm -rf "${CARGO_HOME}/registry" "${CARGO_HOME}/git" /root/.cache/sccache
 ENV RUSTUP_HOME=/usr/local/rustup
 ENV CARGO_HOME=/usr/local/cargo
