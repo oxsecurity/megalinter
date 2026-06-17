@@ -551,7 +551,9 @@ def build_dockerfile(
                 + '    && export PATH="${CARGO_HOME}/bin:${PATH}" \\\n'
                 + "    && rustup default stable \\\n"
                 + f"    && {rustup_cargo_cmd} \\\n"
-                + '    && for bin in "${CARGO_HOME}"/bin/*; do ln -sf "$bin" /usr/local/bin/"$(basename "$bin")"; done \\\n'
+                + '    && for bin in "${CARGO_HOME}"/bin/*; do \\\n'
+                + '         ln -sf "$bin" /usr/local/bin/"$(basename "$bin")"; \\\n'
+                + "       done \\\n"
                 + '    && rm -rf "${CARGO_HOME}/registry" "${CARGO_HOME}/git" /root/.cache/sccache\n'
                 + "ENV RUSTUP_HOME=/usr/local/rustup\n"
                 + "ENV CARGO_HOME=/usr/local/cargo\n"
