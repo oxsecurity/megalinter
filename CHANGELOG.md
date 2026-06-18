@@ -156,6 +156,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.github.io/) from 9.22.0 to **9.23.0** on 2026-06-17
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.15.5 to **1.15.6** on 2026-06-17
   - [terragrunt](https://terragrunt.gruntwork.io) from 1.0.7 to **1.0.8** on 2026-06-17
+  - [eslint](https://eslint.org) from 10.4.1 to **10.5.0** on 2026-06-17
+  - [pylint](https://pylint.readthedocs.io) from 4.0.5 to **4.0.6** on 2026-06-17
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.70.0 to **0.71.1** on 2026-06-17
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.70.0 to **0.71.1** on 2026-06-17
+  - [rubocop](https://rubocop.org/) from 1.87.0 to **1.88.0** on 2026-06-17
 <!-- linter-versions-end -->
 
 ## [v9.5.0] - 2026-05-16
