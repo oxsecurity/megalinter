@@ -255,7 +255,7 @@ jobs:
         uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
         with:
           # renovate: datasource=github-releases depName=aquasecurity/trivy
-          version: "v0.71.0"
+          version: "v0.71.2"
           image-ref: "${{ steps.meta.outputs.tags }}"
           format: 'table'
           exit-code: '1'
