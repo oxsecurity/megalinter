@@ -161,6 +161,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.70.0 to **0.71.1** on 2026-06-17
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.70.0 to **0.71.1** on 2026-06-17
   - [rubocop](https://rubocop.org/) from 1.87.0 to **1.88.0** on 2026-06-17
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.51.4 to **1.51.5** on 2026-06-19
 <!-- linter-versions-end -->
 
 ## [v9.5.0] - 2026-05-16
