@@ -114,11 +114,13 @@ CVE-2025-21614
 # untrusted protobuf input. PMD analyses local Apex/Java source code
 # and never deserialises external protobuf payloads.
 CVE-2024-7254
-# GHSA-2r2c-cx56-8933: JLine3 Telnet server unauthenticated remote DoS.
+# GHSA-2r2c-cx56-8933 / GHSA-47qp-hqvx-6r3f: JLine3 Telnet server
+# unauthenticated remote DoS and remote memory exhaustion.
 # jline-3.21.0.jar is bundled in usr/bin/pmd/lib for PMD's interactive
 # shell; PMD runs as a CLI static analyzer and never starts the JLine
 # Telnet server. Remove when PMD upgrades its bundled jline to >=4.2.1.
 GHSA-2r2c-cx56-8933
+GHSA-47qp-hqvx-6r3f
 
 # --- Kubescape ---
 # Tracked in https://github.com/oxsecurity/megalinter/issues/3519.
