@@ -102,7 +102,7 @@ ARG PIP_RUFF_VERSION=0.15.18
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=pypi depName=snakefmt
-ARG PIP_SNAKEFMT_VERSION=2.0.1
+ARG PIP_SNAKEFMT_VERSION=2.0.2
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=26.1.2
 # renovate: datasource=pypi depName=virtualenv
