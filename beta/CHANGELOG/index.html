@@ -15653,6 +15653,7 @@
 <ul>
 <li>Core<ul>
 <li>New linter descriptor property <code>common_linter_errors</code>: declare known non-lint failure patterns (config issue, remote service down, missing credentials…) and the guidance message shown to users, directly in YAML — no custom Python class needed.</li>
+<li>Skipped-linters summary now explains why a linter was skipped by an activation rule, including the variable to set to activate it (e.g. <code>MARKDOWN_RUMDL: MARKDOWN_DEFAULT_STYLE=markdownlint (set MARKDOWN_DEFAULT_STYLE=rumdl to activate)</code>), fixing <a href="https://github.com/oxsecurity/megalinter/issues/8017">#8017</a>.</li>
 </ul>
 </li>
 </ul>
