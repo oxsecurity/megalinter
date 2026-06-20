@@ -626,7 +626,8 @@ linters:
         - linux/arm64
 
   # OSV-SCANNER
-  - linter_name: osv-scanner
+  - class: OsvScannerLinter
+    linter_name: osv-scanner
     name: REPOSITORY_OSV_SCANNER
     can_output_sarif: false # disabled until it works !
     descriptor_flavors:
@@ -680,7 +681,7 @@ linters:
                 DISABLE_ERRORS_LINTERS:
                   - REPOSITORY_OSV_SCANNER
       - identifier: REPOSITORY_OSV_SCANNER_ERROR_NO_PACKAGE_SOURCES
-        regex: "no package sources found"
+        regex: "(?i)no package sources found"
         message: |-
           osv-scanner found no lockfiles, manifests, or SBOMs to scan in the repository.
           This is a configuration/scope issue, not a vulnerability finding.
