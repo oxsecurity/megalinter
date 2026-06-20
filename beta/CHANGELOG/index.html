@@ -15682,6 +15682,7 @@
 </ul>
 <ul>
 <li>Fixes<ul>
+<li>Fix intermittent <code>ansible-lint</code> <code>load-failure[not-found]</code> error on <code>github_conf/branch_protection_rules.json</code> caused by a race condition with <code>checkov</code> running in parallel. Checkov's transient GitHub-conf directory is now written to a hidden path (<code>.megalinter_github_conf</code>) that project-mode linters skip, eliminating the conflict (#8092).</li>
 <li>Complete the Alpine 3.24 upgrade across the whole image and fix how alpine version is detected.</li>
 <li>Exclude <code>REPORT_OUTPUT_FOLDER</code> from linting when configured as an absolute path inside the workspace (e.g. <code>/tmp/lint/megalinter-reports</code>), fixing #7845.</li>
 <li>Fix command injection in Roslynator linter (<code>DOTNET_ROSLYNATOR</code>) where a crafted <code>.csproj</code> filename could break out of <code>dotnet restore</code> arguments and execute arbitrary shell commands. The command is now invoked via argv list instead of a shell string. Reported by Francesco Sabiu.</li>
