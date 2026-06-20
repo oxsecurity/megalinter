@@ -169,6 +169,16 @@ CVE-2023-29331
 CVE-2025-24970
 CVE-2025-59343
 GHSA-xpw8-rcwv-8f8p
+# CVE-2026-12151: undici WebSocket DoS via unbounded memory growth in
+# @salesforce/cli's bundled undici (5.29.0). MegaLinter invokes sfdx/sf
+# only for offline static analysis; no WebSocket connections are opened.
+# Remove when @salesforce/cli upgrades its bundled undici to >=6.27.0.
+CVE-2026-12151
+# CVE-2026-6734: undici information disclosure and data integrity issue
+# via SOCKS5 proxy TLS options in @salesforce/cli's bundled undici. No
+# SOCKS5 proxy is configured in MegaLinter CI. Remove when @salesforce/cli
+# upgrades its bundled undici to >=7.28.0 / >=8.2.0.
+CVE-2026-6734
 
 # --- sfdx-scanner (deprecated, awaiting code-analyzer migration) ---
 # Descriptor marks sfdx-scanner-{apex,aura,lwc} as deprecated, but the
