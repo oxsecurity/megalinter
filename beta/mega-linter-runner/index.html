@@ -12626,12 +12626,22 @@
 <td><!-- --></td>
 </tr>
 <tr>
+<td><code>--user-map</code></td>
+<td>Run the container as a non-root user. On POSIX systems this uses your user. On other hosts it uses <code>1000:1000</code>. This helps avoid root-owned generated files on the host.</td>
+<td><!-- --></td>
+</tr>
+<tr>
+<td><code>--no-user-map</code></td>
+<td>Run the container as root</td>
+<td><!-- --></td>
+</tr>
+<tr>
 <td><code>-i</code> <br> <code>--install</code></td>
 <td>Generate <a href="https://megalinter.io/beta/install-assisted/">MegaLinter local configuration</a> files and CI/CD workflows</td>
 <td><!-- --></td>
 </tr>
 <tr>
-<td><code>-i</code> <br> <code>--upgrade</code></td>
+<td><code>-u</code> <br> <code>--upgrade</code></td>
 <td>Upgrade your MegaLinter configuration files to use the latest version</td>
 <td><!-- --></td>
 </tr>
@@ -12654,6 +12664,9 @@ mega-linter-runner
 </code></pre>
 <pre><code class="language-shell"># Scan a folder and apply fixes
 mega-linter-runner -p myFolder --fix
+</code></pre>
+<pre><code class="language-shell"># Run the container as your current non-root user on POSIX hosts
+mega-linter-runner --user-map
 </code></pre>
 <pre><code class="language-shell"># Send environment variables
 mega-linter-runner -r beta -e "'ENABLE=MARKDOWN,YAML'" -e 'SHOW_ELAPSED_TIME=true'

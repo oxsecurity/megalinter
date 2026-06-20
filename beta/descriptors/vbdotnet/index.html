@@ -12480,8 +12480,8 @@
 <ul>
 <li>Dockerfile commands :</li>
 </ul>
-<pre><code class="language-dockerfile">RUN apk add --no-cache dotnet10-sdk
-ENV PATH="${PATH}:/root/.dotnet/tools"
+<pre><code class="language-dockerfile">RUN apk add --no-cache dotnet10-sdk &amp;&amp; install -d /usr/local/dotnet-tools
+ENV PATH="${PATH}:/usr/local/dotnet-tools"
 </code></pre>
 
 
