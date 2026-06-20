@@ -7,7 +7,7 @@
   },
   "features": {
     "ghcr.io/devcontainers-extra/features/coverage-py:2": {},
-    "ghcr.io/devcontainers/features/node:2": {
+    "ghcr.io/devcontainers/features/node:": {
       "version": "24.17.0"
     }
   },
