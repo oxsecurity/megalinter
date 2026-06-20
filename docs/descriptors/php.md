@@ -40,7 +40,8 @@ description: phpcs, phpstan, psalm, phplint, php-cs-fixer are available to analy
 ```dockerfile
 RUN update-alternatives --install /usr/bin/php php /usr/bin/php84 110
 COPY --link --from=composer/composer:2-bin /composer /usr/bin/composer
-ENV PATH="/root/.composer/vendor/bin:${PATH}"
+ENV COMPOSER_HOME=/usr/local/composer
+ENV PATH="/usr/local/composer/vendor/bin:${PATH}"
 ```
 
 - APK packages (Linux):
