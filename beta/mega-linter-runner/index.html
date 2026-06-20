@@ -12642,7 +12642,12 @@
 </tr>
 <tr>
 <td><code>-u</code> <br> <code>--upgrade</code></td>
-<td>Upgrade your MegaLinter configuration files to use the latest version</td>
+<td>Upgrade your MegaLinter configuration files to use the latest version. Use <code>--no-prompt</code> to run non-interactively and skip upgrade confirmation prompts.</td>
+<td><!-- --></td>
+</tr>
+<tr>
+<td><code>--no-prompt</code></td>
+<td>Disable interactive prompts. With <code>--upgrade</code>, automatically proceed with the upgrade and skip optional follow-up prompts.</td>
 <td><!-- --></td>
 </tr>
 <tr>
@@ -12673,6 +12678,9 @@ mega-linter-runner -r beta -e "'ENABLE=MARKDOWN,YAML'" -e 'SHOW_ELAPSED_TIME=tru
 </code></pre>
 <pre><code class="language-shell"># Use python flavor beta version, only on some files
 mega-linter-runner --flavor python --release beta --filesonly path/to/my/file1.py another/path/to/a/file.js and/another/file.py
+</code></pre>
+<pre><code class="language-shell"># Upgrade configuration files non-interactively
+mega-linter-runner --upgrade --no-prompt
 </code></pre>
 <pre><code class="language-shell"># Use Podman as engine
 mega-linter-runner --flavor documentation --container-engine podman
