@@ -29,7 +29,7 @@ Exception for standalone and security flavors docker images, that use a list of 
 
 ## semgrep documentation
 
-- Version in MegaLinter: **1.166.0**
+- Version in MegaLinter: **1.167.0**
 - Visit [Official Web Site](https://semgrep.dev/){target=_blank}
 - See [How to configure semgrep rules](https://semgrep.dev/docs/running-rules/){target=_blank}
 - See [How to disable semgrep rules in files](https://semgrep.dev/docs/ignoring-findings/#inline-comments){target=_blank}
@@ -232,6 +232,11 @@ OPTIONS
            which is documented at
            https://git-scm.com/docs/gitignore#_pattern_format
 
+       --exclude-binary-files
+           Skip binary files. These are files that contain magic bytes at the
+           start that correspond to their file extension. Enabled by default;
+           use --no-exclude-binary-files to scan binary files.
+
        --exclude-minified-files
            Skip minified files. These are files that are < 7% whitespace, or
            which have an average of > 1000 bytes per line. By default
@@ -384,6 +389,9 @@ OPTIONS
 
        --no-error
            negates --error
+
+       --no-exclude-binary-files
+           negates --exclude-binary-files
 
        --no-exclude-minified-files
            negates --exclude-minified-files
@@ -759,8 +767,8 @@ BUGS
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.166.0
+ARG PIP_SEMGREP_VERSION=1.167.0
 ```
 
 - PIP packages (Python):
-  - [semgrep==1.166.0](https://pypi.org/project/semgrep/1.166.0)
+  - [semgrep==1.167.0](https://pypi.org/project/semgrep/1.167.0)

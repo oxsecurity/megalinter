@@ -168,6 +168,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [vale](https://vale.sh/) from 3.14.2 to **3.15.1** on 2026-06-19
   - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.71.1 to **0.71.2** on 2026-06-20
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.71.1 to **0.71.2** on 2026-06-20
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.48.0 to **0.49.0** on 2026-06-20
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.7 to **3.95.10** on 2026-06-20
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.2 to **7.6.3** on 2026-06-20
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.2 to **7.6.3** on 2026-06-20
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.17 to **0.15.18** on 2026-06-20
+  - [ruff](https://github.com/astral-sh/ruff) from 0.15.17 to **0.15.18** on 2026-06-20
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.102.0 to **1.103.0** on 2026-06-20
+  - [semgrep](https://semgrep.dev/) from 1.166.0 to **1.167.0** on 2026-06-20
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.95.5 to **3.95.6** on 2026-06-20
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 8.2.11 to **8.3.2** on 2026-06-20
 <!-- linter-versions-end -->
 
 ## [v9.5.0] - 2026-05-16
