@@ -78,7 +78,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       135        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       136        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -137,8 +137,70 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=@stoplight/spectral-cli
-ARG NPM_SPECTRAL_CLI_VERSION=6.15.1
+ARG NPM_SPECTRAL_CLI_VERSION=6.16.0
 ```
 
 - NPM packages (node.js):
   - [@stoplight/spectral-cli](https://www.npmjs.com/package/@stoplight/spectral-cli)
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### API_SPECTRAL_ERROR_RULESET_PARSE_FAILED
+
+**Detection pattern (regex):**
+
+```text
+(Could not read ruleset at|No ruleset has been found|Provided ruleset is not an object|RulesetValidationError)
+```
+
+**Resolution guidance:**
+
+```text
+Spectral could not parse the ruleset file.
+Checks:
+  - Verify the file passed via `-r` / `API_SPECTRAL_CONFIG_FILE` is valid YAML or JSON.
+  - Ensure `extends:` references resolvable rulesets (e.g. `spectral:oas`, `spectral:asyncapi`, or an installed npm package).
+  - If the ruleset is loaded over HTTP/HTTPS, confirm the URL is reachable from the MegaLinter container.
+```
+
+### API_SPECTRAL_ERROR_FUNCTION_NOT_DEFINED
+
+**Detection pattern (regex):**
+
+```text
+(Function .* is not defined|Cannot find module .*functions)
+```
+
+**Resolution guidance:**
+
+```text
+Spectral could not resolve a function referenced by a rule.
+Fixes:
+  - For core functions, double-check the spelling (e.g. `truthy`, `pattern`, `length`).
+  - For custom functions, list them under `functions:` in the ruleset and place the JS files under `functions/` next to the ruleset.
+  - When loading a ruleset over HTTP, custom functions are not auto-fetched — vendor the ruleset locally and point `-r` at it.
+```
+
+### API_SPECTRAL_ERROR_RULESET_REF_UNREACHABLE
+
+**Detection pattern (regex):**
+
+```text
+(ENOTFOUND|ECONNREFUSED|ETIMEDOUT|getaddrinfo ENOTFOUND|fetch failed)
+```
+
+**Resolution guidance:**
+
+```text
+Spectral could not resolve a remote `$ref` or remote ruleset (network/DNS failure).
+This is a transient remote-service issue.
+Workarounds:
+  - Retry the run later.
+  - Vendor the referenced documents locally and update the `$ref` to a relative path.
+  - Temporarily mark the linter as non-blocking by adding to your .mega-linter.yml:
+      DISABLE_ERRORS_LINTERS:
+        - API_SPECTRAL
+```
+

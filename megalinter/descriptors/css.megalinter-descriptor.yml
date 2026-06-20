@@ -42,6 +42,57 @@ linters:
     cli_lint_errors_regex: "([0-9]+) errors"
     cli_lint_warnings_count: regex_number
     cli_lint_warnings_regex: "([0-9]+) warnings"
+    common_linter_errors:
+      - identifier: CSS_STYLELINT_ERROR_PLUGIN_NOT_FOUND
+        regex: '(Could not find "?stylelint-|Cannot find module ''stylelint-|Could not load plugin)'
+        message: |-
+          stylelint could not load a plugin referenced in your `.stylelintrc.*` (e.g. `stylelint-order`, `stylelint-scss`, `stylelint-prettier`). The plugin is not installed in MegaLinter's bundled `node_modules` (`/node-deps/node_modules`).
+          Resolutions:
+            - Pre-install the missing plugin into MegaLinter's npm root via a pre-command in your .mega-linter.yml:
+                CSS_STYLELINT_PRE_COMMANDS:
+                  - command: "npm install stylelint-order"
+                    cwd: "root"
+                    continue_if_failed: false
+            - Note: `stylelint-scss` and `stylelint-config-sass-guidelines` are already bundled and do not need to be re-installed.
+            - Or install your project's dependencies and run stylelint from the workspace binary:
+                CSS_STYLELINT_PRE_COMMANDS:
+                  - command: yarn install --frozen-lockfile --ignore-scripts
+                    cwd: workspace
+                    continue_if_failed: false
+                CSS_STYLELINT_CLI_EXECUTABLE: node_modules/.bin/stylelint
+      - identifier: CSS_STYLELINT_ERROR_CONFIG_NOT_FOUND
+        regex: '(Could not find "?stylelint-config-|Cannot find module ''stylelint-config-|Could not (find|load) config|Failed to extend)'
+        message: |-
+          stylelint could not resolve a shareable config referenced via `extends` (e.g. `stylelint-config-recommended`, `stylelint-config-prettier`).
+          Resolutions:
+            - Pre-install the config package via a pre-command in your .mega-linter.yml:
+                CSS_STYLELINT_PRE_COMMANDS:
+                  - command: "npm install stylelint-config-recommended"
+                    cwd: "root"
+                    continue_if_failed: false
+            - Note: `stylelint-config-standard` and `stylelint-config-sass-guidelines` are already bundled.
+            - Verify the config name in `.stylelintrc.*` matches the published npm package name exactly.
+      - identifier: CSS_STYLELINT_ERROR_CUSTOM_SYNTAX_NOT_FOUND
+        regex: '(Cannot resolve custom syntax|Could not load "?customSyntax|Cannot find module ''postcss-)'
+        message: |-
+          stylelint could not load the `customSyntax` plugin referenced in your config (e.g. `postcss-scss`, `postcss-less`, `postcss-html`).
+          Resolutions:
+            - Pre-install the postcss syntax plugin via a pre-command in your .mega-linter.yml:
+                CSS_STYLELINT_PRE_COMMANDS:
+                  - command: "npm install postcss-scss postcss-html"
+                    cwd: "root"
+                    continue_if_failed: false
+            - For `.scss` files, stylelint v15+ auto-loads `postcss-scss` if `stylelint-scss` is present (bundled in MegaLinter); explicit `customSyntax` is usually unnecessary.
+      - identifier: CSS_STYLELINT_ERROR_NO_CONFIG
+        regex: '(No configuration provided|No "stylelint" configuration)'
+        message: |-
+          stylelint ran but no configuration was found. stylelint requires a config file (no built-in default rules).
+          Resolutions:
+            - Add a `.stylelintrc.json` (or `.stylelintrc.yml`, `stylelint.config.js`, or `stylelint` key in `package.json`) to your repository root, e.g.:
+                {
+                  "extends": "stylelint-config-standard"
+                }
+            - `stylelint-config-standard` is bundled in MegaLinter and can be used directly.
     examples:
       - "stylelint myfile.css"
       - "stylelint --config .stylelintrc.json myfile.css myfile2.css myfile3.css"
@@ -50,7 +101,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=stylelint
-          ARG NPM_STYLELINT_VERSION=17.8.0
+          ARG NPM_STYLELINT_VERSION=17.13.0
         - |-
           # renovate: datasource=npm depName=stylelint-config-standard
           ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=40.0.0
@@ -59,7 +110,7 @@ linters:
           ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=13.0.0
         - |-
           # renovate: datasource=npm depName=stylelint-scss
-          ARG NPM_STYLELINT_SCSS_VERSION=7.0.0
+          ARG NPM_STYLELINT_SCSS_VERSION=7.2.0
         - |-
           # renovate: datasource=pypi depName=cpplint
           ARG PIP_CPPLINT_VERSION=2.0.2

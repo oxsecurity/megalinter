@@ -41,7 +41,7 @@ For legacy projects, start with `--errors-only` flag and progressively enable mo
 
 ## pylint documentation
 
-- Version in MegaLinter: **4.0.5**
+- Version in MegaLinter: **4.0.6**
 - Visit [Official Web Site](https://pylint.readthedocs.io){target=_blank}
 - See [How to configure pylint rules](https://pylint.readthedocs.io/en/stable/user_guide/configuration/index.html){target=_blank}
   - If custom `.pylintrc` config file isn't found, [.pylintrc](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.pylintrc){target=_blank} will be used
@@ -90,9 +90,9 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       135        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        89        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        66        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       136        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        92        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        69        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
 
@@ -318,59 +318,6 @@ Messages control:
                         Warning level messages displayed, use "--disable=all
                         --enable=classes --disable=W".
 
-Refactoring:
-  Looks for code which can be refactored.
-
-  --max-nested-blocks <int>
-                        Maximum number of nested blocks for function / method
-                        body (default: 5)
-  --never-returning-functions <members names>
-                        Complete name of functions that never returns. When
-                        checking for inconsistent-return-statements if a never
-                        returning function is called then it will be
-                        considered as an explicit return statement and no
-                        message will be printed. (default: ('sys.exit',
-                        'argparse.parse_error'))
-  --suggest-join-with-non-empty-separator <y or n>
-                        Let 'consider-using-join' be raised when the separator
-                        to join on would be non-empty (resulting in expected
-                        fixes of the type: ``"- " + " - ".join(items)``)
-                        (default: True)
-
-Classes:
-  Checker for class nodes.
-
-  --defining-attr-methods <method names>
-                        List of method names used to declare (i.e. assign)
-                        instance attributes. (default: ('__init__', '__new__',
-                        'setUp', 'asyncSetUp', '__post_init__'))
-  --valid-classmethod-first-arg <argument names>
-                        List of valid names for the first argument in a class
-                        method. (default: ('cls',))
-  --valid-metaclass-classmethod-first-arg <argument names>
-                        List of valid names for the first argument in a
-                        metaclass class method. (default: ('mcs',))
-  --exclude-protected <protected access exclusions>
-                        List of member names, which should be excluded from
-                        the protected access warning. (default: ('_asdict',
-                        '_fields', '_replace', '_source', '_make',
-                        'os._exit'))
-  --check-protected-access-in-special-methods <y or n>
-                        Warn about protected attribute access inside special
-                        methods (default: False)
-
-Logging:
-  Checks use of the logging module.
-
-  --logging-modules <comma separated list>
-                        Logging modules to check that the string format
-                        arguments are in logging function parameter format.
-                        (default: ('logging',))
-  --logging-format-style <old (%) or new ({)>
-                        The type of string formatting that logging methods do.
-                        `old` means using % formatting, `new` is for `{}`
-                        formatting. (default: old)
-
 Spelling:
   Check spelling in comments and docstrings.
 
@@ -396,58 +343,6 @@ Spelling:
                         considered directives if they appear at the beginning
                         of a comment and should not be checked. (default: fmt:
                         on,fmt: off,noqa:,noqa,nosec,isort:skip,mypy:)
-
-Imports:
-  BaseChecker for import statements.
-
-  --deprecated-modules <modules>
-                        Deprecated modules which should not be used, separated
-                        by a comma. (default: ())
-  --preferred-modules <module:preferred-module>
-                        Couples of modules and preferred modules, separated by
-                        a comma. (default: ())
-  --import-graph <file.gv>
-                        Output a graph (.gv or any supported image format) of
-                        all (i.e. internal and external) dependencies to the
-                        given file (report RP0402 must not be disabled).
-                        (default: )
-  --ext-import-graph <file.gv>
-                        Output a graph (.gv or any supported image format) of
-                        external dependencies to the given file (report RP0402
-                        must not be disabled). (default: )
-  --int-import-graph <file.gv>
-                        Output a graph (.gv or any supported image format) of
-                        internal dependencies to the given file (report RP0402
-                        must not be disabled). (default: )
-  --known-standard-library <modules>
-                        Force import order to recognize a module as part of
-                        the standard compatibility libraries. (default: ())
-  --known-third-party <modules>
-                        Force import order to recognize a module as part of a
-                        third party library. (default: ('enchant',))
-  --allow-any-import-level <modules>
-                        List of modules that can be imported at any level, not
-                        just the top level one. (default: ())
-  --allow-wildcard-with-all <y or n>
-                        Allow wildcard imports from modules that define
-                        __all__. (default: False)
-  --allow-reexport-from-package <y or n>
-                        Allow explicit reexports by alias from a package
-                        __init__. (default: False)
-
-String:
-  Check string literals.
-
-  --check-str-concat-over-line-jumps <y or n>
-                        This flag controls whether the implicit-str-concat
-                        should generate a warning on implicit string
-                        concatenation in sequences defined over several lines.
-                        (default: False)
-  --check-quote-consistency <y or n>
-                        This flag controls whether inconsistent-quotes
-                        generates a warning when the character used as a quote
-                        delimiter is used inconsistently within a module.
-                        (default: False)
 
 Typecheck:
   Try to find bugs in the code using type inference.
@@ -511,6 +406,155 @@ Typecheck:
                         List of decorators that change the signature of a
                         decorated function. (default: [])
 
+Method_args:
+  BaseChecker for method_args.
+
+  --timeout-methods <comma separated list>
+                        List of qualified names (i.e., library.method) which
+                        require a timeout parameter e.g.
+                        'requests.api.get,requests.api.post' (default:
+                        ('requests.api.delete', 'requests.api.get',
+                        'requests.api.head', 'requests.api.options',
+                        'requests.api.patch', 'requests.api.post',
+                        'requests.api.put', 'requests.api.request'))
+
+Classes:
+  Checker for class nodes.
+
+  --defining-attr-methods <method names>
+                        List of method names used to declare (i.e. assign)
+                        instance attributes. (default: ('__init__', '__new__',
+                        'setUp', 'asyncSetUp', '__post_init__'))
+  --valid-classmethod-first-arg <argument names>
+                        List of valid names for the first argument in a class
+                        method. (default: ('cls',))
+  --valid-metaclass-classmethod-first-arg <argument names>
+                        List of valid names for the first argument in a
+                        metaclass class method. (default: ('mcs',))
+  --exclude-protected <protected access exclusions>
+                        List of member names, which should be excluded from
+                        the protected access warning. (default: ('_asdict',
+                        '_fields', '_replace', '_source', '_make',
+                        'os._exit'))
+  --check-protected-access-in-special-methods <y or n>
+                        Warn about protected attribute access inside special
+                        methods (default: False)
+
+Exceptions:
+  Exception related checks.
+
+  --overgeneral-exceptions <comma-separated class names>
+                        Exceptions that will emit a warning when caught.
+                        (default: ('builtins.BaseException',
+                        'builtins.Exception'))
+
+Similarities:
+  Checks for similarities and duplicated code.
+
+  --min-similarity-lines <int>
+                        Minimum lines number of a similarity. (default: 4)
+  --ignore-comments <y or n>
+                        Comments are removed from the similarity computation
+                        (default: True)
+  --ignore-docstrings <y or n>
+                        Docstrings are removed from the similarity computation
+                        (default: True)
+  --ignore-imports <y or n>
+                        Imports are removed from the similarity computation
+                        (default: True)
+  --ignore-signatures <y or n>
+                        Signatures are removed from the similarity computation
+                        (default: True)
+
+Format:
+  Formatting checker.
+
+  --max-line-length <int>
+                        Maximum number of characters on a single line.
+                        Pylint's default of 100 is based on PEP 8's guidance
+                        that teams may choose line lengths up to 99
+                        characters. (default: 100)
+  --ignore-long-lines <regexp>
+                        Regexp for a line that is allowed to be longer than
+                        the limit. (default: ^\s*(# )?<?https?://\S+>?$)
+  --single-line-if-stmt <y or n>
+                        Allow the body of an if to be on the same line as the
+                        test if there is no else. (default: False)
+  --single-line-class-stmt <y or n>
+                        Allow the body of a class to be on the same line as
+                        the declaration if body contains single statement.
+                        (default: False)
+  --max-module-lines <int>
+                        Maximum number of lines in a module. (default: 1000)
+  --indent-string <string>
+                        String used as indentation unit. This is usually " "
+                        (4 spaces) or "  " (1 tab). (default: )
+  --indent-after-paren <int>
+                        Number of spaces of indent required inside a hanging
+                        or continued line. (default: 4)
+  --expected-line-ending-format <empty or LF or CRLF>
+                        Expected format of line ending, e.g. empty (any line
+                        ending), LF or CRLF. (default: )
+
+String:
+  Check string literals.
+
+  --check-str-concat-over-line-jumps <y or n>
+                        This flag controls whether the implicit-str-concat
+                        should generate a warning on implicit string
+                        concatenation in sequences defined over several lines.
+                        (default: False)
+  --check-quote-consistency <y or n>
+                        This flag controls whether inconsistent-quotes
+                        generates a warning when the character used as a quote
+                        delimiter is used inconsistently within a module.
+                        (default: False)
+
+Variables:
+  BaseChecker for variables.
+
+  --init-import <y or n>
+                        Tells whether we should check for unused import in
+                        __init__ files. (default: False)
+  --dummy-variables-rgx <regexp>
+                        A regular expression matching the name of dummy
+                        variables (i.e. expected to not be used). (default: _+
+                        $|(_[a-zA-Z0-9_]*[a-zA-Z0-
+                        9]+?$)|dummy|^ignored_|^unused_)
+  --additional-builtins <comma separated list>
+                        List of additional names supposed to be defined in
+                        builtins. Remember that you should avoid defining new
+                        builtins when possible. (default: ())
+  --callbacks <callbacks>
+                        List of strings which can identify a callback function
+                        by name. A callback name must start or end with one of
+                        those strings. (default: ('cb_', '_cb'))
+  --redefining-builtins-modules <comma separated list>
+                        List of qualified module names which can have objects
+                        that can redefine builtins. (default: ('six.moves',
+                        'past.builtins', 'future.builtins', 'builtins', 'io'))
+  --ignored-argument-names <regexp>
+                        Argument names that match this expression will be
+                        ignored. (default:
+                        re.compile('_.*|^ignored_|^unused_'))
+  --allow-global-unused-variables <y or n>
+                        Tells whether unused global variables should be
+                        treated as a violation. (default: True)
+  --allowed-redefined-builtins <comma separated list>
+                        List of names allowed to shadow builtins (default: ())
+
+Logging:
+  Checks use of the logging module.
+
+  --logging-modules <comma separated list>
+                        Logging modules to check that the string format
+                        arguments are in logging function parameter format.
+                        (default: ('logging',))
+  --logging-format-style <old (%) or new ({)>
+                        The type of string formatting that logging methods do.
+                        `old` means using % formatting, `new` is for `{}`
+                        formatting. (default: old)
+
 Design:
   Checker of potential misdesigns.
 
@@ -549,6 +593,37 @@ Design:
                         List of regular expressions of class ancestor names to
                         ignore when counting public methods (see R0903)
                         (default: [])
+
+Miscellaneous:
+  BaseChecker for encoding issues and fixme notes.
+
+  --notes <comma separated values>
+                        List of note tags to take in consideration, separated
+                        by a comma. (default: ('FIXME', 'XXX', 'TODO'))
+  --notes-rgx <regexp>  Regular expression of note tags to take in
+                        consideration. (default: )
+  --check-fixme-in-docstring <y or n>
+                        Whether or not to search for fixme's in docstrings.
+                        (default: False)
+
+Refactoring:
+  Looks for code which can be refactored.
+
+  --max-nested-blocks <int>
+                        Maximum number of nested blocks for function / method
+                        body (default: 5)
+  --never-returning-functions <members names>
+                        Complete name of functions that never returns. When
+                        checking for inconsistent-return-statements if a never
+                        returning function is called then it will be
+                        considered as an explicit return statement and no
+                        message will be printed. (default: ('sys.exit',
+                        'argparse.parse_error'))
+  --suggest-join-with-non-empty-separator <y or n>
+                        Let 'consider-using-join' be raised when the separator
+                        to join on would be non-empty (resulting in expected
+                        fixes of the type: ``"- " + " - ".join(items)``)
+                        (default: True)
 
 Basic:
   --good-names <names>  Good variable names which should always be accepted,
@@ -689,118 +764,43 @@ Basic:
                         Minimum line length for functions/classes that require
                         docstrings, shorter ones are exempt. (default: -1)
 
-Similarities:
-  Checks for similarities and duplicated code.
+Imports:
+  BaseChecker for import statements.
 
-  --min-similarity-lines <int>
-                        Minimum lines number of a similarity. (default: 4)
-  --ignore-comments <y or n>
-                        Comments are removed from the similarity computation
-                        (default: True)
-  --ignore-docstrings <y or n>
-                        Docstrings are removed from the similarity computation
-                        (default: True)
-  --ignore-imports <y or n>
-                        Imports are removed from the similarity computation
-                        (default: True)
-  --ignore-signatures <y or n>
-                        Signatures are removed from the similarity computation
-                        (default: True)
-
-Miscellaneous:
-  BaseChecker for encoding issues and fixme notes.
-
-  --notes <comma separated values>
-                        List of note tags to take in consideration, separated
-                        by a comma. (default: ('FIXME', 'XXX', 'TODO'))
-  --notes-rgx <regexp>  Regular expression of note tags to take in
-                        consideration. (default: )
-  --check-fixme-in-docstring <y or n>
-                        Whether or not to search for fixme's in docstrings.
-                        (default: False)
-
-Format:
-  Formatting checker.
-
-  --max-line-length <int>
-                        Maximum number of characters on a single line.
-                        Pylint's default of 100 is based on PEP 8's guidance
-                        that teams may choose line lengths up to 99
-                        characters. (default: 100)
-  --ignore-long-lines <regexp>
-                        Regexp for a line that is allowed to be longer than
-                        the limit. (default: ^\s*(# )?<?https?://\S+>?$)
-  --single-line-if-stmt <y or n>
-                        Allow the body of an if to be on the same line as the
-                        test if there is no else. (default: False)
-  --single-line-class-stmt <y or n>
-                        Allow the body of a class to be on the same line as
-                        the declaration if body contains single statement.
-                        (default: False)
-  --max-module-lines <int>
-                        Maximum number of lines in a module. (default: 1000)
-  --indent-string <string>
-                        String used as indentation unit. This is usually " "
-                        (4 spaces) or "  " (1 tab). (default: )
-  --indent-after-paren <int>
-                        Number of spaces of indent required inside a hanging
-                        or continued line. (default: 4)
-  --expected-line-ending-format <empty or LF or CRLF>
-                        Expected format of line ending, e.g. empty (any line
-                        ending), LF or CRLF. (default: )
-
-Method_args:
-  BaseChecker for method_args.
-
-  --timeout-methods <comma separated list>
-                        List of qualified names (i.e., library.method) which
-                        require a timeout parameter e.g.
-                        'requests.api.get,requests.api.post' (default:
-                        ('requests.api.delete', 'requests.api.get',
-                        'requests.api.head', 'requests.api.options',
-                        'requests.api.patch', 'requests.api.post',
-                        'requests.api.put', 'requests.api.request'))
-
-Variables:
-  BaseChecker for variables.
-
-  --init-import <y or n>
-                        Tells whether we should check for unused import in
-                        __init__ files. (default: False)
-  --dummy-variables-rgx <regexp>
-                        A regular expression matching the name of dummy
-                        variables (i.e. expected to not be used). (default: _+
-                        $|(_[a-zA-Z0-9_]*[a-zA-Z0-
-                        9]+?$)|dummy|^ignored_|^unused_)
-  --additional-builtins <comma separated list>
-                        List of additional names supposed to be defined in
-                        builtins. Remember that you should avoid defining new
-                        builtins when possible. (default: ())
-  --callbacks <callbacks>
-                        List of strings which can identify a callback function
-                        by name. A callback name must start or end with one of
-                        those strings. (default: ('cb_', '_cb'))
-  --redefining-builtins-modules <comma separated list>
-                        List of qualified module names which can have objects
-                        that can redefine builtins. (default: ('six.moves',
-                        'past.builtins', 'future.builtins', 'builtins', 'io'))
-  --ignored-argument-names <regexp>
-                        Argument names that match this expression will be
-                        ignored. (default:
-                        re.compile('_.*|^ignored_|^unused_'))
-  --allow-global-unused-variables <y or n>
-                        Tells whether unused global variables should be
-                        treated as a violation. (default: True)
-  --allowed-redefined-builtins <comma separated list>
-                        List of names allowed to shadow builtins (default: ())
-
-Exceptions:
-  Exception related checks.
-
-  --overgeneral-exceptions <comma-separated class names>
-                        Exceptions that will emit a warning when caught.
-                        (default: ('builtins.BaseException',
-                        'builtins.Exception'))
+  --deprecated-modules <modules>
+                        Deprecated modules which should not be used, separated
+                        by a comma. (default: ())
+  --preferred-modules <module:preferred-module>
+                        Couples of modules and preferred modules, separated by
+                        a comma. (default: ())
+  --import-graph <file.gv>
+                        Output a graph (.gv or any supported image format) of
+                        all (i.e. internal and external) dependencies to the
+                        given file (report RP0402 must not be disabled).
+                        (default: )
+  --ext-import-graph <file.gv>
+                        Output a graph (.gv or any supported image format) of
+                        external dependencies to the given file (report RP0402
+                        must not be disabled). (default: )
+  --int-import-graph <file.gv>
+                        Output a graph (.gv or any supported image format) of
+                        internal dependencies to the given file (report RP0402
+                        must not be disabled). (default: )
+  --known-standard-library <modules>
+                        Force import order to recognize a module as part of
+                        the standard compatibility libraries. (default: ())
+  --known-third-party <modules>
+                        Force import order to recognize a module as part of a
+                        third party library. (default: ('enchant',))
+  --allow-any-import-level <modules>
+                        List of modules that can be imported at any level, not
+                        just the top level one. (default: ())
+  --allow-wildcard-with-all <y or n>
+                        Allow wildcard imports from modules that define
+                        __all__. (default: False)
+  --allow-reexport-from-package <y or n>
+                        Allow explicit reexports by alias from a package
+                        __init__. (default: False)
 ```
 
 ### Installation on mega-linter Docker image
@@ -808,11 +808,74 @@ Exceptions:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=pylint
-ARG PIP_PYLINT_VERSION=4.0.5
+ARG PIP_PYLINT_VERSION=4.0.6
 # renovate: datasource=pypi depName=typing-extensions
 ARG PIP_TYPING_EXTENSIONS_VERSION=4.15.0
 ```
 
 - PIP packages (Python):
-  - [pylint==4.0.5](https://pypi.org/project/pylint/4.0.5)
+  - [pylint==4.0.6](https://pypi.org/project/pylint/4.0.6)
   - [typing-extensions==4.15.0](https://pypi.org/project/typing-extensions/4.15.0)
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### PYTHON_PYLINT_ERROR_CONFIG_PARSE
+
+**Detection pattern (regex):**
+
+```text
+(Error in provided config file|Unable to load configuration|Error while parsing|argument --[A-Za-z-]+: )
+```
+
+**Resolution guidance:**
+
+```text
+pylint could not parse the configuration file (e.g. `.pylintrc`, `pyproject.toml`).
+Resolutions:
+  - Validate the TOML/INI syntax of your pylint config.
+  - Make sure option names and section headers (`[MESSAGES CONTROL]`, `[tool.pylint.*]`) are correct for the pinned pylint version.
+  - Run `pylint --generate-rcfile` to compare with a known-good template.
+```
+
+### PYTHON_PYLINT_ERROR_PLUGIN_LOAD
+
+**Detection pattern (regex):**
+
+```text
+(Unable to load plugin|Problem importing module)
+```
+
+**Resolution guidance:**
+
+```text
+pylint failed to load a plugin declared in `load-plugins` (e.g. `pylint-django`, `pylint-pydantic`).
+Resolutions:
+  - Check the plugin name spelling in your pylint config.
+  - Pre-install the missing plugin into pylint's venv via a pre-command in your .mega-linter.yml:
+      PYTHON_PYLINT_PRE_COMMANDS:
+        - command: "pip install pylint-django"
+          venv: pylint
+          continue_if_failed: false
+  - Or remove the plugin from `load-plugins` if it is not needed.
+```
+
+### PYTHON_PYLINT_ERROR_ASTROID_CRASH
+
+**Detection pattern (regex):**
+
+```text
+(astroid-error|Fatal error while checking |F0002|AstroidError)
+```
+
+**Resolution guidance:**
+
+```text
+pylint crashed inside its astroid AST parser. This is usually a pylint/astroid bug, not a problem with your code.
+Resolutions:
+  - Run pylint with `--errors-only` to narrow the offending file.
+  - Disable astroid plugins (`load-plugins`) one by one to find the culprit.
+  - Report the traceback to https://github.com/pylint-dev/pylint/issues.
+```
+

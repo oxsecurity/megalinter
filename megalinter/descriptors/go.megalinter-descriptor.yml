@@ -9,12 +9,10 @@ file_extensions:
 install:
   dockerfile:
     - |-
-      # renovate: datasource=repology depName=alpine_edge/go versioning=loose
-      ARG GO_ALPINE_VERSION=1.26.2-r0
+      # renovate: datasource=repology depName=alpine_3_24/go versioning=loose
+      ARG GO_ALPINE_VERSION=1.26.3-r0
     - |-
       RUN apk add --no-cache \
-          --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main \
-          --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
           go=${GO_ALPINE_VERSION}
 test_folder: golang
 linters:
@@ -78,6 +76,46 @@ linters:
     cli_lint_fix_arg_name: --fix
     cli_version_arg_name: "version"
     version_extract_regex: "((\\d+(\\.\\d+)+)|(master))"
+    common_linter_errors:
+      - identifier: GO_GOLANGCI_LINT_ERROR_MODULE_DOWNLOAD
+        regex: "(go: .*: (reading|module .*: Get) .*: (dial tcp|TLS handshake|connection refused)|module lookup disabled by GOPROXY=off|verifying .*: checksum mismatch)"
+        message: |-
+          golangci-lint could not download Go module dependencies before typechecking.
+          This is a network/proxy issue, not a lint finding.
+          Resolutions:
+            - Retry the run; module proxy outages are usually transient.
+            - If your project uses a private Go module proxy, set `GOPROXY` / `GOPRIVATE` and whitelist them for this linter in your .mega-linter.yml:
+                GO_GOLANGCI_LINT_UNSECURED_ENV_VARIABLES:
+                  - GOPROXY
+                  - GOPRIVATE
+                  - GOSUMDB
+                  - GONOSUMCHECK
+            - Pre-populate `$GOPATH/pkg/mod` in CI cache to avoid downloads on each run.
+      - identifier: GO_GOLANGCI_LINT_ERROR_CONFIG_INVALID
+        regex: "(can't load config:|failed to load config|unsupported version of the configuration|is not a linter, it cannot be enabled or disabled|is a formatter)"
+        message: |-
+          golangci-lint could not load the `.golangci.yml` configuration file.
+          Resolutions:
+            - Validate the YAML syntax and indentation of `.golangci.yml`.
+            - Ensure all linter names referenced under `enable:` / `disable:` exist in the installed golangci-lint version (some linters were renamed/removed across major versions).
+            - Run `golangci-lint config verify` locally to reproduce.
+      - identifier: GO_GOLANGCI_LINT_ERROR_TYPECHECK
+        regex: "(typecheck.*could not (import|load)|level=error.*build (failed|error)|# .*\\n.*: undefined:)"
+        message: |-
+          golangci-lint's typecheck stage failed to build the Go program. golangci-lint requires the code to compile in order to run most analyzers.
+          Resolutions:
+            - Run `go build ./...` locally; fix the underlying compilation errors first.
+            - Ensure all required packages are in `go.mod` and the module cache is reachable.
+      - identifier: GO_GOLANGCI_LINT_ERROR_OUT_OF_MEMORY
+        regex: "(runtime: out of memory|fatal error: runtime: out of memory|signal: killed)"
+        message: |-
+          golangci-lint was killed (OOM) while analyzing a large Go project.
+          Resolutions:
+            - Increase the memory available to the MegaLinter container/runner.
+            - Reduce scope by setting `GO_GOLANGCI_LINT_FILTER_REGEX_INCLUDE` / `..._EXCLUDE` or by enabling fewer linters in `.golangci.yml`.
+            - Temporarily mark the linter as non-blocking by adding to your .mega-linter.yml:
+                DISABLE_ERRORS_LINTERS:
+                  - GO_GOLANGCI_LINT
     examples:
       - "golangci-lint run myfile.go"
       - "golangci-lint run -c .golangci.yml myfile.go"
@@ -160,7 +198,7 @@ linters:
           ARG GO_REVIVE_VERSION=v1.15.0
         - |-
           # renovate: datasource=docker depName=golang versioning=semver
-          ARG GO_IMAGE_VERSION=1.26.2
+          ARG GO_IMAGE_VERSION=1.26.4
         - |-
           FROM golang:${GO_IMAGE_VERSION}-alpine AS revive
           ## The golang image used as a builder is a temporary workaround (https://github.com/mgechev/revive/issues/787)

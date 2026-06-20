@@ -24,7 +24,7 @@ description: How to use stylua (configure, ignore files, ignore errors, help & v
 
 ## stylua documentation
 
-- Version in MegaLinter: **2.0.0**
+- Version in MegaLinter: **2.5.2**
 - Visit [Official Web Site](https://github.com/JohnnyMorganz/StyLua#readme){target=_blank}
 - See [How to configure stylua rules](https://github.com/JohnnyMorganz/StyLua?tab=readme-ov-file#configuration){target=_blank}
 - See [How to disable stylua rules in files](https://github.com/JohnnyMorganz/StyLua?tab=readme-ov-file#ignoring-parts-of-a-file){target=_blank}
@@ -71,7 +71,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       135        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       136        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -99,7 +99,7 @@ stylua --config-path chktexrc.toml --check myfile.lua
 ### Help content
 
 ```shell
-stylua 2.0.0
+stylua 2.5.2
 A utility to format Lua code
 
 USAGE:
@@ -127,8 +127,15 @@ OPTIONS:
     -h, --help
             Print help information
 
+        --lsp
+            Run Stylua as a language server (following LSP protocol)
+
         --no-editorconfig
             Disables the EditorConfig feature
+
+        --no-ignore-vcs
+            Whether to continue formatting files that are excluded from version control (e.g.,
+            listed in .gitignore)
 
         --num-threads <NUM_THREADS>
             The number of threads to use to format files in parallel [default: 4]
@@ -184,6 +191,10 @@ FORMATTING OPTIONS:
         --line-endings <LINE_ENDINGS>
             The type of line endings to use [possible values: Unix, Windows]
 
+        --preserve-block-newline-gaps <PRESERVE_BLOCK_NEWLINE_GAPS>
+            Specify whether to preserve leading and trailing newline gaps for blocks [possible
+            values: Never, Preserve]
+
         --quote-style <QUOTE_STYLE>
             The style of quotes to use in string literals [possible values: AutoPreferDouble,
             AutoPreferSingle, ForceDouble, ForceSingle]
@@ -195,24 +206,31 @@ FORMATTING OPTIONS:
             [possible values: Never, Definitions, Calls, Always]
 
         --syntax <SYNTAX>
-            The type of Lua syntax to parse [possible values: All, Lua51]
+            The type of Lua syntax to parse [possible values: All, Lua51, Lua52, Lua53, Lua54, Luau,
+            LuaJit, CfxLua]
 ```
 
 ### Installation on mega-linter Docker image
 
 - Dockerfile commands :
 ```dockerfile
-# Parent descriptor install
-RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf - \
-    && cd lua-5.3.5 \
-    && make linux \
-    && make install \
-    && cd .. && rm -r lua-5.3.5/
-
-# Linter install
-# renovate: datasource=crate depName=stylua
-ARG CARGO_STYLUA_VERSION=2.0.0
+# renovate: datasource=github-releases depName=JohnnyMorganz/StyLua extractVersion=^v(?<version>.+)$
+ARG CARGO_STYLUA_VERSION=2.5.2
+FROM alpine:3.24 AS cargo-bin-stylua
+ARG TARGETARCH
+ARG CARGO_STYLUA_VERSION
+RUN set -eu; mkdir -p /out/bin; \
+    apk add --no-cache curl ca-certificates unzip; \
+    case "$TARGETARCH" in \
+      amd64) ARCH=x86_64 ;; \
+      arm64) ARCH=aarch64 ;; \
+      *) echo "unsupported arch: $TARGETARCH" >&2; exit 1 ;; \
+    esac; \
+    curl -fsSL -o /tmp/stylua.zip \
+      "https://github.com/JohnnyMorganz/StyLua/releases/download/v${CARGO_STYLUA_VERSION}/stylua-linux-${ARCH}-musl.zip" && \
+    unzip /tmp/stylua.zip -d /out/bin && \
+    rm /tmp/stylua.zip && \
+    chmod +x /out/bin/stylua
+COPY --link --from=cargo-bin-stylua /out/bin/stylua /usr/bin/stylua
 ```
 
-- Cargo packages (Rust):
-  - [stylua@2.0.0](https://crates.io/crates/stylua/2.0.0)

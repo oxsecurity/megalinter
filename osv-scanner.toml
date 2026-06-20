@@ -1,0 +1,10 @@
+# osv-scanner ignore list
+# Format reference: https://google.github.io/osv-scanner/configuration/
+
+# torch (PyTorch) - GHSA-rrmf-rvhw-rf47 (CVSS 5.3 Medium, no fix available)
+# torch is a transitive dependency of LangChain (used by llm_advisor.py).
+# MegaLinter only uses torch for LLM inference on trusted local files; no
+# network server, no untrusted input from external sources.
+[[IgnoredVulns]]
+id = "GHSA-rrmf-rvhw-rf47"
+reason = "torch: medium CVE with no fix available; torch is used only for local LLM inference, not as a server or with untrusted input"

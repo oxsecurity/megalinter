@@ -15,7 +15,6 @@ ML_DOCKER_OWNER = "oxsecurity"
 ML_DOCKER_NAME = "megalinter"
 ML_DOCKER_IMAGE_HOST = "ghcr.io"
 DOCKER_PACKAGES_ROOT_URL = "https://hub.docker.com/v2/repositories"
-GHCR_PACKAGES_ROOT_URL = "https://github.com/oxsecurity/megalinter/pkgs/container"
 ML_DOCKER_IMAGE_WITH_HOST = f"{ML_DOCKER_IMAGE_HOST}/{ML_DOCKER_OWNER}/{ML_DOCKER_NAME}"
 ML_DOCKER_IMAGE = f"{ML_DOCKER_OWNER}/{ML_DOCKER_NAME}"
 ML_DOCKER_IMAGE_LEGACY = "nvuillam/mega-linter"
@@ -30,13 +29,20 @@ DEFAULT_SARIF_VERSION = "2.1.0"
 # MAJOR-RELEASE-IMPACTED
 DEFAULT_RELEASE = "v9"
 
-DEFAULT_DOCKERFILE_ARGS: list[str] = []
+DEFAULT_DOCKERFILE_ARGS: list[str] = [
+    "ARG TARGETPLATFORM",
+    "ARG TARGETARCH",
+]
 
 DEFAULT_DOCKERFILE_APK_PACKAGES = [
     "bash",
     "ca-certificates",
     "curl",
     "gcc",
+    # glibc compatibility shim so prebuilt linux-x86_64-unknown-linux-gnu
+    # binaries (zizmor, sarif-fmt, shellcheck-sarif, …) run on the Alpine
+    # base, including in standalone per-linter images.
+    "gcompat",
     "git",
     "git-lfs",
     "libffi-dev",
@@ -70,24 +76,49 @@ DEFAULT_DOCKERFILE_GEM_APK_PACKAGES = [
 ]
 
 DEFAULT_DOCKERFILE_PIP_ARGS = [
-    "# renovate: datasource=pypi depName=pip\nARG PIP_PIP_VERSION=26.0.1",
+    "# renovate: datasource=pypi depName=pip\nARG PIP_PIP_VERSION=26.1.2",
 ]
 
 DEFAULT_DOCKERFILE_PIPENV_ARGS = [
-    "# renovate: datasource=pypi depName=virtualenv\nARG PIP_VIRTUALENV_VERSION=21.2.4",
+    "# renovate: datasource=pypi depName=virtualenv\nARG PIP_VIRTUALENV_VERSION=21.5.1",
 ]
 
 DEFAULT_DOCKERFILE_RUST_ARGS = [
-    "# renovate: datasource=github-tags depName=rust-lang/rust\nARG RUST_RUST_VERSION=1.95.0",
+    "# renovate: datasource=github-tags depName=rust-lang/rust\nARG RUST_RUST_VERSION=1.96.0",
 ]
 
 DEFAULT_DOCKERFILE_FLAVOR_ARGS = [
     "# renovate: datasource=crate depName=sarif-fmt\nARG CARGO_SARIF_FMT_VERSION=0.8.0",
 ]
 
-DEFAULT_DOCKERFILE_FLAVOR_CARGO_PACKAGES = [
-    "sarif-fmt@${CARGO_SARIF_FMT_VERSION}",
+# sarif-fmt: on amd64 download the prebuilt linux-x86_64 binary from
+# sarif-rs Releases (~5 s). On arm64 the project ships no prebuilt, so
+# fall back to compiling from source with Alpine's rust toolchain.
+# The runtime image installs `gcompat` so the glibc binary runs on Alpine.
+DEFAULT_DOCKERFILE_FLAVOR_FROM_STAGES = [
+    "FROM alpine:3.24 AS cargo-bin-sarif-fmt\n"
+    "ARG TARGETARCH\n"
+    "ARG CARGO_SARIF_FMT_VERSION\n"
+    "RUN set -eu; mkdir -p /out/bin; \\\n"
+    "    apk add --no-cache curl ca-certificates; \\\n"
+    '    if [ "$TARGETARCH" = "amd64" ]; then \\\n'
+    "      curl -fsSL -o /out/bin/sarif-fmt"
+    ' "https://github.com/psastras/sarif-rs/releases/download/'
+    'sarif-fmt-v${CARGO_SARIF_FMT_VERSION}/sarif-fmt-x86_64-unknown-linux-gnu"; \\\n'
+    "    else \\\n"
+    "      apk add --no-cache build-base musl-dev openssl-dev"
+    " openssl-libs-static pkgconfig bash perl rust cargo && \\\n"
+    "      cargo install --force --locked --root /out"
+    ' "sarif-fmt@${CARGO_SARIF_FMT_VERSION}"; \\\n'
+    "    fi; \\\n"
+    "    chmod +x /out/bin/sarif-fmt",
 ]
+
+DEFAULT_DOCKERFILE_FLAVOR_COPY_LINES = [
+    "COPY --link --from=cargo-bin-sarif-fmt /out/bin/sarif-fmt /usr/bin/sarif-fmt",
+]
+
+DEFAULT_DOCKERFILE_FLAVOR_CARGO_PACKAGES: list[str] = []
 
 OX_MARKDOWN_LINK = (
     "[![MegaLinter is graciously provided by OX Security]"

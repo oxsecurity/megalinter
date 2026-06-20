@@ -11,7 +11,7 @@ import re
 import shutil
 import subprocess
 import sys
-from datetime import date, datetime
+from datetime import datetime
 from pathlib import Path
 from shutil import copyfile, which
 from typing import Any
@@ -26,6 +26,7 @@ import terminaltables
 import webpreview
 import yaml
 from bs4 import BeautifulSoup
+from docker_stats import update_docker_pulls_counter
 from giturlparse import parse
 from megalinter import config, utils
 from megalinter.constants import (
@@ -35,6 +36,8 @@ from megalinter.constants import (
     DEFAULT_DOCKERFILE_DOCKER_ARGS,
     DEFAULT_DOCKERFILE_FLAVOR_ARGS,
     DEFAULT_DOCKERFILE_FLAVOR_CARGO_PACKAGES,
+    DEFAULT_DOCKERFILE_FLAVOR_COPY_LINES,
+    DEFAULT_DOCKERFILE_FLAVOR_FROM_STAGES,
     DEFAULT_DOCKERFILE_GEM_APK_PACKAGES,
     DEFAULT_DOCKERFILE_GEM_ARGS,
     DEFAULT_DOCKERFILE_NPM_APK_PACKAGES,
@@ -44,14 +47,9 @@ from megalinter.constants import (
     DEFAULT_DOCKERFILE_RUST_ARGS,
     DEFAULT_RELEASE,
     DEFAULT_REPORT_FOLDER_NAME,
-    DOCKER_PACKAGES_ROOT_URL,
-    GHCR_PACKAGES_ROOT_URL,
     ML_DOC_URL_BASE,
     ML_DOCKER_IMAGE,
-    ML_DOCKER_IMAGE_LEGACY,
-    ML_DOCKER_IMAGE_LEGACY_V5,
     ML_DOCKER_IMAGE_WITH_HOST,
-    ML_DOCKER_NAME,
     ML_REPO,
     ML_REPO_URL,
 )
@@ -108,7 +106,6 @@ LICENSES_FILE = REPO_HOME + "/.automation/generated/linter-licenses.json"
 USERS_FILE = REPO_HOME + "/.automation/generated/megalinter-users.json"
 HELPS_FILE = REPO_HOME + "/.automation/generated/linter-helps.json"
 LINKS_PREVIEW_FILE = REPO_HOME + "/.automation/generated/linter-links-previews.json"
-DOCKER_STATS_FILE = REPO_HOME + "/.automation/generated/flavors-stats.json"
 PLUGINS_FILE = REPO_HOME + "/.automation/plugins.yml"
 FLAVORS_DIR = REPO_HOME + "/flavors"
 LINTERS_DIR = REPO_HOME + "/linters"
@@ -333,7 +330,9 @@ branding:
         ]
     extra_lines += [
         "COPY entrypoint.sh /entrypoint.sh",
-        "RUN chmod +x entrypoint.sh",
+        "COPY sh/setup-runtime-user /usr/bin/setup-runtime-user",
+        "RUN chmod +x entrypoint.sh && \\",
+        "    chmod u+x /usr/bin/setup-runtime-user",
         'ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]',
     ]
     build_dockerfile(
@@ -343,7 +342,11 @@ branding:
         flavor,
         extra_lines,
         DEFAULT_DOCKERFILE_FLAVOR_ARGS.copy(),
-        {"cargo": DEFAULT_DOCKERFILE_FLAVOR_CARGO_PACKAGES.copy()},
+        {
+            "cargo": DEFAULT_DOCKERFILE_FLAVOR_CARGO_PACKAGES.copy(),
+            "from": DEFAULT_DOCKERFILE_FLAVOR_FROM_STAGES.copy(),
+            "copy": DEFAULT_DOCKERFILE_FLAVOR_COPY_LINES.copy(),
+        },
     )
     return dockerfile
 
@@ -360,11 +363,11 @@ def build_dockerfile(
     if extra_packages is None:
         extra_packages = {}
     # Gather all dockerfile commands
-    docker_from = []
+    docker_from = list(extra_packages.get("from", []))
     docker_arg = DEFAULT_DOCKERFILE_ARGS.copy()
     if extra_args is not None:
         docker_arg += extra_args
-    docker_copy = []
+    docker_copy = list(extra_packages.get("copy", []))
     docker_other = []
     all_dockerfile_items = []
     apk_packages = DEFAULT_DOCKERFILE_APK_PACKAGES.copy()
@@ -469,7 +472,6 @@ def build_dockerfile(
                     is_docker_other_run = False
                     docker_other += [dockerfile_item]
                 all_dockerfile_items += [dockerfile_item]
-            docker_other += ["#"]
         # Collect python packages
         if "apk" in item["install"]:
             apk_packages += item["install"]["apk"]
@@ -502,6 +504,74 @@ def build_dockerfile(
         docker_arg += DEFAULT_DOCKERFILE_PIPENV_ARGS.copy()
     if len(cargo_packages) > 0:
         docker_arg += DEFAULT_DOCKERFILE_RUST_ARGS.copy()
+    # cargo packages: emit multi-stage builders BEFORE we compute
+    # FROM/COPY blocks so the added FROM stages and COPY lines are picked up.
+    # The runtime cargo install RUN (#CARGO__START block) is emitted later
+    # alongside the other package-manager RUNs.
+    cargo_install_command = ""
+    keep_rustup = False
+    if len(cargo_packages) > 0:
+        rust_commands = []
+        if "clippy" in cargo_packages:
+            cargo_packages.remove("clippy")
+            rust_commands += ["rustup component add clippy"]
+            keep_rustup = True
+        if "COMPILER_ONLY" in cargo_packages:
+            cargo_packages = [p for p in cargo_packages if p != "COMPILER_ONLY"]
+            keep_rustup = True
+            if not rust_commands:
+                rust_commands += [
+                    'echo "No cargo package to install, we just need rust for dependencies"'
+                ]
+        for cargo_pkg in list(dict.fromkeys(cargo_packages)):
+            m = re.match(r"^([\w.+-]+)@\$\{(\w+)\}$", cargo_pkg)
+            if m:
+                crate_name, arg_name = m.group(1), m.group(2)
+            else:
+                crate_name, arg_name = cargo_pkg.split("@", 1)[0], None
+            stage_name = f"cargo-build-{crate_name}"
+            stage_block = f"FROM rust:${{RUST_RUST_VERSION}}-alpine AS {stage_name}\n"
+            if arg_name is not None:
+                stage_block += f"ARG {arg_name}\n"
+            stage_block += (
+                "RUN apk add --no-cache build-base musl-dev openssl-dev"
+                + " openssl-libs-static pkgconfig bash perl\n"
+                + f"RUN cargo install --force --locked --root /out {cargo_pkg}"
+            )
+            docker_from += [stage_block]
+            docker_copy += [
+                f"COPY --link --from={stage_name} /out/bin/{crate_name} /usr/bin/{crate_name}"
+            ]
+        if keep_rustup is True:
+            rustup_cargo_cmd = " && ".join(rust_commands)
+            cargo_install_command = (
+                "RUN export RUSTUP_HOME=/usr/local/rustup CARGO_HOME=/usr/local/cargo \\\n"
+                + "    && curl https://sh.rustup.rs -sSf |"
+                + " sh -s -- -y --profile minimal --default-toolchain ${RUST_RUST_VERSION} --no-modify-path \\\n"
+                + '    && export PATH="${CARGO_HOME}/bin:${PATH}" \\\n'
+                + "    && rustup default stable \\\n"
+                + f"    && {rustup_cargo_cmd} \\\n"
+                + '    && for bin in "${CARGO_HOME}"/bin/*; do \\\n'
+                + '         ln -sf "$bin" /usr/local/bin/"$(basename "$bin")"; \\\n'
+                + "       done \\\n"
+                + '    && rm -rf "${CARGO_HOME}/registry" "${CARGO_HOME}/git" /root/.cache/sccache\n'
+                + "ENV RUSTUP_HOME=/usr/local/rustup\n"
+                + "ENV CARGO_HOME=/usr/local/cargo\n"
+                + 'ENV PATH="/usr/local/cargo/bin:${PATH}"'
+            )
+    # Pin every standalone `FROM alpine:X.Y` build stage to the runtime image's
+    # Alpine version (parsed from the python base image) so helper stages can never
+    # drift from the base — single source of truth, and avoids musl ABI mismatches
+    # between binaries compiled in a helper stage and the runtime they are copied into.
+    if ALPINE_VERSION != "":
+        docker_from = [
+            re.sub(
+                r"FROM alpine:\d+\.\d+(?:\.\d+)?",
+                f"FROM alpine:{ALPINE_VERSION}",
+                from_stage,
+            )
+            for from_stage in docker_from
+        ]
     # Separate args used in FROM instructions from others
     all_from_instructions = "\n".join(list(dict.fromkeys(docker_from)))
     docker_arg_top = []
@@ -567,50 +637,14 @@ def build_dockerfile(
             + " \\\n    && git config --global core.autocrlf true"
         )
     replace_in_file(dockerfile, "#APK__START", "#APK__END", apk_install_command)
-    # cargo packages
-    cargo_install_command = ""
-    keep_rustup = False
-    if len(cargo_packages) > 0:
-        rust_commands = []
-        if "clippy" in cargo_packages:
-            cargo_packages.remove("clippy")
-            rust_commands += ["rustup component add clippy"]
-            keep_rustup = True
-        # Only COMPILER_ONLY in descriptors just to have rust toolchain in the Dockerfile
-        if all(p == "COMPILER_ONLY" for p in cargo_packages):
-            rust_commands += [
-                'echo "No cargo package to install, we just need rust for dependencies"'
-            ]
-            keep_rustup = True
-        # Cargo packages to install minus empty package
-        elif len(cargo_packages) > 0:
-            cargo_packages = [
-                p for p in cargo_packages if p != "COMPILER_ONLY"
-            ]  # remove empty string packages
-            cargo_cmd = "cargo install --force --locked " + " ".join(
-                list(dict.fromkeys(cargo_packages))
-            )
-            rust_commands += [cargo_cmd]
-        rustup_cargo_cmd = " && ".join(rust_commands)
-        cargo_install_command = (
-            "RUN curl https://sh.rustup.rs -sSf |"
-            + " sh -s -- -y --profile minimal --default-toolchain ${RUST_RUST_VERSION} \\\n"
-            + '    && export PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}" \\\n'
-            + "    && rustup default stable \\\n"
-            + f"    && {rustup_cargo_cmd} \\\n"
-            + "    && rm -rf /root/.cargo/registry /root/.cargo/git "
-            + "/root/.cache/sccache"
-            + (" /root/.rustup" if keep_rustup is False else "")
-            + "\n"
-            + 'ENV PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}"'
-        )
     replace_in_file(dockerfile, "#CARGO__START", "#CARGO__END", cargo_install_command)
     # NPM packages
     npm_install_command = ""
     if len(npm_packages) > 0:
         npm_install_command = (
             "WORKDIR /node-deps\n"
-            + "RUN npm --no-cache install --ignore-scripts --omit=dev \\\n                "
+            + "RUN npm config set prefix /usr/local \\\n"
+            + "    && npm --no-cache install --ignore-scripts --omit=dev \\\n                "
             + " \\\n                ".join(list(dict.fromkeys(npm_packages)))
             + " && \\\n"
             #    + '       echo "Fixing audit issues with npm…" \\\n'
@@ -647,17 +681,22 @@ def build_dockerfile(
             + "rm -rf /root/.cache"
         )
     replace_in_file(dockerfile, "#PIP__START", "#PIP__END", pip_install_command)
-    # Python packages in venv
+    # Python packages in venv: one chained RUN. A single-RUN chain keeps
+    # layer count low (less cache export overhead per build); cache locality
+    # for one-linter-version-bumps was a net loss once the per-layer GHA
+    # cache I/O was measured.
+    pipenv_install_command = ""
     if len(pipvenv_packages.items()) > 0:
         pipenv_install_command = (
-            "RUN uv pip install --system"
-            " --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \\\n"
+            "RUN uv pip install --system --no-cache "
+            "pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \\\n"
         )
         env_path_command = 'ENV PATH="${PATH}"'
+        venv_install_segments = []
         for pip_linter, pip_linter_packages in pipvenv_packages.items():
-            pipenv_install_command += (
-                f'    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/{pip_linter}" '
-                + f'&& VIRTUAL_ENV="/venvs/{pip_linter}" uv pip install --no-cache '
+            venv_install_segments.append(
+                f'    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/{pip_linter}" \\\n'
+                + f'    && VIRTUAL_ENV="/venvs/{pip_linter}" uv pip install --no-cache '
                 + (" ".join(pip_linter_packages))
                 + " \\\n"
                 + f'    && VIRTUAL_ENV="/venvs/{pip_linter}" uv pip install --no-cache --upgrade '
@@ -666,16 +705,13 @@ def build_dockerfile(
                 + f"/venvs/{pip_linter}/lib/python3.13/site-packages/setuptools/_vendor/wheel* \\\n"
             )
             env_path_command += f":/venvs/{pip_linter}/bin"
-        pipenv_install_command = pipenv_install_command[:-2]  # remove last \
+        pipenv_install_command += "".join(venv_install_segments)
         pipenv_install_command += (
-            " \\\n    && "
-            + r"find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete"
-            + " \\\n    && "
-            + "rm -rf /root/.cache\n"
-            + env_path_command
+            "    && find /venvs "
+            + r"\( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete"
+            + " \\\n    && rm -rf /root/.cache\n"
         )
-    else:
-        pipenv_install_command = ""
+        pipenv_install_command += env_path_command
     replace_in_file(
         dockerfile, "#PIPVENV__START", "#PIPVENV__END", pipenv_install_command
     )
@@ -772,6 +808,13 @@ def generate_linter_dockerfiles():
         )
         # Browse descriptor linters
         for linter in descriptor_linters:
+            # Skip disabled linters: they are already excluded from flavor and
+            # main Dockerfiles via match_flavor(), and their per-linter image
+            # is excluded from linters_matrix.json below — so the Dockerfile
+            # is dead code on disk and only confuses contributors.
+            if hasattr(linter, "disabled") and linter.disabled is True:
+                continue
+            validate_common_linter_errors(linter)
             # Unique linter dockerfile
             linter_lower_name = linter.name.lower()
             dockerfile = f"{LINTERS_DIR}/{linter_lower_name}/Dockerfile"
@@ -799,15 +842,17 @@ def generate_linter_dockerfiles():
                 "    CONFIG_REPORTER=false \\",
                 "    SARIF_TO_HUMAN=false" "",
                 # "EXPOSE 80",
-                "RUN mkdir /root/docker_ssh && mkdir /usr/bin/megalinter-sh",
+                "RUN mkdir /tmp/docker_ssh && mkdir /usr/bin/megalinter-sh",
                 "EXPOSE 22",
                 "COPY entrypoint.sh /entrypoint.sh",
                 "COPY sh /usr/bin/megalinter-sh",
                 "COPY sh/megalinter_exec /usr/bin/megalinter_exec",
+                "COPY sh/setup-runtime-user /usr/bin/setup-runtime-user",
                 "COPY sh/motd /etc/motd",
                 'RUN find /usr/bin/megalinter-sh/ -type f -iname "*.sh" -exec chmod +x {} \\; && \\',
                 "    chmod +x entrypoint.sh && \\",
                 "    chmod +x /usr/bin/megalinter_exec && \\",
+                "    chmod u+x /usr/bin/setup-runtime-user && \\",
                 "    echo \"alias megalinter='python -m megalinter.run'\" >> ~/.bashrc && source ~/.bashrc && \\",
                 "    echo \"alias megalinter_exec='/usr/bin/megalinter_exec'\" >> ~/.bashrc && source ~/.bashrc",
                 'RUN export STANDALONE_LINTER_VERSION="$(python -m megalinter.run --input /tmp --linterversion)" && \\',
@@ -2074,12 +2119,60 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             linter_doc_md += success_log_file_content.splitlines()
             linter_doc_md += ["```"]
 
+        # Known non-lint errors (common_linter_errors)
+        linter_doc_md += build_common_linter_errors_md(linter)
+
         # Write md file
         file = Path(f"{REPO_HOME}/docs/descriptors/{lang_lower}_{linter_name_lower}.md")
         file.write_text("\n".join(linter_doc_md) + "\n", encoding="utf-8")
         logging.info("Updated " + file.name)
     linters_tables_md += [""]
     return linters_tables_md
+
+
+def validate_common_linter_errors(linter):
+    entries = getattr(linter, "common_linter_errors", None) or []
+    if not entries:
+        return
+    linter_key = (getattr(linter, "name", None) or "").upper()
+    if not linter_key:
+        return
+    expected_prefix = f"{linter_key}_ERROR_"
+    for entry in entries:
+        identifier = entry.get("identifier", "")
+        if not identifier.startswith(expected_prefix):
+            raise ValueError(
+                f"common_linter_errors identifier '{identifier}' for linter "
+                f"'{linter_key}' must start with '{expected_prefix}'"
+            )
+
+
+def build_common_linter_errors_md(linter):
+    entries = getattr(linter, "common_linter_errors", None) or []
+    if not entries:
+        return []
+    validate_common_linter_errors(linter)
+    md = [
+        "",
+        "## Known errors and resolutions",
+        "",
+        (
+            "When this linter fails for a known non-lint reason "
+            "(remote service unavailable, malformed config, missing credentials, etc.), "
+            "MegaLinter detects the pattern below in the linter output and surfaces the matching guidance."
+        ),
+        "",
+    ]
+    for entry in entries:
+        identifier = entry.get("identifier", "")
+        regex = entry.get("regex", "")
+        message = entry.get("message", "")
+        md += [f"### {identifier}", ""]
+        md += ["**Detection pattern (regex):**", "", "```text", regex, "```", ""]
+        md += ["**Resolution guidance:**", "", "```text"]
+        md += message.splitlines()
+        md += ["```", ""]
+    return md
 
 
 def build_flavors_md_table(filter_linter_name=None, replace_link=False):
@@ -2193,86 +2286,6 @@ def update_mkdocs_and_workflow_yml_with_flavors():
     )
 
 
-def update_docker_pulls_counter():
-    logging.info("Fetching docker pull counters on flavors images")
-    total_count = 0
-    all_flavors_ids = list(megalinter.flavor_factory.get_all_flavors().keys())
-    all_flavors_ids.insert(0, "all")
-    with open(DOCKER_STATS_FILE, "r", encoding="utf-8") as json_stats:
-        docker_stats = json.load(json_stats)
-    now_str = datetime.now().replace(microsecond=0).isoformat()
-    for flavor_id in all_flavors_ids:
-        if flavor_id == "all":
-            ghcr_image_url = f"{GHCR_PACKAGES_ROOT_URL}/{ML_DOCKER_NAME}"
-            docker_image_url = f"{DOCKER_PACKAGES_ROOT_URL}/{ML_DOCKER_IMAGE}"
-            legacy_docker_image_url = (
-                f"{DOCKER_PACKAGES_ROOT_URL}/{ML_DOCKER_IMAGE_LEGACY}"
-            )
-            legacy_v5_docker_image_url = (
-                f"{DOCKER_PACKAGES_ROOT_URL}/{ML_DOCKER_IMAGE_LEGACY_V5}"
-            )
-        else:
-            ghcr_image_url = f"{GHCR_PACKAGES_ROOT_URL}/{ML_DOCKER_NAME}-{flavor_id}"
-            docker_image_url = (
-                f"{DOCKER_PACKAGES_ROOT_URL}/{ML_DOCKER_IMAGE}-{flavor_id}"
-            )
-            legacy_docker_image_url = (
-                f"{DOCKER_PACKAGES_ROOT_URL}/{ML_DOCKER_IMAGE_LEGACY}-{flavor_id}"
-            )
-            legacy_v5_docker_image_url = (
-                f"{DOCKER_PACKAGES_ROOT_URL}/"
-                + f"{ML_DOCKER_IMAGE_LEGACY_V5}-{flavor_id}"
-            )
-
-        flavor_count_0 = perform_count_request(ghcr_image_url)
-        flavor_count_1 = perform_count_request(docker_image_url)
-        flavor_count_2 = perform_count_request(legacy_docker_image_url)
-        flavor_count_3 = perform_count_request(legacy_v5_docker_image_url)
-        flavor_count = flavor_count_0 + flavor_count_1 + flavor_count_2 + flavor_count_3
-        logging.info(f"- docker pulls for {flavor_id}: {flavor_count}")
-        total_count = total_count + flavor_count
-        flavor_stats = list(docker_stats.get(flavor_id, []))
-        flavor_stats.append([now_str, flavor_count])
-        flavor_stats = keep_one_stat_by_day(flavor_stats)
-        docker_stats[flavor_id] = flavor_stats
-    total_count_human = number_human_format(total_count)
-    logging.info(f"Total docker pulls: {total_count_human} ({total_count})")
-    # Update total badge counters
-    replace_in_file(
-        f"{REPO_HOME}/README.md", "pulls-", "-blue", total_count_human, False
-    )
-    replace_in_file(
-        f"{REPO_HOME}/mega-linter-runner/README.md",
-        "pulls-",
-        "-blue",
-        total_count_human,
-        False,
-    )
-    # Write docker stats
-    with open(DOCKER_STATS_FILE, "w", encoding="utf-8") as jsonstats:
-        json.dump(docker_stats, jsonstats, indent=4, sort_keys=True)
-
-
-def perform_count_request(docker_image_url):
-    r = requests_retry_session().get(docker_image_url)
-    resp = r.json()
-    flavor_count = resp["pull_count"] if "pull_count" in resp else 0
-    logging.info(f"{docker_image_url}: {flavor_count}")
-    return flavor_count
-
-
-def keep_one_stat_by_day(flavor_stats):
-    filtered_flavor_stats = []
-    prev_date = date.min
-    for [count_date_iso, count_date_number] in flavor_stats:
-        count_date = datetime.fromisoformat(count_date_iso).date()
-        if count_date == prev_date:
-            filtered_flavor_stats.pop()
-        filtered_flavor_stats.append([count_date_iso, count_date_number])
-        prev_date = count_date
-    return filtered_flavor_stats
-
-
 def requests_retry_session(
     retries=3,
     backoff_factor=0.5,
@@ -2291,16 +2304,6 @@ def requests_retry_session(
     session.mount("http://", adapter)
     session.mount("https://", adapter)
     return session
-
-
-def number_human_format(num, round_to=1):
-    magnitude = 0
-    while abs(num) >= 1000:
-        magnitude += 1
-        num = round(num / 1000.0, round_to)
-    return "{:.{}f}{}".format(
-        round(num, round_to), round_to, ["", "k", "M", "G", "T", "P"][magnitude]
-    )
 
 
 def get_linter_base_info(linter):
@@ -4079,5 +4082,8 @@ if __name__ == "__main__":
         validate_own_megalinter_config()
         manage_output_variables()
         reformat_markdown_tables()
+        from generate_runner_vars import generate as generate_runner_vars
+
+        generate_runner_vars()
         if RELEASE is True:
             generate_version()

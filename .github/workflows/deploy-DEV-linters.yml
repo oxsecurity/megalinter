@@ -18,6 +18,9 @@ on:
 ###############
 # Set the Job #
 ###############
+permissions:
+  contents: read
+
 concurrency:
   group: ${{ github.ref_name }}-${{ github.workflow }}
   cancel-in-progress: true
@@ -32,21 +35,24 @@ jobs:
       runners: ${{ steps.set-matrix.outputs.runners }}
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v6
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
         with:
           ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
       - name: Get PR title or commit message
         id: get-title
         env:
           EVENT_NAME: ${{ github.event_name }}
           PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_USER: ${{ github.event.pull_request.user.login }}
           HEAD_COMMIT_MSG: ${{ github.event.head_commit.message }}
         run: |
           if [ "$EVENT_NAME" = "pull_request" ]; then
-            echo "title=${PR_TITLE}" >> $GITHUB_OUTPUT
+            echo "title=${PR_TITLE}" >> "${GITHUB_OUTPUT}"
           else
-            echo "title=${HEAD_COMMIT_MSG}" >> $GITHUB_OUTPUT
+            echo "title=${HEAD_COMMIT_MSG}" >> "${GITHUB_OUTPUT}"
           fi
+          echo "pr_user=${PR_USER}" >> "${GITHUB_OUTPUT}"
       - name: Read linters_matrix.json and filter
         id: set-matrix
         run: |
@@ -63,34 +69,59 @@ jobs:
             pkg=$(echo "$pkg" | sed 's/@//g; s/[-\/]/_/g' | tr '[:upper:]' '[:lower:]')
             echo "$pkg"
           }
-          title="${{ steps.get-title.outputs.title }}"
+          title="${STEPS_GET_TITLE_OUTPUTS_TITLE}"
           latest_commit_message=$(git log -1 --pretty=%B)
 
           echo "title=$title"
           echo "latest_commit_message=$latest_commit_message"
-          matrix=$(cat .automation/generated/linters_matrix.json | jq -c '[.["linux/amd64"][]]')
-          matrix_arm=$(cat .automation/generated/linters_matrix.json | jq -c '[.["linux/arm64"][]]')
-          echo "linters_arm=$matrix_arm" >> $GITHUB_OUTPUT
+          matrix=$(jq -c '[.["linux/amd64"][]]'  .automation/generated/linters_matrix.json)
+          matrix_arm=$(jq -c '[.["linux/arm64"][]]'  .automation/generated/linters_matrix.json)
+          echo "linters_arm=$matrix_arm" >> "${GITHUB_OUTPUT}"
 
           if echo "$latest_commit_message" | grep -q 'ARM'; then
-            echo 'runners=["ubuntu-latest","ubuntu-24.04-arm"]' >> $GITHUB_OUTPUT
+            echo 'runners=["ubuntu-latest","ubuntu-24.04-arm"]' >> "${GITHUB_OUTPUT}"
           else
-            echo 'runners=["ubuntu-latest"]' >> $GITHUB_OUTPUT
+            echo 'runners=["ubuntu-latest"]' >> "${GITHUB_OUTPUT}"
           fi
 
           pkg=$(extract_pkg "$title")
           echo "Extracted package: $pkg"
+
+          # Detect dependabot / renovate PRs: bot author OR chore(deps) title prefix.
+          is_bot_pr=false
+          case "$PR_USER" in
+            dependabot|"dependabot[bot]"|renovate|"renovate[bot]")
+              is_bot_pr=true
+              ;;
+          esac
+          if echo "$title" | grep -iq '^chore(deps)'; then
+            is_bot_pr=true
+          fi
+
           if [ -n "$pkg" ] && echo "$title" | grep -iq '^chore(deps)'; then
             matches=$(echo "$matrix" | jq -c --arg pkg "$pkg" '[.[] | select(tostring | match($pkg;"i"))]')
             if [ "$(echo "$matches" | jq 'length')" -gt 0 ]; then
               echo "Filtered linters: $matches"
-              echo "linters=$matches" >> $GITHUB_OUTPUT
+              echo "linters=$matches" >> "${GITHUB_OUTPUT}"
               exit 0
             fi
           fi
+
+          # Bot PR with no matching linter: skip linter jobs entirely.
+          # deploy-DEV.yml runs the full test suite on merge, so re-running
+          # every linter image on each dependabot/renovate PR is wasted CI.
+          if [ "$is_bot_pr" = "true" ]; then
+            echo "Bot PR with no matching linter, skipping per-linter jobs (deploy-DEV will run full tests)."
+            echo "linters=[]" >> "${GITHUB_OUTPUT}"
+            exit 0
+          fi
+
           # Default: return all
-          echo "No specific package found or not a chore(deps) commit, using all linters."
-          echo "linters=$matrix" >> $GITHUB_OUTPUT
+          echo "No specific package found and not a bot PR, using all linters."
+          echo "linters=$matrix" >> "${GITHUB_OUTPUT}"
+        env:
+          STEPS_GET_TITLE_OUTPUTS_TITLE: ${{ steps.get-title.outputs.title }}
+          PR_USER: ${{ steps.get-title.outputs.pr_user }}
 
   build:
     # Name the Job
@@ -124,43 +155,75 @@ jobs:
       # https://github.com/actions/runner/issues/1985
       - name: Prepare
         id: prepare
+        env:
+          RUNNER_LABEL: ${{ matrix.runner }}
+          IS_ARM_LINTER: ${{ contains(fromJson(needs.get-linters-matrix.outputs.linters_arm), matrix.linter) }}
         run: |
           job_enabled=true
           platforms=linux/amd64
 
           ARM_RUNNER_REGEX="^ubuntu-.*-arm$"
 
-          if [[ "${{ matrix.runner }}" =~ $ARM_RUNNER_REGEX ]]; then
-            job_enabled="${{ contains(fromJson(needs.get-linters-matrix.outputs.linters_arm), matrix.linter) }}"
+          if [[ "${RUNNER_LABEL}" =~ $ARM_RUNNER_REGEX ]]; then
+            job_enabled="${IS_ARM_LINTER}"
             platforms=linux/arm64
           fi
 
-          echo "job_enabled=$job_enabled" >> $GITHUB_OUTPUT
-          echo "platforms=$platforms" >> $GITHUB_OUTPUT
+          echo "job_enabled=$job_enabled" >> "${GITHUB_OUTPUT}"
+          echo "platforms=$platforms" >> "${GITHUB_OUTPUT}"
 
       - name: Checkout Code
         if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: actions/checkout@v6
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with:
+          persist-credentials: false
 
       - name: Docker Metadata action
         if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: docker/metadata-action@v6
+        uses: docker/metadata-action@80c7e94dd9b9319bd5eb7a0e0fe9291e23a2a2e9 # v6
         id: meta
         with:
           images: |
             ${{ github.repository }}-only-${{ matrix.linter }}
 
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v4
+        uses: docker/setup-qemu-action@06116385d9baf250c9f4dcb4858b16962ea869c3 # v4
         if: ${{ steps.prepare.outputs.job_enabled == 'true' && ( ( ( runner.arch != 'X64' || runner.os != 'Linux' ) && steps.prepare.outputs.platforms == 'linux/amd64' ) || steps.prepare.outputs.platforms != 'linux/amd64' ) }}
 
       - name: Set up Docker Buildx
         if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: docker/setup-buildx-action@v4
+        uses: docker/setup-buildx-action@d7f5e7f509e45cec5c76c4d5afdd7de93d0b3df5 # v4
 
       - name: Build Image
+        id: build_linter
         if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: docker/build-push-action@v7
+        uses: docker/build-push-action@f9f3042f7e2789586610d6e8b85c8f03e5195baf # v7
+        continue-on-error: true
+        with:
+          context: .
+          file: linters/${{ matrix.linter }}/Dockerfile
+          platforms: ${{ steps.prepare.outputs.platforms }}
+          build-args: |
+            BUILD_DATE=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.created'] }}
+            BUILD_VERSION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
+            BUILD_REVISION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.revision'] }}
+          load: true
+          push: false
+          secrets: |
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          tags: ${{ steps.meta.outputs.tags }}
+          # Read-only: rely on BETA-linters' warm cache. PR builds don't
+          # write their own cache — the resulting blobs would be read at
+          # most once (by BETA-linters on merge) and burn space the warm
+          # cache needs.
+          cache-from: |
+            type=gha,scope=beta-linter-${{ matrix.linter }}-${{ steps.prepare.outputs.platforms }},ignore-error=true
+
+      # Fallback: rebuild from scratch when the warm cache returns a stale
+      # manifest with evicted blobs ('blob sha256:...: not found').
+      - name: Build Image (no-cache fallback)
+        if: ${{ steps.prepare.outputs.job_enabled == 'true' && steps.build_linter.outcome == 'failure' }}
+        uses: docker/build-push-action@f9f3042f7e2789586610d6e8b85c8f03e5195baf # v7
         with:
           context: .
           file: linters/${{ matrix.linter }}/Dockerfile
@@ -187,33 +250,39 @@ jobs:
           GH_REPOSITORY: ${{ github.repository }}
           HEAD_REF: ${{ github.head_ref }}
           REF_NAME: ${{ github.ref_name }}
+          MATRIX_LINTER: ${{ matrix.linter }}
+          DOCKER_IMAGE: ${{ fromJson(steps.meta.outputs.json).tags[0] }}
+          GH_SHA: ${{ github.sha }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           GITHUB_REPOSITORY=$([ "$EVENT_NAME" == "pull_request" ] && echo "$PR_HEAD_REPO" || echo "$GH_REPOSITORY")
           GITHUB_BRANCH=$([ "$EVENT_NAME" == "pull_request" ] && echo "$HEAD_REF" || echo "$REF_NAME")
 
-          TEST_KEYWORDS_TO_USE_UPPER="${{ matrix.linter }}"
+          TEST_KEYWORDS_TO_USE_UPPER="${MATRIX_LINTER}"
           TEST_KEYWORDS_TO_USE="${TEST_KEYWORDS_TO_USE_UPPER,,}"
           docker image ls
-          docker run -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${{ github.sha }} -e OUTPUT_DETAIL=detailed -e GITHUB_SHA=${{ github.sha }} -e GITHUB_REPOSITORY="${GITHUB_REPOSITORY}" -e GITHUB_BRANCH="${GITHUB_BRANCH}" -e GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint ${{ fromJson(steps.meta.outputs.json).tags[0]}}
+          docker run -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER="${GH_SHA}" -e OUTPUT_DETAIL=detailed -e GITHUB_SHA="${GH_SHA}" -e GITHUB_REPOSITORY="${GITHUB_REPOSITORY}" -e GITHUB_BRANCH="${GITHUB_BRANCH}" -e GITHUB_TOKEN="${GITHUB_TOKEN}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v "${GITHUB_WORKSPACE}:/tmp/lint" "${DOCKER_IMAGE}"
         timeout-minutes: 30
 
       ##############################################
       # Check Docker image security with Trivy #
       ##############################################
-      # - name: Run Trivy vulnerability scanner
-      #   if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-      #   uses: aquasecurity/trivy-action@master
-      #   with:
-      #     image-ref: "${{ fromJson(steps.meta.outputs.json).tags[0] }}"
-      #     format: "table"
-      #     exit-code: "1"
-      #     ignore-unfixed: true
-      #     scanners: vuln
-      #     vuln-type: "os,library"
-      #     severity: "CRITICAL,HIGH"
-      #     timeout: 10m0s
-      #   env:
-      #       ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run Trivy vulnerability scanner
+        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
+        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
+        with:
+          # renovate: datasource=github-releases depName=aquasecurity/trivy
+          version: "v0.71.0"
+          image-ref: "${{ fromJson(steps.meta.outputs.json).tags[0] }}"
+          format: "table"
+          exit-code: "1"
+          ignore-unfixed: true
+          scanners: vuln
+          vuln-type: "os,library"
+          severity: "CRITICAL,HIGH"
+          timeout: 10m0s
+        env:
+            ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # - name: Run OSV-Scanner vulnerability scanner
       #   if: ${{ steps.prepare.outputs.job_enabled == 'true' }}

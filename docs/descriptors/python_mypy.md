@@ -80,9 +80,9 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       135        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        89        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        66        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       136        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        92        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        69        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
 
@@ -433,3 +433,66 @@ ENV MYPY_CACHE_DIR=/tmp
 
 - PIP packages (Python):
   - [mypy==1.19.1](https://pypi.org/project/mypy/1.19.1)
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### PYTHON_MYPY_ERROR_STUBS_INSTALL_FAILED
+
+**Detection pattern (regex):**
+
+```text
+(error installing types|installation of type stubs (failed|did not succeed)|mypy: error: --install-types)
+```
+
+**Resolution guidance:**
+
+```text
+mypy attempted to auto-install missing type stubs (`--install-types`) but the pip step failed.
+This is usually a network issue or a missing stub package on PyPI.
+Resolutions:
+  - Pre-install the required `types-*` stub packages into mypy's venv via a pre-command in your .mega-linter.yml:
+      PYTHON_MYPY_PRE_COMMANDS:
+        - command: "pip install types-requests types-PyYAML"
+          venv: mypy
+          continue_if_failed: false
+  - For libraries with no published stubs, silence the import with `# type: ignore[import]` or add them to `ignore_missing_imports` in your mypy config.
+```
+
+### PYTHON_MYPY_ERROR_CONFIG_INVALID
+
+**Detection pattern (regex):**
+
+```text
+(mypy: error: Invalid (config|option)|mypy: error: Configuration file|configparser\.(Error|ParsingError)|tomllib\.TOMLDecodeError.+mypy)
+```
+
+**Resolution guidance:**
+
+```text
+mypy could not parse its configuration file (`.mypy.ini`, `mypy.ini`, `pyproject.toml [tool.mypy]`, or `setup.cfg`).
+Resolutions:
+  - Validate INI/TOML syntax of the mypy config.
+  - Check option names match the pinned mypy version's documentation.
+  - Remove the custom config to confirm the issue is config-related.
+```
+
+### PYTHON_MYPY_ERROR_DAEMON_CRASH
+
+**Detection pattern (regex):**
+
+```text
+(INTERNAL ERROR|Traceback \(most recent call last\)|mypy crashed)
+```
+
+**Resolution guidance:**
+
+```text
+mypy crashed with an internal error. This usually indicates a bug in mypy or an interaction with a plugin.
+Resolutions:
+  - Clear the mypy cache (MegaLinter sets `MYPY_CACHE_DIR=/tmp`, but stale data can persist between runs in long-lived environments).
+  - Disable mypy plugins (`plugins = ...` in your config) one by one to narrow the cause.
+  - Report the traceback to https://github.com/python/mypy/issues.
+```
+

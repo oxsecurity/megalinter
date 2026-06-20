@@ -63,7 +63,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       135        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       136        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -120,10 +120,54 @@ Usage:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=github-tags depName=skaji/cpm
-ARG PERL_PERLCRITIC_VERSION=0.998003
+ARG PERL_PERLCRITIC_VERSION=v1.1.1
 
 RUN curl -fsSL https://raw.githubusercontent.com/skaji/cpm/refs/tags/${PERL_PERLCRITIC_VERSION}/cpm | perl - install -g --show-build-log-on-failure --without-build --without-test --without-runtime Perl::Critic \
     && rm -rf /root/.perl-cpm
 
+```
+
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### PERL_PERLCRITIC_ERROR_CONFIG_INVALID
+
+**Detection pattern (regex):**
+
+```text
+(Unable to parse profile|Invalid (option|setting) .* in profile|Perl::Critic::ConfigErrors)
+```
+
+**Resolution guidance:**
+
+```text
+perlcritic could not parse its configuration file (`.perlcriticrc`, INI-like format).
+Resolutions:
+  - Verify `.perlcriticrc` syntax: global settings at the top, then policy sections like `[Subroutines::ProhibitExplicitReturnUndef]`.
+  - Make sure every referenced policy is actually installed (try `perlcritic --list` to see available policies).
+  - Run with `perlcritic --profile /dev/null myfile.pl` to confirm the failure is config-related.
+```
+
+### PERL_PERLCRITIC_ERROR_POLICY_NOT_FOUND
+
+**Detection pattern (regex):**
+
+```text
+Policy '[^']+' is not installed
+```
+
+**Resolution guidance:**
+
+```text
+perlcritic's profile references a policy module that is not installed in the MegaLinter image.
+Resolutions:
+  - Remove the unknown policy section from `.perlcriticrc`, or
+  - Pre-install the missing CPAN module via a pre-command in your .mega-linter.yml (cpanm installs globally):
+      PERL_PERLCRITIC_PRE_COMMANDS:
+        - command: "cpanm --notest Perl::Critic::Policy::YourPolicy"
+          cwd: "root"
+          continue_if_failed: false
 ```
 

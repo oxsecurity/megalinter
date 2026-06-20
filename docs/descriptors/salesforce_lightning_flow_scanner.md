@@ -77,7 +77,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       135        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       136        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -137,13 +137,14 @@ GLOBAL FLAGS
 ```dockerfile
 # Parent descriptor install
 # renovate: datasource=npm depName=@salesforce/cli
-ARG NPM_SALESFORCE_CLI_VERSION=2.128.5
+ARG NPM_SALESFORCE_CLI_VERSION=2.138.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.25.17
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.29.3
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=7.7.1
+ARG SFDX_HARDIS_VERSION=7.16.2
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
+ENV XDG_DATA_HOME=/usr/local/share
 RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION} \
     && echo y|sf plugins install sfdx-hardis@${SFDX_HARDIS_VERSION} \
     && (npm cache clean --force || true) \
@@ -155,5 +156,40 @@ ARG LIGHTNING_FLOW_SCANNER_VERSION=6.19.3
 RUN echo y|sf plugins install lightning-flow-scanner@${LIGHTNING_FLOW_SCANNER_VERSION} \
     && (npm cache clean --force || true) \
     && rm -rf /root/.npm/_cacache
+```
+
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### SALESFORCE_LIGHTNING_FLOW_SCANNER_ERROR_CONFIG_INVALID
+
+**Detection pattern (regex):**
+
+```text
+(Could not parse .* \.flow-scanner|Invalid JSON in .flow-scanner|Failed to load .flow-scanner)
+```
+
+**Resolution guidance:**
+
+```text
+The `.flow-scanner.json` configuration file could not be parsed.
+Verify it contains valid JSON and conforms to the schema documented at https://github.com/Lightning-Flow-Scanner/lightning-flow-scanner-sfdx#configuration
+```
+
+### SALESFORCE_LIGHTNING_FLOW_SCANNER_ERROR_NO_FLOW_FILES
+
+**Detection pattern (regex):**
+
+```text
+(No flows found|0 flows scanned|No \.flow(-meta\.xml)? files found)
+```
+
+**Resolution guidance:**
+
+```text
+lightning-flow-scanner did not find any `.flow-meta.xml` files to scan.
+Verify the flows live under your workspace (default `force-app`) and that `SALESFORCE_LIGHTNING_FLOW_SCANNER_DIRECTORY` points to the correct root.
 ```
 

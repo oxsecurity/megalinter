@@ -22,7 +22,7 @@ description: How to use swiftlint (configure, ignore files, ignore errors, help 
 
 ## swiftlint documentation
 
-- Version in MegaLinter: **0.63.2**
+- Version in MegaLinter: **0.63.3**
 - Visit [Official Web Site](https://github.com/realm/SwiftLint#readme){target=_blank}
 - Docker image: [ghcr.io/realm/swiftlint:SWIFT_SWIFTLINT_VERSION](https://hub.docker.com/r/ghcr.io/realm/swiftlint){target=_blank}
   - arguments: `-v {{WORKSPACE}}:/tmp/lint:rw -w /tmp/lint`
@@ -71,9 +71,9 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       135        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        89        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>        | [swift](https://megalinter.io/beta/flavors/swift/)     | Optimized for SWIFT based projects              |        50        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       136        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        92        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>        | [swift](https://megalinter.io/beta/flavors/swift/)     | Optimized for SWIFT based projects              |        53        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift) |
 
 ## Behind the scenes
 
@@ -174,6 +174,63 @@ OPTIONS:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=ghcr.io/realm/swiftlint
-ENV SWIFT_SWIFTLINT_VERSION=0.63.2
+ENV SWIFT_SWIFTLINT_VERSION=0.63.3
+```
+
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### SWIFT_SWIFTLINT_ERROR_INVALID_CONFIG
+
+**Detection pattern (regex):**
+
+```text
+(Could not read configuration|Invalid configuration|YAML.*at line [0-9]+, column [0-9]+)
+```
+
+**Resolution guidance:**
+
+```text
+SwiftLint could not parse `.swiftlint.yml`.
+Resolutions:
+  - Validate the YAML (indentation, quoting) — SwiftLint requires a strict YAML document.
+  - Verify every rule identifier under `opt_in_rules`, `disabled_rules`, and `only_rules` against `swiftlint rules` or the [rule directory](https://realm.github.io/SwiftLint/rule-directory.html).
+  - Check `included` / `excluded` paths are relative to the config file and exist in the repository.
+```
+
+### SWIFT_SWIFTLINT_ERROR_NO_LINTABLE_FILES
+
+**Detection pattern (regex):**
+
+```text
+No lintable files found at paths
+```
+
+**Resolution guidance:**
+
+```text
+SwiftLint started but found no `.swift` files to analyse.
+Resolutions:
+  - Check the `included:` / `excluded:` patterns in `.swiftlint.yml` — they may be filtering out every file.
+  - Confirm Swift files exist in the workspace and were not filtered out by `FILTER_REGEX_INCLUDE` / `FILTER_REGEX_EXCLUDE`.
+```
+
+### SWIFT_SWIFTLINT_ERROR_CUSTOM_RULE_REGEX
+
+**Detection pattern (regex):**
+
+```text
+Invalid configuration for .* custom rule|regex .* is invalid
+```
+
+**Resolution guidance:**
+
+```text
+A `custom_rules` entry in `.swiftlint.yml` has an invalid regular expression or shape.
+Resolutions:
+  - Test the `regex:` value with an NSRegularExpression-compatible tester.
+  - Ensure every custom rule has the required keys (`regex`, optional `name`/`message`/`severity`).
 ```
 

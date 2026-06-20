@@ -36,7 +36,7 @@ accept = ["200", "206", "429"]
 scheme = [ "https", "http" ]
 
 # Custom request headers
-headers = ['Accept-Encoding: deflate, compress, gzip, br, zstd']
+header = { "Accept-Encoding" = "deflate, compress, gzip, br, zstd" }
 
 #############################  Exclusions  ##########################
 
@@ -54,9 +54,6 @@ exclude_link_local = true
 
 # Exclude loopback IP address range and localhost from checking.
 exclude_loopback = true
-
-# Exclude all mail addresses from checking.
-exclude_mail = true
 
 # Exclude these filesystem paths from getting checked.
 exclude_path = ["node_modules", "site", "docs", ".venv", "CHANGELOG.md", "megalinter/descriptors/schemas", ".automation/generated", ".automation/test"]

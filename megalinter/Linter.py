@@ -85,6 +85,7 @@ class Linter:
         self.cli_lint_ignore_arg_name = None
         self.final_ignore_file = None
         # Other
+        self.files_separator = None
         self.files_sub_directory = None
         self.file_contains_regex = []
         self.file_contains_regex_extensions = []
@@ -130,10 +131,14 @@ class Linter:
         )  # Arguments from config, defined in <LINTER_KEY>_ARGUMENTS variable
         # Extra arguments to send to cli everytime, just before file argument
         self.cli_lint_extra_args_after = []
+        self.cli_lint_mode_file_extra_args_after = []
+        self.cli_lint_mode_list_of_files_extra_args_after = []
+        self.cli_lint_mode_project_extra_args_after = []
         self.cli_lint_errors_count = None
         self.cli_lint_errors_regex = None
         self.cli_lint_warnings_count = None
         self.cli_lint_warnings_regex = None
+        self.common_linter_errors = []
         # Default arg name for configurations to use in linter version call
         self.cli_version_arg_name = "--version"
         self.cli_version_extra_args = []  # Extra arguments to send to cli everytime
@@ -839,7 +844,12 @@ class Linter:
             self.active_only_if_file_found.append(self.config_file_name)
 
     # Processes the linter
-    def run(self, run_commands_before_linters=None, run_commands_after_linters=None):
+    def run(
+        self,
+        run_commands_before_linters=None,
+        run_commands_after_linters=None,
+        skip_console_reporter=False,
+    ):
         self.start_perf = perf_counter()
 
         # Pre-compute subprocess environment once per linter run to avoid
@@ -994,24 +1004,34 @@ class Linter:
         self.elapsed_time_s = perf_counter() - self.start_perf
         for reporter in self.reporters:
             try:
+                # Skip console reporter when running in parallel workers;
+                # it will be produced in the main process to avoid interleaved
+                # CI log section markers (::group::/::endgroup::)
+                if skip_console_reporter and reporter.name == "CONSOLE":
+                    continue
                 reporter.produce_report()
             except Exception as e:
                 logging.error("Unable to process reporter " + reporter.name + str(e))
 
         return self
 
-    def replace_vars(self, variables):
-        variables_with_replacements = []
-        for txt in variables:
-            if "{{SARIF_OUTPUT_FILE}}" in txt:
-                txt = txt.replace("{{SARIF_OUTPUT_FILE}}", self.sarif_output_file)
-            elif "{{REPORT_FOLDER}}" in txt:
-                txt = txt.replace("{{REPORT_FOLDER}}", self.report_folder)
-            elif "{{WORKSPACE}}" in txt:
-                txt = txt.replace("{{WORKSPACE}}", self.workspace)
-            variables_with_replacements += [txt]
+    def replace_vars(self, args, additional_variables=None):
+        default_variables = {
+            "{{SARIF_OUTPUT_FILE}}": self.sarif_output_file,
+            "{{REPORT_FOLDER}}": self.report_folder,
+            "{{WORKSPACE}}": self.workspace,
+        }
+        merged_map = default_variables
+        if additional_variables is not None:
+            merged_map.update(additional_variables)
+        args_with_replacements = []
+        for txt in args:
+            for key in merged_map:
+                if key in txt:
+                    txt = txt.replace(key, merged_map[key])
+            args_with_replacements += [txt]
 
-        return variables_with_replacements
+        return args_with_replacements
 
     def update_files_lint_results(
         self,
@@ -1181,8 +1201,26 @@ class Linter:
                 return_stdout = (
                     f"Fatal error while calling {self.linter_name}: {str(err)}"
                 )
+        return_code, return_stdout = self.apply_common_linter_errors(
+            return_code, return_stdout
+        )
         self.manage_sarif_output(return_stdout)
         # Return linter result
+        return return_code, return_stdout
+
+    def apply_common_linter_errors(self, return_code, return_stdout):
+        if return_code == 0 or not self.common_linter_errors:
+            return return_code, return_stdout
+        for entry in self.common_linter_errors:
+            identifier = entry.get("identifier", "")
+            pattern = entry.get("regex")
+            message = entry.get("message", "")
+            if not pattern or not message:
+                continue
+            if re.search(pattern, return_stdout or ""):
+                block = f"[{identifier}] {message}" if identifier else message
+                return_stdout = (return_stdout or "") + "\n\n" + block
+                logging.warning(f"[{self.linter_name}] {block}")
         return return_code, return_stdout
 
     def manage_sarif_output(self, return_stdout):
@@ -1401,8 +1439,14 @@ class Linter:
     def build_lint_command(self, file=None) -> list:
         cmd = [*self.cli_executable]
 
+        additional_replace_variables = {
+            "{{FILE}}": file,
+        }
+
         # Add other lint cli arguments if defined
-        self.cli_lint_extra_args = self.replace_vars(self.cli_lint_extra_args)
+        self.cli_lint_extra_args = self.replace_vars(
+            self.cli_lint_extra_args, additional_replace_variables
+        )
         cmd += self.cli_lint_extra_args
 
         # Add fix argument if defined
@@ -1419,7 +1463,9 @@ class Linter:
             self.try_fix = True
 
         # Add user-defined extra arguments if defined
-        self.cli_lint_user_args = self.replace_vars(self.cli_lint_user_args)
+        self.cli_lint_user_args = self.replace_vars(
+            self.cli_lint_user_args, additional_replace_variables
+        )
         cmd += self.cli_lint_user_args
 
         # Add config arguments if defined (except for case when no_config_if_fix is True)
@@ -1456,9 +1502,28 @@ class Linter:
 
         # Add other lint cli arguments after other arguments if defined
         self.cli_lint_extra_args_after = self.replace_vars(
-            self.cli_lint_extra_args_after
+            self.cli_lint_extra_args_after, additional_replace_variables
         )
         cmd += self.cli_lint_extra_args_after
+
+        if self.cli_lint_mode == "file":
+            self.cli_lint_mode_file_extra_args_after = self.replace_vars(
+                self.cli_lint_mode_file_extra_args_after,
+            )
+
+            cmd += self.cli_lint_mode_file_extra_args_after
+        elif self.cli_lint_mode == "list_of_files":
+            self.cli_lint_mode_list_of_files_extra_args_after = self.replace_vars(
+                self.cli_lint_mode_list_of_files_extra_args_after,
+            )
+
+            cmd += self.cli_lint_mode_list_of_files_extra_args_after
+        elif self.cli_lint_mode == "project":
+            self.cli_lint_mode_project_extra_args_after = self.replace_vars(
+                self.cli_lint_mode_project_extra_args_after,
+            )
+
+            cmd += self.cli_lint_mode_project_extra_args_after
 
         # Some linters/formatters update files by default.
         # To avoid that, declare -megalinter-fix-flag as cli_lint_fix_arg_name
@@ -1478,7 +1543,10 @@ class Linter:
 
         # If mode is "list of files", append all files as cli arguments
         elif self.cli_lint_mode == "list_of_files":
-            cmd += self.files
+            if self.files_separator is not None:
+                cmd += [self.files_separator.join(self.files)]
+            else:
+                cmd += self.files
         return self.manage_docker_command(cmd)
 
     # Manage ignore arguments

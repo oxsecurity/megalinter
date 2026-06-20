@@ -32,3 +32,12 @@ CVE-2025-25290
 
 # https://avd.aquasec.com/nvd/cve-2025-5889 : brace-expansion, ddos attack, not applicable in MegaLinter context
 CVE-2025-5889
+
+# sfdx-hardis depends on mega-linter-runner@9.4.0 (published), which uses yeoman-environment@^5.0.0 and older tmp resolutions.
+# Remove when sfdx-hardis depends on mega-linter-runner>=9.5.0.
+# https://avd.aquasec.com/nvd/cve-2026-44705 : tmp path traversal via attacker-controlled prefix/postfix —
+# prefix/postfix values come from trusted generator code, not external input
+CVE-2026-44705
+# https://avd.aquasec.com/nvd/cve-2026-42089 : yeoman-environment arbitrary package install without confirmation —
+# generators run in MegaLinter are trusted (bundled with mega-linter-runner itself)
+CVE-2026-42089

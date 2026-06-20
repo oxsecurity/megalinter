@@ -30,8 +30,22 @@ from megalinter.constants import (
     ML_DOC_URL,
 )
 from megalinter.logger import display_header, initialize_logger, manage_upgrade_message
-from megalinter.utils_reporter import log_section_end, log_section_start
+from megalinter.reporters.jenkins_ci_vars import apply_jenkins_ci_vars
+from megalinter.utils_reporter import (
+    log_section_end,
+    log_section_start,
+    register_user_notification,
+)
 from multiprocessing_logging import install_mp_handler, uninstall_mp_handler
+
+MEGALINTER_9_5_ANNOUNCEMENT_KEY = "megalinter_9_5_announcement"
+MEGALINTER_9_5_ANNOUNCEMENT_URL = "https://github.com/oxsecurity/megalinter/issues/7835"
+MEGALINTER_9_5_ANNOUNCEMENT_TEMPLATE = (
+    "📣 **MegaLinter 9.5.0 is out!** "
+    "Discover the new features and security recommendations in the "
+    f"[release announcement]({MEGALINTER_9_5_ANNOUNCEMENT_URL}). "
+    "(Skip this info by defining `SECURITY_SUGGESTIONS: false`)"
+)
 
 
 # initialize worker processes
@@ -45,7 +59,7 @@ def init_worker(request_config_in):
     # install_mp_handler() replaces handlers with QueueHandlers whose formatter may not
     # be propagated correctly to forked children, causing the default
     # "%(levelname)s:%(name)s:%(message)s" format to appear in output instead of the
-    # plain message — which breaks CI annotation commands like "::group::" that must
+    # plain message - which breaks CI annotation commands like "::group::" that must
     # appear at the very start of a line.
     formatter = logging.Formatter("%(message)s")
     for handler in logging.root.handlers:
@@ -59,7 +73,16 @@ def run_linters(linters, request_id):
     global REQUEST_CONFIG
     config.set_config(request_id, REQUEST_CONFIG)
     for linter in linters:
-        linter.run(run_commands_before_linters=False, run_commands_after_linters=False)
+        # Skip console reporter in workers: output will be produced in the
+        # main process to avoid interleaved CI log section markers
+        linter.run(
+            run_commands_before_linters=False,
+            run_commands_after_linters=False,
+            skip_console_reporter=True,
+        )
+        # Pre-cache linter version so the main process console report
+        # does not need to run the linter executable
+        linter.get_linter_version()
     return linters
 
 
@@ -86,6 +109,9 @@ class Megalinter:
         self.workspace = self.get_workspace(params)
         # Do not send secrets to linter executables
         config.init_config(self.request_id, self.workspace, params)
+
+        # Map Jenkins CI env vars to native platform vars for comment reporters
+        apply_jenkins_ci_vars(self.request_id)
 
         # Guess who's there ? :)
         if self.cli is True:
@@ -115,6 +141,11 @@ class Megalinter:
         self.default_linter_activation = True
         self.output_sarif = False
         self.result_message = ""
+        # Generic user notifications raised during the run. Each entry is
+        # keyed by a stable id and holds a template, a list of collected
+        # values, and optional extra placeholders. Rendered once per id by
+        # console and PR comment reporters via `build_user_notifications()`.
+        self.user_notifications: dict = {}
 
         # Get enable / disable vars
         self.enable_descriptors = config.get_list(self.request_id, "ENABLE", [])
@@ -143,6 +174,7 @@ class Megalinter:
         self.reporters = []
         self.linters: list[Linter] = []
         self.active_linters: list[Linter] = []
+        self.all_diff_files = []
         self.file_extensions = []
         self.file_names_regex = []
         self.status = "success"
@@ -247,10 +279,11 @@ class Megalinter:
         for active_descriptor_id in active_descriptor_ids:
             pre_post_factory.run_descriptor_pre_commands(self, active_descriptor_id)
 
-        if (
+        ran_parallel = (
             config.get(self.request_id, "PARALLEL", "true") == "true"
             and len(self.active_linters) > 1
-        ):
+        )
+        if ran_parallel:
             for active_linter in self.active_linters:
                 pre_post_factory.run_linter_pre_commands(
                     active_linter.master, active_linter, run_before_linters=True
@@ -302,6 +335,25 @@ class Megalinter:
             self.linters, key=lambda lamb: (lamb.descriptor_id, lamb.name)
         )
 
+        # Produce console linter reports in main process for parallel runs.
+        # When linters run in parallel workers, console output (including CI
+        # log section markers like ::group::/::endgroup::) would be interleaved
+        # across linters, breaking CI log sections. By deferring to the main
+        # process, output is sequential and sections are properly nested.
+        if ran_parallel:
+            for linter in self.linters:
+                if linter.is_active is True:
+                    for reporter in linter.reporters:
+                        if reporter.name == "CONSOLE" and reporter.is_active:
+                            try:
+                                reporter.produce_report()
+                            except Exception as e:
+                                logging.error(
+                                    "Unable to process reporter "
+                                    + reporter.name
+                                    + str(e)
+                                )
+
         # Check if a MegaLinter flavor can be used for this repo, except if:
         # - FLAVOR_SUGGESTIONS: false is defined
         # - VALIDATE_ALL_CODE_BASE is false, or diff failed (we don't have all the files to calculate the suggestion)
@@ -312,6 +364,15 @@ class Megalinter:
         ):
             self.flavor_suggestions = flavor_factory.get_megalinter_flavor_suggestions(
                 self.active_linters
+            )
+
+        # Register default MegaLinter 9.5.0 release announcement notification.
+        # Disabled when SECURITY_SUGGESTIONS=false.
+        if config.get(self.request_id, "SECURITY_SUGGESTIONS", "true") == "true":
+            register_user_notification(
+                self,
+                key=MEGALINTER_9_5_ANNOUNCEMENT_KEY,
+                template=MEGALINTER_9_5_ANNOUNCEMENT_TEMPLATE,
             )
 
         # Run user-defined commands
@@ -634,6 +695,12 @@ class Megalinter:
         )
         for linter in all_linters:
             linter.master = self
+            # When only fetching standalone linter version (build-time call),
+            # bypass activation filtering — the per-linter Docker image always
+            # wants its single linter even if activation files are absent.
+            if self.linter_version_only is True:
+                self.linters += [linter]
+                continue
             if (
                 linter.is_active is False
                 or linter.disabled is True
@@ -710,6 +777,7 @@ class Megalinter:
             # List files using git diff
             try:
                 all_files = self.list_files_git_diff()
+                self.all_diff_files = all_files
             except git.InvalidGitRepositoryError as git_err:
                 logging.warning(
                     "Unable to list updated files from git diff. Switch to VALIDATE_ALL_CODE_BASE=true"
@@ -842,12 +910,36 @@ class Megalinter:
                 all_files += [diff_line]
         return all_files
 
+    def _normalize_excluded_directories(self, excluded_directories):
+        # Convert absolute paths located inside the workspace into
+        # workspace-relative paths so they match the values produced by
+        # os.walk(). Workspace-relative entries are kept unchanged; absolute
+        # paths outside the workspace are dropped (they can never match).
+        workspace_abs = os.path.abspath(self.workspace)
+        normalized = set()
+        for excluded_dir in excluded_directories:
+            if not excluded_dir:
+                continue
+            if os.path.isabs(excluded_dir):
+                try:
+                    rel = os.path.relpath(excluded_dir, workspace_abs)
+                except ValueError:
+                    continue
+                if rel == "." or rel.startswith(".."):
+                    continue
+                normalized.add(rel.replace("\\", "/"))
+            else:
+                normalized.add(excluded_dir)
+        return normalized
+
     def list_files_all(self):
         # List all files under workspace root directory
         logging.info(
             "Listing all files in directory [" + self.workspace + "], then filter with:"
         )
-        excluded_directories = utils.get_excluded_directories(self.request_id)
+        excluded_directories = self._normalize_excluded_directories(
+            utils.get_excluded_directories(self.request_id)
+        )
         all_files = []
         for dirpath, dirnames, filenames in os.walk(
             self.workspace, topdown=True, followlinks=False

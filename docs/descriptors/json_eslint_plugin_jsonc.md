@@ -11,7 +11,15 @@ description: How to use eslint-plugin-jsonc (configure, ignore files, ignore err
   </a>
 </div>
 
-![disabled](https://shields.io/badge/-disabled-orange) [![GitHub stars](https://img.shields.io/github/stars/ota-meshi/eslint-plugin-jsonc?cacheSeconds=3600)](https://github.com/ota-meshi/eslint-plugin-jsonc) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/ota-meshi/eslint-plugin-jsonc?sort=semver)](https://github.com/ota-meshi/eslint-plugin-jsonc/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/ota-meshi/eslint-plugin-jsonc)](https://github.com/ota-meshi/eslint-plugin-jsonc/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/ota-meshi/eslint-plugin-jsonc)](https://github.com/ota-meshi/eslint-plugin-jsonc/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/ota-meshi/eslint-plugin-jsonc)](https://github.com/ota-meshi/eslint-plugin-jsonc/graphs/contributors/)
+![disabled](https://shields.io/badge/-disabled-orange) ![deprecated](https://shields.io/badge/-deprecated-red) [![GitHub stars](https://img.shields.io/github/stars/ota-meshi/eslint-plugin-jsonc?cacheSeconds=3600)](https://github.com/ota-meshi/eslint-plugin-jsonc) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/ota-meshi/eslint-plugin-jsonc?sort=semver)](https://github.com/ota-meshi/eslint-plugin-jsonc/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/ota-meshi/eslint-plugin-jsonc)](https://github.com/ota-meshi/eslint-plugin-jsonc/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/ota-meshi/eslint-plugin-jsonc)](https://github.com/ota-meshi/eslint-plugin-jsonc/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/ota-meshi/eslint-plugin-jsonc)](https://github.com/ota-meshi/eslint-plugin-jsonc/graphs/contributors/)
+
+> This linter has been deprecated.
+>
+> Kept disabled due to a long-standing bug in eslint-plugin-jsonc (<https://github.com/ota-meshi/eslint-plugin-jsonc/issues/328>). Use JSON_PRETTIER or JSON_JSONLINT instead.
+>
+> You should disable eslint-plugin-jsonc by adding it in DISABLE_LINTERS property.
+>
+> It will be maintained at least until the next major release.
 
 _This linter has been disabled in this version_
 
@@ -82,7 +90,6 @@ DISABLE_LINTERS:
   - If custom `.eslintrc-json.json` config file isn't found, [.eslintrc-json.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.eslintrc-json.json){target=_blank} will be used
 - See [How to disable eslint-plugin-jsonc rules in files](https://eslint.org/docs/latest/use/configure/rules#disabling-rules){target=_blank}
 - See [How to ignore files and directories with eslint-plugin-jsonc](https://eslint.org/docs/latest/user-guide/configuring/ignoring-code#the-eslintignore-file){target=_blank}
-  - You can define a `.eslintignore` file to ignore files and folders
 - See [Index of problems detected by eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/rules/){target=_blank}
 
 [![eslint-plugin-jsonc - GitHub](https://gh-card.dev/repos/ota-meshi/eslint-plugin-jsonc.svg?fullname=)](https://github.com/ota-meshi/eslint-plugin-jsonc){target=_blank}
@@ -126,7 +133,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       135        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       136        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -147,19 +154,19 @@ eslint myfile.json
 ```
 
 ```shell
-eslint -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.json
+eslint -c .eslintrc-json.json --no-ignore myfile.json
 ```
 
 ```shell
-eslint -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.json5
+eslint -c .eslintrc-json.json --no-ignore myfile.json5
 ```
 
 ```shell
-eslint -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.jsonc
+eslint -c .eslintrc-json.json --no-ignore myfile.jsonc
 ```
 
 ```shell
-eslint --fix -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.json
+eslint --fix -c .eslintrc-json.json --no-ignore myfile.json
 ```
 
 
@@ -233,14 +240,69 @@ Miscellaneous:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=8.57.1
+ARG NPM_ESLINT_VERSION=10.5.0
+# renovate: datasource=npm depName=@eslint/eslintrc
+ARG NPM_ESLINT_ESLINTRC_VERSION=3.3.5
 # renovate: datasource=npm depName=eslint-plugin-jsonc
-ARG NPM_ESLINT_PLUGIN_JSONC_VERSION=3.1.2
+ARG NPM_ESLINT_PLUGIN_JSONC_VERSION=3.2.0
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 ```
 
 - NPM packages (node.js):
-  - [eslint@8.57.1](https://www.npmjs.com/package/eslint/v/8.57.1)
+  - [eslint@10.5.0](https://www.npmjs.com/package/eslint/v/10.5.0)
+  - [@eslint/eslintrc](https://www.npmjs.com/package/@eslint/eslintrc)
   - [eslint-plugin-jsonc](https://www.npmjs.com/package/eslint-plugin-jsonc)
   - [@microsoft/eslint-formatter-sarif@3.1.0](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/3.1.0)
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### JSON_ESLINT_PLUGIN_JSONC_ERROR_PARSER_NOT_FOUND
+
+**Detection pattern (regex):**
+
+```text
+(Cannot find module 'jsonc-eslint-parser'|Failed to load parser 'jsonc-eslint-parser')
+```
+
+**Resolution guidance:**
+
+```text
+ESLint could not load `jsonc-eslint-parser` referenced in your `.eslintrc-json.json` config. This parser is required by `eslint-plugin-jsonc` to parse JSON/JSONC/JSON5 files.
+Resolutions:
+  - Pre-install the parser into MegaLinter's npm root via a pre-command in your .mega-linter.yml:
+      JSON_ESLINT_PLUGIN_JSONC_PRE_COMMANDS:
+        - command: "npm install jsonc-eslint-parser"
+          cwd: "root"
+          continue_if_failed: false
+  - Or use the project-local ESLint binary after installing your dependencies:
+      JSON_ESLINT_PLUGIN_JSONC_PRE_COMMANDS:
+        - command: yarn install --frozen-lockfile --ignore-scripts
+          cwd: workspace
+          continue_if_failed: false
+      JSON_ESLINT_PLUGIN_JSONC_CLI_EXECUTABLE: node_modules/.bin/eslint
+```
+
+### JSON_ESLINT_PLUGIN_JSONC_ERROR_CONFIG_OVERRIDES_MISSING
+
+**Detection pattern (regex):**
+
+```text
+(ESLint couldn't find the config|Failed to load config "plugin:jsonc/)
+```
+
+**Resolution guidance:**
+
+```text
+ESLint could not resolve a `plugin:jsonc/recommended-*` config referenced from your project's `.eslintrc`. This usually means you have a workspace ESLint config that overrides MegaLinter's bundled one but does not list `jsonc` in `plugins`.
+Resolutions:
+  - Add `JSON_ESLINT_PLUGIN_JSONC_FILE_NAME: .eslintrc.json` (or your config filename) to `.mega-linter.yml` and add a `jsonc` `overrides` block to your own ESLint config (see the linter documentation above for a full example).
+  - Or pre-install `eslint-plugin-jsonc` into the project's `node_modules`:
+      JSON_ESLINT_PLUGIN_JSONC_PRE_COMMANDS:
+        - command: yarn install --frozen-lockfile --ignore-scripts
+          cwd: workspace
+          continue_if_failed: false
+```
+

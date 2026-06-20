@@ -163,7 +163,7 @@ _Descriptor definition for mega-linter_
 						 - _Will be automatically integrated in generated Dockerfile_
 						 - Type: `array`
 						 - Example values: 
-							 1. `FROM accurics/terrascan:d182f1c as terrascan`
+							 1. `FROM accurics/terrascan:d182f1c AS terrascan`
 							 2. `COPY --from=terrascan /go/bin/terrascan /usr/bin/`
 							 3. `RUN terrascan init`
 							 - **_Items_**

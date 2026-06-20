@@ -4,9 +4,12 @@ description: Update a linter's pinned version in its descriptor YAML. Use when u
 allowed-tools: Read Grep Glob Edit Bash
 argument-hint: [linter-name] [new-version]
 arguments: [linter, version]
+model: haiku
 ---
 
 Update the version of linter `$linter` to `$version`.
+
+> **Delegation hint** — this is a mechanical edit. If you need a sub-agent for the pin change, use `version-bumper` (haiku). The build step at the end can be delegated to `build-runner` (haiku).
 
 Steps:
 
@@ -19,5 +22,5 @@ Steps:
    ```
 4. If no version was specified, check the tool's package registry for the latest
 5. Run `make megalinter-build` to regenerate Dockerfiles with the new version
-6. Update `CHANGELOG.md` in the **repository root** (not the one in /docs)
+6. Do **not** update `CHANGELOG.md` — linter version upgrades are logged automatically by the auto-upgrade workflow under **Linter versions upgrades**
 7. To test the updated version in CI, write `TEST_KEYWORDS=<linter>_test` in the commit message body

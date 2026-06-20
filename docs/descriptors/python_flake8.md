@@ -68,9 +68,9 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       135        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        89        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        66        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       136        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        92        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        69        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
 
@@ -217,3 +217,49 @@ ARG PIP_FLAKE8_VERSION=7.3.0
 
 - PIP packages (Python):
   - [flake8==7.3.0](https://pypi.org/project/flake8/7.3.0)
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### PYTHON_FLAKE8_ERROR_PLUGIN_LOAD
+
+**Detection pattern (regex):**
+
+```text
+"[A-Za-z0-9_-]+" failed during execution due to
+```
+
+**Resolution guidance:**
+
+```text
+A flake8 plugin (e.g. flake8-bugbear, flake8-docstrings) crashed while loading or running.
+This usually means the plugin version is incompatible with the pinned flake8 version, or the plugin is not installed.
+Resolutions:
+  - Pre-install the missing/compatible plugin into flake8's venv via a pre-command in your .mega-linter.yml:
+      PYTHON_FLAKE8_PRE_COMMANDS:
+        - command: "pip install flake8-bugbear"
+          venv: flake8
+          continue_if_failed: false
+  - Temporarily remove the plugin from your flake8 config to confirm the trigger.
+  - Run with `--verbose` locally to see which plugin emitted the error.
+```
+
+### PYTHON_FLAKE8_ERROR_CONFIG_INVALID
+
+**Detection pattern (regex):**
+
+```text
+(There was a critical error during execution of Flake8|Error: Invalid value for|tomllib(\.|: ).+(Invalid|Error)|Error parsing config file)
+```
+
+**Resolution guidance:**
+
+```text
+flake8 could not parse its configuration file (`.flake8`, `setup.cfg`, or `pyproject.toml`).
+Resolutions:
+  - Validate the INI/TOML syntax of the config file.
+  - Make sure option keys (e.g. `max-line-length`, `select`, `ignore`) are spelled correctly.
+  - Remove the custom config to confirm the issue is config-related.
+```
+

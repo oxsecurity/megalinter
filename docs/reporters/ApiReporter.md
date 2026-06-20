@@ -28,6 +28,8 @@ Define the following CI/CD variables:
 
 Examples of configuration:
 
+<!-- secretlint-disable -->
+
 ```sh
 API_REPORTER_URL=https://logs-prod-012.grafana.net/loki/api/v1/push
 API_REPORTER_BASIC_AUTH_USERNAME=3435645645
@@ -38,6 +40,8 @@ API_REPORTER_BASIC_AUTH_PASSWORD=GHTRGDHDHdhghg23345DFG^sfg!ss
 API_REPORTER_URL=https://my.custom.endpoint.net
 API_REPORTER_BEARER_TOKEN=DDHGHfgfgjfhQESRDTHFKGKHFswgFHDHGDH
 ```
+
+<!-- secretlint-enable -->
 
 Example of logs sent to Loki:
 

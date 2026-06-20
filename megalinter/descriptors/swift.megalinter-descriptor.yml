@@ -51,6 +51,29 @@ linters:
     cli_version_arg_name: "--version"
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "Found ([0-9]+) violations"
+    common_linter_errors:
+      - identifier: SWIFT_SWIFTLINT_ERROR_INVALID_CONFIG
+        regex: "(Could not read configuration|Invalid configuration|YAML.*at line [0-9]+, column [0-9]+)"
+        message: |-
+          SwiftLint could not parse `.swiftlint.yml`.
+          Resolutions:
+            - Validate the YAML (indentation, quoting) — SwiftLint requires a strict YAML document.
+            - Verify every rule identifier under `opt_in_rules`, `disabled_rules`, and `only_rules` against `swiftlint rules` or the [rule directory](https://realm.github.io/SwiftLint/rule-directory.html).
+            - Check `included` / `excluded` paths are relative to the config file and exist in the repository.
+      - identifier: SWIFT_SWIFTLINT_ERROR_NO_LINTABLE_FILES
+        regex: "No lintable files found at paths"
+        message: |-
+          SwiftLint started but found no `.swift` files to analyse.
+          Resolutions:
+            - Check the `included:` / `excluded:` patterns in `.swiftlint.yml` — they may be filtering out every file.
+            - Confirm Swift files exist in the workspace and were not filtered out by `FILTER_REGEX_INCLUDE` / `FILTER_REGEX_EXCLUDE`.
+      - identifier: SWIFT_SWIFTLINT_ERROR_CUSTOM_RULE_REGEX
+        regex: "Invalid configuration for .* custom rule|regex .* is invalid"
+        message: |-
+          A `custom_rules` entry in `.swiftlint.yml` has an invalid regular expression or shape.
+          Resolutions:
+            - Test the `regex:` value with an NSRegularExpression-compatible tester.
+            - Ensure every custom rule has the required keys (`regex`, optional `name`/`message`/`severity`).
     examples:
       - "docker run -v /tmp/lint:/tmp/lint:rw ghcr.io/realm/swiftlint:latest swiftlint --strict"
       - "docker run -v /tmp/lint:/tmp/lint:rw ghcr.io/realm/swiftlint:latest swiftlint --fix --strict"
@@ -58,7 +81,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=ghcr.io/realm/swiftlint
-          ENV SWIFT_SWIFTLINT_VERSION=0.63.2
+          ENV SWIFT_SWIFTLINT_VERSION=0.63.3
     supported_platforms:
       platform:
         - linux/amd64

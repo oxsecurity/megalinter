@@ -890,6 +890,244 @@
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
     },
+    "ACTION_ZIZMOR_ARGUMENTS": {
+      "$id": "#/properties/ACTION_ZIZMOR_ARGUMENTS",
+      "description": "ACTION_ZIZMOR: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "ACTION_ZIZMOR: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ],
+      "x-category": "ACTION_ZIZMOR",
+      "x-order": 200020,
+      "x-section": "LINTER_COMMAND"
+    },
+    "ACTION_ZIZMOR_CLI_EXECUTABLE": {
+      "$id": "#/properties/ACTION_ZIZMOR_CLI_EXECUTABLE",
+      "default": [
+        [
+          "zizmor"
+        ]
+      ],
+      "description": "ACTION_ZIZMOR: Override CLI executable used to build the linter command line (rarely needed)",
+      "items": {
+        "type": "string"
+      },
+      "title": "ACTION_ZIZMOR: CLI Executable",
+      "type": "array",
+      "x-category": "ACTION_ZIZMOR",
+      "x-order": 200060,
+      "x-section": "LINTER_COMMAND"
+    },
+    "ACTION_ZIZMOR_CLI_LINT_MODE": {
+      "$id": "#/properties/ACTION_ZIZMOR_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "description": "ACTION_ZIZMOR: Override default CLI lint mode used to call the linter (rarely needed)",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
+      "title": "ACTION_ZIZMOR: CLI lint mode",
+      "type": "string",
+      "x-category": "ACTION_ZIZMOR",
+      "x-doc-key": "config-cli-lint-mode",
+      "x-order": 200050,
+      "x-section": "LINTER_COMMAND"
+    },
+    "ACTION_ZIZMOR_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/ACTION_ZIZMOR_COMMAND_REMOVE_ARGUMENTS",
+      "description": "ACTION_ZIZMOR: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "ACTION_ZIZMOR: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ],
+      "x-category": "ACTION_ZIZMOR",
+      "x-order": 200020,
+      "x-section": "LINTER_COMMAND"
+    },
+    "ACTION_ZIZMOR_CONFIG_FILE": {
+      "$id": "#/properties/ACTION_ZIZMOR_CONFIG_FILE",
+      "default": "zizmor.yml",
+      "description": "ACTION_ZIZMOR: User custom config file name if different from default",
+      "title": "ACTION_ZIZMOR: Custom config file name",
+      "type": "string",
+      "x-category": "ACTION_ZIZMOR",
+      "x-order": 200010,
+      "x-section": "LINTER_COMMAND"
+    },
+    "ACTION_ZIZMOR_DIRECTORY": {
+      "$id": "#/properties/ACTION_ZIZMOR_DIRECTORY",
+      "default": ".github/workflows",
+      "description": "Directory that must be found to activate linter. Use value \"any\" to always activate",
+      "title": "ACTION_ZIZMOR: Directory containing ACTION files",
+      "type": "string",
+      "x-category": "ACTION_ZIZMOR",
+      "x-order": 100000,
+      "x-section": "ACTIVATION"
+    },
+    "ACTION_ZIZMOR_DISABLE_ERRORS": {
+      "$id": "#/properties/ACTION_ZIZMOR_DISABLE_ERRORS",
+      "default": false,
+      "description": "ACTION_ZIZMOR: If true, ACTION_ZIZMOR doesn't make MegaLinter fail even if errors are found",
+      "title": "ACTION_ZIZMOR: Disable errors",
+      "type": "boolean",
+      "x-category": "ACTION_ZIZMOR",
+      "x-order": 400000,
+      "x-section": "ERRORS"
+    },
+    "ACTION_ZIZMOR_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/ACTION_ZIZMOR_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "description": "ACTION_ZIZMOR: If the number of errors found is less than this value, ACTION_ZIZMOR doesn't make MegaLinter fail",
+      "title": "ACTION_ZIZMOR: Maximum number of errors allowed",
+      "type": "number",
+      "x-category": "ACTION_ZIZMOR",
+      "x-order": 400010,
+      "x-section": "ERRORS"
+    },
+    "ACTION_ZIZMOR_FILE_EXTENSIONS": {
+      "$id": "#/properties/ACTION_ZIZMOR_FILE_EXTENSIONS",
+      "default": [
+        ".yml",
+        ".yaml"
+      ],
+      "description": "ACTION_ZIZMOR: Override descriptor/linter matching files extensions that will be used to select files to lint",
+      "examples": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "ACTION_ZIZMOR: Matching files extensions",
+      "type": "array",
+      "x-category": "ACTION_ZIZMOR",
+      "x-order": 300020,
+      "x-section": "SCOPE"
+    },
+    "ACTION_ZIZMOR_FILE_NAMES_REGEX": {
+      "$id": "#/properties/ACTION_ZIZMOR_FILE_NAMES_REGEX",
+      "default": [],
+      "description": "ACTION_ZIZMOR: Override descriptor/linter matching file name regexes that will be used to select files to lint",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "ACTION_ZIZMOR: Matching file name regexes",
+      "type": "array",
+      "x-category": "ACTION_ZIZMOR",
+      "x-order": 300030,
+      "x-section": "SCOPE"
+    },
+    "ACTION_ZIZMOR_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/ACTION_ZIZMOR_FILTER_REGEX_EXCLUDE",
+      "description": "ACTION_ZIZMOR: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "title": "ACTION_ZIZMOR: Excluding Regex",
+      "type": "string",
+      "x-category": "ACTION_ZIZMOR",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "ACTION_ZIZMOR_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/ACTION_ZIZMOR_FILTER_REGEX_INCLUDE",
+      "description": "ACTION_ZIZMOR: Custom regex including filter: only files matching this regex will be linted",
+      "title": "ACTION_ZIZMOR: Including Regex",
+      "type": "string",
+      "x-category": "ACTION_ZIZMOR",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
+    },
+    "ACTION_ZIZMOR_POST_COMMANDS": {
+      "$id": "#/properties/ACTION_ZIZMOR_POST_COMMANDS",
+      "description": "ACTION_ZIZMOR: Define bash commands to run after running ACTION_ZIZMOR",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "ACTION_ZIZMOR: Post-run commands",
+      "type": "array",
+      "x-category": "ACTION_ZIZMOR",
+      "x-order": 500010,
+      "x-section": "PREPOSTCOMMANDS"
+    },
+    "ACTION_ZIZMOR_PRE_COMMANDS": {
+      "$id": "#/properties/ACTION_ZIZMOR_PRE_COMMANDS",
+      "description": "ACTION_ZIZMOR: Define bash commands to run before running ACTION_ZIZMOR",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "ACTION_ZIZMOR: Pre-run commands",
+      "type": "array",
+      "x-category": "ACTION_ZIZMOR",
+      "x-order": 500000,
+      "x-section": "PREPOSTCOMMANDS"
+    },
+    "ACTION_ZIZMOR_RULES_PATH": {
+      "$id": "#/properties/ACTION_ZIZMOR_RULES_PATH",
+      "description": "ACTION_ZIZMOR: Path where to find linter configuration file",
+      "title": "ACTION_ZIZMOR: Custom config file path",
+      "type": "string",
+      "x-category": "ACTION_ZIZMOR",
+      "x-order": 200040,
+      "x-section": "LINTER_COMMAND"
+    },
+    "ACTION_ZIZMOR_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/ACTION_ZIZMOR_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling ACTION_ZIZMOR and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "ACTION_ZIZMOR: Unsecured env variables",
+      "type": "array",
+      "x-category": "ACTION_ZIZMOR",
+      "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
+      "x-order": 600000,
+      "x-section": "SECURITY"
+    },
     "ADDITIONAL_EXCLUDED_DIRECTORIES": {
       "$id": "#/properties/ADDITIONAL_EXCLUDED_DIRECTORIES",
       "description": "List of additional excluded directory basenames to add to MegaLinter default excluded directories. They are excluded at any nested level.",
@@ -10606,7 +10844,7 @@
     },
     "JAVASCRIPT_ES_CONFIG_FILE": {
       "$id": "#/properties/JAVASCRIPT_ES_CONFIG_FILE",
-      "default": ".eslintrc.json",
+      "default": "eslint.config.js",
       "description": "JAVASCRIPT_ES: User custom config file name if different from default",
       "title": "JAVASCRIPT_ES: Custom config file name",
       "type": "string",
@@ -11789,7 +12027,7 @@
       "items": {
         "type": "string"
       },
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Custom arguments",
+      "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Custom arguments",
       "type": [
         "array",
         "string"
@@ -11809,7 +12047,7 @@
       "items": {
         "type": "string"
       },
-      "title": "JSON_ESLINT_PLUGIN_JSONC: CLI Executable",
+      "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: CLI Executable",
       "type": "array",
       "x-category": "JSON_ESLINT_PLUGIN_JSONC",
       "x-order": 200060,
@@ -11829,7 +12067,7 @@
         "List of Files",
         "Project"
       ],
-      "title": "JSON_ESLINT_PLUGIN_JSONC: CLI lint mode",
+      "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: CLI lint mode",
       "type": "string",
       "x-category": "JSON_ESLINT_PLUGIN_JSONC",
       "x-doc-key": "config-cli-lint-mode",
@@ -11846,7 +12084,7 @@
       "items": {
         "type": "string"
       },
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Custom remove arguments",
+      "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Custom remove arguments",
       "type": [
         "array",
         "string"
@@ -11859,7 +12097,7 @@
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_CONFIG_FILE",
       "default": ".eslintrc-json.json",
       "description": "JSON_ESLINT_PLUGIN_JSONC: User custom config file name if different from default",
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Custom config file name",
+      "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Custom config file name",
       "type": "string",
       "x-category": "JSON_ESLINT_PLUGIN_JSONC",
       "x-order": 200010,
@@ -11869,7 +12107,7 @@
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_DISABLE_ERRORS",
       "default": false,
       "description": "JSON_ESLINT_PLUGIN_JSONC: If true, JSON_ESLINT_PLUGIN_JSONC doesn't make MegaLinter fail even if errors are found",
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Disable errors",
+      "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Disable errors",
       "type": "boolean",
       "x-category": "JSON_ESLINT_PLUGIN_JSONC",
       "x-order": 400000,
@@ -11879,7 +12117,7 @@
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
       "description": "JSON_ESLINT_PLUGIN_JSONC: If the number of errors found is less than this value, JSON_ESLINT_PLUGIN_JSONC doesn't make MegaLinter fail",
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Maximum number of errors allowed",
+      "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Maximum number of errors allowed",
       "type": "number",
       "x-category": "JSON_ESLINT_PLUGIN_JSONC",
       "x-order": 400010,
@@ -11900,7 +12138,7 @@
       "items": {
         "type": "string"
       },
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Matching files extensions",
+      "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Matching files extensions",
       "type": "array",
       "x-category": "JSON_ESLINT_PLUGIN_JSONC",
       "x-order": 300020,
@@ -11917,7 +12155,7 @@
       "items": {
         "type": "string"
       },
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Matching file name regexes",
+      "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Matching file name regexes",
       "type": "array",
       "x-category": "JSON_ESLINT_PLUGIN_JSONC",
       "x-order": 300030,
@@ -11926,7 +12164,7 @@
     "JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_EXCLUDE",
       "description": "JSON_ESLINT_PLUGIN_JSONC: Custom regex excluding filter: files matching this regex will NOT be linted",
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Excluding Regex",
+      "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Excluding Regex",
       "type": "string",
       "x-category": "JSON_ESLINT_PLUGIN_JSONC",
       "x-doc-key": "config-filtering",
@@ -11936,7 +12174,7 @@
     "JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_INCLUDE",
       "description": "JSON_ESLINT_PLUGIN_JSONC: Custom regex including filter: only files matching this regex will be linted",
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Including Regex",
+      "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Including Regex",
       "type": "string",
       "x-category": "JSON_ESLINT_PLUGIN_JSONC",
       "x-doc-key": "config-filtering",
@@ -11945,7 +12183,7 @@
     },
     "JSON_ESLINT_PLUGIN_JSONC_POST_COMMANDS": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_POST_COMMANDS",
-      "description": "JSON_ESLINT_PLUGIN_JSONC: Define bash commands to run after running JSON_ESLINT_PLUGIN_JSONC",
+      "description": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Define bash commands to run after running JSON_ESLINT_PLUGIN_JSONC",
       "examples": [
         [
           {
@@ -11966,7 +12204,7 @@
     },
     "JSON_ESLINT_PLUGIN_JSONC_PRE_COMMANDS": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_PRE_COMMANDS",
-      "description": "JSON_ESLINT_PLUGIN_JSONC: Define bash commands to run before running JSON_ESLINT_PLUGIN_JSONC",
+      "description": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Define bash commands to run before running JSON_ESLINT_PLUGIN_JSONC",
       "examples": [
         [
           {
@@ -11988,7 +12226,7 @@
     "JSON_ESLINT_PLUGIN_JSONC_RULES_PATH": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_RULES_PATH",
       "description": "JSON_ESLINT_PLUGIN_JSONC: Path where to find linter configuration file",
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Custom config file path",
+      "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Custom config file path",
       "type": "string",
       "x-category": "JSON_ESLINT_PLUGIN_JSONC",
       "x-order": 200040,
@@ -12001,7 +12239,7 @@
       "items": {
         "type": "string"
       },
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Unsecured env variables",
+      "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Unsecured env variables",
       "type": "array",
       "x-category": "JSON_ESLINT_PLUGIN_JSONC",
       "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
@@ -13068,7 +13306,7 @@
     },
     "JSX_ESLINT_CONFIG_FILE": {
       "$id": "#/properties/JSX_ESLINT_CONFIG_FILE",
-      "default": "eslint.config.js",
+      "default": "eslint.config.cjs",
       "description": "JSX_ESLINT: User custom config file name if different from default",
       "title": "JSX_ESLINT: Custom config file name",
       "type": "string",
@@ -29550,6 +29788,16 @@
       "x-order": 800010,
       "x-section": "SECURITY"
     },
+    "SECURITY_SUGGESTIONS": {
+      "$id": "#/properties/SECURITY_SUGGESTIONS",
+      "default": true,
+      "description": "Provides security-related suggestions and MegaLinter release announcements in reports",
+      "title": "Security suggestions",
+      "type": "boolean",
+      "x-category": "GENERAL",
+      "x-order": 700120,
+      "x-section": "OUTPUT"
+    },
     "SHOW_ELAPSED_TIME": {
       "$id": "#/properties/SHOW_ELAPSED_TIME",
       "default": false,
@@ -34122,7 +34370,7 @@
     },
     "TSX_ESLINT_CONFIG_FILE": {
       "$id": "#/properties/TSX_ESLINT_CONFIG_FILE",
-      "default": ".eslintrc.json",
+      "default": "eslint.config.cjs",
       "description": "TSX_ESLINT: User custom config file name if different from default",
       "title": "TSX_ESLINT: Custom config file name",
       "type": "string",
@@ -34433,7 +34681,7 @@
     },
     "TYPESCRIPT_ES_CONFIG_FILE": {
       "$id": "#/properties/TYPESCRIPT_ES_CONFIG_FILE",
-      "default": ".eslintrc.json",
+      "default": "eslint.config.js",
       "description": "TYPESCRIPT_ES: User custom config file name if different from default",
       "title": "TYPESCRIPT_ES: Custom config file name",
       "type": "string",

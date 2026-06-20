@@ -43,14 +43,47 @@ ESLint requires a custom configuration file applicable to your project. You can 
 
 Used by companies like Microsoft, Airbnb, Netflix, and Facebook, ESLint helps maintain code quality and consistency across JavaScript projects of all sizes.
 
+### ESLint v10 — resolving bare imports from `eslint.config.mjs`
+
+ESLint v10 dropped support for the legacy `.eslintrc.*` format and only loads the new flat config (`eslint.config.*`). When MegaLinter runs ESLint from its own container install (`/node-deps/node_modules`) instead of your project's local `node_modules`, Node's ESM resolver may fail to locate bare imports such as `import js from '@eslint/js'` (upstream limitation tracked in [eslint/eslint#18465](https://github.com/eslint/eslint/issues/18465)), producing errors like:
+
+```text
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package '@eslint/js' imported from /github/workspace/eslint.config.mjs
+```
+
+Two recommended workarounds:
+
+#### Workaround 1 — Use `createRequire` in `eslint.config.mjs`
+
+Bare imports fall back to CommonJS resolution (which honors `NODE_PATH` and will pick up MegaLinter's bundled `@eslint/js` and related plugins):
+
+```js
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const js = require('@eslint/js');
+```
+
+#### Workaround 2 — Install dependencies in a pre-command and use the project-local ESLint binary
+
+ESLint then runs from `<workspace>/node_modules` and resolves your config's imports naturally:
+
+```yaml
+JAVASCRIPT_ES_PRE_COMMANDS:
+  - command: yarn install --frozen-lockfile --ignore-scripts
+    cwd: workspace
+    continue_if_failed: false
+JAVASCRIPT_ES_CLI_EXECUTABLE: node_modules/.bin/eslint
+```
+
+Replace `yarn install --frozen-lockfile --ignore-scripts` with `npm ci` (or `npm install --include=dev`) if your project uses npm.
+
 ## eslint documentation
 
-- Version in MegaLinter: **8.57.1**
+- Version in MegaLinter: **10.5.0**
 - Visit [Official Web Site](https://eslint.org){target=_blank}
 - See [How to configure eslint rules](https://eslint.org/docs/latest/use/configure){target=_blank}
 - See [How to disable eslint rules in files](https://eslint.org/docs/latest/use/configure/rules#disabling-rules){target=_blank}
 - See [How to ignore files and directories with eslint](https://eslint.org/docs/latest/use/configure/ignore#the-eslintignore-file){target=_blank}
-  - You can define a `.eslintignore` file to ignore files and folders
 - See [Index of problems detected by eslint](https://eslint.org/docs/latest/rules/){target=_blank}
 
 [![eslint - GitHub](https://gh-card.dev/repos/eslint/eslint.svg?fullname=)](https://github.com/eslint/eslint){target=_blank}
@@ -74,7 +107,7 @@ Used by companies like Microsoft, Airbnb, Netflix, and Facebook, ESLint helps ma
 | JAVASCRIPT_ES_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
 | JAVASCRIPT_ES_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
 | JAVASCRIPT_ES_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling JAVASCRIPT_ES and its pre/post commands                                                                                                                | None                                            |
-| JAVASCRIPT_ES_CONFIG_FILE                 | eslint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                   | `.eslintrc.json`                                |
+| JAVASCRIPT_ES_CONFIG_FILE                 | eslint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                   | `eslint.config.js`                              |
 | JAVASCRIPT_ES_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | JAVASCRIPT_ES_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | JAVASCRIPT_ES_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
@@ -101,16 +134,16 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                                              | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                                |       135        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)       | MegaLinter for the most commonly used languages          |        89        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)   | Optimized for C, C++, C# or VB based projects with JS/TS |        73        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        59        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                                |       136        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)       | MegaLinter for the most commonly used languages          |        92        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)   | Optimized for C, C++, C# or VB based projects with JS/TS |        76        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        62        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
 
 ## Behind the scenes
 
 ### How are identified applicable files
 
-- Activated only if one of these files is found: `.eslintrc.json, .eslintrc.yml, .eslintrc.yaml, .eslintrc.js, .eslintrc.cjs, package.json:eslintConfig`
+- Activated only if one of these files is found: `eslint.config.js, eslint.config.mjs, eslint.config.cjs, eslint.config.ts, eslint.config.mts, eslint.config.cts, .eslintrc.json, .eslintrc.yml, .eslintrc.yaml, .eslintrc.js, .eslintrc.cjs, package.json:eslintConfig`
 - File extensions: `.js`, `.vue`
 
 <!-- markdownlint-disable -->
@@ -126,11 +159,11 @@ eslint myfile.js
 ```
 
 ```shell
-eslint -c .eslintrc.json --no-eslintrc --no-ignore myfile.js
+eslint -c eslint.config.js --no-ignore myfile.js
 ```
 
 ```shell
-eslint --fix -c .eslintrc.json --no-eslintrc --no-ignore myfile.js
+eslint --fix -c eslint.config.js --no-ignore myfile.js
 ```
 
 
@@ -140,19 +173,17 @@ eslint --fix -c .eslintrc.json --no-eslintrc --no-ignore myfile.js
 eslint [options] file.js [file.js] [dir]
 
 Basic configuration:
-  --no-eslintrc                    Disable use of configuration from .eslintrc.*
-  -c, --config path::String        Use this configuration, overriding .eslintrc.* config options if present
-  --env [String]                   Specify environments
-  --ext [String]                   Specify JavaScript file extensions
+  --no-config-lookup               Disable look up for eslint.config.js
+  -c, --config path::String        Use this configuration instead of eslint.config.js, eslint.config.mjs, or eslint.config.cjs
+  --inspect-config                 Open the config inspector with the current configuration
+  --ext [String]                   Specify additional file extensions to lint
   --global [String]                Define global variables
   --parser String                  Specify the parser to be used
   --parser-options Object          Specify parser options
-  --resolve-plugins-relative-to path::String  A folder where plugins should be resolved from, CWD by default
 
 Specify Rules and Plugins:
   --plugin [String]                Specify plugins
   --rule Object                    Specify rules
-  --rulesdir [path::String]        Load additional rules from this directory. Deprecated: Use rules from plugins
 
 Fix Problems:
   --fix                            Automatically fix problems
@@ -160,9 +191,8 @@ Fix Problems:
   --fix-type Array                 Specify the types of fixes to apply (directive, problem, suggestion, layout)
 
 Ignore Files:
-  --ignore-path path::String       Specify path of ignore file
   --no-ignore                      Disable use of ignore files and patterns
-  --ignore-pattern [String]        Pattern of files to ignore (in addition to those in .eslintignore)
+  --ignore-pattern [String]        Patterns of files to ignore
 
 Use stdin:
   --stdin                          Lint code provided on <STDIN> - default: false
@@ -181,6 +211,7 @@ Inline configuration comments:
   --no-inline-config               Prevent comments from changing config or rules
   --report-unused-disable-directives  Adds reported errors for unused eslint-disable and eslint-enable directives
   --report-unused-disable-directives-severity String  Chooses severity level for reporting unused eslint-disable and eslint-enable directives - either: off, warn, error, 0, 1, or 2
+  --report-unused-inline-configs String  Adds reported errors for unused eslint inline config comments - either: off, warn, error, 0, 1, or 2
 
 Caching:
   --cache                          Only check changed files - default: false
@@ -188,15 +219,28 @@ Caching:
   --cache-location path::String    Path to the cache file or directory
   --cache-strategy String          Strategy to use for detecting changed files in the cache - either: metadata or content - default: metadata
 
+Suppressing Violations:
+  --suppress-all                   Suppress all violations - default: false
+  --suppress-rule [String]         Suppress specific rules
+  --suppressions-location path::String  Specify the location of the suppressions file
+  --prune-suppressions             Prune unused suppressions - default: false
+  --pass-on-unpruned-suppressions  Ignore unused suppressions - default: false
+
 Miscellaneous:
   --init                           Run config initialization wizard - default: false
   --env-info                       Output execution environment information - default: false
   --no-error-on-unmatched-pattern  Prevent errors when pattern is unmatched
   --exit-on-fatal-error            Exit with exit code 2 in case of fatal error - default: false
+  --no-warn-ignored                Suppress warnings when the file list includes ignored files
+  --pass-on-no-patterns            Exit with exit code 0 in case no file patterns are passed
   --debug                          Output debugging information
   -h, --help                       Show help
   -v, --version                    Output the version number
   --print-config path::String      Print the configuration for the given file
+  --stats                          Add statistics to the lint report - default: false
+  --flag [String]                  Enable a feature flag
+  --mcp                            Start the ESLint MCP server
+  --concurrency Int|String         Number of linting threads, auto to choose automatically, off for no multithreading - default: off
 ```
 
 ### Installation on mega-linter Docker image
@@ -204,44 +248,152 @@ Miscellaneous:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=8.57.1
-# renovate: datasource=npm depName=eslint-config-airbnb
-ARG NPM_ESLINT_CONFIG_AIRBNB_VERSION=19.0.4
+ARG NPM_ESLINT_VERSION=10.5.0
+# renovate: datasource=npm depName=@eslint/js
+ARG NPM_ESLINT_JS_VERSION=10.0.1
 # renovate: datasource=npm depName=eslint-config-prettier
 ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.1.8
-# renovate: datasource=npm depName=eslint-config-standard
-ARG NPM_ESLINT_CONFIG_STANDARD_VERSION=17.1.0
-# renovate: datasource=npm depName=eslint-plugin-import
-ARG NPM_ESLINT_PLUGIN_IMPORT_VERSION=2.32.0
+# renovate: datasource=npm depName=eslint-plugin-import-x
+ARG NPM_ESLINT_PLUGIN_IMPORT_X_VERSION=4.16.2
 # renovate: datasource=npm depName=eslint-plugin-jest
 ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.15.2
 # renovate: datasource=npm depName=eslint-plugin-n
-ARG NPM_ESLINT_PLUGIN_N_VERSION=16.6.2
+ARG NPM_ESLINT_PLUGIN_N_VERSION=18.1.0
 # renovate: datasource=npm depName=eslint-plugin-prettier
-ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.5
+ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.6
 # renovate: datasource=npm depName=eslint-plugin-promise
-ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=6.6.0
+ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=7.3.0
 # renovate: datasource=npm depName=eslint-plugin-vue
-ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.8.0
-# renovate: datasource=npm depName=@babel/core
-ARG NPM_BABEL_CORE_VERSION=7.29.0
-# renovate: datasource=npm depName=@babel/eslint-parser
-ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.28.6
+ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.9.2
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 ```
 
 - NPM packages (node.js):
-  - [eslint@8.57.1](https://www.npmjs.com/package/eslint/v/8.57.1)
-  - [eslint-config-airbnb@19.0.4](https://www.npmjs.com/package/eslint-config-airbnb/v/19.0.4)
+  - [eslint@10.5.0](https://www.npmjs.com/package/eslint/v/10.5.0)
+  - [@eslint/js@10.0.1](https://www.npmjs.com/package/@eslint/js/v/10.0.1)
   - [eslint-config-prettier@10.1.8](https://www.npmjs.com/package/eslint-config-prettier/v/10.1.8)
-  - [eslint-config-standard@17.1.0](https://www.npmjs.com/package/eslint-config-standard/v/17.1.0)
-  - [eslint-plugin-import@2.32.0](https://www.npmjs.com/package/eslint-plugin-import/v/2.32.0)
+  - [eslint-plugin-import-x@4.16.2](https://www.npmjs.com/package/eslint-plugin-import-x/v/4.16.2)
   - [eslint-plugin-jest@29.15.2](https://www.npmjs.com/package/eslint-plugin-jest/v/29.15.2)
-  - [eslint-plugin-n@16.6.2](https://www.npmjs.com/package/eslint-plugin-n/v/16.6.2)
-  - [eslint-plugin-prettier@5.5.5](https://www.npmjs.com/package/eslint-plugin-prettier/v/5.5.5)
-  - [eslint-plugin-promise@6.6.0](https://www.npmjs.com/package/eslint-plugin-promise/v/6.6.0)
-  - [eslint-plugin-vue@10.8.0](https://www.npmjs.com/package/eslint-plugin-vue/v/10.8.0)
-  - [@babel/core@7.29.0](https://www.npmjs.com/package/@babel/core/v/7.29.0)
-  - [@babel/eslint-parser@7.28.6](https://www.npmjs.com/package/@babel/eslint-parser/v/7.28.6)
+  - [eslint-plugin-n@18.1.0](https://www.npmjs.com/package/eslint-plugin-n/v/18.1.0)
+  - [eslint-plugin-prettier@5.5.6](https://www.npmjs.com/package/eslint-plugin-prettier/v/5.5.6)
+  - [eslint-plugin-promise@7.3.0](https://www.npmjs.com/package/eslint-plugin-promise/v/7.3.0)
+  - [eslint-plugin-vue@10.9.2](https://www.npmjs.com/package/eslint-plugin-vue/v/10.9.2)
   - [@microsoft/eslint-formatter-sarif@3.1.0](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/3.1.0)
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### JAVASCRIPT_ES_ERROR_PLUGIN_NOT_FOUND
+
+**Detection pattern (regex):**
+
+```text
+(Failed to load plugin '|ESLint couldn't find the plugin "|Cannot find module 'eslint-plugin-)
+```
+
+**Resolution guidance:**
+
+```text
+ESLint could not load a plugin referenced in your config. The plugin is not installed in MegaLinter's bundled `node_modules` (`/node-deps/node_modules`).
+Resolutions:
+  - Pre-install the missing plugin into MegaLinter's npm root via a pre-command in your .mega-linter.yml:
+      JAVASCRIPT_ES_PRE_COMMANDS:
+        - command: "npm install eslint-plugin-NAME"
+          cwd: "root"
+          continue_if_failed: false
+  - Or install your project's full dependency tree and run ESLint from the workspace `node_modules`:
+      JAVASCRIPT_ES_PRE_COMMANDS:
+        - command: yarn install --frozen-lockfile --ignore-scripts
+          cwd: workspace
+          continue_if_failed: false
+      JAVASCRIPT_ES_CLI_EXECUTABLE: node_modules/.bin/eslint
+  - Verify the plugin name in your ESLint config matches the published npm package name.
+```
+
+### JAVASCRIPT_ES_ERROR_CONFIG_NOT_FOUND
+
+**Detection pattern (regex):**
+
+```text
+(ESLint couldn't find the config "|Failed to load config "|Cannot find module 'eslint-config-)
+```
+
+**Resolution guidance:**
+
+```text
+ESLint could not resolve a shareable config referenced via `extends` (e.g. `airbnb`, `standard`, `prettier`). The config package is not installed in MegaLinter's bundled `node_modules`.
+Resolutions:
+  - Pre-install the missing config package via a pre-command in your .mega-linter.yml:
+      JAVASCRIPT_ES_PRE_COMMANDS:
+        - command: "npm install eslint-config-NAME"
+          cwd: "root"
+          continue_if_failed: false
+  - Or install your project's dependencies and run ESLint from the workspace binary (see ESLint v10 section above).
+```
+
+### JAVASCRIPT_ES_ERROR_PARSER_NOT_FOUND
+
+**Detection pattern (regex):**
+
+```text
+(Cannot find module '@?[A-Za-z0-9_/.-]*parser'|Failed to load parser '|Could not resolve parser)
+```
+
+**Resolution guidance:**
+
+```text
+ESLint could not load the parser referenced in your config (e.g. `@babel/eslint-parser`, `vue-eslint-parser`). The parser package is not bundled in MegaLinter and must be installed.
+Resolutions:
+  - Pre-install the parser via a pre-command in your .mega-linter.yml:
+      JAVASCRIPT_ES_PRE_COMMANDS:
+        - command: "npm install @babel/eslint-parser"
+          cwd: "root"
+          continue_if_failed: false
+  - Or install the full project tree and use the workspace ESLint binary (see ESLint v10 section above).
+```
+
+### JAVASCRIPT_ES_ERROR_FLAT_CONFIG_MODULE_NOT_FOUND
+
+**Detection pattern (regex):**
+
+```text
+ERR_MODULE_NOT_FOUND.+eslint\.config\.
+```
+
+**Resolution guidance:**
+
+```text
+ESLint v9+/v10 flat config (`eslint.config.mjs`) uses native ESM resolution, which does not honor `NODE_PATH`. Bare imports like `import js from '@eslint/js'` fail when ESLint runs from MegaLinter's bundled install.
+Resolutions:
+  - Use `createRequire` in your `eslint.config.mjs` (see the "ESLint v10" section in this linter's documentation above).
+  - Or install your project's dependencies and run the project-local ESLint binary:
+      JAVASCRIPT_ES_PRE_COMMANDS:
+        - command: yarn install --frozen-lockfile --ignore-scripts
+          cwd: workspace
+          continue_if_failed: false
+      JAVASCRIPT_ES_CLI_EXECUTABLE: node_modules/.bin/eslint
+```
+
+### JAVASCRIPT_ES_ERROR_OUT_OF_MEMORY
+
+**Detection pattern (regex):**
+
+```text
+(JavaScript heap out of memory|FATAL ERROR:.+Allocation failed|Reached heap limit Allocation failed)
+```
+
+**Resolution guidance:**
+
+```text
+ESLint ran out of Node.js heap memory. This typically happens on very large codebases or when type-aware rules (`parserOptions.project`) load the entire TypeScript program.
+Resolutions:
+  - Raise the Node.js heap and whitelist the var for this linter (MegaLinter strips most env vars by default):
+      JAVASCRIPT_ES_UNSECURED_ENV_VARIABLES:
+        - NODE_OPTIONS
+      NODE_OPTIONS: "--max-old-space-size=8192"
+  - Reduce scope via `JAVASCRIPT_ES_FILTER_REGEX_INCLUDE` / `JAVASCRIPT_ES_FILTER_REGEX_EXCLUDE`.
+  - Disable type-aware rules or remove `parserOptions.project` if it is not strictly required.
+```
+

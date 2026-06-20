@@ -51,6 +51,13 @@ linters:
       - sarif
     cli_lint_fix_arg_name: "--fix"
     version_extract_regex: "(?<=npm-groovy-lint version )\\d+(\\.\\d+)+"
+    common_linter_errors:
+      - identifier: GROOVY_NPM_GROOVY_LINT_ERROR_CODENARC_SERVER
+        regex: "CodeNarcServer"
+        message: |-
+          npm-groovy-lint failed to start or communicate with the embedded CodeNarcServer (Java process).
+          Common causes: port already in use, or a stale lock file in the temp directory.
+          Try setting GROOVY_NPM_GROOVY_LINT_ARGUMENTS to "--noserver" in your .mega-linter.yml to bypass the server.
     examples:
       - "npm-groovy-lint myfile.groovy"
       - "npm-groovy-lint -c .groovylintrc.json "
@@ -62,7 +69,7 @@ linters:
         - ENV JAVA_HOME_17=/usr/lib/jvm/java-17-openjdk
         - |-
           # renovate: datasource=npm depName=npm-groovy-lint
-          ARG NPM_GROOVY_LINT_VERSION=17.0.4
+          ARG NPM_GROOVY_LINT_VERSION=17.0.5
       npm:
         - npm-groovy-lint@${NPM_GROOVY_LINT_VERSION}
     supported_platforms:

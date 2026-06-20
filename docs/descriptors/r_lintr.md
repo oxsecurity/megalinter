@@ -68,7 +68,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       135        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       136        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -108,14 +108,14 @@ RUN mkdir -p /home/r-library \
 ```
 
 - APK packages (Linux):
-  - [gcc](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=gcc)
-  - [g++](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=g++)
-  - [libcurl](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=libcurl)
-  - [libffi-dev](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=libffi-dev)
-  - [libgcc](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=libgcc)
-  - [libxml2-dev](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=libxml2-dev)
-  - [libxml2-utils](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=libxml2-utils)
-  - [linux-headers](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=linux-headers)
-  - [R](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=R)
-  - [R-dev](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=R-dev)
-  - [R-doc](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=R-doc)
+  - [gcc](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=gcc)
+  - [g++](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=g++)
+  - [libcurl](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=libcurl)
+  - [libffi-dev](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=libffi-dev)
+  - [libgcc](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=libgcc)
+  - [libxml2-dev](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=libxml2-dev)
+  - [libxml2-utils](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=libxml2-utils)
+  - [linux-headers](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=linux-headers)
+  - [R](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=R)
+  - [R-dev](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=R-dev)
+  - [R-doc](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=R-doc)

@@ -31,6 +31,13 @@ linters:
     linter_rules_inline_disable_url: https://robocop.dev/stable/configuration/disablers/
     config_file_name: robocop.toml
     cli_lint_mode: list_of_files
+    # robocop 8.2.9 ships a broken `--version` flag, so read the installed version
+    # via the venv's Python and importlib.metadata until upstream restores it.
+    cli_executable_version: /venvs/robocop/bin/python
+    cli_version_arg_name: ""
+    cli_version_extra_args:
+      - "-c"
+      - "from importlib.metadata import version; print(version('robotframework-robocop'))"
     cli_lint_extra_args:
       - check
     cli_lint_fix_arg_name: format
@@ -43,13 +50,22 @@ linters:
       - ".robot"
       - ".resource"
     sarif_default_output_file: .sarif.json
+    common_linter_errors:
+      - identifier: ROBOTFRAMEWORK_ROBOCOP_ERROR_CONFIG_INVALID
+        regex: "(InvalidConfigurationError|InvalidConfigurationFormatError|InvalidParameterValueError|Provided rule '[^']+' does not exist|Circular reference found in 'extends')"
+        message: |-
+          Robocop could not load its configuration (CLI args or `robocop.toml`) or referenced an unknown rule.
+          Resolutions:
+            - Validate the TOML syntax of `robocop.toml`.
+            - Check that all rule names under `include`/`exclude`/`configure` exist in the installed Robocop version (rule names were reorganized in Robocop 5+ / 6+).
+            - See <https://robocop.dev/stable/rules_list/>.
     examples:
       - "robocop check myfile.robot"
     install:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=robotframework-robocop
-          ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=8.2.7
+          ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=8.2.11
       pip:
         - robotframework-robocop==${PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION}
     supported_platforms:

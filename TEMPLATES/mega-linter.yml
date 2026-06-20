@@ -54,7 +54,18 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v6
         with:
+          # SECURITY NOTE: Using a Personal Access Token (PAT) is NOT
+          # recommended. Open-source projects have been heavily targeted by
+          # supply-chain attacks in recent months, and a leaked PAT can give
+          # attackers broad write access to your repository — better safe
+          # than sorry! If you only need workflows to re-trigger after
+          # MegaLinter applies fixes, prefer one of these safer alternatives:
+          #   - Manually re-run the workflow from the GitHub Actions tab, or
+          #   - Push another commit on the branch to trigger workflows again.
+          # Only define `secrets.PAT` if you fully understand the trade-off.
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
+          persist-credentials: false # Comment this line and uncomment the next one if you use APPLY_FIXES
+          # persist-credentials: true # zizmor: ignore[artipacked]
 
           # If you use VALIDATE_ALL_CODEBASE = true, you can remove this line to
           # improve performance
@@ -65,7 +76,7 @@ jobs:
 
         # You can override MegaLinter flavor used to have faster performances
         # More info at https://megalinter.io/latest/flavors/
-        uses: oxsecurity/megalinter@v8
+        uses: oxsecurity/megalinter@v9
 
         id: ml
 
@@ -140,10 +151,14 @@ jobs:
       # Create pull request if applicable
       # (for now works only on PR from same repository, not from forks)
       - name: Create Pull Request with applied fixes
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@v8
         id: cpr
         if: env.APPLY_FIXES_IF_PR == 'true'
         with:
+          # SECURITY NOTE: see the warning on the checkout step above —
+          # using `secrets.PAT` is NOT recommended for security reasons.
+          # Prefer manually re-running the workflow or pushing another
+          # commit on the branch to trigger workflows again.
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
           commit-message: "[MegaLinter] Apply linters automatic fixes"
           title: "[MegaLinter] Apply linters automatic fixes"
@@ -151,9 +166,12 @@ jobs:
 
       - name: Create PR output
         if: env.APPLY_FIXES_IF_PR == 'true'
+        env:
+          PR_NUMBER: ${{ steps.cpr.outputs.pull-request-number }}
+          PR_URL: ${{ steps.cpr.outputs.pull-request-url }}
         run: |
-          echo "PR Number - ${{ steps.cpr.outputs.pull-request-number }}"
-          echo "PR URL - ${{ steps.cpr.outputs.pull-request-url }}"
+          echo "PR Number - ${PR_NUMBER}"
+          echo "PR URL - ${PR_URL}"
 
       # Push new commit if applicable
       # (for now works only on PR from same repository, not from forks)

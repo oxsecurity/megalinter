@@ -78,7 +78,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       135        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       136        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -167,3 +167,30 @@ ARG NPM_REMARK_PRESET_LINT_RECOMMENDED_VERSION=7.0.1
 - NPM packages (node.js):
   - [remark-cli](https://www.npmjs.com/package/remark-cli)
   - [remark-preset-lint-recommended](https://www.npmjs.com/package/remark-preset-lint-recommended)
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### MARKDOWN_REMARK_LINT_ERROR_PRESET_NOT_FOUND
+
+**Detection pattern (regex):**
+
+```text
+Could not find (module|preset|plugin) [`'"]
+```
+
+**Resolution guidance:**
+
+```text
+remark could not resolve a preset or plugin referenced in your `.remarkrc` (or equivalent config). Every plugin/preset listed in remark configuration must also be installed in `node_modules` next to remark.
+Resolutions:
+  - Pre-install the missing preset/plugin into MegaLinter's npm root (`/node-deps`) via a pre-command in your .mega-linter.yml:
+      MARKDOWN_REMARK_LINT_PRE_COMMANDS:
+        - command: "npm install remark-preset-lint-recommended"
+          cwd: "root"
+          continue_if_failed: false
+  - Verify the package name in `.remarkrc` matches the actual published name exactly.
+  - If you only use built-in / bundled presets, remove the custom entry from your config.
+```
+

@@ -20,7 +20,7 @@ description: How to use dartanalyzer (configure, ignore files, ignore errors, he
 
 ## dartanalyzer documentation
 
-- Version in MegaLinter: **3.11.5**
+- Version in MegaLinter: **3.12.2**
 - Visit [Official Web Site](https://dart.dev/tools/dart-analyze){target=_blank}
 - See [How to configure dartanalyzer rules](https://dart.dev/tools/analysis){target=_blank}
 - See [How to disable dartanalyzer rules in files](https://dart.dev/tools/analysis#ignoring-rules){target=_blank}
@@ -66,7 +66,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       135        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       136        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -151,7 +151,7 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
 # Linter install
 ARG TARGETPLATFORM
 # renovate: datasource=dart-version depName=dart
-ARG DART_VERSION='3.11.5'
+ARG DART_VERSION='3.12.2'
 RUN case ${TARGETPLATFORM} in \
   "linux/amd64")  DART_ARCH=x64   ;; \
   "linux/arm64")  DART_ARCH=arm64 ;; \
@@ -164,5 +164,45 @@ esac \
     && rm -r dart-sdk/
 
 ENV PATH="/usr/lib/dart/bin:${PATH}"
+```
+
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### DART_DARTANALYZER_ERROR_MISSING_PUBSPEC
+
+**Detection pattern (regex):**
+
+```text
+Could not find a file named "pubspec.yaml"
+```
+
+**Resolution guidance:**
+
+```text
+dart analyze requires a Dart package: no pubspec.yaml was found for the analyzed file(s).
+Add a pubspec.yaml at the package root, or restrict DART_DARTANALYZER_FILTER_REGEX_INCLUDE to a directory that contains one.
+```
+
+### DART_DARTANALYZER_ERROR_PACKAGES_NOT_RESOLVED
+
+**Detection pattern (regex):**
+
+```text
+(pub get|pub upgrade).*(failed|not found)|Some packages .* are not available
+```
+
+**Resolution guidance:**
+
+```text
+dart analyze could not resolve the package dependencies declared in pubspec.yaml.
+Resolution: pre-install dependencies (against the pubspec.yaml in your repo) via a pre-command in your .mega-linter.yml:
+  DART_DARTANALYZER_PRE_COMMANDS:
+    - command: "dart pub get"
+      cwd: "workspace"
+      continue_if_failed: false
+Or pre-cache `.dart_tool/package_config.json` so the analyzer can locate dependencies.
 ```
 

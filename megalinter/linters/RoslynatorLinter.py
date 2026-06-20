@@ -10,7 +10,7 @@ from megalinter import Linter
 
 class RoslynatorLinter(Linter):
     def process_linter(self, file=None):
-        command = f"dotnet restore {file}"
+        command = ["dotnet", "restore", file]
 
         logging.debug(f"[{self.linter_name}] command: {str(command)}")
 

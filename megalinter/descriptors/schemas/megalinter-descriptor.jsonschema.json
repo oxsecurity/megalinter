@@ -704,7 +704,7 @@
           "cli_lint_mode": {
             "$id": "#/properties/linters/items/properties/cli_lint_mode",
             "default": "file",
-            "description": "Defines how the linter is called: file,  list_of_files, project",
+            "description": "Defines how the linter is called: file, list_of_files, project",
             "enum": [
               "file",
               "project",
@@ -712,6 +712,36 @@
             ],
             "title": "Linting mode",
             "type": "string"
+          },
+          "cli_lint_mode_file_extra_args_after": {
+            "$id": "#/properties/linters/items/properties/cli_lint_mode_file_extra_args_after",
+            "default": [],
+            "description": "When linter CLI is call for linting on file lint mode, send these additional arguments after config args",
+            "items": {
+              "type": "string"
+            },
+            "title": "CLI Lint extra arguments (after config args)",
+            "type": "array"
+          },
+          "cli_lint_mode_list_of_files_extra_args_after": {
+            "$id": "#/properties/linters/items/properties/cli_lint_mode_list_of_files_extra_args_after",
+            "default": [],
+            "description": "When linter CLI is call for linting on list_of_files lint mode, send these additional arguments after config args",
+            "items": {
+              "type": "string"
+            },
+            "title": "CLI Lint extra arguments (after config args)",
+            "type": "array"
+          },
+          "cli_lint_mode_project_extra_args_after": {
+            "$id": "#/properties/linters/items/properties/cli_lint_mode_project_extra_args_after",
+            "default": [],
+            "description": "When linter CLI is call for linting on project lint mode, send these additional arguments after config args",
+            "items": {
+              "type": "string"
+            },
+            "title": "CLI Lint extra arguments (after config args)",
+            "type": "array"
           },
           "cli_lint_warnings_count": {
             "$id": "#/properties/linters/items/properties/cli_lint_warnings_count",
@@ -772,6 +802,36 @@
               "type": "string"
             },
             "title": "CLI Version extra arguments",
+            "type": "array"
+          },
+          "common_linter_errors": {
+            "$id": "#/properties/linters/items/properties/common_linter_errors",
+            "description": "Patterns matched against a non-successful linter output to surface known non-lint failures (config issue, remote service down, missing credentials, etc.) with a guidance message. Does not affect exit code or error counts.",
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "identifier": {
+                  "pattern": "^[A-Z][A-Z0-9_]*_ERROR_[A-Z0-9_]+$",
+                  "title": "Stable identifier for this known error. Must start with the linter key followed by _ERROR_ (e.g. ACTION_ZIZMOR_ERROR_GITHUB_API_UNREACHABLE).",
+                  "type": "string"
+                },
+                "message": {
+                  "title": "Explanation and resolution shown to the user when the regex matches",
+                  "type": "string"
+                },
+                "regex": {
+                  "title": "Pattern matched against linter stdout (Python re.search)",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "identifier",
+                "regex",
+                "message"
+              ],
+              "type": "object"
+            },
+            "title": "Known non-lint error patterns with user guidance",
             "type": "array"
           },
           "config_file_name": {
@@ -928,6 +988,15 @@
             "title": "File name regex filters",
             "type": "array"
           },
+          "files_separator": {
+            "$id": "#/properties/linters/items/properties/files_separator",
+            "description": "Separator used to split file paths in the linter command",
+            "examples": [
+              ","
+            ],
+            "title": "Files separator",
+            "type": "string"
+          },
           "files_sub_directory": {
             "$id": "#/properties/linters/items/files_sub_directory",
             "description": "Set when a linter only lints a sub-directory",
@@ -979,7 +1048,7 @@
             "examples": [
               {
                 "dockerfile": [
-                  "FROM accurics/terrascan:latest as terrascan",
+                  "FROM accurics/terrascan:latest AS terrascan",
                   "COPY --from=terrascan /go/bin/terrascan /usr/bin/",
                   "RUN terrascan init"
                 ]
@@ -1033,7 +1102,7 @@
                 "description": "Will be automatically integrated in generated Dockerfile",
                 "examples": [
                   [
-                    "FROM accurics/terrascan:latest as terrascan",
+                    "FROM accurics/terrascan:latest AS terrascan",
                     "COPY --from=terrascan /go/bin/terrascan /usr/bin/",
                     "RUN terrascan init"
                   ]

@@ -17,6 +17,8 @@ on:
       - alpha # ml workflow addition
 
 # Comment env block if you do not want to apply fixes
+permissions: {}
+
 env:
   # Apply linter fixes configuration
   #
@@ -54,9 +56,21 @@ jobs:
 
       # Git Checkout
       - name: Checkout Code
-        uses: actions/checkout@v6
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
         with:
+          # SECURITY NOTE: Using a Personal Access Token (PAT) is NOT
+          # recommended for end-users. Open-source projects have been heavily
+          # targeted by supply-chain attacks recently, and a leaked PAT can
+          # give attackers broad write access to your repository — better
+          # safe than sorry! If you only need workflows to re-trigger after
+          # MegaLinter applies fixes, prefer one of these safer alternatives:
+          #   - Manually re-run the workflow from the GitHub Actions tab, or
+          #   - Push another commit on the branch to trigger workflows again.
+          # The MegaLinter project itself uses a tightly-scoped PAT here for
+          # its own release automation needs — do not copy this pattern.
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
+          # persist-credentials: false # Comment this line and uncomment the next one if you use APPLY_FIXES
+          persist-credentials: true # zizmor: ignore[artipacked]
 
           # If you use VALIDATE_ALL_CODEBASE = true, you can remove this line to
           # improve performance
@@ -67,7 +81,7 @@ jobs:
 
         # You can override MegaLinter flavor used to have faster performances
         # More info at https://megalinter.io/flavors/
-        uses: oxsecurity/megalinter/flavors/javascript@beta # ml workflow change
+        uses: oxsecurity/megalinter/flavors/javascript@beta # zizmor: ignore[unpinned-uses,ref-confusion]
 
         id: ml
 
@@ -105,7 +119,7 @@ jobs:
 
       # Upload MegaLinter artifacts
       - name: Archive production artifacts
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         if: success() || failure()
         with:
           name: MegaLinter reports
@@ -145,10 +159,14 @@ jobs:
       # Create pull request if applicable
       # (for now works only on PR from same repository, not from forks)
       - name: Create Pull Request with applied fixes
-        uses: peter-evans/create-pull-request@v8
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8
         id: cpr
         if: env.APPLY_FIXES_IF_PR == 'true'
         with:
+          # SECURITY NOTE: see the warning on the checkout step above —
+          # using `secrets.PAT` is NOT recommended for end-users.
+          # Prefer manually re-running the workflow or pushing another
+          # commit on the branch to trigger workflows again.
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
           commit-message: "[MegaLinter] Apply linters automatic fixes"
           title: "[MegaLinter] Apply linters automatic fixes"
@@ -157,8 +175,11 @@ jobs:
       - name: Create PR output
         if: env.APPLY_FIXES_IF_PR == 'true'
         run: |
-          echo "PR Number - ${{ steps.cpr.outputs.pull-request-number }}"
-          echo "PR URL - ${{ steps.cpr.outputs.pull-request-url }}"
+          echo "PR Number - ${STEPS_CPR_OUTPUTS_PULL_REQUEST_NUMBER}"
+          echo "PR URL - ${STEPS_CPR_OUTPUTS_PULL_REQUEST_URL}"
+        env:
+          STEPS_CPR_OUTPUTS_PULL_REQUEST_NUMBER: ${{ steps.cpr.outputs.pull-request-number }}
+          STEPS_CPR_OUTPUTS_PULL_REQUEST_URL: ${{ steps.cpr.outputs.pull-request-url }}
 
       # Push new commit if applicable
       # (for now works only on PR from same repository, not from forks)
@@ -200,7 +221,7 @@ jobs:
           echo 'APPLY_FIXES_IF_COMMIT=false' >> "${GITHUB_ENV}"
 
       - name: Commit and push applied linter fixes
-        uses: stefanzweifel/git-auto-commit-action@v7
+        uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7
         if: env.APPLY_FIXES_IF_COMMIT == 'true'
         with:
           branch: >-

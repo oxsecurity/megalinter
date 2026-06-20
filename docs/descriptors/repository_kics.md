@@ -66,7 +66,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       135        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       136        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -131,5 +131,47 @@ FROM checkmarx/kics:${REPOSITORY_KICS_VERSION} AS kics
 COPY --link --from=kics /app/bin/kics /usr/bin/kics
 ENV KICS_QUERIES_PATH=/usr/bin/assets/queries KICS_LIBRARIES_PATH=/usr/bin/assets/libraries
 COPY --from=kics /app/bin/assets /usr/bin/assets
+```
+
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### REPOSITORY_KICS_ERROR_LIBRARY_REGO_MISSING
+
+**Detection pattern (regex):**
+
+```text
+(failed to load|could not load) (queries|library\.rego)
+```
+
+**Resolution guidance:**
+
+```text
+kics failed to load its Rego query library. This typically happens when a custom `--queries-path` is set but the required `library.rego` is missing at that path.
+Resolutions:
+  - Remove the custom `--queries-path` override and use the bundled queries (default).
+  - If you need custom queries, place them alongside KICS's built-in queries (e.g. `-q "/your/queries,/usr/bin/assets/queries"`).
+```
+
+### REPOSITORY_KICS_ERROR_OUT_OF_MEMORY
+
+**Detection pattern (regex):**
+
+```text
+(runtime: out of memory|fatal error: runtime: out of memory|signal: killed)
+```
+
+**Resolution guidance:**
+
+```text
+kics ran out of memory while scanning. Large Infrastructure-as-Code repositories can exceed the default container memory limit.
+Resolutions:
+  - Increase the memory available to the MegaLinter container/runner.
+  - Reduce the scan scope via `REPOSITORY_KICS_FILE_EXTENSIONS` or by setting `REPOSITORY_KICS_ARGUMENTS` with `--exclude-paths`.
+  - Temporarily mark the linter as non-blocking by adding to your .mega-linter.yml:
+      DISABLE_ERRORS_LINTERS:
+        - REPOSITORY_KICS
 ```
 

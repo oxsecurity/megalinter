@@ -106,9 +106,9 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       135        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        89        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)           | Optimized for GO based projects                 |        51        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       136        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        92        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)           | Optimized for GO based projects                 |        54        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
 
 ## Behind the scenes
 
@@ -172,11 +172,9 @@ Use "golangci-lint [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
-# renovate: datasource=repology depName=alpine_edge/go versioning=loose
-ARG GO_ALPINE_VERSION=1.26.2-r0
+# renovate: datasource=repology depName=alpine_3_24/go versioning=loose
+ARG GO_ALPINE_VERSION=1.26.3-r0
 RUN apk add --no-cache \
-    --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main \
-    --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
     go=${GO_ALPINE_VERSION}
 # Linter install
 # renovate: datasource=github-tags depName=golangci/golangci-lint
@@ -184,5 +182,89 @@ ARG GO_GOLANGCI_LINT_VERSION=2.11.4
 RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s "v${GO_GOLANGCI_LINT_VERSION}" \
     && golangci-lint --version
 
+```
+
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### GO_GOLANGCI_LINT_ERROR_MODULE_DOWNLOAD
+
+**Detection pattern (regex):**
+
+```text
+(go: .*: (reading|module .*: Get) .*: (dial tcp|TLS handshake|connection refused)|module lookup disabled by GOPROXY=off|verifying .*: checksum mismatch)
+```
+
+**Resolution guidance:**
+
+```text
+golangci-lint could not download Go module dependencies before typechecking.
+This is a network/proxy issue, not a lint finding.
+Resolutions:
+  - Retry the run; module proxy outages are usually transient.
+  - If your project uses a private Go module proxy, set `GOPROXY` / `GOPRIVATE` and whitelist them for this linter in your .mega-linter.yml:
+      GO_GOLANGCI_LINT_UNSECURED_ENV_VARIABLES:
+        - GOPROXY
+        - GOPRIVATE
+        - GOSUMDB
+        - GONOSUMCHECK
+  - Pre-populate `$GOPATH/pkg/mod` in CI cache to avoid downloads on each run.
+```
+
+### GO_GOLANGCI_LINT_ERROR_CONFIG_INVALID
+
+**Detection pattern (regex):**
+
+```text
+(can't load config:|failed to load config|unsupported version of the configuration|is not a linter, it cannot be enabled or disabled|is a formatter)
+```
+
+**Resolution guidance:**
+
+```text
+golangci-lint could not load the `.golangci.yml` configuration file.
+Resolutions:
+  - Validate the YAML syntax and indentation of `.golangci.yml`.
+  - Ensure all linter names referenced under `enable:` / `disable:` exist in the installed golangci-lint version (some linters were renamed/removed across major versions).
+  - Run `golangci-lint config verify` locally to reproduce.
+```
+
+### GO_GOLANGCI_LINT_ERROR_TYPECHECK
+
+**Detection pattern (regex):**
+
+```text
+(typecheck.*could not (import|load)|level=error.*build (failed|error)|# .*\n.*: undefined:)
+```
+
+**Resolution guidance:**
+
+```text
+golangci-lint's typecheck stage failed to build the Go program. golangci-lint requires the code to compile in order to run most analyzers.
+Resolutions:
+  - Run `go build ./...` locally; fix the underlying compilation errors first.
+  - Ensure all required packages are in `go.mod` and the module cache is reachable.
+```
+
+### GO_GOLANGCI_LINT_ERROR_OUT_OF_MEMORY
+
+**Detection pattern (regex):**
+
+```text
+(runtime: out of memory|fatal error: runtime: out of memory|signal: killed)
+```
+
+**Resolution guidance:**
+
+```text
+golangci-lint was killed (OOM) while analyzing a large Go project.
+Resolutions:
+  - Increase the memory available to the MegaLinter container/runner.
+  - Reduce scope by setting `GO_GOLANGCI_LINT_FILTER_REGEX_INCLUDE` / `..._EXCLUDE` or by enabling fewer linters in `.golangci.yml`.
+  - Temporarily mark the linter as non-blocking by adding to your .mega-linter.yml:
+      DISABLE_ERRORS_LINTERS:
+        - GO_GOLANGCI_LINT
 ```
 

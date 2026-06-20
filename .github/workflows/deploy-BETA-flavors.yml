@@ -34,6 +34,8 @@ on:
 ###############
 # Set the Job #
 ###############
+permissions: {}
+
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
   cancel-in-progress: true
@@ -91,10 +93,12 @@ jobs:
     ##################
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v6
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with:
+          persist-credentials: false
 
       - name: Docker Metadata action
-        uses: docker/metadata-action@v6
+        uses: docker/metadata-action@80c7e94dd9b9319bd5eb7a0e0fe9291e23a2a2e9 # v6
         id: meta
         with:
           images: |
@@ -106,7 +110,7 @@ jobs:
             type=raw,value=
 
       - name: Docker Metadata action (Docker Hub)
-        uses: docker/metadata-action@v6
+        uses: docker/metadata-action@80c7e94dd9b9319bd5eb7a0e0fe9291e23a2a2e9 # v6
         id: meta-dhub
         with:
           images: |
@@ -118,7 +122,7 @@ jobs:
             type=raw,value=
 
       - name: Docker Metadata action (Worker)
-        uses: docker/metadata-action@v6
+        uses: docker/metadata-action@80c7e94dd9b9319bd5eb7a0e0fe9291e23a2a2e9 # v6
         id: meta-w
         with:
           images: |
@@ -141,15 +145,11 @@ jobs:
       #     tags: |
       #       type=raw,value=
 
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v4
-        if: ${{ ( ( runner.arch != 'X64' || runner.os != 'Linux' ) && matrix.platform == 'linux/amd64' ) || matrix.platform != 'linux/amd64' }}
-
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v4
+        uses: docker/setup-buildx-action@d7f5e7f509e45cec5c76c4d5afdd7de93d0b3df5 # v4
 
       - name: Login to GitHub Container Registry
-        uses: docker/login-action@v4
+        uses: docker/login-action@650006c6eb7dba73a995cc03b0b2d7f5ca915bee # v4
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
@@ -165,7 +165,7 @@ jobs:
           sudo rm -rf /opt/hostedtoolcache/go # Go toolcache
 
       - name: Build Image
-        uses: docker/build-push-action@v7
+        uses: docker/build-push-action@f9f3042f7e2789586610d6e8b85c8f03e5195baf # v7
         with:
           context: .
           file: flavors/${{ matrix.flavor }}/Dockerfile
@@ -179,12 +179,15 @@ jobs:
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           tags: ${{ steps.meta.outputs.tags }}
+          cache-from: type=gha,scope=beta-flavor-${{ matrix.flavor }}-${{ matrix.platform }},ignore-error=true
+          cache-to: type=gha,mode=max,scope=beta-flavor-${{ matrix.flavor }}-${{ matrix.platform }},compression=zstd
 
-      - name: Invoke Mirror docker image workflow (Main image)
-        uses: benc-uk/workflow-dispatch@v1
-        with:
-          workflow: mirror-docker-image.yml
-          inputs: '{ "source-image": "${{ steps.meta.outputs.tags }}", "target-image": "${{ steps.meta-dhub.outputs.tags }}" }'
+      # Docker Hub mirroring is disabled — MegaLinter is published to ghcr.io only.
+      # - name: Invoke Mirror docker image workflow (Main image)
+      #   uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1
+      #   with:
+      #     workflow: mirror-docker-image.yml
+      #     inputs: '{ "source-image": "${{ steps.meta.outputs.tags }}", "target-image": "${{ steps.meta-dhub.outputs.tags }}" }'
 
       # - name: Build Worker Image
       #   uses: docker/build-push-action@v7
@@ -212,19 +215,21 @@ jobs:
       ##############################################
       # Check Docker image security with Trivy #
       ##############################################
-      # - name: Run Trivy vulnerability scanner
-      #   uses: aquasecurity/trivy-action@master
-      #   with:
-      #     image-ref: "${{ fromJson(steps.meta.outputs.json).tags[0]}}"
-      #     format: "table"
-      #     exit-code: "1"
-      #     ignore-unfixed: true
-      #     scanners: vuln
-      #     vuln-type: "os,library"
-      #     severity: "CRITICAL,HIGH"
-      #     timeout: 10m0s
-      #   env:
-      #       ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
+        with:
+          # renovate: datasource=github-releases depName=aquasecurity/trivy
+          version: "v0.71.0"
+          image-ref: "${{ fromJson(steps.meta.outputs.json).tags[0]}}"
+          format: "table"
+          exit-code: "1"
+          ignore-unfixed: true
+          scanners: vuln
+          vuln-type: "os,library"
+          severity: "CRITICAL,HIGH"
+          timeout: 10m0s
+        env:
+            ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # - name: Run OSV-Scanner vulnerability scanner
       #   uses: google/osv-scanner-action/osv-scanner-action@v2.3.5

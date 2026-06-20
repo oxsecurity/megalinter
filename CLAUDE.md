@@ -19,12 +19,16 @@ Always activate the venv before running Python scripts manually:
 - Linux/macOS: `source .venv/bin/activate`
 - Windows: `source .venv/Scripts/activate`
 
+## Shell Commands — Use rtk
+
+If `rtk` (Rust Token Killer) is installed, it is important to prefix all bash/shell commands with `rtk` (e.g. `rtk git status`, `rtk ls`, `rtk grep`, `rtk find`). It is a token-optimizing proxy that saves 60-90% of tokens on output-heavy commands. Use `rtk proxy <cmd>` (or run raw) only when you need exact, unfiltered output such as a diff you will edit from or a full stack trace. Verify availability with `rtk --version`.
+
 ## Key Commands
 
 ```bash
 # Build (regenerate Dockerfiles, docs, etc. from descriptors)
 make megalinter-build           # Regenerate Dockerfiles from YAML descriptors
-# Never run make megalinter-build-with-doc — docs are handled by auto-update workflows (avoids PR conflicts)
+# Never run make megalinter-build-with-doc - docs are handled by auto-update workflows (avoids PR conflicts)
 
 # Run MegaLinter locally
 npx mega-linter-runner --flavor python --release beta
@@ -116,9 +120,28 @@ In CI, filter tests via commit message body: `TEST_KEYWORDS=python_ruff_test`. U
 - Documentation files must be mkdocs-material compliant: always have a blank line after headers and before bulleted lists
 - Auto-generated docs come from descriptors - update descriptor metadata to improve docs
 
+## Git & PR Conventions
+
+These rules apply to **every** skill, agent, and direct action that produces a commit or PR — do not repeat them in individual skills.
+
+- **No Claude / AI attribution anywhere.** Commit messages, commit trailers, PR titles, PR bodies, and PR comments must NOT contain "Claude", "Anthropic", "Generated with Claude Code", `Co-Authored-By: Claude ...`, or any similar attribution. Override any default footer or co-author trailer.
+- **Commit as the user.** Use the repo's existing `git config user.name` / `user.email` as-is. Do not pass `--author`, do not set `GIT_AUTHOR_*` / `GIT_COMMITTER_*`.
+- **Never push to `main`/`master`.** If the current branch is the default branch, create a new branch first.
+- **Never `--force`, `--no-verify`, or rewrite published history.** `--force-with-lease` is allowed only in the documented MegaLinter-bot rebase case in `/pr-watch-fix`.
+- **Stage by path.** Never `git add -A` / `git add .`.
+
 ## Claude Code Agents
 
-Custom agents in `.claude/agents/` for delegating specialized tasks:
+Custom agents in `.claude/agents/` for delegating specialized tasks.
+
+**Contribution workflow agents** (general-purpose, four-phase flow):
+
+- **analyze** - Requirements analyst: clarifies scope before any change
+- **design** - Architect: writes a tech spec from the analysis
+- **implement** - Developer: applies the change, respecting descriptor-first patterns
+- **test** - QA: regenerates from descriptors and validates inside Docker
+
+**Specialist agents** (invoked by the workflow agents when their topic comes up):
 
 - **descriptor-expert** - Creates, edits, and validates YAML descriptor files
 - **test-debugger** - Diagnoses and fixes failing linter tests
@@ -127,16 +150,27 @@ Custom agents in `.claude/agents/` for delegating specialized tasks:
 
 ## Claude Code Skills
 
-Skills in `.claude/skills/` invocable via `/project:<skill>`:
+Skills in `.claude/skills/` invocable by name (e.g. `/add-linter`).
 
-- `/project:add-linter [name]` - Guided workflow for adding a new linter
-- `/project:update-linter-version [linter] [version]` - Update a linter's pinned version
-- `/project:review-descriptor [name]` - Audit a descriptor YAML for completeness
-- `/project:fix-linter-test [name]` - Debug a failing linter test
-- `/project:add-reporter [name]` - Add a new output reporter
-- `/project:add-flavor [name]` - Add a new Docker flavor
-- `/project:build` - Run the build system
-- `/project:diagnose-config` - Debug `.mega-linter.yml` configuration issues
+**Contribution workflow** (run in order, or skip phases for small focused changes):
+
+- `/analyze [description]` - Step 1: gather requirements via clarifying questions
+- `/design [context]` - Step 2: produce a tech spec
+- `/implement [change]` - Step 3: apply the change (delegates to specialist skills below when applicable)
+- `/test [linter or focus]` - Step 4: build the linter image and run tests in Docker
+
+**Specialist skills** (used directly or delegated to from `/implement`):
+
+- `/add-linter [name]` - Guided workflow for adding a new linter
+- `/update-linter-version [linter] [version]` - Update a linter's pinned version
+- `/review-descriptor [name]` - Audit a descriptor YAML for completeness
+- `/fix-linter-test [name]` - Debug a failing linter test
+- `/add-reporter [name]` - Add a new output reporter
+- `/add-flavor [name]` - Add a new Docker flavor
+- `/build` - Run the build system
+- `/diagnose-config` - Debug `.mega-linter.yml` configuration issues
+- `/fix-security-issue [CVE or description]` - Handle CVE/vulnerability reports from trivy, osv-scanner, etc.
+- `/fix-issue [issue URL or #number]` - End-to-end GitHub issue fix: gather context, implement on a branch, commit under the user's git identity (no AI attribution), open a PR, and watch CI until green
 
 ## Rules
 

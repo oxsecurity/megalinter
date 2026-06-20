@@ -4,6 +4,7 @@ description: Specialist for creating, editing, and validating MegaLinter YAML de
 tools: Read, Grep, Glob, Bash, Edit, Write
 model: sonnet
 effort: high
+color: purple
 ---
 
 You are a MegaLinter descriptor specialist. You have deep expertise in the YAML descriptor format that drives MegaLinter's code generation.
@@ -103,6 +104,30 @@ Fill in as many as applicable when creating or reviewing a descriptor:
 | `cli_lint_errors_regex`   | Regex to extract error count from output                              |
 | `cli_lint_warnings_count` | Same options as errors_count but for warnings                         |
 | `cli_lint_warnings_regex` | Regex to extract warning count                                        |
+| `common_linter_errors`    | List of `{regex, message}` for known non-lint failures (see below)    |
+
+### Known Non-Lint Failures (`common_linter_errors`)
+
+Use this to surface actionable guidance when a linter fails for reasons unrelated to lint findings — remote service unavailable, malformed config file, missing credentials, etc. Evaluated **only when the linter did not succeed** (non-zero exit code). Does not affect the exit code or error counts.
+
+```yaml
+common_linter_errors:
+  - identifier: ACTION_ZIZMOR_ERROR_GITHUB_API_UNREACHABLE
+    regex: "accessing GitHub API"
+    message: |-
+      Zizmor failed to reach the GitHub API.
+      To allow zizmor to use GITHUB_TOKEN, add the following to your .mega-linter.yml:
+      ACTION_ZIZMOR_UNSECURED_ENV_VARIABLES:
+        - GITHUB_TOKEN
+```
+
+Rules for writing entries:
+
+- `identifier` is **required**. It must start with the linter key (e.g. `ACTION_ZIZMOR`, `REPOSITORY_OSV_SCANNER`) followed by `_ERROR_` and a short uppercase suffix describing the failure. The build fails if the prefix does not match the linter.
+- `regex` must be specific enough not to fire on normal lint output — avoid `.*` or single short words.
+- `message` should state the cause and the exact fix steps.
+- When a match is found, `[identifier] message` is appended to the linter output section and logged as a `WARNING`.
+- All entries are rendered into a "Known errors and resolutions" section at the end of the linter's generated doc page (`docs/descriptors/<descriptor>_<linter>.md`).
 
 ### SARIF Support (fill if linter supports it)
 

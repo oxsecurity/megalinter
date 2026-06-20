@@ -24,7 +24,7 @@ RoboCop is a linter and code formatter for the Robot Framework. It helps maintai
 
 ## robocop documentation
 
-- Version in MegaLinter: **8.2.7**
+- Version in MegaLinter: **8.2.11**
 - Visit [Official Web Site](https://github.com/MarketSquare/robotframework-robocop#readme){target=_blank}
 - See [How to configure robocop rules](https://robocop.dev/stable/configuration/){target=_blank}
 - See [How to disable robocop rules in files](https://robocop.dev/stable/configuration/disablers/){target=_blank}
@@ -71,8 +71,8 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       135        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        89        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       136        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        92        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 
 ## Behind the scenes
 
@@ -126,8 +126,31 @@ robocop check myfile.robot
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=robotframework-robocop
-ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=8.2.7
+ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=8.2.11
 ```
 
 - PIP packages (Python):
-  - [robotframework-robocop==8.2.7](https://pypi.org/project/robotframework-robocop/8.2.7)
+  - [robotframework-robocop==8.2.11](https://pypi.org/project/robotframework-robocop/8.2.11)
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### ROBOTFRAMEWORK_ROBOCOP_ERROR_CONFIG_INVALID
+
+**Detection pattern (regex):**
+
+```text
+(InvalidConfigurationError|InvalidConfigurationFormatError|InvalidParameterValueError|Provided rule '[^']+' does not exist|Circular reference found in 'extends')
+```
+
+**Resolution guidance:**
+
+```text
+Robocop could not load its configuration (CLI args or `robocop.toml`) or referenced an unknown rule.
+Resolutions:
+  - Validate the TOML syntax of `robocop.toml`.
+  - Check that all rule names under `include`/`exclude`/`configure` exist in the installed Robocop version (rule names were reorganized in Robocop 5+ / 6+).
+  - See <https://robocop.dev/stable/rules_list/>.
+```
+

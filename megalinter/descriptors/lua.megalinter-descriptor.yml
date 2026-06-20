@@ -5,14 +5,9 @@ file_extensions:
   - ".lua"
 install:
   apk:
+    - lua5.3
+    - lua5.3-dev
     - readline-dev
-  dockerfile:
-    - |
-      RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf - \
-          && cd lua-5.3.5 \
-          && make linux \
-          && make install \
-          && cd .. && rm -r lua-5.3.5/
 linters:
   # LUACHECK
   - linter_name: luacheck
@@ -41,6 +36,15 @@ linters:
     linter_megalinter_ref_url: "no"
     config_file_name: .luacheckrc
     cli_config_arg_name: "--config"
+    common_linter_errors:
+      - identifier: LUA_LUACHECK_ERROR_CONFIG_INVALID
+        regex: "(Couldn't load configuration|Critical error: .*\\.luacheckrc|Errors? in config file)"
+        message: |-
+          luacheck could not load its configuration file (`.luacheckrc` is Lua source).
+          Resolutions:
+            - Run `lua -l .luacheckrc -e ''` locally (or `luac -p .luacheckrc`) to check the file for syntax errors.
+            - Ensure the file only sets allowed luacheck options (`std`, `globals`, `ignore`, `files`, etc.).
+            - Use `luacheck --no-config` via `LUA_LUACHECK_ARGUMENTS` to confirm the failure is config-related.
     examples:
       - "luacheck myfile.lua"
       - "luacheck --config .chktexrc myfile.lua"
@@ -54,7 +58,7 @@ linters:
         - |
           RUN wget --tries=5 https://github.com/cvega/luarocks/archive/v${LUA_LUACHECK_VERSION}-super-linter.tar.gz -O - -q | tar -xzf - \
               && cd luarocks-${LUA_LUACHECK_VERSION}-super-linter \
-              && ./configure --with-lua-include=/usr/local/include \
+              && ./configure --with-lua-include=/usr/include/lua5.3 \
               && make \
               && make -b install \
               && cd .. && rm -r luarocks-${LUA_LUACHECK_VERSION}-super-linter/ \
@@ -84,7 +88,7 @@ linters:
   # SELENE
   - linter_name: selene
     disabled: true
-    disabled_reason: https://github.com/Kampfkarren/selene/issues/662
+    disabled_reason: <https://github.com/Kampfkarren/selene/issues/662>
     linter_text: |
       **Selene** is a blazing-fast modern Lua linter written in Rust that provides comprehensive static analysis for Lua code. It offers extensive configurability and can be tailored to specific Lua environments like Roblox, World of Warcraft addons, or standard Lua.
 
@@ -118,7 +122,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=crate depName=selene
-          ARG CARGO_SELENE_VERSION=0.30.0
+          ARG CARGO_SELENE_VERSION=0.31.0
     supported_platforms:
       platform:
         - linux/amd64
@@ -167,12 +171,27 @@ linters:
       - "stylua --check myfile.lua"
       - "stylua --config-path chktexrc.toml --check myfile.lua"
     install:
-      cargo:
-        - stylua@${CARGO_STYLUA_VERSION}
       dockerfile:
         - |-
-          # renovate: datasource=crate depName=stylua
-          ARG CARGO_STYLUA_VERSION=2.0.0
+          # renovate: datasource=github-releases depName=JohnnyMorganz/StyLua extractVersion=^v(?<version>.+)$
+          ARG CARGO_STYLUA_VERSION=2.5.2
+        - |-
+          FROM alpine:3.24 AS cargo-bin-stylua
+          ARG TARGETARCH
+          ARG CARGO_STYLUA_VERSION
+          RUN set -eu; mkdir -p /out/bin; \
+              apk add --no-cache curl ca-certificates unzip; \
+              case "$TARGETARCH" in \
+                amd64) ARCH=x86_64 ;; \
+                arm64) ARCH=aarch64 ;; \
+                *) echo "unsupported arch: $TARGETARCH" >&2; exit 1 ;; \
+              esac; \
+              curl -fsSL -o /tmp/stylua.zip \
+                "https://github.com/JohnnyMorganz/StyLua/releases/download/v${CARGO_STYLUA_VERSION}/stylua-linux-${ARCH}-musl.zip" && \
+              unzip /tmp/stylua.zip -d /out/bin && \
+              rm /tmp/stylua.zip && \
+              chmod +x /out/bin/stylua
+        - COPY --link --from=cargo-bin-stylua /out/bin/stylua /usr/bin/stylua
     supported_platforms:
       platform:
         - linux/amd64

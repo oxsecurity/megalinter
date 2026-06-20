@@ -17,24 +17,65 @@ linters:
 
       **Key Features:**
 
-      - **React-Specific Linting**: 90+ rules covering React best practices, hooks usage, JSX syntax, and component lifecycle patterns
+      - **React-Specific Linting**: Comprehensive rules covering React best practices, hooks usage, JSX syntax, and component lifecycle patterns
       - **TypeScript Integration**: Full TypeScript support for type-aware linting in React components with proper TSX syntax validation
       - **Hooks Rules**: Comprehensive validation of React Hooks usage patterns, dependencies, and effect cleanup
-      - **Accessibility Integration**: Built-in support for jsx-a11y plugin ensuring accessible React components
       - **Performance Optimization**: Rules to detect unnecessary re-renders, missing dependency arrays, and performance anti-patterns
       - **Modern React Patterns**: Support for latest React features including Suspense, Error Boundaries, and concurrent features
 
       ESLint requires a custom configuration file applicable to your project. You can create it by typing `npx eslint --init` in the root of your repository
-    linter_url: https://github.com/jsx-eslint/eslint-plugin-react
-    linter_repo: https://github.com/jsx-eslint/eslint-plugin-react
-    linter_rules_url: https://github.com/jsx-eslint/eslint-plugin-react#list-of-supported-rules
+
+      ### ESLint v10 — resolving bare imports from `eslint.config.mjs`
+
+      ESLint v10 dropped support for the legacy `.eslintrc.*` format and only loads the new flat config (`eslint.config.*`). When MegaLinter runs ESLint from its own container install (`/node-deps/node_modules`) instead of your project's local `node_modules`, Node's ESM resolver may fail to locate bare imports such as `import js from '@eslint/js'` (upstream limitation tracked in [eslint/eslint#18465](https://github.com/eslint/eslint/issues/18465)), producing errors like:
+
+      ```text
+      Error [ERR_MODULE_NOT_FOUND]: Cannot find package '@eslint/js' imported from /github/workspace/eslint.config.mjs
+      ```
+
+      Two recommended workarounds:
+
+      #### Workaround 1 — Use `createRequire` in `eslint.config.mjs`
+
+      Bare imports fall back to CommonJS resolution (which honors `NODE_PATH` and will pick up MegaLinter's bundled `@eslint/js`, `@typescript-eslint/eslint-plugin`, etc.):
+
+      ```js
+      import { createRequire } from 'module';
+      const require = createRequire(import.meta.url);
+      const js = require('@eslint/js');
+      const tsPlugin = require('@typescript-eslint/eslint-plugin');
+      const reactPlugin = require('@eslint-react/eslint-plugin');
+      ```
+
+      #### Workaround 2 — Install dependencies in a pre-command and use the project-local ESLint binary
+
+      ESLint then runs from `<workspace>/node_modules` and resolves your config's imports naturally:
+
+      ```yaml
+      TSX_ESLINT_PRE_COMMANDS:
+        - command: yarn install --frozen-lockfile --ignore-scripts
+          cwd: workspace
+          continue_if_failed: false
+      TSX_ESLINT_CLI_EXECUTABLE: node_modules/.bin/eslint
+      ```
+
+      Replace `yarn install --frozen-lockfile --ignore-scripts` with `npm ci` (or `npm install --include=dev`) if your project uses npm.
+    linter_url: https://github.com/Rel1cx/eslint-react
+    linter_repo: https://github.com/Rel1cx/eslint-react
+    linter_rules_url: https://eslint-react.xyz/docs/rules/overview
     linter_banner_image_url: https://d33wubrfki0l68.cloudfront.net/3b5ac7586466159bb6f237b633bfc4f5a8d5acf8/ee0a1/assets/img/posts/eslint-collective.png
-    linter_rules_configuration_url: https://github.com/jsx-eslint/eslint-plugin-react#configuration-legacy-eslintrc
+    linter_rules_configuration_url: https://eslint-react.xyz/docs/getting-started/installation
     linter_rules_inline_disable_url: https://eslint.org/docs/latest/use/configure/rules#disabling-rules
     linter_rules_ignore_config_url: https://eslint.org/docs/latest/use/configure/ignore#the-eslintignore-file
     linter_megalinter_ref_url: https://eslint.org/docs/latest/use/integrations#source-control
     linter_spdx_license: MIT
     active_only_if_file_found:
+      - "eslint.config.js"
+      - "eslint.config.mjs"
+      - "eslint.config.cjs"
+      - "eslint.config.ts"
+      - "eslint.config.mts"
+      - "eslint.config.cts"
       - ".eslintrc.json"
       - ".eslintrc.yml"
       - ".eslintrc.yaml"
@@ -42,13 +83,9 @@ linters:
       - ".eslintrc.cjs"
       - "package.json:eslintConfig"
     cli_lint_mode: list_of_files
-    config_file_name: .eslintrc.json
-    cli_config_extra_args:
-      - "--no-eslintrc"
+    config_file_name: eslint.config.cjs
     cli_lint_extra_args:
       - "--no-ignore"
-    ignore_file_name: .eslintignore
-    cli_lint_ignore_arg_name: --ignore-path
     cli_lint_fix_arg_name: "--fix"
     cli_sarif_args:
       - --format
@@ -57,21 +94,70 @@ linters:
       - "{{SARIF_OUTPUT_FILE}}"
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: "✖ ([0-9]+) problem"
+    common_linter_errors:
+      - identifier: TSX_ESLINT_ERROR_PLUGIN_NOT_FOUND
+        regex: '(Failed to load plugin ''|ESLint couldn''t find the plugin "|Cannot find module ''eslint-plugin-)'
+        message: |-
+          ESLint could not load a plugin referenced in your config (e.g. `eslint-plugin-react`, `eslint-plugin-react-hooks`, `@eslint-react/eslint-plugin`, `@typescript-eslint/eslint-plugin`). The plugin is not installed in MegaLinter's bundled `node_modules`.
+          Resolutions:
+            - Pre-install the missing plugin via a pre-command in your .mega-linter.yml:
+                TSX_ESLINT_PRE_COMMANDS:
+                  - command: "npm install eslint-plugin-react eslint-plugin-react-hooks"
+                    cwd: "root"
+                    continue_if_failed: false
+            - Or install your project's dependencies and run the project-local ESLint binary:
+                TSX_ESLINT_PRE_COMMANDS:
+                  - command: yarn install --frozen-lockfile --ignore-scripts
+                    cwd: workspace
+                    continue_if_failed: false
+                TSX_ESLINT_CLI_EXECUTABLE: node_modules/.bin/eslint
+      - identifier: TSX_ESLINT_ERROR_PARSER_NOT_FOUND
+        regex: "(Cannot find module '@typescript-eslint/parser'|Failed to load parser '|parserOptions\\.project.+(does not exist|was not found)|Cannot read file 'tsconfig)"
+        message: |-
+          ESLint could not load `@typescript-eslint/parser` or could not locate the `tsconfig.json` referenced via `parserOptions.project`.
+          Resolutions:
+            - Install your project's dependencies and run the project-local ESLint binary (the bundled parser is also available in `/node-deps`):
+                TSX_ESLINT_PRE_COMMANDS:
+                  - command: yarn install --frozen-lockfile --ignore-scripts
+                    cwd: workspace
+                    continue_if_failed: false
+                TSX_ESLINT_CLI_EXECUTABLE: node_modules/.bin/eslint
+            - If `parserOptions.project` is unresolved, make the path workspace-relative (e.g. `./tsconfig.json`) or remove it to disable type-aware linting.
+      - identifier: TSX_ESLINT_ERROR_FLAT_CONFIG_MODULE_NOT_FOUND
+        regex: "ERR_MODULE_NOT_FOUND.+eslint\\.config\\."
+        message: |-
+          ESLint v9+/v10 flat config (`eslint.config.mjs`) uses native ESM resolution, which does not honor `NODE_PATH`. Bare imports like `import tsPlugin from '@typescript-eslint/eslint-plugin'` fail when ESLint runs from MegaLinter's bundled install.
+          Resolutions:
+            - Use `createRequire` in your `eslint.config.mjs` (see the "ESLint v10" section in this linter's documentation above).
+            - Or install your project's dependencies and run the project-local ESLint binary:
+                TSX_ESLINT_PRE_COMMANDS:
+                  - command: yarn install --frozen-lockfile --ignore-scripts
+                    cwd: workspace
+                    continue_if_failed: false
+                TSX_ESLINT_CLI_EXECUTABLE: node_modules/.bin/eslint
+      - identifier: TSX_ESLINT_ERROR_OUT_OF_MEMORY
+        regex: "(JavaScript heap out of memory|FATAL ERROR:.+Allocation failed|Reached heap limit Allocation failed)"
+        message: |-
+          ESLint ran out of Node.js heap memory. Type-aware rules (`parserOptions.project`) that load the entire TypeScript program are the most common cause.
+          Resolutions:
+            - Raise the Node.js heap and whitelist the var (MegaLinter strips most env vars by default):
+                TSX_ESLINT_UNSECURED_ENV_VARIABLES:
+                  - NODE_OPTIONS
+                NODE_OPTIONS: "--max-old-space-size=8192"
+            - Disable type-aware rules or remove `parserOptions.project` if not strictly required.
+            - Reduce scope via `TSX_ESLINT_FILTER_REGEX_INCLUDE` / `TSX_ESLINT_FILTER_REGEX_EXCLUDE`.
     examples:
       - "eslint myfile.tsx"
-      - "eslint -c .eslintrc.json --no-eslintrc --no-ignore myfile.tsx"
-      - "eslint --fix -c .eslintrc.json --no-eslintrc --no-ignore myfile.tsx"
+      - "eslint -c eslint.config.js --no-ignore myfile.tsx"
+      - "eslint --fix -c eslint.config.js --no-ignore myfile.tsx"
     install:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=typescript
-          ARG NPM_TYPESCRIPT_VERSION=6.0.2
+          ARG NPM_TYPESCRIPT_VERSION=6.0.3
         - |-
           # renovate: datasource=npm depName=eslint
-          ARG NPM_ESLINT_VERSION=8.57.1
-        - |-
-          # renovate: datasource=npm depName=eslint-config-airbnb
-          ARG NPM_ESLINT_CONFIG_AIRBNB_VERSION=19.0.4
+          ARG NPM_ESLINT_VERSION=10.5.0
         - |-
           # renovate: datasource=npm depName=eslint-config-prettier
           ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.1.8
@@ -80,37 +166,32 @@ linters:
           ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.15.2
         - |-
           # renovate: datasource=npm depName=eslint-plugin-prettier
-          ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.5
+          ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.6
         - |-
-          # renovate: datasource=npm depName=eslint-plugin-react
-          ARG NPM_ESLINT_PLUGIN_REACT_VERSION=7.37.5
-        - |-
-          # renovate: datasource=npm depName=@babel/eslint-parser
-          ARG NPM_BABEL_ESLINT_PARSER_VERSION=7.28.6
+          # renovate: datasource=npm depName=@eslint-react/eslint-plugin
+          ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.9.0
         - |-
           # renovate: datasource=npm depName=prettier
-          ARG NPM_PRETTIER_VERSION=3.8.3
+          ARG NPM_PRETTIER_VERSION=3.8.4
         - |-
           # renovate: datasource=npm depName=prettyjson
           ARG NPM_PRETTYJSON_VERSION=1.2.5
         - |-
           # renovate: datasource=npm depName=@typescript-eslint/eslint-plugin
-          ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.58.2
+          ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.61.0
         - |-
           # renovate: datasource=npm depName=@typescript-eslint/parser
-          ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.58.2
+          ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.61.0
         - |-
           # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
           ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
       npm:
         - typescript@${NPM_TYPESCRIPT_VERSION}
         - eslint@${NPM_ESLINT_VERSION}
-        - eslint-config-airbnb@${NPM_ESLINT_CONFIG_AIRBNB_VERSION}
         - eslint-config-prettier@${NPM_ESLINT_CONFIG_PRETTIER_VERSION}
         - eslint-plugin-jest@${NPM_ESLINT_PLUGIN_JEST_VERSION}
         - eslint-plugin-prettier@${NPM_ESLINT_PLUGIN_PRETTIER_VERSION}
-        - eslint-plugin-react@${NPM_ESLINT_PLUGIN_REACT_VERSION}
-        - "@babel/eslint-parser@${NPM_BABEL_ESLINT_PARSER_VERSION}"
+        - "@eslint-react/eslint-plugin@${NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION}"
         - prettier@${NPM_PRETTIER_VERSION}
         - prettyjson@${NPM_PRETTYJSON_VERSION}
         - "@typescript-eslint/eslint-plugin@${NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION}"

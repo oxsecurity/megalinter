@@ -20,7 +20,7 @@ description: How to use ruff (configure, ignore files, ignore errors, help & ver
 
 ## ruff documentation
 
-- Version in MegaLinter: **0.15.11**
+- Version in MegaLinter: **0.15.17**
 - Visit [Official Web Site](https://github.com/astral-sh/ruff#readme){target=_blank}
 - See [How to configure ruff rules](https://docs.astral.sh/ruff/configuration/){target=_blank}
   - If custom `.ruff.toml` config file isn't found, [.ruff.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruff.toml){target=_blank} will be used
@@ -69,9 +69,9 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       135        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        89        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        66        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       136        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        92        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        69        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
 
@@ -136,7 +136,8 @@ Global options:
       --config <CONFIG_OPTION>
           Either a path to a TOML configuration file (`pyproject.toml` or `ruff.toml`), or a TOML
           `<KEY> = <VALUE>` pair (such as you might find in a `ruff.toml` configuration file)
-          overriding a specific configuration option. Overrides of individual settings using this
+          overriding a specific configuration option (e.g., `--config "lint.line-length = 100"` or
+          `--config "format.quote-style = 'single'"`). Overrides of individual settings using this
           option always take precedence over all configuration files, including configuration files
           that were also specified using `--config`
 
@@ -159,8 +160,48 @@ For help with a specific command, see: `ruff help <command>`.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.15.11
+ARG PIP_RUFF_VERSION=0.15.17
 ```
 
 - PIP packages (Python):
-  - [ruff==0.15.11](https://pypi.org/project/ruff/0.15.11)
+  - [ruff==0.15.17](https://pypi.org/project/ruff/0.15.17)
+
+## Known errors and resolutions
+
+When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.
+
+### PYTHON_RUFF_ERROR_CONFIG_PARSE
+
+**Detection pattern (regex):**
+
+```text
+(Failed to parse .*(ruff\.toml|pyproject\.toml)|TOML parse error|invalid type: |unknown field )
+```
+
+**Resolution guidance:**
+
+```text
+ruff could not parse its configuration file (`ruff.toml`, `.ruff.toml`, or `pyproject.toml`).
+Resolutions:
+  - Validate the TOML syntax of the file.
+  - Make sure option keys under `[tool.ruff]` / `[tool.ruff.lint]` match the pinned ruff version's schema; deprecated keys are removed in newer releases.
+  - Check for committed merge conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`) in the file.
+```
+
+### PYTHON_RUFF_ERROR_UNKNOWN_RULE
+
+**Detection pattern (regex):**
+
+```text
+(Unknown rule selector|unknown rule code|Unknown rule:|unrecognized selector)
+```
+
+**Resolution guidance:**
+
+```text
+ruff's configuration references a rule code that the pinned ruff version does not know about (renamed, deleted, or not yet released).
+Resolutions:
+  - Check the ruff changelog for renames around the version pinned in MegaLinter.
+  - Update the rule code in your `select` / `ignore` / `extend-select` list to the new name.
+```
+
