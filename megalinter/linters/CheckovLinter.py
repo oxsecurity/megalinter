@@ -11,9 +11,9 @@ class CheckovLinter(Linter):
     def before_lint_files(self):
         # Redirect Checkov's transient github_conf/ to a hidden dir to prevent ansible-lint race condition (issue #8092)
         if self._cached_subprocess_env is not None:
-            self._cached_subprocess_env[
-                "CKV_GITHUB_CONF_DIR_NAME"
-            ] = ".megalinter_github_conf"
+            self._cached_subprocess_env["CKV_GITHUB_CONF_DIR_NAME"] = (
+                ".megalinter_github_conf"
+            )
 
     def build_lint_command(self, file=None) -> list:
         if (
