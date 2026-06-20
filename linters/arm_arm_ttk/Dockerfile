@@ -55,7 +55,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
-ARG POWERSHELL_VERSION=7.6.2
+ARG POWERSHELL_VERSION=7.6.3
 # renovate: datasource=github-tags depName=Azure/arm-ttk
 ARG ARM_TTK_VERSION=20250401
 ARG ARM_TTK_NAME='arm-ttk.zip'

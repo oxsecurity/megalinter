@@ -164,20 +164,20 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 #ARG__START
 ARG TARGETPLATFORM
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
-ARG POWERSHELL_VERSION=7.6.2
+ARG POWERSHELL_VERSION=7.6.3
 # renovate: datasource=github-tags depName=sgerrand/alpine-pkg-glibc
 ARG ALPINE_GLIBC_PACKAGE_VERSION=2.34-r0
 # renovate: datasource=repology depName=alpine_3_24/go versioning=loose
 ARG GO_ALPINE_VERSION=1.26.3-r0
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
-ARG POWERSHELL_VERSION=7.6.2
+ARG POWERSHELL_VERSION=7.6.3
 
 # renovate: datasource=npm depName=@salesforce/cli
 ARG NPM_SALESFORCE_CLI_VERSION=2.139.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.29.3
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=7.16.2
+ARG SFDX_HARDIS_VERSION=7.16.3
 # renovate: datasource=github-tags depName=coursier/coursier
 ARG SCALA_COURSIER_VERSION=2.1.24
 # renovate: datasource=npm depName=typescript
@@ -332,7 +332,7 @@ ARG PIP_NBQA_VERSION=1.9.1
 # renovate: datasource=npm depName=pyright
 ARG NPM_PYRIGHT_VERSION=1.1.410
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.15.17
+ARG PIP_RUFF_VERSION=0.15.18
 # renovate: datasource=github-tags depName=nxadm/rakudo-pkg
 ARG RAKU_RAKU_VERSION=2026.03
 ARG RAKU_RAKU_ALPINE_VERSION=3.23
@@ -354,7 +354,7 @@ ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=11.7.1
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
 ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=11.7.1
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.166.0
+ARG PIP_SEMGREP_VERSION=1.167.0
 # renovate: datasource=github-tags depName=anchore/syft
 ARG REPOSITORY_SYFT_VERSION=1.45.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
@@ -364,7 +364,7 @@ ARG REPOSITORY_TRIVY_SBOM_VERSION=0.71.2
 # renovate: datasource=github-tags depName=mongodb/kingfisher
 ARG REPOSITORY_KINGFISHER_VERSION=1.103.0
 # renovate: datasource=pypi depName=robotframework-robocop
-ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=8.2.11
+ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=8.3.2
 # renovate: datasource=pypi depName=Pygments
 ARG PIP_PYGMENTS_VERSION=2.20.0
 # renovate: datasource=pypi depName=restructuredtext_lint

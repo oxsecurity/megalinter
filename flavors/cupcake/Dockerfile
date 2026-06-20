@@ -258,7 +258,7 @@ ARG PIP_NBQA_VERSION=1.9.1
 # renovate: datasource=npm depName=pyright
 ARG NPM_PYRIGHT_VERSION=1.1.410
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.15.17
+ARG PIP_RUFF_VERSION=0.15.18
 # renovate: datasource=pypi depName=checkov
 ARG PIP_CHECKOV_VERSION=3.3.1
 # renovate: datasource=github-tags depName=anchore/grype
@@ -274,7 +274,7 @@ ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=11.7.1
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
 ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=11.7.1
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.166.0
+ARG PIP_SEMGREP_VERSION=1.167.0
 # renovate: datasource=github-tags depName=anchore/syft
 ARG REPOSITORY_SYFT_VERSION=1.45.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
@@ -282,7 +282,7 @@ ARG REPOSITORY_TRIVY_VERSION=0.71.2
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.71.2
 # renovate: datasource=pypi depName=robotframework-robocop
-ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=8.2.11
+ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=8.3.2
 # renovate: datasource=pypi depName=Pygments
 ARG PIP_PYGMENTS_VERSION=2.20.0
 # renovate: datasource=pypi depName=restructuredtext_lint

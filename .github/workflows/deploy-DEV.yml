@@ -45,8 +45,20 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-    # Prevent duplicate run from happening when a forked push is committed
-    if: (github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository) && !contains(github.event.head_commit.message, 'skip deploy')
+    # Build on:
+    #  - push: same-repo branch pushes (humans)
+    #  - pull_request from a fork: no push event fires upstream
+    #  - pull_request opened by a bot (renovate/dependabot/github-actions): these
+    #    update their branches via an app token / GITHUB_TOKEN, and GitHub does NOT
+    #    emit a push event for those, so the push-based build never runs for them.
+    #    They must be built on the pull_request event instead.
+    # Same-repo human PRs are built via the push event only (avoids duplicate runs).
+    if: >
+      (
+        github.event_name == 'push' ||
+        github.event.pull_request.head.repo.full_name != github.repository ||
+        contains(fromJSON('["renovate[bot]", "dependabot[bot]", "github-actions[bot]"]'), github.event.pull_request.user.login)
+      ) && !contains(github.event.head_commit.message, 'skip deploy')
     timeout-minutes: 90
     outputs:
       image-tag: ${{ steps.meta.outputs.tags }}
@@ -57,7 +69,7 @@ jobs:
       is-quick: ${{ steps.setup.outputs.is-quick }}
     steps:
       - name: Checkout Code
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
           persist-credentials: false
 
@@ -177,7 +189,7 @@ jobs:
     timeout-minutes: 120
     steps:
       - name: Checkout Code
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
           persist-credentials: false
 
@@ -262,7 +274,7 @@ jobs:
     timeout-minutes: 30
     steps:
       - name: Checkout Code
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
           persist-credentials: false
 
@@ -327,7 +339,7 @@ jobs:
     timeout-minutes: 30
     steps:
       - name: Checkout Code
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
           persist-credentials: false
 
@@ -382,7 +394,7 @@ jobs:
     timeout-minutes: 30
     steps:
       - name: Checkout Code
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
           persist-credentials: false
 

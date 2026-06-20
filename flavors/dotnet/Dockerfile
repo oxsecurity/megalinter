@@ -121,9 +121,9 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 #ARG__START
 ARG TARGETPLATFORM
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
-ARG POWERSHELL_VERSION=7.6.2
+ARG POWERSHELL_VERSION=7.6.3
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
-ARG POWERSHELL_VERSION=7.6.2
+ARG POWERSHELL_VERSION=7.6.3
 
 # renovate: datasource=pypi depName=ansible-lint
 ARG PIP_ANSIBLE_LINT_VERSION=26.4.0
@@ -207,7 +207,7 @@ ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=11.7.1
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
 ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=11.7.1
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.166.0
+ARG PIP_SEMGREP_VERSION=1.167.0
 # renovate: datasource=github-tags depName=anchore/syft
 ARG REPOSITORY_SYFT_VERSION=1.45.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy

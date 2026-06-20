@@ -74,7 +74,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 #ARG__START
 ARG TARGETPLATFORM
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
-ARG POWERSHELL_VERSION=7.6.2
+ARG POWERSHELL_VERSION=7.6.3
 
 # renovate: datasource=npm depName=typescript
 ARG NPM_TYPESCRIPT_VERSION=6.0.3
@@ -98,7 +98,7 @@ ARG PIP_BLACK_VERSION=26.5.1
 # renovate: datasource=pypi depName=isort
 ARG PIP_ISORT_VERSION=8.0.1
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.15.17
+ARG PIP_RUFF_VERSION=0.15.18
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=pypi depName=snakefmt
