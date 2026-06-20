@@ -114,6 +114,13 @@ CVE-2025-21614
 # untrusted protobuf input. PMD analyses local Apex/Java source code
 # and never deserialises external protobuf payloads.
 CVE-2024-7254
+# GHSA-2r2c-cx56-8933 / GHSA-47qp-hqvx-6r3f: JLine3 Telnet server
+# unauthenticated remote DoS and remote memory exhaustion.
+# jline-3.21.0.jar is bundled in usr/bin/pmd/lib for PMD's interactive
+# shell; PMD runs as a CLI static analyzer and never starts the JLine
+# Telnet server. Remove when PMD upgrades its bundled jline to >=4.2.1.
+GHSA-2r2c-cx56-8933
+GHSA-47qp-hqvx-6r3f
 
 # --- Kubescape ---
 # Tracked in https://github.com/oxsecurity/megalinter/issues/3519.
@@ -233,6 +240,10 @@ CVE-2026-31802
 # undici: WebSocket DoS — code-analyzer doesn't use WebSocket connections during static analysis
 CVE-2026-1526
 CVE-2026-2229
+# undici: MITM via ignored TLS options when a SOCKS5 proxy is configured — code-analyzer
+# makes no outbound requests through an attacker-controlled SOCKS5 proxy during static
+# analysis. Remove when code-analyzer upgrades its bundled undici to >=7.28.0 / >=8.5.0.
+CVE-2026-9697
 
 # --- octokit (GitHub API client used by several JS linters) ---
 # CVEs are ReDoS / token-leak risks when handling attacker-controlled
