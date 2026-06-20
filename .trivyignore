@@ -44,6 +44,16 @@ CVE-2025-52881
 # or evaluate runAsNonRoot policy. Remove when upstream tools rebuild against
 # containerd >=2.2.4 / >=2.3.1 (or >=1.7.32 for the v1 line).
 CVE-2026-46680
+# https://avd.aquasec.com/nvd/cve-2026-53488 — containerd CRI image-config LABEL
+# injection. https://avd.aquasec.com/nvd/cve-2026-53489 — arbitrary host CRI log
+# file read via symlink following. https://avd.aquasec.com/nvd/cve-2026-53492 —
+# CRI checkpoint restore CDI annotation smuggling. All three require a running
+# containerd CRI server; the containerd embedded in the grype/syft/trivy scanner
+# binaries is used as a static-analysis library only and never serves CRI.
+# Remove when upstream tools rebuild against containerd >=2.3.2.
+CVE-2026-53488
+CVE-2026-53489
+CVE-2026-53492
 
 # --- Docker (moby) ---
 # CVE-2024-41110: AuthZ plugin bypass in moby. MegaLinter never runs a
