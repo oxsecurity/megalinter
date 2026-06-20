@@ -189,6 +189,12 @@ export const optionsDefinition = optionator.default({
         "Upgrade the local MegaLinter configuration (.mega-linter.yml and related CI files) to the current major version.",
     },
     {
+      option: "prompt",
+      type: "Boolean",
+      description:
+        "Enable interactive prompts. Use --no-prompt to run non-interactively. For `--upgrade`, that proceeds with the upgrade and skips optional follow-up prompts.",
+    },
+    {
       option: "container-name",
       alias: "containername",
       type: "String",

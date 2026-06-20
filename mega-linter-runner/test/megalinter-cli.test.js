@@ -1,12 +1,17 @@
 /* jscpd:ignore-start */
 import assert from 'assert';
 import { exec as childProcessExec } from "child_process";
+import os from "os";
+import path from "path";
+import fs from "fs-extra";
+import { fileURLToPath } from "url";
 import * as  util from "util";
 const exec = util.promisify(childProcessExec);
 
 const release = process.env.MEGALINTER_RELEASE || "beta";
 const nodockerpull =
   process.env.MEGALINTER_NO_DOCKER_PULL === "true" ? true : false;
+const packageDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
 const MEGA_LINTER = "mega-linter-runner ";
 
@@ -43,8 +48,10 @@ describe("CLI", function () {
       done();
       return;
     }
-    const params = ["--upgrade"];
-    exec(MEGA_LINTER + params.join(" "))
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "megalinter-upgrade-"));
+    fs.writeFileSync(path.join(tempDir, ".mega-linter.yml"), "ENABLE_LINTERS:\n  - YAML_PRETTIER\n");
+    const params = ["--upgrade", "--no-prompt"];
+    exec(`node ${path.join(packageDir, "lib", "index.js")} ${params.join(" ")}`, { cwd: tempDir })
       .then((res) => {
         const stdout = res.stdout;
         const stderr = res.stderr;
@@ -56,9 +63,11 @@ describe("CLI", function () {
           stdout.includes("mega-linter-runner applied"),
           'stdout should contains "mega-linter-runner applied"'
         );
+        fs.removeSync(tempDir);
         done();
       })
       .catch((err) => {
+        fs.removeSync(tempDir);
         done(err);
         throw err;
       });

@@ -262,6 +262,10 @@ describe("CLI parsing — boolean flags", () => {
     assert.strictEqual(parse(["-u"]).upgrade, true);
   });
 
+  it("parses --no-prompt", () => {
+    assert.strictEqual(parse(["--no-prompt"]).prompt, false);
+  });
+
   it("parses --codetotal", () => {
     assert.strictEqual(parse(["--codetotal"]).codetotal, true);
   });
@@ -272,6 +276,7 @@ describe("CLI parsing — boolean flags", () => {
     assert.strictEqual(o.debug, undefined);
     assert.strictEqual(o.json, undefined);
     assert.strictEqual(o.upgrade, undefined);
+    assert.strictEqual(o.prompt, undefined);
   });
 });
 
