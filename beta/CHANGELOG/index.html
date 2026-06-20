@@ -15686,6 +15686,7 @@
 <li>Exclude <code>REPORT_OUTPUT_FOLDER</code> from linting when configured as an absolute path inside the workspace (e.g. <code>/tmp/lint/megalinter-reports</code>), fixing #7845.</li>
 <li>Fix command injection in Roslynator linter (<code>DOTNET_ROSLYNATOR</code>) where a crafted <code>.csproj</code> filename could break out of <code>dotnet restore</code> arguments and execute arbitrary shell commands. The command is now invoked via argv list instead of a shell string. Reported by Francesco Sabiu.</li>
 <li>Fix <code>IndexError</code> when building the single-linter Docker image for a linter whose activation depends on a file (e.g. <code>SPELL_VALE</code> requires <code>.vale.ini</code>): <code>python -m megalinter.run --linterversion</code> now bypasses activation filtering since the per-linter image is built for that linter unconditionally.</li>
+<li>Fix <code>make bootstrap</code> appearing to hang because exported Make color variables re-evaluated <code>tput</code> during recursive <code>make</code> invocations.</li>
 <li>Allow MegaLinter containers to run in an opt-in non-root mode matching the host UID:GID on POSIX systems, avoiding root-owned generated files on the host (#1975).</li>
 </ul>
 </li>
