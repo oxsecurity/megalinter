@@ -45,7 +45,7 @@ Example:
 
 ## jscpd documentation
 
-- Version in MegaLinter: **4.2.4**
+- Version in MegaLinter: **4.2.5**
 - Visit [Official Web Site](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#readme){target=_blank}
 - See [How to configure jscpd rules](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#config-file){target=_blank}
   - If custom `.jscpd.json` config file isn't found, [.jscpd.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.jscpd.json){target=_blank} will be used
@@ -142,11 +142,11 @@ Options:
                              threshold jscpd will exit with error
   -c, --config [string]      path to config file (Default is .jscpd.json in
                              <path>)
-  -i, --ignore [string]      glob pattern for files what should be excluded
-                             from duplication detection
+  -i, --ignore [string]      glob pattern for files what should be excluded from
+                             duplication detection
   --ignore-pattern [string]  Ignore code blocks matching the regexp patterns
-  -r, --reporters [string]   reporters or list of reporters separated with
-                             comma to use (Default is time,console)
+  -r, --reporters [string]   reporters or list of reporters separated with comma
+                             to use (Default is time,console)
   -o, --output [string]      reporters to use (Default is ./report/)
   -m, --mode [string]        mode of quality of search, can be "strict", "mild" and "weak" (Default is "function mild(token) {
     return strict(token) && token.type !== "empty" && token.type !== "new_line";
@@ -160,9 +160,9 @@ Options:
                              console
   --store [string]           use for define custom store (e.g. --store leveldb
                              used for big codebase)
-  --store-path [string]      directory to use for store cache (e.g.
-                             --store-path /tmp/jscpd-cache, useful when running
-                             multiple instances in parallel)
+  --store-path [string]      directory to use for store cache (e.g. --store-path
+                             /tmp/jscpd-cache, useful when running multiple
+                             instances in parallel)
   -a, --absolute             use absolute path in reports
   -n, --noSymlinks           dont use symlinks for detection in files
   --ignoreCase               ignore case of symbols in code (experimental)
@@ -177,8 +177,8 @@ Options:
                              process(options list and selected files)
   -v, --verbose              show full information during detection process
   --list                     show list of total supported formats
-  --skipLocal                skip duplicates in local folders, just detect
-                             cross folders duplications
+  --skipLocal                skip duplicates in local folders, just detect cross
+                             folders duplications
   --exitCode [number]        exit code to use when code duplications are
                              detected
   --noTips                   do not print tips and promotional messages after
@@ -193,8 +193,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=4.2.4
+ARG NPM_JSCPD_VERSION=4.2.5
 ```
 
 - NPM packages (node.js):
-  - [jscpd@4.2.4](https://www.npmjs.com/package/jscpd/v/4.2.4)
+  - [jscpd@4.2.5](https://www.npmjs.com/package/jscpd/v/4.2.5)

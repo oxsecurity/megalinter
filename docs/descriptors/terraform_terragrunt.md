@@ -23,7 +23,7 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 
 ## terragrunt documentation
 
-- Version in MegaLinter: **1.0.7**
+- Version in MegaLinter: **1.0.8**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/quick-start/#add-terragrunthcl-to-your-project){target=_blank}
 
@@ -161,7 +161,7 @@ See also:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.5
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.6
 FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 ```

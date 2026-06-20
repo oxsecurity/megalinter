@@ -38,7 +38,7 @@ ARG REPOSITORY_GITLEAKS_VERSION=v8.30.1
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
 ARG REPOSITORY_TRUFFLEHOG_VERSION=3.95.5
 # renovate: datasource=docker depName=jdkato/vale
-ARG SPELL_VALE_VERSION=v3.14.2
+ARG SPELL_VALE_VERSION=v3.15.1
 # renovate: datasource=docker depName=lycheeverse/lychee
 ARG SPELL_LYCHEE_VERSION=0.24.2-alpine
 #ARGTOP__END
@@ -170,7 +170,7 @@ ARG PIP_DJLINT_VERSION=1.39.2
 # renovate: datasource=npm depName=htmlhint
 ARG NPM_HTMLHINT_VERSION=1.9.2
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=10.4.1
+ARG NPM_ESLINT_VERSION=10.5.0
 # renovate: datasource=npm depName=@eslint/js
 ARG NPM_ESLINT_JS_VERSION=10.0.1
 # renovate: datasource=npm depName=eslint-config-prettier
@@ -202,7 +202,7 @@ ARG NPM_PACKAGE_JSON_LINT_VERSION=10.4.0
 # renovate: datasource=npm depName=npm-package-json-lint-config-default
 ARG NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION=9.0.1
 # renovate: datasource=npm depName=@eslint-react/eslint-plugin
-ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.8.18
+ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.9.0
 # renovate: datasource=github-tags depName=pinterest/ktlint
 ARG KTLINT_VERSION=1.8.0
 
@@ -239,9 +239,9 @@ ARG PIP_SEMGREP_VERSION=1.166.0
 # renovate: datasource=github-tags depName=anchore/syft
 ARG REPOSITORY_SYFT_VERSION=1.45.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_VERSION=0.70.0
+ARG REPOSITORY_TRIVY_VERSION=0.71.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_SBOM_VERSION=0.70.0
+ARG REPOSITORY_TRIVY_SBOM_VERSION=0.71.1
 # renovate: datasource=pypi depName=snakemake
 ARG PIP_SNAKEMAKE_VERSION=9.23.0
 # renovate: datasource=pypi depName=snakefmt
@@ -271,7 +271,7 @@ ARG PIP_YAMLLINT_VERSION=1.38.0
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=26.1.2
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=21.4.3
+ARG PIP_VIRTUALENV_VERSION=21.5.1
 
 ARG TARGETARCH
 ARG CARGO_SARIF_FMT_VERSION
@@ -460,7 +460,8 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
     NODE_ENV=production
 #NPM__START
 WORKDIR /node-deps
-RUN npm --no-cache install --ignore-scripts --omit=dev \
+RUN npm config set prefix /usr/local \
+    && npm --no-cache install --ignore-scripts --omit=dev \
                 typescript@${NPM_TYPESCRIPT_VERSION} \
                 @coffeelint/cli@${NPM_COFFEELINT_CLI_VERSION} \
                 jscpd@${NPM_JSCPD_VERSION} \
@@ -530,8 +531,8 @@ esac \
     && chmod +x /opt/microsoft/powershell/7/pwsh \
     && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh \
 # CSHARP installation
-    && apk add --no-cache dotnet10-sdk
-ENV PATH="${PATH}:/root/.dotnet/tools"
+    && apk add --no-cache dotnet10-sdk && install -d /usr/local/dotnet-tools
+ENV PATH="${PATH}:/usr/local/dotnet-tools"
 # KOTLIN installation
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
@@ -549,9 +550,9 @@ ENV PATH="$JAVA_HOME/bin:${PATH}"
 # TYPESCRIPT installation
 # VBDOTNET installation
 # Next line commented because already managed by another linter
-# RUN apk add --no-cache dotnet10-sdk
+# RUN apk add --no-cache dotnet10-sdk && install -d /usr/local/dotnet-tools
 # Next line commented because already managed by another linter
-# ENV PATH="${PATH}:/root/.dotnet/tools"
+# ENV PATH="${PATH}:/usr/local/dotnet-tools"
 # actionlint installation
 # Managed with COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
 #              # shellcheck is a dependency for actionlint
@@ -588,9 +589,9 @@ esac \
 # jscpd installation
 # cpplint installation
 # csharpier installation
-    && dotnet tool install --allow-roll-forward --global csharpier --version "${CSHARP_CSHARPIER_VERSION}" \
+    && dotnet tool install --allow-roll-forward --tool-path /usr/local/dotnet-tools csharpier --version "${CSHARP_CSHARPIER_VERSION}" \
 # roslynator installation
-    && dotnet tool install --allow-roll-forward --global roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}" \
+    && dotnet tool install --allow-roll-forward --tool-path /usr/local/dotnet-tools roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}" \
 # stylelint installation
 # hadolint installation
 # Managed with COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
@@ -696,10 +697,10 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 # sqlfluff installation
 # tsqllint installation
 # Next line commented because already managed by another linter
-# RUN apk add --no-cache dotnet10-sdk
+# RUN apk add --no-cache dotnet10-sdk && install -d /usr/local/dotnet-tools
 # Next line commented because already managed by another linter
-# ENV PATH="${PATH}:/root/.dotnet/tools"
-    && dotnet tool install --allow-roll-forward --global TSQLLint --version ${SQL_TSQLLINT_VERSION}
+# ENV PATH="${PATH}:/usr/local/dotnet-tools"
+    && dotnet tool install --allow-roll-forward --tool-path /usr/local/dotnet-tools TSQLLint --version ${SQL_TSQLLINT_VERSION}
 # tekton-lint installation
 # eslint installation
 # eslint installation
@@ -766,6 +767,8 @@ LABEL com.github.actions.name="MegaLinter" \
 
 #EXTRA_DOCKERFILE_LINES__START
 COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x entrypoint.sh
+COPY sh/setup-runtime-user /usr/bin/setup-runtime-user
+RUN chmod +x entrypoint.sh && \
+    chmod u+x /usr/bin/setup-runtime-user
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
 #EXTRA_DOCKERFILE_LINES__END

@@ -57,7 +57,7 @@ ARG TARGETARCH
 # renovate: datasource=npm depName=typescript
 ARG NPM_TYPESCRIPT_VERSION=6.0.3
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=10.4.1
+ARG NPM_ESLINT_VERSION=10.5.0
 # renovate: datasource=npm depName=eslint-config-prettier
 ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.1.8
 # renovate: datasource=npm depName=eslint-plugin-jest
@@ -65,7 +65,7 @@ ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.15.2
 # renovate: datasource=npm depName=eslint-plugin-prettier
 ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.6
 # renovate: datasource=npm depName=@eslint-react/eslint-plugin
-ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.8.18
+ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.9.0
 # renovate: datasource=npm depName=prettier
 ARG NPM_PRETTIER_VERSION=3.8.4
 # renovate: datasource=npm depName=prettyjson
@@ -168,7 +168,8 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
     NODE_ENV=production
 #NPM__START
 WORKDIR /node-deps
-RUN npm --no-cache install --ignore-scripts --omit=dev \
+RUN npm config set prefix /usr/local \
+    && npm --no-cache install --ignore-scripts --omit=dev \
                 typescript@${NPM_TYPESCRIPT_VERSION} \
                 eslint@${NPM_ESLINT_VERSION} \
                 eslint-config-prettier@${NPM_ESLINT_CONFIG_PRETTIER_VERSION} \
@@ -271,15 +272,17 @@ ENV ENABLE_LINTERS=TSX_ESLINT \
     FILEIO_REPORTER=false \
     CONFIG_REPORTER=false \
     SARIF_TO_HUMAN=false
-RUN mkdir /root/docker_ssh && mkdir /usr/bin/megalinter-sh
+RUN mkdir /tmp/docker_ssh && mkdir /usr/bin/megalinter-sh
 EXPOSE 22
 COPY entrypoint.sh /entrypoint.sh
 COPY sh /usr/bin/megalinter-sh
 COPY sh/megalinter_exec /usr/bin/megalinter_exec
+COPY sh/setup-runtime-user /usr/bin/setup-runtime-user
 COPY sh/motd /etc/motd
 RUN find /usr/bin/megalinter-sh/ -type f -iname "*.sh" -exec chmod +x {} \; && \
     chmod +x entrypoint.sh && \
     chmod +x /usr/bin/megalinter_exec && \
+    chmod u+x /usr/bin/setup-runtime-user && \
     echo "alias megalinter='python -m megalinter.run'" >> ~/.bashrc && source ~/.bashrc && \
     echo "alias megalinter_exec='/usr/bin/megalinter_exec'" >> ~/.bashrc && source ~/.bashrc
 RUN export STANDALONE_LINTER_VERSION="$(python -m megalinter.run --input /tmp --linterversion)" && \
