@@ -15,6 +15,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Core
   - New linter descriptor property `common_linter_errors`: declare known non-lint failure patterns (config issue, remote service down, missing credentials…) and the guidance message shown to users, directly in YAML — no custom Python class needed.
+  - Skipped-linters summary now explains why a linter was skipped by an activation rule, including the variable to set to activate it (e.g. `MARKDOWN_RUMDL: MARKDOWN_DEFAULT_STYLE=markdownlint (set MARKDOWN_DEFAULT_STYLE=rumdl to activate)`), fixing [#8017](https://github.com/oxsecurity/megalinter/issues/8017).
 
 - New linters
 

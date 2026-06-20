@@ -72,6 +72,7 @@ class Linter:
         self.test_format_fix_file_extensions = []
         self.test_format_fix_regex_exclude = None
         self.activation_rules = []
+        self.activation_skip_reason = None
         self.test_variables = {}
         # Array of strings defining file extensions. Ex: ['.js','.cjs', '']
         self.file_extensions = []
@@ -451,7 +452,9 @@ class Linter:
             strategies["VALIDATE"] = True
         # check activation rules
         if self.is_active is True and len(self.activation_rules) > 0:
-            self.is_active = utils.check_activation_rules(self.activation_rules, self)
+            self.is_active, self.activation_skip_reason = utils.check_activation_rules(
+                self.activation_rules, self
+            )
 
         strategiesUsed = format(
             ", ".join("{0}".format(k) for k, v in strategies.items() if v)

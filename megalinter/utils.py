@@ -292,6 +292,7 @@ def list_active_reporters_for_scope(scope, reporter_init_params):
 
 def check_activation_rules(activation_rules, linter):
     active = False
+    reason = None
     for rule in activation_rules:
         if rule["type"] == "variable":
             value = config.get(
@@ -301,8 +302,12 @@ def check_activation_rules(activation_rules, linter):
                 active = True
             else:
                 active = False
+                reason = (
+                    f"{rule['variable']}={value} "
+                    f"(set {rule['variable']}={rule['expected_value']} to activate)"
+                )
                 break
-    return active
+    return active, reason
 
 
 def file_contains(file_name: str, regex_object: Optional[Pattern[str]]) -> bool:
