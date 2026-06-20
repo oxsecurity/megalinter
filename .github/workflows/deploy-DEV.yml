@@ -45,20 +45,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-    # Build on:
-    #  - push: same-repo branch pushes (humans)
-    #  - pull_request from a fork: no push event fires upstream
-    #  - pull_request opened by a bot (renovate/dependabot/github-actions): these
-    #    update their branches via an app token / GITHUB_TOKEN, and GitHub does NOT
-    #    emit a push event for those, so the push-based build never runs for them.
-    #    They must be built on the pull_request event instead.
-    # Same-repo human PRs are built via the push event only (avoids duplicate runs).
-    if: >
-      (
-        github.event_name == 'push' ||
-        github.event.pull_request.head.repo.full_name != github.repository ||
-        contains(fromJSON('["renovate[bot]", "dependabot[bot]", "github-actions[bot]"]'), github.event.pull_request.user.login)
-      ) && !contains(github.event.head_commit.message, 'skip deploy')
+    # Prevent duplicate run from happening when a forked push is committed
+    if: (github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository) && !contains(github.event.head_commit.message, 'skip deploy')
     timeout-minutes: 90
     outputs:
       image-tag: ${{ steps.meta.outputs.tags }}
