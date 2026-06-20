@@ -330,7 +330,9 @@ branding:
         ]
     extra_lines += [
         "COPY entrypoint.sh /entrypoint.sh",
-        "RUN chmod +x entrypoint.sh",
+        "COPY sh/setup-runtime-user /usr/bin/setup-runtime-user",
+        "RUN chmod +x entrypoint.sh && \\",
+        "    chmod u+x /usr/bin/setup-runtime-user",
         'ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]',
     ]
     build_dockerfile(
@@ -543,14 +545,19 @@ def build_dockerfile(
         if keep_rustup is True:
             rustup_cargo_cmd = " && ".join(rust_commands)
             cargo_install_command = (
-                "RUN curl https://sh.rustup.rs -sSf |"
-                + " sh -s -- -y --profile minimal --default-toolchain ${RUST_RUST_VERSION} \\\n"
-                + '    && export PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}" \\\n'
+                "RUN export RUSTUP_HOME=/usr/local/rustup CARGO_HOME=/usr/local/cargo \\\n"
+                + "    && curl https://sh.rustup.rs -sSf |"
+                + " sh -s -- -y --profile minimal --default-toolchain ${RUST_RUST_VERSION} --no-modify-path \\\n"
+                + '    && export PATH="${CARGO_HOME}/bin:${PATH}" \\\n'
                 + "    && rustup default stable \\\n"
                 + f"    && {rustup_cargo_cmd} \\\n"
-                + "    && rm -rf /root/.cargo/registry /root/.cargo/git "
-                + "/root/.cache/sccache\n"
-                + 'ENV PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}"'
+                + '    && for bin in "${CARGO_HOME}"/bin/*; do \\\n'
+                + '         ln -sf "$bin" /usr/local/bin/"$(basename "$bin")"; \\\n'
+                + "       done \\\n"
+                + '    && rm -rf "${CARGO_HOME}/registry" "${CARGO_HOME}/git" /root/.cache/sccache\n'
+                + "ENV RUSTUP_HOME=/usr/local/rustup\n"
+                + "ENV CARGO_HOME=/usr/local/cargo\n"
+                + 'ENV PATH="/usr/local/cargo/bin:${PATH}"'
             )
     # Pin every standalone `FROM alpine:X.Y` build stage to the runtime image's
     # Alpine version (parsed from the python base image) so helper stages can never
@@ -636,7 +643,8 @@ def build_dockerfile(
     if len(npm_packages) > 0:
         npm_install_command = (
             "WORKDIR /node-deps\n"
-            + "RUN npm --no-cache install --ignore-scripts --omit=dev \\\n                "
+            + "RUN npm config set prefix /usr/local \\\n"
+            + "    && npm --no-cache install --ignore-scripts --omit=dev \\\n                "
             + " \\\n                ".join(list(dict.fromkeys(npm_packages)))
             + " && \\\n"
             #    + '       echo "Fixing audit issues with npm…" \\\n'
@@ -834,15 +842,17 @@ def generate_linter_dockerfiles():
                 "    CONFIG_REPORTER=false \\",
                 "    SARIF_TO_HUMAN=false" "",
                 # "EXPOSE 80",
-                "RUN mkdir /root/docker_ssh && mkdir /usr/bin/megalinter-sh",
+                "RUN mkdir /tmp/docker_ssh && mkdir /usr/bin/megalinter-sh",
                 "EXPOSE 22",
                 "COPY entrypoint.sh /entrypoint.sh",
                 "COPY sh /usr/bin/megalinter-sh",
                 "COPY sh/megalinter_exec /usr/bin/megalinter_exec",
+                "COPY sh/setup-runtime-user /usr/bin/setup-runtime-user",
                 "COPY sh/motd /etc/motd",
                 'RUN find /usr/bin/megalinter-sh/ -type f -iname "*.sh" -exec chmod +x {} \\; && \\',
                 "    chmod +x entrypoint.sh && \\",
                 "    chmod +x /usr/bin/megalinter_exec && \\",
+                "    chmod u+x /usr/bin/setup-runtime-user && \\",
                 "    echo \"alias megalinter='python -m megalinter.run'\" >> ~/.bashrc && source ~/.bashrc && \\",
                 "    echo \"alias megalinter_exec='/usr/bin/megalinter_exec'\" >> ~/.bashrc && source ~/.bashrc",
                 'RUN export STANDALONE_LINTER_VERSION="$(python -m megalinter.run --input /tmp --linterversion)" && \\',

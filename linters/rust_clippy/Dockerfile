@@ -102,12 +102,18 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #############################################################################################
 
 #CARGO__START
-RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain ${RUST_RUST_VERSION} \
-    && export PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}" \
+RUN export RUSTUP_HOME=/usr/local/rustup CARGO_HOME=/usr/local/cargo \
+    && curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain ${RUST_RUST_VERSION} --no-modify-path \
+    && export PATH="${CARGO_HOME}/bin:${PATH}" \
     && rustup default stable \
     && rustup component add clippy \
-    && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache
-ENV PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}"
+    && for bin in "${CARGO_HOME}"/bin/*; do \
+         ln -sf "$bin" /usr/local/bin/"$(basename "$bin")"; \
+       done \
+    && rm -rf "${CARGO_HOME}/registry" "${CARGO_HOME}/git" /root/.cache/sccache
+ENV RUSTUP_HOME=/usr/local/rustup
+ENV CARGO_HOME=/usr/local/cargo
+ENV PATH="/usr/local/cargo/bin:${PATH}"
 #CARGO__END
 
 ##############################
@@ -233,15 +239,17 @@ ENV ENABLE_LINTERS=RUST_CLIPPY \
     FILEIO_REPORTER=false \
     CONFIG_REPORTER=false \
     SARIF_TO_HUMAN=false
-RUN mkdir /root/docker_ssh && mkdir /usr/bin/megalinter-sh
+RUN mkdir /tmp/docker_ssh && mkdir /usr/bin/megalinter-sh
 EXPOSE 22
 COPY entrypoint.sh /entrypoint.sh
 COPY sh /usr/bin/megalinter-sh
 COPY sh/megalinter_exec /usr/bin/megalinter_exec
+COPY sh/setup-runtime-user /usr/bin/setup-runtime-user
 COPY sh/motd /etc/motd
 RUN find /usr/bin/megalinter-sh/ -type f -iname "*.sh" -exec chmod +x {} \; && \
     chmod +x entrypoint.sh && \
     chmod +x /usr/bin/megalinter_exec && \
+    chmod u+x /usr/bin/setup-runtime-user && \
     echo "alias megalinter='python -m megalinter.run'" >> ~/.bashrc && source ~/.bashrc && \
     echo "alias megalinter_exec='/usr/bin/megalinter_exec'" >> ~/.bashrc && source ~/.bashrc
 RUN export STANDALONE_LINTER_VERSION="$(python -m megalinter.run --input /tmp --linterversion)" && \

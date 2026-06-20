@@ -8,7 +8,8 @@ import { asciiArt } from "./ascii.js";
 import { DEFAULT_RELEASE, GLOB_IGNORE_PATTERNS } from "./config.js";
 
 export class MegaLinterUpgrader {
-  constructor() {
+  constructor({ noPrompt = false } = {}) {
+    this.noPrompt = noPrompt;
     this.replacements = [
       // Documentation base URL
       {
@@ -462,10 +463,10 @@ jobs:
       },
       // Create pull request action
       {
-        regex: /peter-evans\/create-pull-request@v(3|4|5|6)/gm,
-        replacement: `peter-evans/create-pull-request@v7`,
-        test: "peter-evans/create-pull-request@v6",
-        testRes: `peter-evans/create-pull-request@v7`,
+        regex: /peter-evans\/create-pull-request@v(3|4|5|6|7)/gm,
+        replacement: `peter-evans/create-pull-request@v8`,
+        test: "peter-evans/create-pull-request@v7",
+        testRes: `peter-evans/create-pull-request@v8`,
       },
       // Auto-commit action
       {
@@ -553,15 +554,19 @@ jobs:
 
   async run() {
     console.log(asciiArt());
-    const promptsUpgradeRes = await prompts({
-      name: "upgrade",
-      message: c.blueBright(
-        `This assistant will automatically upgrade your local files so you use MegaLinter ${DEFAULT_RELEASE}\nPlease confirm to proceed :)`
-      ),
-      type: "confirm",
-      initial: true,
-    });
-    if (promptsUpgradeRes.upgrade === false) {
+    const confirmedUpgrade = this.noPrompt
+      ? true
+      : (
+        await prompts({
+          name: "upgrade",
+          message: c.blueBright(
+            `This assistant will automatically upgrade your local files so you use MegaLinter ${DEFAULT_RELEASE}\nPlease confirm to proceed :)`
+          ),
+          type: "confirm",
+          initial: true,
+        })
+      ).upgrade;
+    if (confirmedUpgrade === false) {
       console.log(
         `You should upgrade to ${DEFAULT_RELEASE} to benefit from latest versions of linters, and more features :)`
       );
@@ -580,6 +585,9 @@ jobs:
       )
     );
     console.log("");
+    if (this.noPrompt) {
+      return;
+    }
     // Propose to try ox service
     const promptsOXRes = await prompts({
       name: "ox",
@@ -662,4 +670,3 @@ jobs:
     }
   }
 }
-

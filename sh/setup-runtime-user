@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+
+set -eu
+
+MEGALINTER_RUNTIME_UID="${MEGALINTER_UID:-}"
+MEGALINTER_RUNTIME_GID="${MEGALINTER_GID:-}"
+MEGALINTER_RUNTIME_USER="${MEGALINTER_USER:-megalinter}"
+MEGALINTER_RUNTIME_HOME="${HOME:-/home/${MEGALINTER_RUNTIME_USER}}"
+
+find_passwd_by_uid() {
+	awk -F: -v uid="$1" '$3 == uid { print $1 ":" $6; exit }' /etc/passwd
+}
+
+find_group_by_gid() {
+	awk -F: -v gid="$1" '$3 == gid { print $1; exit }' /etc/group
+}
+
+find_uid_by_user() {
+	awk -F: -v user="$1" '$1 == user { print $3; exit }' /etc/passwd
+}
+
+find_gid_by_group() {
+	awk -F: -v group="$1" '$1 == group { print $3; exit }' /etc/group
+}
+
+if [ "$(id -u)" -ne 0 ] || [ -z "${MEGALINTER_RUNTIME_UID}" ] || [ -z "${MEGALINTER_RUNTIME_GID}" ]; then
+	exec /entrypoint.sh "$@"
+fi
+
+existing_user_entry="$(find_passwd_by_uid "${MEGALINTER_RUNTIME_UID}")"
+if [ -n "${existing_user_entry}" ]; then
+	MEGALINTER_RUNTIME_USER="${existing_user_entry%%:*}"
+	MEGALINTER_RUNTIME_HOME="${existing_user_entry#*:}"
+else
+	existing_uid="$(find_uid_by_user "${MEGALINTER_RUNTIME_USER}")"
+	if [ -n "${existing_uid}" ] && [ "${existing_uid}" != "${MEGALINTER_RUNTIME_UID}" ]; then
+		deluser "${MEGALINTER_RUNTIME_USER}" >/dev/null 2>&1 || true
+	fi
+
+	existing_group="$(find_group_by_gid "${MEGALINTER_RUNTIME_GID}")"
+	if [ -z "${existing_group}" ]; then
+		existing_gid="$(find_gid_by_group "${MEGALINTER_RUNTIME_USER}")"
+		if [ -n "${existing_gid}" ] && [ "${existing_gid}" != "${MEGALINTER_RUNTIME_GID}" ]; then
+			delgroup "${MEGALINTER_RUNTIME_USER}" >/dev/null 2>&1 || true
+		fi
+		addgroup -g "${MEGALINTER_RUNTIME_GID}" "${MEGALINTER_RUNTIME_USER}"
+		existing_group="${MEGALINTER_RUNTIME_USER}"
+	fi
+
+	mkdir -p "${MEGALINTER_RUNTIME_HOME}"
+	adduser -D -H -u "${MEGALINTER_RUNTIME_UID}" -G "${existing_group}" -h "${MEGALINTER_RUNTIME_HOME}" -s /bin/bash "${MEGALINTER_RUNTIME_USER}"
+fi
+
+mkdir -p "${MEGALINTER_RUNTIME_HOME}"
+chown -R "${MEGALINTER_RUNTIME_UID}:${MEGALINTER_RUNTIME_GID}" "${MEGALINTER_RUNTIME_HOME}" >/dev/null 2>&1 || true
+
+export HOME="${MEGALINTER_RUNTIME_HOME}"
+export USER="${MEGALINTER_RUNTIME_USER}"
+export MEGALINTER_USER_SWITCHED=true
+
+exec su -p "${MEGALINTER_RUNTIME_USER}" -s /bin/bash -c 'exec /entrypoint.sh "$@"' bash "$@"

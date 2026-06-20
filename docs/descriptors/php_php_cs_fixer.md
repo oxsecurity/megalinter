@@ -25,7 +25,7 @@ description: How to use php-cs-fixer (configure, ignore files, ignore errors, he
 
 ## php-cs-fixer documentation
 
-- Version in MegaLinter: **3.95.4**
+- Version in MegaLinter: **3.95.10**
 - Visit [Official Web Site](https://cs.symfony.com/){target=_blank}
 - See [How to configure php-cs-fixer rules](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/blob/master/doc/config.rst){target=_blank}
   - If custom `.php-cs-fixer.dist.php` config file isn't found, [.php-cs-fixer.dist.php](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.php-cs-fixer.dist.php){target=_blank} will be used
@@ -134,19 +134,19 @@ Options:
 Help:
   The list command lists all commands:
 
-    /root/.composer/vendor/bin/php-cs-fixer list
+    /usr/local/composer/vendor/bin/php-cs-fixer list
 
   You can also display the commands for a specific namespace:
 
-    /root/.composer/vendor/bin/php-cs-fixer list test
+    /usr/local/composer/vendor/bin/php-cs-fixer list test
 
   You can also output the information in other formats by using the --format option:
 
-    /root/.composer/vendor/bin/php-cs-fixer list --format=xml
+    /usr/local/composer/vendor/bin/php-cs-fixer list --format=xml
 
   It's also possible to get raw list of commands (useful for embedding command runner):
 
-    /root/.composer/vendor/bin/php-cs-fixer list --raw
+    /usr/local/composer/vendor/bin/php-cs-fixer list --raw
 ```
 
 ### Installation on mega-linter Docker image
@@ -156,10 +156,11 @@ Help:
 # Parent descriptor install
 RUN update-alternatives --install /usr/bin/php php /usr/bin/php84 110
 COPY --link --from=composer/composer:2-bin /composer /usr/bin/composer
-ENV PATH="/root/.composer/vendor/bin:${PATH}"
+ENV COMPOSER_HOME=/usr/local/composer
+ENV PATH="/usr/local/composer/vendor/bin:${PATH}"
 # Linter install
 # renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
-ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.95.4
+ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.95.10
 RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require friendsofphp/php-cs-fixer:${PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION} --with-all-dependencies
 
 ```

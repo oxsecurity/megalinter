@@ -47,18 +47,19 @@ jobs:
     if: ${{ vars.BETA_LINTERS_ENABLED != 'false' }}
     runs-on: ubuntu-latest
     outputs:
-      linters: ${{ steps.set-matrix.outputs.linters }}
-      linters_arm: ${{ steps.set-matrix.outputs.linters_arm }}
+      jobs: ${{ steps.set-matrix.outputs.jobs }}
     steps:
       - name: Checkout Code
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
           persist-credentials: false
       - name: Read linters_matrix.json
         id: set-matrix
         run: |
-          echo "linters=$(jq -c '[.["linux/amd64"][]]'  .automation/generated/linters_matrix.json)" >> "${GITHUB_OUTPUT}"
-          echo "linters_arm=$(jq -c '[.["linux/arm64"][]]'  .automation/generated/linters_matrix.json)" >> "${GITHUB_OUTPUT}"
+          amd_jobs=$(jq -c '[.["linux/amd64"][] | {linter: ., platform: "linux/amd64", runner: "ubuntu-latest"}]' .automation/generated/linters_matrix.json)
+          arm_jobs=$(jq -c '[.["linux/arm64"][] | {linter: ., platform: "linux/arm64", runner: "ubuntu-24.04-arm"}]' .automation/generated/linters_matrix.json)
+          jobs=$(jq -cn --argjson amd "${amd_jobs}" --argjson arm "${arm_jobs}" '$amd + $arm')
+          echo "jobs=${jobs}" >> "${GITHUB_OUTPUT}"
 
   build:
     name: BETA/Linters
@@ -75,8 +76,7 @@ jobs:
       fail-fast: false
       max-parallel: 10
       matrix:
-        linter: ${{ fromJson(needs.get-linters-matrix.outputs.linters) }}
-        runner: ["ubuntu-latest", "ubuntu-24.04-arm"]
+        include: ${{ fromJson(needs.get-linters-matrix.outputs.jobs) }}
     # Only run this on the main repo
     if: >-
       (
@@ -89,31 +89,12 @@ jobs:
     # Load all steps #
     ##################
     steps:
-      # https://github.com/actions/runner/issues/1985
-      - name: Prepare
-        id: prepare
-        run: |
-          job_enabled=true
-          platforms=linux/amd64
-
-          ARM_RUNNER_REGEX="^ubuntu-.*-arm$"
-
-          if [[ "${{ matrix.runner }}" =~ $ARM_RUNNER_REGEX ]]; then
-            job_enabled="${{ contains(fromJson(needs.get-linters-matrix.outputs.linters_arm), matrix.linter) }}"
-            platforms=linux/arm64
-          fi
-
-          echo "job_enabled=$job_enabled" >> "${GITHUB_OUTPUT}"
-          echo "platforms=$platforms" >> "${GITHUB_OUTPUT}"
-
       - name: Checkout Code
-        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
           persist-credentials: false
 
       - name: Docker Metadata action
-        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
         uses: docker/metadata-action@80c7e94dd9b9319bd5eb7a0e0fe9291e23a2a2e9 # v6
         id: meta
         with:
@@ -127,7 +108,6 @@ jobs:
             type=raw,value={{date 'YYYYMMDD_HHmm'}}
 
       - name: Docker Metadata action (Docker hub)
-        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
         uses: docker/metadata-action@80c7e94dd9b9319bd5eb7a0e0fe9291e23a2a2e9 # v6
         id: meta-dhub
         with:
@@ -140,16 +120,10 @@ jobs:
             type=raw,value=
             type=raw,value={{date 'YYYYMMDD_HHmm'}}
 
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@06116385d9baf250c9f4dcb4858b16962ea869c3 # v4
-        if: ${{ steps.prepare.outputs.job_enabled == 'true' && ( ( ( runner.arch != 'X64' || runner.os != 'Linux' ) && steps.prepare.outputs.platforms == 'linux/amd64' ) || steps.prepare.outputs.platforms != 'linux/amd64' ) }}
-
       - name: Set up Docker Buildx
-        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
         uses: docker/setup-buildx-action@d7f5e7f509e45cec5c76c4d5afdd7de93d0b3df5 # v4
 
       - name: Login to GitHub Container Registry
-        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
         uses: docker/login-action@650006c6eb7dba73a995cc03b0b2d7f5ca915bee # v4
         with:
           registry: ghcr.io
@@ -157,12 +131,11 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build Image
-        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
         uses: docker/build-push-action@f9f3042f7e2789586610d6e8b85c8f03e5195baf # v7
         with:
           context: .
           file: linters/${{ matrix.linter }}/Dockerfile
-          platforms: ${{ steps.prepare.outputs.platforms }}
+          platforms: ${{ matrix.platform }}
           build-args: |
             BUILD_DATE=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.created'] }}
             BUILD_VERSION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
@@ -172,14 +145,13 @@ jobs:
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           tags: ${{ steps.meta.outputs.tags }}
-          cache-from: type=gha,scope=beta-linter-${{ matrix.linter }}-${{ steps.prepare.outputs.platforms }},ignore-error=true
-          cache-to: type=gha,mode=max,scope=beta-linter-${{ matrix.linter }}-${{ steps.prepare.outputs.platforms }},compression=zstd
+          cache-from: type=gha,scope=beta-linter-${{ matrix.linter }}-${{ matrix.platform }},ignore-error=true
+          cache-to: type=gha,mode=max,scope=beta-linter-${{ matrix.linter }}-${{ matrix.platform }},compression=zstd
 
       #####################################
       # Run Linter test cases #
       #####################################
       - name: Run Test Cases
-        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
         shell: bash
         env:
           EVENT_NAME: ${{ github.event_name }}
@@ -203,7 +175,6 @@ jobs:
 
       # Docker Hub mirroring is disabled — MegaLinter is published to ghcr.io only.
       # - name: Invoke Mirror docker image workflow (Standalone linter image)
-      #   if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
       #   uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1
       #   with:
       #     workflow: mirror-docker-image.yml
@@ -213,11 +184,10 @@ jobs:
       # Check Docker image security with Trivy #
       ##############################################
       - name: Run Trivy vulnerability scanner
-        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
         uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
         with:
           # renovate: datasource=github-releases depName=aquasecurity/trivy
-          version: "v0.71.0"
+          version: "v0.71.2"
           image-ref: "${{ fromJson(steps.meta.outputs.json).tags[0]}}"
           format: "table"
           exit-code: "1"
@@ -230,7 +200,6 @@ jobs:
             ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # - name: Run OSV-Scanner vulnerability scanner
-      #   if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
       #   uses: google/osv-scanner-action/osv-scanner-action@v2.3.5
       #   with:
       #     scan-args: |-

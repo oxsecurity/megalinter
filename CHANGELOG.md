@@ -37,8 +37,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Fix command injection in Roslynator linter (`DOTNET_ROSLYNATOR`) where a crafted `.csproj` filename could break out of `dotnet restore` arguments and execute arbitrary shell commands. The command is now invoked via argv list instead of a shell string. Reported by Francesco Sabiu.
   - Fix `IndexError` when building the single-linter Docker image for a linter whose activation depends on a file (e.g. `SPELL_VALE` requires `.vale.ini`): `python -m megalinter.run --linterversion` now bypasses activation filtering since the per-linter image is built for that linter unconditionally.
   - Fix `make bootstrap` appearing to hang because exported Make color variables re-evaluated `tput` during recursive `make` invocations.
+  - Allow MegaLinter containers to run in an opt-in non-root mode matching the host UID:GID on POSIX systems, avoiding root-owned generated files on the host (#1975).
 
 - Reporters
+  - Update Bitbucket pipeline generator template to trigger builds on pull requests from any branch, by @yermulnik in <https://github.com/oxsecurity/megalinter/pull/7421>
 
 - Flavors
 
@@ -46,6 +48,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Update Docker pull counters in README badges and `flavors-stats.json` with latest ghcr.io stats
 
 - mega-linter-runner
+  - Add `--user-map` / `--no-user-map` to control whether the MegaLinter container runs in non-root mode. On POSIX systems `--user-map` uses the current host UID:GID; on other hosts it falls back to `1000:1000`.
 
 - Dev
   - Stop generating per-linter Dockerfiles for linters marked `disabled: true` in their descriptor. The matching images were already excluded from the build matrix (`linters_matrix.json`) and never published, so the on-disk `linters/<linter>/Dockerfile` was dead code. Deleted the 8 corresponding stale Dockerfile directories.
@@ -144,6 +147,38 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [djlint](https://djlint.com/) from 1.39.0 to **1.39.2** on 2026-06-14
   - [kubeconform](https://github.com/yannh/kubeconform) from 0.7.0 to **0.8.0** on 2026-06-14
   - [git_diff](https://git-scm.com) from 2.52.0 to **2.54.0** on 2026-06-14
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.4 to **3.95.7** on 2026-06-16
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 4.2.4 to **4.2.5** on 2026-06-17
+  - [stylelint](https://stylelint.io) from 17.12.0 to **17.13.0** on 2026-06-17
+  - [prettier](https://prettier.io/) from 3.8.3 to **3.8.4** on 2026-06-17
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.9 to **0.2.17** on 2026-06-17
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.16 to **0.15.17** on 2026-06-17
+  - [ruff](https://github.com/astral-sh/ruff) from 0.15.16 to **0.15.17** on 2026-06-17
+  - [checkov](https://www.checkov.io/) from 3.2.533 to **3.3.1** on 2026-06-17
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 8.2.10 to **8.2.11** on 2026-06-17
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.14.6 to **0.14.7** on 2026-06-17
+  - [snakemake](https://snakemake.github.io/) from 9.22.0 to **9.23.0** on 2026-06-17
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.15.5 to **1.15.6** on 2026-06-17
+  - [terragrunt](https://terragrunt.gruntwork.io) from 1.0.7 to **1.0.8** on 2026-06-17
+  - [eslint](https://eslint.org) from 10.4.1 to **10.5.0** on 2026-06-17
+  - [pylint](https://pylint.readthedocs.io) from 4.0.5 to **4.0.6** on 2026-06-17
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.70.0 to **0.71.1** on 2026-06-17
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.70.0 to **0.71.1** on 2026-06-17
+  - [rubocop](https://rubocop.org/) from 1.87.0 to **1.88.0** on 2026-06-17
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.51.4 to **1.51.5** on 2026-06-19
+  - [vale](https://vale.sh/) from 3.14.2 to **3.15.1** on 2026-06-19
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.71.1 to **0.71.2** on 2026-06-20
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.71.1 to **0.71.2** on 2026-06-20
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.48.0 to **0.49.0** on 2026-06-20
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.7 to **3.95.10** on 2026-06-20
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.2 to **7.6.3** on 2026-06-20
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.2 to **7.6.3** on 2026-06-20
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.17 to **0.15.18** on 2026-06-20
+  - [ruff](https://github.com/astral-sh/ruff) from 0.15.17 to **0.15.18** on 2026-06-20
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.102.0 to **1.103.0** on 2026-06-20
+  - [semgrep](https://semgrep.dev/) from 1.166.0 to **1.167.0** on 2026-06-20
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.95.5 to **3.95.6** on 2026-06-20
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 8.2.11 to **8.3.2** on 2026-06-20
 <!-- linter-versions-end -->
 
 ## [v9.5.0] - 2026-05-16

@@ -89,8 +89,11 @@ The options are only related to mega-linter-runner. For MegaLinter options, plea
 | `--container-engine`      | Allows to specify a docker engine (`docker` or `podman`)                                                                                                                                        | `docker`          |
 | `--container-name`        | Specify MegaLinter container name                                                                                                                                                               | <!-- -->          |
 | `--remove-container`      | Remove MegaLinter Docker container when done                                                                                                                                                    | <!-- -->          |
+| `--user-map`              | Run the container as a non-root user. On POSIX systems this uses your user. On other hosts it uses `1000:1000`. This helps avoid root-owned generated files on the host.                        | <!-- -->          |
+| `--no-user-map`           | Run the container as root                                                                                                                                                                       | <!-- -->          |
 | `-i` <br/> `--install`    | Generate [MegaLinter local configuration](https://megalinter.io/beta/install-assisted/) files and CI/CD workflows                                                                               | <!-- -->          |
-| `-i` <br/> `--upgrade`    | Upgrade your MegaLinter configuration files to use the latest version                                                                                                                           | <!-- -->          |
+| `-u` <br/> `--upgrade`    | Upgrade your MegaLinter configuration files to use the latest version. Use `--no-prompt` to run non-interactively and skip upgrade confirmation prompts.                                        | <!-- -->          |
+| `--no-prompt`             | Disable interactive prompts. With `--upgrade`, automatically proceed with the upgrade and skip optional follow-up prompts.                                                                      | <!-- -->          |
 | `--custom-flavor-setup`   | Initialize a new repository to generate a [custom flavor](https://megalinter.io/beta/custom-flavors/)                                                                                           | <!-- -->          |
 | `--custom-flavor-linters` | Comma-separated list of linter keys if using `--custom-flavor-setup`                                                                                                                            | <!-- -->          |
 
@@ -109,6 +112,11 @@ mega-linter-runner -p myFolder --fix
 ```
 
 ```shell
+# Run the container as your current non-root user on POSIX hosts
+mega-linter-runner --user-map
+```
+
+```shell
 # Send environment variables
 mega-linter-runner -r beta -e "'ENABLE=MARKDOWN,YAML'" -e 'SHOW_ELAPSED_TIME=true'
 ```
@@ -116,6 +124,11 @@ mega-linter-runner -r beta -e "'ENABLE=MARKDOWN,YAML'" -e 'SHOW_ELAPSED_TIME=tru
 ```shell
 # Use python flavor beta version, only on some files
 mega-linter-runner --flavor python --release beta --filesonly path/to/my/file1.py another/path/to/a/file.js and/another/file.py
+```
+
+```shell
+# Upgrade configuration files non-interactively
+mega-linter-runner --upgrade --no-prompt
 ```
 
 ```shell

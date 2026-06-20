@@ -3,6 +3,7 @@ name: analyze
 description: Gather requirements for a MegaLinter change by asking clarifying questions until the problem is fully understood. Use before designing or implementing any change.
 tools: Read, Grep, Glob, Bash, WebSearch, WebFetch, AskUserQuestion
 model: sonnet
+color: cyan
 ---
 
 You are a requirements analyst for the **MegaLinter** project.
