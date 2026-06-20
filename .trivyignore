@@ -44,6 +44,16 @@ CVE-2025-52881
 # or evaluate runAsNonRoot policy. Remove when upstream tools rebuild against
 # containerd >=2.2.4 / >=2.3.1 (or >=1.7.32 for the v1 line).
 CVE-2026-46680
+# https://avd.aquasec.com/nvd/cve-2026-53488 — containerd CRI image-config LABEL
+# injection. https://avd.aquasec.com/nvd/cve-2026-53489 — arbitrary host CRI log
+# file read via symlink following. https://avd.aquasec.com/nvd/cve-2026-53492 —
+# CRI checkpoint restore CDI annotation smuggling. All three require a running
+# containerd CRI server; the containerd embedded in the grype/syft/trivy scanner
+# binaries is used as a static-analysis library only and never serves CRI.
+# Remove when upstream tools rebuild against containerd >=2.3.2.
+CVE-2026-53488
+CVE-2026-53489
+CVE-2026-53492
 
 # --- Docker (moby) ---
 # CVE-2024-41110: AuthZ plugin bypass in moby. MegaLinter never runs a
@@ -114,6 +124,13 @@ CVE-2025-21614
 # untrusted protobuf input. PMD analyses local Apex/Java source code
 # and never deserialises external protobuf payloads.
 CVE-2024-7254
+# GHSA-2r2c-cx56-8933 / GHSA-47qp-hqvx-6r3f: JLine3 Telnet server
+# unauthenticated remote DoS and remote memory exhaustion.
+# jline-3.21.0.jar is bundled in usr/bin/pmd/lib for PMD's interactive
+# shell; PMD runs as a CLI static analyzer and never starts the JLine
+# Telnet server. Remove when PMD upgrades its bundled jline to >=4.2.1.
+GHSA-2r2c-cx56-8933
+GHSA-47qp-hqvx-6r3f
 
 # --- Kubescape ---
 # Tracked in https://github.com/oxsecurity/megalinter/issues/3519.
@@ -162,6 +179,16 @@ CVE-2023-29331
 CVE-2025-24970
 CVE-2025-59343
 GHSA-xpw8-rcwv-8f8p
+# CVE-2026-12151: undici WebSocket DoS via unbounded memory growth in
+# @salesforce/cli's bundled undici (5.29.0). MegaLinter invokes sfdx/sf
+# only for offline static analysis; no WebSocket connections are opened.
+# Remove when @salesforce/cli upgrades its bundled undici to >=6.27.0.
+CVE-2026-12151
+# CVE-2026-6734: undici information disclosure and data integrity issue
+# via SOCKS5 proxy TLS options in @salesforce/cli's bundled undici. No
+# SOCKS5 proxy is configured in MegaLinter CI. Remove when @salesforce/cli
+# upgrades its bundled undici to >=7.28.0 / >=8.2.0.
+CVE-2026-6734
 
 # --- sfdx-scanner (deprecated, awaiting code-analyzer migration) ---
 # Descriptor marks sfdx-scanner-{apex,aura,lwc} as deprecated, but the
@@ -233,6 +260,10 @@ CVE-2026-31802
 # undici: WebSocket DoS — code-analyzer doesn't use WebSocket connections during static analysis
 CVE-2026-1526
 CVE-2026-2229
+# undici: MITM via ignored TLS options when a SOCKS5 proxy is configured — code-analyzer
+# makes no outbound requests through an attacker-controlled SOCKS5 proxy during static
+# analysis. Remove when code-analyzer upgrades its bundled undici to >=7.28.0 / >=8.5.0.
+CVE-2026-9697
 
 # --- octokit (GitHub API client used by several JS linters) ---
 # CVEs are ReDoS / token-leak risks when handling attacker-controlled
