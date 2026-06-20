@@ -689,6 +689,7 @@ class Megalinter:
             all_linters = linter_factory.list_all_linters(linter_init_params)
 
         skipped_linters = []
+        activation_skip_reasons = {}
         # Remove inactive, disabled or skipped linters
         skip_cli_lint_modes = config.get_list(
             self.request_id, "SKIP_CLI_LINT_MODES", []
@@ -707,6 +708,8 @@ class Megalinter:
                 or linter.cli_lint_mode in skip_cli_lint_modes
             ):
                 skipped_linters += [linter.name]
+                if linter.activation_skip_reason is not None:
+                    activation_skip_reasons[linter.name] = linter.activation_skip_reason
                 if linter.disabled is True:
                     disabled_reason = (
                         linter.disabled_reason
@@ -731,6 +734,15 @@ class Megalinter:
         if len(skipped_linters) > 0 and show_skipped_linters:
             skipped_linters.sort()
             logging.info("Skipped linters: " + ", ".join(skipped_linters))
+            if len(activation_skip_reasons) > 0:
+                reasons_lines = "\n".join(
+                    f"- {name}: {activation_skip_reasons[name]}"
+                    for name in sorted(activation_skip_reasons.keys())
+                )
+                logging.info(
+                    "Some linters were skipped due to activation rules:\n"
+                    + reasons_lines
+                )
         # Sort linters by language and linter_name
         self.linters = sorted(
             self.linters, key=lambda lamb: (lamb.processing_order, lamb.descriptor_id)
