@@ -45,7 +45,7 @@ Example:
 
 ## jscpd documentation
 
-- Version in MegaLinter: **4.2.5**
+- Version in MegaLinter: **5.0.10**
 - Visit [Official Web Site](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#readme){target=_blank}
 - See [How to configure jscpd rules](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#config-file){target=_blank}
   - If custom `.jscpd.json` config file isn't found, [.jscpd.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.jscpd.json){target=_blank} will be used
@@ -125,67 +125,78 @@ jscpd --output ./report/copy-paste/ -c .jscpd.json .
 ### Help content
 
 ```shell
-Usage: jscpd [options] <path ...>
+Copy/Paste Detector — find duplicated code
 
-detector of copy/paste in files
+Usage: cpd [OPTIONS] [PATH]...
+
+Arguments:
+  [PATH]...  Paths to scan for duplicates
 
 Options:
-  -V, --version              output the version number
-  -l, --min-lines [number]   min size of duplication in code lines (Default is
-                             5)
-  -k, --min-tokens [number]  min size of duplication in code tokens (Default is
-                             50)
-  -x, --max-lines [number]   max size of source in lines (Default is 1000)
-  -z, --max-size [string]    max size of source in bytes, examples: 1kb, 1mb,
-                             120kb (Default is 100kb)
-  -t, --threshold [number]   threshold for duplication, in case duplications >=
-                             threshold jscpd will exit with error
-  -c, --config [string]      path to config file (Default is .jscpd.json in
-                             <path>)
-  -i, --ignore [string]      glob pattern for files what should be excluded from
-                             duplication detection
-  --ignore-pattern [string]  Ignore code blocks matching the regexp patterns
-  -r, --reporters [string]   reporters or list of reporters separated with comma
-                             to use (Default is time,console)
-  -o, --output [string]      reporters to use (Default is ./report/)
-  -m, --mode [string]        mode of quality of search, can be "strict", "mild" and "weak" (Default is "function mild(token) {
-    return strict(token) && token.type !== "empty" && token.type !== "new_line";
-  }")
-  -f, --format [string]      format or formats separated by comma (Example
-                             php,javascript,python)
-  -p, --pattern [string]     glob pattern to file search (Example **/*.txt)
-  -b, --blame                blame authors of duplications (get information
-                             about authors from git)
-  -s, --silent               do not write detection progress and result to a
-                             console
-  --store [string]           use for define custom store (e.g. --store leveldb
-                             used for big codebase)
-  --store-path [string]      directory to use for store cache (e.g. --store-path
-                             /tmp/jscpd-cache, useful when running multiple
-                             instances in parallel)
-  -a, --absolute             use absolute path in reports
-  -n, --noSymlinks           dont use symlinks for detection in files
-  --ignoreCase               ignore case of symbols in code (experimental)
-  -g, --gitignore            respect .gitignore files (default: enabled, use
-                             --no-gitignore to disable)
-  --no-gitignore             do not respect .gitignore files
-  --formats-exts [string]    list of formats with file extensions
-                             (javascript:es,es6;dart:dt)
-  --formats-names [string]   list of formats with specific filenames
-                             (makefile:Makefile,GNUmakefile;docker:Dockerfile)
-  -d, --debug                show debug information, not run detection
-                             process(options list and selected files)
-  -v, --verbose              show full information during detection process
-  --list                     show list of total supported formats
-  --skipLocal                skip duplicates in local folders, just detect cross
-                             folders duplications
-  --exitCode [number]        exit code to use when code duplications are
-                             detected
-  --noTips                   do not print tips and promotional messages after
-                             detection
-  --skipComments             ignore comments during detection (alias for --mode
-                             weak)
-  -h, --help                 display help for command
+  -k, --min-tokens <MIN_TOKENS>
+          Minimum number of tokens to consider a duplicate
+  -l, --min-lines <MIN_LINES>
+          Minimum number of lines to consider a duplicate
+  -x, --max-lines <MAX_LINES>
+          Maximum number of lines per block to consider
+  -m, --mode <MODE>
+          Detection mode: mild, weak, strict
+      --skip-comments
+          Alias for --mode weak (skip comment tokens)
+  -f, --format <FORMAT>
+          List of file extensions/formats to check (comma-separated)
+  -i, --ignore <IGNORE>
+          File-level glob patterns to ignore, e.g. "**/node_modules/**" (comma-separated)
+      --ignore-pattern <IGNORE_PATTERN>
+          Code-level regex patterns to skip matching tokens during detection, e.g. "//\\s*cpd-disable" (comma-separated)
+  -r, --reporters <REPORTERS>
+          Output reporters (comma-separated): console,json,xml,csv,html,markdown,badge,sarif,ai,xcode,threshold,silent,console-full Aliases: "full" and "consoleFull" are accepted for "console-full"
+  -o, --output <OUTPUT>
+          Output directory for file reporters
+  -c, --config <CONFIG>
+          Path to config file (.jscpd.json)
+      --exit-code [<EXIT_CODE>]
+          Exit with code if duplicates found (default code: 1)
+  -t, --threshold <THRESHOLD>
+          Maximum duplication percentage before exit 1
+  -b, --blame
+          Enrich clones with git blame data
+      --no-gitignore
+          Do not respect .gitignore files
+      --follow-symlinks
+          Follow symbolic links
+  -z, --max-size <MAX_SIZE>
+          Skip files larger than SIZE (e.g. 1kb, 1mb, 100kb, or raw bytes). Default: 1mb
+      --workers <WORKERS>
+          Number of worker threads (default: auto)
+      --no-colors
+          Disable ANSI color output
+  -a, --absolute
+          Use absolute paths in reports
+      --ignore-case
+          Ignore case of symbols in code (experimental)
+      --formats-exts <FORMATS_EXTS>
+          Custom format-to-extension mappings (e.g. javascript:es,es6;dart:dt)
+      --formats-names <FORMATS_NAMES>
+          Custom format-to-filename mappings (e.g. makefile:Makefile,GNUmakefile;docker:Dockerfile)
+  -p, --pattern <PATTERN>
+          Glob pattern to find files to scan (e.g. **/*.ts, **/*.{js,ts})
+      --list
+          List all supported formats and exit
+      --skip-local
+          Skip clones where both fragments are in the same directory [aliases: --skipLocal]
+      --min-duplicated-lines <MIN_DUPLICATED_LINES>
+          Minimum percentage of duplication to report (0-100) [default: 0]
+  -s, --silent
+          Do not write detection progress and result to console
+      --no-tips
+          Do not print tips and promotional messages after detection
+      --debug
+          Print merged config (CLI + config file) as JSON and exit without running detection
+  -h, --help
+          Print help
+  -V, --version
+          Print version
 ```
 
 ### Installation on mega-linter Docker image
@@ -193,8 +204,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=4.2.5
+ARG NPM_JSCPD_VERSION=5.0.10
 ```
 
 - NPM packages (node.js):
-  - [jscpd@4.2.5](https://www.npmjs.com/package/jscpd/v/4.2.5)
+  - [jscpd@5.0.10](https://www.npmjs.com/package/jscpd/v/5.0.10)

@@ -60,6 +60,21 @@ JSX_ESLINT_CLI_EXECUTABLE: node_modules/.bin/eslint
 
 Replace `yarn install --frozen-lockfile --ignore-scripts` with `npm ci` (or `npm install --include=dev`) if your project uses npm.
 
+For **pnpm** — which is not pre-installed in the MegaLinter image but ships with Node via [Corepack](https://nodejs.org/api/corepack.html) — enable it first, then install:
+
+```yaml
+JSX_ESLINT_PRE_COMMANDS:
+  - command: corepack enable pnpm
+    cwd: workspace
+    continue_if_failed: false
+  - command: pnpm install --frozen-lockfile --ignore-scripts
+    cwd: workspace
+    continue_if_failed: false
+JSX_ESLINT_CLI_EXECUTABLE: node_modules/.bin/eslint
+```
+
+To add a single package with pnpm instead of installing the full tree, run `corepack enable pnpm` first, then `pnpm add --ignore-workspace --no-save <package>`.
+
 ## eslint documentation
 
 - Version in MegaLinter: **10.5.0**

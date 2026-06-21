@@ -182,6 +182,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [semgrep](https://semgrep.dev/) from 1.166.0 to **1.167.0** on 2026-06-20
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.95.5 to **3.95.6** on 2026-06-20
   - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 8.2.11 to **8.3.2** on 2026-06-20
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 4.2.5 to **5.0.10** on 2026-06-21
+  - [npm-package-json-lint](https://npmpackagejsonlint.org/) from 10.4.0 to **10.4.1** on 2026-06-21
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.17 to **0.2.20** on 2026-06-21
+  - [snakemake](https://snakemake.github.io/) from 9.23.0 to **9.23.1** on 2026-06-21
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 2.0.1 to **2.0.2** on 2026-06-21
 <!-- linter-versions-end -->
 
 ## [v9.5.0] - 2026-05-16

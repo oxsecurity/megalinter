@@ -181,7 +181,7 @@ Workarounds:
 **Detection pattern (regex):**
 
 ```text
-no package sources found
+(?i)no package sources found
 ```
 
 **Resolution guidance:**
