@@ -31,6 +31,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Media
 
 - Linters enhancements
+  - `REPOSITORY_CHECKOV`: in pull-request mode, scan only the files modified in the PR instead of the whole repository (#7119)
 
 - Fixes
   - `REPOSITORY_OSV_SCANNER`: exit code 128 ("No package sources found") is now treated as a clean pass instead of a failure — osv-scanner returns this code when the repo contains no lockfiles/manifests/SBOMs, which is not a vulnerability finding (#7917).
@@ -41,6 +42,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Fix `IndexError` when building the single-linter Docker image for a linter whose activation depends on a file (e.g. `SPELL_VALE` requires `.vale.ini`): `python -m megalinter.run --linterversion` now bypasses activation filtering since the per-linter image is built for that linter unconditionally.
   - Fix `make bootstrap` appearing to hang because exported Make color variables re-evaluated `tput` during recursive `make` invocations.
   - Allow MegaLinter containers to run in an opt-in non-root mode matching the host UID:GID on POSIX systems, avoiding root-owned generated files on the host (#1975).
+  - Restore missing `examples` in the Dart descriptor that were dropped from the generated documentation (#7913).
 
 - Reporters
   - Update Bitbucket pipeline generator template to trigger builds on pull requests from any branch, by @yermulnik in <https://github.com/oxsecurity/megalinter/pull/7421>
@@ -48,16 +50,27 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Flavors
 
 - Doc
+  - Add pnpm installation and usage documentation for JavaScript and TypeScript linters (#8177)
   - Update Docker pull counters in README badges and `flavors-stats.json` with latest ghcr.io stats
+  - Bump `peter-evans/create-pull-request` to v8 in the documented workflow examples (#8089)
 
 - mega-linter-runner
   - Add `--user-map` / `--no-user-map` to control whether the MegaLinter container runs in non-root mode. On POSIX systems `--user-map` uses the current host UID:GID; on other hosts it falls back to `1000:1000`.
+  - Add `--no-prompt` flag to `mega-linter-runner --upgrade` for non-interactive upgrades (#8093)
+  - Mark `mega-linter-runner/index.js` as executable in git (#8091)
 
 - Dev
   - Stop generating per-linter Dockerfiles for linters marked `disabled: true` in their descriptor. The matching images were already excluded from the build matrix (`linters_matrix.json`) and never published, so the on-disk `linters/<linter>/Dockerfile` was dead code. Deleted the 8 corresponding stale Dockerfile directories.
+  - Move the `.devcontainer` setup from the Dockerfile to a JSON configuration file (#7865).
+  - Update the Python version in the devcontainer image (#7853).
 
 - CI
   - Suppress the new `ref-version-mismatch` audit introduced by zizmor 1.25.0 for the project's pinned `uses:` action references. The SHA pins are correct (the supply-chain property); only the inline `# vX` comments lag behind exact subversions, and renovate maintains the hashes.
+  - Simplify the workflow trigger condition to prevent duplicate runs for pushes from forks.
+  - Fix the `deploy-dev` workflow (#8154).
+  - Remove unused QEMU setup from workflows (#8132).
+  - Prevent `FromAsCasing` build warning in generated Dockerfiles (#8094).
+  - Fix the documentation release workflow (#7837).
 
 - Linter versions upgrades (N)
   - [black](https://black.readthedocs.io/en/stable/) from 26.3.1 to **26.5.0** on 2026-05-16
