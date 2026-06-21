@@ -15679,7 +15679,10 @@
 <li>Media</li>
 </ul>
 <ul>
-<li>Linters enhancements</li>
+<li>Linters enhancements<ul>
+<li><code>REPOSITORY_CHECKOV</code>: in pull-request mode, scan only the files modified in the PR instead of the whole repository (#7119)</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Fixes<ul>
@@ -15691,6 +15694,7 @@
 <li>Fix <code>IndexError</code> when building the single-linter Docker image for a linter whose activation depends on a file (e.g. <code>SPELL_VALE</code> requires <code>.vale.ini</code>): <code>python -m megalinter.run --linterversion</code> now bypasses activation filtering since the per-linter image is built for that linter unconditionally.</li>
 <li>Fix <code>make bootstrap</code> appearing to hang because exported Make color variables re-evaluated <code>tput</code> during recursive <code>make</code> invocations.</li>
 <li>Allow MegaLinter containers to run in an opt-in non-root mode matching the host UID:GID on POSIX systems, avoiding root-owned generated files on the host (#1975).</li>
+<li>Restore missing <code>examples</code> in the Dart descriptor that were dropped from the generated documentation (#7913).</li>
 </ul>
 </li>
 </ul>
@@ -15705,25 +15709,36 @@
 </ul>
 <ul>
 <li>Doc<ul>
+<li>Add pnpm installation and usage documentation for JavaScript and TypeScript linters (#8177)</li>
 <li>Update Docker pull counters in README badges and <code>flavors-stats.json</code> with latest ghcr.io stats</li>
+<li>Bump <code>peter-evans/create-pull-request</code> to v8 in the documented workflow examples (#8089)</li>
 </ul>
 </li>
 </ul>
 <ul>
 <li>mega-linter-runner<ul>
 <li>Add <code>--user-map</code> / <code>--no-user-map</code> to control whether the MegaLinter container runs in non-root mode. On POSIX systems <code>--user-map</code> uses the current host UID:GID; on other hosts it falls back to <code>1000:1000</code>.</li>
+<li>Add <code>--no-prompt</code> flag to <code>mega-linter-runner --upgrade</code> for non-interactive upgrades (#8093)</li>
+<li>Mark <code>mega-linter-runner/index.js</code> as executable in git (#8091)</li>
 </ul>
 </li>
 </ul>
 <ul>
 <li>Dev<ul>
 <li>Stop generating per-linter Dockerfiles for linters marked <code>disabled: true</code> in their descriptor. The matching images were already excluded from the build matrix (<code>linters_matrix.json</code>) and never published, so the on-disk <code>linters/&lt;linter&gt;/Dockerfile</code> was dead code. Deleted the 8 corresponding stale Dockerfile directories.</li>
+<li>Move the <code>.devcontainer</code> setup from the Dockerfile to a JSON configuration file (#7865).</li>
+<li>Update the Python version in the devcontainer image (#7853).</li>
 </ul>
 </li>
 </ul>
 <ul>
 <li>CI<ul>
 <li>Suppress the new <code>ref-version-mismatch</code> audit introduced by zizmor 1.25.0 for the project's pinned <code>uses:</code> action references. The SHA pins are correct (the supply-chain property); only the inline <code># vX</code> comments lag behind exact subversions, and renovate maintains the hashes.</li>
+<li>Simplify the workflow trigger condition to prevent duplicate runs for pushes from forks.</li>
+<li>Fix the <code>deploy-dev</code> workflow (#8154).</li>
+<li>Remove unused QEMU setup from workflows (#8132).</li>
+<li>Prevent <code>FromAsCasing</code> build warning in generated Dockerfiles (#8094).</li>
+<li>Fix the documentation release workflow (#7837).</li>
 </ul>
 </li>
 </ul>
