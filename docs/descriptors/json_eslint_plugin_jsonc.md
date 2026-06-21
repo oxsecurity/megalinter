@@ -82,6 +82,19 @@ DISABLE_LINTERS:
     </pre>
     </details>
 
+- If you need to install your project dependencies before linting, use a pre-command. `npm` and `yarn` are pre-installed in the MegaLinter image; **pnpm** is not, but ships with Node via [Corepack](https://nodejs.org/api/corepack.html) — enable it first:
+
+  ```yaml
+  JSON_ESLINT_PLUGIN_JSONC_PRE_COMMANDS:
+    - command: corepack enable pnpm
+      cwd: workspace
+      continue_if_failed: false
+    - command: pnpm install --frozen-lockfile --ignore-scripts
+      cwd: workspace
+      continue_if_failed: false
+  JSON_ESLINT_PLUGIN_JSONC_CLI_EXECUTABLE: node_modules/.bin/eslint
+  ```
+
 ## eslint-plugin-jsonc documentation
 
 - Version in MegaLinter: **2.15.1**
