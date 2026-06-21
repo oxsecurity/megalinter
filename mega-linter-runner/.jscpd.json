@@ -13,6 +13,7 @@
     "**/docs/**",
     "**/*.test.js",
     "**/CHANGELOG.md",
-    "**/README.md"
+    "**/README.md",
+    "**/generators/**"
   ]
 }
