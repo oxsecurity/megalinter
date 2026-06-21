@@ -12676,6 +12676,20 @@
 </ul>
 </li>
 </ul>
+<ul>
+<li>
+<p>If you need to install your project dependencies before linting, use a pre-command. <code>npm</code> and <code>yarn</code> are pre-installed in the MegaLinter image; <strong>pnpm</strong> is not, but ships with Node via <a href="https://nodejs.org/api/corepack.html">Corepack</a> — enable it first:</p>
+<p><code>yaml
+JSON_ESLINT_PLUGIN_JSONC_PRE_COMMANDS:
+  - command: corepack enable pnpm
+    cwd: workspace
+    continue_if_failed: false
+  - command: pnpm install --frozen-lockfile --ignore-scripts
+    cwd: workspace
+    continue_if_failed: false
+JSON_ESLINT_PLUGIN_JSONC_CLI_EXECUTABLE: node_modules/.bin/eslint</code></p>
+</li>
+</ul>
 <h2 id="eslint-plugin-jsonc-documentation">eslint-plugin-jsonc documentation</h2>
 <ul>
 <li>Version in MegaLinter: <strong>2.15.1</strong></li>

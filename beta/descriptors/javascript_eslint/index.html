@@ -12802,6 +12802,17 @@ const js = require('@eslint/js');
 JAVASCRIPT_ES_CLI_EXECUTABLE: node_modules/.bin/eslint
 </code></pre>
 <p>Replace <code>yarn install --frozen-lockfile --ignore-scripts</code> with <code>npm ci</code> (or <code>npm install --include=dev</code>) if your project uses npm.</p>
+<p>For <strong>pnpm</strong> — which is not pre-installed in the MegaLinter image but ships with Node via <a href="https://nodejs.org/api/corepack.html">Corepack</a> — enable it first, then install:</p>
+<pre><code class="language-yaml">JAVASCRIPT_ES_PRE_COMMANDS:
+  - command: corepack enable pnpm
+    cwd: workspace
+    continue_if_failed: false
+  - command: pnpm install --frozen-lockfile --ignore-scripts
+    cwd: workspace
+    continue_if_failed: false
+JAVASCRIPT_ES_CLI_EXECUTABLE: node_modules/.bin/eslint
+</code></pre>
+<p>To add a single package with pnpm instead of installing the full tree, run <code>corepack enable pnpm</code> first, then <code>pnpm add --ignore-workspace --no-save &lt;package&gt;</code>.</p>
 <h2 id="eslint-documentation">eslint documentation</h2>
 <ul>
 <li>Version in MegaLinter: <strong>10.5.0</strong></li>
