@@ -634,7 +634,12 @@ def test_linter_report_sarif(linter, test_self):
             ]
         ):
             # https://github.com/gitleaks/gitleaks/issues/1858
-            if linter.name != "REPOSITORY_GITLEAKS":  # does not report errors
+            # betterleaks is a gitleaks fork and inherits the same SARIF
+            # behavior (findings are reported at "warning" level, not "error")
+            if linter.name not in [
+                "REPOSITORY_GITLEAKS",
+                "REPOSITORY_BETTERLEAKS",
+            ]:  # does not report errors
                 test_self.assertTrue(
                     linter.total_number_errors > 1,
                     f"Missing multiple sarif errors in {linter.name}"
