@@ -29,6 +29,8 @@ ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
 ARG GO_IMAGE_VERSION=1.26.4
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.30.1
+# renovate: datasource=docker depName=ghcr.io/betterleaks/betterleaks
+ARG REPOSITORY_BETTERLEAKS_VERSION=v1.5.0
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
 ARG REPOSITORY_TRUFFLEHOG_VERSION=3.95.6
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
@@ -68,6 +70,7 @@ FROM golang:${GO_IMAGE_VERSION}-alpine AS dustilock
 ARG REPOSITORY_DUSTILOCK_VERSION
 RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v${REPOSITORY_DUSTILOCK_VERSION}
 FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
+FROM ghcr.io/betterleaks/betterleaks:${REPOSITORY_BETTERLEAKS_VERSION} AS betterleaks
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
 FROM ghcr.io/terraform-linters/tflint:v${TERRAFORM_TFLINT_VERSION} AS tflint
 FROM tenable/terrascan:${TERRAFORM_TERRASCAN_VERSION} AS terrascan
@@ -154,6 +157,7 @@ ARG KUBERNETES_KUBECONFORM_VERSION
 ARG REPOSITORY_DUSTILOCK_VERSION
 ARG GO_IMAGE_VERSION
 ARG REPOSITORY_GITLEAKS_VERSION
+ARG REPOSITORY_BETTERLEAKS_VERSION
 ARG REPOSITORY_TRUFFLEHOG_VERSION
 ARG TERRAFORM_TFLINT_VERSION
 ARG TERRAFORM_TERRASCAN_VERSION
@@ -225,6 +229,7 @@ COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 COPY --link --from=kubeconform /kubeconform /usr/bin/
 COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
+COPY --link --from=betterleaks /usr/bin/betterleaks /usr/bin/
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
 COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
@@ -340,6 +345,8 @@ RUN dotnet tool install --allow-roll-forward --tool-path /usr/local/dotnet-tools
 # Managed with COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 # gitleaks installation
 # Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
+# betterleaks installation
+# Managed with COPY --link --from=betterleaks /usr/bin/betterleaks /usr/bin/
 # grype installation
     && curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin \
 # osv-scanner installation

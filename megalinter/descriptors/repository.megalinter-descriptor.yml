@@ -243,6 +243,8 @@ linters:
   # GITLEAKS
   - class: GitleaksLinter
     linter_name: gitleaks
+    deprecated: true
+    deprecated_description: "gitleaks has been superseded by betterleaks, a faster and more accurate secrets scanner created by the same author. Please migrate to REPOSITORY_BETTERLEAKS. Disable gitleaks by adding REPOSITORY_GITLEAKS to DISABLE_LINTERS in your .mega-linter.yml. See <https://github.com/betterleaks/betterleaks>."
     can_output_sarif: true
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
@@ -393,6 +395,102 @@ linters:
         description: Source commit SHA of the Pull Request/Merge Request
         default_value: ""
       - name: REPOSITORY_GITLEAKS_PR_TARGET_SHA
+        description: Target commit SHA of the Pull Request/Merge Request
+        default_value: ""
+
+  # BETTERLEAKS
+  - class: BetterleaksLinter
+    linter_name: betterleaks
+    can_output_sarif: true
+    descriptor_flavors:
+      - all_flavors # Applicable to CI in any language project
+      - ci_light
+      - cupcake
+      - security
+    linter_url: https://github.com/betterleaks/betterleaks
+    linter_repo: https://github.com/betterleaks/betterleaks
+    linter_speed: 4
+    linter_spdx_license: MIT
+    linter_rules_configuration_url: https://github.com/betterleaks/betterleaks#configuration
+    linter_rules_ignore_config_url: https://github.com/betterleaks/betterleaks#betterleaksignore
+    linter_rules_inline_disable_url: https://github.com/betterleaks/betterleaks#betterleaksallow
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/betterleaks.png
+    linter_text: |
+      **betterleaks** is a next-generation SAST tool for detecting and preventing secrets like passwords, API keys, and tokens in git repositories and filesystems. Created by the author of gitleaks, betterleaks delivers significantly higher recall (98.6% vs 70.4% on the CredData benchmark), lower false-positive rates, and 4–5× faster scanning.
+
+      **Key Features:**
+
+      - **BPE-based detection** using cl100k_base tokenization instead of Shannon entropy, dramatically reducing false positives on UUIDs, Base64 strings, and hashes
+      - **Full git history scanning** including all branches and commits, plus filesystem-only mode
+      - **Live secret validation** via CEL-based async HTTP requests per rule
+      - **Custom rule support** using CEL (Common Expression Language) filter expressions
+      - **Automatic encoding handling** — recursively decodes base64, hex, unicode, and nested archives
+      - **Multiple output formats** including JSON, SARIF, and custom Go templates
+      - **Backward compatible** — reads existing `.gitleaks.toml` and `.gitleaksignore` files
+      - **Pre-commit hook integration** to prevent secrets from being committed
+      - **Baseline support** to ignore known secrets while catching new ones
+      - **Pure Go** — no CGO or Hyperscan dependency, runs on any modern OS/arch
+
+      ## Scan only Pull Request commits
+
+      `VALIDATE_ALL_CODEBASE: false` doesn't make betterleaks analyze only updated files. To analyze only commits on a Pull Request, set `VALIDATE_ALL_CODEBASE: false` together with `REPOSITORY_BETTERLEAKS_PR_COMMITS_SCAN: true`; this only works for select platforms:
+
+      - GitHub Actions
+      - Azure Pipelines
+      - GitLab Pipelines (Merge Requests and External Pull Requests — Premium/Ultimate only)
+
+      You can also set the following MegaLinter environment variables manually:
+
+      - `PULL_REQUEST=true`
+      - `REPOSITORY_BETTERLEAKS_PR_COMMITS_SCAN: true`
+      - `REPOSITORY_BETTERLEAKS_PR_SOURCE_SHA` with the last commit SHA from your PR
+      - `REPOSITORY_BETTERLEAKS_PR_TARGET_SHA` with the target branch commit SHA
+
+      ## Migration from gitleaks
+
+      betterleaks is fully compatible with your existing `.gitleaks.toml` configuration and `.gitleaksignore` files — no changes needed to migrate. Simply disable `REPOSITORY_GITLEAKS` and enable `REPOSITORY_BETTERLEAKS`.
+    config_file_name: .betterleaks.toml
+    cli_config_arg_name: "-c"
+    cli_lint_mode: project
+    cli_lint_extra_args:
+      - dir
+      - --redact
+    cli_sarif_args:
+      - --report-format
+      - sarif
+      - --report-path
+      - "{{SARIF_OUTPUT_FILE}}"
+    cli_lint_extra_args_after:
+      - "."
+    cli_help_arg_name: --help
+    cli_version_arg_name: version
+    ignore_file_name: .betterleaksignore
+    cli_lint_errors_count: regex_sum
+    cli_lint_errors_regex: "leaks found: ([0-9]+)"
+    test_folder: betterleaks
+    examples:
+      - "betterleaks dir ."
+      - "betterleaks git ."
+      - "betterleaks dir -c .betterleaks.toml --redact ."
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=docker depName=ghcr.io/betterleaks/betterleaks
+          ARG REPOSITORY_BETTERLEAKS_VERSION=v1.5.0
+        - FROM ghcr.io/betterleaks/betterleaks:${REPOSITORY_BETTERLEAKS_VERSION} AS betterleaks
+        - COPY --link --from=betterleaks /usr/bin/betterleaks /usr/bin/
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
+    variables:
+      - name: REPOSITORY_BETTERLEAKS_PR_COMMITS_SCAN
+        description: Scan only commits in the current Pull Request/Merge Request
+        default_value: "false"
+      - name: REPOSITORY_BETTERLEAKS_PR_SOURCE_SHA
+        description: Source commit SHA of the Pull Request/Merge Request
+        default_value: ""
+      - name: REPOSITORY_BETTERLEAKS_PR_TARGET_SHA
         description: Target commit SHA of the Pull Request/Merge Request
         default_value: ""
 
