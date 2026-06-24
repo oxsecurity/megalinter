@@ -18,12 +18,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Skipped-linters summary now explains why a linter was skipped by an activation rule, including the variable to set to activate it (e.g. `MARKDOWN_RUMDL: MARKDOWN_DEFAULT_STYLE=markdownlint (set MARKDOWN_DEFAULT_STYLE=rumdl to activate)`), fixing [#8017](https://github.com/oxsecurity/megalinter/issues/8017).
 
 - New linters
+  - Add [betterleaks](https://github.com/betterleaks/betterleaks) linter for repository secrets scanning — successor to gitleaks with higher recall (98.6% vs 70.4%), lower false-positive rates, and 4–5× faster scanning via BPE-based detection and CEL filter expressions
 
 - Disabled linters
 
 - Re-enabled linters
 
 - Deprecated linters
+  - `REPOSITORY_GITLEAKS` — deprecated in favour of `REPOSITORY_BETTERLEAKS` (same author, fully compatible config, significantly better detection). Will be removed in the next major release. Disable it by adding `REPOSITORY_GITLEAKS` to `DISABLE_LINTERS` in your `.mega-linter.yml`.
 
 - Removed linters
   - `JSON_ESLINT_PLUGIN_JSONC` — permanently broken by upstream bug (see Breaking changes)

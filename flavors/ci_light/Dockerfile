@@ -25,6 +25,8 @@ ARG BASH_SHFMT_VERSION=v3.13.1-alpine
 ARG DOCKERFILE_HADOLINT_VERSION=v2.14.0-alpine
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.30.1
+# renovate: datasource=docker depName=ghcr.io/betterleaks/betterleaks
+ARG REPOSITORY_BETTERLEAKS_VERSION=v1.5.0
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
 ARG REPOSITORY_TRUFFLEHOG_VERSION=3.95.6
 #ARGTOP__END
@@ -55,6 +57,7 @@ FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
 FROM mvdan/shfmt:${BASH_SHFMT_VERSION} AS shfmt
 FROM hadolint/hadolint:${DOCKERFILE_HADOLINT_VERSION} AS hadolint
 FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
+FROM ghcr.io/betterleaks/betterleaks:${REPOSITORY_BETTERLEAKS_VERSION} AS betterleaks
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
 #FROM__END
 
@@ -134,6 +137,7 @@ ARG BASH_SHELLCHECK_VERSION
 ARG BASH_SHFMT_VERSION
 ARG DOCKERFILE_HADOLINT_VERSION
 ARG REPOSITORY_GITLEAKS_VERSION
+ARG REPOSITORY_BETTERLEAKS_VERSION
 ARG REPOSITORY_TRUFFLEHOG_VERSION
 #ARG__END
 
@@ -204,6 +208,7 @@ COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 COPY --link --from=shfmt /bin/shfmt /usr/bin/
 COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
+COPY --link --from=betterleaks /usr/bin/betterleaks /usr/bin/
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 #COPY__END
 
@@ -297,6 +302,8 @@ ENV JAVA_HOME_17=/usr/lib/jvm/java-17-openjdk
 # prettier installation
 # gitleaks installation
 # Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
+# betterleaks installation
+# Managed with COPY --link --from=betterleaks /usr/bin/betterleaks /usr/bin/
 # grype installation
 RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin \
 # ls-lint installation

@@ -35,6 +35,8 @@ ARG KUBERNETES_KUBECONFORM_VERSION=v0.8.0-alpine
 ARG PROTOBUF_PROTOLINT_VERSION=0.56.4
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.30.1
+# renovate: datasource=docker depName=ghcr.io/betterleaks/betterleaks
+ARG REPOSITORY_BETTERLEAKS_VERSION=v1.5.0
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
 ARG REPOSITORY_TRUFFLEHOG_VERSION=3.95.6
 # renovate: datasource=docker depName=jdkato/vale
@@ -83,6 +85,7 @@ FROM mstruebing/editorconfig-checker:${EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION
 FROM ghcr.io/yannh/kubeconform:${KUBERNETES_KUBECONFORM_VERSION} AS kubeconform
 FROM yoheimuta/protolint:${PROTOBUF_PROTOLINT_VERSION} AS protolint
 FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
+FROM ghcr.io/betterleaks/betterleaks:${REPOSITORY_BETTERLEAKS_VERSION} AS betterleaks
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
 FROM jdkato/vale:${SPELL_VALE_VERSION} AS vale
 FROM lycheeverse/lychee:${SPELL_LYCHEE_VERSION} AS lychee
@@ -253,6 +256,7 @@ ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION
 ARG KUBERNETES_KUBECONFORM_VERSION
 ARG PROTOBUF_PROTOLINT_VERSION
 ARG REPOSITORY_GITLEAKS_VERSION
+ARG REPOSITORY_BETTERLEAKS_VERSION
 ARG REPOSITORY_TRUFFLEHOG_VERSION
 ARG SPELL_VALE_VERSION
 ARG SPELL_LYCHEE_VERSION
@@ -337,6 +341,7 @@ COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checke
 COPY --link --from=kubeconform /kubeconform /usr/bin/
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
+COPY --link --from=betterleaks /usr/bin/betterleaks /usr/bin/
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 COPY --link --from=vale /bin/vale /bin/vale
 COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
@@ -605,6 +610,8 @@ ENV MYPY_CACHE_DIR=/tmp
 # checkov installation
 # gitleaks installation
 # Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
+# betterleaks installation
+# Managed with COPY --link --from=betterleaks /usr/bin/betterleaks /usr/bin/
 # grype installation
 RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin \
 # ls-lint installation

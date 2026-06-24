@@ -727,6 +727,20 @@ class Megalinter:
                     )
                 continue
             self.linters += [linter]
+            if hasattr(linter, "deprecated") and linter.deprecated is True:
+                deprecated_description = (
+                    linter.deprecated_description
+                    if hasattr(linter, "deprecated_description")
+                    and linter.deprecated_description
+                    else "This linter is deprecated."
+                )
+                logging.warning(
+                    f"{linter.name} is deprecated and will be removed in a future major release. "
+                    + deprecated_description
+                    + " Add "
+                    + linter.name
+                    + " to DISABLE_LINTERS in your .mega-linter.yml to disable it."
+                )
         # Display skipped linters in log
         show_skipped_linters = (
             config.get(self.request_id, "SHOW_SKIPPED_LINTERS", "true") == "true"
