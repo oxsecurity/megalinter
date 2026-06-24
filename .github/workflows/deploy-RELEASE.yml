@@ -348,7 +348,7 @@ jobs:
           STEPS_VERSION_OUTPUTS_CTAG: ${{ steps.version.outputs.ctag }}
           STEPS_VERSION_OUTPUTS_PVERSION: ${{ steps.version.outputs.pversion }}
           STEPS_VERSION_OUTPUTS_CVERSION: ${{ steps.version.outputs.cversion }}
-      - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: 3.14.6
       - run: pip install --upgrade -r .config/python/dev/requirements.txt
