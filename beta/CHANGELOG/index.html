@@ -15658,7 +15658,10 @@
 </li>
 </ul>
 <ul>
-<li>New linters</li>
+<li>New linters<ul>
+<li>Add <a href="https://github.com/betterleaks/betterleaks">betterleaks</a> linter for repository secrets scanning — successor to gitleaks with higher recall (98.6% vs 70.4%), lower false-positive rates, and 4–5× faster scanning via BPE-based detection and CEL filter expressions</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Disabled linters</li>
@@ -15667,7 +15670,10 @@
 <li>Re-enabled linters</li>
 </ul>
 <ul>
-<li>Deprecated linters</li>
+<li>Deprecated linters<ul>
+<li><code>REPOSITORY_GITLEAKS</code> — deprecated in favour of <code>REPOSITORY_BETTERLEAKS</code> (same author, fully compatible config, significantly better detection). Will be removed in the next major release. Disable it by adding <code>REPOSITORY_GITLEAKS</code> to <code>DISABLE_LINTERS</code> in your <code>.mega-linter.yml</code>.</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Removed linters<ul>
