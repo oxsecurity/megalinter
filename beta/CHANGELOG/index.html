@@ -9576,6 +9576,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../descriptors/repository_betterleaks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    betterleaks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../descriptors/repository_grype/" class="md-nav__link">
         
   
@@ -15692,6 +15720,8 @@
 </ul>
 <ul>
 <li>Fixes<ul>
+<li><code>REPOSITORY_BETTERLEAKS</code>: default scan now runs in filesystem (<code>dir</code>) mode instead of auto-switching to git-history (<code>git</code>) mode when a git repository is detected. betterleaks does not read the global git <code>safe.directory</code> config, so git mode failed with <code>fatal: detected dubious ownership in repository</code> in CI environments (e.g. GitHub Actions <code>/github/workspace</code>). Git-history mode is still used for the opt-in <code>REPOSITORY_BETTERLEAKS_PR_COMMITS_SCAN</code> feature.</li>
+<li><code>REPOSITORY_BETTERLEAKS</code>: added <code>--verbose</code> so detected findings (file, line and rule) are reported instead of only the <code>leaks found: N</code> summary, matching gitleaks behavior. Secret values stay redacted via <code>--redact</code>.</li>
 <li><code>REPOSITORY_OSV_SCANNER</code>: exit code 128 ("No package sources found") is now treated as a clean pass instead of a failure — osv-scanner returns this code when the repo contains no lockfiles/manifests/SBOMs, which is not a vulnerability finding (#7917).</li>
 <li>Fix intermittent <code>ansible-lint</code> <code>load-failure[not-found]</code> error on <code>github_conf/branch_protection_rules.json</code> caused by a race condition with <code>checkov</code> running in parallel. Checkov's transient GitHub-conf directory is now written to a hidden path (<code>.megalinter_github_conf</code>) that project-mode linters skip, eliminating the conflict (#8092).</li>
 <li>Complete the Alpine 3.24 upgrade across the whole image and fix how alpine version is detected.</li>
