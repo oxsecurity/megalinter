@@ -31,6 +31,7 @@
     "**/test_llm_advisor_integration.py",
     "**/TrivySbomLinter.py",
     "**/repository_trivy_sbom_test.py",
+    "**/BetterleaksLinter.py",
     "**/megalinter/utilstest.py",
     "**/megalinter/utils_reporter.py",
     "**/*.test.js",

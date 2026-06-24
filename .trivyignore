@@ -292,6 +292,10 @@ CVE-2026-4660
 # moby/buildkit embedded only for static Dockerfile/IaC parsing; never runs as a BuildKit server
 CVE-2026-33747
 CVE-2026-33748
+# golang.org/x/crypto/ssh/agent panic via malformed extension response — terrascan
+# and gitleaks never open SSH agent connections in MegaLinter's usage.
+# Remove when both rebuild with golang.org/x/crypto >= 0.43.0.
+CVE-2025-47913
 
 # --- terragrunt ---
 # alpine/terragrunt:1.15.1 (latest) compiled with Go 1.26.0; CVE-2026-27137
@@ -518,6 +522,23 @@ CVE-2026-44973
 # server. Remove when upgraded to grpc-go >=1.79.3.
 CVE-2026-33186
 
+# --- protolint / terrascan / vale / gitleaks (golang.org/x/net) ---
+# golang.org/x/net HTML-parser DoS and net/idna CVEs affect all four Go-compiled
+# CLI tools. None of them parse or render HTML; none perform IDNA lookups.
+# Remove when each tool rebuilds with golang.org/x/net >= 0.55.0.
+# CVE-2026-25680: HTML parsing excessive CPU consumption
+CVE-2026-25680
+# CVE-2026-25681: Render function use-after-free via malformed HTML
+CVE-2026-25681
+# CVE-2026-27136: Render function HTML attribute injection
+CVE-2026-27136
+# CVE-2026-39821: golang.org/x/net/idna processing DoS
+CVE-2026-39821
+# CVE-2026-42502: Render arbitrary HTML OOB read
+CVE-2026-42502
+# CVE-2026-42506: Render HTML tag injection via namespace
+CVE-2026-42506
+
 # --- shfmt ---
 # Go stdlib CVEs in v3.13.1 (latest release, compiled with Go 1.26.1).
 # shfmt is a pure shell script formatter that reads files and writes
@@ -552,6 +573,17 @@ CVE-2026-42089
 # CVE-2026-44705: tmp path traversal via attacker-controlled prefix/postfix —
 # prefix/postfix values come from trusted generator code, not external input
 CVE-2026-44705
+
+# --- npm-groovy-lint (jackson-databind) ---
+# jackson-databind CVEs require deserializing attacker-controlled JSON with
+# polymorphic type handling enabled. npm-groovy-lint uses jackson-databind
+# internally to process Groovy lint results from trusted local files only —
+# no external JSON is deserialized, and DefaultTyping is not enabled.
+# Remove when npm-groovy-lint upgrades jackson-databind to >= 2.18.8 or 2.21.4.
+# CVE-2026-54512: PolymorphicTypeValidator bypass via generic type parameters
+CVE-2026-54512
+# CVE-2026-54513: array subtype allowlist bypass
+CVE-2026-54513
 
 # --- betterleaks (secret scanner) ---
 # CVEs in the prebuilt ghcr.io/betterleaks/betterleaks image. betterleaks
