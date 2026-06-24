@@ -11,8 +11,10 @@ useDefault = true
     description = "Allowlisted files"
     paths = [
     '''.automation/test''',
+    '''.automation/generated''',
     '''megalinter-reports''',
     '''.github/linters''',
+    '''docs''',
     '''node_modules''',
     '''.mypy_cache''',
     '''(.*?)(gitleaks|betterleaks)\.toml$''',

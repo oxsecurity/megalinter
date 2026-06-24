@@ -71,10 +71,6 @@ class BetterleaksLinter(Linter):
     def build_lint_command(self, file=None):
         cmd = super().build_lint_command(file)
 
-        # Switch from 'dir' (filesystem) to 'git' (history) when scanning a git repo
-        if utils.is_git_repo(self.workspace) and "dir" in cmd:
-            cmd[cmd.index("dir")] = "git"
-
         # Handle --redact deduplication if user also passed it in ARGUMENTS
         if "--redact" in self.cli_lint_user_args:
             cmd = list(dict.fromkeys(cmd))
@@ -84,6 +80,13 @@ class BetterleaksLinter(Linter):
             and self.pr_commits_scan == "true"
             and utils.is_pr()
         ):
+            # Scanning a specific range of PR commits requires git history mode.
+            # The default scan stays in filesystem ('dir') mode to avoid betterleaks
+            # invoking git on the workspace, which fails with "dubious ownership"
+            # because betterleaks does not read the global git safe.directory config.
+            if "dir" in cmd:
+                cmd[cmd.index("dir")] = "git"
+
             if (
                 self.pr_target_sha is not None
                 and self.pr_source_sha is not None
