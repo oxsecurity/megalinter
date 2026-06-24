@@ -205,6 +205,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.github.io/) from 9.23.0 to **9.23.1** on 2026-06-21
   - [snakefmt](https://github.com/snakemake/snakefmt) from 2.0.1 to **2.0.2** on 2026-06-21
   - [kingfisher](https://github.com/mongodb/kingfisher) from 1.103.0 to **1.104.0** on 2026-06-22
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 5.0.10 to **5.0.11** on 2026-06-24
+  - [djlint](https://djlint.com/) from 1.39.2 to **1.39.4** on 2026-06-24
 <!-- linter-versions-end -->
 
 ## [v9.5.0] - 2026-05-16
