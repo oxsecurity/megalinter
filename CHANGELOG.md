@@ -37,6 +37,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Fixes
   - `REPOSITORY_BETTERLEAKS`: default scan now runs in filesystem (`dir`) mode instead of auto-switching to git-history (`git`) mode when a git repository is detected. betterleaks does not read the global git `safe.directory` config, so git mode failed with `fatal: detected dubious ownership in repository` in CI environments (e.g. GitHub Actions `/github/workspace`). Git-history mode is still used for the opt-in `REPOSITORY_BETTERLEAKS_PR_COMMITS_SCAN` feature.
+  - `REPOSITORY_BETTERLEAKS`: added `--verbose` so detected findings (file, line and rule) are reported instead of only the `leaks found: N` summary, matching gitleaks behavior. Secret values stay redacted via `--redact`.
   - `REPOSITORY_OSV_SCANNER`: exit code 128 ("No package sources found") is now treated as a clean pass instead of a failure — osv-scanner returns this code when the repo contains no lockfiles/manifests/SBOMs, which is not a vulnerability finding (#7917).
   - Fix intermittent `ansible-lint` `load-failure[not-found]` error on `github_conf/branch_protection_rules.json` caused by a race condition with `checkov` running in parallel. Checkov's transient GitHub-conf directory is now written to a hidden path (`.megalinter_github_conf`) that project-mode linters skip, eliminating the conflict (#8092).
   - Complete the Alpine 3.24 upgrade across the whole image and fix how alpine version is detected.

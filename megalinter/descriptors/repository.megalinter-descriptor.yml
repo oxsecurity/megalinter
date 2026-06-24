@@ -455,6 +455,7 @@ linters:
     cli_lint_extra_args:
       - dir
       - --redact
+      - --verbose
     cli_sarif_args:
       - --report-format
       - sarif
