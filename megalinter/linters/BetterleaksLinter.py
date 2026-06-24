@@ -22,8 +22,12 @@ class BetterleaksLinter(Linter):
             self.pr_source_sha, self.pr_target_sha = self.get_pr_data()
 
     def get_pr_data(self):
-        pr_source_sha = config.get(self.request_id, "REPOSITORY_BETTERLEAKS_PR_SOURCE_SHA")
-        pr_target_sha = config.get(self.request_id, "REPOSITORY_BETTERLEAKS_PR_TARGET_SHA")
+        pr_source_sha = config.get(
+            self.request_id, "REPOSITORY_BETTERLEAKS_PR_SOURCE_SHA"
+        )
+        pr_target_sha = config.get(
+            self.request_id, "REPOSITORY_BETTERLEAKS_PR_TARGET_SHA"
+        )
 
         if pr_source_sha is None or pr_target_sha is None:
             if utils.is_azure_devops_pr():
