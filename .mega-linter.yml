@@ -48,7 +48,6 @@ REPOSITORY_TRIVY_ARGUMENTS:
   - ".venv"
   - "--skip-dirs"
   - "github_conf"
-REPOSITORY_BETTERLEAKS_CONFIG_FILE: .github/linters/.gitleaks.toml
 REPOSITORY_TRUFFLEHOG_ARGUMENTS:
   - --exclude-paths=.trufflehogignore
 REPOSITORY_KINGFISHER_ARGUMENTS:
