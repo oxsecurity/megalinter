@@ -553,6 +553,29 @@ CVE-2026-42089
 # prefix/postfix values come from trusted generator code, not external input
 CVE-2026-44705
 
+# --- betterleaks (secret scanner) ---
+# CVEs in the prebuilt ghcr.io/betterleaks/betterleaks image. betterleaks
+# is a secret scanner that MegaLinter runs as a short-lived CLI against
+# local workspace files (`betterleaks dir .` / `betterleaks git .`).
+# golang.org/x/crypto/ssh SSH client/server DoS and revocation-bypass
+# CVEs: betterleaks never opens SSH connections nor acts as an SSH
+# server in MegaLinter's usage. The stdlib x509 VerifyHostname CVE only
+# matters for TLS verification of attacker-controlled certs, which the
+# default `dir`/`git` scan does not perform (no --validation HTTP calls).
+# All are fixed upstream; remove once betterleaks ships a rebuild with
+# golang.org/x/crypto >= 0.52.0 and Go >= 1.25.11.
+# https://avd.aquasec.com/nvd/cve-2026-39827
+CVE-2026-39827
+CVE-2026-39828
+CVE-2026-39829
+CVE-2026-39830
+CVE-2026-39835
+CVE-2026-42508
+CVE-2026-46595
+CVE-2026-46597
+# stdlib: (*x509.Certificate).VerifyHostname — not exploitable in default scan
+CVE-2026-27145
+
 # --- Dockerfile checks (trivy misconfig rules, not CVEs) ---
 # Style/best-practice rules trivy reports as misconfig. MegaLinter has
 # already evaluated each and accepted the rule as not relevant (e.g. it
