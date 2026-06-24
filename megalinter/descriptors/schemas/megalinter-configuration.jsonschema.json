@@ -23265,6 +23265,177 @@
       "x-order": 700000,
       "x-section": "OUTPUT"
     },
+    "REPOSITORY_BETTERLEAKS_ARGUMENTS": {
+      "$id": "#/properties/REPOSITORY_BETTERLEAKS_ARGUMENTS",
+      "description": "REPOSITORY_BETTERLEAKS: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_BETTERLEAKS: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ],
+      "x-category": "REPOSITORY_BETTERLEAKS",
+      "x-order": 200020,
+      "x-section": "LINTER_COMMAND"
+    },
+    "REPOSITORY_BETTERLEAKS_CLI_EXECUTABLE": {
+      "$id": "#/properties/REPOSITORY_BETTERLEAKS_CLI_EXECUTABLE",
+      "default": [
+        [
+          "betterleaks"
+        ]
+      ],
+      "description": "REPOSITORY_BETTERLEAKS: Override CLI executable used to build the linter command line (rarely needed)",
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_BETTERLEAKS: CLI Executable",
+      "type": "array",
+      "x-category": "REPOSITORY_BETTERLEAKS",
+      "x-order": 200060,
+      "x-section": "LINTER_COMMAND"
+    },
+    "REPOSITORY_BETTERLEAKS_CLI_LINT_MODE": {
+      "$id": "#/properties/REPOSITORY_BETTERLEAKS_CLI_LINT_MODE",
+      "default": "project",
+      "description": "REPOSITORY_BETTERLEAKS: Override default CLI lint mode used to call the linter (rarely needed)",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
+      "title": "REPOSITORY_BETTERLEAKS: CLI lint mode",
+      "type": "string",
+      "x-category": "REPOSITORY_BETTERLEAKS",
+      "x-doc-key": "config-cli-lint-mode",
+      "x-order": 200050,
+      "x-section": "LINTER_COMMAND"
+    },
+    "REPOSITORY_BETTERLEAKS_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/REPOSITORY_BETTERLEAKS_COMMAND_REMOVE_ARGUMENTS",
+      "description": "REPOSITORY_BETTERLEAKS: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_BETTERLEAKS: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ],
+      "x-category": "REPOSITORY_BETTERLEAKS",
+      "x-order": 200020,
+      "x-section": "LINTER_COMMAND"
+    },
+    "REPOSITORY_BETTERLEAKS_CONFIG_FILE": {
+      "$id": "#/properties/REPOSITORY_BETTERLEAKS_CONFIG_FILE",
+      "default": ".betterleaks.toml",
+      "description": "REPOSITORY_BETTERLEAKS: User custom config file name if different from default",
+      "title": "REPOSITORY_BETTERLEAKS: Custom config file name",
+      "type": "string",
+      "x-category": "REPOSITORY_BETTERLEAKS",
+      "x-order": 200010,
+      "x-section": "LINTER_COMMAND"
+    },
+    "REPOSITORY_BETTERLEAKS_DISABLE_ERRORS": {
+      "$id": "#/properties/REPOSITORY_BETTERLEAKS_DISABLE_ERRORS",
+      "default": false,
+      "description": "REPOSITORY_BETTERLEAKS: If true, REPOSITORY_BETTERLEAKS doesn't make MegaLinter fail even if errors are found",
+      "title": "REPOSITORY_BETTERLEAKS: Disable errors",
+      "type": "boolean",
+      "x-category": "REPOSITORY_BETTERLEAKS",
+      "x-order": 400000,
+      "x-section": "ERRORS"
+    },
+    "REPOSITORY_BETTERLEAKS_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/REPOSITORY_BETTERLEAKS_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "description": "REPOSITORY_BETTERLEAKS: If the number of errors found is less than this value, REPOSITORY_BETTERLEAKS doesn't make MegaLinter fail",
+      "title": "REPOSITORY_BETTERLEAKS: Maximum number of errors allowed",
+      "type": "number",
+      "x-category": "REPOSITORY_BETTERLEAKS",
+      "x-order": 400010,
+      "x-section": "ERRORS"
+    },
+    "REPOSITORY_BETTERLEAKS_POST_COMMANDS": {
+      "$id": "#/properties/REPOSITORY_BETTERLEAKS_POST_COMMANDS",
+      "description": "REPOSITORY_BETTERLEAKS: Define bash commands to run after running REPOSITORY_BETTERLEAKS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "REPOSITORY_BETTERLEAKS: Post-run commands",
+      "type": "array",
+      "x-category": "REPOSITORY_BETTERLEAKS",
+      "x-order": 500010,
+      "x-section": "PREPOSTCOMMANDS"
+    },
+    "REPOSITORY_BETTERLEAKS_PRE_COMMANDS": {
+      "$id": "#/properties/REPOSITORY_BETTERLEAKS_PRE_COMMANDS",
+      "description": "REPOSITORY_BETTERLEAKS: Define bash commands to run before running REPOSITORY_BETTERLEAKS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "REPOSITORY_BETTERLEAKS: Pre-run commands",
+      "type": "array",
+      "x-category": "REPOSITORY_BETTERLEAKS",
+      "x-order": 500000,
+      "x-section": "PREPOSTCOMMANDS"
+    },
+    "REPOSITORY_BETTERLEAKS_RULES_PATH": {
+      "$id": "#/properties/REPOSITORY_BETTERLEAKS_RULES_PATH",
+      "description": "REPOSITORY_BETTERLEAKS: Path where to find linter configuration file",
+      "title": "REPOSITORY_BETTERLEAKS: Custom config file path",
+      "type": "string",
+      "x-category": "REPOSITORY_BETTERLEAKS",
+      "x-order": 200040,
+      "x-section": "LINTER_COMMAND"
+    },
+    "REPOSITORY_BETTERLEAKS_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/REPOSITORY_BETTERLEAKS_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling REPOSITORY_BETTERLEAKS and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_BETTERLEAKS: Unsecured env variables",
+      "type": "array",
+      "x-category": "REPOSITORY_BETTERLEAKS",
+      "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
+      "x-order": 600000,
+      "x-section": "SECURITY"
+    },
     "REPOSITORY_CHECKOV_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_CHECKOV_ARGUMENTS",
       "description": "REPOSITORY_CHECKOV: User custom arguments to add in linter CLI call",
@@ -23789,7 +23960,7 @@
       "items": {
         "type": "string"
       },
-      "title": "REPOSITORY_GITLEAKS: Custom arguments",
+      "title": "(deprecated) REPOSITORY_GITLEAKS: Custom arguments",
       "type": [
         "array",
         "string"
@@ -23809,7 +23980,7 @@
       "items": {
         "type": "string"
       },
-      "title": "REPOSITORY_GITLEAKS: CLI Executable",
+      "title": "(deprecated) REPOSITORY_GITLEAKS: CLI Executable",
       "type": "array",
       "x-category": "REPOSITORY_GITLEAKS",
       "x-order": 200060,
@@ -23829,7 +24000,7 @@
         "List of Files",
         "Project"
       ],
-      "title": "REPOSITORY_GITLEAKS: CLI lint mode",
+      "title": "(deprecated) REPOSITORY_GITLEAKS: CLI lint mode",
       "type": "string",
       "x-category": "REPOSITORY_GITLEAKS",
       "x-doc-key": "config-cli-lint-mode",
@@ -23846,7 +24017,7 @@
       "items": {
         "type": "string"
       },
-      "title": "REPOSITORY_GITLEAKS: Custom remove arguments",
+      "title": "(deprecated) REPOSITORY_GITLEAKS: Custom remove arguments",
       "type": [
         "array",
         "string"
@@ -23859,7 +24030,7 @@
       "$id": "#/properties/REPOSITORY_GITLEAKS_CONFIG_FILE",
       "default": ".gitleaks.toml",
       "description": "REPOSITORY_GITLEAKS: User custom config file name if different from default",
-      "title": "REPOSITORY_GITLEAKS: Custom config file name",
+      "title": "(deprecated) REPOSITORY_GITLEAKS: Custom config file name",
       "type": "string",
       "x-category": "REPOSITORY_GITLEAKS",
       "x-order": 200010,
@@ -23869,7 +24040,7 @@
       "$id": "#/properties/REPOSITORY_GITLEAKS_DISABLE_ERRORS",
       "default": false,
       "description": "REPOSITORY_GITLEAKS: If true, REPOSITORY_GITLEAKS doesn't make MegaLinter fail even if errors are found",
-      "title": "REPOSITORY_GITLEAKS: Disable errors",
+      "title": "(deprecated) REPOSITORY_GITLEAKS: Disable errors",
       "type": "boolean",
       "x-category": "REPOSITORY_GITLEAKS",
       "x-order": 400000,
@@ -23879,7 +24050,7 @@
       "$id": "#/properties/REPOSITORY_GITLEAKS_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
       "description": "REPOSITORY_GITLEAKS: If the number of errors found is less than this value, REPOSITORY_GITLEAKS doesn't make MegaLinter fail",
-      "title": "REPOSITORY_GITLEAKS: Maximum number of errors allowed",
+      "title": "(deprecated) REPOSITORY_GITLEAKS: Maximum number of errors allowed",
       "type": "number",
       "x-category": "REPOSITORY_GITLEAKS",
       "x-order": 400010,
@@ -23887,7 +24058,7 @@
     },
     "REPOSITORY_GITLEAKS_POST_COMMANDS": {
       "$id": "#/properties/REPOSITORY_GITLEAKS_POST_COMMANDS",
-      "description": "REPOSITORY_GITLEAKS: Define bash commands to run after running REPOSITORY_GITLEAKS",
+      "description": "(deprecated) REPOSITORY_GITLEAKS: Define bash commands to run after running REPOSITORY_GITLEAKS",
       "examples": [
         [
           {
@@ -23908,7 +24079,7 @@
     },
     "REPOSITORY_GITLEAKS_PRE_COMMANDS": {
       "$id": "#/properties/REPOSITORY_GITLEAKS_PRE_COMMANDS",
-      "description": "REPOSITORY_GITLEAKS: Define bash commands to run before running REPOSITORY_GITLEAKS",
+      "description": "(deprecated) REPOSITORY_GITLEAKS: Define bash commands to run before running REPOSITORY_GITLEAKS",
       "examples": [
         [
           {
@@ -23957,7 +24128,7 @@
     "REPOSITORY_GITLEAKS_RULES_PATH": {
       "$id": "#/properties/REPOSITORY_GITLEAKS_RULES_PATH",
       "description": "REPOSITORY_GITLEAKS: Path where to find linter configuration file",
-      "title": "REPOSITORY_GITLEAKS: Custom config file path",
+      "title": "(deprecated) REPOSITORY_GITLEAKS: Custom config file path",
       "type": "string",
       "x-category": "REPOSITORY_GITLEAKS",
       "x-order": 200040,
@@ -23970,7 +24141,7 @@
       "items": {
         "type": "string"
       },
-      "title": "REPOSITORY_GITLEAKS: Unsecured env variables",
+      "title": "(deprecated) REPOSITORY_GITLEAKS: Unsecured env variables",
       "type": "array",
       "x-category": "REPOSITORY_GITLEAKS",
       "x-doc-key": "config-variables-security/#unhide-variables-for-linters",

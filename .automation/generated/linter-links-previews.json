@@ -24,6 +24,11 @@
     "image": null,
     "title": "The GNU Bourne-Again Shell"
   },
+  "betterleaks": {
+    "description": "Scan the world (for secrets). Contribute to betterleaks/betterleaks development by creating an account on GitHub.",
+    "image": "https://opengraph.githubassets.com/b97ee8e5b194538bb2ac2f1b5303feae68c8a46a2b6f9275f5d2d8143f6cabd1/betterleaks/betterleaks",
+    "title": "GitHub - betterleaks/betterleaks: Scan the world (for secrets)"
+  },
   "bicep": {
     "description": "Learn how to use Bicep linter.",
     "image": "https://learn.microsoft.com/en-us/media/logos/logo-ms-social.png",

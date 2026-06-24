@@ -4,6 +4,7 @@
     "arm-ttk": "0.0.0",
     "bandit": "1.9.4",
     "bash-exec": "5.3.9",
+    "betterleaks": "1.5.0",
     "bicep_linter": "0.44.1",
     "black": "26.5.1",
     "cfn-lint": "1.51.5",
