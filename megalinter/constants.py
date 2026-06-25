@@ -49,6 +49,8 @@ DEFAULT_DOCKERFILE_APK_PACKAGES = [
     "make",
     "musl-dev",
     "openssh",
+    # su-exec for user switch in entrypoint
+    "su-exec",
 ]
 
 DEFAULT_DOCKERFILE_NPM_ARGS: list[str] = []

@@ -58,4 +58,4 @@ export HOME="${MEGALINTER_RUNTIME_HOME}"
 export USER="${MEGALINTER_RUNTIME_USER}"
 export MEGALINTER_USER_SWITCHED=true
 
-exec su -p "${MEGALINTER_RUNTIME_USER}" -s /bin/bash -c 'exec /entrypoint.sh "$@"' bash "$@"
+exec su-exec "${MEGALINTER_RUNTIME_UID}:${MEGALINTER_RUNTIME_GID}" /entrypoint.sh "$@"
