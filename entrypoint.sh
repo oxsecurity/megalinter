@@ -9,7 +9,7 @@ LOG_LEVEL="${LOG_LEVEL:-INFO}" # Default log level (VERBOSE, DEBUG, TRACE)
 MEGALINTER_RUNTIME_UID="${MEGALINTER_UID:-}"
 MEGALINTER_RUNTIME_GID="${MEGALINTER_GID:-}"
 if [ "$(id -u)" -eq 0 ] && [ -n "${MEGALINTER_RUNTIME_UID}" ] && [ -n "${MEGALINTER_RUNTIME_GID}" ] && [ "${MEGALINTER_USER_SWITCHED:-false}" != "true" ]; then
-  exec /usr/bin/setup-runtime-user "$@"
+  exec /usr/bin/setup-runtime-user.sh "$@"
 fi
 
 # Manage newest git versions (related to CVE https://github.blog/2022-04-12-git-security-vulnerability-announced/)
