@@ -2564,7 +2564,7 @@ def replace_in_file(file_path, start, end, content, add_new_line=True):
         # Get text between markdown-headers tag
         header_content = header_matches[0]
         content = re.sub(
-            r"<!-- markdown-headers\n.*?\n-->", "", content, 1, re.MULTILINE | re.DOTALL
+            r"<!-- markdown-headers\n.*?\n-->", "", content, count=1, flags=re.MULTILINE | re.DOTALL
         )[1:]
     # Replace the target string
     if add_new_line is True:
@@ -2572,7 +2572,7 @@ def replace_in_file(file_path, start, end, content, add_new_line=True):
     else:
         replacement = f"{start}{content}{end}"
     regex = rf"{start}([\s\S]*?){end}"
-    file_content = re.sub(regex, replacement, file_content, 1, re.DOTALL)
+    file_content = re.sub(regex, replacement, file_content, count=1, flags=re.DOTALL)
     # Add / replace header if necessary
     if header_content is not None:
         existing_header_matches = re.findall(
@@ -2587,8 +2587,8 @@ def replace_in_file(file_path, start, end, content, add_new_line=True):
                 r"---\n.*?\n---",
                 header_content,
                 file_content,
-                1,
-                re.MULTILINE | re.DOTALL,
+                count=1,
+                flags=re.MULTILINE | re.DOTALL,
             )
         else:
             file_content = header_content + "\n" + file_content
@@ -2975,7 +2975,7 @@ def move_to_file(file_path, start, end, target_file, keep_in_source=False):
     else:
         bracket_content = ""
     if keep_in_source is False:
-        file_content = re.sub(regex, replacement, file_content, 1, re.DOTALL)
+        file_content = re.sub(regex, replacement, file_content, count=1, flags=re.DOTALL)
     # Write the file out again
     Path(file_path).write_text(file_content, encoding="utf-8")
     logging.info("Updated " + file_path + " between " + start + " and " + end)
