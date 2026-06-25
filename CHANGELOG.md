@@ -207,6 +207,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [kingfisher](https://github.com/mongodb/kingfisher) from 1.103.0 to **1.104.0** on 2026-06-22
   - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 5.0.10 to **5.0.11** on 2026-06-24
   - [djlint](https://djlint.com/) from 1.39.2 to **1.39.4** on 2026-06-24
+  - [checkov](https://www.checkov.io/) from 3.3.1 to **3.3.2** on 2026-06-25
+  - [semgrep](https://semgrep.dev/) from 1.167.0 to **1.168.0** on 2026-06-25
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.63.3 to **0.64.1** on 2026-06-25
 <!-- linter-versions-end -->
 
 ## [v9.5.0] - 2026-05-16

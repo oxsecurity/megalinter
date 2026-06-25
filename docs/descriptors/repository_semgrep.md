@@ -29,7 +29,7 @@ Exception for standalone and security flavors docker images, that use a list of 
 
 ## semgrep documentation
 
-- Version in MegaLinter: **1.167.0**
+- Version in MegaLinter: **1.168.0**
 - Visit [Official Web Site](https://semgrep.dev/){target=_blank}
 - See [How to configure semgrep rules](https://semgrep.dev/docs/running-rules/){target=_blank}
 - See [How to disable semgrep rules in files](https://semgrep.dev/docs/ignoring-findings/#inline-comments){target=_blank}
@@ -639,6 +639,10 @@ EXPERIMENTAL OPTIONS
        --no-x-run-taint-once
            [INTERNAL] Disable running taint analysis just once
 
+       --x-dependency-paths
+           (experimental) Include the full dependency path(s) for transitive
+           supply-chain findings in --json and --sarif output.
+
        --x-disable-transitive-reachability
            [INTERNAL] Disable transitive reachability analysis regardless of
            app-based configuration.
@@ -767,8 +771,8 @@ BUGS
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.167.0
+ARG PIP_SEMGREP_VERSION=1.168.0
 ```
 
 - PIP packages (Python):
-  - [semgrep==1.167.0](https://pypi.org/project/semgrep/1.167.0)
+  - [semgrep==1.168.0](https://pypi.org/project/semgrep/1.168.0)
