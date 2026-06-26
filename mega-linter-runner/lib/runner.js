@@ -222,7 +222,7 @@ export class MegaLinterRunner {
       commandArgs.push(...["-v", "/var/run/docker.sock:/var/run/docker.sock:rw"]);
       commandArgs.push(...["-v", `${lintPath}:/tmp/lint:rw`]);
     } else {
-      commandArgs.push(...["-v", `${lintPath}:/tmp/lint:z`]);
+      commandArgs.push(...["-v", `${lintPath}:/tmp/lint:z,rw`]);
     }
     
     
