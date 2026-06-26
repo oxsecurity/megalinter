@@ -218,8 +218,14 @@ export class MegaLinterRunner {
     if (options["containerName"]) {
       commandArgs.push(...["--name", options["containerName"]]);
     }
-    commandArgs.push(...["-v", "/var/run/docker.sock:/var/run/docker.sock:rw"]);
-    commandArgs.push(...["-v", `${lintPath}:/tmp/lint:rw`]);
+    if (! this.containerEngine === "podman") {
+      commandArgs.push(...["-v", "/var/run/docker.sock:/var/run/docker.sock:rw"]);
+      commandArgs.push(...["-v", `${lintPath}:/tmp/lint:rw`]);
+    } else {
+      commandArgs.push(...["-v", `${lintPath}:/tmp/lint:z`]);
+    }
+    
+    
     if (options["userMap"] === true) {
       const runtimeUid =
         typeof process.getuid === "function" ? process.getuid() : 1000;
