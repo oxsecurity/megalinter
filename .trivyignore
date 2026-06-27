@@ -608,6 +608,23 @@ CVE-2026-46597
 # stdlib: (*x509.Certificate).VerifyHostname — not exploitable in default scan
 CVE-2026-27145
 
+# --- Supply-chain CVEs in prebuilt linter binaries ---
+# These CVEs live in third-party prebuilt binaries that MegaLinter pulls as-is
+# (gitleaks, betterleaks, vale, terrascan, tflint, gherkin-lint). Each linter
+# runs as a short-lived CLI against local workspace files; none start an ssh
+# agent, a network server, or a transparency-log service, so the vulnerable
+# code paths are never reached. Fixed upstream — remove once renovate ships the
+# rebuilt tool versions.
+# golang.org/x/crypto/ssh/agent key-restriction bypass — no ssh agent is used
+# https://avd.aquasec.com/nvd/cve-2026-39832
+CVE-2026-39832
+# sigstore/rekor OOM via unbounded gzip decompression — no rekor server runs
+# https://avd.aquasec.com/nvd/cve-2026-48702
+CVE-2026-48702
+# linkify-it ReDoS (quadratic match loop) — DoS-class, costs a CI minute at worst
+# https://avd.aquasec.com/nvd/cve-2026-48801
+CVE-2026-48801
+
 # --- Dockerfile checks (trivy misconfig rules, not CVEs) ---
 # Style/best-practice rules trivy reports as misconfig. MegaLinter has
 # already evaluated each and accepted the rule as not relevant (e.g. it
