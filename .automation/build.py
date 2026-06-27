@@ -2526,7 +2526,11 @@ def replace_in_file(file_path, start, end, content, add_new_line=True):
         # Get text between markdown-headers tag
         header_content = header_matches[0]
         content = re.sub(
-            r"<!-- markdown-headers\n.*?\n-->", "", content, count=1, flags=re.MULTILINE | re.DOTALL
+            r"<!-- markdown-headers\n.*?\n-->",
+            "",
+            content,
+            count=1,
+            flags=re.MULTILINE | re.DOTALL,
         )[1:]
     # Replace the target string
     if add_new_line is True:
@@ -2950,7 +2954,9 @@ def move_to_file(file_path, start, end, target_file, keep_in_source=False):
     else:
         bracket_content = ""
     if keep_in_source is False:
-        file_content = re.sub(regex, replacement, file_content, count=1, flags=re.DOTALL)
+        file_content = re.sub(
+            regex, replacement, file_content, count=1, flags=re.DOTALL
+        )
     # Write the file out again
     Path(file_path).write_text(file_content, encoding="utf-8")
     logging.info("Updated " + file_path + " between " + start + " and " + end)
