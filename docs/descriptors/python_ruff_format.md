@@ -19,7 +19,7 @@ description: How to use ruff-format (configure, ignore files, ignore errors, hel
 
 ## ruff-format documentation
 
-- Version in MegaLinter: **0.15.18**
+- Version in MegaLinter: **0.15.20**
 - Visit [Official Web Site](https://github.com/astral-sh/ruff#readme){target=_blank}
 - See [How to configure ruff-format rules](https://docs.astral.sh/ruff/configuration/){target=_blank}
   - If custom `.ruff.toml` config file isn't found, [.ruff.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruff.toml){target=_blank} will be used
@@ -159,8 +159,8 @@ For help with a specific command, see: `ruff help <command>`.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.15.18
+ARG PIP_RUFF_VERSION=0.15.20
 ```
 
 - PIP packages (Python):
-  - [ruff==0.15.18](https://pypi.org/project/ruff/0.15.18)
+  - [ruff==0.15.20](https://pypi.org/project/ruff/0.15.20)
