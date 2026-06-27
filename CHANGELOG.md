@@ -23,6 +23,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Add [betterleaks](https://github.com/betterleaks/betterleaks) linter for repository secrets scanning — successor to gitleaks with higher recall (98.6% vs 70.4%), lower false-positive rates, and 4–5× faster scanning via BPE-based detection and CEL filter expressions
 
 - Disabled linters
+  - `SALESFORCE_SFDX_SCANNER_APEX`, `SALESFORCE_SFDX_SCANNER_AURA` and `SALESFORCE_SFDX_SCANNER_LWC` — disabled because sfdx-scanner 4.12.0 crashes on Node.js 22+ (`TypeError: Cannot read properties of undefined (reading 'prototype')`, caused by the removal of `SlowBuffer.prototype`), which is shipped with Alpine 3.24. These linters were already deprecated; use the `SALESFORCE_CODE_ANALYZER_APEX` / `SALESFORCE_CODE_ANALYZER_AURA` / `SALESFORCE_CODE_ANALYZER_LWC` variants instead (#8080).
 
 - Re-enabled linters
 
@@ -42,7 +43,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - `REPOSITORY_BETTERLEAKS`: added `--verbose` so detected findings (file, line and rule) are reported instead of only the `leaks found: N` summary, matching gitleaks behavior. Secret values stay redacted via `--redact`.
   - `REPOSITORY_OSV_SCANNER`: exit code 128 ("No package sources found") is now treated as a clean pass instead of a failure — osv-scanner returns this code when the repo contains no lockfiles/manifests/SBOMs, which is not a vulnerability finding (#7917).
   - Fix intermittent `ansible-lint` `load-failure[not-found]` error on `github_conf/branch_protection_rules.json` caused by a race condition with `checkov` running in parallel. Checkov's transient GitHub-conf directory is now written to a hidden path (`.megalinter_github_conf`) that project-mode linters skip, eliminating the conflict (#8092).
-  - Complete the Alpine 3.24 upgrade across the whole image and fix how alpine version is detected.
+  - Complete the Alpine 3.24 upgrade across the whole image and fix how alpine version is detected. Docker images now build on the `python:3.14-alpine3.24` base image (#8080).
+  - Avoid `DeprecationWarning` / future breakage on Python 3.14 by no longer passing `count` and `flags` as positional arguments to `re.sub` (#8211).
   - Exclude `REPORT_OUTPUT_FOLDER` from linting when configured as an absolute path inside the workspace (e.g. `/tmp/lint/megalinter-reports`), fixing #7845.
   - Fix command injection in Roslynator linter (`DOTNET_ROSLYNATOR`) where a crafted `.csproj` filename could break out of `dotnet restore` arguments and execute arbitrary shell commands. The command is now invoked via argv list instead of a shell string. Reported by Francesco Sabiu.
   - Fix `IndexError` when building the single-linter Docker image for a linter whose activation depends on a file (e.g. `SPELL_VALE` requires `.vale.ini`): `python -m megalinter.run --linterversion` now bypasses activation filtering since the per-linter image is built for that linter unconditionally.
@@ -66,11 +68,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Mark `mega-linter-runner/index.js` as executable in git (#8091)
 
 - Dev
+  - Add specialized Claude Code sub-agents (`pr-monitor`, `security-analyst`, `version-bumper`) and assign cost-effective models to mechanical tasks, to speed up and reduce the token cost of contributor workflows (#7906).
+  - Add the `/fix-issue` Claude Code skill for end-to-end GitHub issue fixes (gather context, implement on a branch, open a PR, watch CI) (#7848).
   - Stop generating per-linter Dockerfiles for linters marked `disabled: true` in their descriptor. The matching images were already excluded from the build matrix (`linters_matrix.json`) and never published, so the on-disk `linters/<linter>/Dockerfile` was dead code. Deleted the 8 corresponding stale Dockerfile directories.
   - Move the `.devcontainer` setup from the Dockerfile to a JSON configuration file (#7865).
   - Update the Python version in the devcontainer image (#7853).
 
 - CI
+  - Build the real `{ linter, platform, runner }` job list directly in `get-linters-matrix` for the DEV and BETA linter workflows, instead of a linter×runner cross-product filtered at runtime by `job_enabled`. Removes the `Prepare` step and the no-op jobs while preserving selection logic (#8133, #8134).
+  - Track image-runtime shell scripts (`setup-runtime-user`, `megalinter_exec`) in the image-build path filters by renaming them to `.sh`, so changes to them correctly trigger image rebuilds; generated images now use root-independent command wrappers instead of shell aliases (#8213).
   - Suppress the new `ref-version-mismatch` audit introduced by zizmor 1.25.0 for the project's pinned `uses:` action references. The SHA pins are correct (the supply-chain property); only the inline `# vX` comments lag behind exact subversions, and renovate maintains the hashes.
   - Simplify the workflow trigger condition to prevent duplicate runs for pushes from forks.
   - Fix the `deploy-dev` workflow (#8154).
