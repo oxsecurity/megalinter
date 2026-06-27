@@ -206,7 +206,7 @@ ARG SALESFORCE_CODE_ANALYZER_VERSION=5.13.0
 # renovate: datasource=pypi depName=snakemake
 ARG PIP_SNAKEMAKE_VERSION=9.23.1
 # renovate: datasource=pypi depName=snakefmt
-ARG PIP_SNAKEFMT_VERSION=2.0.2
+ARG PIP_SNAKEFMT_VERSION=2.0.3
 # renovate: datasource=npm depName=cspell
 ARG NPM_CSPELL_VERSION=10.0.1
 # renovate: datasource=pypi depName=proselint
