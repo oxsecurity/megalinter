@@ -212,6 +212,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.3.1 to **3.3.2** on 2026-06-25
   - [semgrep](https://semgrep.dev/) from 1.167.0 to **1.168.0** on 2026-06-25
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.63.3 to **0.64.1** on 2026-06-25
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.51.5 to **1.52.0** on 2026-06-27
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.20 to **0.2.24** on 2026-06-27
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.10 to **3.95.11** on 2026-06-27
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.18 to **0.15.20** on 2026-06-27
+  - [ruff](https://github.com/astral-sh/ruff) from 0.15.18 to **0.15.20** on 2026-06-27
+  - [betterleaks](https://github.com/betterleaks/betterleaks) from 1.5.0 to **1.6.0** on 2026-06-27
+  - [grype](https://github.com/anchore/grype) from 0.114.0 to **0.115.0** on 2026-06-27
+  - [syft](https://github.com/anchore/syft) from 1.45.1 to **1.46.0** on 2026-06-27
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 2.0.2 to **2.0.3** on 2026-06-27
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.64.1 to **0.65.0** on 2026-06-27
 <!-- linter-versions-end -->
 
 ## [v9.5.0] - 2026-05-16
