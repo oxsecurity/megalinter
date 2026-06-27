@@ -61,7 +61,7 @@ ARG NPM_ESLINT_JS_VERSION=10.0.1
 # renovate: datasource=npm depName=eslint-config-prettier
 ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.1.8
 # renovate: datasource=npm depName=eslint-plugin-import-x
-ARG NPM_ESLINT_PLUGIN_IMPORT_X_VERSION=4.16.2
+ARG NPM_ESLINT_PLUGIN_IMPORT_X_VERSION=4.17.0
 # renovate: datasource=npm depName=eslint-plugin-jest
 ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.15.2
 # renovate: datasource=npm depName=eslint-plugin-n
