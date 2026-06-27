@@ -204,7 +204,7 @@ ARG PIP_CODESPELL_VERSION=2.4.2
 # renovate: datasource=pypi depName=sqlfluff
 ARG PIP_SQLFLUFF_VERSION=4.2.2
 # renovate: datasource=github-releases depName=realm/SwiftLint
-ARG SWIFT_SWIFTLINT_VERSION=0.64.1
+ARG SWIFT_SWIFTLINT_VERSION=0.65.0
 # renovate: datasource=npm depName=@ibm/tekton-lint
 ARG NPM_IBM_TEKTON_LINT_VERSION=1.2.0
 # renovate: datasource=pypi depName=yamllint
