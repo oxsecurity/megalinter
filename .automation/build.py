@@ -32,8 +32,6 @@ from megalinter import config, utils
 from megalinter.constants import (
     DEFAULT_DOCKERFILE_APK_PACKAGES,
     DEFAULT_DOCKERFILE_ARGS,
-    DEFAULT_DOCKERFILE_DOCKER_APK_PACKAGES,
-    DEFAULT_DOCKERFILE_DOCKER_ARGS,
     DEFAULT_DOCKERFILE_FLAVOR_ARGS,
     DEFAULT_DOCKERFILE_FLAVOR_CARGO_PACKAGES,
     DEFAULT_DOCKERFILE_FLAVOR_COPY_LINES,
@@ -211,13 +209,10 @@ def generate_flavor(flavor, flavor_info):
                 flavor_descriptors += [descriptor["descriptor_id"]]
     # Get install instructions at linter level
     linters = megalinter.linter_factory.list_all_linters(({"request_id": "build"}))
-    requires_docker = False
     for linter in linters:
         if match_flavor(vars(linter), flavor, flavor_info) is True:
             descriptor_and_linters += [vars(linter)]
             flavor_linters += [linter.name]
-            if linter.cli_docker_image is not None:
-                requires_docker = True
     # Initialize Dockerfile
     if flavor == "all":
         dockerfile = f"{REPO_HOME}/Dockerfile"
@@ -234,9 +229,6 @@ outputs:
 runs:
   using: "docker"
   image: "docker://{ML_DOCKER_IMAGE_WITH_HOST}:{image_release}"
-  args:
-    - "-v"
-    - "/var/run/docker.sock:/var/run/docker.sock:rw"
 branding:
   icon: "check"
   color: "green"
@@ -298,9 +290,6 @@ outputs:
 runs:
   using: "docker"
   image: "docker://{ML_DOCKER_IMAGE_WITH_HOST}-{flavor}:{image_release}"
-  args:
-    - "-v"
-    - "/var/run/docker.sock:/var/run/docker.sock:rw"
 branding:
   icon: "check"
   color: "green"
@@ -338,7 +327,6 @@ branding:
     build_dockerfile(
         dockerfile,
         descriptor_and_linters,
-        requires_docker,
         flavor,
         extra_lines,
         DEFAULT_DOCKERFILE_FLAVOR_ARGS.copy(),
@@ -354,7 +342,6 @@ branding:
 def build_dockerfile(
     dockerfile,
     descriptor_and_linters,
-    requires_docker,
     flavor,
     extra_lines,
     extra_args=None,
@@ -377,14 +364,6 @@ def build_dockerfile(
     gem_packages = []
     cargo_packages = [] if "cargo" not in extra_packages else extra_packages["cargo"]
     is_docker_other_run = False
-    # Manage docker
-    if requires_docker is True:
-        docker_arg += DEFAULT_DOCKERFILE_DOCKER_ARGS.copy()
-        apk_packages += DEFAULT_DOCKERFILE_DOCKER_APK_PACKAGES.copy()
-        docker_other += [
-            "RUN rc-update add docker boot && (rc-service docker start || true)"
-        ]
-        is_docker_other_run = True
     for item in descriptor_and_linters:
         if "install" not in item:
             item["install"] = {}
@@ -820,9 +799,6 @@ def generate_linter_dockerfiles():
             dockerfile = f"{LINTERS_DIR}/{linter_lower_name}/Dockerfile"
             if not os.path.isdir(os.path.dirname(dockerfile)):
                 os.makedirs(os.path.dirname(dockerfile), exist_ok=True)
-            requires_docker = False
-            if linter.cli_docker_image is not None:
-                requires_docker = True
             descriptor_and_linter = descriptor_items + [vars(linter)]
             copyfile(f"{REPO_HOME}/Dockerfile", dockerfile)
             extra_lines = [
@@ -861,7 +837,7 @@ def generate_linter_dockerfiles():
                 'ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]',
             ]
             build_dockerfile(
-                dockerfile, descriptor_and_linter, requires_docker, "none", extra_lines
+                dockerfile, descriptor_and_linter, "none", extra_lines
             )
             docker_image = (
                 f"{ML_DOCKER_IMAGE_WITH_HOST}-only-{linter_lower_name}:{VERSION_V}"
@@ -1497,14 +1473,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         linter_doc_md += [
             f"- Visit [Official Web Site]({doc_url(linter.linter_url)}){{target=_blank}}",
         ]
-        # Docker image doc
-        if linter.cli_docker_image is not None:
-            linter_doc_md += [
-                f"- Docker image: [{linter.cli_docker_image}:{linter.cli_docker_image_version}]"
-                f"(https://hub.docker.com/r/{linter.cli_docker_image})"
-                "{target=_blank}",
-                f"  - arguments: `{' '.join(linter.cli_docker_args)}`",
-            ]
         # Rules configuration URL
         if (
             hasattr(linter, "linter_rules_configuration_url")
@@ -1605,10 +1573,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 linter_doc_md += [
                     f"| {variable['name']} | {variable['description']} | `{variable['default_value']}` |"
                 ]
-        if linter.cli_docker_image is not None:
-            linter_doc_md += [
-                f"| {linter.name}_DOCKER_IMAGE_VERSION | Docker image version | `{linter.cli_docker_image_version}` |"
-            ]
         linter_doc_md += [
             f"| {linter.name}_ARGUMENTS | User custom arguments to add in linter CLI call<br/>"
             f'Ex: `-s --foo "bar"` |  |'
@@ -2767,7 +2731,6 @@ def _infer_config_schema_section(property_name: str) -> str:
         or property_name.endswith("_COMMAND_REMOVE_ARGUMENTS")
         or property_name.endswith("_CLI_LINT_MODE")
         or property_name.endswith("_CLI_EXECUTABLE")
-        or property_name.endswith("_DOCKER_IMAGE_VERSION")
         or property_name.endswith("_CONFIG_FILE")
         or property_name.endswith("_RULES_PATH")
     ):
@@ -2829,8 +2792,6 @@ def _infer_config_schema_x_order(property_name: str, section: str) -> int:
             return section_rank * 1000 + 50
         if property_name.endswith("_CLI_EXECUTABLE"):
             return section_rank * 1000 + 60
-        if property_name.endswith("_DOCKER_IMAGE_VERSION"):
-            return section_rank * 1000 + 70
 
     if section == "SECURITY":
         if property_name.endswith("_UNSECURED_ENV_VARIABLES"):
@@ -2855,6 +2816,22 @@ def ensure_config_schema_root_x_metadata_for_descriptors_and_linters() -> None:
 
         if _is_removed_linter_related_variable(prop_name):
             continue
+
+        # Flag deprecated variables with the JSON Schema "deprecated" keyword so
+        # editors/tools can surface them. Detection is based on the "(deprecated)"
+        # title prefix added for deprecated linters and on "Deprecated:" wording.
+        title = prop_schema.get("title", "")
+        description = prop_schema.get("description", "")
+        is_deprecated_variable = (
+            isinstance(title, str) and "(deprecated)" in title.lower()
+        ) or (
+            isinstance(description, str)
+            and description.lower().lstrip().startswith("deprecated")
+        )
+        if is_deprecated_variable and prop_schema.get("deprecated") is not True:
+            prop_schema["deprecated"] = True
+            updated = True
+
         category = _infer_config_schema_descriptor_or_linter_category(prop_name)
         if category is None:
             continue

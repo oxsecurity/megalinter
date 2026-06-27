@@ -9,9 +9,6 @@ runs:
   using: "docker"
   # You can manually update the Docker image version here, or use the latest tag
   image: "docker://<%= DOCKER_IMAGE_VERSION %>"
-  args:
-    - "-v"
-    - "/var/run/docker.sock:/var/run/docker.sock:rw"
 branding:
   icon: "check"
   color: "green"
