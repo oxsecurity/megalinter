@@ -118,7 +118,7 @@ ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=11.7.1
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
 ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=11.7.1
 # renovate: datasource=github-tags depName=anchore/syft
-ARG REPOSITORY_SYFT_VERSION=1.45.1
+ARG REPOSITORY_SYFT_VERSION=1.46.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_VERSION=0.71.2
 # renovate: datasource=github-tags depName=aquasecurity/trivy
