@@ -55,7 +55,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=github-releases depName=realm/SwiftLint
-ARG SWIFT_SWIFTLINT_VERSION=0.64.1
+ARG SWIFT_SWIFTLINT_VERSION=0.65.0
 #ARG__END
 
 ####################

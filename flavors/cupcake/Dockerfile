@@ -317,7 +317,7 @@ ARG PIP_CODESPELL_VERSION=2.4.2
 # renovate: datasource=pypi depName=sqlfluff
 ARG PIP_SQLFLUFF_VERSION=4.2.2
 # renovate: datasource=github-releases depName=realm/SwiftLint
-ARG SWIFT_SWIFTLINT_VERSION=0.64.1
+ARG SWIFT_SWIFTLINT_VERSION=0.65.0
 # renovate: datasource=npm depName=prettyjson
 ARG NPM_PRETTYJSON_VERSION=1.2.5
 # renovate: datasource=npm depName=@typescript-eslint/eslint-plugin
