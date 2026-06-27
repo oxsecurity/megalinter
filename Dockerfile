@@ -966,7 +966,7 @@ esac \
     && DART_URL="https://storage.googleapis.com/dart-archive/channels/stable/release/${DART_VERSION}/sdk/dartsdk-linux-${DART_ARCH}-release.zip" \
     && for attempt in 1 2 3 4 5; do \
          echo "Downloading Dart SDK (attempt ${attempt}/5)" \
-         && wget --tries=5 --waitretry=10 --timeout=60 -q -O /tmp/dart-sdk.zip "${DART_URL}" \
+         && wget --tries=5 -T 60 -q -O /tmp/dart-sdk.zip "${DART_URL}" \
          && unzip -tq /tmp/dart-sdk.zip > /dev/null 2>&1 \
          && break; \
          echo "Dart SDK download/verify failed (attempt ${attempt}/5), retrying in 15s" \
