@@ -188,9 +188,6 @@ Rules for writing entries:
 | `variables`                   | Custom extra variables with name, default_value, description    |
 | `pre_commands`                | Bash commands to run before linting                             |
 | `post_commands`               | Bash commands to run after linting                              |
-| `cli_docker_image`            | External Docker image for linting                               |
-| `cli_docker_image_version`    | Docker image version                                            |
-| `cli_docker_args`             | Docker run arguments                                            |
 | `version_extract_regex`       | Override regex for extracting version                           |
 | `version_command_return_code` | Valid return code for version command if not 0                  |
 | `help_command_return_code`    | Valid return code for help command if not 0                     |

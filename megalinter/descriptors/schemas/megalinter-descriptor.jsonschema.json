@@ -544,7 +544,8 @@
           "cli_docker_args": {
             "$id": "#/properties/linters/items/properties/cli_docker_args",
             "default": [],
-            "description": "Arguments for docker run before image name",
+            "deprecated": true,
+            "description": "DEPRECATED and ignored: running a linter via a sibling Docker image is no longer supported. Install the linter natively in the descriptor instead.",
             "examples": [
               [
                 "-v",
@@ -556,25 +557,28 @@
             "items": {
               "type": "string"
             },
-            "title": "CLI docker run arguments",
+            "title": "CLI docker run arguments (deprecated)",
             "type": "array"
           },
           "cli_docker_image": {
             "$id": "#/properties/linters/items/properties/cli_docker_image",
+            "deprecated": true,
+            "description": "DEPRECATED and ignored: running a linter via a sibling Docker image is no longer supported. Install the linter natively in the descriptor instead.",
             "examples": [
               "norionomura/swiftlint"
             ],
-            "title": "Name of the docker image to use for linting",
+            "title": "Name of the docker image to use for linting (deprecated)",
             "type": "string"
           },
           "cli_docker_image_version": {
             "$id": "#/properties/linters/items/properties/cli_docker_image_version",
             "default": "latest",
-            "description": "Version of the docker image to use for linting",
+            "deprecated": true,
+            "description": "DEPRECATED and ignored: running a linter via a sibling Docker image is no longer supported. Install the linter natively in the descriptor instead.",
             "examples": [
               "0.42.0_swift-5.3.2"
             ],
-            "title": "Docker image version",
+            "title": "Docker image version (deprecated)",
             "type": "string"
           },
           "cli_executable": {

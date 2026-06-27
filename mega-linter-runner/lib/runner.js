@@ -218,7 +218,6 @@ export class MegaLinterRunner {
     if (options["containerName"]) {
       commandArgs.push(...["--name", options["containerName"]]);
     }
-    commandArgs.push(...["-v", "/var/run/docker.sock:/var/run/docker.sock:rw"]);
     commandArgs.push(...["-v", `${lintPath}:/tmp/lint:rw`]);
     if (options["userMap"] === true) {
       const runtimeUid =
