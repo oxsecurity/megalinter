@@ -414,7 +414,7 @@ def test_get_linter_version(linter, test_self):
                 )
                 versions_block = f"{start}{versions_text}{end}"
                 changelog_content = re.sub(
-                    regex, versions_block, changelog_content, re.DOTALL
+                    regex, versions_block, changelog_content, flags=re.DOTALL
                 )
                 with open(changelog_file, "w", encoding="utf-8") as md_file:
                     md_file.write(changelog_content)
