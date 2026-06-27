@@ -15694,7 +15694,10 @@
 </li>
 </ul>
 <ul>
-<li>Disabled linters</li>
+<li>Disabled linters<ul>
+<li><code>SALESFORCE_SFDX_SCANNER_APEX</code>, <code>SALESFORCE_SFDX_SCANNER_AURA</code> and <code>SALESFORCE_SFDX_SCANNER_LWC</code> — disabled because sfdx-scanner 4.12.0 crashes on Node.js 22+ (<code>TypeError: Cannot read properties of undefined (reading 'prototype')</code>, caused by the removal of <code>SlowBuffer.prototype</code>), which is shipped with Alpine 3.24. These linters were already deprecated; use the <code>SALESFORCE_CODE_ANALYZER_APEX</code> / <code>SALESFORCE_CODE_ANALYZER_AURA</code> / <code>SALESFORCE_CODE_ANALYZER_LWC</code> variants instead (#8080).</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Re-enabled linters</li>
@@ -15726,7 +15729,8 @@
 <li><code>REPOSITORY_BETTERLEAKS</code>: added <code>--verbose</code> so detected findings (file, line and rule) are reported instead of only the <code>leaks found: N</code> summary, matching gitleaks behavior. Secret values stay redacted via <code>--redact</code>.</li>
 <li><code>REPOSITORY_OSV_SCANNER</code>: exit code 128 ("No package sources found") is now treated as a clean pass instead of a failure — osv-scanner returns this code when the repo contains no lockfiles/manifests/SBOMs, which is not a vulnerability finding (#7917).</li>
 <li>Fix intermittent <code>ansible-lint</code> <code>load-failure[not-found]</code> error on <code>github_conf/branch_protection_rules.json</code> caused by a race condition with <code>checkov</code> running in parallel. Checkov's transient GitHub-conf directory is now written to a hidden path (<code>.megalinter_github_conf</code>) that project-mode linters skip, eliminating the conflict (#8092).</li>
-<li>Complete the Alpine 3.24 upgrade across the whole image and fix how alpine version is detected.</li>
+<li>Complete the Alpine 3.24 upgrade across the whole image and fix how alpine version is detected. Docker images now build on the <code>python:3.14-alpine3.24</code> base image (#8080).</li>
+<li>Avoid <code>DeprecationWarning</code> / future breakage on Python 3.14 by no longer passing <code>count</code> and <code>flags</code> as positional arguments to <code>re.sub</code> (#8211).</li>
 <li>Exclude <code>REPORT_OUTPUT_FOLDER</code> from linting when configured as an absolute path inside the workspace (e.g. <code>/tmp/lint/megalinter-reports</code>), fixing #7845.</li>
 <li>Fix command injection in Roslynator linter (<code>DOTNET_ROSLYNATOR</code>) where a crafted <code>.csproj</code> filename could break out of <code>dotnet restore</code> arguments and execute arbitrary shell commands. The command is now invoked via argv list instead of a shell string. Reported by Francesco Sabiu.</li>
 <li>Fix <code>IndexError</code> when building the single-linter Docker image for a linter whose activation depends on a file (e.g. <code>SPELL_VALE</code> requires <code>.vale.ini</code>): <code>python -m megalinter.run --linterversion</code> now bypasses activation filtering since the per-linter image is built for that linter unconditionally.</li>
@@ -15763,6 +15767,8 @@
 </ul>
 <ul>
 <li>Dev<ul>
+<li>Add specialized Claude Code sub-agents (<code>pr-monitor</code>, <code>security-analyst</code>, <code>version-bumper</code>) and assign cost-effective models to mechanical tasks, to speed up and reduce the token cost of contributor workflows (#7906).</li>
+<li>Add the <code>/fix-issue</code> Claude Code skill for end-to-end GitHub issue fixes (gather context, implement on a branch, open a PR, watch CI) (#7848).</li>
 <li>Stop generating per-linter Dockerfiles for linters marked <code>disabled: true</code> in their descriptor. The matching images were already excluded from the build matrix (<code>linters_matrix.json</code>) and never published, so the on-disk <code>linters/&lt;linter&gt;/Dockerfile</code> was dead code. Deleted the 8 corresponding stale Dockerfile directories.</li>
 <li>Move the <code>.devcontainer</code> setup from the Dockerfile to a JSON configuration file (#7865).</li>
 <li>Update the Python version in the devcontainer image (#7853).</li>
@@ -15771,6 +15777,8 @@
 </ul>
 <ul>
 <li>CI<ul>
+<li>Build the real <code>{ linter, platform, runner }</code> job list directly in <code>get-linters-matrix</code> for the DEV and BETA linter workflows, instead of a linter×runner cross-product filtered at runtime by <code>job_enabled</code>. Removes the <code>Prepare</code> step and the no-op jobs while preserving selection logic (#8133, #8134).</li>
+<li>Track image-runtime shell scripts (<code>setup-runtime-user</code>, <code>megalinter_exec</code>) in the image-build path filters by renaming them to <code>.sh</code>, so changes to them correctly trigger image rebuilds; generated images now use root-independent command wrappers instead of shell aliases (#8213).</li>
 <li>Suppress the new <code>ref-version-mismatch</code> audit introduced by zizmor 1.25.0 for the project's pinned <code>uses:</code> action references. The SHA pins are correct (the supply-chain property); only the inline <code># vX</code> comments lag behind exact subversions, and renovate maintains the hashes.</li>
 <li>Simplify the workflow trigger condition to prevent duplicate runs for pushes from forks.</li>
 <li>Fix the <code>deploy-dev</code> workflow (#8154).</li>
