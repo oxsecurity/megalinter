@@ -21,6 +21,18 @@
     enabled: true,
   },
   osvVulnerabilityAlerts: true,
+  hostRules: [
+    {
+      // repology.org is slow/flaky and frequently times out from the hosted runner.
+      // Without this, a repology ETIMEDOUT raises an ExternalHostError that aborts the
+      // whole repository run (Repository result: external-host-error), silently dropping
+      // all updates and Dependency Dashboard checkbox requests. Treat repology failures
+      // as a normal lookup miss instead of aborting the run.
+      matchHost: 'repology.org',
+      abortOnError: false,
+      timeout: 60000,
+    },
+  ],
   packageRules: [
     {
       matchPackageNames: [
