@@ -836,9 +836,7 @@ def generate_linter_dockerfiles():
                 # "    echo $STANDALONE_LINTER_VERSION >> ~/.bashrc && source ~/.bashrc",
                 'ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]',
             ]
-            build_dockerfile(
-                dockerfile, descriptor_and_linter, "none", extra_lines
-            )
+            build_dockerfile(dockerfile, descriptor_and_linter, "none", extra_lines)
             docker_image = (
                 f"{ML_DOCKER_IMAGE_WITH_HOST}-only-{linter_lower_name}:{VERSION_V}"
             )
