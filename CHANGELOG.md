@@ -44,6 +44,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Fix per-linter Docker images being published single-arch. The BETA and RELEASE linter workflows split each linter into independent per-platform jobs that all pushed the same tag (`:beta`, `:v9`, `:vX.Y.Z`, `:latest`), so the last push won and overwrote the other architecture. They now push each platform by digest and a dedicated merge job assembles a proper multi-arch manifest list per linter, restoring linux/amd64 + linux/arm64 support for `megalinter-only-*` images.
 
 - Linter versions upgrades (N)
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.410 to **1.1.411** on 2026-06-28
 <!-- linter-versions-end -->
 
 ## [v9.6.0] - 2026-06-28
