@@ -37,7 +37,9 @@ LV_LINE_RE = re.compile(
 
 
 def split_blocks(lines):
-    start = next(i for i, line in enumerate(lines) if line.startswith("## [Unreleased]"))
+    start = next(
+        i for i, line in enumerate(lines) if line.startswith("## [Unreleased]")
+    )
     end = next(i for i in range(start + 1, len(lines)) if lines[i].startswith("## ["))
     return lines[:start], lines[start:end], lines[end:]
 
@@ -109,7 +111,9 @@ def collapse_versions(content):
     lines = []
     for name in sorted(data, key=str.lower):
         d = data[name]
-        lines.append(f"  - [{name}]({d['url']}) from {d['first_from']} to **{d['last_to']}**")
+        lines.append(
+            f"  - [{name}]({d['url']}) from {d['first_from']} to **{d['last_to']}**"
+        )
     return lines
 
 
@@ -183,8 +187,10 @@ def cmd_apply(args):
     out_lines = preamble + fresh + released + rest
     out_path = args.out or args.changelog
     open(out_path, "w", encoding="utf-8").write("\n".join(out_lines))
-    print(f"Wrote {out_path} (release {args.version} - {release_date}, "
-          f"{len([s for s in sections if s[1].startswith(LV_PREFIX)])} version section)")
+    print(
+        f"Wrote {out_path} (release {args.version} - {release_date}, "
+        f"{len([s for s in sections if s[1].startswith(LV_PREFIX)])} version section)"
+    )
 
 
 def main():

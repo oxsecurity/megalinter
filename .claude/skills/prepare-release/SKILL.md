@@ -38,7 +38,7 @@ PR-number backfill is the one **judgment** part, so the script splits it into `a
 python .claude/skills/prepare-release/prepare_changelog.py analyze
 ```
 
-This prints a JSON array of candidates `{id, section, text}` — every content line (`  - …`) in a non-version section that does **not** already carry a MegaLinter reference. A line counts as already-referenced only if it has `(#N)`, a bare `#N` after a space/paren, or an `oxsecurity/megalinter` URL. A line that merely links an external repo/issue (e.g. the linter's own GitHub page) is **not** considered referenced and will appear as a candidate.
+This prints a JSON array of candidates `{id, section, text}` — every content line (`- …`) in a non-version section that does **not** already carry a MegaLinter reference. A line counts as already-referenced only if it has `(#N)`, a bare `#N` after a space/paren, or an `oxsecurity/megalinter` URL. A line that merely links an external repo/issue (e.g. the linter's own GitHub page) is **not** considered referenced and will appear as a candidate.
 
 ### 2b — Decide the PR(s) for each candidate
 
