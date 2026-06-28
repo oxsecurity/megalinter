@@ -21,127 +21,55 @@ Call the resolved value `RELEASE_VERSION` (e.g. `v9.6.0`).
 
 ## Step 2 — Rewrite CHANGELOG.md
 
-Read `CHANGELOG.md` in full. Identify the **Unreleased block**: everything from `## [Unreleased] (beta, main branch content)` down to (but not including) the next `## [` header. Everything before the `## [Unreleased]` line (the file preamble) is preserved verbatim.
+The mechanical transformation is done by the bundled helper script
+`.claude/skills/prepare-release/prepare_changelog.py` (stdlib only, no venv needed). It:
 
-### 2a — Capture section structure
+- converts the `## [Unreleased]` block into a dated `## [RELEASE_VERSION] - YYYY-MM-DD` entry;
+- prunes empty sections from the release entry;
+- collapses the linter-version bumps to **one line per linter**, alphabetically sorted, using the **chronological first-seen `from` → last-seen `to`** range with no date (this is intentional: it stays correct across renumberings, e.g. cfn-lint `3.14 → 1.52.0`, where a naive semver-min/max would print a backwards range);
+- strips `<!-- linter-versions-end -->` from the release entry;
+- prepends a fresh empty `## [Unreleased]` block that holds the **sole** marker and keeps the repo's `(N)` placeholder on the linter-versions header.
 
-Inside the Unreleased block, parse every **section header**: a line that starts with exactly `- ` (no indentation) followed by a section name, e.g. `- Breaking changes`, `- Linter versions upgrades (N)`. Capture them **in order** — this list drives the fresh Unreleased block in step 2e.
+PR-number backfill is the one **judgment** part, so the script splits it into `analyze` (lists the lines that need a PR) and `apply` (consumes your decisions).
 
-**Content items** are lines with exactly two-space indent: `  - …`.
-**Sub-bullets** have more than two-space indent: `    - …` — never process these.
-
-### 2b — Backfill PR numbers on section content lines
-
-Determine the previous release tag:
-
-```bash
-git tag --sort=-creatordate | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | head -1
-```
-
-Build the commit map since that tag:
+### 2a — List the lines that need a PR number
 
 ```bash
-git log PREV_TAG..HEAD --oneline --no-merges
+python .claude/skills/prepare-release/prepare_changelog.py analyze
 ```
 
-For every **content item** (`  - ` line) in every section **except** `Linter versions upgrades`:
+This prints a JSON array of candidates `{id, section, text}` — every content line (`  - …`) in a non-version section that does **not** already carry a MegaLinter reference. A line counts as already-referenced only if it has `(#N)`, a bare `#N` after a space/paren, or an `oxsecurity/megalinter` URL. A line that merely links an external repo/issue (e.g. the linter's own GitHub page) is **not** considered referenced and will appear as a candidate.
 
-1. **Skip** the line if it already contains `(#`, `#[0-9]`, or a `github.com` URL.
-2. Extract 2–4 distinctive keywords from the line: linter names, descriptor IDs (e.g. `SWIFT_SWIFTLINT`), quoted identifiers, bare issue refs.
-3. Search the commit map: `grep -i "KEYWORD"` for each keyword. Also run:
-   ```bash
-   gh pr list --state merged --search "KEYWORD in:title" --json number,title --limit 5
-   ```
-   for terms not found in commit subjects.
-4. **Confident single match** → append ` (#N)` where N is the PR number.
-5. **Multiple related matches** (same feature/fix) → append all: ` (#N1, #N2)`.
-6. **No match or ambiguous** → leave line unchanged; add to an *unmatched lines* list shown at step 3.
+### 2b — Decide the PR(s) for each candidate
 
-Do not process sub-bullets (indent > 2 spaces) for PR backfill.
+Build the commit map for the release window:
 
-### 2c — Collapse the linter version lines
-
-Collect every `  - ` line under the `- Linter versions upgrades` header, stopping at `<!-- linter-versions-end -->`. Each line has the format:
-
-```
-  - [name](url) from X to **Y** on YYYY-MM-DD
+```bash
+PREV_TAG="$(git tag --sort=-creatordate | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | head -1)"
+git log "$PREV_TAG"..HEAD --oneline --no-merges
 ```
 
-Parse with this pattern per line: `\[([^\]]+)\]\(([^)]+)\)\s+from\s+(\S+)\s+to\s+\*\*([^*]+)\*\*`
+For each candidate, extract distinctive keywords (linter name, descriptor ID, quoted identifier) and find the PR:
 
-Group lines by linter `name`. For each group:
+- `grep -i "KEYWORD"` against the commit map (squash-merge subjects end in `(#NNNN)`);
+- for terms not in commit subjects, `gh pr list --state merged --search "KEYWORD in:title" --json number,title --limit 5`.
 
-1. Collect all version strings that appear as `from X` or `to **Y**` across every line in the group.
-2. Parse each version string as semver: split on `.`, pad with `.0` to reach three parts (e.g. `3.14` → `3.14.0`). Ignore any trailing non-numeric suffixes.
-3. Find the **semver minimum** and **semver maximum** across the collected set (compare major, then minor, then patch).
-4. Keep the URL from the first line for that linter.
-5. Produce: `  - [name](url) from MIN to **MAX**` (no date).
+Write the **confident** matches to a JSON file, keyed by candidate `id`, value = PR number(s) (comma-separated for multiple):
 
-Sort all produced lines **alphabetically by linter name** (case-insensitive). Count them → `N_LINTERS`.
-
-Replace the section header with: `- Linter versions upgrades (N_LINTERS)`
-
-### 2d — Prune empty sections from the released entry
-
-A section is **empty** when its `- SectionName` header has no `  - ` content items before the next `- SectionName` or end of block. Remove empty sections entirely, including their surrounding blank lines.
-
-Always keep `- Linter versions upgrades` regardless of line count.
-
-### 2e — Assemble the new CHANGELOG.md
-
-Build the file from four parts:
-
-**Part 1 — File preamble** (unchanged):
-Everything before the original `## [Unreleased]` line.
-
-**Part 2 — Fresh Unreleased block:**
-
-```
-## [Unreleased] (beta, main branch content)
-
-Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
-
-- Breaking changes
-
-- Core
-
-[... every section header captured in 2a, in original order, each followed by a blank line ...]
-
-- Linter versions upgrades (0)
-<!-- linter-versions-end -->
-
+```json
+{ "0": "8216", "1": "8216", "5": "7907", "12": "8133,8134" }
 ```
 
-Use the **exact header text** captured in 2a (e.g. `- mega-linter-runner`, `- CI`). Every section is empty. Set the linter-versions count to `(0)`. Place `<!-- linter-versions-end -->` immediately after the `- Linter versions upgrades (0)` line with no blank line between them. Add one blank line after the marker before Part 3.
+Leave a candidate **out** of the JSON when no PR is found, the match is ambiguous, or the matching commit has no PR number. Unmatched lines are simply left as-is — do **not** report them or ask the user about them.
 
-**Part 3 — Released entry:**
+### 2c — Apply the transformation
 
-```
-## [RELEASE_VERSION] - TODAY_DATE
-
-- SectionA
-  - item with PR (#N)
-  - item with PR (#N1, #N2)
-
-- SectionB
-  - ...
-
-- Linter versions upgrades (N_LINTERS)
-  - [aardvark](url) from X to **Y**
-  - [zebra](url) from X to **Y**
+```bash
+python .claude/skills/prepare-release/prepare_changelog.py apply \
+  --version RELEASE_VERSION --date "$(date +%F)" --prs /path/to/prs.json
 ```
 
-- Use today's date in `YYYY-MM-DD` format.
-- Include only non-empty sections (step 2d), in their original order.
-- PR numbers are backfilled (step 2b).
-- Linter versions are collapsed and alpha-sorted (step 2c).
-- **No** `Note:` line. **No** `<!-- linter-versions-end -->` marker.
-- Add one blank line after this block before Part 4.
-
-**Part 4 — Rest of file:**
-Everything from the previous release's `## [v…] -` header to the end of file, verbatim.
-
-Write the assembled content to `CHANGELOG.md`.
+This rewrites `CHANGELOG.md` in place. (For a dry run, add `--out /some/tmp/path` to write elsewhere and leave `CHANGELOG.md` untouched.)
 
 ## Step 3 — Confirm the CHANGELOG
 
@@ -149,14 +77,6 @@ Show the diff:
 
 ```bash
 git diff CHANGELOG.md
-```
-
-If the *unmatched lines* list (from step 2b) is non-empty, display it explicitly:
-
-```
-Lines where no PR was found — review and add manually if needed:
-  - <line text>
-  - <line text>
 ```
 
 Ask:
