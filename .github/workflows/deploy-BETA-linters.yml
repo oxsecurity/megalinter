@@ -283,13 +283,18 @@ jobs:
 
       - name: Create manifest list and push
         working-directory: ${{ runner.temp }}/digests
+        env:
+          GITHUB_REPOSITORY_NAME: ${{ github.repository }}
+          MATRIX_LINTER: ${{ matrix.linter }}
         run: |
           # shellcheck disable=SC2046
           docker buildx imagetools create $(jq -cr '.tags | map("-t " + .) | join(" ")' <<< "$DOCKER_METADATA_OUTPUT_JSON") \
-            $(printf 'ghcr.io/${{ github.repository }}-only-${{ matrix.linter }}@sha256:%s ' *)
+            $(printf "ghcr.io/${GITHUB_REPOSITORY_NAME}-only-${MATRIX_LINTER}@sha256:%s " *)
 
       - name: Inspect image
         run: |
-          docker buildx imagetools inspect ghcr.io/${{ github.repository }}-only-${{ matrix.linter }}:"${STEPS_META_OUTPUTS_VERSION}"
+          docker buildx imagetools inspect ghcr.io/"${GITHUB_REPOSITORY_NAME}"-only-"${MATRIX_LINTER}":"${STEPS_META_OUTPUTS_VERSION}"
         env:
           STEPS_META_OUTPUTS_VERSION: ${{ steps.meta.outputs.version }}
+          GITHUB_REPOSITORY_NAME: ${{ github.repository }}
+          MATRIX_LINTER: ${{ matrix.linter }}

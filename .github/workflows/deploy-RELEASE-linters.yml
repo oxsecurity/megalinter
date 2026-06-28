@@ -43,10 +43,12 @@ jobs:
       - name: Read linters_matrix.json
         id: set-matrix
         run: |
-          echo "linters=$(jq -c '[.["linux/amd64"][]]'  .automation/generated/linters_matrix.json)" >> "${GITHUB_OUTPUT}"
-          echo "linters_arm=$(jq -c '[.["linux/arm64"][]]'  .automation/generated/linters_matrix.json)" >> "${GITHUB_OUTPUT}"
-          # Unique list of linters across platforms, used by the manifest-merge job
-          echo "linters_all=$(jq -c '([.["linux/amd64"][]] + [.["linux/arm64"][]]) | unique'  .automation/generated/linters_matrix.json)" >> "${GITHUB_OUTPUT}"
+          {
+            echo "linters=$(jq -c '[.["linux/amd64"][]]'  .automation/generated/linters_matrix.json)"
+            echo "linters_arm=$(jq -c '[.["linux/arm64"][]]'  .automation/generated/linters_matrix.json)"
+            # Unique list of linters across platforms, used by the manifest-merge job
+            echo "linters_all=$(jq -c '([.["linux/amd64"][]] + [.["linux/arm64"][]]) | unique'  .automation/generated/linters_matrix.json)"
+          } >> "${GITHUB_OUTPUT}"
 
   build:
     name: Deploy Docker Image - Release - Linters
@@ -84,9 +86,11 @@ jobs:
             platforms=linux/arm64
           fi
 
-          echo "job_enabled=$job_enabled" >> "${GITHUB_OUTPUT}"
-          echo "platforms=$platforms" >> "${GITHUB_OUTPUT}"
-          echo "platform_pair=${platforms//\//-}" >> "${GITHUB_OUTPUT}"
+          {
+            echo "job_enabled=$job_enabled"
+            echo "platforms=$platforms"
+            echo "platform_pair=${platforms//\//-}"
+          } >> "${GITHUB_OUTPUT}"
 
       ##########################
       # Checkout the code base #
@@ -268,17 +272,19 @@ jobs:
         working-directory: ${{ runner.temp }}/digests
         env:
           GITHUB_EVENT_RELEASE_TAG_NAME: ${{ github.event.release.tag_name }}
+          MATRIX_LINTER: ${{ matrix.linter }}
         run: |
           # shellcheck disable=SC2046
           # MAJOR-RELEASE-IMPACTED
           docker buildx imagetools create \
-            -t ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:v9 \
-            -t ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:"${GITHUB_EVENT_RELEASE_TAG_NAME}" \
-            -t ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:latest \
-            $(printf 'ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}@sha256:%s ' *)
+            -t ghcr.io/oxsecurity/megalinter-only-"${MATRIX_LINTER}":v9 \
+            -t ghcr.io/oxsecurity/megalinter-only-"${MATRIX_LINTER}":"${GITHUB_EVENT_RELEASE_TAG_NAME}" \
+            -t ghcr.io/oxsecurity/megalinter-only-"${MATRIX_LINTER}":latest \
+            $(printf "ghcr.io/oxsecurity/megalinter-only-${MATRIX_LINTER}@sha256:%s " *)
 
       - name: Inspect image
         env:
           GITHUB_EVENT_RELEASE_TAG_NAME: ${{ github.event.release.tag_name }}
+          MATRIX_LINTER: ${{ matrix.linter }}
         run: |
-          docker buildx imagetools inspect ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:"${GITHUB_EVENT_RELEASE_TAG_NAME}"
+          docker buildx imagetools inspect ghcr.io/oxsecurity/megalinter-only-"${MATRIX_LINTER}":"${GITHUB_EVENT_RELEASE_TAG_NAME}"
