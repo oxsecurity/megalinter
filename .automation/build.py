@@ -2817,7 +2817,7 @@ def write_config_json_schema(json_schema) -> None:
     with open(tmp_path, "w", encoding="utf-8") as outfile:
         json.dump(json_schema, outfile, indent=2, sort_keys=True)
         outfile.write("\n")
-    last_error = None
+    last_error: OSError = OSError("Failed to replace config schema after all retries")
     for attempt in range(10):
         try:
             os.replace(tmp_path, CONFIG_JSON_SCHEMA)
