@@ -11,6 +11,7 @@ import re
 import shutil
 import subprocess
 import sys
+import time
 from datetime import datetime
 from pathlib import Path
 from shutil import copyfile, which
@@ -2806,6 +2807,27 @@ def _infer_config_schema_x_order(property_name: str, section: str) -> int:
     return section_rank * 1000 + 999
 
 
+def write_config_json_schema(json_schema) -> None:
+    # Atomic write with retry: the config schema is rewritten many times during a
+    # build, and on Windows a transient lock from an editor's JSON language server
+    # or antivirus can make a direct write fail with OSError [Errno 22]. Writing to
+    # a sibling temp file then os.replace() keeps the target intact, and the retry
+    # tolerates a brief lock on the final replace.
+    tmp_path = CONFIG_JSON_SCHEMA + ".tmp"
+    with open(tmp_path, "w", encoding="utf-8") as outfile:
+        json.dump(json_schema, outfile, indent=2, sort_keys=True)
+        outfile.write("\n")
+    last_error = None
+    for attempt in range(10):
+        try:
+            os.replace(tmp_path, CONFIG_JSON_SCHEMA)
+            return
+        except OSError as error:
+            last_error = error
+            time.sleep(0.5)
+    raise last_error
+
+
 def ensure_config_schema_root_x_metadata_for_descriptors_and_linters() -> None:
     with open(CONFIG_JSON_SCHEMA, "r", encoding="utf-8") as json_file:
         json_schema = json.load(json_file)
@@ -2856,9 +2878,7 @@ def ensure_config_schema_root_x_metadata_for_descriptors_and_linters() -> None:
             updated = True
 
     if updated is True:
-        with open(CONFIG_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
-            json.dump(json_schema, outfile, indent=2, sort_keys=True)
-            outfile.write("\n")
+        write_config_json_schema(json_schema)
 
 
 def validate_config_schema_root_x_metadata() -> None:
@@ -2907,9 +2927,7 @@ def add_in_config_schema_file(variables):
     json_schema["properties"] = json_schema_props
     updated = _ensure_enum_names(json_schema) or updated
     if updated is True:
-        with open(CONFIG_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
-            json.dump(json_schema, outfile, indent=2, sort_keys=True)
-            outfile.write("\n")
+        write_config_json_schema(json_schema)
 
 
 def remove_in_config_schema_file(variables):
@@ -2924,9 +2942,7 @@ def remove_in_config_schema_file(variables):
             updated = True
     json_schema["properties"] = json_schema_props
     if updated is True:
-        with open(CONFIG_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
-            json.dump(json_schema, outfile, indent=2, sort_keys=True)
-            outfile.write("\n")
+        write_config_json_schema(json_schema)
 
 
 def copy_md_file(source_file, target_file):
@@ -3288,9 +3304,7 @@ def generate_json_schema_enums():
     json_schema["definitions"]["enum_linter_keys"]["enum"] = sorted(
         set(json_schema["definitions"]["enum_linter_keys"]["enum"])
     )
-    with open(CONFIG_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
-        json.dump(json_schema, outfile, indent=2, sort_keys=True)
-        outfile.write("\n")
+    write_config_json_schema(json_schema)
     # Also update megalinter custom flavor schema
     with open(CUSTOM_FLAVOR_JSON_SCHEMA, "r", encoding="utf-8") as json_flavor_file:
         json_flavor_schema = json.load(json_flavor_file)

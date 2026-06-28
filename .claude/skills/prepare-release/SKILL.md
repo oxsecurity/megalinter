@@ -101,9 +101,11 @@ If **No / not sure**: stop. Guide the user:
 2. Wait for it to finish green.
 3. Re-invoke `/prepare-release RELEASE_VERSION`.
 
-## Step 5 — Run the release build
+## Step 5 — Run the release build (manual, in a separate terminal)
 
-Warn the user: this step regenerates all documentation and Dockerfiles and may take several minutes.
+**Do not run this build yourself.** It regenerates all documentation and Dockerfiles and can take several minutes — run it in a dedicated terminal so its output stays visible and interruptible.
+
+Tell the user to open another command line at the repo root and run:
 
 ```bash
 make megalinter-release RELEASE_VERSION=RELEASE_VERSION
@@ -115,7 +117,13 @@ The Makefile activates the venv automatically. This runs:
 
 Do not run `make megalinter-build-with-doc` separately.
 
-If the command fails, show the error output and stop.
+Then ask:
+
+> **AskUserQuestion**: "Has `make megalinter-release RELEASE_VERSION=RELEASE_VERSION` finished successfully in your other terminal?"
+>
+> Options: **Yes, it completed** / **No, it failed**
+
+If **No, it failed**: ask the user to paste the error output, then help diagnose and stop until it succeeds. Once it succeeds, continue to Step 6.
 
 ## Step 6 — Confirm before pushing
 

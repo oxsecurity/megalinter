@@ -3,6 +3,7 @@
     "ansible-lint": "GPL-3.0",
     "arm-ttk": "MIT",
     "bandit": "Apache-2.0",
+    "betterleaks": "MIT",
     "bicep_linter": "MIT",
     "black": "MIT",
     "cfn-lint": "MIT-0",

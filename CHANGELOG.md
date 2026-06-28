@@ -9,53 +9,84 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
 - Breaking changes
-  - **Linters can no longer be run via a sibling Docker image at runtime.** The `cli_docker_image`, `cli_docker_image_version` and `cli_docker_args` descriptor properties (and the matching `<LINTER>_DOCKER_IMAGE_VERSION` variable) have been removed, and MegaLinter no longer mounts `/var/run/docker.sock` (in `mega-linter-runner`, the GitHub Action `action.yml` files, and the Docker daemon previously bundled in flavor images). This closes the host-privilege escalation surface that the mounted Docker socket exposed. The only linter that used this mechanism was `SWIFT_SWIFTLINT`, now installed natively (see below).
-  - **`SWIFT_SWIFTLINT` is now installed from the static `swiftlint-static` binary** instead of running the `ghcr.io/realm/swiftlint` container. It runs natively on the Alpine image with no Docker socket required. SourceKit-dependent rules are disabled in this build and reported to the console when encountered; pure-syntax style rules are unaffected.
-  - **`@eslint/eslintrc` shim removed** from JavaScript/TypeScript/JSX/TSX Docker images (was only needed for legacy `FlatCompat`); MegaLinter's bundled test fixtures use native flat config.
-  - **ESLint linters now force migration off `.eslintrc.*`**: `JAVASCRIPT_ES`, `TYPESCRIPT_ES`, `JSX_ESLINT`, `TSX_ESLINT` activate when they find any `eslint.config.*` *or* any deprecated `.eslintrc.*` / `package.json#eslintConfig`. In the legacy case the linter does not call ESLint at all — it emits a single hard failure with a migration message so the build stays red until the config is migrated to flat config. See the [ESLint flat-config migration guide](https://eslint.org/docs/latest/use/configure/migration-guide). To opt out, set `DISABLE_LINTERS` or `DISABLE` to exclude the affected linter/descriptor.
-  - **`JSON_ESLINT_PLUGIN_JSONC` removed**: upstream bug [ota-meshi/eslint-plugin-jsonc#328](https://github.com/ota-meshi/eslint-plugin-jsonc/issues/328) blocks ESLint v10 compatibility and will not be fixed. Use `JSON_JSONLINT`, `JSON_PRETTIER`, or `JSON_V8R` for JSON validation instead.
 
 - Core
-  - New linter descriptor property `common_linter_errors`: declare known non-lint failure patterns (config issue, remote service down, missing credentials…) and the guidance message shown to users, directly in YAML — no custom Python class needed.
-  - Skipped-linters summary now explains why a linter was skipped by an activation rule, including the variable to set to activate it (e.g. `MARKDOWN_RUMDL: MARKDOWN_DEFAULT_STYLE=markdownlint (set MARKDOWN_DEFAULT_STYLE=rumdl to activate)`), fixing [#8017](https://github.com/oxsecurity/megalinter/issues/8017).
 
 - New linters
-  - Add [betterleaks](https://github.com/betterleaks/betterleaks) linter for repository secrets scanning — successor to gitleaks with higher recall (98.6% vs 70.4%), lower false-positive rates, and 4–5× faster scanning via BPE-based detection and CEL filter expressions
 
 - Disabled linters
-  - `SALESFORCE_SFDX_SCANNER_APEX`, `SALESFORCE_SFDX_SCANNER_AURA` and `SALESFORCE_SFDX_SCANNER_LWC` — disabled because sfdx-scanner 4.12.0 crashes on Node.js 22+ (`TypeError: Cannot read properties of undefined (reading 'prototype')`, caused by the removal of `SlowBuffer.prototype`), which is shipped with Alpine 3.24. These linters were already deprecated; use the `SALESFORCE_CODE_ANALYZER_APEX` / `SALESFORCE_CODE_ANALYZER_AURA` / `SALESFORCE_CODE_ANALYZER_LWC` variants instead (#8080).
 
 - Re-enabled linters
 
 - Deprecated linters
-  - `REPOSITORY_GITLEAKS` — deprecated in favour of `REPOSITORY_BETTERLEAKS` (same author, fully compatible config, significantly better detection). Will be removed in the next major release. Disable it by adding `REPOSITORY_GITLEAKS` to `DISABLE_LINTERS` in your `.mega-linter.yml`.
 
 - Removed linters
-  - `JSON_ESLINT_PLUGIN_JSONC` — permanently broken by upstream bug (see Breaking changes)
 
 - Media
+
+- Linters enhancements
+
+- Fixes
+
+- Reporters
+
+- Flavors
+
+- Doc
+
+- mega-linter-runner
+
+- Dev
+
+- CI
+
+- Linter versions upgrades (N)
+<!-- linter-versions-end -->
+
+## [v9.6.0] - 2026-06-28
+
+- Breaking changes
+  - **Linters can no longer be run via a sibling Docker image at runtime.** The `cli_docker_image`, `cli_docker_image_version` and `cli_docker_args` descriptor properties (and the matching `<LINTER>_DOCKER_IMAGE_VERSION` variable) have been removed, and MegaLinter no longer mounts `/var/run/docker.sock` (in `mega-linter-runner`, the GitHub Action `action.yml` files, and the Docker daemon previously bundled in flavor images). This closes the host-privilege escalation surface that the mounted Docker socket exposed. The only linter that used this mechanism was `SWIFT_SWIFTLINT`, now installed natively (see below). (#8216)
+  - **`SWIFT_SWIFTLINT` is now installed from the static `swiftlint-static` binary** instead of running the `ghcr.io/realm/swiftlint` container. It runs natively on the Alpine image with no Docker socket required. SourceKit-dependent rules are disabled in this build and reported to the console when encountered; pure-syntax style rules are unaffected. (#8216)
+  - **`@eslint/eslintrc` shim removed** from JavaScript/TypeScript/JSX/TSX Docker images (was only needed for legacy `FlatCompat`); MegaLinter's bundled test fixtures use native flat config. (#7869)
+  - **ESLint linters now force migration off `.eslintrc.*`**: `JAVASCRIPT_ES`, `TYPESCRIPT_ES`, `JSX_ESLINT`, `TSX_ESLINT` activate when they find any `eslint.config.*` *or* any deprecated `.eslintrc.*` / `package.json#eslintConfig`. In the legacy case the linter does not call ESLint at all — it emits a single hard failure with a migration message so the build stays red until the config is migrated to flat config. See the [ESLint flat-config migration guide](https://eslint.org/docs/latest/use/configure/migration-guide). To opt out, set `DISABLE_LINTERS` or `DISABLE` to exclude the affected linter/descriptor. (#7869)
+  - **`JSON_ESLINT_PLUGIN_JSONC` removed**: upstream bug [ota-meshi/eslint-plugin-jsonc#328](https://github.com/ota-meshi/eslint-plugin-jsonc/issues/328) blocks ESLint v10 compatibility and will not be fixed. Use `JSON_JSONLINT`, `JSON_PRETTIER`, or `JSON_V8R` for JSON validation instead. (#7869)
+
+- Core
+  - New linter descriptor property `common_linter_errors`: declare known non-lint failure patterns (config issue, remote service down, missing credentials…) and the guidance message shown to users, directly in YAML — no custom Python class needed. (#7907)
+  - Skipped-linters summary now explains why a linter was skipped by an activation rule, including the variable to set to activate it (e.g. `MARKDOWN_RUMDL: MARKDOWN_DEFAULT_STYLE=markdownlint (set MARKDOWN_DEFAULT_STYLE=rumdl to activate)`), fixing [#8017](https://github.com/oxsecurity/megalinter/issues/8017).
+
+- New linters
+  - Add [betterleaks](https://github.com/betterleaks/betterleaks) linter for repository secrets scanning — successor to gitleaks with higher recall (98.6% vs 70.4%), lower false-positive rates, and 4–5× faster scanning via BPE-based detection and CEL filter expressions (#8186)
+
+- Disabled linters
+  - `SALESFORCE_SFDX_SCANNER_APEX`, `SALESFORCE_SFDX_SCANNER_AURA` and `SALESFORCE_SFDX_SCANNER_LWC` — disabled because sfdx-scanner 4.12.0 crashes on Node.js 22+ (`TypeError: Cannot read properties of undefined (reading 'prototype')`, caused by the removal of `SlowBuffer.prototype`), which is shipped with Alpine 3.24. These linters were already deprecated; use the `SALESFORCE_CODE_ANALYZER_APEX` / `SALESFORCE_CODE_ANALYZER_AURA` / `SALESFORCE_CODE_ANALYZER_LWC` variants instead (#8080).
+
+- Deprecated linters
+  - `REPOSITORY_GITLEAKS` — deprecated in favour of `REPOSITORY_BETTERLEAKS` (same author, fully compatible config, significantly better detection). Will be removed in the next major release. Disable it by adding `REPOSITORY_GITLEAKS` to `DISABLE_LINTERS` in your `.mega-linter.yml`. (#8186)
+
+- Removed linters
+  - `JSON_ESLINT_PLUGIN_JSONC` — permanently broken by upstream bug (see Breaking changes) (#7869)
 
 - Linters enhancements
   - `REPOSITORY_CHECKOV`: in pull-request mode, scan only the files modified in the PR instead of the whole repository (#7119)
 
 - Fixes
-  - `REPOSITORY_BETTERLEAKS`: default scan now runs in filesystem (`dir`) mode instead of auto-switching to git-history (`git`) mode when a git repository is detected. betterleaks does not read the global git `safe.directory` config, so git mode failed with `fatal: detected dubious ownership in repository` in CI environments (e.g. GitHub Actions `/github/workspace`). Git-history mode is still used for the opt-in `REPOSITORY_BETTERLEAKS_PR_COMMITS_SCAN` feature.
-  - `REPOSITORY_BETTERLEAKS`: added `--verbose` so detected findings (file, line and rule) are reported instead of only the `leaks found: N` summary, matching gitleaks behavior. Secret values stay redacted via `--redact`.
+  - `REPOSITORY_BETTERLEAKS`: default scan now runs in filesystem (`dir`) mode instead of auto-switching to git-history (`git`) mode when a git repository is detected. betterleaks does not read the global git `safe.directory` config, so git mode failed with `fatal: detected dubious ownership in repository` in CI environments (e.g. GitHub Actions `/github/workspace`). Git-history mode is still used for the opt-in `REPOSITORY_BETTERLEAKS_PR_COMMITS_SCAN` feature. (#8186)
+  - `REPOSITORY_BETTERLEAKS`: added `--verbose` so detected findings (file, line and rule) are reported instead of only the `leaks found: N` summary, matching gitleaks behavior. Secret values stay redacted via `--redact`. (#8186)
   - `REPOSITORY_OSV_SCANNER`: exit code 128 ("No package sources found") is now treated as a clean pass instead of a failure — osv-scanner returns this code when the repo contains no lockfiles/manifests/SBOMs, which is not a vulnerability finding (#7917).
   - Fix intermittent `ansible-lint` `load-failure[not-found]` error on `github_conf/branch_protection_rules.json` caused by a race condition with `checkov` running in parallel. Checkov's transient GitHub-conf directory is now written to a hidden path (`.megalinter_github_conf`) that project-mode linters skip, eliminating the conflict (#8092).
   - Complete the Alpine 3.24 upgrade across the whole image and fix how alpine version is detected. Docker images now build on the `python:3.14-alpine3.24` base image (#8080).
   - Avoid `DeprecationWarning` / future breakage on Python 3.14 by no longer passing `count` and `flags` as positional arguments to `re.sub` (#8211).
   - Exclude `REPORT_OUTPUT_FOLDER` from linting when configured as an absolute path inside the workspace (e.g. `/tmp/lint/megalinter-reports`), fixing #7845.
-  - Fix command injection in Roslynator linter (`DOTNET_ROSLYNATOR`) where a crafted `.csproj` filename could break out of `dotnet restore` arguments and execute arbitrary shell commands. The command is now invoked via argv list instead of a shell string. Reported by Francesco Sabiu.
+  - Fix command injection in Roslynator linter (`DOTNET_ROSLYNATOR`) where a crafted `.csproj` filename could break out of `dotnet restore` arguments and execute arbitrary shell commands. The command is now invoked via argv list instead of a shell string. Reported by Francesco Sabiu. (#7857)
   - Fix `IndexError` when building the single-linter Docker image for a linter whose activation depends on a file (e.g. `SPELL_VALE` requires `.vale.ini`): `python -m megalinter.run --linterversion` now bypasses activation filtering since the per-linter image is built for that linter unconditionally.
-  - Fix `make bootstrap` appearing to hang because exported Make color variables re-evaluated `tput` during recursive `make` invocations.
+  - Fix `make bootstrap` appearing to hang because exported Make color variables re-evaluated `tput` during recursive `make` invocations. (#8090)
   - Allow MegaLinter containers to run in an opt-in non-root mode matching the host UID:GID on POSIX systems, avoiding root-owned generated files on the host (#1975).
   - Restore missing `examples` in the Dart descriptor that were dropped from the generated documentation (#7913).
 
 - Reporters
   - Update Bitbucket pipeline generator template to trigger builds on pull requests from any branch, by @yermulnik in <https://github.com/oxsecurity/megalinter/pull/7421>
-
-- Flavors
 
 - Doc
   - Add pnpm installation and usage documentation for JavaScript and TypeScript linters (#8177)
@@ -63,7 +94,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Bump `peter-evans/create-pull-request` to v8 in the documented workflow examples (#8089)
 
 - mega-linter-runner
-  - Add `--user-map` / `--no-user-map` to control whether the MegaLinter container runs in non-root mode. On POSIX systems `--user-map` uses the current host UID:GID; on other hosts it falls back to `1000:1000`.
+  - Add `--user-map` / `--no-user-map` to control whether the MegaLinter container runs in non-root mode. On POSIX systems `--user-map` uses the current host UID:GID; on other hosts it falls back to `1000:1000`. (#8120)
   - Add `--no-prompt` flag to `mega-linter-runner --upgrade` for non-interactive upgrades (#8093)
   - Mark `mega-linter-runner/index.js` as executable in git (#8091)
 
@@ -71,6 +102,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Add specialized Claude Code sub-agents (`pr-monitor`, `security-analyst`, `version-bumper`) and assign cost-effective models to mechanical tasks, to speed up and reduce the token cost of contributor workflows (#7906).
   - Add the `/fix-issue` Claude Code skill for end-to-end GitHub issue fixes (gather context, implement on a branch, open a PR, watch CI) (#7848).
   - Stop generating per-linter Dockerfiles for linters marked `disabled: true` in their descriptor. The matching images were already excluded from the build matrix (`linters_matrix.json`) and never published, so the on-disk `linters/<linter>/Dockerfile` was dead code. Deleted the 8 corresponding stale Dockerfile directories.
+  - Make the build's config-schema write atomic with a retry (write to a temp file then `os.replace`), so a transient file lock from an editor's JSON language server or antivirus no longer crashes the build with `OSError: [Errno 22]` on Windows.
   - Move the `.devcontainer` setup from the Dockerfile to a JSON configuration file (#7865).
   - Update the Python version in the devcontainer image (#7853).
 
@@ -84,151 +116,65 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Prevent `FromAsCasing` build warning in generated Dockerfiles (#8094).
   - Fix the documentation release workflow (#7837).
 
-- Linter versions upgrades (N)
-  - [black](https://black.readthedocs.io/en/stable/) from 26.3.1 to **26.5.0** on 2026-05-16
-  - [stylua](https://github.com/JohnnyMorganz/StyLua) from 2.4.1 to **2.5.2** on 2026-05-17
-  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.15.2 to **1.15.3** on 2026-05-17
-  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 4.1.1 to **4.2.0** on 2026-05-17
-  - [stylelint](https://stylelint.io) from 17.11.0 to **17.11.1** on 2026-05-17
-  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 4.2.0 to **4.2.2** on 2026-05-19
-  - [phpstan](https://phpstan.org/) from 2.1.54 to **2.1.55** on 2026-05-19
-  - [black](https://black.readthedocs.io/en/stable/) from 26.5.0 to **26.5.1** on 2026-05-19
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 3.14 to **1.51.0** on 2026-05-19
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.51.0 to **1.51.1** on 2026-05-22
-  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 4.2.2 to **4.2.3** on 2026-05-22
-  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.11.6 to **3.12.0** on 2026-05-22
-  - [v8r](https://github.com/chris48s/v8r) from 6.0.0 to **6.1.0** on 2026-05-22
-  - [rumdl](https://github.com/rvben/rumdl) from 0.1.93 to **0.1.96** on 2026-05-22
-  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.1 to **7.6.2** on 2026-05-22
-  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.1 to **7.6.2** on 2026-05-22
-  - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.13 to **0.15.14** on 2026-05-22
-  - [ruff](https://github.com/astral-sh/ruff) from 0.15.13 to **0.15.14** on 2026-05-22
-  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.99.0 to **1.100.0** on 2026-05-22
-  - [snakefmt](https://github.com/snakemake/snakefmt) from 1.1.0 to **2.0.0** on 2026-05-22
-  - [eslint](https://eslint.org) from 10.3.0 to **10.4.0** on 2026-05-23
-  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.100.0 to **1.101.0** on 2026-05-25
-  - [stylelint](https://stylelint.io) from 17.11.1 to **17.12.0** on 2026-05-26
-  - [rumdl](https://github.com/rvben/rumdl) from 0.1.96 to **0.2.0** on 2026-05-26
-  - [rumdl](https://github.com/rvben/rumdl) from 0.2.0 to **0.2.2** on 2026-05-27
-  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 8.2.8 to **8.2.9** on 2026-05-27
-  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.15.3 to **1.15.4** on 2026-05-27
-  - [terragrunt](https://terragrunt.gruntwork.io) from 1.0.4 to **1.0.5** on 2026-05-27
-  - [phpstan](https://phpstan.org/) from 2.1.55 to **2.1.56** on 2026-05-28
-  - [swiftlint](https://github.com/realm/SwiftLint) from 0.63.2 to **0.63.3** on 2026-05-28
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.51.1 to **1.51.2** on 2026-05-28
-  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.12.0 to **3.12.1** on 2026-05-28
-  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.6.1 to **3.7.0** on 2026-05-28
-  - [code-analyzer-apex](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.12.0 to **5.13.0** on 2026-05-28
-  - [code-analyzer-aura](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.12.0 to **5.13.0** on 2026-05-28
-  - [code-analyzer-lwc](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.12.0 to **5.13.0** on 2026-05-28
-  - [tekton-lint](https://github.com/IBM/tekton-lint) from 1.1.0 to **1.2.0** on 2026-05-28
-  - [semgrep](https://semgrep.dev/) from 1.163.0 to **1.164.0** on 2026-05-28
-  - [snakefmt](https://github.com/snakemake/snakefmt) from 2.0.0 to **2.0.1** on 2026-05-28
-  - [rumdl](https://github.com/rvben/rumdl) from 0.2.2 to **0.2.3** on 2026-05-28
-  - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.14 to **0.15.15** on 2026-05-28
-  - [ruff](https://github.com/astral-sh/ruff) from 0.15.14 to **0.15.15** on 2026-05-28
-  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.95 to **0.1.96** on 2026-05-28
-  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 4.2.3 to **4.2.4** on 2026-06-01
-  - [pmd](https://pmd.github.io/) from 7.24.0 to **7.25.0** on 2026-06-01
-  - [kubescape](https://github.com/kubescape/kubescape) from 4.0.8 to **4.0.9** on 2026-06-01
-  - [rumdl](https://github.com/rvben/rumdl) from 0.2.3 to **0.2.4** on 2026-06-01
-  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.2 to **3.95.3** on 2026-06-01
-  - [phpstan](https://phpstan.org/) from 2.1.56 to **2.2.1** on 2026-06-01
-  - [pyright](https://github.com/Microsoft/pyright) from 1.1.409 to **1.1.410** on 2026-06-01
-  - [checkov](https://www.checkov.io/) from 3.2.529 to **3.2.530** on 2026-06-01
-  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.101.0 to **1.102.0** on 2026-06-01
-  - [rubocop](https://rubocop.org/) from 1.86.2 to **1.87.0** on 2026-06-01
-  - [snakemake](https://snakemake.github.io/) from 9.21.0 to **9.21.1** on 2026-06-01
-  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.15.4 to **1.15.5** on 2026-06-01
-  - [terragrunt](https://terragrunt.gruntwork.io) from 1.0.5 to **1.0.6** on 2026-06-01
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.51.2 to **1.51.3** on 2026-06-02
-  - [syft](https://github.com/anchore/syft) from 1.44.0 to **1.45.0** on 2026-06-02
-  - [eslint](https://eslint.org) from 10.4.0 to **10.4.1** on 2026-06-03
-  - [checkov](https://www.checkov.io/) from 3.2.530 to **3.2.532** on 2026-06-04
-  - [grype](https://github.com/anchore/grype) from 0.112.0 to **0.113.0** on 2026-06-04
-  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.95.3 to **3.95.5** on 2026-06-05
-  - [grype](https://github.com/anchore/grype) from 0.113.0 to **0.114.0** on 2026-06-05
-  - [syft](https://github.com/anchore/syft) from 1.45.0 to **1.45.1** on 2026-06-05
-  - [terragrunt](https://terragrunt.gruntwork.io) from 1.0.6 to **1.0.7** on 2026-06-07
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.51.3 to **1.51.4** on 2026-06-07
-  - [rumdl](https://github.com/rvben/rumdl) from 0.2.4 to **0.2.9** on 2026-06-07
-  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.3 to **3.95.4** on 2026-06-07
-  - [phplint](https://github.com/overtrue/phplint) from 9.7.1 to **9.7.2** on 2026-06-07
-  - [phpstan](https://phpstan.org/) from 2.2.1 to **2.2.2** on 2026-06-07
-  - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.15 to **0.15.16** on 2026-06-07
-  - [ruff](https://github.com/astral-sh/ruff) from 0.15.15 to **0.15.16** on 2026-06-07
-  - [checkov](https://www.checkov.io/) from 3.2.532 to **3.2.533** on 2026-06-07
-  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 8.2.9 to **8.2.10** on 2026-06-07
-  - [snakemake](https://snakemake.github.io/) from 9.21.1 to **9.22.0** on 2026-06-07
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 10.0.0 to **10.0.1** on 2026-06-07
-  - [sqlfluff](https://www.sqlfluff.com/) from 4.2.1 to **4.2.2** on 2026-06-07
-  - [tflint](https://github.com/terraform-linters/tflint) from 0.62.1 to **0.63.1** on 2026-06-07
-  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 10.0.108 to **10.0.109** on 2026-06-12
-  - [djlint](https://djlint.com/) from 1.36.4 to **1.39.0** on 2026-06-13
-  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.43.8 to **0.44.1** on 2026-06-13
-  - [semgrep](https://semgrep.dev/) from 1.164.0 to **1.166.0** on 2026-06-13
-  - [bash-exec](https://www.gnu.org/software/bash/) from 5.3.3 to **5.3.9** on 2026-06-14
-  - [clang-format](https://releases.llvm.org/21.1.0/tools/clang/docs/ClangFormat.html) from 21.1.2 to **22.1.3** on 2026-06-14
-  - [cppcheck](https://cppcheck.sourceforge.io/) from 2.18.3 to **2.21.0** on 2026-06-14
-  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 10.0.109 to **10.0.301** on 2026-06-14
-  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.12.1 to **3.12.2** on 2026-06-14
-  - [djlint](https://djlint.com/) from 1.39.0 to **1.39.2** on 2026-06-14
-  - [kubeconform](https://github.com/yannh/kubeconform) from 0.7.0 to **0.8.0** on 2026-06-14
-  - [git_diff](https://git-scm.com) from 2.52.0 to **2.54.0** on 2026-06-14
-  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.4 to **3.95.7** on 2026-06-16
-  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 4.2.4 to **4.2.5** on 2026-06-17
-  - [stylelint](https://stylelint.io) from 17.12.0 to **17.13.0** on 2026-06-17
-  - [prettier](https://prettier.io/) from 3.8.3 to **3.8.4** on 2026-06-17
-  - [rumdl](https://github.com/rvben/rumdl) from 0.2.9 to **0.2.17** on 2026-06-17
-  - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.16 to **0.15.17** on 2026-06-17
-  - [ruff](https://github.com/astral-sh/ruff) from 0.15.16 to **0.15.17** on 2026-06-17
-  - [checkov](https://www.checkov.io/) from 3.2.533 to **3.3.1** on 2026-06-17
-  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 8.2.10 to **8.2.11** on 2026-06-17
-  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.14.6 to **0.14.7** on 2026-06-17
-  - [snakemake](https://snakemake.github.io/) from 9.22.0 to **9.23.0** on 2026-06-17
-  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.15.5 to **1.15.6** on 2026-06-17
-  - [terragrunt](https://terragrunt.gruntwork.io) from 1.0.7 to **1.0.8** on 2026-06-17
-  - [eslint](https://eslint.org) from 10.4.1 to **10.5.0** on 2026-06-17
-  - [pylint](https://pylint.readthedocs.io) from 4.0.5 to **4.0.6** on 2026-06-17
-  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.70.0 to **0.71.1** on 2026-06-17
-  - [trivy](https://aquasecurity.github.io/trivy/) from 0.70.0 to **0.71.1** on 2026-06-17
-  - [rubocop](https://rubocop.org/) from 1.87.0 to **1.88.0** on 2026-06-17
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.51.4 to **1.51.5** on 2026-06-19
-  - [vale](https://vale.sh/) from 3.14.2 to **3.15.1** on 2026-06-19
-  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.71.1 to **0.71.2** on 2026-06-20
-  - [trivy](https://aquasecurity.github.io/trivy/) from 0.71.1 to **0.71.2** on 2026-06-20
-  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.48.0 to **0.49.0** on 2026-06-20
-  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.7 to **3.95.10** on 2026-06-20
-  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.2 to **7.6.3** on 2026-06-20
-  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.2 to **7.6.3** on 2026-06-20
-  - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.17 to **0.15.18** on 2026-06-20
-  - [ruff](https://github.com/astral-sh/ruff) from 0.15.17 to **0.15.18** on 2026-06-20
-  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.102.0 to **1.103.0** on 2026-06-20
-  - [semgrep](https://semgrep.dev/) from 1.166.0 to **1.167.0** on 2026-06-20
-  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.95.5 to **3.95.6** on 2026-06-20
-  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 8.2.11 to **8.3.2** on 2026-06-20
-  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 4.2.5 to **5.0.10** on 2026-06-21
-  - [npm-package-json-lint](https://npmpackagejsonlint.org/) from 10.4.0 to **10.4.1** on 2026-06-21
-  - [rumdl](https://github.com/rvben/rumdl) from 0.2.17 to **0.2.20** on 2026-06-21
-  - [snakemake](https://snakemake.github.io/) from 9.23.0 to **9.23.1** on 2026-06-21
-  - [snakefmt](https://github.com/snakemake/snakefmt) from 2.0.1 to **2.0.2** on 2026-06-21
-  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.103.0 to **1.104.0** on 2026-06-22
-  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 5.0.10 to **5.0.11** on 2026-06-24
-  - [djlint](https://djlint.com/) from 1.39.2 to **1.39.4** on 2026-06-24
-  - [checkov](https://www.checkov.io/) from 3.3.1 to **3.3.2** on 2026-06-25
-  - [semgrep](https://semgrep.dev/) from 1.167.0 to **1.168.0** on 2026-06-25
-  - [swiftlint](https://github.com/realm/SwiftLint) from 0.63.3 to **0.64.1** on 2026-06-25
-  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.51.5 to **1.52.0** on 2026-06-27
-  - [rumdl](https://github.com/rvben/rumdl) from 0.2.20 to **0.2.24** on 2026-06-27
-  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.10 to **3.95.11** on 2026-06-27
-  - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.18 to **0.15.20** on 2026-06-27
-  - [ruff](https://github.com/astral-sh/ruff) from 0.15.18 to **0.15.20** on 2026-06-27
-  - [betterleaks](https://github.com/betterleaks/betterleaks) from 1.5.0 to **1.6.0** on 2026-06-27
-  - [grype](https://github.com/anchore/grype) from 0.114.0 to **0.115.0** on 2026-06-27
-  - [syft](https://github.com/anchore/syft) from 1.45.1 to **1.46.0** on 2026-06-27
-  - [snakefmt](https://github.com/snakemake/snakefmt) from 2.0.2 to **2.0.3** on 2026-06-27
-  - [swiftlint](https://github.com/realm/SwiftLint) from 0.64.1 to **0.65.0** on 2026-06-27
-<!-- linter-versions-end -->
+- Linter versions upgrades (58)
+  - [bash-exec](https://www.gnu.org/software/bash/) from 5.3.3 to **5.3.9**
+  - [betterleaks](https://github.com/betterleaks/betterleaks) from 1.5.0 to **1.6.0**
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.43.8 to **0.44.1**
+  - [black](https://black.readthedocs.io/en/stable/) from 26.3.1 to **26.5.1**
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 3.14 to **1.52.0**
+  - [checkov](https://www.checkov.io/) from 3.2.529 to **3.3.2**
+  - [clang-format](https://releases.llvm.org/21.1.0/tools/clang/docs/ClangFormat.html) from 21.1.2 to **22.1.3**
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.95 to **0.1.96**
+  - [code-analyzer-apex](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.12.0 to **5.13.0**
+  - [code-analyzer-aura](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.12.0 to **5.13.0**
+  - [code-analyzer-lwc](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.12.0 to **5.13.0**
+  - [cppcheck](https://cppcheck.sourceforge.io/) from 2.18.3 to **2.21.0**
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 10.0.0 to **10.0.1**
+  - [dartanalyzer](https://dart.dev/tools/dart-analyze) from 3.11.6 to **3.12.2**
+  - [djlint](https://djlint.com/) from 1.36.4 to **1.39.4**
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 10.0.108 to **10.0.301**
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.6.1 to **3.7.0**
+  - [eslint](https://eslint.org) from 10.3.0 to **10.5.0**
+  - [git_diff](https://git-scm.com) from 2.52.0 to **2.54.0**
+  - [grype](https://github.com/anchore/grype) from 0.112.0 to **0.115.0**
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 4.1.1 to **5.0.11**
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.99.0 to **1.104.0**
+  - [kubeconform](https://github.com/yannh/kubeconform) from 0.7.0 to **0.8.0**
+  - [kubescape](https://github.com/kubescape/kubescape) from 4.0.8 to **4.0.9**
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.48.0 to **0.49.0**
+  - [npm-package-json-lint](https://npmpackagejsonlint.org/) from 10.4.0 to **10.4.1**
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.2 to **3.95.11**
+  - [phplint](https://github.com/overtrue/phplint) from 9.7.1 to **9.7.2**
+  - [phpstan](https://phpstan.org/) from 2.1.54 to **2.2.2**
+  - [pmd](https://pmd.github.io/) from 7.24.0 to **7.25.0**
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.1 to **7.6.3**
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.1 to **7.6.3**
+  - [prettier](https://prettier.io/) from 3.8.3 to **3.8.4**
+  - [pylint](https://pylint.readthedocs.io) from 4.0.5 to **4.0.6**
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.409 to **1.1.410**
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 8.2.8 to **8.3.2**
+  - [rubocop](https://rubocop.org/) from 1.86.2 to **1.88.0**
+  - [ruff](https://github.com/astral-sh/ruff) from 0.15.13 to **0.15.20**
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.13 to **0.15.20**
+  - [rumdl](https://github.com/rvben/rumdl) from 0.1.93 to **0.2.24**
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.14.6 to **0.14.7**
+  - [semgrep](https://semgrep.dev/) from 1.163.0 to **1.168.0**
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 1.1.0 to **2.0.3**
+  - [snakemake](https://snakemake.github.io/) from 9.21.0 to **9.23.1**
+  - [sqlfluff](https://www.sqlfluff.com/) from 4.2.1 to **4.2.2**
+  - [stylelint](https://stylelint.io) from 17.11.0 to **17.13.0**
+  - [stylua](https://github.com/JohnnyMorganz/StyLua) from 2.4.1 to **2.5.2**
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.63.2 to **0.65.0**
+  - [syft](https://github.com/anchore/syft) from 1.44.0 to **1.46.0**
+  - [tekton-lint](https://github.com/IBM/tekton-lint) from 1.1.0 to **1.2.0**
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.15.2 to **1.15.6**
+  - [terragrunt](https://terragrunt.gruntwork.io) from 1.0.4 to **1.0.8**
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.62.1 to **0.63.1**
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.70.0 to **0.71.2**
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.70.0 to **0.71.2**
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.95.3 to **3.95.6**
+  - [v8r](https://github.com/chris48s/v8r) from 6.0.0 to **6.1.0**
+  - [vale](https://vale.sh/) from 3.14.2 to **3.15.1**
 
 ## [v9.5.0] - 2026-05-16
 

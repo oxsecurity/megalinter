@@ -54,8 +54,8 @@ See more details in [Help](#help-content)
 
 ## Configuration in MegaLinter
 
-- Enable sfdx-scanner-lwc by adding `SALESFORCE_SFDX_SCANNER_LWC` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
-- Disable sfdx-scanner-lwc by adding `SALESFORCE_SFDX_SCANNER_LWC` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
+- Enable sfdx-scanner-lwc by adding `SALESFORCE_SFDX_SCANNER_LWC` in [ENABLE_LINTERS variable](https://megalinter.io/9.6.0/configuration/#activation-and-deactivation)
+- Disable sfdx-scanner-lwc by adding `SALESFORCE_SFDX_SCANNER_LWC` in [DISABLE_LINTERS variable](https://megalinter.io/9.6.0/configuration/#activation-and-deactivation)
 
 | Variable                                                | Description                                                                                                                                                                                                                                                                           | Default value                                   |
 |---------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -84,9 +84,9 @@ Use sfdx-scanner-lwc in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavors
 
-|                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       137        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|                                                                         <!-- -->                                                                         | Flavor                                                | Description               | Embedded linters |                                                                                                                                                                         Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------|:--------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/9.6.0/supported-linters/) | Default MegaLinter Flavor |       137        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/v9.6.0) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
