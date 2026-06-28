@@ -15738,7 +15738,10 @@
 <li>Dev</li>
 </ul>
 <ul>
-<li>CI</li>
+<li>CI<ul>
+<li>Fix per-linter Docker images being published single-arch. The BETA and RELEASE linter workflows split each linter into independent per-platform jobs that all pushed the same tag (<code>:beta</code>, <code>:v9</code>, <code>:vX.Y.Z</code>, <code>:latest</code>), so the last push won and overwrote the other architecture. They now push each platform by digest and a dedicated merge job assembles a proper multi-arch manifest list per linter, restoring linux/amd64 + linux/arm64 support for <code>megalinter-only-*</code> images.</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Linter versions upgrades (N)</li>
