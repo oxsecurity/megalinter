@@ -22,10 +22,8 @@ description: How to use swiftlint (configure, ignore files, ignore errors, help 
 
 ## swiftlint documentation
 
-- Version in MegaLinter: **0.64.1**
+- Version in MegaLinter: **0.65.0**
 - Visit [Official Web Site](https://github.com/realm/SwiftLint#readme){target=_blank}
-- Docker image: [ghcr.io/realm/swiftlint:SWIFT_SWIFTLINT_VERSION](https://hub.docker.com/r/ghcr.io/realm/swiftlint){target=_blank}
-  - arguments: `-v {{WORKSPACE}}:/tmp/lint:rw -w /tmp/lint`
 - See [How to configure swiftlint rules](https://github.com/realm/SwiftLint#configuration){target=_blank}
 - See [How to disable swiftlint rules in files](https://github.com/realm/SwiftLint#disable-rules-in-code){target=_blank}
 - See [Index of problems detected by swiftlint](https://realm.github.io/SwiftLint/rule-directory.html){target=_blank}
@@ -41,7 +39,6 @@ description: How to use swiftlint (configure, ignore files, ignore errors, help 
 
 | Variable                                    | Description                                                                                                                                                                                                                                                                           | Default value                                   |
 |---------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| SWIFT_SWIFTLINT_DOCKER_IMAGE_VERSION        | Docker image version                                                                                                                                                                                                                                                                  | `SWIFT_SWIFTLINT_VERSION`                       |
 | SWIFT_SWIFTLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                                              |                                                 |
 | SWIFT_SWIFTLINT_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                  |                                                 |
 | SWIFT_SWIFTLINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>⚠️ As default value is **project**, overriding might not work<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `project`                                       |
@@ -94,89 +91,60 @@ swiftlint is called once on the whole project directory (`project` CLI lint mode
 ### Example calls
 
 ```shell
-docker run -v /tmp/lint:/tmp/lint:rw ghcr.io/realm/swiftlint:latest swiftlint --strict
+swiftlint lint --strict
 ```
 
 ```shell
-docker run -v /tmp/lint:/tmp/lint:rw ghcr.io/realm/swiftlint:latest swiftlint --fix --strict
+swiftlint --fix --strict
 ```
 
 
 ### Help content
 
 ```shell
-OVERVIEW: Print lint warnings and errors
+OVERVIEW: A tool to enforce Swift style and conventions.
 
-USAGE: swiftlint lint [<options>] [<paths> ...]
-
-ARGUMENTS:
-  <paths>                 List of paths to the files or directories to lint.
+USAGE: swiftlint <subcommand>
 
 OPTIONS:
-  --config <config>       The path to one or more SwiftLint configuration
-                          files, evaluated as a parent-child hierarchy.
-  --fix, --autocorrect    Correct violations whenever possible.
-  --format                Should reformat the Swift files using the same
-                          mechanism used by Xcode (via SourceKit).
-                          Only applied with `--fix`/`--autocorrect`.
-  --use-alternative-excluding
-                          Use an alternative algorithm to exclude paths for
-                          `excluded`, which may be faster in some cases.
-  --use-script-input-files
-                          Read SCRIPT_INPUT_FILE* environment variables as
-                          files.
-  --use-script-input-file-lists
-                          Read SCRIPT_INPUT_FILE_LIST* environment variables as
-                          file lists.
-  --strict                Upgrades warnings to serious violations (errors).
-  --lenient               Downgrades serious violations to warnings, warning
-                          threshold is disabled.
-  --force-exclude         Exclude files in config `excluded` even if their
-                          paths are explicitly specified.
-  --benchmark             Save benchmarks to `benchmark_files.txt` and
-                          `benchmark_rules.txt`.
-  --reporter <reporter>   The reporter used to log errors and warnings.
-  --baseline <baseline>   The path to a baseline file, which will be used to
-                          filter out detected violations.
-  --write-baseline <write-baseline>
-                          The path to save detected violations to as a new
-                          baseline.
-  --working-directory <working-directory>
-                          The working directory to use when running SwiftLint.
-  --output <output>       The file where violations should be saved. Prints to
-                          stdout by default.
-  --progress              Show a live-updating progress bar instead of each
-                          file being processed.
-  --check-for-updates     Check whether a later version of SwiftLint is
-                          available after processing all files.
-  --only-rule <only-rule> Run only the specified rule, ignoring `only_rules`,
-                          `opt_in_rules` and `disabled_rules`.
-                          Can be specified repeatedly to run multiple rules.
-  --use-stdin             Lint standard input.
-  --quiet                 Don't print status logs like 'Linting <file>' & 'Done
-                          linting'.
-  --silence-deprecation-warnings
-                          Don't print deprecation warnings.
-  --cache-path <cache-path>
-                          The directory of the cache used when linting.
-  --no-cache              Ignore cache when linting.
-  --enable-all-rules      Run all rules, even opt-in and disabled ones,
-                          ignoring `only_rules`.
-  --disable-sourcekit     Do not dynamically load SourceKit at runtime. Skip
-                          and report rules that require it.
   --version               Show the version.
   -h, --help              Show help information.
 
+SUBCOMMANDS:
+  analyze                 Run analysis rules
+  docs                    Open SwiftLint documentation website in the default
+                          web browser
+  generate-docs           Generates markdown documentation for selected group
+                          of rules
+  lint (default)          Print lint warnings and errors
+  baseline                Operations on existing baselines
+  reporters               Display the list of reporters and their identifiers
+  rules                   Display the list of rules and their identifiers
+  version                 Display the current version of SwiftLint
+
+  See 'swiftlint help <subcommand>' for detailed help.
 ```
 
 ### Installation on mega-linter Docker image
 
 - Dockerfile commands :
 ```dockerfile
-# renovate: datasource=docker depName=ghcr.io/realm/swiftlint
-ENV SWIFT_SWIFTLINT_VERSION=0.64.1
+# renovate: datasource=github-releases depName=realm/SwiftLint
+ARG SWIFT_SWIFTLINT_VERSION=0.65.0
+RUN case "${TARGETARCH}" in \
+      amd64) SWIFTLINT_ARCH=amd64 ;; \
+      arm64) SWIFTLINT_ARCH=arm64 ;; \
+      *) echo "Unsupported architecture: ${TARGETARCH}" && exit 1 ;; \
+    esac && \
+    curl -fsSL -o /tmp/swiftlint.zip \
+      "https://github.com/realm/SwiftLint/releases/download/${SWIFT_SWIFTLINT_VERSION}/swiftlint_linux_${SWIFTLINT_ARCH}.zip" && \
+    unzip -o /tmp/swiftlint.zip -d /tmp/swiftlint && \
+    install -m 0755 /tmp/swiftlint/swiftlint-static /usr/bin/swiftlint && \
+    rm -rf /tmp/swiftlint /tmp/swiftlint.zip
 ```
 
+- APK packages (Linux):
+  - [unzip](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=unzip)
 
 ## Known errors and resolutions
 

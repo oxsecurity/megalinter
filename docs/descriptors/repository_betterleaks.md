@@ -43,7 +43,7 @@ betterleaks is fully compatible with your existing `.gitleaks.toml` configuratio
 
 ## betterleaks documentation
 
-- Version in MegaLinter: **1.5.0**
+- Version in MegaLinter: **1.6.0**
 - Visit [Official Web Site](https://github.com/betterleaks/betterleaks#readme){target=_blank}
 - See [How to configure betterleaks rules](https://github.com/betterleaks/betterleaks#configuration){target=_blank}
 - See [How to disable betterleaks rules in files](https://github.com/betterleaks/betterleaks#betterleaksallow){target=_blank}
@@ -181,8 +181,8 @@ Flags:
       --report-template string        template file used to generate the report (implies --report-format=template)
       --timeout int                   set a timeout for gitleaks commands in seconds (default "0", no timeout is set)
       --validation                    enable validation of findings against live APIs
-      --validation-debug              include raw HTTP response in validation output
-      --validation-env-vars strings   comma-separated env var names the validation CEL env(...) binding may read (repeat flag to add more); unset means env() is disabled
+      --validation-debug              include validation HTTP debug metadata in output
+      --validation-env-vars strings   comma-separated env var names the validation env(...) binding may read (repeat flag to add more); unset means env() is disabled
       --validation-extract-empty      include empty values from extractors in output
       --validation-status string      comma-separated list of validation statuses to include: valid, needs_validation, invalid, revoked, error, unknown, none (none = rules without validation)
       --validation-timeout duration   per-request timeout for validation (default 10s)
@@ -198,7 +198,7 @@ Use "betterleaks [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=ghcr.io/betterleaks/betterleaks
-ARG REPOSITORY_BETTERLEAKS_VERSION=v1.5.0
+ARG REPOSITORY_BETTERLEAKS_VERSION=v1.6.0
 FROM ghcr.io/betterleaks/betterleaks:${REPOSITORY_BETTERLEAKS_VERSION} AS betterleaks
 COPY --link --from=betterleaks /usr/bin/betterleaks /usr/bin/
 ```

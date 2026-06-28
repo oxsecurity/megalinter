@@ -477,7 +477,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=ghcr.io/betterleaks/betterleaks
-          ARG REPOSITORY_BETTERLEAKS_VERSION=v1.5.0
+          ARG REPOSITORY_BETTERLEAKS_VERSION=v1.6.0
         - FROM ghcr.io/betterleaks/betterleaks:${REPOSITORY_BETTERLEAKS_VERSION} AS betterleaks
         - COPY --link --from=betterleaks /usr/bin/betterleaks /usr/bin/
     supported_platforms:
@@ -568,7 +568,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=anchore/grype
-          ARG REPOSITORY_GRYPE_VERSION=0.114.0
+          ARG REPOSITORY_GRYPE_VERSION=0.115.0
         - RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin
     supported_platforms:
       platform:
@@ -996,7 +996,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=anchore/syft
-          ARG REPOSITORY_SYFT_VERSION=1.45.1
+          ARG REPOSITORY_SYFT_VERSION=1.46.0
         - RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOSITORY_SYFT_VERSION}/install.sh | sh -s -- -b /usr/local/bin
     supported_platforms:
       platform:

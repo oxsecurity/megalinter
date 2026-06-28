@@ -36,7 +36,7 @@ ARG PROTOBUF_PROTOLINT_VERSION=0.56.4
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.30.1
 # renovate: datasource=docker depName=ghcr.io/betterleaks/betterleaks
-ARG REPOSITORY_BETTERLEAKS_VERSION=v1.5.0
+ARG REPOSITORY_BETTERLEAKS_VERSION=v1.6.0
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
 ARG REPOSITORY_TRUFFLEHOG_VERSION=3.95.6
 # renovate: datasource=docker depName=jdkato/vale
@@ -94,7 +94,7 @@ FROM lycheeverse/lychee:${SPELL_LYCHEE_VERSION} AS lychee
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.11.24 AS uv
+FROM ghcr.io/astral-sh/uv:0.11.25 AS uv
 FROM python:3.14-alpine3.24 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
@@ -168,7 +168,7 @@ ARG NPM_MARKDOWNLINT_CLI_VERSION=0.49.0
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.2.22
+ARG PIP_RUMDL_VERSION=0.2.24
 # renovate: datasource=pypi depName=pylint
 ARG PIP_PYLINT_VERSION=4.0.6
 # renovate: datasource=pypi depName=typing-extensions
@@ -194,7 +194,7 @@ ARG PIP_RUFF_VERSION=0.15.20
 # renovate: datasource=pypi depName=checkov
 ARG PIP_CHECKOV_VERSION=3.3.2
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.114.0
+ARG REPOSITORY_GRYPE_VERSION=0.115.0
 # renovate: datasource=github-releases depName=loeffel-io/ls-lint extractVersion=^v(?<version>.+)$
 ARG REPOSITORY_LS_LINT_VERSION=2.3.1
 # renovate: datasource=repology depName=alpine_3_24/osv-scanner versioning=loose
@@ -208,7 +208,7 @@ ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=11.7.1
 # renovate: datasource=pypi depName=semgrep
 ARG PIP_SEMGREP_VERSION=1.168.0
 # renovate: datasource=github-tags depName=anchore/syft
-ARG REPOSITORY_SYFT_VERSION=1.45.1
+ARG REPOSITORY_SYFT_VERSION=1.46.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_VERSION=0.71.2
 # renovate: datasource=github-tags depName=aquasecurity/trivy

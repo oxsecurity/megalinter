@@ -198,7 +198,7 @@ linters:
           ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.1.8
         - |-
           # renovate: datasource=npm depName=eslint-plugin-import-x
-          ARG NPM_ESLINT_PLUGIN_IMPORT_X_VERSION=4.16.2
+          ARG NPM_ESLINT_PLUGIN_IMPORT_X_VERSION=4.17.0
         - |-
           # renovate: datasource=npm depName=eslint-plugin-jest
           ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.15.2
@@ -219,10 +219,10 @@ linters:
           ARG NPM_PRETTYJSON_VERSION=1.2.5
         - |-
           # renovate: datasource=npm depName=@typescript-eslint/eslint-plugin
-          ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.61.1
+          ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.62.0
         - |-
           # renovate: datasource=npm depName=@typescript-eslint/parser
-          ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.61.1
+          ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.62.0
         - |-
           # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
           ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
