@@ -1085,6 +1085,10 @@
          <lastmod>2026-06-28</lastmod>
     </url>
     <url>
+         <loc>https://megalinter.io/beta/licenses/betterleaks/</loc>
+         <lastmod>2026-06-28</lastmod>
+    </url>
+    <url>
          <loc>https://megalinter.io/beta/licenses/bicep_linter/</loc>
          <lastmod>2026-06-28</lastmod>
     </url>
@@ -1186,6 +1190,10 @@
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/editorconfig-checker/</loc>
+         <lastmod>2026-06-28</lastmod>
+    </url>
+    <url>
+         <loc>https://megalinter.io/beta/licenses/eslint-plugin-jsonc/</loc>
          <lastmod>2026-06-28</lastmod>
     </url>
     <url>
