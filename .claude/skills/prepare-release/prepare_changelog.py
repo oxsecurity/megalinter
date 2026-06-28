@@ -48,7 +48,8 @@ def parse_sections(block):
     for k, idx in enumerate(idxs):
         name = block[idx][2:].strip()
         nxt = idxs[k + 1] if k + 1 < len(idxs) else len(block)
-        sections.append((block[idx], name, block[idx+1:nxt]))
+        body_start = idx + 1
+        sections.append((block[idx], name, block[body_start:nxt]))
     return sections
 
 
