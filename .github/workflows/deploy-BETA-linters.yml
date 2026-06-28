@@ -76,7 +76,6 @@ jobs:
       name: beta
     strategy:
       fail-fast: false
-      max-parallel: 10
       matrix:
         include: ${{ fromJson(needs.get-linters-matrix.outputs.jobs) }}
     # Only run this on the main repo
