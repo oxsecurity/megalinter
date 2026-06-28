@@ -30,6 +30,8 @@ on:
       - "**/*.sh"
       - "**/*.py"
       - "**/sh/**"
+  # Allow manual runs even when BETA_LINTERS_ENABLED is set to false
+  workflow_dispatch:
 
 ###############
 # Set the Job #
@@ -44,7 +46,7 @@ concurrency:
 jobs:
   get-linters-matrix:
     name: Get Linters Matrix
-    if: ${{ vars.BETA_LINTERS_ENABLED != 'false' }}
+    if: ${{ github.event_name == 'workflow_dispatch' || vars.BETA_LINTERS_ENABLED != 'false' }}
     runs-on: ubuntu-latest
     outputs:
       jobs: ${{ steps.set-matrix.outputs.jobs }}
@@ -83,7 +85,7 @@ jobs:
            github.repository == 'oxsecurity/megalinter'
         && !contains(github.event.head_commit.message, 'skip deploy')
         && !contains(github.event.head_commit.message, 'Release MegaLinter v')
-        && vars.BETA_LINTERS_ENABLED != 'false'
+        && (github.event_name == 'workflow_dispatch' || vars.BETA_LINTERS_ENABLED != 'false')
       )
     ##################
     # Load all steps #
