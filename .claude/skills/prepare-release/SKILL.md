@@ -144,13 +144,34 @@ git push origin RELEASE_VERSION
 
 ## Step 7 — Guide GitHub release creation
 
-Tell the user:
+Walk the user through the GitHub UI. Match the structure of the previous releases (look at `gh release view <PREV_TAG> --repo oxsecurity/megalinter --json body` if unsure):
 
 1. Open: `https://github.com/oxsecurity/megalinter/releases/new?tag=RELEASE_VERSION`
 2. Set the release **title** to `RELEASE_VERSION`.
-3. Paste **Part 3** from step 2e (the released CHANGELOG section, starting at `## [RELEASE_VERSION]`) as the release description.
-4. Tick **"Set as the latest release"**.
-5. Click **"Publish release"**.
+3. Tick **"Set as the latest release"**.
+4. Click **"Generate release notes"**. GitHub fills the body with `## What's Changed` (an auto list of every merged PR), `## New Contributors`, and a `**Full Changelog**` compare link. **Keep all of this** — then make the manual edits below.
+
+### Manual edits after "Generate release notes"
+
+**a. Curated summary at the top.** Directly under the `## What's Changed` heading (above the auto-generated PR bullet list), paste the **release entry** the skill just wrote to `CHANGELOG.md` (the `## [RELEASE_VERSION] - DATE` block — its section bullets and the collapsed linter-versions list), dropping the `## [RELEASE_VERSION]` header line itself. This puts the human-readable highlights above the raw PR dump.
+
+**b. Announcement call-to-action line.** If an announcement issue exists for this release, add it as the first line under `## What's Changed`, matching previous releases:
+
+```markdown
+[**Take 2 mn to read MegaLinter RELEASE_VERSION announcements**](https://github.com/oxsecurity/megalinter/issues/<ANNOUNCEMENT_ISSUE>)
+```
+
+**c. OX Security banner + GitHub-star call to action.** Just **above** the `**Full Changelog**:` line at the very bottom, add the OX Security banner (present on every release) followed by a star CTA:
+
+```markdown
+[![MegaLinter is graciously provided by OX Security](https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/images/ox-banner.png)](https://www.ox.security/?ref=megalinter)
+
+⭐ If MegaLinter is useful to you, please [give it a star on GitHub](https://github.com/oxsecurity/megalinter/stargazers) — it helps the project a lot!
+```
+
+**d. (Optional) Social share.** Some past releases add a `[**Share the news on LinkedIn :)**](<post-url>)` line near the bottom. Add one only if the user has a post URL to link.
+
+5. Review the rendered preview, then click **"Publish release"**.
 
 ## Step 8 — Remind about pending workflows
 
