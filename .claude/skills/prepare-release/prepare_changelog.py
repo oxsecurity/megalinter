@@ -37,18 +37,18 @@ LV_LINE_RE = re.compile(
 
 
 def split_blocks(lines):
-    start = next(i for i, l in enumerate(lines) if l.startswith("## [Unreleased]"))
+    start = next(i for i, line in enumerate(lines) if line.startswith("## [Unreleased]"))
     end = next(i for i in range(start + 1, len(lines)) if lines[i].startswith("## ["))
     return lines[:start], lines[start:end], lines[end:]
 
 
 def parse_sections(block):
-    idxs = [i for i, l in enumerate(block) if SECTION_RE.match(l)]
+    idxs = [i for i, line in enumerate(block) if SECTION_RE.match(line)]
     sections = []
     for k, idx in enumerate(idxs):
         name = block[idx][2:].strip()
         nxt = idxs[k + 1] if k + 1 < len(idxs) else len(block)
-        sections.append((block[idx], name, block[idx + 1:nxt]))
+        sections.append((block[idx], name, block[idx+1:nxt]))
     return sections
 
 
