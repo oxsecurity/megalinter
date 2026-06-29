@@ -49,6 +49,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.7.0 to **3.8.0** on 2026-06-28
   - [rumdl](https://github.com/rvben/rumdl) from 0.2.24 to **0.2.25** on 2026-06-28
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.15.6 to **1.15.7** on 2026-06-28
+  - [djlint](https://djlint.com/) from 1.39.4 to **1.39.5** on 2026-06-29
 <!-- linter-versions-end -->
 
 ## [v9.6.0] - 2026-06-28
