@@ -28,7 +28,7 @@ ARG BASH_SHFMT_VERSION=v3.13.1-alpine
 # renovate: datasource=docker depName=hadolint/hadolint
 ARG DOCKERFILE_HADOLINT_VERSION=v2.14.0-alpine
 # renovate: datasource=docker depName=mstruebing/editorconfig-checker
-ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.7.0
+ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.8.0
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.8.0-alpine
 # renovate: datasource=docker depName=yoheimuta/protolint
@@ -147,7 +147,7 @@ ARG CSHARP_CSHARPIER_VERSION=1.2.6
 # renovate: datasource=nuget depName=roslynator.dotnet.cli
 ARG CSHARP_ROSLYNATOR_VERSION=0.12.0
 # renovate: datasource=npm depName=stylelint
-ARG NPM_STYLELINT_VERSION=17.13.0
+ARG NPM_STYLELINT_VERSION=17.14.0
 # renovate: datasource=npm depName=stylelint-config-standard
 ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=40.0.0
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
@@ -191,7 +191,7 @@ ARG NPM_MARKDOWNLINT_CLI_VERSION=0.49.0
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.2.24
+ARG PIP_RUMDL_VERSION=0.2.25
 # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
 ARG PSSA_VERSION='1.25.0'
 

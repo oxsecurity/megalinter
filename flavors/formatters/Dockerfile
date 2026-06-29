@@ -18,7 +18,7 @@ ARG CARGO_SARIF_FMT_VERSION=0.8.0
 # renovate: datasource=docker depName=mvdan/shfmt
 ARG BASH_SHFMT_VERSION=v3.13.1-alpine
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.6
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.7
 #ARGTOP__END
 
 #############################################################################################
@@ -89,7 +89,7 @@ ARG NPM_MARKDOWNLINT_CLI_VERSION=0.49.0
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.2.24
+ARG PIP_RUMDL_VERSION=0.2.25
 # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
 ARG PSSA_VERSION='1.25.0'
 

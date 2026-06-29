@@ -27,7 +27,7 @@ ARG BASH_SHFMT_VERSION=v3.13.1-alpine
 # renovate: datasource=docker depName=hadolint/hadolint
 ARG DOCKERFILE_HADOLINT_VERSION=v2.14.0-alpine
 # renovate: datasource=docker depName=mstruebing/editorconfig-checker
-ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.7.0
+ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.8.0
 # renovate: datasource=github-tags depName=mgechev/revive
 ARG GO_REVIVE_VERSION=v1.15.0
 # renovate: datasource=docker depName=golang versioning=semver
@@ -55,7 +55,7 @@ ARG TERRAFORM_TFLINT_VERSION=0.63.1
 # renovate: datasource=docker depName=tenable/terrascan
 ARG TERRAFORM_TERRASCAN_VERSION=1.19.9
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.6
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.7
 #ARGTOP__END
 
 #############################################################################################
@@ -180,7 +180,7 @@ ARG NPM_SALESFORCE_CLI_VERSION=2.140.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.29.6
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=7.17.0
+ARG SFDX_HARDIS_VERSION=7.18.0
 # renovate: datasource=github-tags depName=coursier/coursier
 ARG SCALA_COURSIER_VERSION=2.1.24
 # renovate: datasource=npm depName=typescript
@@ -213,7 +213,7 @@ ARG CSHARP_CSHARPIER_VERSION=1.2.6
 # renovate: datasource=nuget depName=roslynator.dotnet.cli
 ARG CSHARP_ROSLYNATOR_VERSION=0.12.0
 # renovate: datasource=npm depName=stylelint
-ARG NPM_STYLELINT_VERSION=17.13.0
+ARG NPM_STYLELINT_VERSION=17.14.0
 # renovate: datasource=npm depName=stylelint-config-standard
 ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=40.0.0
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
@@ -254,7 +254,7 @@ ARG NPM_ESLINT_PLUGIN_IMPORT_X_VERSION=4.17.0
 # renovate: datasource=npm depName=eslint-plugin-jest
 ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.15.2
 # renovate: datasource=npm depName=eslint-plugin-n
-ARG NPM_ESLINT_PLUGIN_N_VERSION=18.1.0
+ARG NPM_ESLINT_PLUGIN_N_VERSION=18.2.0
 # renovate: datasource=npm depName=eslint-plugin-prettier
 ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.6
 # renovate: datasource=npm depName=eslint-plugin-promise
@@ -276,7 +276,7 @@ ARG NPM_PACKAGE_JSON_LINT_VERSION=10.4.1
 # renovate: datasource=npm depName=npm-package-json-lint-config-default
 ARG NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION=9.0.1
 # renovate: datasource=npm depName=@eslint-react/eslint-plugin
-ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.9.2
+ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.9.3
 # renovate: datasource=github-tags depName=pinterest/ktlint
 ARG KTLINT_VERSION=1.8.0
 
@@ -293,9 +293,9 @@ ARG NPM_MARKDOWNLINT_CLI_VERSION=0.49.0
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.2.24
+ARG PIP_RUMDL_VERSION=0.2.25
 # renovate: datasource=github-tags depName=skaji/cpm
-ARG PERL_PERLCRITIC_VERSION=v1.1.2
+ARG PERL_PERLCRITIC_VERSION=v1.1.4
 
 # renovate: datasource=packagist depName=squizlabs/php_codesniffer
 ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=4.0.1
@@ -333,7 +333,7 @@ ARG PIP_MYPY_VERSION=1.19.1
 # renovate: datasource=pypi depName=nbqa
 ARG PIP_NBQA_VERSION=1.9.1
 # renovate: datasource=npm depName=pyright
-ARG NPM_PYRIGHT_VERSION=1.1.410
+ARG NPM_PYRIGHT_VERSION=1.1.411
 # renovate: datasource=pypi depName=ruff
 ARG PIP_RUFF_VERSION=0.15.20
 # renovate: datasource=github-tags depName=nxadm/rakudo-pkg

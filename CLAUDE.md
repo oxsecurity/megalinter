@@ -171,6 +171,7 @@ Skills in `.claude/skills/` invocable by name (e.g. `/add-linter`).
 - `/diagnose-config` - Debug `.mega-linter.yml` configuration issues
 - `/fix-security-issue [CVE or description]` - Handle CVE/vulnerability reports from trivy, osv-scanner, etc.
 - `/fix-issue [issue URL or #number]` - End-to-end GitHub issue fix: gather context, implement on a branch, commit under the user's git identity (no AI attribution), open a PR, and watch CI until green
+- `/prepare-release [vX.Y.Z]` - Full release ceremony: update CHANGELOG (prune empty sections, collapse linter versions, backfill PR numbers), run release build, push commit and tag, guide GitHub release creation
 
 ## Rules
 
