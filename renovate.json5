@@ -35,6 +35,16 @@
   ],
   packageRules: [
     {
+      // js-yaml v5+ is ESM-only (dropped CommonJS). yeoman-environment loads the
+      // mega-linter-runner custom-flavor generator via require(), which cannot
+      // synchronously require() a pure-ESM js-yaml and fails with
+      // ERR_REQUIRE_ESM_RACE_CONDITION. Keep js-yaml on the v4 line (dual CJS/ESM).
+      matchPackageNames: [
+        'js-yaml',
+      ],
+      allowedVersions: '<5',
+    },
+    {
       matchPackageNames: [
         'uv',
         'astral-sh/uv',
