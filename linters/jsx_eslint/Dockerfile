@@ -86,6 +86,7 @@ RUN apk -U --no-cache upgrade \
                 make \
                 musl-dev \
                 openssh \
+                su-exec \
                 npm \
                 nodejs-current \
                 yarn \

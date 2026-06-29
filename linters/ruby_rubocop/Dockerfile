@@ -92,6 +92,7 @@ RUN apk -U --no-cache upgrade \
                 make \
                 musl-dev \
                 openssh \
+                su-exec \
                 ruby \
                 ruby-dev \
                 ruby-bundler \

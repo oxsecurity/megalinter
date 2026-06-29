@@ -98,6 +98,7 @@ RUN apk -U --no-cache upgrade \
                 make \
                 musl-dev \
                 openssh \
+                su-exec \
                 lua5.3 \
                 lua5.3-dev \
                 readline-dev \

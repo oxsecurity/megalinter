@@ -254,6 +254,7 @@ RUN apk -U --no-cache upgrade \
                 make \
                 musl-dev \
                 openssh \
+                su-exec \
                 openjdk21 \
                 py3-pyflakes \
                 openjdk17 \

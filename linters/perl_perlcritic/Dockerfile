@@ -83,6 +83,7 @@ RUN apk -U --no-cache upgrade \
                 make \
                 musl-dev \
                 openssh \
+                su-exec \
                 perl \
                 perl-dev \
     && git config --global core.autocrlf true

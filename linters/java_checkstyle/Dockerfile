@@ -82,6 +82,7 @@ RUN apk -U --no-cache upgrade \
                 make \
                 musl-dev \
                 openssh \
+                su-exec \
                 openjdk21 \
     && git config --global core.autocrlf true
 #APK__END

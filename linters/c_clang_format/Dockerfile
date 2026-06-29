@@ -80,6 +80,7 @@ RUN apk -U --no-cache upgrade \
                 make \
                 musl-dev \
                 openssh \
+                su-exec \
                 cmd:clang-format \
     && git config --global core.autocrlf true
 #APK__END

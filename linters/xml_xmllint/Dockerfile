@@ -80,6 +80,7 @@ RUN apk -U --no-cache upgrade \
                 make \
                 musl-dev \
                 openssh \
+                su-exec \
                 libxml2-dev \
                 libxml2-utils \
                 libgcc \

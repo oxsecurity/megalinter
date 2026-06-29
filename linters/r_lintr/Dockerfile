@@ -80,6 +80,7 @@ RUN apk -U --no-cache upgrade \
                 make \
                 musl-dev \
                 openssh \
+                su-exec \
                 g++ \
                 libcurl \
                 libgcc \

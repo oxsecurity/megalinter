@@ -138,6 +138,7 @@ RUN apk -U --no-cache upgrade \
                 make \
                 musl-dev \
                 openssh \
+                su-exec \
                 icu-libs \
                 npm \
                 nodejs-current \

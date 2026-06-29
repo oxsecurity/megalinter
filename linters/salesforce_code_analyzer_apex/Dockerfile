@@ -88,6 +88,7 @@ RUN apk -U --no-cache upgrade \
                 make \
                 musl-dev \
                 openssh \
+                su-exec \
                 coreutils \
                 openjdk21 \
                 npm \

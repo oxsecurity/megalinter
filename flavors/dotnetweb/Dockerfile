@@ -318,6 +318,7 @@ RUN apk -U --no-cache upgrade \
                 make \
                 musl-dev \
                 openssh \
+                su-exec \
                 icu-libs \
                 openjdk21 \
                 py3-pyflakes \
