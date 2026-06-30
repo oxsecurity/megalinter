@@ -188,6 +188,7 @@ RUN apk -U --no-cache upgrade \
                 make \
                 musl-dev \
                 openssh \
+                su-exec \
                 helm \
                 npm \
                 nodejs-current \

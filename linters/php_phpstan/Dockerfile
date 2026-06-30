@@ -86,6 +86,7 @@ RUN apk -U --no-cache upgrade \
                 make \
                 musl-dev \
                 openssh \
+                su-exec \
                 gnupg \
                 php84 \
                 php84-phar \

@@ -88,6 +88,7 @@ RUN apk -U --no-cache upgrade \
                 make \
                 musl-dev \
                 openssh \
+                su-exec \
                 py3-pyflakes \
     && git config --global core.autocrlf true
 #APK__END

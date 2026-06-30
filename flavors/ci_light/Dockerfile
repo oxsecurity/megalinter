@@ -165,6 +165,7 @@ RUN apk -U --no-cache upgrade \
                 make \
                 musl-dev \
                 openssh \
+                su-exec \
                 openjdk17 \
                 libxml2-dev \
                 libxml2-utils \
