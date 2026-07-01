@@ -55,6 +55,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rumdl](https://github.com/rvben/rumdl) from 0.2.25 to **0.2.26** on 2026-07-01
   - [checkov](https://www.checkov.io/) from 3.3.2 to **3.3.6** on 2026-07-01
   - [kingfisher](https://github.com/mongodb/kingfisher) from 1.104.0 to **1.105.0** on 2026-07-01
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.52.0 to **1.52.1** on 2026-07-01
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.26 to **0.2.27** on 2026-07-01
 <!-- linter-versions-end -->
 
 ## [v9.6.0] - 2026-06-28
