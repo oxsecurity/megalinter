@@ -57,6 +57,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [kingfisher](https://github.com/mongodb/kingfisher) from 1.104.0 to **1.105.0** on 2026-07-01
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.52.0 to **1.52.1** on 2026-07-01
   - [rumdl](https://github.com/rvben/rumdl) from 0.2.26 to **0.2.27** on 2026-07-01
+  - [djlint](https://djlint.com/) from 1.39.5 to **1.39.7** on 2026-07-01
 <!-- linter-versions-end -->
 
 ## [v9.6.0] - 2026-06-28
