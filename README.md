@@ -1187,6 +1187,7 @@ MegaLinter has all linters enabled by default, but allows enabling or disabling 
 - If `ENABLE_LINTERS` is set, only the listed linters are processed.
 - If `DISABLE` is set, the linters in the listed descriptors are skipped.
 - If `DISABLE_LINTERS` is set, the listed linters are skipped.
+- If a linter is in both `ENABLE_LINTERS` and `DISABLE_LINTERS`, `ENABLE_LINTERS` wins by default. Set `ENABLE_DISABLE_LINTERS_PRIORITY: DISABLE` to make `DISABLE_LINTERS` override `ENABLE_LINTERS` instead (useful to trim an inherited `ENABLE_LINTERS` list when using `EXTENDS`).
 - If `DISABLE_ERRORS_LINTERS` is set, the listed linters will run, but if errors are found, they will be considered non-blocking.
 - If `ENABLE_ERRORS_LINTERS` is set, only the linters in this list will be considered blocking.
 
@@ -1219,6 +1220,15 @@ DISABLE: PHP
 DISABLE_LINTERS:
   - PHP_PHPSTAN
   - PHP_PSALM
+```
+
+- Inherit a shared `ENABLE_LINTERS` list via `EXTENDS` but skip one of the inherited linters locally
+
+```yaml
+EXTENDS: https://example.com/shared/.mega-linter.yml
+ENABLE_DISABLE_LINTERS_PRIORITY: DISABLE
+DISABLE_LINTERS:
+  - PYTHON_PYLINT
 ```
 
 <!-- config-activation-section-end -->

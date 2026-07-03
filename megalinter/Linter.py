@@ -410,11 +410,20 @@ class Linter:
         # See megalinter/MegaLinter.py, manage_default_linter_activation() function
         # for params["default_linter_activation"]
         self.is_active = params["default_linter_activation"]
+        # When a linter is listed in both ENABLE_LINTERS and DISABLE_LINTERS,
+        # ENABLE_LINTERS wins by default. Setting ENABLE_DISABLE_LINTERS_PRIORITY
+        # to DISABLE lets DISABLE_LINTERS override ENABLE_LINTERS instead, so an
+        # inherited (e.g. EXTENDS) ENABLE_LINTERS list can be trimmed locally.
+        disable_priority = (
+            params.get("enable_disable_linters_priority", "ENABLE") == "DISABLE"
+        )
+        in_enable_linters = self.name in params["enable_linters"]
+        in_disable_linters = self.name in params["disable_linters"]
         # Activate or not the linter
-        if self.name in params["enable_linters"]:
+        if in_enable_linters and not (in_disable_linters and disable_priority):
             self.is_active = True
             strategies["ENABLE_LINTERS"] = True
-        elif self.name in params["disable_linters"]:
+        elif in_disable_linters:
             self.is_active = False
             strategies["DISABLE_LINTERS"] = True
         elif self.descriptor_id in params["disable_descriptors"]:
