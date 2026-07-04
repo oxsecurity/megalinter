@@ -515,6 +515,12 @@ CVE-2026-45022
 # trivy v0.70.0, terragrunt alpine 1.15.2. Remove when upstream tools
 # upgrade to go-billy >=5.9.0 / >=6.0.0-alpha.1.
 CVE-2026-44973
+# oras-go CVE-2026-50151: credential forwarding via unvalidated Location
+# header during blob upload. trivy v0.71.2 embeds oras-go v2.6.0 and is
+# used in MegaLinter only as a static scanner against local files; it
+# never uploads blobs to an untrusted registry. Remove when trivy releases
+# a build with oras-go >=2.6.1.
+CVE-2026-50151
 
 # --- protolint / terrascan (gRPC embedded) ---
 # CVE-2026-33186 requires a running gRPC server with grpc/authz interceptors;

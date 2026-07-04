@@ -9,8 +9,9 @@ import os
 import tempfile
 import unittest
 import uuid
+from unittest.mock import patch
 
-from megalinter import Linter, MegaLinter, utilstest
+from megalinter import Linter, MegaLinter, utils_reporter, utilstest
 from megalinter.constants import DEFAULT_SARIF_REPORT_FILE_NAME
 from megalinter.reporters.SarifReporter import SarifReporter
 
@@ -118,3 +119,21 @@ class mega_linter_3_sarif_test(unittest.TestCase):
             "[Api Reporter Metrics] Successfully posted data" in output,
             "Api Reporter Metrics failed to post message",
         )
+
+    def test_convert_sarif_to_human_failure(self):
+        self.before_start()
+        sample_sarif = '{"version": "2.1.0"}'
+        with patch("megalinter.utils_reporter.subprocess.run") as mock_subprocess_run:
+            for returncode, stdout in [(139, ""), (0, "")]:
+                with self.subTest(returncode=returncode, stdout=stdout):
+                    mock_result = mock_subprocess_run.return_value
+                    mock_result.returncode = returncode
+                    mock_result.stdout = stdout
+                    result = utils_reporter.convert_sarif_to_human(
+                        sample_sarif, self.request_id
+                    )
+                    self.assertEqual(
+                        result,
+                        sample_sarif,
+                        "convert_sarif_to_human should return raw SARIF when sarif-fmt fails",
+                    )
