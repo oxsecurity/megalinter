@@ -74,6 +74,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [code-analyzer-apex](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.13.0 to **5.14.0** on 2026-07-04
   - [code-analyzer-aura](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.13.0 to **5.14.0** on 2026-07-04
   - [code-analyzer-lwc](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.13.0 to **5.14.0** on 2026-07-04
+  - [prettier](https://prettier.io/) from 3.8.5 to **3.9.4** on 2026-07-04
 <!-- linter-versions-end -->
 
 ## [v9.6.0] - 2026-06-28
