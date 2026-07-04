@@ -12575,7 +12575,7 @@
 <p>For example, define <code>HTML_DJLINT_ARGUMENTS: ["--profile", "django"]</code> to select django format</p>
 <h2 id="djlint-documentation">djlint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.39.7</strong></li>
+<li>Version in MegaLinter: <strong>1.40.3</strong></li>
 <li>Visit <a href="https://djlint.com/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://djlint.com/docs/configuration/" target="_blank">How to configure djlint rules</a></li>
 <li>See <a href="https://djlint.com/docs/ignoring-code/" target="_blank">How to disable djlint rules in files</a></li>
@@ -12891,6 +12891,8 @@ Options:
   --format-attribute-template-tags
                                   Attempt to format template syntax inside of
                                   tag attributes.
+  --single-attribute-per-line     When an opening tag wraps, put each
+                                  attribute on its own line.
   --per-file-ignores &lt;TEXT TEXT&gt;...
                                   Ignore linter rules on a per-file basis.
   --indent-css INTEGER            Set CSS indent level.
@@ -12912,11 +12914,11 @@ Options:
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=pypi depName=djlint
-ARG PIP_DJLINT_VERSION=1.39.7
+ARG PIP_DJLINT_VERSION=1.40.3
 </code></pre>
 <ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/djlint/1.39.7">djlint==1.39.7</a></li>
+<li><a href="https://pypi.org/project/djlint/1.40.3">djlint==1.40.3</a></li>
 </ul>
 </li>
 </ul>

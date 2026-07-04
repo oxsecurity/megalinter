@@ -12284,6 +12284,7 @@
 <li>If <code>ENABLE_LINTERS</code> is set, only the listed linters are processed.</li>
 <li>If <code>DISABLE</code> is set, the linters in the listed descriptors are skipped.</li>
 <li>If <code>DISABLE_LINTERS</code> is set, the listed linters are skipped.</li>
+<li>If a linter is in both <code>ENABLE_LINTERS</code> and <code>DISABLE_LINTERS</code>, <code>ENABLE_LINTERS</code> wins by default. Set <code>ENABLE_DISABLE_LINTERS_PRIORITY: DISABLE</code> to make <code>DISABLE_LINTERS</code> override <code>ENABLE_LINTERS</code> instead (useful to trim an inherited <code>ENABLE_LINTERS</code> list when using <code>EXTENDS</code>).</li>
 <li>If <code>DISABLE_ERRORS_LINTERS</code> is set, the listed linters will run, but if errors are found, they will be considered non-blocking.</li>
 <li>If <code>ENABLE_ERRORS_LINTERS</code> is set, only the linters in this list will be considered blocking.</li>
 </ul>
@@ -12311,6 +12312,14 @@ DISABLE_ERRORS_LINTERS: REPOSITORY_DEVSKIM
 <pre><code class="language-yaml">DISABLE_LINTERS:
   - PHP_PHPSTAN
   - PHP_PSALM
+</code></pre>
+<ul>
+<li>Inherit a shared <code>ENABLE_LINTERS</code> list via <code>EXTENDS</code> but skip one of the inherited linters locally</li>
+</ul>
+<pre><code class="language-yaml">EXTENDS: https://example.com/shared/.mega-linter.yml
+ENABLE_DISABLE_LINTERS_PRIORITY: DISABLE
+DISABLE_LINTERS:
+  - PYTHON_PYLINT
 </code></pre>
 <!-- config-activation-section-end -->
 
