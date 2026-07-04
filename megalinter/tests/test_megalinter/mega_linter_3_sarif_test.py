@@ -11,7 +11,7 @@ import unittest
 import uuid
 from unittest.mock import patch
 
-from megalinter import Linter, MegaLinter, utilstest, utils_reporter
+from megalinter import Linter, MegaLinter, utils_reporter, utilstest
 from megalinter.constants import DEFAULT_SARIF_REPORT_FILE_NAME
 from megalinter.reporters.SarifReporter import SarifReporter
 
