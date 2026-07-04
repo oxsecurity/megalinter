@@ -125,7 +125,7 @@ ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.29.6
 # renovate: datasource=npm depName=sfdx-hardis
 ARG SFDX_HARDIS_VERSION=7.18.0
 # renovate: datasource=pypi depName=ansible-lint
-ARG PIP_ANSIBLE_LINT_VERSION=26.4.0
+ARG PIP_ANSIBLE_LINT_VERSION=26.6.0
 # renovate: datasource=npm depName=jscpd
 ARG NPM_JSCPD_VERSION=5.0.11
 # renovate: datasource=npm depName=stylelint
