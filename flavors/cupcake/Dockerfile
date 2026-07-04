@@ -138,7 +138,7 @@ ARG GO_ALPINE_VERSION=1.26.3-r0
 # renovate: datasource=npm depName=typescript
 ARG NPM_TYPESCRIPT_VERSION=6.0.3
 # renovate: datasource=pypi depName=ansible-lint
-ARG PIP_ANSIBLE_LINT_VERSION=26.4.0
+ARG PIP_ANSIBLE_LINT_VERSION=26.6.0
 # renovate: datasource=pypi depName=cpplint
 ARG PIP_CPPLINT_VERSION=2.0.2
 # renovate: datasource=github-tags depName=clj-kondo/clj-kondo

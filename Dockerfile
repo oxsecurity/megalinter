@@ -181,7 +181,7 @@ ARG SCALA_COURSIER_VERSION=2.1.24
 # renovate: datasource=npm depName=typescript
 ARG NPM_TYPESCRIPT_VERSION=6.0.3
 # renovate: datasource=pypi depName=ansible-lint
-ARG PIP_ANSIBLE_LINT_VERSION=26.4.0
+ARG PIP_ANSIBLE_LINT_VERSION=26.6.0
 # renovate: datasource=github-tags depName=Azure/arm-ttk
 ARG ARM_TTK_VERSION=20250401
 ARG ARM_TTK_NAME='arm-ttk.zip'
