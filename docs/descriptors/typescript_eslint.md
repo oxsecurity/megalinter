@@ -267,7 +267,7 @@ ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.6
 # renovate: datasource=npm depName=eslint-plugin-promise
 ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=7.3.0
 # renovate: datasource=npm depName=prettier
-ARG NPM_PRETTIER_VERSION=3.8.5
+ARG NPM_PRETTIER_VERSION=3.9.4
 # renovate: datasource=npm depName=prettyjson
 ARG NPM_PRETTYJSON_VERSION=1.2.5
 # renovate: datasource=npm depName=@typescript-eslint/eslint-plugin
@@ -288,7 +288,7 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
   - [eslint-plugin-n@18.2.1](https://www.npmjs.com/package/eslint-plugin-n/v/18.2.1)
   - [eslint-plugin-prettier@5.5.6](https://www.npmjs.com/package/eslint-plugin-prettier/v/5.5.6)
   - [eslint-plugin-promise@7.3.0](https://www.npmjs.com/package/eslint-plugin-promise/v/7.3.0)
-  - [prettier@3.8.5](https://www.npmjs.com/package/prettier/v/3.8.5)
+  - [prettier@3.9.4](https://www.npmjs.com/package/prettier/v/3.9.4)
   - [prettyjson@1.2.5](https://www.npmjs.com/package/prettyjson/v/1.2.5)
   - [@typescript-eslint/eslint-plugin@8.62.1](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin/v/8.62.1)
   - [@typescript-eslint/parser@8.62.1](https://www.npmjs.com/package/@typescript-eslint/parser/v/8.62.1)
