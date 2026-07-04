@@ -477,7 +477,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=ghcr.io/betterleaks/betterleaks
-          ARG REPOSITORY_BETTERLEAKS_VERSION=v1.6.0
+          ARG REPOSITORY_BETTERLEAKS_VERSION=v1.6.1
         - FROM ghcr.io/betterleaks/betterleaks:${REPOSITORY_BETTERLEAKS_VERSION} AS betterleaks
         - COPY --link --from=betterleaks /usr/bin/betterleaks /usr/bin/
     supported_platforms:
