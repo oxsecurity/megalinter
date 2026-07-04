@@ -28,6 +28,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Fixes
 
+  - Fix `SARIF_TO_HUMAN` producing empty linter logs when the bundled `sarif-fmt` binary crashes by building it from source on Alpine and falling back to raw SARIF on conversion failure (#8294)
   - Keep the Docker Pulls badge in `docs/index.md` in sync by having `docker_stats.py` also update the hardcoded badge total in `.automation/build.py`
 
 - Reporters

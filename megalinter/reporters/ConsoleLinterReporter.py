@@ -150,7 +150,7 @@ class ConsoleLinterReporter(Reporter):
         if self.master.cli_lint_mode in ["list_of_files", "project"]:
             stdout = (
                 self.master.stdout_human
-                if self.master.stdout_human is not None
+                if self.master.stdout_human
                 else self.master.stdout
             )
             if self.master.status != "success":
