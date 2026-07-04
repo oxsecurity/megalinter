@@ -85,7 +85,7 @@ class TextReporter(Reporter):
             if self.report_type == "detailed" or self.master.status != "success":
                 stdout = utils.normalize_log_string(
                     self.master.stdout_human
-                    if self.master.stdout_human is not None
+                    if self.master.stdout_human
                     else self.master.stdout
                 )
                 text_report_lines += [f"Linter raw log:\n{stdout}"]

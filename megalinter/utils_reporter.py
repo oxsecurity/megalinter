@@ -381,6 +381,7 @@ def log_section_end(section_key):
 # Convert SARIF into human readable text
 def convert_sarif_to_human(sarif_in, request_id) -> str:
     sarif_fmt_command = "sarif-fmt"
+    return_code = 0
     try:
         process = subprocess.run(
             sarif_fmt_command,
@@ -392,6 +393,13 @@ def convert_sarif_to_human(sarif_in, request_id) -> str:
         )
         return_code = process.returncode
         output = utils.clean_string(process.stdout)
+        if return_code != 0 or output == "":
+            logging.warning(
+                "sarif-fmt failed (return code "
+                + str(return_code)
+                + ") or returned no output; falling back to raw SARIF"
+            )
+            output = sarif_in
     except Exception as e:
         return_code = 1
         output = sarif_in

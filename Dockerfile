@@ -63,16 +63,11 @@ ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.7
 #############################################################################################
 #FROM__START
 FROM alpine:3.24 AS cargo-bin-sarif-fmt
-ARG TARGETARCH
 ARG CARGO_SARIF_FMT_VERSION
-RUN set -eu; mkdir -p /out/bin; \
-    apk add --no-cache curl ca-certificates; \
-    if [ "$TARGETARCH" = "amd64" ]; then \
-      curl -fsSL -o /out/bin/sarif-fmt "https://github.com/psastras/sarif-rs/releases/download/sarif-fmt-v${CARGO_SARIF_FMT_VERSION}/sarif-fmt-x86_64-unknown-linux-gnu"; \
-    else \
-      apk add --no-cache build-base musl-dev openssl-dev openssl-libs-static pkgconfig bash perl rust cargo && \
-      cargo install --force --locked --root /out "sarif-fmt@${CARGO_SARIF_FMT_VERSION}"; \
-    fi; \
+RUN set -eu; \
+    apk add --no-cache build-base musl-dev openssl-dev openssl-libs-static pkgconfig bash perl rust cargo && \
+    mkdir -p /out/bin && \
+    cargo install --force --locked --root /out "sarif-fmt@${CARGO_SARIF_FMT_VERSION}"; \
     chmod +x /out/bin/sarif-fmt
 FROM rhysd/actionlint:${ACTION_ACTIONLINT_VERSION} AS actionlint
 # shellcheck is a dependency for actionlint
