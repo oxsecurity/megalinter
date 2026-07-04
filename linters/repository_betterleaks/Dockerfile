@@ -12,7 +12,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=ghcr.io/betterleaks/betterleaks
-ARG REPOSITORY_BETTERLEAKS_VERSION=v1.6.0
+ARG REPOSITORY_BETTERLEAKS_VERSION=v1.6.1
 #ARGTOP__END
 
 #############################################################################################
