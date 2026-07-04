@@ -8345,6 +8345,24 @@
       "x-order": 100020,
       "x-section": "ACTIVATION"
     },
+    "ENABLE_DISABLE_LINTERS_PRIORITY": {
+      "$id": "#/properties/ENABLE_DISABLE_LINTERS_PRIORITY",
+      "default": "ENABLE",
+      "description": "Defines which list wins when a linter is present in both ENABLE_LINTERS and DISABLE_LINTERS. ENABLE (default) keeps the linter active, DISABLE lets DISABLE_LINTERS override ENABLE_LINTERS (useful to trim an inherited ENABLE_LINTERS list via EXTENDS)",
+      "enum": [
+        "ENABLE",
+        "DISABLE"
+      ],
+      "enumNames": [
+        "ENABLE",
+        "DISABLE"
+      ],
+      "title": "ENABLE_LINTERS / DISABLE_LINTERS priority",
+      "type": "string",
+      "x-category": "GENERAL",
+      "x-order": 100015,
+      "x-section": "ACTIVATION"
+    },
     "ENABLE_ERRORS_LINTERS": {
       "$id": "#/properties/ENABLE_ERRORS_LINTERS",
       "description": "If ENABLE_ERRORS_LINTERS is set, only the listed linters will be considered as blocking",
