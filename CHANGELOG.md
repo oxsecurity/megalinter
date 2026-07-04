@@ -61,6 +61,19 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.52.0 to **1.52.1** on 2026-07-01
   - [rumdl](https://github.com/rvben/rumdl) from 0.2.26 to **0.2.27** on 2026-07-01
   - [djlint](https://djlint.com/) from 1.39.5 to **1.39.7** on 2026-07-01
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 26.4.0 to **26.6.0** on 2026-07-04
+  - [djlint](https://djlint.com/) from 1.39.7 to **1.40.3** on 2026-07-04
+  - [eslint](https://eslint.org) from 10.5.0 to **10.6.0** on 2026-07-04
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.27 to **0.2.28** on 2026-07-04
+  - [phpstan](https://phpstan.org/) from 2.2.2 to **2.2.4** on 2026-07-04
+  - [betterleaks](https://github.com/betterleaks/betterleaks) from 1.6.0 to **1.6.1** on 2026-07-04
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.71.2 to **0.72.0** on 2026-07-04
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.71.2 to **0.72.0** on 2026-07-04
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.95.6 to **3.95.8** on 2026-07-04
+  - [rubocop](https://rubocop.org/) from 1.88.0 to **1.88.1** on 2026-07-04
+  - [code-analyzer-apex](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.13.0 to **5.14.0** on 2026-07-04
+  - [code-analyzer-aura](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.13.0 to **5.14.0** on 2026-07-04
+  - [code-analyzer-lwc](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.13.0 to **5.14.0** on 2026-07-04
 <!-- linter-versions-end -->
 
 ## [v9.6.0] - 2026-06-28

@@ -29,7 +29,7 @@ description: How to use trufflehog (configure, ignore files, ignore errors, help
 
 ## trufflehog documentation
 
-- Version in MegaLinter: **3.95.6**
+- Version in MegaLinter: **3.95.8**
 - Visit [Official Web Site](https://github.com/trufflesecurity/trufflehog#readme){target=_blank}
 - See [How to configure trufflehog rules](https://github.com/trufflesecurity/trufflehog#regex-detector-alpha){target=_blank}
 
@@ -183,6 +183,9 @@ Flags:
                                  Skip additional references.
       --user-agent-suffix=USER-AGENT-SUFFIX
                                  Suffix to add to User-Agent.
+      --[no-]drop-unverified-jwt-results
+                                 Drop unverified results without any
+                                 verification errors from the JWT detector.
       --[no-]version             Show application version.
 
 Commands:
@@ -233,7 +236,7 @@ jenkins --url=URL [<flags>]
     Scan Jenkins
 
 huggingface [<flags>]
-    Find credentials in HuggingFace datasets, models and spaces.
+    Find credentials in HuggingFace datasets, models, spaces and buckets.
 
 stdin
     Find credentials from stdin.
@@ -255,7 +258,7 @@ analyze
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.95.6
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.95.8
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 ```

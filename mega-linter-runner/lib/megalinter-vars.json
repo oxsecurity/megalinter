@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "variable_count": 2374,
+    "variable_count": 2375,
     "categories": {
       "ACTION": 4,
       "ACTION_ACTIONLINT": 16,
@@ -54,7 +54,7 @@
       "ENV": 4,
       "ENV_DOTENV_LINTER": 13,
       "FILEIO_REPORTER": 2,
-      "GENERAL": 51,
+      "GENERAL": 52,
       "GHERKIN": 4,
       "GHERKIN_GHERKIN_LINT": 15,
       "GITHUB_COMMENT_REPORTER": 5,
@@ -6867,6 +6867,19 @@
         "XML",
         "YAML"
       ]
+    },
+    "ENABLE_DISABLE_LINTERS_PRIORITY": {
+      "name": "ENABLE_DISABLE_LINTERS_PRIORITY",
+      "type": "string",
+      "title": "ENABLE_LINTERS / DISABLE_LINTERS priority",
+      "description": "Defines which list wins when a linter is present in both ENABLE_LINTERS and DISABLE_LINTERS. ENABLE (default) keeps the linter active, DISABLE lets DISABLE_LINTERS override ENABLE_LINTERS (useful to trim an inherited ENABLE_LINTERS list via EXTENDS)",
+      "default": "ENABLE",
+      "enum": [
+        "ENABLE",
+        "DISABLE"
+      ],
+      "category": "GENERAL",
+      "section": "ACTIVATION"
     },
     "ENABLE_ERRORS_LINTERS": {
       "name": "ENABLE_ERRORS_LINTERS",
