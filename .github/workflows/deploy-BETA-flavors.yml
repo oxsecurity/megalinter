@@ -98,7 +98,7 @@ jobs:
           persist-credentials: false
 
       - name: Docker Metadata action
-        uses: docker/metadata-action@80c7e94dd9b9319bd5eb7a0e0fe9291e23a2a2e9 # v6
+        uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6
         id: meta
         with:
           images: |
@@ -110,7 +110,7 @@ jobs:
             type=raw,value=
 
       - name: Docker Metadata action (Docker Hub)
-        uses: docker/metadata-action@80c7e94dd9b9319bd5eb7a0e0fe9291e23a2a2e9 # v6
+        uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6
         id: meta-dhub
         with:
           images: |
@@ -122,7 +122,7 @@ jobs:
             type=raw,value=
 
       - name: Docker Metadata action (Worker)
-        uses: docker/metadata-action@80c7e94dd9b9319bd5eb7a0e0fe9291e23a2a2e9 # v6
+        uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6
         id: meta-w
         with:
           images: |
