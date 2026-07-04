@@ -29,7 +29,7 @@ For example, define `HTML_DJLINT_ARGUMENTS: ["--profile", "django"]` to select d
 
 ## djlint documentation
 
-- Version in MegaLinter: **1.39.7**
+- Version in MegaLinter: **1.40.3**
 - Visit [Official Web Site](https://djlint.com/){target=_blank}
 - See [How to configure djlint rules](https://djlint.com/docs/configuration/){target=_blank}
 - See [How to disable djlint rules in files](https://djlint.com/docs/ignoring-code/){target=_blank}
@@ -172,6 +172,8 @@ Options:
   --format-attribute-template-tags
                                   Attempt to format template syntax inside of
                                   tag attributes.
+  --single-attribute-per-line     When an opening tag wraps, put each
+                                  attribute on its own line.
   --per-file-ignores <TEXT TEXT>...
                                   Ignore linter rules on a per-file basis.
   --indent-css INTEGER            Set CSS indent level.
@@ -194,8 +196,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=djlint
-ARG PIP_DJLINT_VERSION=1.39.7
+ARG PIP_DJLINT_VERSION=1.40.3
 ```
 
 - PIP packages (Python):
-  - [djlint==1.39.7](https://pypi.org/project/djlint/1.39.7)
+  - [djlint==1.40.3](https://pypi.org/project/djlint/1.40.3)

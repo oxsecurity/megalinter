@@ -810,12 +810,12 @@ Imports:
 # renovate: datasource=pypi depName=pylint
 ARG PIP_PYLINT_VERSION=4.0.6
 # renovate: datasource=pypi depName=typing-extensions
-ARG PIP_TYPING_EXTENSIONS_VERSION=4.15.0
+ARG PIP_TYPING_EXTENSIONS_VERSION=4.16.0
 ```
 
 - PIP packages (Python):
   - [pylint==4.0.6](https://pypi.org/project/pylint/4.0.6)
-  - [typing-extensions==4.15.0](https://pypi.org/project/typing-extensions/4.15.0)
+  - [typing-extensions==4.16.0](https://pypi.org/project/typing-extensions/4.16.0)
 
 ## Known errors and resolutions
 

@@ -43,7 +43,7 @@ betterleaks is fully compatible with your existing `.gitleaks.toml` configuratio
 
 ## betterleaks documentation
 
-- Version in MegaLinter: **1.6.0**
+- Version in MegaLinter: **1.6.1**
 - Visit [Official Web Site](https://github.com/betterleaks/betterleaks#readme){target=_blank}
 - See [How to configure betterleaks rules](https://github.com/betterleaks/betterleaks#configuration){target=_blank}
 - See [How to disable betterleaks rules in files](https://github.com/betterleaks/betterleaks#betterleaksallow){target=_blank}
@@ -139,6 +139,7 @@ Usage:
 
 Available Commands:
   completion  Generate the autocompletion script for the specified shell
+  config      validate and inspect betterleaks configs
   dir         scan directories or files for secrets
   git         scan git repositories for secrets
   github      scan GitHub repositories and resources for secrets
@@ -198,7 +199,7 @@ Use "betterleaks [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=ghcr.io/betterleaks/betterleaks
-ARG REPOSITORY_BETTERLEAKS_VERSION=v1.6.0
+ARG REPOSITORY_BETTERLEAKS_VERSION=v1.6.1
 FROM ghcr.io/betterleaks/betterleaks:${REPOSITORY_BETTERLEAKS_VERSION} AS betterleaks
 COPY --link --from=betterleaks /usr/bin/betterleaks /usr/bin/
 ```
