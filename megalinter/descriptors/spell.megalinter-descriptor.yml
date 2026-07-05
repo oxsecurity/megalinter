@@ -69,7 +69,7 @@ linters:
       - ".md"
       - ".txt"
     active_only_if_file_found:
-      - .proselintrc
+      - .proselintrc.json
       - proselint/config.json
     linter_text: |
       **proselint** is a powerful linter for English prose that places the world's greatest writers and editors by your side, offering intelligent suggestions to improve your writing quality and style.
@@ -89,13 +89,18 @@ linters:
     linter_rules_url: https://github.com/amperser/proselint#checks
     linter_rules_configuration_url: https://github.com/amperser/proselint#checks
     cli_config_arg_name: --config
-    config_file_name: .proselintrc
+    config_file_name: .proselintrc.json
     cli_lint_mode: list_of_files
+    # proselint 0.16.0 moved linting under the `check` subcommand
+    # (`proselint check <files>`); the bare `proselint <files>` form was removed
+    cli_lint_extra_args:
+      - check
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: ":([0-9]+):([0-9]+): (.*)"
-    cli_version_arg_name: "-v"
+    # proselint 0.16.0 replaced `proselint -v` with the `version` subcommand
+    cli_version_arg_name: version
     examples:
-      - "proselint --config .proselintrc myfile.md myfile2.txt myfile3.rst"
+      - "proselint check --config .proselintrc.json myfile.md myfile2.txt myfile3.rst"
     install:
       apk:
         # proselint >=0.16.0 depends on google-re2, which has no musllinux
