@@ -279,10 +279,14 @@ On the next screen, click on **Copy to clipboard** then paste in your notepad in
 
 Example:
 
+<!-- secretlint-disable -->
+
 ```
 API_REPORTER_BASIC_AUTH_PASSWORD=glc_eyJvIjoiMTEzMjI4OCIsIm4iOiJzZmR4arZW4iLCJrIjoiN0x6Mz1IM041IiwibSI6eyJyXN0LTIifX0=
 API_REPORTER_METRICS_BASIC_AUTH_PASSWORD=glc_eyJvIjoiMTEzMjI4OCIsIm4iOiJzZmR4arZW4iLCJrIjoiN0x6Mz1IM041IiwibSI6eyJyXN0LTIifX0=
 ```
+
+<!-- secretlint-enable -->
 
 ### Configure CI variables on repository
 

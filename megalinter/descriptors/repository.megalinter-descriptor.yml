@@ -848,6 +848,15 @@ linters:
     cli_lint_ignore_arg_name: --secretlintignore
     cli_lint_mode: project
     cli_lint_extra_args_after:
+      # secretlint v13 introduced a ripgrep-based file walker that respects
+      # .gitignore by default. --no-gitignore keeps the v12 scan breadth (scan
+      # everything, filter only via .secretlintignore). The .secretlintignore
+      # itself (which excludes .automation/test fixtures containing intentional
+      # fake secrets) is applied via SecretLintLinter.get_ignore_arguments,
+      # which passes it by base name because the v13 walker matches ignore
+      # files by base name and drops an absolute path.
+      # See https://github.com/secretlint/secretlint/releases (v13)
+      - "--no-gitignore"
       - "**/*"
     cli_sarif_args:
       - --format
@@ -861,13 +870,13 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=secretlint
-          ARG NPM_SECRETLINT_VERSION=11.7.1
+          ARG NPM_SECRETLINT_VERSION=13.0.2
         - |-
           # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
-          ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=11.7.1
+          ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=13.0.2
         - |-
           # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
-          ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=11.7.1
+          ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=13.0.2
       npm:
         - secretlint@${NPM_SECRETLINT_VERSION}
         - "@secretlint/secretlint-rule-preset-recommend@${NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION}"
