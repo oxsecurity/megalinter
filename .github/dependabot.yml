@@ -17,6 +17,23 @@ updates:
       interval: "weekly"
     open-pull-requests-limit: 10
 
+  # Skip npm test fixtures: files under .automation/test intentionally ship
+  # outdated / vulnerable dependencies so MegaLinter's own security scanners
+  # (grype, osv-scanner, syft, trivy...) have something to flag. Ignoring every
+  # dependency in these directories stops Dependabot from opening version AND
+  # security update PRs that would defeat the purpose of the fixtures (e.g. the
+  # recurring "bump the npm_and_yarn group across .../repository_*/bad" PRs).
+  # `exclude-paths` is not used here because it does not suppress security
+  # update PRs (see dependabot/dependabot-core#14408); an `ignore` wildcard is
+  # the only lever that also covers security updates.
+  - package-ecosystem: "npm"
+    directories:
+      - "/.automation/test/**"
+    schedule:
+      interval: "weekly"
+    ignore:
+      - dependency-name: "*"
+
   # Maintain dependencies for ruby with bundler
   - package-ecosystem: "bundler"
     directory: "/"
