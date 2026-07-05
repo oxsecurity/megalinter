@@ -12573,7 +12573,7 @@
 </ul>
 <h2 id="proselint-documentation">proselint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.14.0</strong></li>
+<li>Version in MegaLinter: <strong>0.16.0</strong></li>
 <li>Visit <a href="https://github.com/amperser/proselint#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/amperser/proselint#checks" target="_blank">How to configure proselint rules</a></li>
 <li>See <a href="https://github.com/amperser/proselint#checks" target="_blank">Index of problems detected by proselint</a></li>
@@ -12646,7 +12646,7 @@
 <tr>
 <td>SPELL_PROSELINT_CONFIG_FILE</td>
 <td>proselint configuration file name<br>Use <code>LINTER_DEFAULT</code> to let the linter find it</td>
-<td><code>.proselintrc</code></td>
+<td><code>.proselintrc.json</code></td>
 </tr>
 <tr>
 <td>SPELL_PROSELINT_RULES_PATH</td>
@@ -12832,7 +12832,7 @@
 <h2 id="behind-the-scenes">Behind the scenes</h2>
 <h3 id="how-are-identified-applicable-files">How are identified applicable files</h3>
 <ul>
-<li>Activated only if one of these files is found: <code>.proselintrc, proselint/config.json</code></li>
+<li>Activated only if one of these files is found: <code>.proselintrc.json, proselint/config.json</code></li>
 <li>File extensions: <code>.md</code>, <code>.txt</code></li>
 </ul>
 <!-- markdownlint-disable -->
@@ -12842,36 +12842,42 @@
 <li>proselint is called once with the list of files as arguments (<code>list_of_files</code> CLI lint mode)</li>
 </ul>
 <h3 id="example-calls">Example calls</h3>
-<pre><code class="language-shell">proselint --config .proselintrc myfile.md myfile2.txt myfile3.rst
+<pre><code class="language-shell">proselint check --config .proselintrc.json myfile.md myfile2.txt myfile3.rst
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">Usage: proselint [OPTIONS] [PATHS]...
+<pre><code class="language-shell">usage: proselint [options] &lt;command&gt;
 
-  Create the CLI for proselint, a linter for prose.
+proselint, a linter for prose.
 
-Options:
-  -v, --version          Show the version and exit.
-  --config PATH          Path to configuration file.
-  -d, --debug            Give verbose output.
-  -c, --clean            Clear the cache.
-  -j, --json             Output as JSON.
-  -t, --time             Time on a corpus.
-  --demo                 Run over demo file.
-  --compact              Shorten output.
-  --dump-config          Prints current config.
-  --dump-default-config  Prints default config.
-  -h, --help             Show this message and exit.
+options:
+  -h, --help            show this help message and exit
+  --config CONFIG       path to a configuration file (`.proselintrc.json`)
+  --output-format, -o {full,json,compact}
+                        the format to display results in
+  --verbose, -v         enable verbose logging
+
+commands:
+
+    version             display the current version and exit
+    check               run proselint against paths
+    dump-config         display the loaded configuration and exit
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=pypi depName=proselint
-ARG PIP_PROSELINT_VERSION=0.14.0
+ARG PIP_PROSELINT_VERSION=0.16.0
 </code></pre>
 <ul>
+<li>APK packages (Linux):<ul>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=v3.24&amp;arch=x86_64&amp;name=build-base">build-base</a></li>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=v3.24&amp;arch=x86_64&amp;name=re2-dev">re2-dev</a></li>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=v3.24&amp;arch=x86_64&amp;name=py3-pybind11-dev">py3-pybind11-dev</a></li>
+</ul>
+</li>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/proselint/0.14.0">proselint==0.14.0</a></li>
+<li><a href="https://pypi.org/project/proselint/0.16.0">proselint==0.16.0</a></li>
 </ul>
 </li>
 </ul>
