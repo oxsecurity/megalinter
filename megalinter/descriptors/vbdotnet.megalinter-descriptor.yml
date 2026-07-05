@@ -12,6 +12,11 @@ install:
   dockerfile:
     - RUN apk add --no-cache dotnet10-sdk && install -d /usr/local/dotnet-tools
     - ENV PATH="${PATH}:/usr/local/dotnet-tools"
+    # Make .NET CI-safe: disable telemetry/first-run experience (avoid concurrent
+    # NuGet/cache init writes) and MSBuild node reuse (avoid lingering build-server
+    # processes shared across parallel test workers), which cause intermittent
+    # "0 files formatted" flakiness in the dotnet-based linter tests.
+    - ENV DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_NOLOGO=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 MSBUILDDISABLENODEREUSE=1
 linters:
   # DOTNET FORMAT
   - class: DotnetFormatLinter

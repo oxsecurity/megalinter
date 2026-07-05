@@ -31,6 +31,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Fixes
 
   - Make remote configuration loading resilient to transient network failures by adding a request timeout and bounded retries with backoff when fetching `MEGALINTER_CONFIG` and `EXTENDS` files over HTTP (fixes intermittent `config_test` failures caused by `raw.githubusercontent.com` CDN cache lag)
+  - Make the .NET-based linters (`CSHARP_CSHARPIER`, `CSHARP_DOTNET_FORMAT`, `CSHARP_ROSLYNATOR`, `VBDOTNET_DOTNET_FORMAT`) CI-safe by disabling .NET telemetry, the first-run experience, and MSBuild node reuse in the image, fixing intermittent "0 files formatted" flakiness caused by shared MSBuild build-server state across parallel runs
   - Disable `TERRAFORM_TERRASCAN` (upstream repo archived by Tenable, unmaintained) and `SQL_TSQLLINT` (no upstream release since 2024-09), as both ship unpatched CVEs with no prospect of a fixed release
   - Fix `SARIF_TO_HUMAN` producing empty linter logs when the bundled `sarif-fmt` binary crashes by building it from source on Alpine and falling back to raw SARIF on conversion failure (#8294)
   - Keep the Docker Pulls badge in `docs/index.md` in sync by having `docker_stats.py` also update the hardcoded badge total in `.automation/build.py`

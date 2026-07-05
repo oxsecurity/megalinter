@@ -159,6 +159,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 # CSHARP installation
 RUN apk add --no-cache dotnet10-sdk && install -d /usr/local/dotnet-tools
 ENV PATH="${PATH}:/usr/local/dotnet-tools"
+ENV DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_NOLOGO=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 MSBUILDDISABLENODEREUSE=1
 # csharpier installation
 RUN dotnet tool install --allow-roll-forward --tool-path /usr/local/dotnet-tools csharpier --version "${CSHARP_CSHARPIER_VERSION}"
 #OTHER__END
