@@ -80,6 +80,8 @@ linters:
   # TERRASCAN
   - class: TerrascanLinter
     linter_name: terrascan
+    disabled: true
+    disabled_reason: "Upstream repo archived by Tenable (unmaintained); ships unpatched CVEs (e.g. CVE-2026-33186 grpc, plus a Go-stdlib tail) with no prospect of a fixed release. <https://github.com/tenable/terrascan>"
     deprecated: true
     deprecated_description: Repo archived. <https://github.com/tenable/terrascan>
     linter_text: |

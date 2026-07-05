@@ -70,7 +70,6 @@
         "SPELL_LYCHEE",
         "SPELL_CODESPELL",
         "SQL_SQLFLUFF",
-        "SQL_TSQLLINT",
         "TEKTON_TEKTON_LINT",
         "VBDOTNET_DOTNET_FORMAT",
         "XML_XMLLINT",

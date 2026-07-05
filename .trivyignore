@@ -14,3 +14,129 @@
 #  - Most "fixed version" entries with a `Remove when X upgraded to Y`
 #    comment can be deleted once renovate ships the upgrade.
 # .trivyignore format: https://trivy.dev/docs/latest/configuration/filtering/#trivyignore
+
+# --- Go stdlib (all Go-based linters) ---
+# Go linters (actionlint, shfmt, golangci-lint, editorconfig-checker, kubeconform,
+# protolint, ls-lint, gitleaks, betterleaks, terragrunt, tflint, snakefmt, and the
+# syft/grype/trivy scanners) ship statically linked against a Go toolchain.
+# These stdlib CVEs are DoS / cert-validation flaws in crypto/x509, crypto/tls, net,
+# net/http2, net/mail and net/url. Every linter runs as a one-shot CLI over local
+# workspace files: no network server, no TLS termination, no DNS of attacker-controlled
+# hosts, no email parsing. The vulnerable paths are never entered.
+# Remove once the upstream tool images are rebuilt with a fixed Go toolchain.
+CVE-2025-22874
+CVE-2025-61726
+CVE-2025-61729
+CVE-2025-68121
+CVE-2026-25679
+CVE-2026-27137
+CVE-2026-27145
+CVE-2026-32280
+CVE-2026-32281
+CVE-2026-32283
+CVE-2026-33810
+CVE-2026-33811
+CVE-2026-33814
+CVE-2026-39820
+CVE-2026-39836
+CVE-2026-42499
+CVE-2026-42504
+
+# --- Go x/crypto, x/net, x/oauth2 (Go-based linters) ---
+# Transitive golang.org/x/* CVEs embedded in the same Go linters/scanners above.
+# SSH/crypto, HTTP/2, HTML and OAuth2 DoS or parsing flaws — none reachable from a
+# one-shot CLI that neither serves traffic nor performs an OAuth handshake at lint time.
+# Remove once upstream tools bump their x/* dependencies.
+CVE-2025-47913
+CVE-2026-25681
+CVE-2026-27136
+CVE-2026-39821
+CVE-2026-39827
+CVE-2026-39828
+CVE-2026-39829
+CVE-2026-39830
+CVE-2026-39832
+CVE-2026-39835
+CVE-2026-42502
+CVE-2026-42508
+CVE-2026-46595
+CVE-2026-46597
+
+# --- Go modules embedded in scanner / k8s / IaC linters ---
+# Library CVEs in Go modules that trivy, grype, syft, terragrunt and tflint statically
+# embed (docker/docker, grpc, oras-go, ...). Used as static-analysis libraries only: no
+# container runtime, no registry/gRPC/policy server and no remote fetch of attacker-
+# controlled artifacts during a lint run. Remove once the tool upgrades the dependency.
+CVE-2026-33186
+CVE-2026-34040
+CVE-2026-48702
+CVE-2026-50151
+
+# --- Java deps (pmd, npm-groovy-lint, scalafix, salesforce-code-analyzer) ---
+# Transitive JVM library CVEs. netty-* are network-framework parsing/DoS flaws, but these
+# linters run no netty listener/client at lint time. jackson-databind ACE requires
+# polymorphic default-typing on untrusted JSON, which the linters never enable on external
+# input. protobuf-java, lz4-java, commons-beanutils and jline flaws likewise need attacker
+# -controlled protobuf/compressed/bean/telnet input that a source-code analyzer never
+# receives. Remove once the tools ship updated JVM dependencies.
+CVE-2024-7254
+CVE-2025-12183
+CVE-2025-48734
+CVE-2025-59419
+CVE-2026-33870
+CVE-2026-33871
+CVE-2026-42579
+CVE-2026-42583
+CVE-2026-42584
+CVE-2026-42587
+CVE-2026-44249
+CVE-2026-44250
+CVE-2026-44890
+CVE-2026-44893
+CVE-2026-45416
+CVE-2026-45674
+CVE-2026-46340
+CVE-2026-47691
+CVE-2026-48006
+CVE-2026-48059
+CVE-2026-50010
+CVE-2026-50011
+CVE-2026-54512
+CVE-2026-54513
+GHSA-2r2c-cx56-8933
+GHSA-47qp-hqvx-6r3f
+
+# --- npm deps (gherkin-lint, npm-groovy-lint, salesforce-code-analyzer) ---
+# Transitive Node package CVEs. protobufjs ACE/DoS needs compilation of attacker-controlled
+# .proto or crafted protobuf; the linters parse .feature/.js/.cls source, not untrusted
+# schemas. lodash/underscore prototype-pollution, minimatch/picomatch/linkify-it ReDoS,
+# undici/ws/form-data/fast-uri HTTP/URI DoS and tmp symlink issues all require untrusted
+# input or outbound HTTP that a one-shot CLI over local files never performs.
+# Remove once the linters bump their npm dependencies.
+CVE-2026-12143
+CVE-2026-12151
+CVE-2026-1526
+CVE-2026-2229
+CVE-2026-26996
+CVE-2026-27601
+CVE-2026-27903
+CVE-2026-27904
+CVE-2026-33671
+CVE-2026-41242
+CVE-2026-44289
+CVE-2026-44290
+CVE-2026-44291
+CVE-2026-44293
+CVE-2026-44705
+CVE-2026-4800
+CVE-2026-48712
+CVE-2026-48779
+CVE-2026-48801
+CVE-2026-6321
+CVE-2026-6322
+
+# --- .NET deps (roslynator) ---
+# Microsoft.Build.Tasks.Core CVE-2025-26646 only affects projects that run the MSBuild
+# DownloadFile task, which roslynator's static analysis pass never invokes.
+# Remove once roslynator.dotnet.cli ships a build with Microsoft.Build >= 17.8.29.
+CVE-2025-26646
