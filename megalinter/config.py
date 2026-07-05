@@ -5,6 +5,7 @@ import os
 import re
 import shlex
 import tempfile
+import time
 
 import requests
 import yaml
@@ -30,6 +31,40 @@ DEFAULT_SECURED_ENV_VARIABLES = (
     "(SFDX_CLIENT_KEY_.*)",
     "(^|_)(SLACK|DISCORD|TEAMS|WEBHOOK)_URL($|_)",
 )
+
+
+# Fetch a remote config file with a request timeout and bounded retries.
+# Remote configs live on raw.githubusercontent.com, whose CDN edge cache can
+# lag behind a fresh push (transient 404) and occasionally returns 5xx; a bare
+# requests.get with no timeout/retry turns any such blip into a hard failure.
+# Retries cover network exceptions and every non-200; the last response is
+# returned so callers keep their own specific status-code error messages.
+def http_get_with_retry(url, headers=None, retries=3, timeout=30, backoff_base=2):
+    last_response = None
+    last_error = None
+    for attempt in range(retries):
+        try:
+            last_response = requests.get(
+                url, allow_redirects=True, headers=headers or {}, timeout=timeout
+            )
+            if last_response.status_code == 200:
+                return last_response
+            last_error = f"HTTP {last_response.status_code}"
+        except requests.RequestException as e:
+            last_response = None
+            last_error = str(e)
+        if attempt < retries - 1:
+            delay = backoff_base**attempt
+            logging.warning(
+                f"[config] Attempt {attempt + 1}/{retries} to fetch {url} failed "
+                f"({last_error}); retrying in {delay}s"
+            )
+            time.sleep(delay)
+    if last_response is not None:
+        return last_response
+    raise RuntimeError(
+        f"Unable to retrieve {url} after {retries} attempts: {last_error}"
+    )
 
 
 def init_config(request_id, workspace=None, params=None):
@@ -71,7 +106,7 @@ def init_config(request_id, workspace=None, params=None):
                 + os.path.sep
                 + config_file_name.rsplit("/", 1)[-1]
             )
-            r = requests.get(config_file_name, allow_redirects=True)
+            r = http_get_with_retry(config_file_name)
             if r.status_code != 200:
                 raise RuntimeError(f"Unable to retrieve config file {config_file_name}")
             with open(config_file, "wb") as f:
@@ -144,7 +179,7 @@ def combine_config(workspace, config, combined_config, config_source):
             ):
                 github_token = os.environ["GITHUB_TOKEN"]
                 headers["Authorization"] = f"token {github_token}"
-            r = requests.get(extends_item, allow_redirects=True, headers=headers)
+            r = http_get_with_retry(extends_item, headers=headers)
             assert (
                 r.status_code == 200
             ), f"Unable to retrieve EXTENDS config file {extends_item}"
