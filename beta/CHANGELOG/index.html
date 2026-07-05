@@ -15728,6 +15728,7 @@
 <li>
 <p>Fixes</p>
 <ul>
+<li>Disable <code>TERRAFORM_TERRASCAN</code> (upstream repo archived by Tenable, unmaintained) and <code>SQL_TSQLLINT</code> (no upstream release since 2024-09), as both ship unpatched CVEs with no prospect of a fixed release</li>
 <li>Fix <code>SARIF_TO_HUMAN</code> producing empty linter logs when the bundled <code>sarif-fmt</code> binary crashes by building it from source on Alpine and falling back to raw SARIF on conversion failure (#8294)</li>
 <li>Keep the Docker Pulls badge in <code>docs/index.md</code> in sync by having <code>docker_stats.py</code> also update the hardcoded badge total in <code>.automation/build.py</code></li>
 </ul>
