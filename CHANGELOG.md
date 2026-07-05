@@ -77,6 +77,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [code-analyzer-lwc](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.13.0 to **5.14.0** on 2026-07-04
   - [prettier](https://prettier.io/) from 3.8.5 to **3.9.4** on 2026-07-04
   - [terragrunt](https://terragrunt.gruntwork.io) from 1.0.8 to **1.1.0** on 2026-07-05
+  - [golangci-lint](https://golangci-lint.run/) from 2.11.4 to **2.12.2** on 2026-07-05
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 17.0.5 to **18.0.0** on 2026-07-05
+  - [phpstan](https://phpstan.org/) from 2.2.4 to **2.2.5** on 2026-07-05
+  - [secretlint](https://github.com/secretlint/secretlint) from 11.7.1 to **13.0.2** on 2026-07-05
+  - [proselint](https://github.com/amperser/proselint) from 0.14.0 to **0.16.0** on 2026-07-05
 <!-- linter-versions-end -->
 
 ## [v9.6.0] - 2026-06-28

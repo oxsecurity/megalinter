@@ -31628,7 +31628,7 @@
     },
     "SPELL_PROSELINT_CONFIG_FILE": {
       "$id": "#/properties/SPELL_PROSELINT_CONFIG_FILE",
-      "default": ".proselintrc",
+      "default": ".proselintrc.json",
       "description": "SPELL_PROSELINT: User custom config file name if different from default",
       "title": "SPELL_PROSELINT: Custom config file name",
       "type": "string",

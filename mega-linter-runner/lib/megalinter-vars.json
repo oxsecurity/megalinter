@@ -25735,7 +25735,7 @@
       "type": "string",
       "title": "SPELL_PROSELINT: Custom config file name",
       "description": "SPELL_PROSELINT: User custom config file name if different from default",
-      "default": ".proselintrc",
+      "default": ".proselintrc.json",
       "category": "SPELL_PROSELINT",
       "section": "LINTER_COMMAND"
     },
