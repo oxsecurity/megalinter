@@ -848,6 +848,12 @@ linters:
     cli_lint_ignore_arg_name: --secretlintignore
     cli_lint_mode: project
     cli_lint_extra_args_after:
+      # secretlint v13 respects .gitignore by default via a new ripgrep-based
+      # file walker, under which --secretlintignore patterns are no longer
+      # honored. --no-gitignore restores the v12 walker so .secretlintignore
+      # (which excludes .automation/test fixtures with intentional fake secrets)
+      # applies again. See https://github.com/secretlint/secretlint/releases (v13)
+      - "--no-gitignore"
       - "**/*"
     cli_sarif_args:
       - --format
