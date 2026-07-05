@@ -145,7 +145,7 @@ ARG NPM_GRAPHQL_VERSION=16.14.2
 # renovate: datasource=npm depName=graphql-schema-linter
 ARG NPM_GRAPHQL_SCHEMA_LINTER_VERSION=3.0.1
 # renovate: datasource=npm depName=npm-groovy-lint
-ARG NPM_GROOVY_LINT_VERSION=17.0.5
+ARG NPM_GROOVY_LINT_VERSION=18.0.0
 # renovate: datasource=pypi depName=djlint
 ARG PIP_DJLINT_VERSION=1.40.3
 # renovate: datasource=npm depName=htmlhint
