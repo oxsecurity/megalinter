@@ -9,9 +9,9 @@ description: checkmake is available to analyze MAKEFILE files in MegaLinter
 
 ## Linters
 
-| Linter                                                                                   | Additional                                                                                                                                                                                  |
-|------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [**checkmake**](makefile_checkmake.md)<br/>[_MAKEFILE_CHECKMAKE_](makefile_checkmake.md) | ![disabled](https://shields.io/badge/-disabled-orange) [![GitHub stars](https://img.shields.io/github/stars/checkmake/checkmake?cacheSeconds=3600)](https://github.com/checkmake/checkmake) |
+| Linter                                                                                   | Additional                                                                                                                                                                                                                                       |
+|------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**checkmake**](makefile_checkmake.md)<br/>[_MAKEFILE_CHECKMAKE_](makefile_checkmake.md) | <span title="Disabled: Security issues: &lt;https://github.com/checkmake/checkmake/issues/99&gt;">🚫</span> [![GitHub stars](https://img.shields.io/github/stars/checkmake/checkmake?cacheSeconds=3600)](https://github.com/checkmake/checkmake) |
 
 ## Linted files
 
