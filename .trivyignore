@@ -140,3 +140,26 @@ CVE-2026-6322
 # DownloadFile task, which roslynator's static analysis pass never invokes.
 # Remove once roslynator.dotnet.cli ships a build with Microsoft.Build >= 17.8.29.
 CVE-2025-26646
+
+# --- Dockerfile misconfigurations (REPOSITORY_TRIVY misconfig scan) ---
+# These are trivy's own Dockerfile checks fired against MegaLinter's generated
+# Dockerfiles — the images that RUN the linters. They intentionally run as root
+# (DS-0002), install tools with both curl and wget (DS-0014), don't pin every
+# base image tag (DS-0001), expose no service but trip port/HEALTHCHECK/WORKDIR
+# style checks (DS-0004/DS-0013/DS-0026). None are a security risk for a
+# short-lived CI linter-runner container, and hadolint already lints these
+# Dockerfiles for real issues. Both the AVD-DS-* and short DS-* ids are listed
+# so the ignore matches regardless of the trivy id form. Remove if MegaLinter
+# ever ships rootless images.
+AVD-DS-0001
+DS-0001
+AVD-DS-0002
+DS-0002
+AVD-DS-0004
+DS-0004
+AVD-DS-0013
+DS-0013
+AVD-DS-0014
+DS-0014
+AVD-DS-0026
+DS-0026
