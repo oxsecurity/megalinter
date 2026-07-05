@@ -57,7 +57,7 @@ ARG TARGETARCH
 # renovate: datasource=repology depName=alpine_3_24/go versioning=loose
 ARG GO_ALPINE_VERSION=1.26.3-r0
 # renovate: datasource=github-tags depName=golangci/golangci-lint
-ARG GO_GOLANGCI_LINT_VERSION=2.11.4
+ARG GO_GOLANGCI_LINT_VERSION=2.12.2
 #ARG__END
 
 ####################
@@ -162,7 +162,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 RUN apk add --no-cache \
     go=${GO_ALPINE_VERSION} \
 # golangci-lint installation
-    && wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s "v${GO_GOLANGCI_LINT_VERSION}" \
+    && wget -O- -nv https://golangci-lint.run/install.sh | sh -s "v${GO_GOLANGCI_LINT_VERSION}" \
     && golangci-lint --version
 
 #OTHER__END
