@@ -1,6 +1,6 @@
 ---
 name: fix-security-issue
-description: Handle CVE/vulnerability reports from security linters (trivy, osv-scanner, etc.). Tries to upgrade first; ignores only when safe and justified.
+description: Handle CVE/vulnerability reports from security linters (trivy, osv-scanner, etc.). Tries to upgrade first; ignores only when safe and justified; disables an unmaintained linter (with user confirmation) when a dangerous CVE has no fix.
 allowed-tools: Read Grep Glob Edit Write Bash WebFetch WebSearch
 argument-hint: "[CVE-ID or vulnerability description]"
 model: opus
@@ -52,7 +52,7 @@ Ask:
    - Credential theft / data exfiltration → only relevant if the linter makes outbound connections or reads secrets from env
    - Arbitrary code execution → serious; check if the attack vector reaches the linter's execution environment
 
-## Step 5 — Decide: block or ignore
+## Step 5 — Decide: block, ignore, or disable
 
 **Stop and warn the user** if:
 - The vulnerability involves credential theft, secret exposure, or supply-chain compromise
@@ -64,6 +64,19 @@ Ask:
 - Template/injection attack requiring untrusted user-controlled input that MegaLinter never passes
 - Server-side vulnerability in a tool used only as a CLI client
 - Debug/tooling CVE (e.g. `cilium-bugtool`) in a package imported only for its data types
+
+**Consider disabling the linter** when the CVE is genuinely dangerous (reachable in MegaLinter's context, or CRITICAL with an exploit path you cannot rule out) **and** there is no upgrade path because the tool looks unmaintained or abandoned. Signals of abandonment:
+- No commit / release on the source repo for 6+ months (check the linter's `linter_repo` on GitHub)
+- The fixing version is never going to ship (archived repo, maintainer stepped away, issue open for a long time with no response)
+- Upstream explicitly declined to fix, or the project is deprecated
+
+When you judge that disabling is the right call, **ALWAYS ask the user first** via `AskUserQuestion` — never disable a linter autonomously. In the question, explain concretely:
+- The CVE, its severity, and why it is reachable/dangerous here (not a routine unreachable-DoS ignore)
+- The evidence of abandonment (e.g. "last commit 2024-01, no release in 14 months, fix requires vX.Y which does not exist")
+- What disabling means for users (the linter stops running; another linter for the same language may still cover it)
+- The alternative (keep it enabled with a documented ignore) so the user can choose
+
+Only after the user confirms, disable it per Step 6.
 
 ## Step 6 — Add the exception
 
@@ -86,6 +99,22 @@ Always include:
 - The CVE ID
 - A comment naming the affected package and the specific reason it is not exploitable
 - A note if the ignore should be revisited (e.g. "remove when <linter> releases a version compiled with Go X.Y.Z")
+
+### Disabling a linter (only after user confirmation in Step 5)
+
+Edit the linter's entry in its `megalinter/descriptors/<lang>.megalinter-descriptor.yml` and add:
+
+```yaml
+  - linter_name: <tool>
+    disabled: true
+    disabled_reason: "Security: <CVE-ID> (<severity>) unpatched; upstream unmaintained (<evidence>). Re-enable when a fixed release ships. <advisory-url>"
+```
+
+Notes:
+- `disabled` / `disabled_reason` are real descriptor properties (see e.g. `repository.megalinter-descriptor.yml` `kics`, disabled for a supply-chain compromise).
+- After editing the descriptor, run `make megalinter-build` (NEVER `make megalinter-build-with-doc`) to regenerate Dockerfiles, test classes, and schemas.
+- Disabling a linter **is** user-facing — add a `CHANGELOG.md` **Fixes** line per Step 7.
+- Do NOT also add a `.trivyignore` entry for the same CVE: once the linter is disabled its image is no longer built/scanned, so an ignore would be dead weight. Ignore is the alternative to disabling, not a companion to it.
 
 ## Step 7 — Update CHANGELOG
 
