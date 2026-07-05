@@ -87,6 +87,9 @@ RUN apk -U --no-cache upgrade \
                 musl-dev \
                 openssh \
                 su-exec \
+                build-base \
+                re2-dev \
+                py3-pybind11-dev \
     && git config --global core.autocrlf true
 #APK__END
 

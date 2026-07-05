@@ -506,6 +506,9 @@ RUN apk -U --no-cache upgrade \
                 R \
                 R-dev \
                 R-doc \
+                build-base \
+                re2-dev \
+                py3-pybind11-dev \
                 unzip \
                 npm \
                 nodejs-current \

@@ -97,6 +97,14 @@ linters:
     examples:
       - "proselint --config .proselintrc myfile.md myfile2.txt myfile3.rst"
     install:
+      apk:
+        # proselint >=0.16.0 depends on google-re2, which has no musllinux
+        # wheel and must be compiled from source: needs a C++ toolchain
+        # (build-base), the system RE2 library headers (re2-dev, which also
+        # pulls abseil) and pybind11 headers (py3-pybind11-dev).
+        - build-base
+        - re2-dev
+        - py3-pybind11-dev
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=proselint
