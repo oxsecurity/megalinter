@@ -983,10 +983,10 @@ def generate_documentation():
         + "code**, **IaC**, **configuration**, and **scripts** in your repository "
         + "to **ensure all your project sources are clean and formatted**, no matter which IDE or toolbox is used by "
         + "your developers. Powered by [**OX Security**](https://www.ox.security/?ref=megalinter).\n\n"
-        + f"Supports [**{len(linters_by_type['language'])}** languages]"
+        + f"Supports [**{count_active_linters(linters_by_type['language'])}** languages]"
         + "(#languages), "
-        + f"[**{len(linters_by_type['format'])}** formats](#formats), "
-        + f"[**{len(linters_by_type['tooling_format'])}** tooling formats](#tooling-formats), "
+        + f"[**{count_active_linters(linters_by_type['format'])}** formats](#formats), "
+        + f"[**{count_active_linters(linters_by_type['tooling_format'])}** tooling formats](#tooling-formats), "
         + "and is **ready to use out of the box** as a GitHub Action or with any CI system. "
         + "It is **highly configurable** and **free for all uses**.\n\n"
         + "MegaLinter has **native integrations** with many major CI/CD tools.\n\n"
@@ -1357,12 +1357,16 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         linter_doc_url = (
             f"{DOCS_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}.md"
         )
-        # Build md table line
+        # Build md table line (strike through the name when the linter is disabled)
+        linter_name_cell = strikethrough_if_disabled(
+            linter,
+            f"[**{linter.linter_name}**]({doc_url(linter_doc_url)})<br/>"
+            f"[_{linter.name}_]({doc_url(linter_doc_url)})",
+        )
         linters_tables_md += [
             f"| {icon_html} <!-- linter-icon --> | "
             f"{descriptor_id_cell} | "
-            f"[**{linter.linter_name}**]({doc_url(linter_doc_url)})<br/>"
-            f"[_{linter.name}_]({doc_url(linter_doc_url)}) | "
+            f"{linter_name_cell} | "
             f"{md_extra} |"
         ]
         individual_badges = get_badges(
@@ -2156,10 +2160,10 @@ def build_flavors_md_table(filter_linter_name=None, replace_link=False):
     )
     _descriptors, linters_by_type = list_descriptors_for_build()
     linters_number = (
-        len(linters_by_type["language"])
-        + len(linters_by_type["format"])
-        + len(linters_by_type["tooling_format"])
-        + +len(linters_by_type["other"])
+        count_active_linters(linters_by_type["language"])
+        + count_active_linters(linters_by_type["format"])
+        + count_active_linters(linters_by_type["tooling_format"])
+        + count_active_linters(linters_by_type["other"])
     )
     docker_image_badge = f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/{ML_DOCKER_IMAGE}/{VERSION_V})"
     docker_pulls_badge = f"![Docker Pulls]({BASE_SHIELD_COUNT_LINK}/{ML_DOCKER_IMAGE})"
@@ -3403,7 +3407,12 @@ def generate_documentation_all_linters():
             if hasattr(linter, "linter_repo") and linter.linter_repo is not None
             else f"[Web Site]({linter.linter_url}){{target=_blank}}"
         )
-        md_linter_name = f"[**{linter.linter_name}**]({url}){{target=_blank}}"
+        md_linter_name = strikethrough_if_disabled(
+            linter, f"[**{linter.linter_name}**]({url}){{target=_blank}}"
+        )
+        status_icons = " ".join(get_status_icons(linter))
+        if status_icons != "":
+            md_linter_name = f"{md_linter_name} {status_icons}"
         # version
         linter_version = "N/A"
         if (
@@ -3673,6 +3682,70 @@ def generate_documentation_all_users():
     logging.info(f"Generated {REPO_HOME}/docs/all_users.md")
 
 
+def linter_is_disabled(linter):
+    return (hasattr(linter, "get") and linter.get("disabled") is True) or (
+        hasattr(linter, "disabled") and linter.disabled is True
+    )
+
+
+def linter_is_deprecated(linter):
+    return (hasattr(linter, "get") and linter.get("deprecated") is True) or (
+        hasattr(linter, "deprecated") and linter.deprecated is True
+    )
+
+
+def get_linter_status_reason(linter, *attrs):
+    for attr in attrs:
+        val = linter.get(attr) if hasattr(linter, "get") else None
+        if not val and hasattr(linter, attr):
+            val = getattr(linter, attr)
+        if val:
+            return str(val)
+    return ""
+
+
+def html_attr_escape(text):
+    return (
+        str(text)
+        .replace("&", "&amp;")
+        .replace('"', "&quot;")
+        .replace("<", "&lt;")
+        .replace(">", "&gt;")
+    )
+
+
+# Hover-tooltip icons flagging disabled / deprecated linters, usable both in the
+# per-linter doc pages and in the pages listing linters (README, supported-linters,
+# all_linters). The reason is shown as a native browser tooltip on hover.
+def get_status_icons(linter):
+    icons = []
+    if linter_is_disabled(linter):
+        reason = (
+            get_linter_status_reason(linter, "disabled_reason")
+            or "This linter is disabled in this version"
+        )
+        icons += [f'<span title="Disabled: {html_attr_escape(reason)}">🚫</span>']
+    if linter_is_deprecated(linter):
+        reason = (
+            get_linter_status_reason(
+                linter, "deprecated_description", "deprecated_reason"
+            )
+            or "This linter is deprecated"
+        )
+        icons += [f'<span title="Deprecated: {html_attr_escape(reason)}">⚠️</span>']
+    return icons
+
+
+# Strike through the linter name in listing pages when the linter is disabled
+def strikethrough_if_disabled(linter, md_text):
+    return f"<s>{md_text}</s>" if linter_is_disabled(linter) else md_text
+
+
+# Count linters, excluding disabled ones (they are not shipped in any flavor)
+def count_active_linters(linters):
+    return len([linter for linter in linters if not linter_is_disabled(linter)])
+
+
 def get_badges(
     linter,
     show_last_release=False,
@@ -3684,14 +3757,8 @@ def get_badges(
     badges = []
     repo = get_github_repo(linter)
 
-    if (hasattr(linter, "get") and linter.get("disabled") is True) or (
-        hasattr(linter, "disabled") and linter.disabled is True
-    ):
-        badges += ["![disabled](https://shields.io/badge/-disabled-orange)"]
-    if (hasattr(linter, "get") and linter.get("deprecated") is True) or (
-        hasattr(linter, "deprecated") and linter.deprecated is True
-    ):
-        badges += ["![deprecated](https://shields.io/badge/-deprecated-red)"]
+    # Disabled / deprecated status icons carry the reason as a hover tooltip
+    badges += get_status_icons(linter)
     if (
         show_downgraded_version
         and (hasattr(linter, "get") and linter.get("downgraded_version") is True)

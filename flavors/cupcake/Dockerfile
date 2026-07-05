@@ -44,8 +44,6 @@ ARG REPOSITORY_TRUFFLEHOG_VERSION=3.95.8
 ARG SPELL_LYCHEE_VERSION=0.24.2-alpine
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
 ARG TERRAFORM_TFLINT_VERSION=0.63.1
-# renovate: datasource=docker depName=tenable/terrascan
-ARG TERRAFORM_TERRASCAN_VERSION=1.19.9
 # renovate: datasource=docker depName=alpine/terragrunt
 ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.7
 #ARGTOP__END
@@ -94,7 +92,6 @@ FROM ghcr.io/betterleaks/betterleaks:${REPOSITORY_BETTERLEAKS_VERSION} AS better
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
 FROM lycheeverse/lychee:${SPELL_LYCHEE_VERSION} AS lychee
 FROM ghcr.io/terraform-linters/tflint:v${TERRAFORM_TFLINT_VERSION} AS tflint
-FROM tenable/terrascan:${TERRAFORM_TERRASCAN_VERSION} AS terrascan
 FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 # Next FROM line commented because already managed by another linter
 # FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
@@ -346,7 +343,6 @@ ARG REPOSITORY_BETTERLEAKS_VERSION
 ARG REPOSITORY_TRUFFLEHOG_VERSION
 ARG SPELL_LYCHEE_VERSION
 ARG TERRAFORM_TFLINT_VERSION
-ARG TERRAFORM_TERRASCAN_VERSION
 ARG TERRAFORM_TERRAGRUNT_VERSION
 #ARG__END
 
@@ -466,7 +462,6 @@ COPY --link --from=betterleaks /usr/bin/betterleaks /usr/bin/
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
 COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
-COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
 COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 COPY --link --from=terragrunt /bin/terraform /usr/bin/
 #COPY__END
@@ -863,8 +858,6 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPO
     rm -rf /tmp/swiftlint /tmp/swiftlint.zip
 # tflint installation
 # Managed with COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
-# terrascan installation
-# Managed with COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
 # terragrunt installation
 # Managed with COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 # terraform-fmt installation

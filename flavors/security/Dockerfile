@@ -34,8 +34,6 @@ ARG REPOSITORY_BETTERLEAKS_VERSION=v1.6.1
 ARG REPOSITORY_TRUFFLEHOG_VERSION=3.95.8
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
 ARG TERRAFORM_TFLINT_VERSION=0.63.1
-# renovate: datasource=docker depName=tenable/terrascan
-ARG TERRAFORM_TERRASCAN_VERSION=1.19.9
 # renovate: datasource=docker depName=alpine/terragrunt
 ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.7
 #ARGTOP__END
@@ -67,7 +65,6 @@ FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
 FROM ghcr.io/betterleaks/betterleaks:${REPOSITORY_BETTERLEAKS_VERSION} AS betterleaks
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
 FROM ghcr.io/terraform-linters/tflint:v${TERRAFORM_TFLINT_VERSION} AS tflint
-FROM tenable/terrascan:${TERRAFORM_TERRASCAN_VERSION} AS terrascan
 FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 #FROM__END
 
@@ -154,7 +151,6 @@ ARG REPOSITORY_GITLEAKS_VERSION
 ARG REPOSITORY_BETTERLEAKS_VERSION
 ARG REPOSITORY_TRUFFLEHOG_VERSION
 ARG TERRAFORM_TFLINT_VERSION
-ARG TERRAFORM_TERRASCAN_VERSION
 ARG TERRAFORM_TERRAGRUNT_VERSION
 #ARG__END
 
@@ -227,7 +223,6 @@ COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 COPY --link --from=betterleaks /usr/bin/betterleaks /usr/bin/
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
-COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
 COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 #COPY__END
 
@@ -364,8 +359,6 @@ RUN dotnet tool install --allow-roll-forward --tool-path /usr/local/dotnet-tools
 
 # tflint installation
 # Managed with COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
-# terrascan installation
-# Managed with COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
 # terragrunt installation
 # Managed with COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 #OTHER__END
