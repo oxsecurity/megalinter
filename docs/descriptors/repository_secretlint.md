@@ -28,7 +28,7 @@ description: How to use secretlint (configure, ignore files, ignore errors, help
 
 ## secretlint documentation
 
-- Version in MegaLinter: **11.7.1**
+- Version in MegaLinter: **13.0.2**
 - Visit [Official Web Site](https://github.com/secretlint/secretlint#readme){target=_blank}
 - See [How to configure secretlint rules](https://github.com/secretlint/secretlint#configuration){target=_blank}
   - If custom `.secretlintrc.json` config file isn't found, [.secretlintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.secretlintrc.json){target=_blank} will be used
@@ -116,20 +116,23 @@ Usage
   $ secretlint [file|glob*]
 
 Note
-  supported glob syntax is based on microglob
+  supported glob syntax is based on picomatch (the engine used by micromatch)
+  https://github.com/micromatch/picomatch#globbing-features
   https://github.com/micromatch/micromatch#matching-features
 
 Options
   --init             setup config file. Create .secretlintrc.json file from your package.json
   --format           [String] formatter name. Default: "stylish". Available Formatter: checkstyle, compact, github, jslint-xml, junit, pretty-error, stylish, tap, unix, json, mask-result, table
   --output           [path:String] output file path that is written of reported result.
+  --secretlintrc     [path:String] path to .secretlintrc config file. Default: .secretlintrc.*
+  --secretlintignore [path:String] path to .secretlintignore file. Default: .secretlintignore
+  --stdinFileName    [String] filename to process STDIN content. Some rules depend on filename to check content.
   --no-color         disable ANSI-color of output.
   --no-terminalLink  disable terminalLink of output.
   --no-maskSecrets   disable masking of secret values; secrets are masked by default.
   --no-glob          disable glob pattern interpretation; treat all inputs as literal file paths.
-  --secretlintrc     [path:String] path to .secretlintrc config file. Default: .secretlintrc.*
-  --secretlintignore [path:String] path to .secretlintignore file. Default: .secretlintignore
-  --stdinFileName    [String] filename to process STDIN content. Some rules depend on filename to check content.
+  --no-gitignore     disable .gitignore cascade respect; .gitignore files are
+                     respected by default (since v13).
 
 Options for Developer
   --profile          Enable performance profile.
@@ -139,14 +142,33 @@ Experimental Options
   --locale            [String] locale tag for translating message. Default: en
 
 Examples
+  # Scan a single file
   $ secretlint ./README.md
-  # glob pattern should be wrapped with double quote
+
+  # Scan all files (wrap glob in double quotes to avoid shell expansion)
   $ secretlint "**/*"
   $ secretlint "source/**/*.ini"
-  # output masked result to file
+
+  # Treat inputs as literal paths (for SvelteKit (group) / Next.js [param] etc.)
+  $ secretlint --no-glob "src/(auth)/login.ts"
+
+  # Lint STDIN content (filename hint affects which rules apply)
+  $ echo "SECRET" | secretlint --stdinFileName=secret.txt
+
+  # Use a custom config file
+  $ secretlint "**/*" --secretlintrc=.secretlintrc.custom.json
+
+  # Scan files ignored by .gitignore (e.g. to verify build artifacts)
+  $ secretlint --no-gitignore "dist/**/*"
+
+  # Mask secrets in a file in-place
   $ secretlint .zsh_history --format=mask-result --output=.zsh_history
-  # lint STDIN content instead of file
-  $ echo "SECRET CONTENT" | secretlint --stdinFileName=secret.txt
+
+  # Output JSON for programmatic parsing
+  $ secretlint "**/*" --format=json --output=secretlint-report.json
+
+  # Output GitHub Actions annotations in CI
+  $ secretlint "**/*" --format=github
 
 Exit Status
   Secretlint exits with the following values:
@@ -166,14 +188,14 @@ Exit Status
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=secretlint
-ARG NPM_SECRETLINT_VERSION=11.7.1
+ARG NPM_SECRETLINT_VERSION=13.0.2
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
-ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=11.7.1
+ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=13.0.2
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
-ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=11.7.1
+ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=13.0.2
 ```
 
 - NPM packages (node.js):
-  - [secretlint@11.7.1](https://www.npmjs.com/package/secretlint/v/11.7.1)
-  - [@secretlint/secretlint-rule-preset-recommend@11.7.1](https://www.npmjs.com/package/@secretlint/secretlint-rule-preset-recommend/v/11.7.1)
-  - [@secretlint/secretlint-formatter-sarif@11.7.1](https://www.npmjs.com/package/@secretlint/secretlint-formatter-sarif/v/11.7.1)
+  - [secretlint@13.0.2](https://www.npmjs.com/package/secretlint/v/13.0.2)
+  - [@secretlint/secretlint-rule-preset-recommend@13.0.2](https://www.npmjs.com/package/@secretlint/secretlint-rule-preset-recommend/v/13.0.2)
+  - [@secretlint/secretlint-formatter-sarif@13.0.2](https://www.npmjs.com/package/@secretlint/secretlint-formatter-sarif/v/13.0.2)

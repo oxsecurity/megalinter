@@ -26,7 +26,7 @@ description: How to use proselint (configure, ignore files, ignore errors, help 
 
 ## proselint documentation
 
-- Version in MegaLinter: **0.14.0**
+- Version in MegaLinter: **0.16.0**
 - Visit [Official Web Site](https://github.com/amperser/proselint#readme){target=_blank}
 - See [How to configure proselint rules](https://github.com/amperser/proselint#checks){target=_blank}
 - See [Index of problems detected by proselint](https://github.com/amperser/proselint#checks){target=_blank}
@@ -50,7 +50,7 @@ description: How to use proselint (configure, ignore files, ignore errors, help 
 | SPELL_PROSELINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
 | SPELL_PROSELINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
 | SPELL_PROSELINT_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling SPELL_PROSELINT and its pre/post commands                                                                                                              | None                                            |
-| SPELL_PROSELINT_CONFIG_FILE                 | proselint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                | `.proselintrc`                                  |
+| SPELL_PROSELINT_CONFIG_FILE                 | proselint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                | `.proselintrc.json`                             |
 | SPELL_PROSELINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | SPELL_PROSELINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | SPELL_PROSELINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
@@ -93,7 +93,7 @@ This linter is available in the following flavors
 
 ### How are identified applicable files
 
-- Activated only if one of these files is found: `.proselintrc, proselint/config.json`
+- Activated only if one of these files is found: `.proselintrc.json, proselint/config.json`
 - File extensions: `.md`, `.txt`
 
 <!-- markdownlint-disable -->
@@ -105,29 +105,29 @@ This linter is available in the following flavors
 ### Example calls
 
 ```shell
-proselint --config .proselintrc myfile.md myfile2.txt myfile3.rst
+proselint check --config .proselintrc.json myfile.md myfile2.txt myfile3.rst
 ```
 
 
 ### Help content
 
 ```shell
-Usage: proselint [OPTIONS] [PATHS]...
+usage: proselint [options] <command>
 
-  Create the CLI for proselint, a linter for prose.
+proselint, a linter for prose.
 
-Options:
-  -v, --version          Show the version and exit.
-  --config PATH          Path to configuration file.
-  -d, --debug            Give verbose output.
-  -c, --clean            Clear the cache.
-  -j, --json             Output as JSON.
-  -t, --time             Time on a corpus.
-  --demo                 Run over demo file.
-  --compact              Shorten output.
-  --dump-config          Prints current config.
-  --dump-default-config  Prints default config.
-  -h, --help             Show this message and exit.
+options:
+  -h, --help            show this help message and exit
+  --config CONFIG       path to a configuration file (`.proselintrc.json`)
+  --output-format, -o {full,json,compact}
+                        the format to display results in
+  --verbose, -v         enable verbose logging
+
+commands:
+  
+    version             display the current version and exit
+    check               run proselint against paths
+    dump-config         display the loaded configuration and exit
 ```
 
 ### Installation on mega-linter Docker image
@@ -135,8 +135,12 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=proselint
-ARG PIP_PROSELINT_VERSION=0.14.0
+ARG PIP_PROSELINT_VERSION=0.16.0
 ```
 
+- APK packages (Linux):
+  - [build-base](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=build-base)
+  - [re2-dev](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=re2-dev)
+  - [py3-pybind11-dev](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=py3-pybind11-dev)
 - PIP packages (Python):
-  - [proselint==0.14.0](https://pypi.org/project/proselint/0.14.0)
+  - [proselint==0.16.0](https://pypi.org/project/proselint/0.16.0)
