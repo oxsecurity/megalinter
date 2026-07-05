@@ -6,7 +6,7 @@ argument-hint: "[CVE-ID or vulnerability description]"
 model: opus
 ---
 
-Investigate and fix the security issue `$ARGUMENTS` reported by trivy, osv-scanner, or another security linter.
+Investigate and fix the security issue `$ARGUMENTS` reported by trivy, osv-scanner, grype, or another security linter.
 
 > **Delegation hint** — for non-trivial CVEs, delegate the applicability/exploitability analysis to the `security-analyst` agent (opus) and the mechanical version bump (once decided) to the `version-bumper` agent (haiku). This keeps deep reasoning on opus and pin edits on haiku, minimising token spend.
 
