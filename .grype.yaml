@@ -10,5 +10,3 @@ fail-on-severity: "high"
 # they are not real MegaLinter dependencies.
 exclude:
   - "./.automation/test/**"
-
-
