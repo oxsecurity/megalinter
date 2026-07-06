@@ -38,8 +38,6 @@ ARG GO_IMAGE_VERSION=1.26.4
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.8.0-alpine
 # renovate: datasource=github-releases depName=JohnnyMorganz/StyLua extractVersion=^v(?<version>.+)$
 ARG CARGO_STYLUA_VERSION=2.5.2
-# renovate: datasource=docker depName=quay.io/checkmake/checkmake
-ARG MAKEFILE_CHECKMAKE_VERSION=v0.3.2
 # renovate: datasource=docker depName=yoheimuta/protolint
 ARG PROTOBUF_PROTOLINT_VERSION=0.56.4
 # renovate: datasource=github-tags depName=checkmarx/dustilock
@@ -115,7 +113,6 @@ RUN set -eu; mkdir -p /out/bin; \
     unzip /tmp/stylua.zip -d /out/bin && \
     rm /tmp/stylua.zip && \
     chmod +x /out/bin/stylua
-FROM quay.io/checkmake/checkmake:${MAKEFILE_CHECKMAKE_VERSION} AS checkmake
 FROM yoheimuta/protolint:${PROTOBUF_PROTOLINT_VERSION} AS protolint
 FROM golang:${GO_IMAGE_VERSION}-alpine AS dustilock
 ARG REPOSITORY_DUSTILOCK_VERSION
@@ -439,7 +436,6 @@ ARG GO_REVIVE_VERSION
 ARG GO_IMAGE_VERSION
 ARG KUBERNETES_KUBECONFORM_VERSION
 ARG CARGO_STYLUA_VERSION
-ARG MAKEFILE_CHECKMAKE_VERSION
 ARG PROTOBUF_PROTOLINT_VERSION
 ARG REPOSITORY_DUSTILOCK_VERSION
 ARG REPOSITORY_GITLEAKS_VERSION
@@ -582,7 +578,6 @@ COPY --link --from=revive /usr/bin/revive /usr/bin/revive
 COPY --link --from=kubeconform /kubeconform /usr/bin/
 COPY --link --from=chktex /usr/bin/chktex /usr/bin/
 COPY --link --from=cargo-bin-stylua /out/bin/stylua /usr/bin/stylua
-COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
@@ -1065,8 +1060,6 @@ RUN curl --retry 5 --retry-delay 5 -sSL \
     && cd / \
 # stylua installation
 # Managed with COPY --link --from=cargo-bin-stylua /out/bin/stylua /usr/bin/stylua
-# checkmake installation
-# Managed with COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 # markdownlint installation
 # markdown-table-formatter installation
 # rumdl installation
