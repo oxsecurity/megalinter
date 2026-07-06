@@ -487,10 +487,9 @@ linters:
       - file
       - list_of_files
       - project
-    cli_lint_mode_file_extra_args_after:
+    cli_lint_extra_args_after:
       - dir
     cli_lint_mode_project_extra_args_after:
-      - dir
       - "."
     cli_lint_extra_args:
       - --redact
