@@ -82,6 +82,7 @@ RUN apk -U --no-cache upgrade \
                 make \
                 musl-dev \
                 openssh \
+                su-exec \
                 npm \
                 nodejs-current \
                 yarn \
@@ -148,7 +149,8 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
     NODE_ENV=production
 #NPM__START
 WORKDIR /node-deps
-RUN npm --no-cache install --ignore-scripts --omit=dev \
+RUN npm config set prefix /usr/local \
+    && npm --no-cache install --ignore-scripts --omit=dev \
                 v8r@${NPM_V8R_VERSION} && \
     echo "Cleaning npm cache…" \
     && (npm cache clean --force || true) \
@@ -241,17 +243,23 @@ ENV ENABLE_LINTERS=YAML_V8R \
     FILEIO_REPORTER=false \
     CONFIG_REPORTER=false \
     SARIF_TO_HUMAN=false
-RUN mkdir /root/docker_ssh && mkdir /usr/bin/megalinter-sh
+RUN mkdir /tmp/docker_ssh && mkdir /usr/bin/megalinter-sh
 EXPOSE 22
 COPY entrypoint.sh /entrypoint.sh
 COPY sh /usr/bin/megalinter-sh
-COPY sh/megalinter_exec /usr/bin/megalinter_exec
+COPY sh/megalinter_exec.sh /usr/bin/megalinter_exec.sh
+COPY sh/setup-runtime-user.sh /usr/bin/setup-runtime-user.sh
 COPY sh/motd /etc/motd
 RUN find /usr/bin/megalinter-sh/ -type f -iname "*.sh" -exec chmod +x {} \; && \
     chmod +x entrypoint.sh && \
-    chmod +x /usr/bin/megalinter_exec && \
-    echo "alias megalinter='python -m megalinter.run'" >> ~/.bashrc && source ~/.bashrc && \
-    echo "alias megalinter_exec='/usr/bin/megalinter_exec'" >> ~/.bashrc && source ~/.bashrc
+    chmod +x /usr/bin/megalinter_exec.sh && \
+    chmod u+x /usr/bin/setup-runtime-user.sh && \
+    printf '%s\n' \
+      '#!/usr/bin/env sh' \
+      'exec python -m megalinter.run "$@"' \
+      > /usr/local/bin/megalinter && \
+    chmod u+x /usr/local/bin/megalinter && \
+    ln -sf /usr/bin/megalinter_exec.sh /usr/local/bin/megalinter_exec
 RUN export STANDALONE_LINTER_VERSION="$(python -m megalinter.run --input /tmp --linterversion)" && \
     echo $STANDALONE_LINTER_VERSION
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]

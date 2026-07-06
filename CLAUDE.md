@@ -19,6 +19,10 @@ Always activate the venv before running Python scripts manually:
 - Linux/macOS: `source .venv/bin/activate`
 - Windows: `source .venv/Scripts/activate`
 
+## Shell Commands — Use rtk
+
+If `rtk` (Rust Token Killer) is installed, it is important to prefix all bash/shell commands with `rtk` (e.g. `rtk git status`, `rtk ls`, `rtk grep`, `rtk find`). It is a token-optimizing proxy that saves 60-90% of tokens on output-heavy commands. Use `rtk proxy <cmd>` (or run raw) only when you need exact, unfiltered output such as a diff you will edit from or a full stack trace. Verify availability with `rtk --version`.
+
 ## Key Commands
 
 ```bash
@@ -167,6 +171,7 @@ Skills in `.claude/skills/` invocable by name (e.g. `/add-linter`).
 - `/diagnose-config` - Debug `.mega-linter.yml` configuration issues
 - `/fix-security-issue [CVE or description]` - Handle CVE/vulnerability reports from trivy, osv-scanner, etc.
 - `/fix-issue [issue URL or #number]` - End-to-end GitHub issue fix: gather context, implement on a branch, commit under the user's git identity (no AI attribution), open a PR, and watch CI until green
+- `/prepare-release [vX.Y.Z]` - Full release ceremony: update CHANGELOG (prune empty sections, collapse linter versions, backfill PR numbers), run release build, push commit and tag, guide GitHub release creation
 
 ## Rules
 

@@ -234,11 +234,14 @@ def update_docker_pulls_counter():
     total_count_human = number_human_format(total_count)
     logging.info(f"Total docker pulls: {total_count_human} ({total_count})")
 
-    # Update badge in README files
+    # Update badge in README files and in the hardcoded docs/index.md badge
+    # literal inside build.py (which overrides the badges block when generating
+    # docs/index.md from README.md)
     badge_pattern = re.compile(r"(?<=pulls-)[^-]+(?=-blue)")
     for readme in [
         f"{REPO_HOME}/README.md",
         f"{REPO_HOME}/mega-linter-runner/README.md",
+        f"{REPO_HOME}/.automation/build.py",
     ]:
         text = open(readme, encoding="utf-8").read()
         updated = badge_pattern.sub(total_count_human, text)

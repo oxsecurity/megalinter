@@ -152,6 +152,9 @@ class Megalinter:
         self.enable_linters = config.get_list(self.request_id, "ENABLE_LINTERS", [])
         self.disable_descriptors = config.get_list(self.request_id, "DISABLE", [])
         self.disable_linters = config.get_list(self.request_id, "DISABLE_LINTERS", [])
+        self.enable_disable_linters_priority = config.get(
+            self.request_id, "ENABLE_DISABLE_LINTERS_PRIORITY", "ENABLE"
+        ).upper()
         self.enable_errors_linters = config.get_list(
             self.request_id, "ENABLE_ERRORS_LINTERS", []
         )
@@ -658,6 +661,7 @@ class Megalinter:
             "enable_linters": self.enable_linters,
             "disable_descriptors": self.disable_descriptors,
             "disable_linters": self.disable_linters,
+            "enable_disable_linters_priority": self.enable_disable_linters_priority,
             "enable_errors_linters": self.enable_errors_linters,
             "disable_errors_linters": self.disable_errors_linters,
             "workspace": self.workspace,
@@ -689,6 +693,7 @@ class Megalinter:
             all_linters = linter_factory.list_all_linters(linter_init_params)
 
         skipped_linters = []
+        activation_skip_reasons = {}
         # Remove inactive, disabled or skipped linters
         skip_cli_lint_modes = config.get_list(
             self.request_id, "SKIP_CLI_LINT_MODES", []
@@ -707,6 +712,8 @@ class Megalinter:
                 or linter.cli_lint_mode in skip_cli_lint_modes
             ):
                 skipped_linters += [linter.name]
+                if linter.activation_skip_reason is not None:
+                    activation_skip_reasons[linter.name] = linter.activation_skip_reason
                 if linter.disabled is True:
                     disabled_reason = (
                         linter.disabled_reason
@@ -724,6 +731,20 @@ class Megalinter:
                     )
                 continue
             self.linters += [linter]
+            if hasattr(linter, "deprecated") and linter.deprecated is True:
+                deprecated_description = (
+                    linter.deprecated_description
+                    if hasattr(linter, "deprecated_description")
+                    and linter.deprecated_description
+                    else "This linter is deprecated."
+                )
+                logging.warning(
+                    f"{linter.name} is deprecated and will be removed in a future major release. "
+                    + deprecated_description
+                    + " Add "
+                    + linter.name
+                    + " to DISABLE_LINTERS in your .mega-linter.yml to disable it."
+                )
         # Display skipped linters in log
         show_skipped_linters = (
             config.get(self.request_id, "SHOW_SKIPPED_LINTERS", "true") == "true"
@@ -731,6 +752,15 @@ class Megalinter:
         if len(skipped_linters) > 0 and show_skipped_linters:
             skipped_linters.sort()
             logging.info("Skipped linters: " + ", ".join(skipped_linters))
+            if len(activation_skip_reasons) > 0:
+                reasons_lines = "\n".join(
+                    f"- {name}: {activation_skip_reasons[name]}"
+                    for name in sorted(activation_skip_reasons.keys())
+                )
+                logging.info(
+                    "Some linters were skipped due to activation rules:\n"
+                    + reasons_lines
+                )
         # Sort linters by language and linter_name
         self.linters = sorted(
             self.linters, key=lambda lamb: (lamb.processing_order, lamb.descriptor_id)

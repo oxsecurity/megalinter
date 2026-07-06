@@ -29,13 +29,13 @@ ARG BASH_SHFMT_VERSION=v3.13.1-alpine
 # renovate: datasource=docker depName=hadolint/hadolint
 ARG DOCKERFILE_HADOLINT_VERSION=v2.14.0-alpine
 # renovate: datasource=docker depName=mstruebing/editorconfig-checker
-ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.7.0
+ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.8.0
 # renovate: datasource=github-tags depName=mgechev/revive
 ARG GO_REVIVE_VERSION=v1.15.0
 # renovate: datasource=docker depName=golang versioning=semver
-ARG GO_IMAGE_VERSION=1.26.3
+ARG GO_IMAGE_VERSION=1.26.4
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
-ARG KUBERNETES_KUBECONFORM_VERSION=v0.7.0-alpine
+ARG KUBERNETES_KUBECONFORM_VERSION=v0.8.0-alpine
 # renovate: datasource=github-releases depName=JohnnyMorganz/StyLua extractVersion=^v(?<version>.+)$
 ARG CARGO_STYLUA_VERSION=2.5.2
 # renovate: datasource=docker depName=quay.io/checkmake/checkmake
@@ -46,18 +46,18 @@ ARG PROTOBUF_PROTOLINT_VERSION=0.56.4
 ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.30.1
+# renovate: datasource=docker depName=ghcr.io/betterleaks/betterleaks
+ARG REPOSITORY_BETTERLEAKS_VERSION=v1.6.1
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.95.3
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.95.8
 # renovate: datasource=docker depName=jdkato/vale
-ARG SPELL_VALE_VERSION=v3.14.2
+ARG SPELL_VALE_VERSION=v3.15.1
 # renovate: datasource=docker depName=lycheeverse/lychee
 ARG SPELL_LYCHEE_VERSION=0.24.2-alpine
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
-ARG TERRAFORM_TFLINT_VERSION=0.62.1
-# renovate: datasource=docker depName=tenable/terrascan
-ARG TERRAFORM_TERRASCAN_VERSION=1.19.9
+ARG TERRAFORM_TFLINT_VERSION=0.63.1
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.5
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.7
 #ARGTOP__END
 
 #############################################################################################
@@ -65,16 +65,11 @@ ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.5
 #############################################################################################
 #FROM__START
 FROM alpine:3.23 AS cargo-bin-sarif-fmt
-ARG TARGETARCH
 ARG CARGO_SARIF_FMT_VERSION
-RUN set -eu; mkdir -p /out/bin; \
-    apk add --no-cache curl ca-certificates; \
-    if [ "$TARGETARCH" = "amd64" ]; then \
-      curl -fsSL -o /out/bin/sarif-fmt "https://github.com/psastras/sarif-rs/releases/download/sarif-fmt-v${CARGO_SARIF_FMT_VERSION}/sarif-fmt-x86_64-unknown-linux-gnu"; \
-    else \
-      apk add --no-cache build-base musl-dev openssl-dev openssl-libs-static pkgconfig bash perl rust cargo && \
-      cargo install --force --locked --root /out "sarif-fmt@${CARGO_SARIF_FMT_VERSION}"; \
-    fi; \
+RUN set -eu; \
+    apk add --no-cache build-base musl-dev openssl-dev openssl-libs-static pkgconfig bash perl rust cargo && \
+    mkdir -p /out/bin && \
+    cargo install --force --locked --root /out "sarif-fmt@${CARGO_SARIF_FMT_VERSION}"; \
     chmod +x /out/bin/sarif-fmt
 FROM rhysd/actionlint:${ACTION_ACTIONLINT_VERSION} AS actionlint
 # shellcheck is a dependency for actionlint
@@ -126,11 +121,11 @@ FROM golang:${GO_IMAGE_VERSION}-alpine AS dustilock
 ARG REPOSITORY_DUSTILOCK_VERSION
 RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v${REPOSITORY_DUSTILOCK_VERSION}
 FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
+FROM ghcr.io/betterleaks/betterleaks:${REPOSITORY_BETTERLEAKS_VERSION} AS betterleaks
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
 FROM jdkato/vale:${SPELL_VALE_VERSION} AS vale
 FROM lycheeverse/lychee:${SPELL_LYCHEE_VERSION} AS lychee
 FROM ghcr.io/terraform-linters/tflint:v${TERRAFORM_TFLINT_VERSION} AS tflint
-FROM tenable/terrascan:${TERRAFORM_TERRASCAN_VERSION} AS terrascan
 FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 # Next FROM line commented because already managed by another linter
 # FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
@@ -169,32 +164,32 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 #ARG__START
 ARG TARGETPLATFORM
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
-ARG POWERSHELL_VERSION=7.6.2
+ARG POWERSHELL_VERSION=7.6.3
 # renovate: datasource=github-tags depName=sgerrand/alpine-pkg-glibc
 ARG ALPINE_GLIBC_PACKAGE_VERSION=2.34-r0
-# renovate: datasource=repology depName=alpine_edge/go versioning=loose
+# renovate: datasource=repology depName=alpine_3_24/go versioning=loose
 ARG GO_ALPINE_VERSION=1.26.3-r0
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
-ARG POWERSHELL_VERSION=7.6.2
+ARG POWERSHELL_VERSION=7.6.3
 
 # renovate: datasource=npm depName=@salesforce/cli
-ARG NPM_SALESFORCE_CLI_VERSION=2.136.8
+ARG NPM_SALESFORCE_CLI_VERSION=2.141.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.28.3
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.30.1
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=7.15.0
+ARG SFDX_HARDIS_VERSION=7.19.0
 # renovate: datasource=github-tags depName=coursier/coursier
 ARG SCALA_COURSIER_VERSION=2.1.24
 # renovate: datasource=npm depName=typescript
 ARG NPM_TYPESCRIPT_VERSION=6.0.3
 # renovate: datasource=pypi depName=ansible-lint
-ARG PIP_ANSIBLE_LINT_VERSION=26.4.0
+ARG PIP_ANSIBLE_LINT_VERSION=26.6.0
 # renovate: datasource=github-tags depName=Azure/arm-ttk
 ARG ARM_TTK_VERSION=20250401
 ARG ARM_TTK_NAME='arm-ttk.zip'
 ARG ARM_TTK_DIRECTORY='/opt/microsoft'
 # renovate: datasource=github-tags depName=Azure/bicep
-ARG BICEP_VERSION=0.43.8
+ARG BICEP_VERSION=0.44.1
 ARG BICEP_EXE='bicep'
 ARG BICEP_DIR='/usr/local/bin'
 # renovate: datasource=pypi depName=cpplint
@@ -205,80 +200,80 @@ ARG CLJ_KONDO_VERSION=2025.01.16
 # renovate: datasource=github-tags depName=greglook/cljstyle
 ARG CLJ_STYLE_VERSION=0.17.642
 # renovate: datasource=pypi depName=cfn-lint
-ARG PIP_CFN_LINT_VERSION=1.51.2
+ARG PIP_CFN_LINT_VERSION=1.52.1
 # renovate: datasource=npm depName=@coffeelint/cli
 ARG NPM_COFFEELINT_CLI_VERSION=5.2.11
 # renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=4.2.4
+ARG NPM_JSCPD_VERSION=5.0.11
 # renovate: datasource=nuget depName=csharpier
 ARG CSHARP_CSHARPIER_VERSION=1.2.6
 # renovate: datasource=nuget depName=roslynator.dotnet.cli
 ARG CSHARP_ROSLYNATOR_VERSION=0.12.0
 # renovate: datasource=npm depName=stylelint
-ARG NPM_STYLELINT_VERSION=17.12.0
+ARG NPM_STYLELINT_VERSION=17.14.0
 # renovate: datasource=npm depName=stylelint-config-standard
 ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=40.0.0
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
 ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=13.0.0
 # renovate: datasource=npm depName=stylelint-scss
-ARG NPM_STYLELINT_SCSS_VERSION=7.1.1
+ARG NPM_STYLELINT_SCSS_VERSION=7.2.0
 # renovate: datasource=dart-version depName=dart
-ARG DART_VERSION='3.12.1'
+ARG DART_VERSION='3.12.2'
 # renovate: datasource=github-releases depName=dotenv-linter/dotenv-linter extractVersion=^v(?<version>.+)$
 ARG DOTENV_LINTER_VERSION=4.0.0
 # renovate: datasource=npm depName=gherkin-lint
 ARG NPM_GHERKIN_LINT_VERSION=4.2.4
 # renovate: datasource=github-tags depName=golangci/golangci-lint
-ARG GO_GOLANGCI_LINT_VERSION=2.11.4
+ARG GO_GOLANGCI_LINT_VERSION=2.12.2
 # renovate: datasource=npm depName=graphql
-ARG NPM_GRAPHQL_VERSION=16.14.0
+ARG NPM_GRAPHQL_VERSION=16.14.2
 # renovate: datasource=npm depName=graphql-schema-linter
 ARG NPM_GRAPHQL_SCHEMA_LINTER_VERSION=3.0.1
 # renovate: datasource=npm depName=npm-groovy-lint
-ARG NPM_GROOVY_LINT_VERSION=17.0.5
+ARG NPM_GROOVY_LINT_VERSION=18.0.0
 # renovate: datasource=pypi depName=djlint
-ARG PIP_DJLINT_VERSION=1.36.4
+ARG PIP_DJLINT_VERSION=1.40.3
 # renovate: datasource=npm depName=htmlhint
 ARG NPM_HTMLHINT_VERSION=1.9.2
 # renovate: datasource=github-releases depName=checkstyle/checkstyle
 ARG JAVA_CHECKSTYLE_VERSION=12.1.0
 # renovate: datasource=github-tags depName=pmd/pmd extractVersion=^pmd_releases/(?<version>.*)$
-ARG PMD_VERSION=7.25.0
+ARG PMD_VERSION=7.26.0
 
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=10.4.0
+ARG NPM_ESLINT_VERSION=10.6.0
 # renovate: datasource=npm depName=@eslint/js
 ARG NPM_ESLINT_JS_VERSION=10.0.1
 # renovate: datasource=npm depName=eslint-config-prettier
 ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.1.8
 # renovate: datasource=npm depName=eslint-plugin-import-x
-ARG NPM_ESLINT_PLUGIN_IMPORT_X_VERSION=4.16.2
+ARG NPM_ESLINT_PLUGIN_IMPORT_X_VERSION=4.17.1
 # renovate: datasource=npm depName=eslint-plugin-jest
-ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.15.2
+ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.15.4
 # renovate: datasource=npm depName=eslint-plugin-n
-ARG NPM_ESLINT_PLUGIN_N_VERSION=18.0.1
+ARG NPM_ESLINT_PLUGIN_N_VERSION=18.2.1
 # renovate: datasource=npm depName=eslint-plugin-prettier
 ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.6
 # renovate: datasource=npm depName=eslint-plugin-promise
 ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=7.3.0
 # renovate: datasource=npm depName=eslint-plugin-vue
-ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.9.1
+ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.9.2
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 # renovate: datasource=npm depName=standard
 ARG NPM_STANDARD_VERSION=17.1.2
 # renovate: datasource=npm depName=prettier
-ARG NPM_PRETTIER_VERSION=3.8.3
+ARG NPM_PRETTIER_VERSION=3.9.4
 # renovate: datasource=npm depName=@prantlf/jsonlint
 ARG NPM_PRANTLF_JSONLINT_VERSION=17.0.1
 # renovate: datasource=npm depName=v8r
 ARG NPM_V8R_VERSION=6.1.0
 # renovate: datasource=npm depName=npm-package-json-lint
-ARG NPM_PACKAGE_JSON_LINT_VERSION=10.4.0
+ARG NPM_PACKAGE_JSON_LINT_VERSION=10.4.1
 # renovate: datasource=npm depName=npm-package-json-lint-config-default
 ARG NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION=9.0.1
 # renovate: datasource=npm depName=@eslint-react/eslint-plugin
-ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.8.6
+ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.10.1
 # renovate: datasource=github-tags depName=pinterest/ktlint
 ARG KTLINT_VERSION=1.8.0
 
@@ -291,35 +286,35 @@ ARG KUBERNETES_KUBESCAPE_VERSION=4.0.9
 ARG LUA_LUACHECK_VERSION=3.3.1
 
 # renovate: datasource=npm depName=markdownlint-cli
-ARG NPM_MARKDOWNLINT_CLI_VERSION=0.48.0
+ARG NPM_MARKDOWNLINT_CLI_VERSION=0.49.0
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.2.4
+ARG PIP_RUMDL_VERSION=0.2.28
 # renovate: datasource=github-tags depName=skaji/cpm
-ARG PERL_PERLCRITIC_VERSION=v1.1.1
+ARG PERL_PERLCRITIC_VERSION=v1.1.4
 
 # renovate: datasource=packagist depName=squizlabs/php_codesniffer
 ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=4.0.1
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
 ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.6.0
 # renovate: datasource=packagist depName=phpstan/phpstan
-ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.2.1
+ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.2.5
 # renovate: datasource=packagist depName=phpstan/extension-installer
 ARG PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION=1.4.3
 # renovate: datasource=packagist depName=vimeo/psalm
 ARG PHP_VIMEO_PSALM_VERSION=6.16.1
 # renovate: datasource=packagist depName=overtrue/phplint
-ARG PHP_OVERTRUE_PHPLINT_VERSION=9.7.1
+ARG PHP_OVERTRUE_PHPLINT_VERSION=9.7.2
 # renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
-ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.95.3
+ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.95.11
 # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
 ARG PSSA_VERSION='1.25.0'
 
 # renovate: datasource=pypi depName=pylint
-ARG PIP_PYLINT_VERSION=4.0.5
+ARG PIP_PYLINT_VERSION=4.0.6
 # renovate: datasource=pypi depName=typing-extensions
-ARG PIP_TYPING_EXTENSIONS_VERSION=4.15.0
+ARG PIP_TYPING_EXTENSIONS_VERSION=4.16.0
 # renovate: datasource=pypi depName=black
 ARG PIP_BLACK_VERSION=26.5.1
 # renovate: datasource=pypi depName=flake8
@@ -335,41 +330,41 @@ ARG PIP_MYPY_VERSION=1.19.1
 # renovate: datasource=pypi depName=nbqa
 ARG PIP_NBQA_VERSION=1.9.1
 # renovate: datasource=npm depName=pyright
-ARG NPM_PYRIGHT_VERSION=1.1.410
+ARG NPM_PYRIGHT_VERSION=1.1.411
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.15.15
+ARG PIP_RUFF_VERSION=0.15.20
 # renovate: datasource=github-tags depName=nxadm/rakudo-pkg
 ARG RAKU_RAKU_VERSION=2026.03
 ARG RAKU_RAKU_ALPINE_VERSION=3.23
 
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.2.530
+ARG PIP_CHECKOV_VERSION=3.3.6
 # renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
 ARG REPOSITORY_DEVSKIM_VERSION=1.0.70
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.112.0
+ARG REPOSITORY_GRYPE_VERSION=0.115.0
 # renovate: datasource=github-releases depName=loeffel-io/ls-lint extractVersion=^v(?<version>.+)$
 ARG REPOSITORY_LS_LINT_VERSION=2.3.1
-# renovate: datasource=repology depName=alpine_edge/osv-scanner versioning=loose
+# renovate: datasource=repology depName=alpine_3_24/osv-scanner versioning=loose
 ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.8-r1
 # renovate: datasource=npm depName=secretlint
-ARG NPM_SECRETLINT_VERSION=11.7.1
+ARG NPM_SECRETLINT_VERSION=13.0.2
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
-ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=11.7.1
+ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=13.0.2
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
-ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=11.7.1
+ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=13.0.2
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.164.0
+ARG PIP_SEMGREP_VERSION=1.168.0
 # renovate: datasource=github-tags depName=anchore/syft
-ARG REPOSITORY_SYFT_VERSION=1.44.0
+ARG REPOSITORY_SYFT_VERSION=1.46.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_VERSION=0.70.0
+ARG REPOSITORY_TRIVY_VERSION=0.72.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_SBOM_VERSION=0.70.0
+ARG REPOSITORY_TRIVY_SBOM_VERSION=0.72.0
 # renovate: datasource=github-tags depName=mongodb/kingfisher
-ARG REPOSITORY_KINGFISHER_VERSION=1.102.0
+ARG REPOSITORY_KINGFISHER_VERSION=1.105.0
 # renovate: datasource=pypi depName=robotframework-robocop
-ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=8.2.9
+ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=8.3.2
 # renovate: datasource=pypi depName=Pygments
 ARG PIP_PYGMENTS_VERSION=2.20.0
 # renovate: datasource=pypi depName=restructuredtext_lint
@@ -377,51 +372,49 @@ ARG PIP_RESTRUCTUREDTEXT_LINT_VERSION=2.0.2
 # renovate: datasource=pypi depName=rstcheck
 ARG PIP_RSTCHECK_VERSION=6.2.5
 # renovate: datasource=pypi depName=click
-ARG PIP_RSTCHECK_CLICK_VERSION=8.4.1
+ARG PIP_RSTCHECK_CLICK_VERSION=8.4.2
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=rubygems depName=rubocop
-ARG GEM_RUBOCOP_VERSION=1.87.0
+ARG GEM_RUBOCOP_VERSION=1.88.1
 # renovate: datasource=rubygems depName=rubocop-github
 ARG GEM_RUBOCOP_GITHUB_VERSION=0.27.0
 # renovate: datasource=rubygems depName=rubocop-performance
 ARG GEM_RUBOCOP_PERFORMANCE_VERSION=1.26.1
 # renovate: datasource=rubygems depName=rubocop-rails
-ARG GEM_RUBOCOP_RAILS_VERSION=2.35.3
+ARG GEM_RUBOCOP_RAILS_VERSION=2.35.5
 # renovate: datasource=rubygems depName=rubocop-rake
 ARG GEM_RUBOCOP_RAKE_VERSION=0.7.1
 # renovate: datasource=rubygems depName=rubocop-rspec
-ARG GEM_RUBOCOP_RSPEC_VERSION=3.9.0
+ARG GEM_RUBOCOP_RSPEC_VERSION=3.10.2
 # renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
-ARG SALESFORCE_CODE_ANALYZER_VERSION=5.13.0
-# renovate: datasource=npm depName=@salesforce/sfdx-scanner
-ARG SALESFORCE_SFDX_SCANNER_VERSION=4.12.0
+ARG SALESFORCE_CODE_ANALYZER_VERSION=5.14.0
 # renovate: datasource=github-tags depName=scalacenter/scalafix
-ARG SCALA_SCALAFIX_VERSION=0.14.6
+ARG SCALA_SCALAFIX_VERSION=0.14.7
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.21.1
+ARG PIP_SNAKEMAKE_VERSION=9.23.1
 # renovate: datasource=pypi depName=snakefmt
-ARG PIP_SNAKEFMT_VERSION=2.0.1
+ARG PIP_SNAKEFMT_VERSION=2.0.3
 # renovate: datasource=npm depName=cspell
-ARG NPM_CSPELL_VERSION=10.0.0
+ARG NPM_CSPELL_VERSION=10.0.1
 # renovate: datasource=pypi depName=proselint
-ARG PIP_PROSELINT_VERSION=0.14.0
+ARG PIP_PROSELINT_VERSION=0.16.0
 # renovate: datasource=pypi depName=codespell
 ARG PIP_CODESPELL_VERSION=2.4.2
 # renovate: datasource=pypi depName=sqlfluff
-ARG PIP_SQLFLUFF_VERSION=4.2.1
-# renovate: datasource=nuget depName=TSQLLint
-ARG SQL_TSQLLINT_VERSION=1.16.0
+ARG PIP_SQLFLUFF_VERSION=4.2.2
+# renovate: datasource=github-releases depName=realm/SwiftLint
+ARG SWIFT_SWIFTLINT_VERSION=0.65.0
 # renovate: datasource=npm depName=@ibm/tekton-lint
 ARG NPM_IBM_TEKTON_LINT_VERSION=1.2.0
 # renovate: datasource=npm depName=prettyjson
 ARG NPM_PRETTYJSON_VERSION=1.2.5
 # renovate: datasource=npm depName=@typescript-eslint/eslint-plugin
-ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.60.0
+ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.62.1
 # renovate: datasource=npm depName=@typescript-eslint/parser
-ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.60.0
+ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.62.1
 # renovate: datasource=npm depName=typescript-eslint
-ARG NPM_TYPESCRIPT_ESLINT_VERSION=8.60.0
+ARG NPM_TYPESCRIPT_ESLINT_VERSION=8.62.1
 # renovate: datasource=npm depName=ts-standard
 ARG NPM_TS_STANDARD_VERSION=12.0.2
 # renovate: datasource=pypi depName=yamllint
@@ -429,9 +422,9 @@ ARG PIP_YAMLLINT_VERSION=1.38.0
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=26.1.2
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=21.4.2
+ARG PIP_VIRTUALENV_VERSION=21.5.1
 # renovate: datasource=github-tags depName=rust-lang/rust
-ARG RUST_RUST_VERSION=1.96.0
+ARG RUST_RUST_VERSION=1.96.1
 
 ARG TARGETARCH
 ARG CARGO_SARIF_FMT_VERSION
@@ -450,11 +443,11 @@ ARG MAKEFILE_CHECKMAKE_VERSION
 ARG PROTOBUF_PROTOLINT_VERSION
 ARG REPOSITORY_DUSTILOCK_VERSION
 ARG REPOSITORY_GITLEAKS_VERSION
+ARG REPOSITORY_BETTERLEAKS_VERSION
 ARG REPOSITORY_TRUFFLEHOG_VERSION
 ARG SPELL_VALE_VERSION
 ARG SPELL_LYCHEE_VERSION
 ARG TERRAFORM_TFLINT_VERSION
-ARG TERRAFORM_TERRASCAN_VERSION
 ARG TERRAFORM_TERRAGRUNT_VERSION
 #ARG__END
 
@@ -482,8 +475,7 @@ RUN apk -U --no-cache upgrade \
                 make \
                 musl-dev \
                 openssh \
-                docker \
-                openrc \
+                su-exec \
                 icu-libs \
                 openjdk21 \
                 lua5.3 \
@@ -522,6 +514,10 @@ RUN apk -U --no-cache upgrade \
                 R \
                 R-dev \
                 R-doc \
+                build-base \
+                re2-dev \
+                py3-pybind11-dev \
+                unzip \
                 npm \
                 nodejs-current \
                 yarn \
@@ -549,12 +545,18 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #############################################################################################
 
 #CARGO__START
-RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain ${RUST_RUST_VERSION} \
-    && export PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}" \
+RUN export RUSTUP_HOME=/usr/local/rustup CARGO_HOME=/usr/local/cargo \
+    && curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain ${RUST_RUST_VERSION} --no-modify-path \
+    && export PATH="${CARGO_HOME}/bin:${PATH}" \
     && rustup default stable \
     && rustup component add clippy \
-    && rm -rf /root/.cargo/registry /root/.cargo/git /root/.cache/sccache
-ENV PATH="/root/.cargo/bin:/root/.cargo/env:${PATH}"
+    && for bin in "${CARGO_HOME}"/bin/*; do \
+         ln -sf "$bin" /usr/local/bin/"$(basename "$bin")"; \
+       done \
+    && rm -rf "${CARGO_HOME}/registry" "${CARGO_HOME}/git" /root/.cache/sccache
+ENV RUSTUP_HOME=/usr/local/rustup
+ENV CARGO_HOME=/usr/local/cargo
+ENV PATH="/usr/local/cargo/bin:${PATH}"
 #CARGO__END
 
 ##############################
@@ -584,11 +586,11 @@ COPY --link --from=checkmake /checkmake /usr/bin/checkmake
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
+COPY --link --from=betterleaks /usr/bin/betterleaks /usr/bin/
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 COPY --link --from=vale /bin/vale /bin/vale
 COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
 COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
-COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
 COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 COPY --link --from=terragrunt /bin/terraform /usr/bin/
 #COPY__END
@@ -741,7 +743,8 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
     NODE_ENV=production
 #NPM__START
 WORKDIR /node-deps
-RUN npm --no-cache install --ignore-scripts --omit=dev \
+RUN npm config set prefix /usr/local \
+    && npm --no-cache install --ignore-scripts --omit=dev \
                 @salesforce/cli@${NPM_SALESFORCE_CLI_VERSION} \
                 typescript@${NPM_TYPESCRIPT_VERSION} \
                 @coffeelint/cli@${NPM_COFFEELINT_CLI_VERSION} \
@@ -803,9 +806,8 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 ## @generated by .automation/build.py using descriptor files, please do not update manually ##
 #############################################################################################
 #OTHER__START
-RUN rc-update add docker boot && (rc-service docker start || true) \
 # ARM installation
-    && case ${TARGETPLATFORM} in \
+RUN case ${TARGETPLATFORM} in \
   "linux/amd64")  POWERSHELL_ARCH=musl-x64 ;; \
   "linux/arm64")  POWERSHELL_ARCH=arm64    ;; \
 esac \
@@ -815,8 +817,8 @@ esac \
     && chmod +x /opt/microsoft/powershell/7/pwsh \
     && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh \
 # CSHARP installation
-    && apk add --no-cache dotnet10-sdk
-ENV PATH="${PATH}:/root/.dotnet/tools"
+    && apk add --no-cache dotnet10-sdk && install -d /usr/local/dotnet-tools
+ENV PATH="${PATH}:/usr/local/dotnet-tools"
 # DART installation
 ENV LANG=C.UTF-8
 RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases/download" && \
@@ -859,8 +861,6 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
         "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" \
 # GO installation
     && apk add --no-cache \
-    --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main \
-    --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
     go=${GO_ALPINE_VERSION}
 # JAVA installation
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
@@ -873,7 +873,8 @@ ENV PATH="$JAVA_HOME/bin:${PATH}"
 # PHP installation
 RUN update-alternatives --install /usr/bin/php php /usr/bin/php84 110
 # Managed with COPY --link --from=composer/composer:2-bin /composer /usr/bin/composer
-ENV PATH="/root/.composer/vendor/bin:${PATH}"
+ENV COMPOSER_HOME=/usr/local/composer
+ENV PATH="/usr/local/composer/vendor/bin:${PATH}"
 # POWERSHELL installation
 # Next line commented because already managed by another linter
 # RUN case ${TARGETPLATFORM} in \
@@ -890,6 +891,7 @@ ENV PATH="/root/.composer/vendor/bin:${PATH}"
 # ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 # Next line commented because already managed by another linter
 # ENV PATH="$JAVA_HOME/bin:${PATH}"
+ENV XDG_DATA_HOME=/usr/local/share
 RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION} \
     && echo y|sf plugins install sfdx-hardis@${SFDX_HARDIS_VERSION} \
     && (npm cache clean --force || true) \
@@ -906,9 +908,9 @@ RUN curl --retry-all-errors --retry 10 -fLo coursier https://github.com/coursier
 # TYPESCRIPT installation
 # VBDOTNET installation
 # Next line commented because already managed by another linter
-# RUN apk add --no-cache dotnet10-sdk
+# RUN apk add --no-cache dotnet10-sdk && install -d /usr/local/dotnet-tools
 # Next line commented because already managed by another linter
-# ENV PATH="${PATH}:/root/.dotnet/tools"
+# ENV PATH="${PATH}:/usr/local/dotnet-tools"
 # actionlint installation
 # Managed with COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
 #              # shellcheck is a dependency for actionlint
@@ -954,21 +956,31 @@ esac \
 # jscpd installation
 # cpplint installation
 # csharpier installation
-    && dotnet tool install --allow-roll-forward --global csharpier --version "${CSHARP_CSHARPIER_VERSION}" \
+    && dotnet tool install --allow-roll-forward --tool-path /usr/local/dotnet-tools csharpier --version "${CSHARP_CSHARPIER_VERSION}" \
 # roslynator installation
-    && dotnet tool install --allow-roll-forward --global roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}" \
+    && dotnet tool install --allow-roll-forward --tool-path /usr/local/dotnet-tools roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}" \
 # stylelint installation
 # dartanalyzer installation
     && case ${TARGETPLATFORM} in \
   "linux/amd64")  DART_ARCH=x64   ;; \
   "linux/arm64")  DART_ARCH=arm64 ;; \
 esac \
-    && wget --tries=5 https://storage.googleapis.com/dart-archive/channels/stable/release/${DART_VERSION}/sdk/dartsdk-linux-${DART_ARCH}-release.zip -O - -q | unzip -q - \
+    && DART_URL="https://storage.googleapis.com/dart-archive/channels/stable/release/${DART_VERSION}/sdk/dartsdk-linux-${DART_ARCH}-release.zip" \
+    && for attempt in 1 2 3 4 5; do \
+         echo "Downloading Dart SDK (attempt ${attempt}/5)" \
+         && wget --tries=5 -T 60 -q -O /tmp/dart-sdk.zip "${DART_URL}" \
+         && unzip -tq /tmp/dart-sdk.zip > /dev/null 2>&1 \
+         && break; \
+         echo "Dart SDK download/verify failed (attempt ${attempt}/5), retrying in 15s" \
+         && rm -f /tmp/dart-sdk.zip \
+         && sleep 15; \
+       done \
+    && unzip -q /tmp/dart-sdk.zip -d /tmp \
     && mkdir -p /usr/lib/dart \
-    && mv dart-sdk/* /usr/lib/dart/ \
+    && mv /tmp/dart-sdk/* /usr/lib/dart/ \
     && chmod +x /usr/lib/dart/bin/dart \
     && chmod +x /usr/lib/dart/bin/dartaotruntime \
-    && rm -r dart-sdk/
+    && rm -rf /tmp/dart-sdk /tmp/dart-sdk.zip
 
 ENV PATH="/usr/lib/dart/bin:${PATH}"
 # hadolint installation
@@ -987,7 +999,7 @@ RUN set -eu; \
       | tar -xz -C /usr/local/bin \
 # gherkin-lint installation
 # golangci-lint installation
-    && wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s "v${GO_GOLANGCI_LINT_VERSION}" \
+    && wget -O- -nv https://golangci-lint.run/install.sh | sh -s "v${GO_GOLANGCI_LINT_VERSION}" \
     && golangci-lint --version
 
 # revive installation
@@ -1114,14 +1126,16 @@ ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$
 # checkov installation
 # devskim installation
 # Next line commented because already managed by another linter
-# RUN apk add --no-cache dotnet10-sdk
+# RUN apk add --no-cache dotnet10-sdk && install -d /usr/local/dotnet-tools
 # Next line commented because already managed by another linter
-# ENV PATH="${PATH}:/root/.dotnet/tools"
-RUN dotnet tool install --allow-roll-forward --global Microsoft.CST.DevSkim.CLI --version ${REPOSITORY_DEVSKIM_VERSION} \
+# ENV PATH="${PATH}:/usr/local/dotnet-tools"
+RUN dotnet tool install --allow-roll-forward --tool-path /usr/local/dotnet-tools Microsoft.CST.DevSkim.CLI --version ${REPOSITORY_DEVSKIM_VERSION} \
 # dustilock installation
 # Managed with COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 # gitleaks installation
 # Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
+# betterleaks installation
+# Managed with COPY --link --from=betterleaks /usr/bin/betterleaks /usr/bin/
 # grype installation
     && curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin \
 # ls-lint installation
@@ -1136,8 +1150,6 @@ RUN dotnet tool install --allow-roll-forward --global Microsoft.CST.DevSkim.CLI 
     chmod +x /usr/bin/ls-lint \
 # osv-scanner installation
     && apk add --no-cache \
-    --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main \
-    --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
     osv-scanner=${REPOSITORY_OSV_SCANNER_VERSION} \
 # secretlint installation
 # semgrep installation
@@ -1172,20 +1184,6 @@ RUN dotnet tool install --allow-roll-forward --global Microsoft.CST.DevSkim.CLI 
 # RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
 #     && (npm cache clean --force || true) \
 #     && rm -rf /root/.npm/_cacache
-# sfdx-scanner-apex installation
-    && sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
-    && (npm cache clean --force || true) \
-    && rm -rf /root/.npm/_cacache \
-# sfdx-scanner-aura installation
-# Next line commented because already managed by another linter
-# RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
-#     && (npm cache clean --force || true) \
-#     && rm -rf /root/.npm/_cacache
-# sfdx-scanner-lwc installation
-# Next line commented because already managed by another linter
-# RUN sf plugins install @salesforce/sfdx-scanner@${SALESFORCE_SFDX_SCANNER_VERSION} \
-#     && (npm cache clean --force || true) \
-#     && rm -rf /root/.npm/_cacache
 # scalafix installation
     && ./coursier install scalafix:${SCALA_SCALAFIX_VERSION} --quiet --install-dir /usr/bin && rm -rf /root/.cache \
 # snakemake installation
@@ -1198,20 +1196,20 @@ RUN dotnet tool install --allow-roll-forward --global Microsoft.CST.DevSkim.CLI 
 # Managed with COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
 # codespell installation
 # sqlfluff installation
-# tsqllint installation
-# Next line commented because already managed by another linter
-# RUN apk add --no-cache dotnet10-sdk
-# Next line commented because already managed by another linter
-# ENV PATH="${PATH}:/root/.dotnet/tools"
-    && dotnet tool install --allow-roll-forward --global TSQLLint --version ${SQL_TSQLLINT_VERSION}
 # swiftlint installation
-# renovate: datasource=docker depName=ghcr.io/realm/swiftlint
-ENV SWIFT_SWIFTLINT_VERSION=0.63.3
+    && case "${TARGETARCH}" in \
+      amd64) SWIFTLINT_ARCH=amd64 ;; \
+      arm64) SWIFTLINT_ARCH=arm64 ;; \
+      *) echo "Unsupported architecture: ${TARGETARCH}" && exit 1 ;; \
+    esac && \
+    curl -fsSL -o /tmp/swiftlint.zip \
+      "https://github.com/realm/SwiftLint/releases/download/${SWIFT_SWIFTLINT_VERSION}/swiftlint_linux_${SWIFTLINT_ARCH}.zip" && \
+    unzip -o /tmp/swiftlint.zip -d /tmp/swiftlint && \
+    install -m 0755 /tmp/swiftlint/swiftlint-static /usr/bin/swiftlint && \
+    rm -rf /tmp/swiftlint /tmp/swiftlint.zip
 # tekton-lint installation
 # tflint installation
 # Managed with COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
-# terrascan installation
-# Managed with COPY --link --from=terrascan /go/bin/terrascan /usr/bin/
 # terragrunt installation
 # Managed with COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 # terraform-fmt installation
@@ -1281,6 +1279,8 @@ LABEL com.github.actions.name="MegaLinter" \
 
 #EXTRA_DOCKERFILE_LINES__START
 COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x entrypoint.sh
+COPY sh/setup-runtime-user.sh /usr/bin/setup-runtime-user.sh
+RUN chmod +x entrypoint.sh && \
+    chmod u+x /usr/bin/setup-runtime-user.sh
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
 #EXTRA_DOCKERFILE_LINES__END

@@ -74,7 +74,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
-          ARG TERRAFORM_TFLINT_VERSION=0.62.1
+          ARG TERRAFORM_TFLINT_VERSION=0.63.1
         - FROM ghcr.io/terraform-linters/tflint:v${TERRAFORM_TFLINT_VERSION} AS tflint
         - COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
     supported_platforms:
@@ -84,6 +84,8 @@ linters:
   # TERRASCAN
   - class: TerrascanLinter
     linter_name: terrascan
+    disabled: true
+    disabled_reason: "Upstream repo archived by Tenable (unmaintained); ships unpatched CVEs (e.g. CVE-2026-33186 grpc, plus a Go-stdlib tail) with no prospect of a fixed release. <https://github.com/tenable/terrascan>"
     deprecated: true
     deprecated_description: Repo archived. <https://github.com/tenable/terrascan>
     linter_text: |
@@ -201,7 +203,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=alpine/terragrunt
-          ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.5
+          ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.7
         - FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
         - COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
     supported_platforms:
@@ -249,7 +251,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=alpine/terragrunt
-          ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.5
+          ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.7
         - FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
         - COPY --link --from=terragrunt /bin/terraform /usr/bin/
     supported_platforms:

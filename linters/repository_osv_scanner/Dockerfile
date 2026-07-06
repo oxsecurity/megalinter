@@ -54,7 +54,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 #ARG__START
 ARG TARGETPLATFORM
 ARG TARGETARCH
-# renovate: datasource=repology depName=alpine_edge/osv-scanner versioning=loose
+# renovate: datasource=repology depName=alpine_3_24/osv-scanner versioning=loose
 ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.8-r1
 #ARG__END
 
@@ -82,6 +82,7 @@ RUN apk -U --no-cache upgrade \
                 make \
                 musl-dev \
                 openssh \
+                su-exec \
     && git config --global core.autocrlf true
 #APK__END
 
@@ -157,8 +158,6 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #OTHER__START
 # osv-scanner installation
 RUN apk add --no-cache \
-    --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main \
-    --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
     osv-scanner=${REPOSITORY_OSV_SCANNER_VERSION}
 #OTHER__END
 
@@ -232,17 +231,23 @@ ENV ENABLE_LINTERS=REPOSITORY_OSV_SCANNER \
     FILEIO_REPORTER=false \
     CONFIG_REPORTER=false \
     SARIF_TO_HUMAN=false
-RUN mkdir /root/docker_ssh && mkdir /usr/bin/megalinter-sh
+RUN mkdir /tmp/docker_ssh && mkdir /usr/bin/megalinter-sh
 EXPOSE 22
 COPY entrypoint.sh /entrypoint.sh
 COPY sh /usr/bin/megalinter-sh
-COPY sh/megalinter_exec /usr/bin/megalinter_exec
+COPY sh/megalinter_exec.sh /usr/bin/megalinter_exec.sh
+COPY sh/setup-runtime-user.sh /usr/bin/setup-runtime-user.sh
 COPY sh/motd /etc/motd
 RUN find /usr/bin/megalinter-sh/ -type f -iname "*.sh" -exec chmod +x {} \; && \
     chmod +x entrypoint.sh && \
-    chmod +x /usr/bin/megalinter_exec && \
-    echo "alias megalinter='python -m megalinter.run'" >> ~/.bashrc && source ~/.bashrc && \
-    echo "alias megalinter_exec='/usr/bin/megalinter_exec'" >> ~/.bashrc && source ~/.bashrc
+    chmod +x /usr/bin/megalinter_exec.sh && \
+    chmod u+x /usr/bin/setup-runtime-user.sh && \
+    printf '%s\n' \
+      '#!/usr/bin/env sh' \
+      'exec python -m megalinter.run "$@"' \
+      > /usr/local/bin/megalinter && \
+    chmod u+x /usr/local/bin/megalinter && \
+    ln -sf /usr/bin/megalinter_exec.sh /usr/local/bin/megalinter_exec
 RUN export STANDALONE_LINTER_VERSION="$(python -m megalinter.run --input /tmp --linterversion)" && \
     echo $STANDALONE_LINTER_VERSION
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]

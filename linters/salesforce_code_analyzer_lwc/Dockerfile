@@ -55,13 +55,13 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=npm depName=@salesforce/cli
-ARG NPM_SALESFORCE_CLI_VERSION=2.136.8
+ARG NPM_SALESFORCE_CLI_VERSION=2.141.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.28.3
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.30.1
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=7.15.0
+ARG SFDX_HARDIS_VERSION=7.19.0
 # renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
-ARG SALESFORCE_CODE_ANALYZER_VERSION=5.13.0
+ARG SALESFORCE_CODE_ANALYZER_VERSION=5.14.0
 #ARG__END
 
 ####################
@@ -88,6 +88,7 @@ RUN apk -U --no-cache upgrade \
                 make \
                 musl-dev \
                 openssh \
+                su-exec \
                 coreutils \
                 openjdk21 \
                 npm \
@@ -156,7 +157,8 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
     NODE_ENV=production
 #NPM__START
 WORKDIR /node-deps
-RUN npm --no-cache install --ignore-scripts --omit=dev \
+RUN npm config set prefix /usr/local \
+    && npm --no-cache install --ignore-scripts --omit=dev \
                 @salesforce/cli@${NPM_SALESFORCE_CLI_VERSION} && \
     echo "Cleaning npm cache…" \
     && (npm cache clean --force || true) \
@@ -179,6 +181,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 # SALESFORCE installation
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
+ENV XDG_DATA_HOME=/usr/local/share
 RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION} \
     && echo y|sf plugins install sfdx-hardis@${SFDX_HARDIS_VERSION} \
     && (npm cache clean --force || true) \
@@ -260,17 +263,23 @@ ENV ENABLE_LINTERS=SALESFORCE_CODE_ANALYZER_LWC \
     FILEIO_REPORTER=false \
     CONFIG_REPORTER=false \
     SARIF_TO_HUMAN=false
-RUN mkdir /root/docker_ssh && mkdir /usr/bin/megalinter-sh
+RUN mkdir /tmp/docker_ssh && mkdir /usr/bin/megalinter-sh
 EXPOSE 22
 COPY entrypoint.sh /entrypoint.sh
 COPY sh /usr/bin/megalinter-sh
-COPY sh/megalinter_exec /usr/bin/megalinter_exec
+COPY sh/megalinter_exec.sh /usr/bin/megalinter_exec.sh
+COPY sh/setup-runtime-user.sh /usr/bin/setup-runtime-user.sh
 COPY sh/motd /etc/motd
 RUN find /usr/bin/megalinter-sh/ -type f -iname "*.sh" -exec chmod +x {} \; && \
     chmod +x entrypoint.sh && \
-    chmod +x /usr/bin/megalinter_exec && \
-    echo "alias megalinter='python -m megalinter.run'" >> ~/.bashrc && source ~/.bashrc && \
-    echo "alias megalinter_exec='/usr/bin/megalinter_exec'" >> ~/.bashrc && source ~/.bashrc
+    chmod +x /usr/bin/megalinter_exec.sh && \
+    chmod u+x /usr/bin/setup-runtime-user.sh && \
+    printf '%s\n' \
+      '#!/usr/bin/env sh' \
+      'exec python -m megalinter.run "$@"' \
+      > /usr/local/bin/megalinter && \
+    chmod u+x /usr/local/bin/megalinter && \
+    ln -sf /usr/bin/megalinter_exec.sh /usr/local/bin/megalinter_exec
 RUN export STANDALONE_LINTER_VERSION="$(python -m megalinter.run --input /tmp --linterversion)" && \
     echo $STANDALONE_LINTER_VERSION
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]

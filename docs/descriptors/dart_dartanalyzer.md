@@ -20,7 +20,7 @@ description: How to use dartanalyzer (configure, ignore files, ignore errors, he
 
 ## dartanalyzer documentation
 
-- Version in MegaLinter: **3.12.1**
+- Version in MegaLinter: **3.12.2**
 - Visit [Official Web Site](https://dart.dev/tools/dart-analyze){target=_blank}
 - See [How to configure dartanalyzer rules](https://dart.dev/tools/analysis){target=_blank}
 - See [How to disable dartanalyzer rules in files](https://dart.dev/tools/analysis#ignoring-rules){target=_blank}
@@ -66,7 +66,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       136        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       124        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -151,17 +151,27 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
 # Linter install
 ARG TARGETPLATFORM
 # renovate: datasource=dart-version depName=dart
-ARG DART_VERSION='3.12.1'
+ARG DART_VERSION='3.12.2'
 RUN case ${TARGETPLATFORM} in \
   "linux/amd64")  DART_ARCH=x64   ;; \
   "linux/arm64")  DART_ARCH=arm64 ;; \
 esac \
-    && wget --tries=5 https://storage.googleapis.com/dart-archive/channels/stable/release/${DART_VERSION}/sdk/dartsdk-linux-${DART_ARCH}-release.zip -O - -q | unzip -q - \
+    && DART_URL="https://storage.googleapis.com/dart-archive/channels/stable/release/${DART_VERSION}/sdk/dartsdk-linux-${DART_ARCH}-release.zip" \
+    && for attempt in 1 2 3 4 5; do \
+         echo "Downloading Dart SDK (attempt ${attempt}/5)" \
+         && wget --tries=5 -T 60 -q -O /tmp/dart-sdk.zip "${DART_URL}" \
+         && unzip -tq /tmp/dart-sdk.zip > /dev/null 2>&1 \
+         && break; \
+         echo "Dart SDK download/verify failed (attempt ${attempt}/5), retrying in 15s" \
+         && rm -f /tmp/dart-sdk.zip \
+         && sleep 15; \
+       done \
+    && unzip -q /tmp/dart-sdk.zip -d /tmp \
     && mkdir -p /usr/lib/dart \
-    && mv dart-sdk/* /usr/lib/dart/ \
+    && mv /tmp/dart-sdk/* /usr/lib/dart/ \
     && chmod +x /usr/lib/dart/bin/dart \
     && chmod +x /usr/lib/dart/bin/dartaotruntime \
-    && rm -r dart-sdk/
+    && rm -rf /tmp/dart-sdk /tmp/dart-sdk.zip
 
 ENV PATH="/usr/lib/dart/bin:${PATH}"
 ```

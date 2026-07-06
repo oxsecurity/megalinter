@@ -70,6 +70,21 @@ linters:
       ```
 
       Replace `yarn install --frozen-lockfile --ignore-scripts` with `npm ci` (or `npm install --include=dev`) if your project uses npm.
+
+      For **pnpm** — which is not pre-installed in the MegaLinter image but ships with Node via [Corepack](https://nodejs.org/api/corepack.html) — enable it first, then install:
+
+      ```yaml
+      TYPESCRIPT_ES_PRE_COMMANDS:
+        - command: corepack enable pnpm
+          cwd: workspace
+          continue_if_failed: false
+        - command: pnpm install --frozen-lockfile --ignore-scripts
+          cwd: workspace
+          continue_if_failed: false
+      TYPESCRIPT_ES_CLI_EXECUTABLE: node_modules/.bin/eslint
+      ```
+
+      To add a single package with pnpm instead of installing the full tree, run `corepack enable pnpm` first, then `pnpm add --ignore-workspace --no-save <package>`.
     linter_url: https://typescript-eslint.io/
     linter_repo: https://github.com/typescript-eslint/typescript-eslint
     linter_rules_url: https://typescript-eslint.io/rules/
@@ -180,7 +195,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=eslint
-          ARG NPM_ESLINT_VERSION=10.4.0
+          ARG NPM_ESLINT_VERSION=10.6.0
         - |-
           # renovate: datasource=npm depName=@eslint/js
           ARG NPM_ESLINT_JS_VERSION=10.0.1
@@ -189,13 +204,13 @@ linters:
           ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.1.8
         - |-
           # renovate: datasource=npm depName=eslint-plugin-import-x
-          ARG NPM_ESLINT_PLUGIN_IMPORT_X_VERSION=4.16.2
+          ARG NPM_ESLINT_PLUGIN_IMPORT_X_VERSION=4.17.1
         - |-
           # renovate: datasource=npm depName=eslint-plugin-jest
-          ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.15.2
+          ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.15.4
         - |-
           # renovate: datasource=npm depName=eslint-plugin-n
-          ARG NPM_ESLINT_PLUGIN_N_VERSION=18.0.1
+          ARG NPM_ESLINT_PLUGIN_N_VERSION=18.2.1
         - |-
           # renovate: datasource=npm depName=eslint-plugin-prettier
           ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.6
@@ -204,13 +219,13 @@ linters:
           ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=7.3.0
         - |-
           # renovate: datasource=npm depName=prettier
-          ARG NPM_PRETTIER_VERSION=3.8.3
+          ARG NPM_PRETTIER_VERSION=3.9.4
         - |-
           # renovate: datasource=npm depName=prettyjson
           ARG NPM_PRETTYJSON_VERSION=1.2.5
         - |-
           # renovate: datasource=npm depName=typescript-eslint
-          ARG NPM_TYPESCRIPT_ESLINT_VERSION=8.60.0
+          ARG NPM_TYPESCRIPT_ESLINT_VERSION=8.62.1
         - |-
           # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
           ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
@@ -370,7 +385,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=prettier
-          ARG NPM_PRETTIER_VERSION=3.8.3
+          ARG NPM_PRETTIER_VERSION=3.9.4
       npm:
         - "prettier@${NPM_PRETTIER_VERSION}"
     supported_platforms:

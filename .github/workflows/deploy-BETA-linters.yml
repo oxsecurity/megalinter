@@ -30,6 +30,8 @@ on:
       - "**/*.sh"
       - "**/*.py"
       - "**/sh/**"
+  # Allow manual runs even when BETA_LINTERS_ENABLED is set to false
+  workflow_dispatch:
 
 ###############
 # Set the Job #
@@ -44,21 +46,26 @@ concurrency:
 jobs:
   get-linters-matrix:
     name: Get Linters Matrix
-    if: ${{ vars.BETA_LINTERS_ENABLED != 'false' }}
+    if: ${{ github.event_name == 'workflow_dispatch' || vars.BETA_LINTERS_ENABLED != 'false' }}
     runs-on: ubuntu-latest
     outputs:
+      jobs: ${{ steps.set-matrix.outputs.jobs }}
       linters: ${{ steps.set-matrix.outputs.linters }}
-      linters_arm: ${{ steps.set-matrix.outputs.linters_arm }}
     steps:
       - name: Checkout Code
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
           persist-credentials: false
       - name: Read linters_matrix.json
         id: set-matrix
         run: |
-          echo "linters=$(jq -c '[.["linux/amd64"][]]'  .automation/generated/linters_matrix.json)" >> "${GITHUB_OUTPUT}"
-          echo "linters_arm=$(jq -c '[.["linux/arm64"][]]'  .automation/generated/linters_matrix.json)" >> "${GITHUB_OUTPUT}"
+          amd_jobs=$(jq -c '[.["linux/amd64"][] | {linter: ., platform: "linux/amd64", runner: "ubuntu-latest"}]' .automation/generated/linters_matrix.json)
+          arm_jobs=$(jq -c '[.["linux/arm64"][] | {linter: ., platform: "linux/arm64", runner: "ubuntu-24.04-arm"}]' .automation/generated/linters_matrix.json)
+          jobs=$(jq -cn --argjson amd "${amd_jobs}" --argjson arm "${arm_jobs}" '$amd + $arm')
+          echo "jobs=${jobs}" >> "${GITHUB_OUTPUT}"
+          # Unique list of linters across platforms, used by the manifest-merge job
+          linters=$(jq -c '([.["linux/amd64"][]] + [.["linux/arm64"][]]) | unique' .automation/generated/linters_matrix.json)
+          echo "linters=${linters}" >> "${GITHUB_OUTPUT}"
 
   build:
     name: BETA/Linters
@@ -73,48 +80,32 @@ jobs:
       name: beta
     strategy:
       fail-fast: false
-      max-parallel: 10
       matrix:
-        linter: ${{ fromJson(needs.get-linters-matrix.outputs.linters) }}
-        runner: ["ubuntu-latest", "ubuntu-24.04-arm"]
+        include: ${{ fromJson(needs.get-linters-matrix.outputs.jobs) }}
     # Only run this on the main repo
     if: >-
       (
            github.repository == 'oxsecurity/megalinter'
         && !contains(github.event.head_commit.message, 'skip deploy')
         && !contains(github.event.head_commit.message, 'Release MegaLinter v')
-        && vars.BETA_LINTERS_ENABLED != 'false'
+        && (github.event_name == 'workflow_dispatch' || vars.BETA_LINTERS_ENABLED != 'false')
       )
     ##################
     # Load all steps #
     ##################
     steps:
-      # https://github.com/actions/runner/issues/1985
-      - name: Prepare
-        id: prepare
-        run: |
-          job_enabled=true
-          platforms=linux/amd64
-
-          ARM_RUNNER_REGEX="^ubuntu-.*-arm$"
-
-          if [[ "${{ matrix.runner }}" =~ $ARM_RUNNER_REGEX ]]; then
-            job_enabled="${{ contains(fromJson(needs.get-linters-matrix.outputs.linters_arm), matrix.linter) }}"
-            platforms=linux/arm64
-          fi
-
-          echo "job_enabled=$job_enabled" >> "${GITHUB_OUTPUT}"
-          echo "platforms=$platforms" >> "${GITHUB_OUTPUT}"
-
       - name: Checkout Code
-        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
           persist-credentials: false
 
+      - name: Prepare
+        run: |
+          platform=${{ matrix.platform }}
+          echo "PLATFORM_PAIR=${platform//\//-}" >> "${GITHUB_ENV}"
+
       - name: Docker Metadata action
-        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: docker/metadata-action@80c7e94dd9b9319bd5eb7a0e0fe9291e23a2a2e9 # v6
+        uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6
         id: meta
         with:
           images: |
@@ -127,8 +118,7 @@ jobs:
             type=raw,value={{date 'YYYYMMDD_HHmm'}}
 
       - name: Docker Metadata action (Docker hub)
-        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: docker/metadata-action@80c7e94dd9b9319bd5eb7a0e0fe9291e23a2a2e9 # v6
+        uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6
         id: meta-dhub
         with:
           images: |
@@ -140,46 +130,56 @@ jobs:
             type=raw,value=
             type=raw,value={{date 'YYYYMMDD_HHmm'}}
 
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@06116385d9baf250c9f4dcb4858b16962ea869c3 # v4
-        if: ${{ steps.prepare.outputs.job_enabled == 'true' && ( ( ( runner.arch != 'X64' || runner.os != 'Linux' ) && steps.prepare.outputs.platforms == 'linux/amd64' ) || steps.prepare.outputs.platforms != 'linux/amd64' ) }}
-
       - name: Set up Docker Buildx
-        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: docker/setup-buildx-action@d7f5e7f509e45cec5c76c4d5afdd7de93d0b3df5 # v4
+        uses: docker/setup-buildx-action@bb05f3f5519dd87d3ba754cc423b652a5edd6d2c # v4
 
       - name: Login to GitHub Container Registry
-        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: docker/login-action@650006c6eb7dba73a995cc03b0b2d7f5ca915bee # v4
+        uses: docker/login-action@af1e73f918a031802d376d3c8bbc3fe56130a9b0 # v4
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build Image
-        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: docker/build-push-action@f9f3042f7e2789586610d6e8b85c8f03e5195baf # v7
+        id: build
+        uses: docker/build-push-action@53b7df96c91f9c12dcc8a07bcb9ccacbed38856a # v7
         with:
           context: .
           file: linters/${{ matrix.linter }}/Dockerfile
-          platforms: ${{ steps.prepare.outputs.platforms }}
+          platforms: ${{ matrix.platform }}
           build-args: |
             BUILD_DATE=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.created'] }}
             BUILD_VERSION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
             BUILD_REVISION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.revision'] }}
-          load: false
-          push: ${{ github.event_name != 'pull_request' }}
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          tags: ${{ steps.meta.outputs.tags }}
-          cache-from: type=gha,scope=beta-linter-${{ matrix.linter }}-${{ steps.prepare.outputs.platforms }},ignore-error=true
-          cache-to: type=gha,mode=max,scope=beta-linter-${{ matrix.linter }}-${{ steps.prepare.outputs.platforms }},compression=zstd
+          # Push each platform by digest only; the merge job assembles the
+          # multi-arch manifest list under the :beta and dated tags.
+          outputs: type=image,"name=ghcr.io/${{ github.repository }}-only-${{ matrix.linter }}",push-by-digest=true,name-canonical=true,push=${{ github.event_name != 'pull_request' }}
+          cache-from: type=gha,scope=beta-linter-${{ matrix.linter }}-${{ matrix.platform }},ignore-error=true
+          cache-to: type=gha,mode=max,scope=beta-linter-${{ matrix.linter }}-${{ matrix.platform }},compression=zstd
+
+      - name: Export digest
+        env:
+          RUNNER_TEMP: ${{ runner.temp }}
+          BUILD_DIGEST: ${{ steps.build.outputs.digest }}
+        run: |
+          mkdir -p "${RUNNER_TEMP}/digests"
+          digest="${BUILD_DIGEST}"
+          touch "${RUNNER_TEMP}/digests/${digest#sha256:}"
+
+      - name: Upload digest
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: linter-beta-digests-${{ matrix.linter }}-${{ env.PLATFORM_PAIR }}
+          path: ${{ runner.temp }}/digests/*
+          if-no-files-found: error
+          retention-days: 1
 
       #####################################
       # Run Linter test cases #
       #####################################
       - name: Run Test Cases
-        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
         shell: bash
         env:
           EVENT_NAME: ${{ github.event_name }}
@@ -188,7 +188,7 @@ jobs:
           HEAD_REF: ${{ github.head_ref }}
           REF_NAME: ${{ github.ref_name }}
           MATRIX_LINTER: ${{ matrix.linter }}
-          DOCKER_IMAGE: ${{ fromJson(steps.meta.outputs.json).tags[0] }}
+          DOCKER_IMAGE: ghcr.io/${{ github.repository }}-only-${{ matrix.linter }}@${{ steps.build.outputs.digest }}
           GH_SHA: ${{ github.sha }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -203,7 +203,6 @@ jobs:
 
       # Docker Hub mirroring is disabled — MegaLinter is published to ghcr.io only.
       # - name: Invoke Mirror docker image workflow (Standalone linter image)
-      #   if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
       #   uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1
       #   with:
       #     workflow: mirror-docker-image.yml
@@ -213,12 +212,11 @@ jobs:
       # Check Docker image security with Trivy #
       ##############################################
       - name: Run Trivy vulnerability scanner
-        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
         uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
         with:
           # renovate: datasource=github-releases depName=aquasecurity/trivy
-          version: "v0.70.0"
-          image-ref: "${{ fromJson(steps.meta.outputs.json).tags[0]}}"
+          version: "v0.72.0"
+          image-ref: "ghcr.io/${{ github.repository }}-only-${{ matrix.linter }}@${{ steps.build.outputs.digest }}"
           format: "table"
           exit-code: "1"
           ignore-unfixed: true
@@ -230,8 +228,73 @@ jobs:
             ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # - name: Run OSV-Scanner vulnerability scanner
-      #   if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
       #   uses: google/osv-scanner-action/osv-scanner-action@v2.3.5
       #   with:
       #     scan-args: |-
       #       --docker ${{ fromJson(steps.meta.outputs.json).tags[0]}}
+
+  # Assemble a multi-arch manifest list per linter from the per-platform digests
+  # pushed by the build job, then publish it under the :beta (and dated) tags.
+  merge:
+    name: BETA/Linters Merge
+    runs-on: ubuntu-latest
+    needs:
+      - get-linters-matrix
+      - build
+    if: ${{ !cancelled() && github.repository == 'oxsecurity/megalinter' }}
+    permissions:
+      contents: read
+      packages: write
+    environment:
+      name: beta
+    strategy:
+      fail-fast: false
+      matrix:
+        linter: ${{ fromJson(needs.get-linters-matrix.outputs.linters) }}
+    steps:
+      - name: Download digests
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
+        with:
+          path: ${{ runner.temp }}/digests
+          pattern: linter-beta-digests-${{ matrix.linter }}-*
+          merge-multiple: true
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@af1e73f918a031802d376d3c8bbc3fe56130a9b0 # v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@bb05f3f5519dd87d3ba754cc423b652a5edd6d2c # v4
+
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6
+        with:
+          images: ghcr.io/${{ github.repository }}-only-${{ matrix.linter }}
+          flavor: |
+            latest=false
+            prefix=beta
+          tags: |
+            type=raw,value=
+            type=raw,value={{date 'YYYYMMDD_HHmm'}}
+
+      - name: Create manifest list and push
+        working-directory: ${{ runner.temp }}/digests
+        env:
+          GITHUB_REPOSITORY_NAME: ${{ github.repository }}
+          MATRIX_LINTER: ${{ matrix.linter }}
+        run: |
+          # shellcheck disable=SC2046
+          docker buildx imagetools create $(jq -cr '.tags | map("-t " + .) | join(" ")' <<< "$DOCKER_METADATA_OUTPUT_JSON") \
+            $(printf "ghcr.io/${GITHUB_REPOSITORY_NAME}-only-${MATRIX_LINTER}@sha256:%s " *)
+
+      - name: Inspect image
+        run: |
+          docker buildx imagetools inspect ghcr.io/"${GITHUB_REPOSITORY_NAME}"-only-"${MATRIX_LINTER}":"${STEPS_META_OUTPUTS_VERSION}"
+        env:
+          STEPS_META_OUTPUTS_VERSION: ${{ steps.meta.outputs.version }}
+          GITHUB_REPOSITORY_NAME: ${{ github.repository }}
+          MATRIX_LINTER: ${{ matrix.linter }}

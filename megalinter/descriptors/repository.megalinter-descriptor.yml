@@ -71,7 +71,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=checkov
-          ARG PIP_CHECKOV_VERSION=3.2.530
+          ARG PIP_CHECKOV_VERSION=3.3.6
       pip:
         - checkov==${PIP_CHECKOV_VERSION}
     supported_platforms:
@@ -165,9 +165,9 @@ linters:
         - |-
           # renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
           ARG REPOSITORY_DEVSKIM_VERSION=1.0.70
-        - RUN apk add --no-cache dotnet10-sdk
-        - ENV PATH="${PATH}:/root/.dotnet/tools"
-        - RUN dotnet tool install --allow-roll-forward --global Microsoft.CST.DevSkim.CLI --version ${REPOSITORY_DEVSKIM_VERSION}
+        - RUN apk add --no-cache dotnet10-sdk && install -d /usr/local/dotnet-tools
+        - ENV PATH="${PATH}:/usr/local/dotnet-tools"
+        - RUN dotnet tool install --allow-roll-forward --tool-path /usr/local/dotnet-tools Microsoft.CST.DevSkim.CLI --version ${REPOSITORY_DEVSKIM_VERSION}
     supported_platforms:
       platform:
         - linux/amd64
@@ -221,7 +221,7 @@ linters:
           ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
         - |-
           # renovate: datasource=docker depName=golang versioning=semver
-          ARG GO_IMAGE_VERSION=1.26.3
+          ARG GO_IMAGE_VERSION=1.26.4
         # The golang image used as a builder is a temporary workaround
         # Dustilock is not released as a binary or container
         - |-
@@ -269,6 +269,8 @@ linters:
   # GITLEAKS
   - class: GitleaksLinter
     linter_name: gitleaks
+    deprecated: true
+    deprecated_description: "gitleaks has been superseded by betterleaks, a faster and more accurate secrets scanner created by the same author. Please migrate to REPOSITORY_BETTERLEAKS. Disable gitleaks by adding REPOSITORY_GITLEAKS to DISABLE_LINTERS in your .mega-linter.yml. See <https://github.com/betterleaks/betterleaks>."
     can_output_sarif: true
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
@@ -427,6 +429,103 @@ linters:
         description: Target commit SHA of the Pull Request/Merge Request
         default_value: ""
 
+  # BETTERLEAKS
+  - class: BetterleaksLinter
+    linter_name: betterleaks
+    can_output_sarif: true
+    descriptor_flavors:
+      - all_flavors # Applicable to CI in any language project
+      - ci_light
+      - cupcake
+      - security
+    linter_url: https://github.com/betterleaks/betterleaks
+    linter_repo: https://github.com/betterleaks/betterleaks
+    linter_speed: 4
+    linter_spdx_license: MIT
+    linter_rules_configuration_url: https://github.com/betterleaks/betterleaks#configuration
+    linter_rules_ignore_config_url: https://github.com/betterleaks/betterleaks#betterleaksignore
+    linter_rules_inline_disable_url: https://github.com/betterleaks/betterleaks#betterleaksallow
+    linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/betterleaks.png
+    linter_text: |
+      **betterleaks** is a next-generation SAST tool for detecting and preventing secrets like passwords, API keys, and tokens in git repositories and filesystems. Created by the author of gitleaks, betterleaks delivers significantly higher recall (98.6% vs 70.4% on the CredData benchmark), lower false-positive rates, and 4–5× faster scanning.
+
+      **Key Features:**
+
+      - **BPE-based detection** using cl100k_base tokenization instead of Shannon entropy, dramatically reducing false positives on UUIDs, Base64 strings, and hashes
+      - **Full git history scanning** including all branches and commits, plus filesystem-only mode
+      - **Live secret validation** via CEL-based async HTTP requests per rule
+      - **Custom rule support** using CEL (Common Expression Language) filter expressions
+      - **Automatic encoding handling** — recursively decodes base64, hex, unicode, and nested archives
+      - **Multiple output formats** including JSON, SARIF, and custom Go templates
+      - **Backward compatible** — reads existing `.gitleaks.toml` and `.gitleaksignore` files
+      - **Pre-commit hook integration** to prevent secrets from being committed
+      - **Baseline support** to ignore known secrets while catching new ones
+      - **Pure Go** — no CGO or Hyperscan dependency, runs on any modern OS/arch
+
+      ## Scan only Pull Request commits
+
+      `VALIDATE_ALL_CODEBASE: false` doesn't make betterleaks analyze only updated files. To analyze only commits on a Pull Request, set `VALIDATE_ALL_CODEBASE: false` together with `REPOSITORY_BETTERLEAKS_PR_COMMITS_SCAN: true`; this only works for select platforms:
+
+      - GitHub Actions
+      - Azure Pipelines
+      - GitLab Pipelines (Merge Requests and External Pull Requests — Premium/Ultimate only)
+
+      You can also set the following MegaLinter environment variables manually:
+
+      - `PULL_REQUEST=true`
+      - `REPOSITORY_BETTERLEAKS_PR_COMMITS_SCAN: true`
+      - `REPOSITORY_BETTERLEAKS_PR_SOURCE_SHA` with the last commit SHA from your PR
+      - `REPOSITORY_BETTERLEAKS_PR_TARGET_SHA` with the target branch commit SHA
+
+      ## Migration from gitleaks
+
+      betterleaks is fully compatible with your existing `.gitleaks.toml` configuration and `.gitleaksignore` files — no changes needed to migrate. Simply disable `REPOSITORY_GITLEAKS` and enable `REPOSITORY_BETTERLEAKS`.
+    config_file_name: .betterleaks.toml
+    cli_config_arg_name: "-c"
+    cli_lint_mode: project
+    cli_lint_extra_args:
+      - dir
+      - --redact
+      - --verbose
+    cli_sarif_args:
+      - --report-format
+      - sarif
+      - --report-path
+      - "{{SARIF_OUTPUT_FILE}}"
+    cli_lint_extra_args_after:
+      - "."
+    cli_help_arg_name: --help
+    cli_version_arg_name: version
+    ignore_file_name: .betterleaksignore
+    cli_lint_errors_count: regex_sum
+    cli_lint_errors_regex: "leaks found: ([0-9]+)"
+    test_folder: betterleaks
+    examples:
+      - "betterleaks dir ."
+      - "betterleaks git ."
+      - "betterleaks dir -c .betterleaks.toml --redact ."
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=docker depName=ghcr.io/betterleaks/betterleaks
+          ARG REPOSITORY_BETTERLEAKS_VERSION=v1.6.1
+        - FROM ghcr.io/betterleaks/betterleaks:${REPOSITORY_BETTERLEAKS_VERSION} AS betterleaks
+        - COPY --link --from=betterleaks /usr/bin/betterleaks /usr/bin/
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
+    variables:
+      - name: REPOSITORY_BETTERLEAKS_PR_COMMITS_SCAN
+        description: Scan only commits in the current Pull Request/Merge Request
+        default_value: "false"
+      - name: REPOSITORY_BETTERLEAKS_PR_SOURCE_SHA
+        description: Source commit SHA of the Pull Request/Merge Request
+        default_value: ""
+      - name: REPOSITORY_BETTERLEAKS_PR_TARGET_SHA
+        description: Target commit SHA of the Pull Request/Merge Request
+        default_value: ""
+
   # GRYPE
   - class: GrypeLinter
     linter_name: grype
@@ -506,7 +605,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=anchore/grype
-          ARG REPOSITORY_GRYPE_VERSION=0.112.0
+          ARG REPOSITORY_GRYPE_VERSION=0.115.0
         - RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin
     supported_platforms:
       platform:
@@ -732,7 +831,7 @@ linters:
                 DISABLE_ERRORS_LINTERS:
                   - REPOSITORY_OSV_SCANNER
       - identifier: REPOSITORY_OSV_SCANNER_ERROR_NO_PACKAGE_SOURCES
-        regex: "no package sources found"
+        regex: "(?i)no package sources found"
         message: |-
           osv-scanner found no lockfiles, manifests, or SBOMs to scan in the repository.
           This is a configuration/scope issue, not a vulnerability finding.
@@ -753,12 +852,10 @@ linters:
     install:
       dockerfile:
         - |-
-          # renovate: datasource=repology depName=alpine_edge/osv-scanner versioning=loose
+          # renovate: datasource=repology depName=alpine_3_24/osv-scanner versioning=loose
           ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.8-r1
         - |-
           RUN apk add --no-cache \
-              --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main \
-              --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
               osv-scanner=${REPOSITORY_OSV_SCANNER_VERSION}
     supported_platforms:
       platform:
@@ -805,6 +902,16 @@ linters:
       - file
       - list_of_files
       - project
+    cli_lint_extra_args_after:
+      # secretlint v13 introduced a ripgrep-based file walker that respects
+      # .gitignore by default. --no-gitignore keeps the v12 scan breadth (scan
+      # everything, filter only via .secretlintignore). The .secretlintignore
+      # itself (which excludes .automation/test fixtures containing intentional
+      # fake secrets) is applied via SecretLintLinter.get_ignore_arguments,
+      # which passes it by base name because the v13 walker matches ignore
+      # files by base name and drops an absolute path.
+      # See https://github.com/secretlint/secretlint/releases (v13)
+      - "--no-gitignore"
     cli_lint_mode_project_extra_args_after:
       - "**/*"
     cli_sarif_args:
@@ -819,13 +926,13 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=secretlint
-          ARG NPM_SECRETLINT_VERSION=11.7.1
+          ARG NPM_SECRETLINT_VERSION=13.0.2
         - |-
           # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
-          ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=11.7.1
+          ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=13.0.2
         - |-
           # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
-          ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=11.7.1
+          ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=13.0.2
       npm:
         - secretlint@${NPM_SECRETLINT_VERSION}
         - "@secretlint/secretlint-rule-preset-recommend@${NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION}"
@@ -894,7 +1001,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=semgrep
-          ARG PIP_SEMGREP_VERSION=1.164.0
+          ARG PIP_SEMGREP_VERSION=1.168.0
       pip:
         - semgrep==${PIP_SEMGREP_VERSION}
     variables:
@@ -966,7 +1073,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=anchore/syft
-          ARG REPOSITORY_SYFT_VERSION=1.44.0
+          ARG REPOSITORY_SYFT_VERSION=1.46.0
         - RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOSITORY_SYFT_VERSION}/install.sh | sh -s -- -b /usr/local/bin
     supported_platforms:
       platform:
@@ -1080,7 +1187,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=aquasecurity/trivy
-          ARG REPOSITORY_TRIVY_VERSION=0.70.0
+          ARG REPOSITORY_TRIVY_VERSION=0.72.0
         - |
           RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_VERSION}" \
               && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
@@ -1173,7 +1280,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=aquasecurity/trivy
-          ARG REPOSITORY_TRIVY_SBOM_VERSION=0.70.0
+          ARG REPOSITORY_TRIVY_SBOM_VERSION=0.72.0
         - |
           RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_SBOM_VERSION}" \
               && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
@@ -1236,7 +1343,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=trufflesecurity/trufflehog
-          ARG REPOSITORY_TRUFFLEHOG_VERSION=3.95.3
+          ARG REPOSITORY_TRUFFLEHOG_VERSION=3.95.8
         - FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
         - COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
     supported_platforms:
@@ -1320,7 +1427,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=mongodb/kingfisher
-          ARG REPOSITORY_KINGFISHER_VERSION=1.102.0
+          ARG REPOSITORY_KINGFISHER_VERSION=1.105.0
         - |
           RUN curl --silent --location https://raw.githubusercontent.com/mongodb/kingfisher/main/scripts/install-kingfisher.sh | bash -s -- /usr/local/bin --tag "v${REPOSITORY_KINGFISHER_VERSION}"
     supported_platforms:

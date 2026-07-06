@@ -62,7 +62,7 @@ jobs:
           INPUTS_CONTEXT: ${{ toJson(github.event.inputs) }}
         run: echo "$INPUTS_CONTEXT"
       # Checkout the pull request branch
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           # persist-credentials: false # Comment this line and uncomment the next one if you use APPLY_FIXES
@@ -70,7 +70,7 @@ jobs:
           repository: ${{ github.event.inputs.checkout-repository }}
           ref: ${{ github.event.inputs.checkout-ref }}
       - name: Setup Python
-        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           # Version range or exact version of Python or PyPy to use, using SemVer's version range syntax. Reads from .python-version if unset.
           python-version-file: '.python-version' # Read python version from a file .python-version
@@ -91,7 +91,7 @@ jobs:
             -f "body=> Running script \`./build.sh\`"
       - name: Run build script
         run: ./build.sh
-      - uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7
+      - uses: stefanzweifel/git-auto-commit-action@4a55954c782fc1ea30b9056cd3e7a2b40ca8887d # v7
         id: auto-commit-action
         with:
           commit_message: "[build-command] Update generated files"

@@ -88,7 +88,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=sqlfluff
-          ARG PIP_SQLFLUFF_VERSION=4.2.1
+          ARG PIP_SQLFLUFF_VERSION=4.2.2
       pip:
         - sqlfluff==${PIP_SQLFLUFF_VERSION}
     supported_platforms:
@@ -97,6 +97,8 @@ linters:
         - linux/arm64
   # TSQL
   - linter_name: tsqllint
+    disabled: true
+    disabled_reason: "Upstream unmaintained since 2024-09 (no release/commit in ~22 months); ships unpatched .NET CVEs (CVE-2021-24112 System.Drawing GDI+, CVE-2024-0056 SqlClient, CVE-2023-36414 Azure.Identity) with no prospect of a dependency bump. <https://github.com/tsqllint/tsqllint>"
     linter_text: |
       **tsqllint** is a specialized linter for T-SQL (Transact-SQL) code used with Microsoft SQL Server. It analyzes T-SQL scripts for syntax errors, style violations, and adherence to best practices with configurable rules, helping ensure T-SQL code quality and consistency in SQL Server database development projects.
 
@@ -153,9 +155,9 @@ linters:
         - |-
           # renovate: datasource=nuget depName=TSQLLint
           ARG SQL_TSQLLINT_VERSION=1.16.0
-        - RUN apk add --no-cache dotnet10-sdk
-        - ENV PATH="${PATH}:/root/.dotnet/tools"
-        - RUN dotnet tool install --allow-roll-forward --global TSQLLint --version ${SQL_TSQLLINT_VERSION}
+        - RUN apk add --no-cache dotnet10-sdk && install -d /usr/local/dotnet-tools
+        - ENV PATH="${PATH}:/usr/local/dotnet-tools"
+        - RUN dotnet tool install --allow-roll-forward --tool-path /usr/local/dotnet-tools TSQLLint --version ${SQL_TSQLLINT_VERSION}
     supported_platforms:
       platform:
         - linux/amd64

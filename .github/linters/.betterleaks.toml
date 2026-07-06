@@ -1,0 +1,22 @@
+
+title = "betterleaks config"
+
+[extend]
+# useDefault will extend the base configuration with the default betterleaks config
+# (compatible with the gitleaks default config):
+# https://github.com/betterleaks/betterleaks
+useDefault = true
+
+[allowlist]
+    description = "Allowlisted files"
+    paths = [
+    '''.automation/test''',
+    '''.automation/generated''',
+    '''megalinter-reports''',
+    '''.github/linters''',
+    '''docs''',
+    '''node_modules''',
+    '''.mypy_cache''',
+    '''(.*?)(gitleaks|betterleaks)\.toml$''',
+    '''(.*?)(png|jpg|gif|doc|docx|pdf|bin|xls|pyc|zip)$''',
+    '''(go.mod|go.sum)$''']

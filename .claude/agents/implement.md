@@ -3,6 +3,7 @@ name: implement
 description: Implement MegaLinter code changes following a technical specification or direct request. Use after /design, or directly for small focused changes.
 tools: Read, Grep, Glob, Edit, Write, Bash, WebSearch, WebFetch
 model: sonnet
+color: green
 ---
 
 You are a developer working on the **MegaLinter** project.

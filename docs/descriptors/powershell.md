@@ -43,7 +43,7 @@ description: powershell, powershell_formatter are available to analyze POWERSHEL
 ```dockerfile
 ARG TARGETPLATFORM
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
-ARG POWERSHELL_VERSION=7.6.2
+ARG POWERSHELL_VERSION=7.6.3
 
 RUN case ${TARGETPLATFORM} in \
   "linux/amd64")  POWERSHELL_ARCH=musl-x64 ;; \
@@ -58,4 +58,4 @@ esac \
 ```
 
 - APK packages (Linux):
-  - [icu-libs](https://pkgs.alpinelinux.org/packages?branch=v3.23&arch=x86_64&name=icu-libs)
+  - [icu-libs](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=icu-libs)

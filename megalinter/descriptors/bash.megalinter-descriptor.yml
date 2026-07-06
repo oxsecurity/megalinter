@@ -128,7 +128,7 @@ linters:
         # amd64: download prebuilt linux-x86_64 binary.
         # arm64: compile from source — sarif-rs ships no aarch64-linux binary.
         - |-
-          FROM alpine:3.23 AS cargo-bin-shellcheck-sarif
+          FROM alpine:3.24 AS cargo-bin-shellcheck-sarif
           ARG CARGO_SHELLCHECK_SARIF_VERSION
           RUN set -eu; mkdir -p /out/bin; \
               apk add --no-cache build-base musl-dev openssl-dev openssl-libs-static pkgconfig bash perl rust cargo; \

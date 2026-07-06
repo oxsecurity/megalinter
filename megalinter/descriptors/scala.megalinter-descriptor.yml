@@ -87,7 +87,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=scalacenter/scalafix
-          ARG SCALA_SCALAFIX_VERSION=0.14.6
+          ARG SCALA_SCALAFIX_VERSION=0.14.7
         - RUN ./coursier install scalafix:${SCALA_SCALAFIX_VERSION} --quiet --install-dir /usr/bin && rm -rf /root/.cache
     supported_platforms:
       platform:

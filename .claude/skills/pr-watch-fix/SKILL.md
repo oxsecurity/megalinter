@@ -1,14 +1,16 @@
 ---
 name: pr-watch-fix
 description: Watch the GitHub PR for the current branch, wait for CI to finish, and autonomously fix failing jobs by reading logs, editing sources, and pushing. Stops cleanly when stuck.
-allowed-tools: Bash Read Grep Glob Edit Write AskUserQuestion
+allowed-tools: Bash Read Grep Glob Edit Write AskUserQuestion Skill
 user-invocable: true
 model: sonnet
 ---
 
 Watch the open PR for the current branch, wait for CI, and fix failures.
 
-> **Delegation hint** — to gather CI status and failure excerpts cheaply, delegate the polling/log-fetch step to the `pr-monitor` agent (haiku). Use it instead of running `gh pr checks` + log-fetch loops directly from this skill. Reserve this skill's main loop (sonnet) for deciding fixes, editing code, and pushing.
+> **Delegation hints**
+> - To gather CI status and failure excerpts cheaply, delegate the polling/log-fetch step to the `pr-monitor` agent (haiku). Use it instead of running `gh pr checks` + log-fetch loops directly from this skill. Reserve this skill's main loop (sonnet) for deciding fixes, editing code, and pushing.
+> - When a failure matches a recognized class, hand the *diagnosis-and-fix* off to a specialist skill instead of solving it inline — see **Step 5.1 — Route recognized failures to a specialist skill**. This keeps CVE reasoning, test-fixture debugging, and issue-scoped fixes in the skill that knows them best.
 
 ## Loop
 
@@ -133,6 +135,22 @@ Specifically **STOP and ask** when:
 - The fix would require destructive git operations (force-push, branch rewrite, deletion)
 - More than **3** fix-push cycles have run without turning any check from fail → pass
 - A failure is in a workflow you don't recognize and can't trace to a source file
+
+### 5.1 Route recognized failures to a specialist skill
+
+Before hand-editing the source yourself, check whether the failure belongs to one of these recognized classes. If it does, invoke the matching skill via the `Skill` tool and let it perform the diagnosis and edits — it knows the domain patterns better than this loop. Pass the concrete identifier (CVE id, linter/test name, issue number) as the skill argument.
+
+| Failure signal in the logs                                                                                                                                                                                                                  | Skill to invoke       | Argument to pass                                    |
+|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|-----------------------------------------------------|
+| A security/CVE scan flags a vulnerability — trivy, osv-scanner, grype, or the MegaLinter `REPOSITORY_TRIVY` / `REPOSITORY_OSV_SCANNER` / `REPOSITORY_GRYPE` linters reporting a `CVE-…` / `GHSA-…` against a pinned dependency              | `/fix-security-issue` | the CVE/GHSA id (or the affected package + version) |
+| A linter test under `megalinter/tests/test_megalinter/linters/` fails — an assertion in `test_success`, `test_failure`, `test_get_linter_version`, or `test_get_linter_help` (often a `cli_lint_errors_regex` / fixture / version mismatch) | `/fix-linter-test`    | the failing linter/test name (e.g. `python_ruff`)   |
+
+Rules for delegating:
+
+- **Only delegate when the class clearly matches.** If the cause is ambiguous, do not force-fit it — fall through to step 6 and, if still unclear, `AskUserQuestion` per step 5.
+- **The specialist skill fixes in place; this loop still owns build, commit, and push.** After the skill returns with edits applied, resume at step 6 (run `make megalinter-build` if a descriptor changed) and step 7 (commit & push onto the *existing* PR branch). Do not let a specialist skill open a second PR or switch branches.
+- **Track delegated attempts** in your task list the same as inline fixes. If a specialist skill's fix is pushed and the same check fails again, that counts toward the 3-cycle cap in step 5 — stop and ask.
+- If none of the classes match, continue to step 6 and fix inline.
 
 ### 6. Apply the fix
 

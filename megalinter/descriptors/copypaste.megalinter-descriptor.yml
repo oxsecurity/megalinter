@@ -53,7 +53,6 @@ linters:
     supported_cli_lint_modes:
       - project
     cli_lint_extra_args:
-      - --gitignore
       - "--reporters"
       - "console,html"
     cli_lint_mode_project_extra_args_after:
@@ -67,7 +66,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=jscpd
-          ARG NPM_JSCPD_VERSION=4.2.4
+          ARG NPM_JSCPD_VERSION=5.0.11
       npm:
         - jscpd@${NPM_JSCPD_VERSION}
     supported_platforms:

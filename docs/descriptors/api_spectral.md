@@ -11,7 +11,7 @@ description: How to use spectral (configure, ignore files, ignore errors, help &
   </a>
 </div>
 
-![disabled](https://shields.io/badge/-disabled-orange) [![GitHub stars](https://img.shields.io/github/stars/stoplightio/spectral?cacheSeconds=3600)](https://github.com/stoplightio/spectral) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/stoplightio/spectral?sort=semver)](https://github.com/stoplightio/spectral/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/stoplightio/spectral)](https://github.com/stoplightio/spectral/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/stoplightio/spectral)](https://github.com/stoplightio/spectral/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/stoplightio/spectral)](https://github.com/stoplightio/spectral/graphs/contributors/)
+<span title="Disabled: crashing">🚫</span> [![GitHub stars](https://img.shields.io/github/stars/stoplightio/spectral?cacheSeconds=3600)](https://github.com/stoplightio/spectral) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/stoplightio/spectral?sort=semver)](https://github.com/stoplightio/spectral/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/stoplightio/spectral)](https://github.com/stoplightio/spectral/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/stoplightio/spectral)](https://github.com/stoplightio/spectral/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/stoplightio/spectral)](https://github.com/stoplightio/spectral/graphs/contributors/)
 
 _This linter has been disabled in this version_
 
@@ -78,7 +78,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       136        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       124        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -137,7 +137,7 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=@stoplight/spectral-cli
-ARG NPM_SPECTRAL_CLI_VERSION=6.16.0
+ARG NPM_SPECTRAL_CLI_VERSION=6.16.1
 ```
 
 - NPM packages (node.js):

@@ -376,6 +376,7 @@
         "PYTHON_RUFF",
         "PYTHON_RUFF_FORMAT",
         "RAKU_RAKU",
+        "REPOSITORY_BETTERLEAKS",
         "REPOSITORY_CHECKOV",
         "REPOSITORY_DEVSKIM",
         "REPOSITORY_DUSTILOCK",
@@ -5953,6 +5954,7 @@
     },
     "CSS_SCSS_LINT_ARGUMENTS": {
       "$id": "#/properties/CSS_SCSS_LINT_ARGUMENTS",
+      "deprecated": true,
       "description": "CSS_SCSS_LINT: User custom arguments to add in linter CLI call",
       "examples:": [
         "--foo",
@@ -5977,6 +5979,7 @@
           "scss-lint"
         ]
       ],
+      "deprecated": true,
       "items": {
         "type": "string"
       },
@@ -5989,6 +5992,7 @@
     "CSS_SCSS_LINT_CLI_LINT_MODE": {
       "$id": "#/properties/CSS_SCSS_LINT_CLI_LINT_MODE",
       "default": "file",
+      "deprecated": true,
       "enum": [
         "file",
         "project"
@@ -6005,6 +6009,7 @@
     },
     "CSS_SCSS_LINT_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/CSS_SCSS_LINT_COMMAND_REMOVE_ARGUMENTS",
+      "deprecated": true,
       "description": "CSS_SCSS_LINT: User custom arguments to remove before calling linter",
       "examples:": [
         "--foo",
@@ -6025,6 +6030,7 @@
     "CSS_SCSS_LINT_CONFIG_FILE": {
       "$id": "#/properties/CSS_SCSS_LINT_CONFIG_FILE",
       "default": ".scss-lint.yml",
+      "deprecated": true,
       "description": "CSS_SCSS_LINT: User custom config file name if different from default",
       "title": "(deprecated) CSS_SCSS_LINT: Custom config file name",
       "type": "string",
@@ -6035,6 +6041,7 @@
     "CSS_SCSS_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/CSS_SCSS_LINT_DISABLE_ERRORS",
       "default": false,
+      "deprecated": true,
       "title": "(deprecated) CSS_SCSS_LINT: Linter doesn't make MegaLinter fail even if errors are found",
       "type": "boolean",
       "x-category": "CSS",
@@ -6044,6 +6051,7 @@
     "CSS_SCSS_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/CSS_SCSS_LINT_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
+      "deprecated": true,
       "title": "(deprecated) CSS_SCSS_LINT: Maximum number of errors allowed",
       "type": "number",
       "x-category": "CSS",
@@ -6052,6 +6060,7 @@
     },
     "CSS_SCSS_LINT_FILE_EXTENSIONS": {
       "$id": "#/properties/CSS_SCSS_LINT_FILE_EXTENSIONS",
+      "deprecated": true,
       "examples:": [
         ".py",
         ".myext"
@@ -6077,6 +6086,7 @@
     },
     "CSS_SCSS_LINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/CSS_SCSS_LINT_FILE_NAMES_REGEX",
+      "deprecated": true,
       "examples": [
         "Dockerfile(-.+)?",
         "Jenkinsfile"
@@ -6092,6 +6102,7 @@
     },
     "CSS_SCSS_LINT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/CSS_SCSS_LINT_FILTER_REGEX_EXCLUDE",
+      "deprecated": true,
       "title": "(deprecated) CSS_SCSS_LINT: Excluding Regex",
       "type": "string",
       "x-category": "CSS",
@@ -6100,6 +6111,7 @@
     },
     "CSS_SCSS_LINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/CSS_SCSS_LINT_FILTER_REGEX_INCLUDE",
+      "deprecated": true,
       "title": "(deprecated) CSS_SCSS_LINT: Including Regex",
       "type": "string",
       "x-category": "CSS",
@@ -6108,6 +6120,7 @@
     },
     "CSS_SCSS_LINT_POST_COMMANDS": {
       "$id": "#/properties/CSS_SCSS_LINT_POST_COMMANDS",
+      "deprecated": true,
       "examples": [
         [
           {
@@ -6128,6 +6141,7 @@
     },
     "CSS_SCSS_LINT_PRE_COMMANDS": {
       "$id": "#/properties/CSS_SCSS_LINT_PRE_COMMANDS",
+      "deprecated": true,
       "examples": [
         [
           {
@@ -6148,6 +6162,7 @@
     },
     "CSS_SCSS_LINT_RULES_PATH": {
       "$id": "#/properties/CSS_SCSS_LINT_RULES_PATH",
+      "deprecated": true,
       "description": "CSS_SCSS_LINT: Path where to find linter configuration file",
       "title": "(deprecated) CSS_SCSS_LINT: Custom config file path",
       "type": "string",
@@ -6158,6 +6173,7 @@
     "CSS_SCSS_LINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/CSS_SCSS_LINT_UNSECURED_ENV_VARIABLES",
       "default": [],
+      "deprecated": true,
       "description": "List of env variables explicitly not filtered before calling CSS_SCSS_LINT and its pre/post commands",
       "items": {
         "type": "string"
@@ -7393,6 +7409,7 @@
     "DEFAULT_BRANCH": {
       "$id": "#/properties/DEFAULT_BRANCH",
       "default": "HEAD",
+      "deprecated": true,
       "description": "Deprecated: The name of the repository's default branch.",
       "examples": [
         "master",
@@ -8326,6 +8343,24 @@
       "type": "array",
       "x-category": "GENERAL",
       "x-order": 100020,
+      "x-section": "ACTIVATION"
+    },
+    "ENABLE_DISABLE_LINTERS_PRIORITY": {
+      "$id": "#/properties/ENABLE_DISABLE_LINTERS_PRIORITY",
+      "default": "ENABLE",
+      "description": "Defines which list wins when a linter is present in both ENABLE_LINTERS and DISABLE_LINTERS. ENABLE (default) keeps the linter active, DISABLE lets DISABLE_LINTERS override ENABLE_LINTERS (useful to trim an inherited ENABLE_LINTERS list via EXTENDS)",
+      "enum": [
+        "ENABLE",
+        "DISABLE"
+      ],
+      "enumNames": [
+        "ENABLE",
+        "DISABLE"
+      ],
+      "title": "ENABLE_LINTERS / DISABLE_LINTERS priority",
+      "type": "string",
+      "x-category": "GENERAL",
+      "x-order": 100015,
       "x-section": "ACTIVATION"
     },
     "ENABLE_ERRORS_LINTERS": {
@@ -12019,6 +12054,7 @@
     },
     "JSON_ESLINT_PLUGIN_JSONC_ARGUMENTS": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_ARGUMENTS",
+      "deprecated": true,
       "description": "JSON_ESLINT_PLUGIN_JSONC: User custom arguments to add in linter CLI call",
       "examples:": [
         "--foo",
@@ -12043,6 +12079,7 @@
           "eslint"
         ]
       ],
+      "deprecated": true,
       "description": "JSON_ESLINT_PLUGIN_JSONC: Override CLI executable used to build the linter command line (rarely needed)",
       "items": {
         "type": "string"
@@ -12056,6 +12093,7 @@
     "JSON_ESLINT_PLUGIN_JSONC_CLI_LINT_MODE": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_CLI_LINT_MODE",
       "default": "list_of_files",
+      "deprecated": true,
       "description": "JSON_ESLINT_PLUGIN_JSONC: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
@@ -12076,6 +12114,7 @@
     },
     "JSON_ESLINT_PLUGIN_JSONC_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_COMMAND_REMOVE_ARGUMENTS",
+      "deprecated": true,
       "description": "JSON_ESLINT_PLUGIN_JSONC: User custom arguments to remove before calling linter",
       "examples:": [
         "--foo",
@@ -12096,6 +12135,7 @@
     "JSON_ESLINT_PLUGIN_JSONC_CONFIG_FILE": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_CONFIG_FILE",
       "default": ".eslintrc-json.json",
+      "deprecated": true,
       "description": "JSON_ESLINT_PLUGIN_JSONC: User custom config file name if different from default",
       "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Custom config file name",
       "type": "string",
@@ -12106,6 +12146,7 @@
     "JSON_ESLINT_PLUGIN_JSONC_DISABLE_ERRORS": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_DISABLE_ERRORS",
       "default": false,
+      "deprecated": true,
       "description": "JSON_ESLINT_PLUGIN_JSONC: If true, JSON_ESLINT_PLUGIN_JSONC doesn't make MegaLinter fail even if errors are found",
       "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Disable errors",
       "type": "boolean",
@@ -12116,6 +12157,7 @@
     "JSON_ESLINT_PLUGIN_JSONC_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
+      "deprecated": true,
       "description": "JSON_ESLINT_PLUGIN_JSONC: If the number of errors found is less than this value, JSON_ESLINT_PLUGIN_JSONC doesn't make MegaLinter fail",
       "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Maximum number of errors allowed",
       "type": "number",
@@ -12130,6 +12172,7 @@
         ".json5",
         ".jsonc"
       ],
+      "deprecated": true,
       "description": "JSON_ESLINT_PLUGIN_JSONC: Override descriptor/linter matching files extensions that will be used to select files to lint",
       "examples": [
         ".py",
@@ -12147,6 +12190,7 @@
     "JSON_ESLINT_PLUGIN_JSONC_FILE_NAMES_REGEX": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_FILE_NAMES_REGEX",
       "default": [],
+      "deprecated": true,
       "description": "JSON_ESLINT_PLUGIN_JSONC: Override descriptor/linter matching file name regexes that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -12163,6 +12207,7 @@
     },
     "JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_EXCLUDE",
+      "deprecated": true,
       "description": "JSON_ESLINT_PLUGIN_JSONC: Custom regex excluding filter: files matching this regex will NOT be linted",
       "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Excluding Regex",
       "type": "string",
@@ -12173,6 +12218,7 @@
     },
     "JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_INCLUDE",
+      "deprecated": true,
       "description": "JSON_ESLINT_PLUGIN_JSONC: Custom regex including filter: only files matching this regex will be linted",
       "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Including Regex",
       "type": "string",
@@ -12225,6 +12271,7 @@
     },
     "JSON_ESLINT_PLUGIN_JSONC_RULES_PATH": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_RULES_PATH",
+      "deprecated": true,
       "description": "JSON_ESLINT_PLUGIN_JSONC: Path where to find linter configuration file",
       "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Custom config file path",
       "type": "string",
@@ -12235,6 +12282,7 @@
     "JSON_ESLINT_PLUGIN_JSONC_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_UNSECURED_ENV_VARIABLES",
       "default": [],
+      "deprecated": true,
       "description": "List of env variables explicitly not filtered before calling JSON_ESLINT_PLUGIN_JSONC and its pre/post commands",
       "items": {
         "type": "string"
@@ -16653,6 +16701,7 @@
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_ARGUMENTS": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_ARGUMENTS",
+      "deprecated": true,
       "description": "MARKDOWN_MARKDOWN_LINK_CHECK: User custom arguments to add in linter CLI call",
       "examples:": [
         "--foo",
@@ -16677,6 +16726,7 @@
           "markdown-link-check"
         ]
       ],
+      "deprecated": true,
       "items": {
         "type": "string"
       },
@@ -16689,6 +16739,7 @@
     "MARKDOWN_MARKDOWN_LINK_CHECK_CLI_LINT_MODE": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_CLI_LINT_MODE",
       "default": "list_of_files",
+      "deprecated": true,
       "enum": [
         "file",
         "list_of_files",
@@ -16707,6 +16758,7 @@
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_COMMAND_REMOVE_ARGUMENTS",
+      "deprecated": true,
       "description": "MARKDOWN_MARKDOWN_LINK_CHECK: User custom arguments to remove before calling linter",
       "examples:": [
         "--foo",
@@ -16727,6 +16779,7 @@
     "MARKDOWN_MARKDOWN_LINK_CHECK_CONFIG_FILE": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_CONFIG_FILE",
       "default": ".markdown-link-check.json",
+      "deprecated": true,
       "description": "MARKDOWN_MARKDOWN_LINK_CHECK: User custom config file name if different from default",
       "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Custom config file name",
       "type": "string",
@@ -16737,6 +16790,7 @@
     "MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS",
       "default": false,
+      "deprecated": true,
       "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Linter doesn't make MegaLinter fail even if errors are found",
       "type": "boolean",
       "x-category": "MARKDOWN",
@@ -16746,6 +16800,7 @@
     "MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
+      "deprecated": true,
       "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Maximum number of errors allowed",
       "type": "number",
       "x-category": "MARKDOWN",
@@ -16754,6 +16809,7 @@
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_FILE_EXTENSIONS": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_FILE_EXTENSIONS",
+      "deprecated": true,
       "examples:": [
         ".py",
         ".myext"
@@ -16770,6 +16826,7 @@
     "MARKDOWN_MARKDOWN_LINK_CHECK_FILE_NAME": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_FILE_NAME",
       "default": ".markdown-link-check.json",
+      "deprecated": true,
       "description": "MARKDOWN_MARKDOWN_LINK_CHECK: User custom config file name if different from default",
       "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Custom config file name",
       "type": "string",
@@ -16779,6 +16836,7 @@
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_FILE_NAMES_REGEX": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_FILE_NAMES_REGEX",
+      "deprecated": true,
       "examples": [
         "Dockerfile(-.+)?",
         "Jenkinsfile"
@@ -16794,6 +16852,7 @@
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_FILTER_REGEX_EXCLUDE",
+      "deprecated": true,
       "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Excluding Regex",
       "type": "string",
       "x-category": "MARKDOWN",
@@ -16802,6 +16861,7 @@
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_FILTER_REGEX_INCLUDE",
+      "deprecated": true,
       "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Including Regex",
       "type": "string",
       "x-category": "MARKDOWN",
@@ -16810,6 +16870,7 @@
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_POST_COMMANDS": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_POST_COMMANDS",
+      "deprecated": true,
       "examples": [
         [
           {
@@ -16830,6 +16891,7 @@
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_PRE_COMMANDS": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_PRE_COMMANDS",
+      "deprecated": true,
       "examples": [
         [
           {
@@ -16850,6 +16912,7 @@
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_RULES_PATH": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_RULES_PATH",
+      "deprecated": true,
       "description": "MARKDOWN_MARKDOWN_LINK_CHECK: Path where to find linter configuration file",
       "title": "(deprecated) MARKDOWN_MARKDOWN_LINK_CHECK: Custom config file path",
       "type": "string",
@@ -16860,6 +16923,7 @@
     "MARKDOWN_MARKDOWN_LINK_CHECK_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_UNSECURED_ENV_VARIABLES",
       "default": [],
+      "deprecated": true,
       "description": "List of env variables explicitly not filtered before calling MARKDOWN_MARKDOWN_LINK_CHECK and its pre/post commands",
       "items": {
         "type": "string"
@@ -17668,6 +17732,7 @@
     "MULTI_STATUS": {
       "$id": "#/properties/MULTI_STATUS",
       "default": true,
+      "deprecated": true,
       "description": "(DEPRECATED, use GITHUB_STATUS_REPORTER) Posts a status on the pull request for each processed linter",
       "title": "(DEPRECATED) Activate GitHub Status reporter",
       "type": "boolean",
@@ -19381,6 +19446,7 @@
     "POST_GITHUB_COMMENT": {
       "$id": "#/properties/POST_GITHUB_COMMENT",
       "default": true,
+      "deprecated": true,
       "description": "(DEPRECATED, use GITHUB_COMMENT_REPORTER) Posts MegaLinter results summary in the comments of the related pull request (if existing)",
       "title": "(DEPRECATED) Activate GitHub PR Comments reporter",
       "type": "boolean",
@@ -19391,6 +19457,7 @@
     "POST_GITLAB_COMMENT": {
       "$id": "#/properties/POST_GITLAB_COMMENT",
       "default": true,
+      "deprecated": true,
       "description": "(DEPRECATED, use GITHUB_COMMENT_REPORTER) Posts MegaLinter results summary in the comments of the related merge request (if existing)",
       "title": "(DEPRECATED) Activate Gitlab MR Comments reporter",
       "type": "boolean",
@@ -23264,6 +23331,177 @@
       "x-order": 700000,
       "x-section": "OUTPUT"
     },
+    "REPOSITORY_BETTERLEAKS_ARGUMENTS": {
+      "$id": "#/properties/REPOSITORY_BETTERLEAKS_ARGUMENTS",
+      "description": "REPOSITORY_BETTERLEAKS: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_BETTERLEAKS: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ],
+      "x-category": "REPOSITORY_BETTERLEAKS",
+      "x-order": 200020,
+      "x-section": "LINTER_COMMAND"
+    },
+    "REPOSITORY_BETTERLEAKS_CLI_EXECUTABLE": {
+      "$id": "#/properties/REPOSITORY_BETTERLEAKS_CLI_EXECUTABLE",
+      "default": [
+        [
+          "betterleaks"
+        ]
+      ],
+      "description": "REPOSITORY_BETTERLEAKS: Override CLI executable used to build the linter command line (rarely needed)",
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_BETTERLEAKS: CLI Executable",
+      "type": "array",
+      "x-category": "REPOSITORY_BETTERLEAKS",
+      "x-order": 200060,
+      "x-section": "LINTER_COMMAND"
+    },
+    "REPOSITORY_BETTERLEAKS_CLI_LINT_MODE": {
+      "$id": "#/properties/REPOSITORY_BETTERLEAKS_CLI_LINT_MODE",
+      "default": "project",
+      "description": "REPOSITORY_BETTERLEAKS: Override default CLI lint mode used to call the linter (rarely needed)",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
+      "title": "REPOSITORY_BETTERLEAKS: CLI lint mode",
+      "type": "string",
+      "x-category": "REPOSITORY_BETTERLEAKS",
+      "x-doc-key": "config-cli-lint-mode",
+      "x-order": 200050,
+      "x-section": "LINTER_COMMAND"
+    },
+    "REPOSITORY_BETTERLEAKS_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/REPOSITORY_BETTERLEAKS_COMMAND_REMOVE_ARGUMENTS",
+      "description": "REPOSITORY_BETTERLEAKS: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_BETTERLEAKS: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ],
+      "x-category": "REPOSITORY_BETTERLEAKS",
+      "x-order": 200020,
+      "x-section": "LINTER_COMMAND"
+    },
+    "REPOSITORY_BETTERLEAKS_CONFIG_FILE": {
+      "$id": "#/properties/REPOSITORY_BETTERLEAKS_CONFIG_FILE",
+      "default": ".betterleaks.toml",
+      "description": "REPOSITORY_BETTERLEAKS: User custom config file name if different from default",
+      "title": "REPOSITORY_BETTERLEAKS: Custom config file name",
+      "type": "string",
+      "x-category": "REPOSITORY_BETTERLEAKS",
+      "x-order": 200010,
+      "x-section": "LINTER_COMMAND"
+    },
+    "REPOSITORY_BETTERLEAKS_DISABLE_ERRORS": {
+      "$id": "#/properties/REPOSITORY_BETTERLEAKS_DISABLE_ERRORS",
+      "default": false,
+      "description": "REPOSITORY_BETTERLEAKS: If true, REPOSITORY_BETTERLEAKS doesn't make MegaLinter fail even if errors are found",
+      "title": "REPOSITORY_BETTERLEAKS: Disable errors",
+      "type": "boolean",
+      "x-category": "REPOSITORY_BETTERLEAKS",
+      "x-order": 400000,
+      "x-section": "ERRORS"
+    },
+    "REPOSITORY_BETTERLEAKS_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/REPOSITORY_BETTERLEAKS_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "description": "REPOSITORY_BETTERLEAKS: If the number of errors found is less than this value, REPOSITORY_BETTERLEAKS doesn't make MegaLinter fail",
+      "title": "REPOSITORY_BETTERLEAKS: Maximum number of errors allowed",
+      "type": "number",
+      "x-category": "REPOSITORY_BETTERLEAKS",
+      "x-order": 400010,
+      "x-section": "ERRORS"
+    },
+    "REPOSITORY_BETTERLEAKS_POST_COMMANDS": {
+      "$id": "#/properties/REPOSITORY_BETTERLEAKS_POST_COMMANDS",
+      "description": "REPOSITORY_BETTERLEAKS: Define bash commands to run after running REPOSITORY_BETTERLEAKS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "REPOSITORY_BETTERLEAKS: Post-run commands",
+      "type": "array",
+      "x-category": "REPOSITORY_BETTERLEAKS",
+      "x-order": 500010,
+      "x-section": "PREPOSTCOMMANDS"
+    },
+    "REPOSITORY_BETTERLEAKS_PRE_COMMANDS": {
+      "$id": "#/properties/REPOSITORY_BETTERLEAKS_PRE_COMMANDS",
+      "description": "REPOSITORY_BETTERLEAKS: Define bash commands to run before running REPOSITORY_BETTERLEAKS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "REPOSITORY_BETTERLEAKS: Pre-run commands",
+      "type": "array",
+      "x-category": "REPOSITORY_BETTERLEAKS",
+      "x-order": 500000,
+      "x-section": "PREPOSTCOMMANDS"
+    },
+    "REPOSITORY_BETTERLEAKS_RULES_PATH": {
+      "$id": "#/properties/REPOSITORY_BETTERLEAKS_RULES_PATH",
+      "description": "REPOSITORY_BETTERLEAKS: Path where to find linter configuration file",
+      "title": "REPOSITORY_BETTERLEAKS: Custom config file path",
+      "type": "string",
+      "x-category": "REPOSITORY_BETTERLEAKS",
+      "x-order": 200040,
+      "x-section": "LINTER_COMMAND"
+    },
+    "REPOSITORY_BETTERLEAKS_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/REPOSITORY_BETTERLEAKS_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling REPOSITORY_BETTERLEAKS and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_BETTERLEAKS: Unsecured env variables",
+      "type": "array",
+      "x-category": "REPOSITORY_BETTERLEAKS",
+      "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
+      "x-order": 600000,
+      "x-section": "SECURITY"
+    },
     "REPOSITORY_CHECKOV_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_CHECKOV_ARGUMENTS",
       "description": "REPOSITORY_CHECKOV: User custom arguments to add in linter CLI call",
@@ -23780,6 +24018,7 @@
     },
     "REPOSITORY_GITLEAKS_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_GITLEAKS_ARGUMENTS",
+      "deprecated": true,
       "description": "REPOSITORY_GITLEAKS: User custom arguments to add in linter CLI call",
       "examples:": [
         "--foo",
@@ -23788,7 +24027,7 @@
       "items": {
         "type": "string"
       },
-      "title": "REPOSITORY_GITLEAKS: Custom arguments",
+      "title": "(deprecated) REPOSITORY_GITLEAKS: Custom arguments",
       "type": [
         "array",
         "string"
@@ -23804,11 +24043,12 @@
           "gitleaks"
         ]
       ],
+      "deprecated": true,
       "description": "REPOSITORY_GITLEAKS: Override CLI executable used to build the linter command line (rarely needed)",
       "items": {
         "type": "string"
       },
-      "title": "REPOSITORY_GITLEAKS: CLI Executable",
+      "title": "(deprecated) REPOSITORY_GITLEAKS: CLI Executable",
       "type": "array",
       "x-category": "REPOSITORY_GITLEAKS",
       "x-order": 200060,
@@ -23817,6 +24057,7 @@
     "REPOSITORY_GITLEAKS_CLI_LINT_MODE": {
       "$id": "#/properties/REPOSITORY_GITLEAKS_CLI_LINT_MODE",
       "default": "project",
+      "deprecated": true,
       "description": "REPOSITORY_GITLEAKS: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
@@ -23828,7 +24069,7 @@
         "List of Files",
         "Project"
       ],
-      "title": "REPOSITORY_GITLEAKS: CLI lint mode",
+      "title": "(deprecated) REPOSITORY_GITLEAKS: CLI lint mode",
       "type": "string",
       "x-category": "REPOSITORY_GITLEAKS",
       "x-doc-key": "config-cli-lint-mode",
@@ -23837,6 +24078,7 @@
     },
     "REPOSITORY_GITLEAKS_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_GITLEAKS_COMMAND_REMOVE_ARGUMENTS",
+      "deprecated": true,
       "description": "REPOSITORY_GITLEAKS: User custom arguments to remove before calling linter",
       "examples:": [
         "--foo",
@@ -23845,7 +24087,7 @@
       "items": {
         "type": "string"
       },
-      "title": "REPOSITORY_GITLEAKS: Custom remove arguments",
+      "title": "(deprecated) REPOSITORY_GITLEAKS: Custom remove arguments",
       "type": [
         "array",
         "string"
@@ -23857,8 +24099,9 @@
     "REPOSITORY_GITLEAKS_CONFIG_FILE": {
       "$id": "#/properties/REPOSITORY_GITLEAKS_CONFIG_FILE",
       "default": ".gitleaks.toml",
+      "deprecated": true,
       "description": "REPOSITORY_GITLEAKS: User custom config file name if different from default",
-      "title": "REPOSITORY_GITLEAKS: Custom config file name",
+      "title": "(deprecated) REPOSITORY_GITLEAKS: Custom config file name",
       "type": "string",
       "x-category": "REPOSITORY_GITLEAKS",
       "x-order": 200010,
@@ -23867,8 +24110,9 @@
     "REPOSITORY_GITLEAKS_DISABLE_ERRORS": {
       "$id": "#/properties/REPOSITORY_GITLEAKS_DISABLE_ERRORS",
       "default": false,
+      "deprecated": true,
       "description": "REPOSITORY_GITLEAKS: If true, REPOSITORY_GITLEAKS doesn't make MegaLinter fail even if errors are found",
-      "title": "REPOSITORY_GITLEAKS: Disable errors",
+      "title": "(deprecated) REPOSITORY_GITLEAKS: Disable errors",
       "type": "boolean",
       "x-category": "REPOSITORY_GITLEAKS",
       "x-order": 400000,
@@ -23877,8 +24121,9 @@
     "REPOSITORY_GITLEAKS_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/REPOSITORY_GITLEAKS_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
+      "deprecated": true,
       "description": "REPOSITORY_GITLEAKS: If the number of errors found is less than this value, REPOSITORY_GITLEAKS doesn't make MegaLinter fail",
-      "title": "REPOSITORY_GITLEAKS: Maximum number of errors allowed",
+      "title": "(deprecated) REPOSITORY_GITLEAKS: Maximum number of errors allowed",
       "type": "number",
       "x-category": "REPOSITORY_GITLEAKS",
       "x-order": 400010,
@@ -23886,7 +24131,7 @@
     },
     "REPOSITORY_GITLEAKS_POST_COMMANDS": {
       "$id": "#/properties/REPOSITORY_GITLEAKS_POST_COMMANDS",
-      "description": "REPOSITORY_GITLEAKS: Define bash commands to run after running REPOSITORY_GITLEAKS",
+      "description": "(deprecated) REPOSITORY_GITLEAKS: Define bash commands to run after running REPOSITORY_GITLEAKS",
       "examples": [
         [
           {
@@ -23907,7 +24152,7 @@
     },
     "REPOSITORY_GITLEAKS_PRE_COMMANDS": {
       "$id": "#/properties/REPOSITORY_GITLEAKS_PRE_COMMANDS",
-      "description": "REPOSITORY_GITLEAKS: Define bash commands to run before running REPOSITORY_GITLEAKS",
+      "description": "(deprecated) REPOSITORY_GITLEAKS: Define bash commands to run before running REPOSITORY_GITLEAKS",
       "examples": [
         [
           {
@@ -23955,8 +24200,9 @@
     },
     "REPOSITORY_GITLEAKS_RULES_PATH": {
       "$id": "#/properties/REPOSITORY_GITLEAKS_RULES_PATH",
+      "deprecated": true,
       "description": "REPOSITORY_GITLEAKS: Path where to find linter configuration file",
-      "title": "REPOSITORY_GITLEAKS: Custom config file path",
+      "title": "(deprecated) REPOSITORY_GITLEAKS: Custom config file path",
       "type": "string",
       "x-category": "REPOSITORY_GITLEAKS",
       "x-order": 200040,
@@ -23965,11 +24211,12 @@
     "REPOSITORY_GITLEAKS_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/REPOSITORY_GITLEAKS_UNSECURED_ENV_VARIABLES",
       "default": [],
+      "deprecated": true,
       "description": "List of env variables explicitly not filtered before calling REPOSITORY_GITLEAKS and its pre/post commands",
       "items": {
         "type": "string"
       },
-      "title": "REPOSITORY_GITLEAKS: Unsecured env variables",
+      "title": "(deprecated) REPOSITORY_GITLEAKS: Unsecured env variables",
       "type": "array",
       "x-category": "REPOSITORY_GITLEAKS",
       "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
@@ -28776,6 +29023,7 @@
     },
     "SALESFORCE_SFDX_SCANNER_APEX_ARGUMENTS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_ARGUMENTS",
+      "deprecated": true,
       "description": "SALESFORCE_SFDX_SCANNER_APEX: User custom arguments to add in linter CLI call",
       "examples:": [
         "--foo",
@@ -28800,6 +29048,7 @@
           "sf"
         ]
       ],
+      "deprecated": true,
       "description": "SALESFORCE_SFDX_SCANNER_APEX: Override CLI executable used to build the linter command line (rarely needed)",
       "items": {
         "type": "string"
@@ -28813,6 +29062,7 @@
     "SALESFORCE_SFDX_SCANNER_APEX_CLI_LINT_MODE": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_CLI_LINT_MODE",
       "default": "project",
+      "deprecated": true,
       "description": "SALESFORCE_SFDX_SCANNER_APEX: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
@@ -28833,6 +29083,7 @@
     },
     "SALESFORCE_SFDX_SCANNER_APEX_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_COMMAND_REMOVE_ARGUMENTS",
+      "deprecated": true,
       "description": "SALESFORCE_SFDX_SCANNER_APEX: User custom arguments to remove before calling linter",
       "examples:": [
         "--foo",
@@ -28853,6 +29104,7 @@
     "SALESFORCE_SFDX_SCANNER_APEX_CONFIG_FILE": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_CONFIG_FILE",
       "default": "apex-pmd-ruleset.xml",
+      "deprecated": true,
       "description": "SALESFORCE_SFDX_SCANNER_APEX: User custom config file name if different from default",
       "title": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: Custom config file name",
       "type": "string",
@@ -28863,6 +29115,7 @@
     "SALESFORCE_SFDX_SCANNER_APEX_DIRECTORY": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_DIRECTORY",
       "default": "force-app",
+      "deprecated": true,
       "description": "Directory that must be found to activate linter. Use value \"any\" to always activate",
       "title": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: Directory containing SALESFORCE files",
       "type": "string",
@@ -28873,6 +29126,7 @@
     "SALESFORCE_SFDX_SCANNER_APEX_DISABLE_ERRORS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_DISABLE_ERRORS",
       "default": false,
+      "deprecated": true,
       "description": "SALESFORCE_SFDX_SCANNER_APEX: If true, SALESFORCE_SFDX_SCANNER_APEX doesn't make MegaLinter fail even if errors are found",
       "title": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: Disable errors",
       "type": "boolean",
@@ -28883,6 +29137,7 @@
     "SALESFORCE_SFDX_SCANNER_APEX_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
+      "deprecated": true,
       "description": "SALESFORCE_SFDX_SCANNER_APEX: If the number of errors found is less than this value, SALESFORCE_SFDX_SCANNER_APEX doesn't make MegaLinter fail",
       "title": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: Maximum number of errors allowed",
       "type": "number",
@@ -28934,6 +29189,7 @@
     },
     "SALESFORCE_SFDX_SCANNER_APEX_RULES_PATH": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_RULES_PATH",
+      "deprecated": true,
       "description": "SALESFORCE_SFDX_SCANNER_APEX: Path where to find linter configuration file",
       "title": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: Custom config file path",
       "type": "string",
@@ -28944,6 +29200,7 @@
     "SALESFORCE_SFDX_SCANNER_APEX_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_UNSECURED_ENV_VARIABLES",
       "default": [],
+      "deprecated": true,
       "description": "List of env variables explicitly not filtered before calling SALESFORCE_SFDX_SCANNER_APEX and its pre/post commands",
       "items": {
         "type": "string"
@@ -28976,6 +29233,7 @@
     },
     "SALESFORCE_SFDX_SCANNER_AURA_ARGUMENTS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_ARGUMENTS",
+      "deprecated": true,
       "description": "SALESFORCE_SFDX_SCANNER_AURA: User custom arguments to add in linter CLI call",
       "examples:": [
         "--foo",
@@ -29000,6 +29258,7 @@
           "sf"
         ]
       ],
+      "deprecated": true,
       "description": "SALESFORCE_SFDX_SCANNER_AURA: Override CLI executable used to build the linter command line (rarely needed)",
       "items": {
         "type": "string"
@@ -29013,6 +29272,7 @@
     "SALESFORCE_SFDX_SCANNER_AURA_CLI_LINT_MODE": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_CLI_LINT_MODE",
       "default": "project",
+      "deprecated": true,
       "description": "SALESFORCE_SFDX_SCANNER_AURA: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
@@ -29033,6 +29293,7 @@
     },
     "SALESFORCE_SFDX_SCANNER_AURA_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_COMMAND_REMOVE_ARGUMENTS",
+      "deprecated": true,
       "description": "SALESFORCE_SFDX_SCANNER_AURA: User custom arguments to remove before calling linter",
       "examples:": [
         "--foo",
@@ -29053,6 +29314,7 @@
     "SALESFORCE_SFDX_SCANNER_AURA_CONFIG_FILE": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_CONFIG_FILE",
       "default": "--eslintconfig",
+      "deprecated": true,
       "description": "SALESFORCE_SFDX_SCANNER_AURA: User custom config file name if different from default",
       "title": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: Custom config file name",
       "type": "string",
@@ -29063,6 +29325,7 @@
     "SALESFORCE_SFDX_SCANNER_AURA_DIRECTORY": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_DIRECTORY",
       "default": "force-app",
+      "deprecated": true,
       "description": "Directory that must be found to activate linter. Use value \"any\" to always activate",
       "title": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: Directory containing SALESFORCE files",
       "type": "string",
@@ -29073,6 +29336,7 @@
     "SALESFORCE_SFDX_SCANNER_AURA_DISABLE_ERRORS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_DISABLE_ERRORS",
       "default": false,
+      "deprecated": true,
       "description": "SALESFORCE_SFDX_SCANNER_AURA: If true, SALESFORCE_SFDX_SCANNER_AURA doesn't make MegaLinter fail even if errors are found",
       "title": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: Disable errors",
       "type": "boolean",
@@ -29083,6 +29347,7 @@
     "SALESFORCE_SFDX_SCANNER_AURA_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
+      "deprecated": true,
       "description": "SALESFORCE_SFDX_SCANNER_AURA: If the number of errors found is less than this value, SALESFORCE_SFDX_SCANNER_AURA doesn't make MegaLinter fail",
       "title": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: Maximum number of errors allowed",
       "type": "number",
@@ -29134,6 +29399,7 @@
     },
     "SALESFORCE_SFDX_SCANNER_AURA_RULES_PATH": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_RULES_PATH",
+      "deprecated": true,
       "description": "SALESFORCE_SFDX_SCANNER_AURA: Path where to find linter configuration file",
       "title": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: Custom config file path",
       "type": "string",
@@ -29144,6 +29410,7 @@
     "SALESFORCE_SFDX_SCANNER_AURA_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_UNSECURED_ENV_VARIABLES",
       "default": [],
+      "deprecated": true,
       "description": "List of env variables explicitly not filtered before calling SALESFORCE_SFDX_SCANNER_AURA and its pre/post commands",
       "items": {
         "type": "string"
@@ -29230,6 +29497,7 @@
     },
     "SALESFORCE_SFDX_SCANNER_LWC_ARGUMENTS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_ARGUMENTS",
+      "deprecated": true,
       "description": "SALESFORCE_SFDX_SCANNER_LWC: User custom arguments to add in linter CLI call",
       "examples:": [
         "--foo",
@@ -29254,6 +29522,7 @@
           "sf"
         ]
       ],
+      "deprecated": true,
       "description": "SALESFORCE_SFDX_SCANNER_LWC: Override CLI executable used to build the linter command line (rarely needed)",
       "items": {
         "type": "string"
@@ -29267,6 +29536,7 @@
     "SALESFORCE_SFDX_SCANNER_LWC_CLI_LINT_MODE": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_CLI_LINT_MODE",
       "default": "project",
+      "deprecated": true,
       "description": "SALESFORCE_SFDX_SCANNER_LWC: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
@@ -29287,6 +29557,7 @@
     },
     "SALESFORCE_SFDX_SCANNER_LWC_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_COMMAND_REMOVE_ARGUMENTS",
+      "deprecated": true,
       "description": "SALESFORCE_SFDX_SCANNER_LWC: User custom arguments to remove before calling linter",
       "examples:": [
         "--foo",
@@ -29307,6 +29578,7 @@
     "SALESFORCE_SFDX_SCANNER_LWC_CONFIG_FILE": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_CONFIG_FILE",
       "default": "--eslintconfig",
+      "deprecated": true,
       "description": "SALESFORCE_SFDX_SCANNER_LWC: User custom config file name if different from default",
       "title": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: Custom config file name",
       "type": "string",
@@ -29317,6 +29589,7 @@
     "SALESFORCE_SFDX_SCANNER_LWC_DIRECTORY": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_DIRECTORY",
       "default": "force-app",
+      "deprecated": true,
       "description": "Directory that must be found to activate linter. Use value \"any\" to always activate",
       "title": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: Directory containing SALESFORCE files",
       "type": "string",
@@ -29327,6 +29600,7 @@
     "SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS",
       "default": false,
+      "deprecated": true,
       "description": "SALESFORCE_SFDX_SCANNER_LWC: If true, SALESFORCE_SFDX_SCANNER_LWC doesn't make MegaLinter fail even if errors are found",
       "title": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: Disable errors",
       "type": "boolean",
@@ -29337,6 +29611,7 @@
     "SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
+      "deprecated": true,
       "description": "SALESFORCE_SFDX_SCANNER_LWC: If the number of errors found is less than this value, SALESFORCE_SFDX_SCANNER_LWC doesn't make MegaLinter fail",
       "title": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: Maximum number of errors allowed",
       "type": "number",
@@ -29388,6 +29663,7 @@
     },
     "SALESFORCE_SFDX_SCANNER_LWC_RULES_PATH": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_RULES_PATH",
+      "deprecated": true,
       "description": "SALESFORCE_SFDX_SCANNER_LWC: Path where to find linter configuration file",
       "title": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: Custom config file path",
       "type": "string",
@@ -29398,6 +29674,7 @@
     "SALESFORCE_SFDX_SCANNER_LWC_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_UNSECURED_ENV_VARIABLES",
       "default": [],
+      "deprecated": true,
       "description": "List of env variables explicitly not filtered before calling SALESFORCE_SFDX_SCANNER_LWC and its pre/post commands",
       "items": {
         "type": "string"
@@ -31351,7 +31628,7 @@
     },
     "SPELL_PROSELINT_CONFIG_FILE": {
       "$id": "#/properties/SPELL_PROSELINT_CONFIG_FILE",
-      "default": ".proselintrc",
+      "default": ".proselintrc.json",
       "description": "SPELL_PROSELINT: User custom config file name if different from default",
       "title": "SPELL_PROSELINT: Custom config file name",
       "type": "string",
@@ -33848,6 +34125,7 @@
     },
     "TERRAFORM_TERRASCAN_ARGUMENTS": {
       "$id": "#/properties/TERRAFORM_TERRASCAN_ARGUMENTS",
+      "deprecated": true,
       "description": "TERRAFORM_TERRASCAN: User custom arguments to add in linter CLI call",
       "examples:": [
         "--foo",
@@ -33872,6 +34150,7 @@
           "terrascan"
         ]
       ],
+      "deprecated": true,
       "description": "TERRAFORM_TERRASCAN: Override CLI executable used to build the linter command line (rarely needed)",
       "items": {
         "type": "string"
@@ -33885,6 +34164,7 @@
     "TERRAFORM_TERRASCAN_CLI_LINT_MODE": {
       "$id": "#/properties/TERRAFORM_TERRASCAN_CLI_LINT_MODE",
       "default": "project",
+      "deprecated": true,
       "description": "TERRAFORM_TERRASCAN: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
@@ -33905,6 +34185,7 @@
     },
     "TERRAFORM_TERRASCAN_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/TERRAFORM_TERRASCAN_COMMAND_REMOVE_ARGUMENTS",
+      "deprecated": true,
       "description": "TERRAFORM_TERRASCAN: User custom arguments to remove before calling linter",
       "examples:": [
         "--foo",
@@ -33925,6 +34206,7 @@
     "TERRAFORM_TERRASCAN_CONFIG_FILE": {
       "$id": "#/properties/TERRAFORM_TERRASCAN_CONFIG_FILE",
       "default": "terrascan.toml",
+      "deprecated": true,
       "description": "TERRAFORM_TERRASCAN: User custom config file name if different from default",
       "title": "(deprecated) TERRAFORM_TERRASCAN: Custom config file name",
       "type": "string",
@@ -33935,6 +34217,7 @@
     "TERRAFORM_TERRASCAN_DISABLE_ERRORS": {
       "$id": "#/properties/TERRAFORM_TERRASCAN_DISABLE_ERRORS",
       "default": false,
+      "deprecated": true,
       "description": "TERRAFORM_TERRASCAN: If true, TERRAFORM_TERRASCAN doesn't make MegaLinter fail even if errors are found",
       "title": "(deprecated) TERRAFORM_TERRASCAN: Disable errors",
       "type": "boolean",
@@ -33945,6 +34228,7 @@
     "TERRAFORM_TERRASCAN_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/TERRAFORM_TERRASCAN_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
+      "deprecated": true,
       "description": "TERRAFORM_TERRASCAN: If the number of errors found is less than this value, TERRAFORM_TERRASCAN doesn't make MegaLinter fail",
       "title": "(deprecated) TERRAFORM_TERRASCAN: Maximum number of errors allowed",
       "type": "number",
@@ -33957,6 +34241,7 @@
       "default": [
         ".tf"
       ],
+      "deprecated": true,
       "description": "TERRAFORM_TERRASCAN: Override descriptor/linter matching files extensions that will be used to select files to lint",
       "examples": [
         ".py",
@@ -33974,6 +34259,7 @@
     "TERRAFORM_TERRASCAN_FILE_NAMES_REGEX": {
       "$id": "#/properties/TERRAFORM_TERRASCAN_FILE_NAMES_REGEX",
       "default": [],
+      "deprecated": true,
       "description": "TERRAFORM_TERRASCAN: Override descriptor/linter matching file name regexes that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -34032,6 +34318,7 @@
     },
     "TERRAFORM_TERRASCAN_RULES_PATH": {
       "$id": "#/properties/TERRAFORM_TERRASCAN_RULES_PATH",
+      "deprecated": true,
       "description": "TERRAFORM_TERRASCAN: Path where to find linter configuration file",
       "title": "(deprecated) TERRAFORM_TERRASCAN: Custom config file path",
       "type": "string",
@@ -34042,6 +34329,7 @@
     "TERRAFORM_TERRASCAN_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/TERRAFORM_TERRASCAN_UNSECURED_ENV_VARIABLES",
       "default": [],
+      "deprecated": true,
       "description": "List of env variables explicitly not filtered before calling TERRAFORM_TERRASCAN and its pre/post commands",
       "items": {
         "type": "string"

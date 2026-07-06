@@ -55,7 +55,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=packagist depName=overtrue/phplint
-ARG PHP_OVERTRUE_PHPLINT_VERSION=9.7.1
+ARG PHP_OVERTRUE_PHPLINT_VERSION=9.7.2
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
 ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.6.0
 #ARG__END
@@ -84,6 +84,7 @@ RUN apk -U --no-cache upgrade \
                 make \
                 musl-dev \
                 openssh \
+                su-exec \
                 gnupg \
                 php84 \
                 php84-phar \
@@ -175,7 +176,8 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 # PHP installation
 RUN update-alternatives --install /usr/bin/php php /usr/bin/php84 110
 # Managed with COPY --link --from=composer/composer:2-bin /composer /usr/bin/composer
-ENV PATH="/root/.composer/vendor/bin:${PATH}"
+ENV COMPOSER_HOME=/usr/local/composer
+ENV PATH="/usr/local/composer/vendor/bin:${PATH}"
 # phplint installation
 RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require overtrue/phplint:${PHP_OVERTRUE_PHPLINT_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION}
 
@@ -251,17 +253,23 @@ ENV ENABLE_LINTERS=PHP_PHPLINT \
     FILEIO_REPORTER=false \
     CONFIG_REPORTER=false \
     SARIF_TO_HUMAN=false
-RUN mkdir /root/docker_ssh && mkdir /usr/bin/megalinter-sh
+RUN mkdir /tmp/docker_ssh && mkdir /usr/bin/megalinter-sh
 EXPOSE 22
 COPY entrypoint.sh /entrypoint.sh
 COPY sh /usr/bin/megalinter-sh
-COPY sh/megalinter_exec /usr/bin/megalinter_exec
+COPY sh/megalinter_exec.sh /usr/bin/megalinter_exec.sh
+COPY sh/setup-runtime-user.sh /usr/bin/setup-runtime-user.sh
 COPY sh/motd /etc/motd
 RUN find /usr/bin/megalinter-sh/ -type f -iname "*.sh" -exec chmod +x {} \; && \
     chmod +x entrypoint.sh && \
-    chmod +x /usr/bin/megalinter_exec && \
-    echo "alias megalinter='python -m megalinter.run'" >> ~/.bashrc && source ~/.bashrc && \
-    echo "alias megalinter_exec='/usr/bin/megalinter_exec'" >> ~/.bashrc && source ~/.bashrc
+    chmod +x /usr/bin/megalinter_exec.sh && \
+    chmod u+x /usr/bin/setup-runtime-user.sh && \
+    printf '%s\n' \
+      '#!/usr/bin/env sh' \
+      'exec python -m megalinter.run "$@"' \
+      > /usr/local/bin/megalinter && \
+    chmod u+x /usr/local/bin/megalinter && \
+    ln -sf /usr/bin/megalinter_exec.sh /usr/local/bin/megalinter_exec
 RUN export STANDALONE_LINTER_VERSION="$(python -m megalinter.run --input /tmp --linterversion)" && \
     echo $STANDALONE_LINTER_VERSION
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]

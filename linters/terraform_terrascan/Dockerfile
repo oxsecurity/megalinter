@@ -25,8 +25,8 @@ FROM tenable/terrascan:${TERRAFORM_TERRASCAN_VERSION} AS terrascan
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.11.17 AS uv
-FROM python:3.14-alpine3.23 AS build-ml-core
+FROM ghcr.io/astral-sh/uv:0.11.26 AS uv
+FROM python:3.14-alpine3.24 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
 WORKDIR /
@@ -45,7 +45,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 ##################
 # Get base image #
 ##################
-FROM python:3.14-alpine3.23
+FROM python:3.14-alpine3.24
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
 
@@ -83,6 +83,7 @@ RUN apk -U --no-cache upgrade \
                 make \
                 musl-dev \
                 openssh \
+                su-exec \
     && git config --global core.autocrlf true
 #APK__END
 
@@ -230,17 +231,23 @@ ENV ENABLE_LINTERS=TERRAFORM_TERRASCAN \
     FILEIO_REPORTER=false \
     CONFIG_REPORTER=false \
     SARIF_TO_HUMAN=false
-RUN mkdir /root/docker_ssh && mkdir /usr/bin/megalinter-sh
+RUN mkdir /tmp/docker_ssh && mkdir /usr/bin/megalinter-sh
 EXPOSE 22
 COPY entrypoint.sh /entrypoint.sh
 COPY sh /usr/bin/megalinter-sh
-COPY sh/megalinter_exec /usr/bin/megalinter_exec
+COPY sh/megalinter_exec.sh /usr/bin/megalinter_exec.sh
+COPY sh/setup-runtime-user.sh /usr/bin/setup-runtime-user.sh
 COPY sh/motd /etc/motd
 RUN find /usr/bin/megalinter-sh/ -type f -iname "*.sh" -exec chmod +x {} \; && \
     chmod +x entrypoint.sh && \
-    chmod +x /usr/bin/megalinter_exec && \
-    echo "alias megalinter='python -m megalinter.run'" >> ~/.bashrc && source ~/.bashrc && \
-    echo "alias megalinter_exec='/usr/bin/megalinter_exec'" >> ~/.bashrc && source ~/.bashrc
+    chmod +x /usr/bin/megalinter_exec.sh && \
+    chmod u+x /usr/bin/setup-runtime-user.sh && \
+    printf '%s\n' \
+      '#!/usr/bin/env sh' \
+      'exec python -m megalinter.run "$@"' \
+      > /usr/local/bin/megalinter && \
+    chmod u+x /usr/local/bin/megalinter && \
+    ln -sf /usr/bin/megalinter_exec.sh /usr/local/bin/megalinter_exec
 RUN export STANDALONE_LINTER_VERSION="$(python -m megalinter.run --input /tmp --linterversion)" && \
     echo $STANDALONE_LINTER_VERSION
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]

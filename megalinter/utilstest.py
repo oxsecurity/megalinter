@@ -494,7 +494,7 @@ def test_get_linter_version(linter, test_self):
                 )
                 versions_block = f"{start}{versions_text}{end}"
                 changelog_content = re.sub(
-                    regex, versions_block, changelog_content, re.DOTALL
+                    regex, versions_block, changelog_content, flags=re.DOTALL
                 )
                 with open(changelog_file, "w", encoding="utf-8") as md_file:
                     md_file.write(changelog_content)
@@ -714,7 +714,12 @@ def test_linter_report_sarif(linter, test_self):
             ]
         ):
             # https://github.com/gitleaks/gitleaks/issues/1858
-            if linter.name != "REPOSITORY_GITLEAKS":  # does not report errors
+            # betterleaks is a gitleaks fork and inherits the same SARIF
+            # behavior (findings are reported at "warning" level, not "error")
+            if linter.name not in [
+                "REPOSITORY_GITLEAKS",
+                "REPOSITORY_BETTERLEAKS",
+            ]:  # does not report errors
                 test_self.assertTrue(
                     linter.total_number_errors > 1,
                     f"Missing multiple sarif errors in {linter.name}"

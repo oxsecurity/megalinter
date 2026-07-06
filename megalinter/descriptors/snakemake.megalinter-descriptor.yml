@@ -51,7 +51,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=snakemake
-          ARG PIP_SNAKEMAKE_VERSION=9.21.1
+          ARG PIP_SNAKEMAKE_VERSION=9.23.1
       pip:
         - snakemake==${PIP_SNAKEMAKE_VERSION}
     supported_platforms:
@@ -110,7 +110,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=snakefmt
-          ARG PIP_SNAKEFMT_VERSION=2.0.1
+          ARG PIP_SNAKEFMT_VERSION=2.0.3
       pip:
         - snakefmt==${PIP_SNAKEFMT_VERSION}
     supported_platforms:

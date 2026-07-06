@@ -72,6 +72,7 @@ class Linter:
         self.test_format_fix_file_extensions = []
         self.test_format_fix_regex_exclude = None
         self.activation_rules = []
+        self.activation_skip_reason = None
         self.test_variables = {}
         # Array of strings defining file extensions. Ex: ['.js','.cjs', '']
         self.file_extensions = []
@@ -101,9 +102,6 @@ class Linter:
 
         self.cli_lint_mode = "file"
         self.supported_cli_lint_modes = ["file"]
-        self.cli_docker_image = None
-        self.cli_docker_image_version = "latest"
-        self.cli_docker_args = []
         self.cli_executable = []
         self.cli_executable_fix = []
         self.cli_executable_version = []
@@ -414,11 +412,20 @@ class Linter:
         # See megalinter/MegaLinter.py, manage_default_linter_activation() function
         # for params["default_linter_activation"]
         self.is_active = params["default_linter_activation"]
+        # When a linter is listed in both ENABLE_LINTERS and DISABLE_LINTERS,
+        # ENABLE_LINTERS wins by default. Setting ENABLE_DISABLE_LINTERS_PRIORITY
+        # to DISABLE lets DISABLE_LINTERS override ENABLE_LINTERS instead, so an
+        # inherited (e.g. EXTENDS) ENABLE_LINTERS list can be trimmed locally.
+        disable_priority = (
+            params.get("enable_disable_linters_priority", "ENABLE") == "DISABLE"
+        )
+        in_enable_linters = self.name in params["enable_linters"]
+        in_disable_linters = self.name in params["disable_linters"]
         # Activate or not the linter
-        if self.name in params["enable_linters"]:
+        if in_enable_linters and not (in_disable_linters and disable_priority):
             self.is_active = True
             strategies["ENABLE_LINTERS"] = True
-        elif self.name in params["disable_linters"]:
+        elif in_disable_linters:
             self.is_active = False
             strategies["DISABLE_LINTERS"] = True
         elif self.descriptor_id in params["disable_descriptors"]:
@@ -453,7 +460,9 @@ class Linter:
             strategies["VALIDATE"] = True
         # check activation rules
         if self.is_active is True and len(self.activation_rules) > 0:
-            self.is_active = utils.check_activation_rules(self.activation_rules, self)
+            self.is_active, self.activation_skip_reason = utils.check_activation_rules(
+                self.activation_rules, self
+            )
 
         strategiesUsed = format(
             ", ".join("{0}".format(k) for k, v in strategies.items() if v)
@@ -829,11 +838,6 @@ class Linter:
         if config.exists(self.request_id, self.name + "_FILTER_REGEX_EXCLUDE"):
             self.filter_regex_exclude_linter = config.get(
                 self.request_id, self.name + "_FILTER_REGEX_EXCLUDE"
-            )
-        # Override default docker image version
-        if config.exists(self.request_id, self.name + "_DOCKER_IMAGE_VERSION"):
-            self.cli_docker_image_version = config.get(
-                self.request_id, self.name + "_DOCKER_IMAGE_VERSION"
             )
 
     # If linter is activated only if some file is found, and config file has been overridden
@@ -1398,38 +1402,6 @@ class Linter:
             reg = re.compile(reg)
         return reg
 
-    def manage_docker_command(self, command):
-        if self.cli_docker_image is None:
-            return command
-        docker_command = ["docker", "run", "--platform=linux/amd64", "--rm"]
-        if hasattr(self, "workspace"):
-            volume_root = config.get(self.request_id, "MEGALINTER_VOLUME_ROOT", "")
-            if volume_root != "":
-                workspace_value = (
-                    volume_root
-                    + "/"
-                    + self.workspace.replace(DEFAULT_DOCKER_WORKSPACE_DIR, "")
-                )
-            else:
-                workspace_value = self.workspace
-        else:
-            workspace_value = DEFAULT_DOCKER_WORKSPACE_DIR
-        docker_command += map(
-            lambda arg, w=workspace_value: arg.replace("{{WORKSPACE}}", w),
-            self.cli_docker_args,
-        )
-        docker_command += [
-            f"{self.cli_docker_image}:"
-            + f"{os.environ.get(self.cli_docker_image_version, self.cli_docker_image_version)}"
-        ]
-        if isinstance(command, str):
-            command = " ".join(docker_command) + " " + command
-        else:
-            command = (
-                docker_command + command
-            )  # ["ls", "-A", DEFAULT_DOCKER_WORKSPACE_DIR]
-        return command
-
     ########################################
     # Methods that can be overridden below #
     ########################################
@@ -1480,10 +1452,6 @@ class Linter:
         elif self.config_file is not None:
             # Config file
             self.final_config_file = self.config_file
-            if self.cli_docker_image is not None:
-                self.final_config_file = self.final_config_file.replace(
-                    self.workspace, DEFAULT_DOCKER_WORKSPACE_DIR
-                )
             if self.cli_config_arg_name.endswith(
                 "="
             ) or self.cli_config_arg_name.endswith(":"):
@@ -1551,7 +1519,7 @@ class Linter:
                 cmd += [self.files_separator.join(self.files)]
             else:
                 cmd += self.files
-        return self.manage_docker_command(cmd)
+        return cmd
 
     # Manage ignore arguments
     def get_ignore_arguments(self, cmd):
@@ -1563,10 +1531,6 @@ class Linter:
             and self.cli_lint_ignore_arg_name not in self.cli_lint_extra_args_after
         ):
             self.final_ignore_file = self.ignore_file
-            if self.cli_docker_image is not None:
-                self.final_ignore_file = self.final_ignore_file.replace(
-                    self.workspace, DEFAULT_DOCKER_WORKSPACE_DIR
-                )
             if self.cli_lint_ignore_arg_name.endswith("="):
                 ignore_args += [self.cli_lint_ignore_arg_name + self.final_ignore_file]
             elif self.cli_lint_ignore_arg_name != "":
@@ -1758,14 +1722,14 @@ class Linter:
         cmd += self.cli_version_extra_args
         if self.cli_version_arg_name != "":
             cmd += [self.cli_version_arg_name]
-        return self.manage_docker_command(cmd)
+        return cmd
 
     # Build the CLI command to get linter version (can be overridden if --version is not the way to get the version)
     def build_help_command(self):
         cmd = [*self.cli_executable_help]
         cmd += self.cli_help_extra_args
         cmd += [self.cli_help_arg_name]
-        return self.manage_docker_command(cmd)
+        return cmd
 
     # Provide additional details in text reporter logs
     # noinspection PyMethodMayBeStatic

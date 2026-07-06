@@ -57,7 +57,7 @@ ARG TARGETARCH
 # renovate: datasource=github-tags depName=sgerrand/alpine-pkg-glibc
 ARG ALPINE_GLIBC_PACKAGE_VERSION=2.34-r0
 # renovate: datasource=dart-version depName=dart
-ARG DART_VERSION='3.12.1'
+ARG DART_VERSION='3.12.2'
 #ARG__END
 
 ####################
@@ -84,6 +84,7 @@ RUN apk -U --no-cache upgrade \
                 make \
                 musl-dev \
                 openssh \
+                su-exec \
     && git config --global core.autocrlf true
 #APK__END
 
@@ -202,12 +203,22 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
   "linux/amd64")  DART_ARCH=x64   ;; \
   "linux/arm64")  DART_ARCH=arm64 ;; \
 esac \
-    && wget --tries=5 https://storage.googleapis.com/dart-archive/channels/stable/release/${DART_VERSION}/sdk/dartsdk-linux-${DART_ARCH}-release.zip -O - -q | unzip -q - \
+    && DART_URL="https://storage.googleapis.com/dart-archive/channels/stable/release/${DART_VERSION}/sdk/dartsdk-linux-${DART_ARCH}-release.zip" \
+    && for attempt in 1 2 3 4 5; do \
+         echo "Downloading Dart SDK (attempt ${attempt}/5)" \
+         && wget --tries=5 -T 60 -q -O /tmp/dart-sdk.zip "${DART_URL}" \
+         && unzip -tq /tmp/dart-sdk.zip > /dev/null 2>&1 \
+         && break; \
+         echo "Dart SDK download/verify failed (attempt ${attempt}/5), retrying in 15s" \
+         && rm -f /tmp/dart-sdk.zip \
+         && sleep 15; \
+       done \
+    && unzip -q /tmp/dart-sdk.zip -d /tmp \
     && mkdir -p /usr/lib/dart \
-    && mv dart-sdk/* /usr/lib/dart/ \
+    && mv /tmp/dart-sdk/* /usr/lib/dart/ \
     && chmod +x /usr/lib/dart/bin/dart \
     && chmod +x /usr/lib/dart/bin/dartaotruntime \
-    && rm -r dart-sdk/
+    && rm -rf /tmp/dart-sdk /tmp/dart-sdk.zip
 
 ENV PATH="/usr/lib/dart/bin:${PATH}"
 #OTHER__END
@@ -282,17 +293,23 @@ ENV ENABLE_LINTERS=DART_DARTANALYZER \
     FILEIO_REPORTER=false \
     CONFIG_REPORTER=false \
     SARIF_TO_HUMAN=false
-RUN mkdir /root/docker_ssh && mkdir /usr/bin/megalinter-sh
+RUN mkdir /tmp/docker_ssh && mkdir /usr/bin/megalinter-sh
 EXPOSE 22
 COPY entrypoint.sh /entrypoint.sh
 COPY sh /usr/bin/megalinter-sh
-COPY sh/megalinter_exec /usr/bin/megalinter_exec
+COPY sh/megalinter_exec.sh /usr/bin/megalinter_exec.sh
+COPY sh/setup-runtime-user.sh /usr/bin/setup-runtime-user.sh
 COPY sh/motd /etc/motd
 RUN find /usr/bin/megalinter-sh/ -type f -iname "*.sh" -exec chmod +x {} \; && \
     chmod +x entrypoint.sh && \
-    chmod +x /usr/bin/megalinter_exec && \
-    echo "alias megalinter='python -m megalinter.run'" >> ~/.bashrc && source ~/.bashrc && \
-    echo "alias megalinter_exec='/usr/bin/megalinter_exec'" >> ~/.bashrc && source ~/.bashrc
+    chmod +x /usr/bin/megalinter_exec.sh && \
+    chmod u+x /usr/bin/setup-runtime-user.sh && \
+    printf '%s\n' \
+      '#!/usr/bin/env sh' \
+      'exec python -m megalinter.run "$@"' \
+      > /usr/local/bin/megalinter && \
+    chmod u+x /usr/local/bin/megalinter && \
+    ln -sf /usr/bin/megalinter_exec.sh /usr/local/bin/megalinter_exec
 RUN export STANDALONE_LINTER_VERSION="$(python -m megalinter.run --input /tmp --linterversion)" && \
     echo $STANDALONE_LINTER_VERSION
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]

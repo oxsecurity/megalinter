@@ -54,7 +54,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=cspell
-          ARG NPM_CSPELL_VERSION=10.0.0
+          ARG NPM_CSPELL_VERSION=10.0.1
       npm:
         - "cspell@${NPM_CSPELL_VERSION}"
     supported_platforms:
@@ -75,7 +75,7 @@ linters:
       - ".md"
       - ".txt"
     active_only_if_file_found:
-      - .proselintrc
+      - .proselintrc.json
       - proselint/config.json
     linter_text: |
       **proselint** is a powerful linter for English prose that places the world's greatest writers and editors by your side, offering intelligent suggestions to improve your writing quality and style.
@@ -95,7 +95,7 @@ linters:
     linter_rules_url: https://github.com/amperser/proselint#checks
     linter_rules_configuration_url: https://github.com/amperser/proselint#checks
     cli_config_arg_name: --config
-    config_file_name: .proselintrc
+    config_file_name: .proselintrc.json
     cli_lint_mode: list_of_files
     supported_cli_lint_modes:
       - file
@@ -103,16 +103,29 @@ linters:
       - project
     cli_lint_mode_project_extra_args_after:
       - .
+    # proselint 0.16.0 moved linting under the `check` subcommand
+    # (`proselint check <files>`); the bare `proselint <files>` form was removed
+    cli_lint_extra_args:
+      - check
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: ":([0-9]+):([0-9]+): (.*)"
-    cli_version_arg_name: "-v"
+    # proselint 0.16.0 replaced `proselint -v` with the `version` subcommand
+    cli_version_arg_name: version
     examples:
-      - "proselint --config .proselintrc myfile.md myfile2.txt myfile3.rst"
+      - "proselint check --config .proselintrc.json myfile.md myfile2.txt myfile3.rst"
     install:
+      apk:
+        # proselint >=0.16.0 depends on google-re2, which has no musllinux
+        # wheel and must be compiled from source: needs a C++ toolchain
+        # (build-base), the system RE2 library headers (re2-dev, which also
+        # pulls abseil) and pybind11 headers (py3-pybind11-dev).
+        - build-base
+        - re2-dev
+        - py3-pybind11-dev
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=proselint
-          ARG PIP_PROSELINT_VERSION=0.14.0
+          ARG PIP_PROSELINT_VERSION=0.16.0
       pip:
         - proselint==${PIP_PROSELINT_VERSION}
     supported_platforms:
@@ -188,7 +201,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=jdkato/vale
-          ARG SPELL_VALE_VERSION=v3.14.2
+          ARG SPELL_VALE_VERSION=v3.15.1
         - FROM jdkato/vale:${SPELL_VALE_VERSION} AS vale
         - COPY --link --from=vale /bin/vale /bin/vale
     supported_platforms:

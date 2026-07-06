@@ -262,6 +262,10 @@ describe("CLI parsing — boolean flags", () => {
     assert.strictEqual(parse(["-u"]).upgrade, true);
   });
 
+  it("parses --no-prompt", () => {
+    assert.strictEqual(parse(["--no-prompt"]).prompt, false);
+  });
+
   it("parses --codetotal", () => {
     assert.strictEqual(parse(["--codetotal"]).codetotal, true);
   });
@@ -272,6 +276,7 @@ describe("CLI parsing — boolean flags", () => {
     assert.strictEqual(o.debug, undefined);
     assert.strictEqual(o.json, undefined);
     assert.strictEqual(o.upgrade, undefined);
+    assert.strictEqual(o.prompt, undefined);
   });
 });
 
@@ -304,6 +309,21 @@ describe("CLI parsing — container options", () => {
   it("parses --no-remove-container as removeContainer:false", () => {
     const o = parse(["--no-remove-container"]);
     assert.strictEqual(o.removeContainer, false);
+  });
+
+  it("leaves user-map unset by default", () => {
+    const o = parse([]);
+    assert.strictEqual(o.userMap, undefined);
+  });
+
+  it("parses --user-map", () => {
+    const o = parse(["--user-map"]);
+    assert.strictEqual(o.userMap, true);
+  });
+
+  it("parses --no-user-map", () => {
+    const o = parse(["--no-user-map"]);
+    assert.strictEqual(o.userMap, false);
   });
 });
 

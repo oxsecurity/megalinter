@@ -11,7 +11,7 @@ description: How to use lightning-flow-scanner (configure, ignore files, ignore 
   </a>
 </div>
 
-![disabled](https://shields.io/badge/-disabled-orange) [![GitHub stars](https://img.shields.io/github/stars/Flow-Scanner/lightning-flow-scanner-cli?cacheSeconds=3600)](https://github.com/Flow-Scanner/lightning-flow-scanner-cli) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Flow-Scanner/lightning-flow-scanner-cli?sort=semver)](https://github.com/Flow-Scanner/lightning-flow-scanner-cli/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/Flow-Scanner/lightning-flow-scanner-cli)](https://github.com/Flow-Scanner/lightning-flow-scanner-cli/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Flow-Scanner/lightning-flow-scanner-cli)](https://github.com/Flow-Scanner/lightning-flow-scanner-cli/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/Flow-Scanner/lightning-flow-scanner-cli)](https://github.com/Flow-Scanner/lightning-flow-scanner-cli/graphs/contributors/)
+<span title="Disabled: Repo archived -&gt; &lt;https://github.com/Lightning-Flow-Scanner&gt;">🚫</span> [![GitHub stars](https://img.shields.io/github/stars/Flow-Scanner/lightning-flow-scanner-cli?cacheSeconds=3600)](https://github.com/Flow-Scanner/lightning-flow-scanner-cli) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Flow-Scanner/lightning-flow-scanner-cli?sort=semver)](https://github.com/Flow-Scanner/lightning-flow-scanner-cli/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/Flow-Scanner/lightning-flow-scanner-cli)](https://github.com/Flow-Scanner/lightning-flow-scanner-cli/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Flow-Scanner/lightning-flow-scanner-cli)](https://github.com/Flow-Scanner/lightning-flow-scanner-cli/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/Flow-Scanner/lightning-flow-scanner-cli)](https://github.com/Flow-Scanner/lightning-flow-scanner-cli/graphs/contributors/)
 
 _This linter has been disabled in this version_
 
@@ -77,7 +77,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       136        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       124        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -137,13 +137,14 @@ GLOBAL FLAGS
 ```dockerfile
 # Parent descriptor install
 # renovate: datasource=npm depName=@salesforce/cli
-ARG NPM_SALESFORCE_CLI_VERSION=2.136.8
+ARG NPM_SALESFORCE_CLI_VERSION=2.141.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.28.3
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.30.1
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=7.15.0
+ARG SFDX_HARDIS_VERSION=7.19.0
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
+ENV XDG_DATA_HOME=/usr/local/share
 RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION} \
     && echo y|sf plugins install sfdx-hardis@${SFDX_HARDIS_VERSION} \
     && (npm cache clean --force || true) \

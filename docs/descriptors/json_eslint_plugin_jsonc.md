@@ -11,7 +11,7 @@ description: How to use eslint-plugin-jsonc (configure, ignore files, ignore err
   </a>
 </div>
 
-![disabled](https://shields.io/badge/-disabled-orange) ![deprecated](https://shields.io/badge/-deprecated-red) [![GitHub stars](https://img.shields.io/github/stars/ota-meshi/eslint-plugin-jsonc?cacheSeconds=3600)](https://github.com/ota-meshi/eslint-plugin-jsonc) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/ota-meshi/eslint-plugin-jsonc?sort=semver)](https://github.com/ota-meshi/eslint-plugin-jsonc/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/ota-meshi/eslint-plugin-jsonc)](https://github.com/ota-meshi/eslint-plugin-jsonc/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/ota-meshi/eslint-plugin-jsonc)](https://github.com/ota-meshi/eslint-plugin-jsonc/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/ota-meshi/eslint-plugin-jsonc)](https://github.com/ota-meshi/eslint-plugin-jsonc/graphs/contributors/)
+<span title="Disabled: Bug in eslint-plugin-jsonc: &lt;https://github.com/ota-meshi/eslint-plugin-jsonc/issues/328&gt;">🚫</span> <span title="Deprecated: Kept disabled due to a long-standing bug in eslint-plugin-jsonc (&lt;https://github.com/ota-meshi/eslint-plugin-jsonc/issues/328&gt;). Use JSON_PRETTIER or JSON_JSONLINT instead.">⚠️</span> [![GitHub stars](https://img.shields.io/github/stars/ota-meshi/eslint-plugin-jsonc?cacheSeconds=3600)](https://github.com/ota-meshi/eslint-plugin-jsonc) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/ota-meshi/eslint-plugin-jsonc?sort=semver)](https://github.com/ota-meshi/eslint-plugin-jsonc/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/ota-meshi/eslint-plugin-jsonc)](https://github.com/ota-meshi/eslint-plugin-jsonc/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/ota-meshi/eslint-plugin-jsonc)](https://github.com/ota-meshi/eslint-plugin-jsonc/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/ota-meshi/eslint-plugin-jsonc)](https://github.com/ota-meshi/eslint-plugin-jsonc/graphs/contributors/)
 
 > This linter has been deprecated.
 >
@@ -82,6 +82,19 @@ DISABLE_LINTERS:
     </pre>
     </details>
 
+- If you need to install your project dependencies before linting, use a pre-command. `npm` and `yarn` are pre-installed in the MegaLinter image; **pnpm** is not, but ships with Node via [Corepack](https://nodejs.org/api/corepack.html) — enable it first:
+
+  ```yaml
+  JSON_ESLINT_PLUGIN_JSONC_PRE_COMMANDS:
+    - command: corepack enable pnpm
+      cwd: workspace
+      continue_if_failed: false
+    - command: pnpm install --frozen-lockfile --ignore-scripts
+      cwd: workspace
+      continue_if_failed: false
+  JSON_ESLINT_PLUGIN_JSONC_CLI_EXECUTABLE: node_modules/.bin/eslint
+  ```
+
 ## eslint-plugin-jsonc documentation
 
 - Version in MegaLinter: **2.15.1**
@@ -133,7 +146,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       136        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       124        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -240,17 +253,17 @@ Miscellaneous:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=10.4.0
+ARG NPM_ESLINT_VERSION=10.6.0
 # renovate: datasource=npm depName=@eslint/eslintrc
 ARG NPM_ESLINT_ESLINTRC_VERSION=3.3.5
 # renovate: datasource=npm depName=eslint-plugin-jsonc
-ARG NPM_ESLINT_PLUGIN_JSONC_VERSION=3.1.2
+ARG NPM_ESLINT_PLUGIN_JSONC_VERSION=3.2.0
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 ```
 
 - NPM packages (node.js):
-  - [eslint@10.4.0](https://www.npmjs.com/package/eslint/v/10.4.0)
+  - [eslint@10.6.0](https://www.npmjs.com/package/eslint/v/10.6.0)
   - [@eslint/eslintrc](https://www.npmjs.com/package/@eslint/eslintrc)
   - [eslint-plugin-jsonc](https://www.npmjs.com/package/eslint-plugin-jsonc)
   - [@microsoft/eslint-formatter-sarif@3.1.0](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/3.1.0)

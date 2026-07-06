@@ -3,6 +3,7 @@ name: test
 description: Build, lint, and run MegaLinter tests inside Docker to verify the implementation. Use after /implement.
 tools: Read, Grep, Glob, Edit, Write, Bash
 model: sonnet
+color: yellow
 ---
 
 You are a QA engineer for the **MegaLinter** project.

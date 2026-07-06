@@ -26,7 +26,8 @@ install:
   dockerfile:
     - RUN update-alternatives --install /usr/bin/php php /usr/bin/php84 110
     - COPY --link --from=composer/composer:2-bin /composer /usr/bin/composer
-    - ENV PATH="/root/.composer/vendor/bin:${PATH}"
+    - ENV COMPOSER_HOME=/usr/local/composer
+    - ENV PATH="/usr/local/composer/vendor/bin:${PATH}"
 supported_platforms:
   platform:
     - linux/amd64
@@ -184,7 +185,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=packagist depName=phpstan/phpstan
-          ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.2.1
+          ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.2.5
         - |-
           # renovate: datasource=packagist depName=phpstan/extension-installer
           ARG PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION=1.4.3
@@ -324,7 +325,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=packagist depName=overtrue/phplint
-          ARG PHP_OVERTRUE_PHPLINT_VERSION=9.7.1
+          ARG PHP_OVERTRUE_PHPLINT_VERSION=9.7.2
         - |-
           # renovate: datasource=packagist depName=bartlett/sarif-php-converters
           ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.6.0
@@ -401,7 +402,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
-          ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.95.3
+          ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.95.11
         - |
           RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require friendsofphp/php-cs-fixer:${PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION} --with-all-dependencies
     ide:

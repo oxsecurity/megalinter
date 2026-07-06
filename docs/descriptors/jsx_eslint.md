@@ -60,9 +60,24 @@ JSX_ESLINT_CLI_EXECUTABLE: node_modules/.bin/eslint
 
 Replace `yarn install --frozen-lockfile --ignore-scripts` with `npm ci` (or `npm install --include=dev`) if your project uses npm.
 
+For **pnpm** — which is not pre-installed in the MegaLinter image but ships with Node via [Corepack](https://nodejs.org/api/corepack.html) — enable it first, then install:
+
+```yaml
+JSX_ESLINT_PRE_COMMANDS:
+  - command: corepack enable pnpm
+    cwd: workspace
+    continue_if_failed: false
+  - command: pnpm install --frozen-lockfile --ignore-scripts
+    cwd: workspace
+    continue_if_failed: false
+JSX_ESLINT_CLI_EXECUTABLE: node_modules/.bin/eslint
+```
+
+To add a single package with pnpm instead of installing the full tree, run `corepack enable pnpm` first, then `pnpm add --ignore-workspace --no-save <package>`.
+
 ## eslint documentation
 
-- Version in MegaLinter: **10.4.0**
+- Version in MegaLinter: **10.6.0**
 - Visit [Official Web Site](https://github.com/Rel1cx/eslint-react#readme){target=_blank}
 - See [How to configure eslint rules](https://eslint-react.xyz/docs/getting-started/installation){target=_blank}
 - See [How to disable eslint rules in files](https://eslint.org/docs/latest/use/configure/rules#disabling-rules){target=_blank}
@@ -117,10 +132,10 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                                              | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                                |       136        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                                |       124        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)       | MegaLinter for the most commonly used languages          |        92        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)   | Optimized for C, C++, C# or VB based projects with JS/TS |        76        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        62        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        63        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
 
 ## Behind the scenes
 
@@ -231,16 +246,16 @@ Miscellaneous:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=10.4.0
+ARG NPM_ESLINT_VERSION=10.6.0
 # renovate: datasource=npm depName=@eslint-react/eslint-plugin
-ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.8.5
+ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.10.1
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 ```
 
 - NPM packages (node.js):
-  - [eslint@10.4.0](https://www.npmjs.com/package/eslint/v/10.4.0)
-  - [@eslint-react/eslint-plugin@5.8.5](https://www.npmjs.com/package/@eslint-react/eslint-plugin/v/5.8.5)
+  - [eslint@10.6.0](https://www.npmjs.com/package/eslint/v/10.6.0)
+  - [@eslint-react/eslint-plugin@5.10.1](https://www.npmjs.com/package/@eslint-react/eslint-plugin/v/5.10.1)
   - [@microsoft/eslint-formatter-sarif@3.1.0](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/3.1.0)
 
 ## Known errors and resolutions

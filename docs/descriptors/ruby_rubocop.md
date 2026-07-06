@@ -27,7 +27,7 @@ description: How to use rubocop (configure, ignore files, ignore errors, help & 
 
 ## rubocop documentation
 
-- Version in MegaLinter: **1.86.2**
+- Version in MegaLinter: **1.88.1**
 - Visit [Official Web Site](https://rubocop.org/){target=_blank}
 - See [How to configure rubocop rules](https://docs.rubocop.org/rubocop/configuration.html){target=_blank}
   - If custom `.ruby-lint.yml` config file isn't found, [.ruby-lint.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruby-lint.yml){target=_blank} will be used
@@ -80,9 +80,9 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       136        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       124        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        92        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.io/beta/flavors/ruby/)       | Optimized for RUBY based projects               |        53        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.io/beta/flavors/ruby/)       | Optimized for RUBY based projects               |        54        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby) |
 
 ## Behind the scenes
 
@@ -129,6 +129,14 @@ Basic Options:
                                      containing offenses.
         --disable-pending-cops       Run without pending cops.
         --enable-pending-cops        Run with pending cops.
+        --disable-all-cops           Run with all cops disabled by default,
+                                     except `Lint/Syntax`. Overrides
+                                     `AllCops/EnabledByDefault` and
+                                     `AllCops/DisabledByDefault` in config files.
+        --enable-all-cops            Run with all cops enabled, including those
+                                     disabled by default. Overrides
+                                     `AllCops/EnabledByDefault` and
+                                     `AllCops/DisabledByDefault` in config files.
         --ignore-disable-comments    Report offenses even if they have been manually disabled
                                      with a `rubocop:disable` or `rubocop:todo` directive.
         --force-exclusion            Any files excluded by `Exclude` in configuration
@@ -304,26 +312,26 @@ Profiling Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=rubygems depName=rubocop
-ARG GEM_RUBOCOP_VERSION=1.86.2
+ARG GEM_RUBOCOP_VERSION=1.88.1
 # renovate: datasource=rubygems depName=rubocop-github
 ARG GEM_RUBOCOP_GITHUB_VERSION=0.27.0
 # renovate: datasource=rubygems depName=rubocop-performance
 ARG GEM_RUBOCOP_PERFORMANCE_VERSION=1.26.1
 # renovate: datasource=rubygems depName=rubocop-rails
-ARG GEM_RUBOCOP_RAILS_VERSION=2.35.3
+ARG GEM_RUBOCOP_RAILS_VERSION=2.35.5
 # renovate: datasource=rubygems depName=rubocop-rake
 ARG GEM_RUBOCOP_RAKE_VERSION=0.7.1
 # renovate: datasource=rubygems depName=rubocop-rspec
-ARG GEM_RUBOCOP_RSPEC_VERSION=3.9.0
+ARG GEM_RUBOCOP_RSPEC_VERSION=3.10.2
 ```
 
 - GEM packages (Ruby) :
-  - [rubocop:1.86.2](https://rubygems.org/gems/rubocop/versions/1.86.2)
+  - [rubocop:1.88.1](https://rubygems.org/gems/rubocop/versions/1.88.1)
   - [rubocop-github:0.27.0](https://rubygems.org/gems/rubocop-github/versions/0.27.0)
   - [rubocop-performance:1.26.1](https://rubygems.org/gems/rubocop-performance/versions/1.26.1)
-  - [rubocop-rails:2.35.3](https://rubygems.org/gems/rubocop-rails/versions/2.35.3)
+  - [rubocop-rails:2.35.5](https://rubygems.org/gems/rubocop-rails/versions/2.35.5)
   - [rubocop-rake:0.7.1](https://rubygems.org/gems/rubocop-rake/versions/0.7.1)
-  - [rubocop-rspec:3.9.0](https://rubygems.org/gems/rubocop-rspec/versions/3.9.0)
+  - [rubocop-rspec:3.10.2](https://rubygems.org/gems/rubocop-rspec/versions/3.10.2)
 
 ## Known errors and resolutions
 

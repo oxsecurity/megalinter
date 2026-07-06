@@ -1,4 +1,3 @@
-#! /usr/bin/env node
 import { MegaLinterRunner } from "./runner.js";
 import {optionsDefinition} from "./options.js";
 
