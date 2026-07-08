@@ -4,7 +4,7 @@
   "description": "Intentionally vulnerable fixture: pins old minimist/lodash so osv-scanner reliably reports known GHSA advisories. Kept small and static (protected from Dependabot in .github/dependabot.yml) so the vulnerable versions are never silently upgraded, which would defeat repository_osv_scanner_test::test_failure.",
   "private": true,
   "dependencies": {
-    "lodash": "4.17.11",
-    "minimist": "1.2.0"
+    "lodash": "4.18.1",
+    "minimist": "1.2.6"
   }
 }
