@@ -1,7 +1,7 @@
 import { optionsDefinition, KNOWN_CONTAINER_ENGINES } from "./options.js"
 import { expandEnvEntries } from "./env-parser.js";
 import { listVars } from "./list-vars.js";
-import { spawnSync } from "child_process";
+import { spawnSync, execFileSync } from "child_process";
 import { default as c } from 'chalk';
 import * as path from 'path';
 import { dirname } from 'path';
@@ -14,6 +14,12 @@ import { CodeTotalRunner } from "./codetotal.js";
 import { DEFAULT_RELEASE } from "./config.js";
 import { createEnv } from "yeoman-environment";
 import { default as FindPackageJson } from "find-package-json";
+
+function isSElinuxOn(): boolean {
+  return ["Enforcing", "Permissive"].includes(
+    execFileSync("getenforce", { encoding: "utf8" }).trim(),
+  );
+}
 
 export class MegaLinterRunner {
 
@@ -218,7 +224,14 @@ export class MegaLinterRunner {
     if (options["containerName"]) {
       commandArgs.push(...["--name", options["containerName"]]);
     }
-    commandArgs.push(...["-v", `${lintPath}:/tmp/lint:rw`]);
+    
+    if (isSElinuxOn()) {
+      commandArgs.push(...["-v", `${lintPath}:/tmp/lint:rw,z`]);
+    }
+    else {
+      commandArgs.push(...["-v", `${lintPath}:/tmp/lint:rw`]);
+    }
+    
     if (options["userMap"] === true) {
       const runtimeUid =
         typeof process.getuid === "function" ? process.getuid() : 1000;
@@ -229,8 +242,14 @@ export class MegaLinterRunner {
       commandArgs.push(...["-e", "HOME=/home/megalinter"]);
     }
     if (emptyEnvFile) {
-      commandArgs.push(...["-v", `${emptyEnvFile}:/tmp/lint/.env:ro`]);
+      if (isSElinuxOn()) {
+        commandArgs.push(...["-v", `${emptyEnvFile}:/tmp/lint/.env:ro,z`]);
+      }
+      else {
+        commandArgs.push(...["-v", `${emptyEnvFile}:/tmp/lint/.env:ro`]);
+      }
     }
+    
     if (options.fix === true) {
       commandArgs.push(...["-e", "APPLY_FIXES=all"]);
     }
