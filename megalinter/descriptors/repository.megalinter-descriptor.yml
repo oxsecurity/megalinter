@@ -1294,8 +1294,8 @@ linters:
     linter_url: https://github.com/mongodb/kingfisher
     linter_repo: https://github.com/mongodb/kingfisher
     linter_spdx_license: Apache-2.0
-    linter_rules_url: https://github.com/mongodb/kingfisher/tree/main/data/rules
-    linter_rules_inline_disable_url: https://github.com/mongodb/kingfisher?tab=readme-ov-file#inline-ignore-directives
+    linter_rules_url: https://mongodb.github.io/kingfisher/rules/builtin-rules
+    linter_rules_inline_disable_url: https://github.com/mongodb/kingfisher#filtering-and-suppression
     test_folder: repository_kingfisher
     cli_lint_mode: project
     cli_lint_extra_args:
