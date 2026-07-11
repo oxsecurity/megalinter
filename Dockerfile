@@ -1138,11 +1138,18 @@ RUN dotnet tool install --allow-roll-forward --tool-path /usr/local/dotnet-tools
     chmod +x /usr/bin/ls-lint \
 # osv-scanner installation
     && apk add --no-cache \
-    osv-scanner=${REPOSITORY_OSV_SCANNER_VERSION} \
+    osv-scanner=${REPOSITORY_OSV_SCANNER_VERSION}
 # secretlint installation
 # semgrep installation
+# Wrap semgrep so its OCaml 5 runtime does not abort with
+# "Failed to allocate signal stack for domain 0", which happens when the
+# stack rlimit is unlimited (the case on some CI runners). Cap it to a
+# finite value only when unlimited, leaving an already-bounded limit untouched.
+RUN mv /venvs/semgrep/bin/semgrep /venvs/semgrep/bin/semgrep-bin \
+    && printf '#!/bin/sh\ncase "$(ulimit -s)" in unlimited) ulimit -s 65536 ;; esac\nexec /venvs/semgrep/bin/semgrep-bin "$@"\n' > /venvs/semgrep/bin/semgrep \
+    && chmod +x /venvs/semgrep/bin/semgrep
 # syft installation
-    && curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOSITORY_SYFT_VERSION}/install.sh | sh -s -- -b /usr/local/bin \
+RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOSITORY_SYFT_VERSION}/install.sh | sh -s -- -b /usr/local/bin \
 # trivy installation
     && wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_VERSION}" \
     && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress) \

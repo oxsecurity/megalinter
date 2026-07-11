@@ -942,6 +942,14 @@ linters:
         - |-
           # renovate: datasource=pypi depName=semgrep
           ARG PIP_SEMGREP_VERSION=1.168.0
+        - |-
+          # Wrap semgrep so its OCaml 5 runtime does not abort with
+          # "Failed to allocate signal stack for domain 0", which happens when the
+          # stack rlimit is unlimited (the case on some CI runners). Cap it to a
+          # finite value only when unlimited, leaving an already-bounded limit untouched.
+          RUN mv /venvs/semgrep/bin/semgrep /venvs/semgrep/bin/semgrep-bin \
+              && printf '#!/bin/sh\\ncase "$(ulimit -s)" in unlimited) ulimit -s 65536 ;; esac\\nexec /venvs/semgrep/bin/semgrep-bin "$@"\\n' > /venvs/semgrep/bin/semgrep \
+              && chmod +x /venvs/semgrep/bin/semgrep
       pip:
         - semgrep==${PIP_SEMGREP_VERSION}
     variables:
