@@ -59,7 +59,7 @@ ARG PIP_CHECKOV_VERSION=3.3.6
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=26.1.2
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=21.5.1
+ARG PIP_VIRTUALENV_VERSION=21.5.2
 #ARG__END
 
 ####################

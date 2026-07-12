@@ -75,7 +75,7 @@ DEFAULT_DOCKERFILE_PIP_ARGS = [
 ]
 
 DEFAULT_DOCKERFILE_PIPENV_ARGS = [
-    "# renovate: datasource=pypi depName=virtualenv\nARG PIP_VIRTUALENV_VERSION=21.5.1",
+    "# renovate: datasource=pypi depName=virtualenv\nARG PIP_VIRTUALENV_VERSION=21.5.2",
 ]
 
 DEFAULT_DOCKERFILE_RUST_ARGS = [
