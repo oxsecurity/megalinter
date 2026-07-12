@@ -143,7 +143,7 @@ Before hand-editing the source yourself, check whether the failure belongs to on
 | Failure signal in the logs                                                                                                                                                                                                                  | Skill to invoke       | Argument to pass                                    |
 |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|-----------------------------------------------------|
 | A security/CVE scan flags a vulnerability — trivy, osv-scanner, grype, or the MegaLinter `REPOSITORY_TRIVY` / `REPOSITORY_OSV_SCANNER` / `REPOSITORY_GRYPE` linters reporting a `CVE-…` / `GHSA-…` against a pinned dependency              | `/fix-security-issue` | the CVE/GHSA id (or the affected package + version) |
-| A linter test under `megalinter/tests/test_megalinter/linters/` fails — an assertion in `test_success`, `test_failure`, `test_get_linter_version`, or `test_get_linter_help` (often a `cli_lint_errors_regex` / fixture / version mismatch) | `/fix-linter-test`    | the failing linter/test name (e.g. `python_ruff`)   |
+| A linter test under `megalinter/tests/test_megalinter/linters/` fails — an assertion in a `test_success_*_lint_mode` / `test_failure_*_lint_mode`, `test_get_linter_version`, or `test_get_linter_help` (often a `cli_lint_errors_regex` / fixture / version / `supported_cli_lint_modes` mismatch) | `/fix-linter-test`    | the failing linter/test name (e.g. `python_ruff`)   |
 
 Rules for delegating:
 

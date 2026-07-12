@@ -76,7 +76,8 @@ Fill in as many as applicable when creating or reviewing a descriptor:
 
 | Property                    | Description                                           |
 |-----------------------------|-------------------------------------------------------|
-| `cli_lint_mode`             | **Always set**: `file`, `list_of_files`, or `project` |
+| `cli_lint_mode`             | **Always set**: default mode `file`, `list_of_files`, or `project` |
+| `supported_cli_lint_modes`  | All modes the linter can run in (subset of `file`/`list_of_files`/`project`; default `["file"]`, must include `cli_lint_mode`). Tests run once per declared mode |
 | `cli_executable`            | Override if different from `linter_name`              |
 | `cli_executable_version`    | Override executable for `--version`                   |
 | `cli_executable_help`       | Override executable for `--help`                      |
