@@ -94,23 +94,23 @@ To add a single package with pnpm instead of installing the full tree, run `core
 
 - Enable **autofixes** by adding `TYPESCRIPT_ES` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
-| Variable                                  | Description                                                                                                                                                                                                         | Default value                                   |
-|-------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| TYPESCRIPT_ES_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
-| TYPESCRIPT_ES_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                                                 |
-| TYPESCRIPT_ES_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
-| TYPESCRIPT_ES_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
-| TYPESCRIPT_ES_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
-| TYPESCRIPT_ES_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".ts"]`                                       |
-| TYPESCRIPT_ES_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
-| TYPESCRIPT_ES_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
-| TYPESCRIPT_ES_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
-| TYPESCRIPT_ES_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling TYPESCRIPT_ES and its pre/post commands                                                                                                                | None                                            |
-| TYPESCRIPT_ES_CONFIG_FILE                 | eslint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                   | `eslint.config.js`                              |
-| TYPESCRIPT_ES_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
-| TYPESCRIPT_ES_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
-| TYPESCRIPT_ES_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
-| TYPESCRIPT_ES_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['eslint']`                                    |
+| Variable                               | Description                                                                                          | Default value |
+|----------------------------------------|------------------------------------------------------------------------------------------------------|---------------|
+| TYPESCRIPT_ES_ARGUMENTS                | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                             |               |
+| TYPESCRIPT_ES_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"` |               |
+| TYPESCRIPT_ES_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with TYPESCRIPT_ES_CLI_LINT_MODE = project 
+| TYPESCRIPT_ES_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` <br/>⚠️ Not available with TYPESCRIPT_ES_CLI_LINT_MODE = project 
+| TYPESCRIPT_ES_CLI_LINT_MODE | Override default CLI lint mode<br/><- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument- `project`: Call the linter from the root of the projectb- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument- `project`: Call the linter from the root of the projectr- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument- `project`: Call the linter from the root of the project/- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument- `project`: Call the linter from the root of the project> | `list_of_files` |
+| TYPESCRIPT_ES_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".ts"]` |
+| TYPESCRIPT_ES_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
+| TYPESCRIPT_ES_PRE_COMMANDS | List of bash commands to run before the linter| None |
+| TYPESCRIPT_ES_POST_COMMANDS | List of bash commands to run after the linter| None |
+| TYPESCRIPT_ES_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling TYPESCRIPT_ES and its pre/post commands| None |
+| TYPESCRIPT_ES_CONFIG_FILE | eslint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `eslint.config.js` |
+| TYPESCRIPT_ES_RULES_PATH | Path where to find linter configuration file | Workspace folder, then MegaLinter default rules |
+| TYPESCRIPT_ES_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
+| TYPESCRIPT_ES_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
+| TYPESCRIPT_ES_CLI_EXECUTABLE | Override CLI executable | `['eslint']` |
 
 ## IDE Integration
 
@@ -149,7 +149,10 @@ This linter is available in the following flavors
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- eslint is called once with the list of files as arguments (`list_of_files` CLI lint mode)
+eslint is called once on the whole project directory (`project` CLI lint mode)
+
+- filtering can not be done using MegaLinter configuration variables,it must be done using eslint configuration or ignore file (if existing)
+- `VALIDATE_ALL_CODEBASE: false` doesn't make eslint analyze only updated files
 
 ### Example calls
 
@@ -270,10 +273,8 @@ ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=7.3.0
 ARG NPM_PRETTIER_VERSION=3.9.4
 # renovate: datasource=npm depName=prettyjson
 ARG NPM_PRETTYJSON_VERSION=1.2.5
-# renovate: datasource=npm depName=@typescript-eslint/eslint-plugin
-ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.62.1
-# renovate: datasource=npm depName=@typescript-eslint/parser
-ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.62.1
+# renovate: datasource=npm depName=typescript-eslint
+ARG NPM_TYPESCRIPT_ESLINT_VERSION=8.62.1
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 ```
@@ -290,8 +291,7 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
   - [eslint-plugin-promise@7.3.0](https://www.npmjs.com/package/eslint-plugin-promise/v/7.3.0)
   - [prettier@3.9.4](https://www.npmjs.com/package/prettier/v/3.9.4)
   - [prettyjson@1.2.5](https://www.npmjs.com/package/prettyjson/v/1.2.5)
-  - [@typescript-eslint/eslint-plugin@8.62.1](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin/v/8.62.1)
-  - [@typescript-eslint/parser@8.62.1](https://www.npmjs.com/package/@typescript-eslint/parser/v/8.62.1)
+  - [typescript-eslint@8.62.1](https://www.npmjs.com/package/typescript-eslint/v/8.62.1)
   - [@microsoft/eslint-formatter-sarif@3.1.0](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/3.1.0)
 
 ## Known errors and resolutions

@@ -44,23 +44,23 @@ description: How to use isort (configure, ignore files, ignore errors, help & ve
 
 - Enable **autofixes** by adding `PYTHON_ISORT` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
-| Variable                                 | Description                                                                                                                                                                                                         | Default value                                   |
-|------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| PYTHON_ISORT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
-| PYTHON_ISORT_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                                                 |
-| PYTHON_ISORT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
-| PYTHON_ISORT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
-| PYTHON_ISORT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
-| PYTHON_ISORT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".py", ".pyi", ".pyx", ".pxd"]`               |
-| PYTHON_ISORT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
-| PYTHON_ISORT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
-| PYTHON_ISORT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
-| PYTHON_ISORT_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling PYTHON_ISORT and its pre/post commands                                                                                                                 | None                                            |
-| PYTHON_ISORT_CONFIG_FILE                 | isort configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                    | `.isort.cfg`                                    |
-| PYTHON_ISORT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
-| PYTHON_ISORT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `true`                                          |
-| PYTHON_ISORT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
-| PYTHON_ISORT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['isort']`                                     |
+| Variable                              | Description                                                                                          | Default value |
+|---------------------------------------|------------------------------------------------------------------------------------------------------|---------------|
+| PYTHON_ISORT_ARGUMENTS                | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                             |               |
+| PYTHON_ISORT_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"` |               |
+| PYTHON_ISORT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with PYTHON_ISORT_CLI_LINT_MODE = project 
+| PYTHON_ISORT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` <br/>⚠️ Not available with PYTHON_ISORT_CLI_LINT_MODE = project 
+| PYTHON_ISORT_CLI_LINT_MODE | Override default CLI lint mode<br/><- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument- `project`: Call the linter from the root of the projectb- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument- `project`: Call the linter from the root of the projectr- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument- `project`: Call the linter from the root of the project/- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument- `project`: Call the linter from the root of the project> | `list_of_files` |
+| PYTHON_ISORT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".py", ".pyi", ".pyx", ".pxd"]` |
+| PYTHON_ISORT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
+| PYTHON_ISORT_PRE_COMMANDS | List of bash commands to run before the linter| None |
+| PYTHON_ISORT_POST_COMMANDS | List of bash commands to run after the linter| None |
+| PYTHON_ISORT_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling PYTHON_ISORT and its pre/post commands| None |
+| PYTHON_ISORT_CONFIG_FILE | isort configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.isort.cfg` |
+| PYTHON_ISORT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then MegaLinter default rules |
+| PYTHON_ISORT_DISABLE_ERRORS | Run linter but consider errors as warnings | `true` |
+| PYTHON_ISORT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
+| PYTHON_ISORT_CLI_EXECUTABLE | Override CLI executable | `['isort']` |
 
 ## IDE Integration
 
@@ -94,7 +94,10 @@ This linter is available in the following flavors
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- isort is called once with the list of files as arguments (`list_of_files` CLI lint mode)
+isort is called once on the whole project directory (`project` CLI lint mode)
+
+- filtering can not be done using MegaLinter configuration variables,it must be done using isort configuration or ignore file (if existing)
+- `VALIDATE_ALL_CODEBASE: false` doesn't make isort analyze only updated files
 
 ### Example calls
 

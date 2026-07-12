@@ -48,20 +48,22 @@ If your root folder is not **force-app**, please set variable SALESFORCE_LIGHTNI
 - Enable lightning-flow-scanner by adding `SALESFORCE_LIGHTNING_FLOW_SCANNER` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable lightning-flow-scanner by adding `SALESFORCE_LIGHTNING_FLOW_SCANNER` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                                      | Description                                                                                                                                                                                                                                                                           | Default value                                   |
-|---------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| SALESFORCE_LIGHTNING_FLOW_SCANNER_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                                              |                                                 |
-| SALESFORCE_LIGHTNING_FLOW_SCANNER_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                  |                                                 |
-| SALESFORCE_LIGHTNING_FLOW_SCANNER_CLI_LINT_MODE               | Override default CLI lint mode<br/>⚠️ As default value is **project**, overriding might not work<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `project`                                       |
-| SALESFORCE_LIGHTNING_FLOW_SCANNER_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                                                                                        | None                                            |
-| SALESFORCE_LIGHTNING_FLOW_SCANNER_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                                                                                         | None                                            |
-| SALESFORCE_LIGHTNING_FLOW_SCANNER_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling SALESFORCE_LIGHTNING_FLOW_SCANNER and its pre/post commands                                                                                                                                                              | None                                            |
-| SALESFORCE_LIGHTNING_FLOW_SCANNER_CONFIG_FILE                 | lightning-flow-scanner configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                                                                     | `.flow-scanner.json`                            |
-| SALESFORCE_LIGHTNING_FLOW_SCANNER_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                                                                                          | Workspace folder, then MegaLinter default rules |
-| SALESFORCE_LIGHTNING_FLOW_SCANNER_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                                                                                            | `false`                                         |
-| SALESFORCE_LIGHTNING_FLOW_SCANNER_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                                                                                      | `0`                                             |
-| SALESFORCE_LIGHTNING_FLOW_SCANNER_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                                                                                               | `['sf']`                                        |
-| SALESFORCE_DIRECTORY                                          | Directory containing SALESFORCE files (use `any` to always activate the linter)                                                                                                                                                                                                       | `force-app`                                     |
+| Variable                                                   | Description                                                                                          | Default value |
+|------------------------------------------------------------|------------------------------------------------------------------------------------------------------|---------------|
+| SALESFORCE_LIGHTNING_FLOW_SCANNER_ARGUMENTS                | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                             |               |
+| SALESFORCE_LIGHTNING_FLOW_SCANNER_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"` |               |
+| SALESFORCE_LIGHTNING_FLOW_SCANNER_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with SALESFORCE_LIGHTNING_FLOW_SCANNER_CLI_LINT_MODE = project 
+| SALESFORCE_LIGHTNING_FLOW_SCANNER_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` <br/>⚠️ Not available with SALESFORCE_LIGHTNING_FLOW_SCANNER_CLI_LINT_MODE = project 
+| SALESFORCE_LIGHTNING_FLOW_SCANNER_CLI_LINT_MODE | Override default CLI lint mode<br/><- `project`: Call the linter from the root of the projectb- `project`: Call the linter from the root of the projectr- `project`: Call the linter from the root of the project/- `project`: Call the linter from the root of the project> | `project` |
+| SALESFORCE_LIGHTNING_FLOW_SCANNER_PRE_COMMANDS | List of bash commands to run before the linter| None |
+| SALESFORCE_LIGHTNING_FLOW_SCANNER_POST_COMMANDS | List of bash commands to run after the linter| None |
+| SALESFORCE_LIGHTNING_FLOW_SCANNER_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling SALESFORCE_LIGHTNING_FLOW_SCANNER and its pre/post commands| None |
+| SALESFORCE_LIGHTNING_FLOW_SCANNER_CONFIG_FILE | lightning-flow-scanner configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.flow-scanner.json` |
+| SALESFORCE_LIGHTNING_FLOW_SCANNER_RULES_PATH | Path where to find linter configuration file | Workspace folder, then MegaLinter default rules |
+| SALESFORCE_LIGHTNING_FLOW_SCANNER_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
+| SALESFORCE_LIGHTNING_FLOW_SCANNER_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
+| SALESFORCE_LIGHTNING_FLOW_SCANNER_CLI_EXECUTABLE | Override CLI executable | `['sf']` |
+| SALESFORCE_DIRECTORY | Directory containing SALESFORCE files (use `any` to always activate the linter)| `force-app` |
 
 ## IDE Integration
 
@@ -141,7 +143,7 @@ ARG NPM_SALESFORCE_CLI_VERSION=2.141.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.30.1
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=7.19.0
+ARG SFDX_HARDIS_VERSION=7.19.2
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 ENV XDG_DATA_HOME=/usr/local/share
@@ -152,7 +154,7 @@ RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACK
 ENV SF_AUTOUPDATE_DISABLE=true SF_CLI_DISABLE_AUTOUPDATE=true
 # Linter install
 # renovate: datasource=npm depName=lightning-flow-scanner
-ARG LIGHTNING_FLOW_SCANNER_VERSION=6.19.3
+ARG LIGHTNING_FLOW_SCANNER_VERSION=6.19.4
 RUN echo y|sf plugins install lightning-flow-scanner@${LIGHTNING_FLOW_SCANNER_VERSION} \
     && (npm cache clean --force || true) \
     && rm -rf /root/.npm/_cacache

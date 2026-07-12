@@ -87,6 +87,18 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 2.2.4 to **2.2.5** on 2026-07-05
   - [secretlint](https://github.com/secretlint/secretlint) from 11.7.1 to **13.0.2** on 2026-07-05
   - [proselint](https://github.com/amperser/proselint) from 0.14.0 to **0.16.0** on 2026-07-05
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.44.1 to **0.45.6** on 2026-07-12
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.52.1 to **1.53.0** on 2026-07-12
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 5.0.11 to **5.0.12** on 2026-07-12
+  - [djlint](https://djlint.com/) from 1.40.3 to **1.40.4** on 2026-07-12
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.11 to **3.95.13** on 2026-07-12
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.20 to **0.15.21** on 2026-07-12
+  - [ruff](https://github.com/astral-sh/ruff) from 0.15.20 to **0.15.21** on 2026-07-12
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.105.0 to **1.106.0** on 2026-07-12
+  - [semgrep](https://semgrep.dev/) from 1.168.0 to **1.169.0** on 2026-07-12
+  - [rubocop](https://rubocop.org/) from 1.88.1 to **1.88.2** on 2026-07-12
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.96 to **0.1.97** on 2026-07-12
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.15.7 to **1.15.8** on 2026-07-12
 <!-- linter-versions-end -->
 
 ## [v9.6.0] - 2026-06-28
