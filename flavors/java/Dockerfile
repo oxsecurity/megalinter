@@ -126,7 +126,7 @@ ARG CLJ_KONDO_VERSION=2025.01.16
 # renovate: datasource=github-tags depName=greglook/cljstyle
 ARG CLJ_STYLE_VERSION=0.17.642
 # renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=5.0.11
+ARG NPM_JSCPD_VERSION=5.0.12
 # renovate: datasource=npm depName=stylelint
 ARG NPM_STYLELINT_VERSION=17.14.0
 # renovate: datasource=npm depName=stylelint-config-standard
