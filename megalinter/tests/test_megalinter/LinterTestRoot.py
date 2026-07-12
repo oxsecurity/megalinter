@@ -55,10 +55,7 @@ class LinterTestRoot:
             raise unittest.SkipTest(f"Linter does not support lint_mode: {mode}")
         # CI optimization: when a linter supports both file and list_of_files,
         # skip the slower per-file mode since list_of_files covers the same code path
-        if (
-            mode == "file"
-            and "list_of_files" in probe_linter.supported_cli_lint_modes
-        ):
+        if mode == "file" and "list_of_files" in probe_linter.supported_cli_lint_modes:
             raise unittest.SkipTest(
                 "Skipping file lint_mode: covered by list_of_files (CI optimization)"
             )
