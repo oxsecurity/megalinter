@@ -12684,8 +12684,18 @@
 <td></td>
 </tr>
 <tr>
+<td>REPOSITORY_TRIVY_SBOM_FILTER_REGEX_INCLUDE</td>
+<td>Custom regex including filter<br>Ex: <code>(src\|lib)</code><br>⚠️ Not available with REPOSITORY_TRIVY_SBOM_CLI_LINT_MODE = project</td>
+<td></td>
+</tr>
+<tr>
+<td>REPOSITORY_TRIVY_SBOM_FILTER_REGEX_EXCLUDE</td>
+<td>Custom regex excluding filter<br>Ex: <code>(test\|examples)</code> <br>⚠️ Not available with REPOSITORY_TRIVY_SBOM_CLI_LINT_MODE = project</td>
+<td></td>
+</tr>
+<tr>
 <td>REPOSITORY_TRIVY_SBOM_CLI_LINT_MODE</td>
-<td>Override default CLI lint mode<br>⚠️ As default value is <strong>project</strong>, overriding might not work<br>- <code>file</code>: Calls the linter for each file<br>- <code>list_of_files</code>: Call the linter with the list of files as argument<br>- <code>project</code>: Call the linter from the root of the project</td>
+<td>Override default CLI lint mode<br>&lt;- <code>file</code>: Calls the linter for each file- <code>project</code>: Call the linter from the root of the projectb- <code>file</code>: Calls the linter for each file- <code>project</code>: Call the linter from the root of the projectr- <code>file</code>: Calls the linter for each file- <code>project</code>: Call the linter from the root of the project/- <code>file</code>: Calls the linter for each file- <code>project</code>: Call the linter from the root of the project&gt;</td>
 <td><code>project</code></td>
 </tr>
 <tr>

@@ -12820,17 +12820,17 @@ JSX_ESLINT_CLI_EXECUTABLE: node_modules/.bin/eslint
 </tr>
 <tr>
 <td>JSX_ESLINT_FILTER_REGEX_INCLUDE</td>
-<td>Custom regex including filter<br>Ex: <code>(src\|lib)</code></td>
-<td>Include every file</td>
+<td>Custom regex including filter<br>Ex: <code>(src\|lib)</code><br>⚠️ Not available with JSX_ESLINT_CLI_LINT_MODE = project</td>
+<td></td>
 </tr>
 <tr>
 <td>JSX_ESLINT_FILTER_REGEX_EXCLUDE</td>
-<td>Custom regex excluding filter<br>Ex: <code>(test\|examples)</code></td>
-<td>Exclude no file</td>
+<td>Custom regex excluding filter<br>Ex: <code>(test\|examples)</code> <br>⚠️ Not available with JSX_ESLINT_CLI_LINT_MODE = project</td>
+<td></td>
 </tr>
 <tr>
 <td>JSX_ESLINT_CLI_LINT_MODE</td>
-<td>Override default CLI lint mode<br>- <code>file</code>: Calls the linter for each file<br>- <code>list_of_files</code>: Call the linter with the list of files as argument<br>- <code>project</code>: Call the linter from the root of the project</td>
+<td>Override default CLI lint mode<br>&lt;- <code>file</code>: Calls the linter for each file- <code>list_of_files</code>: Call the linter with the list of files as argument- <code>project</code>: Call the linter from the root of the projectb- <code>file</code>: Calls the linter for each file- <code>list_of_files</code>: Call the linter with the list of files as argument- <code>project</code>: Call the linter from the root of the projectr- <code>file</code>: Calls the linter for each file- <code>list_of_files</code>: Call the linter with the list of files as argument- <code>project</code>: Call the linter from the root of the project/- <code>file</code>: Calls the linter for each file- <code>list_of_files</code>: Call the linter with the list of files as argument- <code>project</code>: Call the linter from the root of the project&gt;</td>
 <td><code>list_of_files</code></td>
 </tr>
 <tr>
@@ -12999,8 +12999,10 @@ JSX_ESLINT_CLI_EXECUTABLE: node_modules/.bin/eslint
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 <h3 id="how-the-linting-is-performed">How the linting is performed</h3>
+<p>eslint is called once on the whole project directory (<code>project</code> CLI lint mode)</p>
 <ul>
-<li>eslint is called once with the list of files as arguments (<code>list_of_files</code> CLI lint mode)</li>
+<li>filtering can not be done using MegaLinter configuration variables,it must be done using eslint configuration or ignore file (if existing)</li>
+<li><code>VALIDATE_ALL_CODEBASE: false</code> doesn't make eslint analyze only updated files</li>
 </ul>
 <h3 id="example-calls">Example calls</h3>
 <pre><code class="language-shell">eslint myfile.jsx
@@ -13089,14 +13091,14 @@ Miscellaneous:
 <pre><code class="language-dockerfile"># renovate: datasource=npm depName=eslint
 ARG NPM_ESLINT_VERSION=10.6.0
 # renovate: datasource=npm depName=@eslint-react/eslint-plugin
-ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.10.1
+ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.13.2
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 </code></pre>
 <ul>
 <li>NPM packages (node.js):<ul>
 <li><a href="https://www.npmjs.com/package/eslint/v/10.6.0">eslint@10.6.0</a></li>
-<li><a href="https://www.npmjs.com/package/@eslint-react/eslint-plugin/v/5.10.1">@eslint-react/eslint-plugin@5.10.1</a></li>
+<li><a href="https://www.npmjs.com/package/@eslint-react/eslint-plugin/v/5.13.2">@eslint-react/eslint-plugin@5.13.2</a></li>
 <li><a href="https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/3.1.0">@microsoft/eslint-formatter-sarif@3.1.0</a></li>
 </ul>
 </li>

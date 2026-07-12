@@ -12576,7 +12576,7 @@ Exception for standalone and security flavors docker images, that use a list of 
 </ul>
 <h2 id="semgrep-documentation">semgrep documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.168.0</strong></li>
+<li>Version in MegaLinter: <strong>1.169.0</strong></li>
 <li>Visit <a href="https://semgrep.dev/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://semgrep.dev/docs/running-rules/" target="_blank">How to configure semgrep rules</a></li>
 <li>See <a href="https://semgrep.dev/docs/ignoring-findings/#inline-comments" target="_blank">How to disable semgrep rules in files</a></li>
@@ -12622,8 +12622,18 @@ Exception for standalone and security flavors docker images, that use a list of 
 <td></td>
 </tr>
 <tr>
+<td>REPOSITORY_SEMGREP_FILTER_REGEX_INCLUDE</td>
+<td>Custom regex including filter<br>Ex: <code>(src\|lib)</code><br>⚠️ Not available with REPOSITORY_SEMGREP_CLI_LINT_MODE = project</td>
+<td></td>
+</tr>
+<tr>
+<td>REPOSITORY_SEMGREP_FILTER_REGEX_EXCLUDE</td>
+<td>Custom regex excluding filter<br>Ex: <code>(test\|examples)</code> <br>⚠️ Not available with REPOSITORY_SEMGREP_CLI_LINT_MODE = project</td>
+<td></td>
+</tr>
+<tr>
 <td>REPOSITORY_SEMGREP_CLI_LINT_MODE</td>
-<td>Override default CLI lint mode<br>⚠️ As default value is <strong>project</strong>, overriding might not work<br>- <code>file</code>: Calls the linter for each file<br>- <code>list_of_files</code>: Call the linter with the list of files as argument<br>- <code>project</code>: Call the linter from the root of the project</td>
+<td>Override default CLI lint mode<br>&lt;- <code>file</code>: Calls the linter for each file- <code>list_of_files</code>: Call the linter with the list of files as argument- <code>project</code>: Call the linter from the root of the projectb- <code>file</code>: Calls the linter for each file- <code>list_of_files</code>: Call the linter with the list of files as argument- <code>project</code>: Call the linter from the root of the projectr- <code>file</code>: Calls the linter for each file- <code>list_of_files</code>: Call the linter with the list of files as argument- <code>project</code>: Call the linter from the root of the project/- <code>file</code>: Calls the linter for each file- <code>list_of_files</code>: Call the linter with the list of files as argument- <code>project</code>: Call the linter from the root of the project&gt;</td>
 <td><code>project</code></td>
 </tr>
 <tr>
@@ -13482,11 +13492,18 @@ BUGS
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.168.0
+ARG PIP_SEMGREP_VERSION=1.169.0
+# Wrap semgrep so its OCaml 5 runtime does not abort with
+# "Failed to allocate signal stack for domain 0", which happens when the
+# stack rlimit is unlimited (the case on some CI runners). Cap it to a
+# finite value only when unlimited, leaving an already-bounded limit untouched.
+RUN mv /venvs/semgrep/bin/semgrep /venvs/semgrep/bin/semgrep-bin \
+    &amp;&amp; printf '#!/bin/sh\\ncase "$(ulimit -s)" in unlimited) ulimit -s 65536 ;; esac\\nexec /venvs/semgrep/bin/semgrep-bin "$@"\\n' &gt; /venvs/semgrep/bin/semgrep \
+    &amp;&amp; chmod +x /venvs/semgrep/bin/semgrep
 </code></pre>
 <ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/semgrep/1.168.0">semgrep==1.168.0</a></li>
+<li><a href="https://pypi.org/project/semgrep/1.169.0">semgrep==1.169.0</a></li>
 </ul>
 </li>
 </ul>

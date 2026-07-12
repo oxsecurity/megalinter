@@ -12571,7 +12571,7 @@
 </ul>
 <h2 id="ruff-format-documentation">ruff-format documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.15.20</strong></li>
+<li>Version in MegaLinter: <strong>0.15.21</strong></li>
 <li>Visit <a href="https://github.com/astral-sh/ruff#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://docs.astral.sh/ruff/configuration/" target="_blank">How to configure ruff-format rules</a><ul>
 <li>If custom <code>.ruff.toml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruff.toml" target="_blank">.ruff.toml</a> will be used</li>
@@ -12612,17 +12612,17 @@
 </tr>
 <tr>
 <td>PYTHON_RUFF_FORMAT_FILTER_REGEX_INCLUDE</td>
-<td>Custom regex including filter<br>Ex: <code>(src\|lib)</code></td>
-<td>Include every file</td>
+<td>Custom regex including filter<br>Ex: <code>(src\|lib)</code><br>⚠️ Not available with PYTHON_RUFF_FORMAT_CLI_LINT_MODE = project</td>
+<td></td>
 </tr>
 <tr>
 <td>PYTHON_RUFF_FORMAT_FILTER_REGEX_EXCLUDE</td>
-<td>Custom regex excluding filter<br>Ex: <code>(test\|examples)</code></td>
-<td>Exclude no file</td>
+<td>Custom regex excluding filter<br>Ex: <code>(test\|examples)</code> <br>⚠️ Not available with PYTHON_RUFF_FORMAT_CLI_LINT_MODE = project</td>
+<td></td>
 </tr>
 <tr>
 <td>PYTHON_RUFF_FORMAT_CLI_LINT_MODE</td>
-<td>Override default CLI lint mode<br>- <code>file</code>: Calls the linter for each file<br>- <code>list_of_files</code>: Call the linter with the list of files as argument<br>- <code>project</code>: Call the linter from the root of the project</td>
+<td>Override default CLI lint mode<br>&lt;- <code>file</code>: Calls the linter for each file- <code>list_of_files</code>: Call the linter with the list of files as argument- <code>project</code>: Call the linter from the root of the projectb- <code>file</code>: Calls the linter for each file- <code>list_of_files</code>: Call the linter with the list of files as argument- <code>project</code>: Call the linter from the root of the projectr- <code>file</code>: Calls the linter for each file- <code>list_of_files</code>: Call the linter with the list of files as argument- <code>project</code>: Call the linter from the root of the project/- <code>file</code>: Calls the linter for each file- <code>list_of_files</code>: Call the linter with the list of files as argument- <code>project</code>: Call the linter from the root of the project&gt;</td>
 <td><code>list_of_files</code></td>
 </tr>
 <tr>
@@ -12754,8 +12754,10 @@
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 <h3 id="how-the-linting-is-performed">How the linting is performed</h3>
+<p>ruff-format is called once on the whole project directory (<code>project</code> CLI lint mode)</p>
 <ul>
-<li>ruff-format is called once with the list of files as arguments (<code>list_of_files</code> CLI lint mode)</li>
+<li>filtering can not be done using MegaLinter configuration variables,it must be done using ruff-format configuration or ignore file (if existing)</li>
+<li><code>VALIDATE_ALL_CODEBASE: false</code> doesn't make ruff-format analyze only updated files</li>
 </ul>
 <h3 id="example-calls">Example calls</h3>
 <pre><code class="language-shell">ruff format --check myfile.py myfile2.py
@@ -12823,11 +12825,11 @@ For help with a specific command, see: `ruff help &lt;command&gt;`.
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.15.20
+ARG PIP_RUFF_VERSION=0.15.21
 </code></pre>
 <ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/ruff/0.15.20">ruff==0.15.20</a></li>
+<li><a href="https://pypi.org/project/ruff/0.15.21">ruff==0.15.21</a></li>
 </ul>
 </li>
 </ul>

@@ -12607,24 +12607,24 @@
 <td></td>
 </tr>
 <tr>
-<td>BASH_SHFMT_FILTER_REGEX_INCLUDE</td>
-<td>Custom regex including filter<br>Ex: <code>(src\|lib)</code></td>
 <td>Include every file</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
-<td>BASH_SHFMT_FILTER_REGEX_EXCLUDE</td>
-<td>Custom regex excluding filter<br>Ex: <code>(test\|examples)</code></td>
 <td>Exclude no file</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>BASH_SHFMT_CLI_LINT_MODE</td>
-<td>Override default CLI lint mode<br>- <code>file</code>: Calls the linter for each file<br>- <code>list_of_files</code>: Call the linter with the list of files as argument<br>- <code>project</code>: Call the linter from the root of the project</td>
+<td>Override default CLI lint mode<br>&lt;- <code>file</code>: Calls the linter for each fileb- <code>file</code>: Calls the linter for each filer- <code>file</code>: Calls the linter for each file/- <code>file</code>: Calls the linter for each file&gt;</td>
 <td><code>list_of_files</code></td>
 </tr>
 <tr>
 <td>BASH_SHFMT_FILE_EXTENSIONS</td>
 <td>Allowed file extensions. <code>"*"</code> matches any extension, <code>""</code> matches empty extension. Empty list excludes all files<br>Ex: <code>[".py", ""]</code></td>
-<td><code>["", ".sh", ".bash", ".dash", ".ksh"]</code></td>
+<td><code>[".sh", ".bash", ".dash", ".ksh"]</code></td>
 </tr>
 <tr>
 <td>BASH_SHFMT_FILE_NAMES_REGEX</td>
@@ -12857,14 +12857,14 @@
 <h2 id="behind-the-scenes">Behind the scenes</h2>
 <h3 id="how-are-identified-applicable-files">How are identified applicable files</h3>
 <ul>
-<li>File extensions: <code>`,</code>.sh<code>,</code>.bash<code>,</code>.dash<code>,</code>.ksh`</li>
+<li>File extensions: <code>.sh</code>, <code>.bash</code>, <code>.dash</code>, <code>.ksh</code></li>
 <li>Detected file content (regex): <code>^#!/usr/bin/env bash</code>, <code>^#!/bin/bash</code>, <code>^#!/bin/sh</code></li>
 </ul>
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 <h3 id="how-the-linting-is-performed">How the linting is performed</h3>
 <ul>
-<li>shfmt is called once with the list of files as arguments (<code>list_of_files</code> CLI lint mode)</li>
+<li>shfmt is called one time by identified file (<code>file</code> CLI lint mode)</li>
 </ul>
 <h3 id="example-calls">Example calls</h3>
 <pre><code class="language-shell">shfmt -d myfile.sh

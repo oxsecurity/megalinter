@@ -12760,17 +12760,17 @@ JSON_ESLINT_PLUGIN_JSONC_CLI_EXECUTABLE: node_modules/.bin/eslint</code></p>
 </tr>
 <tr>
 <td>JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_INCLUDE</td>
-<td>Custom regex including filter<br>Ex: <code>(src\|lib)</code></td>
-<td>Include every file</td>
+<td>Custom regex including filter<br>Ex: <code>(src\|lib)</code><br>⚠️ Not available with JSON_ESLINT_PLUGIN_JSONC_CLI_LINT_MODE = project</td>
+<td></td>
 </tr>
 <tr>
 <td>JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_EXCLUDE</td>
-<td>Custom regex excluding filter<br>Ex: <code>(test\|examples)</code></td>
-<td>Exclude no file</td>
+<td>Custom regex excluding filter<br>Ex: <code>(test\|examples)</code> <br>⚠️ Not available with JSON_ESLINT_PLUGIN_JSONC_CLI_LINT_MODE = project</td>
+<td></td>
 </tr>
 <tr>
 <td>JSON_ESLINT_PLUGIN_JSONC_CLI_LINT_MODE</td>
-<td>Override default CLI lint mode<br>- <code>file</code>: Calls the linter for each file<br>- <code>list_of_files</code>: Call the linter with the list of files as argument<br>- <code>project</code>: Call the linter from the root of the project</td>
+<td>Override default CLI lint mode<br>&lt;- <code>file</code>: Calls the linter for each file- <code>list_of_files</code>: Call the linter with the list of files as argument- <code>project</code>: Call the linter from the root of the projectb- <code>file</code>: Calls the linter for each file- <code>list_of_files</code>: Call the linter with the list of files as argument- <code>project</code>: Call the linter from the root of the projectr- <code>file</code>: Calls the linter for each file- <code>list_of_files</code>: Call the linter with the list of files as argument- <code>project</code>: Call the linter from the root of the project/- <code>file</code>: Calls the linter for each file- <code>list_of_files</code>: Call the linter with the list of files as argument- <code>project</code>: Call the linter from the root of the project&gt;</td>
 <td><code>list_of_files</code></td>
 </tr>
 <tr>
@@ -12875,8 +12875,10 @@ JSON_ESLINT_PLUGIN_JSONC_CLI_EXECUTABLE: node_modules/.bin/eslint</code></p>
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 <h3 id="how-the-linting-is-performed">How the linting is performed</h3>
+<p>eslint-plugin-jsonc is called once on the whole project directory (<code>project</code> CLI lint mode)</p>
 <ul>
-<li>eslint-plugin-jsonc is called once with the list of files as arguments (<code>list_of_files</code> CLI lint mode)</li>
+<li>filtering can not be done using MegaLinter configuration variables,it must be done using eslint-plugin-jsonc configuration or ignore file (if existing)</li>
+<li><code>VALIDATE_ALL_CODEBASE: false</code> doesn't make eslint-plugin-jsonc analyze only updated files</li>
 </ul>
 <h3 id="example-calls">Example calls</h3>
 <pre><code class="language-shell">eslint myfile.json
@@ -12960,7 +12962,7 @@ ARG NPM_ESLINT_VERSION=10.6.0
 # renovate: datasource=npm depName=@eslint/eslintrc
 ARG NPM_ESLINT_ESLINTRC_VERSION=3.3.5
 # renovate: datasource=npm depName=eslint-plugin-jsonc
-ARG NPM_ESLINT_PLUGIN_JSONC_VERSION=3.2.0
+ARG NPM_ESLINT_PLUGIN_JSONC_VERSION=3.3.0
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 </code></pre>

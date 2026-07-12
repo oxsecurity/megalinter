@@ -12692,7 +12692,7 @@
 <p>CFN-Lint helps ensure your CloudFormation templates are valid, secure, and follow AWS best practices before deployment.</p>
 <h2 id="cfn-lint-documentation">cfn-lint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.52.1</strong></li>
+<li>Version in MegaLinter: <strong>1.53.0</strong></li>
 <li>Visit <a href="https://github.com/aws-cloudformation/cfn-lint#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/aws-cloudformation/cfn-lint#configuration" target="_blank">How to configure cfn-lint rules</a><ul>
 <li>If custom <code>.cfnlintrc.yml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.cfnlintrc.yml" target="_blank">.cfnlintrc.yml</a> will be used</li>
@@ -12728,17 +12728,17 @@
 </tr>
 <tr>
 <td>CLOUDFORMATION_CFN_LINT_FILTER_REGEX_INCLUDE</td>
-<td>Custom regex including filter<br>Ex: <code>(src\|lib)</code></td>
-<td>Include every file</td>
+<td>Custom regex including filter<br>Ex: <code>(src\|lib)</code><br>⚠️ Not available with CLOUDFORMATION_CFN_LINT_CLI_LINT_MODE = project</td>
+<td></td>
 </tr>
 <tr>
 <td>CLOUDFORMATION_CFN_LINT_FILTER_REGEX_EXCLUDE</td>
-<td>Custom regex excluding filter<br>Ex: <code>(test\|examples)</code></td>
-<td>Exclude no file</td>
+<td>Custom regex excluding filter<br>Ex: <code>(test\|examples)</code> <br>⚠️ Not available with CLOUDFORMATION_CFN_LINT_CLI_LINT_MODE = project</td>
+<td></td>
 </tr>
 <tr>
 <td>CLOUDFORMATION_CFN_LINT_CLI_LINT_MODE</td>
-<td>Override default CLI lint mode<br>- <code>file</code>: Calls the linter for each file<br>- <code>list_of_files</code>: Call the linter with the list of files as argument<br>- <code>project</code>: Call the linter from the root of the project</td>
+<td>Override default CLI lint mode<br>&lt;- <code>file</code>: Calls the linter for each file- <code>list_of_files</code>: Call the linter with the list of files as argument- <code>project</code>: Call the linter from the root of the projectb- <code>file</code>: Calls the linter for each file- <code>list_of_files</code>: Call the linter with the list of files as argument- <code>project</code>: Call the linter from the root of the projectr- <code>file</code>: Calls the linter for each file- <code>list_of_files</code>: Call the linter with the list of files as argument- <code>project</code>: Call the linter from the root of the project/- <code>file</code>: Calls the linter for each file- <code>list_of_files</code>: Call the linter with the list of files as argument- <code>project</code>: Call the linter from the root of the project&gt;</td>
 <td><code>list_of_files</code></td>
 </tr>
 <tr>
@@ -12870,8 +12870,10 @@
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 <h3 id="how-the-linting-is-performed">How the linting is performed</h3>
+<p>cfn-lint is called once on the whole project directory (<code>project</code> CLI lint mode)</p>
 <ul>
-<li>cfn-lint is called once with the list of files as arguments (<code>list_of_files</code> CLI lint mode)</li>
+<li>filtering can not be done using MegaLinter configuration variables,it must be done using cfn-lint configuration or ignore file (if existing)</li>
+<li><code>VALIDATE_ALL_CODEBASE: false</code> doesn't make cfn-lint analyze only updated files</li>
 </ul>
 <h3 id="example-calls">Example calls</h3>
 <pre><code class="language-shell">cfn-lint myfile.yml
@@ -12956,11 +12958,11 @@ Advanced / Debugging:
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=pypi depName=cfn-lint
-ARG PIP_CFN_LINT_VERSION=1.52.1
+ARG PIP_CFN_LINT_VERSION=1.53.0
 </code></pre>
 <ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/cfn-lint[sarif]/1.52.1">cfn-lint[sarif]==1.52.1</a></li>
+<li><a href="https://pypi.org/project/cfn-lint[sarif]/1.53.0">cfn-lint[sarif]==1.53.0</a></li>
 </ul>
 </li>
 </ul>

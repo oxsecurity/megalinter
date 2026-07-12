@@ -12638,7 +12638,7 @@
   </a>
 </div>
 
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://shields.io/badge/-downgraded%20version-orange" data-desc-position="bottom"><img alt="downgraded version" src="https://shields.io/badge/-downgraded%20version-orange"></a> <a href="https://github.com/anchore/grype"><img alt="GitHub stars" src="https://img.shields.io/github/stars/anchore/grype?cacheSeconds=3600"></a> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://shields.io/badge/-SARIF-orange" data-desc-position="bottom"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"></a> <a href="https://github.com/anchore/grype/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/anchore/grype?sort=semver"></a> <a href="https://github.com/anchore/grype/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/anchore/grype"></a> <a href="https://github.com/anchore/grype/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/anchore/grype"></a> <a href="https://github.com/anchore/grype/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/anchore/grype"></a></p>
+<p><a href="https://github.com/anchore/grype"><img alt="GitHub stars" src="https://img.shields.io/github/stars/anchore/grype?cacheSeconds=3600"></a> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://shields.io/badge/-SARIF-orange" data-desc-position="bottom"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"></a> <a href="https://github.com/anchore/grype/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/anchore/grype?sort=semver"></a> <a href="https://github.com/anchore/grype/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/anchore/grype"></a> <a href="https://github.com/anchore/grype/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/anchore/grype"></a> <a href="https://github.com/anchore/grype/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/anchore/grype"></a></p>
 <p><strong>Grype</strong> is a comprehensive vulnerability scanner for container images and filesystems that quickly identifies known security vulnerabilities in packages and dependencies. It serves as an essential tool for supply chain security by detecting CVEs across multiple vulnerability databases.</p>
 <p><strong>Key Features:</strong></p>
 <ul>
@@ -12689,8 +12689,18 @@
 <td></td>
 </tr>
 <tr>
+<td>REPOSITORY_GRYPE_FILTER_REGEX_INCLUDE</td>
+<td>Custom regex including filter<br>Ex: <code>(src\|lib)</code><br>⚠️ Not available with REPOSITORY_GRYPE_CLI_LINT_MODE = project</td>
+<td></td>
+</tr>
+<tr>
+<td>REPOSITORY_GRYPE_FILTER_REGEX_EXCLUDE</td>
+<td>Custom regex excluding filter<br>Ex: <code>(test\|examples)</code> <br>⚠️ Not available with REPOSITORY_GRYPE_CLI_LINT_MODE = project</td>
+<td></td>
+</tr>
+<tr>
 <td>REPOSITORY_GRYPE_CLI_LINT_MODE</td>
-<td>Override default CLI lint mode<br>⚠️ As default value is <strong>project</strong>, overriding might not work<br>- <code>file</code>: Calls the linter for each file<br>- <code>list_of_files</code>: Call the linter with the list of files as argument<br>- <code>project</code>: Call the linter from the root of the project</td>
+<td>Override default CLI lint mode<br>&lt;- <code>file</code>: Calls the linter for each file- <code>project</code>: Call the linter from the root of the projectb- <code>file</code>: Calls the linter for each file- <code>project</code>: Call the linter from the root of the projectr- <code>file</code>: Calls the linter for each file- <code>project</code>: Call the linter from the root of the project/- <code>file</code>: Calls the linter for each file- <code>project</code>: Call the linter from the root of the project&gt;</td>
 <td><code>project</code></td>
 </tr>
 <tr>

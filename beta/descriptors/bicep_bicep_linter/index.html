@@ -12575,7 +12575,7 @@
 <p>By default, Bicep linter errors are set as warnings. To customize linter settings, use a <code>bicepconfig.json</code> file. For more information, see the <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config-linter#customize-linter">documentation for the Bicep Linter</a></p>
 <h2 id="bicep_linter-documentation">bicep_linter documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.44.1</strong></li>
+<li>Version in MegaLinter: <strong>0.45.6</strong></li>
 <li>Visit <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config" target="_blank">How to configure bicep_linter rules</a></li>
 <li>See <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#silencing-false-positives" target="_blank">How to disable bicep_linter rules in files</a></li>
@@ -12607,18 +12607,18 @@
 <td></td>
 </tr>
 <tr>
-<td>BICEP_BICEP_LINTER_FILTER_REGEX_INCLUDE</td>
-<td>Custom regex including filter<br>Ex: <code>(src\|lib)</code></td>
 <td>Include every file</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
-<td>BICEP_BICEP_LINTER_FILTER_REGEX_EXCLUDE</td>
-<td>Custom regex excluding filter<br>Ex: <code>(test\|examples)</code></td>
 <td>Exclude no file</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>BICEP_BICEP_LINTER_CLI_LINT_MODE</td>
-<td>Override default CLI lint mode<br>- <code>file</code>: Calls the linter for each file<br>- <code>project</code>: Call the linter from the root of the project</td>
+<td>Override default CLI lint mode<br>&lt;- <code>file</code>: Calls the linter for each fileb- <code>file</code>: Calls the linter for each filer- <code>file</code>: Calls the linter for each file/- <code>file</code>: Calls the linter for each file&gt;</td>
 <td><code>file</code></td>
 </tr>
 <tr>
@@ -12778,7 +12778,7 @@ Commands:
 </ul>
 <pre><code class="language-dockerfile">ARG TARGETPLATFORM
 # renovate: datasource=github-tags depName=Azure/bicep
-ARG BICEP_VERSION=0.44.1
+ARG BICEP_VERSION=0.45.6
 ARG BICEP_EXE='bicep'
 ARG BICEP_DIR='/usr/local/bin'
 RUN case ${TARGETPLATFORM} in \

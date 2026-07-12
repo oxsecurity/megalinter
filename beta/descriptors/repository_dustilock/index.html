@@ -12583,8 +12583,18 @@
 <td></td>
 </tr>
 <tr>
+<td>REPOSITORY_DUSTILOCK_FILTER_REGEX_INCLUDE</td>
+<td>Custom regex including filter<br>Ex: <code>(src\|lib)</code><br>⚠️ Not available with REPOSITORY_DUSTILOCK_CLI_LINT_MODE = project</td>
+<td></td>
+</tr>
+<tr>
+<td>REPOSITORY_DUSTILOCK_FILTER_REGEX_EXCLUDE</td>
+<td>Custom regex excluding filter<br>Ex: <code>(test\|examples)</code> <br>⚠️ Not available with REPOSITORY_DUSTILOCK_CLI_LINT_MODE = project</td>
+<td></td>
+</tr>
+<tr>
 <td>REPOSITORY_DUSTILOCK_CLI_LINT_MODE</td>
-<td>Override default CLI lint mode<br>⚠️ As default value is <strong>project</strong>, overriding might not work<br>- <code>file</code>: Calls the linter for each file<br>- <code>list_of_files</code>: Call the linter with the list of files as argument<br>- <code>project</code>: Call the linter from the root of the project</td>
+<td>Override default CLI lint mode<br>&lt;- <code>project</code>: Call the linter from the root of the projectb- <code>project</code>: Call the linter from the root of the projectr- <code>project</code>: Call the linter from the root of the project/- <code>project</code>: Call the linter from the root of the project&gt;</td>
 <td><code>project</code></td>
 </tr>
 <tr>
@@ -12687,7 +12697,7 @@ Arguments:
 <pre><code class="language-dockerfile"># renovate: datasource=github-tags depName=checkmarx/dustilock
 ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
 # renovate: datasource=docker depName=golang versioning=semver
-ARG GO_IMAGE_VERSION=1.26.4
+ARG GO_IMAGE_VERSION=1.26.5
 FROM golang:${GO_IMAGE_VERSION}-alpine AS dustilock
 ARG REPOSITORY_DUSTILOCK_VERSION
 RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v${REPOSITORY_DUSTILOCK_VERSION}

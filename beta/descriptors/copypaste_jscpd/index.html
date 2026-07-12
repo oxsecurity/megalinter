@@ -12566,7 +12566,7 @@
 </code></pre>
 <h2 id="jscpd-documentation">jscpd documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>5.0.11</strong></li>
+<li>Version in MegaLinter: <strong>5.0.12</strong></li>
 <li>Visit <a href="https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#config-file" target="_blank">How to configure jscpd rules</a><ul>
 <li>If custom <code>.jscpd.json</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.jscpd.json" target="_blank">.jscpd.json</a> will be used</li>
@@ -12600,8 +12600,18 @@
 <td></td>
 </tr>
 <tr>
+<td>COPYPASTE_JSCPD_FILTER_REGEX_INCLUDE</td>
+<td>Custom regex including filter<br>Ex: <code>(src\|lib)</code><br>⚠️ Not available with COPYPASTE_JSCPD_CLI_LINT_MODE = project</td>
+<td></td>
+</tr>
+<tr>
+<td>COPYPASTE_JSCPD_FILTER_REGEX_EXCLUDE</td>
+<td>Custom regex excluding filter<br>Ex: <code>(test\|examples)</code> <br>⚠️ Not available with COPYPASTE_JSCPD_CLI_LINT_MODE = project</td>
+<td></td>
+</tr>
+<tr>
 <td>COPYPASTE_JSCPD_CLI_LINT_MODE</td>
-<td>Override default CLI lint mode<br>⚠️ As default value is <strong>project</strong>, overriding might not work<br>- <code>file</code>: Calls the linter for each file<br>- <code>list_of_files</code>: Call the linter with the list of files as argument<br>- <code>project</code>: Call the linter from the root of the project</td>
+<td>Override default CLI lint mode<br>&lt;- <code>project</code>: Call the linter from the root of the projectb- <code>project</code>: Call the linter from the root of the projectr- <code>project</code>: Call the linter from the root of the project/- <code>project</code>: Call the linter from the root of the project&gt;</td>
 <td><code>project</code></td>
 </tr>
 <tr>
@@ -12801,7 +12811,7 @@
 <h3 id="help-content">Help content</h3>
 <pre><code class="language-shell">Copy/Paste Detector — find duplicated code
 
-Usage: cpd [OPTIONS] [PATH]...
+Usage: jscpd [OPTIONS] [PATH]...
 
 Arguments:
   [PATH]...  Paths to scan for duplicates
@@ -12877,11 +12887,11 @@ Options:
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=5.0.11
+ARG NPM_JSCPD_VERSION=5.0.12
 </code></pre>
 <ul>
 <li>NPM packages (node.js):<ul>
-<li><a href="https://www.npmjs.com/package/jscpd/v/5.0.11">jscpd@5.0.11</a></li>
+<li><a href="https://www.npmjs.com/package/jscpd/v/5.0.12">jscpd@5.0.12</a></li>
 </ul>
 </li>
 </ul>
