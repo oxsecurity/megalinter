@@ -16,6 +16,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - New linters
 
+  - Add [SALESFORCE_CODE_ANALYZER_FLOW](https://megalinter.io/beta/descriptors/salesforce_code_analyzer_flow/), the Salesforce Code Analyzer v5 Flow Scanner engine that audits Salesforce Flows for security issues
+
 - Disabled linters
 
 - Re-enabled linters

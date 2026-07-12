@@ -101,6 +101,7 @@
     "salesforce_code_analyzer_apex",
     "salesforce_code_analyzer_aura",
     "salesforce_code_analyzer_lwc",
+    "salesforce_code_analyzer_flow",
     "scala_scalafix",
     "snakemake_lint",
     "snakemake_snakefmt",
