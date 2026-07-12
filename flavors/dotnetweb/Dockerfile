@@ -22,6 +22,8 @@ ARG BASH_SHELLCHECK_VERSION=v0.11.0
 ARG CARGO_ZIZMOR_VERSION=1.25.0
 # renovate: datasource=crate depName=shellcheck-sarif
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
+# renovate: datasource=docker depName=koalaman/shellcheck-alpine
+ARG BASH_SHELLCHECK_VERSION=v0.11.0
 # renovate: datasource=docker depName=mvdan/shfmt
 ARG BASH_SHFMT_VERSION=v3.13.1-alpine
 # renovate: datasource=docker depName=hadolint/hadolint
@@ -260,6 +262,8 @@ ARG NPM_PRETTYJSON_VERSION=1.2.5
 ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.62.1
 # renovate: datasource=npm depName=@typescript-eslint/parser
 ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.62.1
+# renovate: datasource=npm depName=typescript-eslint
+ARG NPM_TYPESCRIPT_ESLINT_VERSION=8.62.1
 # renovate: datasource=npm depName=ts-standard
 ARG NPM_TS_STANDARD_VERSION=12.0.2
 # renovate: datasource=pypi depName=yamllint
@@ -502,6 +506,7 @@ RUN npm config set prefix /usr/local \
                 prettyjson@${NPM_PRETTYJSON_VERSION} \
                 @typescript-eslint/eslint-plugin@${NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION} \
                 @typescript-eslint/parser@${NPM_TYPESCRIPT_ESLINT_PARSER_VERSION} \
+                typescript-eslint@${NPM_TYPESCRIPT_ESLINT_VERSION} \
                 ts-standard@${NPM_TS_STANDARD_VERSION} && \
     echo "Cleaning npm cache…" \
     && (npm cache clean --force || true) \

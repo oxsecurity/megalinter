@@ -29,6 +29,13 @@ linters:
     linter_rules_inline_disable_url: https://coffeelint.github.io/#options
     config_file_name: .coffee-lint.json
     cli_config_arg_name: "-f"
+    cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_mode_project_extra_args_after:
+      - .
     examples:
       - "coffeelint myfile.coffee"
       - "coffeelint -f .coffee-lint.json myfile.coffee"

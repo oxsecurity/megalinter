@@ -93,11 +93,11 @@ async function preparePhpFixture() {
     path.join(tempDir, ".php-cs-fixer.risky.php"),
   );
   await fs.copy(
-    path.join(repoRoot, ".automation", "test", "php", "php_good_1.php"),
+    path.join(repoRoot, ".automation", "test", "php", "good", "php_good_1.php"),
     path.join(tempDir, "php_good_1.php"),
   );
   await fs.copy(
-    path.join(repoRoot, ".automation", "test", "php", "php_good_2.php"),
+    path.join(repoRoot, ".automation", "test", "php", "good", "php_good_2.php"),
     path.join(tempDir, "php_good_2.php"),
   );
   return tempDir;

@@ -1,0 +1,82 @@
+{
+  "name": "mega-linter-runner",
+  "version": "4.18.0",
+  "description": "Local runner for MegaLinter",
+  "main": "index.js",
+  "files": [
+    "lib"
+  ],
+  "bin": {
+    "mega-linter-runner": "lib/index.js",
+    "mega-linter": "lib/index.js"
+  },
+  "scripts": {
+    "test": "mocha \"test/**/*.test.js\""
+  },
+  "keywords": [
+    "mega-linter",
+    "code",
+    "quality",
+    "runner",
+    "aggregator",
+    "javascript",
+    "typescript",
+    "python",
+    "c",
+    "java",
+    "csharp",
+    "yaml",
+    "json",
+    "rst",
+    "markdown",
+    "dotnet",
+    "lua",
+    "r",
+    "c++",
+    "dockerfile",
+    "bash",
+    "dart",
+    "go",
+    "groovy",
+    "react",
+    "perl",
+    "php",
+    "powershell",
+    "kotlin",
+    "scala",
+    "linter",
+    "lint",
+    "technical",
+    "debt",
+    "raku",
+    "ruby",
+    "rust",
+    "sql",
+    "basic",
+    "puppet",
+    "cloudformation",
+    "css",
+    "env",
+    "graphql",
+    "latex",
+    "protocol",
+    "buffer",
+    "kubernetes",
+    "gherkin",
+    "cucumber",
+    "terraform",
+    "snakemake",
+    "ansible"
+  ],
+  "author": "Nicolas Vuillamy",
+  "license": "MIT",
+  "dependencies": {
+    "find-package-json": "^1.2.0",
+    "optionator": "^0.9.1"
+  },
+  "devDependencies": {
+    "assert": "^2.0.0",
+    "eslint": "^7.14.0",
+    "mocha": "^8.2.1"
+  }
+}

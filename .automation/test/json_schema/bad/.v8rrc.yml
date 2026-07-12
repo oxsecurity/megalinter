@@ -1,0 +1,7 @@
+---
+customCatalog:
+  schemas:
+    - name: package
+      fileMatch: ["package*.json"]
+      location: https://www.schemastore.org/package.json
+      parser: json

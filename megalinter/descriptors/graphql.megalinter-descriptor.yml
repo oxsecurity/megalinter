@@ -33,6 +33,11 @@ linters:
     linter_megalinter_ref_url: https://github.com/cjoudrey/graphql-schema-linter/pull/272
     config_file_name: .graphql-schema-linterrc
     cli_config_arg_name: ""
+    cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     common_linter_errors:
       - identifier: GRAPHQL_GRAPHQL_SCHEMA_LINTER_ERROR_CUSTOM_RULE_NOT_FOUND
         regex: "There was an issue loading the specified custom rules"

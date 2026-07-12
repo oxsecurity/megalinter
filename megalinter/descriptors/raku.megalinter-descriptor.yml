@@ -31,6 +31,9 @@ linters:
     linter_rules_configuration_url: https://docs.raku.org/language/pragmas
     linter_rules_inline_disable_url: https://docs.raku.org/language/pragmas#no
     linter_image_url: https://raku.org/img/camelia-logo.png
+    cli_lint_mode: file
+    supported_cli_lint_modes:
+      - file
     config_file_name: META6.json
     cli_lint_extra_args:
       - "-I"

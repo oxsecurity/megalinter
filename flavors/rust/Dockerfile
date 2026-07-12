@@ -22,6 +22,8 @@ ARG BASH_SHELLCHECK_VERSION=v0.11.0
 ARG CARGO_ZIZMOR_VERSION=1.25.0
 # renovate: datasource=crate depName=shellcheck-sarif
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
+# renovate: datasource=docker depName=koalaman/shellcheck-alpine
+ARG BASH_SHELLCHECK_VERSION=v0.11.0
 # renovate: datasource=docker depName=mvdan/shfmt
 ARG BASH_SHFMT_VERSION=v3.13.1-alpine
 # renovate: datasource=docker depName=hadolint/hadolint

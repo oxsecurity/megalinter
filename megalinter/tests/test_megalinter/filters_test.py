@@ -15,7 +15,7 @@ class filters_test(unittest.TestCase):
         repo_home = utils.REPO_HOME_DEFAULT
         regex_list = ["#!/usr/bin/env perl", "#!/usr/bin/perl"]
         regex_object = re.compile("|".join(regex_list), flags=re.MULTILINE)
-        file = f"{repo_home}/.automation/test/perl/perl_good_2"
+        file = f"{repo_home}/.automation/test/perl/good/perl_good_2.pl"
         file_contains_res = utils.file_contains(file, regex_object)
         self.assertTrue(file_contains_res, f"{file} matching with {str(regex_list)}")
 
