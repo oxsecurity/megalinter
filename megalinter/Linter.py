@@ -528,6 +528,14 @@ class Linter:
             )
 
     # Manage configuration variables
+    # Return True if the given cli_lint_mode is supported by this linter.
+    # When supported_cli_lint_modes is declared in the descriptor, it is the
+    # source of truth; otherwise fall back to the single descriptor lint mode.
+    def is_cli_lint_mode_supported(self, mode):
+        if len(self.supported_cli_lint_modes) > 0:
+            return mode in self.supported_cli_lint_modes
+        return self.descriptor_cli_lint_mode == mode
+
     def load_config_vars(self, params):
         _sentinel = object()
         # Configuration file name: try first NAME + _FILE_NAME, then LANGUAGE + _FILE_NAME
@@ -729,24 +737,23 @@ class Linter:
                     DEFAULT_DOCKER_WORKSPACE_DIR, ""
                 ).replace(self.TEMPLATES_DIR, "")
 
-        # User override of cli_lint_mode
+        # User override of cli_lint_mode: only accept a mode the linter declares
+        # as supported (supported_cli_lint_modes), otherwise fail fast with an
+        # actionable error listing the modes that are actually available.
         if config.exists(self.request_id, self.name + "_CLI_LINT_MODE"):
-            cli_lint_mode_descriptor = self.cli_lint_mode
             cli_lint_mode_config = config.get(
                 self.request_id, self.name + "_CLI_LINT_MODE"
             )
-            if cli_lint_mode_descriptor == "project":
-                logging.warning(
-                    f"Override {self.name} cli_lint_mode with {cli_lint_mode_config} at your own risk, "
-                    "as command line arguments are built for project mode"
+            if not self.is_cli_lint_mode_supported(cli_lint_mode_config):
+                supported_modes = (
+                    self.supported_cli_lint_modes
+                    if len(self.supported_cli_lint_modes) > 0
+                    else [self.descriptor_cli_lint_mode]
                 )
-            elif (
-                cli_lint_mode_descriptor == "file"
-                and cli_lint_mode_config == "list_of_files"
-            ):
-                logging.warning(
-                    f"Override {self.name} cli_lint_mode with {cli_lint_mode_config} at your own risk, "
-                    f"as command line arguments are built for {cli_lint_mode_descriptor} mode"
+                raise ValueError(
+                    f"[Configuration] {self.name}_CLI_LINT_MODE is set to "
+                    f"'{cli_lint_mode_config}', which is not supported by {self.name}. "
+                    f"Supported lint mode(s): {', '.join(supported_modes)}"
                 )
             self.cli_lint_mode = cli_lint_mode_config
 
