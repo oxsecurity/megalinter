@@ -359,7 +359,7 @@ linters:
     linter_rules_url: https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/rules-flow.html
     linter_rules_configuration_url: https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/config.html
     linter_spdx_license: BSD-3-Clause
-    config_file_name: code-analyzer.yml
+    config_file_name: code-analyzer-flow.yml
     cli_executable: sf
     cli_config_arg_name: "--config-file"
     cli_lint_extra_args:
