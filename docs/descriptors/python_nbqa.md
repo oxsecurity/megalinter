@@ -41,21 +41,21 @@ description: How to use nbqa (configure, ignore files, ignore errors, help & ver
 - Enable nbqa by adding `PYTHON_NBQA_MYPY` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable nbqa by adding `PYTHON_NBQA_MYPY` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                     | Description                                                                                                                                                                                                         | Default value      |
-|----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| PYTHON_NBQA_MYPY_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                    |
-| PYTHON_NBQA_MYPY_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                    |
-| PYTHON_NBQA_MYPY_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file |
-| PYTHON_NBQA_MYPY_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file    |
-| PYTHON_NBQA_MYPY_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`    |
-| PYTHON_NBQA_MYPY_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".ipynb"]`       |
-| PYTHON_NBQA_MYPY_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file |
-| PYTHON_NBQA_MYPY_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None               |
-| PYTHON_NBQA_MYPY_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None               |
-| PYTHON_NBQA_MYPY_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling PYTHON_NBQA_MYPY and its pre/post commands                                                                                                             | None               |
-| PYTHON_NBQA_MYPY_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`            |
-| PYTHON_NBQA_MYPY_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                |
-| PYTHON_NBQA_MYPY_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['nbqa']`         |
+| Variable                                  | Description                                                                                          | Default value |
+|-------------------------------------------|------------------------------------------------------------------------------------------------------|---------------|
+| PYTHON_NBQA_MYPY_ARGUMENTS                | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                             |               |
+| PYTHON_NBQA_MYPY_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"` |               |
+| PYTHON_NBQA_MYPY_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with PYTHON_NBQA_MYPY_CLI_LINT_MODE = project 
+| PYTHON_NBQA_MYPY_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` <br/>⚠️ Not available with PYTHON_NBQA_MYPY_CLI_LINT_MODE = project 
+| PYTHON_NBQA_MYPY_CLI_LINT_MODE | Override default CLI lint mode<br/><- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument- `project`: Call the linter from the root of the projectb- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument- `project`: Call the linter from the root of the projectr- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument- `project`: Call the linter from the root of the project/- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument- `project`: Call the linter from the root of the project> | `list_of_files` |
+| PYTHON_NBQA_MYPY_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".ipynb"]` |
+| PYTHON_NBQA_MYPY_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
+| PYTHON_NBQA_MYPY_PRE_COMMANDS | List of bash commands to run before the linter| None |
+| PYTHON_NBQA_MYPY_POST_COMMANDS | List of bash commands to run after the linter| None |
+| PYTHON_NBQA_MYPY_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling PYTHON_NBQA_MYPY and its pre/post commands| None |
+| PYTHON_NBQA_MYPY_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
+| PYTHON_NBQA_MYPY_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
+| PYTHON_NBQA_MYPY_CLI_EXECUTABLE | Override CLI executable | `['nbqa']` |
 
 ## MegaLinter Flavors
 
@@ -77,7 +77,10 @@ This linter is available in the following flavors
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- nbqa is called once with the list of files as arguments (`list_of_files` CLI lint mode)
+nbqa is called once on the whole project directory (`project` CLI lint mode)
+
+- filtering can not be done using MegaLinter configuration variables,it must be done using nbqa configuration or ignore file (if existing)
+- `VALIDATE_ALL_CODEBASE: false` doesn't make nbqa analyze only updated files
 
 ### Example calls
 

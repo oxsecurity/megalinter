@@ -633,13 +633,11 @@
       "description": "ACTION_ACTIONLINT: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
-        "list_of_files",
-        "project"
+        "list_of_files"
       ],
       "enumNames": [
         "File",
-        "List of Files",
-        "Project"
+        "List of Files"
       ],
       "title": "ACTION_ACTIONLINT: CLI lint mode",
       "type": "string",
@@ -746,7 +744,7 @@
     },
     "ACTION_ACTIONLINT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/ACTION_ACTIONLINT_FILTER_REGEX_EXCLUDE",
-      "description": "ACTION_ACTIONLINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "title": "ACTION_ACTIONLINT: Excluding Regex",
       "type": "string",
       "x-category": "ACTION_ACTIONLINT",
@@ -756,7 +754,7 @@
     },
     "ACTION_ACTIONLINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/ACTION_ACTIONLINT_FILTER_REGEX_INCLUDE",
-      "description": "ACTION_ACTIONLINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "title": "ACTION_ACTIONLINT: Including Regex",
       "type": "string",
       "x-category": "ACTION_ACTIONLINT",
@@ -932,14 +930,10 @@
       "default": "list_of_files",
       "description": "ACTION_ZIZMOR: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
-        "file",
-        "list_of_files",
-        "project"
+        "file"
       ],
       "enumNames": [
-        "File",
-        "List of Files",
-        "Project"
+        "File"
       ],
       "title": "ACTION_ZIZMOR: CLI lint mode",
       "type": "string",
@@ -1046,7 +1040,7 @@
     },
     "ACTION_ZIZMOR_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/ACTION_ZIZMOR_FILTER_REGEX_EXCLUDE",
-      "description": "ACTION_ZIZMOR: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "title": "ACTION_ZIZMOR: Excluding Regex",
       "type": "string",
       "x-category": "ACTION_ZIZMOR",
@@ -1056,7 +1050,7 @@
     },
     "ACTION_ZIZMOR_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/ACTION_ZIZMOR_FILTER_REGEX_INCLUDE",
-      "description": "ACTION_ZIZMOR: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "title": "ACTION_ZIZMOR: Including Regex",
       "type": "string",
       "x-category": "ACTION_ZIZMOR",
@@ -1299,6 +1293,26 @@
       "x-order": 300030,
       "x-section": "SCOPE"
     },
+    "ANSIBLE_ANSIBLE_LINT_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_FILTER_REGEX_EXCLUDE",
+      "description": "ANSIBLE_ANSIBLE_LINT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with ANSIBLE_ANSIBLE_LINT_CLI_LINT_MODE = project",
+      "title": "ANSIBLE_ANSIBLE_LINT: Excluding Regex",
+      "type": "string",
+      "x-category": "ANSIBLE_ANSIBLE_LINT",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "ANSIBLE_ANSIBLE_LINT_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_FILTER_REGEX_INCLUDE",
+      "description": "ANSIBLE_ANSIBLE_LINT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with ANSIBLE_ANSIBLE_LINT_CLI_LINT_MODE = project",
+      "title": "ANSIBLE_ANSIBLE_LINT: Including Regex",
+      "type": "string",
+      "x-category": "ANSIBLE_ANSIBLE_LINT",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
+    },
     "ANSIBLE_ANSIBLE_LINT_POST_COMMANDS": {
       "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_POST_COMMANDS",
       "description": "ANSIBLE_ANSIBLE_LINT: Define bash commands to run after running ANSIBLE_ANSIBLE_LINT",
@@ -1539,13 +1553,11 @@
       "description": "API_SPECTRAL: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
-        "list_of_files",
-        "project"
+        "list_of_files"
       ],
       "enumNames": [
         "File",
-        "List of Files",
-        "Project"
+        "List of Files"
       ],
       "title": "API_SPECTRAL: CLI lint mode",
       "type": "string",
@@ -1643,7 +1655,7 @@
     },
     "API_SPECTRAL_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/API_SPECTRAL_FILTER_REGEX_EXCLUDE",
-      "description": "API_SPECTRAL: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "title": "API_SPECTRAL: Excluding Regex",
       "type": "string",
       "x-category": "API_SPECTRAL",
@@ -1653,7 +1665,7 @@
     },
     "API_SPECTRAL_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/API_SPECTRAL_FILTER_REGEX_INCLUDE",
-      "description": "API_SPECTRAL: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "title": "API_SPECTRAL: Including Regex",
       "type": "string",
       "x-category": "API_SPECTRAL",
@@ -1791,12 +1803,10 @@
       "default": "file",
       "description": "ARM_ARM_TTK: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
-        "file",
-        "project"
+        "file"
       ],
       "enumNames": [
-        "File",
-        "Project"
+        "File"
       ],
       "title": "ARM_ARM_TTK: CLI lint mode",
       "type": "string",
@@ -1892,7 +1902,7 @@
     },
     "ARM_ARM_TTK_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/ARM_ARM_TTK_FILTER_REGEX_EXCLUDE",
-      "description": "ARM_ARM_TTK: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "title": "ARM_ARM_TTK: Excluding Regex",
       "type": "string",
       "x-category": "ARM_ARM_TTK",
@@ -1902,7 +1912,7 @@
     },
     "ARM_ARM_TTK_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/ARM_ARM_TTK_FILTER_REGEX_INCLUDE",
-      "description": "ARM_ARM_TTK: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "title": "ARM_ARM_TTK: Including Regex",
       "type": "string",
       "x-category": "ARM_ARM_TTK",
@@ -2107,12 +2117,10 @@
       "default": "file",
       "description": "BASH_EXEC: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
-        "file",
-        "project"
+        "file"
       ],
       "enumNames": [
-        "File",
-        "Project"
+        "File"
       ],
       "title": "BASH_EXEC: CLI lint mode",
       "type": "string",
@@ -2163,7 +2171,6 @@
     "BASH_EXEC_FILE_EXTENSIONS": {
       "$id": "#/properties/BASH_EXEC_FILE_EXTENSIONS",
       "default": [
-        "",
         ".sh",
         ".bash",
         ".dash",
@@ -2202,7 +2209,7 @@
     },
     "BASH_EXEC_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/BASH_EXEC_FILTER_REGEX_EXCLUDE",
-      "description": "BASH_EXEC: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "title": "BASH_EXEC: Excluding Regex",
       "type": "string",
       "x-category": "BASH_EXEC",
@@ -2212,7 +2219,7 @@
     },
     "BASH_EXEC_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/BASH_EXEC_FILTER_REGEX_INCLUDE",
-      "description": "BASH_EXEC: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "title": "BASH_EXEC: Including Regex",
       "type": "string",
       "x-category": "BASH_EXEC",
@@ -2380,13 +2387,11 @@
       "description": "BASH_SHELLCHECK: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
-        "list_of_files",
-        "project"
+        "list_of_files"
       ],
       "enumNames": [
         "File",
-        "List of Files",
-        "Project"
+        "List of Files"
       ],
       "title": "BASH_SHELLCHECK: CLI lint mode",
       "type": "string",
@@ -2447,7 +2452,6 @@
     "BASH_SHELLCHECK_FILE_EXTENSIONS": {
       "$id": "#/properties/BASH_SHELLCHECK_FILE_EXTENSIONS",
       "default": [
-        "",
         ".sh",
         ".bash",
         ".dash",
@@ -2486,7 +2490,7 @@
     },
     "BASH_SHELLCHECK_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/BASH_SHELLCHECK_FILTER_REGEX_EXCLUDE",
-      "description": "BASH_SHELLCHECK: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "title": "BASH_SHELLCHECK: Excluding Regex",
       "type": "string",
       "x-category": "BASH_SHELLCHECK",
@@ -2496,7 +2500,7 @@
     },
     "BASH_SHELLCHECK_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/BASH_SHELLCHECK_FILTER_REGEX_INCLUDE",
-      "description": "BASH_SHELLCHECK: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "title": "BASH_SHELLCHECK: Including Regex",
       "type": "string",
       "x-category": "BASH_SHELLCHECK",
@@ -2610,14 +2614,10 @@
       "default": "list_of_files",
       "description": "BASH_SHFMT: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
-        "file",
-        "list_of_files",
-        "project"
+        "file"
       ],
       "enumNames": [
-        "File",
-        "List of Files",
-        "Project"
+        "File"
       ],
       "title": "BASH_SHFMT: CLI lint mode",
       "type": "string",
@@ -2668,7 +2668,6 @@
     "BASH_SHFMT_FILE_EXTENSIONS": {
       "$id": "#/properties/BASH_SHFMT_FILE_EXTENSIONS",
       "default": [
-        "",
         ".sh",
         ".bash",
         ".dash",
@@ -2707,7 +2706,7 @@
     },
     "BASH_SHFMT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/BASH_SHFMT_FILTER_REGEX_EXCLUDE",
-      "description": "BASH_SHFMT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "title": "BASH_SHFMT: Excluding Regex",
       "type": "string",
       "x-category": "BASH_SHFMT",
@@ -2717,7 +2716,7 @@
     },
     "BASH_SHFMT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/BASH_SHFMT_FILTER_REGEX_INCLUDE",
-      "description": "BASH_SHFMT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "title": "BASH_SHFMT: Including Regex",
       "type": "string",
       "x-category": "BASH_SHFMT",
@@ -2822,12 +2821,10 @@
       "default": "file",
       "description": "BICEP_BICEP_LINTER: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
-        "file",
-        "project"
+        "file"
       ],
       "enumNames": [
-        "File",
-        "Project"
+        "File"
       ],
       "title": "BICEP_BICEP_LINTER: CLI lint mode",
       "type": "string",
@@ -2913,7 +2910,7 @@
     },
     "BICEP_BICEP_LINTER_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/BICEP_BICEP_LINTER_FILTER_REGEX_EXCLUDE",
-      "description": "BICEP_BICEP_LINTER: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "title": "BICEP_BICEP_LINTER: Excluding Regex",
       "type": "string",
       "x-category": "BICEP_BICEP_LINTER",
@@ -2923,7 +2920,7 @@
     },
     "BICEP_BICEP_LINTER_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/BICEP_BICEP_LINTER_FILTER_REGEX_INCLUDE",
-      "description": "BICEP_BICEP_LINTER: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "title": "BICEP_BICEP_LINTER: Including Regex",
       "type": "string",
       "x-category": "BICEP_BICEP_LINTER",
@@ -3119,14 +3116,16 @@
     },
     "CLOJURE_CLJSTYLE_CLI_LINT_MODE": {
       "$id": "#/properties/CLOJURE_CLJSTYLE_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "description": "CLOJURE_CLJSTYLE: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "enumNames": [
         "File",
+        "List of Files",
         "Project"
       ],
       "title": "CLOJURE_CLJSTYLE: CLI lint mode",
@@ -3226,7 +3225,7 @@
     },
     "CLOJURE_CLJSTYLE_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/CLOJURE_CLJSTYLE_FILTER_REGEX_EXCLUDE",
-      "description": "CLOJURE_CLJSTYLE: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "CLOJURE_CLJSTYLE: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with CLOJURE_CLJSTYLE_CLI_LINT_MODE = project",
       "title": "CLOJURE_CLJSTYLE: Excluding Regex",
       "type": "string",
       "x-category": "CLOJURE_CLJSTYLE",
@@ -3236,7 +3235,7 @@
     },
     "CLOJURE_CLJSTYLE_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/CLOJURE_CLJSTYLE_FILTER_REGEX_INCLUDE",
-      "description": "CLOJURE_CLJSTYLE: Custom regex including filter: only files matching this regex will be linted",
+      "description": "CLOJURE_CLJSTYLE: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with CLOJURE_CLJSTYLE_CLI_LINT_MODE = project",
       "title": "CLOJURE_CLJSTYLE: Including Regex",
       "type": "string",
       "x-category": "CLOJURE_CLJSTYLE",
@@ -3454,7 +3453,7 @@
     },
     "CLOJURE_CLJ_KONDO_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/CLOJURE_CLJ_KONDO_FILTER_REGEX_EXCLUDE",
-      "description": "CLOJURE_CLJ_KONDO: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "CLOJURE_CLJ_KONDO: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with CLOJURE_CLJ_KONDO_CLI_LINT_MODE = project",
       "title": "CLOJURE_CLJ_KONDO: Excluding Regex",
       "type": "string",
       "x-category": "CLOJURE_CLJ_KONDO",
@@ -3464,7 +3463,7 @@
     },
     "CLOJURE_CLJ_KONDO_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/CLOJURE_CLJ_KONDO_FILTER_REGEX_INCLUDE",
-      "description": "CLOJURE_CLJ_KONDO: Custom regex including filter: only files matching this regex will be linted",
+      "description": "CLOJURE_CLJ_KONDO: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with CLOJURE_CLJ_KONDO_CLI_LINT_MODE = project",
       "title": "CLOJURE_CLJ_KONDO: Including Regex",
       "type": "string",
       "x-category": "CLOJURE_CLJ_KONDO",
@@ -3745,7 +3744,7 @@
     },
     "CLOUDFORMATION_CFN_LINT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/CLOUDFORMATION_CFN_LINT_FILTER_REGEX_EXCLUDE",
-      "description": "CLOUDFORMATION_CFN_LINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "CLOUDFORMATION_CFN_LINT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with CLOUDFORMATION_CFN_LINT_CLI_LINT_MODE = project",
       "title": "CLOUDFORMATION_CFN_LINT: Excluding Regex",
       "type": "string",
       "x-category": "CLOUDFORMATION_CFN_LINT",
@@ -3755,7 +3754,7 @@
     },
     "CLOUDFORMATION_CFN_LINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/CLOUDFORMATION_CFN_LINT_FILTER_REGEX_INCLUDE",
-      "description": "CLOUDFORMATION_CFN_LINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "CLOUDFORMATION_CFN_LINT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with CLOUDFORMATION_CFN_LINT_CLI_LINT_MODE = project",
       "title": "CLOUDFORMATION_CFN_LINT: Including Regex",
       "type": "string",
       "x-category": "CLOUDFORMATION_CFN_LINT",
@@ -3928,14 +3927,16 @@
     },
     "COFFEE_COFFEELINT_CLI_LINT_MODE": {
       "$id": "#/properties/COFFEE_COFFEELINT_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "description": "COFFEE_COFFEELINT: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "enumNames": [
         "File",
+        "List of Files",
         "Project"
       ],
       "title": "COFFEE_COFFEELINT: CLI lint mode",
@@ -4032,7 +4033,7 @@
     },
     "COFFEE_COFFEELINT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/COFFEE_COFFEELINT_FILTER_REGEX_EXCLUDE",
-      "description": "COFFEE_COFFEELINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "COFFEE_COFFEELINT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with COFFEE_COFFEELINT_CLI_LINT_MODE = project",
       "title": "COFFEE_COFFEELINT: Excluding Regex",
       "type": "string",
       "x-category": "COFFEE_COFFEELINT",
@@ -4042,7 +4043,7 @@
     },
     "COFFEE_COFFEELINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/COFFEE_COFFEELINT_FILTER_REGEX_INCLUDE",
-      "description": "COFFEE_COFFEELINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "COFFEE_COFFEELINT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with COFFEE_COFFEELINT_CLI_LINT_MODE = project",
       "title": "COFFEE_COFFEELINT: Including Regex",
       "type": "string",
       "x-category": "COFFEE_COFFEELINT",
@@ -4298,13 +4299,9 @@
       "default": "project",
       "description": "COPYPASTE_JSCPD: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
-        "file",
-        "list_of_files",
         "project"
       ],
       "enumNames": [
-        "File",
-        "List of Files",
         "Project"
       ],
       "title": "COPYPASTE_JSCPD: CLI lint mode",
@@ -4362,6 +4359,26 @@
       "x-category": "COPYPASTE_JSCPD",
       "x-order": 400010,
       "x-section": "ERRORS"
+    },
+    "COPYPASTE_JSCPD_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/COPYPASTE_JSCPD_FILTER_REGEX_EXCLUDE",
+      "description": "COPYPASTE_JSCPD: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with COPYPASTE_JSCPD_CLI_LINT_MODE = project",
+      "title": "COPYPASTE_JSCPD: Excluding Regex",
+      "type": "string",
+      "x-category": "COPYPASTE_JSCPD",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "COPYPASTE_JSCPD_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/COPYPASTE_JSCPD_FILTER_REGEX_INCLUDE",
+      "description": "COPYPASTE_JSCPD: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with COPYPASTE_JSCPD_CLI_LINT_MODE = project",
+      "title": "COPYPASTE_JSCPD: Including Regex",
+      "type": "string",
+      "x-category": "COPYPASTE_JSCPD",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
     },
     "COPYPASTE_JSCPD_POST_COMMANDS": {
       "$id": "#/properties/COPYPASTE_JSCPD_POST_COMMANDS",
@@ -4512,13 +4529,11 @@
       "description": "CPP_CLANG_FORMAT: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
-        "list_of_files",
-        "project"
+        "list_of_files"
       ],
       "enumNames": [
         "File",
-        "List of Files",
-        "Project"
+        "List of Files"
       ],
       "title": "CPP_CLANG_FORMAT: CLI lint mode",
       "type": "string",
@@ -4624,7 +4639,7 @@
     },
     "CPP_CLANG_FORMAT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/CPP_CLANG_FORMAT_FILTER_REGEX_EXCLUDE",
-      "description": "CPP_CLANG_FORMAT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "title": "CPP_CLANG_FORMAT: Excluding Regex",
       "type": "string",
       "x-category": "CPP_CLANG_FORMAT",
@@ -4634,7 +4649,7 @@
     },
     "CPP_CLANG_FORMAT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/CPP_CLANG_FORMAT_FILTER_REGEX_INCLUDE",
-      "description": "CPP_CLANG_FORMAT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "title": "CPP_CLANG_FORMAT: Including Regex",
       "type": "string",
       "x-category": "CPP_CLANG_FORMAT",
@@ -4745,14 +4760,16 @@
     },
     "CPP_CPPCHECK_CLI_LINT_MODE": {
       "$id": "#/properties/CPP_CPPCHECK_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "description": "CPP_CPPCHECK: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "enumNames": [
         "File",
+        "List of Files",
         "Project"
       ],
       "title": "CPP_CPPCHECK: CLI lint mode",
@@ -4849,7 +4866,7 @@
     },
     "CPP_CPPCHECK_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/CPP_CPPCHECK_FILTER_REGEX_EXCLUDE",
-      "description": "CPP_CPPCHECK: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "CPP_CPPCHECK: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with CPP_CPPCHECK_CLI_LINT_MODE = project",
       "title": "CPP_CPPCHECK: Excluding Regex",
       "type": "string",
       "x-category": "CPP_CPPCHECK",
@@ -4859,7 +4876,7 @@
     },
     "CPP_CPPCHECK_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/CPP_CPPCHECK_FILTER_REGEX_INCLUDE",
-      "description": "CPP_CPPCHECK: Custom regex including filter: only files matching this regex will be linted",
+      "description": "CPP_CPPCHECK: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with CPP_CPPCHECK_CLI_LINT_MODE = project",
       "title": "CPP_CPPCHECK: Including Regex",
       "type": "string",
       "x-category": "CPP_CPPCHECK",
@@ -4965,13 +4982,11 @@
       "description": "CPP_CPPLINT: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
-        "list_of_files",
-        "project"
+        "list_of_files"
       ],
       "enumNames": [
         "File",
-        "List of Files",
-        "Project"
+        "List of Files"
       ],
       "title": "CPP_CPPLINT: CLI lint mode",
       "type": "string",
@@ -5067,7 +5082,7 @@
     },
     "CPP_CPPLINT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/CPP_CPPLINT_FILTER_REGEX_EXCLUDE",
-      "description": "CPP_CPPLINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "title": "CPP_CPPLINT: Excluding Regex",
       "type": "string",
       "x-category": "CPP_CPPLINT",
@@ -5077,7 +5092,7 @@
     },
     "CPP_CPPLINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/CPP_CPPLINT_FILTER_REGEX_INCLUDE",
-      "description": "CPP_CPPLINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "title": "CPP_CPPLINT: Including Regex",
       "type": "string",
       "x-category": "CPP_CPPLINT",
@@ -5351,7 +5366,7 @@
     },
     "CSHARP_CSHARPIER_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/CSHARP_CSHARPIER_FILTER_REGEX_EXCLUDE",
-      "description": "CSHARP_CSHARPIER: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "CSHARP_CSHARPIER: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with CSHARP_CSHARPIER_CLI_LINT_MODE = project",
       "title": "CSHARP_CSHARPIER: Excluding Regex",
       "type": "string",
       "x-category": "CSHARP_CSHARPIER",
@@ -5361,7 +5376,7 @@
     },
     "CSHARP_CSHARPIER_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/CSHARP_CSHARPIER_FILTER_REGEX_INCLUDE",
-      "description": "CSHARP_CSHARPIER: Custom regex including filter: only files matching this regex will be linted",
+      "description": "CSHARP_CSHARPIER: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with CSHARP_CSHARPIER_CLI_LINT_MODE = project",
       "title": "CSHARP_CSHARPIER: Including Regex",
       "type": "string",
       "x-category": "CSHARP_CSHARPIER",
@@ -5475,13 +5490,9 @@
       "default": "project",
       "description": "CSHARP_DOTNET_FORMAT: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
-        "file",
-        "list_of_files",
         "project"
       ],
       "enumNames": [
-        "File",
-        "List of Files",
         "Project"
       ],
       "title": "CSHARP_DOTNET_FORMAT: CLI lint mode",
@@ -5564,6 +5575,26 @@
       "type": "array",
       "x-category": "CSHARP_DOTNET_FORMAT",
       "x-order": 300030,
+      "x-section": "SCOPE"
+    },
+    "CSHARP_DOTNET_FORMAT_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/CSHARP_DOTNET_FORMAT_FILTER_REGEX_EXCLUDE",
+      "description": "CSHARP_DOTNET_FORMAT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with CSHARP_DOTNET_FORMAT_CLI_LINT_MODE = project",
+      "title": "CSHARP_DOTNET_FORMAT: Excluding Regex",
+      "type": "string",
+      "x-category": "CSHARP_DOTNET_FORMAT",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "CSHARP_DOTNET_FORMAT_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/CSHARP_DOTNET_FORMAT_FILTER_REGEX_INCLUDE",
+      "description": "CSHARP_DOTNET_FORMAT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with CSHARP_DOTNET_FORMAT_CLI_LINT_MODE = project",
+      "title": "CSHARP_DOTNET_FORMAT: Including Regex",
+      "type": "string",
+      "x-category": "CSHARP_DOTNET_FORMAT",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
       "x-section": "SCOPE"
     },
     "CSHARP_DOTNET_FORMAT_POST_COMMANDS": {
@@ -5725,12 +5756,10 @@
       "default": "file",
       "description": "CSHARP_ROSLYNATOR: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
-        "file",
-        "project"
+        "file"
       ],
       "enumNames": [
-        "File",
-        "Project"
+        "File"
       ],
       "title": "CSHARP_ROSLYNATOR: CLI lint mode",
       "type": "string",
@@ -5816,7 +5845,7 @@
     },
     "CSHARP_ROSLYNATOR_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/CSHARP_ROSLYNATOR_FILTER_REGEX_EXCLUDE",
-      "description": "CSHARP_ROSLYNATOR: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "title": "CSHARP_ROSLYNATOR: Excluding Regex",
       "type": "string",
       "x-category": "CSHARP_ROSLYNATOR",
@@ -5826,7 +5855,7 @@
     },
     "CSHARP_ROSLYNATOR_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/CSHARP_ROSLYNATOR_FILTER_REGEX_INCLUDE",
-      "description": "CSHARP_ROSLYNATOR: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "title": "CSHARP_ROSLYNATOR: Including Regex",
       "type": "string",
       "x-category": "CSHARP_ROSLYNATOR",
@@ -6330,7 +6359,7 @@
     },
     "CSS_STYLELINT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/CSS_STYLELINT_FILTER_REGEX_EXCLUDE",
-      "description": "CSS_STYLELINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "CSS_STYLELINT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with CSS_STYLELINT_CLI_LINT_MODE = project",
       "title": "CSS_STYLELINT: Excluding Regex",
       "type": "string",
       "x-category": "CSS_STYLELINT",
@@ -6340,7 +6369,7 @@
     },
     "CSS_STYLELINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/CSS_STYLELINT_FILTER_REGEX_INCLUDE",
-      "description": "CSS_STYLELINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "CSS_STYLELINT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with CSS_STYLELINT_CLI_LINT_MODE = project",
       "title": "CSS_STYLELINT: Including Regex",
       "type": "string",
       "x-category": "CSS_STYLELINT",
@@ -6455,13 +6484,11 @@
       "description": "C_CLANG_FORMAT: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
-        "list_of_files",
-        "project"
+        "list_of_files"
       ],
       "enumNames": [
         "File",
-        "List of Files",
-        "Project"
+        "List of Files"
       ],
       "title": "C_CLANG_FORMAT: CLI lint mode",
       "type": "string",
@@ -6558,7 +6585,7 @@
     },
     "C_CLANG_FORMAT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/C_CLANG_FORMAT_FILTER_REGEX_EXCLUDE",
-      "description": "C_CLANG_FORMAT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "title": "C_CLANG_FORMAT: Excluding Regex",
       "type": "string",
       "x-category": "C_CLANG_FORMAT",
@@ -6568,7 +6595,7 @@
     },
     "C_CLANG_FORMAT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/C_CLANG_FORMAT_FILTER_REGEX_INCLUDE",
-      "description": "C_CLANG_FORMAT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "title": "C_CLANG_FORMAT: Including Regex",
       "type": "string",
       "x-category": "C_CLANG_FORMAT",
@@ -6679,14 +6706,16 @@
     },
     "C_CPPCHECK_CLI_LINT_MODE": {
       "$id": "#/properties/C_CPPCHECK_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "description": "C_CPPCHECK: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "enumNames": [
         "File",
+        "List of Files",
         "Project"
       ],
       "title": "C_CPPCHECK: CLI lint mode",
@@ -6774,7 +6803,7 @@
     },
     "C_CPPCHECK_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/C_CPPCHECK_FILTER_REGEX_EXCLUDE",
-      "description": "C_CPPCHECK: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "C_CPPCHECK: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with C_CPPCHECK_CLI_LINT_MODE = project",
       "title": "C_CPPCHECK: Excluding Regex",
       "type": "string",
       "x-category": "C_CPPCHECK",
@@ -6784,7 +6813,7 @@
     },
     "C_CPPCHECK_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/C_CPPCHECK_FILTER_REGEX_INCLUDE",
-      "description": "C_CPPCHECK: Custom regex including filter: only files matching this regex will be linted",
+      "description": "C_CPPCHECK: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with C_CPPCHECK_CLI_LINT_MODE = project",
       "title": "C_CPPCHECK: Including Regex",
       "type": "string",
       "x-category": "C_CPPCHECK",
@@ -6890,13 +6919,11 @@
       "description": "C_CPPLINT: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
-        "list_of_files",
-        "project"
+        "list_of_files"
       ],
       "enumNames": [
         "File",
-        "List of Files",
-        "Project"
+        "List of Files"
       ],
       "title": "C_CPPLINT: CLI lint mode",
       "type": "string",
@@ -6983,7 +7010,7 @@
     },
     "C_CPPLINT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/C_CPPLINT_FILTER_REGEX_EXCLUDE",
-      "description": "C_CPPLINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "title": "C_CPPLINT: Excluding Regex",
       "type": "string",
       "x-category": "C_CPPLINT",
@@ -6993,7 +7020,7 @@
     },
     "C_CPPLINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/C_CPPLINT_FILTER_REGEX_INCLUDE",
-      "description": "C_CPPLINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "title": "C_CPPLINT: Including Regex",
       "type": "string",
       "x-category": "C_CPPLINT",
@@ -7157,14 +7184,16 @@
     },
     "DART_DARTANALYZER_CLI_LINT_MODE": {
       "$id": "#/properties/DART_DARTANALYZER_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "description": "DART_DARTANALYZER: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "enumNames": [
         "File",
+        "List of Files",
         "Project"
       ],
       "title": "DART_DARTANALYZER: CLI lint mode",
@@ -7261,7 +7290,7 @@
     },
     "DART_DARTANALYZER_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/DART_DARTANALYZER_FILTER_REGEX_EXCLUDE",
-      "description": "DART_DARTANALYZER: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "DART_DARTANALYZER: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with DART_DARTANALYZER_CLI_LINT_MODE = project",
       "title": "DART_DARTANALYZER: Excluding Regex",
       "type": "string",
       "x-category": "DART_DARTANALYZER",
@@ -7271,7 +7300,7 @@
     },
     "DART_DARTANALYZER_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/DART_DARTANALYZER_FILTER_REGEX_INCLUDE",
-      "description": "DART_DARTANALYZER: Custom regex including filter: only files matching this regex will be linted",
+      "description": "DART_DARTANALYZER: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with DART_DARTANALYZER_CLI_LINT_MODE = project",
       "title": "DART_DARTANALYZER: Including Regex",
       "type": "string",
       "x-category": "DART_DARTANALYZER",
@@ -7728,13 +7757,11 @@
       "description": "DOCKERFILE_HADOLINT: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
-        "list_of_files",
-        "project"
+        "list_of_files"
       ],
       "enumNames": [
         "File",
-        "List of Files",
-        "Project"
+        "List of Files"
       ],
       "title": "DOCKERFILE_HADOLINT: CLI lint mode",
       "type": "string",
@@ -7831,7 +7858,7 @@
     },
     "DOCKERFILE_HADOLINT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/DOCKERFILE_HADOLINT_FILTER_REGEX_EXCLUDE",
-      "description": "DOCKERFILE_HADOLINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "title": "DOCKERFILE_HADOLINT: Excluding Regex",
       "type": "string",
       "x-category": "DOCKERFILE_HADOLINT",
@@ -7841,7 +7868,7 @@
     },
     "DOCKERFILE_HADOLINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/DOCKERFILE_HADOLINT_FILTER_REGEX_INCLUDE",
-      "description": "DOCKERFILE_HADOLINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "title": "DOCKERFILE_HADOLINT: Including Regex",
       "type": "string",
       "x-category": "DOCKERFILE_HADOLINT",
@@ -8100,7 +8127,7 @@
     },
     "EDITORCONFIG_EDITORCONFIG_CHECKER_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/EDITORCONFIG_EDITORCONFIG_CHECKER_FILTER_REGEX_EXCLUDE",
-      "description": "EDITORCONFIG_EDITORCONFIG_CHECKER: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "EDITORCONFIG_EDITORCONFIG_CHECKER: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with EDITORCONFIG_EDITORCONFIG_CHECKER_CLI_LINT_MODE = project",
       "title": "EDITORCONFIG_EDITORCONFIG_CHECKER: Excluding Regex",
       "type": "string",
       "x-category": "EDITORCONFIG_EDITORCONFIG_CHECKER",
@@ -8110,7 +8137,7 @@
     },
     "EDITORCONFIG_EDITORCONFIG_CHECKER_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/EDITORCONFIG_EDITORCONFIG_CHECKER_FILTER_REGEX_INCLUDE",
-      "description": "EDITORCONFIG_EDITORCONFIG_CHECKER: Custom regex including filter: only files matching this regex will be linted",
+      "description": "EDITORCONFIG_EDITORCONFIG_CHECKER: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with EDITORCONFIG_EDITORCONFIG_CHECKER_CLI_LINT_MODE = project",
       "title": "EDITORCONFIG_EDITORCONFIG_CHECKER: Including Regex",
       "type": "string",
       "x-category": "EDITORCONFIG_EDITORCONFIG_CHECKER",
@@ -8437,14 +8464,16 @@
     },
     "ENV_DOTENV_LINTER_CLI_LINT_MODE": {
       "$id": "#/properties/ENV_DOTENV_LINTER_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "description": "ENV_DOTENV_LINTER: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "enumNames": [
         "File",
+        "List of Files",
         "Project"
       ],
       "title": "ENV_DOTENV_LINTER: CLI lint mode",
@@ -8531,7 +8560,7 @@
     },
     "ENV_DOTENV_LINTER_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/ENV_DOTENV_LINTER_FILTER_REGEX_EXCLUDE",
-      "description": "ENV_DOTENV_LINTER: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "ENV_DOTENV_LINTER: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with ENV_DOTENV_LINTER_CLI_LINT_MODE = project",
       "title": "ENV_DOTENV_LINTER: Excluding Regex",
       "type": "string",
       "x-category": "ENV_DOTENV_LINTER",
@@ -8541,7 +8570,7 @@
     },
     "ENV_DOTENV_LINTER_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/ENV_DOTENV_LINTER_FILTER_REGEX_INCLUDE",
-      "description": "ENV_DOTENV_LINTER: Custom regex including filter: only files matching this regex will be linted",
+      "description": "ENV_DOTENV_LINTER: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with ENV_DOTENV_LINTER_CLI_LINT_MODE = project",
       "title": "ENV_DOTENV_LINTER: Including Regex",
       "type": "string",
       "x-category": "ENV_DOTENV_LINTER",
@@ -8859,14 +8888,16 @@
     },
     "GHERKIN_GHERKIN_LINT_CLI_LINT_MODE": {
       "$id": "#/properties/GHERKIN_GHERKIN_LINT_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "description": "GHERKIN_GHERKIN_LINT: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "enumNames": [
         "File",
+        "List of Files",
         "Project"
       ],
       "title": "GHERKIN_GHERKIN_LINT: CLI lint mode",
@@ -8963,7 +8994,7 @@
     },
     "GHERKIN_GHERKIN_LINT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/GHERKIN_GHERKIN_LINT_FILTER_REGEX_EXCLUDE",
-      "description": "GHERKIN_GHERKIN_LINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "GHERKIN_GHERKIN_LINT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with GHERKIN_GHERKIN_LINT_CLI_LINT_MODE = project",
       "title": "GHERKIN_GHERKIN_LINT: Excluding Regex",
       "type": "string",
       "x-category": "GHERKIN_GHERKIN_LINT",
@@ -8973,7 +9004,7 @@
     },
     "GHERKIN_GHERKIN_LINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/GHERKIN_GHERKIN_LINT_FILTER_REGEX_INCLUDE",
-      "description": "GHERKIN_GHERKIN_LINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "GHERKIN_GHERKIN_LINT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with GHERKIN_GHERKIN_LINT_CLI_LINT_MODE = project",
       "title": "GHERKIN_GHERKIN_LINT: Including Regex",
       "type": "string",
       "x-category": "GHERKIN_GHERKIN_LINT",
@@ -9345,6 +9376,26 @@
       "x-order": 300030,
       "x-section": "SCOPE"
     },
+    "GO_GOLANGCI_LINT_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/GO_GOLANGCI_LINT_FILTER_REGEX_EXCLUDE",
+      "description": "GO_GOLANGCI_LINT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with GO_GOLANGCI_LINT_CLI_LINT_MODE = project",
+      "title": "GO_GOLANGCI_LINT: Excluding Regex",
+      "type": "string",
+      "x-category": "GO_GOLANGCI_LINT",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "GO_GOLANGCI_LINT_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/GO_GOLANGCI_LINT_FILTER_REGEX_INCLUDE",
+      "description": "GO_GOLANGCI_LINT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with GO_GOLANGCI_LINT_CLI_LINT_MODE = project",
+      "title": "GO_GOLANGCI_LINT: Including Regex",
+      "type": "string",
+      "x-category": "GO_GOLANGCI_LINT",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
+    },
     "GO_GOLANGCI_LINT_POST_COMMANDS": {
       "$id": "#/properties/GO_GOLANGCI_LINT_POST_COMMANDS",
       "description": "GO_GOLANGCI_LINT: Define bash commands to run after running GO_GOLANGCI_LINT",
@@ -9493,14 +9544,10 @@
       "default": "list_of_files",
       "description": "GO_REVIVE: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
-        "file",
-        "list_of_files",
-        "project"
+        "file"
       ],
       "enumNames": [
-        "File",
-        "List of Files",
-        "Project"
+        "File"
       ],
       "title": "GO_REVIVE: CLI lint mode",
       "type": "string",
@@ -9596,7 +9643,7 @@
     },
     "GO_REVIVE_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/GO_REVIVE_FILTER_REGEX_EXCLUDE",
-      "description": "GO_REVIVE: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "title": "GO_REVIVE: Excluding Regex",
       "type": "string",
       "x-category": "GO_REVIVE",
@@ -9606,7 +9653,7 @@
     },
     "GO_REVIVE_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/GO_REVIVE_FILTER_REGEX_INCLUDE",
-      "description": "GO_REVIVE: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "title": "GO_REVIVE: Including Regex",
       "type": "string",
       "x-category": "GO_REVIVE",
@@ -9737,14 +9784,16 @@
     },
     "GRAPHQL_GRAPHQL_SCHEMA_LINTER_CLI_LINT_MODE": {
       "$id": "#/properties/GRAPHQL_GRAPHQL_SCHEMA_LINTER_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "description": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "enumNames": [
         "File",
+        "List of Files",
         "Project"
       ],
       "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: CLI lint mode",
@@ -9841,7 +9890,7 @@
     },
     "GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILTER_REGEX_EXCLUDE",
-      "description": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with GRAPHQL_GRAPHQL_SCHEMA_LINTER_CLI_LINT_MODE = project",
       "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Excluding Regex",
       "type": "string",
       "x-category": "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
@@ -9851,7 +9900,7 @@
     },
     "GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILTER_REGEX_INCLUDE",
-      "description": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Custom regex including filter: only files matching this regex will be linted",
+      "description": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with GRAPHQL_GRAPHQL_SCHEMA_LINTER_CLI_LINT_MODE = project",
       "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Including Regex",
       "type": "string",
       "x-category": "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
@@ -10135,7 +10184,7 @@
     },
     "GROOVY_NPM_GROOVY_LINT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/GROOVY_NPM_GROOVY_LINT_FILTER_REGEX_EXCLUDE",
-      "description": "GROOVY_NPM_GROOVY_LINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "GROOVY_NPM_GROOVY_LINT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with GROOVY_NPM_GROOVY_LINT_CLI_LINT_MODE = project",
       "title": "GROOVY_NPM_GROOVY_LINT: Excluding Regex",
       "type": "string",
       "x-category": "GROOVY_NPM_GROOVY_LINT",
@@ -10145,7 +10194,7 @@
     },
     "GROOVY_NPM_GROOVY_LINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/GROOVY_NPM_GROOVY_LINT_FILTER_REGEX_INCLUDE",
-      "description": "GROOVY_NPM_GROOVY_LINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "GROOVY_NPM_GROOVY_LINT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with GROOVY_NPM_GROOVY_LINT_CLI_LINT_MODE = project",
       "title": "GROOVY_NPM_GROOVY_LINT: Including Regex",
       "type": "string",
       "x-category": "GROOVY_NPM_GROOVY_LINT",
@@ -10395,7 +10444,7 @@
     },
     "HTML_DJLINT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/HTML_DJLINT_FILTER_REGEX_EXCLUDE",
-      "description": "HTML_DJLINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "HTML_DJLINT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with HTML_DJLINT_CLI_LINT_MODE = project",
       "title": "HTML_DJLINT: Excluding Regex",
       "type": "string",
       "x-category": "HTML_DJLINT",
@@ -10405,7 +10454,7 @@
     },
     "HTML_DJLINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/HTML_DJLINT_FILTER_REGEX_INCLUDE",
-      "description": "HTML_DJLINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "HTML_DJLINT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with HTML_DJLINT_CLI_LINT_MODE = project",
       "title": "HTML_DJLINT: Including Regex",
       "type": "string",
       "x-category": "HTML_DJLINT",
@@ -10634,7 +10683,7 @@
     },
     "HTML_HTMLHINT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/HTML_HTMLHINT_FILTER_REGEX_EXCLUDE",
-      "description": "HTML_HTMLHINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "HTML_HTMLHINT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with HTML_HTMLHINT_CLI_LINT_MODE = project",
       "title": "HTML_HTMLHINT: Excluding Regex",
       "type": "string",
       "x-category": "HTML_HTMLHINT",
@@ -10644,7 +10693,7 @@
     },
     "HTML_HTMLHINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/HTML_HTMLHINT_FILTER_REGEX_INCLUDE",
-      "description": "HTML_HTMLHINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "HTML_HTMLHINT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with HTML_HTMLHINT_CLI_LINT_MODE = project",
       "title": "HTML_HTMLHINT: Including Regex",
       "type": "string",
       "x-category": "HTML_HTMLHINT",
@@ -10946,7 +10995,7 @@
     },
     "JAVASCRIPT_ES_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/JAVASCRIPT_ES_FILTER_REGEX_EXCLUDE",
-      "description": "JAVASCRIPT_ES: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "JAVASCRIPT_ES: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with JAVASCRIPT_ES_CLI_LINT_MODE = project",
       "title": "JAVASCRIPT_ES: Excluding Regex",
       "type": "string",
       "x-category": "JAVASCRIPT_ES",
@@ -10956,7 +11005,7 @@
     },
     "JAVASCRIPT_ES_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/JAVASCRIPT_ES_FILTER_REGEX_INCLUDE",
-      "description": "JAVASCRIPT_ES: Custom regex including filter: only files matching this regex will be linted",
+      "description": "JAVASCRIPT_ES: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with JAVASCRIPT_ES_CLI_LINT_MODE = project",
       "title": "JAVASCRIPT_ES: Including Regex",
       "type": "string",
       "x-category": "JAVASCRIPT_ES",
@@ -11214,7 +11263,7 @@
     },
     "JAVASCRIPT_PRETTIER_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/JAVASCRIPT_PRETTIER_FILTER_REGEX_EXCLUDE",
-      "description": "JAVASCRIPT_PRETTIER: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "JAVASCRIPT_PRETTIER: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with JAVASCRIPT_PRETTIER_CLI_LINT_MODE = project",
       "title": "JAVASCRIPT_PRETTIER: Excluding Regex",
       "type": "string",
       "x-category": "JAVASCRIPT_PRETTIER",
@@ -11224,7 +11273,7 @@
     },
     "JAVASCRIPT_PRETTIER_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/JAVASCRIPT_PRETTIER_FILTER_REGEX_INCLUDE",
-      "description": "JAVASCRIPT_PRETTIER: Custom regex including filter: only files matching this regex will be linted",
+      "description": "JAVASCRIPT_PRETTIER: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with JAVASCRIPT_PRETTIER_CLI_LINT_MODE = project",
       "title": "JAVASCRIPT_PRETTIER: Including Regex",
       "type": "string",
       "x-category": "JAVASCRIPT_PRETTIER",
@@ -11452,7 +11501,7 @@
     },
     "JAVASCRIPT_STANDARD_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/JAVASCRIPT_STANDARD_FILTER_REGEX_EXCLUDE",
-      "description": "JAVASCRIPT_STANDARD: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "JAVASCRIPT_STANDARD: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with JAVASCRIPT_STANDARD_CLI_LINT_MODE = project",
       "title": "JAVASCRIPT_STANDARD: Excluding Regex",
       "type": "string",
       "x-category": "JAVASCRIPT_STANDARD",
@@ -11462,7 +11511,7 @@
     },
     "JAVASCRIPT_STANDARD_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/JAVASCRIPT_STANDARD_FILTER_REGEX_INCLUDE",
-      "description": "JAVASCRIPT_STANDARD: Custom regex including filter: only files matching this regex will be linted",
+      "description": "JAVASCRIPT_STANDARD: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with JAVASCRIPT_STANDARD_CLI_LINT_MODE = project",
       "title": "JAVASCRIPT_STANDARD: Including Regex",
       "type": "string",
       "x-category": "JAVASCRIPT_STANDARD",
@@ -11670,7 +11719,7 @@
     },
     "JAVA_CHECKSTYLE_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/JAVA_CHECKSTYLE_FILTER_REGEX_EXCLUDE",
-      "description": "JAVA_CHECKSTYLE: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "JAVA_CHECKSTYLE: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with JAVA_CHECKSTYLE_CLI_LINT_MODE = project",
       "title": "JAVA_CHECKSTYLE: Excluding Regex",
       "type": "string",
       "x-category": "JAVA_CHECKSTYLE",
@@ -11680,7 +11729,7 @@
     },
     "JAVA_CHECKSTYLE_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/JAVA_CHECKSTYLE_FILTER_REGEX_INCLUDE",
-      "description": "JAVA_CHECKSTYLE: Custom regex including filter: only files matching this regex will be linted",
+      "description": "JAVA_CHECKSTYLE: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with JAVA_CHECKSTYLE_CLI_LINT_MODE = project",
       "title": "JAVA_CHECKSTYLE: Including Regex",
       "type": "string",
       "x-category": "JAVA_CHECKSTYLE",
@@ -11917,7 +11966,7 @@
     },
     "JAVA_PMD_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/JAVA_PMD_FILTER_REGEX_EXCLUDE",
-      "description": "JAVA_PMD: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "JAVA_PMD: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with JAVA_PMD_CLI_LINT_MODE = project",
       "title": "JAVA_PMD: Excluding Regex",
       "type": "string",
       "x-category": "JAVA_PMD",
@@ -11927,7 +11976,7 @@
     },
     "JAVA_PMD_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/JAVA_PMD_FILTER_REGEX_INCLUDE",
-      "description": "JAVA_PMD: Custom regex including filter: only files matching this regex will be linted",
+      "description": "JAVA_PMD: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with JAVA_PMD_CLI_LINT_MODE = project",
       "title": "JAVA_PMD: Including Regex",
       "type": "string",
       "x-category": "JAVA_PMD",
@@ -12208,7 +12257,7 @@
     "JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_EXCLUDE",
       "deprecated": true,
-      "description": "JSON_ESLINT_PLUGIN_JSONC: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "JSON_ESLINT_PLUGIN_JSONC: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with JSON_ESLINT_PLUGIN_JSONC_CLI_LINT_MODE = project",
       "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Excluding Regex",
       "type": "string",
       "x-category": "JSON_ESLINT_PLUGIN_JSONC",
@@ -12219,7 +12268,7 @@
     "JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_INCLUDE",
       "deprecated": true,
-      "description": "JSON_ESLINT_PLUGIN_JSONC: Custom regex including filter: only files matching this regex will be linted",
+      "description": "JSON_ESLINT_PLUGIN_JSONC: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with JSON_ESLINT_PLUGIN_JSONC_CLI_LINT_MODE = project",
       "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Including Regex",
       "type": "string",
       "x-category": "JSON_ESLINT_PLUGIN_JSONC",
@@ -12458,7 +12507,7 @@
     },
     "JSON_JSONLINT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/JSON_JSONLINT_FILTER_REGEX_EXCLUDE",
-      "description": "JSON_JSONLINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "JSON_JSONLINT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with JSON_JSONLINT_CLI_LINT_MODE = project",
       "title": "JSON_JSONLINT: Excluding Regex",
       "type": "string",
       "x-category": "JSON_JSONLINT",
@@ -12468,7 +12517,7 @@
     },
     "JSON_JSONLINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/JSON_JSONLINT_FILTER_REGEX_INCLUDE",
-      "description": "JSON_JSONLINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "JSON_JSONLINT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with JSON_JSONLINT_CLI_LINT_MODE = project",
       "title": "JSON_JSONLINT: Including Regex",
       "type": "string",
       "x-category": "JSON_JSONLINT",
@@ -12582,13 +12631,9 @@
       "default": "project",
       "description": "JSON_NPM_PACKAGE_JSON_LINT: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
-        "file",
-        "list_of_files",
         "project"
       ],
       "enumNames": [
-        "File",
-        "List of Files",
         "Project"
       ],
       "title": "JSON_NPM_PACKAGE_JSON_LINT: CLI lint mode",
@@ -12683,6 +12728,26 @@
       "type": "array",
       "x-category": "JSON_NPM_PACKAGE_JSON_LINT",
       "x-order": 300030,
+      "x-section": "SCOPE"
+    },
+    "JSON_NPM_PACKAGE_JSON_LINT_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/JSON_NPM_PACKAGE_JSON_LINT_FILTER_REGEX_EXCLUDE",
+      "description": "JSON_NPM_PACKAGE_JSON_LINT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with JSON_NPM_PACKAGE_JSON_LINT_CLI_LINT_MODE = project",
+      "title": "JSON_NPM_PACKAGE_JSON_LINT: Excluding Regex",
+      "type": "string",
+      "x-category": "JSON_NPM_PACKAGE_JSON_LINT",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "JSON_NPM_PACKAGE_JSON_LINT_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/JSON_NPM_PACKAGE_JSON_LINT_FILTER_REGEX_INCLUDE",
+      "description": "JSON_NPM_PACKAGE_JSON_LINT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with JSON_NPM_PACKAGE_JSON_LINT_CLI_LINT_MODE = project",
+      "title": "JSON_NPM_PACKAGE_JSON_LINT: Including Regex",
+      "type": "string",
+      "x-category": "JSON_NPM_PACKAGE_JSON_LINT",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
       "x-section": "SCOPE"
     },
     "JSON_NPM_PACKAGE_JSON_LINT_POST_COMMANDS": {
@@ -12915,7 +12980,7 @@
     },
     "JSON_PRETTIER_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/JSON_PRETTIER_FILTER_REGEX_EXCLUDE",
-      "description": "JSON_PRETTIER: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "JSON_PRETTIER: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with JSON_PRETTIER_CLI_LINT_MODE = project",
       "title": "JSON_PRETTIER: Excluding Regex",
       "type": "string",
       "x-category": "JSON_PRETTIER",
@@ -12925,7 +12990,7 @@
     },
     "JSON_PRETTIER_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/JSON_PRETTIER_FILTER_REGEX_INCLUDE",
-      "description": "JSON_PRETTIER: Custom regex including filter: only files matching this regex will be linted",
+      "description": "JSON_PRETTIER: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with JSON_PRETTIER_CLI_LINT_MODE = project",
       "title": "JSON_PRETTIER: Including Regex",
       "type": "string",
       "x-category": "JSON_PRETTIER",
@@ -13193,7 +13258,7 @@
     },
     "JSON_V8R_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/JSON_V8R_FILTER_REGEX_EXCLUDE",
-      "description": "JSON_V8R: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "JSON_V8R: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with JSON_V8R_CLI_LINT_MODE = project",
       "title": "JSON_V8R: Excluding Regex",
       "type": "string",
       "x-category": "JSON_V8R",
@@ -13203,7 +13268,7 @@
     },
     "JSON_V8R_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/JSON_V8R_FILTER_REGEX_INCLUDE",
-      "description": "JSON_V8R: Custom regex including filter: only files matching this regex will be linted",
+      "description": "JSON_V8R: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with JSON_V8R_CLI_LINT_MODE = project",
       "title": "JSON_V8R: Including Regex",
       "type": "string",
       "x-category": "JSON_V8R",
@@ -13420,7 +13485,7 @@
     },
     "JSX_ESLINT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/JSX_ESLINT_FILTER_REGEX_EXCLUDE",
-      "description": "JSX_ESLINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "JSX_ESLINT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with JSX_ESLINT_CLI_LINT_MODE = project",
       "title": "JSX_ESLINT: Excluding Regex",
       "type": "string",
       "x-category": "JSX_ESLINT",
@@ -13430,7 +13495,7 @@
     },
     "JSX_ESLINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/JSX_ESLINT_FILTER_REGEX_INCLUDE",
-      "description": "JSX_ESLINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "JSX_ESLINT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with JSX_ESLINT_CLI_LINT_MODE = project",
       "title": "JSX_ESLINT: Including Regex",
       "type": "string",
       "x-category": "JSX_ESLINT",
@@ -13708,6 +13773,26 @@
       "x-order": 300030,
       "x-section": "SCOPE"
     },
+    "KOTLIN_DETEKT_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/KOTLIN_DETEKT_FILTER_REGEX_EXCLUDE",
+      "description": "KOTLIN_DETEKT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with KOTLIN_DETEKT_CLI_LINT_MODE = project",
+      "title": "KOTLIN_DETEKT: Excluding Regex",
+      "type": "string",
+      "x-category": "KOTLIN_DETEKT",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "KOTLIN_DETEKT_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/KOTLIN_DETEKT_FILTER_REGEX_INCLUDE",
+      "description": "KOTLIN_DETEKT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with KOTLIN_DETEKT_CLI_LINT_MODE = project",
+      "title": "KOTLIN_DETEKT: Including Regex",
+      "type": "string",
+      "x-category": "KOTLIN_DETEKT",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
+    },
     "KOTLIN_DETEKT_POST_COMMANDS": {
       "$id": "#/properties/KOTLIN_DETEKT_POST_COMMANDS",
       "description": "KOTLIN_DETEKT: Define bash commands to run after running KOTLIN_DETEKT",
@@ -13928,7 +14013,7 @@
     },
     "KOTLIN_KTLINT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/KOTLIN_KTLINT_FILTER_REGEX_EXCLUDE",
-      "description": "KOTLIN_KTLINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "KOTLIN_KTLINT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with KOTLIN_KTLINT_CLI_LINT_MODE = project",
       "title": "KOTLIN_KTLINT: Excluding Regex",
       "type": "string",
       "x-category": "KOTLIN_KTLINT",
@@ -13938,7 +14023,7 @@
     },
     "KOTLIN_KTLINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/KOTLIN_KTLINT_FILTER_REGEX_INCLUDE",
-      "description": "KOTLIN_KTLINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "KOTLIN_KTLINT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with KOTLIN_KTLINT_CLI_LINT_MODE = project",
       "title": "KOTLIN_KTLINT: Including Regex",
       "type": "string",
       "x-category": "KOTLIN_KTLINT",
@@ -14113,13 +14198,9 @@
       "default": "project",
       "description": "KUBERNETES_HELM: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
-        "file",
-        "list_of_files",
         "project"
       ],
       "enumNames": [
-        "File",
-        "List of Files",
         "Project"
       ],
       "title": "KUBERNETES_HELM: CLI lint mode",
@@ -14214,6 +14295,26 @@
       "type": "array",
       "x-category": "KUBERNETES_HELM",
       "x-order": 300030,
+      "x-section": "SCOPE"
+    },
+    "KUBERNETES_HELM_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/KUBERNETES_HELM_FILTER_REGEX_EXCLUDE",
+      "description": "KUBERNETES_HELM: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with KUBERNETES_HELM_CLI_LINT_MODE = project",
+      "title": "KUBERNETES_HELM: Excluding Regex",
+      "type": "string",
+      "x-category": "KUBERNETES_HELM",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "KUBERNETES_HELM_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/KUBERNETES_HELM_FILTER_REGEX_INCLUDE",
+      "description": "KUBERNETES_HELM: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with KUBERNETES_HELM_CLI_LINT_MODE = project",
+      "title": "KUBERNETES_HELM: Including Regex",
+      "type": "string",
+      "x-category": "KUBERNETES_HELM",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
       "x-section": "SCOPE"
     },
     "KUBERNETES_HELM_POST_COMMANDS": {
@@ -14418,7 +14519,7 @@
     },
     "KUBERNETES_KUBECONFORM_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/KUBERNETES_KUBECONFORM_FILTER_REGEX_EXCLUDE",
-      "description": "KUBERNETES_KUBECONFORM: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "KUBERNETES_KUBECONFORM: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with KUBERNETES_KUBECONFORM_CLI_LINT_MODE = project",
       "title": "KUBERNETES_KUBECONFORM: Excluding Regex",
       "type": "string",
       "x-category": "KUBERNETES_KUBECONFORM",
@@ -14428,7 +14529,7 @@
     },
     "KUBERNETES_KUBECONFORM_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/KUBERNETES_KUBECONFORM_FILTER_REGEX_INCLUDE",
-      "description": "KUBERNETES_KUBECONFORM: Custom regex including filter: only files matching this regex will be linted",
+      "description": "KUBERNETES_KUBECONFORM: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with KUBERNETES_KUBECONFORM_CLI_LINT_MODE = project",
       "title": "KUBERNETES_KUBECONFORM: Including Regex",
       "type": "string",
       "x-category": "KUBERNETES_KUBECONFORM",
@@ -14533,13 +14634,9 @@
       "default": "project",
       "description": "KUBERNETES_KUBESCAPE: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
-        "file",
-        "list_of_files",
         "project"
       ],
       "enumNames": [
-        "File",
-        "List of Files",
         "Project"
       ],
       "title": "KUBERNETES_KUBESCAPE: CLI lint mode",
@@ -14634,6 +14731,26 @@
       "type": "array",
       "x-category": "KUBERNETES_KUBESCAPE",
       "x-order": 300030,
+      "x-section": "SCOPE"
+    },
+    "KUBERNETES_KUBESCAPE_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/KUBERNETES_KUBESCAPE_FILTER_REGEX_EXCLUDE",
+      "description": "KUBERNETES_KUBESCAPE: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with KUBERNETES_KUBESCAPE_CLI_LINT_MODE = project",
+      "title": "KUBERNETES_KUBESCAPE: Excluding Regex",
+      "type": "string",
+      "x-category": "KUBERNETES_KUBESCAPE",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "KUBERNETES_KUBESCAPE_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/KUBERNETES_KUBESCAPE_FILTER_REGEX_INCLUDE",
+      "description": "KUBERNETES_KUBESCAPE: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with KUBERNETES_KUBESCAPE_CLI_LINT_MODE = project",
+      "title": "KUBERNETES_KUBESCAPE: Including Regex",
+      "type": "string",
+      "x-category": "KUBERNETES_KUBESCAPE",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
       "x-section": "SCOPE"
     },
     "KUBERNETES_KUBESCAPE_POST_COMMANDS": {
@@ -14940,12 +15057,10 @@
       "default": "file",
       "description": "LATEX_CHKTEX: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
-        "file",
-        "project"
+        "file"
       ],
       "enumNames": [
-        "File",
-        "Project"
+        "File"
       ],
       "title": "LATEX_CHKTEX: CLI lint mode",
       "type": "string",
@@ -15041,7 +15156,7 @@
     },
     "LATEX_CHKTEX_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/LATEX_CHKTEX_FILTER_REGEX_EXCLUDE",
-      "description": "LATEX_CHKTEX: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "title": "LATEX_CHKTEX: Excluding Regex",
       "type": "string",
       "x-category": "LATEX_CHKTEX",
@@ -15051,7 +15166,7 @@
     },
     "LATEX_CHKTEX_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/LATEX_CHKTEX_FILTER_REGEX_INCLUDE",
-      "description": "LATEX_CHKTEX: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "title": "LATEX_CHKTEX: Including Regex",
       "type": "string",
       "x-category": "LATEX_CHKTEX",
@@ -15466,14 +15581,16 @@
     },
     "LUA_LUACHECK_CLI_LINT_MODE": {
       "$id": "#/properties/LUA_LUACHECK_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "description": "LUA_LUACHECK: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "enumNames": [
         "File",
+        "List of Files",
         "Project"
       ],
       "title": "LUA_LUACHECK: CLI lint mode",
@@ -15570,7 +15687,7 @@
     },
     "LUA_LUACHECK_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/LUA_LUACHECK_FILTER_REGEX_EXCLUDE",
-      "description": "LUA_LUACHECK: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "LUA_LUACHECK: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with LUA_LUACHECK_CLI_LINT_MODE = project",
       "title": "LUA_LUACHECK: Excluding Regex",
       "type": "string",
       "x-category": "LUA_LUACHECK",
@@ -15580,7 +15697,7 @@
     },
     "LUA_LUACHECK_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/LUA_LUACHECK_FILTER_REGEX_INCLUDE",
-      "description": "LUA_LUACHECK: Custom regex including filter: only files matching this regex will be linted",
+      "description": "LUA_LUACHECK: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with LUA_LUACHECK_CLI_LINT_MODE = project",
       "title": "LUA_LUACHECK: Including Regex",
       "type": "string",
       "x-category": "LUA_LUACHECK",
@@ -15733,14 +15850,16 @@
     },
     "LUA_SELENE_CLI_LINT_MODE": {
       "$id": "#/properties/LUA_SELENE_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "description": "LUA_SELENE: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "enumNames": [
         "File",
+        "List of Files",
         "Project"
       ],
       "title": "LUA_SELENE: CLI lint mode",
@@ -15837,7 +15956,7 @@
     },
     "LUA_SELENE_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/LUA_SELENE_FILTER_REGEX_EXCLUDE",
-      "description": "LUA_SELENE: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "LUA_SELENE: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with LUA_SELENE_CLI_LINT_MODE = project",
       "title": "LUA_SELENE: Excluding Regex",
       "type": "string",
       "x-category": "LUA_SELENE",
@@ -15847,7 +15966,7 @@
     },
     "LUA_SELENE_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/LUA_SELENE_FILTER_REGEX_INCLUDE",
-      "description": "LUA_SELENE: Custom regex including filter: only files matching this regex will be linted",
+      "description": "LUA_SELENE: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with LUA_SELENE_CLI_LINT_MODE = project",
       "title": "LUA_SELENE: Including Regex",
       "type": "string",
       "x-category": "LUA_SELENE",
@@ -15962,10 +16081,12 @@
       "description": "LUA_STYLUA: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "enumNames": [
         "File",
+        "List of Files",
         "Project"
       ],
       "title": "LUA_STYLUA: CLI lint mode",
@@ -16062,7 +16183,7 @@
     },
     "LUA_STYLUA_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/LUA_STYLUA_FILTER_REGEX_EXCLUDE",
-      "description": "LUA_STYLUA: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "LUA_STYLUA: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with LUA_STYLUA_CLI_LINT_MODE = project",
       "title": "LUA_STYLUA: Excluding Regex",
       "type": "string",
       "x-category": "LUA_STYLUA",
@@ -16072,7 +16193,7 @@
     },
     "LUA_STYLUA_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/LUA_STYLUA_FILTER_REGEX_INCLUDE",
-      "description": "LUA_STYLUA: Custom regex including filter: only files matching this regex will be linted",
+      "description": "LUA_STYLUA: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with LUA_STYLUA_CLI_LINT_MODE = project",
       "title": "LUA_STYLUA: Including Regex",
       "type": "string",
       "x-category": "LUA_STYLUA",
@@ -16187,10 +16308,12 @@
       "description": "MAKEFILE_CHECKMAKE: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "enumNames": [
         "File",
+        "List of Files",
         "Project"
       ],
       "title": "MAKEFILE_CHECKMAKE: CLI lint mode",
@@ -16287,7 +16410,7 @@
     },
     "MAKEFILE_CHECKMAKE_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/MAKEFILE_CHECKMAKE_FILTER_REGEX_EXCLUDE",
-      "description": "MAKEFILE_CHECKMAKE: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "MAKEFILE_CHECKMAKE: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with MAKEFILE_CHECKMAKE_CLI_LINT_MODE = project",
       "title": "MAKEFILE_CHECKMAKE: Excluding Regex",
       "type": "string",
       "x-category": "MAKEFILE_CHECKMAKE",
@@ -16297,7 +16420,7 @@
     },
     "MAKEFILE_CHECKMAKE_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/MAKEFILE_CHECKMAKE_FILTER_REGEX_INCLUDE",
-      "description": "MAKEFILE_CHECKMAKE: Custom regex including filter: only files matching this regex will be linted",
+      "description": "MAKEFILE_CHECKMAKE: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with MAKEFILE_CHECKMAKE_CLI_LINT_MODE = project",
       "title": "MAKEFILE_CHECKMAKE: Including Regex",
       "type": "string",
       "x-category": "MAKEFILE_CHECKMAKE",
@@ -16616,7 +16739,7 @@
     },
     "MARKDOWN_MARKDOWNLINT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/MARKDOWN_MARKDOWNLINT_FILTER_REGEX_EXCLUDE",
-      "description": "MARKDOWN_MARKDOWNLINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "MARKDOWN_MARKDOWNLINT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with MARKDOWN_MARKDOWNLINT_CLI_LINT_MODE = project",
       "title": "MARKDOWN_MARKDOWNLINT: Excluding Regex",
       "type": "string",
       "x-category": "MARKDOWN_MARKDOWNLINT",
@@ -16626,7 +16749,7 @@
     },
     "MARKDOWN_MARKDOWNLINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/MARKDOWN_MARKDOWNLINT_FILTER_REGEX_INCLUDE",
-      "description": "MARKDOWN_MARKDOWNLINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "MARKDOWN_MARKDOWNLINT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with MARKDOWN_MARKDOWNLINT_CLI_LINT_MODE = project",
       "title": "MARKDOWN_MARKDOWNLINT: Including Regex",
       "type": "string",
       "x-category": "MARKDOWN_MARKDOWNLINT",
@@ -17068,7 +17191,7 @@
     },
     "MARKDOWN_MARKDOWN_TABLE_FORMATTER_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_FORMATTER_FILTER_REGEX_EXCLUDE",
-      "description": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with MARKDOWN_MARKDOWN_TABLE_FORMATTER_CLI_LINT_MODE = project",
       "title": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Excluding Regex",
       "type": "string",
       "x-category": "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
@@ -17078,7 +17201,7 @@
     },
     "MARKDOWN_MARKDOWN_TABLE_FORMATTER_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_FORMATTER_FILTER_REGEX_INCLUDE",
-      "description": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Custom regex including filter: only files matching this regex will be linted",
+      "description": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with MARKDOWN_MARKDOWN_TABLE_FORMATTER_CLI_LINT_MODE = project",
       "title": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Including Regex",
       "type": "string",
       "x-category": "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
@@ -17293,14 +17416,16 @@
     },
     "MARKDOWN_REMARK_LINT_CLI_LINT_MODE": {
       "$id": "#/properties/MARKDOWN_REMARK_LINT_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "description": "MARKDOWN_REMARK_LINT: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "enumNames": [
         "File",
+        "List of Files",
         "Project"
       ],
       "title": "MARKDOWN_REMARK_LINT: CLI lint mode",
@@ -17397,7 +17522,7 @@
     },
     "MARKDOWN_REMARK_LINT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/MARKDOWN_REMARK_LINT_FILTER_REGEX_EXCLUDE",
-      "description": "MARKDOWN_REMARK_LINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "MARKDOWN_REMARK_LINT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with MARKDOWN_REMARK_LINT_CLI_LINT_MODE = project",
       "title": "MARKDOWN_REMARK_LINT: Excluding Regex",
       "type": "string",
       "x-category": "MARKDOWN_REMARK_LINT",
@@ -17407,7 +17532,7 @@
     },
     "MARKDOWN_REMARK_LINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/MARKDOWN_REMARK_LINT_FILTER_REGEX_INCLUDE",
-      "description": "MARKDOWN_REMARK_LINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "MARKDOWN_REMARK_LINT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with MARKDOWN_REMARK_LINT_CLI_LINT_MODE = project",
       "title": "MARKDOWN_REMARK_LINT: Including Regex",
       "type": "string",
       "x-category": "MARKDOWN_REMARK_LINT",
@@ -17624,7 +17749,7 @@
     },
     "MARKDOWN_RUMDL_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/MARKDOWN_RUMDL_FILTER_REGEX_EXCLUDE",
-      "description": "MARKDOWN_RUMDL: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "MARKDOWN_RUMDL: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with MARKDOWN_RUMDL_CLI_LINT_MODE = project",
       "title": "MARKDOWN_RUMDL: Excluding Regex",
       "type": "string",
       "x-category": "MARKDOWN_RUMDL",
@@ -17634,7 +17759,7 @@
     },
     "MARKDOWN_RUMDL_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/MARKDOWN_RUMDL_FILTER_REGEX_INCLUDE",
-      "description": "MARKDOWN_RUMDL: Custom regex including filter: only files matching this regex will be linted",
+      "description": "MARKDOWN_RUMDL: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with MARKDOWN_RUMDL_CLI_LINT_MODE = project",
       "title": "MARKDOWN_RUMDL: Including Regex",
       "type": "string",
       "x-category": "MARKDOWN_RUMDL",
@@ -17864,14 +17989,16 @@
     },
     "PERL_PERLCRITIC_CLI_LINT_MODE": {
       "$id": "#/properties/PERL_PERLCRITIC_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "description": "PERL_PERLCRITIC: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "enumNames": [
         "File",
+        "List of Files",
         "Project"
       ],
       "title": "PERL_PERLCRITIC: CLI lint mode",
@@ -17961,7 +18088,7 @@
     },
     "PERL_PERLCRITIC_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/PERL_PERLCRITIC_FILTER_REGEX_EXCLUDE",
-      "description": "PERL_PERLCRITIC: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "PERL_PERLCRITIC: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with PERL_PERLCRITIC_CLI_LINT_MODE = project",
       "title": "PERL_PERLCRITIC: Excluding Regex",
       "type": "string",
       "x-category": "PERL_PERLCRITIC",
@@ -17971,7 +18098,7 @@
     },
     "PERL_PERLCRITIC_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/PERL_PERLCRITIC_FILTER_REGEX_INCLUDE",
-      "description": "PERL_PERLCRITIC: Custom regex including filter: only files matching this regex will be linted",
+      "description": "PERL_PERLCRITIC: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with PERL_PERLCRITIC_CLI_LINT_MODE = project",
       "title": "PERL_PERLCRITIC: Including Regex",
       "type": "string",
       "x-category": "PERL_PERLCRITIC",
@@ -18389,6 +18516,26 @@
       "x-order": 300030,
       "x-section": "SCOPE"
     },
+    "PHP_PHPCSFIXER_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/PHP_PHPCSFIXER_FILTER_REGEX_EXCLUDE",
+      "description": "PHP_PHPCSFIXER: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with PHP_PHPCSFIXER_CLI_LINT_MODE = project",
+      "title": "PHP_PHPCSFIXER: Excluding Regex",
+      "type": "string",
+      "x-category": "PHP_PHPCSFIXER",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "PHP_PHPCSFIXER_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/PHP_PHPCSFIXER_FILTER_REGEX_INCLUDE",
+      "description": "PHP_PHPCSFIXER: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with PHP_PHPCSFIXER_CLI_LINT_MODE = project",
+      "title": "PHP_PHPCSFIXER: Including Regex",
+      "type": "string",
+      "x-category": "PHP_PHPCSFIXER",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
+    },
     "PHP_PHPCSFIXER_POST_COMMANDS": {
       "$id": "#/properties/PHP_PHPCSFIXER_POST_COMMANDS",
       "description": "PHP_PHPCSFIXER: Define bash commands to run after running PHP_PHPCSFIXER",
@@ -18598,7 +18745,7 @@
     },
     "PHP_PHPCS_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/PHP_PHPCS_FILTER_REGEX_EXCLUDE",
-      "description": "PHP_PHPCS: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "PHP_PHPCS: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with PHP_PHPCS_CLI_LINT_MODE = project",
       "title": "PHP_PHPCS: Excluding Regex",
       "type": "string",
       "x-category": "PHP_PHPCS",
@@ -18608,7 +18755,7 @@
     },
     "PHP_PHPCS_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/PHP_PHPCS_FILTER_REGEX_INCLUDE",
-      "description": "PHP_PHPCS: Custom regex including filter: only files matching this regex will be linted",
+      "description": "PHP_PHPCS: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with PHP_PHPCS_CLI_LINT_MODE = project",
       "title": "PHP_PHPCS: Including Regex",
       "type": "string",
       "x-category": "PHP_PHPCS",
@@ -18825,7 +18972,7 @@
     },
     "PHP_PHPLINT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/PHP_PHPLINT_FILTER_REGEX_EXCLUDE",
-      "description": "PHP_PHPLINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "PHP_PHPLINT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with PHP_PHPLINT_CLI_LINT_MODE = project",
       "title": "PHP_PHPLINT: Excluding Regex",
       "type": "string",
       "x-category": "PHP_PHPLINT",
@@ -18835,7 +18982,7 @@
     },
     "PHP_PHPLINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/PHP_PHPLINT_FILTER_REGEX_INCLUDE",
-      "description": "PHP_PHPLINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "PHP_PHPLINT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with PHP_PHPLINT_CLI_LINT_MODE = project",
       "title": "PHP_PHPLINT: Including Regex",
       "type": "string",
       "x-category": "PHP_PHPLINT",
@@ -19052,7 +19199,7 @@
     },
     "PHP_PHPSTAN_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/PHP_PHPSTAN_FILTER_REGEX_EXCLUDE",
-      "description": "PHP_PHPSTAN: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "PHP_PHPSTAN: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with PHP_PHPSTAN_CLI_LINT_MODE = project",
       "title": "PHP_PHPSTAN: Excluding Regex",
       "type": "string",
       "x-category": "PHP_PHPSTAN",
@@ -19062,7 +19209,7 @@
     },
     "PHP_PHPSTAN_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/PHP_PHPSTAN_FILTER_REGEX_INCLUDE",
-      "description": "PHP_PHPSTAN: Custom regex including filter: only files matching this regex will be linted",
+      "description": "PHP_PHPSTAN: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with PHP_PHPSTAN_CLI_LINT_MODE = project",
       "title": "PHP_PHPSTAN: Including Regex",
       "type": "string",
       "x-category": "PHP_PHPSTAN",
@@ -19321,7 +19468,7 @@
     },
     "PHP_PSALM_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/PHP_PSALM_FILTER_REGEX_EXCLUDE",
-      "description": "PHP_PSALM: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "PHP_PSALM: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with PHP_PSALM_CLI_LINT_MODE = project",
       "title": "PHP_PSALM: Excluding Regex",
       "type": "string",
       "x-category": "PHP_PSALM",
@@ -19331,7 +19478,7 @@
     },
     "PHP_PSALM_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/PHP_PSALM_FILTER_REGEX_INCLUDE",
-      "description": "PHP_PSALM: Custom regex including filter: only files matching this regex will be linted",
+      "description": "PHP_PSALM: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with PHP_PSALM_CLI_LINT_MODE = project",
       "title": "PHP_PSALM: Including Regex",
       "type": "string",
       "x-category": "PHP_PSALM",
@@ -19547,12 +19694,10 @@
       "default": "file",
       "description": "POWERSHELL_POWERSHELL: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
-        "file",
-        "project"
+        "file"
       ],
       "enumNames": [
-        "File",
-        "Project"
+        "File"
       ],
       "title": "POWERSHELL_POWERSHELL: CLI lint mode",
       "type": "string",
@@ -19654,7 +19799,7 @@
     },
     "POWERSHELL_POWERSHELL_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/POWERSHELL_POWERSHELL_FILTER_REGEX_EXCLUDE",
-      "description": "POWERSHELL_POWERSHELL: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "title": "POWERSHELL_POWERSHELL: Excluding Regex",
       "type": "string",
       "x-category": "POWERSHELL_POWERSHELL",
@@ -19664,7 +19809,7 @@
     },
     "POWERSHELL_POWERSHELL_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/POWERSHELL_POWERSHELL_FILTER_REGEX_INCLUDE",
-      "description": "POWERSHELL_POWERSHELL: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "title": "POWERSHELL_POWERSHELL: Including Regex",
       "type": "string",
       "x-category": "POWERSHELL_POWERSHELL",
@@ -19713,12 +19858,10 @@
       "default": "file",
       "description": "POWERSHELL_POWERSHELL_FORMATTER: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
-        "file",
-        "project"
+        "file"
       ],
       "enumNames": [
-        "File",
-        "Project"
+        "File"
       ],
       "title": "POWERSHELL_POWERSHELL_FORMATTER: CLI lint mode",
       "type": "string",
@@ -19820,7 +19963,7 @@
     },
     "POWERSHELL_POWERSHELL_FORMATTER_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_FILTER_REGEX_EXCLUDE",
-      "description": "POWERSHELL_POWERSHELL_FORMATTER: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "title": "POWERSHELL_POWERSHELL_FORMATTER: Excluding Regex",
       "type": "string",
       "x-category": "POWERSHELL_POWERSHELL_FORMATTER",
@@ -19830,7 +19973,7 @@
     },
     "POWERSHELL_POWERSHELL_FORMATTER_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_FILTER_REGEX_INCLUDE",
-      "description": "POWERSHELL_POWERSHELL_FORMATTER: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "title": "POWERSHELL_POWERSHELL_FORMATTER: Including Regex",
       "type": "string",
       "x-category": "POWERSHELL_POWERSHELL_FORMATTER",
@@ -20145,14 +20288,16 @@
     },
     "PROTOBUF_PROTOLINT_CLI_LINT_MODE": {
       "$id": "#/properties/PROTOBUF_PROTOLINT_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "description": "PROTOBUF_PROTOLINT: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "enumNames": [
         "File",
+        "List of Files",
         "Project"
       ],
       "title": "PROTOBUF_PROTOLINT: CLI lint mode",
@@ -20249,7 +20394,7 @@
     },
     "PROTOBUF_PROTOLINT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/PROTOBUF_PROTOLINT_FILTER_REGEX_EXCLUDE",
-      "description": "PROTOBUF_PROTOLINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "PROTOBUF_PROTOLINT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with PROTOBUF_PROTOLINT_CLI_LINT_MODE = project",
       "title": "PROTOBUF_PROTOLINT: Excluding Regex",
       "type": "string",
       "x-category": "PROTOBUF_PROTOLINT",
@@ -20259,7 +20404,7 @@
     },
     "PROTOBUF_PROTOLINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/PROTOBUF_PROTOLINT_FILTER_REGEX_INCLUDE",
-      "description": "PROTOBUF_PROTOLINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "PROTOBUF_PROTOLINT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with PROTOBUF_PROTOLINT_CLI_LINT_MODE = project",
       "title": "PROTOBUF_PROTOLINT: Including Regex",
       "type": "string",
       "x-category": "PROTOBUF_PROTOLINT",
@@ -20436,10 +20581,12 @@
       "description": "PUPPET_PUPPET_LINT: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "enumNames": [
         "File",
+        "List of Files",
         "Project"
       ],
       "title": "PUPPET_PUPPET_LINT: CLI lint mode",
@@ -20536,7 +20683,7 @@
     },
     "PUPPET_PUPPET_LINT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/PUPPET_PUPPET_LINT_FILTER_REGEX_EXCLUDE",
-      "description": "PUPPET_PUPPET_LINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "PUPPET_PUPPET_LINT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with PUPPET_PUPPET_LINT_CLI_LINT_MODE = project",
       "title": "PUPPET_PUPPET_LINT: Excluding Regex",
       "type": "string",
       "x-category": "PUPPET_PUPPET_LINT",
@@ -20546,7 +20693,7 @@
     },
     "PUPPET_PUPPET_LINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/PUPPET_PUPPET_LINT_FILTER_REGEX_INCLUDE",
-      "description": "PUPPET_PUPPET_LINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "PUPPET_PUPPET_LINT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with PUPPET_PUPPET_LINT_CLI_LINT_MODE = project",
       "title": "PUPPET_PUPPET_LINT: Including Regex",
       "type": "string",
       "x-category": "PUPPET_PUPPET_LINT",
@@ -20765,7 +20912,7 @@
     },
     "PYTHON_BANDIT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/PYTHON_BANDIT_FILTER_REGEX_EXCLUDE",
-      "description": "PYTHON_BANDIT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "PYTHON_BANDIT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with PYTHON_BANDIT_CLI_LINT_MODE = project",
       "title": "PYTHON_BANDIT: Excluding Regex",
       "type": "string",
       "x-category": "PYTHON_BANDIT",
@@ -20775,7 +20922,7 @@
     },
     "PYTHON_BANDIT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/PYTHON_BANDIT_FILTER_REGEX_INCLUDE",
-      "description": "PYTHON_BANDIT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "PYTHON_BANDIT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with PYTHON_BANDIT_CLI_LINT_MODE = project",
       "title": "PYTHON_BANDIT: Including Regex",
       "type": "string",
       "x-category": "PYTHON_BANDIT",
@@ -20994,7 +21141,7 @@
     },
     "PYTHON_BLACK_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/PYTHON_BLACK_FILTER_REGEX_EXCLUDE",
-      "description": "PYTHON_BLACK: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "PYTHON_BLACK: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with PYTHON_BLACK_CLI_LINT_MODE = project",
       "title": "PYTHON_BLACK: Excluding Regex",
       "type": "string",
       "x-category": "PYTHON_BLACK",
@@ -21004,7 +21151,7 @@
     },
     "PYTHON_BLACK_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/PYTHON_BLACK_FILTER_REGEX_INCLUDE",
-      "description": "PYTHON_BLACK: Custom regex including filter: only files matching this regex will be linted",
+      "description": "PYTHON_BLACK: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with PYTHON_BLACK_CLI_LINT_MODE = project",
       "title": "PYTHON_BLACK: Including Regex",
       "type": "string",
       "x-category": "PYTHON_BLACK",
@@ -21263,7 +21410,7 @@
     },
     "PYTHON_FLAKE8_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/PYTHON_FLAKE8_FILTER_REGEX_EXCLUDE",
-      "description": "PYTHON_FLAKE8: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "PYTHON_FLAKE8: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with PYTHON_FLAKE8_CLI_LINT_MODE = project",
       "title": "PYTHON_FLAKE8: Excluding Regex",
       "type": "string",
       "x-category": "PYTHON_FLAKE8",
@@ -21273,7 +21420,7 @@
     },
     "PYTHON_FLAKE8_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/PYTHON_FLAKE8_FILTER_REGEX_INCLUDE",
-      "description": "PYTHON_FLAKE8: Custom regex including filter: only files matching this regex will be linted",
+      "description": "PYTHON_FLAKE8: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with PYTHON_FLAKE8_CLI_LINT_MODE = project",
       "title": "PYTHON_FLAKE8: Including Regex",
       "type": "string",
       "x-category": "PYTHON_FLAKE8",
@@ -21493,7 +21640,7 @@
     },
     "PYTHON_ISORT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/PYTHON_ISORT_FILTER_REGEX_EXCLUDE",
-      "description": "PYTHON_ISORT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "PYTHON_ISORT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with PYTHON_ISORT_CLI_LINT_MODE = project",
       "title": "PYTHON_ISORT: Excluding Regex",
       "type": "string",
       "x-category": "PYTHON_ISORT",
@@ -21503,7 +21650,7 @@
     },
     "PYTHON_ISORT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/PYTHON_ISORT_FILTER_REGEX_INCLUDE",
-      "description": "PYTHON_ISORT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "PYTHON_ISORT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with PYTHON_ISORT_CLI_LINT_MODE = project",
       "title": "PYTHON_ISORT: Including Regex",
       "type": "string",
       "x-category": "PYTHON_ISORT",
@@ -21721,7 +21868,7 @@
     },
     "PYTHON_MYPY_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/PYTHON_MYPY_FILTER_REGEX_EXCLUDE",
-      "description": "PYTHON_MYPY: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "PYTHON_MYPY: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with PYTHON_MYPY_CLI_LINT_MODE = project",
       "title": "PYTHON_MYPY: Excluding Regex",
       "type": "string",
       "x-category": "PYTHON_MYPY",
@@ -21731,7 +21878,7 @@
     },
     "PYTHON_MYPY_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/PYTHON_MYPY_FILTER_REGEX_INCLUDE",
-      "description": "PYTHON_MYPY: Custom regex including filter: only files matching this regex will be linted",
+      "description": "PYTHON_MYPY: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with PYTHON_MYPY_CLI_LINT_MODE = project",
       "title": "PYTHON_MYPY: Including Regex",
       "type": "string",
       "x-category": "PYTHON_MYPY",
@@ -21948,7 +22095,7 @@
     },
     "PYTHON_NBQA_MYPY_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/PYTHON_NBQA_MYPY_FILTER_REGEX_EXCLUDE",
-      "description": "PYTHON_NBQA_MYPY: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "PYTHON_NBQA_MYPY: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with PYTHON_NBQA_MYPY_CLI_LINT_MODE = project",
       "title": "PYTHON_NBQA_MYPY: Excluding Regex",
       "type": "string",
       "x-category": "PYTHON_NBQA_MYPY",
@@ -21958,7 +22105,7 @@
     },
     "PYTHON_NBQA_MYPY_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/PYTHON_NBQA_MYPY_FILTER_REGEX_INCLUDE",
-      "description": "PYTHON_NBQA_MYPY: Custom regex including filter: only files matching this regex will be linted",
+      "description": "PYTHON_NBQA_MYPY: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with PYTHON_NBQA_MYPY_CLI_LINT_MODE = project",
       "title": "PYTHON_NBQA_MYPY: Including Regex",
       "type": "string",
       "x-category": "PYTHON_NBQA_MYPY",
@@ -22218,7 +22365,7 @@
     },
     "PYTHON_PYLINT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/PYTHON_PYLINT_FILTER_REGEX_EXCLUDE",
-      "description": "PYTHON_PYLINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "PYTHON_PYLINT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with PYTHON_PYLINT_CLI_LINT_MODE = project",
       "title": "PYTHON_PYLINT: Excluding Regex",
       "type": "string",
       "x-category": "PYTHON_PYLINT",
@@ -22228,7 +22375,7 @@
     },
     "PYTHON_PYLINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/PYTHON_PYLINT_FILTER_REGEX_INCLUDE",
-      "description": "PYTHON_PYLINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "PYTHON_PYLINT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with PYTHON_PYLINT_CLI_LINT_MODE = project",
       "title": "PYTHON_PYLINT: Including Regex",
       "type": "string",
       "x-category": "PYTHON_PYLINT",
@@ -22446,7 +22593,7 @@
     },
     "PYTHON_PYRIGHT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/PYTHON_PYRIGHT_FILTER_REGEX_EXCLUDE",
-      "description": "PYTHON_PYRIGHT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "PYTHON_PYRIGHT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with PYTHON_PYRIGHT_CLI_LINT_MODE = project",
       "title": "PYTHON_PYRIGHT: Excluding Regex",
       "type": "string",
       "x-category": "PYTHON_PYRIGHT",
@@ -22456,7 +22603,7 @@
     },
     "PYTHON_PYRIGHT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/PYTHON_PYRIGHT_FILTER_REGEX_INCLUDE",
-      "description": "PYTHON_PYRIGHT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "PYTHON_PYRIGHT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with PYTHON_PYRIGHT_CLI_LINT_MODE = project",
       "title": "PYTHON_PYRIGHT: Including Regex",
       "type": "string",
       "x-category": "PYTHON_PYRIGHT",
@@ -22675,7 +22822,7 @@
     },
     "PYTHON_RUFF_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/PYTHON_RUFF_FILTER_REGEX_EXCLUDE",
-      "description": "PYTHON_RUFF: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "PYTHON_RUFF: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with PYTHON_RUFF_CLI_LINT_MODE = project",
       "title": "PYTHON_RUFF: Excluding Regex",
       "type": "string",
       "x-category": "PYTHON_RUFF",
@@ -22685,7 +22832,7 @@
     },
     "PYTHON_RUFF_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/PYTHON_RUFF_FILTER_REGEX_INCLUDE",
-      "description": "PYTHON_RUFF: Custom regex including filter: only files matching this regex will be linted",
+      "description": "PYTHON_RUFF: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with PYTHON_RUFF_CLI_LINT_MODE = project",
       "title": "PYTHON_RUFF: Including Regex",
       "type": "string",
       "x-category": "PYTHON_RUFF",
@@ -22839,7 +22986,7 @@
     },
     "PYTHON_RUFF_FORMAT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/PYTHON_RUFF_FORMAT_FILTER_REGEX_EXCLUDE",
-      "description": "PYTHON_RUFF_FORMAT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "PYTHON_RUFF_FORMAT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with PYTHON_RUFF_FORMAT_CLI_LINT_MODE = project",
       "title": "PYTHON_RUFF_FORMAT: Excluding Regex",
       "type": "string",
       "x-category": "PYTHON_RUFF_FORMAT",
@@ -22849,7 +22996,7 @@
     },
     "PYTHON_RUFF_FORMAT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/PYTHON_RUFF_FORMAT_FILTER_REGEX_INCLUDE",
-      "description": "PYTHON_RUFF_FORMAT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "PYTHON_RUFF_FORMAT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with PYTHON_RUFF_FORMAT_CLI_LINT_MODE = project",
       "title": "PYTHON_RUFF_FORMAT: Including Regex",
       "type": "string",
       "x-category": "PYTHON_RUFF_FORMAT",
@@ -23090,12 +23237,10 @@
       "default": "file",
       "description": "RAKU_RAKU: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
-        "file",
-        "project"
+        "file"
       ],
       "enumNames": [
-        "File",
-        "Project"
+        "File"
       ],
       "title": "RAKU_RAKU: CLI lint mode",
       "type": "string",
@@ -23196,7 +23341,7 @@
     },
     "RAKU_RAKU_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/RAKU_RAKU_FILTER_REGEX_EXCLUDE",
-      "description": "RAKU_RAKU: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "title": "RAKU_RAKU: Excluding Regex",
       "type": "string",
       "x-category": "RAKU_RAKU",
@@ -23206,7 +23351,7 @@
     },
     "RAKU_RAKU_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/RAKU_RAKU_FILTER_REGEX_INCLUDE",
-      "description": "RAKU_RAKU: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "title": "RAKU_RAKU: Including Regex",
       "type": "string",
       "x-category": "RAKU_RAKU",
@@ -23437,6 +23582,26 @@
       "x-order": 400010,
       "x-section": "ERRORS"
     },
+    "REPOSITORY_BETTERLEAKS_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/REPOSITORY_BETTERLEAKS_FILTER_REGEX_EXCLUDE",
+      "description": "REPOSITORY_BETTERLEAKS: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with REPOSITORY_BETTERLEAKS_CLI_LINT_MODE = project",
+      "title": "REPOSITORY_BETTERLEAKS: Excluding Regex",
+      "type": "string",
+      "x-category": "REPOSITORY_BETTERLEAKS",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "REPOSITORY_BETTERLEAKS_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/REPOSITORY_BETTERLEAKS_FILTER_REGEX_INCLUDE",
+      "description": "REPOSITORY_BETTERLEAKS: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with REPOSITORY_BETTERLEAKS_CLI_LINT_MODE = project",
+      "title": "REPOSITORY_BETTERLEAKS: Including Regex",
+      "type": "string",
+      "x-category": "REPOSITORY_BETTERLEAKS",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
+    },
     "REPOSITORY_BETTERLEAKS_POST_COMMANDS": {
       "$id": "#/properties/REPOSITORY_BETTERLEAKS_POST_COMMANDS",
       "description": "REPOSITORY_BETTERLEAKS: Define bash commands to run after running REPOSITORY_BETTERLEAKS",
@@ -23607,6 +23772,26 @@
       "x-category": "REPOSITORY_CHECKOV",
       "x-order": 400010,
       "x-section": "ERRORS"
+    },
+    "REPOSITORY_CHECKOV_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/REPOSITORY_CHECKOV_FILTER_REGEX_EXCLUDE",
+      "description": "REPOSITORY_CHECKOV: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with REPOSITORY_CHECKOV_CLI_LINT_MODE = project",
+      "title": "REPOSITORY_CHECKOV: Excluding Regex",
+      "type": "string",
+      "x-category": "REPOSITORY_CHECKOV",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "REPOSITORY_CHECKOV_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/REPOSITORY_CHECKOV_FILTER_REGEX_INCLUDE",
+      "description": "REPOSITORY_CHECKOV: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with REPOSITORY_CHECKOV_CLI_LINT_MODE = project",
+      "title": "REPOSITORY_CHECKOV: Including Regex",
+      "type": "string",
+      "x-category": "REPOSITORY_CHECKOV",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
     },
     "REPOSITORY_CHECKOV_POST_COMMANDS": {
       "$id": "#/properties/REPOSITORY_CHECKOV_POST_COMMANDS",
@@ -23779,6 +23964,26 @@
       "x-order": 400010,
       "x-section": "ERRORS"
     },
+    "REPOSITORY_DEVSKIM_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/REPOSITORY_DEVSKIM_FILTER_REGEX_EXCLUDE",
+      "description": "REPOSITORY_DEVSKIM: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with REPOSITORY_DEVSKIM_CLI_LINT_MODE = project",
+      "title": "REPOSITORY_DEVSKIM: Excluding Regex",
+      "type": "string",
+      "x-category": "REPOSITORY_DEVSKIM",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "REPOSITORY_DEVSKIM_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/REPOSITORY_DEVSKIM_FILTER_REGEX_INCLUDE",
+      "description": "REPOSITORY_DEVSKIM: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with REPOSITORY_DEVSKIM_CLI_LINT_MODE = project",
+      "title": "REPOSITORY_DEVSKIM: Including Regex",
+      "type": "string",
+      "x-category": "REPOSITORY_DEVSKIM",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
+    },
     "REPOSITORY_DEVSKIM_POST_COMMANDS": {
       "$id": "#/properties/REPOSITORY_DEVSKIM_POST_COMMANDS",
       "description": "REPOSITORY_DEVSKIM: Define bash commands to run after running REPOSITORY_DEVSKIM",
@@ -23885,13 +24090,9 @@
       "default": "project",
       "description": "REPOSITORY_DUSTILOCK: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
-        "file",
-        "list_of_files",
         "project"
       ],
       "enumNames": [
-        "File",
-        "List of Files",
         "Project"
       ],
       "title": "REPOSITORY_DUSTILOCK: CLI lint mode",
@@ -23939,6 +24140,26 @@
       "x-category": "REPOSITORY_DUSTILOCK",
       "x-order": 400010,
       "x-section": "ERRORS"
+    },
+    "REPOSITORY_DUSTILOCK_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/REPOSITORY_DUSTILOCK_FILTER_REGEX_EXCLUDE",
+      "description": "REPOSITORY_DUSTILOCK: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with REPOSITORY_DUSTILOCK_CLI_LINT_MODE = project",
+      "title": "REPOSITORY_DUSTILOCK: Excluding Regex",
+      "type": "string",
+      "x-category": "REPOSITORY_DUSTILOCK",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "REPOSITORY_DUSTILOCK_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/REPOSITORY_DUSTILOCK_FILTER_REGEX_INCLUDE",
+      "description": "REPOSITORY_DUSTILOCK: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with REPOSITORY_DUSTILOCK_CLI_LINT_MODE = project",
+      "title": "REPOSITORY_DUSTILOCK: Including Regex",
+      "type": "string",
+      "x-category": "REPOSITORY_DUSTILOCK",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
     },
     "REPOSITORY_DUSTILOCK_POST_COMMANDS": {
       "$id": "#/properties/REPOSITORY_DUSTILOCK_POST_COMMANDS",
@@ -24061,12 +24282,10 @@
       "description": "REPOSITORY_GITLEAKS: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "enumNames": [
         "File",
-        "List of Files",
         "Project"
       ],
       "title": "(deprecated) REPOSITORY_GITLEAKS: CLI lint mode",
@@ -24128,6 +24347,28 @@
       "x-category": "REPOSITORY_GITLEAKS",
       "x-order": 400010,
       "x-section": "ERRORS"
+    },
+    "REPOSITORY_GITLEAKS_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/REPOSITORY_GITLEAKS_FILTER_REGEX_EXCLUDE",
+      "deprecated": true,
+      "description": "REPOSITORY_GITLEAKS: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with REPOSITORY_GITLEAKS_CLI_LINT_MODE = project",
+      "title": "(deprecated) REPOSITORY_GITLEAKS: Excluding Regex",
+      "type": "string",
+      "x-category": "REPOSITORY_GITLEAKS",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "REPOSITORY_GITLEAKS_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/REPOSITORY_GITLEAKS_FILTER_REGEX_INCLUDE",
+      "deprecated": true,
+      "description": "REPOSITORY_GITLEAKS: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with REPOSITORY_GITLEAKS_CLI_LINT_MODE = project",
+      "title": "(deprecated) REPOSITORY_GITLEAKS: Including Regex",
+      "type": "string",
+      "x-category": "REPOSITORY_GITLEAKS",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
     },
     "REPOSITORY_GITLEAKS_POST_COMMANDS": {
       "$id": "#/properties/REPOSITORY_GITLEAKS_POST_COMMANDS",
@@ -24264,13 +24505,9 @@
       "default": "project",
       "description": "REPOSITORY_GIT_DIFF: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
-        "file",
-        "list_of_files",
         "project"
       ],
       "enumNames": [
-        "File",
-        "List of Files",
         "Project"
       ],
       "title": "REPOSITORY_GIT_DIFF: CLI lint mode",
@@ -24318,6 +24555,26 @@
       "x-category": "REPOSITORY_GIT_DIFF",
       "x-order": 400010,
       "x-section": "ERRORS"
+    },
+    "REPOSITORY_GIT_DIFF_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/REPOSITORY_GIT_DIFF_FILTER_REGEX_EXCLUDE",
+      "description": "REPOSITORY_GIT_DIFF: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with REPOSITORY_GIT_DIFF_CLI_LINT_MODE = project",
+      "title": "REPOSITORY_GIT_DIFF: Excluding Regex",
+      "type": "string",
+      "x-category": "REPOSITORY_GIT_DIFF",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "REPOSITORY_GIT_DIFF_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/REPOSITORY_GIT_DIFF_FILTER_REGEX_INCLUDE",
+      "description": "REPOSITORY_GIT_DIFF: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with REPOSITORY_GIT_DIFF_CLI_LINT_MODE = project",
+      "title": "REPOSITORY_GIT_DIFF: Including Regex",
+      "type": "string",
+      "x-category": "REPOSITORY_GIT_DIFF",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
     },
     "REPOSITORY_GIT_DIFF_POST_COMMANDS": {
       "$id": "#/properties/REPOSITORY_GIT_DIFF_POST_COMMANDS",
@@ -24529,12 +24786,10 @@
       "description": "REPOSITORY_GRYPE: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "enumNames": [
         "File",
-        "List of Files",
         "Project"
       ],
       "title": "REPOSITORY_GRYPE: CLI lint mode",
@@ -24592,6 +24847,26 @@
       "x-category": "REPOSITORY_GRYPE",
       "x-order": 400010,
       "x-section": "ERRORS"
+    },
+    "REPOSITORY_GRYPE_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/REPOSITORY_GRYPE_FILTER_REGEX_EXCLUDE",
+      "description": "REPOSITORY_GRYPE: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with REPOSITORY_GRYPE_CLI_LINT_MODE = project",
+      "title": "REPOSITORY_GRYPE: Excluding Regex",
+      "type": "string",
+      "x-category": "REPOSITORY_GRYPE",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "REPOSITORY_GRYPE_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/REPOSITORY_GRYPE_FILTER_REGEX_INCLUDE",
+      "description": "REPOSITORY_GRYPE: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with REPOSITORY_GRYPE_CLI_LINT_MODE = project",
+      "title": "REPOSITORY_GRYPE: Including Regex",
+      "type": "string",
+      "x-category": "REPOSITORY_GRYPE",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
     },
     "REPOSITORY_GRYPE_POST_COMMANDS": {
       "$id": "#/properties/REPOSITORY_GRYPE_POST_COMMANDS",
@@ -24764,6 +25039,26 @@
       "x-order": 400010,
       "x-section": "ERRORS"
     },
+    "REPOSITORY_KICS_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/REPOSITORY_KICS_FILTER_REGEX_EXCLUDE",
+      "description": "REPOSITORY_KICS: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with REPOSITORY_KICS_CLI_LINT_MODE = project",
+      "title": "REPOSITORY_KICS: Excluding Regex",
+      "type": "string",
+      "x-category": "REPOSITORY_KICS",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "REPOSITORY_KICS_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/REPOSITORY_KICS_FILTER_REGEX_INCLUDE",
+      "description": "REPOSITORY_KICS: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with REPOSITORY_KICS_CLI_LINT_MODE = project",
+      "title": "REPOSITORY_KICS: Including Regex",
+      "type": "string",
+      "x-category": "REPOSITORY_KICS",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
+    },
     "REPOSITORY_KICS_POST_COMMANDS": {
       "$id": "#/properties/REPOSITORY_KICS_POST_COMMANDS",
       "description": "REPOSITORY_KICS: Define bash commands to run after running REPOSITORY_KICS",
@@ -24924,6 +25219,26 @@
       "x-category": "REPOSITORY_KINGFISHER",
       "x-order": 400010,
       "x-section": "ERRORS"
+    },
+    "REPOSITORY_KINGFISHER_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/REPOSITORY_KINGFISHER_FILTER_REGEX_EXCLUDE",
+      "description": "REPOSITORY_KINGFISHER: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with REPOSITORY_KINGFISHER_CLI_LINT_MODE = project",
+      "title": "REPOSITORY_KINGFISHER: Excluding Regex",
+      "type": "string",
+      "x-category": "REPOSITORY_KINGFISHER",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "REPOSITORY_KINGFISHER_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/REPOSITORY_KINGFISHER_FILTER_REGEX_INCLUDE",
+      "description": "REPOSITORY_KINGFISHER: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with REPOSITORY_KINGFISHER_CLI_LINT_MODE = project",
+      "title": "REPOSITORY_KINGFISHER: Including Regex",
+      "type": "string",
+      "x-category": "REPOSITORY_KINGFISHER",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
     },
     "REPOSITORY_KINGFISHER_POST_COMMANDS": {
       "$id": "#/properties/REPOSITORY_KINGFISHER_POST_COMMANDS",
@@ -25086,6 +25401,26 @@
       "x-category": "REPOSITORY_LS_LINT",
       "x-order": 400010,
       "x-section": "ERRORS"
+    },
+    "REPOSITORY_LS_LINT_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_FILTER_REGEX_EXCLUDE",
+      "description": "REPOSITORY_LS_LINT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with REPOSITORY_LS_LINT_CLI_LINT_MODE = project",
+      "title": "REPOSITORY_LS_LINT: Excluding Regex",
+      "type": "string",
+      "x-category": "REPOSITORY_LS_LINT",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "REPOSITORY_LS_LINT_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_FILTER_REGEX_INCLUDE",
+      "description": "REPOSITORY_LS_LINT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with REPOSITORY_LS_LINT_CLI_LINT_MODE = project",
+      "title": "REPOSITORY_LS_LINT: Including Regex",
+      "type": "string",
+      "x-category": "REPOSITORY_LS_LINT",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
     },
     "REPOSITORY_LS_LINT_POST_COMMANDS": {
       "$id": "#/properties/REPOSITORY_LS_LINT_POST_COMMANDS",
@@ -25257,6 +25592,26 @@
       "x-category": "REPOSITORY_OSV_SCANNER",
       "x-order": 400010,
       "x-section": "ERRORS"
+    },
+    "REPOSITORY_OSV_SCANNER_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/REPOSITORY_OSV_SCANNER_FILTER_REGEX_EXCLUDE",
+      "description": "REPOSITORY_OSV_SCANNER: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with REPOSITORY_OSV_SCANNER_CLI_LINT_MODE = project",
+      "title": "REPOSITORY_OSV_SCANNER: Excluding Regex",
+      "type": "string",
+      "x-category": "REPOSITORY_OSV_SCANNER",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "REPOSITORY_OSV_SCANNER_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/REPOSITORY_OSV_SCANNER_FILTER_REGEX_INCLUDE",
+      "description": "REPOSITORY_OSV_SCANNER: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with REPOSITORY_OSV_SCANNER_CLI_LINT_MODE = project",
+      "title": "REPOSITORY_OSV_SCANNER: Including Regex",
+      "type": "string",
+      "x-category": "REPOSITORY_OSV_SCANNER",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
     },
     "REPOSITORY_OSV_SCANNER_POST_COMMANDS": {
       "$id": "#/properties/REPOSITORY_OSV_SCANNER_POST_COMMANDS",
@@ -25471,6 +25826,26 @@
       "x-order": 400010,
       "x-section": "ERRORS"
     },
+    "REPOSITORY_SECRETLINT_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/REPOSITORY_SECRETLINT_FILTER_REGEX_EXCLUDE",
+      "description": "REPOSITORY_SECRETLINT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with REPOSITORY_SECRETLINT_CLI_LINT_MODE = project",
+      "title": "REPOSITORY_SECRETLINT: Excluding Regex",
+      "type": "string",
+      "x-category": "REPOSITORY_SECRETLINT",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "REPOSITORY_SECRETLINT_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/REPOSITORY_SECRETLINT_FILTER_REGEX_INCLUDE",
+      "description": "REPOSITORY_SECRETLINT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with REPOSITORY_SECRETLINT_CLI_LINT_MODE = project",
+      "title": "REPOSITORY_SECRETLINT: Including Regex",
+      "type": "string",
+      "x-category": "REPOSITORY_SECRETLINT",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
+    },
     "REPOSITORY_SECRETLINT_POST_COMMANDS": {
       "$id": "#/properties/REPOSITORY_SECRETLINT_POST_COMMANDS",
       "description": "REPOSITORY_SECRETLINT: Define bash commands to run after running REPOSITORY_SECRETLINT",
@@ -25632,6 +26007,26 @@
       "x-order": 400010,
       "x-section": "ERRORS"
     },
+    "REPOSITORY_SEMGREP_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/REPOSITORY_SEMGREP_FILTER_REGEX_EXCLUDE",
+      "description": "REPOSITORY_SEMGREP: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with REPOSITORY_SEMGREP_CLI_LINT_MODE = project",
+      "title": "REPOSITORY_SEMGREP: Excluding Regex",
+      "type": "string",
+      "x-category": "REPOSITORY_SEMGREP",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "REPOSITORY_SEMGREP_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/REPOSITORY_SEMGREP_FILTER_REGEX_INCLUDE",
+      "description": "REPOSITORY_SEMGREP: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with REPOSITORY_SEMGREP_CLI_LINT_MODE = project",
+      "title": "REPOSITORY_SEMGREP: Including Regex",
+      "type": "string",
+      "x-category": "REPOSITORY_SEMGREP",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
+    },
     "REPOSITORY_SEMGREP_POST_COMMANDS": {
       "$id": "#/properties/REPOSITORY_SEMGREP_POST_COMMANDS",
       "description": "REPOSITORY_SEMGREP: Define bash commands to run after running REPOSITORY_SEMGREP",
@@ -25749,12 +26144,10 @@
       "description": "REPOSITORY_SYFT: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "enumNames": [
         "File",
-        "List of Files",
         "Project"
       ],
       "title": "REPOSITORY_SYFT: CLI lint mode",
@@ -25812,6 +26205,26 @@
       "x-category": "REPOSITORY_SYFT",
       "x-order": 400010,
       "x-section": "ERRORS"
+    },
+    "REPOSITORY_SYFT_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/REPOSITORY_SYFT_FILTER_REGEX_EXCLUDE",
+      "description": "REPOSITORY_SYFT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with REPOSITORY_SYFT_CLI_LINT_MODE = project",
+      "title": "REPOSITORY_SYFT: Excluding Regex",
+      "type": "string",
+      "x-category": "REPOSITORY_SYFT",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "REPOSITORY_SYFT_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/REPOSITORY_SYFT_FILTER_REGEX_INCLUDE",
+      "description": "REPOSITORY_SYFT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with REPOSITORY_SYFT_CLI_LINT_MODE = project",
+      "title": "REPOSITORY_SYFT: Including Regex",
+      "type": "string",
+      "x-category": "REPOSITORY_SYFT",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
     },
     "REPOSITORY_SYFT_POST_COMMANDS": {
       "$id": "#/properties/REPOSITORY_SYFT_POST_COMMANDS",
@@ -25920,12 +26333,10 @@
       "description": "REPOSITORY_TRIVY: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "enumNames": [
         "File",
-        "List of Files",
         "Project"
       ],
       "title": "REPOSITORY_TRIVY: CLI lint mode",
@@ -25983,6 +26394,26 @@
       "x-category": "REPOSITORY_TRIVY",
       "x-order": 400010,
       "x-section": "ERRORS"
+    },
+    "REPOSITORY_TRIVY_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/REPOSITORY_TRIVY_FILTER_REGEX_EXCLUDE",
+      "description": "REPOSITORY_TRIVY: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with REPOSITORY_TRIVY_CLI_LINT_MODE = project",
+      "title": "REPOSITORY_TRIVY: Excluding Regex",
+      "type": "string",
+      "x-category": "REPOSITORY_TRIVY",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "REPOSITORY_TRIVY_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/REPOSITORY_TRIVY_FILTER_REGEX_INCLUDE",
+      "description": "REPOSITORY_TRIVY: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with REPOSITORY_TRIVY_CLI_LINT_MODE = project",
+      "title": "REPOSITORY_TRIVY: Including Regex",
+      "type": "string",
+      "x-category": "REPOSITORY_TRIVY",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
     },
     "REPOSITORY_TRIVY_POST_COMMANDS": {
       "$id": "#/properties/REPOSITORY_TRIVY_POST_COMMANDS",
@@ -26077,12 +26508,10 @@
       "description": "REPOSITORY_TRIVY_SBOM: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "enumNames": [
         "File",
-        "List of Files",
         "Project"
       ],
       "title": "REPOSITORY_TRIVY_SBOM: CLI lint mode",
@@ -26140,6 +26569,26 @@
       "x-category": "REPOSITORY_TRIVY_SBOM",
       "x-order": 400010,
       "x-section": "ERRORS"
+    },
+    "REPOSITORY_TRIVY_SBOM_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/REPOSITORY_TRIVY_SBOM_FILTER_REGEX_EXCLUDE",
+      "description": "REPOSITORY_TRIVY_SBOM: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with REPOSITORY_TRIVY_SBOM_CLI_LINT_MODE = project",
+      "title": "REPOSITORY_TRIVY_SBOM: Excluding Regex",
+      "type": "string",
+      "x-category": "REPOSITORY_TRIVY_SBOM",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "REPOSITORY_TRIVY_SBOM_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/REPOSITORY_TRIVY_SBOM_FILTER_REGEX_INCLUDE",
+      "description": "REPOSITORY_TRIVY_SBOM: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with REPOSITORY_TRIVY_SBOM_CLI_LINT_MODE = project",
+      "title": "REPOSITORY_TRIVY_SBOM: Including Regex",
+      "type": "string",
+      "x-category": "REPOSITORY_TRIVY_SBOM",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
     },
     "REPOSITORY_TRIVY_SBOM_POST_COMMANDS": {
       "$id": "#/properties/REPOSITORY_TRIVY_SBOM_POST_COMMANDS",
@@ -26325,6 +26774,26 @@
       "x-category": "REPOSITORY_TRUFFLEHOG",
       "x-order": 400010,
       "x-section": "ERRORS"
+    },
+    "REPOSITORY_TRUFFLEHOG_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/REPOSITORY_TRUFFLEHOG_FILTER_REGEX_EXCLUDE",
+      "description": "REPOSITORY_TRUFFLEHOG: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with REPOSITORY_TRUFFLEHOG_CLI_LINT_MODE = project",
+      "title": "REPOSITORY_TRUFFLEHOG: Excluding Regex",
+      "type": "string",
+      "x-category": "REPOSITORY_TRUFFLEHOG",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "REPOSITORY_TRUFFLEHOG_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/REPOSITORY_TRUFFLEHOG_FILTER_REGEX_INCLUDE",
+      "description": "REPOSITORY_TRUFFLEHOG: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with REPOSITORY_TRUFFLEHOG_CLI_LINT_MODE = project",
+      "title": "REPOSITORY_TRUFFLEHOG: Including Regex",
+      "type": "string",
+      "x-category": "REPOSITORY_TRUFFLEHOG",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
     },
     "REPOSITORY_TRUFFLEHOG_POST_COMMANDS": {
       "$id": "#/properties/REPOSITORY_TRUFFLEHOG_POST_COMMANDS",
@@ -26598,7 +27067,7 @@
     },
     "ROBOTFRAMEWORK_ROBOCOP_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/ROBOTFRAMEWORK_ROBOCOP_FILTER_REGEX_EXCLUDE",
-      "description": "ROBOTFRAMEWORK_ROBOCOP: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "ROBOTFRAMEWORK_ROBOCOP: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with ROBOTFRAMEWORK_ROBOCOP_CLI_LINT_MODE = project",
       "title": "ROBOTFRAMEWORK_ROBOCOP: Excluding Regex",
       "type": "string",
       "x-category": "ROBOTFRAMEWORK_ROBOCOP",
@@ -26608,7 +27077,7 @@
     },
     "ROBOTFRAMEWORK_ROBOCOP_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/ROBOTFRAMEWORK_ROBOCOP_FILTER_REGEX_INCLUDE",
-      "description": "ROBOTFRAMEWORK_ROBOCOP: Custom regex including filter: only files matching this regex will be linted",
+      "description": "ROBOTFRAMEWORK_ROBOCOP: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with ROBOTFRAMEWORK_ROBOCOP_CLI_LINT_MODE = project",
       "title": "ROBOTFRAMEWORK_ROBOCOP: Including Regex",
       "type": "string",
       "x-category": "ROBOTFRAMEWORK_ROBOCOP",
@@ -26781,14 +27250,16 @@
     },
     "RST_RSTCHECK_CLI_LINT_MODE": {
       "$id": "#/properties/RST_RSTCHECK_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "description": "RST_RSTCHECK: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "enumNames": [
         "File",
+        "List of Files",
         "Project"
       ],
       "title": "RST_RSTCHECK: CLI lint mode",
@@ -26885,7 +27356,7 @@
     },
     "RST_RSTCHECK_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/RST_RSTCHECK_FILTER_REGEX_EXCLUDE",
-      "description": "RST_RSTCHECK: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "RST_RSTCHECK: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with RST_RSTCHECK_CLI_LINT_MODE = project",
       "title": "RST_RSTCHECK: Excluding Regex",
       "type": "string",
       "x-category": "RST_RSTCHECK",
@@ -26895,7 +27366,7 @@
     },
     "RST_RSTCHECK_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/RST_RSTCHECK_FILTER_REGEX_INCLUDE",
-      "description": "RST_RSTCHECK: Custom regex including filter: only files matching this regex will be linted",
+      "description": "RST_RSTCHECK: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with RST_RSTCHECK_CLI_LINT_MODE = project",
       "title": "RST_RSTCHECK: Including Regex",
       "type": "string",
       "x-category": "RST_RSTCHECK",
@@ -27006,14 +27477,16 @@
     },
     "RST_RSTFMT_CLI_LINT_MODE": {
       "$id": "#/properties/RST_RSTFMT_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "description": "RST_RSTFMT: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "enumNames": [
         "File",
+        "List of Files",
         "Project"
       ],
       "title": "RST_RSTFMT: CLI lint mode",
@@ -27100,7 +27573,7 @@
     },
     "RST_RSTFMT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/RST_RSTFMT_FILTER_REGEX_EXCLUDE",
-      "description": "RST_RSTFMT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "RST_RSTFMT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with RST_RSTFMT_CLI_LINT_MODE = project",
       "title": "RST_RSTFMT: Excluding Regex",
       "type": "string",
       "x-category": "RST_RSTFMT",
@@ -27110,7 +27583,7 @@
     },
     "RST_RSTFMT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/RST_RSTFMT_FILTER_REGEX_INCLUDE",
-      "description": "RST_RSTFMT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "RST_RSTFMT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with RST_RSTFMT_CLI_LINT_MODE = project",
       "title": "RST_RSTFMT: Including Regex",
       "type": "string",
       "x-category": "RST_RSTFMT",
@@ -27212,14 +27685,16 @@
     },
     "RST_RST_LINT_CLI_LINT_MODE": {
       "$id": "#/properties/RST_RST_LINT_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "description": "RST_RST_LINT: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "enumNames": [
         "File",
+        "List of Files",
         "Project"
       ],
       "title": "RST_RST_LINT: CLI lint mode",
@@ -27306,7 +27781,7 @@
     },
     "RST_RST_LINT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/RST_RST_LINT_FILTER_REGEX_EXCLUDE",
-      "description": "RST_RST_LINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "RST_RST_LINT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with RST_RST_LINT_CLI_LINT_MODE = project",
       "title": "RST_RST_LINT: Excluding Regex",
       "type": "string",
       "x-category": "RST_RST_LINT",
@@ -27316,7 +27791,7 @@
     },
     "RST_RST_LINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/RST_RST_LINT_FILTER_REGEX_INCLUDE",
-      "description": "RST_RST_LINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "RST_RST_LINT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with RST_RST_LINT_CLI_LINT_MODE = project",
       "title": "RST_RST_LINT: Including Regex",
       "type": "string",
       "x-category": "RST_RST_LINT",
@@ -27480,14 +27955,16 @@
     },
     "RUBY_RUBOCOP_CLI_LINT_MODE": {
       "$id": "#/properties/RUBY_RUBOCOP_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "description": "RUBY_RUBOCOP: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "enumNames": [
         "File",
+        "List of Files",
         "Project"
       ],
       "title": "RUBY_RUBOCOP: CLI lint mode",
@@ -27584,7 +28061,7 @@
     },
     "RUBY_RUBOCOP_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/RUBY_RUBOCOP_FILTER_REGEX_EXCLUDE",
-      "description": "RUBY_RUBOCOP: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "RUBY_RUBOCOP: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with RUBY_RUBOCOP_CLI_LINT_MODE = project",
       "title": "RUBY_RUBOCOP: Excluding Regex",
       "type": "string",
       "x-category": "RUBY_RUBOCOP",
@@ -27594,7 +28071,7 @@
     },
     "RUBY_RUBOCOP_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/RUBY_RUBOCOP_FILTER_REGEX_INCLUDE",
-      "description": "RUBY_RUBOCOP: Custom regex including filter: only files matching this regex will be linted",
+      "description": "RUBY_RUBOCOP: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with RUBY_RUBOCOP_CLI_LINT_MODE = project",
       "title": "RUBY_RUBOCOP: Including Regex",
       "type": "string",
       "x-category": "RUBY_RUBOCOP",
@@ -27708,13 +28185,9 @@
       "default": "project",
       "description": "RUST_CLIPPY: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
-        "file",
-        "list_of_files",
         "project"
       ],
       "enumNames": [
-        "File",
-        "List of Files",
         "Project"
       ],
       "title": "RUST_CLIPPY: CLI lint mode",
@@ -27807,6 +28280,26 @@
       "type": "array",
       "x-category": "RUST_CLIPPY",
       "x-order": 300030,
+      "x-section": "SCOPE"
+    },
+    "RUST_CLIPPY_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/RUST_CLIPPY_FILTER_REGEX_EXCLUDE",
+      "description": "RUST_CLIPPY: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with RUST_CLIPPY_CLI_LINT_MODE = project",
+      "title": "RUST_CLIPPY: Excluding Regex",
+      "type": "string",
+      "x-category": "RUST_CLIPPY",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "RUST_CLIPPY_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/RUST_CLIPPY_FILTER_REGEX_INCLUDE",
+      "description": "RUST_CLIPPY: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with RUST_CLIPPY_CLI_LINT_MODE = project",
+      "title": "RUST_CLIPPY: Including Regex",
+      "type": "string",
+      "x-category": "RUST_CLIPPY",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
       "x-section": "SCOPE"
     },
     "RUST_CLIPPY_POST_COMMANDS": {
@@ -27997,12 +28490,10 @@
       "default": "file",
       "description": "R_LINTR: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
-        "file",
-        "project"
+        "file"
       ],
       "enumNames": [
-        "File",
-        "Project"
+        "File"
       ],
       "title": "R_LINTR: CLI lint mode",
       "type": "string",
@@ -28101,7 +28592,7 @@
     },
     "R_LINTR_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/R_LINTR_FILTER_REGEX_EXCLUDE",
-      "description": "R_LINTR: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "title": "R_LINTR: Excluding Regex",
       "type": "string",
       "x-category": "R_LINTR",
@@ -28111,7 +28602,7 @@
     },
     "R_LINTR_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/R_LINTR_FILTER_REGEX_INCLUDE",
-      "description": "R_LINTR: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "title": "R_LINTR: Including Regex",
       "type": "string",
       "x-category": "R_LINTR",
@@ -28267,13 +28758,9 @@
       "default": "project",
       "description": "SALESFORCE_CODE_ANALYZER_APEX: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
-        "file",
-        "list_of_files",
         "project"
       ],
       "enumNames": [
-        "File",
-        "List of Files",
         "Project"
       ],
       "title": "SALESFORCE_CODE_ANALYZER_APEX: CLI lint mode",
@@ -28341,6 +28828,26 @@
       "x-category": "SALESFORCE_CODE_ANALYZER_APEX",
       "x-order": 400010,
       "x-section": "ERRORS"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEX_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_APEX_FILTER_REGEX_EXCLUDE",
+      "description": "SALESFORCE_CODE_ANALYZER_APEX: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with SALESFORCE_CODE_ANALYZER_APEX_CLI_LINT_MODE = project",
+      "title": "SALESFORCE_CODE_ANALYZER_APEX: Excluding Regex",
+      "type": "string",
+      "x-category": "SALESFORCE_CODE_ANALYZER_APEX",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEX_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_APEX_FILTER_REGEX_INCLUDE",
+      "description": "SALESFORCE_CODE_ANALYZER_APEX: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with SALESFORCE_CODE_ANALYZER_APEX_CLI_LINT_MODE = project",
+      "title": "SALESFORCE_CODE_ANALYZER_APEX: Including Regex",
+      "type": "string",
+      "x-category": "SALESFORCE_CODE_ANALYZER_APEX",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
     },
     "SALESFORCE_CODE_ANALYZER_APEX_POST_COMMANDS": {
       "$id": "#/properties/SALESFORCE_CODE_ANALYZER_APEX_POST_COMMANDS",
@@ -28448,13 +28955,9 @@
       "default": "project",
       "description": "SALESFORCE_CODE_ANALYZER_AURA: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
-        "file",
-        "list_of_files",
         "project"
       ],
       "enumNames": [
-        "File",
-        "List of Files",
         "Project"
       ],
       "title": "SALESFORCE_CODE_ANALYZER_AURA: CLI lint mode",
@@ -28522,6 +29025,26 @@
       "x-category": "SALESFORCE_CODE_ANALYZER_AURA",
       "x-order": 400010,
       "x-section": "ERRORS"
+    },
+    "SALESFORCE_CODE_ANALYZER_AURA_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_AURA_FILTER_REGEX_EXCLUDE",
+      "description": "SALESFORCE_CODE_ANALYZER_AURA: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with SALESFORCE_CODE_ANALYZER_AURA_CLI_LINT_MODE = project",
+      "title": "SALESFORCE_CODE_ANALYZER_AURA: Excluding Regex",
+      "type": "string",
+      "x-category": "SALESFORCE_CODE_ANALYZER_AURA",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "SALESFORCE_CODE_ANALYZER_AURA_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_AURA_FILTER_REGEX_INCLUDE",
+      "description": "SALESFORCE_CODE_ANALYZER_AURA: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with SALESFORCE_CODE_ANALYZER_AURA_CLI_LINT_MODE = project",
+      "title": "SALESFORCE_CODE_ANALYZER_AURA: Including Regex",
+      "type": "string",
+      "x-category": "SALESFORCE_CODE_ANALYZER_AURA",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
     },
     "SALESFORCE_CODE_ANALYZER_AURA_POST_COMMANDS": {
       "$id": "#/properties/SALESFORCE_CODE_ANALYZER_AURA_POST_COMMANDS",
@@ -28629,13 +29152,9 @@
       "default": "project",
       "description": "SALESFORCE_CODE_ANALYZER_LWC: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
-        "file",
-        "list_of_files",
         "project"
       ],
       "enumNames": [
-        "File",
-        "List of Files",
         "Project"
       ],
       "title": "SALESFORCE_CODE_ANALYZER_LWC: CLI lint mode",
@@ -28703,6 +29222,26 @@
       "x-category": "SALESFORCE_CODE_ANALYZER_LWC",
       "x-order": 400010,
       "x-section": "ERRORS"
+    },
+    "SALESFORCE_CODE_ANALYZER_LWC_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_LWC_FILTER_REGEX_EXCLUDE",
+      "description": "SALESFORCE_CODE_ANALYZER_LWC: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with SALESFORCE_CODE_ANALYZER_LWC_CLI_LINT_MODE = project",
+      "title": "SALESFORCE_CODE_ANALYZER_LWC: Excluding Regex",
+      "type": "string",
+      "x-category": "SALESFORCE_CODE_ANALYZER_LWC",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "SALESFORCE_CODE_ANALYZER_LWC_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_LWC_FILTER_REGEX_INCLUDE",
+      "description": "SALESFORCE_CODE_ANALYZER_LWC: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with SALESFORCE_CODE_ANALYZER_LWC_CLI_LINT_MODE = project",
+      "title": "SALESFORCE_CODE_ANALYZER_LWC: Including Regex",
+      "type": "string",
+      "x-category": "SALESFORCE_CODE_ANALYZER_LWC",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
     },
     "SALESFORCE_CODE_ANALYZER_LWC_POST_COMMANDS": {
       "$id": "#/properties/SALESFORCE_CODE_ANALYZER_LWC_POST_COMMANDS",
@@ -28839,13 +29378,9 @@
       "default": "project",
       "description": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
-        "file",
-        "list_of_files",
         "project"
       ],
       "enumNames": [
-        "File",
-        "List of Files",
         "Project"
       ],
       "title": "SALESFORCE_LIGHTNING_FLOW_SCANNER: CLI lint mode",
@@ -28913,6 +29448,26 @@
       "x-category": "SALESFORCE_LIGHTNING_FLOW_SCANNER",
       "x-order": 400010,
       "x-section": "ERRORS"
+    },
+    "SALESFORCE_LIGHTNING_FLOW_SCANNER_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/SALESFORCE_LIGHTNING_FLOW_SCANNER_FILTER_REGEX_EXCLUDE",
+      "description": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with SALESFORCE_LIGHTNING_FLOW_SCANNER_CLI_LINT_MODE = project",
+      "title": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Excluding Regex",
+      "type": "string",
+      "x-category": "SALESFORCE_LIGHTNING_FLOW_SCANNER",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "SALESFORCE_LIGHTNING_FLOW_SCANNER_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/SALESFORCE_LIGHTNING_FLOW_SCANNER_FILTER_REGEX_INCLUDE",
+      "description": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with SALESFORCE_LIGHTNING_FLOW_SCANNER_CLI_LINT_MODE = project",
+      "title": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Including Regex",
+      "type": "string",
+      "x-category": "SALESFORCE_LIGHTNING_FLOW_SCANNER",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
     },
     "SALESFORCE_LIGHTNING_FLOW_SCANNER_POST_COMMANDS": {
       "$id": "#/properties/SALESFORCE_LIGHTNING_FLOW_SCANNER_POST_COMMANDS",
@@ -29065,13 +29620,9 @@
       "deprecated": true,
       "description": "SALESFORCE_SFDX_SCANNER_APEX: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
-        "file",
-        "list_of_files",
         "project"
       ],
       "enumNames": [
-        "File",
-        "List of Files",
         "Project"
       ],
       "title": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: CLI lint mode",
@@ -29144,6 +29695,28 @@
       "x-category": "SALESFORCE_SFDX_SCANNER_APEX",
       "x-order": 400010,
       "x-section": "ERRORS"
+    },
+    "SALESFORCE_SFDX_SCANNER_APEX_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_FILTER_REGEX_EXCLUDE",
+      "deprecated": true,
+      "description": "SALESFORCE_SFDX_SCANNER_APEX: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with SALESFORCE_SFDX_SCANNER_APEX_CLI_LINT_MODE = project",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: Excluding Regex",
+      "type": "string",
+      "x-category": "SALESFORCE_SFDX_SCANNER_APEX",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "SALESFORCE_SFDX_SCANNER_APEX_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_FILTER_REGEX_INCLUDE",
+      "deprecated": true,
+      "description": "SALESFORCE_SFDX_SCANNER_APEX: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with SALESFORCE_SFDX_SCANNER_APEX_CLI_LINT_MODE = project",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: Including Regex",
+      "type": "string",
+      "x-category": "SALESFORCE_SFDX_SCANNER_APEX",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
     },
     "SALESFORCE_SFDX_SCANNER_APEX_POST_COMMANDS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_POST_COMMANDS",
@@ -29275,13 +29848,9 @@
       "deprecated": true,
       "description": "SALESFORCE_SFDX_SCANNER_AURA: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
-        "file",
-        "list_of_files",
         "project"
       ],
       "enumNames": [
-        "File",
-        "List of Files",
         "Project"
       ],
       "title": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: CLI lint mode",
@@ -29354,6 +29923,28 @@
       "x-category": "SALESFORCE_SFDX_SCANNER_AURA",
       "x-order": 400010,
       "x-section": "ERRORS"
+    },
+    "SALESFORCE_SFDX_SCANNER_AURA_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_FILTER_REGEX_EXCLUDE",
+      "deprecated": true,
+      "description": "SALESFORCE_SFDX_SCANNER_AURA: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with SALESFORCE_SFDX_SCANNER_AURA_CLI_LINT_MODE = project",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: Excluding Regex",
+      "type": "string",
+      "x-category": "SALESFORCE_SFDX_SCANNER_AURA",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "SALESFORCE_SFDX_SCANNER_AURA_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_FILTER_REGEX_INCLUDE",
+      "deprecated": true,
+      "description": "SALESFORCE_SFDX_SCANNER_AURA: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with SALESFORCE_SFDX_SCANNER_AURA_CLI_LINT_MODE = project",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: Including Regex",
+      "type": "string",
+      "x-category": "SALESFORCE_SFDX_SCANNER_AURA",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
     },
     "SALESFORCE_SFDX_SCANNER_AURA_POST_COMMANDS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_POST_COMMANDS",
@@ -29539,13 +30130,9 @@
       "deprecated": true,
       "description": "SALESFORCE_SFDX_SCANNER_LWC: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
-        "file",
-        "list_of_files",
         "project"
       ],
       "enumNames": [
-        "File",
-        "List of Files",
         "Project"
       ],
       "title": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: CLI lint mode",
@@ -29618,6 +30205,28 @@
       "x-category": "SALESFORCE_SFDX_SCANNER_LWC",
       "x-order": 400010,
       "x-section": "ERRORS"
+    },
+    "SALESFORCE_SFDX_SCANNER_LWC_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_FILTER_REGEX_EXCLUDE",
+      "deprecated": true,
+      "description": "SALESFORCE_SFDX_SCANNER_LWC: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with SALESFORCE_SFDX_SCANNER_LWC_CLI_LINT_MODE = project",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: Excluding Regex",
+      "type": "string",
+      "x-category": "SALESFORCE_SFDX_SCANNER_LWC",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "SALESFORCE_SFDX_SCANNER_LWC_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_FILTER_REGEX_INCLUDE",
+      "deprecated": true,
+      "description": "SALESFORCE_SFDX_SCANNER_LWC: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with SALESFORCE_SFDX_SCANNER_LWC_CLI_LINT_MODE = project",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: Including Regex",
+      "type": "string",
+      "x-category": "SALESFORCE_SFDX_SCANNER_LWC",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
     },
     "SALESFORCE_SFDX_SCANNER_LWC_POST_COMMANDS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_POST_COMMANDS",
@@ -29827,14 +30436,16 @@
     },
     "SCALA_SCALAFIX_CLI_LINT_MODE": {
       "$id": "#/properties/SCALA_SCALAFIX_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "description": "SCALA_SCALAFIX: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "enumNames": [
         "File",
+        "List of Files",
         "Project"
       ],
       "title": "SCALA_SCALAFIX: CLI lint mode",
@@ -29931,7 +30542,7 @@
     },
     "SCALA_SCALAFIX_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/SCALA_SCALAFIX_FILTER_REGEX_EXCLUDE",
-      "description": "SCALA_SCALAFIX: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "SCALA_SCALAFIX: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with SCALA_SCALAFIX_CLI_LINT_MODE = project",
       "title": "SCALA_SCALAFIX: Excluding Regex",
       "type": "string",
       "x-category": "SCALA_SCALAFIX",
@@ -29941,7 +30552,7 @@
     },
     "SCALA_SCALAFIX_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/SCALA_SCALAFIX_FILTER_REGEX_INCLUDE",
-      "description": "SCALA_SCALAFIX: Custom regex including filter: only files matching this regex will be linted",
+      "description": "SCALA_SCALAFIX: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with SCALA_SCALAFIX_CLI_LINT_MODE = project",
       "title": "SCALA_SCALAFIX: Including Regex",
       "type": "string",
       "x-category": "SCALA_SCALAFIX",
@@ -30183,12 +30794,10 @@
       "default": "file",
       "description": "SNAKEMAKE_LINT: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
-        "file",
-        "project"
+        "file"
       ],
       "enumNames": [
-        "File",
-        "Project"
+        "File"
       ],
       "title": "SNAKEMAKE_LINT: CLI lint mode",
       "type": "string",
@@ -30276,7 +30885,7 @@
     },
     "SNAKEMAKE_LINT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/SNAKEMAKE_LINT_FILTER_REGEX_EXCLUDE",
-      "description": "SNAKEMAKE_LINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "title": "SNAKEMAKE_LINT: Excluding Regex",
       "type": "string",
       "x-category": "SNAKEMAKE_LINT",
@@ -30286,7 +30895,7 @@
     },
     "SNAKEMAKE_LINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/SNAKEMAKE_LINT_FILTER_REGEX_INCLUDE",
-      "description": "SNAKEMAKE_LINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "title": "SNAKEMAKE_LINT: Including Regex",
       "type": "string",
       "x-category": "SNAKEMAKE_LINT",
@@ -30433,12 +31042,10 @@
       "default": "file",
       "description": "SNAKEMAKE_SNAKEFMT: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
-        "file",
-        "project"
+        "file"
       ],
       "enumNames": [
-        "File",
-        "Project"
+        "File"
       ],
       "title": "SNAKEMAKE_SNAKEFMT: CLI lint mode",
       "type": "string",
@@ -30536,7 +31143,7 @@
     },
     "SNAKEMAKE_SNAKEFMT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/SNAKEMAKE_SNAKEFMT_FILTER_REGEX_EXCLUDE",
-      "description": "SNAKEMAKE_SNAKEFMT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "title": "SNAKEMAKE_SNAKEFMT: Excluding Regex",
       "type": "string",
       "x-category": "SNAKEMAKE_SNAKEFMT",
@@ -30546,7 +31153,7 @@
     },
     "SNAKEMAKE_SNAKEFMT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/SNAKEMAKE_SNAKEFMT_FILTER_REGEX_INCLUDE",
-      "description": "SNAKEMAKE_SNAKEFMT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "title": "SNAKEMAKE_SNAKEFMT: Including Regex",
       "type": "string",
       "x-category": "SNAKEMAKE_SNAKEFMT",
@@ -30774,7 +31381,7 @@
     },
     "SPELL_CODESPELL_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/SPELL_CODESPELL_FILTER_REGEX_EXCLUDE",
-      "description": "SPELL_CODESPELL: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "SPELL_CODESPELL: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with SPELL_CODESPELL_CLI_LINT_MODE = project",
       "title": "SPELL_CODESPELL: Excluding Regex",
       "type": "string",
       "x-category": "SPELL_CODESPELL",
@@ -30784,7 +31391,7 @@
     },
     "SPELL_CODESPELL_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/SPELL_CODESPELL_FILTER_REGEX_INCLUDE",
-      "description": "SPELL_CODESPELL: Custom regex including filter: only files matching this regex will be linted",
+      "description": "SPELL_CODESPELL: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with SPELL_CODESPELL_CLI_LINT_MODE = project",
       "title": "SPELL_CODESPELL: Including Regex",
       "type": "string",
       "x-category": "SPELL_CODESPELL",
@@ -31009,7 +31616,7 @@
     },
     "SPELL_CSPELL_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/SPELL_CSPELL_FILTER_REGEX_EXCLUDE",
-      "description": "SPELL_CSPELL: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "SPELL_CSPELL: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with SPELL_CSPELL_CLI_LINT_MODE = project",
       "title": "SPELL_CSPELL: Excluding Regex",
       "type": "string",
       "x-category": "SPELL_CSPELL",
@@ -31019,7 +31626,7 @@
     },
     "SPELL_CSPELL_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/SPELL_CSPELL_FILTER_REGEX_INCLUDE",
-      "description": "SPELL_CSPELL: Custom regex including filter: only files matching this regex will be linted",
+      "description": "SPELL_CSPELL: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with SPELL_CSPELL_CLI_LINT_MODE = project",
       "title": "SPELL_CSPELL: Including Regex",
       "type": "string",
       "x-category": "SPELL_CSPELL",
@@ -31267,7 +31874,7 @@
     },
     "SPELL_LYCHEE_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/SPELL_LYCHEE_FILTER_REGEX_EXCLUDE",
-      "description": "SPELL_LYCHEE: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "SPELL_LYCHEE: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with SPELL_LYCHEE_CLI_LINT_MODE = project",
       "title": "SPELL_LYCHEE: Excluding Regex",
       "type": "string",
       "x-category": "SPELL_LYCHEE",
@@ -31277,7 +31884,7 @@
     },
     "SPELL_LYCHEE_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/SPELL_LYCHEE_FILTER_REGEX_INCLUDE",
-      "description": "SPELL_LYCHEE: Custom regex including filter: only files matching this regex will be linted",
+      "description": "SPELL_LYCHEE: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with SPELL_LYCHEE_CLI_LINT_MODE = project",
       "title": "SPELL_LYCHEE: Including Regex",
       "type": "string",
       "x-category": "SPELL_LYCHEE",
@@ -31695,7 +32302,7 @@
     },
     "SPELL_PROSELINT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/SPELL_PROSELINT_FILTER_REGEX_EXCLUDE",
-      "description": "SPELL_PROSELINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "SPELL_PROSELINT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with SPELL_PROSELINT_CLI_LINT_MODE = project",
       "title": "SPELL_PROSELINT: Excluding Regex",
       "type": "string",
       "x-category": "SPELL_PROSELINT",
@@ -31705,7 +32312,7 @@
     },
     "SPELL_PROSELINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/SPELL_PROSELINT_FILTER_REGEX_INCLUDE",
-      "description": "SPELL_PROSELINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "SPELL_PROSELINT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with SPELL_PROSELINT_CLI_LINT_MODE = project",
       "title": "SPELL_PROSELINT: Including Regex",
       "type": "string",
       "x-category": "SPELL_PROSELINT",
@@ -31923,7 +32530,7 @@
     },
     "SPELL_VALE_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/SPELL_VALE_FILTER_REGEX_EXCLUDE",
-      "description": "SPELL_VALE: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "SPELL_VALE: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with SPELL_VALE_CLI_LINT_MODE = project",
       "title": "SPELL_VALE: Excluding Regex",
       "type": "string",
       "x-category": "SPELL_VALE",
@@ -31933,7 +32540,7 @@
     },
     "SPELL_VALE_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/SPELL_VALE_FILTER_REGEX_INCLUDE",
-      "description": "SPELL_VALE: Custom regex including filter: only files matching this regex will be linted",
+      "description": "SPELL_VALE: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with SPELL_VALE_CLI_LINT_MODE = project",
       "title": "SPELL_VALE: Including Regex",
       "type": "string",
       "x-category": "SPELL_VALE",
@@ -32212,7 +32819,7 @@
     },
     "SQL_SQLFLUFF_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/SQL_SQLFLUFF_FILTER_REGEX_EXCLUDE",
-      "description": "SQL_SQLFLUFF: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "SQL_SQLFLUFF: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with SQL_SQLFLUFF_CLI_LINT_MODE = project",
       "title": "SQL_SQLFLUFF: Excluding Regex",
       "type": "string",
       "x-category": "SQL_SQLFLUFF",
@@ -32222,7 +32829,7 @@
     },
     "SQL_SQLFLUFF_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/SQL_SQLFLUFF_FILTER_REGEX_INCLUDE",
-      "description": "SQL_SQLFLUFF: Custom regex including filter: only files matching this regex will be linted",
+      "description": "SQL_SQLFLUFF: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with SQL_SQLFLUFF_CLI_LINT_MODE = project",
       "title": "SQL_SQLFLUFF: Including Regex",
       "type": "string",
       "x-category": "SQL_SQLFLUFF",
@@ -32656,7 +33263,7 @@
     },
     "SQL_TSQLLINT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/SQL_TSQLLINT_FILTER_REGEX_EXCLUDE",
-      "description": "SQL_TSQLLINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "SQL_TSQLLINT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with SQL_TSQLLINT_CLI_LINT_MODE = project",
       "title": "SQL_TSQLLINT: Excluding Regex",
       "type": "string",
       "x-category": "SQL_TSQLLINT",
@@ -32666,7 +33273,7 @@
     },
     "SQL_TSQLLINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/SQL_TSQLLINT_FILTER_REGEX_INCLUDE",
-      "description": "SQL_TSQLLINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "SQL_TSQLLINT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with SQL_TSQLLINT_CLI_LINT_MODE = project",
       "title": "SQL_TSQLLINT: Including Regex",
       "type": "string",
       "x-category": "SQL_TSQLLINT",
@@ -32943,6 +33550,26 @@
       "x-order": 300030,
       "x-section": "SCOPE"
     },
+    "SWIFT_SWIFTLINT_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/SWIFT_SWIFTLINT_FILTER_REGEX_EXCLUDE",
+      "description": "SWIFT_SWIFTLINT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with SWIFT_SWIFTLINT_CLI_LINT_MODE = project",
+      "title": "SWIFT_SWIFTLINT: Excluding Regex",
+      "type": "string",
+      "x-category": "SWIFT_SWIFTLINT",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "SWIFT_SWIFTLINT_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/SWIFT_SWIFTLINT_FILTER_REGEX_INCLUDE",
+      "description": "SWIFT_SWIFTLINT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with SWIFT_SWIFTLINT_CLI_LINT_MODE = project",
+      "title": "SWIFT_SWIFTLINT: Including Regex",
+      "type": "string",
+      "x-category": "SWIFT_SWIFTLINT",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
+    },
     "SWIFT_SWIFTLINT_POST_COMMANDS": {
       "$id": "#/properties/SWIFT_SWIFTLINT_POST_COMMANDS",
       "description": "SWIFT_SWIFTLINT: Define bash commands to run after running SWIFT_SWIFTLINT",
@@ -33130,14 +33757,16 @@
     },
     "TEKTON_TEKTON_LINT_CLI_LINT_MODE": {
       "$id": "#/properties/TEKTON_TEKTON_LINT_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "description": "TEKTON_TEKTON_LINT: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "enumNames": [
         "File",
+        "List of Files",
         "Project"
       ],
       "title": "TEKTON_TEKTON_LINT: CLI lint mode",
@@ -33235,7 +33864,7 @@
     },
     "TEKTON_TEKTON_LINT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/TEKTON_TEKTON_LINT_FILTER_REGEX_EXCLUDE",
-      "description": "TEKTON_TEKTON_LINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "TEKTON_TEKTON_LINT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with TEKTON_TEKTON_LINT_CLI_LINT_MODE = project",
       "title": "TEKTON_TEKTON_LINT: Excluding Regex",
       "type": "string",
       "x-category": "TEKTON_TEKTON_LINT",
@@ -33245,7 +33874,7 @@
     },
     "TEKTON_TEKTON_LINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/TEKTON_TEKTON_LINT_FILTER_REGEX_INCLUDE",
-      "description": "TEKTON_TEKTON_LINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "TEKTON_TEKTON_LINT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with TEKTON_TEKTON_LINT_CLI_LINT_MODE = project",
       "title": "TEKTON_TEKTON_LINT: Including Regex",
       "type": "string",
       "x-category": "TEKTON_TEKTON_LINT",
@@ -33733,12 +34362,10 @@
       "default": "file",
       "description": "TERRAFORM_TERRAFORM_FMT: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
-        "file",
-        "project"
+        "file"
       ],
       "enumNames": [
-        "File",
-        "Project"
+        "File"
       ],
       "title": "TERRAFORM_TERRAFORM_FMT: CLI lint mode",
       "type": "string",
@@ -33824,7 +34451,7 @@
     },
     "TERRAFORM_TERRAFORM_FMT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/TERRAFORM_TERRAFORM_FMT_FILTER_REGEX_EXCLUDE",
-      "description": "TERRAFORM_TERRAFORM_FMT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "title": "TERRAFORM_TERRAFORM_FMT: Excluding Regex",
       "type": "string",
       "x-category": "TERRAFORM_TERRAFORM_FMT",
@@ -33834,7 +34461,7 @@
     },
     "TERRAFORM_TERRAFORM_FMT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/TERRAFORM_TERRAFORM_FMT_FILTER_REGEX_INCLUDE",
-      "description": "TERRAFORM_TERRAFORM_FMT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "title": "TERRAFORM_TERRAFORM_FMT: Including Regex",
       "type": "string",
       "x-category": "TERRAFORM_TERRAFORM_FMT",
@@ -33939,12 +34566,10 @@
       "default": "file",
       "description": "TERRAFORM_TERRAGRUNT: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
-        "file",
-        "project"
+        "file"
       ],
       "enumNames": [
-        "File",
-        "Project"
+        "File"
       ],
       "title": "TERRAFORM_TERRAGRUNT: CLI lint mode",
       "type": "string",
@@ -34040,7 +34665,7 @@
     },
     "TERRAFORM_TERRAGRUNT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/TERRAFORM_TERRAGRUNT_FILTER_REGEX_EXCLUDE",
-      "description": "TERRAFORM_TERRAGRUNT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "title": "TERRAFORM_TERRAGRUNT: Excluding Regex",
       "type": "string",
       "x-category": "TERRAFORM_TERRAGRUNT",
@@ -34050,7 +34675,7 @@
     },
     "TERRAFORM_TERRAGRUNT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/TERRAFORM_TERRAGRUNT_FILTER_REGEX_INCLUDE",
-      "description": "TERRAFORM_TERRAGRUNT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "title": "TERRAFORM_TERRAGRUNT: Including Regex",
       "type": "string",
       "x-category": "TERRAFORM_TERRAGRUNT",
@@ -34274,6 +34899,28 @@
       "x-order": 300030,
       "x-section": "SCOPE"
     },
+    "TERRAFORM_TERRASCAN_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/TERRAFORM_TERRASCAN_FILTER_REGEX_EXCLUDE",
+      "deprecated": true,
+      "description": "TERRAFORM_TERRASCAN: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with TERRAFORM_TERRASCAN_CLI_LINT_MODE = project",
+      "title": "(deprecated) TERRAFORM_TERRASCAN: Excluding Regex",
+      "type": "string",
+      "x-category": "TERRAFORM_TERRASCAN",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "TERRAFORM_TERRASCAN_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/TERRAFORM_TERRASCAN_FILTER_REGEX_INCLUDE",
+      "deprecated": true,
+      "description": "TERRAFORM_TERRASCAN: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with TERRAFORM_TERRASCAN_CLI_LINT_MODE = project",
+      "title": "(deprecated) TERRAFORM_TERRASCAN: Including Regex",
+      "type": "string",
+      "x-category": "TERRAFORM_TERRASCAN",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
+    },
     "TERRAFORM_TERRASCAN_POST_COMMANDS": {
       "$id": "#/properties/TERRAFORM_TERRASCAN_POST_COMMANDS",
       "description": "(deprecated) TERRAFORM_TERRASCAN: Define bash commands to run after running TERRAFORM_TERRASCAN",
@@ -34481,6 +35128,26 @@
       "type": "array",
       "x-category": "TERRAFORM_TFLINT",
       "x-order": 300030,
+      "x-section": "SCOPE"
+    },
+    "TERRAFORM_TFLINT_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/TERRAFORM_TFLINT_FILTER_REGEX_EXCLUDE",
+      "description": "TERRAFORM_TFLINT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with TERRAFORM_TFLINT_CLI_LINT_MODE = project",
+      "title": "TERRAFORM_TFLINT: Excluding Regex",
+      "type": "string",
+      "x-category": "TERRAFORM_TFLINT",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "TERRAFORM_TFLINT_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/TERRAFORM_TFLINT_FILTER_REGEX_INCLUDE",
+      "description": "TERRAFORM_TFLINT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with TERRAFORM_TFLINT_CLI_LINT_MODE = project",
+      "title": "TERRAFORM_TFLINT: Including Regex",
+      "type": "string",
+      "x-category": "TERRAFORM_TFLINT",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
       "x-section": "SCOPE"
     },
     "TERRAFORM_TFLINT_POST_COMMANDS": {
@@ -34724,7 +35391,7 @@
     },
     "TSX_ESLINT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/TSX_ESLINT_FILTER_REGEX_EXCLUDE",
-      "description": "TSX_ESLINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "TSX_ESLINT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with TSX_ESLINT_CLI_LINT_MODE = project",
       "title": "TSX_ESLINT: Excluding Regex",
       "type": "string",
       "x-category": "TSX_ESLINT",
@@ -34734,7 +35401,7 @@
     },
     "TSX_ESLINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/TSX_ESLINT_FILTER_REGEX_INCLUDE",
-      "description": "TSX_ESLINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "TSX_ESLINT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with TSX_ESLINT_CLI_LINT_MODE = project",
       "title": "TSX_ESLINT: Including Regex",
       "type": "string",
       "x-category": "TSX_ESLINT",
@@ -35035,7 +35702,7 @@
     },
     "TYPESCRIPT_ES_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/TYPESCRIPT_ES_FILTER_REGEX_EXCLUDE",
-      "description": "TYPESCRIPT_ES: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "TYPESCRIPT_ES: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with TYPESCRIPT_ES_CLI_LINT_MODE = project",
       "title": "TYPESCRIPT_ES: Excluding Regex",
       "type": "string",
       "x-category": "TYPESCRIPT_ES",
@@ -35045,7 +35712,7 @@
     },
     "TYPESCRIPT_ES_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/TYPESCRIPT_ES_FILTER_REGEX_INCLUDE",
-      "description": "TYPESCRIPT_ES: Custom regex including filter: only files matching this regex will be linted",
+      "description": "TYPESCRIPT_ES: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with TYPESCRIPT_ES_CLI_LINT_MODE = project",
       "title": "TYPESCRIPT_ES: Including Regex",
       "type": "string",
       "x-category": "TYPESCRIPT_ES",
@@ -35303,7 +35970,7 @@
     },
     "TYPESCRIPT_PRETTIER_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/TYPESCRIPT_PRETTIER_FILTER_REGEX_EXCLUDE",
-      "description": "TYPESCRIPT_PRETTIER: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "TYPESCRIPT_PRETTIER: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with TYPESCRIPT_PRETTIER_CLI_LINT_MODE = project",
       "title": "TYPESCRIPT_PRETTIER: Excluding Regex",
       "type": "string",
       "x-category": "TYPESCRIPT_PRETTIER",
@@ -35313,7 +35980,7 @@
     },
     "TYPESCRIPT_PRETTIER_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/TYPESCRIPT_PRETTIER_FILTER_REGEX_INCLUDE",
-      "description": "TYPESCRIPT_PRETTIER: Custom regex including filter: only files matching this regex will be linted",
+      "description": "TYPESCRIPT_PRETTIER: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with TYPESCRIPT_PRETTIER_CLI_LINT_MODE = project",
       "title": "TYPESCRIPT_PRETTIER: Including Regex",
       "type": "string",
       "x-category": "TYPESCRIPT_PRETTIER",
@@ -35541,7 +36208,7 @@
     },
     "TYPESCRIPT_STANDARD_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/TYPESCRIPT_STANDARD_FILTER_REGEX_EXCLUDE",
-      "description": "TYPESCRIPT_STANDARD: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "TYPESCRIPT_STANDARD: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with TYPESCRIPT_STANDARD_CLI_LINT_MODE = project",
       "title": "TYPESCRIPT_STANDARD: Excluding Regex",
       "type": "string",
       "x-category": "TYPESCRIPT_STANDARD",
@@ -35551,7 +36218,7 @@
     },
     "TYPESCRIPT_STANDARD_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/TYPESCRIPT_STANDARD_FILTER_REGEX_INCLUDE",
-      "description": "TYPESCRIPT_STANDARD: Custom regex including filter: only files matching this regex will be linted",
+      "description": "TYPESCRIPT_STANDARD: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with TYPESCRIPT_STANDARD_CLI_LINT_MODE = project",
       "title": "TYPESCRIPT_STANDARD: Including Regex",
       "type": "string",
       "x-category": "TYPESCRIPT_STANDARD",
@@ -35684,13 +36351,9 @@
       "default": "project",
       "description": "VBDOTNET_DOTNET_FORMAT: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
-        "file",
-        "list_of_files",
         "project"
       ],
       "enumNames": [
-        "File",
-        "List of Files",
         "Project"
       ],
       "title": "VBDOTNET_DOTNET_FORMAT: CLI lint mode",
@@ -35773,6 +36436,26 @@
       "type": "array",
       "x-category": "VBDOTNET_DOTNET_FORMAT",
       "x-order": 300030,
+      "x-section": "SCOPE"
+    },
+    "VBDOTNET_DOTNET_FORMAT_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/VBDOTNET_DOTNET_FORMAT_FILTER_REGEX_EXCLUDE",
+      "description": "VBDOTNET_DOTNET_FORMAT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with VBDOTNET_DOTNET_FORMAT_CLI_LINT_MODE = project",
+      "title": "VBDOTNET_DOTNET_FORMAT: Excluding Regex",
+      "type": "string",
+      "x-category": "VBDOTNET_DOTNET_FORMAT",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "VBDOTNET_DOTNET_FORMAT_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/VBDOTNET_DOTNET_FORMAT_FILTER_REGEX_INCLUDE",
+      "description": "VBDOTNET_DOTNET_FORMAT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with VBDOTNET_DOTNET_FORMAT_CLI_LINT_MODE = project",
+      "title": "VBDOTNET_DOTNET_FORMAT: Including Regex",
+      "type": "string",
+      "x-category": "VBDOTNET_DOTNET_FORMAT",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
       "x-section": "SCOPE"
     },
     "VBDOTNET_DOTNET_FORMAT_POST_COMMANDS": {
@@ -36006,13 +36689,11 @@
       "description": "XML_XMLLINT: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
-        "list_of_files",
-        "project"
+        "list_of_files"
       ],
       "enumNames": [
         "File",
-        "List of Files",
-        "Project"
+        "List of Files"
       ],
       "title": "XML_XMLLINT: CLI lint mode",
       "type": "string",
@@ -36099,7 +36780,7 @@
     },
     "XML_XMLLINT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/XML_XMLLINT_FILTER_REGEX_EXCLUDE",
-      "description": "XML_XMLLINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "title": "XML_XMLLINT: Excluding Regex",
       "type": "string",
       "x-category": "XML_XMLLINT",
@@ -36109,7 +36790,7 @@
     },
     "XML_XMLLINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/XML_XMLLINT_FILTER_REGEX_INCLUDE",
-      "description": "XML_XMLLINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "title": "XML_XMLLINT: Including Regex",
       "type": "string",
       "x-category": "XML_XMLLINT",
@@ -36368,7 +37049,7 @@
     },
     "YAML_PRETTIER_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/YAML_PRETTIER_FILTER_REGEX_EXCLUDE",
-      "description": "YAML_PRETTIER: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "YAML_PRETTIER: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with YAML_PRETTIER_CLI_LINT_MODE = project",
       "title": "YAML_PRETTIER: Excluding Regex",
       "type": "string",
       "x-category": "YAML_PRETTIER",
@@ -36378,7 +37059,7 @@
     },
     "YAML_PRETTIER_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/YAML_PRETTIER_FILTER_REGEX_INCLUDE",
-      "description": "YAML_PRETTIER: Custom regex including filter: only files matching this regex will be linted",
+      "description": "YAML_PRETTIER: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with YAML_PRETTIER_CLI_LINT_MODE = project",
       "title": "YAML_PRETTIER: Including Regex",
       "type": "string",
       "x-category": "YAML_PRETTIER",
@@ -36617,7 +37298,7 @@
     },
     "YAML_V8R_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/YAML_V8R_FILTER_REGEX_EXCLUDE",
-      "description": "YAML_V8R: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "YAML_V8R: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with YAML_V8R_CLI_LINT_MODE = project",
       "title": "YAML_V8R: Excluding Regex",
       "type": "string",
       "x-category": "YAML_V8R",
@@ -36627,7 +37308,7 @@
     },
     "YAML_V8R_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/YAML_V8R_FILTER_REGEX_INCLUDE",
-      "description": "YAML_V8R: Custom regex including filter: only files matching this regex will be linted",
+      "description": "YAML_V8R: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with YAML_V8R_CLI_LINT_MODE = project",
       "title": "YAML_V8R: Including Regex",
       "type": "string",
       "x-category": "YAML_V8R",
@@ -36845,7 +37526,7 @@
     },
     "YAML_YAMLLINT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/YAML_YAMLLINT_FILTER_REGEX_EXCLUDE",
-      "description": "YAML_YAMLLINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "YAML_YAMLLINT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with YAML_YAMLLINT_CLI_LINT_MODE = project",
       "title": "YAML_YAMLLINT: Excluding Regex",
       "type": "string",
       "x-category": "YAML_YAMLLINT",
@@ -36855,7 +37536,7 @@
     },
     "YAML_YAMLLINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/YAML_YAMLLINT_FILTER_REGEX_INCLUDE",
-      "description": "YAML_YAMLLINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "YAML_YAMLLINT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with YAML_YAMLLINT_CLI_LINT_MODE = project",
       "title": "YAML_YAMLLINT: Including Regex",
       "type": "string",
       "x-category": "YAML_YAMLLINT",
