@@ -20,9 +20,10 @@
 # protolint, ls-lint, gitleaks, betterleaks, terragrunt, tflint, snakefmt, and the
 # syft/grype/trivy scanners) ship statically linked against a Go toolchain.
 # These stdlib CVEs are DoS / cert-validation flaws in crypto/x509, crypto/tls, net,
-# net/http2, net/mail and net/url. Every linter runs as a one-shot CLI over local
-# workspace files: no network server, no TLS termination, no DNS of attacker-controlled
-# hosts, no email parsing. The vulnerable paths are never entered.
+# net/http2, net/mail and net/url, plus an os.Root symlink-following bug (CVE-2026-39822).
+# Every linter runs as a one-shot CLI over local workspace files: no network server, no
+# TLS termination, no DNS of attacker-controlled hosts, no email parsing, and the workspace
+# path traversed by os.Root is trusted. The vulnerable paths are never entered.
 # Remove once the upstream tool images are rebuilt with a fixed Go toolchain.
 CVE-2025-22874
 CVE-2025-61726
@@ -38,6 +39,7 @@ CVE-2026-33810
 CVE-2026-33811
 CVE-2026-33814
 CVE-2026-39820
+CVE-2026-39822
 CVE-2026-39836
 CVE-2026-42499
 CVE-2026-42504
@@ -55,6 +57,7 @@ CVE-2026-39827
 CVE-2026-39828
 CVE-2026-39829
 CVE-2026-39830
+CVE-2026-39831
 CVE-2026-39832
 CVE-2026-39835
 CVE-2026-42502
