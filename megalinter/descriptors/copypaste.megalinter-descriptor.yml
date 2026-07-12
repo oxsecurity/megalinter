@@ -64,7 +64,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=jscpd
-          ARG NPM_JSCPD_VERSION=5.0.11
+          ARG NPM_JSCPD_VERSION=5.0.12
       npm:
         - jscpd@${NPM_JSCPD_VERSION}
     supported_platforms:
