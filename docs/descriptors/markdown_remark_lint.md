@@ -48,14 +48,14 @@ _Disabled reason: Bug in remark-lint: <https://github.com/remarkjs/remark-lint/i
 | MARKDOWN_DEFAULT_STYLE                        | For remark-lint to be active, MARKDOWN_DEFAULT_STYLE must be `remark-lint`                           | `markdownlint` |
 | MARKDOWN_REMARK_LINT_ARGUMENTS                | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                             |                |
 | MARKDOWN_REMARK_LINT_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"` |                |
-| MARKDOWN_REMARK_LINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with MARKDOWN_REMARK_LINT_CLI_LINT_MODE = project 
-| MARKDOWN_REMARK_LINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` <br/>⚠️ Not available with MARKDOWN_REMARK_LINT_CLI_LINT_MODE = project 
+| MARKDOWN_REMARK_LINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with MARKDOWN_REMARK_LINT_CLI_LINT_MODE = project
+| MARKDOWN_REMARK_LINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` <br/>⚠️ Not available with MARKDOWN_REMARK_LINT_CLI_LINT_MODE = project
 | MARKDOWN_REMARK_LINT_CLI_LINT_MODE | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files` |
 | MARKDOWN_REMARK_LINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".md"]` |
 | MARKDOWN_REMARK_LINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
-| MARKDOWN_REMARK_LINT_PRE_COMMANDS | List of bash commands to run before the linter| None |
-| MARKDOWN_REMARK_LINT_POST_COMMANDS | List of bash commands to run after the linter| None |
-| MARKDOWN_REMARK_LINT_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling MARKDOWN_REMARK_LINT and its pre/post commands| None |
+| MARKDOWN_REMARK_LINT_PRE_COMMANDS | List of bash commands to run before the linter | None |
+| MARKDOWN_REMARK_LINT_POST_COMMANDS | List of bash commands to run after the linter | None |
+| MARKDOWN_REMARK_LINT_UNSECURED_ENV_VARIABLES | List of env variables explicitly not filtered before calling MARKDOWN_REMARK_LINT and its pre/post commands | None |
 | MARKDOWN_REMARK_LINT_CONFIG_FILE | remark-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.remarkrc` |
 | MARKDOWN_REMARK_LINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then MegaLinter default rules |
 | MARKDOWN_REMARK_LINT_DISABLE_ERRORS | Run linter but consider errors as warnings | `true` |

@@ -48,9 +48,9 @@ description: How to use snakefmt (configure, ignore files, ignore errors, help &
 | SNAKEMAKE_SNAKEFMT_CLI_LINT_MODE | Override default CLI lint mode<br/>- `file`: Calls the linter for each file | `file` |
 | SNAKEMAKE_SNAKEFMT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".smk"]` |
 | SNAKEMAKE_SNAKEFMT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | `["Snakefile"]` |
-| SNAKEMAKE_SNAKEFMT_PRE_COMMANDS | List of bash commands to run before the linter| None |
-| SNAKEMAKE_SNAKEFMT_POST_COMMANDS | List of bash commands to run after the linter| None |
-| SNAKEMAKE_SNAKEFMT_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling SNAKEMAKE_SNAKEFMT and its pre/post commands| None |
+| SNAKEMAKE_SNAKEFMT_PRE_COMMANDS | List of bash commands to run before the linter | None |
+| SNAKEMAKE_SNAKEFMT_POST_COMMANDS | List of bash commands to run after the linter | None |
+| SNAKEMAKE_SNAKEFMT_UNSECURED_ENV_VARIABLES | List of env variables explicitly not filtered before calling SNAKEMAKE_SNAKEFMT and its pre/post commands | None |
 | SNAKEMAKE_SNAKEFMT_CONFIG_FILE | snakefmt configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.snakefmt.toml` |
 | SNAKEMAKE_SNAKEFMT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then MegaLinter default rules |
 | SNAKEMAKE_SNAKEFMT_DISABLE_ERRORS | Run linter but consider errors as warnings | `true` |

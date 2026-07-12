@@ -51,9 +51,9 @@ description: How to use terraform-fmt (configure, ignore files, ignore errors, h
 | TERRAFORM_TERRAFORM_FMT_CLI_LINT_MODE | Override default CLI lint mode<br/>- `file`: Calls the linter for each file | `file` |
 | TERRAFORM_TERRAFORM_FMT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".tf"]` |
 | TERRAFORM_TERRAFORM_FMT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
-| TERRAFORM_TERRAFORM_FMT_PRE_COMMANDS | List of bash commands to run before the linter| None |
-| TERRAFORM_TERRAFORM_FMT_POST_COMMANDS | List of bash commands to run after the linter| None |
-| TERRAFORM_TERRAFORM_FMT_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling TERRAFORM_TERRAFORM_FMT and its pre/post commands| None |
+| TERRAFORM_TERRAFORM_FMT_PRE_COMMANDS | List of bash commands to run before the linter | None |
+| TERRAFORM_TERRAFORM_FMT_POST_COMMANDS | List of bash commands to run after the linter | None |
+| TERRAFORM_TERRAFORM_FMT_UNSECURED_ENV_VARIABLES | List of env variables explicitly not filtered before calling TERRAFORM_TERRAFORM_FMT and its pre/post commands | None |
 | TERRAFORM_TERRAFORM_FMT_DISABLE_ERRORS | Run linter but consider errors as warnings | `true` |
 | TERRAFORM_TERRAFORM_FMT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
 | TERRAFORM_TERRAFORM_FMT_CLI_EXECUTABLE | Override CLI executable | `['terraform']` |

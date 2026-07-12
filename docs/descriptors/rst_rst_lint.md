@@ -42,14 +42,14 @@ description: How to use rst-lint (configure, ignore files, ignore errors, help &
 |---------------------------------------|------------------------------------------------------------------------------------------------------|---------------|
 | RST_RST_LINT_ARGUMENTS                | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                             |               |
 | RST_RST_LINT_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"` |               |
-| RST_RST_LINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with RST_RST_LINT_CLI_LINT_MODE = project 
-| RST_RST_LINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` <br/>⚠️ Not available with RST_RST_LINT_CLI_LINT_MODE = project 
+| RST_RST_LINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with RST_RST_LINT_CLI_LINT_MODE = project
+| RST_RST_LINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` <br/>⚠️ Not available with RST_RST_LINT_CLI_LINT_MODE = project
 | RST_RST_LINT_CLI_LINT_MODE | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files` |
 | RST_RST_LINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".rst"]` |
 | RST_RST_LINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
-| RST_RST_LINT_PRE_COMMANDS | List of bash commands to run before the linter| None |
-| RST_RST_LINT_POST_COMMANDS | List of bash commands to run after the linter| None |
-| RST_RST_LINT_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling RST_RST_LINT and its pre/post commands| None |
+| RST_RST_LINT_PRE_COMMANDS | List of bash commands to run before the linter | None |
+| RST_RST_LINT_POST_COMMANDS | List of bash commands to run after the linter | None |
+| RST_RST_LINT_UNSECURED_ENV_VARIABLES | List of env variables explicitly not filtered before calling RST_RST_LINT and its pre/post commands | None |
 | RST_RST_LINT_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
 | RST_RST_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
 | RST_RST_LINT_CLI_EXECUTABLE | Override CLI executable | `['rst-lint']` |

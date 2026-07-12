@@ -43,12 +43,12 @@ description: How to use syft (configure, ignore files, ignore errors, help & ver
 |------------------------------------------|------------------------------------------------------------------------------------------------------|---------------|
 | REPOSITORY_SYFT_ARGUMENTS                | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                             |               |
 | REPOSITORY_SYFT_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"` |               |
-| REPOSITORY_SYFT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with REPOSITORY_SYFT_CLI_LINT_MODE = project 
-| REPOSITORY_SYFT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` <br/>⚠️ Not available with REPOSITORY_SYFT_CLI_LINT_MODE = project 
+| REPOSITORY_SYFT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with REPOSITORY_SYFT_CLI_LINT_MODE = project
+| REPOSITORY_SYFT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` <br/>⚠️ Not available with REPOSITORY_SYFT_CLI_LINT_MODE = project
 | REPOSITORY_SYFT_CLI_LINT_MODE | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project | `project` |
-| REPOSITORY_SYFT_PRE_COMMANDS | List of bash commands to run before the linter| None |
-| REPOSITORY_SYFT_POST_COMMANDS | List of bash commands to run after the linter| None |
-| REPOSITORY_SYFT_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling REPOSITORY_SYFT and its pre/post commands| None |
+| REPOSITORY_SYFT_PRE_COMMANDS | List of bash commands to run before the linter | None |
+| REPOSITORY_SYFT_POST_COMMANDS | List of bash commands to run after the linter | None |
+| REPOSITORY_SYFT_UNSECURED_ENV_VARIABLES | List of env variables explicitly not filtered before calling REPOSITORY_SYFT and its pre/post commands | None |
 | REPOSITORY_SYFT_CONFIG_FILE | syft configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.syft.yaml` |
 | REPOSITORY_SYFT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then MegaLinter default rules |
 | REPOSITORY_SYFT_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |

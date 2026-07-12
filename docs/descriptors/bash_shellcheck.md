@@ -44,9 +44,9 @@ description: How to use shellcheck (configure, ignore files, ignore errors, help
 | BASH_SHELLCHECK_CLI_LINT_MODE | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument | `list_of_files` |
 | BASH_SHELLCHECK_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".sh", ".bash", ".dash", ".ksh"]` |
 | BASH_SHELLCHECK_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
-| BASH_SHELLCHECK_PRE_COMMANDS | List of bash commands to run before the linter| None |
-| BASH_SHELLCHECK_POST_COMMANDS | List of bash commands to run after the linter| None |
-| BASH_SHELLCHECK_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling BASH_SHELLCHECK and its pre/post commands| None |
+| BASH_SHELLCHECK_PRE_COMMANDS | List of bash commands to run before the linter | None |
+| BASH_SHELLCHECK_POST_COMMANDS | List of bash commands to run after the linter | None |
+| BASH_SHELLCHECK_UNSECURED_ENV_VARIABLES | List of env variables explicitly not filtered before calling BASH_SHELLCHECK and its pre/post commands | None |
 | BASH_SHELLCHECK_CONFIG_FILE | shellcheck configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.shellcheckrc` |
 | BASH_SHELLCHECK_RULES_PATH | Path where to find linter configuration file | Workspace folder, then MegaLinter default rules |
 | BASH_SHELLCHECK_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |

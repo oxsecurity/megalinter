@@ -62,12 +62,12 @@ Example:
 |------------------------------------------|------------------------------------------------------------------------------------------------------|---------------|
 | COPYPASTE_JSCPD_ARGUMENTS                | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                             |               |
 | COPYPASTE_JSCPD_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"` |               |
-| COPYPASTE_JSCPD_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with COPYPASTE_JSCPD_CLI_LINT_MODE = project 
-| COPYPASTE_JSCPD_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` <br/>⚠️ Not available with COPYPASTE_JSCPD_CLI_LINT_MODE = project 
+| COPYPASTE_JSCPD_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with COPYPASTE_JSCPD_CLI_LINT_MODE = project
+| COPYPASTE_JSCPD_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` <br/>⚠️ Not available with COPYPASTE_JSCPD_CLI_LINT_MODE = project
 | COPYPASTE_JSCPD_CLI_LINT_MODE | Override default CLI lint mode<br/>- `project`: Call the linter from the root of the project | `project` |
-| COPYPASTE_JSCPD_PRE_COMMANDS | List of bash commands to run before the linter| None |
-| COPYPASTE_JSCPD_POST_COMMANDS | List of bash commands to run after the linter| None |
-| COPYPASTE_JSCPD_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling COPYPASTE_JSCPD and its pre/post commands| None |
+| COPYPASTE_JSCPD_PRE_COMMANDS | List of bash commands to run before the linter | None |
+| COPYPASTE_JSCPD_POST_COMMANDS | List of bash commands to run after the linter | None |
+| COPYPASTE_JSCPD_UNSECURED_ENV_VARIABLES | List of env variables explicitly not filtered before calling COPYPASTE_JSCPD and its pre/post commands | None |
 | COPYPASTE_JSCPD_CONFIG_FILE | jscpd configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.jscpd.json` |
 | COPYPASTE_JSCPD_RULES_PATH | Path where to find linter configuration file | Workspace folder, then MegaLinter default rules |
 | COPYPASTE_JSCPD_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
