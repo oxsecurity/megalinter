@@ -70,7 +70,8 @@ linters:
     test_folder: repository_checkov
 
   # DEVSKIM
-  - linter_name: devskim
+  - class: DevskimLinter
+    linter_name: devskim
     can_output_sarif: true
     descriptor_flavors:
       - all
