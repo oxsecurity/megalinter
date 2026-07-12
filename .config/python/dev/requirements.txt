@@ -34,7 +34,7 @@ terminaltables==3.1.10
 termcolor==3.3.0
 urllib3==2.7.0
 webpreview==1.7.2
-yq==4.1.1
+yq==4.1.2
 langchain_core==1.4.8
 langchain_anthropic==1.4.8
 langchain_deepseek==1.1.0
