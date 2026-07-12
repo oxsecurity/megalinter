@@ -55,7 +55,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=github-tags depName=Azure/bicep
-ARG BICEP_VERSION=0.44.1
+ARG BICEP_VERSION=0.45.6
 ARG BICEP_EXE='bicep'
 ARG BICEP_DIR='/usr/local/bin'
 #ARG__END
