@@ -30,7 +30,7 @@ description: How to use terraform-fmt (configure, ignore files, ignore errors, h
 
 ## terraform-fmt documentation
 
-- Version in MegaLinter: **1.15.7**
+- Version in MegaLinter: **1.15.8**
 - Visit [Official Web Site](https://developer.hashicorp.com/terraform/cli/commands/fmt){target=_blank}
 
 [![terraform - GitHub](https://gh-card.dev/repos/hashicorp/terraform.svg?fullname=)](https://github.com/hashicorp/terraform){target=_blank}
@@ -42,21 +42,21 @@ description: How to use terraform-fmt (configure, ignore files, ignore errors, h
 
 - Enable **autofixes** by adding `TERRAFORM_TERRAFORM_FMT` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
-| Variable                                            | Description                                                                                                                                                                                  | Default value      |
-|-----------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| TERRAFORM_TERRAFORM_FMT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                    |
-| TERRAFORM_TERRAFORM_FMT_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                         |                    |
-| TERRAFORM_TERRAFORM_FMT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file |
-| TERRAFORM_TERRAFORM_FMT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file    |
-| TERRAFORM_TERRAFORM_FMT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project                                                    | `file`             |
-| TERRAFORM_TERRAFORM_FMT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".tf"]`          |
-| TERRAFORM_TERRAFORM_FMT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
-| TERRAFORM_TERRAFORM_FMT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None               |
-| TERRAFORM_TERRAFORM_FMT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None               |
-| TERRAFORM_TERRAFORM_FMT_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling TERRAFORM_TERRAFORM_FMT and its pre/post commands                                                                               | None               |
-| TERRAFORM_TERRAFORM_FMT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `true`             |
-| TERRAFORM_TERRAFORM_FMT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                |
-| TERRAFORM_TERRAFORM_FMT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['terraform']`    |
+| Variable                                         | Description                                                                                          | Default value |
+|--------------------------------------------------|------------------------------------------------------------------------------------------------------|---------------|
+| TERRAFORM_TERRAFORM_FMT_ARGUMENTS                | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                             |               |
+| TERRAFORM_TERRAFORM_FMT_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"` |               |
+ | Include every file |
+ | Exclude no file |
+| TERRAFORM_TERRAFORM_FMT_CLI_LINT_MODE | Override default CLI lint mode<br/><- `file`: Calls the linter for each fileb- `file`: Calls the linter for each filer- `file`: Calls the linter for each file/- `file`: Calls the linter for each file> | `file` |
+| TERRAFORM_TERRAFORM_FMT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".tf"]` |
+| TERRAFORM_TERRAFORM_FMT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
+| TERRAFORM_TERRAFORM_FMT_PRE_COMMANDS | List of bash commands to run before the linter| None |
+| TERRAFORM_TERRAFORM_FMT_POST_COMMANDS | List of bash commands to run after the linter| None |
+| TERRAFORM_TERRAFORM_FMT_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling TERRAFORM_TERRAFORM_FMT and its pre/post commands| None |
+| TERRAFORM_TERRAFORM_FMT_DISABLE_ERRORS | Run linter but consider errors as warnings | `true` |
+| TERRAFORM_TERRAFORM_FMT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
+| TERRAFORM_TERRAFORM_FMT_CLI_EXECUTABLE | Override CLI executable | `['terraform']` |
 
 ## IDE Integration
 
@@ -150,7 +150,7 @@ Global options (use these before the subcommand, if any):
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.7
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.8
 FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 COPY --link --from=terragrunt /bin/terraform /usr/bin/
 ```

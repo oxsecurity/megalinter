@@ -1,12 +1,12 @@
 {
   "_meta": {
-    "variable_count": 2375,
+    "variable_count": 2451,
     "categories": {
       "ACTION": 4,
       "ACTION_ACTIONLINT": 16,
       "ACTION_ZIZMOR": 16,
       "ANSIBLE": 5,
-      "ANSIBLE_ANSIBLE_LINT": 14,
+      "ANSIBLE_ANSIBLE_LINT": 16,
       "API": 4,
       "API_SPECTRAL": 15,
       "ARM": 4,
@@ -30,14 +30,14 @@
       "CONFIG_REPORTER": 2,
       "CONSOLE_REPORTER": 2,
       "COPYPASTE": 4,
-      "COPYPASTE_JSCPD": 11,
+      "COPYPASTE_JSCPD": 13,
       "CPP": 4,
       "CPP_CLANG_FORMAT": 15,
       "CPP_CPPCHECK": 13,
       "CPP_CPPLINT": 13,
       "CSHARP": 4,
       "CSHARP_CSHARPIER": 15,
-      "CSHARP_DOTNET_FORMAT": 11,
+      "CSHARP_DOTNET_FORMAT": 13,
       "CSHARP_ROSLYNATOR": 13,
       "CSS": 20,
       "CSS_STYLELINT": 15,
@@ -60,7 +60,7 @@
       "GITHUB_COMMENT_REPORTER": 5,
       "GITLAB_COMMENT_REPORTER": 4,
       "GO": 4,
-      "GO_GOLANGCI_LINT": 13,
+      "GO_GOLANGCI_LINT": 15,
       "GO_REVIVE": 15,
       "GRAPHQL": 4,
       "GRAPHQL_GRAPHQL_SCHEMA_LINTER": 15,
@@ -79,18 +79,18 @@
       "JSON": 6,
       "JSON_ESLINT_PLUGIN_JSONC": 15,
       "JSON_JSONLINT": 15,
-      "JSON_NPM_PACKAGE_JSON_LINT": 13,
+      "JSON_NPM_PACKAGE_JSON_LINT": 15,
       "JSON_PRETTIER": 15,
       "JSON_V8R": 15,
       "JSX": 4,
       "JSX_ESLINT": 15,
       "KOTLIN": 4,
-      "KOTLIN_DETEKT": 13,
+      "KOTLIN_DETEKT": 15,
       "KOTLIN_KTLINT": 13,
       "KUBERNETES": 17,
-      "KUBERNETES_HELM": 12,
+      "KUBERNETES_HELM": 14,
       "KUBERNETES_KUBECONFORM": 14,
-      "KUBERNETES_KUBESCAPE": 12,
+      "KUBERNETES_KUBESCAPE": 14,
       "LATEX": 4,
       "LATEX_CHKTEX": 15,
       "LLM": 10,
@@ -109,7 +109,7 @@
       "PERL_PERLCRITIC": 13,
       "PHP": 15,
       "PHP_PHPCS": 15,
-      "PHP_PHPCSFIXER": 13,
+      "PHP_PHPCSFIXER": 15,
       "PHP_PHPLINT": 15,
       "PHP_PHPSTAN": 15,
       "PHP_PSALM": 15,
@@ -135,23 +135,23 @@
       "RAKU": 4,
       "RAKU_RAKU": 15,
       "REPOSITORY": 12,
-      "REPOSITORY_BETTERLEAKS": 11,
-      "REPOSITORY_CHECKOV": 11,
-      "REPOSITORY_DEVSKIM": 11,
-      "REPOSITORY_DUSTILOCK": 9,
-      "REPOSITORY_GITLEAKS": 14,
-      "REPOSITORY_GIT_DIFF": 9,
-      "REPOSITORY_GRYPE": 11,
-      "REPOSITORY_KICS": 11,
-      "REPOSITORY_KINGFISHER": 9,
-      "REPOSITORY_LS_LINT": 11,
-      "REPOSITORY_OSV_SCANNER": 11,
-      "REPOSITORY_SECRETLINT": 11,
-      "REPOSITORY_SEMGREP": 10,
-      "REPOSITORY_SYFT": 11,
-      "REPOSITORY_TRIVY": 11,
-      "REPOSITORY_TRIVY_SBOM": 11,
-      "REPOSITORY_TRUFFLEHOG": 11,
+      "REPOSITORY_BETTERLEAKS": 13,
+      "REPOSITORY_CHECKOV": 13,
+      "REPOSITORY_DEVSKIM": 13,
+      "REPOSITORY_DUSTILOCK": 11,
+      "REPOSITORY_GITLEAKS": 16,
+      "REPOSITORY_GIT_DIFF": 11,
+      "REPOSITORY_GRYPE": 13,
+      "REPOSITORY_KICS": 13,
+      "REPOSITORY_KINGFISHER": 11,
+      "REPOSITORY_LS_LINT": 13,
+      "REPOSITORY_OSV_SCANNER": 13,
+      "REPOSITORY_SECRETLINT": 13,
+      "REPOSITORY_SEMGREP": 12,
+      "REPOSITORY_SYFT": 13,
+      "REPOSITORY_TRIVY": 13,
+      "REPOSITORY_TRIVY_SBOM": 13,
+      "REPOSITORY_TRUFFLEHOG": 13,
       "ROBOTFRAMEWORK": 4,
       "ROBOTFRAMEWORK_ROBOCOP": 15,
       "RST": 4,
@@ -161,16 +161,16 @@
       "RUBY": 4,
       "RUBY_RUBOCOP": 15,
       "RUST": 4,
-      "RUST_CLIPPY": 13,
+      "RUST_CLIPPY": 15,
       "R_LINTR": 15,
       "SALESFORCE": 13,
-      "SALESFORCE_CODE_ANALYZER_APEX": 12,
-      "SALESFORCE_CODE_ANALYZER_AURA": 12,
-      "SALESFORCE_CODE_ANALYZER_LWC": 12,
-      "SALESFORCE_LIGHTNING_FLOW_SCANNER": 12,
-      "SALESFORCE_SFDX_SCANNER_APEX": 12,
-      "SALESFORCE_SFDX_SCANNER_AURA": 12,
-      "SALESFORCE_SFDX_SCANNER_LWC": 12,
+      "SALESFORCE_CODE_ANALYZER_APEX": 14,
+      "SALESFORCE_CODE_ANALYZER_AURA": 14,
+      "SALESFORCE_CODE_ANALYZER_LWC": 14,
+      "SALESFORCE_LIGHTNING_FLOW_SCANNER": 14,
+      "SALESFORCE_SFDX_SCANNER_APEX": 14,
+      "SALESFORCE_SFDX_SCANNER_AURA": 14,
+      "SALESFORCE_SFDX_SCANNER_LWC": 14,
       "SARIF_REPORTER": 3,
       "SCALA": 4,
       "SCALA_SCALAFIX": 15,
@@ -187,14 +187,14 @@
       "SQL_SQLFLUFF": 15,
       "SQL_TSQLLINT": 15,
       "SWIFT": 4,
-      "SWIFT_SWIFTLINT": 13,
+      "SWIFT_SWIFTLINT": 15,
       "TEKTON": 4,
       "TEKTON_TEKTON_LINT": 15,
       "TERRAFORM": 26,
       "TERRAFORM_TERRAFORM_FMT": 13,
       "TERRAFORM_TERRAGRUNT": 15,
-      "TERRAFORM_TERRASCAN": 13,
-      "TERRAFORM_TFLINT": 14,
+      "TERRAFORM_TERRASCAN": 15,
+      "TERRAFORM_TFLINT": 16,
       "TEXT_REPORTER": 3,
       "TSX": 4,
       "TSX_ESLINT": 15,
@@ -203,7 +203,7 @@
       "TYPESCRIPT_PRETTIER": 15,
       "TYPESCRIPT_STANDARD": 13,
       "VBDOTNET": 4,
-      "VBDOTNET_DOTNET_FORMAT": 11,
+      "VBDOTNET_DOTNET_FORMAT": 13,
       "XML": 4,
       "XML_XMLLINT": 15,
       "YAML": 4,
@@ -248,8 +248,7 @@
       "default": "list_of_files",
       "enum": [
         "file",
-        "list_of_files",
-        "project"
+        "list_of_files"
       ],
       "category": "ACTION_ACTIONLINT",
       "section": "LINTER_COMMAND"
@@ -337,7 +336,7 @@
       "name": "ACTION_ACTIONLINT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "ACTION_ACTIONLINT: Excluding Regex",
-      "description": "ACTION_ACTIONLINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "category": "ACTION_ACTIONLINT",
       "section": "SCOPE"
     },
@@ -345,7 +344,7 @@
       "name": "ACTION_ACTIONLINT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "ACTION_ACTIONLINT: Including Regex",
-      "description": "ACTION_ACTIONLINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "category": "ACTION_ACTIONLINT",
       "section": "SCOPE"
     },
@@ -484,9 +483,7 @@
       "description": "ACTION_ZIZMOR: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "list_of_files",
       "enum": [
-        "file",
-        "list_of_files",
-        "project"
+        "file"
       ],
       "category": "ACTION_ZIZMOR",
       "section": "LINTER_COMMAND"
@@ -574,7 +571,7 @@
       "name": "ACTION_ZIZMOR_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "ACTION_ZIZMOR: Excluding Regex",
-      "description": "ACTION_ZIZMOR: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "category": "ACTION_ZIZMOR",
       "section": "SCOPE"
     },
@@ -582,7 +579,7 @@
       "name": "ACTION_ZIZMOR_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "ACTION_ZIZMOR: Including Regex",
-      "description": "ACTION_ZIZMOR: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "category": "ACTION_ZIZMOR",
       "section": "SCOPE"
     },
@@ -770,6 +767,22 @@
       "category": "ANSIBLE_ANSIBLE_LINT",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "ANSIBLE_ANSIBLE_LINT_FILTER_REGEX_EXCLUDE": {
+      "name": "ANSIBLE_ANSIBLE_LINT_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "ANSIBLE_ANSIBLE_LINT: Excluding Regex",
+      "description": "ANSIBLE_ANSIBLE_LINT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with ANSIBLE_ANSIBLE_LINT_CLI_LINT_MODE = project",
+      "category": "ANSIBLE_ANSIBLE_LINT",
+      "section": "SCOPE"
+    },
+    "ANSIBLE_ANSIBLE_LINT_FILTER_REGEX_INCLUDE": {
+      "name": "ANSIBLE_ANSIBLE_LINT_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "ANSIBLE_ANSIBLE_LINT: Including Regex",
+      "description": "ANSIBLE_ANSIBLE_LINT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with ANSIBLE_ANSIBLE_LINT_CLI_LINT_MODE = project",
+      "category": "ANSIBLE_ANSIBLE_LINT",
+      "section": "SCOPE"
     },
     "ANSIBLE_ANSIBLE_LINT_POST_COMMANDS": {
       "name": "ANSIBLE_ANSIBLE_LINT_POST_COMMANDS",
@@ -965,8 +978,7 @@
       "default": "list_of_files",
       "enum": [
         "file",
-        "list_of_files",
-        "project"
+        "list_of_files"
       ],
       "category": "API_SPECTRAL",
       "section": "LINTER_COMMAND"
@@ -1046,7 +1058,7 @@
       "name": "API_SPECTRAL_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "API_SPECTRAL: Excluding Regex",
-      "description": "API_SPECTRAL: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "category": "API_SPECTRAL",
       "section": "SCOPE"
     },
@@ -1054,7 +1066,7 @@
       "name": "API_SPECTRAL_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "API_SPECTRAL: Including Regex",
-      "description": "API_SPECTRAL: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "category": "API_SPECTRAL",
       "section": "SCOPE"
     },
@@ -1315,8 +1327,7 @@
       "description": "ARM_ARM_TTK: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "file",
       "enum": [
-        "file",
-        "project"
+        "file"
       ],
       "category": "ARM_ARM_TTK",
       "section": "LINTER_COMMAND"
@@ -1394,7 +1405,7 @@
       "name": "ARM_ARM_TTK_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "ARM_ARM_TTK: Excluding Regex",
-      "description": "ARM_ARM_TTK: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "category": "ARM_ARM_TTK",
       "section": "SCOPE"
     },
@@ -1402,7 +1413,7 @@
       "name": "ARM_ARM_TTK_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "ARM_ARM_TTK: Including Regex",
-      "description": "ARM_ARM_TTK: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "category": "ARM_ARM_TTK",
       "section": "SCOPE"
     },
@@ -1562,8 +1573,7 @@
       "description": "BASH_EXEC: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "file",
       "enum": [
-        "file",
-        "project"
+        "file"
       ],
       "category": "BASH_EXEC",
       "section": "LINTER_COMMAND"
@@ -1604,7 +1614,6 @@
       "title": "BASH_EXEC: Matching files extensions",
       "description": "BASH_EXEC: Override descriptor/linter matching files extensions that will be used to select files to lint",
       "default": [
-        "",
         ".sh",
         ".bash",
         ".dash",
@@ -1636,7 +1645,7 @@
       "name": "BASH_EXEC_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "BASH_EXEC: Excluding Regex",
-      "description": "BASH_EXEC: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "category": "BASH_EXEC",
       "section": "SCOPE"
     },
@@ -1644,7 +1653,7 @@
       "name": "BASH_EXEC_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "BASH_EXEC: Including Regex",
-      "description": "BASH_EXEC: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "category": "BASH_EXEC",
       "section": "SCOPE"
     },
@@ -1776,8 +1785,7 @@
       "default": "list_of_files",
       "enum": [
         "file",
-        "list_of_files",
-        "project"
+        "list_of_files"
       ],
       "category": "BASH_SHELLCHECK",
       "section": "LINTER_COMMAND"
@@ -1827,7 +1835,6 @@
       "title": "BASH_SHELLCHECK: Matching files extensions",
       "description": "BASH_SHELLCHECK: Override descriptor/linter matching files extensions that will be used to select files to lint",
       "default": [
-        "",
         ".sh",
         ".bash",
         ".dash",
@@ -1859,7 +1866,7 @@
       "name": "BASH_SHELLCHECK_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "BASH_SHELLCHECK: Excluding Regex",
-      "description": "BASH_SHELLCHECK: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "category": "BASH_SHELLCHECK",
       "section": "SCOPE"
     },
@@ -1867,7 +1874,7 @@
       "name": "BASH_SHELLCHECK_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "BASH_SHELLCHECK: Including Regex",
-      "description": "BASH_SHELLCHECK: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "category": "BASH_SHELLCHECK",
       "section": "SCOPE"
     },
@@ -1956,9 +1963,7 @@
       "description": "BASH_SHFMT: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "list_of_files",
       "enum": [
-        "file",
-        "list_of_files",
-        "project"
+        "file"
       ],
       "category": "BASH_SHFMT",
       "section": "LINTER_COMMAND"
@@ -1999,7 +2004,6 @@
       "title": "BASH_SHFMT: Matching files extensions",
       "description": "BASH_SHFMT: Override descriptor/linter matching files extensions that will be used to select files to lint",
       "default": [
-        "",
         ".sh",
         ".bash",
         ".dash",
@@ -2031,7 +2035,7 @@
       "name": "BASH_SHFMT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "BASH_SHFMT: Excluding Regex",
-      "description": "BASH_SHFMT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "category": "BASH_SHFMT",
       "section": "SCOPE"
     },
@@ -2039,7 +2043,7 @@
       "name": "BASH_SHFMT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "BASH_SHFMT: Including Regex",
-      "description": "BASH_SHFMT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "category": "BASH_SHFMT",
       "section": "SCOPE"
     },
@@ -2120,8 +2124,7 @@
       "description": "BICEP_BICEP_LINTER: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "file",
       "enum": [
-        "file",
-        "project"
+        "file"
       ],
       "category": "BICEP_BICEP_LINTER",
       "section": "LINTER_COMMAND"
@@ -2190,7 +2193,7 @@
       "name": "BICEP_BICEP_LINTER_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "BICEP_BICEP_LINTER: Excluding Regex",
-      "description": "BICEP_BICEP_LINTER: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "category": "BICEP_BICEP_LINTER",
       "section": "SCOPE"
     },
@@ -2198,7 +2201,7 @@
       "name": "BICEP_BICEP_LINTER_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "BICEP_BICEP_LINTER: Including Regex",
-      "description": "BICEP_BICEP_LINTER: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "category": "BICEP_BICEP_LINTER",
       "section": "SCOPE"
     },
@@ -2354,9 +2357,10 @@
       "type": "string",
       "title": "CLOJURE_CLJSTYLE: CLI lint mode",
       "description": "CLOJURE_CLJSTYLE: Override default CLI lint mode used to call the linter (rarely needed)",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "category": "CLOJURE_CLJSTYLE",
@@ -2438,7 +2442,7 @@
       "name": "CLOJURE_CLJSTYLE_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "CLOJURE_CLJSTYLE: Excluding Regex",
-      "description": "CLOJURE_CLJSTYLE: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "CLOJURE_CLJSTYLE: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with CLOJURE_CLJSTYLE_CLI_LINT_MODE = project",
       "category": "CLOJURE_CLJSTYLE",
       "section": "SCOPE"
     },
@@ -2446,7 +2450,7 @@
       "name": "CLOJURE_CLJSTYLE_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "CLOJURE_CLJSTYLE: Including Regex",
-      "description": "CLOJURE_CLJSTYLE: Custom regex including filter: only files matching this regex will be linted",
+      "description": "CLOJURE_CLJSTYLE: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with CLOJURE_CLJSTYLE_CLI_LINT_MODE = project",
       "category": "CLOJURE_CLJSTYLE",
       "section": "SCOPE"
     },
@@ -2617,7 +2621,7 @@
       "name": "CLOJURE_CLJ_KONDO_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "CLOJURE_CLJ_KONDO: Excluding Regex",
-      "description": "CLOJURE_CLJ_KONDO: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "CLOJURE_CLJ_KONDO: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with CLOJURE_CLJ_KONDO_CLI_LINT_MODE = project",
       "category": "CLOJURE_CLJ_KONDO",
       "section": "SCOPE"
     },
@@ -2625,7 +2629,7 @@
       "name": "CLOJURE_CLJ_KONDO_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "CLOJURE_CLJ_KONDO: Including Regex",
-      "description": "CLOJURE_CLJ_KONDO: Custom regex including filter: only files matching this regex will be linted",
+      "description": "CLOJURE_CLJ_KONDO: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with CLOJURE_CLJ_KONDO_CLI_LINT_MODE = project",
       "category": "CLOJURE_CLJ_KONDO",
       "section": "SCOPE"
     },
@@ -2846,7 +2850,7 @@
       "name": "CLOUDFORMATION_CFN_LINT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "CLOUDFORMATION_CFN_LINT: Excluding Regex",
-      "description": "CLOUDFORMATION_CFN_LINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "CLOUDFORMATION_CFN_LINT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with CLOUDFORMATION_CFN_LINT_CLI_LINT_MODE = project",
       "category": "CLOUDFORMATION_CFN_LINT",
       "section": "SCOPE"
     },
@@ -2854,7 +2858,7 @@
       "name": "CLOUDFORMATION_CFN_LINT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "CLOUDFORMATION_CFN_LINT: Including Regex",
-      "description": "CLOUDFORMATION_CFN_LINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "CLOUDFORMATION_CFN_LINT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with CLOUDFORMATION_CFN_LINT_CLI_LINT_MODE = project",
       "category": "CLOUDFORMATION_CFN_LINT",
       "section": "SCOPE"
     },
@@ -2991,9 +2995,10 @@
       "type": "string",
       "title": "COFFEE_COFFEELINT: CLI lint mode",
       "description": "COFFEE_COFFEELINT: Override default CLI lint mode used to call the linter (rarely needed)",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "category": "COFFEE_COFFEELINT",
@@ -3072,7 +3077,7 @@
       "name": "COFFEE_COFFEELINT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "COFFEE_COFFEELINT: Excluding Regex",
-      "description": "COFFEE_COFFEELINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "COFFEE_COFFEELINT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with COFFEE_COFFEELINT_CLI_LINT_MODE = project",
       "category": "COFFEE_COFFEELINT",
       "section": "SCOPE"
     },
@@ -3080,7 +3085,7 @@
       "name": "COFFEE_COFFEELINT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "COFFEE_COFFEELINT: Including Regex",
-      "description": "COFFEE_COFFEELINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "COFFEE_COFFEELINT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with COFFEE_COFFEELINT_CLI_LINT_MODE = project",
       "category": "COFFEE_COFFEELINT",
       "section": "SCOPE"
     },
@@ -3284,8 +3289,6 @@
       "description": "COPYPASTE_JSCPD: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "project",
       "enum": [
-        "file",
-        "list_of_files",
         "project"
       ],
       "category": "COPYPASTE_JSCPD",
@@ -3329,6 +3332,22 @@
       "default": 0,
       "category": "COPYPASTE_JSCPD",
       "section": "ERRORS"
+    },
+    "COPYPASTE_JSCPD_FILTER_REGEX_EXCLUDE": {
+      "name": "COPYPASTE_JSCPD_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "COPYPASTE_JSCPD: Excluding Regex",
+      "description": "COPYPASTE_JSCPD: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with COPYPASTE_JSCPD_CLI_LINT_MODE = project",
+      "category": "COPYPASTE_JSCPD",
+      "section": "SCOPE"
+    },
+    "COPYPASTE_JSCPD_FILTER_REGEX_INCLUDE": {
+      "name": "COPYPASTE_JSCPD_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "COPYPASTE_JSCPD: Including Regex",
+      "description": "COPYPASTE_JSCPD: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with COPYPASTE_JSCPD_CLI_LINT_MODE = project",
+      "category": "COPYPASTE_JSCPD",
+      "section": "SCOPE"
     },
     "COPYPASTE_JSCPD_POST_COMMANDS": {
       "name": "COPYPASTE_JSCPD_POST_COMMANDS",
@@ -3450,8 +3469,7 @@
       "default": "list_of_files",
       "enum": [
         "file",
-        "list_of_files",
-        "project"
+        "list_of_files"
       ],
       "category": "CPP_CLANG_FORMAT",
       "section": "LINTER_COMMAND"
@@ -3539,7 +3557,7 @@
       "name": "CPP_CLANG_FORMAT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "CPP_CLANG_FORMAT: Excluding Regex",
-      "description": "CPP_CLANG_FORMAT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "category": "CPP_CLANG_FORMAT",
       "section": "SCOPE"
     },
@@ -3547,7 +3565,7 @@
       "name": "CPP_CLANG_FORMAT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "CPP_CLANG_FORMAT: Including Regex",
-      "description": "CPP_CLANG_FORMAT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "category": "CPP_CLANG_FORMAT",
       "section": "SCOPE"
     },
@@ -3634,9 +3652,10 @@
       "type": "string",
       "title": "CPP_CPPCHECK: CLI lint mode",
       "description": "CPP_CPPCHECK: Override default CLI lint mode used to call the linter (rarely needed)",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "category": "CPP_CPPCHECK",
@@ -3716,7 +3735,7 @@
       "name": "CPP_CPPCHECK_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "CPP_CPPCHECK: Excluding Regex",
-      "description": "CPP_CPPCHECK: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "CPP_CPPCHECK: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with CPP_CPPCHECK_CLI_LINT_MODE = project",
       "category": "CPP_CPPCHECK",
       "section": "SCOPE"
     },
@@ -3724,7 +3743,7 @@
       "name": "CPP_CPPCHECK_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "CPP_CPPCHECK: Including Regex",
-      "description": "CPP_CPPCHECK: Custom regex including filter: only files matching this regex will be linted",
+      "description": "CPP_CPPCHECK: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with CPP_CPPCHECK_CLI_LINT_MODE = project",
       "category": "CPP_CPPCHECK",
       "section": "SCOPE"
     },
@@ -3806,8 +3825,7 @@
       "default": "list_of_files",
       "enum": [
         "file",
-        "list_of_files",
-        "project"
+        "list_of_files"
       ],
       "category": "CPP_CPPLINT",
       "section": "LINTER_COMMAND"
@@ -3886,7 +3904,7 @@
       "name": "CPP_CPPLINT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "CPP_CPPLINT: Excluding Regex",
-      "description": "CPP_CPPLINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "category": "CPP_CPPLINT",
       "section": "SCOPE"
     },
@@ -3894,7 +3912,7 @@
       "name": "CPP_CPPLINT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "CPP_CPPLINT: Including Regex",
-      "description": "CPP_CPPLINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "category": "CPP_CPPLINT",
       "section": "SCOPE"
     },
@@ -4109,7 +4127,7 @@
       "name": "CSHARP_CSHARPIER_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "CSHARP_CSHARPIER: Excluding Regex",
-      "description": "CSHARP_CSHARPIER: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "CSHARP_CSHARPIER: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with CSHARP_CSHARPIER_CLI_LINT_MODE = project",
       "category": "CSHARP_CSHARPIER",
       "section": "SCOPE"
     },
@@ -4117,7 +4135,7 @@
       "name": "CSHARP_CSHARPIER_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "CSHARP_CSHARPIER: Including Regex",
-      "description": "CSHARP_CSHARPIER: Custom regex including filter: only files matching this regex will be linted",
+      "description": "CSHARP_CSHARPIER: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with CSHARP_CSHARPIER_CLI_LINT_MODE = project",
       "category": "CSHARP_CSHARPIER",
       "section": "SCOPE"
     },
@@ -4206,8 +4224,6 @@
       "description": "CSHARP_DOTNET_FORMAT: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "project",
       "enum": [
-        "file",
-        "list_of_files",
         "project"
       ],
       "category": "CSHARP_DOTNET_FORMAT",
@@ -4272,6 +4288,22 @@
       "category": "CSHARP_DOTNET_FORMAT",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "CSHARP_DOTNET_FORMAT_FILTER_REGEX_EXCLUDE": {
+      "name": "CSHARP_DOTNET_FORMAT_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "CSHARP_DOTNET_FORMAT: Excluding Regex",
+      "description": "CSHARP_DOTNET_FORMAT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with CSHARP_DOTNET_FORMAT_CLI_LINT_MODE = project",
+      "category": "CSHARP_DOTNET_FORMAT",
+      "section": "SCOPE"
+    },
+    "CSHARP_DOTNET_FORMAT_FILTER_REGEX_INCLUDE": {
+      "name": "CSHARP_DOTNET_FORMAT_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "CSHARP_DOTNET_FORMAT: Including Regex",
+      "description": "CSHARP_DOTNET_FORMAT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with CSHARP_DOTNET_FORMAT_CLI_LINT_MODE = project",
+      "category": "CSHARP_DOTNET_FORMAT",
+      "section": "SCOPE"
     },
     "CSHARP_DOTNET_FORMAT_POST_COMMANDS": {
       "name": "CSHARP_DOTNET_FORMAT_POST_COMMANDS",
@@ -4400,8 +4432,7 @@
       "description": "CSHARP_ROSLYNATOR: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "file",
       "enum": [
-        "file",
-        "project"
+        "file"
       ],
       "category": "CSHARP_ROSLYNATOR",
       "section": "LINTER_COMMAND"
@@ -4470,7 +4501,7 @@
       "name": "CSHARP_ROSLYNATOR_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "CSHARP_ROSLYNATOR: Excluding Regex",
-      "description": "CSHARP_ROSLYNATOR: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "category": "CSHARP_ROSLYNATOR",
       "section": "SCOPE"
     },
@@ -4478,7 +4509,7 @@
       "name": "CSHARP_ROSLYNATOR_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "CSHARP_ROSLYNATOR: Including Regex",
-      "description": "CSHARP_ROSLYNATOR: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "category": "CSHARP_ROSLYNATOR",
       "section": "SCOPE"
     },
@@ -4858,7 +4889,7 @@
       "name": "CSS_STYLELINT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "CSS_STYLELINT: Excluding Regex",
-      "description": "CSS_STYLELINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "CSS_STYLELINT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with CSS_STYLELINT_CLI_LINT_MODE = project",
       "category": "CSS_STYLELINT",
       "section": "SCOPE"
     },
@@ -4866,7 +4897,7 @@
       "name": "CSS_STYLELINT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "CSS_STYLELINT: Including Regex",
-      "description": "CSS_STYLELINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "CSS_STYLELINT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with CSS_STYLELINT_CLI_LINT_MODE = project",
       "category": "CSS_STYLELINT",
       "section": "SCOPE"
     },
@@ -4956,8 +4987,7 @@
       "default": "list_of_files",
       "enum": [
         "file",
-        "list_of_files",
-        "project"
+        "list_of_files"
       ],
       "category": "C_CLANG_FORMAT",
       "section": "LINTER_COMMAND"
@@ -5036,7 +5066,7 @@
       "name": "C_CLANG_FORMAT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "C_CLANG_FORMAT: Excluding Regex",
-      "description": "C_CLANG_FORMAT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "category": "C_CLANG_FORMAT",
       "section": "SCOPE"
     },
@@ -5044,7 +5074,7 @@
       "name": "C_CLANG_FORMAT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "C_CLANG_FORMAT: Including Regex",
-      "description": "C_CLANG_FORMAT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "category": "C_CLANG_FORMAT",
       "section": "SCOPE"
     },
@@ -5131,9 +5161,10 @@
       "type": "string",
       "title": "C_CPPCHECK: CLI lint mode",
       "description": "C_CPPCHECK: Override default CLI lint mode used to call the linter (rarely needed)",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "category": "C_CPPCHECK",
@@ -5204,7 +5235,7 @@
       "name": "C_CPPCHECK_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "C_CPPCHECK: Excluding Regex",
-      "description": "C_CPPCHECK: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "C_CPPCHECK: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with C_CPPCHECK_CLI_LINT_MODE = project",
       "category": "C_CPPCHECK",
       "section": "SCOPE"
     },
@@ -5212,7 +5243,7 @@
       "name": "C_CPPCHECK_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "C_CPPCHECK: Including Regex",
-      "description": "C_CPPCHECK: Custom regex including filter: only files matching this regex will be linted",
+      "description": "C_CPPCHECK: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with C_CPPCHECK_CLI_LINT_MODE = project",
       "category": "C_CPPCHECK",
       "section": "SCOPE"
     },
@@ -5294,8 +5325,7 @@
       "default": "list_of_files",
       "enum": [
         "file",
-        "list_of_files",
-        "project"
+        "list_of_files"
       ],
       "category": "C_CPPLINT",
       "section": "LINTER_COMMAND"
@@ -5365,7 +5395,7 @@
       "name": "C_CPPLINT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "C_CPPLINT: Excluding Regex",
-      "description": "C_CPPLINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "category": "C_CPPLINT",
       "section": "SCOPE"
     },
@@ -5373,7 +5403,7 @@
       "name": "C_CPPLINT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "C_CPPLINT: Including Regex",
-      "description": "C_CPPLINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "category": "C_CPPLINT",
       "section": "SCOPE"
     },
@@ -5502,9 +5532,10 @@
       "type": "string",
       "title": "DART_DARTANALYZER: CLI lint mode",
       "description": "DART_DARTANALYZER: Override default CLI lint mode used to call the linter (rarely needed)",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "category": "DART_DARTANALYZER",
@@ -5583,7 +5614,7 @@
       "name": "DART_DARTANALYZER_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "DART_DARTANALYZER: Excluding Regex",
-      "description": "DART_DARTANALYZER: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "DART_DARTANALYZER: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with DART_DARTANALYZER_CLI_LINT_MODE = project",
       "category": "DART_DARTANALYZER",
       "section": "SCOPE"
     },
@@ -5591,7 +5622,7 @@
       "name": "DART_DARTANALYZER_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "DART_DARTANALYZER: Including Regex",
-      "description": "DART_DARTANALYZER: Custom regex including filter: only files matching this regex will be linted",
+      "description": "DART_DARTANALYZER: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with DART_DARTANALYZER_CLI_LINT_MODE = project",
       "category": "DART_DARTANALYZER",
       "section": "SCOPE"
     },
@@ -6320,8 +6351,7 @@
       "default": "list_of_files",
       "enum": [
         "file",
-        "list_of_files",
-        "project"
+        "list_of_files"
       ],
       "category": "DOCKERFILE_HADOLINT",
       "section": "LINTER_COMMAND"
@@ -6400,7 +6430,7 @@
       "name": "DOCKERFILE_HADOLINT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "DOCKERFILE_HADOLINT: Excluding Regex",
-      "description": "DOCKERFILE_HADOLINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "category": "DOCKERFILE_HADOLINT",
       "section": "SCOPE"
     },
@@ -6408,7 +6438,7 @@
       "name": "DOCKERFILE_HADOLINT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "DOCKERFILE_HADOLINT: Including Regex",
-      "description": "DOCKERFILE_HADOLINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "category": "DOCKERFILE_HADOLINT",
       "section": "SCOPE"
     },
@@ -6611,7 +6641,7 @@
       "name": "EDITORCONFIG_EDITORCONFIG_CHECKER_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "EDITORCONFIG_EDITORCONFIG_CHECKER: Excluding Regex",
-      "description": "EDITORCONFIG_EDITORCONFIG_CHECKER: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "EDITORCONFIG_EDITORCONFIG_CHECKER: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with EDITORCONFIG_EDITORCONFIG_CHECKER_CLI_LINT_MODE = project",
       "category": "EDITORCONFIG_EDITORCONFIG_CHECKER",
       "section": "SCOPE"
     },
@@ -6619,7 +6649,7 @@
       "name": "EDITORCONFIG_EDITORCONFIG_CHECKER_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "EDITORCONFIG_EDITORCONFIG_CHECKER: Including Regex",
-      "description": "EDITORCONFIG_EDITORCONFIG_CHECKER: Custom regex including filter: only files matching this regex will be linted",
+      "description": "EDITORCONFIG_EDITORCONFIG_CHECKER: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with EDITORCONFIG_EDITORCONFIG_CHECKER_CLI_LINT_MODE = project",
       "category": "EDITORCONFIG_EDITORCONFIG_CHECKER",
       "section": "SCOPE"
     },
@@ -7244,9 +7274,10 @@
       "type": "string",
       "title": "ENV_DOTENV_LINTER: CLI lint mode",
       "description": "ENV_DOTENV_LINTER: Override default CLI lint mode used to call the linter (rarely needed)",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "category": "ENV_DOTENV_LINTER",
@@ -7316,7 +7347,7 @@
       "name": "ENV_DOTENV_LINTER_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "ENV_DOTENV_LINTER: Excluding Regex",
-      "description": "ENV_DOTENV_LINTER: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "ENV_DOTENV_LINTER: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with ENV_DOTENV_LINTER_CLI_LINT_MODE = project",
       "category": "ENV_DOTENV_LINTER",
       "section": "SCOPE"
     },
@@ -7324,7 +7355,7 @@
       "name": "ENV_DOTENV_LINTER_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "ENV_DOTENV_LINTER: Including Regex",
-      "description": "ENV_DOTENV_LINTER: Custom regex including filter: only files matching this regex will be linted",
+      "description": "ENV_DOTENV_LINTER: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with ENV_DOTENV_LINTER_CLI_LINT_MODE = project",
       "category": "ENV_DOTENV_LINTER",
       "section": "SCOPE"
     },
@@ -7582,9 +7613,10 @@
       "type": "string",
       "title": "GHERKIN_GHERKIN_LINT: CLI lint mode",
       "description": "GHERKIN_GHERKIN_LINT: Override default CLI lint mode used to call the linter (rarely needed)",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "category": "GHERKIN_GHERKIN_LINT",
@@ -7663,7 +7695,7 @@
       "name": "GHERKIN_GHERKIN_LINT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "GHERKIN_GHERKIN_LINT: Excluding Regex",
-      "description": "GHERKIN_GHERKIN_LINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "GHERKIN_GHERKIN_LINT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with GHERKIN_GHERKIN_LINT_CLI_LINT_MODE = project",
       "category": "GHERKIN_GHERKIN_LINT",
       "section": "SCOPE"
     },
@@ -7671,7 +7703,7 @@
       "name": "GHERKIN_GHERKIN_LINT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "GHERKIN_GHERKIN_LINT: Including Regex",
-      "description": "GHERKIN_GHERKIN_LINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "GHERKIN_GHERKIN_LINT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with GHERKIN_GHERKIN_LINT_CLI_LINT_MODE = project",
       "category": "GHERKIN_GHERKIN_LINT",
       "section": "SCOPE"
     },
@@ -7964,6 +7996,22 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "GO_GOLANGCI_LINT_FILTER_REGEX_EXCLUDE": {
+      "name": "GO_GOLANGCI_LINT_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "GO_GOLANGCI_LINT: Excluding Regex",
+      "description": "GO_GOLANGCI_LINT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with GO_GOLANGCI_LINT_CLI_LINT_MODE = project",
+      "category": "GO_GOLANGCI_LINT",
+      "section": "SCOPE"
+    },
+    "GO_GOLANGCI_LINT_FILTER_REGEX_INCLUDE": {
+      "name": "GO_GOLANGCI_LINT_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "GO_GOLANGCI_LINT: Including Regex",
+      "description": "GO_GOLANGCI_LINT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with GO_GOLANGCI_LINT_CLI_LINT_MODE = project",
+      "category": "GO_GOLANGCI_LINT",
+      "section": "SCOPE"
+    },
     "GO_GOLANGCI_LINT_POST_COMMANDS": {
       "name": "GO_GOLANGCI_LINT_POST_COMMANDS",
       "type": "array",
@@ -8083,9 +8131,7 @@
       "description": "GO_REVIVE: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "list_of_files",
       "enum": [
-        "file",
-        "list_of_files",
-        "project"
+        "file"
       ],
       "category": "GO_REVIVE",
       "section": "LINTER_COMMAND"
@@ -8163,7 +8209,7 @@
       "name": "GO_REVIVE_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "GO_REVIVE: Excluding Regex",
-      "description": "GO_REVIVE: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "category": "GO_REVIVE",
       "section": "SCOPE"
     },
@@ -8171,7 +8217,7 @@
       "name": "GO_REVIVE_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "GO_REVIVE: Including Regex",
-      "description": "GO_REVIVE: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "category": "GO_REVIVE",
       "section": "SCOPE"
     },
@@ -8274,9 +8320,10 @@
       "type": "string",
       "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: CLI lint mode",
       "description": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Override default CLI lint mode used to call the linter (rarely needed)",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "category": "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
@@ -8355,7 +8402,7 @@
       "name": "GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Excluding Regex",
-      "description": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with GRAPHQL_GRAPHQL_SCHEMA_LINTER_CLI_LINT_MODE = project",
       "category": "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
       "section": "SCOPE"
     },
@@ -8363,7 +8410,7 @@
       "name": "GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Including Regex",
-      "description": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Custom regex including filter: only files matching this regex will be linted",
+      "description": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with GRAPHQL_GRAPHQL_SCHEMA_LINTER_CLI_LINT_MODE = project",
       "category": "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
       "section": "SCOPE"
     },
@@ -8587,7 +8634,7 @@
       "name": "GROOVY_NPM_GROOVY_LINT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "GROOVY_NPM_GROOVY_LINT: Excluding Regex",
-      "description": "GROOVY_NPM_GROOVY_LINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "GROOVY_NPM_GROOVY_LINT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with GROOVY_NPM_GROOVY_LINT_CLI_LINT_MODE = project",
       "category": "GROOVY_NPM_GROOVY_LINT",
       "section": "SCOPE"
     },
@@ -8595,7 +8642,7 @@
       "name": "GROOVY_NPM_GROOVY_LINT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "GROOVY_NPM_GROOVY_LINT: Including Regex",
-      "description": "GROOVY_NPM_GROOVY_LINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "GROOVY_NPM_GROOVY_LINT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with GROOVY_NPM_GROOVY_LINT_CLI_LINT_MODE = project",
       "category": "GROOVY_NPM_GROOVY_LINT",
       "section": "SCOPE"
     },
@@ -8790,7 +8837,7 @@
       "name": "HTML_DJLINT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "HTML_DJLINT: Excluding Regex",
-      "description": "HTML_DJLINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "HTML_DJLINT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with HTML_DJLINT_CLI_LINT_MODE = project",
       "category": "HTML_DJLINT",
       "section": "SCOPE"
     },
@@ -8798,7 +8845,7 @@
       "name": "HTML_DJLINT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "HTML_DJLINT: Including Regex",
-      "description": "HTML_DJLINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "HTML_DJLINT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with HTML_DJLINT_CLI_LINT_MODE = project",
       "category": "HTML_DJLINT",
       "section": "SCOPE"
     },
@@ -8976,7 +9023,7 @@
       "name": "HTML_HTMLHINT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "HTML_HTMLHINT: Excluding Regex",
-      "description": "HTML_HTMLHINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "HTML_HTMLHINT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with HTML_HTMLHINT_CLI_LINT_MODE = project",
       "category": "HTML_HTMLHINT",
       "section": "SCOPE"
     },
@@ -8984,7 +9031,7 @@
       "name": "HTML_HTMLHINT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "HTML_HTMLHINT: Including Regex",
-      "description": "HTML_HTMLHINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "HTML_HTMLHINT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with HTML_HTMLHINT_CLI_LINT_MODE = project",
       "category": "HTML_HTMLHINT",
       "section": "SCOPE"
     },
@@ -9223,7 +9270,7 @@
       "name": "JAVASCRIPT_ES_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "JAVASCRIPT_ES: Excluding Regex",
-      "description": "JAVASCRIPT_ES: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "JAVASCRIPT_ES: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with JAVASCRIPT_ES_CLI_LINT_MODE = project",
       "category": "JAVASCRIPT_ES",
       "section": "SCOPE"
     },
@@ -9231,7 +9278,7 @@
       "name": "JAVASCRIPT_ES_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "JAVASCRIPT_ES: Including Regex",
-      "description": "JAVASCRIPT_ES: Custom regex including filter: only files matching this regex will be linted",
+      "description": "JAVASCRIPT_ES: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with JAVASCRIPT_ES_CLI_LINT_MODE = project",
       "category": "JAVASCRIPT_ES",
       "section": "SCOPE"
     },
@@ -9433,7 +9480,7 @@
       "name": "JAVASCRIPT_PRETTIER_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "JAVASCRIPT_PRETTIER: Excluding Regex",
-      "description": "JAVASCRIPT_PRETTIER: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "JAVASCRIPT_PRETTIER: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with JAVASCRIPT_PRETTIER_CLI_LINT_MODE = project",
       "category": "JAVASCRIPT_PRETTIER",
       "section": "SCOPE"
     },
@@ -9441,7 +9488,7 @@
       "name": "JAVASCRIPT_PRETTIER_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "JAVASCRIPT_PRETTIER: Including Regex",
-      "description": "JAVASCRIPT_PRETTIER: Custom regex including filter: only files matching this regex will be linted",
+      "description": "JAVASCRIPT_PRETTIER: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with JAVASCRIPT_PRETTIER_CLI_LINT_MODE = project",
       "category": "JAVASCRIPT_PRETTIER",
       "section": "SCOPE"
     },
@@ -9618,7 +9665,7 @@
       "name": "JAVASCRIPT_STANDARD_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "JAVASCRIPT_STANDARD: Excluding Regex",
-      "description": "JAVASCRIPT_STANDARD: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "JAVASCRIPT_STANDARD: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with JAVASCRIPT_STANDARD_CLI_LINT_MODE = project",
       "category": "JAVASCRIPT_STANDARD",
       "section": "SCOPE"
     },
@@ -9626,7 +9673,7 @@
       "name": "JAVASCRIPT_STANDARD_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "JAVASCRIPT_STANDARD: Including Regex",
-      "description": "JAVASCRIPT_STANDARD: Custom regex including filter: only files matching this regex will be linted",
+      "description": "JAVASCRIPT_STANDARD: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with JAVASCRIPT_STANDARD_CLI_LINT_MODE = project",
       "category": "JAVASCRIPT_STANDARD",
       "section": "SCOPE"
     },
@@ -9787,7 +9834,7 @@
       "name": "JAVA_CHECKSTYLE_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "JAVA_CHECKSTYLE: Excluding Regex",
-      "description": "JAVA_CHECKSTYLE: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "JAVA_CHECKSTYLE: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with JAVA_CHECKSTYLE_CLI_LINT_MODE = project",
       "category": "JAVA_CHECKSTYLE",
       "section": "SCOPE"
     },
@@ -9795,7 +9842,7 @@
       "name": "JAVA_CHECKSTYLE_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "JAVA_CHECKSTYLE: Including Regex",
-      "description": "JAVA_CHECKSTYLE: Custom regex including filter: only files matching this regex will be linted",
+      "description": "JAVA_CHECKSTYLE: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with JAVA_CHECKSTYLE_CLI_LINT_MODE = project",
       "category": "JAVA_CHECKSTYLE",
       "section": "SCOPE"
     },
@@ -9980,7 +10027,7 @@
       "name": "JAVA_PMD_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "JAVA_PMD: Excluding Regex",
-      "description": "JAVA_PMD: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "JAVA_PMD: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with JAVA_PMD_CLI_LINT_MODE = project",
       "category": "JAVA_PMD",
       "section": "SCOPE"
     },
@@ -9988,7 +10035,7 @@
       "name": "JAVA_PMD_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "JAVA_PMD: Including Regex",
-      "description": "JAVA_PMD: Custom regex including filter: only files matching this regex will be linted",
+      "description": "JAVA_PMD: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with JAVA_PMD_CLI_LINT_MODE = project",
       "category": "JAVA_PMD",
       "section": "SCOPE"
     },
@@ -10201,7 +10248,7 @@
       "name": "JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Excluding Regex",
-      "description": "JSON_ESLINT_PLUGIN_JSONC: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "JSON_ESLINT_PLUGIN_JSONC: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with JSON_ESLINT_PLUGIN_JSONC_CLI_LINT_MODE = project",
       "category": "JSON_ESLINT_PLUGIN_JSONC",
       "section": "SCOPE"
     },
@@ -10209,7 +10256,7 @@
       "name": "JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Including Regex",
-      "description": "JSON_ESLINT_PLUGIN_JSONC: Custom regex including filter: only files matching this regex will be linted",
+      "description": "JSON_ESLINT_PLUGIN_JSONC: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with JSON_ESLINT_PLUGIN_JSONC_CLI_LINT_MODE = project",
       "category": "JSON_ESLINT_PLUGIN_JSONC",
       "section": "SCOPE"
     },
@@ -10394,7 +10441,7 @@
       "name": "JSON_JSONLINT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "JSON_JSONLINT: Excluding Regex",
-      "description": "JSON_JSONLINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "JSON_JSONLINT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with JSON_JSONLINT_CLI_LINT_MODE = project",
       "category": "JSON_JSONLINT",
       "section": "SCOPE"
     },
@@ -10402,7 +10449,7 @@
       "name": "JSON_JSONLINT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "JSON_JSONLINT: Including Regex",
-      "description": "JSON_JSONLINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "JSON_JSONLINT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with JSON_JSONLINT_CLI_LINT_MODE = project",
       "category": "JSON_JSONLINT",
       "section": "SCOPE"
     },
@@ -10491,8 +10538,6 @@
       "description": "JSON_NPM_PACKAGE_JSON_LINT: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "project",
       "enum": [
-        "file",
-        "list_of_files",
         "project"
       ],
       "category": "JSON_NPM_PACKAGE_JSON_LINT",
@@ -10568,6 +10613,22 @@
       "category": "JSON_NPM_PACKAGE_JSON_LINT",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "JSON_NPM_PACKAGE_JSON_LINT_FILTER_REGEX_EXCLUDE": {
+      "name": "JSON_NPM_PACKAGE_JSON_LINT_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "JSON_NPM_PACKAGE_JSON_LINT: Excluding Regex",
+      "description": "JSON_NPM_PACKAGE_JSON_LINT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with JSON_NPM_PACKAGE_JSON_LINT_CLI_LINT_MODE = project",
+      "category": "JSON_NPM_PACKAGE_JSON_LINT",
+      "section": "SCOPE"
+    },
+    "JSON_NPM_PACKAGE_JSON_LINT_FILTER_REGEX_INCLUDE": {
+      "name": "JSON_NPM_PACKAGE_JSON_LINT_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "JSON_NPM_PACKAGE_JSON_LINT: Including Regex",
+      "description": "JSON_NPM_PACKAGE_JSON_LINT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with JSON_NPM_PACKAGE_JSON_LINT_CLI_LINT_MODE = project",
+      "category": "JSON_NPM_PACKAGE_JSON_LINT",
+      "section": "SCOPE"
     },
     "JSON_NPM_PACKAGE_JSON_LINT_POST_COMMANDS": {
       "name": "JSON_NPM_PACKAGE_JSON_LINT_POST_COMMANDS",
@@ -10751,7 +10812,7 @@
       "name": "JSON_PRETTIER_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "JSON_PRETTIER: Excluding Regex",
-      "description": "JSON_PRETTIER: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "JSON_PRETTIER: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with JSON_PRETTIER_CLI_LINT_MODE = project",
       "category": "JSON_PRETTIER",
       "section": "SCOPE"
     },
@@ -10759,7 +10820,7 @@
       "name": "JSON_PRETTIER_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "JSON_PRETTIER: Including Regex",
-      "description": "JSON_PRETTIER: Custom regex including filter: only files matching this regex will be linted",
+      "description": "JSON_PRETTIER: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with JSON_PRETTIER_CLI_LINT_MODE = project",
       "category": "JSON_PRETTIER",
       "section": "SCOPE"
     },
@@ -10967,7 +11028,7 @@
       "name": "JSON_V8R_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "JSON_V8R: Excluding Regex",
-      "description": "JSON_V8R: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "JSON_V8R: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with JSON_V8R_CLI_LINT_MODE = project",
       "category": "JSON_V8R",
       "section": "SCOPE"
     },
@@ -10975,7 +11036,7 @@
       "name": "JSON_V8R_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "JSON_V8R: Including Regex",
-      "description": "JSON_V8R: Custom regex including filter: only files matching this regex will be linted",
+      "description": "JSON_V8R: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with JSON_V8R_CLI_LINT_MODE = project",
       "category": "JSON_V8R",
       "section": "SCOPE"
     },
@@ -11144,7 +11205,7 @@
       "name": "JSX_ESLINT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "JSX_ESLINT: Excluding Regex",
-      "description": "JSX_ESLINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "JSX_ESLINT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with JSX_ESLINT_CLI_LINT_MODE = project",
       "category": "JSX_ESLINT",
       "section": "SCOPE"
     },
@@ -11152,7 +11213,7 @@
       "name": "JSX_ESLINT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "JSX_ESLINT: Including Regex",
-      "description": "JSX_ESLINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "JSX_ESLINT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with JSX_ESLINT_CLI_LINT_MODE = project",
       "category": "JSX_ESLINT",
       "section": "SCOPE"
     },
@@ -11368,6 +11429,22 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "KOTLIN_DETEKT_FILTER_REGEX_EXCLUDE": {
+      "name": "KOTLIN_DETEKT_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "KOTLIN_DETEKT: Excluding Regex",
+      "description": "KOTLIN_DETEKT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with KOTLIN_DETEKT_CLI_LINT_MODE = project",
+      "category": "KOTLIN_DETEKT",
+      "section": "SCOPE"
+    },
+    "KOTLIN_DETEKT_FILTER_REGEX_INCLUDE": {
+      "name": "KOTLIN_DETEKT_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "KOTLIN_DETEKT: Including Regex",
+      "description": "KOTLIN_DETEKT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with KOTLIN_DETEKT_CLI_LINT_MODE = project",
+      "category": "KOTLIN_DETEKT",
+      "section": "SCOPE"
+    },
     "KOTLIN_DETEKT_POST_COMMANDS": {
       "name": "KOTLIN_DETEKT_POST_COMMANDS",
       "type": "array",
@@ -11541,7 +11618,7 @@
       "name": "KOTLIN_KTLINT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "KOTLIN_KTLINT: Excluding Regex",
-      "description": "KOTLIN_KTLINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "KOTLIN_KTLINT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with KOTLIN_KTLINT_CLI_LINT_MODE = project",
       "category": "KOTLIN_KTLINT",
       "section": "SCOPE"
     },
@@ -11549,7 +11626,7 @@
       "name": "KOTLIN_KTLINT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "KOTLIN_KTLINT: Including Regex",
-      "description": "KOTLIN_KTLINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "KOTLIN_KTLINT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with KOTLIN_KTLINT_CLI_LINT_MODE = project",
       "category": "KOTLIN_KTLINT",
       "section": "SCOPE"
     },
@@ -11687,8 +11764,6 @@
       "description": "KUBERNETES_HELM: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "project",
       "enum": [
-        "file",
-        "list_of_files",
         "project"
       ],
       "category": "KUBERNETES_HELM",
@@ -11764,6 +11839,22 @@
       "category": "KUBERNETES_HELM",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "KUBERNETES_HELM_FILTER_REGEX_EXCLUDE": {
+      "name": "KUBERNETES_HELM_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "KUBERNETES_HELM: Excluding Regex",
+      "description": "KUBERNETES_HELM: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with KUBERNETES_HELM_CLI_LINT_MODE = project",
+      "category": "KUBERNETES_HELM",
+      "section": "SCOPE"
+    },
+    "KUBERNETES_HELM_FILTER_REGEX_INCLUDE": {
+      "name": "KUBERNETES_HELM_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "KUBERNETES_HELM: Including Regex",
+      "description": "KUBERNETES_HELM: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with KUBERNETES_HELM_CLI_LINT_MODE = project",
+      "category": "KUBERNETES_HELM",
+      "section": "SCOPE"
     },
     "KUBERNETES_HELM_POST_COMMANDS": {
       "name": "KUBERNETES_HELM_POST_COMMANDS",
@@ -11924,7 +12015,7 @@
       "name": "KUBERNETES_KUBECONFORM_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "KUBERNETES_KUBECONFORM: Excluding Regex",
-      "description": "KUBERNETES_KUBECONFORM: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "KUBERNETES_KUBECONFORM: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with KUBERNETES_KUBECONFORM_CLI_LINT_MODE = project",
       "category": "KUBERNETES_KUBECONFORM",
       "section": "SCOPE"
     },
@@ -11932,7 +12023,7 @@
       "name": "KUBERNETES_KUBECONFORM_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "KUBERNETES_KUBECONFORM: Including Regex",
-      "description": "KUBERNETES_KUBECONFORM: Custom regex including filter: only files matching this regex will be linted",
+      "description": "KUBERNETES_KUBECONFORM: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with KUBERNETES_KUBECONFORM_CLI_LINT_MODE = project",
       "category": "KUBERNETES_KUBECONFORM",
       "section": "SCOPE"
     },
@@ -12013,8 +12104,6 @@
       "description": "KUBERNETES_KUBESCAPE: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "project",
       "enum": [
-        "file",
-        "list_of_files",
         "project"
       ],
       "category": "KUBERNETES_KUBESCAPE",
@@ -12090,6 +12179,22 @@
       "category": "KUBERNETES_KUBESCAPE",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "KUBERNETES_KUBESCAPE_FILTER_REGEX_EXCLUDE": {
+      "name": "KUBERNETES_KUBESCAPE_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "KUBERNETES_KUBESCAPE: Excluding Regex",
+      "description": "KUBERNETES_KUBESCAPE: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with KUBERNETES_KUBESCAPE_CLI_LINT_MODE = project",
+      "category": "KUBERNETES_KUBESCAPE",
+      "section": "SCOPE"
+    },
+    "KUBERNETES_KUBESCAPE_FILTER_REGEX_INCLUDE": {
+      "name": "KUBERNETES_KUBESCAPE_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "KUBERNETES_KUBESCAPE: Including Regex",
+      "description": "KUBERNETES_KUBESCAPE: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with KUBERNETES_KUBESCAPE_CLI_LINT_MODE = project",
+      "category": "KUBERNETES_KUBESCAPE",
+      "section": "SCOPE"
     },
     "KUBERNETES_KUBESCAPE_POST_COMMANDS": {
       "name": "KUBERNETES_KUBESCAPE_POST_COMMANDS",
@@ -12329,8 +12434,7 @@
       "description": "LATEX_CHKTEX: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "file",
       "enum": [
-        "file",
-        "project"
+        "file"
       ],
       "category": "LATEX_CHKTEX",
       "section": "LINTER_COMMAND"
@@ -12408,7 +12512,7 @@
       "name": "LATEX_CHKTEX_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "LATEX_CHKTEX: Excluding Regex",
-      "description": "LATEX_CHKTEX: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "category": "LATEX_CHKTEX",
       "section": "SCOPE"
     },
@@ -12416,7 +12520,7 @@
       "name": "LATEX_CHKTEX_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "LATEX_CHKTEX: Including Regex",
-      "description": "LATEX_CHKTEX: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "category": "LATEX_CHKTEX",
       "section": "SCOPE"
     },
@@ -13053,9 +13157,10 @@
       "type": "string",
       "title": "LUA_LUACHECK: CLI lint mode",
       "description": "LUA_LUACHECK: Override default CLI lint mode used to call the linter (rarely needed)",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "category": "LUA_LUACHECK",
@@ -13134,7 +13239,7 @@
       "name": "LUA_LUACHECK_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "LUA_LUACHECK: Excluding Regex",
-      "description": "LUA_LUACHECK: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "LUA_LUACHECK: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with LUA_LUACHECK_CLI_LINT_MODE = project",
       "category": "LUA_LUACHECK",
       "section": "SCOPE"
     },
@@ -13142,7 +13247,7 @@
       "name": "LUA_LUACHECK_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "LUA_LUACHECK: Including Regex",
-      "description": "LUA_LUACHECK: Custom regex including filter: only files matching this regex will be linted",
+      "description": "LUA_LUACHECK: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with LUA_LUACHECK_CLI_LINT_MODE = project",
       "category": "LUA_LUACHECK",
       "section": "SCOPE"
     },
@@ -13263,9 +13368,10 @@
       "type": "string",
       "title": "LUA_SELENE: CLI lint mode",
       "description": "LUA_SELENE: Override default CLI lint mode used to call the linter (rarely needed)",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "category": "LUA_SELENE",
@@ -13344,7 +13450,7 @@
       "name": "LUA_SELENE_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "LUA_SELENE: Excluding Regex",
-      "description": "LUA_SELENE: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "LUA_SELENE: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with LUA_SELENE_CLI_LINT_MODE = project",
       "category": "LUA_SELENE",
       "section": "SCOPE"
     },
@@ -13352,7 +13458,7 @@
       "name": "LUA_SELENE_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "LUA_SELENE: Including Regex",
-      "description": "LUA_SELENE: Custom regex including filter: only files matching this regex will be linted",
+      "description": "LUA_SELENE: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with LUA_SELENE_CLI_LINT_MODE = project",
       "category": "LUA_SELENE",
       "section": "SCOPE"
     },
@@ -13442,6 +13548,7 @@
       "default": "file",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "category": "LUA_STYLUA",
@@ -13520,7 +13627,7 @@
       "name": "LUA_STYLUA_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "LUA_STYLUA: Excluding Regex",
-      "description": "LUA_STYLUA: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "LUA_STYLUA: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with LUA_STYLUA_CLI_LINT_MODE = project",
       "category": "LUA_STYLUA",
       "section": "SCOPE"
     },
@@ -13528,7 +13635,7 @@
       "name": "LUA_STYLUA_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "LUA_STYLUA: Including Regex",
-      "description": "LUA_STYLUA: Custom regex including filter: only files matching this regex will be linted",
+      "description": "LUA_STYLUA: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with LUA_STYLUA_CLI_LINT_MODE = project",
       "category": "LUA_STYLUA",
       "section": "SCOPE"
     },
@@ -13618,6 +13725,7 @@
       "default": "file",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "category": "MAKEFILE_CHECKMAKE",
@@ -13696,7 +13804,7 @@
       "name": "MAKEFILE_CHECKMAKE_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "MAKEFILE_CHECKMAKE: Excluding Regex",
-      "description": "MAKEFILE_CHECKMAKE: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "MAKEFILE_CHECKMAKE: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with MAKEFILE_CHECKMAKE_CLI_LINT_MODE = project",
       "category": "MAKEFILE_CHECKMAKE",
       "section": "SCOPE"
     },
@@ -13704,7 +13812,7 @@
       "name": "MAKEFILE_CHECKMAKE_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "MAKEFILE_CHECKMAKE: Including Regex",
-      "description": "MAKEFILE_CHECKMAKE: Custom regex including filter: only files matching this regex will be linted",
+      "description": "MAKEFILE_CHECKMAKE: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with MAKEFILE_CHECKMAKE_CLI_LINT_MODE = project",
       "category": "MAKEFILE_CHECKMAKE",
       "section": "SCOPE"
     },
@@ -13953,7 +14061,7 @@
       "name": "MARKDOWN_MARKDOWNLINT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "MARKDOWN_MARKDOWNLINT: Excluding Regex",
-      "description": "MARKDOWN_MARKDOWNLINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "MARKDOWN_MARKDOWNLINT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with MARKDOWN_MARKDOWNLINT_CLI_LINT_MODE = project",
       "category": "MARKDOWN_MARKDOWNLINT",
       "section": "SCOPE"
     },
@@ -13961,7 +14069,7 @@
       "name": "MARKDOWN_MARKDOWNLINT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "MARKDOWN_MARKDOWNLINT: Including Regex",
-      "description": "MARKDOWN_MARKDOWNLINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "MARKDOWN_MARKDOWNLINT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with MARKDOWN_MARKDOWNLINT_CLI_LINT_MODE = project",
       "category": "MARKDOWN_MARKDOWNLINT",
       "section": "SCOPE"
     },
@@ -14289,7 +14397,7 @@
       "name": "MARKDOWN_MARKDOWN_TABLE_FORMATTER_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Excluding Regex",
-      "description": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with MARKDOWN_MARKDOWN_TABLE_FORMATTER_CLI_LINT_MODE = project",
       "category": "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
       "section": "SCOPE"
     },
@@ -14297,7 +14405,7 @@
       "name": "MARKDOWN_MARKDOWN_TABLE_FORMATTER_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Including Regex",
-      "description": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Custom regex including filter: only files matching this regex will be linted",
+      "description": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with MARKDOWN_MARKDOWN_TABLE_FORMATTER_CLI_LINT_MODE = project",
       "category": "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
       "section": "SCOPE"
     },
@@ -14461,9 +14569,10 @@
       "type": "string",
       "title": "MARKDOWN_REMARK_LINT: CLI lint mode",
       "description": "MARKDOWN_REMARK_LINT: Override default CLI lint mode used to call the linter (rarely needed)",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "category": "MARKDOWN_REMARK_LINT",
@@ -14542,7 +14651,7 @@
       "name": "MARKDOWN_REMARK_LINT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "MARKDOWN_REMARK_LINT: Excluding Regex",
-      "description": "MARKDOWN_REMARK_LINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "MARKDOWN_REMARK_LINT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with MARKDOWN_REMARK_LINT_CLI_LINT_MODE = project",
       "category": "MARKDOWN_REMARK_LINT",
       "section": "SCOPE"
     },
@@ -14550,7 +14659,7 @@
       "name": "MARKDOWN_REMARK_LINT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "MARKDOWN_REMARK_LINT: Including Regex",
-      "description": "MARKDOWN_REMARK_LINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "MARKDOWN_REMARK_LINT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with MARKDOWN_REMARK_LINT_CLI_LINT_MODE = project",
       "category": "MARKDOWN_REMARK_LINT",
       "section": "SCOPE"
     },
@@ -14719,7 +14828,7 @@
       "name": "MARKDOWN_RUMDL_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "MARKDOWN_RUMDL: Excluding Regex",
-      "description": "MARKDOWN_RUMDL: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "MARKDOWN_RUMDL: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with MARKDOWN_RUMDL_CLI_LINT_MODE = project",
       "category": "MARKDOWN_RUMDL",
       "section": "SCOPE"
     },
@@ -14727,7 +14836,7 @@
       "name": "MARKDOWN_RUMDL_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "MARKDOWN_RUMDL: Including Regex",
-      "description": "MARKDOWN_RUMDL: Custom regex including filter: only files matching this regex will be linted",
+      "description": "MARKDOWN_RUMDL: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with MARKDOWN_RUMDL_CLI_LINT_MODE = project",
       "category": "MARKDOWN_RUMDL",
       "section": "SCOPE"
     },
@@ -14910,9 +15019,10 @@
       "type": "string",
       "title": "PERL_PERLCRITIC: CLI lint mode",
       "description": "PERL_PERLCRITIC: Override default CLI lint mode used to call the linter (rarely needed)",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "category": "PERL_PERLCRITIC",
@@ -14985,7 +15095,7 @@
       "name": "PERL_PERLCRITIC_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "PERL_PERLCRITIC: Excluding Regex",
-      "description": "PERL_PERLCRITIC: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "PERL_PERLCRITIC: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with PERL_PERLCRITIC_CLI_LINT_MODE = project",
       "category": "PERL_PERLCRITIC",
       "section": "SCOPE"
     },
@@ -14993,7 +15103,7 @@
       "name": "PERL_PERLCRITIC_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "PERL_PERLCRITIC: Including Regex",
-      "description": "PERL_PERLCRITIC: Custom regex including filter: only files matching this regex will be linted",
+      "description": "PERL_PERLCRITIC: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with PERL_PERLCRITIC_CLI_LINT_MODE = project",
       "category": "PERL_PERLCRITIC",
       "section": "SCOPE"
     },
@@ -15314,6 +15424,22 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "PHP_PHPCSFIXER_FILTER_REGEX_EXCLUDE": {
+      "name": "PHP_PHPCSFIXER_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "PHP_PHPCSFIXER: Excluding Regex",
+      "description": "PHP_PHPCSFIXER: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with PHP_PHPCSFIXER_CLI_LINT_MODE = project",
+      "category": "PHP_PHPCSFIXER",
+      "section": "SCOPE"
+    },
+    "PHP_PHPCSFIXER_FILTER_REGEX_INCLUDE": {
+      "name": "PHP_PHPCSFIXER_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "PHP_PHPCSFIXER: Including Regex",
+      "description": "PHP_PHPCSFIXER: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with PHP_PHPCSFIXER_CLI_LINT_MODE = project",
+      "category": "PHP_PHPCSFIXER",
+      "section": "SCOPE"
+    },
     "PHP_PHPCSFIXER_POST_COMMANDS": {
       "name": "PHP_PHPCSFIXER_POST_COMMANDS",
       "type": "array",
@@ -15479,7 +15605,7 @@
       "name": "PHP_PHPCS_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "PHP_PHPCS: Excluding Regex",
-      "description": "PHP_PHPCS: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "PHP_PHPCS: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with PHP_PHPCS_CLI_LINT_MODE = project",
       "category": "PHP_PHPCS",
       "section": "SCOPE"
     },
@@ -15487,7 +15613,7 @@
       "name": "PHP_PHPCS_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "PHP_PHPCS: Including Regex",
-      "description": "PHP_PHPCS: Custom regex including filter: only files matching this regex will be linted",
+      "description": "PHP_PHPCS: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with PHP_PHPCS_CLI_LINT_MODE = project",
       "category": "PHP_PHPCS",
       "section": "SCOPE"
     },
@@ -15656,7 +15782,7 @@
       "name": "PHP_PHPLINT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "PHP_PHPLINT: Excluding Regex",
-      "description": "PHP_PHPLINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "PHP_PHPLINT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with PHP_PHPLINT_CLI_LINT_MODE = project",
       "category": "PHP_PHPLINT",
       "section": "SCOPE"
     },
@@ -15664,7 +15790,7 @@
       "name": "PHP_PHPLINT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "PHP_PHPLINT: Including Regex",
-      "description": "PHP_PHPLINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "PHP_PHPLINT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with PHP_PHPLINT_CLI_LINT_MODE = project",
       "category": "PHP_PHPLINT",
       "section": "SCOPE"
     },
@@ -15833,7 +15959,7 @@
       "name": "PHP_PHPSTAN_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "PHP_PHPSTAN: Excluding Regex",
-      "description": "PHP_PHPSTAN: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "PHP_PHPSTAN: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with PHP_PHPSTAN_CLI_LINT_MODE = project",
       "category": "PHP_PHPSTAN",
       "section": "SCOPE"
     },
@@ -15841,7 +15967,7 @@
       "name": "PHP_PHPSTAN_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "PHP_PHPSTAN: Including Regex",
-      "description": "PHP_PHPSTAN: Custom regex including filter: only files matching this regex will be linted",
+      "description": "PHP_PHPSTAN: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with PHP_PHPSTAN_CLI_LINT_MODE = project",
       "category": "PHP_PHPSTAN",
       "section": "SCOPE"
     },
@@ -16044,7 +16170,7 @@
       "name": "PHP_PSALM_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "PHP_PSALM: Excluding Regex",
-      "description": "PHP_PSALM: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "PHP_PSALM: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with PHP_PSALM_CLI_LINT_MODE = project",
       "category": "PHP_PSALM",
       "section": "SCOPE"
     },
@@ -16052,7 +16178,7 @@
       "name": "PHP_PSALM_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "PHP_PSALM: Including Regex",
-      "description": "PHP_PSALM: Custom regex including filter: only files matching this regex will be linted",
+      "description": "PHP_PSALM: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with PHP_PSALM_CLI_LINT_MODE = project",
       "category": "PHP_PSALM",
       "section": "SCOPE"
     },
@@ -16224,8 +16350,7 @@
       "description": "POWERSHELL_POWERSHELL: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "file",
       "enum": [
-        "file",
-        "project"
+        "file"
       ],
       "category": "POWERSHELL_POWERSHELL",
       "section": "LINTER_COMMAND"
@@ -16309,7 +16434,7 @@
       "name": "POWERSHELL_POWERSHELL_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "POWERSHELL_POWERSHELL: Excluding Regex",
-      "description": "POWERSHELL_POWERSHELL: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "category": "POWERSHELL_POWERSHELL",
       "section": "SCOPE"
     },
@@ -16317,7 +16442,7 @@
       "name": "POWERSHELL_POWERSHELL_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "POWERSHELL_POWERSHELL: Including Regex",
-      "description": "POWERSHELL_POWERSHELL: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "category": "POWERSHELL_POWERSHELL",
       "section": "SCOPE"
     },
@@ -16354,8 +16479,7 @@
       "description": "POWERSHELL_POWERSHELL_FORMATTER: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "file",
       "enum": [
-        "file",
-        "project"
+        "file"
       ],
       "category": "POWERSHELL_POWERSHELL_FORMATTER",
       "section": "LINTER_COMMAND"
@@ -16439,7 +16563,7 @@
       "name": "POWERSHELL_POWERSHELL_FORMATTER_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "POWERSHELL_POWERSHELL_FORMATTER: Excluding Regex",
-      "description": "POWERSHELL_POWERSHELL_FORMATTER: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "category": "POWERSHELL_POWERSHELL_FORMATTER",
       "section": "SCOPE"
     },
@@ -16447,7 +16571,7 @@
       "name": "POWERSHELL_POWERSHELL_FORMATTER_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "POWERSHELL_POWERSHELL_FORMATTER: Including Regex",
-      "description": "POWERSHELL_POWERSHELL_FORMATTER: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "category": "POWERSHELL_POWERSHELL_FORMATTER",
       "section": "SCOPE"
     },
@@ -16702,9 +16826,10 @@
       "type": "string",
       "title": "PROTOBUF_PROTOLINT: CLI lint mode",
       "description": "PROTOBUF_PROTOLINT: Override default CLI lint mode used to call the linter (rarely needed)",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "category": "PROTOBUF_PROTOLINT",
@@ -16783,7 +16908,7 @@
       "name": "PROTOBUF_PROTOLINT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "PROTOBUF_PROTOLINT: Excluding Regex",
-      "description": "PROTOBUF_PROTOLINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "PROTOBUF_PROTOLINT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with PROTOBUF_PROTOLINT_CLI_LINT_MODE = project",
       "category": "PROTOBUF_PROTOLINT",
       "section": "SCOPE"
     },
@@ -16791,7 +16916,7 @@
       "name": "PROTOBUF_PROTOLINT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "PROTOBUF_PROTOLINT: Including Regex",
-      "description": "PROTOBUF_PROTOLINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "PROTOBUF_PROTOLINT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with PROTOBUF_PROTOLINT_CLI_LINT_MODE = project",
       "category": "PROTOBUF_PROTOLINT",
       "section": "SCOPE"
     },
@@ -16931,6 +17056,7 @@
       "default": "file",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "category": "PUPPET_PUPPET_LINT",
@@ -17009,7 +17135,7 @@
       "name": "PUPPET_PUPPET_LINT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "PUPPET_PUPPET_LINT: Excluding Regex",
-      "description": "PUPPET_PUPPET_LINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "PUPPET_PUPPET_LINT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with PUPPET_PUPPET_LINT_CLI_LINT_MODE = project",
       "category": "PUPPET_PUPPET_LINT",
       "section": "SCOPE"
     },
@@ -17017,7 +17143,7 @@
       "name": "PUPPET_PUPPET_LINT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "PUPPET_PUPPET_LINT: Including Regex",
-      "description": "PUPPET_PUPPET_LINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "PUPPET_PUPPET_LINT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with PUPPET_PUPPET_LINT_CLI_LINT_MODE = project",
       "category": "PUPPET_PUPPET_LINT",
       "section": "SCOPE"
     },
@@ -17188,7 +17314,7 @@
       "name": "PYTHON_BANDIT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "PYTHON_BANDIT: Excluding Regex",
-      "description": "PYTHON_BANDIT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "PYTHON_BANDIT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with PYTHON_BANDIT_CLI_LINT_MODE = project",
       "category": "PYTHON_BANDIT",
       "section": "SCOPE"
     },
@@ -17196,7 +17322,7 @@
       "name": "PYTHON_BANDIT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "PYTHON_BANDIT: Including Regex",
-      "description": "PYTHON_BANDIT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "PYTHON_BANDIT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with PYTHON_BANDIT_CLI_LINT_MODE = project",
       "category": "PYTHON_BANDIT",
       "section": "SCOPE"
     },
@@ -17367,7 +17493,7 @@
       "name": "PYTHON_BLACK_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "PYTHON_BLACK: Excluding Regex",
-      "description": "PYTHON_BLACK: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "PYTHON_BLACK: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with PYTHON_BLACK_CLI_LINT_MODE = project",
       "category": "PYTHON_BLACK",
       "section": "SCOPE"
     },
@@ -17375,7 +17501,7 @@
       "name": "PYTHON_BLACK_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "PYTHON_BLACK: Including Regex",
-      "description": "PYTHON_BLACK: Custom regex including filter: only files matching this regex will be linted",
+      "description": "PYTHON_BLACK: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with PYTHON_BLACK_CLI_LINT_MODE = project",
       "category": "PYTHON_BLACK",
       "section": "SCOPE"
     },
@@ -17577,7 +17703,7 @@
       "name": "PYTHON_FLAKE8_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "PYTHON_FLAKE8: Excluding Regex",
-      "description": "PYTHON_FLAKE8: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "PYTHON_FLAKE8: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with PYTHON_FLAKE8_CLI_LINT_MODE = project",
       "category": "PYTHON_FLAKE8",
       "section": "SCOPE"
     },
@@ -17585,7 +17711,7 @@
       "name": "PYTHON_FLAKE8_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "PYTHON_FLAKE8: Including Regex",
-      "description": "PYTHON_FLAKE8: Custom regex including filter: only files matching this regex will be linted",
+      "description": "PYTHON_FLAKE8: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with PYTHON_FLAKE8_CLI_LINT_MODE = project",
       "category": "PYTHON_FLAKE8",
       "section": "SCOPE"
     },
@@ -17757,7 +17883,7 @@
       "name": "PYTHON_ISORT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "PYTHON_ISORT: Excluding Regex",
-      "description": "PYTHON_ISORT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "PYTHON_ISORT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with PYTHON_ISORT_CLI_LINT_MODE = project",
       "category": "PYTHON_ISORT",
       "section": "SCOPE"
     },
@@ -17765,7 +17891,7 @@
       "name": "PYTHON_ISORT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "PYTHON_ISORT: Including Regex",
-      "description": "PYTHON_ISORT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "PYTHON_ISORT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with PYTHON_ISORT_CLI_LINT_MODE = project",
       "category": "PYTHON_ISORT",
       "section": "SCOPE"
     },
@@ -17935,7 +18061,7 @@
       "name": "PYTHON_MYPY_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "PYTHON_MYPY: Excluding Regex",
-      "description": "PYTHON_MYPY: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "PYTHON_MYPY: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with PYTHON_MYPY_CLI_LINT_MODE = project",
       "category": "PYTHON_MYPY",
       "section": "SCOPE"
     },
@@ -17943,7 +18069,7 @@
       "name": "PYTHON_MYPY_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "PYTHON_MYPY: Including Regex",
-      "description": "PYTHON_MYPY: Custom regex including filter: only files matching this regex will be linted",
+      "description": "PYTHON_MYPY: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with PYTHON_MYPY_CLI_LINT_MODE = project",
       "category": "PYTHON_MYPY",
       "section": "SCOPE"
     },
@@ -18112,7 +18238,7 @@
       "name": "PYTHON_NBQA_MYPY_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "PYTHON_NBQA_MYPY: Excluding Regex",
-      "description": "PYTHON_NBQA_MYPY: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "PYTHON_NBQA_MYPY: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with PYTHON_NBQA_MYPY_CLI_LINT_MODE = project",
       "category": "PYTHON_NBQA_MYPY",
       "section": "SCOPE"
     },
@@ -18120,7 +18246,7 @@
       "name": "PYTHON_NBQA_MYPY_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "PYTHON_NBQA_MYPY: Including Regex",
-      "description": "PYTHON_NBQA_MYPY: Custom regex including filter: only files matching this regex will be linted",
+      "description": "PYTHON_NBQA_MYPY: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with PYTHON_NBQA_MYPY_CLI_LINT_MODE = project",
       "category": "PYTHON_NBQA_MYPY",
       "section": "SCOPE"
     },
@@ -18324,7 +18450,7 @@
       "name": "PYTHON_PYLINT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "PYTHON_PYLINT: Excluding Regex",
-      "description": "PYTHON_PYLINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "PYTHON_PYLINT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with PYTHON_PYLINT_CLI_LINT_MODE = project",
       "category": "PYTHON_PYLINT",
       "section": "SCOPE"
     },
@@ -18332,7 +18458,7 @@
       "name": "PYTHON_PYLINT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "PYTHON_PYLINT: Including Regex",
-      "description": "PYTHON_PYLINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "PYTHON_PYLINT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with PYTHON_PYLINT_CLI_LINT_MODE = project",
       "category": "PYTHON_PYLINT",
       "section": "SCOPE"
     },
@@ -18502,7 +18628,7 @@
       "name": "PYTHON_PYRIGHT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "PYTHON_PYRIGHT: Excluding Regex",
-      "description": "PYTHON_PYRIGHT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "PYTHON_PYRIGHT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with PYTHON_PYRIGHT_CLI_LINT_MODE = project",
       "category": "PYTHON_PYRIGHT",
       "section": "SCOPE"
     },
@@ -18510,7 +18636,7 @@
       "name": "PYTHON_PYRIGHT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "PYTHON_PYRIGHT: Including Regex",
-      "description": "PYTHON_PYRIGHT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "PYTHON_PYRIGHT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with PYTHON_PYRIGHT_CLI_LINT_MODE = project",
       "category": "PYTHON_PYRIGHT",
       "section": "SCOPE"
     },
@@ -18681,7 +18807,7 @@
       "name": "PYTHON_RUFF_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "PYTHON_RUFF: Excluding Regex",
-      "description": "PYTHON_RUFF: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "PYTHON_RUFF: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with PYTHON_RUFF_CLI_LINT_MODE = project",
       "category": "PYTHON_RUFF",
       "section": "SCOPE"
     },
@@ -18689,7 +18815,7 @@
       "name": "PYTHON_RUFF_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "PYTHON_RUFF: Including Regex",
-      "description": "PYTHON_RUFF: Custom regex including filter: only files matching this regex will be linted",
+      "description": "PYTHON_RUFF: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with PYTHON_RUFF_CLI_LINT_MODE = project",
       "category": "PYTHON_RUFF",
       "section": "SCOPE"
     },
@@ -18808,7 +18934,7 @@
       "name": "PYTHON_RUFF_FORMAT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "PYTHON_RUFF_FORMAT: Excluding Regex",
-      "description": "PYTHON_RUFF_FORMAT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "PYTHON_RUFF_FORMAT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with PYTHON_RUFF_FORMAT_CLI_LINT_MODE = project",
       "category": "PYTHON_RUFF_FORMAT",
       "section": "SCOPE"
     },
@@ -18816,7 +18942,7 @@
       "name": "PYTHON_RUFF_FORMAT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "PYTHON_RUFF_FORMAT: Including Regex",
-      "description": "PYTHON_RUFF_FORMAT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "PYTHON_RUFF_FORMAT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with PYTHON_RUFF_FORMAT_CLI_LINT_MODE = project",
       "category": "PYTHON_RUFF_FORMAT",
       "section": "SCOPE"
     },
@@ -19007,8 +19133,7 @@
       "description": "RAKU_RAKU: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "file",
       "enum": [
-        "file",
-        "project"
+        "file"
       ],
       "category": "RAKU_RAKU",
       "section": "LINTER_COMMAND"
@@ -19091,7 +19216,7 @@
       "name": "RAKU_RAKU_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "RAKU_RAKU: Excluding Regex",
-      "description": "RAKU_RAKU: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "category": "RAKU_RAKU",
       "section": "SCOPE"
     },
@@ -19099,7 +19224,7 @@
       "name": "RAKU_RAKU_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "RAKU_RAKU: Including Regex",
-      "description": "RAKU_RAKU: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "category": "RAKU_RAKU",
       "section": "SCOPE"
     },
@@ -19271,6 +19396,22 @@
       "category": "REPOSITORY_BETTERLEAKS",
       "section": "ERRORS"
     },
+    "REPOSITORY_BETTERLEAKS_FILTER_REGEX_EXCLUDE": {
+      "name": "REPOSITORY_BETTERLEAKS_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "REPOSITORY_BETTERLEAKS: Excluding Regex",
+      "description": "REPOSITORY_BETTERLEAKS: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with REPOSITORY_BETTERLEAKS_CLI_LINT_MODE = project",
+      "category": "REPOSITORY_BETTERLEAKS",
+      "section": "SCOPE"
+    },
+    "REPOSITORY_BETTERLEAKS_FILTER_REGEX_INCLUDE": {
+      "name": "REPOSITORY_BETTERLEAKS_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "REPOSITORY_BETTERLEAKS: Including Regex",
+      "description": "REPOSITORY_BETTERLEAKS: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with REPOSITORY_BETTERLEAKS_CLI_LINT_MODE = project",
+      "category": "REPOSITORY_BETTERLEAKS",
+      "section": "SCOPE"
+    },
     "REPOSITORY_BETTERLEAKS_POST_COMMANDS": {
       "name": "REPOSITORY_BETTERLEAKS_POST_COMMANDS",
       "type": "array",
@@ -19401,6 +19542,22 @@
       "default": 0,
       "category": "REPOSITORY_CHECKOV",
       "section": "ERRORS"
+    },
+    "REPOSITORY_CHECKOV_FILTER_REGEX_EXCLUDE": {
+      "name": "REPOSITORY_CHECKOV_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "REPOSITORY_CHECKOV: Excluding Regex",
+      "description": "REPOSITORY_CHECKOV: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with REPOSITORY_CHECKOV_CLI_LINT_MODE = project",
+      "category": "REPOSITORY_CHECKOV",
+      "section": "SCOPE"
+    },
+    "REPOSITORY_CHECKOV_FILTER_REGEX_INCLUDE": {
+      "name": "REPOSITORY_CHECKOV_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "REPOSITORY_CHECKOV: Including Regex",
+      "description": "REPOSITORY_CHECKOV: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with REPOSITORY_CHECKOV_CLI_LINT_MODE = project",
+      "category": "REPOSITORY_CHECKOV",
+      "section": "SCOPE"
     },
     "REPOSITORY_CHECKOV_POST_COMMANDS": {
       "name": "REPOSITORY_CHECKOV_POST_COMMANDS",
@@ -19533,6 +19690,22 @@
       "category": "REPOSITORY_DEVSKIM",
       "section": "ERRORS"
     },
+    "REPOSITORY_DEVSKIM_FILTER_REGEX_EXCLUDE": {
+      "name": "REPOSITORY_DEVSKIM_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "REPOSITORY_DEVSKIM: Excluding Regex",
+      "description": "REPOSITORY_DEVSKIM: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with REPOSITORY_DEVSKIM_CLI_LINT_MODE = project",
+      "category": "REPOSITORY_DEVSKIM",
+      "section": "SCOPE"
+    },
+    "REPOSITORY_DEVSKIM_FILTER_REGEX_INCLUDE": {
+      "name": "REPOSITORY_DEVSKIM_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "REPOSITORY_DEVSKIM: Including Regex",
+      "description": "REPOSITORY_DEVSKIM: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with REPOSITORY_DEVSKIM_CLI_LINT_MODE = project",
+      "category": "REPOSITORY_DEVSKIM",
+      "section": "SCOPE"
+    },
     "REPOSITORY_DEVSKIM_POST_COMMANDS": {
       "name": "REPOSITORY_DEVSKIM_POST_COMMANDS",
       "type": "array",
@@ -19618,8 +19791,6 @@
       "description": "REPOSITORY_DUSTILOCK: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "project",
       "enum": [
-        "file",
-        "list_of_files",
         "project"
       ],
       "category": "REPOSITORY_DUSTILOCK",
@@ -19654,6 +19825,22 @@
       "default": 0,
       "category": "REPOSITORY_DUSTILOCK",
       "section": "ERRORS"
+    },
+    "REPOSITORY_DUSTILOCK_FILTER_REGEX_EXCLUDE": {
+      "name": "REPOSITORY_DUSTILOCK_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "REPOSITORY_DUSTILOCK: Excluding Regex",
+      "description": "REPOSITORY_DUSTILOCK: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with REPOSITORY_DUSTILOCK_CLI_LINT_MODE = project",
+      "category": "REPOSITORY_DUSTILOCK",
+      "section": "SCOPE"
+    },
+    "REPOSITORY_DUSTILOCK_FILTER_REGEX_INCLUDE": {
+      "name": "REPOSITORY_DUSTILOCK_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "REPOSITORY_DUSTILOCK: Including Regex",
+      "description": "REPOSITORY_DUSTILOCK: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with REPOSITORY_DUSTILOCK_CLI_LINT_MODE = project",
+      "category": "REPOSITORY_DUSTILOCK",
+      "section": "SCOPE"
     },
     "REPOSITORY_DUSTILOCK_POST_COMMANDS": {
       "name": "REPOSITORY_DUSTILOCK_POST_COMMANDS",
@@ -19749,7 +19936,6 @@
       "default": "project",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "category": "REPOSITORY_GITLEAKS",
@@ -19793,6 +19979,22 @@
       "default": 0,
       "category": "REPOSITORY_GITLEAKS",
       "section": "ERRORS"
+    },
+    "REPOSITORY_GITLEAKS_FILTER_REGEX_EXCLUDE": {
+      "name": "REPOSITORY_GITLEAKS_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "(deprecated) REPOSITORY_GITLEAKS: Excluding Regex",
+      "description": "REPOSITORY_GITLEAKS: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with REPOSITORY_GITLEAKS_CLI_LINT_MODE = project",
+      "category": "REPOSITORY_GITLEAKS",
+      "section": "SCOPE"
+    },
+    "REPOSITORY_GITLEAKS_FILTER_REGEX_INCLUDE": {
+      "name": "REPOSITORY_GITLEAKS_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "(deprecated) REPOSITORY_GITLEAKS: Including Regex",
+      "description": "REPOSITORY_GITLEAKS: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with REPOSITORY_GITLEAKS_CLI_LINT_MODE = project",
+      "category": "REPOSITORY_GITLEAKS",
+      "section": "SCOPE"
     },
     "REPOSITORY_GITLEAKS_POST_COMMANDS": {
       "name": "REPOSITORY_GITLEAKS_POST_COMMANDS",
@@ -19903,8 +20105,6 @@
       "description": "REPOSITORY_GIT_DIFF: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "project",
       "enum": [
-        "file",
-        "list_of_files",
         "project"
       ],
       "category": "REPOSITORY_GIT_DIFF",
@@ -19939,6 +20139,22 @@
       "default": 0,
       "category": "REPOSITORY_GIT_DIFF",
       "section": "ERRORS"
+    },
+    "REPOSITORY_GIT_DIFF_FILTER_REGEX_EXCLUDE": {
+      "name": "REPOSITORY_GIT_DIFF_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "REPOSITORY_GIT_DIFF: Excluding Regex",
+      "description": "REPOSITORY_GIT_DIFF: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with REPOSITORY_GIT_DIFF_CLI_LINT_MODE = project",
+      "category": "REPOSITORY_GIT_DIFF",
+      "section": "SCOPE"
+    },
+    "REPOSITORY_GIT_DIFF_FILTER_REGEX_INCLUDE": {
+      "name": "REPOSITORY_GIT_DIFF_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "REPOSITORY_GIT_DIFF: Including Regex",
+      "description": "REPOSITORY_GIT_DIFF: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with REPOSITORY_GIT_DIFF_CLI_LINT_MODE = project",
+      "category": "REPOSITORY_GIT_DIFF",
+      "section": "SCOPE"
     },
     "REPOSITORY_GIT_DIFF_POST_COMMANDS": {
       "name": "REPOSITORY_GIT_DIFF_POST_COMMANDS",
@@ -20108,7 +20324,6 @@
       "default": "project",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "category": "REPOSITORY_GRYPE",
@@ -20152,6 +20367,22 @@
       "default": 0,
       "category": "REPOSITORY_GRYPE",
       "section": "ERRORS"
+    },
+    "REPOSITORY_GRYPE_FILTER_REGEX_EXCLUDE": {
+      "name": "REPOSITORY_GRYPE_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "REPOSITORY_GRYPE: Excluding Regex",
+      "description": "REPOSITORY_GRYPE: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with REPOSITORY_GRYPE_CLI_LINT_MODE = project",
+      "category": "REPOSITORY_GRYPE",
+      "section": "SCOPE"
+    },
+    "REPOSITORY_GRYPE_FILTER_REGEX_INCLUDE": {
+      "name": "REPOSITORY_GRYPE_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "REPOSITORY_GRYPE: Including Regex",
+      "description": "REPOSITORY_GRYPE: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with REPOSITORY_GRYPE_CLI_LINT_MODE = project",
+      "category": "REPOSITORY_GRYPE",
+      "section": "SCOPE"
     },
     "REPOSITORY_GRYPE_POST_COMMANDS": {
       "name": "REPOSITORY_GRYPE_POST_COMMANDS",
@@ -20284,6 +20515,22 @@
       "category": "REPOSITORY_KICS",
       "section": "ERRORS"
     },
+    "REPOSITORY_KICS_FILTER_REGEX_EXCLUDE": {
+      "name": "REPOSITORY_KICS_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "REPOSITORY_KICS: Excluding Regex",
+      "description": "REPOSITORY_KICS: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with REPOSITORY_KICS_CLI_LINT_MODE = project",
+      "category": "REPOSITORY_KICS",
+      "section": "SCOPE"
+    },
+    "REPOSITORY_KICS_FILTER_REGEX_INCLUDE": {
+      "name": "REPOSITORY_KICS_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "REPOSITORY_KICS: Including Regex",
+      "description": "REPOSITORY_KICS: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with REPOSITORY_KICS_CLI_LINT_MODE = project",
+      "category": "REPOSITORY_KICS",
+      "section": "SCOPE"
+    },
     "REPOSITORY_KICS_POST_COMMANDS": {
       "name": "REPOSITORY_KICS_POST_COMMANDS",
       "type": "array",
@@ -20405,6 +20652,22 @@
       "default": 0,
       "category": "REPOSITORY_KINGFISHER",
       "section": "ERRORS"
+    },
+    "REPOSITORY_KINGFISHER_FILTER_REGEX_EXCLUDE": {
+      "name": "REPOSITORY_KINGFISHER_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "REPOSITORY_KINGFISHER: Excluding Regex",
+      "description": "REPOSITORY_KINGFISHER: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with REPOSITORY_KINGFISHER_CLI_LINT_MODE = project",
+      "category": "REPOSITORY_KINGFISHER",
+      "section": "SCOPE"
+    },
+    "REPOSITORY_KINGFISHER_FILTER_REGEX_INCLUDE": {
+      "name": "REPOSITORY_KINGFISHER_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "REPOSITORY_KINGFISHER: Including Regex",
+      "description": "REPOSITORY_KINGFISHER: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with REPOSITORY_KINGFISHER_CLI_LINT_MODE = project",
+      "category": "REPOSITORY_KINGFISHER",
+      "section": "SCOPE"
     },
     "REPOSITORY_KINGFISHER_POST_COMMANDS": {
       "name": "REPOSITORY_KINGFISHER_POST_COMMANDS",
@@ -20528,6 +20791,22 @@
       "default": 0,
       "category": "REPOSITORY_LS_LINT",
       "section": "ERRORS"
+    },
+    "REPOSITORY_LS_LINT_FILTER_REGEX_EXCLUDE": {
+      "name": "REPOSITORY_LS_LINT_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "REPOSITORY_LS_LINT: Excluding Regex",
+      "description": "REPOSITORY_LS_LINT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with REPOSITORY_LS_LINT_CLI_LINT_MODE = project",
+      "category": "REPOSITORY_LS_LINT",
+      "section": "SCOPE"
+    },
+    "REPOSITORY_LS_LINT_FILTER_REGEX_INCLUDE": {
+      "name": "REPOSITORY_LS_LINT_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "REPOSITORY_LS_LINT: Including Regex",
+      "description": "REPOSITORY_LS_LINT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with REPOSITORY_LS_LINT_CLI_LINT_MODE = project",
+      "category": "REPOSITORY_LS_LINT",
+      "section": "SCOPE"
     },
     "REPOSITORY_LS_LINT_POST_COMMANDS": {
       "name": "REPOSITORY_LS_LINT_POST_COMMANDS",
@@ -20659,6 +20938,22 @@
       "default": 0,
       "category": "REPOSITORY_OSV_SCANNER",
       "section": "ERRORS"
+    },
+    "REPOSITORY_OSV_SCANNER_FILTER_REGEX_EXCLUDE": {
+      "name": "REPOSITORY_OSV_SCANNER_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "REPOSITORY_OSV_SCANNER: Excluding Regex",
+      "description": "REPOSITORY_OSV_SCANNER: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with REPOSITORY_OSV_SCANNER_CLI_LINT_MODE = project",
+      "category": "REPOSITORY_OSV_SCANNER",
+      "section": "SCOPE"
+    },
+    "REPOSITORY_OSV_SCANNER_FILTER_REGEX_INCLUDE": {
+      "name": "REPOSITORY_OSV_SCANNER_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "REPOSITORY_OSV_SCANNER: Including Regex",
+      "description": "REPOSITORY_OSV_SCANNER: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with REPOSITORY_OSV_SCANNER_CLI_LINT_MODE = project",
+      "category": "REPOSITORY_OSV_SCANNER",
+      "section": "SCOPE"
     },
     "REPOSITORY_OSV_SCANNER_POST_COMMANDS": {
       "name": "REPOSITORY_OSV_SCANNER_POST_COMMANDS",
@@ -20825,6 +21120,22 @@
       "category": "REPOSITORY_SECRETLINT",
       "section": "ERRORS"
     },
+    "REPOSITORY_SECRETLINT_FILTER_REGEX_EXCLUDE": {
+      "name": "REPOSITORY_SECRETLINT_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "REPOSITORY_SECRETLINT: Excluding Regex",
+      "description": "REPOSITORY_SECRETLINT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with REPOSITORY_SECRETLINT_CLI_LINT_MODE = project",
+      "category": "REPOSITORY_SECRETLINT",
+      "section": "SCOPE"
+    },
+    "REPOSITORY_SECRETLINT_FILTER_REGEX_INCLUDE": {
+      "name": "REPOSITORY_SECRETLINT_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "REPOSITORY_SECRETLINT: Including Regex",
+      "description": "REPOSITORY_SECRETLINT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with REPOSITORY_SECRETLINT_CLI_LINT_MODE = project",
+      "category": "REPOSITORY_SECRETLINT",
+      "section": "SCOPE"
+    },
     "REPOSITORY_SECRETLINT_POST_COMMANDS": {
       "name": "REPOSITORY_SECRETLINT_POST_COMMANDS",
       "type": "array",
@@ -20947,6 +21258,22 @@
       "category": "REPOSITORY_SEMGREP",
       "section": "ERRORS"
     },
+    "REPOSITORY_SEMGREP_FILTER_REGEX_EXCLUDE": {
+      "name": "REPOSITORY_SEMGREP_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "REPOSITORY_SEMGREP: Excluding Regex",
+      "description": "REPOSITORY_SEMGREP: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with REPOSITORY_SEMGREP_CLI_LINT_MODE = project",
+      "category": "REPOSITORY_SEMGREP",
+      "section": "SCOPE"
+    },
+    "REPOSITORY_SEMGREP_FILTER_REGEX_INCLUDE": {
+      "name": "REPOSITORY_SEMGREP_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "REPOSITORY_SEMGREP: Including Regex",
+      "description": "REPOSITORY_SEMGREP: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with REPOSITORY_SEMGREP_CLI_LINT_MODE = project",
+      "category": "REPOSITORY_SEMGREP",
+      "section": "SCOPE"
+    },
     "REPOSITORY_SEMGREP_POST_COMMANDS": {
       "name": "REPOSITORY_SEMGREP_POST_COMMANDS",
       "type": "array",
@@ -21037,7 +21364,6 @@
       "default": "project",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "category": "REPOSITORY_SYFT",
@@ -21081,6 +21407,22 @@
       "default": 0,
       "category": "REPOSITORY_SYFT",
       "section": "ERRORS"
+    },
+    "REPOSITORY_SYFT_FILTER_REGEX_EXCLUDE": {
+      "name": "REPOSITORY_SYFT_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "REPOSITORY_SYFT: Excluding Regex",
+      "description": "REPOSITORY_SYFT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with REPOSITORY_SYFT_CLI_LINT_MODE = project",
+      "category": "REPOSITORY_SYFT",
+      "section": "SCOPE"
+    },
+    "REPOSITORY_SYFT_FILTER_REGEX_INCLUDE": {
+      "name": "REPOSITORY_SYFT_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "REPOSITORY_SYFT: Including Regex",
+      "description": "REPOSITORY_SYFT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with REPOSITORY_SYFT_CLI_LINT_MODE = project",
+      "category": "REPOSITORY_SYFT",
+      "section": "SCOPE"
     },
     "REPOSITORY_SYFT_POST_COMMANDS": {
       "name": "REPOSITORY_SYFT_POST_COMMANDS",
@@ -21168,7 +21510,6 @@
       "default": "project",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "category": "REPOSITORY_TRIVY",
@@ -21212,6 +21553,22 @@
       "default": 0,
       "category": "REPOSITORY_TRIVY",
       "section": "ERRORS"
+    },
+    "REPOSITORY_TRIVY_FILTER_REGEX_EXCLUDE": {
+      "name": "REPOSITORY_TRIVY_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "REPOSITORY_TRIVY: Excluding Regex",
+      "description": "REPOSITORY_TRIVY: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with REPOSITORY_TRIVY_CLI_LINT_MODE = project",
+      "category": "REPOSITORY_TRIVY",
+      "section": "SCOPE"
+    },
+    "REPOSITORY_TRIVY_FILTER_REGEX_INCLUDE": {
+      "name": "REPOSITORY_TRIVY_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "REPOSITORY_TRIVY: Including Regex",
+      "description": "REPOSITORY_TRIVY: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with REPOSITORY_TRIVY_CLI_LINT_MODE = project",
+      "category": "REPOSITORY_TRIVY",
+      "section": "SCOPE"
     },
     "REPOSITORY_TRIVY_POST_COMMANDS": {
       "name": "REPOSITORY_TRIVY_POST_COMMANDS",
@@ -21289,7 +21646,6 @@
       "default": "project",
       "enum": [
         "file",
-        "list_of_files",
         "project"
       ],
       "category": "REPOSITORY_TRIVY_SBOM",
@@ -21333,6 +21689,22 @@
       "default": 0,
       "category": "REPOSITORY_TRIVY_SBOM",
       "section": "ERRORS"
+    },
+    "REPOSITORY_TRIVY_SBOM_FILTER_REGEX_EXCLUDE": {
+      "name": "REPOSITORY_TRIVY_SBOM_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "REPOSITORY_TRIVY_SBOM: Excluding Regex",
+      "description": "REPOSITORY_TRIVY_SBOM: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with REPOSITORY_TRIVY_SBOM_CLI_LINT_MODE = project",
+      "category": "REPOSITORY_TRIVY_SBOM",
+      "section": "SCOPE"
+    },
+    "REPOSITORY_TRIVY_SBOM_FILTER_REGEX_INCLUDE": {
+      "name": "REPOSITORY_TRIVY_SBOM_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "REPOSITORY_TRIVY_SBOM: Including Regex",
+      "description": "REPOSITORY_TRIVY_SBOM: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with REPOSITORY_TRIVY_SBOM_CLI_LINT_MODE = project",
+      "category": "REPOSITORY_TRIVY_SBOM",
+      "section": "SCOPE"
     },
     "REPOSITORY_TRIVY_SBOM_POST_COMMANDS": {
       "name": "REPOSITORY_TRIVY_SBOM_POST_COMMANDS",
@@ -21474,6 +21846,22 @@
       "default": 0,
       "category": "REPOSITORY_TRUFFLEHOG",
       "section": "ERRORS"
+    },
+    "REPOSITORY_TRUFFLEHOG_FILTER_REGEX_EXCLUDE": {
+      "name": "REPOSITORY_TRUFFLEHOG_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "REPOSITORY_TRUFFLEHOG: Excluding Regex",
+      "description": "REPOSITORY_TRUFFLEHOG: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with REPOSITORY_TRUFFLEHOG_CLI_LINT_MODE = project",
+      "category": "REPOSITORY_TRUFFLEHOG",
+      "section": "SCOPE"
+    },
+    "REPOSITORY_TRUFFLEHOG_FILTER_REGEX_INCLUDE": {
+      "name": "REPOSITORY_TRUFFLEHOG_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "REPOSITORY_TRUFFLEHOG: Including Regex",
+      "description": "REPOSITORY_TRUFFLEHOG: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with REPOSITORY_TRUFFLEHOG_CLI_LINT_MODE = project",
+      "category": "REPOSITORY_TRUFFLEHOG",
+      "section": "SCOPE"
     },
     "REPOSITORY_TRUFFLEHOG_POST_COMMANDS": {
       "name": "REPOSITORY_TRUFFLEHOG_POST_COMMANDS",
@@ -21691,7 +22079,7 @@
       "name": "ROBOTFRAMEWORK_ROBOCOP_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "ROBOTFRAMEWORK_ROBOCOP: Excluding Regex",
-      "description": "ROBOTFRAMEWORK_ROBOCOP: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "ROBOTFRAMEWORK_ROBOCOP: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with ROBOTFRAMEWORK_ROBOCOP_CLI_LINT_MODE = project",
       "category": "ROBOTFRAMEWORK_ROBOCOP",
       "section": "SCOPE"
     },
@@ -21699,7 +22087,7 @@
       "name": "ROBOTFRAMEWORK_ROBOCOP_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "ROBOTFRAMEWORK_ROBOCOP: Including Regex",
-      "description": "ROBOTFRAMEWORK_ROBOCOP: Custom regex including filter: only files matching this regex will be linted",
+      "description": "ROBOTFRAMEWORK_ROBOCOP: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with ROBOTFRAMEWORK_ROBOCOP_CLI_LINT_MODE = project",
       "category": "ROBOTFRAMEWORK_ROBOCOP",
       "section": "SCOPE"
     },
@@ -21836,9 +22224,10 @@
       "type": "string",
       "title": "RST_RSTCHECK: CLI lint mode",
       "description": "RST_RSTCHECK: Override default CLI lint mode used to call the linter (rarely needed)",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "category": "RST_RSTCHECK",
@@ -21917,7 +22306,7 @@
       "name": "RST_RSTCHECK_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "RST_RSTCHECK: Excluding Regex",
-      "description": "RST_RSTCHECK: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "RST_RSTCHECK: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with RST_RSTCHECK_CLI_LINT_MODE = project",
       "category": "RST_RSTCHECK",
       "section": "SCOPE"
     },
@@ -21925,7 +22314,7 @@
       "name": "RST_RSTCHECK_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "RST_RSTCHECK: Including Regex",
-      "description": "RST_RSTCHECK: Custom regex including filter: only files matching this regex will be linted",
+      "description": "RST_RSTCHECK: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with RST_RSTCHECK_CLI_LINT_MODE = project",
       "category": "RST_RSTCHECK",
       "section": "SCOPE"
     },
@@ -22012,9 +22401,10 @@
       "type": "string",
       "title": "RST_RSTFMT: CLI lint mode",
       "description": "RST_RSTFMT: Override default CLI lint mode used to call the linter (rarely needed)",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "category": "RST_RSTFMT",
@@ -22084,7 +22474,7 @@
       "name": "RST_RSTFMT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "RST_RSTFMT: Excluding Regex",
-      "description": "RST_RSTFMT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "RST_RSTFMT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with RST_RSTFMT_CLI_LINT_MODE = project",
       "category": "RST_RSTFMT",
       "section": "SCOPE"
     },
@@ -22092,7 +22482,7 @@
       "name": "RST_RSTFMT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "RST_RSTFMT: Including Regex",
-      "description": "RST_RSTFMT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "RST_RSTFMT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with RST_RSTFMT_CLI_LINT_MODE = project",
       "category": "RST_RSTFMT",
       "section": "SCOPE"
     },
@@ -22171,9 +22561,10 @@
       "type": "string",
       "title": "RST_RST_LINT: CLI lint mode",
       "description": "RST_RST_LINT: Override default CLI lint mode used to call the linter (rarely needed)",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "category": "RST_RST_LINT",
@@ -22243,7 +22634,7 @@
       "name": "RST_RST_LINT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "RST_RST_LINT: Excluding Regex",
-      "description": "RST_RST_LINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "RST_RST_LINT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with RST_RST_LINT_CLI_LINT_MODE = project",
       "category": "RST_RST_LINT",
       "section": "SCOPE"
     },
@@ -22251,7 +22642,7 @@
       "name": "RST_RST_LINT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "RST_RST_LINT: Including Regex",
-      "description": "RST_RST_LINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "RST_RST_LINT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with RST_RST_LINT_CLI_LINT_MODE = project",
       "category": "RST_RST_LINT",
       "section": "SCOPE"
     },
@@ -22380,9 +22771,10 @@
       "type": "string",
       "title": "RUBY_RUBOCOP: CLI lint mode",
       "description": "RUBY_RUBOCOP: Override default CLI lint mode used to call the linter (rarely needed)",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "category": "RUBY_RUBOCOP",
@@ -22461,7 +22853,7 @@
       "name": "RUBY_RUBOCOP_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "RUBY_RUBOCOP: Excluding Regex",
-      "description": "RUBY_RUBOCOP: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "RUBY_RUBOCOP: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with RUBY_RUBOCOP_CLI_LINT_MODE = project",
       "category": "RUBY_RUBOCOP",
       "section": "SCOPE"
     },
@@ -22469,7 +22861,7 @@
       "name": "RUBY_RUBOCOP_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "RUBY_RUBOCOP: Including Regex",
-      "description": "RUBY_RUBOCOP: Custom regex including filter: only files matching this regex will be linted",
+      "description": "RUBY_RUBOCOP: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with RUBY_RUBOCOP_CLI_LINT_MODE = project",
       "category": "RUBY_RUBOCOP",
       "section": "SCOPE"
     },
@@ -22558,8 +22950,6 @@
       "description": "RUST_CLIPPY: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "project",
       "enum": [
-        "file",
-        "list_of_files",
         "project"
       ],
       "category": "RUST_CLIPPY",
@@ -22633,6 +23023,22 @@
       "category": "RUST_CLIPPY",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "RUST_CLIPPY_FILTER_REGEX_EXCLUDE": {
+      "name": "RUST_CLIPPY_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "RUST_CLIPPY: Excluding Regex",
+      "description": "RUST_CLIPPY: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with RUST_CLIPPY_CLI_LINT_MODE = project",
+      "category": "RUST_CLIPPY",
+      "section": "SCOPE"
+    },
+    "RUST_CLIPPY_FILTER_REGEX_INCLUDE": {
+      "name": "RUST_CLIPPY_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "RUST_CLIPPY: Including Regex",
+      "description": "RUST_CLIPPY: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with RUST_CLIPPY_CLI_LINT_MODE = project",
+      "category": "RUST_CLIPPY",
+      "section": "SCOPE"
     },
     "RUST_CLIPPY_POST_COMMANDS": {
       "name": "RUST_CLIPPY_POST_COMMANDS",
@@ -22785,8 +23191,7 @@
       "description": "R_LINTR: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "file",
       "enum": [
-        "file",
-        "project"
+        "file"
       ],
       "category": "R_LINTR",
       "section": "LINTER_COMMAND"
@@ -22867,7 +23272,7 @@
       "name": "R_LINTR_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "R_LINTR: Excluding Regex",
-      "description": "R_LINTR: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "category": "R_LINTR",
       "section": "SCOPE"
     },
@@ -22875,7 +23280,7 @@
       "name": "R_LINTR_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "R_LINTR: Including Regex",
-      "description": "R_LINTR: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "category": "R_LINTR",
       "section": "SCOPE"
     },
@@ -22998,8 +23403,6 @@
       "description": "SALESFORCE_CODE_ANALYZER_APEX: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "project",
       "enum": [
-        "file",
-        "list_of_files",
         "project"
       ],
       "category": "SALESFORCE_CODE_ANALYZER_APEX",
@@ -23052,6 +23455,22 @@
       "default": 0,
       "category": "SALESFORCE_CODE_ANALYZER_APEX",
       "section": "ERRORS"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEX_FILTER_REGEX_EXCLUDE": {
+      "name": "SALESFORCE_CODE_ANALYZER_APEX_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "SALESFORCE_CODE_ANALYZER_APEX: Excluding Regex",
+      "description": "SALESFORCE_CODE_ANALYZER_APEX: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with SALESFORCE_CODE_ANALYZER_APEX_CLI_LINT_MODE = project",
+      "category": "SALESFORCE_CODE_ANALYZER_APEX",
+      "section": "SCOPE"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEX_FILTER_REGEX_INCLUDE": {
+      "name": "SALESFORCE_CODE_ANALYZER_APEX_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "SALESFORCE_CODE_ANALYZER_APEX: Including Regex",
+      "description": "SALESFORCE_CODE_ANALYZER_APEX: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with SALESFORCE_CODE_ANALYZER_APEX_CLI_LINT_MODE = project",
+      "category": "SALESFORCE_CODE_ANALYZER_APEX",
+      "section": "SCOPE"
     },
     "SALESFORCE_CODE_ANALYZER_APEX_POST_COMMANDS": {
       "name": "SALESFORCE_CODE_ANALYZER_APEX_POST_COMMANDS",
@@ -23138,8 +23557,6 @@
       "description": "SALESFORCE_CODE_ANALYZER_AURA: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "project",
       "enum": [
-        "file",
-        "list_of_files",
         "project"
       ],
       "category": "SALESFORCE_CODE_ANALYZER_AURA",
@@ -23192,6 +23609,22 @@
       "default": 0,
       "category": "SALESFORCE_CODE_ANALYZER_AURA",
       "section": "ERRORS"
+    },
+    "SALESFORCE_CODE_ANALYZER_AURA_FILTER_REGEX_EXCLUDE": {
+      "name": "SALESFORCE_CODE_ANALYZER_AURA_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "SALESFORCE_CODE_ANALYZER_AURA: Excluding Regex",
+      "description": "SALESFORCE_CODE_ANALYZER_AURA: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with SALESFORCE_CODE_ANALYZER_AURA_CLI_LINT_MODE = project",
+      "category": "SALESFORCE_CODE_ANALYZER_AURA",
+      "section": "SCOPE"
+    },
+    "SALESFORCE_CODE_ANALYZER_AURA_FILTER_REGEX_INCLUDE": {
+      "name": "SALESFORCE_CODE_ANALYZER_AURA_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "SALESFORCE_CODE_ANALYZER_AURA: Including Regex",
+      "description": "SALESFORCE_CODE_ANALYZER_AURA: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with SALESFORCE_CODE_ANALYZER_AURA_CLI_LINT_MODE = project",
+      "category": "SALESFORCE_CODE_ANALYZER_AURA",
+      "section": "SCOPE"
     },
     "SALESFORCE_CODE_ANALYZER_AURA_POST_COMMANDS": {
       "name": "SALESFORCE_CODE_ANALYZER_AURA_POST_COMMANDS",
@@ -23278,8 +23711,6 @@
       "description": "SALESFORCE_CODE_ANALYZER_LWC: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "project",
       "enum": [
-        "file",
-        "list_of_files",
         "project"
       ],
       "category": "SALESFORCE_CODE_ANALYZER_LWC",
@@ -23332,6 +23763,22 @@
       "default": 0,
       "category": "SALESFORCE_CODE_ANALYZER_LWC",
       "section": "ERRORS"
+    },
+    "SALESFORCE_CODE_ANALYZER_LWC_FILTER_REGEX_EXCLUDE": {
+      "name": "SALESFORCE_CODE_ANALYZER_LWC_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "SALESFORCE_CODE_ANALYZER_LWC: Excluding Regex",
+      "description": "SALESFORCE_CODE_ANALYZER_LWC: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with SALESFORCE_CODE_ANALYZER_LWC_CLI_LINT_MODE = project",
+      "category": "SALESFORCE_CODE_ANALYZER_LWC",
+      "section": "SCOPE"
+    },
+    "SALESFORCE_CODE_ANALYZER_LWC_FILTER_REGEX_INCLUDE": {
+      "name": "SALESFORCE_CODE_ANALYZER_LWC_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "SALESFORCE_CODE_ANALYZER_LWC: Including Regex",
+      "description": "SALESFORCE_CODE_ANALYZER_LWC: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with SALESFORCE_CODE_ANALYZER_LWC_CLI_LINT_MODE = project",
+      "category": "SALESFORCE_CODE_ANALYZER_LWC",
+      "section": "SCOPE"
     },
     "SALESFORCE_CODE_ANALYZER_LWC_POST_COMMANDS": {
       "name": "SALESFORCE_CODE_ANALYZER_LWC_POST_COMMANDS",
@@ -23442,8 +23889,6 @@
       "description": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "project",
       "enum": [
-        "file",
-        "list_of_files",
         "project"
       ],
       "category": "SALESFORCE_LIGHTNING_FLOW_SCANNER",
@@ -23496,6 +23941,22 @@
       "default": 0,
       "category": "SALESFORCE_LIGHTNING_FLOW_SCANNER",
       "section": "ERRORS"
+    },
+    "SALESFORCE_LIGHTNING_FLOW_SCANNER_FILTER_REGEX_EXCLUDE": {
+      "name": "SALESFORCE_LIGHTNING_FLOW_SCANNER_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Excluding Regex",
+      "description": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with SALESFORCE_LIGHTNING_FLOW_SCANNER_CLI_LINT_MODE = project",
+      "category": "SALESFORCE_LIGHTNING_FLOW_SCANNER",
+      "section": "SCOPE"
+    },
+    "SALESFORCE_LIGHTNING_FLOW_SCANNER_FILTER_REGEX_INCLUDE": {
+      "name": "SALESFORCE_LIGHTNING_FLOW_SCANNER_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Including Regex",
+      "description": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with SALESFORCE_LIGHTNING_FLOW_SCANNER_CLI_LINT_MODE = project",
+      "category": "SALESFORCE_LIGHTNING_FLOW_SCANNER",
+      "section": "SCOPE"
     },
     "SALESFORCE_LIGHTNING_FLOW_SCANNER_POST_COMMANDS": {
       "name": "SALESFORCE_LIGHTNING_FLOW_SCANNER_POST_COMMANDS",
@@ -23616,8 +24077,6 @@
       "description": "SALESFORCE_SFDX_SCANNER_APEX: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "project",
       "enum": [
-        "file",
-        "list_of_files",
         "project"
       ],
       "category": "SALESFORCE_SFDX_SCANNER_APEX",
@@ -23670,6 +24129,22 @@
       "default": 0,
       "category": "SALESFORCE_SFDX_SCANNER_APEX",
       "section": "ERRORS"
+    },
+    "SALESFORCE_SFDX_SCANNER_APEX_FILTER_REGEX_EXCLUDE": {
+      "name": "SALESFORCE_SFDX_SCANNER_APEX_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: Excluding Regex",
+      "description": "SALESFORCE_SFDX_SCANNER_APEX: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with SALESFORCE_SFDX_SCANNER_APEX_CLI_LINT_MODE = project",
+      "category": "SALESFORCE_SFDX_SCANNER_APEX",
+      "section": "SCOPE"
+    },
+    "SALESFORCE_SFDX_SCANNER_APEX_FILTER_REGEX_INCLUDE": {
+      "name": "SALESFORCE_SFDX_SCANNER_APEX_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: Including Regex",
+      "description": "SALESFORCE_SFDX_SCANNER_APEX: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with SALESFORCE_SFDX_SCANNER_APEX_CLI_LINT_MODE = project",
+      "category": "SALESFORCE_SFDX_SCANNER_APEX",
+      "section": "SCOPE"
     },
     "SALESFORCE_SFDX_SCANNER_APEX_POST_COMMANDS": {
       "name": "SALESFORCE_SFDX_SCANNER_APEX_POST_COMMANDS",
@@ -23768,8 +24243,6 @@
       "description": "SALESFORCE_SFDX_SCANNER_AURA: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "project",
       "enum": [
-        "file",
-        "list_of_files",
         "project"
       ],
       "category": "SALESFORCE_SFDX_SCANNER_AURA",
@@ -23822,6 +24295,22 @@
       "default": 0,
       "category": "SALESFORCE_SFDX_SCANNER_AURA",
       "section": "ERRORS"
+    },
+    "SALESFORCE_SFDX_SCANNER_AURA_FILTER_REGEX_EXCLUDE": {
+      "name": "SALESFORCE_SFDX_SCANNER_AURA_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: Excluding Regex",
+      "description": "SALESFORCE_SFDX_SCANNER_AURA: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with SALESFORCE_SFDX_SCANNER_AURA_CLI_LINT_MODE = project",
+      "category": "SALESFORCE_SFDX_SCANNER_AURA",
+      "section": "SCOPE"
+    },
+    "SALESFORCE_SFDX_SCANNER_AURA_FILTER_REGEX_INCLUDE": {
+      "name": "SALESFORCE_SFDX_SCANNER_AURA_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: Including Regex",
+      "description": "SALESFORCE_SFDX_SCANNER_AURA: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with SALESFORCE_SFDX_SCANNER_AURA_CLI_LINT_MODE = project",
+      "category": "SALESFORCE_SFDX_SCANNER_AURA",
+      "section": "SCOPE"
     },
     "SALESFORCE_SFDX_SCANNER_AURA_POST_COMMANDS": {
       "name": "SALESFORCE_SFDX_SCANNER_AURA_POST_COMMANDS",
@@ -23966,8 +24455,6 @@
       "description": "SALESFORCE_SFDX_SCANNER_LWC: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "project",
       "enum": [
-        "file",
-        "list_of_files",
         "project"
       ],
       "category": "SALESFORCE_SFDX_SCANNER_LWC",
@@ -24020,6 +24507,22 @@
       "default": 0,
       "category": "SALESFORCE_SFDX_SCANNER_LWC",
       "section": "ERRORS"
+    },
+    "SALESFORCE_SFDX_SCANNER_LWC_FILTER_REGEX_EXCLUDE": {
+      "name": "SALESFORCE_SFDX_SCANNER_LWC_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: Excluding Regex",
+      "description": "SALESFORCE_SFDX_SCANNER_LWC: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with SALESFORCE_SFDX_SCANNER_LWC_CLI_LINT_MODE = project",
+      "category": "SALESFORCE_SFDX_SCANNER_LWC",
+      "section": "SCOPE"
+    },
+    "SALESFORCE_SFDX_SCANNER_LWC_FILTER_REGEX_INCLUDE": {
+      "name": "SALESFORCE_SFDX_SCANNER_LWC_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: Including Regex",
+      "description": "SALESFORCE_SFDX_SCANNER_LWC: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with SALESFORCE_SFDX_SCANNER_LWC_CLI_LINT_MODE = project",
+      "category": "SALESFORCE_SFDX_SCANNER_LWC",
+      "section": "SCOPE"
     },
     "SALESFORCE_SFDX_SCANNER_LWC_POST_COMMANDS": {
       "name": "SALESFORCE_SFDX_SCANNER_LWC_POST_COMMANDS",
@@ -24338,9 +24841,10 @@
       "type": "string",
       "title": "SCALA_SCALAFIX: CLI lint mode",
       "description": "SCALA_SCALAFIX: Override default CLI lint mode used to call the linter (rarely needed)",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "category": "SCALA_SCALAFIX",
@@ -24419,7 +24923,7 @@
       "name": "SCALA_SCALAFIX_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "SCALA_SCALAFIX: Excluding Regex",
-      "description": "SCALA_SCALAFIX: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "SCALA_SCALAFIX: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with SCALA_SCALAFIX_CLI_LINT_MODE = project",
       "category": "SCALA_SCALAFIX",
       "section": "SCOPE"
     },
@@ -24427,7 +24931,7 @@
       "name": "SCALA_SCALAFIX_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "SCALA_SCALAFIX: Including Regex",
-      "description": "SCALA_SCALAFIX: Custom regex including filter: only files matching this regex will be linted",
+      "description": "SCALA_SCALAFIX: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with SCALA_SCALAFIX_CLI_LINT_MODE = project",
       "category": "SCALA_SCALAFIX",
       "section": "SCOPE"
     },
@@ -24608,8 +25112,7 @@
       "description": "SNAKEMAKE_LINT: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "file",
       "enum": [
-        "file",
-        "project"
+        "file"
       ],
       "category": "SNAKEMAKE_LINT",
       "section": "LINTER_COMMAND"
@@ -24680,7 +25183,7 @@
       "name": "SNAKEMAKE_LINT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "SNAKEMAKE_LINT: Excluding Regex",
-      "description": "SNAKEMAKE_LINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "category": "SNAKEMAKE_LINT",
       "section": "SCOPE"
     },
@@ -24688,7 +25191,7 @@
       "name": "SNAKEMAKE_LINT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "SNAKEMAKE_LINT: Including Regex",
-      "description": "SNAKEMAKE_LINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "category": "SNAKEMAKE_LINT",
       "section": "SCOPE"
     },
@@ -24803,8 +25306,7 @@
       "description": "SNAKEMAKE_SNAKEFMT: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "file",
       "enum": [
-        "file",
-        "project"
+        "file"
       ],
       "category": "SNAKEMAKE_SNAKEFMT",
       "section": "LINTER_COMMAND"
@@ -24884,7 +25386,7 @@
       "name": "SNAKEMAKE_SNAKEFMT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "SNAKEMAKE_SNAKEFMT: Excluding Regex",
-      "description": "SNAKEMAKE_SNAKEFMT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "category": "SNAKEMAKE_SNAKEFMT",
       "section": "SCOPE"
     },
@@ -24892,7 +25394,7 @@
       "name": "SNAKEMAKE_SNAKEFMT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "SNAKEMAKE_SNAKEFMT: Including Regex",
-      "description": "SNAKEMAKE_SNAKEFMT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "category": "SNAKEMAKE_SNAKEFMT",
       "section": "SCOPE"
     },
@@ -25072,7 +25574,7 @@
       "name": "SPELL_CODESPELL_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "SPELL_CODESPELL: Excluding Regex",
-      "description": "SPELL_CODESPELL: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "SPELL_CODESPELL: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with SPELL_CODESPELL_CLI_LINT_MODE = project",
       "category": "SPELL_CODESPELL",
       "section": "SCOPE"
     },
@@ -25080,7 +25582,7 @@
       "name": "SPELL_CODESPELL_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "SPELL_CODESPELL: Including Regex",
-      "description": "SPELL_CODESPELL: Custom regex including filter: only files matching this regex will be linted",
+      "description": "SPELL_CODESPELL: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with SPELL_CODESPELL_CLI_LINT_MODE = project",
       "category": "SPELL_CODESPELL",
       "section": "SCOPE"
     },
@@ -25256,7 +25758,7 @@
       "name": "SPELL_CSPELL_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "SPELL_CSPELL: Excluding Regex",
-      "description": "SPELL_CSPELL: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "SPELL_CSPELL: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with SPELL_CSPELL_CLI_LINT_MODE = project",
       "category": "SPELL_CSPELL",
       "section": "SCOPE"
     },
@@ -25264,7 +25766,7 @@
       "name": "SPELL_CSPELL_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "SPELL_CSPELL: Including Regex",
-      "description": "SPELL_CSPELL: Custom regex including filter: only files matching this regex will be linted",
+      "description": "SPELL_CSPELL: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with SPELL_CSPELL_CLI_LINT_MODE = project",
       "category": "SPELL_CSPELL",
       "section": "SCOPE"
     },
@@ -25460,7 +25962,7 @@
       "name": "SPELL_LYCHEE_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "SPELL_LYCHEE: Excluding Regex",
-      "description": "SPELL_LYCHEE: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "SPELL_LYCHEE: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with SPELL_LYCHEE_CLI_LINT_MODE = project",
       "category": "SPELL_LYCHEE",
       "section": "SCOPE"
     },
@@ -25468,7 +25970,7 @@
       "name": "SPELL_LYCHEE_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "SPELL_LYCHEE: Including Regex",
-      "description": "SPELL_LYCHEE: Custom regex including filter: only files matching this regex will be linted",
+      "description": "SPELL_LYCHEE: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with SPELL_LYCHEE_CLI_LINT_MODE = project",
       "category": "SPELL_LYCHEE",
       "section": "SCOPE"
     },
@@ -25792,7 +26294,7 @@
       "name": "SPELL_PROSELINT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "SPELL_PROSELINT: Excluding Regex",
-      "description": "SPELL_PROSELINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "SPELL_PROSELINT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with SPELL_PROSELINT_CLI_LINT_MODE = project",
       "category": "SPELL_PROSELINT",
       "section": "SCOPE"
     },
@@ -25800,7 +26302,7 @@
       "name": "SPELL_PROSELINT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "SPELL_PROSELINT: Including Regex",
-      "description": "SPELL_PROSELINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "SPELL_PROSELINT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with SPELL_PROSELINT_CLI_LINT_MODE = project",
       "category": "SPELL_PROSELINT",
       "section": "SCOPE"
     },
@@ -25970,7 +26472,7 @@
       "name": "SPELL_VALE_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "SPELL_VALE: Excluding Regex",
-      "description": "SPELL_VALE: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "SPELL_VALE: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with SPELL_VALE_CLI_LINT_MODE = project",
       "category": "SPELL_VALE",
       "section": "SCOPE"
     },
@@ -25978,7 +26480,7 @@
       "name": "SPELL_VALE_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "SPELL_VALE: Including Regex",
-      "description": "SPELL_VALE: Custom regex including filter: only files matching this regex will be linted",
+      "description": "SPELL_VALE: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with SPELL_VALE_CLI_LINT_MODE = project",
       "category": "SPELL_VALE",
       "section": "SCOPE"
     },
@@ -26197,7 +26699,7 @@
       "name": "SQL_SQLFLUFF_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "SQL_SQLFLUFF: Excluding Regex",
-      "description": "SQL_SQLFLUFF: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "SQL_SQLFLUFF: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with SQL_SQLFLUFF_CLI_LINT_MODE = project",
       "category": "SQL_SQLFLUFF",
       "section": "SCOPE"
     },
@@ -26205,7 +26707,7 @@
       "name": "SQL_SQLFLUFF_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "SQL_SQLFLUFF: Including Regex",
-      "description": "SQL_SQLFLUFF: Custom regex including filter: only files matching this regex will be linted",
+      "description": "SQL_SQLFLUFF: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with SQL_SQLFLUFF_CLI_LINT_MODE = project",
       "category": "SQL_SQLFLUFF",
       "section": "SCOPE"
     },
@@ -26541,7 +27043,7 @@
       "name": "SQL_TSQLLINT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "SQL_TSQLLINT: Excluding Regex",
-      "description": "SQL_TSQLLINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "SQL_TSQLLINT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with SQL_TSQLLINT_CLI_LINT_MODE = project",
       "category": "SQL_TSQLLINT",
       "section": "SCOPE"
     },
@@ -26549,7 +27051,7 @@
       "name": "SQL_TSQLLINT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "SQL_TSQLLINT: Including Regex",
-      "description": "SQL_TSQLLINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "SQL_TSQLLINT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with SQL_TSQLLINT_CLI_LINT_MODE = project",
       "category": "SQL_TSQLLINT",
       "section": "SCOPE"
     },
@@ -26764,6 +27266,22 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "SWIFT_SWIFTLINT_FILTER_REGEX_EXCLUDE": {
+      "name": "SWIFT_SWIFTLINT_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "SWIFT_SWIFTLINT: Excluding Regex",
+      "description": "SWIFT_SWIFTLINT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with SWIFT_SWIFTLINT_CLI_LINT_MODE = project",
+      "category": "SWIFT_SWIFTLINT",
+      "section": "SCOPE"
+    },
+    "SWIFT_SWIFTLINT_FILTER_REGEX_INCLUDE": {
+      "name": "SWIFT_SWIFTLINT_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "SWIFT_SWIFTLINT: Including Regex",
+      "description": "SWIFT_SWIFTLINT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with SWIFT_SWIFTLINT_CLI_LINT_MODE = project",
+      "category": "SWIFT_SWIFTLINT",
+      "section": "SCOPE"
+    },
     "SWIFT_SWIFTLINT_POST_COMMANDS": {
       "name": "SWIFT_SWIFTLINT_POST_COMMANDS",
       "type": "array",
@@ -26915,9 +27433,10 @@
       "type": "string",
       "title": "TEKTON_TEKTON_LINT: CLI lint mode",
       "description": "TEKTON_TEKTON_LINT: Override default CLI lint mode used to call the linter (rarely needed)",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "category": "TEKTON_TEKTON_LINT",
@@ -26997,7 +27516,7 @@
       "name": "TEKTON_TEKTON_LINT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "TEKTON_TEKTON_LINT: Excluding Regex",
-      "description": "TEKTON_TEKTON_LINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "TEKTON_TEKTON_LINT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with TEKTON_TEKTON_LINT_CLI_LINT_MODE = project",
       "category": "TEKTON_TEKTON_LINT",
       "section": "SCOPE"
     },
@@ -27005,7 +27524,7 @@
       "name": "TEKTON_TEKTON_LINT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "TEKTON_TEKTON_LINT: Including Regex",
-      "description": "TEKTON_TEKTON_LINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "TEKTON_TEKTON_LINT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with TEKTON_TEKTON_LINT_CLI_LINT_MODE = project",
       "category": "TEKTON_TEKTON_LINT",
       "section": "SCOPE"
     },
@@ -27382,8 +27901,7 @@
       "description": "TERRAFORM_TERRAFORM_FMT: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "file",
       "enum": [
-        "file",
-        "project"
+        "file"
       ],
       "category": "TERRAFORM_TERRAFORM_FMT",
       "section": "LINTER_COMMAND"
@@ -27452,7 +27970,7 @@
       "name": "TERRAFORM_TERRAFORM_FMT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "TERRAFORM_TERRAFORM_FMT: Excluding Regex",
-      "description": "TERRAFORM_TERRAFORM_FMT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "category": "TERRAFORM_TERRAFORM_FMT",
       "section": "SCOPE"
     },
@@ -27460,7 +27978,7 @@
       "name": "TERRAFORM_TERRAFORM_FMT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "TERRAFORM_TERRAFORM_FMT: Including Regex",
-      "description": "TERRAFORM_TERRAFORM_FMT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "category": "TERRAFORM_TERRAFORM_FMT",
       "section": "SCOPE"
     },
@@ -27541,8 +28059,7 @@
       "description": "TERRAFORM_TERRAGRUNT: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "file",
       "enum": [
-        "file",
-        "project"
+        "file"
       ],
       "category": "TERRAFORM_TERRAGRUNT",
       "section": "LINTER_COMMAND"
@@ -27620,7 +28137,7 @@
       "name": "TERRAFORM_TERRAGRUNT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "TERRAFORM_TERRAGRUNT: Excluding Regex",
-      "description": "TERRAFORM_TERRAGRUNT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "category": "TERRAFORM_TERRAGRUNT",
       "section": "SCOPE"
     },
@@ -27628,7 +28145,7 @@
       "name": "TERRAFORM_TERRAGRUNT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "TERRAFORM_TERRAGRUNT: Including Regex",
-      "description": "TERRAFORM_TERRAGRUNT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "category": "TERRAFORM_TERRAGRUNT",
       "section": "SCOPE"
     },
@@ -27793,6 +28310,22 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "TERRAFORM_TERRASCAN_FILTER_REGEX_EXCLUDE": {
+      "name": "TERRAFORM_TERRASCAN_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "(deprecated) TERRAFORM_TERRASCAN: Excluding Regex",
+      "description": "TERRAFORM_TERRASCAN: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with TERRAFORM_TERRASCAN_CLI_LINT_MODE = project",
+      "category": "TERRAFORM_TERRASCAN",
+      "section": "SCOPE"
+    },
+    "TERRAFORM_TERRASCAN_FILTER_REGEX_INCLUDE": {
+      "name": "TERRAFORM_TERRASCAN_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "(deprecated) TERRAFORM_TERRASCAN: Including Regex",
+      "description": "TERRAFORM_TERRASCAN: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with TERRAFORM_TERRASCAN_CLI_LINT_MODE = project",
+      "category": "TERRAFORM_TERRASCAN",
+      "section": "SCOPE"
+    },
     "TERRAFORM_TERRASCAN_POST_COMMANDS": {
       "name": "TERRAFORM_TERRASCAN_POST_COMMANDS",
       "type": "array",
@@ -27953,6 +28486,22 @@
       "category": "TERRAFORM_TFLINT",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "TERRAFORM_TFLINT_FILTER_REGEX_EXCLUDE": {
+      "name": "TERRAFORM_TFLINT_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "TERRAFORM_TFLINT: Excluding Regex",
+      "description": "TERRAFORM_TFLINT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with TERRAFORM_TFLINT_CLI_LINT_MODE = project",
+      "category": "TERRAFORM_TFLINT",
+      "section": "SCOPE"
+    },
+    "TERRAFORM_TFLINT_FILTER_REGEX_INCLUDE": {
+      "name": "TERRAFORM_TFLINT_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "TERRAFORM_TFLINT: Including Regex",
+      "description": "TERRAFORM_TFLINT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with TERRAFORM_TFLINT_CLI_LINT_MODE = project",
+      "category": "TERRAFORM_TFLINT",
+      "section": "SCOPE"
     },
     "TERRAFORM_TFLINT_POST_COMMANDS": {
       "name": "TERRAFORM_TFLINT_POST_COMMANDS",
@@ -28146,7 +28695,7 @@
       "name": "TSX_ESLINT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "TSX_ESLINT: Excluding Regex",
-      "description": "TSX_ESLINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "TSX_ESLINT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with TSX_ESLINT_CLI_LINT_MODE = project",
       "category": "TSX_ESLINT",
       "section": "SCOPE"
     },
@@ -28154,7 +28703,7 @@
       "name": "TSX_ESLINT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "TSX_ESLINT: Including Regex",
-      "description": "TSX_ESLINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "TSX_ESLINT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with TSX_ESLINT_CLI_LINT_MODE = project",
       "category": "TSX_ESLINT",
       "section": "SCOPE"
     },
@@ -28390,7 +28939,7 @@
       "name": "TYPESCRIPT_ES_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "TYPESCRIPT_ES: Excluding Regex",
-      "description": "TYPESCRIPT_ES: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "TYPESCRIPT_ES: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with TYPESCRIPT_ES_CLI_LINT_MODE = project",
       "category": "TYPESCRIPT_ES",
       "section": "SCOPE"
     },
@@ -28398,7 +28947,7 @@
       "name": "TYPESCRIPT_ES_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "TYPESCRIPT_ES: Including Regex",
-      "description": "TYPESCRIPT_ES: Custom regex including filter: only files matching this regex will be linted",
+      "description": "TYPESCRIPT_ES: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with TYPESCRIPT_ES_CLI_LINT_MODE = project",
       "category": "TYPESCRIPT_ES",
       "section": "SCOPE"
     },
@@ -28600,7 +29149,7 @@
       "name": "TYPESCRIPT_PRETTIER_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "TYPESCRIPT_PRETTIER: Excluding Regex",
-      "description": "TYPESCRIPT_PRETTIER: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "TYPESCRIPT_PRETTIER: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with TYPESCRIPT_PRETTIER_CLI_LINT_MODE = project",
       "category": "TYPESCRIPT_PRETTIER",
       "section": "SCOPE"
     },
@@ -28608,7 +29157,7 @@
       "name": "TYPESCRIPT_PRETTIER_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "TYPESCRIPT_PRETTIER: Including Regex",
-      "description": "TYPESCRIPT_PRETTIER: Custom regex including filter: only files matching this regex will be linted",
+      "description": "TYPESCRIPT_PRETTIER: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with TYPESCRIPT_PRETTIER_CLI_LINT_MODE = project",
       "category": "TYPESCRIPT_PRETTIER",
       "section": "SCOPE"
     },
@@ -28785,7 +29334,7 @@
       "name": "TYPESCRIPT_STANDARD_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "TYPESCRIPT_STANDARD: Excluding Regex",
-      "description": "TYPESCRIPT_STANDARD: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "TYPESCRIPT_STANDARD: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with TYPESCRIPT_STANDARD_CLI_LINT_MODE = project",
       "category": "TYPESCRIPT_STANDARD",
       "section": "SCOPE"
     },
@@ -28793,7 +29342,7 @@
       "name": "TYPESCRIPT_STANDARD_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "TYPESCRIPT_STANDARD: Including Regex",
-      "description": "TYPESCRIPT_STANDARD: Custom regex including filter: only files matching this regex will be linted",
+      "description": "TYPESCRIPT_STANDARD: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with TYPESCRIPT_STANDARD_CLI_LINT_MODE = project",
       "category": "TYPESCRIPT_STANDARD",
       "section": "SCOPE"
     },
@@ -28897,8 +29446,6 @@
       "description": "VBDOTNET_DOTNET_FORMAT: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "project",
       "enum": [
-        "file",
-        "list_of_files",
         "project"
       ],
       "category": "VBDOTNET_DOTNET_FORMAT",
@@ -28963,6 +29510,22 @@
       "category": "VBDOTNET_DOTNET_FORMAT",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "VBDOTNET_DOTNET_FORMAT_FILTER_REGEX_EXCLUDE": {
+      "name": "VBDOTNET_DOTNET_FORMAT_FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "VBDOTNET_DOTNET_FORMAT: Excluding Regex",
+      "description": "VBDOTNET_DOTNET_FORMAT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with VBDOTNET_DOTNET_FORMAT_CLI_LINT_MODE = project",
+      "category": "VBDOTNET_DOTNET_FORMAT",
+      "section": "SCOPE"
+    },
+    "VBDOTNET_DOTNET_FORMAT_FILTER_REGEX_INCLUDE": {
+      "name": "VBDOTNET_DOTNET_FORMAT_FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "VBDOTNET_DOTNET_FORMAT: Including Regex",
+      "description": "VBDOTNET_DOTNET_FORMAT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with VBDOTNET_DOTNET_FORMAT_CLI_LINT_MODE = project",
+      "category": "VBDOTNET_DOTNET_FORMAT",
+      "section": "SCOPE"
     },
     "VBDOTNET_DOTNET_FORMAT_POST_COMMANDS": {
       "name": "VBDOTNET_DOTNET_FORMAT_POST_COMMANDS",
@@ -29150,8 +29713,7 @@
       "default": "list_of_files",
       "enum": [
         "file",
-        "list_of_files",
-        "project"
+        "list_of_files"
       ],
       "category": "XML_XMLLINT",
       "section": "LINTER_COMMAND"
@@ -29221,7 +29783,7 @@
       "name": "XML_XMLLINT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "XML_XMLLINT: Excluding Regex",
-      "description": "XML_XMLLINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "",
       "category": "XML_XMLLINT",
       "section": "SCOPE"
     },
@@ -29229,7 +29791,7 @@
       "name": "XML_XMLLINT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "XML_XMLLINT: Including Regex",
-      "description": "XML_XMLLINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "",
       "category": "XML_XMLLINT",
       "section": "SCOPE"
     },
@@ -29432,7 +29994,7 @@
       "name": "YAML_PRETTIER_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "YAML_PRETTIER: Excluding Regex",
-      "description": "YAML_PRETTIER: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "YAML_PRETTIER: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with YAML_PRETTIER_CLI_LINT_MODE = project",
       "category": "YAML_PRETTIER",
       "section": "SCOPE"
     },
@@ -29440,7 +30002,7 @@
       "name": "YAML_PRETTIER_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "YAML_PRETTIER: Including Regex",
-      "description": "YAML_PRETTIER: Custom regex including filter: only files matching this regex will be linted",
+      "description": "YAML_PRETTIER: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with YAML_PRETTIER_CLI_LINT_MODE = project",
       "category": "YAML_PRETTIER",
       "section": "SCOPE"
     },
@@ -29627,7 +30189,7 @@
       "name": "YAML_V8R_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "YAML_V8R: Excluding Regex",
-      "description": "YAML_V8R: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "YAML_V8R: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with YAML_V8R_CLI_LINT_MODE = project",
       "category": "YAML_V8R",
       "section": "SCOPE"
     },
@@ -29635,7 +30197,7 @@
       "name": "YAML_V8R_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "YAML_V8R: Including Regex",
-      "description": "YAML_V8R: Custom regex including filter: only files matching this regex will be linted",
+      "description": "YAML_V8R: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with YAML_V8R_CLI_LINT_MODE = project",
       "category": "YAML_V8R",
       "section": "SCOPE"
     },
@@ -29805,7 +30367,7 @@
       "name": "YAML_YAMLLINT_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "YAML_YAMLLINT: Excluding Regex",
-      "description": "YAML_YAMLLINT: Custom regex excluding filter: files matching this regex will NOT be linted",
+      "description": "YAML_YAMLLINT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with YAML_YAMLLINT_CLI_LINT_MODE = project",
       "category": "YAML_YAMLLINT",
       "section": "SCOPE"
     },
@@ -29813,7 +30375,7 @@
       "name": "YAML_YAMLLINT_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "YAML_YAMLLINT: Including Regex",
-      "description": "YAML_YAMLLINT: Custom regex including filter: only files matching this regex will be linted",
+      "description": "YAML_YAMLLINT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with YAML_YAMLLINT_CLI_LINT_MODE = project",
       "category": "YAML_YAMLLINT",
       "section": "SCOPE"
     },

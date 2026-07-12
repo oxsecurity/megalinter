@@ -110,23 +110,23 @@ To add a single package with pnpm instead of installing the full tree, run `core
 
 - Enable **autofixes** by adding `JAVASCRIPT_ES` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
-| Variable                                  | Description                                                                                                                                                                                                         | Default value                                   |
-|-------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| JAVASCRIPT_ES_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
-| JAVASCRIPT_ES_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                                                 |
-| JAVASCRIPT_ES_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
-| JAVASCRIPT_ES_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
-| JAVASCRIPT_ES_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
-| JAVASCRIPT_ES_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".js", ".vue"]`                               |
-| JAVASCRIPT_ES_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
-| JAVASCRIPT_ES_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
-| JAVASCRIPT_ES_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
-| JAVASCRIPT_ES_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling JAVASCRIPT_ES and its pre/post commands                                                                                                                | None                                            |
-| JAVASCRIPT_ES_CONFIG_FILE                 | eslint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                   | `eslint.config.js`                              |
-| JAVASCRIPT_ES_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
-| JAVASCRIPT_ES_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
-| JAVASCRIPT_ES_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
-| JAVASCRIPT_ES_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['eslint']`                                    |
+| Variable                               | Description                                                                                          | Default value |
+|----------------------------------------|------------------------------------------------------------------------------------------------------|---------------|
+| JAVASCRIPT_ES_ARGUMENTS                | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                             |               |
+| JAVASCRIPT_ES_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"` |               |
+| JAVASCRIPT_ES_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with JAVASCRIPT_ES_CLI_LINT_MODE = project 
+| JAVASCRIPT_ES_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` <br/>⚠️ Not available with JAVASCRIPT_ES_CLI_LINT_MODE = project 
+| JAVASCRIPT_ES_CLI_LINT_MODE | Override default CLI lint mode<br/><- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument- `project`: Call the linter from the root of the projectb- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument- `project`: Call the linter from the root of the projectr- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument- `project`: Call the linter from the root of the project/- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument- `project`: Call the linter from the root of the project> | `list_of_files` |
+| JAVASCRIPT_ES_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".js", ".vue"]` |
+| JAVASCRIPT_ES_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
+| JAVASCRIPT_ES_PRE_COMMANDS | List of bash commands to run before the linter| None |
+| JAVASCRIPT_ES_POST_COMMANDS | List of bash commands to run after the linter| None |
+| JAVASCRIPT_ES_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling JAVASCRIPT_ES and its pre/post commands| None |
+| JAVASCRIPT_ES_CONFIG_FILE | eslint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `eslint.config.js` |
+| JAVASCRIPT_ES_RULES_PATH | Path where to find linter configuration file | Workspace folder, then MegaLinter default rules |
+| JAVASCRIPT_ES_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
+| JAVASCRIPT_ES_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
+| JAVASCRIPT_ES_CLI_EXECUTABLE | Override CLI executable | `['eslint']` |
 
 ## IDE Integration
 
@@ -165,7 +165,10 @@ This linter is available in the following flavors
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- eslint is called once with the list of files as arguments (`list_of_files` CLI lint mode)
+eslint is called once on the whole project directory (`project` CLI lint mode)
+
+- filtering can not be done using MegaLinter configuration variables,it must be done using eslint configuration or ignore file (if existing)
+- `VALIDATE_ALL_CODEBASE: false` doesn't make eslint analyze only updated files
 
 ### Example calls
 
