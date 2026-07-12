@@ -45,7 +45,7 @@ ARG SPELL_LYCHEE_VERSION=0.24.2-alpine
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
 ARG TERRAFORM_TFLINT_VERSION=0.63.1
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.7
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.8
 #ARGTOP__END
 
 #############################################################################################
