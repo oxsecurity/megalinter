@@ -61,18 +61,18 @@ See more details in [Help](#help-content)
 |------------------------------------------------------|------------------------------------------------------------------------------------------------------|---------------|
 | SALESFORCE_SFDX_SCANNER_LWC_ARGUMENTS                | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                             |               |
 | SALESFORCE_SFDX_SCANNER_LWC_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"` |               |
-| SALESFORCE_SFDX_SCANNER_LWC_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with SALESFORCE_SFDX_SCANNER_LWC_CLI_LINT_MODE = project 
-| SALESFORCE_SFDX_SCANNER_LWC_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` <br/>⚠️ Not available with SALESFORCE_SFDX_SCANNER_LWC_CLI_LINT_MODE = project 
-| SALESFORCE_SFDX_SCANNER_LWC_CLI_LINT_MODE | Override default CLI lint mode<br/><- `project`: Call the linter from the root of the projectb- `project`: Call the linter from the root of the projectr- `project`: Call the linter from the root of the project/- `project`: Call the linter from the root of the project> | `project` |
-| SALESFORCE_SFDX_SCANNER_LWC_PRE_COMMANDS | List of bash commands to run before the linter| None |
-| SALESFORCE_SFDX_SCANNER_LWC_POST_COMMANDS | List of bash commands to run after the linter| None |
-| SALESFORCE_SFDX_SCANNER_LWC_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling SALESFORCE_SFDX_SCANNER_LWC and its pre/post commands| None |
+| SALESFORCE_SFDX_SCANNER_LWC_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with SALESFORCE_SFDX_SCANNER_LWC_CLI_LINT_MODE = project
+| SALESFORCE_SFDX_SCANNER_LWC_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` <br/>⚠️ Not available with SALESFORCE_SFDX_SCANNER_LWC_CLI_LINT_MODE = project
+| SALESFORCE_SFDX_SCANNER_LWC_CLI_LINT_MODE | Override default CLI lint mode<br/>- `project`: Call the linter from the root of the project | `project` |
+| SALESFORCE_SFDX_SCANNER_LWC_PRE_COMMANDS | List of bash commands to run before the linter | None |
+| SALESFORCE_SFDX_SCANNER_LWC_POST_COMMANDS | List of bash commands to run after the linter | None |
+| SALESFORCE_SFDX_SCANNER_LWC_UNSECURED_ENV_VARIABLES | List of env variables explicitly not filtered before calling SALESFORCE_SFDX_SCANNER_LWC and its pre/post commands | None |
 | SALESFORCE_SFDX_SCANNER_LWC_CONFIG_FILE | sfdx-scanner-lwc configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `--eslintconfig` |
 | SALESFORCE_SFDX_SCANNER_LWC_RULES_PATH | Path where to find linter configuration file | Workspace folder, then MegaLinter default rules |
 | SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
 | SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
 | SALESFORCE_SFDX_SCANNER_LWC_CLI_EXECUTABLE | Override CLI executable | `['sf']` |
-| SALESFORCE_DIRECTORY | Directory containing SALESFORCE files (use `any` to always activate the linter)| `force-app` |
+| SALESFORCE_DIRECTORY | Directory containing SALESFORCE files (use `any` to always activate the linter) | `force-app` |
 
 ## IDE Integration
 

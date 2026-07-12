@@ -13,7 +13,7 @@ You are a MegaLinter test debugging specialist. You help diagnose and fix failin
 
 - Tests are in `megalinter/tests/test_megalinter/linters/<descriptor>_<linter>_test.py`
 - They extend `LinterTestRoot` (in `megalinter/tests/test_megalinter/LinterTestRoot.py`) and `TestCase`
-- Standard tests: `test_success`, `test_failure`, `test_get_linter_version`, `test_get_linter_help`
+- Standard tests: `test_get_linter_version`, `test_get_linter_help`, `test_report_tap`, `test_report_sarif`, plus one success and one failure test **per CLI lint mode** — `test_success_file_lint_mode`, `test_success_list_of_files_lint_mode`, `test_success_project_lint_mode`, and the matching `test_failure_*_lint_mode` (a mode's tests are auto-skipped when it's absent from the descriptor's `supported_cli_lint_modes`). The old `test_success` / `test_failure` no longer exist.
 - Test utilities are in `megalinter/utilstest.py`
 - Test fixtures live in `.automation/test/<test_folder>/`
 
@@ -40,6 +40,7 @@ Then run `make megalinter-build` to regenerate the test file.
    - `cli_lint_errors_regex` doesn't match actual linter output format
    - Missing config file referenced in `config_file_name`
    - `cli_lint_mode` mismatch (file vs list_of_files vs project)
+   - `supported_cli_lint_modes` declares a mode the tool can't run — the per-mode tests run for every declared mode; a failure confined to one mode means it should be removed from `supported_cli_lint_modes`
    - Version pin broken or tool not installable in Dockerfile
    - Linter behavior differs between host OS and Docker container (Linux Alpine)
    - Config file in `.automation/test/` overriding expected behavior
@@ -56,9 +57,10 @@ docker run --rm --env TEST_CASE_RUN=true --env OUTPUT_DETAIL=detailed \
   --volume "$(pwd):/tmp/lint" $LINTER
 ```
 
-To run only a specific test method:
+To run only specific test methods (substring match, spans all modes):
 ```bash
---env TEST_KEYWORDS="${LINTER}_test and test_failure"
+--env TEST_KEYWORDS="${LINTER}_test and test_failure"                     # all failure modes
+--env TEST_KEYWORDS="${LINTER}_test and test_success_project_lint_mode"   # single mode
 ```
 
 For ARM testing, use `--platform linux/arm64`.

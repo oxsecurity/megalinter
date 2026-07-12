@@ -49,14 +49,14 @@ The default configuration enables all supported languages and rules, which may n
 | PAT_GITHUB_COM                            | If you have issues with tflint --init, create a GitHub Personal Access Token and set its value to PAT_GITHUB_COM variable.                                | ``            |
 | TERRAFORM_TFLINT_ARGUMENTS                | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                  |               |
 | TERRAFORM_TFLINT_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                      |               |
-| TERRAFORM_TFLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with TERRAFORM_TFLINT_CLI_LINT_MODE = project 
-| TERRAFORM_TFLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` <br/>⚠️ Not available with TERRAFORM_TFLINT_CLI_LINT_MODE = project 
-| TERRAFORM_TFLINT_CLI_LINT_MODE | Override default CLI lint mode<br/><- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument- `project`: Call the linter from the root of the projectb- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument- `project`: Call the linter from the root of the projectr- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument- `project`: Call the linter from the root of the project/- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument- `project`: Call the linter from the root of the project> | `project` |
+| TERRAFORM_TFLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with TERRAFORM_TFLINT_CLI_LINT_MODE = project
+| TERRAFORM_TFLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` <br/>⚠️ Not available with TERRAFORM_TFLINT_CLI_LINT_MODE = project
+| TERRAFORM_TFLINT_CLI_LINT_MODE | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `project` |
 | TERRAFORM_TFLINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".tf"]` |
 | TERRAFORM_TFLINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
-| TERRAFORM_TFLINT_PRE_COMMANDS | List of bash commands to run before the linter| None |
-| TERRAFORM_TFLINT_POST_COMMANDS | List of bash commands to run after the linter| None |
-| TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling TERRAFORM_TFLINT and its pre/post commands| None |
+| TERRAFORM_TFLINT_PRE_COMMANDS | List of bash commands to run before the linter | None |
+| TERRAFORM_TFLINT_POST_COMMANDS | List of bash commands to run after the linter | None |
+| TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES | List of env variables explicitly not filtered before calling TERRAFORM_TFLINT and its pre/post commands | None |
 | TERRAFORM_TFLINT_CONFIG_FILE | tflint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.tflint.hcl` |
 | TERRAFORM_TFLINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then MegaLinter default rules |
 | TERRAFORM_TFLINT_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |

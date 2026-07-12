@@ -43,14 +43,14 @@ description: How to use rumdl (configure, ignore files, ignore errors, help & ve
 | MARKDOWN_DEFAULT_STYLE                  | For rumdl to be active, MARKDOWN_DEFAULT_STYLE must be `rumdl`                                       | `markdownlint` |
 | MARKDOWN_RUMDL_ARGUMENTS                | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                             |                |
 | MARKDOWN_RUMDL_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"` |                |
-| MARKDOWN_RUMDL_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with MARKDOWN_RUMDL_CLI_LINT_MODE = project 
-| MARKDOWN_RUMDL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` <br/>⚠️ Not available with MARKDOWN_RUMDL_CLI_LINT_MODE = project 
-| MARKDOWN_RUMDL_CLI_LINT_MODE | Override default CLI lint mode<br/><- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument- `project`: Call the linter from the root of the projectb- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument- `project`: Call the linter from the root of the projectr- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument- `project`: Call the linter from the root of the project/- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument- `project`: Call the linter from the root of the project> | `list_of_files` |
+| MARKDOWN_RUMDL_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with MARKDOWN_RUMDL_CLI_LINT_MODE = project
+| MARKDOWN_RUMDL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` <br/>⚠️ Not available with MARKDOWN_RUMDL_CLI_LINT_MODE = project
+| MARKDOWN_RUMDL_CLI_LINT_MODE | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files` |
 | MARKDOWN_RUMDL_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".md"]` |
 | MARKDOWN_RUMDL_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
-| MARKDOWN_RUMDL_PRE_COMMANDS | List of bash commands to run before the linter| None |
-| MARKDOWN_RUMDL_POST_COMMANDS | List of bash commands to run after the linter| None |
-| MARKDOWN_RUMDL_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling MARKDOWN_RUMDL and its pre/post commands| None |
+| MARKDOWN_RUMDL_PRE_COMMANDS | List of bash commands to run before the linter | None |
+| MARKDOWN_RUMDL_POST_COMMANDS | List of bash commands to run after the linter | None |
+| MARKDOWN_RUMDL_UNSECURED_ENV_VARIABLES | List of env variables explicitly not filtered before calling MARKDOWN_RUMDL and its pre/post commands | None |
 | MARKDOWN_RUMDL_CONFIG_FILE | rumdl configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.rumdl.toml` |
 | MARKDOWN_RUMDL_RULES_PATH | Path where to find linter configuration file | Workspace folder, then MegaLinter default rules |
 | MARKDOWN_RUMDL_DISABLE_ERRORS | Run linter but consider errors as warnings | `true` |

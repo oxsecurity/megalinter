@@ -47,12 +47,12 @@ description: How to use grype (configure, ignore files, ignore errors, help & ve
 |-------------------------------------------|------------------------------------------------------------------------------------------------------|---------------|
 | REPOSITORY_GRYPE_ARGUMENTS                | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                             |               |
 | REPOSITORY_GRYPE_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"` |               |
-| REPOSITORY_GRYPE_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with REPOSITORY_GRYPE_CLI_LINT_MODE = project 
-| REPOSITORY_GRYPE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` <br/>⚠️ Not available with REPOSITORY_GRYPE_CLI_LINT_MODE = project 
-| REPOSITORY_GRYPE_CLI_LINT_MODE | Override default CLI lint mode<br/><- `file`: Calls the linter for each file- `project`: Call the linter from the root of the projectb- `file`: Calls the linter for each file- `project`: Call the linter from the root of the projectr- `file`: Calls the linter for each file- `project`: Call the linter from the root of the project/- `file`: Calls the linter for each file- `project`: Call the linter from the root of the project> | `project` |
-| REPOSITORY_GRYPE_PRE_COMMANDS | List of bash commands to run before the linter| None |
-| REPOSITORY_GRYPE_POST_COMMANDS | List of bash commands to run after the linter| None |
-| REPOSITORY_GRYPE_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling REPOSITORY_GRYPE and its pre/post commands| None |
+| REPOSITORY_GRYPE_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with REPOSITORY_GRYPE_CLI_LINT_MODE = project
+| REPOSITORY_GRYPE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` <br/>⚠️ Not available with REPOSITORY_GRYPE_CLI_LINT_MODE = project
+| REPOSITORY_GRYPE_CLI_LINT_MODE | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project | `project` |
+| REPOSITORY_GRYPE_PRE_COMMANDS | List of bash commands to run before the linter | None |
+| REPOSITORY_GRYPE_POST_COMMANDS | List of bash commands to run after the linter | None |
+| REPOSITORY_GRYPE_UNSECURED_ENV_VARIABLES | List of env variables explicitly not filtered before calling REPOSITORY_GRYPE and its pre/post commands | None |
 | REPOSITORY_GRYPE_CONFIG_FILE | grype configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.grype.yaml` |
 | REPOSITORY_GRYPE_RULES_PATH | Path where to find linter configuration file | Workspace folder, then MegaLinter default rules |
 | REPOSITORY_GRYPE_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |

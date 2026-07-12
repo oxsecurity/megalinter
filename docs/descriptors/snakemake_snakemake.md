@@ -46,12 +46,12 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 | SNAKEMAKE_LINT_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"` |               |
  | Include every file |
  | Exclude no file |
-| SNAKEMAKE_LINT_CLI_LINT_MODE | Override default CLI lint mode<br/><- `file`: Calls the linter for each fileb- `file`: Calls the linter for each filer- `file`: Calls the linter for each file/- `file`: Calls the linter for each file> | `file` |
+| SNAKEMAKE_LINT_CLI_LINT_MODE | Override default CLI lint mode<br/>- `file`: Calls the linter for each file | `file` |
 | SNAKEMAKE_LINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".smk"]` |
 | SNAKEMAKE_LINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | `["Snakefile"]` |
-| SNAKEMAKE_LINT_PRE_COMMANDS | List of bash commands to run before the linter| None |
-| SNAKEMAKE_LINT_POST_COMMANDS | List of bash commands to run after the linter| None |
-| SNAKEMAKE_LINT_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling SNAKEMAKE_LINT and its pre/post commands| None |
+| SNAKEMAKE_LINT_PRE_COMMANDS | List of bash commands to run before the linter | None |
+| SNAKEMAKE_LINT_POST_COMMANDS | List of bash commands to run after the linter | None |
+| SNAKEMAKE_LINT_UNSECURED_ENV_VARIABLES | List of env variables explicitly not filtered before calling SNAKEMAKE_LINT and its pre/post commands | None |
 | SNAKEMAKE_LINT_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
 | SNAKEMAKE_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
 | SNAKEMAKE_LINT_CLI_EXECUTABLE | Override CLI executable | `['snakemake']` |

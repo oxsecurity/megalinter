@@ -69,14 +69,14 @@ Black is successfully used by many projects, small and big, and has become the d
 | PYTHON_DEFAULT_STYLE                  | For black to be active, PYTHON_DEFAULT_STYLE must be `black`                                         | `black`       |
 | PYTHON_BLACK_ARGUMENTS                | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                             |               |
 | PYTHON_BLACK_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"` |               |
-| PYTHON_BLACK_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with PYTHON_BLACK_CLI_LINT_MODE = project 
-| PYTHON_BLACK_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` <br/>⚠️ Not available with PYTHON_BLACK_CLI_LINT_MODE = project 
-| PYTHON_BLACK_CLI_LINT_MODE | Override default CLI lint mode<br/><- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument- `project`: Call the linter from the root of the projectb- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument- `project`: Call the linter from the root of the projectr- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument- `project`: Call the linter from the root of the project/- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument- `project`: Call the linter from the root of the project> | `list_of_files` |
+| PYTHON_BLACK_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with PYTHON_BLACK_CLI_LINT_MODE = project
+| PYTHON_BLACK_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` <br/>⚠️ Not available with PYTHON_BLACK_CLI_LINT_MODE = project
+| PYTHON_BLACK_CLI_LINT_MODE | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files` |
 | PYTHON_BLACK_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".py", ".pyi", ".ipynb"]` |
 | PYTHON_BLACK_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
-| PYTHON_BLACK_PRE_COMMANDS | List of bash commands to run before the linter| None |
-| PYTHON_BLACK_POST_COMMANDS | List of bash commands to run after the linter| None |
-| PYTHON_BLACK_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling PYTHON_BLACK and its pre/post commands| None |
+| PYTHON_BLACK_PRE_COMMANDS | List of bash commands to run before the linter | None |
+| PYTHON_BLACK_POST_COMMANDS | List of bash commands to run after the linter | None |
+| PYTHON_BLACK_UNSECURED_ENV_VARIABLES | List of env variables explicitly not filtered before calling PYTHON_BLACK and its pre/post commands | None |
 | PYTHON_BLACK_CONFIG_FILE | black configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `pyproject.toml` |
 | PYTHON_BLACK_RULES_PATH | Path where to find linter configuration file | Workspace folder, then MegaLinter default rules |
 | PYTHON_BLACK_DISABLE_ERRORS | Run linter but consider errors as warnings | `true` |

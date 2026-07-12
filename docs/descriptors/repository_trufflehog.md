@@ -44,12 +44,12 @@ description: How to use trufflehog (configure, ignore files, ignore errors, help
 |------------------------------------------------|------------------------------------------------------------------------------------------------------|---------------|
 | REPOSITORY_TRUFFLEHOG_ARGUMENTS                | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                             |               |
 | REPOSITORY_TRUFFLEHOG_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"` |               |
-| REPOSITORY_TRUFFLEHOG_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with REPOSITORY_TRUFFLEHOG_CLI_LINT_MODE = project 
-| REPOSITORY_TRUFFLEHOG_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` <br/>⚠️ Not available with REPOSITORY_TRUFFLEHOG_CLI_LINT_MODE = project 
-| REPOSITORY_TRUFFLEHOG_CLI_LINT_MODE | Override default CLI lint mode<br/><- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument- `project`: Call the linter from the root of the projectb- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument- `project`: Call the linter from the root of the projectr- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument- `project`: Call the linter from the root of the project/- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument- `project`: Call the linter from the root of the project> | `project` |
-| REPOSITORY_TRUFFLEHOG_PRE_COMMANDS | List of bash commands to run before the linter| None |
-| REPOSITORY_TRUFFLEHOG_POST_COMMANDS | List of bash commands to run after the linter| None |
-| REPOSITORY_TRUFFLEHOG_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling REPOSITORY_TRUFFLEHOG and its pre/post commands| None |
+| REPOSITORY_TRUFFLEHOG_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with REPOSITORY_TRUFFLEHOG_CLI_LINT_MODE = project
+| REPOSITORY_TRUFFLEHOG_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` <br/>⚠️ Not available with REPOSITORY_TRUFFLEHOG_CLI_LINT_MODE = project
+| REPOSITORY_TRUFFLEHOG_CLI_LINT_MODE | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `project` |
+| REPOSITORY_TRUFFLEHOG_PRE_COMMANDS | List of bash commands to run before the linter | None |
+| REPOSITORY_TRUFFLEHOG_POST_COMMANDS | List of bash commands to run after the linter | None |
+| REPOSITORY_TRUFFLEHOG_UNSECURED_ENV_VARIABLES | List of env variables explicitly not filtered before calling REPOSITORY_TRUFFLEHOG and its pre/post commands | None |
 | REPOSITORY_TRUFFLEHOG_CONFIG_FILE | trufflehog configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.trufflehog.yml` |
 | REPOSITORY_TRUFFLEHOG_RULES_PATH | Path where to find linter configuration file | Workspace folder, then MegaLinter default rules |
 | REPOSITORY_TRUFFLEHOG_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |

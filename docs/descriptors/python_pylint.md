@@ -59,14 +59,14 @@ For legacy projects, start with `--errors-only` flag and progressively enable mo
 |----------------------------------------|------------------------------------------------------------------------------------------------------|---------------|
 | PYTHON_PYLINT_ARGUMENTS                | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                             |               |
 | PYTHON_PYLINT_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"` |               |
-| PYTHON_PYLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with PYTHON_PYLINT_CLI_LINT_MODE = project 
-| PYTHON_PYLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` <br/>⚠️ Not available with PYTHON_PYLINT_CLI_LINT_MODE = project 
-| PYTHON_PYLINT_CLI_LINT_MODE | Override default CLI lint mode<br/><- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument- `project`: Call the linter from the root of the projectb- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument- `project`: Call the linter from the root of the projectr- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument- `project`: Call the linter from the root of the project/- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument- `project`: Call the linter from the root of the project> | `list_of_files` |
+| PYTHON_PYLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with PYTHON_PYLINT_CLI_LINT_MODE = project
+| PYTHON_PYLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` <br/>⚠️ Not available with PYTHON_PYLINT_CLI_LINT_MODE = project
+| PYTHON_PYLINT_CLI_LINT_MODE | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files` |
 | PYTHON_PYLINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".py", ".pyi"]` |
 | PYTHON_PYLINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
-| PYTHON_PYLINT_PRE_COMMANDS | List of bash commands to run before the linter| None |
-| PYTHON_PYLINT_POST_COMMANDS | List of bash commands to run after the linter| None |
-| PYTHON_PYLINT_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling PYTHON_PYLINT and its pre/post commands| None |
+| PYTHON_PYLINT_PRE_COMMANDS | List of bash commands to run before the linter | None |
+| PYTHON_PYLINT_POST_COMMANDS | List of bash commands to run after the linter | None |
+| PYTHON_PYLINT_UNSECURED_ENV_VARIABLES | List of env variables explicitly not filtered before calling PYTHON_PYLINT and its pre/post commands | None |
 | PYTHON_PYLINT_CONFIG_FILE | pylint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.pylintrc` |
 | PYTHON_PYLINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then MegaLinter default rules |
 | PYTHON_PYLINT_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |

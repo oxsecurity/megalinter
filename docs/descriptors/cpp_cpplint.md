@@ -38,12 +38,12 @@ description: How to use cpplint (configure, ignore files, ignore errors, help & 
 | CPP_CPPLINT_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"` |               |
  | Include every file |
  | Exclude no file |
-| CPP_CPPLINT_CLI_LINT_MODE | Override default CLI lint mode<br/><- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argumentb- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argumentr- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument/- `file`: Calls the linter for each file- `list_of_files`: Call the linter with the list of files as argument> | `list_of_files` |
+| CPP_CPPLINT_CLI_LINT_MODE | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument | `list_of_files` |
 | CPP_CPPLINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".cpp", ".h", ".cc", ".hpp", ".cxx", ".cu", ".hxx", ".c++", ".hh", ".h++", ".cuh"]` |
 | CPP_CPPLINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
-| CPP_CPPLINT_PRE_COMMANDS | List of bash commands to run before the linter| None |
-| CPP_CPPLINT_POST_COMMANDS | List of bash commands to run after the linter| None |
-| CPP_CPPLINT_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling CPP_CPPLINT and its pre/post commands| None |
+| CPP_CPPLINT_PRE_COMMANDS | List of bash commands to run before the linter | None |
+| CPP_CPPLINT_POST_COMMANDS | List of bash commands to run after the linter | None |
+| CPP_CPPLINT_UNSECURED_ENV_VARIABLES | List of env variables explicitly not filtered before calling CPP_CPPLINT and its pre/post commands | None |
 | CPP_CPPLINT_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
 | CPP_CPPLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
 | CPP_CPPLINT_CLI_EXECUTABLE | Override CLI executable | `['cpplint']` |
