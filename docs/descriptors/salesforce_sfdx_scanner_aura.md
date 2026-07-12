@@ -62,7 +62,7 @@ See more details in [Help](#help-content)
 | SALESFORCE_SFDX_SCANNER_AURA_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"` |               |
 | SALESFORCE_SFDX_SCANNER_AURA_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with SALESFORCE_SFDX_SCANNER_AURA_CLI_LINT_MODE = project 
 | SALESFORCE_SFDX_SCANNER_AURA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` <br/>⚠️ Not available with SALESFORCE_SFDX_SCANNER_AURA_CLI_LINT_MODE = project 
-| SALESFORCE_SFDX_SCANNER_AURA_CLI_LINT_MODE | Override default CLI lint mode<br/><- `project`: Call the linter from the root of the projectb- `project`: Call the linter from the root of the projectr- `project`: Call the linter from the root of the project/- `project`: Call the linter from the root of the project> | `project` |
+| SALESFORCE_SFDX_SCANNER_AURA_CLI_LINT_MODE | Override default CLI lint mode<br/>- `project`: Call the linter from the root of the project | `project` |
 | SALESFORCE_SFDX_SCANNER_AURA_PRE_COMMANDS | List of bash commands to run before the linter| None |
 | SALESFORCE_SFDX_SCANNER_AURA_POST_COMMANDS | List of bash commands to run after the linter| None |
 | SALESFORCE_SFDX_SCANNER_AURA_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling SALESFORCE_SFDX_SCANNER_AURA and its pre/post commands| None |

@@ -1651,18 +1651,18 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         cli_lint_mode_doc_md = (
             f"| {linter.name}_CLI_LINT_MODE | Override default CLI lint mode<br/>"
         )
-        cli_lint_modes_doc_md = ""
+        cli_lint_modes_doc_parts = []
         if "file" in linter.supported_cli_lint_modes:
-            cli_lint_modes_doc_md += "- `file`: Calls the linter for each file"
+            cli_lint_modes_doc_parts.append("- `file`: Calls the linter for each file")
         if "list_of_files" in linter.supported_cli_lint_modes:
-            cli_lint_modes_doc_md += (
+            cli_lint_modes_doc_parts.append(
                 "- `list_of_files`: Call the linter with the list of files as argument"
             )
         if "project" in linter.supported_cli_lint_modes:
-            cli_lint_modes_doc_md += (
+            cli_lint_modes_doc_parts.append(
                 "- `project`: Call the linter from the root of the project"
             )
-        cli_lint_mode_doc_md += cli_lint_modes_doc_md.join("<br/>")
+        cli_lint_mode_doc_md += "<br/>".join(cli_lint_modes_doc_parts)
         cli_lint_mode_doc_md += f" | `{linter.cli_lint_mode}` |"
         linter_doc_md += [cli_lint_mode_doc_md]
         enum = linter.supported_cli_lint_modes

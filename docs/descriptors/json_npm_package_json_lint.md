@@ -43,7 +43,7 @@ description: How to use npm-package-json-lint (configure, ignore files, ignore e
 | JSON_NPM_PACKAGE_JSON_LINT_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"` |               |
 | JSON_NPM_PACKAGE_JSON_LINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with JSON_NPM_PACKAGE_JSON_LINT_CLI_LINT_MODE = project 
 | JSON_NPM_PACKAGE_JSON_LINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` <br/>⚠️ Not available with JSON_NPM_PACKAGE_JSON_LINT_CLI_LINT_MODE = project 
-| JSON_NPM_PACKAGE_JSON_LINT_CLI_LINT_MODE | Override default CLI lint mode<br/><- `project`: Call the linter from the root of the projectb- `project`: Call the linter from the root of the projectr- `project`: Call the linter from the root of the project/- `project`: Call the linter from the root of the project> | `project` |
+| JSON_NPM_PACKAGE_JSON_LINT_CLI_LINT_MODE | Override default CLI lint mode<br/>- `project`: Call the linter from the root of the project | `project` |
 | JSON_NPM_PACKAGE_JSON_LINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".json"]` |
 | JSON_NPM_PACKAGE_JSON_LINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | `["package\\.json"]` |
 | JSON_NPM_PACKAGE_JSON_LINT_PRE_COMMANDS | List of bash commands to run before the linter| None |

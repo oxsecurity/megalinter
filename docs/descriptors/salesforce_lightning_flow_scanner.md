@@ -54,7 +54,7 @@ If your root folder is not **force-app**, please set variable SALESFORCE_LIGHTNI
 | SALESFORCE_LIGHTNING_FLOW_SCANNER_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"` |               |
 | SALESFORCE_LIGHTNING_FLOW_SCANNER_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with SALESFORCE_LIGHTNING_FLOW_SCANNER_CLI_LINT_MODE = project 
 | SALESFORCE_LIGHTNING_FLOW_SCANNER_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` <br/>⚠️ Not available with SALESFORCE_LIGHTNING_FLOW_SCANNER_CLI_LINT_MODE = project 
-| SALESFORCE_LIGHTNING_FLOW_SCANNER_CLI_LINT_MODE | Override default CLI lint mode<br/><- `project`: Call the linter from the root of the projectb- `project`: Call the linter from the root of the projectr- `project`: Call the linter from the root of the project/- `project`: Call the linter from the root of the project> | `project` |
+| SALESFORCE_LIGHTNING_FLOW_SCANNER_CLI_LINT_MODE | Override default CLI lint mode<br/>- `project`: Call the linter from the root of the project | `project` |
 | SALESFORCE_LIGHTNING_FLOW_SCANNER_PRE_COMMANDS | List of bash commands to run before the linter| None |
 | SALESFORCE_LIGHTNING_FLOW_SCANNER_POST_COMMANDS | List of bash commands to run after the linter| None |
 | SALESFORCE_LIGHTNING_FLOW_SCANNER_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling SALESFORCE_LIGHTNING_FLOW_SCANNER and its pre/post commands| None |

@@ -45,7 +45,7 @@ description: How to use dustilock (configure, ignore files, ignore errors, help 
 | REPOSITORY_DUSTILOCK_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"` |               |
 | REPOSITORY_DUSTILOCK_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with REPOSITORY_DUSTILOCK_CLI_LINT_MODE = project 
 | REPOSITORY_DUSTILOCK_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` <br/>⚠️ Not available with REPOSITORY_DUSTILOCK_CLI_LINT_MODE = project 
-| REPOSITORY_DUSTILOCK_CLI_LINT_MODE | Override default CLI lint mode<br/><- `project`: Call the linter from the root of the projectb- `project`: Call the linter from the root of the projectr- `project`: Call the linter from the root of the project/- `project`: Call the linter from the root of the project> | `project` |
+| REPOSITORY_DUSTILOCK_CLI_LINT_MODE | Override default CLI lint mode<br/>- `project`: Call the linter from the root of the project | `project` |
 | REPOSITORY_DUSTILOCK_PRE_COMMANDS | List of bash commands to run before the linter| None |
 | REPOSITORY_DUSTILOCK_POST_COMMANDS | List of bash commands to run after the linter| None |
 | REPOSITORY_DUSTILOCK_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling REPOSITORY_DUSTILOCK and its pre/post commands| None |

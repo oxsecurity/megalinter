@@ -43,7 +43,7 @@ description: How to use chktex (configure, ignore files, ignore errors, help & v
 | LATEX_CHKTEX_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"` |               |
  | Include every file |
  | Exclude no file |
-| LATEX_CHKTEX_CLI_LINT_MODE | Override default CLI lint mode<br/><- `file`: Calls the linter for each fileb- `file`: Calls the linter for each filer- `file`: Calls the linter for each file/- `file`: Calls the linter for each file> | `file` |
+| LATEX_CHKTEX_CLI_LINT_MODE | Override default CLI lint mode<br/>- `file`: Calls the linter for each file | `file` |
 | LATEX_CHKTEX_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".tex"]` |
 | LATEX_CHKTEX_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | LATEX_CHKTEX_PRE_COMMANDS | List of bash commands to run before the linter| None |
