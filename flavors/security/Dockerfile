@@ -25,7 +25,7 @@ ARG KUBERNETES_KUBECONFORM_VERSION=v0.8.0-alpine
 # renovate: datasource=github-tags depName=checkmarx/dustilock
 ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
 # renovate: datasource=docker depName=golang versioning=semver
-ARG GO_IMAGE_VERSION=1.26.4
+ARG GO_IMAGE_VERSION=1.26.5
 # renovate: datasource=docker depName=zricethezav/gitleaks
 ARG REPOSITORY_GITLEAKS_VERSION=v8.30.1
 # renovate: datasource=docker depName=ghcr.io/betterleaks/betterleaks
