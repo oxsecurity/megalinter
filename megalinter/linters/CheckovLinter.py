@@ -3,17 +3,30 @@
 Use Checkov to lint Infrastructure as Code
 """
 
+import os
+
 import megalinter.utils as utils
 from megalinter import Linter, config
 
 
 class CheckovLinter(Linter):
     def before_lint_files(self):
-        # Redirect Checkov's transient github_conf/ to a hidden dir to prevent ansible-lint race condition (issue #8092)
+        # Redirect Checkov's transient github_conf/ out of the linted tree to
+        # avoid an ansible-lint race condition (issue #8092). Prefer a hidden
+        # subfolder of the MegaLinter report folder: it is gitignored,
+        # auto-created and excluded from file discovery, while the leading dot
+        # keeps project-mode linters (which walk the tree themselves) from
+        # descending into it. Checkov joins CKV_GITHUB_CONF_DIR_NAME with the
+        # current working directory, so an absolute path lands there verbatim.
+        # Fall back to a hidden dir at the workspace root when reports are off.
         if self._cached_subprocess_env is not None:
-            self._cached_subprocess_env["CKV_GITHUB_CONF_DIR_NAME"] = (
-                ".megalinter_github_conf"
-            )
+            if self.report_folder not in ("", "none", "false"):
+                github_conf_dir = os.path.abspath(
+                    os.path.join(self.report_folder, ".checkov-github-conf")
+                )
+            else:
+                github_conf_dir = ".megalinter_github_conf"
+            self._cached_subprocess_env["CKV_GITHUB_CONF_DIR_NAME"] = github_conf_dir
 
     def build_lint_command(self, file=None) -> list:
         if (
