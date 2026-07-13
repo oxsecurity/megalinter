@@ -62,6 +62,7 @@ linters:
     cli_lint_mode: file
     supported_cli_lint_modes:
       - file
+      - project
     cli_lint_errors_regex: "(?m)^\\s*(Information|Warning|Error|ParseError)\\s"
     cli_lint_errors_count: regex_count
     cli_lint_fix_arg_name: "-Fix"

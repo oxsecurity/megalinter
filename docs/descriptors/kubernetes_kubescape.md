@@ -39,22 +39,22 @@ description: How to use kubescape (configure, ignore files, ignore errors, help 
 - Enable kubescape by adding `KUBERNETES_KUBESCAPE` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable kubescape by adding `KUBERNETES_KUBESCAPE` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                      | Description                                                                                          | Default value |
-|-----------------------------------------------|------------------------------------------------------------------------------------------------------|---------------|
-| KUBERNETES_KUBESCAPE_ARGUMENTS                | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                             |               |
-| KUBERNETES_KUBESCAPE_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"` |               |
-| KUBERNETES_KUBESCAPE_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with KUBERNETES_KUBESCAPE_CLI_LINT_MODE = project 
-| KUBERNETES_KUBESCAPE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` <br/>⚠️ Not available with KUBERNETES_KUBESCAPE_CLI_LINT_MODE = project 
-| KUBERNETES_KUBESCAPE_CLI_LINT_MODE | Override default CLI lint mode<br/><- `project`: Call the linter from the root of the projectb- `project`: Call the linter from the root of the projectr- `project`: Call the linter from the root of the project/- `project`: Call the linter from the root of the project> | `project` |
-| KUBERNETES_KUBESCAPE_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".yml", ".yaml", ".json"]` |
-| KUBERNETES_KUBESCAPE_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
-| KUBERNETES_KUBESCAPE_PRE_COMMANDS | List of bash commands to run before the linter| None |
-| KUBERNETES_KUBESCAPE_POST_COMMANDS | List of bash commands to run after the linter| None |
-| KUBERNETES_KUBESCAPE_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling KUBERNETES_KUBESCAPE and its pre/post commands| None |
-| KUBERNETES_KUBESCAPE_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
-| KUBERNETES_KUBESCAPE_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
-| KUBERNETES_KUBESCAPE_CLI_EXECUTABLE | Override CLI executable | `['kubescape']` |
-| KUBERNETES_DIRECTORY | Directory containing KUBERNETES files (use `any` to always activate the linter)| `` |
+| Variable                                         | Description                                                                                                                                                                                  | Default value                |
+|--------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
+| KUBERNETES_KUBESCAPE_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                              |
+| KUBERNETES_KUBESCAPE_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                         |                              |
+| KUBERNETES_KUBESCAPE_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with KUBERNETES_KUBESCAPE_CLI_LINT_MODE = project                                                                    | Exclude no file              |
+| KUBERNETES_KUBESCAPE_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`<br/>⚠️ Not available with KUBERNETES_KUBESCAPE_CLI_LINT_MODE = project                                                              | Exclude no file              |
+| KUBERNETES_KUBESCAPE_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `project`: Call the linter from the root of the project                                                                                                 | `project`                    |
+| KUBERNETES_KUBESCAPE_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".yml", ".yaml", ".json"]` |
+| KUBERNETES_KUBESCAPE_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file           |
+| KUBERNETES_KUBESCAPE_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                         |
+| KUBERNETES_KUBESCAPE_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None                         |
+| KUBERNETES_KUBESCAPE_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling KUBERNETES_KUBESCAPE and its pre/post commands                                                                                  | None                         |
+| KUBERNETES_KUBESCAPE_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                      |
+| KUBERNETES_KUBESCAPE_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                          |
+| KUBERNETES_KUBESCAPE_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['kubescape']`              |
+| KUBERNETES_DIRECTORY                             | Directory containing KUBERNETES files (use `any` to always activate the linter)                                                                                                              | ``                           |
 
 ## IDE Integration
 
