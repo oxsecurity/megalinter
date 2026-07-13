@@ -45,22 +45,22 @@ See more details in [Help](#help-content)
 - Enable code-analyzer-aura by adding `SALESFORCE_CODE_ANALYZER_AURA` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable code-analyzer-aura by adding `SALESFORCE_CODE_ANALYZER_AURA` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                               | Description                                                                                          | Default value |
-|--------------------------------------------------------|------------------------------------------------------------------------------------------------------|---------------|
-| SALESFORCE_CODE_ANALYZER_AURA_ARGUMENTS                | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                             |               |
-| SALESFORCE_CODE_ANALYZER_AURA_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"` |               |
-| SALESFORCE_CODE_ANALYZER_AURA_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with SALESFORCE_CODE_ANALYZER_AURA_CLI_LINT_MODE = project 
-| SALESFORCE_CODE_ANALYZER_AURA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` <br/>⚠️ Not available with SALESFORCE_CODE_ANALYZER_AURA_CLI_LINT_MODE = project 
-| SALESFORCE_CODE_ANALYZER_AURA_CLI_LINT_MODE | Override default CLI lint mode<br/><- `project`: Call the linter from the root of the projectb- `project`: Call the linter from the root of the projectr- `project`: Call the linter from the root of the project/- `project`: Call the linter from the root of the project> | `project` |
-| SALESFORCE_CODE_ANALYZER_AURA_PRE_COMMANDS | List of bash commands to run before the linter| None |
-| SALESFORCE_CODE_ANALYZER_AURA_POST_COMMANDS | List of bash commands to run after the linter| None |
-| SALESFORCE_CODE_ANALYZER_AURA_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling SALESFORCE_CODE_ANALYZER_AURA and its pre/post commands| None |
-| SALESFORCE_CODE_ANALYZER_AURA_CONFIG_FILE | code-analyzer-aura configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `code-analyzer.yml` |
-| SALESFORCE_CODE_ANALYZER_AURA_RULES_PATH | Path where to find linter configuration file | Workspace folder, then MegaLinter default rules |
-| SALESFORCE_CODE_ANALYZER_AURA_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
-| SALESFORCE_CODE_ANALYZER_AURA_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
-| SALESFORCE_CODE_ANALYZER_AURA_CLI_EXECUTABLE | Override CLI executable | `['sf']` |
-| SALESFORCE_DIRECTORY | Directory containing SALESFORCE files (use `any` to always activate the linter)| `force-app` |
+| Variable                                                  | Description                                                                                                                              | Default value                                   |
+|-----------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| SALESFORCE_CODE_ANALYZER_AURA_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                 |                                                 |
+| SALESFORCE_CODE_ANALYZER_AURA_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                     |                                                 |
+| SALESFORCE_CODE_ANALYZER_AURA_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with SALESFORCE_CODE_ANALYZER_AURA_CLI_LINT_MODE = project       | Exclude no file                                 |
+| SALESFORCE_CODE_ANALYZER_AURA_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`<br/>⚠️ Not available with SALESFORCE_CODE_ANALYZER_AURA_CLI_LINT_MODE = project | Exclude no file                                 |
+| SALESFORCE_CODE_ANALYZER_AURA_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `project`: Call the linter from the root of the project                                             | `project`                                       |
+| SALESFORCE_CODE_ANALYZER_AURA_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                           | None                                            |
+| SALESFORCE_CODE_ANALYZER_AURA_POST_COMMANDS               | List of bash commands to run after the linter                                                                                            | None                                            |
+| SALESFORCE_CODE_ANALYZER_AURA_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling SALESFORCE_CODE_ANALYZER_AURA and its pre/post commands                     | None                                            |
+| SALESFORCE_CODE_ANALYZER_AURA_CONFIG_FILE                 | code-analyzer-aura configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                            | `code-analyzer.yml`                             |
+| SALESFORCE_CODE_ANALYZER_AURA_RULES_PATH                  | Path where to find linter configuration file                                                                                             | Workspace folder, then MegaLinter default rules |
+| SALESFORCE_CODE_ANALYZER_AURA_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                               | `false`                                         |
+| SALESFORCE_CODE_ANALYZER_AURA_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                         | `0`                                             |
+| SALESFORCE_CODE_ANALYZER_AURA_CLI_EXECUTABLE              | Override CLI executable                                                                                                                  | `['sf']`                                        |
+| SALESFORCE_DIRECTORY                                      | Directory containing SALESFORCE files (use `any` to always activate the linter)                                                          | `force-app`                                     |
 
 ## IDE Integration
 
