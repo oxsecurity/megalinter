@@ -345,6 +345,12 @@ class Linter:
                     if os.path.isfile(f"{self.workspace}{os.path.sep}{file_to_check}"):
                         found_file = f"{self.workspace}{os.path.sep}{file_to_check}"
                     elif os.path.isfile(
+                        self.linter_rules_path + os.path.sep + file_to_check
+                    ):
+                        found_file = (
+                            self.linter_rules_path + os.path.sep + file_to_check
+                        )
+                    elif os.path.isfile(
                         f"{self.workspace}{os.path.sep}{self.linter_rules_path}{os.path.sep}{file_to_check}"
                     ):
                         found_file = (
