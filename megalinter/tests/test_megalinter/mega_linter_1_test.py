@@ -5,11 +5,12 @@ Unit tests for Megalinter class
 """
 
 import os
+import tempfile
 import unittest
 import uuid
 
 import megalinter
-from megalinter import config, utilstest
+from megalinter import config, linter_factory, utilstest, utils
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR, ML_REPO
 
 
@@ -185,6 +186,89 @@ class mega_linter_1_test(unittest.TestCase):
         self.assertIn("Linted [JAVASCRIPT] files", output)
         self.assertIn("Using [eslint", output)
         self.assertIn(".eslintrc-custom.yml", output)
+
+    def test_linter_rules_path_resolves_active_only_if_file_found(self):
+        self.before_start()
+        with tempfile.TemporaryDirectory() as tmp_workspace:
+            rules_dir = (
+                tmp_workspace + os.path.sep + ".github" + os.path.sep + "linters"
+            )
+            os.makedirs(rules_dir, exist_ok=True)
+            # Create config files for linters using active_only_if_file_found
+            with open(
+                rules_dir + os.path.sep + "ls-lint.yaml", "w", encoding="utf-8"
+            ) as f:
+                f.write("ls:\n  .js: regex:...[a-z]+\n")
+            with open(
+                rules_dir + os.path.sep + "proselint.json", "w", encoding="utf-8"
+            ) as f:
+                f.write('{"checks": {"airlinese": false}}\n')
+            with open(
+                rules_dir + os.path.sep + "vale.ini", "w", encoding="utf-8"
+            ) as f:
+                f.write("StylesPath = styles\n")
+
+            # Set custom config file names
+            config.set_value(
+                self.request_id, "REPOSITORY_LS_LINT_CONFIG_FILE", "ls-lint.yaml"
+            )
+            config.set_value(
+                self.request_id, "SPELL_PROSELINT_CONFIG_FILE", "proselint.json"
+            )
+            config.set_value(
+                self.request_id, "SPELL_VALE_CONFIG_FILE", "vale.ini"
+            )
+
+            linter_rules_path = rules_dir
+            default_rules_location = utils.get_default_rules_location()
+            base_params = {
+                "default_linter_activation": True,
+                "enable_descriptors": [],
+                "enable_linters": [],
+                "disable_descriptors": [],
+                "disable_linters": [],
+                "disable_errors_linters": [],
+                "github_workspace": tmp_workspace,
+                "workspace": tmp_workspace,
+                "linter_rules_path": linter_rules_path,
+                "default_rules_location": default_rules_location,
+                "post_linter_status": True,
+                "request_id": self.request_id,
+            }
+
+            ls_lint = linter_factory.build_linter(
+                "REPOSITORY", "ls-lint", base_params
+            )
+            self.assertTrue(
+                ls_lint.is_active,
+                "REPOSITORY_LS_LINT should be active when config exists under LINTER_RULES_PATH",
+            )
+            self.assertEqual(
+                ls_lint.config_file,
+                linter_rules_path + os.path.sep + "ls-lint.yaml",
+            )
+
+            proselint = linter_factory.build_linter(
+                "SPELL", "proselint", base_params
+            )
+            self.assertTrue(
+                proselint.is_active,
+                "SPELL_PROSELINT should be active when config exists under LINTER_RULES_PATH",
+            )
+            self.assertEqual(
+                proselint.config_file,
+                linter_rules_path + os.path.sep + "proselint.json",
+            )
+
+            vale = linter_factory.build_linter("SPELL", "vale", base_params)
+            self.assertTrue(
+                vale.is_active,
+                "SPELL_VALE should be active when config exists under LINTER_RULES_PATH",
+            )
+            self.assertEqual(
+                vale.config_file,
+                linter_rules_path + os.path.sep + "vale.ini",
+            )
 
     def test_override_linter_rules_path_remote(self):
         self.before_start()
