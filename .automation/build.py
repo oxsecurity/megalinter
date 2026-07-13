@@ -1591,23 +1591,21 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         ]
         # Files can be filtered only in cli_lint_mode is file or list_of_files
         linter_doc_md += [
-            (
-                f"| {linter.name}_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>"
-                "Ex: `(src\\|lib)`"
-                f"<br/>⚠️ Not available with {linter.name}_CLI_LINT_MODE = project "
-                if "project" in linter.supported_cli_lint_modes
-                else " " "| Include every file |"
-            ),
+            f"| {linter.name}_FILTER_REGEX_INCLUDE | "
+            "Custom regex including filter<br/>Ex: `(src\\|lib)`"
+            + (f"<br/>⚠️ Not available with {linter.name}_CLI_LINT_MODE = project "
+            if "project" in linter.supported_cli_lint_modes
+            else " ")
+            + "| Exclude no file |"
         ]
 
         linter_doc_md += [
-            (
-                f"| {linter.name}_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>"
-                "Ex: `(test\\|examples)` "
-                f"<br/>⚠️ Not available with {linter.name}_CLI_LINT_MODE = project "
-                if "project" in linter.supported_cli_lint_modes
-                else " " "| Exclude no file |"
-            ),
+            f"| {linter.name}_FILTER_REGEX_EXCLUDE | "
+            "Custom regex excluding filter<br/>Ex: `(test\\|examples)`"
+            + (f"<br/>⚠️ Not available with {linter.name}_CLI_LINT_MODE = project "
+            if "project" in linter.supported_cli_lint_modes
+            else " ")
+            + "| Exclude no file |"
         ]
         add_in_config_schema_file(
             [
@@ -1651,18 +1649,14 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         cli_lint_mode_doc_md = (
             f"| {linter.name}_CLI_LINT_MODE | Override default CLI lint mode<br/>"
         )
-        cli_lint_modes_doc_md = ""
+        cli_lint_modes_doc_md = []
         if "file" in linter.supported_cli_lint_modes:
-            cli_lint_modes_doc_md += "- `file`: Calls the linter for each file"
+            cli_lint_modes_doc_md.append("- `file`: Calls the linter for each file")
         if "list_of_files" in linter.supported_cli_lint_modes:
-            cli_lint_modes_doc_md += (
-                "- `list_of_files`: Call the linter with the list of files as argument"
-            )
+            cli_lint_modes_doc_md.append("- `list_of_files`: Call the linter with the list of files as argument")
         if "project" in linter.supported_cli_lint_modes:
-            cli_lint_modes_doc_md += (
-                "- `project`: Call the linter from the root of the project"
-            )
-        cli_lint_mode_doc_md += cli_lint_modes_doc_md.join("<br/>")
+            cli_lint_modes_doc_md.append("- `project`: Call the linter from the root of the project")
+        cli_lint_mode_doc_md += "<br/>".join(cli_lint_modes_doc_md)
         cli_lint_mode_doc_md += f" | `{linter.cli_lint_mode}` |"
         linter_doc_md += [cli_lint_mode_doc_md]
         enum = linter.supported_cli_lint_modes
