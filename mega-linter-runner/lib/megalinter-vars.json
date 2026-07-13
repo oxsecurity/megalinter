@@ -16350,7 +16350,8 @@
       "description": "POWERSHELL_POWERSHELL: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "file",
       "enum": [
-        "file"
+        "file",
+        "project"
       ],
       "category": "POWERSHELL_POWERSHELL",
       "section": "LINTER_COMMAND"
@@ -16434,7 +16435,7 @@
       "name": "POWERSHELL_POWERSHELL_FILTER_REGEX_EXCLUDE",
       "type": "string",
       "title": "POWERSHELL_POWERSHELL: Excluding Regex",
-      "description": "",
+      "description": "POWERSHELL_POWERSHELL: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with POWERSHELL_POWERSHELL_CLI_LINT_MODE = project",
       "category": "POWERSHELL_POWERSHELL",
       "section": "SCOPE"
     },
@@ -16442,7 +16443,7 @@
       "name": "POWERSHELL_POWERSHELL_FILTER_REGEX_INCLUDE",
       "type": "string",
       "title": "POWERSHELL_POWERSHELL: Including Regex",
-      "description": "",
+      "description": "POWERSHELL_POWERSHELL: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with POWERSHELL_POWERSHELL_CLI_LINT_MODE = project",
       "category": "POWERSHELL_POWERSHELL",
       "section": "SCOPE"
     },

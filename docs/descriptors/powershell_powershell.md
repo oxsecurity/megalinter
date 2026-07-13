@@ -41,9 +41,9 @@ description: How to use powershell (configure, ignore files, ignore errors, help
 |---------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------|
 | POWERSHELL_POWERSHELL_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                                     |
 | POWERSHELL_POWERSHELL_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                         |                                                                     |
-| POWERSHELL_POWERSHELL_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Exclude no file                                                     |
-| POWERSHELL_POWERSHELL_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file                                                     |
-| POWERSHELL_POWERSHELL_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file                                                                                                                  | `file`                                                              |
+| POWERSHELL_POWERSHELL_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with POWERSHELL_POWERSHELL_CLI_LINT_MODE = project                                                                   | Exclude no file                                                     |
+| POWERSHELL_POWERSHELL_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`<br/>⚠️ Not available with POWERSHELL_POWERSHELL_CLI_LINT_MODE = project                                                             | Exclude no file                                                     |
+| POWERSHELL_POWERSHELL_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project                                                    | `file`                                                              |
 | POWERSHELL_POWERSHELL_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".ps1", ".psm1", ".psd1", ".ps1xml", ".pssc", ".psrc", ".cdxml"]` |
 | POWERSHELL_POWERSHELL_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                                                  |
 | POWERSHELL_POWERSHELL_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                                                                |
@@ -83,7 +83,10 @@ This linter is available in the following flavors
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- powershell is called one time by identified file (`file` CLI lint mode)
+powershell is called once on the whole project directory (`project` CLI lint mode)
+
+- filtering can not be done using MegaLinter configuration variables,it must be done using powershell configuration or ignore file (if existing)
+- `VALIDATE_ALL_CODEBASE: false` doesn't make powershell analyze only updated files
 
 ### Example calls
 
