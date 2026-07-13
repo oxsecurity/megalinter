@@ -10,7 +10,7 @@ import unittest
 import uuid
 
 import megalinter
-from megalinter import config, linter_factory, utilstest, utils
+from megalinter import config, linter_factory, utils, utilstest
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR, ML_REPO
 
 
@@ -203,9 +203,7 @@ class mega_linter_1_test(unittest.TestCase):
                 rules_dir + os.path.sep + "proselint.json", "w", encoding="utf-8"
             ) as f:
                 f.write('{"checks": {"airlinese": false}}\n')
-            with open(
-                rules_dir + os.path.sep + "vale.ini", "w", encoding="utf-8"
-            ) as f:
+            with open(rules_dir + os.path.sep + "vale.ini", "w", encoding="utf-8") as f:
                 f.write("StylesPath = styles\n")
 
             # Set custom config file names
@@ -215,9 +213,7 @@ class mega_linter_1_test(unittest.TestCase):
             config.set_value(
                 self.request_id, "SPELL_PROSELINT_CONFIG_FILE", "proselint.json"
             )
-            config.set_value(
-                self.request_id, "SPELL_VALE_CONFIG_FILE", "vale.ini"
-            )
+            config.set_value(self.request_id, "SPELL_VALE_CONFIG_FILE", "vale.ini")
 
             linter_rules_path = rules_dir
             default_rules_location = utils.get_default_rules_location()
@@ -236,9 +232,7 @@ class mega_linter_1_test(unittest.TestCase):
                 "request_id": self.request_id,
             }
 
-            ls_lint = linter_factory.build_linter(
-                "REPOSITORY", "ls-lint", base_params
-            )
+            ls_lint = linter_factory.build_linter("REPOSITORY", "ls-lint", base_params)
             self.assertTrue(
                 ls_lint.is_active,
                 "REPOSITORY_LS_LINT should be active when config exists under LINTER_RULES_PATH",
@@ -248,9 +242,7 @@ class mega_linter_1_test(unittest.TestCase):
                 linter_rules_path + os.path.sep + "ls-lint.yaml",
             )
 
-            proselint = linter_factory.build_linter(
-                "SPELL", "proselint", base_params
-            )
+            proselint = linter_factory.build_linter("SPELL", "proselint", base_params)
             self.assertTrue(
                 proselint.is_active,
                 "SPELL_PROSELINT should be active when config exists under LINTER_RULES_PATH",
