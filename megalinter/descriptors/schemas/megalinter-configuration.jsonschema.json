@@ -19694,10 +19694,12 @@
       "default": "file",
       "description": "POWERSHELL_POWERSHELL: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
-        "file"
+        "file",
+        "project"
       ],
       "enumNames": [
-        "File"
+        "File",
+        "Project"
       ],
       "title": "POWERSHELL_POWERSHELL: CLI lint mode",
       "type": "string",
@@ -19799,7 +19801,7 @@
     },
     "POWERSHELL_POWERSHELL_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/POWERSHELL_POWERSHELL_FILTER_REGEX_EXCLUDE",
-      "description": "",
+      "description": "POWERSHELL_POWERSHELL: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with POWERSHELL_POWERSHELL_CLI_LINT_MODE = project",
       "title": "POWERSHELL_POWERSHELL: Excluding Regex",
       "type": "string",
       "x-category": "POWERSHELL_POWERSHELL",
@@ -19809,7 +19811,7 @@
     },
     "POWERSHELL_POWERSHELL_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/POWERSHELL_POWERSHELL_FILTER_REGEX_INCLUDE",
-      "description": "",
+      "description": "POWERSHELL_POWERSHELL: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with POWERSHELL_POWERSHELL_CLI_LINT_MODE = project",
       "title": "POWERSHELL_POWERSHELL: Including Regex",
       "type": "string",
       "x-category": "POWERSHELL_POWERSHELL",

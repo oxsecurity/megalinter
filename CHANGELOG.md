@@ -99,6 +99,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.96 to **0.1.97** on 2026-07-12
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.15.7 to **1.15.8** on 2026-07-12
   - [rumdl](https://github.com/rvben/rumdl) from 0.2.28 to **0.2.31** on 2026-07-12
+  - [djlint](https://djlint.com/) from 1.40.4 to **1.40.6** on 2026-07-13
+  - [prettier](https://prettier.io/) from 3.9.4 to **3.9.5** on 2026-07-13
 <!-- linter-versions-end -->
 
 ## [v9.6.0] - 2026-06-28
