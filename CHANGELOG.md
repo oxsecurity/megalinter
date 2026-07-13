@@ -98,6 +98,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rubocop](https://rubocop.org/) from 1.88.1 to **1.88.2** on 2026-07-12
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.96 to **0.1.97** on 2026-07-12
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.15.7 to **1.15.8** on 2026-07-12
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.28 to **0.2.31** on 2026-07-12
 <!-- linter-versions-end -->
 
 ## [v9.6.0] - 2026-06-28
