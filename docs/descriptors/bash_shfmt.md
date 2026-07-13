@@ -35,21 +35,21 @@ description: How to use shfmt (configure, ignore files, ignore errors, help & ve
 
 - Enable **autofixes** by adding `BASH_SHFMT` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
-| Variable                            | Description                                                                                          | Default value |
-|-------------------------------------|------------------------------------------------------------------------------------------------------|---------------|
-| BASH_SHFMT_ARGUMENTS                | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                             |               |
-| BASH_SHFMT_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"` |               |
- | Include every file |
- | Exclude no file |
-| BASH_SHFMT_CLI_LINT_MODE | Override default CLI lint mode<br/><- `file`: Calls the linter for each fileb- `file`: Calls the linter for each filer- `file`: Calls the linter for each file/- `file`: Calls the linter for each file> | `list_of_files` |
-| BASH_SHFMT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".sh", ".bash", ".dash", ".ksh"]` |
-| BASH_SHFMT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
-| BASH_SHFMT_PRE_COMMANDS | List of bash commands to run before the linter| None |
-| BASH_SHFMT_POST_COMMANDS | List of bash commands to run after the linter| None |
-| BASH_SHFMT_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling BASH_SHFMT and its pre/post commands| None |
-| BASH_SHFMT_DISABLE_ERRORS | Run linter but consider errors as warnings | `true` |
-| BASH_SHFMT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
-| BASH_SHFMT_CLI_EXECUTABLE | Override CLI executable | `['shfmt']` |
+| Variable                               | Description                                                                                                                                                                                  | Default value                       |
+|----------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------|
+| BASH_SHFMT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                     |
+| BASH_SHFMT_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                         |                                     |
+| BASH_SHFMT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Exclude no file                     |
+| BASH_SHFMT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file                     |
+| BASH_SHFMT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file                                                                                                                  | `list_of_files`                     |
+| BASH_SHFMT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".sh", ".bash", ".dash", ".ksh"]` |
+| BASH_SHFMT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                  |
+| BASH_SHFMT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                                |
+| BASH_SHFMT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None                                |
+| BASH_SHFMT_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling BASH_SHFMT and its pre/post commands                                                                                            | None                                |
+| BASH_SHFMT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `true`                              |
+| BASH_SHFMT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                 |
+| BASH_SHFMT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['shfmt']`                         |
 
 ## IDE Integration
 

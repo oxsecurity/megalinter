@@ -35,23 +35,23 @@ description: How to use revive (configure, ignore files, ignore errors, help & v
 - Enable revive by adding `GO_REVIVE` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable revive by adding `GO_REVIVE` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                           | Description                                                                                          | Default value |
-|------------------------------------|------------------------------------------------------------------------------------------------------|---------------|
-| GO_REVIVE_ARGUMENTS                | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                             |               |
-| GO_REVIVE_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"` |               |
- | Include every file |
- | Exclude no file |
-| GO_REVIVE_CLI_LINT_MODE | Override default CLI lint mode<br/><- `file`: Calls the linter for each fileb- `file`: Calls the linter for each filer- `file`: Calls the linter for each file/- `file`: Calls the linter for each file> | `list_of_files` |
-| GO_REVIVE_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".go"]` |
-| GO_REVIVE_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
-| GO_REVIVE_PRE_COMMANDS | List of bash commands to run before the linter| None |
-| GO_REVIVE_POST_COMMANDS | List of bash commands to run after the linter| None |
-| GO_REVIVE_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling GO_REVIVE and its pre/post commands| None |
-| GO_REVIVE_CONFIG_FILE | revive configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `revive.toml` |
-| GO_REVIVE_RULES_PATH | Path where to find linter configuration file | Workspace folder, then MegaLinter default rules |
-| GO_REVIVE_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
-| GO_REVIVE_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
-| GO_REVIVE_CLI_EXECUTABLE | Override CLI executable | `['revive']` |
+| Variable                              | Description                                                                                                                                                                                  | Default value                                   |
+|---------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| GO_REVIVE_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                 |
+| GO_REVIVE_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                         |                                                 |
+| GO_REVIVE_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Exclude no file                                 |
+| GO_REVIVE_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file                                 |
+| GO_REVIVE_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file                                                                                                                  | `list_of_files`                                 |
+| GO_REVIVE_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".go"]`                                       |
+| GO_REVIVE_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                              |
+| GO_REVIVE_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                                            |
+| GO_REVIVE_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None                                            |
+| GO_REVIVE_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling GO_REVIVE and its pre/post commands                                                                                             | None                                            |
+| GO_REVIVE_CONFIG_FILE                 | revive configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                            | `revive.toml`                                   |
+| GO_REVIVE_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
+| GO_REVIVE_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
+| GO_REVIVE_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
+| GO_REVIVE_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['revive']`                                    |
 
 ## IDE Integration
 
