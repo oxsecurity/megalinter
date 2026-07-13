@@ -65,15 +65,15 @@ ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.15.4
 # renovate: datasource=npm depName=eslint-plugin-prettier
 ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.6
 # renovate: datasource=npm depName=@eslint-react/eslint-plugin
-ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.13.2
+ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.14.1
 # renovate: datasource=npm depName=prettier
-ARG NPM_PRETTIER_VERSION=3.9.4
+ARG NPM_PRETTIER_VERSION=3.9.5
 # renovate: datasource=npm depName=prettyjson
 ARG NPM_PRETTYJSON_VERSION=1.2.5
 # renovate: datasource=npm depName=@typescript-eslint/eslint-plugin
-ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.62.1
+ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.63.0
 # renovate: datasource=npm depName=@typescript-eslint/parser
-ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.62.1
+ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.63.0
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 #ARG__END

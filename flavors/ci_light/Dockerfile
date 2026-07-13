@@ -16,7 +16,7 @@
 ARG CARGO_SARIF_FMT_VERSION=0.8.0
 # renovate: datasource=crate depName=shellcheck-sarif
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
-# renovate: datasource=docker depName=koalaman/shellcheck
+# renovate: datasource=docker depName=koalaman/shellcheck-alpine
 ARG BASH_SHELLCHECK_VERSION=v0.11.0
 # renovate: datasource=docker depName=mvdan/shfmt
 ARG BASH_SHFMT_VERSION=v3.13.1-alpine
@@ -27,7 +27,7 @@ ARG REPOSITORY_GITLEAKS_VERSION=v8.30.1
 # renovate: datasource=docker depName=ghcr.io/betterleaks/betterleaks
 ARG REPOSITORY_BETTERLEAKS_VERSION=v1.6.1
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.95.8
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.95.9
 #ARGTOP__END
 
 #############################################################################################
@@ -99,7 +99,7 @@ ARG NPM_PRANTLF_JSONLINT_VERSION=17.0.1
 # renovate: datasource=npm depName=v8r
 ARG NPM_V8R_VERSION=6.1.0
 # renovate: datasource=npm depName=prettier
-ARG NPM_PRETTIER_VERSION=3.9.4
+ARG NPM_PRETTIER_VERSION=3.9.5
 # renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.115.0
 # renovate: datasource=github-releases depName=loeffel-io/ls-lint extractVersion=^v(?<version>.+)$

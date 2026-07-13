@@ -17,3 +17,19 @@ provider "aws" {
 resource "aws_s3_bucket" "example" {
    bucket = "my-tf-test-bucket-${random_id.bucket_suffix.hex}"
 }
+
+module "latest" {
+  source  = "terraform-aws-modules/vpc/aws"
+}
+
+module "latest" {
+  source  = "terraform-aws-modules/vpc/aws"
+}
+
+resource "aws_s3_bucket" "too_long" {
+  bucket = "a-really-ultra-hiper-super-long-foo-bar-baz-bucket-name.domain.test"
+}
+
+resource "aws_s3_bucket" "too_long" {
+  bucket = "a-really-ultra-hiper-super-long-foo-bar-baz-bucket-name.domain.test"
+}

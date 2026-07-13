@@ -29,7 +29,7 @@ For example, define `HTML_DJLINT_ARGUMENTS: ["--profile", "django"]` to select d
 
 ## djlint documentation
 
-- Version in MegaLinter: **1.40.3**
+- Version in MegaLinter: **1.40.6**
 - Visit [Official Web Site](https://djlint.com/){target=_blank}
 - See [How to configure djlint rules](https://djlint.com/docs/configuration/){target=_blank}
 - See [How to disable djlint rules in files](https://djlint.com/docs/ignoring-code/){target=_blank}
@@ -46,8 +46,8 @@ For example, define `HTML_DJLINT_ARGUMENTS: ["--profile", "django"]` to select d
 |-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------|
 | HTML_DJLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                     |
 | HTML_DJLINT_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                     |
-| HTML_DJLINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file  |
-| HTML_DJLINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file     |
+| HTML_DJLINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with HTML_DJLINT_CLI_LINT_MODE = project                                                                                                    | Exclude no file     |
+| HTML_DJLINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`<br/>⚠️ Not available with HTML_DJLINT_CLI_LINT_MODE = project                                                                                              | Exclude no file     |
 | HTML_DJLINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`     |
 | HTML_DJLINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".html", ".htm"]` |
 | HTML_DJLINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file  |
@@ -100,7 +100,10 @@ This linter is available in the following flavors
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- djlint is called once with the list of files as arguments (`list_of_files` CLI lint mode)
+djlint is called once on the whole project directory (`project` CLI lint mode)
+
+- filtering can not be done using MegaLinter configuration variables,it must be done using djlint configuration or ignore file (if existing)
+- `VALIDATE_ALL_CODEBASE: false` doesn't make djlint analyze only updated files
 
 ### Example calls
 
@@ -196,8 +199,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=djlint
-ARG PIP_DJLINT_VERSION=1.40.3
+ARG PIP_DJLINT_VERSION=1.40.6
 ```
 
 - PIP packages (Python):
-  - [djlint==1.40.3](https://pypi.org/project/djlint/1.40.3)
+  - [djlint==1.40.6](https://pypi.org/project/djlint/1.40.6)

@@ -28,7 +28,7 @@ description: How to use prettier (configure, ignore files, ignore errors, help &
 
 ## prettier documentation
 
-- Version in MegaLinter: **3.9.4**
+- Version in MegaLinter: **3.9.5**
 - Visit [Official Web Site](https://prettier.io/){target=_blank}
 - See [How to configure prettier rules](https://prettier.io/docs/en/configuration.html){target=_blank}
 - See [How to disable prettier rules in files](https://prettier.io/docs/en/ignore.html#javascript){target=_blank}
@@ -48,8 +48,8 @@ description: How to use prettier (configure, ignore files, ignore errors, help &
 | TYPESCRIPT_DEFAULT_STYLE                        | For prettier to be active, TYPESCRIPT_DEFAULT_STYLE must be `prettier`                                                                                                                                              | `standard`                                      |
 | TYPESCRIPT_PRETTIER_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
 | TYPESCRIPT_PRETTIER_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                                                 |
-| TYPESCRIPT_PRETTIER_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
-| TYPESCRIPT_PRETTIER_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
+| TYPESCRIPT_PRETTIER_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with TYPESCRIPT_PRETTIER_CLI_LINT_MODE = project                                                                                            | Exclude no file                                 |
+| TYPESCRIPT_PRETTIER_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`<br/>⚠️ Not available with TYPESCRIPT_PRETTIER_CLI_LINT_MODE = project                                                                                      | Exclude no file                                 |
 | TYPESCRIPT_PRETTIER_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
 | TYPESCRIPT_PRETTIER_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".ts"]`                                       |
 | TYPESCRIPT_PRETTIER_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
@@ -99,7 +99,10 @@ This linter is available in the following flavors
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- prettier is called once with the list of files as arguments (`list_of_files` CLI lint mode)
+prettier is called once on the whole project directory (`project` CLI lint mode)
+
+- filtering can not be done using MegaLinter configuration variables,it must be done using prettier configuration or ignore file (if existing)
+- `VALIDATE_ALL_CODEBASE: false` doesn't make prettier analyze only updated files
 
 ### Example calls
 
@@ -254,9 +257,9 @@ Other options:
 ARG NPM_TYPESCRIPT_VERSION=6.0.3
 # Linter install
 # renovate: datasource=npm depName=prettier
-ARG NPM_PRETTIER_VERSION=3.9.4
+ARG NPM_PRETTIER_VERSION=3.9.5
 ```
 
 - NPM packages (node.js):
   - [typescript@6.0.3](https://www.npmjs.com/package/typescript/v/6.0.3)
-  - [prettier@3.9.4](https://www.npmjs.com/package/prettier/v/3.9.4)
+  - [prettier@3.9.5](https://www.npmjs.com/package/prettier/v/3.9.5)

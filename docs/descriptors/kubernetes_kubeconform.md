@@ -44,8 +44,8 @@ description: How to use kubeconform (configure, ignore files, ignore errors, hel
 |----------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
 | KUBERNETES_KUBECONFORM_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                              |
 | KUBERNETES_KUBECONFORM_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                              |
-| KUBERNETES_KUBECONFORM_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file           |
-| KUBERNETES_KUBECONFORM_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file              |
+| KUBERNETES_KUBECONFORM_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with KUBERNETES_KUBECONFORM_CLI_LINT_MODE = project                                                                                         | Exclude no file              |
+| KUBERNETES_KUBECONFORM_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`<br/>⚠️ Not available with KUBERNETES_KUBECONFORM_CLI_LINT_MODE = project                                                                                   | Exclude no file              |
 | KUBERNETES_KUBECONFORM_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`              |
 | KUBERNETES_KUBECONFORM_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".yml", ".yaml", ".json"]` |
 | KUBERNETES_KUBECONFORM_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file           |
@@ -93,7 +93,10 @@ This linter is available in the following flavors
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- kubeconform is called once with the list of files as arguments (`list_of_files` CLI lint mode)
+kubeconform is called once on the whole project directory (`project` CLI lint mode)
+
+- filtering can not be done using MegaLinter configuration variables,it must be done using kubeconform configuration or ignore file (if existing)
+- `VALIDATE_ALL_CODEBASE: false` doesn't make kubeconform analyze only updated files
 
 ### Example calls
 

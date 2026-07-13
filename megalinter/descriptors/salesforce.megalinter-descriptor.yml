@@ -12,7 +12,7 @@ install:
   dockerfile:
     - |-
       # renovate: datasource=npm depName=@salesforce/cli
-      ARG NPM_SALESFORCE_CLI_VERSION=2.141.6
+      ARG NPM_SALESFORCE_CLI_VERSION=2.142.7
     - |-
       # renovate: datasource=npm depName=@salesforce/plugin-packaging
       ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.30.1
@@ -84,7 +84,7 @@ linters:
       - "--rule-selector"
       - "pmd:Recommended"
       - "--workspace"
-      - "."
+      - .
       - --severity-threshold
       - "Moderate"
       - "--output-file"
@@ -92,6 +92,8 @@ linters:
       - "--view"
       - "table"
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
     cli_help_extra_args:
       - "code-analyzer"
       - "run"
@@ -182,7 +184,7 @@ linters:
       - "--rule-selector"
       - "eslint"
       - "--workspace"
-      - "."
+      - .
       - "--target"
       - "**/aura/**/*.js"
       - "--severity-threshold"
@@ -192,6 +194,8 @@ linters:
       - "--view"
       - "table"
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
     cli_help_extra_args:
       - "code-analyzer"
       - "run"
@@ -278,7 +282,7 @@ linters:
       - "--rule-selector"
       - "eslint:LWC"
       - "--workspace"
-      - "."
+      - .
       - "--target"
       - "**/lwc/**/*.js"
       - "--severity-threshold"
@@ -288,6 +292,8 @@ linters:
       - "--view"
       - "table"
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
     cli_help_extra_args:
       - "code-analyzer"
       - "run"
@@ -479,6 +485,8 @@ linters:
       - "--format"
       - "csv"
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
     cli_help_extra_args:
       - "scanner:run"
     cli_help_extra_commands:
@@ -579,6 +587,8 @@ linters:
       - "--format"
       - "csv"
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
     cli_help_extra_args:
       - "scanner:run"
     cli_help_extra_commands:
@@ -670,6 +680,8 @@ linters:
       - "--format"
       - "csv"
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
     cli_help_extra_args:
       - "scanner:run"
     cli_help_extra_commands:
@@ -741,6 +753,8 @@ linters:
     cli_lint_extra_args:
       - "flow:scan"
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
     cli_help_extra_args:
       - "flow:scan"
     cli_version_extra_args:

@@ -36,6 +36,13 @@ linters:
     linter_megalinter_ref_url: "no"
     config_file_name: .luacheckrc
     cli_config_arg_name: "--config"
+    cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_mode_project_extra_args_after:
+      - .
     common_linter_errors:
       - identifier: LUA_LUACHECK_ERROR_CONFIG_INVALID
         regex: "(Couldn't load configuration|Critical error: .*\\.luacheckrc|Errors? in config file)"
@@ -113,6 +120,13 @@ linters:
     linter_megalinter_ref_url: "no"
     config_file_name: selene.toml
     cli_config_arg_name: "--config"
+    cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_mode_project_extra_args_after:
+      - .
     examples:
       - "selene myfile.lua"
       - "selene --config chktexrc.toml myfile.lua"
@@ -165,8 +179,14 @@ linters:
     config_file_name: stylua.toml
     cli_config_arg_name: "--config-path"
     cli_version_arg_name: "-V"
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_extra_args:
       - "--check"
+    cli_lint_mode_project_extra_args_after:
+      - .
     examples:
       - "stylua --check myfile.lua"
       - "stylua --config-path chktexrc.toml --check myfile.lua"

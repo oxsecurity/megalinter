@@ -20,7 +20,7 @@ description: How to use ruff (configure, ignore files, ignore errors, help & ver
 
 ## ruff documentation
 
-- Version in MegaLinter: **0.15.20**
+- Version in MegaLinter: **0.15.21**
 - Visit [Official Web Site](https://github.com/astral-sh/ruff#readme){target=_blank}
 - See [How to configure ruff rules](https://docs.astral.sh/ruff/configuration/){target=_blank}
   - If custom `.ruff.toml` config file isn't found, [.ruff.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruff.toml){target=_blank} will be used
@@ -40,8 +40,8 @@ description: How to use ruff (configure, ignore files, ignore errors, help & ver
 |-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
 | PYTHON_RUFF_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
 | PYTHON_RUFF_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                                                 |
-| PYTHON_RUFF_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
-| PYTHON_RUFF_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
+| PYTHON_RUFF_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with PYTHON_RUFF_CLI_LINT_MODE = project                                                                                                    | Exclude no file                                 |
+| PYTHON_RUFF_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`<br/>⚠️ Not available with PYTHON_RUFF_CLI_LINT_MODE = project                                                                                              | Exclude no file                                 |
 | PYTHON_RUFF_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
 | PYTHON_RUFF_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".py", ".pyi", ".ipynb"]`                     |
 | PYTHON_RUFF_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
@@ -83,7 +83,10 @@ This linter is available in the following flavors
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- ruff is called once with the list of files as arguments (`list_of_files` CLI lint mode)
+ruff is called once on the whole project directory (`project` CLI lint mode)
+
+- filtering can not be done using MegaLinter configuration variables,it must be done using ruff configuration or ignore file (if existing)
+- `VALIDATE_ALL_CODEBASE: false` doesn't make ruff analyze only updated files
 
 ### Example calls
 
@@ -160,11 +163,11 @@ For help with a specific command, see: `ruff help <command>`.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.15.20
+ARG PIP_RUFF_VERSION=0.15.21
 ```
 
 - PIP packages (Python):
-  - [ruff==0.15.20](https://pypi.org/project/ruff/0.15.20)
+  - [ruff==0.15.21](https://pypi.org/project/ruff/0.15.21)
 
 ## Known errors and resolutions
 

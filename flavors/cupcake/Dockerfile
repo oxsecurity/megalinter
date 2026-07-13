@@ -22,6 +22,8 @@ ARG BASH_SHELLCHECK_VERSION=v0.11.0
 ARG CARGO_ZIZMOR_VERSION=1.25.0
 # renovate: datasource=crate depName=shellcheck-sarif
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
+# renovate: datasource=docker depName=koalaman/shellcheck-alpine
+ARG BASH_SHELLCHECK_VERSION=v0.11.0
 # renovate: datasource=docker depName=mvdan/shfmt
 ARG BASH_SHFMT_VERSION=v3.13.1-alpine
 # renovate: datasource=docker depName=hadolint/hadolint
@@ -39,7 +41,7 @@ ARG REPOSITORY_GITLEAKS_VERSION=v8.30.1
 # renovate: datasource=docker depName=ghcr.io/betterleaks/betterleaks
 ARG REPOSITORY_BETTERLEAKS_VERSION=v1.6.1
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.95.8
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.95.9
 # renovate: datasource=docker depName=lycheeverse/lychee
 ARG SPELL_LYCHEE_VERSION=0.24.2-alpine
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
@@ -166,7 +168,7 @@ ARG NPM_GRAPHQL_SCHEMA_LINTER_VERSION=3.0.1
 # renovate: datasource=npm depName=npm-groovy-lint
 ARG NPM_GROOVY_LINT_VERSION=18.0.0
 # renovate: datasource=pypi depName=djlint
-ARG PIP_DJLINT_VERSION=1.40.4
+ARG PIP_DJLINT_VERSION=1.40.6
 # renovate: datasource=npm depName=htmlhint
 ARG NPM_HTMLHINT_VERSION=1.9.2
 # renovate: datasource=github-releases depName=checkstyle/checkstyle
@@ -197,7 +199,7 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 # renovate: datasource=npm depName=standard
 ARG NPM_STANDARD_VERSION=17.1.2
 # renovate: datasource=npm depName=prettier
-ARG NPM_PRETTIER_VERSION=3.9.4
+ARG NPM_PRETTIER_VERSION=3.9.5
 # renovate: datasource=npm depName=@prantlf/jsonlint
 ARG NPM_PRANTLF_JSONLINT_VERSION=17.0.1
 # renovate: datasource=npm depName=v8r
@@ -207,7 +209,7 @@ ARG NPM_PACKAGE_JSON_LINT_VERSION=10.4.1
 # renovate: datasource=npm depName=npm-package-json-lint-config-default
 ARG NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION=9.0.1
 # renovate: datasource=npm depName=@eslint-react/eslint-plugin
-ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.13.2
+ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.14.1
 # renovate: datasource=github-tags depName=pinterest/ktlint
 ARG KTLINT_VERSION=1.8.0
 
@@ -221,7 +223,7 @@ ARG NPM_MARKDOWNLINT_CLI_VERSION=0.49.0
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.2.28
+ARG PIP_RUMDL_VERSION=0.2.32
 # renovate: datasource=packagist depName=squizlabs/php_codesniffer
 ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=4.0.1
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
@@ -313,9 +315,11 @@ ARG SWIFT_SWIFTLINT_VERSION=0.65.0
 # renovate: datasource=npm depName=prettyjson
 ARG NPM_PRETTYJSON_VERSION=1.2.5
 # renovate: datasource=npm depName=@typescript-eslint/eslint-plugin
-ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.62.1
+ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.63.0
 # renovate: datasource=npm depName=@typescript-eslint/parser
-ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.62.1
+ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.63.0
+# renovate: datasource=npm depName=typescript-eslint
+ARG NPM_TYPESCRIPT_ESLINT_VERSION=8.63.0
 # renovate: datasource=npm depName=ts-standard
 ARG NPM_TS_STANDARD_VERSION=12.0.2
 # renovate: datasource=pypi depName=yamllint
@@ -644,6 +648,7 @@ RUN npm config set prefix /usr/local \
                 prettyjson@${NPM_PRETTYJSON_VERSION} \
                 @typescript-eslint/eslint-plugin@${NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION} \
                 @typescript-eslint/parser@${NPM_TYPESCRIPT_ESLINT_PARSER_VERSION} \
+                typescript-eslint@${NPM_TYPESCRIPT_ESLINT_VERSION} \
                 ts-standard@${NPM_TS_STANDARD_VERSION} && \
     echo "Cleaning npm cache…" \
     && (npm cache clean --force || true) \

@@ -23,7 +23,7 @@ description: How to use rumdl (configure, ignore files, ignore errors, help & ve
 
 ## rumdl documentation
 
-- Version in MegaLinter: **0.2.28**
+- Version in MegaLinter: **0.2.31**
 - Visit [Official Web Site](https://github.com/rvben/rumdl#readme){target=_blank}
 - See [How to configure rumdl rules](https://github.com/rvben/rumdl/blob/main/docs/global-settings.md){target=_blank}
 - See [How to disable rumdl rules in files](https://github.com/rvben/rumdl/blob/main/docs/inline-configuration.md){target=_blank}
@@ -43,8 +43,8 @@ description: How to use rumdl (configure, ignore files, ignore errors, help & ve
 | MARKDOWN_DEFAULT_STYLE                     | For rumdl to be active, MARKDOWN_DEFAULT_STYLE must be `rumdl`                                                                                                                                                      | `markdownlint`                                  |
 | MARKDOWN_RUMDL_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
 | MARKDOWN_RUMDL_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                                                 |
-| MARKDOWN_RUMDL_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
-| MARKDOWN_RUMDL_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
+| MARKDOWN_RUMDL_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with MARKDOWN_RUMDL_CLI_LINT_MODE = project                                                                                                 | Exclude no file                                 |
+| MARKDOWN_RUMDL_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`<br/>⚠️ Not available with MARKDOWN_RUMDL_CLI_LINT_MODE = project                                                                                           | Exclude no file                                 |
 | MARKDOWN_RUMDL_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
 | MARKDOWN_RUMDL_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".md"]`                                       |
 | MARKDOWN_RUMDL_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
@@ -99,7 +99,10 @@ This linter is available in the following flavors
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- rumdl is called once with the list of files as arguments (`list_of_files` CLI lint mode)
+rumdl is called once on the whole project directory (`project` CLI lint mode)
+
+- filtering can not be done using MegaLinter configuration variables,it must be done using rumdl configuration or ignore file (if existing)
+- `VALIDATE_ALL_CODEBASE: false` doesn't make rumdl analyze only updated files
 
 ### Example calls
 
@@ -153,8 +156,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.2.28
+ARG PIP_RUMDL_VERSION=0.2.31
 ```
 
 - PIP packages (Python):
-  - [rumdl==0.2.28](https://pypi.org/project/rumdl/0.2.28)
+  - [rumdl==0.2.31](https://pypi.org/project/rumdl/0.2.31)

@@ -16,7 +16,7 @@
 ARG CARGO_SARIF_FMT_VERSION=0.8.0
 # renovate: datasource=crate depName=shellcheck-sarif
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
-# renovate: datasource=docker depName=koalaman/shellcheck
+# renovate: datasource=docker depName=koalaman/shellcheck-alpine
 ARG BASH_SHELLCHECK_VERSION=v0.11.0
 # renovate: datasource=docker depName=hadolint/hadolint
 ARG DOCKERFILE_HADOLINT_VERSION=v2.14.0-alpine
@@ -31,7 +31,7 @@ ARG REPOSITORY_GITLEAKS_VERSION=v8.30.1
 # renovate: datasource=docker depName=ghcr.io/betterleaks/betterleaks
 ARG REPOSITORY_BETTERLEAKS_VERSION=v1.6.1
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.95.8
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.95.9
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
 ARG TERRAFORM_TFLINT_VERSION=0.63.1
 # renovate: datasource=docker depName=alpine/terragrunt

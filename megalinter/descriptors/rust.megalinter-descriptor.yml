@@ -33,6 +33,8 @@ linters:
     cli_config_arg_name: ""
     cli_executable: cargo-clippy
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
     examples:
       - "cargo-clippy"
     install:

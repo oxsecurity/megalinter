@@ -30,6 +30,9 @@ linters:
     linter_rules_configuration_url: https://github.com/amaloz/dotfiles/blob/master/chktexrc
     linter_rules_inline_disable_url: https://www.nongnu.org/chktex/
     config_file_name: .chktexrc
+    cli_lint_mode: file
+    supported_cli_lint_modes:
+      - file
     cli_lint_extra_args:
       - "-q"
     cli_config_arg_name: "-l"

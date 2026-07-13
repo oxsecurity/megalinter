@@ -35,12 +35,18 @@ linters:
     config_file_name: ".prettierrc.json"
     cli_config_arg_name: "--config"
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: "\\[error\\]"
     cli_lint_warnings_count: regex_count
     cli_lint_warnings_regex: "\\[warn\\]"
     cli_lint_extra_args:
       - "--check"
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_lint_fix_arg_name: "--write"
     cli_lint_fix_remove_args:
       - "--check"
@@ -52,7 +58,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=prettier
-          ARG NPM_PRETTIER_VERSION=3.9.4
+          ARG NPM_PRETTIER_VERSION=3.9.5
       npm:
         - "prettier@${NPM_PRETTIER_VERSION}"
     supported_platforms:
@@ -111,9 +117,15 @@ linters:
     linter_megalinter_ref_url: "no"
     config_file_name: ".yamllint.yml"
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_extra_args:
       - --format
       - standard
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: "[0-9]+:[0-9]+:?\\s*(?:\\[?warning\\]?|\\[?error\\]?)|(?:::warning file=|::error file=)"
     common_linter_errors:
@@ -170,8 +182,14 @@ linters:
     config_file_name: ".v8rrc.yml"
     cli_config_arg_name: ""
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_extra_args:
       - "--ignore-errors"
+    cli_lint_mode_project_extra_args_after:
+      - "**/*.{yml,yaml}"
     cli_help_arg_name: "--help"
     test_folder: yaml_schema
     examples:

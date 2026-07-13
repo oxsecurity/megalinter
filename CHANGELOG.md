@@ -13,6 +13,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Core
 
   - Add `ENABLE_DISABLE_LINTERS_PRIORITY` variable to let `DISABLE_LINTERS` override `ENABLE_LINTERS` when a linter is in both lists (e.g. to trim an inherited `ENABLE_LINTERS` list via `EXTENDS`), fixes [#8296](https://github.com/oxsecurity/megalinter/issues/8296)
+  - Add `supported_cli_lint_modes` descriptor property to declare which CLI lint modes (`file`, `list_of_files`, `project`) each linter supports, generate `success`/`failure` tests for every supported mode, and reject a `<LINTER>_CLI_LINT_MODE` override targeting an unsupported mode with an explicit error, fixes [#7120](https://github.com/oxsecurity/megalinter/issues/7120)
 
 - New linters
 
@@ -32,11 +33,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Fixes
 
+  - Write `REPOSITORY_CHECKOV`'s transient GitHub-config scan directory (`branch_protection_rules.json` and similar) to a hidden `.checkov-github-conf` subfolder of the MegaLinter report folder instead of the repository root, so the artifact stays out of the linted tree (gitignored, excluded from file discovery, and skipped by project-mode linters), extending the earlier ansible-lint race-condition fix (#8092)
   - Make remote configuration loading resilient to transient network failures by adding a request timeout and bounded retries with backoff when fetching `MEGALINTER_CONFIG` and `EXTENDS` files over HTTP (fixes intermittent `config_test` failures caused by `raw.githubusercontent.com` CDN cache lag)
   - Disable `TERRAFORM_TERRASCAN` (upstream repo archived by Tenable, unmaintained) and `SQL_TSQLLINT` (no upstream release since 2024-09), as both ship unpatched CVEs with no prospect of a fixed release
   - Fix `SARIF_TO_HUMAN` producing empty linter logs when the bundled `sarif-fmt` binary crashes by building it from source on Alpine and falling back to raw SARIF on conversion failure (#8294)
   - Keep the Docker Pulls badge in `docs/index.md` in sync by having `docker_stats.py` also update the hardcoded badge total in `.automation/build.py`
   - Fix outdated links in `docs/descriptors/repository_kingfisher.md`
+  - Fix `LINTER_RULES_PATH` not being used to resolve config files for linters using `active_only_if_file_found` (e.g. `REPOSITORY_LS_LINT`, `SPELL_PROSELINT`, `SPELL_VALE`), fixes [#8416](https://github.com/oxsecurity/megalinter/issues/8416)
 
 - Reporters
 
@@ -86,6 +89,21 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 2.2.4 to **2.2.5** on 2026-07-05
   - [secretlint](https://github.com/secretlint/secretlint) from 11.7.1 to **13.0.2** on 2026-07-05
   - [proselint](https://github.com/amperser/proselint) from 0.14.0 to **0.16.0** on 2026-07-05
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.44.1 to **0.45.6** on 2026-07-12
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.52.1 to **1.53.0** on 2026-07-12
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 5.0.11 to **5.0.12** on 2026-07-12
+  - [djlint](https://djlint.com/) from 1.40.3 to **1.40.4** on 2026-07-12
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.11 to **3.95.13** on 2026-07-12
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.20 to **0.15.21** on 2026-07-12
+  - [ruff](https://github.com/astral-sh/ruff) from 0.15.20 to **0.15.21** on 2026-07-12
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.105.0 to **1.106.0** on 2026-07-12
+  - [semgrep](https://semgrep.dev/) from 1.168.0 to **1.169.0** on 2026-07-12
+  - [rubocop](https://rubocop.org/) from 1.88.1 to **1.88.2** on 2026-07-12
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.96 to **0.1.97** on 2026-07-12
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.15.7 to **1.15.8** on 2026-07-12
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.28 to **0.2.31** on 2026-07-12
+  - [djlint](https://djlint.com/) from 1.40.4 to **1.40.6** on 2026-07-13
+  - [prettier](https://prettier.io/) from 3.9.4 to **3.9.5** on 2026-07-13
 <!-- linter-versions-end -->
 
 ## [v9.6.0] - 2026-06-28

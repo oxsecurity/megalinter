@@ -27,7 +27,7 @@ description: How to use rubocop (configure, ignore files, ignore errors, help & 
 
 ## rubocop documentation
 
-- Version in MegaLinter: **1.88.1**
+- Version in MegaLinter: **1.88.2**
 - Visit [Official Web Site](https://rubocop.org/){target=_blank}
 - See [How to configure rubocop rules](https://docs.rubocop.org/rubocop/configuration.html){target=_blank}
   - If custom `.ruby-lint.yml` config file isn't found, [.ruby-lint.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruby-lint.yml){target=_blank} will be used
@@ -43,23 +43,23 @@ description: How to use rubocop (configure, ignore files, ignore errors, help & 
 
 - Enable **autofixes** by adding `RUBY_RUBOCOP` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
-| Variable                                 | Description                                                                                                                                                                                  | Default value                                   |
-|------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| RUBY_RUBOCOP_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                 |
-| RUBY_RUBOCOP_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                         |                                                 |
-| RUBY_RUBOCOP_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file                              |
-| RUBY_RUBOCOP_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file                                 |
-| RUBY_RUBOCOP_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project                                                    | `file`                                          |
-| RUBY_RUBOCOP_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".rb"]`                                       |
-| RUBY_RUBOCOP_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                              |
-| RUBY_RUBOCOP_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                                            |
-| RUBY_RUBOCOP_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None                                            |
-| RUBY_RUBOCOP_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling RUBY_RUBOCOP and its pre/post commands                                                                                          | None                                            |
-| RUBY_RUBOCOP_CONFIG_FILE                 | rubocop configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                           | `.ruby-lint.yml`                                |
-| RUBY_RUBOCOP_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
-| RUBY_RUBOCOP_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
-| RUBY_RUBOCOP_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
-| RUBY_RUBOCOP_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['rubocop']`                                   |
+| Variable                                 | Description                                                                                                                                                                                                         | Default value                                   |
+|------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| RUBY_RUBOCOP_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
+| RUBY_RUBOCOP_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                                                 |
+| RUBY_RUBOCOP_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with RUBY_RUBOCOP_CLI_LINT_MODE = project                                                                                                   | Exclude no file                                 |
+| RUBY_RUBOCOP_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`<br/>⚠️ Not available with RUBY_RUBOCOP_CLI_LINT_MODE = project                                                                                             | Exclude no file                                 |
+| RUBY_RUBOCOP_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
+| RUBY_RUBOCOP_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".rb"]`                                       |
+| RUBY_RUBOCOP_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
+| RUBY_RUBOCOP_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
+| RUBY_RUBOCOP_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
+| RUBY_RUBOCOP_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling RUBY_RUBOCOP and its pre/post commands                                                                                                                 | None                                            |
+| RUBY_RUBOCOP_CONFIG_FILE                 | rubocop configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                  | `.ruby-lint.yml`                                |
+| RUBY_RUBOCOP_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
+| RUBY_RUBOCOP_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
+| RUBY_RUBOCOP_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| RUBY_RUBOCOP_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['rubocop']`                                   |
 
 ## IDE Integration
 
@@ -94,7 +94,10 @@ This linter is available in the following flavors
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- rubocop is called one time by identified file (`file` CLI lint mode)
+rubocop is called once on the whole project directory (`project` CLI lint mode)
+
+- filtering can not be done using MegaLinter configuration variables,it must be done using rubocop configuration or ignore file (if existing)
+- `VALIDATE_ALL_CODEBASE: false` doesn't make rubocop analyze only updated files
 
 ### Example calls
 
@@ -312,13 +315,13 @@ Profiling Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=rubygems depName=rubocop
-ARG GEM_RUBOCOP_VERSION=1.88.1
+ARG GEM_RUBOCOP_VERSION=1.88.2
 # renovate: datasource=rubygems depName=rubocop-github
 ARG GEM_RUBOCOP_GITHUB_VERSION=0.27.0
 # renovate: datasource=rubygems depName=rubocop-performance
 ARG GEM_RUBOCOP_PERFORMANCE_VERSION=1.26.1
 # renovate: datasource=rubygems depName=rubocop-rails
-ARG GEM_RUBOCOP_RAILS_VERSION=2.35.5
+ARG GEM_RUBOCOP_RAILS_VERSION=2.36.0
 # renovate: datasource=rubygems depName=rubocop-rake
 ARG GEM_RUBOCOP_RAKE_VERSION=0.7.1
 # renovate: datasource=rubygems depName=rubocop-rspec
@@ -326,10 +329,10 @@ ARG GEM_RUBOCOP_RSPEC_VERSION=3.10.2
 ```
 
 - GEM packages (Ruby) :
-  - [rubocop:1.88.1](https://rubygems.org/gems/rubocop/versions/1.88.1)
+  - [rubocop:1.88.2](https://rubygems.org/gems/rubocop/versions/1.88.2)
   - [rubocop-github:0.27.0](https://rubygems.org/gems/rubocop-github/versions/0.27.0)
   - [rubocop-performance:1.26.1](https://rubygems.org/gems/rubocop-performance/versions/1.26.1)
-  - [rubocop-rails:2.35.5](https://rubygems.org/gems/rubocop-rails/versions/2.35.5)
+  - [rubocop-rails:2.36.0](https://rubygems.org/gems/rubocop-rails/versions/2.36.0)
   - [rubocop-rake:0.7.1](https://rubygems.org/gems/rubocop-rake/versions/0.7.1)
   - [rubocop-rspec:3.10.2](https://rubygems.org/gems/rubocop-rspec/versions/3.10.2)
 

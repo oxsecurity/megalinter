@@ -34,6 +34,10 @@ linters:
     active_only_if_file_found:
       - .sqlfluff
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_fix_arg_name: fix
     cli_lint_fix_remove_args:
       - lint
@@ -120,6 +124,12 @@ linters:
     linter_rules_inline_disable_url: https://github.com/tsqllint/tsqllint#disabling-rules-with-inline-comments
     config_file_name: ".tsqllintrc"
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "([0-9]+) Errors"
     cli_lint_warnings_count: regex_number
