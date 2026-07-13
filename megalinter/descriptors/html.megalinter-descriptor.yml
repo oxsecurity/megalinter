@@ -47,7 +47,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=djlint
-          ARG PIP_DJLINT_VERSION=1.40.4
+          ARG PIP_DJLINT_VERSION=1.40.6
       pip:
         - djlint==${PIP_DJLINT_VERSION}
     supported_platforms:
