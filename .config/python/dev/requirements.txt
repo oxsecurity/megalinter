@@ -4,7 +4,7 @@ aiohttp==3.14.1
 beautifulsoup4==4.15.0
 commentjson==0.9.0
 fastapi==0.139.0
-gitpython==3.1.50
+gitpython==3.1.51
 giturlparse==0.15.0
 importlib-metadata==9.0.0
 json-schema-for-humans==1.5.1
