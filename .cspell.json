@@ -245,6 +245,9 @@
         "yallist",
         "yocto-queue"
     ],
+    "ignoreRegExpList": [
+        "<br\\s*/?>"
+    ],
     "language": "en,en-GB",
     "noConfigSearch": true,
     "version": "0.2",
