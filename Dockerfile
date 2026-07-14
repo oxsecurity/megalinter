@@ -1184,6 +1184,11 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOS
 # RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
 #     && (npm cache clean --force || true) \
 #     && rm -rf /root/.npm/_cacache
+# code-analyzer-flow installation
+# Next line commented because already managed by another linter
+# RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
+#     && (npm cache clean --force || true) \
+#     && rm -rf /root/.npm/_cacache
 # scalafix installation
     && ./coursier install scalafix:${SCALA_SCALAFIX_VERSION} --quiet --install-dir /usr/bin && rm -rf /root/.cache \
 # snakemake installation

@@ -1,0 +1,22 @@
+# ======================================================================
+# CODE ANALYZER CONFIGURATION - FLOW SCANNER ENGINE
+# Used by MegaLinter's SALESFORCE_CODE_ANALYZER_FLOW linter.
+# To learn more about this configuration, visit:
+#   https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/config-custom.html
+# ======================================================================
+# Level at which to log messages to log files.
+# Possible values are:
+#   1 or 'Error' - Includes only error messages in the log.
+#   2 or 'Warn' - Includes warning and error messages in the log.
+#   3 or 'Info' - Includes informative, warning, and error messages in the log.
+#   4 or 'Debug' - Includes debug, informative, warning, and error messages in the log.
+#   5 or 'Fine' - Includes fine detail, debug, informative, warning, and error messages in the log.
+log_level: 4
+
+# The flow linter only selects rules from the 'flow' engine (--rule-selector flow).
+# PMD is disabled so its Apex custom ruleset (apex-pmd-ruleset.xml) is not required
+# in the analyzed workspace; otherwise Code Analyzer fails to instantiate PMD during
+# rule selection and reports a Critical pmd:UninstantiableEngineError.
+engines:
+  pmd:
+    disable_engine: true
