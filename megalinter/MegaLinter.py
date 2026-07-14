@@ -932,13 +932,40 @@ class Megalinter:
             logging.warning("Using fallback without merge-base...")
             diff = repo.git.diff(default_branch_remote, name_only=True)
         logging.info(f"Modified files:\n{diff}")
+        # Prune files located inside excluded directories so that
+        # EXCLUDED_DIRECTORIES / ADDITIONAL_EXCLUDED_DIRECTORIES behave the
+        # same in changed-files mode as in full-codebase mode (see #8360).
+        excluded_directories = self._normalize_excluded_directories(
+            utils.get_excluded_directories(self.request_id)
+        )
         all_files = list()
         for diff_line in diff.splitlines():
+            if self._is_in_excluded_directory(diff_line, excluded_directories):
+                continue
             if os.path.isfile(
                 self.workspace + os.path.sep + diff_line
             ) and not os.path.islink(self.workspace + os.path.sep + diff_line):
                 all_files += [diff_line]
         return all_files
+
+    def _is_excluded_dir(self, rel_dir_path, excluded_directories):
+        # Single source of truth for directory-exclusion matching, shared by
+        # full-codebase (os.walk) and changed-files (git diff) modes: a
+        # directory matches by its basename at any nesting level, or by its
+        # workspace-relative path.
+        rel_dir_path = rel_dir_path.replace("\\", "/")
+        basename = rel_dir_path.rsplit("/", 1)[-1]
+        return basename in excluded_directories or rel_dir_path in excluded_directories
+
+    def _is_in_excluded_directory(self, rel_file, excluded_directories):
+        # Return True when any ancestor directory of rel_file is excluded.
+        parts = rel_file.replace("\\", "/").split("/")[:-1]
+        progressive = ""
+        for part in parts:
+            progressive = f"{progressive}/{part}" if progressive else part
+            if self._is_excluded_dir(progressive, excluded_directories):
+                return True
+        return False
 
     def _normalize_excluded_directories(self, excluded_directories):
         # Convert absolute paths located inside the workspace into
@@ -982,11 +1009,14 @@ class Megalinter:
             dirnames[:] = [
                 d
                 for d in dirnames
-                if d not in excluded_directories
-                and os.path.join(rel_dirpath, d).replace(".\\", "").replace("./", "")
-                not in excluded_directories
+                if not self._is_excluded_dir(
+                    os.path.join(rel_dirpath, d).replace(".\\", "").replace("./", ""),
+                    excluded_directories,
+                )
             ]
-            if rel_dirpath != "." and rel_dirpath in excluded_directories:
+            if rel_dirpath != "." and self._is_excluded_dir(
+                rel_dirpath, excluded_directories
+            ):
                 continue
             all_files += [
                 os.path.relpath(os.path.join(dirpath, file), self.workspace)
