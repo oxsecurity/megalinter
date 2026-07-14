@@ -106,6 +106,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [prettier](https://prettier.io/) from 3.9.4 to **3.9.5** on 2026-07-13
   - [rumdl](https://github.com/rvben/rumdl) from 0.2.31 to **0.2.32** on 2026-07-13
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.95.8 to **3.95.9** on 2026-07-13
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.45.6 to **0.45.15** on 2026-07-14
+  - [eslint](https://eslint.org) from 10.6.0 to **10.7.0** on 2026-07-14
 <!-- linter-versions-end -->
 
 ## [v9.6.0] - 2026-06-28
