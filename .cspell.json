@@ -22,6 +22,11 @@
         ".lycheeignore"
     ],
     "ignoreWords": [
+        "argumentb",
+        "argumentr",
+        "fileb",
+        "projectb",
+        "projectr",
         "AKIAIOSFODNN",
         "ARGTOP",
         "AROA47DSWDEZA3",
@@ -1524,6 +1529,8 @@
         "subcharts",
         "SUBCOMMAND",
         "subdir",
+        "subflow",
+        "subflows",
         "sublack",
         "Sublicensing",
         "submodules",
@@ -1735,6 +1742,7 @@
         "YOURBRANCH",
         "YOURORGNAME",
         "YOURUSERNAME",
+        "ython",
         "yxtay",
         "zaach",
         "zavoloklom",

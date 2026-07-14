@@ -17,6 +17,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - New linters
 
+  - Add [SALESFORCE_CODE_ANALYZER_FLOW](https://megalinter.io/beta/descriptors/salesforce_code_analyzer_flow/), the Salesforce Code Analyzer v5 Flow Scanner engine that audits Salesforce Flows for security issues
+
 - Disabled linters
 
 - Re-enabled linters
@@ -37,6 +39,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Fix `SARIF_TO_HUMAN` producing empty linter logs when the bundled `sarif-fmt` binary crashes by building it from source on Alpine and falling back to raw SARIF on conversion failure (#8294)
   - Keep the Docker Pulls badge in `docs/index.md` in sync by having `docker_stats.py` also update the hardcoded badge total in `.automation/build.py`
   - Fix outdated links in `docs/descriptors/repository_kingfisher.md`
+  - Fix `LINTER_RULES_PATH` not being used to resolve config files for linters using `active_only_if_file_found` (e.g. `REPOSITORY_LS_LINT`, `SPELL_PROSELINT`, `SPELL_VALE`), fixes [#8416](https://github.com/oxsecurity/megalinter/issues/8416)
 
 - Reporters
 
@@ -99,6 +102,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.96 to **0.1.97** on 2026-07-12
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.15.7 to **1.15.8** on 2026-07-12
   - [rumdl](https://github.com/rvben/rumdl) from 0.2.28 to **0.2.31** on 2026-07-12
+  - [djlint](https://djlint.com/) from 1.40.4 to **1.40.6** on 2026-07-13
+  - [prettier](https://prettier.io/) from 3.9.4 to **3.9.5** on 2026-07-13
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.31 to **0.2.32** on 2026-07-13
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.95.8 to **3.95.9** on 2026-07-13
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.45.6 to **0.45.15** on 2026-07-14
+  - [eslint](https://eslint.org) from 10.6.0 to **10.7.0** on 2026-07-14
 <!-- linter-versions-end -->
 
 ## [v9.6.0] - 2026-06-28

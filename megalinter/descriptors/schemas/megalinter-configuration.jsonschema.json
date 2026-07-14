@@ -403,6 +403,7 @@
         "R_LINTR",
         "SALESFORCE_CODE_ANALYZER_APEX",
         "SALESFORCE_CODE_ANALYZER_AURA",
+        "SALESFORCE_CODE_ANALYZER_FLOW",
         "SALESFORCE_CODE_ANALYZER_LWC",
         "SALESFORCE_LIGHTNING_FLOW_SCANNER",
         "SALESFORCE_SFDX_SCANNER_APEX",
@@ -19694,10 +19695,12 @@
       "default": "file",
       "description": "POWERSHELL_POWERSHELL: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
-        "file"
+        "file",
+        "project"
       ],
       "enumNames": [
-        "File"
+        "File",
+        "Project"
       ],
       "title": "POWERSHELL_POWERSHELL: CLI lint mode",
       "type": "string",
@@ -19799,7 +19802,7 @@
     },
     "POWERSHELL_POWERSHELL_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/POWERSHELL_POWERSHELL_FILTER_REGEX_EXCLUDE",
-      "description": "",
+      "description": "POWERSHELL_POWERSHELL: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with POWERSHELL_POWERSHELL_CLI_LINT_MODE = project",
       "title": "POWERSHELL_POWERSHELL: Excluding Regex",
       "type": "string",
       "x-category": "POWERSHELL_POWERSHELL",
@@ -19809,7 +19812,7 @@
     },
     "POWERSHELL_POWERSHELL_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/POWERSHELL_POWERSHELL_FILTER_REGEX_INCLUDE",
-      "description": "",
+      "description": "POWERSHELL_POWERSHELL: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with POWERSHELL_POWERSHELL_CLI_LINT_MODE = project",
       "title": "POWERSHELL_POWERSHELL: Including Regex",
       "type": "string",
       "x-category": "POWERSHELL_POWERSHELL",
@@ -29107,6 +29110,203 @@
       "title": "SALESFORCE_CODE_ANALYZER_AURA: Unsecured env variables",
       "type": "array",
       "x-category": "SALESFORCE_CODE_ANALYZER_AURA",
+      "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
+      "x-order": 600000,
+      "x-section": "SECURITY"
+    },
+    "SALESFORCE_CODE_ANALYZER_FLOW_ARGUMENTS": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_FLOW_ARGUMENTS",
+      "description": "SALESFORCE_CODE_ANALYZER_FLOW: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_CODE_ANALYZER_FLOW: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ],
+      "x-category": "SALESFORCE_CODE_ANALYZER_FLOW",
+      "x-order": 200020,
+      "x-section": "LINTER_COMMAND"
+    },
+    "SALESFORCE_CODE_ANALYZER_FLOW_CLI_EXECUTABLE": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_FLOW_CLI_EXECUTABLE",
+      "default": [
+        [
+          "sf"
+        ]
+      ],
+      "description": "SALESFORCE_CODE_ANALYZER_FLOW: Override CLI executable used to build the linter command line (rarely needed)",
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_CODE_ANALYZER_FLOW: CLI Executable",
+      "type": "array",
+      "x-category": "SALESFORCE_CODE_ANALYZER_FLOW",
+      "x-order": 200060,
+      "x-section": "LINTER_COMMAND"
+    },
+    "SALESFORCE_CODE_ANALYZER_FLOW_CLI_LINT_MODE": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_FLOW_CLI_LINT_MODE",
+      "default": "project",
+      "description": "SALESFORCE_CODE_ANALYZER_FLOW: Override default CLI lint mode used to call the linter (rarely needed)",
+      "enum": [
+        "file"
+      ],
+      "enumNames": [
+        "File"
+      ],
+      "title": "SALESFORCE_CODE_ANALYZER_FLOW: CLI lint mode",
+      "type": "string",
+      "x-category": "SALESFORCE_CODE_ANALYZER_FLOW",
+      "x-doc-key": "config-cli-lint-mode",
+      "x-order": 200050,
+      "x-section": "LINTER_COMMAND"
+    },
+    "SALESFORCE_CODE_ANALYZER_FLOW_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_FLOW_COMMAND_REMOVE_ARGUMENTS",
+      "description": "SALESFORCE_CODE_ANALYZER_FLOW: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_CODE_ANALYZER_FLOW: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ],
+      "x-category": "SALESFORCE_CODE_ANALYZER_FLOW",
+      "x-order": 200020,
+      "x-section": "LINTER_COMMAND"
+    },
+    "SALESFORCE_CODE_ANALYZER_FLOW_CONFIG_FILE": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_FLOW_CONFIG_FILE",
+      "default": "code-analyzer-flow.yml",
+      "description": "SALESFORCE_CODE_ANALYZER_FLOW: User custom config file name if different from default",
+      "title": "SALESFORCE_CODE_ANALYZER_FLOW: Custom config file name",
+      "type": "string",
+      "x-category": "SALESFORCE_CODE_ANALYZER_FLOW",
+      "x-order": 200010,
+      "x-section": "LINTER_COMMAND"
+    },
+    "SALESFORCE_CODE_ANALYZER_FLOW_DIRECTORY": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_FLOW_DIRECTORY",
+      "default": "force-app",
+      "description": "Directory that must be found to activate linter. Use value \"any\" to always activate",
+      "title": "SALESFORCE_CODE_ANALYZER_FLOW: Directory containing SALESFORCE files",
+      "type": "string",
+      "x-category": "SALESFORCE_CODE_ANALYZER_FLOW",
+      "x-order": 100000,
+      "x-section": "ACTIVATION"
+    },
+    "SALESFORCE_CODE_ANALYZER_FLOW_DISABLE_ERRORS": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_FLOW_DISABLE_ERRORS",
+      "default": false,
+      "description": "SALESFORCE_CODE_ANALYZER_FLOW: If true, SALESFORCE_CODE_ANALYZER_FLOW doesn't make MegaLinter fail even if errors are found",
+      "title": "SALESFORCE_CODE_ANALYZER_FLOW: Disable errors",
+      "type": "boolean",
+      "x-category": "SALESFORCE_CODE_ANALYZER_FLOW",
+      "x-order": 400000,
+      "x-section": "ERRORS"
+    },
+    "SALESFORCE_CODE_ANALYZER_FLOW_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_FLOW_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "description": "SALESFORCE_CODE_ANALYZER_FLOW: If the number of errors found is less than this value, SALESFORCE_CODE_ANALYZER_FLOW doesn't make MegaLinter fail",
+      "title": "SALESFORCE_CODE_ANALYZER_FLOW: Maximum number of errors allowed",
+      "type": "number",
+      "x-category": "SALESFORCE_CODE_ANALYZER_FLOW",
+      "x-order": 400010,
+      "x-section": "ERRORS"
+    },
+    "SALESFORCE_CODE_ANALYZER_FLOW_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_FLOW_FILTER_REGEX_EXCLUDE",
+      "description": "",
+      "title": "SALESFORCE_CODE_ANALYZER_FLOW: Excluding Regex",
+      "type": "string",
+      "x-category": "SALESFORCE_CODE_ANALYZER_FLOW",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "SALESFORCE_CODE_ANALYZER_FLOW_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_FLOW_FILTER_REGEX_INCLUDE",
+      "description": "",
+      "title": "SALESFORCE_CODE_ANALYZER_FLOW: Including Regex",
+      "type": "string",
+      "x-category": "SALESFORCE_CODE_ANALYZER_FLOW",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
+    },
+    "SALESFORCE_CODE_ANALYZER_FLOW_POST_COMMANDS": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_FLOW_POST_COMMANDS",
+      "description": "SALESFORCE_CODE_ANALYZER_FLOW: Define bash commands to run after running SALESFORCE_CODE_ANALYZER_FLOW",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "SALESFORCE_CODE_ANALYZER_FLOW: Post-run commands",
+      "type": "array",
+      "x-category": "SALESFORCE_CODE_ANALYZER_FLOW",
+      "x-order": 500010,
+      "x-section": "PREPOSTCOMMANDS"
+    },
+    "SALESFORCE_CODE_ANALYZER_FLOW_PRE_COMMANDS": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_FLOW_PRE_COMMANDS",
+      "description": "SALESFORCE_CODE_ANALYZER_FLOW: Define bash commands to run before running SALESFORCE_CODE_ANALYZER_FLOW",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "SALESFORCE_CODE_ANALYZER_FLOW: Pre-run commands",
+      "type": "array",
+      "x-category": "SALESFORCE_CODE_ANALYZER_FLOW",
+      "x-order": 500000,
+      "x-section": "PREPOSTCOMMANDS"
+    },
+    "SALESFORCE_CODE_ANALYZER_FLOW_RULES_PATH": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_FLOW_RULES_PATH",
+      "description": "SALESFORCE_CODE_ANALYZER_FLOW: Path where to find linter configuration file",
+      "title": "SALESFORCE_CODE_ANALYZER_FLOW: Custom config file path",
+      "type": "string",
+      "x-category": "SALESFORCE_CODE_ANALYZER_FLOW",
+      "x-order": 200040,
+      "x-section": "LINTER_COMMAND"
+    },
+    "SALESFORCE_CODE_ANALYZER_FLOW_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_FLOW_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling SALESFORCE_CODE_ANALYZER_FLOW and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_CODE_ANALYZER_FLOW: Unsecured env variables",
+      "type": "array",
+      "x-category": "SALESFORCE_CODE_ANALYZER_FLOW",
       "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
       "x-order": 600000,
       "x-section": "SECURITY"
