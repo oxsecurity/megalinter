@@ -55,7 +55,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=10.6.0
+ARG NPM_ESLINT_VERSION=10.7.0
 # renovate: datasource=npm depName=@eslint-react/eslint-plugin
 ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.14.1
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
