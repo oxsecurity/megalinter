@@ -5,7 +5,7 @@ repo_url: https://github.com/oxsecurity/megalinter
 edit_uri: tree/main/docs
 site_author: Nicolas Vuillamy
 # site_description-start
-site_description: MegaLinter is an open-source tool for CI/CD workflows that analyzes the consistency of your code, IaC, configuration, and scripts in your repository to ensure all your project sources are clean and formatted, no matter which IDE or toolbox is used by your developers. Powered by OX Security.Supports 62 languages, 21 formats, 19 tooling formats, and is ready to use out of the box as a GitHub Action or with any CI system. It is highly configurable and free for all uses.MegaLinter has native integrations with many major CI/CD tools.
+site_description: MegaLinter is an open-source tool for CI/CD workflows that analyzes the consistency of your code, IaC, configuration, and scripts in your repository to ensure all your project sources are clean and formatted, no matter which IDE or toolbox is used by your developers. Powered by OX Security.Supports 63 languages, 21 formats, 19 tooling formats, and is ready to use out of the box as a GitHub Action or with any CI system. It is highly configurable and free for all uses.MegaLinter has native integrations with many major CI/CD tools.
 # site_description-end
 copyright: Copyright &copy; 2024 <a href="https://www.ox.security/?ref=megalinter" target= "_blank">OX Security</a> &amp; <a href="https://github.com/nvuillam" target="_blank">Nicolas Vuillamy</a>
 theme:
@@ -194,6 +194,7 @@ nav:
               - "code-analyzer-apex": "descriptors/salesforce_code_analyzer_apex.md"
               - "code-analyzer-aura": "descriptors/salesforce_code_analyzer_aura.md"
               - "code-analyzer-lwc": "descriptors/salesforce_code_analyzer_lwc.md"
+              - "code-analyzer-flow": "descriptors/salesforce_code_analyzer_flow.md"
               - "sfdx-scanner-apex": "descriptors/salesforce_sfdx_scanner_apex.md"
               - "sfdx-scanner-aura": "descriptors/salesforce_sfdx_scanner_aura.md"
               - "sfdx-scanner-lwc": "descriptors/salesforce_sfdx_scanner_lwc.md"
