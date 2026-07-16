@@ -38,6 +38,19 @@ class TfLintLinter(megalinter.Linter):
             self.pre_commands = []
         self.pre_commands.append(tflint_pre_command)
 
+    def build_lint_command(self, file=None) -> list:
+        cmd = super().build_lint_command(file)
+
+        if self.cli_lint_mode == "file":
+            cmd.remove(file)
+            cmd += [f"--filter={file}"]
+        elif self.cli_lint_mode == "list_of_files":
+            for file_to_lint in self.files:
+                cmd.remove(file_to_lint)
+                cmd += [f"--filter={file_to_lint}"]
+
+        return cmd
+
     def pre_test(self, test_name):
         config.set_value(
             self.request_id, "TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES", "GITHUB_TOKEN"

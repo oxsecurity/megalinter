@@ -45,12 +45,16 @@ linters:
       The default configuration enables all supported languages and rules, which may not be optimal for every project.
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/tflint.png
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: "Error:"
     cli_lint_warnings_count: regex_count
     cli_lint_warnings_regex: "Warning:"
     config_file_name: .tflint.hcl
-    cli_config_extra_args:
+    cli_lint_mode_project_extra_args_after:
       - --recursive
     cli_sarif_args:
       - --format
@@ -113,6 +117,10 @@ linters:
     config_file_name: terrascan.toml
     cli_config_arg_name: "--config-path"
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_extra_args:
       - "scan"
       - "--iac-type"
@@ -125,8 +133,6 @@ linters:
     test_folder: terraform_terrascan
     examples:
       - "terrascan scan -i terraform -t all -f myfile.tf"
-    downgraded_version: true
-    downgraded_reason: https://github.com/tenable/terrascan/issues/1674
     install:
       dockerfile:
         - |-
@@ -164,7 +170,7 @@ linters:
       - cupcake
       - terraform
       - security
-    linter_url: https://terragrunt.gruntwork.io
+    linter_url: https://docs.terragrunt.com/reference/cli/commands/hcl/fmt/
     linter_repo: https://github.com/gruntwork-io/terragrunt
     linter_rules_configuration_url: https://terragrunt.gruntwork.io/docs/getting-started/quick-start/#add-terragrunthcl-to-your-project
     linter_image_url: https://github.com/gruntwork-io/terragrunt/blob/master/docs/assets/img/favicon/ms-icon-310x310.png
@@ -175,11 +181,14 @@ linters:
       - "hcl"
       - "fmt"
       - "--check"
+    cli_lint_mode: file
+    supported_cli_lint_modes:
+      - file
+    cli_lint_mode_file_extra_args_after:
+      - "--file"
     cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for MegaLinter
     cli_lint_fix_remove_args:
       - "--check"
-    cli_lint_extra_args_after:
-      - "--file"
     test_folder: terraform_terragrunt
     common_linter_errors:
       - identifier: TERRAFORM_TERRAGRUNT_ERROR_CONFIG_PARSE
@@ -194,7 +203,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=alpine/terragrunt
-          ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.7
+          ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.8
         - FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
         - COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
     supported_platforms:
@@ -225,6 +234,9 @@ linters:
     linter_repo: https://github.com/hashicorp/terraform
     linter_banner_image_url: https://www.datocms-assets.com/2885/1629941242-logo-terraform-main.svg
     cli_executable: terraform
+    cli_lint_mode: file
+    supported_cli_lint_modes:
+      - file
     cli_lint_extra_args:
       - "fmt"
       - "--diff"
@@ -239,7 +251,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=alpine/terragrunt
-          ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.7
+          ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.8
         - FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
         - COPY --link --from=terragrunt /bin/terraform /usr/bin/
     supported_platforms:

@@ -28,6 +28,9 @@ linters:
     linter_rules_configuration_url: https://lintr.r-lib.org/articles/lintr.html#configuring-linters
     linter_rules_inline_disable_url: https://lintr.r-lib.org/articles/lintr.html#exclusions
     linter_megalinter_ref_url: https://lintr.r-lib.org/articles/continuous-integration.html
+    cli_lint_mode: file
+    supported_cli_lint_modes:
+      - file
     config_file_name: .lintr
     linter_version_cache: "0.0.0"
     examples:

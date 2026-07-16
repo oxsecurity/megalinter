@@ -1590,72 +1590,84 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             f'Ex: `-s --foo "bar"` |  |'
         ]
         # Files can be filtered only in cli_lint_mode is file or list_of_files
-        if linter.cli_lint_mode != "project":
-            linter_doc_md += [
-                f"| {linter.name}_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>"
-                f"Ex: `(src\\|lib)` | Include every file |",
-                f"| {linter.name}_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>"
-                f"Ex: `(test\\|examples)` | Exclude no file |",
-            ]
-            add_in_config_schema_file(
-                [
-                    [
-                        f"{linter.name}_FILTER_REGEX_INCLUDE",
-                        {
-                            "$id": f"#/properties/{linter.name}_FILTER_REGEX_INCLUDE",
-                            "description": (
-                                f"{linter.name}: "
-                                "Custom regex including filter: "
-                                "only files matching this regex will be linted"
-                            ),
-                            "type": "string",
-                            "title": f"{title_prefix}{linter.name}: Including Regex",
-                            "x-doc-key": "config-filtering",
-                        },
-                    ],
-                    [
-                        f"{linter.name}_FILTER_REGEX_EXCLUDE",
-                        {
-                            "$id": f"#/properties/{linter.name}_FILTER_REGEX_EXCLUDE",
-                            "description": (
-                                f"{linter.name}: "
-                                "Custom regex excluding filter: "
-                                "files matching this regex will NOT be linted"
-                            ),
-                            "type": "string",
-                            "title": f"{title_prefix}{linter.name}: Excluding Regex",
-                            "x-doc-key": "config-filtering",
-                        },
-                    ],
-                ]
+        linter_doc_md += [
+            f"| {linter.name}_FILTER_REGEX_INCLUDE | "
+            "Custom regex including filter<br/>Ex: `(src\\|lib)`"
+            + (
+                f"<br/>⚠️ Not available with {linter.name}_CLI_LINT_MODE = project "
+                if "project" in linter.supported_cli_lint_modes
+                else " "
             )
-        else:
-            remove_in_config_schema_file(
+            + "| Exclude no file |"
+        ]
+
+        linter_doc_md += [
+            f"| {linter.name}_FILTER_REGEX_EXCLUDE | "
+            "Custom regex excluding filter<br/>Ex: `(test\\|examples)`"
+            + (
+                f"<br/>⚠️ Not available with {linter.name}_CLI_LINT_MODE = project "
+                if "project" in linter.supported_cli_lint_modes
+                else " "
+            )
+            + "| Exclude no file |"
+        ]
+        add_in_config_schema_file(
+            [
                 [
                     f"{linter.name}_FILTER_REGEX_INCLUDE",
+                    {
+                        "$id": f"#/properties/{linter.name}_FILTER_REGEX_INCLUDE",
+                        "description": (
+                            f"{linter.name}: "
+                            "Custom regex including filter: "
+                            "only files matching this regex will be linted."
+                            f" ⚠️ Not available with {linter.name}_CLI_LINT_MODE = project"
+                            if "project" in linter.supported_cli_lint_modes
+                            else ""
+                        ),
+                        "type": "string",
+                        "title": f"{title_prefix}{linter.name}: Including Regex",
+                        "x-doc-key": "config-filtering",
+                    },
+                ],
+                [
                     f"{linter.name}_FILTER_REGEX_EXCLUDE",
-                ]
-            )
+                    {
+                        "$id": f"#/properties/{linter.name}_FILTER_REGEX_EXCLUDE",
+                        "description": (
+                            f"{linter.name}: "
+                            "Custom regex excluding filter: "
+                            "files matching this regex will NOT be linted."
+                            f" ⚠️ Not available with {linter.name}_CLI_LINT_MODE = project"
+                            if "project" in linter.supported_cli_lint_modes
+                            else ""
+                        ),
+                        "type": "string",
+                        "title": f"{title_prefix}{linter.name}: Excluding Regex",
+                        "x-doc-key": "config-filtering",
+                    },
+                ],
+            ]
+        )
         # cli_lint_mode can be overridden by user config
-        # if the descriptor cli_lint_mode == "project", it's at the user's own risk :)
         cli_lint_mode_doc_md = (
             f"| {linter.name}_CLI_LINT_MODE | Override default CLI lint mode<br/>"
         )
-        if linter.cli_lint_mode == "project":
-            cli_lint_mode_doc_md += (
-                "⚠️ As default value is **project**, overriding might not work<br/>"
+        cli_lint_modes_doc_md = []
+        if "file" in linter.supported_cli_lint_modes:
+            cli_lint_modes_doc_md.append("- `file`: Calls the linter for each file")
+        if "list_of_files" in linter.supported_cli_lint_modes:
+            cli_lint_modes_doc_md.append(
+                "- `list_of_files`: Call the linter with the list of files as argument"
             )
-        cli_lint_mode_doc_md += "- `file`: Calls the linter for each file<br/>"
-        if linter.cli_lint_mode == "file":
-            enum = ["file", "project"]
-        else:
-            enum = ["file", "list_of_files", "project"]
-            cli_lint_mode_doc_md += "- `list_of_files`: Call the linter with the list of files as argument<br/>"
-        cli_lint_mode_doc_md += (
-            "- `project`: Call the linter from the root of the project"
-        )
+        if "project" in linter.supported_cli_lint_modes:
+            cli_lint_modes_doc_md.append(
+                "- `project`: Call the linter from the root of the project"
+            )
+        cli_lint_mode_doc_md += "<br/>".join(cli_lint_modes_doc_md)
         cli_lint_mode_doc_md += f" | `{linter.cli_lint_mode}` |"
         linter_doc_md += [cli_lint_mode_doc_md]
+        enum = linter.supported_cli_lint_modes
         add_in_config_schema_file(
             [
                 [
@@ -2026,7 +2038,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
 
         # Lint mode
         linter_doc_md += ["### How the linting is performed", ""]
-        if linter.cli_lint_mode == "project":
+        if "project" in linter.supported_cli_lint_modes:
             linter_doc_md += [
                 f"{linter.linter_name} is called once on the whole project directory (`project` CLI lint mode)",
                 "",
@@ -2034,12 +2046,12 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 f"it must be done using {linter.linter_name} configuration or ignore file (if existing)",
                 f"- `VALIDATE_ALL_CODEBASE: false` doesn't make {linter.linter_name} analyze only updated files",
             ]
-        elif linter.cli_lint_mode == "list_of_files":
+        elif "list_of_files" in linter.supported_cli_lint_modes:
             linter_doc_md += [
                 f"- {linter.linter_name} is called once with the list "
                 "of files as arguments (`list_of_files` CLI lint mode)"
             ]
-        else:
+        elif "file" in linter.supported_cli_lint_modes:
             linter_doc_md += [
                 f"- {linter.linter_name} is called one time by identified file (`file` CLI lint mode)"
             ]
@@ -3163,7 +3175,7 @@ def finalize_doc_build():
         "<!-- mega-linter-badges-start -->",
         "<!-- mega-linter-badges-end -->",
         """![GitHub release](https://img.shields.io/github/v/release/oxsecurity/megalinter?sort=semver&color=%23FD80CD)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-15.9M-blue?color=%23FD80CD)](https://megalinter.io/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-16.1M-blue?color=%23FD80CD)](https://megalinter.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg?color=%23FD80CD)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?cacheSeconds=3600&color=%23FD80CD)](https://github.com/oxsecurity/megalinter/stargazers/)
 [![Dependents](https://img.shields.io/static/v1?label=Used%20by&message=2180&color=%23FD80CD&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)

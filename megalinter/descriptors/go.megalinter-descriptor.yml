@@ -68,6 +68,10 @@ linters:
     linter_rules_inline_disable_url: https://golangci-lint.run/usage/false-positives/#nolint
     config_file_name: .golangci.yml
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_extra_args:
       - "run"
     cli_sarif_args:
@@ -198,7 +202,7 @@ linters:
           ARG GO_REVIVE_VERSION=v1.15.0
         - |-
           # renovate: datasource=docker depName=golang versioning=semver
-          ARG GO_IMAGE_VERSION=1.26.4
+          ARG GO_IMAGE_VERSION=1.26.5
         - |-
           FROM golang:${GO_IMAGE_VERSION}-alpine AS revive
           ## The golang image used as a builder is a temporary workaround (https://github.com/mgechev/revive/issues/787)

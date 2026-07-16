@@ -13,7 +13,7 @@
 #ARGTOP__START
 # renovate: datasource=crate depName=shellcheck-sarif
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
-# renovate: datasource=docker depName=koalaman/shellcheck
+# renovate: datasource=docker depName=koalaman/shellcheck-alpine
 ARG BASH_SHELLCHECK_VERSION=v0.11.0
 #ARGTOP__END
 
@@ -33,7 +33,7 @@ FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.11.26 AS uv
+FROM ghcr.io/astral-sh/uv:0.11.28 AS uv
 FROM python:3.14-alpine3.24 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*

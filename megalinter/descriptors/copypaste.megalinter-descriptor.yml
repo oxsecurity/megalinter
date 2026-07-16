@@ -50,11 +50,13 @@ linters:
     linter_megalinter_ref_url: https://github.com/kucherenko/jscpd#who-uses-jscpd
     config_file_name: .jscpd.json
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
     cli_lint_extra_args:
       - "--reporters"
       - "console,html"
-    cli_lint_extra_args_after:
-      - "."
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "Found ([0-9]+) clones"
     examples:
@@ -64,7 +66,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=jscpd
-          ARG NPM_JSCPD_VERSION=5.0.11
+          ARG NPM_JSCPD_VERSION=5.0.12
       npm:
         - jscpd@${NPM_JSCPD_VERSION}
     supported_platforms:

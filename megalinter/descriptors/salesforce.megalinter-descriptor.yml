@@ -12,13 +12,13 @@ install:
   dockerfile:
     - |-
       # renovate: datasource=npm depName=@salesforce/cli
-      ARG NPM_SALESFORCE_CLI_VERSION=2.141.6
+      ARG NPM_SALESFORCE_CLI_VERSION=2.142.7
     - |-
       # renovate: datasource=npm depName=@salesforce/plugin-packaging
       ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.30.1
     - |-
       # renovate: datasource=npm depName=sfdx-hardis
-      ARG SFDX_HARDIS_VERSION=7.19.0
+      ARG SFDX_HARDIS_VERSION=7.19.2
     - ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
     - ENV PATH="$JAVA_HOME/bin:${PATH}"
     - ENV XDG_DATA_HOME=/usr/local/share
@@ -84,7 +84,7 @@ linters:
       - "--rule-selector"
       - "pmd:Recommended"
       - "--workspace"
-      - "."
+      - .
       - --severity-threshold
       - "Moderate"
       - "--output-file"
@@ -92,6 +92,8 @@ linters:
       - "--view"
       - "table"
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
     cli_help_extra_args:
       - "code-analyzer"
       - "run"
@@ -182,7 +184,7 @@ linters:
       - "--rule-selector"
       - "eslint"
       - "--workspace"
-      - "."
+      - .
       - "--target"
       - "**/aura/**/*.js"
       - "--severity-threshold"
@@ -192,6 +194,8 @@ linters:
       - "--view"
       - "table"
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
     cli_help_extra_args:
       - "code-analyzer"
       - "run"
@@ -278,7 +282,7 @@ linters:
       - "--rule-selector"
       - "eslint:LWC"
       - "--workspace"
-      - "."
+      - .
       - "--target"
       - "**/lwc/**/*.js"
       - "--severity-threshold"
@@ -288,6 +292,8 @@ linters:
       - "--view"
       - "table"
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
     cli_help_extra_args:
       - "code-analyzer"
       - "run"
@@ -322,6 +328,102 @@ linters:
           RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
               && (npm cache clean --force || true) \
               && rm -rf /root/.npm/_cacache
+    supported_platforms:
+      platform:
+        - linux/amd64
+        # Errors when building the image
+        #- linux/arm64
+    ide:
+      vscode:
+        - name: Salesforce Extension Pack
+          url: https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode
+
+  # Code Analyzer Flow
+  - linter_name: code-analyzer-flow
+    name: SALESFORCE_CODE_ANALYZER_FLOW
+    files_sub_directory: force-app
+    linter_text: |
+      **Salesforce Code Analyzer for Flows (Flow Scanner engine)** audits Salesforce Flows and reports detailed information about security issues. It is the Flow Scanner engine bundled with Salesforce Code Analyzer v5, run through the unified `sf code-analyzer run` command.
+
+      **Key Features:**
+
+      - **Flow Security Analysis**: Audits `.flow-meta.xml` Flows for security vulnerabilities such as unsafe data exposure and missing sanitization
+      - **Subflow Resolution**: Analyzes the full workspace to resolve subflows while targeting the Flows you want reported
+      - **Data-Flow Aware**: Traces how data moves through Flow elements to surface risky patterns
+      - **Unified Toolchain**: Runs via the same Salesforce Code Analyzer v5 plugin and `code-analyzer.yml` configuration as the Apex, Aura, and LWC engines
+      - **Configurable Severity**: Customizable severity thresholds to match your project's quality bar
+      - **Multiple Output Formats**: Supports CSV, JSON, HTML, and SARIF output for integration with development tools
+      - **CI/CD Integration**: Seamless integration with Salesforce development pipelines
+
+      The Flow Scanner engine requires Python 3.10 or later, which is available in the MegaLinter Salesforce image. If Python can't be resolved automatically, set the `python_command` setting in your `code-analyzer.yml`.
+
+      If your root folder is not **force-app**, please set variable `SALESFORCE_CODE_ANALYZER_FLOW_DIRECTORY`
+
+      See more details in [Help](#help-content)
+    linter_url: https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/engine-flow.html
+    linter_repo: https://github.com/forcedotcom/code-analyzer
+    linter_rules_url: https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/rules-flow.html
+    linter_rules_configuration_url: https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/config.html
+    linter_spdx_license: BSD-3-Clause
+    config_file_name: code-analyzer-flow.yml
+    cli_executable: sf
+    cli_config_arg_name: "--config-file"
+    cli_lint_extra_args:
+      - "code-analyzer"
+      - "run"
+      - "--rule-selector"
+      - "flow"
+      - "--workspace"
+      - "."
+      - "--target"
+      - "**/*.flow-meta.xml"
+      - "--severity-threshold"
+      - "Moderate"
+      - "--output-file"
+      - "{{REPORT_FOLDER}}/code-analyzer-report-flow.csv"
+      - "--view"
+      - "table"
+    cli_lint_mode: project
+    cli_help_extra_args:
+      - "code-analyzer"
+      - "run"
+    cli_help_extra_commands:
+      - "sf code-analyzer rules --rule-selector flow"
+    cli_version_extra_args:
+      - "plugins"
+    cli_version_arg_name: ""
+    version_extract_regex: "(?<=code-analyzer )\\d+(\\.\\d+)+"
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "Found ([0-9]+) violation\\(s\\)"
+    common_linter_errors:
+      - identifier: SALESFORCE_CODE_ANALYZER_FLOW_ERROR_CONFIG_INVALID
+        regex: "(Failed to parse the configuration content|The specified configuration file .* does not exist|The specified configuration file .* has an unsupported file extension|The configuration content is invalid)"
+        message: |-
+          code-analyzer could not load the configuration file (code-analyzer.yml).
+          Verify the file is valid v5 YAML and that its path is reachable from the workspace.
+          Generate a starter config with: sf code-analyzer config -f code-analyzer.yml
+      - identifier: SALESFORCE_CODE_ANALYZER_FLOW_ERROR_NO_TARGET_FILES
+        regex: "(At least one file or folder must be included in the workspace|The specified target .* does not exist underneath any of the specified workspace paths|The file or folder .* does not exist)"
+        message: |-
+          code-analyzer could not find any Flow files matching `**/*.flow-meta.xml`.
+          Verify that your Flows live under the workspace (default `force-app`) and that `SALESFORCE_CODE_ANALYZER_FLOW_DIRECTORY` points to the correct root.
+      - identifier: SALESFORCE_CODE_ANALYZER_FLOW_ERROR_PYTHON_MISSING
+        regex: "(Python .*(is )?missing|Could not (find|locate|discover) .*[Pp]ython|No .*[Pp]ython .* found|python_command)"
+        message: |-
+          The Flow Scanner engine requires Python 3.10 or later and could not resolve a Python interpreter.
+          Verify Python 3.10+ is installed, or set the `python_command` setting for the flow engine in your `code-analyzer.yml`.
+    examples:
+      - "sf code-analyzer run --rule-selector flow --workspace . --output-file results.csv"
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
+          ARG SALESFORCE_CODE_ANALYZER_VERSION=5.14.0
+        - |-
+          RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
+              && (npm cache clean --force || true) \
+              && rm -rf /root/.npm/_cacache
+    test_folder: salesforce-lfs
     supported_platforms:
       platform:
         - linux/amd64
@@ -383,6 +485,8 @@ linters:
       - "--format"
       - "csv"
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
     cli_help_extra_args:
       - "scanner:run"
     cli_help_extra_commands:
@@ -483,6 +587,8 @@ linters:
       - "--format"
       - "csv"
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
     cli_help_extra_args:
       - "scanner:run"
     cli_help_extra_commands:
@@ -574,6 +680,8 @@ linters:
       - "--format"
       - "csv"
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
     cli_help_extra_args:
       - "scanner:run"
     cli_help_extra_commands:
@@ -645,6 +753,8 @@ linters:
     cli_lint_extra_args:
       - "flow:scan"
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
     cli_help_extra_args:
       - "flow:scan"
     cli_version_extra_args:
@@ -671,7 +781,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=lightning-flow-scanner
-          ARG LIGHTNING_FLOW_SCANNER_VERSION=6.19.3
+          ARG LIGHTNING_FLOW_SCANNER_VERSION=6.19.4
         - |-
           RUN echo y|sf plugins install lightning-flow-scanner@${LIGHTNING_FLOW_SCANNER_VERSION} \
               && (npm cache clean --force || true) \

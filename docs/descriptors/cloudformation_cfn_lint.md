@@ -46,7 +46,7 @@ CFN-Lint helps ensure your CloudFormation templates are valid, secure, and follo
 
 ## cfn-lint documentation
 
-- Version in MegaLinter: **1.52.1**
+- Version in MegaLinter: **1.53.0**
 - Visit [Official Web Site](https://github.com/aws-cloudformation/cfn-lint#readme){target=_blank}
 - See [How to configure cfn-lint rules](https://github.com/aws-cloudformation/cfn-lint#configuration){target=_blank}
   - If custom `.cfnlintrc.yml` config file isn't found, [.cfnlintrc.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.cfnlintrc.yml){target=_blank} will be used
@@ -64,8 +64,8 @@ CFN-Lint helps ensure your CloudFormation templates are valid, secure, and follo
 |-----------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
 | CLOUDFORMATION_CFN_LINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
 | CLOUDFORMATION_CFN_LINT_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                                                 |
-| CLOUDFORMATION_CFN_LINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
-| CLOUDFORMATION_CFN_LINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
+| CLOUDFORMATION_CFN_LINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with CLOUDFORMATION_CFN_LINT_CLI_LINT_MODE = project                                                                                        | Exclude no file                                 |
+| CLOUDFORMATION_CFN_LINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`<br/>⚠️ Not available with CLOUDFORMATION_CFN_LINT_CLI_LINT_MODE = project                                                                                  | Exclude no file                                 |
 | CLOUDFORMATION_CFN_LINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
 | CLOUDFORMATION_CFN_LINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".yml", ".yaml", ".json"]`                    |
 | CLOUDFORMATION_CFN_LINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
@@ -94,7 +94,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                   | Description                                     | Embedded linters |                                                                                                                                                                                         Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------|:------------------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor                       |       124        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor                       |       125        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)   | MegaLinter for the most commonly used languages |        92        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/) | Optimized for security                          |        25        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 
@@ -109,7 +109,10 @@ This linter is available in the following flavors
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- cfn-lint is called once with the list of files as arguments (`list_of_files` CLI lint mode)
+cfn-lint is called once on the whole project directory (`project` CLI lint mode)
+
+- filtering can not be done using MegaLinter configuration variables,it must be done using cfn-lint configuration or ignore file (if existing)
+- `VALIDATE_ALL_CODEBASE: false` doesn't make cfn-lint analyze only updated files
 
 ### Example calls
 
@@ -203,11 +206,11 @@ Advanced / Debugging:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=cfn-lint
-ARG PIP_CFN_LINT_VERSION=1.52.1
+ARG PIP_CFN_LINT_VERSION=1.53.0
 ```
 
 - PIP packages (Python):
-  - [cfn-lint[sarif]==1.52.1](https://pypi.org/project/cfn-lint[sarif]/1.52.1)
+  - [cfn-lint[sarif]==1.53.0](https://pypi.org/project/cfn-lint[sarif]/1.53.0)
 
 ## Known errors and resolutions
 

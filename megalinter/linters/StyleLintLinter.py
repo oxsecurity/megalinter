@@ -11,13 +11,14 @@ NODE_DEPS_DIR = "/node-deps"
 
 
 class StyleLintLinter(Linter):
-    def pre_test(self, test_name):
-        if test_name == "test_failure":
-            config.set_value(
-                self.request_id, "CSS_STYLELINT_CONFIG_FILE", ".stylelintrc_bad.json"
+    def build_lint_command(self, file=None) -> list:
+        if self.cli_lint_mode == "project":
+            self.cli_lint_extra_args_after.append(
+                f"**/*{self.file_extensions[0]}"
+                if len(self.file_extensions) == 1
+                else f"**/*.{{{",".join(self.file_extensions).replace(".", "")}}}"
             )
 
-    def build_lint_command(self, file=None) -> list:
         cmd = super().build_lint_command(file)
         # stylelint v17 (ESM) resolves config extends from the config file's directory.
         # In the MegaLinter Docker container all npm packages are installed in /node-deps,
@@ -27,3 +28,9 @@ class StyleLintLinter(Linter):
         if os.path.isdir(NODE_DEPS_DIR):
             cmd += ["--config-basedir", NODE_DEPS_DIR]
         return cmd
+
+    def pre_test(self, test_name):
+        if test_name.startswith("test_failure"):
+            config.set_value(
+                self.request_id, "CSS_STYLELINT_CONFIG_FILE", ".stylelintrc_bad.json"
+            )

@@ -119,9 +119,15 @@ linters:
       - ".eslintrc.cjs"
       - "package.json:eslintConfig"
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     config_file_name: eslint.config.js
     cli_lint_extra_args:
       - "--no-ignore"
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_lint_fix_arg_name: "--fix"
     cli_sarif_args:
       - --format
@@ -201,7 +207,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=eslint
-          ARG NPM_ESLINT_VERSION=10.6.0
+          ARG NPM_ESLINT_VERSION=10.7.0
         - |-
           # renovate: datasource=npm depName=@eslint/js
           ARG NPM_ESLINT_JS_VERSION=10.0.1
@@ -216,7 +222,7 @@ linters:
           ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.15.4
         - |-
           # renovate: datasource=npm depName=eslint-plugin-n
-          ARG NPM_ESLINT_PLUGIN_N_VERSION=18.2.1
+          ARG NPM_ESLINT_PLUGIN_N_VERSION=18.2.2
         - |-
           # renovate: datasource=npm depName=eslint-plugin-prettier
           ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.6
@@ -299,7 +305,13 @@ linters:
     linter_banner_image_url: https://github.com/standard/standard/raw/master/sticker.png
     name: JAVASCRIPT_STANDARD
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_fix_arg_name: "--fix"
+    cli_lint_mode_project_extra_args_after:
+      - .
     test_folder: javascript_standard
     examples:
       - "standard myfile.js"
@@ -360,9 +372,15 @@ linters:
     linter_banner_image_url: https://unpkg.com/prettier-logo@1.0.3/images/prettier-banner-light.svg
     config_file_name: ".prettierrc.json"
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_config_arg_name: "--config"
     cli_lint_extra_args:
       - "--check"
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_lint_fix_arg_name: "--write" # Workaround for MegaLinter
     cli_lint_fix_remove_args:
       - "--check"
@@ -377,7 +395,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=prettier
-          ARG NPM_PRETTIER_VERSION=3.9.4
+          ARG NPM_PRETTIER_VERSION=3.9.5
       npm:
         - "prettier@${NPM_PRETTIER_VERSION}"
     supported_platforms:

@@ -118,8 +118,8 @@ DISABLE_LINTERS:
 |------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
 | JSON_ESLINT_PLUGIN_JSONC_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
 | JSON_ESLINT_PLUGIN_JSONC_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                                                 |
-| JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
-| JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
+| JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with JSON_ESLINT_PLUGIN_JSONC_CLI_LINT_MODE = project                                                                                       | Exclude no file                                 |
+| JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`<br/>⚠️ Not available with JSON_ESLINT_PLUGIN_JSONC_CLI_LINT_MODE = project                                                                                 | Exclude no file                                 |
 | JSON_ESLINT_PLUGIN_JSONC_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
 | JSON_ESLINT_PLUGIN_JSONC_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".json", ".json5", ".jsonc"]`                 |
 | JSON_ESLINT_PLUGIN_JSONC_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
@@ -146,7 +146,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       124        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       125        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -158,7 +158,10 @@ This linter is available in the following flavors
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- eslint-plugin-jsonc is called once with the list of files as arguments (`list_of_files` CLI lint mode)
+eslint-plugin-jsonc is called once on the whole project directory (`project` CLI lint mode)
+
+- filtering can not be done using MegaLinter configuration variables,it must be done using eslint-plugin-jsonc configuration or ignore file (if existing)
+- `VALIDATE_ALL_CODEBASE: false` doesn't make eslint-plugin-jsonc analyze only updated files
 
 ### Example calls
 
@@ -253,17 +256,17 @@ Miscellaneous:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=10.6.0
+ARG NPM_ESLINT_VERSION=10.7.0
 # renovate: datasource=npm depName=@eslint/eslintrc
-ARG NPM_ESLINT_ESLINTRC_VERSION=3.3.5
+ARG NPM_ESLINT_ESLINTRC_VERSION=3.3.6
 # renovate: datasource=npm depName=eslint-plugin-jsonc
-ARG NPM_ESLINT_PLUGIN_JSONC_VERSION=3.2.0
+ARG NPM_ESLINT_PLUGIN_JSONC_VERSION=3.3.0
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 ```
 
 - NPM packages (node.js):
-  - [eslint@10.6.0](https://www.npmjs.com/package/eslint/v/10.6.0)
+  - [eslint@10.7.0](https://www.npmjs.com/package/eslint/v/10.7.0)
   - [@eslint/eslintrc](https://www.npmjs.com/package/@eslint/eslintrc)
   - [eslint-plugin-jsonc](https://www.npmjs.com/package/eslint-plugin-jsonc)
   - [@microsoft/eslint-formatter-sarif@3.1.0](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/3.1.0)

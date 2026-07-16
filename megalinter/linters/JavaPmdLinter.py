@@ -37,10 +37,10 @@ class JavaPmdLinter(Linter):
         # Add dir/file arguments
         # single file
         if self.cli_lint_mode == "file":
-            file_args = ["-dir", file]
+            file_args = ["--dir", file]
         # lint the whole directory
         elif self.cli_lint_mode == "project":
-            file_args = ["-dir", self.workspace]
+            file_args = ["--dir", self.workspace]
         # lint a list of files
         else:  # self.cli_lint_mode == "list_of_files":
             temp_list_of_files_for_pmd = (

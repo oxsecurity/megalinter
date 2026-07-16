@@ -59,6 +59,12 @@ linters:
     linter_rules_url: https://gist.github.com/tmsnvd/057ef1cf4fd412e8c8e866e5ba5119bc
     config_file_name: phpcs.xml
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_config_arg_name: "--standard="
     cli_sarif_args:
       - "--report=\\Bartlett\\Sarif\\Converter\\Reporter\\PhpCsReport"
@@ -137,12 +143,18 @@ linters:
     linter_rules_inline_disable_url: https://phpstan.org/user-guide/ignoring-errors#ignoring-in-code-using-phpdocs
     config_file_name: phpstan.neon.dist
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_extra_args:
       - "analyse"
       - "--no-progress"
       - "--no-ansi"
       - "--memory-limit"
       - "1G"
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_sarif_args:
       - "--error-format=sarif"
     cli_lint_errors_count: regex_number
@@ -218,8 +230,14 @@ linters:
     linter_rules_inline_disable_url: https://psalm.dev/docs/running_psalm/dealing_with_code_issues/#docblock-suppression
     config_file_name: psalm.xml
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_extra_args:
       - --output-format=console
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_config_arg_name: "--config="
     cli_sarif_args:
       - "--report={{SARIF_OUTPUT_FILE}}"
@@ -289,6 +307,12 @@ linters:
     linter_rules_configuration_url: https://github.com/overtrue/phplint/blob/main/docs/configuration.md#configuration
     config_file_name: .phplint.yml
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_sarif_args:
       - "--format=\\Overtrue\\PHPLint\\Output\\SarifOutput"
       - "--output={{SARIF_OUTPUT_FILE}}"
@@ -339,11 +363,17 @@ linters:
     linter_image_url: https://cs.symfony.com/_static/images/logo.png
     config_file_name: .php-cs-fixer.dist.php
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_extra_args:
       - "fix"
       - "--dry-run"
       - "--verbose"
       - "--show-progress=none"
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_config_arg_name: "--config"
     cli_lint_fix_remove_args:
       - "--dry-run"
@@ -372,7 +402,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
-          ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.95.11
+          ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.95.13
         - |
           RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require friendsofphp/php-cs-fixer:${PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION} --with-all-dependencies
     ide:

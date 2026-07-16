@@ -98,9 +98,15 @@ linters:
       - ".eslintrc.cjs"
       - "package.json:eslintConfig"
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     config_file_name: eslint.config.cjs
     cli_lint_extra_args:
       - "--no-ignore"
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_lint_fix_arg_name: "--fix"
     cli_sarif_args:
       - --format
@@ -172,7 +178,7 @@ linters:
           ARG NPM_TYPESCRIPT_VERSION=6.0.3
         - |-
           # renovate: datasource=npm depName=eslint
-          ARG NPM_ESLINT_VERSION=10.6.0
+          ARG NPM_ESLINT_VERSION=10.7.0
         - |-
           # renovate: datasource=npm depName=eslint-config-prettier
           ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.1.8
@@ -184,19 +190,19 @@ linters:
           ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.6
         - |-
           # renovate: datasource=npm depName=@eslint-react/eslint-plugin
-          ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.10.2
+          ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.14.5
         - |-
           # renovate: datasource=npm depName=prettier
-          ARG NPM_PRETTIER_VERSION=3.9.4
+          ARG NPM_PRETTIER_VERSION=3.9.5
         - |-
           # renovate: datasource=npm depName=prettyjson
           ARG NPM_PRETTYJSON_VERSION=1.2.5
         - |-
           # renovate: datasource=npm depName=@typescript-eslint/eslint-plugin
-          ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.62.1
+          ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.63.0
         - |-
           # renovate: datasource=npm depName=@typescript-eslint/parser
-          ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.62.1
+          ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.63.0
         - |-
           # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
           ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
