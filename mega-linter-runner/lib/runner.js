@@ -1,7 +1,7 @@
 import { optionsDefinition, KNOWN_CONTAINER_ENGINES } from "./options.js";
 import { expandEnvEntries } from "./env-parser.js";
 import { listVars } from "./list-vars.js";
-import { spawnSync, execFileSync } from "child_process";
+import { spawnSync } from "child_process";
 import { default as c } from "chalk";
 import * as path from "path";
 import { dirname } from "path";
@@ -16,15 +16,7 @@ import { createEnv } from "yeoman-environment";
 import { default as FindPackageJson } from "find-package-json";
 
 function isSElinuxOn() {
-  // Wrapped in try-catch block, so that it won't crash the runner on non-SE enabled systems (including windows & mac)
-  try {
-    // This will return true or false
-    return ["Enforcing", "Permissive", "enforcing", "permissive"].includes(
-      execFileSync("getenforce", { encoding: "utf8" }).trim(),
-    );
-  } catch {
-    return false;
-  }
+  return ["Enforcing", "Permissive", "enforcing", "permissive"].includes(process.env.SELINUX_MODE);
 }
 
 export class MegaLinterRunner {
