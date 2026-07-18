@@ -115,8 +115,14 @@ GHSA-47qp-hqvx-6r3f
 # .proto or crafted protobuf; the linters parse .feature/.js/.cls source, not untrusted
 # schemas. lodash/underscore prototype-pollution, minimatch/picomatch/linkify-it ReDoS,
 # undici/ws/form-data/fast-uri HTTP/URI DoS and tmp symlink issues all require untrusted
-# input or outbound HTTP that a one-shot CLI over local files never performs.
+# input or outbound HTTP that a one-shot CLI over local files never performs. adm-zip's
+# crafted-ZIP DoS and websocket-driver's frame-length message corruption live in the
+# Salesforce CLI (sf) that backs salesforce-code-analyzer: sf runs as a local source-code
+# analyzer and neither extracts attacker-controlled archives nor opens a Streaming-API
+# websocket to an untrusted server at lint time, so neither code path is entered.
 # Remove once the linters bump their npm dependencies.
+CVE-2026-39244
+CVE-2026-54466
 CVE-2026-12143
 CVE-2026-12151
 CVE-2026-1526
@@ -144,6 +150,17 @@ CVE-2026-6322
 # DownloadFile task, which roslynator's static analysis pass never invokes.
 # Remove once roslynator.dotnet.cli ships a build with Microsoft.Build >= 17.8.29.
 CVE-2025-26646
+
+# --- Python deps (semgrep) ---
+# semgrep bundles the MCP Python SDK (mcp) for its experimental `semgrep mcp` server mode.
+# All three CVEs are in the MCP server transports: HTTP session auth (CVE-2026-52869),
+# experimental task handlers (CVE-2026-52870) and WebSocket Host/Origin validation
+# (CVE-2026-59950). MegaLinter runs semgrep as a one-shot `semgrep --config` CLI scan over
+# workspace source; it never starts semgrep's MCP server, so none of the vulnerable server
+# transport paths are ever invoked. Remove once semgrep bumps mcp to >= 1.28.1.
+CVE-2026-52869
+CVE-2026-52870
+CVE-2026-59950
 
 # --- Dockerfile misconfigurations (REPOSITORY_TRIVY misconfig scan) ---
 # These are trivy's own Dockerfile checks fired against MegaLinter's generated
