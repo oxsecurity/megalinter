@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../assets/images/mega-linter-square.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -15769,6 +15769,7 @@
 <li>Keep the Docker Pulls badge in <code>docs/index.md</code> in sync by having <code>docker_stats.py</code> also update the hardcoded badge total in <code>.automation/build.py</code></li>
 <li>Fix outdated links in <code>docs/descriptors/repository_kingfisher.md</code></li>
 <li>Fix <code>LINTER_RULES_PATH</code> not being used to resolve config files for linters using <code>active_only_if_file_found</code> (e.g. <code>REPOSITORY_LS_LINT</code>, <code>SPELL_PROSELINT</code>, <code>SPELL_VALE</code>), fixes <a href="https://github.com/oxsecurity/megalinter/issues/8416">#8416</a></li>
+<li>Honor <code>EXCLUDED_DIRECTORIES</code> and <code>ADDITIONAL_EXCLUDED_DIRECTORIES</code> in changed-files mode (<code>VALIDATE_ALL_CODEBASE: false</code>), so files inside excluded directories are pruned from the <code>git diff</code> file list the same way they are during full-codebase validation (<a href="https://github.com/oxsecurity/megalinter/issues/8360">#8360</a>)</li>
 </ul>
 </li>
 </ul>
@@ -23329,7 +23330,7 @@ commit_user_email: nicolas.vuillamy@ox.security</code></p>
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "navigation.instant", "navigation.footer"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
       
