@@ -606,7 +606,7 @@
   resolved "https://registry.yarnpkg.com/@types/ms/-/ms-2.1.0.tgz#052aa67a48eccc4309d7f0191b7e41434b90bb78"
   integrity sha512-GsCCIZDE/p3i96vtEqx+7dBUGXrc7zeSK3wwPHIaRThS+9OhWIXRqzs4d6k1SVU8g91DrNRWxWUGhp5KXQb2VA==
 
-"@types/node@*", "@types/node@>=18", "@types/node@>=18.19.0":
+"@types/node@*", "@types/node@>=18.19.0":
   version "26.1.1"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-26.1.1.tgz#bad758d601e97d6cf457d204ee76a35fce7bd119"
   integrity sha512-nxAkRSVkN1Y0JC1W8ky/fTfkGsMmcrRsbx+3XoZE+rMOX71kLYTV7fLXpqud1GpbpP5TuffXFqfX7fH2GgZREw==
@@ -623,7 +623,7 @@
   resolved "https://registry.yarnpkg.com/@types/picomatch/-/picomatch-4.0.3.tgz#d92bbf24166478c5457c8bb9ba41a7f49d55e094"
   integrity sha512-iG0T6+nYJ9FAPmx9SsUlnwcq1ZVRuCXcVEvWnntoPlrOpwtSTKNDC9uVAxTsC3PUvJ+99n4RpAcNgBbHX3JSnQ==
 
-"@types/vinyl@^2.0.12", "@types/vinyl@^2.0.7":
+"@types/vinyl@^2.0.7":
   version "2.0.12"
   resolved "https://registry.yarnpkg.com/@types/vinyl/-/vinyl-2.0.12.tgz#17642ca9a8ae10f3db018e9f885da4188db4c6e6"
   integrity sha512-Sr2fYMBUVGYq8kj3UthXFAu5UN6ZW+rYr4NACjZQJvHvj+c8lYv0CahmZ2P/r7iUkN44gGUBwqxZkrKXYPb7cw==
@@ -2072,12 +2072,10 @@ mem-fs-editor@^12.0.4:
     vinyl "^3.0.1"
 
 mem-fs@^4.0.0, mem-fs@^4.1.4:
-  version "4.1.4"
-  resolved "https://registry.yarnpkg.com/mem-fs/-/mem-fs-4.1.4.tgz#4835fe66b98dbc5ae2a3bffd58dc2a974f8372f2"
-  integrity sha512-NlRHmUiEcxDHI7FeDlrrTZP5YFvnoS74wEf5OrQ7NAg83B2Rv3oF+FWr961I0rVdxkKbZMjq2BcV7VFWGFPkog==
+  version "4.1.5"
+  resolved "https://registry.yarnpkg.com/mem-fs/-/mem-fs-4.1.5.tgz#d242adc7ff75a28d4aa2a7186fcbeeaceaaefb7d"
+  integrity sha512-6aWRo1jLo82ngo44tPQXjzINN7gvSNWhMU96I+O5nsJWdPi5vbUJWMTDGZDb/AVpCJRpaLGcFgrIBIpyk0DuUA==
   dependencies:
-    "@types/node" ">=18"
-    "@types/vinyl" "^2.0.12"
     vinyl "^3.0.1"
     vinyl-file "^5.0.0"
 
