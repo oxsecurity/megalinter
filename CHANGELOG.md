@@ -109,6 +109,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.95.8 to **3.95.9** on 2026-07-13
   - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.45.6 to **0.45.15** on 2026-07-14
   - [eslint](https://eslint.org) from 10.6.0 to **10.7.0** on 2026-07-14
+  - [djlint](https://djlint.com/) from 1.40.6 to **1.40.7** on 2026-07-18
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.32 to **0.2.34** on 2026-07-18
+  - [grype](https://github.com/anchore/grype) from 0.115.0 to **0.116.0** on 2026-07-18
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.106.0 to **1.108.0** on 2026-07-18
+  - [semgrep](https://semgrep.dev/) from 1.169.0 to **1.170.0** on 2026-07-18
+  - [syft](https://github.com/anchore/syft) from 1.46.0 to **1.48.0** on 2026-07-18
 <!-- linter-versions-end -->
 
 ## [v9.6.0] - 2026-06-28
