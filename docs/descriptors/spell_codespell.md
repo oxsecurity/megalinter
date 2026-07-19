@@ -15,7 +15,7 @@ See the [codespell documentation](https://github.com/codespell-project/codespell
 
 ## codespell documentation
 
-- Version in MegaLinter: **2.4.2**
+- Version in MegaLinter: **2.4.3**
 - Visit [Official Web Site](https://github.com/codespell-project/codespell#readme){target=_blank}
 - See [How to configure codespell rules](https://github.com/codespell-project/codespell?tab=readme-ov-file#using-a-config-file){target=_blank}
 - See [How to disable codespell rules in files](https://github.com/codespell-project/codespell?tab=readme-ov-file#inline-ignore){target=_blank}
@@ -111,8 +111,8 @@ usage: codespell [-h] [--version] [-d] [-c] [-w] [-D DICTIONARY]
                  [-L WORDS] [--uri-ignore-words-list WORDS] [-r REGEX]
                  [--uri-regex URI_REGEX] [-s] [--count] [-S SKIP] [-x FILES]
                  [-i MODE] [-q LEVEL] [-e] [-f] [-H] [-A LINES] [-B LINES]
-                 [-C LINES] [--stdin-single-line] [--config CONFIG]
-                 [--toml TOML]
+                 [-C LINES] [--ignore-sic] [--stdin-single-line]
+                 [--config CONFIG] [--toml TOML]
                  [files ...]
 
 positional arguments:
@@ -131,8 +131,9 @@ options:
                         used.
   --builtin BUILTIN-LIST
                         comma-separated list of builtin dictionaries to
-                        include (when "-D -" or no "-D" is passed). Current
-                        options are:
+                        include (when "-D -" or no "-D" is passed). Use 'all'
+                        to include every builtin dictionary. Current options
+                        are:
                         - 'clear' for unambiguous errors
                         - 'rare' for rare (but valid) words that are likely to
                           be errors
@@ -227,6 +228,9 @@ options:
   -B, --before-context LINES
                         print LINES of leading context
   -C, --context LINES   print LINES of surrounding context
+  --ignore-sic          ignore a misspelling immediately followed by the
+                        editorial "[sic]" marker (optionally preceded by a
+                        closing quote).
   --stdin-single-line   output just a single line for each misspelling in
                         stdin mode
   --config CONFIG       path to config file.
@@ -240,11 +244,11 @@ Use @PATH to read additional arguments from file PATH.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=codespell
-ARG PIP_CODESPELL_VERSION=2.4.2
+ARG PIP_CODESPELL_VERSION=2.4.3
 ```
 
 - PIP packages (Python):
-  - [codespell==2.4.2](https://pypi.org/project/codespell/2.4.2)
+  - [codespell==2.4.3](https://pypi.org/project/codespell/2.4.3)
 
 ## Known errors and resolutions
 
