@@ -15727,6 +15727,7 @@
 <li>
 <p>Core</p>
 <ul>
+<li>Allow <code>FILTER_REGEX_INCLUDE</code> and <code>FILTER_REGEX_EXCLUDE</code> (global, per-descriptor and per-linter) to be defined as a list of regexes combined with a logical OR, so filter regexes can be appended across <code>EXTENDS</code> configs via <code>CONFIG_PROPERTIES_TO_APPEND</code>; single-string values remain fully supported, fixes <a href="https://github.com/oxsecurity/megalinter/issues/8361">#8361</a></li>
 <li>Add <code>ENABLE_DISABLE_LINTERS_PRIORITY</code> variable to let <code>DISABLE_LINTERS</code> override <code>ENABLE_LINTERS</code> when a linter is in both lists (e.g. to trim an inherited <code>ENABLE_LINTERS</code> list via <code>EXTENDS</code>), fixes <a href="https://github.com/oxsecurity/megalinter/issues/8296">#8296</a></li>
 <li>Add <code>supported_cli_lint_modes</code> descriptor property to declare which CLI lint modes (<code>file</code>, <code>list_of_files</code>, <code>project</code>) each linter supports, generate <code>success</code>/<code>failure</code> tests for every supported mode, and reject a <code>&lt;LINTER&gt;_CLI_LINT_MODE</code> override targeting an unsupported mode with an explicit error, fixes <a href="https://github.com/oxsecurity/megalinter/issues/7120">#7120</a></li>
 </ul>
