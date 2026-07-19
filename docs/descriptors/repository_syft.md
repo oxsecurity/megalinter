@@ -29,7 +29,7 @@ description: How to use syft (configure, ignore files, ignore errors, help & ver
 
 ## syft documentation
 
-- Version in MegaLinter: **1.46.0**
+- Version in MegaLinter: **1.48.0**
 - Visit [Official Web Site](https://github.com/anchore/syft#readme){target=_blank}
 
 [![syft - GitHub](https://gh-card.dev/repos/anchore/syft.svg?fullname=)](https://github.com/anchore/syft){target=_blank}
@@ -154,7 +154,7 @@ Available Commands:
 Flags:
       --base-path string                          base directory for scanning, no links will be followed above this directory, and all paths will be reported relative to this directory
   -c, --config stringArray                        syft configuration file(s) to use
-      --enrich stringArray                        enable package data enrichment from local and online sources (options: all, golang, java, javascript, python)
+      --enrich stringArray                        enable package data enrichment from local and online sources (options: all, golang, java, javascript, python, vcpkg)
       --exclude stringArray                       exclude paths from being scanned using a glob expression
       --file string                               file to write the default report output to (default is STDOUT) (DEPRECATED: use: --output FORMAT=PATH)
       --from stringArray                          specify the source behavior to use (e.g. docker, registry, oci-dir, ...)

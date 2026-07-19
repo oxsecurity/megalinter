@@ -29,7 +29,7 @@ Exception for standalone and security flavors docker images, that use a list of 
 
 ## semgrep documentation
 
-- Version in MegaLinter: **1.169.0**
+- Version in MegaLinter: **1.170.0**
 - Visit [Official Web Site](https://semgrep.dev/){target=_blank}
 - See [How to configure semgrep rules](https://semgrep.dev/docs/running-rules/){target=_blank}
 - See [How to disable semgrep rules in files](https://semgrep.dev/docs/ignoring-findings/#inline-comments){target=_blank}
@@ -773,7 +773,7 @@ BUGS
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.169.0
+ARG PIP_SEMGREP_VERSION=1.170.0
 # Wrap semgrep so its OCaml 5 runtime does not abort with
 # "Failed to allocate signal stack for domain 0", which happens when the
 # stack rlimit is unlimited (the case on some CI runners). Cap it to a
@@ -784,4 +784,4 @@ RUN mv /venvs/semgrep/bin/semgrep /venvs/semgrep/bin/semgrep-bin \
 ```
 
 - PIP packages (Python):
-  - [semgrep==1.169.0](https://pypi.org/project/semgrep/1.169.0)
+  - [semgrep==1.170.0](https://pypi.org/project/semgrep/1.170.0)
