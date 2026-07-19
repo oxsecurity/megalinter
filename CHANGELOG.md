@@ -115,6 +115,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [kingfisher](https://github.com/mongodb/kingfisher) from 1.106.0 to **1.108.0** on 2026-07-18
   - [semgrep](https://semgrep.dev/) from 1.169.0 to **1.170.0** on 2026-07-18
   - [syft](https://github.com/anchore/syft) from 1.46.0 to **1.48.0** on 2026-07-18
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.34 to **0.2.36** on 2026-07-19
+  - [checkov](https://www.checkov.io/) from 3.3.6 to **3.3.8** on 2026-07-19
 <!-- linter-versions-end -->
 
 ## [v9.6.0] - 2026-06-28
