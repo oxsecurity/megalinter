@@ -129,7 +129,7 @@ def normalize_regex_filter(value) -> Sequence[str]:
         return []
     if isinstance(value, str):
         return [value] if value != "" else []
-    result = []
+    result: list = []
     for item in value:
         result += normalize_regex_filter(item)
     return result
