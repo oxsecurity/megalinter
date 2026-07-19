@@ -1201,7 +1201,8 @@ def generate_descriptor_documentation(descriptor):
                         f"{descriptor.get('descriptor_id')}: "
                         "Custom regex including filter: only files matching this regex will be linted"
                     ),
-                    "type": "string",
+                    "type": ["string", "array"],
+                    "items": {"type": "string"},
                     "title": f"Including regex filter for {descriptor.get('descriptor_id')} descriptor",
                     "x-doc-key": "config-filtering",
                 },
@@ -1214,7 +1215,8 @@ def generate_descriptor_documentation(descriptor):
                         f"{descriptor.get('descriptor_id')}: "
                         "Custom regex excluding filter: files matching this regex will NOT be linted"
                     ),
-                    "type": "string",
+                    "type": ["string", "array"],
+                    "items": {"type": "string"},
                     "title": f"Excluding regex filter for {descriptor.get('descriptor_id')} descriptor",
                     "x-doc-key": "config-filtering",
                 },
@@ -1625,7 +1627,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                             if "project" in linter.supported_cli_lint_modes
                             else ""
                         ),
-                        "type": "string",
+                        "type": ["string", "array"],
+                        "items": {"type": "string"},
                         "title": f"{title_prefix}{linter.name}: Including Regex",
                         "x-doc-key": "config-filtering",
                     },
@@ -1642,7 +1645,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                             if "project" in linter.supported_cli_lint_modes
                             else ""
                         ),
-                        "type": "string",
+                        "type": ["string", "array"],
+                        "items": {"type": "string"},
                         "title": f"{title_prefix}{linter.name}: Excluding Regex",
                         "x-doc-key": "config-filtering",
                     },

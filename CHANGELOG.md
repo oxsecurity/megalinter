@@ -12,6 +12,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Core
 
+  - Allow `FILTER_REGEX_INCLUDE` and `FILTER_REGEX_EXCLUDE` (global, per-descriptor and per-linter) to be defined as a list of regexes combined with a logical OR, so filter regexes can be appended across `EXTENDS` configs via `CONFIG_PROPERTIES_TO_APPEND`; single-string values remain fully supported, fixes [#8361](https://github.com/oxsecurity/megalinter/issues/8361)
   - Add `ENABLE_DISABLE_LINTERS_PRIORITY` variable to let `DISABLE_LINTERS` override `ENABLE_LINTERS` when a linter is in both lists (e.g. to trim an inherited `ENABLE_LINTERS` list via `EXTENDS`), fixes [#8296](https://github.com/oxsecurity/megalinter/issues/8296)
   - Add `supported_cli_lint_modes` descriptor property to declare which CLI lint modes (`file`, `list_of_files`, `project`) each linter supports, generate `success`/`failure` tests for every supported mode, and reject a `<LINTER>_CLI_LINT_MODE` override targeting an unsupported mode with an explicit error, fixes [#7120](https://github.com/oxsecurity/megalinter/issues/7120)
 
