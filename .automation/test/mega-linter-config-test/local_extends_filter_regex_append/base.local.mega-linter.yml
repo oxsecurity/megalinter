@@ -1,0 +1,4 @@
+FILTER_REGEX_INCLUDE:
+  - "(src)"
+FILTER_REGEX_EXCLUDE:
+  - "(base_excluded)"

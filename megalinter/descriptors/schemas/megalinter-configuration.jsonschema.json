@@ -8788,25 +8788,45 @@
     },
     "FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/FILTER_REGEX_EXCLUDE",
-      "description": "Regular expression defining which files will be excluded from linting",
+      "description": "Regular expression(s) defining which files will be excluded from linting. Can be a single regex string or a list of regexes combined with a logical OR",
       "examples": [
         "(\\.automation/test|docs/javascripts|docs/overrides|flavors|clj-kondo|TEMPLATES)",
-        "(src/test)"
+        "(src/test)",
+        [
+          "(src/test)",
+          "(docs/overrides)"
+        ]
       ],
+      "items": {
+        "type": "string"
+      },
       "title": "Excluding regex filter",
-      "type": "string",
+      "type": [
+        "string",
+        "array"
+      ],
       "x-category": "GENERAL",
       "x-order": 200020,
       "x-section": "SCOPE"
     },
     "FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/FILTER_REGEX_INCLUDE",
-      "description": "Regular expression defining which files will be processed by linters",
+      "description": "Regular expression(s) defining which files will be processed by linters. Can be a single regex string or a list of regexes combined with a logical OR",
       "examples": [
-        "(src/)"
+        "(src/)",
+        [
+          "(src/)",
+          "(lib/)"
+        ]
       ],
+      "items": {
+        "type": "string"
+      },
       "title": "Including regex filter",
-      "type": "string",
+      "type": [
+        "string",
+        "array"
+      ],
       "x-category": "GENERAL",
       "x-order": 200010,
       "x-section": "SCOPE"

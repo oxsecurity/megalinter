@@ -834,9 +834,15 @@ class Megalinter:
                 "- File names (regex): " + ", ".join(sorted(self.file_names_regex))
             )
         if self.filter_regex_include is not None:
-            logging.info("- Including regex: " + self.filter_regex_include)
+            logging.info(
+                "- Including regex: "
+                + ", ".join(utils.normalize_regex_filter(self.filter_regex_include))
+            )
         if self.filter_regex_exclude is not None:
-            logging.info("- Excluding regex: " + self.filter_regex_exclude)
+            logging.info(
+                "- Excluding regex: "
+                + ", ".join(utils.normalize_regex_filter(self.filter_regex_exclude))
+            )
 
         # List git ignored files if necessary
         ignored_files = []

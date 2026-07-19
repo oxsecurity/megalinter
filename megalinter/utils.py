@@ -10,7 +10,7 @@ import urllib.parse
 import warnings
 from fnmatch import fnmatch
 from pathlib import Path
-from typing import Any, Optional, Pattern, Sequence
+from typing import Any, Optional, Pattern, Sequence, Union
 
 import git
 import regex
@@ -122,10 +122,23 @@ def get_excluded_directories(request_id):
     return result
 
 
+# Flatten None, a single regex string, or a (possibly nested) list of regex strings
+# into a flat list of non-empty regex strings.
+def normalize_regex_filter(value) -> Sequence[str]:
+    if value is None:
+        return []
+    if isinstance(value, str):
+        return [value] if value != "" else []
+    result = []
+    for item in value:
+        result += normalize_regex_filter(item)
+    return result
+
+
 def filter_files(
     all_files: Sequence[str],
-    filter_regex_include: Optional[str],
-    filter_regex_exclude: Sequence[str],
+    filter_regex_include: Optional[Union[str, Sequence[str]]],
+    filter_regex_exclude: Optional[Union[str, Sequence[str]]],
     file_names_regex: Sequence[str],
     file_extensions: Any,
     ignored_files: Optional[Sequence[str]],
@@ -138,15 +151,12 @@ def filter_files(
     workspace: str = "",
 ) -> Sequence[str]:
     file_extensions = frozenset(file_extensions)
-    filter_regex_include_object = (
-        re.compile(filter_regex_include) if filter_regex_include else None
-    )
-    filter_regex_exclude_objects = []
-    for filter_regex_exclude_item in filter_regex_exclude:
-        filter_regex_exclude_object = (
-            re.compile(filter_regex_exclude_item) if filter_regex_exclude_item else None
-        )
-        filter_regex_exclude_objects += [filter_regex_exclude_object]
+    filter_regex_include_objects = [
+        re.compile(item) for item in normalize_regex_filter(filter_regex_include)
+    ]
+    filter_regex_exclude_objects = [
+        re.compile(item) for item in normalize_regex_filter(filter_regex_exclude)
+    ]
     file_names_regex_object = re.compile("|".join(file_names_regex))
     filtered_files = []
     file_contains_regex_object = (
@@ -183,20 +193,22 @@ def filter_files(
 
         base_file_name = os.path.basename(file)
         _, file_extension = os.path.splitext(base_file_name)
-        # Skip according to FILTER_REGEX_INCLUDE
-        if filter_regex_include_object and (
-            not filter_regex_include_object.search(file)
+        # Skip according to FILTER_REGEX_INCLUDE list (kept if matching any, logical OR)
+        if filter_regex_include_objects and not any(
+            filter_regex_include_object.search(file)
             # Compatibility with v6 regexes
-            and not filter_regex_include_object.search(file_with_workspace)
+            or filter_regex_include_object.search(file_with_workspace)
+            for filter_regex_include_object in filter_regex_include_objects
         ):
             continue
-        # Skip according to FILTER_REGEX_EXCLUDE list
+        # Skip according to FILTER_REGEX_EXCLUDE list (excluded if matching any, logical OR)
         excluded_by_regex = False
         for filter_regex_exclude_object in filter_regex_exclude_objects:
-            if filter_regex_exclude_object and (
-                filter_regex_exclude_object.search(file)
+            if filter_regex_exclude_object.search(
+                file
+            ) or filter_regex_exclude_object.search(
                 # Compatibility with v6 regexes
-                or filter_regex_exclude_object.search(file_with_workspace)
+                file_with_workspace
             ):
                 excluded_by_regex = True
                 break
