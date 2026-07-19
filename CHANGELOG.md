@@ -122,6 +122,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [php-cs-fixer](https://cs.symfony.com/) from 3.95.13 to **3.95.15** on 2026-07-19
   - [codespell](https://github.com/codespell-project/codespell) from 2.4.2 to **2.4.3** on 2026-07-19
   - [terragrunt](https://docs.terragrunt.com/reference/cli/commands/hcl/fmt/) from 1.1.0 to **1.1.1** on 2026-07-19
+  - [djlint](https://djlint.com/) from 1.40.7 to **1.40.10** on 2026-07-19
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.21 to **0.15.22** on 2026-07-19
+  - [ruff](https://github.com/astral-sh/ruff) from 0.15.21 to **0.15.22** on 2026-07-19
 <!-- linter-versions-end -->
 
 ## [v9.6.0] - 2026-06-28

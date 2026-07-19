@@ -29,7 +29,7 @@ For example, define `HTML_DJLINT_ARGUMENTS: ["--profile", "django"]` to select d
 
 ## djlint documentation
 
-- Version in MegaLinter: **1.40.7**
+- Version in MegaLinter: **1.40.10**
 - Visit [Official Web Site](https://djlint.com/){target=_blank}
 - See [How to configure djlint rules](https://djlint.com/docs/configuration/){target=_blank}
 - See [How to disable djlint rules in files](https://djlint.com/docs/ignoring-code/){target=_blank}
@@ -199,8 +199,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=djlint
-ARG PIP_DJLINT_VERSION=1.40.7
+ARG PIP_DJLINT_VERSION=1.40.10
 ```
 
 - PIP packages (Python):
-  - [djlint==1.40.7](https://pypi.org/project/djlint/1.40.7)
+  - [djlint==1.40.10](https://pypi.org/project/djlint/1.40.10)
