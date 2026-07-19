@@ -117,6 +117,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 1.46.0 to **1.48.0** on 2026-07-18
   - [rumdl](https://github.com/rvben/rumdl) from 0.2.34 to **0.2.36** on 2026-07-19
   - [checkov](https://www.checkov.io/) from 3.3.6 to **3.3.8** on 2026-07-19
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.49.0 to **0.49.1** on 2026-07-19
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.13 to **3.95.15** on 2026-07-19
+  - [codespell](https://github.com/codespell-project/codespell) from 2.4.2 to **2.4.3** on 2026-07-19
+  - [terragrunt](https://docs.terragrunt.com/reference/cli/commands/hcl/fmt/) from 1.1.0 to **1.1.1** on 2026-07-19
 <!-- linter-versions-end -->
 
 ## [v9.6.0] - 2026-06-28

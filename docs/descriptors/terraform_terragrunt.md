@@ -23,7 +23,7 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 
 ## terragrunt documentation
 
-- Version in MegaLinter: **1.1.0**
+- Version in MegaLinter: **1.1.1**
 - Visit [Official Web Site](https://docs.terragrunt.com/reference/cli/commands/hcl/fmt/){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/quick-start/#add-terragrunthcl-to-your-project){target=_blank}
 
