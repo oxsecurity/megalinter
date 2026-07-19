@@ -274,7 +274,7 @@ ARG NPM_PRETTIER_VERSION=3.9.5
 # renovate: datasource=npm depName=prettyjson
 ARG NPM_PRETTYJSON_VERSION=1.2.5
 # renovate: datasource=npm depName=typescript-eslint
-ARG NPM_TYPESCRIPT_ESLINT_VERSION=8.63.0
+ARG NPM_TYPESCRIPT_ESLINT_VERSION=8.64.0
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 ```
@@ -291,7 +291,7 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
   - [eslint-plugin-promise@7.3.0](https://www.npmjs.com/package/eslint-plugin-promise/v/7.3.0)
   - [prettier@3.9.5](https://www.npmjs.com/package/prettier/v/3.9.5)
   - [prettyjson@1.2.5](https://www.npmjs.com/package/prettyjson/v/1.2.5)
-  - [typescript-eslint@8.63.0](https://www.npmjs.com/package/typescript-eslint/v/8.63.0)
+  - [typescript-eslint@8.64.0](https://www.npmjs.com/package/typescript-eslint/v/8.64.0)
   - [@microsoft/eslint-formatter-sarif@3.1.0](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/3.1.0)
 
 ## Known errors and resolutions
