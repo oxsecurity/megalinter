@@ -12603,7 +12603,7 @@
 <p>For example, define <code>HTML_DJLINT_ARGUMENTS: ["--profile", "django"]</code> to select django format</p>
 <h2 id="djlint-documentation">djlint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.40.10</strong></li>
+<li>Version in MegaLinter: <strong>1.41.0</strong></li>
 <li>Visit <a href="https://djlint.com/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://djlint.com/docs/configuration/" target="_blank">How to configure djlint rules</a></li>
 <li>See <a href="https://djlint.com/docs/ignoring-code/" target="_blank">How to disable djlint rules in files</a></li>
@@ -12898,6 +12898,8 @@ Options:
   --configuration FILE            Path to global configuration file in
                                   djlint.toml, .djlint.toml, or .djlintrc
                                   format
+  --rules FILE                    Path to custom rules file in
+                                  .djlint_rules.yaml format
   --statistics                    Count the number of occurrences of each
                                   error/warning code.
   --include TEXT                  Codes to include. ex: "H014,H017"
@@ -12944,11 +12946,11 @@ Options:
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=pypi depName=djlint
-ARG PIP_DJLINT_VERSION=1.40.10
+ARG PIP_DJLINT_VERSION=1.41.0
 </code></pre>
 <ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/djlint/1.40.10">djlint==1.40.10</a></li>
+<li><a href="https://pypi.org/project/djlint/1.41.0">djlint==1.41.0</a></li>
 </ul>
 </li>
 </ul>

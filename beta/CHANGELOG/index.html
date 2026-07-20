@@ -15763,6 +15763,7 @@
 <li>
 <p>Fixes</p>
 <ul>
+<li>Treat zero matching SARIF findings as a valid result without logging the entire report, fixes <a href="https://github.com/oxsecurity/megalinter/issues/8295">#8295</a></li>
 <li>Remove invalid SARIF fixes with empty <code>artifactChanges</code> arrays before report aggregation, fixes <a href="https://github.com/oxsecurity/megalinter/issues/8474">#8474</a></li>
 <li>Write <code>REPOSITORY_CHECKOV</code>'s transient GitHub-config scan directory (<code>branch_protection_rules.json</code> and similar) to a hidden <code>.checkov-github-conf</code> subfolder of the MegaLinter report folder instead of the repository root, so the artifact stays out of the linted tree (gitignored, excluded from file discovery, and skipped by project-mode linters), extending the earlier ansible-lint race-condition fix (#8092)</li>
 <li>Make remote configuration loading resilient to transient network failures by adding a request timeout and bounded retries with backoff when fetching <code>MEGALINTER_CONFIG</code> and <code>EXTENDS</code> files over HTTP (fixes intermittent <code>config_test</code> failures caused by <code>raw.githubusercontent.com</code> CDN cache lag)</li>
@@ -15868,6 +15869,7 @@
 <li><a href="https://github.com/astral-sh/ruff">ruff</a> from 0.15.21 to <strong>0.15.22</strong> on 2026-07-19</li>
 <li><a href="https://github.com/rvben/rumdl">rumdl</a> from 0.2.36 to <strong>0.2.37</strong> on 2026-07-19</li>
 <li><a href="https://github.com/terraform-linters/tflint">tflint</a> from 0.63.1 to <strong>0.64.0</strong> on 2026-07-19</li>
+<li><a href="https://djlint.com/">djlint</a> from 1.40.10 to <strong>1.41.0</strong> on 2026-07-20</li>
 </ul>
 </li>
 </ul>
