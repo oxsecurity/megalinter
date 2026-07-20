@@ -9,9 +9,10 @@ import os
 import tempfile
 import unittest
 import uuid
+from types import SimpleNamespace
 from unittest.mock import patch
 
-from megalinter import Linter, MegaLinter, utils_reporter, utilstest
+from megalinter import Linter, MegaLinter, utils_reporter, utils_sarif, utilstest
 from megalinter.constants import DEFAULT_SARIF_REPORT_FILE_NAME
 from megalinter.reporters.SarifReporter import SarifReporter
 
@@ -92,6 +93,43 @@ class mega_linter_3_sarif_test(unittest.TestCase):
             os.path.isfile(expected_output_file),
             "Output aggregated SARIF file " + expected_output_file + " should exist",
         )
+
+    def test_sarif_fix_removes_empty_artifact_changes(self):
+        linter = SimpleNamespace(
+            name="BASH_SHELLCHECK", get_linter_version=lambda: "0.11.0"
+        )
+        valid_fix = {
+            "artifactChanges": [
+                {
+                    "artifactLocation": {"uri": "test.sh"},
+                    "replacements": [],
+                }
+            ]
+        }
+        sarif = {
+            "runs": [
+                {
+                    "results": [
+                        {
+                            "fixes": [
+                                {"artifactChanges": []},
+                                valid_fix,
+                            ]
+                        },
+                        {"fixes": [{"description": {"text": "["}}]},
+                    ]
+                }
+            ]
+        }
+
+        with patch(
+            "megalinter.utils_sarif.get_linter_doc_url",
+            return_value="https://megalinter.io/",
+        ):
+            fixed_sarif = utils_sarif.fix_sarif(sarif, linter)
+
+        self.assertEqual(fixed_sarif["runs"][0]["results"][0]["fixes"], [valid_fix])
+        self.assertNotIn("fixes", fixed_sarif["runs"][0]["results"][1])
 
     def test_api_output(self):
         self.before_start()

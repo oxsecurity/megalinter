@@ -34,6 +34,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Fixes
 
+  - Remove invalid SARIF fixes with empty `artifactChanges` arrays before report aggregation, fixes [#8474](https://github.com/oxsecurity/megalinter/issues/8474)
   - Write `REPOSITORY_CHECKOV`'s transient GitHub-config scan directory (`branch_protection_rules.json` and similar) to a hidden `.checkov-github-conf` subfolder of the MegaLinter report folder instead of the repository root, so the artifact stays out of the linted tree (gitignored, excluded from file discovery, and skipped by project-mode linters), extending the earlier ansible-lint race-condition fix (#8092)
   - Make remote configuration loading resilient to transient network failures by adding a request timeout and bounded retries with backoff when fetching `MEGALINTER_CONFIG` and `EXTENDS` files over HTTP (fixes intermittent `config_test` failures caused by `raw.githubusercontent.com` CDN cache lag)
   - Disable `TERRAFORM_TERRASCAN` (upstream repo archived by Tenable, unmaintained) and `SQL_TSQLLINT` (no upstream release since 2024-09), as both ship unpatched CVEs with no prospect of a fixed release
