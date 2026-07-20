@@ -993,7 +993,7 @@ common-ancestor-path@^2.0.0:
   resolved "https://registry.yarnpkg.com/common-ancestor-path/-/common-ancestor-path-2.0.0.tgz#f1d361aea9236aad5b92a0ff5b9df1422dd360ff"
   integrity sha512-dnN3ibLeoRf2HNC+OlCiNc5d2zxbLJXOtiZUudNFSXZrNSydxcCsSpRzXwfu7BBWCIfHPw+xTayeBvJCP/D8Ng==
 
-commondir@^1.0.1:
+commondir@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/commondir/-/commondir-1.0.1.tgz#ddd800da0c66127393cca5950ea968a3aaf1253b"
   integrity sha512-W9pAhw0ja1Edb5GVdIF1mjZw/ASI0AlShXM83UUGe2DVr5TdAPEA1OA8m/g8zWp9x6On7gqufY+FatDbC3MDQg==
@@ -1109,10 +1109,10 @@ editions@^6.21.0:
   dependencies:
     version-range "^4.15.0"
 
-ejs@^5.0.1:
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/ejs/-/ejs-5.0.2.tgz#cb8a7922ec1e71193b2507942250e230e200de79"
-  integrity sha512-IpbUaI/CAW86l3f+T8zN0iggSc0LmMZLcIW5eRVStLVNCoTXkE0YlncbbH50fp8Cl6zHIky0sW2uUbhBqGw0Jw==
+ejs@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/ejs/-/ejs-6.0.1.tgz#88ea8ce00335c3575d7c3602dd76e84b0bd60f43"
+  integrity sha512-UaaM14yby8U3k02ihS1Bmj5Kz2d7CCQM1scxpgs4Mhkq8F1wR2gl3+Ts4h5Ne4Mnt7M9m4Dw7jsuMr3+xO4vZA==
 
 emoji-regex@^8.0.0:
   version "8.0.0"
@@ -1547,9 +1547,9 @@ glob@^13.0.0:
     path-scurry "^2.0.2"
 
 globby@^16.2.0:
-  version "16.2.1"
-  resolved "https://registry.yarnpkg.com/globby/-/globby-16.2.1.tgz#90b86ed79851bea0ee7170302456b2bc2b1ad707"
-  integrity sha512-JmsqJalahxxgW8V2ecSQ2G7UjPlI9cpKdrkG9KoNiXhd/YslXOTEB0cViENWUznuovIuNT+FkMbraDGjr4FCUg==
+  version "16.2.2"
+  resolved "https://registry.yarnpkg.com/globby/-/globby-16.2.2.tgz#bc1551e571775afddc8bac6313a376ea9a2753aa"
+  integrity sha512-NLvV9ubZ6NDsJaOpKPy3cQeJpKi9DcWiyCiFUpJPA0YihRqiE6RWaLUmgNNPr8MgPpLZjnBjSmou7uZBRJv9wA==
   dependencies:
     "@sindresorhus/merge-streams" "^4.0.0"
     fast-glob "^3.3.3"
@@ -2052,19 +2052,19 @@ math-intrinsics@^1.1.0:
   integrity sha512-/IXtbwEk5HTPyEwyKX6hGkYXxM9nbj64B+ilVJnC/R6B0pH5G4V3b0pVbL7DBj4tkhBAppbQUlf6F6Xl9LHu1g==
 
 mem-fs-editor@^12.0.4:
-  version "12.0.4"
-  resolved "https://registry.yarnpkg.com/mem-fs-editor/-/mem-fs-editor-12.0.4.tgz#234bcb93109be2e36b45930a20e83a86a547ee9a"
-  integrity sha512-gc8b4VlisaGp5W+ot2f4Xc8jUgKnMn5UR2mKsdm8UdbESYCdSiQKqioktPu8gJ0Uxd8gV/m/M16Pp5n1Ge8pjA==
+  version "12.0.6"
+  resolved "https://registry.yarnpkg.com/mem-fs-editor/-/mem-fs-editor-12.0.6.tgz#62957dc373f3414f1b5936030e2aee1fa8cef9c8"
+  integrity sha512-I8SCe5xl6kVaoiJTJg33aW/s5wsvjG61kXy3TzH17tr8ZfgkBZFDTBQqwcZMSKx7VBAYgQFJEj3f38qXIWE44Q==
   dependencies:
     "@types/ejs" "^3.1.5"
     "@types/picomatch" "^4.0.2"
     binaryextensions "^6.11.0"
-    commondir "^1.0.1"
+    commondir "^1.0.0"
     debug "^4.4.3"
     deep-extend "^0.6.0"
-    ejs "^5.0.1"
+    ejs "^6.0.1"
     isbinaryfile "5.0.7"
-    minimatch "^10.2.4"
+    minimatch "^10.2.5"
     multimatch "^8.0.0"
     normalize-path "^3.0.0"
     textextensions "^6.11.0"
@@ -2609,9 +2609,9 @@ prelude-ls@^1.2.1:
   integrity sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==
 
 pretty-bytes@^7.1.0:
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/pretty-bytes/-/pretty-bytes-7.1.0.tgz#d788c9906241dbdcd4defab51b6d7470243db9bd"
-  integrity sha512-nODzvTiYVRGRqAOvE84Vk5JDPyyxsVk0/fbA/bq7RqlnhksGpset09XTxbpvLTIjoaF7K8Z8DG8yHtKGTPSYRw==
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/pretty-bytes/-/pretty-bytes-7.1.1.tgz#f1dd1a294396b78d6d1698a034bf447eed060b3c"
+  integrity sha512-X+vn9z8nOFZQlxOLmfJ0iKDdMD7jYTsTW12OAlCpdoE3Igik6L37pugIZi+N3usuyp5McfgKPWi12q3zvHLeGQ==
 
 pretty-ms@^9.2.0:
   version "9.3.0"
