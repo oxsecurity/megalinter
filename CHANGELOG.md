@@ -128,6 +128,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/astral-sh/ruff) from 0.15.21 to **0.15.22** on 2026-07-19
   - [rumdl](https://github.com/rvben/rumdl) from 0.2.36 to **0.2.37** on 2026-07-19
   - [tflint](https://github.com/terraform-linters/tflint) from 0.63.1 to **0.64.0** on 2026-07-19
+  - [djlint](https://djlint.com/) from 1.40.10 to **1.41.0** on 2026-07-20
 <!-- linter-versions-end -->
 
 ## [v9.6.0] - 2026-06-28

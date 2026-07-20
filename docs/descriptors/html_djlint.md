@@ -29,7 +29,7 @@ For example, define `HTML_DJLINT_ARGUMENTS: ["--profile", "django"]` to select d
 
 ## djlint documentation
 
-- Version in MegaLinter: **1.40.10**
+- Version in MegaLinter: **1.41.0**
 - Visit [Official Web Site](https://djlint.com/){target=_blank}
 - See [How to configure djlint rules](https://djlint.com/docs/configuration/){target=_blank}
 - See [How to disable djlint rules in files](https://djlint.com/docs/ignoring-code/){target=_blank}
@@ -152,6 +152,8 @@ Options:
   --configuration FILE            Path to global configuration file in
                                   djlint.toml, .djlint.toml, or .djlintrc
                                   format
+  --rules FILE                    Path to custom rules file in
+                                  .djlint_rules.yaml format
   --statistics                    Count the number of occurrences of each
                                   error/warning code.
   --include TEXT                  Codes to include. ex: "H014,H017"
@@ -199,8 +201,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=djlint
-ARG PIP_DJLINT_VERSION=1.40.10
+ARG PIP_DJLINT_VERSION=1.41.0
 ```
 
 - PIP packages (Python):
-  - [djlint==1.40.10](https://pypi.org/project/djlint/1.40.10)
+  - [djlint==1.41.0](https://pypi.org/project/djlint/1.41.0)
