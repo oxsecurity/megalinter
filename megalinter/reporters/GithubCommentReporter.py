@@ -72,9 +72,19 @@ class GithubCommentReporter(Reporter):
             run_id = config.get(self.master.request_id, "GITHUB_RUN_ID")
             sha = config.get(self.master.request_id, "GITHUB_SHA")
 
+            forgejo_actions = config.get(self.master.request_id, "FORGEJO_ACTIONS", "false")
+            gitea_actions = config.get(self.master.request_id, "GITEA_ACTIONS", "false")
+
             if config.get(self.master.request_id, "CI_ACTION_RUN_URL", "") != "":
                 action_run_url = config.get(
                     self.master.request_id, "CI_ACTION_RUN_URL", ""
+                )
+            elif forgejo_actions == "true":
+                # Forgejo issue https://codeberg.org/forgejo/forgejo/issues/611
+                forgejo_run_number = config.get(self.master.request_id, "FORGEJO_RUN_NUMBER", "")
+                forgejo_run_attempt = config.get(self.master.request_id, "FORGEJO_RUN_ATTEMPT", "")
+                action_run_url = (
+                    f"{github_server_url}/{github_repo}/actions/runs/{forgejo_run_number}/jobs/0/attempt/{forgejo_run_attempt}"
                 )
             elif run_id is not None:
                 action_run_url = (
@@ -107,7 +117,11 @@ class GithubCommentReporter(Reporter):
             # Try to get PR from GITHUB_REF
             pr_list = []
             ref = config.get(self.master.request_id, "GITHUB_REF", "")
-            m = re.compile("refs/pull/(\\d+)/merge").match(ref)
+            # Forgejo Gitea issue https://github.com/go-gitea/gitea/issues/27039
+            if forgejo_actions == "true" or gitea_actions == "true":
+                m = re.compile("refs/pull/(\\d+)/head").match(ref)
+            else:
+                m = re.compile("refs/pull/(\\d+)/merge").match(ref)
             if m is not None:
                 pr_id = m.group(1)
                 logging.debug(f"Identified PR#{pr_id} from environment")
@@ -115,7 +129,10 @@ class GithubCommentReporter(Reporter):
                     pr_list = [repo.get_pull(int(pr_id))]
                 except Exception as e:
                     logging.warning(f"Could not fetch PR#{pr_id}: {e}")
-            if pr_list is None or len(pr_list) == 0:
+            # Forgejo Gitea issue:
+            # Is not /repos/{owner}/{repo}/commits/{ref} but /repos/{owner}/{repo}/git/commits/{sha}
+            # Will fail with a 404
+            if (pr_list is None or len(pr_list) == 0) and forgejo_actions != "true" and gitea_actions != "true":
                 # If not found with GITHUB_REF, try to find PR from commit
                 try:
                     commit = repo.get_commit(sha=sha)
@@ -137,6 +154,8 @@ class GithubCommentReporter(Reporter):
                 # Check if there is already a comment from MegaLinter
                 # start searching from the most recent comment, backwards.
                 existing_comment = None
+                # Forgejo Gitea issue:
+                # Wrong ref in PR object
                 for comment in pr.get_issue_comments().reversed:
                     if marker in comment.body:
                         existing_comment = comment
