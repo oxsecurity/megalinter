@@ -130,6 +130,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rumdl](https://github.com/rvben/rumdl) from 0.2.36 to **0.2.37** on 2026-07-19
   - [tflint](https://github.com/terraform-linters/tflint) from 0.63.1 to **0.64.0** on 2026-07-19
   - [djlint](https://djlint.com/) from 1.40.10 to **1.41.0** on 2026-07-20
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.53.0 to **1.53.1** on 2026-07-21
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 10.0.301 to **10.0.302** on 2026-07-21
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.3 to **7.6.4** on 2026-07-21
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.3 to **7.6.4** on 2026-07-21
+  - [syft](https://github.com/anchore/syft) from 1.48.0 to **1.49.0** on 2026-07-21
 <!-- linter-versions-end -->
 
 ## [v9.6.0] - 2026-06-28
