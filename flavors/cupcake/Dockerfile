@@ -162,7 +162,7 @@ ARG DOTENV_LINTER_VERSION=4.0.0
 # renovate: datasource=github-tags depName=golangci/golangci-lint
 ARG GO_GOLANGCI_LINT_VERSION=2.12.2
 # renovate: datasource=npm depName=graphql
-ARG NPM_GRAPHQL_VERSION=16.14.2
+ARG NPM_GRAPHQL_VERSION=17.0.2
 # renovate: datasource=npm depName=graphql-schema-linter
 ARG NPM_GRAPHQL_SCHEMA_LINTER_VERSION=3.0.1
 # renovate: datasource=npm depName=npm-groovy-lint

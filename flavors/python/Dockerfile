@@ -137,7 +137,7 @@ ARG NPM_STYLELINT_SCSS_VERSION=7.2.0
 # renovate: datasource=github-releases depName=dotenv-linter/dotenv-linter extractVersion=^v(?<version>.+)$
 ARG DOTENV_LINTER_VERSION=4.0.0
 # renovate: datasource=npm depName=graphql
-ARG NPM_GRAPHQL_VERSION=16.14.2
+ARG NPM_GRAPHQL_VERSION=17.0.2
 # renovate: datasource=npm depName=graphql-schema-linter
 ARG NPM_GRAPHQL_SCHEMA_LINTER_VERSION=3.0.1
 # renovate: datasource=npm depName=npm-groovy-lint
