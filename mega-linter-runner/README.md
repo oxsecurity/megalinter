@@ -117,6 +117,13 @@ The options are only related to mega-linter-runner. For MegaLinter options, plea
 
 _You can also use `npx mega-linter-runner` if you do not want to install the package_
 
+> [!NOTE]
+> If you are on an SELinux-confined system (e.g. Fedora, RHEL, CentOS), set the `SELINUX_MODE` environment variable as follows in your shell before running mega-linter-runner.
+>
+> ```shell
+> export SELINUX_MODE=$(getenforce)
+> ```
+
 ### Examples
 
 ```shell
