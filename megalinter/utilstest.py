@@ -798,7 +798,10 @@ def test_linter_format_fix(linter, test_self):
                 for li in difflib.ndiff(content_expected, content_produced)
                 if li[0] != " "
             ]
-            assert (len(list(diffs))) > 0, f"No changes in the {file} file"
+            assert (len(list(diffs))) > 0, (
+                f"No changes in the {file} file: linter [{linter_name}] produced no "
+                f"modifications when a fix was expected. Linter output:\n{output}"
+            )
 
     # Clean up the temp workspace (no git checkout needed)
     shutil.rmtree(tmp_workspace, ignore_errors=True)

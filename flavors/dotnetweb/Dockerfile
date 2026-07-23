@@ -539,6 +539,7 @@ esac \
 # CSHARP installation
     && apk add --no-cache dotnet10-sdk && install -d /usr/local/dotnet-tools
 ENV PATH="${PATH}:/usr/local/dotnet-tools"
+ENV DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_NOLOGO=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 MSBUILDDISABLENODEREUSE=1
 # KOTLIN installation
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
@@ -559,6 +560,8 @@ ENV PATH="$JAVA_HOME/bin:${PATH}"
 # RUN apk add --no-cache dotnet10-sdk && install -d /usr/local/dotnet-tools
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/usr/local/dotnet-tools"
+# Next line commented because already managed by another linter
+# ENV DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_NOLOGO=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 MSBUILDDISABLENODEREUSE=1
 # actionlint installation
 # Managed with COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
 #              # shellcheck is a dependency for actionlint
