@@ -23,7 +23,7 @@ class FakeLinter:
         total_number_errors=0,
         total_number_warnings=0,
         disable_errors_if_less_than=None,
-        linter_name="fakelinter",
+        linter_name="fake_linter",
     ):
         self.status = status
         self.return_code = return_code
