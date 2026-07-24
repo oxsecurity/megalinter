@@ -18,6 +18,7 @@ from megalinter.flavor_factory import is_custom_flavor
 from megalinter.utils import blue
 from megalinter.utils_reporter import (
     build_user_notifications,
+    get_linter_status_icon,
     log_section_end,
 )
 
@@ -75,6 +76,7 @@ class ConsoleReporter(Reporter):
             "Files",
             "Fixed",
             "Errors",
+            "Max errors",
             "Warnings",
         ]
         if self.master.show_elapsed_time is True:
@@ -85,16 +87,13 @@ class ConsoleReporter(Reporter):
                 nb_fixed_cell = (
                     str(linter.number_fixed) if linter.try_fix is True else ""
                 )
-                status = (
-                    "✅"
-                    if linter.status == "success" and linter.return_code == 0
-                    else (
-                        "⚠️"
-                        if linter.status != "success" and linter.return_code == 0
-                        else "❌"
-                    )
-                )
+                status = get_linter_status_icon(linter)
                 errors = str(linter.total_number_errors)
+                max_errors = (
+                    str(linter.disable_errors_if_less_than)
+                    if linter.disable_errors_if_less_than is not None
+                    else ""
+                )
                 warnings = str(linter.total_number_warnings)
                 if linter.cli_lint_mode == "project":
                     found = "n/a"
@@ -108,6 +107,7 @@ class ConsoleReporter(Reporter):
                     found,
                     nb_fixed_cell,
                     errors,
+                    max_errors,
                     warnings,
                 ]
                 if self.master.show_elapsed_time is True:
@@ -123,6 +123,7 @@ class ConsoleReporter(Reporter):
             4: "right",
             5: "right",
             6: "right",
+            7: "right",
         }
         # Output table in console
         logging.info("")

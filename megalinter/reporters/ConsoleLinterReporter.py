@@ -7,7 +7,11 @@ import logging
 
 from megalinter import Reporter, config, utils
 from megalinter.constants import ML_DOC_URL_DESCRIPTORS_ROOT
-from megalinter.utils_reporter import log_section_end, log_section_start
+from megalinter.utils_reporter import (
+    get_linter_status_icon,
+    log_section_end,
+    log_section_start,
+)
 
 
 class ConsoleLinterReporter(Reporter):
@@ -51,11 +55,27 @@ class ConsoleLinterReporter(Reporter):
         # (GitHub Actions, GitLab CI, Azure Pipelines) correctly interpret
         # the annotation commands (e.g. ::group::). Visual status cues
         # (emojis and colors) still indicate warning/error statuses.
+        status_icon = get_linter_status_icon(self.master)
+        max_errors_suffix = (
+            f" (max {self.master.disable_errors_if_less_than} allowed)"
+            if self.master.disable_errors_if_less_than is not None
+            else ""
+        )
         if self.master.return_code == 0 and self.master.status == "success":
             logging.info(
                 log_section_start(
                     f"processed-{self.master.name}",
                     utils.green(f"✅ {base_phrase} successfully - ({elapse})"),
+                )
+            )
+        elif status_icon == "☑️":
+            logging.info(
+                log_section_start(
+                    f"processed-{self.master.name}",
+                    utils.yellow(
+                        f"☑️ {base_phrase}: Found {total_errors} error(s)"
+                        + f"{max_errors_suffix} and {total_warnings} warning(s) - ({elapse})"
+                    ),
                 )
             )
         elif self.master.return_code == 0 and self.master.status != "success":
@@ -73,7 +93,8 @@ class ConsoleLinterReporter(Reporter):
                 log_section_start(
                     f"processed-{self.master.name}",
                     utils.red(
-                        f"❌ {base_phrase}: Found {total_errors} error(s) and {total_warnings} warning(s) - ({elapse})"
+                        f"❌ {base_phrase}: Found {total_errors} error(s)"
+                        + f"{max_errors_suffix} and {total_warnings} warning(s) - ({elapse})"
                     ),
                 )
             )
