@@ -165,7 +165,7 @@ ARG NPM_MARKDOWNLINT_CLI_VERSION=0.49.1
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.2.37
+ARG PIP_RUMDL_VERSION=0.2.42
 # renovate: datasource=pypi depName=pylint
 ARG PIP_PYLINT_VERSION=4.0.6
 # renovate: datasource=pypi depName=typing-extensions
