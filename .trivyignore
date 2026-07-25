@@ -179,6 +179,60 @@ CVE-2026-52869
 CVE-2026-52870
 CVE-2026-59950
 
+# --- Go deps (protolint, terragrunt, tflint, grype, syft, trivy) ---
+# google.golang.org/grpc < 1.82.1 is statically linked into these Go binaries by
+# their upstream release builds; MegaLinter pins each tool at its latest release
+# (renovate-managed) and cannot rebuild them, so there is no upgrade path until
+# upstream ships a build with grpc >= 1.82.1. Every one of these linters runs as
+# a one-shot CLI over workspace files: none of them start a gRPC server or dial
+# an attacker-controlled gRPC endpoint, so the vulnerable transport code is never
+# reached. Remove once the pinned releases embed grpc >= 1.82.1.
+GHSA-hrxh-6v49-42gf
+
+# --- Java deps (pmd, scalafix, salesforce code analyzer, npm-groovy-lint) ---
+# jline-remote-telnet is JLine's *telnet server* component, bundled transitively
+# by PMD and scalafix. MegaLinter runs both as batch CLIs and never starts JLine's
+# telnet daemon, so the listener code is never loaded.
+CVE-2026-56740
+CVE-2026-56741
+# netty is a network application framework pulled in transitively by Salesforce
+# Code Analyzer. The flagged artifacts are all server/protocol codecs — HTTP,
+# HAProxy, XML and the OCSP stapling handler. Code Analyzer runs as a local
+# static-analysis CLI: it serves no HTTP, terminates no TLS and parses no
+# attacker-supplied network frames, so none of these codecs are exercised.
+CVE-2026-55831
+CVE-2026-55833
+CVE-2026-55851
+CVE-2026-56745
+CVE-2026-56817
+CVE-2026-56820
+CVE-2026-56821
+CVE-2026-56822
+CVE-2026-59901
+GHSA-v74w-7mr3-4qg3
+# jackson-core is bundled by npm-groovy-lint and Salesforce Code Analyzer for
+# parsing their own configuration and report files, not untrusted network input.
+# Worst case is a parser DoS that aborts the linter container it runs in.
+GHSA-r7wm-3cxj-wff9
+
+# --- npm deps bundled inside linter images (gherkin-lint, salesforce code analyzer) ---
+# These live in the linters' own vendored node_modules, shipped by the upstream
+# releases MegaLinter pins; they are not MegaLinter's dependencies and cannot be
+# bumped without an upstream release. All are reached only while the linter parses
+# its own config/report data or the workspace sources it was asked to analyse, in
+# a short-lived one-shot CLI container:
+# - brace-expansion 1.1.14 and linkify-it: glob/link expansion DoS
+# - fast-uri, fast-xml-parser, js-yaml: parser DoS on crafted input
+# - axios: request-side issue in a client that only talks to Salesforce APIs
+# Remove once the pinned linter releases vendor the fixed versions.
+CVE-2026-13149
+CVE-2026-13676
+CVE-2026-16221
+CVE-2026-59869
+CVE-2026-59887
+GHSA-8r6m-32jq-jx6q
+GHSA-gcfj-64vw-6mp9
+
 # --- Dockerfile misconfigurations (REPOSITORY_TRIVY misconfig scan) ---
 # These are trivy's own Dockerfile checks fired against MegaLinter's generated
 # Dockerfiles — the images that RUN the linters. They intentionally run as root
