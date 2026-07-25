@@ -15731,6 +15731,7 @@
 <li>Add <code>ENABLE_DISABLE_LINTERS_PRIORITY</code> variable to let <code>DISABLE_LINTERS</code> override <code>ENABLE_LINTERS</code> when a linter is in both lists (e.g. to trim an inherited <code>ENABLE_LINTERS</code> list via <code>EXTENDS</code>), fixes <a href="https://github.com/oxsecurity/megalinter/issues/8296">#8296</a></li>
 <li>Add <code>supported_cli_lint_modes</code> descriptor property to declare which CLI lint modes (<code>file</code>, <code>list_of_files</code>, <code>project</code>) each linter supports, generate <code>success</code>/<code>failure</code> tests for every supported mode, and reject a <code>&lt;LINTER&gt;_CLI_LINT_MODE</code> override targeting an unsupported mode with an explicit error, fixes <a href="https://github.com/oxsecurity/megalinter/issues/7120">#7120</a></li>
 <li>Display a distinct ☑️ status icon (instead of ⚠️) for linters that found errors but did not block the run because the error count stayed under <code>&lt;LINTER&gt;_DISABLE_ERRORS_IF_LESS_THAN</code>, and show the configured maximum as <code>(max N allowed)</code> in the console linter logs plus a new <code>Max errors</code> column in the console and Pull Request summary tables</li>
+<li>Add <code>API_REPORTER_PAYLOAD_FORMAT</code> variable (<code>auto</code>, <code>loki</code> or <code>default</code>) to force the payload format sent by API Reporter, instead of only deducing it from the endpoint URL</li>
 </ul>
 </li>
 </ul>
@@ -15764,6 +15765,7 @@
 <li>
 <p>Fixes</p>
 <ul>
+<li>Make <code>test_api_output</code> resilient to remote server outages: probe several public echo endpoints, run the test with the ones that are up, retry with another server when a post fails, and skip the test when none of them is reachable, as a remote outage is not a MegaLinter issue</li>
 <li>Treat zero matching SARIF findings as a valid result without logging the entire report, fixes <a href="https://github.com/oxsecurity/megalinter/issues/8295">#8295</a></li>
 <li>Remove invalid SARIF fixes with empty <code>artifactChanges</code> arrays before report aggregation, fixes <a href="https://github.com/oxsecurity/megalinter/issues/8474">#8474</a></li>
 <li>Write <code>REPOSITORY_CHECKOV</code>'s transient GitHub-config scan directory (<code>branch_protection_rules.json</code> and similar) to a hidden <code>.checkov-github-conf</code> subfolder of the MegaLinter report folder instead of the repository root, so the artifact stays out of the linted tree (gitignored, excluded from file discovery, and skipped by project-mode linters), extending the earlier ansible-lint race-condition fix (#8092)</li>

@@ -12706,7 +12706,10 @@
 <li><strong>API_REPORTER_BASIC_AUTH_USERNAME</strong> : Basic auth username <em>(if using Basic Auth)</em></li>
 <li><strong>API_REPORTER_BASIC_AUTH_PASSWORD</strong> : Basic auth password/token <em>(if using Basic Auth)</em></li>
 <li><strong>API_REPORTER_BEARER_TOKEN</strong> : Bearer token <em>(if using bearer auth)</em></li>
+<li><strong>API_REPORTER_PAYLOAD_FORMAT</strong> : Payload format, <code>auto</code> (default), <code>loki</code> or <code>default</code></li>
 </ul>
+<p>By default (<code>auto</code>), the Loki payload format is used if the endpoint URL contains <code>loki/api/v1/push</code>, otherwise the raw MegaLinter payload is sent.
+Set <code>API_REPORTER_PAYLOAD_FORMAT=loki</code> to force the Loki format on a custom endpoint URL, or <code>default</code> to always send the raw payload.</p>
 <p>Examples of configuration:</p>
 <!-- secretlint-disable -->
 
@@ -12835,6 +12838,11 @@ linter_run,source=MegaLinter,orgIdentifier=tmpX,gitIdentifier=megalinter/tmpX,gi
 <td>API_REPORTER_BEARER_TOKEN</td>
 <td>Logs endpoint auth token</td>
 <td><!-- --></td>
+</tr>
+<tr>
+<td>API_REPORTER_PAYLOAD_FORMAT</td>
+<td>Logs payload format (<code>auto</code>, <code>loki</code> or <code>default</code>)</td>
+<td><code>auto</code></td>
 </tr>
 <tr>
 <td>API_REPORTER_METRICS_URL</td>
