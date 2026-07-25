@@ -131,7 +131,7 @@ ARG PIP_ANSIBLE_LINT_VERSION=26.6.0
 # renovate: datasource=npm depName=jscpd
 ARG NPM_JSCPD_VERSION=5.0.12
 # renovate: datasource=npm depName=stylelint
-ARG NPM_STYLELINT_VERSION=17.14.0
+ARG NPM_STYLELINT_VERSION=17.14.1
 # renovate: datasource=npm depName=stylelint-config-standard
 ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=40.0.0
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
