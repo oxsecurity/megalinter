@@ -21,6 +21,9 @@ from pytablewriter import Align, MarkdownTableWriter
 from pytablewriter.style import Style
 from redis import Redis
 
+# Most severe first, used to sort linters with issues in reports
+_ICON_SEVERITY_ORDER = {"❌": 0, "⚠️": 1, "☑️": 2, "✅": 3}
+
 
 def build_markdown_summary(reporter_self, action_run_url="", max_total_chars=40000):
     markdown_summary_type = config.get(
@@ -114,13 +117,20 @@ def build_markdown_summary_header(reporter_self, action_run_url=""):
     )
 
 
+def get_linter_status_icon(linter):
+    if linter.status == "success" and linter.return_code == 0:
+        return "✅"
+    if linter.return_code != 0:
+        return "❌"
+    # Non blocking: errors have been found but they did not make the run fail
+    if linter.disable_errors_if_less_than is not None and linter.number_errors > 0:
+        return "☑️"
+    return "⚠️"
+
+
 def get_linter_summary_data(linter, action_run_url=""):
     # Build linter status icon
-    linter_status = (
-        "✅"
-        if linter.status == "success" and linter.return_code == 0
-        else ("⚠️" if linter.status != "success" and linter.return_code == 0 else "❌")
-    )
+    linter_status = get_linter_status_icon(linter)
 
     # Build linter documentation link
     lang_lower = linter.descriptor_id.lower()
@@ -164,6 +174,11 @@ def get_linter_summary_data(linter, action_run_url=""):
         "found": found,
         "nb_fixed_cell": nb_fixed_cell,
         "errors_cell": errors_cell,
+        "max_errors_cell": (
+            str(linter.disable_errors_if_less_than)
+            if linter.disable_errors_if_less_than is not None
+            else ""
+        ),
         "warnings_cell": warnings_cell,
         "elapsed_time": (
             round(linter.elapsed_time_s, 2) if hasattr(linter, "elapsed_time_s") else 0
@@ -625,26 +640,24 @@ def _separate_linters_by_issues(linters):
 
 
 def _sort_linters_by_icon_severity(linter):
-    # Get the linter status icon to determine sorting priority
-    linter_status_icon = (
-        "✅"
-        if linter.status == "success" and linter.return_code == 0
-        else ("⚠️" if linter.status != "success" and linter.return_code == 0 else "❌")
-    )
-
-    # Return tuple for sorting: (icon_priority, linter_name)
-    # icon_priority: 0 for ❌ (error - highest priority), 1 for ⚠️ (warning), 2 for ✅ (success)
-    icon_priority = (
-        0 if linter_status_icon == "❌" else (1 if linter_status_icon == "⚠️" else 2)
-    )
+    icon_priority = _ICON_SEVERITY_ORDER[get_linter_status_icon(linter)]
     return (icon_priority, linter.linter_name.lower())
 
 
 def _build_table_content(linters, reporter_self, action_run_url):
-    table_header = ["Descriptor", "Linter", "Files", "Fixed", "Errors", "Warnings"]
+    table_header = [
+        "Descriptor",
+        "Linter",
+        "Files",
+        "Fixed",
+        "Errors",
+        "Max errors",
+        "Warnings",
+    ]
     table_column_styles = [
         Style(align=Align.LEFT),
         Style(align=Align.LEFT),
+        Style(align=Align.RIGHT),
         Style(align=Align.RIGHT),
         Style(align=Align.RIGHT),
         Style(align=Align.RIGHT),
@@ -666,6 +679,7 @@ def _build_table_content(linters, reporter_self, action_run_url):
                 linter_data["found"],
                 linter_data["nb_fixed_cell"],
                 linter_data["errors_cell"],
+                linter_data["max_errors_cell"],
                 linter_data["warnings_cell"],
             ]
             if reporter_self.master.show_elapsed_time is True:
