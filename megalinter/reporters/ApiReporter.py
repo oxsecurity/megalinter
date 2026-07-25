@@ -170,10 +170,13 @@ class ApiReporter(Reporter):
         )
 
     def format_payload(self):
-        if (
-            "loki/api/v1/push" in self.api_url
-            or self.api_url
-            == "https://jsonplaceholder.typicode.com/posts"  # For test class
+        payload_format = config.get_first_var_set(
+            self.master.request_id,
+            ["API_REPORTER_PAYLOAD_FORMAT", "NOTIF_API_PAYLOAD_FORMAT"],
+            "auto",
+        ).lower()
+        if payload_format == "loki" or (
+            payload_format == "auto" and "loki/api/v1/push" in self.api_url
         ):
             self.format_payload_loki()
             return
