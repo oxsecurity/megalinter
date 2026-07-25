@@ -151,6 +151,23 @@ CVE-2026-6322
 # Remove once roslynator.dotnet.cli ships a build with Microsoft.Build >= 17.8.29.
 CVE-2025-26646
 
+# --- .NET deps (PowerShell-based linters: arm-ttk, powershell, powershell_formatter) ---
+# System.Security.Cryptography.Xml 10.0.6 ships inside the .NET runtime bundled with
+# PowerShell 7.6.4, which is the latest release (renovate tracks PowerShell/PowerShell
+# github-tags); no PowerShell build carries the fixed 10.0.10 yet, so there is no
+# upgrade path. The assembly implements XML digital signatures and encryption
+# (SignedXml / EncryptedXml). The linters that ship it analyse ARM template JSON and
+# PowerShell scripts — they never verify, sign or decrypt XML, so the vulnerable code
+# paths are never loaded. Four of the five are DoS (CVE-2026-47302, CVE-2026-50525,
+# CVE-2026-50527, CVE-2026-50648) and one is a signature-verification bypass
+# (CVE-2026-47304) that requires the process to be validating an XML signature.
+# Remove once a PowerShell release bundles .NET >= 10.0.10.
+CVE-2026-47302
+CVE-2026-47304
+CVE-2026-50525
+CVE-2026-50527
+CVE-2026-50648
+
 # --- Python deps (semgrep) ---
 # semgrep bundles the MCP Python SDK (mcp) for its experimental `semgrep mcp` server mode.
 # All three CVEs are in the MCP server transports: HTTP session auth (CVE-2026-52869),
