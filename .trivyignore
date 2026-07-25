@@ -145,6 +145,23 @@ CVE-2026-48801
 CVE-2026-6321
 CVE-2026-6322
 
+# --- npm brace-expansion (image node packages + mega-linter-runner/yarn.lock) ---
+# CVE-2026-14257 is an unbounded-memory DoS in brace-expansion's expand(): chaining brace
+# groups keeps the result count under the `max` cap while each result string keeps growing,
+# until the Node process hits an uncatchable OOM. Availability only (CVSS A:H, no
+# confidentiality or integrity impact). brace-expansion is only reached through
+# minimatch/glob pattern expansion, and every pattern MegaLinter expands comes from the
+# repository's own .mega-linter.yml or a linter's own config file - never from network
+# traffic or any other attacker-controlled source. The worst case is a repo owner writing a
+# pathological glob in their own config and killing their own one-shot CI job; there is no
+# long-lived service to take down.
+# No upgrade path today: the fix ships only in 5.0.8, with no backport to the 1.x and 2.x
+# lines that the image's bundled node packages and mega-linter-runner/yarn.lock (2.1.2, held
+# there by minimatch's ^2.0.2 range) resolve to. Forcing 5.0.8 via a yarn `resolutions`
+# override would break minimatch's declared range and raise the runtime floor to Node >= 20.
+# Remove once minimatch and the bundled linters depend on brace-expansion >= 5.0.8.
+CVE-2026-14257
+
 # --- .NET deps (roslynator) ---
 # Microsoft.Build.Tasks.Core CVE-2025-26646 only affects projects that run the MSBuild
 # DownloadFile task, which roslynator's static analysis pass never invokes.
