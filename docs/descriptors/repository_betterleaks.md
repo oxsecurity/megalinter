@@ -43,7 +43,7 @@ betterleaks is fully compatible with your existing `.gitleaks.toml` configuratio
 
 ## betterleaks documentation
 
-- Version in MegaLinter: **1.6.1**
+- Version in MegaLinter: **1.7.0**
 - Visit [Official Web Site](https://github.com/betterleaks/betterleaks#readme){target=_blank}
 - See [How to configure betterleaks rules](https://github.com/betterleaks/betterleaks#configuration){target=_blank}
 - See [How to disable betterleaks rules in files](https://github.com/betterleaks/betterleaks#betterleaksallow){target=_blank}
@@ -161,8 +161,8 @@ Flags:
                                       3. env var BETTERLEAKS_CONFIG_TOML or GITLEAKS_CONFIG_TOML with the file content
                                       4. (target path)/.betterleaks.toml or .gitleaks.toml
                                       If none of the four options are used, then the default config will be used
-      --diagnostics string            enable diagnostics (http OR comma-separated list: cpu,mem,trace). cpu=CPU prof, mem=memory prof, trace=exec tracing, http=serve via net/http/pprof
-      --diagnostics-dir string        directory to store diagnostics output files when not using http mode (defaults to current directory)
+      --diagnostics string            enable diagnostics (http OR comma-separated list: cpu,mem,trace,rules,rules-csv). cpu=CPU prof, mem=memory prof, trace=exec tracing, rules=rule timings text, rules-csv=rule timings CSV, http=serve via net/http/pprof
+      --diagnostics-dir string        directory to store diagnostics output files when not using http mode (defaults to ./diagnostics)
       --enable-rule strings           only enable specific rules by id
       --exit-code int                 exit code when leaks have been encountered (default 1)
       --experiments string            comma-separated list of experimental features to enable
@@ -201,7 +201,7 @@ Use "betterleaks [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=ghcr.io/betterleaks/betterleaks
-ARG REPOSITORY_BETTERLEAKS_VERSION=v1.6.1
+ARG REPOSITORY_BETTERLEAKS_VERSION=v1.7.0
 FROM ghcr.io/betterleaks/betterleaks:${REPOSITORY_BETTERLEAKS_VERSION} AS betterleaks
 COPY --link --from=betterleaks /usr/bin/betterleaks /usr/bin/
 ```
