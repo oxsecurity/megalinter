@@ -1,1 +1,15 @@
 # .trivyignore format: https://trivy.dev/docs/latest/configuration/filtering/#trivyignore
+
+# --- npm brace-expansion (yarn.lock) ---
+# CVE-2026-14257 is an unbounded-memory DoS in brace-expansion's expand(): chaining brace
+# groups keeps the result count under the `max` cap while each result string keeps growing,
+# until the Node process hits an uncatchable OOM. Availability only (CVSS A:H, no
+# confidentiality or integrity impact). mega-linter-runner only reaches brace-expansion
+# through minimatch's glob expansion over patterns taken from the user's own .mega-linter.yml
+# and local file paths - never from network traffic or any other attacker-controlled source.
+# No upgrade path today: the fix ships only in 5.0.8, and both minimatch releases in the tree
+# (9.0.9 and 10.2.5, each current) still declare `brace-expansion ^2.0.2`, which resolves to
+# 2.1.2 with no backported patch on the 2.x line. Forcing 5.0.8 through a yarn `resolutions`
+# override would break minimatch's declared range and raise the runtime floor to Node >= 20.
+# Remove once minimatch depends on brace-expansion >= 5.0.8.
+CVE-2026-14257
