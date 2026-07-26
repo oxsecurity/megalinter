@@ -7,6 +7,7 @@ Unit tests for Megalinter class
 import glob
 import logging
 import os
+import re
 import tempfile
 import unittest
 import uuid
@@ -46,6 +47,11 @@ API_REPORTER_TEST_METRICS_URLS = [
 ]
 API_REPORTER_TEST_MAX_ATTEMPTS = 3
 API_REPORTER_TEST_TIMEOUT_S = 10
+# ApiReporter logs a failed post as "Error posting data to <url> (<status>)", which
+# lets the test tell a remote-side outage (5xx) from an actual MegaLinter problem
+API_REPORTER_ERROR_REGEX = re.compile(
+    r"\[Api Reporter(?: Metrics)?\] Error posting data to \S+ \((?P<status>\d{3})\)"
+)
 
 
 class mega_linter_3_sarif_test(unittest.TestCase):
@@ -214,6 +220,7 @@ class mega_linter_3_sarif_test(unittest.TestCase):
         failures = []
         used_logs_urls = []
         used_metrics_urls = []
+        attempt_outputs = []
         logs_ko = False
         metrics_ko = False
         for attempt in range(nb_attempts):
@@ -238,6 +245,7 @@ class mega_linter_3_sarif_test(unittest.TestCase):
                     "request_id": self.request_id,
                 }
             )
+            attempt_outputs += [output]
             self.assertTrue(
                 len(mega_linter.linters) > 0, "Linters have been created and run"
             )
@@ -259,6 +267,25 @@ class mega_linter_3_sarif_test(unittest.TestCase):
                 "[Api Reporter Test] Attempt "
                 f"{attempt + 1}/{nb_attempts} failed: {attempt_failures}"
             )
+        # A 5xx or a connection error means the endpoint failed on its own side, so
+        # there is nothing for MegaLinter to fix. Decide from what the reporter logged
+        # during the run rather than by re-probing: a flaky endpoint often answers
+        # again moments later, which would hide a real outage behind a red test.
+        all_output = "\n".join(attempt_outputs)
+        remote_statuses = [
+            int(match.group("status"))
+            for match in API_REPORTER_ERROR_REGEX.finditer(all_output)
+        ]
+        had_connection_error = "Connection error" in all_output
+        if (remote_statuses or had_connection_error) and all(
+            500 <= status < 600 for status in remote_statuses
+        ):
+            raise unittest.SkipTest(
+                "Remote API endpoints failed on their own side while MegaLinter was "
+                f"running (HTTP {remote_statuses or 'connection error'}). "
+                "This is a remote servers issue, not a MegaLinter one"
+            )
+
         # Last check: if the remote servers went down while MegaLinter was running,
         # skip the test instead of failing, as this is not a MegaLinter issue
         unavailable_urls = []
