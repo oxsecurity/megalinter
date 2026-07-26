@@ -39,7 +39,7 @@ description: code-analyzer-apex, code-analyzer-aura, code-analyzer-lwc, code-ana
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=@salesforce/cli
-ARG NPM_SALESFORCE_CLI_VERSION=2.143.6
+ARG NPM_SALESFORCE_CLI_VERSION=2.144.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.30.4
 # renovate: datasource=npm depName=sfdx-hardis
@@ -58,4 +58,4 @@ ENV SF_AUTOUPDATE_DISABLE=true SF_CLI_DISABLE_AUTOUPDATE=true
   - [coreutils](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=coreutils)
   - [openjdk21](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=openjdk21)
 - NPM packages (node.js):
-  - [@salesforce/cli@2.143.6](https://www.npmjs.com/package/@salesforce/cli/v/2.143.6)
+  - [@salesforce/cli@2.144.6](https://www.npmjs.com/package/@salesforce/cli/v/2.144.6)
