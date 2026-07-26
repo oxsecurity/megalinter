@@ -12642,7 +12642,7 @@
 <p>betterleaks is fully compatible with your existing <code>.gitleaks.toml</code> configuration and <code>.gitleaksignore</code> files — no changes needed to migrate. Simply disable <code>REPOSITORY_GITLEAKS</code> and enable <code>REPOSITORY_BETTERLEAKS</code>.</p>
 <h2 id="betterleaks-documentation">betterleaks documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.6.1</strong></li>
+<li>Version in MegaLinter: <strong>1.7.0</strong></li>
 <li>Visit <a href="https://github.com/betterleaks/betterleaks#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/betterleaks/betterleaks#configuration" target="_blank">How to configure betterleaks rules</a></li>
 <li>See <a href="https://github.com/betterleaks/betterleaks#betterleaksallow" target="_blank">How to disable betterleaks rules in files</a></li>
@@ -12937,8 +12937,8 @@ Flags:
                                       3. env var BETTERLEAKS_CONFIG_TOML or GITLEAKS_CONFIG_TOML with the file content
                                       4. (target path)/.betterleaks.toml or .gitleaks.toml
                                       If none of the four options are used, then the default config will be used
-      --diagnostics string            enable diagnostics (http OR comma-separated list: cpu,mem,trace). cpu=CPU prof, mem=memory prof, trace=exec tracing, http=serve via net/http/pprof
-      --diagnostics-dir string        directory to store diagnostics output files when not using http mode (defaults to current directory)
+      --diagnostics string            enable diagnostics (http OR comma-separated list: cpu,mem,trace,rules,rules-csv). cpu=CPU prof, mem=memory prof, trace=exec tracing, rules=rule timings text, rules-csv=rule timings CSV, http=serve via net/http/pprof
+      --diagnostics-dir string        directory to store diagnostics output files when not using http mode (defaults to ./diagnostics)
       --enable-rule strings           only enable specific rules by id
       --exit-code int                 exit code when leaks have been encountered (default 1)
       --experiments string            comma-separated list of experimental features to enable
@@ -12976,7 +12976,7 @@ Use "betterleaks [command] --help" for more information about a command.
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=docker depName=ghcr.io/betterleaks/betterleaks
-ARG REPOSITORY_BETTERLEAKS_VERSION=v1.6.1
+ARG REPOSITORY_BETTERLEAKS_VERSION=v1.7.0
 FROM ghcr.io/betterleaks/betterleaks:${REPOSITORY_BETTERLEAKS_VERSION} AS betterleaks
 COPY --link --from=betterleaks /usr/bin/betterleaks /usr/bin/
 </code></pre>
