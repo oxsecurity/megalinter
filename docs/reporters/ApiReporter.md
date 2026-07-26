@@ -25,6 +25,10 @@ Define the following CI/CD variables:
 - **API_REPORTER_BASIC_AUTH_USERNAME** : Basic auth username _(if using Basic Auth)_
 - **API_REPORTER_BASIC_AUTH_PASSWORD** : Basic auth password/token _(if using Basic Auth)_
 - **API_REPORTER_BEARER_TOKEN** : Bearer token _(if using bearer auth)_
+- **API_REPORTER_PAYLOAD_FORMAT** : Payload format, `auto` (default), `loki` or `default`
+
+By default (`auto`), the Loki payload format is used if the endpoint URL contains `loki/api/v1/push`, otherwise the raw MegaLinter payload is sent.
+Set `API_REPORTER_PAYLOAD_FORMAT=loki` to force the Loki format on a custom endpoint URL, or `default` to always send the raw payload.
 
 Examples of configuration:
 
@@ -148,6 +152,7 @@ The following variables must be sent to the docker run command
 | API_REPORTER_BASIC_AUTH_USERNAME         | Logs endpoint auth username                              | <!-- -->      |
 | API_REPORTER_BASIC_AUTH_PASSWORD         | Logs endpoint auth password                              | <!-- -->      |
 | API_REPORTER_BEARER_TOKEN                | Logs endpoint auth token                                 | <!-- -->      |
+| API_REPORTER_PAYLOAD_FORMAT              | Logs payload format (`auto`, `loki` or `default`)        | `auto`        |
 | API_REPORTER_METRICS_URL                 | Metrics endpoint URL                                     | <!-- -->      |
 | API_REPORTER_METRICS_BASIC_AUTH_USERNAME | Metrics endpoint auth username                           | <!-- -->      |
 | API_REPORTER_METRICS_BASIC_AUTH_PASSWORD | Metrics endpoint auth password                           | <!-- -->      |

@@ -87,6 +87,24 @@ class mega_linter_1_test(unittest.TestCase):
         self.assertIn("Linted [JAVASCRIPT] files", output)
         self.assertIn("Using [standard", output)
 
+    def test_max_errors_column_in_summary(self):
+        self.before_start()
+        mega_linter, output = utilstest.call_mega_linter(
+            {
+                "ENABLE_LINTERS": "JAVASCRIPT_ES",
+                "JAVASCRIPT_ES_DISABLE_ERRORS_IF_LESS_THAN": "1000",
+                "request_id": self.request_id,
+            }
+        )
+        self.assertTrue(
+            len(mega_linter.linters) > 0, "Linters have been created and run"
+        )
+        self.assertIn("Max errors", output)
+        self.assertIn("1000", output)
+        self.assertEqual(
+            0, mega_linter.return_code, "Errors are below the allowed maximum"
+        )
+
     def test_enable_only_one_linter(self):
         self.before_start()
         mega_linter, output = utilstest.call_mega_linter(

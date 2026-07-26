@@ -1,1 +1,7 @@
 line-length = 120
+
+[lint]
+# Ruff 0.16.0 expanded its default rule set from 59 to 413 rules; pin back to
+# the pre-0.16 defaults to avoid an unrelated mass of new findings from a
+# routine ruff version bump. See https://astral.sh/blog/ruff-v0.16.0
+select = ["E4", "E7", "E9", "F"]

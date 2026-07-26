@@ -14,6 +14,7 @@ import requests
 from megalinter import Reporter, config, utils
 from megalinter.constants import ML_DOC_URL_DESCRIPTORS_ROOT
 from megalinter.utils import get_git_context_info
+from megalinter.utils_reporter import get_linter_status_icon
 
 
 class ApiReporter(Reporter):
@@ -130,15 +131,7 @@ class ApiReporter(Reporter):
                         else "error"
                     )
                 )
-                linter_payload_data["severityIcon"] = (
-                    "✅"
-                    if linter.status == "success" and linter.return_code == 0
-                    else (
-                        "⚠️"
-                        if linter.status != "success" and linter.return_code == 0
-                        else "❌"
-                    )
-                )
+                linter_payload_data["severityIcon"] = get_linter_status_icon(linter)
                 # Linter output for humans
                 linter_payload_data["output"] = utils.normalize_log_string(
                     linter.stdout_human if linter.stdout_human else linter.stdout
@@ -148,6 +141,10 @@ class ApiReporter(Reporter):
                 if linter.cli_lint_mode != "project":
                     linter_payload_data["numberFilesFound"] = len(linter.files)
                 linter_payload_data["numberErrorsFound"] = linter.total_number_errors
+                if linter.disable_errors_if_less_than is not None:
+                    linter_payload_data["maxErrorsAllowed"] = (
+                        linter.disable_errors_if_less_than
+                    )
                 # Fixed cells
                 if linter.try_fix is True:
                     linter_payload_data["numberErrorsFixed"] = linter.number_fixed
@@ -173,10 +170,13 @@ class ApiReporter(Reporter):
         )
 
     def format_payload(self):
-        if (
-            "loki/api/v1/push" in self.api_url
-            or self.api_url
-            == "https://jsonplaceholder.typicode.com/posts"  # For test class
+        payload_format = config.get_first_var_set(
+            self.master.request_id,
+            ["API_REPORTER_PAYLOAD_FORMAT", "NOTIF_API_PAYLOAD_FORMAT"],
+            "auto",
+        ).lower()
+        if payload_format == "loki" or (
+            payload_format == "auto" and "loki/api/v1/push" in self.api_url
         ):
             self.format_payload_loki()
             return

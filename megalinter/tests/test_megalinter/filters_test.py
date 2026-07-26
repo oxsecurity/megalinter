@@ -149,3 +149,86 @@ class filters_test(unittest.TestCase):
             sorted(["target/foo.md"]),
             "check regex_exclude_multilevel",
         )
+
+    def test_filter_regex_include_list(self):
+        all_files = [
+            "src/foo.ext",
+            "lib/bar.ext",
+            "other/baz.ext",
+        ]
+        filtered_files = utils.filter_files(
+            all_files=all_files,
+            filter_regex_include=["(src)", "(lib)"],
+            filter_regex_exclude=[],
+            file_names_regex=[],
+            file_extensions=["*"],
+            ignored_files=[],
+            ignore_generated_files=False,
+        )
+        self.assertListEqual(
+            sorted(filtered_files),
+            sorted(["src/foo.ext", "lib/bar.ext"]),
+            "check regex_include_list matches any (OR)",
+        )
+
+    def test_filter_regex_include_string_still_works(self):
+        all_files = [
+            "src/foo.ext",
+            "other/baz.ext",
+        ]
+        filtered_files = utils.filter_files(
+            all_files=all_files,
+            filter_regex_include="(src)",
+            filter_regex_exclude=[],
+            file_names_regex=[],
+            file_extensions=["*"],
+            ignored_files=[],
+            ignore_generated_files=False,
+        )
+        self.assertListEqual(
+            sorted(filtered_files),
+            sorted(["src/foo.ext"]),
+            "check regex_include single string still works",
+        )
+
+    def test_filter_regex_exclude_list(self):
+        all_files = [
+            "src/foo.ext",
+            "test/bar.ext",
+            "vendor/baz.ext",
+        ]
+        filtered_files = utils.filter_files(
+            all_files=all_files,
+            filter_regex_include=None,
+            filter_regex_exclude=["(test)", "(vendor)"],
+            file_names_regex=[],
+            file_extensions=["*"],
+            ignored_files=[],
+            ignore_generated_files=False,
+        )
+        self.assertListEqual(
+            sorted(filtered_files),
+            sorted(["src/foo.ext"]),
+            "check regex_exclude_list matches any (OR)",
+        )
+
+    def test_filter_regex_exclude_nested_list(self):
+        all_files = [
+            "src/foo.ext",
+            "test/bar.ext",
+            "vendor/baz.ext",
+        ]
+        filtered_files = utils.filter_files(
+            all_files=all_files,
+            filter_regex_include=None,
+            filter_regex_exclude=[["(test)"], "(vendor)", None],
+            file_names_regex=[],
+            file_extensions=["*"],
+            ignored_files=[],
+            ignore_generated_files=False,
+        )
+        self.assertListEqual(
+            sorted(filtered_files),
+            sorted(["src/foo.ext"]),
+            "check regex_exclude nested list flattens",
+        )

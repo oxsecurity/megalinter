@@ -1709,12 +1709,6 @@ class Linter:
                     if count_results is True:
                         total_result += len(result["locations"])
 
-            # If we got here, we should have found a number of results from SARIF output
-            if total_result == 0:
-                logging.warning(
-                    f"Unable to get total {level}s from SARIF output.\nSARIF:"
-                    + str(sarif_output)
-                )
             return total_result
         except Exception as e:
             total_result = 1

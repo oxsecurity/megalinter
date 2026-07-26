@@ -146,6 +146,31 @@ class config_test(unittest.TestCase):
         self.assertEqual("(local)", config.get(request_id, "FILTER_REGEX_INCLUDE"))
         self.restore_branch_in_input_files(changed_files)
 
+    def test_local_config_extends_filter_regex_append_success(self):
+        local_config = "local.mega-linter.yml"
+        request_id = str(uuid.uuid1())
+        config.init_config(
+            request_id,
+            REPO_HOME_DEFAULT
+            + os.path.sep
+            + ".automation"
+            + os.path.sep
+            + "test"
+            + os.path.sep
+            + "mega-linter-config-test"
+            + os.path.sep
+            + "local_extends_filter_regex_append",
+            {"MEGALINTER_CONFIG": local_config},
+        )
+        self.assertEqual(
+            ["(src)", "(lib)"],
+            config.get(request_id, "FILTER_REGEX_INCLUDE"),
+        )
+        self.assertEqual(
+            ["(base_excluded)", "(local_excluded)"],
+            config.get(request_id, "FILTER_REGEX_EXCLUDE"),
+        )
+
     def test_local_config_extends_recurse_success(self):
         changed_files = self.replace_branch_in_input_files()
         local_config = "recurse.mega-linter.yml"

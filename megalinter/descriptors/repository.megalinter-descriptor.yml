@@ -71,7 +71,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=checkov
-          ARG PIP_CHECKOV_VERSION=3.3.6
+          ARG PIP_CHECKOV_VERSION=3.3.8
       pip:
         - checkov==${PIP_CHECKOV_VERSION}
     supported_platforms:
@@ -513,7 +513,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=ghcr.io/betterleaks/betterleaks
-          ARG REPOSITORY_BETTERLEAKS_VERSION=v1.6.1
+          ARG REPOSITORY_BETTERLEAKS_VERSION=v1.7.0
         - FROM ghcr.io/betterleaks/betterleaks:${REPOSITORY_BETTERLEAKS_VERSION} AS betterleaks
         - COPY --link --from=betterleaks /usr/bin/betterleaks /usr/bin/
     supported_platforms:
@@ -610,7 +610,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=anchore/grype
-          ARG REPOSITORY_GRYPE_VERSION=0.115.0
+          ARG REPOSITORY_GRYPE_VERSION=0.116.0
         - RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin
     supported_platforms:
       platform:
@@ -931,13 +931,13 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=secretlint
-          ARG NPM_SECRETLINT_VERSION=13.0.2
+          ARG NPM_SECRETLINT_VERSION=13.0.4
         - |-
           # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
-          ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=13.0.2
+          ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=13.0.4
         - |-
           # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
-          ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=13.0.2
+          ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=13.0.4
       npm:
         - secretlint@${NPM_SECRETLINT_VERSION}
         - "@secretlint/secretlint-rule-preset-recommend@${NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION}"
@@ -1006,7 +1006,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=semgrep
-          ARG PIP_SEMGREP_VERSION=1.169.0
+          ARG PIP_SEMGREP_VERSION=1.171.0
         - |-
           # Wrap semgrep so its OCaml 5 runtime does not abort with
           # "Failed to allocate signal stack for domain 0", which happens when the
@@ -1086,7 +1086,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=anchore/syft
-          ARG REPOSITORY_SYFT_VERSION=1.46.0
+          ARG REPOSITORY_SYFT_VERSION=1.49.0
         - RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOSITORY_SYFT_VERSION}/install.sh | sh -s -- -b /usr/local/bin
     supported_platforms:
       platform:
@@ -1356,7 +1356,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=trufflesecurity/trufflehog
-          ARG REPOSITORY_TRUFFLEHOG_VERSION=3.95.9
+          ARG REPOSITORY_TRUFFLEHOG_VERSION=3.96.0
         - FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
         - COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
     supported_platforms:
@@ -1440,7 +1440,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=mongodb/kingfisher
-          ARG REPOSITORY_KINGFISHER_VERSION=1.106.0
+          ARG REPOSITORY_KINGFISHER_VERSION=1.109.0
         - |
           RUN curl --silent --location https://raw.githubusercontent.com/mongodb/kingfisher/main/scripts/install-kingfisher.sh | bash -s -- /usr/local/bin --tag "v${REPOSITORY_KINGFISHER_VERSION}"
     supported_platforms:

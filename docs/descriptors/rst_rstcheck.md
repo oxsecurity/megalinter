@@ -103,7 +103,7 @@ rstcheck -c .rstcheck.cfg myfile.rst
 
 ```shell
                                                                                 
- Usage: rstcheck [OPTIONS] FILES...                                             
+ Usage: rstcheck [OPTIONS] {files}...                                           
                                                                                 
  CLI of rstcheck.
 
@@ -114,47 +114,47 @@ rstcheck -c .rstcheck.cfg myfile.rst
  Pass "-" if you want to read from stdin.
 
 ╭─ Options ────────────────────────────────────────────────────────────────────╮
-│ --config                         PATH   Config file to load. Can be a INI    │
-│                                         file or directory. If a directory is │
-│                                         passed it will be searched for       │
-│                                         .rstcheck.cfg | setup.cfg. If 'NONE' │
-│                                         is passed no config file is loaded   │
-│                                         at all.                              │
-│ --warn-unknown-settings                 Log a WARNING for unknown settings   │
-│                                         in config files. Can be hidden via   │
-│                                         --log-level.                         │
-│ --recursive              -r             Recursively search passed            │
-│                                         directories for RST files to check.  │
-│ --report-level                   LEVEL  The report level of the linting      │
-│                                         issues found. Valid levels are: INFO │
-│                                         | WARNING | ERROR | SEVERE | NONE.   │
-│                                         Defaults to INFO. Can be set in      │
-│                                         config file.                         │
-│ --log-level                      LEVEL  The log level of the application for │
-│                                         information that is not a linting    │
-│                                         issue. Valid levels are: DEBUG |     │
-│                                         INFO | WARNING | ERROR | CRITICAL.   │
-│                                         Defaults to WARNING.                 │
-│                                         [default: WARNING]                   │
-│ --ignore-directives              TEXT   Comma-separated-list of directives   │
-│                                         to add to the ignore list. Can be    │
-│                                         set in config file.                  │
-│ --ignore-roles                   TEXT   Comma-separated-list of roles to add │
-│                                         to the ignore list. Can be set in    │
-│                                         config file.                         │
-│ --ignore-substitutions           TEXT   Comma-separated-list of              │
-│                                         substitutions to add to the ignore   │
-│                                         list. Can be set in config file.     │
-│ --ignore-languages               TEXT   Comma-separated-list of languages    │
-│                                         for code-blocks to add to the ignore │
-│                                         list. The code in ignored            │
-│                                         code-blocks will not be checked for  │
-│                                         errors. Can be set in config file.   │
-│ --ignore-messages                REGEX  A regular expression to match        │
-│                                         linting issue messages against to    │
-│                                         ignore. Can be set in config file.   │
-│ --version                               Print versions and exit.             │
-│ --help                                  Show this message and exit.          │
+│ --config                         <path>  Config file to load. Can be a INI   │
+│                                          file or directory. If a directory   │
+│                                          is passed it will be searched for   │
+│                                          .rstcheck.cfg | setup.cfg. If       │
+│                                          'NONE' is passed no config file is  │
+│                                          loaded at all.                      │
+│ --warn-unknown-settings                  Log a WARNING for unknown settings  │
+│                                          in config files. Can be hidden via  │
+│                                          --log-level.                        │
+│ --recursive              -r              Recursively search passed           │
+│                                          directories for RST files to check. │
+│ --report-level                   LEVEL   The report level of the linting     │
+│                                          issues found. Valid levels are:     │
+│                                          INFO | WARNING | ERROR | SEVERE |   │
+│                                          NONE. Defaults to INFO. Can be set  │
+│                                          in config file.                     │
+│ --log-level                      LEVEL   The log level of the application    │
+│                                          for information that is not a       │
+│                                          linting issue. Valid levels are:    │
+│                                          DEBUG | INFO | WARNING | ERROR |    │
+│                                          CRITICAL. Defaults to WARNING.      │
+│                                          [default: WARNING]                  │
+│ --ignore-directives              <str>   Comma-separated-list of directives  │
+│                                          to add to the ignore list. Can be   │
+│                                          set in config file.                 │
+│ --ignore-roles                   <str>   Comma-separated-list of roles to    │
+│                                          add to the ignore list. Can be set  │
+│                                          in config file.                     │
+│ --ignore-substitutions           <str>   Comma-separated-list of             │
+│                                          substitutions to add to the ignore  │
+│                                          list. Can be set in config file.    │
+│ --ignore-languages               <str>   Comma-separated-list of languages   │
+│                                          for code-blocks to add to the       │
+│                                          ignore list. The code in ignored    │
+│                                          code-blocks will not be checked for │
+│                                          errors. Can be set in config file.  │
+│ --ignore-messages                REGEX   A regular expression to match       │
+│                                          linting issue messages against to   │
+│                                          ignore. Can be set in config file.  │
+│ --version                                Print versions and exit.            │
+│ --help                                   Show this message and exit.         │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 
 ```

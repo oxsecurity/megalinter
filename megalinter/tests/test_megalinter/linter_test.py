@@ -101,3 +101,22 @@ class LinterTest(unittest.TestCase):
         replaced_args = linter.replace_vars(args, additional_variables)
 
         self.assertEqual(["test_additional_var"], replaced_args)
+
+    def test_sarif_zero_results_is_not_a_warning(self):
+        linter = Linter.__new__(Linter)
+        linter.sarif_output_file = None
+        linter.sarif_default_output_file = None
+        sarif = """\
+runs:
+  - tool:
+      driver: {}
+    results:
+      - level: note
+        locations:
+          - physicalLocation: {}
+"""
+
+        with self.assertNoLogs(level="WARNING"):
+            result = linter.get_sarif_result_count(sarif, "error")
+
+        self.assertEqual(0, result)

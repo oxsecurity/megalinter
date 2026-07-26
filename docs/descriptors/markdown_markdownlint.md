@@ -23,7 +23,7 @@ description: How to use markdownlint (configure, ignore files, ignore errors, he
 
 ## markdownlint documentation
 
-- Version in MegaLinter: **0.49.0**
+- Version in MegaLinter: **0.49.1**
 - Visit [Official Web Site](https://github.com/DavidAnson/markdownlint#readme){target=_blank}
 - See [How to configure markdownlint rules](https://github.com/igorshubovych/markdownlint-cli#configuration){target=_blank}
   - If custom `.markdownlint.json` config file isn't found, [.markdownlint.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.markdownlint.json){target=_blank} will be used
@@ -156,11 +156,11 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=markdownlint-cli
-ARG NPM_MARKDOWNLINT_CLI_VERSION=0.49.0
+ARG NPM_MARKDOWNLINT_CLI_VERSION=0.49.1
 ```
 
 - NPM packages (node.js):
-  - [markdownlint-cli@0.49.0](https://www.npmjs.com/package/markdownlint-cli/v/0.49.0)
+  - [markdownlint-cli@0.49.1](https://www.npmjs.com/package/markdownlint-cli/v/0.49.1)
 
 ## Known errors and resolutions
 

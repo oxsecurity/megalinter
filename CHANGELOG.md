@@ -12,8 +12,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Core
 
+  - Allow `FILTER_REGEX_INCLUDE` and `FILTER_REGEX_EXCLUDE` (global, per-descriptor and per-linter) to be defined as a list of regexes combined with a logical OR, so filter regexes can be appended across `EXTENDS` configs via `CONFIG_PROPERTIES_TO_APPEND`; single-string values remain fully supported, fixes [#8361](https://github.com/oxsecurity/megalinter/issues/8361)
   - Add `ENABLE_DISABLE_LINTERS_PRIORITY` variable to let `DISABLE_LINTERS` override `ENABLE_LINTERS` when a linter is in both lists (e.g. to trim an inherited `ENABLE_LINTERS` list via `EXTENDS`), fixes [#8296](https://github.com/oxsecurity/megalinter/issues/8296)
   - Add `supported_cli_lint_modes` descriptor property to declare which CLI lint modes (`file`, `list_of_files`, `project`) each linter supports, generate `success`/`failure` tests for every supported mode, and reject a `<LINTER>_CLI_LINT_MODE` override targeting an unsupported mode with an explicit error, fixes [#7120](https://github.com/oxsecurity/megalinter/issues/7120)
+  - Display a distinct ☑️ status icon (instead of ⚠️) for linters that found errors but did not block the run because the error count stayed under `<LINTER>_DISABLE_ERRORS_IF_LESS_THAN`, and show the configured maximum as `(max N allowed)` in the console linter logs plus a new `Max errors` column in the console and Pull Request summary tables
+  - Add `API_REPORTER_PAYLOAD_FORMAT` variable (`auto`, `loki` or `default`) to force the payload format sent by API Reporter, instead of only deducing it from the endpoint URL
 
 - New linters
 
@@ -33,6 +36,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Fixes
 
+  - Make `test_api_output` resilient to remote server outages: probe several public echo endpoints, run the test with the ones that are up, retry with another server when a post fails, and skip the test when none of them is reachable, as a remote outage is not a MegaLinter issue
+  - Treat zero matching SARIF findings as a valid result without logging the entire report, fixes [#8295](https://github.com/oxsecurity/megalinter/issues/8295)
+  - Remove invalid SARIF fixes with empty `artifactChanges` arrays before report aggregation, fixes [#8474](https://github.com/oxsecurity/megalinter/issues/8474)
   - Write `REPOSITORY_CHECKOV`'s transient GitHub-config scan directory (`branch_protection_rules.json` and similar) to a hidden `.checkov-github-conf` subfolder of the MegaLinter report folder instead of the repository root, so the artifact stays out of the linted tree (gitignored, excluded from file discovery, and skipped by project-mode linters), extending the earlier ansible-lint race-condition fix (#8092)
   - Make remote configuration loading resilient to transient network failures by adding a request timeout and bounded retries with backoff when fetching `MEGALINTER_CONFIG` and `EXTENDS` files over HTTP (fixes intermittent `config_test` failures caused by `raw.githubusercontent.com` CDN cache lag)
   - Disable `TERRAFORM_TERRASCAN` (upstream repo archived by Tenable, unmaintained) and `SQL_TSQLLINT` (no upstream release since 2024-09), as both ship unpatched CVEs with no prospect of a fixed release
@@ -40,6 +46,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Keep the Docker Pulls badge in `docs/index.md` in sync by having `docker_stats.py` also update the hardcoded badge total in `.automation/build.py`
   - Fix outdated links in `docs/descriptors/repository_kingfisher.md`
   - Fix `LINTER_RULES_PATH` not being used to resolve config files for linters using `active_only_if_file_found` (e.g. `REPOSITORY_LS_LINT`, `SPELL_PROSELINT`, `SPELL_VALE`), fixes [#8416](https://github.com/oxsecurity/megalinter/issues/8416)
+  - Honor `EXCLUDED_DIRECTORIES` and `ADDITIONAL_EXCLUDED_DIRECTORIES` in changed-files mode (`VALIDATE_ALL_CODEBASE: false`), so files inside excluded directories are pruned from the `git diff` file list the same way they are during full-codebase validation ([#8360](https://github.com/oxsecurity/megalinter/issues/8360))
 
 - Reporters
 
@@ -108,6 +115,41 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.95.8 to **3.95.9** on 2026-07-13
   - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.45.6 to **0.45.15** on 2026-07-14
   - [eslint](https://eslint.org) from 10.6.0 to **10.7.0** on 2026-07-14
+  - [djlint](https://djlint.com/) from 1.40.6 to **1.40.7** on 2026-07-18
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.32 to **0.2.34** on 2026-07-18
+  - [grype](https://github.com/anchore/grype) from 0.115.0 to **0.116.0** on 2026-07-18
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.106.0 to **1.108.0** on 2026-07-18
+  - [semgrep](https://semgrep.dev/) from 1.169.0 to **1.170.0** on 2026-07-18
+  - [syft](https://github.com/anchore/syft) from 1.46.0 to **1.48.0** on 2026-07-18
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.34 to **0.2.36** on 2026-07-19
+  - [checkov](https://www.checkov.io/) from 3.3.6 to **3.3.8** on 2026-07-19
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.49.0 to **0.49.1** on 2026-07-19
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.13 to **3.95.15** on 2026-07-19
+  - [codespell](https://github.com/codespell-project/codespell) from 2.4.2 to **2.4.3** on 2026-07-19
+  - [terragrunt](https://docs.terragrunt.com/reference/cli/commands/hcl/fmt/) from 1.1.0 to **1.1.1** on 2026-07-19
+  - [djlint](https://djlint.com/) from 1.40.7 to **1.40.10** on 2026-07-19
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.21 to **0.15.22** on 2026-07-19
+  - [ruff](https://github.com/astral-sh/ruff) from 0.15.21 to **0.15.22** on 2026-07-19
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.36 to **0.2.37** on 2026-07-19
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.63.1 to **0.64.0** on 2026-07-19
+  - [djlint](https://djlint.com/) from 1.40.10 to **1.41.0** on 2026-07-20
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.53.0 to **1.53.1** on 2026-07-21
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 10.0.301 to **10.0.302** on 2026-07-21
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.3 to **7.6.4** on 2026-07-21
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.3 to **7.6.4** on 2026-07-21
+  - [syft](https://github.com/anchore/syft) from 1.48.0 to **1.49.0** on 2026-07-21
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.53.1 to **1.53.2** on 2026-07-25
+  - [stylelint](https://stylelint.io) from 17.14.0 to **17.14.1** on 2026-07-25
+  - [djlint](https://djlint.com/) from 1.41.0 to **1.42.3** on 2026-07-25
+  - [prettier](https://prettier.io/) from 3.9.5 to **3.9.6** on 2026-07-25
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.37 to **0.2.43** on 2026-07-25
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.15 to **3.95.17** on 2026-07-25
+  - [betterleaks](https://github.com/betterleaks/betterleaks) from 1.6.1 to **1.7.0** on 2026-07-25
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.108.0 to **1.109.0** on 2026-07-25
+  - [secretlint](https://github.com/secretlint/secretlint) from 13.0.2 to **13.0.4** on 2026-07-25
+  - [semgrep](https://semgrep.dev/) from 1.170.0 to **1.170.1** on 2026-07-25
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.95.9 to **3.96.0** on 2026-07-25
+  - [vale](https://vale.sh/) from 3.15.1 to **3.15.2** on 2026-07-25
 <!-- linter-versions-end -->
 
 ## [v9.6.0] - 2026-06-28
