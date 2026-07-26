@@ -150,6 +150,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [semgrep](https://semgrep.dev/) from 1.170.0 to **1.170.1** on 2026-07-25
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.95.9 to **3.96.0** on 2026-07-25
   - [vale](https://vale.sh/) from 3.15.1 to **3.15.2** on 2026-07-25
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.22 to **0.16.0** on 2026-07-26
+  - [ruff](https://github.com/astral-sh/ruff) from 0.15.22 to **0.16.0** on 2026-07-26
+  - [semgrep](https://semgrep.dev/) from 1.170.1 to **1.171.0** on 2026-07-26
 <!-- linter-versions-end -->
 
 ## [v9.6.0] - 2026-06-28
