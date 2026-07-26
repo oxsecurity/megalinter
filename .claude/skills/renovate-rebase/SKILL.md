@@ -31,14 +31,14 @@ One aggregate box has the same effect as ticking every line individually, with a
 
 Pass extra flags only when `$ARGUMENTS` asks for something narrower or wider:
 
-| Flag | Effect |
-| --- | --- |
-| `--sections open` | only that section (comma-separated; `rate-limited,open` is the default) |
-| `--individual` | tick every PR line instead of the section's "all at once" box — use when the user wants specific PRs, or when Renovate rendered no aggregate box |
-| `--trigger-run` | also tick `<!-- manual job -->` ("run Renovate again on this repository") so the queued requests are picked up on the next poll instead of the next schedule |
-| `--issue N` / `--title "..."` | when `renovate.json` overrides `dependencyDashboardTitle` or several dashboards match |
-| `--repo owner/name` | act on another repo (defaults to the current one) |
-| `--dry-run` | preview only — **only** when the user explicitly asks for a preview |
+| Flag                          | Effect                                                                                                                                                       |
+|-------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `--sections open`             | only that section (comma-separated; `rate-limited,open` is the default)                                                                                      |
+| `--individual`                | tick every PR line instead of the section's "all at once" box — use when the user wants specific PRs, or when Renovate rendered no aggregate box             |
+| `--trigger-run`               | also tick `<!-- manual job -->` ("run Renovate again on this repository") so the queued requests are picked up on the next poll instead of the next schedule |
+| `--issue N` / `--title "..."` | when `renovate.json` overrides `dependencyDashboardTitle` or several dashboards match                                                                        |
+| `--repo owner/name`           | act on another repo (defaults to the current one)                                                                                                            |
+| `--dry-run`                   | preview only — **only** when the user explicitly asks for a preview                                                                                          |
 
 The script is self-contained and never prompts. Read its output and keep going:
 

@@ -138,6 +138,18 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.3 to **7.6.4** on 2026-07-21
   - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.3 to **7.6.4** on 2026-07-21
   - [syft](https://github.com/anchore/syft) from 1.48.0 to **1.49.0** on 2026-07-21
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.53.1 to **1.53.2** on 2026-07-25
+  - [stylelint](https://stylelint.io) from 17.14.0 to **17.14.1** on 2026-07-25
+  - [djlint](https://djlint.com/) from 1.41.0 to **1.42.3** on 2026-07-25
+  - [prettier](https://prettier.io/) from 3.9.5 to **3.9.6** on 2026-07-25
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.37 to **0.2.43** on 2026-07-25
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.15 to **3.95.17** on 2026-07-25
+  - [betterleaks](https://github.com/betterleaks/betterleaks) from 1.6.1 to **1.7.0** on 2026-07-25
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.108.0 to **1.109.0** on 2026-07-25
+  - [secretlint](https://github.com/secretlint/secretlint) from 13.0.2 to **13.0.4** on 2026-07-25
+  - [semgrep](https://semgrep.dev/) from 1.170.0 to **1.170.1** on 2026-07-25
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.95.9 to **3.96.0** on 2026-07-25
+  - [vale](https://vale.sh/) from 3.15.1 to **3.15.2** on 2026-07-25
 <!-- linter-versions-end -->
 
 ## [v9.6.0] - 2026-06-28

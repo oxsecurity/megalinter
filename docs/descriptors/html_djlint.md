@@ -29,7 +29,7 @@ For example, define `HTML_DJLINT_ARGUMENTS: ["--profile", "django"]` to select d
 
 ## djlint documentation
 
-- Version in MegaLinter: **1.41.0**
+- Version in MegaLinter: **1.42.3**
 - Visit [Official Web Site](https://djlint.com/){target=_blank}
 - See [How to configure djlint rules](https://djlint.com/docs/configuration/){target=_blank}
 - See [How to disable djlint rules in files](https://djlint.com/docs/ignoring-code/){target=_blank}
@@ -128,8 +128,9 @@ Options:
   --indent INTEGER                Indent spacing. [default: 4]
   --quiet                         Do not print diff when reformatting.
   --profile TEXT                  Enable defaults by template language. ops:
-                                  django, jinja, nunjucks, handlebars, golang,
-                                  angular, html [default: html]
+                                  django, jinja, nunjucks, handlebars, liquid,
+                                  golang, angular, tera, askama, html
+                                  [default: html]
   --require-pragma                Only format or lint files that starts with a
                                   comment with the text 'djlint:on'
   --lint                          Lint for common issues. [default option]
@@ -201,8 +202,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=djlint
-ARG PIP_DJLINT_VERSION=1.41.0
+ARG PIP_DJLINT_VERSION=1.42.3
 ```
 
 - PIP packages (Python):
-  - [djlint==1.41.0](https://pypi.org/project/djlint/1.41.0)
+  - [djlint==1.42.3](https://pypi.org/project/djlint/1.42.3)
