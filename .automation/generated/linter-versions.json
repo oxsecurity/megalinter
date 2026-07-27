@@ -76,7 +76,7 @@
     "php-cs-fixer": "3.95.17",
     "phpcs": "4.0.1",
     "phplint": "9.7.2",
-    "phpstan": "2.2.5",
+    "phpstan": "2.2.6",
     "pmd": "7.26.0",
     "powershell": "7.6.4",
     "powershell_formatter": "7.6.4",
