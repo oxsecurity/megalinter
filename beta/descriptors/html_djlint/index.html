@@ -12603,7 +12603,7 @@
 <p>For example, define <code>HTML_DJLINT_ARGUMENTS: ["--profile", "django"]</code> to select django format</p>
 <h2 id="djlint-documentation">djlint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.42.3</strong></li>
+<li>Version in MegaLinter: <strong>1.43.0</strong></li>
 <li>Visit <a href="https://djlint.com/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://djlint.com/docs/configuration/" target="_blank">How to configure djlint rules</a></li>
 <li>See <a href="https://djlint.com/docs/ignoring-code/" target="_blank">How to disable djlint rules in files</a></li>
@@ -12871,6 +12871,9 @@ Options:
   -i, --ignore TEXT               Codes to ignore. ex: "H014,H017"
   --reformat                      Reformat the file(s).
   --check                         Check formatting on the file(s).
+  --stdin-filename TEXT           Filename to use for per-file-ignores and
+                                  messages when reading from stdin. [default:
+                                  -]
   --indent INTEGER                Indent spacing. [default: 4]
   --quiet                         Do not print diff when reformatting.
   --profile TEXT                  Enable defaults by template language. ops:
@@ -12947,11 +12950,11 @@ Options:
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=pypi depName=djlint
-ARG PIP_DJLINT_VERSION=1.42.3
+ARG PIP_DJLINT_VERSION=1.43.0
 </code></pre>
 <ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/djlint/1.42.3">djlint==1.42.3</a></li>
+<li><a href="https://pypi.org/project/djlint/1.43.0">djlint==1.43.0</a></li>
 </ul>
 </li>
 </ul>
