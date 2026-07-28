@@ -43,7 +43,7 @@ betterleaks is fully compatible with your existing `.gitleaks.toml` configuratio
 
 ## betterleaks documentation
 
-- Version in MegaLinter: **1.7.0**
+- Version in MegaLinter: **1.7.1**
 - Visit [Official Web Site](https://github.com/betterleaks/betterleaks#readme){target=_blank}
 - See [How to configure betterleaks rules](https://github.com/betterleaks/betterleaks#configuration){target=_blank}
 - See [How to disable betterleaks rules in files](https://github.com/betterleaks/betterleaks#betterleaksallow){target=_blank}
@@ -187,6 +187,9 @@ Flags:
       --validation-debug              include validation HTTP debug metadata in output
       --validation-env-vars strings   comma-separated env var names the validation env(...) binding may read (repeat flag to add more); unset means env() is disabled
       --validation-extract-empty      include empty values from extractors in output
+      --validation-max-requests int   maximum validation requests sent to each provider target (0 = unlimited)
+      --validation-rps float          global validation requests per second (0 = unlimited)
+      --validation-rps-rule strings   rule-specific validation request rate as RULE=RPS (repeatable)
       --validation-status string      comma-separated list of validation statuses to include: valid, needs_validation, invalid, revoked, error, unknown, none (none = rules without validation)
       --validation-timeout duration   per-request timeout for validation (default 10s)
       --validation-workers int        number of concurrent validation workers (default 10)
@@ -201,7 +204,7 @@ Use "betterleaks [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=ghcr.io/betterleaks/betterleaks
-ARG REPOSITORY_BETTERLEAKS_VERSION=v1.7.0
+ARG REPOSITORY_BETTERLEAKS_VERSION=v1.7.1
 FROM ghcr.io/betterleaks/betterleaks:${REPOSITORY_BETTERLEAKS_VERSION} AS betterleaks
 COPY --link --from=betterleaks /usr/bin/betterleaks /usr/bin/
 ```
