@@ -29,7 +29,7 @@ For example, define `HTML_DJLINT_ARGUMENTS: ["--profile", "django"]` to select d
 
 ## djlint documentation
 
-- Version in MegaLinter: **1.42.3**
+- Version in MegaLinter: **1.43.0**
 - Visit [Official Web Site](https://djlint.com/){target=_blank}
 - See [How to configure djlint rules](https://djlint.com/docs/configuration/){target=_blank}
 - See [How to disable djlint rules in files](https://djlint.com/docs/ignoring-code/){target=_blank}
@@ -125,6 +125,9 @@ Options:
   -i, --ignore TEXT               Codes to ignore. ex: "H014,H017"
   --reformat                      Reformat the file(s).
   --check                         Check formatting on the file(s).
+  --stdin-filename TEXT           Filename to use for per-file-ignores and
+                                  messages when reading from stdin. [default:
+                                  -]
   --indent INTEGER                Indent spacing. [default: 4]
   --quiet                         Do not print diff when reformatting.
   --profile TEXT                  Enable defaults by template language. ops:
@@ -202,8 +205,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=djlint
-ARG PIP_DJLINT_VERSION=1.42.3
+ARG PIP_DJLINT_VERSION=1.43.0
 ```
 
 - PIP packages (Python):
-  - [djlint==1.42.3](https://pypi.org/project/djlint/1.42.3)
+  - [djlint==1.43.0](https://pypi.org/project/djlint/1.43.0)

@@ -154,6 +154,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/astral-sh/ruff) from 0.15.22 to **0.16.0** on 2026-07-26
   - [semgrep](https://semgrep.dev/) from 1.170.1 to **1.171.0** on 2026-07-26
   - [phpstan](https://phpstan.org/) from 2.2.5 to **2.2.6** on 2026-07-27
+  - [djlint](https://djlint.com/) from 1.42.3 to **1.43.0** on 2026-07-28
+  - [betterleaks](https://github.com/betterleaks/betterleaks) from 1.7.0 to **1.7.1** on 2026-07-28
 <!-- linter-versions-end -->
 
 ## [v9.6.0] - 2026-06-28
