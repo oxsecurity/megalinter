@@ -132,9 +132,10 @@ class LinterTest(unittest.TestCase):
         linter.cli_lint_mode = "list_of_files"
         linter.cli_command_remove_args = ["--config-basedir"]
 
-        with mock.patch.object(
-            Linter, "build_lint_command", return_value=["stylelint"]
-        ), mock.patch("os.path.isdir", return_value=True):
+        with (
+            mock.patch.object(Linter, "build_lint_command", return_value=["stylelint"]),
+            mock.patch("os.path.isdir", return_value=True),
+        ):
             cmd = linter.build_lint_command()
 
         self.assertEqual(["stylelint"], cmd)
@@ -145,9 +146,10 @@ class LinterTest(unittest.TestCase):
         linter.cli_lint_mode = "list_of_files"
         linter.cli_command_remove_args = []
 
-        with mock.patch.object(
-            Linter, "build_lint_command", return_value=["stylelint"]
-        ), mock.patch("os.path.isdir", return_value=True):
+        with (
+            mock.patch.object(Linter, "build_lint_command", return_value=["stylelint"]),
+            mock.patch("os.path.isdir", return_value=True),
+        ):
             cmd = linter.build_lint_command()
 
         self.assertEqual(["stylelint", "--config-basedir", "/node-deps"], cmd)
@@ -158,11 +160,14 @@ class LinterTest(unittest.TestCase):
         linter.cli_lint_mode = "list_of_files"
         linter.cli_command_remove_args = []
 
-        with mock.patch.object(
-            Linter,
-            "build_lint_command",
-            return_value=["stylelint", "--config-basedir", "/tmp"],
-        ), mock.patch("os.path.isdir", return_value=True):
+        with (
+            mock.patch.object(
+                Linter,
+                "build_lint_command",
+                return_value=["stylelint", "--config-basedir", "/tmp"],
+            ),
+            mock.patch("os.path.isdir", return_value=True),
+        ):
             cmd = linter.build_lint_command()
 
         self.assertEqual(["stylelint", "--config-basedir", "/tmp"], cmd)
