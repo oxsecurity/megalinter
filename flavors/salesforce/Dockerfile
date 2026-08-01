@@ -125,7 +125,7 @@ ARG NPM_SALESFORCE_CLI_VERSION=2.144.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.30.4
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=7.20.0
+ARG SFDX_HARDIS_VERSION=7.23.0
 # renovate: datasource=pypi depName=ansible-lint
 ARG PIP_ANSIBLE_LINT_VERSION=26.6.0
 # renovate: datasource=npm depName=jscpd

@@ -146,7 +146,7 @@ ARG CLJ_KONDO_VERSION=2025.01.16
 # renovate: datasource=github-tags depName=greglook/cljstyle
 ARG CLJ_STYLE_VERSION=0.17.642
 # renovate: datasource=pypi depName=cfn-lint
-ARG PIP_CFN_LINT_VERSION=1.53.2
+ARG PIP_CFN_LINT_VERSION=1.53.3
 # renovate: datasource=npm depName=jscpd
 ARG NPM_JSCPD_VERSION=5.0.12
 # renovate: datasource=npm depName=stylelint
@@ -177,7 +177,7 @@ ARG JAVA_CHECKSTYLE_VERSION=12.1.0
 ARG PMD_VERSION=7.26.0
 
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=10.7.0
+ARG NPM_ESLINT_VERSION=10.8.0
 # renovate: datasource=npm depName=@eslint/js
 ARG NPM_ESLINT_JS_VERSION=10.0.1
 # renovate: datasource=npm depName=eslint-config-prettier
