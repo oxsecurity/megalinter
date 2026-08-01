@@ -8,6 +8,7 @@ import os
 from megalinter import Linter, config
 
 NODE_DEPS_DIR = "/node-deps"
+CONFIG_BASEDIR_ARG = "--config-basedir"
 
 
 class StyleLintLinter(Linter):
@@ -25,8 +26,14 @@ class StyleLintLinter(Linter):
         # which is not on the standard Node.js resolution path when the config file lives
         # elsewhere (e.g. /action/lib/.automation/ or the user's workspace).
         # Passing --config-basedir tells stylelint where to look for extended packages.
-        if os.path.isdir(NODE_DEPS_DIR):
-            cmd += ["--config-basedir", NODE_DEPS_DIR]
+        # Do not add it if the user already defined it in CSS_STYLELINT_ARGUMENTS,
+        # or asked to get rid of it using CSS_STYLELINT_COMMAND_REMOVE_ARGUMENTS
+        if (
+            os.path.isdir(NODE_DEPS_DIR)
+            and CONFIG_BASEDIR_ARG not in cmd
+            and CONFIG_BASEDIR_ARG not in self.cli_command_remove_args
+        ):
+            cmd += [CONFIG_BASEDIR_ARG, NODE_DEPS_DIR]
         return cmd
 
     def pre_test(self, test_name):

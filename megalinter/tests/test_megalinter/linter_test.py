@@ -6,8 +6,10 @@ Unit tests for Linter class
 
 import unittest
 import uuid
+from unittest import mock
 
 from megalinter.Linter import Linter
+from megalinter.linters.StyleLintLinter import StyleLintLinter
 
 
 class LinterTest(unittest.TestCase):
@@ -101,6 +103,69 @@ class LinterTest(unittest.TestCase):
         replaced_args = linter.replace_vars(args, additional_variables)
 
         self.assertEqual(["test_additional_var"], replaced_args)
+
+    def test_remove_command_args_removes_existing_args(self):
+        linter = Linter.__new__(Linter)
+        linter.name = "CSS_STYLELINT"
+        linter.cli_command_remove_args = ["--formatter", "json"]
+
+        cmd = linter.remove_command_args(
+            ["stylelint", "--formatter", "json", "--config", "conf.json"]
+        )
+
+        self.assertEqual(["stylelint", "--config", "conf.json"], cmd)
+
+    def test_remove_command_args_ignores_missing_args(self):
+        # Missing arguments must not raise ValueError: they can be conditionally
+        # added by linter subclasses after the removal has been performed
+        linter = Linter.__new__(Linter)
+        linter.name = "CSS_STYLELINT"
+        linter.cli_command_remove_args = ["--config-basedir"]
+
+        cmd = linter.remove_command_args(["stylelint", "--config", "conf.json"])
+
+        self.assertEqual(["stylelint", "--config", "conf.json"], cmd)
+
+    def test_stylelint_skips_config_basedir_when_removed_by_user(self):
+        linter = StyleLintLinter.__new__(StyleLintLinter)
+        linter.name = "CSS_STYLELINT"
+        linter.cli_lint_mode = "list_of_files"
+        linter.cli_command_remove_args = ["--config-basedir"]
+
+        with mock.patch.object(
+            Linter, "build_lint_command", return_value=["stylelint"]
+        ), mock.patch("os.path.isdir", return_value=True):
+            cmd = linter.build_lint_command()
+
+        self.assertEqual(["stylelint"], cmd)
+
+    def test_stylelint_adds_config_basedir_by_default(self):
+        linter = StyleLintLinter.__new__(StyleLintLinter)
+        linter.name = "CSS_STYLELINT"
+        linter.cli_lint_mode = "list_of_files"
+        linter.cli_command_remove_args = []
+
+        with mock.patch.object(
+            Linter, "build_lint_command", return_value=["stylelint"]
+        ), mock.patch("os.path.isdir", return_value=True):
+            cmd = linter.build_lint_command()
+
+        self.assertEqual(["stylelint", "--config-basedir", "/node-deps"], cmd)
+
+    def test_stylelint_does_not_duplicate_user_defined_config_basedir(self):
+        linter = StyleLintLinter.__new__(StyleLintLinter)
+        linter.name = "CSS_STYLELINT"
+        linter.cli_lint_mode = "list_of_files"
+        linter.cli_command_remove_args = []
+
+        with mock.patch.object(
+            Linter,
+            "build_lint_command",
+            return_value=["stylelint", "--config-basedir", "/tmp"],
+        ), mock.patch("os.path.isdir", return_value=True):
+            cmd = linter.build_lint_command()
+
+        self.assertEqual(["stylelint", "--config-basedir", "/tmp"], cmd)
 
     def test_sarif_zero_results_is_not_a_warning(self):
         linter = Linter.__new__(Linter)
