@@ -1519,8 +1519,7 @@ class Linter:
                 cmd.remove("--megalinter-fix-flag")
 
         # Remove arguments at user request
-        for arg in self.cli_command_remove_args:
-            cmd.remove(arg)
+        cmd = self.remove_command_args(cmd)
 
         # Append file in command arguments
         if file is not None:
@@ -1532,6 +1531,21 @@ class Linter:
                 cmd += [self.files_separator.join(self.files)]
             else:
                 cmd += self.files
+        return cmd
+
+    # Remove arguments listed in <LINTER_NAME>_COMMAND_REMOVE_ARGUMENTS.
+    # Arguments that are not in the command line are just ignored, as they can be
+    # conditionally added (or not) by linter subclasses
+    def remove_command_args(self, cmd: list) -> list:
+        for arg in self.cli_command_remove_args:
+            if arg in cmd:
+                cmd.remove(arg)
+            else:
+                logging.debug(
+                    f"[{self.name}] Argument {arg} listed in "
+                    f"{self.name}_COMMAND_REMOVE_ARGUMENTS is not in the command line, "
+                    "so it has not been removed"
+                )
         return cmd
 
     # Manage ignore arguments
