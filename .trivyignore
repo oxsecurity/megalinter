@@ -206,6 +206,44 @@ CVE-2026-59950
 # reached. Remove once the pinned releases embed grpc >= 1.82.1.
 GHSA-hrxh-6v49-42gf
 
+# --- Go x/text norm.Iter infinite loop (all Go-based linters + bundled scanners) ---
+# CVE-2026-56852: golang.org/x/text/unicode/norm's norm.Iter can spin forever on
+# input containing invalid UTF-8 bytes. CVSS 7.5 but availability-only
+# (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H) - no confidentiality or integrity impact.
+# It is statically linked by upstream release builds into nine binaries in the
+# image: golangci-lint, betterleaks, editorconfig-checker, gitleaks, kubeconform,
+# protolint, revive, the terraform binary copied from alpine/terragrunt, and the
+# trivy scanner itself. Unlike the other Go entries above we do not claim the code
+# path is unreachable: linters do read workspace files that may contain invalid
+# UTF-8. The impact is bounded instead - every linter is a one-shot CLI in a
+# short-lived CI container, so the worst case is one linter burning CPU until the
+# job timeout kills it. There is no long-lived service to hang and no data exposure.
+# No upgrade path: MegaLinter already pins each of these at its latest upstream
+# release (renovate-managed) and cannot rebuild them; none embed x/text >= 0.39.0
+# yet. trivy's main branch is already on x/text v0.40.0, so its next release fixes
+# that copy. Remove once the pinned releases embed x/text >= 0.39.0.
+CVE-2026-56852
+
+# --- Python deps vendored by pip (pip seeded into /venvs/* by uv venv --seed) ---
+# Both entries come from pip's own CycloneDX SBOM of its vendored libraries,
+# pip/_vendor/bom.cdx.json, which pip 26.2 started shipping. Trivy imports it as
+# packages with no file path, which is why they surface under the aggregate
+# "Python (python-pkg)" target rather than a *.dist-info/METADATA path. They are
+# metadata only - the vulnerable code is not on disk:
+# - GHSA-6v7p-g79w-8964 (msgpack 1.1.2): the use-after-free / SEGV on Unpacker reuse
+#   was fixed in _unpacker.pyx and unpack_template.h, i.e. the compiled C extension.
+#   pip vendors only msgpack's pure-Python fallback.py; no _cmsgpack extension ships.
+# - CVE-2025-47273 (setuptools 70.3.0): the path traversal lives in
+#   setuptools/package_index.py (PackageIndex, the easy_install download path). pip
+#   vendors setuptools solely to obtain pkg_resources; pip/_vendor/ contains no
+#   setuptools package and no package_index.py at all. Every real setuptools in the
+#   image is 83.0.0.
+# No upgrade path either way: pip 26.2 is the latest release and still pins
+# msgpack==1.1.2 and setuptools==70.3.0 in src/pip/_vendor/vendor.txt.
+# Remove once pip revendors msgpack >= 1.2.1 / setuptools >= 78.1.1.
+GHSA-6v7p-g79w-8964
+CVE-2025-47273
+
 # --- Java deps (pmd, scalafix, salesforce code analyzer, npm-groovy-lint) ---
 # jline-remote-telnet is JLine's *telnet server* component, bundled transitively
 # by PMD and scalafix. MegaLinter runs both as batch CLIs and never starts JLine's
@@ -222,6 +260,7 @@ CVE-2026-55833
 CVE-2026-55851
 CVE-2026-56745
 CVE-2026-56817
+CVE-2026-56819
 CVE-2026-56820
 CVE-2026-56821
 CVE-2026-56822
