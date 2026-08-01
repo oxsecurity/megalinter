@@ -59,7 +59,7 @@ ARG PIP_CFN_LINT_VERSION=1.53.3
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=26.2
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=21.7.0
+ARG PIP_VIRTUALENV_VERSION=21.7.1
 #ARG__END
 
 ####################
