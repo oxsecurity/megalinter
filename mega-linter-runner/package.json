@@ -82,7 +82,7 @@
   "author": "Nicolas Vuillamy",
   "license": "MIT",
   "dependencies": {
-    "chalk": "^5.4.1",
+    "chalk": "^6.0.0",
     "find-package-json": "^1.2.0",
     "fs-extra": "^11.1.1",
     "glob": "^13.0.0",
