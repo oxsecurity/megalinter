@@ -170,7 +170,7 @@ ARG GO_ALPINE_VERSION=1.26.3-r0
 ARG POWERSHELL_VERSION=7.6.4
 
 # renovate: datasource=npm depName=@salesforce/cli
-ARG NPM_SALESFORCE_CLI_VERSION=2.144.6
+ARG NPM_SALESFORCE_CLI_VERSION=2.145.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.30.4
 # renovate: datasource=npm depName=sfdx-hardis
@@ -385,7 +385,7 @@ ARG GEM_RUBOCOP_RAKE_VERSION=0.7.1
 # renovate: datasource=rubygems depName=rubocop-rspec
 ARG GEM_RUBOCOP_RSPEC_VERSION=3.10.2
 # renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
-ARG SALESFORCE_CODE_ANALYZER_VERSION=5.14.0
+ARG SALESFORCE_CODE_ANALYZER_VERSION=5.15.0
 # renovate: datasource=github-tags depName=scalacenter/scalafix
 ARG SCALA_SCALAFIX_VERSION=0.14.7
 # renovate: datasource=pypi depName=snakemake
