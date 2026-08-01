@@ -45,7 +45,7 @@ ARG REPOSITORY_BETTERLEAKS_VERSION=v1.7.1
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
 ARG REPOSITORY_TRUFFLEHOG_VERSION=3.96.0
 # renovate: datasource=docker depName=jdkato/vale
-ARG SPELL_VALE_VERSION=v3.15.2
+ARG SPELL_VALE_VERSION=v3.17.0
 # renovate: datasource=docker depName=lycheeverse/lychee
 ARG SPELL_LYCHEE_VERSION=0.24.2-alpine
 #ARGTOP__END
