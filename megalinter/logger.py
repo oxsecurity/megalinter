@@ -176,18 +176,23 @@ def display_header(mega_linter):
 
 BETTERLEAKS_REGEXES = None
 
+# Resolved from the package directory, not from get_descriptor_dir(): the
+# ruleset ships with the python code, while get_descriptor_dir() returns the
+# descriptors baked in the docker image, which can come from another version.
+BETTERLEAKS_RULESET_PATH = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)),
+    "descriptors",
+    "additional",
+    BETTERLEAKS_RULESET_FILE_NAME,
+)
+
 
 def fetch_betterleaks_regexes():
     global BETTERLEAKS_REGEXES
     if BETTERLEAKS_REGEXES is not None:
         return BETTERLEAKS_REGEXES
 
-    descriptors_dir = utils.get_descriptor_dir()
-    with open(
-        f"{descriptors_dir}/additional/{BETTERLEAKS_RULESET_FILE_NAME}",
-        "r",
-        encoding="utf-8",
-    ) as file:
+    with open(BETTERLEAKS_RULESET_PATH, "r", encoding="utf-8") as file:
         config_data = file.read()
 
     config = tomllib.loads(config_data)
