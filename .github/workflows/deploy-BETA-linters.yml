@@ -159,23 +159,6 @@ jobs:
           cache-from: type=gha,scope=beta-linter-${{ matrix.linter }}-${{ matrix.platform }},ignore-error=true
           cache-to: type=gha,mode=max,scope=beta-linter-${{ matrix.linter }}-${{ matrix.platform }},compression=zstd
 
-      - name: Export digest
-        env:
-          RUNNER_TEMP: ${{ runner.temp }}
-          BUILD_DIGEST: ${{ steps.build.outputs.digest }}
-        run: |
-          mkdir -p "${RUNNER_TEMP}/digests"
-          digest="${BUILD_DIGEST}"
-          touch "${RUNNER_TEMP}/digests/${digest#sha256:}"
-
-      - name: Upload digest
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
-        with:
-          name: linter-beta-digests-${{ matrix.linter }}-${{ env.PLATFORM_PAIR }}
-          path: ${{ runner.temp }}/digests/*
-          if-no-files-found: error
-          retention-days: 1
-
       #####################################
       # Run Linter test cases #
       #####################################
@@ -226,6 +209,29 @@ jobs:
           timeout: 10m0s
         env:
             ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      ################################################################
+      # Publish the digest only once the image passed the test cases #
+      # and the vulnerability scan: the merge job assembles the      #
+      # :beta manifest from the digests uploaded here, so uploading  #
+      # before the quality gates would publish untested images.      #
+      ################################################################
+      - name: Export digest
+        env:
+          RUNNER_TEMP: ${{ runner.temp }}
+          BUILD_DIGEST: ${{ steps.build.outputs.digest }}
+        run: |
+          mkdir -p "${RUNNER_TEMP}/digests"
+          digest="${BUILD_DIGEST}"
+          touch "${RUNNER_TEMP}/digests/${digest#sha256:}"
+
+      - name: Upload digest
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: linter-beta-digests-${{ matrix.linter }}-${{ env.PLATFORM_PAIR }}
+          path: ${{ runner.temp }}/digests/*
+          if-no-files-found: error
+          retention-days: 1
 
       # - name: Run OSV-Scanner vulnerability scanner
       #   uses: google/osv-scanner-action/osv-scanner-action@v2.3.5
@@ -291,14 +297,24 @@ jobs:
             type=raw,value={{date 'YYYYMMDD_HHmm'}}
 
       - name: Create manifest list and push
-        working-directory: ${{ runner.temp }}/digests
         env:
           GITHUB_REPOSITORY_NAME: ${{ github.repository }}
           MATRIX_LINTER: ${{ matrix.linter }}
+          DIGESTS_DIR: ${{ runner.temp }}/digests
         run: |
+          mkdir -p "${DIGESTS_DIR}"
+          cd "${DIGESTS_DIR}"
+          shopt -s nullglob
+          digests=(*)
+          # Without this guard the glob below stays literal and imagetools
+          # fails on an "*" reference instead of saying what actually happened.
+          if [ ${#digests[@]} -eq 0 ]; then
+            echo "::error::No tested image digest was published for ${MATRIX_LINTER}: every platform build failed its test cases or vulnerability scan. The previously published manifest is left untouched."
+            exit 1
+          fi
           # shellcheck disable=SC2046
           docker buildx imagetools create $(jq -cr '.tags | map("-t " + .) | join(" ")' <<< "$DOCKER_METADATA_OUTPUT_JSON") \
-            $(printf "ghcr.io/${GITHUB_REPOSITORY_NAME}-only-${MATRIX_LINTER}@sha256:%s " *)
+            $(printf "ghcr.io/${GITHUB_REPOSITORY_NAME}-only-${MATRIX_LINTER}@sha256:%s " "${digests[@]}")
 
       - name: Inspect image
         run: |

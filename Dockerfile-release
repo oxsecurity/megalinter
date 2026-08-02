@@ -28,8 +28,10 @@ ENV BUILD_DATE=$BUILD_DATE \
 ######################
 # Set the entrypoint #
 ######################
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x entrypoint.sh
+# Set the mode from COPY rather than with a RUN: this keeps the release layer
+# free of any executed instruction, so buildx can assemble every platform of a
+# multi-arch base image without emulation.
+COPY --chmod=755 entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
 
 #########################################
