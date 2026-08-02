@@ -12719,6 +12719,12 @@
 </tbody>
 </table>
 <p><em>You can also use <code>npx mega-linter-runner</code> if you do not want to install the package</em></p>
+<blockquote>
+<p>[!NOTE]
+If you are on an SELinux-confined system (e.g. Fedora, RHEL, CentOS), set the <code>SELINUX_MODE</code> environment variable as follows in your shell before running mega-linter-runner.</p>
+<p><code>shell
+export SELINUX_MODE=$(getenforce)</code></p>
+</blockquote>
 <h3 id="examples">Examples</h3>
 <pre><code class="language-shell"># Run with all defaults
 mega-linter-runner

@@ -12605,7 +12605,7 @@
 </ul>
 <h2 id="rstcheck-documentation">rstcheck documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>6.2.5</strong></li>
+<li>Version in MegaLinter: <strong>6.3.0</strong></li>
 <li>Visit <a href="https://github.com/myint/rstcheck#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/myint/rstcheck#configuration-file" target="_blank">How to configure rstcheck rules</a></li>
 <li>See <a href="https://github.com/myint/rstcheck#ignore-specific-errors" target="_blank">How to disable rstcheck rules in files</a></li>
@@ -12828,6 +12828,11 @@
 │ --ignore-messages                REGEX   A regular expression to match       │
 │                                          linting issue messages against to   │
 │                                          ignore. Can be set in config file.  │
+│ --sphinx-source-dir              &lt;path&gt;  Path to the sphinx 'source'         │
+│                                          directory. Only necessary if sphinx │
+│                                          is used and automatic discovery     │
+│                                          fails. May be relative or absolute. │
+│                                          Can be set in config file.          │
 │ --version                                Print versions and exit.            │
 │ --help                                   Show this message and exit.         │
 ╰──────────────────────────────────────────────────────────────────────────────╯
@@ -12838,14 +12843,14 @@
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile"># renovate: datasource=pypi depName=rstcheck
-ARG PIP_RSTCHECK_VERSION=6.2.5
+ARG PIP_RSTCHECK_VERSION=6.3.0
 # renovate: datasource=pypi depName=click
 ARG PIP_RSTCHECK_CLICK_VERSION=8.4.2
 </code></pre>
 <ul>
 <li>PIP packages (Python):<ul>
 <li><a href="https://pypi.org/project/click/8.4.2">click==8.4.2</a></li>
-<li><a href="https://pypi.org/project/rstcheck[toml,sphinx]/6.2.5">rstcheck[toml,sphinx]==6.2.5</a></li>
+<li><a href="https://pypi.org/project/rstcheck[toml,sphinx]/6.3.0">rstcheck[toml,sphinx]==6.3.0</a></li>
 </ul>
 </li>
 </ul>
