@@ -69,7 +69,10 @@ linters:
           ARG NPM_JSCPD_VERSION=5.0.14
       npm:
         - jscpd@${NPM_JSCPD_VERSION}
+    # jscpd v5 is a Rust binary distributed through per-platform npm packages,
+    # and upstream publishes no linux-arm64-musl target (only linux-arm64-gnu).
+    # On the Alpine base image the wrapper exits with
+    # "jscpd: Unsupported platform linux/arm64", so arm64 is not supported.
     supported_platforms:
       platform:
         - linux/amd64
-        - linux/arm64

@@ -68,6 +68,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Fix outdated links in `docs/descriptors/repository_kingfisher.md`
   - Fix `LINTER_RULES_PATH` not being used to resolve config files for linters using `active_only_if_file_found` (e.g. `REPOSITORY_LS_LINT`, `SPELL_PROSELINT`, `SPELL_VALE`), fixes [#8416](https://github.com/oxsecurity/megalinter/issues/8416)
   - Honor `EXCLUDED_DIRECTORIES` and `ADDITIONAL_EXCLUDED_DIRECTORIES` in changed-files mode (`VALIDATE_ALL_CODEBASE: false`), so files inside excluded directories are pruned from the `git diff` file list the same way they are during full-codebase validation ([#8360](https://github.com/oxsecurity/megalinter/issues/8360))
+  - Declare `COPYPASTE_JSCPD` as `linux/amd64` only: since jscpd v5 the tool is a Rust binary shipped through per-platform npm packages, and upstream publishes no `linux-arm64-musl` target, so it exits with `Unsupported platform linux/arm64` on the Alpine-based ARM images
 
 - Reporters
 
