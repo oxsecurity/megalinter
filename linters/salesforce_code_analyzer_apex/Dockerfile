@@ -57,7 +57,7 @@ ARG TARGETARCH
 # renovate: datasource=npm depName=@salesforce/cli
 ARG NPM_SALESFORCE_CLI_VERSION=2.145.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.30.4
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.30.6
 # renovate: datasource=npm depName=sfdx-hardis
 ARG SFDX_HARDIS_VERSION=7.23.0
 # renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
