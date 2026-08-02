@@ -1,4 +1,4 @@
-FROM hadolint/hadolint:v2.14.0-alpine AS hadolint
+FROM hadolint/hadolint:v2.15.1-alpine AS hadolint
 FROM trufflesecurity/trufflehog:latest AS trufflehog
 
 ##################
