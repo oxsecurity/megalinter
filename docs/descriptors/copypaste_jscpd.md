@@ -45,7 +45,7 @@ Example:
 
 ## jscpd documentation
 
-- Version in MegaLinter: **5.0.12**
+- Version in MegaLinter: **5.0.14**
 - Visit [Official Web Site](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#readme){target=_blank}
 - See [How to configure jscpd rules](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#config-file){target=_blank}
   - If custom `.jscpd.json` config file isn't found, [.jscpd.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.jscpd.json){target=_blank} will be used
@@ -181,6 +181,8 @@ Options:
           Custom format-to-extension mappings (e.g. javascript:es,es6;dart:dt)
       --formats-names <FORMATS_NAMES>
           Custom format-to-filename mappings (e.g. makefile:Makefile,GNUmakefile;docker:Dockerfile)
+      --cross-formats <CROSS_FORMATS>
+          Detect clones across formats: semicolon-separated groups of comma-separated formats (e.g. "javascript,typescript;css,scss"). Preset: js-ts = javascript,jsx,typescript,tsx. TypeScript files in a group that also contains JavaScript are compared with type annotations stripped
   -p, --pattern <PATTERN>
           Glob pattern to find files to scan (e.g. **/*.ts, **/*.{js,ts})
       --list
@@ -206,8 +208,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=5.0.12
+ARG NPM_JSCPD_VERSION=5.0.14
 ```
 
 - NPM packages (node.js):
-  - [jscpd@5.0.12](https://www.npmjs.com/package/jscpd/v/5.0.12)
+  - [jscpd@5.0.14](https://www.npmjs.com/package/jscpd/v/5.0.14)

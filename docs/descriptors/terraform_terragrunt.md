@@ -23,7 +23,7 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 
 ## terragrunt documentation
 
-- Version in MegaLinter: **1.1.1**
+- Version in MegaLinter: **1.1.2**
 - Visit [Official Web Site](https://docs.terragrunt.com/reference/cli/commands/hcl/fmt/){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/quick-start/#add-terragrunthcl-to-your-project){target=_blank}
 
@@ -143,6 +143,10 @@ Global Options:
    --no-tip value             Disable specific tips from being displayed. [$TG_NO_TIP]
    --no-tips                  Disable all tips from being displayed. (default: false) [$TG_NO_TIPS]
    --non-interactive          Assume "yes" for all prompts. (default: false) [$TG_NON_INTERACTIVE]
+   --profile-cpu value        Write a CPU profile to the given path. Requires the 'profiling' experiment. [$TG_PROFILE_CPU]
+   --profile-dir value        Directory to write profile files (cpu, mem, goroutine). Requires the 'profiling' experiment. [$TG_PROFILE_DIR]
+   --profile-goroutine value  Write a goroutine profile to the given path. Requires the 'profiling' experiment. [$TG_PROFILE_GOROUTINE]
+   --profile-mem value        Write a memory (heap) profile to the given path. Requires the 'profiling' experiment. [$TG_PROFILE_MEM]
    --strict-control value     Enables specific strict controls. For a list of available controls, run 'terragrunt info strict'. [$TG_STRICT_CONTROL]
    --strict-mode              Enables strict mode for Terragrunt. For more information, run 'terragrunt info strict'. (default: false) [$TG_STRICT_MODE]
    --working-dir value        The path to the directory of Terragrunt configurations. Default is current directory. [$TG_WORKING_DIR]

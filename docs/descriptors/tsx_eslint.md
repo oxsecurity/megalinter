@@ -78,7 +78,7 @@ To add a single package with pnpm instead of installing the full tree, run `core
 
 ## eslint documentation
 
-- Version in MegaLinter: **10.7.0**
+- Version in MegaLinter: **10.8.0**
 - Visit [Official Web Site](https://github.com/Rel1cx/eslint-react#readme){target=_blank}
 - See [How to configure eslint rules](https://eslint-react.xyz/docs/getting-started/installation){target=_blank}
 - See [How to disable eslint rules in files](https://eslint.org/docs/latest/use/configure/rules#disabling-rules){target=_blank}
@@ -252,7 +252,7 @@ Miscellaneous:
 # renovate: datasource=npm depName=typescript
 ARG NPM_TYPESCRIPT_VERSION=6.0.3
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=10.7.0
+ARG NPM_ESLINT_VERSION=10.8.0
 # renovate: datasource=npm depName=eslint-config-prettier
 ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.1.8
 # renovate: datasource=npm depName=eslint-plugin-jest
@@ -275,7 +275,7 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 
 - NPM packages (node.js):
   - [typescript@6.0.3](https://www.npmjs.com/package/typescript/v/6.0.3)
-  - [eslint@10.7.0](https://www.npmjs.com/package/eslint/v/10.7.0)
+  - [eslint@10.8.0](https://www.npmjs.com/package/eslint/v/10.8.0)
   - [eslint-config-prettier@10.1.8](https://www.npmjs.com/package/eslint-config-prettier/v/10.1.8)
   - [eslint-plugin-jest@29.16.0](https://www.npmjs.com/package/eslint-plugin-jest/v/29.16.0)
   - [eslint-plugin-prettier@5.5.6](https://www.npmjs.com/package/eslint-plugin-prettier/v/5.5.6)

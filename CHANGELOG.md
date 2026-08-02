@@ -157,6 +157,30 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 2.2.5 to **2.2.6** on 2026-07-27
   - [djlint](https://djlint.com/) from 1.42.3 to **1.43.0** on 2026-07-28
   - [betterleaks](https://github.com/betterleaks/betterleaks) from 1.7.0 to **1.7.1** on 2026-07-28
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.45.15 to **0.46.1** on 2026-08-02
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.53.2 to **1.53.3** on 2026-08-02
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 5.0.12 to **5.0.14** on 2026-08-02
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.8.0 to **3.9.0** on 2026-08-02
+  - [djlint](https://djlint.com/) from 1.43.0 to **1.43.2** on 2026-08-02
+  - [eslint](https://eslint.org) from 10.7.0 to **10.8.0** on 2026-08-02
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.43 to **0.2.48** on 2026-08-02
+  - [phpstan](https://phpstan.org/) from 2.2.6 to **2.2.7** on 2026-08-02
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.16.0 to **0.16.1** on 2026-08-02
+  - [ruff](https://github.com/astral-sh/ruff) from 0.16.0 to **0.16.1** on 2026-08-02
+  - [betterleaks](https://github.com/betterleaks/betterleaks) from 1.7.1 to **1.7.3** on 2026-08-02
+  - [grype](https://github.com/anchore/grype) from 0.116.0 to **0.116.1** on 2026-08-02
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.109.0 to **1.110.0** on 2026-08-02
+  - [semgrep](https://semgrep.dev/) from 1.171.0 to **1.172.0** on 2026-08-02
+  - [syft](https://github.com/anchore/syft) from 1.49.0 to **1.50.0** on 2026-08-02
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 8.3.2 to **8.5.0** on 2026-08-02
+  - [rstcheck](https://github.com/myint/rstcheck) from 6.2.5 to **6.3.0** on 2026-08-02
+  - [code-analyzer-apex](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.14.0 to **5.15.0** on 2026-08-02
+  - [code-analyzer-aura](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.14.0 to **5.15.0** on 2026-08-02
+  - [code-analyzer-flow](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/engine-flow.html) from 5.14.0 to **5.15.0** on 2026-08-02
+  - [code-analyzer-lwc](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.14.0 to **5.15.0** on 2026-08-02
+  - [snakemake](https://snakemake.github.io/) from 9.23.1 to **9.24.0** on 2026-08-02
+  - [vale](https://vale.sh/) from 3.15.2 to **3.17.0** on 2026-08-02
+  - [terragrunt](https://docs.terragrunt.com/reference/cli/commands/hcl/fmt/) from 1.1.1 to **1.1.2** on 2026-08-02
 <!-- linter-versions-end -->
 
 ## [v9.6.0] - 2026-06-28
