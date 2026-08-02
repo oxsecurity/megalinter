@@ -240,7 +240,16 @@ jobs:
     needs:
       - get-linters-matrix
       - build
-    if: ${{ !cancelled() && github.repository == 'oxsecurity/megalinter' }}
+    # get-linters-matrix must have succeeded: without its outputs, `fromJson`
+    # below would abort the whole run instead of skipping this job.
+    # build must not be skipped either, otherwise there is no digest to merge.
+    if: >-
+      (
+           !cancelled()
+        && github.repository == 'oxsecurity/megalinter'
+        && needs.get-linters-matrix.result == 'success'
+        && needs.build.result != 'skipped'
+      )
     permissions:
       contents: read
       packages: write
