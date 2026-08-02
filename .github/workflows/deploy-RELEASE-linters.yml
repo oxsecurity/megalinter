@@ -134,25 +134,6 @@ jobs:
           # One-shot per release; read BETA-linters' warm cache only.
           cache-from: type=gha,scope=beta-linter-${{ matrix.linter }}-${{ steps.prepare.outputs.platforms }},ignore-error=true
 
-      - name: Export digest
-        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        env:
-          RUNNER_TEMP: ${{ runner.temp }}
-          BUILD_DIGEST: ${{ steps.build.outputs.digest }}
-        run: |
-          mkdir -p "${RUNNER_TEMP}/digests"
-          digest="${BUILD_DIGEST}"
-          touch "${RUNNER_TEMP}/digests/${digest#sha256:}"
-
-      - name: Upload digest
-        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
-        with:
-          name: linter-release-digests-${{ matrix.linter }}-${{ steps.prepare.outputs.platform_pair }}
-          path: ${{ runner.temp }}/digests/*
-          if-no-files-found: error
-          retention-days: 1
-
       # Docker Hub mirroring is disabled — MegaLinter is published to ghcr.io only.
       # - name: Invoke Mirror docker image workflow (Standalone image)
       #   if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
@@ -225,6 +206,32 @@ jobs:
         env:
             ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      ################################################################
+      # Publish the digest only once the image passed the test cases #
+      # and the vulnerability scan: the merge job assembles the      #
+      # release manifest from the digests uploaded here, so          #
+      # uploading before the quality gates would publish untested    #
+      # images.                                                      #
+      ################################################################
+      - name: Export digest
+        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
+        env:
+          RUNNER_TEMP: ${{ runner.temp }}
+          BUILD_DIGEST: ${{ steps.build.outputs.digest }}
+        run: |
+          mkdir -p "${RUNNER_TEMP}/digests"
+          digest="${BUILD_DIGEST}"
+          touch "${RUNNER_TEMP}/digests/${digest#sha256:}"
+
+      - name: Upload digest
+        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: linter-release-digests-${{ matrix.linter }}-${{ steps.prepare.outputs.platform_pair }}
+          path: ${{ runner.temp }}/digests/*
+          if-no-files-found: error
+          retention-days: 1
+
       # - name: Run OSV-Scanner vulnerability scanner
       #   if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
       #   uses: google/osv-scanner-action/osv-scanner-action@v2.3.5
@@ -278,18 +285,28 @@ jobs:
         uses: docker/setup-buildx-action@bb05f3f5519dd87d3ba754cc423b652a5edd6d2c # v4
 
       - name: Create manifest list and push
-        working-directory: ${{ runner.temp }}/digests
         env:
           GITHUB_EVENT_RELEASE_TAG_NAME: ${{ github.event.release.tag_name }}
           MATRIX_LINTER: ${{ matrix.linter }}
+          DIGESTS_DIR: ${{ runner.temp }}/digests
         run: |
+          mkdir -p "${DIGESTS_DIR}"
+          cd "${DIGESTS_DIR}"
+          shopt -s nullglob
+          digests=(*)
+          # Without this guard the glob below stays literal and imagetools
+          # fails on an "*" reference instead of saying what actually happened.
+          if [ ${#digests[@]} -eq 0 ]; then
+            echo "::error::No tested image digest was published for ${MATRIX_LINTER}: every platform build failed its test cases or vulnerability scan. The previously published manifest is left untouched."
+            exit 1
+          fi
           # shellcheck disable=SC2046
           # MAJOR-RELEASE-IMPACTED
           docker buildx imagetools create \
             -t ghcr.io/oxsecurity/megalinter-only-"${MATRIX_LINTER}":v9 \
             -t ghcr.io/oxsecurity/megalinter-only-"${MATRIX_LINTER}":"${GITHUB_EVENT_RELEASE_TAG_NAME}" \
             -t ghcr.io/oxsecurity/megalinter-only-"${MATRIX_LINTER}":latest \
-            $(printf "ghcr.io/oxsecurity/megalinter-only-${MATRIX_LINTER}@sha256:%s " *)
+            $(printf "ghcr.io/oxsecurity/megalinter-only-${MATRIX_LINTER}@sha256:%s " "${digests[@]}")
 
       - name: Inspect image
         env:
