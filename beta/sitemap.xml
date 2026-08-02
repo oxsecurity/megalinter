@@ -173,6 +173,10 @@
          <lastmod>2026-08-02</lastmod>
     </url>
     <url>
+         <loc>https://megalinter.io/beta/removed-linters/</loc>
+         <lastmod>2026-08-02</lastmod>
+    </url>
+    <url>
          <loc>https://megalinter.io/beta/reporters/</loc>
          <lastmod>2026-08-02</lastmod>
     </url>
@@ -230,14 +234,6 @@
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/ansible_ansible_lint/</loc>
-         <lastmod>2026-08-02</lastmod>
-    </url>
-    <url>
-         <loc>https://megalinter.io/beta/descriptors/api/</loc>
-         <lastmod>2026-08-02</lastmod>
-    </url>
-    <url>
-         <loc>https://megalinter.io/beta/descriptors/api_spectral/</loc>
          <lastmod>2026-08-02</lastmod>
     </url>
     <url>
@@ -477,10 +473,6 @@
          <lastmod>2026-08-02</lastmod>
     </url>
     <url>
-         <loc>https://megalinter.io/beta/descriptors/json_eslint_plugin_jsonc/</loc>
-         <lastmod>2026-08-02</lastmod>
-    </url>
-    <url>
          <loc>https://megalinter.io/beta/descriptors/json_jsonlint/</loc>
          <lastmod>2026-08-02</lastmod>
     </url>
@@ -549,19 +541,7 @@
          <lastmod>2026-08-02</lastmod>
     </url>
     <url>
-         <loc>https://megalinter.io/beta/descriptors/lua_selene/</loc>
-         <lastmod>2026-08-02</lastmod>
-    </url>
-    <url>
          <loc>https://megalinter.io/beta/descriptors/lua_stylua/</loc>
-         <lastmod>2026-08-02</lastmod>
-    </url>
-    <url>
-         <loc>https://megalinter.io/beta/descriptors/makefile/</loc>
-         <lastmod>2026-08-02</lastmod>
-    </url>
-    <url>
-         <loc>https://megalinter.io/beta/descriptors/makefile_checkmake/</loc>
          <lastmod>2026-08-02</lastmod>
     </url>
     <url>
@@ -574,10 +554,6 @@
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/markdown_markdownlint/</loc>
-         <lastmod>2026-08-02</lastmod>
-    </url>
-    <url>
-         <loc>https://megalinter.io/beta/descriptors/markdown_remark_lint/</loc>
          <lastmod>2026-08-02</lastmod>
     </url>
     <url>
@@ -634,14 +610,6 @@
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/protobuf_protolint/</loc>
-         <lastmod>2026-08-02</lastmod>
-    </url>
-    <url>
-         <loc>https://megalinter.io/beta/descriptors/puppet/</loc>
-         <lastmod>2026-08-02</lastmod>
-    </url>
-    <url>
-         <loc>https://megalinter.io/beta/descriptors/puppet_puppet_lint/</loc>
          <lastmod>2026-08-02</lastmod>
     </url>
     <url>
@@ -729,15 +697,7 @@
          <lastmod>2026-08-02</lastmod>
     </url>
     <url>
-         <loc>https://megalinter.io/beta/descriptors/repository_gitleaks/</loc>
-         <lastmod>2026-08-02</lastmod>
-    </url>
-    <url>
          <loc>https://megalinter.io/beta/descriptors/repository_grype/</loc>
-         <lastmod>2026-08-02</lastmod>
-    </url>
-    <url>
-         <loc>https://megalinter.io/beta/descriptors/repository_kics/</loc>
          <lastmod>2026-08-02</lastmod>
     </url>
     <url>
@@ -837,22 +797,6 @@
          <lastmod>2026-08-02</lastmod>
     </url>
     <url>
-         <loc>https://megalinter.io/beta/descriptors/salesforce_lightning_flow_scanner/</loc>
-         <lastmod>2026-08-02</lastmod>
-    </url>
-    <url>
-         <loc>https://megalinter.io/beta/descriptors/salesforce_sfdx_scanner_apex/</loc>
-         <lastmod>2026-08-02</lastmod>
-    </url>
-    <url>
-         <loc>https://megalinter.io/beta/descriptors/salesforce_sfdx_scanner_aura/</loc>
-         <lastmod>2026-08-02</lastmod>
-    </url>
-    <url>
-         <loc>https://megalinter.io/beta/descriptors/salesforce_sfdx_scanner_lwc/</loc>
-         <lastmod>2026-08-02</lastmod>
-    </url>
-    <url>
          <loc>https://megalinter.io/beta/descriptors/scala/</loc>
          <lastmod>2026-08-02</lastmod>
     </url>
@@ -905,10 +849,6 @@
          <lastmod>2026-08-02</lastmod>
     </url>
     <url>
-         <loc>https://megalinter.io/beta/descriptors/sql_tsqllint/</loc>
-         <lastmod>2026-08-02</lastmod>
-    </url>
-    <url>
          <loc>https://megalinter.io/beta/descriptors/swift/</loc>
          <lastmod>2026-08-02</lastmod>
     </url>
@@ -934,10 +874,6 @@
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/terraform_terragrunt/</loc>
-         <lastmod>2026-08-02</lastmod>
-    </url>
-    <url>
-         <loc>https://megalinter.io/beta/descriptors/terraform_terrascan/</loc>
          <lastmod>2026-08-02</lastmod>
     </url>
     <url>
@@ -1105,10 +1041,6 @@
          <lastmod>2026-08-02</lastmod>
     </url>
     <url>
-         <loc>https://megalinter.io/beta/licenses/checkmake/</loc>
-         <lastmod>2026-08-02</lastmod>
-    </url>
-    <url>
          <loc>https://megalinter.io/beta/licenses/checkov/</loc>
          <lastmod>2026-08-02</lastmod>
     </url>
@@ -1197,10 +1129,6 @@
          <lastmod>2026-08-02</lastmod>
     </url>
     <url>
-         <loc>https://megalinter.io/beta/licenses/eslint-plugin-jsonc/</loc>
-         <lastmod>2026-08-02</lastmod>
-    </url>
-    <url>
          <loc>https://megalinter.io/beta/licenses/eslint/</loc>
          <lastmod>2026-08-02</lastmod>
     </url>
@@ -1214,10 +1142,6 @@
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/git_diff/</loc>
-         <lastmod>2026-08-02</lastmod>
-    </url>
-    <url>
-         <loc>https://megalinter.io/beta/licenses/gitleaks/</loc>
          <lastmod>2026-08-02</lastmod>
     </url>
     <url>
@@ -1257,10 +1181,6 @@
          <lastmod>2026-08-02</lastmod>
     </url>
     <url>
-         <loc>https://megalinter.io/beta/licenses/kics/</loc>
-         <lastmod>2026-08-02</lastmod>
-    </url>
-    <url>
          <loc>https://megalinter.io/beta/licenses/kingfisher/</loc>
          <lastmod>2026-08-02</lastmod>
     </url>
@@ -1274,10 +1194,6 @@
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/kubescape/</loc>
-         <lastmod>2026-08-02</lastmod>
-    </url>
-    <url>
-         <loc>https://megalinter.io/beta/licenses/lightning-flow-scanner/</loc>
          <lastmod>2026-08-02</lastmod>
     </url>
     <url>
@@ -1365,10 +1281,6 @@
          <lastmod>2026-08-02</lastmod>
     </url>
     <url>
-         <loc>https://megalinter.io/beta/licenses/puppet-lint/</loc>
-         <lastmod>2026-08-02</lastmod>
-    </url>
-    <url>
          <loc>https://megalinter.io/beta/licenses/pylint/</loc>
          <lastmod>2026-08-02</lastmod>
     </url>
@@ -1378,10 +1290,6 @@
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/raku/</loc>
-         <lastmod>2026-08-02</lastmod>
-    </url>
-    <url>
-         <loc>https://megalinter.io/beta/licenses/remark-lint/</loc>
          <lastmod>2026-08-02</lastmod>
     </url>
     <url>
@@ -1425,23 +1333,7 @@
          <lastmod>2026-08-02</lastmod>
     </url>
     <url>
-         <loc>https://megalinter.io/beta/licenses/selene/</loc>
-         <lastmod>2026-08-02</lastmod>
-    </url>
-    <url>
          <loc>https://megalinter.io/beta/licenses/semgrep/</loc>
-         <lastmod>2026-08-02</lastmod>
-    </url>
-    <url>
-         <loc>https://megalinter.io/beta/licenses/sfdx-scanner-apex/</loc>
-         <lastmod>2026-08-02</lastmod>
-    </url>
-    <url>
-         <loc>https://megalinter.io/beta/licenses/sfdx-scanner-aura/</loc>
-         <lastmod>2026-08-02</lastmod>
-    </url>
-    <url>
-         <loc>https://megalinter.io/beta/licenses/sfdx-scanner-lwc/</loc>
          <lastmod>2026-08-02</lastmod>
     </url>
     <url>
@@ -1458,10 +1350,6 @@
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/snakemake/</loc>
-         <lastmod>2026-08-02</lastmod>
-    </url>
-    <url>
-         <loc>https://megalinter.io/beta/licenses/spectral/</loc>
          <lastmod>2026-08-02</lastmod>
     </url>
     <url>
@@ -1501,10 +1389,6 @@
          <lastmod>2026-08-02</lastmod>
     </url>
     <url>
-         <loc>https://megalinter.io/beta/licenses/terrascan/</loc>
-         <lastmod>2026-08-02</lastmod>
-    </url>
-    <url>
          <loc>https://megalinter.io/beta/licenses/tflint/</loc>
          <lastmod>2026-08-02</lastmod>
     </url>
@@ -1522,10 +1406,6 @@
     </url>
     <url>
          <loc>https://megalinter.io/beta/licenses/ts-standard/</loc>
-         <lastmod>2026-08-02</lastmod>
-    </url>
-    <url>
-         <loc>https://megalinter.io/beta/licenses/tsqllint/</loc>
          <lastmod>2026-08-02</lastmod>
     </url>
     <url>
