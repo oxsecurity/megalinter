@@ -29,6 +29,13 @@ DEFAULT_SARIF_VERSION = "2.1.0"
 # MAJOR-RELEASE-IMPACTED
 DEFAULT_RELEASE = "v9"
 
+# Ruleset used to mask secrets in linter outputs. Vendored from the pinned tag
+# by .automation/vendor_betterleaks_ruleset.py during documentation builds.
+BETTERLEAKS_RULESET_FILE_NAME = "betterleaks-default.toml"
+BETTERLEAKS_RULESET_REPO = "betterleaks/betterleaks"
+# renovate: datasource=github-tags depName=betterleaks/betterleaks
+BETTERLEAKS_RULESET_VERSION = "v1.7.3"
+
 DEFAULT_DOCKERFILE_ARGS: list[str] = [
     "ARG TARGETPLATFORM",
     "ARG TARGETARCH",

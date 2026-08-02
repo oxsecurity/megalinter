@@ -1,5 +1,6 @@
 import glob
 import importlib
+import logging
 import os
 
 import yaml
@@ -92,9 +93,24 @@ def build_descriptor_linters(file, linter_init_params=None, linter_names=None):
                 linter_class_file_name = os.path.splitext(
                     os.path.basename(linter_descriptor.get("class"))
                 )[0]
-                linter_module = importlib.import_module(
-                    ".linters." + linter_class_file_name, package=__package__
-                )
+                try:
+                    linter_module = importlib.import_module(
+                        ".linters." + linter_class_file_name, package=__package__
+                    )
+                except ModuleNotFoundError as e:
+                    # Descriptors baked in a docker image can reference a linter
+                    # class that no longer exists in the code, for example when a
+                    # linter has been removed in a major version. Skip the linter
+                    # instead of crashing, but let unrelated import errors raised
+                    # from within the class module propagate.
+                    if e.name != f"{__package__}.linters.{linter_class_file_name}":
+                        raise
+                    logging.warning(
+                        f"Linter class {linter_class_file_name} not found: skipping "
+                        f"{linter_descriptor.get('linter_name')}, as it has been "
+                        "removed from this version of MegaLinter"
+                    )
+                    continue
                 linter_class = getattr(linter_module, linter_class_file_name)
 
             # Create a Linter class instance by linter

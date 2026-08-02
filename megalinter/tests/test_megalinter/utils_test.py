@@ -6,7 +6,7 @@ Unit tests for utils class
 
 import unittest
 
-from megalinter.logger import fetch_gitleaks_regexes, sanitize_string
+from megalinter.logger import fetch_betterleaks_regexes, sanitize_string
 
 
 class utils_test(unittest.TestCase):
@@ -25,14 +25,8 @@ class utils_test(unittest.TestCase):
             "There should be exactly 2 HIDDEN_BY_MEGALINTER in the output",
         )
 
-    def test_fetch_gitleaks_regexes_remote(self):
-        # Test fetching Gitleaks regexes from the remote URL
-        regexes = fetch_gitleaks_regexes(False)
-        self.assertIsInstance(regexes, list, "Regexes should be a list")
-        self.assertGreater(len(regexes), 0, "Regexes list should not be empty")
-
-    def test_fetch_gitleaks_regexes_local(self):
-        # Test fetching Gitleaks regexes from the local file
-        regexes = fetch_gitleaks_regexes(True)
+    def test_fetch_betterleaks_regexes(self):
+        # Test loading betterleaks regexes from the vendored ruleset
+        regexes = fetch_betterleaks_regexes()
         self.assertIsInstance(regexes, list, "Regexes should be a list")
         self.assertGreater(len(regexes), 0, "Regexes list should not be empty")

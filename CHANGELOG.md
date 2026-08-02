@@ -10,7 +10,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Breaking changes
 
+  - Removed 14 deprecated or long-disabled linters, and the `API`, `MAKEFILE` and `PUPPET` descriptors, which had no other linter left. MegaLinter does not provide Makefile and Puppet linting anymore.
+  - `REPOSITORY_GITLEAKS` has been removed: migrate to [REPOSITORY_BETTERLEAKS](https://megalinter.io/beta/descriptors/repository_betterleaks/), which reads your existing `.gitleaks.toml` and `.gitleaksignore` files unchanged.
+  - Configuration variables of removed linters remain valid in the JSON schema (flagged as deprecated) and are ignored at runtime, so existing `.mega-linter.yml` files keep validating. MegaLinter now displays a single notice listing every removed linter or descriptor found in your configuration, with a link to the new [Removed linters](https://megalinter.io/beta/removed-linters/) page.
+
 - Core
+
+  - Add `megalinter/removed_linters.py` as the single source of truth for every linter and descriptor removed since v6, used both at runtime and by the build system, and generate a [Removed linters](https://megalinter.io/beta/removed-linters/) documentation page from it
+  - Migrate MegaLinter's internal log secret-masking engine from gitleaks' public ruleset to [betterleaks](https://github.com/betterleaks/betterleaks), removing the last internal dependency on gitleaks. The ruleset is pinned, tracked by renovate alongside the betterleaks linter, and vendored in minified form, removing a network call at every MegaLinter run. Redaction coverage nearly doubles (218 to 408 patterns)
 
   - Allow `FILTER_REGEX_INCLUDE` and `FILTER_REGEX_EXCLUDE` (global, per-descriptor and per-linter) to be defined as a list of regexes combined with a logical OR, so filter regexes can be appended across `EXTENDS` configs via `CONFIG_PROPERTIES_TO_APPEND`; single-string values remain fully supported, fixes [#8361](https://github.com/oxsecurity/megalinter/issues/8361)
   - Add `ENABLE_DISABLE_LINTERS_PRIORITY` variable to let `DISABLE_LINTERS` override `ENABLE_LINTERS` when a linter is in both lists (e.g. to trim an inherited `ENABLE_LINTERS` list via `EXTENDS`), fixes [#8296](https://github.com/oxsecurity/megalinter/issues/8296)
@@ -29,6 +36,19 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Deprecated linters
 
 - Removed linters
+
+  - **API_SPECTRAL**: crashing with no upstream fix
+  - **JSON_ESLINT_PLUGIN_JSONC**: blocked by [eslint-plugin-jsonc#328](https://github.com/ota-meshi/eslint-plugin-jsonc/issues/328), use `JSON_PRETTIER` or `JSON_JSONLINT` instead
+  - **LUA_SELENE**: blocked by [selene#662](https://github.com/Kampfkarren/selene/issues/662), use `LUA_LUACHECK` instead
+  - **MAKEFILE_CHECKMAKE**: disabled for [security issues](https://github.com/checkmake/checkmake/issues/99)
+  - **MARKDOWN_REMARK_LINT**: blocked by [remark-lint#322](https://github.com/remarkjs/remark-lint/issues/322), use `MARKDOWN_MARKDOWNLINT` instead
+  - **PUPPET_PUPPET_LINT**: blocked by [puppet-lint#251](https://github.com/puppetlabs/puppet-lint/issues/251)
+  - **REPOSITORY_GITLEAKS**: superseded by [betterleaks](https://github.com/betterleaks/betterleaks), use `REPOSITORY_BETTERLEAKS` instead
+  - **REPOSITORY_KICS**: disabled after the [Checkmarx supply chain compromise](https://socket.dev/blog/checkmarx-supply-chain-compromise), use `REPOSITORY_CHECKOV` instead
+  - **SALESFORCE_LIGHTNING_FLOW_SCANNER**: upstream repository archived, use `SALESFORCE_CODE_ANALYZER_FLOW` instead
+  - **SALESFORCE_SFDX_SCANNER_APEX**, **SALESFORCE_SFDX_SCANNER_AURA**, **SALESFORCE_SFDX_SCANNER_LWC**: deprecated by Salesforce and incompatible with Node.js 22+, use the matching `SALESFORCE_CODE_ANALYZER_*` linters instead
+  - **SQL_TSQLLINT**: upstream unmaintained since 2024-09 and shipping unpatched .NET CVEs
+  - **TERRAFORM_TERRASCAN**: upstream repository archived by Tenable and shipping unpatched CVEs, use `REPOSITORY_CHECKOV` instead
 
 - Media
 

@@ -52,6 +52,12 @@ from megalinter.constants import (
     ML_REPO,
     ML_REPO_URL,
 )
+from megalinter.removed_linters import (
+    REMOVED_DESCRIPTORS,
+    REMOVED_LINTER_ALIASES,
+    REMOVED_LINTERS,
+    is_removed_related_variable,
+)
 from requests.adapters import HTTPAdapter
 from urllib3.util import Retry
 from webpreview import web_preview
@@ -133,22 +139,6 @@ IDE_LIST = {
     "vim": {"label": "vim", "url": "https://www.vim.org/"},
     "vscode": {"label": "Visual Studio Code", "url": "https://code.visualstudio.com/"},
 }
-
-DEPRECATED_LINTERS = [
-    "CREDENTIALS_SECRETLINT",  # Removed in v6
-    "DOCKERFILE_DOCKERFILELINT",  # Removed in v6
-    "GIT_GIT_DIFF",  # Removed in v6
-    "PHP_BUILTIN",  # Removed in v6
-    "KUBERNETES_KUBEVAL",  # Removed in v7
-    "REPOSITORY_GOODCHECK",  # Removed in v7
-    "SPELL_MISSPELL",  # Removed in v7
-    "TERRAFORM_CHECKOV",  # Removed in v7
-    "TERRAFORM_KICS",  # Removed in v7
-    "CSS_SCSSLINT",  # Removed in v8
-    "OPENAPI_SPECTRAL",  # Removed in v8
-    "SQL_SQL_LINT",  # Removed in v8
-    "MARKDOWN_MARKDOWN_LINK_CHECK",  # Removed in v9
-]
 
 DESCRIPTORS_FOR_BUILD_CACHE = None
 
@@ -2666,13 +2656,7 @@ _CONFIG_SCHEMA_IDS_CACHE: dict[str, Any] = {
 
 def _is_removed_linter_related_variable(property_name: str) -> bool:
     # Removed linters can still leave legacy variables in schema; ignore them for checks.
-    removed_linters_sorted = sorted(DEPRECATED_LINTERS, key=len, reverse=True)
-    for removed_linter_id in removed_linters_sorted:
-        if property_name == removed_linter_id or property_name.startswith(
-            removed_linter_id + "_"
-        ):
-            return True
-    return False
+    return is_removed_related_variable(property_name)
 
 
 def _collect_descriptor_ids_sorted() -> list[str]:
@@ -2862,12 +2846,11 @@ def ensure_config_schema_root_x_metadata_for_descriptors_and_linters() -> None:
         if not isinstance(prop_name, str) or not isinstance(prop_schema, dict):
             continue
 
-        if _is_removed_linter_related_variable(prop_name):
-            continue
-
         # Flag deprecated variables with the JSON Schema "deprecated" keyword so
         # editors/tools can surface them. Detection is based on the "(deprecated)"
         # title prefix added for deprecated linters and on "Deprecated:" wording.
+        # Runs before the removed-linter guard below, which only skips the
+        # x-metadata that removed variables have no use for.
         title = prop_schema.get("title", "")
         description = prop_schema.get("description", "")
         is_deprecated_variable = (
@@ -2879,6 +2862,9 @@ def ensure_config_schema_root_x_metadata_for_descriptors_and_linters() -> None:
         if is_deprecated_variable and prop_schema.get("deprecated") is not True:
             prop_schema["deprecated"] = True
             updated = True
+
+        if _is_removed_linter_related_variable(prop_name):
+            continue
 
         category = _infer_config_schema_descriptor_or_linter_category(prop_name)
         if category is None:
@@ -2895,6 +2881,32 @@ def ensure_config_schema_root_x_metadata_for_descriptors_and_linters() -> None:
             updated = True
         if prop_schema.get("x-order") != x_order:
             prop_schema["x-order"] = x_order
+            updated = True
+
+    if updated is True:
+        write_config_json_schema(json_schema)
+
+
+def ensure_removed_linters_flagged_in_config_schema() -> None:
+    # Variables of removed linters and descriptors are never deleted from the
+    # config schema, so that existing configurations keep validating. Mark them
+    # as deprecated so editors and tools surface them as such.
+    with open(CONFIG_JSON_SCHEMA, "r", encoding="utf-8") as json_file:
+        json_schema = json.load(json_file)
+
+    props = json_schema.get("properties")
+    updated = False
+    for prop_name, prop_schema in props.items():
+        if not isinstance(prop_name, str) or not isinstance(prop_schema, dict):
+            continue
+        if not is_removed_related_variable(prop_name):
+            continue
+        title = prop_schema.get("title", "")
+        if isinstance(title, str) and "(deprecated)" not in title.lower():
+            prop_schema["title"] = f"(deprecated) {title}"
+            updated = True
+        if prop_schema.get("deprecated") is not True:
+            prop_schema["deprecated"] = True
             updated = True
 
     if updated is True:
@@ -3312,10 +3324,15 @@ def generate_json_schema_enums():
     json_schema["definitions"]["enum_descriptor_keys"]["enum"] = [
         x["descriptor_id"] for x in descriptors
     ]
-    json_schema["definitions"]["enum_descriptor_keys"]["enum"] += ["CREDENTIALS", "GIT"]
+    # Removed descriptors and linters: their keys stay valid so that existing
+    # configurations referencing them keep validating after an upgrade
+    json_schema["definitions"]["enum_descriptor_keys"]["enum"] += list(
+        REMOVED_DESCRIPTORS
+    )
     json_schema["definitions"]["enum_linter_keys"]["enum"] = [x.name for x in linters]
-    # Deprecated linters
-    json_schema["definitions"]["enum_linter_keys"]["enum"] += DEPRECATED_LINTERS
+    json_schema["definitions"]["enum_linter_keys"]["enum"] += (
+        list(REMOVED_LINTERS) + REMOVED_LINTER_ALIASES
+    )
 
     # Sort:
     json_schema["definitions"]["enum_descriptor_keys"]["enum"] = sorted(
@@ -3663,6 +3680,64 @@ def generate_documentation_all_linters():
         )
         for md_table_line in md_table_lines:
             outfile.write("| %s |\n" % " | ".join(md_table_line))
+
+
+# Generate the page listing linters and descriptors removed from MegaLinter
+def generate_documentation_removed_linters():
+    logging.info("Generating removed linters documentation…")
+
+    def sort_key(item):
+        _key, info = item
+        return [-int(part) for part in info["removed_in"].split(".")]
+
+    def build_table(entries, first_column):
+        table_lines = [
+            f"| {first_column} | Removed in | Replacement | Reason |",
+            "| :--- | :---: | :--- | :--- |",
+        ]
+        for key, info in entries:
+            replacement = info["replacement"]
+            replacement_cell = f"`{replacement}`" if replacement else "None"
+            table_lines += [
+                f"| `{key}` | v{info['removed_in']} | {replacement_cell} "
+                f"| {info['reason']} |"
+            ]
+        return table_lines
+
+    doc_md = [
+        f"<!-- This file has been automatically {'@'}generated by build.py"
+        " (generate_documentation_removed_linters method) -->",
+        "",
+        "# Removed linters",
+        "",
+        "Linters and descriptors listed on this page have been removed from"
+        " MegaLinter in a major version.",
+        "",
+        "Their configuration variables remain valid in the"
+        " [configuration JSON schema](https://github.com/oxsecurity/megalinter"
+        "/blob/main/megalinter/descriptors/schemas"
+        "/megalinter-configuration.jsonschema.json)"
+        " (flagged as deprecated), so an existing `.mega-linter.yml` keeps"
+        " validating after an upgrade. They are simply ignored at runtime, and"
+        " MegaLinter displays a notice listing the removed items it found in"
+        " your configuration.",
+        "",
+        "## Removed linters",
+        "",
+    ]
+    doc_md += build_table(sorted(REMOVED_LINTERS.items(), key=sort_key), "Linter")
+    doc_md += [
+        "",
+        "## Removed descriptors",
+        "",
+    ]
+    doc_md += build_table(
+        sorted(REMOVED_DESCRIPTORS.items(), key=sort_key), "Descriptor"
+    )
+    doc_md += [""]
+
+    with open(f"{REPO_HOME}/docs/removed-linters.md", "w", encoding="utf-8") as outfile:
+        outfile.write("\n".join(doc_md))
 
 
 # Generate page of MegaLinter public repositories users
@@ -4145,6 +4220,8 @@ if __name__ == "__main__":
         # noinspection PyTypeChecker
         collect_linter_previews()
         generate_json_schema_enums()
+        ensure_removed_linters_flagged_in_config_schema()
+        generate_documentation_removed_linters()
         validate_descriptors()
         if UPDATE_DEPENDENTS is True:
             update_dependents_info()
@@ -4153,6 +4230,9 @@ if __name__ == "__main__":
         generate_linter_test_classes()
         if UPDATE_DOC is True:
             logging.info("Running documentation generators…")
+            from vendor_betterleaks_ruleset import vendor as vendor_betterleaks_ruleset
+
+            vendor_betterleaks_ruleset()
             # refresh_users_info() # deprecated since now we use github-dependents-info
             generate_documentation()
             ensure_config_schema_root_x_metadata_for_descriptors_and_linters()

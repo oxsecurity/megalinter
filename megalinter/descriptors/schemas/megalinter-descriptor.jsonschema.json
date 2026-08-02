@@ -1052,9 +1052,9 @@
             "examples": [
               {
                 "dockerfile": [
-                  "FROM accurics/terrascan:latest AS terrascan",
-                  "COPY --from=terrascan /go/bin/terrascan /usr/bin/",
-                  "RUN terrascan init"
+                  "FROM ghcr.io/betterleaks/betterleaks:latest AS betterleaks",
+                  "COPY --from=betterleaks /usr/bin/betterleaks /usr/bin/",
+                  "RUN betterleaks version"
                 ]
               },
               {
@@ -1106,9 +1106,9 @@
                 "description": "Will be automatically integrated in generated Dockerfile",
                 "examples": [
                   [
-                    "FROM accurics/terrascan:latest AS terrascan",
-                    "COPY --from=terrascan /go/bin/terrascan /usr/bin/",
-                    "RUN terrascan init"
+                    "FROM ghcr.io/betterleaks/betterleaks:latest AS betterleaks",
+                    "COPY --from=betterleaks /usr/bin/betterleaks /usr/bin/",
+                    "RUN betterleaks version"
                   ]
                 ],
                 "items": {
@@ -1536,7 +1536,7 @@
             "examples": [
               [
                 "bash_shfmt",
-                "terraform_terrascan"
+                "terraform_tflint"
               ]
             ],
             "title": "Test folder in .automation/",
@@ -1749,7 +1749,7 @@
       "examples": [
         [
           "bash_shfmt",
-          "terraform_terrascan"
+          "terraform_tflint"
         ]
       ],
       "title": "Test folder in .automation/",
