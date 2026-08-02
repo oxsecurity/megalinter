@@ -14663,7 +14663,6 @@
       "default": "markdownlint",
       "enum": [
         "markdownlint",
-        "remark-lint",
         "rumdl"
       ],
       "category": "MARKDOWN",
