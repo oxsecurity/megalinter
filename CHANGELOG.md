@@ -201,6 +201,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.github.io/) from 9.23.1 to **9.24.0** on 2026-08-02
   - [vale](https://vale.sh/) from 3.15.2 to **3.17.0** on 2026-08-02
   - [terragrunt](https://docs.terragrunt.com/reference/cli/commands/hcl/fmt/) from 1.1.1 to **1.1.2** on 2026-08-02
+  - [hadolint](https://github.com/hadolint/hadolint) from 2.14.0 to **2.15.1** on 2026-08-02
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.17 to **3.95.18** on 2026-08-02
 <!-- linter-versions-end -->
 
 ## [v9.6.0] - 2026-06-28
