@@ -94,7 +94,7 @@ To add a single package with pnpm instead of installing the full tree, run `core
 
 ## eslint documentation
 
-- Version in MegaLinter: **10.7.0**
+- Version in MegaLinter: **10.8.0**
 - Visit [Official Web Site](https://eslint.org){target=_blank}
 - See [How to configure eslint rules](https://eslint.org/docs/latest/use/configure){target=_blank}
 - See [How to disable eslint rules in files](https://eslint.org/docs/latest/use/configure/rules#disabling-rules){target=_blank}
@@ -266,7 +266,7 @@ Miscellaneous:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=10.7.0
+ARG NPM_ESLINT_VERSION=10.8.0
 # renovate: datasource=npm depName=@eslint/js
 ARG NPM_ESLINT_JS_VERSION=10.0.1
 # renovate: datasource=npm depName=eslint-config-prettier
@@ -282,13 +282,13 @@ ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.6
 # renovate: datasource=npm depName=eslint-plugin-promise
 ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=7.3.0
 # renovate: datasource=npm depName=eslint-plugin-vue
-ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.9.2
+ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.10.0
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 ```
 
 - NPM packages (node.js):
-  - [eslint@10.7.0](https://www.npmjs.com/package/eslint/v/10.7.0)
+  - [eslint@10.8.0](https://www.npmjs.com/package/eslint/v/10.8.0)
   - [@eslint/js@10.0.1](https://www.npmjs.com/package/@eslint/js/v/10.0.1)
   - [eslint-config-prettier@10.1.8](https://www.npmjs.com/package/eslint-config-prettier/v/10.1.8)
   - [eslint-plugin-import-x@4.17.1](https://www.npmjs.com/package/eslint-plugin-import-x/v/4.17.1)
@@ -296,7 +296,7 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
   - [eslint-plugin-n@18.2.2](https://www.npmjs.com/package/eslint-plugin-n/v/18.2.2)
   - [eslint-plugin-prettier@5.5.6](https://www.npmjs.com/package/eslint-plugin-prettier/v/5.5.6)
   - [eslint-plugin-promise@7.3.0](https://www.npmjs.com/package/eslint-plugin-promise/v/7.3.0)
-  - [eslint-plugin-vue@10.9.2](https://www.npmjs.com/package/eslint-plugin-vue/v/10.9.2)
+  - [eslint-plugin-vue@10.10.0](https://www.npmjs.com/package/eslint-plugin-vue/v/10.10.0)
   - [@microsoft/eslint-formatter-sarif@3.1.0](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/3.1.0)
 
 ## Known errors and resolutions

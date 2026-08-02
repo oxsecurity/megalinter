@@ -25,7 +25,7 @@ description: How to use rstcheck (configure, ignore files, ignore errors, help &
 
 ## rstcheck documentation
 
-- Version in MegaLinter: **6.2.5**
+- Version in MegaLinter: **6.3.0**
 - Visit [Official Web Site](https://github.com/myint/rstcheck#readme){target=_blank}
 - See [How to configure rstcheck rules](https://github.com/myint/rstcheck#configuration-file){target=_blank}
 - See [How to disable rstcheck rules in files](https://github.com/myint/rstcheck#ignore-specific-errors){target=_blank}
@@ -153,6 +153,11 @@ rstcheck -c .rstcheck.cfg myfile.rst
 │ --ignore-messages                REGEX   A regular expression to match       │
 │                                          linting issue messages against to   │
 │                                          ignore. Can be set in config file.  │
+│ --sphinx-source-dir              <path>  Path to the sphinx 'source'         │
+│                                          directory. Only necessary if sphinx │
+│                                          is used and automatic discovery     │
+│                                          fails. May be relative or absolute. │
+│                                          Can be set in config file.          │
 │ --version                                Print versions and exit.            │
 │ --help                                   Show this message and exit.         │
 ╰──────────────────────────────────────────────────────────────────────────────╯
@@ -164,11 +169,11 @@ rstcheck -c .rstcheck.cfg myfile.rst
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=rstcheck
-ARG PIP_RSTCHECK_VERSION=6.2.5
+ARG PIP_RSTCHECK_VERSION=6.3.0
 # renovate: datasource=pypi depName=click
 ARG PIP_RSTCHECK_CLICK_VERSION=8.4.2
 ```
 
 - PIP packages (Python):
   - [click==8.4.2](https://pypi.org/project/click/8.4.2)
-  - [rstcheck[toml,sphinx]==6.2.5](https://pypi.org/project/rstcheck[toml,sphinx]/6.2.5)
+  - [rstcheck[toml,sphinx]==6.3.0](https://pypi.org/project/rstcheck[toml,sphinx]/6.3.0)
