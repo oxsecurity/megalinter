@@ -15191,6 +15191,7 @@
 <li>Fix outdated links in <code>docs/descriptors/repository_kingfisher.md</code></li>
 <li>Fix <code>LINTER_RULES_PATH</code> not being used to resolve config files for linters using <code>active_only_if_file_found</code> (e.g. <code>REPOSITORY_LS_LINT</code>, <code>SPELL_PROSELINT</code>, <code>SPELL_VALE</code>), fixes <a href="https://github.com/oxsecurity/megalinter/issues/8416">#8416</a></li>
 <li>Honor <code>EXCLUDED_DIRECTORIES</code> and <code>ADDITIONAL_EXCLUDED_DIRECTORIES</code> in changed-files mode (<code>VALIDATE_ALL_CODEBASE: false</code>), so files inside excluded directories are pruned from the <code>git diff</code> file list the same way they are during full-codebase validation (<a href="https://github.com/oxsecurity/megalinter/issues/8360">#8360</a>)</li>
+<li>Declare <code>COPYPASTE_JSCPD</code> as <code>linux/amd64</code> only: since jscpd v5 the tool is a Rust binary shipped through per-platform npm packages, and upstream publishes no <code>linux-arm64-musl</code> target, so it exits with <code>Unsupported platform linux/arm64</code> on the Alpine-based ARM images</li>
 </ul>
 </li>
 </ul>
