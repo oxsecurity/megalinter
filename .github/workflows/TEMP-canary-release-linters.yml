@@ -1,0 +1,158 @@
+---
+###############################################################################
+# TEMPORARY WORKFLOW - DO NOT MERGE                                           #
+#                                                                             #
+# Validates the simplified deploy-RELEASE-linters.yml on real infrastructure  #
+# before a release depends on it. Identical to the real workflow except:      #
+#                                                                             #
+#   - triggered by pushes on this branch instead of a release                 #
+#   - publishes to disposable "canary" tags, never to :v9, :latest or a       #
+#     release tag, so no released image can be overwritten                    #
+#   - restricted to a 4-linter subset (2 multi-arch + 2 amd64-only)           #
+#   - asserts the published manifest really carries the expected platforms    #
+#                                                                             #
+# Deleted once the run is green.                                              #
+###############################################################################
+name: "TEMP - Canary Release linters"
+on:
+  push:
+    branches:
+      - "fix-ci-publish-after-tests"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  get-linters-matrix:
+    name: Get Linters Matrix
+    runs-on: ubuntu-latest
+    outputs:
+      jobs: ${{ steps.set-matrix.outputs.jobs }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Read linters_matrix.json
+        id: set-matrix
+        run: |
+          # Same expression as deploy-RELEASE-linters.yml, then narrowed to a
+          # subset so the canary run stays small. bash_shellcheck and
+          # action_actionlint have a multi-arch :beta manifest; arm_arm_ttk and
+          # dart_dartanalyzer are amd64-only, which is the case that would break
+          # if the platform list were not computed per linter.
+          jobs=$(jq -c '
+            [.["linux/amd64"][]] as $amd
+            | [.["linux/arm64"][]] as $arm
+            | ($amd + $arm | unique)
+            | map(. as $linter | {
+                linter: $linter,
+                platforms: ([
+                  (if ($amd | index($linter)) then "linux/amd64" else empty end),
+                  (if ($arm | index($linter)) then "linux/arm64" else empty end)
+                ] | join(","))
+              })
+            | map(select(.linter | IN("bash_shellcheck", "action_actionlint", "arm_arm_ttk", "dart_dartanalyzer")))
+          ' .automation/generated/linters_matrix.json)
+          echo "jobs=${jobs}" >> "${GITHUB_OUTPUT}"
+          echo "Canary matrix: ${jobs}"
+
+  build:
+    name: Canary Release Linters
+    runs-on: ubuntu-latest
+    needs: get-linters-matrix
+    permissions:
+      packages: write
+    strategy:
+      fail-fast: false
+      matrix:
+        include: ${{ fromJson(needs.get-linters-matrix.outputs.jobs) }}
+    if: github.repository == 'oxsecurity/megalinter'
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@bb05f3f5519dd87d3ba754cc423b652a5edd6d2c # v4
+
+      - name: Get current date
+        run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> "${GITHUB_ENV}"
+
+      # Deliberately no QEMU setup: Dockerfile-release contains no RUN, so
+      # buildx must be able to assemble every platform without emulation. If
+      # that assumption is wrong, this step fails.
+      - name: Build Image
+        uses: docker/build-push-action@53b7df96c91f9c12dcc8a07bcb9ccacbed38856a # v7
+        with:
+          context: .
+          file: Dockerfile-release
+          platforms: ${{ matrix.platforms }}
+          build-args: |
+            MEGALINTER_BASE_IMAGE=ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:beta
+            BUILD_DATE=${{ env.BUILD_DATE }}
+            BUILD_REVISION=${{ github.sha }}
+            BUILD_VERSION=canary
+          load: false
+          push: true
+          secrets: |
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          # Canary stand-ins for :v9, :<release tag> and :latest, to exercise
+          # the same three-tag manifest push without touching released images.
+          tags: |
+            ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:canary-v9
+            ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:canary-tag
+            ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:canary
+
+      - name: Inspect image
+        env:
+          MATRIX_LINTER: ${{ matrix.linter }}
+        run: |
+          docker buildx imagetools inspect ghcr.io/oxsecurity/megalinter-only-"${MATRIX_LINTER}":canary
+
+      # The real proof: the published tag must be a manifest list carrying
+      # exactly the platforms the matrix asked for.
+      - name: Assert published platforms
+        env:
+          MATRIX_LINTER: ${{ matrix.linter }}
+          EXPECTED_PLATFORMS: ${{ matrix.platforms }}
+        run: |
+          expected=$(echo "${EXPECTED_PLATFORMS}" | tr ',' '\n' | sort | paste -sd, -)
+          actual=$(docker buildx imagetools inspect --raw \
+            ghcr.io/oxsecurity/megalinter-only-"${MATRIX_LINTER}":canary |
+            jq -r '[.manifests[] | select(.platform.architecture != "unknown")
+                   | .platform.os + "/" + .platform.architecture] | sort | join(",")')
+          echo "expected: ${expected}"
+          echo "actual:   ${actual}"
+          if [ "${expected}" != "${actual}" ]; then
+            echo "::error::${MATRIX_LINTER}: published platforms (${actual}) do not match the requested ones (${expected})"
+            exit 1
+          fi
+
+      # Version metadata is the only thing Dockerfile-release adds, so check it
+      # actually landed instead of inheriting the base image's "beta" value.
+      - name: Assert version metadata
+        env:
+          MATRIX_LINTER: ${{ matrix.linter }}
+        run: |
+          build_version=$(docker run --rm --entrypoint sh \
+            ghcr.io/oxsecurity/megalinter-only-"${MATRIX_LINTER}":canary \
+            -c 'printf "%s" "${BUILD_VERSION}"')
+          echo "BUILD_VERSION in image: ${build_version}"
+          if [ "${build_version}" != "canary" ]; then
+            echo "::error::${MATRIX_LINTER}: BUILD_VERSION is '${build_version}', expected 'canary'"
+            exit 1
+          fi
