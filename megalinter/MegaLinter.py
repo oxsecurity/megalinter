@@ -30,6 +30,10 @@ from megalinter.constants import (
     ML_DOC_URL,
 )
 from megalinter.logger import display_header, initialize_logger, manage_upgrade_message
+from megalinter.removed_linters import (
+    REMOVED_LINTERS_DOC_URL,
+    find_removed_references,
+)
 from megalinter.reporters.jenkins_ci_vars import apply_jenkins_ci_vars
 from megalinter.utils_reporter import (
     log_section_end,
@@ -37,6 +41,13 @@ from megalinter.utils_reporter import (
     register_user_notification,
 )
 from multiprocessing_logging import install_mp_handler, uninstall_mp_handler
+
+REMOVED_LINTERS_NOTIFICATION_KEY = "removed_linters_references"
+REMOVED_LINTERS_NOTIFICATION_TEMPLATE = (
+    "⚠️ Your configuration references items that have been removed from "
+    "MegaLinter and are ignored: {values}. "
+    "See [Removed linters]({doc_url}) to find their replacements."
+)
 
 MEGALINTER_9_5_ANNOUNCEMENT_KEY = "megalinter_9_5_announcement"
 MEGALINTER_9_5_ANNOUNCEMENT_URL = "https://github.com/oxsecurity/megalinter/issues/7835"
@@ -162,6 +173,7 @@ class Megalinter:
             self.request_id, "DISABLE_ERRORS_LINTERS", []
         )
         self.manage_default_linter_activation()
+        self.check_removed_linters_references()
         self.apply_fixes = config.get_list(self.request_id, "APPLY_FIXES", "none")
         self.show_elapsed_time = (
             config.get(self.request_id, "SHOW_ELAPSED_TIME", "false") == "true"
@@ -648,6 +660,22 @@ class Megalinter:
             if env_var.startswith("VALIDATE_") and env_var != "VALIDATE_ALL_CODEBASE":
                 if config.get(self.request_id, env_var) == "true":
                     self.default_linter_activation = False
+
+    # Warn once about linters and descriptors removed from previous major versions
+    def check_removed_linters_references(self):
+        removed_references = find_removed_references(
+            config.get(self.request_id),
+            self.enable_linters + self.disable_linters,
+            self.enable_descriptors + self.disable_descriptors,
+        )
+        for removed_reference in removed_references:
+            register_user_notification(
+                self,
+                key=REMOVED_LINTERS_NOTIFICATION_KEY,
+                template=REMOVED_LINTERS_NOTIFICATION_TEMPLATE,
+                value=removed_reference,
+                extras={"doc_url": REMOVED_LINTERS_DOC_URL},
+            )
 
     # Load and initialize all linters
     def load_linters(self):

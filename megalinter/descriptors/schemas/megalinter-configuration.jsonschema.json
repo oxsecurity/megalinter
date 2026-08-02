@@ -130,6 +130,7 @@
         "LUA",
         "MAKEFILE",
         "MARKDOWN",
+        "OPENAPI",
         "PERL",
         "PHP",
         "POWERSHELL",
@@ -309,6 +310,7 @@
         "CSHARP_DOTNET_FORMAT",
         "CSHARP_ROSLYNATOR",
         "CSS_SCSSLINT",
+        "CSS_SCSS_LINT",
         "CSS_STYLELINT",
         "C_CLANG_FORMAT",
         "C_CPPCHECK",
@@ -1512,11 +1514,12 @@
     },
     "API_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/API_FILTER_REGEX_EXCLUDE",
+      "deprecated": true,
       "description": "API: Custom regex excluding filter: files matching this regex will NOT be linted",
       "items": {
         "type": "string"
       },
-      "title": "Excluding regex filter for API descriptor",
+      "title": "(deprecated) Excluding regex filter for API descriptor",
       "type": [
         "string",
         "array"
@@ -1528,11 +1531,12 @@
     },
     "API_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/API_FILTER_REGEX_INCLUDE",
+      "deprecated": true,
       "description": "API: Custom regex including filter: only files matching this regex will be linted",
       "items": {
         "type": "string"
       },
-      "title": "Including regex filter for API descriptor",
+      "title": "(deprecated) Including regex filter for API descriptor",
       "type": [
         "string",
         "array"
@@ -1544,6 +1548,7 @@
     },
     "API_POST_COMMANDS": {
       "$id": "#/properties/API_POST_COMMANDS",
+      "deprecated": true,
       "description": "API: List of bash commands to run after the linters",
       "examples": [
         [
@@ -1557,7 +1562,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "Post commands for API descriptor",
+      "title": "(deprecated) Post commands for API descriptor",
       "type": "array",
       "x-category": "API",
       "x-order": 500010,
@@ -1565,6 +1570,7 @@
     },
     "API_PRE_COMMANDS": {
       "$id": "#/properties/API_PRE_COMMANDS",
+      "deprecated": true,
       "description": "API: List of bash commands to run before the linters",
       "examples": [
         [
@@ -1578,7 +1584,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "Pre commands for API descriptor",
+      "title": "(deprecated) Pre commands for API descriptor",
       "type": "array",
       "x-category": "API",
       "x-order": 500000,
@@ -1586,6 +1592,7 @@
     },
     "API_SPECTRAL_ARGUMENTS": {
       "$id": "#/properties/API_SPECTRAL_ARGUMENTS",
+      "deprecated": true,
       "description": "API_SPECTRAL: User custom arguments to add in linter CLI call",
       "examples:": [
         "--foo",
@@ -1594,7 +1601,7 @@
       "items": {
         "type": "string"
       },
-      "title": "API_SPECTRAL: Custom arguments",
+      "title": "(deprecated) API_SPECTRAL: Custom arguments",
       "type": [
         "array",
         "string"
@@ -1610,11 +1617,12 @@
           "spectral"
         ]
       ],
+      "deprecated": true,
       "description": "API_SPECTRAL: Override CLI executable used to build the linter command line (rarely needed)",
       "items": {
         "type": "string"
       },
-      "title": "API_SPECTRAL: CLI Executable",
+      "title": "(deprecated) API_SPECTRAL: CLI Executable",
       "type": "array",
       "x-category": "API_SPECTRAL",
       "x-order": 200060,
@@ -1623,6 +1631,7 @@
     "API_SPECTRAL_CLI_LINT_MODE": {
       "$id": "#/properties/API_SPECTRAL_CLI_LINT_MODE",
       "default": "list_of_files",
+      "deprecated": true,
       "description": "API_SPECTRAL: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
@@ -1632,7 +1641,7 @@
         "File",
         "List of Files"
       ],
-      "title": "API_SPECTRAL: CLI lint mode",
+      "title": "(deprecated) API_SPECTRAL: CLI lint mode",
       "type": "string",
       "x-category": "API_SPECTRAL",
       "x-doc-key": "config-cli-lint-mode",
@@ -1641,6 +1650,7 @@
     },
     "API_SPECTRAL_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/API_SPECTRAL_COMMAND_REMOVE_ARGUMENTS",
+      "deprecated": true,
       "description": "API_SPECTRAL: User custom arguments to remove before calling linter",
       "examples:": [
         "--foo",
@@ -1649,7 +1659,7 @@
       "items": {
         "type": "string"
       },
-      "title": "API_SPECTRAL: Custom remove arguments",
+      "title": "(deprecated) API_SPECTRAL: Custom remove arguments",
       "type": [
         "array",
         "string"
@@ -1661,8 +1671,9 @@
     "API_SPECTRAL_CONFIG_FILE": {
       "$id": "#/properties/API_SPECTRAL_CONFIG_FILE",
       "default": ".spectral.yaml",
+      "deprecated": true,
       "description": "API_SPECTRAL: User custom config file name if different from default",
-      "title": "API_SPECTRAL: Custom config file name",
+      "title": "(deprecated) API_SPECTRAL: Custom config file name",
       "type": "string",
       "x-category": "API_SPECTRAL",
       "x-order": 200010,
@@ -1671,8 +1682,9 @@
     "API_SPECTRAL_DISABLE_ERRORS": {
       "$id": "#/properties/API_SPECTRAL_DISABLE_ERRORS",
       "default": false,
+      "deprecated": true,
       "description": "API_SPECTRAL: If true, API_SPECTRAL doesn't make MegaLinter fail even if errors are found",
-      "title": "API_SPECTRAL: Disable errors",
+      "title": "(deprecated) API_SPECTRAL: Disable errors",
       "type": "boolean",
       "x-category": "API_SPECTRAL",
       "x-order": 400000,
@@ -1681,8 +1693,9 @@
     "API_SPECTRAL_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/API_SPECTRAL_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
+      "deprecated": true,
       "description": "API_SPECTRAL: If the number of errors found is less than this value, API_SPECTRAL doesn't make MegaLinter fail",
-      "title": "API_SPECTRAL: Maximum number of errors allowed",
+      "title": "(deprecated) API_SPECTRAL: Maximum number of errors allowed",
       "type": "number",
       "x-category": "API_SPECTRAL",
       "x-order": 400010,
@@ -1695,6 +1708,7 @@
         ".yaml",
         ".json"
       ],
+      "deprecated": true,
       "description": "API_SPECTRAL: Override descriptor/linter matching files extensions that will be used to select files to lint",
       "examples": [
         ".py",
@@ -1703,7 +1717,7 @@
       "items": {
         "type": "string"
       },
-      "title": "API_SPECTRAL: Matching files extensions",
+      "title": "(deprecated) API_SPECTRAL: Matching files extensions",
       "type": "array",
       "x-category": "API_SPECTRAL",
       "x-order": 300020,
@@ -1712,6 +1726,7 @@
     "API_SPECTRAL_FILE_NAMES_REGEX": {
       "$id": "#/properties/API_SPECTRAL_FILE_NAMES_REGEX",
       "default": [],
+      "deprecated": true,
       "description": "API_SPECTRAL: Override descriptor/linter matching file name regexes that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -1720,7 +1735,7 @@
       "items": {
         "type": "string"
       },
-      "title": "API_SPECTRAL: Matching file name regexes",
+      "title": "(deprecated) API_SPECTRAL: Matching file name regexes",
       "type": "array",
       "x-category": "API_SPECTRAL",
       "x-order": 300030,
@@ -1728,11 +1743,12 @@
     },
     "API_SPECTRAL_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/API_SPECTRAL_FILTER_REGEX_EXCLUDE",
+      "deprecated": true,
       "description": "",
       "items": {
         "type": "string"
       },
-      "title": "API_SPECTRAL: Excluding Regex",
+      "title": "(deprecated) API_SPECTRAL: Excluding Regex",
       "type": [
         "string",
         "array"
@@ -1744,11 +1760,12 @@
     },
     "API_SPECTRAL_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/API_SPECTRAL_FILTER_REGEX_INCLUDE",
+      "deprecated": true,
       "description": "",
       "items": {
         "type": "string"
       },
-      "title": "API_SPECTRAL: Including Regex",
+      "title": "(deprecated) API_SPECTRAL: Including Regex",
       "type": [
         "string",
         "array"
@@ -1760,6 +1777,7 @@
     },
     "API_SPECTRAL_POST_COMMANDS": {
       "$id": "#/properties/API_SPECTRAL_POST_COMMANDS",
+      "deprecated": true,
       "description": "API_SPECTRAL: Define bash commands to run after running API_SPECTRAL",
       "examples": [
         [
@@ -1773,7 +1791,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "API_SPECTRAL: Post-run commands",
+      "title": "(deprecated) API_SPECTRAL: Post-run commands",
       "type": "array",
       "x-category": "API_SPECTRAL",
       "x-order": 500010,
@@ -1781,6 +1799,7 @@
     },
     "API_SPECTRAL_PRE_COMMANDS": {
       "$id": "#/properties/API_SPECTRAL_PRE_COMMANDS",
+      "deprecated": true,
       "description": "API_SPECTRAL: Define bash commands to run before running API_SPECTRAL",
       "examples": [
         [
@@ -1794,7 +1813,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "API_SPECTRAL: Pre-run commands",
+      "title": "(deprecated) API_SPECTRAL: Pre-run commands",
       "type": "array",
       "x-category": "API_SPECTRAL",
       "x-order": 500000,
@@ -1802,8 +1821,9 @@
     },
     "API_SPECTRAL_RULES_PATH": {
       "$id": "#/properties/API_SPECTRAL_RULES_PATH",
+      "deprecated": true,
       "description": "API_SPECTRAL: Path where to find linter configuration file",
-      "title": "API_SPECTRAL: Custom config file path",
+      "title": "(deprecated) API_SPECTRAL: Custom config file path",
       "type": "string",
       "x-category": "API_SPECTRAL",
       "x-order": 200040,
@@ -1812,11 +1832,12 @@
     "API_SPECTRAL_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/API_SPECTRAL_UNSECURED_ENV_VARIABLES",
       "default": [],
+      "deprecated": true,
       "description": "List of env variables explicitly not filtered before calling API_SPECTRAL and its pre/post commands",
       "items": {
         "type": "string"
       },
-      "title": "API_SPECTRAL: Unsecured env variables",
+      "title": "(deprecated) API_SPECTRAL: Unsecured env variables",
       "type": "array",
       "x-category": "API_SPECTRAL",
       "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
@@ -6503,8 +6524,9 @@
     "CSS_SCSS_LINT_FILE_NAME": {
       "$id": "#/properties/CSS_SCSS_LINT_FILE_NAME",
       "default": ".scss-lint.yml",
+      "deprecated": true,
       "description": "CSS_SCSS_LINT: User custom config file name if different from default",
-      "title": "CSS_SCSS_LINT: Custom config file name",
+      "title": "(deprecated) CSS_SCSS_LINT: Custom config file name",
       "type": "string",
       "x-category": "CSS",
       "x-order": 900999,
@@ -8007,6 +8029,7 @@
     },
     "DOCKERFILE_DOCKERFILELINT_ARGUMENTS": {
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_ARGUMENTS",
+      "deprecated": true,
       "description": "DOCKERFILE_DOCKERFILELINT: User custom arguments to add in linter CLI call",
       "examples:": [
         "--foo",
@@ -8015,7 +8038,7 @@
       "items": {
         "type": "string"
       },
-      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Custom arguments",
+      "title": "(deprecated) (removed) DOCKERFILE_DOCKERFILELINT: Custom arguments",
       "type": [
         "array",
         "string"
@@ -8027,6 +8050,7 @@
     "DOCKERFILE_DOCKERFILELINT_CLI_LINT_MODE": {
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_CLI_LINT_MODE",
       "default": "file",
+      "deprecated": true,
       "enum": [
         "file",
         "list_of_files",
@@ -8037,7 +8061,7 @@
         "List of Files",
         "Project"
       ],
-      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Override default cli lint mode",
+      "title": "(deprecated) (removed) DOCKERFILE_DOCKERFILELINT: Override default cli lint mode",
       "type": "string",
       "x-category": "DOCKERFILE",
       "x-order": 200050,
@@ -8046,8 +8070,9 @@
     "DOCKERFILE_DOCKERFILELINT_CONFIG_FILE": {
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_CONFIG_FILE",
       "default": ".dockerfilelintrc",
+      "deprecated": true,
       "description": "DOCKERFILE_DOCKERFILELINT: User custom config file name if different from default",
-      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Custom config file name",
+      "title": "(deprecated) (removed) DOCKERFILE_DOCKERFILELINT: Custom config file name",
       "type": "string",
       "x-category": "DOCKERFILE",
       "x-order": 200010,
@@ -8056,7 +8081,8 @@
     "DOCKERFILE_DOCKERFILELINT_DISABLE_ERRORS": {
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_DISABLE_ERRORS",
       "default": false,
-      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Linter does not make MegaLinter fail even if errors are found",
+      "deprecated": true,
+      "title": "(deprecated) (removed) DOCKERFILE_DOCKERFILELINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean",
       "x-category": "DOCKERFILE",
       "x-order": 400000,
@@ -8065,7 +8091,8 @@
     "DOCKERFILE_DOCKERFILELINT_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
-      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Maximum number of errors allowed",
+      "deprecated": true,
+      "title": "(deprecated) (removed) DOCKERFILE_DOCKERFILELINT: Maximum number of errors allowed",
       "type": "number",
       "x-category": "DOCKERFILE",
       "x-order": 400010,
@@ -8073,6 +8100,7 @@
     },
     "DOCKERFILE_DOCKERFILELINT_FILE_EXTENSIONS": {
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_FILE_EXTENSIONS",
+      "deprecated": true,
       "examples:": [
         ".py",
         ".myext"
@@ -8080,7 +8108,7 @@
       "items": {
         "type": "string"
       },
-      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Override descriptor/linter matching files extensions",
+      "title": "(deprecated) (removed) DOCKERFILE_DOCKERFILELINT: Override descriptor/linter matching files extensions",
       "type": "array",
       "x-category": "DOCKERFILE",
       "x-order": 300020,
@@ -8089,8 +8117,9 @@
     "DOCKERFILE_DOCKERFILELINT_FILE_NAME": {
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_FILE_NAME",
       "default": ".dockerfilelintrc",
+      "deprecated": true,
       "description": "DOCKERFILE_DOCKERFILELINT: User custom config file name if different from default",
-      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Custom config file name",
+      "title": "(deprecated) (removed) DOCKERFILE_DOCKERFILELINT: Custom config file name",
       "type": "string",
       "x-category": "DOCKERFILE",
       "x-order": 900999,
@@ -8098,6 +8127,7 @@
     },
     "DOCKERFILE_DOCKERFILELINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_FILE_NAMES_REGEX",
+      "deprecated": true,
       "examples": [
         "Dockerfile(-.+)?",
         "Jenkinsfile"
@@ -8105,7 +8135,7 @@
       "items": {
         "type": "string"
       },
-      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Override descriptor/linter matching file name regex",
+      "title": "(deprecated) (removed) DOCKERFILE_DOCKERFILELINT: Override descriptor/linter matching file name regex",
       "type": "array",
       "x-category": "DOCKERFILE",
       "x-order": 300030,
@@ -8113,7 +8143,8 @@
     },
     "DOCKERFILE_DOCKERFILELINT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_FILTER_REGEX_EXCLUDE",
-      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Excluding Regex",
+      "deprecated": true,
+      "title": "(deprecated) (removed) DOCKERFILE_DOCKERFILELINT: Excluding Regex",
       "type": "string",
       "x-category": "DOCKERFILE",
       "x-order": 300010,
@@ -8121,7 +8152,8 @@
     },
     "DOCKERFILE_DOCKERFILELINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_FILTER_REGEX_INCLUDE",
-      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Including Regex",
+      "deprecated": true,
+      "title": "(deprecated) (removed) DOCKERFILE_DOCKERFILELINT: Including Regex",
       "type": "string",
       "x-category": "DOCKERFILE",
       "x-order": 300000,
@@ -8129,6 +8161,7 @@
     },
     "DOCKERFILE_DOCKERFILELINT_POST_COMMANDS": {
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_POST_COMMANDS",
+      "deprecated": true,
       "examples": [
         [
           {
@@ -8141,7 +8174,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Define or override a list of bash commands to run after the linter",
+      "title": "(deprecated) (removed) DOCKERFILE_DOCKERFILELINT: Define or override a list of bash commands to run after the linter",
       "type": "array",
       "x-category": "DOCKERFILE",
       "x-order": 500010,
@@ -8149,6 +8182,7 @@
     },
     "DOCKERFILE_DOCKERFILELINT_PRE_COMMANDS": {
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_PRE_COMMANDS",
+      "deprecated": true,
       "examples": [
         [
           {
@@ -8161,7 +8195,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Define or override a list of bash commands to run before the linter",
+      "title": "(deprecated) (removed) DOCKERFILE_DOCKERFILELINT: Define or override a list of bash commands to run before the linter",
       "type": "array",
       "x-category": "DOCKERFILE",
       "x-order": 500000,
@@ -8169,8 +8203,9 @@
     },
     "DOCKERFILE_DOCKERFILELINT_RULES_PATH": {
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_RULES_PATH",
+      "deprecated": true,
       "description": "DOCKERFILE_DOCKERFILELINT: Path where to find linter configuration file",
-      "title": "(removed) DOCKERFILE_DOCKERFILELINT: Custom config file path",
+      "title": "(deprecated) (removed) DOCKERFILE_DOCKERFILELINT: Custom config file path",
       "type": "string",
       "x-category": "DOCKERFILE",
       "x-order": 200040,
@@ -13091,6 +13126,7 @@
     },
     "JSON_ESLINT_PLUGIN_JSONC_POST_COMMANDS": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_POST_COMMANDS",
+      "deprecated": true,
       "description": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Define bash commands to run after running JSON_ESLINT_PLUGIN_JSONC",
       "examples": [
         [
@@ -13104,7 +13140,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Post-run commands",
+      "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Post-run commands",
       "type": "array",
       "x-category": "JSON_ESLINT_PLUGIN_JSONC",
       "x-order": 500010,
@@ -13112,6 +13148,7 @@
     },
     "JSON_ESLINT_PLUGIN_JSONC_PRE_COMMANDS": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_PRE_COMMANDS",
+      "deprecated": true,
       "description": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Define bash commands to run before running JSON_ESLINT_PLUGIN_JSONC",
       "examples": [
         [
@@ -13125,7 +13162,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Pre-run commands",
+      "title": "(deprecated) JSON_ESLINT_PLUGIN_JSONC: Pre-run commands",
       "type": "array",
       "x-category": "JSON_ESLINT_PLUGIN_JSONC",
       "x-order": 500000,
@@ -15792,6 +15829,7 @@
     },
     "KUBERNETES_KUBEVAL_ARGUMENTS": {
       "$id": "#/properties/KUBERNETES_KUBEVAL_ARGUMENTS",
+      "deprecated": true,
       "description": "KUBERNETES_KUBEVAL: User custom arguments to add in linter CLI call",
       "examples:": [
         "--foo",
@@ -15800,7 +15838,7 @@
       "items": {
         "type": "string"
       },
-      "title": "(removed) KUBERNETES_KUBEVAL: Custom arguments",
+      "title": "(deprecated) (removed) KUBERNETES_KUBEVAL: Custom arguments",
       "type": [
         "array",
         "string"
@@ -15816,10 +15854,11 @@
           "kubeval"
         ]
       ],
+      "deprecated": true,
       "items": {
         "type": "string"
       },
-      "title": "(removed) KUBERNETES_KUBEVAL: CLI Executable",
+      "title": "(deprecated) (removed) KUBERNETES_KUBEVAL: CLI Executable",
       "type": "array",
       "x-category": "KUBERNETES",
       "x-order": 200060,
@@ -15828,6 +15867,7 @@
     "KUBERNETES_KUBEVAL_CLI_LINT_MODE": {
       "$id": "#/properties/KUBERNETES_KUBEVAL_CLI_LINT_MODE",
       "default": "file",
+      "deprecated": true,
       "enum": [
         "file",
         "project"
@@ -15836,7 +15876,7 @@
         "File",
         "Project"
       ],
-      "title": "(removed) KUBERNETES_KUBEVAL: Override default cli lint mode",
+      "title": "(deprecated) (removed) KUBERNETES_KUBEVAL: Override default cli lint mode",
       "type": "string",
       "x-category": "KUBERNETES",
       "x-order": 200050,
@@ -15845,7 +15885,8 @@
     "KUBERNETES_KUBEVAL_DIRECTORY": {
       "$id": "#/properties/KUBERNETES_KUBEVAL_DIRECTORY",
       "default": "kubernetes",
-      "title": "(removed) KUBERNETES_KUBEVAL: Directory containing KUBERNETES files",
+      "deprecated": true,
+      "title": "(deprecated) (removed) KUBERNETES_KUBEVAL: Directory containing KUBERNETES files",
       "type": "string",
       "x-category": "KUBERNETES",
       "x-order": 100000,
@@ -15854,7 +15895,8 @@
     "KUBERNETES_KUBEVAL_DISABLE_ERRORS": {
       "$id": "#/properties/KUBERNETES_KUBEVAL_DISABLE_ERRORS",
       "default": false,
-      "title": "(removed) KUBERNETES_KUBEVAL: Linter doesn't make MegaLinter fail even if errors are found",
+      "deprecated": true,
+      "title": "(deprecated) (removed) KUBERNETES_KUBEVAL: Linter doesn't make MegaLinter fail even if errors are found",
       "type": "boolean",
       "x-category": "KUBERNETES",
       "x-order": 400000,
@@ -15863,7 +15905,8 @@
     "KUBERNETES_KUBEVAL_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/KUBERNETES_KUBEVAL_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
-      "title": "(removed) KUBERNETES_KUBEVAL: Maximum number of errors allowed",
+      "deprecated": true,
+      "title": "(deprecated) (removed) KUBERNETES_KUBEVAL: Maximum number of errors allowed",
       "type": "number",
       "x-category": "KUBERNETES",
       "x-order": 400010,
@@ -15871,6 +15914,7 @@
     },
     "KUBERNETES_KUBEVAL_FILE_EXTENSIONS": {
       "$id": "#/properties/KUBERNETES_KUBEVAL_FILE_EXTENSIONS",
+      "deprecated": true,
       "examples:": [
         ".py",
         ".myext"
@@ -15878,7 +15922,7 @@
       "items": {
         "type": "string"
       },
-      "title": "(removed) KUBERNETES_KUBEVAL: Override descriptor/linter matching files extensions",
+      "title": "(deprecated) (removed) KUBERNETES_KUBEVAL: Override descriptor/linter matching files extensions",
       "type": "array",
       "x-category": "KUBERNETES",
       "x-order": 300020,
@@ -15886,6 +15930,7 @@
     },
     "KUBERNETES_KUBEVAL_FILE_NAMES_REGEX": {
       "$id": "#/properties/KUBERNETES_KUBEVAL_FILE_NAMES_REGEX",
+      "deprecated": true,
       "examples": [
         "Dockerfile(-.+)?",
         "Jenkinsfile"
@@ -15893,7 +15938,7 @@
       "items": {
         "type": "string"
       },
-      "title": "(removed) KUBERNETES_KUBEVAL: Override descriptor/linter matching file name regex",
+      "title": "(deprecated) (removed) KUBERNETES_KUBEVAL: Override descriptor/linter matching file name regex",
       "type": "array",
       "x-category": "KUBERNETES",
       "x-order": 300030,
@@ -15901,7 +15946,8 @@
     },
     "KUBERNETES_KUBEVAL_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/KUBERNETES_KUBEVAL_FILTER_REGEX_EXCLUDE",
-      "title": "(removed) KUBERNETES_KUBEVAL: Excluding Regex",
+      "deprecated": true,
+      "title": "(deprecated) (removed) KUBERNETES_KUBEVAL: Excluding Regex",
       "type": "string",
       "x-category": "KUBERNETES",
       "x-order": 300010,
@@ -15909,7 +15955,8 @@
     },
     "KUBERNETES_KUBEVAL_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/KUBERNETES_KUBEVAL_FILTER_REGEX_INCLUDE",
-      "title": "(removed) KUBERNETES_KUBEVAL: Including Regex",
+      "deprecated": true,
+      "title": "(deprecated) (removed) KUBERNETES_KUBEVAL: Including Regex",
       "type": "string",
       "x-category": "KUBERNETES",
       "x-order": 300000,
@@ -15917,6 +15964,7 @@
     },
     "KUBERNETES_KUBEVAL_POST_COMMANDS": {
       "$id": "#/properties/KUBERNETES_KUBEVAL_POST_COMMANDS",
+      "deprecated": true,
       "examples": [
         [
           {
@@ -15929,7 +15977,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "(removed) KUBERNETES_KUBEVAL: Define or override a list of bash commands to run after the linter",
+      "title": "(deprecated) (removed) KUBERNETES_KUBEVAL: Define or override a list of bash commands to run after the linter",
       "type": "array",
       "x-category": "KUBERNETES",
       "x-order": 500010,
@@ -15937,6 +15985,7 @@
     },
     "KUBERNETES_KUBEVAL_PRE_COMMANDS": {
       "$id": "#/properties/KUBERNETES_KUBEVAL_PRE_COMMANDS",
+      "deprecated": true,
       "examples": [
         [
           {
@@ -15949,7 +15998,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "(removed) KUBERNETES_KUBEVAL: Define or override a list of bash commands to run before the linter",
+      "title": "(deprecated) (removed) KUBERNETES_KUBEVAL: Define or override a list of bash commands to run before the linter",
       "type": "array",
       "x-category": "KUBERNETES",
       "x-order": 500000,
@@ -16843,6 +16892,7 @@
     },
     "LUA_SELENE_ARGUMENTS": {
       "$id": "#/properties/LUA_SELENE_ARGUMENTS",
+      "deprecated": true,
       "description": "LUA_SELENE: User custom arguments to add in linter CLI call",
       "examples:": [
         "--foo",
@@ -16851,7 +16901,7 @@
       "items": {
         "type": "string"
       },
-      "title": "LUA_SELENE: Custom arguments",
+      "title": "(deprecated) LUA_SELENE: Custom arguments",
       "type": [
         "array",
         "string"
@@ -16867,11 +16917,12 @@
           "selene"
         ]
       ],
+      "deprecated": true,
       "description": "LUA_SELENE: Override CLI executable used to build the linter command line (rarely needed)",
       "items": {
         "type": "string"
       },
-      "title": "LUA_SELENE: CLI Executable",
+      "title": "(deprecated) LUA_SELENE: CLI Executable",
       "type": "array",
       "x-category": "LUA_SELENE",
       "x-order": 200060,
@@ -16880,6 +16931,7 @@
     "LUA_SELENE_CLI_LINT_MODE": {
       "$id": "#/properties/LUA_SELENE_CLI_LINT_MODE",
       "default": "list_of_files",
+      "deprecated": true,
       "description": "LUA_SELENE: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
@@ -16891,7 +16943,7 @@
         "List of Files",
         "Project"
       ],
-      "title": "LUA_SELENE: CLI lint mode",
+      "title": "(deprecated) LUA_SELENE: CLI lint mode",
       "type": "string",
       "x-category": "LUA_SELENE",
       "x-doc-key": "config-cli-lint-mode",
@@ -16900,6 +16952,7 @@
     },
     "LUA_SELENE_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/LUA_SELENE_COMMAND_REMOVE_ARGUMENTS",
+      "deprecated": true,
       "description": "LUA_SELENE: User custom arguments to remove before calling linter",
       "examples:": [
         "--foo",
@@ -16908,7 +16961,7 @@
       "items": {
         "type": "string"
       },
-      "title": "LUA_SELENE: Custom remove arguments",
+      "title": "(deprecated) LUA_SELENE: Custom remove arguments",
       "type": [
         "array",
         "string"
@@ -16920,8 +16973,9 @@
     "LUA_SELENE_CONFIG_FILE": {
       "$id": "#/properties/LUA_SELENE_CONFIG_FILE",
       "default": "selene.toml",
+      "deprecated": true,
       "description": "LUA_SELENE: User custom config file name if different from default",
-      "title": "LUA_SELENE: Custom config file name",
+      "title": "(deprecated) LUA_SELENE: Custom config file name",
       "type": "string",
       "x-category": "LUA_SELENE",
       "x-order": 200010,
@@ -16930,8 +16984,9 @@
     "LUA_SELENE_DISABLE_ERRORS": {
       "$id": "#/properties/LUA_SELENE_DISABLE_ERRORS",
       "default": false,
+      "deprecated": true,
       "description": "LUA_SELENE: If true, LUA_SELENE doesn't make MegaLinter fail even if errors are found",
-      "title": "LUA_SELENE: Disable errors",
+      "title": "(deprecated) LUA_SELENE: Disable errors",
       "type": "boolean",
       "x-category": "LUA_SELENE",
       "x-order": 400000,
@@ -16940,8 +16995,9 @@
     "LUA_SELENE_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/LUA_SELENE_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
+      "deprecated": true,
       "description": "LUA_SELENE: If the number of errors found is less than this value, LUA_SELENE doesn't make MegaLinter fail",
-      "title": "LUA_SELENE: Maximum number of errors allowed",
+      "title": "(deprecated) LUA_SELENE: Maximum number of errors allowed",
       "type": "number",
       "x-category": "LUA_SELENE",
       "x-order": 400010,
@@ -16952,6 +17008,7 @@
       "default": [
         ".lua"
       ],
+      "deprecated": true,
       "description": "LUA_SELENE: Override descriptor/linter matching files extensions that will be used to select files to lint",
       "examples": [
         ".py",
@@ -16960,7 +17017,7 @@
       "items": {
         "type": "string"
       },
-      "title": "LUA_SELENE: Matching files extensions",
+      "title": "(deprecated) LUA_SELENE: Matching files extensions",
       "type": "array",
       "x-category": "LUA_SELENE",
       "x-order": 300020,
@@ -16969,6 +17026,7 @@
     "LUA_SELENE_FILE_NAMES_REGEX": {
       "$id": "#/properties/LUA_SELENE_FILE_NAMES_REGEX",
       "default": [],
+      "deprecated": true,
       "description": "LUA_SELENE: Override descriptor/linter matching file name regexes that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -16977,7 +17035,7 @@
       "items": {
         "type": "string"
       },
-      "title": "LUA_SELENE: Matching file name regexes",
+      "title": "(deprecated) LUA_SELENE: Matching file name regexes",
       "type": "array",
       "x-category": "LUA_SELENE",
       "x-order": 300030,
@@ -16985,11 +17043,12 @@
     },
     "LUA_SELENE_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/LUA_SELENE_FILTER_REGEX_EXCLUDE",
+      "deprecated": true,
       "description": "LUA_SELENE: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with LUA_SELENE_CLI_LINT_MODE = project",
       "items": {
         "type": "string"
       },
-      "title": "LUA_SELENE: Excluding Regex",
+      "title": "(deprecated) LUA_SELENE: Excluding Regex",
       "type": [
         "string",
         "array"
@@ -17001,11 +17060,12 @@
     },
     "LUA_SELENE_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/LUA_SELENE_FILTER_REGEX_INCLUDE",
+      "deprecated": true,
       "description": "LUA_SELENE: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with LUA_SELENE_CLI_LINT_MODE = project",
       "items": {
         "type": "string"
       },
-      "title": "LUA_SELENE: Including Regex",
+      "title": "(deprecated) LUA_SELENE: Including Regex",
       "type": [
         "string",
         "array"
@@ -17017,6 +17077,7 @@
     },
     "LUA_SELENE_POST_COMMANDS": {
       "$id": "#/properties/LUA_SELENE_POST_COMMANDS",
+      "deprecated": true,
       "description": "LUA_SELENE: Define bash commands to run after running LUA_SELENE",
       "examples": [
         [
@@ -17030,7 +17091,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "LUA_SELENE: Post-run commands",
+      "title": "(deprecated) LUA_SELENE: Post-run commands",
       "type": "array",
       "x-category": "LUA_SELENE",
       "x-order": 500010,
@@ -17038,6 +17099,7 @@
     },
     "LUA_SELENE_PRE_COMMANDS": {
       "$id": "#/properties/LUA_SELENE_PRE_COMMANDS",
+      "deprecated": true,
       "description": "LUA_SELENE: Define bash commands to run before running LUA_SELENE",
       "examples": [
         [
@@ -17051,7 +17113,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "LUA_SELENE: Pre-run commands",
+      "title": "(deprecated) LUA_SELENE: Pre-run commands",
       "type": "array",
       "x-category": "LUA_SELENE",
       "x-order": 500000,
@@ -17059,8 +17121,9 @@
     },
     "LUA_SELENE_RULES_PATH": {
       "$id": "#/properties/LUA_SELENE_RULES_PATH",
+      "deprecated": true,
       "description": "LUA_SELENE: Path where to find linter configuration file",
-      "title": "LUA_SELENE: Custom config file path",
+      "title": "(deprecated) LUA_SELENE: Custom config file path",
       "type": "string",
       "x-category": "LUA_SELENE",
       "x-order": 200040,
@@ -17069,11 +17132,12 @@
     "LUA_SELENE_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/LUA_SELENE_UNSECURED_ENV_VARIABLES",
       "default": [],
+      "deprecated": true,
       "description": "List of env variables explicitly not filtered before calling LUA_SELENE and its pre/post commands",
       "items": {
         "type": "string"
       },
-      "title": "LUA_SELENE: Unsecured env variables",
+      "title": "(deprecated) LUA_SELENE: Unsecured env variables",
       "type": "array",
       "x-category": "LUA_SELENE",
       "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
@@ -17321,6 +17385,7 @@
     },
     "MAKEFILE_CHECKMAKE_ARGUMENTS": {
       "$id": "#/properties/MAKEFILE_CHECKMAKE_ARGUMENTS",
+      "deprecated": true,
       "description": "MAKEFILE_CHECKMAKE: User custom arguments to add in linter CLI call",
       "examples:": [
         "--foo",
@@ -17329,7 +17394,7 @@
       "items": {
         "type": "string"
       },
-      "title": "MAKEFILE_CHECKMAKE: Custom arguments",
+      "title": "(deprecated) MAKEFILE_CHECKMAKE: Custom arguments",
       "type": [
         "array",
         "string"
@@ -17345,11 +17410,12 @@
           "checkmake"
         ]
       ],
+      "deprecated": true,
       "description": "MAKEFILE_CHECKMAKE: Override CLI executable used to build the linter command line (rarely needed)",
       "items": {
         "type": "string"
       },
-      "title": "MAKEFILE_CHECKMAKE: CLI Executable",
+      "title": "(deprecated) MAKEFILE_CHECKMAKE: CLI Executable",
       "type": "array",
       "x-category": "MAKEFILE_CHECKMAKE",
       "x-order": 200060,
@@ -17358,6 +17424,7 @@
     "MAKEFILE_CHECKMAKE_CLI_LINT_MODE": {
       "$id": "#/properties/MAKEFILE_CHECKMAKE_CLI_LINT_MODE",
       "default": "file",
+      "deprecated": true,
       "description": "MAKEFILE_CHECKMAKE: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
@@ -17369,7 +17436,7 @@
         "List of Files",
         "Project"
       ],
-      "title": "MAKEFILE_CHECKMAKE: CLI lint mode",
+      "title": "(deprecated) MAKEFILE_CHECKMAKE: CLI lint mode",
       "type": "string",
       "x-category": "MAKEFILE_CHECKMAKE",
       "x-doc-key": "config-cli-lint-mode",
@@ -17378,6 +17445,7 @@
     },
     "MAKEFILE_CHECKMAKE_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/MAKEFILE_CHECKMAKE_COMMAND_REMOVE_ARGUMENTS",
+      "deprecated": true,
       "description": "MAKEFILE_CHECKMAKE: User custom arguments to remove before calling linter",
       "examples:": [
         "--foo",
@@ -17386,7 +17454,7 @@
       "items": {
         "type": "string"
       },
-      "title": "MAKEFILE_CHECKMAKE: Custom remove arguments",
+      "title": "(deprecated) MAKEFILE_CHECKMAKE: Custom remove arguments",
       "type": [
         "array",
         "string"
@@ -17398,8 +17466,9 @@
     "MAKEFILE_CHECKMAKE_CONFIG_FILE": {
       "$id": "#/properties/MAKEFILE_CHECKMAKE_CONFIG_FILE",
       "default": ".checkmake.ini",
+      "deprecated": true,
       "description": "MAKEFILE_CHECKMAKE: User custom config file name if different from default",
-      "title": "MAKEFILE_CHECKMAKE: Custom config file name",
+      "title": "(deprecated) MAKEFILE_CHECKMAKE: Custom config file name",
       "type": "string",
       "x-category": "MAKEFILE_CHECKMAKE",
       "x-order": 200010,
@@ -17408,8 +17477,9 @@
     "MAKEFILE_CHECKMAKE_DISABLE_ERRORS": {
       "$id": "#/properties/MAKEFILE_CHECKMAKE_DISABLE_ERRORS",
       "default": false,
+      "deprecated": true,
       "description": "MAKEFILE_CHECKMAKE: If true, MAKEFILE_CHECKMAKE doesn't make MegaLinter fail even if errors are found",
-      "title": "MAKEFILE_CHECKMAKE: Disable errors",
+      "title": "(deprecated) MAKEFILE_CHECKMAKE: Disable errors",
       "type": "boolean",
       "x-category": "MAKEFILE_CHECKMAKE",
       "x-order": 400000,
@@ -17418,8 +17488,9 @@
     "MAKEFILE_CHECKMAKE_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/MAKEFILE_CHECKMAKE_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
+      "deprecated": true,
       "description": "MAKEFILE_CHECKMAKE: If the number of errors found is less than this value, MAKEFILE_CHECKMAKE doesn't make MegaLinter fail",
-      "title": "MAKEFILE_CHECKMAKE: Maximum number of errors allowed",
+      "title": "(deprecated) MAKEFILE_CHECKMAKE: Maximum number of errors allowed",
       "type": "number",
       "x-category": "MAKEFILE_CHECKMAKE",
       "x-order": 400010,
@@ -17428,6 +17499,7 @@
     "MAKEFILE_CHECKMAKE_FILE_EXTENSIONS": {
       "$id": "#/properties/MAKEFILE_CHECKMAKE_FILE_EXTENSIONS",
       "default": [],
+      "deprecated": true,
       "description": "MAKEFILE_CHECKMAKE: Override descriptor/linter matching files extensions that will be used to select files to lint",
       "examples": [
         ".py",
@@ -17436,7 +17508,7 @@
       "items": {
         "type": "string"
       },
-      "title": "MAKEFILE_CHECKMAKE: Matching files extensions",
+      "title": "(deprecated) MAKEFILE_CHECKMAKE: Matching files extensions",
       "type": "array",
       "x-category": "MAKEFILE_CHECKMAKE",
       "x-order": 300020,
@@ -17447,6 +17519,7 @@
       "default": [
         "Makefile"
       ],
+      "deprecated": true,
       "description": "MAKEFILE_CHECKMAKE: Override descriptor/linter matching file name regexes that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -17455,7 +17528,7 @@
       "items": {
         "type": "string"
       },
-      "title": "MAKEFILE_CHECKMAKE: Matching file name regexes",
+      "title": "(deprecated) MAKEFILE_CHECKMAKE: Matching file name regexes",
       "type": "array",
       "x-category": "MAKEFILE_CHECKMAKE",
       "x-order": 300030,
@@ -17463,11 +17536,12 @@
     },
     "MAKEFILE_CHECKMAKE_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/MAKEFILE_CHECKMAKE_FILTER_REGEX_EXCLUDE",
+      "deprecated": true,
       "description": "MAKEFILE_CHECKMAKE: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with MAKEFILE_CHECKMAKE_CLI_LINT_MODE = project",
       "items": {
         "type": "string"
       },
-      "title": "MAKEFILE_CHECKMAKE: Excluding Regex",
+      "title": "(deprecated) MAKEFILE_CHECKMAKE: Excluding Regex",
       "type": [
         "string",
         "array"
@@ -17479,11 +17553,12 @@
     },
     "MAKEFILE_CHECKMAKE_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/MAKEFILE_CHECKMAKE_FILTER_REGEX_INCLUDE",
+      "deprecated": true,
       "description": "MAKEFILE_CHECKMAKE: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with MAKEFILE_CHECKMAKE_CLI_LINT_MODE = project",
       "items": {
         "type": "string"
       },
-      "title": "MAKEFILE_CHECKMAKE: Including Regex",
+      "title": "(deprecated) MAKEFILE_CHECKMAKE: Including Regex",
       "type": [
         "string",
         "array"
@@ -17495,6 +17570,7 @@
     },
     "MAKEFILE_CHECKMAKE_POST_COMMANDS": {
       "$id": "#/properties/MAKEFILE_CHECKMAKE_POST_COMMANDS",
+      "deprecated": true,
       "description": "MAKEFILE_CHECKMAKE: Define bash commands to run after running MAKEFILE_CHECKMAKE",
       "examples": [
         [
@@ -17508,7 +17584,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "MAKEFILE_CHECKMAKE: Post-run commands",
+      "title": "(deprecated) MAKEFILE_CHECKMAKE: Post-run commands",
       "type": "array",
       "x-category": "MAKEFILE_CHECKMAKE",
       "x-order": 500010,
@@ -17516,6 +17592,7 @@
     },
     "MAKEFILE_CHECKMAKE_PRE_COMMANDS": {
       "$id": "#/properties/MAKEFILE_CHECKMAKE_PRE_COMMANDS",
+      "deprecated": true,
       "description": "MAKEFILE_CHECKMAKE: Define bash commands to run before running MAKEFILE_CHECKMAKE",
       "examples": [
         [
@@ -17529,7 +17606,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "MAKEFILE_CHECKMAKE: Pre-run commands",
+      "title": "(deprecated) MAKEFILE_CHECKMAKE: Pre-run commands",
       "type": "array",
       "x-category": "MAKEFILE_CHECKMAKE",
       "x-order": 500000,
@@ -17537,8 +17614,9 @@
     },
     "MAKEFILE_CHECKMAKE_RULES_PATH": {
       "$id": "#/properties/MAKEFILE_CHECKMAKE_RULES_PATH",
+      "deprecated": true,
       "description": "MAKEFILE_CHECKMAKE: Path where to find linter configuration file",
-      "title": "MAKEFILE_CHECKMAKE: Custom config file path",
+      "title": "(deprecated) MAKEFILE_CHECKMAKE: Custom config file path",
       "type": "string",
       "x-category": "MAKEFILE_CHECKMAKE",
       "x-order": 200040,
@@ -17547,11 +17625,12 @@
     "MAKEFILE_CHECKMAKE_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/MAKEFILE_CHECKMAKE_UNSECURED_ENV_VARIABLES",
       "default": [],
+      "deprecated": true,
       "description": "List of env variables explicitly not filtered before calling MAKEFILE_CHECKMAKE and its pre/post commands",
       "items": {
         "type": "string"
       },
-      "title": "MAKEFILE_CHECKMAKE: Unsecured env variables",
+      "title": "(deprecated) MAKEFILE_CHECKMAKE: Unsecured env variables",
       "type": "array",
       "x-category": "MAKEFILE_CHECKMAKE",
       "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
@@ -17560,11 +17639,12 @@
     },
     "MAKEFILE_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/MAKEFILE_FILTER_REGEX_EXCLUDE",
+      "deprecated": true,
       "description": "MAKEFILE: Custom regex excluding filter: files matching this regex will NOT be linted",
       "items": {
         "type": "string"
       },
-      "title": "Excluding regex filter for MAKEFILE descriptor",
+      "title": "(deprecated) Excluding regex filter for MAKEFILE descriptor",
       "type": [
         "string",
         "array"
@@ -17576,11 +17656,12 @@
     },
     "MAKEFILE_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/MAKEFILE_FILTER_REGEX_INCLUDE",
+      "deprecated": true,
       "description": "MAKEFILE: Custom regex including filter: only files matching this regex will be linted",
       "items": {
         "type": "string"
       },
-      "title": "Including regex filter for MAKEFILE descriptor",
+      "title": "(deprecated) Including regex filter for MAKEFILE descriptor",
       "type": [
         "string",
         "array"
@@ -17592,6 +17673,7 @@
     },
     "MAKEFILE_POST_COMMANDS": {
       "$id": "#/properties/MAKEFILE_POST_COMMANDS",
+      "deprecated": true,
       "description": "MAKEFILE: List of bash commands to run after the linters",
       "examples": [
         [
@@ -17605,7 +17687,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "Post commands for MAKEFILE descriptor",
+      "title": "(deprecated) Post commands for MAKEFILE descriptor",
       "type": "array",
       "x-category": "MAKEFILE",
       "x-order": 500010,
@@ -17613,6 +17695,7 @@
     },
     "MAKEFILE_PRE_COMMANDS": {
       "$id": "#/properties/MAKEFILE_PRE_COMMANDS",
+      "deprecated": true,
       "description": "MAKEFILE: List of bash commands to run before the linters",
       "examples": [
         [
@@ -17626,7 +17709,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "Pre commands for MAKEFILE descriptor",
+      "title": "(deprecated) Pre commands for MAKEFILE descriptor",
       "type": "array",
       "x-category": "MAKEFILE",
       "x-order": 500000,
@@ -17638,12 +17721,10 @@
       "description": "Style of markdown formatting to apply",
       "enum": [
         "markdownlint",
-        "remark-lint",
         "rumdl"
       ],
       "enumNames": [
         "Markdownlint",
-        "Remark Lint",
         "Rumdl"
       ],
       "title": "Markdown default formatting style",
@@ -18493,6 +18574,7 @@
     },
     "MARKDOWN_REMARK_LINT_ARGUMENTS": {
       "$id": "#/properties/MARKDOWN_REMARK_LINT_ARGUMENTS",
+      "deprecated": true,
       "description": "MARKDOWN_REMARK_LINT: User custom arguments to add in linter CLI call",
       "examples:": [
         "--foo",
@@ -18501,7 +18583,7 @@
       "items": {
         "type": "string"
       },
-      "title": "MARKDOWN_REMARK_LINT: Custom arguments",
+      "title": "(deprecated) MARKDOWN_REMARK_LINT: Custom arguments",
       "type": [
         "array",
         "string"
@@ -18517,11 +18599,12 @@
           "remark"
         ]
       ],
+      "deprecated": true,
       "description": "MARKDOWN_REMARK_LINT: Override CLI executable used to build the linter command line (rarely needed)",
       "items": {
         "type": "string"
       },
-      "title": "MARKDOWN_REMARK_LINT: CLI Executable",
+      "title": "(deprecated) MARKDOWN_REMARK_LINT: CLI Executable",
       "type": "array",
       "x-category": "MARKDOWN_REMARK_LINT",
       "x-order": 200060,
@@ -18530,6 +18613,7 @@
     "MARKDOWN_REMARK_LINT_CLI_LINT_MODE": {
       "$id": "#/properties/MARKDOWN_REMARK_LINT_CLI_LINT_MODE",
       "default": "list_of_files",
+      "deprecated": true,
       "description": "MARKDOWN_REMARK_LINT: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
@@ -18541,7 +18625,7 @@
         "List of Files",
         "Project"
       ],
-      "title": "MARKDOWN_REMARK_LINT: CLI lint mode",
+      "title": "(deprecated) MARKDOWN_REMARK_LINT: CLI lint mode",
       "type": "string",
       "x-category": "MARKDOWN_REMARK_LINT",
       "x-doc-key": "config-cli-lint-mode",
@@ -18550,6 +18634,7 @@
     },
     "MARKDOWN_REMARK_LINT_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/MARKDOWN_REMARK_LINT_COMMAND_REMOVE_ARGUMENTS",
+      "deprecated": true,
       "description": "MARKDOWN_REMARK_LINT: User custom arguments to remove before calling linter",
       "examples:": [
         "--foo",
@@ -18558,7 +18643,7 @@
       "items": {
         "type": "string"
       },
-      "title": "MARKDOWN_REMARK_LINT: Custom remove arguments",
+      "title": "(deprecated) MARKDOWN_REMARK_LINT: Custom remove arguments",
       "type": [
         "array",
         "string"
@@ -18570,8 +18655,9 @@
     "MARKDOWN_REMARK_LINT_CONFIG_FILE": {
       "$id": "#/properties/MARKDOWN_REMARK_LINT_CONFIG_FILE",
       "default": ".remarkrc",
+      "deprecated": true,
       "description": "MARKDOWN_REMARK_LINT: User custom config file name if different from default",
-      "title": "MARKDOWN_REMARK_LINT: Custom config file name",
+      "title": "(deprecated) MARKDOWN_REMARK_LINT: Custom config file name",
       "type": "string",
       "x-category": "MARKDOWN_REMARK_LINT",
       "x-order": 200010,
@@ -18580,8 +18666,9 @@
     "MARKDOWN_REMARK_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/MARKDOWN_REMARK_LINT_DISABLE_ERRORS",
       "default": false,
+      "deprecated": true,
       "description": "MARKDOWN_REMARK_LINT: If true, MARKDOWN_REMARK_LINT doesn't make MegaLinter fail even if errors are found",
-      "title": "MARKDOWN_REMARK_LINT: Disable errors",
+      "title": "(deprecated) MARKDOWN_REMARK_LINT: Disable errors",
       "type": "boolean",
       "x-category": "MARKDOWN_REMARK_LINT",
       "x-order": 400000,
@@ -18590,8 +18677,9 @@
     "MARKDOWN_REMARK_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/MARKDOWN_REMARK_LINT_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
+      "deprecated": true,
       "description": "MARKDOWN_REMARK_LINT: If the number of errors found is less than this value, MARKDOWN_REMARK_LINT doesn't make MegaLinter fail",
-      "title": "MARKDOWN_REMARK_LINT: Maximum number of errors allowed",
+      "title": "(deprecated) MARKDOWN_REMARK_LINT: Maximum number of errors allowed",
       "type": "number",
       "x-category": "MARKDOWN_REMARK_LINT",
       "x-order": 400010,
@@ -18602,6 +18690,7 @@
       "default": [
         ".md"
       ],
+      "deprecated": true,
       "description": "MARKDOWN_REMARK_LINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
       "examples": [
         ".py",
@@ -18610,7 +18699,7 @@
       "items": {
         "type": "string"
       },
-      "title": "MARKDOWN_REMARK_LINT: Matching files extensions",
+      "title": "(deprecated) MARKDOWN_REMARK_LINT: Matching files extensions",
       "type": "array",
       "x-category": "MARKDOWN_REMARK_LINT",
       "x-order": 300020,
@@ -18619,6 +18708,7 @@
     "MARKDOWN_REMARK_LINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/MARKDOWN_REMARK_LINT_FILE_NAMES_REGEX",
       "default": [],
+      "deprecated": true,
       "description": "MARKDOWN_REMARK_LINT: Override descriptor/linter matching file name regexes that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -18627,7 +18717,7 @@
       "items": {
         "type": "string"
       },
-      "title": "MARKDOWN_REMARK_LINT: Matching file name regexes",
+      "title": "(deprecated) MARKDOWN_REMARK_LINT: Matching file name regexes",
       "type": "array",
       "x-category": "MARKDOWN_REMARK_LINT",
       "x-order": 300030,
@@ -18635,11 +18725,12 @@
     },
     "MARKDOWN_REMARK_LINT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/MARKDOWN_REMARK_LINT_FILTER_REGEX_EXCLUDE",
+      "deprecated": true,
       "description": "MARKDOWN_REMARK_LINT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with MARKDOWN_REMARK_LINT_CLI_LINT_MODE = project",
       "items": {
         "type": "string"
       },
-      "title": "MARKDOWN_REMARK_LINT: Excluding Regex",
+      "title": "(deprecated) MARKDOWN_REMARK_LINT: Excluding Regex",
       "type": [
         "string",
         "array"
@@ -18651,11 +18742,12 @@
     },
     "MARKDOWN_REMARK_LINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/MARKDOWN_REMARK_LINT_FILTER_REGEX_INCLUDE",
+      "deprecated": true,
       "description": "MARKDOWN_REMARK_LINT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with MARKDOWN_REMARK_LINT_CLI_LINT_MODE = project",
       "items": {
         "type": "string"
       },
-      "title": "MARKDOWN_REMARK_LINT: Including Regex",
+      "title": "(deprecated) MARKDOWN_REMARK_LINT: Including Regex",
       "type": [
         "string",
         "array"
@@ -18667,6 +18759,7 @@
     },
     "MARKDOWN_REMARK_LINT_POST_COMMANDS": {
       "$id": "#/properties/MARKDOWN_REMARK_LINT_POST_COMMANDS",
+      "deprecated": true,
       "description": "MARKDOWN_REMARK_LINT: Define bash commands to run after running MARKDOWN_REMARK_LINT",
       "examples": [
         [
@@ -18680,7 +18773,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "MARKDOWN_REMARK_LINT: Post-run commands",
+      "title": "(deprecated) MARKDOWN_REMARK_LINT: Post-run commands",
       "type": "array",
       "x-category": "MARKDOWN_REMARK_LINT",
       "x-order": 500010,
@@ -18688,6 +18781,7 @@
     },
     "MARKDOWN_REMARK_LINT_PRE_COMMANDS": {
       "$id": "#/properties/MARKDOWN_REMARK_LINT_PRE_COMMANDS",
+      "deprecated": true,
       "description": "MARKDOWN_REMARK_LINT: Define bash commands to run before running MARKDOWN_REMARK_LINT",
       "examples": [
         [
@@ -18701,7 +18795,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "MARKDOWN_REMARK_LINT: Pre-run commands",
+      "title": "(deprecated) MARKDOWN_REMARK_LINT: Pre-run commands",
       "type": "array",
       "x-category": "MARKDOWN_REMARK_LINT",
       "x-order": 500000,
@@ -18709,8 +18803,9 @@
     },
     "MARKDOWN_REMARK_LINT_RULES_PATH": {
       "$id": "#/properties/MARKDOWN_REMARK_LINT_RULES_PATH",
+      "deprecated": true,
       "description": "MARKDOWN_REMARK_LINT: Path where to find linter configuration file",
-      "title": "MARKDOWN_REMARK_LINT: Custom config file path",
+      "title": "(deprecated) MARKDOWN_REMARK_LINT: Custom config file path",
       "type": "string",
       "x-category": "MARKDOWN_REMARK_LINT",
       "x-order": 200040,
@@ -18719,11 +18814,12 @@
     "MARKDOWN_REMARK_LINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/MARKDOWN_REMARK_LINT_UNSECURED_ENV_VARIABLES",
       "default": [],
+      "deprecated": true,
       "description": "List of env variables explicitly not filtered before calling MARKDOWN_REMARK_LINT and its pre/post commands",
       "items": {
         "type": "string"
       },
-      "title": "MARKDOWN_REMARK_LINT: Unsecured env variables",
+      "title": "(deprecated) MARKDOWN_REMARK_LINT: Unsecured env variables",
       "type": "array",
       "x-category": "MARKDOWN_REMARK_LINT",
       "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
@@ -19367,6 +19463,7 @@
     },
     "PHP_BUILTIN_ARGUMENTS": {
       "$id": "#/properties/PHP_BUILTIN_ARGUMENTS",
+      "deprecated": true,
       "description": "PHP_BUILTIN: User custom arguments to add in linter CLI call",
       "examples:": [
         "--foo",
@@ -19375,7 +19472,7 @@
       "items": {
         "type": "string"
       },
-      "title": "(removed) PHP_BUILTIN: Custom arguments",
+      "title": "(deprecated) (removed) PHP_BUILTIN: Custom arguments",
       "type": [
         "array",
         "string"
@@ -19386,7 +19483,8 @@
     },
     "PHP_BUILTIN_CLI_EXECUTABLE": {
       "$id": "#/properties/PHP_BUILTIN_CLI_EXECUTABLE",
-      "title": "(removed) PHP_BUILTIN: Override default CLI executable for linting request",
+      "deprecated": true,
+      "title": "(deprecated) (removed) PHP_BUILTIN: Override default CLI executable for linting request",
       "type": "string",
       "x-category": "PHP",
       "x-order": 200060,
@@ -19395,6 +19493,7 @@
     "PHP_BUILTIN_CLI_LINT_MODE": {
       "$id": "#/properties/PHP_BUILTIN_CLI_LINT_MODE",
       "default": "file",
+      "deprecated": true,
       "enum": [
         "file",
         "list_of_files",
@@ -19405,7 +19504,7 @@
         "List of Files",
         "Project"
       ],
-      "title": "(removed) PHP_BUILTIN: Override default cli lint mode",
+      "title": "(deprecated) (removed) PHP_BUILTIN: Override default cli lint mode",
       "type": "string",
       "x-category": "PHP",
       "x-order": 200050,
@@ -19414,7 +19513,8 @@
     "PHP_BUILTIN_DISABLE_ERRORS": {
       "$id": "#/properties/PHP_BUILTIN_DISABLE_ERRORS",
       "default": false,
-      "title": "(removed) PHP_BUILTIN: Linter does not make MegaLinter fail even if errors are found",
+      "deprecated": true,
+      "title": "(deprecated) (removed) PHP_BUILTIN: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean",
       "x-category": "PHP",
       "x-order": 400000,
@@ -19423,7 +19523,8 @@
     "PHP_BUILTIN_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/PHP_BUILTIN_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
-      "title": "(removed) PHP_BUILTIN: Maximum number of errors allowed",
+      "deprecated": true,
+      "title": "(deprecated) (removed) PHP_BUILTIN: Maximum number of errors allowed",
       "type": "number",
       "x-category": "PHP",
       "x-order": 400010,
@@ -19431,6 +19532,7 @@
     },
     "PHP_BUILTIN_FILE_EXTENSIONS": {
       "$id": "#/properties/PHP_BUILTIN_FILE_EXTENSIONS",
+      "deprecated": true,
       "examples:": [
         ".py",
         ".myext"
@@ -19438,7 +19540,7 @@
       "items": {
         "type": "string"
       },
-      "title": "(removed) PHP_BUILTIN: Override descriptor/linter matching files extensions",
+      "title": "(deprecated) (removed) PHP_BUILTIN: Override descriptor/linter matching files extensions",
       "type": "array",
       "x-category": "PHP",
       "x-order": 300020,
@@ -19446,6 +19548,7 @@
     },
     "PHP_BUILTIN_FILE_NAMES_REGEX": {
       "$id": "#/properties/PHP_BUILTIN_FILE_NAMES_REGEX",
+      "deprecated": true,
       "examples": [
         "Dockerfile(-.+)?",
         "Jenkinsfile"
@@ -19453,7 +19556,7 @@
       "items": {
         "type": "string"
       },
-      "title": "(removed) PHP_BUILTIN: Override descriptor/linter matching file name regex",
+      "title": "(deprecated) (removed) PHP_BUILTIN: Override descriptor/linter matching file name regex",
       "type": "array",
       "x-category": "PHP",
       "x-order": 300030,
@@ -19461,7 +19564,8 @@
     },
     "PHP_BUILTIN_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/PHP_BUILTIN_FILTER_REGEX_EXCLUDE",
-      "title": "(removed) PHP_BUILTIN: Excluding Regex",
+      "deprecated": true,
+      "title": "(deprecated) (removed) PHP_BUILTIN: Excluding Regex",
       "type": "string",
       "x-category": "PHP",
       "x-order": 300010,
@@ -19469,7 +19573,8 @@
     },
     "PHP_BUILTIN_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/PHP_BUILTIN_FILTER_REGEX_INCLUDE",
-      "title": "(removed) PHP_BUILTIN: Including Regex",
+      "deprecated": true,
+      "title": "(deprecated) (removed) PHP_BUILTIN: Including Regex",
       "type": "string",
       "x-category": "PHP",
       "x-order": 300000,
@@ -19477,6 +19582,7 @@
     },
     "PHP_BUILTIN_POST_COMMANDS": {
       "$id": "#/properties/PHP_BUILTIN_POST_COMMANDS",
+      "deprecated": true,
       "examples": [
         [
           {
@@ -19489,7 +19595,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "(removed) PHP_BUILTIN: Define or override a list of bash commands to run after the linter",
+      "title": "(deprecated) (removed) PHP_BUILTIN: Define or override a list of bash commands to run after the linter",
       "type": "array",
       "x-category": "PHP",
       "x-order": 500010,
@@ -19497,6 +19603,7 @@
     },
     "PHP_BUILTIN_PRE_COMMANDS": {
       "$id": "#/properties/PHP_BUILTIN_PRE_COMMANDS",
+      "deprecated": true,
       "examples": [
         [
           {
@@ -19509,7 +19616,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "(removed) PHP_BUILTIN: Define or override a list of bash commands to run before the linter",
+      "title": "(deprecated) (removed) PHP_BUILTIN: Define or override a list of bash commands to run before the linter",
       "type": "array",
       "x-category": "PHP",
       "x-order": 500000,
@@ -21774,11 +21881,12 @@
     },
     "PUPPET_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/PUPPET_FILTER_REGEX_EXCLUDE",
+      "deprecated": true,
       "description": "PUPPET: Custom regex excluding filter: files matching this regex will NOT be linted",
       "items": {
         "type": "string"
       },
-      "title": "Excluding regex filter for PUPPET descriptor",
+      "title": "(deprecated) Excluding regex filter for PUPPET descriptor",
       "type": [
         "string",
         "array"
@@ -21790,11 +21898,12 @@
     },
     "PUPPET_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/PUPPET_FILTER_REGEX_INCLUDE",
+      "deprecated": true,
       "description": "PUPPET: Custom regex including filter: only files matching this regex will be linted",
       "items": {
         "type": "string"
       },
-      "title": "Including regex filter for PUPPET descriptor",
+      "title": "(deprecated) Including regex filter for PUPPET descriptor",
       "type": [
         "string",
         "array"
@@ -21806,6 +21915,7 @@
     },
     "PUPPET_POST_COMMANDS": {
       "$id": "#/properties/PUPPET_POST_COMMANDS",
+      "deprecated": true,
       "description": "PUPPET: List of bash commands to run after the linters",
       "examples": [
         [
@@ -21819,7 +21929,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "Post commands for PUPPET descriptor",
+      "title": "(deprecated) Post commands for PUPPET descriptor",
       "type": "array",
       "x-category": "PUPPET",
       "x-order": 500010,
@@ -21827,6 +21937,7 @@
     },
     "PUPPET_PRE_COMMANDS": {
       "$id": "#/properties/PUPPET_PRE_COMMANDS",
+      "deprecated": true,
       "description": "PUPPET: List of bash commands to run before the linters",
       "examples": [
         [
@@ -21840,7 +21951,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "Pre commands for PUPPET descriptor",
+      "title": "(deprecated) Pre commands for PUPPET descriptor",
       "type": "array",
       "x-category": "PUPPET",
       "x-order": 500000,
@@ -21848,6 +21959,7 @@
     },
     "PUPPET_PUPPET_LINT_ARGUMENTS": {
       "$id": "#/properties/PUPPET_PUPPET_LINT_ARGUMENTS",
+      "deprecated": true,
       "description": "PUPPET_PUPPET_LINT: User custom arguments to add in linter CLI call",
       "examples:": [
         "--foo",
@@ -21856,7 +21968,7 @@
       "items": {
         "type": "string"
       },
-      "title": "PUPPET_PUPPET_LINT: Custom arguments",
+      "title": "(deprecated) PUPPET_PUPPET_LINT: Custom arguments",
       "type": [
         "array",
         "string"
@@ -21872,11 +21984,12 @@
           "puppet-lint"
         ]
       ],
+      "deprecated": true,
       "description": "PUPPET_PUPPET_LINT: Override CLI executable used to build the linter command line (rarely needed)",
       "items": {
         "type": "string"
       },
-      "title": "PUPPET_PUPPET_LINT: CLI Executable",
+      "title": "(deprecated) PUPPET_PUPPET_LINT: CLI Executable",
       "type": "array",
       "x-category": "PUPPET_PUPPET_LINT",
       "x-order": 200060,
@@ -21885,6 +21998,7 @@
     "PUPPET_PUPPET_LINT_CLI_LINT_MODE": {
       "$id": "#/properties/PUPPET_PUPPET_LINT_CLI_LINT_MODE",
       "default": "file",
+      "deprecated": true,
       "description": "PUPPET_PUPPET_LINT: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
@@ -21896,7 +22010,7 @@
         "List of Files",
         "Project"
       ],
-      "title": "PUPPET_PUPPET_LINT: CLI lint mode",
+      "title": "(deprecated) PUPPET_PUPPET_LINT: CLI lint mode",
       "type": "string",
       "x-category": "PUPPET_PUPPET_LINT",
       "x-doc-key": "config-cli-lint-mode",
@@ -21905,6 +22019,7 @@
     },
     "PUPPET_PUPPET_LINT_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/PUPPET_PUPPET_LINT_COMMAND_REMOVE_ARGUMENTS",
+      "deprecated": true,
       "description": "PUPPET_PUPPET_LINT: User custom arguments to remove before calling linter",
       "examples:": [
         "--foo",
@@ -21913,7 +22028,7 @@
       "items": {
         "type": "string"
       },
-      "title": "PUPPET_PUPPET_LINT: Custom remove arguments",
+      "title": "(deprecated) PUPPET_PUPPET_LINT: Custom remove arguments",
       "type": [
         "array",
         "string"
@@ -21925,8 +22040,9 @@
     "PUPPET_PUPPET_LINT_CONFIG_FILE": {
       "$id": "#/properties/PUPPET_PUPPET_LINT_CONFIG_FILE",
       "default": ".puppet-lint.rc",
+      "deprecated": true,
       "description": "PUPPET_PUPPET_LINT: User custom config file name if different from default",
-      "title": "PUPPET_PUPPET_LINT: Custom config file name",
+      "title": "(deprecated) PUPPET_PUPPET_LINT: Custom config file name",
       "type": "string",
       "x-category": "PUPPET_PUPPET_LINT",
       "x-order": 200010,
@@ -21935,8 +22051,9 @@
     "PUPPET_PUPPET_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/PUPPET_PUPPET_LINT_DISABLE_ERRORS",
       "default": false,
+      "deprecated": true,
       "description": "PUPPET_PUPPET_LINT: If true, PUPPET_PUPPET_LINT doesn't make MegaLinter fail even if errors are found",
-      "title": "PUPPET_PUPPET_LINT: Disable errors",
+      "title": "(deprecated) PUPPET_PUPPET_LINT: Disable errors",
       "type": "boolean",
       "x-category": "PUPPET_PUPPET_LINT",
       "x-order": 400000,
@@ -21945,8 +22062,9 @@
     "PUPPET_PUPPET_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/PUPPET_PUPPET_LINT_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
+      "deprecated": true,
       "description": "PUPPET_PUPPET_LINT: If the number of errors found is less than this value, PUPPET_PUPPET_LINT doesn't make MegaLinter fail",
-      "title": "PUPPET_PUPPET_LINT: Maximum number of errors allowed",
+      "title": "(deprecated) PUPPET_PUPPET_LINT: Maximum number of errors allowed",
       "type": "number",
       "x-category": "PUPPET_PUPPET_LINT",
       "x-order": 400010,
@@ -21957,6 +22075,7 @@
       "default": [
         ".pp"
       ],
+      "deprecated": true,
       "description": "PUPPET_PUPPET_LINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
       "examples": [
         ".py",
@@ -21965,7 +22084,7 @@
       "items": {
         "type": "string"
       },
-      "title": "PUPPET_PUPPET_LINT: Matching files extensions",
+      "title": "(deprecated) PUPPET_PUPPET_LINT: Matching files extensions",
       "type": "array",
       "x-category": "PUPPET_PUPPET_LINT",
       "x-order": 300020,
@@ -21974,6 +22093,7 @@
     "PUPPET_PUPPET_LINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/PUPPET_PUPPET_LINT_FILE_NAMES_REGEX",
       "default": [],
+      "deprecated": true,
       "description": "PUPPET_PUPPET_LINT: Override descriptor/linter matching file name regexes that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -21982,7 +22102,7 @@
       "items": {
         "type": "string"
       },
-      "title": "PUPPET_PUPPET_LINT: Matching file name regexes",
+      "title": "(deprecated) PUPPET_PUPPET_LINT: Matching file name regexes",
       "type": "array",
       "x-category": "PUPPET_PUPPET_LINT",
       "x-order": 300030,
@@ -21990,11 +22110,12 @@
     },
     "PUPPET_PUPPET_LINT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/PUPPET_PUPPET_LINT_FILTER_REGEX_EXCLUDE",
+      "deprecated": true,
       "description": "PUPPET_PUPPET_LINT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with PUPPET_PUPPET_LINT_CLI_LINT_MODE = project",
       "items": {
         "type": "string"
       },
-      "title": "PUPPET_PUPPET_LINT: Excluding Regex",
+      "title": "(deprecated) PUPPET_PUPPET_LINT: Excluding Regex",
       "type": [
         "string",
         "array"
@@ -22006,11 +22127,12 @@
     },
     "PUPPET_PUPPET_LINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/PUPPET_PUPPET_LINT_FILTER_REGEX_INCLUDE",
+      "deprecated": true,
       "description": "PUPPET_PUPPET_LINT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with PUPPET_PUPPET_LINT_CLI_LINT_MODE = project",
       "items": {
         "type": "string"
       },
-      "title": "PUPPET_PUPPET_LINT: Including Regex",
+      "title": "(deprecated) PUPPET_PUPPET_LINT: Including Regex",
       "type": [
         "string",
         "array"
@@ -22022,6 +22144,7 @@
     },
     "PUPPET_PUPPET_LINT_POST_COMMANDS": {
       "$id": "#/properties/PUPPET_PUPPET_LINT_POST_COMMANDS",
+      "deprecated": true,
       "description": "PUPPET_PUPPET_LINT: Define bash commands to run after running PUPPET_PUPPET_LINT",
       "examples": [
         [
@@ -22035,7 +22158,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "PUPPET_PUPPET_LINT: Post-run commands",
+      "title": "(deprecated) PUPPET_PUPPET_LINT: Post-run commands",
       "type": "array",
       "x-category": "PUPPET_PUPPET_LINT",
       "x-order": 500010,
@@ -22043,6 +22166,7 @@
     },
     "PUPPET_PUPPET_LINT_PRE_COMMANDS": {
       "$id": "#/properties/PUPPET_PUPPET_LINT_PRE_COMMANDS",
+      "deprecated": true,
       "description": "PUPPET_PUPPET_LINT: Define bash commands to run before running PUPPET_PUPPET_LINT",
       "examples": [
         [
@@ -22056,7 +22180,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "PUPPET_PUPPET_LINT: Pre-run commands",
+      "title": "(deprecated) PUPPET_PUPPET_LINT: Pre-run commands",
       "type": "array",
       "x-category": "PUPPET_PUPPET_LINT",
       "x-order": 500000,
@@ -22064,8 +22188,9 @@
     },
     "PUPPET_PUPPET_LINT_RULES_PATH": {
       "$id": "#/properties/PUPPET_PUPPET_LINT_RULES_PATH",
+      "deprecated": true,
       "description": "PUPPET_PUPPET_LINT: Path where to find linter configuration file",
-      "title": "PUPPET_PUPPET_LINT: Custom config file path",
+      "title": "(deprecated) PUPPET_PUPPET_LINT: Custom config file path",
       "type": "string",
       "x-category": "PUPPET_PUPPET_LINT",
       "x-order": 200040,
@@ -22074,11 +22199,12 @@
     "PUPPET_PUPPET_LINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/PUPPET_PUPPET_LINT_UNSECURED_ENV_VARIABLES",
       "default": [],
+      "deprecated": true,
       "description": "List of env variables explicitly not filtered before calling PUPPET_PUPPET_LINT and its pre/post commands",
       "items": {
         "type": "string"
       },
-      "title": "PUPPET_PUPPET_LINT: Unsecured env variables",
+      "title": "(deprecated) PUPPET_PUPPET_LINT: Unsecured env variables",
       "type": "array",
       "x-category": "PUPPET_PUPPET_LINT",
       "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
@@ -25919,6 +26045,7 @@
     },
     "REPOSITORY_GITLEAKS_POST_COMMANDS": {
       "$id": "#/properties/REPOSITORY_GITLEAKS_POST_COMMANDS",
+      "deprecated": true,
       "description": "(deprecated) REPOSITORY_GITLEAKS: Define bash commands to run after running REPOSITORY_GITLEAKS",
       "examples": [
         [
@@ -25932,7 +26059,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "REPOSITORY_GITLEAKS: Post-run commands",
+      "title": "(deprecated) REPOSITORY_GITLEAKS: Post-run commands",
       "type": "array",
       "x-category": "REPOSITORY_GITLEAKS",
       "x-order": 500010,
@@ -25940,6 +26067,7 @@
     },
     "REPOSITORY_GITLEAKS_PRE_COMMANDS": {
       "$id": "#/properties/REPOSITORY_GITLEAKS_PRE_COMMANDS",
+      "deprecated": true,
       "description": "(deprecated) REPOSITORY_GITLEAKS: Define bash commands to run before running REPOSITORY_GITLEAKS",
       "examples": [
         [
@@ -25953,7 +26081,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "REPOSITORY_GITLEAKS: Pre-run commands",
+      "title": "(deprecated) REPOSITORY_GITLEAKS: Pre-run commands",
       "type": "array",
       "x-category": "REPOSITORY_GITLEAKS",
       "x-order": 500000,
@@ -25962,7 +26090,8 @@
     "REPOSITORY_GITLEAKS_PR_COMMITS_SCAN": {
       "$id": "#/properties/REPOSITORY_GITLEAKS_PR_COMMITS_SCAN",
       "default": false,
-      "title": "REPOSITORY_GITLEAKS: Scan only commits in the current Pull Request/Merge Request",
+      "deprecated": true,
+      "title": "(deprecated) REPOSITORY_GITLEAKS: Scan only commits in the current Pull Request/Merge Request",
       "type": "boolean",
       "x-category": "REPOSITORY_GITLEAKS",
       "x-order": 900999,
@@ -25971,7 +26100,8 @@
     "REPOSITORY_GITLEAKS_PR_SOURCE_SHA": {
       "$id": "#/properties/REPOSITORY_GITLEAKS_PR_SOURCE_SHA",
       "default": "",
-      "title": "REPOSITORY_GITLEAKS: Source commit SHA of the Pull Request/Merge Request",
+      "deprecated": true,
+      "title": "(deprecated) REPOSITORY_GITLEAKS: Source commit SHA of the Pull Request/Merge Request",
       "type": "string",
       "x-category": "REPOSITORY_GITLEAKS",
       "x-order": 900999,
@@ -25980,7 +26110,8 @@
     "REPOSITORY_GITLEAKS_PR_TARGET_SHA": {
       "$id": "#/properties/REPOSITORY_GITLEAKS_PR_TARGET_SHA",
       "default": "",
-      "title": "REPOSITORY_GITLEAKS: Target commit SHA of the Pull Request/Merge Request",
+      "deprecated": true,
+      "title": "(deprecated) REPOSITORY_GITLEAKS: Target commit SHA of the Pull Request/Merge Request",
       "type": "string",
       "x-category": "REPOSITORY_GITLEAKS",
       "x-order": 900999,
@@ -26193,6 +26324,7 @@
     },
     "REPOSITORY_GOODCHECK_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_GOODCHECK_ARGUMENTS",
+      "deprecated": true,
       "description": "REPOSITORY_GOODCHECK: User custom arguments to add in linter CLI call",
       "examples:": [
         "--foo",
@@ -26201,7 +26333,7 @@
       "items": {
         "type": "string"
       },
-      "title": "(removed) REPOSITORY_GOODCHECK: Custom arguments",
+      "title": "(deprecated) (removed) REPOSITORY_GOODCHECK: Custom arguments",
       "type": [
         "array",
         "string"
@@ -26217,10 +26349,11 @@
           "goodcheck"
         ]
       ],
+      "deprecated": true,
       "items": {
         "type": "string"
       },
-      "title": "(removed) REPOSITORY_GOODCHECK: CLI Executable",
+      "title": "(deprecated) (removed) REPOSITORY_GOODCHECK: CLI Executable",
       "type": "array",
       "x-category": "REPOSITORY",
       "x-order": 200060,
@@ -26229,8 +26362,9 @@
     "REPOSITORY_GOODCHECK_CONFIG_FILE": {
       "$id": "#/properties/REPOSITORY_GOODCHECK_CONFIG_FILE",
       "default": "goodcheck.yml",
+      "deprecated": true,
       "description": "REPOSITORY_GOODCHECK: User custom config file name if different from default",
-      "title": "(removed) REPOSITORY_GOODCHECK: Custom config file name",
+      "title": "(deprecated) (removed) REPOSITORY_GOODCHECK: Custom config file name",
       "type": "string",
       "x-category": "REPOSITORY",
       "x-order": 200010,
@@ -26239,7 +26373,8 @@
     "REPOSITORY_GOODCHECK_DISABLE_ERRORS": {
       "$id": "#/properties/REPOSITORY_GOODCHECK_DISABLE_ERRORS",
       "default": false,
-      "title": "(removed) REPOSITORY_GOODCHECK: Linter doesn't make MegaLinter fail even if errors are found",
+      "deprecated": true,
+      "title": "(deprecated) (removed) REPOSITORY_GOODCHECK: Linter doesn't make MegaLinter fail even if errors are found",
       "type": "boolean",
       "x-category": "REPOSITORY",
       "x-order": 400000,
@@ -26248,7 +26383,8 @@
     "REPOSITORY_GOODCHECK_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/REPOSITORY_GOODCHECK_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
-      "title": "(removed) REPOSITORY_GOODCHECK: Maximum number of errors allowed",
+      "deprecated": true,
+      "title": "(deprecated) (removed) REPOSITORY_GOODCHECK: Maximum number of errors allowed",
       "type": "number",
       "x-category": "REPOSITORY",
       "x-order": 400010,
@@ -26256,6 +26392,7 @@
     },
     "REPOSITORY_GOODCHECK_POST_COMMANDS": {
       "$id": "#/properties/REPOSITORY_GOODCHECK_POST_COMMANDS",
+      "deprecated": true,
       "examples": [
         [
           {
@@ -26268,7 +26405,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "(removed) REPOSITORY_GOODCHECK: Define or override a list of bash commands to run after the linter",
+      "title": "(deprecated) (removed) REPOSITORY_GOODCHECK: Define or override a list of bash commands to run after the linter",
       "type": "array",
       "x-category": "REPOSITORY",
       "x-order": 500010,
@@ -26276,6 +26413,7 @@
     },
     "REPOSITORY_GOODCHECK_PRE_COMMANDS": {
       "$id": "#/properties/REPOSITORY_GOODCHECK_PRE_COMMANDS",
+      "deprecated": true,
       "examples": [
         [
           {
@@ -26288,7 +26426,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "(removed) REPOSITORY_GOODCHECK: Define or override a list of bash commands to run before the linter",
+      "title": "(deprecated) (removed) REPOSITORY_GOODCHECK: Define or override a list of bash commands to run before the linter",
       "type": "array",
       "x-category": "REPOSITORY",
       "x-order": 500000,
@@ -26296,8 +26434,9 @@
     },
     "REPOSITORY_GOODCHECK_RULES_PATH": {
       "$id": "#/properties/REPOSITORY_GOODCHECK_RULES_PATH",
+      "deprecated": true,
       "description": "REPOSITORY_GOODCHECK: Path where to find linter configuration file",
-      "title": "(removed) REPOSITORY_GOODCHECK: Custom config file path",
+      "title": "(deprecated) (removed) REPOSITORY_GOODCHECK: Custom config file path",
       "type": "string",
       "x-category": "REPOSITORY",
       "x-order": 200040,
@@ -26506,6 +26645,7 @@
     },
     "REPOSITORY_KICS_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_KICS_ARGUMENTS",
+      "deprecated": true,
       "description": "REPOSITORY_KICS: User custom arguments to add in linter CLI call",
       "examples:": [
         "--foo",
@@ -26514,7 +26654,7 @@
       "items": {
         "type": "string"
       },
-      "title": "REPOSITORY_KICS: Custom arguments",
+      "title": "(deprecated) REPOSITORY_KICS: Custom arguments",
       "type": [
         "array",
         "string"
@@ -26530,11 +26670,12 @@
           "kics"
         ]
       ],
+      "deprecated": true,
       "description": "REPOSITORY_KICS: Override CLI executable used to build the linter command line (rarely needed)",
       "items": {
         "type": "string"
       },
-      "title": "REPOSITORY_KICS: CLI Executable",
+      "title": "(deprecated) REPOSITORY_KICS: CLI Executable",
       "type": "array",
       "x-category": "REPOSITORY_KICS",
       "x-order": 200060,
@@ -26543,6 +26684,7 @@
     "REPOSITORY_KICS_CLI_LINT_MODE": {
       "$id": "#/properties/REPOSITORY_KICS_CLI_LINT_MODE",
       "default": "project",
+      "deprecated": true,
       "description": "REPOSITORY_KICS: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
@@ -26554,7 +26696,7 @@
         "List of Files",
         "Project"
       ],
-      "title": "REPOSITORY_KICS: CLI lint mode",
+      "title": "(deprecated) REPOSITORY_KICS: CLI lint mode",
       "type": "string",
       "x-category": "REPOSITORY_KICS",
       "x-doc-key": "config-cli-lint-mode",
@@ -26563,6 +26705,7 @@
     },
     "REPOSITORY_KICS_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_KICS_COMMAND_REMOVE_ARGUMENTS",
+      "deprecated": true,
       "description": "REPOSITORY_KICS: User custom arguments to remove before calling linter",
       "examples:": [
         "--foo",
@@ -26571,7 +26714,7 @@
       "items": {
         "type": "string"
       },
-      "title": "REPOSITORY_KICS: Custom remove arguments",
+      "title": "(deprecated) REPOSITORY_KICS: Custom remove arguments",
       "type": [
         "array",
         "string"
@@ -26583,8 +26726,9 @@
     "REPOSITORY_KICS_CONFIG_FILE": {
       "$id": "#/properties/REPOSITORY_KICS_CONFIG_FILE",
       "default": "kics.config",
+      "deprecated": true,
       "description": "REPOSITORY_KICS: User custom config file name if different from default",
-      "title": "REPOSITORY_KICS: Custom config file name",
+      "title": "(deprecated) REPOSITORY_KICS: Custom config file name",
       "type": "string",
       "x-category": "REPOSITORY_KICS",
       "x-order": 200010,
@@ -26593,8 +26737,9 @@
     "REPOSITORY_KICS_DISABLE_ERRORS": {
       "$id": "#/properties/REPOSITORY_KICS_DISABLE_ERRORS",
       "default": false,
+      "deprecated": true,
       "description": "REPOSITORY_KICS: If true, REPOSITORY_KICS doesn't make MegaLinter fail even if errors are found",
-      "title": "REPOSITORY_KICS: Disable errors",
+      "title": "(deprecated) REPOSITORY_KICS: Disable errors",
       "type": "boolean",
       "x-category": "REPOSITORY_KICS",
       "x-order": 400000,
@@ -26603,8 +26748,9 @@
     "REPOSITORY_KICS_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/REPOSITORY_KICS_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
+      "deprecated": true,
       "description": "REPOSITORY_KICS: If the number of errors found is less than this value, REPOSITORY_KICS doesn't make MegaLinter fail",
-      "title": "REPOSITORY_KICS: Maximum number of errors allowed",
+      "title": "(deprecated) REPOSITORY_KICS: Maximum number of errors allowed",
       "type": "number",
       "x-category": "REPOSITORY_KICS",
       "x-order": 400010,
@@ -26612,11 +26758,12 @@
     },
     "REPOSITORY_KICS_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/REPOSITORY_KICS_FILTER_REGEX_EXCLUDE",
+      "deprecated": true,
       "description": "REPOSITORY_KICS: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with REPOSITORY_KICS_CLI_LINT_MODE = project",
       "items": {
         "type": "string"
       },
-      "title": "REPOSITORY_KICS: Excluding Regex",
+      "title": "(deprecated) REPOSITORY_KICS: Excluding Regex",
       "type": [
         "string",
         "array"
@@ -26628,11 +26775,12 @@
     },
     "REPOSITORY_KICS_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/REPOSITORY_KICS_FILTER_REGEX_INCLUDE",
+      "deprecated": true,
       "description": "REPOSITORY_KICS: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with REPOSITORY_KICS_CLI_LINT_MODE = project",
       "items": {
         "type": "string"
       },
-      "title": "REPOSITORY_KICS: Including Regex",
+      "title": "(deprecated) REPOSITORY_KICS: Including Regex",
       "type": [
         "string",
         "array"
@@ -26644,6 +26792,7 @@
     },
     "REPOSITORY_KICS_POST_COMMANDS": {
       "$id": "#/properties/REPOSITORY_KICS_POST_COMMANDS",
+      "deprecated": true,
       "description": "REPOSITORY_KICS: Define bash commands to run after running REPOSITORY_KICS",
       "examples": [
         [
@@ -26657,7 +26806,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "REPOSITORY_KICS: Post-run commands",
+      "title": "(deprecated) REPOSITORY_KICS: Post-run commands",
       "type": "array",
       "x-category": "REPOSITORY_KICS",
       "x-order": 500010,
@@ -26665,6 +26814,7 @@
     },
     "REPOSITORY_KICS_PRE_COMMANDS": {
       "$id": "#/properties/REPOSITORY_KICS_PRE_COMMANDS",
+      "deprecated": true,
       "description": "REPOSITORY_KICS: Define bash commands to run before running REPOSITORY_KICS",
       "examples": [
         [
@@ -26678,7 +26828,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "REPOSITORY_KICS: Pre-run commands",
+      "title": "(deprecated) REPOSITORY_KICS: Pre-run commands",
       "type": "array",
       "x-category": "REPOSITORY_KICS",
       "x-order": 500000,
@@ -26686,8 +26836,9 @@
     },
     "REPOSITORY_KICS_RULES_PATH": {
       "$id": "#/properties/REPOSITORY_KICS_RULES_PATH",
+      "deprecated": true,
       "description": "REPOSITORY_KICS: Path where to find linter configuration file",
-      "title": "REPOSITORY_KICS: Custom config file path",
+      "title": "(deprecated) REPOSITORY_KICS: Custom config file path",
       "type": "string",
       "x-category": "REPOSITORY_KICS",
       "x-order": 200040,
@@ -26696,11 +26847,12 @@
     "REPOSITORY_KICS_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/REPOSITORY_KICS_UNSECURED_ENV_VARIABLES",
       "default": [],
+      "deprecated": true,
       "description": "List of env variables explicitly not filtered before calling REPOSITORY_KICS and its pre/post commands",
       "items": {
         "type": "string"
       },
-      "title": "REPOSITORY_KICS: Unsecured env variables",
+      "title": "(deprecated) REPOSITORY_KICS: Unsecured env variables",
       "type": "array",
       "x-category": "REPOSITORY_KICS",
       "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
@@ -31431,6 +31583,7 @@
     },
     "SALESFORCE_LIGHTNING_FLOW_SCANNER_ARGUMENTS": {
       "$id": "#/properties/SALESFORCE_LIGHTNING_FLOW_SCANNER_ARGUMENTS",
+      "deprecated": true,
       "description": "SALESFORCE_LIGHTNING_FLOW_SCANNER: User custom arguments to add in linter CLI call",
       "examples:": [
         "--foo",
@@ -31439,7 +31592,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Custom arguments",
+      "title": "(deprecated) SALESFORCE_LIGHTNING_FLOW_SCANNER: Custom arguments",
       "type": [
         "array",
         "string"
@@ -31455,11 +31608,12 @@
           "sf"
         ]
       ],
+      "deprecated": true,
       "description": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Override CLI executable used to build the linter command line (rarely needed)",
       "items": {
         "type": "string"
       },
-      "title": "SALESFORCE_LIGHTNING_FLOW_SCANNER: CLI Executable",
+      "title": "(deprecated) SALESFORCE_LIGHTNING_FLOW_SCANNER: CLI Executable",
       "type": "array",
       "x-category": "SALESFORCE_LIGHTNING_FLOW_SCANNER",
       "x-order": 200060,
@@ -31468,6 +31622,7 @@
     "SALESFORCE_LIGHTNING_FLOW_SCANNER_CLI_LINT_MODE": {
       "$id": "#/properties/SALESFORCE_LIGHTNING_FLOW_SCANNER_CLI_LINT_MODE",
       "default": "project",
+      "deprecated": true,
       "description": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "project"
@@ -31475,7 +31630,7 @@
       "enumNames": [
         "Project"
       ],
-      "title": "SALESFORCE_LIGHTNING_FLOW_SCANNER: CLI lint mode",
+      "title": "(deprecated) SALESFORCE_LIGHTNING_FLOW_SCANNER: CLI lint mode",
       "type": "string",
       "x-category": "SALESFORCE_LIGHTNING_FLOW_SCANNER",
       "x-doc-key": "config-cli-lint-mode",
@@ -31484,6 +31639,7 @@
     },
     "SALESFORCE_LIGHTNING_FLOW_SCANNER_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/SALESFORCE_LIGHTNING_FLOW_SCANNER_COMMAND_REMOVE_ARGUMENTS",
+      "deprecated": true,
       "description": "SALESFORCE_LIGHTNING_FLOW_SCANNER: User custom arguments to remove before calling linter",
       "examples:": [
         "--foo",
@@ -31492,7 +31648,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Custom remove arguments",
+      "title": "(deprecated) SALESFORCE_LIGHTNING_FLOW_SCANNER: Custom remove arguments",
       "type": [
         "array",
         "string"
@@ -31504,8 +31660,9 @@
     "SALESFORCE_LIGHTNING_FLOW_SCANNER_CONFIG_FILE": {
       "$id": "#/properties/SALESFORCE_LIGHTNING_FLOW_SCANNER_CONFIG_FILE",
       "default": ".flow-scanner.json",
+      "deprecated": true,
       "description": "SALESFORCE_LIGHTNING_FLOW_SCANNER: User custom config file name if different from default",
-      "title": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Custom config file name",
+      "title": "(deprecated) SALESFORCE_LIGHTNING_FLOW_SCANNER: Custom config file name",
       "type": "string",
       "x-category": "SALESFORCE_LIGHTNING_FLOW_SCANNER",
       "x-order": 200010,
@@ -31514,8 +31671,9 @@
     "SALESFORCE_LIGHTNING_FLOW_SCANNER_DIRECTORY": {
       "$id": "#/properties/SALESFORCE_LIGHTNING_FLOW_SCANNER_DIRECTORY",
       "default": "force-app",
+      "deprecated": true,
       "description": "Directory that must be found to activate linter. Use value \"any\" to always activate",
-      "title": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Directory containing SALESFORCE files",
+      "title": "(deprecated) SALESFORCE_LIGHTNING_FLOW_SCANNER: Directory containing SALESFORCE files",
       "type": "string",
       "x-category": "SALESFORCE_LIGHTNING_FLOW_SCANNER",
       "x-order": 100000,
@@ -31524,8 +31682,9 @@
     "SALESFORCE_LIGHTNING_FLOW_SCANNER_DISABLE_ERRORS": {
       "$id": "#/properties/SALESFORCE_LIGHTNING_FLOW_SCANNER_DISABLE_ERRORS",
       "default": false,
+      "deprecated": true,
       "description": "SALESFORCE_LIGHTNING_FLOW_SCANNER: If true, SALESFORCE_LIGHTNING_FLOW_SCANNER doesn't make MegaLinter fail even if errors are found",
-      "title": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Disable errors",
+      "title": "(deprecated) SALESFORCE_LIGHTNING_FLOW_SCANNER: Disable errors",
       "type": "boolean",
       "x-category": "SALESFORCE_LIGHTNING_FLOW_SCANNER",
       "x-order": 400000,
@@ -31534,8 +31693,9 @@
     "SALESFORCE_LIGHTNING_FLOW_SCANNER_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/SALESFORCE_LIGHTNING_FLOW_SCANNER_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
+      "deprecated": true,
       "description": "SALESFORCE_LIGHTNING_FLOW_SCANNER: If the number of errors found is less than this value, SALESFORCE_LIGHTNING_FLOW_SCANNER doesn't make MegaLinter fail",
-      "title": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Maximum number of errors allowed",
+      "title": "(deprecated) SALESFORCE_LIGHTNING_FLOW_SCANNER: Maximum number of errors allowed",
       "type": "number",
       "x-category": "SALESFORCE_LIGHTNING_FLOW_SCANNER",
       "x-order": 400010,
@@ -31543,11 +31703,12 @@
     },
     "SALESFORCE_LIGHTNING_FLOW_SCANNER_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/SALESFORCE_LIGHTNING_FLOW_SCANNER_FILTER_REGEX_EXCLUDE",
+      "deprecated": true,
       "description": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with SALESFORCE_LIGHTNING_FLOW_SCANNER_CLI_LINT_MODE = project",
       "items": {
         "type": "string"
       },
-      "title": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Excluding Regex",
+      "title": "(deprecated) SALESFORCE_LIGHTNING_FLOW_SCANNER: Excluding Regex",
       "type": [
         "string",
         "array"
@@ -31559,11 +31720,12 @@
     },
     "SALESFORCE_LIGHTNING_FLOW_SCANNER_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/SALESFORCE_LIGHTNING_FLOW_SCANNER_FILTER_REGEX_INCLUDE",
+      "deprecated": true,
       "description": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with SALESFORCE_LIGHTNING_FLOW_SCANNER_CLI_LINT_MODE = project",
       "items": {
         "type": "string"
       },
-      "title": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Including Regex",
+      "title": "(deprecated) SALESFORCE_LIGHTNING_FLOW_SCANNER: Including Regex",
       "type": [
         "string",
         "array"
@@ -31575,6 +31737,7 @@
     },
     "SALESFORCE_LIGHTNING_FLOW_SCANNER_POST_COMMANDS": {
       "$id": "#/properties/SALESFORCE_LIGHTNING_FLOW_SCANNER_POST_COMMANDS",
+      "deprecated": true,
       "description": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Define bash commands to run after running SALESFORCE_LIGHTNING_FLOW_SCANNER",
       "examples": [
         [
@@ -31588,7 +31751,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Post-run commands",
+      "title": "(deprecated) SALESFORCE_LIGHTNING_FLOW_SCANNER: Post-run commands",
       "type": "array",
       "x-category": "SALESFORCE_LIGHTNING_FLOW_SCANNER",
       "x-order": 500010,
@@ -31596,6 +31759,7 @@
     },
     "SALESFORCE_LIGHTNING_FLOW_SCANNER_PRE_COMMANDS": {
       "$id": "#/properties/SALESFORCE_LIGHTNING_FLOW_SCANNER_PRE_COMMANDS",
+      "deprecated": true,
       "description": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Define bash commands to run before running SALESFORCE_LIGHTNING_FLOW_SCANNER",
       "examples": [
         [
@@ -31609,7 +31773,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Pre-run commands",
+      "title": "(deprecated) SALESFORCE_LIGHTNING_FLOW_SCANNER: Pre-run commands",
       "type": "array",
       "x-category": "SALESFORCE_LIGHTNING_FLOW_SCANNER",
       "x-order": 500000,
@@ -31617,8 +31781,9 @@
     },
     "SALESFORCE_LIGHTNING_FLOW_SCANNER_RULES_PATH": {
       "$id": "#/properties/SALESFORCE_LIGHTNING_FLOW_SCANNER_RULES_PATH",
+      "deprecated": true,
       "description": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Path where to find linter configuration file",
-      "title": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Custom config file path",
+      "title": "(deprecated) SALESFORCE_LIGHTNING_FLOW_SCANNER: Custom config file path",
       "type": "string",
       "x-category": "SALESFORCE_LIGHTNING_FLOW_SCANNER",
       "x-order": 200040,
@@ -31627,11 +31792,12 @@
     "SALESFORCE_LIGHTNING_FLOW_SCANNER_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/SALESFORCE_LIGHTNING_FLOW_SCANNER_UNSECURED_ENV_VARIABLES",
       "default": [],
+      "deprecated": true,
       "description": "List of env variables explicitly not filtered before calling SALESFORCE_LIGHTNING_FLOW_SCANNER and its pre/post commands",
       "items": {
         "type": "string"
       },
-      "title": "SALESFORCE_LIGHTNING_FLOW_SCANNER: Unsecured env variables",
+      "title": "(deprecated) SALESFORCE_LIGHTNING_FLOW_SCANNER: Unsecured env variables",
       "type": "array",
       "x-category": "SALESFORCE_LIGHTNING_FLOW_SCANNER",
       "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
@@ -31836,6 +32002,7 @@
     },
     "SALESFORCE_SFDX_SCANNER_APEX_POST_COMMANDS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_POST_COMMANDS",
+      "deprecated": true,
       "description": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: Define bash commands to run after running SALESFORCE_SFDX_SCANNER_APEX",
       "examples": [
         [
@@ -31849,7 +32016,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_APEX: Post-run commands",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: Post-run commands",
       "type": "array",
       "x-category": "SALESFORCE_SFDX_SCANNER_APEX",
       "x-order": 500010,
@@ -31857,6 +32024,7 @@
     },
     "SALESFORCE_SFDX_SCANNER_APEX_PRE_COMMANDS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_PRE_COMMANDS",
+      "deprecated": true,
       "description": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: Define bash commands to run before running SALESFORCE_SFDX_SCANNER_APEX",
       "examples": [
         [
@@ -31870,7 +32038,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_APEX: Pre-run commands",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_APEX: Pre-run commands",
       "type": "array",
       "x-category": "SALESFORCE_SFDX_SCANNER_APEX",
       "x-order": 500000,
@@ -32076,6 +32244,7 @@
     },
     "SALESFORCE_SFDX_SCANNER_AURA_POST_COMMANDS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_POST_COMMANDS",
+      "deprecated": true,
       "description": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: Define bash commands to run after running SALESFORCE_SFDX_SCANNER_AURA",
       "examples": [
         [
@@ -32089,7 +32258,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_AURA: Post-run commands",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: Post-run commands",
       "type": "array",
       "x-category": "SALESFORCE_SFDX_SCANNER_AURA",
       "x-order": 500010,
@@ -32097,6 +32266,7 @@
     },
     "SALESFORCE_SFDX_SCANNER_AURA_PRE_COMMANDS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_PRE_COMMANDS",
+      "deprecated": true,
       "description": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: Define bash commands to run before running SALESFORCE_SFDX_SCANNER_AURA",
       "examples": [
         [
@@ -32110,7 +32280,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_AURA: Pre-run commands",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_AURA: Pre-run commands",
       "type": "array",
       "x-category": "SALESFORCE_SFDX_SCANNER_AURA",
       "x-order": 500000,
@@ -32370,6 +32540,7 @@
     },
     "SALESFORCE_SFDX_SCANNER_LWC_POST_COMMANDS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_POST_COMMANDS",
+      "deprecated": true,
       "description": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: Define bash commands to run after running SALESFORCE_SFDX_SCANNER_LWC",
       "examples": [
         [
@@ -32383,7 +32554,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_LWC: Post-run commands",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: Post-run commands",
       "type": "array",
       "x-category": "SALESFORCE_SFDX_SCANNER_LWC",
       "x-order": 500010,
@@ -32391,6 +32562,7 @@
     },
     "SALESFORCE_SFDX_SCANNER_LWC_PRE_COMMANDS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_PRE_COMMANDS",
+      "deprecated": true,
       "description": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: Define bash commands to run before running SALESFORCE_SFDX_SCANNER_LWC",
       "examples": [
         [
@@ -32404,7 +32576,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "SALESFORCE_SFDX_SCANNER_LWC: Pre-run commands",
+      "title": "(deprecated) SALESFORCE_SFDX_SCANNER_LWC: Pre-run commands",
       "type": "array",
       "x-category": "SALESFORCE_SFDX_SCANNER_LWC",
       "x-order": 500000,
@@ -34207,6 +34379,7 @@
     },
     "SPELL_MISSPELL_ARGUMENTS": {
       "$id": "#/properties/SPELL_MISSPELL_ARGUMENTS",
+      "deprecated": true,
       "description": "SPELL_MISSPELL: User custom arguments to add in linter CLI call",
       "examples:": [
         "--foo",
@@ -34215,7 +34388,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SPELL_MISSPELL: Custom arguments",
+      "title": "(deprecated) SPELL_MISSPELL: Custom arguments",
       "type": [
         "array",
         "string"
@@ -34231,10 +34404,11 @@
           "misspell"
         ]
       ],
+      "deprecated": true,
       "items": {
         "type": "string"
       },
-      "title": "SPELL_MISSPELL: CLI Executable",
+      "title": "(deprecated) SPELL_MISSPELL: CLI Executable",
       "type": "array",
       "x-category": "SPELL",
       "x-order": 200060,
@@ -34243,6 +34417,7 @@
     "SPELL_MISSPELL_CLI_LINT_MODE": {
       "$id": "#/properties/SPELL_MISSPELL_CLI_LINT_MODE",
       "default": "list_of_files",
+      "deprecated": true,
       "enum": [
         "file",
         "list_of_files",
@@ -34253,7 +34428,7 @@
         "List of Files",
         "Project"
       ],
-      "title": "SPELL_MISSPELL: Override default cli lint mode",
+      "title": "(deprecated) SPELL_MISSPELL: Override default cli lint mode",
       "type": "string",
       "x-category": "SPELL",
       "x-order": 200050,
@@ -34262,7 +34437,8 @@
     "SPELL_MISSPELL_DISABLE_ERRORS": {
       "$id": "#/properties/SPELL_MISSPELL_DISABLE_ERRORS",
       "default": false,
-      "title": "SPELL_MISSPELL: Linter doesn't make MegaLinter fail even if errors are found",
+      "deprecated": true,
+      "title": "(deprecated) SPELL_MISSPELL: Linter doesn't make MegaLinter fail even if errors are found",
       "type": "boolean",
       "x-category": "SPELL",
       "x-order": 400000,
@@ -34271,7 +34447,8 @@
     "SPELL_MISSPELL_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/SPELL_MISSPELL_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
-      "title": "SPELL_MISSPELL: Maximum number of errors allowed",
+      "deprecated": true,
+      "title": "(deprecated) SPELL_MISSPELL: Maximum number of errors allowed",
       "type": "number",
       "x-category": "SPELL",
       "x-order": 400010,
@@ -34279,6 +34456,7 @@
     },
     "SPELL_MISSPELL_FILE_EXTENSIONS": {
       "$id": "#/properties/SPELL_MISSPELL_FILE_EXTENSIONS",
+      "deprecated": true,
       "examples:": [
         ".py",
         ".myext"
@@ -34286,7 +34464,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SPELL_MISSPELL: Override descriptor/linter matching files extensions",
+      "title": "(deprecated) SPELL_MISSPELL: Override descriptor/linter matching files extensions",
       "type": "array",
       "x-category": "SPELL",
       "x-order": 300020,
@@ -34294,6 +34472,7 @@
     },
     "SPELL_MISSPELL_FILE_NAMES_REGEX": {
       "$id": "#/properties/SPELL_MISSPELL_FILE_NAMES_REGEX",
+      "deprecated": true,
       "examples": [
         "Dockerfile(-.+)?",
         "Jenkinsfile"
@@ -34301,7 +34480,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SPELL_MISSPELL: Override descriptor/linter matching file name regex",
+      "title": "(deprecated) SPELL_MISSPELL: Override descriptor/linter matching file name regex",
       "type": "array",
       "x-category": "SPELL",
       "x-order": 300030,
@@ -34309,7 +34488,8 @@
     },
     "SPELL_MISSPELL_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/SPELL_MISSPELL_FILTER_REGEX_EXCLUDE",
-      "title": "SPELL_MISSPELL: Excluding Regex",
+      "deprecated": true,
+      "title": "(deprecated) SPELL_MISSPELL: Excluding Regex",
       "type": "string",
       "x-category": "SPELL",
       "x-order": 300010,
@@ -34317,7 +34497,8 @@
     },
     "SPELL_MISSPELL_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/SPELL_MISSPELL_FILTER_REGEX_INCLUDE",
-      "title": "SPELL_MISSPELL: Including Regex",
+      "deprecated": true,
+      "title": "(deprecated) SPELL_MISSPELL: Including Regex",
       "type": "string",
       "x-category": "SPELL",
       "x-order": 300000,
@@ -34325,6 +34506,7 @@
     },
     "SPELL_MISSPELL_POST_COMMANDS": {
       "$id": "#/properties/SPELL_MISSPELL_POST_COMMANDS",
+      "deprecated": true,
       "examples": [
         [
           {
@@ -34337,7 +34519,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "SPELL_MISSPELL: Define or override a list of bash commands to run after the linter",
+      "title": "(deprecated) SPELL_MISSPELL: Define or override a list of bash commands to run after the linter",
       "type": "array",
       "x-category": "SPELL",
       "x-order": 500010,
@@ -34345,6 +34527,7 @@
     },
     "SPELL_MISSPELL_PRE_COMMANDS": {
       "$id": "#/properties/SPELL_MISSPELL_PRE_COMMANDS",
+      "deprecated": true,
       "examples": [
         [
           {
@@ -34357,7 +34540,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "SPELL_MISSPELL: Define or override a list of bash commands to run before the linter",
+      "title": "(deprecated) SPELL_MISSPELL: Define or override a list of bash commands to run before the linter",
       "type": "array",
       "x-category": "SPELL",
       "x-order": 500000,
@@ -35200,6 +35383,7 @@
     },
     "SQL_SQL_LINT_ARGUMENTS": {
       "$id": "#/properties/SQL_SQL_LINT_ARGUMENTS",
+      "deprecated": true,
       "description": "SQL_SQL_LINT: User custom arguments to add in linter CLI call",
       "examples:": [
         "--foo",
@@ -35208,7 +35392,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SQL_SQL_LINT: Custom arguments",
+      "title": "(deprecated) SQL_SQL_LINT: Custom arguments",
       "type": [
         "array",
         "string"
@@ -35224,10 +35408,11 @@
           "sql-lint"
         ]
       ],
+      "deprecated": true,
       "items": {
         "type": "string"
       },
-      "title": "SQL_SQL_LINT: CLI Executable",
+      "title": "(deprecated) SQL_SQL_LINT: CLI Executable",
       "type": "array",
       "x-category": "SQL",
       "x-order": 200060,
@@ -35236,6 +35421,7 @@
     "SQL_SQL_LINT_CLI_LINT_MODE": {
       "$id": "#/properties/SQL_SQL_LINT_CLI_LINT_MODE",
       "default": "file",
+      "deprecated": true,
       "enum": [
         "file",
         "project"
@@ -35244,7 +35430,7 @@
         "File",
         "Project"
       ],
-      "title": "SQL_SQL_LINT: Override default cli lint mode",
+      "title": "(deprecated) SQL_SQL_LINT: Override default cli lint mode",
       "type": "string",
       "x-category": "SQL",
       "x-order": 200050,
@@ -35252,6 +35438,7 @@
     },
     "SQL_SQL_LINT_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/SQL_SQL_LINT_COMMAND_REMOVE_ARGUMENTS",
+      "deprecated": true,
       "description": "SQL_SQL_LINT: User custom arguments to remove before calling linter",
       "examples:": [
         "--foo",
@@ -35260,7 +35447,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SQL_SQL_LINT: Custom remove arguments",
+      "title": "(deprecated) SQL_SQL_LINT: Custom remove arguments",
       "type": [
         "array",
         "string"
@@ -35272,8 +35459,9 @@
     "SQL_SQL_LINT_CONFIG_FILE": {
       "$id": "#/properties/SQL_SQL_LINT_CONFIG_FILE",
       "default": ".sql-config.json",
+      "deprecated": true,
       "description": "SQL_SQL_LINT: User custom config file name if different from default",
-      "title": "SQL_SQL_LINT: Custom config file name",
+      "title": "(deprecated) SQL_SQL_LINT: Custom config file name",
       "type": "string",
       "x-category": "SQL",
       "x-order": 200010,
@@ -35282,7 +35470,8 @@
     "SQL_SQL_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/SQL_SQL_LINT_DISABLE_ERRORS",
       "default": false,
-      "title": "SQL_SQL_LINT: Linter doesn't make MegaLinter fail even if errors are found",
+      "deprecated": true,
+      "title": "(deprecated) SQL_SQL_LINT: Linter doesn't make MegaLinter fail even if errors are found",
       "type": "boolean",
       "x-category": "SQL",
       "x-order": 400000,
@@ -35291,7 +35480,8 @@
     "SQL_SQL_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/SQL_SQL_LINT_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
-      "title": "SQL_SQL_LINT: Maximum number of errors allowed",
+      "deprecated": true,
+      "title": "(deprecated) SQL_SQL_LINT: Maximum number of errors allowed",
       "type": "number",
       "x-category": "SQL",
       "x-order": 400010,
@@ -35299,6 +35489,7 @@
     },
     "SQL_SQL_LINT_FILE_EXTENSIONS": {
       "$id": "#/properties/SQL_SQL_LINT_FILE_EXTENSIONS",
+      "deprecated": true,
       "examples:": [
         ".py",
         ".myext"
@@ -35306,7 +35497,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SQL_SQL_LINT: Override descriptor/linter matching files extensions",
+      "title": "(deprecated) SQL_SQL_LINT: Override descriptor/linter matching files extensions",
       "type": "array",
       "x-category": "SQL",
       "x-order": 300020,
@@ -35315,8 +35506,9 @@
     "SQL_SQL_LINT_FILE_NAME": {
       "$id": "#/properties/SQL_SQL_LINT_FILE_NAME",
       "default": ".sql-config.json",
+      "deprecated": true,
       "description": "SQL_SQL_LINT: User custom config file name if different from default",
-      "title": "SQL_SQL_LINT: Custom config file name",
+      "title": "(deprecated) SQL_SQL_LINT: Custom config file name",
       "type": "string",
       "x-category": "SQL",
       "x-order": 900999,
@@ -35324,6 +35516,7 @@
     },
     "SQL_SQL_LINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/SQL_SQL_LINT_FILE_NAMES_REGEX",
+      "deprecated": true,
       "examples": [
         "Dockerfile(-.+)?",
         "Jenkinsfile"
@@ -35331,7 +35524,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SQL_SQL_LINT: Override descriptor/linter matching file name regex",
+      "title": "(deprecated) SQL_SQL_LINT: Override descriptor/linter matching file name regex",
       "type": "array",
       "x-category": "SQL",
       "x-order": 300030,
@@ -35339,7 +35532,8 @@
     },
     "SQL_SQL_LINT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/SQL_SQL_LINT_FILTER_REGEX_EXCLUDE",
-      "title": "SQL_SQL_LINT: Excluding Regex",
+      "deprecated": true,
+      "title": "(deprecated) SQL_SQL_LINT: Excluding Regex",
       "type": "string",
       "x-category": "SQL",
       "x-order": 300010,
@@ -35347,7 +35541,8 @@
     },
     "SQL_SQL_LINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/SQL_SQL_LINT_FILTER_REGEX_INCLUDE",
-      "title": "SQL_SQL_LINT: Including Regex",
+      "deprecated": true,
+      "title": "(deprecated) SQL_SQL_LINT: Including Regex",
       "type": "string",
       "x-category": "SQL",
       "x-order": 300000,
@@ -35355,6 +35550,7 @@
     },
     "SQL_SQL_LINT_POST_COMMANDS": {
       "$id": "#/properties/SQL_SQL_LINT_POST_COMMANDS",
+      "deprecated": true,
       "examples": [
         [
           {
@@ -35367,7 +35563,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "SQL_SQL_LINT: Define or override a list of bash commands to run after the linter",
+      "title": "(deprecated) SQL_SQL_LINT: Define or override a list of bash commands to run after the linter",
       "type": "array",
       "x-category": "SQL",
       "x-order": 500010,
@@ -35375,6 +35571,7 @@
     },
     "SQL_SQL_LINT_PRE_COMMANDS": {
       "$id": "#/properties/SQL_SQL_LINT_PRE_COMMANDS",
+      "deprecated": true,
       "examples": [
         [
           {
@@ -35387,7 +35584,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "SQL_SQL_LINT: Define or override a list of bash commands to run before the linter",
+      "title": "(deprecated) SQL_SQL_LINT: Define or override a list of bash commands to run before the linter",
       "type": "array",
       "x-category": "SQL",
       "x-order": 500000,
@@ -35395,8 +35592,9 @@
     },
     "SQL_SQL_LINT_RULES_PATH": {
       "$id": "#/properties/SQL_SQL_LINT_RULES_PATH",
+      "deprecated": true,
       "description": "SQL_SQL_LINT: Path where to find linter configuration file",
-      "title": "SQL_SQL_LINT: Custom config file path",
+      "title": "(deprecated) SQL_SQL_LINT: Custom config file path",
       "type": "string",
       "x-category": "SQL",
       "x-order": 200040,
@@ -35405,11 +35603,12 @@
     "SQL_SQL_LINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/SQL_SQL_LINT_UNSECURED_ENV_VARIABLES",
       "default": [],
+      "deprecated": true,
       "description": "List of env variables explicitly not filtered before calling SQL_SQL_LINT and its pre/post commands",
       "items": {
         "type": "string"
       },
-      "title": "SQL_SQL_LINT: Unsecured env variables",
+      "title": "(deprecated) SQL_SQL_LINT: Unsecured env variables",
       "type": "array",
       "x-category": "SQL",
       "x-order": 600000,
@@ -35417,6 +35616,7 @@
     },
     "SQL_TSQLLINT_ARGUMENTS": {
       "$id": "#/properties/SQL_TSQLLINT_ARGUMENTS",
+      "deprecated": true,
       "description": "SQL_TSQLLINT: User custom arguments to add in linter CLI call",
       "examples:": [
         "--foo",
@@ -35425,7 +35625,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SQL_TSQLLINT: Custom arguments",
+      "title": "(deprecated) SQL_TSQLLINT: Custom arguments",
       "type": [
         "array",
         "string"
@@ -35441,11 +35641,12 @@
           "tsqllint"
         ]
       ],
+      "deprecated": true,
       "description": "SQL_TSQLLINT: Override CLI executable used to build the linter command line (rarely needed)",
       "items": {
         "type": "string"
       },
-      "title": "SQL_TSQLLINT: CLI Executable",
+      "title": "(deprecated) SQL_TSQLLINT: CLI Executable",
       "type": "array",
       "x-category": "SQL_TSQLLINT",
       "x-order": 200060,
@@ -35454,6 +35655,7 @@
     "SQL_TSQLLINT_CLI_LINT_MODE": {
       "$id": "#/properties/SQL_TSQLLINT_CLI_LINT_MODE",
       "default": "list_of_files",
+      "deprecated": true,
       "description": "SQL_TSQLLINT: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
@@ -35465,7 +35667,7 @@
         "List of Files",
         "Project"
       ],
-      "title": "SQL_TSQLLINT: CLI lint mode",
+      "title": "(deprecated) SQL_TSQLLINT: CLI lint mode",
       "type": "string",
       "x-category": "SQL_TSQLLINT",
       "x-doc-key": "config-cli-lint-mode",
@@ -35474,6 +35676,7 @@
     },
     "SQL_TSQLLINT_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/SQL_TSQLLINT_COMMAND_REMOVE_ARGUMENTS",
+      "deprecated": true,
       "description": "SQL_TSQLLINT: User custom arguments to remove before calling linter",
       "examples:": [
         "--foo",
@@ -35482,7 +35685,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SQL_TSQLLINT: Custom remove arguments",
+      "title": "(deprecated) SQL_TSQLLINT: Custom remove arguments",
       "type": [
         "array",
         "string"
@@ -35494,8 +35697,9 @@
     "SQL_TSQLLINT_CONFIG_FILE": {
       "$id": "#/properties/SQL_TSQLLINT_CONFIG_FILE",
       "default": ".tsqllintrc",
+      "deprecated": true,
       "description": "SQL_TSQLLINT: User custom config file name if different from default",
-      "title": "SQL_TSQLLINT: Custom config file name",
+      "title": "(deprecated) SQL_TSQLLINT: Custom config file name",
       "type": "string",
       "x-category": "SQL_TSQLLINT",
       "x-order": 200010,
@@ -35504,8 +35708,9 @@
     "SQL_TSQLLINT_DISABLE_ERRORS": {
       "$id": "#/properties/SQL_TSQLLINT_DISABLE_ERRORS",
       "default": false,
+      "deprecated": true,
       "description": "SQL_TSQLLINT: If true, SQL_TSQLLINT doesn't make MegaLinter fail even if errors are found",
-      "title": "SQL_TSQLLINT: Disable errors",
+      "title": "(deprecated) SQL_TSQLLINT: Disable errors",
       "type": "boolean",
       "x-category": "SQL_TSQLLINT",
       "x-order": 400000,
@@ -35514,8 +35719,9 @@
     "SQL_TSQLLINT_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/SQL_TSQLLINT_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
+      "deprecated": true,
       "description": "SQL_TSQLLINT: If the number of errors found is less than this value, SQL_TSQLLINT doesn't make MegaLinter fail",
-      "title": "SQL_TSQLLINT: Maximum number of errors allowed",
+      "title": "(deprecated) SQL_TSQLLINT: Maximum number of errors allowed",
       "type": "number",
       "x-category": "SQL_TSQLLINT",
       "x-order": 400010,
@@ -35526,6 +35732,7 @@
       "default": [
         ".sql"
       ],
+      "deprecated": true,
       "description": "SQL_TSQLLINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
       "examples": [
         ".py",
@@ -35534,7 +35741,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SQL_TSQLLINT: Matching files extensions",
+      "title": "(deprecated) SQL_TSQLLINT: Matching files extensions",
       "type": "array",
       "x-category": "SQL_TSQLLINT",
       "x-order": 300020,
@@ -35543,6 +35750,7 @@
     "SQL_TSQLLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/SQL_TSQLLINT_FILE_NAMES_REGEX",
       "default": [],
+      "deprecated": true,
       "description": "SQL_TSQLLINT: Override descriptor/linter matching file name regexes that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -35551,7 +35759,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SQL_TSQLLINT: Matching file name regexes",
+      "title": "(deprecated) SQL_TSQLLINT: Matching file name regexes",
       "type": "array",
       "x-category": "SQL_TSQLLINT",
       "x-order": 300030,
@@ -35559,11 +35767,12 @@
     },
     "SQL_TSQLLINT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/SQL_TSQLLINT_FILTER_REGEX_EXCLUDE",
+      "deprecated": true,
       "description": "SQL_TSQLLINT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with SQL_TSQLLINT_CLI_LINT_MODE = project",
       "items": {
         "type": "string"
       },
-      "title": "SQL_TSQLLINT: Excluding Regex",
+      "title": "(deprecated) SQL_TSQLLINT: Excluding Regex",
       "type": [
         "string",
         "array"
@@ -35575,11 +35784,12 @@
     },
     "SQL_TSQLLINT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/SQL_TSQLLINT_FILTER_REGEX_INCLUDE",
+      "deprecated": true,
       "description": "SQL_TSQLLINT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with SQL_TSQLLINT_CLI_LINT_MODE = project",
       "items": {
         "type": "string"
       },
-      "title": "SQL_TSQLLINT: Including Regex",
+      "title": "(deprecated) SQL_TSQLLINT: Including Regex",
       "type": [
         "string",
         "array"
@@ -35591,6 +35801,7 @@
     },
     "SQL_TSQLLINT_POST_COMMANDS": {
       "$id": "#/properties/SQL_TSQLLINT_POST_COMMANDS",
+      "deprecated": true,
       "description": "SQL_TSQLLINT: Define bash commands to run after running SQL_TSQLLINT",
       "examples": [
         [
@@ -35604,7 +35815,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "SQL_TSQLLINT: Post-run commands",
+      "title": "(deprecated) SQL_TSQLLINT: Post-run commands",
       "type": "array",
       "x-category": "SQL_TSQLLINT",
       "x-order": 500010,
@@ -35612,6 +35823,7 @@
     },
     "SQL_TSQLLINT_PRE_COMMANDS": {
       "$id": "#/properties/SQL_TSQLLINT_PRE_COMMANDS",
+      "deprecated": true,
       "description": "SQL_TSQLLINT: Define bash commands to run before running SQL_TSQLLINT",
       "examples": [
         [
@@ -35625,7 +35837,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "SQL_TSQLLINT: Pre-run commands",
+      "title": "(deprecated) SQL_TSQLLINT: Pre-run commands",
       "type": "array",
       "x-category": "SQL_TSQLLINT",
       "x-order": 500000,
@@ -35633,8 +35845,9 @@
     },
     "SQL_TSQLLINT_RULES_PATH": {
       "$id": "#/properties/SQL_TSQLLINT_RULES_PATH",
+      "deprecated": true,
       "description": "SQL_TSQLLINT: Path where to find linter configuration file",
-      "title": "SQL_TSQLLINT: Custom config file path",
+      "title": "(deprecated) SQL_TSQLLINT: Custom config file path",
       "type": "string",
       "x-category": "SQL_TSQLLINT",
       "x-order": 200040,
@@ -35643,11 +35856,12 @@
     "SQL_TSQLLINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/SQL_TSQLLINT_UNSECURED_ENV_VARIABLES",
       "default": [],
+      "deprecated": true,
       "description": "List of env variables explicitly not filtered before calling SQL_TSQLLINT and its pre/post commands",
       "items": {
         "type": "string"
       },
-      "title": "SQL_TSQLLINT: Unsecured env variables",
+      "title": "(deprecated) SQL_TSQLLINT: Unsecured env variables",
       "type": "array",
       "x-category": "SQL_TSQLLINT",
       "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
@@ -36305,6 +36519,7 @@
     },
     "TERRAFORM_CHECKOV_ARGUMENTS": {
       "$id": "#/properties/TERRAFORM_CHECKOV_ARGUMENTS",
+      "deprecated": true,
       "description": "TERRAFORM_CHECKOV: User custom arguments to add in linter CLI call",
       "examples:": [
         "--foo",
@@ -36313,7 +36528,7 @@
       "items": {
         "type": "string"
       },
-      "title": "(removed) TERRAFORM_CHECKOV: Custom arguments",
+      "title": "(deprecated) (removed) TERRAFORM_CHECKOV: Custom arguments",
       "type": [
         "array",
         "string"
@@ -36329,10 +36544,11 @@
           "checkov"
         ]
       ],
+      "deprecated": true,
       "items": {
         "type": "string"
       },
-      "title": "(removed) TERRAFORM_CHECKOV: CLI Executable",
+      "title": "(deprecated) (removed) TERRAFORM_CHECKOV: CLI Executable",
       "type": "array",
       "x-category": "TERRAFORM",
       "x-order": 200060,
@@ -36341,6 +36557,7 @@
     "TERRAFORM_CHECKOV_CLI_LINT_MODE": {
       "$id": "#/properties/TERRAFORM_CHECKOV_CLI_LINT_MODE",
       "default": "file",
+      "deprecated": true,
       "enum": [
         "file",
         "project"
@@ -36349,7 +36566,7 @@
         "File",
         "Project"
       ],
-      "title": "(removed) TERRAFORM_CHECKOV: Override default cli lint mode",
+      "title": "(deprecated) (removed) TERRAFORM_CHECKOV: Override default cli lint mode",
       "type": "string",
       "x-category": "TERRAFORM",
       "x-order": 200050,
@@ -36358,7 +36575,8 @@
     "TERRAFORM_CHECKOV_DISABLE_ERRORS": {
       "$id": "#/properties/TERRAFORM_CHECKOV_DISABLE_ERRORS",
       "default": false,
-      "title": "(removed) TERRAFORM_CHECKOV: Linter doesn't make MegaLinter fail even if errors are found",
+      "deprecated": true,
+      "title": "(deprecated) (removed) TERRAFORM_CHECKOV: Linter doesn't make MegaLinter fail even if errors are found",
       "type": "boolean",
       "x-category": "TERRAFORM",
       "x-order": 400000,
@@ -36367,7 +36585,8 @@
     "TERRAFORM_CHECKOV_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/TERRAFORM_CHECKOV_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
-      "title": "(removed) TERRAFORM_CHECKOV: Maximum number of errors allowed",
+      "deprecated": true,
+      "title": "(deprecated) (removed) TERRAFORM_CHECKOV: Maximum number of errors allowed",
       "type": "number",
       "x-category": "TERRAFORM",
       "x-order": 400010,
@@ -36375,6 +36594,7 @@
     },
     "TERRAFORM_CHECKOV_FILE_EXTENSIONS": {
       "$id": "#/properties/TERRAFORM_CHECKOV_FILE_EXTENSIONS",
+      "deprecated": true,
       "examples:": [
         ".py",
         ".myext"
@@ -36382,7 +36602,7 @@
       "items": {
         "type": "string"
       },
-      "title": "(removed) TERRAFORM_CHECKOV: Override descriptor/linter matching files extensions",
+      "title": "(deprecated) (removed) TERRAFORM_CHECKOV: Override descriptor/linter matching files extensions",
       "type": "array",
       "x-category": "TERRAFORM",
       "x-order": 300020,
@@ -36390,6 +36610,7 @@
     },
     "TERRAFORM_CHECKOV_FILE_NAMES_REGEX": {
       "$id": "#/properties/TERRAFORM_CHECKOV_FILE_NAMES_REGEX",
+      "deprecated": true,
       "examples": [
         "Dockerfile(-.+)?",
         "Jenkinsfile"
@@ -36397,7 +36618,7 @@
       "items": {
         "type": "string"
       },
-      "title": "(removed) TERRAFORM_CHECKOV: Override descriptor/linter matching file name regex",
+      "title": "(deprecated) (removed) TERRAFORM_CHECKOV: Override descriptor/linter matching file name regex",
       "type": "array",
       "x-category": "TERRAFORM",
       "x-order": 300030,
@@ -36405,7 +36626,8 @@
     },
     "TERRAFORM_CHECKOV_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/TERRAFORM_CHECKOV_FILTER_REGEX_EXCLUDE",
-      "title": "(removed) TERRAFORM_CHECKOV: Excluding Regex",
+      "deprecated": true,
+      "title": "(deprecated) (removed) TERRAFORM_CHECKOV: Excluding Regex",
       "type": "string",
       "x-category": "TERRAFORM",
       "x-order": 300010,
@@ -36413,7 +36635,8 @@
     },
     "TERRAFORM_CHECKOV_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/TERRAFORM_CHECKOV_FILTER_REGEX_INCLUDE",
-      "title": "(removed) TERRAFORM_CHECKOV: Including Regex",
+      "deprecated": true,
+      "title": "(deprecated) (removed) TERRAFORM_CHECKOV: Including Regex",
       "type": "string",
       "x-category": "TERRAFORM",
       "x-order": 300000,
@@ -36421,6 +36644,7 @@
     },
     "TERRAFORM_CHECKOV_POST_COMMANDS": {
       "$id": "#/properties/TERRAFORM_CHECKOV_POST_COMMANDS",
+      "deprecated": true,
       "examples": [
         [
           {
@@ -36433,7 +36657,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "(removed) TERRAFORM_CHECKOV: Define or override a list of bash commands to run after the linter",
+      "title": "(deprecated) (removed) TERRAFORM_CHECKOV: Define or override a list of bash commands to run after the linter",
       "type": "array",
       "x-category": "TERRAFORM",
       "x-order": 500010,
@@ -36441,6 +36665,7 @@
     },
     "TERRAFORM_CHECKOV_PRE_COMMANDS": {
       "$id": "#/properties/TERRAFORM_CHECKOV_PRE_COMMANDS",
+      "deprecated": true,
       "examples": [
         [
           {
@@ -36453,7 +36678,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "(removed) TERRAFORM_CHECKOV: Define or override a list of bash commands to run before the linter",
+      "title": "(deprecated) (removed) TERRAFORM_CHECKOV: Define or override a list of bash commands to run before the linter",
       "type": "array",
       "x-category": "TERRAFORM",
       "x-order": 500000,
@@ -36493,6 +36718,7 @@
     },
     "TERRAFORM_KICS_ARGUMENTS": {
       "$id": "#/properties/TERRAFORM_KICS_ARGUMENTS",
+      "deprecated": true,
       "description": "TERRAFORM_KICS: User custom arguments to add in linter CLI call",
       "examples:": [
         "--foo",
@@ -36501,7 +36727,7 @@
       "items": {
         "type": "string"
       },
-      "title": "(removed) TERRAFORM_KICS: Custom arguments",
+      "title": "(deprecated) (removed) TERRAFORM_KICS: Custom arguments",
       "type": [
         "array",
         "string"
@@ -36517,10 +36743,11 @@
           "kics"
         ]
       ],
+      "deprecated": true,
       "items": {
         "type": "string"
       },
-      "title": "(removed) TERRAFORM_KICS: CLI Executable",
+      "title": "(deprecated) (removed) TERRAFORM_KICS: CLI Executable",
       "type": "array",
       "x-category": "TERRAFORM",
       "x-order": 200060,
@@ -36529,6 +36756,7 @@
     "TERRAFORM_KICS_CLI_LINT_MODE": {
       "$id": "#/properties/TERRAFORM_KICS_CLI_LINT_MODE",
       "default": "file",
+      "deprecated": true,
       "enum": [
         "file",
         "project"
@@ -36537,7 +36765,7 @@
         "File",
         "Project"
       ],
-      "title": "(removed) TERRAFORM_KICS: Override default cli lint mode",
+      "title": "(deprecated) (removed) TERRAFORM_KICS: Override default cli lint mode",
       "type": "string",
       "x-category": "TERRAFORM",
       "x-order": 200050,
@@ -36546,7 +36774,8 @@
     "TERRAFORM_KICS_DISABLE_ERRORS": {
       "$id": "#/properties/TERRAFORM_KICS_DISABLE_ERRORS",
       "default": false,
-      "title": "(removed) TERRAFORM_KICS: Linter doesn't make MegaLinter fail even if errors are found",
+      "deprecated": true,
+      "title": "(deprecated) (removed) TERRAFORM_KICS: Linter doesn't make MegaLinter fail even if errors are found",
       "type": "boolean",
       "x-category": "TERRAFORM",
       "x-order": 400000,
@@ -36555,7 +36784,8 @@
     "TERRAFORM_KICS_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/TERRAFORM_KICS_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
-      "title": "(removed) TERRAFORM_KICS: Maximum number of errors allowed",
+      "deprecated": true,
+      "title": "(deprecated) (removed) TERRAFORM_KICS: Maximum number of errors allowed",
       "type": "number",
       "x-category": "TERRAFORM",
       "x-order": 400010,
@@ -36563,6 +36793,7 @@
     },
     "TERRAFORM_KICS_FILE_EXTENSIONS": {
       "$id": "#/properties/TERRAFORM_KICS_FILE_EXTENSIONS",
+      "deprecated": true,
       "examples:": [
         ".py",
         ".myext"
@@ -36570,7 +36801,7 @@
       "items": {
         "type": "string"
       },
-      "title": "(removed) TERRAFORM_KICS: Override descriptor/linter matching files extensions",
+      "title": "(deprecated) (removed) TERRAFORM_KICS: Override descriptor/linter matching files extensions",
       "type": "array",
       "x-category": "TERRAFORM",
       "x-order": 300020,
@@ -36578,6 +36809,7 @@
     },
     "TERRAFORM_KICS_FILE_NAMES_REGEX": {
       "$id": "#/properties/TERRAFORM_KICS_FILE_NAMES_REGEX",
+      "deprecated": true,
       "examples": [
         "Dockerfile(-.+)?",
         "Jenkinsfile"
@@ -36585,7 +36817,7 @@
       "items": {
         "type": "string"
       },
-      "title": "(removed) TERRAFORM_KICS: Override descriptor/linter matching file name regex",
+      "title": "(deprecated) (removed) TERRAFORM_KICS: Override descriptor/linter matching file name regex",
       "type": "array",
       "x-category": "TERRAFORM",
       "x-order": 300030,
@@ -36593,7 +36825,8 @@
     },
     "TERRAFORM_KICS_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/TERRAFORM_KICS_FILTER_REGEX_EXCLUDE",
-      "title": "(removed) TERRAFORM_KICS: Excluding Regex",
+      "deprecated": true,
+      "title": "(deprecated) (removed) TERRAFORM_KICS: Excluding Regex",
       "type": "string",
       "x-category": "TERRAFORM",
       "x-order": 300010,
@@ -36601,7 +36834,8 @@
     },
     "TERRAFORM_KICS_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/TERRAFORM_KICS_FILTER_REGEX_INCLUDE",
-      "title": "(removed) TERRAFORM_KICS: Including Regex",
+      "deprecated": true,
+      "title": "(deprecated) (removed) TERRAFORM_KICS: Including Regex",
       "type": "string",
       "x-category": "TERRAFORM",
       "x-order": 300000,
@@ -36609,6 +36843,7 @@
     },
     "TERRAFORM_KICS_POST_COMMANDS": {
       "$id": "#/properties/TERRAFORM_KICS_POST_COMMANDS",
+      "deprecated": true,
       "examples": [
         [
           {
@@ -36621,7 +36856,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "(removed) TERRAFORM_KICS: Define or override a list of bash commands to run after the linter",
+      "title": "(deprecated) (removed) TERRAFORM_KICS: Define or override a list of bash commands to run after the linter",
       "type": "array",
       "x-category": "TERRAFORM",
       "x-order": 500010,
@@ -36629,6 +36864,7 @@
     },
     "TERRAFORM_KICS_PRE_COMMANDS": {
       "$id": "#/properties/TERRAFORM_KICS_PRE_COMMANDS",
+      "deprecated": true,
       "examples": [
         [
           {
@@ -36641,7 +36877,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "(removed) TERRAFORM_KICS: Define or override a list of bash commands to run before the linter",
+      "title": "(deprecated) (removed) TERRAFORM_KICS: Define or override a list of bash commands to run before the linter",
       "type": "array",
       "x-category": "TERRAFORM",
       "x-order": 500000,
@@ -37327,6 +37563,7 @@
     },
     "TERRAFORM_TERRASCAN_POST_COMMANDS": {
       "$id": "#/properties/TERRAFORM_TERRASCAN_POST_COMMANDS",
+      "deprecated": true,
       "description": "(deprecated) TERRAFORM_TERRASCAN: Define bash commands to run after running TERRAFORM_TERRASCAN",
       "examples": [
         [
@@ -37340,7 +37577,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "TERRAFORM_TERRASCAN: Post-run commands",
+      "title": "(deprecated) TERRAFORM_TERRASCAN: Post-run commands",
       "type": "array",
       "x-category": "TERRAFORM_TERRASCAN",
       "x-order": 500010,
@@ -37348,6 +37585,7 @@
     },
     "TERRAFORM_TERRASCAN_PRE_COMMANDS": {
       "$id": "#/properties/TERRAFORM_TERRASCAN_PRE_COMMANDS",
+      "deprecated": true,
       "description": "(deprecated) TERRAFORM_TERRASCAN: Define bash commands to run before running TERRAFORM_TERRASCAN",
       "examples": [
         [
@@ -37361,7 +37599,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "TERRAFORM_TERRASCAN: Pre-run commands",
+      "title": "(deprecated) TERRAFORM_TERRASCAN: Pre-run commands",
       "type": "array",
       "x-category": "TERRAFORM_TERRASCAN",
       "x-order": 500000,

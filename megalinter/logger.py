@@ -5,9 +5,8 @@ import re
 import sys
 import tomllib
 
-import requests
 from megalinter import config, utils
-from megalinter.constants import ML_DOC_URL
+from megalinter.constants import BETTERLEAKS_RULESET_FILE_NAME, ML_DOC_URL
 from megalinter.flavor_factory import is_custom_flavor
 from megalinter.utils_reporter import log_section_start
 
@@ -175,45 +174,21 @@ def display_header(mega_linter):
     logging.info("")
 
 
-GITLEAKS_REGEXES = None
+BETTERLEAKS_REGEXES = None
 
 
-def fetch_gitleaks_regexes(force_use_local_file=False):
-    global GITLEAKS_REGEXES
-    if GITLEAKS_REGEXES is not None:
-        return GITLEAKS_REGEXES
+def fetch_betterleaks_regexes():
+    global BETTERLEAKS_REGEXES
+    if BETTERLEAKS_REGEXES is not None:
+        return BETTERLEAKS_REGEXES
 
-    # Use local file for test cases to improve speed
-    current_test_name = utils.get_current_test_name()
-    if (
-        current_test_name
-        and "test_fetch_gitleaks_regexes_remote" not in current_test_name
-    ):
-        force_use_local_file = True
-
-    config_data = None
-    if not force_use_local_file:
-        url = "https://raw.githubusercontent.com/gitleaks/gitleaks/refs/heads/master/config/gitleaks.toml"
-        try:
-            response = requests.get(url)
-            if response.status_code == 200:
-                config_data = (
-                    response.text
-                )  # Fix: Pass string to tomllib.loads instead of bytes
-            else:
-                logging.warning(
-                    f"Failed to fetch Gitleaks config from URL: {response.status_code}"
-                )
-        except Exception as e:
-            logging.warning(f"Could not fetch Gitleaks config from URL. Error: {e}")
-
-    if config_data is None:
-        logging.info("Using local Gitleaks config file.")
-        descriptors_dir = utils.get_descriptor_dir()
-        with open(
-            f"{descriptors_dir}/additional/gitleaks-default.toml", "r", encoding="utf-8"
-        ) as file:
-            config_data = file.read()
+    descriptors_dir = utils.get_descriptor_dir()
+    with open(
+        f"{descriptors_dir}/additional/{BETTERLEAKS_RULESET_FILE_NAME}",
+        "r",
+        encoding="utf-8",
+    ) as file:
+        config_data = file.read()
 
     config = tomllib.loads(config_data)
     regex_patterns = []
@@ -225,7 +200,7 @@ def fetch_gitleaks_regexes(force_use_local_file=False):
         if pattern:
             regex_patterns.append(pattern)
     regex_patterns = utils.keep_only_valid_regex_patterns(regex_patterns)
-    GITLEAKS_REGEXES = regex_patterns
+    BETTERLEAKS_REGEXES = regex_patterns
     return regex_patterns
 
 
@@ -233,7 +208,7 @@ def sanitize_string(input_string):
     if os.environ.get("SKIP_LINTER_OUTPUT_SANITIZATION", "") == "true":
         # Don't sanitize in test mode
         return input_string
-    regex_patterns = fetch_gitleaks_regexes()
+    regex_patterns = fetch_betterleaks_regexes()
     sanitized_string = input_string
     for pattern in regex_patterns:
         while True:

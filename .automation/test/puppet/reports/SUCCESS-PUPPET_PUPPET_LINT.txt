@@ -1,7 +1,0 @@
-Results of puppet-lint linter (version 2.4.2)
-See documentation on https://megalinter.io/descriptors/puppet_puppet_lint/
------------------------------------------------
-
-[SUCCESS] .automation/test/puppet/puppet_good_1.pp
-    
-

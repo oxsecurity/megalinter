@@ -87,6 +87,7 @@ nav:
     - "CLI lint mode": "config-cli-lint-mode.md"
   - "Linters":
       - "All supported linters": "supported-linters.md"
+      - "Removed linters": "removed-linters.md"
       - "Languages linters":
           - "All language linters": "./supported-linters/#languages"
           # language-start

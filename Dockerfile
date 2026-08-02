@@ -42,8 +42,6 @@ ARG CARGO_STYLUA_VERSION=2.5.2
 ARG PROTOBUF_PROTOLINT_VERSION=0.56.4
 # renovate: datasource=github-tags depName=checkmarx/dustilock
 ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
-# renovate: datasource=docker depName=zricethezav/gitleaks
-ARG REPOSITORY_GITLEAKS_VERSION=v8.30.1
 # renovate: datasource=docker depName=ghcr.io/betterleaks/betterleaks
 ARG REPOSITORY_BETTERLEAKS_VERSION=v1.7.3
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
@@ -117,7 +115,6 @@ FROM yoheimuta/protolint:${PROTOBUF_PROTOLINT_VERSION} AS protolint
 FROM golang:${GO_IMAGE_VERSION}-alpine AS dustilock
 ARG REPOSITORY_DUSTILOCK_VERSION
 RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v${REPOSITORY_DUSTILOCK_VERSION}
-FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
 FROM ghcr.io/betterleaks/betterleaks:${REPOSITORY_BETTERLEAKS_VERSION} AS betterleaks
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
 FROM jdkato/vale:${SPELL_VALE_VERSION} AS vale
@@ -438,7 +435,6 @@ ARG KUBERNETES_KUBECONFORM_VERSION
 ARG CARGO_STYLUA_VERSION
 ARG PROTOBUF_PROTOLINT_VERSION
 ARG REPOSITORY_DUSTILOCK_VERSION
-ARG REPOSITORY_GITLEAKS_VERSION
 ARG REPOSITORY_BETTERLEAKS_VERSION
 ARG REPOSITORY_TRUFFLEHOG_VERSION
 ARG SPELL_VALE_VERSION
@@ -580,7 +576,6 @@ COPY --link --from=chktex /usr/bin/chktex /usr/bin/
 COPY --link --from=cargo-bin-stylua /out/bin/stylua /usr/bin/stylua
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
-COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 COPY --link --from=betterleaks /usr/bin/betterleaks /usr/bin/
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 COPY --link --from=vale /bin/vale /bin/vale
@@ -1125,8 +1120,6 @@ ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$
 RUN dotnet tool install --allow-roll-forward --tool-path /usr/local/dotnet-tools Microsoft.CST.DevSkim.CLI --version ${REPOSITORY_DEVSKIM_VERSION} \
 # dustilock installation
 # Managed with COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
-# gitleaks installation
-# Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 # betterleaks installation
 # Managed with COPY --link --from=betterleaks /usr/bin/betterleaks /usr/bin/
 # grype installation
