@@ -3,7 +3,7 @@ import Generator from 'yeoman-generator';
 import { simpleGit } from 'simple-git';
 import c from 'chalk';
 import fs from "fs"
-import yaml from "js-yaml";
+import { load as yamlLoad } from "js-yaml";
 
 export default class GeneratorMegaLinter extends Generator {
   async prompting() {
@@ -50,7 +50,7 @@ Example: 'megalinter-custom-flavor-python-light'
       const customFlavorConfigPath = this.destinationPath('megalinter-custom-flavor.yml');
       if (fs.existsSync(customFlavorConfigPath)) {
         const customFlavorConfigContent = fs.readFileSync(customFlavorConfigPath, 'utf8');
-        const customFlavorConfig = yaml.load(customFlavorConfigContent);
+        const customFlavorConfig = yamlLoad(customFlavorConfigContent);
         if (customFlavorConfig.label) {
           defaultFlavorLabel = customFlavorConfig.label;
         }
