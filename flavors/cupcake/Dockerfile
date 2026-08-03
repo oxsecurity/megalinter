@@ -106,15 +106,17 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
 # Install dependencies
+#UV_SYNC__START
 RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-    uv sync --frozen --no-install-project
+    uv sync --frozen --no-install-project --extra llm
 # Copy the project into the image
 COPY . .
 # Sync the project
 RUN --mount=type=cache,target=/root/.cache/uv \
-    uv sync --frozen
+    uv sync --frozen --extra llm
+#UV_SYNC__END
 
 ##################
 # Get base image #
@@ -362,13 +364,9 @@ RUN apk -U --no-cache upgrade \
                 bash \
                 ca-certificates \
                 curl \
-                gcc \
                 gcompat \
                 git \
                 git-lfs \
-                libffi-dev \
-                make \
-                musl-dev \
                 openssh \
                 su-exec \
                 openjdk21 \
@@ -387,6 +385,8 @@ RUN apk -U --no-cache upgrade \
                 php84-simplexml \
                 php84-iconv \
                 dpkg \
+                gcc \
+                musl-dev \
                 py3-pyflakes \
                 cppcheck \
                 openjdk17 \
@@ -475,14 +475,16 @@ COPY --link --from=terragrunt /bin/terraform /usr/bin/
 #############################################################################################
 
 #GEM__START
-RUN echo 'gem: --no-document' >> ~/.gemrc && \
+RUN apk add --no-cache --virtual .ml-build-deps gcc libffi-dev make musl-dev && \
+    echo 'gem: --no-document' >> ~/.gemrc && \
     gem install \
           rubocop:${GEM_RUBOCOP_VERSION} \
           rubocop-github:${GEM_RUBOCOP_GITHUB_VERSION} \
           rubocop-performance:${GEM_RUBOCOP_PERFORMANCE_VERSION} \
           rubocop-rails:${GEM_RUBOCOP_RAILS_VERSION} \
           rubocop-rake:${GEM_RUBOCOP_RAKE_VERSION} \
-          rubocop-rspec:${GEM_RUBOCOP_RSPEC_VERSION}
+          rubocop-rspec:${GEM_RUBOCOP_RSPEC_VERSION} \
+    && apk del .ml-build-deps
 #GEM__END
 
 ################################
@@ -492,7 +494,8 @@ RUN echo 'gem: --no-document' >> ~/.gemrc && \
 #############################################################################################
 
 #PIPVENV__START
-RUN uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
+RUN apk add --no-cache --virtual .ml-build-deps gcc libffi-dev make musl-dev && \
+    uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/ansible-lint" \
     && VIRTUAL_ENV="/venvs/ansible-lint" uv pip install --no-cache ansible-lint==${PIP_ANSIBLE_LINT_VERSION} \
     && VIRTUAL_ENV="/venvs/ansible-lint" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
@@ -590,7 +593,8 @@ RUN uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP
     && VIRTUAL_ENV="/venvs/yamllint" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/yamllint" rm -rf /venvs/yamllint/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
     && find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
-    && rm -rf /root/.cache
+    && rm -rf /root/.cache \
+    && apk del .ml-build-deps
 ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/cpplint/bin:/venvs/cfn-lint/bin:/venvs/stylelint/bin:/venvs/djlint/bin:/venvs/rumdl/bin:/venvs/pylint/bin:/venvs/black/bin:/venvs/flake8/bin:/venvs/isort/bin:/venvs/mypy/bin:/venvs/nbqa/bin:/venvs/ruff/bin:/venvs/ruff-format/bin:/venvs/checkov/bin:/venvs/semgrep/bin:/venvs/robocop/bin:/venvs/rst-lint/bin:/venvs/rstcheck/bin:/venvs/rstfmt/bin:/venvs/proselint/bin:/venvs/codespell/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
 #PIPVENV__END
 
@@ -884,9 +888,11 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOS
 ################################
 COPY --from=build-ml-core pyproject.toml README.md ./
 COPY --from=build-ml-core megalinter /megalinter/
+#PIP_PROJECT__START
 RUN --mount=type=cache,target=/root/.cache/uv,from=build-ml-core \
     --mount=from=uv,source=/uv,target=/bin/uv \
-    uv pip install --system -e .
+    uv pip install --system -e ".[llm]"
+#PIP_PROJECT__END
 
 #######################################
 # Copy scripts and rules to container #
