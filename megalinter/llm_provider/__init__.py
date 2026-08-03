@@ -6,6 +6,7 @@ LLM Provider package for MegaLinter
 # Provider classes are resolved lazily (PEP 562): each one imports a heavy LLM SDK
 # (langchain_openai, langchain_anthropic, google.genai, ...) that would add several
 # seconds to EVERY MegaLinter startup, even when LLM Advisor is disabled.
+# pylint: disable=undefined-all-variable
 from importlib import import_module
 
 from .llm_provider import LLMProvider
@@ -22,13 +23,11 @@ _LAZY_PROVIDER_MODULES = {
     "GrokProvider": "llm_provider_grok",
 }
 
-# pylint: disable=undefined-all-variable
 __all__ = [
     "LLMProvider",
     "LLMProviderFactory",
     *_LAZY_PROVIDER_MODULES.keys(),
 ]
-# pylint: enable=undefined-all-variable
 
 
 def __getattr__(name):
