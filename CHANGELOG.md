@@ -39,7 +39,24 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Python linter venvs are now installed through the uv cache in hardlink mode: identical wheels shared by several venvs (setuptools, black, mypy, ...) are stored once on disk instead of once per venv
     - Extended node_modules pruning: all Markdown files plus `test`, `tests`, `__tests__`, `docs` and `.github` directories are removed from `/node-deps`, along with the leftover `/root/.npm` cache
     - Removed a stray `cpplint` Python venv that was mistakenly declared in the CSS_STYLELINT descriptor
-    - Measured on linux/amd64, compared to v9.6.0: `megalinter-only-yaml_yamllint` 653 MB → 268 MB (-59%), `megalinter-only-spell_cspell` 740 MB → 357 MB (-52%), `megalinter-only-spell_proselint` 651 MB → 284 MB (-56%), `megalinter-only-ruby_rubocop` 697 MB → 305 MB (-56%), `megalinter-only-bash_shellcheck` 690 MB → 260 MB (-62%), `megalinter-only-spell_vale` 674 MB → 286 MB (-58%), `megalinter-python` flavor 5.40 GB → 5.10 GB (-6% vs beta; new linters added since v9.6.0 offset part of the gain), main `megalinter` image unchanged (its C/C++/R linters legitimately ship compilers). MegaLinter runtime is unaffected (full-codebase CI job: 10m06s on this change vs 10m20s-14m14s on previous builds)
+    - Measured on linux/amd64 (uncompressed `docker images` size, before = previous beta measured the same day with the same CI jobs):
+
+      | Image                                    | Before  | After  | Delta |
+      |------------------------------------------|--------:|-------:|------:|
+      | `megalinter-only-groovy_npm_groovy_lint` | 1.07 GB | 695 MB | -35%  |
+      | `megalinter-only-r_lintr`                | 996 MB  | 405 MB | -59%  |
+      | `megalinter-only-spell_proselint`        | 813 MB  | 284 MB | -65%  |
+      | `megalinter-only-css_stylelint`          | 780 MB  | 360 MB | -54%  |
+      | `megalinter-only-spell_cspell`           | 755 MB  | 357 MB | -53%  |
+      | `megalinter-only-ruby_rubocop`           | 702 MB  | 301 MB | -57%  |
+      | `megalinter-only-perl_perlcritic`        | 696 MB  | 293 MB | -58%  |
+      | `megalinter-only-spell_vale`             | 683 MB  | 286 MB | -58%  |
+      | `megalinter-only-yaml_yamllint`          | 668 MB  | 271 MB | -59%  |
+      | `megalinter-only-bash_shellcheck`        | 660 MB  | 263 MB | -60%  |
+      | `megalinter-only-lua_luacheck`           | 652 MB  | 252 MB | -61%  |
+      | `megalinter-only-xml_xmllint`            | 645 MB  | 246 MB | -62%  |
+
+    - Flavor and main images benefit from the same changes: `megalinter-python` flavor 5.40 GB → 5.10 GB (-6% vs beta), and the main image drops the duplicate OpenJDK 17 (~330 MB) plus deduplicated venv wheels. MegaLinter runtime is unaffected (full-codebase CI job stays in its usual 10-14 min range)
 
 - New linters
 
