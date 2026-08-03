@@ -56,8 +56,6 @@ MegaLinter has **native integrations** with many major CI/CD tools.
 
 ![MegaLinter Presentation GIF](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/MegaLinter-banner-Medium.gif?raw=true)
 
-> 📣 **MegaLinter 9.5.0 is out!** Discover the new features and security recommendations in the [release announcement](https://github.com/oxsecurity/megalinter/issues/7835).
-
 - Use the new [LLM Advisor](https://megalinter.io/latest/llm-advisor/) that will tell you how to fix linters issues
 - Create your own [MegaLinter Custom Flavors](https://megalinter.io/latest/custom-flavors/) to improve performance
 

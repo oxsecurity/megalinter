@@ -40,6 +40,8 @@ Notes:
 npx mega-linter-runner --upgrade --no-prompt
 ```
 
+After upgrading, check the CI files for Docker image references still pointing to Docker Hub (`docker.io/oxsecurity/megalinter*` or bare `oxsecurity/megalinter:*` image references): since MegaLinter v9.5.0, images are **only published to GitHub Container Registry** — rewrite them to `ghcr.io/oxsecurity/megalinter...` (Docker Hub is frozen at v9.4.0). GitHub Action references (`uses: oxsecurity/megalinter@...`) are not affected.
+
 ## 3. Refine `.mega-linter.yml` (only AFTER install/upgrade)
 
 Once the runner has generated/upgraded the files, you may adjust `.mega-linter.yml`:

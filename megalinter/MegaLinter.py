@@ -49,15 +49,6 @@ REMOVED_LINTERS_NOTIFICATION_TEMPLATE = (
     "See [Removed linters]({doc_url}) to find their replacements."
 )
 
-MEGALINTER_9_5_ANNOUNCEMENT_KEY = "megalinter_9_5_announcement"
-MEGALINTER_9_5_ANNOUNCEMENT_URL = "https://github.com/oxsecurity/megalinter/issues/7835"
-MEGALINTER_9_5_ANNOUNCEMENT_TEMPLATE = (
-    "📣 **MegaLinter 9.5.0 is out!** "
-    "Discover the new features and security recommendations in the "
-    f"[release announcement]({MEGALINTER_9_5_ANNOUNCEMENT_URL}). "
-    "(Skip this info by defining `SECURITY_SUGGESTIONS: false`)"
-)
-
 
 # initialize worker processes
 def init_worker(request_config_in):
@@ -386,15 +377,6 @@ class Megalinter:
         ):
             self.flavor_suggestions = flavor_factory.get_megalinter_flavor_suggestions(
                 self.active_linters
-            )
-
-        # Register default MegaLinter 9.5.0 release announcement notification.
-        # Disabled when SECURITY_SUGGESTIONS=false.
-        if config.get(self.request_id, "SECURITY_SUGGESTIONS", "true") == "true":
-            register_user_notification(
-                self,
-                key=MEGALINTER_9_5_ANNOUNCEMENT_KEY,
-                template=MEGALINTER_9_5_ANNOUNCEMENT_TEMPLATE,
             )
 
         # Run user-defined commands
