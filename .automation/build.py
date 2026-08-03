@@ -350,6 +350,7 @@ def build_dockerfile(
     docker_other = []
     all_dockerfile_items = []
     apk_packages = DEFAULT_DOCKERFILE_APK_PACKAGES.copy()
+    apk_build_packages = DEFAULT_DOCKERFILE_BUILD_APK_PACKAGES.copy()
     npm_packages = []
     pip_packages = []
     pipvenv_packages = {}
@@ -446,6 +447,9 @@ def build_dockerfile(
         # Collect python packages
         if "apk" in item["install"]:
             apk_packages += item["install"]["apk"]
+        # Collect build-time-only apk packages (evicted from final layers)
+        if "apk_build" in item["install"]:
+            apk_build_packages += item["install"]["apk_build"]
         # Collect npm packages
         if "npm" in item["install"]:
             npm_packages += item["install"]["npm"]
@@ -644,7 +648,7 @@ def build_dockerfile(
     # in the final image layers
     build_deps_add = (
         "apk add --no-cache --virtual .ml-build-deps "
-        + " ".join(DEFAULT_DOCKERFILE_BUILD_APK_PACKAGES)
+        + " ".join(list(dict.fromkeys(apk_build_packages)))
         + " && \\\n    "
     )
     build_deps_del = " \\\n    && apk del .ml-build-deps"

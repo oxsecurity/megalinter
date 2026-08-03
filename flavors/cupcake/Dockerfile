@@ -393,9 +393,7 @@ RUN apk -U --no-cache upgrade \
                 cppcheck \
                 openjdk17 \
                 helm \
-                build-base \
-                re2-dev \
-                py3-pybind11-dev \
+                re2 \
                 unzip \
                 libxml2-dev \
                 libxml2-utils \
@@ -476,7 +474,7 @@ COPY --link --from=terragrunt /bin/terraform /usr/bin/
 #############################################################################################
 
 #GEM__START
-RUN apk add --no-cache --virtual .ml-build-deps gcc libffi-dev make musl-dev && \
+RUN apk add --no-cache --virtual .ml-build-deps gcc libffi-dev make musl-dev build-base re2-dev py3-pybind11-dev && \
     echo 'gem: --no-document' >> ~/.gemrc && \
     gem install \
           rubocop:${GEM_RUBOCOP_VERSION} \
@@ -495,7 +493,7 @@ RUN apk add --no-cache --virtual .ml-build-deps gcc libffi-dev make musl-dev && 
 #############################################################################################
 
 #PIPVENV__START
-RUN apk add --no-cache --virtual .ml-build-deps gcc libffi-dev make musl-dev && \
+RUN apk add --no-cache --virtual .ml-build-deps gcc libffi-dev make musl-dev build-base re2-dev py3-pybind11-dev && \
     uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/ansible-lint" \
     && VIRTUAL_ENV="/venvs/ansible-lint" uv pip install --no-cache ansible-lint==${PIP_ANSIBLE_LINT_VERSION} \

@@ -87,9 +87,7 @@ RUN apk -U --no-cache upgrade \
                 libstdc++ \
                 openssh \
                 su-exec \
-                build-base \
-                re2-dev \
-                py3-pybind11-dev \
+                re2 \
     && git config --global core.autocrlf true
 #APK__END
 
@@ -140,7 +138,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #############################################################################################
 
 #PIPVENV__START
-RUN apk add --no-cache --virtual .ml-build-deps gcc libffi-dev make musl-dev && \
+RUN apk add --no-cache --virtual .ml-build-deps gcc libffi-dev make musl-dev build-base re2-dev py3-pybind11-dev && \
     uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
     && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/proselint" \
     && VIRTUAL_ENV="/venvs/proselint" uv pip install --no-cache proselint==${PIP_PROSELINT_VERSION} \
