@@ -184,9 +184,9 @@ describe("CLI parsing — flavor and image", () => {
     assert.strictEqual(o.flavor, "java");
   });
 
-  it("defaults flavor to all when not provided", () => {
+  it("leaves flavor undefined when not provided (resolved at runtime from .mega-linter.yml or default)", () => {
     const o = parse([]);
-    assert.strictEqual(o.flavor, "all");
+    assert.strictEqual(o.flavor, undefined);
   });
 
   it("parses --image with long form", () => {
@@ -392,8 +392,9 @@ describe("CLI parsing — mutual exclusivity", () => {
 describe("CLI parsing — defaults", () => {
   it("applies all documented defaults with empty argv", () => {
     const o = parse([]);
-    assert.strictEqual(o.release, "v9");
-    assert.strictEqual(o.flavor, "all");
+    // release and flavor are resolved at runtime: CLI > .mega-linter.yml > latest/all
+    assert.strictEqual(o.release, undefined);
+    assert.strictEqual(o.flavor, undefined);
     assert.strictEqual(o.platform, "linux/amd64");
     assert.strictEqual(o.containerEngine, "docker");
     assert.strictEqual(o.codetotalUrl, "http://localhost:8081/");

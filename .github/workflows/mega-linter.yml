@@ -76,6 +76,17 @@ jobs:
           # improve performance
           fetch-depth: 0
 
+      # Cache the grype vulnerability database between runs: downloading it is
+      # what makes REPOSITORY_GRYPE take ~2 minutes on a cold run. grype still
+      # refreshes the DB itself when the cached copy is older than its max age.
+      - name: Cache grype vulnerability DB
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: .megalinter-cache/grype
+          key: grype-db-${{ github.run_id }}
+          restore-keys: |
+            grype-db-
+
       # MegaLinter
       - name: MegaLinter
 
@@ -111,6 +122,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           EMAIL_REPORTER_SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }} # ml workflow addtion
+
+          # Reuse the cached grype vulnerability DB (see "Cache grype vulnerability DB" step)
+          GRYPE_DB_CACHE_DIR: /github/workspace/.megalinter-cache/grype
 
           # Disable LLM Advisor for bot PRs (dependabot, renovate, etc.)
           LLM_ADVISOR_ENABLED: >-

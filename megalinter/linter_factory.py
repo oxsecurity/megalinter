@@ -35,13 +35,29 @@ def list_flavor_linters(linters_init_params=None, flavor_id="all"):
 
 # List unique linter
 def list_linters_by_name(linters_init_params=None, linter_names=[]):
-    all_linters = list_all_linters(linters_init_params)
+    # Only parse descriptors that can contain the requested linters: a linter name
+    # always starts with its descriptor id (convention also relied upon by
+    # build_linter), so instantiating the 100+ other linters would be wasted time
+    descriptor_files = [
+        descriptor_file
+        for descriptor_file in list_descriptor_files()
+        if any(
+            linter_name.startswith(
+                os.path.basename(descriptor_file)
+                .replace(".megalinter-descriptor.yml", "")
+                .upper()
+                + "_"
+            )
+            for linter_name in linter_names
+        )
+    ]
+    if len(descriptor_files) == 0:
+        descriptor_files = list_descriptor_files()
     linters = []
-    for linter in all_linters:
-        if linter.name in linter_names:
-            linters += [linter]
-        else:
-            del linter
+    for descriptor_file in descriptor_files:
+        for linter in build_descriptor_linters(descriptor_file, linters_init_params):
+            if linter.name in linter_names:
+                linters += [linter]
     return linters
 
 

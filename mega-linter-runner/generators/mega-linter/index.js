@@ -3,6 +3,18 @@ import Generator from 'yeoman-generator';
 import { OXSecuritySetup } from "../../lib/ox-setup.js";
 import { DEFAULT_RELEASE } from "../../lib/config.js";
 
+const NO_PROMPT_DEFAULTS = {
+  flavor: "all",
+  ci: "gitHubActions",
+  copyPaste: true,
+  spellingMistakes: true,
+  version: DEFAULT_RELEASE,
+  defaultBranch: "main",
+  validateAllCodeBase: "all",
+  applyFixes: false,
+  ox: false,
+};
+
 export default class GeneratorMegaLinter extends Generator {
   prompting() {
     console.log(asciiArt());
@@ -10,6 +22,7 @@ export default class GeneratorMegaLinter extends Generator {
       `Welcome to the MegaLinter configuration generator !
 When you don't know what option to select, please use default values`
     );
+    const cliAnswers = this.options.promptAnswers || {};
 
     const prompts = [
       {
@@ -119,8 +132,16 @@ When you don't know what option to select, please use default values`
       },
     ];
 
-    return this.prompt(prompts).then((props) => {
-      this.props = props;
+    if (this.options.noPrompt === true) {
+      this.props = Object.assign({}, NO_PROMPT_DEFAULTS, cliAnswers);
+      this._computeValues();
+      return;
+    }
+    const remainingPrompts = prompts.filter(
+      (prompt) => cliAnswers[prompt.name] === undefined
+    );
+    return this.prompt(remainingPrompts).then((props) => {
+      this.props = Object.assign({}, cliAnswers, props);
       this._computeValues();
     });
   }
@@ -340,7 +361,9 @@ When you don't know what option to select, please use default values`
         DEFAULT_BRANCH: this.props.defaultBranch,
         DISABLE: this.disable === true ? "DISABLE:" : "# DISABLE:",
         COPYPASTE: this.configCopyPaste,
-        SPELL: this.configSpell
+        SPELL: this.configSpell,
+        MEGALINTER_FLAVOR: this.props.flavor,
+        MEGALINTER_VERSION: this.dockerImageVersion,
       }
     );
   }
@@ -377,6 +400,10 @@ When you don't know what option to select, please use default values`
     }
     if (!gitIgnoreTextLines.includes("megalinter-reports/")) {
       gitIgnoreTextLines.push("megalinter-reports/");
+      doWrite = true;
+    }
+    if (!gitIgnoreTextLines.includes("*.megalinter-setup.bak")) {
+      gitIgnoreTextLines.push("*.megalinter-setup.bak");
       doWrite = true;
     }
     if (doWrite) {

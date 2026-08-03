@@ -267,12 +267,15 @@ class Linter:
             self.manage_apply_fixes(params)
 
             # Disable lint_all_other_linters_files=true if we are in a standalone linter docker image,
-            # because there are no other linters
+            # because there are no other linters. Lint all files instead of none when the
+            # descriptor defines no file_extensions (e.g. SPELL_CSPELL)
             if (
                 self.lint_all_other_linters_files is True
                 and config.get(self.request_id, "SINGLE_LINTER", "") != ""
             ):
                 self.lint_all_other_linters_files = False
+                if len(self.file_extensions) == 0:
+                    self.file_extensions = ["*"]
 
             # Config items
             self.linter_rules_path = (

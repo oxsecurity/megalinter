@@ -52,9 +52,9 @@ MegaLinter has **native integrations** with many major CI/CD tools.
 
 <!-- welcome-phrase-end -->
 
-![MegaLinter Presentation GIF](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/MegaLinter-banner-Medium.gif?raw=true)
+> 🤖 **MegaLinter works with your coding agent!** Install the [MegaLinter agent skills](https://megalinter.io/latest/install-agent-skills/) with `npx skills add oxsecurity/megalinter`, then ask **Claude Code, Cursor, GitHub Copilot CLI, Codex, Antigravity or OpenCode** to setup MegaLinter, watch its CI jobs, and fix the errors for you.
 
-> 📣 **MegaLinter 9.5.0 is out!** Discover the new features and security recommendations in the [release announcement](https://github.com/oxsecurity/megalinter/issues/7835).
+![MegaLinter Presentation GIF](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/MegaLinter-banner-Medium.gif?raw=true)
 
 - Use the new [LLM Advisor](https://megalinter.io/latest/llm-advisor/) that will tell you how to fix linters issues
 - Create your own [MegaLinter Custom Flavors](https://megalinter.io/latest/custom-flavors/) to improve performance
@@ -68,12 +68,14 @@ Before you go further, see the [**online documentation website, which offers muc
 
 - [Why MegaLinter](#why-megalinter)
 - [Quick Start](#quick-start)
+- [Coding Agents](#coding-agents)
 - [Supported Linters](#supported-linters)
   - [Languages](#languages)
   - [Formats](#formats)
   - [Tooling formats](#tooling-formats)
   - [Other](#other)
 - [Installation](#installation)
+  - [Coding agents (skills)](#coding-agents-skills)
   - [Assisted installation](#assisted-installation)
   - [Which version to use ?](#which-version-to-use-)
   - [GitHub Action](#github-action)
@@ -192,6 +194,85 @@ description: Setup MegaLinter in 5 minutes thanks to its assisted installation t
 - If you want to use MegaLinter's extra features (recommended), please take 5 minutes to use the [assisted installation](https://github.com/oxsecurity/megalinter/tree/main/docs/install-assisted.md).
 - For a beginner-friendly example of getting started with MegaLinter, check out [this blog post](https://ayyjohn.com/posts/linting-a-jekyll-blog-with-mega-linter) by Alec Johnson.
 <!-- quick-start-section-end -->
+
+<!-- coding-agents-section-start -->
+<!-- markdown-headers
+---
+title: Use MegaLinter with coding agents
+description: Setup, run and fix MegaLinter errors from Claude Code, Cursor, GitHub Copilot CLI, Codex, Antigravity, OpenCode and other coding agents, with token-efficient sub-agents orchestration
+---
+-->
+## Coding Agents
+
+MegaLinter is designed to work hand in hand with your coding agent:
+
+[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/claude.png?raw=true" alt="Claude Code" height="48px">](https://claude.com/product/claude-code)
+[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/cursor.png?raw=true" alt="Cursor" height="48px">](https://cursor.com)
+[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/github-copilot.png?raw=true" alt="GitHub Copilot CLI" height="48px">](https://github.com/features/copilot)
+[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/codex.png?raw=true" alt="Codex" height="48px">](https://openai.com/codex/)
+[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/antigravity.png?raw=true" alt="Antigravity" height="48px">](https://antigravity.google/)
+[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/opencode.png?raw=true" alt="OpenCode" height="48px">](https://opencode.ai)
+
+### Get started
+
+Install the [MegaLinter agent skills](https://github.com/oxsecurity/megalinter/tree/main/skills) at the root of your repository:
+
+```bash
+npx skills add oxsecurity/megalinter
+```
+
+Then just talk to your agent:
+
+- _"Setup MegaLinter on this repo"_
+- _"Run MegaLinter and fix the errors"_
+- _"Why is the MegaLinter CI job failing? Fix it"_
+
+### What the skills do
+
+| Skill                | Role                                                                                                                                                                |
+|:---------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **megalinter**       | Entry point: detects the repository state and orchestrates the other skills in a check → fix → re-check loop (3 iterations max)                                     |
+| **megalinter-setup** | Installs or upgrades MegaLinter using `npx mega-linter-runner --install` (non-interactive), then refines `.mega-linter.yml`                                         |
+| **megalinter-check** | Collects errors: watches a MegaLinter CI job (GitHub Actions, GitLab CI, Azure Pipelines, Bitbucket Pipelines) or runs MegaLinter locally with docker/podman        |
+| **megalinter-fix**   | Fixes errors guided by a per-linter fix guide (one for each of the 124 linters, loaded only when its linter has errors), asks you before disabling rules or pushing |
+
+### Sub-agents orchestration
+
+On agents supporting sub-agents (Claude Code, OpenCode, GitHub Copilot custom agents...), `megalinter-setup` installs three sub-agents that keep large CI logs and linter outputs **out of your main agent's context**, and run on low-cost models when possible:
+
+```mermaid
+flowchart TD
+    U(["👤 You: <i>run megalinter and fix the errors</i>"]) --> O["🎯 megalinter<br/>(orchestrator skill)"]
+    O -->|"no config found"| S["🛠️ megalinter-setup"]
+    S -->|"npx mega-linter-runner --install"| CFG[".mega-linter.yml<br/>+ CI workflow"]
+    O --> C["🔍 megalinter-check"]
+    C -->|"watch mode"| W["👀 megalinter-watcher<br/>sub-agent, low-cost model"]
+    W --> CI["CI job logs<br/>GitHub / GitLab / Azure / Bitbucket"]
+    C -->|"local mode"| RUN["🐳 megalinter-runner<br/>sub-agent, low-cost model"]
+    RUN --> IMG["MegaLinter Docker image<br/>docker or podman"]
+    W --> ERR["📋 Compact error list<br/>grouped by linter"]
+    RUN --> ERR
+    ERR --> F["🔧 megalinter-fix"]
+    F -->|"one sub-agent per failing linter,<br/>in parallel"| FX1["🤖 megalinter-fixer<br/>+ python_ruff fix guide"]
+    F --> FX2["🤖 megalinter-fixer<br/>+ markdown_markdownlint fix guide"]
+    FX1 --> RES["✏️ Fixed files<br/>+ proposed rule disables"]
+    FX2 --> RES
+    RES -->|"you confirm disables"| RC["♻️ Targeted re-check<br/>parallel standalone linter images"]
+    RC -->|"errors remain (max 3 loops)"| F
+    RC -->|"clean"| DONE(["✅ Commit on a branch<br/>(never on main)"])
+```
+
+The fix guides combine information generated from the [linter descriptors](https://github.com/oxsecurity/megalinter/tree/main/megalinter/descriptors) (auto-fix support, rules documentation URLs, MegaLinter tuning variables) with curated fix, inline-disable and ignore instructions grounded in each linter's official documentation.
+
+### Safety rules
+
+- Safe fixes are applied automatically; ambiguous ones are asked to you
+- Disabling a linter or a rule always requires your confirmation
+- Commits are never pushed to the default branch
+
+See also the [installation page for coding agents](https://megalinter.io/latest/install-agent-skills/).
+
+<!-- coding-agents-section-end -->
 
 <!-- supported-linters-section-start -->
 <!-- markdown-headers
@@ -362,6 +443,31 @@ description: How to install MegaLinter on Github Actions, Gitlab CI, Azure Pipel
 -->
 ## Installation
 
+<!-- install-agent-skills-section-start -->
+<!-- markdown-headers
+---
+title: Install and use MegaLinter with coding agents
+description: Setup and drive MegaLinter from Claude Code, Cursor, GitHub Copilot CLI, Codex, OpenCode and other coding agents thanks to MegaLinter agent skills
+---
+-->
+### Coding agents (skills)
+
+MegaLinter ships [**agent skills**](https://github.com/oxsecurity/megalinter/tree/main/skills) making it easy to drive from coding agents like **Claude Code, Cursor CLI, GitHub Copilot CLI, Codex, Antigravity or OpenCode**:
+
+```bash
+npx skills add oxsecurity/megalinter
+```
+
+Then just ask your agent to _"setup megalinter"_ or _"run megalinter and fix the errors"_. The skills handle:
+
+- **megalinter-setup**: install or upgrade MegaLinter on the repository (non-interactive `npx mega-linter-runner --install`)
+- **megalinter-check**: watch MegaLinter CI jobs (GitHub Actions, GitLab CI, Azure Pipelines, Bitbucket Pipelines) or run locally with Docker
+- **megalinter-fix**: apply fixes guided by per-linter fix guides, with user confirmation before disabling anything or pushing
+- **megalinter**: orchestrate the whole check → fix → re-check loop
+
+On coding agents supporting sub-agents (Claude Code, OpenCode, GitHub Copilot custom agents...), dedicated MegaLinter sub-agents (running on low-cost models) watch CI jobs and digest linter outputs to keep large logs out of your agent's context, and fix several linters in parallel.
+
+<!-- install-agent-skills-section-end -->
 <!-- install-assisted-section-start -->
 <!-- markdown-headers
 ---
@@ -371,7 +477,10 @@ description: Setup MegaLinter in 5 minutes thanks to its assisted installation t
 -->
 ### Assisted installation
 
-Just run `npx mega-linter-runner --install` at the root of your repository and answer questions, it will generate ready to use configuration files for MegaLinter :)
+Two assisted ways to setup MegaLinter on your repository:
+
+- **With a coding agent**: install the [MegaLinter agent skills](https://megalinter.io/latest/install-agent-skills/) with `npx skills add oxsecurity/megalinter`, then ask your agent to _"setup megalinter"_.
+- **With the interactive wizard**: run `npx mega-linter-runner --install` at the root of your repository and answer questions, it will generate ready to use configuration files for MegaLinter :)
 
 ![Runner Install](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true)
 
