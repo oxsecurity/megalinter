@@ -662,8 +662,10 @@ RUN --mount=type=cache,target=/root/.cache/uv,from=build-ml-core \
 #############################################################################
 # Strip debug symbols from ELF binaries (Go binaries are often unstripped)  #
 #############################################################################
+# bicep is excluded: it is a .NET single-file bundle whose payload is
+# appended after the ELF sections, and strip discards that appended data
 RUN apk add --no-cache --virtual .strip-tools binutils \
-    && find /bin /usr/bin /usr/local/bin -maxdepth 1 -type f \
+    && find /bin /usr/bin /usr/local/bin -maxdepth 1 -type f ! -name bicep \
          -exec sh -c 'strip --strip-unneeded "$@" 2>/dev/null || true' _ {} + \
     && apk del .strip-tools
 
