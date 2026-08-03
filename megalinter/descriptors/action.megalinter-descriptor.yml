@@ -94,6 +94,9 @@ linters:
     cli_config_arg_name: --config
     cli_lint_fix_arg_name: --fix
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: ([0-9]+) findings?
     cli_version_arg_name: --version

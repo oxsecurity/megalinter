@@ -184,6 +184,9 @@ linters:
     linter_rules_inline_disable_url: https://github.com/mvdan/sh/blob/master/cmd/shfmt/shfmt.1.scd
     name: BASH_SHFMT
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
     cli_lint_extra_args:
       - "-d"
     cli_lint_fix_arg_name: "-w"
