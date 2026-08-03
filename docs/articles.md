@@ -97,7 +97,6 @@ description: List of all known articles, blog posts and videos that talk about M
 ## Linters
 
 <!-- referring-linters-start -->
-- [checkmake](https://github.com/checkmake/checkmake?tab=readme-ov-file#megalinter){target=_blank}
 - [checkstyle](https://checkstyle.org/index.html#Related_Tools_Active_Tools){target=_blank}
 - [clj-kondo](https://github.com/borkdude/clj-kondo/blob/master/doc/ci-integration.md#github){target=_blank}
 - [cljstyle](https://github.com/greglook/cljstyle/blob/main/doc/integrations.md){target=_blank}
@@ -107,11 +106,9 @@ description: List of all known articles, blog posts and videos that talk about M
 - [dotenv-linter](https://dotenv-linter.github.io/#/integrations/mega_linter){target=_blank}
 - [editorconfig-checker](https://github.com/editorconfig-checker/editorconfig-checker#mega-linter){target=_blank}
 - [eslint](https://eslint.org/docs/latest/use/integrations#source-control){target=_blank}
-- [eslint-plugin-jsonc](https://eslint.org/docs/latest/use/integrations#source-control){target=_blank}
 - [hadolint](https://github.com/hadolint/hadolint/blob/master/docs/INTEGRATION.md#mega-linter){target=_blank}
 - [htmlhint](https://htmlhint.com/integrations/task-runner/){target=_blank}
 - [jscpd](https://github.com/kucherenko/jscpd#who-uses-jscpd){target=_blank}
-- [kics](https://docs.kics.io/latest/integrations/){target=_blank}
 - [ktlint](https://github.com/pinterest/ktlint#-with-continuous-integration){target=_blank}
 - [lintr](https://lintr.r-lib.org/articles/continuous-integration.html){target=_blank}
 - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/#mega-linter){target=_blank}
