@@ -47,7 +47,7 @@ linters:
     config_file_name: .groovylintrc.json
     cli_lint_extra_args:
       - --javaexecutable
-      - /usr/lib/jvm/java-17-openjdk/bin/java
+      - /usr/lib/jvm/java-21-openjdk/bin/java
       - --failon
       - error
     cli_sarif_args:
