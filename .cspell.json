@@ -637,6 +637,7 @@
         "endcsname",
         "endgroup",
         "endinput",
+        "ENOENT",
         "ensuremath",
         "ENTRYPOINT",
         "entrypoint",

@@ -93,6 +93,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Fixes
 
   - Declare `supported_cli_lint_modes` on `ACTION_ZIZMOR`, `BASH_SHFMT` and `GO_REVIVE` (`file`, `list_of_files`): they were falling back to a `file`-only default, so their real `list_of_files` runtime mode was never covered by the generated lint mode tests
+  - Fix HIGH CVE-2026-69152 (brace-expansion 1.1.14 DoS) in images bundling `GHERKIN_GHERKIN_LINT`: the fixed 1.1.18 is installed top-level so npm dedupes the vulnerable copy nested in gherkin-lint's dependency tree
   - Exclude `megalinter-reports/` from `REPOSITORY_SECRETLINT` scanning: its project-mode `**/*` glob could race with reports written by other linters running in parallel (e.g. transient `jscpd-report.html`), crashing with ENOENT
   - Fix linters using `lint_all_other_linters_files` (e.g. `SPELL_CSPELL`) linting zero files when run in their standalone `megalinter-only-*` Docker image: the single-linter override now falls back to linting all collected files when the descriptor defines no file extensions
   - Make `test_api_output` resilient to remote server outages: probe several public echo endpoints, run the test with the ones that are up, retry with another server when a post fails, and skip the test when none of them is reachable, as a remote outage is not a MegaLinter issue
