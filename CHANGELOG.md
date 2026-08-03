@@ -84,7 +84,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - mega-linter-runner
 
-  - Non-interactive installation: `--install` can now run without prompts using `--no-prompt` and the new `--setup-*` options (`--setup-ci`, `--setup-copy-paste`, `--setup-spelling-mistakes`, `--setup-default-branch`, `--setup-validate-all-code-base`, `--setup-ox`) combined with the existing `--flavor`, `--release` and `--fix` flags
+  - Non-interactive installation: `--install` can now run without prompts using `--no-prompt` and the new `--setup-*` options (`--setup-ci`, `--setup-copy-paste`, `--setup-spelling-mistakes`, `--setup-default-branch`, `--setup-validate-all-code-base`, `--setup-ox`) combined with the existing `--flavor`, `--release` and `--fix` flags; pre-existing configuration/workflow files are backed up as `<file>.megalinter-setup.bak` before being overwritten, so customizations can be merged back
   - New `--linter <LINTER_KEY>` option to run a single linter using its standalone `megalinter-only-<linter_key>` Docker image, with an optional list of files to lint; reports are isolated in `megalinter-reports/<linter_key>` so several standalone runs can execute in parallel
   - Flavor and version resolution now reads `MEGALINTER_FLAVOR` and `MEGALINTER_VERSION` from `.mega-linter.yml` when `--flavor`/`--release` are not passed on the command line (falling back to `all`/`latest`), and the install generator writes both properties in the generated configuration
   - `--fix` now respects an `APPLY_FIXES` value (other than `none`) defined in `.mega-linter.yml` instead of overriding it with `all`

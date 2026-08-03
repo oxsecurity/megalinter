@@ -71,6 +71,11 @@ export class MegaLinterRunner {
         path.join(__dirname, "..", "generators", "mega-linter")
       );
       console.log("Yeoman generator used: " + generatorPath);
+      if (options.prompt === false) {
+        // Non-interactive mode overwrites conflicting files (force: true below):
+        // keep a backup of pre-existing ones so customizations can be merged back
+        this.backupExistingSetupTargets(process.cwd());
+      }
       env.run(generatorPath, {
         promptAnswers: this.buildSetupAnswers(options),
         noPrompt: options.prompt === false,
@@ -399,6 +404,37 @@ export class MegaLinterRunner {
       );
     }
     return envArgs;
+  }
+
+  backupExistingSetupTargets(baseDir) {
+    const targets = [
+      ".mega-linter.yml",
+      ".cspell.json",
+      ".jscpd.json",
+      path.join(".github", "workflows", "mega-linter.yml"),
+      ".gitlab-ci.yml",
+      "azure-pipelines.yml",
+      "bitbucket-pipelines.yml",
+      "Jenkinsfile",
+      ".drone.yml",
+      "concourse-task.yml",
+    ];
+    const backedUp = [];
+    for (const target of targets) {
+      const targetPath = path.join(baseDir, target);
+      if (fs.existsSync(targetPath)) {
+        fs.copySync(targetPath, `${targetPath}.megalinter-setup.bak`);
+        backedUp.push(target);
+      }
+    }
+    if (backedUp.length > 0) {
+      console.warn(
+        "[--install] Existing files that may be overwritten have been backed up " +
+          `with a .megalinter-setup.bak extension: ${backedUp.join(", ")}. ` +
+          "Compare them with the generated files to restore your customizations, then delete the backups."
+      );
+    }
+    return backedUp;
   }
 
   readLocalConfig(lintPath) {

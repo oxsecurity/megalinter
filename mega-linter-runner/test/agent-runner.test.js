@@ -215,6 +215,45 @@ describe("Local .mega-linter.yml config reading", () => {
   });
 });
 
+describe("Setup targets backup", () => {
+  it("backs up pre-existing generator targets", async () => {
+    const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "ml-bak-"));
+    await fs.writeFile(path.join(tmpDir, ".mega-linter.yml"), "APPLY_FIXES: all\n");
+    await fs.mkdirp(path.join(tmpDir, ".github", "workflows"));
+    await fs.writeFile(
+      path.join(tmpDir, ".github", "workflows", "mega-linter.yml"),
+      "name: custom\n"
+    );
+    const backedUp = runner.backupExistingSetupTargets(tmpDir);
+    assert.deepStrictEqual(backedUp, [
+      ".mega-linter.yml",
+      path.join(".github", "workflows", "mega-linter.yml"),
+    ]);
+    assert.strictEqual(
+      await fs.readFile(
+        path.join(tmpDir, ".mega-linter.yml.megalinter-setup.bak"),
+        "utf8"
+      ),
+      "APPLY_FIXES: all\n"
+    );
+    assert.ok(
+      fs.existsSync(
+        path.join(
+          tmpDir,
+          ".github",
+          "workflows",
+          "mega-linter.yml.megalinter-setup.bak"
+        )
+      )
+    );
+  });
+
+  it("returns an empty list when nothing pre-exists", async () => {
+    const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "ml-bak-"));
+    assert.deepStrictEqual(runner.backupExistingSetupTargets(tmpDir), []);
+  });
+});
+
 describe("Setup answers from CLI options", () => {
   it("maps provided options and drops undefined ones", () => {
     const answers = runner.buildSetupAnswers({

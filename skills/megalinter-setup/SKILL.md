@@ -32,6 +32,12 @@ Notes:
 - The whole codebase is validated on each run (default). Pass `--setup-validate-all-code-base diff` only if the user explicitly asks to lint updated files only.
 - Add `--release beta` only if the user asks for the beta version.
 - `--fix` enables auto-fixes (`APPLY_FIXES: all`); omit it if the user doesn't want automatic formatting.
+
+**Preserve existing customizations.** In non-interactive mode the installer overwrites conflicting files, but it first backs up every pre-existing target as `<file>.megalinter-setup.bak` (config files and the CI workflow file). After the install:
+
+1. Diff each `.megalinter-setup.bak` file against its regenerated version.
+2. Re-apply the user's customizations that are still relevant (extra workflow steps, env vars, custom triggers, added config entries...). When a customization conflicts with the new template or its intent is unclear, **ask the user** what to keep.
+3. Delete the `.megalinter-setup.bak` files once merged.
 - If the user is present and wants to choose interactively, run plain `npx mega-linter-runner --install` instead and let them answer.
 
 **Configuration already exists** — upgrade it:

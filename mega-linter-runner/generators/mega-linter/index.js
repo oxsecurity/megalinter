@@ -402,6 +402,10 @@ When you don't know what option to select, please use default values`
       gitIgnoreTextLines.push("megalinter-reports/");
       doWrite = true;
     }
+    if (!gitIgnoreTextLines.includes("*.megalinter-setup.bak")) {
+      gitIgnoreTextLines.push("*.megalinter-setup.bak");
+      doWrite = true;
+    }
     if (doWrite) {
       this.fs.write(gitIgnoreFile, gitIgnoreTextLines.join("\n") + "\n");
       this.log(
