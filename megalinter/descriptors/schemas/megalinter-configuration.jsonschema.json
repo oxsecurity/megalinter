@@ -39357,6 +39357,16 @@
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
     },
+    "VERSION_GET_AT_RUNTIME": {
+      "$id": "#/properties/VERSION_GET_AT_RUNTIME",
+      "default": false,
+      "description": "Force calling the linter executables to collect their version, instead of using the versions collected at MegaLinter Docker image build time. Slower, but useful if you install additional or different linter versions with PRE_COMMANDS",
+      "title": "Get linter versions at runtime",
+      "type": "boolean",
+      "x-category": "GENERAL",
+      "x-order": 600020,
+      "x-section": "PERFORMANCE"
+    },
     "XML_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/XML_FILTER_REGEX_EXCLUDE",
       "description": "XML: Custom regex excluding filter: files matching this regex will NOT be linted",

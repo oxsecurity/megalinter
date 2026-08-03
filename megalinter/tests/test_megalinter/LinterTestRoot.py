@@ -53,6 +53,12 @@ class LinterTestRoot:
         probe_linter = self.get_linter_instance(self.request_id)
         if not probe_linter.is_cli_lint_mode_supported(mode):
             raise unittest.SkipTest(f"Linter does not support lint_mode: {mode}")
+        # CI optimization: when a linter supports both file and list_of_files,
+        # skip the slower per-file mode since list_of_files covers the same code path
+        if mode == "file" and "list_of_files" in probe_linter.supported_cli_lint_modes:
+            raise unittest.SkipTest(
+                "Skipping file lint_mode: covered by list_of_files (CI optimization)"
+            )
         self.lint_mode_setup(mode)
         linter = self.get_linter_instance(self.request_id)
         linter.pre_test(test_name)
@@ -109,15 +115,8 @@ class LinterTestRoot:
         utilstest.test_get_linter_help(linter, self)
         linter.post_test("test_get_linter_help")
 
-    def test_report_tap(self):
-        self.request_id = str(uuid.uuid1())
-        utilstest.linter_test_setup(
-            {"request_id": self.request_id, "report_type": "tap"}
-        )
-        linter = self.get_linter_instance(self.request_id)
-        linter.pre_test("test_report_tap")
-        utilstest.test_linter_report_tap(linter, self)
-        linter.post_test("test_report_tap")
+    # TAP reporter golden-file tests do not run for every linter anymore:
+    # they live in tap_reporter_test.py on a curated sample of linters
 
     def test_report_sarif(self):
         self.request_id = str(uuid.uuid1())

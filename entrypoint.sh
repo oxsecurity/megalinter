@@ -35,6 +35,9 @@ git config --global --add safe.directory /tmp/lint
 # Called by Auto-update CI job
 if [ "${UPGRADE_LINTERS_VERSION}" == "true" ]; then
   echo "[MegaLinter init] UPGRADING LINTER VERSION"
+  # This job refreshes linter-versions.json: versions must come from the real
+  # linter executables, not from the manifest baked at image build time
+  export VERSION_GET_AT_RUNTIME=true
   pip install pytest-cov pytest-timeout pytest-rerunfailures
   # Run only get_linter_version test methods
   pytest --reruns 3 --reruns-delay 1 -v --durations=0 -k _get_linter_version megalinter/
@@ -64,6 +67,9 @@ fi
 # Run test cases with pytest
 if [ "${TEST_CASE_RUN}" == "true" ]; then
   echo "[MegaLinter init] RUNNING TEST CASES"
+  # Test cases must validate the real linter executables, not the version
+  # manifest baked at image build time
+  export VERSION_GET_AT_RUNTIME=true
   # pip install pytest-cov codecov-cli pytest-timeout pytest-xdist pytest-rerunfailures # temp remove codecov-cli to avoid issues with codecov upload
   pip install pytest-cov pytest-timeout pytest-xdist pytest-rerunfailures
   if [ -z "${TEST_KEYWORDS}" ]; then

@@ -47,10 +47,6 @@ class powershell_powershell_formatter_test(TestCase, LinterTestRoot):
         self.check_if_another_test_suite()
         super().test_get_linter_help()
 
-    def test_report_tap(self):
-        self.check_if_another_test_suite()
-        super().test_report_tap()
-
     def test_report_sarif(self):
         self.check_if_another_test_suite()
         super().test_report_sarif()
