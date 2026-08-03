@@ -186,6 +186,6 @@ Libxml project home page: https://gitlab.gnome.org/GNOME/libxml2
 ### Installation on mega-linter Docker image
 
 - APK packages (Linux):
-  - [libxml2-dev](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=libxml2-dev)
+  - [libxml2](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=libxml2)
   - [libxml2-utils](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=libxml2-utils)
   - [libgcc](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=libgcc)

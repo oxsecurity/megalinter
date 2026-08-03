@@ -27,3 +27,11 @@ description: clippy is available to analyze RUST files in MegaLinter
 | RUST_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
 | RUST_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 
+
+## Behind the scenes
+
+### Installation
+
+- APK packages (Linux):
+  - [gcc](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=gcc)
+  - [musl-dev](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=musl-dev)

@@ -125,8 +125,12 @@ Usage:
 # renovate: datasource=github-tags depName=skaji/cpm
 ARG PERL_PERLCRITIC_VERSION=v1.1.4
 
-RUN curl -fsSL https://raw.githubusercontent.com/skaji/cpm/refs/tags/${PERL_PERLCRITIC_VERSION}/cpm | perl - install -g --show-build-log-on-failure --without-build --without-test --without-runtime Perl::Critic \
-    && rm -rf /root/.perl-cpm
+# cpm compiles XS modules during installation: the toolchain is only
+# needed within this RUN and evicted from the final layers
+RUN apk add --no-cache --virtual .perl-build-deps gcc make musl-dev perl-dev \
+    && curl -fsSL https://raw.githubusercontent.com/skaji/cpm/refs/tags/${PERL_PERLCRITIC_VERSION}/cpm | perl - install -g --show-build-log-on-failure --without-build --without-test --without-runtime Perl::Critic \
+    && rm -rf /root/.perl-cpm \
+    && apk del .perl-build-deps
 
 ```
 

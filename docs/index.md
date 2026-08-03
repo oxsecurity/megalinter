@@ -46,9 +46,9 @@ MegaLinter has **native integrations** with many major CI/CD tools.
 
 <!-- welcome-phrase-end -->
 
-![MegaLinter Presentation GIF](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/MegaLinter-banner-Medium.gif?raw=true)
+> 🤖 **MegaLinter works with your coding agent!** Install the [MegaLinter agent skills](https://megalinter.io/latest/install-agent-skills/) with `npx skills add oxsecurity/megalinter`, then ask **Claude Code, Cursor, GitHub Copilot CLI, Codex, Antigravity or OpenCode** to setup MegaLinter, watch its CI jobs, and fix the errors for you.
 
-> 📣 **MegaLinter 9.5.0 is out!** Discover the new features and security recommendations in the [release announcement](https://github.com/oxsecurity/megalinter/issues/7835).
+![MegaLinter Presentation GIF](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/MegaLinter-banner-Medium.gif?raw=true)
 
 - Use the new [LLM Advisor](https://megalinter.io/latest/llm-advisor/) that will tell you how to fix linters issues
 - Create your own [MegaLinter Custom Flavors](https://megalinter.io/latest/custom-flavors/) to improve performance
@@ -82,6 +82,10 @@ By using **MegaLinter**, you'll enjoy the following benefits for your team:
 <!-- quick-start-section-start -->
 
 <!-- quick-start-section-end -->
+
+<!-- coding-agents-section-start -->
+
+<!-- coding-agents-section-end -->
 
 <!-- supported-linters-section-start -->
 <!-- markdown-headers

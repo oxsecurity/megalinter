@@ -35,5 +35,3 @@ description: luacheck, stylua are available to analyze LUA files in MegaLinter
 
 - APK packages (Linux):
   - [lua5.3](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=lua5.3)
-  - [lua5.3-dev](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=lua5.3-dev)
-  - [readline-dev](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=readline-dev)
