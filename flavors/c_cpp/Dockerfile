@@ -401,7 +401,6 @@ RUN npm config set prefix /usr/local \
                 stylelint-config-sass-guidelines@${NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION} \
                 stylelint-scss@${NPM_STYLELINT_SCSS_VERSION} \
                 gherkin-lint@${NPM_GHERKIN_LINT_VERSION} \
-                brace-expansion@${NPM_BRACE_EXPANSION_VERSION} \
                 graphql@${NPM_GRAPHQL_VERSION} \
                 graphql-schema-linter@${NPM_GRAPHQL_SCHEMA_LINTER_VERSION} \
                 npm-groovy-lint@${NPM_GROOVY_LINT_VERSION} \
@@ -473,15 +472,8 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
     esac; \
     curl --retry 5 --retry-delay 5 -fsSL \
       "https://github.com/dotenv-linter/dotenv-linter/releases/download/v${DOTENV_LINTER_VERSION}/dotenv-linter-alpine-${ARCH}.tar.gz" \
-      | tar -xz -C /usr/local/bin
+      | tar -xz -C /usr/local/bin \
 # gherkin-lint installation
-# Transitive override: gherkin-lint resolves brace-expansion 1.1.14
-# (HIGH CVE-2026-69152, DoS). Installing the fixed 1.x at top level
-# makes npm hoist and dedupe the vulnerable nested copy.
-# No renovate comment on purpose: it must stay on the 1.x line to be
-# dedupe-compatible with gherkin-lint's nested ^1.1.x range.
-# Remove when gherkin-lint's tree resolves brace-expansion >= 1.1.18
-ARG NPM_BRACE_EXPANSION_VERSION=1.1.18
 # graphql-schema-linter installation
 # npm-groovy-lint installation
 # Next line commented because already managed by another linter
@@ -494,7 +486,7 @@ ARG NPM_BRACE_EXPANSION_VERSION=1.1.18
 # v8r installation
 # prettier installation
 # ktlint installation
-RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/download/${KTLINT_VERSION}/ktlint && \
+    && curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/download/${KTLINT_VERSION}/ktlint && \
     chmod a+x ktlint && \
     mv "ktlint" /usr/bin/ \
 # detekt installation

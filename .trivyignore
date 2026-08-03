@@ -161,6 +161,14 @@ CVE-2026-6322
 # override would break minimatch's declared range and raise the runtime floor to Node >= 20.
 # Remove once minimatch and the bundled linters depend on brace-expansion >= 5.0.8.
 CVE-2026-14257
+# CVE-2026-69152 is a follow-up to CVE-2026-14257: same expand() DoS reached through
+# another unbounded intermediate array, bypassing the previous mitigation. The
+# exploitability reasoning above applies unchanged: brace-expansion only expands glob
+# patterns coming from the repository's own configuration, so the worst case remains a
+# repo owner DoS-ing their own one-shot CI job. Currently resolved at 1.1.14 through
+# gherkin-lint's glob@7/minimatch@3 chain (fix backports exist: 1.1.18 / 2.1.4 / 3.0.6).
+# Remove once the bundled linters' dependency trees resolve a fixed brace-expansion.
+CVE-2026-69152
 
 # --- .NET deps (roslynator) ---
 # Microsoft.Build.Tasks.Core CVE-2025-26646 only affects projects that run the MSBuild

@@ -151,8 +151,7 @@ ENV NODE_OPTIONS="--max-old-space-size=8192" \
 WORKDIR /node-deps
 RUN npm config set prefix /usr/local \
     && npm --no-cache install --ignore-scripts --omit=dev \
-                gherkin-lint@${NPM_GHERKIN_LINT_VERSION} \
-                brace-expansion@${NPM_BRACE_EXPANSION_VERSION} && \
+                gherkin-lint@${NPM_GHERKIN_LINT_VERSION} && \
     echo "Cleaning npm cache…" \
     && (npm cache clean --force || true) \
     && echo "Changing owner of node_modules files…" \
@@ -175,13 +174,6 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 #OTHER__START
 # gherkin-lint installation
-# Transitive override: gherkin-lint resolves brace-expansion 1.1.14
-# (HIGH CVE-2026-69152, DoS). Installing the fixed 1.x at top level
-# makes npm hoist and dedupe the vulnerable nested copy.
-# No renovate comment on purpose: it must stay on the 1.x line to be
-# dedupe-compatible with gherkin-lint's nested ^1.1.x range.
-# Remove when gherkin-lint's tree resolves brace-expansion >= 1.1.18
-ARG NPM_BRACE_EXPANSION_VERSION=1.1.18
 #OTHER__END
 
 ################################
