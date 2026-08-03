@@ -45,12 +45,12 @@ Tip: for repeated local runs (e.g. fix → re-check loops), install the runner o
 Re-run only what previously failed, in parallel (max 4 concurrent containers):
 
 ```bash
-npx mega-linter-runner --linter PYTHON_RUFF --release beta src/a.py src/b.py &
-npx mega-linter-runner --linter MARKDOWN_MARKDOWNLINT --release beta README.md &
+npx mega-linter-runner --linter PYTHON_RUFF src/a.py src/b.py &
+npx mega-linter-runner --linter MARKDOWN_MARKDOWNLINT README.md &
 wait
 ```
 
-Note: until MegaLinter v10 is released, standalone `megalinter-only-*` images are only multi-arch on the `beta` tag — always add `--release beta` to `--linter` runs (not needed once v10 is out, or if `.mega-linter.yml` already pins `MEGALINTER_VERSION: beta`).
+**Version rule (all skills)**: runner and Docker image versions always follow `MEGALINTER_VERSION` from `.mega-linter.yml` — invoke `npx mega-linter-runner@beta` when it is `beta`, plain `npx mega-linter-runner` otherwise, and never pass `--release` yourself. Caveat until MegaLinter v10: standalone `megalinter-only-*` images are only multi-arch on the `beta` tag, so if a standalone run fails with a platform error while `MEGALINTER_VERSION` is not `beta`, inform the user and propose either pinning `MEGALINTER_VERSION: beta` or falling back to a full-image re-check.
 
 - Pass the fixed files as arguments for file-scoped linters; omit the file list for project-scoped linters (e.g. `REPOSITORY_*`, `COPYPASTE_JSCPD`).
 - Each run writes its reports to `megalinter-reports/<linter_key_lower>/` — no conflict between parallel runs.

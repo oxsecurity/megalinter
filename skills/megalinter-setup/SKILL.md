@@ -32,8 +32,8 @@ If the runner rejects one of the options above ("Invalid option" error), the res
 Notes:
 
 - The whole codebase is validated on each run (default). Pass `--setup-validate-all-code-base diff` only if the user explicitly asks to lint updated files only.
-- Add `--release beta` only if the user asks for the beta version.
-- When `.mega-linter.yml` pins `MEGALINTER_VERSION: beta`, invoke the runner as `npx mega-linter-runner@beta` (matching dist-tag); in every other case use plain `npx mega-linter-runner`. This rule applies to all skills.
+- Add `--release beta` only if the user asks for the beta version (the installer then writes `MEGALINTER_VERSION: beta` in `.mega-linter.yml`).
+- **Version rule (all skills)**: runner and Docker image versions always follow `MEGALINTER_VERSION` from `.mega-linter.yml` — invoke `npx mega-linter-runner@beta` when it is `beta`, plain `npx mega-linter-runner` in every other case, and never pass `--release` outside of this install step.
 - `--fix` enables auto-fixes (`APPLY_FIXES: all`); omit it if the user doesn't want automatic formatting.
 - If the user is present and wants to choose interactively, run plain `npx mega-linter-runner --install` instead and let them answer.
 

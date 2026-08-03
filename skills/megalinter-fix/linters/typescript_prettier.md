@@ -5,7 +5,7 @@
 - Descriptor: **TYPESCRIPT** (language)
 - MegaLinter documentation: <https://megalinter.io/beta/descriptors/typescript_prettier/>
 - Official documentation: <https://prettier.io/>
-- Auto-fix support: **yes** — add `TYPESCRIPT_PRETTIER` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter TYPESCRIPT_PRETTIER --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released; use `npx mega-linter-runner@beta` only when `.mega-linter.yml` pins `MEGALINTER_VERSION: beta`)
+- Auto-fix support: **yes** — add `TYPESCRIPT_PRETTIER` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter TYPESCRIPT_PRETTIER --fix` (runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: use `npx mega-linter-runner@beta` only when that property is `beta`)
 - Configuration file: `.prettierrc.json` (custom path can be defined with `TYPESCRIPT_PRETTIER_CONFIG_FILE`)
 - Rules index: <https://prettier.io/docs/en/options.html>
 - Rules configuration: <https://prettier.io/docs/en/configuration.html>

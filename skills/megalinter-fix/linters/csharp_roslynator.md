@@ -5,7 +5,7 @@
 - Descriptor: **CSHARP** (language)
 - MegaLinter documentation: <https://megalinter.io/beta/descriptors/csharp_roslynator/>
 - Official documentation: <https://github.com/dotnet/Roslynator>
-- Auto-fix support: **yes** — add `CSHARP_ROSLYNATOR` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter CSHARP_ROSLYNATOR --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released; use `npx mega-linter-runner@beta` only when `.mega-linter.yml` pins `MEGALINTER_VERSION: beta`)
+- Auto-fix support: **yes** — add `CSHARP_ROSLYNATOR` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter CSHARP_ROSLYNATOR --fix` (runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: use `npx mega-linter-runner@beta` only when that property is `beta`)
 - Rules index: <https://josefpihrt.github.io/docs/roslynator/analyzers>
 - Rules configuration: <https://josefpihrt.github.io/docs/roslynator/configuration>
 - How to disable rules inline: <https://josefpihrt.github.io/docs/roslynator/how-to-suppress-diagnostic>

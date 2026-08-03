@@ -5,7 +5,7 @@
 - Descriptor: **JAVASCRIPT** (language)
 - MegaLinter documentation: <https://megalinter.io/beta/descriptors/javascript_eslint/>
 - Official documentation: <https://eslint.org>
-- Auto-fix support: **yes** — add `JAVASCRIPT_ES` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter JAVASCRIPT_ES --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released; use `npx mega-linter-runner@beta` only when `.mega-linter.yml` pins `MEGALINTER_VERSION: beta`)
+- Auto-fix support: **yes** — add `JAVASCRIPT_ES` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter JAVASCRIPT_ES --fix` (runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: use `npx mega-linter-runner@beta` only when that property is `beta`)
 - Configuration file: `eslint.config.js` (custom path can be defined with `JAVASCRIPT_ES_CONFIG_FILE`)
 - Rules index: <https://eslint.org/docs/latest/rules/>
 - Rules configuration: <https://eslint.org/docs/latest/use/configure>

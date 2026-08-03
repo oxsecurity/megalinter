@@ -5,7 +5,7 @@
 - Descriptor: **XML** (format)
 - MegaLinter documentation: <https://megalinter.io/beta/descriptors/xml_xmllint/>
 - Official documentation: <https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home>
-- Auto-fix support: **yes** — add `XML_XMLLINT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter XML_XMLLINT --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released; use `npx mega-linter-runner@beta` only when `.mega-linter.yml` pins `MEGALINTER_VERSION: beta`)
+- Auto-fix support: **yes** — add `XML_XMLLINT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter XML_XMLLINT --fix` (runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: use `npx mega-linter-runner@beta` only when that property is `beta`)
 - Rules configuration: <https://gnome.pages.gitlab.gnome.org/libxml2/xmllint.html>
 - MegaLinter tuning variables (in `.mega-linter.yml`):
   - `DISABLE_LINTERS`: add `XML_XMLLINT` to fully disable this linter

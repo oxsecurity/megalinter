@@ -5,7 +5,7 @@
 - Descriptor: **VBDOTNET** (language)
 - MegaLinter documentation: <https://megalinter.io/beta/descriptors/vbdotnet_dotnet_format/>
 - Official documentation: <https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format>
-- Auto-fix support: **yes** — add `VBDOTNET_DOTNET_FORMAT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter VBDOTNET_DOTNET_FORMAT --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released; use `npx mega-linter-runner@beta` only when `.mega-linter.yml` pins `MEGALINTER_VERSION: beta`)
+- Auto-fix support: **yes** — add `VBDOTNET_DOTNET_FORMAT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter VBDOTNET_DOTNET_FORMAT --fix` (runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: use `npx mega-linter-runner@beta` only when that property is `beta`)
 - Rules configuration: <https://github.com/dotnet/sdk/tree/main/documentation/format/docs>
 - How to disable rules inline: <https://docs.microsoft.com/en-us/dotnet/fundamentals/code-analysis/suppress-warnings>
 - Error line format (regex): `.vb\([0-9]+,[0-9]+\):\s(?:warning|error)`

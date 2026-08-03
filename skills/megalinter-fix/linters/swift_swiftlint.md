@@ -5,7 +5,7 @@
 - Descriptor: **SWIFT** (language)
 - MegaLinter documentation: <https://megalinter.io/beta/descriptors/swift_swiftlint/>
 - Official documentation: <https://github.com/realm/SwiftLint>
-- Auto-fix support: **yes** — add `SWIFT_SWIFTLINT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter SWIFT_SWIFTLINT --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released; use `npx mega-linter-runner@beta` only when `.mega-linter.yml` pins `MEGALINTER_VERSION: beta`)
+- Auto-fix support: **yes** — add `SWIFT_SWIFTLINT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter SWIFT_SWIFTLINT --fix` (runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: use `npx mega-linter-runner@beta` only when that property is `beta`)
 - Configuration file: `.swiftlint.yml` (custom path can be defined with `SWIFT_SWIFTLINT_CONFIG_FILE`)
 - Rules index: <https://realm.github.io/SwiftLint/rule-directory.html>
 - Rules configuration: <https://github.com/realm/SwiftLint#configuration>

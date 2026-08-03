@@ -5,7 +5,7 @@
 - Descriptor: **MARKDOWN** (format)
 - MegaLinter documentation: <https://megalinter.io/beta/descriptors/markdown_markdown_table_formatter/>
 - Official documentation: <https://www.npmjs.com/package/markdown-table-formatter>
-- Auto-fix support: **yes** — add `MARKDOWN_MARKDOWN_TABLE_FORMATTER` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter MARKDOWN_MARKDOWN_TABLE_FORMATTER --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released; use `npx mega-linter-runner@beta` only when `.mega-linter.yml` pins `MEGALINTER_VERSION: beta`)
+- Auto-fix support: **yes** — add `MARKDOWN_MARKDOWN_TABLE_FORMATTER` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter MARKDOWN_MARKDOWN_TABLE_FORMATTER --fix` (runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: use `npx mega-linter-runner@beta` only when that property is `beta`)
 - Rules configuration: <https://github.com/nvuillam/markdown-table-formatter#options>
 - How to disable rules inline: <https://github.com/nvuillam/markdown-table-formatter#ignoring-code-blocks>
 - MegaLinter tuning variables (in `.mega-linter.yml`):

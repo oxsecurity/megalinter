@@ -5,7 +5,7 @@
 - Descriptor: **TERRAFORM** (tooling_format)
 - MegaLinter documentation: <https://megalinter.io/beta/descriptors/terraform_terragrunt/>
 - Official documentation: <https://docs.terragrunt.com/reference/cli/commands/hcl/fmt/>
-- Auto-fix support: **yes** — add `TERRAFORM_TERRAGRUNT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter TERRAFORM_TERRAGRUNT --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released; use `npx mega-linter-runner@beta` only when `.mega-linter.yml` pins `MEGALINTER_VERSION: beta`)
+- Auto-fix support: **yes** — add `TERRAFORM_TERRAGRUNT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter TERRAFORM_TERRAGRUNT --fix` (runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: use `npx mega-linter-runner@beta` only when that property is `beta`)
 - Configuration file: `terragrunt.hcl` (custom path can be defined with `TERRAFORM_TERRAGRUNT_CONFIG_FILE`)
 - Rules configuration: <https://terragrunt.gruntwork.io/docs/getting-started/quick-start/#add-terragrunthcl-to-your-project>
 - MegaLinter tuning variables (in `.mega-linter.yml`):

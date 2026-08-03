@@ -5,7 +5,7 @@
 - Descriptor: **RUBY** (language)
 - MegaLinter documentation: <https://megalinter.io/beta/descriptors/ruby_rubocop/>
 - Official documentation: <https://rubocop.org/>
-- Auto-fix support: **yes** — add `RUBY_RUBOCOP` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter RUBY_RUBOCOP --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released; use `npx mega-linter-runner@beta` only when `.mega-linter.yml` pins `MEGALINTER_VERSION: beta`)
+- Auto-fix support: **yes** — add `RUBY_RUBOCOP` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter RUBY_RUBOCOP --fix` (runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: use `npx mega-linter-runner@beta` only when that property is `beta`)
 - Configuration file: `.ruby-lint.yml` (custom path can be defined with `RUBY_RUBOCOP_CONFIG_FILE`)
 - Rules index: <https://docs.rubocop.org/rubocop/cops.html>
 - Rules configuration: <https://docs.rubocop.org/rubocop/configuration.html>

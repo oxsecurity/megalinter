@@ -5,7 +5,7 @@
 - Descriptor: **ENV** (format)
 - MegaLinter documentation: <https://megalinter.io/beta/descriptors/env_dotenv_linter/>
 - Official documentation: <https://dotenv-linter.github.io/>
-- Auto-fix support: **yes** — add `ENV_DOTENV_LINTER` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter ENV_DOTENV_LINTER --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released; use `npx mega-linter-runner@beta` only when `.mega-linter.yml` pins `MEGALINTER_VERSION: beta`)
+- Auto-fix support: **yes** — add `ENV_DOTENV_LINTER` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter ENV_DOTENV_LINTER --fix` (runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: use `npx mega-linter-runner@beta` only when that property is `beta`)
 - Rules index: <https://dotenv-linter.github.io/#/?id=dotenv-linter>
 - Rules configuration: <https://dotenv-linter.github.io/#/usage/check>
 - How to disable rules inline: <https://dotenv-linter.github.io/#/usage/check?id=skip-checks>

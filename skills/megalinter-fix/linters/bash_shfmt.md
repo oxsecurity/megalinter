@@ -5,7 +5,7 @@
 - Descriptor: **BASH** (language)
 - MegaLinter documentation: <https://megalinter.io/beta/descriptors/bash_shfmt/>
 - Official documentation: <https://github.com/mvdan/sh>
-- Auto-fix support: **yes** — add `BASH_SHFMT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter BASH_SHFMT --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released; use `npx mega-linter-runner@beta` only when `.mega-linter.yml` pins `MEGALINTER_VERSION: beta`)
+- Auto-fix support: **yes** — add `BASH_SHFMT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter BASH_SHFMT --fix` (runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: use `npx mega-linter-runner@beta` only when that property is `beta`)
 - Rules configuration: <https://github.com/mvdan/sh/blob/master/cmd/shfmt/shfmt.1.scd>
 - How to disable rules inline: <https://github.com/mvdan/sh/blob/master/cmd/shfmt/shfmt.1.scd>
 - Error line format (regex): `---.*\n.*\+\+\+.*`

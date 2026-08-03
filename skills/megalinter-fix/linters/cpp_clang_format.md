@@ -5,7 +5,7 @@
 - Descriptor: **CPP** (language)
 - MegaLinter documentation: <https://megalinter.io/beta/descriptors/cpp_clang_format/>
 - Official documentation: <https://releases.llvm.org/21.1.0/tools/clang/docs/ClangFormat.html>
-- Auto-fix support: **yes** — add `CPP_CLANG_FORMAT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter CPP_CLANG_FORMAT --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released; use `npx mega-linter-runner@beta` only when `.mega-linter.yml` pins `MEGALINTER_VERSION: beta`)
+- Auto-fix support: **yes** — add `CPP_CLANG_FORMAT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter CPP_CLANG_FORMAT --fix` (runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: use `npx mega-linter-runner@beta` only when that property is `beta`)
 - Configuration file: `.clang-format` (custom path can be defined with `CPP_CLANG_FORMAT_CONFIG_FILE`)
 - Rules index: <https://releases.llvm.org/21.1.0/tools/clang/docs/ClangFormat.html>
 - Rules configuration: <https://releases.llvm.org/21.1.0/tools/clang/docs/ClangFormatStyleOptions.html>

@@ -2173,9 +2173,9 @@ def build_agent_skills_descriptor_info_md(linter):
     ):
         md += [
             f"- Auto-fix support: **yes** — add `{key}` (or `all`) to the `APPLY_FIXES` variable, "
-            f"or run locally `npx mega-linter-runner --linter {key} --fix --release beta` "
-            "(standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released; "
-            "use `npx mega-linter-runner@beta` only when `.mega-linter.yml` pins `MEGALINTER_VERSION: beta`)"
+            f"or run locally `npx mega-linter-runner --linter {key} --fix` "
+            "(runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: "
+            "use `npx mega-linter-runner@beta` only when that property is `beta`)"
         ]
     else:
         md += ["- Auto-fix support: no (errors must be fixed manually)"]

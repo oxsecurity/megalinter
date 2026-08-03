@@ -5,7 +5,7 @@
 - Descriptor: **CSS** (format)
 - MegaLinter documentation: <https://megalinter.io/beta/descriptors/css_stylelint/>
 - Official documentation: <https://stylelint.io>
-- Auto-fix support: **yes** — add `CSS_STYLELINT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter CSS_STYLELINT --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released; use `npx mega-linter-runner@beta` only when `.mega-linter.yml` pins `MEGALINTER_VERSION: beta`)
+- Auto-fix support: **yes** — add `CSS_STYLELINT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter CSS_STYLELINT --fix` (runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: use `npx mega-linter-runner@beta` only when that property is `beta`)
 - Configuration file: `.stylelintrc.json` (custom path can be defined with `CSS_STYLELINT_CONFIG_FILE`)
 - Rules index: <https://stylelint.io/user-guide/rules/list>
 - Rules configuration: <https://stylelint.io/user-guide/configure>
