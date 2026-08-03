@@ -27,6 +27,8 @@ npx mega-linter-runner --install --no-prompt \
   --fix
 ```
 
+If the runner rejects one of the options above ("Invalid option" error), the resolved mega-linter-runner version is outdated: re-run with `npx mega-linter-runner@latest` (the `--setup-*` and `--linter` options need a recent version).
+
 Notes:
 
 - The whole codebase is validated on each run (default). Pass `--setup-validate-all-code-base diff` only if the user explicitly asks to lint updated files only.
@@ -45,6 +47,8 @@ Notes:
 ```bash
 npx mega-linter-runner --upgrade --no-prompt
 ```
+
+`--upgrade` migrates every MegaLinter reference of the repository to the current major version: image tags and action versions in the CI workflow files, deprecated variable names, and the `MEGALINTER_VERSION` property of `.mega-linter.yml`. Run it whenever the repository references an older MegaLinter major version (e.g. `v8` image tags), even if the user only asked for a "check".
 
 After upgrading, check the CI files for Docker image references still pointing to Docker Hub (`docker.io/oxsecurity/megalinter*` or bare `oxsecurity/megalinter:*` image references): since MegaLinter v9.5.0, images are **only published to GitHub Container Registry** — rewrite them to `ghcr.io/oxsecurity/megalinter...` (Docker Hub is frozen at v9.4.0). GitHub Action references (`uses: oxsecurity/megalinter@...`) are not affected.
 
