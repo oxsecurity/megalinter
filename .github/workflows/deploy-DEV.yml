@@ -224,16 +224,21 @@ jobs:
           sudo rm -rf /opt/hostedtoolcache/CodeQL
           sudo rm -rf /opt/hostedtoolcache/go
 
+      - name: Login to GitHub Container Registry
+        if: github.event_name == 'push'
+        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Pull Docker image from ghcr.io
         if: github.event_name == 'push'
         shell: bash
         env:
           DOCKER_IMAGE: ${{ needs.build.outputs.image-tag }}
-          GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_ACTOR: ${{ github.actor }}
         run: |
           set -euo pipefail
-          echo "${GHCR_TOKEN}" | docker login ghcr.io -u "${GH_ACTOR}" --password-stdin
           docker pull "${DOCKER_IMAGE}"
           docker image ls
 
@@ -325,16 +330,21 @@ jobs:
           sudo rm -rf /opt/hostedtoolcache/CodeQL
           sudo rm -rf /opt/hostedtoolcache/go
 
+      - name: Login to GitHub Container Registry
+        if: github.event_name == 'push'
+        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Pull Docker image from ghcr.io
         if: github.event_name == 'push'
         shell: bash
         env:
           DOCKER_IMAGE: ${{ needs.build.outputs.image-tag }}
-          GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_ACTOR: ${{ github.actor }}
         run: |
           set -euo pipefail
-          echo "${GHCR_TOKEN}" | docker login ghcr.io -u "${GH_ACTOR}" --password-stdin
           docker pull "${DOCKER_IMAGE}"
           docker image ls
 
@@ -406,16 +416,21 @@ jobs:
           sudo rm -rf /opt/hostedtoolcache/CodeQL
           sudo rm -rf /opt/hostedtoolcache/go
 
+      - name: Login to GitHub Container Registry
+        if: github.event_name == 'push'
+        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Pull Docker image from ghcr.io
         if: github.event_name == 'push'
         shell: bash
         env:
           DOCKER_IMAGE: ${{ needs.build.outputs.image-tag }}
-          GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_ACTOR: ${{ github.actor }}
         run: |
           set -euo pipefail
-          echo "${GHCR_TOKEN}" | docker login ghcr.io -u "${GH_ACTOR}" --password-stdin
           docker pull "${DOCKER_IMAGE}"
           docker image ls
 
@@ -477,16 +492,21 @@ jobs:
           sudo rm -rf /opt/hostedtoolcache/CodeQL
           sudo rm -rf /opt/hostedtoolcache/go
 
+      - name: Login to GitHub Container Registry
+        if: github.event_name == 'push'
+        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Pull Docker image from ghcr.io
         if: github.event_name == 'push'
         shell: bash
         env:
           DOCKER_IMAGE: ${{ needs.build.outputs.image-tag }}
-          GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_ACTOR: ${{ github.actor }}
         run: |
           set -euo pipefail
-          echo "${GHCR_TOKEN}" | docker login ghcr.io -u "${GH_ACTOR}" --password-stdin
           docker pull "${DOCKER_IMAGE}"
           docker image ls
 
