@@ -25,11 +25,11 @@ chktex finds typographic errors in LaTeX sources: spacing, dashes, quotes, math-
 punctuation, and use of TeX primitives where LaTeX equivalents exist. There is no
 auto-fix; edit the source manually. Each warning has a number — fix the most common ones as follows:
 
-- Warning 1 (command terminated with space): end the command with `{}` or `\ ` (e.g. `\LaTeX{} is` instead of `\LaTeX is`)
+- Warning 1 (command terminated with space): end the command with `{}` or `\` (e.g. `\LaTeX{} is` instead of `\LaTeX is`)
 - Warning 3 (enclose previous parenthesis with `{}`): wrap the construct in braces
 - Warning 8 (wrong length of dash): use `-` for hyphenation, `--` for ranges, `---` for punctuation dashes
 - Warnings 9/17 (mismatched `]`/`)` counts): balance delimiters, or suppress inline when intentional (e.g. half-open intervals like `$[0,\infty)$`)
-- Warning 12 (interword spacing): write `\ ` after abbreviations (e.g. `e.g.\ like`)
+- Warning 12 (interword spacing): write `\` after abbreviations (e.g. `e.g.\ like`)
 - Warning 13 (intersentence spacing): write `\@` before a period ending a sentence after an uppercase letter; the warning is suppressed if `\frenchspacing` is used
 - Warning 18 (double quotes): use `` `` `` and `''` instead of `"`
 - Warning 24 (space before page-reference punctuation): delete the space, use `~\ref{...}`

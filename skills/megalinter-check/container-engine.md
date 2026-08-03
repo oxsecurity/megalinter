@@ -15,31 +15,31 @@ docker info --format '{{.ServerVersion}}'     # docker installed AND running?
 
 ## Start an already-installed engine
 
-| OS | podman | docker |
-| :- | :----- | :----- |
+| OS      | podman                                                             | docker                                                                                                                               |
+|:--------|:-------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------|
 | Windows | `podman machine start` (create it once with `podman machine init`) | Start Docker Desktop: `Start-Process 'C:\Program Files\Docker\Docker\Docker Desktop.exe'`, then poll `docker info` until it responds |
-| macOS | `podman machine start` (create it once with `podman machine init`) | `open -a Docker`, then poll `docker info` until it responds |
-| Linux | Nothing to start (daemonless) — rootless works out of the box | `sudo systemctl start docker` (enable at boot: `sudo systemctl enable docker`) |
+| macOS   | `podman machine start` (create it once with `podman machine init`) | `open -a Docker`, then poll `docker info` until it responds                                                                          |
+| Linux   | Nothing to start (daemonless) — rootless works out of the box      | `sudo systemctl start docker` (enable at boot: `sudo systemctl enable docker`)                                                       |
 
 ## Install an engine (ask the user first, prefer podman)
 
 ### podman
 
-| OS | Install |
-| :- | :------ |
-| Windows | `winget install RedHat.Podman` then `podman machine init && podman machine start` |
-| macOS | `brew install podman` then `podman machine init && podman machine start` |
-| Debian/Ubuntu | `sudo apt-get install -y podman` |
-| Fedora/RHEL | `sudo dnf install -y podman` |
-| Other | See <https://podman.io/docs/installation> |
+| OS            | Install                                                                           |
+|:--------------|:----------------------------------------------------------------------------------|
+| Windows       | `winget install RedHat.Podman` then `podman machine init && podman machine start` |
+| macOS         | `brew install podman` then `podman machine init && podman machine start`          |
+| Debian/Ubuntu | `sudo apt-get install -y podman`                                                  |
+| Fedora/RHEL   | `sudo dnf install -y podman`                                                      |
+| Other         | See <https://podman.io/docs/installation>                                         |
 
 ### docker (if the user prefers it)
 
-| OS | Install |
-| :- | :------ |
-| Windows | `winget install Docker.DockerDesktop`, start Docker Desktop, accept its terms |
-| macOS | `brew install --cask docker`, then `open -a Docker` |
-| Linux | `curl -fsSL https://get.docker.com \| sudo sh`, then `sudo systemctl start docker` (add the user to the `docker` group to avoid sudo) |
+| OS      | Install                                                                                                                               |
+|:--------|:--------------------------------------------------------------------------------------------------------------------------------------|
+| Windows | `winget install Docker.DockerDesktop`, start Docker Desktop, accept its terms                                                         |
+| macOS   | `brew install --cask docker`, then `open -a Docker`                                                                                   |
+| Linux   | `curl -fsSL https://get.docker.com \| sudo sh`, then `sudo systemctl start docker` (add the user to the `docker` group to avoid sudo) |
 
 ## After setup
 
