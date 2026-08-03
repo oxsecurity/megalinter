@@ -80,7 +80,7 @@ jobs:
       # what makes REPOSITORY_GRYPE take ~2 minutes on a cold run. grype still
       # refreshes the DB itself when the cached copy is older than its max age.
       - name: Cache grype vulnerability DB
-        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        uses: actions/cache@caa296126883cff596d87d8935842f9db880ef25 # v5
         with:
           path: .megalinter-cache/grype
           key: grype-db-${{ github.run_id }}
