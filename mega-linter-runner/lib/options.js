@@ -38,6 +38,17 @@ export const KNOWN_FLAVORS = [
 
 export const KNOWN_CONTAINER_ENGINES = ["docker", "podman"];
 
+export const KNOWN_SETUP_CI_SYSTEMS = [
+  "gitHubActions",
+  "gitLabCI",
+  "azure",
+  "bitbucket",
+  "jenkins",
+  "droneCI",
+  "concourse",
+  "other",
+];
+
 export const KNOWN_PLATFORMS = ["linux/amd64", "linux/arm64"];
 
 // exports "parse(args)", "generateHelp()", and "generateHelpForOption(optionName)"
@@ -57,20 +68,31 @@ export const optionsDefinition = optionator.default({
       option: "release",
       alias: "r",
       type: "String",
-      default: DEFAULT_RELEASE,
       description:
-        "MegaLinter version tag pulled from ghcr.io/oxsecurity/megalinter. Accepts a release tag (`v9.1.2`), a moving tag (`stable`, `latest`, `beta`, `alpha`), or a major-version tag (`v9`).",
+        "MegaLinter version tag pulled from ghcr.io/oxsecurity/megalinter. Accepts a release tag (`v9.1.2`), a moving tag (`stable`, `latest`, `beta`, `alpha`), or a major-version tag (`v9`).\n" +
+        "Default: MEGALINTER_VERSION property of .mega-linter.yml if defined, else `latest`.",
       example: ["stable", "latest", "beta", `${DEFAULT_RELEASE}.1.2`],
     },
     {
       option: "flavor",
       alias: "f",
       type: "String",
-      default: "all",
       description:
         "Specialized MegaLinter image to pull. Smaller flavors start faster and avoid pulling tools you do not need.\n" +
+        "Default: MEGALINTER_FLAVOR property of .mega-linter.yml if defined, else `all`.\n" +
         `Allowed values: ${KNOWN_FLAVORS.join(", ")}.`,
       example: KNOWN_FLAVORS,
+    },
+    {
+      option: "linter",
+      alias: "l",
+      type: "String",
+      description:
+        "Run a single linter using its standalone MegaLinter image (ghcr.io/oxsecurity/megalinter-only-<linter_key>). " +
+        "Pass files to lint as positional arguments to restrict the analysis. " +
+        "Reports are written to megalinter-reports/<linter_key> so several standalone runs can be launched in parallel. " +
+        "Mutually exclusive with --flavor and --image.",
+      example: ["PYTHON_RUFF", "MARKDOWN_MARKDOWNLINT src/README.md docs/index.md"],
     },
     {
       option: "image",
@@ -166,7 +188,47 @@ export const optionsDefinition = optionator.default({
       alias: "i",
       type: "Boolean",
       description:
-        "Interactive generator that scaffolds .mega-linter.yml and CI workflow files in the current project.",
+        "Generator that scaffolds .mega-linter.yml and CI workflow files in the current project. " +
+        "Interactive by default: use --no-prompt and the --setup-* options (plus --flavor, --release and --fix) to run it non-interactively (e.g. from a coding agent or a CI job).",
+    },
+    {
+      option: "setup-ci",
+      type: "String",
+      description:
+        "[--install] CI/CD system to generate a workflow file for.\n" +
+        `Allowed values: ${KNOWN_SETUP_CI_SYSTEMS.join(", ")}.`,
+      example: ["gitHubActions", "gitLabCI"],
+    },
+    {
+      option: "setup-copy-paste",
+      type: "Boolean",
+      description:
+        "[--install] Enable detection of excessive copy-pastes (jscpd). Use --no-setup-copy-paste to disable it. Default: true.",
+    },
+    {
+      option: "setup-spelling-mistakes",
+      type: "Boolean",
+      description:
+        "[--install] Enable detection of spelling mistakes (cspell). Use --no-setup-spelling-mistakes to disable it. Default: true.",
+    },
+    {
+      option: "setup-default-branch",
+      type: "String",
+      description: "[--install] Default branch of the repository. Default: main.",
+      example: ["main", "master"],
+    },
+    {
+      option: "setup-validate-all-code-base",
+      type: "String",
+      description:
+        "[--install] `all` to lint all sources on each run, `diff` to lint only files updated compared to the default branch.",
+      example: ["all", "diff"],
+    },
+    {
+      option: "setup-ox",
+      type: "Boolean",
+      description:
+        "[--install] Visit OX Security to secure your software supply chain. Use --no-setup-ox to skip it. Default: true in interactive mode, false with --no-prompt.",
     },
     {
       option: "custom-flavor-setup",
@@ -259,6 +321,6 @@ export const optionsDefinition = optionator.default({
   ],
   mutuallyExclusive: [
     ["help", "version", "install", "list-vars"],
-    ["image", "flavor"],
+    ["image", "flavor", "linter"],
   ],
 });

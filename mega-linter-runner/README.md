@@ -97,11 +97,12 @@ The options are only related to mega-linter-runner. For MegaLinter options, plea
 | Option                    | Description                                                                                                                                                                                     | Default           |
 |---------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------|
 | `-p` <br/> `--path`       | Directory containing the files to lint                                                                                                                                                          | current directory |
-| `-f` <br/> `--flavor`     | Set this parameter to use a [MegaLinter flavor](https://megalinter.io/flavors/)                                                                                                                 | `all`             |
+| `-f` <br/> `--flavor`     | Set this parameter to use a [MegaLinter flavor](https://megalinter.io/flavors/). If not set, the `MEGALINTER_FLAVOR` property of `.mega-linter.yml` is used when defined                        | `all`             |
+| `-l` <br/> `--linter`     | Run a single linter using its standalone MegaLinter image (e.g. `--linter PYTHON_RUFF`). Reports are isolated in `megalinter-reports/<linter_key>`, so several standalone runs can be launched in parallel. Mutually exclusive with `--flavor` and `--image` | <!-- -->          |
 | `-d` <br/> `--image`      | You can override the used docker image, including if it's on another docker registry                                                                                                            | <!-- -->          |
 | `-e` <br/> `--env`        | Environment variables for MegaLinter, following format **'ENV_VAR_NAME=VALUE'** for a single value or **"'ENV_VAR_NAME=VALUE1,VALUE2'"** for a list of values<br/>Warning: Quotes are mandatory | <!-- -->          |
-| `--fix`                   | Automatically apply formatting and fixes in your files                                                                                                                                          | <!-- -->          |
-| `-r` <br/> `--release`    | Allows to override MegaLinter version used                                                                                                                                                      | `v5`              |
+| `--fix`                   | Automatically apply formatting and fixes in your files. If `.mega-linter.yml` defines an `APPLY_FIXES` value other than `none`, that value is used instead of `all`                             | <!-- -->          |
+| `-r` <br/> `--release`    | Allows to override MegaLinter version used. If not set, the `MEGALINTER_VERSION` property of `.mega-linter.yml` is used when defined                                                            | `latest`          |
 | `-h` <br/> `--help`       | Show mega-linter-runner help                                                                                                                                                                    | <!-- -->          |
 | `-v` <br/> `--version`    | Show mega-linter-runner version                                                                                                                                                                 | <!-- -->          |
 | `--container-engine`      | Allows to specify a docker engine (`docker` or `podman`)                                                                                                                                        | `docker`          |
@@ -109,7 +110,13 @@ The options are only related to mega-linter-runner. For MegaLinter options, plea
 | `--remove-container`      | Remove MegaLinter Docker container when done                                                                                                                                                    | <!-- -->          |
 | `--user-map`              | Run the container as a non-root user. On POSIX systems this uses your user. On other hosts it uses `1000:1000`. This helps avoid root-owned generated files on the host.                        | <!-- -->          |
 | `--no-user-map`           | Run the container as root                                                                                                                                                                       | <!-- -->          |
-| `-i` <br/> `--install`    | Generate [MegaLinter local configuration](https://megalinter.io/beta/install-assisted/) files and CI/CD workflows                                                                               | <!-- -->          |
+| `-i` <br/> `--install`    | Generate [MegaLinter local configuration](https://megalinter.io/beta/install-assisted/) files and CI/CD workflows. Combine with `--no-prompt` and `--setup-*` options to run non-interactively | <!-- -->          |
+| `--setup-ci`              | With `--install`: CI/CD system to generate a workflow file for (`gitHubActions`, `gitLabCI`, `azure`, `bitbucket`, `jenkins`, `droneCI`, `concourse`, `other`)                                  | `gitHubActions`   |
+| `--setup-copy-paste`      | With `--install`: enable detection of excessive copy-pastes (jscpd). Use `--no-setup-copy-paste` to disable                                                                                     | `true`            |
+| `--setup-spelling-mistakes` | With `--install`: enable detection of spelling mistakes (cspell). Use `--no-setup-spelling-mistakes` to disable                                                                               | `true`            |
+| `--setup-default-branch`  | With `--install`: default branch of the repository                                                                                                                                              | `main`            |
+| `--setup-validate-all-code-base` | With `--install`: `all` to lint all sources on each run, `diff` to lint only updated files                                                                                               | `all`             |
+| `--setup-ox`              | With `--install`: visit OX Security to secure your software supply chain. Use `--no-setup-ox` to skip                                                                                           | <!-- -->          |
 | `-u` <br/> `--upgrade`    | Upgrade your MegaLinter configuration files to use the latest version. Use `--no-prompt` to run non-interactively and skip upgrade confirmation prompts.                                        | <!-- -->          |
 | `--no-prompt`             | Disable interactive prompts. With `--upgrade`, automatically proceed with the upgrade and skip optional follow-up prompts.                                                                      | <!-- -->          |
 | `--custom-flavor-setup`   | Initialize a new repository to generate a [custom flavor](https://megalinter.io/beta/custom-flavors/)                                                                                           | <!-- -->          |
@@ -154,6 +161,16 @@ mega-linter-runner --flavor python --release beta --filesonly path/to/my/file1.p
 ```shell
 # Upgrade configuration files non-interactively
 mega-linter-runner --upgrade --no-prompt
+```
+
+```shell
+# Install MegaLinter configuration non-interactively (e.g. from a coding agent or a script)
+mega-linter-runner --install --no-prompt --flavor python --setup-ci gitHubActions --setup-validate-all-code-base diff --fix
+```
+
+```shell
+# Run a single linter with its standalone image, on selected files only
+mega-linter-runner --linter PYTHON_RUFF src/module_a.py src/module_b.py
 ```
 
 ```shell

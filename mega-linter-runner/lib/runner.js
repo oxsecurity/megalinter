@@ -1,4 +1,8 @@
-import { optionsDefinition, KNOWN_CONTAINER_ENGINES } from "./options.js";
+import {
+  optionsDefinition,
+  KNOWN_CONTAINER_ENGINES,
+  KNOWN_SETUP_CI_SYSTEMS,
+} from "./options.js";
 import { expandEnvEntries } from "./env-parser.js";
 import { listVars } from "./list-vars.js";
 import { spawnSync } from "child_process";
@@ -14,6 +18,7 @@ import { CodeTotalRunner } from "./codetotal.js";
 import { DEFAULT_RELEASE } from "./config.js";
 import { createEnv } from "yeoman-environment";
 import { default as FindPackageJson } from "find-package-json";
+import { load as yamlLoad } from "js-yaml";
 
 function isSElinuxOn() {
   return ["Enforcing", "Permissive", "enforcing", "permissive"].includes(process.env.SELINUX_MODE);
@@ -66,7 +71,12 @@ export class MegaLinterRunner {
         path.join(__dirname, "..", "generators", "mega-linter")
       );
       console.log("Yeoman generator used: " + generatorPath);
-      env.run(generatorPath);
+      env.run(generatorPath, {
+        promptAnswers: this.buildSetupAnswers(options),
+        noPrompt: options.prompt === false,
+        // Also skip yeoman's interactive overwrite-conflict prompts in no-prompt mode
+        force: options.prompt === false,
+      });
       return { status: 0 };
     }
 
@@ -112,26 +122,13 @@ export class MegaLinterRunner {
         `Invalid container engine: ${this.containerEngine}. Supported engines are ${KNOWN_CONTAINER_ENGINES.join(", ")}.`,
       );
     }
-    const release = options.release in ["stable"] ? DEFAULT_RELEASE : options.release;
-    const dockerImageName =
-      // v4 retrocompatibility >>
-      (options.flavor === "all" || options.flavor == null) && this.isv4(release)
-        ? "nvuillam/mega-linter"
-        : options.flavor !== "all" && this.isv4(release)
-          ? `nvuillam/mega-linter-${options.flavor}`
-          : // << v4 retrocompatibility
-          // v5 retrocompatibility >>
-          (options.flavor === "all" || options.flavor == null) &&
-            this.isv5(release)
-            ? "megalinter/megalinter"
-            : options.flavor !== "all" && this.isv5(release)
-              ? `megalinter/megalinter-${options.flavor}`
-              : // << v5 retrocompatibility
-              options.flavor === "all" || options.flavor == null
-                ? "ghcr.io/oxsecurity/megalinter"
-                : `ghcr.io/oxsecurity/megalinter-${options.flavor}`;
+    // Flavor & version resolution: CLI args > .mega-linter.yml (MEGALINTER_FLAVOR / MEGALINTER_VERSION) > defaults
+    const localConfig = this.readLocalConfig(path.resolve(options.path || "."));
+    const { dockerImage, release } = this.resolveDockerImage(
+      options,
+      localConfig
+    );
     this.checkPreviousVersion(release);
-    const dockerImage = options.image || `${dockerImageName}:${release}`; // Docker image can be directly sent in options
 
     // Check for docker installation
     const whichPromise = which(this.containerEngine);
@@ -153,8 +150,32 @@ export class MegaLinterRunner {
     // Get platform to use with docker pull & run
     const imagePlatform = options.platform || "linux/amd64";
 
-    // Pull docker image
-    if (options.nodockerpull !== true) {
+    // Pull docker image. Pinned version tags (vX.Y.Z) are immutable: skip the pull
+    // (and its registry round-trip) when the image is already available locally
+    // for the requested platform
+    const pinnedInspect =
+      !options.image && /^v\d+\.\d+\.\d+$/.test(release)
+        ? spawnSync(
+            this.containerEngine,
+            [
+              "image",
+              "inspect",
+              "--format",
+              "{{.Os}}/{{.Architecture}}",
+              dockerImage,
+            ],
+            { encoding: "utf8", windowsHide: true }
+          )
+        : null;
+    const pinnedVersionLocallyAvailable =
+      pinnedInspect !== null &&
+      pinnedInspect.status === 0 &&
+      (pinnedInspect.stdout || "").trim() === imagePlatform;
+    if (pinnedVersionLocallyAvailable) {
+      console.log(
+        `Skipped pull of ${dockerImage} (pinned version already available locally)`
+      );
+    } else if (options.nodockerpull !== true) {
       console.info(`Pulling docker image ${dockerImage} ... `);
       console.info(
         "INFO: this operation can be long during the first use of mega-linter-runner"
@@ -246,9 +267,7 @@ export class MegaLinterRunner {
       }
     }
 
-    if (options.fix === true) {
-      commandArgs.push(...["-e", "APPLY_FIXES=all"]);
-    }
+    commandArgs.push(...this.applyFixesEnvArgs(options, localConfig));
     if (options.debug === true) {
       commandArgs.push(...["-e", "LOG_LEVEL=DEBUG"]);
     }
@@ -265,6 +284,9 @@ export class MegaLinterRunner {
         commandArgs.push(...["-e", envVarEqualsValue]);
       }
     }
+    commandArgs.push(
+      ...this.standaloneLinterEnvArgs(options, envVarsFromDotenv)
+    );
     // Files only
     if (options.filesonly === true) {
       commandArgs.push(...["-e", "SKIP_CLI_LINT_MODES=project"]);
@@ -278,8 +300,16 @@ export class MegaLinterRunner {
     }
     commandArgs.push(dockerImage);
 
-    // Call docker run
-    console.log(`Command: ${this.containerEngine} ${commandArgs.join(" ")}`);
+    // Call docker run (mask secret-looking env values in the displayed command)
+    const maskedArgs = commandArgs.map((arg, i) =>
+      commandArgs[i - 1] === "-e"
+        ? arg.replace(
+            /^([^=]*(?:KEY|TOKEN|SECRET|PASSWORD|CREDENTIAL|_PAT\b|AUTH)[^=]*)=.+$/i,
+            "$1=***"
+          )
+        : arg
+    );
+    console.log(`Command: ${this.containerEngine} ${maskedArgs.join(" ")}`);
     const spawnOptions = {
       env: Object.assign({}, process.env),
       stdio: "inherit",
@@ -288,9 +318,12 @@ export class MegaLinterRunner {
     const spawnRes = spawnSync(this.containerEngine, commandArgs, spawnOptions);
     // Output json if requested
     if (options.json === true) {
+      const reportSubFolder = options.linter
+        ? path.join("megalinter-reports", options.linter.toLowerCase())
+        : process.env.REPORT_OUTPUT_FOLDER || "report";
       const jsonOutputFile = path.join(
         lintPath,
-        process.env.REPORT_OUTPUT_FOLDER || "report",
+        reportSubFolder,
         "mega-linter-report.json"
       );
       if (fs.existsSync(jsonOutputFile)) {
@@ -299,6 +332,131 @@ export class MegaLinterRunner {
       }
     }
     return spawnRes;
+  }
+
+  resolveDockerImage(options, localConfig) {
+    const flavor = options.flavor || localConfig.MEGALINTER_FLAVOR || "all";
+    const releaseValue =
+      options.release || localConfig.MEGALINTER_VERSION || "latest";
+    const release = releaseValue === "stable" ? DEFAULT_RELEASE : releaseValue;
+    const dockerImageName = options.linter
+      ? `ghcr.io/oxsecurity/megalinter-only-${options.linter.toLowerCase()}`
+      : // v4 retrocompatibility >>
+      flavor === "all" && this.isv4(release)
+        ? "nvuillam/mega-linter"
+        : flavor !== "all" && this.isv4(release)
+          ? `nvuillam/mega-linter-${flavor}`
+          : // << v4 retrocompatibility
+          // v5 retrocompatibility >>
+          flavor === "all" && this.isv5(release)
+            ? "megalinter/megalinter"
+            : flavor !== "all" && this.isv5(release)
+              ? `megalinter/megalinter-${flavor}`
+              : // << v5 retrocompatibility
+              flavor === "all"
+                ? "ghcr.io/oxsecurity/megalinter"
+                : `ghcr.io/oxsecurity/megalinter-${flavor}`;
+    return {
+      dockerImage: options.image || `${dockerImageName}:${release}`,
+      release,
+      flavor,
+    };
+  }
+
+  // A non-"none" APPLY_FIXES defined in .mega-linter.yml takes precedence over the
+  // --fix generic "all" value; --fix still forces "all" when config says "none"
+  applyFixesEnvArgs(options, localConfig) {
+    const applyFixesConfig = localConfig.APPLY_FIXES
+      ? Array.isArray(localConfig.APPLY_FIXES)
+        ? localConfig.APPLY_FIXES.join(",")
+        : String(localConfig.APPLY_FIXES)
+      : null;
+    if (applyFixesConfig && applyFixesConfig !== "none") {
+      console.info(
+        `Fixes will be applied (APPLY_FIXES=${applyFixesConfig} from .mega-linter.yml)`
+      );
+      return [];
+    }
+    if (options.fix === true) {
+      return ["-e", "APPLY_FIXES=all"];
+    }
+    return [];
+  }
+
+  // Standalone linter image: activate only this linter and isolate its reports
+  // so several standalone runs can execute in parallel on the same repository
+  standaloneLinterEnvArgs(options, dotenvVars = []) {
+    if (!options.linter) {
+      return [];
+    }
+    const linterKey = options.linter.toUpperCase();
+    const envArgs = ["-e", `ENABLE_LINTERS=${linterKey}`];
+    const userEnvVars = expandEnvEntries(options.env || []).concat(dotenvVars);
+    if (!userEnvVars.some((e) => e.startsWith("REPORT_OUTPUT_FOLDER="))) {
+      envArgs.push(
+        "-e",
+        `REPORT_OUTPUT_FOLDER=/tmp/lint/megalinter-reports/${linterKey.toLowerCase()}`
+      );
+    }
+    return envArgs;
+  }
+
+  readLocalConfig(lintPath) {
+    const configFilePath = path.join(lintPath, ".mega-linter.yml");
+    if (!fs.existsSync(configFilePath)) {
+      return {};
+    }
+    try {
+      return yamlLoad(fs.readFileSync(configFilePath, "utf8")) || {};
+    } catch (e) {
+      console.warn(
+        c.yellow(
+          `[WARNING] Unable to parse ${configFilePath}: ${e.message}. Ignoring it.`
+        )
+      );
+      return {};
+    }
+  }
+
+  buildSetupAnswers(options) {
+    if (options.setupCi && !KNOWN_SETUP_CI_SYSTEMS.includes(options.setupCi)) {
+      throw new Error(
+        `Invalid --setup-ci value: ${options.setupCi}. ` +
+          `Allowed values: ${KNOWN_SETUP_CI_SYSTEMS.join(", ")}`
+      );
+    }
+    if (
+      options.setupValidateAllCodeBase &&
+      !["all", "diff"].includes(options.setupValidateAllCodeBase)
+    ) {
+      throw new Error(
+        `Invalid --setup-validate-all-code-base value: ${options.setupValidateAllCodeBase}. Allowed values: all, diff`
+      );
+    }
+    if (options.release && !["beta", DEFAULT_RELEASE].includes(options.release)) {
+      console.info(
+        `--install only generates configuration for ${DEFAULT_RELEASE} or beta: using ${DEFAULT_RELEASE} instead of ${options.release}`
+      );
+    }
+    const answers = {
+      flavor: options.flavor,
+      ci: options.setupCi,
+      copyPaste: options.setupCopyPaste,
+      spellingMistakes: options.setupSpellingMistakes,
+      version: options.release
+        ? options.release === "beta"
+          ? "beta"
+          : DEFAULT_RELEASE
+        : undefined,
+      defaultBranch: options.setupDefaultBranch,
+      validateAllCodeBase: options.setupValidateAllCodeBase,
+      applyFixes: options.fix === true ? true : undefined,
+      ox: options.setupOx,
+    };
+    Object.keys(answers).forEach(
+      (key) => answers[key] === undefined && delete answers[key]
+    );
+    return answers;
   }
 
   isv4(release) {

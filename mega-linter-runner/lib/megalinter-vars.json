@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "variable_count": 2465,
+    "variable_count": 2467,
     "categories": {
       "ACTION": 4,
       "ACTION_ACTIONLINT": 16,
@@ -54,7 +54,7 @@
       "ENV": 4,
       "ENV_DOTENV_LINTER": 13,
       "FILEIO_REPORTER": 2,
-      "GENERAL": 52,
+      "GENERAL": 54,
       "GHERKIN": 4,
       "GHERKIN_GHERKIN_LINT": 15,
       "GITHUB_COMMENT_REPORTER": 5,
@@ -15685,6 +15685,31 @@
       "default": "megalinter-summary.log",
       "category": "MARKDOWN",
       "section": "GENERAL"
+    },
+    "MEGALINTER_FLAVOR": {
+      "name": "MEGALINTER_FLAVOR",
+      "type": "string",
+      "title": "MegaLinter flavor",
+      "description": "MegaLinter flavor (specialized Docker image variant) to use to lint this repository. Used by mega-linter-runner and coding agents to select the Docker image. Examples: all, python, javascript, security, or a custom flavor name.",
+      "default": "all",
+      "examples": [
+        "all",
+        "python",
+        "javascript",
+        "security"
+      ]
+    },
+    "MEGALINTER_VERSION": {
+      "name": "MEGALINTER_VERSION",
+      "type": "string",
+      "title": "MegaLinter version",
+      "description": "MegaLinter version tag to use (e.g. latest, beta, v9, v9.1.2). Used by mega-linter-runner and coding agents to select the Docker image version.",
+      "default": "latest",
+      "examples": [
+        "latest",
+        "beta",
+        "v9"
+      ]
     },
     "MULTI_STATUS": {
       "name": "MULTI_STATUS",
