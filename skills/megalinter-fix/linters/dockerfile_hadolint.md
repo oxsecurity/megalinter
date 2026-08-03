@@ -39,7 +39,7 @@ Put a comment on the line directly above the instruction; it applies only to tha
 
 ```dockerfile
 # hadolint global ignore=DL3059
-FROM ubuntu:24.04
+FROM ubuntu:26.04
 # hadolint ignore=DL3008,SC1035 # We accept these issues, because ...
 RUN apt-get update && apt-get install -y curl
 ```
