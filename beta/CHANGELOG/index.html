@@ -15190,6 +15190,110 @@
 <li>Skip the repository-wide enumeration of <code>.gitignore</code>d files when an explicit list of files is provided via <code>MEGALINTER_FILES_TO_LINT</code> (e.g. <code>mega-linter-runner [files...]</code>): the caller already chose the files to lint, and the enumeration could be expensive on large repositories</li>
 <li>Speed up MegaLinter startup by ~5 seconds on every run: LLM provider SDKs (langchain-openai, langchain-anthropic, google-genai, ...) are now imported lazily, only when LLM Advisor is enabled, instead of at every startup (<code>import megalinter</code> drops from ~7s to ~0.9s)</li>
 <li>Speed up standalone single-linter images (<code>megalinter-only-*</code>) startup: only the descriptor of the single linter is parsed instead of instantiating the 120+ linters of all descriptors, and plugins initialization (remote descriptor download + install commands) is skipped since a plugin can not provide the built-in single linter</li>
+<li>
+<p>Lighter Docker images:</p>
+<ul>
+<li>LLM Advisor provider SDKs (langchain-openai, langchain-anthropic, langchain-google-genai, langchain-mistralai, langchain-ollama, langchain-deepseek, langchain-community) move to a new <code>llm</code> pip extra, installed in the main and flavor images but excluded from standalone <code>megalinter-only-*</code> images (~200 MB saved per standalone image); a standalone image with <code>LLM_ADVISOR_ENABLED</code> now logs an explicit message instead of loading the advisor</li>
+<li>The compilation toolchain (gcc, make, musl-dev, libffi-dev) is no longer kept in the final image layers: it is installed as an apk virtual package only while pip/gem install steps may build native extensions, then removed (~110-150 MB saved per image). Pre-commands needing to compile native code can install it back with <code>apk add --no-cache gcc make musl-dev</code>. Descriptors whose linters need the toolchain at runtime (RUST clippy) or in custom install commands (PERL cpanm, LUA luarocks) now declare it explicitly</li>
+<li>Standalone images no longer ship the ~45 MB <code>__pycache__</code> layer produced by the build-time version priming (bytecode is regenerated in the container writable layer)</li>
+<li>New descriptor property <code>install.apk_build</code> for apk packages needed only while pip/gem packages compile native extensions: they join the virtual <code>.ml-build-deps</code> package and are removed from the final layers. Used by SPELL_PROSELINT (build-base, re2-dev, py3-pybind11-dev needed to build google-re2, with only the <code>re2</code> runtime library kept), which was keeping a full C++ toolchain in every flavor image</li>
+<li>GROOVY_NPM_GROOVY_LINT now uses the same OpenJDK 21 as the other Java-based linters instead of shipping its own OpenJDK 17 (~300 MB saved in the main image and groovy-including flavors)</li>
+<li>Development headers and per-descriptor build toolchains no longer ship in the final layers: LUA luarocks, PERL cpm and R <code>install.packages</code> compilations now install their toolchain (gcc, g++, make, musl-dev, <code>*-dev</code> headers) as an apk virtual package removed at the end of their own install step; <code>ruby-dev</code> moved to the shared build-time virtual package, <code>ruby-rdoc</code> and <code>R-doc</code> are not installed anymore, and XML_XMLLINT keeps only the <code>libxml2</code> runtime library instead of <code>libxml2-dev</code></li>
+<li>Python linter venvs are now installed through the uv cache in hardlink mode: identical wheels shared by several venvs (setuptools, black, mypy, ...) are stored once on disk instead of once per venv</li>
+<li>Extended node_modules pruning: all Markdown files plus <code>test</code>, <code>tests</code>, <code>__tests__</code>, <code>docs</code> and <code>.github</code> directories are removed from <code>/node-deps</code>, along with the leftover <code>/root/.npm</code> cache</li>
+<li>Removed a stray <code>cpplint</code> Python venv that was mistakenly declared in the CSS_STYLELINT descriptor</li>
+<li>
+<p>Measured on linux/amd64 (uncompressed <code>docker images</code> size, before = previous beta measured the same day with the same CI jobs):</p>
+<table>
+<thead>
+<tr>
+<th>Image</th>
+<th style="text-align: right;">Before</th>
+<th style="text-align: right;">After</th>
+<th style="text-align: right;">Delta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>megalinter-only-groovy_npm_groovy_lint</code></td>
+<td style="text-align: right;">1.07 GB</td>
+<td style="text-align: right;">695 MB</td>
+<td style="text-align: right;">-35%</td>
+</tr>
+<tr>
+<td><code>megalinter-only-r_lintr</code></td>
+<td style="text-align: right;">996 MB</td>
+<td style="text-align: right;">405 MB</td>
+<td style="text-align: right;">-59%</td>
+</tr>
+<tr>
+<td><code>megalinter-only-spell_proselint</code></td>
+<td style="text-align: right;">813 MB</td>
+<td style="text-align: right;">284 MB</td>
+<td style="text-align: right;">-65%</td>
+</tr>
+<tr>
+<td><code>megalinter-only-css_stylelint</code></td>
+<td style="text-align: right;">780 MB</td>
+<td style="text-align: right;">360 MB</td>
+<td style="text-align: right;">-54%</td>
+</tr>
+<tr>
+<td><code>megalinter-only-spell_cspell</code></td>
+<td style="text-align: right;">755 MB</td>
+<td style="text-align: right;">357 MB</td>
+<td style="text-align: right;">-53%</td>
+</tr>
+<tr>
+<td><code>megalinter-only-ruby_rubocop</code></td>
+<td style="text-align: right;">702 MB</td>
+<td style="text-align: right;">301 MB</td>
+<td style="text-align: right;">-57%</td>
+</tr>
+<tr>
+<td><code>megalinter-only-perl_perlcritic</code></td>
+<td style="text-align: right;">696 MB</td>
+<td style="text-align: right;">293 MB</td>
+<td style="text-align: right;">-58%</td>
+</tr>
+<tr>
+<td><code>megalinter-only-spell_vale</code></td>
+<td style="text-align: right;">683 MB</td>
+<td style="text-align: right;">286 MB</td>
+<td style="text-align: right;">-58%</td>
+</tr>
+<tr>
+<td><code>megalinter-only-yaml_yamllint</code></td>
+<td style="text-align: right;">668 MB</td>
+<td style="text-align: right;">271 MB</td>
+<td style="text-align: right;">-59%</td>
+</tr>
+<tr>
+<td><code>megalinter-only-bash_shellcheck</code></td>
+<td style="text-align: right;">660 MB</td>
+<td style="text-align: right;">263 MB</td>
+<td style="text-align: right;">-60%</td>
+</tr>
+<tr>
+<td><code>megalinter-only-lua_luacheck</code></td>
+<td style="text-align: right;">652 MB</td>
+<td style="text-align: right;">252 MB</td>
+<td style="text-align: right;">-61%</td>
+</tr>
+<tr>
+<td><code>megalinter-only-xml_xmllint</code></td>
+<td style="text-align: right;">645 MB</td>
+<td style="text-align: right;">246 MB</td>
+<td style="text-align: right;">-62%</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<ul>
+<li>Flavor and main images benefit from the same changes: <code>megalinter-python</code> flavor 5.40 GB → 5.10 GB (-6% vs beta), and the main image drops the duplicate OpenJDK 17 (~330 MB) plus deduplicated venv wheels. MegaLinter runtime is unaffected (full-codebase CI job stays in its usual 10-14 min range)</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
