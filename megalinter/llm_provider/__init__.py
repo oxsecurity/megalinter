@@ -3,26 +3,34 @@
 LLM Provider package for MegaLinter
 """
 
+# Provider classes are resolved lazily (PEP 562): each one imports a heavy LLM SDK
+# (langchain_openai, langchain_anthropic, google.genai, ...) that would add several
+# seconds to EVERY MegaLinter startup, even when LLM Advisor is disabled.
+from importlib import import_module
+
 from .llm_provider import LLMProvider
-from .llm_provider_anthropic import AnthropicProvider
-from .llm_provider_deepseek import DeepSeekProvider
 from .llm_provider_factory import LLMProviderFactory
-from .llm_provider_google import GoogleProvider
-from .llm_provider_grok import GrokProvider
-from .llm_provider_huggingface import HuggingFaceProvider
-from .llm_provider_mistral import MistralProvider
-from .llm_provider_ollama import OllamaProvider
-from .llm_provider_openai import OpenAIProvider
+
+_LAZY_PROVIDER_MODULES = {
+    "OpenAIProvider": "llm_provider_openai",
+    "AnthropicProvider": "llm_provider_anthropic",
+    "GoogleProvider": "llm_provider_google",
+    "OllamaProvider": "llm_provider_ollama",
+    "HuggingFaceProvider": "llm_provider_huggingface",
+    "MistralProvider": "llm_provider_mistral",
+    "DeepSeekProvider": "llm_provider_deepseek",
+    "GrokProvider": "llm_provider_grok",
+}
 
 __all__ = [
     "LLMProvider",
     "LLMProviderFactory",
-    "OpenAIProvider",
-    "AnthropicProvider",
-    "GoogleProvider",
-    "OllamaProvider",
-    "HuggingFaceProvider",
-    "MistralProvider",
-    "DeepSeekProvider",
-    "GrokProvider",
+    *_LAZY_PROVIDER_MODULES.keys(),
 ]
+
+
+def __getattr__(name):
+    if name in _LAZY_PROVIDER_MODULES:
+        module = import_module(f".{_LAZY_PROVIDER_MODULES[name]}", __name__)
+        return getattr(module, name)
+    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")

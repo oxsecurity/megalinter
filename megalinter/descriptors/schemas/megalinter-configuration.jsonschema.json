@@ -19087,6 +19087,37 @@
       "x-order": 900999,
       "x-section": "GENERAL"
     },
+    "MEGALINTER_FLAVOR": {
+      "$id": "#/properties/MEGALINTER_FLAVOR",
+      "default": "all",
+      "description": "MegaLinter flavor (specialized Docker image variant) to use to lint this repository. Used by mega-linter-runner and coding agents to select the Docker image. Examples: all, python, javascript, security, or a custom flavor name.",
+      "examples": [
+        "all",
+        "python",
+        "javascript",
+        "security"
+      ],
+      "title": "MegaLinter flavor",
+      "type": "string",
+      "x-category": "GENERAL",
+      "x-order": 249000,
+      "x-section": "GENERAL"
+    },
+    "MEGALINTER_VERSION": {
+      "$id": "#/properties/MEGALINTER_VERSION",
+      "default": "latest",
+      "description": "MegaLinter version tag to use (e.g. latest, beta, v9, v9.1.2). Used by mega-linter-runner and coding agents to select the Docker image version.",
+      "examples": [
+        "latest",
+        "beta",
+        "v9"
+      ],
+      "title": "MegaLinter version",
+      "type": "string",
+      "x-category": "GENERAL",
+      "x-order": 249001,
+      "x-section": "GENERAL"
+    },
     "MULTI_STATUS": {
       "$id": "#/properties/MULTI_STATUS",
       "default": true,

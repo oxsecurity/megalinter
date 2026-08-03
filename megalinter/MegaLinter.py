@@ -205,7 +205,14 @@ class Megalinter:
         self.pre_commands_results = pre_post_factory.run_pre_commands(
             self, "before_plugins"
         )
-        plugin_factory.initialize_plugins(self.request_id)
+        # Standalone single-linter images embed only their built-in linter, that a
+        # plugin can not provide: skip plugin descriptors download and install commands
+        if config.get(self.request_id, "SINGLE_LINTER", "") == "":
+            plugin_factory.initialize_plugins(self.request_id)
+        else:
+            logging.debug(
+                "[Plugins] Skipped plugins initialization (single linter image)"
+            )
 
         # Copy node_modules in current folder if necessary
         internal_node_modules = "/node-deps/node_modules"
@@ -872,9 +879,11 @@ class Megalinter:
                 + ", ".join(utils.normalize_regex_filter(self.filter_regex_exclude))
             )
 
-        # List git ignored files if necessary
+        # List git ignored files if necessary (skipped when an explicit list of files
+        # is provided: the caller already chose the files, and the repo-wide
+        # enumeration of gitignored files can be expensive)
         ignored_files = []
-        if self.ignore_gitignore_files is True:
+        if self.ignore_gitignore_files is True and len(files_to_lint) == 0:
             try:
                 ignored_files = self.list_git_ignored_files()
                 if logging.getLogger().isEnabledFor(logging.DEBUG):

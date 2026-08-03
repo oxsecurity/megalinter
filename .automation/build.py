@@ -2152,6 +2152,174 @@ def build_common_linter_errors_md(linter):
     return md
 
 
+AGENT_SKILLS_FIX_LINTERS_DIR = f"{REPO_HOME}/skills/megalinter-fix/linters"
+AGENT_SKILLS_MARKER_START = "<!-- generated-descriptor-info-start -->"
+AGENT_SKILLS_MARKER_END = "<!-- generated-descriptor-info-end -->"
+
+
+def build_agent_skills_descriptor_info_md(linter):
+    lang_lower, linter_name_lower, _descriptor_label = get_linter_base_info(linter)
+    doc_url = f"{MKDOCS_URL_ROOT}/descriptors/{lang_lower}_{linter_name_lower}/"
+    key = linter.name
+    md = [
+        f"- Linter: **{linter.linter_name}** (MegaLinter key: `{key}`)",
+        f"- Descriptor: **{linter.descriptor_id}** ({linter.descriptor_type})",
+        f"- MegaLinter documentation: <{doc_url}>",
+    ]
+    if linter.linter_url is not None:
+        md += [f"- Official documentation: <{linter.linter_url}>"]
+    if linter.cli_lint_fix_arg_name is not None or (
+        getattr(linter, "is_formatter", False) is True
+    ):
+        md += [
+            f"- Auto-fix support: **yes** — add `{key}` (or `all`) to the `APPLY_FIXES` variable, "
+            f"or run locally `npx mega-linter-runner --linter {key} --fix --release beta` "
+            "(standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released)"
+        ]
+    else:
+        md += ["- Auto-fix support: no (errors must be fixed manually)"]
+    if linter.config_file_name is not None:
+        md += [
+            f"- Configuration file: `{linter.config_file_name}` "
+            f"(custom path can be defined with `{key}_CONFIG_FILE`)"
+        ]
+    if linter.ignore_file_name is not None:
+        md += [f"- Ignore file: `{linter.ignore_file_name}`"]
+    if getattr(linter, "linter_rules_url", None) is not None:
+        md += [f"- Rules index: <{linter.linter_rules_url}>"]
+    if getattr(linter, "linter_rules_configuration_url", None) is not None:
+        md += [f"- Rules configuration: <{linter.linter_rules_configuration_url}>"]
+    if getattr(linter, "linter_rules_inline_disable_url", None) is not None:
+        md += [
+            f"- How to disable rules inline: <{linter.linter_rules_inline_disable_url}>"
+        ]
+    if getattr(linter, "linter_rules_ignore_config_url", None) is not None:
+        md += [
+            f"- How to ignore files and directories: <{linter.linter_rules_ignore_config_url}>"
+        ]
+    if getattr(linter, "cli_lint_errors_regex", None) is not None:
+        md += [f"- Error line format (regex): `{linter.cli_lint_errors_regex}`"]
+    md += [
+        "- MegaLinter tuning variables (in `.mega-linter.yml`):",
+        f"  - `DISABLE_LINTERS`: add `{key}` to fully disable this linter",
+        f"  - `{key}_DISABLE_ERRORS: true`: keep the linter active but non-blocking",
+        f"  - `{key}_DISABLE_ERRORS_IF_LESS_THAN: <number>`: block only when the error"
+        " count reaches the threshold — useful on a first install to accept the"
+        " existing technical debt while preventing it from growing",
+        f"  - `{key}_FILTER_REGEX_EXCLUDE`: regex of files to exclude from this linter",
+        f"  - `{key}_ARGUMENTS`: additional CLI arguments for the linter",
+    ]
+    common_errors = getattr(linter, "common_linter_errors", None) or []
+    if len(common_errors) > 0:
+        md += [
+            "- Known non-lint failure patterns (configuration/environment issues, "
+            "see resolutions in the MegaLinter documentation page):"
+        ]
+        for entry in common_errors:
+            md += [f"  - `{entry.get('identifier', '')}`"]
+    return md
+
+
+def replace_between_markers(file_path, start, end, content):
+    file_content = Path(file_path).read_text(encoding="utf-8")
+    start_pos = file_content.find(start)
+    end_pos = file_content.find(end)
+    if start_pos == -1 or end_pos == -1 or end_pos < start_pos:
+        logging.warning(f"Markers not found in {file_path}: file left unchanged")
+        return
+    new_content = (
+        file_content[: start_pos + len(start)]
+        + "\n"
+        + content
+        + "\n"
+        + file_content[end_pos:]
+    )
+    Path(file_path).write_text(new_content, encoding="utf-8")
+
+
+def generate_agent_skills_fix_files():
+    logging.info("Generating agent skills per-linter fix guides…")
+    os.makedirs(AGENT_SKILLS_FIX_LINTERS_DIR, exist_ok=True)
+    _descriptors, linters_by_type = list_descriptors_for_build()
+    all_linters = []
+    for type1 in linters_by_type:
+        all_linters += linters_by_type[type1]
+    index_rows = []
+    valid_files = {"README.md"}
+    for linter in all_linters:
+        if getattr(linter, "disabled", False) is True:
+            continue
+        file_name = f"{linter.name.lower()}.md"
+        valid_files.add(file_name)
+        file_path = os.path.join(AGENT_SKILLS_FIX_LINTERS_DIR, file_name)
+        info_block = "\n".join(build_agent_skills_descriptor_info_md(linter))
+        if os.path.isfile(file_path):
+            replace_between_markers(
+                file_path,
+                AGENT_SKILLS_MARKER_START,
+                AGENT_SKILLS_MARKER_END,
+                info_block,
+            )
+        else:
+            scaffold = "\n".join(
+                [
+                    f"# Fix {linter.name} errors",
+                    "",
+                    AGENT_SKILLS_MARKER_START,
+                    info_block,
+                    AGENT_SKILLS_MARKER_END,
+                    "",
+                    "<!-- needs-enrichment -->",
+                    "",
+                    "## Fix instructions",
+                    "",
+                    f"No researched fix instructions are available yet for {linter.linter_name}.",
+                    "Use the documentation links of the section above to:",
+                    "",
+                    "- understand each reported rule before changing code",
+                    "- apply the linter auto-fix option when available and safe",
+                    "- disable a rule inline or in the linter configuration file"
+                    " only when fixing is not relevant",
+                    "",
+                ]
+            )
+            Path(file_path).write_text(scaffold, encoding="utf-8")
+            logging.info(f"Scaffolded new agent skills fix guide {file_name}")
+        index_rows += [
+            f"| {linter.name} | {linter.descriptor_id} | [{file_name}]({file_name}) |"
+        ]
+    index_md = "\n".join(
+        [
+            "<!-- This file is automatically @generated by .automation/build.py,"
+            " please don't update it manually -->",
+            "",
+            "# MegaLinter fix guides index",
+            "",
+            "One guide per linter: load a guide only when the related linter reports errors.",
+            "",
+            "| Linter key | Descriptor | Fix guide |",
+            "| :--------- | :--------- | :-------- |",
+        ]
+        + index_rows
+        + [""]
+    )
+    Path(os.path.join(AGENT_SKILLS_FIX_LINTERS_DIR, "README.md")).write_text(
+        index_md, encoding="utf-8"
+    )
+    for existing_file in os.listdir(AGENT_SKILLS_FIX_LINTERS_DIR):
+        existing_path = os.path.join(AGENT_SKILLS_FIX_LINTERS_DIR, existing_file)
+        if (
+            os.path.isfile(existing_path)
+            and existing_file.endswith(".md")
+            and existing_file not in valid_files
+        ):
+            logging.warning(
+                f"Removing agent skills fix guide {existing_file} "
+                "as it does not match any existing linter"
+            )
+            os.remove(existing_path)
+
+
 def build_flavors_md_table(filter_linter_name=None, replace_link=False):
     md_table = [
         "| <!-- --> | Flavor | Description | Embedded linters | Info |",
@@ -3130,6 +3298,7 @@ def finalize_doc_build():
         # 'format',
         # 'tooling-formats',
         # 'other',
+        "install-agent-skills",
         "install-assisted",
         "install-version",
         "install-github",
@@ -4235,6 +4404,7 @@ if __name__ == "__main__":
             vendor_betterleaks_ruleset()
             # refresh_users_info() # deprecated since now we use github-dependents-info
             generate_documentation()
+            generate_agent_skills_fix_files()
             ensure_config_schema_root_x_metadata_for_descriptors_and_linters()
             validate_config_schema_root_x_metadata()
             generate_documentation_all_linters()
