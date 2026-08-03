@@ -5,7 +5,7 @@
 - Descriptor: **PROTOBUF** (format)
 - MegaLinter documentation: <https://megalinter.io/beta/descriptors/protobuf_protolint/>
 - Official documentation: <https://github.com/yoheimuta/protolint>
-- Auto-fix support: **yes** — add `PROTOBUF_PROTOLINT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner@beta --linter PROTOBUF_PROTOLINT --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released, and a beta MegaLinter version is driven by the matching runner beta dist-tag)
+- Auto-fix support: **yes** — add `PROTOBUF_PROTOLINT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter PROTOBUF_PROTOLINT --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released; use `npx mega-linter-runner@beta` only when `.mega-linter.yml` pins `MEGALINTER_VERSION: beta`)
 - Configuration file: `.protolintrc.yml` (custom path can be defined with `PROTOBUF_PROTOLINT_CONFIG_FILE`)
 - Rules index: <https://github.com/yoheimuta/protolint#rules>
 - Rules configuration: <https://github.com/yoheimuta/protolint#rules>

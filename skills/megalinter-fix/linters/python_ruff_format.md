@@ -5,7 +5,7 @@
 - Descriptor: **PYTHON** (language)
 - MegaLinter documentation: <https://megalinter.io/beta/descriptors/python_ruff_format/>
 - Official documentation: <https://github.com/astral-sh/ruff>
-- Auto-fix support: **yes** — add `PYTHON_RUFF_FORMAT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner@beta --linter PYTHON_RUFF_FORMAT --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released, and a beta MegaLinter version is driven by the matching runner beta dist-tag)
+- Auto-fix support: **yes** — add `PYTHON_RUFF_FORMAT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter PYTHON_RUFF_FORMAT --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released; use `npx mega-linter-runner@beta` only when `.mega-linter.yml` pins `MEGALINTER_VERSION: beta`)
 - Configuration file: `.ruff.toml` (custom path can be defined with `PYTHON_RUFF_FORMAT_CONFIG_FILE`)
 - Rules index: <https://docs.astral.sh/ruff/rules/>
 - Rules configuration: <https://docs.astral.sh/ruff/configuration/>

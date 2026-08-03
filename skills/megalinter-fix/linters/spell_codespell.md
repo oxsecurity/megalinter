@@ -5,7 +5,7 @@
 - Descriptor: **SPELL** (other)
 - MegaLinter documentation: <https://megalinter.io/beta/descriptors/spell_codespell/>
 - Official documentation: <https://github.com/codespell-project/codespell>
-- Auto-fix support: **yes** — add `SPELL_CODESPELL` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner@beta --linter SPELL_CODESPELL --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released, and a beta MegaLinter version is driven by the matching runner beta dist-tag)
+- Auto-fix support: **yes** — add `SPELL_CODESPELL` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter SPELL_CODESPELL --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released; use `npx mega-linter-runner@beta` only when `.mega-linter.yml` pins `MEGALINTER_VERSION: beta`)
 - Configuration file: `.codespellrc` (custom path can be defined with `SPELL_CODESPELL_CONFIG_FILE`)
 - Rules configuration: <https://github.com/codespell-project/codespell?tab=readme-ov-file#using-a-config-file>
 - How to disable rules inline: <https://github.com/codespell-project/codespell?tab=readme-ov-file#inline-ignore>

@@ -5,7 +5,7 @@
 - Descriptor: **MARKDOWN** (format)
 - MegaLinter documentation: <https://megalinter.io/beta/descriptors/markdown_rumdl/>
 - Official documentation: <https://github.com/rvben/rumdl>
-- Auto-fix support: **yes** — add `MARKDOWN_RUMDL` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner@beta --linter MARKDOWN_RUMDL --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released, and a beta MegaLinter version is driven by the matching runner beta dist-tag)
+- Auto-fix support: **yes** — add `MARKDOWN_RUMDL` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter MARKDOWN_RUMDL --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released; use `npx mega-linter-runner@beta` only when `.mega-linter.yml` pins `MEGALINTER_VERSION: beta`)
 - Configuration file: `.rumdl.toml` (custom path can be defined with `MARKDOWN_RUMDL_CONFIG_FILE`)
 - Rules index: <https://github.com/rvben/rumdl/blob/main/docs/RULES.md>
 - Rules configuration: <https://github.com/rvben/rumdl/blob/main/docs/global-settings.md>

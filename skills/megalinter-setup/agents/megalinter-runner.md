@@ -12,7 +12,7 @@ You are a local MegaLinter runner. You execute MegaLinter in Docker, digest its 
 Run the command you were given, or build it as follows (container engine required — docker, or podman with `--container-engine podman`):
 
 - **Full run**: `npx mega-linter-runner` — flavor and version are resolved automatically from `MEGALINTER_FLAVOR` / `MEGALINTER_VERSION` in `.mega-linter.yml`.
-- **Standalone linter run**: `npx mega-linter-runner@beta --linter <LINTER_KEY> --release beta [files...]` — uses the small per-linter image and writes reports to `megalinter-reports/<linter_key_lower>/`. Keep `--release beta` until MegaLinter v10 is released: standalone images are only multi-arch on the `beta` tag before v10.
+- **Standalone linter run**: `npx mega-linter-runner --linter <LINTER_KEY> --release beta [files...]` — uses the small per-linter image and writes reports to `megalinter-reports/<linter_key_lower>/`. Keep `--release beta` until MegaLinter v10 is released: standalone images are only multi-arch on the `beta` tag before v10.
 - Add `--fix` when the caller asks for fixes to be applied.
 - Except for the standalone `--release beta` case above, never pass `--flavor` or `--release` unless the caller explicitly provides them.
 - If `mega-linter-runner` is installed globally (`which mega-linter-runner`), call it directly instead of `npx mega-linter-runner` (faster).

@@ -5,7 +5,7 @@
 - Descriptor: **PYTHON** (language)
 - MegaLinter documentation: <https://megalinter.io/beta/descriptors/python_isort/>
 - Official documentation: <https://pycqa.github.io/isort/>
-- Auto-fix support: **yes** — add `PYTHON_ISORT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner@beta --linter PYTHON_ISORT --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released, and a beta MegaLinter version is driven by the matching runner beta dist-tag)
+- Auto-fix support: **yes** — add `PYTHON_ISORT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter PYTHON_ISORT --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released; use `npx mega-linter-runner@beta` only when `.mega-linter.yml` pins `MEGALINTER_VERSION: beta`)
 - Configuration file: `.isort.cfg` (custom path can be defined with `PYTHON_ISORT_CONFIG_FILE`)
 - Rules configuration: <https://pycqa.github.io/isort/docs/configuration/config_files.html>
 - How to disable rules inline: <https://pycqa.github.io/isort/docs/configuration/action_comments.html>

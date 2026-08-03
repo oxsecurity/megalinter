@@ -5,7 +5,7 @@
 - Descriptor: **JAVASCRIPT** (language)
 - MegaLinter documentation: <https://megalinter.io/beta/descriptors/javascript_standard/>
 - Official documentation: <https://standardjs.com/>
-- Auto-fix support: **yes** — add `JAVASCRIPT_STANDARD` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner@beta --linter JAVASCRIPT_STANDARD --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released, and a beta MegaLinter version is driven by the matching runner beta dist-tag)
+- Auto-fix support: **yes** — add `JAVASCRIPT_STANDARD` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter JAVASCRIPT_STANDARD --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released; use `npx mega-linter-runner@beta` only when `.mega-linter.yml` pins `MEGALINTER_VERSION: beta`)
 - Rules index: <https://standardjs.com/rules.html>
 - Rules configuration: <https://standardjs.com/#how-do-i-ignore-files>
 - How to disable rules inline: <https://standardjs.com/#how-do-i-disable-a-rule>

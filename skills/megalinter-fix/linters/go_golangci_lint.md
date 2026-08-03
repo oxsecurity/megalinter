@@ -5,7 +5,7 @@
 - Descriptor: **GO** (language)
 - MegaLinter documentation: <https://megalinter.io/beta/descriptors/go_golangci_lint/>
 - Official documentation: <https://golangci-lint.run/>
-- Auto-fix support: **yes** — add `GO_GOLANGCI_LINT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner@beta --linter GO_GOLANGCI_LINT --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released, and a beta MegaLinter version is driven by the matching runner beta dist-tag)
+- Auto-fix support: **yes** — add `GO_GOLANGCI_LINT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter GO_GOLANGCI_LINT --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released; use `npx mega-linter-runner@beta` only when `.mega-linter.yml` pins `MEGALINTER_VERSION: beta`)
 - Configuration file: `.golangci.yml` (custom path can be defined with `GO_GOLANGCI_LINT_CONFIG_FILE`)
 - Rules index: <https://golangci-lint.run/usage/linters/>
 - Rules configuration: <https://golangci-lint.run/usage/configuration/#config-file>
