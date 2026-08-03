@@ -5,7 +5,7 @@
 - Descriptor: **ACTION** (tooling_format)
 - MegaLinter documentation: <https://megalinter.io/beta/descriptors/action_zizmor/>
 - Official documentation: <https://zizmor.sh/>
-- Auto-fix support: **yes** — add `ACTION_ZIZMOR` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter ACTION_ZIZMOR --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released)
+- Auto-fix support: **yes** — add `ACTION_ZIZMOR` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner@beta --linter ACTION_ZIZMOR --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released, and a beta MegaLinter version is driven by the matching runner beta dist-tag)
 - Configuration file: `zizmor.yml` (custom path can be defined with `ACTION_ZIZMOR_CONFIG_FILE`)
 - Rules index: <https://docs.zizmor.sh/audits/>
 - Rules configuration: <https://docs.zizmor.sh/configuration/>

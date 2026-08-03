@@ -5,7 +5,7 @@
 - Descriptor: **KOTLIN** (language)
 - MegaLinter documentation: <https://megalinter.io/beta/descriptors/kotlin_ktlint/>
 - Official documentation: <https://ktlint.github.io>
-- Auto-fix support: **yes** — add `KOTLIN_KTLINT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter KOTLIN_KTLINT --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released)
+- Auto-fix support: **yes** — add `KOTLIN_KTLINT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner@beta --linter KOTLIN_KTLINT --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released, and a beta MegaLinter version is driven by the matching runner beta dist-tag)
 - Rules index: <https://ktlint.github.io/#rules>
 - Rules configuration: <https://pinterest.github.io/ktlint/latest/rules/configuration-ktlint/>
 - How to disable rules inline: <https://pinterest.github.io/ktlint/latest/faq/#how-do-i-suppress-errors-for-a-lineblockfile>

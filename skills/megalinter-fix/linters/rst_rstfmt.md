@@ -5,7 +5,7 @@
 - Descriptor: **RST** (format)
 - MegaLinter documentation: <https://megalinter.io/beta/descriptors/rst_rstfmt/>
 - Official documentation: <https://github.com/dzhu/rstfmt>
-- Auto-fix support: **yes** — add `RST_RSTFMT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter RST_RSTFMT --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released)
+- Auto-fix support: **yes** — add `RST_RSTFMT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner@beta --linter RST_RSTFMT --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released, and a beta MegaLinter version is driven by the matching runner beta dist-tag)
 - Rules configuration: <https://github.com/dzhu/rstfmt#usage>
 - MegaLinter tuning variables (in `.mega-linter.yml`):
   - `DISABLE_LINTERS`: add `RST_RSTFMT` to fully disable this linter

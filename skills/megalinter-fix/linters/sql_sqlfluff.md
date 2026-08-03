@@ -5,7 +5,7 @@
 - Descriptor: **SQL** (language)
 - MegaLinter documentation: <https://megalinter.io/beta/descriptors/sql_sqlfluff/>
 - Official documentation: <https://www.sqlfluff.com/>
-- Auto-fix support: **yes** — add `SQL_SQLFLUFF` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter SQL_SQLFLUFF --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released)
+- Auto-fix support: **yes** — add `SQL_SQLFLUFF` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner@beta --linter SQL_SQLFLUFF --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released, and a beta MegaLinter version is driven by the matching runner beta dist-tag)
 - Configuration file: `.sqlfluff` (custom path can be defined with `SQL_SQLFLUFF_CONFIG_FILE`)
 - Rules index: <https://docs.sqlfluff.com/en/stable/rules.html>
 - Rules configuration: <https://docs.sqlfluff.com/en/stable/configuration/index.html>

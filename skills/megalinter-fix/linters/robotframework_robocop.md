@@ -5,7 +5,7 @@
 - Descriptor: **ROBOTFRAMEWORK** (tooling_format)
 - MegaLinter documentation: <https://megalinter.io/beta/descriptors/robotframework_robocop/>
 - Official documentation: <https://github.com/MarketSquare/robotframework-robocop>
-- Auto-fix support: **yes** — add `ROBOTFRAMEWORK_ROBOCOP` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter ROBOTFRAMEWORK_ROBOCOP --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released)
+- Auto-fix support: **yes** — add `ROBOTFRAMEWORK_ROBOCOP` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner@beta --linter ROBOTFRAMEWORK_ROBOCOP --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released, and a beta MegaLinter version is driven by the matching runner beta dist-tag)
 - Configuration file: `robocop.toml` (custom path can be defined with `ROBOTFRAMEWORK_ROBOCOP_CONFIG_FILE`)
 - Rules index: <https://robocop.dev/stable/rules_list/>
 - Rules configuration: <https://robocop.dev/stable/configuration/>

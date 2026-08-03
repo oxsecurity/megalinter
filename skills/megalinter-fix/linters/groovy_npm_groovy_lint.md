@@ -5,7 +5,7 @@
 - Descriptor: **GROOVY** (language)
 - MegaLinter documentation: <https://megalinter.io/beta/descriptors/groovy_npm_groovy_lint/>
 - Official documentation: <https://nvuillam.github.io/npm-groovy-lint/>
-- Auto-fix support: **yes** — add `GROOVY_NPM_GROOVY_LINT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter GROOVY_NPM_GROOVY_LINT --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released)
+- Auto-fix support: **yes** — add `GROOVY_NPM_GROOVY_LINT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner@beta --linter GROOVY_NPM_GROOVY_LINT --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released, and a beta MegaLinter version is driven by the matching runner beta dist-tag)
 - Configuration file: `.groovylintrc.json` (custom path can be defined with `GROOVY_NPM_GROOVY_LINT_CONFIG_FILE`)
 - Rules index: <https://codenarc.org/codenarc-rule-index.html>
 - Rules configuration: <https://github.com/nvuillam/npm-groovy-lint#configuration>

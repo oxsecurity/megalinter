@@ -14,7 +14,7 @@ You fix the errors of a single MegaLinter linter in the current repository.
 ## What you do
 
 1. Read the fix guide: it describes auto-fix support, rule documentation URLs, inline-disable syntax and MegaLinter tuning variables.
-2. If the linter supports auto-fixing and a container engine is available, prefer running it once on the failing files: `npx mega-linter-runner --linter <KEY> --fix --release beta <files...>` (add `--container-engine podman` when using podman; `--release beta` is required until MegaLinter v10 is released), then handle what remains.
+2. If the linter supports auto-fixing and a container engine is available, prefer running it once on the failing files: `npx mega-linter-runner@beta --linter <KEY> --fix --release beta <files...>` (add `--container-engine podman` when using podman; `--release beta` is required until MegaLinter v10 is released), then handle what remains.
 3. Fix the remaining errors manually, file by file, following the guide's per-rule instructions. Consult the rule documentation URLs when a rule is unclear.
 4. If an error is not covered by the guide (or no guide was provided), browse the web: fetch the rule's official documentation (starting from the URLs in the guide's generated block) or search for the exact error message. Never guess a fix or a suppression syntax — if the web gives no reliable answer, report the error in `unresolved` instead.
 5. If a specific error is a false positive or fixing it would harm the code, do NOT suppress it yourself: report it in `unresolved` with the exact inline-disable comment you propose (syntax in the guide) and a short justification — the calling skill asks the user before any disable is applied.

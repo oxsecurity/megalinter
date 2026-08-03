@@ -5,7 +5,7 @@
 - Descriptor: **TERRAFORM** (tooling_format)
 - MegaLinter documentation: <https://megalinter.io/beta/descriptors/terraform_terraform_fmt/>
 - Official documentation: <https://developer.hashicorp.com/terraform/cli/commands/fmt>
-- Auto-fix support: **yes** — add `TERRAFORM_TERRAFORM_FMT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter TERRAFORM_TERRAFORM_FMT --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released)
+- Auto-fix support: **yes** — add `TERRAFORM_TERRAFORM_FMT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner@beta --linter TERRAFORM_TERRAFORM_FMT --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released, and a beta MegaLinter version is driven by the matching runner beta dist-tag)
 - MegaLinter tuning variables (in `.mega-linter.yml`):
   - `DISABLE_LINTERS`: add `TERRAFORM_TERRAFORM_FMT` to fully disable this linter
   - `TERRAFORM_TERRAFORM_FMT_DISABLE_ERRORS: true`: keep the linter active but non-blocking

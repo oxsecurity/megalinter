@@ -5,7 +5,7 @@
 - Descriptor: **SNAKEMAKE** (tooling_format)
 - MegaLinter documentation: <https://megalinter.io/beta/descriptors/snakemake_snakefmt/>
 - Official documentation: <https://github.com/snakemake/snakefmt>
-- Auto-fix support: **yes** — add `SNAKEMAKE_SNAKEFMT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter SNAKEMAKE_SNAKEFMT --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released)
+- Auto-fix support: **yes** — add `SNAKEMAKE_SNAKEFMT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner@beta --linter SNAKEMAKE_SNAKEFMT --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released, and a beta MegaLinter version is driven by the matching runner beta dist-tag)
 - Configuration file: `.snakefmt.toml` (custom path can be defined with `SNAKEMAKE_SNAKEFMT_CONFIG_FILE`)
 - Rules configuration: <https://github.com/snakemake/snakefmt#configuration>
 - MegaLinter tuning variables (in `.mega-linter.yml`):

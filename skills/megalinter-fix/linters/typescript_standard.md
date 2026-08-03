@@ -5,7 +5,7 @@
 - Descriptor: **TYPESCRIPT** (language)
 - MegaLinter documentation: <https://megalinter.io/beta/descriptors/typescript_ts_standard/>
 - Official documentation: <https://standardjs.com/>
-- Auto-fix support: **yes** — add `TYPESCRIPT_STANDARD` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter TYPESCRIPT_STANDARD --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released)
+- Auto-fix support: **yes** — add `TYPESCRIPT_STANDARD` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner@beta --linter TYPESCRIPT_STANDARD --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released, and a beta MegaLinter version is driven by the matching runner beta dist-tag)
 - Rules index: <https://standardjs.com/rules.html>
 - Rules configuration: <https://github.com/standard/ts-standard#readme>
 - How to disable rules inline: <https://standardjs.com/#how-do-i-disable-a-rule>

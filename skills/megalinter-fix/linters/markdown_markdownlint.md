@@ -5,7 +5,7 @@
 - Descriptor: **MARKDOWN** (format)
 - MegaLinter documentation: <https://megalinter.io/beta/descriptors/markdown_markdownlint/>
 - Official documentation: <https://github.com/DavidAnson/markdownlint>
-- Auto-fix support: **yes** — add `MARKDOWN_MARKDOWNLINT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter MARKDOWN_MARKDOWNLINT --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released)
+- Auto-fix support: **yes** — add `MARKDOWN_MARKDOWNLINT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner@beta --linter MARKDOWN_MARKDOWNLINT --fix --release beta` (standalone linter images are only multi-arch on `beta` until MegaLinter v10 is released, and a beta MegaLinter version is driven by the matching runner beta dist-tag)
 - Configuration file: `.markdownlint.json` (custom path can be defined with `MARKDOWN_MARKDOWNLINT_CONFIG_FILE`)
 - Rules index: <https://github.com/DavidAnson/markdownlint#rules--aliases>
 - Rules configuration: <https://github.com/igorshubovych/markdownlint-cli#configuration>
