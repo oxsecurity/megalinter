@@ -189,31 +189,32 @@ COPY --link --from=terragrunt /bin/terraform /usr/bin/
 #############################################################################################
 
 #PIPVENV__START
-RUN apk add --no-cache --virtual .ml-build-deps gcc libffi-dev make musl-dev && \
-    uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/rumdl" \
-    && VIRTUAL_ENV="/venvs/rumdl" uv pip install --no-cache rumdl==${PIP_RUMDL_VERSION} \
-    && VIRTUAL_ENV="/venvs/rumdl" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+RUN apk add --no-cache --virtual .ml-build-deps gcc libffi-dev make musl-dev ruby-dev && \
+    export UV_LINK_MODE=hardlink \
+    && uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
+    && uv venv --seed --no-project --no-managed-python "/venvs/rumdl" \
+    && VIRTUAL_ENV="/venvs/rumdl" uv pip install rumdl==${PIP_RUMDL_VERSION} \
+    && VIRTUAL_ENV="/venvs/rumdl" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/rumdl" rm -rf /venvs/rumdl/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/black" \
-    && VIRTUAL_ENV="/venvs/black" uv pip install --no-cache black[jupyter]==${PIP_BLACK_VERSION} \
-    && VIRTUAL_ENV="/venvs/black" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/black" \
+    && VIRTUAL_ENV="/venvs/black" uv pip install black[jupyter]==${PIP_BLACK_VERSION} \
+    && VIRTUAL_ENV="/venvs/black" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/black" rm -rf /venvs/black/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/isort" \
-    && VIRTUAL_ENV="/venvs/isort" uv pip install --no-cache black==${PIP_BLACK_VERSION} isort==${PIP_ISORT_VERSION} \
-    && VIRTUAL_ENV="/venvs/isort" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/isort" \
+    && VIRTUAL_ENV="/venvs/isort" uv pip install black==${PIP_BLACK_VERSION} isort==${PIP_ISORT_VERSION} \
+    && VIRTUAL_ENV="/venvs/isort" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/isort" rm -rf /venvs/isort/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/ruff-format" \
-    && VIRTUAL_ENV="/venvs/ruff-format" uv pip install --no-cache ruff==${PIP_RUFF_VERSION} \
-    && VIRTUAL_ENV="/venvs/ruff-format" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/ruff-format" \
+    && VIRTUAL_ENV="/venvs/ruff-format" uv pip install ruff==${PIP_RUFF_VERSION} \
+    && VIRTUAL_ENV="/venvs/ruff-format" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/ruff-format" rm -rf /venvs/ruff-format/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/rstfmt" \
-    && VIRTUAL_ENV="/venvs/rstfmt" uv pip install --no-cache rstfmt==${PIP_RSTFMT_VERSION} \
-    && VIRTUAL_ENV="/venvs/rstfmt" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/rstfmt" \
+    && VIRTUAL_ENV="/venvs/rstfmt" uv pip install rstfmt==${PIP_RSTFMT_VERSION} \
+    && VIRTUAL_ENV="/venvs/rstfmt" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/rstfmt" rm -rf /venvs/rstfmt/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/snakefmt" \
-    && VIRTUAL_ENV="/venvs/snakefmt" uv pip install --no-cache snakefmt==${PIP_SNAKEFMT_VERSION} \
-    && VIRTUAL_ENV="/venvs/snakefmt" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/snakefmt" \
+    && VIRTUAL_ENV="/venvs/snakefmt" uv pip install snakefmt==${PIP_SNAKEFMT_VERSION} \
+    && VIRTUAL_ENV="/venvs/snakefmt" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/snakefmt" rm -rf /venvs/snakefmt/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
     && find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
     && rm -rf /root/.cache \
@@ -242,7 +243,10 @@ RUN npm config set prefix /usr/local \
     && echo "Changing owner of node_modules files…" \
     && chown -R "$(id -u)":"$(id -g)" node_modules # fix for https://github.com/npm/cli/issues/5900 \
     && echo "Removing extra node_module files…" \
-    && find . \( -not -path "/proc" \) -and \( -type f \( -iname "*.d.ts" -o -iname "*.map" -o -iname "*.npmignore" -o -iname "*.travis.yml" -o -iname "CHANGELOG.md" -o -iname "README.md" -o -iname ".package-lock.json" -o -iname "package-lock.json" \) -o -type d -name /root/.npm/_cacache \) -delete
+    && find . \( -not -path "/proc" \) -and \( -type f \( -iname "*.d.ts" -o -iname "*.map" -o -iname "*.npmignore" -o -iname "*.travis.yml" -o -iname "*.md" -o -iname "*.markdown" -o -iname ".package-lock.json" -o -iname "package-lock.json" \) \) -delete \
+    && echo "Removing test and doc directories from node_modules…" \
+    && find ./node_modules -type d \( -iname "__tests__" -o -iname "test" -o -iname "tests" -o -iname "docs" -o -iname ".github" \) -prune -exec rm -rf {} + \
+    && rm -rf /root/.npm
 WORKDIR /
 
 #NPM__END
@@ -308,6 +312,14 @@ RUN --mount=type=cache,target=/root/.cache/uv,from=build-ml-core \
     --mount=from=uv,source=/uv,target=/bin/uv \
     uv pip install --system -e ".[llm]"
 #PIP_PROJECT__END
+
+#############################################################################
+# Strip debug symbols from ELF binaries (Go binaries are often unstripped)  #
+#############################################################################
+RUN apk add --no-cache --virtual .strip-tools binutils \
+    && find /bin /usr/bin /usr/local/bin -maxdepth 1 -type f \
+         -exec sh -c 'strip --strip-unneeded "$@" 2>/dev/null || true' _ {} + \
+    && apk del .strip-tools
 
 #######################################
 # Copy scripts and rules to container #

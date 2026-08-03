@@ -471,13 +471,7 @@ RUN apk -U --no-cache upgrade \
                 icu-libs \
                 openjdk21 \
                 lua5.3 \
-                lua5.3-dev \
-                readline-dev \
-                gcc \
-                make \
-                musl-dev \
                 perl \
-                perl-dev \
                 gnupg \
                 php84 \
                 php84-phar \
@@ -493,31 +487,25 @@ RUN apk -U --no-cache upgrade \
                 php84-simplexml \
                 php84-iconv \
                 dpkg \
+                gcc \
+                musl-dev \
                 coreutils \
                 py3-pyflakes \
                 cppcheck \
                 cmd:clang-format \
-                openjdk17 \
                 helm \
                 openssl \
-                g++ \
                 libcurl \
-                libffi-dev \
-                libxml2-dev \
+                libxml2 \
                 libxml2-utils \
-                linux-headers \
                 R \
-                R-dev \
-                R-doc \
                 re2 \
                 unzip \
                 npm \
                 nodejs-current \
                 yarn \
                 ruby \
-                ruby-dev \
                 ruby-bundler \
-                ruby-rdoc \
     && git config --global core.autocrlf true
 #APK__END
 
@@ -593,7 +581,7 @@ COPY --link --from=terragrunt /bin/terraform /usr/bin/
 #############################################################################################
 
 #GEM__START
-RUN apk add --no-cache --virtual .ml-build-deps gcc libffi-dev make musl-dev build-base re2-dev py3-pybind11-dev && \
+RUN apk add --no-cache --virtual .ml-build-deps gcc libffi-dev make musl-dev ruby-dev build-base re2-dev py3-pybind11-dev && \
     echo 'gem: --no-document' >> ~/.gemrc && \
     gem install \
           rubocop:${GEM_RUBOCOP_VERSION} \
@@ -612,120 +600,117 @@ RUN apk add --no-cache --virtual .ml-build-deps gcc libffi-dev make musl-dev bui
 #############################################################################################
 
 #PIPVENV__START
-RUN apk add --no-cache --virtual .ml-build-deps gcc libffi-dev make musl-dev build-base re2-dev py3-pybind11-dev && \
-    uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/ansible-lint" \
-    && VIRTUAL_ENV="/venvs/ansible-lint" uv pip install --no-cache ansible-lint==${PIP_ANSIBLE_LINT_VERSION} \
-    && VIRTUAL_ENV="/venvs/ansible-lint" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+RUN apk add --no-cache --virtual .ml-build-deps gcc libffi-dev make musl-dev ruby-dev build-base re2-dev py3-pybind11-dev && \
+    export UV_LINK_MODE=hardlink \
+    && uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
+    && uv venv --seed --no-project --no-managed-python "/venvs/ansible-lint" \
+    && VIRTUAL_ENV="/venvs/ansible-lint" uv pip install ansible-lint==${PIP_ANSIBLE_LINT_VERSION} \
+    && VIRTUAL_ENV="/venvs/ansible-lint" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/ansible-lint" rm -rf /venvs/ansible-lint/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/cpplint" \
-    && VIRTUAL_ENV="/venvs/cpplint" uv pip install --no-cache cpplint==${PIP_CPPLINT_VERSION} \
-    && VIRTUAL_ENV="/venvs/cpplint" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/cpplint" \
+    && VIRTUAL_ENV="/venvs/cpplint" uv pip install cpplint==${PIP_CPPLINT_VERSION} \
+    && VIRTUAL_ENV="/venvs/cpplint" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/cpplint" rm -rf /venvs/cpplint/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/cfn-lint" \
-    && VIRTUAL_ENV="/venvs/cfn-lint" uv pip install --no-cache cfn-lint[sarif]==${PIP_CFN_LINT_VERSION} \
-    && VIRTUAL_ENV="/venvs/cfn-lint" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/cfn-lint" \
+    && VIRTUAL_ENV="/venvs/cfn-lint" uv pip install cfn-lint[sarif]==${PIP_CFN_LINT_VERSION} \
+    && VIRTUAL_ENV="/venvs/cfn-lint" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/cfn-lint" rm -rf /venvs/cfn-lint/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/stylelint" \
-    && VIRTUAL_ENV="/venvs/stylelint" uv pip install --no-cache cpplint==${PIP_CPPLINT_VERSION} \
-    && VIRTUAL_ENV="/venvs/stylelint" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
-    && VIRTUAL_ENV="/venvs/stylelint" rm -rf /venvs/stylelint/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/djlint" \
-    && VIRTUAL_ENV="/venvs/djlint" uv pip install --no-cache djlint==${PIP_DJLINT_VERSION} \
-    && VIRTUAL_ENV="/venvs/djlint" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/djlint" \
+    && VIRTUAL_ENV="/venvs/djlint" uv pip install djlint==${PIP_DJLINT_VERSION} \
+    && VIRTUAL_ENV="/venvs/djlint" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/djlint" rm -rf /venvs/djlint/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/rumdl" \
-    && VIRTUAL_ENV="/venvs/rumdl" uv pip install --no-cache rumdl==${PIP_RUMDL_VERSION} \
-    && VIRTUAL_ENV="/venvs/rumdl" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/rumdl" \
+    && VIRTUAL_ENV="/venvs/rumdl" uv pip install rumdl==${PIP_RUMDL_VERSION} \
+    && VIRTUAL_ENV="/venvs/rumdl" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/rumdl" rm -rf /venvs/rumdl/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/pylint" \
-    && VIRTUAL_ENV="/venvs/pylint" uv pip install --no-cache pylint==${PIP_PYLINT_VERSION} typing-extensions==${PIP_TYPING_EXTENSIONS_VERSION} \
-    && VIRTUAL_ENV="/venvs/pylint" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/pylint" \
+    && VIRTUAL_ENV="/venvs/pylint" uv pip install pylint==${PIP_PYLINT_VERSION} typing-extensions==${PIP_TYPING_EXTENSIONS_VERSION} \
+    && VIRTUAL_ENV="/venvs/pylint" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/pylint" rm -rf /venvs/pylint/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/black" \
-    && VIRTUAL_ENV="/venvs/black" uv pip install --no-cache black[jupyter]==${PIP_BLACK_VERSION} \
-    && VIRTUAL_ENV="/venvs/black" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/black" \
+    && VIRTUAL_ENV="/venvs/black" uv pip install black[jupyter]==${PIP_BLACK_VERSION} \
+    && VIRTUAL_ENV="/venvs/black" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/black" rm -rf /venvs/black/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/flake8" \
-    && VIRTUAL_ENV="/venvs/flake8" uv pip install --no-cache flake8==${PIP_FLAKE8_VERSION} \
-    && VIRTUAL_ENV="/venvs/flake8" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/flake8" \
+    && VIRTUAL_ENV="/venvs/flake8" uv pip install flake8==${PIP_FLAKE8_VERSION} \
+    && VIRTUAL_ENV="/venvs/flake8" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/flake8" rm -rf /venvs/flake8/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/isort" \
-    && VIRTUAL_ENV="/venvs/isort" uv pip install --no-cache black==${PIP_BLACK_VERSION} isort==${PIP_ISORT_VERSION} \
-    && VIRTUAL_ENV="/venvs/isort" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/isort" \
+    && VIRTUAL_ENV="/venvs/isort" uv pip install black==${PIP_BLACK_VERSION} isort==${PIP_ISORT_VERSION} \
+    && VIRTUAL_ENV="/venvs/isort" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/isort" rm -rf /venvs/isort/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/bandit" \
-    && VIRTUAL_ENV="/venvs/bandit" uv pip install --no-cache bandit==${PIP_BANDIT_VERSION} bandit_sarif_formatter==${PIP_BANDIT_SARIF_FORMATTER_VERSION} bandit[toml]==${PIP_BANDIT_VERSION} \
-    && VIRTUAL_ENV="/venvs/bandit" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/bandit" \
+    && VIRTUAL_ENV="/venvs/bandit" uv pip install bandit==${PIP_BANDIT_VERSION} bandit_sarif_formatter==${PIP_BANDIT_SARIF_FORMATTER_VERSION} bandit[toml]==${PIP_BANDIT_VERSION} \
+    && VIRTUAL_ENV="/venvs/bandit" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/bandit" rm -rf /venvs/bandit/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/mypy" \
-    && VIRTUAL_ENV="/venvs/mypy" uv pip install --no-cache mypy==${PIP_MYPY_VERSION} \
-    && VIRTUAL_ENV="/venvs/mypy" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/mypy" \
+    && VIRTUAL_ENV="/venvs/mypy" uv pip install mypy==${PIP_MYPY_VERSION} \
+    && VIRTUAL_ENV="/venvs/mypy" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/mypy" rm -rf /venvs/mypy/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/nbqa" \
-    && VIRTUAL_ENV="/venvs/nbqa" uv pip install --no-cache nbqa==${PIP_NBQA_VERSION} mypy==${PIP_MYPY_VERSION} \
-    && VIRTUAL_ENV="/venvs/nbqa" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/nbqa" \
+    && VIRTUAL_ENV="/venvs/nbqa" uv pip install nbqa==${PIP_NBQA_VERSION} mypy==${PIP_MYPY_VERSION} \
+    && VIRTUAL_ENV="/venvs/nbqa" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/nbqa" rm -rf /venvs/nbqa/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/ruff" \
-    && VIRTUAL_ENV="/venvs/ruff" uv pip install --no-cache ruff==${PIP_RUFF_VERSION} \
-    && VIRTUAL_ENV="/venvs/ruff" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/ruff" \
+    && VIRTUAL_ENV="/venvs/ruff" uv pip install ruff==${PIP_RUFF_VERSION} \
+    && VIRTUAL_ENV="/venvs/ruff" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/ruff" rm -rf /venvs/ruff/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/ruff-format" \
-    && VIRTUAL_ENV="/venvs/ruff-format" uv pip install --no-cache ruff==${PIP_RUFF_VERSION} \
-    && VIRTUAL_ENV="/venvs/ruff-format" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/ruff-format" \
+    && VIRTUAL_ENV="/venvs/ruff-format" uv pip install ruff==${PIP_RUFF_VERSION} \
+    && VIRTUAL_ENV="/venvs/ruff-format" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/ruff-format" rm -rf /venvs/ruff-format/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/checkov" \
-    && VIRTUAL_ENV="/venvs/checkov" uv pip install --no-cache checkov==${PIP_CHECKOV_VERSION} \
-    && VIRTUAL_ENV="/venvs/checkov" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/checkov" \
+    && VIRTUAL_ENV="/venvs/checkov" uv pip install checkov==${PIP_CHECKOV_VERSION} \
+    && VIRTUAL_ENV="/venvs/checkov" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/checkov" rm -rf /venvs/checkov/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/semgrep" \
-    && VIRTUAL_ENV="/venvs/semgrep" uv pip install --no-cache semgrep==${PIP_SEMGREP_VERSION} \
-    && VIRTUAL_ENV="/venvs/semgrep" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/semgrep" \
+    && VIRTUAL_ENV="/venvs/semgrep" uv pip install semgrep==${PIP_SEMGREP_VERSION} \
+    && VIRTUAL_ENV="/venvs/semgrep" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/semgrep" rm -rf /venvs/semgrep/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/robocop" \
-    && VIRTUAL_ENV="/venvs/robocop" uv pip install --no-cache robotframework-robocop==${PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION} \
-    && VIRTUAL_ENV="/venvs/robocop" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/robocop" \
+    && VIRTUAL_ENV="/venvs/robocop" uv pip install robotframework-robocop==${PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION} \
+    && VIRTUAL_ENV="/venvs/robocop" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/robocop" rm -rf /venvs/robocop/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/rst-lint" \
-    && VIRTUAL_ENV="/venvs/rst-lint" uv pip install --no-cache Pygments==${PIP_PYGMENTS_VERSION} restructuredtext_lint==${PIP_RESTRUCTUREDTEXT_LINT_VERSION} \
-    && VIRTUAL_ENV="/venvs/rst-lint" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/rst-lint" \
+    && VIRTUAL_ENV="/venvs/rst-lint" uv pip install Pygments==${PIP_PYGMENTS_VERSION} restructuredtext_lint==${PIP_RESTRUCTUREDTEXT_LINT_VERSION} \
+    && VIRTUAL_ENV="/venvs/rst-lint" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/rst-lint" rm -rf /venvs/rst-lint/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/rstcheck" \
-    && VIRTUAL_ENV="/venvs/rstcheck" uv pip install --no-cache click==${PIP_RSTCHECK_CLICK_VERSION} rstcheck[toml,sphinx]==${PIP_RSTCHECK_VERSION} \
-    && VIRTUAL_ENV="/venvs/rstcheck" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/rstcheck" \
+    && VIRTUAL_ENV="/venvs/rstcheck" uv pip install click==${PIP_RSTCHECK_CLICK_VERSION} rstcheck[toml,sphinx]==${PIP_RSTCHECK_VERSION} \
+    && VIRTUAL_ENV="/venvs/rstcheck" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/rstcheck" rm -rf /venvs/rstcheck/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/rstfmt" \
-    && VIRTUAL_ENV="/venvs/rstfmt" uv pip install --no-cache rstfmt==${PIP_RSTFMT_VERSION} \
-    && VIRTUAL_ENV="/venvs/rstfmt" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/rstfmt" \
+    && VIRTUAL_ENV="/venvs/rstfmt" uv pip install rstfmt==${PIP_RSTFMT_VERSION} \
+    && VIRTUAL_ENV="/venvs/rstfmt" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/rstfmt" rm -rf /venvs/rstfmt/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/snakemake" \
-    && VIRTUAL_ENV="/venvs/snakemake" uv pip install --no-cache snakemake==${PIP_SNAKEMAKE_VERSION} \
-    && VIRTUAL_ENV="/venvs/snakemake" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/snakemake" \
+    && VIRTUAL_ENV="/venvs/snakemake" uv pip install snakemake==${PIP_SNAKEMAKE_VERSION} \
+    && VIRTUAL_ENV="/venvs/snakemake" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/snakemake" rm -rf /venvs/snakemake/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/snakefmt" \
-    && VIRTUAL_ENV="/venvs/snakefmt" uv pip install --no-cache snakefmt==${PIP_SNAKEFMT_VERSION} \
-    && VIRTUAL_ENV="/venvs/snakefmt" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/snakefmt" \
+    && VIRTUAL_ENV="/venvs/snakefmt" uv pip install snakefmt==${PIP_SNAKEFMT_VERSION} \
+    && VIRTUAL_ENV="/venvs/snakefmt" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/snakefmt" rm -rf /venvs/snakefmt/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/proselint" \
-    && VIRTUAL_ENV="/venvs/proselint" uv pip install --no-cache proselint==${PIP_PROSELINT_VERSION} \
-    && VIRTUAL_ENV="/venvs/proselint" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/proselint" \
+    && VIRTUAL_ENV="/venvs/proselint" uv pip install proselint==${PIP_PROSELINT_VERSION} \
+    && VIRTUAL_ENV="/venvs/proselint" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/proselint" rm -rf /venvs/proselint/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/codespell" \
-    && VIRTUAL_ENV="/venvs/codespell" uv pip install --no-cache codespell==${PIP_CODESPELL_VERSION} \
-    && VIRTUAL_ENV="/venvs/codespell" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/codespell" \
+    && VIRTUAL_ENV="/venvs/codespell" uv pip install codespell==${PIP_CODESPELL_VERSION} \
+    && VIRTUAL_ENV="/venvs/codespell" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/codespell" rm -rf /venvs/codespell/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/sqlfluff" \
-    && VIRTUAL_ENV="/venvs/sqlfluff" uv pip install --no-cache sqlfluff==${PIP_SQLFLUFF_VERSION} \
-    && VIRTUAL_ENV="/venvs/sqlfluff" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/sqlfluff" \
+    && VIRTUAL_ENV="/venvs/sqlfluff" uv pip install sqlfluff==${PIP_SQLFLUFF_VERSION} \
+    && VIRTUAL_ENV="/venvs/sqlfluff" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/sqlfluff" rm -rf /venvs/sqlfluff/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/yamllint" \
-    && VIRTUAL_ENV="/venvs/yamllint" uv pip install --no-cache yamllint==${PIP_YAMLLINT_VERSION} \
-    && VIRTUAL_ENV="/venvs/yamllint" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/yamllint" \
+    && VIRTUAL_ENV="/venvs/yamllint" uv pip install yamllint==${PIP_YAMLLINT_VERSION} \
+    && VIRTUAL_ENV="/venvs/yamllint" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/yamllint" rm -rf /venvs/yamllint/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
     && find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
     && rm -rf /root/.cache \
     && apk del .ml-build-deps
-ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/cpplint/bin:/venvs/cfn-lint/bin:/venvs/stylelint/bin:/venvs/djlint/bin:/venvs/rumdl/bin:/venvs/pylint/bin:/venvs/black/bin:/venvs/flake8/bin:/venvs/isort/bin:/venvs/bandit/bin:/venvs/mypy/bin:/venvs/nbqa/bin:/venvs/ruff/bin:/venvs/ruff-format/bin:/venvs/checkov/bin:/venvs/semgrep/bin:/venvs/robocop/bin:/venvs/rst-lint/bin:/venvs/rstcheck/bin:/venvs/rstfmt/bin:/venvs/snakemake/bin:/venvs/snakefmt/bin:/venvs/proselint/bin:/venvs/codespell/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
+ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/cpplint/bin:/venvs/cfn-lint/bin:/venvs/djlint/bin:/venvs/rumdl/bin:/venvs/pylint/bin:/venvs/black/bin:/venvs/flake8/bin:/venvs/isort/bin:/venvs/bandit/bin:/venvs/mypy/bin:/venvs/nbqa/bin:/venvs/ruff/bin:/venvs/ruff-format/bin:/venvs/checkov/bin:/venvs/semgrep/bin:/venvs/robocop/bin:/venvs/rst-lint/bin:/venvs/rstcheck/bin:/venvs/rstfmt/bin:/venvs/snakemake/bin:/venvs/snakefmt/bin:/venvs/proselint/bin:/venvs/codespell/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
 #PIPVENV__END
 
 ############################
@@ -788,7 +773,10 @@ RUN npm config set prefix /usr/local \
     && echo "Changing owner of node_modules files…" \
     && chown -R "$(id -u)":"$(id -g)" node_modules # fix for https://github.com/npm/cli/issues/5900 \
     && echo "Removing extra node_module files…" \
-    && find . \( -not -path "/proc" \) -and \( -type f \( -iname "*.d.ts" -o -iname "*.map" -o -iname "*.npmignore" -o -iname "*.travis.yml" -o -iname "CHANGELOG.md" -o -iname "README.md" -o -iname ".package-lock.json" -o -iname "package-lock.json" \) -o -type d -name /root/.npm/_cacache \) -delete
+    && find . \( -not -path "/proc" \) -and \( -type f \( -iname "*.d.ts" -o -iname "*.map" -o -iname "*.npmignore" -o -iname "*.travis.yml" -o -iname "*.md" -o -iname "*.markdown" -o -iname ".package-lock.json" -o -iname "package-lock.json" \) \) -delete \
+    && echo "Removing test and doc directories from node_modules…" \
+    && find ./node_modules -type d \( -iname "__tests__" -o -iname "test" -o -iname "tests" -o -iname "docs" -o -iname ".github" \) -prune -exec rm -rf {} + \
+    && rm -rf /root/.npm
 WORKDIR /
 
 #NPM__END
@@ -995,17 +983,19 @@ RUN set -eu; \
 # gherkin-lint installation
 # golangci-lint installation
     && wget -O- -nv https://golangci-lint.run/install.sh | sh -s "v${GO_GOLANGCI_LINT_VERSION}" \
-    && golangci-lint --version
-
+    && golangci-lint --version \
 # revive installation
 # Managed with COPY --link --from=revive /usr/bin/revive /usr/bin/revive
 # graphql-schema-linter installation
 # npm-groovy-lint installation
-ENV JAVA_HOME_17=/usr/lib/jvm/java-17-openjdk
+# Next line commented because already managed by another linter
+# ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
+# Next line commented because already managed by another linter
+# ENV PATH="$JAVA_HOME/bin:${PATH}"
 # djlint installation
 # htmlhint installation
 # checkstyle installation
-RUN curl --retry 5 --retry-delay 5 -sSL \
+    && curl --retry 5 --retry-delay 5 -sSL \
     "https://github.com/checkstyle/checkstyle/releases/download/checkstyle-${JAVA_CHECKSTYLE_VERSION}/checkstyle-${JAVA_CHECKSTYLE_VERSION}-all.jar" \
     --output /usr/bin/checkstyle \
 # pmd installation
@@ -1048,8 +1038,11 @@ RUN curl --retry 5 --retry-delay 5 -sSL \
     rm /tmp/kubescape.apk \
 # chktex installation
 # Managed with COPY --link --from=chktex /usr/bin/chktex /usr/bin/
-    && cd ~ && touch .chktexrc && cd / \
+    && cd ~ && touch .chktexrc && cd /
 # luacheck installation
+# luarocks compiles native rocks during installation: the toolchain is
+# only needed within this RUN and evicted from the final layers
+RUN apk add --no-cache --virtual .lua-build-deps gcc make musl-dev lua5.3-dev readline-dev \
     && wget --tries=5 https://github.com/cvega/luarocks/archive/v${LUA_LUACHECK_VERSION}-super-linter.tar.gz -O - -q | tar -xzf - \
     && cd luarocks-${LUA_LUACHECK_VERSION}-super-linter \
     && ./configure --with-lua-include=/usr/include/lua5.3 \
@@ -1058,14 +1051,20 @@ RUN curl --retry 5 --retry-delay 5 -sSL \
     && cd .. && rm -r luarocks-${LUA_LUACHECK_VERSION}-super-linter/ \
     && luarocks install luacheck \
     && cd / \
+    && apk del .lua-build-deps
+
 # stylua installation
 # Managed with COPY --link --from=cargo-bin-stylua /out/bin/stylua /usr/bin/stylua
 # markdownlint installation
 # markdown-table-formatter installation
 # rumdl installation
 # perlcritic installation
+# cpm compiles XS modules during installation: the toolchain is only
+# needed within this RUN and evicted from the final layers
+RUN apk add --no-cache --virtual .perl-build-deps gcc make musl-dev perl-dev \
     && curl -fsSL https://raw.githubusercontent.com/skaji/cpm/refs/tags/${PERL_PERLCRITIC_VERSION}/cpm | perl - install -g --show-build-log-on-failure --without-build --without-test --without-runtime Perl::Critic \
-    && rm -rf /root/.perl-cpm
+    && rm -rf /root/.perl-cpm \
+    && apk del .perl-build-deps
 
 # phpcs installation
 RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require squizlabs/php_codesniffer:${PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION}
@@ -1102,12 +1101,18 @@ ENV MYPY_CACHE_DIR=/tmp
 # ruff installation
 # ruff-format installation
 # lintr installation
-RUN mkdir -p /home/r-library \
+# R packages are compiled from source during installation: the
+# toolchain and -dev headers are only needed within this RUN and
+# evicted from the final layers
+RUN apk add --no-cache --virtual .r-build-deps gcc g++ make musl-dev linux-headers libffi-dev libxml2-dev R-dev \
+    && mkdir -p /home/r-library \
     && cp -r /usr/lib/R/library/ /home/r-library/ \
     && Rscript -e "install.packages(c('lintr','purrr'), repos = 'https://cloud.r-project.org/')" \
     && R -e "install.packages(list.dirs('/home/r-library',recursive = FALSE), repos = NULL, type = 'source')" \
+    && apk del .r-build-deps
+
 # raku installation
-    && case ${TARGETPLATFORM} in \
+RUN case ${TARGETPLATFORM} in \
   "linux/amd64")  RAKU_RAKU_ARCH=x86_64  ;; \
   "linux/arm64")  RAKU_RAKU_ARCH=aarch64 ;; \
 esac \
@@ -1236,6 +1241,14 @@ RUN --mount=type=cache,target=/root/.cache/uv,from=build-ml-core \
     --mount=from=uv,source=/uv,target=/bin/uv \
     uv pip install --system -e ".[llm]"
 #PIP_PROJECT__END
+
+#############################################################################
+# Strip debug symbols from ELF binaries (Go binaries are often unstripped)  #
+#############################################################################
+RUN apk add --no-cache --virtual .strip-tools binutils \
+    && find /bin /usr/bin /usr/local/bin -maxdepth 1 -type f \
+         -exec sh -c 'strip --strip-unneeded "$@" 2>/dev/null || true' _ {} + \
+    && apk del .strip-tools
 
 #######################################
 # Copy scripts and rules to container #

@@ -72,6 +72,8 @@ DEFAULT_DOCKERFILE_BUILD_APK_PACKAGES = [
     "libffi-dev",
     "make",
     "musl-dev",
+    # native gem extensions need the ruby headers at build time only
+    "ruby-dev",
 ]
 
 DEFAULT_DOCKERFILE_NPM_ARGS: list[str] = []
@@ -84,11 +86,11 @@ DEFAULT_DOCKERFILE_NPM_APK_PACKAGES = [
 
 DEFAULT_DOCKERFILE_GEM_ARGS: list[str] = []
 
+# gems are installed with --no-document, so rdoc is not needed; ruby-dev is
+# only needed while native extensions compile and lives in the build list
 DEFAULT_DOCKERFILE_GEM_APK_PACKAGES = [
     "ruby",
-    "ruby-dev",
     "ruby-bundler",
-    "ruby-rdoc",
 ]
 
 DEFAULT_DOCKERFILE_PIP_ARGS = [

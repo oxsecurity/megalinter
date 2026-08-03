@@ -83,7 +83,7 @@ RUN apk -U --no-cache upgrade \
                 libstdc++ \
                 openssh \
                 su-exec \
-                openjdk17 \
+                openjdk21 \
                 npm \
                 nodejs-current \
                 yarn \
@@ -158,7 +158,10 @@ RUN npm config set prefix /usr/local \
     && echo "Changing owner of node_modules files…" \
     && chown -R "$(id -u)":"$(id -g)" node_modules # fix for https://github.com/npm/cli/issues/5900 \
     && echo "Removing extra node_module files…" \
-    && find . \( -not -path "/proc" \) -and \( -type f \( -iname "*.d.ts" -o -iname "*.map" -o -iname "*.npmignore" -o -iname "*.travis.yml" -o -iname "CHANGELOG.md" -o -iname "README.md" -o -iname ".package-lock.json" -o -iname "package-lock.json" \) -o -type d -name /root/.npm/_cacache \) -delete
+    && find . \( -not -path "/proc" \) -and \( -type f \( -iname "*.d.ts" -o -iname "*.map" -o -iname "*.npmignore" -o -iname "*.travis.yml" -o -iname "*.md" -o -iname "*.markdown" -o -iname ".package-lock.json" -o -iname "package-lock.json" \) \) -delete \
+    && echo "Removing test and doc directories from node_modules…" \
+    && find ./node_modules -type d \( -iname "__tests__" -o -iname "test" -o -iname "tests" -o -iname "docs" -o -iname ".github" \) -prune -exec rm -rf {} + \
+    && rm -rf /root/.npm
 WORKDIR /
 
 #NPM__END
@@ -172,7 +175,8 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 #OTHER__START
 # npm-groovy-lint installation
-ENV JAVA_HOME_17=/usr/lib/jvm/java-17-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
+ENV PATH="$JAVA_HOME/bin:${PATH}"
 #OTHER__END
 
 ################################
@@ -185,6 +189,14 @@ RUN --mount=type=cache,target=/root/.cache/uv,from=build-ml-core \
     --mount=from=uv,source=/uv,target=/bin/uv \
     uv pip install --system -e .
 #PIP_PROJECT__END
+
+#############################################################################
+# Strip debug symbols from ELF binaries (Go binaries are often unstripped)  #
+#############################################################################
+RUN apk add --no-cache --virtual .strip-tools binutils \
+    && find /bin /usr/bin /usr/local/bin -maxdepth 1 -type f \
+         -exec sh -c 'strip --strip-unneeded "$@" 2>/dev/null || true' _ {} + \
+    && apk del .strip-tools
 
 #######################################
 # Copy scripts and rules to container #

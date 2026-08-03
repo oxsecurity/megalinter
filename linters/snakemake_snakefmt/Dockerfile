@@ -137,11 +137,12 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #############################################################################################
 
 #PIPVENV__START
-RUN apk add --no-cache --virtual .ml-build-deps gcc libffi-dev make musl-dev && \
-    uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/snakefmt" \
-    && VIRTUAL_ENV="/venvs/snakefmt" uv pip install --no-cache snakefmt==${PIP_SNAKEFMT_VERSION} \
-    && VIRTUAL_ENV="/venvs/snakefmt" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+RUN apk add --no-cache --virtual .ml-build-deps gcc libffi-dev make musl-dev ruby-dev && \
+    export UV_LINK_MODE=hardlink \
+    && uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
+    && uv venv --seed --no-project --no-managed-python "/venvs/snakefmt" \
+    && VIRTUAL_ENV="/venvs/snakefmt" uv pip install snakefmt==${PIP_SNAKEFMT_VERSION} \
+    && VIRTUAL_ENV="/venvs/snakefmt" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/snakefmt" rm -rf /venvs/snakefmt/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
     && find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
     && rm -rf /root/.cache \
@@ -182,6 +183,14 @@ RUN --mount=type=cache,target=/root/.cache/uv,from=build-ml-core \
     --mount=from=uv,source=/uv,target=/bin/uv \
     uv pip install --system -e .
 #PIP_PROJECT__END
+
+#############################################################################
+# Strip debug symbols from ELF binaries (Go binaries are often unstripped)  #
+#############################################################################
+RUN apk add --no-cache --virtual .strip-tools binutils \
+    && find /bin /usr/bin /usr/local/bin -maxdepth 1 -type f \
+         -exec sh -c 'strip --strip-unneeded "$@" 2>/dev/null || true' _ {} + \
+    && apk del .strip-tools
 
 #######################################
 # Copy scripts and rules to container #

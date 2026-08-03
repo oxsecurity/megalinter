@@ -81,16 +81,10 @@ RUN apk -U --no-cache upgrade \
                 libstdc++ \
                 openssh \
                 su-exec \
-                gcc \
-                g++ \
                 libcurl \
-                libffi-dev \
-                libxml2-dev \
+                libxml2 \
                 libxml2-utils \
-                linux-headers \
                 R \
-                R-dev \
-                R-doc \
     && git config --global core.autocrlf true
 #APK__END
 
@@ -165,10 +159,15 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 #OTHER__START
 # lintr installation
-RUN mkdir -p /home/r-library \
+# R packages are compiled from source during installation: the
+# toolchain and -dev headers are only needed within this RUN and
+# evicted from the final layers
+RUN apk add --no-cache --virtual .r-build-deps gcc g++ make musl-dev linux-headers libffi-dev libxml2-dev R-dev \
+    && mkdir -p /home/r-library \
     && cp -r /usr/lib/R/library/ /home/r-library/ \
     && Rscript -e "install.packages(c('lintr','purrr'), repos = 'https://cloud.r-project.org/')" \
-    && R -e "install.packages(list.dirs('/home/r-library',recursive = FALSE), repos = NULL, type = 'source')"
+    && R -e "install.packages(list.dirs('/home/r-library',recursive = FALSE), repos = NULL, type = 'source')" \
+    && apk del .r-build-deps
 
 #OTHER__END
 
@@ -182,6 +181,14 @@ RUN --mount=type=cache,target=/root/.cache/uv,from=build-ml-core \
     --mount=from=uv,source=/uv,target=/bin/uv \
     uv pip install --system -e .
 #PIP_PROJECT__END
+
+#############################################################################
+# Strip debug symbols from ELF binaries (Go binaries are often unstripped)  #
+#############################################################################
+RUN apk add --no-cache --virtual .strip-tools binutils \
+    && find /bin /usr/bin /usr/local/bin -maxdepth 1 -type f \
+         -exec sh -c 'strip --strip-unneeded "$@" 2>/dev/null || true' _ {} + \
+    && apk del .strip-tools
 
 #######################################
 # Copy scripts and rules to container #

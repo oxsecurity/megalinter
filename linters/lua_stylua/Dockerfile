@@ -100,11 +100,6 @@ RUN apk -U --no-cache upgrade \
                 openssh \
                 su-exec \
                 lua5.3 \
-                lua5.3-dev \
-                readline-dev \
-                gcc \
-                make \
-                musl-dev \
     && git config --global core.autocrlf true
 #APK__END
 
@@ -192,6 +187,14 @@ RUN --mount=type=cache,target=/root/.cache/uv,from=build-ml-core \
     --mount=from=uv,source=/uv,target=/bin/uv \
     uv pip install --system -e .
 #PIP_PROJECT__END
+
+#############################################################################
+# Strip debug symbols from ELF binaries (Go binaries are often unstripped)  #
+#############################################################################
+RUN apk add --no-cache --virtual .strip-tools binutils \
+    && find /bin /usr/bin /usr/local/bin -maxdepth 1 -type f \
+         -exec sh -c 'strip --strip-unneeded "$@" 2>/dev/null || true' _ {} + \
+    && apk del .strip-tools
 
 #######################################
 # Copy scripts and rules to container #

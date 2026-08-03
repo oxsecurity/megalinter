@@ -85,11 +85,6 @@ RUN apk -U --no-cache upgrade \
                 openssh \
                 su-exec \
                 lua5.3 \
-                lua5.3-dev \
-                readline-dev \
-                gcc \
-                make \
-                musl-dev \
                 openssl \
     && git config --global core.autocrlf true
 #APK__END
@@ -165,14 +160,18 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 #OTHER__START
 # luacheck installation
-RUN wget --tries=5 https://github.com/cvega/luarocks/archive/v${LUA_LUACHECK_VERSION}-super-linter.tar.gz -O - -q | tar -xzf - \
+# luarocks compiles native rocks during installation: the toolchain is
+# only needed within this RUN and evicted from the final layers
+RUN apk add --no-cache --virtual .lua-build-deps gcc make musl-dev lua5.3-dev readline-dev \
+    && wget --tries=5 https://github.com/cvega/luarocks/archive/v${LUA_LUACHECK_VERSION}-super-linter.tar.gz -O - -q | tar -xzf - \
     && cd luarocks-${LUA_LUACHECK_VERSION}-super-linter \
     && ./configure --with-lua-include=/usr/include/lua5.3 \
     && make \
     && make -b install \
     && cd .. && rm -r luarocks-${LUA_LUACHECK_VERSION}-super-linter/ \
     && luarocks install luacheck \
-    && cd /
+    && cd / \
+    && apk del .lua-build-deps
 
 #OTHER__END
 
@@ -186,6 +185,14 @@ RUN --mount=type=cache,target=/root/.cache/uv,from=build-ml-core \
     --mount=from=uv,source=/uv,target=/bin/uv \
     uv pip install --system -e .
 #PIP_PROJECT__END
+
+#############################################################################
+# Strip debug symbols from ELF binaries (Go binaries are often unstripped)  #
+#############################################################################
+RUN apk add --no-cache --virtual .strip-tools binutils \
+    && find /bin /usr/bin /usr/local/bin -maxdepth 1 -type f \
+         -exec sh -c 'strip --strip-unneeded "$@" 2>/dev/null || true' _ {} + \
+    && apk del .strip-tools
 
 #######################################
 # Copy scripts and rules to container #

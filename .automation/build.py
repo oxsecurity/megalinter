@@ -635,11 +635,20 @@ def build_dockerfile(
             + ' -o -iname "*.map"'
             + ' -o -iname "*.npmignore"'
             + ' -o -iname "*.travis.yml"'
-            + ' -o -iname "CHANGELOG.md"'
-            + ' -o -iname "README.md"'
+            + ' -o -iname "*.md"'
+            + ' -o -iname "*.markdown"'
             + ' -o -iname ".package-lock.json"'
             + ' -o -iname "package-lock.json"'
-            + " \\) -o -type d -name /root/.npm/_cacache \\) -delete\n"
+            + " \\) \\) -delete \\\n"
+            + '    && echo "Removing test and doc directories from node_modules…" \\\n'
+            + "    && find ./node_modules -type d"
+            + ' \\( -iname "__tests__"'
+            + ' -o -iname "test"'
+            + ' -o -iname "tests"'
+            + ' -o -iname "docs"'
+            + ' -o -iname ".github"'
+            + " \\) -prune -exec rm -rf {} + \\\n"
+            + "    && rm -rf /root/.npm\n"
             + "WORKDIR /\n"
         )
     replace_in_file(dockerfile, "#NPM__START", "#NPM__END", npm_install_command)
@@ -672,21 +681,26 @@ def build_dockerfile(
     # layer count low (less cache export overhead per build); cache locality
     # for one-linter-version-bumps was a net loss once the per-layer GHA
     # cache I/O was measured.
+    # Venv installs go through the uv cache with hardlink mode so identical
+    # wheels (setuptools, shared deps like black/mypy) are stored once across
+    # all venvs; the cache dir is removed at the end of the RUN but hardlinked
+    # files keep living in the venvs.
     pipenv_install_command = ""
     if len(pipvenv_packages.items()) > 0:
         pipenv_install_command = (
-            "RUN " + build_deps_add + "uv pip install --system --no-cache "
+            "RUN " + build_deps_add + "export UV_LINK_MODE=hardlink \\\n"
+            "    && uv pip install --system --no-cache "
             "pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \\\n"
         )
         env_path_command = 'ENV PATH="${PATH}"'
         venv_install_segments = []
         for pip_linter, pip_linter_packages in pipvenv_packages.items():
             venv_install_segments.append(
-                f'    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/{pip_linter}" \\\n'
-                + f'    && VIRTUAL_ENV="/venvs/{pip_linter}" uv pip install --no-cache '
+                f'    && uv venv --seed --no-project --no-managed-python "/venvs/{pip_linter}" \\\n'
+                + f'    && VIRTUAL_ENV="/venvs/{pip_linter}" uv pip install '
                 + (" ".join(pip_linter_packages))
                 + " \\\n"
-                + f'    && VIRTUAL_ENV="/venvs/{pip_linter}" uv pip install --no-cache --upgrade '
+                + f'    && VIRTUAL_ENV="/venvs/{pip_linter}" uv pip install --upgrade '
                 + '"wheel>=0.46.2" "setuptools>=75.8.0" \\\n'
                 + f'    && VIRTUAL_ENV="/venvs/{pip_linter}" rm -rf '
                 + f"/venvs/{pip_linter}/lib/python3.13/site-packages/setuptools/_vendor/wheel* \\\n"

@@ -94,9 +94,7 @@ RUN apk -U --no-cache upgrade \
                 openssh \
                 su-exec \
                 ruby \
-                ruby-dev \
                 ruby-bundler \
-                ruby-rdoc \
     && git config --global core.autocrlf true
 #APK__END
 
@@ -137,7 +135,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #############################################################################################
 
 #GEM__START
-RUN apk add --no-cache --virtual .ml-build-deps gcc libffi-dev make musl-dev && \
+RUN apk add --no-cache --virtual .ml-build-deps gcc libffi-dev make musl-dev ruby-dev && \
     echo 'gem: --no-document' >> ~/.gemrc && \
     gem install \
           rubocop:${GEM_RUBOCOP_VERSION} \
@@ -192,6 +190,14 @@ RUN --mount=type=cache,target=/root/.cache/uv,from=build-ml-core \
     --mount=from=uv,source=/uv,target=/bin/uv \
     uv pip install --system -e .
 #PIP_PROJECT__END
+
+#############################################################################
+# Strip debug symbols from ELF binaries (Go binaries are often unstripped)  #
+#############################################################################
+RUN apk add --no-cache --virtual .strip-tools binutils \
+    && find /bin /usr/bin /usr/local/bin -maxdepth 1 -type f \
+         -exec sh -c 'strip --strip-unneeded "$@" 2>/dev/null || true' _ {} + \
+    && apk del .strip-tools
 
 #######################################
 # Copy scripts and rules to container #
