@@ -83,6 +83,8 @@ RUN apk -U --no-cache upgrade \
                 gcompat \
                 git \
                 git-lfs \
+                libgcc \
+                libstdc++ \
                 openssh \
                 su-exec \
                 build-base \

@@ -245,6 +245,8 @@ RUN apk -U --no-cache upgrade \
                 gcompat \
                 git \
                 git-lfs \
+                libgcc \
+                libstdc++ \
                 openssh \
                 su-exec \
                 openjdk21 \
@@ -257,7 +259,6 @@ RUN apk -U --no-cache upgrade \
                 unzip \
                 libxml2-dev \
                 libxml2-utils \
-                libgcc \
                 npm \
                 nodejs-current \
                 yarn \

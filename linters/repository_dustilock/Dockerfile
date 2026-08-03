@@ -85,6 +85,8 @@ RUN apk -U --no-cache upgrade \
                 gcompat \
                 git \
                 git-lfs \
+                libgcc \
+                libstdc++ \
                 openssh \
                 su-exec \
     && git config --global core.autocrlf true

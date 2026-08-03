@@ -77,13 +77,14 @@ RUN apk -U --no-cache upgrade \
                 gcompat \
                 git \
                 git-lfs \
+                libgcc \
+                libstdc++ \
                 openssh \
                 su-exec \
                 gcc \
                 g++ \
                 libcurl \
                 libffi-dev \
-                libgcc \
                 libxml2-dev \
                 libxml2-utils \
                 linux-headers \

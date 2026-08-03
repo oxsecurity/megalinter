@@ -51,6 +51,12 @@ DEFAULT_DOCKERFILE_APK_PACKAGES = [
     "gcompat",
     "git",
     "git-lfs",
+    # runtime libraries (libgcc_s.so.1, libstdc++.so.6) needed by Rust and C++
+    # prebuilt binaries (sarif-fmt, shellcheck-sarif, zizmor, vale, …); they
+    # were previously pulled in transitively by the gcc package, which is now
+    # evicted from final layers
+    "libgcc",
+    "libstdc++",
     "openssh",
     # su-exec for user switch in entrypoint
     "su-exec",

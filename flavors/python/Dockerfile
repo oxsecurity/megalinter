@@ -275,6 +275,8 @@ RUN apk -U --no-cache upgrade \
                 gcompat \
                 git \
                 git-lfs \
+                libgcc \
+                libstdc++ \
                 openssh \
                 su-exec \
                 openjdk21 \
@@ -287,7 +289,6 @@ RUN apk -U --no-cache upgrade \
                 py3-pybind11-dev \
                 libxml2-dev \
                 libxml2-utils \
-                libgcc \
                 npm \
                 nodejs-current \
                 yarn \

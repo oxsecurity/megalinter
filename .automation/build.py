@@ -671,9 +671,7 @@ def build_dockerfile(
     pipenv_install_command = ""
     if len(pipvenv_packages.items()) > 0:
         pipenv_install_command = (
-            "RUN "
-            + build_deps_add
-            + "uv pip install --system --no-cache "
+            "RUN " + build_deps_add + "uv pip install --system --no-cache "
             "pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \\\n"
         )
         env_path_command = 'ENV PATH="${PATH}"'
@@ -872,7 +870,8 @@ def generate_linter_dockerfiles():
                 "    ln -sf /usr/bin/megalinter_exec.sh /usr/local/bin/megalinter_exec",
                 # PYTHONDONTWRITEBYTECODE avoids a ~45MB __pycache__ layer;
                 # bytecode is regenerated in the container writable layer at runtime
-                'RUN export PYTHONDONTWRITEBYTECODE=1 && export STANDALONE_LINTER_VERSION="$(python -m megalinter.run --input /tmp --linterversion)" && \\',
+                "RUN export PYTHONDONTWRITEBYTECODE=1 && "
+                'export STANDALONE_LINTER_VERSION="$(python -m megalinter.run --input /tmp --linterversion)" && \\',
                 "    echo $STANDALONE_LINTER_VERSION",
                 # "    echo $STANDALONE_LINTER_VERSION >> ~/.bashrc && source ~/.bashrc",
                 'ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]',

@@ -152,12 +152,13 @@ RUN apk -U --no-cache upgrade \
                 gcompat \
                 git \
                 git-lfs \
+                libgcc \
+                libstdc++ \
                 openssh \
                 su-exec \
                 openjdk17 \
                 libxml2-dev \
                 libxml2-utils \
-                libgcc \
                 npm \
                 nodejs-current \
                 yarn \
