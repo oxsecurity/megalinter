@@ -77,6 +77,16 @@ Whatever the mode, summarize the result in this shape (this is what `megalinter-
 
 Distinguish **blocking** linters (❌, fail the job) from non-blocking ones (⚠️, `DISABLE_ERRORS: true`). A `failure` status means the job/run itself broke (container engine, network, configuration): include a `"failure_reason"` field with a short cause excerpt instead of linter errors. In watch mode, a `"job_url"` field may be added for reference.
 
+## Performance check (even when the run is green)
+
+MegaLinter's summary table includes an `Elapsed time` column per linter — always collect it. Add a `"slow_linters"` field to the output when any linter took **more than 30 seconds** or more than **25% of the total lint time**:
+
+```json
+"slow_linters": [{"key": "REPOSITORY_GRYPE", "elapsed_seconds": 116.6}]
+```
+
+When `slow_linters` is non-empty, load `performance.md` from this skill's directory and report the matching improvement suggestions to the user — explicitly noting that nothing is failing and these are pure speed wins. Never apply a performance change (exclusions, caching, disabling a linter) without the user's agreement.
+
 ## Optimization: sub-agents (Claude Code and compatible agents)
 
 If sub-agents are available and the agent definitions are installed (see `megalinter-setup`):

@@ -30,6 +30,10 @@ The skills are agent-agnostic but optimized for platforms supporting sub-agents 
 
 On agents without sub-agent support, every skill degrades gracefully to inline execution.
 
+## Performance suggestions
+
+`megalinter-check` always collects per-linter elapsed times: when a linter is unusually slow (over 30 seconds or 25% of the run), it reports speed improvement suggestions from its `performance.md` playbook (DB caching for security scanners, targeted exclusions, flavor selection, diff-only CI linting...) — even when nothing is failing. Suggestions are never applied without user agreement.
+
 ## Safety rules
 
 - Fixes are applied automatically only when safe; ambiguous cases are asked to the user

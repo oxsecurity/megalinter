@@ -44,6 +44,7 @@ A compact JSON object, nothing else:
 
 - `linters` contains only linters with errors (blocking first; non-blocking ones with `"blocking": false`).
 - `samples`: at most 10 representative error lines per linter, verbatim.
+- Also parse the `Elapsed time` column of the summary table (even on success) and add a `"slow_linters": [{"key": "...", "elapsed_seconds": ...}]` field listing linters over 30 seconds or over 25% of the total lint time.
 - `status: "failure"` for non-lint failures (Docker missing, image pull failed, bad configuration): include `"failure_reason"` with a ≤20-line excerpt.
 
 ## Constraints

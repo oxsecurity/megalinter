@@ -18,6 +18,7 @@ You orchestrate MegaLinter on this repository. MegaLinter is a mega-linter aggre
 3. **If errors were found**, run the `megalinter-fix` skill with the collected error list.
 4. **Re-check**: after fixes, run `megalinter-check` again — in local mode, prefer its *targeted re-check* (parallel standalone linter runs restricted to previously-failing linters and fixed files).
 5. Repeat steps 3-4 **at most 3 times**. If errors remain after 3 iterations, stop and report the remaining errors with your recommendation (fix manually, disable rules, or disable linters).
+6. **Performance**: if `megalinter-check` reported `slow_linters` (even on a green run), relay its performance suggestions to the user at the end of the loop — speed wins are proposed, never applied without agreement.
 
 ## Rules
 
