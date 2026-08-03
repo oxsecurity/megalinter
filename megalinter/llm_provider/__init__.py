@@ -22,11 +22,13 @@ _LAZY_PROVIDER_MODULES = {
     "GrokProvider": "llm_provider_grok",
 }
 
+# pylint: disable=undefined-all-variable
 __all__ = [
     "LLMProvider",
     "LLMProviderFactory",
     *_LAZY_PROVIDER_MODULES.keys(),
 ]
+# pylint: enable=undefined-all-variable
 
 
 def __getattr__(name):
