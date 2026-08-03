@@ -37,6 +37,7 @@
     "**/*.test.js",
     "**/CHANGELOG.md",
     "**/README.md",
+    "**/skills/**/*.md",
     "**/licenses/*.md",
     "**/TEMPLATES/java-pmd-ruleset.xml"
   ]
