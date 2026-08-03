@@ -8,6 +8,10 @@ install:
     - lua5.3
     - lua5.3-dev
     - readline-dev
+    # luarocks compiles native rocks during installation
+    - gcc
+    - make
+    - musl-dev
 linters:
   # LUACHECK
   - linter_name: luacheck

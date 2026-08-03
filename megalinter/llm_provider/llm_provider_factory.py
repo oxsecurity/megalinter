@@ -37,9 +37,17 @@ class LLMProviderFactory:
 
         try:
             module_name, class_name = cls.SUPPORTED_PROVIDERS[provider_name]
-            provider_class = getattr(
-                import_module(f".{module_name}", __package__), class_name
-            )
+            try:
+                provider_module = import_module(f".{module_name}", __package__)
+            except ModuleNotFoundError:
+                logging.warning(
+                    f"[LLM Advisor] The {provider_name} provider SDK is not installed "
+                    "in this image (standalone linter images exclude LLM Advisor "
+                    "dependencies): use the main or a flavor MegaLinter image, "
+                    'or pip install "megalinter[llm]"'
+                )
+                return None
+            provider_class = getattr(provider_module, class_name)
             provider: LLMProvider  # type: ignore[assignment]
             provider = provider_class()  # type: ignore[abstract]
 

@@ -15,6 +15,10 @@ install:
   apk:
     - perl
     - perl-dev
+    # cpanm compiles XS modules during installation
+    - gcc
+    - make
+    - musl-dev
 supported_platforms:
   platform:
     - linux/amd64

@@ -24,13 +24,6 @@ dependencies = [
   "importlib-metadata>=3.10; python_version < '3.9'",
   "jsonpickle",
   "langchain-core~=1.5.1",
-  "langchain-openai~=1.4.1",
-  "langchain-anthropic~=1.5.2",
-  "langchain-google-genai~=4.3.1",
-  "langchain-mistralai~=1.1.1",
-  "langchain-ollama~=1.1.0",
-  "langchain-deepseek~=1.1.0",
-  "langchain-community~=0.4.1",
   "multiprocessing_logging",
   "pygithub",
   "pyjwt>=2.12.0",
@@ -46,12 +39,28 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+llm = [
+  "langchain-openai~=1.4.1",
+  "langchain-anthropic~=1.5.2",
+  "langchain-google-genai~=4.3.1",
+  "langchain-mistralai~=1.1.1",
+  "langchain-ollama~=1.1.0",
+  "langchain-deepseek~=1.1.0",
+  "langchain-community~=0.4.1",
+]
 huggingface = [
   "langchain-huggingface",
   "transformers",
   "torch",
 ]
 all-llm = [
+  "langchain-openai~=1.4.1",
+  "langchain-anthropic~=1.5.2",
+  "langchain-google-genai~=4.3.1",
+  "langchain-mistralai~=1.1.1",
+  "langchain-ollama~=1.1.0",
+  "langchain-deepseek~=1.1.0",
+  "langchain-community~=0.4.1",
   "langchain-huggingface",
   "transformers",
   "torch",

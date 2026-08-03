@@ -1298,14 +1298,7 @@ dependencies = [
     { name = "commentjson" },
     { name = "gitpython" },
     { name = "jsonpickle" },
-    { name = "langchain-anthropic" },
-    { name = "langchain-community" },
     { name = "langchain-core" },
-    { name = "langchain-deepseek" },
-    { name = "langchain-google-genai" },
-    { name = "langchain-mistralai" },
-    { name = "langchain-ollama" },
-    { name = "langchain-openai" },
     { name = "multiprocessing-logging" },
     { name = "pygithub" },
     { name = "pyjwt" },
@@ -1322,7 +1315,14 @@ dependencies = [
 
 [package.optional-dependencies]
 all-llm = [
+    { name = "langchain-anthropic" },
+    { name = "langchain-community" },
+    { name = "langchain-deepseek" },
+    { name = "langchain-google-genai" },
     { name = "langchain-huggingface" },
+    { name = "langchain-mistralai" },
+    { name = "langchain-ollama" },
+    { name = "langchain-openai" },
     { name = "torch" },
     { name = "transformers" },
 ]
@@ -1331,6 +1331,15 @@ huggingface = [
     { name = "torch" },
     { name = "transformers" },
 ]
+llm = [
+    { name = "langchain-anthropic" },
+    { name = "langchain-community" },
+    { name = "langchain-deepseek" },
+    { name = "langchain-google-genai" },
+    { name = "langchain-mistralai" },
+    { name = "langchain-ollama" },
+    { name = "langchain-openai" },
+]
 
 [package.metadata]
 requires-dist = [
@@ -1338,16 +1347,23 @@ requires-dist = [
     { name = "gitpython" },
     { name = "importlib-metadata", marker = "python_full_version < '3.9'", specifier = ">=3.10" },
     { name = "jsonpickle" },
-    { name = "langchain-anthropic", specifier = "~=1.5.2" },
-    { name = "langchain-community", specifier = "~=0.4.1" },
+    { name = "langchain-anthropic", marker = "extra == 'all-llm'", specifier = "~=1.5.2" },
+    { name = "langchain-anthropic", marker = "extra == 'llm'", specifier = "~=1.5.2" },
+    { name = "langchain-community", marker = "extra == 'all-llm'", specifier = "~=0.4.1" },
+    { name = "langchain-community", marker = "extra == 'llm'", specifier = "~=0.4.1" },
     { name = "langchain-core", specifier = "~=1.5.1" },
-    { name = "langchain-deepseek", specifier = "~=1.1.0" },
-    { name = "langchain-google-genai", specifier = "~=4.3.1" },
+    { name = "langchain-deepseek", marker = "extra == 'all-llm'", specifier = "~=1.1.0" },
+    { name = "langchain-deepseek", marker = "extra == 'llm'", specifier = "~=1.1.0" },
+    { name = "langchain-google-genai", marker = "extra == 'all-llm'", specifier = "~=4.3.1" },
+    { name = "langchain-google-genai", marker = "extra == 'llm'", specifier = "~=4.3.1" },
     { name = "langchain-huggingface", marker = "extra == 'all-llm'" },
     { name = "langchain-huggingface", marker = "extra == 'huggingface'" },
-    { name = "langchain-mistralai", specifier = "~=1.1.1" },
-    { name = "langchain-ollama", specifier = "~=1.1.0" },
-    { name = "langchain-openai", specifier = "~=1.4.1" },
+    { name = "langchain-mistralai", marker = "extra == 'all-llm'", specifier = "~=1.1.1" },
+    { name = "langchain-mistralai", marker = "extra == 'llm'", specifier = "~=1.1.1" },
+    { name = "langchain-ollama", marker = "extra == 'all-llm'", specifier = "~=1.1.0" },
+    { name = "langchain-ollama", marker = "extra == 'llm'", specifier = "~=1.1.0" },
+    { name = "langchain-openai", marker = "extra == 'all-llm'", specifier = "~=1.4.1" },
+    { name = "langchain-openai", marker = "extra == 'llm'", specifier = "~=1.4.1" },
     { name = "multiprocessing-logging" },
     { name = "pygithub" },
     { name = "pyjwt", specifier = ">=2.12.0" },
@@ -1365,7 +1381,7 @@ requires-dist = [
     { name = "transformers", marker = "extra == 'huggingface'" },
     { name = "urllib3", specifier = ">=2.5.0" },
 ]
-provides-extras = ["all-llm", "huggingface"]
+provides-extras = ["all-llm", "huggingface", "llm"]
 
 [[package]]
 name = "mpmath"
