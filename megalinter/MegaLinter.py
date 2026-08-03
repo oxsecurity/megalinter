@@ -15,8 +15,6 @@ from shutil import copytree
 from uuid import uuid1
 
 import git
-from multiprocessing_logging import install_mp_handler, uninstall_mp_handler
-
 from megalinter import (
     Linter,
     config,
@@ -43,6 +41,7 @@ from megalinter.utils_reporter import (
     log_section_start,
     register_user_notification,
 )
+from multiprocessing_logging import install_mp_handler, uninstall_mp_handler
 
 REMOVED_LINTERS_NOTIFICATION_KEY = "removed_linters_references"
 REMOVED_LINTERS_NOTIFICATION_TEMPLATE = (
