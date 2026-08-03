@@ -1,0 +1,65 @@
+---
+name: megalinter-setup
+description: Install or upgrade MegaLinter on a repository. Use when the user wants to add MegaLinter to a project, set up linting CI, update MegaLinter configuration or version, or says "install megalinter", "setup linting", "add code quality checks". Always goes through npx mega-linter-runner (--install or --upgrade), then refines .mega-linter.yml.
+---
+
+# MegaLinter setup
+
+Install or upgrade MegaLinter on the current repository. **Always use `npx mega-linter-runner` to scaffold or upgrade the configuration — never write `.mega-linter.yml` or CI workflow files from scratch.** Only refine the generated files afterwards.
+
+## 1. Analyze the repository
+
+Gather what you need to answer the installer's options:
+
+- **Flavor**: detect the main technology and pick a [flavor](https://megalinter.io/flavors/) (`python`, `javascript`, `java`, `go`, `php`, `ruby`, `rust`, `salesforce`, `swift`, `terraform`, `dotnet`, `dotnetweb`, `c_cpp`, `documentation`, `formatters`, `security`, ...). Mixed or unclear → `all`.
+- **CI system**: from existing config (`.github/` → `gitHubActions`, `.gitlab-ci.yml` → `gitLabCI`, `azure-pipelines.yml` → `azure`, `bitbucket-pipelines.yml` → `bitbucket`, `Jenkinsfile` → `jenkins`, `.drone.yml` → `droneCI`) or the git remote host. None → `other`.
+- **Default branch**: `git remote show origin` or the current repository default.
+
+## 2. Install or upgrade
+
+**No MegaLinter configuration yet** — run the installer non-interactively:
+
+```bash
+npx mega-linter-runner --install --no-prompt \
+  --flavor <flavor> \
+  --setup-ci <ci> \
+  --setup-default-branch <branch> \
+  --fix
+```
+
+Notes:
+
+- The whole codebase is validated on each run (default). Pass `--setup-validate-all-code-base diff` only if the user explicitly asks to lint updated files only.
+- Add `--release beta` only if the user asks for the beta version.
+- `--fix` enables auto-fixes (`APPLY_FIXES: all`); omit it if the user doesn't want automatic formatting.
+- If the user is present and wants to choose interactively, run plain `npx mega-linter-runner --install` instead and let them answer.
+
+**Configuration already exists** — upgrade it:
+
+```bash
+npx mega-linter-runner --upgrade --no-prompt
+```
+
+## 3. Refine `.mega-linter.yml` (only AFTER install/upgrade)
+
+Once the runner has generated/upgraded the files, you may adjust `.mega-linter.yml`:
+
+- Ensure `MEGALINTER_FLAVOR` and `MEGALINTER_VERSION` are set (the installer writes them; add them if upgrading an older config) — they drive which Docker image `mega-linter-runner` and these skills use.
+- Add `DISABLE` / `DISABLE_LINTERS` entries the user asks for.
+- Add `FILTER_REGEX_EXCLUDE` for generated or vendored folders (e.g. `(dist/|build/|vendor/|node_modules/)`).
+
+Validate the file against its JSON schema: <https://raw.githubusercontent.com/oxsecurity/megalinter/main/megalinter/descriptors/schemas/megalinter-configuration.jsonschema.json>
+
+## 4. Install the MegaLinter sub-agents (if your platform supports them)
+
+This skill ships three sub-agent definitions in its `agents/` folder (`megalinter-watcher`, `megalinter-runner`, `megalinter-fixer`) that make the other MegaLinter skills faster and cheaper by keeping CI logs and linter output out of the main context.
+
+If the coding agent you are running on supports custom sub-agent definitions (Claude Code, OpenCode, GitHub Copilot, Codex... — you know whether you do), read `agents/INSTALL.md` in this skill's directory and follow the instructions for your platform: copy the three `agents/*.md` files to your platform's agents folder, adapting the frontmatter when needed.
+
+If a target file already exists, ask the user before overwriting it. If your platform has no sub-agent support, skip this step — the skills degrade gracefully to inline execution.
+
+## 5. Wrap up
+
+- Show the user the generated/updated files.
+- Suggest a first check: run the `megalinter-check` skill.
+- Do not commit or push without user confirmation, and never on the default branch.

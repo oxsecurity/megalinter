@@ -24,6 +24,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Add `supported_cli_lint_modes` descriptor property to declare which CLI lint modes (`file`, `list_of_files`, `project`) each linter supports, generate `success`/`failure` tests for every supported mode, and reject a `<LINTER>_CLI_LINT_MODE` override targeting an unsupported mode with an explicit error, fixes [#7120](https://github.com/oxsecurity/megalinter/issues/7120)
   - Display a distinct ☑️ status icon (instead of ⚠️) for linters that found errors but did not block the run because the error count stayed under `<LINTER>_DISABLE_ERRORS_IF_LESS_THAN`, and show the configured maximum as `(max N allowed)` in the console linter logs plus a new `Max errors` column in the console and Pull Request summary tables
   - Add `API_REPORTER_PAYLOAD_FORMAT` variable (`auto`, `loki` or `default`) to force the payload format sent by API Reporter, instead of only deducing it from the endpoint URL
+  - Coding agents integration: add [MegaLinter agent skills](https://megalinter.io/beta/install-agent-skills/), installable in Claude Code, Cursor CLI, GitHub Copilot CLI, Codex, Antigravity, OpenCode and other coding agents with `npx skills add oxsecurity/megalinter` — `megalinter-setup`, `megalinter-check` (CI job watching on GitHub/GitLab/Azure/Bitbucket or local Docker runs) and `megalinter-fix` workflows plus a `megalinter` orchestrator, with per-linter fix guides generated from the YAML descriptors and sub-agents (installed on platforms supporting them, running on low-cost models) for token-efficient CI watching and parallel fixing
+  - Add `MEGALINTER_FLAVOR` and `MEGALINTER_VERSION` properties to the `.mega-linter.yml` configuration schema, so the flavor and version of the MegaLinter Docker image can be pinned once in the repository configuration and reused by mega-linter-runner and the agent skills
+  - Skip the repository-wide enumeration of `.gitignore`d files when an explicit list of files is provided via `MEGALINTER_FILES_TO_LINT` (e.g. `mega-linter-runner [files...]`): the caller already chose the files to lint, and the enumeration could be expensive on large repositories
+  - Speed up MegaLinter startup by ~5 seconds on every run: LLM provider SDKs (langchain-openai, langchain-anthropic, google-genai, ...) are now imported lazily, only when LLM Advisor is enabled, instead of at every startup (`import megalinter` drops from ~7s to ~0.9s)
+  - Speed up standalone single-linter images (`megalinter-only-*`) startup: only the descriptor of the single linter is parsed instead of instantiating the 120+ linters of all descriptors, and plugins initialization (remote descriptor download + install commands) is skipped since a plugin can not provide the built-in single linter
 
 - New linters
 
@@ -56,6 +61,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Fixes
 
+  - Fix linters using `lint_all_other_linters_files` (e.g. `SPELL_CSPELL`) linting zero files when run in their standalone `megalinter-only-*` Docker image: the single-linter override now falls back to linting all collected files when the descriptor defines no file extensions
   - Make `test_api_output` resilient to remote server outages: probe several public echo endpoints, run the test with the ones that are up, retry with another server when a post fails, and skip the test when none of them is reachable, as a remote outage is not a MegaLinter issue
   - Allow `CSS_STYLELINT_COMMAND_REMOVE_ARGUMENTS` to remove `--config-basedir` (which is not added anymore when the user requests its removal or defines its own value in `CSS_STYLELINT_ARGUMENTS`), and stop raising a `ValueError` when an argument listed in `<LINTER>_COMMAND_REMOVE_ARGUMENTS` is not in the command line, fixes [#8552](https://github.com/oxsecurity/megalinter/issues/8552)
   - Treat zero matching SARIF findings as a valid result without logging the entire report, fixes [#8295](https://github.com/oxsecurity/megalinter/issues/8295)
@@ -77,6 +83,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Doc
 
 - mega-linter-runner
+
+  - Non-interactive installation: `--install` can now run without prompts using `--no-prompt` and the new `--setup-*` options (`--setup-ci`, `--setup-copy-paste`, `--setup-spelling-mistakes`, `--setup-default-branch`, `--setup-validate-all-code-base`, `--setup-ox`) combined with the existing `--flavor`, `--release` and `--fix` flags
+  - New `--linter <LINTER_KEY>` option to run a single linter using its standalone `megalinter-only-<linter_key>` Docker image, with an optional list of files to lint; reports are isolated in `megalinter-reports/<linter_key>` so several standalone runs can execute in parallel
+  - Flavor and version resolution now reads `MEGALINTER_FLAVOR` and `MEGALINTER_VERSION` from `.mega-linter.yml` when `--flavor`/`--release` are not passed on the command line (falling back to `all`/`latest`), and the install generator writes both properties in the generated configuration
+  - `--fix` now respects an `APPLY_FIXES` value (other than `none`) defined in `.mega-linter.yml` instead of overriding it with `all`
+  - `--upgrade` also bumps a pinned `MEGALINTER_VERSION` property of `.mega-linter.yml` to the current major version
+  - Skip `docker pull` when the requested version is a pinned release tag (`vX.Y.Z`, immutable) and the image is already available locally, removing a useless registry round-trip
 
 - Dev
 

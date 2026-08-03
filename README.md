@@ -52,6 +52,8 @@ MegaLinter has **native integrations** with many major CI/CD tools.
 
 <!-- welcome-phrase-end -->
 
+> 🤖 **MegaLinter works with your coding agent!** Install the [MegaLinter agent skills](https://megalinter.io/latest/install-agent-skills/) with `npx skills add oxsecurity/megalinter`, then ask **Claude Code, Cursor, GitHub Copilot CLI, Codex, Antigravity or OpenCode** to setup MegaLinter, watch its CI jobs, and fix the errors for you.
+
 ![MegaLinter Presentation GIF](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/MegaLinter-banner-Medium.gif?raw=true)
 
 > 📣 **MegaLinter 9.5.0 is out!** Discover the new features and security recommendations in the [release announcement](https://github.com/oxsecurity/megalinter/issues/7835).
@@ -74,6 +76,7 @@ Before you go further, see the [**online documentation website, which offers muc
   - [Tooling formats](#tooling-formats)
   - [Other](#other)
 - [Installation](#installation)
+  - [Coding agents (skills)](#coding-agents-skills)
   - [Assisted installation](#assisted-installation)
   - [Which version to use ?](#which-version-to-use-)
   - [GitHub Action](#github-action)
@@ -362,6 +365,31 @@ description: How to install MegaLinter on Github Actions, Gitlab CI, Azure Pipel
 -->
 ## Installation
 
+<!-- install-agent-skills-section-start -->
+<!-- markdown-headers
+---
+title: Install and use MegaLinter with coding agents
+description: Setup and drive MegaLinter from Claude Code, Cursor, GitHub Copilot CLI, Codex, OpenCode and other coding agents thanks to MegaLinter agent skills
+---
+-->
+### Coding agents (skills)
+
+MegaLinter ships [**agent skills**](https://github.com/oxsecurity/megalinter/tree/main/skills) making it easy to drive from coding agents like **Claude Code, Cursor CLI, GitHub Copilot CLI, Codex, Antigravity or OpenCode**:
+
+```bash
+npx skills add oxsecurity/megalinter
+```
+
+Then just ask your agent to _"setup megalinter"_ or _"run megalinter and fix the errors"_. The skills handle:
+
+- **megalinter-setup**: install or upgrade MegaLinter on the repository (non-interactive `npx mega-linter-runner --install`)
+- **megalinter-check**: watch MegaLinter CI jobs (GitHub Actions, GitLab CI, Azure Pipelines, Bitbucket Pipelines) or run locally with Docker
+- **megalinter-fix**: apply fixes guided by per-linter fix guides, with user confirmation before disabling anything or pushing
+- **megalinter**: orchestrate the whole check → fix → re-check loop
+
+On coding agents supporting sub-agents (Claude Code, OpenCode, GitHub Copilot custom agents...), dedicated MegaLinter sub-agents (running on low-cost models) watch CI jobs and digest linter outputs to keep large logs out of your agent's context, and fix several linters in parallel.
+
+<!-- install-agent-skills-section-end -->
 <!-- install-assisted-section-start -->
 <!-- markdown-headers
 ---
@@ -371,7 +399,10 @@ description: Setup MegaLinter in 5 minutes thanks to its assisted installation t
 -->
 ### Assisted installation
 
-Just run `npx mega-linter-runner --install` at the root of your repository and answer questions, it will generate ready to use configuration files for MegaLinter :)
+Two assisted ways to setup MegaLinter on your repository:
+
+- **With a coding agent**: install the [MegaLinter agent skills](https://megalinter.io/latest/install-agent-skills/) with `npx skills add oxsecurity/megalinter`, then ask your agent to _"setup megalinter"_.
+- **With the interactive wizard**: run `npx mega-linter-runner --install` at the root of your repository and answer questions, it will generate ready to use configuration files for MegaLinter :)
 
 ![Runner Install](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true)
 

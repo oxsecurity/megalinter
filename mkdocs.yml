@@ -62,7 +62,8 @@ extra:
 nav:
   - "Home": "index.md"
   - "Quick Start": "quick-start.md"
-  - "Installation": 
+  - "Installation":
+    - "Coding Agents (Skills)": "install-agent-skills.md"
     - "Assisted Installation": "install-assisted.md"
     - "Which version to use ?": "install-version.md"
     - "GitHub Actions": "install-github.md"
