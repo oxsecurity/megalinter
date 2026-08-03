@@ -15697,7 +15697,9 @@
         "python",
         "javascript",
         "security"
-      ]
+      ],
+      "category": "GENERAL",
+      "section": "GENERAL"
     },
     "MEGALINTER_VERSION": {
       "name": "MEGALINTER_VERSION",
@@ -15709,7 +15711,9 @@
         "latest",
         "beta",
         "v9"
-      ]
+      ],
+      "category": "GENERAL",
+      "section": "GENERAL"
     },
     "MULTI_STATUS": {
       "name": "MULTI_STATUS",

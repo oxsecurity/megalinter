@@ -115,6 +115,10 @@ linters:
       - "proselint check --config .proselintrc.json myfile.md myfile2.txt myfile3.rst"
     install:
       apk:
+        # google-re2 (proselint dependency) links against the system RE2
+        # library at runtime
+        - re2
+      apk_build:
         # proselint >=0.16.0 depends on google-re2, which has no musllinux
         # wheel and must be compiled from source: needs a C++ toolchain
         # (build-base), the system RE2 library headers (re2-dev, which also

@@ -6,6 +6,11 @@ descriptor_flavors:
   - rust
 file_extensions:
   - ".rs"
+install:
+  apk:
+    # clippy compiles the analyzed code at runtime and needs a C linker
+    - gcc
+    - musl-dev
 linters:
   # CLIPPY
   - class: ClippyLinter

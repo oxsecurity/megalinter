@@ -75,15 +75,17 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
 # Install dependencies
+#UV_SYNC__START
 RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-    uv sync --frozen --no-install-project
+    uv sync --frozen --no-install-project --extra llm
 # Copy the project into the image
 COPY . .
 # Sync the project
 RUN --mount=type=cache,target=/root/.cache/uv \
-    uv sync --frozen
+    uv sync --frozen --extra llm
+#UV_SYNC__END
 
 ##################
 # Get base image #
@@ -166,13 +168,11 @@ RUN apk -U --no-cache upgrade \
                 bash \
                 ca-certificates \
                 curl \
-                gcc \
                 gcompat \
                 git \
                 git-lfs \
-                libffi-dev \
-                make \
-                musl-dev \
+                libgcc \
+                libstdc++ \
                 openssh \
                 su-exec \
                 helm \
@@ -238,29 +238,32 @@ COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 #############################################################################################
 
 #PIPVENV__START
-RUN uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/ansible-lint" \
-    && VIRTUAL_ENV="/venvs/ansible-lint" uv pip install --no-cache ansible-lint==${PIP_ANSIBLE_LINT_VERSION} \
-    && VIRTUAL_ENV="/venvs/ansible-lint" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+RUN apk add --no-cache --virtual .ml-build-deps gcc libffi-dev make musl-dev ruby-dev && \
+    export UV_LINK_MODE=hardlink \
+    && uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
+    && uv venv --seed --no-project --no-managed-python "/venvs/ansible-lint" \
+    && VIRTUAL_ENV="/venvs/ansible-lint" uv pip install ansible-lint==${PIP_ANSIBLE_LINT_VERSION} \
+    && VIRTUAL_ENV="/venvs/ansible-lint" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/ansible-lint" rm -rf /venvs/ansible-lint/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/cfn-lint" \
-    && VIRTUAL_ENV="/venvs/cfn-lint" uv pip install --no-cache cfn-lint[sarif]==${PIP_CFN_LINT_VERSION} \
-    && VIRTUAL_ENV="/venvs/cfn-lint" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/cfn-lint" \
+    && VIRTUAL_ENV="/venvs/cfn-lint" uv pip install cfn-lint[sarif]==${PIP_CFN_LINT_VERSION} \
+    && VIRTUAL_ENV="/venvs/cfn-lint" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/cfn-lint" rm -rf /venvs/cfn-lint/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/bandit" \
-    && VIRTUAL_ENV="/venvs/bandit" uv pip install --no-cache bandit==${PIP_BANDIT_VERSION} bandit_sarif_formatter==${PIP_BANDIT_SARIF_FORMATTER_VERSION} bandit[toml]==${PIP_BANDIT_VERSION} \
-    && VIRTUAL_ENV="/venvs/bandit" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/bandit" \
+    && VIRTUAL_ENV="/venvs/bandit" uv pip install bandit==${PIP_BANDIT_VERSION} bandit_sarif_formatter==${PIP_BANDIT_SARIF_FORMATTER_VERSION} bandit[toml]==${PIP_BANDIT_VERSION} \
+    && VIRTUAL_ENV="/venvs/bandit" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/bandit" rm -rf /venvs/bandit/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/checkov" \
-    && VIRTUAL_ENV="/venvs/checkov" uv pip install --no-cache checkov==${PIP_CHECKOV_VERSION} \
-    && VIRTUAL_ENV="/venvs/checkov" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/checkov" \
+    && VIRTUAL_ENV="/venvs/checkov" uv pip install checkov==${PIP_CHECKOV_VERSION} \
+    && VIRTUAL_ENV="/venvs/checkov" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/checkov" rm -rf /venvs/checkov/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/semgrep" \
-    && VIRTUAL_ENV="/venvs/semgrep" uv pip install --no-cache semgrep==${PIP_SEMGREP_VERSION} \
-    && VIRTUAL_ENV="/venvs/semgrep" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/semgrep" \
+    && VIRTUAL_ENV="/venvs/semgrep" uv pip install semgrep==${PIP_SEMGREP_VERSION} \
+    && VIRTUAL_ENV="/venvs/semgrep" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/semgrep" rm -rf /venvs/semgrep/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
     && find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
-    && rm -rf /root/.cache
+    && rm -rf /root/.cache \
+    && apk del .ml-build-deps
 ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/cfn-lint/bin:/venvs/bandit/bin:/venvs/checkov/bin:/venvs/semgrep/bin
 #PIPVENV__END
 
@@ -284,7 +287,10 @@ RUN npm config set prefix /usr/local \
     && echo "Changing owner of node_modules files…" \
     && chown -R "$(id -u)":"$(id -g)" node_modules # fix for https://github.com/npm/cli/issues/5900 \
     && echo "Removing extra node_module files…" \
-    && find . \( -not -path "/proc" \) -and \( -type f \( -iname "*.d.ts" -o -iname "*.map" -o -iname "*.npmignore" -o -iname "*.travis.yml" -o -iname "CHANGELOG.md" -o -iname "README.md" -o -iname ".package-lock.json" -o -iname "package-lock.json" \) -o -type d -name /root/.npm/_cacache \) -delete
+    && find . \( -not -path "/proc" \) -and \( -type f \( -iname "*.d.ts" -o -iname "*.map" -o -iname "*.npmignore" -o -iname "*.travis.yml" -o -iname "*.md" -o -iname "*.markdown" -o -iname ".package-lock.json" -o -iname "package-lock.json" \) \) -delete \
+    && echo "Removing test and doc directories from node_modules…" \
+    && find ./node_modules -type d \( -iname "__tests__" -o -iname "test" -o -iname "tests" -o -iname "docs" -o -iname ".github" \) -prune -exec rm -rf {} + \
+    && rm -rf /root/.npm
 WORKDIR /
 
 #NPM__END
@@ -368,9 +374,11 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOS
 ################################
 COPY --from=build-ml-core pyproject.toml README.md ./
 COPY --from=build-ml-core megalinter /megalinter/
+#PIP_PROJECT__START
 RUN --mount=type=cache,target=/root/.cache/uv,from=build-ml-core \
     --mount=from=uv,source=/uv,target=/bin/uv \
-    uv pip install --system -e .
+    uv pip install --system -e ".[llm]"
+#PIP_PROJECT__END
 
 #######################################
 # Copy scripts and rules to container #

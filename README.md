@@ -1460,6 +1460,8 @@ PRE_COMMANDS:
     run_after_linters: True # Will be run after the execution of the linters themselves
 ```
 
+> **Note**: to keep them lightweight, MegaLinter images do not embed a compilation toolchain. If a pre-command needs to compile native code (e.g. a pip package distributed only as source), install the toolchain first within your pre-command: `apk add --no-cache gcc make musl-dev`.
+
 | Property               | Description                                                                                                                                      | Default value |
 |------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
 | **command**            | Command line to run                                                                                                                              | Mandatory     |

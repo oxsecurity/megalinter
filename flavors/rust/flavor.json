@@ -1,7 +1,8 @@
 {
     "descriptors": [
         "BASH",
-        "KOTLIN"
+        "KOTLIN",
+        "RUST"
     ],
     "label": "Optimized for RUST based projects",
     "linters": [

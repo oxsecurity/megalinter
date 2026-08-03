@@ -6,6 +6,7 @@
         "JAVA",
         "KOTLIN",
         "PHP",
+        "RUST",
         "TYPESCRIPT"
     ],
     "label": "MegaLinter for the most commonly used languages",

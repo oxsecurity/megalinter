@@ -106,6 +106,7 @@
             "JAVA",
             "KOTLIN",
             "PHP",
+            "RUST",
             "TYPESCRIPT"
         ],
         "label": "MegaLinter for the most commonly used languages",
@@ -877,7 +878,8 @@
     "rust": {
         "descriptors": [
             "BASH",
-            "KOTLIN"
+            "KOTLIN",
+            "RUST"
         ],
         "label": "Optimized for RUST based projects",
         "linters": [

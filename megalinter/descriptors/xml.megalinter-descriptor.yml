@@ -51,7 +51,7 @@ linters:
       - "xmllint --format myXMLfile.xml --output myXMLfile.xml"
     install:
       apk:
-        - libxml2-dev
+        - libxml2
         - libxml2-utils
         - libgcc
     supported_platforms:

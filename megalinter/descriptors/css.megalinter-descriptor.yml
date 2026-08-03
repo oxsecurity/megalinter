@@ -115,16 +115,11 @@ linters:
         - |-
           # renovate: datasource=npm depName=stylelint-scss
           ARG NPM_STYLELINT_SCSS_VERSION=7.2.0
-        - |-
-          # renovate: datasource=pypi depName=cpplint
-          ARG PIP_CPPLINT_VERSION=2.0.2
       npm:
         - stylelint@${NPM_STYLELINT_VERSION}
         - stylelint-config-standard@${NPM_STYLELINT_CONFIG_STANDARD_VERSION}
         - stylelint-config-sass-guidelines@${NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION}
         - stylelint-scss@${NPM_STYLELINT_SCSS_VERSION}
-      pip:
-        - cpplint==${PIP_CPPLINT_VERSION}
     supported_platforms:
       platform:
         - linux/amd64

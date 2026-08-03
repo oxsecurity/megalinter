@@ -104,15 +104,17 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
 # Install dependencies
+#UV_SYNC__START
 RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-    uv sync --frozen --no-install-project
+    uv sync --frozen --no-install-project --extra llm
 # Copy the project into the image
 COPY . .
 # Sync the project
 RUN --mount=type=cache,target=/root/.cache/uv \
-    uv sync --frozen
+    uv sync --frozen --extra llm
+#UV_SYNC__END
 
 ##################
 # Get base image #
@@ -141,8 +143,6 @@ ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=40.0.0
 ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=13.0.0
 # renovate: datasource=npm depName=stylelint-scss
 ARG NPM_STYLELINT_SCSS_VERSION=7.2.0
-# renovate: datasource=pypi depName=cpplint
-ARG PIP_CPPLINT_VERSION=2.0.2
 # renovate: datasource=github-releases depName=dotenv-linter/dotenv-linter extractVersion=^v(?<version>.+)$
 ARG DOTENV_LINTER_VERSION=4.0.0
 # renovate: datasource=github-tags depName=golangci/golangci-lint
@@ -254,25 +254,19 @@ RUN apk -U --no-cache upgrade \
                 bash \
                 ca-certificates \
                 curl \
-                gcc \
                 gcompat \
                 git \
                 git-lfs \
-                libffi-dev \
-                make \
-                musl-dev \
+                libgcc \
+                libstdc++ \
                 openssh \
                 su-exec \
                 openjdk21 \
                 py3-pyflakes \
-                openjdk17 \
                 helm \
-                build-base \
-                re2-dev \
-                py3-pybind11-dev \
-                libxml2-dev \
+                re2 \
+                libxml2 \
                 libxml2-utils \
-                libgcc \
                 npm \
                 nodejs-current \
                 yarn \
@@ -343,58 +337,57 @@ COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
 #############################################################################################
 
 #PIPVENV__START
-RUN uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/ansible-lint" \
-    && VIRTUAL_ENV="/venvs/ansible-lint" uv pip install --no-cache ansible-lint==${PIP_ANSIBLE_LINT_VERSION} \
-    && VIRTUAL_ENV="/venvs/ansible-lint" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+RUN apk add --no-cache --virtual .ml-build-deps gcc libffi-dev make musl-dev ruby-dev build-base re2-dev py3-pybind11-dev && \
+    export UV_LINK_MODE=hardlink \
+    && uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
+    && uv venv --seed --no-project --no-managed-python "/venvs/ansible-lint" \
+    && VIRTUAL_ENV="/venvs/ansible-lint" uv pip install ansible-lint==${PIP_ANSIBLE_LINT_VERSION} \
+    && VIRTUAL_ENV="/venvs/ansible-lint" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/ansible-lint" rm -rf /venvs/ansible-lint/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/stylelint" \
-    && VIRTUAL_ENV="/venvs/stylelint" uv pip install --no-cache cpplint==${PIP_CPPLINT_VERSION} \
-    && VIRTUAL_ENV="/venvs/stylelint" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
-    && VIRTUAL_ENV="/venvs/stylelint" rm -rf /venvs/stylelint/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/djlint" \
-    && VIRTUAL_ENV="/venvs/djlint" uv pip install --no-cache djlint==${PIP_DJLINT_VERSION} \
-    && VIRTUAL_ENV="/venvs/djlint" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/djlint" \
+    && VIRTUAL_ENV="/venvs/djlint" uv pip install djlint==${PIP_DJLINT_VERSION} \
+    && VIRTUAL_ENV="/venvs/djlint" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/djlint" rm -rf /venvs/djlint/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/rumdl" \
-    && VIRTUAL_ENV="/venvs/rumdl" uv pip install --no-cache rumdl==${PIP_RUMDL_VERSION} \
-    && VIRTUAL_ENV="/venvs/rumdl" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/rumdl" \
+    && VIRTUAL_ENV="/venvs/rumdl" uv pip install rumdl==${PIP_RUMDL_VERSION} \
+    && VIRTUAL_ENV="/venvs/rumdl" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/rumdl" rm -rf /venvs/rumdl/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/checkov" \
-    && VIRTUAL_ENV="/venvs/checkov" uv pip install --no-cache checkov==${PIP_CHECKOV_VERSION} \
-    && VIRTUAL_ENV="/venvs/checkov" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/checkov" \
+    && VIRTUAL_ENV="/venvs/checkov" uv pip install checkov==${PIP_CHECKOV_VERSION} \
+    && VIRTUAL_ENV="/venvs/checkov" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/checkov" rm -rf /venvs/checkov/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/semgrep" \
-    && VIRTUAL_ENV="/venvs/semgrep" uv pip install --no-cache semgrep==${PIP_SEMGREP_VERSION} \
-    && VIRTUAL_ENV="/venvs/semgrep" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/semgrep" \
+    && VIRTUAL_ENV="/venvs/semgrep" uv pip install semgrep==${PIP_SEMGREP_VERSION} \
+    && VIRTUAL_ENV="/venvs/semgrep" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/semgrep" rm -rf /venvs/semgrep/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/snakemake" \
-    && VIRTUAL_ENV="/venvs/snakemake" uv pip install --no-cache snakemake==${PIP_SNAKEMAKE_VERSION} \
-    && VIRTUAL_ENV="/venvs/snakemake" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/snakemake" \
+    && VIRTUAL_ENV="/venvs/snakemake" uv pip install snakemake==${PIP_SNAKEMAKE_VERSION} \
+    && VIRTUAL_ENV="/venvs/snakemake" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/snakemake" rm -rf /venvs/snakemake/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/snakefmt" \
-    && VIRTUAL_ENV="/venvs/snakefmt" uv pip install --no-cache snakefmt==${PIP_SNAKEFMT_VERSION} \
-    && VIRTUAL_ENV="/venvs/snakefmt" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/snakefmt" \
+    && VIRTUAL_ENV="/venvs/snakefmt" uv pip install snakefmt==${PIP_SNAKEFMT_VERSION} \
+    && VIRTUAL_ENV="/venvs/snakefmt" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/snakefmt" rm -rf /venvs/snakefmt/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/proselint" \
-    && VIRTUAL_ENV="/venvs/proselint" uv pip install --no-cache proselint==${PIP_PROSELINT_VERSION} \
-    && VIRTUAL_ENV="/venvs/proselint" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/proselint" \
+    && VIRTUAL_ENV="/venvs/proselint" uv pip install proselint==${PIP_PROSELINT_VERSION} \
+    && VIRTUAL_ENV="/venvs/proselint" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/proselint" rm -rf /venvs/proselint/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/codespell" \
-    && VIRTUAL_ENV="/venvs/codespell" uv pip install --no-cache codespell==${PIP_CODESPELL_VERSION} \
-    && VIRTUAL_ENV="/venvs/codespell" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/codespell" \
+    && VIRTUAL_ENV="/venvs/codespell" uv pip install codespell==${PIP_CODESPELL_VERSION} \
+    && VIRTUAL_ENV="/venvs/codespell" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/codespell" rm -rf /venvs/codespell/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/sqlfluff" \
-    && VIRTUAL_ENV="/venvs/sqlfluff" uv pip install --no-cache sqlfluff==${PIP_SQLFLUFF_VERSION} \
-    && VIRTUAL_ENV="/venvs/sqlfluff" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/sqlfluff" \
+    && VIRTUAL_ENV="/venvs/sqlfluff" uv pip install sqlfluff==${PIP_SQLFLUFF_VERSION} \
+    && VIRTUAL_ENV="/venvs/sqlfluff" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/sqlfluff" rm -rf /venvs/sqlfluff/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/yamllint" \
-    && VIRTUAL_ENV="/venvs/yamllint" uv pip install --no-cache yamllint==${PIP_YAMLLINT_VERSION} \
-    && VIRTUAL_ENV="/venvs/yamllint" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/yamllint" \
+    && VIRTUAL_ENV="/venvs/yamllint" uv pip install yamllint==${PIP_YAMLLINT_VERSION} \
+    && VIRTUAL_ENV="/venvs/yamllint" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/yamllint" rm -rf /venvs/yamllint/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
     && find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
-    && rm -rf /root/.cache
-ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/stylelint/bin:/venvs/djlint/bin:/venvs/rumdl/bin:/venvs/checkov/bin:/venvs/semgrep/bin:/venvs/snakemake/bin:/venvs/snakefmt/bin:/venvs/proselint/bin:/venvs/codespell/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
+    && rm -rf /root/.cache \
+    && apk del .ml-build-deps
+ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/djlint/bin:/venvs/rumdl/bin:/venvs/checkov/bin:/venvs/semgrep/bin:/venvs/snakemake/bin:/venvs/snakefmt/bin:/venvs/proselint/bin:/venvs/codespell/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
 #PIPVENV__END
 
 ############################
@@ -433,7 +426,10 @@ RUN npm config set prefix /usr/local \
     && echo "Changing owner of node_modules files…" \
     && chown -R "$(id -u)":"$(id -g)" node_modules # fix for https://github.com/npm/cli/issues/5900 \
     && echo "Removing extra node_module files…" \
-    && find . \( -not -path "/proc" \) -and \( -type f \( -iname "*.d.ts" -o -iname "*.map" -o -iname "*.npmignore" -o -iname "*.travis.yml" -o -iname "CHANGELOG.md" -o -iname "README.md" -o -iname ".package-lock.json" -o -iname "package-lock.json" \) -o -type d -name /root/.npm/_cacache \) -delete
+    && find . \( -not -path "/proc" \) -and \( -type f \( -iname "*.d.ts" -o -iname "*.map" -o -iname "*.npmignore" -o -iname "*.travis.yml" -o -iname "*.md" -o -iname "*.markdown" -o -iname ".package-lock.json" -o -iname "package-lock.json" \) \) -delete \
+    && echo "Removing test and doc directories from node_modules…" \
+    && find ./node_modules -type d \( -iname "__tests__" -o -iname "test" -o -iname "tests" -o -iname "docs" -o -iname ".github" \) -prune -exec rm -rf {} + \
+    && rm -rf /root/.npm
 WORKDIR /
 
 #NPM__END
@@ -486,20 +482,22 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
       | tar -xz -C /usr/local/bin \
 # golangci-lint installation
     && wget -O- -nv https://golangci-lint.run/install.sh | sh -s "v${GO_GOLANGCI_LINT_VERSION}" \
-    && golangci-lint --version
-
+    && golangci-lint --version \
 # revive installation
 # Managed with COPY --link --from=revive /usr/bin/revive /usr/bin/revive
 # graphql-schema-linter installation
 # npm-groovy-lint installation
-ENV JAVA_HOME_17=/usr/lib/jvm/java-17-openjdk
+# Next line commented because already managed by another linter
+# ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
+# Next line commented because already managed by another linter
+# ENV PATH="$JAVA_HOME/bin:${PATH}"
 # djlint installation
 # htmlhint installation
 # jsonlint installation
 # v8r installation
 # prettier installation
 # ktlint installation
-RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/download/${KTLINT_VERSION}/ktlint && \
+    && curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/download/${KTLINT_VERSION}/ktlint && \
     chmod a+x ktlint && \
     mv "ktlint" /usr/bin/ \
 # detekt installation
@@ -586,9 +584,11 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOS
 ################################
 COPY --from=build-ml-core pyproject.toml README.md ./
 COPY --from=build-ml-core megalinter /megalinter/
+#PIP_PROJECT__START
 RUN --mount=type=cache,target=/root/.cache/uv,from=build-ml-core \
     --mount=from=uv,source=/uv,target=/bin/uv \
-    uv pip install --system -e .
+    uv pip install --system -e ".[llm]"
+#PIP_PROJECT__END
 
 #######################################
 # Copy scripts and rules to container #

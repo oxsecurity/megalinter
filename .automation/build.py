@@ -33,6 +33,7 @@ from megalinter import config, utils
 from megalinter.constants import (
     DEFAULT_DOCKERFILE_APK_PACKAGES,
     DEFAULT_DOCKERFILE_ARGS,
+    DEFAULT_DOCKERFILE_BUILD_APK_PACKAGES,
     DEFAULT_DOCKERFILE_FLAVOR_ARGS,
     DEFAULT_DOCKERFILE_FLAVOR_CARGO_PACKAGES,
     DEFAULT_DOCKERFILE_FLAVOR_COPY_LINES,
@@ -349,6 +350,7 @@ def build_dockerfile(
     docker_other = []
     all_dockerfile_items = []
     apk_packages = DEFAULT_DOCKERFILE_APK_PACKAGES.copy()
+    apk_build_packages = DEFAULT_DOCKERFILE_BUILD_APK_PACKAGES.copy()
     npm_packages = []
     pip_packages = []
     pipvenv_packages = {}
@@ -445,6 +447,9 @@ def build_dockerfile(
         # Collect python packages
         if "apk" in item["install"]:
             apk_packages += item["install"]["apk"]
+        # Collect build-time-only apk packages (evicted from final layers)
+        if "apk_build" in item["install"]:
+            apk_build_packages += item["install"]["apk_build"]
         # Collect npm packages
         if "npm" in item["install"]:
             npm_packages += item["install"]["npm"]
@@ -630,46 +635,72 @@ def build_dockerfile(
             + ' -o -iname "*.map"'
             + ' -o -iname "*.npmignore"'
             + ' -o -iname "*.travis.yml"'
-            + ' -o -iname "CHANGELOG.md"'
-            + ' -o -iname "README.md"'
+            + ' -o -iname "*.md"'
+            + ' -o -iname "*.markdown"'
             + ' -o -iname ".package-lock.json"'
             + ' -o -iname "package-lock.json"'
-            + " \\) -o -type d -name /root/.npm/_cacache \\) -delete\n"
+            + " \\) \\) -delete \\\n"
+            + '    && echo "Removing test and doc directories from node_modules…" \\\n'
+            + "    && find ./node_modules -type d"
+            + ' \\( -iname "__tests__"'
+            + ' -o -iname "test"'
+            + ' -o -iname "tests"'
+            + ' -o -iname "docs"'
+            + ' -o -iname ".github"'
+            + " \\) -prune -exec rm -rf {} + \\\n"
+            + "    && rm -rf /root/.npm\n"
             + "WORKDIR /\n"
         )
     replace_in_file(dockerfile, "#NPM__START", "#NPM__END", npm_install_command)
+    # Compilation toolchain available only while pip/gem installs may build
+    # native extensions, then removed within the same RUN so it never weighs
+    # in the final image layers
+    build_deps_add = (
+        "apk add --no-cache --virtual .ml-build-deps "
+        + " ".join(list(dict.fromkeys(apk_build_packages)))
+        + " && \\\n    "
+    )
+    build_deps_del = " \\\n    && apk del .ml-build-deps"
     # Python pip packages
     pip_install_command = ""
     if len(pip_packages) > 0:
         pip_install_command = (
-            "RUN uv pip install --no-cache --system pip==${PIP_PIP_VERSION} &&"
+            "RUN "
+            + build_deps_add
+            + "uv pip install --no-cache --system pip==${PIP_PIP_VERSION} &&"
             + " uv pip install --no-cache --system \\\n          '"
             + "' \\\n          '".join(list(dict.fromkeys(pip_packages)))
             + "' && \\\n"
             + r"find . \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete"
             + " \\\n    && "
             + "rm -rf /root/.cache"
+            + build_deps_del
         )
     replace_in_file(dockerfile, "#PIP__START", "#PIP__END", pip_install_command)
     # Python packages in venv: one chained RUN. A single-RUN chain keeps
     # layer count low (less cache export overhead per build); cache locality
     # for one-linter-version-bumps was a net loss once the per-layer GHA
     # cache I/O was measured.
+    # Venv installs go through the uv cache with hardlink mode so identical
+    # wheels (setuptools, shared deps like black/mypy) are stored once across
+    # all venvs; the cache dir is removed at the end of the RUN but hardlinked
+    # files keep living in the venvs.
     pipenv_install_command = ""
     if len(pipvenv_packages.items()) > 0:
         pipenv_install_command = (
-            "RUN uv pip install --system --no-cache "
+            "RUN " + build_deps_add + "export UV_LINK_MODE=hardlink \\\n"
+            "    && uv pip install --system --no-cache "
             "pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \\\n"
         )
         env_path_command = 'ENV PATH="${PATH}"'
         venv_install_segments = []
         for pip_linter, pip_linter_packages in pipvenv_packages.items():
             venv_install_segments.append(
-                f'    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/{pip_linter}" \\\n'
-                + f'    && VIRTUAL_ENV="/venvs/{pip_linter}" uv pip install --no-cache '
+                f'    && uv venv --seed --no-project --no-managed-python "/venvs/{pip_linter}" \\\n'
+                + f'    && VIRTUAL_ENV="/venvs/{pip_linter}" uv pip install '
                 + (" ".join(pip_linter_packages))
                 + " \\\n"
-                + f'    && VIRTUAL_ENV="/venvs/{pip_linter}" uv pip install --no-cache --upgrade '
+                + f'    && VIRTUAL_ENV="/venvs/{pip_linter}" uv pip install --upgrade '
                 + '"wheel>=0.46.2" "setuptools>=75.8.0" \\\n'
                 + f'    && VIRTUAL_ENV="/venvs/{pip_linter}" rm -rf '
                 + f"/venvs/{pip_linter}/lib/python3.13/site-packages/setuptools/_vendor/wheel* \\\n"
@@ -679,7 +710,9 @@ def build_dockerfile(
         pipenv_install_command += (
             "    && find /venvs "
             + r"\( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete"
-            + " \\\n    && rm -rf /root/.cache\n"
+            + " \\\n    && rm -rf /root/.cache"
+            + build_deps_del
+            + "\n"
         )
         pipenv_install_command += env_path_command
     replace_in_file(
@@ -690,9 +723,12 @@ def build_dockerfile(
     gem_install_command = ""
     if len(gem_packages) > 0:
         gem_install_command = (
-            "RUN echo 'gem: --no-document' >> ~/.gemrc && \\\n"
+            "RUN "
+            + build_deps_add
+            + "echo 'gem: --no-document' >> ~/.gemrc && \\\n"
             + "    gem install \\\n          "
             + " \\\n          ".join(list(dict.fromkeys(gem_packages)))
+            + build_deps_del
         )
     replace_in_file(dockerfile, "#GEM__START", "#GEM__END", gem_install_command)
     flavor_env = f"ENV MEGALINTER_FLAVOR={flavor}"
@@ -792,6 +828,30 @@ def generate_linter_dockerfiles():
                 os.makedirs(os.path.dirname(dockerfile), exist_ok=True)
             descriptor_and_linter = descriptor_items + [vars(linter)]
             copyfile(f"{REPO_HOME}/Dockerfile", dockerfile)
+            # Standalone images exclude the LLM Advisor SDKs (installed via the
+            # "llm" extra in the main and flavor images) to stay lightweight
+            replace_between_markers(
+                dockerfile,
+                "#UV_SYNC__START",
+                "#UV_SYNC__END",
+                "RUN --mount=type=cache,target=/root/.cache/uv \\\n"
+                "    --mount=type=bind,source=uv.lock,target=uv.lock \\\n"
+                "    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \\\n"
+                "    uv sync --frozen --no-install-project\n"
+                "# Copy the project into the image\n"
+                "COPY . .\n"
+                "# Sync the project\n"
+                "RUN --mount=type=cache,target=/root/.cache/uv \\\n"
+                "    uv sync --frozen",
+            )
+            replace_between_markers(
+                dockerfile,
+                "#PIP_PROJECT__START",
+                "#PIP_PROJECT__END",
+                "RUN --mount=type=cache,target=/root/.cache/uv,from=build-ml-core \\\n"
+                "    --mount=from=uv,source=/uv,target=/bin/uv \\\n"
+                "    uv pip install --system -e .",
+            )
             extra_lines = [
                 f"ENV ENABLE_LINTERS={linter.name} \\",
                 "    FLAVOR_SUGGESTIONS=false \\",
@@ -826,7 +886,10 @@ def generate_linter_dockerfiles():
                 "      > /usr/local/bin/megalinter && \\",
                 "    chmod u+x /usr/local/bin/megalinter && \\",
                 "    ln -sf /usr/bin/megalinter_exec.sh /usr/local/bin/megalinter_exec",
-                'RUN export STANDALONE_LINTER_VERSION="$(python -m megalinter.run --input /tmp --linterversion)" && \\',
+                # PYTHONDONTWRITEBYTECODE avoids a ~45MB __pycache__ layer;
+                # bytecode is regenerated in the container writable layer at runtime
+                "RUN export PYTHONDONTWRITEBYTECODE=1 && "
+                'export STANDALONE_LINTER_VERSION="$(python -m megalinter.run --input /tmp --linterversion)" && \\',
                 "    echo $STANDALONE_LINTER_VERSION",
                 # "    echo $STANDALONE_LINTER_VERSION >> ~/.bashrc && source ~/.bashrc",
                 'ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]',
