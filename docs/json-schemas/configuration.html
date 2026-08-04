@@ -2824,7 +2824,7 @@
 <span class="description"><p>ACTION_ZIZMOR: Override default CLI lint mode used to call the linter (rarely needed)</p>
 </span><div class="enum-value" id="ACTION_ZIZMOR_CLI_LINT_MODE_enum">
             <h4>Must be one of:</h4>
-            <ul class="list-group"><li class="list-group-item enum-item">"file"</li></ul>
+            <ul class="list-group"><li class="list-group-item enum-item">"file"</li><li class="list-group-item enum-item">"list_of_files"</li></ul>
             </div>
         
 
@@ -16705,7 +16705,7 @@
 <span class="description"><p>BASH_SHFMT: Override default CLI lint mode used to call the linter (rarely needed)</p>
 </span><div class="enum-value" id="BASH_SHFMT_CLI_LINT_MODE_enum">
             <h4>Must be one of:</h4>
-            <ul class="list-group"><li class="list-group-item enum-item">"file"</li></ul>
+            <ul class="list-group"><li class="list-group-item enum-item">"file"</li><li class="list-group-item enum-item">"list_of_files"</li></ul>
             </div>
         
 
@@ -72815,7 +72815,7 @@
 <span class="description"><p>GO_REVIVE: Override default CLI lint mode used to call the linter (rarely needed)</p>
 </span><div class="enum-value" id="GO_REVIVE_CLI_LINT_MODE_enum">
             <h4>Must be one of:</h4>
-            <ul class="list-group"><li class="list-group-item enum-item">"file"</li></ul>
+            <ul class="list-group"><li class="list-group-item enum-item">"file"</li><li class="list-group-item enum-item">"list_of_files"</li></ul>
             </div>
         
 
@@ -287066,6 +287066,40 @@
 <span class="p">]</span>
 </pre></div>
 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionVERSION_GET_AT_RUNTIME">
+    <div class="card">
+        <div class="card-header" id="headingVERSION_GET_AT_RUNTIME">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#VERSION_GET_AT_RUNTIME"
+                        aria-expanded="" aria-controls="VERSION_GET_AT_RUNTIME" onclick="setAnchor('#VERSION_GET_AT_RUNTIME')"><span class="property-name">VERSION_GET_AT_RUNTIME</span></button>
+            </h2>
+        </div>
+
+        <div id="VERSION_GET_AT_RUNTIME"
+             class="collapse property-definition-div" aria-labelledby="headingVERSION_GET_AT_RUNTIME"
+             data-parent="#accordionVERSION_GET_AT_RUNTIME">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#VERSION_GET_AT_RUNTIME" onclick="anchorLink('VERSION_GET_AT_RUNTIME')">VERSION_GET_AT_RUNTIME</a></div><h4>Get linter versions at runtime</h4><span class="badge badge-dark value-type">Type: boolean</span> <span class="badge badge-success default-value">Default: false</span><br/>
+<span class="description"><p>Force calling the linter executables to collect their version, instead of using the versions collected at MegaLinter Docker image build time. Slower, but useful if you install additional or different linter versions with PRE_COMMANDS</p>
+</span>
+        
+
+        
+        
+
+        
             </div>
         </div>
     </div>
