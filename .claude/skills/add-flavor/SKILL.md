@@ -2,8 +2,10 @@
 name: add-flavor
 description: Add a new MegaLinter flavor (language-specific Docker image). Use when creating a new specialized Docker image variant.
 allowed-tools: Read Grep Glob Bash Edit Write
-argument-hint: [flavor-name]
+argument-hint: "[flavor-name]"
 model: sonnet
+metadata:
+  internal: true
 ---
 
 Guide through adding a new flavor named `$ARGUMENTS`.

@@ -2,8 +2,10 @@
 name: review-descriptor
 description: Audit a linter descriptor YAML for completeness, correctness, and best practices. Checks all properties against the full schema.
 allowed-tools: Read Grep Glob Bash WebSearch WebFetch
-argument-hint: [descriptor-file-or-linter-name]
+argument-hint: "[descriptor-file-or-linter-name]"
 model: sonnet
+metadata:
+  internal: true
 ---
 
 Review the descriptor for `$ARGUMENTS`. If a linter name is given, find its descriptor in `megalinter/descriptors/`.

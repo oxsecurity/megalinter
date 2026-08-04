@@ -131,6 +131,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Dev
 
+  - Mark the repository's internal Claude Code skills (`.claude/skills/`) as `internal` so `npx skills add oxsecurity/megalinter` only offers the four MegaLinter agent skills from the `skills/` folder
+  - Fix the `/build` contribution skill being accidentally gitignored by the `build/` packaging pattern, so it is now actually versioned
+
 - CI
   - Speed up PR jobs by handing the built Docker image over to consumer jobs through ghcr.io (`megalinter-dev` per-commit tags, pruned daily) instead of a workflow artifact + `docker load`, for branches of the main repository; forked PRs keep the artifact-based handoff since their GITHUB_TOKEN cannot push packages. Measured on the "Run against all code base" job: image handoff dropped from 8m42s to 2m36s and the whole job from 14m41s to 7m07s
   - Build only the per-linter Docker images impacted by the changed files of a PR (descriptor edits, per-linter Dockerfiles, single-linter test fixtures); any change to shared code or unrecognized files keeps building the full matrix

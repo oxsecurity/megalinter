@@ -5,6 +5,8 @@ allowed-tools: Bash Read Grep Glob Edit Write AskUserQuestion
 argument-hint: "[vX.Y.Z]"
 user-invocable: true
 model: opus
+metadata:
+  internal: true
 ---
 
 Prepare a MegaLinter release.

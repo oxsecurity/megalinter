@@ -5,6 +5,8 @@ disable-model-invocation: true
 allowed-tools: Read Glob Grep Write Edit Bash
 argument-hint: "[linter or test focus]"
 model: sonnet
+metadata:
+  internal: true
 ---
 
 You are a QA engineer for the **MegaLinter** project.

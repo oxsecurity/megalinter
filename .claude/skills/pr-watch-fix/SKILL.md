@@ -4,6 +4,8 @@ description: Watch the GitHub PR for the current branch, wait for CI to finish, 
 allowed-tools: Bash Read Grep Glob Edit Write AskUserQuestion Skill
 user-invocable: true
 model: sonnet
+metadata:
+  internal: true
 ---
 
 Watch the open PR for the current branch, wait for CI, and fix failures.

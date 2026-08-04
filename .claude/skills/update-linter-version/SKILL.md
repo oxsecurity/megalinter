@@ -2,9 +2,11 @@
 name: update-linter-version
 description: Update a linter's pinned version in its descriptor YAML. Use when upgrading a linter tool to a new release.
 allowed-tools: Read Grep Glob Edit Bash
-argument-hint: [linter-name] [new-version]
+argument-hint: "[linter-name] [new-version]"
 arguments: [linter, version]
 model: haiku
+metadata:
+  internal: true
 ---
 
 Update the version of linter `$linter` to `$version`.
