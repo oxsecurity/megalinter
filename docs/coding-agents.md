@@ -48,22 +48,34 @@ On agents supporting sub-agents (Claude Code, OpenCode, GitHub Copilot custom ag
 flowchart TD
     U(["👤 You: <i>run megalinter and fix the errors</i>"]) --> O["🎯 megalinter<br/>(orchestrator skill)"]
     O -->|"no config found"| S["🛠️ megalinter-setup"]
-    S -->|"npx mega-linter-runner --install"| CFG[".mega-linter.yml<br/>+ CI workflow"]
+    S -->|"npx mega-linter-runner --install"| CFG[/".mega-linter.yml<br/>+ CI workflow"/]
     O --> C["🔍 megalinter-check"]
-    C -->|"watch mode"| W["👀 megalinter-watcher<br/>sub-agent, low-cost model"]
-    W --> CI["CI job logs<br/>GitHub / GitLab / Azure / Bitbucket"]
-    C -->|"local mode"| RUN["🐳 megalinter-runner<br/>sub-agent, low-cost model"]
-    RUN --> IMG["MegaLinter Docker image<br/>docker or podman"]
-    W --> ERR["📋 Compact error list<br/>grouped by linter"]
+    C -->|"watch mode"| W[["👀 megalinter-watcher<br/>sub-agent, low-cost model"]]
+    W --> CI[/"CI job logs<br/>GitHub / GitLab / Azure / Bitbucket"/]
+    C -->|"local mode"| RUN[["🐳 megalinter-runner<br/>sub-agent, low-cost model"]]
+    RUN --> IMG[/"MegaLinter Docker image<br/>docker or podman"/]
+    W --> ERR[/"📋 Compact error list<br/>grouped by linter"/]
     RUN --> ERR
     ERR --> F["🔧 megalinter-fix"]
-    F -->|"one sub-agent per failing linter,<br/>in parallel"| FX1["🤖 megalinter-fixer<br/>+ python_ruff fix guide"]
-    F --> FX2["🤖 megalinter-fixer<br/>+ markdown_markdownlint fix guide"]
-    FX1 --> RES["✏️ Fixed files<br/>+ proposed rule disables"]
+    F -->|"one sub-agent per failing linter,<br/>in parallel"| FX1[["🤖 megalinter-fixer<br/>+ python_ruff fix guide"]]
+    F --> FX2[["🤖 megalinter-fixer<br/>+ markdown_markdownlint fix guide"]]
+    FX1 --> RES[/"✏️ Fixed files<br/>+ proposed rule disables"/]
     FX2 --> RES
     RES -->|"you confirm disables"| RC["♻️ Targeted re-check<br/>parallel standalone linter images"]
     RC -->|"errors remain (max 3 loops)"| F
     RC -->|"clean"| DONE(["✅ Commit on a branch<br/>(never on main)"])
+
+    classDef user fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#1b5e20
+    classDef skill fill:#ede7f6,stroke:#5e35b1,stroke-width:2px,color:#311b92
+    classDef subagent fill:#e3f2fd,stroke:#1976d2,stroke-width:2px,color:#0d47a1
+    classDef artifact fill:#fff8e1,stroke:#f9a825,stroke-width:1px,color:#5d4037
+    classDef recheck fill:#e0f2f1,stroke:#00897b,stroke-width:2px,color:#004d40
+
+    class U,DONE user
+    class O,S,C,F skill
+    class W,RUN,FX1,FX2 subagent
+    class CFG,CI,IMG,ERR,RES artifact
+    class RC recheck
 ```
 
 The fix guides combine information generated from the [linter descriptors](https://github.com/oxsecurity/megalinter/tree/main/megalinter/descriptors) (auto-fix support, rules documentation URLs, MegaLinter tuning variables) with curated fix, inline-disable and ignore instructions grounded in each linter's official documentation.
