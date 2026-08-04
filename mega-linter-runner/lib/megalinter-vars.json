@@ -7849,7 +7849,7 @@
       "name": "EXCLUDED_DIRECTORIES",
       "type": "array",
       "title": "Excluded directories",
-      "description": "List of excluded directory basenames replacing MegaLinter default excluded directories. They are excluded at any nested level.",
+      "description": "List of excluded directory basenames replacing MegaLinter default excluded directories. They are excluded at any nested level. The value of REPORT_OUTPUT_FOLDER is always excluded in addition to this list.",
       "examples": [
         [
           ".github",
