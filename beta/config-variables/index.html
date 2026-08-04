@@ -12002,6 +12002,11 @@
 <td><code>true</code></td>
 <td>Will parse the entire repository and find all files to validate across all types. <strong>NOTE:</strong> When set to <code>false</code>, only <strong>new</strong> or <strong>edited</strong> files will be parsed for validation.</td>
 </tr>
+<tr>
+<td><strong>VERSION_GET_AT_RUNTIME</strong></td>
+<td><code>false</code></td>
+<td>Force calling the linter executables to collect their version, instead of using the versions collected at MegaLinter Docker image build time. Slower, but useful if you install additional or different linter versions with PRE_COMMANDS</td>
+</tr>
 </tbody>
 </table>
 <!-- config-variables-section-end -->
