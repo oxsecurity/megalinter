@@ -19,6 +19,7 @@
 ![GitHub release](https://img.shields.io/github/v/release/oxsecurity/megalinter?sort=semver)
 [![Docker Pulls](https://img.shields.io/badge/docker%20pulls-16.5M-blue)](https://megalinter.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
+[![Coding Agents](https://img.shields.io/badge/Coding%20Agents-compatible-blueviolet?logo=githubcopilot&logoColor=white)](https://megalinter.io/latest/coding-agents/)
 [![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?cacheSeconds=3600)](https://github.com/oxsecurity/megalinter/stargazers/)
 [![MegaLinter](https://github.com/oxsecurity/megalinter/workflows/MegaLinter/badge.svg?branch=main)](https://github.com/oxsecurity/megalinter/actions?query=workflow%3AMegaLinter+branch%3Amain)
 [![codecov](https://codecov.io/gh/oxsecurity/megalinter/branch/main/graph/badge.svg)](https://codecov.io/gh/oxsecurity/megalinter)
@@ -195,7 +196,8 @@ description: Setup MegaLinter in 5 minutes thanks to its assisted installation t
 -->
 ## Quick Start
 
-- Run `npx mega-linter-runner --install` to generate configuration files (you need [Node.js](https://nodejs.org/en/) installed).
+- **With a coding agent**: install the [MegaLinter agent skills](https://megalinter.io/latest/install-agent-skills/) with `npx skills add oxsecurity/megalinter`, then ask your agent to _"setup megalinter"_.
+- **Or with the interactive wizard**: run `npx mega-linter-runner --install` to generate configuration files (you need [Node.js](https://nodejs.org/en/) installed).
 - Commit, push, and create a pull request.
 - Watch!
 

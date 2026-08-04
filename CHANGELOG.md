@@ -115,8 +115,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Doc
 
-  - Home page: mention Coding Agents compliance in the welcome phrase and display the supported coding agent icons next to the CI/CD integrations
+  - Home page: mention Coding Agents compliance in the welcome phrase, display the supported coding agent icons next to the CI/CD integrations, and add a "Coding Agents compatible" badge to the shields.io badges list
+  - Quick Start: setting up MegaLinter with a coding agent (`npx skills add oxsecurity/megalinter` then _"setup megalinter"_) is now the first suggested option
   - Coding Agents page: add Gemini CLI, Windsurf, Cline, Roo Code, Kilo Code, Amp, Goose, OpenHands and Qwen Code to the compatible coding agents, and restyle the sub-agents orchestration mermaid diagram with explicit node colors and shapes per category (user, skills, sub-agents, artifacts) so it stays readable with the website theme
+  - megalinter-setup skill: after a first install, suggest creating a pull request with the generated files or running MegaLinter locally first; after an upgrade, offer to create a pull request so CI validates the migration
 
 - mega-linter-runner
 
