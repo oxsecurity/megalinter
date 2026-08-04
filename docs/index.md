@@ -63,7 +63,7 @@ MegaLinter has **native integrations** with popular CI/CD tools and is compliant
 
 <!-- welcome-phrase-end -->
 
-> 🤖 **MegaLinter works with your coding agent!** Install the [MegaLinter agent skills](https://megalinter.io/latest/install-agent-skills/) with `npx skills add oxsecurity/megalinter/skills --all --copy`, then ask **Claude Code, Cursor, GitHub Copilot CLI, Codex, Antigravity or OpenCode** to setup MegaLinter, watch its CI jobs, and fix the errors for you.
+> 🤖 **MegaLinter works with your coding agent!** Install the [MegaLinter agent skills](https://megalinter.io/latest/install-agent-skills/) with `npx skills add oxsecurity/megalinter/skills -s '*' -y --copy`, then ask **Claude Code, Cursor, GitHub Copilot CLI, Codex, Antigravity or OpenCode** to setup MegaLinter, watch its CI jobs, and fix the errors for you.
 
 ![MegaLinter Presentation GIF](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/MegaLinter-banner-Medium.gif?raw=true)
 

@@ -69,7 +69,7 @@ MegaLinter has **native integrations** with popular CI/CD tools and is compliant
 
 <!-- welcome-phrase-end -->
 
-> 🤖 **MegaLinter works with your coding agent!** Install the [MegaLinter agent skills](https://megalinter.io/latest/install-agent-skills/) with `npx skills add oxsecurity/megalinter/skills --all --copy`, then ask **Claude Code, Cursor, GitHub Copilot CLI, Codex, Antigravity or OpenCode** to setup MegaLinter, watch its CI jobs, and fix the errors for you.
+> 🤖 **MegaLinter works with your coding agent!** Install the [MegaLinter agent skills](https://megalinter.io/latest/install-agent-skills/) with `npx skills add oxsecurity/megalinter/skills -s '*' -y --copy`, then ask **Claude Code, Cursor, GitHub Copilot CLI, Codex, Antigravity or OpenCode** to setup MegaLinter, watch its CI jobs, and fix the errors for you.
 
 ![MegaLinter Presentation GIF](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/MegaLinter-banner-Medium.gif?raw=true)
 
@@ -196,7 +196,7 @@ description: Setup MegaLinter in 5 minutes thanks to its assisted installation t
 -->
 ## Quick Start
 
-- **With a coding agent**: install the [MegaLinter agent skills](https://megalinter.io/latest/install-agent-skills/) with `npx skills add oxsecurity/megalinter/skills --all --copy`, then ask your agent to _"setup megalinter"_.
+- **With a coding agent**: install the [MegaLinter agent skills](https://megalinter.io/latest/install-agent-skills/) with `npx skills add oxsecurity/megalinter/skills -s '*' -y --copy`, then ask your agent to _"setup megalinter"_.
 - **Or with the interactive wizard**: run `npx mega-linter-runner --install` to generate configuration files (you need [Node.js](https://nodejs.org/en/) installed).
 - Commit, push, and create a pull request.
 - Watch!
@@ -245,7 +245,7 @@ MegaLinter is designed to work hand in hand with your coding agent:
 Install the [MegaLinter agent skills](https://github.com/oxsecurity/megalinter/tree/main/skills) at the root of your repository:
 
 ```bash
-npx skills add oxsecurity/megalinter/skills --all --copy
+npx skills add oxsecurity/megalinter/skills -s '*' -y --copy
 ```
 
 Then just talk to your agent:
@@ -494,7 +494,7 @@ description: Setup and drive MegaLinter from Claude Code, Cursor, GitHub Copilot
 MegaLinter ships [**agent skills**](https://github.com/oxsecurity/megalinter/tree/main/skills) making it easy to drive from coding agents like **Claude Code, Cursor CLI, GitHub Copilot CLI, Codex, Antigravity or OpenCode**:
 
 ```bash
-npx skills add oxsecurity/megalinter/skills --all --copy
+npx skills add oxsecurity/megalinter/skills -s '*' -y --copy
 ```
 
 Then just ask your agent to _"setup megalinter"_ or _"run megalinter and fix the errors"_. The skills handle:
@@ -518,7 +518,7 @@ description: Setup MegaLinter in 5 minutes thanks to its assisted installation t
 
 Two assisted ways to setup MegaLinter on your repository:
 
-- **With a coding agent**: install the [MegaLinter agent skills](https://megalinter.io/latest/install-agent-skills/) with `npx skills add oxsecurity/megalinter/skills --all --copy`, then ask your agent to _"setup megalinter"_.
+- **With a coding agent**: install the [MegaLinter agent skills](https://megalinter.io/latest/install-agent-skills/) with `npx skills add oxsecurity/megalinter/skills -s '*' -y --copy`, then ask your agent to _"setup megalinter"_.
 - **With the interactive wizard**: run `npx mega-linter-runner --install` at the root of your repository and answer questions, it will generate ready to use configuration files for MegaLinter :)
 
 ![Runner Install](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true)
