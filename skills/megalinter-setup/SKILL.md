@@ -4,7 +4,7 @@ description: Install or upgrade MegaLinter on a repository. Use when the user wa
 argument-hint: "[install|upgrade] [flavor, e.g. python|javascript|all]"
 allowed-tools: Bash, Read, Grep, Glob, Edit, Write, WebFetch, AskUserQuestion
 user-invocable: true
-licence: MegaLinter by OX Security, AGPL-3.0, Copyright 2026 - https://megalinter.io/
+licence: MegaLinter by OX Security, Copyright 2026 - https://megalinter.io/
 ---
 
 # MegaLinter setup

@@ -4,7 +4,7 @@ description: Collect MegaLinter lint errors for the current repository. Use when
 argument-hint: "[mode: watch|local] [PR/job URL or linter keys]"
 allowed-tools: Bash, Read, Grep, Glob, Write, Agent, AskUserQuestion
 user-invocable: true
-licence: MegaLinter by OX Security, AGPL-3.0, Copyright 2026 - https://megalinter.io/
+licence: MegaLinter by OX Security, Copyright 2026 - https://megalinter.io/
 ---
 
 # MegaLinter check

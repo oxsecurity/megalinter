@@ -4,7 +4,7 @@ description: Entry point for everything MegaLinter. Use when the user wants to l
 argument-hint: "[request, e.g. 'run megalinter and fix the errors' or 'make the CI lint job pass']"
 allowed-tools: Bash, Read, Grep, Glob, Skill, Agent, AskUserQuestion
 user-invocable: true
-licence: MegaLinter by OX Security, AGPL-3.0, Copyright 2026 - https://megalinter.io/
+licence: MegaLinter by OX Security, Copyright 2026 - https://megalinter.io/
 ---
 
 # MegaLinter orchestrator
