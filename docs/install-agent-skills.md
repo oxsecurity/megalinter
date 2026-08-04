@@ -11,7 +11,7 @@ description: Setup and drive MegaLinter from Claude Code, Cursor, GitHub Copilot
 MegaLinter ships [**agent skills**](https://github.com/oxsecurity/megalinter/tree/main/skills) making it easy to drive from coding agents like **Claude Code, Cursor CLI, GitHub Copilot CLI, Codex, Antigravity or OpenCode**:
 
 ```bash
-npx skills add oxsecurity/megalinter/skills --all -y
+npx skills add oxsecurity/megalinter/skills --all --copy
 ```
 
 Then just ask your agent to _"setup megalinter"_ or _"run megalinter and fix the errors"_. The skills handle:

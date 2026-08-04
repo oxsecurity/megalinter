@@ -5,7 +5,7 @@ Skills that make [MegaLinter](https://megalinter.io/) easy to drive from any cod
 ## Installation
 
 ```bash
-npx skills add oxsecurity/megalinter/skills --all -y
+npx skills add oxsecurity/megalinter/skills --all --copy
 ```
 
 This installs the skills into your agent's configuration (e.g. `.claude/skills/`, `.cursor/`, `.codex/`).
