@@ -1,3 +1,4 @@
 .git/
 .automation/test/gitleaks/bad
 .automation/test/repository_trufflehog/bad
+.megalinter-cache/

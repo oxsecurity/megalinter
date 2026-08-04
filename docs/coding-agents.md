@@ -31,7 +31,7 @@ MegaLinter is designed to work hand in hand with your coding agent:
 Install the [MegaLinter agent skills](https://github.com/oxsecurity/megalinter/tree/main/skills) at the root of your repository:
 
 ```bash
-npx skills add oxsecurity/megalinter
+npx skills add oxsecurity/megalinter/skills -s '*' -y --copy
 ```
 
 Then just talk to your agent:
