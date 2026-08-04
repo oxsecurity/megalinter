@@ -33,6 +33,7 @@ from megalinter import config, utils
 from megalinter.constants import (
     DEFAULT_DOCKERFILE_APK_PACKAGES,
     DEFAULT_DOCKERFILE_ARGS,
+    DEFAULT_DOCKERFILE_BUILD_APK_PACKAGES,
     DEFAULT_DOCKERFILE_FLAVOR_ARGS,
     DEFAULT_DOCKERFILE_FLAVOR_CARGO_PACKAGES,
     DEFAULT_DOCKERFILE_FLAVOR_COPY_LINES,
@@ -51,6 +52,12 @@ from megalinter.constants import (
     ML_DOCKER_IMAGE_WITH_HOST,
     ML_REPO,
     ML_REPO_URL,
+)
+from megalinter.removed_linters import (
+    REMOVED_DESCRIPTORS,
+    REMOVED_LINTER_ALIASES,
+    REMOVED_LINTERS,
+    is_removed_related_variable,
 )
 from requests.adapters import HTTPAdapter
 from urllib3.util import Retry
@@ -133,22 +140,6 @@ IDE_LIST = {
     "vim": {"label": "vim", "url": "https://www.vim.org/"},
     "vscode": {"label": "Visual Studio Code", "url": "https://code.visualstudio.com/"},
 }
-
-DEPRECATED_LINTERS = [
-    "CREDENTIALS_SECRETLINT",  # Removed in v6
-    "DOCKERFILE_DOCKERFILELINT",  # Removed in v6
-    "GIT_GIT_DIFF",  # Removed in v6
-    "PHP_BUILTIN",  # Removed in v6
-    "KUBERNETES_KUBEVAL",  # Removed in v7
-    "REPOSITORY_GOODCHECK",  # Removed in v7
-    "SPELL_MISSPELL",  # Removed in v7
-    "TERRAFORM_CHECKOV",  # Removed in v7
-    "TERRAFORM_KICS",  # Removed in v7
-    "CSS_SCSSLINT",  # Removed in v8
-    "OPENAPI_SPECTRAL",  # Removed in v8
-    "SQL_SQL_LINT",  # Removed in v8
-    "MARKDOWN_MARKDOWN_LINK_CHECK",  # Removed in v9
-]
 
 DESCRIPTORS_FOR_BUILD_CACHE = None
 
@@ -359,6 +350,7 @@ def build_dockerfile(
     docker_other = []
     all_dockerfile_items = []
     apk_packages = DEFAULT_DOCKERFILE_APK_PACKAGES.copy()
+    apk_build_packages = DEFAULT_DOCKERFILE_BUILD_APK_PACKAGES.copy()
     npm_packages = []
     pip_packages = []
     pipvenv_packages = {}
@@ -455,6 +447,9 @@ def build_dockerfile(
         # Collect python packages
         if "apk" in item["install"]:
             apk_packages += item["install"]["apk"]
+        # Collect build-time-only apk packages (evicted from final layers)
+        if "apk_build" in item["install"]:
+            apk_build_packages += item["install"]["apk_build"]
         # Collect npm packages
         if "npm" in item["install"]:
             npm_packages += item["install"]["npm"]
@@ -640,46 +635,72 @@ def build_dockerfile(
             + ' -o -iname "*.map"'
             + ' -o -iname "*.npmignore"'
             + ' -o -iname "*.travis.yml"'
-            + ' -o -iname "CHANGELOG.md"'
-            + ' -o -iname "README.md"'
+            + ' -o -iname "*.md"'
+            + ' -o -iname "*.markdown"'
             + ' -o -iname ".package-lock.json"'
             + ' -o -iname "package-lock.json"'
-            + " \\) -o -type d -name /root/.npm/_cacache \\) -delete\n"
+            + " \\) \\) -delete \\\n"
+            + '    && echo "Removing test and doc directories from node_modules…" \\\n'
+            + "    && find ./node_modules -type d"
+            + ' \\( -iname "__tests__"'
+            + ' -o -iname "test"'
+            + ' -o -iname "tests"'
+            + ' -o -iname "docs"'
+            + ' -o -iname ".github"'
+            + " \\) -prune -exec rm -rf {} + \\\n"
+            + "    && rm -rf /root/.npm\n"
             + "WORKDIR /\n"
         )
     replace_in_file(dockerfile, "#NPM__START", "#NPM__END", npm_install_command)
+    # Compilation toolchain available only while pip/gem installs may build
+    # native extensions, then removed within the same RUN so it never weighs
+    # in the final image layers
+    build_deps_add = (
+        "apk add --no-cache --virtual .ml-build-deps "
+        + " ".join(list(dict.fromkeys(apk_build_packages)))
+        + " && \\\n    "
+    )
+    build_deps_del = " \\\n    && apk del .ml-build-deps"
     # Python pip packages
     pip_install_command = ""
     if len(pip_packages) > 0:
         pip_install_command = (
-            "RUN uv pip install --no-cache --system pip==${PIP_PIP_VERSION} &&"
+            "RUN "
+            + build_deps_add
+            + "uv pip install --no-cache --system pip==${PIP_PIP_VERSION} &&"
             + " uv pip install --no-cache --system \\\n          '"
             + "' \\\n          '".join(list(dict.fromkeys(pip_packages)))
             + "' && \\\n"
             + r"find . \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete"
             + " \\\n    && "
             + "rm -rf /root/.cache"
+            + build_deps_del
         )
     replace_in_file(dockerfile, "#PIP__START", "#PIP__END", pip_install_command)
     # Python packages in venv: one chained RUN. A single-RUN chain keeps
     # layer count low (less cache export overhead per build); cache locality
     # for one-linter-version-bumps was a net loss once the per-layer GHA
     # cache I/O was measured.
+    # Venv installs go through the uv cache with hardlink mode so identical
+    # wheels (setuptools, shared deps like black/mypy) are stored once across
+    # all venvs; the cache dir is removed at the end of the RUN but hardlinked
+    # files keep living in the venvs.
     pipenv_install_command = ""
     if len(pipvenv_packages.items()) > 0:
         pipenv_install_command = (
-            "RUN uv pip install --system --no-cache "
+            "RUN " + build_deps_add + "export UV_LINK_MODE=hardlink \\\n"
+            "    && uv pip install --system --no-cache "
             "pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \\\n"
         )
         env_path_command = 'ENV PATH="${PATH}"'
         venv_install_segments = []
         for pip_linter, pip_linter_packages in pipvenv_packages.items():
             venv_install_segments.append(
-                f'    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/{pip_linter}" \\\n'
-                + f'    && VIRTUAL_ENV="/venvs/{pip_linter}" uv pip install --no-cache '
+                f'    && uv venv --seed --no-project --no-managed-python "/venvs/{pip_linter}" \\\n'
+                + f'    && VIRTUAL_ENV="/venvs/{pip_linter}" uv pip install '
                 + (" ".join(pip_linter_packages))
                 + " \\\n"
-                + f'    && VIRTUAL_ENV="/venvs/{pip_linter}" uv pip install --no-cache --upgrade '
+                + f'    && VIRTUAL_ENV="/venvs/{pip_linter}" uv pip install --upgrade '
                 + '"wheel>=0.46.2" "setuptools>=75.8.0" \\\n'
                 + f'    && VIRTUAL_ENV="/venvs/{pip_linter}" rm -rf '
                 + f"/venvs/{pip_linter}/lib/python3.13/site-packages/setuptools/_vendor/wheel* \\\n"
@@ -689,7 +710,9 @@ def build_dockerfile(
         pipenv_install_command += (
             "    && find /venvs "
             + r"\( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete"
-            + " \\\n    && rm -rf /root/.cache\n"
+            + " \\\n    && rm -rf /root/.cache"
+            + build_deps_del
+            + "\n"
         )
         pipenv_install_command += env_path_command
     replace_in_file(
@@ -700,9 +723,12 @@ def build_dockerfile(
     gem_install_command = ""
     if len(gem_packages) > 0:
         gem_install_command = (
-            "RUN echo 'gem: --no-document' >> ~/.gemrc && \\\n"
+            "RUN "
+            + build_deps_add
+            + "echo 'gem: --no-document' >> ~/.gemrc && \\\n"
             + "    gem install \\\n          "
             + " \\\n          ".join(list(dict.fromkeys(gem_packages)))
+            + build_deps_del
         )
     replace_in_file(dockerfile, "#GEM__START", "#GEM__END", gem_install_command)
     flavor_env = f"ENV MEGALINTER_FLAVOR={flavor}"
@@ -802,6 +828,30 @@ def generate_linter_dockerfiles():
                 os.makedirs(os.path.dirname(dockerfile), exist_ok=True)
             descriptor_and_linter = descriptor_items + [vars(linter)]
             copyfile(f"{REPO_HOME}/Dockerfile", dockerfile)
+            # Standalone images exclude the LLM Advisor SDKs (installed via the
+            # "llm" extra in the main and flavor images) to stay lightweight
+            replace_between_markers(
+                dockerfile,
+                "#UV_SYNC__START",
+                "#UV_SYNC__END",
+                "RUN --mount=type=cache,target=/root/.cache/uv \\\n"
+                "    --mount=type=bind,source=uv.lock,target=uv.lock \\\n"
+                "    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \\\n"
+                "    uv sync --frozen --no-install-project\n"
+                "# Copy the project into the image\n"
+                "COPY . .\n"
+                "# Sync the project\n"
+                "RUN --mount=type=cache,target=/root/.cache/uv \\\n"
+                "    uv sync --frozen",
+            )
+            replace_between_markers(
+                dockerfile,
+                "#PIP_PROJECT__START",
+                "#PIP_PROJECT__END",
+                "RUN --mount=type=cache,target=/root/.cache/uv,from=build-ml-core \\\n"
+                "    --mount=from=uv,source=/uv,target=/bin/uv \\\n"
+                "    uv pip install --system -e .",
+            )
             extra_lines = [
                 f"ENV ENABLE_LINTERS={linter.name} \\",
                 "    FLAVOR_SUGGESTIONS=false \\",
@@ -836,7 +886,10 @@ def generate_linter_dockerfiles():
                 "      > /usr/local/bin/megalinter && \\",
                 "    chmod u+x /usr/local/bin/megalinter && \\",
                 "    ln -sf /usr/bin/megalinter_exec.sh /usr/local/bin/megalinter_exec",
-                'RUN export STANDALONE_LINTER_VERSION="$(python -m megalinter.run --input /tmp --linterversion)" && \\',
+                # PYTHONDONTWRITEBYTECODE avoids a ~45MB __pycache__ layer;
+                # bytecode is regenerated in the container writable layer at runtime
+                "RUN export PYTHONDONTWRITEBYTECODE=1 && "
+                'export STANDALONE_LINTER_VERSION="$(python -m megalinter.run --input /tmp --linterversion)" && \\',
                 "    echo $STANDALONE_LINTER_VERSION",
                 # "    echo $STANDALONE_LINTER_VERSION >> ~/.bashrc && source ~/.bashrc",
                 'ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]',
@@ -989,7 +1042,8 @@ def generate_documentation():
         + f"[**{count_active_linters(linters_by_type['tooling_format'])}** tooling formats](#tooling-formats), "
         + "and is **ready to use out of the box** as a GitHub Action or with any CI system. "
         + "It is **highly configurable** and **free for all uses**.\n\n"
-        + "MegaLinter has **native integrations** with many major CI/CD tools.\n\n"
+        + "MegaLinter has **native integrations** with popular CI/CD tools "
+        + "and is compliant with most **Coding Agents**.\n\n"
         + "[![GitHub]("
         + "https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/github.png?raw=true>)]("
         + "https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitHubCommentReporter.md)\n"
@@ -1020,6 +1074,32 @@ def generate_documentation():
         + "[![Grafana]("
         + "https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/grafana.png?raw=true>)]("
         + "https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/ApiReporter.md)\n\n"
+        + "\n".join(
+            '[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/'
+            + icon
+            + '.png?raw=true" alt="'
+            + label
+            + '" height="40" style="height:40px">]'
+            + "(https://github.com/oxsecurity/megalinter/tree/main/docs/coding-agents.md)"
+            for icon, label in [
+                ("claude", "Claude Code"),
+                ("cursor", "Cursor"),
+                ("github-copilot", "GitHub Copilot CLI"),
+                ("codex", "Codex"),
+                ("antigravity", "Antigravity"),
+                ("opencode", "OpenCode"),
+                ("gemini-cli", "Gemini CLI"),
+                ("windsurf", "Windsurf"),
+                ("cline", "Cline"),
+                ("roo-code", "Roo Code"),
+                ("kilo-code", "Kilo Code"),
+                ("amp", "Amp"),
+                ("goose", "Goose"),
+                ("openhands", "OpenHands"),
+                ("qwen-code", "Qwen Code"),
+            ]
+        )
+        + "\n\n"
     )
     # Update README.md file
     replace_in_file(
@@ -1201,7 +1281,8 @@ def generate_descriptor_documentation(descriptor):
                         f"{descriptor.get('descriptor_id')}: "
                         "Custom regex including filter: only files matching this regex will be linted"
                     ),
-                    "type": "string",
+                    "type": ["string", "array"],
+                    "items": {"type": "string"},
                     "title": f"Including regex filter for {descriptor.get('descriptor_id')} descriptor",
                     "x-doc-key": "config-filtering",
                 },
@@ -1214,7 +1295,8 @@ def generate_descriptor_documentation(descriptor):
                         f"{descriptor.get('descriptor_id')}: "
                         "Custom regex excluding filter: files matching this regex will NOT be linted"
                     ),
-                    "type": "string",
+                    "type": ["string", "array"],
+                    "items": {"type": "string"},
                     "title": f"Excluding regex filter for {descriptor.get('descriptor_id')} descriptor",
                     "x-doc-key": "config-filtering",
                 },
@@ -1590,72 +1672,86 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             f'Ex: `-s --foo "bar"` |  |'
         ]
         # Files can be filtered only in cli_lint_mode is file or list_of_files
-        if linter.cli_lint_mode != "project":
-            linter_doc_md += [
-                f"| {linter.name}_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>"
-                f"Ex: `(src\\|lib)` | Include every file |",
-                f"| {linter.name}_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>"
-                f"Ex: `(test\\|examples)` | Exclude no file |",
-            ]
-            add_in_config_schema_file(
-                [
-                    [
-                        f"{linter.name}_FILTER_REGEX_INCLUDE",
-                        {
-                            "$id": f"#/properties/{linter.name}_FILTER_REGEX_INCLUDE",
-                            "description": (
-                                f"{linter.name}: "
-                                "Custom regex including filter: "
-                                "only files matching this regex will be linted"
-                            ),
-                            "type": "string",
-                            "title": f"{title_prefix}{linter.name}: Including Regex",
-                            "x-doc-key": "config-filtering",
-                        },
-                    ],
-                    [
-                        f"{linter.name}_FILTER_REGEX_EXCLUDE",
-                        {
-                            "$id": f"#/properties/{linter.name}_FILTER_REGEX_EXCLUDE",
-                            "description": (
-                                f"{linter.name}: "
-                                "Custom regex excluding filter: "
-                                "files matching this regex will NOT be linted"
-                            ),
-                            "type": "string",
-                            "title": f"{title_prefix}{linter.name}: Excluding Regex",
-                            "x-doc-key": "config-filtering",
-                        },
-                    ],
-                ]
+        linter_doc_md += [
+            f"| {linter.name}_FILTER_REGEX_INCLUDE | "
+            "Custom regex including filter<br/>Ex: `(src\\|lib)`"
+            + (
+                f"<br/>⚠️ Not available with {linter.name}_CLI_LINT_MODE = project "
+                if "project" in linter.supported_cli_lint_modes
+                else " "
             )
-        else:
-            remove_in_config_schema_file(
+            + "| Exclude no file |"
+        ]
+
+        linter_doc_md += [
+            f"| {linter.name}_FILTER_REGEX_EXCLUDE | "
+            "Custom regex excluding filter<br/>Ex: `(test\\|examples)`"
+            + (
+                f"<br/>⚠️ Not available with {linter.name}_CLI_LINT_MODE = project "
+                if "project" in linter.supported_cli_lint_modes
+                else " "
+            )
+            + "| Exclude no file |"
+        ]
+        add_in_config_schema_file(
+            [
                 [
                     f"{linter.name}_FILTER_REGEX_INCLUDE",
+                    {
+                        "$id": f"#/properties/{linter.name}_FILTER_REGEX_INCLUDE",
+                        "description": (
+                            f"{linter.name}: "
+                            "Custom regex including filter: "
+                            "only files matching this regex will be linted."
+                            f" ⚠️ Not available with {linter.name}_CLI_LINT_MODE = project"
+                            if "project" in linter.supported_cli_lint_modes
+                            else ""
+                        ),
+                        "type": ["string", "array"],
+                        "items": {"type": "string"},
+                        "title": f"{title_prefix}{linter.name}: Including Regex",
+                        "x-doc-key": "config-filtering",
+                    },
+                ],
+                [
                     f"{linter.name}_FILTER_REGEX_EXCLUDE",
-                ]
-            )
+                    {
+                        "$id": f"#/properties/{linter.name}_FILTER_REGEX_EXCLUDE",
+                        "description": (
+                            f"{linter.name}: "
+                            "Custom regex excluding filter: "
+                            "files matching this regex will NOT be linted."
+                            f" ⚠️ Not available with {linter.name}_CLI_LINT_MODE = project"
+                            if "project" in linter.supported_cli_lint_modes
+                            else ""
+                        ),
+                        "type": ["string", "array"],
+                        "items": {"type": "string"},
+                        "title": f"{title_prefix}{linter.name}: Excluding Regex",
+                        "x-doc-key": "config-filtering",
+                    },
+                ],
+            ]
+        )
         # cli_lint_mode can be overridden by user config
-        # if the descriptor cli_lint_mode == "project", it's at the user's own risk :)
         cli_lint_mode_doc_md = (
             f"| {linter.name}_CLI_LINT_MODE | Override default CLI lint mode<br/>"
         )
-        if linter.cli_lint_mode == "project":
-            cli_lint_mode_doc_md += (
-                "⚠️ As default value is **project**, overriding might not work<br/>"
+        cli_lint_modes_doc_md = []
+        if "file" in linter.supported_cli_lint_modes:
+            cli_lint_modes_doc_md.append("- `file`: Calls the linter for each file")
+        if "list_of_files" in linter.supported_cli_lint_modes:
+            cli_lint_modes_doc_md.append(
+                "- `list_of_files`: Call the linter with the list of files as argument"
             )
-        cli_lint_mode_doc_md += "- `file`: Calls the linter for each file<br/>"
-        if linter.cli_lint_mode == "file":
-            enum = ["file", "project"]
-        else:
-            enum = ["file", "list_of_files", "project"]
-            cli_lint_mode_doc_md += "- `list_of_files`: Call the linter with the list of files as argument<br/>"
-        cli_lint_mode_doc_md += (
-            "- `project`: Call the linter from the root of the project"
-        )
+        if "project" in linter.supported_cli_lint_modes:
+            cli_lint_modes_doc_md.append(
+                "- `project`: Call the linter from the root of the project"
+            )
+        cli_lint_mode_doc_md += "<br/>".join(cli_lint_modes_doc_md)
         cli_lint_mode_doc_md += f" | `{linter.cli_lint_mode}` |"
         linter_doc_md += [cli_lint_mode_doc_md]
+        enum = linter.supported_cli_lint_modes
         add_in_config_schema_file(
             [
                 [
@@ -2026,7 +2122,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
 
         # Lint mode
         linter_doc_md += ["### How the linting is performed", ""]
-        if linter.cli_lint_mode == "project":
+        if "project" in linter.supported_cli_lint_modes:
             linter_doc_md += [
                 f"{linter.linter_name} is called once on the whole project directory (`project` CLI lint mode)",
                 "",
@@ -2034,12 +2130,12 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 f"it must be done using {linter.linter_name} configuration or ignore file (if existing)",
                 f"- `VALIDATE_ALL_CODEBASE: false` doesn't make {linter.linter_name} analyze only updated files",
             ]
-        elif linter.cli_lint_mode == "list_of_files":
+        elif "list_of_files" in linter.supported_cli_lint_modes:
             linter_doc_md += [
                 f"- {linter.linter_name} is called once with the list "
                 "of files as arguments (`list_of_files` CLI lint mode)"
             ]
-        else:
+        elif "file" in linter.supported_cli_lint_modes:
             linter_doc_md += [
                 f"- {linter.linter_name} is called one time by identified file (`file` CLI lint mode)"
             ]
@@ -2144,6 +2240,175 @@ def build_common_linter_errors_md(linter):
         md += message.splitlines()
         md += ["```", ""]
     return md
+
+
+AGENT_SKILLS_FIX_LINTERS_DIR = f"{REPO_HOME}/skills/megalinter-fix/linters"
+AGENT_SKILLS_MARKER_START = "<!-- generated-descriptor-info-start -->"
+AGENT_SKILLS_MARKER_END = "<!-- generated-descriptor-info-end -->"
+
+
+def build_agent_skills_descriptor_info_md(linter):
+    lang_lower, linter_name_lower, _descriptor_label = get_linter_base_info(linter)
+    doc_url = f"{MKDOCS_URL_ROOT}/descriptors/{lang_lower}_{linter_name_lower}/"
+    key = linter.name
+    md = [
+        f"- Linter: **{linter.linter_name}** (MegaLinter key: `{key}`)",
+        f"- Descriptor: **{linter.descriptor_id}** ({linter.descriptor_type})",
+        f"- MegaLinter documentation: <{doc_url}>",
+    ]
+    if linter.linter_url is not None:
+        md += [f"- Official documentation: <{linter.linter_url}>"]
+    if linter.cli_lint_fix_arg_name is not None or (
+        getattr(linter, "is_formatter", False) is True
+    ):
+        md += [
+            f"- Auto-fix support: **yes** — add `{key}` (or `all`) to the `APPLY_FIXES` variable, "
+            f"or run locally `npx mega-linter-runner --linter {key} --fix` "
+            "(runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: "
+            "use `npx mega-linter-runner@beta` only when that property is `beta`)"
+        ]
+    else:
+        md += ["- Auto-fix support: no (errors must be fixed manually)"]
+    if linter.config_file_name is not None:
+        md += [
+            f"- Configuration file: `{linter.config_file_name}` "
+            f"(custom path can be defined with `{key}_CONFIG_FILE`)"
+        ]
+    if linter.ignore_file_name is not None:
+        md += [f"- Ignore file: `{linter.ignore_file_name}`"]
+    if getattr(linter, "linter_rules_url", None) is not None:
+        md += [f"- Rules index: <{linter.linter_rules_url}>"]
+    if getattr(linter, "linter_rules_configuration_url", None) is not None:
+        md += [f"- Rules configuration: <{linter.linter_rules_configuration_url}>"]
+    if getattr(linter, "linter_rules_inline_disable_url", None) is not None:
+        md += [
+            f"- How to disable rules inline: <{linter.linter_rules_inline_disable_url}>"
+        ]
+    if getattr(linter, "linter_rules_ignore_config_url", None) is not None:
+        md += [
+            f"- How to ignore files and directories: <{linter.linter_rules_ignore_config_url}>"
+        ]
+    if getattr(linter, "cli_lint_errors_regex", None) is not None:
+        md += [f"- Error line format (regex): `{linter.cli_lint_errors_regex}`"]
+    md += [
+        "- MegaLinter tuning variables (in `.mega-linter.yml`):",
+        f"  - `DISABLE_LINTERS`: add `{key}` to fully disable this linter",
+        f"  - `{key}_DISABLE_ERRORS: true`: keep the linter active but non-blocking",
+        f"  - `{key}_DISABLE_ERRORS_IF_LESS_THAN: <number>`: block only when the error"
+        " count reaches the threshold — useful on a first install to accept the"
+        " existing technical debt while preventing it from growing",
+        f"  - `{key}_FILTER_REGEX_EXCLUDE`: regex of files to exclude from this linter",
+        f"  - `{key}_ARGUMENTS`: additional CLI arguments for the linter",
+    ]
+    common_errors = getattr(linter, "common_linter_errors", None) or []
+    if len(common_errors) > 0:
+        md += [
+            "- Known non-lint failure patterns (configuration/environment issues, "
+            "see resolutions in the MegaLinter documentation page):"
+        ]
+        for entry in common_errors:
+            md += [f"  - `{entry.get('identifier', '')}`"]
+    return md
+
+
+def replace_between_markers(file_path, start, end, content):
+    file_content = Path(file_path).read_text(encoding="utf-8")
+    start_pos = file_content.find(start)
+    end_pos = file_content.find(end)
+    if start_pos == -1 or end_pos == -1 or end_pos < start_pos:
+        logging.warning(f"Markers not found in {file_path}: file left unchanged")
+        return
+    new_content = (
+        file_content[: start_pos + len(start)]
+        + "\n"
+        + content
+        + "\n"
+        + file_content[end_pos:]
+    )
+    Path(file_path).write_text(new_content, encoding="utf-8")
+
+
+def generate_agent_skills_fix_files():
+    logging.info("Generating agent skills per-linter fix guides…")
+    os.makedirs(AGENT_SKILLS_FIX_LINTERS_DIR, exist_ok=True)
+    _descriptors, linters_by_type = list_descriptors_for_build()
+    all_linters = []
+    for type1 in linters_by_type:
+        all_linters += linters_by_type[type1]
+    index_rows = []
+    valid_files = {"README.md"}
+    for linter in all_linters:
+        if getattr(linter, "disabled", False) is True:
+            continue
+        file_name = f"{linter.name.lower()}.md"
+        valid_files.add(file_name)
+        file_path = os.path.join(AGENT_SKILLS_FIX_LINTERS_DIR, file_name)
+        info_block = "\n".join(build_agent_skills_descriptor_info_md(linter))
+        if os.path.isfile(file_path):
+            replace_between_markers(
+                file_path,
+                AGENT_SKILLS_MARKER_START,
+                AGENT_SKILLS_MARKER_END,
+                info_block,
+            )
+        else:
+            scaffold = "\n".join(
+                [
+                    f"# Fix {linter.name} errors",
+                    "",
+                    AGENT_SKILLS_MARKER_START,
+                    info_block,
+                    AGENT_SKILLS_MARKER_END,
+                    "",
+                    "<!-- needs-enrichment -->",
+                    "",
+                    "## Fix instructions",
+                    "",
+                    f"No researched fix instructions are available yet for {linter.linter_name}.",
+                    "Use the documentation links of the section above to:",
+                    "",
+                    "- understand each reported rule before changing code",
+                    "- apply the linter auto-fix option when available and safe",
+                    "- disable a rule inline or in the linter configuration file"
+                    " only when fixing is not relevant",
+                    "",
+                ]
+            )
+            Path(file_path).write_text(scaffold, encoding="utf-8")
+            logging.info(f"Scaffolded new agent skills fix guide {file_name}")
+        index_rows += [
+            f"| {linter.name} | {linter.descriptor_id} | [{file_name}]({file_name}) |"
+        ]
+    index_md = "\n".join(
+        [
+            "<!-- This file is automatically @generated by .automation/build.py,"
+            " please don't update it manually -->",
+            "",
+            "# MegaLinter fix guides index",
+            "",
+            "One guide per linter: load a guide only when the related linter reports errors.",
+            "",
+            "| Linter key | Descriptor | Fix guide |",
+            "| :--------- | :--------- | :-------- |",
+        ]
+        + index_rows
+        + [""]
+    )
+    Path(os.path.join(AGENT_SKILLS_FIX_LINTERS_DIR, "README.md")).write_text(
+        index_md, encoding="utf-8"
+    )
+    for existing_file in os.listdir(AGENT_SKILLS_FIX_LINTERS_DIR):
+        existing_path = os.path.join(AGENT_SKILLS_FIX_LINTERS_DIR, existing_file)
+        if (
+            os.path.isfile(existing_path)
+            and existing_file.endswith(".md")
+            and existing_file not in valid_files
+        ):
+            logging.warning(
+                f"Removing agent skills fix guide {existing_file} "
+                "as it does not match any existing linter"
+            )
+            os.remove(existing_path)
 
 
 def build_flavors_md_table(filter_linter_name=None, replace_link=False):
@@ -2650,13 +2915,7 @@ _CONFIG_SCHEMA_IDS_CACHE: dict[str, Any] = {
 
 def _is_removed_linter_related_variable(property_name: str) -> bool:
     # Removed linters can still leave legacy variables in schema; ignore them for checks.
-    removed_linters_sorted = sorted(DEPRECATED_LINTERS, key=len, reverse=True)
-    for removed_linter_id in removed_linters_sorted:
-        if property_name == removed_linter_id or property_name.startswith(
-            removed_linter_id + "_"
-        ):
-            return True
-    return False
+    return is_removed_related_variable(property_name)
 
 
 def _collect_descriptor_ids_sorted() -> list[str]:
@@ -2846,12 +3105,11 @@ def ensure_config_schema_root_x_metadata_for_descriptors_and_linters() -> None:
         if not isinstance(prop_name, str) or not isinstance(prop_schema, dict):
             continue
 
-        if _is_removed_linter_related_variable(prop_name):
-            continue
-
         # Flag deprecated variables with the JSON Schema "deprecated" keyword so
         # editors/tools can surface them. Detection is based on the "(deprecated)"
         # title prefix added for deprecated linters and on "Deprecated:" wording.
+        # Runs before the removed-linter guard below, which only skips the
+        # x-metadata that removed variables have no use for.
         title = prop_schema.get("title", "")
         description = prop_schema.get("description", "")
         is_deprecated_variable = (
@@ -2863,6 +3121,9 @@ def ensure_config_schema_root_x_metadata_for_descriptors_and_linters() -> None:
         if is_deprecated_variable and prop_schema.get("deprecated") is not True:
             prop_schema["deprecated"] = True
             updated = True
+
+        if _is_removed_linter_related_variable(prop_name):
+            continue
 
         category = _infer_config_schema_descriptor_or_linter_category(prop_name)
         if category is None:
@@ -2879,6 +3140,32 @@ def ensure_config_schema_root_x_metadata_for_descriptors_and_linters() -> None:
             updated = True
         if prop_schema.get("x-order") != x_order:
             prop_schema["x-order"] = x_order
+            updated = True
+
+    if updated is True:
+        write_config_json_schema(json_schema)
+
+
+def ensure_removed_linters_flagged_in_config_schema() -> None:
+    # Variables of removed linters and descriptors are never deleted from the
+    # config schema, so that existing configurations keep validating. Mark them
+    # as deprecated so editors and tools surface them as such.
+    with open(CONFIG_JSON_SCHEMA, "r", encoding="utf-8") as json_file:
+        json_schema = json.load(json_file)
+
+    props = json_schema.get("properties")
+    updated = False
+    for prop_name, prop_schema in props.items():
+        if not isinstance(prop_name, str) or not isinstance(prop_schema, dict):
+            continue
+        if not is_removed_related_variable(prop_name):
+            continue
+        title = prop_schema.get("title", "")
+        if isinstance(title, str) and "(deprecated)" not in title.lower():
+            prop_schema["title"] = f"(deprecated) {title}"
+            updated = True
+        if prop_schema.get("deprecated") is not True:
+            prop_schema["deprecated"] = True
             updated = True
 
     if updated is True:
@@ -3097,11 +3384,13 @@ def finalize_doc_build():
     # Split README sections into individual files
     moves = [
         "quick-start",
+        "coding-agents",
         "supported-linters",
         # 'languages',
         # 'format',
         # 'tooling-formats',
         # 'other',
+        "install-agent-skills",
         "install-assisted",
         "install-version",
         "install-github",
@@ -3163,8 +3452,9 @@ def finalize_doc_build():
         "<!-- mega-linter-badges-start -->",
         "<!-- mega-linter-badges-end -->",
         """![GitHub release](https://img.shields.io/github/v/release/oxsecurity/megalinter?sort=semver&color=%23FD80CD)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-15.9M-blue?color=%23FD80CD)](https://megalinter.io/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-16.5M-blue?color=%23FD80CD)](https://megalinter.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg?color=%23FD80CD)](https://npmjs.org/package/mega-linter-runner)
+[![Coding Agents](https://img.shields.io/badge/Coding%20Agents-compatible-%23FD80CD?logo=githubcopilot&logoColor=white)](https://megalinter.io/latest/coding-agents/)
 [![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?cacheSeconds=3600&color=%23FD80CD)](https://github.com/oxsecurity/megalinter/stargazers/)
 [![Dependents](https://img.shields.io/static/v1?label=Used%20by&message=2180&color=%23FD80CD&logo=slickpic)](https://github.com/oxsecurity/megalinter/network/dependents)
 [![GitHub contributors](https://img.shields.io/github/contributors/oxsecurity/megalinter.svg?color=%23FD80CD)](https://github.com/oxsecurity/megalinter/graphs/contributors/)
@@ -3296,10 +3586,15 @@ def generate_json_schema_enums():
     json_schema["definitions"]["enum_descriptor_keys"]["enum"] = [
         x["descriptor_id"] for x in descriptors
     ]
-    json_schema["definitions"]["enum_descriptor_keys"]["enum"] += ["CREDENTIALS", "GIT"]
+    # Removed descriptors and linters: their keys stay valid so that existing
+    # configurations referencing them keep validating after an upgrade
+    json_schema["definitions"]["enum_descriptor_keys"]["enum"] += list(
+        REMOVED_DESCRIPTORS
+    )
     json_schema["definitions"]["enum_linter_keys"]["enum"] = [x.name for x in linters]
-    # Deprecated linters
-    json_schema["definitions"]["enum_linter_keys"]["enum"] += DEPRECATED_LINTERS
+    json_schema["definitions"]["enum_linter_keys"]["enum"] += (
+        list(REMOVED_LINTERS) + REMOVED_LINTER_ALIASES
+    )
 
     # Sort:
     json_schema["definitions"]["enum_descriptor_keys"]["enum"] = sorted(
@@ -3647,6 +3942,64 @@ def generate_documentation_all_linters():
         )
         for md_table_line in md_table_lines:
             outfile.write("| %s |\n" % " | ".join(md_table_line))
+
+
+# Generate the page listing linters and descriptors removed from MegaLinter
+def generate_documentation_removed_linters():
+    logging.info("Generating removed linters documentation…")
+
+    def sort_key(item):
+        _key, info = item
+        return [-int(part) for part in info["removed_in"].split(".")]
+
+    def build_table(entries, first_column):
+        table_lines = [
+            f"| {first_column} | Removed in | Replacement | Reason |",
+            "| :--- | :---: | :--- | :--- |",
+        ]
+        for key, info in entries:
+            replacement = info["replacement"]
+            replacement_cell = f"`{replacement}`" if replacement else "None"
+            table_lines += [
+                f"| `{key}` | v{info['removed_in']} | {replacement_cell} "
+                f"| {info['reason']} |"
+            ]
+        return table_lines
+
+    doc_md = [
+        f"<!-- This file has been automatically {'@'}generated by build.py"
+        " (generate_documentation_removed_linters method) -->",
+        "",
+        "# Removed linters",
+        "",
+        "Linters and descriptors listed on this page have been removed from"
+        " MegaLinter in a major version.",
+        "",
+        "Their configuration variables remain valid in the"
+        " [configuration JSON schema](https://github.com/oxsecurity/megalinter"
+        "/blob/main/megalinter/descriptors/schemas"
+        "/megalinter-configuration.jsonschema.json)"
+        " (flagged as deprecated), so an existing `.mega-linter.yml` keeps"
+        " validating after an upgrade. They are simply ignored at runtime, and"
+        " MegaLinter displays a notice listing the removed items it found in"
+        " your configuration.",
+        "",
+        "## Removed linters",
+        "",
+    ]
+    doc_md += build_table(sorted(REMOVED_LINTERS.items(), key=sort_key), "Linter")
+    doc_md += [
+        "",
+        "## Removed descriptors",
+        "",
+    ]
+    doc_md += build_table(
+        sorted(REMOVED_DESCRIPTORS.items(), key=sort_key), "Descriptor"
+    )
+    doc_md += [""]
+
+    with open(f"{REPO_HOME}/docs/removed-linters.md", "w", encoding="utf-8") as outfile:
+        outfile.write("\n".join(doc_md))
 
 
 # Generate page of MegaLinter public repositories users
@@ -4129,6 +4482,8 @@ if __name__ == "__main__":
         # noinspection PyTypeChecker
         collect_linter_previews()
         generate_json_schema_enums()
+        ensure_removed_linters_flagged_in_config_schema()
+        generate_documentation_removed_linters()
         validate_descriptors()
         if UPDATE_DEPENDENTS is True:
             update_dependents_info()
@@ -4137,8 +4492,12 @@ if __name__ == "__main__":
         generate_linter_test_classes()
         if UPDATE_DOC is True:
             logging.info("Running documentation generators…")
+            from vendor_betterleaks_ruleset import vendor as vendor_betterleaks_ruleset
+
+            vendor_betterleaks_ruleset()
             # refresh_users_info() # deprecated since now we use github-dependents-info
             generate_documentation()
+            generate_agent_skills_fix_files()
             ensure_config_schema_root_x_metadata_for_descriptors_and_linters()
             validate_config_schema_root_x_metadata()
             generate_documentation_all_linters()

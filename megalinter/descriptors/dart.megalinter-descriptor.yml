@@ -76,8 +76,15 @@ linters:
       - "analyze"
       - "--fatal-infos"
       - "--fatal-warnings"
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_help_extra_args:
       - "analyze"
+    cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     version_extract_regex: "(?<=Dart SDK version: )(\\d+)\\.(\\d+)\\.(\\d+)"
     examples:
       - "dart analyze --fatal-infos --fatal-warnings myfile.dart"

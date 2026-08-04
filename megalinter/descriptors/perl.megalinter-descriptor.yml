@@ -14,7 +14,6 @@ file_contains_regex:
 install:
   apk:
     - perl
-    - perl-dev
 supported_platforms:
   platform:
     - linux/amd64
@@ -42,6 +41,13 @@ linters:
     linter_banner_image_url: https://chrisdolan.net/madmongers/images/perl-critic-logo.gif
     linter_rules_configuration_url: https://metacpan.org/pod/Perl::Critic#CONFIGURATION
     linter_rules_inline_disable_url: https://metacpan.org/pod/Perl::Critic#BENDING-THE-RULES
+    cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_help_arg_name: "--help"
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: "\\(Severity: [0-9]+\\)"
@@ -74,8 +80,12 @@ linters:
           # renovate: datasource=github-tags depName=skaji/cpm
           ARG PERL_PERLCRITIC_VERSION=v1.1.4
         - |
-          RUN curl -fsSL https://raw.githubusercontent.com/skaji/cpm/refs/tags/${PERL_PERLCRITIC_VERSION}/cpm | perl - install -g --show-build-log-on-failure --without-build --without-test --without-runtime Perl::Critic \
-              && rm -rf /root/.perl-cpm
+          # cpm compiles XS modules during installation: the toolchain is only
+          # needed within this RUN and evicted from the final layers
+          RUN apk add --no-cache --virtual .perl-build-deps gcc make musl-dev perl-dev \
+              && curl -fsSL https://raw.githubusercontent.com/skaji/cpm/refs/tags/${PERL_PERLCRITIC_VERSION}/cpm | perl - install -g --show-build-log-on-failure --without-build --without-test --without-runtime Perl::Critic \
+              && rm -rf /root/.perl-cpm \
+              && apk del .perl-build-deps
     supported_platforms:
       platform:
         - linux/amd64

@@ -8,22 +8,36 @@ import os
 from megalinter import Linter, config
 
 NODE_DEPS_DIR = "/node-deps"
+CONFIG_BASEDIR_ARG = "--config-basedir"
 
 
 class StyleLintLinter(Linter):
-    def pre_test(self, test_name):
-        if test_name == "test_failure":
-            config.set_value(
-                self.request_id, "CSS_STYLELINT_CONFIG_FILE", ".stylelintrc_bad.json"
+    def build_lint_command(self, file=None) -> list:
+        if self.cli_lint_mode == "project":
+            self.cli_lint_extra_args_after.append(
+                f"**/*{self.file_extensions[0]}"
+                if len(self.file_extensions) == 1
+                else f"**/*.{{{",".join(self.file_extensions).replace(".", "")}}}"
             )
 
-    def build_lint_command(self, file=None) -> list:
         cmd = super().build_lint_command(file)
         # stylelint v17 (ESM) resolves config extends from the config file's directory.
         # In the MegaLinter Docker container all npm packages are installed in /node-deps,
         # which is not on the standard Node.js resolution path when the config file lives
         # elsewhere (e.g. /action/lib/.automation/ or the user's workspace).
         # Passing --config-basedir tells stylelint where to look for extended packages.
-        if os.path.isdir(NODE_DEPS_DIR):
-            cmd += ["--config-basedir", NODE_DEPS_DIR]
+        # Do not add it if the user already defined it in CSS_STYLELINT_ARGUMENTS,
+        # or asked to get rid of it using CSS_STYLELINT_COMMAND_REMOVE_ARGUMENTS
+        if (
+            os.path.isdir(NODE_DEPS_DIR)
+            and CONFIG_BASEDIR_ARG not in cmd
+            and CONFIG_BASEDIR_ARG not in self.cli_command_remove_args
+        ):
+            cmd += [CONFIG_BASEDIR_ARG, NODE_DEPS_DIR]
         return cmd
+
+    def pre_test(self, test_name):
+        if test_name.startswith("test_failure"):
+            config.set_value(
+                self.request_id, "CSS_STYLELINT_CONFIG_FILE", ".stylelintrc_bad.json"
+            )

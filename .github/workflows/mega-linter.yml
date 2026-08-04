@@ -6,9 +6,14 @@ name: MegaLinter
 # Trigger mega-linter at every push. Action will also be visible from Pull
 # Requests to main
 on:
-  # Comment this line to trigger action only on pull-requests
-  # (not recommended if you don't pay for GH Actions)
+  # push is restricted to main-line branches: feature branches are already
+  # covered by the pull_request event, and unrestricted push triggered a
+  # duplicate run for every commit of every open PR
   push:
+    branches:
+      - main
+      - master
+      - alpha # ml workflow addition
 
   pull_request:
     branches:
@@ -56,7 +61,7 @@ jobs:
 
       # Git Checkout
       - name: Checkout Code
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           # SECURITY NOTE: Using a Personal Access Token (PAT) is NOT
           # recommended for end-users. Open-source projects have been heavily
@@ -75,6 +80,17 @@ jobs:
           # If you use VALIDATE_ALL_CODEBASE = true, you can remove this line to
           # improve performance
           fetch-depth: 0
+
+      # Cache the grype vulnerability database between runs: downloading it is
+      # what makes REPOSITORY_GRYPE take ~2 minutes on a cold run. grype still
+      # refreshes the DB itself when the cached copy is older than its max age.
+      - name: Cache grype vulnerability DB
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: .megalinter-cache/grype
+          key: grype-db-${{ github.run_id }}
+          restore-keys: |
+            grype-db-
 
       # MegaLinter
       - name: MegaLinter
@@ -111,6 +127,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           EMAIL_REPORTER_SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }} # ml workflow addtion
+
+          # Reuse the cached grype vulnerability DB (see "Cache grype vulnerability DB" step)
+          GRYPE_DB_CACHE_DIR: /github/workspace/.megalinter-cache/grype
 
           # Disable LLM Advisor for bot PRs (dependabot, renovate, etc.)
           LLM_ADVISOR_ENABLED: >-

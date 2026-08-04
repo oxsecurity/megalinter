@@ -59,6 +59,9 @@ linters:
     linter_rules_inline_disable_url: https://github.com/hadolint/hadolint#inline-ignores
     linter_megalinter_ref_url: https://github.com/hadolint/hadolint/blob/master/docs/INTEGRATION.md#mega-linter
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
     cli_config_arg_name: "--config"
     config_file_name: .hadolint.yaml
     cli_sarif_args:
@@ -82,7 +85,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=hadolint/hadolint
-          ARG DOCKERFILE_HADOLINT_VERSION=v2.14.0-alpine
+          ARG DOCKERFILE_HADOLINT_VERSION=v2.15.1-alpine
         - FROM hadolint/hadolint:${DOCKERFILE_HADOLINT_VERSION} AS hadolint
         - COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
     supported_platforms:

@@ -18,6 +18,13 @@ export class MegaLinterUpgrader {
         test: "https://nvuillam.github.io/mega-linter/configuration",
         testRes: "https://megalinter.github.io/configuration",
       },
+      // MEGALINTER_VERSION property of .mega-linter.yml
+      {
+        regex: /MEGALINTER_VERSION: v[1-9][0-9]?(\.[0-9.]+)?/gm,
+        replacement: `MEGALINTER_VERSION: ${DEFAULT_RELEASE}`,
+        test: "MEGALINTER_VERSION: v8.4.2",
+        testRes: `MEGALINTER_VERSION: ${DEFAULT_RELEASE}`,
+      },
       // Github actions flavors
       {
         regex: /nvuillam\/mega-linter\/flavors\/([a-z]*)@latest/gm,

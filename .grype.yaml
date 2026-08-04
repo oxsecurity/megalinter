@@ -10,3 +10,15 @@ fail-on-severity: "high"
 # they are not real MegaLinter dependencies.
 exclude:
   - "./.automation/test/**"
+
+# Vulnerabilities that grype flags but that are not exploitable in MegaLinter's context.
+# Mirrors the reasoning documented in .trivyignore and mega-linter-runner/.trivyignore.
+ignore:
+  # brace-expansion 2.1.2 in mega-linter-runner/yarn.lock: unbounded-memory DoS in expand(),
+  # availability only (CVSS A:H), reached solely through minimatch glob expansion over
+  # patterns from the user's own .mega-linter.yml and local paths, never attacker-controlled
+  # input. The fix exists only in 5.0.8 and both current minimatch releases (9.0.9, 10.2.5)
+  # still declare `brace-expansion ^2.0.2`, so there is no upgrade path today.
+  # Remove once minimatch depends on brace-expansion >= 5.0.8.
+  - vulnerability: GHSA-mh99-v99m-4gvg
+  - vulnerability: CVE-2026-14257

@@ -5,6 +5,8 @@ disable-model-invocation: true
 allowed-tools: Read Glob Grep Write Edit Bash WebSearch WebFetch
 argument-hint: "[feature or change to implement]"
 model: sonnet
+metadata:
+  internal: true
 ---
 
 You are a developer working on the **MegaLinter** project.

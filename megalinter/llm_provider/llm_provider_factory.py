@@ -4,30 +4,25 @@ LLM Provider Factory for MegaLinter
 """
 
 import logging
+from importlib import import_module
 from typing import Dict, Optional
 
 from .llm_provider import LLMProvider
-from .llm_provider_anthropic import AnthropicProvider
-from .llm_provider_deepseek import DeepSeekProvider
-from .llm_provider_google import GoogleProvider
-from .llm_provider_grok import GrokProvider
-from .llm_provider_huggingface import HuggingFaceProvider
-from .llm_provider_mistral import MistralProvider
-from .llm_provider_ollama import OllamaProvider
-from .llm_provider_openai import OpenAIProvider
 
 
 class LLMProviderFactory:
 
+    # Provider classes are imported lazily in create_provider: each provider module
+    # pulls a heavy LLM SDK that would slow down every MegaLinter startup
     SUPPORTED_PROVIDERS = {
-        "openai": OpenAIProvider,
-        "anthropic": AnthropicProvider,
-        "google": GoogleProvider,
-        "ollama": OllamaProvider,
-        "huggingface": HuggingFaceProvider,
-        "mistral": MistralProvider,
-        "deepseek": DeepSeekProvider,
-        "grok": GrokProvider,
+        "openai": ("llm_provider_openai", "OpenAIProvider"),
+        "anthropic": ("llm_provider_anthropic", "AnthropicProvider"),
+        "google": ("llm_provider_google", "GoogleProvider"),
+        "ollama": ("llm_provider_ollama", "OllamaProvider"),
+        "huggingface": ("llm_provider_huggingface", "HuggingFaceProvider"),
+        "mistral": ("llm_provider_mistral", "MistralProvider"),
+        "deepseek": ("llm_provider_deepseek", "DeepSeekProvider"),
+        "grok": ("llm_provider_grok", "GrokProvider"),
     }
 
     @classmethod
@@ -41,7 +36,18 @@ class LLMProviderFactory:
             return None
 
         try:
-            provider_class = cls.SUPPORTED_PROVIDERS[provider_name]
+            module_name, class_name = cls.SUPPORTED_PROVIDERS[provider_name]
+            try:
+                provider_module = import_module(f".{module_name}", __package__)
+            except ModuleNotFoundError:
+                logging.warning(
+                    f"[LLM Advisor] The {provider_name} provider SDK is not installed "
+                    "in this image (standalone linter images exclude LLM Advisor "
+                    "dependencies): use the main or a flavor MegaLinter image, "
+                    'or pip install "megalinter[llm]"'
+                )
+                return None
+            provider_class = getattr(provider_module, class_name)
             provider: LLMProvider  # type: ignore[assignment]
             provider = provider_class()  # type: ignore[abstract]
 

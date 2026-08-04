@@ -16,18 +16,16 @@
 ARG CARGO_SARIF_FMT_VERSION=0.8.0
 # renovate: datasource=crate depName=shellcheck-sarif
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
-# renovate: datasource=docker depName=koalaman/shellcheck
+# renovate: datasource=docker depName=koalaman/shellcheck-alpine
 ARG BASH_SHELLCHECK_VERSION=v0.11.0
 # renovate: datasource=docker depName=mvdan/shfmt
 ARG BASH_SHFMT_VERSION=v3.13.1-alpine
 # renovate: datasource=docker depName=hadolint/hadolint
-ARG DOCKERFILE_HADOLINT_VERSION=v2.14.0-alpine
-# renovate: datasource=docker depName=zricethezav/gitleaks
-ARG REPOSITORY_GITLEAKS_VERSION=v8.30.1
+ARG DOCKERFILE_HADOLINT_VERSION=v2.15.1-alpine
 # renovate: datasource=docker depName=ghcr.io/betterleaks/betterleaks
-ARG REPOSITORY_BETTERLEAKS_VERSION=v1.6.1
+ARG REPOSITORY_BETTERLEAKS_VERSION=v1.7.3
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.95.8
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.96.0
 #ARGTOP__END
 
 #############################################################################################
@@ -50,7 +48,6 @@ RUN set -eu; mkdir -p /out/bin; \
 FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
 FROM mvdan/shfmt:${BASH_SHFMT_VERSION} AS shfmt
 FROM hadolint/hadolint:${DOCKERFILE_HADOLINT_VERSION} AS hadolint
-FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
 FROM ghcr.io/betterleaks/betterleaks:${REPOSITORY_BETTERLEAKS_VERSION} AS betterleaks
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
 #FROM__END
@@ -58,22 +55,24 @@ FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.11.26 AS uv
+FROM ghcr.io/astral-sh/uv:0.12.1 AS uv
 FROM python:3.14-alpine3.24 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
 # Install dependencies
+#UV_SYNC__START
 RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-    uv sync --frozen --no-install-project
+    uv sync --frozen --no-install-project --extra llm
 # Copy the project into the image
 COPY . .
 # Sync the project
 RUN --mount=type=cache,target=/root/.cache/uv \
-    uv sync --frozen
+    uv sync --frozen --extra llm
+#UV_SYNC__END
 
 ##################
 # Get base image #
@@ -89,7 +88,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=5.0.11
+ARG NPM_JSCPD_VERSION=5.0.14
 # renovate: datasource=github-releases depName=dotenv-linter/dotenv-linter extractVersion=^v(?<version>.+)$
 ARG DOTENV_LINTER_VERSION=4.0.0
 # renovate: datasource=npm depName=npm-groovy-lint
@@ -99,38 +98,37 @@ ARG NPM_PRANTLF_JSONLINT_VERSION=17.0.1
 # renovate: datasource=npm depName=v8r
 ARG NPM_V8R_VERSION=6.1.0
 # renovate: datasource=npm depName=prettier
-ARG NPM_PRETTIER_VERSION=3.9.4
+ARG NPM_PRETTIER_VERSION=3.9.6
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.115.0
+ARG REPOSITORY_GRYPE_VERSION=0.116.1
 # renovate: datasource=github-releases depName=loeffel-io/ls-lint extractVersion=^v(?<version>.+)$
 ARG REPOSITORY_LS_LINT_VERSION=2.3.1
 # renovate: datasource=repology depName=alpine_3_24/osv-scanner versioning=loose
 ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.8-r1
 # renovate: datasource=npm depName=secretlint
-ARG NPM_SECRETLINT_VERSION=13.0.2
+ARG NPM_SECRETLINT_VERSION=13.0.4
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
-ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=13.0.2
+ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=13.0.4
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
-ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=13.0.2
+ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=13.0.4
 # renovate: datasource=github-tags depName=anchore/syft
-ARG REPOSITORY_SYFT_VERSION=1.46.0
+ARG REPOSITORY_SYFT_VERSION=1.50.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_VERSION=0.72.0
+ARG REPOSITORY_TRIVY_VERSION=0.73.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_SBOM_VERSION=0.72.0
+ARG REPOSITORY_TRIVY_SBOM_VERSION=0.73.0
 # renovate: datasource=pypi depName=yamllint
 ARG PIP_YAMLLINT_VERSION=1.38.0
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=26.1.2
+ARG PIP_PIP_VERSION=26.2
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=21.5.1
+ARG PIP_VIRTUALENV_VERSION=21.7.1
 
 ARG CARGO_SARIF_FMT_VERSION
 ARG CARGO_SHELLCHECK_SARIF_VERSION
 ARG BASH_SHELLCHECK_VERSION
 ARG BASH_SHFMT_VERSION
 ARG DOCKERFILE_HADOLINT_VERSION
-ARG REPOSITORY_GITLEAKS_VERSION
 ARG REPOSITORY_BETTERLEAKS_VERSION
 ARG REPOSITORY_TRUFFLEHOG_VERSION
 #ARG__END
@@ -151,19 +149,16 @@ RUN apk -U --no-cache upgrade \
                 bash \
                 ca-certificates \
                 curl \
-                gcc \
                 gcompat \
                 git \
                 git-lfs \
-                libffi-dev \
-                make \
-                musl-dev \
+                libgcc \
+                libstdc++ \
                 openssh \
                 su-exec \
-                openjdk17 \
-                libxml2-dev \
+                openjdk21 \
+                libxml2 \
                 libxml2-utils \
-                libgcc \
                 npm \
                 nodejs-current \
                 yarn \
@@ -202,7 +197,6 @@ COPY --link --from=cargo-bin-shellcheck-sarif /out/bin/shellcheck-sarif /usr/bin
 COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 COPY --link --from=shfmt /bin/shfmt /usr/bin/
 COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
-COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 COPY --link --from=betterleaks /usr/bin/betterleaks /usr/bin/
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 #COPY__END
@@ -224,13 +218,16 @@ COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 #############################################################################################
 
 #PIPVENV__START
-RUN uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/yamllint" \
-    && VIRTUAL_ENV="/venvs/yamllint" uv pip install --no-cache yamllint==${PIP_YAMLLINT_VERSION} \
-    && VIRTUAL_ENV="/venvs/yamllint" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+RUN apk add --no-cache --virtual .ml-build-deps gcc libffi-dev make musl-dev ruby-dev && \
+    export UV_LINK_MODE=hardlink \
+    && uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
+    && uv venv --seed --no-project --no-managed-python "/venvs/yamllint" \
+    && VIRTUAL_ENV="/venvs/yamllint" uv pip install yamllint==${PIP_YAMLLINT_VERSION} \
+    && VIRTUAL_ENV="/venvs/yamllint" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/yamllint" rm -rf /venvs/yamllint/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
     && find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
-    && rm -rf /root/.cache
+    && rm -rf /root/.cache \
+    && apk del .ml-build-deps
 ENV PATH="${PATH}":/venvs/yamllint/bin
 #PIPVENV__END
 
@@ -259,7 +256,10 @@ RUN npm config set prefix /usr/local \
     && echo "Changing owner of node_modules files…" \
     && chown -R "$(id -u)":"$(id -g)" node_modules # fix for https://github.com/npm/cli/issues/5900 \
     && echo "Removing extra node_module files…" \
-    && find . \( -not -path "/proc" \) -and \( -type f \( -iname "*.d.ts" -o -iname "*.map" -o -iname "*.npmignore" -o -iname "*.travis.yml" -o -iname "CHANGELOG.md" -o -iname "README.md" -o -iname ".package-lock.json" -o -iname "package-lock.json" \) -o -type d -name /root/.npm/_cacache \) -delete
+    && find . \( -not -path "/proc" \) -and \( -type f \( -iname "*.d.ts" -o -iname "*.map" -o -iname "*.npmignore" -o -iname "*.travis.yml" -o -iname "*.md" -o -iname "*.markdown" -o -iname ".package-lock.json" -o -iname "package-lock.json" \) \) -delete \
+    && echo "Removing test and doc directories from node_modules…" \
+    && find ./node_modules -type d \( -iname "__tests__" -o -iname "test" -o -iname "tests" -o -iname "docs" -o -iname ".github" \) -prune -exec rm -rf {} + \
+    && rm -rf /root/.npm
 WORKDIR /
 
 #NPM__END
@@ -291,12 +291,11 @@ RUN set -eu; \
       "https://github.com/dotenv-linter/dotenv-linter/releases/download/v${DOTENV_LINTER_VERSION}/dotenv-linter-alpine-${ARCH}.tar.gz" \
       | tar -xz -C /usr/local/bin
 # npm-groovy-lint installation
-ENV JAVA_HOME_17=/usr/lib/jvm/java-17-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
+ENV PATH="$JAVA_HOME/bin:${PATH}"
 # jsonlint installation
 # v8r installation
 # prettier installation
-# gitleaks installation
-# Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 # betterleaks installation
 # Managed with COPY --link --from=betterleaks /usr/bin/betterleaks /usr/bin/
 # grype installation
@@ -336,14 +335,19 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPO
 ################################
 COPY --from=build-ml-core pyproject.toml README.md ./
 COPY --from=build-ml-core megalinter /megalinter/
+#PIP_PROJECT__START
 RUN --mount=type=cache,target=/root/.cache/uv,from=build-ml-core \
     --mount=from=uv,source=/uv,target=/bin/uv \
-    uv pip install --system -e .
+    uv pip install --system -e ".[llm]"
+#PIP_PROJECT__END
 
 #######################################
 # Copy scripts and rules to container #
 #######################################
 COPY megalinter/descriptors /megalinter-descriptors
+# Linter versions collected at build time, so runtime does not need to spawn
+# one "--version" process per linter (see VERSION_GET_AT_RUNTIME variable)
+COPY .automation/generated/linter-versions.json /megalinter-descriptors/linter-versions.json
 COPY TEMPLATES /action/lib/.automation
 
 # Copy server scripts

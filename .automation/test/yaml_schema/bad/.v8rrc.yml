@@ -1,0 +1,7 @@
+---
+customCatalog:
+  schemas:
+    - name: action
+      fileMatch: ["action*.yml"]
+      location: https://www.schemastore.org/github-action.json
+      parser: yaml

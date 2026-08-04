@@ -24,13 +24,14 @@
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.11.26 AS uv
+FROM ghcr.io/astral-sh/uv:0.12.1 AS uv
 FROM python:3.14-alpine3.24 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
 # Install dependencies
+#UV_SYNC__START
 RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
@@ -40,6 +41,7 @@ COPY . .
 # Sync the project
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --frozen
+#UV_SYNC__END
 
 ##################
 # Get base image #
@@ -55,11 +57,11 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=npm depName=secretlint
-ARG NPM_SECRETLINT_VERSION=13.0.2
+ARG NPM_SECRETLINT_VERSION=13.0.4
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
-ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=13.0.2
+ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=13.0.4
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
-ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=13.0.2
+ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=13.0.4
 #ARG__END
 
 ####################
@@ -78,13 +80,11 @@ RUN apk -U --no-cache upgrade \
                 bash \
                 ca-certificates \
                 curl \
-                gcc \
                 gcompat \
                 git \
                 git-lfs \
-                libffi-dev \
-                make \
-                musl-dev \
+                libgcc \
+                libstdc++ \
                 openssh \
                 su-exec \
                 npm \
@@ -163,7 +163,10 @@ RUN npm config set prefix /usr/local \
     && echo "Changing owner of node_modules files…" \
     && chown -R "$(id -u)":"$(id -g)" node_modules # fix for https://github.com/npm/cli/issues/5900 \
     && echo "Removing extra node_module files…" \
-    && find . \( -not -path "/proc" \) -and \( -type f \( -iname "*.d.ts" -o -iname "*.map" -o -iname "*.npmignore" -o -iname "*.travis.yml" -o -iname "CHANGELOG.md" -o -iname "README.md" -o -iname ".package-lock.json" -o -iname "package-lock.json" \) -o -type d -name /root/.npm/_cacache \) -delete
+    && find . \( -not -path "/proc" \) -and \( -type f \( -iname "*.d.ts" -o -iname "*.map" -o -iname "*.npmignore" -o -iname "*.travis.yml" -o -iname "*.md" -o -iname "*.markdown" -o -iname ".package-lock.json" -o -iname "package-lock.json" \) \) -delete \
+    && echo "Removing test and doc directories from node_modules…" \
+    && find ./node_modules -type d \( -iname "__tests__" -o -iname "test" -o -iname "tests" -o -iname "docs" -o -iname ".github" \) -prune -exec rm -rf {} + \
+    && rm -rf /root/.npm
 WORKDIR /
 
 #NPM__END
@@ -184,14 +187,19 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 ################################
 COPY --from=build-ml-core pyproject.toml README.md ./
 COPY --from=build-ml-core megalinter /megalinter/
+#PIP_PROJECT__START
 RUN --mount=type=cache,target=/root/.cache/uv,from=build-ml-core \
     --mount=from=uv,source=/uv,target=/bin/uv \
     uv pip install --system -e .
+#PIP_PROJECT__END
 
 #######################################
 # Copy scripts and rules to container #
 #######################################
 COPY megalinter/descriptors /megalinter-descriptors
+# Linter versions collected at build time, so runtime does not need to spawn
+# one "--version" process per linter (see VERSION_GET_AT_RUNTIME variable)
+COPY .automation/generated/linter-versions.json /megalinter-descriptors/linter-versions.json
 COPY TEMPLATES /action/lib/.automation
 
 # Copy server scripts
@@ -266,7 +274,7 @@ RUN find /usr/bin/megalinter-sh/ -type f -iname "*.sh" -exec chmod +x {} \; && \
       > /usr/local/bin/megalinter && \
     chmod u+x /usr/local/bin/megalinter && \
     ln -sf /usr/bin/megalinter_exec.sh /usr/local/bin/megalinter_exec
-RUN export STANDALONE_LINTER_VERSION="$(python -m megalinter.run --input /tmp --linterversion)" && \
+RUN export PYTHONDONTWRITEBYTECODE=1 && export STANDALONE_LINTER_VERSION="$(python -m megalinter.run --input /tmp --linterversion)" && \
     echo $STANDALONE_LINTER_VERSION
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
 #EXTRA_DOCKERFILE_LINES__END

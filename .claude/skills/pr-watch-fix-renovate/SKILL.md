@@ -5,6 +5,8 @@ allowed-tools: Bash Agent AskUserQuestion Read
 argument-hint: "[optional: specific PR numbers e.g. \"8313 7929\", or a max count]"
 user-invocable: true
 model: sonnet
+metadata:
+  internal: true
 ---
 
 Watch and fix CI for **all open Renovate-bot PRs at once** by fanning out one isolated git-worktree agent per PR. Each agent checks out its PR branch and runs the `/pr-watch-fix` loop independently, so many dependency-update PRs are driven to green (or triaged) in parallel.

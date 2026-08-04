@@ -6,6 +6,7 @@
         "JAVA",
         "KOTLIN",
         "PHP",
+        "RUST",
         "TYPESCRIPT"
     ],
     "label": "MegaLinter for the most commonly used languages",
@@ -68,7 +69,6 @@
         "PYTHON_RUFF_FORMAT",
         "REPOSITORY_CHECKOV",
         "REPOSITORY_GIT_DIFF",
-        "REPOSITORY_GITLEAKS",
         "REPOSITORY_BETTERLEAKS",
         "REPOSITORY_GRYPE",
         "REPOSITORY_LS_LINT",

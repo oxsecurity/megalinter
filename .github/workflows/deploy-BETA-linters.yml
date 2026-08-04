@@ -53,7 +53,7 @@ jobs:
       linters: ${{ steps.set-matrix.outputs.linters }}
     steps:
       - name: Checkout Code
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
       - name: Read linters_matrix.json
@@ -95,7 +95,7 @@ jobs:
     ##################
     steps:
       - name: Checkout Code
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
 
@@ -134,7 +134,7 @@ jobs:
         uses: docker/setup-buildx-action@bb05f3f5519dd87d3ba754cc423b652a5edd6d2c # v4
 
       - name: Login to GitHub Container Registry
-        uses: docker/login-action@af1e73f918a031802d376d3c8bbc3fe56130a9b0 # v4
+        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
@@ -158,23 +158,6 @@ jobs:
           outputs: type=image,"name=ghcr.io/${{ github.repository }}-only-${{ matrix.linter }}",push-by-digest=true,name-canonical=true,push=${{ github.event_name != 'pull_request' }}
           cache-from: type=gha,scope=beta-linter-${{ matrix.linter }}-${{ matrix.platform }},ignore-error=true
           cache-to: type=gha,mode=max,scope=beta-linter-${{ matrix.linter }}-${{ matrix.platform }},compression=zstd
-
-      - name: Export digest
-        env:
-          RUNNER_TEMP: ${{ runner.temp }}
-          BUILD_DIGEST: ${{ steps.build.outputs.digest }}
-        run: |
-          mkdir -p "${RUNNER_TEMP}/digests"
-          digest="${BUILD_DIGEST}"
-          touch "${RUNNER_TEMP}/digests/${digest#sha256:}"
-
-      - name: Upload digest
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
-        with:
-          name: linter-beta-digests-${{ matrix.linter }}-${{ env.PLATFORM_PAIR }}
-          path: ${{ runner.temp }}/digests/*
-          if-no-files-found: error
-          retention-days: 1
 
       #####################################
       # Run Linter test cases #
@@ -215,7 +198,7 @@ jobs:
         uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
         with:
           # renovate: datasource=github-releases depName=aquasecurity/trivy
-          version: "v0.72.0"
+          version: "v0.73.0"
           image-ref: "ghcr.io/${{ github.repository }}-only-${{ matrix.linter }}@${{ steps.build.outputs.digest }}"
           format: "table"
           exit-code: "1"
@@ -226,6 +209,29 @@ jobs:
           timeout: 10m0s
         env:
             ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      ################################################################
+      # Publish the digest only once the image passed the test cases #
+      # and the vulnerability scan: the merge job assembles the      #
+      # :beta manifest from the digests uploaded here, so uploading  #
+      # before the quality gates would publish untested images.      #
+      ################################################################
+      - name: Export digest
+        env:
+          RUNNER_TEMP: ${{ runner.temp }}
+          BUILD_DIGEST: ${{ steps.build.outputs.digest }}
+        run: |
+          mkdir -p "${RUNNER_TEMP}/digests"
+          digest="${BUILD_DIGEST}"
+          touch "${RUNNER_TEMP}/digests/${digest#sha256:}"
+
+      - name: Upload digest
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: linter-beta-digests-${{ matrix.linter }}-${{ env.PLATFORM_PAIR }}
+          path: ${{ runner.temp }}/digests/*
+          if-no-files-found: error
+          retention-days: 1
 
       # - name: Run OSV-Scanner vulnerability scanner
       #   uses: google/osv-scanner-action/osv-scanner-action@v2.3.5
@@ -241,7 +247,16 @@ jobs:
     needs:
       - get-linters-matrix
       - build
-    if: ${{ !cancelled() && github.repository == 'oxsecurity/megalinter' }}
+    # get-linters-matrix must have succeeded: when it is skipped (BETA linters
+    # disabled), its outputs are empty and `fromJson` below would abort the run.
+    # build must not be skipped either, otherwise there is no digest to merge.
+    if: >-
+      (
+           !cancelled()
+        && github.repository == 'oxsecurity/megalinter'
+        && needs.get-linters-matrix.result == 'success'
+        && needs.build.result != 'skipped'
+      )
     permissions:
       contents: read
       packages: write
@@ -260,7 +275,7 @@ jobs:
           merge-multiple: true
 
       - name: Login to GitHub Container Registry
-        uses: docker/login-action@af1e73f918a031802d376d3c8bbc3fe56130a9b0 # v4
+        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
@@ -282,14 +297,24 @@ jobs:
             type=raw,value={{date 'YYYYMMDD_HHmm'}}
 
       - name: Create manifest list and push
-        working-directory: ${{ runner.temp }}/digests
         env:
           GITHUB_REPOSITORY_NAME: ${{ github.repository }}
           MATRIX_LINTER: ${{ matrix.linter }}
+          DIGESTS_DIR: ${{ runner.temp }}/digests
         run: |
+          mkdir -p "${DIGESTS_DIR}"
+          cd "${DIGESTS_DIR}"
+          shopt -s nullglob
+          digests=(*)
+          # Without this guard the glob below stays literal and imagetools
+          # fails on an "*" reference instead of saying what actually happened.
+          if [ ${#digests[@]} -eq 0 ]; then
+            echo "::error::No tested image digest was published for ${MATRIX_LINTER}: every platform build failed its test cases or vulnerability scan. The previously published manifest is left untouched."
+            exit 1
+          fi
           # shellcheck disable=SC2046
           docker buildx imagetools create $(jq -cr '.tags | map("-t " + .) | join(" ")' <<< "$DOCKER_METADATA_OUTPUT_JSON") \
-            $(printf "ghcr.io/${GITHUB_REPOSITORY_NAME}-only-${MATRIX_LINTER}@sha256:%s " *)
+            $(printf "ghcr.io/${GITHUB_REPOSITORY_NAME}-only-${MATRIX_LINTER}@sha256:%s " "${digests[@]}")
 
       - name: Inspect image
         run: |

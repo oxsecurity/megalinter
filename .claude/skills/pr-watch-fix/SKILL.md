@@ -4,6 +4,8 @@ description: Watch the GitHub PR for the current branch, wait for CI to finish, 
 allowed-tools: Bash Read Grep Glob Edit Write AskUserQuestion Skill
 user-invocable: true
 model: sonnet
+metadata:
+  internal: true
 ---
 
 Watch the open PR for the current branch, wait for CI, and fix failures.
@@ -136,18 +138,21 @@ Specifically **STOP and ask** when:
 - More than **3** fix-push cycles have run without turning any check from fail → pass
 - A failure is in a workflow you don't recognize and can't trace to a source file
 
+Do **NOT** ask merely because a failure looks pre-existing. A red check that also fails on `main` or on unrelated PRs is still this PR's problem to fix — see the pre-existing-failures rule in step 5.1.
+
 ### 5.1 Route recognized failures to a specialist skill
 
 Before hand-editing the source yourself, check whether the failure belongs to one of these recognized classes. If it does, invoke the matching skill via the `Skill` tool and let it perform the diagnosis and edits — it knows the domain patterns better than this loop. Pass the concrete identifier (CVE id, linter/test name, issue number) as the skill argument.
 
-| Failure signal in the logs                                                                                                                                                                                                                  | Skill to invoke       | Argument to pass                                    |
-|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|-----------------------------------------------------|
-| A security/CVE scan flags a vulnerability — trivy, osv-scanner, grype, or the MegaLinter `REPOSITORY_TRIVY` / `REPOSITORY_OSV_SCANNER` / `REPOSITORY_GRYPE` linters reporting a `CVE-…` / `GHSA-…` against a pinned dependency              | `/fix-security-issue` | the CVE/GHSA id (or the affected package + version) |
-| A linter test under `megalinter/tests/test_megalinter/linters/` fails — an assertion in `test_success`, `test_failure`, `test_get_linter_version`, or `test_get_linter_help` (often a `cli_lint_errors_regex` / fixture / version mismatch) | `/fix-linter-test`    | the failing linter/test name (e.g. `python_ruff`)   |
+| Failure signal in the logs                                                                                                                                                                                                                                                                          | Skill to invoke       | Argument to pass                                    |
+|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|-----------------------------------------------------|
+| A security/CVE scan flags a vulnerability — trivy, osv-scanner, grype, or the MegaLinter `REPOSITORY_TRIVY` / `REPOSITORY_OSV_SCANNER` / `REPOSITORY_GRYPE` linters reporting a `CVE-…` / `GHSA-…` against a pinned dependency                                                                      | `/fix-security-issue` | the CVE/GHSA id (or the affected package + version) |
+| A linter test under `megalinter/tests/test_megalinter/linters/` fails — an assertion in a `test_success_*_lint_mode` / `test_failure_*_lint_mode`, `test_get_linter_version`, or `test_get_linter_help` (often a `cli_lint_errors_regex` / fixture / version / `supported_cli_lint_modes` mismatch) | `/fix-linter-test`    | the failing linter/test name (e.g. `python_ruff`)   |
 
 Rules for delegating:
 
 - **Only delegate when the class clearly matches.** If the cause is ambiguous, do not force-fit it — fall through to step 6 and, if still unclear, `AskUserQuestion` per step 5.
+- **Fix pre-existing failures in the current PR, without asking.** A CVE/scan failure that predates the branch — one that also fails on `main`, on unrelated PRs, or that an open Renovate PR already targets — still gets fixed here and now. Do not ask whether to fix it, do not defer it to another PR, and do not report the PR as "green modulo pre-existing". Invoke `/fix-security-issue` and push the upgrade onto this branch. If a Renovate PR covers the same package, still fix it here and just note the overlap in your report; a duplicate bump to the same version resolves trivially.
 - **The specialist skill fixes in place; this loop still owns build, commit, and push.** After the skill returns with edits applied, resume at step 6 (run `make megalinter-build` if a descriptor changed) and step 7 (commit & push onto the *existing* PR branch). Do not let a specialist skill open a second PR or switch branches.
 - **Track delegated attempts** in your task list the same as inline fixes. If a specialist skill's fix is pushed and the same check fails again, that counts toward the 3-cycle cap in step 5 — stop and ask.
 - If none of the classes match, continue to step 6 and fix inline.

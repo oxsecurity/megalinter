@@ -101,6 +101,7 @@ class Linter:
         self.ignore_for_flavor_suggestions = False
 
         self.cli_lint_mode = "file"
+        self.supported_cli_lint_modes = ["file"]
         self.cli_executable = []
         self.cli_executable_fix = []
         self.cli_executable_version = []
@@ -176,6 +177,7 @@ class Linter:
         # Initialize with configuration data
         for key, value in linter_config.items():
             self.__setattr__(key, value)
+        self.descriptor_cli_lint_mode = self.cli_lint_mode
         if "request_id" in params:
             self.request_id = params["request_id"]
         elif self.master is not None:
@@ -265,12 +267,15 @@ class Linter:
             self.manage_apply_fixes(params)
 
             # Disable lint_all_other_linters_files=true if we are in a standalone linter docker image,
-            # because there are no other linters
+            # because there are no other linters. Lint all files instead of none when the
+            # descriptor defines no file_extensions (e.g. SPELL_CSPELL)
             if (
                 self.lint_all_other_linters_files is True
                 and config.get(self.request_id, "SINGLE_LINTER", "") != ""
             ):
                 self.lint_all_other_linters_files = False
+                if len(self.file_extensions) == 0:
+                    self.file_extensions = ["*"]
 
             # Config items
             self.linter_rules_path = (
@@ -342,6 +347,12 @@ class Linter:
                         file_to_check, prop = file_to_check.split(":")
                     if os.path.isfile(f"{self.workspace}{os.path.sep}{file_to_check}"):
                         found_file = f"{self.workspace}{os.path.sep}{file_to_check}"
+                    elif os.path.isfile(
+                        self.linter_rules_path + os.path.sep + file_to_check
+                    ):
+                        found_file = (
+                            self.linter_rules_path + os.path.sep + file_to_check
+                        )
                     elif os.path.isfile(
                         f"{self.workspace}{os.path.sep}{self.linter_rules_path}{os.path.sep}{file_to_check}"
                     ):
@@ -526,6 +537,14 @@ class Linter:
             )
 
     # Manage configuration variables
+    # Return True if the given cli_lint_mode is supported by this linter.
+    # When supported_cli_lint_modes is declared in the descriptor, it is the
+    # source of truth; otherwise fall back to the single descriptor lint mode.
+    def is_cli_lint_mode_supported(self, mode):
+        if len(self.supported_cli_lint_modes) > 0:
+            return mode in self.supported_cli_lint_modes
+        return self.descriptor_cli_lint_mode == mode
+
     def load_config_vars(self, params):
         _sentinel = object()
         # Configuration file name: try first NAME + _FILE_NAME, then LANGUAGE + _FILE_NAME
@@ -727,24 +746,23 @@ class Linter:
                     DEFAULT_DOCKER_WORKSPACE_DIR, ""
                 ).replace(self.TEMPLATES_DIR, "")
 
-        # User override of cli_lint_mode
+        # User override of cli_lint_mode: only accept a mode the linter declares
+        # as supported (supported_cli_lint_modes), otherwise fail fast with an
+        # actionable error listing the modes that are actually available.
         if config.exists(self.request_id, self.name + "_CLI_LINT_MODE"):
-            cli_lint_mode_descriptor = self.cli_lint_mode
             cli_lint_mode_config = config.get(
                 self.request_id, self.name + "_CLI_LINT_MODE"
             )
-            if cli_lint_mode_descriptor == "project":
-                logging.warning(
-                    f"Override {self.name} cli_lint_mode with {cli_lint_mode_config} at your own risk, "
-                    "as command line arguments are built for project mode"
+            if not self.is_cli_lint_mode_supported(cli_lint_mode_config):
+                supported_modes = (
+                    self.supported_cli_lint_modes
+                    if len(self.supported_cli_lint_modes) > 0
+                    else [self.descriptor_cli_lint_mode]
                 )
-            elif (
-                cli_lint_mode_descriptor == "file"
-                and cli_lint_mode_config == "list_of_files"
-            ):
-                logging.warning(
-                    f"Override {self.name} cli_lint_mode with {cli_lint_mode_config} at your own risk, "
-                    f"as command line arguments are built for {cli_lint_mode_descriptor} mode"
+                raise ValueError(
+                    f"[Configuration] {self.name}_CLI_LINT_MODE is set to "
+                    f"'{cli_lint_mode_config}', which is not supported by {self.name}. "
+                    f"Supported lint mode(s): {', '.join(supported_modes)}"
                 )
             self.cli_lint_mode = cli_lint_mode_config
 
@@ -1296,6 +1314,15 @@ class Linter:
     def get_linter_version(self):
         if self.linter_version_cache is not None:
             return self.linter_version_cache
+        # Use the version collected at Docker build time when available, to
+        # avoid spawning one "--version" process per linter at runtime.
+        # VERSION_GET_AT_RUNTIME=true forces calling the linter executable
+        # (used by test cases and the linters auto-update job)
+        if config.get(self.request_id, "VERSION_GET_AT_RUNTIME", "false") != "true":
+            prebuilt_version = utils.get_prebuilt_linter_version(self.linter_name)
+            if prebuilt_version is not None:
+                self.linter_version_cache = prebuilt_version
+                return self.linter_version_cache
         version_output = self.get_linter_version_output()
         reg = self.version_extract_regex
         if isinstance(reg, str):
@@ -1476,19 +1503,21 @@ class Linter:
 
         if self.cli_lint_mode == "file":
             self.cli_lint_mode_file_extra_args_after = self.replace_vars(
-                self.cli_lint_mode_file_extra_args_after,
+                self.cli_lint_mode_file_extra_args_after, additional_replace_variables
             )
 
             cmd += self.cli_lint_mode_file_extra_args_after
         elif self.cli_lint_mode == "list_of_files":
             self.cli_lint_mode_list_of_files_extra_args_after = self.replace_vars(
                 self.cli_lint_mode_list_of_files_extra_args_after,
+                additional_replace_variables,
             )
 
             cmd += self.cli_lint_mode_list_of_files_extra_args_after
         elif self.cli_lint_mode == "project":
             self.cli_lint_mode_project_extra_args_after = self.replace_vars(
                 self.cli_lint_mode_project_extra_args_after,
+                additional_replace_variables,
             )
 
             cmd += self.cli_lint_mode_project_extra_args_after
@@ -1502,8 +1531,7 @@ class Linter:
                 cmd.remove("--megalinter-fix-flag")
 
         # Remove arguments at user request
-        for arg in self.cli_command_remove_args:
-            cmd.remove(arg)
+        cmd = self.remove_command_args(cmd)
 
         # Append file in command arguments
         if file is not None:
@@ -1515,6 +1543,21 @@ class Linter:
                 cmd += [self.files_separator.join(self.files)]
             else:
                 cmd += self.files
+        return cmd
+
+    # Remove arguments listed in <LINTER_NAME>_COMMAND_REMOVE_ARGUMENTS.
+    # Arguments that are not in the command line are just ignored, as they can be
+    # conditionally added (or not) by linter subclasses
+    def remove_command_args(self, cmd: list) -> list:
+        for arg in self.cli_command_remove_args:
+            if arg in cmd:
+                cmd.remove(arg)
+            else:
+                logging.debug(
+                    f"[{self.name}] Argument {arg} listed in "
+                    f"{self.name}_COMMAND_REMOVE_ARGUMENTS is not in the command line, "
+                    "so it has not been removed"
+                )
         return cmd
 
     # Manage ignore arguments
@@ -1692,12 +1735,6 @@ class Linter:
                     if count_results is True:
                         total_result += len(result["locations"])
 
-            # If we got here, we should have found a number of results from SARIF output
-            if total_result == 0:
-                logging.warning(
-                    f"Unable to get total {level}s from SARIF output.\nSARIF:"
-                    + str(sarif_output)
-                )
             return total_result
         except Exception as e:
             total_result = 1

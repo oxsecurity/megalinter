@@ -33,7 +33,7 @@ jobs:
       jobs: ${{ steps.set-matrix.outputs.jobs }}
     steps:
       - name: Checkout Code
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
           persist-credentials: false
@@ -120,8 +120,93 @@ jobs:
             exit 0
           fi
 
+          # Human PR: build only the linter images impacted by the changed
+          # files, when the change is clearly scoped (descriptor edit, generated
+          # per-linter Dockerfile, test fixtures of a single linter). ANY file
+          # outside the recognized patterns keeps the full matrix: when in
+          # doubt, run everything rather than miss an issue.
+          if [ -n "${PR_NUMBER}" ]; then
+            changed_files=$(gh api --paginate "repos/${GH_REPO}/pulls/${PR_NUMBER}/files?per_page=100" --jq '.[].filename' 2>/dev/null || echo "__api_error__")
+            if [ "$changed_files" = "__api_error__" ] || [ -z "$changed_files" ]; then
+              echo "Could not list PR changed files, keeping the full matrix."
+            else
+              selected='[]'
+              full_needed=false
+              while IFS= read -r file; do
+                [ -z "$file" ] && continue
+                case "$file" in
+                  docs/*|*.md|mega-linter-runner/*|.automation/generated/*|TEMPLATES/*|.vscode/*|.devcontainer/*|.config/*|LICENSE|.gitignore|.gitpod*)
+                    # No impact on linter images
+                    ;;
+                  .github/workflows/deploy-DEV-linters.yml)
+                    echo "This workflow itself changed: full matrix"
+                    full_needed=true
+                    ;;
+                  .github/*)
+                    # Other workflows/config do not change linter images
+                    ;;
+                  megalinter/descriptors/schemas/*)
+                    echo "Descriptor schema changed ($file): full matrix"
+                    full_needed=true
+                    ;;
+                  megalinter/descriptors/*.megalinter-descriptor.yml)
+                    desc=$(basename "$file" .megalinter-descriptor.yml)
+                    matches=$(echo "$matrix" | jq -c --arg p "${desc}_" '[.[] | select(startswith($p))]')
+                    if [ "$(echo "$matches" | jq 'length')" -gt 0 ]; then
+                      selected=$(jq -cn --argjson a "$selected" --argjson b "$matches" '$a + $b')
+                    else
+                      echo "Descriptor $desc matches no linter in the matrix: full matrix"
+                      full_needed=true
+                    fi
+                    ;;
+                  linters/*/*)
+                    lname=$(echo "$file" | cut -d/ -f2)
+                    if echo "$matrix" | jq -e --arg l "$lname" 'index($l)' >/dev/null; then
+                      selected=$(jq -cn --argjson a "$selected" --arg l "$lname" '$a + [$l]')
+                    else
+                      echo "Unknown linter folder $lname: full matrix"
+                      full_needed=true
+                    fi
+                    ;;
+                  .automation/test/*)
+                    folder=$(echo "$file" | cut -d/ -f3)
+                    if echo "$matrix" | jq -e --arg l "$folder" 'index($l)' >/dev/null; then
+                      selected=$(jq -cn --argjson a "$selected" --arg l "$folder" '$a + [$l]')
+                    else
+                      # Test folder shared by several linters (e.g. shell): doubt -> full
+                      echo "Test folder $folder has no 1:1 matrix entry: full matrix"
+                      full_needed=true
+                    fi
+                    ;;
+                  *)
+                    # Core code, Dockerfile, flavors, build system, deps, ...
+                    echo "Core file changed ($file): full matrix"
+                    full_needed=true
+                    ;;
+                esac
+              done <<< "$changed_files"
+              if [ "$full_needed" = "false" ]; then
+                selected=$(echo "$selected" | jq -c 'unique')
+                if [ "$(echo "$selected" | jq 'length')" -eq 0 ]; then
+                  echo "No linter image impacted by this PR, skipping per-linter jobs."
+                  echo "jobs=[]" >> "${GITHUB_OUTPUT}"
+                  exit 0
+                fi
+                echo "Path-filtered linters: $selected"
+                amd_jobs=$(jq -cn --argjson linters "${selected}" '[ $linters[] | {linter: ., platform: "linux/amd64", runner: "ubuntu-latest"} ]')
+                arm_jobs='[]'
+                if [ "${include_arm}" = "true" ]; then
+                  arm_jobs=$(jq -cn --argjson linters "${selected}" --argjson arm "${matrix_arm}" '[ $linters[] as $l | select($arm | index($l)) | {linter: $l, platform: "linux/arm64", runner: "ubuntu-24.04-arm"} ]')
+                fi
+                jobs=$(jq -cn --argjson amd "${amd_jobs}" --argjson arm "${arm_jobs}" '$amd + $arm')
+                echo "jobs=$jobs" >> "${GITHUB_OUTPUT}"
+                exit 0
+              fi
+            fi
+          fi
+
           # Default: return all
-          echo "No specific package found and not a bot PR, using all linters."
+          echo "Change impacts shared code or file list unavailable, using all linters."
           amd_jobs=$(jq -cn --argjson linters "${matrix}" '[ $linters[] | {linter: ., platform: "linux/amd64", runner: "ubuntu-latest"} ]')
           arm_jobs='[]'
           if [ "${include_arm}" = "true" ]; then
@@ -132,6 +217,9 @@ jobs:
         env:
           STEPS_GET_TITLE_OUTPUTS_TITLE: ${{ steps.get-title.outputs.title }}
           PR_USER: ${{ steps.get-title.outputs.pr_user }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          GH_REPO: ${{ github.repository }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   build:
     # Name the Job
@@ -162,7 +250,7 @@ jobs:
     ##################
     steps:
       - name: Checkout Code
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
 
@@ -251,7 +339,7 @@ jobs:
         uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
         with:
           # renovate: datasource=github-releases depName=aquasecurity/trivy
-          version: "v0.72.0"
+          version: "v0.73.0"
           image-ref: "${{ fromJson(steps.meta.outputs.json).tags[0] }}"
           format: "table"
           exit-code: "1"

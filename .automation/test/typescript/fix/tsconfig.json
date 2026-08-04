@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "strictNullChecks": true
+  },
+  "files": [
+    "typescript_fix_1.ts",
+    "typescript_fix_2.ts",
+  ]
+}

@@ -305,6 +305,22 @@
           "title": "List of APK packages (Linux)",
           "type": "array"
         },
+        "apk_build": {
+          "$id": "#/properties/install/properties/apk_build",
+          "description": "APK packages needed only while pip/gem packages compile native extensions: installed as a virtual package during those steps and removed from the final image layers",
+          "examples": [
+            [
+              "build-base",
+              "re2-dev"
+            ]
+          ],
+          "items": {
+            "$id": "#/properties/install/properties/apk_build/items",
+            "type": "string"
+          },
+          "title": "List of build-time-only APK packages (Linux)",
+          "type": "array"
+        },
         "cargo": {
           "$id": "#/properties/install/properties/cargo",
           "description": "Cargo packages identifiers (with or without version)",
@@ -1052,9 +1068,9 @@
             "examples": [
               {
                 "dockerfile": [
-                  "FROM accurics/terrascan:latest AS terrascan",
-                  "COPY --from=terrascan /go/bin/terrascan /usr/bin/",
-                  "RUN terrascan init"
+                  "FROM ghcr.io/betterleaks/betterleaks:latest AS betterleaks",
+                  "COPY --from=betterleaks /usr/bin/betterleaks /usr/bin/",
+                  "RUN betterleaks version"
                 ]
               },
               {
@@ -1085,6 +1101,22 @@
                 "title": "List of APK packages (Linux)",
                 "type": "array"
               },
+              "apk_build": {
+                "$id": "#/properties/linters/items/properties/install/properties/apk_build",
+                "description": "APK packages needed only while pip/gem packages compile native extensions: installed as a virtual package during those steps and removed from the final image layers",
+                "examples": [
+                  [
+                    "build-base",
+                    "re2-dev"
+                  ]
+                ],
+                "items": {
+                  "$id": "#/properties/linters/items/properties/install/properties/apk_build/items",
+                  "type": "string"
+                },
+                "title": "List of build-time-only APK packages (Linux)",
+                "type": "array"
+              },
               "cargo": {
                 "$id": "#/properties/linters/items/properties/install/properties/cargo",
                 "description": "Cargo packages identifiers (with or without version)",
@@ -1106,9 +1138,9 @@
                 "description": "Will be automatically integrated in generated Dockerfile",
                 "examples": [
                   [
-                    "FROM accurics/terrascan:latest AS terrascan",
-                    "COPY --from=terrascan /go/bin/terrascan /usr/bin/",
-                    "RUN terrascan init"
+                    "FROM ghcr.io/betterleaks/betterleaks:latest AS betterleaks",
+                    "COPY --from=betterleaks /usr/bin/betterleaks /usr/bin/",
+                    "RUN betterleaks version"
                   ]
                 ],
                 "items": {
@@ -1393,6 +1425,35 @@
             "title": "SARIF default output file",
             "type": "string"
           },
+          "supported_cli_lint_modes": {
+            "$id": "#/properties/linters/items/properties/supported_cli_lint_modes",
+            "default": [
+              "file"
+            ],
+            "description": "Define the possible ways in which a linter can be called: file, list_of_files, project",
+            "examples": [
+              [
+                "file",
+                "list_of_files"
+              ],
+              [
+                "project"
+              ]
+            ],
+            "items": {
+              "default": "file",
+              "enum": [
+                "file",
+                "project",
+                "list_of_files"
+              ],
+              "title": "Linting mode",
+              "type": "string"
+            },
+            "title": "Linting modes",
+            "type": "array",
+            "uniqueItems": true
+          },
           "supported_platforms": {
             "$id": "#/properties/linters/items/properties/supported_platforms",
             "default": {
@@ -1507,7 +1568,7 @@
             "examples": [
               [
                 "bash_shfmt",
-                "terraform_terrascan"
+                "terraform_tflint"
               ]
             ],
             "title": "Test folder in .automation/",
@@ -1720,7 +1781,7 @@
       "examples": [
         [
           "bash_shfmt",
-          "terraform_terrascan"
+          "terraform_tflint"
         ]
       ],
       "title": "Test folder in .automation/",

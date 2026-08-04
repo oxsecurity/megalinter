@@ -162,6 +162,12 @@ def fix_sarif(linter_sarif_obj, linter):
             if "results" in run:
                 # browse run results
                 for id_result, result in enumerate(run["results"]):
+                    if "fixes" in result:
+                        result["fixes"] = [
+                            fix for fix in result["fixes"] if fix.get("artifactChanges")
+                        ]
+                        if not result["fixes"]:
+                            del result["fixes"]
                     if "locations" in result:
                         # browse result locations
                         for id_location, location in enumerate(result["locations"]):

@@ -5,6 +5,8 @@ disable-model-invocation: true
 allowed-tools: Read Glob Grep WebSearch WebFetch AskUserQuestion
 argument-hint: "[description of the change]"
 model: sonnet
+metadata:
+  internal: true
 ---
 
 You are a requirements analyst for the **MegaLinter** project.

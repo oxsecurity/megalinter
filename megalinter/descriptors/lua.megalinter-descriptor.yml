@@ -6,8 +6,6 @@ file_extensions:
 install:
   apk:
     - lua5.3
-    - lua5.3-dev
-    - readline-dev
 linters:
   # LUACHECK
   - linter_name: luacheck
@@ -36,6 +34,13 @@ linters:
     linter_megalinter_ref_url: "no"
     config_file_name: .luacheckrc
     cli_config_arg_name: "--config"
+    cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_mode_project_extra_args_after:
+      - .
     common_linter_errors:
       - identifier: LUA_LUACHECK_ERROR_CONFIG_INVALID
         regex: "(Couldn't load configuration|Critical error: .*\\.luacheckrc|Errors? in config file)"
@@ -56,14 +61,18 @@ linters:
           # renovate: datasource=github-tags depName=cvega/luarocks
           ARG LUA_LUACHECK_VERSION=3.3.1
         - |
-          RUN wget --tries=5 https://github.com/cvega/luarocks/archive/v${LUA_LUACHECK_VERSION}-super-linter.tar.gz -O - -q | tar -xzf - \
+          # luarocks compiles native rocks during installation: the toolchain is
+          # only needed within this RUN and evicted from the final layers
+          RUN apk add --no-cache --virtual .lua-build-deps gcc make musl-dev lua5.3-dev readline-dev \
+              && wget --tries=5 https://github.com/cvega/luarocks/archive/v${LUA_LUACHECK_VERSION}-super-linter.tar.gz -O - -q | tar -xzf - \
               && cd luarocks-${LUA_LUACHECK_VERSION}-super-linter \
               && ./configure --with-lua-include=/usr/include/lua5.3 \
               && make \
               && make -b install \
               && cd .. && rm -r luarocks-${LUA_LUACHECK_VERSION}-super-linter/ \
               && luarocks install luacheck \
-              && cd /
+              && cd / \
+              && apk del .lua-build-deps
     supported_platforms:
       platform:
         - linux/amd64
@@ -84,61 +93,6 @@ linters:
       vscode:
         - name: vscode-luacheck
           url: https://marketplace.visualstudio.com/items?itemName=dwenegar.vscode-luacheck
-
-  # SELENE
-  - linter_name: selene
-    disabled: true
-    disabled_reason: <https://github.com/Kampfkarren/selene/issues/662>
-    linter_text: |
-      **Selene** is a blazing-fast modern Lua linter written in Rust that provides comprehensive static analysis for Lua code. It offers extensive configurability and can be tailored to specific Lua environments like Roblox, World of Warcraft addons, or standard Lua.
-
-      **Key Features:**
-
-      - **Rust-powered performance** for extremely fast static analysis
-      - **Environment-specific configurations** for Roblox, WoW addons, and standard Lua
-      - **Comprehensive lint rules** covering code quality, style, and correctness
-      - **Custom rule creation** for project-specific requirements
-      - **TOML configuration files** for easy project setup and sharing
-      - **Detailed error messages** with context and suggestions for fixes
-      - **Multiple output formats** including JSON for tool integration
-      - **Incremental analysis** for fast checking of large codebases
-      - **Standard library definitions** for accurate global variable validation
-      - **Inline rule filtering** using comments to disable specific checks
-      - **Performance suggestions** to optimize Lua code execution
-    linter_url: https://kampfkarren.github.io/selene/
-    linter_repo: https://github.com/Kampfkarren/selene
-    linter_rules_url: https://kampfkarren.github.io/selene/lints/index.html
-    linter_rules_configuration_url: https://kampfkarren.github.io/selene/usage/configuration.html
-    linter_rules_inline_disable_url: https://kampfkarren.github.io/selene/usage/filtering.html
-    linter_megalinter_ref_url: "no"
-    config_file_name: selene.toml
-    cli_config_arg_name: "--config"
-    examples:
-      - "selene myfile.lua"
-      - "selene --config chktexrc.toml myfile.lua"
-    install:
-      cargo:
-        - selene@${CARGO_SELENE_VERSION}
-      dockerfile:
-        - |-
-          # renovate: datasource=crate depName=selene
-          ARG CARGO_SELENE_VERSION=0.31.0
-    supported_platforms:
-      platform:
-        - linux/amd64
-        - linux/arm64
-    ide:
-      neovim:
-        - name: nvim-lint
-          url: https://github.com/mfussenegger/nvim-lint
-        - name: none-ls
-          url: https://github.com/nvimtools/none-ls.nvim
-      sublime:
-        - name: SublimeLinter-contrib-selene
-          url: https://packagecontrol.io/packages/SublimeLinter-contrib-selene
-      vscode:
-        - name: selene-vscode
-          url: https://marketplace.visualstudio.com/items?itemName=Kampfkarren.selene-vscode
   # STYLUA
   - linter_name: stylua
     linter_text: |
@@ -165,8 +119,14 @@ linters:
     config_file_name: stylua.toml
     cli_config_arg_name: "--config-path"
     cli_version_arg_name: "-V"
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_extra_args:
       - "--check"
+    cli_lint_mode_project_extra_args_after:
+      - .
     examples:
       - "stylua --check myfile.lua"
       - "stylua --config-path chktexrc.toml --check myfile.lua"

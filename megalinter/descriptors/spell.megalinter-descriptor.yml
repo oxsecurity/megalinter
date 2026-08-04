@@ -39,6 +39,12 @@ linters:
     linter_megalinter_ref_url: https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#mega-linter
     config_file_name: ".cspell.json"
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "Issues found: ([0-9]+) in .* file"
     examples:
@@ -91,6 +97,12 @@ linters:
     cli_config_arg_name: --config
     config_file_name: .proselintrc.json
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_mode_project_extra_args_after:
+      - .
     # proselint 0.16.0 moved linting under the `check` subcommand
     # (`proselint check <files>`); the bare `proselint <files>` form was removed
     cli_lint_extra_args:
@@ -103,6 +115,10 @@ linters:
       - "proselint check --config .proselintrc.json myfile.md myfile2.txt myfile3.rst"
     install:
       apk:
+        # google-re2 (proselint dependency) links against the system RE2
+        # library at runtime
+        - re2
+      apk_build:
         # proselint >=0.16.0 depends on google-re2, which has no musllinux
         # wheel and must be compiled from source: needs a C++ toolchain
         # (build-base), the system RE2 library headers (re2-dev, which also
@@ -169,6 +185,12 @@ linters:
     linter_rules_configuration_url: https://vale.sh/explorer/
     linter_rules_inline_disable_url: https://vale.sh/docs/topics/vocab/
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_config_arg_name: "--config"
     config_file_name: .vale.ini
     cli_lint_errors_count: regex_number
@@ -183,7 +205,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=jdkato/vale
-          ARG SPELL_VALE_VERSION=v3.15.1
+          ARG SPELL_VALE_VERSION=v3.17.0
         - FROM jdkato/vale:${SPELL_VALE_VERSION} AS vale
         - COPY --link --from=vale /bin/vale /bin/vale
     supported_platforms:
@@ -265,12 +287,18 @@ linters:
     cli_help_arg_name: --help
     cli_version_arg_name: --version
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "Errors\\.+([0-9]+)"
     cli_lint_extra_args:
       - --format
       - detailed
       - --no-progress
+    cli_lint_mode_project_extra_args_after:
+      - .
     examples:
       - lychee --format detailed --no-progress README.md info.txt test.html
       - lychee --format detailed --no-progress README.md
@@ -332,6 +360,10 @@ linters:
     cli_lint_fix_arg_name: --write-changes
     cli_version_arg_name: --version
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_errors_count: total_lines
     common_linter_errors:
       - identifier: SPELL_CODESPELL_ERROR_DICT_NOT_FOUND
@@ -356,7 +388,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=codespell
-          ARG PIP_CODESPELL_VERSION=2.4.2
+          ARG PIP_CODESPELL_VERSION=2.4.3
       pip:
         - codespell==${PIP_CODESPELL_VERSION}
     supported_platforms:

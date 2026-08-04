@@ -20,9 +20,10 @@
 # protolint, ls-lint, gitleaks, betterleaks, terragrunt, tflint, snakefmt, and the
 # syft/grype/trivy scanners) ship statically linked against a Go toolchain.
 # These stdlib CVEs are DoS / cert-validation flaws in crypto/x509, crypto/tls, net,
-# net/http2, net/mail and net/url. Every linter runs as a one-shot CLI over local
-# workspace files: no network server, no TLS termination, no DNS of attacker-controlled
-# hosts, no email parsing. The vulnerable paths are never entered.
+# net/http2, net/mail and net/url, plus an os.Root symlink-following bug (CVE-2026-39822).
+# Every linter runs as a one-shot CLI over local workspace files: no network server, no
+# TLS termination, no DNS of attacker-controlled hosts, no email parsing, and the workspace
+# path traversed by os.Root is trusted. The vulnerable paths are never entered.
 # Remove once the upstream tool images are rebuilt with a fixed Go toolchain.
 CVE-2025-22874
 CVE-2025-61726
@@ -38,6 +39,7 @@ CVE-2026-33810
 CVE-2026-33811
 CVE-2026-33814
 CVE-2026-39820
+CVE-2026-39822
 CVE-2026-39836
 CVE-2026-42499
 CVE-2026-42504
@@ -55,6 +57,7 @@ CVE-2026-39827
 CVE-2026-39828
 CVE-2026-39829
 CVE-2026-39830
+CVE-2026-39831
 CVE-2026-39832
 CVE-2026-39835
 CVE-2026-42502
@@ -92,6 +95,7 @@ CVE-2026-42587
 CVE-2026-44249
 CVE-2026-44250
 CVE-2026-44890
+CVE-2026-44891
 CVE-2026-44893
 CVE-2026-45416
 CVE-2026-45674
@@ -111,8 +115,14 @@ GHSA-47qp-hqvx-6r3f
 # .proto or crafted protobuf; the linters parse .feature/.js/.cls source, not untrusted
 # schemas. lodash/underscore prototype-pollution, minimatch/picomatch/linkify-it ReDoS,
 # undici/ws/form-data/fast-uri HTTP/URI DoS and tmp symlink issues all require untrusted
-# input or outbound HTTP that a one-shot CLI over local files never performs.
+# input or outbound HTTP that a one-shot CLI over local files never performs. adm-zip's
+# crafted-ZIP DoS and websocket-driver's frame-length message corruption live in the
+# Salesforce CLI (sf) that backs salesforce-code-analyzer: sf runs as a local source-code
+# analyzer and neither extracts attacker-controlled archives nor opens a Streaming-API
+# websocket to an untrusted server at lint time, so neither code path is entered.
 # Remove once the linters bump their npm dependencies.
+CVE-2026-39244
+CVE-2026-54466
 CVE-2026-12143
 CVE-2026-12151
 CVE-2026-1526
@@ -135,11 +145,157 @@ CVE-2026-48801
 CVE-2026-6321
 CVE-2026-6322
 
+# --- npm brace-expansion (image node packages + mega-linter-runner/yarn.lock) ---
+# CVE-2026-14257 is an unbounded-memory DoS in brace-expansion's expand(): chaining brace
+# groups keeps the result count under the `max` cap while each result string keeps growing,
+# until the Node process hits an uncatchable OOM. Availability only (CVSS A:H, no
+# confidentiality or integrity impact). brace-expansion is only reached through
+# minimatch/glob pattern expansion, and every pattern MegaLinter expands comes from the
+# repository's own .mega-linter.yml or a linter's own config file - never from network
+# traffic or any other attacker-controlled source. The worst case is a repo owner writing a
+# pathological glob in their own config and killing their own one-shot CI job; there is no
+# long-lived service to take down.
+# No upgrade path today: the fix ships only in 5.0.8, with no backport to the 1.x and 2.x
+# lines that the image's bundled node packages and mega-linter-runner/yarn.lock (2.1.2, held
+# there by minimatch's ^2.0.2 range) resolve to. Forcing 5.0.8 via a yarn `resolutions`
+# override would break minimatch's declared range and raise the runtime floor to Node >= 20.
+# Remove once minimatch and the bundled linters depend on brace-expansion >= 5.0.8.
+CVE-2026-14257
+# CVE-2026-69152 is a follow-up to CVE-2026-14257: same expand() DoS reached through
+# another unbounded intermediate array, bypassing the previous mitigation. The
+# exploitability reasoning above applies unchanged: brace-expansion only expands glob
+# patterns coming from the repository's own configuration, so the worst case remains a
+# repo owner DoS-ing their own one-shot CI job. Currently resolved at 1.1.14 through
+# gherkin-lint's glob@7/minimatch@3 chain (fix backports exist: 1.1.18 / 2.1.4 / 3.0.6).
+# Remove once the bundled linters' dependency trees resolve a fixed brace-expansion.
+CVE-2026-69152
+
 # --- .NET deps (roslynator) ---
 # Microsoft.Build.Tasks.Core CVE-2025-26646 only affects projects that run the MSBuild
 # DownloadFile task, which roslynator's static analysis pass never invokes.
 # Remove once roslynator.dotnet.cli ships a build with Microsoft.Build >= 17.8.29.
 CVE-2025-26646
+
+# --- .NET deps (PowerShell-based linters: arm-ttk, powershell, powershell_formatter) ---
+# System.Security.Cryptography.Xml 10.0.6 ships inside the .NET runtime bundled with
+# PowerShell 7.6.4, which is the latest release (renovate tracks PowerShell/PowerShell
+# github-tags); no PowerShell build carries the fixed 10.0.10 yet, so there is no
+# upgrade path. The assembly implements XML digital signatures and encryption
+# (SignedXml / EncryptedXml). The linters that ship it analyse ARM template JSON and
+# PowerShell scripts — they never verify, sign or decrypt XML, so the vulnerable code
+# paths are never loaded. Four of the five are DoS (CVE-2026-47302, CVE-2026-50525,
+# CVE-2026-50527, CVE-2026-50648) and one is a signature-verification bypass
+# (CVE-2026-47304) that requires the process to be validating an XML signature.
+# Remove once a PowerShell release bundles .NET >= 10.0.10.
+CVE-2026-47302
+CVE-2026-47304
+CVE-2026-50525
+CVE-2026-50527
+CVE-2026-50648
+
+# --- Python deps (semgrep) ---
+# semgrep bundles the MCP Python SDK (mcp) for its experimental `semgrep mcp` server mode.
+# All three CVEs are in the MCP server transports: HTTP session auth (CVE-2026-52869),
+# experimental task handlers (CVE-2026-52870) and WebSocket Host/Origin validation
+# (CVE-2026-59950). MegaLinter runs semgrep as a one-shot `semgrep --config` CLI scan over
+# workspace source; it never starts semgrep's MCP server, so none of the vulnerable server
+# transport paths are ever invoked. Remove once semgrep bumps mcp to >= 1.28.1.
+CVE-2026-52869
+CVE-2026-52870
+CVE-2026-59950
+
+# --- Go deps (protolint, terragrunt, tflint, grype, syft, trivy) ---
+# google.golang.org/grpc < 1.82.1 is statically linked into these Go binaries by
+# their upstream release builds; MegaLinter pins each tool at its latest release
+# (renovate-managed) and cannot rebuild them, so there is no upgrade path until
+# upstream ships a build with grpc >= 1.82.1. Every one of these linters runs as
+# a one-shot CLI over workspace files: none of them start a gRPC server or dial
+# an attacker-controlled gRPC endpoint, so the vulnerable transport code is never
+# reached. Remove once the pinned releases embed grpc >= 1.82.1.
+GHSA-hrxh-6v49-42gf
+
+# --- Go x/text norm.Iter infinite loop (all Go-based linters + bundled scanners) ---
+# CVE-2026-56852: golang.org/x/text/unicode/norm's norm.Iter can spin forever on
+# input containing invalid UTF-8 bytes. CVSS 7.5 but availability-only
+# (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H) - no confidentiality or integrity impact.
+# It is statically linked by upstream release builds into nine binaries in the
+# image: golangci-lint, betterleaks, editorconfig-checker, gitleaks, kubeconform,
+# protolint, revive, the terraform binary copied from alpine/terragrunt, and the
+# trivy scanner itself. Unlike the other Go entries above we do not claim the code
+# path is unreachable: linters do read workspace files that may contain invalid
+# UTF-8. The impact is bounded instead - every linter is a one-shot CLI in a
+# short-lived CI container, so the worst case is one linter burning CPU until the
+# job timeout kills it. There is no long-lived service to hang and no data exposure.
+# No upgrade path: MegaLinter already pins each of these at its latest upstream
+# release (renovate-managed) and cannot rebuild them; none embed x/text >= 0.39.0
+# yet. trivy's main branch is already on x/text v0.40.0, so its next release fixes
+# that copy. Remove once the pinned releases embed x/text >= 0.39.0.
+CVE-2026-56852
+
+# --- Python deps vendored by pip (pip seeded into /venvs/* by uv venv --seed) ---
+# Both entries come from pip's own CycloneDX SBOM of its vendored libraries,
+# pip/_vendor/bom.cdx.json, which pip 26.2 started shipping. Trivy imports it as
+# packages with no file path, which is why they surface under the aggregate
+# "Python (python-pkg)" target rather than a *.dist-info/METADATA path. They are
+# metadata only - the vulnerable code is not on disk:
+# - GHSA-6v7p-g79w-8964 (msgpack 1.1.2): the use-after-free / SEGV on Unpacker reuse
+#   was fixed in _unpacker.pyx and unpack_template.h, i.e. the compiled C extension.
+#   pip vendors only msgpack's pure-Python fallback.py; no _cmsgpack extension ships.
+# - CVE-2025-47273 (setuptools 70.3.0): the path traversal lives in
+#   setuptools/package_index.py (PackageIndex, the easy_install download path). pip
+#   vendors setuptools solely to obtain pkg_resources; pip/_vendor/ contains no
+#   setuptools package and no package_index.py at all. Every real setuptools in the
+#   image is 83.0.0.
+# No upgrade path either way: pip 26.2 is the latest release and still pins
+# msgpack==1.1.2 and setuptools==70.3.0 in src/pip/_vendor/vendor.txt.
+# Remove once pip revendors msgpack >= 1.2.1 / setuptools >= 78.1.1.
+GHSA-6v7p-g79w-8964
+CVE-2025-47273
+
+# --- Java deps (pmd, scalafix, salesforce code analyzer, npm-groovy-lint) ---
+# jline-remote-telnet is JLine's *telnet server* component, bundled transitively
+# by PMD and scalafix. MegaLinter runs both as batch CLIs and never starts JLine's
+# telnet daemon, so the listener code is never loaded.
+CVE-2026-56740
+CVE-2026-56741
+# netty is a network application framework pulled in transitively by Salesforce
+# Code Analyzer. The flagged artifacts are all server/protocol codecs — HTTP,
+# HAProxy, XML and the OCSP stapling handler. Code Analyzer runs as a local
+# static-analysis CLI: it serves no HTTP, terminates no TLS and parses no
+# attacker-supplied network frames, so none of these codecs are exercised.
+CVE-2026-55831
+CVE-2026-55833
+CVE-2026-55851
+CVE-2026-56745
+CVE-2026-56817
+CVE-2026-56819
+CVE-2026-56820
+CVE-2026-56821
+CVE-2026-56822
+CVE-2026-59901
+GHSA-v74w-7mr3-4qg3
+# jackson-core is bundled by npm-groovy-lint and Salesforce Code Analyzer for
+# parsing their own configuration and report files, not untrusted network input.
+# Worst case is a parser DoS that aborts the linter container it runs in.
+GHSA-r7wm-3cxj-wff9
+
+# --- npm deps bundled inside linter images (gherkin-lint, salesforce code analyzer) ---
+# These live in the linters' own vendored node_modules, shipped by the upstream
+# releases MegaLinter pins; they are not MegaLinter's dependencies and cannot be
+# bumped without an upstream release. All are reached only while the linter parses
+# its own config/report data or the workspace sources it was asked to analyse, in
+# a short-lived one-shot CLI container:
+# - brace-expansion 1.1.14 and linkify-it: glob/link expansion DoS
+# - fast-uri, fast-xml-parser, js-yaml: parser DoS on crafted input
+# - axios: request-side issue in a client that only talks to Salesforce APIs
+# Remove once the pinned linter releases vendor the fixed versions.
+CVE-2026-13149
+CVE-2026-13676
+CVE-2026-16221
+CVE-2026-59869
+CVE-2026-59887
+GHSA-8r6m-32jq-jx6q
+GHSA-gcfj-64vw-6mp9
 
 # --- Dockerfile misconfigurations (REPOSITORY_TRIVY misconfig scan) ---
 # These are trivy's own Dockerfile checks fired against MegaLinter's generated

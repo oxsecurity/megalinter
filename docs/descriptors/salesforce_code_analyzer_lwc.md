@@ -32,7 +32,7 @@ See more details in [Help](#help-content)
 
 ## code-analyzer-lwc documentation
 
-- Version in MegaLinter: **5.14.0**
+- Version in MegaLinter: **5.15.0**
 - Visit [Official Web Site](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html){target=_blank}
 - See [How to configure code-analyzer-lwc rules](https://eslint.org/docs/latest/use/configure){target=_blank}
   - If custom `code-analyzer.yml` config file isn't found, [code-analyzer.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/code-analyzer.yml){target=_blank} will be used
@@ -46,20 +46,22 @@ See more details in [Help](#help-content)
 - Enable code-analyzer-lwc by adding `SALESFORCE_CODE_ANALYZER_LWC` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable code-analyzer-lwc by adding `SALESFORCE_CODE_ANALYZER_LWC` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                                 | Description                                                                                                                                                                                                                                                                           | Default value                                   |
-|----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| SALESFORCE_CODE_ANALYZER_LWC_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                                              |                                                 |
-| SALESFORCE_CODE_ANALYZER_LWC_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                  |                                                 |
-| SALESFORCE_CODE_ANALYZER_LWC_CLI_LINT_MODE               | Override default CLI lint mode<br/>⚠️ As default value is **project**, overriding might not work<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `project`                                       |
-| SALESFORCE_CODE_ANALYZER_LWC_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                                                                                        | None                                            |
-| SALESFORCE_CODE_ANALYZER_LWC_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                                                                                         | None                                            |
-| SALESFORCE_CODE_ANALYZER_LWC_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling SALESFORCE_CODE_ANALYZER_LWC and its pre/post commands                                                                                                                                                                   | None                                            |
-| SALESFORCE_CODE_ANALYZER_LWC_CONFIG_FILE                 | code-analyzer-lwc configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                                                                          | `code-analyzer.yml`                             |
-| SALESFORCE_CODE_ANALYZER_LWC_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                                                                                          | Workspace folder, then MegaLinter default rules |
-| SALESFORCE_CODE_ANALYZER_LWC_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                                                                                            | `false`                                         |
-| SALESFORCE_CODE_ANALYZER_LWC_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                                                                                      | `0`                                             |
-| SALESFORCE_CODE_ANALYZER_LWC_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                                                                                               | `['sf']`                                        |
-| SALESFORCE_DIRECTORY                                     | Directory containing SALESFORCE files (use `any` to always activate the linter)                                                                                                                                                                                                       | `force-app`                                     |
+| Variable                                                 | Description                                                                                                                             | Default value                                   |
+|----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| SALESFORCE_CODE_ANALYZER_LWC_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                |                                                 |
+| SALESFORCE_CODE_ANALYZER_LWC_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                    |                                                 |
+| SALESFORCE_CODE_ANALYZER_LWC_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with SALESFORCE_CODE_ANALYZER_LWC_CLI_LINT_MODE = project       | Exclude no file                                 |
+| SALESFORCE_CODE_ANALYZER_LWC_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`<br/>⚠️ Not available with SALESFORCE_CODE_ANALYZER_LWC_CLI_LINT_MODE = project | Exclude no file                                 |
+| SALESFORCE_CODE_ANALYZER_LWC_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `project`: Call the linter from the root of the project                                            | `project`                                       |
+| SALESFORCE_CODE_ANALYZER_LWC_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                          | None                                            |
+| SALESFORCE_CODE_ANALYZER_LWC_POST_COMMANDS               | List of bash commands to run after the linter                                                                                           | None                                            |
+| SALESFORCE_CODE_ANALYZER_LWC_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling SALESFORCE_CODE_ANALYZER_LWC and its pre/post commands                     | None                                            |
+| SALESFORCE_CODE_ANALYZER_LWC_CONFIG_FILE                 | code-analyzer-lwc configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                            | `code-analyzer.yml`                             |
+| SALESFORCE_CODE_ANALYZER_LWC_RULES_PATH                  | Path where to find linter configuration file                                                                                            | Workspace folder, then MegaLinter default rules |
+| SALESFORCE_CODE_ANALYZER_LWC_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                              | `false`                                         |
+| SALESFORCE_CODE_ANALYZER_LWC_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                        | `0`                                             |
+| SALESFORCE_CODE_ANALYZER_LWC_CLI_EXECUTABLE              | Override CLI executable                                                                                                                 | `['sf']`                                        |
+| SALESFORCE_DIRECTORY                                     | Directory containing SALESFORCE files (use `any` to always activate the linter)                                                         | `force-app`                                     |
 
 ## IDE Integration
 
@@ -108,8 +110,8 @@ Analyze your code with a selection of rules to ensure good coding practices.
 
 USAGE
   $ sf code-analyzer run [--flags-dir <value>] [-w <value>...] [-t <value>...]
-    [-r <value>...] [-s <value>] [-v detail|table] [-f <value>...] [-c <value>]
-    [--include-fixes] [--include-suggestions] [--no-suppressions]
+    [-o <value>] [-r <value>...] [-s <value>] [-v detail|table] [-f <value>...]
+    [-c <value>] [--include-fixes] [--include-suggestions] [--no-suppressions]
 
 FLAGS
   -c, --config-file=<value>         Path to the configuration file used to
@@ -118,6 +120,8 @@ FLAGS
                                     are written. The file format depends on the
                                     extension you specify, such as .csv, .html,
                                     .xml, and so on.
+  -o, --target-org=<value>          Target org username or alias for remote
+                                    analysis engines.
   -r, --rule-selector=<value>...    [default: Recommended] Selection of rules,
                                     based on engine name, severity level, rule
                                     name, tag, or a combination of criteria
@@ -144,9 +148,9 @@ GLOBAL FLAGS
 
 
 Streaming logs in real time to:
-    /tmp/sfca-2026_07_05_20_08_14_381.log
+    /tmp/sfca-2026_08_03_23_10_59_759.log
 
-Selecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 0%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 14%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 28%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 30%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 31%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 32%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 33%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 34%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 35%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 36%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 37%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 38%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 39%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 40%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 41%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 42%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 53%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 57%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 61%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 71%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 72%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 73%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 74%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 75%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 75%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 84%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 85%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 87%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 96%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 98%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 99%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, flow, cpd, pmd, sfge; Completion: 100%; Elapsed time: 1sSelecting rules... done.
+Selecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 0%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 12%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 25%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 26%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 27%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 28%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 29%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 30%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 31%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 32%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 33%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 34%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 35%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 36%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 37%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 50%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 59%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 62%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 63%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 67%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 75%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 76%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 77%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 78%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 78%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 86%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 87%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 88%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 89%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 97%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 98%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 99%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 100%; Elapsed time: 1sSelecting rules... done.
 
   #    Name                                                              Engine   Severity       Tag
  ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -229,7 +233,7 @@ Found 70 rule(s) from 1 engine(s):
     70 eslint rule(s) found.
 
 Additional log information written to:
-    /tmp/sfca-2026_07_05_20_08_14_381.log
+    /tmp/sfca-2026_08_03_23_10_59_759.log
 ```
 
 ### Installation on mega-linter Docker image
@@ -238,11 +242,11 @@ Additional log information written to:
 ```dockerfile
 # Parent descriptor install
 # renovate: datasource=npm depName=@salesforce/cli
-ARG NPM_SALESFORCE_CLI_VERSION=2.141.6
+ARG NPM_SALESFORCE_CLI_VERSION=2.145.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.30.1
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.30.6
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=7.19.0
+ARG SFDX_HARDIS_VERSION=7.23.0
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 ENV XDG_DATA_HOME=/usr/local/share
@@ -253,7 +257,7 @@ RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACK
 ENV SF_AUTOUPDATE_DISABLE=true SF_CLI_DISABLE_AUTOUPDATE=true
 # Linter install
 # renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
-ARG SALESFORCE_CODE_ANALYZER_VERSION=5.14.0
+ARG SALESFORCE_CODE_ANALYZER_VERSION=5.15.0
 RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
     && (npm cache clean --force || true) \
     && rm -rf /root/.npm/_cacache

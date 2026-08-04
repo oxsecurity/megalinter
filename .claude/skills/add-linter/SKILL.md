@@ -2,8 +2,10 @@
 name: add-linter
 description: Guided workflow for adding a new linter to MegaLinter. Use when a contributor needs to add support for a new linting tool.
 allowed-tools: Read Grep Glob Bash Edit Write WebSearch WebFetch
-argument-hint: [linter-name]
+argument-hint: "[linter-name]"
 model: sonnet
+metadata:
+  internal: true
 ---
 
 Guide me through adding the linter `$ARGUMENTS` to MegaLinter. If no linter name was provided, ask me for:
@@ -50,7 +52,8 @@ Add the linter entry with **as many properties as possible**. Even though the JS
 - `linter_image_url`, `linter_icon_png_url`, `linter_banner_image_url` — logos/banners
 
 **CLI configuration (always fill):**
-- `cli_lint_mode` — `file`, `list_of_files`, or `project`
+- `cli_lint_mode` — default mode: `file`, `list_of_files`, or `project`
+- `supported_cli_lint_modes` — every mode the linter can run in (subset of `file` / `list_of_files` / `project`; defaults to `["file"]`, must include `cli_lint_mode`). Success/failure tests run once per declared mode, so only list modes the tool actually supports
 - `cli_executable` — if different from `linter_name`
 - `config_file_name` — default config file (e.g., `.pylintrc`)
 - `cli_config_arg_name` — config argument (e.g., `--config`)

@@ -6,7 +6,7 @@ Use Syft to generate SBOM (Software bill of materials)
 import json
 import os
 
-from megalinter import Linter, utils
+from megalinter import Linter, config, utils
 from megalinter.constants import (
     DEFAULT_SARIF_SCHEMA_URI,
     DEFAULT_SARIF_VERSION,
@@ -15,6 +15,13 @@ from megalinter.constants import (
 
 
 class SyftLinter(Linter):
+    def build_lint_command(self, file=None):
+        cmd = super().build_lint_command(file)
+
+        if self.cli_lint_mode == "file":
+            cmd.remove(file)
+
+        return cmd
 
     # Provide additional details in text reporter logs
     # Add SBOM output file
@@ -74,3 +81,9 @@ class SyftLinter(Linter):
                 with open(self.sarif_output_file, "w", encoding="utf-8") as outfile:
                     json.dump(sarif_obj, outfile, indent=4, sort_keys=False)
                     outfile.write("\n")
+
+    def pre_test(self, test_name):
+        if test_name.endswith(("file_lint_mode", "list_of_files_lint_mode")):
+            config.set_value(
+                self.request_id, "REPOSITORY_SYFT_FILE_NAMES_REGEX", ["package.*json"]
+            )

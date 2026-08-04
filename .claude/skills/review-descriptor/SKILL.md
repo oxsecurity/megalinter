@@ -2,8 +2,10 @@
 name: review-descriptor
 description: Audit a linter descriptor YAML for completeness, correctness, and best practices. Checks all properties against the full schema.
 allowed-tools: Read Grep Glob Bash WebSearch WebFetch
-argument-hint: [descriptor-file-or-linter-name]
+argument-hint: "[descriptor-file-or-linter-name]"
 model: sonnet
+metadata:
+  internal: true
 ---
 
 Review the descriptor for `$ARGUMENTS`. If a linter name is given, find its descriptor in `megalinter/descriptors/`.
@@ -27,7 +29,8 @@ For each linter entry, audit against the **full property list** below. Report a 
 - [ ] `linter_image_url` or `linter_icon_png_url` or `linter_banner_image_url` — at least one image
 
 ## 3. CLI Configuration
-- [ ] `cli_lint_mode` — set to `file`, `list_of_files`, or `project`
+- [ ] `cli_lint_mode` — default mode: `file`, `list_of_files`, or `project`
+- [ ] `supported_cli_lint_modes` — all modes the linter supports (must include `cli_lint_mode`); each listed mode gets its own success/failure test, so don't declare a mode the tool can't actually run in
 - [ ] `config_file_name` — set if linter uses a config file
 - [ ] `cli_config_arg_name` — set if config file is used
 - [ ] `cli_lint_fix_arg_name` — set if linter supports auto-fix

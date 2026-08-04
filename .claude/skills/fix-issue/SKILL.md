@@ -5,6 +5,8 @@ allowed-tools: Bash Read Grep Glob Edit Write AskUserQuestion WebFetch WebSearch
 argument-hint: "[github issue URL or #number]"
 user-invocable: true
 model: opus
+metadata:
+  internal: true
 ---
 
 Resolve the GitHub issue `$ARGUMENTS` end-to-end.

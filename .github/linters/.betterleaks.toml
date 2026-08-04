@@ -18,5 +18,8 @@ useDefault = true
     '''node_modules''',
     '''.mypy_cache''',
     '''(.*?)(gitleaks|betterleaks)\.toml$''',
+    # Vendored betterleaks ruleset used to mask secrets in linter outputs: it is
+    # made of secret detection regexes, so it matches its own rules by design
+    '''megalinter/descriptors/additional/betterleaks-default\.toml$''',
     '''(.*?)(png|jpg|gif|doc|docx|pdf|bin|xls|pyc|zip)$''',
     '''(go.mod|go.sum)$''']

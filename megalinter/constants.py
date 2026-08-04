@@ -29,6 +29,13 @@ DEFAULT_SARIF_VERSION = "2.1.0"
 # MAJOR-RELEASE-IMPACTED
 DEFAULT_RELEASE = "v9"
 
+# Ruleset used to mask secrets in linter outputs. Vendored from the pinned tag
+# by .automation/vendor_betterleaks_ruleset.py during documentation builds.
+BETTERLEAKS_RULESET_FILE_NAME = "betterleaks-default.toml"
+BETTERLEAKS_RULESET_REPO = "betterleaks/betterleaks"
+# renovate: datasource=github-tags depName=betterleaks/betterleaks
+BETTERLEAKS_RULESET_VERSION = "v1.7.3"
+
 DEFAULT_DOCKERFILE_ARGS: list[str] = [
     "ARG TARGETPLATFORM",
     "ARG TARGETARCH",
@@ -38,19 +45,35 @@ DEFAULT_DOCKERFILE_APK_PACKAGES = [
     "bash",
     "ca-certificates",
     "curl",
-    "gcc",
     # glibc compatibility shim so prebuilt linux-x86_64-unknown-linux-gnu
     # binaries (zizmor, sarif-fmt, shellcheck-sarif, …) run on the Alpine
     # base, including in standalone per-linter images.
     "gcompat",
     "git",
     "git-lfs",
-    "libffi-dev",
-    "make",
-    "musl-dev",
+    # runtime libraries (libgcc_s.so.1, libstdc++.so.6) needed by Rust and C++
+    # prebuilt binaries (sarif-fmt, shellcheck-sarif, zizmor, vale, …); they
+    # were previously pulled in transitively by the gcc package, which is now
+    # evicted from final layers
+    "libgcc",
+    "libstdc++",
     "openssh",
     # su-exec for user switch in entrypoint
     "su-exec",
+]
+
+# Compilation toolchain needed only while pip/npm/gem install steps build native
+# extensions: installed as an apk virtual package at the beginning of those steps
+# and removed at their end, so it never weighs in the final image layers.
+# A descriptor whose linter needs the toolchain at RUNTIME must declare the
+# packages in its own install.apk list.
+DEFAULT_DOCKERFILE_BUILD_APK_PACKAGES = [
+    "gcc",
+    "libffi-dev",
+    "make",
+    "musl-dev",
+    # native gem extensions need the ruby headers at build time only
+    "ruby-dev",
 ]
 
 DEFAULT_DOCKERFILE_NPM_ARGS: list[str] = []
@@ -63,23 +86,23 @@ DEFAULT_DOCKERFILE_NPM_APK_PACKAGES = [
 
 DEFAULT_DOCKERFILE_GEM_ARGS: list[str] = []
 
+# gems are installed with --no-document, so rdoc is not needed; ruby-dev is
+# only needed while native extensions compile and lives in the build list
 DEFAULT_DOCKERFILE_GEM_APK_PACKAGES = [
     "ruby",
-    "ruby-dev",
     "ruby-bundler",
-    "ruby-rdoc",
 ]
 
 DEFAULT_DOCKERFILE_PIP_ARGS = [
-    "# renovate: datasource=pypi depName=pip\nARG PIP_PIP_VERSION=26.1.2",
+    "# renovate: datasource=pypi depName=pip\nARG PIP_PIP_VERSION=26.2",
 ]
 
 DEFAULT_DOCKERFILE_PIPENV_ARGS = [
-    "# renovate: datasource=pypi depName=virtualenv\nARG PIP_VIRTUALENV_VERSION=21.5.1",
+    "# renovate: datasource=pypi depName=virtualenv\nARG PIP_VIRTUALENV_VERSION=21.7.1",
 ]
 
 DEFAULT_DOCKERFILE_RUST_ARGS = [
-    "# renovate: datasource=github-tags depName=rust-lang/rust\nARG RUST_RUST_VERSION=1.96.1",
+    "# renovate: datasource=github-tags depName=rust-lang/rust\nARG RUST_RUST_VERSION=1.97.1",
 ]
 
 DEFAULT_DOCKERFILE_FLAVOR_ARGS = [

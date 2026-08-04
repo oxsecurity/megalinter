@@ -22,7 +22,7 @@ description: How to use powershell (configure, ignore files, ignore errors, help
 
 ## powershell documentation
 
-- Version in MegaLinter: **7.6.3**
+- Version in MegaLinter: **7.6.4**
 - Visit [Official Web Site](https://github.com/PowerShell/PSScriptAnalyzer#readme){target=_blank}
 - See [How to configure powershell rules](https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#explicit){target=_blank}
 - See [How to disable powershell rules in files](https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#suppressing-rules){target=_blank}
@@ -41,8 +41,8 @@ description: How to use powershell (configure, ignore files, ignore errors, help
 |---------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------|
 | POWERSHELL_POWERSHELL_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                                     |
 | POWERSHELL_POWERSHELL_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                         |                                                                     |
-| POWERSHELL_POWERSHELL_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file                                                  |
-| POWERSHELL_POWERSHELL_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file                                                     |
+| POWERSHELL_POWERSHELL_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with POWERSHELL_POWERSHELL_CLI_LINT_MODE = project                                                                   | Exclude no file                                                     |
+| POWERSHELL_POWERSHELL_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`<br/>⚠️ Not available with POWERSHELL_POWERSHELL_CLI_LINT_MODE = project                                                             | Exclude no file                                                     |
 | POWERSHELL_POWERSHELL_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project                                                    | `file`                                                              |
 | POWERSHELL_POWERSHELL_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".ps1", ".psm1", ".psd1", ".ps1xml", ".pssc", ".psrc", ".cdxml"]` |
 | POWERSHELL_POWERSHELL_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                                                  |
@@ -70,8 +70,8 @@ This linter is available in the following flavors
 |                                                                         <!-- -->                                                                         | Flavor                                                     | Description                                              | Embedded linters |                                                                                                                                                                                           Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------|:---------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)       | Default MegaLinter Flavor                                |       124        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)       | Optimized for C, C++, C# or VB based projects            |        67        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/) | Optimized for C, C++, C# or VB based projects with JS/TS |        76        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)       | Optimized for C, C++, C# or VB based projects            |        66        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/) | Optimized for C, C++, C# or VB based projects with JS/TS |        75        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
 
 ## Behind the scenes
 
@@ -83,7 +83,10 @@ This linter is available in the following flavors
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- powershell is called one time by identified file (`file` CLI lint mode)
+powershell is called once on the whole project directory (`project` CLI lint mode)
+
+- filtering can not be done using MegaLinter configuration variables,it must be done using powershell configuration or ignore file (if existing)
+- `VALIDATE_ALL_CODEBASE: false` doesn't make powershell analyze only updated files
 
 ### Example calls
 
@@ -444,7 +447,7 @@ All parameters are case-insensitive.
 # Parent descriptor install
 ARG TARGETPLATFORM
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
-ARG POWERSHELL_VERSION=7.6.3
+ARG POWERSHELL_VERSION=7.6.4
 
 RUN case ${TARGETPLATFORM} in \
   "linux/amd64")  POWERSHELL_ARCH=musl-x64 ;; \

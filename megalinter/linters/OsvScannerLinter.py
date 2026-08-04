@@ -8,7 +8,7 @@ osv-scanner upstream declined to add a --no-fail-if-no-package flag
 
 import logging
 
-from megalinter import Linter
+from megalinter import Linter, config
 
 
 class OsvScannerLinter(Linter):
@@ -22,3 +22,11 @@ class OsvScannerLinter(Linter):
             )
             return 0, return_output
         return return_code, return_output
+
+    def pre_test(self, test_name):
+        if test_name.endswith(("file_lint_mode", "list_of_files_lint_mode")):
+            config.set_value(
+                self.request_id,
+                "REPOSITORY_OSV_SCANNER_FILE_NAMES_REGEX",
+                ["package.*json"],
+            )

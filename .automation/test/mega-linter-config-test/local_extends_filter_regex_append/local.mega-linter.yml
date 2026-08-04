@@ -1,0 +1,8 @@
+EXTENDS: base.local.mega-linter.yml
+CONFIG_PROPERTIES_TO_APPEND:
+  - FILTER_REGEX_INCLUDE
+  - FILTER_REGEX_EXCLUDE
+FILTER_REGEX_INCLUDE:
+  - "(lib)"
+FILTER_REGEX_EXCLUDE:
+  - "(local_excluded)"

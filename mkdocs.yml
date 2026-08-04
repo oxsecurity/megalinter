@@ -5,7 +5,7 @@ repo_url: https://github.com/oxsecurity/megalinter
 edit_uri: tree/main/docs
 site_author: Nicolas Vuillamy
 # site_description-start
-site_description: MegaLinter is an open-source tool for CI/CD workflows that analyzes the consistency of your code, IaC, configuration, and scripts in your repository to ensure all your project sources are clean and formatted, no matter which IDE or toolbox is used by your developers. Powered by OX Security.Supports 62 languages, 21 formats, 19 tooling formats, and is ready to use out of the box as a GitHub Action or with any CI system. It is highly configurable and free for all uses.MegaLinter has native integrations with many major CI/CD tools.
+site_description: MegaLinter is an open-source tool for CI/CD workflows that analyzes the consistency of your code, IaC, configuration, and scripts in your repository to ensure all your project sources are clean and formatted, no matter which IDE or toolbox is used by your developers. Powered by OX Security.Supports 63 languages, 21 formats, 19 tooling formats, and is ready to use out of the box as a GitHub Action or with any CI system. It is highly configurable and free for all uses.MegaLinter has native integrations with popular CI/CD tools and is compliant with most Coding Agents.
 # site_description-end
 copyright: Copyright &copy; 2024 <a href="https://www.ox.security/?ref=megalinter" target= "_blank">OX Security</a> &amp; <a href="https://github.com/nvuillam" target="_blank">Nicolas Vuillamy</a>
 theme:
@@ -25,6 +25,11 @@ plugins:
   - glightbox
   - search
 markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
@@ -62,7 +67,9 @@ extra:
 nav:
   - "Home": "index.md"
   - "Quick Start": "quick-start.md"
-  - "Installation": 
+  - "Coding Agents": "coding-agents.md"
+  - "Installation":
+    - "Coding Agents (Skills)": "install-agent-skills.md"
     - "Assisted Installation": "install-assisted.md"
     - "Which version to use ?": "install-version.md"
     - "GitHub Actions": "install-github.md"
@@ -87,6 +94,7 @@ nav:
     - "CLI lint mode": "config-cli-lint-mode.md"
   - "Linters":
       - "All supported linters": "supported-linters.md"
+      - "Removed linters": "removed-linters.md"
       - "Languages linters":
           - "All language linters": "./supported-linters/#languages"
           # language-start
@@ -146,11 +154,7 @@ nav:
           - "LUA":
               - "All LUA linters": "descriptors/lua.md"
               - "luacheck": "descriptors/lua_luacheck.md"
-              - "selene": "descriptors/lua_selene.md"
               - "stylua": "descriptors/lua_stylua.md"
-          - "MAKEFILE":
-              - "All MAKEFILE linters": "descriptors/makefile.md"
-              - "checkmake": "descriptors/makefile_checkmake.md"
           - "PERL":
               - "All PERL linters": "descriptors/perl.md"
               - "perlcritic": "descriptors/perl_perlcritic.md"
@@ -194,17 +198,13 @@ nav:
               - "code-analyzer-apex": "descriptors/salesforce_code_analyzer_apex.md"
               - "code-analyzer-aura": "descriptors/salesforce_code_analyzer_aura.md"
               - "code-analyzer-lwc": "descriptors/salesforce_code_analyzer_lwc.md"
-              - "sfdx-scanner-apex": "descriptors/salesforce_sfdx_scanner_apex.md"
-              - "sfdx-scanner-aura": "descriptors/salesforce_sfdx_scanner_aura.md"
-              - "sfdx-scanner-lwc": "descriptors/salesforce_sfdx_scanner_lwc.md"
-              - "lightning-flow-scanner": "descriptors/salesforce_lightning_flow_scanner.md"
+              - "code-analyzer-flow": "descriptors/salesforce_code_analyzer_flow.md"
           - "SCALA":
               - "All SCALA linters": "descriptors/scala.md"
               - "scalafix": "descriptors/scala_scalafix.md"
           - "SQL":
               - "All SQL linters": "descriptors/sql.md"
               - "sqlfluff": "descriptors/sql_sqlfluff.md"
-              - "tsqllint": "descriptors/sql_tsqllint.md"
           - "SWIFT":
               - "All SWIFT linters": "descriptors/swift.md"
               - "swiftlint": "descriptors/swift_swiftlint.md"
@@ -239,7 +239,6 @@ nav:
           - "JSON":
               - "All JSON linters": "descriptors/json.md"
               - "jsonlint": "descriptors/json_jsonlint.md"
-              - "eslint-plugin-jsonc": "descriptors/json_eslint_plugin_jsonc.md"
               - "v8r": "descriptors/json_v8r.md"
               - "prettier": "descriptors/json_prettier.md"
               - "npm-package-json-lint": "descriptors/json_npm_package_json_lint.md"
@@ -249,7 +248,6 @@ nav:
           - "MARKDOWN":
               - "All MARKDOWN linters": "descriptors/markdown.md"
               - "markdownlint": "descriptors/markdown_markdownlint.md"
-              - "remark-lint": "descriptors/markdown_remark_lint.md"
               - "markdown-table-formatter": "descriptors/markdown_markdown_table_formatter.md"
               - "rumdl": "descriptors/markdown_rumdl.md"
           - "PROTOBUF":
@@ -279,9 +277,6 @@ nav:
           - "ANSIBLE":
               - "All ANSIBLE linters": "descriptors/ansible.md"
               - "ansible-lint": "descriptors/ansible_ansible_lint.md"
-          - "API":
-              - "All API linters": "descriptors/api.md"
-              - "spectral": "descriptors/api_spectral.md"
           - "ARM":
               - "All ARM linters": "descriptors/arm.md"
               - "arm-ttk": "descriptors/arm_arm_ttk.md"
@@ -305,9 +300,6 @@ nav:
               - "kubeconform": "descriptors/kubernetes_kubeconform.md"
               - "helm": "descriptors/kubernetes_helm.md"
               - "kubescape": "descriptors/kubernetes_kubescape.md"
-          - "PUPPET":
-              - "All PUPPET linters": "descriptors/puppet.md"
-              - "puppet-lint": "descriptors/puppet_puppet_lint.md"
           - "ROBOTFRAMEWORK":
               - "All ROBOTFRAMEWORK linters": "descriptors/robotframework.md"
               - "robocop": "descriptors/robotframework_robocop.md"
@@ -321,7 +313,6 @@ nav:
           - "TERRAFORM":
               - "All TERRAFORM linters": "descriptors/terraform.md"
               - "tflint": "descriptors/terraform_tflint.md"
-              - "terrascan": "descriptors/terraform_terrascan.md"
               - "terragrunt": "descriptors/terraform_terragrunt.md"
               - "terraform-fmt": "descriptors/terraform_terraform_fmt.md"
 # tooling_format-end
@@ -337,10 +328,8 @@ nav:
               - "devskim": "descriptors/repository_devskim.md"
               - "dustilock": "descriptors/repository_dustilock.md"
               - "git_diff": "descriptors/repository_git_diff.md"
-              - "gitleaks": "descriptors/repository_gitleaks.md"
               - "betterleaks": "descriptors/repository_betterleaks.md"
               - "grype": "descriptors/repository_grype.md"
-              - "kics": "descriptors/repository_kics.md"
               - "ls-lint": "descriptors/repository_ls_lint.md"
               - "osv-scanner": "descriptors/repository_osv_scanner.md"
               - "secretlint": "descriptors/repository_secretlint.md"

@@ -108,3 +108,45 @@ jobs:
           fi
 
           echo "Done. deleted=${deleted} freed=${freed} final_estimate=${remaining}"
+
+  # deploy-DEV.yml pushes one per-commit image to ghcr.io/oxsecurity/megalinter-dev
+  # for same-repo branches (consumer jobs pull it instead of passing a tarball
+  # artifact). Those images are only useful for the run that produced them and
+  # short-lived re-runs, so evict anything older than 2 days.
+  prune-dev-images:
+    name: Prune DEV ghcr images
+    if: github.repository == 'oxsecurity/megalinter'
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+    concurrency:
+      group: cache-cleanup-dev-images
+      cancel-in-progress: false
+    steps:
+      - name: Delete megalinter-dev package versions older than 2 days
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MAX_AGE_DAYS: "2"
+        shell: bash
+        run: |
+          set -euo pipefail
+          cutoff=$(date -u -d "${MAX_AGE_DAYS} days ago" +%Y-%m-%dT%H:%M:%SZ)
+          echo "Deleting ghcr.io megalinter-dev versions created before ${cutoff}..."
+          versions=$(gh api --paginate \
+            "orgs/oxsecurity/packages/container/megalinter-dev/versions?per_page=100" \
+            --jq ".[] | select(.created_at < \"${cutoff}\") | .id" 2>/dev/null || true)
+          if [[ -z "${versions}" ]]; then
+            echo "Nothing to delete (package may not exist yet)."
+            exit 0
+          fi
+          deleted=0
+          for id in ${versions}; do
+            if gh api -X DELETE \
+               "orgs/oxsecurity/packages/container/megalinter-dev/versions/${id}" \
+               >/dev/null 2>&1; then
+              deleted=$((deleted + 1))
+            else
+              echo "  failed to delete version id=${id}"
+            fi
+          done
+          echo "Deleted ${deleted} version(s)."

@@ -32,30 +32,37 @@ jobs:
     name: Get Linters Matrix
     runs-on: ubuntu-latest
     outputs:
-      linters: ${{ steps.set-matrix.outputs.linters }}
-      linters_arm: ${{ steps.set-matrix.outputs.linters_arm }}
-      linters_all: ${{ steps.set-matrix.outputs.linters_all }}
+      jobs: ${{ steps.set-matrix.outputs.jobs }}
     steps:
       - name: Checkout Code
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
       - name: Read linters_matrix.json
         id: set-matrix
         run: |
-          {
-            echo "linters=$(jq -c '[.["linux/amd64"][]]'  .automation/generated/linters_matrix.json)"
-            echo "linters_arm=$(jq -c '[.["linux/arm64"][]]'  .automation/generated/linters_matrix.json)"
-            # Unique list of linters across platforms, used by the manifest-merge job
-            echo "linters_all=$(jq -c '([.["linux/amd64"][]] + [.["linux/arm64"][]]) | unique'  .automation/generated/linters_matrix.json)"
-          } >> "${GITHUB_OUTPUT}"
+          # One job per linter, carrying the platforms its :beta manifest
+          # actually provides: asking buildx for linux/arm64 on a linter that
+          # has no arm64 beta image would fail to resolve the base image.
+          jobs=$(jq -c '
+            [.["linux/amd64"][]] as $amd
+            | [.["linux/arm64"][]] as $arm
+            | ($amd + $arm | unique)
+            | map(. as $linter | {
+                linter: $linter,
+                platforms: ([
+                  (if ($amd | index($linter)) then "linux/amd64" else empty end),
+                  (if ($arm | index($linter)) then "linux/arm64" else empty end)
+                ] | join(","))
+              })
+          ' .automation/generated/linters_matrix.json)
+          echo "jobs=${jobs}" >> "${GITHUB_OUTPUT}"
 
   build:
     name: Deploy Docker Image - Release - Linters
-    runs-on: ${{ matrix.runner }}
+    runs-on: ubuntu-latest
     needs: get-linters-matrix
     permissions:
-      actions: write
       packages: write
       # Require writing security events to upload SARIF file to security tab
       security-events: write
@@ -64,157 +71,89 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        linter: ${{ fromJson(needs.get-linters-matrix.outputs.linters) }}
-        runner: ["ubuntu-latest", "ubuntu-24.04-arm"]
+        include: ${{ fromJson(needs.get-linters-matrix.outputs.jobs) }}
     # Only run this on the main repo
     if: github.repository == 'oxsecurity/megalinter' && !contains(github.event.head_commit.message, 'skip deploy')
     ##################
     # Load all steps #
     ##################
     steps:
-      # https://github.com/actions/runner/issues/1985
-      - name: Prepare
-        id: prepare
-        run: |
-          job_enabled=true
-          platforms=linux/amd64
-
-          ARM_RUNNER_REGEX="^ubuntu-.*-arm$"
-
-          if [[ "${{ matrix.runner }}" =~ $ARM_RUNNER_REGEX ]]; then
-            job_enabled="${{ contains(fromJson(needs.get-linters-matrix.outputs.linters_arm), matrix.linter) }}"
-            platforms=linux/arm64
-          fi
-
-          {
-            echo "job_enabled=$job_enabled"
-            echo "platforms=$platforms"
-            echo "platform_pair=${platforms//\//-}"
-          } >> "${GITHUB_OUTPUT}"
-
       ##########################
       # Checkout the code base #
       ##########################
       - name: Checkout Code
-        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
 
       - name: Login to GitHub Container Registry
-        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: docker/login-action@af1e73f918a031802d376d3c8bbc3fe56130a9b0 # v4
+        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      # Required to build more than one platform in a single invocation:
+      # the default docker driver only handles the runner's own platform.
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@bb05f3f5519dd87d3ba754cc423b652a5edd6d2c # v4
+
       - name: Get current date
-        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
         run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> "${GITHUB_ENV}"
 
+      # Dockerfile-release only stamps version metadata on top of the :beta
+      # image, which BETA-linters already published as a multi-arch manifest
+      # and already tested on every platform it supports. Building every
+      # platform in one invocation lets buildx resolve the matching base for
+      # each of them and push a manifest list directly, so no per-platform
+      # matrix, digest artifact or merge job is needed. It contains no RUN
+      # instruction, so no emulation is involved either.
       - name: Build Image
-        id: build
-        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
         uses: docker/build-push-action@53b7df96c91f9c12dcc8a07bcb9ccacbed38856a # v7
         with:
           context: .
           file: Dockerfile-release
-          platforms: ${{ steps.prepare.outputs.platforms }}
+          platforms: ${{ matrix.platforms }}
           build-args: |
             MEGALINTER_BASE_IMAGE=ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:beta
             BUILD_DATE=${{ env.BUILD_DATE }}
             BUILD_REVISION=${{ github.sha }}
             BUILD_VERSION=${{ github.event.release.tag_name }}
+          load: false
+          push: true
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          # Push each platform by digest only; the merge job assembles the
-          # multi-arch manifest list under the version tags.
-          outputs: type=image,"name=ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}",push-by-digest=true,name-canonical=true,push=true
-          # One-shot per release; read BETA-linters' warm cache only.
-          cache-from: type=gha,scope=beta-linter-${{ matrix.linter }}-${{ steps.prepare.outputs.platforms }},ignore-error=true
+          # MAJOR-RELEASE-IMPACTED
+          tags: |
+            ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:v9
+            ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:${{ github.event.release.tag_name }}
+            ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:latest
 
-      - name: Export digest
-        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
+      - name: Inspect image
         env:
-          RUNNER_TEMP: ${{ runner.temp }}
-          BUILD_DIGEST: ${{ steps.build.outputs.digest }}
+          GITHUB_EVENT_RELEASE_TAG_NAME: ${{ github.event.release.tag_name }}
+          MATRIX_LINTER: ${{ matrix.linter }}
         run: |
-          mkdir -p "${RUNNER_TEMP}/digests"
-          digest="${BUILD_DIGEST}"
-          touch "${RUNNER_TEMP}/digests/${digest#sha256:}"
-
-      - name: Upload digest
-        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
-        with:
-          name: linter-release-digests-${{ matrix.linter }}-${{ steps.prepare.outputs.platform_pair }}
-          path: ${{ runner.temp }}/digests/*
-          if-no-files-found: error
-          retention-days: 1
+          docker buildx imagetools inspect ghcr.io/oxsecurity/megalinter-only-"${MATRIX_LINTER}":"${GITHUB_EVENT_RELEASE_TAG_NAME}"
 
       # Docker Hub mirroring is disabled — MegaLinter is published to ghcr.io only.
       # - name: Invoke Mirror docker image workflow (Standalone image)
-      #   if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
       #   uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1
       #   with:
       #     workflow: mirror-docker-image.yml
       #     # MAJOR-RELEASE-IMPACTED
       #     inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:v9", "target-image": "docker.io/oxsecurity/megalinter-only-${{ matrix.linter }}:v9", "free-space-before": "false" }'
       #     ref: main
-      # - name: Invoke Mirror docker image workflow (Standalone image)
-      #   if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-      #   uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1
-      #   with:
-      #     workflow: mirror-docker-image.yml
-      #     # MAJOR-RELEASE-IMPACTED
-      #     inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:v9", "target-image": "docker.io/oxsecurity/megalinter-only-${{ matrix.linter }}:${{ github.event.release.tag_name }}", "free-space-before": "false" }'
-      #     ref: main
-      # - name: Invoke Mirror docker image workflow (Standalone image)
-      #   if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-      #   uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1
-      #   with:
-      #     workflow: mirror-docker-image.yml
-      #     # MAJOR-RELEASE-IMPACTED
-      #     inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:v9", "target-image": "docker.io/oxsecurity/megalinter-only-${{ matrix.linter }}:latest", "free-space-before": "false" }'
-      #     ref: main
-      #####################################
-      # Run Linter test cases #
-      #####################################
-      - name: Run Test Cases
-        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
-        shell: bash
-        env:
-          EVENT_NAME: ${{ github.event_name }}
-          PR_HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
-          GH_REPOSITORY: ${{ github.repository }}
-          HEAD_REF: ${{ github.head_ref }}
-          REF_NAME: ${{ github.ref_name }}
-          MATRIX_LINTER: ${{ matrix.linter }}
-          GITHUB_EVENT_RELEASE_TAG_NAME: ${{ github.event.release.tag_name }}
-          GH_SHA: ${{ github.sha }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BUILD_DIGEST: ${{ steps.build.outputs.digest }}
-        run: |
-          GITHUB_REPOSITORY=$([ "$EVENT_NAME" == "pull_request" ] && echo "$PR_HEAD_REPO" || echo "$GH_REPOSITORY")
-          GITHUB_BRANCH=$([ "$EVENT_NAME" == "pull_request" ] && echo "$HEAD_REF" || echo "$REF_NAME")
-
-          TEST_KEYWORDS_TO_USE_UPPER="${MATRIX_LINTER}"
-          TEST_KEYWORDS_TO_USE="${TEST_KEYWORDS_TO_USE_UPPER,,}"
-
-          docker run -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER="${GH_SHA}" -e OUTPUT_DETAIL=detailed -e GITHUB_SHA="${GH_SHA}" -e GITHUB_REPOSITORY="${GITHUB_REPOSITORY}" -e GITHUB_BRANCH="${GITHUB_BRANCH}" -e GITHUB_TOKEN="${GITHUB_TOKEN}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v "${GITHUB_WORKSPACE}:/tmp/lint" "ghcr.io/oxsecurity/megalinter-only-${MATRIX_LINTER}@${BUILD_DIGEST}"
-        timeout-minutes: 30
 
       ##############################################
       # Check Docker image security with Trivy #
       ##############################################
       - name: Run Trivy vulnerability scanner
-        if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
         uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
         with:
           # renovate: datasource=github-releases depName=aquasecurity/trivy
-          version: "v0.72.0"
-          image-ref: ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}@${{ steps.build.outputs.digest }}
+          version: "v0.73.0"
+          image-ref: ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:${{ github.event.release.tag_name }}
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
@@ -226,65 +165,7 @@ jobs:
             ACTIONS_RUNTIME_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # - name: Run OSV-Scanner vulnerability scanner
-      #   if: ${{ steps.prepare.outputs.job_enabled == 'true' }}
       #   uses: google/osv-scanner-action/osv-scanner-action@v2.3.5
       #   with:
       #     scan-args: |-
       #       --docker ghcr.io/oxsecurity/megalinter-only-${{ matrix.linter }}:${{ github.event.release.tag_name }}
-
-  # Assemble a multi-arch manifest list per linter from the per-platform digests
-  # pushed by the build job, then publish it under the release tags.
-  merge:
-    name: Deploy Docker Image - Release - Linters Merge
-    runs-on: ubuntu-latest
-    needs:
-      - get-linters-matrix
-      - build
-    if: ${{ !cancelled() && github.repository == 'oxsecurity/megalinter' }}
-    permissions:
-      contents: read
-      packages: write
-    environment:
-      name: release
-    strategy:
-      fail-fast: false
-      matrix:
-        linter: ${{ fromJson(needs.get-linters-matrix.outputs.linters_all) }}
-    steps:
-      - name: Download digests
-        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
-        with:
-          path: ${{ runner.temp }}/digests
-          pattern: linter-release-digests-${{ matrix.linter }}-*
-          merge-multiple: true
-
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@af1e73f918a031802d376d3c8bbc3fe56130a9b0 # v4
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@bb05f3f5519dd87d3ba754cc423b652a5edd6d2c # v4
-
-      - name: Create manifest list and push
-        working-directory: ${{ runner.temp }}/digests
-        env:
-          GITHUB_EVENT_RELEASE_TAG_NAME: ${{ github.event.release.tag_name }}
-          MATRIX_LINTER: ${{ matrix.linter }}
-        run: |
-          # shellcheck disable=SC2046
-          # MAJOR-RELEASE-IMPACTED
-          docker buildx imagetools create \
-            -t ghcr.io/oxsecurity/megalinter-only-"${MATRIX_LINTER}":v9 \
-            -t ghcr.io/oxsecurity/megalinter-only-"${MATRIX_LINTER}":"${GITHUB_EVENT_RELEASE_TAG_NAME}" \
-            -t ghcr.io/oxsecurity/megalinter-only-"${MATRIX_LINTER}":latest \
-            $(printf "ghcr.io/oxsecurity/megalinter-only-${MATRIX_LINTER}@sha256:%s " *)
-
-      - name: Inspect image
-        env:
-          GITHUB_EVENT_RELEASE_TAG_NAME: ${{ github.event.release.tag_name }}
-          MATRIX_LINTER: ${{ matrix.linter }}
-        run: |
-          docker buildx imagetools inspect ghcr.io/oxsecurity/megalinter-only-"${MATRIX_LINTER}":"${GITHUB_EVENT_RELEASE_TAG_NAME}"

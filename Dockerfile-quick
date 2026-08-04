@@ -15,7 +15,7 @@ FROM $MEGALINTER_BASE_IMAGE AS base
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.11.26 AS uv
+FROM ghcr.io/astral-sh/uv:0.12.1 AS uv
 FROM python:3.14-alpine3.23 AS build-ml-core
 WORKDIR /
 COPY pyproject.toml .
@@ -51,6 +51,9 @@ RUN --mount=type=cache,target=/root/.cache/uv,from=build-ml-core \
 # Copy scripts and rules to container #
 #######################################
 COPY megalinter/descriptors /megalinter-descriptors
+# Linter versions collected at build time, so runtime does not need to spawn
+# one "--version" process per linter (see VERSION_GET_AT_RUNTIME variable)
+COPY .automation/generated/linter-versions.json /megalinter-descriptors/linter-versions.json
 COPY TEMPLATES /action/lib/.automation
 
 ###########################

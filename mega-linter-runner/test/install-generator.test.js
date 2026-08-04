@@ -24,14 +24,14 @@ const DEFAULT_ANSWERS = {
   ox: false,
 };
 
-async function runGenerator(answers) {
+async function runGenerator(answers, generatorOptions = undefined) {
   const originalCwd = process.cwd();
   const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "ml-gen-"));
   const adapter = new TestAdapter({ mockedAnswers: { ...DEFAULT_ANSWERS, ...answers } });
   try {
     process.chdir(tmpDir);
     const env = createEnv({ adapter, cwd: tmpDir });
-    await env.run([GENERATOR_PATH]);
+    await env.run([GENERATOR_PATH], generatorOptions);
     return tmpDir;
   } finally {
     process.chdir(originalCwd);
@@ -172,6 +172,54 @@ describe("Install generator (--install)", function () {
       "utf8",
     );
     assert.match(workflow, /APPLY_FIXES:\s*none/);
+  });
+
+  it("writes MEGALINTER_FLAVOR and MEGALINTER_VERSION in .mega-linter.yml", async () => {
+    const tmpDir = await runGenerator({ flavor: "python" });
+    const config = await fs.readFile(
+      path.join(tmpDir, ".mega-linter.yml"),
+      "utf8",
+    );
+    assert.match(config, /MEGALINTER_FLAVOR: python/);
+    assert.match(config, /MEGALINTER_VERSION: v9/);
+  });
+
+  it("runs fully non-interactively with noPrompt and CLI answers", async () => {
+    const failingAdapterAnswers = {};
+    const tmpDir = await runGenerator(failingAdapterAnswers, {
+      noPrompt: true,
+      promptAnswers: { flavor: "python", ci: "gitLabCI", applyFixes: true },
+    });
+    assert.ok(
+      fs.existsSync(path.join(tmpDir, ".gitlab-ci.yml")),
+      ".gitlab-ci.yml should be created",
+    );
+    const config = await fs.readFile(
+      path.join(tmpDir, ".mega-linter.yml"),
+      "utf8",
+    );
+    assert.match(config, /MEGALINTER_FLAVOR: python/);
+    assert.match(config, /APPLY_FIXES: all/);
+    assert.ok(
+      fs.existsSync(path.join(tmpDir, ".cspell.json")),
+      ".cspell.json created from non-interactive defaults",
+    );
+  });
+
+  it("only prompts for unanswered questions when promptAnswers is partial", async () => {
+    const tmpDir = await runGenerator(
+      { spellingMistakes: false, copyPaste: false },
+      { promptAnswers: { ci: "azure", flavor: "documentation" } },
+    );
+    assert.ok(
+      fs.existsSync(path.join(tmpDir, "azure-pipelines.yml")),
+      "azure-pipelines.yml should be created from CLI answer",
+    );
+    const config = await fs.readFile(
+      path.join(tmpDir, ".mega-linter.yml"),
+      "utf8",
+    );
+    assert.match(config, /MEGALINTER_FLAVOR: documentation/);
   });
 
   it("writes only manual instructions when ci=other", async () => {

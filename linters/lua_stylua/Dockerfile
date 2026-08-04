@@ -40,13 +40,14 @@ RUN set -eu; mkdir -p /out/bin; \
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.11.26 AS uv
+FROM ghcr.io/astral-sh/uv:0.12.1 AS uv
 FROM python:3.14-alpine3.24 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
 # Install dependencies
+#UV_SYNC__START
 RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
@@ -56,6 +57,7 @@ COPY . .
 # Sync the project
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --frozen
+#UV_SYNC__END
 
 ##################
 # Get base image #
@@ -90,18 +92,14 @@ RUN apk -U --no-cache upgrade \
                 bash \
                 ca-certificates \
                 curl \
-                gcc \
                 gcompat \
                 git \
                 git-lfs \
-                libffi-dev \
-                make \
-                musl-dev \
+                libgcc \
+                libstdc++ \
                 openssh \
                 su-exec \
                 lua5.3 \
-                lua5.3-dev \
-                readline-dev \
     && git config --global core.autocrlf true
 #APK__END
 
@@ -184,14 +182,19 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 ################################
 COPY --from=build-ml-core pyproject.toml README.md ./
 COPY --from=build-ml-core megalinter /megalinter/
+#PIP_PROJECT__START
 RUN --mount=type=cache,target=/root/.cache/uv,from=build-ml-core \
     --mount=from=uv,source=/uv,target=/bin/uv \
     uv pip install --system -e .
+#PIP_PROJECT__END
 
 #######################################
 # Copy scripts and rules to container #
 #######################################
 COPY megalinter/descriptors /megalinter-descriptors
+# Linter versions collected at build time, so runtime does not need to spawn
+# one "--version" process per linter (see VERSION_GET_AT_RUNTIME variable)
+COPY .automation/generated/linter-versions.json /megalinter-descriptors/linter-versions.json
 COPY TEMPLATES /action/lib/.automation
 
 # Copy server scripts
@@ -266,7 +269,7 @@ RUN find /usr/bin/megalinter-sh/ -type f -iname "*.sh" -exec chmod +x {} \; && \
       > /usr/local/bin/megalinter && \
     chmod u+x /usr/local/bin/megalinter && \
     ln -sf /usr/bin/megalinter_exec.sh /usr/local/bin/megalinter_exec
-RUN export STANDALONE_LINTER_VERSION="$(python -m megalinter.run --input /tmp --linterversion)" && \
+RUN export PYTHONDONTWRITEBYTECODE=1 && export STANDALONE_LINTER_VERSION="$(python -m megalinter.run --input /tmp --linterversion)" && \
     echo $STANDALONE_LINTER_VERSION
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
 #EXTRA_DOCKERFILE_LINES__END

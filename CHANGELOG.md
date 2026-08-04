@@ -10,11 +10,60 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Breaking changes
 
+  - Removed 14 deprecated or long-disabled linters, and the `API`, `MAKEFILE` and `PUPPET` descriptors, which had no other linter left. MegaLinter does not provide Makefile and Puppet linting anymore.
+  - `REPOSITORY_GITLEAKS` has been removed: migrate to [REPOSITORY_BETTERLEAKS](https://megalinter.io/beta/descriptors/repository_betterleaks/), which reads your existing `.gitleaks.toml` and `.gitleaksignore` files unchanged.
+  - Configuration variables of removed linters remain valid in the JSON schema (flagged as deprecated) and are ignored at runtime, so existing `.mega-linter.yml` files keep validating. MegaLinter now displays a single notice listing every removed linter or descriptor found in your configuration, with a link to the new [Removed linters](https://megalinter.io/beta/removed-linters/) page.
+
 - Core
 
+  - Add `megalinter/removed_linters.py` as the single source of truth for every linter and descriptor removed since v6, used both at runtime and by the build system, and generate a [Removed linters](https://megalinter.io/beta/removed-linters/) documentation page from it
+  - Migrate MegaLinter's internal log secret-masking engine from gitleaks' public ruleset to [betterleaks](https://github.com/betterleaks/betterleaks), removing the last internal dependency on gitleaks. The ruleset is pinned, tracked by renovate alongside the betterleaks linter, and vendored in minified form, removing a network call at every MegaLinter run. Redaction coverage nearly doubles (218 to 408 patterns)
+
+  - Allow `FILTER_REGEX_INCLUDE` and `FILTER_REGEX_EXCLUDE` (global, per-descriptor and per-linter) to be defined as a list of regexes combined with a logical OR, so filter regexes can be appended across `EXTENDS` configs via `CONFIG_PROPERTIES_TO_APPEND`; single-string values remain fully supported, fixes [#8361](https://github.com/oxsecurity/megalinter/issues/8361)
   - Add `ENABLE_DISABLE_LINTERS_PRIORITY` variable to let `DISABLE_LINTERS` override `ENABLE_LINTERS` when a linter is in both lists (e.g. to trim an inherited `ENABLE_LINTERS` list via `EXTENDS`), fixes [#8296](https://github.com/oxsecurity/megalinter/issues/8296)
+  - Add `supported_cli_lint_modes` descriptor property to declare which CLI lint modes (`file`, `list_of_files`, `project`) each linter supports, generate `success`/`failure` tests for every supported mode, and reject a `<LINTER>_CLI_LINT_MODE` override targeting an unsupported mode with an explicit error, fixes [#7120](https://github.com/oxsecurity/megalinter/issues/7120)
+  - Speed up CI by skipping the `file` CLI lint mode tests for linters that also support `list_of_files`, since `list_of_files` exercises the same code path more cheaply
+  - Improve parallel linters scheduling when fixes are applied: only the fixer linters of a descriptor now run serially in the same process, and the check-only linters of that descriptor are scheduled in parallel once the fixers are done, instead of being serialized behind each other (e.g. the PYTHON chain black+isort+ruff+pylint+mypy+flake8+bandit drops from a single ~100s sequence to fixers + the longest checker). Combined with the build-time versions manifest below, linting the MegaLinter repository itself went from 4m26s to 3m18s (-26%)
+  - Report linter versions from a manifest collected at Docker image build time instead of spawning one `--version` process per linter at runtime. New `VERSION_GET_AT_RUNTIME` configuration variable (env var or `.mega-linter.yml`) to force calling the linter executables, e.g. if PRE_COMMANDS install different linter versions. Test cases and the linters auto-update job always use runtime versions
+  - Display a distinct ☑️ status icon (instead of ⚠️) for linters that found errors but did not block the run because the error count stayed under `<LINTER>_DISABLE_ERRORS_IF_LESS_THAN`, and show the configured maximum as `(max N allowed)` in the console linter logs plus a new `Max errors` column in the console and Pull Request summary tables
+  - Add `API_REPORTER_PAYLOAD_FORMAT` variable (`auto`, `loki` or `default`) to force the payload format sent by API Reporter, instead of only deducing it from the endpoint URL
+  - Coding agents integration: add [MegaLinter agent skills](https://megalinter.io/beta/install-agent-skills/), installable in Claude Code, Cursor CLI, GitHub Copilot CLI, Codex, Antigravity, OpenCode and other coding agents with `npx skills add oxsecurity/megalinter` — `megalinter-setup`, `megalinter-check` (CI job watching on GitHub/GitLab/Azure/Bitbucket or local Docker runs) and `megalinter-fix` workflows plus a `megalinter` orchestrator, with per-linter fix guides generated from the YAML descriptors and sub-agents (installed on platforms supporting them, running on low-cost models) for token-efficient CI watching and parallel fixing. See the new [Coding Agents](https://megalinter.io/beta/coding-agents/) documentation page
+  - Add `MEGALINTER_FLAVOR` and `MEGALINTER_VERSION` properties to the `.mega-linter.yml` configuration schema, so the flavor and version of the MegaLinter Docker image can be pinned once in the repository configuration and reused by mega-linter-runner and the agent skills
+  - Skip the repository-wide enumeration of `.gitignore`d files when an explicit list of files is provided via `MEGALINTER_FILES_TO_LINT` (e.g. `mega-linter-runner [files...]`): the caller already chose the files to lint, and the enumeration could be expensive on large repositories
+  - Speed up MegaLinter startup by ~5 seconds on every run: LLM provider SDKs (langchain-openai, langchain-anthropic, google-genai, ...) are now imported lazily, only when LLM Advisor is enabled, instead of at every startup (`import megalinter` drops from ~7s to ~0.9s)
+  - Speed up standalone single-linter images (`megalinter-only-*`) startup: only the descriptor of the single linter is parsed instead of instantiating the 120+ linters of all descriptors, and plugins initialization (remote descriptor download + install commands) is skipped since a plugin can not provide the built-in single linter
+  - Lighter Docker images:
+    - LLM Advisor provider SDKs (langchain-openai, langchain-anthropic, langchain-google-genai, langchain-mistralai, langchain-ollama, langchain-deepseek, langchain-community) move to a new `llm` pip extra, installed in the main and flavor images but excluded from standalone `megalinter-only-*` images (~200 MB saved per standalone image); a standalone image with `LLM_ADVISOR_ENABLED` now logs an explicit message instead of loading the advisor
+    - The compilation toolchain (gcc, make, musl-dev, libffi-dev) is no longer kept in the final image layers: it is installed as an apk virtual package only while pip/gem install steps may build native extensions, then removed (~110-150 MB saved per image). Pre-commands needing to compile native code can install it back with `apk add --no-cache gcc make musl-dev`. Descriptors whose linters need the toolchain at runtime (RUST clippy) or in custom install commands (PERL cpanm, LUA luarocks) now declare it explicitly
+    - Standalone images no longer ship the ~45 MB `__pycache__` layer produced by the build-time version priming (bytecode is regenerated in the container writable layer)
+    - New descriptor property `install.apk_build` for apk packages needed only while pip/gem packages compile native extensions: they join the virtual `.ml-build-deps` package and are removed from the final layers. Used by SPELL_PROSELINT (build-base, re2-dev, py3-pybind11-dev needed to build google-re2, with only the `re2` runtime library kept), which was keeping a full C++ toolchain in every flavor image
+    - GROOVY_NPM_GROOVY_LINT now uses the same OpenJDK 21 as the other Java-based linters instead of shipping its own OpenJDK 17 (~300 MB saved in the main image and groovy-including flavors)
+    - Development headers and per-descriptor build toolchains no longer ship in the final layers: LUA luarocks, PERL cpm and R `install.packages` compilations now install their toolchain (gcc, g++, make, musl-dev, `*-dev` headers) as an apk virtual package removed at the end of their own install step; `ruby-dev` moved to the shared build-time virtual package, `ruby-rdoc` and `R-doc` are not installed anymore, and XML_XMLLINT keeps only the `libxml2` runtime library instead of `libxml2-dev`
+    - Python linter venvs are now installed through the uv cache in hardlink mode: identical wheels shared by several venvs (setuptools, black, mypy, ...) are stored once on disk instead of once per venv
+    - Extended node_modules pruning: all Markdown files plus `test`, `tests`, `__tests__`, `docs` and `.github` directories are removed from `/node-deps`, along with the leftover `/root/.npm` cache
+    - Removed a stray `cpplint` Python venv that was mistakenly declared in the CSS_STYLELINT descriptor
+    - Measured on linux/amd64 (uncompressed `docker images` size, before = previous beta measured the same day with the same CI jobs):
+
+      | Image                                    |  Before |  After | Delta |
+      |------------------------------------------|--------:|-------:|------:|
+      | `megalinter-only-groovy_npm_groovy_lint` | 1.07 GB | 695 MB |  -35% |
+      | `megalinter-only-r_lintr`                |  996 MB | 405 MB |  -59% |
+      | `megalinter-only-spell_proselint`        |  813 MB | 284 MB |  -65% |
+      | `megalinter-only-css_stylelint`          |  780 MB | 360 MB |  -54% |
+      | `megalinter-only-spell_cspell`           |  755 MB | 357 MB |  -53% |
+      | `megalinter-only-ruby_rubocop`           |  702 MB | 301 MB |  -57% |
+      | `megalinter-only-perl_perlcritic`        |  696 MB | 293 MB |  -58% |
+      | `megalinter-only-spell_vale`             |  683 MB | 286 MB |  -58% |
+      | `megalinter-only-yaml_yamllint`          |  668 MB | 271 MB |  -59% |
+      | `megalinter-only-bash_shellcheck`        |  660 MB | 263 MB |  -60% |
+      | `megalinter-only-lua_luacheck`           |  652 MB | 252 MB |  -61% |
+      | `megalinter-only-xml_xmllint`            |  645 MB | 246 MB |  -62% |
+
+    - Flavor and main images benefit from the same changes: `megalinter-python` flavor 5.40 GB → 5.10 GB (-6% vs beta), and the main image drops the duplicate OpenJDK 17 (~330 MB) plus deduplicated venv wheels. MegaLinter runtime is unaffected (full-codebase CI job stays in its usual 10-14 min range)
 
 - New linters
+
+  - Add [SALESFORCE_CODE_ANALYZER_FLOW](https://megalinter.io/beta/descriptors/salesforce_code_analyzer_flow/), the Salesforce Code Analyzer v5 Flow Scanner engine that audits Salesforce Flows for security issues
 
 - Disabled linters
 
@@ -24,17 +73,42 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Removed linters
 
+  - **API_SPECTRAL**: crashing with no upstream fix
+  - **JSON_ESLINT_PLUGIN_JSONC**: blocked by [eslint-plugin-jsonc#328](https://github.com/ota-meshi/eslint-plugin-jsonc/issues/328), use `JSON_PRETTIER` or `JSON_JSONLINT` instead
+  - **LUA_SELENE**: blocked by [selene#662](https://github.com/Kampfkarren/selene/issues/662), use `LUA_LUACHECK` instead
+  - **MAKEFILE_CHECKMAKE**: disabled for [security issues](https://github.com/checkmake/checkmake/issues/99)
+  - **MARKDOWN_REMARK_LINT**: blocked by [remark-lint#322](https://github.com/remarkjs/remark-lint/issues/322), use `MARKDOWN_MARKDOWNLINT` instead
+  - **PUPPET_PUPPET_LINT**: blocked by [puppet-lint#251](https://github.com/puppetlabs/puppet-lint/issues/251)
+  - **REPOSITORY_GITLEAKS**: superseded by [betterleaks](https://github.com/betterleaks/betterleaks), use `REPOSITORY_BETTERLEAKS` instead
+  - **REPOSITORY_KICS**: disabled after the [Checkmarx supply chain compromise](https://socket.dev/blog/checkmarx-supply-chain-compromise), use `REPOSITORY_CHECKOV` instead
+  - **SALESFORCE_LIGHTNING_FLOW_SCANNER**: upstream repository archived, use `SALESFORCE_CODE_ANALYZER_FLOW` instead
+  - **SALESFORCE_SFDX_SCANNER_APEX**, **SALESFORCE_SFDX_SCANNER_AURA**, **SALESFORCE_SFDX_SCANNER_LWC**: deprecated by Salesforce and incompatible with Node.js 22+, use the matching `SALESFORCE_CODE_ANALYZER_*` linters instead
+  - **SQL_TSQLLINT**: upstream unmaintained since 2024-09 and shipping unpatched .NET CVEs
+  - **TERRAFORM_TERRASCAN**: upstream repository archived by Tenable and shipping unpatched CVEs, use `REPOSITORY_CHECKOV` instead
+
 - Media
 
 - Linters enhancements
 
 - Fixes
 
+  - Declare `supported_cli_lint_modes` on `ACTION_ZIZMOR`, `BASH_SHFMT` and `GO_REVIVE` (`file`, `list_of_files`): they were falling back to a `file`-only default, so their real `list_of_files` runtime mode was never covered by the generated lint mode tests
+  - Exclude `megalinter-reports/` from `REPOSITORY_SECRETLINT` scanning: its project-mode `**/*` glob could race with reports written by other linters running in parallel (e.g. transient `jscpd-report.html`), crashing with ENOENT
+  - Fix linters using `lint_all_other_linters_files` (e.g. `SPELL_CSPELL`) linting zero files when run in their standalone `megalinter-only-*` Docker image: the single-linter override now falls back to linting all collected files when the descriptor defines no file extensions
+  - Make `test_api_output` resilient to remote server outages: probe several public echo endpoints, run the test with the ones that are up, retry with another server when a post fails, and skip the test when none of them is reachable, as a remote outage is not a MegaLinter issue
+  - Allow `CSS_STYLELINT_COMMAND_REMOVE_ARGUMENTS` to remove `--config-basedir` (which is not added anymore when the user requests its removal or defines its own value in `CSS_STYLELINT_ARGUMENTS`), and stop raising a `ValueError` when an argument listed in `<LINTER>_COMMAND_REMOVE_ARGUMENTS` is not in the command line, fixes [#8552](https://github.com/oxsecurity/megalinter/issues/8552)
+  - Treat zero matching SARIF findings as a valid result without logging the entire report, fixes [#8295](https://github.com/oxsecurity/megalinter/issues/8295)
+  - Remove invalid SARIF fixes with empty `artifactChanges` arrays before report aggregation, fixes [#8474](https://github.com/oxsecurity/megalinter/issues/8474)
+  - Write `REPOSITORY_CHECKOV`'s transient GitHub-config scan directory (`branch_protection_rules.json` and similar) to a hidden `.checkov-github-conf` subfolder of the MegaLinter report folder instead of the repository root, so the artifact stays out of the linted tree (gitignored, excluded from file discovery, and skipped by project-mode linters), extending the earlier ansible-lint race-condition fix (#8092)
   - Make remote configuration loading resilient to transient network failures by adding a request timeout and bounded retries with backoff when fetching `MEGALINTER_CONFIG` and `EXTENDS` files over HTTP (fixes intermittent `config_test` failures caused by `raw.githubusercontent.com` CDN cache lag)
   - Make the .NET-based linters (`CSHARP_CSHARPIER`, `CSHARP_DOTNET_FORMAT`, `CSHARP_ROSLYNATOR`, `VBDOTNET_DOTNET_FORMAT`) CI-safe by disabling .NET telemetry, the first-run experience, and MSBuild node reuse in the image, fixing intermittent "0 files formatted" flakiness caused by shared MSBuild build-server state across parallel runs
   - Disable `TERRAFORM_TERRASCAN` (upstream repo archived by Tenable, unmaintained) and `SQL_TSQLLINT` (no upstream release since 2024-09), as both ship unpatched CVEs with no prospect of a fixed release
   - Fix `SARIF_TO_HUMAN` producing empty linter logs when the bundled `sarif-fmt` binary crashes by building it from source on Alpine and falling back to raw SARIF on conversion failure (#8294)
   - Keep the Docker Pulls badge in `docs/index.md` in sync by having `docker_stats.py` also update the hardcoded badge total in `.automation/build.py`
+  - Fix outdated links in `docs/descriptors/repository_kingfisher.md`
+  - Fix `LINTER_RULES_PATH` not being used to resolve config files for linters using `active_only_if_file_found` (e.g. `REPOSITORY_LS_LINT`, `SPELL_PROSELINT`, `SPELL_VALE`), fixes [#8416](https://github.com/oxsecurity/megalinter/issues/8416)
+  - Honor `EXCLUDED_DIRECTORIES` and `ADDITIONAL_EXCLUDED_DIRECTORIES` in changed-files mode (`VALIDATE_ALL_CODEBASE: false`), so files inside excluded directories are pruned from the `git diff` file list the same way they are during full-codebase validation ([#8360](https://github.com/oxsecurity/megalinter/issues/8360))
+  - Declare `COPYPASTE_JSCPD` as `linux/amd64` only: since jscpd v5 the tool is a Rust binary shipped through per-platform npm packages, and upstream publishes no `linux-arm64-musl` target, so it exits with `Unsupported platform linux/arm64` on the Alpine-based ARM images
 
 - Reporters
 
@@ -42,11 +116,31 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Doc
 
+  - Home page: mention Coding Agents compliance in the welcome phrase, display the supported coding agent icons next to the CI/CD integrations, and add a "Coding Agents compatible" badge to the shields.io badges list
+  - Quick Start: setting up MegaLinter with a coding agent (`npx skills add oxsecurity/megalinter` then _"setup megalinter"_) is now the first suggested option
+  - Coding Agents page: add Gemini CLI, Windsurf, Cline, Roo Code, Kilo Code, Amp, Goose, OpenHands and Qwen Code to the compatible coding agents, and restyle the sub-agents orchestration mermaid diagram with explicit node colors and shapes per category (user, skills, sub-agents, artifacts) so it stays readable with the website theme
+  - megalinter-setup skill: after install or upgrade, suggest either running MegaLinter locally (megalinter-check in local mode) or creating a pull request and then watching its CI results with megalinter-check
+
 - mega-linter-runner
+
+  - Non-interactive installation: `--install` can now run without prompts using `--no-prompt` and the new `--setup-*` options (`--setup-ci`, `--setup-copy-paste`, `--setup-spelling-mistakes`, `--setup-default-branch`, `--setup-validate-all-code-base`, `--setup-ox`) combined with the existing `--flavor`, `--release` and `--fix` flags; pre-existing configuration/workflow files are backed up as `<file>.megalinter-setup.bak` before being overwritten, so customizations can be merged back
+  - New `--linter <LINTER_KEY>` option to run a single linter using its standalone `megalinter-only-<linter_key>` Docker image, with an optional list of files to lint; reports are isolated in `megalinter-reports/<linter_key>` so several standalone runs can execute in parallel
+  - Flavor and version resolution now reads `MEGALINTER_FLAVOR` and `MEGALINTER_VERSION` from `.mega-linter.yml` when `--flavor`/`--release` are not passed on the command line (falling back to `all`/`latest`), and the install generator writes both properties in the generated configuration
+  - `--fix` now respects an `APPLY_FIXES` value (other than `none`) defined in `.mega-linter.yml` instead of overriding it with `all`
+  - `--upgrade` also bumps a pinned `MEGALINTER_VERSION` property of `.mega-linter.yml` to the current major version
+  - Skip `docker pull` when the requested version is a pinned release tag (`vX.Y.Z`, immutable) and the image is already available locally, removing a useless registry round-trip
 
 - Dev
 
+  - Mark the repository's internal Claude Code skills (`.claude/skills/`) as `internal` so `npx skills add oxsecurity/megalinter` only offers the four MegaLinter agent skills from the `skills/` folder
+  - Fix the `/build` contribution skill being accidentally gitignored by the `build/` packaging pattern, so it is now actually versioned
+
 - CI
+  - Speed up PR jobs by handing the built Docker image over to consumer jobs through ghcr.io (`megalinter-dev` per-commit tags, pruned daily) instead of a workflow artifact + `docker load`, for branches of the main repository; forked PRs keep the artifact-based handoff since their GITHUB_TOKEN cannot push packages. Measured on the "Run against all code base" job: image handoff dropped from 8m42s to 2m36s and the whole job from 14m41s to 7m07s
+  - Build only the per-linter Docker images impacted by the changed files of a PR (descriptor edits, per-linter Dockerfiles, single-linter test fixtures); any change to shared code or unrecognized files keeps building the full matrix
+  - Remove duplicate MegaLinter self-lint and mega-linter-runner test runs on PR branches: the `push` trigger is now restricted to main-line branches, the `pull_request` trigger already covers PR commits (~15 duplicated job-minutes saved per PR commit)
+  - Overall, the pytest test-cases suite dropped from 12m46s to 10m47s (with `file` lint mode tests CPU down 70% thanks to the `list_of_files` skip)
+  - TAP reporter golden-file tests move from the 120+ generated per-linter test classes (where most of them skipped) to a dedicated `tap_reporter_test` class running on a curated sample of linters (bash, css, protobuf, cloudformation); stale Super-Linter-era expected files (some of them unreachable by the test suite) have been removed
   - Fix per-linter Docker images being published single-arch. The BETA and RELEASE linter workflows split each linter into independent per-platform jobs that all pushed the same tag (`:beta`, `:v9`, `:vX.Y.Z`, `:latest`), so the last push won and overwrote the other architecture. They now push each platform by digest and a dedicated merge job assembles a proper multi-arch manifest list per linter, restoring linux/amd64 + linux/arm64 support for `megalinter-only-*` images.
 
 - Linter versions upgrades (N)
@@ -84,6 +178,95 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 2.2.4 to **2.2.5** on 2026-07-05
   - [secretlint](https://github.com/secretlint/secretlint) from 11.7.1 to **13.0.2** on 2026-07-05
   - [proselint](https://github.com/amperser/proselint) from 0.14.0 to **0.16.0** on 2026-07-05
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.44.1 to **0.45.6** on 2026-07-12
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.52.1 to **1.53.0** on 2026-07-12
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 5.0.11 to **5.0.12** on 2026-07-12
+  - [djlint](https://djlint.com/) from 1.40.3 to **1.40.4** on 2026-07-12
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.11 to **3.95.13** on 2026-07-12
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.20 to **0.15.21** on 2026-07-12
+  - [ruff](https://github.com/astral-sh/ruff) from 0.15.20 to **0.15.21** on 2026-07-12
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.105.0 to **1.106.0** on 2026-07-12
+  - [semgrep](https://semgrep.dev/) from 1.168.0 to **1.169.0** on 2026-07-12
+  - [rubocop](https://rubocop.org/) from 1.88.1 to **1.88.2** on 2026-07-12
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.96 to **0.1.97** on 2026-07-12
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.15.7 to **1.15.8** on 2026-07-12
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.28 to **0.2.31** on 2026-07-12
+  - [djlint](https://djlint.com/) from 1.40.4 to **1.40.6** on 2026-07-13
+  - [prettier](https://prettier.io/) from 3.9.4 to **3.9.5** on 2026-07-13
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.31 to **0.2.32** on 2026-07-13
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.95.8 to **3.95.9** on 2026-07-13
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.45.6 to **0.45.15** on 2026-07-14
+  - [eslint](https://eslint.org) from 10.6.0 to **10.7.0** on 2026-07-14
+  - [djlint](https://djlint.com/) from 1.40.6 to **1.40.7** on 2026-07-18
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.32 to **0.2.34** on 2026-07-18
+  - [grype](https://github.com/anchore/grype) from 0.115.0 to **0.116.0** on 2026-07-18
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.106.0 to **1.108.0** on 2026-07-18
+  - [semgrep](https://semgrep.dev/) from 1.169.0 to **1.170.0** on 2026-07-18
+  - [syft](https://github.com/anchore/syft) from 1.46.0 to **1.48.0** on 2026-07-18
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.34 to **0.2.36** on 2026-07-19
+  - [checkov](https://www.checkov.io/) from 3.3.6 to **3.3.8** on 2026-07-19
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.49.0 to **0.49.1** on 2026-07-19
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.13 to **3.95.15** on 2026-07-19
+  - [codespell](https://github.com/codespell-project/codespell) from 2.4.2 to **2.4.3** on 2026-07-19
+  - [terragrunt](https://docs.terragrunt.com/reference/cli/commands/hcl/fmt/) from 1.1.0 to **1.1.1** on 2026-07-19
+  - [djlint](https://djlint.com/) from 1.40.7 to **1.40.10** on 2026-07-19
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.21 to **0.15.22** on 2026-07-19
+  - [ruff](https://github.com/astral-sh/ruff) from 0.15.21 to **0.15.22** on 2026-07-19
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.36 to **0.2.37** on 2026-07-19
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.63.1 to **0.64.0** on 2026-07-19
+  - [djlint](https://djlint.com/) from 1.40.10 to **1.41.0** on 2026-07-20
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.53.0 to **1.53.1** on 2026-07-21
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 10.0.301 to **10.0.302** on 2026-07-21
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.3 to **7.6.4** on 2026-07-21
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.3 to **7.6.4** on 2026-07-21
+  - [syft](https://github.com/anchore/syft) from 1.48.0 to **1.49.0** on 2026-07-21
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.53.1 to **1.53.2** on 2026-07-25
+  - [stylelint](https://stylelint.io) from 17.14.0 to **17.14.1** on 2026-07-25
+  - [djlint](https://djlint.com/) from 1.41.0 to **1.42.3** on 2026-07-25
+  - [prettier](https://prettier.io/) from 3.9.5 to **3.9.6** on 2026-07-25
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.37 to **0.2.43** on 2026-07-25
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.15 to **3.95.17** on 2026-07-25
+  - [betterleaks](https://github.com/betterleaks/betterleaks) from 1.6.1 to **1.7.0** on 2026-07-25
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.108.0 to **1.109.0** on 2026-07-25
+  - [secretlint](https://github.com/secretlint/secretlint) from 13.0.2 to **13.0.4** on 2026-07-25
+  - [semgrep](https://semgrep.dev/) from 1.170.0 to **1.170.1** on 2026-07-25
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.95.9 to **3.96.0** on 2026-07-25
+  - [vale](https://vale.sh/) from 3.15.1 to **3.15.2** on 2026-07-25
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.15.22 to **0.16.0** on 2026-07-26
+  - [ruff](https://github.com/astral-sh/ruff) from 0.15.22 to **0.16.0** on 2026-07-26
+  - [semgrep](https://semgrep.dev/) from 1.170.1 to **1.171.0** on 2026-07-26
+  - [phpstan](https://phpstan.org/) from 2.2.5 to **2.2.6** on 2026-07-27
+  - [djlint](https://djlint.com/) from 1.42.3 to **1.43.0** on 2026-07-28
+  - [betterleaks](https://github.com/betterleaks/betterleaks) from 1.7.0 to **1.7.1** on 2026-07-28
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.45.15 to **0.46.1** on 2026-08-02
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.53.2 to **1.53.3** on 2026-08-02
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 5.0.12 to **5.0.14** on 2026-08-02
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.8.0 to **3.9.0** on 2026-08-02
+  - [djlint](https://djlint.com/) from 1.43.0 to **1.43.2** on 2026-08-02
+  - [eslint](https://eslint.org) from 10.7.0 to **10.8.0** on 2026-08-02
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.43 to **0.2.48** on 2026-08-02
+  - [phpstan](https://phpstan.org/) from 2.2.6 to **2.2.7** on 2026-08-02
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.16.0 to **0.16.1** on 2026-08-02
+  - [ruff](https://github.com/astral-sh/ruff) from 0.16.0 to **0.16.1** on 2026-08-02
+  - [betterleaks](https://github.com/betterleaks/betterleaks) from 1.7.1 to **1.7.3** on 2026-08-02
+  - [grype](https://github.com/anchore/grype) from 0.116.0 to **0.116.1** on 2026-08-02
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.109.0 to **1.110.0** on 2026-08-02
+  - [semgrep](https://semgrep.dev/) from 1.171.0 to **1.172.0** on 2026-08-02
+  - [syft](https://github.com/anchore/syft) from 1.49.0 to **1.50.0** on 2026-08-02
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 8.3.2 to **8.5.0** on 2026-08-02
+  - [rstcheck](https://github.com/myint/rstcheck) from 6.2.5 to **6.3.0** on 2026-08-02
+  - [code-analyzer-apex](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.14.0 to **5.15.0** on 2026-08-02
+  - [code-analyzer-aura](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.14.0 to **5.15.0** on 2026-08-02
+  - [code-analyzer-flow](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/engine-flow.html) from 5.14.0 to **5.15.0** on 2026-08-02
+  - [code-analyzer-lwc](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.14.0 to **5.15.0** on 2026-08-02
+  - [snakemake](https://snakemake.github.io/) from 9.23.1 to **9.24.0** on 2026-08-02
+  - [vale](https://vale.sh/) from 3.15.2 to **3.17.0** on 2026-08-02
+  - [terragrunt](https://docs.terragrunt.com/reference/cli/commands/hcl/fmt/) from 1.1.1 to **1.1.2** on 2026-08-02
+  - [hadolint](https://github.com/hadolint/hadolint) from 2.14.0 to **2.15.1** on 2026-08-02
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.17 to **3.95.18** on 2026-08-02
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.48 to **0.2.49** on 2026-08-03
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.72.0 to **0.73.0** on 2026-08-03
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.72.0 to **0.73.0** on 2026-08-03
 <!-- linter-versions-end -->
 
 ## [v9.6.0] - 2026-06-28
@@ -92,7 +275,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **Linters can no longer be run via a sibling Docker image at runtime.** The `cli_docker_image`, `cli_docker_image_version` and `cli_docker_args` descriptor properties (and the matching `<LINTER>_DOCKER_IMAGE_VERSION` variable) have been removed, and MegaLinter no longer mounts `/var/run/docker.sock` (in `mega-linter-runner`, the GitHub Action `action.yml` files, and the Docker daemon previously bundled in flavor images). This closes the host-privilege escalation surface that the mounted Docker socket exposed. The only linter that used this mechanism was `SWIFT_SWIFTLINT`, now installed natively (see below). (#8216)
   - **`SWIFT_SWIFTLINT` is now installed from the static `swiftlint-static` binary** instead of running the `ghcr.io/realm/swiftlint` container. It runs natively on the Alpine image with no Docker socket required. SourceKit-dependent rules are disabled in this build and reported to the console when encountered; pure-syntax style rules are unaffected. (#8216)
   - **`@eslint/eslintrc` shim removed** from JavaScript/TypeScript/JSX/TSX Docker images (was only needed for legacy `FlatCompat`); MegaLinter's bundled test fixtures use native flat config. (#7869)
-  - **ESLint linters now force migration off `.eslintrc.*`**: `JAVASCRIPT_ES`, `TYPESCRIPT_ES`, `JSX_ESLINT`, `TSX_ESLINT` activate when they find any `eslint.config.*` *or* any deprecated `.eslintrc.*` / `package.json#eslintConfig`. In the legacy case the linter does not call ESLint at all — it emits a single hard failure with a migration message so the build stays red until the config is migrated to flat config. See the [ESLint flat-config migration guide](https://eslint.org/docs/latest/use/configure/migration-guide). To opt out, set `DISABLE_LINTERS` or `DISABLE` to exclude the affected linter/descriptor. (#7869)
+  - **ESLint linters now force migration off `.eslintrc.*`**: `JAVASCRIPT_ES`, `TYPESCRIPT_ES`, `JSX_ESLINT`, `TSX_ESLINT` activate when they find any `eslint.config.*` _or_ any deprecated `.eslintrc.*` / `package.json#eslintConfig`. In the legacy case the linter does not call ESLint at all — it emits a single hard failure with a migration message so the build stays red until the config is migrated to flat config. See the [ESLint flat-config migration guide](https://eslint.org/docs/latest/use/configure/migration-guide). To opt out, set `DISABLE_LINTERS` or `DISABLE` to exclude the affected linter/descriptor. (#7869)
   - **`JSON_ESLINT_PLUGIN_JSONC` removed**: upstream bug [ota-meshi/eslint-plugin-jsonc#328](https://github.com/ota-meshi/eslint-plugin-jsonc/issues/328) blocks ESLint v10 compatibility and will not be fixed. Use `JSON_JSONLINT`, `JSON_PRETTIER`, or `JSON_V8R` for JSON validation instead. (#7869)
 
 - Core
@@ -3588,7 +3771,7 @@ To upgrade to MegaLinter v7, run `npx mega-linter-runner@latest --upgrade` , com
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.8 to **1.2.9**
   - [tflint](https://github.com/terraform-linters/tflint) from 0.39.3 to **0.40.0**
 
-*Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker image sizes were not optimized enough.*
+_Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker image sizes were not optimized enough._
 
 ## [v6.8.0] - 2022-09-04
 
@@ -4977,7 +5160,7 @@ To upgrade to MegaLinter v7, run `npx mega-linter-runner@latest --upgrade` , com
 - Add openssh apk for git repos using ssh
 - Change default yamllint config file name from `.yaml-lint.yml` to `.yamllint.yml`
 - Allow to disable console reporter using `CONSOLE_REPORTER: false`
-- Override `cli_lint_mode` of linters using configuration : *LINTER*\_CLI_LINT_MODE
+- Override `cli_lint_mode` of linters using configuration : _LINTER_\_CLI_LINT_MODE
 - Performances
   - Use list_of_files linting mode for yamllint , black and prettier
 - Fixes

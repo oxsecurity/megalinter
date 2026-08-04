@@ -16,7 +16,8 @@ file_contains_regex:
   - "tekton"
 linters:
   # KUBECONFORM
-  - linter_name: kubeconform
+  - class: KubeconformLinter
+    linter_name: kubeconform
     name: KUBERNETES_KUBECONFORM
     linter_repo: https://github.com/yannh/kubeconform
     linter_url: https://github.com/yannh/kubeconform
@@ -40,11 +41,17 @@ linters:
       - **CI/CD Ready**: Optimized for integration with GitHub Actions, GitLab CI, and other continuous integration platforms
     cli_version_arg_name: -v
     cli_help_arg_name: -h
+    cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_lint_extra_args:
       - -summary
       - -cache
       - /tmp/
-    cli_lint_mode: list_of_files
+    cli_lint_mode_project_extra_args_after:
+      - .
     # Count errors when either file is invalid, or an error occurred (e.g. couldn't find schema for this object)
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: "(?:Invalid|Errors): ([0-9]+)"
@@ -102,6 +109,8 @@ linters:
       - Chart.yml
       - Chart.yaml
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
     cli_help_arg_name: help
     cli_version_arg_name: version
     cli_lint_extra_args:
@@ -178,6 +187,8 @@ linters:
       - Chart.yml
       - Chart.yaml
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
     cli_help_arg_name: help
     cli_version_arg_name: version
     cli_lint_extra_args:
@@ -185,8 +196,8 @@ linters:
       - --verbose
       - "--severity-threshold"
       - high
-    cli_lint_extra_args_after:
-      - "."
+    cli_lint_mode_project_extra_args_after:
+      - .
     cli_sarif_args: ["--format", "sarif", "--output", "{{SARIF_OUTPUT_FILE}}"]
     examples:
       - "kubescape scan ."

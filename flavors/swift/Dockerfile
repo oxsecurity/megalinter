@@ -22,24 +22,24 @@ ARG BASH_SHELLCHECK_VERSION=v0.11.0
 ARG CARGO_ZIZMOR_VERSION=1.25.0
 # renovate: datasource=crate depName=shellcheck-sarif
 ARG CARGO_SHELLCHECK_SARIF_VERSION=0.8.0
+# renovate: datasource=docker depName=koalaman/shellcheck-alpine
+ARG BASH_SHELLCHECK_VERSION=v0.11.0
 # renovate: datasource=docker depName=mvdan/shfmt
 ARG BASH_SHFMT_VERSION=v3.13.1-alpine
 # renovate: datasource=docker depName=hadolint/hadolint
-ARG DOCKERFILE_HADOLINT_VERSION=v2.14.0-alpine
+ARG DOCKERFILE_HADOLINT_VERSION=v2.15.1-alpine
 # renovate: datasource=docker depName=mstruebing/editorconfig-checker
-ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.8.0
+ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.9.0
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.8.0-alpine
 # renovate: datasource=docker depName=yoheimuta/protolint
 ARG PROTOBUF_PROTOLINT_VERSION=0.56.4
-# renovate: datasource=docker depName=zricethezav/gitleaks
-ARG REPOSITORY_GITLEAKS_VERSION=v8.30.1
 # renovate: datasource=docker depName=ghcr.io/betterleaks/betterleaks
-ARG REPOSITORY_BETTERLEAKS_VERSION=v1.6.1
+ARG REPOSITORY_BETTERLEAKS_VERSION=v1.7.3
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.95.8
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.96.0
 # renovate: datasource=docker depName=jdkato/vale
-ARG SPELL_VALE_VERSION=v3.15.1
+ARG SPELL_VALE_VERSION=v3.17.0
 # renovate: datasource=docker depName=lycheeverse/lychee
 ARG SPELL_LYCHEE_VERSION=0.24.2-alpine
 #ARGTOP__END
@@ -78,7 +78,6 @@ FROM hadolint/hadolint:${DOCKERFILE_HADOLINT_VERSION} AS hadolint
 FROM mstruebing/editorconfig-checker:${EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION} AS editorconfig-checker
 FROM ghcr.io/yannh/kubeconform:${KUBERNETES_KUBECONFORM_VERSION} AS kubeconform
 FROM yoheimuta/protolint:${PROTOBUF_PROTOLINT_VERSION} AS protolint
-FROM zricethezav/gitleaks:${REPOSITORY_GITLEAKS_VERSION} AS gitleaks
 FROM ghcr.io/betterleaks/betterleaks:${REPOSITORY_BETTERLEAKS_VERSION} AS betterleaks
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
 FROM jdkato/vale:${SPELL_VALE_VERSION} AS vale
@@ -88,22 +87,24 @@ FROM lycheeverse/lychee:${SPELL_LYCHEE_VERSION} AS lychee
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.11.26 AS uv
+FROM ghcr.io/astral-sh/uv:0.12.1 AS uv
 FROM python:3.14-alpine3.24 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
 # Install dependencies
+#UV_SYNC__START
 RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-    uv sync --frozen --no-install-project
+    uv sync --frozen --no-install-project --extra llm
 # Copy the project into the image
 COPY . .
 # Sync the project
 RUN --mount=type=cache,target=/root/.cache/uv \
-    uv sync --frozen
+    uv sync --frozen --extra llm
+#UV_SYNC__END
 
 ##################
 # Get base image #
@@ -121,17 +122,15 @@ ARG TARGETARCH
 # renovate: datasource=pypi depName=ansible-lint
 ARG PIP_ANSIBLE_LINT_VERSION=26.6.0
 # renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=5.0.11
+ARG NPM_JSCPD_VERSION=5.0.14
 # renovate: datasource=npm depName=stylelint
-ARG NPM_STYLELINT_VERSION=17.14.0
+ARG NPM_STYLELINT_VERSION=17.14.1
 # renovate: datasource=npm depName=stylelint-config-standard
 ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=40.0.0
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
 ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=13.0.0
 # renovate: datasource=npm depName=stylelint-scss
 ARG NPM_STYLELINT_SCSS_VERSION=7.2.0
-# renovate: datasource=pypi depName=cpplint
-ARG PIP_CPPLINT_VERSION=2.0.2
 # renovate: datasource=github-releases depName=dotenv-linter/dotenv-linter extractVersion=^v(?<version>.+)$
 ARG DOTENV_LINTER_VERSION=4.0.0
 # renovate: datasource=npm depName=graphql
@@ -141,7 +140,7 @@ ARG NPM_GRAPHQL_SCHEMA_LINTER_VERSION=3.0.1
 # renovate: datasource=npm depName=npm-groovy-lint
 ARG NPM_GROOVY_LINT_VERSION=18.0.0
 # renovate: datasource=pypi depName=djlint
-ARG PIP_DJLINT_VERSION=1.40.3
+ARG PIP_DJLINT_VERSION=1.43.2
 # renovate: datasource=npm depName=htmlhint
 ARG NPM_HTMLHINT_VERSION=1.9.2
 # renovate: datasource=npm depName=@prantlf/jsonlint
@@ -149,7 +148,7 @@ ARG NPM_PRANTLF_JSONLINT_VERSION=17.0.1
 # renovate: datasource=npm depName=v8r
 ARG NPM_V8R_VERSION=6.1.0
 # renovate: datasource=npm depName=prettier
-ARG NPM_PRETTIER_VERSION=3.9.4
+ARG NPM_PRETTIER_VERSION=3.9.6
 # renovate: datasource=github-tags depName=pinterest/ktlint
 ARG KTLINT_VERSION=1.8.0
 
@@ -159,35 +158,35 @@ ARG DETEKT_VERSION=1.23.8
 # renovate: datasource=github-releases depName=kubescape/kubescape extractVersion=^v(?<version>.+)$
 ARG KUBERNETES_KUBESCAPE_VERSION=4.0.9
 # renovate: datasource=npm depName=markdownlint-cli
-ARG NPM_MARKDOWNLINT_CLI_VERSION=0.49.0
+ARG NPM_MARKDOWNLINT_CLI_VERSION=0.49.1
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.2.28
+ARG PIP_RUMDL_VERSION=0.2.49
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.3.6
+ARG PIP_CHECKOV_VERSION=3.3.8
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.115.0
+ARG REPOSITORY_GRYPE_VERSION=0.116.1
 # renovate: datasource=github-releases depName=loeffel-io/ls-lint extractVersion=^v(?<version>.+)$
 ARG REPOSITORY_LS_LINT_VERSION=2.3.1
 # renovate: datasource=repology depName=alpine_3_24/osv-scanner versioning=loose
 ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.8-r1
 # renovate: datasource=npm depName=secretlint
-ARG NPM_SECRETLINT_VERSION=13.0.2
+ARG NPM_SECRETLINT_VERSION=13.0.4
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
-ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=13.0.2
+ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=13.0.4
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
-ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=13.0.2
+ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=13.0.4
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.168.0
+ARG PIP_SEMGREP_VERSION=1.172.0
 # renovate: datasource=github-tags depName=anchore/syft
-ARG REPOSITORY_SYFT_VERSION=1.46.0
+ARG REPOSITORY_SYFT_VERSION=1.50.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_VERSION=0.72.0
+ARG REPOSITORY_TRIVY_VERSION=0.73.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_SBOM_VERSION=0.72.0
+ARG REPOSITORY_TRIVY_SBOM_VERSION=0.73.0
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.23.1
+ARG PIP_SNAKEMAKE_VERSION=9.24.0
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=2.0.3
 # renovate: datasource=npm depName=cspell
@@ -195,7 +194,7 @@ ARG NPM_CSPELL_VERSION=10.0.1
 # renovate: datasource=pypi depName=proselint
 ARG PIP_PROSELINT_VERSION=0.16.0
 # renovate: datasource=pypi depName=codespell
-ARG PIP_CODESPELL_VERSION=2.4.2
+ARG PIP_CODESPELL_VERSION=2.4.3
 # renovate: datasource=pypi depName=sqlfluff
 ARG PIP_SQLFLUFF_VERSION=4.2.2
 # renovate: datasource=github-releases depName=realm/SwiftLint
@@ -205,9 +204,9 @@ ARG NPM_IBM_TEKTON_LINT_VERSION=1.2.0
 # renovate: datasource=pypi depName=yamllint
 ARG PIP_YAMLLINT_VERSION=1.38.0
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=26.1.2
+ARG PIP_PIP_VERSION=26.2
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=21.5.1
+ARG PIP_VIRTUALENV_VERSION=21.7.1
 
 ARG CARGO_SARIF_FMT_VERSION
 ARG ACTION_ACTIONLINT_VERSION
@@ -219,7 +218,6 @@ ARG DOCKERFILE_HADOLINT_VERSION
 ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION
 ARG KUBERNETES_KUBECONFORM_VERSION
 ARG PROTOBUF_PROTOLINT_VERSION
-ARG REPOSITORY_GITLEAKS_VERSION
 ARG REPOSITORY_BETTERLEAKS_VERSION
 ARG REPOSITORY_TRUFFLEHOG_VERSION
 ARG SPELL_VALE_VERSION
@@ -242,26 +240,20 @@ RUN apk -U --no-cache upgrade \
                 bash \
                 ca-certificates \
                 curl \
-                gcc \
                 gcompat \
                 git \
                 git-lfs \
-                libffi-dev \
-                make \
-                musl-dev \
+                libgcc \
+                libstdc++ \
                 openssh \
                 su-exec \
                 openjdk21 \
                 py3-pyflakes \
-                openjdk17 \
                 helm \
-                build-base \
-                re2-dev \
-                py3-pybind11-dev \
+                re2 \
                 unzip \
-                libxml2-dev \
+                libxml2 \
                 libxml2-utils \
-                libgcc \
                 npm \
                 nodejs-current \
                 yarn \
@@ -308,7 +300,6 @@ COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 COPY --link --from=kubeconform /kubeconform /usr/bin/
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
-COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 COPY --link --from=betterleaks /usr/bin/betterleaks /usr/bin/
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 COPY --link --from=vale /bin/vale /bin/vale
@@ -332,58 +323,57 @@ COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
 #############################################################################################
 
 #PIPVENV__START
-RUN uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/ansible-lint" \
-    && VIRTUAL_ENV="/venvs/ansible-lint" uv pip install --no-cache ansible-lint==${PIP_ANSIBLE_LINT_VERSION} \
-    && VIRTUAL_ENV="/venvs/ansible-lint" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+RUN apk add --no-cache --virtual .ml-build-deps gcc libffi-dev make musl-dev ruby-dev build-base re2-dev py3-pybind11-dev && \
+    export UV_LINK_MODE=hardlink \
+    && uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
+    && uv venv --seed --no-project --no-managed-python "/venvs/ansible-lint" \
+    && VIRTUAL_ENV="/venvs/ansible-lint" uv pip install ansible-lint==${PIP_ANSIBLE_LINT_VERSION} \
+    && VIRTUAL_ENV="/venvs/ansible-lint" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/ansible-lint" rm -rf /venvs/ansible-lint/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/stylelint" \
-    && VIRTUAL_ENV="/venvs/stylelint" uv pip install --no-cache cpplint==${PIP_CPPLINT_VERSION} \
-    && VIRTUAL_ENV="/venvs/stylelint" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
-    && VIRTUAL_ENV="/venvs/stylelint" rm -rf /venvs/stylelint/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/djlint" \
-    && VIRTUAL_ENV="/venvs/djlint" uv pip install --no-cache djlint==${PIP_DJLINT_VERSION} \
-    && VIRTUAL_ENV="/venvs/djlint" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/djlint" \
+    && VIRTUAL_ENV="/venvs/djlint" uv pip install djlint==${PIP_DJLINT_VERSION} \
+    && VIRTUAL_ENV="/venvs/djlint" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/djlint" rm -rf /venvs/djlint/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/rumdl" \
-    && VIRTUAL_ENV="/venvs/rumdl" uv pip install --no-cache rumdl==${PIP_RUMDL_VERSION} \
-    && VIRTUAL_ENV="/venvs/rumdl" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/rumdl" \
+    && VIRTUAL_ENV="/venvs/rumdl" uv pip install rumdl==${PIP_RUMDL_VERSION} \
+    && VIRTUAL_ENV="/venvs/rumdl" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/rumdl" rm -rf /venvs/rumdl/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/checkov" \
-    && VIRTUAL_ENV="/venvs/checkov" uv pip install --no-cache checkov==${PIP_CHECKOV_VERSION} \
-    && VIRTUAL_ENV="/venvs/checkov" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/checkov" \
+    && VIRTUAL_ENV="/venvs/checkov" uv pip install checkov==${PIP_CHECKOV_VERSION} \
+    && VIRTUAL_ENV="/venvs/checkov" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/checkov" rm -rf /venvs/checkov/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/semgrep" \
-    && VIRTUAL_ENV="/venvs/semgrep" uv pip install --no-cache semgrep==${PIP_SEMGREP_VERSION} \
-    && VIRTUAL_ENV="/venvs/semgrep" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/semgrep" \
+    && VIRTUAL_ENV="/venvs/semgrep" uv pip install semgrep==${PIP_SEMGREP_VERSION} \
+    && VIRTUAL_ENV="/venvs/semgrep" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/semgrep" rm -rf /venvs/semgrep/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/snakemake" \
-    && VIRTUAL_ENV="/venvs/snakemake" uv pip install --no-cache snakemake==${PIP_SNAKEMAKE_VERSION} \
-    && VIRTUAL_ENV="/venvs/snakemake" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/snakemake" \
+    && VIRTUAL_ENV="/venvs/snakemake" uv pip install snakemake==${PIP_SNAKEMAKE_VERSION} \
+    && VIRTUAL_ENV="/venvs/snakemake" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/snakemake" rm -rf /venvs/snakemake/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/snakefmt" \
-    && VIRTUAL_ENV="/venvs/snakefmt" uv pip install --no-cache snakefmt==${PIP_SNAKEFMT_VERSION} \
-    && VIRTUAL_ENV="/venvs/snakefmt" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/snakefmt" \
+    && VIRTUAL_ENV="/venvs/snakefmt" uv pip install snakefmt==${PIP_SNAKEFMT_VERSION} \
+    && VIRTUAL_ENV="/venvs/snakefmt" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/snakefmt" rm -rf /venvs/snakefmt/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/proselint" \
-    && VIRTUAL_ENV="/venvs/proselint" uv pip install --no-cache proselint==${PIP_PROSELINT_VERSION} \
-    && VIRTUAL_ENV="/venvs/proselint" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/proselint" \
+    && VIRTUAL_ENV="/venvs/proselint" uv pip install proselint==${PIP_PROSELINT_VERSION} \
+    && VIRTUAL_ENV="/venvs/proselint" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/proselint" rm -rf /venvs/proselint/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/codespell" \
-    && VIRTUAL_ENV="/venvs/codespell" uv pip install --no-cache codespell==${PIP_CODESPELL_VERSION} \
-    && VIRTUAL_ENV="/venvs/codespell" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/codespell" \
+    && VIRTUAL_ENV="/venvs/codespell" uv pip install codespell==${PIP_CODESPELL_VERSION} \
+    && VIRTUAL_ENV="/venvs/codespell" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/codespell" rm -rf /venvs/codespell/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/sqlfluff" \
-    && VIRTUAL_ENV="/venvs/sqlfluff" uv pip install --no-cache sqlfluff==${PIP_SQLFLUFF_VERSION} \
-    && VIRTUAL_ENV="/venvs/sqlfluff" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/sqlfluff" \
+    && VIRTUAL_ENV="/venvs/sqlfluff" uv pip install sqlfluff==${PIP_SQLFLUFF_VERSION} \
+    && VIRTUAL_ENV="/venvs/sqlfluff" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/sqlfluff" rm -rf /venvs/sqlfluff/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/yamllint" \
-    && VIRTUAL_ENV="/venvs/yamllint" uv pip install --no-cache yamllint==${PIP_YAMLLINT_VERSION} \
-    && VIRTUAL_ENV="/venvs/yamllint" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && uv venv --seed --no-project --no-managed-python "/venvs/yamllint" \
+    && VIRTUAL_ENV="/venvs/yamllint" uv pip install yamllint==${PIP_YAMLLINT_VERSION} \
+    && VIRTUAL_ENV="/venvs/yamllint" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/yamllint" rm -rf /venvs/yamllint/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
     && find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
-    && rm -rf /root/.cache
-ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/stylelint/bin:/venvs/djlint/bin:/venvs/rumdl/bin:/venvs/checkov/bin:/venvs/semgrep/bin:/venvs/snakemake/bin:/venvs/snakefmt/bin:/venvs/proselint/bin:/venvs/codespell/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
+    && rm -rf /root/.cache \
+    && apk del .ml-build-deps
+ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/djlint/bin:/venvs/rumdl/bin:/venvs/checkov/bin:/venvs/semgrep/bin:/venvs/snakemake/bin:/venvs/snakefmt/bin:/venvs/proselint/bin:/venvs/codespell/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
 #PIPVENV__END
 
 ############################
@@ -422,7 +412,10 @@ RUN npm config set prefix /usr/local \
     && echo "Changing owner of node_modules files…" \
     && chown -R "$(id -u)":"$(id -g)" node_modules # fix for https://github.com/npm/cli/issues/5900 \
     && echo "Removing extra node_module files…" \
-    && find . \( -not -path "/proc" \) -and \( -type f \( -iname "*.d.ts" -o -iname "*.map" -o -iname "*.npmignore" -o -iname "*.travis.yml" -o -iname "CHANGELOG.md" -o -iname "README.md" -o -iname ".package-lock.json" -o -iname "package-lock.json" \) -o -type d -name /root/.npm/_cacache \) -delete
+    && find . \( -not -path "/proc" \) -and \( -type f \( -iname "*.d.ts" -o -iname "*.map" -o -iname "*.npmignore" -o -iname "*.travis.yml" -o -iname "*.md" -o -iname "*.markdown" -o -iname ".package-lock.json" -o -iname "package-lock.json" \) \) -delete \
+    && echo "Removing test and doc directories from node_modules…" \
+    && find ./node_modules -type d \( -iname "__tests__" -o -iname "test" -o -iname "tests" -o -iname "docs" -o -iname ".github" \) -prune -exec rm -rf {} + \
+    && rm -rf /root/.npm
 WORKDIR /
 
 #NPM__END
@@ -469,17 +462,20 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
     esac; \
     curl --retry 5 --retry-delay 5 -fsSL \
       "https://github.com/dotenv-linter/dotenv-linter/releases/download/v${DOTENV_LINTER_VERSION}/dotenv-linter-alpine-${ARCH}.tar.gz" \
-      | tar -xz -C /usr/local/bin
+      | tar -xz -C /usr/local/bin \
 # graphql-schema-linter installation
 # npm-groovy-lint installation
-ENV JAVA_HOME_17=/usr/lib/jvm/java-17-openjdk
+# Next line commented because already managed by another linter
+# ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
+# Next line commented because already managed by another linter
+# ENV PATH="$JAVA_HOME/bin:${PATH}"
 # djlint installation
 # htmlhint installation
 # jsonlint installation
 # v8r installation
 # prettier installation
 # ktlint installation
-RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/download/${KTLINT_VERSION}/ktlint && \
+    && curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/download/${KTLINT_VERSION}/ktlint && \
     chmod a+x ktlint && \
     mv "ktlint" /usr/bin/ \
 # detekt installation
@@ -508,8 +504,6 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 # protolint installation
 # Managed with COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 # checkov installation
-# gitleaks installation
-# Managed with COPY --link --from=gitleaks /usr/bin/gitleaks /usr/bin/
 # betterleaks installation
 # Managed with COPY --link --from=betterleaks /usr/bin/betterleaks /usr/bin/
 # grype installation
@@ -526,11 +520,18 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
     chmod +x /usr/bin/ls-lint \
 # osv-scanner installation
     && apk add --no-cache \
-    osv-scanner=${REPOSITORY_OSV_SCANNER_VERSION} \
+    osv-scanner=${REPOSITORY_OSV_SCANNER_VERSION}
 # secretlint installation
 # semgrep installation
+# Wrap semgrep so its OCaml 5 runtime does not abort with
+# "Failed to allocate signal stack for domain 0", which happens when the
+# stack rlimit is unlimited (the case on some CI runners). Cap it to a
+# finite value only when unlimited, leaving an already-bounded limit untouched.
+RUN mv /venvs/semgrep/bin/semgrep /venvs/semgrep/bin/semgrep-bin \
+    && printf '#!/bin/sh\ncase "$(ulimit -s)" in unlimited) ulimit -s 65536 ;; esac\nexec /venvs/semgrep/bin/semgrep-bin "$@"\n' > /venvs/semgrep/bin/semgrep \
+    && chmod +x /venvs/semgrep/bin/semgrep
 # syft installation
-    && curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOSITORY_SYFT_VERSION}/install.sh | sh -s -- -b /usr/local/bin \
+RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOSITORY_SYFT_VERSION}/install.sh | sh -s -- -b /usr/local/bin \
 # trivy installation
     && wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_VERSION}" \
     && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress) \
@@ -571,14 +572,19 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 ################################
 COPY --from=build-ml-core pyproject.toml README.md ./
 COPY --from=build-ml-core megalinter /megalinter/
+#PIP_PROJECT__START
 RUN --mount=type=cache,target=/root/.cache/uv,from=build-ml-core \
     --mount=from=uv,source=/uv,target=/bin/uv \
-    uv pip install --system -e .
+    uv pip install --system -e ".[llm]"
+#PIP_PROJECT__END
 
 #######################################
 # Copy scripts and rules to container #
 #######################################
 COPY megalinter/descriptors /megalinter-descriptors
+# Linter versions collected at build time, so runtime does not need to spawn
+# one "--version" process per linter (see VERSION_GET_AT_RUNTIME variable)
+COPY .automation/generated/linter-versions.json /megalinter-descriptors/linter-versions.json
 COPY TEMPLATES /action/lib/.automation
 
 # Copy server scripts

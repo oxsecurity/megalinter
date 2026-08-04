@@ -24,13 +24,14 @@
 ##################
 # Build wheel for megalinter python package
 ##################
-FROM ghcr.io/astral-sh/uv:0.11.26 AS uv
+FROM ghcr.io/astral-sh/uv:0.12.1 AS uv
 FROM python:3.14-alpine3.24 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
 # Install dependencies
+#UV_SYNC__START
 RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
@@ -40,6 +41,7 @@ COPY . .
 # Sync the project
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --frozen
+#UV_SYNC__END
 
 ##################
 # Get base image #
@@ -55,11 +57,11 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.15.20
+ARG PIP_RUFF_VERSION=0.16.1
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=26.1.2
+ARG PIP_PIP_VERSION=26.2
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=21.5.1
+ARG PIP_VIRTUALENV_VERSION=21.7.1
 #ARG__END
 
 ####################
@@ -78,13 +80,11 @@ RUN apk -U --no-cache upgrade \
                 bash \
                 ca-certificates \
                 curl \
-                gcc \
                 gcompat \
                 git \
                 git-lfs \
-                libffi-dev \
-                make \
-                musl-dev \
+                libgcc \
+                libstdc++ \
                 openssh \
                 su-exec \
     && git config --global core.autocrlf true
@@ -137,13 +137,16 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #############################################################################################
 
 #PIPVENV__START
-RUN uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
-    && uv venv --seed --no-project --no-managed-python --no-cache "/venvs/ruff" \
-    && VIRTUAL_ENV="/venvs/ruff" uv pip install --no-cache ruff==${PIP_RUFF_VERSION} \
-    && VIRTUAL_ENV="/venvs/ruff" uv pip install --no-cache --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+RUN apk add --no-cache --virtual .ml-build-deps gcc libffi-dev make musl-dev ruby-dev && \
+    export UV_LINK_MODE=hardlink \
+    && uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
+    && uv venv --seed --no-project --no-managed-python "/venvs/ruff" \
+    && VIRTUAL_ENV="/venvs/ruff" uv pip install ruff==${PIP_RUFF_VERSION} \
+    && VIRTUAL_ENV="/venvs/ruff" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/ruff" rm -rf /venvs/ruff/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
     && find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
-    && rm -rf /root/.cache
+    && rm -rf /root/.cache \
+    && apk del .ml-build-deps
 ENV PATH="${PATH}":/venvs/ruff/bin
 #PIPVENV__END
 
@@ -175,14 +178,19 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 ################################
 COPY --from=build-ml-core pyproject.toml README.md ./
 COPY --from=build-ml-core megalinter /megalinter/
+#PIP_PROJECT__START
 RUN --mount=type=cache,target=/root/.cache/uv,from=build-ml-core \
     --mount=from=uv,source=/uv,target=/bin/uv \
     uv pip install --system -e .
+#PIP_PROJECT__END
 
 #######################################
 # Copy scripts and rules to container #
 #######################################
 COPY megalinter/descriptors /megalinter-descriptors
+# Linter versions collected at build time, so runtime does not need to spawn
+# one "--version" process per linter (see VERSION_GET_AT_RUNTIME variable)
+COPY .automation/generated/linter-versions.json /megalinter-descriptors/linter-versions.json
 COPY TEMPLATES /action/lib/.automation
 
 # Copy server scripts
@@ -257,7 +265,7 @@ RUN find /usr/bin/megalinter-sh/ -type f -iname "*.sh" -exec chmod +x {} \; && \
       > /usr/local/bin/megalinter && \
     chmod u+x /usr/local/bin/megalinter && \
     ln -sf /usr/bin/megalinter_exec.sh /usr/local/bin/megalinter_exec
-RUN export STANDALONE_LINTER_VERSION="$(python -m megalinter.run --input /tmp --linterversion)" && \
+RUN export PYTHONDONTWRITEBYTECODE=1 && export STANDALONE_LINTER_VERSION="$(python -m megalinter.run --input /tmp --linterversion)" && \
     echo $STANDALONE_LINTER_VERSION
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
 #EXTRA_DOCKERFILE_LINES__END

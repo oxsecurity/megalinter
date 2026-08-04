@@ -143,6 +143,7 @@ __pycache__/
 # Distribution / packaging
 .Python
 build/
+!.claude/skills/build/
 develop-eggs/
 dist/
 downloads/
@@ -200,3 +201,4 @@ dmypy.json
 # LSP config files
 pyrightconfig.json
 .claude/settings.local.json
+.megalinter-cache/

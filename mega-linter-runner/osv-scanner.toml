@@ -1,0 +1,28 @@
+# osv-scanner ignore list for the mega-linter-runner sub-project.
+# MegaLinter lints this folder as its own workspace root
+# (mega-linter-runner/.mega-linter.yml), so the repository-root
+# osv-scanner.toml does not apply here and this entry must be duplicated.
+# Format reference: https://google.github.io/osv-scanner/configuration/
+
+# brace-expansion 2.1.2 (yarn.lock) — GHSA-mh99-v99m-4gvg, unbounded expansion
+# length DoS. The advisory declares a single affected range (>=0 <5.0.8), so
+# every 1.x and 2.x release is flagged even though the fix only ever shipped in
+# the 5.x line. There is no 2.x backport: 2.1.2 is the newest 2.x.
+#
+# Not exploitable here. This copy is reached only through minimatch@9, pulled in
+# by mocha (a devDependency, never published — package.json "files" ships lib and
+# generators only) and by @yeoman/transform. Both expand glob patterns that come
+# from our own code and from the user's local paths, never from an attacker, in a
+# one-shot CLI rather than a long-running service. The 5.x copy used by
+# minimatch@10 is already on the fixed 5.0.8.
+#
+# Scoped to the exact vulnerable version so a 5.x regression, or any other
+# advisory against this package, still fails the scan.
+# Remove when a patched 2.x ships, or when mocha and @yeoman/transform move to
+# minimatch@10.
+[[PackageOverrides]]
+name = "brace-expansion"
+version = "2.1.2"
+ecosystem = "npm"
+vulnerability.ignore = true
+reason = "DoS via crafted brace pattern; only reachable via minimatch@9 (mocha devDependency and @yeoman/transform) expanding trusted globs in a one-shot CLI. No 2.x backport exists."

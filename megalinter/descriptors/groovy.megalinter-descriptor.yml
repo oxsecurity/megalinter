@@ -40,10 +40,14 @@ linters:
     linter_megalinter_ref_url: https://nvuillam.github.io/npm-groovy-lint/#mega-linter
     linter_spdx_license: MIT
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     config_file_name: .groovylintrc.json
     cli_lint_extra_args:
       - --javaexecutable
-      - /usr/lib/jvm/java-17-openjdk/bin/java
+      - /usr/lib/jvm/java-21-openjdk/bin/java
       - --failon
       - error
     cli_sarif_args:
@@ -64,9 +68,10 @@ linters:
       - "npm-groovy-lint -c .groovylintrc.json --fix myfile.groovy myfile2.groovy"
     install:
       apk:
-        - openjdk17
+        - openjdk21
       dockerfile:
-        - ENV JAVA_HOME_17=/usr/lib/jvm/java-17-openjdk
+        - ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
+        - ENV PATH="$JAVA_HOME/bin:${PATH}"
         - |-
           # renovate: datasource=npm depName=npm-groovy-lint
           ARG NPM_GROOVY_LINT_VERSION=18.0.0

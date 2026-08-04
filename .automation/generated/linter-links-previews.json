@@ -99,6 +99,11 @@
     "image": null,
     "title": "Get Started | Salesforce Code Analyzer | Salesforce Developers"
   },
+  "code-analyzer-flow": {
+    "description": "Use the Flow Scanner engine to audit Salesforce Flows and report detailed information about security issues.",
+    "image": null,
+    "title": "Flow Scanner | Engines | Salesforce Code Analyzer | Salesforce Developers"
+  },
   "code-analyzer-lwc": {
     "description": "To get started scanning your code with Salesforce Code Analyzer, follow this developer workflow and choose resources that match your learning style.",
     "image": null,

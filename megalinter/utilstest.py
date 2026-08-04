@@ -61,10 +61,8 @@ def linter_test_setup(params=None):
     test_name = os.environ.get("PYTEST_CURRENT_TEST", "")
     test_keywords = os.environ.get("TEST_KEYWORDS", "")
     # Special cases with names resembling each other
-    if (
-        (test_keywords == "api_spectral" and "openapi_spectral" in test_name)
-        or (test_keywords == "php_phpcs" and "php_phpcsfixer" in test_name)
-        or (test_keywords == "python_ruff" and "python_ruff_format" in test_name)
+    if (test_keywords == "php_phpcs" and "php_phpcsfixer" in test_name) or (
+        test_keywords == "python_ruff" and "python_ruff_format" in test_name
     ):
         raise unittest.SkipTest("This test class should not be run in this campaign")
     if params is None:
@@ -153,11 +151,8 @@ def call_mega_linter(env_vars):
 
 
 def test_linter_success(linter, test_self):
-    if (
-        linter.disabled is True
-        or "all" in getattr(linter, "descriptor_flavors_exclude", [])
-        # todo: remove when bug is fixed https://github.com/tenable/terrascan/issues/1036
-        or linter.linter_name == "terrascan"
+    if linter.disabled is True or "all" in getattr(
+        linter, "descriptor_flavors_exclude", []
     ):
         raise unittest.SkipTest("Linter has been disabled")
     test_folder = linter.test_folder
@@ -189,11 +184,19 @@ def test_linter_success(linter, test_self):
     test_self.assertTrue(
         len(mega_linter.linters) > 0, "Linters have been created and run"
     )
+
+    mega_linter_linter = mega_linter.linters[0]
+
     # Check console output
     if linter.cli_lint_mode == "file":
-        if len(linter.file_names_regex) > 0 and len(linter.file_extensions) == 0:
+        # There are environment variables that appear to be set only after the call to "call_mega_linter"
+        if (
+            len(mega_linter_linter.file_names_regex) > 0
+            and len(mega_linter_linter.file_extensions) == 0
+        ):
             test_self.assertRegex(
-                output, rf"\[{linter_name}\] .*{linter.file_names_regex[0]}.* - SUCCESS"
+                output,
+                rf"\[{linter_name}\] .*{mega_linter_linter.file_names_regex[0]}.* - SUCCESS",
             )
         else:
             test_self.assertRegex(output, rf"\[{linter_name}\] .*good.* - SUCCESS")
@@ -266,12 +269,18 @@ def test_linter_failure(linter, test_self):
 
     # Check console output
     if linter.cli_lint_mode == "file":
-        if len(linter.file_names_regex) > 0 and len(linter.file_extensions) == 0:
+        # There are environment variables that appear to be set only after the call to "call_mega_linter"
+        if (
+            len(mega_linter_linter.file_names_regex) > 0
+            and len(mega_linter_linter.file_extensions) == 0
+        ):
             test_self.assertRegex(
-                output, rf"\[{linter_name}\] .*{linter.file_names_regex[0]}.* - ERROR"
+                output,
+                rf"\[{linter_name}\] .*{mega_linter_linter.file_names_regex[0]}.* - ERROR",
             )
             test_self.assertNotRegex(
-                output, rf"\[{linter_name}\] .*{linter.file_names_regex[0]}.* - SUCCESS"
+                output,
+                rf"\[{linter_name}\] .*{mega_linter_linter.file_names_regex[0]}.* - SUCCESS",
             )
         else:
             test_self.assertRegex(output, rf"\[{linter_name}\] .*bad.* - ERROR")
@@ -361,9 +370,6 @@ def test_get_linter_version(linter, test_self):
     # Check linter version
     version = linter.get_linter_version()
     print("[" + linter.linter_name + "] version: " + version)
-    # Ugly workaround to avoid instability of get sql_tsqllint_test version
-    if version == "ERROR" and test_self.__class__.__name__ == "sql_tsqllint_test":
-        raise unittest.SkipTest("Ugly workaround to avoid sql_tsqllint_test failure")
     # Check version is returned
     test_self.assertFalse(
         version == "ERROR", "Returned version invalid: [" + version + "]"
@@ -433,9 +439,6 @@ def test_get_linter_help(linter, test_self):
     # Check linter help
     help_txt = linter.get_linter_help()
     print("[" + linter.linter_name + "] help: " + help_txt)
-    # Ugly workaround to avoid instability of get sql_tsqllint_test version
-    if help_txt == "ERROR" and test_self.__class__.__name__ == "sql_tsqllint_test":
-        raise unittest.SkipTest("Ugly workaround to avoid sql_tsqllint_test failure")
     test_self.assertFalse(
         help_txt == "ERROR", "Returned help invalid: [" + help_txt + "]"
     )
@@ -637,7 +640,6 @@ def test_linter_report_sarif(linter, test_self):
             # betterleaks is a gitleaks fork and inherits the same SARIF
             # behavior (findings are reported at "warning" level, not "error")
             if linter.name not in [
-                "REPOSITORY_GITLEAKS",
                 "REPOSITORY_BETTERLEAKS",
             ]:  # does not report errors
                 test_self.assertTrue(

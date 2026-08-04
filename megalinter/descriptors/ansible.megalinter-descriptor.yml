@@ -53,6 +53,10 @@ linters:
       - ".config/ansible-lint.yaml"
     config_file_name: .ansible-lint
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
     cli_config_extra_args:
       - "-v"
     cli_sarif_args:

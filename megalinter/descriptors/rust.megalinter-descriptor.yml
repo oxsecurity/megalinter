@@ -6,6 +6,11 @@ descriptor_flavors:
   - rust
 file_extensions:
   - ".rs"
+install:
+  apk:
+    # clippy compiles the analyzed code at runtime and needs a C linker
+    - gcc
+    - musl-dev
 linters:
   # CLIPPY
   - class: ClippyLinter
@@ -33,6 +38,8 @@ linters:
     cli_config_arg_name: ""
     cli_executable: cargo-clippy
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
     examples:
       - "cargo-clippy"
     install:

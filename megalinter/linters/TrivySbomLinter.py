@@ -6,7 +6,7 @@ Use Trivy to generate SBOM (Software bill of materials)
 import json
 import os
 
-from megalinter import Linter, utils
+from megalinter import Linter, config, utils
 from megalinter.constants import (
     DEFAULT_SARIF_SCHEMA_URI,
     DEFAULT_SARIF_VERSION,
@@ -73,3 +73,11 @@ class TrivySbomLinter(Linter):
                 with open(self.sarif_output_file, "w", encoding="utf-8") as outfile:
                     json.dump(sarif_obj, outfile, indent=4, sort_keys=False)
                     outfile.write("\n")
+
+    def pre_test(self, test_name):
+        if test_name.endswith(("file_lint_mode", "list_of_files_lint_mode")):
+            config.set_value(
+                self.request_id,
+                "REPOSITORY_TRIVY_SBOM_FILE_NAMES_REGEX",
+                ["package.*json"],
+            )

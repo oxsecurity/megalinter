@@ -119,6 +119,15 @@
         'major',
       ],
     },
+    {
+      // Keep the betterleaks linter and the secret-masking ruleset pin
+      // (megalinter/constants.py) in the same PR so they never drift apart
+      groupName: 'betterleaks',
+      matchPackageNames: [
+        'ghcr.io/betterleaks/betterleaks',
+        'betterleaks/betterleaks',
+      ],
+    },
   ],
   customManagers: [
     {
@@ -151,6 +160,16 @@
       ],
       matchStrings: [
         '# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?\\\\n(?:ENV|ARG)\\s+[A-Za-z0-9_]+?_VERSION[ =]["\']?(?<currentValue>.+?)["\']?,',
+      ],
+    },
+    {
+      customType: 'regex',
+      description: 'Update plain version constants in constants.py file',
+      managerFilePatterns: [
+        '/(^|/).*megalinter(\\\\|/)constants\\.py$/',
+      ],
+      matchStrings: [
+        '# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (?:lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?\\s+[A-Z0-9_]+_VERSION\\s*=\\s*["\'](?<currentValue>[^"\']+)["\']',
       ],
     },
     {
