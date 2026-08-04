@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="MegaLinter is an open-source tool for CI/CD workflows that analyzes the consistency of your code, IaC, configuration, and scripts in your repository to ensure all your project sources are clean and formatted, no matter which IDE or toolbox is used by your developers. Powered by OX Security.Supports 63 languages, 21 formats, 19 tooling formats, and is ready to use out of the box as a GitHub Action or with any CI system. It is highly configurable and free for all uses.MegaLinter has native integrations with many major CI/CD tools.">
+        <meta name="description" content="MegaLinter is an open-source tool for CI/CD workflows that analyzes the consistency of your code, IaC, configuration, and scripts in your repository to ensure all your project sources are clean and formatted, no matter which IDE or toolbox is used by your developers. Powered by OX Security.Supports 63 languages, 21 formats, 19 tooling formats, and is ready to use out of the box as a GitHub Action or with any CI system. It is highly configurable and free for all uses.MegaLinter has native integrations with popular CI/CD tools and is compliant with most Coding Agents.">
       
       
         <meta name="author" content="Nicolas Vuillamy">
@@ -15372,7 +15372,15 @@
 <li>Flavors</li>
 </ul>
 <ul>
-<li>Doc</li>
+<li>
+<p>Doc</p>
+<ul>
+<li>Home page: mention Coding Agents compliance in the welcome phrase, display the supported coding agent icons next to the CI/CD integrations, and add a "Coding Agents compatible" badge to the shields.io badges list</li>
+<li>Quick Start: setting up MegaLinter with a coding agent (<code>npx skills add oxsecurity/megalinter</code> then <em>"setup megalinter"</em>) is now the first suggested option</li>
+<li>Coding Agents page: add Gemini CLI, Windsurf, Cline, Roo Code, Kilo Code, Amp, Goose, OpenHands and Qwen Code to the compatible coding agents, and restyle the sub-agents orchestration mermaid diagram with explicit node colors and shapes per category (user, skills, sub-agents, artifacts) so it stays readable with the website theme</li>
+<li>megalinter-setup skill: after install or upgrade, suggest either running MegaLinter locally (megalinter-check in local mode) or creating a pull request and then watching its CI results with megalinter-check</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>

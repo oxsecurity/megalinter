@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Setup, run and fix MegaLinter errors from Claude Code, Cursor, GitHub Copilot CLI, Codex, Antigravity, OpenCode and other coding agents, with token-efficient sub-agents orchestration">
+        <meta name="description" content="Setup, run and fix MegaLinter errors from Claude Code, Cursor, GitHub Copilot CLI, Codex, Gemini CLI, Antigravity, OpenCode and other coding agents, with token-efficient sub-agents orchestration">
       
       
         <meta name="author" content="Nicolas Vuillamy">
@@ -66,12 +66,12 @@
 <meta name="twitter:site" content="@nvuillam">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Use MegaLinter with coding agents">
-<meta name="twitter:description" content="Setup, run and fix MegaLinter errors from Claude Code, Cursor, GitHub Copilot CLI, Codex, Antigravity, OpenCode and other coding agents, with token-efficient sub-agents orchestration">
+<meta name="twitter:description" content="Setup, run and fix MegaLinter errors from Claude Code, Cursor, GitHub Copilot CLI, Codex, Gemini CLI, Antigravity, OpenCode and other coding agents, with token-efficient sub-agents orchestration">
 <meta property="og:image" content="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png">
 <meta property="og:image:alt" content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally.">
 <meta property="og:site_name" content="MegaLinter">
 <meta property="og:title" content="Use MegaLinter with coding agents">
-<meta property="og:description" content="Setup, run and fix MegaLinter errors from Claude Code, Cursor, GitHub Copilot CLI, Codex, Antigravity, OpenCode and other coding agents, with token-efficient sub-agents orchestration">
+<meta property="og:description" content="Setup, run and fix MegaLinter errors from Claude Code, Cursor, GitHub Copilot CLI, Codex, Gemini CLI, Antigravity, OpenCode and other coding agents, with token-efficient sub-agents orchestration">
 
 
 
@@ -11885,7 +11885,16 @@
 <a href="https://github.com/features/copilot"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/github-copilot.png?raw=true" alt="GitHub Copilot CLI" height="48px"></a>
 <a href="https://openai.com/codex/"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/codex.png?raw=true" alt="Codex" height="48px"></a>
 <a href="https://antigravity.google/"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/antigravity.png?raw=true" alt="Antigravity" height="48px"></a>
-<a href="https://opencode.ai"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/opencode.png?raw=true" alt="OpenCode" height="48px"></a></p>
+<a href="https://opencode.ai"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/opencode.png?raw=true" alt="OpenCode" height="48px"></a>
+<a href="https://github.com/google-gemini/gemini-cli"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/gemini-cli.png?raw=true" alt="Gemini CLI" height="48px"></a>
+<a href="https://windsurf.com"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/windsurf.png?raw=true" alt="Windsurf" height="48px"></a>
+<a href="https://cline.bot"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/cline.png?raw=true" alt="Cline" height="48px"></a>
+<a href="https://roocode.com"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/roo-code.png?raw=true" alt="Roo Code" height="48px"></a>
+<a href="https://kilocode.ai"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/kilo-code.png?raw=true" alt="Kilo Code" height="48px"></a>
+<a href="https://ampcode.com"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/amp.png?raw=true" alt="Amp" height="48px"></a>
+<a href="https://block.github.io/goose/"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/goose.png?raw=true" alt="Goose" height="48px"></a>
+<a href="https://www.all-hands.dev"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/openhands.png?raw=true" alt="OpenHands" height="48px"></a>
+<a href="https://github.com/QwenLM/qwen-code"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/qwen-code.png?raw=true" alt="Qwen Code" height="48px"></a></p>
 <h2 id="get-started">Get started</h2>
 <p>Install the <a href="https://github.com/oxsecurity/megalinter/tree/main/skills">MegaLinter agent skills</a> at the root of your repository:</p>
 <div class="highlight"><pre><span></span><code>npx<span class="w"> </span>skills<span class="w"> </span>add<span class="w"> </span>oxsecurity/megalinter
@@ -11928,22 +11937,34 @@
 <pre class="mermaid"><code>flowchart TD
     U(["👤 You: &lt;i&gt;run megalinter and fix the errors&lt;/i&gt;"]) --&gt; O["🎯 megalinter&lt;br/&gt;(orchestrator skill)"]
     O --&gt;|"no config found"| S["🛠️ megalinter-setup"]
-    S --&gt;|"npx mega-linter-runner --install"| CFG[".mega-linter.yml&lt;br/&gt;+ CI workflow"]
+    S --&gt;|"npx mega-linter-runner --install"| CFG[/".mega-linter.yml&lt;br/&gt;+ CI workflow"/]
     O --&gt; C["🔍 megalinter-check"]
-    C --&gt;|"watch mode"| W["👀 megalinter-watcher&lt;br/&gt;sub-agent, low-cost model"]
-    W --&gt; CI["CI job logs&lt;br/&gt;GitHub / GitLab / Azure / Bitbucket"]
-    C --&gt;|"local mode"| RUN["🐳 megalinter-runner&lt;br/&gt;sub-agent, low-cost model"]
-    RUN --&gt; IMG["MegaLinter Docker image&lt;br/&gt;docker or podman"]
-    W --&gt; ERR["📋 Compact error list&lt;br/&gt;grouped by linter"]
+    C --&gt;|"watch mode"| W[["👀 megalinter-watcher&lt;br/&gt;sub-agent, low-cost model"]]
+    W --&gt; CI[/"CI job logs&lt;br/&gt;GitHub / GitLab / Azure / Bitbucket"/]
+    C --&gt;|"local mode"| RUN[["🐳 megalinter-runner&lt;br/&gt;sub-agent, low-cost model"]]
+    RUN --&gt; IMG[/"MegaLinter Docker image&lt;br/&gt;docker or podman"/]
+    W --&gt; ERR[/"📋 Compact error list&lt;br/&gt;grouped by linter"/]
     RUN --&gt; ERR
     ERR --&gt; F["🔧 megalinter-fix"]
-    F --&gt;|"one sub-agent per failing linter,&lt;br/&gt;in parallel"| FX1["🤖 megalinter-fixer&lt;br/&gt;+ python_ruff fix guide"]
-    F --&gt; FX2["🤖 megalinter-fixer&lt;br/&gt;+ markdown_markdownlint fix guide"]
-    FX1 --&gt; RES["✏️ Fixed files&lt;br/&gt;+ proposed rule disables"]
+    F --&gt;|"one sub-agent per failing linter,&lt;br/&gt;in parallel"| FX1[["🤖 megalinter-fixer&lt;br/&gt;+ python_ruff fix guide"]]
+    F --&gt; FX2[["🤖 megalinter-fixer&lt;br/&gt;+ markdown_markdownlint fix guide"]]
+    FX1 --&gt; RES[/"✏️ Fixed files&lt;br/&gt;+ proposed rule disables"/]
     FX2 --&gt; RES
     RES --&gt;|"you confirm disables"| RC["♻️ Targeted re-check&lt;br/&gt;parallel standalone linter images"]
     RC --&gt;|"errors remain (max 3 loops)"| F
-    RC --&gt;|"clean"| DONE(["✅ Commit on a branch&lt;br/&gt;(never on main)"])</code></pre>
+    RC --&gt;|"clean"| DONE(["✅ Commit on a branch&lt;br/&gt;(never on main)"])
+
+    classDef user fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#1b5e20
+    classDef skill fill:#ede7f6,stroke:#5e35b1,stroke-width:2px,color:#311b92
+    classDef subagent fill:#e3f2fd,stroke:#1976d2,stroke-width:2px,color:#0d47a1
+    classDef artifact fill:#fff8e1,stroke:#f9a825,stroke-width:1px,color:#5d4037
+    classDef recheck fill:#e0f2f1,stroke:#00897b,stroke-width:2px,color:#004d40
+
+    class U,DONE user
+    class O,S,C,F skill
+    class W,RUN,FX1,FX2 subagent
+    class CFG,CI,IMG,ERR,RES artifact
+    class RC recheck</code></pre>
 <p>The fix guides combine information generated from the <a href="https://github.com/oxsecurity/megalinter/tree/main/megalinter/descriptors">linter descriptors</a> (auto-fix support, rules documentation URLs, MegaLinter tuning variables) with curated fix, inline-disable and ignore instructions grounded in each linter's official documentation.</p>
 <h2 id="safety-rules">Safety rules</h2>
 <ul>
