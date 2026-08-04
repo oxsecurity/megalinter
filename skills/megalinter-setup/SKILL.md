@@ -74,8 +74,7 @@ If a target file already exists, ask the user before overwriting it. If your pla
 ## 5. Wrap up
 
 - Show the user the generated/updated files.
-- **First install** (there was no MegaLinter configuration before): suggest the two ways to see MegaLinter in action, and offer to do it for them:
-  - **Create a pull request** with the generated files (commit on a new branch, push, open the PR) so the new CI workflow runs and its results appear on the PR.
-  - **Run MegaLinter locally** first through the `megalinter-check` skill (local mode) to preview and fix errors before pushing anything.
-- **Upgrade**: suggest a first check with the `megalinter-check` skill, and offer to create a pull request with the upgraded files so CI validates the migration.
+- Suggest the two ways to see MegaLinter in action (first install and upgrade alike), and offer to do it for them:
+  - **Run MegaLinter locally** through the `megalinter-check` skill (local mode) to preview and fix errors before pushing anything.
+  - **Create a pull request** with the generated/updated files (commit on a new branch, push, open the PR), then run the `megalinter-check` skill (watch mode) on the created PR to watch the CI job results and fix the errors.
 - Do not commit or push without user confirmation, and never on the default branch.
