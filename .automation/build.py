@@ -1079,7 +1079,7 @@ def generate_documentation():
             + icon
             + '.png?raw=true" alt="'
             + label
-            + '" height="72px">]'
+            + '" height="40" style="height:40px">]'
             + "(https://github.com/oxsecurity/megalinter/tree/main/docs/coding-agents.md)"
             for icon, label in [
                 ("claude", "Claude Code"),
