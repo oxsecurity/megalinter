@@ -1,6 +1,7 @@
 ---
 name: megalinter
 description: Entry point for everything MegaLinter. Use when the user wants to lint their repository, set up MegaLinter, check or fix lint errors, make CI lint jobs pass, or says "run megalinter", "fix lint errors", "make the linters happy", "clean up code quality". Detects the repository state and orchestrates the megalinter-setup, megalinter-check and megalinter-fix skills in a loop until the repository is clean.
+allowed-tools: Bash Read Grep Glob Skill Agent AskUserQuestion
 ---
 
 # MegaLinter orchestrator
