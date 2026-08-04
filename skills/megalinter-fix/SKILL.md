@@ -1,7 +1,10 @@
 ---
 name: megalinter-fix
 description: Fix the errors reported by MegaLinter. Use after megalinter-check found errors, or when the user pastes MegaLinter/CI lint errors and wants them fixed. Applies safe fixes automatically (auto-fix linters first, then guided manual fixes using per-linter fix guides), asks the user when fixing is ambiguous, and can disable rules or linters with user confirmation. Never pushes to the default branch.
-allowed-tools: Bash Read Grep Glob Edit Write Agent AskUserQuestion
+argument-hint: "[linter keys or pasted MegaLinter error list]"
+allowed-tools: Bash, Read, Grep, Glob, Edit, Write, Agent, AskUserQuestion
+user-invocable: true
+licence: MegaLinter by OX Security, AGPL-3.0, Copyright 2026 - https://megalinter.io/
 ---
 
 # MegaLinter fix

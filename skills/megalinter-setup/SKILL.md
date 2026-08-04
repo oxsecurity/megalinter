@@ -1,7 +1,10 @@
 ---
 name: megalinter-setup
 description: Install or upgrade MegaLinter on a repository. Use when the user wants to add MegaLinter to a project, set up linting CI, update MegaLinter configuration or version, or says "install megalinter", "setup linting", "add code quality checks". Always goes through npx mega-linter-runner (--install or --upgrade), then refines .mega-linter.yml.
-allowed-tools: Bash Read Grep Glob Edit Write WebFetch AskUserQuestion
+argument-hint: "[install|upgrade] [flavor, e.g. python|javascript|all]"
+allowed-tools: Bash, Read, Grep, Glob, Edit, Write, WebFetch, AskUserQuestion
+user-invocable: true
+licence: MegaLinter by OX Security, AGPL-3.0, Copyright 2026 - https://megalinter.io/
 ---
 
 # MegaLinter setup

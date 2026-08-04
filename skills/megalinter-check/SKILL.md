@@ -1,7 +1,10 @@
 ---
 name: megalinter-check
 description: Collect MegaLinter lint errors for the current repository. Use when the user wants to know if the code passes linting, why the MegaLinter CI job fails, or before/after fixing lint errors. Two modes - watch a CI job (GitHub Actions, GitLab CI, Azure Pipelines, Bitbucket Pipelines) and parse its logs, or run MegaLinter locally with Docker (full run or fast parallel standalone linter runs).
-allowed-tools: Bash Read Grep Glob Write Agent AskUserQuestion
+argument-hint: "[mode: watch|local] [PR/job URL or linter keys]"
+allowed-tools: Bash, Read, Grep, Glob, Write, Agent, AskUserQuestion
+user-invocable: true
+licence: MegaLinter by OX Security, AGPL-3.0, Copyright 2026 - https://megalinter.io/
 ---
 
 # MegaLinter check
