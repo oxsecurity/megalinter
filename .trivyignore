@@ -204,6 +204,18 @@ CVE-2026-52869
 CVE-2026-52870
 CVE-2026-59950
 
+# --- Python deps (checkov) ---
+# CVE-2026-69244: heap out-of-bounds read in aiohttp's C HTTP parser while building
+# the error message for a malformed chunked response — a malicious or broken server
+# can crash the client process (availability impact only, CVSS 7.1). aiohttp sits in
+# checkov's venv, and checkov pins aiohttp<3.14.0 while the fix only exists in
+# 3.14.3, so there is no upgrade path today (MegaLinter's own aiohttp, used by the
+# server components, is already 3.14.3). checkov uses aiohttp solely as an HTTP
+# client towards its fixed policy/registry endpoints during a one-shot CLI scan of
+# workspace files; the worst case is that linter run crashing in its short-lived CI
+# container. Remove once checkov allows aiohttp >= 3.14.3.
+CVE-2026-69244
+
 # --- Go deps (protolint, terragrunt, tflint, grype, syft, trivy) ---
 # google.golang.org/grpc < 1.82.1 is statically linked into these Go binaries by
 # their upstream release builds; MegaLinter pins each tool at its latest release
@@ -296,6 +308,17 @@ CVE-2026-59869
 CVE-2026-59887
 GHSA-8r6m-32jq-jx6q
 GHSA-gcfj-64vw-6mp9
+# CVE-2026-18446 is a host-confusion flaw in fast-uri's URI parsing: a crafted URL
+# can make the parsed host differ from what a browser/other parser would see, which
+# matters when fast-uri output feeds security decisions (SSRF allowlists, redirect
+# validation). The vulnerable 3.1.2 copy is vendored inside @salesforce/cli's own
+# locked node_modules (MegaLinter pins the latest sf release, 2.145.6, published
+# before the 3.1.5/4.1.2 fix shipped, so there is no upgrade path yet). At lint
+# time sf runs as a local static-analysis CLI: fast-uri is reached through ajv's
+# JSON-schema validation of the CLI's own config and schema files, never to parse
+# attacker-controlled URLs for trust decisions. Remove once @salesforce/cli ships
+# fast-uri >= 3.1.5.
+CVE-2026-18446
 
 # --- Dockerfile misconfigurations (REPOSITORY_TRIVY misconfig scan) ---
 # These are trivy's own Dockerfile checks fired against MegaLinter's generated
