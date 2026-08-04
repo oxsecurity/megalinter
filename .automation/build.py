@@ -1042,7 +1042,8 @@ def generate_documentation():
         + f"[**{count_active_linters(linters_by_type['tooling_format'])}** tooling formats](#tooling-formats), "
         + "and is **ready to use out of the box** as a GitHub Action or with any CI system. "
         + "It is **highly configurable** and **free for all uses**.\n\n"
-        + "MegaLinter has **native integrations** with many major CI/CD tools.\n\n"
+        + "MegaLinter has **native integrations** with popular CI/CD tools "
+        + "and is compliant with most **Coding Agents**.\n\n"
         + "[![GitHub]("
         + "https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/github.png?raw=true>)]("
         + "https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitHubCommentReporter.md)\n"
@@ -1073,6 +1074,32 @@ def generate_documentation():
         + "[![Grafana]("
         + "https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/grafana.png?raw=true>)]("
         + "https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/ApiReporter.md)\n\n"
+        + "\n".join(
+            '[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/'
+            + icon
+            + '.png?raw=true" alt="'
+            + label
+            + '" height="72px">]'
+            + "(https://github.com/oxsecurity/megalinter/tree/main/docs/coding-agents.md)"
+            for icon, label in [
+                ("claude", "Claude Code"),
+                ("cursor", "Cursor"),
+                ("github-copilot", "GitHub Copilot CLI"),
+                ("codex", "Codex"),
+                ("antigravity", "Antigravity"),
+                ("opencode", "OpenCode"),
+                ("gemini-cli", "Gemini CLI"),
+                ("windsurf", "Windsurf"),
+                ("cline", "Cline"),
+                ("roo-code", "Roo Code"),
+                ("kilo-code", "Kilo Code"),
+                ("amp", "Amp"),
+                ("goose", "Goose"),
+                ("openhands", "OpenHands"),
+                ("qwen-code", "Qwen Code"),
+            ]
+        )
+        + "\n\n"
     )
     # Update README.md file
     replace_in_file(

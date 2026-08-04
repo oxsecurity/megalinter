@@ -115,6 +115,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Doc
 
+  - Home page: mention Coding Agents compliance in the welcome phrase and display the supported coding agent icons next to the CI/CD integrations
+  - Coding Agents page: add Gemini CLI, Windsurf, Cline, Roo Code, Kilo Code, Amp, Goose, OpenHands and Qwen Code to the compatible coding agents, and restyle the sub-agents orchestration mermaid diagram with explicit node colors and shapes per category (user, skills, sub-agents, artifacts) so it stays readable with the website theme
+
 - mega-linter-runner
 
   - Non-interactive installation: `--install` can now run without prompts using `--no-prompt` and the new `--setup-*` options (`--setup-ci`, `--setup-copy-paste`, `--setup-spelling-mistakes`, `--setup-default-branch`, `--setup-validate-all-code-base`, `--setup-ox`) combined with the existing `--flavor`, `--release` and `--fix` flags; pre-existing configuration/workflow files are backed up as `<file>.megalinter-setup.bak` before being overwritten, so customizations can be merged back
