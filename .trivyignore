@@ -319,6 +319,17 @@ GHSA-gcfj-64vw-6mp9
 # attacker-controlled URLs for trust decisions. Remove once @salesforce/cli ships
 # fast-uri >= 3.1.5.
 CVE-2026-18446
+# CVE-2026-69192 (ip-address) and CVE-2026-13697 (undici) live in the same
+# @salesforce/cli vendored node_modules (/usr/local/share/sf) of the standalone
+# salesforce-code-analyzer images, with the same no-upgrade-path situation (sf
+# 2.145.6 is the latest release). ip-address is an IP parsing flaw only reachable
+# through sf's proxy-agent chain when a user configures their own outbound proxy;
+# undici's cache-interceptor issue requires a malicious server response, but at
+# lint time sf/code-analyzer runs fully local static analysis and only ever talks
+# to Salesforce endpoints. Remove once @salesforce/cli bundles ip-address >= 10.3.1
+# and undici >= 7.29.0.
+CVE-2026-69192
+CVE-2026-13697
 
 # --- Dockerfile misconfigurations (REPOSITORY_TRIVY misconfig scan) ---
 # These are trivy's own Dockerfile checks fired against MegaLinter's generated
