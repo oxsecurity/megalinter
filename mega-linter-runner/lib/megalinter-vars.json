@@ -500,7 +500,8 @@
       "description": "ACTION_ZIZMOR: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "list_of_files",
       "enum": [
-        "file"
+        "file",
+        "list_of_files"
       ],
       "category": "ACTION_ZIZMOR",
       "section": "LINTER_COMMAND"
@@ -2062,7 +2063,8 @@
       "description": "BASH_SHFMT: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "list_of_files",
       "enum": [
-        "file"
+        "file",
+        "list_of_files"
       ],
       "category": "BASH_SHFMT",
       "section": "LINTER_COMMAND"
@@ -8560,7 +8562,8 @@
       "description": "GO_REVIVE: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "list_of_files",
       "enum": [
-        "file"
+        "file",
+        "list_of_files"
       ],
       "category": "GO_REVIVE",
       "section": "LINTER_COMMAND"
