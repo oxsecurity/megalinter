@@ -4,6 +4,8 @@ description: Handle CVE/vulnerability reports from security linters (trivy, osv-
 allowed-tools: Read Grep Glob Edit Write Bash WebFetch WebSearch
 argument-hint: "[CVE-ID or vulnerability description]"
 model: opus
+metadata:
+  internal: true
 ---
 
 Investigate and fix the security issue `$ARGUMENTS` reported by trivy, osv-scanner, grype, or another security linter.

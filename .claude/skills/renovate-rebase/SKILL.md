@@ -5,6 +5,8 @@ allowed-tools: Bash Read
 argument-hint: "[optional: sections e.g. \"open\" or \"rate-limited\", plus --individual / --trigger-run]"
 user-invocable: true
 model: sonnet
+metadata:
+  internal: true
 ---
 
 Force Renovate to act now: find the **Dependency Dashboard** GitHub issue and tick its checkboxes in the **Rate-Limited** and **Open** sections. Renovate watches its own dashboard issue body — a ticked box is an instruction:

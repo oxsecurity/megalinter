@@ -5,6 +5,8 @@ disable-model-invocation: true
 allowed-tools: Read Glob Grep
 argument-hint: "[additional context]"
 model: opus
+metadata:
+  internal: true
 ---
 
 You are a software architect for the **MegaLinter** project.

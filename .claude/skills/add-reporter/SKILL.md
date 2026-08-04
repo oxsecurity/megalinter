@@ -2,8 +2,10 @@
 name: add-reporter
 description: Add a new output reporter to MegaLinter. Use when adding support for a new CI system or output format.
 allowed-tools: Read Grep Glob Edit Write
-argument-hint: [reporter-name]
+argument-hint: "[reporter-name]"
 model: sonnet
+metadata:
+  internal: true
 ---
 
 Guide through adding a new reporter named `$ARGUMENTS` to MegaLinter.
