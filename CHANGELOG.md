@@ -271,7 +271,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **Linters can no longer be run via a sibling Docker image at runtime.** The `cli_docker_image`, `cli_docker_image_version` and `cli_docker_args` descriptor properties (and the matching `<LINTER>_DOCKER_IMAGE_VERSION` variable) have been removed, and MegaLinter no longer mounts `/var/run/docker.sock` (in `mega-linter-runner`, the GitHub Action `action.yml` files, and the Docker daemon previously bundled in flavor images). This closes the host-privilege escalation surface that the mounted Docker socket exposed. The only linter that used this mechanism was `SWIFT_SWIFTLINT`, now installed natively (see below). (#8216)
   - **`SWIFT_SWIFTLINT` is now installed from the static `swiftlint-static` binary** instead of running the `ghcr.io/realm/swiftlint` container. It runs natively on the Alpine image with no Docker socket required. SourceKit-dependent rules are disabled in this build and reported to the console when encountered; pure-syntax style rules are unaffected. (#8216)
   - **`@eslint/eslintrc` shim removed** from JavaScript/TypeScript/JSX/TSX Docker images (was only needed for legacy `FlatCompat`); MegaLinter's bundled test fixtures use native flat config. (#7869)
-  - **ESLint linters now force migration off `.eslintrc.*`**: `JAVASCRIPT_ES`, `TYPESCRIPT_ES`, `JSX_ESLINT`, `TSX_ESLINT` activate when they find any `eslint.config.*` *or* any deprecated `.eslintrc.*` / `package.json#eslintConfig`. In the legacy case the linter does not call ESLint at all — it emits a single hard failure with a migration message so the build stays red until the config is migrated to flat config. See the [ESLint flat-config migration guide](https://eslint.org/docs/latest/use/configure/migration-guide). To opt out, set `DISABLE_LINTERS` or `DISABLE` to exclude the affected linter/descriptor. (#7869)
+  - **ESLint linters now force migration off `.eslintrc.*`**: `JAVASCRIPT_ES`, `TYPESCRIPT_ES`, `JSX_ESLINT`, `TSX_ESLINT` activate when they find any `eslint.config.*` _or_ any deprecated `.eslintrc.*` / `package.json#eslintConfig`. In the legacy case the linter does not call ESLint at all — it emits a single hard failure with a migration message so the build stays red until the config is migrated to flat config. See the [ESLint flat-config migration guide](https://eslint.org/docs/latest/use/configure/migration-guide). To opt out, set `DISABLE_LINTERS` or `DISABLE` to exclude the affected linter/descriptor. (#7869)
   - **`JSON_ESLINT_PLUGIN_JSONC` removed**: upstream bug [ota-meshi/eslint-plugin-jsonc#328](https://github.com/ota-meshi/eslint-plugin-jsonc/issues/328) blocks ESLint v10 compatibility and will not be fixed. Use `JSON_JSONLINT`, `JSON_PRETTIER`, or `JSON_V8R` for JSON validation instead. (#7869)
 
 - Core
@@ -3767,7 +3767,7 @@ To upgrade to MegaLinter v7, run `npx mega-linter-runner@latest --upgrade` , com
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.8 to **1.2.9**
   - [tflint](https://github.com/terraform-linters/tflint) from 0.39.3 to **0.40.0**
 
-*Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker image sizes were not optimized enough.*
+_Note: MegaLinter 6.9.0 release has been cancelled: it was fine but the docker image sizes were not optimized enough._
 
 ## [v6.8.0] - 2022-09-04
 
@@ -5156,7 +5156,7 @@ To upgrade to MegaLinter v7, run `npx mega-linter-runner@latest --upgrade` , com
 - Add openssh apk for git repos using ssh
 - Change default yamllint config file name from `.yaml-lint.yml` to `.yamllint.yml`
 - Allow to disable console reporter using `CONSOLE_REPORTER: false`
-- Override `cli_lint_mode` of linters using configuration : *LINTER*\_CLI_LINT_MODE
+- Override `cli_lint_mode` of linters using configuration : _LINTER_\_CLI_LINT_MODE
 - Performances
   - Use list_of_files linting mode for yamllint , black and prettier
 - Fixes

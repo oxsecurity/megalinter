@@ -9,7 +9,7 @@
 - Rules index: <https://djlint.com/docs/linter/>
 - Rules configuration: <https://djlint.com/docs/configuration/>
 - How to disable rules inline: <https://djlint.com/docs/ignoring-code/>
-- Error line format (regex): `[A-Z][0-9]{3} `
+- Error line format (regex): `[A-Z][0-9]{3}`
 - MegaLinter tuning variables (in `.mega-linter.yml`):
   - `DISABLE_LINTERS`: add `HTML_DJLINT` to fully disable this linter
   - `HTML_DJLINT_DISABLE_ERRORS: true`: keep the linter active but non-blocking
