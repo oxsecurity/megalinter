@@ -181,6 +181,9 @@ linters:
     config_file_name: revive.toml
     cli_config_arg_name: "-config"
     cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
     cli_lint_extra_args:
       - -set_exit_status
     cli_sarif_args:

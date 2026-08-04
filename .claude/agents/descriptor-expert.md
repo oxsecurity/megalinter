@@ -74,27 +74,28 @@ Fill in as many as applicable when creating or reviewing a descriptor:
 
 ### CLI Configuration (always fill)
 
-| Property                    | Description                                           |
-|-----------------------------|-------------------------------------------------------|
-| `cli_lint_mode`             | **Always set**: `file`, `list_of_files`, or `project` |
-| `cli_executable`            | Override if different from `linter_name`              |
-| `cli_executable_version`    | Override executable for `--version`                   |
-| `cli_executable_help`       | Override executable for `--help`                      |
-| `config_file_name`          | Default config file (e.g., `.pylintrc`)               |
-| `cli_config_arg_name`       | Config file argument (e.g., `--rcfile`, `--config`)   |
-| `cli_config_default_value`  | Default config value if not a file                    |
-| `cli_config_extra_args`     | Extra args when config file is used                   |
-| `cli_lint_extra_args`       | Extra args BEFORE config args                         |
-| `cli_lint_extra_args_after` | Extra args AFTER config args                          |
-| `cli_lint_fix_arg_name`     | Fix/format trigger arg (e.g., `--fix`)                |
-| `cli_lint_fix_remove_args`  | Args to remove in fix mode (e.g., `["--check"]`)      |
-| `ignore_file_name`          | Ignore file (e.g., `.eslintignore`)                   |
-| `cli_lint_ignore_arg_name`  | Ignore file argument                                  |
-| `cli_version_arg_name`      | Version arg if not `--version`                        |
-| `cli_version_extra_args`    | Extra args for version command                        |
-| `cli_help_arg_name`         | Help arg if not `--help`                              |
-| `cli_help_extra_args`       | Extra args for help command                           |
-| `cli_help_extra_commands`   | Extra commands for help                               |
+| Property                    | Description                                                                                                                                                      |
+|-----------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `cli_lint_mode`             | **Always set**: default mode `file`, `list_of_files`, or `project`                                                                                               |
+| `supported_cli_lint_modes`  | All modes the linter can run in (subset of `file`/`list_of_files`/`project`; default `["file"]`, must include `cli_lint_mode`). Tests run once per declared mode |
+| `cli_executable`            | Override if different from `linter_name`                                                                                                                         |
+| `cli_executable_version`    | Override executable for `--version`                                                                                                                              |
+| `cli_executable_help`       | Override executable for `--help`                                                                                                                                 |
+| `config_file_name`          | Default config file (e.g., `.pylintrc`)                                                                                                                          |
+| `cli_config_arg_name`       | Config file argument (e.g., `--rcfile`, `--config`)                                                                                                              |
+| `cli_config_default_value`  | Default config value if not a file                                                                                                                               |
+| `cli_config_extra_args`     | Extra args when config file is used                                                                                                                              |
+| `cli_lint_extra_args`       | Extra args BEFORE config args                                                                                                                                    |
+| `cli_lint_extra_args_after` | Extra args AFTER config args                                                                                                                                     |
+| `cli_lint_fix_arg_name`     | Fix/format trigger arg (e.g., `--fix`)                                                                                                                           |
+| `cli_lint_fix_remove_args`  | Args to remove in fix mode (e.g., `["--check"]`)                                                                                                                 |
+| `ignore_file_name`          | Ignore file (e.g., `.eslintignore`)                                                                                                                              |
+| `cli_lint_ignore_arg_name`  | Ignore file argument                                                                                                                                             |
+| `cli_version_arg_name`      | Version arg if not `--version`                                                                                                                                   |
+| `cli_version_extra_args`    | Extra args for version command                                                                                                                                   |
+| `cli_help_arg_name`         | Help arg if not `--help`                                                                                                                                         |
+| `cli_help_extra_args`       | Extra args for help command                                                                                                                                      |
+| `cli_help_extra_commands`   | Extra commands for help                                                                                                                                          |
 
 ### Error Parsing (fill for accurate error counts)
 

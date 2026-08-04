@@ -10,6 +10,7 @@ import multiprocessing as mp
 import os
 import shutil
 import sys
+import threading
 from shutil import copytree
 from uuid import uuid1
 
@@ -396,9 +397,14 @@ class Megalinter:
             linter.run()
 
     def process_linters_parallel(self, active_linters, linters_do_fixes):
-        linter_groups = []
+        initial_groups = []
+        follower_groups = {}
         if linters_do_fixes is True:
-            # Group linters by descriptor, but only keep them together when at least one can apply fixes
+            # Fixer linters of a descriptor run first, serially in a single
+            # group (they modify files), then the descriptor's check-only
+            # linters are submitted as parallel single-linter groups once the
+            # fixers are done, so they lint the fixed sources without being
+            # needlessly serialized behind each other
             linters_by_descriptor = {}
             for linter in active_linters:
                 descriptor_active_linters = linters_by_descriptor.get(
@@ -406,25 +412,24 @@ class Megalinter:
                 )
                 descriptor_active_linters += [linter]
                 linters_by_descriptor[linter.descriptor_id] = descriptor_active_linters
-
-            linter_groups_without_fixes = []
-            for _descriptor_id, linters in linters_by_descriptor.items():
-                has_fixers = any(linter1.apply_fixes is True for linter1 in linters)
-                if has_fixers:
-                    linter_groups += [linters]
+            for descriptor_id, linters in linters_by_descriptor.items():
+                fixers = [linter1 for linter1 in linters if linter1.apply_fixes is True]
+                checkers = [
+                    linter1 for linter1 in linters if linter1.apply_fixes is not True
+                ]
+                if len(fixers) > 0:
+                    initial_groups += [fixers]
+                    if len(checkers) > 0:
+                        follower_groups[descriptor_id] = [
+                            [linter1] for linter1 in checkers
+                        ]
                 else:
-                    for linter in linters:
-                        linter_groups_without_fixes += [[linter]]
-
-            linter_groups = linter_factory.sort_linters_groups_by_speed(linter_groups)
-            linter_groups += linter_factory.sort_linters_groups_by_speed(
-                linter_groups_without_fixes
-            )
+                    initial_groups += [[linter1] for linter1 in checkers]
         else:
             # If no fixes are applied, we don't care to run same languages linters at the same time
             for linter in active_linters:
-                linter_groups += [[linter]]
-            linter_groups = linter_factory.sort_linters_groups_by_speed(linter_groups)
+                initial_groups += [[linter]]
+        initial_groups = linter_factory.sort_linters_groups_by_speed(initial_groups)
         # Execute linters in asynchronous pool to improve overall performances
         if config.exists(self.request_id, "PARALLEL_PROCESS_NUMBER"):
             process_number = int(config.get(self.request_id, "PARALLEL_PROCESS_NUMBER"))
@@ -445,18 +450,50 @@ class Megalinter:
             initargs=(config.get(self.request_id),),
         )
         pool_results = []
+        lock = threading.RLock()
+        pending_groups = {"count": 0}
+        all_groups_processed = threading.Event()
+
+        def on_group_processed(descriptor_id):
+            # Runs in the pool result-handler thread: schedule the check-only
+            # linters of a descriptor once its fixers group is done (or failed)
+            with lock:
+                for follower_group in follower_groups.pop(descriptor_id, []):
+                    submit_group(follower_group)
+                pending_groups["count"] -= 1
+                if pending_groups["count"] == 0:
+                    all_groups_processed.set()
+
+        def submit_group(linter_group):
+            with lock:
+                pending_groups["count"] += 1
+                descriptor_id = linter_group[0].descriptor_id
+                result = pool.apply_async(
+                    run_linters,
+                    args=[linter_group, self.request_id],
+                    callback=lambda res, d=descriptor_id: on_group_processed(d),
+                    error_callback=lambda exc, d=descriptor_id: on_group_processed(d),
+                )
+                pool_results.append(result)
+
         # Display linter groups to be processed in parallel if logging is in DEBUG mode
         if logging.getLogger().isEnabledFor(logging.DEBUG):
             logging.debug("[MegaLinter] Linter groups to be processed in parallel:")
-            for linter_group in linter_groups:
+            for linter_group in initial_groups:
                 logging.debug(
                     f"- {linter_group[0].descriptor_id}: "
                     + str([linter2.name for linter2 in linter_group])
                 )
+            for descriptor_id, groups in follower_groups.items():
+                logging.debug(
+                    f"- {descriptor_id} (after fixers): "
+                    + str([group[0].name for group in groups])
+                )
         # Add linter groups to pool
-        for linter_group in linter_groups:
-            result = pool.apply_async(run_linters, args=[linter_group, self.request_id])
-            pool_results += [result]
+        for linter_group in initial_groups:
+            submit_group(linter_group)
+        if len(pool_results) > 0:
+            all_groups_processed.wait()
         pool.close()
         pool.join()
         # Update self.linters objects with results from async processing

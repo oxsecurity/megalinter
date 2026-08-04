@@ -45,11 +45,13 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      # Push the built image to ghcr.io (same-repo branches only)
+      packages: write
     # Prevent duplicate run from happening when a forked push is committed
     if: (github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository) && !contains(github.event.head_commit.message, 'skip deploy')
     timeout-minutes: 90
     outputs:
-      image-tag: ${{ steps.meta.outputs.tags }}
+      image-tag: ${{ steps.setup.outputs.image-tag }}
       image-version: ${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
       dockerfile: ${{ steps.setup.outputs.dockerfile }}
       cache-scope: ${{ steps.setup.outputs.cache-scope }}
@@ -86,7 +88,27 @@ jobs:
           META_CREATED: ${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.created'] }}
           META_VERSION: ${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
           META_REVISION: ${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.revision'] }}
+          META_TAGS: ${{ steps.meta.outputs.tags }}
+          EVENT_NAME: ${{ github.event_name }}
+          GH_REPOSITORY: ${{ github.repository }}
+          GH_SHA: ${{ github.sha }}
         run: |
+          # Image handoff to consumer jobs:
+          # - push event (same-repo branch): push to ghcr.io and let consumers
+          #   docker pull (parallel layer download, no tarball load)
+          # - pull_request event (forked PR: GITHUB_TOKEN cannot push packages):
+          #   export a tarball and hand it over as a workflow artifact
+          if [[ "${EVENT_NAME}" == "push" ]]; then
+            {
+              echo "image-tag=ghcr.io/${GH_REPOSITORY}-dev:${GH_SHA}"
+              echo "docker-outputs=type=image,push=true"
+            } >> "${GITHUB_OUTPUT}"
+          else
+            {
+              echo "image-tag=${META_TAGS}"
+              echo "docker-outputs=type=docker,dest=/tmp/megalinter-image.tar,compression=zstd,compression-level=3,force-compression=true"
+            } >> "${GITHUB_OUTPUT}"
+          fi
           if [[ "${COMMIT_MSG}" == *"quick build"* ]]; then
             {
               echo "is-quick=true"
@@ -115,7 +137,16 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@bb05f3f5519dd87d3ba754cc423b652a5edd6d2c # v4
 
-      # Build once and export the image as a Docker tarball.
+      - name: Login to GitHub Container Registry
+        if: github.event_name == 'push'
+        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Build once and hand the image over to consumer jobs (see setup step:
+      # ghcr.io push for same-repo branches, tarball artifact for forked PRs).
       # DEV is read-only on the layer cache: it consumes the warm caches
       # produced by the BETA workflow on main and never writes back. Writing
       # a fresh cache for a throwaway PR branch costs ~14 min of cache export
@@ -131,9 +162,9 @@ jobs:
           build-args: ${{ steps.setup.outputs.build-args }}
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: ${{ steps.setup.outputs.image-tag }}
           cache-from: type=gha,scope=beta-main,ignore-error=true
-          outputs: type=docker,dest=/tmp/megalinter-image.tar,compression=zstd,compression-level=3,force-compression=true
+          outputs: ${{ steps.setup.outputs.docker-outputs }}
         timeout-minutes: 90
 
       # Fallback: if the cached build above failed (e.g. GHA cache returned a
@@ -150,11 +181,12 @@ jobs:
           build-args: ${{ steps.setup.outputs.build-args }}
           secrets: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          tags: ${{ steps.meta.outputs.tags }}
-          outputs: type=docker,dest=/tmp/megalinter-image.tar,compression=zstd,compression-level=3,force-compression=true
+          tags: ${{ steps.setup.outputs.image-tag }}
+          outputs: ${{ steps.setup.outputs.docker-outputs }}
         timeout-minutes: 90
 
       - name: Upload image artifact
+        if: github.event_name != 'push'
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: megalinter-image
@@ -172,6 +204,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      packages: read
       # Require writing security events to upload SARIF file to security tab
       security-events: write
     timeout-minutes: 120
@@ -191,13 +224,33 @@ jobs:
           sudo rm -rf /opt/hostedtoolcache/CodeQL
           sudo rm -rf /opt/hostedtoolcache/go
 
-      - name: Download image artifact
+      - name: Login to GitHub Container Registry
+        if: github.event_name == 'push'
+        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Pull Docker image from ghcr.io
+        if: github.event_name == 'push'
+        shell: bash
+        env:
+          DOCKER_IMAGE: ${{ needs.build.outputs.image-tag }}
+        run: |
+          set -euo pipefail
+          docker pull "${DOCKER_IMAGE}"
+          docker image ls
+
+      - name: Download image artifact (forked PR)
+        if: github.event_name != 'push'
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
         with:
           name: megalinter-image
           path: /tmp
 
-      - name: Load Docker image
+      - name: Load Docker image (forked PR)
+        if: github.event_name != 'push'
         shell: bash
         run: |
           set -euo pipefail
@@ -258,6 +311,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      packages: read
     if: needs.build.outputs.is-quick != 'true'
     timeout-minutes: 30
     steps:
@@ -276,13 +330,33 @@ jobs:
           sudo rm -rf /opt/hostedtoolcache/CodeQL
           sudo rm -rf /opt/hostedtoolcache/go
 
-      - name: Download image artifact
+      - name: Login to GitHub Container Registry
+        if: github.event_name == 'push'
+        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Pull Docker image from ghcr.io
+        if: github.event_name == 'push'
+        shell: bash
+        env:
+          DOCKER_IMAGE: ${{ needs.build.outputs.image-tag }}
+        run: |
+          set -euo pipefail
+          docker pull "${DOCKER_IMAGE}"
+          docker image ls
+
+      - name: Download image artifact (forked PR)
+        if: github.event_name != 'push'
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
         with:
           name: megalinter-image
           path: /tmp
 
-      - name: Load Docker image
+      - name: Load Docker image (forked PR)
+        if: github.event_name != 'push'
         shell: bash
         run: |
           set -euo pipefail
@@ -323,6 +397,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      packages: read
     if: needs.build.outputs.is-quick != 'true'
     timeout-minutes: 30
     steps:
@@ -341,13 +416,33 @@ jobs:
           sudo rm -rf /opt/hostedtoolcache/CodeQL
           sudo rm -rf /opt/hostedtoolcache/go
 
-      - name: Download image artifact
+      - name: Login to GitHub Container Registry
+        if: github.event_name == 'push'
+        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Pull Docker image from ghcr.io
+        if: github.event_name == 'push'
+        shell: bash
+        env:
+          DOCKER_IMAGE: ${{ needs.build.outputs.image-tag }}
+        run: |
+          set -euo pipefail
+          docker pull "${DOCKER_IMAGE}"
+          docker image ls
+
+      - name: Download image artifact (forked PR)
+        if: github.event_name != 'push'
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
         with:
           name: megalinter-image
           path: /tmp
 
-      - name: Load Docker image
+      - name: Load Docker image (forked PR)
+        if: github.event_name != 'push'
         shell: bash
         run: |
           set -euo pipefail
@@ -378,6 +473,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      packages: read
       security-events: write
     timeout-minutes: 30
     steps:
@@ -396,13 +492,33 @@ jobs:
           sudo rm -rf /opt/hostedtoolcache/CodeQL
           sudo rm -rf /opt/hostedtoolcache/go
 
-      - name: Download image artifact
+      - name: Login to GitHub Container Registry
+        if: github.event_name == 'push'
+        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Pull Docker image from ghcr.io
+        if: github.event_name == 'push'
+        shell: bash
+        env:
+          DOCKER_IMAGE: ${{ needs.build.outputs.image-tag }}
+        run: |
+          set -euo pipefail
+          docker pull "${DOCKER_IMAGE}"
+          docker image ls
+
+      - name: Download image artifact (forked PR)
+        if: github.event_name != 'push'
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
         with:
           name: megalinter-image
           path: /tmp
 
-      - name: Load Docker image
+      - name: Load Docker image (forked PR)
+        if: github.event_name != 'push'
         shell: bash
         run: |
           set -euo pipefail

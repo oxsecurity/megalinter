@@ -77,6 +77,7 @@ Verify the implementation by regenerating from descriptors, building the linter 
 
 - Linter behavior differs between host and Alpine container → trust the container; adjust descriptor.
 - `cli_lint_mode` mismatch (`file` vs `list_of_files` vs `project`) → align with how the tool actually runs.
+- Failure isolated to one mode (`test_success_<mode>_lint_mode` / `test_failure_<mode>_lint_mode`) → the tool doesn't support that mode; drop it from `supported_cli_lint_modes` (unsupported modes are auto-skipped). Success/failure fixtures now run once per declared mode.
 - Missing config file referenced by `config_file_name` → add to `.automation/test/<test_folder>/`.
 - Dockerfile install fails on ARM → use `install_override` per platform.
 

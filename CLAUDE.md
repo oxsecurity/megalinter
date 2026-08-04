@@ -83,7 +83,7 @@ The core pattern: each linter is defined in a YAML descriptor file (`megalinter/
 
 Tests live in `megalinter/tests/test_megalinter/`. Each linter has a test file in `linters/` (e.g., `python_ruff_test.py`).
 
-Linter tests extend `LinterTestRoot` which provides standard `test_success`, `test_failure`, `test_get_linter_version`, and `test_get_linter_help` methods. Test fixtures are in `.automation/test/`.
+Linter tests extend `LinterTestRoot`, which provides `test_get_linter_version`, `test_get_linter_help`, `test_report_tap`, `test_report_sarif`, and one success + one failure test **per CLI lint mode** (`test_success_file_lint_mode`, `test_success_list_of_files_lint_mode`, `test_success_project_lint_mode`, and the matching `test_failure_*_lint_mode`). Each per-mode test is skipped unless the mode is listed in the descriptor's `supported_cli_lint_modes`; additionally, when a linter supports both `file` and `list_of_files`, the `file`-mode tests are skipped as a CI optimization (`list_of_files` covers the same path). Test fixtures are in `.automation/test/`.
 
 **Linter tests must run inside Docker containers** since linters aren't installed locally:
 

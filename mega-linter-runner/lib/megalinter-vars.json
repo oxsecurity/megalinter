@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "variable_count": 2467,
+    "variable_count": 2468,
     "categories": {
       "ACTION": 4,
       "ACTION_ACTIONLINT": 16,
@@ -54,7 +54,7 @@
       "ENV": 4,
       "ENV_DOTENV_LINTER": 13,
       "FILEIO_REPORTER": 2,
-      "GENERAL": 54,
+      "GENERAL": 55,
       "GHERKIN": 4,
       "GHERKIN_GHERKIN_LINT": 15,
       "GITHUB_COMMENT_REPORTER": 5,
@@ -31366,6 +31366,15 @@
       ],
       "category": "VBDOTNET",
       "section": "PREPOSTCOMMANDS"
+    },
+    "VERSION_GET_AT_RUNTIME": {
+      "name": "VERSION_GET_AT_RUNTIME",
+      "type": "boolean",
+      "title": "Get linter versions at runtime",
+      "description": "Force calling the linter executables to collect their version, instead of using the versions collected at MegaLinter Docker image build time. Slower, but useful if you install additional or different linter versions with PRE_COMMANDS",
+      "default": false,
+      "category": "GENERAL",
+      "section": "PERFORMANCE"
     },
     "XML_FILTER_REGEX_EXCLUDE": {
       "name": "XML_FILTER_REGEX_EXCLUDE",

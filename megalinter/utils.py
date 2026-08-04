@@ -92,6 +92,31 @@ def get_descriptor_dir():
         return descriptor_dir
 
 
+PREBUILT_LINTER_VERSIONS = {"loaded": False, "versions": {}}
+
+
+# Returns the linter versions collected at Docker build time
+# (/megalinter-descriptors/linter-versions.json), empty dict outside Docker
+def get_prebuilt_linter_versions():
+    if PREBUILT_LINTER_VERSIONS["loaded"] is False:
+        versions_file = os.path.join(get_descriptor_dir(), "linter-versions.json")
+        if os.path.isfile(versions_file):
+            try:
+                with open(versions_file, "r", encoding="utf-8") as json_file:
+                    PREBUILT_LINTER_VERSIONS["versions"] = json.load(json_file)
+            except json.JSONDecodeError as e:
+                logging.warning(f"Unable to load {versions_file}: {str(e)}")
+        PREBUILT_LINTER_VERSIONS["loaded"] = True
+    return PREBUILT_LINTER_VERSIONS["versions"]
+
+
+def get_prebuilt_linter_version(linter_name):
+    version = get_prebuilt_linter_versions().get(linter_name)
+    if version and version != "0.0.0" and version != "ERROR":
+        return version
+    return None
+
+
 _excluded_directories_cache: dict[str, set[str]] = {}
 
 

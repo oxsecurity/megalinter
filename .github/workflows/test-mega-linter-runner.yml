@@ -1,7 +1,12 @@
 ---
 name: "Test mega-linter-runner"
-on: 
+on:
+  # push is restricted to main: feature branches are already covered by the
+  # pull_request event, and unrestricted push triggered a duplicate run for
+  # every commit of every open PR
   push:
+    branches:
+      - main
     paths-ignore:
       - .github/CONTRIBUTING.md
       - CHANGELOG.md

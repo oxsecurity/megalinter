@@ -1314,6 +1314,15 @@ class Linter:
     def get_linter_version(self):
         if self.linter_version_cache is not None:
             return self.linter_version_cache
+        # Use the version collected at Docker build time when available, to
+        # avoid spawning one "--version" process per linter at runtime.
+        # VERSION_GET_AT_RUNTIME=true forces calling the linter executable
+        # (used by test cases and the linters auto-update job)
+        if config.get(self.request_id, "VERSION_GET_AT_RUNTIME", "false") != "true":
+            prebuilt_version = utils.get_prebuilt_linter_version(self.linter_name)
+            if prebuilt_version is not None:
+                self.linter_version_cache = prebuilt_version
+                return self.linter_version_cache
         version_output = self.get_linter_version_output()
         reg = self.version_extract_regex
         if isinstance(reg, str):

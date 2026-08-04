@@ -80,6 +80,7 @@ Verify the implementation by regenerating from descriptors, building the linter 
 - **Fixture extensions** don't match descriptor → fix fixture filename.
 - **Linter behavior differs** between host and Alpine container → trust the container result; adjust descriptor accordingly.
 - **`cli_lint_mode` mismatch** (`file` vs `list_of_files` vs `project`) → align with how the tool actually operates.
+- **`supported_cli_lint_modes` declares a mode the tool can't run** → a `test_success_*_lint_mode` / `test_failure_*_lint_mode` test now runs for every declared mode. If one fails only in a specific mode, the tool likely doesn't support that mode — remove it from `supported_cli_lint_modes` (unsupported modes are auto-skipped).
 - **Missing config file** referenced by `config_file_name` → add it to `.automation/test/<test_folder>/`.
 - **Dockerfile install fails on ARM** → use `install_override` per platform.
 
