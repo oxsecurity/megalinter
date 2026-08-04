@@ -8,7 +8,7 @@ description: Setup MegaLinter in 5 minutes thanks to its assisted installation t
 
 # Quick Start
 
-- **With a coding agent**: install the [MegaLinter agent skills](https://megalinter.io/latest/install-agent-skills/) with `npx skills add oxsecurity/megalinter --all -y`, then ask your agent to _"setup megalinter"_.
+- **With a coding agent**: install the [MegaLinter agent skills](https://megalinter.io/latest/install-agent-skills/) with `npx skills add oxsecurity/megalinter/skills --all -y`, then ask your agent to _"setup megalinter"_.
 - **Or with the interactive wizard**: run `npx mega-linter-runner --install` to generate configuration files (you need [Node.js](https://nodejs.org/en/) installed).
 - Commit, push, and create a pull request.
 - Watch!

@@ -10,7 +10,7 @@ description: Setup MegaLinter in 5 minutes thanks to its assisted installation t
 
 Two assisted ways to setup MegaLinter on your repository:
 
-- **With a coding agent**: install the [MegaLinter agent skills](https://megalinter.io/latest/install-agent-skills/) with `npx skills add oxsecurity/megalinter --all -y`, then ask your agent to _"setup megalinter"_.
+- **With a coding agent**: install the [MegaLinter agent skills](https://megalinter.io/latest/install-agent-skills/) with `npx skills add oxsecurity/megalinter/skills --all -y`, then ask your agent to _"setup megalinter"_.
 - **With the interactive wizard**: run `npx mega-linter-runner --install` at the root of your repository and answer questions, it will generate ready to use configuration files for MegaLinter :)
 
 ![Runner Install](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true)
