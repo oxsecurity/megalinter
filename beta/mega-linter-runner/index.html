@@ -12075,8 +12075,13 @@
 </tr>
 <tr>
 <td><code>-f</code> <br> <code>--flavor</code></td>
-<td>Set this parameter to use a <a href="https://megalinter.io/flavors/">MegaLinter flavor</a></td>
+<td>Set this parameter to use a <a href="https://megalinter.io/flavors/">MegaLinter flavor</a>. If not set, the <code>MEGALINTER_FLAVOR</code> property of <code>.mega-linter.yml</code> is used when defined</td>
 <td><code>all</code></td>
+</tr>
+<tr>
+<td><code>-l</code> <br> <code>--linter</code></td>
+<td>Run a single linter using its standalone MegaLinter image (e.g. <code>--linter PYTHON_RUFF</code>). Reports are isolated in <code>megalinter-reports/&lt;linter_key&gt;</code>, so several standalone runs can be launched in parallel. Mutually exclusive with <code>--flavor</code> and <code>--image</code></td>
+<td><!-- --></td>
 </tr>
 <tr>
 <td><code>-d</code> <br> <code>--image</code></td>
@@ -12090,13 +12095,13 @@
 </tr>
 <tr>
 <td><code>--fix</code></td>
-<td>Automatically apply formatting and fixes in your files</td>
+<td>Automatically apply formatting and fixes in your files. If <code>.mega-linter.yml</code> defines an <code>APPLY_FIXES</code> value other than <code>none</code>, that value is used instead of <code>all</code></td>
 <td><!-- --></td>
 </tr>
 <tr>
 <td><code>-r</code> <br> <code>--release</code></td>
-<td>Allows to override MegaLinter version used</td>
-<td><code>v5</code></td>
+<td>Allows to override MegaLinter version used. If not set, the <code>MEGALINTER_VERSION</code> property of <code>.mega-linter.yml</code> is used when defined</td>
+<td><code>latest</code></td>
 </tr>
 <tr>
 <td><code>-h</code> <br> <code>--help</code></td>
@@ -12135,7 +12140,37 @@
 </tr>
 <tr>
 <td><code>-i</code> <br> <code>--install</code></td>
-<td>Generate <a href="https://megalinter.io/beta/install-assisted/">MegaLinter local configuration</a> files and CI/CD workflows</td>
+<td>Generate <a href="https://megalinter.io/beta/install-assisted/">MegaLinter local configuration</a> files and CI/CD workflows. Combine with <code>--no-prompt</code> and <code>--setup-*</code> options to run non-interactively; pre-existing files are then backed up as <code>&lt;file&gt;.megalinter-setup.bak</code> before being overwritten</td>
+<td><!-- --></td>
+</tr>
+<tr>
+<td><code>--setup-ci</code></td>
+<td>With <code>--install</code>: CI/CD system to generate a workflow file for (<code>gitHubActions</code>, <code>gitLabCI</code>, <code>azure</code>, <code>bitbucket</code>, <code>jenkins</code>, <code>droneCI</code>, <code>concourse</code>, <code>other</code>)</td>
+<td><code>gitHubActions</code></td>
+</tr>
+<tr>
+<td><code>--setup-copy-paste</code></td>
+<td>With <code>--install</code>: enable detection of excessive copy-pastes (jscpd). Use <code>--no-setup-copy-paste</code> to disable</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>--setup-spelling-mistakes</code></td>
+<td>With <code>--install</code>: enable detection of spelling mistakes (cspell). Use <code>--no-setup-spelling-mistakes</code> to disable</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>--setup-default-branch</code></td>
+<td>With <code>--install</code>: default branch of the repository</td>
+<td><code>main</code></td>
+</tr>
+<tr>
+<td><code>--setup-validate-all-code-base</code></td>
+<td>With <code>--install</code>: <code>all</code> to lint all sources on each run, <code>diff</code> to lint only updated files</td>
+<td><code>all</code></td>
+</tr>
+<tr>
+<td><code>--setup-ox</code></td>
+<td>With <code>--install</code>: visit OX Security to secure your software supply chain. Use <code>--no-setup-ox</code> to skip</td>
 <td><!-- --></td>
 </tr>
 <tr>
@@ -12185,6 +12220,12 @@ mega-linter-runner<span class="w"> </span>--flavor<span class="w"> </span>python
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># Upgrade configuration files non-interactively</span>
 mega-linter-runner<span class="w"> </span>--upgrade<span class="w"> </span>--no-prompt
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Install MegaLinter configuration non-interactively (e.g. from a coding agent or a script)</span>
+mega-linter-runner<span class="w"> </span>--install<span class="w"> </span>--no-prompt<span class="w"> </span>--flavor<span class="w"> </span>python<span class="w"> </span>--setup-ci<span class="w"> </span>gitHubActions<span class="w"> </span>--setup-validate-all-code-base<span class="w"> </span>diff<span class="w"> </span>--fix
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Run a single linter with its standalone image, on selected files only</span>
+mega-linter-runner<span class="w"> </span>--linter<span class="w"> </span>PYTHON_RUFF<span class="w"> </span>src/module_a.py<span class="w"> </span>src/module_b.py
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># Use Podman as engine</span>
 mega-linter-runner<span class="w"> </span>--flavor<span class="w"> </span>documentation<span class="w"> </span>--container-engine<span class="w"> </span>podman

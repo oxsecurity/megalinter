@@ -11769,6 +11769,9 @@
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo "Some command called after running MegaLinter linters"</span>
 <span class="w">    </span><span class="nt">run_after_linters</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"> </span><span class="c1"># Will be run after the execution of the linters themselves</span>
 </code></pre></div>
+<blockquote>
+<p><strong>Note</strong>: to keep them lightweight, MegaLinter images do not embed a compilation toolchain. If a pre-command needs to compile native code (e.g. a pip package distributed only as source), install the toolchain first within your pre-command: <code>apk add --no-cache gcc make musl-dev</code>.</p>
+</blockquote>
 <table>
 <thead>
 <tr>

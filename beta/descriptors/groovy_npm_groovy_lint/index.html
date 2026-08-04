@@ -12423,14 +12423,15 @@ Note:<span class="w"> </span>command-line<span class="w"> </span>arguments<span 
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
 <li>Dockerfile commands :
-<div class="highlight"><pre><span></span><code><span class="k">ENV</span><span class="w"> </span><span class="nv">JAVA_HOME_17</span><span class="o">=</span>/usr/lib/jvm/java-17-openjdk
+<div class="highlight"><pre><span></span><code><span class="k">ENV</span><span class="w"> </span><span class="nv">JAVA_HOME</span><span class="o">=</span>/usr/lib/jvm/java-21-openjdk
+<span class="k">ENV</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$JAVA_HOME</span><span class="s2">/bin:</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span><span class="s2">"</span>
 <span class="c"># renovate: datasource=npm depName=npm-groovy-lint</span>
 <span class="k">ARG</span><span class="w"> </span><span class="nv">NPM_GROOVY_LINT_VERSION</span><span class="o">=</span><span class="m">18</span>.0.0
 </code></pre></div></li>
 </ul>
 <ul>
 <li>APK packages (Linux):<ul>
-<li><a href="https://pkgs.alpinelinux.org/packages?branch=v3.24&amp;arch=x86_64&amp;name=openjdk17">openjdk17</a></li>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=v3.24&amp;arch=x86_64&amp;name=openjdk21">openjdk21</a></li>
 </ul>
 </li>
 <li>NPM packages (node.js):<ul>

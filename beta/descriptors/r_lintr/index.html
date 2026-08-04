@@ -12226,25 +12226,24 @@ you<span class="w"> </span>could<span class="w"> </span>try<span class="w"> </sp
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
 <li>Dockerfile commands :
-<div class="highlight"><pre><span></span><code><span class="k">RUN</span><span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/home/r-library<span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code><span class="c"># R packages are compiled from source during installation: the</span>
+<span class="c"># toolchain and -dev headers are only needed within this RUN and</span>
+<span class="c"># evicted from the final layers</span>
+<span class="k">RUN</span><span class="w"> </span>apk<span class="w"> </span>add<span class="w"> </span>--no-cache<span class="w"> </span>--virtual<span class="w"> </span>.r-build-deps<span class="w"> </span>gcc<span class="w"> </span>g++<span class="w"> </span>make<span class="w"> </span>musl-dev<span class="w"> </span>linux-headers<span class="w"> </span>libffi-dev<span class="w"> </span>libxml2-dev<span class="w"> </span>R-dev<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/home/r-library<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>cp<span class="w"> </span>-r<span class="w"> </span>/usr/lib/R/library/<span class="w"> </span>/home/r-library/<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>Rscript<span class="w"> </span>-e<span class="w"> </span><span class="s2">"install.packages(c('lintr','purrr'), repos = 'https://cloud.r-project.org/')"</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>R<span class="w"> </span>-e<span class="w"> </span><span class="s2">"install.packages(list.dirs('/home/r-library',recursive = FALSE), repos = NULL, type = 'source')"</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>R<span class="w"> </span>-e<span class="w"> </span><span class="s2">"install.packages(list.dirs('/home/r-library',recursive = FALSE), repos = NULL, type = 'source')"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>apk<span class="w"> </span>del<span class="w"> </span>.r-build-deps
 </code></pre></div></li>
 </ul>
 <ul>
 <li>APK packages (Linux):<ul>
-<li><a href="https://pkgs.alpinelinux.org/packages?branch=v3.24&amp;arch=x86_64&amp;name=gcc">gcc</a></li>
-<li><a href="https://pkgs.alpinelinux.org/packages?branch=v3.24&amp;arch=x86_64&amp;name=g++">g++</a></li>
 <li><a href="https://pkgs.alpinelinux.org/packages?branch=v3.24&amp;arch=x86_64&amp;name=libcurl">libcurl</a></li>
-<li><a href="https://pkgs.alpinelinux.org/packages?branch=v3.24&amp;arch=x86_64&amp;name=libffi-dev">libffi-dev</a></li>
 <li><a href="https://pkgs.alpinelinux.org/packages?branch=v3.24&amp;arch=x86_64&amp;name=libgcc">libgcc</a></li>
-<li><a href="https://pkgs.alpinelinux.org/packages?branch=v3.24&amp;arch=x86_64&amp;name=libxml2-dev">libxml2-dev</a></li>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=v3.24&amp;arch=x86_64&amp;name=libxml2">libxml2</a></li>
 <li><a href="https://pkgs.alpinelinux.org/packages?branch=v3.24&amp;arch=x86_64&amp;name=libxml2-utils">libxml2-utils</a></li>
-<li><a href="https://pkgs.alpinelinux.org/packages?branch=v3.24&amp;arch=x86_64&amp;name=linux-headers">linux-headers</a></li>
 <li><a href="https://pkgs.alpinelinux.org/packages?branch=v3.24&amp;arch=x86_64&amp;name=R">R</a></li>
-<li><a href="https://pkgs.alpinelinux.org/packages?branch=v3.24&amp;arch=x86_64&amp;name=R-dev">R-dev</a></li>
-<li><a href="https://pkgs.alpinelinux.org/packages?branch=v3.24&amp;arch=x86_64&amp;name=R-doc">R-doc</a></li>
 </ul>
 </li>
 </ul>

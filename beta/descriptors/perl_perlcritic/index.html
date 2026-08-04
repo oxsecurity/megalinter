@@ -12260,8 +12260,12 @@
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=github-tags depName=skaji/cpm</span>
 <span class="k">ARG</span><span class="w"> </span><span class="nv">PERL_PERLCRITIC_VERSION</span><span class="o">=</span>v1.1.4
 
-<span class="k">RUN</span><span class="w"> </span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://raw.githubusercontent.com/skaji/cpm/refs/tags/<span class="si">${</span><span class="nv">PERL_PERLCRITIC_VERSION</span><span class="si">}</span>/cpm<span class="w"> </span><span class="p">|</span><span class="w"> </span>perl<span class="w"> </span>-<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>--show-build-log-on-failure<span class="w"> </span>--without-build<span class="w"> </span>--without-test<span class="w"> </span>--without-runtime<span class="w"> </span>Perl::Critic<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/root/.perl-cpm
+<span class="c"># cpm compiles XS modules during installation: the toolchain is only</span>
+<span class="c"># needed within this RUN and evicted from the final layers</span>
+<span class="k">RUN</span><span class="w"> </span>apk<span class="w"> </span>add<span class="w"> </span>--no-cache<span class="w"> </span>--virtual<span class="w"> </span>.perl-build-deps<span class="w"> </span>gcc<span class="w"> </span>make<span class="w"> </span>musl-dev<span class="w"> </span>perl-dev<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://raw.githubusercontent.com/skaji/cpm/refs/tags/<span class="si">${</span><span class="nv">PERL_PERLCRITIC_VERSION</span><span class="si">}</span>/cpm<span class="w"> </span><span class="p">|</span><span class="w"> </span>perl<span class="w"> </span>-<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>--show-build-log-on-failure<span class="w"> </span>--without-build<span class="w"> </span>--without-test<span class="w"> </span>--without-runtime<span class="w"> </span>Perl::Critic<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/root/.perl-cpm<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>apk<span class="w"> </span>del<span class="w"> </span>.perl-build-deps
 </code></pre></div></li>
 </ul>
 <h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>

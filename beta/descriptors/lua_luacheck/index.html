@@ -12482,21 +12482,23 @@ Links:
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=github-tags depName=cvega/luarocks</span>
 <span class="k">ARG</span><span class="w"> </span><span class="nv">LUA_LUACHECK_VERSION</span><span class="o">=</span><span class="m">3</span>.3.1
 
-<span class="k">RUN</span><span class="w"> </span>wget<span class="w"> </span>--tries<span class="o">=</span><span class="m">5</span><span class="w"> </span>https://github.com/cvega/luarocks/archive/v<span class="si">${</span><span class="nv">LUA_LUACHECK_VERSION</span><span class="si">}</span>-super-linter.tar.gz<span class="w"> </span>-O<span class="w"> </span>-<span class="w"> </span>-q<span class="w"> </span><span class="p">|</span><span class="w"> </span>tar<span class="w"> </span>-xzf<span class="w"> </span>-<span class="w"> </span><span class="se">\</span>
+<span class="c"># luarocks compiles native rocks during installation: the toolchain is</span>
+<span class="c"># only needed within this RUN and evicted from the final layers</span>
+<span class="k">RUN</span><span class="w"> </span>apk<span class="w"> </span>add<span class="w"> </span>--no-cache<span class="w"> </span>--virtual<span class="w"> </span>.lua-build-deps<span class="w"> </span>gcc<span class="w"> </span>make<span class="w"> </span>musl-dev<span class="w"> </span>lua5.3-dev<span class="w"> </span>readline-dev<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>wget<span class="w"> </span>--tries<span class="o">=</span><span class="m">5</span><span class="w"> </span>https://github.com/cvega/luarocks/archive/v<span class="si">${</span><span class="nv">LUA_LUACHECK_VERSION</span><span class="si">}</span>-super-linter.tar.gz<span class="w"> </span>-O<span class="w"> </span>-<span class="w"> </span>-q<span class="w"> </span><span class="p">|</span><span class="w"> </span>tar<span class="w"> </span>-xzf<span class="w"> </span>-<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>luarocks-<span class="si">${</span><span class="nv">LUA_LUACHECK_VERSION</span><span class="si">}</span>-super-linter<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>./configure<span class="w"> </span>--with-lua-include<span class="o">=</span>/usr/include/lua5.3<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>-b<span class="w"> </span>install<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>..<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-r<span class="w"> </span>luarocks-<span class="si">${</span><span class="nv">LUA_LUACHECK_VERSION</span><span class="si">}</span>-super-linter/<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>luarocks<span class="w"> </span>install<span class="w"> </span>luacheck<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>apk<span class="w"> </span>del<span class="w"> </span>.lua-build-deps
 </code></pre></div></li>
 </ul>
 <ul>
 <li>APK packages (Linux):<ul>
 <li><a href="https://pkgs.alpinelinux.org/packages?branch=v3.24&amp;arch=x86_64&amp;name=lua5.3">lua5.3</a></li>
-<li><a href="https://pkgs.alpinelinux.org/packages?branch=v3.24&amp;arch=x86_64&amp;name=lua5.3-dev">lua5.3-dev</a></li>
-<li><a href="https://pkgs.alpinelinux.org/packages?branch=v3.24&amp;arch=x86_64&amp;name=readline-dev">readline-dev</a></li>
 <li><a href="https://pkgs.alpinelinux.org/packages?branch=v3.24&amp;arch=x86_64&amp;name=openssl">openssl</a></li>
 </ul>
 </li>
