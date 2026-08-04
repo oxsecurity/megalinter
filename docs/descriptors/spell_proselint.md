@@ -142,8 +142,6 @@ ARG PIP_PROSELINT_VERSION=0.16.0
 ```
 
 - APK packages (Linux):
-  - [build-base](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=build-base)
-  - [re2-dev](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=re2-dev)
-  - [py3-pybind11-dev](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=py3-pybind11-dev)
+  - [re2](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=re2)
 - PIP packages (Python):
   - [proselint==0.16.0](https://pypi.org/project/proselint/0.16.0)

@@ -100,22 +100,21 @@ you could try ‘??lintr’
 
 - Dockerfile commands :
 ```dockerfile
-RUN mkdir -p /home/r-library \
+# R packages are compiled from source during installation: the
+# toolchain and -dev headers are only needed within this RUN and
+# evicted from the final layers
+RUN apk add --no-cache --virtual .r-build-deps gcc g++ make musl-dev linux-headers libffi-dev libxml2-dev R-dev \
+    && mkdir -p /home/r-library \
     && cp -r /usr/lib/R/library/ /home/r-library/ \
     && Rscript -e "install.packages(c('lintr','purrr'), repos = 'https://cloud.r-project.org/')" \
-    && R -e "install.packages(list.dirs('/home/r-library',recursive = FALSE), repos = NULL, type = 'source')"
+    && R -e "install.packages(list.dirs('/home/r-library',recursive = FALSE), repos = NULL, type = 'source')" \
+    && apk del .r-build-deps
 
 ```
 
 - APK packages (Linux):
-  - [gcc](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=gcc)
-  - [g++](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=g++)
   - [libcurl](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=libcurl)
-  - [libffi-dev](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=libffi-dev)
   - [libgcc](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=libgcc)
-  - [libxml2-dev](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=libxml2-dev)
+  - [libxml2](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=libxml2)
   - [libxml2-utils](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=libxml2-utils)
-  - [linux-headers](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=linux-headers)
   - [R](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=R)
-  - [R-dev](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=R-dev)
-  - [R-doc](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=R-doc)

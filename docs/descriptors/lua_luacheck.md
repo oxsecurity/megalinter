@@ -301,21 +301,23 @@ Links:
 # renovate: datasource=github-tags depName=cvega/luarocks
 ARG LUA_LUACHECK_VERSION=3.3.1
 
-RUN wget --tries=5 https://github.com/cvega/luarocks/archive/v${LUA_LUACHECK_VERSION}-super-linter.tar.gz -O - -q | tar -xzf - \
+# luarocks compiles native rocks during installation: the toolchain is
+# only needed within this RUN and evicted from the final layers
+RUN apk add --no-cache --virtual .lua-build-deps gcc make musl-dev lua5.3-dev readline-dev \
+    && wget --tries=5 https://github.com/cvega/luarocks/archive/v${LUA_LUACHECK_VERSION}-super-linter.tar.gz -O - -q | tar -xzf - \
     && cd luarocks-${LUA_LUACHECK_VERSION}-super-linter \
     && ./configure --with-lua-include=/usr/include/lua5.3 \
     && make \
     && make -b install \
     && cd .. && rm -r luarocks-${LUA_LUACHECK_VERSION}-super-linter/ \
     && luarocks install luacheck \
-    && cd /
+    && cd / \
+    && apk del .lua-build-deps
 
 ```
 
 - APK packages (Linux):
   - [lua5.3](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=lua5.3)
-  - [lua5.3-dev](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=lua5.3-dev)
-  - [readline-dev](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=readline-dev)
   - [openssl](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=openssl)
 
 ## Known errors and resolutions
