@@ -1,6 +1,10 @@
 ---
 name: megalinter-setup
 description: Install or upgrade MegaLinter on a repository. Use when the user wants to add MegaLinter to a project, set up linting CI, update MegaLinter configuration or version, or says "install megalinter", "setup linting", "add code quality checks". Always goes through npx mega-linter-runner (--install or --upgrade), then refines .mega-linter.yml.
+argument-hint: "[install|upgrade] [flavor, e.g. python|javascript|all]"
+allowed-tools: Bash, Read, Grep, Glob, Edit, Write, WebFetch, Skill, AskUserQuestion
+user-invocable: true
+licence: MegaLinter by OX Security, Copyright 2026 - https://megalinter.io/
 ---
 
 # MegaLinter setup
@@ -74,5 +78,7 @@ If a target file already exists, ask the user before overwriting it. If your pla
 ## 5. Wrap up
 
 - Show the user the generated/updated files.
-- Suggest a first check: run the `megalinter-check` skill.
+- Suggest the two ways to see MegaLinter in action (first install and upgrade alike), and offer to do it for them:
+  - **Run MegaLinter locally** through the `megalinter-check` skill (local mode) to preview and fix errors before pushing anything.
+  - **Create a pull request** with the generated/updated files (commit on the current branch if it is already a feature branch, otherwise on a new branch — never on the default branch —, push, open the PR), then run the `megalinter-check` skill (watch mode) on the created PR to watch the CI job results and fix the errors.
 - Do not commit or push without user confirmation, and never on the default branch.

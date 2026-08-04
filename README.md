@@ -19,6 +19,7 @@
 ![GitHub release](https://img.shields.io/github/v/release/oxsecurity/megalinter?sort=semver)
 [![Docker Pulls](https://img.shields.io/badge/docker%20pulls-16.5M-blue)](https://megalinter.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
+[![Coding Agents](https://img.shields.io/badge/Coding%20Agents-compatible-blueviolet?logo=githubcopilot&logoColor=white)](https://megalinter.io/latest/coding-agents/)
 [![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?cacheSeconds=3600)](https://github.com/oxsecurity/megalinter/stargazers/)
 [![MegaLinter](https://github.com/oxsecurity/megalinter/workflows/MegaLinter/badge.svg?branch=main)](https://github.com/oxsecurity/megalinter/actions?query=workflow%3AMegaLinter+branch%3Amain)
 [![codecov](https://codecov.io/gh/oxsecurity/megalinter/branch/main/graph/badge.svg)](https://codecov.io/gh/oxsecurity/megalinter)
@@ -36,7 +37,7 @@ MegaLinter is an **open-source** tool for **CI/CD workflows** that analyzes the 
 
 Supports [**63** languages](#languages), [**21** formats](#formats), [**19** tooling formats](#tooling-formats), and is **ready to use out of the box** as a GitHub Action or with any CI system. It is **highly configurable** and **free for all uses**.
 
-MegaLinter has **native integrations** with many major CI/CD tools.
+MegaLinter has **native integrations** with popular CI/CD tools and is compliant with most **Coding Agents**.
 
 [![GitHub](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/github.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitHubCommentReporter.md)
 [![GitLab](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/gitlab.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitlabCommentReporter.md)
@@ -48,6 +49,22 @@ MegaLinter has **native integrations** with many major CI/CD tools.
 [![Docker](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/docker.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/install-docker.md)
 [![SARIF](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/sarif.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/SarifReporter.md)
 [![Grafana](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/grafana.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/ApiReporter.md)
+
+[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/claude.png?raw=true" alt="Claude Code" height="72px">](https://github.com/oxsecurity/megalinter/tree/main/docs/coding-agents.md)
+[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/cursor.png?raw=true" alt="Cursor" height="72px">](https://github.com/oxsecurity/megalinter/tree/main/docs/coding-agents.md)
+[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/github-copilot.png?raw=true" alt="GitHub Copilot CLI" height="72px">](https://github.com/oxsecurity/megalinter/tree/main/docs/coding-agents.md)
+[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/codex.png?raw=true" alt="Codex" height="72px">](https://github.com/oxsecurity/megalinter/tree/main/docs/coding-agents.md)
+[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/antigravity.png?raw=true" alt="Antigravity" height="72px">](https://github.com/oxsecurity/megalinter/tree/main/docs/coding-agents.md)
+[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/opencode.png?raw=true" alt="OpenCode" height="72px">](https://github.com/oxsecurity/megalinter/tree/main/docs/coding-agents.md)
+[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/gemini-cli.png?raw=true" alt="Gemini CLI" height="72px">](https://github.com/oxsecurity/megalinter/tree/main/docs/coding-agents.md)
+[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/windsurf.png?raw=true" alt="Windsurf" height="72px">](https://github.com/oxsecurity/megalinter/tree/main/docs/coding-agents.md)
+[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/cline.png?raw=true" alt="Cline" height="72px">](https://github.com/oxsecurity/megalinter/tree/main/docs/coding-agents.md)
+[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/roo-code.png?raw=true" alt="Roo Code" height="72px">](https://github.com/oxsecurity/megalinter/tree/main/docs/coding-agents.md)
+[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/kilo-code.png?raw=true" alt="Kilo Code" height="72px">](https://github.com/oxsecurity/megalinter/tree/main/docs/coding-agents.md)
+[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/amp.png?raw=true" alt="Amp" height="72px">](https://github.com/oxsecurity/megalinter/tree/main/docs/coding-agents.md)
+[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/goose.png?raw=true" alt="Goose" height="72px">](https://github.com/oxsecurity/megalinter/tree/main/docs/coding-agents.md)
+[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/openhands.png?raw=true" alt="OpenHands" height="72px">](https://github.com/oxsecurity/megalinter/tree/main/docs/coding-agents.md)
+[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/qwen-code.png?raw=true" alt="Qwen Code" height="72px">](https://github.com/oxsecurity/megalinter/tree/main/docs/coding-agents.md)
 
 
 <!-- welcome-phrase-end -->
@@ -179,7 +196,8 @@ description: Setup MegaLinter in 5 minutes thanks to its assisted installation t
 -->
 ## Quick Start
 
-- Run `npx mega-linter-runner --install` to generate configuration files (you need [Node.js](https://nodejs.org/en/) installed).
+- **With a coding agent**: install the [MegaLinter agent skills](https://megalinter.io/latest/install-agent-skills/) with `npx skills add oxsecurity/megalinter`, then ask your agent to _"setup megalinter"_.
+- **Or with the interactive wizard**: run `npx mega-linter-runner --install` to generate configuration files (you need [Node.js](https://nodejs.org/en/) installed).
 - Commit, push, and create a pull request.
 - Watch!
 
@@ -199,7 +217,7 @@ description: Setup MegaLinter in 5 minutes thanks to its assisted installation t
 <!-- markdown-headers
 ---
 title: Use MegaLinter with coding agents
-description: Setup, run and fix MegaLinter errors from Claude Code, Cursor, GitHub Copilot CLI, Codex, Antigravity, OpenCode and other coding agents, with token-efficient sub-agents orchestration
+description: Setup, run and fix MegaLinter errors from Claude Code, Cursor, GitHub Copilot CLI, Codex, Gemini CLI, Antigravity, OpenCode and other coding agents, with token-efficient sub-agents orchestration
 ---
 -->
 ## Coding Agents
@@ -212,6 +230,15 @@ MegaLinter is designed to work hand in hand with your coding agent:
 [<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/codex.png?raw=true" alt="Codex" height="48px">](https://openai.com/codex/)
 [<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/antigravity.png?raw=true" alt="Antigravity" height="48px">](https://antigravity.google/)
 [<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/opencode.png?raw=true" alt="OpenCode" height="48px">](https://opencode.ai)
+[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/gemini-cli.png?raw=true" alt="Gemini CLI" height="48px">](https://github.com/google-gemini/gemini-cli)
+[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/windsurf.png?raw=true" alt="Windsurf" height="48px">](https://windsurf.com)
+[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/cline.png?raw=true" alt="Cline" height="48px">](https://cline.bot)
+[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/roo-code.png?raw=true" alt="Roo Code" height="48px">](https://roocode.com)
+[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/kilo-code.png?raw=true" alt="Kilo Code" height="48px">](https://kilocode.ai)
+[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/amp.png?raw=true" alt="Amp" height="48px">](https://ampcode.com)
+[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/goose.png?raw=true" alt="Goose" height="48px">](https://block.github.io/goose/)
+[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/openhands.png?raw=true" alt="OpenHands" height="48px">](https://www.all-hands.dev)
+[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/qwen-code.png?raw=true" alt="Qwen Code" height="48px">](https://github.com/QwenLM/qwen-code)
 
 ### Get started
 
@@ -244,22 +271,34 @@ On agents supporting sub-agents (Claude Code, OpenCode, GitHub Copilot custom ag
 flowchart TD
     U(["👤 You: <i>run megalinter and fix the errors</i>"]) --> O["🎯 megalinter<br/>(orchestrator skill)"]
     O -->|"no config found"| S["🛠️ megalinter-setup"]
-    S -->|"npx mega-linter-runner --install"| CFG[".mega-linter.yml<br/>+ CI workflow"]
+    S -->|"npx mega-linter-runner --install"| CFG[/".mega-linter.yml<br/>+ CI workflow"/]
     O --> C["🔍 megalinter-check"]
-    C -->|"watch mode"| W["👀 megalinter-watcher<br/>sub-agent, low-cost model"]
-    W --> CI["CI job logs<br/>GitHub / GitLab / Azure / Bitbucket"]
-    C -->|"local mode"| RUN["🐳 megalinter-runner<br/>sub-agent, low-cost model"]
-    RUN --> IMG["MegaLinter Docker image<br/>docker or podman"]
-    W --> ERR["📋 Compact error list<br/>grouped by linter"]
+    C -->|"watch mode"| W[["👀 megalinter-watcher<br/>sub-agent, low-cost model"]]
+    W --> CI[/"CI job logs<br/>GitHub / GitLab / Azure / Bitbucket"/]
+    C -->|"local mode"| RUN[["🐳 megalinter-runner<br/>sub-agent, low-cost model"]]
+    RUN --> IMG[/"MegaLinter Docker image<br/>docker or podman"/]
+    W --> ERR[/"📋 Compact error list<br/>grouped by linter"/]
     RUN --> ERR
     ERR --> F["🔧 megalinter-fix"]
-    F -->|"one sub-agent per failing linter,<br/>in parallel"| FX1["🤖 megalinter-fixer<br/>+ python_ruff fix guide"]
-    F --> FX2["🤖 megalinter-fixer<br/>+ markdown_markdownlint fix guide"]
-    FX1 --> RES["✏️ Fixed files<br/>+ proposed rule disables"]
+    F -->|"one sub-agent per failing linter,<br/>in parallel"| FX1[["🤖 megalinter-fixer<br/>+ python_ruff fix guide"]]
+    F --> FX2[["🤖 megalinter-fixer<br/>+ markdown_markdownlint fix guide"]]
+    FX1 --> RES[/"✏️ Fixed files<br/>+ proposed rule disables"/]
     FX2 --> RES
     RES -->|"you confirm disables"| RC["♻️ Targeted re-check<br/>parallel standalone linter images"]
     RC -->|"errors remain (max 3 loops)"| F
     RC -->|"clean"| DONE(["✅ Commit on a branch<br/>(never on main)"])
+
+    classDef user fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#1b5e20
+    classDef skill fill:#ede7f6,stroke:#5e35b1,stroke-width:2px,color:#311b92
+    classDef subagent fill:#e3f2fd,stroke:#1976d2,stroke-width:2px,color:#0d47a1
+    classDef artifact fill:#fff8e1,stroke:#f9a825,stroke-width:1px,color:#5d4037
+    classDef recheck fill:#e0f2f1,stroke:#00897b,stroke-width:2px,color:#004d40
+
+    class U,DONE user
+    class O,S,C,F skill
+    class W,RUN,FX1,FX2 subagent
+    class CFG,CI,IMG,ERR,RES artifact
+    class RC recheck
 ```
 
 The fix guides combine information generated from the [linter descriptors](https://github.com/oxsecurity/megalinter/tree/main/megalinter/descriptors) (auto-fix support, rules documentation URLs, MegaLinter tuning variables) with curated fix, inline-disable and ignore instructions grounded in each linter's official documentation.
