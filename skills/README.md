@@ -8,7 +8,11 @@ Skills that make [MegaLinter](https://megalinter.io/) easy to drive from any cod
 npx skills add oxsecurity/megalinter/skills -s '*' -y --copy
 ```
 
-This installs the skills into your agent's configuration (e.g. `.claude/skills/`, `.cursor/`, `.codex/`).
+This installs the skills into the configuration of every coding agent detected on your machine (e.g. `.claude/skills/`, `.cursor/`, `.codex/`). To install them for a single agent only, target it with `-a` — e.g. for Claude Code, the skills land directly in `.claude/skills/`:
+
+```bash
+npx skills add oxsecurity/megalinter/skills -s '*' -a claude-code -y
+```
 
 ## Skills
 

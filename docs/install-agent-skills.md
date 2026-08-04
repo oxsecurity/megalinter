@@ -14,6 +14,12 @@ MegaLinter ships [**agent skills**](https://github.com/oxsecurity/megalinter/tre
 npx skills add oxsecurity/megalinter/skills -s '*' -y --copy
 ```
 
+This installs the four MegaLinter skills for every coding agent detected on your machine. To install them for a single agent only, target it with `-a` — e.g. for Claude Code, the skills land directly in `.claude/skills/`:
+
+```bash
+npx skills add oxsecurity/megalinter/skills -s '*' -a claude-code -y
+```
+
 Then just ask your agent to _"setup megalinter"_ or _"run megalinter and fix the errors"_. The skills handle:
 
 - **megalinter-setup**: install or upgrade MegaLinter on the repository (non-interactive `npx mega-linter-runner --install`)
