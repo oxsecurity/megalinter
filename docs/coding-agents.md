@@ -30,6 +30,14 @@ MegaLinter is designed to work hand in hand with your coding agent:
 
 Install the [MegaLinter agent skills](https://github.com/oxsecurity/megalinter/tree/main/skills) at the root of your repository:
 
+With **Claude Code** (the skills are copied directly into `.claude/skills/`):
+
+```bash
+npx skills add oxsecurity/megalinter/skills -s '*' -a claude-code -y
+```
+
+With **another coding agent**, replace `claude-code` with your agent's identifier (`cursor`, `github-copilot`, `codex`, `antigravity`, `opencode`... full list in the [skills CLI documentation](https://github.com/vercel-labs/skills#supported-agents)) — or let the CLI **detect your installed agents** and install the skills for all of them at once:
+
 ```bash
 npx skills add oxsecurity/megalinter/skills -s '*' -y --copy
 ```
