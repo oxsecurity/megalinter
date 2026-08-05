@@ -10,40 +10,48 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Breaking changes
 
-  - Removed 14 deprecated or long-disabled linters, and the `API`, `MAKEFILE` and `PUPPET` descriptors, which had no other linter left. MegaLinter does not provide Makefile and Puppet linting anymore.
-  - `REPOSITORY_GITLEAKS` has been removed: migrate to [REPOSITORY_BETTERLEAKS](https://megalinter.io/beta/descriptors/repository_betterleaks/), which reads your existing `.gitleaks.toml` and `.gitleaksignore` files unchanged.
-  - Configuration variables of removed linters remain valid in the JSON schema (flagged as deprecated) and are ignored at runtime, so existing `.mega-linter.yml` files keep validating. MegaLinter now displays a single notice listing every removed linter or descriptor found in your configuration, with a link to the new [Removed linters](https://megalinter.io/beta/removed-linters/) page.
+  - **Removed 14 deprecated or long-disabled linters**, and the `API`, `MAKEFILE` and `PUPPET` descriptors, which had no other linter left. MegaLinter does not provide Makefile and Puppet linting anymore. See the new [Removed linters](https://megalinter.io/beta/removed-linters/) page for the full list and suggested replacements.
+  - **`REPOSITORY_GITLEAKS` has been removed**: migrate to [REPOSITORY_BETTERLEAKS](https://megalinter.io/beta/descriptors/repository_betterleaks/), which reads your existing `.gitleaks.toml` and `.gitleaksignore` files unchanged.
+  - **Existing `.mega-linter.yml` files keep working**: configuration variables of removed linters are simply ignored (a single notice lists any found in your configuration) and remain valid in the JSON schema.
 
 - Core
 
-  - Forward excluded directories (`EXCLUDED_DIRECTORIES` + `ADDITIONAL_EXCLUDED_DIRECTORIES`) to linters running in `project` CLI lint mode through their native exclusion argument (e.g. trivy `--skip-dirs`, grype/syft `--exclude`, checkov `--skip-path`), via the new descriptor properties `cli_lint_mode_project_exclude_arg_name`, `cli_lint_mode_project_exclude_arg_value` and `cli_lint_mode_project_exclude_separator`. For tools without a usable exclusion flag, Python subclass workarounds forward the exclusions anyway: TruffleHog merges excluded directories into its `--exclude-paths` file (so it stops crawling `.git` and build caches), betterleaks gets a generated config extending the resolved one with allowlist path regexes, prettier / csharpier / npm-package-json-lint get generated ignore files merged with their defaults, devskim / bandit / gherkin-lint / luacheck / stylua get their exclusion arguments built with defaults preserved, jscpd / yamllint / rubocop / swiftlint / ls-lint get a generated config merging or inheriting the resolved one, markdownlint / v8r get generated ignore files alongside the defaults their flags would replace, clj-kondo gets an inline merged config, eslint's project mode drops `--no-ignore` so `--ignore-pattern` and config ignores apply, phpstan / php-cs-fixer get a generated config including or requiring the resolved one, and secretlint / sqlfluff / cljstyle / coffeelint get an ignore or config file temporarily written at the workspace root (removed after the run) since they only discover such files inside the analyzed repository. Directories identified from `FILTER_REGEX_EXCLUDE` (global, descriptor or linter scoped) literal prefixes are forwarded as exclusions too when they exist in the workspace. Each forwarded exclusion is traced in the linter's console log, and forwarding can be disabled globally with `FORWARD_EXCLUDED_DIRECTORIES: false` or per-linter with `<LINTER_KEY>_FORWARD_EXCLUDED_DIRECTORIES: false`. Default excluded directories now also include common build/cache folders (`.wireit`, `.turbo`, `.nx`, `.yarn/cache`, `.pnpm-store`, `.parcel-cache`, `.angular`, and the Salesforce CLI `.sf` / `.sfdx` state folders), the ">300 gitignored files" performance warning names the heaviest directories it found, and mega-linter-runner prints a hint when the mounted workspace contains well-known heavy folders. This can speed up local runs on workspaces containing build caches by several orders of magnitude, fixes [#8645](https://github.com/oxsecurity/megalinter/issues/8645)
-  - Add `megalinter/removed_linters.py` as the single source of truth for every linter and descriptor removed since v6, used both at runtime and by the build system, and generate a [Removed linters](https://megalinter.io/beta/removed-linters/) documentation page from it
-  - Migrate MegaLinter's internal log secret-masking engine from gitleaks' public ruleset to [betterleaks](https://github.com/betterleaks/betterleaks), removing the last internal dependency on gitleaks. The ruleset is pinned, tracked by renovate alongside the betterleaks linter, and vendored in minified form, removing a network call at every MegaLinter run. Redaction coverage nearly doubles (218 to 408 patterns)
+  - **Coding agents integration**: MegaLinter can now be driven by Claude Code, Cursor CLI, GitHub Copilot CLI, Codex and many other coding agents — see the new [Coding Agents](https://megalinter.io/beta/coding-agents/) documentation page
+    - Install the [MegaLinter agent skills](https://megalinter.io/beta/install-agent-skills/) with **`npx skills add oxsecurity/megalinter`**
+    - Then ask your agent to set up MegaLinter (`megalinter-setup`), watch CI or local runs (`megalinter-check`) or fix lint errors (`megalinter-fix`)
+  - **Excluded directories are now forwarded to project-mode linters**, massively speeding up local runs, fixes [#8645](https://github.com/oxsecurity/megalinter/issues/8645)
+    - Linters that scan the whole workspace by themselves (`REPOSITORY_TRIVY`, `REPOSITORY_CHECKOV`, `REPOSITORY_GRYPE`, `REPOSITORY_TRUFFLEHOG`, `REPOSITORY_SEMGREP` and 50+ others) used to crawl everything, including build caches and `node_modules`: a seconds-long CI lint could take **hours on a local checkout**
+    - MegaLinter now automatically passes the excluded directories (defaults, `EXCLUDED_DIRECTORIES`, `ADDITIONAL_EXCLUDED_DIRECTORIES`, and directories detected in `FILTER_REGEX_EXCLUDE`) to each of these linters, through its native exclusion flags or a generated ignore/config file
+    - Every forwarded exclusion is logged in the linter's console section, and the ">300 gitignored files" performance warning now names the heaviest directories it found
+    - Opt out globally with `FORWARD_EXCLUDED_DIRECTORIES: false`, or per linter with `<LINTER_KEY>_FORWARD_EXCLUDED_DIRECTORIES: false`
+  - **Default excluded directories** now also include common build/cache folders: `.wireit`, `.turbo`, `.nx`, `.yarn/cache`, `.pnpm-store`, `.parcel-cache`, `.angular`, and the Salesforce CLI `.sf` / `.sfdx` state folders
+  - **Much lighter Docker images**: the main image download shrinks by **9%**, flavors by **9% to 22%**, and standalone `megalinter-only-*` images are **35% to 65% smaller**
+    - If your `PRE_COMMANDS` compile native code: the compilation toolchain is no longer shipped in the images, install it back with `apk add --no-cache gcc make musl-dev`
+    - Main and flavor images, compressed download size on ghcr.io, linux/amd64 (before = v9.6.0, so deltas also include the linters removed in this version):
 
-  - Allow `FILTER_REGEX_INCLUDE` and `FILTER_REGEX_EXCLUDE` (global, per-descriptor and per-linter) to be defined as a list of regexes combined with a logical OR, so filter regexes can be appended across `EXTENDS` configs via `CONFIG_PROPERTIES_TO_APPEND`; single-string values remain fully supported, fixes [#8361](https://github.com/oxsecurity/megalinter/issues/8361)
-  - Add `ENABLE_DISABLE_LINTERS_PRIORITY` variable to let `DISABLE_LINTERS` override `ENABLE_LINTERS` when a linter is in both lists (e.g. to trim an inherited `ENABLE_LINTERS` list via `EXTENDS`), fixes [#8296](https://github.com/oxsecurity/megalinter/issues/8296)
-  - Add `supported_cli_lint_modes` descriptor property to declare which CLI lint modes (`file`, `list_of_files`, `project`) each linter supports, generate `success`/`failure` tests for every supported mode, and reject a `<LINTER>_CLI_LINT_MODE` override targeting an unsupported mode with an explicit error, fixes [#7120](https://github.com/oxsecurity/megalinter/issues/7120)
-  - Speed up CI by skipping the `file` CLI lint mode tests for linters that also support `list_of_files`, since `list_of_files` exercises the same code path more cheaply
-  - Improve parallel linters scheduling when fixes are applied: only the fixer linters of a descriptor now run serially in the same process, and the check-only linters of that descriptor are scheduled in parallel once the fixers are done, instead of being serialized behind each other (e.g. the PYTHON chain black+isort+ruff+pylint+mypy+flake8+bandit drops from a single ~100s sequence to fixers + the longest checker). Combined with the build-time versions manifest below, linting the MegaLinter repository itself went from 4m26s to 3m18s (-26%)
-  - Report linter versions from a manifest collected at Docker image build time instead of spawning one `--version` process per linter at runtime. New `VERSION_GET_AT_RUNTIME` configuration variable (env var or `.mega-linter.yml`) to force calling the linter executables, e.g. if PRE_COMMANDS install different linter versions. Test cases and the linters auto-update job always use runtime versions
-  - Display a distinct ☑️ status icon (instead of ⚠️) for linters that found errors but did not block the run because the error count stayed under `<LINTER>_DISABLE_ERRORS_IF_LESS_THAN`, and show the configured maximum as `(max N allowed)` in the console linter logs plus a new `Max errors` column in the console and Pull Request summary tables
-  - Add `API_REPORTER_PAYLOAD_FORMAT` variable (`auto`, `loki` or `default`) to force the payload format sent by API Reporter, instead of only deducing it from the endpoint URL
-  - Coding agents integration: add [MegaLinter agent skills](https://megalinter.io/beta/install-agent-skills/), installable in Claude Code, Cursor CLI, GitHub Copilot CLI, Codex, Antigravity, OpenCode and other coding agents with `npx skills add oxsecurity/megalinter` — `megalinter-setup`, `megalinter-check` (CI job watching on GitHub/GitLab/Azure/Bitbucket or local Docker runs) and `megalinter-fix` workflows plus a `megalinter` orchestrator, with per-linter fix guides generated from the YAML descriptors and sub-agents (installed on platforms supporting them, running on low-cost models) for token-efficient CI watching and parallel fixing. See the new [Coding Agents](https://megalinter.io/beta/coding-agents/) documentation page
-  - Add `MEGALINTER_FLAVOR` and `MEGALINTER_VERSION` properties to the `.mega-linter.yml` configuration schema, so the flavor and version of the MegaLinter Docker image can be pinned once in the repository configuration and reused by mega-linter-runner and the agent skills
-  - Skip the repository-wide enumeration of `.gitignore`d files when an explicit list of files is provided via `MEGALINTER_FILES_TO_LINT` (e.g. `mega-linter-runner [files...]`): the caller already chose the files to lint, and the enumeration could be expensive on large repositories
-  - Speed up MegaLinter startup by ~5 seconds on every run: LLM provider SDKs (langchain-openai, langchain-anthropic, google-genai, ...) are now imported lazily, only when LLM Advisor is enabled, instead of at every startup (`import megalinter` drops from ~7s to ~0.9s)
-  - Speed up standalone single-linter images (`megalinter-only-*`) startup: only the descriptor of the single linter is parsed instead of instantiating the 120+ linters of all descriptors, and plugins initialization (remote descriptor download + install commands) is skipped since a plugin can not provide the built-in single linter
-  - Lighter Docker images:
-    - LLM Advisor provider SDKs (langchain-openai, langchain-anthropic, langchain-google-genai, langchain-mistralai, langchain-ollama, langchain-deepseek, langchain-community) move to a new `llm` pip extra, installed in the main and flavor images but excluded from standalone `megalinter-only-*` images (~200 MB saved per standalone image); a standalone image with `LLM_ADVISOR_ENABLED` now logs an explicit message instead of loading the advisor
-    - The compilation toolchain (gcc, make, musl-dev, libffi-dev) is no longer kept in the final image layers: it is installed as an apk virtual package only while pip/gem install steps may build native extensions, then removed (~110-150 MB saved per image). Pre-commands needing to compile native code can install it back with `apk add --no-cache gcc make musl-dev`. Descriptors whose linters need the toolchain at runtime (RUST clippy) or in custom install commands (PERL cpanm, LUA luarocks) now declare it explicitly
-    - Standalone images no longer ship the ~45 MB `__pycache__` layer produced by the build-time version priming (bytecode is regenerated in the container writable layer)
-    - New descriptor property `install.apk_build` for apk packages needed only while pip/gem packages compile native extensions: they join the virtual `.ml-build-deps` package and are removed from the final layers. Used by SPELL_PROSELINT (build-base, re2-dev, py3-pybind11-dev needed to build google-re2, with only the `re2` runtime library kept), which was keeping a full C++ toolchain in every flavor image
-    - GROOVY_NPM_GROOVY_LINT now uses the same OpenJDK 21 as the other Java-based linters instead of shipping its own OpenJDK 17 (~300 MB saved in the main image and groovy-including flavors)
-    - Development headers and per-descriptor build toolchains no longer ship in the final layers: LUA luarocks, PERL cpm and R `install.packages` compilations now install their toolchain (gcc, g++, make, musl-dev, `*-dev` headers) as an apk virtual package removed at the end of their own install step; `ruby-dev` moved to the shared build-time virtual package, `ruby-rdoc` and `R-doc` are not installed anymore, and XML_XMLLINT keeps only the `libxml2` runtime library instead of `libxml2-dev`
-    - Python linter venvs are now installed through the uv cache in hardlink mode: identical wheels shared by several venvs (setuptools, black, mypy, ...) are stored once on disk instead of once per venv
-    - Extended node_modules pruning: all Markdown files plus `test`, `tests`, `__tests__`, `docs` and `.github` directories are removed from `/node-deps`, along with the leftover `/root/.npm` cache
-    - Removed a stray `cpplint` Python venv that was mistakenly declared in the CSS_STYLELINT descriptor
-    - Measured on linux/amd64 (uncompressed `docker images` size, before = previous beta measured the same day with the same CI jobs):
+      | Image                      |  Before |   After | Delta |
+      |----------------------------|--------:|--------:|------:|
+      | `megalinter` (main)        | 4.55 GB | 4.13 GB |   -9% |
+      | `megalinter-c_cpp`         | 1.61 GB | 1.35 GB |  -16% |
+      | `megalinter-ci_light`      |  724 MB |  657 MB |   -9% |
+      | `megalinter-cupcake`       | 2.52 GB | 2.24 GB |  -11% |
+      | `megalinter-documentation` | 1.47 GB | 1.21 GB |  -18% |
+      | `megalinter-dotnet`        | 2.23 GB | 1.86 GB |  -17% |
+      | `megalinter-dotnetweb`     | 2.25 GB | 1.88 GB |  -17% |
+      | `megalinter-formatters`    |  936 MB |  849 MB |   -9% |
+      | `megalinter-go`            | 1.55 GB | 1.35 GB |  -13% |
+      | `megalinter-java`          | 1.59 GB | 1.32 GB |  -17% |
+      | `megalinter-javascript`    | 1.49 GB | 1.23 GB |  -18% |
+      | `megalinter-php`           | 1.51 GB | 1.26 GB |  -17% |
+      | `megalinter-python`        | 1.61 GB | 1.26 GB |  -22% |
+      | `megalinter-ruby`          | 1.49 GB | 1.22 GB |  -18% |
+      | `megalinter-rust`          | 1.99 GB | 1.80 GB |  -10% |
+      | `megalinter-salesforce`    | 2.09 GB | 1.87 GB |  -10% |
+      | `megalinter-security`      | 1.30 GB | 1.17 GB |  -10% |
+      | `megalinter-swift`         | 1.51 GB | 1.24 GB |  -18% |
+      | `megalinter-terraform`     | 1.59 GB | 1.30 GB |  -18% |
+
+    - Standalone single-linter images, uncompressed size on linux/amd64 (before = previous beta):
 
       | Image                                    |  Before |  After | Delta |
       |------------------------------------------|--------:|-------:|------:|
@@ -60,11 +68,29 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
       | `megalinter-only-lua_luacheck`           |  652 MB | 252 MB |  -61% |
       | `megalinter-only-xml_xmllint`            |  645 MB | 246 MB |  -62% |
 
-    - Flavor and main images benefit from the same changes: `megalinter-python` flavor 5.40 GB → 5.10 GB (-6% vs beta), and the main image drops the duplicate OpenJDK 17 (~330 MB) plus deduplicated venv wheels. MegaLinter runtime is unaffected (full-codebase CI job stays in its usual 10-14 min range)
+  - **Faster startup on every run** (~5 seconds saved)
+    - Linter versions now come from a manifest built into the Docker image, instead of calling every linter's `--version`
+    - LLM Advisor libraries are only loaded when `LLM_ADVISOR_ENABLED` is true
+    - Set the new `VERSION_GET_AT_RUNTIME: true` variable if your `PRE_COMMANDS` install different linter versions and you want the really installed versions reported
+  - **Faster linting when fixes are applied** (`APPLY_FIXES`): the check-only linters of a language now run in parallel as soon as its fixer linters are done, instead of all linters of the language running one after another
+  - **Faster standalone images and file-list runs**: `megalinter-only-*` images only parse the descriptor of their single linter, and the repository-wide `.gitignore` enumeration is skipped when an explicit list of files is passed (e.g. `mega-linter-runner [files...]` on a large repository)
+  - **Runtime speed-ups combined**, measured linting the MegaLinter repository itself:
+
+    | Measure                                          | Before | After | Delta |
+    |--------------------------------------------------|-------:|------:|------:|
+    | Full MegaLinter run (all linters, fixes applied) |  4m26s | 3m18s |  -26% |
+    | MegaLinter startup (`import megalinter`)         |    ~7s | ~0.9s |  -87% |
+
+  - **Better secrets masking in logs**, now powered by the [betterleaks](https://github.com/betterleaks/betterleaks) ruleset: redaction coverage nearly doubles (218 to 408 patterns), with no more network call at startup
+  - `FILTER_REGEX_INCLUDE` and `FILTER_REGEX_EXCLUDE` (global, per-descriptor and per-linter) can now be defined as **a list of regexes** combined with a logical OR, so filter regexes can be appended across `EXTENDS` configs via `CONFIG_PROPERTIES_TO_APPEND`; single-string values remain fully supported, fixes [#8361](https://github.com/oxsecurity/megalinter/issues/8361)
+  - New **`ENABLE_DISABLE_LINTERS_PRIORITY`** variable to let `DISABLE_LINTERS` override `ENABLE_LINTERS` when a linter is in both lists (e.g. to trim an inherited `ENABLE_LINTERS` list via `EXTENDS`), fixes [#8296](https://github.com/oxsecurity/megalinter/issues/8296)
+  - New **`MEGALINTER_FLAVOR`** and **`MEGALINTER_VERSION`** properties in `.mega-linter.yml`, to pin the flavor and version of the MegaLinter Docker image once in the repository and have them reused by mega-linter-runner and the agent skills
+  - Display a **distinct ☑️ status icon** (instead of ⚠️) for linters that found errors without blocking the run because the error count stayed under `<LINTER>_DISABLE_ERRORS_IF_LESS_THAN`, and show the configured maximum in the console and Pull Request summary tables
+  - A `<LINTER>_CLI_LINT_MODE` override targeting a lint mode the linter does not support is now **rejected with an explicit error** instead of failing at lint time, fixes [#7120](https://github.com/oxsecurity/megalinter/issues/7120)
 
 - New linters
 
-  - Add [SALESFORCE_CODE_ANALYZER_FLOW](https://megalinter.io/beta/descriptors/salesforce_code_analyzer_flow/), the Salesforce Code Analyzer v5 Flow Scanner engine that audits Salesforce Flows for security issues
+  - Add **[SALESFORCE_CODE_ANALYZER_FLOW](https://megalinter.io/beta/descriptors/salesforce_code_analyzer_flow/)**, the Salesforce Code Analyzer v5 Flow Scanner engine that audits Salesforce Flows for security issues
 
 - Disabled linters
 
@@ -93,55 +119,90 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Fixes
 
-  - Declare `supported_cli_lint_modes` on `ACTION_ZIZMOR`, `BASH_SHFMT` and `GO_REVIVE` (`file`, `list_of_files`): they were falling back to a `file`-only default, so their real `list_of_files` runtime mode was never covered by the generated lint mode tests
-  - Exclude `megalinter-reports/` from `REPOSITORY_SECRETLINT` scanning: its project-mode `**/*` glob could race with reports written by other linters running in parallel (e.g. transient `jscpd-report.html`), crashing with ENOENT
-  - Fix linters using `lint_all_other_linters_files` (e.g. `SPELL_CSPELL`) linting zero files when run in their standalone `megalinter-only-*` Docker image: the single-linter override now falls back to linting all collected files when the descriptor defines no file extensions
-  - Make `test_api_output` resilient to remote server outages: probe several public echo endpoints, run the test with the ones that are up, retry with another server when a post fails, and skip the test when none of them is reachable, as a remote outage is not a MegaLinter issue
-  - Allow `CSS_STYLELINT_COMMAND_REMOVE_ARGUMENTS` to remove `--config-basedir` (which is not added anymore when the user requests its removal or defines its own value in `CSS_STYLELINT_ARGUMENTS`), and stop raising a `ValueError` when an argument listed in `<LINTER>_COMMAND_REMOVE_ARGUMENTS` is not in the command line, fixes [#8552](https://github.com/oxsecurity/megalinter/issues/8552)
-  - Treat zero matching SARIF findings as a valid result without logging the entire report, fixes [#8295](https://github.com/oxsecurity/megalinter/issues/8295)
-  - Remove invalid SARIF fixes with empty `artifactChanges` arrays before report aggregation, fixes [#8474](https://github.com/oxsecurity/megalinter/issues/8474)
-  - Write `REPOSITORY_CHECKOV`'s transient GitHub-config scan directory (`branch_protection_rules.json` and similar) to a hidden `.checkov-github-conf` subfolder of the MegaLinter report folder instead of the repository root, so the artifact stays out of the linted tree (gitignored, excluded from file discovery, and skipped by project-mode linters), extending the earlier ansible-lint race-condition fix (#8092)
-  - Make remote configuration loading resilient to transient network failures by adding a request timeout and bounded retries with backoff when fetching `MEGALINTER_CONFIG` and `EXTENDS` files over HTTP (fixes intermittent `config_test` failures caused by `raw.githubusercontent.com` CDN cache lag)
-  - Disable `TERRAFORM_TERRASCAN` (upstream repo archived by Tenable, unmaintained) and `SQL_TSQLLINT` (no upstream release since 2024-09), as both ship unpatched CVEs with no prospect of a fixed release
-  - Fix `SARIF_TO_HUMAN` producing empty linter logs when the bundled `sarif-fmt` binary crashes by building it from source on Alpine and falling back to raw SARIF on conversion failure (#8294)
-  - Keep the Docker Pulls badge in `docs/index.md` in sync by having `docker_stats.py` also update the hardcoded badge total in `.automation/build.py`
-  - Fix outdated links in `docs/descriptors/repository_kingfisher.md`
-  - Fix `LINTER_RULES_PATH` not being used to resolve config files for linters using `active_only_if_file_found` (e.g. `REPOSITORY_LS_LINT`, `SPELL_PROSELINT`, `SPELL_VALE`), fixes [#8416](https://github.com/oxsecurity/megalinter/issues/8416)
-  - Honor `EXCLUDED_DIRECTORIES` and `ADDITIONAL_EXCLUDED_DIRECTORIES` in changed-files mode (`VALIDATE_ALL_CODEBASE: false`), so files inside excluded directories are pruned from the `git diff` file list the same way they are during full-codebase validation ([#8360](https://github.com/oxsecurity/megalinter/issues/8360))
-  - Declare `COPYPASTE_JSCPD` as `linux/amd64` only: since jscpd v5 the tool is a Rust binary shipped through per-platform npm packages, and upstream publishes no `linux-arm64-musl` target, so it exits with `Unsupported platform linux/arm64` on the Alpine-based ARM images
+  - Restore **multi-arch `megalinter-only-*` Docker images**: they were mistakenly published for a single architecture, linux/amd64 + linux/arm64 are back
+  - Fix linters relying on other linters' file lists (e.g. `SPELL_CSPELL`) **linting zero files** when run through their standalone `megalinter-only-*` Docker image
+  - Fix **`LINTER_RULES_PATH`** not being used to resolve config files for linters using `active_only_if_file_found` (e.g. `REPOSITORY_LS_LINT`, `SPELL_PROSELINT`, `SPELL_VALE`), fixes [#8416](https://github.com/oxsecurity/megalinter/issues/8416)
+  - Honor `EXCLUDED_DIRECTORIES` and `ADDITIONAL_EXCLUDED_DIRECTORIES` in **changed-files mode** (`VALIDATE_ALL_CODEBASE: false`), the same way they are honored during full-codebase validation ([#8360](https://github.com/oxsecurity/megalinter/issues/8360))
+  - Make **remote configuration loading** (`MEGALINTER_CONFIG` and `EXTENDS` files fetched over HTTP) resilient to transient network failures with a request timeout and retries
+  - Allow **`CSS_STYLELINT_COMMAND_REMOVE_ARGUMENTS`** to remove `--config-basedir`, and stop raising an error when an argument listed in `<LINTER>_COMMAND_REMOVE_ARGUMENTS` is not in the command line, fixes [#8552](https://github.com/oxsecurity/megalinter/issues/8552)
+  - Treat **zero matching SARIF findings** as a valid result without logging the entire report, fixes [#8295](https://github.com/oxsecurity/megalinter/issues/8295)
+  - Remove **invalid SARIF fixes** with empty `artifactChanges` arrays before report aggregation, fixes [#8474](https://github.com/oxsecurity/megalinter/issues/8474)
+  - Fix **`SARIF_TO_HUMAN`** producing empty linter logs when the SARIF-to-text conversion crashed; raw SARIF is now shown as a fallback (#8294)
+  - Keep **`REPOSITORY_CHECKOV`'s transient GitHub-configuration scan files** (`branch_protection_rules.json` and similar) out of the linted repository — they are now written inside the report folder, so they no longer appear in other linters' results
+  - Fix a **`REPOSITORY_SECRETLINT` crash** (ENOENT) when it scanned report files being written at the same time by other linters
+  - `COPYPASTE_JSCPD` now runs on **linux/amd64 only**: jscpd v5 provides no ARM64 binary compatible with MegaLinter images, so it always failed with `Unsupported platform linux/arm64` on ARM
 
 - Reporters
+
+  - New **`API_REPORTER_PAYLOAD_FORMAT`** variable (`auto`, `loki` or `default`) to force the payload format sent by the API Reporter, instead of only deducing it from the endpoint URL
 
 - Flavors
 
 - Doc
 
-  - Home page: mention Coding Agents compliance in the welcome phrase, display the supported coding agent icons next to the CI/CD integrations, and add a "Coding Agents compatible" badge to the shields.io badges list
-  - Quick Start: setting up MegaLinter with a coding agent (`npx skills add oxsecurity/megalinter` then _"setup megalinter"_) is now the first suggested option
-  - Coding Agents page: add Gemini CLI, Windsurf, Cline, Roo Code, Kilo Code, Amp, Goose, OpenHands and Qwen Code to the compatible coding agents, and restyle the sub-agents orchestration mermaid diagram with explicit node colors and shapes per category (user, skills, sub-agents, artifacts) so it stays readable with the website theme
-  - megalinter-setup skill: after install or upgrade, suggest either running MegaLinter locally (megalinter-check in local mode) or creating a pull request and then watching its CI results with megalinter-check
+  - **Home page**: mention Coding Agents compliance in the welcome phrase, display the supported coding agent icons next to the CI/CD integrations, and add a "Coding Agents compatible" badge
+  - **Quick Start**: setting up MegaLinter with a coding agent (`npx skills add oxsecurity/megalinter` then _"setup megalinter"_) is now the first suggested option
+  - **Coding Agents page**: add Gemini CLI, Windsurf, Cline, Roo Code, Kilo Code, Amp, Goose, OpenHands and Qwen Code to the compatible coding agents
+  - **megalinter-setup skill**: after install or upgrade, suggest either running MegaLinter locally or creating a pull request and then watching its CI results with megalinter-check
+  - Fix outdated links in `docs/descriptors/repository_kingfisher.md`
 
 - mega-linter-runner
 
-  - Non-interactive installation: `--install` can now run without prompts using `--no-prompt` and the new `--setup-*` options (`--setup-ci`, `--setup-copy-paste`, `--setup-spelling-mistakes`, `--setup-default-branch`, `--setup-validate-all-code-base`, `--setup-ox`) combined with the existing `--flavor`, `--release` and `--fix` flags; pre-existing configuration/workflow files are backed up as `<file>.megalinter-setup.bak` before being overwritten, so customizations can be merged back
-  - New `--linter <LINTER_KEY>` option to run a single linter using its standalone `megalinter-only-<linter_key>` Docker image, with an optional list of files to lint; reports are isolated in `megalinter-reports/<linter_key>` so several standalone runs can execute in parallel
-  - Flavor and version resolution now reads `MEGALINTER_FLAVOR` and `MEGALINTER_VERSION` from `.mega-linter.yml` when `--flavor`/`--release` are not passed on the command line (falling back to `all`/`latest`), and the install generator writes both properties in the generated configuration
-  - `--fix` now respects an `APPLY_FIXES` value (other than `none`) defined in `.mega-linter.yml` instead of overriding it with `all`
-  - `--upgrade` also bumps a pinned `MEGALINTER_VERSION` property of `.mega-linter.yml` to the current major version
-  - Skip `docker pull` when the requested version is a pinned release tag (`vX.Y.Z`, immutable) and the image is already available locally, removing a useless registry round-trip
+  - **Non-interactive installation**: `--install` can now run without prompts
+    - Use `--no-prompt` with the new `--setup-*` options (`--setup-ci`, `--setup-copy-paste`, `--setup-spelling-mistakes`, `--setup-default-branch`, `--setup-validate-all-code-base`, `--setup-ox`) and the existing `--flavor`, `--release` and `--fix` flags
+    - Pre-existing configuration/workflow files are backed up as `<file>.megalinter-setup.bak` before being overwritten, so customizations can be merged back
+  - New **`--linter <LINTER_KEY>`** option to run a single linter using its standalone `megalinter-only-<linter_key>` Docker image, with an optional list of files to lint
+    - Reports are isolated in `megalinter-reports/<linter_key>`, so several standalone runs can execute in parallel
+  - **Flavor and version resolution** now reads `MEGALINTER_FLAVOR` and `MEGALINTER_VERSION` from `.mega-linter.yml` when `--flavor`/`--release` are not passed on the command line, and the install generator writes both properties in the generated configuration
+  - **`--fix`** now respects an `APPLY_FIXES` value (other than `none`) defined in `.mega-linter.yml` instead of overriding it with `all`
+  - **`--upgrade`** also bumps a pinned `MEGALINTER_VERSION` property of `.mega-linter.yml` to the current major version
+  - **Skip `docker pull`** when the requested version is a pinned release tag (`vX.Y.Z`, immutable) and the image is already available locally, removing a useless registry round-trip
+  - Print a hint before mounting the workspace when it contains **well-known heavy folders** (build caches, package stores), pointing at `SKIP_CLI_LINT_MODES=project` to keep local runs fast
 
 - Dev
 
-  - Mark the repository's internal Claude Code skills (`.claude/skills/`) as `internal` so `npx skills add oxsecurity/megalinter` only offers the four MegaLinter agent skills from the `skills/` folder
-  - Fix the `/build` contribution skill being accidentally gitignored by the `build/` packaging pattern, so it is now actually versioned
+  - Add **`megalinter/removed_linters.py`** as the single source of truth for every linter and descriptor removed since v6, used both at runtime and by the build system, and generate the [Removed linters](https://megalinter.io/beta/removed-linters/) documentation page from it
+  - Add **`supported_cli_lint_modes`** descriptor property to declare which CLI lint modes (`file`, `list_of_files`, `project`) each linter supports, and generate `success`/`failure` tests for every supported mode
+    - `ACTION_ZIZMOR`, `BASH_SHFMT` and `GO_REVIVE` now declare their real modes instead of falling back to the `file`-only default
+  - **Project-mode excluded-directories forwarding internals**:
+    - New `cli_lint_mode_project_exclude_*` descriptor properties (native exclusion flag templates, ignore-file arguments, generated workspace ignore files) consumed by generic `Linter` base-class code: forwarding is pure descriptor data on 41 linters
+    - 13 Python subclass workarounds for tools needing config-merge logic (trufflehog, betterleaks, jscpd, yamllint, rubocop, swiftlint, ls-lint, clj-kondo, eslint, gherkin-lint, luacheck, stylua, phpstan/php-cs-fixer/cljstyle)
+    - Poison `.wireit/` test fixtures make the project-lint-mode success tests fail if forwarding regresses
+  - New descriptor property **`install.apk_build`** for apk packages needed only while pip/gem packages compile native extensions: they join a virtual apk package removed from the final image layers
+    - Used by SPELL_PROSELINT (build-base, re2-dev, py3-pybind11-dev needed to build google-re2), which was keeping a full C++ toolchain in every flavor image
+  - **Details of the Docker image slimming**:
+    - LLM Advisor provider SDKs move to an `llm` pip extra excluded from standalone `megalinter-only-*` images (~200 MB per standalone image)
+    - The compilation toolchain (gcc, make, musl-dev, libffi-dev) and per-descriptor build toolchains (LUA luarocks, PERL cpm, R packages) are installed as apk virtual packages removed after the install steps (~110-150 MB per image)
+    - GROOVY_NPM_GROOVY_LINT reuses the shared OpenJDK 21 instead of shipping its own OpenJDK 17 (~300 MB)
+    - Python linter venvs share identical wheels through the uv cache in hardlink mode
+    - Extended node_modules pruning, and standalone images drop the ~45 MB `__pycache__` layer
+    - Removed a stray `cpplint` Python venv that was mistakenly declared in the CSS_STYLELINT descriptor
+  - Keep the **Docker Pulls badge** in `docs/index.md` in sync by having `docker_stats.py` also update the hardcoded badge total in `.automation/build.py`
+  - Mark the repository's internal Claude Code skills (`.claude/skills/`) as **`internal`** so `npx skills add oxsecurity/megalinter` only offers the four MegaLinter agent skills from the `skills/` folder
+  - Fix the **`/build` contribution skill** being accidentally gitignored by the `build/` packaging pattern, so it is now actually versioned
 
 - CI
-  - Speed up PR jobs by handing the built Docker image over to consumer jobs through ghcr.io (`megalinter-dev` per-commit tags, pruned daily) instead of a workflow artifact + `docker load`, for branches of the main repository; forked PRs keep the artifact-based handoff since their GITHUB_TOKEN cannot push packages. Measured on the "Run against all code base" job: image handoff dropped from 8m42s to 2m36s and the whole job from 14m41s to 7m07s
-  - Build only the per-linter Docker images impacted by the changed files of a PR (descriptor edits, per-linter Dockerfiles, single-linter test fixtures); any change to shared code or unrecognized files keeps building the full matrix
-  - Remove duplicate MegaLinter self-lint and mega-linter-runner test runs on PR branches: the `push` trigger is now restricted to main-line branches, the `pull_request` trigger already covers PR commits (~15 duplicated job-minutes saved per PR commit)
-  - Overall, the pytest test-cases suite dropped from 12m46s to 10m47s (with `file` lint mode tests CPU down 70% thanks to the `list_of_files` skip)
+
+  - **Speed up PR jobs** by handing the built Docker image over to consumer jobs through **ghcr.io** (`megalinter-dev` per-commit tags, pruned daily) instead of a workflow artifact + `docker load`
+    - For branches of the main repository only: forked PRs keep the artifact-based handoff, since their GITHUB_TOKEN cannot push packages
+  - Build only the **per-linter Docker images impacted by the changed files** of a PR (descriptor edits, per-linter Dockerfiles, single-linter test fixtures); any change to shared code or unrecognized files keeps building the full matrix
+  - Remove **duplicate self-lint and mega-linter-runner test runs** on PR branches: the `push` trigger is now restricted to main-line branches, the `pull_request` trigger already covers PR commits (~15 duplicated job-minutes saved per PR commit)
+  - **Speed up the test suite** by skipping the `file` CLI lint mode tests for linters that also support `list_of_files`, since `list_of_files` exercises the same code path more cheaply
+  - **CI jobs before/after**, measured on the deploy-DEV workflow (average of 3 successful runs each, before = early July 2026, after = 2026-08-05):
+
+    | CI job / step                               | Before |  After | Delta |
+    |---------------------------------------------|-------:|-------:|------:|
+    | Docker image handoff to a consumer job      |  4m51s |  2m39s |  -45% |
+    | "Run against all code base" — whole job     | 11m16s |  7m16s |  -36% |
+    | "Run against all code base" — lint step     |  5m08s |  3m18s |  -36% |
+    | "Run Test Cases" (pytest suite) — whole job | 15m30s | 14m00s |  -10% |
+    | "mega-linter-runner tests" — whole job      | 14m20s |  8m17s |  -42% |
+
+    - The pytest suite gain is partly offset by the many new per-lint-mode and project-mode-exclusion tests added in this version
+
   - TAP reporter golden-file tests move from the 120+ generated per-linter test classes (where most of them skipped) to a dedicated `tap_reporter_test` class running on a curated sample of linters (bash, css, protobuf, cloudformation); stale Super-Linter-era expected files (some of them unreachable by the test suite) have been removed
-  - Fix per-linter Docker images being published single-arch. The BETA and RELEASE linter workflows split each linter into independent per-platform jobs that all pushed the same tag (`:beta`, `:v9`, `:vX.Y.Z`, `:latest`), so the last push won and overwrote the other architecture. They now push each platform by digest and a dedicated merge job assembles a proper multi-arch manifest list per linter, restoring linux/amd64 + linux/arm64 support for `megalinter-only-*` images.
+  - Make `test_api_output` resilient to remote server outages: probe several public echo endpoints, run the test with the ones that are up, retry with another server when a post fails, and skip the test when none of them is reachable, as a remote outage is not a MegaLinter issue
+  - Fix per-linter Docker images being published single-arch: the BETA and RELEASE linter workflows split each linter into independent per-platform jobs that all pushed the same tag, so the last push won and overwrote the other architecture. They now push each platform by digest and a dedicated merge job assembles a proper multi-arch manifest list per linter
 
 - Linter versions upgrades (N)
   - [pyright](https://github.com/Microsoft/pyright) from 1.1.410 to **1.1.411** on 2026-06-28
