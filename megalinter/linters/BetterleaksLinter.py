@@ -114,18 +114,28 @@ class BetterleaksLinter(Linter):
         return cmd
 
     # Forward excluded directories in project mode: betterleaks has no exclusion
-    # argument, so generate a config extending the resolved one (or the default
-    # embedded ruleset) with allowlist path regexes
+    # argument, so generate a config extending the resolved one with allowlist
+    # path regexes. When MegaLinter resolved no config, extend the workspace
+    # config that betterleaks would have auto-discovered (e.g. a .gitleaks.toml
+    # kept from gitleaks), and only fall back to the default embedded ruleset
     def manage_excluded_directories_config(self, cmd):
         existing_config_index = None
         for index, arg in enumerate(cmd):
             if arg in ("-c", "--config") and index + 1 < len(cmd):
                 existing_config_index = index + 1
                 break
-        config_lines = ["[extend]"]
+        extend_path = None
         if existing_config_index is not None:
-            config_path = cmd[existing_config_index].replace("\\", "/")
-            config_lines += [f"path = '{config_path}'"]
+            extend_path = cmd[existing_config_index].replace("\\", "/")
+        else:
+            for discoverable_config in [".betterleaks.toml", ".gitleaks.toml"]:
+                workspace_config = os.path.join(self.workspace, discoverable_config)
+                if os.path.isfile(workspace_config):
+                    extend_path = workspace_config.replace("\\", "/")
+                    break
+        config_lines = ["[extend]"]
+        if extend_path is not None:
+            config_lines += [f"path = '{extend_path}'"]
         else:
             config_lines += ["useDefault = true"]
         config_lines += ["", "[allowlist]", "paths = ["]
