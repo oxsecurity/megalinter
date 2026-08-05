@@ -59,7 +59,7 @@ ARG TARGETARCH
 # renovate: datasource=pypi depName=rumdl
 ARG PIP_RUMDL_VERSION=0.2.50
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=26.2
+ARG PIP_PIP_VERSION=26.2.1
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=21.7.1
 #ARG__END
