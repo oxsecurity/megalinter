@@ -122,14 +122,10 @@ class BetterleaksLinter(Linter):
     # config that betterleaks would have auto-discovered (e.g. a .gitleaks.toml
     # kept from gitleaks), and only fall back to the default embedded ruleset
     def manage_excluded_directories_config(self, cmd):
-        existing_config_index = None
-        for index, arg in enumerate(cmd):
-            if arg in ("-c", "--config") and index + 1 < len(cmd):
-                existing_config_index = index + 1
-                break
+        config_index = self.find_cli_argument_value_index(cmd, ("-c", "--config"))
         extend_path = None
-        if existing_config_index is not None:
-            extend_path = cmd[existing_config_index].replace("\\", "/")
+        if config_index is not None:
+            extend_path = cmd[config_index].replace("\\", "/")
         else:
             for discoverable_config in [".betterleaks.toml", ".gitleaks.toml"]:
                 workspace_config = os.path.join(self.workspace, discoverable_config)
@@ -146,14 +142,12 @@ class BetterleaksLinter(Linter):
             path_regex = re.escape(excluded_dir.replace("\\", "/")) + "/"
             config_lines += [f"    '{path_regex}',"]
         config_lines += ["]"]
-        generated_config = os.path.join(self.report_folder, "betterleaks-config.toml")
-        os.makedirs(self.report_folder, exist_ok=True)
-        with open(generated_config, "w", encoding="utf-8") as config_file:
-            config_file.write("\n".join(config_lines) + "\n")
-        if existing_config_index is not None:
-            cmd[existing_config_index] = generated_config
-        else:
-            cmd += ["-c", generated_config]
+        generated_config = self.write_report_generated_file(
+            "betterleaks-config.toml", config_lines
+        )
+        cmd = self.replace_or_append_cli_argument(
+            cmd, config_index, "-c", generated_config
+        )
         self.log_project_exclude_forwarding(
             f"Generated {generated_config} extending "
             + (extend_path if extend_path is not None else "the default ruleset")

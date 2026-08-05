@@ -28,8 +28,12 @@ class TruffleHogLinter(Linter):
 
     # Merge ignore rules with excluded directories, so trufflehog does not
     # crawl heavy directories like node_modules or build caches. A workspace
-    # .trufflehogignore takes precedence over the default embedded rules
+    # .trufflehogignore takes precedence over the default embedded rules.
+    # Cached: build_lint_command runs once per file in file lint mode
     def build_exclude_paths_file(self):
+        cached_file = getattr(self, "trufflehog_exclude_paths_file", None)
+        if cached_file is not None:
+            return cached_file
         workspace_ignore_file = os.path.join(self.workspace, ".trufflehogignore")
         default_trufflehog_ignore_file = (
             utils.get_default_rules_location() + "/.trufflehogignore"
@@ -57,6 +61,7 @@ class TruffleHogLinter(Linter):
         os.makedirs(self.report_folder, exist_ok=True)
         with open(exclude_paths_file, "w", encoding="utf-8") as exclude_file:
             exclude_file.write("\n".join(exclude_regexes) + "\n")
+        self.trufflehog_exclude_paths_file = exclude_paths_file
         return exclude_paths_file
 
     def pre_test(self, test_name):

@@ -3,8 +3,6 @@
 Use PHP CS Fixer to check PHP code formatting
 """
 
-import os
-
 from megalinter import Linter
 
 
@@ -20,30 +18,23 @@ class PhpCsFixerLinter(Linter):
             self.cli_lint_mode == "project"
             and self.is_project_exclude_forwarding_active()
         ):
-            existing_config_index = None
-            for index, arg in enumerate(cmd):
-                if arg == "--config" and index + 1 < len(cmd):
-                    existing_config_index = index + 1
-                    break
-            if existing_config_index is not None:
-                included_config = cmd[existing_config_index].replace("\\", "/")
+            config_index = self.find_cli_argument_value_index(cmd, ("--config",))
+            if config_index is not None:
+                included_config = cmd[config_index].replace("\\", "/")
                 exclude_dirs = ", ".join(
                     f"'{excluded_dir}'"
                     for excluded_dir in self.get_project_exclude_directories()
                 )
-                config_lines = [
-                    "<?php",
-                    f"$config = require '{included_config}';",
-                    f"$config->getFinder()->exclude([{exclude_dirs}]);",
-                    "return $config;",
-                ]
-                generated_config = os.path.join(
-                    self.report_folder, "php-cs-fixer-config.php"
+                generated_config = self.write_report_generated_file(
+                    "php-cs-fixer-config.php",
+                    [
+                        "<?php",
+                        f"$config = require '{included_config}';",
+                        f"$config->getFinder()->exclude([{exclude_dirs}]);",
+                        "return $config;",
+                    ],
                 )
-                os.makedirs(self.report_folder, exist_ok=True)
-                with open(generated_config, "w", encoding="utf-8") as config_file:
-                    config_file.write("\n".join(config_lines) + "\n")
-                cmd[existing_config_index] = generated_config
+                cmd[config_index] = generated_config
                 self.log_project_exclude_forwarding(
                     f"Generated {generated_config} chaining {included_config} with "
                     f"EXCLUDED_DIRECTORIES as Finder exclusions "

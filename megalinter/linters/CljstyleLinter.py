@@ -30,9 +30,3 @@ class CljstyleLinter(Linter):
             )
 
         return cmd
-
-    def execute_lint_command(self, command):
-        try:
-            return super().execute_lint_command(command)
-        finally:
-            self.cleanup_workspace_generated_files()

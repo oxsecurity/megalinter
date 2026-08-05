@@ -35,14 +35,10 @@ class JsCpdLinter(Linter):
     # --ignore CLI argument would replace the resolved config's ignore list
     # wholesale, so the globs are merged into the config instead
     def manage_excluded_directories_config(self, cmd):
-        existing_config_index = None
-        for index, arg in enumerate(cmd):
-            if arg in ("-c", "--config") and index + 1 < len(cmd):
-                existing_config_index = index + 1
-                break
+        config_index = self.find_cli_argument_value_index(cmd, ("-c", "--config"))
         config_content = {}
-        if existing_config_index is not None:
-            with open(cmd[existing_config_index], encoding="utf-8") as config_file:
+        if config_index is not None:
+            with open(cmd[config_index], encoding="utf-8") as config_file:
                 config_content = json.load(config_file)
         ignore_globs = list(config_content.get("ignore", []))
         for excluded_dir in self.get_project_exclude_directories():
@@ -50,14 +46,12 @@ class JsCpdLinter(Linter):
             if glob not in ignore_globs:
                 ignore_globs += [glob]
         config_content["ignore"] = ignore_globs
-        generated_config = os.path.join(self.report_folder, "jscpd-config.json")
-        os.makedirs(self.report_folder, exist_ok=True)
-        with open(generated_config, "w", encoding="utf-8") as config_file:
-            json.dump(config_content, config_file, indent=2)
-        if existing_config_index is not None:
-            cmd[existing_config_index] = generated_config
-        else:
-            cmd += ["-c", generated_config]
+        generated_config = self.write_report_generated_file(
+            "jscpd-config.json", json.dumps(config_content, indent=2).splitlines()
+        )
+        cmd = self.replace_or_append_cli_argument(
+            cmd, config_index, "-c", generated_config
+        )
         self.log_project_exclude_forwarding(
             f"Generated {generated_config} merging EXCLUDED_DIRECTORIES into the "
             f"jscpd ignore list "

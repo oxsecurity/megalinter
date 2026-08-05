@@ -391,8 +391,7 @@ linters:
         - name: VSCode Python Extension
           url: https://github.com/Microsoft/vscode-python
   # BANDIT
-  - class: BanditLinter
-    linter_name: bandit
+  - linter_name: bandit
     name: PYTHON_BANDIT
     can_output_sarif: true
     file_extensions:
@@ -449,6 +448,9 @@ linters:
     config_file_name: ".bandit.yml"
     cli_lint_extra_args:
       - --quiet
+    cli_lint_mode_project_exclude_arg_name: "-x"
+    cli_lint_mode_project_exclude_separator: ","
+    cli_lint_mode_project_exclude_seed_values: [".svn", "CVS", ".bzr", ".hg", ".git", "__pycache__", ".tox", ".eggs", "*.egg"]
     cli_lint_mode_project_extra_args_after:
       - --recursive
       - .

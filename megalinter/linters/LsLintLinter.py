@@ -25,13 +25,15 @@ class LsLintLinter(Linter):
                 workspace_config = os.path.join(self.workspace, ".ls-lint.yml")
                 if os.path.isfile(workspace_config):
                     cmd += ["--config", workspace_config]
-            ignore_lines = ["ignore:"]
-            for excluded_dir in self.get_project_exclude_directories():
-                ignore_lines += [f"  - {excluded_dir}", f"  - '**/{excluded_dir}'"]
-            generated_config = os.path.join(self.report_folder, "ls-lint-ignore.yml")
-            os.makedirs(self.report_folder, exist_ok=True)
-            with open(generated_config, "w", encoding="utf-8") as config_file:
-                config_file.write("\n".join(ignore_lines) + "\n")
+            # Literal root-level entries only: glob entries would make ls-lint
+            # walk the whole tree once per pattern to expand them
+            ignore_lines = ["ignore:"] + [
+                f"  - {excluded_dir}"
+                for excluded_dir in self.get_project_exclude_directories()
+            ]
+            generated_config = self.write_report_generated_file(
+                "ls-lint-ignore.yml", ignore_lines
+            )
             cmd += ["--config", generated_config]
             self.log_project_exclude_forwarding(
                 f"Generated {generated_config} to forward EXCLUDED_DIRECTORIES to "

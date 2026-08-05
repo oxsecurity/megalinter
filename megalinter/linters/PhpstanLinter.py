@@ -3,8 +3,6 @@
 Use PHPStan to analyze PHP files
 """
 
-import os
-
 from megalinter import Linter
 
 
@@ -24,26 +22,22 @@ class PhpstanLinter(Linter):
     # the resolved one: phpstan merges excludePaths arrays across includes, and
     # fnmatch patterns stay valid wherever the generated config lives
     def manage_excluded_directories_config(self, cmd):
-        existing_config_index = None
-        for index, arg in enumerate(cmd):
-            if arg in ("-c", "--configuration") and index + 1 < len(cmd):
-                existing_config_index = index + 1
-                break
+        config_index = self.find_cli_argument_value_index(
+            cmd, ("-c", "--configuration")
+        )
         config_lines = []
-        if existing_config_index is not None:
-            included_config = cmd[existing_config_index].replace("\\", "/")
+        if config_index is not None:
+            included_config = cmd[config_index].replace("\\", "/")
             config_lines += ["includes:", f"    - {included_config}"]
         config_lines += ["parameters:", "    excludePaths:"]
         for excluded_dir in self.get_project_exclude_directories():
             config_lines += [f"        - */{excluded_dir}/*"]
-        generated_config = os.path.join(self.report_folder, "phpstan-config.neon")
-        os.makedirs(self.report_folder, exist_ok=True)
-        with open(generated_config, "w", encoding="utf-8") as config_file:
-            config_file.write("\n".join(config_lines) + "\n")
-        if existing_config_index is not None:
-            cmd[existing_config_index] = generated_config
-        else:
-            cmd += ["-c", generated_config]
+        generated_config = self.write_report_generated_file(
+            "phpstan-config.neon", config_lines
+        )
+        cmd = self.replace_or_append_cli_argument(
+            cmd, config_index, "-c", generated_config
+        )
         self.log_project_exclude_forwarding(
             f"Generated {generated_config} to forward EXCLUDED_DIRECTORIES to "
             f"{self.linter_name} as merged excludePaths patterns "

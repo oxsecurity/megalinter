@@ -33,6 +33,14 @@ Linters running in `project` lint mode scan the whole workspace themselves, so M
 cli_lint_mode_project_exclude_arg_name: "--ignore-pattern"   # native CLI flag
 cli_lint_mode_project_exclude_arg_value: "**/{{DIR}}/**"     # value template, {{DIR}} = directory name
 cli_lint_mode_project_exclude_separator: ","                 # only if the flag is NOT repeatable
+cli_lint_mode_project_exclude_seed_values: ["**/.git/**"]    # defaults to re-include when the flag REPLACES the tool's built-in defaults
+# When the tool takes an ignore FILE instead of inline values:
+cli_lint_mode_project_exclude_ignore_file_arg_name: "--ignore-path"          # argument receiving the generated ignore file
+cli_lint_mode_project_exclude_ignore_file_seed_files: [".toolignore"]        # workspace files merged into it (first existing wins)
+cli_lint_mode_project_exclude_ignore_file_pass_existing: [".gitignore"]      # files re-passed via the same arg when it replaces their discovery
+cli_lint_mode_project_exclude_ignore_file_skip_if_config: true               # skip when a config file is resolved
+# When the tool only discovers ignore files inside the analyzed repository:
+cli_lint_mode_project_exclude_workspace_file_name: ".toolignore"             # written at workspace root only if absent, removed after the run
 ```
 
 Rules:

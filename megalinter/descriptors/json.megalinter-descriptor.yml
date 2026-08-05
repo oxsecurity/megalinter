@@ -127,8 +127,7 @@ linters:
         - name: native support
           url: https://code.visualstudio.com/
   # PRETTIER
-  - class: PrettierLinter
-    linter_name: prettier
+  - linter_name: prettier
     linter_text: |
       **Prettier** is the industry-standard opinionated code formatter with excellent JSON support that automatically formats JSON files for consistency and readability. It brings professional formatting standards to JSON data across configuration files, APIs, and data structures.
 
@@ -159,6 +158,8 @@ linters:
       - project
     cli_lint_extra_args:
       - "--check"
+    cli_lint_mode_project_exclude_ignore_file_arg_name: "--ignore-path"
+    cli_lint_mode_project_exclude_ignore_file_pass_existing: [".gitignore", ".prettierignore"]
     cli_lint_mode_project_extra_args_after:
       - .
     cli_lint_fix_arg_name: "--write" # Workaround for MegaLinter
@@ -205,8 +206,7 @@ linters:
         - name: prettier-vscode
           url: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
   # npm-package-json-lint
-  - class: NpmPackageJsonLintLinter
-    linter_name: npm-package-json-lint
+  - linter_name: npm-package-json-lint
     linter_text: |
       **npm-package-json-lint** is a specialized linter designed specifically for npm package.json files that ensures consistency, correctness, and adherence to best practices in Node.js project configuration. It serves as an essential tool for maintaining professional npm package standards.
 
@@ -247,6 +247,8 @@ linters:
     ignore_file_name: .npmpackagejsonlintignore
     cli_lint_extra_args:
       - --quiet
+    cli_lint_mode_project_exclude_ignore_file_arg_name: "--ignorePath"
+    cli_lint_mode_project_exclude_ignore_file_seed_files: [".npmpackagejsonlintignore"]
     cli_lint_mode_project_extra_args_after:
       - .
     cli_help_arg_name: --help

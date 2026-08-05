@@ -22,7 +22,6 @@ class SwiftLintLinter(Linter):
             and self.is_project_exclude_forwarding_active()
             and "--config" not in cmd
         ):
-            os.makedirs(self.report_folder, exist_ok=True)
             workspace_abs = os.path.abspath(self.workspace).replace("\\", "/")
             config_lines = []
             workspace_config = os.path.join(self.workspace, ".swiftlint.yml")
@@ -37,9 +36,9 @@ class SwiftLintLinter(Linter):
                     f"  - '{workspace_abs}/{excluded_dir}'",
                     f"  - '{workspace_abs}/**/{excluded_dir}'",
                 ]
-            generated_config = os.path.join(self.report_folder, "swiftlint-config.yml")
-            with open(generated_config, "w", encoding="utf-8") as config_file:
-                config_file.write("\n".join(config_lines) + "\n")
+            generated_config = self.write_report_generated_file(
+                "swiftlint-config.yml", config_lines
+            )
             cmd += ["--config", generated_config]
             self.log_project_exclude_forwarding(
                 f"Generated {generated_config} to forward EXCLUDED_DIRECTORIES to "

@@ -9,8 +9,7 @@ file_extensions:
   - ".md"
 linters:
   # MarkdownLint
-  - class: MarkdownlintLinter
-    linter_name: markdownlint
+  - linter_name: markdownlint
     is_formatter: true
     activation_rules:
       - type: variable
@@ -44,6 +43,8 @@ linters:
       - file
       - list_of_files
       - project
+    cli_lint_mode_project_exclude_ignore_file_arg_name: "--ignore-path"
+    cli_lint_mode_project_exclude_ignore_file_seed_files: [".markdownlintignore"]
     cli_lint_mode_project_extra_args_after:
       - .
     config_file_name: .markdownlint.json

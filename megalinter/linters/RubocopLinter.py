@@ -25,15 +25,11 @@ class RubocopLinter(Linter):
     # inherit_mode merge keeps inherited and default Exclude entries, and
     # absolute patterns stay valid wherever the generated config lives
     def manage_excluded_directories_config(self, cmd):
-        existing_config_index = None
-        for index, arg in enumerate(cmd):
-            if arg in ("-c", "--config") and index + 1 < len(cmd):
-                existing_config_index = index + 1
-                break
+        config_index = self.find_cli_argument_value_index(cmd, ("-c", "--config"))
         workspace_abs = os.path.abspath(self.workspace).replace("\\", "/")
         config_lines = []
-        if existing_config_index is not None:
-            inherited = cmd[existing_config_index].replace("\\", "/")
+        if config_index is not None:
+            inherited = cmd[config_index].replace("\\", "/")
             config_lines += ["inherit_from:", f"  - {inherited}"]
         config_lines += [
             "inherit_mode:",
@@ -47,14 +43,12 @@ class RubocopLinter(Linter):
                 f"    - '{workspace_abs}/{excluded_dir}/**/*'",
                 f"    - '{workspace_abs}/**/{excluded_dir}/**/*'",
             ]
-        generated_config = os.path.join(self.report_folder, "rubocop-config.yml")
-        os.makedirs(self.report_folder, exist_ok=True)
-        with open(generated_config, "w", encoding="utf-8") as config_file:
-            config_file.write("\n".join(config_lines) + "\n")
-        if existing_config_index is not None:
-            cmd[existing_config_index] = generated_config
-        else:
-            cmd += ["-c", generated_config]
+        generated_config = self.write_report_generated_file(
+            "rubocop-config.yml", config_lines
+        )
+        cmd = self.replace_or_append_cli_argument(
+            cmd, config_index, "-c", generated_config
+        )
         self.log_project_exclude_forwarding(
             f"Generated {generated_config} to forward EXCLUDED_DIRECTORIES to "
             f"{self.linter_name} as merged AllCops Exclude patterns "

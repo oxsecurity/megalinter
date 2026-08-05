@@ -10,8 +10,7 @@ file_extensions:
   - ".yaml"
 linters:
   # PRETTIER
-  - class: PrettierLinter
-    linter_name: prettier
+  - linter_name: prettier
     linter_text: |
       **Prettier** is the industry-standard opinionated code formatter that brings consistency to YAML files by enforcing a unified style across projects. It eliminates formatting debates by automatically reformatting code according to its proven formatting principles.
 
@@ -46,6 +45,8 @@ linters:
     cli_lint_warnings_regex: "\\[warn\\]"
     cli_lint_extra_args:
       - "--check"
+    cli_lint_mode_project_exclude_ignore_file_arg_name: "--ignore-path"
+    cli_lint_mode_project_exclude_ignore_file_pass_existing: [".gitignore", ".prettierignore"]
     cli_lint_mode_project_extra_args_after:
       - .
     cli_lint_fix_arg_name: "--write"
@@ -190,6 +191,9 @@ linters:
       - project
     cli_lint_extra_args:
       - "--ignore-errors"
+    cli_lint_mode_project_exclude_ignore_file_arg_name: "--ignore-pattern-files"
+    cli_lint_mode_project_exclude_ignore_file_pass_existing: [".v8rignore", ".gitignore"]
+    cli_lint_mode_project_exclude_ignore_file_skip_if_config: true
     cli_lint_mode_project_extra_args_after:
       - "**/*.{yml,yaml}"
     cli_help_arg_name: "--help"

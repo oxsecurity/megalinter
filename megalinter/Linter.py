@@ -138,6 +138,21 @@ class Linter:
         self.cli_lint_mode_project_exclude_arg_name = None
         self.cli_lint_mode_project_exclude_arg_value = "{{DIR}}"
         self.cli_lint_mode_project_exclude_separator = None
+        # Default values re-included when the linter's exclusion argument
+        # replaces its built-in defaults (ex: bandit -x, devskim -g)
+        self.cli_lint_mode_project_exclude_seed_values = []
+        # Generated ignore file forwarding: argument receiving the generated
+        # file, workspace files merged into it (first existing wins), workspace
+        # files re-passed through the same argument (when the argument replaces
+        # their default discovery), and skip when a config file is resolved
+        self.cli_lint_mode_project_exclude_ignore_file_arg_name = None
+        self.cli_lint_mode_project_exclude_ignore_file_seed_files = []
+        self.cli_lint_mode_project_exclude_ignore_file_pass_existing = []
+        self.cli_lint_mode_project_exclude_ignore_file_skip_if_config = False
+        # When set, the generated ignore file is written at the workspace root
+        # under this name (only if absent, removed after the run), for linters
+        # that only discover ignore files inside the analyzed repository
+        self.cli_lint_mode_project_exclude_workspace_file_name = None
         self.cli_lint_errors_count = None
         self.cli_lint_errors_regex = None
         self.cli_lint_warnings_count = None
@@ -1235,6 +1250,7 @@ class Linter:
             return_code, return_stdout
         )
         self.manage_sarif_output(return_stdout)
+        self.cleanup_workspace_generated_files()
         # Return linter result
         return return_code, return_stdout
 
@@ -1524,6 +1540,7 @@ class Linter:
             cmd += self.cli_lint_mode_list_of_files_extra_args_after
         elif self.cli_lint_mode == "project":
             cmd += self.build_project_exclude_arguments()
+            cmd += self.build_project_exclude_ignore_file_arguments(cmd)
             self.cli_lint_mode_project_extra_args_after = self.replace_vars(
                 self.cli_lint_mode_project_extra_args_after,
                 additional_replace_variables,
@@ -1640,7 +1657,7 @@ class Linter:
         if self.is_project_exclude_forwarding_active() is False:
             return []
         arg_name = self.cli_lint_mode_project_exclude_arg_name
-        values = [
+        values = list(self.cli_lint_mode_project_exclude_seed_values) + [
             self.cli_lint_mode_project_exclude_arg_value.replace("{{DIR}}", excl_dir)
             for excl_dir in self.get_project_exclude_directories()
         ]
@@ -1684,6 +1701,74 @@ class Linter:
             if os.path.isfile(generated_file):
                 os.remove(generated_file)
         self.workspace_generated_files = []
+
+    # Generic forwarding of excluded directories through an ignore file, driven
+    # by the cli_lint_mode_project_exclude_ignore_file_* descriptor properties
+    def build_project_exclude_ignore_file_arguments(self, cmd):
+        arg_name = self.cli_lint_mode_project_exclude_ignore_file_arg_name
+        workspace_file_name = self.cli_lint_mode_project_exclude_workspace_file_name
+        if arg_name is None and workspace_file_name is None:
+            return []
+        if self.is_project_exclude_forwarding_active() is False:
+            return []
+        if (
+            self.cli_lint_mode_project_exclude_ignore_file_skip_if_config is True
+            and self.config_file is not None
+        ):
+            return []
+        if arg_name is not None and arg_name in cmd:
+            return []
+        seed_lines = []
+        for seed_file in self.cli_lint_mode_project_exclude_ignore_file_seed_files:
+            seed_lines = self.read_workspace_file_lines(seed_file)
+            if len(seed_lines) > 0:
+                break
+        if workspace_file_name is not None:
+            # Existing workspace file stays authoritative
+            if os.path.isfile(os.path.join(self.workspace, workspace_file_name)):
+                return []
+            lines = list(seed_lines)
+            for excluded_dir in self.get_project_exclude_directories():
+                line = f"{excluded_dir}/"
+                if line not in lines:
+                    lines.append(line)
+            self.write_workspace_generated_file(workspace_file_name, lines)
+            # Pass the base name so linters resolving ignore files inside the
+            # scanned tree (ex: secretlint) discover the generated file
+            return [arg_name, workspace_file_name] if arg_name is not None else []
+        ignore_args = []
+        for existing_file in self.cli_lint_mode_project_exclude_ignore_file_pass_existing:
+            existing_path = os.path.join(self.workspace, existing_file)
+            if os.path.isfile(existing_path):
+                ignore_args += [arg_name, existing_path]
+        ignore_args += [
+            arg_name,
+            self.build_project_exclude_ignore_file(
+                f"{self.linter_name}-ignore-paths.txt", seed_lines=seed_lines
+            ),
+        ]
+        return ignore_args
+
+    # Locate the value of a CLI argument in a command line
+    def find_cli_argument_value_index(self, cmd, arg_names):
+        for index, arg in enumerate(cmd):
+            if arg in arg_names and index + 1 < len(cmd):
+                return index + 1
+        return None
+
+    def replace_or_append_cli_argument(self, cmd, value_index, arg_name, value):
+        if value_index is not None:
+            cmd[value_index] = value
+        else:
+            cmd += [arg_name, value]
+        return cmd
+
+    def write_report_generated_file(self, file_name, content_lines):
+        file_path = os.path.join(self.report_folder, file_name)
+        os.makedirs(self.report_folder, exist_ok=True)
+        with open(file_path, "w", encoding="utf-8") as file_handler:
+            file_handler.write("\n".join(content_lines) + "\n")
+        return file_path
 
     # Write a generated ignore file merging seed lines with excluded
     # directories, for linters whose exclusions can only come from a file
