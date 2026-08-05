@@ -82,11 +82,8 @@ class SyftLinter(Linter):
                     json.dump(sarif_obj, outfile, indent=4, sort_keys=False)
                     outfile.write("\n")
 
-    # syft CLI --exclude replaces the exclude list of the config file:
-    # re-emit the resolved config's entries alongside the excluded directories
+    # syft CLI --exclude replaces the exclude list of the config file
     def manage_excluded_directories_config(self, cmd):
-        if "--exclude" in cmd:
-            return cmd
         return self.forward_excludes_with_config_list(
             cmd, ("--config",), "exclude", "--exclude", "**/{{DIR}}"
         )

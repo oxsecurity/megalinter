@@ -40,11 +40,8 @@ class CheckovLinter(Linter):
 
         return super().build_lint_command(file)
 
-    # checkov CLI --skip-path replaces the skip-path list of the config file:
-    # re-emit the resolved config's entries alongside the excluded directories
+    # checkov CLI --skip-path replaces the skip-path list of the config file
     def manage_excluded_directories_config(self, cmd):
-        if "--skip-path" in cmd:
-            return cmd
         return self.forward_excludes_with_config_list(
             cmd, ("--config-file",), "skip-path", "--skip-path", "{{DIR}}"
         )

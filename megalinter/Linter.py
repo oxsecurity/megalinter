@@ -1766,6 +1766,8 @@ class Linter:
     def forward_excludes_with_config_list(
         self, cmd, config_arg_names, config_key_path, arg_name, value_template
     ):
+        if arg_name in cmd:
+            return cmd
         seed_values = []
         config_index = self.find_cli_argument_value_index(cmd, config_arg_names)
         if config_index is not None:
