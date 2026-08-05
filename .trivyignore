@@ -74,6 +74,7 @@ CVE-2026-33186
 CVE-2026-34040
 CVE-2026-48702
 CVE-2026-50151
+CVE-2026-50163
 
 # --- Java deps (pmd, npm-groovy-lint, scalafix, salesforce-code-analyzer) ---
 # Transitive JVM library CVEs. netty-* are network-framework parsing/DoS flaws, but these
