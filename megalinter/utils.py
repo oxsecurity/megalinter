@@ -136,6 +136,8 @@ def get_excluded_directories(request_id):
         ".pytest_cache",
         ".mypy_cache",
         ".rbenv",
+        ".sf",
+        ".sfdx",
         ".turbo",
         ".venv",
         ".terraform",
