@@ -1765,21 +1765,31 @@ class Linter:
             self.write_workspace_generated_file(workspace_file_name, lines)
             # Pass the base name so linters resolving ignore files inside the
             # scanned tree (ex: secretlint) discover the generated file
-            return [arg_name, workspace_file_name] if arg_name is not None else []
+            if arg_name is None:
+                return []
+            return self.build_ignore_file_argument(arg_name, workspace_file_name)
         ignore_args = []
         for (
             existing_file
         ) in self.cli_lint_mode_project_exclude_ignore_file_pass_existing:
             existing_path = os.path.join(self.workspace, existing_file)
             if os.path.isfile(existing_path):
-                ignore_args += [arg_name, existing_path]
-        ignore_args += [
+                ignore_args += self.build_ignore_file_argument(arg_name, existing_path)
+        ignore_args += self.build_ignore_file_argument(
             arg_name,
             self.build_project_exclude_ignore_file(
                 f"{self.linter_name}-ignore-paths.txt", seed_lines=seed_lines
             ),
-        ]
+        )
         return ignore_args
+
+    # Argument names ending with = are concatenated with their value: required
+    # for array options that would greedily consume following positionals
+    # (ex: v8r --ignore-pattern-files=)
+    def build_ignore_file_argument(self, arg_name, value):
+        if arg_name.endswith("=") or arg_name.endswith(":"):
+            return [arg_name + value]
+        return [arg_name, value]
 
     # Hook for linter classes forwarding excluded directories through a
     # generated configuration, called in project lint mode when forwarding

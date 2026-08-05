@@ -191,7 +191,7 @@ linters:
       - project
     cli_lint_extra_args:
       - "--ignore-errors"
-    cli_lint_mode_project_exclude_ignore_file_arg_name: "--ignore-pattern-files"
+    cli_lint_mode_project_exclude_ignore_file_arg_name: "--ignore-pattern-files="
     cli_lint_mode_project_exclude_ignore_file_pass_existing: [".v8rignore", ".gitignore"]
     cli_lint_mode_project_extra_args_after:
       - "**/*.{yml,yaml}"
