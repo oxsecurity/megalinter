@@ -1135,7 +1135,9 @@ class Megalinter:
                 if count >= 20
             ]
             heavy_dirs_info = (
-                " Directories with the most ignored files: " + ", ".join(heavy_dirs) + "."
+                " Directories with the most ignored files: "
+                + ", ".join(heavy_dirs)
+                + "."
                 if len(heavy_dirs) > 0
                 else ""
             )
