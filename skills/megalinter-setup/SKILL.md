@@ -63,7 +63,7 @@ Once the runner has generated/upgraded the files, you may adjust `.mega-linter.y
 
 - Ensure `MEGALINTER_FLAVOR` and `MEGALINTER_VERSION` are set (the installer writes them; add them if upgrading an older config) — they drive which Docker image `mega-linter-runner` and these skills use.
 - Add `DISABLE` / `DISABLE_LINTERS` entries the user asks for.
-- Add `FILTER_REGEX_EXCLUDE` for generated or vendored folders (e.g. `(dist/|build/|vendor/|node_modules/)`).
+- Add `FILTER_REGEX_EXCLUDE` for generated or vendored folders (e.g. `(dist/|build/|vendor/|node_modules/)`). Excluded directories (and folders identified from these regexes) are also automatically forwarded to project-mode linters through their native exclusion arguments or generated ignore/config files; if the repository already maintains its own up-to-date ignore/config files for a linter, that forwarding can be turned off with `FORWARD_EXCLUDED_DIRECTORIES: false` (global) or `<LINTER_KEY>_FORWARD_EXCLUDED_DIRECTORIES: false` (per linter).
 
 Validate the file against its JSON schema: <https://raw.githubusercontent.com/oxsecurity/megalinter/main/megalinter/descriptors/schemas/megalinter-configuration.jsonschema.json>
 

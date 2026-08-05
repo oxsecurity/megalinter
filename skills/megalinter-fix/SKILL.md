@@ -37,6 +37,7 @@ When fixing is not relevant (false positives, rule conflicts with project style,
 
 - Narrowest first: inline-disable comment on the line → rule exclusion in the linter's config file → `<KEY>_FILTER_REGEX_EXCLUDE` → `<KEY>_DISABLE_ERRORS: true` (non-blocking) → `DISABLE_LINTERS` (last resort).
 - The guide gives the exact syntax for each level. **Never** disable anything without explicit user confirmation.
+- If a project-mode linter reports unexpected results tied to its exclusions or config resolution, check its console log for `[Excluded directories]` lines: MegaLinter automatically forwards excluded directories through extra CLI arguments or generated ignore/config files. Disabling that forwarding for the linter (`<LINTER_KEY>_FORWARD_EXCLUDED_DIRECTORIES: false`) restores the tool's native behavior — useful when the repository's own ignore/config files are already complete.
 
 ## 5. Verify and finish
 
