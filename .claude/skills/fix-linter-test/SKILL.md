@@ -28,6 +28,7 @@ Steps:
    - `supported_cli_lint_modes` lists a mode the tool can't run — the per-mode tests (`test_success_<mode>_lint_mode` / `test_failure_<mode>_lint_mode`) run for every declared mode; if a failure is confined to one mode, remove it from `supported_cli_lint_modes` (unsupported modes are auto-skipped)
    - Version pin broken or tool not installable in Dockerfile
    - Linter behavior differs between host OS and Docker container (Linux)
+   - `test_success_project_lint_mode` fails on a file under `.wireit/`: that is a **poison fixture** guarding excluded-directories forwarding (see `.claude/rules/testing.md`). The forwarding is broken, not the fixture — check the command in the log for the forwarded exclusion arguments and the `[Excluded directories]` trace line, then review the descriptor's `cli_lint_mode_project_exclude_*` properties or the class `manage_excluded_directories_config()` / `build_lint_command` override (a custom `build_lint_command` that does not call `super()` bypasses forwarding). Do NOT delete the poison fixture to make the test pass
 7. Reproduce in Docker (required — linters are not installed locally):
    ```bash
    LINTER="<descriptor_id_lowercase>_<linter_name>"

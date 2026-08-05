@@ -19,6 +19,13 @@ globs: ["megalinter/tests/**/*.py", ".automation/test/**"]
 - Include both good (passing) and bad (failing) example files
 - Bad files must trigger at least one lint error from the target linter
 
+## Poison Fixtures (excluded directories forwarding guard)
+- Linters that forward `EXCLUDED_DIRECTORIES` in project lint mode (descriptor `cli_lint_mode_project_exclude_*` properties or a `manage_excluded_directories_config()` override) have a **poison fixture**: a deliberately failing file inside `.automation/test/<test_folder>/good/.wireit/`
+- `.wireit` is a default excluded directory that almost no tool skips natively, so `test_success_project_lint_mode` passes only if the forwarding actually excludes it — the fixture is a regression test for the forwarding, not for the linter rules
+- When adding forwarding to a linter, add its poison fixture; when a project success test fails on a file under `.wireit/`, the forwarding is broken, not the fixture
+- Constraints: only in folders with a `good/` subfolder, and only when every project-capable linter sharing the test folder has forwarding (otherwise the poison legitimately fails the non-forwarding tenant)
+- Poisons may be vacuous for tools that natively skip the directory (dot-folder-skipping globs, verified-only secret scanners): they never false-fail, so that is acceptable
+
 ## Running Tests
 - Linter tests require Docker because the actual linter tools are not installed locally
 - Use the `TEST_KEYWORDS` environment variable to filter tests (e.g., `TEST_KEYWORDS=python_ruff_test`)
