@@ -1259,6 +1259,7 @@
         "prepended",
         "preports",
         "PREPOSTCOMMANDS",
+        "prerun",
         "prettierrc",
         "prettyjson",
         "printenv",

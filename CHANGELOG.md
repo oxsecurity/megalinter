@@ -25,6 +25,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Every forwarded exclusion is logged in the linter's console section, and the ">300 gitignored files" performance warning now names the heaviest directories it found
     - Opt out globally with `FORWARD_EXCLUDED_DIRECTORIES: false`, or per linter with `<LINTER_KEY>_FORWARD_EXCLUDED_DIRECTORIES: false`
   - **Default excluded directories** now also include common build/cache folders: `.wireit`, `.turbo`, `.nx`, `.yarn/cache`, `.pnpm-store`, `.parcel-cache`, `.angular`, and the Salesforce CLI `.sf` / `.sfdx` state folders
+  - New **prerun analysis mode** (`mega-linter-runner --prerun`, or `MEGALINTER_PRERUN=true` environment variable): MegaLinter identifies active linters and collects files, then stops before running any linter and suggests configuration improvements, in the console and in `megalinter-reports/prerun-report.json`
+    - Suggested exclusions: top-level directories containing only gitignored files (safe: linting scope is unchanged, and project-mode linters stop scanning them), and well-known generated/vendored folder names (`site`, `dist`, `vendor`...) still containing lintable files (to confirm by the user)
+    - A lighter matching flavor is also suggested when available
+    - The `megalinter-check` agent skill uses it on the first local run to tune `.mega-linter.yml` with the user before the real lint
   - **Much lighter Docker images**: the main image download shrinks by **9%**, flavors by **9% to 22%**, and standalone `megalinter-only-*` images are **35% to 65% smaller**
     - If your `PRE_COMMANDS` compile native code: the compilation toolchain is no longer shipped in the images, install it back with `apk add --no-cache gcc make musl-dev`
     - Main and flavor images, compressed download size on ghcr.io, linux/amd64 (before = v9.6.0, so deltas also include the linters removed in this version):
@@ -144,6 +148,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **Quick Start**: setting up MegaLinter with a coding agent (`npx skills add oxsecurity/megalinter` then _"setup megalinter"_) is now the first suggested option
   - **Coding Agents page**: add Gemini CLI, Windsurf, Cline, Roo Code, Kilo Code, Amp, Goose, OpenHands and Qwen Code to the compatible coding agents
   - **megalinter-setup skill**: after install or upgrade, suggest either running MegaLinter locally or creating a pull request and then watching its CI results with megalinter-check
+  - **megalinter-check skill**: the first local run now starts with a `--prerun` analysis, so the user can validate the suggested `.mega-linter.yml` performance tuning before the real lint
   - Fix outdated links in `docs/descriptors/repository_kingfisher.md`
 
 - mega-linter-runner
@@ -156,6 +161,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **Flavor and version resolution** now reads `MEGALINTER_FLAVOR` and `MEGALINTER_VERSION` from `.mega-linter.yml` when `--flavor`/`--release` are not passed on the command line, and the install generator writes both properties in the generated configuration
   - **`--fix`** now respects an `APPLY_FIXES` value (other than `none`) defined in `.mega-linter.yml` instead of overriding it with `all`
   - **`--upgrade`** also bumps a pinned `MEGALINTER_VERSION` property of `.mega-linter.yml` to the current major version
+  - New **`--prerun`** option: analysis-only run that outputs configuration suggestions to improve performances (see the prerun mode in Core section). Combine with `--json` to print the prerun report on stdout
   - **Skip `docker pull`** when the requested version is a pinned release tag (`vX.Y.Z`, immutable) and the image is already available locally, removing a useless registry round-trip
   - Print a hint before mounting the workspace when it contains **well-known heavy folders** (build caches, package stores), pointing at `SKIP_CLI_LINT_MODES=project` to keep local runs fast
 

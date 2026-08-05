@@ -102,6 +102,7 @@ The options are only related to mega-linter-runner. For MegaLinter options, plea
 | `-d` <br/> `--image`             | You can override the used docker image, including if it's on another docker registry                                                                                                                                                                                                            | <!-- -->          |
 | `-e` <br/> `--env`               | Environment variables for MegaLinter, following format **'ENV_VAR_NAME=VALUE'** for a single value or **"'ENV_VAR_NAME=VALUE1,VALUE2'"** for a list of values<br/>Warning: Quotes are mandatory                                                                                                 | <!-- -->          |
 | `--fix`                          | Automatically apply formatting and fixes in your files. If `.mega-linter.yml` defines an `APPLY_FIXES` value other than `none`, that value is used instead of `all`                                                                                                                             | <!-- -->          |
+| `--prerun`                       | Analysis-only mode: identify active linters and collect files, then stop before running any linter and output configuration suggestions to improve performances (directories to exclude, lighter flavor) in the console and in `megalinter-reports/prerun-report.json`. Requires MegaLinter v10 or beta | <!-- -->          |
 | `-r` <br/> `--release`           | Allows to override MegaLinter version used. If not set, the `MEGALINTER_VERSION` property of `.mega-linter.yml` is used when defined                                                                                                                                                            | `latest`          |
 | `-h` <br/> `--help`              | Show mega-linter-runner help                                                                                                                                                                                                                                                                    | <!-- -->          |
 | `-v` <br/> `--version`           | Show mega-linter-runner version                                                                                                                                                                                                                                                                 | <!-- -->          |
@@ -141,6 +142,11 @@ mega-linter-runner
 ```shell
 # Scan a folder and apply fixes
 mega-linter-runner -p myFolder --fix
+```
+
+```shell
+# Analyze the repository without linting, and get configuration suggestions to improve performances
+mega-linter-runner --release beta --prerun
 ```
 
 ```shell

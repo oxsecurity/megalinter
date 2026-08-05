@@ -2,6 +2,8 @@
 
 Load this guide when a run reports slow linters (see the thresholds in the check skill). Suggestions are **informational**: present them to the user with the measured times; apply a change only after the user agrees. Re-measure on the next run to confirm the gain.
 
+Before hand-tuning with the table below, consider a prerun analysis (`npx mega-linter-runner --prerun`, MegaLinter v10 or beta): it computes exclusion and flavor suggestions from the actual file collection - see "First local run: prerun analysis" in the check skill.
+
 ## Known slow-linter causes and remedies
 
 | Symptom                                                           | Cause                                                                                               | Remedy                                                                                                                                              |

@@ -141,6 +141,12 @@ export const optionsDefinition = optionator.default({
         "Do not run linters in `project` CLI lint mode (equivalent to -e SKIP_CLI_LINT_MODES=project).",
     },
     {
+      option: "prerun",
+      type: "Boolean",
+      description:
+        "Analysis-only mode (equivalent to -e MEGALINTER_PRERUN=true): identify active linters and collect files, then stop before running any linter and output configuration suggestions to improve performances (directories to exclude, lighter flavor), in the console and in megalinter-reports/prerun-report.json. Requires MegaLinter v10 or beta.",
+    },
+    {
       option: "json",
       alias: "j",
       type: "Boolean",

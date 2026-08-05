@@ -44,6 +44,26 @@ Tip: for repeated local runs (e.g. fix → re-check loops), install the runner o
 - Add `--fix` if `.mega-linter.yml` defines `APPLY_FIXES` other than `none` (the repository has opted into auto-fixing).
 - Then read `megalinter-reports/mega-linter-report.json` and `megalinter-reports/linters_logs/ERROR-*.log` instead of parsing the console output.
 
+### First local run: prerun analysis
+
+Before the **first** local full run on a repository (fresh `megalinter-setup`, or no `megalinter-reports/mega-linter-report.json` from a previous run), start with a prerun analysis so the real run is not wasted on a badly tuned configuration. Also use it later whenever the user asks to tune MegaLinter performances.
+
+Prerun requires MegaLinter v10 or beta: check `MEGALINTER_VERSION` in `.mega-linter.yml` and skip this step (go straight to the full run) when the pinned version is older.
+
+1. Run MegaLinter in analysis-only mode (fast: no linter is run, and the image pull is reused by the real run right after):
+
+   ```bash
+   npx mega-linter-runner --prerun
+   ```
+
+2. Read `megalinter-reports/prerun-report.json`. Each entry of `suggestions` describes a `.mega-linter.yml` change: `variable`, `operation` (`append` to a list / `set`), `values`, `safe`, `reason`, `details`.
+3. Review the suggestions with the user:
+   - `safe: true` suggestions (directories containing only gitignored files) do not change the linting scope - present them grouped, recommend applying them.
+   - `safe: false` suggestions (well-known generated folder names still containing lintable files, flavor change) need an explicit user decision - ask about each one, with the file counts from `details`. A flavor change also requires updating the image reference in the CI workflow files.
+4. Apply the accepted changes to `.mega-linter.yml`, then continue with the normal full run.
+
+If the report file is missing after the run (image older than v10 that ignored `MEGALINTER_PRERUN` and linted everything), treat the output as a normal full run instead of re-running.
+
 ## Targeted re-check (after fixes)
 
 Re-run only what previously failed, in parallel (max 4 concurrent containers):
