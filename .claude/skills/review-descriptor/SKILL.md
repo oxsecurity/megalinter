@@ -36,6 +36,7 @@ For each linter entry, audit against the **full property list** below. Report a 
 - [ ] `cli_lint_fix_arg_name` — set if linter supports auto-fix
 - [ ] `cli_lint_fix_remove_args` — set if fix mode requires removing args (e.g., `--check`)
 - [ ] `ignore_file_name` + `cli_lint_ignore_arg_name` — set if linter has ignore files
+- [ ] `cli_lint_mode_project_exclude_arg_name` — if `project` is a supported lint mode and the tool has a native CLI exclusion flag, set it (plus `cli_lint_mode_project_exclude_arg_value` template with `{{DIR}}`, and `cli_lint_mode_project_exclude_separator` only when the flag is not repeatable). **Search the internet** to confirm the flag exists, its value syntax (plain path vs glob vs regex) and whether it accumulates
 - [ ] `cli_version_arg_name` — set if not `--version`
 - [ ] `cli_help_arg_name` — set if not `--help`
 

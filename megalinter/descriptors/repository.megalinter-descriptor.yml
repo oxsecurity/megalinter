@@ -49,6 +49,7 @@ linters:
       - --file
     cli_lint_mode_list_of_files_extra_args_after:
       - --file
+    cli_lint_mode_project_exclude_arg_name: "--skip-path"
     cli_lint_mode_project_extra_args_after:
       - --directory
       - .
@@ -407,6 +408,8 @@ linters:
       - project
     cli_lint_mode_file_extra_args_after:
       - file:{{FILE}}
+    cli_lint_mode_project_exclude_arg_name: "--exclude"
+    cli_lint_mode_project_exclude_arg_value: "**/{{DIR}}"
     cli_lint_mode_project_extra_args_after:
       - dir:.
     cli_config_arg_name: "--config"
@@ -556,6 +559,7 @@ linters:
     cli_lint_extra_args:
       - scan
       - source
+    cli_lint_mode_project_exclude_arg_name: "--experimental-exclude"
     cli_lint_mode_project_extra_args_after:
       - --recursive
       - .
@@ -730,6 +734,7 @@ linters:
     ignore_file_name: .semgrepignore
     cli_lint_extra_args:
       - --error # Exit 1 when errors are found
+    cli_lint_mode_project_exclude_arg_name: "--exclude"
     cli_lint_mode_project_extra_args_after:
       - "{{WORKSPACE}}"
     # cli_lint_fix_arg_name: --autofix # Disable for now as some "fixes" are actually breaking ML code
@@ -815,6 +820,8 @@ linters:
       - scan
     cli_lint_mode_file_extra_args_after:
       - file:{{FILE}}
+    cli_lint_mode_project_exclude_arg_name: "--exclude"
+    cli_lint_mode_project_exclude_arg_value: "**/{{DIR}}"
     cli_lint_mode_project_extra_args_after:
       - dir:.
     cli_sarif_args:
@@ -896,6 +903,8 @@ linters:
       - vuln,misconfig
       - --exit-code
       - "1"
+    cli_lint_mode_project_exclude_arg_name: "--skip-dirs"
+    cli_lint_mode_project_exclude_arg_value: "**/{{DIR}}"
     cli_lint_mode_project_extra_args_after:
       - .
     common_linter_errors:
@@ -998,6 +1007,8 @@ linters:
       - fs
       - --format
       - cyclonedx
+    cli_lint_mode_project_exclude_arg_name: "--skip-dirs"
+    cli_lint_mode_project_exclude_arg_value: "**/{{DIR}}"
     cli_lint_mode_project_extra_args_after:
       - .
     cli_sarif_args:
@@ -1142,6 +1153,7 @@ linters:
       - "scan"
       - "--redact"
       - "--git-history=none"
+    cli_lint_mode_project_exclude_arg_name: "--exclude"
     cli_lint_mode_project_extra_args_after:
       - .
     cli_sarif_args:

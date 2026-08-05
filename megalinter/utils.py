@@ -127,14 +127,21 @@ def get_excluded_directories(request_id):
         return cached
     default_excluded_dirs = [
         "__pycache__",
+        ".angular",
         ".git",
         ".jekyll-cache",
+        ".nx",
+        ".parcel-cache",
+        ".pnpm-store",
         ".pytest_cache",
         ".mypy_cache",
         ".rbenv",
+        ".turbo",
         ".venv",
         ".terraform",
         ".terragrunt-cache",
+        ".wireit",
+        ".yarn/cache",
         "node_modules",
         config.get(request_id, "REPORT_OUTPUT_FOLDER", "megalinter-reports"),
     ]

@@ -60,6 +60,8 @@ linters:
       - file
       - list_of_files
       - project
+    cli_lint_mode_project_exclude_arg_name: "--ignore="
+    cli_lint_mode_project_exclude_separator: ","
     cli_lint_mode_project_extra_args_after:
       - .
     config_file_name: .pylintrc
@@ -190,6 +192,9 @@ linters:
     cli_lint_extra_args:
       - "--diff"
       - "--check"
+    cli_lint_mode_project_exclude_arg_name: "--extend-exclude"
+    cli_lint_mode_project_exclude_arg_value: "/{{DIR}}/"
+    cli_lint_mode_project_exclude_separator: "|"
     cli_lint_mode_project_extra_args_after:
       - .
     cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for MegaLinter
@@ -256,6 +261,8 @@ linters:
       - file
       - list_of_files
       - project
+    cli_lint_mode_project_exclude_arg_name: "--extend-exclude="
+    cli_lint_mode_project_exclude_separator: ","
     cli_lint_mode_project_extra_args_after:
       - .
     config_file_name: .flake8
@@ -343,6 +350,7 @@ linters:
       - "--check"
       - "--profile"
       - "black"
+    cli_lint_mode_project_exclude_arg_name: "--extend-skip"
     cli_lint_mode_project_extra_args_after:
       - .
     cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for PythonBlackOrIsortLinter class behavior
@@ -537,6 +545,8 @@ linters:
     cli_lint_extra_args:
       - "--install-types"
       - "--non-interactive"
+    cli_lint_mode_project_exclude_arg_name: "--exclude"
+    cli_lint_mode_project_exclude_arg_value: "/{{DIR}}/"
     cli_lint_mode_project_extra_args_after:
       - .
     cli_lint_errors_count: regex_sum
@@ -832,6 +842,8 @@ linters:
     cli_version_arg_name: "--version"
     cli_lint_extra_args:
       - "check"
+    cli_lint_mode_project_exclude_arg_name: "--extend-exclude"
+    cli_lint_mode_project_exclude_separator: ","
     cli_lint_mode_project_extra_args_after:
       - .
     cli_lint_errors_count: regex_number
@@ -919,6 +931,8 @@ linters:
       - file
       - list_of_files
       - project
+    cli_lint_mode_project_exclude_arg_name: "--extend-exclude"
+    cli_lint_mode_project_exclude_separator: ","
     cli_lint_mode_project_extra_args_after:
       - .
     cli_config_arg_name: "--config"

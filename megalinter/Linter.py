@@ -133,6 +133,11 @@ class Linter:
         self.cli_lint_mode_file_extra_args_after = []
         self.cli_lint_mode_list_of_files_extra_args_after = []
         self.cli_lint_mode_project_extra_args_after = []
+        # Native CLI argument used to forward EXCLUDED_DIRECTORIES /
+        # ADDITIONAL_EXCLUDED_DIRECTORIES to linters running in project mode
+        self.cli_lint_mode_project_exclude_arg_name = None
+        self.cli_lint_mode_project_exclude_arg_value = "{{DIR}}"
+        self.cli_lint_mode_project_exclude_separator = None
         self.cli_lint_errors_count = None
         self.cli_lint_errors_regex = None
         self.cli_lint_warnings_count = None
@@ -1515,6 +1520,7 @@ class Linter:
 
             cmd += self.cli_lint_mode_list_of_files_extra_args_after
         elif self.cli_lint_mode == "project":
+            cmd += self.build_project_exclude_arguments()
             self.cli_lint_mode_project_extra_args_after = self.replace_vars(
                 self.cli_lint_mode_project_extra_args_after,
                 additional_replace_variables,
@@ -1575,6 +1581,33 @@ class Linter:
             elif self.cli_lint_ignore_arg_name != "":
                 ignore_args += [self.cli_lint_ignore_arg_name, self.final_ignore_file]
         return ignore_args
+
+    # Forward excluded directories to project-mode linters through their
+    # native exclusion argument, when the descriptor declares one
+    def build_project_exclude_arguments(self):
+        if self.cli_lint_mode_project_exclude_arg_name is None:
+            return []
+        arg_name = self.cli_lint_mode_project_exclude_arg_name
+        values = [
+            self.cli_lint_mode_project_exclude_arg_value.replace("{{DIR}}", excl_dir)
+            for excl_dir in sorted(utils.get_excluded_directories(self.request_id))
+            if excl_dir
+        ]
+        if len(values) == 0:
+            return []
+        if self.cli_lint_mode_project_exclude_separator is not None:
+            # Single occurrence with joined values (ex: --skip dir1,dir2)
+            values = [self.cli_lint_mode_project_exclude_separator.join(values)]
+        exclude_args = []
+        for value in values:
+            if arg_name == "":
+                # Empty arg name: positional value (ex: ktlint '!**/node_modules/**')
+                exclude_args += [value]
+            elif arg_name.endswith("=") or arg_name.endswith(":"):
+                exclude_args += [arg_name + value]
+            else:
+                exclude_args += [arg_name, value]
+        return exclude_args
 
     # Manage SARIF arguments
     def get_sarif_arguments(self):

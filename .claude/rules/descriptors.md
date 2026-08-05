@@ -16,6 +16,7 @@ When creating or modifying a linter entry, **search the internet** to gather all
 - **Documentation URLs**: `linter_rules_url`, `linter_rules_configuration_url`, `linter_rules_inline_disable_url`, `linter_rules_ignore_config_url`
 - **Metadata**: `linter_spdx_license`, `linter_speed` (1-5), `linter_image_url`, `linter_icon_png_url`, `linter_banner_image_url`
 - **CLI config**: `cli_lint_mode` (default mode), `supported_cli_lint_modes` (all modes the linter can run in — `file`, `list_of_files`, `project`; defaults to `["file"]`, must include `cli_lint_mode`), `cli_executable`, `config_file_name`, `cli_config_arg_name`, `cli_lint_extra_args`, `cli_lint_fix_arg_name`, `cli_lint_fix_remove_args`, `ignore_file_name`, `cli_lint_ignore_arg_name`, `cli_lint_mode_file_extra_args_after` / `cli_lint_mode_list_of_files_extra_args_after` / `cli_lint_mode_project_extra_args_after` (per-mode trailing args)
+- **Project-mode directory exclusions**: `cli_lint_mode_project_exclude_arg_name`, `cli_lint_mode_project_exclude_arg_value`, `cli_lint_mode_project_exclude_separator` (see below)
 - **Error parsing**: `cli_lint_errors_count`, `cli_lint_errors_regex`
 - **Known non-lint failures**: `common_linter_errors` — list of `{identifier, regex, message}` entries for config/environment errors (service unavailable, missing credentials, malformed config, etc.) that should surface guidance to the user. Only evaluated on non-success. Each entry MUST have an `identifier` starting with the linter key followed by `_ERROR_` (e.g. `REPOSITORY_OSV_SCANNER_ERROR_SERVICE_UNAVAILABLE`). Each `regex` must be specific enough not to match normal lint output; avoid `.*` or single-word patterns. Entries are rendered as a "Known errors and resolutions" section at the end of the generated linter doc page.
 - **SARIF**: `can_output_sarif`, `cli_sarif_args`, `sarif_default_output_file`
@@ -23,6 +24,25 @@ When creating or modifying a linter entry, **search the internet** to gather all
 - **IDE**: `ide` with entries for `vscode`, `idea`, `eclipse`, `sublime`, `emacs` etc.
 - **Platforms**: `supported_platforms` with `install_override` for ARM when needed
 - **Install**: with renovate-compatible version pinning
+
+## Project Lint Mode: Forwarding Excluded Directories
+
+Linters running in `project` lint mode scan the whole workspace themselves, so MegaLinter's `EXCLUDED_DIRECTORIES` / `ADDITIONAL_EXCLUDED_DIRECTORIES` are otherwise ignored. When the tool has a **native CLI exclusion flag**, declare it so `Linter.build_project_exclude_arguments()` forwards each excluded directory automatically:
+
+```yaml
+cli_lint_mode_project_exclude_arg_name: "--ignore-pattern"   # native CLI flag
+cli_lint_mode_project_exclude_arg_value: "**/{{DIR}}/**"     # value template, {{DIR}} = directory name
+cli_lint_mode_project_exclude_separator: ","                 # only if the flag is NOT repeatable
+```
+
+Rules:
+
+- `cli_lint_mode_project_exclude_arg_name` — only a **CLI flag** qualifies. An ignore-file mechanism (`.eslintignore`, `.csharpierignore`) does not: use `ignore_file_name` / `cli_lint_ignore_arg_name` for that. A rule/check disabling flag never qualifies.
+- If the arg name ends with `=` or `:` (e.g. `--ignore=`), the value is concatenated to it; otherwise the flag and value are passed as two argv entries.
+- `cli_lint_mode_project_exclude_arg_value` — defaults to `{{DIR}}`. Set a glob/regex template matching the tool's own syntax, e.g. `**/{{DIR}}/**` (glob), `./{{DIR}}/**`, `(^|/){{DIR}}/` (regex).
+- `cli_lint_mode_project_exclude_separator` — set **only** when the tool does not accept a repeated flag (a second occurrence would override the first, e.g. `,` for comma-separated lists, `|` for regex alternation). Leave unset when the flag accumulates, so it is repeated once per directory.
+- **Verify against official docs** which of the three behaviors the tool has (repeatable / comma-separated / literal-paths-only) before filling these — a wrong choice silently drops exclusions.
+- Add a test in `megalinter/tests/test_megalinter/` covering the generated command line when adding this to a linter.
 
 ## Installation Version Pinning
 

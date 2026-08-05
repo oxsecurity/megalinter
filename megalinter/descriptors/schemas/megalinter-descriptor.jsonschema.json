@@ -753,6 +753,39 @@
             "title": "CLI Lint extra arguments (after config args)",
             "type": "array"
           },
+          "cli_lint_mode_project_exclude_arg_name": {
+            "$id": "#/properties/linters/items/properties/cli_lint_mode_project_exclude_arg_name",
+            "description": "Native linter CLI argument used to forward each excluded directory (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES) when running in project lint mode. If it ends with = or :, the value is concatenated to the argument name",
+            "examples": [
+              "--skip-dirs",
+              "--exclude",
+              "--ignore="
+            ],
+            "title": "CLI project lint mode excluded directories argument name",
+            "type": "string"
+          },
+          "cli_lint_mode_project_exclude_arg_value": {
+            "$id": "#/properties/linters/items/properties/cli_lint_mode_project_exclude_arg_value",
+            "default": "{{DIR}}",
+            "description": "Template used to build the value sent with cli_lint_mode_project_exclude_arg_name for each excluded directory. {{DIR}} is replaced by the directory name",
+            "examples": [
+              "{{DIR}}",
+              "./{{DIR}}/**",
+              "**/{{DIR}}/**"
+            ],
+            "title": "CLI project lint mode excluded directories argument value template",
+            "type": "string"
+          },
+          "cli_lint_mode_project_exclude_separator": {
+            "$id": "#/properties/linters/items/properties/cli_lint_mode_project_exclude_separator",
+            "description": "When set, all excluded directory values are joined with this separator and sent as a single argument occurrence, instead of repeating the argument for each directory",
+            "examples": [
+              ",",
+              "|"
+            ],
+            "title": "CLI project lint mode excluded directories separator",
+            "type": "string"
+          },
           "cli_lint_mode_project_extra_args_after": {
             "$id": "#/properties/linters/items/properties/cli_lint_mode_project_extra_args_after",
             "default": [],

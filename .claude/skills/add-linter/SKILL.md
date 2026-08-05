@@ -63,6 +63,7 @@ Add the linter entry with **as many properties as possible**. Even though the JS
 - `cli_version_arg_name` — if not `--version`
 - `cli_help_arg_name` — if not `--help`
 - `ignore_file_name`, `cli_lint_ignore_arg_name` — ignore file support
+- `cli_lint_mode_project_exclude_arg_name` / `cli_lint_mode_project_exclude_arg_value` / `cli_lint_mode_project_exclude_separator` — when `project` is a supported lint mode and the tool has a **native CLI exclusion flag**, so MegaLinter forwards `EXCLUDED_DIRECTORIES` to it. Check the official docs for the exact flag, its value syntax (`{{DIR}}` template, e.g. `**/{{DIR}}/**`), and whether it is repeatable (leave separator unset) or must be a single joined occurrence (set the separator)
 
 **Error parsing (important for accurate counts):**
 - `cli_lint_errors_count` — `regex_count`, `regex_number`, `regex_sum`, `total_lines`, or `sarif`

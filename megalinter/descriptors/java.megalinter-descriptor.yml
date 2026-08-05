@@ -49,6 +49,8 @@ linters:
     cli_lint_extra_args:
       - "-jar"
       - "/usr/bin/checkstyle"
+    cli_lint_mode_project_exclude_arg_name: "-x"
+    cli_lint_mode_project_exclude_arg_value: "/{{DIR}}(/|$)"
     cli_lint_mode_project_extra_args_after:
       - .
     cli_sarif_args:
@@ -137,6 +139,7 @@ linters:
       - file
       - list_of_files
       - project
+    cli_lint_mode_project_exclude_arg_name: "--exclude"
     cli_executable: /usr/bin/pmd/bin/pmd
     config_file_name: java-pmd-ruleset.xml
     cli_config_arg_name: "--rulesets"

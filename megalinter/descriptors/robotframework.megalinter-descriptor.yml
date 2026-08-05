@@ -35,6 +35,7 @@ linters:
       - file
       - list_of_files
       - project
+    cli_lint_mode_project_exclude_arg_name: "--exclude"
     # robocop 8.2.9 ships a broken `--version` flag, so read the installed version
     # via the venv's Python and importlib.metadata until upstream restores it.
     cli_executable_version: /venvs/robocop/bin/python
