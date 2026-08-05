@@ -1546,12 +1546,12 @@ class Linter:
             # native CLI arguments, generated ignore files (report folder or
             # workspace) and generated configurations. Nothing is forwarded
             # when no excluded directory exists in the workspace
-            if (
+            forward_exclusions = (
                 self.is_project_exclude_forwarding_active()
                 and len(self.get_project_exclude_directories()) > 0
-            ):
+            )
+            if forward_exclusions:
                 cmd += self.build_project_exclude_arguments()
-                cmd += self.build_project_exclude_ignore_file_arguments(cmd)
                 cmd = self.manage_excluded_directories_config(cmd)
             self.cli_lint_mode_project_extra_args_after = self.replace_vars(
                 self.cli_lint_mode_project_extra_args_after,
@@ -1559,6 +1559,11 @@ class Linter:
             )
 
             cmd += self.cli_lint_mode_project_extra_args_after
+            # Ignore file arguments come after the positional arguments: array
+            # options (ex: v8r --ignore-pattern-files) greedily consume every
+            # following non-option argument
+            if forward_exclusions:
+                cmd += self.build_project_exclude_ignore_file_arguments(cmd)
 
         # Some linters/formatters update files by default.
         # To avoid that, declare -megalinter-fix-flag as cli_lint_fix_arg_name
