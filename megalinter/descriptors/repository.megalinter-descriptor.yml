@@ -49,6 +49,8 @@ linters:
       - --file
     cli_lint_mode_list_of_files_extra_args_after:
       - --file
+    cli_lint_mode_project_exclude_arg_name: "--skip-path"
+    cli_lint_mode_project_exclude_config_key: "skip-path"
     cli_lint_mode_project_extra_args_after:
       - --directory
       - .
@@ -136,6 +138,11 @@ linters:
     cli_lint_mode_list_of_files_extra_args_after:
       - -E
       - --source-code
+    cli_lint_mode_project_exclude_arg_name: "-g"
+    cli_lint_mode_project_exclude_arg_value: "**/{{DIR}}/**"
+    cli_lint_mode_project_exclude_separator: ","
+    cli_lint_mode_project_exclude_seed_values: ["**/.git/**", "**/bin/**"]
+    cli_lint_mode_project_exclude_config_key: "Globs"
     cli_lint_mode_project_extra_args_after:
       - -E
       - --source-code
@@ -407,6 +414,9 @@ linters:
       - project
     cli_lint_mode_file_extra_args_after:
       - file:{{FILE}}
+    cli_lint_mode_project_exclude_arg_name: "--exclude"
+    cli_lint_mode_project_exclude_arg_value: "**/{{DIR}}"
+    cli_lint_mode_project_exclude_config_key: "exclude"
     cli_lint_mode_project_extra_args_after:
       - dir:.
     cli_config_arg_name: "--config"
@@ -821,6 +831,9 @@ linters:
       - scan
     cli_lint_mode_file_extra_args_after:
       - file:{{FILE}}
+    cli_lint_mode_project_exclude_arg_name: "--exclude"
+    cli_lint_mode_project_exclude_arg_value: "**/{{DIR}}"
+    cli_lint_mode_project_exclude_config_key: "exclude"
     cli_lint_mode_project_extra_args_after:
       - dir:.
     cli_sarif_args:
@@ -902,6 +915,9 @@ linters:
       - vuln,misconfig
       - --exit-code
       - "1"
+    cli_lint_mode_project_exclude_arg_name: "--skip-dirs"
+    cli_lint_mode_project_exclude_arg_value: "**/{{DIR}}"
+    cli_lint_mode_project_exclude_config_key: "scan.skip-dirs"
     cli_lint_mode_project_extra_args_after:
       - .
     common_linter_errors:
@@ -1004,6 +1020,9 @@ linters:
       - fs
       - --format
       - cyclonedx
+    cli_lint_mode_project_exclude_arg_name: "--skip-dirs"
+    cli_lint_mode_project_exclude_arg_value: "**/{{DIR}}"
+    cli_lint_mode_project_exclude_config_key: "scan.skip-dirs"
     cli_lint_mode_project_extra_args_after:
       - .
     cli_sarif_args:

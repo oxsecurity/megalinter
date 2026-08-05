@@ -776,6 +776,17 @@
             "title": "CLI project lint mode excluded directories argument value template",
             "type": "string"
           },
+          "cli_lint_mode_project_exclude_config_key": {
+            "$id": "#/properties/linters/items/properties/cli_lint_mode_project_exclude_config_key",
+            "description": "Dotted key path of the resolved config file list that the exclusion argument replaces: its entries are re-emitted first so they are preserved",
+            "examples": [
+              "skip-path",
+              "exclude",
+              "scan.skip-dirs"
+            ],
+            "title": "CLI project lint mode excluded directories config list key",
+            "type": "string"
+          },
           "cli_lint_mode_project_exclude_ignore_file_arg_name": {
             "$id": "#/properties/linters/items/properties/cli_lint_mode_project_exclude_ignore_file_arg_name",
             "description": "CLI argument receiving a generated ignore file that forwards excluded directories in project lint mode",

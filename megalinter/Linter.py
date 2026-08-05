@@ -141,6 +141,10 @@ class Linter:
         # Default values re-included when the linter's exclusion argument
         # replaces its built-in defaults (ex: bandit -x, devskim -g)
         self.cli_lint_mode_project_exclude_seed_values = []
+        # Dotted key path of the resolved config file list that the exclusion
+        # argument REPLACES: its entries are re-emitted first so they are
+        # preserved (ex: checkov skip-path, grype exclude, trivy scan.skip-dirs)
+        self.cli_lint_mode_project_exclude_config_key = None
         # Generated ignore file forwarding: argument receiving the generated
         # file, workspace files merged into it (first existing wins), workspace
         # files re-passed through the same argument (when the argument replaces
@@ -1660,10 +1664,13 @@ class Linter:
         if self.cli_lint_mode_project_exclude_arg_name is None:
             return []
         arg_name = self.cli_lint_mode_project_exclude_arg_name
-        values = list(self.cli_lint_mode_project_exclude_seed_values) + [
+        seed_values = list(self.cli_lint_mode_project_exclude_seed_values)
+        seed_values += self.get_config_list_seed_values()
+        values = seed_values + [
             self.cli_lint_mode_project_exclude_arg_value.replace("{{DIR}}", excl_dir)
             for excl_dir in self.get_project_exclude_directories()
         ]
+        values = self.replace_vars(values)
         if len(values) == 0:
             return []
         if self.cli_lint_mode_project_exclude_separator is not None:
@@ -1758,40 +1765,23 @@ class Linter:
     def manage_excluded_directories_config(self, cmd):
         return cmd
 
-    # Forward excluded directories through a repeatable CLI argument whose
-    # values REPLACE the same list in the tool's config file: the resolved
-    # config's list (located by a dotted key path) is re-emitted first so it
-    # is preserved (ex: checkov --skip-path vs skip-path, grype --exclude vs
-    # exclude, trivy --skip-dirs vs scan.skip-dirs)
-    def forward_excludes_with_config_list(
-        self, cmd, config_arg_names, config_key_path, arg_name, value_template
-    ):
-        if arg_name in cmd:
-            return cmd
-        seed_values = []
-        config_index = self.find_cli_argument_value_index(cmd, config_arg_names)
-        if config_index is not None:
-            with open(cmd[config_index], encoding="utf-8") as config_file:
-                config_content = yaml.safe_load(config_file) or {}
-            node = config_content
-            for key in config_key_path.split("."):
-                node = node.get(key, {}) if isinstance(node, dict) else {}
-            if isinstance(node, list):
-                seed_values = [str(value) for value in node]
-        values = list(seed_values)
-        for excluded_dir in self.get_project_exclude_directories():
-            value = value_template.replace("{{DIR}}", excluded_dir)
-            if value not in values:
-                values.append(value)
-        for value in values:
-            cmd += [arg_name, value]
-        self.log_project_exclude_forwarding(
-            f"Forwarded EXCLUDED_DIRECTORIES to {self.linter_name} through "
-            f"{arg_name}, re-emitting the {config_key_path} entries of the "
-            f"resolved configuration it would replace "
-            f"(disable with {self.name}_FORWARD_EXCLUDED_DIRECTORIES: false)"
-        )
-        return cmd
+    # Entries of the resolved config file list that the exclusion argument
+    # would replace, located by the cli_lint_mode_project_exclude_config_key
+    # dotted key path
+    def get_config_list_seed_values(self):
+        if (
+            self.cli_lint_mode_project_exclude_config_key is None
+            or self.final_config_file is None
+        ):
+            return []
+        with open(self.final_config_file, encoding="utf-8") as config_file:
+            config_content = yaml.safe_load(config_file) or {}
+        node = config_content
+        for key in self.cli_lint_mode_project_exclude_config_key.split("."):
+            node = node.get(key, {}) if isinstance(node, dict) else {}
+        if isinstance(node, list):
+            return [str(value) for value in node]
+        return []
 
     # Locate the value of a CLI argument in a command line
     def find_cli_argument_value_index(self, cmd, arg_names):

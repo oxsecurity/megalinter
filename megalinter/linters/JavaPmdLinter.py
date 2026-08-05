@@ -41,6 +41,10 @@ class JavaPmdLinter(Linter):
         # lint the whole directory
         elif self.cli_lint_mode == "project":
             file_args = ["--dir", self.workspace]
+            # This method fully replaces the base one: excluded directories
+            # forwarding must be applied here too
+            if self.is_project_exclude_forwarding_active():
+                file_args += self.build_project_exclude_arguments()
         # lint a list of files
         else:  # self.cli_lint_mode == "list_of_files":
             temp_list_of_files_for_pmd = (

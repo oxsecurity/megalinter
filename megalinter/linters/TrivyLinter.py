@@ -43,12 +43,6 @@ class TrivyLinter(Linter):
                 return super().execute_lint_command(command_without_db)
         return return_code, return_output
 
-    # trivy CLI --skip-dirs replaces the scan.skip-dirs list of the config file
-    def manage_excluded_directories_config(self, cmd):
-        return self.forward_excludes_with_config_list(
-            cmd, ("--config",), "scan.skip-dirs", "--skip-dirs", "**/{{DIR}}"
-        )
-
     def pre_test(self, test_name):
         if test_name.endswith(("file_lint_mode", "list_of_files_lint_mode")):
             config.set_value(
