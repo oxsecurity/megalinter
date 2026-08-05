@@ -12100,7 +12100,7 @@
 </ul>
 <h2 id="phpstan-documentation">phpstan documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>2.2.7</strong></li>
+<li>Version in MegaLinter: <strong>2.2.8</strong></li>
 <li>Visit <a href="https://phpstan.org/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://phpstan.org/config-reference#neon-format" target="_blank">How to configure phpstan rules</a><ul>
 <li>If custom <code>phpstan.neon.dist</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/phpstan.neon.dist" target="_blank">phpstan.neon.dist</a> will be used</li>
@@ -12147,6 +12147,11 @@
 <td>PHP_PHPSTAN_CLI_LINT_MODE</td>
 <td>Override default CLI lint mode<br>- <code>file</code>: Calls the linter for each file<br>- <code>list_of_files</code>: Call the linter with the list of files as argument<br>- <code>project</code>: Call the linter from the root of the project</td>
 <td><code>list_of_files</code></td>
+</tr>
+<tr>
+<td>PHP_PHPSTAN_FORWARD_EXCLUDED_DIRECTORIES</td>
+<td>In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES) to the linter through its native exclusion arguments or generated ignore/config files</td>
+<td><code>true</code></td>
 </tr>
 <tr>
 <td>PHP_PHPSTAN_FILE_EXTENSIONS</td>
@@ -12303,7 +12308,7 @@ Options:
 <span class="k">ENV</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"/usr/local/composer/vendor/bin:</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span><span class="s2">"</span>
 <span class="c"># Linter install</span>
 <span class="c"># renovate: datasource=packagist depName=phpstan/phpstan</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">PHP_PHPSTAN_PHPSTAN_VERSION</span><span class="o">=</span><span class="m">2</span>.2.7
+<span class="k">ARG</span><span class="w"> </span><span class="nv">PHP_PHPSTAN_PHPSTAN_VERSION</span><span class="o">=</span><span class="m">2</span>.2.8
 <span class="c"># renovate: datasource=packagist depName=phpstan/extension-installer</span>
 <span class="k">ARG</span><span class="w"> </span><span class="nv">PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION</span><span class="o">=</span><span class="m">1</span>.4.3
 <span class="c"># renovate: datasource=packagist depName=bartlett/sarif-php-converters</span>
