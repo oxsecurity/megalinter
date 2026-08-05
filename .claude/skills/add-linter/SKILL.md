@@ -65,7 +65,7 @@ Add the linter entry with **as many properties as possible**. Even though the JS
 - `ignore_file_name`, `cli_lint_ignore_arg_name` — ignore file support
 - **Excluded directories forwarding** — when `project` is a supported lint mode, MegaLinter must forward `EXCLUDED_DIRECTORIES` to the tool or it will scan `node_modules`/build caches raw. Pick exactly ONE mechanism (see `.claude/rules/descriptors.md` → "Project Lint Mode: Forwarding Excluded Directories" for full semantics and known traps):
   - native CLI flag → `cli_lint_mode_project_exclude_arg_name` (+ `_arg_value` `{{DIR}}`/`{{WORKSPACE}}` template, `_separator` if a repeated flag overrides, `_seed_values` if the flag replaces the tool's built-in defaults, `_config_key` if it replaces a list in the tool's config file)
-  - flag taking an ignore file → `cli_lint_mode_project_exclude_ignore_file_arg_name` (+ `_seed_files`, `_pass_existing`, `_skip_if_config`)
+  - flag taking an ignore file → `cli_lint_mode_project_exclude_ignore_file_arg_name` (+ `_seed_files`, `_pass_existing`)
   - ignore file only discovered inside the repo → `cli_lint_mode_project_exclude_workspace_file_name`
   - generated/merged config needed → `manage_excluded_directories_config()` override in the linter class
 

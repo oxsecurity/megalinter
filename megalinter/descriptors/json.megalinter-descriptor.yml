@@ -39,9 +39,9 @@ linters:
     cli_lint_extra_args:
       - --quiet
     cli_lint_mode_project_exclude_arg_name: ""
-    cli_lint_mode_project_exclude_arg_value: "!{{WORKSPACE}}/**/{{DIR}}/**"
+    cli_lint_mode_project_exclude_arg_value: "!**/{{DIR}}/**"
     cli_lint_mode_project_extra_args_after:
-      - "{{WORKSPACE}}"
+      - "**/*.json"
     test_folder: json_jsonlint
     examples:
       - "jsonlint myfile1.json myfile2.json"

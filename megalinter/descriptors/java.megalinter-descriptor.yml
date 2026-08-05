@@ -140,6 +140,7 @@ linters:
       - list_of_files
       - project
     cli_lint_mode_project_exclude_arg_name: "--exclude"
+    cli_lint_mode_project_exclude_arg_value: "{{WORKSPACE}}/{{DIR}}"
     cli_executable: /usr/bin/pmd/bin/pmd
     config_file_name: java-pmd-ruleset.xml
     cli_config_arg_name: "--rulesets"

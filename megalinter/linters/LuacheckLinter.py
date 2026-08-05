@@ -16,6 +16,7 @@ class LuacheckLinter(Linter):
         if (
             self.cli_lint_mode == "project"
             and self.is_project_exclude_forwarding_active()
+            and len(self.get_project_exclude_directories()) > 0
             and "--exclude-files" not in cmd
         ):
             cmd += ["--exclude-files"] + [

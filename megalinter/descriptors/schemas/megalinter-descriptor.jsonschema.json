@@ -828,13 +828,6 @@
             "title": "CLI project lint mode generated ignore file seed files",
             "type": "array"
           },
-          "cli_lint_mode_project_exclude_ignore_file_skip_if_config": {
-            "$id": "#/properties/linters/items/properties/cli_lint_mode_project_exclude_ignore_file_skip_if_config",
-            "default": false,
-            "description": "Skip the generated ignore file forwarding when a linter config file is resolved (for linters whose config may define its own ignore files)",
-            "title": "CLI project lint mode: skip generated ignore file when config resolved",
-            "type": "boolean"
-          },
           "cli_lint_mode_project_exclude_seed_values": {
             "$id": "#/properties/linters/items/properties/cli_lint_mode_project_exclude_seed_values",
             "default": [],

@@ -38,7 +38,6 @@ cli_lint_mode_project_exclude_seed_values: ["**/.git/**"]    # defaults to re-in
 cli_lint_mode_project_exclude_ignore_file_arg_name: "--ignore-path"          # argument receiving the generated ignore file
 cli_lint_mode_project_exclude_ignore_file_seed_files: [".toolignore"]        # workspace files merged into it (first existing wins)
 cli_lint_mode_project_exclude_ignore_file_pass_existing: [".gitignore"]      # files re-passed via the same arg when it replaces their discovery
-cli_lint_mode_project_exclude_ignore_file_skip_if_config: true               # skip when a config file is resolved
 # When the tool only discovers ignore files inside the analyzed repository:
 cli_lint_mode_project_exclude_workspace_file_name: ".toolignore"             # written at workspace root only if absent, removed after the run
 ```
@@ -66,6 +65,7 @@ Rules and known traps (each was hit for real — verify against official docs/so
 - `..._exclude_config_key` — when the flag REPLACES the same list in the tool's config file (checkov `skip-path`, grype/syft `exclude`, trivy `scan.skip-dirs`, devskim `Globs`), name that key so the resolved config's entries are preserved. Without it, forwarding silently discards the user's configured exclusions.
 - **Custom classes overriding `build_lint_command` WITHOUT calling `super()`** (e.g. JavaPmdLinter) bypass all forwarding: they must apply `build_project_exclude_arguments()` themselves in their project branch, gated by `is_project_exclude_forwarding_active()`.
 - Glob semantics differ per tool: `**/` prefix requirements (grype/syft error without `./`, `*/` or `**/`), dot-directory handling, quantifier traps. When unsure, prefer the form the tool's own docs use.
+- Only excluded directories **existing at the workspace root** are forwarded (`get_project_exclude_directories`): arguments and generated files stay minimal, and nothing is forwarded at all when none exists. Custom classes calling forwarding outside the base gate must apply the same `len(self.get_project_exclude_directories()) > 0` guard.
 
 **Poison fixture (mandatory when adding forwarding):** create a deliberately failing file for the linter inside `.automation/test/<test_folder>/good/.wireit/` (`.wireit` is a default excluded directory that almost no tool skips natively). The `test_success_project_lint_mode` test then fails if forwarding regresses. Only do this when every project-capable linter sharing the test folder has forwarding, and only in folders with a `good/` subfolder. See `.claude/rules/testing.md`.
 

@@ -146,6 +146,7 @@ class EslintLinter(Linter):
         if (
             self.cli_lint_mode == "project"
             and self.is_project_exclude_forwarding_active()
+            and len(self.get_project_exclude_directories()) > 0
             and "--ignore-pattern" not in cmd
         ):
             for excluded_dir in self.get_project_exclude_directories():

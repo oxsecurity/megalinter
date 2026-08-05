@@ -19,6 +19,7 @@ class SecretLintLinter(Linter):
         if (
             self.cli_lint_mode == "project"
             and self.is_project_exclude_forwarding_active()
+            and len(self.get_project_exclude_directories()) > 0
             and "--secretlintignore" not in self.cli_lint_user_args
         ):
             return []

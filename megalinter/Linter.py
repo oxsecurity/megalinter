@@ -146,13 +146,12 @@ class Linter:
         # preserved (ex: checkov skip-path, grype exclude, trivy scan.skip-dirs)
         self.cli_lint_mode_project_exclude_config_key = None
         # Generated ignore file forwarding: argument receiving the generated
-        # file, workspace files merged into it (first existing wins), workspace
-        # files re-passed through the same argument (when the argument replaces
-        # their default discovery), and skip when a config file is resolved
+        # file, workspace files merged into it (first existing wins), and
+        # workspace files re-passed through the same argument (when the
+        # argument replaces their default discovery)
         self.cli_lint_mode_project_exclude_ignore_file_arg_name = None
         self.cli_lint_mode_project_exclude_ignore_file_seed_files = []
         self.cli_lint_mode_project_exclude_ignore_file_pass_existing = []
-        self.cli_lint_mode_project_exclude_ignore_file_skip_if_config = False
         # When set, the generated ignore file is written at the workspace root
         # under this name (only if absent, removed after the run), for linters
         # that only discover ignore files inside the analyzed repository
@@ -1545,8 +1544,12 @@ class Linter:
         elif self.cli_lint_mode == "project":
             # Single gate for every excluded-directories forwarding mechanism:
             # native CLI arguments, generated ignore files (report folder or
-            # workspace) and generated configurations
-            if self.is_project_exclude_forwarding_active():
+            # workspace) and generated configurations. Nothing is forwarded
+            # when no excluded directory exists in the workspace
+            if (
+                self.is_project_exclude_forwarding_active()
+                and len(self.get_project_exclude_directories()) > 0
+            ):
                 cmd += self.build_project_exclude_arguments()
                 cmd += self.build_project_exclude_ignore_file_arguments(cmd)
                 cmd = self.manage_excluded_directories_config(cmd)
@@ -1632,9 +1635,14 @@ class Linter:
     # Directories forwarded to project-mode linters: EXCLUDED_DIRECTORIES +
     # ADDITIONAL_EXCLUDED_DIRECTORIES + directories identified from
     # FILTER_REGEX_EXCLUDE (global, descriptor or linter scoped) literal
-    # prefixes when they exist in the workspace. No filesystem walk: a regex
-    # too complex to trim into an existing directory is simply skipped
+    # prefixes. Only directories existing at the workspace root are kept, so
+    # linter arguments and generated ignore/config files stay minimal. No
+    # filesystem walk: a nested-only directory or a regex too complex to trim
+    # into an existing directory is simply skipped
     def get_project_exclude_directories(self):
+        cached = getattr(self, "project_exclude_directories", None)
+        if cached is not None:
+            return cached
         excluded = set(utils.get_excluded_directories(self.request_id))
         exclude_regexes = (
             utils.normalize_regex_filter(
@@ -1645,11 +1653,26 @@ class Linter:
         )
         for exclude_regex in exclude_regexes:
             for candidate in utils.extract_dir_candidates_from_regex(exclude_regex):
-                if candidate not in excluded and os.path.isdir(
-                    os.path.join(self.workspace, candidate)
-                ):
-                    excluded.add(candidate)
-        return sorted(excl_dir for excl_dir in excluded if excl_dir)
+                excluded.add(candidate)
+        workspace_abs = os.path.abspath(self.workspace)
+        existing = set()
+        for excl_dir in excluded:
+            if not excl_dir:
+                continue
+            if os.path.isabs(excl_dir):
+                # Keep absolute paths only when inside the workspace,
+                # converted to workspace-relative form
+                try:
+                    rel_dir = os.path.relpath(excl_dir, workspace_abs)
+                except ValueError:
+                    continue
+                if rel_dir == "." or rel_dir.startswith(".."):
+                    continue
+                excl_dir = rel_dir.replace("\\", "/")
+            if os.path.isdir(os.path.join(self.workspace, excl_dir)):
+                existing.add(excl_dir)
+        self.project_exclude_directories = sorted(existing)
+        return self.project_exclude_directories
 
     def read_workspace_file_lines(self, file_name):
         file_path = os.path.join(self.workspace, file_name)
@@ -1662,6 +1685,8 @@ class Linter:
     # native exclusion argument, when the descriptor declares one
     def build_project_exclude_arguments(self):
         if self.cli_lint_mode_project_exclude_arg_name is None:
+            return []
+        if len(self.get_project_exclude_directories()) == 0:
             return []
         arg_name = self.cli_lint_mode_project_exclude_arg_name
         seed_values = list(self.cli_lint_mode_project_exclude_seed_values)
@@ -1719,10 +1744,7 @@ class Linter:
         workspace_file_name = self.cli_lint_mode_project_exclude_workspace_file_name
         if arg_name is None and workspace_file_name is None:
             return []
-        if (
-            self.cli_lint_mode_project_exclude_ignore_file_skip_if_config is True
-            and self.config_file is not None
-        ):
+        if len(self.get_project_exclude_directories()) == 0:
             return []
         if arg_name is not None and arg_name in cmd:
             return []
