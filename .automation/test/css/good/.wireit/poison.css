@@ -1,0 +1,2 @@
+/* Deliberately failing fixture inside .wireit (#8645) */
+a { color:: red }

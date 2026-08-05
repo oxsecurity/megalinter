@@ -1,0 +1,8 @@
+# Deliberately failing fixture inside .wireit, a default excluded directory:
+# the project lint mode success test passes only if excluded directories are
+# forwarded to the linter (see MegaLinter issue #8645).
+- hosts: all
+  tasks:
+    - name: broken task
+      ansible.builtin.shell: echo poison
+      an_unknown_key_that_fails_schema: true
