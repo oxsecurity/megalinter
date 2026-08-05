@@ -1758,6 +1758,39 @@ class Linter:
     def manage_excluded_directories_config(self, cmd):
         return cmd
 
+    # Forward excluded directories through a repeatable CLI argument whose
+    # values REPLACE the same list in the tool's config file: the resolved
+    # config's list (located by a dotted key path) is re-emitted first so it
+    # is preserved (ex: checkov --skip-path vs skip-path, grype --exclude vs
+    # exclude, trivy --skip-dirs vs scan.skip-dirs)
+    def forward_excludes_with_config_list(
+        self, cmd, config_arg_names, config_key_path, arg_name, value_template
+    ):
+        seed_values = []
+        config_index = self.find_cli_argument_value_index(cmd, config_arg_names)
+        if config_index is not None:
+            with open(cmd[config_index], encoding="utf-8") as config_file:
+                config_content = yaml.safe_load(config_file) or {}
+            node = config_content
+            for key in config_key_path.split("."):
+                node = node.get(key, {}) if isinstance(node, dict) else {}
+            if isinstance(node, list):
+                seed_values = [str(value) for value in node]
+        values = list(seed_values)
+        for excluded_dir in self.get_project_exclude_directories():
+            value = value_template.replace("{{DIR}}", excluded_dir)
+            if value not in values:
+                values.append(value)
+        for value in values:
+            cmd += [arg_name, value]
+        self.log_project_exclude_forwarding(
+            f"Forwarded EXCLUDED_DIRECTORIES to {self.linter_name} through "
+            f"{arg_name}, re-emitting the {config_key_path} entries of the "
+            f"resolved configuration it would replace "
+            f"(disable with {self.name}_FORWARD_EXCLUDED_DIRECTORIES: false)"
+        )
+        return cmd
+
     # Locate the value of a CLI argument in a command line
     def find_cli_argument_value_index(self, cmd, arg_names):
         for index, arg in enumerate(cmd):
