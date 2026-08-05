@@ -1,0 +1,4 @@
+{
+  "version": "1.0.0",
+  "description": "Deliberately failing fixture inside .wireit (default excluded directory): missing name fails npm-package-json-lint default rules, while staying valid JSON so repo-wide package.json scanners (dustilock) are not broken. See MegaLinter issue #8645."
+}

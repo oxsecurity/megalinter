@@ -140,6 +140,22 @@ class EslintLinter(Linter):
     def build_lint_command(self, file=None):
         cmd = super().build_lint_command(file)
         cmd = [arg for arg in cmd if arg not in ("--no-eslintrc",)]
+        # Forward excluded directories in project mode through --ignore-pattern.
+        # The --no-ignore stripping below then re-enables ignore processing;
+        # ESLint default ignores (node_modules, .git) stay active in all cases
+        if (
+            self.cli_lint_mode == "project"
+            and self.is_project_exclude_forwarding_active()
+            and len(self.get_project_exclude_directories()) > 0
+            and "--ignore-pattern" not in cmd
+        ):
+            for excluded_dir in self.get_project_exclude_directories():
+                cmd += ["--ignore-pattern", f"**/{excluded_dir}/**"]
+            self.log_project_exclude_forwarding(
+                f"Forwarded EXCLUDED_DIRECTORIES to {self.linter_name} through "
+                f"--ignore-pattern, removing --no-ignore so ignores apply "
+                f"(disable with {self.name}_FORWARD_EXCLUDED_DIRECTORIES: false)"
+            )
         if "--ignore-path" in cmd or "--ignore-pattern" in cmd:
             cmd = list(filter(lambda a: a != "--no-ignore", cmd))
         return cmd

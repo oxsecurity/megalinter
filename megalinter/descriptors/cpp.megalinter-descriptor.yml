@@ -49,6 +49,8 @@ linters:
       - project
     cli_lint_extra_args:
       - --error-exitcode=1
+    cli_lint_mode_project_exclude_arg_name: "-i"
+    cli_lint_mode_project_exclude_arg_value: "**/{{DIR}}/**"
     cli_lint_mode_project_extra_args_after:
       - .
     examples:

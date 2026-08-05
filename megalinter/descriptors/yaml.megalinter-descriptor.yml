@@ -45,6 +45,8 @@ linters:
     cli_lint_warnings_regex: "\\[warn\\]"
     cli_lint_extra_args:
       - "--check"
+    cli_lint_mode_project_exclude_ignore_file_arg_name: "--ignore-path"
+    cli_lint_mode_project_exclude_ignore_file_pass_existing: [".gitignore", ".prettierignore"]
     cli_lint_mode_project_extra_args_after:
       - .
     cli_lint_fix_arg_name: "--write"
@@ -90,7 +92,8 @@ linters:
         - name: prettier-vscode
           url: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
   # YAMLLINT
-  - linter_name: yamllint
+  - class: YamllintLinter
+    linter_name: yamllint
     linter_text: |
       **yamllint** is a linter for YAML files that checks for syntax validity, key repetition, lines length, trailing spaces, indentation, and other common YAML issues. It helps ensure YAML files are well-formed, follow consistent formatting conventions, and avoid common pitfalls.
 
@@ -188,6 +191,9 @@ linters:
       - project
     cli_lint_extra_args:
       - "--ignore-errors"
+    cli_lint_mode_project_exclude_ignore_file_arg_name: "--ignore-pattern-files="
+    cli_lint_mode_project_exclude_arg_value: "{{DIR}}/**"
+    cli_lint_mode_project_exclude_ignore_file_pass_existing: [".v8rignore", ".gitignore"]
     cli_lint_mode_project_extra_args_after:
       - "**/*.{yml,yaml}"
     cli_help_arg_name: "--help"

@@ -34,6 +34,7 @@ linters:
       - file
       - list_of_files
       - project
+    cli_lint_mode_project_exclude_workspace_file_name: ".coffeelintignore"
     cli_lint_mode_project_extra_args_after:
       - .
     examples:

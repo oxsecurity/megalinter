@@ -43,6 +43,8 @@ linters:
       - file
       - list_of_files
       - project
+    cli_lint_mode_project_exclude_arg_name: "--exclude"
+    cli_lint_mode_project_exclude_arg_value: "**/{{DIR}}/**"
     cli_lint_mode_project_extra_args_after:
       - .
     cli_lint_errors_count: regex_number
@@ -297,6 +299,8 @@ linters:
       - --format
       - detailed
       - --no-progress
+    cli_lint_mode_project_exclude_arg_name: "--exclude-path"
+    cli_lint_mode_project_exclude_arg_value: "(^|/){{DIR}}(/|$)"
     cli_lint_mode_project_extra_args_after:
       - .
     examples:
@@ -364,6 +368,8 @@ linters:
       - file
       - list_of_files
       - project
+    cli_lint_mode_project_exclude_arg_name: "--skip"
+    cli_lint_mode_project_exclude_separator: ","
     cli_lint_errors_count: total_lines
     common_linter_errors:
       - identifier: SPELL_CODESPELL_ERROR_DICT_NOT_FOUND

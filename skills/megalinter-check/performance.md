@@ -15,6 +15,23 @@ Load this guide when a run reports slow linters (see the thresholds in the check
 | Many linters each spend time on the same vendored/generated files | No global exclusion                                                                                 | Add vendored/generated/build folders to `FILTER_REGEX_EXCLUDE` or `ADDITIONAL_EXCLUDED_DIRECTORIES`                                                 |
 | Whole run slow, many irrelevant linters                           | `all` flavor used on a single-stack repository                                                      | Set `MEGALINTER_FLAVOR` to the matching [flavor](https://megalinter.io/flavors/), or build a [custom flavor](https://megalinter.io/custom-flavors/) |
 | A single linter dominates and is not valued by the team           | —                                                                                                   | Suggest `DISABLE_LINTERS` (requires user confirmation, like any disable)                                                                            |
+| A project-mode linter behaves unexpectedly after an upgrade       | Automatic excluded-directories forwarding (see below) conflicts with the repo's own ignore/config   | Disable forwarding for that linter with `<LINTER_KEY>_FORWARD_EXCLUDED_DIRECTORIES: false`                                                          |
+
+## Automatic excluded-directories forwarding
+
+MegaLinter forwards `EXCLUDED_DIRECTORIES` + `ADDITIONAL_EXCLUDED_DIRECTORIES` (plus directories identified from `FILTER_REGEX_EXCLUDE`) to linters running in `project` CLI lint mode, so they stop crawling folders like `node_modules`, `.git` or build caches. Depending on the linter this is done by:
+
+- appending the tool's native exclusion arguments (e.g. trivy `--skip-dirs`, grype/syft `--exclude`, checkov `--skip-path`)
+- generating an ignore file or a config file into the report folder that merges or extends the one resolved from the repository (e.g. trufflehog, prettier, jscpd, yamllint, rubocop, swiftlint, betterleaks)
+
+Each forwarded exclusion is traced in the linter's console log with an `[Excluded directories]` line, so a generated file or extra argument is always visible in the run output.
+
+Disable it when it causes issues, or when the repository already maintains up-to-date ignore/config files for its linters (making the merge redundant):
+
+- globally: `FORWARD_EXCLUDED_DIRECTORIES: false` in `.mega-linter.yml`
+- for one linter only: `<LINTER_KEY>_FORWARD_EXCLUDED_DIRECTORIES: false` (e.g. `REPOSITORY_TRIVY_FORWARD_EXCLUDED_DIRECTORIES: false`)
+
+Like any performance change, propose the disable to the user first; point at the `[Excluded directories]` log lines of the affected linter as evidence.
 
 ## How to present findings
 

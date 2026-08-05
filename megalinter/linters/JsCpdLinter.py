@@ -4,6 +4,7 @@ Use JSCPD to detect copy-pastes
 https://github.com/kucherenko/jscpd
 """
 
+import json
 import os
 import shutil
 
@@ -22,6 +23,36 @@ class JsCpdLinter(Linter):
         # Do not use Jscpd HTML reporter if deactivated
         if not utils.can_write_report_files(self.master):
             cmd = [item.replace("console,html", "console") for item in cmd]
+        return cmd
+
+    # Forward excluded directories through a generated config: the jscpd
+    # --ignore CLI argument would replace the resolved config's ignore list
+    # wholesale, so the globs are merged into the config instead
+    def manage_excluded_directories_config(self, cmd):
+        if any(arg in ("-i", "--ignore") for arg in cmd):
+            return cmd
+        config_index = self.find_cli_argument_value_index(cmd, ("-c", "--config"))
+        config_content = {}
+        if config_index is not None:
+            with open(cmd[config_index], encoding="utf-8") as config_file:
+                config_content = json.load(config_file)
+        ignore_globs = list(config_content.get("ignore", []))
+        for excluded_dir in self.get_project_exclude_directories():
+            glob = f"**/{excluded_dir}/**"
+            if glob not in ignore_globs:
+                ignore_globs += [glob]
+        config_content["ignore"] = ignore_globs
+        generated_config = self.write_report_generated_file(
+            "jscpd-config.json", json.dumps(config_content, indent=2).splitlines()
+        )
+        cmd = self.replace_or_append_cli_argument(
+            cmd, config_index, "-c", generated_config
+        )
+        self.log_project_exclude_forwarding(
+            f"Generated {generated_config} merging EXCLUDED_DIRECTORIES into the "
+            f"jscpd ignore list "
+            f"(disable with {self.name}_FORWARD_EXCLUDED_DIRECTORIES: false)"
+        )
         return cmd
 
     # Perform additional actions and provide additional details in text reporter logs

@@ -37,6 +37,8 @@ linters:
       - file
       - list_of_files
       - project
+    cli_lint_mode_project_exclude_arg_name: "--extend-exclude"
+    cli_lint_mode_project_exclude_separator: ","
     cli_lint_mode_project_extra_args_after:
       - .
     cli_lint_errors_count: regex_count
@@ -91,6 +93,9 @@ linters:
       - file
       - list_of_files
       - project
+    cli_lint_mode_project_exclude_arg_name: "--ignore"
+    cli_lint_mode_project_exclude_arg_value: "**/{{DIR}}/**"
+    cli_lint_mode_project_exclude_separator: ","
     config_file_name: .htmlhintrc
     cli_config_arg_name: "--config"
     cli_lint_errors_count: regex_number

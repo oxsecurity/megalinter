@@ -1114,13 +1114,41 @@ class Megalinter:
         ).splitlines()
         ignored_files = map(lambda x: x + "**" if x.endswith("/") else x, ignored_files)
         ignored_files = sorted(list(ignored_files))
-        # If there are more than 500 ignored files, advise to add more excluded
+        # If there are more than 300 ignored files, advise to add more excluded
         # directories using variable ADDITIONAL_EXCLUDED_DIRECTORIES, to improve performances
         if len(ignored_files) > 300:
+            # Name the top-level directories containing the most gitignored
+            # files, as they are the best candidates for exclusion
+            ignored_files_by_dir: dict[str, int] = {}
+            for ignored_file in ignored_files:
+                ignored_file = ignored_file.replace("\\", "/")
+                if "/" in ignored_file:
+                    top_level_dir = ignored_file.split("/")[0]
+                    ignored_files_by_dir[top_level_dir] = (
+                        ignored_files_by_dir.get(top_level_dir, 0) + 1
+                    )
+            heavy_dirs = [
+                f"{directory} ({count} files)"
+                for directory, count in sorted(
+                    ignored_files_by_dir.items(), key=lambda item: item[1], reverse=True
+                )[0:5]
+                if count >= 20
+            ]
+            heavy_dirs_info = (
+                " Directories with the most ignored files: "
+                + ", ".join(heavy_dirs)
+                + "."
+                if len(heavy_dirs) > 0
+                else ""
+            )
             logging.warning(
                 f"⚠️ More than 300 .gitignored files have been detected ({len(ignored_files)}). "
                 "To improve MegaLinter performances, consider adding more excluded directories "
                 "using the ADDITIONAL_EXCLUDED_DIRECTORIES variable. "
+                "Excluded directories are also forwarded to project lint mode linters "
+                "(like REPOSITORY_TRIVY or REPOSITORY_GRYPE) when they provide a native "
+                "exclusion argument; linters without one still scan the whole workspace."
+                f"{heavy_dirs_info} "
                 f"See {ML_DOC_URL}/config-filtering/"
             )
         return ignored_files

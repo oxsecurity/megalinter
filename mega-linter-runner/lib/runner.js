@@ -215,6 +215,32 @@ export class MegaLinterRunner {
 
     // Build docker run options
     const lintPath = path.resolve(options.path || ".");
+    // Warn when the workspace contains well-known heavy directories:
+    // local runs mount the raw workspace, so they can be much slower than CI
+    const heavyDirCandidates = [
+      "node_modules",
+      ".wireit",
+      ".turbo",
+      ".nx",
+      ".yarn/cache",
+      ".pnpm-store",
+      ".venv",
+      "target",
+      "vendor",
+      "dist",
+      "build",
+    ];
+    const heavyDirsFound = heavyDirCandidates.filter((dir) =>
+      fs.existsSync(path.join(lintPath, dir))
+    );
+    if (heavyDirsFound.length > 0) {
+      console.log(
+        `Heavy folders detected in workspace (${heavyDirsFound.join(", ")}): ` +
+          "local runs can be slower than CI on a fresh checkout. " +
+          "Excluded directories are forwarded to project-mode linters that support native exclusions; " +
+          "you can also skip project-mode linters entirely with -e SKIP_CLI_LINT_MODES=project"
+      );
+    }
     const dotenvPath = path.join(lintPath, ".env");
     const envVarsFromDotenv = [];
     let emptyEnvFile = null;

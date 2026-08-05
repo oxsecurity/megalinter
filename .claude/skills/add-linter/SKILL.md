@@ -63,6 +63,14 @@ Add the linter entry with **as many properties as possible**. Even though the JS
 - `cli_version_arg_name` — if not `--version`
 - `cli_help_arg_name` — if not `--help`
 - `ignore_file_name`, `cli_lint_ignore_arg_name` — ignore file support
+- **Excluded directories forwarding** — when `project` is a supported lint mode, MegaLinter must forward `EXCLUDED_DIRECTORIES` to the tool or it will scan `node_modules`/build caches raw. Pick exactly ONE mechanism (see `.claude/rules/descriptors.md` → "Project Lint Mode: Forwarding Excluded Directories" for full semantics and known traps):
+  - native CLI flag → `cli_lint_mode_project_exclude_arg_name` (+ `_arg_value` `{{DIR}}`/`{{WORKSPACE}}` template, `_separator` if a repeated flag overrides, `_seed_values` if the flag replaces the tool's built-in defaults, `_config_key` if it replaces a list in the tool's config file)
+  - flag taking an ignore file → `cli_lint_mode_project_exclude_ignore_file_arg_name` (+ `_seed_files`, `_pass_existing`)
+  - ignore file only discovered inside the repo → `cli_lint_mode_project_exclude_workspace_file_name`
+  - generated/merged config needed → `manage_excluded_directories_config()` override in the linter class
+
+  **Research the official docs first**: exact flag, value syntax (path/glob/regex, anchoring), repeatability, and whether it replaces config/built-in defaults — a wrong choice silently drops exclusions or clobbers user configuration.
+- **Poison fixture** — after declaring forwarding, add a deliberately failing file in `.automation/test/<test_folder>/good/.wireit/` so `test_success_project_lint_mode` guards the forwarding against regressions (only if all project-capable linters sharing the folder have forwarding)
 
 **Error parsing (important for accurate counts):**
 - `cli_lint_errors_count` — `regex_count`, `regex_number`, `regex_sum`, `total_lines`, or `sarif`

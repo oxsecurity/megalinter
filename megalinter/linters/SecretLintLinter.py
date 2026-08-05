@@ -12,6 +12,17 @@ from megalinter import Linter, config
 class SecretLintLinter(Linter):
     # Called before linting files
     def get_ignore_arguments(self, cmd):
+        # In project mode the generic ignore-file forwarding (descriptor
+        # cli_lint_mode_project_exclude_* properties) generates a merged
+        # workspace ignore file: suppress the default ignore argument so both
+        # are not sent
+        if (
+            self.cli_lint_mode == "project"
+            and self.is_project_exclude_forwarding_active()
+            and len(self.get_project_exclude_directories()) > 0
+            and "--secretlintignore" not in self.cli_lint_user_args
+        ):
+            return []
         ignore_args = super().get_ignore_arguments(cmd)
         # secretlint v13+ resolves the --secretlintignore value through its
         # ripgrep-style walker (@secretlint/walker), which matches ignore files

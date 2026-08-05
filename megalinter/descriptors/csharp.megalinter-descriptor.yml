@@ -45,6 +45,8 @@ linters:
       - project
     cli_lint_extra_args:
       - "format"
+    cli_lint_mode_project_exclude_arg_name: "--exclude"
+    cli_lint_mode_project_exclude_arg_value: "./{{DIR}}/"
     cli_lint_mode_project_extra_args_after:
       - "--include **/*.cs"
       - "--verify-no-changes"
@@ -102,6 +104,8 @@ linters:
       - project
     cli_lint_extra_args:
       - "check"
+    cli_lint_mode_project_exclude_ignore_file_arg_name: "--ignore-path"
+    cli_lint_mode_project_exclude_ignore_file_seed_files: [".csharpierignore"]
     cli_lint_mode_project_extra_args_after:
       - .
     cli_lint_fix_arg_name: "format"

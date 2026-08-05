@@ -9442,6 +9442,16 @@
       "x-order": 400030,
       "x-section": "ERRORS"
     },
+    "FORWARD_EXCLUDED_DIRECTORIES": {
+      "$id": "#/properties/FORWARD_EXCLUDED_DIRECTORIES",
+      "default": true,
+      "description": "In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES) to the linters through their native exclusion arguments or generated ignore/config files. Can be overridden per-linter with <LINTER_KEY>_FORWARD_EXCLUDED_DIRECTORIES",
+      "title": "Forward excluded directories to project lint mode linters",
+      "type": "boolean",
+      "x-category": "GENERAL",
+      "x-order": 200045,
+      "x-section": "SCOPE"
+    },
     "GHERKIN_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/GHERKIN_FILTER_REGEX_EXCLUDE",
       "description": "GHERKIN: Custom regex excluding filter: files matching this regex will NOT be linted",

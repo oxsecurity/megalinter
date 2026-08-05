@@ -1772,6 +1772,36 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             ]
         )
 
+        # Excluded directories forwarding can be disabled for project lint mode
+        if "project" in linter.supported_cli_lint_modes:
+            linter_doc_md += [
+                f"| {linter.name}_FORWARD_EXCLUDED_DIRECTORIES | In project CLI lint mode, forward "
+                "excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES) to the "
+                "linter through its native exclusion arguments or generated ignore/config files | `true` |"
+            ]
+            add_in_config_schema_file(
+                [
+                    [
+                        f"{linter.name}_FORWARD_EXCLUDED_DIRECTORIES",
+                        {
+                            "$id": f"#/properties/{linter.name}_FORWARD_EXCLUDED_DIRECTORIES",
+                            "description": (
+                                f"{linter.name}: "
+                                "In project CLI lint mode, forward excluded directories to the "
+                                "linter through its native exclusion arguments or generated "
+                                "ignore/config files"
+                            ),
+                            "type": "boolean",
+                            "title": (
+                                f"{title_prefix}{linter.name}: "
+                                "Forward excluded directories in project lint mode"
+                            ),
+                            "default": True,
+                        },
+                    ]
+                ]
+            )
+
         # File extensions & file names override if not "lint_all_files"
         if linter.lint_all_files is False:
             file_extensions_default = dump_as_json(

@@ -44,6 +44,8 @@ linters:
       - file
       - list_of_files
       - project
+    cli_lint_mode_project_exclude_arg_name: ""
+    cli_lint_mode_project_exclude_arg_value: "!**/{{DIR}}/**"
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: '\s+[\w\-_]+:[\w\-_]+: ([0-9]+)'
     cli_sarif_args:
@@ -124,6 +126,9 @@ linters:
       - file
       - list_of_files
       - project
+    cli_lint_mode_project_exclude_arg_name: "--excludes"
+    cli_lint_mode_project_exclude_arg_value: "**/{{DIR}}/**"
+    cli_lint_mode_project_exclude_separator: ","
     cli_lint_mode_file_extra_args_after:
       - --input
     cli_lint_mode_list_of_files_extra_args_after:

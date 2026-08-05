@@ -5,6 +5,7 @@ Use BetterLeaks to check for credentials in repository
 
 import json
 import os
+import re
 
 import megalinter.utils as utils
 from megalinter import Linter, config
@@ -107,6 +108,46 @@ class BetterleaksLinter(Linter):
                 ]
                 cmd += self.cli_lint_extra_args
 
+        return cmd
+
+    # Forward excluded directories in project mode: betterleaks has no exclusion
+    # argument, so generate a config extending the resolved one with allowlist
+    # path regexes. When MegaLinter resolved no config, extend the workspace
+    # config that betterleaks would have auto-discovered (e.g. a .gitleaks.toml
+    # kept from gitleaks), and only fall back to the default embedded ruleset
+    def manage_excluded_directories_config(self, cmd):
+        config_index = self.find_cli_argument_value_index(cmd, ("-c", "--config"))
+        extend_path = None
+        if config_index is not None:
+            extend_path = cmd[config_index].replace("\\", "/")
+        else:
+            for discoverable_config in [".betterleaks.toml", ".gitleaks.toml"]:
+                workspace_config = os.path.join(self.workspace, discoverable_config)
+                if os.path.isfile(workspace_config):
+                    extend_path = workspace_config.replace("\\", "/")
+                    break
+        config_lines = ["[extend]"]
+        if extend_path is not None:
+            config_lines += [f"path = '{extend_path}'"]
+        else:
+            config_lines += ["useDefault = true"]
+        config_lines += ["", "[allowlist]", "paths = ["]
+        for excluded_dir in self.get_project_exclude_directories():
+            path_regex = re.escape(excluded_dir.replace("\\", "/")) + "/"
+            config_lines += [f"    '{path_regex}',"]
+        config_lines += ["]"]
+        generated_config = self.write_report_generated_file(
+            "betterleaks-config.toml", config_lines
+        )
+        cmd = self.replace_or_append_cli_argument(
+            cmd, config_index, "-c", generated_config
+        )
+        self.log_project_exclude_forwarding(
+            f"Generated {generated_config} extending "
+            + (extend_path if extend_path is not None else "the default ruleset")
+            + " with EXCLUDED_DIRECTORIES as allowlist paths "
+            f"(disable with {self.name}_FORWARD_EXCLUDED_DIRECTORIES: false)"
+        )
         return cmd
 
     def pre_test(self, test_name):

@@ -36,6 +36,9 @@ For each linter entry, audit against the **full property list** below. Report a 
 - [ ] `cli_lint_fix_arg_name` — set if linter supports auto-fix
 - [ ] `cli_lint_fix_remove_args` — set if fix mode requires removing args (e.g., `--check`)
 - [ ] `ignore_file_name` + `cli_lint_ignore_arg_name` — set if linter has ignore files
+- [ ] Excluded directories forwarding — if `project` is a supported lint mode, exactly ONE mechanism must be declared: `cli_lint_mode_project_exclude_arg_name` (+ `_arg_value` template, `_separator` when a repeated flag overrides, `_seed_values` when the flag replaces built-in defaults, `_config_key` when it replaces a config-file list), OR the `_ignore_file_*` properties, OR `_workspace_file_name`, OR a `manage_excluded_directories_config()` class override. **Search the internet** to confirm flag semantics (path/glob/regex, anchoring, repeatability, config/defaults replacement) — see `.claude/rules/descriptors.md` for the trap list
+- [ ] If the linter class overrides `build_lint_command` without calling `super()`, verify it applies `build_project_exclude_arguments()` itself in project mode
+- [ ] Poison fixture present in `.automation/test/<test_folder>/good/.wireit/` when forwarding is declared (and the folder is not shared with a non-forwarding project linter)
 - [ ] `cli_version_arg_name` — set if not `--version`
 - [ ] `cli_help_arg_name` — set if not `--help`
 
