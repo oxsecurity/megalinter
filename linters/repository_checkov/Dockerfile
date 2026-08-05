@@ -57,7 +57,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.3.8
+ARG PIP_CHECKOV_VERSION=3.3.9
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=26.2
 # renovate: datasource=pypi depName=virtualenv
