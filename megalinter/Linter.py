@@ -1796,8 +1796,12 @@ class Linter:
 
     # Argument names ending with = are concatenated with their value: required
     # for array options that would greedily consume following positionals
-    # (ex: v8r --ignore-pattern-files=)
+    # (ex: v8r --ignore-pattern-files=). Paths are passed relative to the
+    # workspace (the linter CWD): some tools silently drop the patterns of an
+    # ignore file referenced by absolute path (ex: v8r)
     def build_ignore_file_argument(self, arg_name, value):
+        if os.path.isabs(value):
+            value = os.path.relpath(value, self.workspace).replace("\\", "/")
         if arg_name.endswith("=") or arg_name.endswith(":"):
             return [arg_name + value]
         return [arg_name, value]
