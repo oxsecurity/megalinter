@@ -62,10 +62,9 @@ Read `.claude/rules/` for the conventions of the area you're touching:
    - Change the source (descriptor YAML or `.automation/build.py`) instead.
 7. **Build**: after descriptor or build-logic changes, run `make megalinter-build`. Delegate to the `build-runner` agent if it gets complex. **Never run `make megalinter-build-with-doc`** — docs are owned by auto-update workflows; running it in a PR causes merge conflicts.
 8. **Dependencies**: after editing `pyproject.toml`, run `uv lock`. Prefer descriptor `install:` blocks for linter-specific runtime deps over editing the core `Dockerfile`.
-9. **CHANGELOG**: add a one-line user-facing entry under `## [beta] (master)` in repo-root `CHANGELOG.md`. **Skip** for:
+9. **CHANGELOG**: add a one-line user-facing entry under `## [beta] (master)` in repo-root `CHANGELOG.md`. Write it for end users per `.claude/rules/changelog.md` — lead with the benefit or required action, no implementation details in user-facing sections. Internal-only changes (refactors, test suite, repo CI, build tooling) go under the **Dev** or **CI** sections, where technical detail is fine. **Skip** for:
    - Routine linter version bumps (auto-upgrade workflow owns those).
    - CVE-ignore entries.
-   - Internal-only refactors/tests/build plumbing.
 10. **Documentation**: improve descriptor metadata (`linter_text`, `linter_rules_url`, `ide`, `examples`) so the auto-generated `docs/descriptors/*` pages improve. mkdocs-material: blank line after every heading, blank line before/after every list.
 
 Continue iterating until the change is complete. Do not stop to ask whether to continue mid-task.

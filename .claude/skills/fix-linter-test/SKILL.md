@@ -49,4 +49,4 @@ Steps:
    ```text
    - Fix <linter-name>: <what was wrong and what users now get>
    ```
-   Do NOT add an entry for test-infrastructure-only fixes (fixture paths, test class regeneration, etc.).
+   Do NOT add an entry for test-infrastructure-only fixes (fixture paths, test class regeneration, etc.). Style: `.claude/rules/changelog.md` (written for end users, no internal details).

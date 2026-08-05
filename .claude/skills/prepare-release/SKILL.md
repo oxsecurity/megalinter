@@ -73,6 +73,10 @@ python .claude/skills/prepare-release/prepare_changelog.py apply \
 
 This rewrites `CHANGELOG.md` in place. (For a dry run, add `--out /some/tmp/path` to write elsewhere and leave `CHANGELOG.md` untouched.)
 
+### 2d — Editorial pass for end users
+
+Reread the release entry against `.claude/rules/changelog.md`: the CHANGELOG is release notes for **end users**, not maintainers. In user-facing sections, rewrite entries that lead with implementation details so they lead with the user benefit or required action, and move internal/technical entries (refactors, test suite, repo CI, build tooling) under the `Dev`/`CI` sections — technical detail is fine there. Keep before/after tables for performance and size improvements (user-visible measures in the user-facing sections, CI job timings in the `CI` section). Check readability: key words/expressions in **bold** for scanning, and long entries split into a short lead line + sub-bullets rather than long sentences. The rewrites will appear in the Step 3 diff review.
+
 ## Step 3 — Confirm the CHANGELOG
 
 Show the diff:
