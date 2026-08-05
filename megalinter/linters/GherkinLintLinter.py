@@ -3,9 +3,7 @@
 Use gherkin-lint to check Gherkin files
 """
 
-import os
-
-from megalinter import Linter, utils
+from megalinter import Linter
 
 
 class GherkinLintLinter(Linter):
@@ -14,20 +12,21 @@ class GherkinLintLinter(Linter):
 
         # Forward excluded directories in project mode: gherkin-lint --ignore
         # overrides the .gherkin-lintignore file, so merge its patterns in
-        if self.cli_lint_mode == "project" and not any(
-            arg in ("-i", "--ignore") for arg in cmd
+        if (
+            self.cli_lint_mode == "project"
+            and self.is_project_exclude_forwarding_active()
+            and not any(arg in ("-i", "--ignore") for arg in cmd)
         ):
-            patterns = []
-            workspace_ignore = os.path.join(self.workspace, ".gherkin-lintignore")
-            if os.path.isfile(workspace_ignore):
-                with open(workspace_ignore, encoding="utf-8") as ignore_file:
-                    patterns = [
-                        line.strip() for line in ignore_file if line.strip() != ""
-                    ]
-            for excluded_dir in sorted(utils.get_excluded_directories(self.request_id)):
+            patterns = self.read_workspace_file_lines(".gherkin-lintignore")
+            for excluded_dir in self.get_project_exclude_directories():
                 pattern = f"**/{excluded_dir}/**"
                 if pattern not in patterns:
                     patterns += [pattern]
             cmd += ["--ignore", ",".join(patterns)]
+            self.log_project_exclude_forwarding(
+                f"Forwarded EXCLUDED_DIRECTORIES to {self.linter_name} through "
+                f"--ignore, merged with .gherkin-lintignore patterns "
+                f"(disable with {self.name}_FORWARD_EXCLUDED_DIRECTORIES: false)"
+            )
 
         return cmd

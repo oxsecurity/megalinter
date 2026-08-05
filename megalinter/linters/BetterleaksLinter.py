@@ -108,7 +108,10 @@ class BetterleaksLinter(Linter):
                 ]
                 cmd += self.cli_lint_extra_args
 
-        if self.cli_lint_mode == "project":
+        if (
+            self.cli_lint_mode == "project"
+            and self.is_project_exclude_forwarding_active()
+        ):
             cmd = self.manage_excluded_directories_config(cmd)
 
         return cmd
@@ -139,7 +142,7 @@ class BetterleaksLinter(Linter):
         else:
             config_lines += ["useDefault = true"]
         config_lines += ["", "[allowlist]", "paths = ["]
-        for excluded_dir in sorted(utils.get_excluded_directories(self.request_id)):
+        for excluded_dir in self.get_project_exclude_directories():
             path_regex = re.escape(excluded_dir.replace("\\", "/")) + "/"
             config_lines += [f"    '{path_regex}',"]
         config_lines += ["]"]
@@ -151,6 +154,12 @@ class BetterleaksLinter(Linter):
             cmd[existing_config_index] = generated_config
         else:
             cmd += ["-c", generated_config]
+        self.log_project_exclude_forwarding(
+            f"Generated {generated_config} extending "
+            + (extend_path if extend_path is not None else "the default ruleset")
+            + " with EXCLUDED_DIRECTORIES as allowlist paths "
+            f"(disable with {self.name}_FORWARD_EXCLUDED_DIRECTORIES: false)"
+        )
         return cmd
 
     def pre_test(self, test_name):

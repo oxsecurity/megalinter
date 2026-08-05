@@ -15,7 +15,14 @@ class TruffleHogLinter(Linter):
         cmd = super().build_lint_command(file)
 
         if not any(arg.startswith("--exclude-paths") for arg in cmd):
-            cmd += ["--exclude-paths=" + self.build_exclude_paths_file()]
+            if self.is_project_exclude_forwarding_active():
+                cmd += ["--exclude-paths=" + self.build_exclude_paths_file()]
+            else:
+                cmd += [
+                    "--exclude-paths="
+                    + utils.get_default_rules_location()
+                    + "/.trufflehogignore"
+                ]
 
         return cmd
 
@@ -38,7 +45,7 @@ class TruffleHogLinter(Linter):
                 exclude_regexes = [
                     line.strip() for line in ignore_file if line.strip() != ""
                 ]
-        for excluded_dir in sorted(utils.get_excluded_directories(self.request_id)):
+        for excluded_dir in self.get_project_exclude_directories():
             # Unanchored regex: matches the directory at any nesting level,
             # consistently with EXCLUDED_DIRECTORIES behavior in file listing
             excluded_dir_regex = re.escape(excluded_dir.replace("\\", "/")) + "/"
