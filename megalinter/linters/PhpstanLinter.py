@@ -7,17 +7,6 @@ from megalinter import Linter
 
 
 class PhpstanLinter(Linter):
-    def build_lint_command(self, file=None):
-        cmd = super().build_lint_command(file)
-
-        if (
-            self.cli_lint_mode == "project"
-            and self.is_project_exclude_forwarding_active()
-        ):
-            cmd = self.manage_excluded_directories_config(cmd)
-
-        return cmd
-
     # Forward excluded directories through a generated neon config including
     # the resolved one: phpstan merges excludePaths arrays across includes, and
     # fnmatch patterns stay valid wherever the generated config lives

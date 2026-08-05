@@ -108,12 +108,6 @@ class BetterleaksLinter(Linter):
                 ]
                 cmd += self.cli_lint_extra_args
 
-        if (
-            self.cli_lint_mode == "project"
-            and self.is_project_exclude_forwarding_active()
-        ):
-            cmd = self.manage_excluded_directories_config(cmd)
-
         return cmd
 
     # Forward excluded directories in project mode: betterleaks has no exclusion

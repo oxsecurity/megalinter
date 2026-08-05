@@ -4,8 +4,6 @@ Use v8r to validate JSON, YAML and TOML files
 https://github.com/chris48s/v8r
 """
 
-import os
-
 from megalinter import Linter, config
 
 

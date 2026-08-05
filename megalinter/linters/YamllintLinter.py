@@ -8,17 +8,6 @@ from megalinter import Linter
 
 
 class YamllintLinter(Linter):
-    def build_lint_command(self, file=None):
-        cmd = super().build_lint_command(file)
-
-        if (
-            self.cli_lint_mode == "project"
-            and self.is_project_exclude_forwarding_active()
-        ):
-            cmd = self.manage_excluded_directories_config(cmd)
-
-        return cmd
-
     # Forward excluded directories through a generated config extending the
     # resolved one, since yamllint has no CLI exclusion argument. An extending
     # config's ignore key replaces the parent's, so the parent patterns are

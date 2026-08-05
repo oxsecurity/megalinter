@@ -9,17 +9,6 @@ from megalinter import Linter
 
 
 class RubocopLinter(Linter):
-    def build_lint_command(self, file=None):
-        cmd = super().build_lint_command(file)
-
-        if (
-            self.cli_lint_mode == "project"
-            and self.is_project_exclude_forwarding_active()
-        ):
-            cmd = self.manage_excluded_directories_config(cmd)
-
-        return cmd
-
     # Forward excluded directories through a generated config inheriting the
     # resolved one, since rubocop has no CLI path exclusion argument.
     # inherit_mode merge keeps inherited and default Exclude entries, and

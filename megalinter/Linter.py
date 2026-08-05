@@ -1541,6 +1541,8 @@ class Linter:
         elif self.cli_lint_mode == "project":
             cmd += self.build_project_exclude_arguments()
             cmd += self.build_project_exclude_ignore_file_arguments(cmd)
+            if self.is_project_exclude_forwarding_active():
+                cmd = self.manage_excluded_directories_config(cmd)
             self.cli_lint_mode_project_extra_args_after = self.replace_vars(
                 self.cli_lint_mode_project_extra_args_after,
                 additional_replace_variables,
@@ -1748,6 +1750,12 @@ class Linter:
             ),
         ]
         return ignore_args
+
+    # Hook for linter classes forwarding excluded directories through a
+    # generated configuration, called in project lint mode when forwarding
+    # is active
+    def manage_excluded_directories_config(self, cmd):
+        return cmd
 
     # Locate the value of a CLI argument in a command line
     def find_cli_argument_value_index(self, cmd, arg_names):

@@ -23,18 +23,14 @@ class JsCpdLinter(Linter):
         # Do not use Jscpd HTML reporter if deactivated
         if not utils.can_write_report_files(self.master):
             cmd = [item.replace("console,html", "console") for item in cmd]
-        if (
-            self.cli_lint_mode == "project"
-            and self.is_project_exclude_forwarding_active()
-            and not any(arg in ("-i", "--ignore") for arg in cmd)
-        ):
-            cmd = self.manage_excluded_directories_config(cmd)
         return cmd
 
     # Forward excluded directories through a generated config: the jscpd
     # --ignore CLI argument would replace the resolved config's ignore list
     # wholesale, so the globs are merged into the config instead
     def manage_excluded_directories_config(self, cmd):
+        if any(arg in ("-i", "--ignore") for arg in cmd):
+            return cmd
         config_index = self.find_cli_argument_value_index(cmd, ("-c", "--config"))
         config_content = {}
         if config_index is not None:

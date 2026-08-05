@@ -43,29 +43,6 @@ ESLINT10_NOTIFICATION_TEMPLATE = (
 
 
 class EslintLinter(Linter):
-    def build_lint_command(self, file=None):
-        cmd = super().build_lint_command(file)
-
-        # Forward excluded directories in project mode: --no-ignore would
-        # disable --ignore-pattern (and the config ignores), so it is removed
-        # here. ESLint default ignores (node_modules, .git) always stay active
-        if (
-            self.cli_lint_mode == "project"
-            and self.is_project_exclude_forwarding_active()
-            and "--ignore-pattern" not in cmd
-        ):
-            if "--no-ignore" in cmd:
-                cmd.remove("--no-ignore")
-            for excluded_dir in self.get_project_exclude_directories():
-                cmd += ["--ignore-pattern", f"**/{excluded_dir}/**"]
-            self.log_project_exclude_forwarding(
-                f"Forwarded EXCLUDED_DIRECTORIES to {self.linter_name} through "
-                f"--ignore-pattern, removing --no-ignore so ignores apply "
-                f"(disable with {self.name}_FORWARD_EXCLUDED_DIRECTORIES: false)"
-            )
-
-        return cmd
-
     def __init__(self, params=None, linter_config=None):
         super().__init__(params, linter_config)
         # The descriptor's active_only_if_file_found lists both flat (v10-native)
@@ -163,6 +140,21 @@ class EslintLinter(Linter):
     def build_lint_command(self, file=None):
         cmd = super().build_lint_command(file)
         cmd = [arg for arg in cmd if arg not in ("--no-eslintrc",)]
+        # Forward excluded directories in project mode through --ignore-pattern.
+        # The --no-ignore stripping below then re-enables ignore processing;
+        # ESLint default ignores (node_modules, .git) stay active in all cases
+        if (
+            self.cli_lint_mode == "project"
+            and self.is_project_exclude_forwarding_active()
+            and "--ignore-pattern" not in cmd
+        ):
+            for excluded_dir in self.get_project_exclude_directories():
+                cmd += ["--ignore-pattern", f"**/{excluded_dir}/**"]
+            self.log_project_exclude_forwarding(
+                f"Forwarded EXCLUDED_DIRECTORIES to {self.linter_name} through "
+                f"--ignore-pattern, removing --no-ignore so ignores apply "
+                f"(disable with {self.name}_FORWARD_EXCLUDED_DIRECTORIES: false)"
+            )
         if "--ignore-path" in cmd or "--ignore-pattern" in cmd:
             cmd = list(filter(lambda a: a != "--no-ignore", cmd))
         return cmd
