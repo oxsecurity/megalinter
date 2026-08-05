@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "variable_count": 2468,
+    "variable_count": 2469,
     "categories": {
       "ACTION": 4,
       "ACTION_ACTIONLINT": 16,
@@ -54,7 +54,7 @@
       "ENV": 4,
       "ENV_DOTENV_LINTER": 13,
       "FILEIO_REPORTER": 2,
-      "GENERAL": 55,
+      "GENERAL": 56,
       "GHERKIN": 4,
       "GHERKIN_GHERKIN_LINT": 15,
       "GITHUB_COMMENT_REPORTER": 5,
@@ -7964,6 +7964,15 @@
       "default": true,
       "category": "GENERAL",
       "section": "ERRORS"
+    },
+    "FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "Forward excluded directories to project lint mode linters",
+      "description": "In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES) to the linters through their native exclusion arguments or generated ignore/config files. Can be overridden per-linter with <LINTER_KEY>_FORWARD_EXCLUDED_DIRECTORIES",
+      "default": true,
+      "category": "GENERAL",
+      "section": "SCOPE"
     },
     "GHERKIN_FILTER_REGEX_EXCLUDE": {
       "name": "GHERKIN_FILTER_REGEX_EXCLUDE",
