@@ -1764,7 +1764,11 @@ class Linter:
                 return []
             lines = list(seed_lines)
             for excluded_dir in self.get_project_exclude_directories():
-                line = f"{excluded_dir}/"
+                # Line syntax follows the value template (gitignore-style bare
+                # name by default, glob like {{DIR}}/** for tools such as v8r)
+                line = self.cli_lint_mode_project_exclude_arg_value.replace(
+                    "{{DIR}}", excluded_dir
+                )
                 if line not in lines:
                     lines.append(line)
             self.write_workspace_generated_file(workspace_file_name, lines)
@@ -1783,7 +1787,9 @@ class Linter:
         ignore_args += self.build_ignore_file_argument(
             arg_name,
             self.build_project_exclude_ignore_file(
-                f"{self.linter_name}-ignore-paths.txt", seed_lines=seed_lines
+                f"{self.linter_name}-ignore-paths.txt",
+                line_template=self.cli_lint_mode_project_exclude_arg_value,
+                seed_lines=seed_lines,
             ),
         )
         return ignore_args
