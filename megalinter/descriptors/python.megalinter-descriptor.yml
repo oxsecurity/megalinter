@@ -450,7 +450,8 @@ linters:
       - --quiet
     cli_lint_mode_project_exclude_arg_name: "-x"
     cli_lint_mode_project_exclude_separator: ","
-    cli_lint_mode_project_exclude_seed_values: [".svn", "CVS", ".bzr", ".hg", ".git", "__pycache__", ".tox", ".eggs", "*.egg"]
+    cli_lint_mode_project_exclude_seed_values:
+      [".svn", "CVS", ".bzr", ".hg", ".git", "__pycache__", ".tox", ".eggs", "*.egg"]
     cli_lint_mode_project_extra_args_after:
       - --recursive
       - .

@@ -171,9 +171,7 @@ def extract_dir_candidates_from_regex(regex: str) -> list[str]:
         group, remainder = regex[1:].split(")", 1)
         if group.startswith("?:"):
             group = group[2:]
-        if not any(
-            char in _REGEX_METACHARACTERS for char in group.replace("|", "")
-        ):
+        if not any(char in _REGEX_METACHARACTERS for char in group.replace("|", "")):
             alternatives = [alt + remainder for alt in group.split("|") if alt]
     if len(alternatives) == 0:
         if "(" not in regex and "[" not in regex and "|" in regex:

@@ -1738,7 +1738,9 @@ class Linter:
             # scanned tree (ex: secretlint) discover the generated file
             return [arg_name, workspace_file_name] if arg_name is not None else []
         ignore_args = []
-        for existing_file in self.cli_lint_mode_project_exclude_ignore_file_pass_existing:
+        for (
+            existing_file
+        ) in self.cli_lint_mode_project_exclude_ignore_file_pass_existing:
             existing_path = os.path.join(self.workspace, existing_file)
             if os.path.isfile(existing_path):
                 ignore_args += [arg_name, existing_path]
