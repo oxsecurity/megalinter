@@ -333,7 +333,8 @@ linters:
         - name: https://marketplace.visualstudio.com/items?itemName=standard.vscode-standard
           url: vscode-standard
   # PRETTIER
-  - linter_name: prettier
+  - class: PrettierLinter
+    linter_name: prettier
     linter_text: |
       **Prettier** is the industry-leading opinionated code formatter with first-class TypeScript support that automatically formats TypeScript code to ensure consistency and readability. It handles TypeScript's complex syntax including generics, decorators, and type annotations with intelligent formatting rules.
 

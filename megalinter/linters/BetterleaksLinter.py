@@ -5,6 +5,7 @@ Use BetterLeaks to check for credentials in repository
 
 import json
 import os
+import re
 
 import megalinter.utils as utils
 from megalinter import Linter, config
@@ -107,6 +108,39 @@ class BetterleaksLinter(Linter):
                 ]
                 cmd += self.cli_lint_extra_args
 
+        if self.cli_lint_mode == "project":
+            cmd = self.manage_excluded_directories_config(cmd)
+
+        return cmd
+
+    # Forward excluded directories in project mode: betterleaks has no exclusion
+    # argument, so generate a config extending the resolved one (or the default
+    # embedded ruleset) with allowlist path regexes
+    def manage_excluded_directories_config(self, cmd):
+        existing_config_index = None
+        for index, arg in enumerate(cmd):
+            if arg in ("-c", "--config") and index + 1 < len(cmd):
+                existing_config_index = index + 1
+                break
+        config_lines = ["[extend]"]
+        if existing_config_index is not None:
+            config_path = cmd[existing_config_index].replace("\\", "/")
+            config_lines += [f"path = '{config_path}'"]
+        else:
+            config_lines += ["useDefault = true"]
+        config_lines += ["", "[allowlist]", "paths = ["]
+        for excluded_dir in sorted(utils.get_excluded_directories(self.request_id)):
+            path_regex = re.escape(excluded_dir.replace("\\", "/")) + "/"
+            config_lines += [f"    '{path_regex}',"]
+        config_lines += ["]"]
+        generated_config = os.path.join(self.report_folder, "betterleaks-config.toml")
+        os.makedirs(self.report_folder, exist_ok=True)
+        with open(generated_config, "w", encoding="utf-8") as config_file:
+            config_file.write("\n".join(config_lines) + "\n")
+        if existing_config_index is not None:
+            cmd[existing_config_index] = generated_config
+        else:
+            cmd += ["-c", generated_config]
         return cmd
 
     def pre_test(self, test_name):

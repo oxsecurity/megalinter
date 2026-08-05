@@ -1609,6 +1609,22 @@ class Linter:
                 exclude_args += [arg_name, value]
         return exclude_args
 
+    # Write a generated ignore file merging seed lines with excluded
+    # directories, for linters whose exclusions can only come from a file
+    def build_project_exclude_ignore_file(
+        self, file_name, line_template="{{DIR}}/", seed_lines=None
+    ):
+        lines = list(seed_lines or [])
+        for excluded_dir in sorted(utils.get_excluded_directories(self.request_id)):
+            line = line_template.replace("{{DIR}}", excluded_dir.replace("\\", "/"))
+            if line not in lines:
+                lines.append(line)
+        exclude_file = os.path.join(self.report_folder, file_name)
+        os.makedirs(self.report_folder, exist_ok=True)
+        with open(exclude_file, "w", encoding="utf-8") as file_handler:
+            file_handler.write("\n".join(lines) + "\n")
+        return exclude_file
+
     # Manage SARIF arguments
     def get_sarif_arguments(self):
         if self.can_output_sarif is True and self.output_sarif is True:

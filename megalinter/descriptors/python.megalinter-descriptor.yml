@@ -391,7 +391,8 @@ linters:
         - name: VSCode Python Extension
           url: https://github.com/Microsoft/vscode-python
   # BANDIT
-  - linter_name: bandit
+  - class: BanditLinter
+    linter_name: bandit
     name: PYTHON_BANDIT
     can_output_sarif: true
     file_extensions:

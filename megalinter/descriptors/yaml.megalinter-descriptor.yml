@@ -10,7 +10,8 @@ file_extensions:
   - ".yaml"
 linters:
   # PRETTIER
-  - linter_name: prettier
+  - class: PrettierLinter
+    linter_name: prettier
     linter_text: |
       **Prettier** is the industry-standard opinionated code formatter that brings consistency to YAML files by enforcing a unified style across projects. It eliminates formatting debates by automatically reformatting code according to its proven formatting principles.
 
