@@ -1605,12 +1605,12 @@ class Linter:
     # FILTER_REGEX_EXCLUDE (global, descriptor or linter scoped)
     def get_project_exclude_directories(self):
         excluded = set(utils.get_excluded_directories(self.request_id))
-        exclude_regexes = utils.normalize_regex_filter(
-            config.get(self.request_id, "FILTER_REGEX_EXCLUDE", None)
-        ) + utils.normalize_regex_filter(
-            self.filter_regex_exclude_descriptor
-        ) + utils.normalize_regex_filter(
-            self.filter_regex_exclude_linter
+        exclude_regexes = (
+            utils.normalize_regex_filter(
+                config.get(self.request_id, "FILTER_REGEX_EXCLUDE", None)
+            )
+            + utils.normalize_regex_filter(self.filter_regex_exclude_descriptor)
+            + utils.normalize_regex_filter(self.filter_regex_exclude_linter)
         )
         if len(exclude_regexes) > 0 and os.path.isdir(self.workspace):
             compiled_regexes = [re.compile(regex) for regex in exclude_regexes]
