@@ -1539,9 +1539,12 @@ class Linter:
 
             cmd += self.cli_lint_mode_list_of_files_extra_args_after
         elif self.cli_lint_mode == "project":
-            cmd += self.build_project_exclude_arguments()
-            cmd += self.build_project_exclude_ignore_file_arguments(cmd)
+            # Single gate for every excluded-directories forwarding mechanism:
+            # native CLI arguments, generated ignore files (report folder or
+            # workspace) and generated configurations
             if self.is_project_exclude_forwarding_active():
+                cmd += self.build_project_exclude_arguments()
+                cmd += self.build_project_exclude_ignore_file_arguments(cmd)
                 cmd = self.manage_excluded_directories_config(cmd)
             self.cli_lint_mode_project_extra_args_after = self.replace_vars(
                 self.cli_lint_mode_project_extra_args_after,
@@ -1656,8 +1659,6 @@ class Linter:
     def build_project_exclude_arguments(self):
         if self.cli_lint_mode_project_exclude_arg_name is None:
             return []
-        if self.is_project_exclude_forwarding_active() is False:
-            return []
         arg_name = self.cli_lint_mode_project_exclude_arg_name
         values = list(self.cli_lint_mode_project_exclude_seed_values) + [
             self.cli_lint_mode_project_exclude_arg_value.replace("{{DIR}}", excl_dir)
@@ -1710,8 +1711,6 @@ class Linter:
         arg_name = self.cli_lint_mode_project_exclude_ignore_file_arg_name
         workspace_file_name = self.cli_lint_mode_project_exclude_workspace_file_name
         if arg_name is None and workspace_file_name is None:
-            return []
-        if self.is_project_exclude_forwarding_active() is False:
             return []
         if (
             self.cli_lint_mode_project_exclude_ignore_file_skip_if_config is True
