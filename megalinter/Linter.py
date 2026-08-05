@@ -157,6 +157,9 @@ class Linter:
 
         self.log_lines_pre: list[str] = []
         self.log_lines_post: list[str] = []
+        # Files temporarily written inside the workspace (e.g. generated ignore
+        # files for linters that only discover them there), removed after run
+        self.workspace_generated_files: list[str] = []
 
         self.report_folder = ""
         self.reporters = []
@@ -1661,6 +1664,26 @@ class Linter:
             f"(disable with {self.name}_FORWARD_EXCLUDED_DIRECTORIES: false)"
         )
         return exclude_args
+
+    # Write a temporary file inside the workspace, for linters that only
+    # discover their ignore/config files there. Removed after the lint run
+    def write_workspace_generated_file(self, file_name, content_lines):
+        file_path = os.path.join(self.workspace, file_name)
+        with open(file_path, "w", encoding="utf-8") as file_handler:
+            file_handler.write("\n".join(content_lines) + "\n")
+        self.workspace_generated_files += [file_path]
+        self.log_project_exclude_forwarding(
+            f"Temporarily generated {file_path} in the workspace to forward "
+            f"EXCLUDED_DIRECTORIES to {self.linter_name}, removed after the run "
+            f"(disable with {self.name}_FORWARD_EXCLUDED_DIRECTORIES: false)"
+        )
+        return file_path
+
+    def cleanup_workspace_generated_files(self):
+        for generated_file in self.workspace_generated_files:
+            if os.path.isfile(generated_file):
+                os.remove(generated_file)
+        self.workspace_generated_files = []
 
     # Write a generated ignore file merging seed lines with excluded
     # directories, for linters whose exclusions can only come from a file

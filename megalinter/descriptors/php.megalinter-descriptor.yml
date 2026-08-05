@@ -122,7 +122,8 @@ linters:
         - name: vscode-phpcs
           url: https://marketplace.visualstudio.com/items?itemName=ikappas.phpcs
   # PHP Stan
-  - linter_name: phpstan
+  - class: PhpstanLinter
+    linter_name: phpstan
     linter_text: |
       **PHPStan** is a comprehensive static analysis tool for PHP that focuses on finding errors in your code without executing it. It catches whole classes of bugs even before you write tests, providing deep code analysis and type safety for PHP applications.
 
@@ -340,7 +341,8 @@ linters:
         - linux/amd64
         - linux/arm64
   # PHP-CS-Fixer
-  - linter_name: php-cs-fixer
+  - class: PhpCsFixerLinter
+    linter_name: php-cs-fixer
     name: PHP_PHPCSFIXER
     linter_text: |
       **PHP-CS-Fixer** is a comprehensive tool that automatically fixes PHP code to follow coding standards and style guidelines. It can repair code style violations and even risky issues, making it an essential formatter for maintaining consistent PHP codebases.
