@@ -4,10 +4,36 @@ Use v8r to validate JSON, YAML and TOML files
 https://github.com/chris48s/v8r
 """
 
+import os
+
 from megalinter import Linter, config
 
 
 class V8rLinter(Linter):
+    def build_lint_command(self, file=None):
+        cmd = super().build_lint_command(file)
+
+        # Forward excluded directories in project mode: --ignore-pattern-files
+        # replaces the default .v8rignore/.gitignore discovery, so existing
+        # ones are re-passed alongside the generated file. Skipped when a v8r
+        # config is resolved, as it may define its own ignorePatternFiles
+        if (
+            self.cli_lint_mode == "project"
+            and self.is_project_exclude_forwarding_active()
+            and self.config_file is None
+            and "--ignore-pattern-files" not in cmd
+        ):
+            for default_ignore_file in [".v8rignore", ".gitignore"]:
+                default_ignore_path = os.path.join(self.workspace, default_ignore_file)
+                if os.path.isfile(default_ignore_path):
+                    cmd += ["--ignore-pattern-files", default_ignore_path]
+            cmd += [
+                "--ignore-pattern-files",
+                self.build_project_exclude_ignore_file("v8r-ignore-paths.txt"),
+            ]
+
+        return cmd
+
     def execute_lint_command(self, command):
         # v8r does not support a CLI argument to specify the config file.
         # Instead, it reads the V8R_CONFIG_FILE environment variable.

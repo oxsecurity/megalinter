@@ -1,0 +1,50 @@
+#!/usr/bin/env python3
+"""
+Use SwiftLint to check Swift files
+"""
+
+import os
+
+from megalinter import Linter
+
+
+class SwiftLintLinter(Linter):
+    def build_lint_command(self, file=None):
+        cmd = super().build_lint_command(file)
+
+        # Forward excluded directories in project mode through a generated
+        # config, since swiftlint has no CLI path exclusion argument. The
+        # workspace .swiftlint.yml that swiftlint would have auto-discovered
+        # is chained as parent_config (relative to the generated config), and
+        # excluded entries use absolute paths so their base does not matter
+        if (
+            self.cli_lint_mode == "project"
+            and self.is_project_exclude_forwarding_active()
+            and "--config" not in cmd
+        ):
+            os.makedirs(self.report_folder, exist_ok=True)
+            workspace_abs = os.path.abspath(self.workspace).replace("\\", "/")
+            config_lines = []
+            workspace_config = os.path.join(self.workspace, ".swiftlint.yml")
+            if os.path.isfile(workspace_config):
+                parent_relative = os.path.relpath(
+                    workspace_config, self.report_folder
+                ).replace("\\", "/")
+                config_lines += [f"parent_config: {parent_relative}"]
+            config_lines += ["excluded:"]
+            for excluded_dir in self.get_project_exclude_directories():
+                config_lines += [
+                    f"  - '{workspace_abs}/{excluded_dir}'",
+                    f"  - '{workspace_abs}/**/{excluded_dir}'",
+                ]
+            generated_config = os.path.join(self.report_folder, "swiftlint-config.yml")
+            with open(generated_config, "w", encoding="utf-8") as config_file:
+                config_file.write("\n".join(config_lines) + "\n")
+            cmd += ["--config", generated_config]
+            self.log_project_exclude_forwarding(
+                f"Generated {generated_config} to forward EXCLUDED_DIRECTORIES to "
+                f"{self.linter_name} as excluded paths "
+                f"(disable with {self.name}_FORWARD_EXCLUDED_DIRECTORIES: false)"
+            )
+
+        return cmd

@@ -91,7 +91,8 @@ linters:
         - name: prettier-vscode
           url: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
   # YAMLLINT
-  - linter_name: yamllint
+  - class: YamllintLinter
+    linter_name: yamllint
     linter_text: |
       **yamllint** is a linter for YAML files that checks for syntax validity, key repetition, lines length, trailing spaces, indentation, and other common YAML issues. It helps ensure YAML files are well-formed, follow consistent formatting conventions, and avoid common pitfalls.
 

@@ -8,7 +8,8 @@ file_extensions:
   - ".rb"
 linters:
   # RUBOCOP
-  - linter_name: rubocop
+  - class: RubocopLinter
+    linter_name: rubocop
     linter_text: |
       **RuboCop** is a comprehensive Ruby code style checker and formatter that enforces the community-driven Ruby Style Guide while providing extensive customization options. It serves as the definitive tool for maintaining consistent Ruby code quality across projects and teams.
 

@@ -8,7 +8,8 @@ file_extensions:
   - ".swift"
 linters:
   # Swift lint
-  - linter_name: swiftlint
+  - class: SwiftLintLinter
+    linter_name: swiftlint
     linter_text: |
       **SwiftLint** is the industry-standard linter and formatter for Swift code that enforces style guidelines and best practices based on the community-driven Swift Style Guide. It serves as an essential tool for maintaining high-quality, consistent Swift codebases.
 

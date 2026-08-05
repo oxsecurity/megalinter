@@ -1601,8 +1601,10 @@ class Linter:
             self.log_lines_pre += [log_line]
 
     # Directories forwarded to project-mode linters: EXCLUDED_DIRECTORIES +
-    # ADDITIONAL_EXCLUDED_DIRECTORIES + workspace folders matching
-    # FILTER_REGEX_EXCLUDE (global, descriptor or linter scoped)
+    # ADDITIONAL_EXCLUDED_DIRECTORIES + directories identified from
+    # FILTER_REGEX_EXCLUDE (global, descriptor or linter scoped) literal
+    # prefixes when they exist in the workspace. No filesystem walk: a regex
+    # too complex to trim into an existing directory is simply skipped
     def get_project_exclude_directories(self):
         excluded = set(utils.get_excluded_directories(self.request_id))
         exclude_regexes = (
@@ -1612,28 +1614,12 @@ class Linter:
             + utils.normalize_regex_filter(self.filter_regex_exclude_descriptor)
             + utils.normalize_regex_filter(self.filter_regex_exclude_linter)
         )
-        if len(exclude_regexes) > 0 and os.path.isdir(self.workspace):
-            compiled_regexes = [re.compile(regex) for regex in exclude_regexes]
-            for dirpath, dirnames, _ in os.walk(self.workspace, topdown=True):
-                rel_dirpath = os.path.relpath(dirpath, self.workspace).replace(
-                    "\\", "/"
-                )
-                kept_dirnames = []
-                for dirname in dirnames:
-                    rel_dir = (
-                        dirname if rel_dirpath == "." else f"{rel_dirpath}/{dirname}"
-                    )
-                    if dirname in excluded or rel_dir in excluded:
-                        continue
-                    if any(
-                        compiled_regex.search(rel_dir + "/")
-                        or compiled_regex.search(rel_dir)
-                        for compiled_regex in compiled_regexes
-                    ):
-                        excluded.add(rel_dir)
-                        continue
-                    kept_dirnames.append(dirname)
-                dirnames[:] = kept_dirnames
+        for exclude_regex in exclude_regexes:
+            for candidate in utils.extract_dir_candidates_from_regex(exclude_regex):
+                if candidate not in excluded and os.path.isdir(
+                    os.path.join(self.workspace, candidate)
+                ):
+                    excluded.add(candidate)
         return sorted(excl_dir for excl_dir in excluded if excl_dir)
 
     def read_workspace_file_lines(self, file_name):

@@ -459,7 +459,8 @@ linters:
     test_folder: repository_grype
 
   # LS-LINT
-  - linter_name: ls-lint
+  - class: LsLintLinter
+    linter_name: ls-lint
     linter_text: |
       **ls-lint** is an extremely fast file and directory name linter that helps maintain consistent naming conventions across your project. It validates file and directory names against configurable rules to enforce naming patterns, prevent problematic characters, and ensure cross-platform compatibility.
 

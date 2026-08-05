@@ -9,7 +9,8 @@ file_extensions:
   - ".md"
 linters:
   # MarkdownLint
-  - linter_name: markdownlint
+  - class: MarkdownlintLinter
+    linter_name: markdownlint
     is_formatter: true
     activation_rules:
       - type: variable

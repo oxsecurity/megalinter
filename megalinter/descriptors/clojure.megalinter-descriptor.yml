@@ -14,7 +14,8 @@ install:
     - curl
 linters:
   # clj-kondo
-  - linter_name: clj-kondo
+  - class: CljKondoLinter
+    linter_name: clj-kondo
     linter_text: |
       **clj-kondo** is a static analyzer and linter for Clojure code that sparks joy. It performs static analysis on Clojure, ClojureScript and EDN files to detect potential errors without executing your program.
 

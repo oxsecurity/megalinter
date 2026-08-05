@@ -154,6 +154,57 @@ def get_excluded_directories(request_id):
     return result
 
 
+_REGEX_METACHARACTERS = set(".^$*+?()[]{}|\\")
+_REGEX_QUANTIFIERS = set("*+?{")
+
+
+# Extract literal directory candidates from an exclusion regex, without any
+# filesystem walk: strip anchors, expand a simple leading alternation group,
+# then keep the literal prefix of each alternative. "." is kept as a literal
+# realization since callers verify the candidate's existence on disk anyway.
+def extract_dir_candidates_from_regex(regex: str) -> list[str]:
+    regex = str(regex).strip()
+    if regex.startswith("^"):
+        regex = regex[1:]
+    alternatives = []
+    if regex.startswith("(") and ")" in regex:
+        group, remainder = regex[1:].split(")", 1)
+        if group.startswith("?:"):
+            group = group[2:]
+        if not any(
+            char in _REGEX_METACHARACTERS for char in group.replace("|", "")
+        ):
+            alternatives = [alt + remainder for alt in group.split("|") if alt]
+    if len(alternatives) == 0:
+        if "(" not in regex and "[" not in regex and "|" in regex:
+            alternatives = [alt for alt in regex.split("|") if alt]
+        else:
+            alternatives = [regex]
+    candidates = []
+    for alternative in alternatives:
+        literal = ""
+        pos = 0
+        while pos < len(alternative):
+            char = alternative[pos]
+            next_char = alternative[pos + 1] if pos + 1 < len(alternative) else ""
+            if char == "\\" and next_char in _REGEX_METACHARACTERS | {"/"}:
+                char = next_char
+                pos += 1
+                next_char = alternative[pos + 1] if pos + 1 < len(alternative) else ""
+            elif char == "\\":
+                break  # \d, \w, ... are not literals
+            elif char in _REGEX_METACHARACTERS and char != ".":
+                break
+            if next_char in _REGEX_QUANTIFIERS:
+                break  # the quantifier applies to this char: drop it and stop
+            literal += char
+            pos += 1
+        literal = literal.strip("/")
+        if literal != "" and literal not in candidates:
+            candidates.append(literal)
+    return candidates
+
+
 # Flatten None, a single regex string, or a (possibly nested) list of regex strings
 # into a flat list of non-empty regex strings.
 def normalize_regex_filter(value) -> Sequence[str]:
