@@ -1,12 +1,12 @@
 {
   "_meta": {
-    "variable_count": 2469,
+    "variable_count": 2569,
     "categories": {
       "ACTION": 4,
       "ACTION_ACTIONLINT": 16,
       "ACTION_ZIZMOR": 16,
       "ANSIBLE": 5,
-      "ANSIBLE_ANSIBLE_LINT": 16,
+      "ANSIBLE_ANSIBLE_LINT": 17,
       "API": 4,
       "API_SPECTRAL": 15,
       "ARM": 4,
@@ -21,196 +21,196 @@
       "BITBUCKET_COMMENT_REPORTER": 2,
       "C": 4,
       "CLOJURE": 4,
-      "CLOJURE_CLJSTYLE": 15,
-      "CLOJURE_CLJ_KONDO": 15,
+      "CLOJURE_CLJSTYLE": 16,
+      "CLOJURE_CLJ_KONDO": 16,
       "CLOUDFORMATION": 4,
-      "CLOUDFORMATION_CFN_LINT": 15,
+      "CLOUDFORMATION_CFN_LINT": 16,
       "COFFEE": 4,
-      "COFFEE_COFFEELINT": 15,
+      "COFFEE_COFFEELINT": 16,
       "CONFIG_REPORTER": 2,
       "CONSOLE_REPORTER": 2,
       "COPYPASTE": 4,
-      "COPYPASTE_JSCPD": 13,
+      "COPYPASTE_JSCPD": 14,
       "CPP": 4,
       "CPP_CLANG_FORMAT": 15,
-      "CPP_CPPCHECK": 13,
+      "CPP_CPPCHECK": 14,
       "CPP_CPPLINT": 13,
       "CSHARP": 4,
-      "CSHARP_CSHARPIER": 15,
-      "CSHARP_DOTNET_FORMAT": 13,
+      "CSHARP_CSHARPIER": 16,
+      "CSHARP_DOTNET_FORMAT": 14,
       "CSHARP_ROSLYNATOR": 13,
       "CSS": 20,
-      "CSS_STYLELINT": 15,
+      "CSS_STYLELINT": 16,
       "C_CLANG_FORMAT": 15,
-      "C_CPPCHECK": 13,
+      "C_CPPCHECK": 14,
       "C_CPPLINT": 13,
       "DART": 4,
-      "DART_DARTANALYZER": 15,
+      "DART_DARTANALYZER": 16,
       "DOCKERFILE": 17,
       "DOCKERFILE_HADOLINT": 15,
       "EDITORCONFIG": 4,
-      "EDITORCONFIG_EDITORCONFIG_CHECKER": 15,
+      "EDITORCONFIG_EDITORCONFIG_CHECKER": 16,
       "EMAIL_REPORTER": 8,
       "ENV": 4,
-      "ENV_DOTENV_LINTER": 13,
+      "ENV_DOTENV_LINTER": 14,
       "FILEIO_REPORTER": 2,
       "GENERAL": 56,
       "GHERKIN": 4,
-      "GHERKIN_GHERKIN_LINT": 15,
+      "GHERKIN_GHERKIN_LINT": 16,
       "GITHUB_COMMENT_REPORTER": 5,
       "GITLAB_COMMENT_REPORTER": 4,
       "GO": 4,
-      "GO_GOLANGCI_LINT": 15,
+      "GO_GOLANGCI_LINT": 16,
       "GO_REVIVE": 15,
       "GRAPHQL": 4,
-      "GRAPHQL_GRAPHQL_SCHEMA_LINTER": 15,
+      "GRAPHQL_GRAPHQL_SCHEMA_LINTER": 16,
       "GROOVY": 4,
-      "GROOVY_NPM_GROOVY_LINT": 15,
+      "GROOVY_NPM_GROOVY_LINT": 16,
       "HTML": 4,
-      "HTML_DJLINT": 13,
-      "HTML_HTMLHINT": 15,
+      "HTML_DJLINT": 14,
+      "HTML_HTMLHINT": 16,
       "JAVA": 4,
       "JAVASCRIPT": 5,
-      "JAVASCRIPT_ES": 15,
-      "JAVASCRIPT_PRETTIER": 15,
-      "JAVASCRIPT_STANDARD": 13,
-      "JAVA_CHECKSTYLE": 15,
-      "JAVA_PMD": 15,
+      "JAVASCRIPT_ES": 16,
+      "JAVASCRIPT_PRETTIER": 16,
+      "JAVASCRIPT_STANDARD": 14,
+      "JAVA_CHECKSTYLE": 16,
+      "JAVA_PMD": 16,
       "JSON": 6,
       "JSON_ESLINT_PLUGIN_JSONC": 15,
-      "JSON_JSONLINT": 15,
-      "JSON_NPM_PACKAGE_JSON_LINT": 15,
-      "JSON_PRETTIER": 15,
-      "JSON_V8R": 15,
+      "JSON_JSONLINT": 16,
+      "JSON_NPM_PACKAGE_JSON_LINT": 16,
+      "JSON_PRETTIER": 16,
+      "JSON_V8R": 16,
       "JSX": 4,
-      "JSX_ESLINT": 15,
+      "JSX_ESLINT": 16,
       "KOTLIN": 4,
-      "KOTLIN_DETEKT": 15,
-      "KOTLIN_KTLINT": 13,
+      "KOTLIN_DETEKT": 16,
+      "KOTLIN_KTLINT": 14,
       "KUBERNETES": 17,
-      "KUBERNETES_HELM": 14,
-      "KUBERNETES_KUBECONFORM": 14,
-      "KUBERNETES_KUBESCAPE": 14,
+      "KUBERNETES_HELM": 15,
+      "KUBERNETES_KUBECONFORM": 15,
+      "KUBERNETES_KUBESCAPE": 15,
       "LATEX": 4,
       "LATEX_CHKTEX": 15,
       "LLM": 10,
       "LUA": 4,
-      "LUA_LUACHECK": 15,
+      "LUA_LUACHECK": 16,
       "LUA_SELENE": 15,
-      "LUA_STYLUA": 15,
+      "LUA_STYLUA": 16,
       "MAKEFILE": 4,
       "MAKEFILE_CHECKMAKE": 15,
       "MARKDOWN": 29,
-      "MARKDOWN_MARKDOWNLINT": 15,
-      "MARKDOWN_MARKDOWN_TABLE_FORMATTER": 13,
+      "MARKDOWN_MARKDOWNLINT": 16,
+      "MARKDOWN_MARKDOWN_TABLE_FORMATTER": 14,
       "MARKDOWN_REMARK_LINT": 15,
-      "MARKDOWN_RUMDL": 15,
+      "MARKDOWN_RUMDL": 16,
       "PERL": 4,
-      "PERL_PERLCRITIC": 13,
+      "PERL_PERLCRITIC": 14,
       "PHP": 15,
-      "PHP_PHPCS": 15,
-      "PHP_PHPCSFIXER": 15,
-      "PHP_PHPLINT": 15,
-      "PHP_PHPSTAN": 15,
-      "PHP_PSALM": 15,
+      "PHP_PHPCS": 16,
+      "PHP_PHPCSFIXER": 16,
+      "PHP_PHPLINT": 16,
+      "PHP_PHPSTAN": 16,
+      "PHP_PSALM": 16,
       "POWERSHELL": 4,
-      "POWERSHELL_POWERSHELL": 15,
+      "POWERSHELL_POWERSHELL": 16,
       "POWERSHELL_POWERSHELL_FORMATTER": 16,
       "PROTOBUF": 4,
-      "PROTOBUF_PROTOLINT": 15,
+      "PROTOBUF_PROTOLINT": 16,
       "PUPPET": 4,
       "PUPPET_PUPPET_LINT": 15,
       "PYTHON": 5,
-      "PYTHON_BANDIT": 15,
-      "PYTHON_BLACK": 15,
-      "PYTHON_FLAKE8": 15,
-      "PYTHON_ISORT": 15,
-      "PYTHON_MYPY": 15,
-      "PYTHON_NBQA_MYPY": 15,
-      "PYTHON_PYLINT": 15,
-      "PYTHON_PYRIGHT": 15,
-      "PYTHON_RUFF": 15,
-      "PYTHON_RUFF_FORMAT": 15,
+      "PYTHON_BANDIT": 16,
+      "PYTHON_BLACK": 16,
+      "PYTHON_FLAKE8": 16,
+      "PYTHON_ISORT": 16,
+      "PYTHON_MYPY": 16,
+      "PYTHON_NBQA_MYPY": 16,
+      "PYTHON_PYLINT": 16,
+      "PYTHON_PYRIGHT": 16,
+      "PYTHON_RUFF": 16,
+      "PYTHON_RUFF_FORMAT": 16,
       "R": 4,
       "RAKU": 4,
       "RAKU_RAKU": 15,
       "REPOSITORY": 12,
-      "REPOSITORY_BETTERLEAKS": 13,
-      "REPOSITORY_CHECKOV": 13,
-      "REPOSITORY_DEVSKIM": 13,
-      "REPOSITORY_DUSTILOCK": 11,
+      "REPOSITORY_BETTERLEAKS": 14,
+      "REPOSITORY_CHECKOV": 14,
+      "REPOSITORY_DEVSKIM": 14,
+      "REPOSITORY_DUSTILOCK": 12,
       "REPOSITORY_GITLEAKS": 16,
-      "REPOSITORY_GIT_DIFF": 11,
-      "REPOSITORY_GRYPE": 13,
+      "REPOSITORY_GIT_DIFF": 12,
+      "REPOSITORY_GRYPE": 14,
       "REPOSITORY_KICS": 13,
-      "REPOSITORY_KINGFISHER": 11,
-      "REPOSITORY_LS_LINT": 13,
-      "REPOSITORY_OSV_SCANNER": 13,
-      "REPOSITORY_SECRETLINT": 13,
-      "REPOSITORY_SEMGREP": 12,
-      "REPOSITORY_SYFT": 13,
-      "REPOSITORY_TRIVY": 13,
-      "REPOSITORY_TRIVY_SBOM": 13,
-      "REPOSITORY_TRUFFLEHOG": 13,
+      "REPOSITORY_KINGFISHER": 12,
+      "REPOSITORY_LS_LINT": 14,
+      "REPOSITORY_OSV_SCANNER": 14,
+      "REPOSITORY_SECRETLINT": 14,
+      "REPOSITORY_SEMGREP": 13,
+      "REPOSITORY_SYFT": 14,
+      "REPOSITORY_TRIVY": 14,
+      "REPOSITORY_TRIVY_SBOM": 14,
+      "REPOSITORY_TRUFFLEHOG": 14,
       "ROBOTFRAMEWORK": 4,
-      "ROBOTFRAMEWORK_ROBOCOP": 15,
+      "ROBOTFRAMEWORK_ROBOCOP": 16,
       "RST": 4,
-      "RST_RSTCHECK": 15,
-      "RST_RSTFMT": 13,
-      "RST_RST_LINT": 13,
+      "RST_RSTCHECK": 16,
+      "RST_RSTFMT": 14,
+      "RST_RST_LINT": 14,
       "RUBY": 4,
-      "RUBY_RUBOCOP": 15,
+      "RUBY_RUBOCOP": 16,
       "RUST": 4,
-      "RUST_CLIPPY": 15,
+      "RUST_CLIPPY": 16,
       "R_LINTR": 15,
       "SALESFORCE": 13,
-      "SALESFORCE_CODE_ANALYZER_APEX": 14,
-      "SALESFORCE_CODE_ANALYZER_AURA": 14,
+      "SALESFORCE_CODE_ANALYZER_APEX": 15,
+      "SALESFORCE_CODE_ANALYZER_AURA": 15,
       "SALESFORCE_CODE_ANALYZER_FLOW": 14,
-      "SALESFORCE_CODE_ANALYZER_LWC": 14,
+      "SALESFORCE_CODE_ANALYZER_LWC": 15,
       "SALESFORCE_LIGHTNING_FLOW_SCANNER": 14,
       "SALESFORCE_SFDX_SCANNER_APEX": 14,
       "SALESFORCE_SFDX_SCANNER_AURA": 14,
       "SALESFORCE_SFDX_SCANNER_LWC": 14,
       "SARIF_REPORTER": 3,
       "SCALA": 4,
-      "SCALA_SCALAFIX": 15,
+      "SCALA_SCALAFIX": 16,
       "SNAKEMAKE": 4,
       "SNAKEMAKE_LINT": 13,
       "SNAKEMAKE_SNAKEFMT": 15,
       "SPELL": 15,
-      "SPELL_CODESPELL": 15,
-      "SPELL_CSPELL": 16,
-      "SPELL_LYCHEE": 15,
-      "SPELL_PROSELINT": 15,
-      "SPELL_VALE": 15,
+      "SPELL_CODESPELL": 16,
+      "SPELL_CSPELL": 17,
+      "SPELL_LYCHEE": 16,
+      "SPELL_PROSELINT": 16,
+      "SPELL_VALE": 16,
       "SQL": 20,
-      "SQL_SQLFLUFF": 15,
+      "SQL_SQLFLUFF": 16,
       "SQL_TSQLLINT": 15,
       "SWIFT": 4,
-      "SWIFT_SWIFTLINT": 15,
+      "SWIFT_SWIFTLINT": 16,
       "TEKTON": 4,
-      "TEKTON_TEKTON_LINT": 15,
+      "TEKTON_TEKTON_LINT": 16,
       "TERRAFORM": 26,
       "TERRAFORM_TERRAFORM_FMT": 13,
       "TERRAFORM_TERRAGRUNT": 15,
       "TERRAFORM_TERRASCAN": 15,
-      "TERRAFORM_TFLINT": 16,
+      "TERRAFORM_TFLINT": 17,
       "TEXT_REPORTER": 3,
       "TSX": 4,
-      "TSX_ESLINT": 15,
+      "TSX_ESLINT": 16,
       "TYPESCRIPT": 5,
-      "TYPESCRIPT_ES": 15,
-      "TYPESCRIPT_PRETTIER": 15,
-      "TYPESCRIPT_STANDARD": 13,
+      "TYPESCRIPT_ES": 16,
+      "TYPESCRIPT_PRETTIER": 16,
+      "TYPESCRIPT_STANDARD": 14,
       "VBDOTNET": 4,
-      "VBDOTNET_DOTNET_FORMAT": 13,
+      "VBDOTNET_DOTNET_FORMAT": 14,
       "XML": 4,
       "XML_XMLLINT": 15,
       "YAML": 4,
-      "YAML_PRETTIER": 15,
-      "YAML_V8R": 15,
-      "YAML_YAMLLINT": 15
+      "YAML_PRETTIER": 16,
+      "YAML_V8R": 16,
+      "YAML_YAMLLINT": 16
     },
     "doc_url": "https://megalinter.io/latest/config-variables/"
   },
@@ -817,6 +817,15 @@
       "category": "ANSIBLE_ANSIBLE_LINT",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "ANSIBLE_ANSIBLE_LINT_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "ANSIBLE_ANSIBLE_LINT_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "ANSIBLE_ANSIBLE_LINT: Forward excluded directories in project lint mode",
+      "description": "ANSIBLE_ANSIBLE_LINT: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "ANSIBLE_ANSIBLE_LINT",
+      "section": "GENERAL"
     },
     "ANSIBLE_ANSIBLE_LINT_POST_COMMANDS": {
       "name": "ANSIBLE_ANSIBLE_LINT_POST_COMMANDS",
@@ -2587,6 +2596,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "CLOJURE_CLJSTYLE_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "CLOJURE_CLJSTYLE_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "CLOJURE_CLJSTYLE: Forward excluded directories in project lint mode",
+      "description": "CLOJURE_CLJSTYLE: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "CLOJURE_CLJSTYLE",
+      "section": "GENERAL"
+    },
     "CLOJURE_CLJSTYLE_POST_COMMANDS": {
       "name": "CLOJURE_CLJSTYLE_POST_COMMANDS",
       "type": "array",
@@ -2773,6 +2791,15 @@
       "category": "CLOJURE_CLJ_KONDO",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "CLOJURE_CLJ_KONDO_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "CLOJURE_CLJ_KONDO_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "CLOJURE_CLJ_KONDO: Forward excluded directories in project lint mode",
+      "description": "CLOJURE_CLJ_KONDO: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "CLOJURE_CLJ_KONDO",
+      "section": "GENERAL"
     },
     "CLOJURE_CLJ_KONDO_POST_COMMANDS": {
       "name": "CLOJURE_CLJ_KONDO_POST_COMMANDS",
@@ -3019,6 +3046,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "CLOUDFORMATION_CFN_LINT_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "CLOUDFORMATION_CFN_LINT_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "CLOUDFORMATION_CFN_LINT: Forward excluded directories in project lint mode",
+      "description": "CLOUDFORMATION_CFN_LINT: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "CLOUDFORMATION_CFN_LINT",
+      "section": "GENERAL"
+    },
     "CLOUDFORMATION_CFN_LINT_POST_COMMANDS": {
       "name": "CLOUDFORMATION_CFN_LINT_POST_COMMANDS",
       "type": "array",
@@ -3261,6 +3297,15 @@
       "category": "COFFEE_COFFEELINT",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "COFFEE_COFFEELINT_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "COFFEE_COFFEELINT_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "COFFEE_COFFEELINT: Forward excluded directories in project lint mode",
+      "description": "COFFEE_COFFEELINT: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "COFFEE_COFFEELINT",
+      "section": "GENERAL"
     },
     "COFFEE_COFFEELINT_POST_COMMANDS": {
       "name": "COFFEE_COFFEELINT_POST_COMMANDS",
@@ -3545,6 +3590,15 @@
       "category": "COPYPASTE_JSCPD",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "COPYPASTE_JSCPD_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "COPYPASTE_JSCPD_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "COPYPASTE_JSCPD: Forward excluded directories in project lint mode",
+      "description": "COPYPASTE_JSCPD: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "COPYPASTE_JSCPD",
+      "section": "GENERAL"
     },
     "COPYPASTE_JSCPD_POST_COMMANDS": {
       "name": "COPYPASTE_JSCPD_POST_COMMANDS",
@@ -3959,6 +4013,15 @@
       "category": "CPP_CPPCHECK",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "CPP_CPPCHECK_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "CPP_CPPCHECK_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "CPP_CPPCHECK: Forward excluded directories in project lint mode",
+      "description": "CPP_CPPCHECK: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "CPP_CPPCHECK",
+      "section": "GENERAL"
     },
     "CPP_CPPCHECK_POST_COMMANDS": {
       "name": "CPP_CPPCHECK_POST_COMMANDS",
@@ -4376,6 +4439,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "CSHARP_CSHARPIER_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "CSHARP_CSHARPIER_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "CSHARP_CSHARPIER: Forward excluded directories in project lint mode",
+      "description": "CSHARP_CSHARPIER: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "CSHARP_CSHARPIER",
+      "section": "GENERAL"
+    },
     "CSHARP_CSHARPIER_POST_COMMANDS": {
       "name": "CSHARP_CSHARPIER_POST_COMMANDS",
       "type": "array",
@@ -4549,6 +4621,15 @@
       "category": "CSHARP_DOTNET_FORMAT",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "CSHARP_DOTNET_FORMAT_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "CSHARP_DOTNET_FORMAT_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "CSHARP_DOTNET_FORMAT: Forward excluded directories in project lint mode",
+      "description": "CSHARP_DOTNET_FORMAT: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "CSHARP_DOTNET_FORMAT",
+      "section": "GENERAL"
     },
     "CSHARP_DOTNET_FORMAT_POST_COMMANDS": {
       "name": "CSHARP_DOTNET_FORMAT_POST_COMMANDS",
@@ -5178,6 +5259,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "CSS_STYLELINT_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "CSS_STYLELINT_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "CSS_STYLELINT: Forward excluded directories in project lint mode",
+      "description": "CSS_STYLELINT: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "CSS_STYLELINT",
+      "section": "GENERAL"
+    },
     "CSS_STYLELINT_POST_COMMANDS": {
       "name": "CSS_STYLELINT_POST_COMMANDS",
       "type": "array",
@@ -5539,6 +5629,15 @@
       "category": "C_CPPCHECK",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "C_CPPCHECK_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "C_CPPCHECK_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "C_CPPCHECK: Forward excluded directories in project lint mode",
+      "description": "C_CPPCHECK: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "C_CPPCHECK",
+      "section": "GENERAL"
     },
     "C_CPPCHECK_POST_COMMANDS": {
       "name": "C_CPPCHECK_POST_COMMANDS",
@@ -5942,6 +6041,15 @@
       "category": "DART_DARTANALYZER",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "DART_DARTANALYZER_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "DART_DARTANALYZER_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "DART_DARTANALYZER: Forward excluded directories in project lint mode",
+      "description": "DART_DARTANALYZER: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "DART_DARTANALYZER",
+      "section": "GENERAL"
     },
     "DART_DARTANALYZER_POST_COMMANDS": {
       "name": "DART_DARTANALYZER_POST_COMMANDS",
@@ -7007,6 +7115,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "EDITORCONFIG_EDITORCONFIG_CHECKER_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "EDITORCONFIG_EDITORCONFIG_CHECKER_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "EDITORCONFIG_EDITORCONFIG_CHECKER: Forward excluded directories in project lint mode",
+      "description": "EDITORCONFIG_EDITORCONFIG_CHECKER: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "EDITORCONFIG_EDITORCONFIG_CHECKER",
+      "section": "GENERAL"
+    },
     "EDITORCONFIG_EDITORCONFIG_CHECKER_POST_COMMANDS": {
       "name": "EDITORCONFIG_EDITORCONFIG_CHECKER_POST_COMMANDS",
       "type": "array",
@@ -7734,6 +7851,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "ENV_DOTENV_LINTER_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "ENV_DOTENV_LINTER_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "ENV_DOTENV_LINTER: Forward excluded directories in project lint mode",
+      "description": "ENV_DOTENV_LINTER: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "ENV_DOTENV_LINTER",
+      "section": "GENERAL"
+    },
     "ENV_DOTENV_LINTER_POST_COMMANDS": {
       "name": "ENV_DOTENV_LINTER_POST_COMMANDS",
       "type": "array",
@@ -8131,6 +8257,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "GHERKIN_GHERKIN_LINT_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "GHERKIN_GHERKIN_LINT_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "GHERKIN_GHERKIN_LINT: Forward excluded directories in project lint mode",
+      "description": "GHERKIN_GHERKIN_LINT: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "GHERKIN_GHERKIN_LINT",
+      "section": "GENERAL"
+    },
     "GHERKIN_GHERKIN_LINT_POST_COMMANDS": {
       "name": "GHERKIN_GHERKIN_LINT_POST_COMMANDS",
       "type": "array",
@@ -8451,6 +8586,15 @@
       "category": "GO_GOLANGCI_LINT",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "GO_GOLANGCI_LINT_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "GO_GOLANGCI_LINT_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "GO_GOLANGCI_LINT: Forward excluded directories in project lint mode",
+      "description": "GO_GOLANGCI_LINT: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "GO_GOLANGCI_LINT",
+      "section": "GENERAL"
     },
     "GO_GOLANGCI_LINT_POST_COMMANDS": {
       "name": "GO_GOLANGCI_LINT_POST_COMMANDS",
@@ -8879,6 +9023,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "GRAPHQL_GRAPHQL_SCHEMA_LINTER_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "GRAPHQL_GRAPHQL_SCHEMA_LINTER_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Forward excluded directories in project lint mode",
+      "description": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
+      "section": "GENERAL"
+    },
     "GRAPHQL_GRAPHQL_SCHEMA_LINTER_POST_COMMANDS": {
       "name": "GRAPHQL_GRAPHQL_SCHEMA_LINTER_POST_COMMANDS",
       "type": "array",
@@ -9127,6 +9280,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "GROOVY_NPM_GROOVY_LINT_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "GROOVY_NPM_GROOVY_LINT_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "GROOVY_NPM_GROOVY_LINT: Forward excluded directories in project lint mode",
+      "description": "GROOVY_NPM_GROOVY_LINT: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "GROOVY_NPM_GROOVY_LINT",
+      "section": "GENERAL"
+    },
     "GROOVY_NPM_GROOVY_LINT_POST_COMMANDS": {
       "name": "GROOVY_NPM_GROOVY_LINT_POST_COMMANDS",
       "type": "array",
@@ -9338,6 +9500,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "HTML_DJLINT_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "HTML_DJLINT_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "HTML_DJLINT: Forward excluded directories in project lint mode",
+      "description": "HTML_DJLINT: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "HTML_DJLINT",
+      "section": "GENERAL"
+    },
     "HTML_DJLINT_POST_COMMANDS": {
       "name": "HTML_DJLINT_POST_COMMANDS",
       "type": "array",
@@ -9539,6 +9710,15 @@
       "category": "HTML_HTMLHINT",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "HTML_HTMLHINT_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "HTML_HTMLHINT_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "HTML_HTMLHINT: Forward excluded directories in project lint mode",
+      "description": "HTML_HTMLHINT: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "HTML_HTMLHINT",
+      "section": "GENERAL"
     },
     "HTML_HTMLHINT_POST_COMMANDS": {
       "name": "HTML_HTMLHINT_POST_COMMANDS",
@@ -9795,6 +9975,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "JAVASCRIPT_ES_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "JAVASCRIPT_ES_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "JAVASCRIPT_ES: Forward excluded directories in project lint mode",
+      "description": "JAVASCRIPT_ES: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "JAVASCRIPT_ES",
+      "section": "GENERAL"
+    },
     "JAVASCRIPT_ES_POST_COMMANDS": {
       "name": "JAVASCRIPT_ES_POST_COMMANDS",
       "type": "array",
@@ -10021,6 +10210,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "JAVASCRIPT_PRETTIER_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "JAVASCRIPT_PRETTIER_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "JAVASCRIPT_PRETTIER: Forward excluded directories in project lint mode",
+      "description": "JAVASCRIPT_PRETTIER: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "JAVASCRIPT_PRETTIER",
+      "section": "GENERAL"
+    },
     "JAVASCRIPT_PRETTIER_POST_COMMANDS": {
       "name": "JAVASCRIPT_PRETTIER_POST_COMMANDS",
       "type": "array",
@@ -10214,6 +10412,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "JAVASCRIPT_STANDARD_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "JAVASCRIPT_STANDARD_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "JAVASCRIPT_STANDARD: Forward excluded directories in project lint mode",
+      "description": "JAVASCRIPT_STANDARD: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "JAVASCRIPT_STANDARD",
+      "section": "GENERAL"
+    },
     "JAVASCRIPT_STANDARD_POST_COMMANDS": {
       "name": "JAVASCRIPT_STANDARD_POST_COMMANDS",
       "type": "array",
@@ -10390,6 +10597,15 @@
       "category": "JAVA_CHECKSTYLE",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "JAVA_CHECKSTYLE_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "JAVA_CHECKSTYLE_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "JAVA_CHECKSTYLE: Forward excluded directories in project lint mode",
+      "description": "JAVA_CHECKSTYLE: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "JAVA_CHECKSTYLE",
+      "section": "GENERAL"
     },
     "JAVA_CHECKSTYLE_POST_COMMANDS": {
       "name": "JAVA_CHECKSTYLE_POST_COMMANDS",
@@ -10599,6 +10815,15 @@
       "category": "JAVA_PMD",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "JAVA_PMD_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "JAVA_PMD_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "JAVA_PMD: Forward excluded directories in project lint mode",
+      "description": "JAVA_PMD: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "JAVA_PMD",
+      "section": "GENERAL"
     },
     "JAVA_PMD_POST_COMMANDS": {
       "name": "JAVA_PMD_POST_COMMANDS",
@@ -11038,6 +11263,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "JSON_JSONLINT_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "JSON_JSONLINT_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "JSON_JSONLINT: Forward excluded directories in project lint mode",
+      "description": "JSON_JSONLINT: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "JSON_JSONLINT",
+      "section": "GENERAL"
+    },
     "JSON_JSONLINT_POST_COMMANDS": {
       "name": "JSON_JSONLINT_POST_COMMANDS",
       "type": "array",
@@ -11222,6 +11456,15 @@
       "category": "JSON_NPM_PACKAGE_JSON_LINT",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "JSON_NPM_PACKAGE_JSON_LINT_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "JSON_NPM_PACKAGE_JSON_LINT_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "JSON_NPM_PACKAGE_JSON_LINT: Forward excluded directories in project lint mode",
+      "description": "JSON_NPM_PACKAGE_JSON_LINT: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "JSON_NPM_PACKAGE_JSON_LINT",
+      "section": "GENERAL"
     },
     "JSON_NPM_PACKAGE_JSON_LINT_POST_COMMANDS": {
       "name": "JSON_NPM_PACKAGE_JSON_LINT_POST_COMMANDS",
@@ -11424,6 +11667,15 @@
       "category": "JSON_PRETTIER",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "JSON_PRETTIER_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "JSON_PRETTIER_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "JSON_PRETTIER: Forward excluded directories in project lint mode",
+      "description": "JSON_PRETTIER: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "JSON_PRETTIER",
+      "section": "GENERAL"
     },
     "JSON_PRETTIER_POST_COMMANDS": {
       "name": "JSON_PRETTIER_POST_COMMANDS",
@@ -11649,6 +11901,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "JSON_V8R_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "JSON_V8R_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "JSON_V8R: Forward excluded directories in project lint mode",
+      "description": "JSON_V8R: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "JSON_V8R",
+      "section": "GENERAL"
+    },
     "JSON_V8R_POST_COMMANDS": {
       "name": "JSON_V8R_POST_COMMANDS",
       "type": "array",
@@ -11833,6 +12094,15 @@
       "category": "JSX_ESLINT",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "JSX_ESLINT_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "JSX_ESLINT_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "JSX_ESLINT: Forward excluded directories in project lint mode",
+      "description": "JSX_ESLINT: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "JSX_ESLINT",
+      "section": "GENERAL"
     },
     "JSX_ESLINT_POST_COMMANDS": {
       "name": "JSX_ESLINT_POST_COMMANDS",
@@ -12078,6 +12348,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "KOTLIN_DETEKT_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "KOTLIN_DETEKT_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "KOTLIN_DETEKT: Forward excluded directories in project lint mode",
+      "description": "KOTLIN_DETEKT: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "KOTLIN_DETEKT",
+      "section": "GENERAL"
+    },
     "KOTLIN_DETEKT_POST_COMMANDS": {
       "name": "KOTLIN_DETEKT_POST_COMMANDS",
       "type": "array",
@@ -12278,6 +12557,15 @@
       "category": "KOTLIN_KTLINT",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "KOTLIN_KTLINT_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "KOTLIN_KTLINT_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "KOTLIN_KTLINT: Forward excluded directories in project lint mode",
+      "description": "KOTLIN_KTLINT: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "KOTLIN_KTLINT",
+      "section": "GENERAL"
     },
     "KOTLIN_KTLINT_POST_COMMANDS": {
       "name": "KOTLIN_KTLINT_POST_COMMANDS",
@@ -12521,6 +12809,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "KUBERNETES_HELM_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "KUBERNETES_HELM_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "KUBERNETES_HELM: Forward excluded directories in project lint mode",
+      "description": "KUBERNETES_HELM: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "KUBERNETES_HELM",
+      "section": "GENERAL"
+    },
     "KUBERNETES_HELM_POST_COMMANDS": {
       "name": "KUBERNETES_HELM_POST_COMMANDS",
       "type": "array",
@@ -12700,6 +12997,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "KUBERNETES_KUBECONFORM_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "KUBERNETES_KUBECONFORM_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "KUBERNETES_KUBECONFORM: Forward excluded directories in project lint mode",
+      "description": "KUBERNETES_KUBECONFORM: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "KUBERNETES_KUBECONFORM",
+      "section": "GENERAL"
+    },
     "KUBERNETES_KUBECONFORM_POST_COMMANDS": {
       "name": "KUBERNETES_KUBECONFORM_POST_COMMANDS",
       "type": "array",
@@ -12876,6 +13182,15 @@
       "category": "KUBERNETES_KUBESCAPE",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "KUBERNETES_KUBESCAPE_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "KUBERNETES_KUBESCAPE_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "KUBERNETES_KUBESCAPE: Forward excluded directories in project lint mode",
+      "description": "KUBERNETES_KUBESCAPE: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "KUBERNETES_KUBESCAPE",
+      "section": "GENERAL"
     },
     "KUBERNETES_KUBESCAPE_POST_COMMANDS": {
       "name": "KUBERNETES_KUBESCAPE_POST_COMMANDS",
@@ -13968,6 +14283,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "LUA_LUACHECK_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "LUA_LUACHECK_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "LUA_LUACHECK: Forward excluded directories in project lint mode",
+      "description": "LUA_LUACHECK: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "LUA_LUACHECK",
+      "section": "GENERAL"
+    },
     "LUA_LUACHECK_POST_COMMANDS": {
       "name": "LUA_LUACHECK_POST_COMMANDS",
       "type": "array",
@@ -14371,6 +14695,15 @@
       "category": "LUA_STYLUA",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "LUA_STYLUA_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "LUA_STYLUA_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "LUA_STYLUA: Forward excluded directories in project lint mode",
+      "description": "LUA_STYLUA: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "LUA_STYLUA",
+      "section": "GENERAL"
     },
     "LUA_STYLUA_POST_COMMANDS": {
       "name": "LUA_STYLUA_POST_COMMANDS",
@@ -14837,6 +15170,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "MARKDOWN_MARKDOWNLINT_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "MARKDOWN_MARKDOWNLINT_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "MARKDOWN_MARKDOWNLINT: Forward excluded directories in project lint mode",
+      "description": "MARKDOWN_MARKDOWNLINT: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "MARKDOWN_MARKDOWNLINT",
+      "section": "GENERAL"
+    },
     "MARKDOWN_MARKDOWNLINT_POST_COMMANDS": {
       "name": "MARKDOWN_MARKDOWNLINT_POST_COMMANDS",
       "type": "array",
@@ -15180,6 +15522,15 @@
       "category": "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "MARKDOWN_MARKDOWN_TABLE_FORMATTER_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "MARKDOWN_MARKDOWN_TABLE_FORMATTER_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Forward excluded directories in project lint mode",
+      "description": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
+      "section": "GENERAL"
     },
     "MARKDOWN_MARKDOWN_TABLE_FORMATTER_POST_COMMANDS": {
       "name": "MARKDOWN_MARKDOWN_TABLE_FORMATTER_POST_COMMANDS",
@@ -15628,6 +15979,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "MARKDOWN_RUMDL_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "MARKDOWN_RUMDL_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "MARKDOWN_RUMDL: Forward excluded directories in project lint mode",
+      "description": "MARKDOWN_RUMDL: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "MARKDOWN_RUMDL",
+      "section": "GENERAL"
+    },
     "MARKDOWN_RUMDL_POST_COMMANDS": {
       "name": "MARKDOWN_RUMDL_POST_COMMANDS",
       "type": "array",
@@ -15939,6 +16299,15 @@
       "category": "PERL_PERLCRITIC",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "PERL_PERLCRITIC_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "PERL_PERLCRITIC_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "PERL_PERLCRITIC: Forward excluded directories in project lint mode",
+      "description": "PERL_PERLCRITIC: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "PERL_PERLCRITIC",
+      "section": "GENERAL"
     },
     "PERL_PERLCRITIC_POST_COMMANDS": {
       "name": "PERL_PERLCRITIC_POST_COMMANDS",
@@ -16289,6 +16658,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "PHP_PHPCSFIXER_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "PHP_PHPCSFIXER_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "PHP_PHPCSFIXER: Forward excluded directories in project lint mode",
+      "description": "PHP_PHPCSFIXER: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "PHP_PHPCSFIXER",
+      "section": "GENERAL"
+    },
     "PHP_PHPCSFIXER_POST_COMMANDS": {
       "name": "PHP_PHPCSFIXER_POST_COMMANDS",
       "type": "array",
@@ -16473,6 +16851,15 @@
       "category": "PHP_PHPCS",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "PHP_PHPCS_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "PHP_PHPCS_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "PHP_PHPCS: Forward excluded directories in project lint mode",
+      "description": "PHP_PHPCS: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "PHP_PHPCS",
+      "section": "GENERAL"
     },
     "PHP_PHPCS_POST_COMMANDS": {
       "name": "PHP_PHPCS_POST_COMMANDS",
@@ -16659,6 +17046,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "PHP_PHPLINT_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "PHP_PHPLINT_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "PHP_PHPLINT: Forward excluded directories in project lint mode",
+      "description": "PHP_PHPLINT: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "PHP_PHPLINT",
+      "section": "GENERAL"
+    },
     "PHP_PHPLINT_POST_COMMANDS": {
       "name": "PHP_PHPLINT_POST_COMMANDS",
       "type": "array",
@@ -16843,6 +17239,15 @@
       "category": "PHP_PHPSTAN",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "PHP_PHPSTAN_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "PHP_PHPSTAN_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "PHP_PHPSTAN: Forward excluded directories in project lint mode",
+      "description": "PHP_PHPSTAN: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "PHP_PHPSTAN",
+      "section": "GENERAL"
     },
     "PHP_PHPSTAN_POST_COMMANDS": {
       "name": "PHP_PHPSTAN_POST_COMMANDS",
@@ -17062,6 +17467,15 @@
       "category": "PHP_PSALM",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "PHP_PSALM_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "PHP_PSALM_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "PHP_PSALM: Forward excluded directories in project lint mode",
+      "description": "PHP_PSALM: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "PHP_PSALM",
+      "section": "GENERAL"
     },
     "PHP_PSALM_POST_COMMANDS": {
       "name": "PHP_PSALM_POST_COMMANDS",
@@ -17542,6 +17956,15 @@
       "section": "SECURITY",
       "items_type": "string"
     },
+    "POWERSHELL_POWERSHELL_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "POWERSHELL_POWERSHELL_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "POWERSHELL_POWERSHELL: Forward excluded directories in project lint mode",
+      "description": "POWERSHELL_POWERSHELL: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "POWERSHELL_POWERSHELL",
+      "section": "GENERAL"
+    },
     "POWERSHELL_POWERSHELL_POST_COMMANDS": {
       "name": "POWERSHELL_POWERSHELL_POST_COMMANDS",
       "type": "array",
@@ -17841,6 +18264,15 @@
       "category": "PROTOBUF_PROTOLINT",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "PROTOBUF_PROTOLINT_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "PROTOBUF_PROTOLINT_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "PROTOBUF_PROTOLINT: Forward excluded directories in project lint mode",
+      "description": "PROTOBUF_PROTOLINT: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "PROTOBUF_PROTOLINT",
+      "section": "GENERAL"
     },
     "PROTOBUF_PROTOLINT_POST_COMMANDS": {
       "name": "PROTOBUF_PROTOLINT_POST_COMMANDS",
@@ -18272,6 +18704,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "PYTHON_BANDIT_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "PYTHON_BANDIT_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "PYTHON_BANDIT: Forward excluded directories in project lint mode",
+      "description": "PYTHON_BANDIT: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "PYTHON_BANDIT",
+      "section": "GENERAL"
+    },
     "PYTHON_BANDIT_POST_COMMANDS": {
       "name": "PYTHON_BANDIT_POST_COMMANDS",
       "type": "array",
@@ -18458,6 +18899,15 @@
       "category": "PYTHON_BLACK",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "PYTHON_BLACK_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "PYTHON_BLACK_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "PYTHON_BLACK: Forward excluded directories in project lint mode",
+      "description": "PYTHON_BLACK: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "PYTHON_BLACK",
+      "section": "GENERAL"
     },
     "PYTHON_BLACK_POST_COMMANDS": {
       "name": "PYTHON_BLACK_POST_COMMANDS",
@@ -18685,6 +19135,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "PYTHON_FLAKE8_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "PYTHON_FLAKE8_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "PYTHON_FLAKE8: Forward excluded directories in project lint mode",
+      "description": "PYTHON_FLAKE8: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "PYTHON_FLAKE8",
+      "section": "GENERAL"
+    },
     "PYTHON_FLAKE8_POST_COMMANDS": {
       "name": "PYTHON_FLAKE8_POST_COMMANDS",
       "type": "array",
@@ -18873,6 +19332,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "PYTHON_ISORT_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "PYTHON_ISORT_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "PYTHON_ISORT: Forward excluded directories in project lint mode",
+      "description": "PYTHON_ISORT: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "PYTHON_ISORT",
+      "section": "GENERAL"
+    },
     "PYTHON_ISORT_POST_COMMANDS": {
       "name": "PYTHON_ISORT_POST_COMMANDS",
       "type": "array",
@@ -19059,6 +19527,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "PYTHON_MYPY_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "PYTHON_MYPY_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "PYTHON_MYPY: Forward excluded directories in project lint mode",
+      "description": "PYTHON_MYPY: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "PYTHON_MYPY",
+      "section": "GENERAL"
+    },
     "PYTHON_MYPY_POST_COMMANDS": {
       "name": "PYTHON_MYPY_POST_COMMANDS",
       "type": "array",
@@ -19243,6 +19720,15 @@
       "category": "PYTHON_NBQA_MYPY",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "PYTHON_NBQA_MYPY_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "PYTHON_NBQA_MYPY_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "PYTHON_NBQA_MYPY: Forward excluded directories in project lint mode",
+      "description": "PYTHON_NBQA_MYPY: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "PYTHON_NBQA_MYPY",
+      "section": "GENERAL"
     },
     "PYTHON_NBQA_MYPY_POST_COMMANDS": {
       "name": "PYTHON_NBQA_MYPY_POST_COMMANDS",
@@ -19464,6 +19950,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "PYTHON_PYLINT_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "PYTHON_PYLINT_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "PYTHON_PYLINT: Forward excluded directories in project lint mode",
+      "description": "PYTHON_PYLINT: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "PYTHON_PYLINT",
+      "section": "GENERAL"
+    },
     "PYTHON_PYLINT_POST_COMMANDS": {
       "name": "PYTHON_PYLINT_POST_COMMANDS",
       "type": "array",
@@ -19649,6 +20144,15 @@
       "category": "PYTHON_PYRIGHT",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "PYTHON_PYRIGHT_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "PYTHON_PYRIGHT_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "PYTHON_PYRIGHT: Forward excluded directories in project lint mode",
+      "description": "PYTHON_PYRIGHT: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "PYTHON_PYRIGHT",
+      "section": "GENERAL"
     },
     "PYTHON_PYRIGHT_POST_COMMANDS": {
       "name": "PYTHON_PYRIGHT_POST_COMMANDS",
@@ -19972,6 +20476,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "PYTHON_RUFF_FORMAT_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "PYTHON_RUFF_FORMAT_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "PYTHON_RUFF_FORMAT: Forward excluded directories in project lint mode",
+      "description": "PYTHON_RUFF_FORMAT: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "PYTHON_RUFF_FORMAT",
+      "section": "GENERAL"
+    },
     "PYTHON_RUFF_FORMAT_POST_COMMANDS": {
       "name": "PYTHON_RUFF_FORMAT_POST_COMMANDS",
       "type": "array",
@@ -20023,6 +20536,15 @@
       "category": "PYTHON_RUFF_FORMAT",
       "section": "SECURITY",
       "items_type": "string"
+    },
+    "PYTHON_RUFF_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "PYTHON_RUFF_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "PYTHON_RUFF: Forward excluded directories in project lint mode",
+      "description": "PYTHON_RUFF: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "PYTHON_RUFF",
+      "section": "GENERAL"
     },
     "PYTHON_RUFF_POST_COMMANDS": {
       "name": "PYTHON_RUFF_POST_COMMANDS",
@@ -20462,6 +20984,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "REPOSITORY_BETTERLEAKS_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "REPOSITORY_BETTERLEAKS_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "REPOSITORY_BETTERLEAKS: Forward excluded directories in project lint mode",
+      "description": "REPOSITORY_BETTERLEAKS: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "REPOSITORY_BETTERLEAKS",
+      "section": "GENERAL"
+    },
     "REPOSITORY_BETTERLEAKS_POST_COMMANDS": {
       "name": "REPOSITORY_BETTERLEAKS_POST_COMMANDS",
       "type": "array",
@@ -20616,6 +21147,15 @@
       "category": "REPOSITORY_CHECKOV",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "REPOSITORY_CHECKOV_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "REPOSITORY_CHECKOV_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "REPOSITORY_CHECKOV: Forward excluded directories in project lint mode",
+      "description": "REPOSITORY_CHECKOV: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "REPOSITORY_CHECKOV",
+      "section": "GENERAL"
     },
     "REPOSITORY_CHECKOV_POST_COMMANDS": {
       "name": "REPOSITORY_CHECKOV_POST_COMMANDS",
@@ -20772,6 +21312,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "REPOSITORY_DEVSKIM_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "REPOSITORY_DEVSKIM_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "REPOSITORY_DEVSKIM: Forward excluded directories in project lint mode",
+      "description": "REPOSITORY_DEVSKIM: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "REPOSITORY_DEVSKIM",
+      "section": "GENERAL"
+    },
     "REPOSITORY_DEVSKIM_POST_COMMANDS": {
       "name": "REPOSITORY_DEVSKIM_POST_COMMANDS",
       "type": "array",
@@ -20915,6 +21464,15 @@
       "category": "REPOSITORY_DUSTILOCK",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "REPOSITORY_DUSTILOCK_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "REPOSITORY_DUSTILOCK_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "REPOSITORY_DUSTILOCK: Forward excluded directories in project lint mode",
+      "description": "REPOSITORY_DUSTILOCK: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "REPOSITORY_DUSTILOCK",
+      "section": "GENERAL"
     },
     "REPOSITORY_DUSTILOCK_POST_COMMANDS": {
       "name": "REPOSITORY_DUSTILOCK_POST_COMMANDS",
@@ -21254,6 +21812,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "REPOSITORY_GIT_DIFF_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "REPOSITORY_GIT_DIFF_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "REPOSITORY_GIT_DIFF: Forward excluded directories in project lint mode",
+      "description": "REPOSITORY_GIT_DIFF: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "REPOSITORY_GIT_DIFF",
+      "section": "GENERAL"
+    },
     "REPOSITORY_GIT_DIFF_POST_COMMANDS": {
       "name": "REPOSITORY_GIT_DIFF_POST_COMMANDS",
       "type": "array",
@@ -21489,6 +22056,15 @@
       "category": "REPOSITORY_GRYPE",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "REPOSITORY_GRYPE_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "REPOSITORY_GRYPE_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "REPOSITORY_GRYPE: Forward excluded directories in project lint mode",
+      "description": "REPOSITORY_GRYPE: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "REPOSITORY_GRYPE",
+      "section": "GENERAL"
     },
     "REPOSITORY_GRYPE_POST_COMMANDS": {
       "name": "REPOSITORY_GRYPE_POST_COMMANDS",
@@ -21791,6 +22367,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "REPOSITORY_KINGFISHER_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "REPOSITORY_KINGFISHER_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "REPOSITORY_KINGFISHER: Forward excluded directories in project lint mode",
+      "description": "REPOSITORY_KINGFISHER: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "REPOSITORY_KINGFISHER",
+      "section": "GENERAL"
+    },
     "REPOSITORY_KINGFISHER_POST_COMMANDS": {
       "name": "REPOSITORY_KINGFISHER_POST_COMMANDS",
       "type": "array",
@@ -21937,6 +22522,15 @@
       "category": "REPOSITORY_LS_LINT",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "REPOSITORY_LS_LINT_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "REPOSITORY_LS_LINT_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "REPOSITORY_LS_LINT: Forward excluded directories in project lint mode",
+      "description": "REPOSITORY_LS_LINT: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "REPOSITORY_LS_LINT",
+      "section": "GENERAL"
     },
     "REPOSITORY_LS_LINT_POST_COMMANDS": {
       "name": "REPOSITORY_LS_LINT_POST_COMMANDS",
@@ -22092,6 +22686,15 @@
       "category": "REPOSITORY_OSV_SCANNER",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "REPOSITORY_OSV_SCANNER_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "REPOSITORY_OSV_SCANNER_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "REPOSITORY_OSV_SCANNER: Forward excluded directories in project lint mode",
+      "description": "REPOSITORY_OSV_SCANNER: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "REPOSITORY_OSV_SCANNER",
+      "section": "GENERAL"
     },
     "REPOSITORY_OSV_SCANNER_POST_COMMANDS": {
       "name": "REPOSITORY_OSV_SCANNER_POST_COMMANDS",
@@ -22282,6 +22885,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "REPOSITORY_SECRETLINT_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "REPOSITORY_SECRETLINT_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "REPOSITORY_SECRETLINT: Forward excluded directories in project lint mode",
+      "description": "REPOSITORY_SECRETLINT: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "REPOSITORY_SECRETLINT",
+      "section": "GENERAL"
+    },
     "REPOSITORY_SECRETLINT_POST_COMMANDS": {
       "name": "REPOSITORY_SECRETLINT_POST_COMMANDS",
       "type": "array",
@@ -22427,6 +23039,15 @@
       "category": "REPOSITORY_SEMGREP",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "REPOSITORY_SEMGREP_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "REPOSITORY_SEMGREP_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "REPOSITORY_SEMGREP: Forward excluded directories in project lint mode",
+      "description": "REPOSITORY_SEMGREP: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "REPOSITORY_SEMGREP",
+      "section": "GENERAL"
     },
     "REPOSITORY_SEMGREP_POST_COMMANDS": {
       "name": "REPOSITORY_SEMGREP_POST_COMMANDS",
@@ -22586,6 +23207,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "REPOSITORY_SYFT_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "REPOSITORY_SYFT_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "REPOSITORY_SYFT: Forward excluded directories in project lint mode",
+      "description": "REPOSITORY_SYFT: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "REPOSITORY_SYFT",
+      "section": "GENERAL"
+    },
     "REPOSITORY_SYFT_POST_COMMANDS": {
       "name": "REPOSITORY_SYFT_POST_COMMANDS",
       "type": "array",
@@ -22740,6 +23370,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "REPOSITORY_TRIVY_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "REPOSITORY_TRIVY_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "REPOSITORY_TRIVY: Forward excluded directories in project lint mode",
+      "description": "REPOSITORY_TRIVY: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "REPOSITORY_TRIVY",
+      "section": "GENERAL"
+    },
     "REPOSITORY_TRIVY_POST_COMMANDS": {
       "name": "REPOSITORY_TRIVY_POST_COMMANDS",
       "type": "array",
@@ -22883,6 +23522,15 @@
       "category": "REPOSITORY_TRIVY_SBOM",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "REPOSITORY_TRIVY_SBOM_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "REPOSITORY_TRIVY_SBOM_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "REPOSITORY_TRIVY_SBOM: Forward excluded directories in project lint mode",
+      "description": "REPOSITORY_TRIVY_SBOM: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "REPOSITORY_TRIVY_SBOM",
+      "section": "GENERAL"
     },
     "REPOSITORY_TRIVY_SBOM_POST_COMMANDS": {
       "name": "REPOSITORY_TRIVY_SBOM_POST_COMMANDS",
@@ -23048,6 +23696,15 @@
       "category": "REPOSITORY_TRUFFLEHOG",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "REPOSITORY_TRUFFLEHOG_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "REPOSITORY_TRUFFLEHOG_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "REPOSITORY_TRUFFLEHOG: Forward excluded directories in project lint mode",
+      "description": "REPOSITORY_TRUFFLEHOG: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "REPOSITORY_TRUFFLEHOG",
+      "section": "GENERAL"
     },
     "REPOSITORY_TRUFFLEHOG_POST_COMMANDS": {
       "name": "REPOSITORY_TRUFFLEHOG_POST_COMMANDS",
@@ -23293,6 +23950,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "ROBOTFRAMEWORK_ROBOCOP_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "ROBOTFRAMEWORK_ROBOCOP_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "ROBOTFRAMEWORK_ROBOCOP: Forward excluded directories in project lint mode",
+      "description": "ROBOTFRAMEWORK_ROBOCOP: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "ROBOTFRAMEWORK_ROBOCOP",
+      "section": "GENERAL"
+    },
     "ROBOTFRAMEWORK_ROBOCOP_POST_COMMANDS": {
       "name": "ROBOTFRAMEWORK_ROBOCOP_POST_COMMANDS",
       "type": "array",
@@ -23536,6 +24202,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "RST_RSTCHECK_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "RST_RSTCHECK_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "RST_RSTCHECK: Forward excluded directories in project lint mode",
+      "description": "RST_RSTCHECK: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "RST_RSTCHECK",
+      "section": "GENERAL"
+    },
     "RST_RSTCHECK_POST_COMMANDS": {
       "name": "RST_RSTCHECK_POST_COMMANDS",
       "type": "array",
@@ -23712,6 +24387,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "RST_RSTFMT_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "RST_RSTFMT_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "RST_RSTFMT: Forward excluded directories in project lint mode",
+      "description": "RST_RSTFMT: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "RST_RSTFMT",
+      "section": "GENERAL"
+    },
     "RST_RSTFMT_POST_COMMANDS": {
       "name": "RST_RSTFMT_POST_COMMANDS",
       "type": "array",
@@ -23879,6 +24563,15 @@
       "category": "RST_RST_LINT",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "RST_RST_LINT_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "RST_RST_LINT_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "RST_RST_LINT: Forward excluded directories in project lint mode",
+      "description": "RST_RST_LINT: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "RST_RST_LINT",
+      "section": "GENERAL"
     },
     "RST_RST_LINT_POST_COMMANDS": {
       "name": "RST_RST_LINT_POST_COMMANDS",
@@ -24115,6 +24808,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "RUBY_RUBOCOP_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "RUBY_RUBOCOP_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "RUBY_RUBOCOP: Forward excluded directories in project lint mode",
+      "description": "RUBY_RUBOCOP: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "RUBY_RUBOCOP",
+      "section": "GENERAL"
+    },
     "RUBY_RUBOCOP_POST_COMMANDS": {
       "name": "RUBY_RUBOCOP_POST_COMMANDS",
       "type": "array",
@@ -24297,6 +24999,15 @@
       "category": "RUST_CLIPPY",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "RUST_CLIPPY_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "RUST_CLIPPY_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "RUST_CLIPPY: Forward excluded directories in project lint mode",
+      "description": "RUST_CLIPPY: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "RUST_CLIPPY",
+      "section": "GENERAL"
     },
     "RUST_CLIPPY_POST_COMMANDS": {
       "name": "RUST_CLIPPY_POST_COMMANDS",
@@ -24762,6 +25473,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "SALESFORCE_CODE_ANALYZER_APEX_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "SALESFORCE_CODE_ANALYZER_APEX_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "SALESFORCE_CODE_ANALYZER_APEX: Forward excluded directories in project lint mode",
+      "description": "SALESFORCE_CODE_ANALYZER_APEX: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "SALESFORCE_CODE_ANALYZER_APEX",
+      "section": "GENERAL"
+    },
     "SALESFORCE_CODE_ANALYZER_APEX_POST_COMMANDS": {
       "name": "SALESFORCE_CODE_ANALYZER_APEX_POST_COMMANDS",
       "type": "array",
@@ -24923,6 +25643,15 @@
       "category": "SALESFORCE_CODE_ANALYZER_AURA",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "SALESFORCE_CODE_ANALYZER_AURA_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "SALESFORCE_CODE_ANALYZER_AURA_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "SALESFORCE_CODE_ANALYZER_AURA: Forward excluded directories in project lint mode",
+      "description": "SALESFORCE_CODE_ANALYZER_AURA: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "SALESFORCE_CODE_ANALYZER_AURA",
+      "section": "GENERAL"
     },
     "SALESFORCE_CODE_ANALYZER_AURA_POST_COMMANDS": {
       "name": "SALESFORCE_CODE_ANALYZER_AURA_POST_COMMANDS",
@@ -25247,6 +25976,15 @@
       "category": "SALESFORCE_CODE_ANALYZER_LWC",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "SALESFORCE_CODE_ANALYZER_LWC_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "SALESFORCE_CODE_ANALYZER_LWC_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "SALESFORCE_CODE_ANALYZER_LWC: Forward excluded directories in project lint mode",
+      "description": "SALESFORCE_CODE_ANALYZER_LWC: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "SALESFORCE_CODE_ANALYZER_LWC",
+      "section": "GENERAL"
     },
     "SALESFORCE_CODE_ANALYZER_LWC_POST_COMMANDS": {
       "name": "SALESFORCE_CODE_ANALYZER_LWC_POST_COMMANDS",
@@ -26461,6 +27199,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "SCALA_SCALAFIX_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "SCALA_SCALAFIX_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "SCALA_SCALAFIX: Forward excluded directories in project lint mode",
+      "description": "SCALA_SCALAFIX: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "SCALA_SCALAFIX",
+      "section": "GENERAL"
+    },
     "SCALA_SCALAFIX_POST_COMMANDS": {
       "name": "SCALA_SCALAFIX_POST_COMMANDS",
       "type": "array",
@@ -27144,6 +27891,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "SPELL_CODESPELL_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "SPELL_CODESPELL_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "SPELL_CODESPELL: Forward excluded directories in project lint mode",
+      "description": "SPELL_CODESPELL: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "SPELL_CODESPELL",
+      "section": "GENERAL"
+    },
     "SPELL_CODESPELL_POST_COMMANDS": {
       "name": "SPELL_CODESPELL_POST_COMMANDS",
       "type": "array",
@@ -27335,6 +28091,15 @@
       "category": "SPELL_CSPELL",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "SPELL_CSPELL_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "SPELL_CSPELL_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "SPELL_CSPELL: Forward excluded directories in project lint mode",
+      "description": "SPELL_CSPELL: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "SPELL_CSPELL",
+      "section": "GENERAL"
     },
     "SPELL_CSPELL_POST_COMMANDS": {
       "name": "SPELL_CSPELL_POST_COMMANDS",
@@ -27555,6 +28320,15 @@
       "category": "SPELL_LYCHEE",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "SPELL_LYCHEE_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "SPELL_LYCHEE_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "SPELL_LYCHEE: Forward excluded directories in project lint mode",
+      "description": "SPELL_LYCHEE: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "SPELL_LYCHEE",
+      "section": "GENERAL"
     },
     "SPELL_LYCHEE_POST_COMMANDS": {
       "name": "SPELL_LYCHEE_POST_COMMANDS",
@@ -27896,6 +28670,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "SPELL_PROSELINT_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "SPELL_PROSELINT_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "SPELL_PROSELINT: Forward excluded directories in project lint mode",
+      "description": "SPELL_PROSELINT: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "SPELL_PROSELINT",
+      "section": "GENERAL"
+    },
     "SPELL_PROSELINT_POST_COMMANDS": {
       "name": "SPELL_PROSELINT_POST_COMMANDS",
       "type": "array",
@@ -28081,6 +28864,15 @@
       "category": "SPELL_VALE",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "SPELL_VALE_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "SPELL_VALE_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "SPELL_VALE: Forward excluded directories in project lint mode",
+      "description": "SPELL_VALE: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "SPELL_VALE",
+      "section": "GENERAL"
     },
     "SPELL_VALE_POST_COMMANDS": {
       "name": "SPELL_VALE_POST_COMMANDS",
@@ -28324,6 +29116,15 @@
       "category": "SQL_SQLFLUFF",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "SQL_SQLFLUFF_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "SQL_SQLFLUFF_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "SQL_SQLFLUFF: Forward excluded directories in project lint mode",
+      "description": "SQL_SQLFLUFF: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "SQL_SQLFLUFF",
+      "section": "GENERAL"
     },
     "SQL_SQLFLUFF_POST_COMMANDS": {
       "name": "SQL_SQLFLUFF_POST_COMMANDS",
@@ -28920,6 +29721,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "SWIFT_SWIFTLINT_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "SWIFT_SWIFTLINT_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "SWIFT_SWIFTLINT: Forward excluded directories in project lint mode",
+      "description": "SWIFT_SWIFTLINT: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "SWIFT_SWIFTLINT",
+      "section": "GENERAL"
+    },
     "SWIFT_SWIFTLINT_POST_COMMANDS": {
       "name": "SWIFT_SWIFTLINT_POST_COMMANDS",
       "type": "array",
@@ -29181,6 +29991,15 @@
       "category": "TEKTON_TEKTON_LINT",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "TEKTON_TEKTON_LINT_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "TEKTON_TEKTON_LINT_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "TEKTON_TEKTON_LINT: Forward excluded directories in project lint mode",
+      "description": "TEKTON_TEKTON_LINT: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "TEKTON_TEKTON_LINT",
+      "section": "GENERAL"
     },
     "TEKTON_TEKTON_LINT_POST_COMMANDS": {
       "name": "TEKTON_TEKTON_LINT_POST_COMMANDS",
@@ -30197,6 +31016,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "TERRAFORM_TFLINT_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "TERRAFORM_TFLINT_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "TERRAFORM_TFLINT: Forward excluded directories in project lint mode",
+      "description": "TERRAFORM_TFLINT: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "TERRAFORM_TFLINT",
+      "section": "GENERAL"
+    },
     "TERRAFORM_TFLINT_POST_COMMANDS": {
       "name": "TERRAFORM_TFLINT_POST_COMMANDS",
       "type": "array",
@@ -30408,6 +31236,15 @@
       "category": "TSX_ESLINT",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "TSX_ESLINT_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "TSX_ESLINT_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "TSX_ESLINT: Forward excluded directories in project lint mode",
+      "description": "TSX_ESLINT: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "TSX_ESLINT",
+      "section": "GENERAL"
     },
     "TSX_ESLINT_POST_COMMANDS": {
       "name": "TSX_ESLINT_POST_COMMANDS",
@@ -30669,6 +31506,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "TYPESCRIPT_ES_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "TYPESCRIPT_ES_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "TYPESCRIPT_ES: Forward excluded directories in project lint mode",
+      "description": "TYPESCRIPT_ES: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "TYPESCRIPT_ES",
+      "section": "GENERAL"
+    },
     "TYPESCRIPT_ES_POST_COMMANDS": {
       "name": "TYPESCRIPT_ES_POST_COMMANDS",
       "type": "array",
@@ -30895,6 +31741,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "TYPESCRIPT_PRETTIER_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "TYPESCRIPT_PRETTIER_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "TYPESCRIPT_PRETTIER: Forward excluded directories in project lint mode",
+      "description": "TYPESCRIPT_PRETTIER: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "TYPESCRIPT_PRETTIER",
+      "section": "GENERAL"
+    },
     "TYPESCRIPT_PRETTIER_POST_COMMANDS": {
       "name": "TYPESCRIPT_PRETTIER_POST_COMMANDS",
       "type": "array",
@@ -31088,6 +31943,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "TYPESCRIPT_STANDARD_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "TYPESCRIPT_STANDARD_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "TYPESCRIPT_STANDARD: Forward excluded directories in project lint mode",
+      "description": "TYPESCRIPT_STANDARD: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "TYPESCRIPT_STANDARD",
+      "section": "GENERAL"
+    },
     "TYPESCRIPT_STANDARD_POST_COMMANDS": {
       "name": "TYPESCRIPT_STANDARD_POST_COMMANDS",
       "type": "array",
@@ -31276,6 +32140,15 @@
       "category": "VBDOTNET_DOTNET_FORMAT",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "VBDOTNET_DOTNET_FORMAT_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "VBDOTNET_DOTNET_FORMAT_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "VBDOTNET_DOTNET_FORMAT: Forward excluded directories in project lint mode",
+      "description": "VBDOTNET_DOTNET_FORMAT: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "VBDOTNET_DOTNET_FORMAT",
+      "section": "GENERAL"
     },
     "VBDOTNET_DOTNET_FORMAT_POST_COMMANDS": {
       "name": "VBDOTNET_DOTNET_FORMAT_POST_COMMANDS",
@@ -31805,6 +32678,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "YAML_PRETTIER_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "YAML_PRETTIER_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "YAML_PRETTIER: Forward excluded directories in project lint mode",
+      "description": "YAML_PRETTIER: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "YAML_PRETTIER",
+      "section": "GENERAL"
+    },
     "YAML_PRETTIER_POST_COMMANDS": {
       "name": "YAML_PRETTIER_POST_COMMANDS",
       "type": "array",
@@ -32008,6 +32890,15 @@
       "section": "SCOPE",
       "items_type": "string"
     },
+    "YAML_V8R_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "YAML_V8R_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "YAML_V8R: Forward excluded directories in project lint mode",
+      "description": "YAML_V8R: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "YAML_V8R",
+      "section": "GENERAL"
+    },
     "YAML_V8R_POST_COMMANDS": {
       "name": "YAML_V8R_POST_COMMANDS",
       "type": "array",
@@ -32193,6 +33084,15 @@
       "category": "YAML_YAMLLINT",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "YAML_YAMLLINT_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "YAML_YAMLLINT_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "YAML_YAMLLINT: Forward excluded directories in project lint mode",
+      "description": "YAML_YAMLLINT: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "YAML_YAMLLINT",
+      "section": "GENERAL"
     },
     "YAML_YAMLLINT_POST_COMMANDS": {
       "name": "YAML_YAMLLINT_POST_COMMANDS",

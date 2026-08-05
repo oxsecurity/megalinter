@@ -336,6 +336,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.72.0 to **0.73.0** on 2026-08-03
   - [rumdl](https://github.com/rvben/rumdl) from 0.2.49 to **0.2.50** on 2026-08-04
   - [rubocop](https://rubocop.org/) from 1.88.2 to **1.89.0** on 2026-08-04
+  - [phpstan](https://phpstan.org/) from 2.2.7 to **2.2.8** on 2026-08-05
 <!-- linter-versions-end -->
 
 ## [v9.6.0] - 2026-06-28
