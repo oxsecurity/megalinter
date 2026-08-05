@@ -11998,6 +11998,11 @@ You can see an example config file in this repo: <a href="https://github.com/oxs
 <td>Formatter errors will be reported as errors (and not warnings) if this variable is set to <code>false</code></td>
 </tr>
 <tr>
+<td><strong>FORWARD_EXCLUDED_DIRECTORIES</strong></td>
+<td><code>true</code></td>
+<td>In project CLI lint mode, forward excluded directories to the linters through their native exclusion arguments or generated ignore/config files. Override per-linter with *_FORWARD_EXCLUDED_DIRECTORIES</td>
+</tr>
+<tr>
 <td><strong>GIT_AUTHORIZATION_BEARER</strong></td>
 <td><!-- --></td>
 <td>If set, calls git with <strong><code>Authorization: Bearer</code>+value</strong></td>
