@@ -637,7 +637,10 @@ class DashboardBuilderElastic(DashboardBuilder):
                     "MegaLinter results: errors, linters, top rules and files. "
                     f"Generated from MegaLinter payload v{PAYLOAD_VERSION}."
                 ),
-                "timeRestore": False,
+                "timeRestore": True,
+                "timeFrom": "now-30d",
+                "timeTo": "now",
+                "refreshInterval": {"pause": True, "value": 60000},
                 "panelsJSON": json.dumps(panels),
                 "optionsJSON": json.dumps(
                     {
