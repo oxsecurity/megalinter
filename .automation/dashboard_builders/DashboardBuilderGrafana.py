@@ -36,6 +36,7 @@ class DashboardBuilderGrafana(DashboardBuilder):
             "grafana/megalinter-rules-files.json": self.to_json(
                 self.rules_files_dashboard()
             ),
+            "grafana/megalinter-rating.json": self.to_json(self.rating_dashboard()),
         }
 
     def manifest_entries(self) -> list:
@@ -59,6 +60,11 @@ class DashboardBuilderGrafana(DashboardBuilder):
                 "provider": "grafana",
                 "file": "grafana/megalinter-rules-files.json",
                 "uid": "megalinter-rules-files",
+            },
+            {
+                "provider": "grafana",
+                "file": "grafana/megalinter-rating.json",
+                "uid": "megalinter-rating",
             },
         ]
 
@@ -117,7 +123,7 @@ class DashboardBuilderGrafana(DashboardBuilder):
             }
         ]
 
-    # SonarQube-like rating derived from the health score
+    # A-E rating derived from the health score
     def grade_mappings(self):
         return [
             {
@@ -190,6 +196,22 @@ class DashboardBuilderGrafana(DashboardBuilder):
                 {"color": "green", "value": 80},
             ]
         )
+
+    def text_panel(self, content, grid, title=""):
+        return {
+            "id": self.next_id(),
+            "type": "text",
+            "title": title,
+            "gridPos": grid,
+            "options": {"mode": "markdown", "content": content},
+            "fieldConfig": {"defaults": {}, "overrides": []},
+        }
+
+    def rating_link(self, repo_ref=None):
+        url = "/d/megalinter-rating/megalinter-rating?${__url_time_range}"
+        if repo_ref is not None:
+            url += f"&var-repo={repo_ref}"
+        return {"title": "Why this rating?", "url": url}
 
     def repository_link(self, repo_ref, branch_ref=None):
         url = (
@@ -686,6 +708,7 @@ class DashboardBuilderGrafana(DashboardBuilder):
                 mappings=self.grade_mappings(),
                 thresholds_def=self.health_thresholds(),
                 color_mode="background",
+                links=[self.rating_link()],
             ),
             self.stat_panel(
                 "Estimated time saved by auto-fixes (5 min/fix)",
@@ -845,6 +868,7 @@ class DashboardBuilderGrafana(DashboardBuilder):
                 mappings=self.grade_mappings(),
                 thresholds_def=self.health_thresholds(),
                 color_mode="background",
+                links=[self.rating_link("$repo")],
             ),
             self.state_timeline_panel(
                 "Quality gate history",
@@ -1130,6 +1154,155 @@ class DashboardBuilderGrafana(DashboardBuilder):
             variables,
             panels,
             "Drill-down on a single linter: errors, duration, top rules and files",
+        )
+
+    def rating_dashboard(self):
+        sel = 'gitRepoName=~"$repo",gitBranchName=~"$branch"'
+        run_range = "[$__range]"
+        variables = self.datasource_variables() + [
+            self.query_variable(
+                "repo",
+                "Repository",
+                f"label_values({PROM_RUN_PREFIX}lintersCount, gitRepoName)",
+                multi=False,
+                include_all=False,
+            ),
+            self.query_variable(
+                "branch",
+                "Branch",
+                f'label_values({PROM_RUN_PREFIX}lintersCount{{gitRepoName=~"$repo"}}, gitBranchName)',
+                multi=True,
+            ),
+        ]
+        panels = [
+            self.stat_panel(
+                "Rating",
+                f"min(last_over_time({PROM_RUN_PREFIX}healthScore{{{sel}}}{run_range}))",
+                {"h": 6, "w": 4, "x": 0, "y": 0},
+                mappings=self.grade_mappings(),
+                thresholds_def=self.health_thresholds(),
+                color_mode="background",
+            ),
+            self.stat_panel(
+                "Health score",
+                f"min(last_over_time({PROM_RUN_PREFIX}healthScore{{{sel}}}{run_range}))",
+                {"h": 6, "w": 4, "x": 4, "y": 0},
+                unit="percent",
+                thresholds_def=self.health_thresholds(),
+                color_mode="background",
+            ),
+            self.text_panel(
+                "## How the rating is computed\n\nThe **health score** (0-100) of a run is:\n\n`100 x "
+                "(linters in success + 0.5 x linters with non-blocking errors) / total linters`\n\n| Rating | "
+                "Health score |\n|--------|--------------|\n| A | >= 90 |\n| B | >= 80 |\n| C | >= 65 |\n| D "
+                "| >= 50 |\n| E | < 50 |\n\n**To improve the rating**: fix the linters in error first (each "
+                "one brings back a full share of the score), then reduce non-blocking warnings (each one "
+                "brings back half a share). The table below lists the linters currently dragging the score "
+                "down - click one to open its detail dashboard.",
+                {"h": 12, "w": 16, "x": 8, "y": 0},
+            ),
+            self.stat_panel(
+                "Linters in success",
+                f"sum(last_over_time({PROM_RUN_PREFIX}lintersSuccess{{{sel}}}{run_range}))",
+                {"h": 6, "w": 4, "x": 0, "y": 6},
+                thresholds_def=self.thresholds([{"color": "green", "value": None}]),
+                color_mode="background",
+            ),
+            self.stat_panel(
+                "Linters with warnings (0.5 share each)",
+                f"sum(last_over_time({PROM_RUN_PREFIX}lintersWarning{{{sel}}}{run_range}))",
+                {"h": 6, "w": 4, "x": 4, "y": 6},
+                thresholds_def=self.thresholds(
+                    [
+                        {"color": "green", "value": None},
+                        {"color": "yellow", "value": 1},
+                    ]
+                ),
+                color_mode="background",
+            ),
+            self.stat_panel(
+                "Linters in error (0 share)",
+                f"sum(last_over_time({PROM_RUN_PREFIX}lintersError{{{sel}}}{run_range}))",
+                {"h": 6, "w": 4, "x": 0, "y": 12},
+                thresholds_def=self.red_if_any(),
+                color_mode="background",
+            ),
+            self.stat_panel(
+                "Total linters",
+                f"sum(last_over_time({PROM_RUN_PREFIX}lintersCount{{{sel}}}{run_range}))",
+                {"h": 6, "w": 4, "x": 4, "y": 12},
+            ),
+            self.table_panel(
+                "Linters dragging the score down - click one to open its dashboard",
+                [
+                    self.prom_target(
+                        f"max by (linterKey) (last_over_time("
+                        f"{PROM_LINTER_PREFIX}numberErrorsFound{{{sel}}}{run_range}) > 0)",
+                        "A",
+                        instant=True,
+                        table=True,
+                    ),
+                    self.prom_target(
+                        f"max by (linterKey) (last_over_time("
+                        f"{PROM_LINTER_PREFIX}blocking{{{sel}}}{run_range}))",
+                        "B",
+                        instant=True,
+                        table=True,
+                    ),
+                ],
+                {"h": 10, "w": 12, "x": 0, "y": 18},
+                transformations=self.join_by_field_transformations(
+                    "linterKey",
+                    {
+                        "Value #A": "Errors",
+                        "Value #B": "Blocking",
+                        "linterKey": "Linter",
+                    },
+                ),
+                overrides=[
+                    self.cell_color_override("Errors", self.red_if_any()),
+                    self.cell_color_override(
+                        "Blocking",
+                        self.red_if_any(),
+                        mappings=[
+                            {
+                                "type": "value",
+                                "options": {
+                                    "0": {
+                                        "text": "NO (warning)",
+                                        "color": "yellow",
+                                        "index": 0,
+                                    },
+                                    "1": {"text": "YES", "color": "red", "index": 1},
+                                },
+                            }
+                        ],
+                    ),
+                ],
+                links=[self.linter_link("${__data.fields.Linter}")],
+            ),
+            self.timeseries_panel(
+                "Health score evolution",
+                [
+                    self.prom_target(
+                        f"min({PROM_RUN_PREFIX}healthScore{{{sel}}})",
+                        legend="Health score",
+                    )
+                ],
+                {"h": 10, "w": 12, "x": 12, "y": 18},
+                unit="percent",
+                thresholds_def=self.health_thresholds(),
+                threshold_zones=True,
+                min_val=0,
+                max_val=100,
+            ),
+        ]
+        return self.dashboard_shell(
+            "MegaLinter - Why this rating?",
+            "megalinter-rating",
+            variables,
+            panels,
+            "Explanation of the repository rating: score formula, linters breakdown and improvement path",
         )
 
     def rules_files_dashboard(self):

@@ -57,12 +57,13 @@ class DashboardBuilderNewRelic(DashboardBuilder):
             },
         }
         if repo_link:
-            # Marker consumed at upload time: replaced by the guid of the
-            # "Repository detail" page so that clicking a repository facet
-            # opens the filtered detail page
+            # Markers consumed at upload time: replaced by the guid of the
+            # matching page so that clicking a facet opens the filtered page
             result["rawConfiguration"]["linkedEntityGuids"] = [
                 "__REPOSITORY_DETAIL_PAGE_GUID__"
             ]
+        if repo_link == "rating":
+            result["rawConfiguration"]["linkedEntityGuids"] = ["__RATING_PAGE_GUID__"]
         if thresholds is not None:
             result["rawConfiguration"]["thresholds"] = thresholds
         if series_colors is not None:
@@ -73,6 +74,14 @@ class DashboardBuilderNewRelic(DashboardBuilder):
                 ]
             }
         return result
+
+    def markdown_widget(self, text, row, column, width=6, height=4):
+        return {
+            "title": "",
+            "layout": {"column": column, "row": row, "width": width, "height": height},
+            "visualization": {"id": "viz.markdown"},
+            "rawConfiguration": {"text": text},
+        }
 
     def overview_dashboard(self):
         run = NR_RUN_PREFIX
@@ -428,6 +437,90 @@ class DashboardBuilderNewRelic(DashboardBuilder):
                             13,
                             7,
                             width=6,
+                        ),
+                    ],
+                },
+                {
+                    "name": "Why this rating?",
+                    "widgets": [
+                        self.markdown_widget(
+                            "## How the rating / health score is computed\\n\\nHealth score (0-100) = `100 x "
+                            "(linters in success + 0.5 x linters with non-blocking errors) / total "
+                            "linters`\\n\\n| Rating | Health score |\\n|---|---|\\n| A | >= 90 |\\n| B | >= "
+                            "80 |\\n| C | >= 65 |\\n| D | >= 50 |\\n| E | < 50 |\\n\\nTo improve it: fix the "
+                            "linters in error first (full share each), then the warnings (half share each). "
+                            "Use the Repository and Branch variables to focus this page.",
+                            1,
+                            1,
+                            width=6,
+                            height=4,
+                        ),
+                        self.widget(
+                            "Health score",
+                            "viz.billboard",
+                            f"SELECT latest(`{run}healthScore`) AS 'Health score' "
+                            "FROM Metric WHERE source = 'MegaLinter'"
+                            " AND gitRepoName LIKE {{gitRepoName}}"
+                            " AND gitBranchName LIKE {{gitBranchName}} SINCE 30 days ago",
+                            1,
+                            7,
+                            width=3,
+                        ),
+                        self.widget(
+                            "Total linters",
+                            "viz.billboard",
+                            f"SELECT latest(`{run}lintersCount`) AS 'Linters' "
+                            "FROM Metric WHERE source = 'MegaLinter'"
+                            " AND gitRepoName LIKE {{gitRepoName}}"
+                            " AND gitBranchName LIKE {{gitBranchName}} SINCE 30 days ago",
+                            1,
+                            10,
+                            width=3,
+                        ),
+                        self.widget(
+                            "Linters in success",
+                            "viz.billboard",
+                            f"SELECT latest(`{run}lintersSuccess`) AS 'Success' "
+                            "FROM Metric WHERE source = 'MegaLinter'"
+                            " AND gitRepoName LIKE {{gitRepoName}}"
+                            " AND gitBranchName LIKE {{gitBranchName}} SINCE 30 days ago",
+                            5,
+                            1,
+                        ),
+                        self.widget(
+                            "Linters with warnings (0.5 share)",
+                            "viz.billboard",
+                            f"SELECT latest(`{run}lintersWarning`) AS 'Warnings' "
+                            "FROM Metric WHERE source = 'MegaLinter'"
+                            " AND gitRepoName LIKE {{gitRepoName}}"
+                            " AND gitBranchName LIKE {{gitBranchName}} SINCE 30 days ago",
+                            5,
+                            5,
+                            thresholds=[{"alertSeverity": "WARNING", "value": 1}],
+                        ),
+                        self.widget(
+                            "Linters in error (0 share)",
+                            "viz.billboard",
+                            f"SELECT latest(`{run}lintersError`) AS 'Errors' "
+                            "FROM Metric WHERE source = 'MegaLinter'"
+                            " AND gitRepoName LIKE {{gitRepoName}}"
+                            " AND gitBranchName LIKE {{gitBranchName}} SINCE 30 days ago",
+                            5,
+                            9,
+                            thresholds=[{"alertSeverity": "CRITICAL", "value": 1}],
+                        ),
+                        self.widget(
+                            "Linters dragging the score down",
+                            "viz.bar",
+                            f"SELECT max(`{linter}numberErrorsFound`) FROM Metric "
+                            "WHERE source = 'MegaLinter'"
+                            " AND gitRepoName LIKE {{gitRepoName}}"
+                            " AND gitBranchName LIKE {{gitBranchName}} "
+                            "FACET linterKey SINCE 30 days ago LIMIT 15",
+                            8,
+                            1,
+                            width=12,
+                            height=4,
                         ),
                     ],
                 },

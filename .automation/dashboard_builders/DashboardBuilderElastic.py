@@ -425,6 +425,28 @@ class DashboardBuilderElastic(DashboardBuilder):
             },
         }
 
+    def markdown_panel(self, panel_index, markdown):
+        return {
+            "type": "visualization",
+            "gridData": {},
+            "panelIndex": panel_index,
+            "embeddableConfig": {
+                "savedVis": {
+                    "title": "",
+                    "description": "",
+                    "type": "markdown",
+                    "params": {
+                        "markdown": markdown,
+                        "openLinksInNewTab": False,
+                        "fontSize": 12,
+                    },
+                    "uiState": {},
+                    "data": {"aggs": [], "searchSource": {}},
+                },
+                "enhancements": {},
+            },
+        }
+
     def dashboard(self):
         panels = [
             self.lens_metric_panel(
@@ -539,6 +561,37 @@ class DashboardBuilderElastic(DashboardBuilder):
                 [("data.numberErrorsFound", "Errors", "sum")],
                 split_field="linterKey.keyword",
             ),
+            self.markdown_panel(
+                "p17",
+                "## How the rating / health score is computed\\n\\nHealth score (0-100) = `100 x (linters in "
+                "success + 0.5 x linters with non-blocking errors) / total linters`\\n\\nA >= 90 | B >= 80 | "
+                "C >= 65 | D >= 50 | E < 50\\n\\nTo improve it: fix the linters in error first (full share "
+                "each), then the warnings (half share each). Click any bar to filter the dashboard, or use "
+                "the filter bar (e.g. `gitRepoName: myrepo`).",
+            ),
+            self.lens_metric_panel(
+                "p18",
+                "Linters in success (latest runs)",
+                "megalinter-runs",
+                "run.lintersSuccess",
+                agg="max",
+            ),
+            self.lens_metric_panel(
+                "p19",
+                "Linters with warnings (0.5 share)",
+                "megalinter-runs",
+                "run.lintersWarning",
+                agg="max",
+                palette=self.warning_palette(),
+            ),
+            self.lens_metric_panel(
+                "p20",
+                "Linters in error (0 share)",
+                "megalinter-runs",
+                "run.lintersError",
+                agg="max",
+                palette=self.errors_palette(),
+            ),
         ]
         grid = [
             {"x": 0, "y": 0, "w": 12, "h": 8, "i": "p1"},
@@ -557,12 +610,17 @@ class DashboardBuilderElastic(DashboardBuilder):
             {"x": 0, "y": 56, "w": 48, "h": 12, "i": "p14"},
             {"x": 0, "y": 68, "w": 24, "h": 12, "i": "p15"},
             {"x": 24, "y": 68, "w": 24, "h": 12, "i": "p16"},
+            {"x": 0, "y": 80, "w": 24, "h": 10, "i": "p17"},
+            {"x": 24, "y": 80, "w": 8, "h": 10, "i": "p18"},
+            {"x": 32, "y": 80, "w": 8, "h": 10, "i": "p19"},
+            {"x": 40, "y": 80, "w": 8, "h": 10, "i": "p20"},
         ]
         for panel, grid_data in zip(panels, grid):
             panel["gridData"] = grid_data
         references = []
         for panel in panels:
-            for ref in panel["embeddableConfig"]["attributes"]["references"]:
+            attributes = panel["embeddableConfig"].get("attributes", {})
+            for ref in attributes.get("references", []):
                 references.append(
                     {
                         "type": "index-pattern",

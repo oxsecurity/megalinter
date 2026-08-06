@@ -648,6 +648,12 @@
                 }
               }
             }
+          ],
+          "links": [
+            {
+              "title": "Why this rating?",
+              "url": "/d/megalinter-rating/megalinter-rating?${__url_time_range}&var-repo=$repo"
+            }
           ]
         },
         "overrides": []

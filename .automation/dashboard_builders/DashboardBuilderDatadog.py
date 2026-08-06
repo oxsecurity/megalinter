@@ -230,6 +230,28 @@ class DashboardBuilderDatadog(DashboardBuilder):
             }
         }
 
+    def note(self, content):
+        return {
+            "definition": {
+                "type": "note",
+                "content": content,
+                "background_color": "white",
+                "font_size": "14",
+                "text_align": "left",
+                "show_tick": False,
+            }
+        }
+
+    def group(self, title, widgets):
+        return {
+            "definition": {
+                "type": "group",
+                "layout_type": "ordered",
+                "title": title,
+                "widgets": widgets,
+            }
+        }
+
     def log_stream(self, title, query):
         return {
             "definition": {
@@ -376,6 +398,39 @@ class DashboardBuilderDatadog(DashboardBuilder):
                     "Top files",
                     "source:megalinter record_type:file $git_repo_name $git_branch_name",
                     "@megalinter.file",
+                ),
+                self.group(
+                    "Why this rating?",
+                    [
+                        self.note(
+                            "**How the rating / health score is computed**\\n\\nHealth score (0-100) = `100 x "
+                            "(linters in success + 0.5 x linters with non-blocking errors) / total "
+                            "linters`\\n\\nA >= 90, B >= 80, C >= 65, D >= 50, E < 50.\\n\\nTo improve it: "
+                            "fix the linters in error first (full share each), then the warnings (half share "
+                            "each). Use the `git_repo_name` template variable to focus on one repository."
+                        ),
+                        self.query_value(
+                            "Linters in success",
+                            f"sum:{DD_RUN_PREFIX}lintersSuccess{{$git_repo_name,$git_branch_name}}",
+                            conditional_formats=self.good_when_any(),
+                        ),
+                        self.query_value(
+                            "Linters with warnings (0.5 share)",
+                            f"sum:{DD_RUN_PREFIX}lintersWarning{{$git_repo_name,$git_branch_name}}",
+                            conditional_formats=self.warn_when_any(),
+                        ),
+                        self.query_value(
+                            "Linters in error (0 share)",
+                            f"sum:{DD_RUN_PREFIX}lintersError{{$git_repo_name,$git_branch_name}}",
+                            conditional_formats=self.bad_when_any(),
+                        ),
+                        self.toplist_metrics(
+                            "Linters dragging the score down",
+                            f"max:{DD_LINTER_PREFIX}numberErrorsFound{{$git_repo_name,$git_branch_name}} by "
+                            f"{{linter_key}}",
+                            conditional_formats=self.bad_when_any(),
+                        ),
+                    ],
                 ),
                 self.log_stream(
                     "MegaLinter runs & linters",

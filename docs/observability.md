@@ -44,7 +44,7 @@ The dashboard definitions are versioned in [`docs/dashboards`](https://github.co
 
 ## Repository health score
 
-Each run produces a **health score** between 0 and 100 for the repository: linters in success count fully, linters with non-blocking errors count half, linters with blocking errors count zero (`100 * (lintersSuccess + 0.5 * lintersWarning) / lintersCount`). The dashboards show the latest score per repository, a SonarQube-style **A-E rating** derived from it (A >= 90, B >= 80, C >= 65, D >= 50, E < 50), its **evolution over time**, and an estimate of the **reviewer time saved** by MegaLinter auto-fixes (5 minutes per fixed error).
+Each run produces a **health score** between 0 and 100 for the repository: linters in success count fully, linters with non-blocking errors count half, linters with blocking errors count zero (`100 * (lintersSuccess + 0.5 * lintersWarning) / lintersCount`). The dashboards show the latest score per repository, an **A-E rating** derived from it (A >= 90, B >= 80, C >= 65, D >= 50, E < 50), its **evolution over time**, and an estimate of the **reviewer time saved** by MegaLinter auto-fixes (5 minutes per fixed error). Every rating tile leads to a **"Why this rating?"** view explaining the formula, the linters status breakdown, and which linters drag the score down (dedicated dashboard on Grafana, dedicated page on New Relic, dedicated section on Datadog and Elastic).
 
 ## Dashboards navigation
 

@@ -1094,6 +1094,12 @@
                 }
               }
             }
+          ],
+          "links": [
+            {
+              "title": "Why this rating?",
+              "url": "/d/megalinter-rating/megalinter-rating?${__url_time_range}"
+            }
           ]
         },
         "overrides": []
