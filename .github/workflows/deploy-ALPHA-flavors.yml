@@ -53,7 +53,6 @@ jobs:
       security-events: write
     strategy:
       fail-fast: false
-      max-parallel: 10
       matrix:
         os: [ubuntu-latest]
         # flavors-start
