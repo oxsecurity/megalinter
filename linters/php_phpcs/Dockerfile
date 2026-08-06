@@ -57,7 +57,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=packagist depName=squizlabs/php_codesniffer
-ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=4.0.1
+ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=4.0.4
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
 ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.6.0
 #ARG__END
