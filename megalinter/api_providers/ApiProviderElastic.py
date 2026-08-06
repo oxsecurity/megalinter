@@ -81,7 +81,7 @@ class ApiProviderElastic(ApiProvider):
                     ]
         bulk_body = "\n".join(bulk_lines) + "\n"
         return self.post_raw(
-            self.url.rstrip("/") + "/_bulk",
+            (self.url or "").rstrip("/") + "/_bulk",
             self.headers,
             bulk_body.encode("utf-8"),
             "Elastic",

@@ -225,14 +225,17 @@ class api_reporter_v2_test(unittest.TestCase):
             self.assertTrue(line.startswith("megalinter_linter_run,"))
         dd_series = self.captured[3]["json"]["series"]
         run_series = [
-            serie
-            for serie in dd_series
-            if serie["metric"].startswith("megalinter.run.")
+            series_entry
+            for series_entry in dd_series
+            if series_entry["metric"].startswith("megalinter.run.")
         ]
         self.assertTrue(
             all(
-                any(tag.startswith("megalinter_version:") for tag in serie["tags"])
-                for serie in run_series
+                any(
+                    tag.startswith("megalinter_version:")
+                    for tag in series_entry["tags"]
+                )
+                for series_entry in run_series
             )
         )
         # Datadog: snake_case tags + rule events
@@ -257,7 +260,9 @@ class api_reporter_v2_test(unittest.TestCase):
         self.assertFalse(reporter.is_active)
 
     def test_unknown_provider_ignored(self):
-        reporter = self.init_reporter({"API_REPORTER_PROVIDER": "grafana,wrongvalue"})
+        reporter = self.init_reporter(
+            {"API_REPORTER_PROVIDER": "grafana,invalid_provider"}
+        )
         self.assertTrue(reporter.is_active)
         self.assertEqual(
             ["grafana"], [provider.name for provider in reporter.providers]
