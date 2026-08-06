@@ -15179,6 +15179,7 @@
 <li><strong>Coding agents integration</strong>: MegaLinter can now be driven by Claude Code, Cursor CLI, GitHub Copilot CLI, Codex and many other coding agents — see the new <a href="https://megalinter.io/beta/coding-agents/">Coding Agents</a> documentation page<ul>
 <li>Install the <a href="https://megalinter.io/beta/install-agent-skills/">MegaLinter agent skills</a> with <strong><code>npx skills add oxsecurity/megalinter</code></strong></li>
 <li>Then ask your agent to set up MegaLinter (<code>megalinter-setup</code>), watch CI or local runs (<code>megalinter-check</code>) or fix lint errors (<code>megalinter-fix</code>)</li>
+<li>Before the first <strong>local run</strong>, the skills now make sure the user is aware that MegaLinter is Docker-based and needs a good computer configuration and internet connection (the image download can weigh several GB), and suggest watching CI results instead when that is a problem</li>
 </ul>
 </li>
 <li><strong>Excluded directories are now forwarded to project-mode linters</strong>, massively speeding up local runs, fixes <a href="https://github.com/oxsecurity/megalinter/issues/8645">#8645</a><ul>
