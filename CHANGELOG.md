@@ -20,6 +20,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **Coding agents integration**: MegaLinter can now be driven by Claude Code, Cursor CLI, GitHub Copilot CLI, Codex and many other coding agents — see the new [Coding Agents](https://megalinter.io/beta/coding-agents/) documentation page
     - Install the [MegaLinter agent skills](https://megalinter.io/beta/install-agent-skills/) with **`npx skills add oxsecurity/megalinter`**
     - Then ask your agent to set up MegaLinter (`megalinter-setup`), watch CI or local runs (`megalinter-check`) or fix lint errors (`megalinter-fix`)
+    - Before the first **local run**, the skills now make sure the user is aware that MegaLinter is Docker-based and needs a good computer configuration and internet connection (the image download can weigh several GB), and suggest watching CI results instead when that is a problem
   - **Excluded directories are now forwarded to project-mode linters**, massively speeding up local runs, fixes [#8645](https://github.com/oxsecurity/megalinter/issues/8645)
     - Linters that scan the whole workspace by themselves (`REPOSITORY_TRIVY`, `REPOSITORY_CHECKOV`, `REPOSITORY_GRYPE`, `REPOSITORY_TRUFFLEHOG`, `REPOSITORY_SEMGREP` and 50+ others) used to crawl everything, including build caches and `node_modules`: a seconds-long CI lint could take **hours on a local checkout**
     - MegaLinter now automatically passes the excluded directories (defaults, `EXCLUDED_DIRECTORIES`, `ADDITIONAL_EXCLUDED_DIRECTORIES`, and directories detected in `FILTER_REGEX_EXCLUDE`) to each of these linters, through its native exclusion flags or a generated ignore/config file
@@ -30,6 +31,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Suggested exclusions: top-level directories containing only gitignored files (safe: linting scope is unchanged, and project-mode linters stop scanning them), and well-known generated/vendored folder names (`site`, `dist`, `vendor`...) still containing lintable files (to confirm by the user)
     - A lighter matching flavor is also suggested when available
     - The `megalinter-check` agent skill uses it on the first local run to tune `.mega-linter.yml` with the user before the real lint
+    - Fixed a performance issue where detecting `.gitignore`d files enumerated every individual file inside large ignored folders (`node_modules`, build output...) instead of stopping at the folder boundary, which could make the file collection step (including prerun) take several minutes on big repositories
   - **Much lighter Docker images**: the main image download shrinks by **9%**, flavors by **9% to 22%**, and standalone `megalinter-only-*` images are **35% to 65% smaller**
     - If your `PRE_COMMANDS` compile native code: the compilation toolchain is no longer shipped in the images, install it back with `apk add --no-cache gcc make musl-dev`
     - Main and flavor images, compressed download size on ghcr.io, linux/amd64 (before = v9.6.0, so deltas also include the linters removed in this version):

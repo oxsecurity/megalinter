@@ -2,6 +2,7 @@
 """Tests for MegaLinter file listing helpers."""
 
 import os
+import subprocess
 import tempfile
 import unittest
 from unittest.mock import MagicMock, patch
@@ -162,6 +163,69 @@ class MegaLinterFilesTest(unittest.TestCase):
             self.assertNotIn("excluded/skip.py", files)
             self.assertNotIn("pkg/excluded/deep.py", files)
             self.assertNotIn("keep/nested_excluded/skip.py", files)
+
+    def test_list_git_ignored_files_collapses_fully_ignored_directories(self):
+        # Regression test: a fully-ignored directory (e.g. node_modules) must
+        # be reported as a single collapsed entry ("dirname/**"), not as one
+        # entry per file. Without `--directory`, git ls-files enumerates every
+        # individual file under a large ignored tree, which is what made
+        # list_git_ignored_files pathologically slow on real-world repos.
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            run = lambda *args: subprocess.run(  # noqa: E731
+                ["git", *args], cwd=tmp_dir, check=True, capture_output=True
+            )
+            run("init", "-q")
+            run("config", "user.email", "test@example.com")
+            run("config", "user.name", "Test")
+
+            with open(os.path.join(tmp_dir, ".gitignore"), "w", encoding="utf-8") as f:
+                f.write("node_modules/\nbuild/only_ignored.log\n")
+
+            # Fully-ignored directory: no tracked file anywhere inside it.
+            modules_dir = os.path.join(tmp_dir, "node_modules", "pkg")
+            os.makedirs(modules_dir, exist_ok=True)
+            for i in range(20):
+                with open(
+                    os.path.join(modules_dir, f"file{i}.js"), "w", encoding="utf-8"
+                ):
+                    pass
+
+            # Partially-ignored directory: one tracked file, one ignored file.
+            build_dir = os.path.join(tmp_dir, "build")
+            os.makedirs(build_dir, exist_ok=True)
+            with open(os.path.join(build_dir, "keep.txt"), "w", encoding="utf-8"):
+                pass
+            with open(
+                os.path.join(build_dir, "only_ignored.log"), "w", encoding="utf-8"
+            ):
+                pass
+
+            with open(os.path.join(tmp_dir, "README.md"), "w", encoding="utf-8"):
+                pass
+
+            run("add", "README.md", ".gitignore", "build/keep.txt")
+            run("commit", "-q", "-m", "init")
+
+            ml = Megalinter.__new__(Megalinter)
+            ml.workspace = tmp_dir
+            ml.github_workspace = tmp_dir
+            ml.request_id = "test"
+
+            config.set_config(ml.request_id, {})
+            self.addCleanup(config.delete, ml.request_id)
+
+            with patch("megalinter.utils.get_excluded_directories", return_value=set()):
+                ignored_files = ml.list_git_ignored_files()
+
+            # Collapsed into a single directory entry, not one per file.
+            self.assertIn("node_modules/**", ignored_files)
+            self.assertNotIn("node_modules/pkg/file0.js", ignored_files)
+
+            # A directory that is only partially ignored keeps listing its
+            # individual ignored files instead of being collapsed.
+            self.assertIn("build/only_ignored.log", ignored_files)
+            self.assertNotIn("build/**", ignored_files)
+            self.assertNotIn("build/keep.txt", ignored_files)
 
 
 if __name__ == "__main__":
