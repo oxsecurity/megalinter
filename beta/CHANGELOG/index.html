@@ -15194,6 +15194,7 @@
 <li>Suggested exclusions: top-level directories containing only gitignored files (safe: linting scope is unchanged, and project-mode linters stop scanning them), and well-known generated/vendored folder names (<code>site</code>, <code>dist</code>, <code>vendor</code>...) still containing lintable files (to confirm by the user)</li>
 <li>A lighter matching flavor is also suggested when available</li>
 <li>The <code>megalinter-check</code> agent skill uses it on the first local run to tune <code>.mega-linter.yml</code> with the user before the real lint</li>
+<li>Fixed a performance issue where detecting <code>.gitignore</code>d files enumerated every individual file inside large ignored folders (<code>node_modules</code>, build output...) instead of stopping at the folder boundary, which could make the file collection step (including prerun) take several minutes on big repositories</li>
 </ul>
 </li>
 <li>
