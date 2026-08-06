@@ -18,7 +18,7 @@ You orchestrate MegaLinter on this repository. MegaLinter is a mega-linter aggre
    - Configuration present → go to step 2.
 2. **Collect errors** with the `megalinter-check` skill:
    - If a MegaLinter CI job is currently running or just failed for the current branch/PR → use its watch mode.
-   - Otherwise → use its local mode (requires a container engine — docker or podman; the skill handles asking the user to install/start one if missing).
+   - Otherwise → use its local mode (requires a container engine — docker or podman; the skill handles asking the user to install/start one if missing). Before the first local run, make sure the user is aware it needs a good computer configuration and a good internet connection: MegaLinter is Docker-based and can download images of several GB.
 3. **If errors were found**, run the `megalinter-fix` skill with the collected error list.
 4. **Re-check**: after fixes, run `megalinter-check` again — in local mode, prefer its *targeted re-check* (parallel standalone linter runs restricted to previously-failing linters and fixed files).
 5. Repeat steps 3-4 **at most 3 times**. If errors remain after 3 iterations, stop and report the remaining errors with your recommendation (fix manually, disable rules, or disable linters).
