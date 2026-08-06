@@ -322,6 +322,18 @@ export class MegaLinterRunner {
     if (options.filesonly === true) {
       commandArgs.push(...["-e", "SKIP_CLI_LINT_MODES=project"]);
     }
+    // Prerun analysis mode
+    if (options.prerun === true) {
+      commandArgs.push(...["-e", "MEGALINTER_PRERUN=true"]);
+      const releaseMajorMatch = /^v?(\d+)/.exec(release);
+      if (releaseMajorMatch && Number(releaseMajorMatch[1]) < 10) {
+        console.warn(
+          c.yellow(
+            `[WARNING] --prerun requires MegaLinter v10 or beta: with ${release}, a full lint run will happen instead. Use --release beta (or set MEGALINTER_VERSION: beta in .mega-linter.yml).`
+          )
+        );
+      }
+    }
     // list of files
     if ((options._ || []).length > 0) {
       commandArgs.push(
@@ -351,11 +363,11 @@ export class MegaLinterRunner {
     if (options.json === true) {
       const reportSubFolder = options.linter
         ? path.join("megalinter-reports", options.linter.toLowerCase())
-        : process.env.REPORT_OUTPUT_FOLDER || "report";
+        : process.env.REPORT_OUTPUT_FOLDER || "megalinter-reports";
       const jsonOutputFile = path.join(
         lintPath,
         reportSubFolder,
-        "mega-linter-report.json"
+        options.prerun === true ? "prerun-report.json" : "mega-linter-report.json"
       );
       if (fs.existsSync(jsonOutputFile)) {
         const jsonRaw = await fs.readFile(jsonOutputFile, "utf8");

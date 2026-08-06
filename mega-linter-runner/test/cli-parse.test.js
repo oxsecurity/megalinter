@@ -233,6 +233,10 @@ describe("CLI parsing — boolean flags", () => {
     assert.strictEqual(parse(["--filesonly"]).filesonly, true);
   });
 
+  it("parses --prerun", () => {
+    assert.strictEqual(parse(["--prerun"]).prerun, true);
+  });
+
   it("parses --json and -j alias", () => {
     assert.strictEqual(parse(["--json"]).json, true);
     assert.strictEqual(parse(["-j"]).json, true);

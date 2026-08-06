@@ -79,6 +79,6 @@ If a target file already exists, ask the user before overwriting it. If your pla
 
 - Show the user the generated/updated files.
 - Suggest the two ways to see MegaLinter in action (first install and upgrade alike), and offer to do it for them:
-  - **Run MegaLinter locally** through the `megalinter-check` skill (local mode) to preview and fix errors before pushing anything.
+  - **Run MegaLinter locally** through the `megalinter-check` skill (local mode) to preview and fix errors before pushing anything. Its first run starts with a prerun analysis (`--prerun`, MegaLinter v10 or beta) that suggests `.mega-linter.yml` performance tuning (directories to exclude, flavor) before the real lint.
   - **Create a pull request** with the generated/updated files (commit on the current branch if it is already a feature branch, otherwise on a new branch — never on the default branch —, push, open the PR), then run the `megalinter-check` skill (watch mode) on the created PR to watch the CI job results and fix the errors.
 - Do not commit or push without user confirmation, and never on the default branch.

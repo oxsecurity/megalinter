@@ -31,6 +31,7 @@ from megalinter.constants import (
     ML_DOC_URL,
 )
 from megalinter.logger import display_header, initialize_logger, manage_upgrade_message
+from megalinter.prerun_report import run_prerun
 from megalinter.removed_linters import (
     REMOVED_LINTERS_DOC_URL,
     find_removed_references,
@@ -139,6 +140,7 @@ class Megalinter:
         self.ignore_gitignore_files = True
         self.ignore_generated_files = False
         self.validate_all_code_base = True
+        self.prerun = False
         self.filter_regex_include = None
         self.filter_regex_exclude = None
         self.default_linter_activation = True
@@ -182,6 +184,9 @@ class Megalinter:
         self.linters: list[Linter] = []
         self.active_linters: list[Linter] = []
         self.all_diff_files = []
+        self.found_files_count = 0
+        self.kept_files = []
+        self.ignored_files = []
         self.file_extensions = []
         self.file_names_regex = []
         self.status = "success"
@@ -279,6 +284,19 @@ class Megalinter:
             self.active_linters = [
                 linter for linter in self.active_linters if linter.is_active is True
             ]
+
+        # Prerun analysis mode: display the matching linters, output the
+        # configuration suggestions and stop before running any linter
+        if self.prerun is True:
+            for reporter in self.reporters:
+                # Only the console reporter: other reporters (webhooks, Redis...)
+                # must not be notified by an analysis-only run
+                if reporter.name == "CONSOLE" and reporter.is_active:
+                    reporter.initialize()
+            run_prerun(self)
+            self.before_exit()
+            config.delete(self.request_id)
+            return
 
         # Initialize reports
         for reporter in self.reporters:
@@ -675,6 +693,12 @@ class Megalinter:
         # Manage SARIF output
         if config.get(self.request_id, "SARIF_REPORTER", "") == "true":
             self.output_sarif = True
+        # Prerun analysis mode: stop before running linters and output
+        # configuration suggestions (see megalinter/prerun_report.py).
+        # Not a .mega-linter.yml property (absent from the JSON schema): it
+        # describes how a single run is launched, not the repo configuration
+        if config.get(self.request_id, "MEGALINTER_PRERUN", "false") == "true":
+            self.prerun = True
 
     # Calculate default linter activation according to env variables
     def manage_default_linter_activation(self):
@@ -946,6 +970,13 @@ class Megalinter:
             + str(len(all_files))
             + "] found files"
         )
+        # Store collection results for the prerun report only: in normal runs
+        # these lists must not stay referenced on the instance, so their memory
+        # is freed once linters have collected their own files
+        if self.prerun is True:
+            self.found_files_count = len(all_files)
+            self.kept_files = filtered_files
+            self.ignored_files = ignored_files
         logging.debug(
             "Kept files before applying linter filters:\n- %s",
             "\n- ".join(filtered_files),
@@ -1089,7 +1120,11 @@ class Megalinter:
     def list_git_ignored_files(self):
         dirpath = os.path.realpath(self.github_workspace)
         repo = git.Repo(dirpath)
-        excluded_dirs = utils.get_excluded_directories(self.request_id)
+        # Convert workspace-absolute paths to relative ones and drop paths
+        # outside the workspace: git rejects pathspecs outside the repository
+        excluded_dirs = self._normalize_excluded_directories(
+            utils.get_excluded_directories(self.request_id)
+        )
         normalized_excluded_dirs = set()
         for excluded_dir in excluded_dirs:
             normalized = os.path.normpath(excluded_dir).replace("\\", "/")

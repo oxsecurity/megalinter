@@ -13,6 +13,7 @@ Run the command you were given, or build it as follows (container engine require
 
 - **Full run**: `npx mega-linter-runner` — flavor and version are resolved automatically from `MEGALINTER_FLAVOR` / `MEGALINTER_VERSION` in `.mega-linter.yml`.
 - **Standalone linter run**: `npx mega-linter-runner --linter <LINTER_KEY> [files...]` — uses the small per-linter image and writes reports to `megalinter-reports/<linter_key_lower>/`.
+- **Prerun analysis** (only when the caller asks for it): `npx mega-linter-runner --prerun` — no linter is run; return the content of `megalinter-reports/prerun-report.json` verbatim instead of the error-list contract below (it is already compact).
 - Add `--fix` when the caller asks for fixes to be applied.
 - Never pass `--flavor` or `--release` unless the caller explicitly provides them: versions follow `MEGALINTER_VERSION` from `.mega-linter.yml`. Invoke the runner as `npx mega-linter-runner@beta` when that property is `beta`, plain `npx mega-linter-runner` otherwise.
 - Until MegaLinter v10, standalone `megalinter-only-*` images are only multi-arch on `beta`: if a standalone run fails with a platform error while `MEGALINTER_VERSION` is not `beta`, report it in `failure_reason` instead of retrying with another tag.
