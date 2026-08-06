@@ -30,6 +30,8 @@ Collect the current MegaLinter errors and produce a compact error list that the 
 
 ## Local mode
 
+Before the first local run, make sure the user is aware that running MegaLinter locally needs a reasonably powerful machine (CPU, RAM, free disk space) and a good internet connection: MegaLinter is Docker-based and the first run downloads a large image (can be several GB depending on the flavor). If that is a problem for the user, prefer watch mode (CI does the work).
+
 Requires a container engine (docker or podman). If neither is installed and running, **ask the user** whether you should install or start one — then (and only then) load `container-engine.md` from this skill's directory for the setup instructions (prefer podman: free of charge even in enterprise contexts). If the user declines, fall back to watch mode.
 
 Flavor and version are resolved automatically from `MEGALINTER_FLAVOR` / `MEGALINTER_VERSION` in `.mega-linter.yml` — do not pass `--flavor` or `--release` yourself.
