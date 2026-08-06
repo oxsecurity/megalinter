@@ -12099,6 +12099,11 @@
 <td><!-- --></td>
 </tr>
 <tr>
+<td><code>--prerun</code></td>
+<td>Analysis-only mode: identify active linters and collect files, then stop before running any linter and output configuration suggestions to improve performances (directories to exclude, lighter flavor) in the console and in <code>megalinter-reports/prerun-report.json</code>. Requires MegaLinter v10 or beta</td>
+<td><!-- --></td>
+</tr>
+<tr>
 <td><code>-r</code> <br> <code>--release</code></td>
 <td>Allows to override MegaLinter version used. If not set, the <code>MEGALINTER_VERSION</code> property of <code>.mega-linter.yml</code> is used when defined</td>
 <td><code>latest</code></td>
@@ -12208,6 +12213,9 @@ mega-linter-runner
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># Scan a folder and apply fixes</span>
 mega-linter-runner<span class="w"> </span>-p<span class="w"> </span>myFolder<span class="w"> </span>--fix
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Analyze the repository without linting, and get configuration suggestions to improve performances</span>
+mega-linter-runner<span class="w"> </span>--release<span class="w"> </span>beta<span class="w"> </span>--prerun
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># Run the container as your current non-root user on POSIX hosts</span>
 mega-linter-runner<span class="w"> </span>--user-map

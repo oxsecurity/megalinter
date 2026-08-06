@@ -12023,7 +12023,7 @@
 </ul>
 <h2 id="checkov-documentation">checkov documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.3.8</strong></li>
+<li>Version in MegaLinter: <strong>3.3.9</strong></li>
 <li>Visit <a href="https://www.checkov.io/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/bridgecrewio/checkov#configuration-using-a-config-file" target="_blank">How to configure checkov rules</a><ul>
 <li>If custom <code>.checkov.yml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.checkov.yml" target="_blank">.checkov.yml</a> will be used</li>
@@ -12304,7 +12304,7 @@
 <span class="w">               </span><span class="o">[</span>--secrets-scan-file-type<span class="w"> </span>SECRETS_SCAN_FILE_TYPE<span class="o">]</span>
 <span class="w">               </span><span class="o">[</span>--enable-secret-scan-all-files<span class="o">]</span>
 <span class="w">               </span><span class="o">[</span>--block-list-secret-scan<span class="w"> </span>BLOCK_LIST_SECRET_SCAN<span class="o">]</span>
-<span class="w">               </span><span class="o">[</span>--summary-position<span class="w"> </span><span class="o">{</span>top,bottom<span class="o">}]</span>
+<span class="w">               </span><span class="o">[</span>--summary-position<span class="w"> </span><span class="o">{</span>bottom,top<span class="o">}]</span>
 <span class="w">               </span><span class="o">[</span>--skip-resources-without-violations<span class="o">]</span><span class="w"> </span><span class="o">[</span>--deep-analysis<span class="o">]</span>
 <span class="w">               </span><span class="o">[</span>--no-fail-on-crash<span class="o">]</span><span class="w"> </span><span class="o">[</span>--mask<span class="w"> </span>MASK<span class="o">]</span><span class="w"> </span><span class="o">[</span>--scan-secrets-history<span class="o">]</span>
 <span class="w">               </span><span class="o">[</span>--secrets-history-timeout<span class="w"> </span>SECRETS_HISTORY_TIMEOUT<span class="o">]</span>
@@ -12630,7 +12630,7 @@ options:
 <span class="w">  </span>--block-list-secret-scan<span class="w"> </span>BLOCK_LIST_SECRET_SCAN
 <span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>files<span class="w"> </span>to<span class="w"> </span>filter<span class="w"> </span>out<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>secret<span class="w"> </span>scanner
 <span class="w">                        </span><span class="o">[</span>env<span class="w"> </span>var:<span class="w"> </span>CKV_SECRETS_SCAN_BLOCK_LIST<span class="o">]</span>
-<span class="w">  </span>--summary-position<span class="w"> </span><span class="o">{</span>top,bottom<span class="o">}</span>
+<span class="w">  </span>--summary-position<span class="w"> </span><span class="o">{</span>bottom,top<span class="o">}</span>
 <span class="w">                        </span>Chose<span class="w"> </span>whether<span class="w"> </span>the<span class="w"> </span>summary<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>appended<span class="w"> </span>on<span class="w"> </span>top
 <span class="w">                        </span><span class="o">(</span>before<span class="w"> </span>the<span class="w"> </span>checks<span class="w"> </span>results<span class="o">)</span><span class="w"> </span>or<span class="w"> </span>on<span class="w"> </span>bottom<span class="w"> </span><span class="o">(</span>after<span class="w"> </span>check
 <span class="w">                        </span>results<span class="o">)</span>,<span class="w"> </span>default<span class="w"> </span>is<span class="w"> </span>on<span class="w"> </span>top.
@@ -12670,12 +12670,12 @@ config<span class="w"> </span>file<span class="w"> </span>values<span class="w">
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=pypi depName=checkov</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">PIP_CHECKOV_VERSION</span><span class="o">=</span><span class="m">3</span>.3.8
+<span class="k">ARG</span><span class="w"> </span><span class="nv">PIP_CHECKOV_VERSION</span><span class="o">=</span><span class="m">3</span>.3.9
 </code></pre></div></li>
 </ul>
 <ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/checkov/3.3.8">checkov==3.3.8</a></li>
+<li><a href="https://pypi.org/project/checkov/3.3.9">checkov==3.3.9</a></li>
 </ul>
 </li>
 </ul>
