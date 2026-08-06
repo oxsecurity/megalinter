@@ -1144,6 +1144,7 @@ class Megalinter:
                 "--ignored",
                 "--others",
                 "--cached",
+                "--directory",
                 *pathspec_excludes,
             ]
         ).splitlines()
