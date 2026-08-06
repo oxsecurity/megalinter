@@ -9,6 +9,7 @@
 
 import * as optionator from 'optionator';
 import { DEFAULT_RELEASE } from "./config.js";
+import { KNOWN_DASHBOARD_PROVIDERS } from "./upload-dashboards.js";
 
 //------------------------------------------------------------------------------
 // Initialization and Public Interface
@@ -324,9 +325,35 @@ export const optionsDefinition = optionator.default({
       description:
         "List MegaLinter environment variables that can be passed via -e. Add a positional substring to filter (case-insensitive), e.g. `mega-linter-runner --list-vars PYTHON_RUFF`. Add --json for machine-readable output.",
     },
+    {
+      option: "upload-dashboards",
+      type: "String",
+      description:
+        "Upload (create or refresh) the MegaLinter observability dashboards to a provider. " +
+        "Requires the provider auth environment variables (see https://megalinter.io/latest/reporters/ApiReporter/): " +
+        "grafana: GRAFANA_URL + GRAFANA_TOKEN | datadog: DD_SITE + DD_API_KEY + DD_APP_KEY (or DD_BEARER_TOKEN) | " +
+        "elastic: KIBANA_URL + ELASTIC_API_KEY | newrelic: NEW_RELIC_API_KEY + NEW_RELIC_ACCOUNT_ID + NEW_RELIC_REGION.\n" +
+        `Allowed values: ${KNOWN_DASHBOARD_PROVIDERS.join(", ")}.`,
+      example: KNOWN_DASHBOARD_PROVIDERS,
+    },
+    {
+      option: "dashboards-folder",
+      type: "String",
+      description:
+        "[--upload-dashboards] Grafana folder receiving the dashboards. Default: MegaLinter.",
+      example: ["MegaLinter"],
+    },
+    {
+      option: "setup-dashboards",
+      type: "String",
+      description:
+        "[--install/--upgrade] Provision the observability dashboards of the given provider after generating/upgrading the configuration (non-interactive equivalent of the dashboards prompt).\n" +
+        `Allowed values: ${KNOWN_DASHBOARD_PROVIDERS.join(", ")}.`,
+      example: KNOWN_DASHBOARD_PROVIDERS,
+    },
   ],
   mutuallyExclusive: [
-    ["help", "version", "install", "list-vars"],
+    ["help", "version", "install", "list-vars", "upload-dashboards"],
     ["image", "flavor", "linter"],
   ],
 });
