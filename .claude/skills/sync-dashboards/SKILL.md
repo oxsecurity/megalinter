@@ -20,6 +20,7 @@ You maintain the consistency between the MegaLinter observability payload and th
 - **Branch filtering** must stay available on every platform (Grafana `$branch`, Datadog `$git_branch_name`, New Relic `{{gitBranchName}}` with `%` default, Kibana filter bar).
 - **Derived KPIs**: the A-E rating is a dashboard-side range mapping of `healthScore` (A>=90, B>=80, C>=65, D>=50, else E); "time saved" is `totalErrorsFixed * 5` minutes — keep formulas consistent across providers and documented in `docs/observability.md`.
 - **Agnostic dashboards**: no account ids, datasource uids, or instance URLs hardcoded in generated files — placeholders are resolved by `mega-linter-runner/lib/upload-dashboards.js` at upload time so anyone can provision them on their own account.
+- **Value-conditional styling**: KPIs are colored by value on every platform — Grafana thresholds/background stat tiles/color-background table cells/threshold-zone areas, Datadog `conditional_formats` + semantic timeseries palettes (warm=errors, cool=health, purple=duration), New Relic billboard `thresholds` + fixed series colors (Blocking=red, Non-blocking=yellow), Kibana Lens custom palettes on metric panels. Keep the semantics: green=good, yellow=warning, red=blocking, blue=neutral/informative.
 - **Cardinality**: `runId`, `jobUrl`, rule ids and file paths never become metric tags or Loki stream labels.
 
 ## Process

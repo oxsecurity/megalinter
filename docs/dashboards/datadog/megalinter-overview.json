@@ -39,7 +39,24 @@
                 "formula": "q1"
               }
             ],
-            "response_format": "scalar"
+            "response_format": "scalar",
+            "conditional_formats": [
+              {
+                "comparator": ">=",
+                "value": 90,
+                "palette": "white_on_green"
+              },
+              {
+                "comparator": ">=",
+                "value": 50,
+                "palette": "white_on_yellow"
+              },
+              {
+                "comparator": "<",
+                "value": 50,
+                "palette": "white_on_red"
+              }
+            ]
           }
         ]
       }
@@ -65,7 +82,24 @@
                 "formula": "q1"
               }
             ],
-            "response_format": "scalar"
+            "response_format": "scalar",
+            "conditional_formats": [
+              {
+                "comparator": ">=",
+                "value": 80,
+                "palette": "white_on_green"
+              },
+              {
+                "comparator": ">=",
+                "value": 50,
+                "palette": "white_on_yellow"
+              },
+              {
+                "comparator": "<",
+                "value": 50,
+                "palette": "white_on_red"
+              }
+            ]
           }
         ]
       }
@@ -152,7 +186,19 @@
                 "formula": "q1"
               }
             ],
-            "response_format": "scalar"
+            "response_format": "scalar",
+            "conditional_formats": [
+              {
+                "comparator": ">",
+                "value": 0,
+                "palette": "white_on_red"
+              },
+              {
+                "comparator": "<=",
+                "value": 0,
+                "palette": "white_on_green"
+              }
+            ]
           }
         ]
       }
@@ -178,7 +224,19 @@
                 "formula": "q1"
               }
             ],
-            "response_format": "scalar"
+            "response_format": "scalar",
+            "conditional_formats": [
+              {
+                "comparator": ">",
+                "value": 0,
+                "palette": "white_on_yellow"
+              },
+              {
+                "comparator": "<=",
+                "value": 0,
+                "palette": "white_on_green"
+              }
+            ]
           }
         ]
       }
@@ -204,7 +262,19 @@
                 "formula": "q1"
               }
             ],
-            "response_format": "scalar"
+            "response_format": "scalar",
+            "conditional_formats": [
+              {
+                "comparator": ">",
+                "value": 0,
+                "palette": "white_on_green"
+              },
+              {
+                "comparator": "<=",
+                "value": 0,
+                "palette": "white_on_gray"
+              }
+            ]
           }
         ]
       }
@@ -254,7 +324,10 @@
               }
             ],
             "response_format": "timeseries",
-            "display_type": "line"
+            "display_type": "line",
+            "style": {
+              "palette": "cool"
+            }
           }
         ],
         "custom_links": [
@@ -284,7 +357,10 @@
               }
             ],
             "response_format": "timeseries",
-            "display_type": "line"
+            "display_type": "line",
+            "style": {
+              "palette": "warm"
+            }
           }
         ],
         "custom_links": [
@@ -314,7 +390,10 @@
               }
             ],
             "response_format": "timeseries",
-            "display_type": "line"
+            "display_type": "line",
+            "style": {
+              "palette": "warm"
+            }
           }
         ]
       }
@@ -338,7 +417,10 @@
               }
             ],
             "response_format": "timeseries",
-            "display_type": "bars"
+            "display_type": "bars",
+            "style": {
+              "palette": "orange"
+            }
           }
         ]
       }
@@ -396,7 +478,10 @@
               }
             ],
             "response_format": "timeseries",
-            "display_type": "line"
+            "display_type": "line",
+            "style": {
+              "palette": "purple"
+            }
           }
         ],
         "custom_links": [
@@ -454,7 +539,19 @@
                 }
               }
             ],
-            "response_format": "scalar"
+            "response_format": "scalar",
+            "conditional_formats": [
+              {
+                "comparator": ">",
+                "value": 0,
+                "palette": "white_on_red"
+              },
+              {
+                "comparator": "<=",
+                "value": 0,
+                "palette": "white_on_green"
+              }
+            ]
           }
         ]
       }
@@ -482,7 +579,19 @@
                 }
               }
             ],
-            "response_format": "scalar"
+            "response_format": "scalar",
+            "conditional_formats": [
+              {
+                "comparator": ">",
+                "value": 30,
+                "palette": "white_on_yellow"
+              },
+              {
+                "comparator": "<=",
+                "value": 30,
+                "palette": "white_on_green"
+              }
+            ]
           }
         ]
       }

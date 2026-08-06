@@ -110,6 +110,16 @@
             },
             "linkedEntityGuids": [
               "__REPOSITORY_DETAIL_PAGE_GUID__"
+            ],
+            "thresholds": [
+              {
+                "alertSeverity": "WARNING",
+                "value": 1
+              },
+              {
+                "alertSeverity": "CRITICAL",
+                "value": 10
+              }
             ]
           }
         },
@@ -222,6 +232,18 @@
             ],
             "platformOptions": {
               "ignoreTimeRange": false
+            },
+            "colors": {
+              "seriesOverrides": [
+                {
+                  "seriesName": "Blocking",
+                  "color": "#d62728"
+                },
+                {
+                  "seriesName": "Non-blocking",
+                  "color": "#ffbf00"
+                }
+              ]
             }
           }
         },

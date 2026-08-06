@@ -162,6 +162,26 @@ class DashboardBuilderGrafana(DashboardBuilder):
             },
         ]
 
+    def series_color_override(self, series_name, color):
+        return {
+            "matcher": {"id": "byName", "options": series_name},
+            "properties": [
+                {"id": "color", "value": {"mode": "fixed", "fixedColor": color}}
+            ],
+        }
+
+    def cell_color_override(self, column, thresholds_def, mappings=None):
+        properties = [
+            {"id": "thresholds", "value": thresholds_def},
+            {"id": "custom.cellOptions", "value": {"type": "color-background"}},
+        ]
+        if mappings is not None:
+            properties.append({"id": "mappings", "value": mappings})
+        return {
+            "matcher": {"id": "byName", "options": column},
+            "properties": properties,
+        }
+
     def health_thresholds(self):
         return self.thresholds(
             [
@@ -198,6 +218,7 @@ class DashboardBuilderGrafana(DashboardBuilder):
         mappings=None,
         thresholds_def=None,
         links=None,
+        color_mode="value",
     ):
         defaults = {
             "thresholds": thresholds_def or self.green_only(),
@@ -220,7 +241,7 @@ class DashboardBuilderGrafana(DashboardBuilder):
                     "fields": "",
                     "values": False,
                 },
-                "colorMode": "value",
+                "colorMode": color_mode,
                 "graphMode": "none",
                 "orientation": "auto",
                 "textMode": "auto",
@@ -229,7 +250,18 @@ class DashboardBuilderGrafana(DashboardBuilder):
         }
 
     def timeseries_panel(
-        self, title, targets, grid, unit=None, stacking=False, links=None
+        self,
+        title,
+        targets,
+        grid,
+        unit=None,
+        stacking=False,
+        links=None,
+        overrides=None,
+        thresholds_def=None,
+        threshold_zones=False,
+        min_val=None,
+        max_val=None,
     ):
         defaults = {
             "custom": {
@@ -250,13 +282,21 @@ class DashboardBuilderGrafana(DashboardBuilder):
             defaults["unit"] = unit
         if links is not None:
             defaults["links"] = links
+        if thresholds_def is not None:
+            defaults["thresholds"] = thresholds_def
+        if threshold_zones:
+            defaults["custom"]["thresholdsStyle"] = {"mode": "area"}
+        if min_val is not None:
+            defaults["min"] = min_val
+        if max_val is not None:
+            defaults["max"] = max_val
         return {
             "id": self.next_id(),
             "type": "timeseries",
             "title": title,
             "datasource": targets[0]["datasource"],
             "gridPos": grid,
-            "fieldConfig": {"defaults": defaults, "overrides": []},
+            "fieldConfig": {"defaults": defaults, "overrides": overrides or []},
             "options": {
                 "legend": {
                     "displayMode": "table",
@@ -491,12 +531,14 @@ class DashboardBuilderGrafana(DashboardBuilder):
                         {"color": "green", "value": 90},
                     ]
                 ),
+                color_mode="background",
             ),
             self.stat_panel(
                 "Blocking errors (latest runs)",
                 f"sum(max by (gitIdentifier) (last_over_time({PROM_RUN_PREFIX}blockingErrors{{{sel}}}{run_range})))",
                 {"h": 5, "w": 4, "x": 12, "y": 0},
                 thresholds_def=self.red_if_any(),
+                color_mode="background",
             ),
             self.stat_panel(
                 "Non-blocking errors (latest runs)",
@@ -567,26 +609,19 @@ class DashboardBuilderGrafana(DashboardBuilder):
                     },
                 ),
                 overrides=[
-                    {
-                        "matcher": {"id": "byName", "options": "Quality gate"},
-                        "properties": [
-                            {"id": "mappings", "value": self.gate_mapping()},
-                            {
-                                "id": "custom.cellOptions",
-                                "value": {"type": "color-text"},
-                            },
-                        ],
-                    },
-                    {
-                        "matcher": {"id": "byName", "options": "Health score"},
-                        "properties": [
-                            {"id": "thresholds", "value": self.health_thresholds()},
-                            {
-                                "id": "custom.cellOptions",
-                                "value": {"type": "color-text"},
-                            },
-                        ],
-                    },
+                    self.cell_color_override(
+                        "Quality gate",
+                        self.thresholds(
+                            [
+                                {"color": "red", "value": None},
+                                {"color": "green", "value": 1},
+                            ]
+                        ),
+                        mappings=self.gate_mapping(),
+                    ),
+                    self.cell_color_override("Health score", self.health_thresholds()),
+                    self.cell_color_override("Blocking errors", self.red_if_any()),
+                    self.cell_color_override("Linters in error", self.red_if_any()),
                 ],
                 links=[
                     self.repository_link("${__data.fields.Repository}"),
@@ -609,6 +644,10 @@ class DashboardBuilderGrafana(DashboardBuilder):
                 {"h": 9, "w": 12, "x": 0, "y": 15},
                 unit="percent",
                 links=[self.repository_link("${__field.labels.gitRepoName}")],
+                thresholds_def=self.health_thresholds(),
+                threshold_zones=True,
+                min_val=0,
+                max_val=100,
             ),
             self.timeseries_panel(
                 "Total errors trend by repository",
@@ -646,6 +685,7 @@ class DashboardBuilderGrafana(DashboardBuilder):
                 {"h": 9, "w": 4, "x": 16, "y": 32},
                 mappings=self.grade_mappings(),
                 thresholds_def=self.health_thresholds(),
+                color_mode="background",
             ),
             self.stat_panel(
                 "Estimated time saved by auto-fixes (5 min/fix)",
@@ -740,12 +780,14 @@ class DashboardBuilderGrafana(DashboardBuilder):
                 thresholds_def=self.thresholds(
                     [{"color": "red", "value": None}, {"color": "green", "value": 1}]
                 ),
+                color_mode="background",
             ),
             self.stat_panel(
                 "Blocking errors",
                 f"sum(last_over_time({PROM_RUN_PREFIX}blockingErrors{{{sel}}}{run_range}))",
                 {"h": 5, "w": 4, "x": 4, "y": 0},
                 thresholds_def=self.red_if_any(),
+                color_mode="background",
             ),
             self.stat_panel(
                 "Non-blocking errors",
@@ -794,6 +836,7 @@ class DashboardBuilderGrafana(DashboardBuilder):
                 {"h": 5, "w": 4, "x": 8, "y": 5},
                 unit="percent",
                 thresholds_def=self.health_thresholds(),
+                color_mode="background",
             ),
             self.stat_panel(
                 "Rating",
@@ -801,6 +844,7 @@ class DashboardBuilderGrafana(DashboardBuilder):
                 {"h": 5, "w": 3, "x": 12, "y": 5},
                 mappings=self.grade_mappings(),
                 thresholds_def=self.health_thresholds(),
+                color_mode="background",
             ),
             self.state_timeline_panel(
                 "Quality gate history",
@@ -823,6 +867,10 @@ class DashboardBuilderGrafana(DashboardBuilder):
                     ),
                 ],
                 {"h": 9, "w": 12, "x": 0, "y": 10},
+                overrides=[
+                    self.series_color_override("Blocking", "red"),
+                    self.series_color_override("Non-blocking", "yellow"),
+                ],
             ),
             self.timeseries_panel(
                 "Errors by linter - click a linter to open its dashboard",
@@ -869,6 +917,22 @@ class DashboardBuilderGrafana(DashboardBuilder):
                         "linterKey": "Linter",
                     },
                 ),
+                overrides=[
+                    self.cell_color_override("Errors", self.red_if_any()),
+                    self.cell_color_override(
+                        "Blocking",
+                        self.red_if_any(),
+                        mappings=[
+                            {
+                                "type": "value",
+                                "options": {
+                                    "0": {"text": "NO", "color": "green", "index": 0},
+                                    "1": {"text": "YES", "color": "red", "index": 1},
+                                },
+                            }
+                        ],
+                    ),
+                ],
                 links=[self.linter_link("${__data.fields.Linter}")],
             ),
             self.timeseries_panel(
@@ -892,6 +956,10 @@ class DashboardBuilderGrafana(DashboardBuilder):
                 ],
                 {"h": 8, "w": 12, "x": 0, "y": 29},
                 unit="percent",
+                thresholds_def=self.health_thresholds(),
+                threshold_zones=True,
+                min_val=0,
+                max_val=100,
             ),
             self.timeseries_panel(
                 "Errors by language (descriptor)",

@@ -32,7 +32,17 @@ class DashboardBuilderNewRelic(DashboardBuilder):
         ]
 
     def widget(
-        self, title, viz, query, row, column, width=4, height=3, repo_link=False
+        self,
+        title,
+        viz,
+        query,
+        row,
+        column,
+        width=4,
+        height=3,
+        repo_link=False,
+        thresholds=None,
+        series_colors=None,
     ):
         result = {
             "title": title,
@@ -53,6 +63,15 @@ class DashboardBuilderNewRelic(DashboardBuilder):
             result["rawConfiguration"]["linkedEntityGuids"] = [
                 "__REPOSITORY_DETAIL_PAGE_GUID__"
             ]
+        if thresholds is not None:
+            result["rawConfiguration"]["thresholds"] = thresholds
+        if series_colors is not None:
+            result["rawConfiguration"]["colors"] = {
+                "seriesOverrides": [
+                    {"seriesName": name, "color": color}
+                    for name, color in series_colors
+                ]
+            }
         return result
 
     def overview_dashboard(self):
@@ -121,6 +140,10 @@ class DashboardBuilderNewRelic(DashboardBuilder):
                             1,
                             5,
                             repo_link=True,
+                            thresholds=[
+                                {"alertSeverity": "WARNING", "value": 1},
+                                {"alertSeverity": "CRITICAL", "value": 10},
+                            ],
                         ),
                         self.widget(
                             "Errors auto-fixed",
@@ -160,6 +183,10 @@ class DashboardBuilderNewRelic(DashboardBuilder):
                             11,
                             5,
                             width=4,
+                            series_colors=[
+                                ("Blocking", "#d62728"),
+                                ("Non-blocking", "#ffbf00"),
+                            ],
                         ),
                         self.widget(
                             "Errors auto-fixed by repository",

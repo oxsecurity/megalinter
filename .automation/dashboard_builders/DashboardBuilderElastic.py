@@ -49,9 +49,57 @@ class DashboardBuilderElastic(DashboardBuilder):
             "typeMigrationVersion": "8.0.0",
         }
 
-    def lens_metric_panel(self, panel_index, title, index, field, agg="sum"):
+    # Value-conditional palette for Lens metric panels
+    def metric_palette(self, stops, range_max):
+        color_stops = [{"color": color, "stop": stop} for color, stop in stops]
+        return {
+            "type": "palette",
+            "name": "custom",
+            "params": {
+                "name": "custom",
+                "steps": len(color_stops),
+                "stops": [
+                    {"color": color, "stop": stop}
+                    for color, stop in [
+                        (
+                            stops[i][0],
+                            stops[i + 1][1] if i + 1 < len(stops) else range_max,
+                        )
+                        for i in range(len(stops))
+                    ]
+                ],
+                "colorStops": color_stops,
+                "rangeType": "number",
+                "rangeMin": stops[0][1],
+                "rangeMax": range_max,
+                "continuity": "above",
+                "reverse": False,
+            },
+        }
+
+    def health_palette(self):
+        return self.metric_palette(
+            [("#cc5642", 0), ("#d6bf57", 50), ("#209280", 80)], 100
+        )
+
+    def errors_palette(self):
+        return self.metric_palette([("#209280", 0), ("#cc5642", 1)], 10000)
+
+    def warning_palette(self):
+        return self.metric_palette([("#209280", 0), ("#d6bf57", 1)], 10000)
+
+    def lens_metric_panel(
+        self, panel_index, title, index, field, agg="sum", palette=None
+    ):
         layer_id = f"layer-{panel_index}"
         column_id = f"col-{panel_index}"
+        visualization_state = {
+            "layerId": layer_id,
+            "layerType": "data",
+            "metricAccessor": column_id,
+        }
+        if palette is not None:
+            visualization_state["palette"] = palette
         return {
             "type": "lens",
             "gridData": {},
@@ -69,11 +117,7 @@ class DashboardBuilderElastic(DashboardBuilder):
                         }
                     ],
                     "state": {
-                        "visualization": {
-                            "layerId": layer_id,
-                            "layerType": "data",
-                            "metricAccessor": column_id,
-                        },
+                        "visualization": visualization_state,
                         "query": {"query": "", "language": "kuery"},
                         "filters": [],
                         "datasourceStates": {
@@ -384,19 +428,31 @@ class DashboardBuilderElastic(DashboardBuilder):
     def dashboard(self):
         panels = [
             self.lens_metric_panel(
-                "p1", "Blocking errors (sum)", "megalinter-runs", "blockingErrors"
+                "p1",
+                "Blocking errors (sum)",
+                "megalinter-runs",
+                "run.blockingErrors",
+                palette=self.errors_palette(),
             ),
             self.lens_metric_panel(
                 "p2",
                 "Non-blocking errors (sum)",
                 "megalinter-runs",
-                "nonBlockingErrors",
+                "run.nonBlockingErrors",
+                palette=self.warning_palette(),
             ),
             self.lens_metric_panel(
-                "p3", "Errors auto-fixed (sum)", "megalinter-runs", "totalErrorsFixed"
+                "p3",
+                "Errors auto-fixed (sum)",
+                "megalinter-runs",
+                "run.totalErrorsFixed",
             ),
             self.lens_metric_panel(
-                "p4", "Runs analyzed", "megalinter-runs", "lintersCount", agg="count"
+                "p4",
+                "Runs analyzed",
+                "megalinter-runs",
+                "run.lintersCount",
+                agg="count",
             ),
             self.lens_top_values_panel(
                 "p5",
@@ -460,6 +516,7 @@ class DashboardBuilderElastic(DashboardBuilder):
                 "megalinter-runs",
                 "run.healthScore",
                 agg="average",
+                palette=self.health_palette(),
             ),
             self.lens_date_histogram_panel(
                 "p14",
