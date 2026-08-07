@@ -77,9 +77,12 @@ jobs:
           # persist-credentials: false # Comment this line and uncomment the next one if you use APPLY_FIXES
           persist-credentials: true # zizmor: ignore[artipacked]
 
-          # If you use VALIDATE_ALL_CODEBASE = true, you can remove this line to
-          # improve performance
-          fetch-depth: 0
+          # Shallow clone (default fetch-depth: 1): this workflow runs with
+          # VALIDATE_ALL_CODEBASE: true so MegaLinter never diffs against the
+          # base branch, and all secret scanners run in filesystem mode — full
+          # git history is not needed and fetching it costs 2+ minutes.
+          # If you switch VALIDATE_ALL_CODEBASE to false, restore:
+          # fetch-depth: 0
 
       # Cache the grype vulnerability database between runs: downloading it is
       # what makes REPOSITORY_GRYPE take ~2 minutes on a cold run. grype still
