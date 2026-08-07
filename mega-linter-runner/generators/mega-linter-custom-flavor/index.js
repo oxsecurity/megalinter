@@ -160,6 +160,11 @@ Example: 'megalinter-custom-flavor-python-light'
       this.destinationPath("./.github/workflows/check-new-megalinter-version.yml"),
       {}
     );
+    this.fs.copyTpl(
+      this.templatePath("zizmor.yml"),
+      this.destinationPath("./.github/zizmor.yml"),
+      {}
+    );
   }
 
   _generateGitHubAction() {
