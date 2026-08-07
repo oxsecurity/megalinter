@@ -74,7 +74,7 @@
     "perlcritic": "1.156",
     "php": "7.4.26",
     "php-cs-fixer": "3.95.18",
-    "phpcs": "4.0.1",
+    "phpcs": "4.0.4",
     "phplint": "9.7.2",
     "phpstan": "2.2.8",
     "pmd": "7.26.0",
@@ -131,7 +131,7 @@
     "ts-standard": "12.0.2",
     "tsqllint": "1.16.0.0",
     "v8r": "6.1.0",
-    "vale": "3.17.0",
+    "vale": "3.17.1",
     "xmllint": "21309",
     "yamllint": "1.38.0",
     "zizmor": "1.25.0"

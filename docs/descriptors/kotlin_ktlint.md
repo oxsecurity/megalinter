@@ -58,6 +58,7 @@ description: How to use ktlint (configure, ignore files, ignore errors, help & v
 | KOTLIN_KTLINT_UNSECURED_ENV_VARIABLES      | List of env variables explicitly not filtered before calling KOTLIN_KTLINT and its pre/post commands                                                                                                                | None               |
 | KOTLIN_KTLINT_DISABLE_ERRORS               | Run linter but consider errors as warnings                                                                                                                                                                          | `false`            |
 | KOTLIN_KTLINT_DISABLE_ERRORS_IF_LESS_THAN  | Maximum number of errors allowed                                                                                                                                                                                    | `0`                |
+| KOTLIN_KTLINT_TIMEOUT_SECONDS              | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout | `300`              |
 | KOTLIN_KTLINT_CLI_EXECUTABLE               | Override CLI executable                                                                                                                                                                                             | `['ktlint']`       |
 
 ## IDE Integration

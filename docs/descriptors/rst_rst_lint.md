@@ -53,6 +53,7 @@ description: How to use rst-lint (configure, ignore files, ignore errors, help &
 | RST_RST_LINT_UNSECURED_ENV_VARIABLES      | List of env variables explicitly not filtered before calling RST_RST_LINT and its pre/post commands                                                                                                                 | None               |
 | RST_RST_LINT_DISABLE_ERRORS               | Run linter but consider errors as warnings                                                                                                                                                                          | `false`            |
 | RST_RST_LINT_DISABLE_ERRORS_IF_LESS_THAN  | Maximum number of errors allowed                                                                                                                                                                                    | `0`                |
+| RST_RST_LINT_TIMEOUT_SECONDS              | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout | `300`              |
 | RST_RST_LINT_CLI_EXECUTABLE               | Override CLI executable                                                                                                                                                                                             | `['rst-lint']`     |
 
 ## MegaLinter Flavors
