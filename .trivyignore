@@ -300,13 +300,17 @@ GHSA-r7wm-3cxj-wff9
 # a short-lived one-shot CLI container:
 # - brace-expansion 1.1.14 and linkify-it: glob/link expansion DoS
 # - fast-uri, fast-xml-parser, js-yaml: parser DoS on crafted input
+#   (incl. js-yaml quadratic CPU in !!omap resolution, CVE-2026-59870, fixed in
+#   4.3.1 published 2026-07-31 — sf CLI and its plugins do not vendor it yet)
 # - axios: request-side issue in a client that only talks to Salesforce APIs
 # Remove once the pinned linter releases vendor the fixed versions.
 CVE-2026-13149
 CVE-2026-13676
 CVE-2026-16221
 CVE-2026-59869
+CVE-2026-59870
 CVE-2026-59887
+GHSA-5p4m-2wfm-xmqj
 GHSA-8r6m-32jq-jx6q
 GHSA-gcfj-64vw-6mp9
 # CVE-2026-18446 is a host-confusion flaw in fast-uri's URI parsing: a crafted URL
