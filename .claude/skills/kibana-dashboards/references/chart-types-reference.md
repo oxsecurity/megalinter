@@ -19,7 +19,7 @@ Complete schema reference for each supported chart type via the Kibana dashboard
 When using `data_view_reference` or `data_view_spec` datasets, the following operations are available:
 
 | Operation            | Description                          | Requires Field |
-| -------------------- | ------------------------------------ | -------------- |
+|----------------------|--------------------------------------|----------------|
 | `count`              | Document count                       | No             |
 | `average`            | Average value                        | Yes            |
 | `sum`                | Sum of values                        | Yes            |
@@ -75,7 +75,7 @@ Single metric value display. Uses a `metrics` (plural) array with `type: "primar
 **Metric Item Properties:**
 
 | Property    | Type   | Required | Description                                                     |
-| ----------- | ------ | -------- | --------------------------------------------------------------- |
+|-------------|--------|----------|-----------------------------------------------------------------|
 | `type`      | string | Yes      | `"primary"` or `"secondary"`                                    |
 | `operation` | string | dataView | Aggregation name (for dataView only; not used with ES\|QL)      |
 | `column`    | string | ES\|QL   | ES\|QL column name                                              |
@@ -251,7 +251,7 @@ defaults. Do **not** include `operation` in `metric` — it is not a valid prope
 **Gauge Properties:**
 
 | Property        | Type   | Required | Description        |
-| --------------- | ------ | -------- | ------------------ |
+|-----------------|--------|----------|--------------------|
 | `metric.column` | string | Yes      | ES\|QL column name |
 
 ## Heatmap
@@ -417,7 +417,7 @@ STATS count = COUNT() BY bucket = DATE_TRUNC(5 minutes, @timestamp)
 Use the `format` property on metrics, y-axis columns, and gauge metrics to display values with proper units.
 
 | Format     | Properties                                                        | Example Output |
-| ---------- | ----------------------------------------------------------------- | -------------- |
+|------------|-------------------------------------------------------------------|----------------|
 | `bytes`    | `{ "type": "bytes", "decimals": 0 }`                              | 5 KB, 19 KB    |
 | `bits`     | `{ "type": "bits", "decimals": 1 }`                               | 40.2 kbit      |
 | `number`   | `{ "type": "number", "decimals": 2, "compact": true }`            | 5.75K          |

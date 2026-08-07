@@ -183,7 +183,7 @@ Dashboards use a **48-column, infinite-row grid**. On 16:9 screens, approximatel
 scrolling. Design for density—place primary KPIs and key trends above the fold.
 
 | Width   | Columns | Height   | Rows  | Use Case                 |
-| ------- | ------- | -------- | ----- | ------------------------ |
+|---------|---------|----------|-------|--------------------------|
 | Full    | 48      | Large    | 14-16 | Wide time series, tables |
 | Half    | 24      | Standard | 10-12 | Primary charts           |
 | Quarter | 12      | Compact  | 5-6   | KPI metrics              |
@@ -212,7 +212,7 @@ scrolling. Design for density—place primary KPIs and key trends above the fold
 ```
 
 | Property | Type   | Required | Description                                      |
-| -------- | ------ | -------- | ------------------------------------------------ |
+|----------|--------|----------|--------------------------------------------------|
 | `type`   | string | Yes      | Embeddable type (e.g., `vis`, `markdown`, `map`) |
 | `id`     | string | No       | Unique panel ID (auto-generated if omitted)      |
 | `grid`   | object | Yes      | Position and size (`x`, `y`, `w`, `h`)           |
@@ -223,7 +223,7 @@ scrolling. Design for density—place primary KPIs and key trends above the fold
 ### Supported Chart Types
 
 | Type                                 | Description                 | ES\|QL Support |
-| ------------------------------------ | --------------------------- | -------------- |
+|--------------------------------------|-----------------------------|----------------|
 | `metric`                             | Single metric value display | Yes            |
 | `xy`                                 | Line, area, bar charts      | Yes            |
 | `gauge`                              | Gauge visualizations        | Yes            |
@@ -381,7 +381,7 @@ See `assets/` for ready-to-use definitions: `demo-dashboard.json`, `dashboard-wi
 ## Common Issues
 
 | Error                   | Solution                                                                    |
-| ----------------------- | --------------------------------------------------------------------------- |
+|-------------------------|-----------------------------------------------------------------------------|
 | "401 Unauthorized"      | Check KIBANA_USERNAME/PASSWORD or KIBANA_API_KEY                            |
 | "404 Not Found"         | Verify dashboard/visualization ID exists                                    |
 | "409 Conflict"          | Dashboard/viz already exists; delete first or use update                    |
@@ -418,7 +418,7 @@ See `assets/` for ready-to-use definitions: `demo-dashboard.json`, `dashboard-wi
 ### Schema Differences: Data View vs ES|QL
 
 | Aspect              | Data View                                             | ES\|QL                                            |
-| ------------------- | ----------------------------------------------------- | ------------------------------------------------- |
+|---------------------|-------------------------------------------------------|---------------------------------------------------|
 | **Dataset**         | `{ type: 'data_view_reference', ref_id: '...' }`      | `{ type: 'esql', query: '...' }`                  |
 | **Metric chart**    | `metrics: [{ type: 'primary', operation: 'count' }]`  | `metrics: [{ type: 'primary', column: 'col' }]`   |
 | **XY columns**      | `{ operation: 'terms', fields: ['host'], limit: 10 }` | `{ column: 'host' }`                              |

@@ -10,7 +10,7 @@ description: Write, validate, and optimize PromQL for Prometheus / Grafana Mimir
 
 # PromQL Query Patterns
 
-> **Docs**: https://prometheus.io/docs/prometheus/latest/querying/basics/
+> **Docs**: <https://prometheus.io/docs/prometheus/latest/querying/basics/>
 
 PromQL returns either an **instant vector**, a **range vector**, or a **scalar**.
 

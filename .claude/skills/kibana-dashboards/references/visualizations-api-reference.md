@@ -15,7 +15,7 @@ Header: Elastic-Api-Version: 2023-10-31
 ```
 
 | Parameter      | Type   | Description                      |
-| -------------- | ------ | -------------------------------- |
+|----------------|--------|----------------------------------|
 | `query`        | string | Search query                     |
 | `searchFields` | string | Fields to search (e.g., `title`) |
 | `page`         | number | Page number (default: 1)         |
@@ -87,7 +87,7 @@ Search results wrap items in a `data` array with pagination in `meta` (`page`, `
 ## Common Properties
 
 | Property                | Type    | Description                               |
-| ----------------------- | ------- | ----------------------------------------- |
+|-------------------------|---------|-------------------------------------------|
 | `type`                  | string  | Chart type (required)                     |
 | `data_source`           | object  | Data source configuration (required)      |
 | `sampling`              | number  | Sampling rate 0-1 (default: 1)            |

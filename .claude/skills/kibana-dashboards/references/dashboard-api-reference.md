@@ -71,7 +71,7 @@ the API. `POST` does not accept an `id` parameter. To create-or-update, use `PUT
 **Properties:**
 
 | Property     | Required | Description        |
-| ------------ | -------- | ------------------ |
+|--------------|----------|--------------------|
 | `title`      | Yes      | Dashboard title    |
 | `panels`     | Yes      | Array of panels    |
 | `time_range` | No       | Default time range |
@@ -131,7 +131,7 @@ Header: Elastic-Api-Version: 2023-10-31
 ## Dashboard Request Body Schema
 
 | Property           | Type   | Required | Description                |
-| ------------------ | ------ | -------- | -------------------------- |
+|--------------------|--------|----------|----------------------------|
 | `title`            | string | Yes      | Dashboard title            |
 | `panels`           | array  | Yes      | Array of panel definitions |
 | `time_range`       | object | No       | Default time range         |
@@ -154,7 +154,7 @@ Supports relative (`now-1h`, `now-7d`) and absolute (`2024-01-01T00:00:00Z`) for
 ### Common Panel Properties
 
 | Property | Type   | Required | Description                  |
-| -------- | ------ | -------- | ---------------------------- |
+|----------|--------|----------|------------------------------|
 | `type`   | string | Yes      | Panel type (see below)       |
 | `id`     | string | Yes      | Unique panel identifier      |
 | `grid`   | object | Yes      | Grid position and size       |
@@ -172,7 +172,7 @@ Supports relative (`now-1h`, `now-7d`) and absolute (`2024-01-01T00:00:00Z`) for
 ```
 
 | Property | Description               |
-| -------- | ------------------------- |
+|----------|---------------------------|
 | `x`      | Column position (0-47)    |
 | `y`      | Row position              |
 | `w`      | Width in columns (max 48) |
@@ -357,7 +357,7 @@ node scripts/kibana-dashboards.js dashboard create dashboard.json
 ## Common Issues
 
 | Error                   | Solution                                                                     |
-| ----------------------- | ---------------------------------------------------------------------------- |
+|-------------------------|------------------------------------------------------------------------------|
 | "401 Unauthorized"      | Check KIBANA_USERNAME/PASSWORD or KIBANA_API_KEY                             |
 | "404 Not Found"         | Verify dashboard/visualization ID exists                                     |
 | "409 Conflict"          | Dashboard/viz with that ID already exists; delete first or use update        |

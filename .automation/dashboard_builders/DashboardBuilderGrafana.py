@@ -270,7 +270,9 @@ class DashboardBuilderGrafana(DashboardBuilder):
     # (deleted branch, pre-upgrade version) never leak their final value
     def latest_agg(self, inner_agg, metric, sel, by=None):
         by_clause = f" by ({by})" if by else ""
-        return f"last_over_time(({inner_agg}{by_clause} ({metric}{{{sel}}}))[$__range:])"
+        return (
+            f"last_over_time(({inner_agg}{by_clause} ({metric}{{{sel}}}))[$__range:])"
+        )
 
     def stat_panel(
         self,
@@ -703,7 +705,10 @@ class DashboardBuilderGrafana(DashboardBuilder):
                     ),
                     self.prom_target(
                         self.latest_agg(
-                            "sum", f"{PROM_RUN_PREFIX}blockingErrors", sel, "gitRepoName"
+                            "sum",
+                            f"{PROM_RUN_PREFIX}blockingErrors",
+                            sel,
+                            "gitRepoName",
                         ),
                         "C",
                         instant=True,
@@ -1270,13 +1275,13 @@ class DashboardBuilderGrafana(DashboardBuilder):
             ),
             self.bargauge_panel(
                 "Top rules (selected period)",
-                f'topk(20, sum by (ruleId) (sum_over_time({loki_rule_sel} {LOKI_UNWRAP} [$__range])))',
+                f"topk(20, sum by (ruleId) (sum_over_time({loki_rule_sel} {LOKI_UNWRAP} [$__range])))",
                 {"h": 10, "w": 12, "x": 0, "y": 14},
                 datasource=self.ds_loki(),
             ),
             self.bargauge_panel(
                 "Top files (selected period)",
-                f'topk(20, sum by (file) (sum_over_time({loki_file_sel} {LOKI_UNWRAP} [$__range])))',
+                f"topk(20, sum by (file) (sum_over_time({loki_file_sel} {LOKI_UNWRAP} [$__range])))",
                 {"h": 10, "w": 12, "x": 12, "y": 14},
                 datasource=self.ds_loki(),
             ),
@@ -1494,19 +1499,19 @@ class DashboardBuilderGrafana(DashboardBuilder):
         panels = [
             self.bargauge_panel(
                 "Top rules across repositories (selected period)",
-                f'topk(20, sum by (ruleId) (sum_over_time({loki_rule_sel} {LOKI_UNWRAP} [$__range])))',
+                f"topk(20, sum by (ruleId) (sum_over_time({loki_rule_sel} {LOKI_UNWRAP} [$__range])))",
                 {"h": 12, "w": 12, "x": 0, "y": 0},
                 datasource=self.ds_loki(),
             ),
             self.bargauge_panel(
                 "Top files across repositories (selected period)",
-                f'topk(20, sum by (file) (sum_over_time({loki_file_sel} {LOKI_UNWRAP} [$__range])))',
+                f"topk(20, sum by (file) (sum_over_time({loki_file_sel} {LOKI_UNWRAP} [$__range])))",
                 {"h": 12, "w": 12, "x": 12, "y": 0},
                 datasource=self.ds_loki(),
             ),
             self.bargauge_panel(
                 "Rule hits by linter (selected period)",
-                f'topk(15, sum by (linterKey) (sum_over_time({loki_rule_sel} {LOKI_UNWRAP} [$__range])))',
+                f"topk(15, sum by (linterKey) (sum_over_time({loki_rule_sel} {LOKI_UNWRAP} [$__range])))",
                 {"h": 10, "w": 12, "x": 0, "y": 12},
                 datasource=self.ds_loki(),
             ),
@@ -1525,7 +1530,7 @@ class DashboardBuilderGrafana(DashboardBuilder):
                 "Rule hits trend",
                 [
                     self.loki_target(
-                        f'sum by (ruleId) (sum_over_time({loki_rule_sel} {LOKI_UNWRAP} [$__interval]))',
+                        f"sum by (ruleId) (sum_over_time({loki_rule_sel} {LOKI_UNWRAP} [$__interval]))",
                         legend="{{ruleId}}",
                     )
                 ],
@@ -1537,7 +1542,7 @@ class DashboardBuilderGrafana(DashboardBuilder):
                 [
                     self.loki_target(
                         f"topk(15, sum by (file, linterKey) (sum_over_time("
-                        f'{loki_file_sel} {LOKI_UNWRAP} [$__range])))',
+                        f"{loki_file_sel} {LOKI_UNWRAP} [$__range])))",
                         instant=True,
                     )
                 ],

@@ -10,7 +10,7 @@ description: Build, modify, and ship Grafana dashboards as JSON via the HTTP API
 
 # Grafana Dashboard Authoring
 
-> **Docs**: https://grafana.com/docs/grafana/latest/dashboards/
+> **Docs**: <https://grafana.com/docs/grafana/latest/dashboards/>
 
 Dashboards are JSON. Author once, push via API, share by `uid`.
 

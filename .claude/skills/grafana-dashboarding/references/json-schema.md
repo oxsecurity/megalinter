@@ -58,19 +58,19 @@
 
 ## Panel types
 
-| Panel | Use case |
-|---|---|
-| **Time series** | Any metric over time |
-| **Stat** | Single value + sparkline |
-| **Gauge** | % or value against min/max |
-| **Bar gauge** | Side-by-side comparison |
-| **Table** | Multi-column data |
-| **Heatmap** | Distribution over time |
-| **Logs** | Loki log streams |
-| **Traces** | Tempo trace search |
-| **Text** | Markdown docs |
-| **Candlestick** | OHLC / min-max-avg |
-| **Node graph** | Service dependency graph |
+| Panel           | Use case                   |
+|-----------------|----------------------------|
+| **Time series** | Any metric over time       |
+| **Stat**        | Single value + sparkline   |
+| **Gauge**       | % or value against min/max |
+| **Bar gauge**   | Side-by-side comparison    |
+| **Table**       | Multi-column data          |
+| **Heatmap**     | Distribution over time     |
+| **Logs**        | Loki log streams           |
+| **Traces**      | Tempo trace search         |
+| **Text**        | Markdown docs              |
+| **Candlestick** | OHLC / min-max-avg         |
+| **Node graph**  | Service dependency graph   |
 
 ## Useful units
 

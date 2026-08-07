@@ -304,9 +304,7 @@ class DashboardBuilderElastic(DashboardBuilder):
             group_column["customLabel"] = True
         metric_column = {
             "label": (
-                metric_label
-                if metric_label is not None
-                else f"Sum of {metric_field}"
+                metric_label if metric_label is not None else f"Sum of {metric_field}"
             ),
             "dataType": "number",
             "operationType": metric_agg,
@@ -484,7 +482,9 @@ class DashboardBuilderElastic(DashboardBuilder):
             },
         }
 
-    def lens_pie_panel(self, panel_index, title, index, group_field, color_mapping=None):
+    def lens_pie_panel(
+        self, panel_index, title, index, group_field, color_mapping=None
+    ):
         layer_id = f"layer-{panel_index}"
         col_group = f"col-{panel_index}-group"
         col_metric = f"col-{panel_index}-metric"
