@@ -56,7 +56,44 @@ Two workflows are generated:
 - **megalinter-custom-flavor-builder.yml**: Builds and publishes your custom flavor Docker image
 - **check-new-megalinter-version.yml**: Automatically checks daily for new MegaLinter releases and creates matching releases in your repository
 
+A **.github/zizmor.yml** configuration file is generated alongside them (see [Linting your custom flavor repository](#linting-your-custom-flavor-repository) below).
+
 ![Custom flavor generated files in VS Code](assets/images/custom-flavor-generated-files.png)
+
+### Linting your custom flavor repository
+
+The generated files pass MegaLinter out of the box, so you can lint your custom flavor repository with MegaLinter like any other project. Two checks need a deliberate exception, for reasons that are specific to custom flavors.
+
+#### zizmor: the builder action tracks `@main`
+
+The generated workflows hash-pin every action they use, except the flavor builder:
+
+```yaml
+uses: oxsecurity/megalinter/flavors/custom-builder@main
+```
+
+This is intentional. The builder must track upstream so that your image is always built by the builder matching the MegaLinter release you are building. Hash-pinning it would strand your repository on an outdated builder.
+
+The generated `.github/zizmor.yml` waives exactly that reference, and keeps `hash-pin` as the blanket policy so the exception cannot silently widen:
+
+```yaml
+rules:
+  unpinned-uses:
+    config:
+      policies:
+        oxsecurity/megalinter/flavors/custom-builder: ref-pin
+        "*": hash-pin
+```
+
+#### checkov: `CKV_GHA_7` cannot be satisfied
+
+`CKV_GHA_7` requires `workflow_dispatch` inputs to be empty. The builder workflow needs them: `check-new-megalinter-version.yml` dispatches it with `--field megalinter-version` and `--field is-latest` to build a specific upstream release, so the inputs cannot be removed.
+
+Skip the check in your `.mega-linter.yml`:
+
+```yaml
+REPOSITORY_CHECKOV_ARGUMENTS: "--skip-check CKV_GHA_7"
+```
 
 ### Optional: Generate the image for ARM
 
