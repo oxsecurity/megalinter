@@ -40,21 +40,22 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
 - Enable snakemake by adding `SNAKEMAKE_LINT` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable snakemake by adding `SNAKEMAKE_LINT` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                   | Description                                                                                                                                                                                  | Default value   |
-|--------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|
-| SNAKEMAKE_LINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                 |
-| SNAKEMAKE_LINT_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                         |                 |
-| SNAKEMAKE_LINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Exclude no file |
-| SNAKEMAKE_LINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file |
-| SNAKEMAKE_LINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file                                                                                                                  | `file`          |
-| SNAKEMAKE_LINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".smk"]`      |
-| SNAKEMAKE_LINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | `["Snakefile"]` |
-| SNAKEMAKE_LINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None            |
-| SNAKEMAKE_LINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None            |
-| SNAKEMAKE_LINT_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling SNAKEMAKE_LINT and its pre/post commands                                                                                        | None            |
-| SNAKEMAKE_LINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`         |
-| SNAKEMAKE_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`             |
-| SNAKEMAKE_LINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                      | `['snakemake']` |
+| Variable                                   | Description                                                                                                                                                                                                         | Default value   |
+|--------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|
+| SNAKEMAKE_LINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                 |
+| SNAKEMAKE_LINT_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                 |
+| SNAKEMAKE_LINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Exclude no file |
+| SNAKEMAKE_LINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file |
+| SNAKEMAKE_LINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file                                                                                                                                         | `file`          |
+| SNAKEMAKE_LINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".smk"]`      |
+| SNAKEMAKE_LINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | `["Snakefile"]` |
+| SNAKEMAKE_LINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None            |
+| SNAKEMAKE_LINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None            |
+| SNAKEMAKE_LINT_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling SNAKEMAKE_LINT and its pre/post commands                                                                                                               | None            |
+| SNAKEMAKE_LINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`         |
+| SNAKEMAKE_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`             |
+| SNAKEMAKE_LINT_TIMEOUT_SECONDS             | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout | `300`           |
+| SNAKEMAKE_LINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['snakemake']` |
 
 ## IDE Integration
 
@@ -197,7 +198,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--apptainer-args ARGS] [--use-envmodules]
                  [--deploy-sources QUERY CHECKSUM]
                  [--target-jobs TARGET_JOBS [TARGET_JOBS ...]]
-                 [--mode {remote,subprocess,default}]
+                 [--mode {remote,default,subprocess}]
                  [--scheduler-solver-path SCHEDULER_SOLVER_PATH]
                  [--max-jobs-per-second MAX_JOBS_PER_SECOND]
                  [--report-html-path VALUE]
@@ -1095,7 +1096,7 @@ INTERNAL:
   --target-jobs TARGET_JOBS [TARGET_JOBS ...]
                         Internal use only: Target particular jobs by
                         RULE:WILDCARD1=VALUE,WILDCARD2=VALUE,...
-  --mode {remote,subprocess,default}
+  --mode {remote,default,subprocess}
                         Internal use only: Set execution mode of Snakemake.
                         (default: default)
   --scheduler-solver-path SCHEDULER_SOLVER_PATH

@@ -366,6 +366,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 2.2.7 to **2.2.8** on 2026-08-05
   - [rumdl](https://github.com/rvben/rumdl) from 0.2.50 to **0.2.52** on 2026-08-06
   - [checkov](https://www.checkov.io/) from 3.3.8 to **3.3.9** on 2026-08-06
+  - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 4.0.1 to **4.0.4** on 2026-08-07
+  - [vale](https://vale.sh/) from 3.17.0 to **3.17.1** on 2026-08-07
 <!-- linter-versions-end -->
 
 ## [v9.6.0] - 2026-06-28

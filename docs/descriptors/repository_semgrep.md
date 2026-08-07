@@ -59,6 +59,7 @@ Exception for standalone and security flavors docker images, that use a list of 
 | REPOSITORY_SEMGREP_UNSECURED_ENV_VARIABLES      | List of env variables explicitly not filtered before calling REPOSITORY_SEMGREP and its pre/post commands                                                                                                           | None            |
 | REPOSITORY_SEMGREP_DISABLE_ERRORS               | Run linter but consider errors as warnings                                                                                                                                                                          | `false`         |
 | REPOSITORY_SEMGREP_DISABLE_ERRORS_IF_LESS_THAN  | Maximum number of errors allowed                                                                                                                                                                                    | `0`             |
+| REPOSITORY_SEMGREP_TIMEOUT_SECONDS              | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout | `300`           |
 | REPOSITORY_SEMGREP_CLI_EXECUTABLE               | Override CLI executable                                                                                                                                                                                             | `['semgrep']`   |
 
 ## IDE Integration

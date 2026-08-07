@@ -57,6 +57,7 @@ For example, define `HTML_DJLINT_ARGUMENTS: ["--profile", "django"]` to select d
 | HTML_DJLINT_UNSECURED_ENV_VARIABLES      | List of env variables explicitly not filtered before calling HTML_DJLINT and its pre/post commands                                                                                                                  | None                |
 | HTML_DJLINT_DISABLE_ERRORS               | Run linter but consider errors as warnings                                                                                                                                                                          | `false`             |
 | HTML_DJLINT_DISABLE_ERRORS_IF_LESS_THAN  | Maximum number of errors allowed                                                                                                                                                                                    | `0`                 |
+| HTML_DJLINT_TIMEOUT_SECONDS              | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout | `300`               |
 | HTML_DJLINT_CLI_EXECUTABLE               | Override CLI executable                                                                                                                                                                                             | `['djlint']`        |
 
 ## IDE Integration
