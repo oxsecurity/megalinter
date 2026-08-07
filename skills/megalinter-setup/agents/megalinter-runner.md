@@ -30,6 +30,12 @@ Then read the reports rather than the console output:
 - Otherwise (the repository may configure `REPORT_OUTPUT_FOLDER` to a custom folder or `none`, or disable `TEXT_REPORTER`): check `REPORT_OUTPUT_FOLDER` in `.mega-linter.yml`, glob `**/mega-linter-report.json` / `**/linters_logs/` under it, and as a last resort parse the console output — the `❌`/`✅` summary table and per-linter error sections are always printed there
 - The runner is synchronous: a report file missing after the command has exited will **never** appear later — never wait, poll, or re-run to get it. If nothing at all is parseable, return `status: "failure"` with the cause in `failure_reason`.
 
+Also extract the **console tips**: MegaLinter prints actionable advice that never reaches the JSON report (performance warnings like ">300 .gitignored files... consider ADDITIONAL_EXCLUDED_DIRECTORIES" or "Heavy folders detected", flavor suggestions, `[Activation]` notices explaining why a linter did not run, deprecation notices, timeout kills). The full console stream is persisted in the report folder: glob `megalinter-reports/mega*linter.log` (name from `LOG_FILE`, default `mega-linter.log`; absent when `LOG_FILE: none`, then use the console output you captured). Grep it rather than re-reading the whole stream:
+
+```bash
+grep -E "⚠|WARNING|\[Activation\]|Heavy folders|To improve|[Ff]lavor|deprecat|Timed out|[Cc]onsider" <log-file>
+```
+
 ## What you return
 
 A compact JSON object, nothing else:
@@ -53,6 +59,7 @@ A compact JSON object, nothing else:
 - `linters` contains only linters with errors (blocking first; non-blocking ones with `"blocking": false`).
 - `samples`: at most 10 representative error lines per linter, verbatim.
 - Also parse the `Elapsed time` column of the summary table (even on success) and add a `"slow_linters": [{"key": "...", "elapsed_seconds": ...}]` field listing linters over 30 seconds or over 25% of the total lint time.
+- Add a `"tips": ["..."]` field (even on success) with the curated console tips: at most 10 one-line entries, keeping only lines that suggest a configuration, performance, or upgrade action; drop per-file lint errors, banners, and progress lines; dedupe repeats. Omit the field when nothing relevant was found.
 - `status: "failure"` for non-lint failures (Docker missing, image pull failed, bad configuration): include `"failure_reason"` with a ≤20-line excerpt.
 
 ## Constraints

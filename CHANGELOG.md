@@ -163,6 +163,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **Coding Agents page**: add Gemini CLI, Windsurf, Cline, Roo Code, Kilo Code, Amp, Goose, OpenHands and Qwen Code to the compatible coding agents
   - **megalinter-setup skill**: after install or upgrade, suggest either running MegaLinter locally or creating a pull request and then watching its CI results with megalinter-check
   - **megalinter-check skill**: the first local run now starts with a `--prerun` analysis, so the user can validate the suggested `.mega-linter.yml` performance tuning before the real lint
+  - **megalinter-check skill and watcher/runner sub-agents**: the console tips MegaLinter prints (performance warnings, flavor suggestions, `[Activation]` notices, deprecations) are now extracted from the persisted log file and returned to the calling agent in a `tips` field, instead of being lost when reading only the JSON report
   - Fix outdated links in `docs/descriptors/repository_kingfisher.md`
 
 - mega-linter-runner
