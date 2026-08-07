@@ -13,6 +13,8 @@ from dashboard_builders.contract import (
 from dashboard_builders.DashboardBuilder import DashboardBuilder
 
 GRAFANA_TAG = "megalinter"
+# Shared LogQL suffix: unwrap occurrences, dropping malformed lines
+LOKI_UNWRAP = '| json | unwrap occurrences | __error__=""'
 
 DESC_HEALTH_SCORE = (
     "Health score of the latest run in the selected time range, aggregated with min "
@@ -1268,13 +1270,13 @@ class DashboardBuilderGrafana(DashboardBuilder):
             ),
             self.bargauge_panel(
                 "Top rules (selected period)",
-                f'topk(20, sum by (ruleId) (sum_over_time({loki_rule_sel} | json | unwrap occurrences | __error__="" [$__range])))',
+                f'topk(20, sum by (ruleId) (sum_over_time({loki_rule_sel} {LOKI_UNWRAP} [$__range])))',
                 {"h": 10, "w": 12, "x": 0, "y": 14},
                 datasource=self.ds_loki(),
             ),
             self.bargauge_panel(
                 "Top files (selected period)",
-                f'topk(20, sum by (file) (sum_over_time({loki_file_sel} | json | unwrap occurrences | __error__="" [$__range])))',
+                f'topk(20, sum by (file) (sum_over_time({loki_file_sel} {LOKI_UNWRAP} [$__range])))',
                 {"h": 10, "w": 12, "x": 12, "y": 14},
                 datasource=self.ds_loki(),
             ),
@@ -1492,19 +1494,19 @@ class DashboardBuilderGrafana(DashboardBuilder):
         panels = [
             self.bargauge_panel(
                 "Top rules across repositories (selected period)",
-                f'topk(20, sum by (ruleId) (sum_over_time({loki_rule_sel} | json | unwrap occurrences | __error__="" [$__range])))',
+                f'topk(20, sum by (ruleId) (sum_over_time({loki_rule_sel} {LOKI_UNWRAP} [$__range])))',
                 {"h": 12, "w": 12, "x": 0, "y": 0},
                 datasource=self.ds_loki(),
             ),
             self.bargauge_panel(
                 "Top files across repositories (selected period)",
-                f'topk(20, sum by (file) (sum_over_time({loki_file_sel} | json | unwrap occurrences | __error__="" [$__range])))',
+                f'topk(20, sum by (file) (sum_over_time({loki_file_sel} {LOKI_UNWRAP} [$__range])))',
                 {"h": 12, "w": 12, "x": 12, "y": 0},
                 datasource=self.ds_loki(),
             ),
             self.bargauge_panel(
                 "Rule hits by linter (selected period)",
-                f'topk(15, sum by (linterKey) (sum_over_time({loki_rule_sel} | json | unwrap occurrences | __error__="" [$__range])))',
+                f'topk(15, sum by (linterKey) (sum_over_time({loki_rule_sel} {LOKI_UNWRAP} [$__range])))',
                 {"h": 10, "w": 12, "x": 0, "y": 12},
                 datasource=self.ds_loki(),
             ),
@@ -1523,7 +1525,7 @@ class DashboardBuilderGrafana(DashboardBuilder):
                 "Rule hits trend",
                 [
                     self.loki_target(
-                        f'sum by (ruleId) (sum_over_time({loki_rule_sel} | json | unwrap occurrences | __error__="" [$__interval]))',
+                        f'sum by (ruleId) (sum_over_time({loki_rule_sel} {LOKI_UNWRAP} [$__interval]))',
                         legend="{{ruleId}}",
                     )
                 ],
@@ -1535,7 +1537,7 @@ class DashboardBuilderGrafana(DashboardBuilder):
                 [
                     self.loki_target(
                         f"topk(15, sum by (file, linterKey) (sum_over_time("
-                        f'{loki_file_sel} | json | unwrap occurrences | __error__="" [$__range])))',
+                        f'{loki_file_sel} {LOKI_UNWRAP} [$__range])))',
                         instant=True,
                     )
                 ],
