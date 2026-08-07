@@ -31,6 +31,11 @@ function isSElinuxOn() {
 
 export class MegaLinterRunner {
 
+  constructor() {
+    // Injectable for tests: lets unit tests fake the container engine calls
+    this.spawnSyncFn = spawnSync;
+  }
+
   async run(options) {
     // Show help ( index or for an options)
     if (options.help) {
@@ -286,8 +291,20 @@ export class MegaLinterRunner {
     if (removeContainer) {
       commandArgs.push("--rm");
     }
-    if (options["containerName"]) {
-      commandArgs.push(...["--name", options["containerName"]]);
+    const timeoutSeconds = this.resolveTimeoutSeconds(options);
+    let containerName = options["containerName"] || null;
+    if (timeoutSeconds !== null && !containerName) {
+      // A known container name is required to stop and remove the exact container
+      // if the timeout is reached: killing the CLI process alone does not reliably
+      // stop a `docker run`/`podman run` child on every platform (Windows signal
+      // emulation in particular), which leaves orphan containers running
+      containerName = `megalinter-runner-${Math.random().toString(36).slice(2, 10)}`;
+      console.info(
+        `--timeout: the container will be named ${containerName} so it can be stopped and removed if the time limit is reached`
+      );
+    }
+    if (containerName) {
+      commandArgs.push(...["--name", containerName]);
     }
 
     if (isSElinuxOn()) {
@@ -373,7 +390,22 @@ export class MegaLinterRunner {
       stdio: "inherit",
       windowsHide: true,
     };
-    const spawnRes = spawnSync(this.containerEngine, commandArgs, spawnOptions);
+    if (timeoutSeconds !== null) {
+      spawnOptions.timeout = timeoutSeconds * 1000;
+      // SIGKILL: SIGTERM emulation is unreliable on Windows, and the container
+      // itself is stopped explicitly by name below anyway
+      spawnOptions.killSignal = "SIGKILL";
+    }
+    const spawnRes = this.spawnSyncFn(
+      this.containerEngine,
+      commandArgs,
+      spawnOptions
+    );
+    if (spawnRes.error && spawnRes.error.code === "ETIMEDOUT") {
+      const errorMsg = this.handleRunTimeout(containerName, timeoutSeconds);
+      // 124 is the conventional "command timed out" exit code (GNU timeout)
+      return { status: 124, errorMsg, timedOut: true };
+    }
     // Output json if requested
     if (options.json === true) {
       const reportSubFolder = options.linter
@@ -390,6 +422,78 @@ export class MegaLinterRunner {
       }
     }
     return spawnRes;
+  }
+
+  // --timeout value in seconds, or null when no time limit is requested
+  resolveTimeoutSeconds(options) {
+    if (options.timeout === undefined || options.timeout === null) {
+      return null;
+    }
+    const timeoutSeconds = Number(options.timeout);
+    if (!Number.isInteger(timeoutSeconds) || timeoutSeconds <= 0) {
+      throw new Error(
+        `Invalid --timeout value: ${options.timeout}. It must be a positive number of seconds.`
+      );
+    }
+    return timeoutSeconds;
+  }
+
+  // The run exceeded --timeout: the CLI child process has been killed, but the
+  // container can survive it (notably on Windows, where signal emulation does
+  // not propagate to docker/podman children), so print its last log lines for
+  // diagnosis then stop and remove it explicitly by name
+  handleRunTimeout(containerName, timeoutSeconds) {
+    const errorMsg = `MegaLinter run exceeded the --timeout of ${timeoutSeconds}s and was stopped.`;
+    console.error(
+      c.red(
+        `[ERROR] ${errorMsg} Common causes: a bind-mounted workspace with slow I/O ` +
+          "(e.g. a Windows path mounted into a WSL2-backed container engine), " +
+          "a linter waiting on a slow or unreachable network resource, " +
+          "or a genuinely large repository needing a longer --timeout."
+      )
+    );
+    // Capture the log tail before removing the container: it usually shows the
+    // exact step where the run was stuck
+    const logsRes = this.spawnSyncFn(
+      this.containerEngine,
+      ["logs", "--tail", "30", containerName],
+      { encoding: "utf8", windowsHide: true }
+    );
+    const logsOutput = `${logsRes.stdout || ""}${logsRes.stderr || ""}`.trim();
+    if (logsRes.status === 0 && logsOutput) {
+      console.error(
+        c.yellow(
+          `Last log lines of container ${containerName} before it was stopped:`
+        )
+      );
+      console.error(logsOutput);
+    }
+    const stopRes = this.spawnSyncFn(
+      this.containerEngine,
+      ["stop", containerName],
+      { encoding: "utf8", windowsHide: true }
+    );
+    // With --rm (the default), stopping the container also removes it: the rm
+    // fallback covers --no-remove-container and cases where --rm did not fire
+    // because the run was hard-killed
+    const rmRes = this.spawnSyncFn(
+      this.containerEngine,
+      ["rm", "--force", containerName],
+      { encoding: "utf8", windowsHide: true }
+    );
+    if (stopRes.status === 0 || rmRes.status === 0) {
+      console.error(
+        `Container ${containerName} has been stopped and removed: no orphan container is left behind.`
+      );
+    } else {
+      console.error(
+        c.yellow(
+          `[WARNING] Unable to confirm removal of container ${containerName}. ` +
+            `Check manually with: ${this.containerEngine} ps --all --filter name=${containerName}`
+        )
+      );
+    }
+    return errorMsg;
   }
 
   resolveDockerImage(options, localConfig) {

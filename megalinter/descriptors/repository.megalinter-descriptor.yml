@@ -23,6 +23,8 @@ linters:
       - **Custom Policies**: Support for custom security policies written in Python or YAML for organization-specific requirements
       - **Policy Suppression**: Granular control over policy enforcement with inline and configuration-based suppression
       - **Graph-Based Analysis**: Advanced analysis using dependency graphs for complex infrastructure relationships
+
+      When another active linter of the same MegaLinter run is a dedicated secret scanner ([betterleaks](https://megalinter.io/latest/descriptors/repository_betterleaks/), [kingfisher](https://megalinter.io/latest/descriptors/repository_kingfisher/), [secretlint](https://megalinter.io/latest/descriptors/repository_secretlint/) or [trufflehog](https://megalinter.io/latest/descriptors/repository_trufflehog/)), MegaLinter automatically adds `--skip-framework secrets` to the checkov command, so the secrets scan is not duplicated. Define `--framework` or `--skip-framework` in `REPOSITORY_CHECKOV_ARGUMENTS` or in your checkov config file to override this behavior.
     name: REPOSITORY_CHECKOV
     can_output_sarif: true
     descriptor_flavors:

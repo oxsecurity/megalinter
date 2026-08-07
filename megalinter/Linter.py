@@ -26,6 +26,7 @@ import logging
 import os
 import re
 import shutil
+import signal
 import subprocess
 import sys
 import urllib.error
@@ -36,6 +37,14 @@ import yaml
 from megalinter import config, pre_post_factory, utils, utils_reporter, utils_sarif
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
 from megalinter.llm_advisor import LLMAdvisor
+
+# Default maximum duration of a single linter command. Far above any legitimate
+# single-linter runtime (the slowest project scanners take minutes), so false
+# kills stay rare while a stalled linter (e.g. I/O stall on a bind-mounted
+# workspace) fails in bounded time instead of hanging the whole run.
+# Override per linter with <LINTER_KEY>_TIMEOUT_SECONDS, globally with
+# LINTER_TIMEOUT_SECONDS, and disable with value 0
+DEFAULT_LINTER_TIMEOUT_SECONDS = 300
 
 
 class Linter:
@@ -99,6 +108,10 @@ class Linter:
         self.post_commands = None
         self.unsecured_env_variables = []
         self.ignore_for_flavor_suggestions = False
+        # Maximum lint command duration in seconds, from <LINTER_KEY>_TIMEOUT_SECONDS
+        # or LINTER_TIMEOUT_SECONDS config variables. None = no timeout (default)
+        self.timeout_seconds = None
+        self.timeout_config_var = None
 
         self.cli_lint_mode = "file"
         self.supported_cli_lint_modes = ["file"]
@@ -836,6 +849,9 @@ class Linter:
                 self.request_id, self.name + "_UNSECURED_ENV_VARIABLES"
             )
 
+        # Lint command timeout: NAME + _TIMEOUT_SECONDS, then LINTER_TIMEOUT_SECONDS
+        self.load_timeout_config()
+
         # Disable errors for this linter NAME + _DISABLE_ERRORS, then LANGUAGE + _DISABLE_ERRORS
         if config.get(self.request_id, self.name + "_DISABLE_ERRORS_IF_LESS_THAN"):
             self.disable_errors_if_less_than = int(
@@ -881,6 +897,38 @@ class Linter:
             self.filter_regex_exclude_linter = config.get(
                 self.request_id, self.name + "_FILTER_REGEX_EXCLUDE"
             )
+
+    # Resolve the maximum lint command duration from <LINTER_KEY>_TIMEOUT_SECONDS,
+    # falling back to the global LINTER_TIMEOUT_SECONDS, then to
+    # DEFAULT_LINTER_TIMEOUT_SECONDS (300). An explicit 0 disables the timeout
+    # entirely (for repositories that legitimately need very long linter runs).
+    # An invalid value (not a positive integer or 0) is ignored with a warning,
+    # and the next variable in the list is tried
+    def load_timeout_config(self):
+        for timeout_var in [self.name + "_TIMEOUT_SECONDS", "LINTER_TIMEOUT_SECONDS"]:
+            if not config.exists(self.request_id, timeout_var):
+                continue
+            timeout_raw = config.get(self.request_id, timeout_var)
+            try:
+                timeout_value = int(str(timeout_raw).strip())
+            except (TypeError, ValueError):
+                timeout_value = None
+            if timeout_value is None or timeout_value < 0:
+                logging.warning(
+                    f"[Config] Invalid {timeout_var} value [{timeout_raw}]:"
+                    " it must be a positive integer number of seconds,"
+                    " or 0 to disable the timeout. Value ignored."
+                )
+                continue
+            if timeout_value == 0:
+                # Explicit opt-out: no timeout for this linter
+                self.timeout_seconds = None
+            else:
+                self.timeout_seconds = timeout_value
+            self.timeout_config_var = timeout_var
+            return
+        self.timeout_seconds = DEFAULT_LINTER_TIMEOUT_SECONDS
+        self.timeout_config_var = "LINTER_TIMEOUT_SECONDS (default)"
 
     # If linter is activated only if some file is found, and config file has been overridden
     # ->  add it to the files to check
@@ -1202,19 +1250,17 @@ class Linter:
         if isinstance(command, str):
             self.lint_command_log.append(command)
             # Call linter with a sub-process
-            process = subprocess.run(
+            return_code, return_stdout = self._run_lint_subprocess(
                 command,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.STDOUT,
-                shell=True,
-                cwd=cwd,
-                env=subprocess_env,
-                executable=(
-                    shutil.which("bash") if sys.platform == "win32" else "/bin/bash"
-                ),
+                {
+                    "shell": True,
+                    "cwd": cwd,
+                    "env": subprocess_env,
+                    "executable": (
+                        shutil.which("bash") if sys.platform == "win32" else "/bin/bash"
+                    ),
+                },
             )
-            return_code = process.returncode
-            return_stdout = utils.clean_string(process.stdout, not self.is_formatter)
         else:
             # Use full executable path if we are on Windows
             if sys.platform == "win32":
@@ -1228,16 +1274,12 @@ class Linter:
             self.lint_command_log.append(" ".join(command))
             # Call linter with a sub-process (RECOMMENDED: with a list of strings corresponding to the command)
             try:
-                process = subprocess.run(
+                return_code, return_stdout = self._run_lint_subprocess(
                     command,
-                    stdout=subprocess.PIPE,
-                    stderr=subprocess.STDOUT,
-                    env=subprocess_env,
-                    cwd=cwd,
-                )
-                return_code = process.returncode
-                return_stdout = utils.clean_string(
-                    process.stdout, not self.is_formatter
+                    {
+                        "env": subprocess_env,
+                        "cwd": cwd,
+                    },
                 )
             except FileNotFoundError as err:
                 return_code = 999
@@ -1256,6 +1298,82 @@ class Linter:
         self.cleanup_workspace_generated_files()
         # Return linter result
         return return_code, return_stdout
+
+    # Run the linter sub-process, enforcing timeout_seconds when set
+    # (from <LINTER_KEY>_TIMEOUT_SECONDS or LINTER_TIMEOUT_SECONDS).
+    # A plain subprocess timeout only kills the direct child: linters like
+    # checkov spawn worker sub-processes (and git cat-file children) that
+    # would survive the kill and keep the stall alive inside the container.
+    # On POSIX (MegaLinter always runs inside Linux containers), the child is
+    # started in its own process group (start_new_session=True) and the whole
+    # group is killed with SIGKILL when the timeout fires. On other platforms
+    # (local dev/test runs), only the direct child is killed.
+    # Returns (return_code, cleaned stdout); return code 124 (GNU timeout
+    # convention) on timeout, with whatever partial output is available
+    def _run_lint_subprocess(self, command, subprocess_kwargs):
+        timeout_seconds = self.timeout_seconds
+        if timeout_seconds is None:
+            # No timeout configured (default): keep the historical
+            # subprocess.run call, with no behavior change
+            process = subprocess.run(
+                command,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                **subprocess_kwargs,
+            )
+            return process.returncode, utils.clean_string(
+                process.stdout, not self.is_formatter
+            )
+        use_process_group = os.name == "posix"
+        if use_process_group:
+            subprocess_kwargs = {**subprocess_kwargs, "start_new_session": True}
+        process = subprocess.Popen(
+            command,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            **subprocess_kwargs,
+        )
+        try:
+            stdout, _ = process.communicate(timeout=timeout_seconds)
+            return process.returncode, utils.clean_string(stdout, not self.is_formatter)
+        except subprocess.TimeoutExpired:
+            if use_process_group:
+                try:
+                    # The process group id is the pid of the group leader:
+                    # kill the leader and all its descendants at once.
+                    # getattr: signal.SIGKILL is missing on Windows, and this
+                    # module must stay importable and testable everywhere
+                    os.killpg(process.pid, getattr(signal, "SIGKILL", 9))
+                except (ProcessLookupError, PermissionError, OSError):
+                    process.kill()
+            else:
+                process.kill()
+            # Collect whatever the linter wrote before being killed. All
+            # writers are dead so the pipe closes quickly; keep a bound anyway
+            try:
+                partial_stdout, _ = process.communicate(timeout=30)
+            except Exception:
+                partial_stdout = None
+            partial_output = (
+                utils.clean_string(partial_stdout, not self.is_formatter)
+                if partial_stdout
+                else ""
+            )
+            timeout_config_var = self.timeout_config_var or "LINTER_TIMEOUT_SECONDS"
+            timeout_message = (
+                f"[{self.linter_name}] Timed out after {timeout_seconds} seconds "
+                f"and was killed ({timeout_config_var}={timeout_seconds}). "
+                "Partial output above if any. "
+                "If this repository legitimately needs more time, increase the "
+                f"value with {self.name}_TIMEOUT_SECONDS or LINTER_TIMEOUT_SECONDS "
+                "(0 disables the timeout); a timeout with very low CPU usage "
+                "usually means an I/O stall (e.g. workspace bind-mounted from "
+                "Windows into a WSL2-backed container engine)."
+            )
+            logging.error(timeout_message)
+            if partial_output.strip() != "":
+                return 124, partial_output + "\n\n" + timeout_message
+            return 124, timeout_message
 
     def apply_common_linter_errors(self, return_code, return_stdout):
         if return_code == 0 or not self.common_linter_errors:

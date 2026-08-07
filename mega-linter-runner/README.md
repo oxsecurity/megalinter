@@ -108,6 +108,7 @@ The options are only related to mega-linter-runner. For MegaLinter options, plea
 | `-v` <br/> `--version`           | Show mega-linter-runner version                                                                                                                                                                                                                                                                         | <!-- -->          |
 | `--container-engine`             | Allows to specify a docker engine (`docker` or `podman`)                                                                                                                                                                                                                                                | `docker`          |
 | `--container-name`               | Specify MegaLinter container name                                                                                                                                                                                                                                                                       | <!-- -->          |
+| `-t` <br/> `--timeout`           | Maximum duration in seconds of the MegaLinter container run (image pull time is not counted). When the limit is reached, the container is stopped and removed, its last log lines are displayed, and mega-linter-runner exits with code `124`. If `--container-name` is not set, a container name is auto-generated so the exact container can be stopped even if the CLI process itself is killed. Recommended when the runner is driven by automation (CI wrappers, AI agents) so a stuck run cannot hang forever | no limit          |
 | `--remove-container`             | Remove MegaLinter Docker container when done                                                                                                                                                                                                                                                            | <!-- -->          |
 | `--user-map`                     | Run the container as a non-root user. On POSIX systems this uses your user. On other hosts it uses `1000:1000`. This helps avoid root-owned generated files on the host.                                                                                                                                | <!-- -->          |
 | `--no-user-map`                  | Run the container as root                                                                                                                                                                                                                                                                               | <!-- -->          |
@@ -182,6 +183,11 @@ mega-linter-runner --linter PYTHON_RUFF src/module_a.py src/module_b.py
 ```shell
 # Use Podman as engine
 mega-linter-runner --flavor documentation --container-engine podman
+```
+
+```shell
+# Bound the run to 30 minutes: on timeout the container is stopped and removed, and its last log lines are displayed
+mega-linter-runner --timeout 1800
 ```
 
 ## Configuration

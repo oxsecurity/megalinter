@@ -3,13 +3,30 @@
 Use Checkov to lint Infrastructure as Code
 """
 
+import logging
 import os
+import re
 
 import megalinter.utils as utils
 from megalinter import Linter, config
 
 
 class CheckovLinter(Linter):
+    # MegaLinter linters fully dedicated to secrets detection. When at least
+    # one of them is active in the same run, checkov's default behavior of
+    # running every framework (including "secrets") only duplicates their
+    # work, and its secrets framework can stall for hours spawning long-lived
+    # "git cat-file --batch-check" subprocesses on bind-mounted workspaces
+    # (seen on Windows -> WSL2 Docker mounts). REPOSITORY_GITLEAKS is not
+    # listed because it was removed in MegaLinter v10 (betterleaks replaces
+    # it and reads the same configuration files).
+    DEDICATED_SECRET_SCANNERS = [
+        "REPOSITORY_BETTERLEAKS",
+        "REPOSITORY_KINGFISHER",
+        "REPOSITORY_SECRETLINT",
+        "REPOSITORY_TRUFFLEHOG",
+    ]
+
     def before_lint_files(self):
         # Redirect Checkov's transient github_conf/ out of the linted tree to
         # avoid an ansible-lint race condition (issue #8092). Prefer a hidden
@@ -38,7 +55,74 @@ class CheckovLinter(Linter):
                 for file_to_lint in self.master.all_diff_files:
                     self.cli_lint_extra_args_after.append(file_to_lint)
 
-        return super().build_lint_command(file)
+        cmd = super().build_lint_command(file)
+
+        # Delegate secrets scanning to the dedicated secret scanners active in
+        # the same run. Applied in every cli_lint_mode (project, file and
+        # list_of_files): the duplication with dedicated secret scanners does
+        # not depend on how the linted paths are passed to checkov. Never
+        # applied when the user expressed an explicit framework intent, either
+        # in REPOSITORY_CHECKOV_ARGUMENTS or in the checkov config file.
+        # Appended to the local cmd only (not to self.cli_lint_* attributes) so
+        # repeated build_lint_command calls do not accumulate the arguments
+        if not any(
+            str(arg).startswith(("--framework", "--skip-framework")) for arg in cmd
+        ):
+            active_secret_scanners = self.get_active_secret_scanner_names()
+            if (
+                len(active_secret_scanners) > 0
+                and self.config_file_defines_frameworks() is False
+            ):
+                cmd += ["--skip-framework", "secrets"]
+                # build_lint_command runs once per file in file lint mode:
+                # log the delegation notice only once per linter run
+                if getattr(self, "skip_secrets_framework_logged", False) is False:
+                    logging.info(
+                        "[Checkov] Adding '--skip-framework secrets' to the checkov "
+                        "command, as secrets scanning is delegated to "
+                        f"{', '.join(active_secret_scanners)}. Define --framework or "
+                        "--skip-framework in REPOSITORY_CHECKOV_ARGUMENTS to override "
+                        "this behavior."
+                    )
+                    self.skip_secrets_framework_logged = True
+        return cmd
+
+    # Names of the dedicated secret scanners active in the current run.
+    # Defensive on purpose: master or active_linters can be absent when the
+    # linter is run standalone or instantiated directly in unit tests
+    def get_active_secret_scanner_names(self) -> list:
+        master = getattr(self, "master", None)
+        active_linters = getattr(master, "active_linters", None) or []
+        return [
+            linter.name
+            for linter in active_linters
+            if getattr(linter, "name", None) in self.DEDICATED_SECRET_SCANNERS
+        ]
+
+    # True if the checkov config file in use already defines framework or
+    # skip-framework: the user's framework selection must always win
+    def config_file_defines_frameworks(self) -> bool:
+        checkov_config_file = getattr(self, "final_config_file", None) or getattr(
+            self, "config_file", None
+        )
+        if checkov_config_file is None:
+            return False
+        try:
+            with open(checkov_config_file, "r", encoding="utf-8") as file_handler:
+                checkov_config_text = file_handler.read()
+        except OSError as e:
+            # Fail open: if the config file can not be read, keep the
+            # automatic skip and let checkov report the config issue itself
+            logging.debug(
+                f"[Checkov] Unable to read config file {checkov_config_file}: {str(e)}"
+            )
+            return False
+        return (
+            re.search(
+                r"^\s*(framework|skip-framework)\s*:", checkov_config_text, re.MULTILINE
+            )
+            is not None
+        )
 
     def pre_test(self, test_name):
         if test_name.endswith(("file_lint_mode", "list_of_files_lint_mode")):

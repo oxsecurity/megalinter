@@ -254,6 +254,116 @@ describe("Setup targets backup", () => {
   });
 });
 
+describe("Timeout handling", () => {
+  function makeRunnerWithFakeEngine({ timeoutOnRun }) {
+    const r = new MegaLinterRunner();
+    const calls = [];
+    r.spawnSyncFn = (cmd, args, opts) => {
+      calls.push({ cmd, args, opts });
+      if (args[0] === "run" && timeoutOnRun) {
+        const error = new Error("spawnSync docker ETIMEDOUT");
+        error.code = "ETIMEDOUT";
+        return { error, status: null, signal: "SIGKILL" };
+      }
+      if (args[0] === "logs") {
+        return { status: 0, stdout: "collecting files...\nstuck here\n", stderr: "" };
+      }
+      return { status: 0, stdout: "", stderr: "" };
+    };
+    return { r, calls };
+  }
+
+  async function makeTmpLintDir() {
+    return await fs.mkdtemp(path.join(os.tmpdir(), "ml-timeout-"));
+  }
+
+  it("resolveTimeoutSeconds returns null when --timeout is not set", () => {
+    assert.strictEqual(runner.resolveTimeoutSeconds({}), null);
+  });
+
+  it("resolveTimeoutSeconds parses a positive value", () => {
+    assert.strictEqual(runner.resolveTimeoutSeconds({ timeout: 600 }), 600);
+    assert.strictEqual(runner.resolveTimeoutSeconds({ timeout: "600" }), 600);
+  });
+
+  it("resolveTimeoutSeconds rejects zero, negative and non-numeric values", () => {
+    assert.throws(
+      () => runner.resolveTimeoutSeconds({ timeout: 0 }),
+      /Invalid --timeout value/
+    );
+    assert.throws(
+      () => runner.resolveTimeoutSeconds({ timeout: -5 }),
+      /Invalid --timeout value/
+    );
+    assert.throws(
+      () => runner.resolveTimeoutSeconds({ timeout: "abc" }),
+      /Invalid --timeout value/
+    );
+  });
+
+  it("on timeout, names the container, bounds spawnSync, then stops and removes the container after capturing its logs", async () => {
+    const { r, calls } = makeRunnerWithFakeEngine({ timeoutOnRun: true });
+    const res = await r.run({
+      image: "megalinter-test:fake",
+      nodockerpull: true,
+      timeout: 5,
+      path: await makeTmpLintDir(),
+    });
+    assert.strictEqual(res.status, 124);
+    assert.strictEqual(res.timedOut, true);
+    assert.match(res.errorMsg, /exceeded the --timeout of 5s/);
+    const runCall = calls.find((call) => call.args[0] === "run");
+    assert.strictEqual(runCall.opts.timeout, 5000);
+    assert.strictEqual(runCall.opts.killSignal, "SIGKILL");
+    const nameIndex = runCall.args.indexOf("--name");
+    assert.ok(nameIndex > -1, "docker run args should contain --name");
+    const containerName = runCall.args[nameIndex + 1];
+    assert.match(containerName, /^megalinter-runner-/);
+    const logsCall = calls.find((call) => call.args[0] === "logs");
+    assert.deepStrictEqual(logsCall.args, ["logs", "--tail", "30", containerName]);
+    const stopCall = calls.find((call) => call.args[0] === "stop");
+    assert.deepStrictEqual(stopCall.args, ["stop", containerName]);
+    const rmCall = calls.find((call) => call.args[0] === "rm");
+    assert.deepStrictEqual(rmCall.args, ["rm", "--force", containerName]);
+    // Logs must be captured before the container is stopped/removed
+    assert.ok(calls.indexOf(logsCall) < calls.indexOf(stopCall));
+    assert.ok(calls.indexOf(stopCall) < calls.indexOf(rmCall));
+  });
+
+  it("on timeout, keeps a user-provided --container-name for the cleanup commands", async () => {
+    const { r, calls } = makeRunnerWithFakeEngine({ timeoutOnRun: true });
+    const res = await r.run({
+      image: "megalinter-test:fake",
+      nodockerpull: true,
+      timeout: 3,
+      containerName: "my-megalinter-run",
+      path: await makeTmpLintDir(),
+    });
+    assert.strictEqual(res.status, 124);
+    const runCall = calls.find((call) => call.args[0] === "run");
+    const nameIndex = runCall.args.indexOf("--name");
+    assert.strictEqual(runCall.args[nameIndex + 1], "my-megalinter-run");
+    const stopCall = calls.find((call) => call.args[0] === "stop");
+    assert.deepStrictEqual(stopCall.args, ["stop", "my-megalinter-run"]);
+  });
+
+  it("without --timeout, adds no container name and no spawnSync time bound", async () => {
+    const { r, calls } = makeRunnerWithFakeEngine({ timeoutOnRun: false });
+    const res = await r.run({
+      image: "megalinter-test:fake",
+      nodockerpull: true,
+      path: await makeTmpLintDir(),
+    });
+    assert.strictEqual(res.status, 0);
+    const runCall = calls.find((call) => call.args[0] === "run");
+    assert.strictEqual(runCall.args.indexOf("--name"), -1);
+    assert.strictEqual(runCall.opts.timeout, undefined);
+    assert.strictEqual(runCall.opts.killSignal, undefined);
+    assert.strictEqual(calls.some((call) => call.args[0] === "stop"), false);
+    assert.strictEqual(calls.some((call) => call.args[0] === "rm"), false);
+  });
+});
+
 describe("Setup answers from CLI options", () => {
   it("maps provided options and drops undefined ones", () => {
     const answers = runner.buildSetupAnswers({

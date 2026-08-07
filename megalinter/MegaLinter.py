@@ -44,6 +44,14 @@ from megalinter.utils_reporter import (
 )
 from multiprocessing_logging import install_mp_handler, uninstall_mp_handler
 
+# Timeout (in seconds) for the "git ls-files" call listing gitignored files.
+# The call normally completes in under a second even on large repos, but it can
+# hang indefinitely on I/O when the workspace is bind-mounted from Windows into
+# a WSL2-backed container (Docker Desktop / podman machine). 120s is generous
+# enough to avoid false positives while still bounding the worst case, and is
+# in line with other bounded calls in this codebase (30s HTTP timeouts).
+GIT_LS_FILES_TIMEOUT_SECONDS = 120
+
 REMOVED_LINTERS_NOTIFICATION_KEY = "removed_linters_references"
 REMOVED_LINTERS_NOTIFICATION_TEMPLATE = (
     "⚠️ Your configuration references items that have been removed from "
@@ -1136,18 +1144,45 @@ class Megalinter:
             for excluded_dir in normalized_excluded_dirs
             if excluded_dir
         ]
-        ignored_files = repo.git.execute(
-            [
-                "git",
-                "ls-files",
-                "--exclude-standard",
-                "--ignored",
-                "--others",
-                "--cached",
-                "--directory",
-                *pathspec_excludes,
-            ]
-        ).splitlines()
+        # Bound the git call: on some host/filesystem combinations (typically a
+        # workspace bind-mounted from Windows into a Docker/podman container
+        # backed by WSL2), this single invocation has been observed stalling on
+        # I/O for hours with near-zero CPU. On a healthy filesystem it completes
+        # in well under a second, so 120 seconds is generous enough to avoid
+        # false positives on huge repos while still bounding the worst case.
+        # GitPython does not support kill_after_timeout on Windows, and the
+        # hang only occurs inside Linux containers anyway, so the timeout is
+        # only applied on non-Windows platforms.
+        execute_kwargs = {}
+        if sys.platform != "win32":
+            execute_kwargs["kill_after_timeout"] = GIT_LS_FILES_TIMEOUT_SECONDS
+        try:
+            ignored_files = repo.git.execute(
+                [
+                    "git",
+                    "ls-files",
+                    "--exclude-standard",
+                    "--ignored",
+                    "--others",
+                    "--cached",
+                    "--directory",
+                    *pathspec_excludes,
+                ],
+                **execute_kwargs,
+            ).splitlines()
+        except git.GitCommandError as git_err:
+            # On timeout, GitPython kills the process and raises GitCommandError
+            # with "Timeout: the command ... did not complete in N secs." in
+            # stderr. Re-raise with an actionable message: the caller in run()
+            # catches it, logs it, and degrades to an empty ignored files list.
+            if "did not complete in" in str(git_err):
+                raise RuntimeError(
+                    f"git ls-files did not complete within {GIT_LS_FILES_TIMEOUT_SECONDS} seconds. "
+                    "This can happen when the workspace is bind-mounted from Windows into a "
+                    "container with a WSL2 backend (Docker Desktop / podman machine). "
+                    "Adding heavy folders to ADDITIONAL_EXCLUDED_DIRECTORIES can help avoid it."
+                ) from git_err
+            raise
         ignored_files = map(lambda x: x + "**" if x.endswith("/") else x, ignored_files)
         ignored_files = sorted(list(ignored_files))
         # If there are more than 300 ignored files, advise to add more excluded

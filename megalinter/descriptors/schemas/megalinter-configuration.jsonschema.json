@@ -16938,6 +16938,20 @@
       "x-order": 900030,
       "x-section": "MISC"
     },
+    "LINTER_TIMEOUT_SECONDS": {
+      "$id": "#/properties/LINTER_TIMEOUT_SECONDS",
+      "default": 300,
+      "description": "Maximum duration in seconds of each linter run (default: 300). When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124), and the other linters keep running. Can be overridden for a single linter with <LINTER_KEY>_TIMEOUT_SECONDS. Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "Linter timeout in seconds",
+      "type": "integer",
+      "x-category": "GENERAL",
+      "x-order": 600020,
+      "x-section": "PERFORMANCE"
+    },
     "LLM_ADVISOR_DISABLE_LINTERS": {
       "$id": "#/properties/LLM_ADVISOR_DISABLE_LINTERS",
       "description": "If LLM_ADVISOR_DISABLE_LINTERS is set, LLM advisor will NOT process these ones",
