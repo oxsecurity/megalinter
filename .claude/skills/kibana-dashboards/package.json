@@ -1,0 +1,9 @@
+{
+  "name": "kibana-dashboards",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "CRUD operations for Kibana dashboards and visualizations",
+  "author": "elastic",
+  "license": "tbd",
+  "dependencies": {}
+}

@@ -1,0 +1,19 @@
+{
+  "title": "Requests Over Time",
+  "type": "xy",
+  "axis": {
+    "x": { "title": { "visible": false }, "scale": "temporal", "domain": { "type": "fit", "rounding": false } },
+    "y": { "title": { "visible": false } }
+  },
+  "layers": [
+    {
+      "type": "line",
+      "data_source": {
+        "type": "esql",
+        "query": "FROM kibana_sample_data_logs | WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart | STATS count = COUNT() BY BUCKET(@timestamp, 75, ?_tstart, ?_tend)"
+      },
+      "x": { "column": "BUCKET(@timestamp, 75, ?_tstart, ?_tend)", "label": "@timestamp" },
+      "y": [{ "column": "count" }]
+    }
+  ]
+}

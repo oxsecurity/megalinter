@@ -33,6 +33,9 @@ You maintain the consistency between the MegaLinter observability payload and th
 3. Regenerate: `python .automation/build_dashboards.py` (use the repo venv).
 4. Verify sync: `python .automation/build_dashboards.py --check` must pass, and `megalinter/tests/test_megalinter/api_reporter_v2_test.py` must still pass (`pytest megalinter/tests/test_megalinter/api_reporter_v2_test.py`).
 5. If credentials are available in `.env` (GRAFANA_HOST/GRAFANA_TOKEN, DD_TOKEN, ELASTIC_HOST/ELASTIC_API_KEY, NEW_RELIC_HOST/NEW_RELIC_API_KEY), offer to upload the regenerated dashboards to the live instances with `node mega-linter-runner/lib/index.js --upload-dashboards <provider>` (set `MEGALINTER_DASHBOARDS_DIR` to the local `docs/dashboards` folder) and verify with provider queries that the dashboards' metrics/fields return data.
+   - The uploader expects different variable names than `.env` uses — map them: `GRAFANA_URL=$GRAFANA_HOST`, `DD_BEARER_TOKEN=$DD_TOKEN` + `DD_SITE=datadoghq.eu` (the token is an EU-site bearer token; the default site 401s), `KIBANA_URL=$ELASTIC_HOST`, `NEW_RELIC_REGION=EU` + `NEW_RELIC_ACCOUNT_ID` (resolve it via NerdGraph `{ actor { accounts { id } } }` on `api.eu.newrelic.com` — take the non-storage account).
+   - To query Elastic data directly, derive the Elasticsearch endpoint from the Kibana host (`.kb.` → `.es.`, strip trailing slash); the Kibana console proxy is disabled (404).
+   - After a New Relic upload, verify the facet links: fetch the dashboard entity's pages + widgets `linkedEntities` via NerdGraph and check every linked guid is one of the entity's current page guids (the second-pass update must send `page.guid` values or NerdGraph recreates pages and the links go stale).
 6. Update the documentation if the metrics reference changed: `docs/observability.md` and `docs/observability/<provider>.md`.
 
 ## Rules

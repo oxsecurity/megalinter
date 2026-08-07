@@ -153,6 +153,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - New **`API_REPORTER_PROVIDER`** variable: comma-separated list of target providers (`grafana` by default, `datadog`, `elastic`, `newrelic`) with per-provider auth variables (`API_REPORTER_DATADOG_*`, `API_REPORTER_ELASTIC_*`, `API_REPORTER_NEWRELIC_*`)
     - Dashboards are provisioned automatically with **`npx mega-linter-runner --upload-dashboards <provider>`** (idempotent create-or-update), also proposed during `--install` and `--upgrade`
   - New **`API_REPORTER_PAYLOAD_FORMAT`** variable (`auto`, `loki` or `default`) to force the payload format sent by the API Reporter, instead of only deducing it from the endpoint URL
+  - **Observability dashboards reviewed and improved** against each provider's official guidance — refresh yours with **`npx mega-linter-runner --upload-dashboards <provider>`**
+    - **Correct KPIs**: Grafana "latest run" stats no longer double-count when several branches or MegaLinter versions report in the window, and stale series (deleted branches, pre-upgrade versions) no longer linger; the **quality gate pass rate** is now a true pass rate over the selected period on Grafana, Datadog and New Relic; "errors auto-fixed" and "time saved" now show period totals consistently on all providers
+    - **Working navigation**: Grafana drill-down links now keep the selected branch, and New Relic facet links to the **Repository detail** and **Why this rating?** pages now actually work (they were silently ignored)
+    - **"Why this rating?"** explanations now render correctly on Datadog, Elastic and New Relic (they showed literal `\n` text), and Elastic and New Relic gain the missing **"Linters dragging the score down"** and **"Time saved by auto-fixes"** elements
+    - **Readable with sparse CI data**: 1-week default windows on Datadog widgets, 1-day buckets on New Relic charts, run-marker annotations and sparklines on Grafana/Datadog tiles, sorted tables, and semantic colors everywhere (blocking=red, non-blocking=yellow, health A-E bands)
+    - **New content**: A-E rating breakdown and quality-gate failure rate (New Relic), files analyzed and health score by MegaLinter version (Datadog), files analyzed and MegaLinter versions in use (Elastic), org-level filter variable (Grafana)
+    - Fix the New Relic provider tagging every metric datapoint with `runId`, which burned metric cardinality for no query value
 
 - Flavors
 
@@ -204,6 +211,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Removed a stray `cpplint` Python venv that was mistakenly declared in the CSS_STYLELINT descriptor
   - Keep the **Docker Pulls badge** in `docs/index.md` in sync by having `docker_stats.py` also update the hardcoded badge total in `.automation/build.py`
   - Mark the repository's internal Claude Code skills (`.claude/skills/`) as **`internal`** so `npx skills add oxsecurity/megalinter` only offers the four MegaLinter agent skills from the `skills/` folder
+  - Vendor the **official Grafana, Elastic and Datadog agent skills** (Apache-2.0, with licenses and source attribution) into `.claude/skills/` (`grafana-dashboarding`, `grafana-promql`, `kibana-dashboards`, `datadog-dashboards`) to guide observability dashboard maintenance alongside the `sync-dashboards` skill — New Relic publishes no official agent skill (only an MCP server)
   - Fix the **`/build` contribution skill** being accidentally gitignored by the `build/` packaging pattern, so it is now actually versioned
 
 - CI

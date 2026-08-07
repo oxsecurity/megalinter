@@ -13,6 +13,30 @@ from dashboard_builders.contract import (
 from dashboard_builders.DashboardBuilder import DashboardBuilder
 
 GRAFANA_TAG = "megalinter"
+# Shared LogQL suffix: unwrap occurrences, dropping malformed lines
+LOKI_UNWRAP = '| json | unwrap occurrences | __error__=""'
+
+DESC_HEALTH_SCORE = (
+    "Health score of the latest run in the selected time range, aggregated with min "
+    "(worst case) across the selected branches/repositories. "
+    "Rating scale: A >= 90, B >= 80, C >= 65, D >= 50, else E."
+)
+DESC_QUALITY_GATE = (
+    "Worst-case (min) quality gate of the latest run of each selected series: "
+    "FAIL as soon as one selected branch failed its latest run."
+)
+DESC_BLOCKING_ERRORS = (
+    "Sum of the blocking errors reported by the latest run of each selected "
+    "repository/branch in the time range."
+)
+DESC_RATING = (
+    "Rating derived from the latest-run, worst-branch health score: "
+    "A >= 90, B >= 80, C >= 65, D >= 50, else E."
+)
+DESC_GATE_PASS_RATE = (
+    "Share of all MegaLinter runs over the selected period that passed the "
+    "quality gate."
+)
 
 
 class DashboardBuilderGrafana(DashboardBuilder):
@@ -208,28 +232,47 @@ class DashboardBuilderGrafana(DashboardBuilder):
         }
 
     def rating_link(self, repo_ref=None):
-        url = "/d/megalinter-rating/megalinter-rating?${__url_time_range}"
+        # ${branch:queryparam} propagates the branch selection (incl. multi-values)
+        url = (
+            "/d/megalinter-rating/megalinter-rating"
+            "?${__url_time_range}&${branch:queryparam}"
+        )
+        title = "Why this rating?"
         if repo_ref is not None:
             url += f"&var-repo={repo_ref}"
-        return {"title": "Why this rating?", "url": url}
+        else:
+            title = "Rating explanation (pick a repository)"
+        return {"title": title, "url": url}
 
-    def repository_link(self, repo_ref, branch_ref=None):
-        url = (
-            "/d/megalinter-repository/megalinter-repository"
-            f"?var-repo={repo_ref}&${{__url_time_range}}"
-        )
-        if branch_ref is not None:
-            url += f"&var-branch={branch_ref}"
-        return {"title": "Open repository dashboard", "url": url}
+    def repository_link(self, repo_ref):
+        return {
+            "title": "Open repository dashboard",
+            "url": (
+                "/d/megalinter-repository/megalinter-repository"
+                f"?var-repo={repo_ref}"
+                "&${__url_time_range}&${branch:queryparam}"
+            ),
+        }
 
     def linter_link(self, linter_ref, repo_ref="$repo"):
         return {
             "title": "Open linter detail dashboard",
             "url": (
                 "/d/megalinter-linter-detail/megalinter-linter-detail"
-                f"?var-repo={repo_ref}&var-linter={linter_ref}&${{__url_time_range}}"
+                f"?var-repo={repo_ref}&var-linter={linter_ref}"
+                "&${__url_time_range}&${branch:queryparam}"
             ),
         }
+
+    # Churn-proof "latest value": the inner instant aggregation collapses
+    # branch/version/flavor label churn at each subquery step, then
+    # last_over_time keeps only the most recent step, so stale series
+    # (deleted branch, pre-upgrade version) never leak their final value
+    def latest_agg(self, inner_agg, metric, sel, by=None):
+        by_clause = f" by ({by})" if by else ""
+        return (
+            f"last_over_time(({inner_agg}{by_clause} ({metric}{{{sel}}}))[$__range:])"
+        )
 
     def stat_panel(
         self,
@@ -241,6 +284,7 @@ class DashboardBuilderGrafana(DashboardBuilder):
         thresholds_def=None,
         links=None,
         color_mode="value",
+        description=None,
     ):
         defaults = {
             "thresholds": thresholds_def or self.green_only(),
@@ -250,7 +294,7 @@ class DashboardBuilderGrafana(DashboardBuilder):
             defaults["unit"] = unit
         if links is not None:
             defaults["links"] = links
-        return {
+        panel = {
             "id": self.next_id(),
             "type": "stat",
             "title": title,
@@ -270,6 +314,9 @@ class DashboardBuilderGrafana(DashboardBuilder):
             },
             "targets": [self.prom_target(expr, instant=True)],
         }
+        if description is not None:
+            panel["description"] = description
+        return panel
 
     def timeseries_panel(
         self,
@@ -284,13 +331,15 @@ class DashboardBuilderGrafana(DashboardBuilder):
         threshold_zones=False,
         min_val=None,
         max_val=None,
+        legend_placement="right",
     ):
         defaults = {
             "custom": {
                 "drawStyle": "line",
                 "lineWidth": 2,
                 "fillOpacity": 12,
-                "spanNulls": True,
+                # Sparse point-in-time CI data: never bridge gaps between runs
+                "spanNulls": False,
                 "showPoints": "auto",
                 "pointSize": 5,
             },
@@ -322,7 +371,7 @@ class DashboardBuilderGrafana(DashboardBuilder):
             "options": {
                 "legend": {
                     "displayMode": "table",
-                    "placement": "right",
+                    "placement": legend_placement,
                     "calcs": ["lastNotNull", "max"],
                 },
                 "tooltip": {"mode": "multi", "sort": "desc"},
@@ -371,7 +420,15 @@ class DashboardBuilderGrafana(DashboardBuilder):
         }
 
     def table_panel(
-        self, title, targets, grid, transformations=None, overrides=None, links=None
+        self,
+        title,
+        targets,
+        grid,
+        transformations=None,
+        overrides=None,
+        links=None,
+        sort_column=None,
+        sort_desc=True,
     ):
         defaults = {"thresholds": self.green_only(), "mappings": []}
         if links is not None:
@@ -388,7 +445,11 @@ class DashboardBuilderGrafana(DashboardBuilder):
             },
             "options": {
                 "showHeader": True,
-                "sortBy": [{"displayName": title, "desc": True}],
+                "sortBy": (
+                    [{"displayName": sort_column, "desc": sort_desc}]
+                    if sort_column is not None
+                    else []
+                ),
             },
             "targets": targets,
             "transformations": transformations or [],
@@ -445,9 +506,12 @@ class DashboardBuilderGrafana(DashboardBuilder):
             "targets": [self.loki_target(expr)],
         }
 
-    def datasource_variables(self):
-        return [
-            # Hidden: auto-selects the first matching datasource of the instance
+    # Auto-selected and hidden (sfdx-hardis v2 style); the regex keeps
+    # Grafana Cloud internal datasources from being picked automatically
+    DS_EXCLUDE_REGEX = "/^(?!.*(alert-state-history|usage-insights|ml-metrics)).*/"
+
+    def datasource_variables(self, include_loki=True):
+        variables = [
             {
                 "name": "DS_PROMETHEUS",
                 "label": "Metrics datasource",
@@ -455,16 +519,35 @@ class DashboardBuilderGrafana(DashboardBuilder):
                 "query": "prometheus",
                 "current": {},
                 "hide": 2,
-            },
-            {
-                "name": "DS_LOKI",
-                "label": "Logs datasource",
-                "type": "datasource",
-                "query": "loki",
-                "current": {},
-                "hide": 2,
-            },
+                "refresh": 1,
+                "regex": self.DS_EXCLUDE_REGEX,
+            }
         ]
+        if include_loki:
+            variables.append(
+                {
+                    "name": "DS_LOKI",
+                    "label": "Logs datasource",
+                    "type": "datasource",
+                    "query": "loki",
+                    "current": {},
+                    "hide": 2,
+                    "refresh": 1,
+                    "regex": self.DS_EXCLUDE_REGEX,
+                }
+            )
+        return variables
+
+    # Marks each CI run on the (sparse) timeseries panels
+    def loki_runs_annotation(self, extra_sel=""):
+        return {
+            "name": "MegaLinter runs",
+            "datasource": self.ds_loki(),
+            "enable": True,
+            "hide": False,
+            "iconColor": "blue",
+            "expr": f'{{{LOKI_BASE},recordType="run"{extra_sel}}}',
+        }
 
     def query_variable(self, name, label, query, multi=True, include_all=True):
         return {
@@ -481,22 +564,24 @@ class DashboardBuilderGrafana(DashboardBuilder):
             "options": [],
         }
 
-    def dashboard_shell(self, title, uid, variables, panels, description):
+    def dashboard_shell(
+        self, title, uid, variables, panels, description, annotations=None
+    ):
         return {
-            "annotations": {"list": []},
+            "annotations": {"list": annotations or []},
             "description": description,
             "editable": True,
             "fiscalYearStartMonth": 0,
             "graphTooltip": 1,
             "id": None,
             "links": [
-                # Navigation buttons to every MegaLinter dashboard (by tag),
-                # keeping the selected time range and variables
+                # Single dropdown button listing every MegaLinter dashboard
+                # (by tag), keeping the selected time range and variables
                 {
-                    "title": "",
+                    "title": "MegaLinter dashboards",
                     "type": "dashboards",
                     "tags": [GRAFANA_TAG],
-                    "asDropdown": False,
+                    "asDropdown": True,
                     "keepTime": True,
                     "includeVars": True,
                     "icon": "dashboard",
@@ -511,8 +596,8 @@ class DashboardBuilderGrafana(DashboardBuilder):
                 },
             ],
             "panels": panels,
-            "refresh": "",
-            "schemaVersion": 39,
+            "refresh": "5m",
+            "schemaVersion": 41,
             "tags": [GRAFANA_TAG],
             "templating": {"list": variables},
             "time": {"from": "now-30d", "to": "now"},
@@ -524,9 +609,15 @@ class DashboardBuilderGrafana(DashboardBuilder):
             "weekStart": "",
         }
 
-    def join_by_field_transformations(self, field, renames):
+    def join_by_field_transformations(self, field, renames, mode="outer"):
         return [
-            {"id": "joinByField", "options": {"byField": field, "mode": "outer"}},
+            {"id": "joinByField", "options": {"byField": field, "mode": mode}},
+            # Joining several instant table frames leaves "Time", "Time 2", ...
+            # columns behind: drop them all before renaming
+            {
+                "id": "filterFieldsByName",
+                "options": {"exclude": {"pattern": "^Time.*$"}},
+            },
             {
                 "id": "organize",
                 "options": {
@@ -541,7 +632,7 @@ class DashboardBuilderGrafana(DashboardBuilder):
     #####################
 
     def org_overview_dashboard(self):
-        sel = 'gitBranchName=~"$branch"'
+        sel = 'orgIdentifier=~"$org",gitBranchName=~"$branch"'
         run_range = "[$__range]"
         panels = [
             self.stat_panel(
@@ -557,7 +648,8 @@ class DashboardBuilderGrafana(DashboardBuilder):
             ),
             self.stat_panel(
                 "Quality gate pass rate",
-                f"100 * avg(last_over_time({PROM_RUN_PREFIX}qualityGate{{{sel}}}{run_range}))",
+                f"100 * sum(sum_over_time({PROM_RUN_PREFIX}qualityGate{{{sel}}}{run_range})) / "
+                f"sum(count_over_time({PROM_RUN_PREFIX}qualityGate{{{sel}}}{run_range}))",
                 {"h": 5, "w": 4, "x": 8, "y": 0},
                 unit="percent",
                 thresholds_def=self.thresholds(
@@ -568,17 +660,19 @@ class DashboardBuilderGrafana(DashboardBuilder):
                     ]
                 ),
                 color_mode="background",
+                description=DESC_GATE_PASS_RATE,
             ),
             self.stat_panel(
                 "Blocking errors (latest runs)",
-                f"sum(max by (gitIdentifier) (last_over_time({PROM_RUN_PREFIX}blockingErrors{{{sel}}}{run_range})))",
+                f"sum({self.latest_agg('sum', f'{PROM_RUN_PREFIX}blockingErrors', sel, 'gitIdentifier')})",
                 {"h": 5, "w": 4, "x": 12, "y": 0},
                 thresholds_def=self.red_if_any(),
                 color_mode="background",
+                description=DESC_BLOCKING_ERRORS,
             ),
             self.stat_panel(
                 "Non-blocking errors (latest runs)",
-                f"sum(max by (gitIdentifier) (last_over_time({PROM_RUN_PREFIX}nonBlockingErrors{{{sel}}}{run_range})))",
+                f"sum({self.latest_agg('sum', f'{PROM_RUN_PREFIX}nonBlockingErrors', sel, 'gitIdentifier')})",
                 {"h": 5, "w": 4, "x": 16, "y": 0},
                 thresholds_def=self.thresholds(
                     [{"color": "green", "value": None}, {"color": "yellow", "value": 1}]
@@ -586,7 +680,7 @@ class DashboardBuilderGrafana(DashboardBuilder):
             ),
             self.stat_panel(
                 "Errors auto-fixed (latest runs)",
-                f"sum(max by (gitIdentifier) (last_over_time({PROM_RUN_PREFIX}totalErrorsFixed{{{sel}}}{run_range})))",
+                f"sum({self.latest_agg('sum', f'{PROM_RUN_PREFIX}totalErrorsFixed', sel, 'gitIdentifier')})",
                 {"h": 5, "w": 4, "x": 20, "y": 0},
                 thresholds_def=self.thresholds([{"color": "blue", "value": None}]),
             ),
@@ -594,38 +688,55 @@ class DashboardBuilderGrafana(DashboardBuilder):
                 "Repositories (latest run) - click a value to open the repository dashboard",
                 [
                     self.prom_target(
-                        f"max by (gitRepoName) (last_over_time({PROM_RUN_PREFIX}qualityGate{{{sel}}}{run_range}))",
+                        self.latest_agg(
+                            "min", f"{PROM_RUN_PREFIX}qualityGate", sel, "gitRepoName"
+                        ),
                         "A",
                         instant=True,
                         table=True,
                     ),
                     self.prom_target(
-                        f"max by (gitRepoName) (last_over_time({PROM_RUN_PREFIX}healthScore{{{sel}}}{run_range}))",
+                        self.latest_agg(
+                            "min", f"{PROM_RUN_PREFIX}healthScore", sel, "gitRepoName"
+                        ),
                         "B",
                         instant=True,
                         table=True,
                     ),
                     self.prom_target(
-                        f"max by (gitRepoName) (last_over_time({PROM_RUN_PREFIX}blockingErrors{{{sel}}}{run_range}))",
+                        self.latest_agg(
+                            "sum",
+                            f"{PROM_RUN_PREFIX}blockingErrors",
+                            sel,
+                            "gitRepoName",
+                        ),
                         "C",
                         instant=True,
                         table=True,
                     ),
                     self.prom_target(
-                        f"max by (gitRepoName) (last_over_time("
-                        f"{PROM_RUN_PREFIX}nonBlockingErrors{{{sel}}}{run_range}))",
+                        self.latest_agg(
+                            "sum",
+                            f"{PROM_RUN_PREFIX}nonBlockingErrors",
+                            sel,
+                            "gitRepoName",
+                        ),
                         "D",
                         instant=True,
                         table=True,
                     ),
                     self.prom_target(
-                        f"max by (gitRepoName) (last_over_time({PROM_RUN_PREFIX}lintersError{{{sel}}}{run_range}))",
+                        self.latest_agg(
+                            "sum", f"{PROM_RUN_PREFIX}lintersError", sel, "gitRepoName"
+                        ),
                         "E",
                         instant=True,
                         table=True,
                     ),
                     self.prom_target(
-                        f"max by (gitRepoName) (last_over_time({PROM_RUN_PREFIX}runDurationS{{{sel}}}{run_range}))",
+                        self.latest_agg(
+                            "max", f"{PROM_RUN_PREFIX}runDurationS", sel, "gitRepoName"
+                        ),
                         "F",
                         instant=True,
                         table=True,
@@ -660,26 +771,31 @@ class DashboardBuilderGrafana(DashboardBuilder):
                     self.cell_color_override("Linters in error", self.red_if_any()),
                 ],
                 links=[
-                    self.repository_link("${__data.fields.Repository}"),
+                    self.repository_link("${__data.fields.Repository:percentencode}"),
                 ],
+                sort_column="Blocking errors",
             ),
             self.bargauge_panel(
                 "Top repositories by blocking errors",
-                f"topk(10, max by (gitRepoName) (last_over_time({PROM_RUN_PREFIX}blockingErrors{{{sel}}}{run_range})))",
+                f"topk(10, {self.latest_agg('sum', f'{PROM_RUN_PREFIX}blockingErrors', sel, 'gitRepoName')})",
                 {"h": 10, "w": 12, "x": 12, "y": 5},
-                links=[self.repository_link("${__field.labels.gitRepoName}")],
+                links=[
+                    self.repository_link("${__field.labels.gitRepoName:percentencode}")
+                ],
             ),
             self.timeseries_panel(
                 "Repository health score evolution",
                 [
                     self.prom_target(
-                        f"max by (gitRepoName) ({PROM_RUN_PREFIX}healthScore{{{sel}}})",
+                        f"bottomk(15, min by (gitRepoName) ({PROM_RUN_PREFIX}healthScore{{{sel}}}))",
                         legend="{{gitRepoName}}",
                     )
                 ],
                 {"h": 9, "w": 12, "x": 0, "y": 15},
                 unit="percent",
-                links=[self.repository_link("${__field.labels.gitRepoName}")],
+                links=[
+                    self.repository_link("${__field.labels.gitRepoName:percentencode}")
+                ],
                 thresholds_def=self.health_thresholds(),
                 threshold_zones=True,
                 min_val=0,
@@ -689,40 +805,46 @@ class DashboardBuilderGrafana(DashboardBuilder):
                 "Total errors trend by repository",
                 [
                     self.prom_target(
-                        f"max by (gitRepoName) ({PROM_RUN_PREFIX}totalErrors{{{sel}}})",
+                        f"topk(15, sum by (gitRepoName) ({PROM_RUN_PREFIX}totalErrors{{{sel}}}))",
                         legend="{{gitRepoName}}",
                     )
                 ],
                 {"h": 9, "w": 12, "x": 12, "y": 15},
-                links=[self.repository_link("${__field.labels.gitRepoName}")],
+                links=[
+                    self.repository_link("${__field.labels.gitRepoName:percentencode}")
+                ],
             ),
             self.timeseries_panel(
                 "Run duration by repository",
                 [
                     self.prom_target(
-                        f"max by (gitRepoName) ({PROM_RUN_PREFIX}runDurationS{{{sel}}})",
+                        f"topk(15, max by (gitRepoName) ({PROM_RUN_PREFIX}runDurationS{{{sel}}}))",
                         legend="{{gitRepoName}}",
                     )
                 ],
                 {"h": 9, "w": 12, "x": 0, "y": 32},
                 unit="s",
-                links=[self.repository_link("${__field.labels.gitRepoName}")],
+                links=[
+                    self.repository_link("${__field.labels.gitRepoName:percentencode}")
+                ],
             ),
             self.stat_panel(
                 "Average health score",
-                f"avg(max by (gitRepoName) (last_over_time({PROM_RUN_PREFIX}healthScore{{{sel}}}{run_range})))",
+                f"avg({self.latest_agg('min', f'{PROM_RUN_PREFIX}healthScore', sel, 'gitRepoName')})",
                 {"h": 9, "w": 4, "x": 12, "y": 32},
                 unit="percent",
                 thresholds_def=self.health_thresholds(),
+                description=DESC_HEALTH_SCORE,
             ),
             self.stat_panel(
                 "Org rating",
-                f"avg(max by (gitRepoName) (last_over_time({PROM_RUN_PREFIX}healthScore{{{sel}}}{run_range})))",
+                f"avg({self.latest_agg('min', f'{PROM_RUN_PREFIX}healthScore', sel, 'gitRepoName')})",
                 {"h": 9, "w": 4, "x": 16, "y": 32},
                 mappings=self.grade_mappings(),
                 thresholds_def=self.health_thresholds(),
                 color_mode="background",
                 links=[self.rating_link()],
+                description=DESC_RATING,
             ),
             self.stat_panel(
                 "Estimated time saved by auto-fixes (5 min/fix)",
@@ -741,11 +863,12 @@ class DashboardBuilderGrafana(DashboardBuilder):
                 "Errors auto-fixed by repository",
                 [
                     self.prom_target(
-                        f"max by (gitRepoName) ({PROM_RUN_PREFIX}totalErrorsFixed{{{sel}}})",
+                        f"topk(15, sum by (gitRepoName) ({PROM_RUN_PREFIX}totalErrorsFixed{{{sel}}}))",
                         legend="{{gitRepoName}}",
                     )
                 ],
                 {"h": 8, "w": 6, "x": 12, "y": 24},
+                legend_placement="bottom",
             ),
             self.table_panel(
                 "MegaLinter versions",
@@ -772,18 +895,26 @@ class DashboardBuilderGrafana(DashboardBuilder):
                         },
                     }
                 ],
+                sort_column="Repository",
+                sort_desc=False,
             ),
         ]
-        variables = self.datasource_variables() + [
+        variables = self.datasource_variables(include_loki=False) + [
+            self.query_variable(
+                "org",
+                "Organization",
+                f"label_values({PROM_RUN_PREFIX}lintersCount, orgIdentifier)",
+                multi=True,
+            ),
             self.query_variable(
                 "branch",
                 "Branch",
-                f"label_values({PROM_RUN_PREFIX}lintersCount, gitBranchName)",
+                f'label_values({PROM_RUN_PREFIX}lintersCount{{orgIdentifier=~"$org"}}, gitBranchName)',
                 multi=True,
             ),
         ]
         return self.dashboard_shell(
-            "MegaLinter - Org Overview",
+            "MegaLinter - 1. Org Overview",
             "megalinter-org-overview",
             variables,
             panels,
@@ -808,27 +939,31 @@ class DashboardBuilderGrafana(DashboardBuilder):
                 multi=True,
             ),
         ]
+        fixed_latest = self.latest_agg("sum", f"{PROM_RUN_PREFIX}totalErrorsFixed", sel)
+        errors_latest = self.latest_agg("sum", f"{PROM_RUN_PREFIX}totalErrors", sel)
         panels = [
             self.stat_panel(
                 "Quality gate",
-                f"min(last_over_time({PROM_RUN_PREFIX}qualityGate{{{sel}}}{run_range}))",
+                self.latest_agg("min", f"{PROM_RUN_PREFIX}qualityGate", sel),
                 {"h": 5, "w": 4, "x": 0, "y": 0},
                 mappings=self.gate_mapping(),
                 thresholds_def=self.thresholds(
                     [{"color": "red", "value": None}, {"color": "green", "value": 1}]
                 ),
                 color_mode="background",
+                description=DESC_QUALITY_GATE,
             ),
             self.stat_panel(
                 "Blocking errors",
-                f"sum(last_over_time({PROM_RUN_PREFIX}blockingErrors{{{sel}}}{run_range}))",
+                self.latest_agg("sum", f"{PROM_RUN_PREFIX}blockingErrors", sel),
                 {"h": 5, "w": 4, "x": 4, "y": 0},
                 thresholds_def=self.red_if_any(),
                 color_mode="background",
+                description=DESC_BLOCKING_ERRORS,
             ),
             self.stat_panel(
                 "Non-blocking errors",
-                f"sum(last_over_time({PROM_RUN_PREFIX}nonBlockingErrors{{{sel}}}{run_range}))",
+                self.latest_agg("sum", f"{PROM_RUN_PREFIX}nonBlockingErrors", sel),
                 {"h": 5, "w": 4, "x": 8, "y": 0},
                 thresholds_def=self.thresholds(
                     [{"color": "green", "value": None}, {"color": "yellow", "value": 1}]
@@ -836,19 +971,19 @@ class DashboardBuilderGrafana(DashboardBuilder):
             ),
             self.stat_panel(
                 "Errors auto-fixed",
-                f"sum(last_over_time({PROM_RUN_PREFIX}totalErrorsFixed{{{sel}}}{run_range}))",
+                fixed_latest,
                 {"h": 5, "w": 4, "x": 12, "y": 0},
                 thresholds_def=self.thresholds([{"color": "blue", "value": None}]),
             ),
             self.stat_panel(
                 "Linters in error",
-                f"sum(last_over_time({PROM_RUN_PREFIX}lintersError{{{sel}}}{run_range}))",
+                self.latest_agg("sum", f"{PROM_RUN_PREFIX}lintersError", sel),
                 {"h": 5, "w": 4, "x": 16, "y": 0},
                 thresholds_def=self.red_if_any(),
             ),
             self.stat_panel(
                 "Run duration",
-                f"max(last_over_time({PROM_RUN_PREFIX}runDurationS{{{sel}}}{run_range}))",
+                self.latest_agg("max", f"{PROM_RUN_PREFIX}runDurationS", sel),
                 {"h": 5, "w": 4, "x": 20, "y": 0},
                 unit="s",
             ),
@@ -860,29 +995,30 @@ class DashboardBuilderGrafana(DashboardBuilder):
             ),
             self.stat_panel(
                 "Fix rate",
-                f"100 * sum(last_over_time({PROM_RUN_PREFIX}totalErrorsFixed{{{sel}}}{run_range})) / "
-                f"clamp_min(sum(last_over_time({PROM_RUN_PREFIX}totalErrorsFixed{{{sel}}}{run_range})) + "
-                f"sum(last_over_time({PROM_RUN_PREFIX}totalErrors{{{sel}}}{run_range})), 1)",
+                f"100 * {fixed_latest} / "
+                f"clamp_min({fixed_latest} + {errors_latest}, 1)",
                 {"h": 5, "w": 4, "x": 4, "y": 5},
                 unit="percent",
                 thresholds_def=self.thresholds([{"color": "blue", "value": None}]),
             ),
             self.stat_panel(
                 "Health score",
-                f"min(last_over_time({PROM_RUN_PREFIX}healthScore{{{sel}}}{run_range}))",
+                self.latest_agg("min", f"{PROM_RUN_PREFIX}healthScore", sel),
                 {"h": 5, "w": 4, "x": 8, "y": 5},
                 unit="percent",
                 thresholds_def=self.health_thresholds(),
                 color_mode="background",
+                description=DESC_HEALTH_SCORE,
             ),
             self.stat_panel(
                 "Rating",
-                f"min(last_over_time({PROM_RUN_PREFIX}healthScore{{{sel}}}{run_range}))",
+                self.latest_agg("min", f"{PROM_RUN_PREFIX}healthScore", sel),
                 {"h": 5, "w": 3, "x": 12, "y": 5},
                 mappings=self.grade_mappings(),
                 thresholds_def=self.health_thresholds(),
                 color_mode="background",
                 links=[self.rating_link("$repo")],
+                description=DESC_RATING,
             ),
             self.state_timeline_panel(
                 "Quality gate history",
@@ -914,32 +1050,40 @@ class DashboardBuilderGrafana(DashboardBuilder):
                 "Errors by linter - click a linter to open its dashboard",
                 [
                     self.prom_target(
-                        f"max by (linterKey) ({PROM_LINTER_PREFIX}numberErrorsFound{{{sel}}} > 0)",
+                        f"max by (linterKey) ({PROM_LINTER_PREFIX}numberErrorsFound{{{sel}}})",
                         legend="{{linterKey}}",
                     )
                 ],
                 {"h": 9, "w": 12, "x": 12, "y": 10},
                 stacking=True,
-                links=[self.linter_link("${__field.labels.linterKey}")],
+                links=[self.linter_link("${__field.labels.linterKey:percentencode}")],
             ),
             self.table_panel(
                 "Linters (latest run)",
                 [
                     self.prom_target(
-                        f"max by (linterKey) (last_over_time("
-                        f"{PROM_LINTER_PREFIX}numberErrorsFound{{{sel}}}{run_range}))",
+                        self.latest_agg(
+                            "sum",
+                            f"{PROM_LINTER_PREFIX}numberErrorsFound",
+                            sel,
+                            "linterKey",
+                        ),
                         "A",
                         instant=True,
                         table=True,
                     ),
                     self.prom_target(
-                        f"max by (linterKey) (last_over_time({PROM_LINTER_PREFIX}blocking{{{sel}}}{run_range}))",
+                        self.latest_agg(
+                            "max", f"{PROM_LINTER_PREFIX}blocking", sel, "linterKey"
+                        ),
                         "B",
                         instant=True,
                         table=True,
                     ),
                     self.prom_target(
-                        f"max by (linterKey) (last_over_time({PROM_LINTER_PREFIX}elapsedTime{{{sel}}}{run_range}))",
+                        self.latest_agg(
+                            "max", f"{PROM_LINTER_PREFIX}elapsedTime", sel, "linterKey"
+                        ),
                         "C",
                         instant=True,
                         table=True,
@@ -971,7 +1115,8 @@ class DashboardBuilderGrafana(DashboardBuilder):
                         ],
                     ),
                 ],
-                links=[self.linter_link("${__data.fields.Linter}")],
+                links=[self.linter_link("${__data.fields.Linter:percentencode}")],
+                sort_column="Errors",
             ),
             self.timeseries_panel(
                 "Linters duration",
@@ -1003,7 +1148,7 @@ class DashboardBuilderGrafana(DashboardBuilder):
                 "Errors by language (descriptor)",
                 [
                     self.prom_target(
-                        f"sum by (descriptor) ({PROM_LINTER_PREFIX}numberErrorsFound{{{sel}}} > 0)",
+                        f"sum by (descriptor) ({PROM_LINTER_PREFIX}numberErrorsFound{{{sel}}})",
                         legend="{{descriptor}}",
                     )
                 ],
@@ -1037,16 +1182,20 @@ class DashboardBuilderGrafana(DashboardBuilder):
             ),
         ]
         return self.dashboard_shell(
-            "MegaLinter - Repository",
+            "MegaLinter - 2. Repository",
             "megalinter-repository",
             variables,
             panels,
             "Quality gate, KPIs and trends for a single repository monitored by MegaLinter",
+            annotations=[
+                self.loki_runs_annotation(
+                    ',gitRepoName=~"$repo",gitBranchName=~"$branch"'
+                )
+            ],
         )
 
     def linter_detail_dashboard(self):
         sel = 'gitRepoName=~"$repo",gitBranchName=~"$branch",linterKey=~"$linter"'
-        run_range = "[$__range]"
         variables = self.datasource_variables() + [
             self.query_variable(
                 "repo",
@@ -1074,13 +1223,13 @@ class DashboardBuilderGrafana(DashboardBuilder):
         panels = [
             self.stat_panel(
                 "Errors (latest run)",
-                f"sum(last_over_time({PROM_LINTER_PREFIX}numberErrorsFound{{{sel}}}{run_range}))",
+                self.latest_agg("sum", f"{PROM_LINTER_PREFIX}numberErrorsFound", sel),
                 {"h": 5, "w": 6, "x": 0, "y": 0},
                 thresholds_def=self.red_if_any(),
             ),
             self.stat_panel(
                 "Blocking",
-                f"max(last_over_time({PROM_LINTER_PREFIX}blocking{{{sel}}}{run_range}))",
+                self.latest_agg("max", f"{PROM_LINTER_PREFIX}blocking", sel),
                 {"h": 5, "w": 6, "x": 6, "y": 0},
                 mappings=[
                     {
@@ -1094,12 +1243,12 @@ class DashboardBuilderGrafana(DashboardBuilder):
             ),
             self.stat_panel(
                 "Files analyzed (latest run)",
-                f"max(last_over_time({PROM_LINTER_PREFIX}numberFilesFound{{{sel}}}{run_range}))",
+                self.latest_agg("sum", f"{PROM_LINTER_PREFIX}numberFilesFound", sel),
                 {"h": 5, "w": 6, "x": 12, "y": 0},
             ),
             self.stat_panel(
                 "Elapsed time (latest run)",
-                f"max(last_over_time({PROM_LINTER_PREFIX}elapsedTime{{{sel}}}{run_range}))",
+                self.latest_agg("max", f"{PROM_LINTER_PREFIX}elapsedTime", sel),
                 {"h": 5, "w": 6, "x": 18, "y": 0},
                 unit="s",
             ),
@@ -1126,13 +1275,13 @@ class DashboardBuilderGrafana(DashboardBuilder):
             ),
             self.bargauge_panel(
                 "Top rules (selected period)",
-                f"topk(20, sum by (ruleId) (sum_over_time({loki_rule_sel} | json | unwrap occurrences [$__range])))",
+                f"topk(20, sum by (ruleId) (sum_over_time({loki_rule_sel} {LOKI_UNWRAP} [$__range])))",
                 {"h": 10, "w": 12, "x": 0, "y": 14},
                 datasource=self.ds_loki(),
             ),
             self.bargauge_panel(
                 "Top files (selected period)",
-                f"topk(20, sum by (file) (sum_over_time({loki_file_sel} | json | unwrap occurrences [$__range])))",
+                f"topk(20, sum by (file) (sum_over_time({loki_file_sel} {LOKI_UNWRAP} [$__range])))",
                 {"h": 10, "w": 12, "x": 12, "y": 14},
                 datasource=self.ds_loki(),
             ),
@@ -1163,17 +1312,21 @@ class DashboardBuilderGrafana(DashboardBuilder):
             ),
         ]
         return self.dashboard_shell(
-            "MegaLinter - Linter Detail",
+            "MegaLinter - 3. Linter Detail",
             "megalinter-linter-detail",
             variables,
             panels,
             "Drill-down on a single linter: errors, duration, top rules and files",
+            annotations=[
+                self.loki_runs_annotation(
+                    ',gitRepoName=~"$repo",gitBranchName=~"$branch"'
+                )
+            ],
         )
 
     def rating_dashboard(self):
         sel = 'gitRepoName=~"$repo",gitBranchName=~"$branch"'
-        run_range = "[$__range]"
-        variables = self.datasource_variables() + [
+        variables = self.datasource_variables(include_loki=False) + [
             self.query_variable(
                 "repo",
                 "Repository",
@@ -1191,19 +1344,21 @@ class DashboardBuilderGrafana(DashboardBuilder):
         panels = [
             self.stat_panel(
                 "Rating",
-                f"min(last_over_time({PROM_RUN_PREFIX}healthScore{{{sel}}}{run_range}))",
+                self.latest_agg("min", f"{PROM_RUN_PREFIX}healthScore", sel),
                 {"h": 6, "w": 4, "x": 0, "y": 0},
                 mappings=self.grade_mappings(),
                 thresholds_def=self.health_thresholds(),
                 color_mode="background",
+                description=DESC_RATING,
             ),
             self.stat_panel(
                 "Health score",
-                f"min(last_over_time({PROM_RUN_PREFIX}healthScore{{{sel}}}{run_range}))",
+                self.latest_agg("min", f"{PROM_RUN_PREFIX}healthScore", sel),
                 {"h": 6, "w": 4, "x": 4, "y": 0},
                 unit="percent",
                 thresholds_def=self.health_thresholds(),
                 color_mode="background",
+                description=DESC_HEALTH_SCORE,
             ),
             self.text_panel(
                 "## How the rating is computed\n\nThe **health score** (0-100) of a run is:\n\n`100 x "
@@ -1213,18 +1368,18 @@ class DashboardBuilderGrafana(DashboardBuilder):
                 "one brings back a full share of the score), then reduce non-blocking warnings (each one "
                 "brings back half a share). The table below lists the linters currently dragging the score "
                 "down - click one to open its detail dashboard.",
-                {"h": 12, "w": 16, "x": 8, "y": 0},
+                {"h": 18, "w": 16, "x": 8, "y": 0},
             ),
             self.stat_panel(
                 "Linters in success",
-                f"sum(last_over_time({PROM_RUN_PREFIX}lintersSuccess{{{sel}}}{run_range}))",
+                self.latest_agg("sum", f"{PROM_RUN_PREFIX}lintersSuccess", sel),
                 {"h": 6, "w": 4, "x": 0, "y": 6},
                 thresholds_def=self.thresholds([{"color": "green", "value": None}]),
                 color_mode="background",
             ),
             self.stat_panel(
                 "Linters with warnings (0.5 share each)",
-                f"sum(last_over_time({PROM_RUN_PREFIX}lintersWarning{{{sel}}}{run_range}))",
+                self.latest_agg("sum", f"{PROM_RUN_PREFIX}lintersWarning", sel),
                 {"h": 6, "w": 4, "x": 4, "y": 6},
                 thresholds_def=self.thresholds(
                     [
@@ -1236,29 +1391,31 @@ class DashboardBuilderGrafana(DashboardBuilder):
             ),
             self.stat_panel(
                 "Linters in error (0 share)",
-                f"sum(last_over_time({PROM_RUN_PREFIX}lintersError{{{sel}}}{run_range}))",
+                self.latest_agg("sum", f"{PROM_RUN_PREFIX}lintersError", sel),
                 {"h": 6, "w": 4, "x": 0, "y": 12},
                 thresholds_def=self.red_if_any(),
                 color_mode="background",
             ),
             self.stat_panel(
                 "Total linters",
-                f"sum(last_over_time({PROM_RUN_PREFIX}lintersCount{{{sel}}}{run_range}))",
+                self.latest_agg("sum", f"{PROM_RUN_PREFIX}lintersCount", sel),
                 {"h": 6, "w": 4, "x": 4, "y": 12},
             ),
             self.table_panel(
                 "Linters dragging the score down - click one to open its dashboard",
                 [
                     self.prom_target(
-                        f"max by (linterKey) (last_over_time("
-                        f"{PROM_LINTER_PREFIX}numberErrorsFound{{{sel}}}{run_range}) > 0)",
+                        # > 0 keeps only failing linters in this frame; the inner
+                        # join below then drops clean linters from the table
+                        f"{self.latest_agg('sum', f'{PROM_LINTER_PREFIX}numberErrorsFound', sel, 'linterKey')} > 0",
                         "A",
                         instant=True,
                         table=True,
                     ),
                     self.prom_target(
-                        f"max by (linterKey) (last_over_time("
-                        f"{PROM_LINTER_PREFIX}blocking{{{sel}}}{run_range}))",
+                        self.latest_agg(
+                            "max", f"{PROM_LINTER_PREFIX}blocking", sel, "linterKey"
+                        ),
                         "B",
                         instant=True,
                         table=True,
@@ -1272,6 +1429,7 @@ class DashboardBuilderGrafana(DashboardBuilder):
                         "Value #B": "Blocking",
                         "linterKey": "Linter",
                     },
+                    mode="inner",
                 ),
                 overrides=[
                     self.cell_color_override("Errors", self.red_if_any()),
@@ -1293,7 +1451,8 @@ class DashboardBuilderGrafana(DashboardBuilder):
                         ],
                     ),
                 ],
-                links=[self.linter_link("${__data.fields.Linter}")],
+                links=[self.linter_link("${__data.fields.Linter:percentencode}")],
+                sort_column="Errors",
             ),
             self.timeseries_panel(
                 "Health score evolution",
@@ -1312,7 +1471,7 @@ class DashboardBuilderGrafana(DashboardBuilder):
             ),
         ]
         return self.dashboard_shell(
-            "MegaLinter - Why this rating?",
+            "MegaLinter - 5. Why this rating?",
             "megalinter-rating",
             variables,
             panels,
@@ -1340,19 +1499,19 @@ class DashboardBuilderGrafana(DashboardBuilder):
         panels = [
             self.bargauge_panel(
                 "Top rules across repositories (selected period)",
-                f"topk(20, sum by (ruleId) (sum_over_time({loki_rule_sel} | json | unwrap occurrences [$__range])))",
+                f"topk(20, sum by (ruleId) (sum_over_time({loki_rule_sel} {LOKI_UNWRAP} [$__range])))",
                 {"h": 12, "w": 12, "x": 0, "y": 0},
                 datasource=self.ds_loki(),
             ),
             self.bargauge_panel(
                 "Top files across repositories (selected period)",
-                f"topk(20, sum by (file) (sum_over_time({loki_file_sel} | json | unwrap occurrences [$__range])))",
+                f"topk(20, sum by (file) (sum_over_time({loki_file_sel} {LOKI_UNWRAP} [$__range])))",
                 {"h": 12, "w": 12, "x": 12, "y": 0},
                 datasource=self.ds_loki(),
             ),
             self.bargauge_panel(
                 "Rule hits by linter (selected period)",
-                f"topk(15, sum by (linterKey) (sum_over_time({loki_rule_sel} | json | unwrap occurrences [$__range])))",
+                f"topk(15, sum by (linterKey) (sum_over_time({loki_rule_sel} {LOKI_UNWRAP} [$__range])))",
                 {"h": 10, "w": 12, "x": 0, "y": 12},
                 datasource=self.ds_loki(),
             ),
@@ -1360,7 +1519,7 @@ class DashboardBuilderGrafana(DashboardBuilder):
                 "Errors by descriptor",
                 [
                     self.prom_target(
-                        f"sum by (descriptor) ({PROM_LINTER_PREFIX}numberErrorsFound{{{sel}}} > 0)",
+                        f"sum by (descriptor) ({PROM_LINTER_PREFIX}numberErrorsFound{{{sel}}})",
                         legend="{{descriptor}}",
                     )
                 ],
@@ -1371,7 +1530,7 @@ class DashboardBuilderGrafana(DashboardBuilder):
                 "Rule hits trend",
                 [
                     self.loki_target(
-                        f"sum by (ruleId) (sum_over_time({loki_rule_sel} | json | unwrap occurrences [$__interval]))",
+                        f"sum by (ruleId) (sum_over_time({loki_rule_sel} {LOKI_UNWRAP} [$__interval]))",
                         legend="{{ruleId}}",
                     )
                 ],
@@ -1383,7 +1542,7 @@ class DashboardBuilderGrafana(DashboardBuilder):
                 [
                     self.loki_target(
                         f"topk(15, sum by (file, linterKey) (sum_over_time("
-                        f"{loki_file_sel} | json | unwrap occurrences [$__range])))",
+                        f"{loki_file_sel} {LOKI_UNWRAP} [$__range])))",
                         instant=True,
                     )
                 ],
@@ -1401,12 +1560,18 @@ class DashboardBuilderGrafana(DashboardBuilder):
                         },
                     }
                 ],
+                sort_column="Occurrences",
             ),
         ]
         return self.dashboard_shell(
-            "MegaLinter - Top Rules & Files",
+            "MegaLinter - 4. Top Rules & Files",
             "megalinter-rules-files",
             variables,
             panels,
             "Most frequent lint rules and most impacted files across repositories",
+            annotations=[
+                self.loki_runs_annotation(
+                    ',gitRepoName=~"$repo",gitBranchName=~"$branch"'
+                )
+            ],
         )

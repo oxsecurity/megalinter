@@ -208,21 +208,31 @@ export class DashboardUploader {
       '"${NEW_RELIC_ACCOUNT_ID}"',
       String(accountId)
     );
-    const applyFacetLinks = (dashboardInput, pageGuid) => {
+    const PAGE_GUID_MARKERS = {
+      __REPOSITORY_DETAIL_PAGE_GUID__: "Repository detail",
+      __RATING_PAGE_GUID__: "Why this rating?",
+    };
+    // linkedEntityGuids markers live at widget top level (sibling of
+    // rawConfiguration, as expected by the NerdGraph widget schema)
+    const applyFacetLinks = (dashboardInput, guidsByMarker) => {
       for (const page of dashboardInput.pages || []) {
         for (const widget of page.widgets || []) {
-          const guids = widget.rawConfiguration?.linkedEntityGuids;
-          if (guids?.includes("__REPOSITORY_DETAIL_PAGE_GUID__")) {
-            widget.rawConfiguration.linkedEntityGuids = pageGuid
-              ? [pageGuid]
-              : null;
+          const guids = widget.linkedEntityGuids;
+          if (!Array.isArray(guids)) {
+            continue;
+          }
+          for (const marker of Object.keys(PAGE_GUID_MARKERS)) {
+            if (guids.includes(marker)) {
+              const pageGuid = guidsByMarker[marker];
+              widget.linkedEntityGuids = pageGuid ? [pageGuid] : null;
+            }
           }
         }
       }
       return dashboardInput;
     };
     // First pass without the facet-link markers (page guids are unknown yet)
-    const dashboard = applyFacetLinks(JSON.parse(resolvedContent), null);
+    const dashboard = applyFacetLinks(JSON.parse(resolvedContent), {});
     const search = await this.fetchJson(
       api,
       {
@@ -271,15 +281,34 @@ export class DashboardUploader {
       dashboard,
       entities.length ? entities[0].guid : null
     );
-    // Second pass: link repository facets to the "Repository detail" page
-    const detailPage = (firstPass?.pages || []).find(
-      (page) => page.name === "Repository detail"
+    // Second pass: replace each marker with the guid of its target page
+    // ("Repository detail", "Why this rating?") now that guids are known
+    const guidsByMarker = {};
+    for (const [marker, pageName] of Object.entries(PAGE_GUID_MARKERS)) {
+      const targetPage = (firstPass?.pages || []).find(
+        (page) => page.name === pageName
+      );
+      guidsByMarker[marker] = targetPage ? targetPage.guid : null;
+    }
+    const hasMarkerToResolve = Object.entries(guidsByMarker).some(
+      ([marker, pageGuid]) => pageGuid && resolvedContent.includes(marker)
     );
-    if (detailPage && resolvedContent.includes("__REPOSITORY_DETAIL_PAGE_GUID__")) {
+    if (hasMarkerToResolve) {
       const linkedDashboard = applyFacetLinks(
         JSON.parse(resolvedContent),
-        detailPage.guid
+        guidsByMarker
       );
+      // Carry the first-pass page guids into the update input so pages are
+      // updated in place: without them dashboardUpdate recreates every page
+      // with new guids, and the linkedEntityGuids just resolved would be stale
+      for (const page of linkedDashboard.pages || []) {
+        const firstPassPage = (firstPass?.pages || []).find(
+          (candidate) => candidate.name === page.name
+        );
+        if (firstPassPage) {
+          page.guid = firstPassPage.guid;
+        }
+      }
       await runMutation(linkedDashboard, firstPass.guid);
     }
     return firstPass?.guid;

@@ -1,0 +1,247 @@
+{
+  "title": "Kibana as Code Demo Dashboard",
+  "panels": [
+    {
+      "type": "vis",
+      "id": "total-requests",
+      "grid": { "x": 0, "y": 0, "w": 12, "h": 5 },
+      "config": {
+        "title": "",
+        "type": "metric",
+        "data_source": {
+          "type": "data_view_reference",
+          "ref_id": "90943e30-9a47-11e8-b64d-95841ca0b247"
+        },
+        "metrics": [
+          {
+            "type": "primary",
+            "operation": "count",
+            "label": "Total Requests"
+          }
+        ]
+      }
+    },
+    {
+      "type": "vis",
+      "id": "avg-bytes",
+      "grid": { "x": 12, "y": 0, "w": 12, "h": 5 },
+      "config": {
+        "title": "",
+        "type": "metric",
+        "data_source": {
+          "type": "data_view_reference",
+          "ref_id": "90943e30-9a47-11e8-b64d-95841ca0b247"
+        },
+        "metrics": [
+          {
+            "type": "primary",
+            "operation": "average",
+            "field": "bytes",
+            "label": "Average Bytes",
+            "format": { "type": "bytes", "decimals": 0 }
+          }
+        ]
+      }
+    },
+    {
+      "type": "vis",
+      "id": "unique-ips",
+      "grid": { "x": 24, "y": 0, "w": 12, "h": 5 },
+      "config": {
+        "title": "",
+        "type": "metric",
+        "data_source": {
+          "type": "data_view_reference",
+          "ref_id": "90943e30-9a47-11e8-b64d-95841ca0b247"
+        },
+        "metrics": [
+          {
+            "type": "primary",
+            "operation": "unique_count",
+            "field": "clientip",
+            "label": "Unique Client IPs"
+          }
+        ]
+      }
+    },
+    {
+      "type": "vis",
+      "id": "max-bytes-gauge",
+      "grid": { "x": 36, "y": 0, "w": 12, "h": 5 },
+      "config": {
+        "title": "Max Bytes",
+        "type": "gauge",
+        "data_source": {
+          "type": "data_view_reference",
+          "ref_id": "90943e30-9a47-11e8-b64d-95841ca0b247"
+        },
+        "metric": {
+          "operation": "max",
+          "field": "bytes",
+          "format": { "type": "bytes", "decimals": 0 }
+        }
+      }
+    },
+    {
+      "type": "vis",
+      "id": "requests-timeline",
+      "grid": { "x": 0, "y": 5, "w": 32, "h": 12 },
+      "config": {
+        "title": "Requests Over Time",
+        "type": "xy",
+        "axis": {
+          "x": { "title": { "visible": false } },
+          "y": { "title": { "visible": false } }
+        },
+        "layers": [
+          {
+            "type": "area",
+            "data_source": {
+              "type": "data_view_reference",
+              "ref_id": "90943e30-9a47-11e8-b64d-95841ca0b247"
+            },
+            "x": {
+              "operation": "date_histogram",
+              "field": "@timestamp"
+            },
+            "y": [{ "operation": "count" }]
+          }
+        ]
+      }
+    },
+    {
+      "type": "vis",
+      "id": "response-codes",
+      "grid": { "x": 32, "y": 5, "w": 16, "h": 12 },
+      "config": {
+        "title": "Response Codes",
+        "type": "xy",
+        "axis": {
+          "x": { "title": { "visible": false } },
+          "y": { "title": { "visible": false } }
+        },
+        "layers": [
+          {
+            "type": "bar_horizontal",
+            "data_source": {
+              "type": "data_view_reference",
+              "ref_id": "90943e30-9a47-11e8-b64d-95841ca0b247"
+            },
+            "x": {
+              "operation": "terms",
+              "fields": ["response.keyword"],
+              "limit": 10
+            },
+            "y": [{ "operation": "count" }]
+          }
+        ]
+      }
+    },
+    {
+      "type": "vis",
+      "id": "traffic-heatmap",
+      "grid": { "x": 0, "y": 17, "w": 24, "h": 12 },
+      "config": {
+        "title": "Traffic Heatmap",
+        "type": "heatmap",
+        "data_source": {
+          "type": "data_view_reference",
+          "ref_id": "90943e30-9a47-11e8-b64d-95841ca0b247"
+        },
+        "metric": { "operation": "count" },
+        "x": {
+          "operation": "date_histogram",
+          "field": "@timestamp"
+        },
+        "y": {
+          "operation": "terms",
+          "fields": ["response.keyword"],
+          "limit": 10
+        }
+      }
+    },
+    {
+      "type": "vis",
+      "id": "top-urls-table",
+      "grid": { "x": 24, "y": 17, "w": 24, "h": 12 },
+      "config": {
+        "title": "Top URLs",
+        "type": "data_table",
+        "data_source": {
+          "type": "data_view_reference",
+          "ref_id": "90943e30-9a47-11e8-b64d-95841ca0b247"
+        },
+        "metrics": [
+          { "operation": "count" },
+          { "operation": "sum", "field": "bytes" },
+          { "operation": "average", "field": "bytes" }
+        ],
+        "rows": [
+          {
+            "operation": "terms",
+            "fields": ["url.keyword"],
+            "limit": 15,
+            "rank_by": { "type": "metric", "metric_index": 0, "direction": "desc" }
+          }
+        ]
+      }
+    },
+    {
+      "type": "vis",
+      "id": "top-hosts",
+      "grid": { "x": 0, "y": 29, "w": 24, "h": 10 },
+      "config": {
+        "title": "Top Hosts",
+        "type": "xy",
+        "axis": {
+          "x": { "title": { "visible": false } },
+          "y": { "title": { "visible": false } }
+        },
+        "layers": [
+          {
+            "type": "bar",
+            "data_source": {
+              "type": "data_view_reference",
+              "ref_id": "90943e30-9a47-11e8-b64d-95841ca0b247"
+            },
+            "x": {
+              "operation": "terms",
+              "fields": ["host.keyword"],
+              "limit": 10
+            },
+            "y": [{ "operation": "count" }]
+          }
+        ]
+      }
+    },
+    {
+      "type": "vis",
+      "id": "traffic-by-country",
+      "grid": { "x": 24, "y": 29, "w": 24, "h": 10 },
+      "config": {
+        "title": "Traffic by Country",
+        "type": "xy",
+        "axis": {
+          "x": { "title": { "visible": false } },
+          "y": { "title": { "visible": false } }
+        },
+        "layers": [
+          {
+            "type": "bar",
+            "data_source": {
+              "type": "data_view_reference",
+              "ref_id": "90943e30-9a47-11e8-b64d-95841ca0b247"
+            },
+            "x": {
+              "operation": "terms",
+              "fields": ["geo.dest"],
+              "limit": 10
+            },
+            "y": [{ "operation": "sum", "field": "bytes" }]
+          }
+        ]
+      }
+    }
+  ],
+  "time_range": { "from": "now-30d", "to": "now" }
+}

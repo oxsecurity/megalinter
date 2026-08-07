@@ -1,0 +1,9 @@
+{
+  "type": "data_table",
+  "data_source": {
+    "type": "esql",
+    "query": "FROM kibana_sample_data_logs | STATS count = COUNT(), avg_bytes = AVG(bytes), total_bytes = SUM(bytes) BY host.keyword"
+  },
+  "rows": [{ "column": "host.keyword" }],
+  "metrics": [{ "column": "count" }, { "column": "avg_bytes" }, { "column": "total_bytes" }]
+}

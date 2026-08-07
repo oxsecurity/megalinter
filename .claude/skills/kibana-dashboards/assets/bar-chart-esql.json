@@ -1,0 +1,19 @@
+{
+  "title": "Requests by Response Code",
+  "type": "xy",
+  "axis": {
+    "x": { "title": { "visible": false } },
+    "y": { "title": { "visible": false } }
+  },
+  "layers": [
+    {
+      "type": "bar",
+      "data_source": {
+        "type": "esql",
+        "query": "FROM kibana_sample_data_logs | STATS count = COUNT() BY response.keyword"
+      },
+      "x": { "column": "response.keyword" },
+      "y": [{ "column": "count" }]
+    }
+  ]
+}
