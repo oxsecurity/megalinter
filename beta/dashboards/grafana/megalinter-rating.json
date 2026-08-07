@@ -9,12 +9,12 @@
   "id": null,
   "links": [
     {
-      "title": "",
+      "title": "MegaLinter dashboards",
       "type": "dashboards",
       "tags": [
         "megalinter"
       ],
-      "asDropdown": false,
+      "asDropdown": true,
       "keepTime": true,
       "includeVars": true,
       "icon": "dashboard",
@@ -146,12 +146,13 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "min(last_over_time(megalinter_run_healthScore{gitRepoName=~\"$repo\",gitBranchName=~\"$branch\"}[$__range]))",
+          "expr": "last_over_time((min (megalinter_run_healthScore{gitRepoName=~\"$repo\",gitBranchName=~\"$branch\"}))[$__range:])",
           "refId": "A",
           "instant": true,
           "range": false
         }
-      ]
+      ],
+      "description": "Rating derived from the latest-run, worst-branch health score: A >= 90, B >= 80, C >= 65, D >= 50, else E."
     },
     {
       "id": 56,
@@ -210,19 +211,20 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "min(last_over_time(megalinter_run_healthScore{gitRepoName=~\"$repo\",gitBranchName=~\"$branch\"}[$__range]))",
+          "expr": "last_over_time((min (megalinter_run_healthScore{gitRepoName=~\"$repo\",gitBranchName=~\"$branch\"}))[$__range:])",
           "refId": "A",
           "instant": true,
           "range": false
         }
-      ]
+      ],
+      "description": "Health score of the latest run in the selected time range, aggregated with min (worst case) across the selected branches/repositories. Rating scale: A >= 90, B >= 80, C >= 65, D >= 50, else E."
     },
     {
       "id": 57,
       "type": "text",
       "title": "",
       "gridPos": {
-        "h": 12,
+        "h": 18,
         "w": 16,
         "x": 8,
         "y": 0
@@ -284,7 +286,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum(last_over_time(megalinter_run_lintersSuccess{gitRepoName=~\"$repo\",gitBranchName=~\"$branch\"}[$__range]))",
+          "expr": "last_over_time((sum (megalinter_run_lintersSuccess{gitRepoName=~\"$repo\",gitBranchName=~\"$branch\"}))[$__range:])",
           "refId": "A",
           "instant": true,
           "range": false
@@ -343,7 +345,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum(last_over_time(megalinter_run_lintersWarning{gitRepoName=~\"$repo\",gitBranchName=~\"$branch\"}[$__range]))",
+          "expr": "last_over_time((sum (megalinter_run_lintersWarning{gitRepoName=~\"$repo\",gitBranchName=~\"$branch\"}))[$__range:])",
           "refId": "A",
           "instant": true,
           "range": false
@@ -402,7 +404,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum(last_over_time(megalinter_run_lintersError{gitRepoName=~\"$repo\",gitBranchName=~\"$branch\"}[$__range]))",
+          "expr": "last_over_time((sum (megalinter_run_lintersError{gitRepoName=~\"$repo\",gitBranchName=~\"$branch\"}))[$__range:])",
           "refId": "A",
           "instant": true,
           "range": false
@@ -457,7 +459,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum(last_over_time(megalinter_run_lintersCount{gitRepoName=~\"$repo\",gitBranchName=~\"$branch\"}[$__range]))",
+          "expr": "last_over_time((sum (megalinter_run_lintersCount{gitRepoName=~\"$repo\",gitBranchName=~\"$branch\"}))[$__range:])",
           "refId": "A",
           "instant": true,
           "range": false
@@ -493,7 +495,7 @@
           "links": [
             {
               "title": "Open linter detail dashboard",
-              "url": "/d/megalinter-linter-detail/megalinter-linter-detail?var-repo=$repo&var-linter=${__data.fields.Linter}&${__url_time_range}"
+              "url": "/d/megalinter-linter-detail/megalinter-linter-detail?var-repo=$repo&var-linter=${__data.fields.Linter:percentencode}&${__url_time_range}&${branch:queryparam}"
             }
           ]
         },
@@ -584,7 +586,7 @@
         "showHeader": true,
         "sortBy": [
           {
-            "displayName": "Linters dragging the score down - click one to open its dashboard",
+            "displayName": "Errors",
             "desc": true
           }
         ]
@@ -595,7 +597,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "max by (linterKey) (last_over_time(megalinter_linter_run_numberErrorsFound{gitRepoName=~\"$repo\",gitBranchName=~\"$branch\"}[$__range]) > 0)",
+          "expr": "last_over_time((sum by (linterKey) (megalinter_linter_run_numberErrorsFound{gitRepoName=~\"$repo\",gitBranchName=~\"$branch\"}))[$__range:]) > 0",
           "refId": "A",
           "instant": true,
           "range": false,
@@ -606,7 +608,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "max by (linterKey) (last_over_time(megalinter_linter_run_blocking{gitRepoName=~\"$repo\",gitBranchName=~\"$branch\"}[$__range]))",
+          "expr": "last_over_time((max by (linterKey) (megalinter_linter_run_blocking{gitRepoName=~\"$repo\",gitBranchName=~\"$branch\"}))[$__range:])",
           "refId": "B",
           "instant": true,
           "range": false,
@@ -618,7 +620,15 @@
           "id": "joinByField",
           "options": {
             "byField": "linterKey",
-            "mode": "outer"
+            "mode": "inner"
+          }
+        },
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "exclude": {
+              "pattern": "^Time.*$"
+            }
           }
         },
         {
@@ -656,7 +666,7 @@
             "drawStyle": "line",
             "lineWidth": 2,
             "fillOpacity": 12,
-            "spanNulls": true,
+            "spanNulls": false,
             "showPoints": "auto",
             "pointSize": 5,
             "thresholdsStyle": {
@@ -714,8 +724,8 @@
       ]
     }
   ],
-  "refresh": "",
-  "schemaVersion": 39,
+  "refresh": "5m",
+  "schemaVersion": 41,
   "tags": [
     "megalinter"
   ],
@@ -727,15 +737,9 @@
         "type": "datasource",
         "query": "prometheus",
         "current": {},
-        "hide": 2
-      },
-      {
-        "name": "DS_LOKI",
-        "label": "Logs datasource",
-        "type": "datasource",
-        "query": "loki",
-        "current": {},
-        "hide": 2
+        "hide": 2,
+        "refresh": 1,
+        "regex": "/^(?!.*(alert-state-history|usage-insights|ml-metrics)).*/"
       },
       {
         "name": "repo",
@@ -783,7 +787,7 @@
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "MegaLinter - Why this rating?",
+  "title": "MegaLinter - 5. Why this rating?",
   "uid": "megalinter-rating",
   "version": 1,
   "weekStart": ""

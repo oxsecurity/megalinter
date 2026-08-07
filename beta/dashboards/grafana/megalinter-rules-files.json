@@ -1,6 +1,18 @@
 {
   "annotations": {
-    "list": []
+    "list": [
+      {
+        "name": "MegaLinter runs",
+        "datasource": {
+          "type": "loki",
+          "uid": "${DS_LOKI}"
+        },
+        "enable": true,
+        "hide": false,
+        "iconColor": "blue",
+        "expr": "{source=\"MegaLinter\",recordType=\"run\",gitRepoName=~\"$repo\",gitBranchName=~\"$branch\"}"
+      }
+    ]
   },
   "description": "Most frequent lint rules and most impacted files across repositories",
   "editable": true,
@@ -9,12 +21,12 @@
   "id": null,
   "links": [
     {
-      "title": "",
+      "title": "MegaLinter dashboards",
       "type": "dashboards",
       "tags": [
         "megalinter"
       ],
-      "asDropdown": false,
+      "asDropdown": true,
       "keepTime": true,
       "includeVars": true,
       "icon": "dashboard",
@@ -83,7 +95,7 @@
             "type": "loki",
             "uid": "${DS_LOKI}"
           },
-          "expr": "topk(20, sum by (ruleId) (sum_over_time({source=\"MegaLinter\",recordType=\"rule\",gitRepoName=~\"$repo\",gitBranchName=~\"$branch\"} | json | unwrap occurrences [$__range])))",
+          "expr": "topk(20, sum by (ruleId) (sum_over_time({source=\"MegaLinter\",recordType=\"rule\",gitRepoName=~\"$repo\",gitBranchName=~\"$branch\"} | json | unwrap occurrences | __error__=\"\" [$__range])))",
           "refId": "A",
           "queryType": "instant"
         }
@@ -143,7 +155,7 @@
             "type": "loki",
             "uid": "${DS_LOKI}"
           },
-          "expr": "topk(20, sum by (file) (sum_over_time({source=\"MegaLinter\",recordType=\"file\",gitRepoName=~\"$repo\",gitBranchName=~\"$branch\"} | json | unwrap occurrences [$__range])))",
+          "expr": "topk(20, sum by (file) (sum_over_time({source=\"MegaLinter\",recordType=\"file\",gitRepoName=~\"$repo\",gitBranchName=~\"$branch\"} | json | unwrap occurrences | __error__=\"\" [$__range])))",
           "refId": "A",
           "queryType": "instant"
         }
@@ -203,7 +215,7 @@
             "type": "loki",
             "uid": "${DS_LOKI}"
           },
-          "expr": "topk(15, sum by (linterKey) (sum_over_time({source=\"MegaLinter\",recordType=\"rule\",gitRepoName=~\"$repo\",gitBranchName=~\"$branch\"} | json | unwrap occurrences [$__range])))",
+          "expr": "topk(15, sum by (linterKey) (sum_over_time({source=\"MegaLinter\",recordType=\"rule\",gitRepoName=~\"$repo\",gitBranchName=~\"$branch\"} | json | unwrap occurrences | __error__=\"\" [$__range])))",
           "refId": "A",
           "queryType": "instant"
         }
@@ -229,7 +241,7 @@
             "drawStyle": "line",
             "lineWidth": 2,
             "fillOpacity": 35,
-            "spanNulls": true,
+            "spanNulls": false,
             "showPoints": "auto",
             "pointSize": 5,
             "stacking": {
@@ -270,7 +282,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum by (descriptor) (megalinter_linter_run_numberErrorsFound{gitRepoName=~\"$repo\",gitBranchName=~\"$branch\"} > 0)",
+          "expr": "sum by (descriptor) (megalinter_linter_run_numberErrorsFound{gitRepoName=~\"$repo\",gitBranchName=~\"$branch\"})",
           "refId": "A",
           "legendFormat": "{{descriptor}}"
         }
@@ -296,7 +308,7 @@
             "drawStyle": "line",
             "lineWidth": 2,
             "fillOpacity": 35,
-            "spanNulls": true,
+            "spanNulls": false,
             "showPoints": "auto",
             "pointSize": 5,
             "stacking": {
@@ -337,7 +349,7 @@
             "type": "loki",
             "uid": "${DS_LOKI}"
           },
-          "expr": "sum by (ruleId) (sum_over_time({source=\"MegaLinter\",recordType=\"rule\",gitRepoName=~\"$repo\",gitBranchName=~\"$branch\"} | json | unwrap occurrences [$__interval]))",
+          "expr": "sum by (ruleId) (sum_over_time({source=\"MegaLinter\",recordType=\"rule\",gitRepoName=~\"$repo\",gitBranchName=~\"$branch\"} | json | unwrap occurrences | __error__=\"\" [$__interval]))",
           "refId": "A",
           "legendFormat": "{{ruleId}}"
         }
@@ -376,7 +388,7 @@
         "showHeader": true,
         "sortBy": [
           {
-            "displayName": "Hotspot files (file x linter, selected period)",
+            "displayName": "Occurrences",
             "desc": true
           }
         ]
@@ -387,7 +399,7 @@
             "type": "loki",
             "uid": "${DS_LOKI}"
           },
-          "expr": "topk(15, sum by (file, linterKey) (sum_over_time({source=\"MegaLinter\",recordType=\"file\",gitRepoName=~\"$repo\",gitBranchName=~\"$branch\"} | json | unwrap occurrences [$__range])))",
+          "expr": "topk(15, sum by (file, linterKey) (sum_over_time({source=\"MegaLinter\",recordType=\"file\",gitRepoName=~\"$repo\",gitBranchName=~\"$branch\"} | json | unwrap occurrences | __error__=\"\" [$__range])))",
           "refId": "A",
           "queryType": "instant"
         }
@@ -409,8 +421,8 @@
       ]
     }
   ],
-  "refresh": "",
-  "schemaVersion": 39,
+  "refresh": "5m",
+  "schemaVersion": 41,
   "tags": [
     "megalinter"
   ],
@@ -422,7 +434,9 @@
         "type": "datasource",
         "query": "prometheus",
         "current": {},
-        "hide": 2
+        "hide": 2,
+        "refresh": 1,
+        "regex": "/^(?!.*(alert-state-history|usage-insights|ml-metrics)).*/"
       },
       {
         "name": "DS_LOKI",
@@ -430,7 +444,9 @@
         "type": "datasource",
         "query": "loki",
         "current": {},
-        "hide": 2
+        "hide": 2,
+        "refresh": 1,
+        "regex": "/^(?!.*(alert-state-history|usage-insights|ml-metrics)).*/"
       },
       {
         "name": "repo",
@@ -478,7 +494,7 @@
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "MegaLinter - Top Rules & Files",
+  "title": "MegaLinter - 4. Top Rules & Files",
   "uid": "megalinter-rules-files",
   "version": 1,
   "weekStart": ""

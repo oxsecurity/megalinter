@@ -1,6 +1,18 @@
 {
   "annotations": {
-    "list": []
+    "list": [
+      {
+        "name": "MegaLinter runs",
+        "datasource": {
+          "type": "loki",
+          "uid": "${DS_LOKI}"
+        },
+        "enable": true,
+        "hide": false,
+        "iconColor": "blue",
+        "expr": "{source=\"MegaLinter\",recordType=\"run\",gitRepoName=~\"$repo\",gitBranchName=~\"$branch\"}"
+      }
+    ]
   },
   "description": "Drill-down on a single linter: errors, duration, top rules and files",
   "editable": true,
@@ -9,12 +21,12 @@
   "id": null,
   "links": [
     {
-      "title": "",
+      "title": "MegaLinter dashboards",
       "type": "dashboards",
       "tags": [
         "megalinter"
       ],
-      "asDropdown": false,
+      "asDropdown": true,
       "keepTime": true,
       "includeVars": true,
       "icon": "dashboard",
@@ -81,7 +93,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum(last_over_time(megalinter_linter_run_numberErrorsFound{gitRepoName=~\"$repo\",gitBranchName=~\"$branch\",linterKey=~\"$linter\"}[$__range]))",
+          "expr": "last_over_time((sum (megalinter_linter_run_numberErrorsFound{gitRepoName=~\"$repo\",gitBranchName=~\"$branch\",linterKey=~\"$linter\"}))[$__range:])",
           "refId": "A",
           "instant": true,
           "range": false
@@ -152,7 +164,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "max(last_over_time(megalinter_linter_run_blocking{gitRepoName=~\"$repo\",gitBranchName=~\"$branch\",linterKey=~\"$linter\"}[$__range]))",
+          "expr": "last_over_time((max (megalinter_linter_run_blocking{gitRepoName=~\"$repo\",gitBranchName=~\"$branch\",linterKey=~\"$linter\"}))[$__range:])",
           "refId": "A",
           "instant": true,
           "range": false
@@ -207,7 +219,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "max(last_over_time(megalinter_linter_run_numberFilesFound{gitRepoName=~\"$repo\",gitBranchName=~\"$branch\",linterKey=~\"$linter\"}[$__range]))",
+          "expr": "last_over_time((sum (megalinter_linter_run_numberFilesFound{gitRepoName=~\"$repo\",gitBranchName=~\"$branch\",linterKey=~\"$linter\"}))[$__range:])",
           "refId": "A",
           "instant": true,
           "range": false
@@ -263,7 +275,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "max(last_over_time(megalinter_linter_run_elapsedTime{gitRepoName=~\"$repo\",gitBranchName=~\"$branch\",linterKey=~\"$linter\"}[$__range]))",
+          "expr": "last_over_time((max (megalinter_linter_run_elapsedTime{gitRepoName=~\"$repo\",gitBranchName=~\"$branch\",linterKey=~\"$linter\"}))[$__range:])",
           "refId": "A",
           "instant": true,
           "range": false
@@ -290,7 +302,7 @@
             "drawStyle": "line",
             "lineWidth": 2,
             "fillOpacity": 12,
-            "spanNulls": true,
+            "spanNulls": false,
             "showPoints": "auto",
             "pointSize": 5
           },
@@ -353,7 +365,7 @@
             "drawStyle": "line",
             "lineWidth": 2,
             "fillOpacity": 12,
-            "spanNulls": true,
+            "spanNulls": false,
             "showPoints": "auto",
             "pointSize": 5
           },
@@ -451,7 +463,7 @@
             "type": "loki",
             "uid": "${DS_LOKI}"
           },
-          "expr": "topk(20, sum by (ruleId) (sum_over_time({source=\"MegaLinter\",recordType=\"rule\",gitRepoName=~\"$repo\",gitBranchName=~\"$branch\",linterKey=~\"$linter\"} | json | unwrap occurrences [$__range])))",
+          "expr": "topk(20, sum by (ruleId) (sum_over_time({source=\"MegaLinter\",recordType=\"rule\",gitRepoName=~\"$repo\",gitBranchName=~\"$branch\",linterKey=~\"$linter\"} | json | unwrap occurrences | __error__=\"\" [$__range])))",
           "refId": "A",
           "queryType": "instant"
         }
@@ -511,7 +523,7 @@
             "type": "loki",
             "uid": "${DS_LOKI}"
           },
-          "expr": "topk(20, sum by (file) (sum_over_time({source=\"MegaLinter\",recordType=\"file\",gitRepoName=~\"$repo\",gitBranchName=~\"$branch\",linterKey=~\"$linter\"} | json | unwrap occurrences [$__range])))",
+          "expr": "topk(20, sum by (file) (sum_over_time({source=\"MegaLinter\",recordType=\"file\",gitRepoName=~\"$repo\",gitBranchName=~\"$branch\",linterKey=~\"$linter\"} | json | unwrap occurrences | __error__=\"\" [$__range])))",
           "refId": "A",
           "queryType": "instant"
         }
@@ -537,7 +549,7 @@
             "drawStyle": "line",
             "lineWidth": 2,
             "fillOpacity": 12,
-            "spanNulls": true,
+            "spanNulls": false,
             "showPoints": "auto",
             "pointSize": 5
           },
@@ -600,7 +612,7 @@
             "drawStyle": "line",
             "lineWidth": 2,
             "fillOpacity": 12,
-            "spanNulls": true,
+            "spanNulls": false,
             "showPoints": "auto",
             "pointSize": 5
           },
@@ -677,8 +689,8 @@
       ]
     }
   ],
-  "refresh": "",
-  "schemaVersion": 39,
+  "refresh": "5m",
+  "schemaVersion": 41,
   "tags": [
     "megalinter"
   ],
@@ -690,7 +702,9 @@
         "type": "datasource",
         "query": "prometheus",
         "current": {},
-        "hide": 2
+        "hide": 2,
+        "refresh": 1,
+        "regex": "/^(?!.*(alert-state-history|usage-insights|ml-metrics)).*/"
       },
       {
         "name": "DS_LOKI",
@@ -698,7 +712,9 @@
         "type": "datasource",
         "query": "loki",
         "current": {},
-        "hide": 2
+        "hide": 2,
+        "refresh": 1,
+        "regex": "/^(?!.*(alert-state-history|usage-insights|ml-metrics)).*/"
       },
       {
         "name": "repo",
@@ -765,7 +781,7 @@
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "MegaLinter - Linter Detail",
+  "title": "MegaLinter - 3. Linter Detail",
   "uid": "megalinter-linter-detail",
   "version": 1,
   "weekStart": ""

@@ -15746,6 +15746,15 @@
 </ul>
 </li>
 <li>New <strong><code>API_REPORTER_PAYLOAD_FORMAT</code></strong> variable (<code>auto</code>, <code>loki</code> or <code>default</code>) to force the payload format sent by the API Reporter, instead of only deducing it from the endpoint URL</li>
+<li><strong>Observability dashboards reviewed and improved</strong> against each provider's official guidance — refresh yours with <strong><code>npx mega-linter-runner --upload-dashboards &lt;provider&gt;</code></strong><ul>
+<li><strong>Correct KPIs</strong>: Grafana "latest run" stats no longer double-count when several branches or MegaLinter versions report in the window, and stale series (deleted branches, pre-upgrade versions) no longer linger; the <strong>quality gate pass rate</strong> is now a true pass rate over the selected period on Grafana, Datadog and New Relic; "errors auto-fixed" and "time saved" now show period totals consistently on all providers</li>
+<li><strong>Working navigation</strong>: Grafana drill-down links now keep the selected branch, and New Relic facet links to the <strong>Repository detail</strong> and <strong>Why this rating?</strong> pages now actually work (they were silently ignored)</li>
+<li><strong>"Why this rating?"</strong> explanations now render correctly on Datadog, Elastic and New Relic (they showed literal <code>\n</code> text), and Elastic and New Relic gain the missing <strong>"Linters dragging the score down"</strong> and <strong>"Time saved by auto-fixes"</strong> elements</li>
+<li><strong>Readable with sparse CI data</strong>: 1-week default windows on Datadog widgets, 1-day buckets on New Relic charts, run-marker annotations and sparklines on Grafana/Datadog tiles, sorted tables, and semantic colors everywhere (blocking=red, non-blocking=yellow, health A-E bands)</li>
+<li><strong>New content</strong>: A-E rating breakdown and quality-gate failure rate (New Relic), files analyzed and health score by MegaLinter version (Datadog), files analyzed and MegaLinter versions in use (Elastic), org-level filter variable (Grafana)</li>
+<li>Fix the New Relic provider tagging every metric datapoint with <code>runId</code>, which burned metric cardinality for no query value</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -15824,6 +15833,7 @@
 </li>
 <li>Keep the <strong>Docker Pulls badge</strong> in <code>docs/index.md</code> in sync by having <code>docker_stats.py</code> also update the hardcoded badge total in <code>.automation/build.py</code></li>
 <li>Mark the repository's internal Claude Code skills (<code>.claude/skills/</code>) as <strong><code>internal</code></strong> so <code>npx skills add oxsecurity/megalinter</code> only offers the four MegaLinter agent skills from the <code>skills/</code> folder</li>
+<li>Vendor the <strong>official Grafana, Elastic and Datadog agent skills</strong> (Apache-2.0, with licenses and source attribution) into <code>.claude/skills/</code> (<code>grafana-dashboarding</code>, <code>grafana-promql</code>, <code>kibana-dashboards</code>, <code>datadog-dashboards</code>) to guide observability dashboard maintenance alongside the <code>sync-dashboards</code> skill — New Relic publishes no official agent skill (only an MCP server)</li>
 <li>Fix the <strong><code>/build</code> contribution skill</strong> being accidentally gitignored by the <code>build/</code> packaging pattern, so it is now actually versioned</li>
 </ul>
 </li>
