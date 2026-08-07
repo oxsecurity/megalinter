@@ -178,6 +178,17 @@ export const optionsDefinition = optionator.default({
         "Enable verbose logs (equivalent to -e LOG_LEVEL=DEBUG).",
     },
     {
+      option: "timeout",
+      alias: "t",
+      type: "Int",
+      description:
+        "Maximum duration in seconds of the MegaLinter container run (image pull time is not counted). " +
+        "When the limit is reached, the container is stopped and removed, its last log lines are displayed, and mega-linter-runner exits with code 124. " +
+        "If --container-name is not set, a container name is auto-generated so the exact container can be stopped even if the CLI process itself is killed. " +
+        "No limit by default. Recommended when mega-linter-runner is driven by automation (CI wrappers, AI agents) so a stuck run cannot hang forever.",
+      example: ["600", "1800"],
+    },
+    {
       option: "help",
       alias: "h",
       type: "Boolean",

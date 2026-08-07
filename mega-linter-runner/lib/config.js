@@ -21,6 +21,7 @@ const GLOB_IGNORE_PATTERNS = [
   "**/.sfdx/**",
   "**/.sf/**",
   "**/.vscode/**",
+  "**/megalinter-reports/**",
 ];
 
 export {

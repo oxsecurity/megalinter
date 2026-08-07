@@ -4,22 +4,25 @@ Load this guide only when a local MegaLinter run is needed and no container engi
 
 ## Detect what is available
 
+Always bound the probes: with a stopped backend (e.g. Docker Desktop's Windows service `com.docker.service`), the CLI can hang indefinitely instead of failing fast.
+
 ```bash
-podman info --format '{{.Version.Version}}'   # podman installed AND running?
-docker info --format '{{.ServerVersion}}'     # docker installed AND running?
+timeout 10 podman info --format '{{.Version.Version}}'   # podman installed AND responding?
+timeout 10 docker info --format '{{.ServerVersion}}'     # docker installed AND responding?
 ```
 
 - Command not found → the engine is not installed.
 - Command found but the call fails → the engine is installed but its daemon/VM is not started.
+- Command times out (exit 124) → installed but the backend is stopped or wedged - treat as not running, and never retry it without a bound.
 - If **either** engine responds, use it — pass `--container-engine podman` to `mega-linter-runner` when using podman.
 
 ## Start an already-installed engine
 
-| OS      | podman                                                             | docker                                                                                                                               |
-|:--------|:-------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------|
-| Windows | `podman machine start` (create it once with `podman machine init`) | Start Docker Desktop: `Start-Process 'C:\Program Files\Docker\Docker\Docker Desktop.exe'`, then poll `docker info` until it responds |
-| macOS   | `podman machine start` (create it once with `podman machine init`) | `open -a Docker`, then poll `docker info` until it responds                                                                          |
-| Linux   | Nothing to start (daemonless) — rootless works out of the box      | `sudo systemctl start docker` (enable at boot: `sudo systemctl enable docker`)                                                       |
+| OS      | podman                                                             | docker                                                                                                                                                                 |
+|:--------|:-------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Windows | `podman machine start` (create it once with `podman machine init`) | Start Docker Desktop: `Start-Process 'C:\Program Files\Docker\Docker\Docker Desktop.exe'`, then poll `timeout 10 docker info` until it responds (give up after ~2 min) |
+| macOS   | `podman machine start` (create it once with `podman machine init`) | `open -a Docker`, then poll `timeout 10 docker info` until it responds (give up after ~2 min)                                                                          |
+| Linux   | Nothing to start (daemonless) — rootless works out of the box      | `sudo systemctl start docker` (enable at boot: `sudo systemctl enable docker`)                                                                                         |
 
 ## Install an engine (ask the user first, prefer podman)
 

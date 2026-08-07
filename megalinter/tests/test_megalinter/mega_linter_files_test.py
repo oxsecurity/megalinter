@@ -7,8 +7,9 @@ import tempfile
 import unittest
 from unittest.mock import MagicMock, patch
 
+import git
 from megalinter import config
-from megalinter.MegaLinter import Megalinter
+from megalinter.MegaLinter import GIT_LS_FILES_TIMEOUT_SECONDS, Megalinter
 
 
 class MegaLinterFilesTest(unittest.TestCase):
@@ -226,6 +227,93 @@ class MegaLinterFilesTest(unittest.TestCase):
             self.assertIn("build/only_ignored.log", ignored_files)
             self.assertNotIn("build/**", ignored_files)
             self.assertNotIn("build/keep.txt", ignored_files)
+
+    def test_list_git_ignored_files_timeout_raises_actionable_error(self):
+        # Regression test: the git ls-files call is bounded by kill_after_timeout
+        # because it can stall indefinitely on I/O when the workspace is
+        # bind-mounted from Windows into a WSL2-backed container. When GitPython
+        # kills the stalled process it raises GitCommandError with
+        # "did not complete in N secs." in stderr; list_git_ignored_files must
+        # convert it into an actionable RuntimeError. The caller in run()
+        # catches any Exception and degrades to an empty ignored files list, so
+        # raising (instead of returning partial output) is the safe behavior.
+        timeout_err = git.GitCommandError(
+            ["git", "ls-files"],
+            -9,
+            'Timeout: the command "git ls-files" did not complete in 120 secs.',
+        )
+        mock_repo = MagicMock()
+        mock_repo.git.execute.side_effect = timeout_err
+
+        ml = Megalinter.__new__(Megalinter)
+        ml.workspace = "."
+        ml.github_workspace = "."
+        ml.request_id = "test"
+
+        with (
+            patch("megalinter.MegaLinter.git.Repo", return_value=mock_repo),
+            patch("megalinter.utils.get_excluded_directories", return_value=set()),
+        ):
+            with self.assertRaises(RuntimeError) as raised:
+                ml.list_git_ignored_files()
+
+        message = str(raised.exception)
+        self.assertIn(str(GIT_LS_FILES_TIMEOUT_SECONDS), message)
+        self.assertIn("WSL2", message)
+        self.assertIn("ADDITIONAL_EXCLUDED_DIRECTORIES", message)
+
+    def test_list_git_ignored_files_non_timeout_git_error_is_reraised(self):
+        # A GitCommandError unrelated to the timeout must keep its original
+        # type so existing handling (and error messages) stay unchanged.
+        other_err = git.GitCommandError(["git", "ls-files"], 128, "fatal: boom")
+        mock_repo = MagicMock()
+        mock_repo.git.execute.side_effect = other_err
+
+        ml = Megalinter.__new__(Megalinter)
+        ml.workspace = "."
+        ml.github_workspace = "."
+        ml.request_id = "test"
+
+        with (
+            patch("megalinter.MegaLinter.git.Repo", return_value=mock_repo),
+            patch("megalinter.utils.get_excluded_directories", return_value=set()),
+        ):
+            with self.assertRaises(git.GitCommandError):
+                ml.list_git_ignored_files()
+
+    def test_list_git_ignored_files_passes_timeout_on_non_windows(self):
+        # On non-Windows platforms (i.e. inside the MegaLinter Docker images),
+        # the git ls-files call must be invoked with kill_after_timeout so it
+        # cannot hang forever. On Windows, GitPython does not support
+        # kill_after_timeout, so the kwarg must be omitted there.
+        mock_repo = MagicMock()
+        mock_repo.git.execute.return_value = ""
+
+        ml = Megalinter.__new__(Megalinter)
+        ml.workspace = "."
+        ml.github_workspace = "."
+        ml.request_id = "test"
+
+        with (
+            patch("megalinter.MegaLinter.git.Repo", return_value=mock_repo),
+            patch("megalinter.utils.get_excluded_directories", return_value=set()),
+            patch("megalinter.MegaLinter.sys.platform", "linux"),
+        ):
+            ml.list_git_ignored_files()
+
+        kwargs = mock_repo.git.execute.call_args.kwargs
+        self.assertEqual(kwargs.get("kill_after_timeout"), GIT_LS_FILES_TIMEOUT_SECONDS)
+
+        mock_repo.git.execute.reset_mock()
+        with (
+            patch("megalinter.MegaLinter.git.Repo", return_value=mock_repo),
+            patch("megalinter.utils.get_excluded_directories", return_value=set()),
+            patch("megalinter.MegaLinter.sys.platform", "win32"),
+        ):
+            ml.list_git_ignored_files()
+
+        kwargs = mock_repo.git.execute.call_args.kwargs
+        self.assertNotIn("kill_after_timeout", kwargs)
 
 
 if __name__ == "__main__":

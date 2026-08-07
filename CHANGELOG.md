@@ -14,6 +14,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **`REPOSITORY_GITLEAKS` has been removed**: migrate to [REPOSITORY_BETTERLEAKS](https://megalinter.io/beta/descriptors/repository_betterleaks/), which reads your existing `.gitleaks.toml` and `.gitleaksignore` files unchanged.
   - **Existing `.mega-linter.yml` files keep working**: configuration variables of removed linters are simply ignored (a single notice lists any found in your configuration) and remain valid in the JSON schema.
   - **API Reporter payload v2** replaces the v1 payload: metric series are renamed (`linter_run_*` becomes `megalinter_linter_run_*`, plus new run-level `megalinter_run_*` series), and the old `docs/grafana` dashboards are superseded. Re-provision the new dashboards with **`npx mega-linter-runner --upload-dashboards grafana`** — see the [migration notes](https://megalinter.io/beta/reporters/ApiReporter/#migration-from-payload-v1). Legacy `NOTIF_API_*` variables remain supported as aliases.
+  - **Linters now time out after 5 minutes by default** (`LINTER_TIMEOUT_SECONDS: 300`): a linter exceeding it is killed and reported as an error (exit code 124) instead of running (or hanging) unbounded. If some of your linters legitimately run longer, raise the limit globally with `LINTER_TIMEOUT_SECONDS`, per linter with `<LINTER_KEY>_TIMEOUT_SECONDS`, or restore the previous unbounded behavior with value `0`.
 
 - Core
 
@@ -29,6 +30,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Every forwarded exclusion is logged in the linter's console section, and the ">300 gitignored files" performance warning now names the heaviest directories it found
     - Opt out globally with `FORWARD_EXCLUDED_DIRECTORIES: false`, or per linter with `<LINTER_KEY>_FORWARD_EXCLUDED_DIRECTORIES: false`
   - **Default excluded directories** now also include common build/cache folders: `.wireit`, `.turbo`, `.nx`, `.yarn/cache`, `.pnpm-store`, `.parcel-cache`, `.angular`, and the Salesforce CLI `.sf` / `.sfdx` state folders
+  - New **per-linter timeout**: a linter still running after **5 minutes** (`LINTER_TIMEOUT_SECONDS: 300` by default) is killed along with all its child processes and reported as an error (exit code 124) with an actionable message, while the other linters keep running. Raise the limit globally with `LINTER_TIMEOUT_SECONDS`, per linter with `<LINTER_KEY>_TIMEOUT_SECONDS`, or disable it with value `0`
   - New **prerun analysis mode** (`mega-linter-runner --prerun`, or `MEGALINTER_PRERUN=true` environment variable): MegaLinter identifies active linters and collects files, then stops before running any linter and suggests configuration improvements, in the console and in `megalinter-reports/prerun-report.json`
     - Suggested exclusions: top-level directories containing only gitignored files (safe: linting scope is unchanged, and project-mode linters stop scanning them), and well-known generated/vendored folder names (`site`, `dist`, `vendor`...) still containing lintable files (to confirm by the user)
     - A lighter matching flavor is also suggested when available
@@ -126,6 +128,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Linters enhancements
 
+  - **`REPOSITORY_CHECKOV` now skips its `secrets` framework** (`--skip-framework secrets`) when a dedicated secret scanner (betterleaks, kingfisher, secretlint or trufflehog) is active in the same run: the duplicated secrets scan added minutes to every run and could stall for hours on bind-mounted workspaces. Define `--framework` or `--skip-framework` in `REPOSITORY_CHECKOV_ARGUMENTS` (or in your checkov config file) to keep checkov's own secrets scan
+
 - Fixes
 
   - Restore **multi-arch `megalinter-only-*` Docker images**: they were mistakenly published for a single architecture, linux/amd64 + linux/arm64 are back
@@ -133,6 +137,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Fix **`LINTER_RULES_PATH`** not being used to resolve config files for linters using `active_only_if_file_found` (e.g. `REPOSITORY_LS_LINT`, `SPELL_PROSELINT`, `SPELL_VALE`), fixes [#8416](https://github.com/oxsecurity/megalinter/issues/8416)
   - Honor `EXCLUDED_DIRECTORIES` and `ADDITIONAL_EXCLUDED_DIRECTORIES` in **changed-files mode** (`VALIDATE_ALL_CODEBASE: false`), the same way they are honored during full-codebase validation ([#8360](https://github.com/oxsecurity/megalinter/issues/8360))
   - Make **remote configuration loading** (`MEGALINTER_CONFIG` and `EXTENDS` files fetched over HTTP) resilient to transient network failures with a request timeout and retries
+  - Bound the **gitignored-files detection** (`git ls-files`) with a 120 seconds timeout: on workspaces with pathologically slow file access (e.g. bind-mounted from Windows into a WSL2-backed container engine) this internal git call could hang the whole run before any linter started; it now degrades to an actionable warning and the run continues
   - Allow **`CSS_STYLELINT_COMMAND_REMOVE_ARGUMENTS`** to remove `--config-basedir`, and stop raising an error when an argument listed in `<LINTER>_COMMAND_REMOVE_ARGUMENTS` is not in the command line, fixes [#8552](https://github.com/oxsecurity/megalinter/issues/8552)
   - Treat **zero matching SARIF findings** as a valid result without logging the entire report, fixes [#8295](https://github.com/oxsecurity/megalinter/issues/8295)
   - Remove **invalid SARIF fixes** with empty `artifactChanges` arrays before report aggregation, fixes [#8474](https://github.com/oxsecurity/megalinter/issues/8474)
@@ -158,6 +163,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **Coding Agents page**: add Gemini CLI, Windsurf, Cline, Roo Code, Kilo Code, Amp, Goose, OpenHands and Qwen Code to the compatible coding agents
   - **megalinter-setup skill**: after install or upgrade, suggest either running MegaLinter locally or creating a pull request and then watching its CI results with megalinter-check
   - **megalinter-check skill**: the first local run now starts with a `--prerun` analysis, so the user can validate the suggested `.mega-linter.yml` performance tuning before the real lint
+  - **megalinter-check skill and watcher/runner sub-agents**: the console tips MegaLinter prints (performance warnings, flavor suggestions, `[Activation]` notices, deprecations) are now extracted from the persisted log file and returned to the calling agent in a `tips` field, instead of being lost when reading only the JSON report
   - Fix outdated links in `docs/descriptors/repository_kingfisher.md`
 
 - mega-linter-runner
@@ -173,6 +179,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **`--fix`** now respects an `APPLY_FIXES` value (other than `none`) defined in `.mega-linter.yml` instead of overriding it with `all`
   - **`--upgrade`** also bumps a pinned `MEGALINTER_VERSION` property of `.mega-linter.yml` to the current major version
   - New **`--prerun`** option: analysis-only run that outputs configuration suggestions to improve performances (see the prerun mode in Core section). Combine with `--json` to print the prerun report on stdout
+  - New **`--timeout <seconds>`** option (`-t`): bound the whole run; on expiration the runner prints the container's last log lines, stops and removes the container (no orphan left behind, even on Windows where killing the CLI process does not stop the container), and exits with code 124
   - **Skip `docker pull`** when the requested version is a pinned release tag (`vX.Y.Z`, immutable) and the image is already available locally, removing a useless registry round-trip
   - Print a hint before mounting the workspace when it contains **well-known heavy folders** (build caches, package stores), pointing at `SKIP_CLI_LINT_MODES=project` to keep local runs fast
 

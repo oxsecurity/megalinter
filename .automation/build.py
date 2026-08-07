@@ -1973,6 +1973,22 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     },
                 ],
                 [
+                    f"{linter.name}_TIMEOUT_SECONDS",
+                    {
+                        "$id": f"#/properties/{linter.name}_TIMEOUT_SECONDS",
+                        "type": "integer",
+                        "description": (
+                            f"{linter.name}: "
+                            f"Maximum duration in seconds of the {linter.name} run. When elapsed, "
+                            "the linter process and its child processes are killed and reported "
+                            "as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS "
+                            "(default: 300). Set 0 to disable the timeout"
+                        ),
+                        "title": f"{title_prefix}{linter.name}: Timeout in seconds",
+                        "examples": [3600, 0],
+                    },
+                ],
+                [
                     f"{linter.name}_CLI_EXECUTABLE",
                     {
                         "$id": f"#/properties/{linter.name}_CLI_EXECUTABLE",
@@ -2040,6 +2056,10 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             f" `{default_disable_errors}` |",
             f"| {linter.name}_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed |"
             f" `0` |",
+            f"| {linter.name}_TIMEOUT_SECONDS | Maximum duration in seconds of the linter run, "
+            "after which the linter process and its child processes are killed and reported "
+            "as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout |"
+            " `300` |",
             f"| {linter.name}_CLI_EXECUTABLE | Override CLI executable |"
             f" `{str(linter.cli_executable)}` |",
         ]

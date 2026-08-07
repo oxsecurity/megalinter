@@ -331,6 +331,32 @@ describe("CLI parsing — container options", () => {
   });
 });
 
+describe("CLI parsing — timeout", () => {
+  it("parses --timeout as an integer number of seconds", () => {
+    const o = parse(["--timeout", "600"]);
+    assert.strictEqual(o.timeout, 600);
+  });
+
+  it("parses --timeout=value form", () => {
+    const o = parse(["--timeout=1800"]);
+    assert.strictEqual(o.timeout, 1800);
+  });
+
+  it("parses -t alias", () => {
+    const o = parse(["-t", "300"]);
+    assert.strictEqual(o.timeout, 300);
+  });
+
+  it("rejects a non-integer --timeout value", () => {
+    assert.throws(() => parse(["--timeout", "abc"]));
+  });
+
+  it("leaves timeout undefined when not passed (no default time limit)", () => {
+    const o = parse([]);
+    assert.strictEqual(o.timeout, undefined);
+  });
+});
+
 describe("CLI parsing — platform", () => {
   it("parses --platform", () => {
     const o = parse(["--platform", "linux/arm64"]);
