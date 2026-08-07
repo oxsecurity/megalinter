@@ -15,6 +15,11 @@ import which from "which";
 import { default as fs } from "fs-extra";
 import { MegaLinterUpgrader } from "./upgrade.js";
 import { CodeTotalRunner } from "./codetotal.js";
+import {
+  DashboardUploader,
+  KNOWN_DASHBOARD_PROVIDERS,
+} from "./upload-dashboards.js";
+import prompts from "prompts";
 import { DEFAULT_RELEASE } from "./config.js";
 import { createEnv } from "yeoman-environment";
 import { default as FindPackageJson } from "find-package-json";
@@ -63,6 +68,15 @@ export class MegaLinterRunner {
       return { status: 0, stdout: outputString };
     }
 
+    // Upload observability dashboards to a provider
+    if (options.uploadDashboards) {
+      const uploader = new DashboardUploader(options.uploadDashboards, {
+        dashboardsFolder: options.dashboardsFolder,
+      });
+      await uploader.run();
+      return { status: 0 };
+    }
+
     // Run configuration generator
     if (options.install) {
       const env = createEnv();
@@ -106,6 +120,7 @@ export class MegaLinterRunner {
         noPrompt: options.prompt === false,
       });
       await megaLinterUpgrader.run();
+      await this.manageSetupDashboards(options);
       return { status: 0 };
     }
 
@@ -512,6 +527,15 @@ export class MegaLinterRunner {
         `--install only generates configuration for ${DEFAULT_RELEASE} or beta: using ${DEFAULT_RELEASE} instead of ${options.release}`
       );
     }
+    if (
+      options.setupDashboards &&
+      !KNOWN_DASHBOARD_PROVIDERS.includes(options.setupDashboards)
+    ) {
+      throw new Error(
+        `Invalid --setup-dashboards value: ${options.setupDashboards}. ` +
+          `Allowed values: ${KNOWN_DASHBOARD_PROVIDERS.join(", ")}`
+      );
+    }
     const answers = {
       flavor: options.flavor,
       ci: options.setupCi,
@@ -526,11 +550,51 @@ export class MegaLinterRunner {
       validateAllCodeBase: options.setupValidateAllCodeBase,
       applyFixes: options.fix === true ? true : undefined,
       ox: options.setupOx,
+      dashboards: options.setupDashboards,
     };
     Object.keys(answers).forEach(
       (key) => answers[key] === undefined && delete answers[key]
     );
     return answers;
+  }
+
+  // Offer observability dashboards provisioning after an upgrade:
+  // --setup-dashboards <provider> in non-interactive mode, prompt otherwise
+  async manageSetupDashboards(options) {
+    let provider = options.setupDashboards;
+    if (!provider && options.prompt !== false) {
+      const response = await prompts({
+        type: "select",
+        name: "dashboards",
+        message:
+          "Do you want to provision/refresh MegaLinter observability dashboards (requires provider auth env variables) ?",
+        choices: [
+          { title: "No / later", value: "none" },
+          { title: "Grafana (Loki + Prometheus)", value: "grafana" },
+          { title: "Datadog", value: "datadog" },
+          { title: "Elastic / Kibana", value: "elastic" },
+          { title: "New Relic", value: "newrelic" },
+        ],
+        initial: 0,
+      });
+      provider = response.dashboards;
+    }
+    if (!provider || provider === "none") {
+      return;
+    }
+    try {
+      await new DashboardUploader(provider, {
+        dashboardsFolder: options.dashboardsFolder,
+      }).run();
+      console.log(`Observability dashboards uploaded to ${provider} :)`);
+    } catch (e) {
+      console.error(`Dashboards upload failed: ${e.message}`);
+      console.error(
+        "Set the required auth environment variables then run: " +
+          `npx mega-linter-runner --upload-dashboards ${provider}\n` +
+          "Documentation: https://megalinter.io/latest/reporters/ApiReporter/"
+      );
+    }
   }
 
   isv4(release) {

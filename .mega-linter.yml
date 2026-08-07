@@ -49,6 +49,9 @@ REPOSITORY_TRIVY_ARGUMENTS:
   - "github_conf"
 REPOSITORY_TRUFFLEHOG_ARGUMENTS:
   - --exclude-paths=.trufflehogignore
+  # The Lob detector matches python test function names (test_<35+ chars>) and
+  # reports them as verified secrets: false positives on this repository
+  - --exclude-detectors=lob
 REPOSITORY_KINGFISHER_ARGUMENTS:
   - "--exclude"
   - ".automation/generated"

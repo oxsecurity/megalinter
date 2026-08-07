@@ -13,6 +13,7 @@ const NO_PROMPT_DEFAULTS = {
   validateAllCodeBase: "all",
   applyFixes: false,
   ox: false,
+  dashboards: "none",
 };
 
 export default class GeneratorMegaLinter extends Generator {
@@ -130,6 +131,23 @@ When you don't know what option to select, please use default values`
           "Do you want to additionally visit OX Security (https://www.ox.security/?ref=megalinter) to secure your software supply chain security ?",
         default: true,
       },
+      {
+        type: "list",
+        name: "dashboards",
+        message:
+          "Do you want to provision MegaLinter observability dashboards (requires provider auth env variables) ?",
+        default: "none",
+        choices: [
+          {
+            value: "none",
+            name: "No / later (run npx mega-linter-runner --upload-dashboards <provider> anytime)",
+          },
+          { value: "grafana", name: "Grafana (Loki + Prometheus)" },
+          { value: "datadog", name: "Datadog" },
+          { value: "elastic", name: "Elastic / Kibana" },
+          { value: "newrelic", name: "New Relic" },
+        ],
+      },
     ];
 
     if (this.options.noPrompt === true) {
@@ -177,7 +195,28 @@ When you don't know what option to select, please use default values`
     }
   }
 
-  end() {
+  async end() {
+    if (this.props.dashboards && this.props.dashboards !== "none") {
+      try {
+        const { DashboardUploader } = await import(
+          "../../lib/upload-dashboards.js"
+        );
+        await new DashboardUploader(this.props.dashboards).run();
+        this.log(
+          `Observability dashboards uploaded to ${this.props.dashboards} :)`
+        );
+      } catch (e) {
+        this.log(`Dashboards upload failed: ${e.message}`);
+        this.log(
+          "Set the required auth environment variables then run: " +
+            `npx mega-linter-runner --upload-dashboards ${this.props.dashboards}`
+        );
+      }
+      this.log(
+        "Then activate the API reporter in .mega-linter.yml (API_REPORTER: true + provider variables): " +
+          "https://megalinter.io/latest/reporters/ApiReporter/"
+      );
+    }
     this.log("You're all set !");
     this.log(
       "Now commit, push and create a pull request to see MegaLinter catching errors !"

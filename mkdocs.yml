@@ -347,6 +347,12 @@ nav:
               - "lychee": "descriptors/spell_lychee.md"
               - "codespell": "descriptors/spell_codespell.md"
 # other-end
+  - "Observability":
+      - "Observability home": "observability.md"
+      - "Grafana": "observability/grafana.md"
+      - "Datadog": "observability/datadog.md"
+      - "Elastic": "observability/elastic.md"
+      - "New Relic": "observability/newrelic.md"
   - "Reporters":
       - "All reporters": "reporters.md"
       - "Text files": "reporters/TextReporter.md"
@@ -354,7 +360,7 @@ nav:
       - "Gitlab Merge Request comments": "reporters/GitlabCommentReporter.md"
       - "Azure Pull Request comments": "reporters/AzureCommentReporter.md"
       - "Bitbucket Pull Request comments": "reporters/BitbucketCommentReporter.md"
-      - "API (Grafana)": "reporters/ApiReporter.md"
+      - "API / Observability": "reporters/ApiReporter.md"
       - "GitHub Status": "reporters/GitHubStatusReporter.md"
       - "SARIF Reporter": "reporters/SarifReporter.md"
       - "Updated sources": "reporters/UpdatedSourcesReporter.md"

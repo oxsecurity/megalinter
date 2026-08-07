@@ -75,7 +75,21 @@ If the coding agent you are running on supports custom sub-agent definitions (Cl
 
 If a target file already exists, ask the user before overwriting it. If your platform has no sub-agent support, skip this step — the skills degrade gracefully to inline execution.
 
-## 5. Wrap up
+## 5. Observability dashboards (optional)
+
+MegaLinter can send its results to observability platforms (Grafana, Datadog, Elastic, New Relic) and ships ready-to-use dashboards: quality gate, error trends, top rules and files across repositories. Documentation: <https://megalinter.io/latest/observability/>
+
+Offer this to the user only if they seem interested in monitoring or already use one of these platforms. If accepted:
+
+1. Ask which provider they use, and make sure the provider auth environment variables are available (never write secrets in committed files):
+   - grafana: `GRAFANA_URL` + `GRAFANA_TOKEN` (service account token)
+   - datadog: `DD_SITE` + `DD_API_KEY` + `DD_APP_KEY` (or `DD_BEARER_TOKEN`)
+   - elastic: `KIBANA_URL` + `ELASTIC_API_KEY`
+   - newrelic: `NEW_RELIC_API_KEY` + `NEW_RELIC_ACCOUNT_ID` + `NEW_RELIC_REGION`
+2. Provision the dashboards: `npx mega-linter-runner --upload-dashboards <provider>` (idempotent, re-run anytime to refresh).
+3. Add to `.mega-linter.yml`: `API_REPORTER: true`, `API_REPORTER_PROVIDER: <provider>`, and the provider's non-secret variables (endpoints, site, region — see the documentation page of the provider). Point the user to the CI secrets to define for the auth variables (`API_REPORTER_*` tokens/keys).
+
+## 6. Wrap up
 
 - Show the user the generated/updated files.
 - Suggest the two ways to see MegaLinter in action (first install and upgrade alike), and offer to do it for them:

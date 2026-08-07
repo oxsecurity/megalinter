@@ -50,7 +50,7 @@ API_REPORTER_TEST_TIMEOUT_S = 10
 # ApiReporter logs a failed post as "Error posting data to <url> (<status>)", which
 # lets the test tell a remote-side outage (5xx) from an actual MegaLinter problem
 API_REPORTER_ERROR_REGEX = re.compile(
-    r"\[Api Reporter(?: Metrics)?\] Error posting data to \S+ \((?P<status>\d{3})\)"
+    r"\[Api Reporter\](?: \[[^\]]+\])? Error posting data to \S+ \((?P<status>\d{3})\)"
 )
 
 
@@ -250,8 +250,13 @@ class mega_linter_3_sarif_test(unittest.TestCase):
                 len(mega_linter.linters) > 0, "Linters have been created and run"
             )
             attempt_failures = []
-            logs_ko = "[Api Reporter] Successfully posted data" not in output
-            metrics_ko = "[Api Reporter Metrics] Successfully posted data" not in output
+            logs_ko = (
+                "[Api Reporter] [Grafana Logs] Successfully posted data" not in output
+            )
+            metrics_ko = (
+                "[Api Reporter] [Grafana Metrics] Successfully posted data"
+                not in output
+            )
             if logs_ko:
                 attempt_failures += [
                     f"Api Reporter failed to post message to {logs_url}"
