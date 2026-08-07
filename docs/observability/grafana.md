@@ -13,6 +13,8 @@ Send MegaLinter results to **Grafana Loki** (logs) and **Prometheus** (metrics),
 | **MegaLinter - Linter Detail**     | Drill-down on one linter: errors, duration, top rules, top files, raw output                 |
 | **MegaLinter - Top Rules & Files** | Most violated rules and most impacted files across repositories                              |
 
+![MegaLinter Grafana repository dashboard](../assets/images/grafana-scr.png)
+
 Provision them with:
 
 ```bash

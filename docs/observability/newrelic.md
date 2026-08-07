@@ -11,6 +11,8 @@ Send MegaLinter results to **New Relic** (Metric API + Log API) and provision th
 - *Overview*: quality gate pass rate, repository health score evolution, blocking errors, error and duration trends, errors by linter, slowest linters, top rules and files, versions in use
 - *Repository detail*: health score, quality gate, errors by linter and by language over time, slowest linters, top rules and files for one repository (select it with the **Repository variable**, or click a repository facet on the Overview page). A **Branch variable** filters both pages
 
+![MegaLinter New Relic dashboard](../assets/images/new-relic-scr.png)
+
 Provision it with:
 
 ```bash

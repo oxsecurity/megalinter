@@ -10,7 +10,7 @@ Sends MegaLinter results to **observability platforms**: [Grafana](../observabil
 
 See the [**Observability**](../observability.md) documentation for the quick start, the ready-to-use dashboards and the per-provider setup guides.
 
-![MegaLinter Grafana dashboard](../assets/images/screenshot-grafana-1.jpg)
+![MegaLinter Grafana repository dashboard](../assets/images/grafana-scr.png)
 
 ## Payload (version 2)
 

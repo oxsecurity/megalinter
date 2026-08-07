@@ -4,6 +4,8 @@
 
 MegaLinter can send the results of every run to your observability platform, so you can follow your code quality over time with **ready-to-use dashboards**: quality gate status, errors trends, slowest linters, most violated rules and most impacted files, across all your repositories.
 
+![MegaLinter Grafana repository dashboard](assets/images/grafana-scr.png)
+
 Supported providers:
 
 | Provider                               | Metrics                                         | Logs / detailed records | Dashboards provisioning        |

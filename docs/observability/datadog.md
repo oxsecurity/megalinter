@@ -8,6 +8,8 @@ Send MegaLinter results to **Datadog** (metrics + logs) and provision the MegaLi
 
 **MegaLinter - Overview**: quality gate pass rate, blocking / non-blocking / auto-fixed errors, error and duration trends by repository, errors by linter, top rules, top files, and the live stream of MegaLinter runs.
 
+![MegaLinter Datadog dashboard](../assets/images/datadog-scr.png)
+
 Provision it with:
 
 ```bash

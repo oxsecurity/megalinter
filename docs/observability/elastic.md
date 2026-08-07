@@ -10,6 +10,8 @@ Send MegaLinter results to **Elasticsearch** and provision the MegaLinter dashbo
 
 Click any repository, linter or rule bar to **filter the whole dashboard** on it (native Kibana filtering), and use the filter bar for any other drill-down (e.g. `gitBranchName: main`).
 
+![MegaLinter Kibana dashboard](../assets/images/elastic-scr.png)
+
 Provision it (dashboard + the 4 data views) with:
 
 ```bash
