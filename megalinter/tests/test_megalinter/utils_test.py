@@ -38,7 +38,7 @@ class utils_test(unittest.TestCase):
         fixed = fix_regex_pattern(r"\b(pat[[:alnum:]]{14}\.[a-f0-9]{64})\b")
         self.assertEqual(fixed, r"\b(pat[a-zA-Z0-9]{14}\.[a-f0-9]{64})\b")
         # The translated pattern must match a real Airtable personal access token
-        token = "patAbCdEf01234567." + "0123456789abcdef" * 4
+        token = "patAbCdEf01234567." + "0123456789abcdef" * 4  # betterleaks:allow
         self.assertIsNotNone(re.search(fixed, f"token: {token} used"))
 
     def test_betterleaks_regexes_compile_without_warnings(self):
