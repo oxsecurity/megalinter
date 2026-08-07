@@ -11026,6 +11026,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#licensing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Licensing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#update-your-custom-flavor" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -12343,6 +12354,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#licensing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Licensing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#update-your-custom-flavor" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -12515,6 +12537,15 @@ If you do not need fully automatic version sync, you can <strong>skip the PAT en
 <span class="w">  </span><span class="c1"># More info at https://megalinter.io/latest/flavors/</span>
 <span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/nvuillam/megalinter-custom-flavor-npm-groovy-lint/megalinter-custom-flavor:latest</span>
 </code></pre></div>
+<h2 id="licensing">Licensing</h2>
+<p><strong>A custom flavor is still MegaLinter, so it is covered by the <a href="https://github.com/oxsecurity/megalinter/blob/main/LICENSE">AGPL-3.0 license</a>.</strong></p>
+<p>This applies both to the files created by the generator in your repository, and to the Docker image you publish, which is built from the official MegaLinter image and bundles MegaLinter itself.</p>
+<p>Concretely, when you create a custom flavor repository:</p>
+<ul>
+<li>Add an <code>AGPL-3.0</code> <code>LICENSE</code> file at the root of your repository</li>
+<li>Keep the link to the MegaLinter source repository (<a href="https://github.com/oxsecurity/megalinter">oxsecurity/megalinter</a>) in your README, so users of your image can find the corresponding source</li>
+</ul>
+<p>The generated README already contains a <strong>License</strong> section stating this, so you have nothing else to do besides adding the <code>LICENSE</code> file.</p>
 <h2 id="update-your-custom-flavor">Update your custom flavor</h2>
 <p>If you add/remove linters in your <code>mega-linter-flavor.yml</code>:</p>
 <ul>
