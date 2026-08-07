@@ -173,6 +173,12 @@ Skills in `.claude/skills/` invocable by name (e.g. `/add-linter`).
 - `/fix-issue [issue URL or #number]` - End-to-end GitHub issue fix: gather context, implement on a branch, commit under the user's git identity (no AI attribution), open a PR, and watch CI until green
 - `/prepare-release [vX.Y.Z]` - Full release ceremony: update CHANGELOG (prune empty sections, collapse linter versions, backfill PR numbers), run release build, push commit and tag, guide GitHub release creation
 
+**Vendored official vendor skills** (Apache-2.0, for observability dashboard work — see `/sync-dashboards`):
+
+- `/grafana-dashboarding`, `/grafana-promql` - from [grafana/skills](https://github.com/grafana/skills)
+- `/kibana-dashboards` - from [elastic/agent-skills](https://github.com/elastic/agent-skills)
+- `/datadog-dashboards` - from [DataDog/datadog-api-claude-plugin](https://github.com/DataDog/datadog-api-claude-plugin) (New Relic publishes no official agent skill, only an MCP server)
+
 ## Rules
 
 Context-aware rules in `.claude/rules/` are automatically loaded based on which files are being edited:

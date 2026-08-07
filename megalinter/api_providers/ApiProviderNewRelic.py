@@ -49,9 +49,11 @@ class ApiProviderNewRelic(ApiProvider):
 
     def send(self) -> bool:
         now_ms = int(time.time() * 1000)
-        common_attributes = {**self.base_tags_dict(), "runId": self.payload["runId"]}
-        logs_ok = self.send_logs(now_ms, common_attributes)
-        metrics_ok = self.send_metrics(now_ms, common_attributes)
+        # runId is a logs-only attribute: it must never tag metrics
+        # (unbounded cardinality)
+        logs_attributes = {**self.base_tags_dict(), "runId": self.payload["runId"]}
+        logs_ok = self.send_logs(now_ms, logs_attributes)
+        metrics_ok = self.send_metrics(now_ms, self.base_tags_dict())
         return logs_ok and metrics_ok
 
     def send_logs(self, now_ms, common_attributes) -> bool:

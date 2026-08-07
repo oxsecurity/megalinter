@@ -9,12 +9,12 @@
   "id": null,
   "links": [
     {
-      "title": "",
+      "title": "MegaLinter dashboards",
       "type": "dashboards",
       "tags": [
         "megalinter"
       ],
-      "asDropdown": false,
+      "asDropdown": true,
       "keepTime": true,
       "includeVars": true,
       "icon": "dashboard",
@@ -77,7 +77,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "count(count by (gitRepoName) (last_over_time(megalinter_run_lintersCount{gitBranchName=~\"$branch\"}[$__range])))",
+          "expr": "count(count by (gitRepoName) (last_over_time(megalinter_run_lintersCount{orgIdentifier=~\"$org\",gitBranchName=~\"$branch\"}[$__range])))",
           "refId": "A",
           "instant": true,
           "range": false
@@ -132,7 +132,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum(count_over_time(megalinter_run_qualityGate{gitBranchName=~\"$branch\"}[$__range]))",
+          "expr": "sum(count_over_time(megalinter_run_qualityGate{orgIdentifier=~\"$org\",gitBranchName=~\"$branch\"}[$__range]))",
           "refId": "A",
           "instant": true,
           "range": false
@@ -196,12 +196,13 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "100 * avg(last_over_time(megalinter_run_qualityGate{gitBranchName=~\"$branch\"}[$__range]))",
+          "expr": "100 * sum(sum_over_time(megalinter_run_qualityGate{orgIdentifier=~\"$org\",gitBranchName=~\"$branch\"}[$__range])) / sum(count_over_time(megalinter_run_qualityGate{orgIdentifier=~\"$org\",gitBranchName=~\"$branch\"}[$__range]))",
           "refId": "A",
           "instant": true,
           "range": false
         }
-      ]
+      ],
+      "description": "Share of all MegaLinter runs over the selected period that passed the quality gate."
     },
     {
       "id": 4,
@@ -255,12 +256,13 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum(max by (gitIdentifier) (last_over_time(megalinter_run_blockingErrors{gitBranchName=~\"$branch\"}[$__range])))",
+          "expr": "sum(last_over_time((sum by (gitIdentifier) (megalinter_run_blockingErrors{orgIdentifier=~\"$org\",gitBranchName=~\"$branch\"}))[$__range:]))",
           "refId": "A",
           "instant": true,
           "range": false
         }
-      ]
+      ],
+      "description": "Sum of the blocking errors reported by the latest run of each selected repository/branch in the time range."
     },
     {
       "id": 5,
@@ -314,7 +316,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum(max by (gitIdentifier) (last_over_time(megalinter_run_nonBlockingErrors{gitBranchName=~\"$branch\"}[$__range])))",
+          "expr": "sum(last_over_time((sum by (gitIdentifier) (megalinter_run_nonBlockingErrors{orgIdentifier=~\"$org\",gitBranchName=~\"$branch\"}))[$__range:]))",
           "refId": "A",
           "instant": true,
           "range": false
@@ -369,7 +371,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum(max by (gitIdentifier) (last_over_time(megalinter_run_totalErrorsFixed{gitBranchName=~\"$branch\"}[$__range])))",
+          "expr": "sum(last_over_time((sum by (gitIdentifier) (megalinter_run_totalErrorsFixed{orgIdentifier=~\"$org\",gitBranchName=~\"$branch\"}))[$__range:]))",
           "refId": "A",
           "instant": true,
           "range": false
@@ -405,7 +407,7 @@
           "links": [
             {
               "title": "Open repository dashboard",
-              "url": "/d/megalinter-repository/megalinter-repository?var-repo=${__data.fields.Repository}&${__url_time_range}"
+              "url": "/d/megalinter-repository/megalinter-repository?var-repo=${__data.fields.Repository:percentencode}&${__url_time_range}&${branch:queryparam}"
             }
           ]
         },
@@ -560,7 +562,7 @@
         "showHeader": true,
         "sortBy": [
           {
-            "displayName": "Repositories (latest run) - click a value to open the repository dashboard",
+            "displayName": "Blocking errors",
             "desc": true
           }
         ]
@@ -571,7 +573,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "max by (gitRepoName) (last_over_time(megalinter_run_qualityGate{gitBranchName=~\"$branch\"}[$__range]))",
+          "expr": "last_over_time((min by (gitRepoName) (megalinter_run_qualityGate{orgIdentifier=~\"$org\",gitBranchName=~\"$branch\"}))[$__range:])",
           "refId": "A",
           "instant": true,
           "range": false,
@@ -582,7 +584,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "max by (gitRepoName) (last_over_time(megalinter_run_healthScore{gitBranchName=~\"$branch\"}[$__range]))",
+          "expr": "last_over_time((min by (gitRepoName) (megalinter_run_healthScore{orgIdentifier=~\"$org\",gitBranchName=~\"$branch\"}))[$__range:])",
           "refId": "B",
           "instant": true,
           "range": false,
@@ -593,7 +595,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "max by (gitRepoName) (last_over_time(megalinter_run_blockingErrors{gitBranchName=~\"$branch\"}[$__range]))",
+          "expr": "last_over_time((sum by (gitRepoName) (megalinter_run_blockingErrors{orgIdentifier=~\"$org\",gitBranchName=~\"$branch\"}))[$__range:])",
           "refId": "C",
           "instant": true,
           "range": false,
@@ -604,7 +606,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "max by (gitRepoName) (last_over_time(megalinter_run_nonBlockingErrors{gitBranchName=~\"$branch\"}[$__range]))",
+          "expr": "last_over_time((sum by (gitRepoName) (megalinter_run_nonBlockingErrors{orgIdentifier=~\"$org\",gitBranchName=~\"$branch\"}))[$__range:])",
           "refId": "D",
           "instant": true,
           "range": false,
@@ -615,7 +617,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "max by (gitRepoName) (last_over_time(megalinter_run_lintersError{gitBranchName=~\"$branch\"}[$__range]))",
+          "expr": "last_over_time((sum by (gitRepoName) (megalinter_run_lintersError{orgIdentifier=~\"$org\",gitBranchName=~\"$branch\"}))[$__range:])",
           "refId": "E",
           "instant": true,
           "range": false,
@@ -626,7 +628,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "max by (gitRepoName) (last_over_time(megalinter_run_runDurationS{gitBranchName=~\"$branch\"}[$__range]))",
+          "expr": "last_over_time((max by (gitRepoName) (megalinter_run_runDurationS{orgIdentifier=~\"$org\",gitBranchName=~\"$branch\"}))[$__range:])",
           "refId": "F",
           "instant": true,
           "range": false,
@@ -639,6 +641,14 @@
           "options": {
             "byField": "gitRepoName",
             "mode": "outer"
+          }
+        },
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "exclude": {
+              "pattern": "^Time.*$"
+            }
           }
         },
         {
@@ -696,7 +706,7 @@
           "links": [
             {
               "title": "Open repository dashboard",
-              "url": "/d/megalinter-repository/megalinter-repository?var-repo=${__field.labels.gitRepoName}&${__url_time_range}"
+              "url": "/d/megalinter-repository/megalinter-repository?var-repo=${__field.labels.gitRepoName:percentencode}&${__url_time_range}&${branch:queryparam}"
             }
           ]
         },
@@ -720,7 +730,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "topk(10, max by (gitRepoName) (last_over_time(megalinter_run_blockingErrors{gitBranchName=~\"$branch\"}[$__range])))",
+          "expr": "topk(10, last_over_time((sum by (gitRepoName) (megalinter_run_blockingErrors{orgIdentifier=~\"$org\",gitBranchName=~\"$branch\"}))[$__range:]))",
           "refId": "A",
           "instant": true,
           "range": false
@@ -747,7 +757,7 @@
             "drawStyle": "line",
             "lineWidth": 2,
             "fillOpacity": 12,
-            "spanNulls": true,
+            "spanNulls": false,
             "showPoints": "auto",
             "pointSize": 5,
             "thresholdsStyle": {
@@ -776,7 +786,7 @@
           "links": [
             {
               "title": "Open repository dashboard",
-              "url": "/d/megalinter-repository/megalinter-repository?var-repo=${__field.labels.gitRepoName}&${__url_time_range}"
+              "url": "/d/megalinter-repository/megalinter-repository?var-repo=${__field.labels.gitRepoName:percentencode}&${__url_time_range}&${branch:queryparam}"
             }
           ],
           "min": 0,
@@ -804,7 +814,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "max by (gitRepoName) (megalinter_run_healthScore{gitBranchName=~\"$branch\"})",
+          "expr": "bottomk(15, min by (gitRepoName) (megalinter_run_healthScore{orgIdentifier=~\"$org\",gitBranchName=~\"$branch\"}))",
           "refId": "A",
           "legendFormat": "{{gitRepoName}}"
         }
@@ -830,7 +840,7 @@
             "drawStyle": "line",
             "lineWidth": 2,
             "fillOpacity": 12,
-            "spanNulls": true,
+            "spanNulls": false,
             "showPoints": "auto",
             "pointSize": 5
           },
@@ -847,7 +857,7 @@
           "links": [
             {
               "title": "Open repository dashboard",
-              "url": "/d/megalinter-repository/megalinter-repository?var-repo=${__field.labels.gitRepoName}&${__url_time_range}"
+              "url": "/d/megalinter-repository/megalinter-repository?var-repo=${__field.labels.gitRepoName:percentencode}&${__url_time_range}&${branch:queryparam}"
             }
           ]
         },
@@ -873,7 +883,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "max by (gitRepoName) (megalinter_run_totalErrors{gitBranchName=~\"$branch\"})",
+          "expr": "topk(15, sum by (gitRepoName) (megalinter_run_totalErrors{orgIdentifier=~\"$org\",gitBranchName=~\"$branch\"}))",
           "refId": "A",
           "legendFormat": "{{gitRepoName}}"
         }
@@ -899,7 +909,7 @@
             "drawStyle": "line",
             "lineWidth": 2,
             "fillOpacity": 12,
-            "spanNulls": true,
+            "spanNulls": false,
             "showPoints": "auto",
             "pointSize": 5
           },
@@ -917,7 +927,7 @@
           "links": [
             {
               "title": "Open repository dashboard",
-              "url": "/d/megalinter-repository/megalinter-repository?var-repo=${__field.labels.gitRepoName}&${__url_time_range}"
+              "url": "/d/megalinter-repository/megalinter-repository?var-repo=${__field.labels.gitRepoName:percentencode}&${__url_time_range}&${branch:queryparam}"
             }
           ]
         },
@@ -943,7 +953,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "max by (gitRepoName) (megalinter_run_runDurationS{gitBranchName=~\"$branch\"})",
+          "expr": "topk(15, max by (gitRepoName) (megalinter_run_runDurationS{orgIdentifier=~\"$org\",gitBranchName=~\"$branch\"}))",
           "refId": "A",
           "legendFormat": "{{gitRepoName}}"
         }
@@ -1006,12 +1016,13 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "avg(max by (gitRepoName) (last_over_time(megalinter_run_healthScore{gitBranchName=~\"$branch\"}[$__range])))",
+          "expr": "avg(last_over_time((min by (gitRepoName) (megalinter_run_healthScore{orgIdentifier=~\"$org\",gitBranchName=~\"$branch\"}))[$__range:]))",
           "refId": "A",
           "instant": true,
           "range": false
         }
-      ]
+      ],
+      "description": "Health score of the latest run in the selected time range, aggregated with min (worst case) across the selected branches/repositories. Rating scale: A >= 90, B >= 80, C >= 65, D >= 50, else E."
     },
     {
       "id": 13,
@@ -1110,8 +1121,8 @@
           ],
           "links": [
             {
-              "title": "Why this rating?",
-              "url": "/d/megalinter-rating/megalinter-rating?${__url_time_range}"
+              "title": "Rating explanation (pick a repository)",
+              "url": "/d/megalinter-rating/megalinter-rating?${__url_time_range}&${branch:queryparam}"
             }
           ]
         },
@@ -1136,12 +1147,13 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "avg(max by (gitRepoName) (last_over_time(megalinter_run_healthScore{gitBranchName=~\"$branch\"}[$__range])))",
+          "expr": "avg(last_over_time((min by (gitRepoName) (megalinter_run_healthScore{orgIdentifier=~\"$org\",gitBranchName=~\"$branch\"}))[$__range:]))",
           "refId": "A",
           "instant": true,
           "range": false
         }
-      ]
+      ],
+      "description": "Rating derived from the latest-run, worst-branch health score: A >= 90, B >= 80, C >= 65, D >= 50, else E."
     },
     {
       "id": 14,
@@ -1192,7 +1204,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum(sum_over_time(megalinter_run_totalErrorsFixed{gitBranchName=~\"$branch\"}[$__range])) * 5",
+          "expr": "sum(sum_over_time(megalinter_run_totalErrorsFixed{orgIdentifier=~\"$org\",gitBranchName=~\"$branch\"}[$__range])) * 5",
           "refId": "A",
           "instant": true,
           "range": false
@@ -1275,7 +1287,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "min by (gitIdentifier) (megalinter_run_qualityGate{gitBranchName=~\"$branch\"})",
+          "expr": "min by (gitIdentifier) (megalinter_run_qualityGate{orgIdentifier=~\"$org\",gitBranchName=~\"$branch\"})",
           "refId": "A",
           "legendFormat": "{{gitIdentifier}}"
         }
@@ -1301,7 +1313,7 @@
             "drawStyle": "line",
             "lineWidth": 2,
             "fillOpacity": 12,
-            "spanNulls": true,
+            "spanNulls": false,
             "showPoints": "auto",
             "pointSize": 5
           },
@@ -1321,7 +1333,7 @@
       "options": {
         "legend": {
           "displayMode": "table",
-          "placement": "right",
+          "placement": "bottom",
           "calcs": [
             "lastNotNull",
             "max"
@@ -1338,7 +1350,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "max by (gitRepoName) (megalinter_run_totalErrorsFixed{gitBranchName=~\"$branch\"})",
+          "expr": "topk(15, sum by (gitRepoName) (megalinter_run_totalErrorsFixed{orgIdentifier=~\"$org\",gitBranchName=~\"$branch\"}))",
           "refId": "A",
           "legendFormat": "{{gitRepoName}}"
         }
@@ -1377,8 +1389,8 @@
         "showHeader": true,
         "sortBy": [
           {
-            "displayName": "MegaLinter versions",
-            "desc": true
+            "displayName": "Repository",
+            "desc": false
           }
         ]
       },
@@ -1388,7 +1400,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "max by (gitRepoName, megalinterVersion, megalinterFlavor) (last_over_time(megalinter_run_qualityGate{gitBranchName=~\"$branch\"}[$__range]))",
+          "expr": "max by (gitRepoName, megalinterVersion, megalinterFlavor) (last_over_time(megalinter_run_qualityGate{orgIdentifier=~\"$org\",gitBranchName=~\"$branch\"}[$__range]))",
           "refId": "A",
           "instant": true,
           "range": false,
@@ -1413,8 +1425,8 @@
       ]
     }
   ],
-  "refresh": "",
-  "schemaVersion": 39,
+  "refresh": "5m",
+  "schemaVersion": 41,
   "tags": [
     "megalinter"
   ],
@@ -1426,15 +1438,28 @@
         "type": "datasource",
         "query": "prometheus",
         "current": {},
-        "hide": 2
+        "hide": 2,
+        "refresh": 1,
+        "regex": "/^(?!.*(alert-state-history|usage-insights|ml-metrics)).*/"
       },
       {
-        "name": "DS_LOKI",
-        "label": "Logs datasource",
-        "type": "datasource",
-        "query": "loki",
+        "name": "org",
+        "label": "Organization",
+        "type": "query",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DS_PROMETHEUS}"
+        },
+        "query": {
+          "query": "label_values(megalinter_run_lintersCount, orgIdentifier)",
+          "refId": "org"
+        },
+        "refresh": 2,
+        "sort": 1,
+        "multi": true,
+        "includeAll": true,
         "current": {},
-        "hide": 2
+        "options": []
       },
       {
         "name": "branch",
@@ -1445,7 +1470,7 @@
           "uid": "${DS_PROMETHEUS}"
         },
         "query": {
-          "query": "label_values(megalinter_run_lintersCount, gitBranchName)",
+          "query": "label_values(megalinter_run_lintersCount{orgIdentifier=~\"$org\"}, gitBranchName)",
           "refId": "branch"
         },
         "refresh": 2,
@@ -1463,7 +1488,7 @@
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "MegaLinter - Org Overview",
+  "title": "MegaLinter - 1. Org Overview",
   "uid": "megalinter-org-overview",
   "version": 1,
   "weekStart": ""

@@ -71,10 +71,19 @@ class DashboardBuilderDatadog(DashboardBuilder):
             {"comparator": "<=", "value": 0, "palette": "white_on_gray"},
         ]
 
-    def query_value(self, title, query, precision=0, conditional_formats=None):
+    def query_value(
+        self,
+        title,
+        query,
+        precision=0,
+        conditional_formats=None,
+        aggregator="last",
+        zero_when_empty=False,
+    ):
+        formula = "default_zero(q1)" if zero_when_empty else "q1"
         request = {
-            "queries": [self.metric_query("q1", query, "last")],
-            "formulas": [{"formula": "q1"}],
+            "queries": [self.metric_query("q1", query, aggregator)],
+            "formulas": [{"formula": formula}],
             "response_format": "scalar",
         }
         if conditional_formats is not None:
@@ -85,11 +94,15 @@ class DashboardBuilderDatadog(DashboardBuilder):
                 "type": "query_value",
                 "precision": precision,
                 "autoscale": False,
+                "timeseries_background": {"type": "area"},
+                "time": {"live_span": "1w"},
                 "requests": [request],
             }
         }
 
-    def timeseries(self, title, query, display_type="line", links=None, palette=None):
+    def timeseries(
+        self, title, query, display_type="line", links=None, palette=None, markers=None
+    ):
         request = {
             "queries": [self.metric_query("q1", query)],
             "formulas": [{"formula": "q1"}],
@@ -101,48 +114,60 @@ class DashboardBuilderDatadog(DashboardBuilder):
         definition = {
             "title": title,
             "type": "timeseries",
+            "time": {"live_span": "1w"},
             "requests": [request],
         }
         if links is not None:
             definition["custom_links"] = links
+        if markers is not None:
+            definition["markers"] = markers
         return {"definition": definition}
 
+    # One request per series so each keeps its own semantic palette
     def timeseries_multi(self, title, named_queries, display_type="line"):
         return {
             "definition": {
                 "title": title,
                 "type": "timeseries",
+                "time": {"live_span": "1w"},
                 "requests": [
                     {
-                        "queries": [
-                            self.metric_query(name, query)
-                            for name, query in named_queries
-                        ],
-                        "formulas": [
-                            {"formula": name, "alias": name}
-                            for name, _query in named_queries
-                        ],
+                        "queries": [self.metric_query(name, query)],
+                        "formulas": [{"formula": name, "alias": alias}],
                         "response_format": "timeseries",
                         "display_type": display_type,
+                        "style": {"palette": palette},
                     }
+                    for name, alias, query, palette in named_queries
                 ],
             }
         }
 
-    def query_value_formula(self, title, query, formula, precision=0):
+    def query_value_formula(
+        self,
+        title,
+        query,
+        formula,
+        precision=0,
+        aggregator="last",
+        conditional_formats=None,
+    ):
+        request = {
+            "queries": [self.metric_query("q1", query, aggregator)],
+            "formulas": [{"formula": formula}],
+            "response_format": "scalar",
+        }
+        if conditional_formats is not None:
+            request["conditional_formats"] = conditional_formats
         return {
             "definition": {
                 "title": title,
                 "type": "query_value",
                 "precision": precision,
                 "autoscale": False,
-                "requests": [
-                    {
-                        "queries": [self.metric_query("q1", query, "last")],
-                        "formulas": [{"formula": formula}],
-                        "response_format": "scalar",
-                    }
-                ],
+                "timeseries_background": {"type": "area"},
+                "time": {"live_span": "1w"},
+                "requests": [request],
             }
         }
 
@@ -153,6 +178,7 @@ class DashboardBuilderDatadog(DashboardBuilder):
                 "type": "query_value",
                 "precision": 0,
                 "autoscale": False,
+                "time": {"live_span": "1w"},
                 "requests": [
                     {
                         "queries": [
@@ -173,9 +199,11 @@ class DashboardBuilderDatadog(DashboardBuilder):
             }
         }
 
-    def toplist_metrics(self, title, query, links=None, conditional_formats=None):
+    def toplist_metrics(
+        self, title, query, links=None, conditional_formats=None, aggregator="last"
+    ):
         request = {
-            "queries": [self.metric_query("q1", query, "last")],
+            "queries": [self.metric_query("q1", query, aggregator)],
             "formulas": [{"formula": "q1", "limit": {"count": 15, "order": "desc"}}],
             "response_format": "scalar",
         }
@@ -184,6 +212,7 @@ class DashboardBuilderDatadog(DashboardBuilder):
         definition = {
             "title": title,
             "type": "toplist",
+            "time": {"live_span": "1w"},
             "requests": [request],
         }
         if links is not None:
@@ -195,6 +224,7 @@ class DashboardBuilderDatadog(DashboardBuilder):
             "definition": {
                 "title": title,
                 "type": "toplist",
+                "time": {"live_span": "1w"},
                 "requests": [
                     {
                         "queries": [
@@ -257,6 +287,7 @@ class DashboardBuilderDatadog(DashboardBuilder):
             "definition": {
                 "title": title,
                 "type": "log_stream",
+                "time": {"live_span": "1w"},
                 "query": query,
                 "columns": ["core_host", "core_service"],
                 "show_date_column": True,
@@ -280,13 +311,13 @@ class DashboardBuilderDatadog(DashboardBuilder):
                     "name": "git_repo_name",
                     "prefix": "git_repo_name",
                     "available_values": [],
-                    "default": "*",
+                    "defaults": ["*"],
                 },
                 {
                     "name": "git_branch_name",
                     "prefix": "git_branch_name",
                     "available_values": [],
-                    "default": "*",
+                    "defaults": ["*"],
                 },
             ],
             "widgets": [
@@ -298,14 +329,17 @@ class DashboardBuilderDatadog(DashboardBuilder):
                     "a repository or branch, and the *Why this rating?* section below to "
                     "understand the health score."
                 ),
-                self.query_value(
+                self.query_value_formula(
                     "Quality gate pass rate (%)",
-                    f"avg:{DD_RUN_PREFIX}qualityGate{{$git_repo_name,$git_branch_name}} * 100",
+                    f"avg:{DD_RUN_PREFIX}qualityGate{{$git_repo_name,$git_branch_name}}",
+                    "q1 * 100",
+                    aggregator="avg",
                     conditional_formats=self.good_when_high(),
                 ),
                 self.query_value(
                     "Health score (avg)",
                     f"avg:{DD_RUN_PREFIX}healthScore{{$git_repo_name,$git_branch_name}}",
+                    aggregator="avg",
                     conditional_formats=self.good_when_high(warning=50, good=80),
                 ),
                 self.query_value_formula(
@@ -318,30 +352,53 @@ class DashboardBuilderDatadog(DashboardBuilder):
                     "source:megalinter record_type:run $git_repo_name $git_branch_name",
                 ),
                 self.query_value(
-                    "Blocking errors",
+                    "Blocking errors (latest runs)",
                     f"sum:{DD_RUN_PREFIX}blockingErrors{{$git_repo_name,$git_branch_name}}",
                     conditional_formats=self.bad_when_any(),
+                    zero_when_empty=True,
                 ),
                 self.query_value(
-                    "Non-blocking errors",
+                    "Non-blocking errors (latest runs)",
                     f"sum:{DD_RUN_PREFIX}nonBlockingErrors{{$git_repo_name,$git_branch_name}}",
                     conditional_formats=self.warn_when_any(),
+                    zero_when_empty=True,
                 ),
                 self.query_value(
-                    "Errors auto-fixed",
+                    "Files analyzed (latest runs)",
+                    f"sum:{DD_RUN_PREFIX}filesAnalyzed{{$git_repo_name,$git_branch_name}}",
+                ),
+                self.query_value(
+                    "Errors auto-fixed (period)",
                     f"sum:{DD_RUN_PREFIX}totalErrorsFixed{{$git_repo_name,$git_branch_name}}",
+                    aggregator="sum",
                     conditional_formats=self.good_when_any(),
+                    zero_when_empty=True,
                 ),
                 self.query_value_formula(
                     "Estimated time saved by auto-fixes (min, 5 min/fix)",
                     f"sum:{DD_RUN_PREFIX}totalErrorsFixed{{$git_repo_name,$git_branch_name}}",
-                    "q1 * 5",
+                    "default_zero(q1) * 5",
+                    aggregator="sum",
                 ),
                 self.timeseries(
                     "Repository health score evolution",
                     f"max:{DD_RUN_PREFIX}healthScore{{$git_repo_name,$git_branch_name}} by {{git_repo_name}}",
                     links=self.repo_links(),
                     palette="cool",
+                    markers=[
+                        {"value": "y = 90", "display_type": "ok dashed", "label": "A"},
+                        {"value": "y = 80", "display_type": "ok dashed", "label": "B"},
+                        {
+                            "value": "y = 65",
+                            "display_type": "warning dashed",
+                            "label": "C",
+                        },
+                        {
+                            "value": "y = 50",
+                            "display_type": "error dashed",
+                            "label": "D",
+                        },
+                    ],
                 ),
                 self.timeseries(
                     "Total errors by repository",
@@ -356,7 +413,7 @@ class DashboardBuilderDatadog(DashboardBuilder):
                 ),
                 self.timeseries(
                     "Errors by language over time",
-                    f"sum:{DD_LINTER_PREFIX}numberErrorsFound{{$git_repo_name,$git_branch_name}} by {{descriptor}}",
+                    f"max:{DD_LINTER_PREFIX}numberErrorsFound{{$git_repo_name,$git_branch_name}} by {{descriptor}}",
                     display_type="bars",
                     palette="orange",
                 ),
@@ -365,11 +422,15 @@ class DashboardBuilderDatadog(DashboardBuilder):
                     [
                         (
                             "blocking",
+                            "Blocking",
                             f"sum:{DD_RUN_PREFIX}blockingErrors{{$git_repo_name,$git_branch_name}}",
+                            "warm",
                         ),
                         (
                             "nonblocking",
+                            "Non-blocking",
                             f"sum:{DD_RUN_PREFIX}nonBlockingErrors{{$git_repo_name,$git_branch_name}}",
+                            "orange",
                         ),
                     ],
                 ),
@@ -397,6 +458,12 @@ class DashboardBuilderDatadog(DashboardBuilder):
                         {"comparator": "<=", "value": 30, "palette": "white_on_green"},
                     ],
                 ),
+                self.toplist_metrics(
+                    "Health score by MegaLinter version (avg)",
+                    f"avg:{DD_RUN_PREFIX}healthScore{{$git_repo_name,$git_branch_name}} by {{megalinter_version}}",
+                    aggregator="avg",
+                    conditional_formats=self.good_when_high(warning=50, good=80),
+                ),
                 self.toplist_logs(
                     "Top rules",
                     "source:megalinter record_type:rule $git_repo_name $git_branch_name",
@@ -411,9 +478,9 @@ class DashboardBuilderDatadog(DashboardBuilder):
                     "Why this rating?",
                     [
                         self.note(
-                            "**How the rating / health score is computed**\\n\\nHealth score (0-100) = `100 x "
+                            "**How the rating / health score is computed**\n\nHealth score (0-100) = `100 x "
                             "(linters in success + 0.5 x linters with non-blocking errors) / total "
-                            "linters`\\n\\nA >= 90, B >= 80, C >= 65, D >= 50, E < 50.\\n\\nTo improve it: "
+                            "linters`\n\nA >= 90, B >= 80, C >= 65, D >= 50, E < 50.\n\nTo improve it: "
                             "fix the linters in error first (full share each), then the warnings (half share "
                             "each). Use the `git_repo_name` template variable to focus on one repository."
                         ),

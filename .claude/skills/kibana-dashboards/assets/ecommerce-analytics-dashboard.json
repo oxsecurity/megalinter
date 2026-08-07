@@ -1,0 +1,530 @@
+{
+  "title": "E-Commerce Analytics",
+  "panels": [
+    {
+      "type": "vis",
+      "id": "total-revenue",
+      "grid": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 5
+      },
+      "config": {
+        "type": "metric",
+        "data_source": {
+          "type": "data_view_spec",
+          "index_pattern": "kibana_sample_data_ecommerce",
+          "time_field": "order_date"
+        },
+        "metrics": [
+          {
+            "type": "primary",
+            "operation": "sum",
+            "field": "taxful_total_price",
+            "label": "Total Revenue"
+          }
+        ]
+      }
+    },
+    {
+      "type": "vis",
+      "id": "total-orders",
+      "grid": {
+        "x": 12,
+        "y": 0,
+        "w": 12,
+        "h": 5
+      },
+      "config": {
+        "type": "metric",
+        "data_source": {
+          "type": "data_view_spec",
+          "index_pattern": "kibana_sample_data_ecommerce",
+          "time_field": "order_date"
+        },
+        "metrics": [
+          {
+            "type": "primary",
+            "operation": "count",
+            "label": "Total Orders"
+          }
+        ]
+      }
+    },
+    {
+      "type": "vis",
+      "id": "avg-order-value",
+      "grid": {
+        "x": 24,
+        "y": 0,
+        "w": 12,
+        "h": 5
+      },
+      "config": {
+        "type": "metric",
+        "data_source": {
+          "type": "data_view_spec",
+          "index_pattern": "kibana_sample_data_ecommerce",
+          "time_field": "order_date"
+        },
+        "metrics": [
+          {
+            "type": "primary",
+            "operation": "average",
+            "field": "taxful_total_price",
+            "label": "Avg Order Value"
+          }
+        ]
+      }
+    },
+    {
+      "type": "vis",
+      "id": "total-products-sold",
+      "grid": {
+        "x": 36,
+        "y": 0,
+        "w": 12,
+        "h": 5
+      },
+      "config": {
+        "type": "metric",
+        "data_source": {
+          "type": "data_view_spec",
+          "index_pattern": "kibana_sample_data_ecommerce",
+          "time_field": "order_date"
+        },
+        "metrics": [
+          {
+            "type": "primary",
+            "operation": "sum",
+            "field": "total_quantity",
+            "label": "Products Sold"
+          }
+        ]
+      }
+    },
+    {
+      "type": "vis",
+      "id": "revenue-timeline",
+      "grid": {
+        "x": 0,
+        "y": 5,
+        "w": 32,
+        "h": 10
+      },
+      "config": {
+        "title": "Daily Revenue Trend",
+        "type": "xy",
+        "axis": {
+          "x": {
+            "title": {
+              "visible": false
+            }
+          },
+          "y": {
+            "title": {
+              "visible": false
+            }
+          }
+        },
+        "layers": [
+          {
+            "type": "area",
+            "data_source": {
+              "type": "data_view_spec",
+              "index_pattern": "kibana_sample_data_ecommerce",
+              "time_field": "order_date"
+            },
+            "x": {
+              "operation": "date_histogram",
+              "field": "order_date"
+            },
+            "y": [
+              {
+                "operation": "sum",
+                "field": "taxful_total_price"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "vis",
+      "id": "orders-by-day-of-week",
+      "grid": {
+        "x": 32,
+        "y": 5,
+        "w": 16,
+        "h": 10
+      },
+      "config": {
+        "title": "Orders by Day of Week",
+        "type": "xy",
+        "axis": {
+          "x": {
+            "title": {
+              "visible": false
+            }
+          },
+          "y": {
+            "title": {
+              "visible": false
+            }
+          }
+        },
+        "layers": [
+          {
+            "type": "bar_horizontal",
+            "data_source": {
+              "type": "data_view_spec",
+              "index_pattern": "kibana_sample_data_ecommerce",
+              "time_field": "order_date"
+            },
+            "x": {
+              "operation": "terms",
+              "fields": ["day_of_week"],
+              "limit": 7
+            },
+            "y": [
+              {
+                "operation": "count"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "vis",
+      "id": "revenue-by-category",
+      "grid": {
+        "x": 0,
+        "y": 15,
+        "w": 16,
+        "h": 8
+      },
+      "config": {
+        "title": "Revenue by Category",
+        "type": "xy",
+        "axis": {
+          "x": {
+            "title": {
+              "visible": false
+            }
+          },
+          "y": {
+            "title": {
+              "visible": false
+            }
+          }
+        },
+        "layers": [
+          {
+            "type": "bar_horizontal",
+            "data_source": {
+              "type": "data_view_spec",
+              "index_pattern": "kibana_sample_data_ecommerce",
+              "time_field": "order_date"
+            },
+            "x": {
+              "operation": "terms",
+              "fields": ["category.keyword"],
+              "limit": 6
+            },
+            "y": [
+              {
+                "operation": "sum",
+                "field": "taxful_total_price"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "vis",
+      "id": "top-manufacturers",
+      "grid": {
+        "x": 16,
+        "y": 15,
+        "w": 16,
+        "h": 8
+      },
+      "config": {
+        "title": "Top Manufacturers",
+        "type": "xy",
+        "axis": {
+          "x": {
+            "title": {
+              "visible": false
+            }
+          },
+          "y": {
+            "title": {
+              "visible": false
+            }
+          }
+        },
+        "layers": [
+          {
+            "type": "bar_horizontal",
+            "data_source": {
+              "type": "data_view_spec",
+              "index_pattern": "kibana_sample_data_ecommerce",
+              "time_field": "order_date"
+            },
+            "x": {
+              "operation": "terms",
+              "fields": ["manufacturer.keyword"],
+              "limit": 6
+            },
+            "y": [
+              {
+                "operation": "sum",
+                "field": "taxful_total_price"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "vis",
+      "id": "revenue-by-gender",
+      "grid": {
+        "x": 32,
+        "y": 15,
+        "w": 16,
+        "h": 8
+      },
+      "config": {
+        "title": "Revenue by Gender",
+        "type": "xy",
+        "axis": {
+          "x": {
+            "title": {
+              "visible": false
+            }
+          },
+          "y": {
+            "title": {
+              "visible": false
+            }
+          }
+        },
+        "layers": [
+          {
+            "type": "bar_horizontal",
+            "data_source": {
+              "type": "data_view_spec",
+              "index_pattern": "kibana_sample_data_ecommerce",
+              "time_field": "order_date"
+            },
+            "x": {
+              "operation": "terms",
+              "fields": ["customer_gender"],
+              "limit": 5
+            },
+            "y": [
+              {
+                "operation": "sum",
+                "field": "taxful_total_price"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "vis",
+      "id": "top-customers-table",
+      "grid": {
+        "x": 0,
+        "y": 23,
+        "w": 24,
+        "h": 12
+      },
+      "config": {
+        "title": "Top Customers by Spend",
+        "type": "data_table",
+        "data_source": {
+          "type": "data_view_spec",
+          "index_pattern": "kibana_sample_data_ecommerce",
+          "time_field": "order_date"
+        },
+        "metrics": [
+          {
+            "operation": "sum",
+            "field": "taxful_total_price"
+          },
+          {
+            "operation": "count"
+          },
+          {
+            "operation": "average",
+            "field": "taxful_total_price"
+          }
+        ],
+        "rows": [
+          {
+            "operation": "terms",
+            "fields": ["customer_full_name.keyword"],
+            "limit": 10,
+            "rank_by": {
+              "type": "metric",
+              "metric_index": 0,
+              "direction": "desc"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "vis",
+      "id": "top-countries-table",
+      "grid": {
+        "x": 24,
+        "y": 23,
+        "w": 24,
+        "h": 12
+      },
+      "config": {
+        "title": "Top Countries by Revenue",
+        "type": "data_table",
+        "data_source": {
+          "type": "data_view_spec",
+          "index_pattern": "kibana_sample_data_ecommerce",
+          "time_field": "order_date"
+        },
+        "metrics": [
+          {
+            "operation": "sum",
+            "field": "taxful_total_price"
+          },
+          {
+            "operation": "count"
+          },
+          {
+            "operation": "unique_count",
+            "field": "customer_id"
+          },
+          {
+            "operation": "average",
+            "field": "taxful_total_price"
+          }
+        ],
+        "rows": [
+          {
+            "operation": "terms",
+            "fields": ["geoip.country_iso_code"],
+            "limit": 10,
+            "rank_by": {
+              "type": "metric",
+              "metric_index": 0,
+              "direction": "desc"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "vis",
+      "id": "aov-trend",
+      "grid": {
+        "x": 0,
+        "y": 35,
+        "w": 24,
+        "h": 10
+      },
+      "config": {
+        "title": "Average Order Value Trend",
+        "type": "xy",
+        "axis": {
+          "x": {
+            "title": {
+              "visible": false
+            }
+          },
+          "y": {
+            "title": {
+              "visible": false
+            }
+          }
+        },
+        "layers": [
+          {
+            "type": "line",
+            "data_source": {
+              "type": "data_view_spec",
+              "index_pattern": "kibana_sample_data_ecommerce",
+              "time_field": "order_date"
+            },
+            "x": {
+              "operation": "date_histogram",
+              "field": "order_date"
+            },
+            "y": [
+              {
+                "operation": "average",
+                "field": "taxful_total_price"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "vis",
+      "id": "revenue-by-continent",
+      "grid": {
+        "x": 24,
+        "y": 35,
+        "w": 24,
+        "h": 10
+      },
+      "config": {
+        "title": "Revenue by Continent",
+        "type": "xy",
+        "axis": {
+          "x": {
+            "title": {
+              "visible": false
+            }
+          },
+          "y": {
+            "title": {
+              "visible": false
+            }
+          }
+        },
+        "layers": [
+          {
+            "type": "bar_horizontal",
+            "data_source": {
+              "type": "data_view_spec",
+              "index_pattern": "kibana_sample_data_ecommerce",
+              "time_field": "order_date"
+            },
+            "x": {
+              "operation": "terms",
+              "fields": ["geoip.continent_name"],
+              "limit": 7
+            },
+            "y": [
+              {
+                "operation": "sum",
+                "field": "taxful_total_price"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "time_range": {
+    "from": "now-30d",
+    "to": "now"
+  }
+}

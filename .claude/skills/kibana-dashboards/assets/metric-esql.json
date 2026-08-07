@@ -1,0 +1,13 @@
+{
+  "type": "metric",
+  "data_source": {
+    "type": "esql",
+    "query": "FROM kibana_sample_data_logs | STATS avg_bytes = AVG(bytes)"
+  },
+  "metrics": [
+    {
+      "type": "primary",
+      "column": "avg_bytes"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Basic Dashboard",
+  "panels": [
+    {
+      "type": "markdown",
+      "id": "header-panel",
+      "grid": { "x": 0, "y": 0, "w": 48, "h": 4 },
+      "config": {
+        "content": "## Welcome to the Dashboard\n\nThis is a basic dashboard created via the Kibana Dashboards & Visualizations API."
+      }
+    }
+  ],
+  "time_range": {
+    "from": "now-24h",
+    "to": "now"
+  }
+}

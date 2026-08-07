@@ -8,13 +8,17 @@
       "name": "git_repo_name",
       "prefix": "git_repo_name",
       "available_values": [],
-      "default": "*"
+      "defaults": [
+        "*"
+      ]
     },
     {
       "name": "git_branch_name",
       "prefix": "git_branch_name",
       "available_values": [],
-      "default": "*"
+      "defaults": [
+        "*"
+      ]
     }
   ],
   "widgets": [
@@ -34,19 +38,25 @@
         "type": "query_value",
         "precision": 0,
         "autoscale": false,
+        "timeseries_background": {
+          "type": "area"
+        },
+        "time": {
+          "live_span": "1w"
+        },
         "requests": [
           {
             "queries": [
               {
                 "data_source": "metrics",
                 "name": "q1",
-                "query": "avg:megalinter.run.qualityGate{$git_repo_name,$git_branch_name} * 100",
-                "aggregator": "last"
+                "query": "avg:megalinter.run.qualityGate{$git_repo_name,$git_branch_name}",
+                "aggregator": "avg"
               }
             ],
             "formulas": [
               {
-                "formula": "q1"
+                "formula": "q1 * 100"
               }
             ],
             "response_format": "scalar",
@@ -77,6 +87,12 @@
         "type": "query_value",
         "precision": 0,
         "autoscale": false,
+        "timeseries_background": {
+          "type": "area"
+        },
+        "time": {
+          "live_span": "1w"
+        },
         "requests": [
           {
             "queries": [
@@ -84,7 +100,7 @@
                 "data_source": "metrics",
                 "name": "q1",
                 "query": "avg:megalinter.run.healthScore{$git_repo_name,$git_branch_name}",
-                "aggregator": "last"
+                "aggregator": "avg"
               }
             ],
             "formulas": [
@@ -120,6 +136,12 @@
         "type": "query_value",
         "precision": 0,
         "autoscale": false,
+        "timeseries_background": {
+          "type": "area"
+        },
+        "time": {
+          "live_span": "1w"
+        },
         "requests": [
           {
             "queries": [
@@ -146,6 +168,9 @@
         "type": "query_value",
         "precision": 0,
         "autoscale": false,
+        "time": {
+          "live_span": "1w"
+        },
         "requests": [
           {
             "queries": [
@@ -177,10 +202,16 @@
     },
     {
       "definition": {
-        "title": "Blocking errors",
+        "title": "Blocking errors (latest runs)",
         "type": "query_value",
         "precision": 0,
         "autoscale": false,
+        "timeseries_background": {
+          "type": "area"
+        },
+        "time": {
+          "live_span": "1w"
+        },
         "requests": [
           {
             "queries": [
@@ -193,7 +224,7 @@
             ],
             "formulas": [
               {
-                "formula": "q1"
+                "formula": "default_zero(q1)"
               }
             ],
             "response_format": "scalar",
@@ -215,10 +246,16 @@
     },
     {
       "definition": {
-        "title": "Non-blocking errors",
+        "title": "Non-blocking errors (latest runs)",
         "type": "query_value",
         "precision": 0,
         "autoscale": false,
+        "timeseries_background": {
+          "type": "area"
+        },
+        "time": {
+          "live_span": "1w"
+        },
         "requests": [
           {
             "queries": [
@@ -231,7 +268,7 @@
             ],
             "formulas": [
               {
-                "formula": "q1"
+                "formula": "default_zero(q1)"
               }
             ],
             "response_format": "scalar",
@@ -253,10 +290,48 @@
     },
     {
       "definition": {
-        "title": "Errors auto-fixed",
+        "title": "Files analyzed (latest runs)",
         "type": "query_value",
         "precision": 0,
         "autoscale": false,
+        "timeseries_background": {
+          "type": "area"
+        },
+        "time": {
+          "live_span": "1w"
+        },
+        "requests": [
+          {
+            "queries": [
+              {
+                "data_source": "metrics",
+                "name": "q1",
+                "query": "sum:megalinter.run.filesAnalyzed{$git_repo_name,$git_branch_name}",
+                "aggregator": "last"
+              }
+            ],
+            "formulas": [
+              {
+                "formula": "q1"
+              }
+            ],
+            "response_format": "scalar"
+          }
+        ]
+      }
+    },
+    {
+      "definition": {
+        "title": "Errors auto-fixed (period)",
+        "type": "query_value",
+        "precision": 0,
+        "autoscale": false,
+        "timeseries_background": {
+          "type": "area"
+        },
+        "time": {
+          "live_span": "1w"
+        },
         "requests": [
           {
             "queries": [
@@ -264,12 +339,12 @@
                 "data_source": "metrics",
                 "name": "q1",
                 "query": "sum:megalinter.run.totalErrorsFixed{$git_repo_name,$git_branch_name}",
-                "aggregator": "last"
+                "aggregator": "sum"
               }
             ],
             "formulas": [
               {
-                "formula": "q1"
+                "formula": "default_zero(q1)"
               }
             ],
             "response_format": "scalar",
@@ -295,6 +370,12 @@
         "type": "query_value",
         "precision": 0,
         "autoscale": false,
+        "timeseries_background": {
+          "type": "area"
+        },
+        "time": {
+          "live_span": "1w"
+        },
         "requests": [
           {
             "queries": [
@@ -302,12 +383,12 @@
                 "data_source": "metrics",
                 "name": "q1",
                 "query": "sum:megalinter.run.totalErrorsFixed{$git_repo_name,$git_branch_name}",
-                "aggregator": "last"
+                "aggregator": "sum"
               }
             ],
             "formulas": [
               {
-                "formula": "q1 * 5"
+                "formula": "default_zero(q1) * 5"
               }
             ],
             "response_format": "scalar"
@@ -319,6 +400,9 @@
       "definition": {
         "title": "Repository health score evolution",
         "type": "timeseries",
+        "time": {
+          "live_span": "1w"
+        },
         "requests": [
           {
             "queries": [
@@ -345,6 +429,28 @@
             "label": "Focus on this repository",
             "link": "__SELF_URL__?tpl_var_git_repo_name={{git_repo_name.value}}"
           }
+        ],
+        "markers": [
+          {
+            "value": "y = 90",
+            "display_type": "ok dashed",
+            "label": "A"
+          },
+          {
+            "value": "y = 80",
+            "display_type": "ok dashed",
+            "label": "B"
+          },
+          {
+            "value": "y = 65",
+            "display_type": "warning dashed",
+            "label": "C"
+          },
+          {
+            "value": "y = 50",
+            "display_type": "error dashed",
+            "label": "D"
+          }
         ]
       }
     },
@@ -352,6 +458,9 @@
       "definition": {
         "title": "Total errors by repository",
         "type": "timeseries",
+        "time": {
+          "live_span": "1w"
+        },
         "requests": [
           {
             "queries": [
@@ -385,6 +494,9 @@
       "definition": {
         "title": "Errors by linter over time",
         "type": "timeseries",
+        "time": {
+          "live_span": "1w"
+        },
         "requests": [
           {
             "queries": [
@@ -412,13 +524,16 @@
       "definition": {
         "title": "Errors by language over time",
         "type": "timeseries",
+        "time": {
+          "live_span": "1w"
+        },
         "requests": [
           {
             "queries": [
               {
                 "data_source": "metrics",
                 "name": "q1",
-                "query": "sum:megalinter.linter.numberErrorsFound{$git_repo_name,$git_branch_name} by {descriptor}"
+                "query": "max:megalinter.linter.numberErrorsFound{$git_repo_name,$git_branch_name} by {descriptor}"
               }
             ],
             "formulas": [
@@ -439,6 +554,9 @@
       "definition": {
         "title": "Blocking vs non-blocking errors",
         "type": "timeseries",
+        "time": {
+          "live_span": "1w"
+        },
         "requests": [
           {
             "queries": [
@@ -446,7 +564,22 @@
                 "data_source": "metrics",
                 "name": "blocking",
                 "query": "sum:megalinter.run.blockingErrors{$git_repo_name,$git_branch_name}"
-              },
+              }
+            ],
+            "formulas": [
+              {
+                "formula": "blocking",
+                "alias": "Blocking"
+              }
+            ],
+            "response_format": "timeseries",
+            "display_type": "line",
+            "style": {
+              "palette": "warm"
+            }
+          },
+          {
+            "queries": [
               {
                 "data_source": "metrics",
                 "name": "nonblocking",
@@ -455,16 +588,15 @@
             ],
             "formulas": [
               {
-                "formula": "blocking",
-                "alias": "blocking"
-              },
-              {
                 "formula": "nonblocking",
-                "alias": "nonblocking"
+                "alias": "Non-blocking"
               }
             ],
             "response_format": "timeseries",
-            "display_type": "line"
+            "display_type": "line",
+            "style": {
+              "palette": "orange"
+            }
           }
         ]
       }
@@ -473,6 +605,9 @@
       "definition": {
         "title": "Run duration by repository (s)",
         "type": "timeseries",
+        "time": {
+          "live_span": "1w"
+        },
         "requests": [
           {
             "queries": [
@@ -506,6 +641,9 @@
       "definition": {
         "title": "Errors auto-fixed by repository",
         "type": "timeseries",
+        "time": {
+          "live_span": "1w"
+        },
         "requests": [
           {
             "queries": [
@@ -530,6 +668,9 @@
       "definition": {
         "title": "Errors by linter",
         "type": "toplist",
+        "time": {
+          "live_span": "1w"
+        },
         "requests": [
           {
             "queries": [
@@ -570,6 +711,9 @@
       "definition": {
         "title": "Slowest linters (s)",
         "type": "toplist",
+        "time": {
+          "live_span": "1w"
+        },
         "requests": [
           {
             "queries": [
@@ -608,8 +752,59 @@
     },
     {
       "definition": {
+        "title": "Health score by MegaLinter version (avg)",
+        "type": "toplist",
+        "time": {
+          "live_span": "1w"
+        },
+        "requests": [
+          {
+            "queries": [
+              {
+                "data_source": "metrics",
+                "name": "q1",
+                "query": "avg:megalinter.run.healthScore{$git_repo_name,$git_branch_name} by {megalinter_version}",
+                "aggregator": "avg"
+              }
+            ],
+            "formulas": [
+              {
+                "formula": "q1",
+                "limit": {
+                  "count": 15,
+                  "order": "desc"
+                }
+              }
+            ],
+            "response_format": "scalar",
+            "conditional_formats": [
+              {
+                "comparator": ">=",
+                "value": 80,
+                "palette": "white_on_green"
+              },
+              {
+                "comparator": ">=",
+                "value": 50,
+                "palette": "white_on_yellow"
+              },
+              {
+                "comparator": "<",
+                "value": 50,
+                "palette": "white_on_red"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "definition": {
         "title": "Top rules",
         "type": "toplist",
+        "time": {
+          "live_span": "1w"
+        },
         "requests": [
           {
             "queries": [
@@ -658,6 +853,9 @@
       "definition": {
         "title": "Top files",
         "type": "toplist",
+        "time": {
+          "live_span": "1w"
+        },
         "requests": [
           {
             "queries": [
@@ -711,7 +909,7 @@
           {
             "definition": {
               "type": "note",
-              "content": "**How the rating / health score is computed**\\n\\nHealth score (0-100) = `100 x (linters in success + 0.5 x linters with non-blocking errors) / total linters`\\n\\nA >= 90, B >= 80, C >= 65, D >= 50, E < 50.\\n\\nTo improve it: fix the linters in error first (full share each), then the warnings (half share each). Use the `git_repo_name` template variable to focus on one repository.",
+              "content": "**How the rating / health score is computed**\n\nHealth score (0-100) = `100 x (linters in success + 0.5 x linters with non-blocking errors) / total linters`\n\nA >= 90, B >= 80, C >= 65, D >= 50, E < 50.\n\nTo improve it: fix the linters in error first (full share each), then the warnings (half share each). Use the `git_repo_name` template variable to focus on one repository.",
               "background_color": "white",
               "font_size": "14",
               "text_align": "left",
@@ -724,6 +922,12 @@
               "type": "query_value",
               "precision": 0,
               "autoscale": false,
+              "timeseries_background": {
+                "type": "area"
+              },
+              "time": {
+                "live_span": "1w"
+              },
               "requests": [
                 {
                   "queries": [
@@ -762,6 +966,12 @@
               "type": "query_value",
               "precision": 0,
               "autoscale": false,
+              "timeseries_background": {
+                "type": "area"
+              },
+              "time": {
+                "live_span": "1w"
+              },
               "requests": [
                 {
                   "queries": [
@@ -800,6 +1010,12 @@
               "type": "query_value",
               "precision": 0,
               "autoscale": false,
+              "timeseries_background": {
+                "type": "area"
+              },
+              "time": {
+                "live_span": "1w"
+              },
               "requests": [
                 {
                   "queries": [
@@ -836,6 +1052,9 @@
             "definition": {
               "title": "Linters dragging the score down",
               "type": "toplist",
+              "time": {
+                "live_span": "1w"
+              },
               "requests": [
                 {
                   "queries": [
@@ -879,6 +1098,9 @@
       "definition": {
         "title": "MegaLinter runs & linters",
         "type": "log_stream",
+        "time": {
+          "live_span": "1w"
+        },
         "query": "source:megalinter (record_type:run OR record_type:linter) $git_repo_name $git_branch_name",
         "columns": [
           "core_host",

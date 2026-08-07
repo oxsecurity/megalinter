@@ -6,12 +6,13 @@ Send MegaLinter results to **Grafana Loki** (logs) and **Prometheus** (metrics),
 
 ## Dashboards
 
-| Dashboard                          | Content                                                                                      |
-|:-----------------------------------|:---------------------------------------------------------------------------------------------|
-| **MegaLinter - Org Overview**      | Portfolio view: quality gate pass rate, blocking errors and trends across all repositories   |
-| **MegaLinter - Repository**        | Quality gate, KPIs, errors and duration trends, linters table and outputs for one repository |
-| **MegaLinter - Linter Detail**     | Drill-down on one linter: errors, duration, top rules, top files, raw output                 |
-| **MegaLinter - Top Rules & Files** | Most violated rules and most impacted files across repositories                              |
+| Dashboard                             | Content                                                                                      |
+|:--------------------------------------|:---------------------------------------------------------------------------------------------|
+| **MegaLinter - 1. Org Overview**      | Portfolio view: quality gate pass rate, blocking errors and trends across all repositories   |
+| **MegaLinter - 2. Repository**        | Quality gate, KPIs, errors and duration trends, linters table and outputs for one repository |
+| **MegaLinter - 3. Linter Detail**     | Drill-down on one linter: errors, duration, top rules, top files, raw output                 |
+| **MegaLinter - 4. Top Rules & Files** | Most violated rules and most impacted files across repositories                              |
+| **MegaLinter - 5. Why this rating?**  | Explanation of the A-E rating: formula, linters success/warning/error counts, top offenders  |
 
 ![MegaLinter Grafana repository dashboard](../assets/images/grafana-scr.png)
 
