@@ -292,7 +292,7 @@ class DashboardBuilderDatadog(DashboardBuilder):
             "widgets": [
                 self.note(
                     "**MegaLinter Observability** | "
-                    "[Logs explorer](/logs?query=source%3Amegalinter) | "
+                    "[Logs explorer](/logs?query=source:megalinter) | "
                     "[Documentation](https://megalinter.io/latest/observability/datadog/) "
                     "| Use the `git_repo_name` / `git_branch_name` variables above to focus "
                     "a repository or branch, and the *Why this rating?* section below to "
