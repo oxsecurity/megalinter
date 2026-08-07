@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Posts MegaLinter SAST results summary in the comments of the related Azure Pipelines pull request (if existing)">
+        <meta name="description" content="Sends MegaLinter results (quality gate, errors, linters, top rules &amp; files) to Grafana, Datadog, Elastic or New Relic, with ready-to-use dashboards">
       
       
         <meta name="author" content="Nicolas Vuillamy">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Api / Grafana Reporter for MegaLinter - MegaLinter by OX Security</title>
+        <title>API / Observability Reporter for MegaLinter - MegaLinter by OX Security</title>
       
     
     
@@ -65,13 +65,13 @@
 <meta name="twitter:image:src" content="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png">
 <meta name="twitter:site" content="@nvuillam">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Api / Grafana Reporter for MegaLinter">
-<meta name="twitter:description" content="Posts MegaLinter SAST results summary in the comments of the related Azure Pipelines pull request (if existing)">
+<meta name="twitter:title" content="API / Observability Reporter for MegaLinter">
+<meta name="twitter:description" content="Sends MegaLinter results (quality gate, errors, linters, top rules &amp; files) to Grafana, Datadog, Elastic or New Relic, with ready-to-use dashboards">
 <meta property="og:image" content="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png">
 <meta property="og:image:alt" content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally.">
 <meta property="og:site_name" content="MegaLinter">
-<meta property="og:title" content="Api / Grafana Reporter for MegaLinter">
-<meta property="og:description" content="Posts MegaLinter SAST results summary in the comments of the related Azure Pipelines pull request (if existing)">
+<meta property="og:title" content="API / Observability Reporter for MegaLinter">
+<meta property="og:description" content="Sends MegaLinter results (quality gate, errors, linters, top rules &amp; files) to Grafana, Datadog, Elastic or New Relic, with ready-to-use dashboards">
 
 
 
@@ -102,7 +102,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#api-reporter-beta" class="md-skip">
+        <a href="#api-reporter" class="md-skip">
           Skip to content
         </a>
       
@@ -141,7 +141,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Api / Grafana Reporter for MegaLinter
+              API / Observability Reporter for MegaLinter
             
           </span>
         </div>
@@ -9624,6 +9624,200 @@
       
   
   
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Observability
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Observability
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../observability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Observability home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../observability/grafana/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grafana
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../observability/datadog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datadog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../observability/elastic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Elastic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../observability/newrelic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    New Relic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -9637,10 +9831,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked="">
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
             
   
   
@@ -9658,8 +9852,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_7">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -9860,7 +10054,7 @@
   <span class="md-ellipsis">
     
   
-    API (Grafana)
+    API / Observability
   
 
     
@@ -9878,7 +10072,7 @@
   <span class="md-ellipsis">
     
   
-    API (Grafana)
+    API / Observability
   
 
     
@@ -9904,10 +10098,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
+  <a href="#payload-version-2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Usage
+        Payload (version 2)
       
     </span>
   </a>
@@ -9915,10 +10109,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#logs-configuration" class="md-nav__link">
+  <a href="#configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Logs Configuration
+        Configuration
       
     </span>
   </a>
@@ -9926,10 +10120,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#metrics-configuration" class="md-nav__link">
+  <a href="#migration-from-payload-v1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Metrics Configuration
+        Migration from payload v1
       
     </span>
   </a>
@@ -9944,133 +10138,6 @@
       
     </span>
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#all-configuration-variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        All Configuration variables
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grafana-setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Grafana Setup
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Grafana Setup">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#create-grafana-account" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Create Grafana Account
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#gather-urls-auth-info" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Gather URLs &amp; auth info
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get-loki-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Get Loki configuration
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get-prometheus-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Get Prometheus configuration
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#create-service-account" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Create Service Account
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configure-ci-variables-on-repository" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Configure CI variables on repository
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#download-megalinter-dashboards" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Download MegaLinter dashboards
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#create-dashboard-folder" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Create Dashboard folder
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#import-default-megalinter-grafana-dashboards" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Import default MegaLinter Grafana Dashboards
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -10385,10 +10452,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9">
         
           
-          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
             
   
   
@@ -10406,8 +10473,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -10460,10 +10527,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2">
         
           
-          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_9_2" id="__nav_9_2_label" tabindex="0">
             
   
   
@@ -10481,8 +10548,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -10746,10 +10813,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10">
         
           
-          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
             
   
   
@@ -10767,8 +10834,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -11658,10 +11725,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_20">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_21">
         
           
-          <label class="md-nav__link" for="__nav_20" id="__nav_20_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_21" id="__nav_21_label" tabindex="0">
             
   
   
@@ -11679,8 +11746,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_20_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_20">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_21_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_21">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -11768,10 +11835,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_21">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_22">
         
           
-          <label class="md-nav__link" for="__nav_21" id="__nav_21_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_22" id="__nav_22_label" tabindex="0">
             
   
   
@@ -11789,8 +11856,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_21_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_21">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_22_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_22">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -11944,10 +12011,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
+  <a href="#payload-version-2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Usage
+        Payload (version 2)
       
     </span>
   </a>
@@ -11955,10 +12022,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#logs-configuration" class="md-nav__link">
+  <a href="#configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Logs Configuration
+        Configuration
       
     </span>
   </a>
@@ -11966,10 +12033,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#metrics-configuration" class="md-nav__link">
+  <a href="#migration-from-payload-v1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Metrics Configuration
+        Migration from payload v1
       
     </span>
   </a>
@@ -11984,133 +12051,6 @@
       
     </span>
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#all-configuration-variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        All Configuration variables
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grafana-setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Grafana Setup
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Grafana Setup">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#create-grafana-account" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Create Grafana Account
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#gather-urls-auth-info" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Gather URLs &amp; auth info
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get-loki-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Get Loki configuration
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get-prometheus-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Get Prometheus configuration
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#create-service-account" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Create Service Account
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configure-ci-variables-on-repository" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Configure CI variables on repository
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#download-megalinter-dashboards" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Download MegaLinter dashboards
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#create-dashboard-folder" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Create Dashboard folder
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#import-default-megalinter-grafana-dashboards" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Import default MegaLinter Grafana Dashboards
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -12134,311 +12074,72 @@
   
 
 
-<!-- markdownlint-disable MD013 MD033 MD041 --><h1 id="api-reporter-beta">API Reporter (beta)</h1>
-<p>Send results as logs and metrics to observability tools, like Grafana.</p>
-<h2 id="usage">Usage</h2>
-<p>Use Grafana default MegaLinter dashboards, and build new ones to monitor everything you need from MegaLinter logs and metrics.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/screenshot-grafana-1.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/screenshot-grafana-1.jpg"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/screenshot-grafana-2.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/screenshot-grafana-2.jpg"></a></p>
-<p>If you create new useful dashboards, please share them with the MegaLinter community by exporting them then create a pull request :)</p>
-<h2 id="logs-configuration">Logs Configuration</h2>
-<p>Define the following CI/CD variables:</p>
+<!-- markdownlint-disable MD013 MD025 MD033 MD041 --><h1 id="api-reporter">API Reporter</h1>
+<p>Sends MegaLinter results to <strong>observability platforms</strong>: <a href="../../observability/grafana/">Grafana</a> (Loki + Prometheus), <a href="../../observability/datadog/">Datadog</a>, <a href="../../observability/elastic/">Elastic</a> and <a href="../../observability/newrelic/">New Relic</a>.</p>
+<p>See the <a href="../../observability/"><strong>Observability</strong></a> documentation for the quick start, the ready-to-use dashboards and the per-provider setup guides.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-scr.png" data-desc-position="bottom"><img alt="MegaLinter Grafana repository dashboard" src="../../assets/images/grafana-scr.png"></a></p>
+<h2 id="payload-version-2">Payload (version 2)</h2>
+<p>At the end of each run, the reporter builds a payload containing:</p>
 <ul>
-<li><strong>API_REPORTER_URL</strong> : API endpoint</li>
-<li><strong>API_REPORTER_BASIC_AUTH_USERNAME</strong> : Basic auth username <em>(if using Basic Auth)</em></li>
-<li><strong>API_REPORTER_BASIC_AUTH_PASSWORD</strong> : Basic auth password/token <em>(if using Basic Auth)</em></li>
-<li><strong>API_REPORTER_BEARER_TOKEN</strong> : Bearer token <em>(if using bearer auth)</em></li>
-<li><strong>API_REPORTER_PAYLOAD_FORMAT</strong> : Payload format, <code>auto</code> (default), <code>loki</code> or <code>default</code></li>
+<li><strong>Run-level KPIs</strong>: quality gate status, repository health score (0-100), blocking / non-blocking / auto-fixed error counts, linters status counts, files analyzed, run duration</li>
+<li><strong>One record per linter</strong>: descriptor, linter key, severity, blocking status, errors found, files analyzed, elapsed time, human-readable output</li>
+<li><strong>Top rules and top files</strong> per linter (up to 20 each), parsed from the linters SARIF output (disable with <code>API_REPORTER_DETAILS: false</code>)</li>
 </ul>
-<p>By default (<code>auto</code>), the Loki payload format is used if the endpoint URL contains <code>loki/api/v1/push</code>, otherwise the raw MegaLinter payload is sent.
-Set <code>API_REPORTER_PAYLOAD_FORMAT=loki</code> to force the Loki format on a custom endpoint URL, or <code>default</code> to always send the raw payload.</p>
-<p>Examples of configuration:</p>
-<!-- secretlint-disable -->
-
-<div class="highlight"><pre><span></span><code><span class="nv">API_REPORTER_URL</span><span class="o">=</span>https://logs-prod-012.grafana.net/loki/api/v1/push
-<span class="nv">API_REPORTER_BASIC_AUTH_USERNAME</span><span class="o">=</span><span class="m">3435645645</span>
-<span class="nv">API_REPORTER_BASIC_AUTH_PASSWORD</span><span class="o">=</span>GHTRGDHDHdhghg23345DFG^sfg!ss
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nv">API_REPORTER_URL</span><span class="o">=</span>https://my.custom.endpoint.net
-<span class="nv">API_REPORTER_BEARER_TOKEN</span><span class="o">=</span>DDHGHfgfgjfhQESRDTHFKGKHFswgFHDHGDH
-</code></pre></div>
-<!-- secretlint-enable -->
-
-<p>Example of logs sent to Loki:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span>
-<span class="w">  </span><span class="nt">"streams"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">   </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"stream"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">     </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MegaLinter"</span><span class="p">,</span>
-<span class="w">     </span><span class="nt">"gitRepoName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"megalinter"</span><span class="p">,</span>
-<span class="w">     </span><span class="nt">"gitBranchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tmpX"</span><span class="p">,</span>
-<span class="w">     </span><span class="nt">"gitIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"megalinter/tmpX"</span><span class="p">,</span>
-<span class="w">     </span><span class="nt">"orgIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tmpX"</span><span class="p">,</span>
-<span class="w">     </span><span class="nt">"descriptor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REPOSITORY"</span><span class="p">,</span>
-<span class="w">     </span><span class="nt">"linter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trufflehog"</span><span class="p">,</span>
-<span class="w">     </span><span class="nt">"linterKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REPOSITORY_TRUFFLEHOG"</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">"values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">     </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">"1724005973602212834"</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">"{\"linterDocUrl\": \"https://megalinter.io/beta/descriptors/repository_trufflehog\", \"jobUrl\": \"https://github.com/oxsecurity/megalinter/actions/runs/10442830998\", \"severity\": \"warning\", \"severityIcon\": \"\\u26a0\\ufe0f\", \"output\": [\"\\ud83d\\udc37\\ud83d\\udd11\\ud83d\\udc37  TruffleHog. Unearth your secrets. \\etc...\"], \"cliLintMode\": \"project\", \"numberErrorsFound\": 1, \"elapsedTime\": 13.1}"</span>
-<span class="w">     </span><span class="p">]</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="w">   </span><span class="p">},</span>
-<span class="w">   </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"stream"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">     </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MegaLinter"</span><span class="p">,</span>
-<span class="w">     </span><span class="nt">"gitRepoName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"megalinter"</span><span class="p">,</span>
-<span class="w">     </span><span class="nt">"gitBranchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tmpX"</span><span class="p">,</span>
-<span class="w">     </span><span class="nt">"gitIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"megalinter/tmpX"</span><span class="p">,</span>
-<span class="w">     </span><span class="nt">"orgIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tmpX"</span><span class="p">,</span>
-<span class="w">     </span><span class="nt">"descriptor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPELL"</span><span class="p">,</span>
-<span class="w">     </span><span class="nt">"linter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cspell"</span><span class="p">,</span>
-<span class="w">     </span><span class="nt">"linterKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPELL_CSPELL"</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">"values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">     </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">"1724005973602212834"</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">"{\"linterDocUrl\": \"https://megalinter.io/beta/descriptors/spell_cspell\", \"jobUrl\": \"https://github.com/oxsecurity/megalinter/actions/runs/10442830998\", \"severity\": \"success\", \"severityIcon\": \"\\u2705\", \"output\": [\"  1/680 .automation/build_schemas_doc.sh 1762.38ms\", \"  etc...\", \"CSpell: Files checked: 680, Issues found: 0 in 0 files.\"], \"cliLintMode\": \"list_of_files\", \"numberFilesFound\": 687, \"numberErrorsFound\": 0, \"elapsedTime\": 11.7}"</span>
-<span class="w">     </span><span class="p">]</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="w">   </span><span class="p">},</span>
-<span class="w">   </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"stream"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">     </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MegaLinter"</span><span class="p">,</span>
-<span class="w">     </span><span class="nt">"gitRepoName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"megalinter"</span><span class="p">,</span>
-<span class="w">     </span><span class="nt">"gitBranchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tmpX"</span><span class="p">,</span>
-<span class="w">     </span><span class="nt">"gitIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"megalinter/tmpX"</span><span class="p">,</span>
-<span class="w">     </span><span class="nt">"orgIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tmpX"</span><span class="p">,</span>
-<span class="w">     </span><span class="nt">"descriptor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPELL"</span><span class="p">,</span>
-<span class="w">     </span><span class="nt">"linter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lychee"</span><span class="p">,</span>
-<span class="w">     </span><span class="nt">"linterKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPELL_LYCHEE"</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">"values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">     </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">"1724005973602212834"</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">"{\"linterDocUrl\": \"https://megalinter.io/beta/descriptors/spell_lychee\", \"jobUrl\": \"https://github.com/oxsecurity/megalinter/actions/runs/10442830998\", \"severity\": \"warning\", \"severityIcon\": \"\\u26a0\\ufe0f\", \"output\": [\"\\u2717 [404] https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/monitoring-workflows/adding-a-workflow-status-badge | Failed: Network error: Not Found\", \"\\u2717 [404] deadlink | Failed: Network error: Not Found\", \"\\ud83d\\udcdd Summary\", \"---------------------\", \"\\ud83d\\udd0d Total.........2322\", \"\\u2705 Successful....1889\", \"\\u23f3 Timeouts.........0\", \"\\ud83d\\udd00 Redirected.......0\", \"\\ud83d\\udc7b Excluded.......431\", \"\\u2753 Unknown..........0\", \"\\ud83d\\udeab Errors...........2\", \"\", \"Errors in README.md\", \"\\u2717 [404] deadlink | Failed: Network error: Not Found\", \"\\u2717 [404] https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/monitoring-workflows/adding-a-workflow-status-badge | Failed: Network error: Not Found\"], \"cliLintMode\": \"list_of_files\", \"numberFilesFound\": 346, \"numberErrorsFound\": 2, \"elapsedTime\": 6.17}"</span>
-<span class="w">     </span><span class="p">]</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="w">   </span><span class="p">},</span>
-<span class="w">  </span><span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="metrics-configuration">Metrics Configuration</h2>
-<p>Additionally, you can send metrics in Prometheus format to a secondary API endpoint.</p>
-<p>The configuration is the same than for logs, but with different variable names.</p>
-<ul>
-<li><strong>API_REPORTER_METRICS_URL</strong></li>
-<li><strong>API_REPORTER_METRICS_BASIC_AUTH_USERNAME</strong></li>
-<li><strong>API_REPORTER_METRICS_BASIC_AUTH_PASSWORD</strong></li>
-<li><strong>API_REPORTER_METRICS_BEARER_TOKEN</strong></li>
-</ul>
-<p>Example of configuration:</p>
-<div class="highlight"><pre><span></span><code><span class="nv">API_REPORTER_METRICS_URL</span><span class="o">=</span>https://influx-prod-72-prod-eu-west-2.grafana.net/api/v1/push/influx/write
-<span class="nv">API_REPORTER_METRICS_BASIC_AUTH_USERNAME</span><span class="o">=</span><span class="m">345673</span>
-<span class="nv">API_REPORTER_METRICS_BASIC_AUTH_PASSWORD</span><span class="o">=</span>GHTRGDHDHdhghg23345DFG^sfg!ss
-</code></pre></div>
-<p>Example of metrics sent to Prometheus</p>
-<div class="highlight"><pre><span></span><code>linter_run,source=MegaLinter,orgIdentifier=tmpX,gitIdentifier=megalinter/tmpX,gitRepoName=megalinter,gitBranchName=tmpX,descriptor=REPOSITORY,linter=trufflehog,linterKey=REPOSITORY_TRUFFLEHOG numberErrorsFound=1,elapsedTime=13.1
-linter_run,source=MegaLinter,orgIdentifier=tmpX,gitIdentifier=megalinter/tmpX,gitRepoName=megalinter,gitBranchName=tmpX,descriptor=SPELL,linter=cspell,linterKey=SPELL_CSPELL numberErrorsFound=0,numberFilesFound=687,elapsedTime=11.7
-linter_run,source=MegaLinter,orgIdentifier=tmpX,gitIdentifier=megalinter/tmpX,gitRepoName=megalinter,gitBranchName=tmpX,descriptor=SPELL,linter=lychee,linterKey=SPELL_LYCHEE numberErrorsFound=2,numberFilesFound=346,elapsedTime=6.17
-</code></pre></div>
-<h2 id="troubleshooting">Troubleshooting</h2>
-<p>If you want to see the content of the API notifications in execution logs, you can define <code>API_REPORTER_DEBUG=true</code></p>
-<h2 id="all-configuration-variables">All Configuration variables</h2>
-<p>The following variables must be sent to the docker run command</p>
+<p>The payload is delivered to each provider declared in <code>API_REPORTER_PROVIDER</code> (comma-separated list). Delivery is implemented with plain HTTPS calls: no agent or forwarder to install.</p>
+<h2 id="configuration">Configuration</h2>
 <table>
 <thead>
 <tr>
-<th>Variable</th>
-<th>Description</th>
-<th>Default value</th>
+<th style="text-align: left;">Variable</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Default</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>API_REPORTER</td>
-<td>Activates/deactivates API reporter</td>
-<td><code>false</code></td>
+<td style="text-align: left;"><code>API_REPORTER</code></td>
+<td style="text-align: left;">Activates the API reporter</td>
+<td style="text-align: left;"><code>false</code></td>
 </tr>
 <tr>
-<td>API_REPORTER_URL</td>
-<td>Logs endpoint URL</td>
-<td><!-- --></td>
+<td style="text-align: left;"><code>API_REPORTER_PROVIDER</code></td>
+<td style="text-align: left;">Comma-separated list of target providers: <code>grafana</code>, <code>datadog</code>, <code>elastic</code>, <code>newrelic</code></td>
+<td style="text-align: left;"><code>grafana</code></td>
 </tr>
 <tr>
-<td>API_REPORTER_BASIC_AUTH_USERNAME</td>
-<td>Logs endpoint auth username</td>
-<td><!-- --></td>
+<td style="text-align: left;"><code>API_REPORTER_DETAILS</code></td>
+<td style="text-align: left;">Include per-rule and per-file breakdowns in the payload</td>
+<td style="text-align: left;"><code>true</code></td>
 </tr>
 <tr>
-<td>API_REPORTER_BASIC_AUTH_PASSWORD</td>
-<td>Logs endpoint auth password</td>
-<td><!-- --></td>
+<td style="text-align: left;"><code>API_REPORTER_ORG_IDENTIFIER</code></td>
+<td style="text-align: left;">Organization identifier added to all records</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td>API_REPORTER_BEARER_TOKEN</td>
-<td>Logs endpoint auth token</td>
-<td><!-- --></td>
-</tr>
-<tr>
-<td>API_REPORTER_PAYLOAD_FORMAT</td>
-<td>Logs payload format (<code>auto</code>, <code>loki</code> or <code>default</code>)</td>
-<td><code>auto</code></td>
-</tr>
-<tr>
-<td>API_REPORTER_METRICS_URL</td>
-<td>Metrics endpoint URL</td>
-<td><!-- --></td>
-</tr>
-<tr>
-<td>API_REPORTER_METRICS_BASIC_AUTH_USERNAME</td>
-<td>Metrics endpoint auth username</td>
-<td><!-- --></td>
-</tr>
-<tr>
-<td>API_REPORTER_METRICS_BASIC_AUTH_PASSWORD</td>
-<td>Metrics endpoint auth password</td>
-<td><!-- --></td>
-</tr>
-<tr>
-<td>API_REPORTER_METRICS_BEARER_TOKEN</td>
-<td>Logs endpoint auth token</td>
-<td><!-- --></td>
-</tr>
-<tr>
-<td>API_REPORTER_DEBUG</td>
-<td>Activate to see notif content in MegaLinter console logs</td>
-<td><code>false</code></td>
+<td style="text-align: left;"><code>API_REPORTER_DEBUG</code></td>
+<td style="text-align: left;">Log the payloads sent to the providers</td>
+<td style="text-align: left;"><code>false</code></td>
 </tr>
 </tbody>
 </table>
-<h2 id="grafana-setup">Grafana Setup</h2>
-<p>If you don't have a Grafana server, you can use Grafana Cloud Free Tier (14 days of logs &amp; metrics retention + 3 users, no credit card required, free forever)</p>
-<h3 id="create-grafana-account">Create Grafana Account</h3>
-<p>Create a Grafana Cloud Free account at <a href="https://grafana.com/auth/sign-up/create-user?pg=hp&amp;plcmt=cloud-promo&amp;cta=create-free-account" target="blank">this url</a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-1.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-1.jpg"></a></p>
-<hr>
-<p>Input a Grafana Cloud org name (megalinter in the example)</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-2.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-2.jpg"></a></p>
-<hr>
-<p>Next screen, you can skip setup</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-3.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-3.jpg"></a></p>
-<h3 id="gather-urls-auth-info">Gather URLs &amp; auth info</h3>
-<p>Create a notepad when you copy paste the following text</p>
-<div class="highlight"><pre><span></span><code><span class="nv">API_REPORTER_URL</span><span class="o">=</span>
-<span class="nv">API_REPORTER_BASIC_AUTH_USERNAME</span><span class="o">=</span>
-<span class="nv">API_REPORTER_BASIC_AUTH_PASSWORD</span><span class="o">=</span>
-<span class="nv">API_REPORTER_METRICS_URL</span><span class="o">=</span>
-<span class="nv">API_REPORTER_METRICS_BASIC_AUTH_USERNAME</span><span class="o">=</span>
-<span class="nv">API_REPORTER_METRICS_BASIC_AUTH_PASSWORD</span><span class="o">=</span>
-</code></pre></div>
-<h3 id="get-loki-configuration">Get Loki configuration</h3>
-<p>Go to <strong>Connections</strong> -&gt; <strong>Data Sources</strong> and click on <strong>grafanacloud-YOURORGNAME-logs (Loki)</strong></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-4.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-4.jpg"></a></p>
-<hr>
-<p>Build Logs push url</p>
+<p>Provider variables (authentication, endpoints) are described on each provider page:</p>
 <ul>
-<li>Copy value of Connection URL (something like <code>https://logs-prod-012.grafana.net/</code>)</li>
-<li>Add <code>/loki/api/v1/push</code> at the end</li>
-<li>Copy value to variables <code>API_REPORTER_URL</code></li>
+<li><a href="../../observability/grafana/#sending-data">Grafana variables</a> (<code>API_REPORTER_URL</code>, <code>API_REPORTER_METRICS_URL</code>, basic auth / bearer variables)</li>
+<li><a href="../../observability/datadog/#sending-data">Datadog variables</a> (<code>API_REPORTER_DATADOG_*</code>)</li>
+<li><a href="../../observability/elastic/#sending-data">Elastic variables</a> (<code>API_REPORTER_ELASTIC_*</code>)</li>
+<li><a href="../../observability/newrelic/#sending-data">New Relic variables</a> (<code>API_REPORTER_NEWRELIC_*</code>)</li>
 </ul>
-<p>Example: <code>API_REPORTER_URL=https://logs-prod-012.grafana.net/loki/api/v1/push</code></p>
-<p>Copy value of Authentication -&gt; User and paste it with variable <code>API_REPORTER_BASIC_AUTH_USERNAME</code></p>
-<p>Example: <code>API_REPORTER_BASIC_AUTH_USERNAME=898189</code></p>
-<p>Leave <code>API_REPORTER_BASIC_AUTH_PASSWORD</code> empty for now, you can't get it here</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-5.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-5.jpg"></a></p>
-<p><em>See <a href="https://grafana.com/blog/2024/03/21/how-to-use-http-apis-to-send-metrics-and-logs-to-grafana-cloud/#sending-logs-using-the-http-api">Grafana documentation</a> for more info</em></p>
-<h3 id="get-prometheus-configuration">Get Prometheus configuration</h3>
-<p>Go to <strong>Connections</strong> -&gt; <strong>Data Sources</strong> and click on <strong>grafanacloud-YOURORGNAME-prom (Prometheus)</strong></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-6.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-6.jpg"></a></p>
-<hr>
-<p>Build Metrics push url</p>
+<p>Legacy <code>NOTIF_API_*</code> variables from the v1 reporter are still accepted as aliases of their <code>API_REPORTER_*</code> counterparts.</p>
+<h2 id="migration-from-payload-v1">Migration from payload v1</h2>
+<p>MegaLinter v10 replaces the v1 payload:</p>
 <ul>
-<li>Copy value of Connection URL (something like <code>https://prometheus-prod-24-prod-eu-west-2.grafana.net/api/prom</code>)</li>
-<li>Replace <code>prometheus</code> by <code>influx</code></li>
-<li>Replace <code>api/prom</code> by <code>api/v1/push/influx/write</code></li>
-<li>Then copy value to variables <code>API_REPORTER_METRICS_URL</code></li>
+<li>Metric series are renamed: <code>linter_run_*</code> becomes <code>megalinter_linter_run_*</code>, and new run-level <code>megalinter_run_*</code> series are added</li>
+<li>Loki streams now carry a <code>recordType</code> label (<code>run</code>, <code>linter</code>, <code>rule</code>, <code>file</code>), and high-cardinality values (<code>runId</code>, <code>jobUrl</code>) moved from labels to the log line</li>
+<li>The v1 Grafana dashboards (<code>docs/grafana</code>) are superseded by the v2 dashboards: re-provision them with <code>npx mega-linter-runner --upload-dashboards grafana</code> (see <a href="../../observability/grafana/">Grafana integration</a>)</li>
 </ul>
-<p>Example: <code>API_REPORTER_METRICS_URL=https://influx-prod-24-prod-eu-west-2.grafana.net/api/v1/push/influx/write</code></p>
-<p>Copy value of Authentication -&gt; User and paste it with variable <code>API_REPORTER_METRICS_BASIC_AUTH_USERNAME</code></p>
-<p>Example: <code>API_REPORTER_METRICS_BASIC_AUTH_USERNAME=1596503</code></p>
-<p>Leave <code>API_REPORTER_METRICS_BASIC_AUTH_PASSWORD</code> empty for now, you can't get it here</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-7.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-7.jpg"></a></p>
-<p><em>See <a href="https://grafana.com/blog/2024/03/21/how-to-use-http-apis-to-send-metrics-and-logs-to-grafana-cloud/#sending-metrics-using-the-http-api">Grafana documentation</a> for more info</em></p>
-<h3 id="create-service-account">Create Service Account</h3>
-<p>Go to <strong>Administration</strong> -&gt; <strong>Users and Access</strong> -&gt; <strong>Cloud Access Policies</strong>, then click on <strong>Create Access Policy</strong></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-8.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-8.jpg"></a></p>
-<hr>
-<p>Create the access policy</p>
-<ul>
-<li>Define <strong>MegaLinter</strong> as name and display name</li>
-<li>Select <strong>write</strong> for items <strong>metrics, logs, traces, profiles, alerts</strong> (only metrics and logs are used today, but who knows hat new features we'll release in the future !)</li>
-<li>Click on <strong>Create</strong></li>
-</ul>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-9.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-9.jpg"></a></p>
-<hr>
-<p>On the new Access Policy <code>MegaLinter</code>, click on <strong>Add Token</strong> at the bottom right</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-10.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-10.jpg"></a></p>
-<hr>
-<p>Name it megalinter-token, let <code>No expiration</code> then click <strong>Create</strong></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-11.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-11.jpg"></a></p>
-<hr>
-<p>On the next screen, click on <strong>Copy to clipboard</strong> then paste in your notepad in front of variables <strong>API_REPORTER_BASIC_AUTH_PASSWORD</strong> and <strong>API_REPORTER_METRICS_BASIC_AUTH_PASSWORD</strong></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-12.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-12.jpg"></a></p>
-<p>Example:</p>
-<!-- secretlint-disable -->
-
-<div class="highlight"><pre><span></span><code>API_REPORTER_BASIC_AUTH_PASSWORD=glc_eyJvIjoiMTEzMjI4OCIsIm4iOiJzZmR4arZW4iLCJrIjoiN0x6Mz1IM041IiwibSI6eyJyXN0LTIifX0=
-API_REPORTER_METRICS_BASIC_AUTH_PASSWORD=glc_eyJvIjoiMTEzMjI4OCIsIm4iOiJzZmR4arZW4iLCJrIjoiN0x6Mz1IM041IiwibSI6eyJyXN0LTIifX0=
-</code></pre></div>
-<!-- secretlint-enable -->
-
-<h3 id="configure-ci-variables-on-repository">Configure CI variables on repository</h3>
-<p>Now configure all of the 6 variables on the repository running MegaLinter.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-13.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-13.jpg"></a></p>
-<p>There value must be accessible from MegaLinter Docker image, so you might need to redeclare them in YML workflows depending on your git provider.</p>
-<p><em>Example with GitHub Workflow:</em></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-13bis.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-13bis.jpg"></a></p>
-<div class="highlight"><pre><span></span><code><span class="w">          </span><span class="nt">API_REPORTER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">          </span><span class="nt">API_REPORTER_URL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.API_REPORTER_URL }}</span>
-<span class="w">          </span><span class="nt">API_REPORTER_BASIC_AUTH_USERNAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.API_REPORTER_BASIC_AUTH_USERNAME }}</span>
-<span class="w">          </span><span class="nt">API_REPORTER_BASIC_AUTH_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.API_REPORTER_BASIC_AUTH_PASSWORD }}</span>
-<span class="w">          </span><span class="nt">API_REPORTER_METRICS_URL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.API_REPORTER_METRICS_URL }}</span>
-<span class="w">          </span><span class="nt">API_REPORTER_METRICS_BASIC_AUTH_USERNAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.API_REPORTER_METRICS_BASIC_AUTH_USERNAME }}</span>
-<span class="w">          </span><span class="nt">API_REPORTER_METRICS_BASIC_AUTH_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.API_REPORTER_METRICS_BASIC_AUTH_PASSWORD }}</span>
-<span class="w">          </span><span class="nt">API_REPORTER_DEBUG</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-</code></pre></div>
-<h3 id="download-megalinter-dashboards">Download MegaLinter dashboards</h3>
-<p>Download all MegaLinter Dashboard JSON files from <a href="https://github.com/oxsecurity/megalinter/tree/main/docs/grafana">this MegaLinter repo folder</a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-16.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-16.jpg"></a></p>
-<h3 id="create-dashboard-folder">Create Dashboard folder</h3>
-<p>Go in menu <strong>Dashboards</strong> then click on <strong>New</strong> then <strong>New folder</strong></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-14.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-14.jpg"></a></p>
-<hr>
-<p>Create folder <code>MegaLinter Dashboards</code></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-15.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-15.jpg"></a></p>
-<h3 id="import-default-megalinter-grafana-dashboards">Import default MegaLinter Grafana Dashboards</h3>
-<p>For each downloaded Dashboard JSON file, process the following actions.</p>
-<p>Click <strong>New</strong> then <strong>Import</strong></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-17.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-17.jpg"></a></p>
-<hr>
-<p>Click on <strong>Upload Dashboard JSON File</strong> and select one of the Dashboards JSON files you downloaded on your computer.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-18.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-18.jpg"></a></p>
-<hr>
-<ul>
-<li>Let Name, Folder and UID default values</li>
-<li>Select your Loki or Prometheus source. They can be:<ul>
-<li><strong>grafanacloud-YOURORGNAME-logs (Loki)</strong></li>
-<li><strong>grafanacloud-YOURORGNAME-prom (Prometheus)</strong></li>
-</ul>
-</li>
-<li>Click import</li>
-</ul>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-19.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-19.jpg"></a></p>
-<p>__</p>
-<p>Repeat the operation for all Dashboard JSON files, and you're all set !</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/images/grafana-config-21.jpg" data-desc-position="bottom"><img alt="" src="../../assets/images/grafana-config-21.jpg"></a></p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>Define <code>API_REPORTER_DEBUG: true</code> to log the exact payloads sent to each provider, and the API error responses in case of failure. Delivery failures never fail the MegaLinter run: they are reported as warnings in the console log.</p>
 
 
 

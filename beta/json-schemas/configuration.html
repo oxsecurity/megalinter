@@ -8110,6 +8110,734 @@
         </div>
     </div>
 </div>
+<div class="accordion" id="accordionAPI_REPORTER">
+    <div class="card">
+        <div class="card-header" id="headingAPI_REPORTER">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#API_REPORTER"
+                        aria-expanded="" aria-controls="API_REPORTER" onclick="setAnchor('#API_REPORTER')"><span class="property-name">API_REPORTER</span></button>
+            </h2>
+        </div>
+
+        <div id="API_REPORTER"
+             class="collapse property-definition-div" aria-labelledby="headingAPI_REPORTER"
+             data-parent="#accordionAPI_REPORTER">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#API_REPORTER" onclick="anchorLink('API_REPORTER')">API_REPORTER</a></div><h4>Activate API reporter (observability: Grafana, Datadog, Elastic, New Relic)</h4><span class="badge badge-dark value-type">Type: boolean</span> <span class="badge badge-success default-value">Default: false</span><br/>
+<span class="description"><p>Sends MegaLinter results (payload v2: run KPIs, linters, top rules &amp; files) to observability backends. Configure the target(s) with API<em>REPORTER</em>PROVIDER and the provider variables</p>
+</span>
+        
+
+        
+        
+
+        
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionAPI_REPORTER_BASIC_AUTH_PASSWORD">
+    <div class="card">
+        <div class="card-header" id="headingAPI_REPORTER_BASIC_AUTH_PASSWORD">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#API_REPORTER_BASIC_AUTH_PASSWORD"
+                        aria-expanded="" aria-controls="API_REPORTER_BASIC_AUTH_PASSWORD" onclick="setAnchor('#API_REPORTER_BASIC_AUTH_PASSWORD')"><span class="property-name">API_REPORTER_BASIC_AUTH_PASSWORD</span></button>
+            </h2>
+        </div>
+
+        <div id="API_REPORTER_BASIC_AUTH_PASSWORD"
+             class="collapse property-definition-div" aria-labelledby="headingAPI_REPORTER_BASIC_AUTH_PASSWORD"
+             data-parent="#accordionAPI_REPORTER_BASIC_AUTH_PASSWORD">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#API_REPORTER_BASIC_AUTH_PASSWORD" onclick="anchorLink('API_REPORTER_BASIC_AUTH_PASSWORD')">API_REPORTER_BASIC_AUTH_PASSWORD</a></div><h4>API reporter (grafana): logs endpoint basic auth password. Never hardcode it in a config variable, use secrets and context variables</h4><span class="badge badge-dark value-type">Type: string</span><br/>
+
+        
+
+        
+        
+
+        
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionAPI_REPORTER_BASIC_AUTH_USERNAME">
+    <div class="card">
+        <div class="card-header" id="headingAPI_REPORTER_BASIC_AUTH_USERNAME">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#API_REPORTER_BASIC_AUTH_USERNAME"
+                        aria-expanded="" aria-controls="API_REPORTER_BASIC_AUTH_USERNAME" onclick="setAnchor('#API_REPORTER_BASIC_AUTH_USERNAME')"><span class="property-name">API_REPORTER_BASIC_AUTH_USERNAME</span></button>
+            </h2>
+        </div>
+
+        <div id="API_REPORTER_BASIC_AUTH_USERNAME"
+             class="collapse property-definition-div" aria-labelledby="headingAPI_REPORTER_BASIC_AUTH_USERNAME"
+             data-parent="#accordionAPI_REPORTER_BASIC_AUTH_USERNAME">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#API_REPORTER_BASIC_AUTH_USERNAME" onclick="anchorLink('API_REPORTER_BASIC_AUTH_USERNAME')">API_REPORTER_BASIC_AUTH_USERNAME</a></div><h4>API reporter (grafana): logs endpoint basic auth username. Use secrets and context variables</h4><span class="badge badge-dark value-type">Type: string</span><br/>
+
+        
+
+        
+        
+
+        
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionAPI_REPORTER_BEARER_TOKEN">
+    <div class="card">
+        <div class="card-header" id="headingAPI_REPORTER_BEARER_TOKEN">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#API_REPORTER_BEARER_TOKEN"
+                        aria-expanded="" aria-controls="API_REPORTER_BEARER_TOKEN" onclick="setAnchor('#API_REPORTER_BEARER_TOKEN')"><span class="property-name">API_REPORTER_BEARER_TOKEN</span></button>
+            </h2>
+        </div>
+
+        <div id="API_REPORTER_BEARER_TOKEN"
+             class="collapse property-definition-div" aria-labelledby="headingAPI_REPORTER_BEARER_TOKEN"
+             data-parent="#accordionAPI_REPORTER_BEARER_TOKEN">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#API_REPORTER_BEARER_TOKEN" onclick="anchorLink('API_REPORTER_BEARER_TOKEN')">API_REPORTER_BEARER_TOKEN</a></div><h4>API reporter (grafana): logs endpoint bearer token. Never hardcode it in a config variable, use secrets and context variables</h4><span class="badge badge-dark value-type">Type: string</span><br/>
+
+        
+
+        
+        
+
+        
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionAPI_REPORTER_DATADOG_API_KEY">
+    <div class="card">
+        <div class="card-header" id="headingAPI_REPORTER_DATADOG_API_KEY">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#API_REPORTER_DATADOG_API_KEY"
+                        aria-expanded="" aria-controls="API_REPORTER_DATADOG_API_KEY" onclick="setAnchor('#API_REPORTER_DATADOG_API_KEY')"><span class="property-name">API_REPORTER_DATADOG_API_KEY</span></button>
+            </h2>
+        </div>
+
+        <div id="API_REPORTER_DATADOG_API_KEY"
+             class="collapse property-definition-div" aria-labelledby="headingAPI_REPORTER_DATADOG_API_KEY"
+             data-parent="#accordionAPI_REPORTER_DATADOG_API_KEY">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#API_REPORTER_DATADOG_API_KEY" onclick="anchorLink('API_REPORTER_DATADOG_API_KEY')">API_REPORTER_DATADOG_API_KEY</a></div><h4>API reporter (datadog): Datadog API key. Never hardcode it in a config variable, use secrets and context variables</h4><span class="badge badge-dark value-type">Type: string</span><br/>
+
+        
+
+        
+        
+
+        
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionAPI_REPORTER_DATADOG_BEARER_TOKEN">
+    <div class="card">
+        <div class="card-header" id="headingAPI_REPORTER_DATADOG_BEARER_TOKEN">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#API_REPORTER_DATADOG_BEARER_TOKEN"
+                        aria-expanded="" aria-controls="API_REPORTER_DATADOG_BEARER_TOKEN" onclick="setAnchor('#API_REPORTER_DATADOG_BEARER_TOKEN')"><span class="property-name">API_REPORTER_DATADOG_BEARER_TOKEN</span></button>
+            </h2>
+        </div>
+
+        <div id="API_REPORTER_DATADOG_BEARER_TOKEN"
+             class="collapse property-definition-div" aria-labelledby="headingAPI_REPORTER_DATADOG_BEARER_TOKEN"
+             data-parent="#accordionAPI_REPORTER_DATADOG_BEARER_TOKEN">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#API_REPORTER_DATADOG_BEARER_TOKEN" onclick="anchorLink('API_REPORTER_DATADOG_BEARER_TOKEN')">API_REPORTER_DATADOG_BEARER_TOKEN</a></div><h4>API reporter (datadog): Datadog bearer token (service account), used when no API key is defined. Never hardcode it in a config variable, use secrets and context variables</h4><span class="badge badge-dark value-type">Type: string</span><br/>
+
+        
+
+        
+        
+
+        
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionAPI_REPORTER_DATADOG_SITE">
+    <div class="card">
+        <div class="card-header" id="headingAPI_REPORTER_DATADOG_SITE">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#API_REPORTER_DATADOG_SITE"
+                        aria-expanded="" aria-controls="API_REPORTER_DATADOG_SITE" onclick="setAnchor('#API_REPORTER_DATADOG_SITE')"><span class="property-name">API_REPORTER_DATADOG_SITE</span></button>
+            </h2>
+        </div>
+
+        <div id="API_REPORTER_DATADOG_SITE"
+             class="collapse property-definition-div" aria-labelledby="headingAPI_REPORTER_DATADOG_SITE"
+             data-parent="#accordionAPI_REPORTER_DATADOG_SITE">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#API_REPORTER_DATADOG_SITE" onclick="anchorLink('API_REPORTER_DATADOG_SITE')">API_REPORTER_DATADOG_SITE</a></div><h4>API reporter (datadog): Datadog site (datadoghq.com, datadoghq.eu, us3.datadoghq.com...)</h4><span class="badge badge-dark value-type">Type: string</span><br/>
+
+        
+
+        
+        
+
+        
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionAPI_REPORTER_DEBUG">
+    <div class="card">
+        <div class="card-header" id="headingAPI_REPORTER_DEBUG">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#API_REPORTER_DEBUG"
+                        aria-expanded="" aria-controls="API_REPORTER_DEBUG" onclick="setAnchor('#API_REPORTER_DEBUG')"><span class="property-name">API_REPORTER_DEBUG</span></button>
+            </h2>
+        </div>
+
+        <div id="API_REPORTER_DEBUG"
+             class="collapse property-definition-div" aria-labelledby="headingAPI_REPORTER_DEBUG"
+             data-parent="#accordionAPI_REPORTER_DEBUG">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#API_REPORTER_DEBUG" onclick="anchorLink('API_REPORTER_DEBUG')">API_REPORTER_DEBUG</a></div><h4>API reporter: log the payloads sent to the providers</h4><span class="badge badge-dark value-type">Type: boolean</span> <span class="badge badge-success default-value">Default: false</span><br/>
+
+        
+
+        
+        
+
+        
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionAPI_REPORTER_DETAILS">
+    <div class="card">
+        <div class="card-header" id="headingAPI_REPORTER_DETAILS">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#API_REPORTER_DETAILS"
+                        aria-expanded="" aria-controls="API_REPORTER_DETAILS" onclick="setAnchor('#API_REPORTER_DETAILS')"><span class="property-name">API_REPORTER_DETAILS</span></button>
+            </h2>
+        </div>
+
+        <div id="API_REPORTER_DETAILS"
+             class="collapse property-definition-div" aria-labelledby="headingAPI_REPORTER_DETAILS"
+             data-parent="#accordionAPI_REPORTER_DETAILS">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#API_REPORTER_DETAILS" onclick="anchorLink('API_REPORTER_DETAILS')">API_REPORTER_DETAILS</a></div><h4>API reporter: include per-rule and per-file breakdowns (parsed from SARIF output) in the payload</h4><span class="badge badge-dark value-type">Type: boolean</span> <span class="badge badge-success default-value">Default: true</span><br/>
+
+        
+
+        
+        
+
+        
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionAPI_REPORTER_ELASTIC_API_KEY">
+    <div class="card">
+        <div class="card-header" id="headingAPI_REPORTER_ELASTIC_API_KEY">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#API_REPORTER_ELASTIC_API_KEY"
+                        aria-expanded="" aria-controls="API_REPORTER_ELASTIC_API_KEY" onclick="setAnchor('#API_REPORTER_ELASTIC_API_KEY')"><span class="property-name">API_REPORTER_ELASTIC_API_KEY</span></button>
+            </h2>
+        </div>
+
+        <div id="API_REPORTER_ELASTIC_API_KEY"
+             class="collapse property-definition-div" aria-labelledby="headingAPI_REPORTER_ELASTIC_API_KEY"
+             data-parent="#accordionAPI_REPORTER_ELASTIC_API_KEY">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#API_REPORTER_ELASTIC_API_KEY" onclick="anchorLink('API_REPORTER_ELASTIC_API_KEY')">API_REPORTER_ELASTIC_API_KEY</a></div><h4>API reporter (elastic): Elasticsearch API key. Never hardcode it in a config variable, use secrets and context variables</h4><span class="badge badge-dark value-type">Type: string</span><br/>
+
+        
+
+        
+        
+
+        
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionAPI_REPORTER_ELASTIC_INDEX_PREFIX">
+    <div class="card">
+        <div class="card-header" id="headingAPI_REPORTER_ELASTIC_INDEX_PREFIX">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#API_REPORTER_ELASTIC_INDEX_PREFIX"
+                        aria-expanded="" aria-controls="API_REPORTER_ELASTIC_INDEX_PREFIX" onclick="setAnchor('#API_REPORTER_ELASTIC_INDEX_PREFIX')"><span class="property-name">API_REPORTER_ELASTIC_INDEX_PREFIX</span></button>
+            </h2>
+        </div>
+
+        <div id="API_REPORTER_ELASTIC_INDEX_PREFIX"
+             class="collapse property-definition-div" aria-labelledby="headingAPI_REPORTER_ELASTIC_INDEX_PREFIX"
+             data-parent="#accordionAPI_REPORTER_ELASTIC_INDEX_PREFIX">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#API_REPORTER_ELASTIC_INDEX_PREFIX" onclick="anchorLink('API_REPORTER_ELASTIC_INDEX_PREFIX')">API_REPORTER_ELASTIC_INDEX_PREFIX</a></div><h4>API reporter (elastic): prefix of the megalinter-* indexes</h4><span class="badge badge-dark value-type">Type: string</span><br/>
+
+        
+
+        
+        
+
+        
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionAPI_REPORTER_ELASTIC_URL">
+    <div class="card">
+        <div class="card-header" id="headingAPI_REPORTER_ELASTIC_URL">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#API_REPORTER_ELASTIC_URL"
+                        aria-expanded="" aria-controls="API_REPORTER_ELASTIC_URL" onclick="setAnchor('#API_REPORTER_ELASTIC_URL')"><span class="property-name">API_REPORTER_ELASTIC_URL</span></button>
+            </h2>
+        </div>
+
+        <div id="API_REPORTER_ELASTIC_URL"
+             class="collapse property-definition-div" aria-labelledby="headingAPI_REPORTER_ELASTIC_URL"
+             data-parent="#accordionAPI_REPORTER_ELASTIC_URL">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#API_REPORTER_ELASTIC_URL" onclick="anchorLink('API_REPORTER_ELASTIC_URL')">API_REPORTER_ELASTIC_URL</a></div><h4>API reporter (elastic): Elasticsearch endpoint URL</h4><span class="badge badge-dark value-type">Type: string</span><br/>
+
+        
+
+        
+        
+
+        
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionAPI_REPORTER_METRICS_BASIC_AUTH_PASSWORD">
+    <div class="card">
+        <div class="card-header" id="headingAPI_REPORTER_METRICS_BASIC_AUTH_PASSWORD">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#API_REPORTER_METRICS_BASIC_AUTH_PASSWORD"
+                        aria-expanded="" aria-controls="API_REPORTER_METRICS_BASIC_AUTH_PASSWORD" onclick="setAnchor('#API_REPORTER_METRICS_BASIC_AUTH_PASSWORD')"><span class="property-name">API_REPORTER_METRICS_BASIC_AUTH_PASSWORD</span></button>
+            </h2>
+        </div>
+
+        <div id="API_REPORTER_METRICS_BASIC_AUTH_PASSWORD"
+             class="collapse property-definition-div" aria-labelledby="headingAPI_REPORTER_METRICS_BASIC_AUTH_PASSWORD"
+             data-parent="#accordionAPI_REPORTER_METRICS_BASIC_AUTH_PASSWORD">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#API_REPORTER_METRICS_BASIC_AUTH_PASSWORD" onclick="anchorLink('API_REPORTER_METRICS_BASIC_AUTH_PASSWORD')">API_REPORTER_METRICS_BASIC_AUTH_PASSWORD</a></div><h4>API reporter (grafana): metrics endpoint basic auth password. Never hardcode it in a config variable, use secrets and context variables</h4><span class="badge badge-dark value-type">Type: string</span><br/>
+
+        
+
+        
+        
+
+        
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionAPI_REPORTER_METRICS_BASIC_AUTH_USERNAME">
+    <div class="card">
+        <div class="card-header" id="headingAPI_REPORTER_METRICS_BASIC_AUTH_USERNAME">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#API_REPORTER_METRICS_BASIC_AUTH_USERNAME"
+                        aria-expanded="" aria-controls="API_REPORTER_METRICS_BASIC_AUTH_USERNAME" onclick="setAnchor('#API_REPORTER_METRICS_BASIC_AUTH_USERNAME')"><span class="property-name">API_REPORTER_METRICS_BASIC_AUTH_USERNAME</span></button>
+            </h2>
+        </div>
+
+        <div id="API_REPORTER_METRICS_BASIC_AUTH_USERNAME"
+             class="collapse property-definition-div" aria-labelledby="headingAPI_REPORTER_METRICS_BASIC_AUTH_USERNAME"
+             data-parent="#accordionAPI_REPORTER_METRICS_BASIC_AUTH_USERNAME">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#API_REPORTER_METRICS_BASIC_AUTH_USERNAME" onclick="anchorLink('API_REPORTER_METRICS_BASIC_AUTH_USERNAME')">API_REPORTER_METRICS_BASIC_AUTH_USERNAME</a></div><h4>API reporter (grafana): metrics endpoint basic auth username. Use secrets and context variables</h4><span class="badge badge-dark value-type">Type: string</span><br/>
+
+        
+
+        
+        
+
+        
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionAPI_REPORTER_METRICS_BEARER_TOKEN">
+    <div class="card">
+        <div class="card-header" id="headingAPI_REPORTER_METRICS_BEARER_TOKEN">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#API_REPORTER_METRICS_BEARER_TOKEN"
+                        aria-expanded="" aria-controls="API_REPORTER_METRICS_BEARER_TOKEN" onclick="setAnchor('#API_REPORTER_METRICS_BEARER_TOKEN')"><span class="property-name">API_REPORTER_METRICS_BEARER_TOKEN</span></button>
+            </h2>
+        </div>
+
+        <div id="API_REPORTER_METRICS_BEARER_TOKEN"
+             class="collapse property-definition-div" aria-labelledby="headingAPI_REPORTER_METRICS_BEARER_TOKEN"
+             data-parent="#accordionAPI_REPORTER_METRICS_BEARER_TOKEN">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#API_REPORTER_METRICS_BEARER_TOKEN" onclick="anchorLink('API_REPORTER_METRICS_BEARER_TOKEN')">API_REPORTER_METRICS_BEARER_TOKEN</a></div><h4>API reporter (grafana): metrics endpoint bearer token. Never hardcode it in a config variable, use secrets and context variables</h4><span class="badge badge-dark value-type">Type: string</span><br/>
+
+        
+
+        
+        
+
+        
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionAPI_REPORTER_METRICS_URL">
+    <div class="card">
+        <div class="card-header" id="headingAPI_REPORTER_METRICS_URL">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#API_REPORTER_METRICS_URL"
+                        aria-expanded="" aria-controls="API_REPORTER_METRICS_URL" onclick="setAnchor('#API_REPORTER_METRICS_URL')"><span class="property-name">API_REPORTER_METRICS_URL</span></button>
+            </h2>
+        </div>
+
+        <div id="API_REPORTER_METRICS_URL"
+             class="collapse property-definition-div" aria-labelledby="headingAPI_REPORTER_METRICS_URL"
+             data-parent="#accordionAPI_REPORTER_METRICS_URL">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#API_REPORTER_METRICS_URL" onclick="anchorLink('API_REPORTER_METRICS_URL')">API_REPORTER_METRICS_URL</a></div><h4>API reporter (grafana): metrics endpoint URL (e.g. Grafana Cloud Influx write URL)</h4><span class="badge badge-dark value-type">Type: string</span><br/>
+
+        
+
+        
+        
+
+        
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionAPI_REPORTER_NEWRELIC_LICENSE_KEY">
+    <div class="card">
+        <div class="card-header" id="headingAPI_REPORTER_NEWRELIC_LICENSE_KEY">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#API_REPORTER_NEWRELIC_LICENSE_KEY"
+                        aria-expanded="" aria-controls="API_REPORTER_NEWRELIC_LICENSE_KEY" onclick="setAnchor('#API_REPORTER_NEWRELIC_LICENSE_KEY')"><span class="property-name">API_REPORTER_NEWRELIC_LICENSE_KEY</span></button>
+            </h2>
+        </div>
+
+        <div id="API_REPORTER_NEWRELIC_LICENSE_KEY"
+             class="collapse property-definition-div" aria-labelledby="headingAPI_REPORTER_NEWRELIC_LICENSE_KEY"
+             data-parent="#accordionAPI_REPORTER_NEWRELIC_LICENSE_KEY">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#API_REPORTER_NEWRELIC_LICENSE_KEY" onclick="anchorLink('API_REPORTER_NEWRELIC_LICENSE_KEY')">API_REPORTER_NEWRELIC_LICENSE_KEY</a></div><h4>API reporter (newrelic): New Relic license key (ingest). Never hardcode it in a config variable, use secrets and context variables</h4><span class="badge badge-dark value-type">Type: string</span><br/>
+
+        
+
+        
+        
+
+        
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionAPI_REPORTER_NEWRELIC_REGION">
+    <div class="card">
+        <div class="card-header" id="headingAPI_REPORTER_NEWRELIC_REGION">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#API_REPORTER_NEWRELIC_REGION"
+                        aria-expanded="" aria-controls="API_REPORTER_NEWRELIC_REGION" onclick="setAnchor('#API_REPORTER_NEWRELIC_REGION')"><span class="property-name">API_REPORTER_NEWRELIC_REGION</span></button>
+            </h2>
+        </div>
+
+        <div id="API_REPORTER_NEWRELIC_REGION"
+             class="collapse property-definition-div" aria-labelledby="headingAPI_REPORTER_NEWRELIC_REGION"
+             data-parent="#accordionAPI_REPORTER_NEWRELIC_REGION">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#API_REPORTER_NEWRELIC_REGION" onclick="anchorLink('API_REPORTER_NEWRELIC_REGION')">API_REPORTER_NEWRELIC_REGION</a></div><h4>API reporter (newrelic): New Relic region (US or EU)</h4><span class="badge badge-dark value-type">Type: string</span><br/>
+
+        
+
+        
+        
+
+        
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionAPI_REPORTER_ORG_IDENTIFIER">
+    <div class="card">
+        <div class="card-header" id="headingAPI_REPORTER_ORG_IDENTIFIER">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#API_REPORTER_ORG_IDENTIFIER"
+                        aria-expanded="" aria-controls="API_REPORTER_ORG_IDENTIFIER" onclick="setAnchor('#API_REPORTER_ORG_IDENTIFIER')"><span class="property-name">API_REPORTER_ORG_IDENTIFIER</span></button>
+            </h2>
+        </div>
+
+        <div id="API_REPORTER_ORG_IDENTIFIER"
+             class="collapse property-definition-div" aria-labelledby="headingAPI_REPORTER_ORG_IDENTIFIER"
+             data-parent="#accordionAPI_REPORTER_ORG_IDENTIFIER">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#API_REPORTER_ORG_IDENTIFIER" onclick="anchorLink('API_REPORTER_ORG_IDENTIFIER')">API_REPORTER_ORG_IDENTIFIER</a></div><h4>API reporter: organization identifier added to all records</h4><span class="badge badge-dark value-type">Type: string</span><br/>
+
+        
+
+        
+        
+
+        
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionAPI_REPORTER_PAYLOAD_FORMAT">
+    <div class="card">
+        <div class="card-header" id="headingAPI_REPORTER_PAYLOAD_FORMAT">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#API_REPORTER_PAYLOAD_FORMAT"
+                        aria-expanded="" aria-controls="API_REPORTER_PAYLOAD_FORMAT" onclick="setAnchor('#API_REPORTER_PAYLOAD_FORMAT')"><span class="property-name">API_REPORTER_PAYLOAD_FORMAT</span></button>
+            </h2>
+        </div>
+
+        <div id="API_REPORTER_PAYLOAD_FORMAT"
+             class="collapse property-definition-div" aria-labelledby="headingAPI_REPORTER_PAYLOAD_FORMAT"
+             data-parent="#accordionAPI_REPORTER_PAYLOAD_FORMAT">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#API_REPORTER_PAYLOAD_FORMAT" onclick="anchorLink('API_REPORTER_PAYLOAD_FORMAT')">API_REPORTER_PAYLOAD_FORMAT</a></div><h4>API reporter (grafana): logs payload format (auto, loki or default)</h4><span class="badge badge-dark value-type">Type: string</span><br/>
+
+        
+
+        
+        
+
+        
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionAPI_REPORTER_PROVIDER">
+    <div class="card">
+        <div class="card-header" id="headingAPI_REPORTER_PROVIDER">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#API_REPORTER_PROVIDER"
+                        aria-expanded="" aria-controls="API_REPORTER_PROVIDER" onclick="setAnchor('#API_REPORTER_PROVIDER')"><span class="property-name">API_REPORTER_PROVIDER</span></button>
+            </h2>
+        </div>
+
+        <div id="API_REPORTER_PROVIDER"
+             class="collapse property-definition-div" aria-labelledby="headingAPI_REPORTER_PROVIDER"
+             data-parent="#accordionAPI_REPORTER_PROVIDER">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#API_REPORTER_PROVIDER" onclick="anchorLink('API_REPORTER_PROVIDER')">API_REPORTER_PROVIDER</a></div><h4>API reporter: comma-separated list of target providers</h4><span class="badge badge-dark value-type">Type: string</span><br/>
+<span class="description"><p>Available providers: grafana (default, direct Loki/Prometheus push via API<em>REPORTER</em>URL and API<em>REPORTER</em>METRICS_URL), datadog, elastic, newrelic. Example: grafana,datadog</p>
+</span>
+        
+
+        
+        
+
+        
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionAPI_REPORTER_URL">
+    <div class="card">
+        <div class="card-header" id="headingAPI_REPORTER_URL">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#API_REPORTER_URL"
+                        aria-expanded="" aria-controls="API_REPORTER_URL" onclick="setAnchor('#API_REPORTER_URL')"><span class="property-name">API_REPORTER_URL</span></button>
+            </h2>
+        </div>
+
+        <div id="API_REPORTER_URL"
+             class="collapse property-definition-div" aria-labelledby="headingAPI_REPORTER_URL"
+             data-parent="#accordionAPI_REPORTER_URL">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#API_REPORTER_URL" onclick="anchorLink('API_REPORTER_URL')">API_REPORTER_URL</a></div><h4>API reporter (grafana): logs endpoint URL (e.g. Loki push URL ending with /loki/api/v1/push)</h4><span class="badge badge-dark value-type">Type: string</span><br/>
+
+        
+
+        
+        
+
+        
+            </div>
+        </div>
+    </div>
+</div>
 <div class="accordion" id="accordionAPI_SPECTRAL_ARGUMENTS">
     <div class="card">
         <div class="card-header" id="headingAPI_SPECTRAL_ARGUMENTS">
