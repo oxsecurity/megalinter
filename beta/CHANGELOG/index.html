@@ -15364,6 +15364,7 @@
 <li><strong><code>REPOSITORY_GITLEAKS</code> has been removed</strong>: migrate to <a href="https://megalinter.io/beta/descriptors/repository_betterleaks/">REPOSITORY_BETTERLEAKS</a>, which reads your existing <code>.gitleaks.toml</code> and <code>.gitleaksignore</code> files unchanged.</li>
 <li><strong>Existing <code>.mega-linter.yml</code> files keep working</strong>: configuration variables of removed linters are simply ignored (a single notice lists any found in your configuration) and remain valid in the JSON schema.</li>
 <li><strong>API Reporter payload v2</strong> replaces the v1 payload: metric series are renamed (<code>linter_run_*</code> becomes <code>megalinter_linter_run_*</code>, plus new run-level <code>megalinter_run_*</code> series), and the old <code>docs/grafana</code> dashboards are superseded. Re-provision the new dashboards with <strong><code>npx mega-linter-runner --upload-dashboards grafana</code></strong> — see the <a href="https://megalinter.io/beta/reporters/ApiReporter/#migration-from-payload-v1">migration notes</a>. Legacy <code>NOTIF_API_*</code> variables remain supported as aliases.</li>
+<li><strong>Linters now time out after 5 minutes by default</strong> (<code>LINTER_TIMEOUT_SECONDS: 300</code>): a linter exceeding it is killed and reported as an error (exit code 124) instead of running (or hanging) unbounded. If some of your linters legitimately run longer, raise the limit globally with <code>LINTER_TIMEOUT_SECONDS</code>, per linter with <code>&lt;LINTER_KEY&gt;_TIMEOUT_SECONDS</code>, or restore the previous unbounded behavior with value <code>0</code>.</li>
 </ul>
 </li>
 </ul>
@@ -15387,6 +15388,7 @@
 </ul>
 </li>
 <li><strong>Default excluded directories</strong> now also include common build/cache folders: <code>.wireit</code>, <code>.turbo</code>, <code>.nx</code>, <code>.yarn/cache</code>, <code>.pnpm-store</code>, <code>.parcel-cache</code>, <code>.angular</code>, and the Salesforce CLI <code>.sf</code> / <code>.sfdx</code> state folders</li>
+<li>New <strong>per-linter timeout</strong>: a linter still running after <strong>5 minutes</strong> (<code>LINTER_TIMEOUT_SECONDS: 300</code> by default) is killed along with all its child processes and reported as an error (exit code 124) with an actionable message, while the other linters keep running. Raise the limit globally with <code>LINTER_TIMEOUT_SECONDS</code>, per linter with <code>&lt;LINTER_KEY&gt;_TIMEOUT_SECONDS</code>, or disable it with value <code>0</code></li>
 <li>New <strong>prerun analysis mode</strong> (<code>mega-linter-runner --prerun</code>, or <code>MEGALINTER_PRERUN=true</code> environment variable): MegaLinter identifies active linters and collects files, then stops before running any linter and suggests configuration improvements, in the console and in <code>megalinter-reports/prerun-report.json</code><ul>
 <li>Suggested exclusions: top-level directories containing only gitignored files (safe: linting scope is unchanged, and project-mode linters stop scanning them), and well-known generated/vendored folder names (<code>site</code>, <code>dist</code>, <code>vendor</code>...) still containing lintable files (to confirm by the user)</li>
 <li>A lighter matching flavor is also suggested when available</li>
@@ -15706,7 +15708,12 @@
 <li>Media</li>
 </ul>
 <ul>
-<li>Linters enhancements</li>
+<li>
+<p>Linters enhancements</p>
+<ul>
+<li><strong><code>REPOSITORY_CHECKOV</code> now skips its <code>secrets</code> framework</strong> (<code>--skip-framework secrets</code>) when a dedicated secret scanner (betterleaks, kingfisher, secretlint or trufflehog) is active in the same run: the duplicated secrets scan added minutes to every run and could stall for hours on bind-mounted workspaces. Define <code>--framework</code> or <code>--skip-framework</code> in <code>REPOSITORY_CHECKOV_ARGUMENTS</code> (or in your checkov config file) to keep checkov's own secrets scan</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>
@@ -15717,6 +15724,7 @@
 <li>Fix <strong><code>LINTER_RULES_PATH</code></strong> not being used to resolve config files for linters using <code>active_only_if_file_found</code> (e.g. <code>REPOSITORY_LS_LINT</code>, <code>SPELL_PROSELINT</code>, <code>SPELL_VALE</code>), fixes <a href="https://github.com/oxsecurity/megalinter/issues/8416">#8416</a></li>
 <li>Honor <code>EXCLUDED_DIRECTORIES</code> and <code>ADDITIONAL_EXCLUDED_DIRECTORIES</code> in <strong>changed-files mode</strong> (<code>VALIDATE_ALL_CODEBASE: false</code>), the same way they are honored during full-codebase validation (<a href="https://github.com/oxsecurity/megalinter/issues/8360">#8360</a>)</li>
 <li>Make <strong>remote configuration loading</strong> (<code>MEGALINTER_CONFIG</code> and <code>EXTENDS</code> files fetched over HTTP) resilient to transient network failures with a request timeout and retries</li>
+<li>Bound the <strong>gitignored-files detection</strong> (<code>git ls-files</code>) with a 120 seconds timeout: on workspaces with pathologically slow file access (e.g. bind-mounted from Windows into a WSL2-backed container engine) this internal git call could hang the whole run before any linter started; it now degrades to an actionable warning and the run continues</li>
 <li>Allow <strong><code>CSS_STYLELINT_COMMAND_REMOVE_ARGUMENTS</code></strong> to remove <code>--config-basedir</code>, and stop raising an error when an argument listed in <code>&lt;LINTER&gt;_COMMAND_REMOVE_ARGUMENTS</code> is not in the command line, fixes <a href="https://github.com/oxsecurity/megalinter/issues/8552">#8552</a></li>
 <li>Treat <strong>zero matching SARIF findings</strong> as a valid result without logging the entire report, fixes <a href="https://github.com/oxsecurity/megalinter/issues/8295">#8295</a></li>
 <li>Remove <strong>invalid SARIF fixes</strong> with empty <code>artifactChanges</code> arrays before report aggregation, fixes <a href="https://github.com/oxsecurity/megalinter/issues/8474">#8474</a></li>
@@ -15753,6 +15761,7 @@
 <li><strong>Coding Agents page</strong>: add Gemini CLI, Windsurf, Cline, Roo Code, Kilo Code, Amp, Goose, OpenHands and Qwen Code to the compatible coding agents</li>
 <li><strong>megalinter-setup skill</strong>: after install or upgrade, suggest either running MegaLinter locally or creating a pull request and then watching its CI results with megalinter-check</li>
 <li><strong>megalinter-check skill</strong>: the first local run now starts with a <code>--prerun</code> analysis, so the user can validate the suggested <code>.mega-linter.yml</code> performance tuning before the real lint</li>
+<li><strong>megalinter-check skill and watcher/runner sub-agents</strong>: the console tips MegaLinter prints (performance warnings, flavor suggestions, <code>[Activation]</code> notices, deprecations) are now extracted from the persisted log file and returned to the calling agent in a <code>tips</code> field, instead of being lost when reading only the JSON report</li>
 <li>Fix outdated links in <code>docs/descriptors/repository_kingfisher.md</code></li>
 </ul>
 </li>
@@ -15778,6 +15787,7 @@
 <li><strong><code>--fix</code></strong> now respects an <code>APPLY_FIXES</code> value (other than <code>none</code>) defined in <code>.mega-linter.yml</code> instead of overriding it with <code>all</code></li>
 <li><strong><code>--upgrade</code></strong> also bumps a pinned <code>MEGALINTER_VERSION</code> property of <code>.mega-linter.yml</code> to the current major version</li>
 <li>New <strong><code>--prerun</code></strong> option: analysis-only run that outputs configuration suggestions to improve performances (see the prerun mode in Core section). Combine with <code>--json</code> to print the prerun report on stdout</li>
+<li>New <strong><code>--timeout &lt;seconds&gt;</code></strong> option (<code>-t</code>): bound the whole run; on expiration the runner prints the container's last log lines, stops and removes the container (no orphan left behind, even on Windows where killing the CLI process does not stop the container), and exits with code 124</li>
 <li><strong>Skip <code>docker pull</code></strong> when the requested version is a pinned release tag (<code>vX.Y.Z</code>, immutable) and the image is already available locally, removing a useless registry round-trip</li>
 <li>Print a hint before mounting the workspace when it contains <strong>well-known heavy folders</strong> (build caches, package stores), pointing at <code>SKIP_CLI_LINT_MODES=project</code> to keep local runs fast</li>
 </ul>
