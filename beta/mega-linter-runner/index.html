@@ -12323,6 +12323,11 @@
 <td><!-- --></td>
 </tr>
 <tr>
+<td><code>-t</code> <br> <code>--timeout</code></td>
+<td>Maximum duration in seconds of the MegaLinter container run (image pull time is not counted). When the limit is reached, the container is stopped and removed, its last log lines are displayed, and mega-linter-runner exits with code <code>124</code>. If <code>--container-name</code> is not set, a container name is auto-generated so the exact container can be stopped even if the CLI process itself is killed. Recommended when the runner is driven by automation (CI wrappers, AI agents) so a stuck run cannot hang forever</td>
+<td>no limit</td>
+</tr>
+<tr>
 <td><code>--remove-container</code></td>
 <td>Remove MegaLinter Docker container when done</td>
 <td><!-- --></td>
@@ -12431,6 +12436,9 @@ mega-linter-runner<span class="w"> </span>--linter<span class="w"> </span>PYTHON
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># Use Podman as engine</span>
 mega-linter-runner<span class="w"> </span>--flavor<span class="w"> </span>documentation<span class="w"> </span>--container-engine<span class="w"> </span>podman
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Bound the run to 30 minutes: on timeout the container is stopped and removed, and its last log lines are displayed</span>
+mega-linter-runner<span class="w"> </span>--timeout<span class="w"> </span><span class="m">1800</span>
 </code></pre></div>
 <h2 id="configuration">Configuration</h2>
 <p>You can generate a ready-to-use <a href="https://megalinter.io/configuration/">.mega-linter.yml configuration file</a> by running <code>npx mega-linter-runner --install</code> at the root of your repository</p>

@@ -12316,7 +12316,7 @@
 </ul>
 <h2 id="phpcs-documentation">phpcs documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>4.0.1</strong></li>
+<li>Version in MegaLinter: <strong>4.0.4</strong></li>
 <li>Visit <a href="https://github.com/PHPCSStandards/PHP_CodeSniffer#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/PHPCSStandards/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file" target="_blank">How to configure phpcs rules</a><ul>
 <li>If custom <code>phpcs.xml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/phpcs.xml" target="_blank">phpcs.xml</a> will be used</li>
@@ -12415,6 +12415,11 @@
 <td>PHP_PHPCS_DISABLE_ERRORS_IF_LESS_THAN</td>
 <td>Maximum number of errors allowed</td>
 <td><code>0</code></td>
+</tr>
+<tr>
+<td>PHP_PHPCS_TIMEOUT_SECONDS</td>
+<td>Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout</td>
+<td><code>300</code></td>
 </tr>
 <tr>
 <td>PHP_PHPCS_CLI_EXECUTABLE</td>
@@ -12662,7 +12667,7 @@ Miscellaneous<span class="w"> </span>Options:
 <span class="k">ENV</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"/usr/local/composer/vendor/bin:</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span><span class="s2">"</span>
 <span class="c"># Linter install</span>
 <span class="c"># renovate: datasource=packagist depName=squizlabs/php_codesniffer</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION</span><span class="o">=</span><span class="m">4</span>.0.1
+<span class="k">ARG</span><span class="w"> </span><span class="nv">PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION</span><span class="o">=</span><span class="m">4</span>.0.4
 <span class="c"># renovate: datasource=packagist depName=bartlett/sarif-php-converters</span>
 <span class="k">ARG</span><span class="w"> </span><span class="nv">PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION</span><span class="o">=</span><span class="m">1</span>.6.0
 <span class="k">RUN</span><span class="w"> </span><span class="nv">GITHUB_AUTH_TOKEN</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>cat<span class="w"> </span>/run/secrets/GITHUB_TOKEN<span class="k">)</span><span class="s2">"</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span>GITHUB_AUTH_TOKEN<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>composer<span class="w"> </span>global<span class="w"> </span>require<span class="w"> </span>squizlabs/php_codesniffer:<span class="si">${</span><span class="nv">PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION</span><span class="si">}</span><span class="w"> </span>bartlett/sarif-php-converters:<span class="si">${</span><span class="nv">PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION</span><span class="si">}</span>

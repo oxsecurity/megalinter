@@ -12376,6 +12376,11 @@
 <td><code>0</code></td>
 </tr>
 <tr>
+<td>SNAKEMAKE_LINT_TIMEOUT_SECONDS</td>
+<td>Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout</td>
+<td><code>300</code></td>
+</tr>
+<tr>
 <td>SNAKEMAKE_LINT_CLI_EXECUTABLE</td>
 <td>Override CLI executable</td>
 <td><code>['snakemake']</code></td>
@@ -12631,7 +12636,7 @@
 <span class="w">                 </span><span class="o">[</span>--apptainer-args<span class="w"> </span>ARGS<span class="o">]</span><span class="w"> </span><span class="o">[</span>--use-envmodules<span class="o">]</span>
 <span class="w">                 </span><span class="o">[</span>--deploy-sources<span class="w"> </span>QUERY<span class="w"> </span>CHECKSUM<span class="o">]</span>
 <span class="w">                 </span><span class="o">[</span>--target-jobs<span class="w"> </span>TARGET_JOBS<span class="w"> </span><span class="o">[</span>TARGET_JOBS<span class="w"> </span>...<span class="o">]]</span>
-<span class="w">                 </span><span class="o">[</span>--mode<span class="w"> </span><span class="o">{</span>remote,subprocess,default<span class="o">}]</span>
+<span class="w">                 </span><span class="o">[</span>--mode<span class="w"> </span><span class="o">{</span>remote,default,subprocess<span class="o">}]</span>
 <span class="w">                 </span><span class="o">[</span>--scheduler-solver-path<span class="w"> </span>SCHEDULER_SOLVER_PATH<span class="o">]</span>
 <span class="w">                 </span><span class="o">[</span>--max-jobs-per-second<span class="w"> </span>MAX_JOBS_PER_SECOND<span class="o">]</span>
 <span class="w">                 </span><span class="o">[</span>--report-html-path<span class="w"> </span>VALUE<span class="o">]</span>
@@ -13529,7 +13534,7 @@ INTERNAL:
 <span class="w">  </span>--target-jobs<span class="w"> </span>TARGET_JOBS<span class="w"> </span><span class="o">[</span>TARGET_JOBS<span class="w"> </span>...<span class="o">]</span>
 <span class="w">                        </span>Internal<span class="w"> </span>use<span class="w"> </span>only:<span class="w"> </span>Target<span class="w"> </span>particular<span class="w"> </span><span class="nb">jobs</span><span class="w"> </span>by
 <span class="w">                        </span>RULE:WILDCARD1<span class="o">=</span>VALUE,WILDCARD2<span class="o">=</span>VALUE,...
-<span class="w">  </span>--mode<span class="w"> </span><span class="o">{</span>remote,subprocess,default<span class="o">}</span>
+<span class="w">  </span>--mode<span class="w"> </span><span class="o">{</span>remote,default,subprocess<span class="o">}</span>
 <span class="w">                        </span>Internal<span class="w"> </span>use<span class="w"> </span>only:<span class="w"> </span>Set<span class="w"> </span>execution<span class="w"> </span>mode<span class="w"> </span>of<span class="w"> </span>Snakemake.
 <span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>default<span class="o">)</span>
 <span class="w">  </span>--scheduler-solver-path<span class="w"> </span>SCHEDULER_SOLVER_PATH

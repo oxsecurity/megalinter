@@ -12340,6 +12340,11 @@ If you do not want cspell to analyze the files names, define <code>SPELL_CSPELL_
 <td><code>0</code></td>
 </tr>
 <tr>
+<td>SPELL_CSPELL_TIMEOUT_SECONDS</td>
+<td>Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout</td>
+<td><code>300</code></td>
+</tr>
+<tr>
 <td>SPELL_CSPELL_CLI_EXECUTABLE</td>
 <td>Override CLI executable</td>
 <td><code>['cspell']</code></td>

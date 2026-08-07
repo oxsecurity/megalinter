@@ -12215,6 +12215,7 @@
 <li><strong>Policy Suppression</strong>: Granular control over policy enforcement with inline and configuration-based suppression</li>
 <li><strong>Graph-Based Analysis</strong>: Advanced analysis using dependency graphs for complex infrastructure relationships</li>
 </ul>
+<p>When another active linter of the same MegaLinter run is a dedicated secret scanner (<a href="https://megalinter.io/latest/descriptors/repository_betterleaks/">betterleaks</a>, <a href="https://megalinter.io/latest/descriptors/repository_kingfisher/">kingfisher</a>, <a href="https://megalinter.io/latest/descriptors/repository_secretlint/">secretlint</a> or <a href="https://megalinter.io/latest/descriptors/repository_trufflehog/">trufflehog</a>), MegaLinter automatically adds <code>--skip-framework secrets</code> to the checkov command, so the secrets scan is not duplicated. Define <code>--framework</code> or <code>--skip-framework</code> in <code>REPOSITORY_CHECKOV_ARGUMENTS</code> or in your checkov config file to override this behavior.</p>
 <h2 id="checkov-documentation">checkov documentation</h2>
 <ul>
 <li>Version in MegaLinter: <strong>3.3.9</strong></li>
@@ -12305,6 +12306,11 @@
 <td>REPOSITORY_CHECKOV_DISABLE_ERRORS_IF_LESS_THAN</td>
 <td>Maximum number of errors allowed</td>
 <td><code>0</code></td>
+</tr>
+<tr>
+<td>REPOSITORY_CHECKOV_TIMEOUT_SECONDS</td>
+<td>Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout</td>
+<td><code>300</code></td>
 </tr>
 <tr>
 <td>REPOSITORY_CHECKOV_CLI_EXECUTABLE</td>

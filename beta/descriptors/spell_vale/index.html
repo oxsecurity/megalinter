@@ -12238,7 +12238,7 @@
 MegaLinter analyze markdown and restructuredText files by default, you can change that using SPELL_VALE_FILE_EXTENSIONS variable.</p>
 <h2 id="vale-documentation">vale documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.17.0</strong></li>
+<li>Version in MegaLinter: <strong>3.17.1</strong></li>
 <li>Visit <a href="https://vale.sh/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://vale.sh/explorer/" target="_blank">How to configure vale rules</a></li>
 <li>See <a href="https://vale.sh/docs/topics/vocab/" target="_blank">How to disable vale rules in files</a></li>
@@ -12333,6 +12333,11 @@ MegaLinter analyze markdown and restructuredText files by default, you can chang
 <td>SPELL_VALE_DISABLE_ERRORS_IF_LESS_THAN</td>
 <td>Maximum number of errors allowed</td>
 <td><code>0</code></td>
+</tr>
+<tr>
+<td>SPELL_VALE_TIMEOUT_SECONDS</td>
+<td>Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout</td>
+<td><code>300</code></td>
 </tr>
 <tr>
 <td>SPELL_VALE_CLI_EXECUTABLE</td>
@@ -12567,7 +12572,7 @@ Commands:
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=docker depName=jdkato/vale</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">SPELL_VALE_VERSION</span><span class="o">=</span>v3.17.0
+<span class="k">ARG</span><span class="w"> </span><span class="nv">SPELL_VALE_VERSION</span><span class="o">=</span>v3.17.1
 <span class="k">FROM</span><span class="w"> </span><span class="s">jdkato/vale:${SPELL_VALE_VERSION}</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">vale</span>
 <span class="k">COPY</span><span class="w"> </span>--link<span class="w"> </span>--from<span class="o">=</span>vale<span class="w"> </span>/bin/vale<span class="w"> </span>/bin/vale
 </code></pre></div></li>
