@@ -714,7 +714,7 @@
         "type": "datasource",
         "query": "prometheus",
         "current": {},
-        "hide": 0
+        "hide": 2
       },
       {
         "name": "DS_LOKI",
@@ -722,7 +722,7 @@
         "type": "datasource",
         "query": "loki",
         "current": {},
-        "hide": 0
+        "hide": 2
       },
       {
         "name": "repo",

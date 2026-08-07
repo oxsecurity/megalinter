@@ -447,13 +447,14 @@ class DashboardBuilderGrafana(DashboardBuilder):
 
     def datasource_variables(self):
         return [
+            # Hidden: auto-selects the first matching datasource of the instance
             {
                 "name": "DS_PROMETHEUS",
                 "label": "Metrics datasource",
                 "type": "datasource",
                 "query": "prometheus",
                 "current": {},
-                "hide": 0,
+                "hide": 2,
             },
             {
                 "name": "DS_LOKI",
@@ -461,7 +462,7 @@ class DashboardBuilderGrafana(DashboardBuilder):
                 "type": "datasource",
                 "query": "loki",
                 "current": {},
-                "hide": 0,
+                "hide": 2,
             },
         ]
 
