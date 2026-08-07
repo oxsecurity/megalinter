@@ -172,6 +172,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **megalinter-setup skill**: after install or upgrade, suggest either running MegaLinter locally or creating a pull request and then watching its CI results with megalinter-check
   - **megalinter-check skill**: the first local run now starts with a `--prerun` analysis, so the user can validate the suggested `.mega-linter.yml` performance tuning before the real lint
   - **megalinter-check skill and watcher/runner sub-agents**: the console tips MegaLinter prints (performance warnings, flavor suggestions, `[Activation]` notices, deprecations) are now extracted from the persisted log file and returned to the calling agent in a `tips` field, instead of being lost when reading only the JSON report
+  - **Custom Flavors**: new [Licensing](https://megalinter.io/beta/custom-flavors/#licensing) section — a custom flavor is still MegaLinter, so your flavor repository and the image it publishes are covered by **AGPL-3.0**. Add an `AGPL-3.0` `LICENSE` file to your flavor repository and keep the link to the MegaLinter source in its README, fixes [#8681](https://github.com/oxsecurity/megalinter/issues/8681)
   - Fix outdated links in `docs/descriptors/repository_kingfisher.md`
 
 - mega-linter-runner
@@ -190,6 +191,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - New **`--timeout <seconds>`** option (`-t`): bound the whole run; on expiration the runner prints the container's last log lines, stops and removes the container (no orphan left behind, even on Windows where killing the CLI process does not stop the container), and exits with code 124
   - **Skip `docker pull`** when the requested version is a pinned release tag (`vX.Y.Z`, immutable) and the image is already available locally, removing a useless registry round-trip
   - Print a hint before mounting the workspace when it contains **well-known heavy folders** (build caches, package stores), pointing at `SKIP_CLI_LINT_MODES=project` to keep local runs fast
+  - **`--custom-flavor-setup`**: the generated README now has a **License** section stating the flavor is covered by **AGPL-3.0**, with a link to the MegaLinter source repository
 
 - Dev
 
@@ -369,6 +371,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.3.8 to **3.3.9** on 2026-08-06
   - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 4.0.1 to **4.0.4** on 2026-08-07
   - [vale](https://vale.sh/) from 3.17.0 to **3.17.1** on 2026-08-07
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.53.3 to **1.54.0** on 2026-08-07
+  - [djlint](https://djlint.com/) from 1.43.2 to **1.44.1** on 2026-08-07
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.16.1 to **0.16.2** on 2026-08-07
+  - [ruff](https://github.com/astral-sh/ruff) from 0.16.1 to **0.16.2** on 2026-08-07
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.110.0 to **1.111.0** on 2026-08-07
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 8.5.0 to **8.6.0** on 2026-08-07
+  - [snakemake](https://snakemake.github.io/) from 9.24.0 to **9.25.1** on 2026-08-07
+  - [sqlfluff](https://www.sqlfluff.com/) from 4.2.2 to **4.3.0** on 2026-08-07
 <!-- linter-versions-end -->
 
 ## [v9.6.0] - 2026-06-28

@@ -29,7 +29,7 @@ For example, define `HTML_DJLINT_ARGUMENTS: ["--profile", "django"]` to select d
 
 ## djlint documentation
 
-- Version in MegaLinter: **1.43.2**
+- Version in MegaLinter: **1.44.1**
 - Visit [Official Web Site](https://djlint.com/){target=_blank}
 - See [How to configure djlint rules](https://djlint.com/docs/configuration/){target=_blank}
 - See [How to disable djlint rules in files](https://djlint.com/docs/ignoring-code/){target=_blank}
@@ -140,6 +140,8 @@ Options:
                                   comment with the text 'djlint:on'
   --lint                          Lint for common issues. [default option]
   --use-gitignore                 Use .gitignore file to extend excludes.
+  --allow-empty-input             Exit with 0 instead of 2 when the given
+                                  paths match no files.
   --warn                          Return errors as warnings.
   --preserve-leading-space        Attempt to preserve leading space on text.
   --preserve-blank-lines          Attempt to preserve blank lines.
@@ -207,8 +209,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=djlint
-ARG PIP_DJLINT_VERSION=1.43.2
+ARG PIP_DJLINT_VERSION=1.44.1
 ```
 
 - PIP packages (Python):
-  - [djlint==1.43.2](https://pypi.org/project/djlint/1.43.2)
+  - [djlint==1.44.1](https://pypi.org/project/djlint/1.44.1)

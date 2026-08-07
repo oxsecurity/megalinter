@@ -172,6 +172,19 @@ mega-linter:
   image: ghcr.io/nvuillam/megalinter-custom-flavor-npm-groovy-lint/megalinter-custom-flavor:latest
 ```
 
+## Licensing
+
+**A custom flavor is still MegaLinter, so it is covered by the [AGPL-3.0 license](https://github.com/oxsecurity/megalinter/blob/main/LICENSE).**
+
+This applies both to the files created by the generator in your repository, and to the Docker image you publish, which is built from the official MegaLinter image and bundles MegaLinter itself.
+
+Concretely, when you create a custom flavor repository:
+
+- Add an `AGPL-3.0` `LICENSE` file at the root of your repository
+- Keep the link to the MegaLinter source repository ([oxsecurity/megalinter](https://github.com/oxsecurity/megalinter)) in your README, so users of your image can find the corresponding source
+
+The generated README already contains a **License** section stating this, so you have nothing else to do besides adding the `LICENSE` file.
+
 ## Update your custom flavor
 
 If you add/remove linters in your `mega-linter-flavor.yml`:
