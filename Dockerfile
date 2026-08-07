@@ -358,7 +358,7 @@ ARG REPOSITORY_TRIVY_VERSION=0.73.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.73.0
 # renovate: datasource=github-tags depName=mongodb/kingfisher
-ARG REPOSITORY_KINGFISHER_VERSION=1.110.0
+ARG REPOSITORY_KINGFISHER_VERSION=1.111.0
 # renovate: datasource=pypi depName=robotframework-robocop
 ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=8.6.0
 # renovate: datasource=pypi depName=Pygments
