@@ -368,6 +368,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.3.8 to **3.3.9** on 2026-08-06
   - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 4.0.1 to **4.0.4** on 2026-08-07
   - [vale](https://vale.sh/) from 3.17.0 to **3.17.1** on 2026-08-07
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.53.3 to **1.54.0** on 2026-08-07
+  - [djlint](https://djlint.com/) from 1.43.2 to **1.44.1** on 2026-08-07
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.16.1 to **0.16.2** on 2026-08-07
+  - [ruff](https://github.com/astral-sh/ruff) from 0.16.1 to **0.16.2** on 2026-08-07
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.110.0 to **1.111.0** on 2026-08-07
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 8.5.0 to **8.6.0** on 2026-08-07
+  - [snakemake](https://snakemake.github.io/) from 9.24.0 to **9.25.1** on 2026-08-07
+  - [sqlfluff](https://www.sqlfluff.com/) from 4.2.2 to **4.3.0** on 2026-08-07
 <!-- linter-versions-end -->
 
 ## [v9.6.0] - 2026-06-28
