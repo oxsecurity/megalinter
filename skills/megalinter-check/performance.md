@@ -18,6 +18,7 @@ Before hand-tuning with the table below, consider a prerun analysis (`npx mega-l
 | Whole run slow, many irrelevant linters                           | `all` flavor used on a single-stack repository                                                      | Set `MEGALINTER_FLAVOR` to the matching [flavor](https://megalinter.io/flavors/), or build a [custom flavor](https://megalinter.io/custom-flavors/) |
 | A single linter dominates and is not valued by the team           | —                                                                                                   | Suggest `DISABLE_LINTERS` (requires user confirmation, like any disable)                                                                            |
 | A project-mode linter behaves unexpectedly after an upgrade       | Automatic excluded-directories forwarding (see below) conflicts with the repo's own ignore/config   | Disable forwarding for that linter with `<LINTER_KEY>_FORWARD_EXCLUDED_DIRECTORIES: false`                                                          |
+| Local run saturates the machine, or every linter is slow at once  | MegaLinter runs one parallel linter process per CPU core (`PARALLEL_PROCESS_NUMBER` default), so a local run competes with Docker and everything else on the machine | Cap it on local runs with `-e PARALLEL_PROCESS_NUMBER=4` (the check skill's default for local mode); keep it out of `.mega-linter.yml` so CI keeps full parallelism |
 
 ## Automatic excluded-directories forwarding
 

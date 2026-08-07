@@ -44,6 +44,7 @@ npx mega-linter-runner --container-engine podman  # podman
 Tip: for repeated local runs (e.g. fix → re-check loops), install the runner once with `npm install -g mega-linter-runner` and call `mega-linter-runner` directly — it avoids the `npx` package resolution overhead on every invocation.
 
 - Add `--fix` if `.mega-linter.yml` defines `APPLY_FIXES` other than `none` (the repository has opted into auto-fixing).
+- **Cap parallelism on local machines**: MegaLinter defaults to one parallel linter process per CPU core, which can saturate a dev machine where Docker shares resources with everything else. When running on a local computer — not in CI (no `CI`/`GITHUB_ACTIONS`/`GITLAB_CI`-style environment variable set) — add `-e PARALLEL_PROCESS_NUMBER=4` to full runs (use the machine's core count instead if it has fewer than 4). Skip this when the repository configuration already sets `PARALLEL_PROCESS_NUMBER`; never write it into `.mega-linter.yml`, where it would also slow down CI.
 - Then read `megalinter-reports/mega-linter-report.json` and `megalinter-reports/linters_logs/ERROR-*.log` instead of parsing the console output.
 
 ### First local run: prerun analysis
