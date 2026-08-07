@@ -20,6 +20,16 @@
   "widgets": [
     {
       "definition": {
+        "type": "note",
+        "content": "**MegaLinter Observability** | [Logs explorer](/logs?query=source%3Amegalinter) | [Documentation](https://megalinter.io/latest/observability/datadog/) | Use the `git_repo_name` / `git_branch_name` variables above to focus a repository or branch, and the *Why this rating?* section below to understand the health score.",
+        "background_color": "white",
+        "font_size": "14",
+        "text_align": "left",
+        "show_tick": false
+      }
+    },
+    {
+      "definition": {
         "title": "Quality gate pass rate (%)",
         "type": "query_value",
         "precision": 0,

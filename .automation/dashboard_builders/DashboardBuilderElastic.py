@@ -449,6 +449,14 @@ class DashboardBuilderElastic(DashboardBuilder):
 
     def dashboard(self):
         panels = [
+            self.markdown_panel(
+                "p0",
+                "**MegaLinter Observability** | "
+                "[Documentation](https://megalinter.io/latest/observability/elastic/) | Click any bar to "
+                "filter the dashboard, use the filter bar for KQL (e.g. `gitRepoName: myrepo` or "
+                "`gitBranchName: main`), and scroll down to the *rating explanation* section to understand "
+                "the health score.",
+            ),
             self.lens_metric_panel(
                 "p1",
                 "Blocking errors (sum)",
@@ -594,26 +602,27 @@ class DashboardBuilderElastic(DashboardBuilder):
             ),
         ]
         grid = [
-            {"x": 0, "y": 0, "w": 12, "h": 8, "i": "p1"},
-            {"x": 12, "y": 0, "w": 12, "h": 8, "i": "p2"},
-            {"x": 24, "y": 0, "w": 12, "h": 8, "i": "p3"},
-            {"x": 36, "y": 0, "w": 12, "h": 8, "i": "p4"},
-            {"x": 0, "y": 20, "w": 24, "h": 12, "i": "p5"},
-            {"x": 24, "y": 20, "w": 24, "h": 12, "i": "p6"},
-            {"x": 0, "y": 32, "w": 24, "h": 12, "i": "p7"},
-            {"x": 24, "y": 32, "w": 24, "h": 12, "i": "p8"},
-            {"x": 0, "y": 8, "w": 24, "h": 12, "i": "p9"},
-            {"x": 24, "y": 8, "w": 12, "h": 12, "i": "p10"},
-            {"x": 0, "y": 44, "w": 24, "h": 12, "i": "p11"},
-            {"x": 24, "y": 44, "w": 24, "h": 12, "i": "p12"},
-            {"x": 36, "y": 8, "w": 12, "h": 12, "i": "p13"},
-            {"x": 0, "y": 56, "w": 48, "h": 12, "i": "p14"},
-            {"x": 0, "y": 68, "w": 24, "h": 12, "i": "p15"},
-            {"x": 24, "y": 68, "w": 24, "h": 12, "i": "p16"},
-            {"x": 0, "y": 80, "w": 24, "h": 10, "i": "p17"},
-            {"x": 24, "y": 80, "w": 8, "h": 10, "i": "p18"},
-            {"x": 32, "y": 80, "w": 8, "h": 10, "i": "p19"},
-            {"x": 40, "y": 80, "w": 8, "h": 10, "i": "p20"},
+            {"x": 0, "y": 0, "w": 48, "h": 3, "i": "p0"},
+            {"x": 0, "y": 3, "w": 12, "h": 8, "i": "p1"},
+            {"x": 12, "y": 3, "w": 12, "h": 8, "i": "p2"},
+            {"x": 24, "y": 3, "w": 12, "h": 8, "i": "p3"},
+            {"x": 36, "y": 3, "w": 12, "h": 8, "i": "p4"},
+            {"x": 0, "y": 23, "w": 24, "h": 12, "i": "p5"},
+            {"x": 24, "y": 23, "w": 24, "h": 12, "i": "p6"},
+            {"x": 0, "y": 35, "w": 24, "h": 12, "i": "p7"},
+            {"x": 24, "y": 35, "w": 24, "h": 12, "i": "p8"},
+            {"x": 0, "y": 11, "w": 24, "h": 12, "i": "p9"},
+            {"x": 24, "y": 11, "w": 12, "h": 12, "i": "p10"},
+            {"x": 0, "y": 47, "w": 24, "h": 12, "i": "p11"},
+            {"x": 24, "y": 47, "w": 24, "h": 12, "i": "p12"},
+            {"x": 36, "y": 11, "w": 12, "h": 12, "i": "p13"},
+            {"x": 0, "y": 59, "w": 48, "h": 12, "i": "p14"},
+            {"x": 0, "y": 71, "w": 24, "h": 12, "i": "p15"},
+            {"x": 24, "y": 71, "w": 24, "h": 12, "i": "p16"},
+            {"x": 0, "y": 83, "w": 24, "h": 10, "i": "p17"},
+            {"x": 24, "y": 83, "w": 8, "h": 10, "i": "p18"},
+            {"x": 32, "y": 83, "w": 8, "h": 10, "i": "p19"},
+            {"x": 40, "y": 83, "w": 8, "h": 10, "i": "p20"},
         ]
         for panel, grid_data in zip(panels, grid):
             panel["gridData"] = grid_data

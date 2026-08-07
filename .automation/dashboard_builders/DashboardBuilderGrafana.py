@@ -490,12 +490,25 @@ class DashboardBuilderGrafana(DashboardBuilder):
             "graphTooltip": 1,
             "id": None,
             "links": [
+                # Navigation buttons to every MegaLinter dashboard (by tag),
+                # keeping the selected time range and variables
                 {
-                    "title": "MegaLinter API Reporter documentation",
-                    "url": "https://megalinter.io/latest/reporters/ApiReporter/",
+                    "title": "",
+                    "type": "dashboards",
+                    "tags": [GRAFANA_TAG],
+                    "asDropdown": False,
+                    "keepTime": True,
+                    "includeVars": True,
+                    "icon": "dashboard",
+                    "targetBlank": False,
+                },
+                {
+                    "title": "Documentation",
+                    "url": "https://megalinter.io/latest/observability/grafana/",
                     "type": "link",
+                    "icon": "doc",
                     "targetBlank": True,
-                }
+                },
             ],
             "panels": panels,
             "refresh": "",

@@ -290,6 +290,14 @@ class DashboardBuilderDatadog(DashboardBuilder):
                 },
             ],
             "widgets": [
+                self.note(
+                    "**MegaLinter Observability** | "
+                    "[Logs explorer](/logs?query=source%3Amegalinter) | "
+                    "[Documentation](https://megalinter.io/latest/observability/datadog/) "
+                    "| Use the `git_repo_name` / `git_branch_name` variables above to focus "
+                    "a repository or branch, and the *Why this rating?* section below to "
+                    "understand the health score."
+                ),
                 self.query_value(
                     "Quality gate pass rate (%)",
                     f"avg:{DD_RUN_PREFIX}qualityGate{{$git_repo_name,$git_branch_name}} * 100",

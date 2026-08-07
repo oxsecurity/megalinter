@@ -9,9 +9,22 @@
   "id": null,
   "links": [
     {
-      "title": "MegaLinter API Reporter documentation",
-      "url": "https://megalinter.io/latest/reporters/ApiReporter/",
+      "title": "",
+      "type": "dashboards",
+      "tags": [
+        "megalinter"
+      ],
+      "asDropdown": false,
+      "keepTime": true,
+      "includeVars": true,
+      "icon": "dashboard",
+      "targetBlank": false
+    },
+    {
+      "title": "Documentation",
+      "url": "https://megalinter.io/latest/observability/grafana/",
       "type": "link",
+      "icon": "doc",
       "targetBlank": true
     }
   ],
