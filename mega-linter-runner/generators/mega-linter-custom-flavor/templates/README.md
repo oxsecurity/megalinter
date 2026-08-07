@@ -73,4 +73,10 @@ Follow [MegaLinter installation guide](https://megalinter.io/latest/install-assi
 - **GitHub Action**: On MegaLinter step in `.github/workflows/mega-linter.yml`, define `uses: <%= CUSTOM_FLAVOR_GITHUB_ACTION %>@main`
 - **Docker image**: Replace official MegaLinter image with `<%= DOCKER_IMAGE_VERSION %>`
 
+## License
+
+A MegaLinter custom flavor is still MegaLinter: this repository and the Docker image it publishes are covered by the [AGPL-3.0 license](https://github.com/oxsecurity/megalinter/blob/main/LICENSE).
+
+The published image is built from the official MegaLinter image and bundles MegaLinter, whose source is available at [oxsecurity/megalinter](https://github.com/oxsecurity/megalinter).
+
 [![MegaLinter is graciously provided by OX Security](https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/images/ox-banner.png)](https://www.ox.security/?ref=megalinter)

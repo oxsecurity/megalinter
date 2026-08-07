@@ -190,6 +190,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - New **`--timeout <seconds>`** option (`-t`): bound the whole run; on expiration the runner prints the container's last log lines, stops and removes the container (no orphan left behind, even on Windows where killing the CLI process does not stop the container), and exits with code 124
   - **Skip `docker pull`** when the requested version is a pinned release tag (`vX.Y.Z`, immutable) and the image is already available locally, removing a useless registry round-trip
   - Print a hint before mounting the workspace when it contains **well-known heavy folders** (build caches, package stores), pointing at `SKIP_CLI_LINT_MODES=project` to keep local runs fast
+  - **`--custom-flavor-setup`**: the generated README now has a **License** section stating the flavor is covered by **AGPL-3.0**, with a link to the MegaLinter source repository
 
 - Dev
 
