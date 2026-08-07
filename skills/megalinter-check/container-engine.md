@@ -18,11 +18,11 @@ timeout 10 docker info --format '{{.ServerVersion}}'     # docker installed AND 
 
 ## Start an already-installed engine
 
-| OS      | podman                                                             | docker                                                                                                                               |
-|:--------|:-------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------|
+| OS      | podman                                                             | docker                                                                                                                                                                 |
+|:--------|:-------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Windows | `podman machine start` (create it once with `podman machine init`) | Start Docker Desktop: `Start-Process 'C:\Program Files\Docker\Docker\Docker Desktop.exe'`, then poll `timeout 10 docker info` until it responds (give up after ~2 min) |
-| macOS   | `podman machine start` (create it once with `podman machine init`) | `open -a Docker`, then poll `timeout 10 docker info` until it responds (give up after ~2 min)                                        |
-| Linux   | Nothing to start (daemonless) — rootless works out of the box      | `sudo systemctl start docker` (enable at boot: `sudo systemctl enable docker`)                                                       |
+| macOS   | `podman machine start` (create it once with `podman machine init`) | `open -a Docker`, then poll `timeout 10 docker info` until it responds (give up after ~2 min)                                                                          |
+| Linux   | Nothing to start (daemonless) — rootless works out of the box      | `sudo systemctl start docker` (enable at boot: `sudo systemctl enable docker`)                                                                                         |
 
 ## Install an engine (ask the user first, prefer podman)
 

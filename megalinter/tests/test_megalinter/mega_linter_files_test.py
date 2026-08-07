@@ -8,7 +8,6 @@ import unittest
 from unittest.mock import MagicMock, patch
 
 import git
-
 from megalinter import config
 from megalinter.MegaLinter import GIT_LS_FILES_TIMEOUT_SECONDS, Megalinter
 
