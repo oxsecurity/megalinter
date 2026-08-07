@@ -65,7 +65,7 @@ Tip: for repeated local runs (e.g. fix → re-check loops), install the runner o
 Local runs can hang for environmental reasons (engine backend down, Windows bind-mount stalls - see below), so give **every** local invocation (prerun, full run, targeted re-check) an explicit bound:
 
 1. Prefer the runner's own flag when available: check `npx mega-linter-runner --help` for `--timeout`, and pass `--timeout <seconds>` if listed - on expiry it also stops and removes the container. Do not assume it exists (older runner versions / pinned `MEGALINTER_VERSION`).
-2. Fallback: wrap with the shell coreutil - `timeout <seconds> npx mega-linter-runner ...`. This kills the wrapper only, **not** the container: after it fires, do the orphan cleanup below.
+2. Fallback: wrap with the shell coreutils command - `timeout <seconds> npx mega-linter-runner ...`. This kills the wrapper only, **not** the container: after it fires, do the orphan cleanup below.
 3. Launch in the background with output going to a log file and check it every 1-2 minutes; never sit in a single indefinite blocking call.
 
 Suggested bounds: **full run 30 min**, **prerun or targeted single-linter run 10 min** - a full flavor run on a mid-size repo normally takes minutes, not hours. First run on a machine: pre-pull the image separately (`docker pull <image>` / `podman pull <image>`) so the multi-GB download does not eat the bound.

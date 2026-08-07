@@ -182,21 +182,18 @@ class LinterTimeoutExecutionTest(unittest.TestCase):
         self.assertEqual(return_code, 0)
         self.assertIn("quick run ok", return_stdout)
 
-    def test_posix_kills_whole_process_group(self):
-        # On POSIX, the child must be started in its own process group
-        # (start_new_session=True) and the whole group must be killed with
-        # SIGKILL on timeout, so linter worker sub-processes can't survive
-        linter = build_linter(self.request_id)
-        linter.timeout_seconds = 1
-        linter.timeout_config_var = "LINTER_TIMEOUT_SECONDS"
+    def _fake_timed_out_process(self, second_communicate_result):
         fake_process = MagicMock()
         fake_process.pid = 4242
         fake_process.communicate.side_effect = [
             subprocess.TimeoutExpired(cmd="checkov", timeout=1),
-            (b"partial output before kill", None),
+            second_communicate_result,
         ]
+        return fake_process
+
+    def _run_timed_out_subprocess(self, linter, fake_process, os_name):
         with (
-            patch("megalinter.Linter.os.name", "posix"),
+            patch("megalinter.Linter.os.name", os_name),
             patch(
                 "megalinter.Linter.subprocess.Popen", return_value=fake_process
             ) as popen_mock,
@@ -207,6 +204,21 @@ class LinterTimeoutExecutionTest(unittest.TestCase):
                 ["checkov", "-d", "."], {"cwd": ".", "env": {}}
             )
         self.assertEqual(return_code, 124)
+        return return_stdout, popen_mock, killpg_mock
+
+    def test_posix_kills_whole_process_group(self):
+        # On POSIX, the child must be started in its own process group
+        # (start_new_session=True) and the whole group must be killed with
+        # SIGKILL on timeout, so linter worker sub-processes can't survive
+        linter = build_linter(self.request_id)
+        linter.timeout_seconds = 1
+        linter.timeout_config_var = "LINTER_TIMEOUT_SECONDS"
+        fake_process = self._fake_timed_out_process(
+            (b"partial output before kill", None)
+        )
+        return_stdout, popen_mock, killpg_mock = self._run_timed_out_subprocess(
+            linter, fake_process, "posix"
+        )
         self.assertTrue(popen_mock.call_args.kwargs.get("start_new_session"))
         # 9 == SIGKILL (signal.SIGKILL doesn't exist on Windows dev machines)
         killpg_mock.assert_called_once_with(4242, getattr(signal, "SIGKILL", 9))
@@ -218,23 +230,10 @@ class LinterTimeoutExecutionTest(unittest.TestCase):
         # Fallback outside POSIX: no process group, direct child kill only
         linter = build_linter(self.request_id)
         linter.timeout_seconds = 1
-        fake_process = MagicMock()
-        fake_process.pid = 4242
-        fake_process.communicate.side_effect = [
-            subprocess.TimeoutExpired(cmd="checkov", timeout=1),
-            (None, None),
-        ]
-        with (
-            patch("megalinter.Linter.os.name", "nt"),
-            patch(
-                "megalinter.Linter.subprocess.Popen", return_value=fake_process
-            ) as popen_mock,
-            patch("megalinter.Linter.os.killpg", create=True) as killpg_mock,
-        ):
-            return_code, return_stdout = linter._run_lint_subprocess(
-                ["checkov", "-d", "."], {"cwd": ".", "env": {}}
-            )
-        self.assertEqual(return_code, 124)
+        fake_process = self._fake_timed_out_process((None, None))
+        return_stdout, popen_mock, killpg_mock = self._run_timed_out_subprocess(
+            linter, fake_process, "nt"
+        )
         self.assertNotIn("start_new_session", popen_mock.call_args.kwargs)
         killpg_mock.assert_not_called()
         fake_process.kill.assert_called_once()

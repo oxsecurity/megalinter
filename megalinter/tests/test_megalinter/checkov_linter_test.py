@@ -53,16 +53,21 @@ class CheckovLinterTest(unittest.TestCase):
     def tearDown(self):
         config.delete(self.request_id)
 
+    def _lint_command_with_betterleaks(self, checkov):
+        checkov.master = _master_with_active_linters(
+            ["REPOSITORY_CHECKOV", "REPOSITORY_BETTERLEAKS"]
+        )
+        return checkov.build_lint_command()
+
+    def _assert_single_skip_framework(self, cmd, expected_value):
+        self.assertEqual(cmd.count("--skip-framework"), 1)
+        self.assertEqual(cmd[cmd.index("--skip-framework") + 1], expected_value)
+
     def test_skip_framework_added_when_secret_scanner_active(self):
         with tempfile.TemporaryDirectory() as workspace:
             checkov = _build_checkov_linter(self.request_id, workspace)
-            checkov.master = _master_with_active_linters(
-                ["REPOSITORY_CHECKOV", "REPOSITORY_BETTERLEAKS"]
-            )
-            cmd = checkov.build_lint_command()
-            self.assertEqual(cmd.count("--skip-framework"), 1)
-            skip_value = cmd[cmd.index("--skip-framework") + 1]
-            self.assertEqual(skip_value, "secrets")
+            cmd = self._lint_command_with_betterleaks(checkov)
+            self._assert_single_skip_framework(cmd, "secrets")
 
     def test_skip_framework_added_for_each_dedicated_secret_scanner(self):
         for scanner in [
@@ -107,13 +112,8 @@ class CheckovLinterTest(unittest.TestCase):
                 workspace,
                 {"REPOSITORY_CHECKOV_ARGUMENTS": "--skip-framework dockerfile"},
             )
-            checkov.master = _master_with_active_linters(
-                ["REPOSITORY_CHECKOV", "REPOSITORY_BETTERLEAKS"]
-            )
-            cmd = checkov.build_lint_command()
-            self.assertEqual(cmd.count("--skip-framework"), 1)
-            skip_value = cmd[cmd.index("--skip-framework") + 1]
-            self.assertEqual(skip_value, "dockerfile")
+            cmd = self._lint_command_with_betterleaks(checkov)
+            self._assert_single_skip_framework(cmd, "dockerfile")
             self.assertNotIn("secrets", cmd)
 
     def test_user_framework_argument_wins(self):
