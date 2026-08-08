@@ -22,7 +22,7 @@ description: How to use kingfisher (configure, ignore files, ignore errors, help
 
 ## kingfisher documentation
 
-- Version in MegaLinter: **1.110.0**
+- Version in MegaLinter: **1.111.0**
 - Visit [Official Web Site](https://github.com/mongodb/kingfisher#readme){target=_blank}
 - See [How to disable kingfisher rules in files](https://mongodb.github.io/kingfisher/usage/advanced/?h=inline#inline-ignore-directives){target=_blank}
 - See [Index of problems detected by kingfisher](https://mongodb.github.io/kingfisher/rules/builtin-rules){target=_blank}
@@ -47,6 +47,7 @@ description: How to use kingfisher (configure, ignore files, ignore errors, help
 | REPOSITORY_KINGFISHER_UNSECURED_ENV_VARIABLES      | List of env variables explicitly not filtered before calling REPOSITORY_KINGFISHER and its pre/post commands                                                                                                        | None             |
 | REPOSITORY_KINGFISHER_DISABLE_ERRORS               | Run linter but consider errors as warnings                                                                                                                                                                          | `false`          |
 | REPOSITORY_KINGFISHER_DISABLE_ERRORS_IF_LESS_THAN  | Maximum number of errors allowed                                                                                                                                                                                    | `0`              |
+| REPOSITORY_KINGFISHER_TIMEOUT_SECONDS              | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout | `300`            |
 | REPOSITORY_KINGFISHER_CLI_EXECUTABLE               | Override CLI executable                                                                                                                                                                                             | `['kingfisher']` |
 
 ## MegaLinter Flavors
@@ -124,7 +125,7 @@ Global Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=github-tags depName=mongodb/kingfisher
-ARG REPOSITORY_KINGFISHER_VERSION=1.110.0
+ARG REPOSITORY_KINGFISHER_VERSION=1.111.0
 RUN curl --silent --location https://raw.githubusercontent.com/mongodb/kingfisher/main/scripts/install-kingfisher.sh | bash -s -- /usr/local/bin --tag "v${REPOSITORY_KINGFISHER_VERSION}"
 
 ```

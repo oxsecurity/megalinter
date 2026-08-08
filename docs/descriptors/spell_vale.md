@@ -24,7 +24,7 @@ MegaLinter analyze markdown and restructuredText files by default, you can chang
 
 ## vale documentation
 
-- Version in MegaLinter: **3.17.0**
+- Version in MegaLinter: **3.17.1**
 - Visit [Official Web Site](https://vale.sh/){target=_blank}
 - See [How to configure vale rules](https://vale.sh/explorer/){target=_blank}
 - See [How to disable vale rules in files](https://vale.sh/docs/topics/vocab/){target=_blank}
@@ -54,6 +54,7 @@ MegaLinter analyze markdown and restructuredText files by default, you can chang
 | SPELL_VALE_RULES_PATH                   | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | SPELL_VALE_DISABLE_ERRORS               | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | SPELL_VALE_DISABLE_ERRORS_IF_LESS_THAN  | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| SPELL_VALE_TIMEOUT_SECONDS              | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout | `300`                                           |
 | SPELL_VALE_CLI_EXECUTABLE               | Override CLI executable                                                                                                                                                                                             | `['vale']`                                      |
 
 ## IDE Integration
@@ -170,7 +171,7 @@ Commands:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=jdkato/vale
-ARG SPELL_VALE_VERSION=v3.17.0
+ARG SPELL_VALE_VERSION=v3.17.1
 FROM jdkato/vale:${SPELL_VALE_VERSION} AS vale
 COPY --link --from=vale /bin/vale /bin/vale
 ```

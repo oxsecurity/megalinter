@@ -24,7 +24,7 @@ RoboCop is a linter and code formatter for the Robot Framework. It helps maintai
 
 ## robocop documentation
 
-- Version in MegaLinter: **8.5.0**
+- Version in MegaLinter: **8.6.0**
 - Visit [Official Web Site](https://github.com/MarketSquare/robotframework-robocop#readme){target=_blank}
 - See [How to configure robocop rules](https://robocop.dev/stable/configuration/){target=_blank}
 - See [How to disable robocop rules in files](https://robocop.dev/stable/configuration/disablers/){target=_blank}
@@ -56,6 +56,7 @@ RoboCop is a linter and code formatter for the Robot Framework. It helps maintai
 | ROBOTFRAMEWORK_ROBOCOP_RULES_PATH                   | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | ROBOTFRAMEWORK_ROBOCOP_DISABLE_ERRORS               | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | ROBOTFRAMEWORK_ROBOCOP_DISABLE_ERRORS_IF_LESS_THAN  | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| ROBOTFRAMEWORK_ROBOCOP_TIMEOUT_SECONDS              | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout | `300`                                           |
 | ROBOTFRAMEWORK_ROBOCOP_CLI_EXECUTABLE               | Override CLI executable                                                                                                                                                                                             | `['robocop']`                                   |
 
 ## IDE Integration
@@ -130,11 +131,11 @@ robocop check myfile.robot
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=robotframework-robocop
-ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=8.5.0
+ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=8.6.0
 ```
 
 - PIP packages (Python):
-  - [robotframework-robocop==8.5.0](https://pypi.org/project/robotframework-robocop/8.5.0)
+  - [robotframework-robocop==8.6.0](https://pypi.org/project/robotframework-robocop/8.6.0)
 
 ## Known errors and resolutions
 

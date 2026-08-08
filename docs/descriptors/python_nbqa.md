@@ -56,6 +56,7 @@ description: How to use nbqa (configure, ignore files, ignore errors, help & ver
 | PYTHON_NBQA_MYPY_UNSECURED_ENV_VARIABLES      | List of env variables explicitly not filtered before calling PYTHON_NBQA_MYPY and its pre/post commands                                                                                                             | None               |
 | PYTHON_NBQA_MYPY_DISABLE_ERRORS               | Run linter but consider errors as warnings                                                                                                                                                                          | `false`            |
 | PYTHON_NBQA_MYPY_DISABLE_ERRORS_IF_LESS_THAN  | Maximum number of errors allowed                                                                                                                                                                                    | `0`                |
+| PYTHON_NBQA_MYPY_TIMEOUT_SECONDS              | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout | `300`              |
 | PYTHON_NBQA_MYPY_CLI_EXECUTABLE               | Override CLI executable                                                                                                                                                                                             | `['nbqa']`         |
 
 ## MegaLinter Flavors

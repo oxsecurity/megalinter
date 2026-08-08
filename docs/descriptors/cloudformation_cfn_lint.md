@@ -46,7 +46,7 @@ CFN-Lint helps ensure your CloudFormation templates are valid, secure, and follo
 
 ## cfn-lint documentation
 
-- Version in MegaLinter: **1.53.3**
+- Version in MegaLinter: **1.54.0**
 - Visit [Official Web Site](https://github.com/aws-cloudformation/cfn-lint#readme){target=_blank}
 - See [How to configure cfn-lint rules](https://github.com/aws-cloudformation/cfn-lint#configuration){target=_blank}
   - If custom `.cfnlintrc.yml` config file isn't found, [.cfnlintrc.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.cfnlintrc.yml){target=_blank} will be used
@@ -77,6 +77,7 @@ CFN-Lint helps ensure your CloudFormation templates are valid, secure, and follo
 | CLOUDFORMATION_CFN_LINT_RULES_PATH                   | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | CLOUDFORMATION_CFN_LINT_DISABLE_ERRORS               | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | CLOUDFORMATION_CFN_LINT_DISABLE_ERRORS_IF_LESS_THAN  | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| CLOUDFORMATION_CFN_LINT_TIMEOUT_SECONDS              | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout | `300`                                           |
 | CLOUDFORMATION_CFN_LINT_CLI_EXECUTABLE               | Override CLI executable                                                                                                                                                                                             | `['cfn-lint']`                                  |
 
 ## IDE Integration
@@ -207,11 +208,11 @@ Advanced / Debugging:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=cfn-lint
-ARG PIP_CFN_LINT_VERSION=1.53.3
+ARG PIP_CFN_LINT_VERSION=1.54.0
 ```
 
 - PIP packages (Python):
-  - [cfn-lint[sarif]==1.53.3](https://pypi.org/project/cfn-lint[sarif]/1.53.3)
+  - [cfn-lint[sarif]==1.54.0](https://pypi.org/project/cfn-lint[sarif]/1.54.0)
 
 ## Known errors and resolutions
 

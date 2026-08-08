@@ -28,7 +28,7 @@ description: How to use sqlfluff (configure, ignore files, ignore errors, help &
 
 ## sqlfluff documentation
 
-- Version in MegaLinter: **4.2.2**
+- Version in MegaLinter: **4.3.0**
 - Visit [Official Web Site](https://www.sqlfluff.com/){target=_blank}
 - See [How to configure sqlfluff rules](https://docs.sqlfluff.com/en/stable/configuration/index.html){target=_blank}
   - If custom `.sqlfluff` config file isn't found, [.sqlfluff](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.sqlfluff){target=_blank} will be used
@@ -60,6 +60,7 @@ description: How to use sqlfluff (configure, ignore files, ignore errors, help &
 | SQL_SQLFLUFF_RULES_PATH                   | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | SQL_SQLFLUFF_DISABLE_ERRORS               | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | SQL_SQLFLUFF_DISABLE_ERRORS_IF_LESS_THAN  | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| SQL_SQLFLUFF_TIMEOUT_SECONDS              | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout | `300`                                           |
 | SQL_SQLFLUFF_CLI_EXECUTABLE               | Override CLI executable                                                                                                                                                                                             | `['sqlfluff']`                                  |
 
 ## MegaLinter Flavors
@@ -151,11 +152,11 @@ Commands:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=sqlfluff
-ARG PIP_SQLFLUFF_VERSION=4.2.2
+ARG PIP_SQLFLUFF_VERSION=4.3.0
 ```
 
 - PIP packages (Python):
-  - [sqlfluff==4.2.2](https://pypi.org/project/sqlfluff/4.2.2)
+  - [sqlfluff==4.3.0](https://pypi.org/project/sqlfluff/4.3.0)
 
 ## Known errors and resolutions
 

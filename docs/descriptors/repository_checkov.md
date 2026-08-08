@@ -26,6 +26,8 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
 - **Policy Suppression**: Granular control over policy enforcement with inline and configuration-based suppression
 - **Graph-Based Analysis**: Advanced analysis using dependency graphs for complex infrastructure relationships
 
+When another active linter of the same MegaLinter run is a dedicated secret scanner ([betterleaks](https://megalinter.io/latest/descriptors/repository_betterleaks/), [kingfisher](https://megalinter.io/latest/descriptors/repository_kingfisher/), [secretlint](https://megalinter.io/latest/descriptors/repository_secretlint/) or [trufflehog](https://megalinter.io/latest/descriptors/repository_trufflehog/)), MegaLinter automatically adds `--skip-framework secrets` to the checkov command, so the secrets scan is not duplicated. Define `--framework` or `--skip-framework` in `REPOSITORY_CHECKOV_ARGUMENTS` or in your checkov config file to override this behavior.
+
 ## checkov documentation
 
 - Version in MegaLinter: **3.3.9**
@@ -57,6 +59,7 @@ description: How to use checkov (configure, ignore files, ignore errors, help & 
 | REPOSITORY_CHECKOV_RULES_PATH                   | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | REPOSITORY_CHECKOV_DISABLE_ERRORS               | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | REPOSITORY_CHECKOV_DISABLE_ERRORS_IF_LESS_THAN  | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| REPOSITORY_CHECKOV_TIMEOUT_SECONDS              | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout | `300`                                           |
 | REPOSITORY_CHECKOV_CLI_EXECUTABLE               | Override CLI executable                                                                                                                                                                                             | `['checkov']`                                   |
 
 ## MegaLinter Flavors
@@ -144,7 +147,7 @@ usage: checkov [-h] [-v] [--support] [-d DIRECTORY] [--add-check]
                [--secrets-scan-file-type SECRETS_SCAN_FILE_TYPE]
                [--enable-secret-scan-all-files]
                [--block-list-secret-scan BLOCK_LIST_SECRET_SCAN]
-               [--summary-position {bottom,top}]
+               [--summary-position {top,bottom}]
                [--skip-resources-without-violations] [--deep-analysis]
                [--no-fail-on-crash] [--mask MASK] [--scan-secrets-history]
                [--secrets-history-timeout SECRETS_HISTORY_TIMEOUT]
@@ -470,7 +473,7 @@ options:
   --block-list-secret-scan BLOCK_LIST_SECRET_SCAN
                         List of files to filter out from the secret scanner
                         [env var: CKV_SECRETS_SCAN_BLOCK_LIST]
-  --summary-position {bottom,top}
+  --summary-position {top,bottom}
                         Chose whether the summary will be appended on top
                         (before the checks results) or on bottom (after check
                         results), default is on top.

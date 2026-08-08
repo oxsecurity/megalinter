@@ -85,12 +85,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Set the new `VERSION_GET_AT_RUNTIME: true` variable if your `PRE_COMMANDS` install different linter versions and you want the really installed versions reported
   - **Faster linting when fixes are applied** (`APPLY_FIXES`): the check-only linters of a language now run in parallel as soon as its fixer linters are done, instead of all linters of the language running one after another
   - **Faster standalone images and file-list runs**: `megalinter-only-*` images only parse the descriptor of their single linter, and the repository-wide `.gitignore` enumeration is skipped when an explicit list of files is passed (e.g. `mega-linter-runner [files...]` on a large repository)
-  - **Runtime speed-ups combined**, measured linting the MegaLinter repository itself:
+  - **Runtime speed-ups combined**, measured on the MegaLinter repository itself and on real-world repositories upgraded to this version (average of the last successful CI runs before / first CI runs after the upgrade):
 
-    | Measure                                          | Before | After | Delta |
-    |--------------------------------------------------|-------:|------:|------:|
-    | Full MegaLinter run (all linters, fixes applied) |  4m26s | 3m18s |  -26% |
-    | MegaLinter startup (`import megalinter`)         |    ~7s | ~0.9s |  -87% |
+    | Measure                                                                                                                 | Before | After | Delta |
+    |-------------------------------------------------------------------------------------------------------------------------|-------:|------:|------:|
+    | MegaLinter repository: full run (all linters, fixes applied)                                                            |  4m26s | 3m18s |  -26% |
+    | MegaLinter startup (`import megalinter`)                                                                                |    ~7s | ~0.9s |  -87% |
+    | [sfdx-hardis](https://github.com/hardisgroupcom/sfdx-hardis) CI MegaLinter job (v9.6.0 → beta, javascript flavor)       |  6m02s | 3m17s |  -45% |
+    | [vscode-sfdx-hardis](https://github.com/hardisgroupcom/vscode-sfdx-hardis) CI MegaLinter job (late-July → current beta) |  3m10s | 2m34s |  -19% |
 
   - **Better secrets masking in logs**, now powered by the [betterleaks](https://github.com/betterleaks/betterleaks) ruleset: redaction coverage nearly doubles (218 to 408 patterns), with no more network call at startup
   - `FILTER_REGEX_INCLUDE` and `FILTER_REGEX_EXCLUDE` (global, per-descriptor and per-linter) can now be defined as **a list of regexes** combined with a logical OR, so filter regexes can be appended across `EXTENDS` configs via `CONFIG_PROPERTIES_TO_APPEND`; single-string values remain fully supported, fixes [#8361](https://github.com/oxsecurity/megalinter/issues/8361)
@@ -132,6 +134,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Fixes
 
+  - Stop **`FutureWarning: Possible nested set` warnings** appearing in the console at startup: a **secret-masking** regex used a POSIX character class (`[[:alnum:]]`) unsupported by Python. Such classes are now translated, which also makes the affected masking rule (Airtable personal access tokens) actually match
   - Restore **multi-arch `megalinter-only-*` Docker images**: they were mistakenly published for a single architecture, linux/amd64 + linux/arm64 are back
   - Fix linters relying on other linters' file lists (e.g. `SPELL_CSPELL`) **linting zero files** when run through their standalone `megalinter-only-*` Docker image
   - Fix **`LINTER_RULES_PATH`** not being used to resolve config files for linters using `active_only_if_file_found` (e.g. `REPOSITORY_LS_LINT`, `SPELL_PROSELINT`, `SPELL_VALE`), fixes [#8416](https://github.com/oxsecurity/megalinter/issues/8416)
@@ -171,6 +174,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **megalinter-setup skill**: after install or upgrade, suggest either running MegaLinter locally or creating a pull request and then watching its CI results with megalinter-check
   - **megalinter-check skill**: the first local run now starts with a `--prerun` analysis, so the user can validate the suggested `.mega-linter.yml` performance tuning before the real lint
   - **megalinter-check skill and watcher/runner sub-agents**: the console tips MegaLinter prints (performance warnings, flavor suggestions, `[Activation]` notices, deprecations) are now extracted from the persisted log file and returned to the calling agent in a `tips` field, instead of being lost when reading only the JSON report
+  - **Custom Flavors**: new [Licensing](https://megalinter.io/beta/custom-flavors/#licensing) section — a custom flavor is still MegaLinter, so your flavor repository and the image it publishes are covered by **AGPL-3.0**. Add an `AGPL-3.0` `LICENSE` file to your flavor repository and keep the link to the MegaLinter source in its README, fixes [#8681](https://github.com/oxsecurity/megalinter/issues/8681)
   - Fix outdated links in `docs/descriptors/repository_kingfisher.md`
 
 - mega-linter-runner
@@ -189,6 +193,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - New **`--timeout <seconds>`** option (`-t`): bound the whole run; on expiration the runner prints the container's last log lines, stops and removes the container (no orphan left behind, even on Windows where killing the CLI process does not stop the container), and exits with code 124
   - **Skip `docker pull`** when the requested version is a pinned release tag (`vX.Y.Z`, immutable) and the image is already available locally, removing a useless registry round-trip
   - Print a hint before mounting the workspace when it contains **well-known heavy folders** (build caches, package stores), pointing at `SKIP_CLI_LINT_MODES=project` to keep local runs fast
+  - **`--custom-flavor-setup`**: the generated README now has a **License** section stating the flavor is covered by **AGPL-3.0**, with a link to the MegaLinter source repository
   - **`--custom-flavor-setup` now generates a MegaLinter-clean repository**, so a new custom flavor repo starts green instead of failing its own first MegaLinter run, fixes [#8680](https://github.com/oxsecurity/megalinter/issues/8680)
     - The generated workflows and README now pass **actionlint**, **zizmor**, **editorconfig-checker** and **markdownlint**
     - Actions used by the generated workflows are **hash-pinned**, and a **`.github/zizmor.yml`** is generated to waive the one deliberate exception: the flavor builder tracks `@main` so your image is always built by the builder matching the MegaLinter release you target
@@ -372,6 +377,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 2.2.7 to **2.2.8** on 2026-08-05
   - [rumdl](https://github.com/rvben/rumdl) from 0.2.50 to **0.2.52** on 2026-08-06
   - [checkov](https://www.checkov.io/) from 3.3.8 to **3.3.9** on 2026-08-06
+  - [phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer) from 4.0.1 to **4.0.4** on 2026-08-07
+  - [vale](https://vale.sh/) from 3.17.0 to **3.17.1** on 2026-08-07
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.53.3 to **1.54.0** on 2026-08-07
+  - [djlint](https://djlint.com/) from 1.43.2 to **1.44.1** on 2026-08-07
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.16.1 to **0.16.2** on 2026-08-07
+  - [ruff](https://github.com/astral-sh/ruff) from 0.16.1 to **0.16.2** on 2026-08-07
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.110.0 to **1.111.0** on 2026-08-07
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 8.5.0 to **8.6.0** on 2026-08-07
+  - [snakemake](https://snakemake.github.io/) from 9.24.0 to **9.25.1** on 2026-08-07
+  - [sqlfluff](https://www.sqlfluff.com/) from 4.2.2 to **4.3.0** on 2026-08-07
 <!-- linter-versions-end -->
 
 ## [v9.6.0] - 2026-06-28

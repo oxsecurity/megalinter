@@ -61,7 +61,6 @@ description: List of common variables that you can use to customize MegaLinter b
 | **TYPESCRIPT_DEFAULT_STYLE**                                      | `standard`                                    | Typescript default style to check/apply. `standard`,`prettier`                                                                                                                                                                                                                                                                                 |
 | **VALIDATE_ALL_CODEBASE**                                         | `true`                                        | Will parse the entire repository and find all files to validate across all types. **NOTE:** When set to `false`, only **new** or **edited** files will be parsed for validation.                                                                                                                                                               |
 
-
 ## Linters timeout
 
 By default, a linter still running after **5 minutes** (`LINTER_TIMEOUT_SECONDS: 300`) is killed with all its child processes and reported as an error (exit code 124), while the other linters keep running. Raise the limit, override it per linter, or disable it with `0`:
@@ -73,5 +72,6 @@ SPELL_LYCHEE_TIMEOUT_SECONDS: 0 # No timeout for this linter
 ```
 
 A timeout hit with very low CPU usage usually means an I/O stall (for example a workspace bind-mounted from Windows into a WSL2-backed container engine), not a repository that really needs more time.
+
 
 <!-- config-variables-section-end -->

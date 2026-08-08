@@ -56,6 +56,7 @@ description: How to use perlcritic (configure, ignore files, ignore errors, help
 | PERL_PERLCRITIC_UNSECURED_ENV_VARIABLES      | List of env variables explicitly not filtered before calling PERL_PERLCRITIC and its pre/post commands                                                                                                              | None                       |
 | PERL_PERLCRITIC_DISABLE_ERRORS               | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                    |
 | PERL_PERLCRITIC_DISABLE_ERRORS_IF_LESS_THAN  | Maximum number of errors allowed                                                                                                                                                                                    | `0`                        |
+| PERL_PERLCRITIC_TIMEOUT_SECONDS              | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout | `300`                      |
 | PERL_PERLCRITIC_CLI_EXECUTABLE               | Override CLI executable                                                                                                                                                                                             | `['perlcritic']`           |
 
 ## MegaLinter Flavors

@@ -19,7 +19,7 @@ description: How to use ruff-format (configure, ignore files, ignore errors, hel
 
 ## ruff-format documentation
 
-- Version in MegaLinter: **0.16.1**
+- Version in MegaLinter: **0.16.2**
 - Visit [Official Web Site](https://github.com/astral-sh/ruff#readme){target=_blank}
 - See [How to configure ruff-format rules](https://docs.astral.sh/ruff/configuration/){target=_blank}
   - If custom `.ruff.toml` config file isn't found, [.ruff.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruff.toml){target=_blank} will be used
@@ -51,6 +51,7 @@ description: How to use ruff-format (configure, ignore files, ignore errors, hel
 | PYTHON_RUFF_FORMAT_RULES_PATH                   | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | PYTHON_RUFF_FORMAT_DISABLE_ERRORS               | Run linter but consider errors as warnings                                                                                                                                                                          | `true`                                          |
 | PYTHON_RUFF_FORMAT_DISABLE_ERRORS_IF_LESS_THAN  | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| PYTHON_RUFF_FORMAT_TIMEOUT_SECONDS              | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout | `300`                                           |
 | PYTHON_RUFF_FORMAT_CLI_EXECUTABLE               | Override CLI executable                                                                                                                                                                                             | `['ruff']`                                      |
 
 ## IDE Integration
@@ -163,8 +164,8 @@ For help with a specific command, see: `ruff help <command>`.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.16.1
+ARG PIP_RUFF_VERSION=0.16.2
 ```
 
 - PIP packages (Python):
-  - [ruff==0.16.1](https://pypi.org/project/ruff/0.16.1)
+  - [ruff==0.16.2](https://pypi.org/project/ruff/0.16.2)

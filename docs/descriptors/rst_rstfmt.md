@@ -51,6 +51,7 @@ description: How to use rstfmt (configure, ignore files, ignore errors, help & v
 | RST_RSTFMT_UNSECURED_ENV_VARIABLES      | List of env variables explicitly not filtered before calling RST_RSTFMT and its pre/post commands                                                                                                                   | None               |
 | RST_RSTFMT_DISABLE_ERRORS               | Run linter but consider errors as warnings                                                                                                                                                                          | `true`             |
 | RST_RSTFMT_DISABLE_ERRORS_IF_LESS_THAN  | Maximum number of errors allowed                                                                                                                                                                                    | `0`                |
+| RST_RSTFMT_TIMEOUT_SECONDS              | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout | `300`              |
 | RST_RSTFMT_CLI_EXECUTABLE               | Override CLI executable                                                                                                                                                                                             | `['rstfmt']`       |
 
 ## MegaLinter Flavors

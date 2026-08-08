@@ -171,7 +171,7 @@ ARG POWERSHELL_VERSION=7.6.4
 # renovate: datasource=npm depName=@salesforce/cli
 ARG NPM_SALESFORCE_CLI_VERSION=2.146.3
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=2.30.6
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=3.0.0
 # renovate: datasource=npm depName=sfdx-hardis
 ARG SFDX_HARDIS_VERSION=7.23.0
 # renovate: datasource=github-tags depName=coursier/coursier
@@ -418,7 +418,7 @@ ARG PIP_YAMLLINT_VERSION=1.38.0
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=26.2.1
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=21.7.1
+ARG PIP_VIRTUALENV_VERSION=21.7.2
 # renovate: datasource=github-tags depName=rust-lang/rust
 ARG RUST_RUST_VERSION=1.97.1
 

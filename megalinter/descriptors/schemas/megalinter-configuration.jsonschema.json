@@ -828,6 +828,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "ACTION_ACTIONLINT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/ACTION_ACTIONLINT_TIMEOUT_SECONDS",
+      "description": "ACTION_ACTIONLINT: Maximum duration in seconds of the ACTION_ACTIONLINT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "ACTION_ACTIONLINT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "ACTION_ACTIONLINT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "ACTION_ACTIONLINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/ACTION_ACTIONLINT_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -1150,6 +1163,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "ACTION_ZIZMOR_TIMEOUT_SECONDS": {
+      "$id": "#/properties/ACTION_ZIZMOR_TIMEOUT_SECONDS",
+      "description": "ACTION_ZIZMOR: Maximum duration in seconds of the ACTION_ZIZMOR run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "ACTION_ZIZMOR: Timeout in seconds",
+      "type": "integer",
+      "x-category": "ACTION_ZIZMOR",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "ACTION_ZIZMOR_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/ACTION_ZIZMOR_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -1427,6 +1453,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "ANSIBLE_ANSIBLE_LINT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_TIMEOUT_SECONDS",
+      "description": "ANSIBLE_ANSIBLE_LINT: Maximum duration in seconds of the ANSIBLE_ANSIBLE_LINT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "ANSIBLE_ANSIBLE_LINT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "ANSIBLE_ANSIBLE_LINT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "ANSIBLE_ANSIBLE_LINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -1605,8 +1644,9 @@
     "API_REPORTER": {
       "$id": "#/properties/API_REPORTER",
       "default": false,
+      "deprecated": true,
       "description": "Sends MegaLinter results (payload v2: run KPIs, linters, top rules & files) to observability backends. Configure the target(s) with API_REPORTER_PROVIDER and the provider variables",
-      "title": "Activate API reporter (observability: Grafana, Datadog, Elastic, New Relic)",
+      "title": "(deprecated) Activate API reporter (observability: Grafana, Datadog, Elastic, New Relic)",
       "type": "boolean",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1615,7 +1655,8 @@
     },
     "API_REPORTER_BASIC_AUTH_PASSWORD": {
       "$id": "#/properties/API_REPORTER_BASIC_AUTH_PASSWORD",
-      "title": "API reporter (grafana): logs endpoint basic auth password. Never hardcode it in a config variable, use secrets and context variables",
+      "deprecated": true,
+      "title": "(deprecated) API reporter (grafana): logs endpoint basic auth password. Never hardcode it in a config variable, use secrets and context variables",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1624,7 +1665,8 @@
     },
     "API_REPORTER_BASIC_AUTH_USERNAME": {
       "$id": "#/properties/API_REPORTER_BASIC_AUTH_USERNAME",
-      "title": "API reporter (grafana): logs endpoint basic auth username. Use secrets and context variables",
+      "deprecated": true,
+      "title": "(deprecated) API reporter (grafana): logs endpoint basic auth username. Use secrets and context variables",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1633,7 +1675,8 @@
     },
     "API_REPORTER_BEARER_TOKEN": {
       "$id": "#/properties/API_REPORTER_BEARER_TOKEN",
-      "title": "API reporter (grafana): logs endpoint bearer token. Never hardcode it in a config variable, use secrets and context variables",
+      "deprecated": true,
+      "title": "(deprecated) API reporter (grafana): logs endpoint bearer token. Never hardcode it in a config variable, use secrets and context variables",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1642,7 +1685,8 @@
     },
     "API_REPORTER_DATADOG_API_KEY": {
       "$id": "#/properties/API_REPORTER_DATADOG_API_KEY",
-      "title": "API reporter (datadog): Datadog API key. Never hardcode it in a config variable, use secrets and context variables",
+      "deprecated": true,
+      "title": "(deprecated) API reporter (datadog): Datadog API key. Never hardcode it in a config variable, use secrets and context variables",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1651,7 +1695,8 @@
     },
     "API_REPORTER_DATADOG_BEARER_TOKEN": {
       "$id": "#/properties/API_REPORTER_DATADOG_BEARER_TOKEN",
-      "title": "API reporter (datadog): Datadog bearer token (service account), used when no API key is defined. Never hardcode it in a config variable, use secrets and context variables",
+      "deprecated": true,
+      "title": "(deprecated) API reporter (datadog): Datadog bearer token (service account), used when no API key is defined. Never hardcode it in a config variable, use secrets and context variables",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1660,7 +1705,8 @@
     },
     "API_REPORTER_DATADOG_SITE": {
       "$id": "#/properties/API_REPORTER_DATADOG_SITE",
-      "title": "API reporter (datadog): Datadog site (datadoghq.com, datadoghq.eu, us3.datadoghq.com...)",
+      "deprecated": true,
+      "title": "(deprecated) API reporter (datadog): Datadog site (datadoghq.com, datadoghq.eu, us3.datadoghq.com...)",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1670,7 +1716,8 @@
     "API_REPORTER_DEBUG": {
       "$id": "#/properties/API_REPORTER_DEBUG",
       "default": false,
-      "title": "API reporter: log the payloads sent to the providers",
+      "deprecated": true,
+      "title": "(deprecated) API reporter: log the payloads sent to the providers",
       "type": "boolean",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1680,7 +1727,8 @@
     "API_REPORTER_DETAILS": {
       "$id": "#/properties/API_REPORTER_DETAILS",
       "default": true,
-      "title": "API reporter: include per-rule and per-file breakdowns (parsed from SARIF output) in the payload",
+      "deprecated": true,
+      "title": "(deprecated) API reporter: include per-rule and per-file breakdowns (parsed from SARIF output) in the payload",
       "type": "boolean",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1689,7 +1737,8 @@
     },
     "API_REPORTER_ELASTIC_API_KEY": {
       "$id": "#/properties/API_REPORTER_ELASTIC_API_KEY",
-      "title": "API reporter (elastic): Elasticsearch API key. Never hardcode it in a config variable, use secrets and context variables",
+      "deprecated": true,
+      "title": "(deprecated) API reporter (elastic): Elasticsearch API key. Never hardcode it in a config variable, use secrets and context variables",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1698,7 +1747,8 @@
     },
     "API_REPORTER_ELASTIC_INDEX_PREFIX": {
       "$id": "#/properties/API_REPORTER_ELASTIC_INDEX_PREFIX",
-      "title": "API reporter (elastic): prefix of the megalinter-* indexes",
+      "deprecated": true,
+      "title": "(deprecated) API reporter (elastic): prefix of the megalinter-* indexes",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1707,7 +1757,8 @@
     },
     "API_REPORTER_ELASTIC_URL": {
       "$id": "#/properties/API_REPORTER_ELASTIC_URL",
-      "title": "API reporter (elastic): Elasticsearch endpoint URL",
+      "deprecated": true,
+      "title": "(deprecated) API reporter (elastic): Elasticsearch endpoint URL",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1716,7 +1767,8 @@
     },
     "API_REPORTER_METRICS_BASIC_AUTH_PASSWORD": {
       "$id": "#/properties/API_REPORTER_METRICS_BASIC_AUTH_PASSWORD",
-      "title": "API reporter (grafana): metrics endpoint basic auth password. Never hardcode it in a config variable, use secrets and context variables",
+      "deprecated": true,
+      "title": "(deprecated) API reporter (grafana): metrics endpoint basic auth password. Never hardcode it in a config variable, use secrets and context variables",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1725,7 +1777,8 @@
     },
     "API_REPORTER_METRICS_BASIC_AUTH_USERNAME": {
       "$id": "#/properties/API_REPORTER_METRICS_BASIC_AUTH_USERNAME",
-      "title": "API reporter (grafana): metrics endpoint basic auth username. Use secrets and context variables",
+      "deprecated": true,
+      "title": "(deprecated) API reporter (grafana): metrics endpoint basic auth username. Use secrets and context variables",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1734,7 +1787,8 @@
     },
     "API_REPORTER_METRICS_BEARER_TOKEN": {
       "$id": "#/properties/API_REPORTER_METRICS_BEARER_TOKEN",
-      "title": "API reporter (grafana): metrics endpoint bearer token. Never hardcode it in a config variable, use secrets and context variables",
+      "deprecated": true,
+      "title": "(deprecated) API reporter (grafana): metrics endpoint bearer token. Never hardcode it in a config variable, use secrets and context variables",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1743,7 +1797,8 @@
     },
     "API_REPORTER_METRICS_URL": {
       "$id": "#/properties/API_REPORTER_METRICS_URL",
-      "title": "API reporter (grafana): metrics endpoint URL (e.g. Grafana Cloud Influx write URL)",
+      "deprecated": true,
+      "title": "(deprecated) API reporter (grafana): metrics endpoint URL (e.g. Grafana Cloud Influx write URL)",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1752,7 +1807,8 @@
     },
     "API_REPORTER_NEWRELIC_LICENSE_KEY": {
       "$id": "#/properties/API_REPORTER_NEWRELIC_LICENSE_KEY",
-      "title": "API reporter (newrelic): New Relic license key (ingest). Never hardcode it in a config variable, use secrets and context variables",
+      "deprecated": true,
+      "title": "(deprecated) API reporter (newrelic): New Relic license key (ingest). Never hardcode it in a config variable, use secrets and context variables",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1761,7 +1817,8 @@
     },
     "API_REPORTER_NEWRELIC_REGION": {
       "$id": "#/properties/API_REPORTER_NEWRELIC_REGION",
-      "title": "API reporter (newrelic): New Relic region (US or EU)",
+      "deprecated": true,
+      "title": "(deprecated) API reporter (newrelic): New Relic region (US or EU)",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1770,7 +1827,8 @@
     },
     "API_REPORTER_ORG_IDENTIFIER": {
       "$id": "#/properties/API_REPORTER_ORG_IDENTIFIER",
-      "title": "API reporter: organization identifier added to all records",
+      "deprecated": true,
+      "title": "(deprecated) API reporter: organization identifier added to all records",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1779,7 +1837,8 @@
     },
     "API_REPORTER_PAYLOAD_FORMAT": {
       "$id": "#/properties/API_REPORTER_PAYLOAD_FORMAT",
-      "title": "API reporter (grafana): logs payload format (auto, loki or default)",
+      "deprecated": true,
+      "title": "(deprecated) API reporter (grafana): logs payload format (auto, loki or default)",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1788,8 +1847,9 @@
     },
     "API_REPORTER_PROVIDER": {
       "$id": "#/properties/API_REPORTER_PROVIDER",
+      "deprecated": true,
       "description": "Available providers: grafana (default, direct Loki/Prometheus push via API_REPORTER_URL and API_REPORTER_METRICS_URL), datadog, elastic, newrelic. Example: grafana,datadog",
-      "title": "API reporter: comma-separated list of target providers",
+      "title": "(deprecated) API reporter: comma-separated list of target providers",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1798,7 +1858,8 @@
     },
     "API_REPORTER_URL": {
       "$id": "#/properties/API_REPORTER_URL",
-      "title": "API reporter (grafana): logs endpoint URL (e.g. Loki push URL ending with /loki/api/v1/push)",
+      "deprecated": true,
+      "title": "(deprecated) API reporter (grafana): logs endpoint URL (e.g. Loki push URL ending with /loki/api/v1/push)",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -2304,6 +2365,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "ARM_ARM_TTK_TIMEOUT_SECONDS": {
+      "$id": "#/properties/ARM_ARM_TTK_TIMEOUT_SECONDS",
+      "description": "ARM_ARM_TTK: Maximum duration in seconds of the ARM_ARM_TTK run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "ARM_ARM_TTK: Timeout in seconds",
+      "type": "integer",
+      "x-category": "ARM_ARM_TTK",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "ARM_ARM_TTK_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/ARM_ARM_TTK_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -2626,6 +2700,19 @@
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
     },
+    "BASH_EXEC_TIMEOUT_SECONDS": {
+      "$id": "#/properties/BASH_EXEC_TIMEOUT_SECONDS",
+      "description": "BASH_EXEC: Maximum duration in seconds of the BASH_EXEC run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "BASH_EXEC: Timeout in seconds",
+      "type": "integer",
+      "x-category": "BASH_EXEC",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "BASH_EXEC_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/BASH_EXEC_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -2940,6 +3027,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "BASH_SHELLCHECK_TIMEOUT_SECONDS": {
+      "$id": "#/properties/BASH_SHELLCHECK_TIMEOUT_SECONDS",
+      "description": "BASH_SHELLCHECK: Maximum duration in seconds of the BASH_SHELLCHECK run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "BASH_SHELLCHECK: Timeout in seconds",
+      "type": "integer",
+      "x-category": "BASH_SHELLCHECK",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "BASH_SHELLCHECK_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/BASH_SHELLCHECK_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -3161,6 +3261,19 @@
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
     },
+    "BASH_SHFMT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/BASH_SHFMT_TIMEOUT_SECONDS",
+      "description": "BASH_SHFMT: Maximum duration in seconds of the BASH_SHFMT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "BASH_SHFMT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "BASH_SHFMT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "BASH_SHFMT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/BASH_SHFMT_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -3376,6 +3489,19 @@
       "x-category": "BICEP_BICEP_LINTER",
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
+    },
+    "BICEP_BICEP_LINTER_TIMEOUT_SECONDS": {
+      "$id": "#/properties/BICEP_BICEP_LINTER_TIMEOUT_SECONDS",
+      "description": "BICEP_BICEP_LINTER: Maximum duration in seconds of the BICEP_BICEP_LINTER run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "BICEP_BICEP_LINTER: Timeout in seconds",
+      "type": "integer",
+      "x-category": "BICEP_BICEP_LINTER",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "BICEP_BICEP_LINTER_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/BICEP_BICEP_LINTER_UNSECURED_ENV_VARIABLES",
@@ -3735,6 +3861,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "CLOJURE_CLJSTYLE_TIMEOUT_SECONDS": {
+      "$id": "#/properties/CLOJURE_CLJSTYLE_TIMEOUT_SECONDS",
+      "description": "CLOJURE_CLJSTYLE: Maximum duration in seconds of the CLOJURE_CLJSTYLE run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "CLOJURE_CLJSTYLE: Timeout in seconds",
+      "type": "integer",
+      "x-category": "CLOJURE_CLJSTYLE",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "CLOJURE_CLJSTYLE_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/CLOJURE_CLJSTYLE_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -3984,6 +4123,19 @@
       "x-category": "CLOJURE_CLJ_KONDO",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "CLOJURE_CLJ_KONDO_TIMEOUT_SECONDS": {
+      "$id": "#/properties/CLOJURE_CLJ_KONDO_TIMEOUT_SECONDS",
+      "description": "CLOJURE_CLJ_KONDO: Maximum duration in seconds of the CLOJURE_CLJ_KONDO run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "CLOJURE_CLJ_KONDO: Timeout in seconds",
+      "type": "integer",
+      "x-category": "CLOJURE_CLJ_KONDO",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "CLOJURE_CLJ_KONDO_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/CLOJURE_CLJ_KONDO_UNSECURED_ENV_VARIABLES",
@@ -4310,6 +4462,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "CLOUDFORMATION_CFN_LINT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/CLOUDFORMATION_CFN_LINT_TIMEOUT_SECONDS",
+      "description": "CLOUDFORMATION_CFN_LINT: Maximum duration in seconds of the CLOUDFORMATION_CFN_LINT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "CLOUDFORMATION_CFN_LINT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "CLOUDFORMATION_CFN_LINT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "CLOUDFORMATION_CFN_LINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/CLOUDFORMATION_CFN_LINT_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -4632,6 +4797,19 @@
       "x-category": "COFFEE_COFFEELINT",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "COFFEE_COFFEELINT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/COFFEE_COFFEELINT_TIMEOUT_SECONDS",
+      "description": "COFFEE_COFFEELINT: Maximum duration in seconds of the COFFEE_COFFEELINT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "COFFEE_COFFEELINT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "COFFEE_COFFEELINT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "COFFEE_COFFEELINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/COFFEE_COFFEELINT_UNSECURED_ENV_VARIABLES",
@@ -5008,6 +5186,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "COPYPASTE_JSCPD_TIMEOUT_SECONDS": {
+      "$id": "#/properties/COPYPASTE_JSCPD_TIMEOUT_SECONDS",
+      "description": "COPYPASTE_JSCPD: Maximum duration in seconds of the COPYPASTE_JSCPD run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "COPYPASTE_JSCPD: Timeout in seconds",
+      "type": "integer",
+      "x-category": "COPYPASTE_JSCPD",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "COPYPASTE_JSCPD_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/COPYPASTE_JSCPD_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -5297,6 +5488,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "CPP_CLANG_FORMAT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/CPP_CLANG_FORMAT_TIMEOUT_SECONDS",
+      "description": "CPP_CLANG_FORMAT: Maximum duration in seconds of the CPP_CLANG_FORMAT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "CPP_CLANG_FORMAT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "CPP_CLANG_FORMAT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "CPP_CLANG_FORMAT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/CPP_CLANG_FORMAT_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -5537,6 +5741,19 @@
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
     },
+    "CPP_CPPCHECK_TIMEOUT_SECONDS": {
+      "$id": "#/properties/CPP_CPPCHECK_TIMEOUT_SECONDS",
+      "description": "CPP_CPPCHECK: Maximum duration in seconds of the CPP_CPPCHECK run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "CPP_CPPCHECK: Timeout in seconds",
+      "type": "integer",
+      "x-category": "CPP_CPPCHECK",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "CPP_CPPCHECK_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/CPP_CPPCHECK_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -5764,6 +5981,19 @@
       "x-category": "CPP_CPPLINT",
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
+    },
+    "CPP_CPPLINT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/CPP_CPPLINT_TIMEOUT_SECONDS",
+      "description": "CPP_CPPLINT: Maximum duration in seconds of the CPP_CPPLINT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "CPP_CPPLINT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "CPP_CPPLINT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "CPP_CPPLINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/CPP_CPPLINT_UNSECURED_ENV_VARIABLES",
@@ -6092,6 +6322,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "CSHARP_CSHARPIER_TIMEOUT_SECONDS": {
+      "$id": "#/properties/CSHARP_CSHARPIER_TIMEOUT_SECONDS",
+      "description": "CSHARP_CSHARPIER: Maximum duration in seconds of the CSHARP_CSHARPIER run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "CSHARP_CSHARPIER: Timeout in seconds",
+      "type": "integer",
+      "x-category": "CSHARP_CSHARPIER",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "CSHARP_CSHARPIER_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/CSHARP_CSHARPIER_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -6317,6 +6560,19 @@
       "x-category": "CSHARP_DOTNET_FORMAT",
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
+    },
+    "CSHARP_DOTNET_FORMAT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/CSHARP_DOTNET_FORMAT_TIMEOUT_SECONDS",
+      "description": "CSHARP_DOTNET_FORMAT: Maximum duration in seconds of the CSHARP_DOTNET_FORMAT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "CSHARP_DOTNET_FORMAT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "CSHARP_DOTNET_FORMAT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "CSHARP_DOTNET_FORMAT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/CSHARP_DOTNET_FORMAT_UNSECURED_ENV_VARIABLES",
@@ -6607,6 +6863,19 @@
       "x-category": "CSHARP_ROSLYNATOR",
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
+    },
+    "CSHARP_ROSLYNATOR_TIMEOUT_SECONDS": {
+      "$id": "#/properties/CSHARP_ROSLYNATOR_TIMEOUT_SECONDS",
+      "description": "CSHARP_ROSLYNATOR: Maximum duration in seconds of the CSHARP_ROSLYNATOR run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "CSHARP_ROSLYNATOR: Timeout in seconds",
+      "type": "integer",
+      "x-category": "CSHARP_ROSLYNATOR",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "CSHARP_ROSLYNATOR_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/CSHARP_ROSLYNATOR_UNSECURED_ENV_VARIABLES",
@@ -7166,6 +7435,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "CSS_STYLELINT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/CSS_STYLELINT_TIMEOUT_SECONDS",
+      "description": "CSS_STYLELINT: Maximum duration in seconds of the CSS_STYLELINT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "CSS_STYLELINT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "CSS_STYLELINT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "CSS_STYLELINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/CSS_STYLELINT_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -7404,6 +7686,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "C_CLANG_FORMAT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/C_CLANG_FORMAT_TIMEOUT_SECONDS",
+      "description": "C_CLANG_FORMAT: Maximum duration in seconds of the C_CLANG_FORMAT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "C_CLANG_FORMAT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "C_CLANG_FORMAT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "C_CLANG_FORMAT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/C_CLANG_FORMAT_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -7635,6 +7930,19 @@
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
     },
+    "C_CPPCHECK_TIMEOUT_SECONDS": {
+      "$id": "#/properties/C_CPPCHECK_TIMEOUT_SECONDS",
+      "description": "C_CPPCHECK: Maximum duration in seconds of the C_CPPCHECK run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "C_CPPCHECK: Timeout in seconds",
+      "type": "integer",
+      "x-category": "C_CPPCHECK",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "C_CPPCHECK_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/C_CPPCHECK_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -7853,6 +8161,19 @@
       "x-category": "C_CPPLINT",
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
+    },
+    "C_CPPLINT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/C_CPPLINT_TIMEOUT_SECONDS",
+      "description": "C_CPPLINT: Maximum duration in seconds of the C_CPPLINT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "C_CPPLINT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "C_CPPLINT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "C_CPPLINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/C_CPPLINT_UNSECURED_ENV_VARIABLES",
@@ -8176,6 +8497,19 @@
       "x-category": "DART_DARTANALYZER",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "DART_DARTANALYZER_TIMEOUT_SECONDS": {
+      "$id": "#/properties/DART_DARTANALYZER_TIMEOUT_SECONDS",
+      "description": "DART_DARTANALYZER: Maximum duration in seconds of the DART_DARTANALYZER run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "DART_DARTANALYZER: Timeout in seconds",
+      "type": "integer",
+      "x-category": "DART_DARTANALYZER",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "DART_DARTANALYZER_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/DART_DARTANALYZER_UNSECURED_ENV_VARIABLES",
@@ -8794,6 +9128,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "DOCKERFILE_HADOLINT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/DOCKERFILE_HADOLINT_TIMEOUT_SECONDS",
+      "description": "DOCKERFILE_HADOLINT: Maximum duration in seconds of the DOCKERFILE_HADOLINT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "DOCKERFILE_HADOLINT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "DOCKERFILE_HADOLINT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "DOCKERFILE_HADOLINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/DOCKERFILE_HADOLINT_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -9084,6 +9431,19 @@
       "x-category": "EDITORCONFIG_EDITORCONFIG_CHECKER",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "EDITORCONFIG_EDITORCONFIG_CHECKER_TIMEOUT_SECONDS": {
+      "$id": "#/properties/EDITORCONFIG_EDITORCONFIG_CHECKER_TIMEOUT_SECONDS",
+      "description": "EDITORCONFIG_EDITORCONFIG_CHECKER: Maximum duration in seconds of the EDITORCONFIG_EDITORCONFIG_CHECKER run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "EDITORCONFIG_EDITORCONFIG_CHECKER: Timeout in seconds",
+      "type": "integer",
+      "x-category": "EDITORCONFIG_EDITORCONFIG_CHECKER",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "EDITORCONFIG_EDITORCONFIG_CHECKER_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/EDITORCONFIG_EDITORCONFIG_CHECKER_UNSECURED_ENV_VARIABLES",
@@ -9542,6 +9902,19 @@
       "x-category": "ENV_DOTENV_LINTER",
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
+    },
+    "ENV_DOTENV_LINTER_TIMEOUT_SECONDS": {
+      "$id": "#/properties/ENV_DOTENV_LINTER_TIMEOUT_SECONDS",
+      "description": "ENV_DOTENV_LINTER: Maximum duration in seconds of the ENV_DOTENV_LINTER run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "ENV_DOTENV_LINTER: Timeout in seconds",
+      "type": "integer",
+      "x-category": "ENV_DOTENV_LINTER",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "ENV_DOTENV_LINTER_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/ENV_DOTENV_LINTER_UNSECURED_ENV_VARIABLES",
@@ -10062,6 +10435,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "GHERKIN_GHERKIN_LINT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/GHERKIN_GHERKIN_LINT_TIMEOUT_SECONDS",
+      "description": "GHERKIN_GHERKIN_LINT: Maximum duration in seconds of the GHERKIN_GHERKIN_LINT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "GHERKIN_GHERKIN_LINT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "GHERKIN_GHERKIN_LINT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "GHERKIN_GHERKIN_LINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/GHERKIN_GHERKIN_LINT_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -10480,6 +10866,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "GO_GOLANGCI_LINT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/GO_GOLANGCI_LINT_TIMEOUT_SECONDS",
+      "description": "GO_GOLANGCI_LINT: Maximum duration in seconds of the GO_GOLANGCI_LINT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "GO_GOLANGCI_LINT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "GO_GOLANGCI_LINT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "GO_GOLANGCI_LINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/GO_GOLANGCI_LINT_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -10758,6 +11157,19 @@
       "x-category": "GO_REVIVE",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "GO_REVIVE_TIMEOUT_SECONDS": {
+      "$id": "#/properties/GO_REVIVE_TIMEOUT_SECONDS",
+      "description": "GO_REVIVE: Maximum duration in seconds of the GO_REVIVE run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "GO_REVIVE: Timeout in seconds",
+      "type": "integer",
+      "x-category": "GO_REVIVE",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "GO_REVIVE_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/GO_REVIVE_UNSECURED_ENV_VARIABLES",
@@ -11039,6 +11451,19 @@
       "x-category": "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "GRAPHQL_GRAPHQL_SCHEMA_LINTER_TIMEOUT_SECONDS": {
+      "$id": "#/properties/GRAPHQL_GRAPHQL_SCHEMA_LINTER_TIMEOUT_SECONDS",
+      "description": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Maximum duration in seconds of the GRAPHQL_GRAPHQL_SCHEMA_LINTER run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Timeout in seconds",
+      "type": "integer",
+      "x-category": "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "GRAPHQL_GRAPHQL_SCHEMA_LINTER_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/GRAPHQL_GRAPHQL_SCHEMA_LINTER_UNSECURED_ENV_VARIABLES",
@@ -11368,6 +11793,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "GROOVY_NPM_GROOVY_LINT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/GROOVY_NPM_GROOVY_LINT_TIMEOUT_SECONDS",
+      "description": "GROOVY_NPM_GROOVY_LINT: Maximum duration in seconds of the GROOVY_NPM_GROOVY_LINT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "GROOVY_NPM_GROOVY_LINT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "GROOVY_NPM_GROOVY_LINT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "GROOVY_NPM_GROOVY_LINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/GROOVY_NPM_GROOVY_LINT_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -11640,6 +12078,19 @@
       "x-category": "HTML_DJLINT",
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
+    },
+    "HTML_DJLINT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/HTML_DJLINT_TIMEOUT_SECONDS",
+      "description": "HTML_DJLINT: Maximum duration in seconds of the HTML_DJLINT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "HTML_DJLINT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "HTML_DJLINT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "HTML_DJLINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/HTML_DJLINT_UNSECURED_ENV_VARIABLES",
@@ -11922,6 +12373,19 @@
       "x-category": "HTML_HTMLHINT",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "HTML_HTMLHINT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/HTML_HTMLHINT_TIMEOUT_SECONDS",
+      "description": "HTML_HTMLHINT: Maximum duration in seconds of the HTML_HTMLHINT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "HTML_HTMLHINT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "HTML_HTMLHINT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "HTML_HTMLHINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/HTML_HTMLHINT_UNSECURED_ENV_VARIABLES",
@@ -12257,6 +12721,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "JAVASCRIPT_ES_TIMEOUT_SECONDS": {
+      "$id": "#/properties/JAVASCRIPT_ES_TIMEOUT_SECONDS",
+      "description": "JAVASCRIPT_ES: Maximum duration in seconds of the JAVASCRIPT_ES run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "JAVASCRIPT_ES: Timeout in seconds",
+      "type": "integer",
+      "x-category": "JAVASCRIPT_ES",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "JAVASCRIPT_ES_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/JAVASCRIPT_ES_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -12559,6 +13036,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "JAVASCRIPT_PRETTIER_TIMEOUT_SECONDS": {
+      "$id": "#/properties/JAVASCRIPT_PRETTIER_TIMEOUT_SECONDS",
+      "description": "JAVASCRIPT_PRETTIER: Maximum duration in seconds of the JAVASCRIPT_PRETTIER run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "JAVASCRIPT_PRETTIER: Timeout in seconds",
+      "type": "integer",
+      "x-category": "JAVASCRIPT_PRETTIER",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "JAVASCRIPT_PRETTIER_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/JAVASCRIPT_PRETTIER_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -12810,6 +13300,19 @@
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
     },
+    "JAVASCRIPT_STANDARD_TIMEOUT_SECONDS": {
+      "$id": "#/properties/JAVASCRIPT_STANDARD_TIMEOUT_SECONDS",
+      "description": "JAVASCRIPT_STANDARD: Maximum duration in seconds of the JAVASCRIPT_STANDARD run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "JAVASCRIPT_STANDARD: Timeout in seconds",
+      "type": "integer",
+      "x-category": "JAVASCRIPT_STANDARD",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "JAVASCRIPT_STANDARD_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/JAVASCRIPT_STANDARD_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -13058,6 +13561,19 @@
       "x-category": "JAVA_CHECKSTYLE",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "JAVA_CHECKSTYLE_TIMEOUT_SECONDS": {
+      "$id": "#/properties/JAVA_CHECKSTYLE_TIMEOUT_SECONDS",
+      "description": "JAVA_CHECKSTYLE: Maximum duration in seconds of the JAVA_CHECKSTYLE run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "JAVA_CHECKSTYLE: Timeout in seconds",
+      "type": "integer",
+      "x-category": "JAVA_CHECKSTYLE",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "JAVA_CHECKSTYLE_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/JAVA_CHECKSTYLE_UNSECURED_ENV_VARIABLES",
@@ -13339,6 +13855,19 @@
       "x-category": "JAVA_PMD",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "JAVA_PMD_TIMEOUT_SECONDS": {
+      "$id": "#/properties/JAVA_PMD_TIMEOUT_SECONDS",
+      "description": "JAVA_PMD: Maximum duration in seconds of the JAVA_PMD run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "JAVA_PMD: Timeout in seconds",
+      "type": "integer",
+      "x-category": "JAVA_PMD",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "JAVA_PMD_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/JAVA_PMD_UNSECURED_ENV_VARIABLES",
@@ -13929,6 +14458,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "JSON_JSONLINT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/JSON_JSONLINT_TIMEOUT_SECONDS",
+      "description": "JSON_JSONLINT: Maximum duration in seconds of the JSON_JSONLINT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "JSON_JSONLINT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "JSON_JSONLINT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "JSON_JSONLINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/JSON_JSONLINT_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -14175,6 +14717,19 @@
       "x-category": "JSON_NPM_PACKAGE_JSON_LINT",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "JSON_NPM_PACKAGE_JSON_LINT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/JSON_NPM_PACKAGE_JSON_LINT_TIMEOUT_SECONDS",
+      "description": "JSON_NPM_PACKAGE_JSON_LINT: Maximum duration in seconds of the JSON_NPM_PACKAGE_JSON_LINT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "JSON_NPM_PACKAGE_JSON_LINT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "JSON_NPM_PACKAGE_JSON_LINT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "JSON_NPM_PACKAGE_JSON_LINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/JSON_NPM_PACKAGE_JSON_LINT_UNSECURED_ENV_VARIABLES",
@@ -14445,6 +15000,19 @@
       "x-category": "JSON_PRETTIER",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "JSON_PRETTIER_TIMEOUT_SECONDS": {
+      "$id": "#/properties/JSON_PRETTIER_TIMEOUT_SECONDS",
+      "description": "JSON_PRETTIER: Maximum duration in seconds of the JSON_PRETTIER run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "JSON_PRETTIER: Timeout in seconds",
+      "type": "integer",
+      "x-category": "JSON_PRETTIER",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "JSON_PRETTIER_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/JSON_PRETTIER_UNSECURED_ENV_VARIABLES",
@@ -14746,6 +15314,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "JSON_V8R_TIMEOUT_SECONDS": {
+      "$id": "#/properties/JSON_V8R_TIMEOUT_SECONDS",
+      "description": "JSON_V8R: Maximum duration in seconds of the JSON_V8R run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "JSON_V8R: Timeout in seconds",
+      "type": "integer",
+      "x-category": "JSON_V8R",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "JSON_V8R_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/JSON_V8R_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -14994,6 +15575,19 @@
       "x-category": "JSX_ESLINT",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "JSX_ESLINT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/JSX_ESLINT_TIMEOUT_SECONDS",
+      "description": "JSX_ESLINT: Maximum duration in seconds of the JSX_ESLINT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "JSX_ESLINT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "JSX_ESLINT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "JSX_ESLINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/JSX_ESLINT_UNSECURED_ENV_VARIABLES",
@@ -15319,6 +15913,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "KOTLIN_DETEKT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/KOTLIN_DETEKT_TIMEOUT_SECONDS",
+      "description": "KOTLIN_DETEKT: Maximum duration in seconds of the KOTLIN_DETEKT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "KOTLIN_DETEKT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "KOTLIN_DETEKT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "KOTLIN_DETEKT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/KOTLIN_DETEKT_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -15581,6 +16188,19 @@
       "x-category": "KOTLIN_KTLINT",
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
+    },
+    "KOTLIN_KTLINT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/KOTLIN_KTLINT_TIMEOUT_SECONDS",
+      "description": "KOTLIN_KTLINT: Maximum duration in seconds of the KOTLIN_KTLINT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "KOTLIN_KTLINT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "KOTLIN_KTLINT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "KOTLIN_KTLINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/KOTLIN_KTLINT_UNSECURED_ENV_VARIABLES",
@@ -15902,6 +16522,19 @@
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
     },
+    "KUBERNETES_HELM_TIMEOUT_SECONDS": {
+      "$id": "#/properties/KUBERNETES_HELM_TIMEOUT_SECONDS",
+      "description": "KUBERNETES_HELM: Maximum duration in seconds of the KUBERNETES_HELM run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "KUBERNETES_HELM: Timeout in seconds",
+      "type": "integer",
+      "x-category": "KUBERNETES_HELM",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "KUBERNETES_HELM_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/KUBERNETES_HELM_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -16144,6 +16777,19 @@
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
     },
+    "KUBERNETES_KUBECONFORM_TIMEOUT_SECONDS": {
+      "$id": "#/properties/KUBERNETES_KUBECONFORM_TIMEOUT_SECONDS",
+      "description": "KUBERNETES_KUBECONFORM: Maximum duration in seconds of the KUBERNETES_KUBECONFORM run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "KUBERNETES_KUBECONFORM: Timeout in seconds",
+      "type": "integer",
+      "x-category": "KUBERNETES_KUBECONFORM",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "KUBERNETES_KUBECONFORM_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/KUBERNETES_KUBECONFORM_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -16381,6 +17027,19 @@
       "x-category": "KUBERNETES_KUBESCAPE",
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
+    },
+    "KUBERNETES_KUBESCAPE_TIMEOUT_SECONDS": {
+      "$id": "#/properties/KUBERNETES_KUBESCAPE_TIMEOUT_SECONDS",
+      "description": "KUBERNETES_KUBESCAPE: Maximum duration in seconds of the KUBERNETES_KUBESCAPE run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "KUBERNETES_KUBESCAPE: Timeout in seconds",
+      "type": "integer",
+      "x-category": "KUBERNETES_KUBESCAPE",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "KUBERNETES_KUBESCAPE_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/KUBERNETES_KUBESCAPE_UNSECURED_ENV_VARIABLES",
@@ -16835,6 +17494,19 @@
       "x-category": "LATEX_CHKTEX",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "LATEX_CHKTEX_TIMEOUT_SECONDS": {
+      "$id": "#/properties/LATEX_CHKTEX_TIMEOUT_SECONDS",
+      "description": "LATEX_CHKTEX: Maximum duration in seconds of the LATEX_CHKTEX run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "LATEX_CHKTEX: Timeout in seconds",
+      "type": "integer",
+      "x-category": "LATEX_CHKTEX",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "LATEX_CHKTEX_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/LATEX_CHKTEX_UNSECURED_ENV_VARIABLES",
@@ -17427,6 +18099,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "LUA_LUACHECK_TIMEOUT_SECONDS": {
+      "$id": "#/properties/LUA_LUACHECK_TIMEOUT_SECONDS",
+      "description": "LUA_LUACHECK: Maximum duration in seconds of the LUA_LUACHECK run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "LUA_LUACHECK: Timeout in seconds",
+      "type": "integer",
+      "x-category": "LUA_LUACHECK",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "LUA_LUACHECK_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/LUA_LUACHECK_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -17971,6 +18656,19 @@
       "x-category": "LUA_STYLUA",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "LUA_STYLUA_TIMEOUT_SECONDS": {
+      "$id": "#/properties/LUA_STYLUA_TIMEOUT_SECONDS",
+      "description": "LUA_STYLUA: Maximum duration in seconds of the LUA_STYLUA run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "LUA_STYLUA: Timeout in seconds",
+      "type": "integer",
+      "x-category": "LUA_STYLUA",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "LUA_STYLUA_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/LUA_STYLUA_UNSECURED_ENV_VARIABLES",
@@ -18603,6 +19301,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "MARKDOWN_MARKDOWNLINT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/MARKDOWN_MARKDOWNLINT_TIMEOUT_SECONDS",
+      "description": "MARKDOWN_MARKDOWNLINT: Maximum duration in seconds of the MARKDOWN_MARKDOWNLINT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "MARKDOWN_MARKDOWNLINT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "MARKDOWN_MARKDOWNLINT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "MARKDOWN_MARKDOWNLINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/MARKDOWN_MARKDOWNLINT_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -19067,6 +19778,19 @@
       "x-category": "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
+    },
+    "MARKDOWN_MARKDOWN_TABLE_FORMATTER_TIMEOUT_SECONDS": {
+      "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_FORMATTER_TIMEOUT_SECONDS",
+      "description": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Maximum duration in seconds of the MARKDOWN_MARKDOWN_TABLE_FORMATTER run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Timeout in seconds",
+      "type": "integer",
+      "x-category": "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "MARKDOWN_MARKDOWN_TABLE_FORMATTER_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_FORMATTER_UNSECURED_ENV_VARIABLES",
@@ -19684,6 +20408,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "MARKDOWN_RUMDL_TIMEOUT_SECONDS": {
+      "$id": "#/properties/MARKDOWN_RUMDL_TIMEOUT_SECONDS",
+      "description": "MARKDOWN_RUMDL: Maximum duration in seconds of the MARKDOWN_RUMDL run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "MARKDOWN_RUMDL: Timeout in seconds",
+      "type": "integer",
+      "x-category": "MARKDOWN_RUMDL",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "MARKDOWN_RUMDL_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/MARKDOWN_RUMDL_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -20078,6 +20815,19 @@
       "x-category": "PERL_PERLCRITIC",
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
+    },
+    "PERL_PERLCRITIC_TIMEOUT_SECONDS": {
+      "$id": "#/properties/PERL_PERLCRITIC_TIMEOUT_SECONDS",
+      "description": "PERL_PERLCRITIC: Maximum duration in seconds of the PERL_PERLCRITIC run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "PERL_PERLCRITIC: Timeout in seconds",
+      "type": "integer",
+      "x-category": "PERL_PERLCRITIC",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "PERL_PERLCRITIC_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/PERL_PERLCRITIC_UNSECURED_ENV_VARIABLES",
@@ -20563,6 +21313,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "PHP_PHPCSFIXER_TIMEOUT_SECONDS": {
+      "$id": "#/properties/PHP_PHPCSFIXER_TIMEOUT_SECONDS",
+      "description": "PHP_PHPCSFIXER: Maximum duration in seconds of the PHP_PHPCSFIXER run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "PHP_PHPCSFIXER: Timeout in seconds",
+      "type": "integer",
+      "x-category": "PHP_PHPCSFIXER",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "PHP_PHPCSFIXER_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/PHP_PHPCSFIXER_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -20811,6 +21574,19 @@
       "x-category": "PHP_PHPCS",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "PHP_PHPCS_TIMEOUT_SECONDS": {
+      "$id": "#/properties/PHP_PHPCS_TIMEOUT_SECONDS",
+      "description": "PHP_PHPCS: Maximum duration in seconds of the PHP_PHPCS run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "PHP_PHPCS: Timeout in seconds",
+      "type": "integer",
+      "x-category": "PHP_PHPCS",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "PHP_PHPCS_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/PHP_PHPCS_UNSECURED_ENV_VARIABLES",
@@ -21061,6 +21837,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "PHP_PHPLINT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/PHP_PHPLINT_TIMEOUT_SECONDS",
+      "description": "PHP_PHPLINT: Maximum duration in seconds of the PHP_PHPLINT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "PHP_PHPLINT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "PHP_PHPLINT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "PHP_PHPLINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/PHP_PHPLINT_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -21309,6 +22098,19 @@
       "x-category": "PHP_PHPSTAN",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "PHP_PHPSTAN_TIMEOUT_SECONDS": {
+      "$id": "#/properties/PHP_PHPSTAN_TIMEOUT_SECONDS",
+      "description": "PHP_PHPSTAN: Maximum duration in seconds of the PHP_PHPSTAN run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "PHP_PHPSTAN: Timeout in seconds",
+      "type": "integer",
+      "x-category": "PHP_PHPSTAN",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "PHP_PHPSTAN_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/PHP_PHPSTAN_UNSECURED_ENV_VARIABLES",
@@ -21600,6 +22402,19 @@
       "x-category": "PHP_PSALM",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "PHP_PSALM_TIMEOUT_SECONDS": {
+      "$id": "#/properties/PHP_PSALM_TIMEOUT_SECONDS",
+      "description": "PHP_PSALM: Maximum duration in seconds of the PHP_PSALM run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "PHP_PSALM: Timeout in seconds",
+      "type": "integer",
+      "x-category": "PHP_PSALM",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "PHP_PSALM_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/PHP_PSALM_UNSECURED_ENV_VARIABLES",
@@ -22144,6 +22959,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "POWERSHELL_POWERSHELL_FORMATTER_TIMEOUT_SECONDS": {
+      "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_TIMEOUT_SECONDS",
+      "description": "POWERSHELL_POWERSHELL_FORMATTER: Maximum duration in seconds of the POWERSHELL_POWERSHELL_FORMATTER run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "POWERSHELL_POWERSHELL_FORMATTER: Timeout in seconds",
+      "type": "integer",
+      "x-category": "POWERSHELL_POWERSHELL_FORMATTER",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "POWERSHELL_POWERSHELL_FORMATTER_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/POWERSHELL_POWERSHELL_FORMATTER_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -22218,6 +23046,19 @@
       "x-category": "POWERSHELL_POWERSHELL",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "POWERSHELL_POWERSHELL_TIMEOUT_SECONDS": {
+      "$id": "#/properties/POWERSHELL_POWERSHELL_TIMEOUT_SECONDS",
+      "description": "POWERSHELL_POWERSHELL: Maximum duration in seconds of the POWERSHELL_POWERSHELL run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "POWERSHELL_POWERSHELL: Timeout in seconds",
+      "type": "integer",
+      "x-category": "POWERSHELL_POWERSHELL",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "POWERSHELL_POWERSHELL_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/POWERSHELL_POWERSHELL_UNSECURED_ENV_VARIABLES",
@@ -22608,6 +23449,19 @@
       "x-category": "PROTOBUF_PROTOLINT",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "PROTOBUF_PROTOLINT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/PROTOBUF_PROTOLINT_TIMEOUT_SECONDS",
+      "description": "PROTOBUF_PROTOLINT: Maximum duration in seconds of the PROTOBUF_PROTOLINT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "PROTOBUF_PROTOLINT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "PROTOBUF_PROTOLINT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "PROTOBUF_PROTOLINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/PROTOBUF_PROTOLINT_UNSECURED_ENV_VARIABLES",
@@ -23192,6 +24046,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "PYTHON_BANDIT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/PYTHON_BANDIT_TIMEOUT_SECONDS",
+      "description": "PYTHON_BANDIT: Maximum duration in seconds of the PYTHON_BANDIT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "PYTHON_BANDIT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "PYTHON_BANDIT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "PYTHON_BANDIT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/PYTHON_BANDIT_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -23442,6 +24309,19 @@
       "x-category": "PYTHON_BLACK",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "PYTHON_BLACK_TIMEOUT_SECONDS": {
+      "$id": "#/properties/PYTHON_BLACK_TIMEOUT_SECONDS",
+      "description": "PYTHON_BLACK: Maximum duration in seconds of the PYTHON_BLACK run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "PYTHON_BLACK: Timeout in seconds",
+      "type": "integer",
+      "x-category": "PYTHON_BLACK",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "PYTHON_BLACK_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/PYTHON_BLACK_UNSECURED_ENV_VARIABLES",
@@ -23746,6 +24626,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "PYTHON_FLAKE8_TIMEOUT_SECONDS": {
+      "$id": "#/properties/PYTHON_FLAKE8_TIMEOUT_SECONDS",
+      "description": "PYTHON_FLAKE8: Maximum duration in seconds of the PYTHON_FLAKE8 run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "PYTHON_FLAKE8: Timeout in seconds",
+      "type": "integer",
+      "x-category": "PYTHON_FLAKE8",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "PYTHON_FLAKE8_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/PYTHON_FLAKE8_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -23998,6 +24891,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "PYTHON_ISORT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/PYTHON_ISORT_TIMEOUT_SECONDS",
+      "description": "PYTHON_ISORT: Maximum duration in seconds of the PYTHON_ISORT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "PYTHON_ISORT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "PYTHON_ISORT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "PYTHON_ISORT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/PYTHON_ISORT_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -24248,6 +25154,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "PYTHON_MYPY_TIMEOUT_SECONDS": {
+      "$id": "#/properties/PYTHON_MYPY_TIMEOUT_SECONDS",
+      "description": "PYTHON_MYPY: Maximum duration in seconds of the PYTHON_MYPY run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "PYTHON_MYPY: Timeout in seconds",
+      "type": "integer",
+      "x-category": "PYTHON_MYPY",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "PYTHON_MYPY_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/PYTHON_MYPY_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -24496,6 +25415,19 @@
       "x-category": "PYTHON_NBQA_MYPY",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "PYTHON_NBQA_MYPY_TIMEOUT_SECONDS": {
+      "$id": "#/properties/PYTHON_NBQA_MYPY_TIMEOUT_SECONDS",
+      "description": "PYTHON_NBQA_MYPY: Maximum duration in seconds of the PYTHON_NBQA_MYPY run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "PYTHON_NBQA_MYPY: Timeout in seconds",
+      "type": "integer",
+      "x-category": "PYTHON_NBQA_MYPY",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "PYTHON_NBQA_MYPY_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/PYTHON_NBQA_MYPY_UNSECURED_ENV_VARIABLES",
@@ -24789,6 +25721,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "PYTHON_PYLINT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/PYTHON_PYLINT_TIMEOUT_SECONDS",
+      "description": "PYTHON_PYLINT: Maximum duration in seconds of the PYTHON_PYLINT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "PYTHON_PYLINT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "PYTHON_PYLINT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "PYTHON_PYLINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/PYTHON_PYLINT_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -25038,6 +25983,19 @@
       "x-category": "PYTHON_PYRIGHT",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "PYTHON_PYRIGHT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/PYTHON_PYRIGHT_TIMEOUT_SECONDS",
+      "description": "PYTHON_PYRIGHT: Maximum duration in seconds of the PYTHON_PYRIGHT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "PYTHON_PYRIGHT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "PYTHON_PYRIGHT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "PYTHON_PYRIGHT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/PYTHON_PYRIGHT_UNSECURED_ENV_VARIABLES",
@@ -25466,6 +26424,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "PYTHON_RUFF_FORMAT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/PYTHON_RUFF_FORMAT_TIMEOUT_SECONDS",
+      "description": "PYTHON_RUFF_FORMAT: Maximum duration in seconds of the PYTHON_RUFF_FORMAT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "PYTHON_RUFF_FORMAT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "PYTHON_RUFF_FORMAT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "PYTHON_RUFF_FORMAT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/PYTHON_RUFF_FORMAT_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -25540,6 +26511,19 @@
       "x-category": "PYTHON_RUFF",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "PYTHON_RUFF_TIMEOUT_SECONDS": {
+      "$id": "#/properties/PYTHON_RUFF_TIMEOUT_SECONDS",
+      "description": "PYTHON_RUFF: Maximum duration in seconds of the PYTHON_RUFF run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "PYTHON_RUFF: Timeout in seconds",
+      "type": "integer",
+      "x-category": "PYTHON_RUFF",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "PYTHON_RUFF_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/PYTHON_RUFF_UNSECURED_ENV_VARIABLES",
@@ -25855,6 +26839,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "RAKU_RAKU_TIMEOUT_SECONDS": {
+      "$id": "#/properties/RAKU_RAKU_TIMEOUT_SECONDS",
+      "description": "RAKU_RAKU: Maximum duration in seconds of the RAKU_RAKU run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "RAKU_RAKU: Timeout in seconds",
+      "type": "integer",
+      "x-category": "RAKU_RAKU",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "RAKU_RAKU_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/RAKU_RAKU_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -26120,6 +27117,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "REPOSITORY_BETTERLEAKS_TIMEOUT_SECONDS": {
+      "$id": "#/properties/REPOSITORY_BETTERLEAKS_TIMEOUT_SECONDS",
+      "description": "REPOSITORY_BETTERLEAKS: Maximum duration in seconds of the REPOSITORY_BETTERLEAKS run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "REPOSITORY_BETTERLEAKS: Timeout in seconds",
+      "type": "integer",
+      "x-category": "REPOSITORY_BETTERLEAKS",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "REPOSITORY_BETTERLEAKS_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/REPOSITORY_BETTERLEAKS_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -26332,6 +27342,19 @@
       "x-category": "REPOSITORY_CHECKOV",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "REPOSITORY_CHECKOV_TIMEOUT_SECONDS": {
+      "$id": "#/properties/REPOSITORY_CHECKOV_TIMEOUT_SECONDS",
+      "description": "REPOSITORY_CHECKOV: Maximum duration in seconds of the REPOSITORY_CHECKOV run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "REPOSITORY_CHECKOV: Timeout in seconds",
+      "type": "integer",
+      "x-category": "REPOSITORY_CHECKOV",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "REPOSITORY_CHECKOV_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/REPOSITORY_CHECKOV_UNSECURED_ENV_VARIABLES",
@@ -26546,6 +27569,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "REPOSITORY_DEVSKIM_TIMEOUT_SECONDS": {
+      "$id": "#/properties/REPOSITORY_DEVSKIM_TIMEOUT_SECONDS",
+      "description": "REPOSITORY_DEVSKIM: Maximum duration in seconds of the REPOSITORY_DEVSKIM run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "REPOSITORY_DEVSKIM: Timeout in seconds",
+      "type": "integer",
+      "x-category": "REPOSITORY_DEVSKIM",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "REPOSITORY_DEVSKIM_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/REPOSITORY_DEVSKIM_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -26735,6 +27771,19 @@
       "x-category": "REPOSITORY_DUSTILOCK",
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
+    },
+    "REPOSITORY_DUSTILOCK_TIMEOUT_SECONDS": {
+      "$id": "#/properties/REPOSITORY_DUSTILOCK_TIMEOUT_SECONDS",
+      "description": "REPOSITORY_DUSTILOCK: Maximum duration in seconds of the REPOSITORY_DUSTILOCK run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "REPOSITORY_DUSTILOCK: Timeout in seconds",
+      "type": "integer",
+      "x-category": "REPOSITORY_DUSTILOCK",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "REPOSITORY_DUSTILOCK_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/REPOSITORY_DUSTILOCK_UNSECURED_ENV_VARIABLES",
@@ -27202,6 +28251,19 @@
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
     },
+    "REPOSITORY_GIT_DIFF_TIMEOUT_SECONDS": {
+      "$id": "#/properties/REPOSITORY_GIT_DIFF_TIMEOUT_SECONDS",
+      "description": "REPOSITORY_GIT_DIFF: Maximum duration in seconds of the REPOSITORY_GIT_DIFF run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "REPOSITORY_GIT_DIFF: Timeout in seconds",
+      "type": "integer",
+      "x-category": "REPOSITORY_GIT_DIFF",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "REPOSITORY_GIT_DIFF_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/REPOSITORY_GIT_DIFF_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -27532,6 +28594,19 @@
       "x-category": "REPOSITORY_GRYPE",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "REPOSITORY_GRYPE_TIMEOUT_SECONDS": {
+      "$id": "#/properties/REPOSITORY_GRYPE_TIMEOUT_SECONDS",
+      "description": "REPOSITORY_GRYPE: Maximum duration in seconds of the REPOSITORY_GRYPE run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "REPOSITORY_GRYPE: Timeout in seconds",
+      "type": "integer",
+      "x-category": "REPOSITORY_GRYPE",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "REPOSITORY_GRYPE_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/REPOSITORY_GRYPE_UNSECURED_ENV_VARIABLES",
@@ -27943,6 +29018,19 @@
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
     },
+    "REPOSITORY_KINGFISHER_TIMEOUT_SECONDS": {
+      "$id": "#/properties/REPOSITORY_KINGFISHER_TIMEOUT_SECONDS",
+      "description": "REPOSITORY_KINGFISHER: Maximum duration in seconds of the REPOSITORY_KINGFISHER run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "REPOSITORY_KINGFISHER: Timeout in seconds",
+      "type": "integer",
+      "x-category": "REPOSITORY_KINGFISHER",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "REPOSITORY_KINGFISHER_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/REPOSITORY_KINGFISHER_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -28156,6 +29244,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "REPOSITORY_LS_LINT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/REPOSITORY_LS_LINT_TIMEOUT_SECONDS",
+      "description": "REPOSITORY_LS_LINT: Maximum duration in seconds of the REPOSITORY_LS_LINT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "REPOSITORY_LS_LINT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "REPOSITORY_LS_LINT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "REPOSITORY_LS_LINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/REPOSITORY_LS_LINT_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -28368,6 +29469,19 @@
       "x-category": "REPOSITORY_OSV_SCANNER",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "REPOSITORY_OSV_SCANNER_TIMEOUT_SECONDS": {
+      "$id": "#/properties/REPOSITORY_OSV_SCANNER_TIMEOUT_SECONDS",
+      "description": "REPOSITORY_OSV_SCANNER: Maximum duration in seconds of the REPOSITORY_OSV_SCANNER run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "REPOSITORY_OSV_SCANNER: Timeout in seconds",
+      "type": "integer",
+      "x-category": "REPOSITORY_OSV_SCANNER",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "REPOSITORY_OSV_SCANNER_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/REPOSITORY_OSV_SCANNER_UNSECURED_ENV_VARIABLES",
@@ -28624,6 +29738,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "REPOSITORY_SECRETLINT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/REPOSITORY_SECRETLINT_TIMEOUT_SECONDS",
+      "description": "REPOSITORY_SECRETLINT: Maximum duration in seconds of the REPOSITORY_SECRETLINT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "REPOSITORY_SECRETLINT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "REPOSITORY_SECRETLINT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "REPOSITORY_SECRETLINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/REPOSITORY_SECRETLINT_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -28833,6 +29960,19 @@
         "array",
         "string"
       ],
+      "x-category": "REPOSITORY_SEMGREP",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
+    "REPOSITORY_SEMGREP_TIMEOUT_SECONDS": {
+      "$id": "#/properties/REPOSITORY_SEMGREP_TIMEOUT_SECONDS",
+      "description": "REPOSITORY_SEMGREP: Maximum duration in seconds of the REPOSITORY_SEMGREP run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "REPOSITORY_SEMGREP: Timeout in seconds",
+      "type": "integer",
       "x-category": "REPOSITORY_SEMGREP",
       "x-order": 900999,
       "x-section": "GENERAL"
@@ -29047,6 +30187,19 @@
       "x-category": "REPOSITORY_SYFT",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "REPOSITORY_SYFT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/REPOSITORY_SYFT_TIMEOUT_SECONDS",
+      "description": "REPOSITORY_SYFT: Maximum duration in seconds of the REPOSITORY_SYFT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "REPOSITORY_SYFT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "REPOSITORY_SYFT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "REPOSITORY_SYFT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/REPOSITORY_SYFT_UNSECURED_ENV_VARIABLES",
@@ -29456,6 +30609,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "REPOSITORY_TRIVY_SBOM_TIMEOUT_SECONDS": {
+      "$id": "#/properties/REPOSITORY_TRIVY_SBOM_TIMEOUT_SECONDS",
+      "description": "REPOSITORY_TRIVY_SBOM: Maximum duration in seconds of the REPOSITORY_TRIVY_SBOM run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "REPOSITORY_TRIVY_SBOM: Timeout in seconds",
+      "type": "integer",
+      "x-category": "REPOSITORY_TRIVY_SBOM",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "REPOSITORY_TRIVY_SBOM_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/REPOSITORY_TRIVY_SBOM_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -29469,6 +30635,19 @@
       "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
       "x-order": 600000,
       "x-section": "SECURITY"
+    },
+    "REPOSITORY_TRIVY_TIMEOUT_SECONDS": {
+      "$id": "#/properties/REPOSITORY_TRIVY_TIMEOUT_SECONDS",
+      "description": "REPOSITORY_TRIVY: Maximum duration in seconds of the REPOSITORY_TRIVY run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "REPOSITORY_TRIVY: Timeout in seconds",
+      "type": "integer",
+      "x-category": "REPOSITORY_TRIVY",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "REPOSITORY_TRIVY_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/REPOSITORY_TRIVY_UNSECURED_ENV_VARIABLES",
@@ -29682,6 +30861,19 @@
       "x-category": "REPOSITORY_TRUFFLEHOG",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "REPOSITORY_TRUFFLEHOG_TIMEOUT_SECONDS": {
+      "$id": "#/properties/REPOSITORY_TRUFFLEHOG_TIMEOUT_SECONDS",
+      "description": "REPOSITORY_TRUFFLEHOG: Maximum duration in seconds of the REPOSITORY_TRUFFLEHOG run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "REPOSITORY_TRUFFLEHOG: Timeout in seconds",
+      "type": "integer",
+      "x-category": "REPOSITORY_TRUFFLEHOG",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "REPOSITORY_TRUFFLEHOG_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/REPOSITORY_TRUFFLEHOG_UNSECURED_ENV_VARIABLES",
@@ -30007,6 +31199,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "ROBOTFRAMEWORK_ROBOCOP_TIMEOUT_SECONDS": {
+      "$id": "#/properties/ROBOTFRAMEWORK_ROBOCOP_TIMEOUT_SECONDS",
+      "description": "ROBOTFRAMEWORK_ROBOCOP: Maximum duration in seconds of the ROBOTFRAMEWORK_ROBOCOP run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "ROBOTFRAMEWORK_ROBOCOP: Timeout in seconds",
+      "type": "integer",
+      "x-category": "ROBOTFRAMEWORK_ROBOCOP",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "ROBOTFRAMEWORK_ROBOCOP_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/ROBOTFRAMEWORK_ROBOCOP_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -30330,6 +31535,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "RST_RSTCHECK_TIMEOUT_SECONDS": {
+      "$id": "#/properties/RST_RSTCHECK_TIMEOUT_SECONDS",
+      "description": "RST_RSTCHECK: Maximum duration in seconds of the RST_RSTCHECK run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "RST_RSTCHECK: Timeout in seconds",
+      "type": "integer",
+      "x-category": "RST_RSTCHECK",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "RST_RSTCHECK_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/RST_RSTCHECK_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -30560,6 +31778,19 @@
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
     },
+    "RST_RSTFMT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/RST_RSTFMT_TIMEOUT_SECONDS",
+      "description": "RST_RSTFMT: Maximum duration in seconds of the RST_RSTFMT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "RST_RSTFMT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "RST_RSTFMT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "RST_RSTFMT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/RST_RSTFMT_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -30789,6 +32020,19 @@
       "x-category": "RST_RST_LINT",
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
+    },
+    "RST_RST_LINT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/RST_RST_LINT_TIMEOUT_SECONDS",
+      "description": "RST_RST_LINT: Maximum duration in seconds of the RST_RST_LINT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "RST_RST_LINT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "RST_RST_LINT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "RST_RST_LINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/RST_RST_LINT_UNSECURED_ENV_VARIABLES",
@@ -31113,6 +32357,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "RUBY_RUBOCOP_TIMEOUT_SECONDS": {
+      "$id": "#/properties/RUBY_RUBOCOP_TIMEOUT_SECONDS",
+      "description": "RUBY_RUBOCOP: Maximum duration in seconds of the RUBY_RUBOCOP run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "RUBY_RUBOCOP: Timeout in seconds",
+      "type": "integer",
+      "x-category": "RUBY_RUBOCOP",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "RUBY_RUBOCOP_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/RUBY_RUBOCOP_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -31357,6 +32614,19 @@
       "x-category": "RUST_CLIPPY",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "RUST_CLIPPY_TIMEOUT_SECONDS": {
+      "$id": "#/properties/RUST_CLIPPY_TIMEOUT_SECONDS",
+      "description": "RUST_CLIPPY: Maximum duration in seconds of the RUST_CLIPPY run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "RUST_CLIPPY: Timeout in seconds",
+      "type": "integer",
+      "x-category": "RUST_CLIPPY",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "RUST_CLIPPY_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/RUST_CLIPPY_UNSECURED_ENV_VARIABLES",
@@ -31702,6 +32972,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "R_LINTR_TIMEOUT_SECONDS": {
+      "$id": "#/properties/R_LINTR_TIMEOUT_SECONDS",
+      "description": "R_LINTR: Maximum duration in seconds of the R_LINTR run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "R_LINTR: Timeout in seconds",
+      "type": "integer",
+      "x-category": "R_LINTR",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "R_LINTR_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/R_LINTR_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -31963,6 +33246,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "SALESFORCE_CODE_ANALYZER_APEX_TIMEOUT_SECONDS": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_APEX_TIMEOUT_SECONDS",
+      "description": "SALESFORCE_CODE_ANALYZER_APEX: Maximum duration in seconds of the SALESFORCE_CODE_ANALYZER_APEX run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "SALESFORCE_CODE_ANALYZER_APEX: Timeout in seconds",
+      "type": "integer",
+      "x-category": "SALESFORCE_CODE_ANALYZER_APEX",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "SALESFORCE_CODE_ANALYZER_APEX_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/SALESFORCE_CODE_ANALYZER_APEX_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -32182,6 +33478,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "SALESFORCE_CODE_ANALYZER_AURA_TIMEOUT_SECONDS": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_AURA_TIMEOUT_SECONDS",
+      "description": "SALESFORCE_CODE_ANALYZER_AURA: Maximum duration in seconds of the SALESFORCE_CODE_ANALYZER_AURA run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "SALESFORCE_CODE_ANALYZER_AURA: Timeout in seconds",
+      "type": "integer",
+      "x-category": "SALESFORCE_CODE_ANALYZER_AURA",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "SALESFORCE_CODE_ANALYZER_AURA_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/SALESFORCE_CODE_ANALYZER_AURA_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -32390,6 +33699,19 @@
       "x-category": "SALESFORCE_CODE_ANALYZER_FLOW",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "SALESFORCE_CODE_ANALYZER_FLOW_TIMEOUT_SECONDS": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_FLOW_TIMEOUT_SECONDS",
+      "description": "SALESFORCE_CODE_ANALYZER_FLOW: Maximum duration in seconds of the SALESFORCE_CODE_ANALYZER_FLOW run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "SALESFORCE_CODE_ANALYZER_FLOW: Timeout in seconds",
+      "type": "integer",
+      "x-category": "SALESFORCE_CODE_ANALYZER_FLOW",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "SALESFORCE_CODE_ANALYZER_FLOW_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/SALESFORCE_CODE_ANALYZER_FLOW_UNSECURED_ENV_VARIABLES",
@@ -32609,6 +33931,19 @@
       "x-category": "SALESFORCE_CODE_ANALYZER_LWC",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "SALESFORCE_CODE_ANALYZER_LWC_TIMEOUT_SECONDS": {
+      "$id": "#/properties/SALESFORCE_CODE_ANALYZER_LWC_TIMEOUT_SECONDS",
+      "description": "SALESFORCE_CODE_ANALYZER_LWC: Maximum duration in seconds of the SALESFORCE_CODE_ANALYZER_LWC run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "SALESFORCE_CODE_ANALYZER_LWC: Timeout in seconds",
+      "type": "integer",
+      "x-category": "SALESFORCE_CODE_ANALYZER_LWC",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "SALESFORCE_CODE_ANALYZER_LWC_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/SALESFORCE_CODE_ANALYZER_LWC_UNSECURED_ENV_VARIABLES",
@@ -34041,6 +35376,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "SCALA_SCALAFIX_TIMEOUT_SECONDS": {
+      "$id": "#/properties/SCALA_SCALAFIX_TIMEOUT_SECONDS",
+      "description": "SCALA_SCALAFIX: Maximum duration in seconds of the SCALA_SCALAFIX run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "SCALA_SCALAFIX: Timeout in seconds",
+      "type": "integer",
+      "x-category": "SCALA_SCALAFIX",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "SCALA_SCALAFIX_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/SCALA_SCALAFIX_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -34399,6 +35747,19 @@
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
     },
+    "SNAKEMAKE_LINT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/SNAKEMAKE_LINT_TIMEOUT_SECONDS",
+      "description": "SNAKEMAKE_LINT: Maximum duration in seconds of the SNAKEMAKE_LINT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "SNAKEMAKE_LINT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "SNAKEMAKE_LINT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "SNAKEMAKE_LINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/SNAKEMAKE_LINT_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -34678,6 +36039,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "SNAKEMAKE_SNAKEFMT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/SNAKEMAKE_SNAKEFMT_TIMEOUT_SECONDS",
+      "description": "SNAKEMAKE_SNAKEFMT: Maximum duration in seconds of the SNAKEMAKE_SNAKEFMT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "SNAKEMAKE_SNAKEFMT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "SNAKEMAKE_SNAKEFMT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "SNAKEMAKE_SNAKEFMT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/SNAKEMAKE_SNAKEFMT_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -34938,6 +36312,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "SPELL_CODESPELL_TIMEOUT_SECONDS": {
+      "$id": "#/properties/SPELL_CODESPELL_TIMEOUT_SECONDS",
+      "description": "SPELL_CODESPELL: Maximum duration in seconds of the SPELL_CODESPELL run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "SPELL_CODESPELL: Timeout in seconds",
+      "type": "integer",
+      "x-category": "SPELL_CODESPELL",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "SPELL_CODESPELL_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/SPELL_CODESPELL_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -35194,6 +36581,19 @@
       "x-category": "SPELL_CSPELL",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "SPELL_CSPELL_TIMEOUT_SECONDS": {
+      "$id": "#/properties/SPELL_CSPELL_TIMEOUT_SECONDS",
+      "description": "SPELL_CSPELL: Maximum duration in seconds of the SPELL_CSPELL run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "SPELL_CSPELL: Timeout in seconds",
+      "type": "integer",
+      "x-category": "SPELL_CSPELL",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "SPELL_CSPELL_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/SPELL_CSPELL_UNSECURED_ENV_VARIABLES",
@@ -35486,6 +36886,19 @@
       "x-category": "SPELL_LYCHEE",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "SPELL_LYCHEE_TIMEOUT_SECONDS": {
+      "$id": "#/properties/SPELL_LYCHEE_TIMEOUT_SECONDS",
+      "description": "SPELL_LYCHEE: Maximum duration in seconds of the SPELL_LYCHEE run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "SPELL_LYCHEE: Timeout in seconds",
+      "type": "integer",
+      "x-category": "SPELL_LYCHEE",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "SPELL_LYCHEE_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/SPELL_LYCHEE_UNSECURED_ENV_VARIABLES",
@@ -35948,6 +37361,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "SPELL_PROSELINT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/SPELL_PROSELINT_TIMEOUT_SECONDS",
+      "description": "SPELL_PROSELINT: Maximum duration in seconds of the SPELL_PROSELINT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "SPELL_PROSELINT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "SPELL_PROSELINT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "SPELL_PROSELINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/SPELL_PROSELINT_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -36197,6 +37623,19 @@
       "x-category": "SPELL_VALE",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "SPELL_VALE_TIMEOUT_SECONDS": {
+      "$id": "#/properties/SPELL_VALE_TIMEOUT_SECONDS",
+      "description": "SPELL_VALE: Maximum duration in seconds of the SPELL_VALE run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "SPELL_VALE: Timeout in seconds",
+      "type": "integer",
+      "x-category": "SPELL_VALE",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "SPELL_VALE_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/SPELL_VALE_UNSECURED_ENV_VARIABLES",
@@ -36520,6 +37959,19 @@
       "x-category": "SQL_SQLFLUFF",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "SQL_SQLFLUFF_TIMEOUT_SECONDS": {
+      "$id": "#/properties/SQL_SQLFLUFF_TIMEOUT_SECONDS",
+      "description": "SQL_SQLFLUFF: Maximum duration in seconds of the SQL_SQLFLUFF run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "SQL_SQLFLUFF: Timeout in seconds",
+      "type": "integer",
+      "x-category": "SQL_SQLFLUFF",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "SQL_SQLFLUFF_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/SQL_SQLFLUFF_UNSECURED_ENV_VARIABLES",
@@ -37331,6 +38783,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "SWIFT_SWIFTLINT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/SWIFT_SWIFTLINT_TIMEOUT_SECONDS",
+      "description": "SWIFT_SWIFTLINT: Maximum duration in seconds of the SWIFT_SWIFTLINT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "SWIFT_SWIFTLINT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "SWIFT_SWIFTLINT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "SWIFT_SWIFTLINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/SWIFT_SWIFTLINT_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -37676,6 +39141,19 @@
       "x-category": "TEKTON_TEKTON_LINT",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "TEKTON_TEKTON_LINT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/TEKTON_TEKTON_LINT_TIMEOUT_SECONDS",
+      "description": "TEKTON_TEKTON_LINT: Maximum duration in seconds of the TEKTON_TEKTON_LINT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "TEKTON_TEKTON_LINT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "TEKTON_TEKTON_LINT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "TEKTON_TEKTON_LINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/TEKTON_TEKTON_LINT_UNSECURED_ENV_VARIABLES",
@@ -38301,6 +39779,19 @@
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
     },
+    "TERRAFORM_TERRAFORM_FMT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/TERRAFORM_TERRAFORM_FMT_TIMEOUT_SECONDS",
+      "description": "TERRAFORM_TERRAFORM_FMT: Maximum duration in seconds of the TERRAFORM_TERRAFORM_FMT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "TERRAFORM_TERRAFORM_FMT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "TERRAFORM_TERRAFORM_FMT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "TERRAFORM_TERRAFORM_FMT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/TERRAFORM_TERRAFORM_FMT_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -38535,6 +40026,19 @@
       "x-category": "TERRAFORM_TERRAGRUNT",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "TERRAFORM_TERRAGRUNT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/TERRAFORM_TERRAGRUNT_TIMEOUT_SECONDS",
+      "description": "TERRAFORM_TERRAGRUNT: Maximum duration in seconds of the TERRAFORM_TERRAGRUNT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "TERRAFORM_TERRAGRUNT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "TERRAFORM_TERRAGRUNT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "TERRAFORM_TERRAGRUNT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/TERRAFORM_TERRAGRUNT_UNSECURED_ENV_VARIABLES",
@@ -39049,6 +40553,19 @@
       "x-order": 900999,
       "x-section": "GENERAL"
     },
+    "TERRAFORM_TFLINT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/TERRAFORM_TFLINT_TIMEOUT_SECONDS",
+      "description": "TERRAFORM_TFLINT: Maximum duration in seconds of the TERRAFORM_TFLINT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "TERRAFORM_TFLINT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "TERRAFORM_TFLINT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -39319,6 +40836,19 @@
       "x-category": "TSX_ESLINT",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "TSX_ESLINT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/TSX_ESLINT_TIMEOUT_SECONDS",
+      "description": "TSX_ESLINT: Maximum duration in seconds of the TSX_ESLINT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "TSX_ESLINT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "TSX_ESLINT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "TSX_ESLINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/TSX_ESLINT_UNSECURED_ENV_VARIABLES",
@@ -39665,6 +41195,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "TYPESCRIPT_ES_TIMEOUT_SECONDS": {
+      "$id": "#/properties/TYPESCRIPT_ES_TIMEOUT_SECONDS",
+      "description": "TYPESCRIPT_ES: Maximum duration in seconds of the TYPESCRIPT_ES run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "TYPESCRIPT_ES: Timeout in seconds",
+      "type": "integer",
+      "x-category": "TYPESCRIPT_ES",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "TYPESCRIPT_ES_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/TYPESCRIPT_ES_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -39967,6 +41510,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "TYPESCRIPT_PRETTIER_TIMEOUT_SECONDS": {
+      "$id": "#/properties/TYPESCRIPT_PRETTIER_TIMEOUT_SECONDS",
+      "description": "TYPESCRIPT_PRETTIER: Maximum duration in seconds of the TYPESCRIPT_PRETTIER run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "TYPESCRIPT_PRETTIER: Timeout in seconds",
+      "type": "integer",
+      "x-category": "TYPESCRIPT_PRETTIER",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "TYPESCRIPT_PRETTIER_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/TYPESCRIPT_PRETTIER_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -40217,6 +41773,19 @@
       "x-category": "TYPESCRIPT_STANDARD",
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
+    },
+    "TYPESCRIPT_STANDARD_TIMEOUT_SECONDS": {
+      "$id": "#/properties/TYPESCRIPT_STANDARD_TIMEOUT_SECONDS",
+      "description": "TYPESCRIPT_STANDARD: Maximum duration in seconds of the TYPESCRIPT_STANDARD run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "TYPESCRIPT_STANDARD: Timeout in seconds",
+      "type": "integer",
+      "x-category": "TYPESCRIPT_STANDARD",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "TYPESCRIPT_STANDARD_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/TYPESCRIPT_STANDARD_UNSECURED_ENV_VARIABLES",
@@ -40471,6 +42040,19 @@
       "x-category": "VBDOTNET_DOTNET_FORMAT",
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
+    },
+    "VBDOTNET_DOTNET_FORMAT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/VBDOTNET_DOTNET_FORMAT_TIMEOUT_SECONDS",
+      "description": "VBDOTNET_DOTNET_FORMAT: Maximum duration in seconds of the VBDOTNET_DOTNET_FORMAT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "VBDOTNET_DOTNET_FORMAT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "VBDOTNET_DOTNET_FORMAT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "VBDOTNET_DOTNET_FORMAT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/VBDOTNET_DOTNET_FORMAT_UNSECURED_ENV_VARIABLES",
@@ -40867,6 +42449,19 @@
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
     },
+    "XML_XMLLINT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/XML_XMLLINT_TIMEOUT_SECONDS",
+      "description": "XML_XMLLINT: Maximum duration in seconds of the XML_XMLLINT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "XML_XMLLINT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "XML_XMLLINT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "XML_XMLLINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/XML_XMLLINT_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -41170,6 +42765,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "YAML_PRETTIER_TIMEOUT_SECONDS": {
+      "$id": "#/properties/YAML_PRETTIER_TIMEOUT_SECONDS",
+      "description": "YAML_PRETTIER: Maximum duration in seconds of the YAML_PRETTIER run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "YAML_PRETTIER: Timeout in seconds",
+      "type": "integer",
+      "x-category": "YAML_PRETTIER",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "YAML_PRETTIER_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/YAML_PRETTIER_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -41441,6 +43049,19 @@
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
+    "YAML_V8R_TIMEOUT_SECONDS": {
+      "$id": "#/properties/YAML_V8R_TIMEOUT_SECONDS",
+      "description": "YAML_V8R: Maximum duration in seconds of the YAML_V8R run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "YAML_V8R: Timeout in seconds",
+      "type": "integer",
+      "x-category": "YAML_V8R",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "YAML_V8R_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/YAML_V8R_UNSECURED_ENV_VARIABLES",
       "default": [],
@@ -41690,6 +43311,19 @@
       "x-category": "YAML_YAMLLINT",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "YAML_YAMLLINT_TIMEOUT_SECONDS": {
+      "$id": "#/properties/YAML_YAMLLINT_TIMEOUT_SECONDS",
+      "description": "YAML_YAMLLINT: Maximum duration in seconds of the YAML_YAMLLINT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "YAML_YAMLLINT: Timeout in seconds",
+      "type": "integer",
+      "x-category": "YAML_YAMLLINT",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "YAML_YAMLLINT_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/YAML_YAMLLINT_UNSECURED_ENV_VARIABLES",

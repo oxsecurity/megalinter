@@ -110,6 +110,7 @@ To add a single package with pnpm instead of installing the full tree, run `core
 | JSX_ESLINT_RULES_PATH                   | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | JSX_ESLINT_DISABLE_ERRORS               | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | JSX_ESLINT_DISABLE_ERRORS_IF_LESS_THAN  | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| JSX_ESLINT_TIMEOUT_SECONDS              | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout | `300`                                           |
 | JSX_ESLINT_CLI_EXECUTABLE               | Override CLI executable                                                                                                                                                                                             | `['eslint']`                                    |
 
 ## IDE Integration
@@ -252,14 +253,14 @@ Miscellaneous:
 # renovate: datasource=npm depName=eslint
 ARG NPM_ESLINT_VERSION=10.8.0
 # renovate: datasource=npm depName=@eslint-react/eslint-plugin
-ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.18.1
+ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.18.2
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 ```
 
 - NPM packages (node.js):
   - [eslint@10.8.0](https://www.npmjs.com/package/eslint/v/10.8.0)
-  - [@eslint-react/eslint-plugin@5.18.1](https://www.npmjs.com/package/@eslint-react/eslint-plugin/v/5.18.1)
+  - [@eslint-react/eslint-plugin@5.18.2](https://www.npmjs.com/package/@eslint-react/eslint-plugin/v/5.18.2)
   - [@microsoft/eslint-formatter-sarif@3.1.0](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/3.1.0)
 
 ## Known errors and resolutions

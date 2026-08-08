@@ -757,6 +757,27 @@ def is_pr() -> bool:
     )
 
 
+# POSIX character classes (supported by Go regexp, used in gitleaks rules) and their
+# Python re equivalents. Python parses [[:alnum:]] as a literal character set and
+# emits "FutureWarning: Possible nested set", so they must be translated.
+POSIX_CHARACTER_CLASSES = {
+    "[:alnum:]": "a-zA-Z0-9",
+    "[:alpha:]": "a-zA-Z",
+    "[:ascii:]": "\\x00-\\x7f",
+    "[:blank:]": " \\t",
+    "[:cntrl:]": "\\x00-\\x1f\\x7f",
+    "[:digit:]": "0-9",
+    "[:graph:]": "\\x21-\\x7e",
+    "[:lower:]": "a-z",
+    "[:print:]": "\\x20-\\x7e",
+    "[:punct:]": "!-/:-@\\[-`{-~",
+    "[:space:]": "\\s",
+    "[:upper:]": "A-Z",
+    "[:word:]": "\\w",
+    "[:xdigit:]": "0-9a-fA-F",
+}
+
+
 def fix_regex_pattern(pattern):
     # 1. Fix global flags not at the start of the expression
     if "(?i)" in pattern:
@@ -765,6 +786,9 @@ def fix_regex_pattern(pattern):
             pattern = "(?i)" + "".join(parts[0:])
     # 2. Replace invalid escape sequences like `\z` with `$`
     pattern = re.sub(r"\\z", "$", pattern)
+    # 3. Translate POSIX character classes unsupported by Python re
+    for posix_class, python_equivalent in POSIX_CHARACTER_CLASSES.items():
+        pattern = pattern.replace(posix_class, python_equivalent)
     return pattern
 
 

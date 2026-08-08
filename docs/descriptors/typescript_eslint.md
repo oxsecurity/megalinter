@@ -111,6 +111,7 @@ To add a single package with pnpm instead of installing the full tree, run `core
 | TYPESCRIPT_ES_RULES_PATH                   | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | TYPESCRIPT_ES_DISABLE_ERRORS               | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | TYPESCRIPT_ES_DISABLE_ERRORS_IF_LESS_THAN  | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
+| TYPESCRIPT_ES_TIMEOUT_SECONDS              | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout | `300`                                           |
 | TYPESCRIPT_ES_CLI_EXECUTABLE               | Override CLI executable                                                                                                                                                                                             | `['eslint']`                                    |
 
 ## IDE Integration
@@ -275,7 +276,7 @@ ARG NPM_PRETTIER_VERSION=3.9.6
 # renovate: datasource=npm depName=prettyjson
 ARG NPM_PRETTYJSON_VERSION=1.2.5
 # renovate: datasource=npm depName=typescript-eslint
-ARG NPM_TYPESCRIPT_ESLINT_VERSION=8.65.0
+ARG NPM_TYPESCRIPT_ESLINT_VERSION=8.66.0
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 ```
@@ -292,7 +293,7 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
   - [eslint-plugin-promise@7.3.0](https://www.npmjs.com/package/eslint-plugin-promise/v/7.3.0)
   - [prettier@3.9.6](https://www.npmjs.com/package/prettier/v/3.9.6)
   - [prettyjson@1.2.5](https://www.npmjs.com/package/prettyjson/v/1.2.5)
-  - [typescript-eslint@8.65.0](https://www.npmjs.com/package/typescript-eslint/v/8.65.0)
+  - [typescript-eslint@8.66.0](https://www.npmjs.com/package/typescript-eslint/v/8.66.0)
   - [@microsoft/eslint-formatter-sarif@3.1.0](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/3.1.0)
 
 ## Known errors and resolutions

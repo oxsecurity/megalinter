@@ -67,4 +67,10 @@ If you need to manually trigger a build:
 
 See [full Custom Flavors documentation](https://megalinter.io/beta/custom-flavors/).
 
+## License
+
+A MegaLinter custom flavor is still MegaLinter: this repository and the Docker image it publishes are covered by the [AGPL-3.0 license](https://github.com/oxsecurity/megalinter/blob/main/LICENSE).
+
+The published image is built from the official MegaLinter image and bundles MegaLinter, whose source is available at [oxsecurity/megalinter](https://github.com/oxsecurity/megalinter).
+
 [![MegaLinter is graciously provided by OX Security](https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/images/ox-banner.png)](https://www.ox.security/?ref=megalinter)
