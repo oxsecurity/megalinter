@@ -1043,44 +1043,42 @@ def generate_documentation():
         + "and is **ready to use out of the box** as a GitHub Action or with any CI system. "
         + "It is **highly configurable** and **free for all uses**.\n\n"
         + "MegaLinter has **native integrations** with popular CI/CD tools "
-        + "and is compliant with most **Coding Agents**.\n\n"
-        + "[![GitHub]("
-        + "https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/github.png?raw=true>)]("
-        + "https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitHubCommentReporter.md)\n"
-        + "[![GitLab]("
-        + "https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/gitlab.png?raw=true>)]("
-        + "https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitlabCommentReporter.md)\n"
-        + "[![Azure]("
-        + "https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/azure.png?raw=true>)]("
-        + "https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/AzureCommentReporter.md)\n"
-        + "[![Bitbucket]("
-        + "https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/bitbucket.png?raw=true>)]("
-        + "https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/BitbucketCommentReporter.md)\n"
-        + "[![Jenkins]("
-        + "https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/jenkins.png?raw=true>)]("
-        + "https://github.com/oxsecurity/megalinter/tree/main/docs/install-jenkins.md)\n"
-        + "[![Drone]("
-        + "https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/drone.png?raw=true>)]("
-        + "https://github.com/oxsecurity/megalinter/tree/main/docs/install-drone.md)\n"
-        + "[![Concourse]("
-        + "https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/concourse.png?raw=true>)]("
-        + "https://github.com/oxsecurity/megalinter/tree/main/docs/install-concourse.md)\n"
-        + "[![Docker]("
-        + "https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/docker.png?raw=true>)]("
-        + "https://github.com/oxsecurity/megalinter/tree/main/docs/install-docker.md)\n"
-        + "[![SARIF]("
-        + "https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/sarif.png?raw=true>)]("
-        + "https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/SarifReporter.md)\n"
-        + "[![Grafana]("
-        + "https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/grafana.png?raw=true>)]("
-        + "https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/ApiReporter.md)\n\n"
+        + "and is compliant with most "
+        + "[**Coding Agents**](https://megalinter.io/latest/coding-agents/).\n\n"
+        + '<div align="center">\n'
         + "\n".join(
-            '[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/'
+            '<a href="https://github.com/oxsecurity/megalinter/tree/main/docs/'
+            + doc_page
+            + '"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/'
             + icon
             + '.png?raw=true" alt="'
             + label
-            + '" height="40" style="height:40px">]'
-            + "(https://github.com/oxsecurity/megalinter/tree/main/docs/coding-agents.md)"
+            + '" height="40" style="height:40px;vertical-align:middle;margin:4px"></a>'
+            for icon, label, doc_page in [
+                ("github", "GitHub", "reporters/GitHubCommentReporter.md"),
+                ("gitlab", "GitLab", "reporters/GitlabCommentReporter.md"),
+                ("azure", "Azure", "reporters/AzureCommentReporter.md"),
+                ("bitbucket", "Bitbucket", "reporters/BitbucketCommentReporter.md"),
+                ("jenkins", "Jenkins", "install-jenkins.md"),
+                ("drone", "Drone", "install-drone.md"),
+                ("concourse", "Concourse", "install-concourse.md"),
+                ("docker", "Docker", "install-docker.md"),
+                ("sarif", "SARIF", "reporters/SarifReporter.md"),
+                ("grafana", "Grafana", "observability/grafana.md"),
+                ("datadog", "Datadog", "observability/datadog.md"),
+                ("newrelic", "New Relic", "observability/newrelic.md"),
+                ("elastic", "Elastic", "observability/elastic.md"),
+            ]
+        )
+        + "\n</div>\n\n"
+        + '<div align="center">\n'
+        + "\n".join(
+            '<a href="https://github.com/oxsecurity/megalinter/tree/main/docs/coding-agents.md">'
+            + '<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/'
+            + icon
+            + '.png?raw=true" alt="'
+            + label
+            + '" height="40" style="height:40px;vertical-align:middle;margin:4px"></a>'
             for icon, label in [
                 ("claude", "Claude Code"),
                 ("cursor", "Cursor"),
@@ -1099,7 +1097,7 @@ def generate_documentation():
                 ("qwen-code", "Qwen Code"),
             ]
         )
-        + "\n\n"
+        + "\n</div>\n\n"
     )
     # Update README.md file
     replace_in_file(
@@ -3502,7 +3500,7 @@ def finalize_doc_build():
         "<!-- mega-linter-badges-start -->",
         "<!-- mega-linter-badges-end -->",
         """![GitHub release](https://img.shields.io/github/v/release/oxsecurity/megalinter?sort=semver&color=%23FD80CD)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-16.5M-blue?color=%23FD80CD)](https://megalinter.io/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-16.6M-blue?color=%23FD80CD)](https://megalinter.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg?color=%23FD80CD)](https://npmjs.org/package/mega-linter-runner)
 [![Coding Agents](https://img.shields.io/badge/Coding%20Agents-compatible-%23FD80CD?logo=githubcopilot&logoColor=white)](https://megalinter.io/latest/coding-agents/)
 [![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?cacheSeconds=3600&color=%23FD80CD)](https://github.com/oxsecurity/megalinter/stargazers/)

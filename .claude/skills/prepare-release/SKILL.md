@@ -178,7 +178,7 @@ Walk the user through the GitHub UI. Match the structure of the previous release
 **c. OX Security banner + GitHub-star call to action.** Just **above** the `**Full Changelog**:` line at the very bottom, add the OX Security banner (present on every release) followed by a star CTA:
 
 ```markdown
-[![MegaLinter is graciously provided by OX Security](https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/images/ox-banner.png)](https://www.ox.security/?ref=megalinter)
+[![MegaLinter is provided by OX Security](https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/images/ox-banner.png)](https://www.ox.security/?ref=megalinter)
 
 ⭐ If MegaLinter is useful to you, please [give it a star on GitHub](https://github.com/oxsecurity/megalinter/stargazers) — it helps the project a lot!
 ```
