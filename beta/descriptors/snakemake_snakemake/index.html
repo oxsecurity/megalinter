@@ -12588,7 +12588,7 @@
 <span class="w">                 </span><span class="o">[</span>--filegraph<span class="o">]</span><span class="w"> </span><span class="o">[</span>--d3dag<span class="o">]</span><span class="w"> </span><span class="o">[</span>--summary<span class="o">]</span><span class="w"> </span><span class="o">[</span>--detailed-summary<span class="o">]</span>
 <span class="w">                 </span><span class="o">[</span>--archive<span class="w"> </span>FILE<span class="o">]</span><span class="w"> </span><span class="o">[</span>--cleanup-metadata<span class="w"> </span>FILE<span class="w"> </span><span class="o">[</span>FILE<span class="w"> </span>...<span class="o">]]</span>
 <span class="w">                 </span><span class="o">[</span>--cleanup-shadow<span class="o">]</span><span class="w"> </span><span class="o">[</span>--skip-script-cleanup<span class="o">]</span><span class="w"> </span><span class="o">[</span>--unlock<span class="o">]</span>
-<span class="w">                 </span><span class="o">[</span>--list-changes<span class="w"> </span><span class="o">{</span>input,code,params<span class="o">}]</span><span class="w"> </span><span class="o">[</span>--list-input-changes<span class="o">]</span>
+<span class="w">                 </span><span class="o">[</span>--list-changes<span class="w"> </span><span class="o">{</span>code,input,params<span class="o">}]</span><span class="w"> </span><span class="o">[</span>--list-input-changes<span class="o">]</span>
 <span class="w">                 </span><span class="o">[</span>--list-params-changes<span class="o">]</span><span class="w"> </span><span class="o">[</span>--list-untracked<span class="o">]</span>
 <span class="w">                 </span><span class="o">[</span>--delete-all-output<span class="w"> </span><span class="p">|</span><span class="w"> </span>--delete-temp-output<span class="o">]</span>
 <span class="w">                 </span><span class="o">[</span>--keep-incomplete<span class="o">]</span><span class="w"> </span><span class="o">[</span>--drop-metadata<span class="o">]</span><span class="w"> </span><span class="o">[</span>--version<span class="o">]</span>
@@ -12636,7 +12636,7 @@
 <span class="w">                 </span><span class="o">[</span>--apptainer-args<span class="w"> </span>ARGS<span class="o">]</span><span class="w"> </span><span class="o">[</span>--use-envmodules<span class="o">]</span>
 <span class="w">                 </span><span class="o">[</span>--deploy-sources<span class="w"> </span>QUERY<span class="w"> </span>CHECKSUM<span class="o">]</span>
 <span class="w">                 </span><span class="o">[</span>--target-jobs<span class="w"> </span>TARGET_JOBS<span class="w"> </span><span class="o">[</span>TARGET_JOBS<span class="w"> </span>...<span class="o">]]</span>
-<span class="w">                 </span><span class="o">[</span>--mode<span class="w"> </span><span class="o">{</span>subprocess,remote,default<span class="o">}]</span>
+<span class="w">                 </span><span class="o">[</span>--mode<span class="w"> </span><span class="o">{</span>remote,subprocess,default<span class="o">}]</span>
 <span class="w">                 </span><span class="o">[</span>--scheduler-solver-path<span class="w"> </span>SCHEDULER_SOLVER_PATH<span class="o">]</span>
 <span class="w">                 </span><span class="o">[</span>--max-jobs-per-second<span class="w"> </span>MAX_JOBS_PER_SECOND<span class="o">]</span>
 <span class="w">                 </span><span class="o">[</span>--report-html-path<span class="w"> </span>VALUE<span class="o">]</span>
@@ -13167,7 +13167,7 @@ UTILITIES:
 <span class="s1">                        (default: False)</span>
 <span class="s1">  --unlock              Remove a lock on the working directory. (default:</span>
 <span class="s1">                        False)</span>
-<span class="s1">  --list-changes, --lc {input,code,params}</span>
+<span class="s1">  --list-changes, --lc {code,input,params}</span>
 <span class="s1">                        List all output files for which the given items (code,</span>
 <span class="s1">                        input, params) have changed since creation.</span>
 <span class="s1">  --list-input-changes, --li</span>
@@ -13534,7 +13534,7 @@ INTERNAL:
 <span class="w">  </span>--target-jobs<span class="w"> </span>TARGET_JOBS<span class="w"> </span><span class="o">[</span>TARGET_JOBS<span class="w"> </span>...<span class="o">]</span>
 <span class="w">                        </span>Internal<span class="w"> </span>use<span class="w"> </span>only:<span class="w"> </span>Target<span class="w"> </span>particular<span class="w"> </span><span class="nb">jobs</span><span class="w"> </span>by
 <span class="w">                        </span>RULE:WILDCARD1<span class="o">=</span>VALUE,WILDCARD2<span class="o">=</span>VALUE,...
-<span class="w">  </span>--mode<span class="w"> </span><span class="o">{</span>subprocess,remote,default<span class="o">}</span>
+<span class="w">  </span>--mode<span class="w"> </span><span class="o">{</span>remote,subprocess,default<span class="o">}</span>
 <span class="w">                        </span>Internal<span class="w"> </span>use<span class="w"> </span>only:<span class="w"> </span>Set<span class="w"> </span>execution<span class="w"> </span>mode<span class="w"> </span>of<span class="w"> </span>Snakemake.
 <span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>default<span class="o">)</span>
 <span class="w">  </span>--scheduler-solver-path<span class="w"> </span>SCHEDULER_SOLVER_PATH
