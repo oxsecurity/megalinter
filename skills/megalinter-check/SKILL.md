@@ -30,7 +30,7 @@ Collect the current MegaLinter errors and produce a compact error list that the 
 
 ## Local mode
 
-Before the first local run, make sure the user is aware that running MegaLinter locally needs a reasonably powerful machine (CPU, RAM, free disk space) and a good internet connection: MegaLinter is Docker-based and the first run downloads a large image (can be several GB depending on the flavor). If that is a problem for the user, prefer watch mode (CI does the work).
+Before the first local run, make sure the user is aware that running MegaLinter locally is **resource-consuming**: it needs a reasonably powerful machine (CPU, RAM, free disk space) and a good internet connection — MegaLinter is Docker-based and the first run downloads a large image (can be several GB depending on the flavor). Because of this, **watch mode (CI does the work) is usually the recommended option**. When both modes are possible (a MegaLinter CI job exists for the repository, or a branch/PR could be pushed to trigger one) and the user did not explicitly choose, **ask them** which mode to use (use your platform's structured question mechanism if it has one, with watch mode first/recommended) instead of starting a local run.
 
 ### Engine preflight (before every local run)
 

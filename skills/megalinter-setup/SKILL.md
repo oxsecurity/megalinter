@@ -96,7 +96,7 @@ Offer this to the user only if they seem interested in monitoring or already use
 ## 6. Wrap up
 
 - Show the user the generated/updated files.
-- Suggest the two ways to see MegaLinter in action (first install and upgrade alike), and offer to do it for them:
+- Propose the two ways to see MegaLinter in action (first install and upgrade alike), and offer to do it for them. A local run is **resource-consuming** (Docker-based, downloads an image of several GB on first run, then loads CPU/RAM/disk), so **running in CI is usually the recommended option** — ask the user which one they want (use your platform's structured question mechanism if it has one, with the CI option first/recommended) instead of picking silently:
+  - **Create a pull request** (recommended) with the generated/updated files (commit on the current branch if it is already a feature branch, otherwise on a new branch — never on the default branch —, push, open the PR), then run the `megalinter-check` skill (watch mode) on the created PR to watch the CI job results and fix the errors.
   - **Run MegaLinter locally** through the `megalinter-check` skill (local mode) to preview and fix errors before pushing anything. Its first run starts with a prerun analysis (`--prerun`, MegaLinter v10 or beta) that suggests `.mega-linter.yml` performance tuning (directories to exclude, flavor) before the real lint.
-  - **Create a pull request** with the generated/updated files (commit on the current branch if it is already a feature branch, otherwise on a new branch — never on the default branch —, push, open the PR), then run the `megalinter-check` skill (watch mode) on the created PR to watch the CI job results and fix the errors.
 - Do not commit or push without user confirmation, and never on the default branch.
