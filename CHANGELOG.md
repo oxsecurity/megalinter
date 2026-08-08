@@ -196,6 +196,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **Skip `docker pull`** when the requested version is a pinned release tag (`vX.Y.Z`, immutable) and the image is already available locally, removing a useless registry round-trip
   - Print a hint before mounting the workspace when it contains **well-known heavy folders** (build caches, package stores), pointing at `SKIP_CLI_LINT_MODES=project` to keep local runs fast
   - **`--custom-flavor-setup`**: the generated README now has a **License** section stating the flavor is covered by **AGPL-3.0**, with a link to the MegaLinter source repository
+  - **`--custom-flavor-setup` now generates a MegaLinter-clean repository**, so a new custom flavor repo starts green instead of failing its own first MegaLinter run, fixes [#8680](https://github.com/oxsecurity/megalinter/issues/8680)
+    - The generated workflows and README now pass **actionlint**, **zizmor**, **editorconfig-checker** and **markdownlint**
+    - Actions used by the generated workflows are **hash-pinned**, and a **`.github/zizmor.yml`** is generated to waive the one deliberate exception: the flavor builder tracks `@main` so your image is always built by the builder matching the MegaLinter release you target
+    - Fixed the generated builder header comment, which advertised the image at `ghcr.io/<owner>/<repo>:<tag>` instead of `ghcr.io/<owner>/<repo>/megalinter-custom-flavor:<tag>`
+    - Fixed the generated PAT setup instructions, which named the repository the template was originally written against
+    - [Custom Flavors documentation](https://megalinter.io/beta/custom-flavors/) now covers linting your flavor repository, including the `REPOSITORY_CHECKOV_ARGUMENTS: "--skip-check CKV_GHA_7"` needed by the builder's `workflow_dispatch` inputs
 
 - Dev
 

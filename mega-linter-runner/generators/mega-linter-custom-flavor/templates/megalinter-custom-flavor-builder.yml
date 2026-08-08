@@ -19,7 +19,7 @@
 #   - DOCKERHUB_REPO: Docker Hub repository name (e.g. nvuillam)
 #
 # The MegaLinter custom flavor image will be available at:
-#   - ghcr.io/<owner>/<repo>:<tag>
+#   - ghcr.io/<owner>/<repo>/megalinter-custom-flavor:<tag>
 #   - docker.io/<dockerhub_repo>/<repo>:<tag> (if Docker Hub credentials are set)
 # =============================================================
 name: Build & Push MegaLinter Custom Flavor
@@ -57,9 +57,10 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v6
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0
+          persist-credentials: false
 
       - name: Determine MegaLinter Version Tag
         id: determine-tag
@@ -79,7 +80,7 @@ jobs:
             TAG="beta"
             echo "Using default tag: $TAG"
           fi
-          echo "tag=$TAG" >> $GITHUB_OUTPUT
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
 
           # Determine is-latest flag
           if [ "${EVENT_NAME}" == "workflow_dispatch" ]; then
@@ -92,10 +93,10 @@ jobs:
             IS_LATEST="false"
             echo "Default is-latest: false"
           fi
-          echo "is-latest=$IS_LATEST" >> $GITHUB_OUTPUT
+          echo "is-latest=$IS_LATEST" >> "$GITHUB_OUTPUT"
 
       - name: Log in to GitHub Container Registry
-        uses: docker/login-action@v3
+        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
@@ -103,7 +104,7 @@ jobs:
 
       # Log in to Docker Hub only if credentials are provided
       - name: Log in to Docker Hub
-        uses: docker/login-action@v3
+        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4
         with:
           registry: docker.io
           username: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -112,7 +113,7 @@ jobs:
 
       - name: Set Lowercase Repository Name
         id: lowercase-repo
-        run: echo "repo=$(echo "${GITHUB_REPOSITORY}" | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
+        run: echo "repo=$(echo "${GITHUB_REPOSITORY}" | tr '[:upper:]' '[:lower:]')" >> "$GITHUB_OUTPUT"
 
       - name: Build MegaLinter Custom Flavor
         uses: oxsecurity/megalinter/flavors/custom-builder@main
