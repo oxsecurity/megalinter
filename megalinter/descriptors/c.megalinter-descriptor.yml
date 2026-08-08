@@ -37,6 +37,7 @@ linters:
     name: C_CPPCHECK
     linter_url: https://cppcheck.sourceforge.io/
     linter_repo: https://cppcheck.sourceforge.io/
+    linter_megalinter_ref_url: https://github.com/cppcheck-opensource/cppcheck/pull/8786
     linter_spdx_license: GPL-3.0
     linter_rules_url: https://sourceforge.net/p/cppcheck/wiki/ListOfChecks/
     linter_rules_configuration_url: https://cppcheck.sourceforge.io/manual.html#configuration
@@ -89,6 +90,7 @@ linters:
     name: C_CPPLINT
     linter_url: https://github.com/cpplint/cpplint
     linter_repo: https://github.com/cpplint/cpplint
+    linter_megalinter_ref_url: https://github.com/cpplint/cpplint/pull/462
     linter_spdx_license: BSD-3-Clause
     linter_rules_url: https://google.github.io/styleguide/cppguide.html
     cli_lint_mode: list_of_files

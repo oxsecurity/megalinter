@@ -47,6 +47,7 @@ linters:
       ARM TTK helps ensure your ARM templates are secure, maintainable, and follow Azure best practices for infrastructure as code.
     linter_url: https://github.com/Azure/arm-ttk
     linter_repo: https://github.com/Azure/arm-ttk
+    linter_megalinter_ref_url: https://github.com/Azure/arm-ttk/pull/802
     linter_rules_configuration_url: https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/test-toolkit#customize-tests
     linter_spdx_license: MIT
     config_file_name: .arm-ttk.psd1

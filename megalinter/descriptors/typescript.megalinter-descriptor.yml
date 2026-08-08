@@ -296,6 +296,7 @@ linters:
         default_value: ts-standard
     linter_url: https://standardjs.com/
     linter_repo: https://github.com/standard/ts-standard
+    linter_megalinter_ref_url: https://github.com/standard/ts-standard/pull/298
     linter_rules_url: https://standardjs.com/rules.html
     linter_rules_configuration_url: https://github.com/standard/ts-standard#readme
     linter_rules_inline_disable_url: https://standardjs.com/#how-do-i-disable-a-rule
@@ -356,6 +357,7 @@ linters:
         default_value: standard
     linter_url: https://prettier.io/
     linter_repo: https://github.com/prettier/prettier
+    linter_megalinter_ref_url: https://github.com/prettier/prettier/pull/19818
     linter_rules_url: https://prettier.io/docs/en/options.html
     linter_rules_configuration_url: https://prettier.io/docs/en/configuration.html
     linter_rules_inline_disable_url: https://prettier.io/docs/en/ignore.html#javascript

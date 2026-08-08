@@ -27,6 +27,7 @@ linters:
     is_formatter: true
     linter_url: https://prettier.io/
     linter_repo: https://github.com/prettier/prettier
+    linter_megalinter_ref_url: https://github.com/prettier/prettier/pull/19818
     linter_spdx_license: MIT
     linter_rules_url: https://prettier.io/docs/en/options.html
     linter_rules_configuration_url: https://prettier.io/docs/en/configuration.html

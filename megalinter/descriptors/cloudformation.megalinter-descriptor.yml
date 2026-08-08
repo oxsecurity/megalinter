@@ -48,6 +48,7 @@ linters:
     can_output_sarif: true
     linter_url: https://github.com/aws-cloudformation/cfn-lint
     linter_repo: https://github.com/aws-cloudformation/cfn-lint
+    linter_megalinter_ref_url: https://github.com/aws-cloudformation/cfn-lint/pull/4619
     linter_spdx_license: MIT-0
     linter_rules_url: https://github.com/aws-cloudformation/cfn-lint/blob/main/docs/rules.md
     linter_rules_configuration_url: https://github.com/aws-cloudformation/cfn-lint#configuration

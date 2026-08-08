@@ -25,6 +25,7 @@ linters:
       - **Comprehensive Rule Set**: Covers common Tekton anti-patterns and configuration mistakes
     linter_url: https://github.com/IBM/tekton-lint
     linter_repo: https://github.com/IBM/tekton-lint
+    linter_megalinter_ref_url: https://github.com/IBM/tekton-lint/pull/127
     linter_rules_url: https://github.com/IBM/tekton-lint#rules
     linter_rules_configuration_url: https://github.com/IBM/tekton-lint#configuring-tekton-lint
     linter_spdx_license: Apache-2.0
