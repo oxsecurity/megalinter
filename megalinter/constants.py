@@ -131,7 +131,7 @@ DEFAULT_DOCKERFILE_FLAVOR_COPY_LINES = [
 DEFAULT_DOCKERFILE_FLAVOR_CARGO_PACKAGES: list[str] = []
 
 OX_MARKDOWN_LINK = (
-    "[![MegaLinter is graciously provided by OX Security]"
+    "[![MegaLinter is provided by OX Security]"
     + "(https://raw.githubusercontent.com/oxsecurity/megalinter/main/"
     + "docs/assets/images/ox-banner.png)]"
     + "(https://www.ox.security/?ref=megalinter)"

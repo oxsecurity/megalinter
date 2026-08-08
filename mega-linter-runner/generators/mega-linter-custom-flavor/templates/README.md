@@ -79,4 +79,4 @@ A MegaLinter custom flavor is still MegaLinter: this repository and the Docker i
 
 The published image is built from the official MegaLinter image and bundles MegaLinter, whose source is available at [oxsecurity/megalinter](https://github.com/oxsecurity/megalinter).
 
-[![MegaLinter is graciously provided by OX Security](https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/images/ox-banner.png)](https://www.ox.security/?ref=megalinter)
+[![MegaLinter is provided by OX Security](https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/images/ox-banner.png)](https://www.ox.security/?ref=megalinter)

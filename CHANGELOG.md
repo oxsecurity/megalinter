@@ -163,12 +163,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - **Readable with sparse CI data**: 1-week default windows on Datadog widgets, 1-day buckets on New Relic charts, run-marker annotations and sparklines on Grafana/Datadog tiles, sorted tables, and semantic colors everywhere (blocking=red, non-blocking=yellow, health A-E bands)
     - **New content**: A-E rating breakdown and quality-gate failure rate (New Relic), files analyzed and health score by MegaLinter version (Datadog), files analyzed and MegaLinter versions in use (Elastic), org-level filter variable (Grafana)
     - Fix the New Relic provider tagging every metric datapoint with `runId`, which burned metric cardinality for no query value
+  - Refreshed **OX Security banner** displayed at the bottom of pull request comments and job summaries, using the current OX Security visual identity
 
 - Flavors
 
 - Doc
 
   - **Home page**: mention Coding Agents compliance in the welcome phrase, display the supported coding agent icons next to the CI/CD integrations, and add a "Coding Agents compatible" badge
+  - **Home page banner** refreshed: highlights **v10**, compliance with **AI coding agents**, and up-to-date download (16 million+) and usage (6,000+ public repos) figures
   - **Quick Start**: setting up MegaLinter with a coding agent (`npx skills add oxsecurity/megalinter` then _"setup megalinter"_) is now the first suggested option
   - **Coding Agents page**: add Gemini CLI, Windsurf, Cline, Roo Code, Kilo Code, Amp, Goose, OpenHands and Qwen Code to the compatible coding agents
   - **megalinter-setup skill**: after install or upgrade, suggest either running MegaLinter locally or creating a pull request and then watching its CI results with megalinter-check

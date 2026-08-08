@@ -264,7 +264,7 @@ def build_markdown_summary_footer(reporter_self, action_run_url=""):
     ):
         footer += (
             os.linesep
-            + "MegaLinter is graciously provided by [OX Security]"
+            + "MegaLinter is provided by [OX Security]"
             + "(https://www.ox.security/?ref=megalinter)"
         )
     else:
