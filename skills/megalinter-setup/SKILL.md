@@ -55,7 +55,11 @@ npx mega-linter-runner --upgrade --no-prompt
 
 `--upgrade` migrates every MegaLinter reference of the repository to the current major version: image tags and action versions in the CI workflow files, deprecated variable names, and the `MEGALINTER_VERSION` property of `.mega-linter.yml`. Run it whenever the repository references an older MegaLinter major version (e.g. `v8` image tags), even if the user only asked for a "check".
 
-After upgrading, check the CI files for Docker image references still pointing to Docker Hub (`docker.io/oxsecurity/megalinter*` or bare `oxsecurity/megalinter:*` image references): since MegaLinter v9.5.0, images are **only published to GitHub Container Registry** — rewrite them to `ghcr.io/oxsecurity/megalinter...` (Docker Hub is frozen at v9.4.0). GitHub Action references (`uses: oxsecurity/megalinter@...`) are not affected.
+**Mandatory after `--upgrade` — migrate Docker image references to ghcr.io.** Since MegaLinter v9.5.0, images are **only published to GitHub Container Registry** (Docker Hub is frozen at v9.4.0), and `--upgrade` does NOT rewrite the registry: it normalizes references to the bare `oxsecurity/megalinter...` form. So always finish with this pass:
+
+1. Search every CI/workflow file of the repository (`.github/workflows/*`, `.gitlab-ci.yml`, `azure-pipelines.yml`, `bitbucket-pipelines.yml`, `Jenkinsfile`, `.drone.yml`, shell scripts...) for `oxsecurity/megalinter` occurrences.
+2. Rewrite every occurrence used as a **Docker image** (after `image:`, `container:`, `services:`, `docker run`, `docker pull`, or any `oxsecurity/megalinter[-<flavor>]:<tag>` form, including `megalinter-only-*` standalone images and `docker.io/`-prefixed references) to the same reference prefixed with `ghcr.io/` — keep flavor and tag unchanged: `oxsecurity/megalinter-python:v9` becomes `ghcr.io/oxsecurity/megalinter-python:v9`.
+3. Leave untouched: references already prefixed with `ghcr.io/`, GitHub Action references (`uses: oxsecurity/megalinter@...` — actions are not Docker images), and documentation URLs.
 
 ## 3. Refine `.mega-linter.yml` (only AFTER install/upgrade)
 
@@ -92,7 +96,7 @@ Offer this to the user only if they seem interested in monitoring or already use
 ## 6. Wrap up
 
 - Show the user the generated/updated files.
-- Suggest the two ways to see MegaLinter in action (first install and upgrade alike), and offer to do it for them:
+- Propose the two ways to see MegaLinter in action (first install and upgrade alike), and offer to do it for them. A local run is **resource-consuming** (Docker-based, downloads an image of several GB on first run, then loads CPU/RAM/disk), so **running in CI is usually the recommended option** — ask the user which one they want (use your platform's structured question mechanism if it has one, with the CI option first/recommended) instead of picking silently:
+  - **Create a pull request** (recommended) with the generated/updated files (commit on the current branch if it is already a feature branch, otherwise on a new branch — never on the default branch —, push, open the PR), then run the `megalinter-check` skill (watch mode) on the created PR to watch the CI job results and fix the errors.
   - **Run MegaLinter locally** through the `megalinter-check` skill (local mode) to preview and fix errors before pushing anything. Its first run starts with a prerun analysis (`--prerun`, MegaLinter v10 or beta) that suggests `.mega-linter.yml` performance tuning (directories to exclude, flavor) before the real lint.
-  - **Create a pull request** with the generated/updated files (commit on the current branch if it is already a feature branch, otherwise on a new branch — never on the default branch —, push, open the PR), then run the `megalinter-check` skill (watch mode) on the created PR to watch the CI job results and fix the errors.
 - Do not commit or push without user confirmation, and never on the default branch.
