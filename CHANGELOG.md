@@ -387,6 +387,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 8.5.0 to **8.6.0** on 2026-08-07
   - [snakemake](https://snakemake.github.io/) from 9.24.0 to **9.25.1** on 2026-08-07
   - [sqlfluff](https://www.sqlfluff.com/) from 4.2.2 to **4.3.0** on 2026-08-07
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.9.0 to **3.10.0** on 2026-08-08
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.111.0 to **1.112.0** on 2026-08-08
 <!-- linter-versions-end -->
 
 ## [v9.6.0] - 2026-06-28
