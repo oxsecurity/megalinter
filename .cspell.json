@@ -24,6 +24,11 @@
     ],
     "ignoreWords": [
         "argumentb",
+        "dataviz",
+        "gridlines",
+        "linecap",
+        "linejoin",
+        "Segoe",
         "argumentr",
         "binutils",
         "deprecat",
