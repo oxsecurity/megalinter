@@ -192,6 +192,10 @@ By using **MegaLinter**, you'll enjoy the following benefits for your team:
 - This tool is **100% open source** and **free for all uses** (personal, professional, public, and private repositories).
 - MegaLinter can run on [**any CI tool**](https://github.com/oxsecurity/megalinter/tree/main/docs/install-assisted.md) and be [**run locally**](https://megalinter.io/mega-linter-runner/): **no need to authorize an external application**, and **your codebase never leaves your tooling ecosystem**.
 
+Join a **continuously growing community**: MegaLinter Docker images are pulled **hundreds of thousands of times every month**.
+
+[![MegaLinter Docker pulls per month](https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/docker-pulls-monthly.svg)](https://megalinter.io/latest/flavors-stats/)
+
 <!-- quick-start-section-start -->
 <!-- markdown-headers
 ---

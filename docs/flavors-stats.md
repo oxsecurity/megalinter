@@ -1,3 +1,15 @@
+# Flavors statistics
+
+## Docker pulls per month
+
+MegaLinter Docker images (main image, [flavors](flavors.md) and standalone linter images) are pulled **hundreds of thousands of times every month**, on Docker Hub and ghcr.io, since the creation of the project in October 2020:
+
+![MegaLinter Docker pulls per month](assets/images/docker-pulls-monthly.svg)
+
+This graph is refreshed automatically: monthly points are stored in [`docker-pulls-monthly.json`](https://github.com/oxsecurity/megalinter/blob/main/.automation/generated/docker-pulls-monthly.json) and updated from the collected registry statistics.
+
+## Cumulated Docker pulls by flavor
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.0/chart.min.js"
   integrity="sha512-asxKqQghC1oBShyhiBwA+YgotaSYKxGP1rcSYTDrB0U6DxwlJjU59B67U8+5/++uFjcuVM8Hh5cokLjZlhm3Vg=="
   crossorigin="anonymous" referrerpolicy="no-referrer"></script>

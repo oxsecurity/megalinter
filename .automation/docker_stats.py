@@ -38,6 +38,7 @@ from megalinter.constants import (  # noqa: E402
 
 REPO_HOME = os.path.dirname(os.path.abspath(__file__)) + os.path.sep + ".."
 DOCKER_STATS_FILE = REPO_HOME + "/.automation/generated/flavors-stats.json"
+LINTERS_MATRIX_FILE = REPO_HOME + "/.automation/generated/linters_matrix.json"
 
 GITHUB_GRAPHQL_URL = "https://api.github.com/graphql"
 GITHUB_PACKAGES_HTML_URL = (
@@ -191,6 +192,15 @@ def _fetch_dockerhub_download_count(image_url: str) -> int:
 # ---------------------------------------------------------------------------
 
 
+def list_standalone_linter_ids() -> list:
+    with open(LINTERS_MATRIX_FILE, "r", encoding="utf-8") as f:
+        linters_matrix = json.load(f)
+    linter_ids = set()
+    for platform_linters in linters_matrix.values():
+        linter_ids.update(platform_linters)
+    return sorted(linter_ids)
+
+
 def update_docker_pulls_counter():
     logging.info("Fetching docker pull counters on flavors images")
     total_count = 0
@@ -230,6 +240,23 @@ def update_docker_pulls_counter():
         flavor_stats = list(docker_stats.get(flavor_id, []))
         flavor_stats.append([now_str, flavor_count])
         docker_stats[flavor_id] = keep_one_stat_by_day(flavor_stats)
+
+    # Standalone single-linter images (megalinter-only-<linter>)
+    logging.info("Fetching docker pull counters on standalone linter images")
+    for linter_id in list_standalone_linter_ids():
+        package_name = f"{ML_DOCKER_NAME}-only-{linter_id}"
+        ghcr_count = fetch_ghcr_download_count(package_name)
+        dockerhub_count = _fetch_dockerhub_download_count(
+            f"{DOCKER_PACKAGES_ROOT_URL}/{ML_DOCKER_IMAGE}-only-{linter_id}"
+        )
+        standalone_count = ghcr_count + dockerhub_count
+
+        logging.info(f"- docker pulls for only-{linter_id}: {standalone_count}")
+        total_count += standalone_count
+
+        standalone_stats = list(docker_stats.get(f"only-{linter_id}", []))
+        standalone_stats.append([now_str, standalone_count])
+        docker_stats[f"only-{linter_id}"] = keep_one_stat_by_day(standalone_stats)
 
     total_count_human = number_human_format(total_count)
     logging.info(f"Total docker pulls: {total_count_human} ({total_count})")

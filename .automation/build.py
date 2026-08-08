@@ -27,6 +27,7 @@ import terminaltables
 import webpreview
 import yaml
 from bs4 import BeautifulSoup
+from docker_pulls_chart import generate_docker_pulls_chart
 from docker_stats import update_docker_pulls_counter
 from giturlparse import parse
 from megalinter import config, utils
@@ -181,6 +182,10 @@ def generate_all_flavors():
             )
         except Exception as e:
             logging.warning("Unable to update docker pull counters: " + str(e))
+        try:
+            generate_docker_pulls_chart()
+        except Exception as e:
+            logging.warning("Unable to generate docker pulls chart: " + str(e))
 
 
 # Automatically generate Dockerfile , action.yml and upgrade all_flavors.json

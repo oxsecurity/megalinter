@@ -33,10 +33,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Flavors
 
 - Doc
+  - New **Docker pulls per month** graph, showing the growth of MegaLinter adoption since October 2020, displayed in the README and on the [Flavors statistics](https://megalinter.io/latest/flavors-stats/) page
 
 - mega-linter-runner
 
 - Dev
+  - **Docker pulls monthly chart**: the auto-update workflow now regenerates `docs/assets/images/docker-pulls-monthly.svg` (new pulls per month since October 2020, all images and registries), via the new `.automation/docker_pulls_chart.py` called by `build.py` after the pull counters update
+    - Historical monthly points are frozen in `.automation/generated/docker-pulls-monthly.json` (built once from the tracked stats plus a Web Archive reconstruction of the collection gaps); the script only appends newly completed months computed from `flavors-stats.json`
+  - Docker pull counters now also track the **standalone `megalinter-only-*` images**: their download counts are stored in `flavors-stats.json` and included in the README badge total
 
 - CI
 
