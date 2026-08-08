@@ -2,7 +2,7 @@
 
 This custom MegaLinter aims to have an optimized Docker image size.
 
-It is built from official MegaLinter images, but is maintained on <%= CUSTOM_FLAVOR_REPO_URL %> by <%= CUSTOM_FLAVOR_AUTHOR %>
+It is built from official MegaLinter images, but is maintained on [<%= CUSTOM_FLAVOR_REPO %>](<%= CUSTOM_FLAVOR_REPO_URL %>) by <%= CUSTOM_FLAVOR_AUTHOR %>
 
 ## Embedded linters
 
@@ -12,8 +12,8 @@ It is built from official MegaLinter images, but is maintained on <%= CUSTOM_FLA
 
 Follow [MegaLinter installation guide](https://megalinter.io/latest/install-assisted/), and replace related elements in the workflow.
 
-- GitHub Action: On MegaLinter step in .github/workflows/mega-linter.yml, define `uses: <%= CUSTOM_FLAVOR_GITHUB_ACTION %>@main`
-- Docker image: Replace official MegaLinter image with `<%= DOCKER_IMAGE_VERSION %>`
+- **GitHub Action**: On MegaLinter step in `.github/workflows/mega-linter.yml`, define `uses: <%= CUSTOM_FLAVOR_GITHUB_ACTION %>@main`
+- **Docker image**: Replace official MegaLinter image with `<%= DOCKER_IMAGE_VERSION %>`
 
 ## How the flavor is generated and updated
 
@@ -52,6 +52,7 @@ See the [Custom Flavors documentation](https://megalinter.io/beta/custom-flavors
 ### Optional: Docker Hub publishing
 
 To publish to Docker Hub in addition to ghcr.io, configure:
+
 - `DOCKERHUB_REPO` variable (e.g., your Docker Hub username)
 - `DOCKERHUB_USERNAME` secret
 - `DOCKERHUB_PASSWORD` secret
@@ -65,13 +66,6 @@ If you need to manually trigger a build:
 3. **Manually run the workflow**: Go to Actions > Build & Push MegaLinter Custom Flavor > Run workflow
 
 See [full Custom Flavors documentation](https://megalinter.io/beta/custom-flavors/).
-
-## How to use the custom flavor
-
-Follow [MegaLinter installation guide](https://megalinter.io/latest/install-assisted/), and replace related elements in the workflow.
-
-- **GitHub Action**: On MegaLinter step in `.github/workflows/mega-linter.yml`, define `uses: <%= CUSTOM_FLAVOR_GITHUB_ACTION %>@main`
-- **Docker image**: Replace official MegaLinter image with `<%= DOCKER_IMAGE_VERSION %>`
 
 ## License
 

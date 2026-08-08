@@ -42,7 +42,7 @@
 #   3. Give it a descriptive name (e.g., "MegaLinter Auto-Release")
 #   4. Set expiration (e.g., 90 days or 1 year)
 #   5. Under "Repository access", select "Only select repositories"
-#   6. Choose this repository (megalinter-custom-flavor-npm-groovy-lint)
+#   6. Choose this custom flavor repository
 #   7. Under "Permissions" > "Repository permissions":
 #      - Contents: Read and write
 #      - Actions: Read and write
@@ -69,7 +69,7 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v6
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0
           persist-credentials: false
@@ -91,7 +91,7 @@ jobs:
 
           # Get the latest tag
           LATEST_MEGALINTER_TAG=$(echo "$MEGALINTER_TAGS" | tail -n 1)
-          echo "latest_tag=$LATEST_MEGALINTER_TAG" >> $GITHUB_OUTPUT
+          echo "latest_tag=$LATEST_MEGALINTER_TAG" >> "$GITHUB_OUTPUT"
 
           # Save all tags to a file
           echo "$MEGALINTER_TAGS" > megalinter_tags.txt
@@ -116,7 +116,7 @@ jobs:
             echo "Latest repository tag: $LATEST_REPO_TAG"
           fi
 
-          echo "latest_repo_tag=$LATEST_REPO_TAG" >> $GITHUB_OUTPUT
+          echo "latest_repo_tag=$LATEST_REPO_TAG" >> "$GITHUB_OUTPUT"
 
       - name: Find New Version
         id: find-new-version
@@ -134,7 +134,7 @@ jobs:
             # Remove 'v' prefix for comparison
             ver1="${1#v}"
             ver2="${2#v}"
-            
+
             # Use sort -V to compare versions
             if [ "$(printf '%s\n' "$ver1" "$ver2" | sort -V | tail -n1)" = "$ver1" ] && [ "$ver1" != "$ver2" ]; then
               return 0  # ver1 > ver2
@@ -146,15 +146,15 @@ jobs:
           # Check if we should create a new release
           if [ -z "$LATEST_REPO_TAG" ]; then
             echo "No existing tags in repository. Will create release for $LATEST_MEGALINTER_TAG"
-            echo "new_version_found=true" >> $GITHUB_OUTPUT
-            echo "new_version=$LATEST_MEGALINTER_TAG" >> $GITHUB_OUTPUT
+            echo "new_version_found=true" >> "$GITHUB_OUTPUT"
+            echo "new_version=$LATEST_MEGALINTER_TAG" >> "$GITHUB_OUTPUT"
           elif version_greater_than "$LATEST_MEGALINTER_TAG" "$LATEST_REPO_TAG"; then
             echo "✅ New version found! $LATEST_MEGALINTER_TAG > $LATEST_REPO_TAG"
-            echo "new_version_found=true" >> $GITHUB_OUTPUT
-            echo "new_version=$LATEST_MEGALINTER_TAG" >> $GITHUB_OUTPUT
+            echo "new_version_found=true" >> "$GITHUB_OUTPUT"
+            echo "new_version=$LATEST_MEGALINTER_TAG" >> "$GITHUB_OUTPUT"
           else
             echo "ℹ️ No new version. Repository is up to date."
-            echo "new_version_found=false" >> $GITHUB_OUTPUT
+            echo "new_version_found=false" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Create Release for New Version
@@ -197,23 +197,23 @@ jobs:
 
           # Check for errors in the output
           if grep -q "could not create workflow dispatch event" workflow_trigger.log || \
-             grep -q "Resource not accessible by integration" workflow_trigger.log || \
-             grep -q "HTTP 403" workflow_trigger.log || \
-             [ $EXIT_CODE -ne 0 ]; then
-            
+            grep -q "Resource not accessible by integration" workflow_trigger.log || \
+            grep -q "HTTP 403" workflow_trigger.log || \
+            [ "$EXIT_CODE" -ne 0 ]; then
+
             echo "::error::❌ Failed to trigger workflow!"
             echo ""
             cat workflow_trigger.log
             echo ""
-            
+
             if grep -q "Resource not accessible by integration" workflow_trigger.log || grep -q "HTTP 403" workflow_trigger.log; then
               echo "::error::The workflow could not be triggered due to insufficient token permissions."
               echo "::error::"
               echo "::error::Deleting the release so it can be recreated once PAT_TOKEN is configured..."
-              
+
               # Delete the release and tag that was just created
               gh release delete "$NEW_VERSION" --yes --cleanup-tag 2>&1 || echo "::warning::Could not delete release (it may not exist or already be deleted)"
-              
+
               echo "::error::"
               echo "::error::⚠️ PAT_TOKEN is REQUIRED to create releases and trigger the builder workflow."
               echo "::error::"
@@ -233,7 +233,7 @@ jobs:
               echo "::error::"
               echo "::error::Once configured, run this workflow again (manually or wait for the next scheduled run)."
             fi
-            
+
             exit 1
           fi
 
@@ -246,25 +246,26 @@ jobs:
           LATEST_REPO_TAG: ${{ steps.fetch-repo-tags.outputs.latest_repo_tag }}
           NEW_VERSION_FOUND: ${{ steps.find-new-version.outputs.new_version_found }}
           NEW_VERSION: ${{ steps.find-new-version.outputs.new_version }}
-          GH_REPO: ${GITHUB_REPOSITORY}
         run: |
-          echo "## Check for New MegaLinter Version Summary" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
+          {
+            echo "## Check for New MegaLinter Version Summary"
+            echo ""
 
-          if [ "${NEW_VERSION_FOUND}" == "true" ]; then
-            echo "New version found: **${NEW_VERSION}**" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "A new release has been created, which will trigger the custom flavor builder workflow." >> $GITHUB_STEP_SUMMARY
-          else
-            echo "No new versions found. Repository is up to date with MegaLinter." >> $GITHUB_STEP_SUMMARY
-          fi
+            if [ "${NEW_VERSION_FOUND}" == "true" ]; then
+              echo "New version found: **${NEW_VERSION}**"
+              echo ""
+              echo "A new release has been created, which will trigger the custom flavor builder workflow."
+            else
+              echo "No new versions found. Repository is up to date with MegaLinter."
+            fi
 
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Version Comparison:**" >> $GITHUB_STEP_SUMMARY
-          echo "- Latest MegaLinter version: **$LATEST_MEGALINTER_TAG**" >> $GITHUB_STEP_SUMMARY
+            echo ""
+            echo "**Version Comparison:**"
+            echo "- Latest MegaLinter version: **$LATEST_MEGALINTER_TAG**"
 
-          if [ -n "$LATEST_REPO_TAG" ]; then
-            echo "- Latest repository version: **$LATEST_REPO_TAG**" >> $GITHUB_STEP_SUMMARY
-          else
-            echo "- Latest repository version: **No tags found**" >> $GITHUB_STEP_SUMMARY
-          fi
+            if [ -n "$LATEST_REPO_TAG" ]; then
+              echo "- Latest repository version: **$LATEST_REPO_TAG**"
+            else
+              echo "- Latest repository version: **No tags found**"
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"

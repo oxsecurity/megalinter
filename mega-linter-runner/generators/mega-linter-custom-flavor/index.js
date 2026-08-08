@@ -105,9 +105,10 @@ Example: 'megalinter-custom-flavor-python-light'
     if (this.selectedLinters.length === 0) {
       throw new Error("You must select at least one linter for your custom flavor");
     }
+    // Markdown list: no leading indent, else markdownlint MD007 fails in the generated README
     this.selectedLintersWithLinks = this.props.selectedLinters.map((linter) => {
       const linterUrl = `https://megalinter.io/latest/descriptors/${linter.toLowerCase()}/`;
-      return `  - [${linter}](${linterUrl})`;
+      return `- [${linter}](${linterUrl})`;
     }).join("\n");
     // Custom flavor author is git username
     const git = simpleGit();
@@ -159,6 +160,11 @@ Example: 'megalinter-custom-flavor-python-light'
       this.destinationPath("./.github/workflows/check-new-megalinter-version.yml"),
       {}
     );
+    this.fs.copyTpl(
+      this.templatePath("zizmor.yml"),
+      this.destinationPath("./.github/zizmor.yml"),
+      {}
+    );
   }
 
   _generateGitHubAction() {
@@ -182,6 +188,7 @@ Example: 'megalinter-custom-flavor-python-light'
         CUSTOM_FLAVOR_LINTERS_WITH_LINKS: this.selectedLintersWithLinks,
         DOCKER_IMAGE_VERSION: this.customFlavorDockerImageVersion,
         CUSTOM_FLAVOR_GITHUB_ACTION: this.customFlavorRepo,
+        CUSTOM_FLAVOR_REPO: this.customFlavorRepo,
         CUSTOM_FLAVOR_REPO_URL: this.customFlavorRepoUrl,
         CUSTOM_FLAVOR_AUTHOR: this.customFlavorAuthor,
       }
