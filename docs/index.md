@@ -17,7 +17,7 @@
 <!-- mega-linter-title-end -->
 <!-- mega-linter-badges-start -->
 ![GitHub release](https://img.shields.io/github/v/release/oxsecurity/megalinter?sort=semver&color=%23FD80CD)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-16.5M-blue?color=%23FD80CD)](https://megalinter.io/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-16.6M-blue?color=%23FD80CD)](https://megalinter.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg?color=%23FD80CD)](https://npmjs.org/package/mega-linter-runner)
 [![Coding Agents](https://img.shields.io/badge/Coding%20Agents-compatible-%23FD80CD?logo=githubcopilot&logoColor=white)](https://megalinter.io/latest/coding-agents/)
 [![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?cacheSeconds=3600&color=%23FD80CD)](https://github.com/oxsecurity/megalinter/stargazers/)
@@ -31,39 +31,44 @@ MegaLinter is an **open-source** tool for **CI/CD workflows** that analyzes the 
 
 Supports [**63** languages](supported-linters.md#languages), [**21** formats](supported-linters.md#formats), [**19** tooling formats](supported-linters.md#tooling-formats), and is **ready to use out of the box** as a GitHub Action or with any CI system. It is **highly configurable** and **free for all uses**.
 
-MegaLinter has **native integrations** with popular CI/CD tools and is compliant with most **Coding Agents**.
+MegaLinter has **native integrations** with popular CI/CD tools and is compliant with most [**Coding Agents**](https://megalinter.io/latest/coding-agents/).
 
-[![GitHub](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/github.png?raw=true>)](reporters/GitHubCommentReporter.md)
-[![GitLab](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/gitlab.png?raw=true>)](reporters/GitlabCommentReporter.md)
-[![Azure](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/azure.png?raw=true>)](reporters/AzureCommentReporter.md)
-[![Bitbucket](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/bitbucket.png?raw=true>)](reporters/BitbucketCommentReporter.md)
-[![Jenkins](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/jenkins.png?raw=true>)](install-jenkins.md)
-[![Drone](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/drone.png?raw=true>)](install-drone.md)
-[![Concourse](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/concourse.png?raw=true>)](install-concourse.md)
-[![Docker](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/docker.png?raw=true>)](install-docker.md)
-[![SARIF](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/sarif.png?raw=true>)](reporters/SarifReporter.md)
-[![Grafana](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/grafana.png?raw=true>)](reporters/ApiReporter.md)
+<div align="center">
+<a href="reporters/GitHubCommentReporter.md"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/github.png?raw=true" alt="GitHub" height="40" style="height:40px;vertical-align:middle;margin:4px"></a>
+<a href="reporters/GitlabCommentReporter.md"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/gitlab.png?raw=true" alt="GitLab" height="40" style="height:40px;vertical-align:middle;margin:4px"></a>
+<a href="reporters/AzureCommentReporter.md"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/azure.png?raw=true" alt="Azure" height="40" style="height:40px;vertical-align:middle;margin:4px"></a>
+<a href="reporters/BitbucketCommentReporter.md"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/bitbucket.png?raw=true" alt="Bitbucket" height="40" style="height:40px;vertical-align:middle;margin:4px"></a>
+<a href="install-jenkins.md"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/jenkins.png?raw=true" alt="Jenkins" height="40" style="height:40px;vertical-align:middle;margin:4px"></a>
+<a href="install-drone.md"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/drone.png?raw=true" alt="Drone" height="40" style="height:40px;vertical-align:middle;margin:4px"></a>
+<a href="install-concourse.md"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/concourse.png?raw=true" alt="Concourse" height="40" style="height:40px;vertical-align:middle;margin:4px"></a>
+<a href="install-docker.md"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/docker.png?raw=true" alt="Docker" height="40" style="height:40px;vertical-align:middle;margin:4px"></a>
+<a href="reporters/SarifReporter.md"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/sarif.png?raw=true" alt="SARIF" height="40" style="height:40px;vertical-align:middle;margin:4px"></a>
+<a href="observability/grafana.md"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/grafana.png?raw=true" alt="Grafana" height="40" style="height:40px;vertical-align:middle;margin:4px"></a>
+<a href="observability/datadog.md"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/datadog.png?raw=true" alt="Datadog" height="40" style="height:40px;vertical-align:middle;margin:4px"></a>
+<a href="observability/newrelic.md"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/newrelic.png?raw=true" alt="New Relic" height="40" style="height:40px;vertical-align:middle;margin:4px"></a>
+<a href="observability/elastic.md"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/elastic.png?raw=true" alt="Elastic" height="40" style="height:40px;vertical-align:middle;margin:4px"></a>
+</div>
 
-[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/claude.png?raw=true" alt="Claude Code" height="40" style="height:40px">](coding-agents.md)
-[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/cursor.png?raw=true" alt="Cursor" height="40" style="height:40px">](coding-agents.md)
-[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/github-copilot.png?raw=true" alt="GitHub Copilot CLI" height="40" style="height:40px">](coding-agents.md)
-[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/codex.png?raw=true" alt="Codex" height="40" style="height:40px">](coding-agents.md)
-[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/antigravity.png?raw=true" alt="Antigravity" height="40" style="height:40px">](coding-agents.md)
-[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/opencode.png?raw=true" alt="OpenCode" height="40" style="height:40px">](coding-agents.md)
-[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/gemini-cli.png?raw=true" alt="Gemini CLI" height="40" style="height:40px">](coding-agents.md)
-[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/windsurf.png?raw=true" alt="Windsurf" height="40" style="height:40px">](coding-agents.md)
-[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/cline.png?raw=true" alt="Cline" height="40" style="height:40px">](coding-agents.md)
-[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/roo-code.png?raw=true" alt="Roo Code" height="40" style="height:40px">](coding-agents.md)
-[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/kilo-code.png?raw=true" alt="Kilo Code" height="40" style="height:40px">](coding-agents.md)
-[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/amp.png?raw=true" alt="Amp" height="40" style="height:40px">](coding-agents.md)
-[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/goose.png?raw=true" alt="Goose" height="40" style="height:40px">](coding-agents.md)
-[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/openhands.png?raw=true" alt="OpenHands" height="40" style="height:40px">](coding-agents.md)
-[<img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/qwen-code.png?raw=true" alt="Qwen Code" height="40" style="height:40px">](coding-agents.md)
+<div align="center">
+<a href="coding-agents.md"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/claude.png?raw=true" alt="Claude Code" height="40" style="height:40px;vertical-align:middle;margin:4px"></a>
+<a href="coding-agents.md"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/cursor.png?raw=true" alt="Cursor" height="40" style="height:40px;vertical-align:middle;margin:4px"></a>
+<a href="coding-agents.md"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/github-copilot.png?raw=true" alt="GitHub Copilot CLI" height="40" style="height:40px;vertical-align:middle;margin:4px"></a>
+<a href="coding-agents.md"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/codex.png?raw=true" alt="Codex" height="40" style="height:40px;vertical-align:middle;margin:4px"></a>
+<a href="coding-agents.md"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/antigravity.png?raw=true" alt="Antigravity" height="40" style="height:40px;vertical-align:middle;margin:4px"></a>
+<a href="coding-agents.md"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/opencode.png?raw=true" alt="OpenCode" height="40" style="height:40px;vertical-align:middle;margin:4px"></a>
+<a href="coding-agents.md"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/gemini-cli.png?raw=true" alt="Gemini CLI" height="40" style="height:40px;vertical-align:middle;margin:4px"></a>
+<a href="coding-agents.md"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/windsurf.png?raw=true" alt="Windsurf" height="40" style="height:40px;vertical-align:middle;margin:4px"></a>
+<a href="coding-agents.md"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/cline.png?raw=true" alt="Cline" height="40" style="height:40px;vertical-align:middle;margin:4px"></a>
+<a href="coding-agents.md"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/roo-code.png?raw=true" alt="Roo Code" height="40" style="height:40px;vertical-align:middle;margin:4px"></a>
+<a href="coding-agents.md"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/kilo-code.png?raw=true" alt="Kilo Code" height="40" style="height:40px;vertical-align:middle;margin:4px"></a>
+<a href="coding-agents.md"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/amp.png?raw=true" alt="Amp" height="40" style="height:40px;vertical-align:middle;margin:4px"></a>
+<a href="coding-agents.md"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/goose.png?raw=true" alt="Goose" height="40" style="height:40px;vertical-align:middle;margin:4px"></a>
+<a href="coding-agents.md"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/openhands.png?raw=true" alt="OpenHands" height="40" style="height:40px;vertical-align:middle;margin:4px"></a>
+<a href="coding-agents.md"><img src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/agents/qwen-code.png?raw=true" alt="Qwen Code" height="40" style="height:40px;vertical-align:middle;margin:4px"></a>
+</div>
 
 
 <!-- welcome-phrase-end -->
-
-> 🤖 **MegaLinter works with your coding agent!** Install the [MegaLinter agent skills](https://megalinter.io/latest/install-agent-skills/) with `npx skills add oxsecurity/megalinter/skills -s '*' -y --copy`, then ask **Claude Code, Cursor, GitHub Copilot CLI, Codex, Antigravity or OpenCode** to setup MegaLinter, watch its CI jobs, and fix the errors for you.
 
 ![MegaLinter Presentation GIF](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/MegaLinter-banner-Medium.gif?raw=true)
 
