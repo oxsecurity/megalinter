@@ -10927,6 +10927,45 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#linting-your-custom-flavor-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linting your custom flavor repository
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Linting your custom flavor repository">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#zizmor-the-builder-action-tracks-main" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        zizmor: the builder action tracks @main
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checkov-ckv_gha_7-cannot-be-satisfied" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        checkov: CKV_GHA_7 cannot be satisfied
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#optional-generate-the-image-for-arm" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -12255,6 +12294,45 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#linting-your-custom-flavor-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linting your custom flavor repository
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Linting your custom flavor repository">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#zizmor-the-builder-action-tracks-main" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        zizmor: the builder action tracks @main
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checkov-ckv_gha_7-cannot-be-satisfied" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        checkov: CKV_GHA_7 cannot be satisfied
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#optional-generate-the-image-for-arm" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -12439,7 +12517,28 @@ You can work directly on <strong>main</strong> branch, or create a sub-branch if
 <li><strong>megalinter-custom-flavor-builder.yml</strong>: Builds and publishes your custom flavor Docker image</li>
 <li><strong>check-new-megalinter-version.yml</strong>: Automatically checks daily for new MegaLinter releases and creates matching releases in your repository</li>
 </ul>
+<p>A <strong>.github/zizmor.yml</strong> configuration file is generated alongside them (see <a href="#linting-your-custom-flavor-repository">Linting your custom flavor repository</a> below).</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/custom-flavor-generated-files.png" data-desc-position="bottom"><img alt="Custom flavor generated files in VS Code" src="../assets/images/custom-flavor-generated-files.png"></a></p>
+<h3 id="linting-your-custom-flavor-repository">Linting your custom flavor repository</h3>
+<p>The generated files pass MegaLinter out of the box, so you can lint your custom flavor repository with MegaLinter like any other project. Two checks need a deliberate exception, for reasons that are specific to custom flavors.</p>
+<h4 id="zizmor-the-builder-action-tracks-main">zizmor: the builder action tracks <code>@main</code></h4>
+<p>The generated workflows hash-pin every action they use, except the flavor builder:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oxsecurity/megalinter/flavors/custom-builder@main</span>
+</code></pre></div>
+<p>This is intentional. The builder must track upstream so that your image is always built by the builder matching the MegaLinter release you are building. Hash-pinning it would strand your repository on an outdated builder.</p>
+<p>The generated <code>.github/zizmor.yml</code> waives exactly that reference, and keeps <code>hash-pin</code> as the blanket policy so the exception cannot silently widen:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">rules</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">unpinned-uses</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">policies</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">oxsecurity/megalinter/flavors/custom-builder</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ref-pin</span>
+<span class="w">        </span><span class="s">"*"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hash-pin</span>
+</code></pre></div>
+<h4 id="checkov-ckv_gha_7-cannot-be-satisfied">checkov: <code>CKV_GHA_7</code> cannot be satisfied</h4>
+<p><code>CKV_GHA_7</code> requires <code>workflow_dispatch</code> inputs to be empty. The builder workflow needs them: <code>check-new-megalinter-version.yml</code> dispatches it with <code>--field megalinter-version</code> and <code>--field is-latest</code> to build a specific upstream release, so the inputs cannot be removed.</p>
+<p>Skip the check in your <code>.mega-linter.yml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">REPOSITORY_CHECKOV_ARGUMENTS</span><span class="p">:</span><span class="w"> </span><span class="s">"--skip-check</span><span class="nv"> </span><span class="s">CKV_GHA_7"</span>
+</code></pre></div>
 <h3 id="optional-generate-the-image-for-arm">Optional: Generate the image for ARM</h3>
 <blockquote>
 <p><strong>Important:</strong> Check the <a href="../all_linters/">linters you have selected</a> in your flavor to see if they are compatible with <code>linux/arm64</code> platform.</p>

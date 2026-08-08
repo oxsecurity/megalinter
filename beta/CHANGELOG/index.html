@@ -15814,6 +15814,14 @@
 <li><strong>Skip <code>docker pull</code></strong> when the requested version is a pinned release tag (<code>vX.Y.Z</code>, immutable) and the image is already available locally, removing a useless registry round-trip</li>
 <li>Print a hint before mounting the workspace when it contains <strong>well-known heavy folders</strong> (build caches, package stores), pointing at <code>SKIP_CLI_LINT_MODES=project</code> to keep local runs fast</li>
 <li><strong><code>--custom-flavor-setup</code></strong>: the generated README now has a <strong>License</strong> section stating the flavor is covered by <strong>AGPL-3.0</strong>, with a link to the MegaLinter source repository</li>
+<li><strong><code>--custom-flavor-setup</code> now generates a MegaLinter-clean repository</strong>, so a new custom flavor repo starts green instead of failing its own first MegaLinter run, fixes <a href="https://github.com/oxsecurity/megalinter/issues/8680">#8680</a><ul>
+<li>The generated workflows and README now pass <strong>actionlint</strong>, <strong>zizmor</strong>, <strong>editorconfig-checker</strong> and <strong>markdownlint</strong></li>
+<li>Actions used by the generated workflows are <strong>hash-pinned</strong>, and a <strong><code>.github/zizmor.yml</code></strong> is generated to waive the one deliberate exception: the flavor builder tracks <code>@main</code> so your image is always built by the builder matching the MegaLinter release you target</li>
+<li>Fixed the generated builder header comment, which advertised the image at <code>ghcr.io/&lt;owner&gt;/&lt;repo&gt;:&lt;tag&gt;</code> instead of <code>ghcr.io/&lt;owner&gt;/&lt;repo&gt;/megalinter-custom-flavor:&lt;tag&gt;</code></li>
+<li>Fixed the generated PAT setup instructions, which named the repository the template was originally written against</li>
+<li><a href="https://megalinter.io/beta/custom-flavors/">Custom Flavors documentation</a> now covers linting your flavor repository, including the <code>REPOSITORY_CHECKOV_ARGUMENTS: "--skip-check CKV_GHA_7"</code> needed by the builder's <code>workflow_dispatch</code> inputs</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
