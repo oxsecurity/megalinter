@@ -174,7 +174,7 @@ linters:
     linter_spdx_license: MIT
     linter_url: https://revive.run/
     linter_repo: https://github.com/mgechev/revive
-    linter_megalinter_ref_url: https://github.com/mgechev/revive#readme
+    linter_megalinter_ref_url: https://github.com/mgechev/revive#megalinter
     linter_rules_url: https://revive.run/r
     linter_image_url: https://github.com/mgechev/revive/raw/master/assets/logo.png
     linter_rules_configuration_url: https://revive.run/docs#custom-configuration

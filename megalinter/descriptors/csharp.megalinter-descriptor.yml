@@ -157,7 +157,7 @@ linters:
     is_formatter: true
     linter_url: https://github.com/dotnet/Roslynator
     linter_repo: https://github.com/dotnet/Roslynator
-    linter_megalinter_ref_url: https://github.com/dotnet/roslynator#readme
+    linter_megalinter_ref_url: https://github.com/dotnet/roslynator#command-line-tool
     linter_spdx_license: Apache-2.0
     linter_image_url: https://github.com/dotnet/roslynator/raw/main/images/roslynator-logo-small.png
     linter_rules_url: https://josefpihrt.github.io/docs/roslynator/analyzers
