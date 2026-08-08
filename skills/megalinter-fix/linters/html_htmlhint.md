@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **htmlhint** (MegaLinter key: `HTML_HTMLHINT`)
 - Descriptor: **HTML** (format)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/html_htmlhint/>
+- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/html_htmlhint/>
 - Official documentation: <https://htmlhint.com/>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.htmlhintrc` (custom path can be defined with `HTML_HTMLHINT_CONFIG_FILE`)

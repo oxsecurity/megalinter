@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **git_diff** (MegaLinter key: `REPOSITORY_GIT_DIFF`)
 - Descriptor: **REPOSITORY** (other)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/repository_git_diff/>
+- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/repository_git_diff/>
 - Official documentation: <https://git-scm.com>
 - Auto-fix support: no (errors must be fixed manually)
 - MegaLinter tuning variables (in `.mega-linter.yml`):

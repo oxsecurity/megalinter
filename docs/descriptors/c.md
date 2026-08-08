@@ -9,10 +9,10 @@ description: cppcheck, cpplint, clang-format are available to analyze C files in
 
 ## Linters
 
-| Linter                                                                          | Additional                                                                                                                                                                           |
-|---------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [**cppcheck**](c_cppcheck.md)<br/>[_C_CPPCHECK_](c_cppcheck.md)                 |                                                                                                                                                                                      |
-| [**cpplint**](c_cpplint.md)<br/>[_C_CPPLINT_](c_cpplint.md)                     | [![GitHub stars](https://img.shields.io/github/stars/cpplint/cpplint?cacheSeconds=3600)](https://github.com/cpplint/cpplint)                                                         |
+| Linter | Additional |
+| ------ | ---------- |
+| [**cppcheck**](c_cppcheck.md)<br/>[_C_CPPCHECK_](c_cppcheck.md) |  |
+| [**cpplint**](c_cpplint.md)<br/>[_C_CPPLINT_](c_cpplint.md) | [![GitHub stars](https://img.shields.io/github/stars/cpplint/cpplint?cacheSeconds=3600)](https://github.com/cpplint/cpplint) |
 | [**clang-format**](c_clang_format.md)<br/>[_C_CLANG_FORMAT_](c_clang_format.md) | [![GitHub stars](https://img.shields.io/github/stars/llvm/llvm-project?cacheSeconds=3600)](https://github.com/llvm/llvm-project) ![autofix](https://shields.io/badge/-autofix-green) |
 
 ## Linted files
@@ -23,10 +23,10 @@ description: cppcheck, cpplint, clang-format are available to analyze C files in
 
 ## Configuration in MegaLinter
 
-| Variable               | Description                                     | Default value |
-|------------------------|-------------------------------------------------|---------------|
-| C_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
-| C_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
-| C_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
-| C_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| C_PRE_COMMANDS | List of bash commands to run before the linters | None |
+| C_POST_COMMANDS | List of bash commands to run after the linters | None |
+| C_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| C_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 

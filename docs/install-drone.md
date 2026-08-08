@@ -25,7 +25,7 @@ workspace:
 steps:
 
 - name: megalinter
-  image: ghcr.io/oxsecurity/megalinter:v9
+  image: ghcr.io/oxsecurity/megalinter:v10
   environment:
     DEFAULT_WORKSPACE: /tmp/lint
 ```
@@ -47,7 +47,7 @@ workspace:
 steps:
 
 - name: megalinter
-  image: ghcr.io/oxsecurity/megalinter:v9
+  image: ghcr.io/oxsecurity/megalinter:v10
   environment:
     DEFAULT_WORKSPACE: /tmp/lint
 

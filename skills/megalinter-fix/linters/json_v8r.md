@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **v8r** (MegaLinter key: `JSON_V8R`)
 - Descriptor: **JSON** (format)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/json_v8r/>
+- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/json_v8r/>
 - Official documentation: <https://github.com/chris48s/v8r>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.v8rrc.yml` (custom path can be defined with `JSON_V8R_CONFIG_FILE`)

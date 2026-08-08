@@ -6,7 +6,8 @@ outputs:
     description: "0 if no source file has been updated, 1 if source files has been updated"
 runs:
   using: "docker"
-  image: "docker://oxsecurity/megalinter:v9"
+  # MAJOR-RELEASE-IMPACTED
+  image: "docker://oxsecurity/megalinter:v10"
 branding:
   icon: "check"
   color: "green"

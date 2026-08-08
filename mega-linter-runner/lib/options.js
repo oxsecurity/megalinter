@@ -70,7 +70,8 @@ export const optionsDefinition = optionator.default({
       alias: "r",
       type: "String",
       description:
-        "MegaLinter version tag pulled from ghcr.io/oxsecurity/megalinter. Accepts a release tag (`v9.1.2`), a moving tag (`stable`, `latest`, `beta`, `alpha`), or a major-version tag (`v9`).\n" +
+        // MAJOR-RELEASE-IMPACTED
+        "MegaLinter version tag pulled from ghcr.io/oxsecurity/megalinter. Accepts a release tag (`v10.0.0`), a moving tag (`stable`, `latest`, `beta`, `alpha`), or a major-version tag (`v10`).\n" +
         "Default: MEGALINTER_VERSION property of .mega-linter.yml if defined, else `latest`.",
       example: ["stable", "latest", "beta", `${DEFAULT_RELEASE}.1.2`],
     },

@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **lintr** (MegaLinter key: `R_LINTR`)
 - Descriptor: **R** (language)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/r_lintr/>
+- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/r_lintr/>
 - Official documentation: <https://lintr.r-lib.org/>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.lintr` (custom path can be defined with `R_LINTR_CONFIG_FILE`)

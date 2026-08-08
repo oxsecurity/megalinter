@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **pyright** (MegaLinter key: `PYTHON_PYRIGHT`)
 - Descriptor: **PYTHON** (language)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/python_pyright/>
+- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/python_pyright/>
 - Official documentation: <https://github.com/Microsoft/pyright>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `pyrightconfig.json` (custom path can be defined with `PYTHON_PYRIGHT_CONFIG_FILE`)

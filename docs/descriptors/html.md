@@ -9,10 +9,10 @@ description: djlint, htmlhint are available to analyze HTML files in MegaLinter
 
 ## Linters
 
-| Linter                                                                   | Additional                                                                                                                                           |
-|--------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [**djlint**](html_djlint.md)<br/>[_HTML_DJLINT_](html_djlint.md)         | [![GitHub stars](https://img.shields.io/github/stars/Riverside-Healthcare/djlint?cacheSeconds=3600)](https://github.com/Riverside-Healthcare/djlint) |
-| [**htmlhint**](html_htmlhint.md)<br/>[_HTML_HTMLHINT_](html_htmlhint.md) | [![GitHub stars](https://img.shields.io/github/stars/htmlhint/HTMLHint?cacheSeconds=3600)](https://github.com/htmlhint/HTMLHint)                     |
+| Linter | Additional |
+| ------ | ---------- |
+| [**djlint**](html_djlint.md)<br/>[_HTML_DJLINT_](html_djlint.md) | [![GitHub stars](https://img.shields.io/github/stars/Riverside-Healthcare/djlint?cacheSeconds=3600)](https://github.com/Riverside-Healthcare/djlint) |
+| [**htmlhint**](html_htmlhint.md)<br/>[_HTML_HTMLHINT_](html_htmlhint.md) | [![GitHub stars](https://img.shields.io/github/stars/htmlhint/HTMLHint?cacheSeconds=3600)](https://github.com/htmlhint/HTMLHint) |
 
 ## Linted files
 
@@ -22,10 +22,10 @@ description: djlint, htmlhint are available to analyze HTML files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                  | Description                                     | Default value |
-|---------------------------|-------------------------------------------------|---------------|
-| HTML_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
-| HTML_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
-| HTML_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
-| HTML_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| HTML_PRE_COMMANDS | List of bash commands to run before the linters | None |
+| HTML_POST_COMMANDS | List of bash commands to run after the linters | None |
+| HTML_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| HTML_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 

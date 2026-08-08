@@ -9,8 +9,8 @@ description: hadolint is available to analyze DOCKERFILE files in MegaLinter
 
 ## Linters
 
-| Linter                                                                                     | Additional                                                                                                                                                                        |
-|--------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Linter | Additional |
+| ------ | ---------- |
 | [**hadolint**](dockerfile_hadolint.md)<br/>[_DOCKERFILE_HADOLINT_](dockerfile_hadolint.md) | [![GitHub stars](https://img.shields.io/github/stars/hadolint/hadolint?cacheSeconds=3600)](https://github.com/hadolint/hadolint) ![sarif](https://shields.io/badge/-SARIF-orange) |
 
 ## Linted files
@@ -21,10 +21,10 @@ description: hadolint is available to analyze DOCKERFILE files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                        | Description                                     | Default value |
-|---------------------------------|-------------------------------------------------|---------------|
-| DOCKERFILE_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
-| DOCKERFILE_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
-| DOCKERFILE_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
-| DOCKERFILE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| DOCKERFILE_PRE_COMMANDS | List of bash commands to run before the linters | None |
+| DOCKERFILE_POST_COMMANDS | List of bash commands to run after the linters | None |
+| DOCKERFILE_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| DOCKERFILE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 

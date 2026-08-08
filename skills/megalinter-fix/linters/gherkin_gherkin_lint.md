@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **gherkin-lint** (MegaLinter key: `GHERKIN_GHERKIN_LINT`)
 - Descriptor: **GHERKIN** (tooling_format)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/gherkin_gherkin_lint/>
+- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/gherkin_gherkin_lint/>
 - Official documentation: <https://github.com/gherkin-lint/gherkin-lint>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.gherkin-lintrc` (custom path can be defined with `GHERKIN_GHERKIN_LINT_CONFIG_FILE`)

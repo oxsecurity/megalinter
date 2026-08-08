@@ -29,7 +29,7 @@ Note: Make sure you have a `job.plan.get` step that retrieves the `repo` contain
             type: docker-image
             source:
               repository: oxsecurity/megalinter
-              tag: v9
+              tag: v10
           inputs:
             - name: repo
           run:
@@ -66,7 +66,7 @@ image_resource:
   type: docker-image
   source:
     repository: oxsecurity/megalinter
-    tag: v9
+    tag: v10
 
 inputs:
 - name: repo

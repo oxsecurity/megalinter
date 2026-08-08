@@ -9,11 +9,11 @@ description: kubeconform, helm, kubescape are available to analyze KUBERNETES fi
 
 ## Linters
 
-| Linter                                                                                                 | Additional                                                                                                                                                                            |
-|--------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [**kubeconform**](kubernetes_kubeconform.md)<br/>[_KUBERNETES_KUBECONFORM_](kubernetes_kubeconform.md) | [![GitHub stars](https://img.shields.io/github/stars/yannh/kubeconform?cacheSeconds=3600)](https://github.com/yannh/kubeconform)                                                      |
-| [**helm**](kubernetes_helm.md)<br/>[_KUBERNETES_HELM_](kubernetes_helm.md)                             | [![GitHub stars](https://img.shields.io/github/stars/helm/helm?cacheSeconds=3600)](https://github.com/helm/helm)                                                                      |
-| [**kubescape**](kubernetes_kubescape.md)<br/>[_KUBERNETES_KUBESCAPE_](kubernetes_kubescape.md)         | [![GitHub stars](https://img.shields.io/github/stars/kubescape/kubescape?cacheSeconds=3600)](https://github.com/kubescape/kubescape) ![sarif](https://shields.io/badge/-SARIF-orange) |
+| Linter | Additional |
+| ------ | ---------- |
+| [**kubeconform**](kubernetes_kubeconform.md)<br/>[_KUBERNETES_KUBECONFORM_](kubernetes_kubeconform.md) | [![GitHub stars](https://img.shields.io/github/stars/yannh/kubeconform?cacheSeconds=3600)](https://github.com/yannh/kubeconform) |
+| [**helm**](kubernetes_helm.md)<br/>[_KUBERNETES_HELM_](kubernetes_helm.md) | [![GitHub stars](https://img.shields.io/github/stars/helm/helm?cacheSeconds=3600)](https://github.com/helm/helm) |
+| [**kubescape**](kubernetes_kubescape.md)<br/>[_KUBERNETES_KUBESCAPE_](kubernetes_kubescape.md) | [![GitHub stars](https://img.shields.io/github/stars/kubescape/kubescape?cacheSeconds=3600)](https://github.com/kubescape/kubescape) ![sarif](https://shields.io/badge/-SARIF-orange) |
 
 ## Linted files
 
@@ -29,10 +29,10 @@ description: kubeconform, helm, kubescape are available to analyze KUBERNETES fi
 
 ## Configuration in MegaLinter
 
-| Variable                        | Description                                     | Default value |
-|---------------------------------|-------------------------------------------------|---------------|
-| KUBERNETES_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
-| KUBERNETES_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
-| KUBERNETES_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
-| KUBERNETES_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| KUBERNETES_PRE_COMMANDS | List of bash commands to run before the linters | None |
+| KUBERNETES_POST_COMMANDS | List of bash commands to run after the linters | None |
+| KUBERNETES_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| KUBERNETES_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 

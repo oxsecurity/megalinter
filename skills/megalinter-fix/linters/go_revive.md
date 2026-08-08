@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **revive** (MegaLinter key: `GO_REVIVE`)
 - Descriptor: **GO** (language)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/go_revive/>
+- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/go_revive/>
 - Official documentation: <https://revive.run/>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `revive.toml` (custom path can be defined with `GO_REVIVE_CONFIG_FILE`)

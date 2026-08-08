@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **yamllint** (MegaLinter key: `YAML_YAMLLINT`)
 - Descriptor: **YAML** (format)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/yaml_yamllint/>
+- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/yaml_yamllint/>
 - Official documentation: <https://yamllint.readthedocs.io/>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.yamllint.yml` (custom path can be defined with `YAML_YAMLLINT_CONFIG_FILE`)

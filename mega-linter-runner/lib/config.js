@@ -1,6 +1,7 @@
 import * as path from "path";
 
-const DEFAULT_RELEASE = 'v9';
+// MAJOR-RELEASE-IMPACTED
+const DEFAULT_RELEASE = 'v10';
 const OX_PROTOCOL = process.env.OX_PROTOCOL || "https";
 const OX_BASE_URL =
   process.env.OX_BASE_URL || `${OX_PROTOCOL}://app.ox.security`;

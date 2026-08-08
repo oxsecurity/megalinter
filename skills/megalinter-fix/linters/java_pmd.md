@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **pmd** (MegaLinter key: `JAVA_PMD`)
 - Descriptor: **JAVA** (language)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/java_pmd/>
+- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/java_pmd/>
 - Official documentation: <https://pmd.github.io/>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `java-pmd-ruleset.xml` (custom path can be defined with `JAVA_PMD_CONFIG_FILE`)

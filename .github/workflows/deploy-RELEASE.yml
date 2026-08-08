@@ -112,7 +112,7 @@ jobs:
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           # MAJOR-RELEASE-IMPACTED
           tags: |
-            ghcr.io/oxsecurity/megalinter:v9
+            ghcr.io/oxsecurity/megalinter:v10
             ghcr.io/oxsecurity/megalinter:${{ github.event.release.tag_name }}
             ghcr.io/oxsecurity/megalinter:latest
           # Release is one-shot per tag — read BETA's warm cache only. No
@@ -125,21 +125,21 @@ jobs:
       #   with:
       #     workflow: mirror-docker-image.yml
       #     # MAJOR-RELEASE-IMPACTED
-      #     inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter:v9", "target-image": "docker.io/oxsecurity/megalinter:v9" }'
+      #     inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter:v10", "target-image": "docker.io/oxsecurity/megalinter:v10" }'
       #     ref: main
       # - name: Invoke Mirror docker image workflow (Main image)
       #   uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1
       #   with:
       #     workflow: mirror-docker-image.yml
       #     # MAJOR-RELEASE-IMPACTED
-      #     inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter:v9", "target-image": "docker.io/oxsecurity/megalinter:${{ github.event.release.tag_name }}" }'
+      #     inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter:v10", "target-image": "docker.io/oxsecurity/megalinter:${{ github.event.release.tag_name }}" }'
       #     ref: main
       # - name: Invoke Mirror docker image workflow (Main image)
       #   uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1
       #   with:
       #     workflow: mirror-docker-image.yml
       #     # MAJOR-RELEASE-IMPACTED
-      #     inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter:v9", "target-image": "docker.io/oxsecurity/megalinter:latest" }'
+      #     inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter:v10", "target-image": "docker.io/oxsecurity/megalinter:latest" }'
       #     ref: main
 
       # - name: Build Worker Image
@@ -158,7 +158,7 @@ jobs:
       #     secrets: |
       #       GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
       #     tags: |
-      #       ghcr.io/oxsecurity/megalinter-worker:v9
+      #       ghcr.io/oxsecurity/megalinter-worker:v10
       #       ghcr.io/oxsecurity/megalinter-worker:${{ github.event.release.tag_name }}
       #       ghcr.io/oxsecurity/megalinter-worker:latest
 
@@ -166,17 +166,17 @@ jobs:
       #   uses: benc-uk/workflow-dispatch@v1
       #   with:
       #     workflow: mirror-docker-image.yml
-      #     inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-worker:v9", "target-image": "docker.io/oxsecurity/megalinter-worker:v9" }'
+      #     inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-worker:v10", "target-image": "docker.io/oxsecurity/megalinter-worker:v10" }'
       # - name: Invoke Mirror docker image workflow (Worker image)
       #   uses: benc-uk/workflow-dispatch@v1
       #   with:
       #     workflow: mirror-docker-image.yml
-      #     inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-worker:v9", "target-image": "docker.io/oxsecurity/megalinter-worker:${{ github.event.release.tag_name }}" }'
+      #     inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-worker:v10", "target-image": "docker.io/oxsecurity/megalinter-worker:${{ github.event.release.tag_name }}" }'
       # - name: Invoke Mirror docker image workflow (Worker image)
       #   uses: benc-uk/workflow-dispatch@v1
       #   with:
       #     workflow: mirror-docker-image.yml
-      #     inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-worker:v9", "target-image": "docker.io/oxsecurity/megalinter-worker:latest" }'
+      #     inputs: '{ "source-image": "ghcr.io/oxsecurity/megalinter-worker:v10", "target-image": "docker.io/oxsecurity/megalinter-worker:latest" }'
 
 
   build-custom-flavor-builder:
@@ -296,7 +296,7 @@ jobs:
         with:
           images: ghcr.io/${{ github.repository }}-custom-flavor-builder
           tags: |
-            type=raw,value=v9
+            type=raw,value=v10
             type=raw,value=${{ github.event.release.tag_name }}
             type=raw,value=latest
 
@@ -329,7 +329,7 @@ jobs:
           persist-credentials: true
       - name: Get release version
         id: version
-        # Match only full semver tags (vN.N.N) so the moving major-version tag (e.g. `v9`) is ignored.
+        # Match only full semver tags (vN.N.N) so the moving major-version tag (e.g. `v10`) is ignored.
         run: |
           {
             echo "cversion=$(git describe --tags --match='v[0-9]*.[0-9]*.[0-9]*' --abbrev=0 | cut -c2-)"
@@ -376,7 +376,7 @@ jobs:
           STEPS_VERSION_OUTPUTS_CTAG: ${{ steps.version.outputs.ctag }}
       - name: Mike deploy current version
         # MAJOR-RELEASE-IMPACTED
-        # mike version names are the major number without the "v" prefix (e.g. "9", not "v9").
+        # mike version names are the major number without the "v" prefix (e.g. "10", not "v10").
         # The final command deploys the "latest" version with the full release as an alias
         # (matches the historical layout in versions.json: {"version": "latest", "aliases": ["x.y.z"]}).
         run: |

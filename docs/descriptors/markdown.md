@@ -9,11 +9,11 @@ description: markdownlint, markdown-table-formatter, rumdl are available to anal
 
 ## Linters
 
-| Linter                                                                                                                                               | Additional                                                                                                                                                                                                                  |
-|------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [**markdownlint**](markdown_markdownlint.md)<br/>[_MARKDOWN_MARKDOWNLINT_](markdown_markdownlint.md)                                                 | [![GitHub stars](https://img.shields.io/github/stars/DavidAnson/markdownlint?cacheSeconds=3600)](https://github.com/DavidAnson/markdownlint) ![formatter](https://shields.io/badge/-format-yellow)                          |
-| [**markdown-table-formatter**](markdown_markdown_table_formatter.md)<br/>[_MARKDOWN_MARKDOWN_TABLE_FORMATTER_](markdown_markdown_table_formatter.md) | [![GitHub stars](https://img.shields.io/github/stars/nvuillam/markdown-table-formatter?cacheSeconds=3600)](https://github.com/nvuillam/markdown-table-formatter) ![formatter](https://shields.io/badge/-format-yellow)      |
-| [**rumdl**](markdown_rumdl.md)<br/>[_MARKDOWN_RUMDL_](markdown_rumdl.md)                                                                             | [![GitHub stars](https://img.shields.io/github/stars/rvben/rumdl?cacheSeconds=3600)](https://github.com/rvben/rumdl) ![formatter](https://shields.io/badge/-format-yellow) ![sarif](https://shields.io/badge/-SARIF-orange) |
+| Linter | Additional |
+| ------ | ---------- |
+| [**markdownlint**](markdown_markdownlint.md)<br/>[_MARKDOWN_MARKDOWNLINT_](markdown_markdownlint.md) | [![GitHub stars](https://img.shields.io/github/stars/DavidAnson/markdownlint?cacheSeconds=3600)](https://github.com/DavidAnson/markdownlint) ![formatter](https://shields.io/badge/-format-yellow) |
+| [**markdown-table-formatter**](markdown_markdown_table_formatter.md)<br/>[_MARKDOWN_MARKDOWN_TABLE_FORMATTER_](markdown_markdown_table_formatter.md) | [![GitHub stars](https://img.shields.io/github/stars/nvuillam/markdown-table-formatter?cacheSeconds=3600)](https://github.com/nvuillam/markdown-table-formatter) ![formatter](https://shields.io/badge/-format-yellow) |
+| [**rumdl**](markdown_rumdl.md)<br/>[_MARKDOWN_RUMDL_](markdown_rumdl.md) | [![GitHub stars](https://img.shields.io/github/stars/rvben/rumdl?cacheSeconds=3600)](https://github.com/rvben/rumdl) ![formatter](https://shields.io/badge/-format-yellow) ![sarif](https://shields.io/badge/-SARIF-orange) |
 
 ## Linted files
 
@@ -22,10 +22,10 @@ description: markdownlint, markdown-table-formatter, rumdl are available to anal
 
 ## Configuration in MegaLinter
 
-| Variable                      | Description                                     | Default value |
-|-------------------------------|-------------------------------------------------|---------------|
-| MARKDOWN_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
-| MARKDOWN_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
-| MARKDOWN_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
-| MARKDOWN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| MARKDOWN_PRE_COMMANDS | List of bash commands to run before the linters | None |
+| MARKDOWN_POST_COMMANDS | List of bash commands to run after the linters | None |
+| MARKDOWN_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| MARKDOWN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 

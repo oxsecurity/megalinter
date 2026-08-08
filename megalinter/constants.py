@@ -27,7 +27,7 @@ DEFAULT_MARKDOWN_SUMMARY_REPORT_FILE_NAME = "megalinter-report.md"
 DEFAULT_SARIF_SCHEMA_URI = "https://json.schemastore.org/sarif-2.1.0.json"
 DEFAULT_SARIF_VERSION = "2.1.0"
 # MAJOR-RELEASE-IMPACTED
-DEFAULT_RELEASE = "v9"
+DEFAULT_RELEASE = "v10"
 
 # Ruleset used to mask secrets in linter outputs. Vendored from the pinned tag
 # by .automation/vendor_betterleaks_ruleset.py during documentation builds.

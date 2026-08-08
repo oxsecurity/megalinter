@@ -9,9 +9,9 @@ description: chktex is available to analyze LATEX files in MegaLinter
 
 ## Linters
 
-| Linter                                                              | Additional |
-|---------------------------------------------------------------------|------------|
-| [**chktex**](latex_chktex.md)<br/>[_LATEX_CHKTEX_](latex_chktex.md) |            |
+| Linter | Additional |
+| ------ | ---------- |
+| [**chktex**](latex_chktex.md)<br/>[_LATEX_CHKTEX_](latex_chktex.md) |  |
 
 ## Linted files
 
@@ -20,10 +20,10 @@ description: chktex is available to analyze LATEX files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable                   | Description                                     | Default value |
-|----------------------------|-------------------------------------------------|---------------|
-| LATEX_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
-| LATEX_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
-| LATEX_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
-| LATEX_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| LATEX_PRE_COMMANDS | List of bash commands to run before the linters | None |
+| LATEX_POST_COMMANDS | List of bash commands to run after the linters | None |
+| LATEX_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| LATEX_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 

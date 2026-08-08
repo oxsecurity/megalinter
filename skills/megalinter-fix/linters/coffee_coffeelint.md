@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **coffeelint** (MegaLinter key: `COFFEE_COFFEELINT`)
 - Descriptor: **COFFEE** (language)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/coffee_coffeelint/>
+- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/coffee_coffeelint/>
 - Official documentation: <https://coffeelint.github.io/>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.coffee-lint.json` (custom path can be defined with `COFFEE_COFFEELINT_CONFIG_FILE`)

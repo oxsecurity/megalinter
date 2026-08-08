@@ -7,6 +7,8 @@ import fs from "fs-extra";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 
+import { DEFAULT_RELEASE } from "../lib/config.js";
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const GENERATOR_PATH = path.resolve(
   path.join(__dirname, "..", "generators", "mega-linter"),
@@ -17,7 +19,7 @@ const DEFAULT_ANSWERS = {
   ci: "gitHubActions",
   copyPaste: false,
   spellingMistakes: false,
-  version: "v9",
+  version: DEFAULT_RELEASE,
   defaultBranch: "main",
   validateAllCodeBase: "all",
   applyFixes: false,
@@ -181,7 +183,7 @@ describe("Install generator (--install)", function () {
       "utf8",
     );
     assert.match(config, /MEGALINTER_FLAVOR: python/);
-    assert.match(config, /MEGALINTER_VERSION: v9/);
+    assert.match(config, new RegExp(`MEGALINTER_VERSION: ${DEFAULT_RELEASE}`));
   });
 
   it("runs fully non-interactively with noPrompt and CLI answers", async () => {

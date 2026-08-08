@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **black** (MegaLinter key: `PYTHON_BLACK`)
 - Descriptor: **PYTHON** (language)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/python_black/>
+- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/python_black/>
 - Official documentation: <https://black.readthedocs.io/en/stable/>
 - Auto-fix support: **yes** — add `PYTHON_BLACK` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter PYTHON_BLACK --fix` (runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: use `npx mega-linter-runner@beta` only when that property is `beta`)
 - Configuration file: `pyproject.toml` (custom path can be defined with `PYTHON_BLACK_CONFIG_FILE`)

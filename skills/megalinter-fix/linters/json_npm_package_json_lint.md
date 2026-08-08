@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **npm-package-json-lint** (MegaLinter key: `JSON_NPM_PACKAGE_JSON_LINT`)
 - Descriptor: **JSON** (format)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/json_npm_package_json_lint/>
+- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/json_npm_package_json_lint/>
 - Official documentation: <https://npmpackagejsonlint.org/>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.npmpackagejsonlintrc.json` (custom path can be defined with `JSON_NPM_PACKAGE_JSON_LINT_CONFIG_FILE`)

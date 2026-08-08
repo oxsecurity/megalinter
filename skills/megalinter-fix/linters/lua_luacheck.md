@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **luacheck** (MegaLinter key: `LUA_LUACHECK`)
 - Descriptor: **LUA** (language)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/lua_luacheck/>
+- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/lua_luacheck/>
 - Official documentation: <https://luacheck.readthedocs.io>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.luacheckrc` (custom path can be defined with `LUA_LUACHECK_CONFIG_FILE`)

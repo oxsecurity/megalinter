@@ -4,14 +4,14 @@
 
 <!-- # MAJOR-RELEASE-IMPACTED -->
 
-Only the latest version (v9) is supported with security updates.
+Only the latest version (v10) is supported with security updates.
 
 it's recommended to use Docker image and Github action tagged versions:
 
-- v9
-- latest (latest patch of 9.x.x)
+- v10
+- latest (latest patch of 10.x.x)
 
-You can also use fixed version of v9.x.x, but make sure to have tools like dependabot or renovate to help you to upgrade when new releases are available
+You can also use fixed version of v10.x.x, but make sure to have tools like dependabot or renovate to help you to upgrade when new releases are available
 
 ## Reporting a Vulnerability
 

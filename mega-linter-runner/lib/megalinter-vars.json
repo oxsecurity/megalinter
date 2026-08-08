@@ -16910,12 +16910,12 @@
       "name": "MEGALINTER_VERSION",
       "type": "string",
       "title": "MegaLinter version",
-      "description": "MegaLinter version tag to use (e.g. latest, beta, v9, v9.1.2). Used by mega-linter-runner and coding agents to select the Docker image version.",
+      "description": "MegaLinter version tag to use (e.g. latest, beta, v10, v10.0.0). Used by mega-linter-runner and coding agents to select the Docker image version.",
       "default": "latest",
       "examples": [
         "latest",
         "beta",
-        "v9"
+        "v10"
       ],
       "category": "GENERAL",
       "section": "GENERAL"
@@ -18544,7 +18544,7 @@
       "description": "POWERSHELL_POWERSHELL: Override CLI executable used to build the linter command line (rarely needed)",
       "default": [
         [
-          "pwsh"
+          "powershell"
         ]
       ],
       "category": "POWERSHELL_POWERSHELL",
@@ -18682,7 +18682,7 @@
       "description": "POWERSHELL_POWERSHELL_FORMATTER: Override CLI executable used to build the linter command line (rarely needed)",
       "default": [
         [
-          "pwsh"
+          "powershell"
         ]
       ],
       "category": "POWERSHELL_POWERSHELL_FORMATTER",

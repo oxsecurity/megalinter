@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **kubescape** (MegaLinter key: `KUBERNETES_KUBESCAPE`)
 - Descriptor: **KUBERNETES** (tooling_format)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/kubernetes_kubescape/>
+- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/kubernetes_kubescape/>
 - Official documentation: <https://github.com/kubescape/kubescape>
 - Auto-fix support: no (errors must be fixed manually)
 - MegaLinter tuning variables (in `.mega-linter.yml`):

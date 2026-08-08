@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **semgrep** (MegaLinter key: `REPOSITORY_SEMGREP`)
 - Descriptor: **REPOSITORY** (other)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/repository_semgrep/>
+- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/repository_semgrep/>
 - Official documentation: <https://semgrep.dev/>
 - Auto-fix support: no (errors must be fixed manually)
 - Ignore file: `.semgrepignore`

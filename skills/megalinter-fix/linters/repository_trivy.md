@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **trivy** (MegaLinter key: `REPOSITORY_TRIVY`)
 - Descriptor: **REPOSITORY** (other)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/repository_trivy/>
+- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/repository_trivy/>
 - Official documentation: <https://aquasecurity.github.io/trivy/>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `trivy.yaml` (custom path can be defined with `REPOSITORY_TRIVY_CONFIG_FILE`)

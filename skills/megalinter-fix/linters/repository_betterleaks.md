@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **betterleaks** (MegaLinter key: `REPOSITORY_BETTERLEAKS`)
 - Descriptor: **REPOSITORY** (other)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/repository_betterleaks/>
+- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/repository_betterleaks/>
 - Official documentation: <https://github.com/betterleaks/betterleaks>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.betterleaks.toml` (custom path can be defined with `REPOSITORY_BETTERLEAKS_CONFIG_FILE`)

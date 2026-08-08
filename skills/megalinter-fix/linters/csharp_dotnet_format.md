@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **dotnet-format** (MegaLinter key: `CSHARP_DOTNET_FORMAT`)
 - Descriptor: **CSHARP** (language)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/csharp_dotnet_format/>
+- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/csharp_dotnet_format/>
 - Official documentation: <https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format>
 - Auto-fix support: **yes** — add `CSHARP_DOTNET_FORMAT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter CSHARP_DOTNET_FORMAT --fix` (runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: use `npx mega-linter-runner@beta` only when that property is `beta`)
 - Rules configuration: <https://github.com/dotnet/sdk/tree/main/documentation/format/docs>

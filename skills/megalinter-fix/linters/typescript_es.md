@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **eslint** (MegaLinter key: `TYPESCRIPT_ES`)
 - Descriptor: **TYPESCRIPT** (language)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/typescript_eslint/>
+- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/typescript_eslint/>
 - Official documentation: <https://typescript-eslint.io/>
 - Auto-fix support: **yes** — add `TYPESCRIPT_ES` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter TYPESCRIPT_ES --fix` (runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: use `npx mega-linter-runner@beta` only when that property is `beta`)
 - Configuration file: `eslint.config.js` (custom path can be defined with `TYPESCRIPT_ES_CONFIG_FILE`)

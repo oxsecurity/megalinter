@@ -17,7 +17,7 @@ You may activate the [File.io reporter](https://megalinter.io/reporters/FileIoRe
 stage('MegaLinter') {
     agent {
         docker {
-            image 'ghcr.io/oxsecurity/megalinter:v9'
+            image 'ghcr.io/oxsecurity/megalinter:v10'
             args "-u root -e VALIDATE_ALL_CODEBASE=true -v ${WORKSPACE}:/tmp/lint --entrypoint=''"
             reuseNode true
         }
@@ -65,7 +65,7 @@ MegaLinter auto-detects the git hosting platform by inspecting the `GIT_URL` env
 stage('MegaLinter') {
     agent {
         docker {
-            image 'ghcr.io/oxsecurity/megalinter:v9'
+            image 'ghcr.io/oxsecurity/megalinter:v10'
             args "-u root -e VALIDATE_ALL_CODEBASE=true -v ${WORKSPACE}:/tmp/lint --entrypoint=''"
             reuseNode true
         }

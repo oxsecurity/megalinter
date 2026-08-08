@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **phpcs** (MegaLinter key: `PHP_PHPCS`)
 - Descriptor: **PHP** (language)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/php_phpcs/>
+- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/php_phpcs/>
 - Official documentation: <https://github.com/PHPCSStandards/PHP_CodeSniffer>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `phpcs.xml` (custom path can be defined with `PHP_PHPCS_CONFIG_FILE`)

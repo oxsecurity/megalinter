@@ -19,7 +19,7 @@ pipelines:
     - parallel:
       - step:
           name: Run MegaLinter
-          image: ghcr.io/oxsecurity/megalinter:v9
+          image: ghcr.io/oxsecurity/megalinter:v10
           script:
             - export DEFAULT_WORKSPACE=$BITBUCKET_CLONE_DIR && bash /entrypoint.sh
           artifacts:

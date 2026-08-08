@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **clippy** (MegaLinter key: `RUST_CLIPPY`)
 - Descriptor: **RUST** (language)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/rust_clippy/>
+- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/rust_clippy/>
 - Official documentation: <https://github.com/rust-lang/rust-clippy>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.clippy.toml` (custom path can be defined with `RUST_CLIPPY_CONFIG_FILE`)

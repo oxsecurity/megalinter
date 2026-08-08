@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **rst-lint** (MegaLinter key: `RST_RST_LINT`)
 - Descriptor: **RST** (format)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/rst_rst_lint/>
+- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/rst_rst_lint/>
 - Official documentation: <https://github.com/twolfson/restructuredtext-lint>
 - Auto-fix support: no (errors must be fixed manually)
 - Rules configuration: <https://github.com/twolfson/restructuredtext-lint#cli-utility>

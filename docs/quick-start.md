@@ -8,7 +8,7 @@ description: Setup MegaLinter in 5 minutes thanks to its assisted installation t
 
 # Quick Start
 
-- **With a coding agent**: install the [MegaLinter agent skills](https://megalinter.io/latest/install-agent-skills/) with `npx skills add oxsecurity/megalinter/skills -s '*' -y --copy`, then ask your agent to _"setup megalinter"_.
+- **With a coding agent**: install the [MegaLinter agent skills](https://megalinter.io/latest/install-agent-skills/) with `npx skills add oxsecurity/megalinter/skills`, then ask your agent to _"setup megalinter"_.
 - **Or with the interactive wizard**: run `npx mega-linter-runner --install` to generate configuration files (you need [Node.js](https://nodejs.org/en/) installed).
 - Commit, push, and create a pull request.
 - Watch!
@@ -20,7 +20,7 @@ description: Setup MegaLinter in 5 minutes thanks to its assisted installation t
 <!-- # MAJOR-RELEASE-IMPACTED -->
 
 - This repo is a hard fork of [GitHub Super-Linter](https://github.com/super-linter/super-linter), rewritten in Python to add [many additional features](mega-linter-vs-super-linter.md).
-- If you are a Super-Linter user, you can transparently **switch to MegaLinter and keep the same configuration** (just replace `super-linter/super-linter@v3` with `oxsecurity/megalinter@v9` in your GitHub Action YAML file, [like on this PR](https://github.com/nvuillam/npm-groovy-lint/pull/109)).
+- If you are a Super-Linter user, you can transparently **switch to MegaLinter and keep the same configuration** (just replace `super-linter/super-linter@v3` with `oxsecurity/megalinter@v10` in your GitHub Action YAML file, [like on this PR](https://github.com/nvuillam/npm-groovy-lint/pull/109)).
 - If you want to use MegaLinter's extra features (recommended), please take 5 minutes to use the [assisted installation](install-assisted.md).
 - For a beginner-friendly example of getting started with MegaLinter, check out [this blog post](https://ayyjohn.com/posts/linting-a-jekyll-blog-with-mega-linter) by Alec Johnson.
 
