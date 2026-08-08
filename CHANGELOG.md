@@ -85,12 +85,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Set the new `VERSION_GET_AT_RUNTIME: true` variable if your `PRE_COMMANDS` install different linter versions and you want the really installed versions reported
   - **Faster linting when fixes are applied** (`APPLY_FIXES`): the check-only linters of a language now run in parallel as soon as its fixer linters are done, instead of all linters of the language running one after another
   - **Faster standalone images and file-list runs**: `megalinter-only-*` images only parse the descriptor of their single linter, and the repository-wide `.gitignore` enumeration is skipped when an explicit list of files is passed (e.g. `mega-linter-runner [files...]` on a large repository)
-  - **Runtime speed-ups combined**, measured linting the MegaLinter repository itself:
+  - **Runtime speed-ups combined**, measured on the MegaLinter repository itself and on real-world repositories upgraded to this version (average of the last successful CI runs before / first CI runs after the upgrade):
 
-    | Measure                                          | Before | After | Delta |
-    |--------------------------------------------------|-------:|------:|------:|
-    | Full MegaLinter run (all linters, fixes applied) |  4m26s | 3m18s |  -26% |
-    | MegaLinter startup (`import megalinter`)         |    ~7s | ~0.9s |  -87% |
+    | Measure                                                                                                            | Before | After | Delta |
+    |--------------------------------------------------------------------------------------------------------------------|-------:|------:|------:|
+    | MegaLinter repository: full run (all linters, fixes applied)                                                       |  4m26s | 3m18s |  -26% |
+    | MegaLinter startup (`import megalinter`)                                                                           |    ~7s | ~0.9s |  -87% |
+    | [sfdx-hardis](https://github.com/hardisgroupcom/sfdx-hardis) CI MegaLinter job (v9.6.0 → beta, javascript flavor)  |  6m02s | 3m17s |  -45% |
+    | [vscode-sfdx-hardis](https://github.com/hardisgroupcom/vscode-sfdx-hardis) CI MegaLinter job (late-July → current beta) |  3m10s | 2m34s |  -19% |
 
   - **Better secrets masking in logs**, now powered by the [betterleaks](https://github.com/betterleaks/betterleaks) ruleset: redaction coverage nearly doubles (218 to 408 patterns), with no more network call at startup
   - `FILTER_REGEX_INCLUDE` and `FILTER_REGEX_EXCLUDE` (global, per-descriptor and per-linter) can now be defined as **a list of regexes** combined with a logical OR, so filter regexes can be appended across `EXTENDS` configs via `CONFIG_PROPERTIES_TO_APPEND`; single-string values remain fully supported, fixes [#8361](https://github.com/oxsecurity/megalinter/issues/8361)
