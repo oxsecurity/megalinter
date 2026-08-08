@@ -15631,7 +15631,7 @@
 <li><strong>Faster linting when fixes are applied</strong> (<code>APPLY_FIXES</code>): the check-only linters of a language now run in parallel as soon as its fixer linters are done, instead of all linters of the language running one after another</li>
 <li><strong>Faster standalone images and file-list runs</strong>: <code>megalinter-only-*</code> images only parse the descriptor of their single linter, and the repository-wide <code>.gitignore</code> enumeration is skipped when an explicit list of files is passed (e.g. <code>mega-linter-runner [files...]</code> on a large repository)</li>
 <li>
-<p><strong>Runtime speed-ups combined</strong>, measured linting the MegaLinter repository itself:</p>
+<p><strong>Runtime speed-ups combined</strong>, measured on the MegaLinter repository itself and on real-world repositories upgraded to this version (average of the last successful CI runs before / first CI runs after the upgrade):</p>
 <table>
 <thead>
 <tr>
@@ -15643,7 +15643,7 @@
 </thead>
 <tbody>
 <tr>
-<td>Full MegaLinter run (all linters, fixes applied)</td>
+<td>MegaLinter repository: full run (all linters, fixes applied)</td>
 <td style="text-align: right;">4m26s</td>
 <td style="text-align: right;">3m18s</td>
 <td style="text-align: right;">-26%</td>
@@ -15653,6 +15653,18 @@
 <td style="text-align: right;">~7s</td>
 <td style="text-align: right;">~0.9s</td>
 <td style="text-align: right;">-87%</td>
+</tr>
+<tr>
+<td><a href="https://github.com/hardisgroupcom/sfdx-hardis">sfdx-hardis</a> CI MegaLinter job (v9.6.0 → beta, javascript flavor)</td>
+<td style="text-align: right;">6m02s</td>
+<td style="text-align: right;">3m17s</td>
+<td style="text-align: right;">-45%</td>
+</tr>
+<tr>
+<td><a href="https://github.com/hardisgroupcom/vscode-sfdx-hardis">vscode-sfdx-hardis</a> CI MegaLinter job (late-July → current beta)</td>
+<td style="text-align: right;">3m10s</td>
+<td style="text-align: right;">2m34s</td>
+<td style="text-align: right;">-19%</td>
 </tr>
 </tbody>
 </table>
@@ -15719,6 +15731,7 @@
 <li>
 <p>Fixes</p>
 <ul>
+<li>Stop <strong><code>FutureWarning: Possible nested set</code> warnings</strong> appearing in the console at startup: a <strong>secret-masking</strong> regex used a POSIX character class (<code>[[:alnum:]]</code>) unsupported by Python. Such classes are now translated, which also makes the affected masking rule (Airtable personal access tokens) actually match</li>
 <li>Restore <strong>multi-arch <code>megalinter-only-*</code> Docker images</strong>: they were mistakenly published for a single architecture, linux/amd64 + linux/arm64 are back</li>
 <li>Fix linters relying on other linters' file lists (e.g. <code>SPELL_CSPELL</code>) <strong>linting zero files</strong> when run through their standalone <code>megalinter-only-*</code> Docker image</li>
 <li>Fix <strong><code>LINTER_RULES_PATH</code></strong> not being used to resolve config files for linters using <code>active_only_if_file_found</code> (e.g. <code>REPOSITORY_LS_LINT</code>, <code>SPELL_PROSELINT</code>, <code>SPELL_VALE</code>), fixes <a href="https://github.com/oxsecurity/megalinter/issues/8416">#8416</a></li>
