@@ -27,6 +27,7 @@ import terminaltables
 import webpreview
 import yaml
 from bs4 import BeautifulSoup
+from docker_pulls_chart import generate_docker_pulls_chart
 from docker_stats import update_docker_pulls_counter
 from giturlparse import parse
 from megalinter import config, utils
@@ -181,6 +182,10 @@ def generate_all_flavors():
             )
         except Exception as e:
             logging.warning("Unable to update docker pull counters: " + str(e))
+        try:
+            generate_docker_pulls_chart()
+        except Exception as e:
+            logging.warning("Unable to generate docker pulls chart: " + str(e))
 
 
 # Automatically generate Dockerfile , action.yml and upgrade all_flavors.json
@@ -4414,6 +4419,25 @@ def update_dependents_info():
     ]
     logging.info("Running command: " + " ".join(command))
     os.system(" ".join(command))
+    insert_docker_pulls_graph_in_dependents_page()
+
+
+def insert_docker_pulls_graph_in_dependents_page():
+    # The generated page is overwritten by github-dependents-info: re-insert
+    # the Docker pulls graph below the header badges, before the repos table
+    dependents_file = f"{REPO_HOME}/docs/used-by-stats.md"
+    graph_block = (
+        "MegaLinter Docker images are pulled "
+        "**hundreds of thousands of times every month**:\n\n"
+        "![MegaLinter Docker pulls per month]"
+        "(assets/images/docker-pulls-monthly.svg)\n\n"
+    )
+    with open(dependents_file, "r", encoding="utf-8") as f:
+        content = f.read()
+    if "docker-pulls-monthly.svg" not in content and "| Repository" in content:
+        content = content.replace("| Repository", graph_block + "| Repository", 1)
+        with open(dependents_file, "w", encoding="utf-8") as f:
+            f.write(content)
 
 
 def update_workflow_linters(file_path, linters):
