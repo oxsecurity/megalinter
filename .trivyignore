@@ -335,6 +335,17 @@ CVE-2026-18446
 # and undici >= 7.29.0.
 CVE-2026-69192
 CVE-2026-13697
+# CVE-2026-71556 is a symlink-follow flaw in go-git worktree WRITE operations: an
+# attacker who plants a symlink in a worktree can make the application overwrite
+# files (e.g. .git/config) when it writes through that path. The vulnerable
+# go-git v5.19.1 is vendored inside the trivy, grype and syft binaries themselves;
+# their latest upstream releases (trivy 0.73.0, grype 0.116.1, syft 1.50.0) all
+# predate the go-git 5.19.2 fix, so there is no upgrade path yet. MegaLinter only
+# runs these tools on the local workspace (fs/dir scans): they never perform
+# go-git worktree writes on attacker-controlled repositories, so the vulnerable
+# path is unreachable. Remove once trivy/grype/syft ship releases built with
+# go-git >= 5.19.2.
+CVE-2026-71556
 
 # --- Dockerfile misconfigurations (REPOSITORY_TRIVY misconfig scan) ---
 # These are trivy's own Dockerfile checks fired against MegaLinter's generated
