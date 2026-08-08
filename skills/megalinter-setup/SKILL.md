@@ -55,7 +55,11 @@ npx mega-linter-runner --upgrade --no-prompt
 
 `--upgrade` migrates every MegaLinter reference of the repository to the current major version: image tags and action versions in the CI workflow files, deprecated variable names, and the `MEGALINTER_VERSION` property of `.mega-linter.yml`. Run it whenever the repository references an older MegaLinter major version (e.g. `v8` image tags), even if the user only asked for a "check".
 
-After upgrading, check the CI files for Docker image references still pointing to Docker Hub (`docker.io/oxsecurity/megalinter*` or bare `oxsecurity/megalinter:*` image references): since MegaLinter v9.5.0, images are **only published to GitHub Container Registry** — rewrite them to `ghcr.io/oxsecurity/megalinter...` (Docker Hub is frozen at v9.4.0). GitHub Action references (`uses: oxsecurity/megalinter@...`) are not affected.
+**Mandatory after `--upgrade` — migrate Docker image references to ghcr.io.** Since MegaLinter v9.5.0, images are **only published to GitHub Container Registry** (Docker Hub is frozen at v9.4.0), and `--upgrade` does NOT rewrite the registry: it normalizes references to the bare `oxsecurity/megalinter...` form. So always finish with this pass:
+
+1. Search every CI/workflow file of the repository (`.github/workflows/*`, `.gitlab-ci.yml`, `azure-pipelines.yml`, `bitbucket-pipelines.yml`, `Jenkinsfile`, `.drone.yml`, shell scripts...) for `oxsecurity/megalinter` occurrences.
+2. Rewrite every occurrence used as a **Docker image** (after `image:`, `container:`, `services:`, `docker run`, `docker pull`, or any `oxsecurity/megalinter[-<flavor>]:<tag>` form, including `megalinter-only-*` standalone images and `docker.io/`-prefixed references) to the same reference prefixed with `ghcr.io/` — keep flavor and tag unchanged: `oxsecurity/megalinter-python:v9` becomes `ghcr.io/oxsecurity/megalinter-python:v9`.
+3. Leave untouched: references already prefixed with `ghcr.io/`, GitHub Action references (`uses: oxsecurity/megalinter@...` — actions are not Docker images), and documentation URLs.
 
 ## 3. Refine `.mega-linter.yml` (only AFTER install/upgrade)
 
