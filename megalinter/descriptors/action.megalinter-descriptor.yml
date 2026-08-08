@@ -24,6 +24,7 @@ linters:
       - **Advanced Validations**: Includes glob syntax validation, dependency checks for `needs:`, runner label validation, and cron syntax validation
     linter_url: https://rhysd.github.io/actionlint/
     linter_repo: https://github.com/rhysd/actionlint
+    linter_megalinter_ref_url: https://github.com/rhysd/actionlint/pull/722
     linter_rules_configuration_url: https://github.com/rhysd/actionlint/blob/main/docs/config.md
     linter_spdx_license: MIT
     files_sub_directory: .github/workflows
@@ -83,6 +84,7 @@ linters:
       > ```
     linter_url: https://zizmor.sh/
     linter_repo: https://github.com/zizmorcore/zizmor
+    linter_megalinter_ref_url: https://docs.zizmor.sh/integrations/
     linter_image_url: https://docs.zizmor.sh/assets/rainbow.svg
     linter_rules_url: https://docs.zizmor.sh/audits/
     linter_rules_configuration_url: https://docs.zizmor.sh/configuration/

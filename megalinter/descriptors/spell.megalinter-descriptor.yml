@@ -93,6 +93,7 @@ linters:
     linter_speed: 2
     linter_url: https://github.com/amperser/proselint
     linter_repo: https://github.com/amperser/proselint
+    linter_megalinter_ref_url: https://github.com/amperser/proselint#readme
     linter_banner_image_url: https://raw.githubusercontent.com/amperser/proselint/main/logo.png
     linter_rules_url: https://github.com/amperser/proselint#checks
     linter_rules_configuration_url: https://github.com/amperser/proselint#checks
@@ -183,6 +184,7 @@ linters:
       MegaLinter analyze markdown and restructuredText files by default, you can change that using SPELL_VALE_FILE_EXTENSIONS variable.
     linter_url: https://vale.sh/
     linter_repo: https://github.com/errata-ai/vale
+    linter_megalinter_ref_url: https://vale.sh/docs
     linter_rules_url: https://vale.sh/hub/
     linter_rules_configuration_url: https://vale.sh/explorer/
     linter_rules_inline_disable_url: https://vale.sh/docs/topics/vocab/
@@ -262,6 +264,7 @@ linters:
       - documentation
     linter_url: https://lychee.cli.rs
     linter_repo: https://github.com/lycheeverse/lychee
+    linter_megalinter_ref_url: https://github.com/lycheeverse/lychee/pull/2277
     linter_banner_image_url: https://raw.githubusercontent.com/lycheeverse/lychee/master/assets/banner.svg
     linter_image_url: https://raw.githubusercontent.com/lycheeverse/lychee/master/assets/logo.svg
     linter_rules_url: https://lychee.cli.rs/guides/cli/
@@ -340,6 +343,7 @@ linters:
       - documentation
     linter_url: https://github.com/codespell-project/codespell
     linter_repo: https://github.com/codespell-project/codespell
+    linter_megalinter_ref_url: https://github.com/codespell-project/codespell/pull/3991
     linter_rules_configuration_url: https://github.com/codespell-project/codespell?tab=readme-ov-file#using-a-config-file
     linter_rules_inline_disable_url: https://github.com/codespell-project/codespell?tab=readme-ov-file#inline-ignore
     linter_speed: 3

@@ -103,7 +103,7 @@ linters:
     # linter_banner_image_url: https://github.com/borkdude/clj-kondo/raw/master/logo/logo-300dpi.png
     linter_rules_configuration_url: https://github.com/greglook/cljstyle/blob/main/doc/configuration.md#format-rules
     linter_rules_inline_disable_url: https://github.com/greglook/cljstyle#ignoring-forms
-    linter_megalinter_ref_url: https://github.com/greglook/cljstyle/blob/main/doc/integrations.md
+    linter_megalinter_ref_url: https://github.com/greglook/cljstyle/pull/118
     config_file_name: .cljstyle
     cli_config_arg_name: ""
     cli_lint_mode: list_of_files

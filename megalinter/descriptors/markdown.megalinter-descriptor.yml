@@ -102,6 +102,7 @@ linters:
       - **Standards Compliance**: Ensures tables follow Markdown table formatting best practices and conventions
     linter_url: https://www.npmjs.com/package/markdown-table-formatter
     linter_repo: https://github.com/nvuillam/markdown-table-formatter
+    linter_megalinter_ref_url: https://github.com/nvuillam/markdown-table-formatter#readme
     linter_spdx_license: MIT
     linter_rules_configuration_url: https://github.com/nvuillam/markdown-table-formatter#options
     linter_rules_inline_disable_url: https://github.com/nvuillam/markdown-table-formatter#ignoring-code-blocks
@@ -160,6 +161,7 @@ linters:
       - CI/CD friendly with non-zero exit code on errors
     linter_url: https://github.com/rvben/rumdl
     linter_repo: https://github.com/rvben/rumdl
+    linter_megalinter_ref_url: https://github.com/rvben/rumdl/pull/803
     linter_spdx_license: MIT
     linter_rules_url: https://github.com/rvben/rumdl/blob/main/docs/RULES.md
     linter_rules_configuration_url: https://github.com/rvben/rumdl/blob/main/docs/global-settings.md

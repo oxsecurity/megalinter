@@ -53,6 +53,7 @@ linters:
       - **Diagnostic Reporting**: Comprehensive reports with file locations, rule descriptions, and remediation suggestions
     linter_url: https://github.com/PowerShell/PSScriptAnalyzer
     linter_repo: https://github.com/PowerShell/PSScriptAnalyzer
+    linter_megalinter_ref_url: https://github.com/PowerShell/PSScriptAnalyzer/pull/2203
     linter_image_url: https://raw.githubusercontent.com/PowerShell/PSScriptAnalyzer/refs/heads/main/logo.png
     linter_rules_url: https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/readme?view=ps-modules
     linter_rules_configuration_url: https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#explicit
@@ -107,6 +108,7 @@ linters:
     is_formatter: true
     linter_url: https://github.com/PowerShell/PSScriptAnalyzer
     linter_repo: https://github.com/PowerShell/PSScriptAnalyzer
+    linter_megalinter_ref_url: https://github.com/PowerShell/PSScriptAnalyzer/pull/2203
     linter_image_url: https://raw.githubusercontent.com/PowerShell/PSScriptAnalyzer/refs/heads/main/logo.png
     linter_rules_url: https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/readme?view=ps-modules
     linter_rules_configuration_url: https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#explicit

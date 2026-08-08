@@ -36,6 +36,7 @@ linters:
 
       By default, Bicep linter errors are set as warnings. To customize linter settings, use a `bicepconfig.json` file. For more information, see the [documentation for the Bicep Linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config-linter#customize-linter)
     linter_repo: https://github.com/Azure/bicep
+    linter_megalinter_ref_url: https://github.com/Azure/bicep/pull/20157
     linter_rules_configuration_url: https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config
     linter_rules_inline_disable_url: https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#silencing-false-positives
     linter_rules_url: https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#default-rules

@@ -20,6 +20,7 @@ linters:
     linter_name: kubeconform
     name: KUBERNETES_KUBECONFORM
     linter_repo: https://github.com/yannh/kubeconform
+    linter_megalinter_ref_url: https://github.com/yannh/kubeconform/pull/202
     linter_url: https://github.com/yannh/kubeconform
     linter_spdx_license: Apache-2.0
     linter_rules_configuration_url: https://github.com/yannh/kubeconform#usage
@@ -167,6 +168,7 @@ linters:
     can_output_sarif: true
     files_sub_directory: ""
     linter_repo: https://github.com/kubescape/kubescape
+    linter_megalinter_ref_url: https://github.com/kubescape/kubescape/pull/2859
     linter_url: https://github.com/kubescape/kubescape
     linter_text: |
       **Kubescape** is a comprehensive Kubernetes security scanner that examines charts and Kubernetes files for security vulnerabilities, misconfigurations, and compliance violations. It provides security analysis based on established frameworks and best practices.

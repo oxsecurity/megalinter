@@ -142,6 +142,7 @@ linters:
     linter_spdx_license: MIT
     linter_url: https://phpstan.org/
     linter_repo: https://github.com/phpstan/phpstan
+    linter_megalinter_ref_url: no
     linter_image_url: https://i.imgur.com/WaRKPlC.png
     linter_rules_configuration_url: https://phpstan.org/config-reference#neon-format
     linter_rules_inline_disable_url: https://phpstan.org/user-guide/ignoring-errors#ignoring-in-code-using-phpdocs
@@ -228,6 +229,7 @@ linters:
     linter_spdx_license: MIT
     linter_url: https://psalm.dev
     linter_repo: https://github.com/vimeo/psalm
+    linter_megalinter_ref_url: https://github.com/vimeo/psalm/pull/11918
     linter_rules_url: https://psalm.dev/docs/running_psalm/issues/
     linter_banner_image_url: https://i1.wp.com/phpmagazine.net/wp-content/uploads/2018/12/PsalmLogo.png?w=653&ssl=1
     linter_rules_configuration_url: https://psalm.dev/docs/running_psalm/configuration/
@@ -307,6 +309,7 @@ linters:
     can_output_sarif: true
     linter_url: https://github.com/overtrue/phplint
     linter_repo: https://github.com/overtrue/phplint
+    linter_megalinter_ref_url: https://github.com/overtrue/phplint#run-it-with-megalinter
     linter_spdx_license: MIT
     linter_rules_configuration_url: https://github.com/overtrue/phplint/blob/main/docs/configuration.md#configuration
     config_file_name: .phplint.yml
@@ -362,6 +365,7 @@ linters:
       - Add "--allow-risky=yes" option in PHP_PHPCSFIXER_ARGUMENTS variable
     linter_url: https://cs.symfony.com/
     linter_repo: https://github.com/PHP-CS-Fixer/PHP-CS-Fixer
+    linter_megalinter_ref_url: https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/pull/9771
     linter_spdx_license: MIT
     linter_rules_url: https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/blob/master/doc/rules/index.rst
     linter_rules_configuration_url: https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/blob/master/doc/config.rst

@@ -37,7 +37,7 @@ linters:
     linter_rules_configuration_url: https://pinterest.github.io/ktlint/latest/rules/configuration-ktlint/
     linter_rules_inline_disable_url: https://pinterest.github.io/ktlint/latest/faq/#how-do-i-suppress-errors-for-a-lineblockfile
     linter_banner_image_url: https://miro.medium.com/max/655/1*sLboL6JnC9yUodFsdSMB-w.png
-    linter_megalinter_ref_url: https://github.com/pinterest/ktlint#-with-continuous-integration
+    linter_megalinter_ref_url: https://ktlint.github.io/ktlint/latest/install/integrations/
     cli_lint_fix_arg_name: "--format"
     cli_lint_mode: list_of_files
     supported_cli_lint_modes:
@@ -118,7 +118,7 @@ linters:
     linter_rules_configuration_url: https://detekt.dev/configurations.html
     linter_rules_inline_disable_url: https://detekt.dev/suppressing-rules.html
     linter_banner_image_url: https://repository-images.githubusercontent.com/71729669/8b793230-5d85-4c36-b72e-6911dd7bf6d3
-    linter_megalinter_ref_url: https://detekt.dev/docs/intro
+    linter_megalinter_ref_url: https://github.com/detekt/detekt/pull/9586
     config_file_name: detekt-config.yml
     cli_executable: detekt-cli
     cli_lint_mode: project

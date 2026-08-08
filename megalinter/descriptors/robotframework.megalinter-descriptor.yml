@@ -25,6 +25,7 @@ linters:
     can_output_sarif: true
     linter_url: https://github.com/MarketSquare/robotframework-robocop
     linter_repo: https://github.com/MarketSquare/robotframework-robocop
+    linter_megalinter_ref_url: https://robocop.dev/stable/integrations/megalinter/
     linter_spdx_license: Apache-2.0
     linter_rules_url: https://robocop.dev/stable/rules_list/
     linter_rules_configuration_url: https://robocop.dev/stable/configuration/
