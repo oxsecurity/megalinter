@@ -131,7 +131,7 @@ linters:
     linter_url: https://github.com/dzhu/rstfmt
     linter_spdx_license: MIT
     linter_rules_configuration_url: https://github.com/dzhu/rstfmt#usage
-    linter_megalinter_ref_url: https://github.com/dzhu/rstfmt/pull/1
+    linter_megalinter_ref_url: https://github.com/dzhu/rstfmt/pull/45
     cli_lint_mode: list_of_files
     supported_cli_lint_modes:
       - file

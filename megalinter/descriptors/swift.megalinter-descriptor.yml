@@ -25,6 +25,7 @@ linters:
       - **Multiple Output Formats**: Supports various report formats including JSON, HTML, and checkstyle for tool integration
     linter_url: https://github.com/realm/SwiftLint
     linter_repo: https://github.com/realm/SwiftLint
+    linter_megalinter_ref_url: https://github.com/realm/SwiftLint/pull/6867
     linter_rules_url: https://realm.github.io/SwiftLint/rule-directory.html
     linter_rules_configuration_url: https://github.com/realm/SwiftLint#configuration
     linter_rules_inline_disable_url: https://github.com/realm/SwiftLint#disable-rules-in-code

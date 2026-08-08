@@ -20,6 +20,7 @@ linters:
       - security
     linter_url: https://github.com/terraform-linters/tflint
     linter_repo: https://github.com/terraform-linters/tflint
+    linter_megalinter_ref_url: https://github.com/terraform-linters/tflint/pull/2624
     linter_rules_url: https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/README.md
     linter_rules_configuration_url: https://github.com/terraform-linters/tflint/blob/master/docs/user-guide/config.md
     linter_rules_inline_disable_url: https://github.com/terraform-linters/tflint/blob/master/docs/user-guide/annotations.md
@@ -109,6 +110,7 @@ linters:
       - security
     linter_url: https://docs.terragrunt.com/reference/cli/commands/hcl/fmt/
     linter_repo: https://github.com/gruntwork-io/terragrunt
+    linter_megalinter_ref_url: https://github.com/gruntwork-io/terragrunt/pull/6657
     linter_rules_configuration_url: https://terragrunt.gruntwork.io/docs/getting-started/quick-start/#add-terragrunthcl-to-your-project
     linter_image_url: https://github.com/gruntwork-io/terragrunt/blob/master/docs/assets/img/favicon/ms-icon-310x310.png
     linter_icon_png_url: https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/terragrunt.png
