@@ -134,6 +134,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Fixes
 
+  - Stop **`FutureWarning: Possible nested set` warnings** appearing in the console at startup: a **secret-masking** regex used a POSIX character class (`[[:alnum:]]`) unsupported by Python. Such classes are now translated, which also makes the affected masking rule (Airtable personal access tokens) actually match
   - Restore **multi-arch `megalinter-only-*` Docker images**: they were mistakenly published for a single architecture, linux/amd64 + linux/arm64 are back
   - Fix linters relying on other linters' file lists (e.g. `SPELL_CSPELL`) **linting zero files** when run through their standalone `megalinter-only-*` Docker image
   - Fix **`LINTER_RULES_PATH`** not being used to resolve config files for linters using `active_only_if_file_found` (e.g. `REPOSITORY_LS_LINT`, `SPELL_PROSELINT`, `SPELL_VALE`), fixes [#8416](https://github.com/oxsecurity/megalinter/issues/8416)
