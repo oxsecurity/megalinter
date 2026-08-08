@@ -12110,7 +12110,7 @@
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">checkout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">self</span>
 
 <span class="w">      </span><span class="c1"># Pull MegaLinter docker image</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker pull ghcr.io/oxsecurity/megalinter:v9</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker pull ghcr.io/oxsecurity/megalinter:v10</span>
 <span class="w">        </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pull MegaLinter</span>
 
 <span class="w">      </span><span class="c1"># Run MegaLinter</span>
@@ -12119,7 +12119,7 @@
 <span class="w">            </span><span class="no">--env-file &lt;(env | grep -e SYSTEM_ -e BUILD_ -e TF_ -e AGENT_) \</span>
 <span class="w">            </span><span class="no">-e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \</span>
 <span class="w">            </span><span class="no">-e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \</span>
-<span class="w">            </span><span class="no">ghcr.io/oxsecurity/megalinter:v9</span>
+<span class="w">            </span><span class="no">ghcr.io/oxsecurity/megalinter:v10</span>
 <span class="w">        </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run MegaLinter</span>
 
 <span class="w">      </span><span class="c1"># Upload MegaLinter reports</span>
@@ -12148,7 +12148,7 @@
 <span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Checkout Triggering Repository</span>
 
 <span class="w">  </span><span class="c1"># Pull MegaLinter docker image</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker pull ghcr.io/oxsecurity/megalinter:v9</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker pull ghcr.io/oxsecurity/megalinter:v10</span>
 <span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pull MegaLinter</span>
 
 <span class="w">  </span><span class="c1"># Run MegaLinter</span>
@@ -12157,7 +12157,7 @@
 <span class="w">        </span><span class="no">--env-file &lt;(env | grep -e SYSTEM_ -e BUILD_ -e TF_ -e AGENT_) \</span>
 <span class="w">        </span><span class="no">-e SYSTEM_ACCESSTOKEN=$(System.AccessToken) \</span>
 <span class="w">        </span><span class="no">-e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) \</span>
-<span class="w">        </span><span class="no">ghcr.io/oxsecurity/megalinter:v9</span>
+<span class="w">        </span><span class="no">ghcr.io/oxsecurity/megalinter:v10</span>
 <span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run MegaLinter</span>
 
 <span class="w">  </span><span class="c1"># Upload MegaLinter reports</span>

@@ -11946,13 +11946,13 @@
 
 <blockquote>
 <p><strong>Docker registry change (since v9.5.0)</strong>: MegaLinter Docker images are <strong>published only to GitHub Container Registry (<code>ghcr.io</code>)</strong>. The Docker Hub registry (<code>docker.io/oxsecurity/megalinter</code>, formerly <code>oxsecurity/megalinter:*</code>) is <strong>frozen at v9.4.0</strong> until we implement OIDC-based publishing to Docker Hub.
-If you pull <code>oxsecurity/megalinter:v9</code> from Docker Hub you will stay on v9.4.0. To get v9.5.0 and later, switch your <code>image:</code> / <code>docker pull</code> references to <code>ghcr.io/oxsecurity/megalinter:v9</code> (same applies to <code>:beta</code> and all <a href="../flavors/">flavor</a> tags like <code>ghcr.io/oxsecurity/megalinter-python:v9</code>).
-GitHub Action users (<code>uses: oxsecurity/megalinter@v9</code>) are not affected, as the action already pulls from <code>ghcr.io</code>.</p>
+Docker Hub does not have v10 images: if you pull <code>oxsecurity/megalinter</code> from Docker Hub you will stay on v9.4.0. To get v10, switch your <code>image:</code> / <code>docker pull</code> references to <code>ghcr.io/oxsecurity/megalinter:v10</code> (same applies to <code>:beta</code> and all <a href="../flavors/">flavor</a> tags like <code>ghcr.io/oxsecurity/megalinter-python:v10</code>).
+GitHub Action users (<code>uses: oxsecurity/megalinter@v10</code>) are not affected, as the action already pulls from <code>ghcr.io</code>.</p>
 </blockquote>
-<p>The following instructions examples are using latest MegaLinter stable version (<strong>v9</strong> , always corresponding to the <a href="https://github.com/oxsecurity/megalinter/releases">latest release</a>)</p>
+<p>The following instructions examples are using latest MegaLinter stable version (<strong>v10</strong> , always corresponding to the <a href="https://github.com/oxsecurity/megalinter/releases">latest release</a>)</p>
 <ul>
-<li>Docker image: <code>ghcr.io/oxsecurity/megalinter:v9</code></li>
-<li>GitHub Action: <code>oxsecurity/megalinter@v9</code></li>
+<li>Docker image: <code>ghcr.io/oxsecurity/megalinter:v10</code></li>
+<li>GitHub Action: <code>oxsecurity/megalinter@v10</code></li>
 </ul>
 <p>You can also use <strong>beta</strong> version (corresponding to the content of main branch)</p>
 <ul>
