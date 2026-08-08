@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **vale** (MegaLinter key: `SPELL_VALE`)
 - Descriptor: **SPELL** (other)
-- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/spell_vale/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/spell_vale/>
 - Official documentation: <https://vale.sh/>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.vale.ini` (custom path can be defined with `SPELL_VALE_CONFIG_FILE`)

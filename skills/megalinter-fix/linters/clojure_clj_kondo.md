@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **clj-kondo** (MegaLinter key: `CLOJURE_CLJ_KONDO`)
 - Descriptor: **CLOJURE** (language)
-- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/clojure_clj_kondo/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/clojure_clj_kondo/>
 - Official documentation: <https://github.com/borkdude/clj-kondo>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.clj-kondo/config.edn` (custom path can be defined with `CLOJURE_CLJ_KONDO_CONFIG_FILE`)

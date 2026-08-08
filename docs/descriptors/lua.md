@@ -9,10 +9,10 @@ description: luacheck, stylua are available to analyze LUA files in MegaLinter
 
 ## Linters
 
-| Linter | Additional |
-| ------ | ---------- |
+| Linter                                                                | Additional                                                                                                                               |
+|-----------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | [**luacheck**](lua_luacheck.md)<br/>[_LUA_LUACHECK_](lua_luacheck.md) | [![GitHub stars](https://img.shields.io/github/stars/lunarmodules/luacheck?cacheSeconds=3600)](https://github.com/lunarmodules/luacheck) |
-| [**stylua**](lua_stylua.md)<br/>[_LUA_STYLUA_](lua_stylua.md) | [![GitHub stars](https://img.shields.io/github/stars/JohnnyMorganz/StyLua?cacheSeconds=3600)](https://github.com/JohnnyMorganz/StyLua) |
+| [**stylua**](lua_stylua.md)<br/>[_LUA_STYLUA_](lua_stylua.md)         | [![GitHub stars](https://img.shields.io/github/stars/JohnnyMorganz/StyLua?cacheSeconds=3600)](https://github.com/JohnnyMorganz/StyLua)   |
 
 ## Linted files
 
@@ -21,12 +21,12 @@ description: luacheck, stylua are available to analyze LUA files in MegaLinter
 
 ## Configuration in MegaLinter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| LUA_PRE_COMMANDS | List of bash commands to run before the linters | None |
-| LUA_POST_COMMANDS | List of bash commands to run after the linters | None |
-| LUA_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| LUA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                 | Description                                     | Default value |
+|--------------------------|-------------------------------------------------|---------------|
+| LUA_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| LUA_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| LUA_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| LUA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 
 
 ## Behind the scenes

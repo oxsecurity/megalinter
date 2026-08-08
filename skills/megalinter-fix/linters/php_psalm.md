@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **psalm** (MegaLinter key: `PHP_PSALM`)
 - Descriptor: **PHP** (language)
-- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/php_psalm/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/php_psalm/>
 - Official documentation: <https://psalm.dev>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `psalm.xml` (custom path can be defined with `PHP_PSALM_CONFIG_FILE`)

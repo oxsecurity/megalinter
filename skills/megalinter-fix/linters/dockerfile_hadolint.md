@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **hadolint** (MegaLinter key: `DOCKERFILE_HADOLINT`)
 - Descriptor: **DOCKERFILE** (tooling_format)
-- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/dockerfile_hadolint/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/dockerfile_hadolint/>
 - Official documentation: <https://github.com/hadolint/hadolint>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.hadolint.yaml` (custom path can be defined with `DOCKERFILE_HADOLINT_CONFIG_FILE`)

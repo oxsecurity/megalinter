@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **checkov** (MegaLinter key: `REPOSITORY_CHECKOV`)
 - Descriptor: **REPOSITORY** (other)
-- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/repository_checkov/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/repository_checkov/>
 - Official documentation: <https://www.checkov.io/>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.checkov.yml` (custom path can be defined with `REPOSITORY_CHECKOV_CONFIG_FILE`)

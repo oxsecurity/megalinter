@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **cppcheck** (MegaLinter key: `CPP_CPPCHECK`)
 - Descriptor: **CPP** (language)
-- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/cpp_cppcheck/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/cpp_cppcheck/>
 - Official documentation: <https://cppcheck.sourceforge.io/>
 - Auto-fix support: no (errors must be fixed manually)
 - Rules index: <https://sourceforge.net/p/cppcheck/wiki/ListOfChecks/>

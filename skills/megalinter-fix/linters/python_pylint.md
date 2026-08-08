@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **pylint** (MegaLinter key: `PYTHON_PYLINT`)
 - Descriptor: **PYTHON** (language)
-- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/python_pylint/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/python_pylint/>
 - Official documentation: <https://pylint.readthedocs.io>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.pylintrc` (custom path can be defined with `PYTHON_PYLINT_CONFIG_FILE`)

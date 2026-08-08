@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **graphql-schema-linter** (MegaLinter key: `GRAPHQL_GRAPHQL_SCHEMA_LINTER`)
 - Descriptor: **GRAPHQL** (format)
-- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/graphql_graphql_schema_linter/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/graphql_graphql_schema_linter/>
 - Official documentation: <https://github.com/cjoudrey/graphql-schema-linter>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.graphql-schema-linterrc` (custom path can be defined with `GRAPHQL_GRAPHQL_SCHEMA_LINTER_CONFIG_FILE`)

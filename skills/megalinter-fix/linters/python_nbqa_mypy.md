@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **nbqa** (MegaLinter key: `PYTHON_NBQA_MYPY`)
 - Descriptor: **PYTHON** (language)
-- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/python_nbqa/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/python_nbqa/>
 - Official documentation: <https://github.com/nbQA-dev/nbQA>
 - Auto-fix support: no (errors must be fixed manually)
 - Rules index: <https://github.com/nbQA-dev/nbQA>

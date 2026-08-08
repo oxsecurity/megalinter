@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **snakemake** (MegaLinter key: `SNAKEMAKE_LINT`)
 - Descriptor: **SNAKEMAKE** (tooling_format)
-- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/snakemake_snakemake/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/snakemake_snakemake/>
 - Official documentation: <https://snakemake.github.io/>
 - Auto-fix support: no (errors must be fixed manually)
 - Rules configuration: <https://snakemake.readthedocs.io/en/stable/snakefiles/configuration.html>

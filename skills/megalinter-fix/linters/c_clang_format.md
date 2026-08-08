@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **clang-format** (MegaLinter key: `C_CLANG_FORMAT`)
 - Descriptor: **C** (language)
-- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/c_clang_format/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/c_clang_format/>
 - Official documentation: <https://releases.llvm.org/21.1.0/tools/clang/docs/ClangFormat.html>
 - Auto-fix support: **yes** — add `C_CLANG_FORMAT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter C_CLANG_FORMAT --fix` (runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: use `npx mega-linter-runner@beta` only when that property is `beta`)
 - Configuration file: `.clang-format` (custom path can be defined with `C_CLANG_FORMAT_CONFIG_FILE`)

@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **ansible-lint** (MegaLinter key: `ANSIBLE_ANSIBLE_LINT`)
 - Descriptor: **ANSIBLE** (tooling_format)
-- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/ansible_ansible_lint/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/ansible_ansible_lint/>
 - Official documentation: <https://ansible-lint.readthedocs.io/>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.ansible-lint` (custom path can be defined with `ANSIBLE_ANSIBLE_LINT_CONFIG_FILE`)

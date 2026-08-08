@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **scalafix** (MegaLinter key: `SCALA_SCALAFIX`)
 - Descriptor: **SCALA** (language)
-- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/scala_scalafix/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/scala_scalafix/>
 - Official documentation: <https://scalacenter.github.io/scalafix/>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.scalafix.conf` (custom path can be defined with `SCALA_SCALAFIX_CONFIG_FILE`)

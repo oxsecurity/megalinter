@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **secretlint** (MegaLinter key: `REPOSITORY_SECRETLINT`)
 - Descriptor: **REPOSITORY** (other)
-- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/repository_secretlint/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/repository_secretlint/>
 - Official documentation: <https://github.com/secretlint/secretlint>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.secretlintrc.json` (custom path can be defined with `REPOSITORY_SECRETLINT_CONFIG_FILE`)

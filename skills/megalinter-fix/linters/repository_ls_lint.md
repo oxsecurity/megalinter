@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **ls-lint** (MegaLinter key: `REPOSITORY_LS_LINT`)
 - Descriptor: **REPOSITORY** (other)
-- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/repository_ls_lint/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/repository_ls_lint/>
 - Official documentation: <https://ls-lint.org/>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.ls-lint.yml` (custom path can be defined with `REPOSITORY_LS_LINT_CONFIG_FILE`)

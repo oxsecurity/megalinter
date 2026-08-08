@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **bash-exec** (MegaLinter key: `BASH_EXEC`)
 - Descriptor: **BASH** (language)
-- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/bash_bash_exec/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/bash_bash_exec/>
 - Official documentation: <https://www.gnu.org/software/bash/>
 - Auto-fix support: no (errors must be fixed manually)
 - Rules configuration: <https://www.gnu.org/software/bash/manual/bash.html>

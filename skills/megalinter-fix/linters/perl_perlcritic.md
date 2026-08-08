@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **perlcritic** (MegaLinter key: `PERL_PERLCRITIC`)
 - Descriptor: **PERL** (language)
-- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/perl_perlcritic/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/perl_perlcritic/>
 - Official documentation: <https://metacpan.org/pod/Perl::Critic>
 - Auto-fix support: no (errors must be fixed manually)
 - Rules index: <https://metacpan.org/pod/Perl::Critic#THE-POLICIES>
