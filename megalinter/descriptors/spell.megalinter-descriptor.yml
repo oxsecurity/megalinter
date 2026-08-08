@@ -184,7 +184,7 @@ linters:
       MegaLinter analyze markdown and restructuredText files by default, you can change that using SPELL_VALE_FILE_EXTENSIONS variable.
     linter_url: https://vale.sh/
     linter_repo: https://github.com/errata-ai/vale
-    linter_megalinter_ref_url: https://github.com/vale-cli/vale.sh/blob/main/docs/SUMMARY.md
+    linter_megalinter_ref_url: https://vale.sh/docs
     linter_rules_url: https://vale.sh/hub/
     linter_rules_configuration_url: https://vale.sh/explorer/
     linter_rules_inline_disable_url: https://vale.sh/docs/topics/vocab/
