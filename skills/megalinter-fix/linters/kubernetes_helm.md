@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **helm** (MegaLinter key: `KUBERNETES_HELM`)
 - Descriptor: **KUBERNETES** (tooling_format)
-- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/kubernetes_helm/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/kubernetes_helm/>
 - Official documentation: <https://helm.sh/docs/helm/helm_lint/>
 - Auto-fix support: no (errors must be fixed manually)
 - Rules configuration: <https://helm.sh/docs/helm/helm_lint/>

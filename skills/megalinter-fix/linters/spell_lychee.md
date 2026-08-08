@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **lychee** (MegaLinter key: `SPELL_LYCHEE`)
 - Descriptor: **SPELL** (other)
-- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/spell_lychee/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/spell_lychee/>
 - Official documentation: <https://lychee.cli.rs>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `lychee.toml` (custom path can be defined with `SPELL_LYCHEE_CONFIG_FILE`)

@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **grype** (MegaLinter key: `REPOSITORY_GRYPE`)
 - Descriptor: **REPOSITORY** (other)
-- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/repository_grype/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/repository_grype/>
 - Official documentation: <https://github.com/anchore/grype>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.grype.yaml` (custom path can be defined with `REPOSITORY_GRYPE_CONFIG_FILE`)

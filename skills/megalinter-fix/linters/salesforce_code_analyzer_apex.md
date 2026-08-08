@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **code-analyzer-apex** (MegaLinter key: `SALESFORCE_CODE_ANALYZER_APEX`)
 - Descriptor: **SALESFORCE** (language)
-- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/salesforce_code_analyzer_apex/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/salesforce_code_analyzer_apex/>
 - Official documentation: <https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `code-analyzer.yml` (custom path can be defined with `SALESFORCE_CODE_ANALYZER_APEX_CONFIG_FILE`)

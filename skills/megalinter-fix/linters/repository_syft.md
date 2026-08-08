@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **syft** (MegaLinter key: `REPOSITORY_SYFT`)
 - Descriptor: **REPOSITORY** (other)
-- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/repository_syft/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/repository_syft/>
 - Official documentation: <https://github.com/anchore/syft>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.syft.yaml` (custom path can be defined with `REPOSITORY_SYFT_CONFIG_FILE`)

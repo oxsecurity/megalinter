@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **powershell** (MegaLinter key: `POWERSHELL_POWERSHELL`)
 - Descriptor: **POWERSHELL** (language)
-- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/powershell_powershell/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/powershell_powershell/>
 - Official documentation: <https://github.com/PowerShell/PSScriptAnalyzer>
 - Auto-fix support: **yes** — add `POWERSHELL_POWERSHELL` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter POWERSHELL_POWERSHELL --fix` (runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: use `npx mega-linter-runner@beta` only when that property is `beta`)
 - Configuration file: `.powershell-psscriptanalyzer.psd1` (custom path can be defined with `POWERSHELL_POWERSHELL_CONFIG_FILE`)

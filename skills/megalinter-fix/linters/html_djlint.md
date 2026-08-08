@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **djlint** (MegaLinter key: `HTML_DJLINT`)
 - Descriptor: **HTML** (format)
-- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/html_djlint/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/html_djlint/>
 - Official documentation: <https://djlint.com/>
 - Auto-fix support: no (errors must be fixed manually)
 - Rules index: <https://djlint.com/docs/linter/>

@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **roslynator** (MegaLinter key: `CSHARP_ROSLYNATOR`)
 - Descriptor: **CSHARP** (language)
-- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/csharp_roslynator/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/csharp_roslynator/>
 - Official documentation: <https://github.com/dotnet/Roslynator>
 - Auto-fix support: **yes** — add `CSHARP_ROSLYNATOR` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter CSHARP_ROSLYNATOR --fix` (runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: use `npx mega-linter-runner@beta` only when that property is `beta`)
 - Rules index: <https://josefpihrt.github.io/docs/roslynator/analyzers>

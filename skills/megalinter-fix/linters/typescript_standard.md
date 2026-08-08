@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **ts-standard** (MegaLinter key: `TYPESCRIPT_STANDARD`)
 - Descriptor: **TYPESCRIPT** (language)
-- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/typescript_ts_standard/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/typescript_ts_standard/>
 - Official documentation: <https://standardjs.com/>
 - Auto-fix support: **yes** — add `TYPESCRIPT_STANDARD` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter TYPESCRIPT_STANDARD --fix` (runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: use `npx mega-linter-runner@beta` only when that property is `beta`)
 - Rules index: <https://standardjs.com/rules.html>

@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **cfn-lint** (MegaLinter key: `CLOUDFORMATION_CFN_LINT`)
 - Descriptor: **CLOUDFORMATION** (tooling_format)
-- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/cloudformation_cfn_lint/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/cloudformation_cfn_lint/>
 - Official documentation: <https://github.com/aws-cloudformation/cfn-lint>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.cfnlintrc.yml` (custom path can be defined with `CLOUDFORMATION_CFN_LINT_CONFIG_FILE`)

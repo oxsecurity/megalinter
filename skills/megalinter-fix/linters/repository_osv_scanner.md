@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **osv-scanner** (MegaLinter key: `REPOSITORY_OSV_SCANNER`)
 - Descriptor: **REPOSITORY** (other)
-- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/repository_osv_scanner/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/repository_osv_scanner/>
 - Official documentation: <https://google.github.io/osv-scanner/>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `osv-scanner.toml` (custom path can be defined with `REPOSITORY_OSV_SCANNER_CONFIG_FILE`)

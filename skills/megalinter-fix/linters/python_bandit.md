@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **bandit** (MegaLinter key: `PYTHON_BANDIT`)
 - Descriptor: **PYTHON** (language)
-- MegaLinter documentation: <https://megalinter.io/10.0.0/descriptors/python_bandit/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/python_bandit/>
 - Official documentation: <https://bandit.readthedocs.io/en/latest/>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.bandit.yml` (custom path can be defined with `PYTHON_BANDIT_CONFIG_FILE`)
