@@ -104,6 +104,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#flavors-statistics" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -11325,6 +11330,26 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flavors statistics
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -11342,6 +11367,47 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#docker-pulls-per-month" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docker pulls per month
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cumulated-docker-pulls-by-flavor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cumulated Docker pulls by flavor
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -11916,6 +11982,38 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#docker-pulls-per-month" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docker pulls per month
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cumulated-docker-pulls-by-flavor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cumulated Docker pulls by flavor
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -11935,8 +12033,12 @@
   
 
 
-  <h1>Flavors statistics</h1>
-
+<h1 id="flavors-statistics">Flavors statistics</h1>
+<h2 id="docker-pulls-per-month">Docker pulls per month</h2>
+<p>MegaLinter Docker images (main image, <a href="../flavors/">flavors</a> and standalone linter images) are pulled <strong>hundreds of thousands of times every month</strong>, on Docker Hub and ghcr.io, since the creation of the project in October 2020:</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/docker-pulls-monthly.svg" data-desc-position="bottom"><img alt="MegaLinter Docker pulls per month" src="../assets/images/docker-pulls-monthly.svg"></a></p>
+<p>This graph is refreshed automatically: monthly points are stored in <a href="https://github.com/oxsecurity/megalinter/blob/main/.automation/generated/docker-pulls-monthly.json"><code>docker-pulls-monthly.json</code></a> and updated from the collected registry statistics.</p>
+<h2 id="cumulated-docker-pulls-by-flavor">Cumulated Docker pulls by flavor</h2>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.0/chart.min.js" integrity="sha512-asxKqQghC1oBShyhiBwA+YgotaSYKxGP1rcSYTDrB0U6DxwlJjU59B67U8+5/++uFjcuVM8Hh5cokLjZlhm3Vg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <div>

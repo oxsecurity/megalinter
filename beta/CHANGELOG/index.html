@@ -15415,13 +15415,23 @@
 <li>Flavors</li>
 </ul>
 <ul>
-<li>Doc</li>
+<li>Doc<ul>
+<li>New <strong>Docker pulls per month</strong> graph, showing the growth of MegaLinter adoption since October 2020, displayed in the README and on the <a href="https://megalinter.io/latest/flavors-stats/">Flavors statistics</a> page</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>mega-linter-runner</li>
 </ul>
 <ul>
-<li>Dev</li>
+<li>Dev<ul>
+<li><strong>Docker pulls monthly chart</strong>: the auto-update workflow now regenerates <code>docs/assets/images/docker-pulls-monthly.svg</code> (new pulls per month since October 2020, all images and registries), via the new <code>.automation/docker_pulls_chart.py</code> called by <code>build.py</code> after the pull counters update<ul>
+<li>Historical monthly points are frozen in <code>.automation/generated/docker-pulls-monthly.json</code> (built once from the tracked stats plus a Web Archive reconstruction of the collection gaps); the script only appends newly completed months computed from <code>flavors-stats.json</code></li>
+</ul>
+</li>
+<li>Docker pull counters now also track the <strong>standalone <code>megalinter-only-*</code> images</strong>: their download counts are stored in <code>flavors-stats.json</code> and included in the README badge total</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>CI</li>
