@@ -37,7 +37,7 @@ MegaLinter is an **open-source** tool for **CI/CD workflows** that analyzes the 
 
 Supports [**63** languages](#languages), [**21** formats](#formats), [**19** tooling formats](#tooling-formats), and is **ready to use out of the box** as a GitHub Action or with any CI system. It is **highly configurable** and **free for all uses**.
 
-MegaLinter has **native integrations** with popular CI/CD tools and is compliant with most **Coding Agents**.
+MegaLinter has **native integrations** with popular CI/CD tools and is compliant with most [**Coding Agents**](https://megalinter.io/latest/coding-agents/).
 
 [![GitHub](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/github.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitHubCommentReporter.md)
 [![GitLab](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/icons/integrations/gitlab.png?raw=true>)](https://github.com/oxsecurity/megalinter/tree/main/docs/reporters/GitlabCommentReporter.md)
@@ -68,8 +68,6 @@ MegaLinter has **native integrations** with popular CI/CD tools and is compliant
 
 
 <!-- welcome-phrase-end -->
-
-> 🤖 **MegaLinter works with your coding agent!** Install the [MegaLinter agent skills](https://megalinter.io/latest/install-agent-skills/) with `npx skills add oxsecurity/megalinter/skills -s '*' -y --copy`, then ask **Claude Code, Cursor, GitHub Copilot CLI, Codex, Antigravity or OpenCode** to setup MegaLinter, watch its CI jobs, and fix the errors for you.
 
 ![MegaLinter Presentation GIF](https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/MegaLinter-banner-Medium.gif?raw=true)
 
