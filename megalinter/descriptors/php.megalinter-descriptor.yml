@@ -309,7 +309,7 @@ linters:
     can_output_sarif: true
     linter_url: https://github.com/overtrue/phplint
     linter_repo: https://github.com/overtrue/phplint
-    linter_megalinter_ref_url: https://github.com/overtrue/phplint/pull/247
+    linter_megalinter_ref_url: https://github.com/overtrue/phplint#readme
     linter_spdx_license: MIT
     linter_rules_configuration_url: https://github.com/overtrue/phplint/blob/main/docs/configuration.md#configuration
     config_file_name: .phplint.yml
