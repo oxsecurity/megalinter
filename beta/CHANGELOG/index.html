@@ -15426,6 +15426,7 @@
 </ul>
 <ul>
 <li>Dev<ul>
+<li><strong>Shared linter definitions</strong>: linter entries duplicated across several descriptors (eslint, prettier, v8r, dotnet-format, cpplint, cppcheck, clang-format) are now factorized in <code>megalinter/descriptors/shared/*.megalinter-linter.yml</code> files, referenced from descriptors with the new linter-level <code>extends</code> property (shallow merge, descriptor entry properties override the shared ones)</li>
 <li><strong>Docker pulls monthly chart</strong>: the auto-update workflow now regenerates <code>docs/assets/images/docker-pulls-monthly.svg</code> (new pulls per month since October 2020, all images and registries), via the new <code>.automation/docker_pulls_chart.py</code> called by <code>build.py</code> after the pull counters update<ul>
 <li>Historical monthly points are frozen in <code>.automation/generated/docker-pulls-monthly.json</code> (built once from the tracked stats plus a Web Archive reconstruction of the collection gaps); the script only appends newly completed months computed from <code>flavors-stats.json</code></li>
 </ul>
