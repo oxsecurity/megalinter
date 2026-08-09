@@ -12,7 +12,8 @@ file_extensions:
   - ".h"
 linters:
   # Cppcheck
-  - linter_name: cppcheck
+  - extends: cppcheck
+    linter_name: cppcheck
     linter_text: |
       **Cppcheck** is a static analysis tool for C/C++ code that provides unique code analysis to detect bugs and focuses on detecting undefined behaviour and dangerous coding constructs. The goal is to have very few false positives.
 
@@ -35,36 +36,7 @@ linters:
 
       Cppcheck helps ensure your C/C++ code is secure, reliable, and follows best practices for memory management and undefined behavior prevention.
     name: C_CPPCHECK
-    linter_url: https://cppcheck.sourceforge.io/
-    linter_repo: https://cppcheck.sourceforge.io/
-    linter_megalinter_ref_url: https://github.com/cppcheck-opensource/cppcheck/pull/8786
-    linter_spdx_license: GPL-3.0
-    linter_rules_url: https://sourceforge.net/p/cppcheck/wiki/ListOfChecks/
-    linter_rules_configuration_url: https://cppcheck.sourceforge.io/manual.html#configuration
-    cli_lint_errors_count: regex_count
-    cli_lint_errors_regex: "error:"
-    cli_lint_mode: list_of_files
-    supported_cli_lint_modes:
-      - file
-      - list_of_files
-      - project
-    cli_lint_extra_args:
-      - --error-exitcode=1
-    cli_lint_mode_project_exclude_arg_name: "-i"
-    cli_lint_mode_project_exclude_arg_value: "**/{{DIR}}/**"
-    cli_lint_mode_project_extra_args_after:
-      - .
-    examples:
-      - "cppcheck myfile.cpp"
-    install:
-      apk:
-        - cppcheck
-    supported_platforms:
-      platform:
-        - linux/amd64
-        - linux/arm64
-  # CPPLINT
-  - class: CppLintLinter
+  - extends: cpplint
     linter_name: cpplint
     linter_text: |
       **Cpplint** is a command-line tool to check C/C++ files for style issues according to **Google's C++ style guide**. Originally developed by Google, this community-maintained fork aims to update cpplint to modern specifications and be more open to fixes and features.
@@ -88,33 +60,8 @@ linters:
 
       Cpplint helps maintain consistent, readable C++ code that follows industry-standard style guidelines, making code easier to review, maintain, and collaborate on.
     name: C_CPPLINT
-    linter_url: https://github.com/cpplint/cpplint
-    linter_repo: https://github.com/cpplint/cpplint
-    linter_megalinter_ref_url: https://github.com/cpplint/cpplint/pull/462
-    linter_spdx_license: BSD-3-Clause
-    linter_rules_url: https://google.github.io/styleguide/cppguide.html
-    cli_lint_mode: list_of_files
-    supported_cli_lint_modes:
-      - file
-      - list_of_files
-    cli_help_arg_name: "--help"
-    cli_lint_errors_count: regex_number
-    cli_lint_errors_regex: "Total errors found: ([0-9]+)"
-    examples:
-      - "cpplint myfile.cpp"
-    install:
-      dockerfile:
-        - |-
-          # renovate: datasource=pypi depName=cpplint
-          ARG PIP_CPPLINT_VERSION=2.0.2
-      pip:
-        - cpplint==${PIP_CPPLINT_VERSION}
-    supported_platforms:
-      platform:
-        - linux/amd64
-        - linux/arm64
-  # clang-format
-  - linter_name: clang-format
+  - extends: clang-format
+    linter_name: clang-format
     linter_text: |
       **clang-format** is a comprehensive code formatter for C/C++/Objective-C code that automatically enforces consistent coding style according to configurable rules and heuristics. As part of the LLVM project, it provides industry-leading formatting capabilities for complex C++ codebases.
 
@@ -129,43 +76,5 @@ linters:
       - **Incremental Formatting**: Can format specific ranges or files without affecting the entire codebase
       - **Cross-Platform Support**: Works consistently across different operating systems and development environments
     name: C_CLANG_FORMAT
-    descriptor_flavors:
-      - c_cpp
-    linter_url: https://releases.llvm.org/21.1.0/tools/clang/docs/ClangFormat.html
-    linter_repo: https://github.com/llvm/llvm-project
-    linter_spdx_license: Apache-2.0
-    linter_rules_url: https://releases.llvm.org/21.1.0/tools/clang/docs/ClangFormat.html
-    linter_rules_configuration_url: https://releases.llvm.org/21.1.0/tools/clang/docs/ClangFormatStyleOptions.html
-    linter_rules_inline_disable_url: https://releases.llvm.org/21.1.0/tools/clang/docs/ClangFormatStyleOptions.html#disabling-formatting-on-a-piece-of-code
-    cli_lint_mode: list_of_files
-    supported_cli_lint_modes:
-      - file
-      - list_of_files
-    cli_help_arg_name: "--help"
-    cli_lint_extra_args:
-      - "--Werror"
-      - "--dry-run"
-    cli_lint_fix_arg_name: "-i"
-    cli_lint_fix_remove_args:
-      - "--Werror"
-      - "--dry-run"
-    config_file_name: .clang-format
-    cli_config_arg_name: "--style=file:"
-    cli_lint_errors_count: regex_count
-    cli_lint_errors_regex: "code should be clang-formatted"
     examples:
       - "clang-format --Werror --dry-run myfile.c"
-    install:
-      apk:
-        - "cmd:clang-format"
-    supported_platforms:
-      platform:
-        - linux/amd64
-        - linux/arm64
-    ide:
-      vscode:
-        - name: Clang-Format
-          url: https://marketplace.visualstudio.com/items?itemName=xaver.clang-format
-      emacs:
-        - name: clang-format
-          url: https://releases.llvm.org/21.1.0/tools/clang/docs/ClangFormat.html#emacs-integration

@@ -61,6 +61,37 @@ def list_linters_by_name(linters_init_params=None, linter_names=[]):
     return linters
 
 
+SHARED_LINTER_FILE_SUFFIX = ".megalinter-linter.yml"
+shared_linter_definitions_cache: dict[str, dict] = {}
+
+
+def resolve_linter_extends(linter_descriptor):
+    if "extends" not in linter_descriptor:
+        return linter_descriptor
+    shared_name = linter_descriptor["extends"]
+    shared_file = os.path.join(
+        get_descriptor_dir(), "shared", shared_name + SHARED_LINTER_FILE_SUFFIX
+    )
+    if shared_file not in shared_linter_definitions_cache:
+        assert os.path.isfile(shared_file), (
+            f"Unable to find shared linter definition {shared_file} "
+            f"(referenced by extends: {shared_name})"
+        )
+        with open(shared_file, "r", encoding="utf-8") as f:
+            shared_linter_definitions_cache[shared_file] = yaml.safe_load(f)
+    shared_definition = shared_linter_definitions_cache[shared_file]
+    resolved = {
+        **shared_definition,
+        **{key: value for key, value in linter_descriptor.items() if key != "extends"},
+    }
+    for required_key in ["linter_name", "linter_url", "examples"]:
+        assert required_key in resolved, (
+            f"Missing {required_key} in linter extending {shared_name} "
+            f"(not defined in {shared_file} nor in the descriptor entry)"
+        )
+    return resolved
+
+
 # List all descriptor files (one by language)
 def list_descriptor_files():
     descriptors_dir = get_descriptor_dir()
@@ -75,6 +106,10 @@ def list_descriptor_files():
 def build_descriptor_info(file):
     with open(file, "r", encoding="utf-8") as f:
         language_descriptor = yaml.safe_load(f)
+    language_descriptor["linters"] = [
+        resolve_linter_extends(linter_descriptor)
+        for linter_descriptor in language_descriptor.get("linters", [])
+    ]
     return language_descriptor
 
 
@@ -102,6 +137,7 @@ def build_descriptor_linters(file, linter_init_params=None, linter_names=None):
                 and linter_descriptor["linter_name"] not in linter_names
             ):
                 continue
+            linter_descriptor = resolve_linter_extends(linter_descriptor)
 
             # Use custom class if defined in file
             linter_class = Linter

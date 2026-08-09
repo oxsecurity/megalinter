@@ -4,6 +4,7 @@ Automatically generate source code ,descriptive files Dockerfiles and documentat
 """
 
 # pylint: disable=import-error
+import glob
 import json
 import logging
 import os
@@ -196,14 +197,13 @@ def generate_flavor(flavor, flavor_info):
     # Get install instructions at descriptor level
     descriptor_files = megalinter.linter_factory.list_descriptor_files()
     for descriptor_file in descriptor_files:
-        with open(descriptor_file, "r", encoding="utf-8") as f:
-            descriptor = yaml.safe_load(f)
-            if (
-                match_flavor(descriptor, flavor, flavor_info) is True
-                and "install" in descriptor
-            ):
-                descriptor_and_linters += [descriptor]
-                flavor_descriptors += [descriptor["descriptor_id"]]
+        descriptor = megalinter.linter_factory.build_descriptor_info(descriptor_file)
+        if (
+            match_flavor(descriptor, flavor, flavor_info) is True
+            and "install" in descriptor
+        ):
+            descriptor_and_linters += [descriptor]
+            flavor_descriptors += [descriptor["descriptor_id"]]
     # Get install instructions at linter level
     linters = megalinter.linter_factory.list_all_linters(({"request_id": "build"}))
     for linter in linters:
@@ -810,8 +810,7 @@ def generate_linter_dockerfiles():
     active_linter_list_lower_arm = []
     for descriptor_file in descriptor_files:
         descriptor_items = []
-        with open(descriptor_file, "r", encoding="utf-8") as f:
-            descriptor = yaml.safe_load(f)
+        descriptor = megalinter.linter_factory.build_descriptor_info(descriptor_file)
         if "install" in descriptor:
             descriptor_items += [descriptor]
         descriptor_linters = megalinter.linter_factory.build_descriptor_linters(
@@ -2979,12 +2978,11 @@ def _collect_descriptor_ids_sorted() -> list[str]:
     descriptor_ids: set[str] = set()
     descriptor_files = megalinter.linter_factory.list_descriptor_files()
     for descriptor_file in descriptor_files:
-        with open(descriptor_file, "r", encoding="utf-8") as f:
-            descriptor = yaml.safe_load(f)
-            if isinstance(descriptor, dict):
-                descriptor_id = descriptor.get("descriptor_id")
-                if isinstance(descriptor_id, str) and descriptor_id:
-                    descriptor_ids.add(descriptor_id)
+        descriptor = megalinter.linter_factory.build_descriptor_info(descriptor_file)
+        if isinstance(descriptor, dict):
+            descriptor_id = descriptor.get("descriptor_id")
+            if isinstance(descriptor_id, str) and descriptor_id:
+                descriptor_ids.add(descriptor_id)
 
     sorted_ids = sorted(descriptor_ids, key=len, reverse=True)
     _CONFIG_SCHEMA_IDS_CACHE["descriptor_ids_sorted"] = sorted_ids
@@ -3418,6 +3416,31 @@ def validate_descriptors():
                 except jsonschema.exceptions.ValidationError as validation_error:
                     logging.error(
                         f"{os.path.basename(descriptor_file)} is not compliant with JSON schema"
+                    )
+                    logging.error(f"reason: {str(validation_error)}")
+                    errors = errors + 1
+        # Shared linter definitions must be complete standalone linter definitions
+        descriptor_schema_data = yaml.safe_load(descriptor_schema)
+        shared_linter_schema = {
+            "$schema": "http://json-schema.org/draft-07/schema",
+            "definitions": descriptor_schema_data.get("definitions", {}),
+            **descriptor_schema_data["properties"]["linters"]["items"],
+        }
+        shared_linter_schema.pop("$id", None)
+        shared_linter_files = sorted(
+            glob.glob(f"{REPO_HOME}/megalinter/descriptors/shared/*.megalinter-linter.yml")
+        )
+        for shared_linter_file in shared_linter_files:
+            with open(shared_linter_file, "r", encoding="utf-8") as shared_file1:
+                logging.info("Validating " + os.path.basename(shared_linter_file))
+                try:
+                    jsonschema.validate(
+                        instance=yaml.safe_load(shared_file1.read()),
+                        schema=shared_linter_schema,
+                    )
+                except jsonschema.exceptions.ValidationError as validation_error:
+                    logging.error(
+                        f"{os.path.basename(shared_linter_file)} is not compliant with JSON schema"
                     )
                     logging.error(f"reason: {str(validation_error)}")
                     errors = errors + 1

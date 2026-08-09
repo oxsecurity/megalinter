@@ -1,0 +1,45 @@
+---
+class: V8rLinter
+linter_name: v8r
+linter_url: https://github.com/chris48s/v8r
+linter_repo: https://github.com/chris48s/v8r
+linter_spdx_license: MIT
+linter_speed: 1
+linter_rules_url: https://www.schemastore.org/
+linter_megalinter_ref_url: "no"
+config_file_name: .v8rrc.yml
+cli_config_arg_name: ""
+cli_lint_mode: list_of_files
+supported_cli_lint_modes:
+  - file
+  - list_of_files
+  - project
+cli_lint_extra_args:
+  - --ignore-errors
+cli_help_arg_name: --help
+install:
+  dockerfile:
+    - |-
+      # renovate: datasource=npm depName=v8r
+      ARG NPM_V8R_VERSION=6.1.0
+  npm:
+    - v8r@${NPM_V8R_VERSION}
+supported_platforms:
+  platform:
+    - linux/amd64
+    - linux/arm64
+ide:
+  eclipse:
+    - name: native support
+      url: https://www.eclipse.org/
+  idea:
+    - name: native support
+      url: https://www.jetbrains.com/products/#type=ide
+  vim:
+    - name: vison
+      url: https://github.com/Quramy/vison
+  vscode:
+    - name: native support
+      url: https://code.visualstudio.com/
+examples:
+  - v8r --ignore-errors myfile.json

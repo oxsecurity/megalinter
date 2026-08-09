@@ -1,0 +1,34 @@
+---
+class: DotnetFormatLinter
+linter_name: dotnet-format
+is_formatter: true
+linter_url: https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format
+linter_repo: https://github.com/dotnet/sdk
+linter_spdx_license: MIT
+linter_rules_configuration_url: https://github.com/dotnet/sdk/tree/main/documentation/format/docs
+linter_rules_inline_disable_url: https://docs.microsoft.com/en-us/dotnet/fundamentals/code-analysis/suppress-warnings
+linter_image_url: https://user-images.githubusercontent.com/9797472/61659851-6bbdc880-ac7d-11e9-95f7-d30c7de1a18a.png
+cli_lint_errors_count: regex_count
+cli_executable: dotnet
+cli_lint_mode: project
+supported_cli_lint_modes:
+  - project
+cli_lint_extra_args:
+  - format
+cli_lint_mode_project_exclude_arg_name: --exclude
+cli_lint_mode_project_exclude_arg_value: ./{{DIR}}/
+cli_lint_fix_arg_name: --megalinter-fix-flag
+cli_lint_fix_remove_args:
+  - --verify-no-changes
+cli_help_extra_args:
+  - format
+supported_platforms:
+  platform:
+    - linux/amd64
+    - linux/arm64
+examples:
+  - dotnet format --verify-no-changes
+  - dotnet format Solution.sln --verify-no-changes
+  - dotnet format Folder/Solution.sln --verify-no-changes
+  - dotnet format Project.csproj --verify-no-changes
+  - dotnet format
