@@ -6898,6 +6898,268 @@
       "x-order": 600000,
       "x-section": "SECURITY"
     },
+    "CSS_BIOME_ARGUMENTS": {
+      "$id": "#/properties/CSS_BIOME_ARGUMENTS",
+      "description": "CSS_BIOME: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CSS_BIOME: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ],
+      "x-category": "CSS_BIOME",
+      "x-order": 200020,
+      "x-section": "LINTER_COMMAND"
+    },
+    "CSS_BIOME_CLI_EXECUTABLE": {
+      "$id": "#/properties/CSS_BIOME_CLI_EXECUTABLE",
+      "default": [
+        [
+          "biome"
+        ]
+      ],
+      "description": "CSS_BIOME: Override CLI executable used to build the linter command line (rarely needed)",
+      "items": {
+        "type": "string"
+      },
+      "title": "CSS_BIOME: CLI Executable",
+      "type": "array",
+      "x-category": "CSS_BIOME",
+      "x-order": 200060,
+      "x-section": "LINTER_COMMAND"
+    },
+    "CSS_BIOME_CLI_LINT_MODE": {
+      "$id": "#/properties/CSS_BIOME_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "description": "CSS_BIOME: Override default CLI lint mode used to call the linter (rarely needed)",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
+      "title": "CSS_BIOME: CLI lint mode",
+      "type": "string",
+      "x-category": "CSS_BIOME",
+      "x-doc-key": "config-cli-lint-mode",
+      "x-order": 200050,
+      "x-section": "LINTER_COMMAND"
+    },
+    "CSS_BIOME_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/CSS_BIOME_COMMAND_REMOVE_ARGUMENTS",
+      "description": "CSS_BIOME: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CSS_BIOME: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ],
+      "x-category": "CSS_BIOME",
+      "x-order": 200020,
+      "x-section": "LINTER_COMMAND"
+    },
+    "CSS_BIOME_CONFIG_FILE": {
+      "$id": "#/properties/CSS_BIOME_CONFIG_FILE",
+      "default": "biome.json",
+      "description": "CSS_BIOME: User custom config file name if different from default",
+      "title": "CSS_BIOME: Custom config file name",
+      "type": "string",
+      "x-category": "CSS_BIOME",
+      "x-order": 200010,
+      "x-section": "LINTER_COMMAND"
+    },
+    "CSS_BIOME_DISABLE_ERRORS": {
+      "$id": "#/properties/CSS_BIOME_DISABLE_ERRORS",
+      "default": false,
+      "description": "CSS_BIOME: If true, CSS_BIOME doesn't make MegaLinter fail even if errors are found",
+      "title": "CSS_BIOME: Disable errors",
+      "type": "boolean",
+      "x-category": "CSS_BIOME",
+      "x-order": 400000,
+      "x-section": "ERRORS"
+    },
+    "CSS_BIOME_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/CSS_BIOME_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "description": "CSS_BIOME: If the number of errors found is less than this value, CSS_BIOME doesn't make MegaLinter fail",
+      "title": "CSS_BIOME: Maximum number of errors allowed",
+      "type": "number",
+      "x-category": "CSS_BIOME",
+      "x-order": 400010,
+      "x-section": "ERRORS"
+    },
+    "CSS_BIOME_FILE_EXTENSIONS": {
+      "$id": "#/properties/CSS_BIOME_FILE_EXTENSIONS",
+      "default": [
+        ".css"
+      ],
+      "description": "CSS_BIOME: Override descriptor/linter matching files extensions that will be used to select files to lint",
+      "examples": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CSS_BIOME: Matching files extensions",
+      "type": "array",
+      "x-category": "CSS_BIOME",
+      "x-order": 300020,
+      "x-section": "SCOPE"
+    },
+    "CSS_BIOME_FILE_NAMES_REGEX": {
+      "$id": "#/properties/CSS_BIOME_FILE_NAMES_REGEX",
+      "default": [],
+      "description": "CSS_BIOME: Override descriptor/linter matching file name regexes that will be used to select files to lint",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CSS_BIOME: Matching file name regexes",
+      "type": "array",
+      "x-category": "CSS_BIOME",
+      "x-order": 300030,
+      "x-section": "SCOPE"
+    },
+    "CSS_BIOME_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/CSS_BIOME_FILTER_REGEX_EXCLUDE",
+      "description": "CSS_BIOME: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with CSS_BIOME_CLI_LINT_MODE = project",
+      "items": {
+        "type": "string"
+      },
+      "title": "CSS_BIOME: Excluding Regex",
+      "type": [
+        "string",
+        "array"
+      ],
+      "x-category": "CSS_BIOME",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "CSS_BIOME_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/CSS_BIOME_FILTER_REGEX_INCLUDE",
+      "description": "CSS_BIOME: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with CSS_BIOME_CLI_LINT_MODE = project",
+      "items": {
+        "type": "string"
+      },
+      "title": "CSS_BIOME: Including Regex",
+      "type": [
+        "string",
+        "array"
+      ],
+      "x-category": "CSS_BIOME",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
+    },
+    "CSS_BIOME_FORWARD_EXCLUDED_DIRECTORIES": {
+      "$id": "#/properties/CSS_BIOME_FORWARD_EXCLUDED_DIRECTORIES",
+      "default": true,
+      "description": "CSS_BIOME: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "title": "CSS_BIOME: Forward excluded directories in project lint mode",
+      "type": "boolean",
+      "x-category": "CSS_BIOME",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
+    "CSS_BIOME_POST_COMMANDS": {
+      "$id": "#/properties/CSS_BIOME_POST_COMMANDS",
+      "description": "CSS_BIOME: Define bash commands to run after running CSS_BIOME",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "CSS_BIOME: Post-run commands",
+      "type": "array",
+      "x-category": "CSS_BIOME",
+      "x-order": 500010,
+      "x-section": "PREPOSTCOMMANDS"
+    },
+    "CSS_BIOME_PRE_COMMANDS": {
+      "$id": "#/properties/CSS_BIOME_PRE_COMMANDS",
+      "description": "CSS_BIOME: Define bash commands to run before running CSS_BIOME",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "CSS_BIOME: Pre-run commands",
+      "type": "array",
+      "x-category": "CSS_BIOME",
+      "x-order": 500000,
+      "x-section": "PREPOSTCOMMANDS"
+    },
+    "CSS_BIOME_RULES_PATH": {
+      "$id": "#/properties/CSS_BIOME_RULES_PATH",
+      "description": "CSS_BIOME: Path where to find linter configuration file",
+      "title": "CSS_BIOME: Custom config file path",
+      "type": "string",
+      "x-category": "CSS_BIOME",
+      "x-order": 200040,
+      "x-section": "LINTER_COMMAND"
+    },
+    "CSS_BIOME_TIMEOUT_SECONDS": {
+      "$id": "#/properties/CSS_BIOME_TIMEOUT_SECONDS",
+      "description": "CSS_BIOME: Maximum duration in seconds of the CSS_BIOME run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "CSS_BIOME: Timeout in seconds",
+      "type": "integer",
+      "x-category": "CSS_BIOME",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
+    "CSS_BIOME_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/CSS_BIOME_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling CSS_BIOME and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "CSS_BIOME: Unsecured env variables",
+      "type": "array",
+      "x-category": "CSS_BIOME",
+      "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
+      "x-order": 600000,
+      "x-section": "SECURITY"
+    },
     "CSS_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/CSS_FILTER_REGEX_EXCLUDE",
       "description": "CSS: Custom regex excluding filter: files matching this regex will NOT be linted",
@@ -11192,6 +11454,268 @@
       "x-order": 600000,
       "x-section": "SECURITY"
     },
+    "GRAPHQL_BIOME_ARGUMENTS": {
+      "$id": "#/properties/GRAPHQL_BIOME_ARGUMENTS",
+      "description": "GRAPHQL_BIOME: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "GRAPHQL_BIOME: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ],
+      "x-category": "GRAPHQL_BIOME",
+      "x-order": 200020,
+      "x-section": "LINTER_COMMAND"
+    },
+    "GRAPHQL_BIOME_CLI_EXECUTABLE": {
+      "$id": "#/properties/GRAPHQL_BIOME_CLI_EXECUTABLE",
+      "default": [
+        [
+          "biome"
+        ]
+      ],
+      "description": "GRAPHQL_BIOME: Override CLI executable used to build the linter command line (rarely needed)",
+      "items": {
+        "type": "string"
+      },
+      "title": "GRAPHQL_BIOME: CLI Executable",
+      "type": "array",
+      "x-category": "GRAPHQL_BIOME",
+      "x-order": 200060,
+      "x-section": "LINTER_COMMAND"
+    },
+    "GRAPHQL_BIOME_CLI_LINT_MODE": {
+      "$id": "#/properties/GRAPHQL_BIOME_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "description": "GRAPHQL_BIOME: Override default CLI lint mode used to call the linter (rarely needed)",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
+      "title": "GRAPHQL_BIOME: CLI lint mode",
+      "type": "string",
+      "x-category": "GRAPHQL_BIOME",
+      "x-doc-key": "config-cli-lint-mode",
+      "x-order": 200050,
+      "x-section": "LINTER_COMMAND"
+    },
+    "GRAPHQL_BIOME_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/GRAPHQL_BIOME_COMMAND_REMOVE_ARGUMENTS",
+      "description": "GRAPHQL_BIOME: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "GRAPHQL_BIOME: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ],
+      "x-category": "GRAPHQL_BIOME",
+      "x-order": 200020,
+      "x-section": "LINTER_COMMAND"
+    },
+    "GRAPHQL_BIOME_CONFIG_FILE": {
+      "$id": "#/properties/GRAPHQL_BIOME_CONFIG_FILE",
+      "default": "biome.json",
+      "description": "GRAPHQL_BIOME: User custom config file name if different from default",
+      "title": "GRAPHQL_BIOME: Custom config file name",
+      "type": "string",
+      "x-category": "GRAPHQL_BIOME",
+      "x-order": 200010,
+      "x-section": "LINTER_COMMAND"
+    },
+    "GRAPHQL_BIOME_DISABLE_ERRORS": {
+      "$id": "#/properties/GRAPHQL_BIOME_DISABLE_ERRORS",
+      "default": false,
+      "description": "GRAPHQL_BIOME: If true, GRAPHQL_BIOME doesn't make MegaLinter fail even if errors are found",
+      "title": "GRAPHQL_BIOME: Disable errors",
+      "type": "boolean",
+      "x-category": "GRAPHQL_BIOME",
+      "x-order": 400000,
+      "x-section": "ERRORS"
+    },
+    "GRAPHQL_BIOME_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/GRAPHQL_BIOME_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "description": "GRAPHQL_BIOME: If the number of errors found is less than this value, GRAPHQL_BIOME doesn't make MegaLinter fail",
+      "title": "GRAPHQL_BIOME: Maximum number of errors allowed",
+      "type": "number",
+      "x-category": "GRAPHQL_BIOME",
+      "x-order": 400010,
+      "x-section": "ERRORS"
+    },
+    "GRAPHQL_BIOME_FILE_EXTENSIONS": {
+      "$id": "#/properties/GRAPHQL_BIOME_FILE_EXTENSIONS",
+      "default": [
+        ".graphql"
+      ],
+      "description": "GRAPHQL_BIOME: Override descriptor/linter matching files extensions that will be used to select files to lint",
+      "examples": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "GRAPHQL_BIOME: Matching files extensions",
+      "type": "array",
+      "x-category": "GRAPHQL_BIOME",
+      "x-order": 300020,
+      "x-section": "SCOPE"
+    },
+    "GRAPHQL_BIOME_FILE_NAMES_REGEX": {
+      "$id": "#/properties/GRAPHQL_BIOME_FILE_NAMES_REGEX",
+      "default": [],
+      "description": "GRAPHQL_BIOME: Override descriptor/linter matching file name regexes that will be used to select files to lint",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "GRAPHQL_BIOME: Matching file name regexes",
+      "type": "array",
+      "x-category": "GRAPHQL_BIOME",
+      "x-order": 300030,
+      "x-section": "SCOPE"
+    },
+    "GRAPHQL_BIOME_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/GRAPHQL_BIOME_FILTER_REGEX_EXCLUDE",
+      "description": "GRAPHQL_BIOME: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with GRAPHQL_BIOME_CLI_LINT_MODE = project",
+      "items": {
+        "type": "string"
+      },
+      "title": "GRAPHQL_BIOME: Excluding Regex",
+      "type": [
+        "string",
+        "array"
+      ],
+      "x-category": "GRAPHQL_BIOME",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "GRAPHQL_BIOME_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/GRAPHQL_BIOME_FILTER_REGEX_INCLUDE",
+      "description": "GRAPHQL_BIOME: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with GRAPHQL_BIOME_CLI_LINT_MODE = project",
+      "items": {
+        "type": "string"
+      },
+      "title": "GRAPHQL_BIOME: Including Regex",
+      "type": [
+        "string",
+        "array"
+      ],
+      "x-category": "GRAPHQL_BIOME",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
+    },
+    "GRAPHQL_BIOME_FORWARD_EXCLUDED_DIRECTORIES": {
+      "$id": "#/properties/GRAPHQL_BIOME_FORWARD_EXCLUDED_DIRECTORIES",
+      "default": true,
+      "description": "GRAPHQL_BIOME: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "title": "GRAPHQL_BIOME: Forward excluded directories in project lint mode",
+      "type": "boolean",
+      "x-category": "GRAPHQL_BIOME",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
+    "GRAPHQL_BIOME_POST_COMMANDS": {
+      "$id": "#/properties/GRAPHQL_BIOME_POST_COMMANDS",
+      "description": "GRAPHQL_BIOME: Define bash commands to run after running GRAPHQL_BIOME",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "GRAPHQL_BIOME: Post-run commands",
+      "type": "array",
+      "x-category": "GRAPHQL_BIOME",
+      "x-order": 500010,
+      "x-section": "PREPOSTCOMMANDS"
+    },
+    "GRAPHQL_BIOME_PRE_COMMANDS": {
+      "$id": "#/properties/GRAPHQL_BIOME_PRE_COMMANDS",
+      "description": "GRAPHQL_BIOME: Define bash commands to run before running GRAPHQL_BIOME",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "GRAPHQL_BIOME: Pre-run commands",
+      "type": "array",
+      "x-category": "GRAPHQL_BIOME",
+      "x-order": 500000,
+      "x-section": "PREPOSTCOMMANDS"
+    },
+    "GRAPHQL_BIOME_RULES_PATH": {
+      "$id": "#/properties/GRAPHQL_BIOME_RULES_PATH",
+      "description": "GRAPHQL_BIOME: Path where to find linter configuration file",
+      "title": "GRAPHQL_BIOME: Custom config file path",
+      "type": "string",
+      "x-category": "GRAPHQL_BIOME",
+      "x-order": 200040,
+      "x-section": "LINTER_COMMAND"
+    },
+    "GRAPHQL_BIOME_TIMEOUT_SECONDS": {
+      "$id": "#/properties/GRAPHQL_BIOME_TIMEOUT_SECONDS",
+      "description": "GRAPHQL_BIOME: Maximum duration in seconds of the GRAPHQL_BIOME run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "GRAPHQL_BIOME: Timeout in seconds",
+      "type": "integer",
+      "x-category": "GRAPHQL_BIOME",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
+    "GRAPHQL_BIOME_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/GRAPHQL_BIOME_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling GRAPHQL_BIOME and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "GRAPHQL_BIOME: Unsecured env variables",
+      "type": "array",
+      "x-category": "GRAPHQL_BIOME",
+      "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
+      "x-order": 600000,
+      "x-section": "SECURITY"
+    },
     "GRAPHQL_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/GRAPHQL_FILTER_REGEX_EXCLUDE",
       "description": "GRAPHQL: Custom regex excluding filter: files matching this regex will NOT be linted",
@@ -12469,6 +12993,268 @@
       "x-category": "GENERAL",
       "x-order": 200050,
       "x-section": "SCOPE"
+    },
+    "JAVASCRIPT_BIOME_ARGUMENTS": {
+      "$id": "#/properties/JAVASCRIPT_BIOME_ARGUMENTS",
+      "description": "JAVASCRIPT_BIOME: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JAVASCRIPT_BIOME: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ],
+      "x-category": "JAVASCRIPT_BIOME",
+      "x-order": 200020,
+      "x-section": "LINTER_COMMAND"
+    },
+    "JAVASCRIPT_BIOME_CLI_EXECUTABLE": {
+      "$id": "#/properties/JAVASCRIPT_BIOME_CLI_EXECUTABLE",
+      "default": [
+        [
+          "biome"
+        ]
+      ],
+      "description": "JAVASCRIPT_BIOME: Override CLI executable used to build the linter command line (rarely needed)",
+      "items": {
+        "type": "string"
+      },
+      "title": "JAVASCRIPT_BIOME: CLI Executable",
+      "type": "array",
+      "x-category": "JAVASCRIPT_BIOME",
+      "x-order": 200060,
+      "x-section": "LINTER_COMMAND"
+    },
+    "JAVASCRIPT_BIOME_CLI_LINT_MODE": {
+      "$id": "#/properties/JAVASCRIPT_BIOME_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "description": "JAVASCRIPT_BIOME: Override default CLI lint mode used to call the linter (rarely needed)",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
+      "title": "JAVASCRIPT_BIOME: CLI lint mode",
+      "type": "string",
+      "x-category": "JAVASCRIPT_BIOME",
+      "x-doc-key": "config-cli-lint-mode",
+      "x-order": 200050,
+      "x-section": "LINTER_COMMAND"
+    },
+    "JAVASCRIPT_BIOME_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/JAVASCRIPT_BIOME_COMMAND_REMOVE_ARGUMENTS",
+      "description": "JAVASCRIPT_BIOME: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JAVASCRIPT_BIOME: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ],
+      "x-category": "JAVASCRIPT_BIOME",
+      "x-order": 200020,
+      "x-section": "LINTER_COMMAND"
+    },
+    "JAVASCRIPT_BIOME_CONFIG_FILE": {
+      "$id": "#/properties/JAVASCRIPT_BIOME_CONFIG_FILE",
+      "default": "biome.json",
+      "description": "JAVASCRIPT_BIOME: User custom config file name if different from default",
+      "title": "JAVASCRIPT_BIOME: Custom config file name",
+      "type": "string",
+      "x-category": "JAVASCRIPT_BIOME",
+      "x-order": 200010,
+      "x-section": "LINTER_COMMAND"
+    },
+    "JAVASCRIPT_BIOME_DISABLE_ERRORS": {
+      "$id": "#/properties/JAVASCRIPT_BIOME_DISABLE_ERRORS",
+      "default": false,
+      "description": "JAVASCRIPT_BIOME: If true, JAVASCRIPT_BIOME doesn't make MegaLinter fail even if errors are found",
+      "title": "JAVASCRIPT_BIOME: Disable errors",
+      "type": "boolean",
+      "x-category": "JAVASCRIPT_BIOME",
+      "x-order": 400000,
+      "x-section": "ERRORS"
+    },
+    "JAVASCRIPT_BIOME_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/JAVASCRIPT_BIOME_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "description": "JAVASCRIPT_BIOME: If the number of errors found is less than this value, JAVASCRIPT_BIOME doesn't make MegaLinter fail",
+      "title": "JAVASCRIPT_BIOME: Maximum number of errors allowed",
+      "type": "number",
+      "x-category": "JAVASCRIPT_BIOME",
+      "x-order": 400010,
+      "x-section": "ERRORS"
+    },
+    "JAVASCRIPT_BIOME_FILE_EXTENSIONS": {
+      "$id": "#/properties/JAVASCRIPT_BIOME_FILE_EXTENSIONS",
+      "default": [
+        ".js"
+      ],
+      "description": "JAVASCRIPT_BIOME: Override descriptor/linter matching files extensions that will be used to select files to lint",
+      "examples": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JAVASCRIPT_BIOME: Matching files extensions",
+      "type": "array",
+      "x-category": "JAVASCRIPT_BIOME",
+      "x-order": 300020,
+      "x-section": "SCOPE"
+    },
+    "JAVASCRIPT_BIOME_FILE_NAMES_REGEX": {
+      "$id": "#/properties/JAVASCRIPT_BIOME_FILE_NAMES_REGEX",
+      "default": [],
+      "description": "JAVASCRIPT_BIOME: Override descriptor/linter matching file name regexes that will be used to select files to lint",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JAVASCRIPT_BIOME: Matching file name regexes",
+      "type": "array",
+      "x-category": "JAVASCRIPT_BIOME",
+      "x-order": 300030,
+      "x-section": "SCOPE"
+    },
+    "JAVASCRIPT_BIOME_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/JAVASCRIPT_BIOME_FILTER_REGEX_EXCLUDE",
+      "description": "JAVASCRIPT_BIOME: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with JAVASCRIPT_BIOME_CLI_LINT_MODE = project",
+      "items": {
+        "type": "string"
+      },
+      "title": "JAVASCRIPT_BIOME: Excluding Regex",
+      "type": [
+        "string",
+        "array"
+      ],
+      "x-category": "JAVASCRIPT_BIOME",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "JAVASCRIPT_BIOME_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/JAVASCRIPT_BIOME_FILTER_REGEX_INCLUDE",
+      "description": "JAVASCRIPT_BIOME: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with JAVASCRIPT_BIOME_CLI_LINT_MODE = project",
+      "items": {
+        "type": "string"
+      },
+      "title": "JAVASCRIPT_BIOME: Including Regex",
+      "type": [
+        "string",
+        "array"
+      ],
+      "x-category": "JAVASCRIPT_BIOME",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
+    },
+    "JAVASCRIPT_BIOME_FORWARD_EXCLUDED_DIRECTORIES": {
+      "$id": "#/properties/JAVASCRIPT_BIOME_FORWARD_EXCLUDED_DIRECTORIES",
+      "default": true,
+      "description": "JAVASCRIPT_BIOME: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "title": "JAVASCRIPT_BIOME: Forward excluded directories in project lint mode",
+      "type": "boolean",
+      "x-category": "JAVASCRIPT_BIOME",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
+    "JAVASCRIPT_BIOME_POST_COMMANDS": {
+      "$id": "#/properties/JAVASCRIPT_BIOME_POST_COMMANDS",
+      "description": "JAVASCRIPT_BIOME: Define bash commands to run after running JAVASCRIPT_BIOME",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "JAVASCRIPT_BIOME: Post-run commands",
+      "type": "array",
+      "x-category": "JAVASCRIPT_BIOME",
+      "x-order": 500010,
+      "x-section": "PREPOSTCOMMANDS"
+    },
+    "JAVASCRIPT_BIOME_PRE_COMMANDS": {
+      "$id": "#/properties/JAVASCRIPT_BIOME_PRE_COMMANDS",
+      "description": "JAVASCRIPT_BIOME: Define bash commands to run before running JAVASCRIPT_BIOME",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "JAVASCRIPT_BIOME: Pre-run commands",
+      "type": "array",
+      "x-category": "JAVASCRIPT_BIOME",
+      "x-order": 500000,
+      "x-section": "PREPOSTCOMMANDS"
+    },
+    "JAVASCRIPT_BIOME_RULES_PATH": {
+      "$id": "#/properties/JAVASCRIPT_BIOME_RULES_PATH",
+      "description": "JAVASCRIPT_BIOME: Path where to find linter configuration file",
+      "title": "JAVASCRIPT_BIOME: Custom config file path",
+      "type": "string",
+      "x-category": "JAVASCRIPT_BIOME",
+      "x-order": 200040,
+      "x-section": "LINTER_COMMAND"
+    },
+    "JAVASCRIPT_BIOME_TIMEOUT_SECONDS": {
+      "$id": "#/properties/JAVASCRIPT_BIOME_TIMEOUT_SECONDS",
+      "description": "JAVASCRIPT_BIOME: Maximum duration in seconds of the JAVASCRIPT_BIOME run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "JAVASCRIPT_BIOME: Timeout in seconds",
+      "type": "integer",
+      "x-category": "JAVASCRIPT_BIOME",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
+    "JAVASCRIPT_BIOME_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/JAVASCRIPT_BIOME_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling JAVASCRIPT_BIOME and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "JAVASCRIPT_BIOME: Unsecured env variables",
+      "type": "array",
+      "x-category": "JAVASCRIPT_BIOME",
+      "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
+      "x-order": 600000,
+      "x-section": "SECURITY"
     },
     "JAVASCRIPT_DEFAULT_STYLE": {
       "$id": "#/properties/JAVASCRIPT_DEFAULT_STYLE",
@@ -13942,6 +14728,268 @@
       "x-order": 700080,
       "x-section": "OUTPUT"
     },
+    "JSON_BIOME_ARGUMENTS": {
+      "$id": "#/properties/JSON_BIOME_ARGUMENTS",
+      "description": "JSON_BIOME: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JSON_BIOME: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ],
+      "x-category": "JSON_BIOME",
+      "x-order": 200020,
+      "x-section": "LINTER_COMMAND"
+    },
+    "JSON_BIOME_CLI_EXECUTABLE": {
+      "$id": "#/properties/JSON_BIOME_CLI_EXECUTABLE",
+      "default": [
+        [
+          "biome"
+        ]
+      ],
+      "description": "JSON_BIOME: Override CLI executable used to build the linter command line (rarely needed)",
+      "items": {
+        "type": "string"
+      },
+      "title": "JSON_BIOME: CLI Executable",
+      "type": "array",
+      "x-category": "JSON_BIOME",
+      "x-order": 200060,
+      "x-section": "LINTER_COMMAND"
+    },
+    "JSON_BIOME_CLI_LINT_MODE": {
+      "$id": "#/properties/JSON_BIOME_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "description": "JSON_BIOME: Override default CLI lint mode used to call the linter (rarely needed)",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
+      "title": "JSON_BIOME: CLI lint mode",
+      "type": "string",
+      "x-category": "JSON_BIOME",
+      "x-doc-key": "config-cli-lint-mode",
+      "x-order": 200050,
+      "x-section": "LINTER_COMMAND"
+    },
+    "JSON_BIOME_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/JSON_BIOME_COMMAND_REMOVE_ARGUMENTS",
+      "description": "JSON_BIOME: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JSON_BIOME: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ],
+      "x-category": "JSON_BIOME",
+      "x-order": 200020,
+      "x-section": "LINTER_COMMAND"
+    },
+    "JSON_BIOME_CONFIG_FILE": {
+      "$id": "#/properties/JSON_BIOME_CONFIG_FILE",
+      "default": "biome.json",
+      "description": "JSON_BIOME: User custom config file name if different from default",
+      "title": "JSON_BIOME: Custom config file name",
+      "type": "string",
+      "x-category": "JSON_BIOME",
+      "x-order": 200010,
+      "x-section": "LINTER_COMMAND"
+    },
+    "JSON_BIOME_DISABLE_ERRORS": {
+      "$id": "#/properties/JSON_BIOME_DISABLE_ERRORS",
+      "default": false,
+      "description": "JSON_BIOME: If true, JSON_BIOME doesn't make MegaLinter fail even if errors are found",
+      "title": "JSON_BIOME: Disable errors",
+      "type": "boolean",
+      "x-category": "JSON_BIOME",
+      "x-order": 400000,
+      "x-section": "ERRORS"
+    },
+    "JSON_BIOME_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/JSON_BIOME_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "description": "JSON_BIOME: If the number of errors found is less than this value, JSON_BIOME doesn't make MegaLinter fail",
+      "title": "JSON_BIOME: Maximum number of errors allowed",
+      "type": "number",
+      "x-category": "JSON_BIOME",
+      "x-order": 400010,
+      "x-section": "ERRORS"
+    },
+    "JSON_BIOME_FILE_EXTENSIONS": {
+      "$id": "#/properties/JSON_BIOME_FILE_EXTENSIONS",
+      "default": [
+        ".json"
+      ],
+      "description": "JSON_BIOME: Override descriptor/linter matching files extensions that will be used to select files to lint",
+      "examples": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JSON_BIOME: Matching files extensions",
+      "type": "array",
+      "x-category": "JSON_BIOME",
+      "x-order": 300020,
+      "x-section": "SCOPE"
+    },
+    "JSON_BIOME_FILE_NAMES_REGEX": {
+      "$id": "#/properties/JSON_BIOME_FILE_NAMES_REGEX",
+      "default": [],
+      "description": "JSON_BIOME: Override descriptor/linter matching file name regexes that will be used to select files to lint",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JSON_BIOME: Matching file name regexes",
+      "type": "array",
+      "x-category": "JSON_BIOME",
+      "x-order": 300030,
+      "x-section": "SCOPE"
+    },
+    "JSON_BIOME_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/JSON_BIOME_FILTER_REGEX_EXCLUDE",
+      "description": "JSON_BIOME: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with JSON_BIOME_CLI_LINT_MODE = project",
+      "items": {
+        "type": "string"
+      },
+      "title": "JSON_BIOME: Excluding Regex",
+      "type": [
+        "string",
+        "array"
+      ],
+      "x-category": "JSON_BIOME",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "JSON_BIOME_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/JSON_BIOME_FILTER_REGEX_INCLUDE",
+      "description": "JSON_BIOME: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with JSON_BIOME_CLI_LINT_MODE = project",
+      "items": {
+        "type": "string"
+      },
+      "title": "JSON_BIOME: Including Regex",
+      "type": [
+        "string",
+        "array"
+      ],
+      "x-category": "JSON_BIOME",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
+    },
+    "JSON_BIOME_FORWARD_EXCLUDED_DIRECTORIES": {
+      "$id": "#/properties/JSON_BIOME_FORWARD_EXCLUDED_DIRECTORIES",
+      "default": true,
+      "description": "JSON_BIOME: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "title": "JSON_BIOME: Forward excluded directories in project lint mode",
+      "type": "boolean",
+      "x-category": "JSON_BIOME",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
+    "JSON_BIOME_POST_COMMANDS": {
+      "$id": "#/properties/JSON_BIOME_POST_COMMANDS",
+      "description": "JSON_BIOME: Define bash commands to run after running JSON_BIOME",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "JSON_BIOME: Post-run commands",
+      "type": "array",
+      "x-category": "JSON_BIOME",
+      "x-order": 500010,
+      "x-section": "PREPOSTCOMMANDS"
+    },
+    "JSON_BIOME_PRE_COMMANDS": {
+      "$id": "#/properties/JSON_BIOME_PRE_COMMANDS",
+      "description": "JSON_BIOME: Define bash commands to run before running JSON_BIOME",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "JSON_BIOME: Pre-run commands",
+      "type": "array",
+      "x-category": "JSON_BIOME",
+      "x-order": 500000,
+      "x-section": "PREPOSTCOMMANDS"
+    },
+    "JSON_BIOME_RULES_PATH": {
+      "$id": "#/properties/JSON_BIOME_RULES_PATH",
+      "description": "JSON_BIOME: Path where to find linter configuration file",
+      "title": "JSON_BIOME: Custom config file path",
+      "type": "string",
+      "x-category": "JSON_BIOME",
+      "x-order": 200040,
+      "x-section": "LINTER_COMMAND"
+    },
+    "JSON_BIOME_TIMEOUT_SECONDS": {
+      "$id": "#/properties/JSON_BIOME_TIMEOUT_SECONDS",
+      "description": "JSON_BIOME: Maximum duration in seconds of the JSON_BIOME run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "JSON_BIOME: Timeout in seconds",
+      "type": "integer",
+      "x-category": "JSON_BIOME",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
+    "JSON_BIOME_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/JSON_BIOME_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling JSON_BIOME and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "JSON_BIOME: Unsecured env variables",
+      "type": "array",
+      "x-category": "JSON_BIOME",
+      "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
+      "x-order": 600000,
+      "x-section": "SECURITY"
+    },
     "JSON_ESLINT_PLUGIN_JSONC_ARGUMENTS": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_ARGUMENTS",
       "deprecated": true,
@@ -15344,6 +16392,268 @@
       "title": "JSON_V8R: Unsecured env variables",
       "type": "array",
       "x-category": "JSON_V8R",
+      "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
+      "x-order": 600000,
+      "x-section": "SECURITY"
+    },
+    "JSX_BIOME_ARGUMENTS": {
+      "$id": "#/properties/JSX_BIOME_ARGUMENTS",
+      "description": "JSX_BIOME: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JSX_BIOME: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ],
+      "x-category": "JSX_BIOME",
+      "x-order": 200020,
+      "x-section": "LINTER_COMMAND"
+    },
+    "JSX_BIOME_CLI_EXECUTABLE": {
+      "$id": "#/properties/JSX_BIOME_CLI_EXECUTABLE",
+      "default": [
+        [
+          "biome"
+        ]
+      ],
+      "description": "JSX_BIOME: Override CLI executable used to build the linter command line (rarely needed)",
+      "items": {
+        "type": "string"
+      },
+      "title": "JSX_BIOME: CLI Executable",
+      "type": "array",
+      "x-category": "JSX_BIOME",
+      "x-order": 200060,
+      "x-section": "LINTER_COMMAND"
+    },
+    "JSX_BIOME_CLI_LINT_MODE": {
+      "$id": "#/properties/JSX_BIOME_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "description": "JSX_BIOME: Override default CLI lint mode used to call the linter (rarely needed)",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
+      "title": "JSX_BIOME: CLI lint mode",
+      "type": "string",
+      "x-category": "JSX_BIOME",
+      "x-doc-key": "config-cli-lint-mode",
+      "x-order": 200050,
+      "x-section": "LINTER_COMMAND"
+    },
+    "JSX_BIOME_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/JSX_BIOME_COMMAND_REMOVE_ARGUMENTS",
+      "description": "JSX_BIOME: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JSX_BIOME: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ],
+      "x-category": "JSX_BIOME",
+      "x-order": 200020,
+      "x-section": "LINTER_COMMAND"
+    },
+    "JSX_BIOME_CONFIG_FILE": {
+      "$id": "#/properties/JSX_BIOME_CONFIG_FILE",
+      "default": "biome.json",
+      "description": "JSX_BIOME: User custom config file name if different from default",
+      "title": "JSX_BIOME: Custom config file name",
+      "type": "string",
+      "x-category": "JSX_BIOME",
+      "x-order": 200010,
+      "x-section": "LINTER_COMMAND"
+    },
+    "JSX_BIOME_DISABLE_ERRORS": {
+      "$id": "#/properties/JSX_BIOME_DISABLE_ERRORS",
+      "default": false,
+      "description": "JSX_BIOME: If true, JSX_BIOME doesn't make MegaLinter fail even if errors are found",
+      "title": "JSX_BIOME: Disable errors",
+      "type": "boolean",
+      "x-category": "JSX_BIOME",
+      "x-order": 400000,
+      "x-section": "ERRORS"
+    },
+    "JSX_BIOME_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/JSX_BIOME_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "description": "JSX_BIOME: If the number of errors found is less than this value, JSX_BIOME doesn't make MegaLinter fail",
+      "title": "JSX_BIOME: Maximum number of errors allowed",
+      "type": "number",
+      "x-category": "JSX_BIOME",
+      "x-order": 400010,
+      "x-section": "ERRORS"
+    },
+    "JSX_BIOME_FILE_EXTENSIONS": {
+      "$id": "#/properties/JSX_BIOME_FILE_EXTENSIONS",
+      "default": [
+        ".jsx"
+      ],
+      "description": "JSX_BIOME: Override descriptor/linter matching files extensions that will be used to select files to lint",
+      "examples": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JSX_BIOME: Matching files extensions",
+      "type": "array",
+      "x-category": "JSX_BIOME",
+      "x-order": 300020,
+      "x-section": "SCOPE"
+    },
+    "JSX_BIOME_FILE_NAMES_REGEX": {
+      "$id": "#/properties/JSX_BIOME_FILE_NAMES_REGEX",
+      "default": [],
+      "description": "JSX_BIOME: Override descriptor/linter matching file name regexes that will be used to select files to lint",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JSX_BIOME: Matching file name regexes",
+      "type": "array",
+      "x-category": "JSX_BIOME",
+      "x-order": 300030,
+      "x-section": "SCOPE"
+    },
+    "JSX_BIOME_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/JSX_BIOME_FILTER_REGEX_EXCLUDE",
+      "description": "JSX_BIOME: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with JSX_BIOME_CLI_LINT_MODE = project",
+      "items": {
+        "type": "string"
+      },
+      "title": "JSX_BIOME: Excluding Regex",
+      "type": [
+        "string",
+        "array"
+      ],
+      "x-category": "JSX_BIOME",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "JSX_BIOME_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/JSX_BIOME_FILTER_REGEX_INCLUDE",
+      "description": "JSX_BIOME: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with JSX_BIOME_CLI_LINT_MODE = project",
+      "items": {
+        "type": "string"
+      },
+      "title": "JSX_BIOME: Including Regex",
+      "type": [
+        "string",
+        "array"
+      ],
+      "x-category": "JSX_BIOME",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
+    },
+    "JSX_BIOME_FORWARD_EXCLUDED_DIRECTORIES": {
+      "$id": "#/properties/JSX_BIOME_FORWARD_EXCLUDED_DIRECTORIES",
+      "default": true,
+      "description": "JSX_BIOME: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "title": "JSX_BIOME: Forward excluded directories in project lint mode",
+      "type": "boolean",
+      "x-category": "JSX_BIOME",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
+    "JSX_BIOME_POST_COMMANDS": {
+      "$id": "#/properties/JSX_BIOME_POST_COMMANDS",
+      "description": "JSX_BIOME: Define bash commands to run after running JSX_BIOME",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "JSX_BIOME: Post-run commands",
+      "type": "array",
+      "x-category": "JSX_BIOME",
+      "x-order": 500010,
+      "x-section": "PREPOSTCOMMANDS"
+    },
+    "JSX_BIOME_PRE_COMMANDS": {
+      "$id": "#/properties/JSX_BIOME_PRE_COMMANDS",
+      "description": "JSX_BIOME: Define bash commands to run before running JSX_BIOME",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "JSX_BIOME: Pre-run commands",
+      "type": "array",
+      "x-category": "JSX_BIOME",
+      "x-order": 500000,
+      "x-section": "PREPOSTCOMMANDS"
+    },
+    "JSX_BIOME_RULES_PATH": {
+      "$id": "#/properties/JSX_BIOME_RULES_PATH",
+      "description": "JSX_BIOME: Path where to find linter configuration file",
+      "title": "JSX_BIOME: Custom config file path",
+      "type": "string",
+      "x-category": "JSX_BIOME",
+      "x-order": 200040,
+      "x-section": "LINTER_COMMAND"
+    },
+    "JSX_BIOME_TIMEOUT_SECONDS": {
+      "$id": "#/properties/JSX_BIOME_TIMEOUT_SECONDS",
+      "description": "JSX_BIOME: Maximum duration in seconds of the JSX_BIOME run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "JSX_BIOME: Timeout in seconds",
+      "type": "integer",
+      "x-category": "JSX_BIOME",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
+    "JSX_BIOME_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/JSX_BIOME_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling JSX_BIOME and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "JSX_BIOME: Unsecured env variables",
+      "type": "array",
+      "x-category": "JSX_BIOME",
       "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
       "x-order": 600000,
       "x-section": "SECURITY"
@@ -40609,6 +41919,268 @@
       "x-order": 950950,
       "x-section": "GENERAL"
     },
+    "TSX_BIOME_ARGUMENTS": {
+      "$id": "#/properties/TSX_BIOME_ARGUMENTS",
+      "description": "TSX_BIOME: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TSX_BIOME: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ],
+      "x-category": "TSX_BIOME",
+      "x-order": 200020,
+      "x-section": "LINTER_COMMAND"
+    },
+    "TSX_BIOME_CLI_EXECUTABLE": {
+      "$id": "#/properties/TSX_BIOME_CLI_EXECUTABLE",
+      "default": [
+        [
+          "biome"
+        ]
+      ],
+      "description": "TSX_BIOME: Override CLI executable used to build the linter command line (rarely needed)",
+      "items": {
+        "type": "string"
+      },
+      "title": "TSX_BIOME: CLI Executable",
+      "type": "array",
+      "x-category": "TSX_BIOME",
+      "x-order": 200060,
+      "x-section": "LINTER_COMMAND"
+    },
+    "TSX_BIOME_CLI_LINT_MODE": {
+      "$id": "#/properties/TSX_BIOME_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "description": "TSX_BIOME: Override default CLI lint mode used to call the linter (rarely needed)",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
+      "title": "TSX_BIOME: CLI lint mode",
+      "type": "string",
+      "x-category": "TSX_BIOME",
+      "x-doc-key": "config-cli-lint-mode",
+      "x-order": 200050,
+      "x-section": "LINTER_COMMAND"
+    },
+    "TSX_BIOME_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/TSX_BIOME_COMMAND_REMOVE_ARGUMENTS",
+      "description": "TSX_BIOME: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TSX_BIOME: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ],
+      "x-category": "TSX_BIOME",
+      "x-order": 200020,
+      "x-section": "LINTER_COMMAND"
+    },
+    "TSX_BIOME_CONFIG_FILE": {
+      "$id": "#/properties/TSX_BIOME_CONFIG_FILE",
+      "default": "biome.json",
+      "description": "TSX_BIOME: User custom config file name if different from default",
+      "title": "TSX_BIOME: Custom config file name",
+      "type": "string",
+      "x-category": "TSX_BIOME",
+      "x-order": 200010,
+      "x-section": "LINTER_COMMAND"
+    },
+    "TSX_BIOME_DISABLE_ERRORS": {
+      "$id": "#/properties/TSX_BIOME_DISABLE_ERRORS",
+      "default": false,
+      "description": "TSX_BIOME: If true, TSX_BIOME doesn't make MegaLinter fail even if errors are found",
+      "title": "TSX_BIOME: Disable errors",
+      "type": "boolean",
+      "x-category": "TSX_BIOME",
+      "x-order": 400000,
+      "x-section": "ERRORS"
+    },
+    "TSX_BIOME_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/TSX_BIOME_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "description": "TSX_BIOME: If the number of errors found is less than this value, TSX_BIOME doesn't make MegaLinter fail",
+      "title": "TSX_BIOME: Maximum number of errors allowed",
+      "type": "number",
+      "x-category": "TSX_BIOME",
+      "x-order": 400010,
+      "x-section": "ERRORS"
+    },
+    "TSX_BIOME_FILE_EXTENSIONS": {
+      "$id": "#/properties/TSX_BIOME_FILE_EXTENSIONS",
+      "default": [
+        ".tsx"
+      ],
+      "description": "TSX_BIOME: Override descriptor/linter matching files extensions that will be used to select files to lint",
+      "examples": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TSX_BIOME: Matching files extensions",
+      "type": "array",
+      "x-category": "TSX_BIOME",
+      "x-order": 300020,
+      "x-section": "SCOPE"
+    },
+    "TSX_BIOME_FILE_NAMES_REGEX": {
+      "$id": "#/properties/TSX_BIOME_FILE_NAMES_REGEX",
+      "default": [],
+      "description": "TSX_BIOME: Override descriptor/linter matching file name regexes that will be used to select files to lint",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TSX_BIOME: Matching file name regexes",
+      "type": "array",
+      "x-category": "TSX_BIOME",
+      "x-order": 300030,
+      "x-section": "SCOPE"
+    },
+    "TSX_BIOME_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/TSX_BIOME_FILTER_REGEX_EXCLUDE",
+      "description": "TSX_BIOME: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with TSX_BIOME_CLI_LINT_MODE = project",
+      "items": {
+        "type": "string"
+      },
+      "title": "TSX_BIOME: Excluding Regex",
+      "type": [
+        "string",
+        "array"
+      ],
+      "x-category": "TSX_BIOME",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "TSX_BIOME_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/TSX_BIOME_FILTER_REGEX_INCLUDE",
+      "description": "TSX_BIOME: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with TSX_BIOME_CLI_LINT_MODE = project",
+      "items": {
+        "type": "string"
+      },
+      "title": "TSX_BIOME: Including Regex",
+      "type": [
+        "string",
+        "array"
+      ],
+      "x-category": "TSX_BIOME",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
+    },
+    "TSX_BIOME_FORWARD_EXCLUDED_DIRECTORIES": {
+      "$id": "#/properties/TSX_BIOME_FORWARD_EXCLUDED_DIRECTORIES",
+      "default": true,
+      "description": "TSX_BIOME: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "title": "TSX_BIOME: Forward excluded directories in project lint mode",
+      "type": "boolean",
+      "x-category": "TSX_BIOME",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
+    "TSX_BIOME_POST_COMMANDS": {
+      "$id": "#/properties/TSX_BIOME_POST_COMMANDS",
+      "description": "TSX_BIOME: Define bash commands to run after running TSX_BIOME",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "TSX_BIOME: Post-run commands",
+      "type": "array",
+      "x-category": "TSX_BIOME",
+      "x-order": 500010,
+      "x-section": "PREPOSTCOMMANDS"
+    },
+    "TSX_BIOME_PRE_COMMANDS": {
+      "$id": "#/properties/TSX_BIOME_PRE_COMMANDS",
+      "description": "TSX_BIOME: Define bash commands to run before running TSX_BIOME",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "TSX_BIOME: Pre-run commands",
+      "type": "array",
+      "x-category": "TSX_BIOME",
+      "x-order": 500000,
+      "x-section": "PREPOSTCOMMANDS"
+    },
+    "TSX_BIOME_RULES_PATH": {
+      "$id": "#/properties/TSX_BIOME_RULES_PATH",
+      "description": "TSX_BIOME: Path where to find linter configuration file",
+      "title": "TSX_BIOME: Custom config file path",
+      "type": "string",
+      "x-category": "TSX_BIOME",
+      "x-order": 200040,
+      "x-section": "LINTER_COMMAND"
+    },
+    "TSX_BIOME_TIMEOUT_SECONDS": {
+      "$id": "#/properties/TSX_BIOME_TIMEOUT_SECONDS",
+      "description": "TSX_BIOME: Maximum duration in seconds of the TSX_BIOME run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "TSX_BIOME: Timeout in seconds",
+      "type": "integer",
+      "x-category": "TSX_BIOME",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
+    "TSX_BIOME_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/TSX_BIOME_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling TSX_BIOME and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "TSX_BIOME: Unsecured env variables",
+      "type": "array",
+      "x-category": "TSX_BIOME",
+      "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
+      "x-order": 600000,
+      "x-section": "SECURITY"
+    },
     "TSX_ESLINT_ARGUMENTS": {
       "$id": "#/properties/TSX_ESLINT_ARGUMENTS",
       "description": "TSX_ESLINT: User custom arguments to add in linter CLI call",
@@ -40944,6 +42516,268 @@
       "x-category": "TSX",
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
+    },
+    "TYPESCRIPT_BIOME_ARGUMENTS": {
+      "$id": "#/properties/TYPESCRIPT_BIOME_ARGUMENTS",
+      "description": "TYPESCRIPT_BIOME: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TYPESCRIPT_BIOME: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ],
+      "x-category": "TYPESCRIPT_BIOME",
+      "x-order": 200020,
+      "x-section": "LINTER_COMMAND"
+    },
+    "TYPESCRIPT_BIOME_CLI_EXECUTABLE": {
+      "$id": "#/properties/TYPESCRIPT_BIOME_CLI_EXECUTABLE",
+      "default": [
+        [
+          "biome"
+        ]
+      ],
+      "description": "TYPESCRIPT_BIOME: Override CLI executable used to build the linter command line (rarely needed)",
+      "items": {
+        "type": "string"
+      },
+      "title": "TYPESCRIPT_BIOME: CLI Executable",
+      "type": "array",
+      "x-category": "TYPESCRIPT_BIOME",
+      "x-order": 200060,
+      "x-section": "LINTER_COMMAND"
+    },
+    "TYPESCRIPT_BIOME_CLI_LINT_MODE": {
+      "$id": "#/properties/TYPESCRIPT_BIOME_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "description": "TYPESCRIPT_BIOME: Override default CLI lint mode used to call the linter (rarely needed)",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
+      "title": "TYPESCRIPT_BIOME: CLI lint mode",
+      "type": "string",
+      "x-category": "TYPESCRIPT_BIOME",
+      "x-doc-key": "config-cli-lint-mode",
+      "x-order": 200050,
+      "x-section": "LINTER_COMMAND"
+    },
+    "TYPESCRIPT_BIOME_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/TYPESCRIPT_BIOME_COMMAND_REMOVE_ARGUMENTS",
+      "description": "TYPESCRIPT_BIOME: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TYPESCRIPT_BIOME: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ],
+      "x-category": "TYPESCRIPT_BIOME",
+      "x-order": 200020,
+      "x-section": "LINTER_COMMAND"
+    },
+    "TYPESCRIPT_BIOME_CONFIG_FILE": {
+      "$id": "#/properties/TYPESCRIPT_BIOME_CONFIG_FILE",
+      "default": "biome.json",
+      "description": "TYPESCRIPT_BIOME: User custom config file name if different from default",
+      "title": "TYPESCRIPT_BIOME: Custom config file name",
+      "type": "string",
+      "x-category": "TYPESCRIPT_BIOME",
+      "x-order": 200010,
+      "x-section": "LINTER_COMMAND"
+    },
+    "TYPESCRIPT_BIOME_DISABLE_ERRORS": {
+      "$id": "#/properties/TYPESCRIPT_BIOME_DISABLE_ERRORS",
+      "default": false,
+      "description": "TYPESCRIPT_BIOME: If true, TYPESCRIPT_BIOME doesn't make MegaLinter fail even if errors are found",
+      "title": "TYPESCRIPT_BIOME: Disable errors",
+      "type": "boolean",
+      "x-category": "TYPESCRIPT_BIOME",
+      "x-order": 400000,
+      "x-section": "ERRORS"
+    },
+    "TYPESCRIPT_BIOME_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/TYPESCRIPT_BIOME_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "description": "TYPESCRIPT_BIOME: If the number of errors found is less than this value, TYPESCRIPT_BIOME doesn't make MegaLinter fail",
+      "title": "TYPESCRIPT_BIOME: Maximum number of errors allowed",
+      "type": "number",
+      "x-category": "TYPESCRIPT_BIOME",
+      "x-order": 400010,
+      "x-section": "ERRORS"
+    },
+    "TYPESCRIPT_BIOME_FILE_EXTENSIONS": {
+      "$id": "#/properties/TYPESCRIPT_BIOME_FILE_EXTENSIONS",
+      "default": [
+        ".ts"
+      ],
+      "description": "TYPESCRIPT_BIOME: Override descriptor/linter matching files extensions that will be used to select files to lint",
+      "examples": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TYPESCRIPT_BIOME: Matching files extensions",
+      "type": "array",
+      "x-category": "TYPESCRIPT_BIOME",
+      "x-order": 300020,
+      "x-section": "SCOPE"
+    },
+    "TYPESCRIPT_BIOME_FILE_NAMES_REGEX": {
+      "$id": "#/properties/TYPESCRIPT_BIOME_FILE_NAMES_REGEX",
+      "default": [],
+      "description": "TYPESCRIPT_BIOME: Override descriptor/linter matching file name regexes that will be used to select files to lint",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TYPESCRIPT_BIOME: Matching file name regexes",
+      "type": "array",
+      "x-category": "TYPESCRIPT_BIOME",
+      "x-order": 300030,
+      "x-section": "SCOPE"
+    },
+    "TYPESCRIPT_BIOME_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/TYPESCRIPT_BIOME_FILTER_REGEX_EXCLUDE",
+      "description": "TYPESCRIPT_BIOME: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with TYPESCRIPT_BIOME_CLI_LINT_MODE = project",
+      "items": {
+        "type": "string"
+      },
+      "title": "TYPESCRIPT_BIOME: Excluding Regex",
+      "type": [
+        "string",
+        "array"
+      ],
+      "x-category": "TYPESCRIPT_BIOME",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "TYPESCRIPT_BIOME_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/TYPESCRIPT_BIOME_FILTER_REGEX_INCLUDE",
+      "description": "TYPESCRIPT_BIOME: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with TYPESCRIPT_BIOME_CLI_LINT_MODE = project",
+      "items": {
+        "type": "string"
+      },
+      "title": "TYPESCRIPT_BIOME: Including Regex",
+      "type": [
+        "string",
+        "array"
+      ],
+      "x-category": "TYPESCRIPT_BIOME",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
+    },
+    "TYPESCRIPT_BIOME_FORWARD_EXCLUDED_DIRECTORIES": {
+      "$id": "#/properties/TYPESCRIPT_BIOME_FORWARD_EXCLUDED_DIRECTORIES",
+      "default": true,
+      "description": "TYPESCRIPT_BIOME: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "title": "TYPESCRIPT_BIOME: Forward excluded directories in project lint mode",
+      "type": "boolean",
+      "x-category": "TYPESCRIPT_BIOME",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
+    "TYPESCRIPT_BIOME_POST_COMMANDS": {
+      "$id": "#/properties/TYPESCRIPT_BIOME_POST_COMMANDS",
+      "description": "TYPESCRIPT_BIOME: Define bash commands to run after running TYPESCRIPT_BIOME",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "TYPESCRIPT_BIOME: Post-run commands",
+      "type": "array",
+      "x-category": "TYPESCRIPT_BIOME",
+      "x-order": 500010,
+      "x-section": "PREPOSTCOMMANDS"
+    },
+    "TYPESCRIPT_BIOME_PRE_COMMANDS": {
+      "$id": "#/properties/TYPESCRIPT_BIOME_PRE_COMMANDS",
+      "description": "TYPESCRIPT_BIOME: Define bash commands to run before running TYPESCRIPT_BIOME",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "TYPESCRIPT_BIOME: Pre-run commands",
+      "type": "array",
+      "x-category": "TYPESCRIPT_BIOME",
+      "x-order": 500000,
+      "x-section": "PREPOSTCOMMANDS"
+    },
+    "TYPESCRIPT_BIOME_RULES_PATH": {
+      "$id": "#/properties/TYPESCRIPT_BIOME_RULES_PATH",
+      "description": "TYPESCRIPT_BIOME: Path where to find linter configuration file",
+      "title": "TYPESCRIPT_BIOME: Custom config file path",
+      "type": "string",
+      "x-category": "TYPESCRIPT_BIOME",
+      "x-order": 200040,
+      "x-section": "LINTER_COMMAND"
+    },
+    "TYPESCRIPT_BIOME_TIMEOUT_SECONDS": {
+      "$id": "#/properties/TYPESCRIPT_BIOME_TIMEOUT_SECONDS",
+      "description": "TYPESCRIPT_BIOME: Maximum duration in seconds of the TYPESCRIPT_BIOME run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "TYPESCRIPT_BIOME: Timeout in seconds",
+      "type": "integer",
+      "x-category": "TYPESCRIPT_BIOME",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
+    "TYPESCRIPT_BIOME_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/TYPESCRIPT_BIOME_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling TYPESCRIPT_BIOME and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "TYPESCRIPT_BIOME: Unsecured env variables",
+      "type": "array",
+      "x-category": "TYPESCRIPT_BIOME",
+      "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
+      "x-order": 600000,
+      "x-section": "SECURITY"
     },
     "TYPESCRIPT_DEFAULT_STYLE": {
       "$id": "#/properties/TYPESCRIPT_DEFAULT_STYLE",
