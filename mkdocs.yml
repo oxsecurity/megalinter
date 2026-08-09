@@ -5,7 +5,7 @@ repo_url: https://github.com/oxsecurity/megalinter
 edit_uri: tree/main/docs
 site_author: Nicolas Vuillamy
 # site_description-start
-site_description: MegaLinter is an open-source tool for CI/CD workflows that analyzes the consistency of your code, IaC, configuration, and scripts in your repository to ensure all your project sources are clean and formatted, no matter which IDE or toolbox is used by your developers. Powered by OX Security.Supports 63 languages, 21 formats, 19 tooling formats, and is ready to use out of the box as a GitHub Action or with any CI system. It is highly configurable and free for all uses.MegaLinter has native integrations with popular CI/CD tools and is compliant with most Coding Agents.
+site_description: MegaLinter is an open-source tool for CI/CD workflows that analyzes the consistency of your code, IaC, configuration, and scripts in your repository to ensure all your project sources are clean and formatted, no matter which IDE or toolbox is used by your developers. Powered by OX Security.Supports 67 languages, 24 formats, 19 tooling formats, and is ready to use out of the box as a GitHub Action or with any CI system. It is highly configurable and free for all uses.MegaLinter has native integrations with popular CI/CD tools and is compliant with most Coding Agents.
 # site_description-end
 copyright: Copyright &copy; 2024 <a href="https://www.ox.security/?ref=megalinter" target= "_blank">OX Security</a> &amp; <a href="https://github.com/nvuillam" target="_blank">Nicolas Vuillamy</a>
 theme:
@@ -144,9 +144,11 @@ nav:
               - "eslint": "descriptors/javascript_eslint.md"
               - "standard": "descriptors/javascript_standard.md"
               - "prettier": "descriptors/javascript_prettier.md"
+              - "biome": "descriptors/javascript_biome.md"
           - "JSX":
               - "All JSX linters": "descriptors/jsx.md"
               - "eslint": "descriptors/jsx_eslint.md"
+              - "biome": "descriptors/jsx_biome.md"
           - "KOTLIN":
               - "All KOTLIN linters": "descriptors/kotlin.md"
               - "ktlint": "descriptors/kotlin_ktlint.md"
@@ -211,11 +213,13 @@ nav:
           - "TSX":
               - "All TSX linters": "descriptors/tsx.md"
               - "eslint": "descriptors/tsx_eslint.md"
+              - "biome": "descriptors/tsx_biome.md"
           - "TYPESCRIPT":
               - "All TYPESCRIPT linters": "descriptors/typescript.md"
               - "eslint": "descriptors/typescript_eslint.md"
               - "ts-standard": "descriptors/typescript_ts_standard.md"
               - "prettier": "descriptors/typescript_prettier.md"
+              - "biome": "descriptors/typescript_biome.md"
           - "Visual Basic .NET (VBDOTNET)":
               - "All Visual Basic .NET (VBDOTNET) linters": "descriptors/vbdotnet.md"
               - "dotnet-format": "descriptors/vbdotnet_dotnet_format.md"
@@ -226,12 +230,14 @@ nav:
           - "CSS":
               - "All CSS linters": "descriptors/css.md"
               - "stylelint": "descriptors/css_stylelint.md"
+              - "biome": "descriptors/css_biome.md"
           - "ENV":
               - "All ENV linters": "descriptors/env.md"
               - "dotenv-linter": "descriptors/env_dotenv_linter.md"
           - "GRAPHQL":
               - "All GRAPHQL linters": "descriptors/graphql.md"
               - "graphql-schema-linter": "descriptors/graphql_graphql_schema_linter.md"
+              - "biome": "descriptors/graphql_biome.md"
           - "HTML":
               - "All HTML linters": "descriptors/html.md"
               - "djlint": "descriptors/html_djlint.md"
@@ -242,6 +248,7 @@ nav:
               - "v8r": "descriptors/json_v8r.md"
               - "prettier": "descriptors/json_prettier.md"
               - "npm-package-json-lint": "descriptors/json_npm_package_json_lint.md"
+              - "biome": "descriptors/json_biome.md"
           - "LATEX":
               - "All LATEX linters": "descriptors/latex.md"
               - "chktex": "descriptors/latex_chktex.md"
