@@ -6,7 +6,28 @@ globs: ["megalinter/descriptors/*.megalinter-descriptor.yml"]
 # Descriptor File Rules
 
 ## Schema
-Descriptor files conform to `megalinter/descriptors/schemas/megalinter-descriptor.jsonschema.json`. Only `descriptor_id`, `descriptor_type`, `linters` are required at descriptor level, and only `linter_name`, `linter_url`, `examples` at linter level — but **aim to fill every applicable property**.
+Descriptor files conform to `megalinter/descriptors/schemas/megalinter-descriptor.jsonschema.json`. Only `descriptor_id`, `descriptor_type`, `linters` are required at descriptor level, and only `linter_name`, `linter_url`, `examples` at linter level (`linter_url`/`examples` may come from an extended shared definition instead) — but **aim to fill every applicable property**.
+
+## Shared Linter Definitions (extends)
+
+A linter defined in **several descriptors** (eslint, prettier, v8r, dotnet-format, cpplint, cppcheck, clang-format, biome…) is factorized in `megalinter/descriptors/shared/<name>.megalinter-linter.yml` and referenced from each descriptor with the linter-level `extends` property:
+
+```yaml
+linters:
+  - extends: biome
+    linter_name: biome        # always repeated in the entry
+    test_folder: json_biome   # per-descriptor overrides only
+    examples:
+      - "biome check myfile.json"
+```
+
+Rules:
+
+- **Shallow merge**: descriptor entry keys override the shared ones wholesale (no nested-dict merging, no list merging, no chaining between shared files). Resolution happens in `linter_factory.resolve_linter_extends`, used by runtime, build system and plugins
+- Shared files are **complete standalone linter definitions** (schema-validated during build): `linter_name`, `linter_url` and generic `examples` must be present even when every entry overrides them
+- **Edit the shared file, not the per-descriptor copies**, when changing behavior common to all descriptors; put in the entry only what genuinely differs (`linter_text`, `test_folder`, `examples`, per-language URLs, `name` overrides, `common_linter_errors` whose identifiers are linter-key-prefixed…)
+- Version pins in shared `install` blocks are still renovate-managed (`.megalinter-linter.ya?ml` is in the renovate custom manager patterns)
+- Shared files must stay **prettier-formatted** (YAML_PRETTIER blocks CI on descriptors)
 
 ## Maximize Property Coverage
 

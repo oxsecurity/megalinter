@@ -449,6 +449,19 @@
       "items": {
         "$id": "#/properties/linters/items",
         "additionalProperties": false,
+        "anyOf": [
+          {
+            "required": [
+              "extends"
+            ]
+          },
+          {
+            "required": [
+              "linter_url",
+              "examples"
+            ]
+          }
+        ],
         "description": "Parameters defining behaviour and installation of a linter",
         "examples": [
           {
@@ -1070,6 +1083,16 @@
             },
             "title": "Linter CLI commands examples",
             "type": "array"
+          },
+          "extends": {
+            "$id": "#/properties/linters/items/properties/extends",
+            "description": "Name of a shared linter definition file located in megalinter/descriptors/shared/<name>.megalinter-linter.yml. Properties defined in the descriptor linter entry override the shared ones (shallow merge, no chaining)",
+            "examples": [
+              "eslint",
+              "prettier"
+            ],
+            "title": "Shared linter definition to extend",
+            "type": "string"
           },
           "file_extensions": {
             "$id": "#/properties/linters/items/file_extensions",
@@ -1752,9 +1775,7 @@
           }
         },
         "required": [
-          "linter_name",
-          "linter_url",
-          "examples"
+          "linter_name"
         ],
         "title": "Linter definition",
         "type": "object"

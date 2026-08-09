@@ -58,12 +58,8 @@ linters:
         - linux/amd64
         - linux/arm64
   # V8R
-  - class: V8rLinter
+  - extends: v8r
     linter_name: v8r
-    linter_url: https://github.com/chris48s/v8r
-    linter_repo: https://github.com/chris48s/v8r
-    linter_spdx_license: MIT
-    linter_speed: 1
     linter_text: |
       **v8r** is a command-line validator for JSON, YAML, and TOML files that automatically detects and applies appropriate schemas from the Schema Store based on filename patterns, providing intelligent validation without manual schema configuration.
 
@@ -74,20 +70,8 @@ linters:
       - **Zero Configuration**: Works out-of-the-box for common configuration files without requiring explicit schema specification
       - **Schema Store Integration**: Leverages the extensive collection of schemas from schemastore.org for popular tools and frameworks
       - **Detailed Error Reporting**: Provides clear, actionable validation error messages with line and column information
-    linter_rules_url: https://www.schemastore.org/
-    linter_megalinter_ref_url: "no"
-    config_file_name: ".v8rrc.yml"
-    cli_config_arg_name: ""
-    cli_lint_mode: list_of_files
-    supported_cli_lint_modes:
-      - file
-      - list_of_files
-      - project
-    cli_lint_extra_args:
-      - "--ignore-errors"
     cli_lint_mode_project_extra_args_after:
       - "**/*.json"
-    cli_help_arg_name: "--help"
     common_linter_errors:
       - identifier: JSON_V8R_ERROR_SCHEMASTORE_UNREACHABLE
         regex: "(ENOTFOUND|ECONNREFUSED|ETIMEDOUT|getaddrinfo|fetch failed).*(schemastore|json\\.schemastore\\.org)"
@@ -103,32 +87,8 @@ linters:
     test_folder: json_schema
     examples:
       - "v8r --ignore-errors myfile.json"
-    install:
-      dockerfile:
-        - |-
-          # renovate: datasource=npm depName=v8r
-          ARG NPM_V8R_VERSION=6.1.0
-      npm:
-        - v8r@${NPM_V8R_VERSION}
-    supported_platforms:
-      platform:
-        - linux/amd64
-        - linux/arm64
-    ide:
-      eclipse:
-        - name: native support
-          url: https://www.eclipse.org/
-      idea:
-        - name: native support
-          url: https://www.jetbrains.com/products/#type=ide
-      vim:
-        - name: vison
-          url: https://github.com/Quramy/vison
-      vscode:
-        - name: native support
-          url: https://code.visualstudio.com/
-  # PRETTIER
-  - linter_name: prettier
+  - extends: prettier
+    linter_name: prettier
     linter_text: |
       **Prettier** is the industry-standard opinionated code formatter with excellent JSON support that automatically formats JSON files for consistency and readability. It brings professional formatting standards to JSON data across configuration files, APIs, and data structures.
 
@@ -142,72 +102,12 @@ linters:
       - **Nested Structure Handling**: Intelligent formatting of complex nested objects and arrays for optimal readability
       - **Team Standardization**: Eliminates JSON formatting debates and ensures uniform data structure presentation
       - **Configuration Flexibility**: Supports project-specific formatting rules through .prettierrc when customization is needed
-    is_formatter: true
-    linter_url: https://prettier.io/
-    linter_repo: https://github.com/prettier/prettier
-    linter_megalinter_ref_url: https://prettier.io/docs/related-projects
-    linter_spdx_license: MIT
-    linter_rules_url: https://prettier.io/docs/en/options.html
-    linter_rules_configuration_url: https://prettier.io/docs/en/configuration.html
     linter_rules_inline_disable_url: https://prettier.io/docs/en/ignore.html#javascript
-    linter_banner_image_url: https://unpkg.com/prettier-logo@1.0.3/images/prettier-banner-light.svg
-    config_file_name: ".prettierrc.json"
-    cli_config_arg_name: "--config"
-    cli_lint_mode: list_of_files
-    supported_cli_lint_modes:
-      - file
-      - list_of_files
-      - project
-    cli_lint_extra_args:
-      - "--check"
-    cli_lint_mode_project_exclude_ignore_file_arg_name: "--ignore-path"
-    cli_lint_mode_project_exclude_ignore_file_pass_existing: [".gitignore", ".prettierignore"]
-    cli_lint_mode_project_extra_args_after:
-      - .
-    cli_lint_fix_arg_name: "--write" # Workaround for MegaLinter
-    cli_lint_fix_remove_args:
-      - "--check"
     test_folder: json_prettier
     examples:
       - "prettier --check myfile.json"
       - "prettier --config .prettierrc.json --check myfile.json"
       - "prettier --config .prettierrc.json --write myfile.json" # format
-    install:
-      dockerfile:
-        - |-
-          # renovate: datasource=npm depName=prettier
-          ARG NPM_PRETTIER_VERSION=3.9.6
-      npm:
-        - "prettier@${NPM_PRETTIER_VERSION}"
-    supported_platforms:
-      platform:
-        - linux/amd64
-        - linux/arm64
-    ide:
-      emacs:
-        - name: prettier-emacs
-          url: https://github.com/prettier/prettier-emacs
-        - name: prettier.el
-          url: https://github.com/jscheid/prettier.el
-        - name: apheleia
-          url: https://github.com/raxod502/apheleia
-      idea:
-        - name: Prettier
-          url: https://plugins.jetbrains.com/plugin/10456-prettier
-          id: intellij.prettierJS
-      sublime:
-        - name: JsPrettier
-          url: https://packagecontrol.io/packages/JsPrettier
-      vim:
-        - name: vim-prettier
-          url: https://github.com/prettier/vim-prettier
-      visual_studio:
-        - name: JavaScriptPrettier
-          url: https://github.com/madskristensen/JavaScriptPrettier
-      vscode:
-        - name: prettier-vscode
-          url: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
-  # npm-package-json-lint
   - linter_name: npm-package-json-lint
     linter_text: |
       **npm-package-json-lint** is a specialized linter designed specifically for npm package.json files that ensures consistency, correctness, and adherence to best practices in Node.js project configuration. It serves as an essential tool for maintaining professional npm package standards.

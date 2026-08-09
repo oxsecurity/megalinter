@@ -179,7 +179,7 @@ linters:
         default_value: black
     linter_url: https://black.readthedocs.io/en/stable/
     linter_repo: https://github.com/psf/black
-    linter_megalinter_ref_url: no
+    linter_megalinter_ref_url: "no"
     linter_spdx_license: MIT
     linter_speed: 3
     linter_banner_image_url: https://raw.githubusercontent.com/psf/black/master/docs/_static/logo2-readme.png
@@ -436,7 +436,7 @@ linters:
       Bandit is essential for maintaining secure Python codebases and is widely used in security-conscious development environments.
     linter_url: https://bandit.readthedocs.io/en/latest/
     linter_repo: https://github.com/PyCQA/bandit
-    linter_megalinter_ref_url: no
+    linter_megalinter_ref_url: "no"
     linter_spdx_license: Apache-2.0
     linter_rules_url: https://bandit.readthedocs.io/en/latest/plugins/index.html#complete-test-plugin-listing
     linter_banner_image_url: https://github.com/PyCQA/bandit/raw/main/logo/logotype-sm.png

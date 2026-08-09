@@ -15,7 +15,7 @@ Update the version of linter `$linter` to `$version`.
 
 Steps:
 
-1. Search `megalinter/descriptors/*.megalinter-descriptor.yml` for the linter by name
+1. Search `megalinter/descriptors/*.megalinter-descriptor.yml` **and** `megalinter/descriptors/shared/*.megalinter-linter.yml` for the linter by name (multi-descriptor linters like eslint, prettier or biome keep their `install` block in the shared file)
 2. Find the version ARG in the `install.dockerfile` section (e.g., `ARG PIP_TOOL_VERSION=X.Y.Z`) or version pin in pip/npm arrays
 3. Update the version, preserving the renovate comment format:
    ```yaml

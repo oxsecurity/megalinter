@@ -10,7 +10,8 @@ file_extensions:
   - ".yaml"
 linters:
   # PRETTIER
-  - linter_name: prettier
+  - extends: prettier
+    linter_name: prettier
     linter_text: |
       **Prettier** is the industry-standard opinionated code formatter that brings consistency to YAML files by enforcing a unified style across projects. It eliminates formatting debates by automatically reformatting code according to its proven formatting principles.
 
@@ -24,75 +25,15 @@ linters:
       - **Configuration Flexibility**: Supports project-specific settings through .prettierrc files when customization is needed
       - **Fast Performance**: High-speed formatting suitable for large YAML files
       - **Team Standardization**: Eliminates style discussions and ensures consistent formatting across team members
-    is_formatter: true
-    linter_url: https://prettier.io/
-    linter_repo: https://github.com/prettier/prettier
-    linter_megalinter_ref_url: https://prettier.io/docs/related-projects
-    linter_spdx_license: MIT
-    linter_rules_url: https://prettier.io/docs/en/options.html
-    linter_rules_configuration_url: https://prettier.io/docs/en/configuration.html
     linter_rules_inline_disable_url: https://prettier.io/docs/en/ignore.html#yaml
-    linter_banner_image_url: https://unpkg.com/prettier-logo@1.0.3/images/prettier-banner-light.svg
-    config_file_name: ".prettierrc.json"
-    cli_config_arg_name: "--config"
-    cli_lint_mode: list_of_files
-    supported_cli_lint_modes:
-      - file
-      - list_of_files
-      - project
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: "\\[error\\]"
     cli_lint_warnings_count: regex_count
     cli_lint_warnings_regex: "\\[warn\\]"
-    cli_lint_extra_args:
-      - "--check"
-    cli_lint_mode_project_exclude_ignore_file_arg_name: "--ignore-path"
-    cli_lint_mode_project_exclude_ignore_file_pass_existing: [".gitignore", ".prettierignore"]
-    cli_lint_mode_project_extra_args_after:
-      - .
-    cli_lint_fix_arg_name: "--write"
-    cli_lint_fix_remove_args:
-      - "--check"
     examples:
       - "prettier --check myfile.yml"
       - "prettier --config .prettierrc.json --check myfile.yml"
       - "prettier --config .prettierrc.json --write myfile.yml" # format
-    install:
-      dockerfile:
-        - |-
-          # renovate: datasource=npm depName=prettier
-          ARG NPM_PRETTIER_VERSION=3.9.6
-      npm:
-        - "prettier@${NPM_PRETTIER_VERSION}"
-    supported_platforms:
-      platform:
-        - linux/amd64
-        - linux/arm64
-    ide:
-      emacs:
-        - name: prettier-emacs
-          url: https://github.com/prettier/prettier-emacs
-        - name: prettier.el
-          url: https://github.com/jscheid/prettier.el
-        - name: apheleia
-          url: https://github.com/raxod502/apheleia
-      idea:
-        - name: Prettier
-          url: https://plugins.jetbrains.com/plugin/10456-prettier
-          id: intellij.prettierJS
-      sublime:
-        - name: JsPrettier
-          url: https://packagecontrol.io/packages/JsPrettier
-      vim:
-        - name: vim-prettier
-          url: https://github.com/prettier/vim-prettier
-      visual_studio:
-        - name: JavaScriptPrettier
-          url: https://github.com/madskristensen/JavaScriptPrettier
-      vscode:
-        - name: prettier-vscode
-          url: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
-  # YAMLLINT
   - class: YamllintLinter
     linter_name: yamllint
     linter_text: |
@@ -165,12 +106,8 @@ linters:
         - name: ale
           url: https://github.com/w0rp/ale
   # V8R
-  - linter_name: v8r
-    class: V8rLinter
-    linter_url: https://github.com/chris48s/v8r
-    linter_repo: https://github.com/chris48s/v8r
-    linter_spdx_license: MIT
-    linter_speed: 1
+  - extends: v8r
+    linter_name: v8r
     linter_text: |
       **v8r** is a command-line validator for JSON, YAML, and TOML files that automatically detects and applies appropriate schemas from the Schema Store based on filename patterns, providing intelligent validation without manual schema configuration.
 
@@ -181,48 +118,12 @@ linters:
       - **Zero Configuration**: Works out-of-the-box for common configuration files without requiring explicit schema specification
       - **Schema Store Integration**: Leverages the extensive collection of schemas from schemastore.org for popular tools and frameworks
       - **Detailed Error Reporting**: Provides clear, actionable validation error messages with line and column information
-    linter_rules_url: https://www.schemastore.org/
-    linter_megalinter_ref_url: "no"
-    config_file_name: ".v8rrc.yml"
-    cli_config_arg_name: ""
-    cli_lint_mode: list_of_files
-    supported_cli_lint_modes:
-      - file
-      - list_of_files
-      - project
-    cli_lint_extra_args:
-      - "--ignore-errors"
     cli_lint_mode_project_exclude_ignore_file_arg_name: "--ignore-pattern-files="
     cli_lint_mode_project_exclude_arg_value: "{{DIR}}/**"
     cli_lint_mode_project_exclude_ignore_file_pass_existing: [".v8rignore", ".gitignore"]
     cli_lint_mode_project_extra_args_after:
       - "**/*.{yml,yaml}"
-    cli_help_arg_name: "--help"
     test_folder: yaml_schema
     examples:
       - "v8r --ignore-errors myfile.yml"
       - "v8r --ignore-errors myfile.yaml"
-    install:
-      dockerfile:
-        - |-
-          # renovate: datasource=npm depName=v8r
-          ARG NPM_V8R_VERSION=6.1.0
-      npm:
-        - v8r@${NPM_V8R_VERSION}
-    supported_platforms:
-      platform:
-        - linux/amd64
-        - linux/arm64
-    ide:
-      eclipse:
-        - name: native support
-          url: https://www.eclipse.org/
-      idea:
-        - name: native support
-          url: https://www.jetbrains.com/products/#type=ide
-      vim:
-        - name: vison
-          url: https://github.com/Quramy/vison
-      vscode:
-        - name: native support
-          url: https://code.visualstudio.com/

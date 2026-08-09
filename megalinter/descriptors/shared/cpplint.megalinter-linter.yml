@@ -1,0 +1,28 @@
+---
+class: CppLintLinter
+linter_name: cpplint
+linter_url: https://github.com/cpplint/cpplint
+linter_repo: https://github.com/cpplint/cpplint
+linter_megalinter_ref_url: https://github.com/cpplint/cpplint/pull/462
+linter_spdx_license: BSD-3-Clause
+linter_rules_url: https://google.github.io/styleguide/cppguide.html
+cli_lint_mode: list_of_files
+supported_cli_lint_modes:
+  - file
+  - list_of_files
+cli_help_arg_name: --help
+cli_lint_errors_count: regex_number
+cli_lint_errors_regex: "Total errors found: ([0-9]+)"
+examples:
+  - cpplint myfile.cpp
+install:
+  dockerfile:
+    - |-
+      # renovate: datasource=pypi depName=cpplint
+      ARG PIP_CPPLINT_VERSION=2.0.2
+  pip:
+    - cpplint==${PIP_CPPLINT_VERSION}
+supported_platforms:
+  platform:
+    - linux/amd64
+    - linux/arm64

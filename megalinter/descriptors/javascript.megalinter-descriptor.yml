@@ -10,11 +10,9 @@ file_extensions:
   - ".js"
 linters:
   # ESLINT
-  - class: EslintLinter
+  - extends: eslint
     linter_name: eslint
     name: JAVASCRIPT_ES
-    can_output_sarif: true
-    linter_spdx_license: MIT
     file_extensions:
       - ".js"
       - ".vue"
@@ -102,40 +100,8 @@ linters:
     linter_rules_url: https://eslint.org/docs/latest/rules/
     linter_banner_image_url: https://d33wubrfki0l68.cloudfront.net/3b5ac7586466159bb6f237b633bfc4f5a8d5acf8/ee0a1/assets/img/posts/eslint-collective.png
     linter_rules_configuration_url: https://eslint.org/docs/latest/use/configure
-    linter_rules_inline_disable_url: https://eslint.org/docs/latest/use/configure/rules#disabling-rules
     linter_rules_ignore_config_url: https://eslint.org/docs/latest/use/configure/ignore#the-eslintignore-file
-    linter_megalinter_ref_url: https://eslint.org/docs/latest/use/integrations#source-control
-    active_only_if_file_found:
-      - "eslint.config.js"
-      - "eslint.config.mjs"
-      - "eslint.config.cjs"
-      - "eslint.config.ts"
-      - "eslint.config.mts"
-      - "eslint.config.cts"
-      - ".eslintrc.json"
-      - ".eslintrc.yml"
-      - ".eslintrc.yaml"
-      - ".eslintrc.js"
-      - ".eslintrc.cjs"
-      - "package.json:eslintConfig"
-    cli_lint_mode: list_of_files
-    supported_cli_lint_modes:
-      - file
-      - list_of_files
-      - project
     config_file_name: eslint.config.js
-    cli_lint_extra_args:
-      - "--no-ignore"
-    cli_lint_mode_project_extra_args_after:
-      - .
-    cli_lint_fix_arg_name: "--fix"
-    cli_sarif_args:
-      - --format
-      - "@microsoft/eslint-formatter-sarif"
-      - -o
-      - "{{SARIF_OUTPUT_FILE}}"
-    cli_lint_errors_count: regex_sum
-    cli_lint_errors_regex: "✖ ([0-9]+) problem"
     common_linter_errors:
       - identifier: JAVASCRIPT_ES_ERROR_PLUGIN_NOT_FOUND
         regex: '(Failed to load plugin ''|ESLint couldn''t find the plugin "|Cannot find module ''eslint-plugin-)'
@@ -246,36 +212,6 @@ linters:
         - eslint-plugin-promise@${NPM_ESLINT_PLUGIN_PROMISE_VERSION}
         - eslint-plugin-vue@${NPM_ESLINT_PLUGIN_VUE_VERSION}
         - "@microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION}"
-    supported_platforms:
-      platform:
-        - linux/amd64
-        - linux/arm64
-    ide:
-      brackets:
-        - name: brackets-eslint
-          url: https://github.com/brackets-userland/brackets-eslint
-      eclipse:
-        - name: Tern-Linter-ESLint
-          url: https://github.com/angelozerr/tern.java/wiki/Tern-Linter-ESLint
-      emacs:
-        - name: flycheck
-          url: http://www.flycheck.org/en/latest/languages.html#javascript
-      idea:
-        - name: ESLint Plugin
-          url: https://plugins.jetbrains.com/plugin/7494-eslint
-          id: com.wix.eslint
-      sublime:
-        - name: SublimeLinter-eslint
-          url: https://github.com/roadhump/SublimeLinter-eslint
-      vim:
-        - name: ale
-          url: https://github.com/w0rp/ale
-        - name: Syntastic
-          url: https://github.com/vim-syntastic/syntastic/tree/master/syntax_checkers/javascript
-      vscode:
-        - name: vscode-eslint
-          url: https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
-  # STANDARD
   - class: JavaScriptStandardLinter
     linter_name: standard
     linter_text: |
@@ -344,7 +280,8 @@ linters:
         - name: vscode-standard
           url: https://marketplace.visualstudio.com/items?itemName=standard.vscode-standard
   # PRETTIER
-  - linter_name: prettier
+  - extends: prettier
+    linter_name: prettier
     linter_text: |
       **Prettier** is the industry-leading opinionated code formatter that brings consistency to JavaScript and many other languages by automatically reformatting code according to proven formatting principles. It eliminates formatting debates and ensures uniform code style across entire development teams.
 
@@ -358,36 +295,12 @@ linters:
       - **Fast Performance**: High-speed formatting suitable for large codebases
       - **Configuration Flexibility**: Supports project-specific settings through .prettierrc files when customization is needed
       - **Git Integration**: Reduces merge conflicts by maintaining consistent formatting across branches
-    is_formatter: true
-    linter_spdx_license: MIT
     activation_rules:
       - type: variable
         variable: JAVASCRIPT_DEFAULT_STYLE
         expected_value: prettier
         default_value: standard
-    linter_url: https://prettier.io/
-    linter_repo: https://github.com/prettier/prettier
-    linter_megalinter_ref_url: https://prettier.io/docs/related-projects
-    linter_rules_url: https://prettier.io/docs/en/options.html
-    linter_rules_configuration_url: https://prettier.io/docs/en/configuration.html
     linter_rules_inline_disable_url: https://prettier.io/docs/en/ignore.html#javascript
-    linter_banner_image_url: https://unpkg.com/prettier-logo@1.0.3/images/prettier-banner-light.svg
-    config_file_name: ".prettierrc.json"
-    cli_lint_mode: list_of_files
-    supported_cli_lint_modes:
-      - file
-      - list_of_files
-      - project
-    cli_config_arg_name: "--config"
-    cli_lint_extra_args:
-      - "--check"
-    cli_lint_mode_project_exclude_ignore_file_arg_name: "--ignore-path"
-    cli_lint_mode_project_exclude_ignore_file_pass_existing: [".gitignore", ".prettierignore"]
-    cli_lint_mode_project_extra_args_after:
-      - .
-    cli_lint_fix_arg_name: "--write" # Workaround for MegaLinter
-    cli_lint_fix_remove_args:
-      - "--check"
     test_folder: javascript_prettier
     test_variables:
       JAVASCRIPT_DEFAULT_STYLE: prettier
@@ -395,38 +308,3 @@ linters:
       - "prettier --check myfile.js"
       - "prettier --config .prettierrc.json --check myfile.js"
       - "prettier --config .prettierrc.json --write myfile.js" # format
-    install:
-      dockerfile:
-        - |-
-          # renovate: datasource=npm depName=prettier
-          ARG NPM_PRETTIER_VERSION=3.9.6
-      npm:
-        - "prettier@${NPM_PRETTIER_VERSION}"
-    supported_platforms:
-      platform:
-        - linux/amd64
-        - linux/arm64
-    ide:
-      emacs:
-        - name: prettier-emacs
-          url: https://github.com/prettier/prettier-emacs
-        - name: prettier.el
-          url: https://github.com/jscheid/prettier.el
-        - name: apheleia
-          url: https://github.com/raxod502/apheleia
-      idea:
-        - name: Prettier
-          url: https://plugins.jetbrains.com/plugin/10456-prettier
-          id: intellij.prettierJS
-      sublime:
-        - name: JsPrettier
-          url: https://packagecontrol.io/packages/JsPrettier
-      vim:
-        - name: vim-prettier
-          url: https://github.com/prettier/vim-prettier
-      visual_studio:
-        - name: JavaScriptPrettier
-          url: https://github.com/madskristensen/JavaScriptPrettier
-      vscode:
-        - name: prettier-vscode
-          url: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode

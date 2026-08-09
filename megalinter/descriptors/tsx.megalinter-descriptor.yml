@@ -9,9 +9,8 @@ file_extensions:
   - ".tsx"
 linters:
   # ESLINT
-  - class: EslintLinter
+  - extends: eslint
     linter_name: eslint
-    can_output_sarif: true
     linter_text: |
       **ESLint with React Plugin** provides comprehensive linting for TSX (TypeScript React) files, combining ESLint's powerful static analysis with React-specific rules to ensure high-quality React applications written in TypeScript.
 
@@ -80,41 +79,8 @@ linters:
     linter_rules_url: https://eslint-react.xyz/docs/rules/overview
     linter_banner_image_url: https://d33wubrfki0l68.cloudfront.net/3b5ac7586466159bb6f237b633bfc4f5a8d5acf8/ee0a1/assets/img/posts/eslint-collective.png
     linter_rules_configuration_url: https://eslint-react.xyz/docs/getting-started/installation
-    linter_rules_inline_disable_url: https://eslint.org/docs/latest/use/configure/rules#disabling-rules
     linter_rules_ignore_config_url: https://eslint.org/docs/latest/use/configure/ignore#the-eslintignore-file
-    linter_megalinter_ref_url: https://eslint.org/docs/latest/use/integrations#source-control
-    linter_spdx_license: MIT
-    active_only_if_file_found:
-      - "eslint.config.js"
-      - "eslint.config.mjs"
-      - "eslint.config.cjs"
-      - "eslint.config.ts"
-      - "eslint.config.mts"
-      - "eslint.config.cts"
-      - ".eslintrc.json"
-      - ".eslintrc.yml"
-      - ".eslintrc.yaml"
-      - ".eslintrc.js"
-      - ".eslintrc.cjs"
-      - "package.json:eslintConfig"
-    cli_lint_mode: list_of_files
-    supported_cli_lint_modes:
-      - file
-      - list_of_files
-      - project
     config_file_name: eslint.config.cjs
-    cli_lint_extra_args:
-      - "--no-ignore"
-    cli_lint_mode_project_extra_args_after:
-      - .
-    cli_lint_fix_arg_name: "--fix"
-    cli_sarif_args:
-      - --format
-      - "@microsoft/eslint-formatter-sarif"
-      - -o
-      - "{{SARIF_OUTPUT_FILE}}"
-    cli_lint_errors_count: regex_sum
-    cli_lint_errors_regex: "✖ ([0-9]+) problem"
     common_linter_errors:
       - identifier: TSX_ESLINT_ERROR_PLUGIN_NOT_FOUND
         regex: '(Failed to load plugin ''|ESLint couldn''t find the plugin "|Cannot find module ''eslint-plugin-)'
@@ -218,32 +184,3 @@ linters:
         - "@typescript-eslint/eslint-plugin@${NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION}"
         - "@typescript-eslint/parser@${NPM_TYPESCRIPT_ESLINT_PARSER_VERSION}"
         - "@microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION}"
-    supported_platforms:
-      platform:
-        - linux/amd64
-        - linux/arm64
-    ide:
-      brackets:
-        - name: brackets-eslint
-          url: https://github.com/brackets-userland/brackets-eslint
-      eclipse:
-        - name: Tern-Linter-ESLint
-          url: https://github.com/angelozerr/tern.java/wiki/Tern-Linter-ESLint
-      emacs:
-        - name: flycheck
-          url: http://www.flycheck.org/en/latest/languages.html#javascript
-      idea:
-        - name: ESLint Plugin
-          url: https://plugins.jetbrains.com/plugin/7494-eslint
-          id: com.wix.eslint
-      sublime:
-        - name: SublimeLinter-eslint
-          url: https://github.com/roadhump/SublimeLinter-eslint
-      vim:
-        - name: ale
-          url: https://github.com/w0rp/ale
-        - name: Syntastic
-          url: https://github.com/vim-syntastic/syntastic/tree/master/syntax_checkers/javascript
-      vscode:
-        - name: vscode-eslint
-          url: https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint

@@ -14,9 +14,8 @@ install:
     - ENV PATH="${PATH}:/usr/local/dotnet-tools"
 linters:
   # DOTNET FORMAT
-  - class: DotnetFormatLinter
+  - extends: dotnet-format
     linter_name: dotnet-format
-    is_formatter: true
     linter_text: |
       **dotnet format** is the official .NET code formatter that automatically applies consistent code styling and formatting rules to C# and VB.NET projects. It integrates directly with the .NET SDK and uses EditorConfig settings and analyzer rules to ensure uniform code appearance.
 
@@ -31,41 +30,16 @@ linters:
       - **Verification Mode**: Verify mode ensures code is properly formatted without making changes
 
       **Note**: dotnet-format requires a `.sln` or `.csproj` file to run correctly.
-    linter_url: https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format
-    linter_repo: https://github.com/dotnet/sdk
-    linter_spdx_license: MIT
-    linter_rules_configuration_url: https://github.com/dotnet/sdk/tree/main/documentation/format/docs
-    linter_rules_inline_disable_url: https://docs.microsoft.com/en-us/dotnet/fundamentals/code-analysis/suppress-warnings
-    linter_image_url: https://user-images.githubusercontent.com/9797472/61659851-6bbdc880-ac7d-11e9-95f7-d30c7de1a18a.png
-    cli_lint_errors_count: regex_count
     cli_lint_errors_regex: ".cs\\([0-9]+,[0-9]+\\):\\s(?:warning|error)"
-    cli_executable: dotnet
-    cli_lint_mode: project
-    supported_cli_lint_modes:
-      - project
-    cli_lint_extra_args:
-      - "format"
-    cli_lint_mode_project_exclude_arg_name: "--exclude"
-    cli_lint_mode_project_exclude_arg_value: "./{{DIR}}/"
     cli_lint_mode_project_extra_args_after:
       - "--include **/*.cs"
       - "--verify-no-changes"
-    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for DotnetFormatLinter class behavior
-    cli_lint_fix_remove_args:
-      - "--verify-no-changes"
-    cli_help_extra_args:
-      - format
     examples:
       - "dotnet format --verify-no-changes"
       - "dotnet format Solution.sln --verify-no-changes"
       - "dotnet format Folder/Solution.sln --verify-no-changes"
       - "dotnet format Project.csproj --verify-no-changes"
       - "dotnet format" # Fix
-    supported_platforms:
-      platform:
-        - linux/amd64
-        - linux/arm64
-  # CSharpier
   - linter_name: csharpier
     linter_text: |
       **CSharpier** is the definitive opinionated code formatter for C# that eliminates formatting debates by automatically standardizing code style across entire projects. Inspired by Prettier's philosophy, it provides zero-configuration formatting that just works.

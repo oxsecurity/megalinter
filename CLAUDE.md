@@ -48,7 +48,7 @@ uv pip install -e .             # Install in editable mode
 
 ### Descriptor-Driven Design
 
-The core pattern: each linter is defined in a YAML descriptor file (`megalinter/descriptors/<lang>.megalinter-descriptor.yml`). The build system (`.automation/build.py`) reads these descriptors and generates:
+The core pattern: each linter is defined in a YAML descriptor file (`megalinter/descriptors/<lang>.megalinter-descriptor.yml`). Linters shared by several descriptors (eslint, prettier, biome...) are defined once in `megalinter/descriptors/shared/<name>.megalinter-linter.yml` and referenced with the linter-level `extends` property (shallow merge, entry keys override — see `.claude/rules/descriptors.md`). The build system (`.automation/build.py`) reads these descriptors and generates:
 - Dockerfiles (per-linter in `linters/`, per-flavor in `flavors/`)
 - Documentation pages (in `docs/`)
 - Test class skeletons

@@ -10,6 +10,8 @@ metadata:
 
 Review the descriptor for `$ARGUMENTS`. If a linter name is given, find its descriptor in `megalinter/descriptors/`.
 
+If a linter entry declares `extends: <name>`, audit the **resolved** definition: read `megalinter/descriptors/shared/<name>.megalinter-linter.yml` and apply the entry's overrides on top (shallow merge). Report gaps against the shared file when the property is common to all descriptors, against the entry when it is descriptor-specific.
+
 For each linter entry, audit against the **full property list** below. Report a checklist with status for each category.
 
 ## 1. Identity (required)

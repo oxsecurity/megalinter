@@ -1,0 +1,71 @@
+---
+class: EslintLinter
+linter_name: eslint
+can_output_sarif: true
+linter_spdx_license: MIT
+linter_rules_inline_disable_url: https://eslint.org/docs/latest/use/configure/rules#disabling-rules
+linter_megalinter_ref_url: https://eslint.org/docs/latest/use/integrations#source-control
+active_only_if_file_found:
+  - eslint.config.js
+  - eslint.config.mjs
+  - eslint.config.cjs
+  - eslint.config.ts
+  - eslint.config.mts
+  - eslint.config.cts
+  - .eslintrc.json
+  - .eslintrc.yml
+  - .eslintrc.yaml
+  - .eslintrc.js
+  - .eslintrc.cjs
+  - package.json:eslintConfig
+cli_lint_mode: list_of_files
+supported_cli_lint_modes:
+  - file
+  - list_of_files
+  - project
+cli_lint_extra_args:
+  - --no-ignore
+cli_lint_mode_project_extra_args_after:
+  - .
+cli_lint_fix_arg_name: --fix
+cli_sarif_args:
+  - --format
+  - "@microsoft/eslint-formatter-sarif"
+  - -o
+  - "{{SARIF_OUTPUT_FILE}}"
+cli_lint_errors_count: regex_sum
+cli_lint_errors_regex: ✖ ([0-9]+) problem
+supported_platforms:
+  platform:
+    - linux/amd64
+    - linux/arm64
+ide:
+  brackets:
+    - name: brackets-eslint
+      url: https://github.com/brackets-userland/brackets-eslint
+  eclipse:
+    - name: Tern-Linter-ESLint
+      url: https://github.com/angelozerr/tern.java/wiki/Tern-Linter-ESLint
+  emacs:
+    - name: flycheck
+      url: http://www.flycheck.org/en/latest/languages.html#javascript
+  idea:
+    - name: ESLint Plugin
+      url: https://plugins.jetbrains.com/plugin/7494-eslint
+      id: com.wix.eslint
+  sublime:
+    - name: SublimeLinter-eslint
+      url: https://github.com/roadhump/SublimeLinter-eslint
+  vim:
+    - name: ale
+      url: https://github.com/w0rp/ale
+    - name: Syntastic
+      url: https://github.com/vim-syntastic/syntastic/tree/master/syntax_checkers/javascript
+  vscode:
+    - name: vscode-eslint
+      url: https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
+linter_url: https://eslint.org
+examples:
+  - eslint myfile.js
+  - eslint -c eslint.config.js --no-ignore myfile.js
+  - eslint --fix -c eslint.config.js --no-ignore myfile.js
