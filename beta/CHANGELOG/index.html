@@ -15385,7 +15385,15 @@
 <li>Core</li>
 </ul>
 <ul>
-<li>New linters</li>
+<li>New linters<ul>
+<li><strong><a href="https://biomejs.dev">biome</a></strong>, one fast toolchain linting, formatting and sorting imports of JavaScript, TypeScript, JSX, TSX, JSON, CSS and GraphQL files, available as <strong>JAVASCRIPT_BIOME</strong>, <strong>TYPESCRIPT_BIOME</strong>, <strong>JSX_BIOME</strong>, <strong>TSX_BIOME</strong>, <strong>JSON_BIOME</strong>, <strong>CSS_BIOME</strong> and <strong>GRAPHQL_BIOME</strong><ul>
+<li>Activated only when a <strong>biome.json</strong> or <strong>biome.jsonc</strong> configuration file is found in the repository</li>
+<li>Supports <strong>APPLY_FIXES</strong> (safe fixes with <code>--write</code>) and native <strong>SARIF</strong> output</li>
+<li><code>EXCLUDED_DIRECTORIES</code> are forwarded in project lint mode through a generated configuration extending the workspace one</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Disabled linters</li>
