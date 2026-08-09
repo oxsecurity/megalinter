@@ -13,6 +13,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Core
 
 - New linters
+  - **[biome](https://biomejs.dev)**, one fast toolchain linting, formatting and sorting imports of JavaScript, TypeScript, JSX, TSX, JSON, CSS and GraphQL files, available as **JAVASCRIPT_BIOME**, **TYPESCRIPT_BIOME**, **JSX_BIOME**, **TSX_BIOME**, **JSON_BIOME**, **CSS_BIOME** and **GRAPHQL_BIOME**
+    - Activated only when a **biome.json** or **biome.jsonc** configuration file is found in the repository
+    - Supports **APPLY_FIXES** (safe fixes with `--write`) and native **SARIF** output
+    - `EXCLUDED_DIRECTORIES` are forwarded in project lint mode through a generated configuration extending the workspace one
 
 - Disabled linters
 

@@ -64,3 +64,11 @@ linters:
       platform:
         - linux/amd64
         - linux/arm64
+  # BIOME
+  - extends: biome
+    linter_name: biome
+    test_folder: graphql_biome
+    examples:
+      - "biome check myfile.graphql"
+      - "biome check --config-path biome.json myfile.graphql"
+      - "biome check --write myfile.graphql"

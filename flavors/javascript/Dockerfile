@@ -135,6 +135,8 @@ ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=40.0.0
 ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=13.0.0
 # renovate: datasource=npm depName=stylelint-scss
 ARG NPM_STYLELINT_SCSS_VERSION=7.2.0
+# renovate: datasource=npm depName=@biomejs/biome
+ARG NPM_BIOMEJS_BIOME_VERSION=2.5.7
 # renovate: datasource=github-releases depName=dotenv-linter/dotenv-linter extractVersion=^v(?<version>.+)$
 ARG DOTENV_LINTER_VERSION=4.0.0
 # renovate: datasource=npm depName=graphql
@@ -434,6 +436,7 @@ RUN npm config set prefix /usr/local \
                 stylelint-config-standard@${NPM_STYLELINT_CONFIG_STANDARD_VERSION} \
                 stylelint-config-sass-guidelines@${NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION} \
                 stylelint-scss@${NPM_STYLELINT_SCSS_VERSION} \
+                @biomejs/biome@${NPM_BIOMEJS_BIOME_VERSION} \
                 graphql@${NPM_GRAPHQL_VERSION} \
                 graphql-schema-linter@${NPM_GRAPHQL_SCHEMA_LINTER_VERSION} \
                 npm-groovy-lint@${NPM_GROOVY_LINT_VERSION} \
@@ -511,6 +514,7 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
 # coffeelint installation
 # jscpd installation
 # stylelint installation
+# biome installation
 # hadolint installation
 # Managed with COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 # editorconfig-checker installation
@@ -526,6 +530,7 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
       "https://github.com/dotenv-linter/dotenv-linter/releases/download/v${DOTENV_LINTER_VERSION}/dotenv-linter-alpine-${ARCH}.tar.gz" \
       | tar -xz -C /usr/local/bin \
 # graphql-schema-linter installation
+# biome installation
 # npm-groovy-lint installation
 # Next line commented because already managed by another linter
 # ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
@@ -536,11 +541,14 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
 # eslint installation
 # standard installation
 # prettier installation
+# biome installation
 # jsonlint installation
 # v8r installation
 # prettier installation
 # npm-package-json-lint installation
+# biome installation
 # eslint installation
+# biome installation
 # ktlint installation
     && curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/download/${KTLINT_VERSION}/ktlint && \
     chmod a+x ktlint && \
@@ -620,9 +628,11 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOS
 # sqlfluff installation
 # tekton-lint installation
 # eslint installation
+# biome installation
 # eslint installation
 # ts-standard installation
 # prettier installation
+# biome installation
 # prettier installation
 # yamllint installation
 # v8r installation

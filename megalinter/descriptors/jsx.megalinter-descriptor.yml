@@ -139,3 +139,11 @@ linters:
         - eslint@${NPM_ESLINT_VERSION}
         - "@eslint-react/eslint-plugin@${NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION}"
         - "@microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION}"
+  # BIOME
+  - extends: biome
+    linter_name: biome
+    test_folder: jsx_biome
+    examples:
+      - "biome check myfile.jsx"
+      - "biome check --config-path biome.json myfile.jsx"
+      - "biome check --write myfile.jsx"
