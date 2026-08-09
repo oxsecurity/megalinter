@@ -14,10 +14,9 @@ from typing import Any, Optional, Pattern, Sequence, Union
 
 import git
 import regex
-from termcolor import colored
-
 from megalinter import config, logger
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
+from termcolor import colored
 
 SIZE_MAX_SOURCEFILEHEADER = 1024
 
