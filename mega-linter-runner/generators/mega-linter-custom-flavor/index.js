@@ -1,9 +1,21 @@
 import { asciiArt } from "../../lib/ascii.js";
 import Generator from 'yeoman-generator';
-import { simpleGit } from 'simple-git';
+import { execFileSync } from "child_process";
 import c from "../../lib/colors.js";
 import fs from "fs"
 import { load as yamlLoad } from "js-yaml";
+
+function gitOutput(args) {
+  return execFileSync("git", args, { encoding: "utf8" }).trim();
+}
+
+function getFirstRemoteFetchUrl() {
+  const remoteNames = gitOutput(["remote"]).split(/\r?\n/).filter(Boolean);
+  if (remoteNames.length === 0) {
+    return "";
+  }
+  return gitOutput(["remote", "get-url", remoteNames[0]]);
+}
 
 export default class GeneratorMegaLinter extends Generator {
   async prompting() {
@@ -14,9 +26,7 @@ When you don't know what option to select, please use default values`
     ));
 
     // Verify that the repo name contains "megalinter-custom-flavor"
-    const git = simpleGit();
-    const remote = await git.getRemotes(true);
-    if (!remote[0].refs.fetch.includes("megalinter-custom-flavor")) {
+    if (!getFirstRemoteFetchUrl().includes("megalinter-custom-flavor")) {
       const errorMessage = `
 ERROR: This generator must be run in a repository whose name includes 'megalinter-custom-flavor'
 Example: 'megalinter-custom-flavor-python-light'
@@ -111,12 +121,15 @@ Example: 'megalinter-custom-flavor-python-light'
       return `- [${linter}](${linterUrl})`;
     }).join("\n");
     // Custom flavor author is git username
-    const git = simpleGit();
-    const user = await git.getConfig('user.name');
-    this.customFlavorAuthor = user.value;
+    let author = "";
+    try {
+      author = gitOutput(["config", "user.name"]);
+    } catch {
+      // user.name not set in git config: leave author empty
+    }
+    this.customFlavorAuthor = author;
     // Get remote repo
-    const remote = await git.getRemotes(true);
-    const remoteUrl = remote[0].refs.fetch;
+    const remoteUrl = getFirstRemoteFetchUrl();
     
     // Handle both HTTPS and SSH git origins
     let repoPath, repoUrl;

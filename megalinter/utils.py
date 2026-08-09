@@ -660,11 +660,13 @@ def find_json_in_stdout(stdout: str, sarif=True):
     return ""
 
 
-# Return top-level balanced {...} blocks, ignoring braces within JSON strings
+# Return outermost balanced {...} blocks, ignoring braces within JSON strings.
+# Balanced blocks nested under a never-closed "{" are also returned, as the JSON
+# searched for may be preceded by log text containing unmatched braces
 def extract_json_blocks(text: str) -> list[str]:
-    blocks = []
-    depth = 0
-    start = -1
+    blocks: list[str] = []
+    open_positions: list[int] = []
+    open_children: list[list[str]] = []
     in_string = False
     escaped = False
     for pos, char in enumerate(text):
@@ -675,16 +677,23 @@ def extract_json_blocks(text: str) -> list[str]:
                 escaped = True
             elif char == '"':
                 in_string = False
-        elif char == '"' and depth > 0:
+        elif char == '"' and open_positions:
             in_string = True
         elif char == "{":
-            if depth == 0:
-                start = pos
-            depth += 1
-        elif char == "}" and depth > 0:
-            depth -= 1
-            if depth == 0:
-                blocks.append(text[start : pos + 1])  # noqa: E203
+            open_positions.append(pos)
+            open_children.append([])
+        elif char == "}" and open_positions:
+            start = open_positions.pop()
+            # children are dropped: they are contained in this bigger balanced block
+            open_children.pop()
+            block = text[start : pos + 1]  # noqa: E203
+            if open_positions:
+                open_children[-1].append(block)
+            else:
+                blocks.append(block)
+    # Balanced blocks whose parent braces were never closed are candidates too
+    for children in open_children:
+        blocks.extend(children)
     return blocks
 
 
