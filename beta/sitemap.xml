@@ -369,6 +369,10 @@
          <lastmod>2026-08-09</lastmod>
     </url>
     <url>
+         <loc>https://megalinter.io/beta/descriptors/css_biome/</loc>
+         <lastmod>2026-08-09</lastmod>
+    </url>
+    <url>
          <loc>https://megalinter.io/beta/descriptors/css_stylelint/</loc>
          <lastmod>2026-08-09</lastmod>
     </url>
@@ -429,6 +433,10 @@
          <lastmod>2026-08-09</lastmod>
     </url>
     <url>
+         <loc>https://megalinter.io/beta/descriptors/graphql_biome/</loc>
+         <lastmod>2026-08-09</lastmod>
+    </url>
+    <url>
          <loc>https://megalinter.io/beta/descriptors/graphql_graphql_schema_linter/</loc>
          <lastmod>2026-08-09</lastmod>
     </url>
@@ -469,6 +477,10 @@
          <lastmod>2026-08-09</lastmod>
     </url>
     <url>
+         <loc>https://megalinter.io/beta/descriptors/javascript_biome/</loc>
+         <lastmod>2026-08-09</lastmod>
+    </url>
+    <url>
          <loc>https://megalinter.io/beta/descriptors/javascript_eslint/</loc>
          <lastmod>2026-08-09</lastmod>
     </url>
@@ -482,6 +494,10 @@
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/json/</loc>
+         <lastmod>2026-08-09</lastmod>
+    </url>
+    <url>
+         <loc>https://megalinter.io/beta/descriptors/json_biome/</loc>
          <lastmod>2026-08-09</lastmod>
     </url>
     <url>
@@ -502,6 +518,10 @@
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/jsx/</loc>
+         <lastmod>2026-08-09</lastmod>
+    </url>
+    <url>
+         <loc>https://megalinter.io/beta/descriptors/jsx_biome/</loc>
          <lastmod>2026-08-09</lastmod>
     </url>
     <url>
@@ -897,11 +917,19 @@
          <lastmod>2026-08-09</lastmod>
     </url>
     <url>
+         <loc>https://megalinter.io/beta/descriptors/tsx_biome/</loc>
+         <lastmod>2026-08-09</lastmod>
+    </url>
+    <url>
          <loc>https://megalinter.io/beta/descriptors/tsx_eslint/</loc>
          <lastmod>2026-08-09</lastmod>
     </url>
     <url>
          <loc>https://megalinter.io/beta/descriptors/typescript/</loc>
+         <lastmod>2026-08-09</lastmod>
+    </url>
+    <url>
+         <loc>https://megalinter.io/beta/descriptors/typescript_biome/</loc>
          <lastmod>2026-08-09</lastmod>
     </url>
     <url>
