@@ -3428,7 +3428,9 @@ def validate_descriptors():
         }
         shared_linter_schema.pop("$id", None)
         shared_linter_files = sorted(
-            glob.glob(f"{REPO_HOME}/megalinter/descriptors/shared/*.megalinter-linter.yml")
+            glob.glob(
+                f"{REPO_HOME}/megalinter/descriptors/shared/*.megalinter-linter.yml"
+            )
         )
         for shared_linter_file in shared_linter_files:
             with open(shared_linter_file, "r", encoding="utf-8") as shared_file1:
