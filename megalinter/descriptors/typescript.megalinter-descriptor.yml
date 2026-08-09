@@ -357,7 +357,7 @@ linters:
         default_value: standard
     linter_url: https://prettier.io/
     linter_repo: https://github.com/prettier/prettier
-    linter_megalinter_ref_url: https://github.com/prettier/prettier/pull/19818
+    linter_megalinter_ref_url: https://prettier.io/docs/related-projects
     linter_rules_url: https://prettier.io/docs/en/options.html
     linter_rules_configuration_url: https://prettier.io/docs/en/configuration.html
     linter_rules_inline_disable_url: https://prettier.io/docs/en/ignore.html#javascript

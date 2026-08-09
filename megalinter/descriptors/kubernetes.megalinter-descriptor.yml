@@ -168,7 +168,7 @@ linters:
     can_output_sarif: true
     files_sub_directory: ""
     linter_repo: https://github.com/kubescape/kubescape
-    linter_megalinter_ref_url: https://github.com/kubescape/kubescape/pull/2859
+    linter_megalinter_ref_url: https://github.com/kubescape/kubescape#cicd
     linter_url: https://github.com/kubescape/kubescape
     linter_text: |
       **Kubescape** is a comprehensive Kubernetes security scanner that examines charts and Kubernetes files for security vulnerabilities, misconfigurations, and compliance violations. It provides security analysis based on established frameworks and best practices.

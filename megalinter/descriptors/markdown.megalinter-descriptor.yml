@@ -161,7 +161,7 @@ linters:
       - CI/CD friendly with non-zero exit code on errors
     linter_url: https://github.com/rvben/rumdl
     linter_repo: https://github.com/rvben/rumdl
-    linter_megalinter_ref_url: https://github.com/rvben/rumdl/pull/803
+    linter_megalinter_ref_url: https://github.com/rvben/rumdl#megalinter
     linter_spdx_license: MIT
     linter_rules_url: https://github.com/rvben/rumdl/blob/main/docs/RULES.md
     linter_rules_configuration_url: https://github.com/rvben/rumdl/blob/main/docs/global-settings.md
