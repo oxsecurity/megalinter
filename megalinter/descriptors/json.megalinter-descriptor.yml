@@ -173,3 +173,11 @@ linters:
       platform:
         - linux/amd64
         - linux/arm64
+  # BIOME
+  - extends: biome
+    linter_name: biome
+    test_folder: json_biome
+    examples:
+      - "biome check myfile.json"
+      - "biome check --config-path biome.json myfile.json"
+      - "biome check --write myfile.json"

@@ -156,6 +156,40 @@ def get_excluded_directories(request_id):
     return result
 
 
+# Remove comments and trailing commas from JSONC content so it can be parsed
+# with json.loads (string contents are preserved untouched)
+def strip_jsonc(content: str) -> str:
+    result = []
+    in_string = False
+    escaped = False
+    index = 0
+    while index < len(content):
+        char = content[index]
+        if in_string:
+            result.append(char)
+            if escaped:
+                escaped = False
+            elif char == "\\":
+                escaped = True
+            elif char == '"':
+                in_string = False
+            index += 1
+        elif char == '"':
+            in_string = True
+            result.append(char)
+            index += 1
+        elif content.startswith("//", index):
+            while index < len(content) and content[index] != "\n":
+                index += 1
+        elif content.startswith("/*", index):
+            comment_end = content.find("*/", index + 2)
+            index = len(content) if comment_end == -1 else comment_end + 2
+        else:
+            result.append(char)
+            index += 1
+    return re.sub(r",(\s*[}\]])", r"\1", "".join(result))
+
+
 _REGEX_METACHARACTERS = set(".^$*+?()[]{}|\\")
 _REGEX_QUANTIFIERS = set("*+?{")
 

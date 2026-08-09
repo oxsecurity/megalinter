@@ -213,6 +213,8 @@ ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=40.0.0
 ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=13.0.0
 # renovate: datasource=npm depName=stylelint-scss
 ARG NPM_STYLELINT_SCSS_VERSION=7.2.0
+# renovate: datasource=npm depName=@biomejs/biome
+ARG NPM_BIOMEJS_BIOME_VERSION=2.5.7
 # renovate: datasource=dart-version depName=dart
 ARG DART_VERSION='3.12.2'
 # renovate: datasource=github-releases depName=dotenv-linter/dotenv-linter extractVersion=^v(?<version>.+)$
@@ -733,6 +735,7 @@ RUN npm config set prefix /usr/local \
                 stylelint-config-standard@${NPM_STYLELINT_CONFIG_STANDARD_VERSION} \
                 stylelint-config-sass-guidelines@${NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION} \
                 stylelint-scss@${NPM_STYLELINT_SCSS_VERSION} \
+                @biomejs/biome@${NPM_BIOMEJS_BIOME_VERSION} \
                 gherkin-lint@${NPM_GHERKIN_LINT_VERSION} \
                 graphql@${NPM_GRAPHQL_VERSION} \
                 graphql-schema-linter@${NPM_GRAPHQL_SCHEMA_LINTER_VERSION} \
@@ -943,6 +946,7 @@ esac \
 # roslynator installation
     && dotnet tool install --allow-roll-forward --tool-path /usr/local/dotnet-tools roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}" \
 # stylelint installation
+# biome installation
 # dartanalyzer installation
     && case ${TARGETPLATFORM} in \
   "linux/amd64")  DART_ARCH=x64   ;; \
@@ -987,6 +991,7 @@ RUN set -eu; \
 # revive installation
 # Managed with COPY --link --from=revive /usr/bin/revive /usr/bin/revive
 # graphql-schema-linter installation
+# biome installation
 # npm-groovy-lint installation
 # Next line commented because already managed by another linter
 # ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
@@ -1007,11 +1012,14 @@ RUN set -eu; \
 # eslint installation
 # standard installation
 # prettier installation
+# biome installation
 # jsonlint installation
 # v8r installation
 # prettier installation
 # npm-package-json-lint installation
+# biome installation
 # eslint installation
+# biome installation
 # ktlint installation
     && curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/download/${KTLINT_VERSION}/ktlint && \
     chmod a+x ktlint && \
@@ -1223,9 +1231,11 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOS
 # terraform-fmt installation
 # Managed with COPY --link --from=terragrunt /bin/terraform /usr/bin/
 # eslint installation
+# biome installation
 # eslint installation
 # ts-standard installation
 # prettier installation
+# biome installation
 # prettier installation
 # yamllint installation
 # v8r installation

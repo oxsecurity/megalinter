@@ -1,0 +1,74 @@
+---
+class: BiomeLinter
+linter_name: biome
+linter_text: |
+  **Biome** is one fast toolchain for the web, linting, formatting and sorting imports of JavaScript, TypeScript, JSX, TSX, JSON, CSS and GraphQL files with a single Rust binary. MegaLinter runs `biome check`, which applies lint rules, formatting checks and assist actions in a single pass.
+
+  **Key Features:**
+
+  - **All-in-one toolchain**: linter, formatter and import sorter in a single tool, replacing several separate dependencies
+  - **Rust performance**: checks large codebases in milliseconds
+  - **Sensible defaults**: hundreds of lint rules with recommended presets, most of them providing safe automatic fixes
+  - **Formatter compatibility**: about 97% compatibility with Prettier output
+  - **Inline suppressions**: granular control with `// biome-ignore` comments
+  - **First-class monorepo support**: nested configurations with `extends` and root detection
+
+  **Activation**: this linter runs only if a `biome.json` or `biome.jsonc` configuration file is found in your repository. Apply safe fixes automatically with **APPLY_FIXES**.
+linter_url: https://biomejs.dev
+linter_repo: https://github.com/biomejs/biome
+linter_spdx_license: MIT OR Apache-2.0
+linter_speed: 5
+linter_rules_url: https://biomejs.dev/linter/rules/
+linter_rules_configuration_url: https://biomejs.dev/reference/configuration/
+linter_rules_inline_disable_url: https://biomejs.dev/analyzer/suppressions/
+linter_banner_image_url: https://raw.githubusercontent.com/biomejs/resources/main/banner-light.svg
+descriptor_flavors:
+  - cupcake
+  - dotnetweb
+  - javascript
+active_only_if_file_found:
+  - biome.json
+  - biome.jsonc
+cli_lint_mode: list_of_files
+supported_cli_lint_modes:
+  - file
+  - list_of_files
+  - project
+cli_lint_extra_args:
+  - "check"
+  - "--max-diagnostics=none"
+cli_lint_mode_project_extra_args_after:
+  - "."
+config_file_name: biome.json
+cli_config_arg_name: "--config-path"
+cli_lint_fix_arg_name: "--write"
+can_output_sarif: true
+cli_sarif_args:
+  - "--reporter=sarif"
+  - "--reporter-file={{SARIF_OUTPUT_FILE}}"
+cli_lint_errors_count: regex_number
+cli_lint_errors_regex: "Found ([0-9]+) error"
+cli_help_arg_name: "--help"
+examples:
+  - "biome check myfile.js"
+  - "biome check --config-path biome.json myfile.js"
+  - "biome check --write myfile.js"
+install:
+  dockerfile:
+    - |-
+      # renovate: datasource=npm depName=@biomejs/biome
+      ARG NPM_BIOMEJS_BIOME_VERSION=2.5.7
+  npm:
+    - "@biomejs/biome@${NPM_BIOMEJS_BIOME_VERSION}"
+supported_platforms:
+  platform:
+    - linux/amd64
+    - linux/arm64
+ide:
+  idea:
+    - name: Biome
+      url: https://plugins.jetbrains.com/plugin/22761-biome
+      id: com.github.biomejs.intellijbiome
+  vscode:
+    - name: Biome
+      url: https://marketplace.visualstudio.com/items?itemName=biomejs.biome

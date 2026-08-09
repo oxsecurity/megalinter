@@ -140,3 +140,13 @@ linters:
       vscode:
         - name: vscode-stylelint
           url: https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint
+  # BIOME
+  - extends: biome
+    linter_name: biome
+    file_extensions:
+      - ".css"
+    test_folder: css_biome
+    examples:
+      - "biome check myfile.css"
+      - "biome check --config-path biome.json myfile.css"
+      - "biome check --write myfile.css"

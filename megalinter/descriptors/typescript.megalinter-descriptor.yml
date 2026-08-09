@@ -298,3 +298,11 @@ linters:
       - "prettier --check myfile.ts"
       - "prettier --config .prettierrc.json --check myfile.ts"
       - "prettier --config .prettierrc.json --write myfile.ts" # format
+  # BIOME
+  - extends: biome
+    linter_name: biome
+    test_folder: typescript_biome
+    examples:
+      - "biome check myfile.ts"
+      - "biome check --config-path biome.json myfile.ts"
+      - "biome check --write myfile.ts"
