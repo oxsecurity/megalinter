@@ -1,5 +1,1 @@
-query {
-	user {
-		id
-	}
-}
+query { user { id name } }
