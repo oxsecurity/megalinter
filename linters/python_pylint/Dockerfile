@@ -57,7 +57,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=pypi depName=pylint
-ARG PIP_PYLINT_VERSION=4.0.6
+ARG PIP_PYLINT_VERSION=4.0.7
 # renovate: datasource=pypi depName=typing-extensions
 ARG PIP_TYPING_EXTENSIONS_VERSION=4.16.0
 # renovate: datasource=pypi depName=pip

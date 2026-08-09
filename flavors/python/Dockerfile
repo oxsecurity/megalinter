@@ -166,7 +166,7 @@ ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
 ARG PIP_RUMDL_VERSION=0.2.52
 # renovate: datasource=pypi depName=pylint
-ARG PIP_PYLINT_VERSION=4.0.6
+ARG PIP_PYLINT_VERSION=4.0.7
 # renovate: datasource=pypi depName=typing-extensions
 ARG PIP_TYPING_EXTENSIONS_VERSION=4.16.0
 # renovate: datasource=pypi depName=black
