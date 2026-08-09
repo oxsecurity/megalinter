@@ -3,7 +3,7 @@ import { createEnv } from "yeoman-environment";
 import { TestAdapter } from "@yeoman/adapter/testing";
 import * as path from "path";
 import os from "os";
-import fs from "fs-extra";
+import fs from "fs";
 import { execSync } from "child_process";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
@@ -14,7 +14,7 @@ const GENERATOR_PATH = path.resolve(
 );
 
 async function makeGitRepo(remoteUrl) {
-  const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "ml-cf-"));
+  const tmpDir = await fs.promises.mkdtemp(path.join(os.tmpdir(), "ml-cf-"));
   execSync("git init", { cwd: tmpDir });
   execSync(`git remote add origin ${remoteUrl}`, { cwd: tmpDir });
   execSync("git config user.email test@example.com", { cwd: tmpDir });
@@ -101,7 +101,7 @@ describe("Custom flavor generator (--custom-flavor-setup)", function () {
         ),
         "builder workflow should be created",
       );
-      const flavorYml = await fs.readFile(
+      const flavorYml = await fs.promises.readFile(
         path.join(tmpDir, "megalinter-custom-flavor.yml"),
         "utf8",
       );
@@ -118,7 +118,7 @@ describe("Custom flavor generator (--custom-flavor-setup)", function () {
         customFlavorLabel: "MyPythonFlavor",
         selectedLinters: ["PYTHON_RUFF"],
       });
-      const readme = await fs.readFile(
+      const readme = await fs.promises.readFile(
         path.join(tmpDir, "README.md"),
         "utf8",
       );
@@ -146,7 +146,7 @@ describe("Custom flavor generator (--custom-flavor-setup)", function () {
         customFlavorLabel: "SeededFlavor",
         selectedLinters: ["YAML_PRETTIER"],
       });
-      const flavorYml = await fs.readFile(
+      const flavorYml = await fs.promises.readFile(
         path.join(tmpDir, "megalinter-custom-flavor.yml"),
         "utf8",
       );

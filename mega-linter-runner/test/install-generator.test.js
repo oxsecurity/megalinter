@@ -3,7 +3,7 @@ import { createEnv } from "yeoman-environment";
 import { TestAdapter } from "@yeoman/adapter/testing";
 import * as path from "path";
 import os from "os";
-import fs from "fs-extra";
+import fs from "fs";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 
@@ -28,7 +28,7 @@ const DEFAULT_ANSWERS = {
 
 async function runGenerator(answers, generatorOptions = undefined) {
   const originalCwd = process.cwd();
-  const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "ml-gen-"));
+  const tmpDir = await fs.promises.mkdtemp(path.join(os.tmpdir(), "ml-gen-"));
   const adapter = new TestAdapter({ mockedAnswers: { ...DEFAULT_ANSWERS, ...answers } });
   try {
     process.chdir(tmpDir);
@@ -59,7 +59,7 @@ describe("Install generator (--install)", function () {
       fs.existsSync(path.join(tmpDir, ".gitignore")),
       ".gitignore should be created",
     );
-    const gitignore = await fs.readFile(path.join(tmpDir, ".gitignore"), "utf8");
+    const gitignore = await fs.promises.readFile(path.join(tmpDir, ".gitignore"), "utf8");
     assert.match(gitignore, /megalinter-reports\//);
   });
 
@@ -119,7 +119,7 @@ describe("Install generator (--install)", function () {
 
   it("uses python flavor in generated GitHub Actions workflow", async () => {
     const tmpDir = await runGenerator({ flavor: "python" });
-    const workflow = await fs.readFile(
+    const workflow = await fs.promises.readFile(
       path.join(tmpDir, ".github", "workflows", "mega-linter.yml"),
       "utf8",
     );
@@ -160,7 +160,7 @@ describe("Install generator (--install)", function () {
 
   it("reflects applyFixes=true in the generated workflow", async () => {
     const tmpDir = await runGenerator({ applyFixes: true });
-    const workflow = await fs.readFile(
+    const workflow = await fs.promises.readFile(
       path.join(tmpDir, ".github", "workflows", "mega-linter.yml"),
       "utf8",
     );
@@ -169,7 +169,7 @@ describe("Install generator (--install)", function () {
 
   it("reflects applyFixes=false in the generated workflow", async () => {
     const tmpDir = await runGenerator({ applyFixes: false });
-    const workflow = await fs.readFile(
+    const workflow = await fs.promises.readFile(
       path.join(tmpDir, ".github", "workflows", "mega-linter.yml"),
       "utf8",
     );
@@ -178,7 +178,7 @@ describe("Install generator (--install)", function () {
 
   it("writes MEGALINTER_FLAVOR and MEGALINTER_VERSION in .mega-linter.yml", async () => {
     const tmpDir = await runGenerator({ flavor: "python" });
-    const config = await fs.readFile(
+    const config = await fs.promises.readFile(
       path.join(tmpDir, ".mega-linter.yml"),
       "utf8",
     );
@@ -196,7 +196,7 @@ describe("Install generator (--install)", function () {
       fs.existsSync(path.join(tmpDir, ".gitlab-ci.yml")),
       ".gitlab-ci.yml should be created",
     );
-    const config = await fs.readFile(
+    const config = await fs.promises.readFile(
       path.join(tmpDir, ".mega-linter.yml"),
       "utf8",
     );
@@ -217,7 +217,7 @@ describe("Install generator (--install)", function () {
       fs.existsSync(path.join(tmpDir, "azure-pipelines.yml")),
       "azure-pipelines.yml should be created from CLI answer",
     );
-    const config = await fs.readFile(
+    const config = await fs.promises.readFile(
       path.join(tmpDir, ".mega-linter.yml"),
       "utf8",
     );

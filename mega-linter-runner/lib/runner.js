@@ -6,13 +6,13 @@ import {
 import { expandEnvEntries } from "./env-parser.js";
 import { listVars } from "./list-vars.js";
 import { spawnSync } from "child_process";
-import { default as c } from "chalk";
+import { default as c } from "./colors.js";
 import * as path from "path";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import os from "os";
-import which from "which";
-import { default as fs } from "fs-extra";
+import { which } from "./which.js";
+import { default as fs } from "fs";
 import { MegaLinterUpgrader } from "./upgrade.js";
 import { CodeTotalRunner } from "./codetotal.js";
 import {
@@ -22,7 +22,6 @@ import {
 import prompts from "prompts";
 import { DEFAULT_RELEASE } from "./config.js";
 import { createEnv } from "yeoman-environment";
-import { default as FindPackageJson } from "find-package-json";
 import { load as yamlLoad } from "js-yaml";
 
 function isSElinuxOn() {
@@ -62,8 +61,12 @@ export class MegaLinterRunner {
       let v = process.env.npm_package_version;
       if (!v) {
         try {
-          const finder = FindPackageJson(__dirname);
-          v = finder.next().value.version;
+          const packageJsonFile = path.join(
+            dirname(fileURLToPath(import.meta.url)),
+            "..",
+            "package.json"
+          );
+          v = JSON.parse(fs.readFileSync(packageJsonFile, "utf8")).version;
         } catch (e) {
           v = "error";
         }
@@ -265,7 +268,7 @@ export class MegaLinterRunner {
     const envVarsFromDotenv = [];
     let emptyEnvFile = null;
     if (fs.existsSync(dotenvPath)) {
-      const dotenvContent = await fs.readFile(dotenvPath, "utf8");
+      const dotenvContent = await fs.promises.readFile(dotenvPath, "utf8");
       dotenvContent.split(/\r?\n/).forEach((line) => {
         const trimmedLine = line.trim();
         if (!trimmedLine || trimmedLine.startsWith("#")) {
@@ -282,9 +285,9 @@ export class MegaLinterRunner {
         }
         envVarsFromDotenv.push(`${key}=${value}`);
       });
-      const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "megalinter-"));
+      const tmpDir = await fs.promises.mkdtemp(path.join(os.tmpdir(), "megalinter-"));
       emptyEnvFile = path.join(tmpDir, "empty.env");
-      await fs.writeFile(emptyEnvFile, "");
+      await fs.promises.writeFile(emptyEnvFile, "");
     }
     const commandArgs = ["run", "--platform", imagePlatform];
     const removeContainer = options["removeContainer"] ? true : options["noRemoveContainer"] ? false : true;
@@ -417,7 +420,7 @@ export class MegaLinterRunner {
         options.prerun === true ? "prerun-report.json" : "mega-linter-report.json"
       );
       if (fs.existsSync(jsonOutputFile)) {
-        const jsonRaw = await fs.readFile(jsonOutputFile, "utf8");
+        const jsonRaw = await fs.promises.readFile(jsonOutputFile, "utf8");
         console.log(JSON.stringify(JSON.parse(jsonRaw)));
       }
     }
@@ -580,7 +583,9 @@ export class MegaLinterRunner {
     for (const target of targets) {
       const targetPath = path.join(baseDir, target);
       if (fs.existsSync(targetPath)) {
-        fs.copySync(targetPath, `${targetPath}.megalinter-setup.bak`);
+        fs.cpSync(targetPath, `${targetPath}.megalinter-setup.bak`, {
+          recursive: true,
+        });
         backedUp.push(target);
       }
     }

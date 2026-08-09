@@ -1,7 +1,7 @@
 import { asciiArt } from "../../lib/ascii.js";
 import Generator from 'yeoman-generator';
 import { simpleGit } from 'simple-git';
-import c from 'chalk';
+import c from "../../lib/colors.js";
 import fs from "fs"
 import { load as yamlLoad } from "js-yaml";
 

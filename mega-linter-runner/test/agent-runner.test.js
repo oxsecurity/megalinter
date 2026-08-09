@@ -1,7 +1,7 @@
 import assert from "assert";
 import * as path from "path";
 import os from "os";
-import fs from "fs-extra";
+import fs from "fs";
 import { MegaLinterRunner } from "../lib/runner.js";
 import { optionsDefinition } from "../lib/options.js";
 import { DEFAULT_RELEASE } from "../lib/config.js";
@@ -189,13 +189,13 @@ describe("Standalone linter env args", () => {
 
 describe("Local .mega-linter.yml config reading", () => {
   it("returns an empty object when the file is missing", async () => {
-    const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "ml-cfg-"));
+    const tmpDir = await fs.promises.mkdtemp(path.join(os.tmpdir(), "ml-cfg-"));
     assert.deepStrictEqual(runner.readLocalConfig(tmpDir), {});
   });
 
   it("reads flavor, version and fixes properties", async () => {
-    const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "ml-cfg-"));
-    await fs.writeFile(
+    const tmpDir = await fs.promises.mkdtemp(path.join(os.tmpdir(), "ml-cfg-"));
+    await fs.promises.writeFile(
       path.join(tmpDir, ".mega-linter.yml"),
       "MEGALINTER_FLAVOR: python\nMEGALINTER_VERSION: v9\nAPPLY_FIXES: all\n"
     );
@@ -206,8 +206,8 @@ describe("Local .mega-linter.yml config reading", () => {
   });
 
   it("ignores an unparsable file", async () => {
-    const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "ml-cfg-"));
-    await fs.writeFile(
+    const tmpDir = await fs.promises.mkdtemp(path.join(os.tmpdir(), "ml-cfg-"));
+    await fs.promises.writeFile(
       path.join(tmpDir, ".mega-linter.yml"),
       "invalid: [unclosed\n  - :::\n"
     );
@@ -217,10 +217,12 @@ describe("Local .mega-linter.yml config reading", () => {
 
 describe("Setup targets backup", () => {
   it("backs up pre-existing generator targets", async () => {
-    const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "ml-bak-"));
-    await fs.writeFile(path.join(tmpDir, ".mega-linter.yml"), "APPLY_FIXES: all\n");
-    await fs.mkdirp(path.join(tmpDir, ".github", "workflows"));
-    await fs.writeFile(
+    const tmpDir = await fs.promises.mkdtemp(path.join(os.tmpdir(), "ml-bak-"));
+    await fs.promises.writeFile(path.join(tmpDir, ".mega-linter.yml"), "APPLY_FIXES: all\n");
+    await fs.promises.mkdir(path.join(tmpDir, ".github", "workflows"), {
+      recursive: true,
+    });
+    await fs.promises.writeFile(
       path.join(tmpDir, ".github", "workflows", "mega-linter.yml"),
       "name: custom\n"
     );
@@ -230,7 +232,7 @@ describe("Setup targets backup", () => {
       path.join(".github", "workflows", "mega-linter.yml"),
     ]);
     assert.strictEqual(
-      await fs.readFile(
+      await fs.promises.readFile(
         path.join(tmpDir, ".mega-linter.yml.megalinter-setup.bak"),
         "utf8"
       ),
@@ -249,7 +251,7 @@ describe("Setup targets backup", () => {
   });
 
   it("returns an empty list when nothing pre-exists", async () => {
-    const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "ml-bak-"));
+    const tmpDir = await fs.promises.mkdtemp(path.join(os.tmpdir(), "ml-bak-"));
     assert.deepStrictEqual(runner.backupExistingSetupTargets(tmpDir), []);
   });
 });
@@ -274,7 +276,7 @@ describe("Timeout handling", () => {
   }
 
   async function makeTmpLintDir() {
-    return await fs.mkdtemp(path.join(os.tmpdir(), "ml-timeout-"));
+    return await fs.promises.mkdtemp(path.join(os.tmpdir(), "ml-timeout-"));
   }
 
   it("resolveTimeoutSeconds returns null when --timeout is not set", () => {

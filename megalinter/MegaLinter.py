@@ -11,6 +11,7 @@ import os
 import shutil
 import sys
 import threading
+from logging.handlers import QueueHandler, QueueListener
 from shutil import copytree
 from uuid import uuid1
 
@@ -42,7 +43,6 @@ from megalinter.utils_reporter import (
     log_section_start,
     register_user_notification,
 )
-from multiprocessing_logging import install_mp_handler, uninstall_mp_handler
 
 # Timeout (in seconds) for the "git ls-files" call listing gitignored files.
 # The call normally completes in under a second even on large repos, but it can
@@ -67,12 +67,12 @@ def init_worker(request_config_in):
     # store argument in the global variable for this process
     REQUEST_CONFIG = request_config_in
     # Re-apply the %(message)s formatter in every worker process.
-    # On Linux, fork() inherits the parent logger config, but multiprocessing_logging's
-    # install_mp_handler() replaces handlers with QueueHandlers whose formatter may not
-    # be propagated correctly to forked children, causing the default
-    # "%(levelname)s:%(name)s:%(message)s" format to appear in output instead of the
-    # plain message - which breaks CI annotation commands like "::group::" that must
-    # appear at the very start of a line.
+    # On Linux, fork() inherits the parent logger config, where handlers have been
+    # replaced by a QueueHandler whose formatter may not be propagated correctly to
+    # forked children, causing the default "%(levelname)s:%(name)s:%(message)s"
+    # format to appear in output instead of the plain message - which breaks CI
+    # annotation commands like "::group::" that must appear at the very start of a
+    # line.
     formatter = logging.Formatter("%(message)s")
     for handler in logging.root.handlers:
         handler.setFormatter(formatter)
@@ -469,7 +469,17 @@ class Megalinter:
                 f"Processing linters on [{str(process_number)}] parallel cores… "
                 "(can be decreased with variable PARALLEL_PROCESS_NUMBER in case of performance issues)"
             )
-        install_mp_handler()
+        # Tunnel log records of worker processes through a multiprocessing queue,
+        # so they are emitted by the initial handlers in the main process without
+        # being garbled (stdlib equivalent of the former multiprocessing_logging dep)
+        root_logger = logging.getLogger()
+        initial_handlers = root_logger.handlers[:]
+        log_queue = mp.Queue()
+        log_queue_listener = QueueListener(
+            log_queue, *initial_handlers, respect_handler_level=True
+        )
+        root_logger.handlers = [QueueHandler(log_queue)]
+        log_queue_listener.start()
         pool = mp.Pool(
             process_number,
             initializer=init_worker,
@@ -531,7 +541,9 @@ class Megalinter:
                 idx = linter_index.get(updated_linter.name)
                 if idx is not None:
                     self.linters[idx] = updated_linter
-        uninstall_mp_handler()
+        # Drain pending worker log records, then restore direct logging handlers
+        log_queue_listener.stop()
+        root_logger.handlers = initial_handlers
 
     # noinspection PyMethodMayBeStatic
     def get_workspace(self, params):

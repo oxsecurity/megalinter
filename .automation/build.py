@@ -24,7 +24,6 @@ import jsonschema
 import markdown
 import megalinter
 import requests
-import terminaltables
 import webpreview
 import yaml
 from bs4 import BeautifulSoup
@@ -3752,22 +3751,10 @@ def generate_documentation_all_linters():
             duplicate.descriptor_id_list.sort()
             linters[index] = duplicate
     linters.sort(key=lambda x: x.linter_name)
-    table_header = [
-        "Linter",
-        "Supported Platforms",
-        "Version",
-        "License",
-        "Popularity",
-        "Descriptors",
-        "Status",
-        "URL",
-    ]
     md_table_lines = []
-    table_data = [table_header]
     hearth_linters_md = []
     leave = False
     for linter in linters:
-        status = "Not submitted"
         md_status = ":white_circle:"
         # url
         url = (
@@ -3801,22 +3788,16 @@ def generate_documentation_all_linters():
             if linter.linter_megalinter_ref_url not in ["no", "never"]:
                 md_url = f"[MegaLinter reference]({linter.linter_megalinter_ref_url}){{target=_blank}}"
             if linter.linter_megalinter_ref_url == "no":
-                status = "❌ Refused"
                 md_status = ":no_entry_sign:"
             elif linter.linter_megalinter_ref_url == "never":
-                status = "Θ Not applicable"
                 md_status = "<!-- -->"
             elif "/pull/" in str(url):
                 if url.endswith("#ok"):
-                    status = "✅ Awaiting publication"
                     md_status = ":love_letter:"
                 else:
-                    status = "Ω Pending"
                     md_status = ":hammer_and_wrench:"
                 md_url = f"[Pull Request]({url}){{target=_blank}}"
-                url = "PR: " + url
             else:
-                status = "✅ Published"
                 md_status = ":heart:"
                 hearth_linters_md += [
                     f"- [{linter.linter_name}]({linter.linter_megalinter_ref_url}){{target=_blank}}"
@@ -3952,19 +3933,6 @@ def generate_documentation_all_linters():
             and "platform" in linter.supported_platforms
         ):
             supported_platforms += linter.supported_platforms["platform"]
-        # line
-        table_line = [
-            linter.linter_name,
-            ", ".join(supported_platforms),
-            linter_version,
-            license,
-            "N/A",
-            ", ".join(linter.descriptor_id_list),
-            status,
-            url,
-        ]
-        table_data += [table_line]
-
         linter_doc_links = []
         for descriptor_id in linter.descriptor_id_list:
             linter_doc_url = f"descriptors/{descriptor_id.lower()}_{linter.linter_name.lower().replace('-', '_')}.md"
@@ -3994,15 +3962,6 @@ def generate_documentation_all_linters():
         "<!-- referring-linters-end -->",
         hearth_linters_md_str,
     )
-
-    # Display results (disabled)
-    table = terminaltables.AsciiTable(table_data)
-    table.title = "----Reference to MegaLinter in linters documentation summary"
-    # Output table in console
-    logging.info("")
-    # for table_line in table.table.splitlines():
-    #    logging.info(table_line)
-    logging.info("")
 
     # Write in file
     with open(REPO_HOME + "/docs/all_linters.md", "w", encoding="utf-8") as outfile:

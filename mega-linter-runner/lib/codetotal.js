@@ -1,10 +1,10 @@
 import { spawnSync, spawn } from "child_process";
-import { default as c } from 'chalk';
-import { default as fs } from "fs-extra";
+import { default as c } from "./colors.js";
+import { default as fs } from "fs";
 import * as https from 'https';
 import { default as open } from 'open';
 import * as path from "path";
-import which from "which";
+import { which } from "./which.js";
 import { asciiArtCodeTotal } from "./ascii.js";
 
 export class CodeTotalRunner {

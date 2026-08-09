@@ -374,15 +374,6 @@ wheels = [
 ]
 
 [[package]]
-name = "commentjson"
-version = "0.9.0"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "lark-parser" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/c0/76/c4aa9e408dbacee3f4de8e6c5417e5f55de7e62fb5a50300e1233a2c9cb5/commentjson-0.9.0.tar.gz", hash = "sha256:42f9f231d97d93aff3286a4dc0de39bfd91ae823d1d9eba9fa901fe0c7113dd4", size = 8653, upload-time = "2020-10-05T18:49:06.524Z" }
-
-[[package]]
 name = "cryptography"
 version = "50.0.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1190,12 +1181,6 @@ wheels = [
 ]
 
 [[package]]
-name = "lark-parser"
-version = "0.7.8"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/34/b8/aa7d6cf2d5efdd2fcd85cf39b33584fe12a0f7086ed451176ceb7fb510eb/lark-parser-0.7.8.tar.gz", hash = "sha256:26215ebb157e6fb2ee74319aa4445b9f3b7e456e26be215ce19fdaaa901c20a4", size = 276204, upload-time = "2019-11-01T12:45:26.558Z" }
-
-[[package]]
 name = "markdown-it-py"
 version = "4.2.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1295,21 +1280,16 @@ wheels = [
 name = "megalinter"
 source = { editable = "." }
 dependencies = [
-    { name = "commentjson" },
     { name = "gitpython" },
     { name = "jsonpickle" },
     { name = "langchain-core" },
-    { name = "multiprocessing-logging" },
     { name = "pygithub" },
     { name = "pyjwt" },
     { name = "pytablewriter" },
     { name = "python-gitlab" },
     { name = "pyyaml" },
     { name = "redis" },
-    { name = "regex" },
     { name = "requests" },
-    { name = "termcolor" },
-    { name = "terminaltables" },
     { name = "urllib3" },
 ]
 
@@ -1343,9 +1323,7 @@ llm = [
 
 [package.metadata]
 requires-dist = [
-    { name = "commentjson" },
     { name = "gitpython" },
-    { name = "importlib-metadata", marker = "python_full_version < '3.9'", specifier = ">=3.10" },
     { name = "jsonpickle" },
     { name = "langchain-anthropic", marker = "extra == 'all-llm'", specifier = "~=1.5.2" },
     { name = "langchain-anthropic", marker = "extra == 'llm'", specifier = "~=1.5.2" },
@@ -1364,17 +1342,13 @@ requires-dist = [
     { name = "langchain-ollama", marker = "extra == 'llm'", specifier = "~=1.1.0" },
     { name = "langchain-openai", marker = "extra == 'all-llm'", specifier = "~=1.4.1" },
     { name = "langchain-openai", marker = "extra == 'llm'", specifier = "~=1.4.1" },
-    { name = "multiprocessing-logging" },
     { name = "pygithub" },
     { name = "pyjwt", specifier = ">=2.12.0" },
     { name = "pytablewriter" },
     { name = "python-gitlab" },
     { name = "pyyaml" },
     { name = "redis" },
-    { name = "regex" },
     { name = "requests" },
-    { name = "termcolor" },
-    { name = "terminaltables" },
     { name = "torch", marker = "extra == 'all-llm'" },
     { name = "torch", marker = "extra == 'huggingface'" },
     { name = "transformers", marker = "extra == 'all-llm'" },
@@ -1489,14 +1463,6 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/0c/f7/addf1087b860ac60e6f382240f64fb99f8bfb532bb06f7c542b83c29ca61/multidict-6.7.1-cp314-cp314t-win_amd64.whl", hash = "sha256:497bde6223c212ba11d462853cfa4f0ae6ef97465033e7dc9940cdb3ab5b48e5", size = 53542, upload-time = "2026-01-26T02:46:08.809Z" },
     { url = "https://files.pythonhosted.org/packages/4c/81/4629d0aa32302ef7b2ec65c75a728cc5ff4fa410c50096174c1632e70b3e/multidict-6.7.1-cp314-cp314t-win_arm64.whl", hash = "sha256:2bbd113e0d4af5db41d5ebfe9ccaff89de2120578164f86a5d17d5a576d1e5b2", size = 44719, upload-time = "2026-01-26T02:46:11.146Z" },
     { url = "https://files.pythonhosted.org/packages/81/08/7036c080d7117f28a4af526d794aab6a84463126db031b007717c1a6676e/multidict-6.7.1-py3-none-any.whl", hash = "sha256:55d97cc6dae627efa6a6e548885712d4864b81110ac76fa4e534c03819fa4a56", size = 12319, upload-time = "2026-01-26T02:46:44.004Z" },
-]
-
-[[package]]
-name = "multiprocessing-logging"
-version = "0.3.4"
-source = { registry = "https://pypi.org/simple" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/9e/fe/32bd864bcb604b0607924a4cf618ed267a0ef21ac9c3e255109256046e1f/multiprocessing_logging-0.3.4-py2.py3-none-any.whl", hash = "sha256:8a5be02b02edbd6fa6e3e89499af7680db69db9e2d8707fcd28d445fa248f23e", size = 8770, upload-time = "2023-02-05T17:06:20.632Z" },
 ]
 
 [[package]]
@@ -2511,24 +2477,6 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/47/c6/ee486fd809e357697ee8a44d3d69222b344920433d3b6666ccd9b374630c/tenacity-9.1.4.tar.gz", hash = "sha256:adb31d4c263f2bd041081ab33b498309a57c77f9acf2db65aadf0898179cf93a", size = 49413, upload-time = "2026-02-07T10:45:33.841Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/d7/c1/eb8f9debc45d3b7918a32ab756658a0904732f75e555402972246b0b8e71/tenacity-9.1.4-py3-none-any.whl", hash = "sha256:6095a360c919085f28c6527de529e76a06ad89b23659fa881ae0649b867a9d55", size = 28926, upload-time = "2026-02-07T10:45:32.24Z" },
-]
-
-[[package]]
-name = "termcolor"
-version = "3.3.0"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/46/79/cf31d7a93a8fdc6aa0fbb665be84426a8c5a557d9240b6239e9e11e35fc5/termcolor-3.3.0.tar.gz", hash = "sha256:348871ca648ec6a9a983a13ab626c0acce02f515b9e1983332b17af7979521c5", size = 14434, upload-time = "2025-12-29T12:55:21.882Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/33/d1/8bb87d21e9aeb323cc03034f5eaf2c8f69841e40e4853c2627edf8111ed3/termcolor-3.3.0-py3-none-any.whl", hash = "sha256:cf642efadaf0a8ebbbf4bc7a31cec2f9b5f21a9f726f4ccbb08192c9c26f43a5", size = 7734, upload-time = "2025-12-29T12:55:20.718Z" },
-]
-
-[[package]]
-name = "terminaltables"
-version = "3.1.10"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/f5/fc/0b73d782f5ab7feba8d007573a3773c58255f223c5940a7b7085f02153c3/terminaltables-3.1.10.tar.gz", hash = "sha256:ba6eca5cb5ba02bba4c9f4f985af80c54ec3dccf94cfcd190154386255e47543", size = 12264, upload-time = "2021-12-07T19:03:35.758Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/c4/fb/ea621e0a19733e01fe4005d46087d383693c0f4a8f824b47d8d4122c87e0/terminaltables-3.1.10-py2.py3-none-any.whl", hash = "sha256:e4fdc4179c9e4aab5f674d80f09d76fa436b96fdc698a8505e0a36bf0804a874", size = 15155, upload-time = "2021-12-07T19:03:34.013Z" },
 ]
 
 [[package]]

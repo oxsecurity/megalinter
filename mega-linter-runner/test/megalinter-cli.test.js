@@ -3,7 +3,7 @@ import assert from 'assert';
 import { exec as childProcessExec } from "child_process";
 import os from "os";
 import path from "path";
-import fs from "fs-extra";
+import fs from "fs";
 import { fileURLToPath } from "url";
 import * as  util from "util";
 const exec = util.promisify(childProcessExec);
@@ -63,11 +63,11 @@ describe("CLI", function () {
           stdout.includes("mega-linter-runner applied"),
           'stdout should contains "mega-linter-runner applied"'
         );
-        fs.removeSync(tempDir);
+        fs.rmSync(tempDir, { recursive: true, force: true });
         done();
       })
       .catch((err) => {
-        fs.removeSync(tempDir);
+        fs.rmSync(tempDir, { recursive: true, force: true });
         done(err);
         throw err;
       });
