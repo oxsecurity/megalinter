@@ -33,6 +33,8 @@ Guide me through adding the linter `$ARGUMENTS` to MegaLinter. If no linter name
 
 Check if a descriptor exists in `megalinter/descriptors/` for this language. If not, create a new `<lang>.megalinter-descriptor.yml`.
 
+If the linter covers **several descriptors** (like eslint, prettier or biome), define it once in `megalinter/descriptors/shared/<linter_name>.megalinter-linter.yml` (a complete standalone linter definition) and add a thin `extends: <linter_name>` entry in each descriptor with only the per-descriptor overrides (`test_folder`, `examples`, `file_extensions`…) — see `.claude/rules/descriptors.md` → "Shared Linter Definitions".
+
 Add the linter entry with **as many properties as possible**. Even though the JSON schema only requires `linter_name`, `linter_url`, and `examples`, aim for maximum completeness. Fill in ALL of these when applicable:
 
 **Identity (required):**

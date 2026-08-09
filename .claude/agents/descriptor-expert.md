@@ -11,6 +11,8 @@ You are a MegaLinter descriptor specialist. You have deep expertise in the YAML 
 
 Descriptors live in `megalinter/descriptors/*.megalinter-descriptor.yml` and conform to `megalinter/descriptors/schemas/megalinter-descriptor.jsonschema.json`.
 
+Linters defined in **several descriptors** (eslint, prettier, v8r, dotnet-format, cpplint, cppcheck, clang-format, biome…) are factorized in `megalinter/descriptors/shared/<name>.megalinter-linter.yml` — a complete standalone linter definition — and referenced from each descriptor with the linter-level `extends: <name>` property (shallow merge, entry keys override, no chaining, resolved by `linter_factory.resolve_linter_extends`). Edit the shared file for behavior common to all descriptors; keep only the per-descriptor differences (`test_folder`, `examples`, `linter_text`, `file_extensions`, `name`, key-prefixed `common_linter_errors`…) in the entries. See `.claude/rules/descriptors.md` → "Shared Linter Definitions".
+
 ## Descriptor-Level Properties
 
 Fill in as many as applicable when creating or reviewing a descriptor:
