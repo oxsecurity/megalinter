@@ -27,7 +27,7 @@ The fix is always to reformat, never to hand-edit whitespace:
 - Or run shfmt locally: `shfmt -w file.sh` (`-w`/`--write` writes the result to the file), `shfmt -l .` lists non-compliant files, `shfmt -d file.sh` shows the diff.
 - Match the project's style flags when running manually: `-i` (spaces per indent, `0` = tabs), `-ci` (indent switch cases), `-bn` (binary ops like `&&` may start a line), `-sr` (space after redirect operators), `-fn` (function brace on next line), `-ln` (dialect: `bash`, `posix`, `mksh`, `bats`). Reuse the flags found in `BASH_SHFMT_ARGUMENTS` if any.
 - `shfmt -s` additionally simplifies code (and `-mn` minifies); only use them if the project already does.
-- If shfmt reports a parse error instead of a diff, fix the shell syntax error first — shfmt cannot format an unparseable script.
+- If shfmt reports a parse error instead of a diff, fix the shell syntax error first — shfmt cannot format an unparsable script.
 
 ## Inline disable
 

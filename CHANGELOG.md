@@ -2992,7 +2992,7 @@ To upgrade to MegaLinter v7, run `npx mega-linter-runner@latest --upgrade` , com
   - TERRAFORM_CHECKOV: Replaced by REPOSITORY_CHECKOV
   - TERRAFORM_KICS: Replaced by REPOSITORY_KICS
 
-- Medias
+- Media
   - Article: [Use the Workflows JSON schema in your IDE](https://cloud.google.com/workflows/docs/use-workflows-json-schema-with-ide), by [Google Cloud](https://cloud.google.com/)
   - Video: [Ortelius Architecture Meeting](https://www.youtube.com/watch?v=oegOSmVegiQ&t=1510s), with a review of MegaLinter, by [Steve Taylor](https://github.com/sbtaylor15) from [Ortelius](https://ortelius.io/)
   - Web site: [my-devops-lab.com](https://www.my-devops-lab.com/tools)
@@ -3207,7 +3207,7 @@ To upgrade to MegaLinter v7, run `npx mega-linter-runner@latest --upgrade` , com
 
 <!-- /* cspell:disable */ -->
 
-- Medias
+- Media
   - Video: [Code quality - Ep01 - MegaLinter, one linter to rule them all](https://www.youtube.com/watch?v=NauVD4z-cMA), by @devpro
   - Video: [DevSecOps Webinar using MegaLinter](https://www.youtube.com/watch?v=hk950RUwIUA), by [5.15 Technologies](https://www.515tech.com/)
   - Video: (FR) [Coding Tech - L'importance de la CI/CD dans le développement de logiciels](https://www.youtube.com/watch?v=raCDpsP9O78), by @GridexX from [R2DevOps](https://r2devops.io/)

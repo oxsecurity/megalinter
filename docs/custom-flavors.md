@@ -196,7 +196,7 @@ Example:
 
 ### Docker image
 
-Replace official MegaLinter image wih your custom flavor docker image
+Replace official MegaLinter image with your custom flavor docker image
 
 Example with gitlab-ci.yml:
 
