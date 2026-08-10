@@ -123,6 +123,9 @@ def get_excluded_directories(request_id):
     cached = _excluded_directories_cache.get(cache_key)
     if cached is not None:
         return cached
+    report_output_folder = config.get(
+        request_id, "REPORT_OUTPUT_FOLDER", "megalinter-reports"
+    )
     default_excluded_dirs = [
         "__pycache__",
         ".angular",
@@ -143,13 +146,17 @@ def get_excluded_directories(request_id):
         ".wireit",
         ".yarn/cache",
         "node_modules",
-        config.get(request_id, "REPORT_OUTPUT_FOLDER", "megalinter-reports"),
+        report_output_folder,
     ]
     excluded_dirs = config.get_list(
         request_id, "EXCLUDED_DIRECTORIES", default_excluded_dirs
     )
     excluded_dirs += config.get_list(request_id, "ADDITIONAL_EXCLUDED_DIRECTORIES", [])
     result = set(excluded_dirs)
+    # Added after the EXCLUDED_DIRECTORIES override so MegaLinter's own output folder
+    # cannot be configured away: linting it is never a valid outcome, and doing so
+    # races with the reporters still writing into it
+    result.add(report_output_folder)
     _excluded_directories_cache[cache_key] = result
     return result
 
