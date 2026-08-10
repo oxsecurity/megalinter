@@ -44,6 +44,7 @@ When fixing is not relevant (false positives, rule conflicts with project style,
 1. Re-check with the `megalinter-check` skill (targeted re-check mode: only the fixed linters/files). Iterate at most 3 times in total.
 2. Show the user a summary: fixed / disabled (with justification) / remaining.
 3. Commit on the working branch with a clear message. **Ask before pushing**; never push to the default branch.
+4. If the push triggers a CI run and the repository auto-applies fixes (`APPLY_FIXES_MODE: commit`), MegaLinter may push a `[MegaLinter] Apply linters fixes` commit on top of yours: watch the run with `megalinter-check`, which handles that commit (see its "MegaLinter auto-fix commits" section) — always pull before making further edits.
 
 ## Optimization: sub-agents (Claude Code and compatible agents)
 

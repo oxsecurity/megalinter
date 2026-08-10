@@ -45,6 +45,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **8 npm dependencies removed** (`chalk`, `fs-extra`, `which`, `uuid`, `find-package-json`, `simple-git`, `mem-fs`, `assert`), replaced by Node.js built-in modules: faster `npx mega-linter-runner` startup and a smaller supply-chain attack surface
   - Fixed `mega-linter-runner --version` displaying `error` instead of the version when the `npm_package_version` environment variable is not set
 
+- Agent Skills
+  - **megalinter-check** now handles the commit MegaLinter pushes itself when the repository uses `APPLY_FIXES_MODE: commit`
+    - CI providers ignore pushes made with the CI token, so the branch used to stay stuck on the **stale checks** of the run that produced the fixes
+    - The commit is amended with a **🤖** prefix and re-pushed with `--force-with-lease`, which re-triggers the checks (you are asked first on the default branch)
+    - Nothing is amended when another commit landed after the auto-fix one, when it was already amended, or when you have local commits left to push — a normal push already re-triggers the checks in those cases
+  - **megalinter-setup** can now set up a [custom flavor](https://megalinter.io/latest/custom-flavors/) repository on request, from creating the repository to publishing and maintaining the image
+    - It first looks for a custom flavor **you already own or administer**, to reuse or extend it instead of maintaining a second one
+  - **megalinter-setup** in upgrade mode now also updates the **installed skills and sub-agents** (`npx skills update`), so the guidance you run matches the MegaLinter version you just upgraded to
+
 - Dev
   - **6 Python dependencies removed** from the MegaLinter runtime, replaced by standard library equivalents: `commentjson`, `terminaltables` and `multiprocessing_logging` (unmaintained), plus `termcolor`, `regex` and the obsolete `importlib-metadata` backport
   - **Shared linter definitions**: linter entries duplicated across several descriptors (eslint, prettier, v8r, dotnet-format, cpplint, cppcheck, clang-format) are now factorized in `megalinter/descriptors/shared/*.megalinter-linter.yml` files, referenced from descriptors with the new linter-level `extends` property (shallow merge, descriptor entry properties override the shared ones)

@@ -1,7 +1,7 @@
 ---
 name: megalinter-setup
-description: Install or upgrade MegaLinter on a repository. Use when the user wants to add MegaLinter to a project, set up linting CI, update MegaLinter configuration or version, or says "install megalinter", "setup linting", "add code quality checks". Always goes through npx mega-linter-runner (--install or --upgrade), then refines .mega-linter.yml.
-argument-hint: "[install|upgrade] [flavor, e.g. python|javascript|all]"
+description: Install or upgrade MegaLinter on a repository. Use when the user wants to add MegaLinter to a project, set up linting CI, update MegaLinter configuration or version, or says "install megalinter", "setup linting", "add code quality checks", "update megalinter skills". Always goes through npx mega-linter-runner (--install or --upgrade), then refines .mega-linter.yml. In upgrade mode it also refreshes the installed MegaLinter skills and sub-agents. Also sets up a MegaLinter custom flavor repository when the user explicitly asks for one.
+argument-hint: "[install|upgrade|custom-flavor] [flavor, e.g. python|javascript|all]"
 allowed-tools: Bash, Read, Grep, Glob, Edit, Write, WebFetch, Skill, AskUserQuestion
 user-invocable: true
 licence: MegaLinter by OX Security, Copyright 2026 - https://megalinter.io/
@@ -10,6 +10,8 @@ licence: MegaLinter by OX Security, Copyright 2026 - https://megalinter.io/
 # MegaLinter setup
 
 Install or upgrade MegaLinter on the current repository. **Always use `npx mega-linter-runner` to scaffold or upgrade the configuration — never write `.mega-linter.yml` or CI workflow files from scratch.** Only refine the generated files afterwards.
+
+**Custom flavor repositories**: if — and only if — the user explicitly asks to create or maintain a **custom MegaLinter flavor** (their own image with just the linters they need, published from a dedicated `megalinter-custom-flavor-*` repository), this is a different job from the install flow below: load `custom-flavor.md` from this skill's directory and follow it instead. Everything else on this page targets a project that *consumes* MegaLinter.
 
 ## 1. Analyze the repository
 
@@ -62,6 +64,45 @@ npx mega-linter-runner --upgrade --no-prompt
 2. Rewrite every occurrence used as a **Docker image** (after `image:`, `container:`, `services:`, `docker run`, `docker pull`, or any `oxsecurity/megalinter[-<flavor>]:<tag>` form, including `megalinter-only-*` standalone images and `docker.io/`-prefixed references) to the same reference prefixed with `ghcr.io/` — keep flavor and tag unchanged: `oxsecurity/megalinter-python:v10` becomes `ghcr.io/oxsecurity/megalinter-python:v10`.
 3. Leave untouched: references already prefixed with `ghcr.io/`, GitHub Action references (`uses: oxsecurity/megalinter@...` — actions are not Docker images), and documentation URLs.
 
+### Also upgrade the MegaLinter skills and sub-agents
+
+The repository configuration is only half of the setup. The MegaLinter skills you are running, and the sub-agent
+definitions they installed, were copied into the project (or the user profile) when they were added and **do not
+update themselves** — so an upgraded repository can still be driven by guidance written for an older MegaLinter.
+Refresh them whenever you run an upgrade, and whenever the user asks to update the MegaLinter skills.
+
+Check first how they are installed:
+
+```bash
+npx skills list
+```
+
+MegaLinter entries show their install path and `Source`. A `local` source means the files are not managed by the
+skills CLI (the MegaLinter repository's own `skills/` folder, or a manual copy): leave those alone and tell the user.
+
+Otherwise update them, naming the skills explicitly — a bare `npx skills update` would also update every unrelated
+skill installed in the project:
+
+```bash
+npx skills update megalinter megalinter-setup megalinter-check megalinter-fix -y
+```
+
+Add `-p` to restrict to project-level skills, or `-g` for the user-level ones, when both exist and only one should move.
+
+If the update reports nothing to do (skills added with `--copy` are not always tracked), re-run the install command
+instead — it overwrites the installed copies with the current version:
+
+```bash
+npx skills add oxsecurity/megalinter/skills -s '*' -a <agent> -y
+```
+
+Then **refresh the sub-agents**: `skills update` rewrites the skill folders only, never the copies made into your
+platform's agents folder (`.claude/agents/`, `.opencode/agent/`, `.github/agents/`). Re-apply step 4 below for the
+three definitions so they match the refreshed skills, asking the user before overwriting any they customized.
+
+Finally, note that **the skill you are currently executing may have just been rewritten**. After the refresh, re-read
+`SKILL.md` in this skill's directory and continue from the updated instructions if they differ from what you loaded.
+
 ## 3. Refine `.mega-linter.yml` (only AFTER install/upgrade)
 
 Once the runner has generated/upgraded the files, you may adjust `.mega-linter.yml`:
@@ -72,13 +113,16 @@ Once the runner has generated/upgraded the files, you may adjust `.mega-linter.y
 
 Validate the file against its JSON schema: <https://raw.githubusercontent.com/oxsecurity/megalinter/main/megalinter/descriptors/schemas/megalinter-configuration.jsonschema.json>
 
-## 4. Install the MegaLinter sub-agents (if your platform supports them)
+## 4. Install or refresh the MegaLinter sub-agents (if your platform supports them)
 
 This skill ships three sub-agent definitions in its `agents/` folder (`megalinter-watcher`, `megalinter-runner`, `megalinter-fixer`) that make the other MegaLinter skills faster and cheaper by keeping CI logs and linter output out of the main context.
 
 If the coding agent you are running on supports custom sub-agent definitions (Claude Code, OpenCode, GitHub Copilot, Codex... — you know whether you do), read `agents/INSTALL.md` in this skill's directory and follow the instructions for your platform: copy the three `agents/*.md` files to your platform's agents folder, adapting the frontmatter when needed.
 
-If a target file already exists, ask the user before overwriting it. If your platform has no sub-agent support, skip this step — the skills degrade gracefully to inline execution.
+If a target file already exists, ask the user before overwriting it. In upgrade mode the existing files are precisely
+what needs replacing: show the user what changed, and preserve any customization they made (a model override, an
+adapted `tools` list) when re-applying the new version. If your platform has no sub-agent support, skip this step —
+the skills degrade gracefully to inline execution.
 
 ## 5. Observability dashboards (optional)
 
