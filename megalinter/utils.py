@@ -13,10 +13,8 @@ from pathlib import Path
 from typing import Any, Optional, Pattern, Sequence, Union
 
 import git
-import regex
 from megalinter import config, logger
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
-from termcolor import colored
 
 SIZE_MAX_SOURCEFILEHEADER = 1024
 
@@ -653,15 +651,92 @@ def find_json_in_stdout(stdout: str, sarif=True):
             sarif_json = extract_sarif_json(json_unique_line, sarif)
             if sarif_json != "":
                 return sarif_json
-    # Try using regex
-    pattern = regex.compile(r"\{(?:[^{}]|(?R))*\}")
-    json_regex_results = pattern.findall(stdout)
-    for json_regex_result in json_regex_results:
-        sarif_json = extract_sarif_json(json_regex_result, sarif)
+    # Try balanced {...} blocks found anywhere in stdout
+    for json_block in extract_json_blocks(stdout):
+        sarif_json = extract_sarif_json(json_block, sarif)
         if sarif_json != "":
             return sarif_json
     # SARIF json not found in stdout
     return ""
+
+
+# Return outermost balanced {...} blocks, ignoring braces within JSON strings.
+# Balanced blocks nested under a never-closed "{" are also returned, as the JSON
+# searched for may be preceded by log text containing unmatched braces
+def extract_json_blocks(text: str) -> list[str]:
+    blocks: list[str] = []
+    open_positions: list[int] = []
+    open_children: list[list[str]] = []
+    in_string = False
+    escaped = False
+    for pos, char in enumerate(text):
+        if in_string:
+            if escaped:
+                escaped = False
+            elif char == "\\":
+                escaped = True
+            elif char == '"':
+                in_string = False
+        elif char == '"' and open_positions:
+            in_string = True
+        elif char == "{":
+            open_positions.append(pos)
+            open_children.append([])
+        elif char == "}" and open_positions:
+            start = open_positions.pop()
+            # children are dropped: they are contained in this bigger balanced block
+            open_children.pop()
+            block = text[start : pos + 1]  # noqa: E203
+            if open_positions:
+                open_children[-1].append(block)
+            else:
+                blocks.append(block)
+    # Balanced blocks whose parent braces were never closed are candidates too
+    for children in open_children:
+        blocks.extend(children)
+    return blocks
+
+
+# Parse JSON tolerating comments and trailing commas (jsonc, like .vscode config files)
+def parse_jsonc(jsonc_text: str):
+    chars: list[str] = []
+    index = 0
+    length = len(jsonc_text)
+    in_string = False
+    escaped = False
+    while index < length:
+        char = jsonc_text[index]
+        if in_string:
+            chars.append(char)
+            if escaped:
+                escaped = False
+            elif char == "\\":
+                escaped = True
+            elif char == '"':
+                in_string = False
+        elif char == '"':
+            in_string = True
+            chars.append(char)
+        elif char == "/" and index + 1 < length and jsonc_text[index + 1] == "/":
+            while index + 1 < length and jsonc_text[index + 1] != "\n":
+                index += 1
+        elif char == "/" and index + 1 < length and jsonc_text[index + 1] == "*":
+            index += 3
+            while index < length and not (
+                jsonc_text[index - 1] == "*" and jsonc_text[index] == "/"
+            ):
+                index += 1
+        elif char in "}]":
+            tail = len(chars) - 1
+            while tail >= 0 and chars[tail] in " \t\r\n":
+                tail -= 1
+            if tail >= 0 and chars[tail] == ",":
+                chars.pop(tail)
+            chars.append(char)
+        else:
+            chars.append(char)
+        index += 1
+    return json.loads("".join(chars))
 
 
 def truncate_json_from_string(string_with_json_inside: str):
@@ -856,20 +931,20 @@ def keep_only_valid_regex_patterns(patterns, fail=False):
 
 
 def yellow(text):
-    return colored(text, "yellow", force_color=True)
+    return f"\033[33m{text}\033[0m"
 
 
 def green(text):
-    return colored(text, "green", force_color=True)
+    return f"\033[32m{text}\033[0m"
 
 
 def red(text):
-    return colored(text, "red", force_color=True)
+    return f"\033[31m{text}\033[0m"
 
 
 def blue(text):
-    return colored(text, "blue", force_color=True)
+    return f"\033[34m{text}\033[0m"
 
 
 def cyan(text):
-    return colored(text, "cyan", force_color=True)
+    return f"\033[36m{text}\033[0m"

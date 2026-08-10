@@ -5,7 +5,6 @@ Output results in console
 
 import logging
 
-import terminaltables
 from megalinter import Reporter, config
 from megalinter.constants import (
     DEFAULT_RELEASE,
@@ -17,6 +16,7 @@ from megalinter.constants import (
 from megalinter.flavor_factory import is_custom_flavor
 from megalinter.utils import blue
 from megalinter.utils_reporter import (
+    build_ascii_table,
     build_user_notifications,
     get_linter_status_icon,
     log_section_end,
@@ -61,10 +61,8 @@ class ConsoleReporter(Reporter):
                         fixes_col,
                     ]
                 ]
-        table = terminaltables.AsciiTable(table_data)
-        table.title = "----MATCHING LINTERS"
         logging.info("")
-        for table_line in table.table.splitlines():
+        for table_line in build_ascii_table(table_data, title="----MATCHING LINTERS"):
             logging.info(table_line)
         logging.info(log_section_end("megalinter-file-listing"))
 
@@ -113,21 +111,22 @@ class ConsoleReporter(Reporter):
                 if self.master.show_elapsed_time is True:
                     table_line += [str(round(linter.elapsed_time_s, 2)) + "s"]
                 table_data += [table_line]
-        table = terminaltables.AsciiTable(table_data)
-        table.title = "----SUMMARY"
-        table.justify_columns = {
-            0: "left",
-            1: "left",
-            2: "left",
-            3: "right",
-            4: "right",
-            5: "right",
-            6: "right",
-            7: "right",
-        }
         # Output table in console
         logging.info("")
-        for table_line in table.table.splitlines():
+        for table_line in build_ascii_table(
+            table_data,
+            title="----SUMMARY",
+            justify_columns={
+                0: "left",
+                1: "left",
+                2: "left",
+                3: "right",
+                4: "right",
+                5: "right",
+                6: "right",
+                7: "right",
+            },
+        ):
             logging.info(table_line)
         logging.info("")
         user_notifications = build_user_notifications(self.master)

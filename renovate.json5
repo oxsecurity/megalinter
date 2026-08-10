@@ -9,7 +9,6 @@
     ':label(dependencies)',
     ':configMigration',
     ':combinePatchMinorReleases',
-    'security:minimumReleaseAgeNpm',
     'preview:dockerVersions',
     'group:unitTestNonMajor',
     ':enableVulnerabilityAlerts',
@@ -17,8 +16,16 @@
     ':automergeDigest', // enable for PRs updating digests
     ':automergePatch', // enable for lock files, patch and pin
   ],
+  // Supply-chain hardening: wait until a release is at least 7 days old before
+  // proposing it, so compromised releases can be caught and yanked by the
+  // community first. Replaces the npm-only 'security:minimumReleaseAgeNpm'
+  // preset (3 days) with a stricter setting covering every datasource.
+  minimumReleaseAge: '7 days',
   vulnerabilityAlerts: {
     enabled: true,
+    // Security fixes must not wait out the cooldown (this is Renovate's
+    // default for vulnerability alerts, made explicit here on purpose)
+    minimumReleaseAge: null,
   },
   osvVulnerabilityAlerts: true,
   hostRules: [

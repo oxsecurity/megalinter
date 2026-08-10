@@ -42,14 +42,19 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - New **Security linting with ESLint** section in the JAVASCRIPT_ES and TYPESCRIPT_ES documentation: states that no security plugin is bundled, shows the `PRE_COMMANDS` recipe and the `createRequire` reference needed under flat config, and lists commonly used plugins. Closes the gap left by the "Security Issues (with security plugins)" line, which previously named no plugin and had no working example
 
 - mega-linter-runner
+  - **Node.js 22 or higher** is now required (was 20)
+  - **8 npm dependencies removed** (`chalk`, `fs-extra`, `which`, `uuid`, `find-package-json`, `simple-git`, `mem-fs`, `assert`), replaced by Node.js built-in modules: faster `npx mega-linter-runner` startup and a smaller supply-chain attack surface
+  - Fixed `mega-linter-runner --version` displaying `error` instead of the version when the `npm_package_version` environment variable is not set
 
 - Dev
+  - **6 Python dependencies removed** from the MegaLinter runtime, replaced by standard library equivalents: `commentjson`, `terminaltables` and `multiprocessing_logging` (unmaintained), plus `termcolor`, `regex` and the obsolete `importlib-metadata` backport
   - **Shared linter definitions**: linter entries duplicated across several descriptors (eslint, prettier, v8r, dotnet-format, cpplint, cppcheck, clang-format) are now factorized in `megalinter/descriptors/shared/*.megalinter-linter.yml` files, referenced from descriptors with the new linter-level `extends` property (shallow merge, descriptor entry properties override the shared ones)
   - **Docker pulls monthly chart**: the auto-update workflow now regenerates `docs/assets/images/docker-pulls-monthly.svg` (new pulls per month since October 2020, all images and registries), via the new `.automation/docker_pulls_chart.py` called by `build.py` after the pull counters update
     - Historical monthly points are frozen in `.automation/generated/docker-pulls-monthly.json` (built once from the tracked stats plus a Web Archive reconstruction of the collection gaps); the script only appends newly completed months computed from `flavors-stats.json`
   - Docker pull counters now also track the **standalone `megalinter-only-*` images**: their download counts are stored in `flavors-stats.json` and included in the README badge total
 
 - CI
+  - **Supply-chain hardening of dependency updates**: Renovate (`minimumReleaseAge`) and Dependabot (`cooldown`) now wait until a release is at least **7 days old** before proposing an upgrade, so compromised releases can be caught by the community first. Security fixes are not delayed and still open immediately
 
 - Linter versions upgrades (N)
   - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.10.0 to **3.11.1** on 2026-08-09

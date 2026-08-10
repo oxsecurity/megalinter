@@ -1,4 +1,3 @@
-// const uuid = require("uuid");
 import { OX_HOMEPAGE_URL } from "./config.js";
 import { default as open } from "open";
 
