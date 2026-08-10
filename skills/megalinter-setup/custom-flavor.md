@@ -67,14 +67,14 @@ npx mega-linter-runner --custom-flavor-setup \
 
 ## 4. What was generated
 
-| File | Role |
-| --- | --- |
-| `megalinter-custom-flavor.yml` | The flavor definition: label + list of linter keys. **This is the file to edit later** |
-| `action.yml` | GitHub Action wrapper, so others can use your flavor with `uses:` |
-| `.github/workflows/megalinter-custom-flavor-builder.yml` | Builds and publishes the image |
-| `.github/workflows/check-new-megalinter-version.yml` | Daily check for new MegaLinter releases, creates matching releases in your repository |
-| `.github/zizmor.yml` | Workflow-security policy (see below) |
-| `README.md` | Documentation of your flavor, including the mandatory License section |
+| File                                                     | Role                                                                                   |
+|----------------------------------------------------------|----------------------------------------------------------------------------------------|
+| `megalinter-custom-flavor.yml`                           | The flavor definition: label + list of linter keys. **This is the file to edit later** |
+| `action.yml`                                             | GitHub Action wrapper, so others can use your flavor with `uses:`                      |
+| `.github/workflows/megalinter-custom-flavor-builder.yml` | Builds and publishes the image                                                         |
+| `.github/workflows/check-new-megalinter-version.yml`     | Daily check for new MegaLinter releases, creates matching releases in your repository  |
+| `.github/zizmor.yml`                                     | Workflow-security policy (see below)                                                   |
+| `README.md`                                              | Documentation of your flavor, including the mandatory License section                  |
 
 Review them with the user, then commit and push.
 
