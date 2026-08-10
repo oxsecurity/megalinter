@@ -121,8 +121,6 @@ linters:
       | [eslint-plugin-security](https://github.com/eslint-community/eslint-plugin-security) | Node.js injection and unsafe-API heuristics |
       | [eslint-plugin-no-unsanitized](https://github.com/mozilla/eslint-plugin-no-unsanitized) | DOM XSS sinks such as `innerHTML` and `insertAdjacentHTML` |
       | [@microsoft/eslint-plugin-sdl](https://github.com/microsoft/eslint-plugin-sdl) | Microsoft SDL rules for web code |
-      | [eslint-plugin-secure-coding](https://github.com/ofri-peretz/eslint) | Injection, sanitization and secret-handling patterns |
-      | [eslint-plugin-node-security](https://github.com/ofri-peretz/eslint) | Node runtime surface: `child_process`, `fs`, TLS |
 
       If your project already lists a security plugin in its own `devDependencies`, installing
       the project tree and running the workspace ESLint binary (workaround 2 above) is simpler:
