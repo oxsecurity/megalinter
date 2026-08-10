@@ -145,12 +145,6 @@ linters:
     cli_lint_mode: file
     supported_cli_lint_modes:
       - file
-    can_output_sarif: true
-    cli_sarif_args:
-      - "--output"
-      - "{{SARIF_OUTPUT_FILE}}"
-      - "--output-format"
-      - "sarif"
     test_folder: csharp_roslynator
     test_format_fix_file_extensions:
       - ".cs"
