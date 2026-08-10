@@ -9,7 +9,6 @@ import xml.dom.minidom
 from pathlib import Path
 from shutil import copyfile
 
-import commentjson
 from megalinter import Reporter, config, utils
 
 
@@ -104,7 +103,7 @@ IDE EXTENSIONS APPLICABLE TO YOUR PROJECT
             vscode_extensions_file = f"{self.master.workspace}{os.path.sep}.vscode{os.path.sep}extensions.json"
             if os.path.isfile(vscode_extensions_file):
                 with open(vscode_extensions_file, "r", encoding="utf-8") as json_file:
-                    vscode_extensions_config = commentjson.loads(json_file.read())
+                    vscode_extensions_config = utils.parse_jsonc(json_file.read())
             else:
                 vscode_extensions_config = {}
             # Add recommendations

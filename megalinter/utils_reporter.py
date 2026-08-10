@@ -25,6 +25,38 @@ from redis import Redis
 _ICON_SEVERITY_ORDER = {"❌": 0, "⚠️": 1, "☑️": 2, "✅": 3}
 
 
+# Render an ascii table (first row = headers) as a list of console lines
+def build_ascii_table(table_data, title=None, justify_columns=None):
+    justify_columns = justify_columns or {}
+    col_number = max(len(row) for row in table_data)
+    widths = [0] * col_number
+    for row in table_data:
+        for col, cell in enumerate(row):
+            widths[col] = max(widths[col], len(str(cell)))
+    border = "+" + "+".join("-" * (width + 2) for width in widths) + "+"
+    top_border = border
+    if title:
+        title_text = str(title)[: max(len(border) - 2, 0)]
+        top_border = "+" + title_text + border[len(title_text) + 1 :]
+
+    def render_row(row):
+        cells = []
+        for col in range(col_number):
+            value = str(row[col]) if col < len(row) else ""
+            if justify_columns.get(col) == "right":
+                cells.append(" " + value.rjust(widths[col]) + " ")
+            else:
+                cells.append(" " + value.ljust(widths[col]) + " ")
+        return "|" + "|".join(cells) + "|"
+
+    lines = [top_border, render_row(table_data[0]), border]
+    for row in table_data[1:]:
+        lines.append(render_row(row))
+    if len(table_data) > 1:
+        lines.append(border)
+    return lines
+
+
 def build_markdown_summary(reporter_self, action_run_url="", max_total_chars=40000):
     markdown_summary_type = config.get(
         reporter_self.master.request_id,

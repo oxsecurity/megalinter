@@ -1,6 +1,6 @@
 import assert from "assert";
 import { spawnSync } from "child_process";
-import fs from "fs-extra";
+import fs from "fs";
 import os from "os";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -81,22 +81,24 @@ function cleanupPathWithDocker(targetPath) {
 }
 
 async function prepareFixtureDir(prefix, sourceRelativeDir) {
-  const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), prefix));
-  await fs.copy(path.join(repoRoot, sourceRelativeDir), tempDir);
+  const tempDir = await fs.promises.mkdtemp(path.join(os.tmpdir(), prefix));
+  await fs.promises.cp(path.join(repoRoot, sourceRelativeDir), tempDir, {
+    recursive: true,
+  });
   return tempDir;
 }
 
 async function preparePhpFixture() {
-  const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "megalinter-php-"));
-  await fs.copy(
+  const tempDir = await fs.promises.mkdtemp(path.join(os.tmpdir(), "megalinter-php-"));
+  await fs.promises.cp(
     path.join(repoRoot, ".automation", "test", "php", ".php-cs-fixer.risky.php"),
     path.join(tempDir, ".php-cs-fixer.risky.php"),
   );
-  await fs.copy(
+  await fs.promises.cp(
     path.join(repoRoot, ".automation", "test", "php", "good", "php_good_1.php"),
     path.join(tempDir, "php_good_1.php"),
   );
-  await fs.copy(
+  await fs.promises.cp(
     path.join(repoRoot, ".automation", "test", "php", "good", "php_good_2.php"),
     path.join(tempDir, "php_good_2.php"),
   );
@@ -165,7 +167,7 @@ async function withFixtureDir(prepare, callback) {
     await callback(tempDir);
   } finally {
     cleanupPathWithDocker(tempDir);
-    await fs.remove(tempDir);
+    await fs.promises.rm(tempDir, { recursive: true, force: true });
   }
 }
 
@@ -255,7 +257,7 @@ describe("Runtime image", function () {
 
   for (const runtimeMode of runtimeModes) {
     it(`accepts an SSH connection in ${runtimeMode.label} mode`, async () => {
-      const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "megalinter-ssh-"));
+      const tempDir = await fs.promises.mkdtemp(path.join(os.tmpdir(), "megalinter-ssh-"));
       const containerName = `megalinter-ssh-${runtimeMode.id}-${Date.now()}`;
       const privateKey = path.join(tempDir, "id_rsa");
       const publicKey = path.join(tempDir, "id_rsa.pub");
@@ -356,11 +358,11 @@ describe("Runtime image", function () {
           );
         }
         assert.strictEqual(sshResult.stdout.trim(), runtimeMode.sshExpectedUid);
-        assert(await fs.pathExists(publicKey), "expected SSH public key to exist");
+        assert(fs.existsSync(publicKey), "expected SSH public key to exist");
       } finally {
         runCommand("docker", ["rm", "-f", containerName]);
         cleanupPathWithDocker(tempDir);
-        await fs.remove(tempDir);
+        await fs.promises.rm(tempDir, { recursive: true, force: true });
       }
     }).timeout(180000);
   }

@@ -19,22 +19,16 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: CPython",
 ]
 dependencies = [
-  "commentjson",
   "gitpython",
-  "importlib-metadata>=3.10; python_version < '3.9'",
   "jsonpickle",
   "langchain-core~=1.5.1",
-  "multiprocessing_logging",
   "pygithub",
   "pyjwt>=2.12.0",
   "pytablewriter",
   "python-gitlab",
   "pyyaml",
   "redis",
-  "regex",
   "requests",
-  "terminaltables",
-  "termcolor",
   "urllib3>=2.5.0",
 ]
 
