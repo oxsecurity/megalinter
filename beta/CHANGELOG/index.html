@@ -15634,6 +15634,22 @@
 </li>
 </ul>
 <ul>
+<li>Agent Skills<ul>
+<li><strong>megalinter-check</strong> now handles the commit MegaLinter pushes itself when the repository uses <code>APPLY_FIXES_MODE: commit</code><ul>
+<li>CI providers ignore pushes made with the CI token, so the branch used to stay stuck on the <strong>stale checks</strong> of the run that produced the fixes</li>
+<li>The commit is amended with a <strong>🤖</strong> prefix and re-pushed with <code>--force-with-lease</code>, which re-triggers the checks (you are asked first on the default branch)</li>
+<li>Nothing is amended when another commit landed after the auto-fix one, when it was already amended, or when you have local commits left to push — a normal push already re-triggers the checks in those cases</li>
+</ul>
+</li>
+<li><strong>megalinter-setup</strong> can now set up a <a href="https://megalinter.io/latest/custom-flavors/">custom flavor</a> repository on request, from creating the repository to publishing and maintaining the image<ul>
+<li>It first looks for a custom flavor <strong>you already own or administer</strong>, to reuse or extend it instead of maintaining a second one</li>
+</ul>
+</li>
+<li><strong>megalinter-setup</strong> in upgrade mode now also updates the <strong>installed skills and sub-agents</strong> (<code>npx skills update</code>), so the guidance you run matches the MegaLinter version you just upgraded to</li>
+</ul>
+</li>
+</ul>
+<ul>
 <li>Dev<ul>
 <li><strong>6 Python dependencies removed</strong> from the MegaLinter runtime, replaced by standard library equivalents: <code>commentjson</code>, <code>terminaltables</code> and <code>multiprocessing_logging</code> (unmaintained), plus <code>termcolor</code>, <code>regex</code> and the obsolete <code>importlib-metadata</code> backport</li>
 <li><strong>Shared linter definitions</strong>: linter entries duplicated across several descriptors (eslint, prettier, v8r, dotnet-format, cpplint, cppcheck, clang-format) are now factorized in <code>megalinter/descriptors/shared/*.megalinter-linter.yml</code> files, referenced from descriptors with the new linter-level <code>extends</code> property (shallow merge, descriptor entry properties override the shared ones)</li>
@@ -15655,6 +15671,7 @@
 <li>Linter versions upgrades (N)<ul>
 <li><a href="https://editorconfig-checker.github.io/">editorconfig-checker</a> from 3.10.0 to <strong>3.11.1</strong> on 2026-08-09</li>
 <li><a href="https://djlint.com/">djlint</a> from 1.44.1 to <strong>1.44.2</strong> on 2026-08-09</li>
+<li><a href="https://pylint.readthedocs.io">pylint</a> from 4.0.6 to <strong>4.0.7</strong> on 2026-08-10</li>
 </ul>
 </li>
 </ul>
