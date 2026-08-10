@@ -49,7 +49,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **megalinter-check** now handles the commit MegaLinter pushes itself when the repository uses `APPLY_FIXES_MODE: commit`
     - CI providers ignore pushes made with the CI token, so the branch used to stay stuck on the **stale checks** of the run that produced the fixes
     - The commit is amended with a **🤖** prefix and re-pushed with `--force-with-lease`, which re-triggers the checks (you are asked first on the default branch)
-    - Nothing is amended when another commit landed after the auto-fix one, when it was already amended, or when you have unpushed commits — a normal push already re-triggers the checks in those cases
+    - Nothing is amended when another commit landed after the auto-fix one, when it was already amended, or when you have local commits left to push — a normal push already re-triggers the checks in those cases
   - **megalinter-setup** can now set up a [custom flavor](https://megalinter.io/latest/custom-flavors/) repository on request, from creating the repository to publishing and maintaining the image
     - It first looks for a custom flavor **you already own or administer**, to reuse or extend it instead of maintaining a second one
   - **megalinter-setup** in upgrade mode now also updates the **installed skills and sub-agents** (`npx skills update`), so the guidance you run matches the MegaLinter version you just upgraded to
