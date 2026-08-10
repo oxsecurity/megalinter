@@ -15626,10 +15626,16 @@
 </li>
 </ul>
 <ul>
-<li>mega-linter-runner</li>
+<li>mega-linter-runner<ul>
+<li><strong>Node.js 22 or higher</strong> is now required (was 20)</li>
+<li><strong>8 npm dependencies removed</strong> (<code>chalk</code>, <code>fs-extra</code>, <code>which</code>, <code>uuid</code>, <code>find-package-json</code>, <code>simple-git</code>, <code>mem-fs</code>, <code>assert</code>), replaced by Node.js built-in modules: faster <code>npx mega-linter-runner</code> startup and a smaller supply-chain attack surface</li>
+<li>Fixed <code>mega-linter-runner --version</code> displaying <code>error</code> instead of the version when the <code>npm_package_version</code> environment variable is not set</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Dev<ul>
+<li><strong>6 Python dependencies removed</strong> from the MegaLinter runtime, replaced by standard library equivalents: <code>commentjson</code>, <code>terminaltables</code> and <code>multiprocessing_logging</code> (unmaintained), plus <code>termcolor</code>, <code>regex</code> and the obsolete <code>importlib-metadata</code> backport</li>
 <li><strong>Shared linter definitions</strong>: linter entries duplicated across several descriptors (eslint, prettier, v8r, dotnet-format, cpplint, cppcheck, clang-format) are now factorized in <code>megalinter/descriptors/shared/*.megalinter-linter.yml</code> files, referenced from descriptors with the new linter-level <code>extends</code> property (shallow merge, descriptor entry properties override the shared ones)</li>
 <li><strong>Docker pulls monthly chart</strong>: the auto-update workflow now regenerates <code>docs/assets/images/docker-pulls-monthly.svg</code> (new pulls per month since October 2020, all images and registries), via the new <code>.automation/docker_pulls_chart.py</code> called by <code>build.py</code> after the pull counters update<ul>
 <li>Historical monthly points are frozen in <code>.automation/generated/docker-pulls-monthly.json</code> (built once from the tracked stats plus a Web Archive reconstruction of the collection gaps); the script only appends newly completed months computed from <code>flavors-stats.json</code></li>
@@ -15640,7 +15646,10 @@
 </li>
 </ul>
 <ul>
-<li>CI</li>
+<li>CI<ul>
+<li><strong>Supply-chain hardening of dependency updates</strong>: Renovate (<code>minimumReleaseAge</code>) and Dependabot (<code>cooldown</code>) now wait until a release is at least <strong>7 days old</strong> before proposing an upgrade, so compromised releases can be caught by the community first. Security fixes are not delayed and still open immediately</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Linter versions upgrades (N)<ul>
