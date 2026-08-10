@@ -16,6 +16,15 @@ With **another coding agent**, replace `claude-code` with your agent's identifie
 npx skills add oxsecurity/megalinter/skills -s '*' -y --copy
 ```
 
+To update already installed skills to the latest version:
+
+```bash
+npx skills update megalinter megalinter-setup megalinter-check megalinter-fix -y
+```
+
+`megalinter-setup` runs this for you in upgrade mode, and also refreshes the sub-agent definitions it installed —
+those live in your agents folder and are not touched by `skills update`.
+
 ## Skills
 
 | Skill                                         | Purpose                                                                                                                                                                                                 |
