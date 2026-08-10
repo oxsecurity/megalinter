@@ -31,6 +31,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linters enhancements
 
 - Fixes
+  - Fix sporadic `ENOENT` crashes when `COPYPASTE_JSCPD` and `REPOSITORY_SECRETLINT` run in parallel: jscpd now writes its report to a temporary folder outside the linted workspace, and MegaLinter no longer deletes report files while other linters are still scanning them, fixes [#3979](https://github.com/oxsecurity/megalinter/issues/3979). As jscpd no longer removes its report at the end of a clean run, a copy-paste report left by a previous run is now removed when jscpd starts, so the report folder never mixes results from two runs
+  - Fix `REPOSITORY_SECRETLINT` silently narrowing its scan when `REPOSITORY_SECRETLINT_ARGUMENTS` names a `--secretlintignore` file that does not exist: MegaLinter no longer falls back to `.secretlintignore` or `.gitignore` in its place, as those patterns often exclude the very files a secrets scanner must inspect
+  - Fix the `copy-paste` report folder being created unreadable to non-root users (such as a later artifact-upload step), as it inherited the private permissions of the temporary folder jscpd writes to
+  - Stop `REPOSITORY_SECRETLINT` from scanning MegaLinter's own report folder, which could raise false positives on secrets echoed into other linters' reports, using an ignore file generated inside the report folder so nothing is ever written to or deleted from the linted sources. `EXCLUDED_DIRECTORIES` forwarding now goes through that same file, so secretlint no longer receives two `--secretlintignore` arguments (it keeps only the last) and no `.megalinter-secretlintignore` is written to the root of the linted repository
+  - Always exclude `REPORT_OUTPUT_FOLDER` from linted directories, even when `EXCLUDED_DIRECTORIES` is overridden
+  - Report a linter that crashes before producing SARIF output as a failure showing its raw output, instead of a spurious single finding accompanied by a SARIF parsing error
+  - Stop reporting a linter that exits without parsable SARIF output as a clean success: its results could not be counted, so it is now reported as a warning rather than as zero findings. Applies to linters declaring `can_output_sarif` when SARIF output is enabled, including security scanners such as `REPOSITORY_SECRETLINT`, `REPOSITORY_SEMGREP` and `REPOSITORY_TRIVY`
+  - Fix `REPOSITORY_SECRETLINT` ignoring a `.secretlintignore` located in `LINTER_RULES_PATH` (e.g. the default `.github/linters`): only its base name was passed, so secretlint resolved it from the workspace root and applied either no patterns at all or those of a different file with the same name
+  - Keep applying `REPOSITORY_SECRETLINT` ignore patterns when `REPORT_OUTPUT_FOLDER` is disabled, by generating the merged ignore file in a temporary folder outside the linted sources instead of giving up on it
 
 - Reporters
 

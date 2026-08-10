@@ -651,6 +651,15 @@ linters:
       - **Team Collaboration**: Shared configuration files ensure consistent secret detection across development teams
       - **Performance Optimized**: Fast scanning suitable for large repositories and automated workflows
       - **Open Source**: Community-driven with transparent detection rules and continuous updates
+
+      **Ignore patterns in MegaLinter:**
+
+      MegaLinter does not pass your ignore file to secretlint directly. It generates a `.secretlintignore-megalinter` file inside **REPORT_OUTPUT_FOLDER** and passes that instead, because secretlint applies only one ignore file.
+
+      - The generated file merges the patterns of your own ignore file: the one named by `REPOSITORY_SECRETLINT_ARGUMENTS: --secretlintignore <file>` if you set it, otherwise your `.secretlintignore`, otherwise your `.gitignore`. Your file is honored wherever it lives, including in **LINTER_RULES_PATH**.
+      - MegaLinter's own report folder is appended last, so it is always excluded. Ignore rules are last match wins, so this cannot be undone by a negation pattern in your own file.
+      - Your **EXCLUDED_DIRECTORIES** are merged in as well, like for every other project mode linter, but only the ones that exist at the root of your repository. Set `REPOSITORY_SECRETLINT_FORWARD_EXCLUDED_DIRECTORIES: false` to keep them scanned: build artifacts such as `.terraform` or `.terragrunt-cache` can contain real credentials baked in at generation time.
+      - When **REPORT_OUTPUT_FOLDER** is disabled, the generated file is written to a temporary folder outside your sources instead, so your patterns still apply.
     linter_url: https://github.com/secretlint/secretlint
     linter_repo: https://github.com/secretlint/secretlint
     linter_banner_image_url: https://github.com/secretlint/secretlint/raw/master/docs/assets/SecretLintLP.png
@@ -670,17 +679,16 @@ linters:
       - project
     cli_lint_extra_args_after:
       # secretlint v13 introduced a ripgrep-based file walker that respects
-      # .gitignore by default. --no-gitignore keeps the v12 scan breadth (scan
-      # everything, filter only via .secretlintignore). The .secretlintignore
-      # itself (which excludes .automation/test fixtures containing intentional
-      # fake secrets) is applied via SecretLintLinter.get_ignore_arguments,
-      # which passes it by base name because the v13 walker matches ignore
-      # files by base name and drops an absolute path.
+      # .gitignore by default. --no-gitignore keeps the v12 scan breadth: scan
+      # everything, filter only via the ignore file MegaLinter generates in
+      # SecretLintLinter.build_megalinter_ignore_file.
       # See https://github.com/secretlint/secretlint/releases (v13)
       - "--no-gitignore"
-    cli_lint_mode_project_exclude_ignore_file_arg_name: "--secretlintignore"
-    cli_lint_mode_project_exclude_ignore_file_seed_files: [".secretlintignore", ".gitignore"]
-    cli_lint_mode_project_exclude_workspace_file_name: ".megalinter-secretlintignore"
+    # The generic ignore-file forwarding is deliberately not declared here: it
+    # would write a .megalinter-secretlintignore at the workspace root and pass a
+    # second --secretlintignore, of which secretlint keeps only the last.
+    # SecretLintLinter.build_megalinter_ignore_file merges the excluded
+    # directories into the file it generates in the report folder instead.
     cli_lint_mode_project_extra_args_after:
       - "**/*"
     cli_sarif_args:

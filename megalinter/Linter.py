@@ -72,6 +72,9 @@ class Linter:
         self.linter_speed = 3
         self.can_output_sarif = False
         self.output_sarif = False
+        # Sticky flag: set when SARIF output could not be parsed, so a linter that
+        # exits 0 with unparsable SARIF is not reported as clean (see get_sarif_result_count)
+        self.sarif_parse_failed = False
         # ex: https://eslint.org/
         self.linter_url = (
             "Field 'linter_url' must be overridden at custom linter class level"
@@ -1013,6 +1016,18 @@ class Linter:
             # Build result for list of files
             if self.cli_lint_mode == "list_of_files":
                 self.update_files_lint_results(self.files, None, None, None, None, None)
+
+        # A linter that exited without parsable SARIF has not been measured, so
+        # counting zero results would report it as clean. Every reporter still shows
+        # it with zero errors and zero warnings, hence the log: the status alone
+        # cannot tell an operator that the results are missing rather than empty.
+        if self.status == "success" and self.sarif_parse_failed is True:
+            self.status = "warning"
+            logging.warning(
+                f"[{self.linter_name}] results could not be counted, as its SARIF "
+                "output was not parsable: reporting this linter as a warning rather "
+                "than as a clean success"
+            )
 
         # Set return code to 0 if failures in this linter must not make the MegaLinter run fail
         if self.return_code != 0:
@@ -2109,8 +2124,20 @@ class Linter:
                     sarif_output = yaml.safe_load(sarif_file)
                     # SARIF is in stdout
             else:
-                # SARIF is in stdout
-                sarif_output = yaml.safe_load(stdout)
+                # SARIF is in stdout. Require it to actually have SARIF shape:
+                # find_json_in_stdout returns "" unless the payload parses as JSON
+                # containing a "runs" key. A linter that crashed before producing
+                # SARIF leaves a stack trace here, which must surface as a failure
+                # rather than be parsed as results
+                sarif_stdout = utils.find_json_in_stdout(stdout)
+                if sarif_stdout == "":
+                    logging.error(
+                        f"[{self.linter_name}] exited without producing parsable SARIF "
+                        f"output while counting {level}s.\nLinter output: {stdout}"
+                    )
+                    self.sarif_parse_failed = True
+                    return 0
+                sarif_output = json.loads(sarif_stdout)
 
             for run in sarif_output["runs"]:
                 rule_default_level_map = {}
@@ -2153,14 +2180,15 @@ class Linter:
 
             return total_result
         except Exception as e:
-            total_result = 1
+            # Return 0 rather than inventing a finding: get_total_number_errors
+            # already reports 1 error for any non-success linter, so a broken linter
+            # still fails the run without being attributed a phantom result
             logging.error(
-                f"Error while getting total {level}s from SARIF output.\nError:"
-                + str(e)
-                + "\nstdout: "
-                + stdout
+                f"[{self.linter_name}] unable to compute total {level}s from SARIF "
+                f"output.\nError: {str(e)}\nLinter output: {stdout}"
             )
-            return total_result
+            self.sarif_parse_failed = True
+            return 0
 
     # Build the CLI command to get linter version (can be overridden if --version is not the way to get the version)
     def build_version_command(self):
