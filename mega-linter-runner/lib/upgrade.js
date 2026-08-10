@@ -1,7 +1,7 @@
 import { glob } from "glob";
-import { default as fs } from "fs-extra";
+import { default as fs } from "fs";
 import * as path from "path";
-import { default as c } from 'chalk';
+import { default as c } from "./colors.js";
 import prompts from "prompts";
 import { OXSecuritySetup } from "./ox-setup.js";
 import { asciiArt } from "./ascii.js";
@@ -679,7 +679,7 @@ jobs:
     let updatedFiles = 0;
     for (const file of allFiles) {
       console.log(c.grey("Processing file " + file));
-      const initialFileContent = await fs.readFile(file, "utf8");
+      const initialFileContent = await fs.promises.readFile(file, "utf8");
       let updatedFileContent = initialFileContent.slice();
       for (const replacementItem of this.replacements) {
         const newFileContent = updatedFileContent.replace(
@@ -695,7 +695,7 @@ jobs:
         }
       }
       if (updatedFileContent !== initialFileContent) {
-        await fs.writeFile(file, updatedFileContent);
+        await fs.promises.writeFile(file, updatedFileContent);
         console.log(c.cyan(`UPDATED: ${file}`));
         updatedFiles++;
       }

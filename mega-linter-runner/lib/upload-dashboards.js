@@ -6,7 +6,7 @@
  * MEGALINTER_DASHBOARDS_DIR is defined).
  */
 
-import fs from "fs-extra";
+import fs from "fs";
 import path from "path";
 
 const DASHBOARDS_BASE_URL =
@@ -53,7 +53,7 @@ export class DashboardUploader {
   async readDashboardFile(relativePath) {
     const localDir = this.env.MEGALINTER_DASHBOARDS_DIR;
     if (localDir) {
-      return await fs.readFile(path.join(localDir, relativePath), "utf8");
+      return await fs.promises.readFile(path.join(localDir, relativePath), "utf8");
     }
     const response = await fetch(`${DASHBOARDS_BASE_URL}/${relativePath}`);
     if (!response.ok) {

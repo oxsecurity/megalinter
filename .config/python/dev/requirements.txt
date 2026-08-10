@@ -2,11 +2,9 @@
 aiofiles==25.1.0
 aiohttp==3.14.3
 beautifulsoup4==4.15.0
-commentjson==0.9.0
 fastapi==0.141.1
 gitpython==3.1.58
 giturlparse==0.15.0
-importlib-metadata==9.0.0
 json-schema-for-humans==1.5.1
 jsonpickle==4.1.2
 jsonschema==4.26.0
@@ -16,7 +14,6 @@ mike==2.2.0
 mkdocs==1.6.1
 mkdocs-glightbox==0.5.2
 mkdocs-material==9.7.7
-multiprocessing_logging==0.3.4
 pygithub==2.9.1
 pymdown-extensions==11.0.1
 pytablewriter==1.2.1
@@ -28,10 +25,7 @@ python-gitlab==8.5.0
 python-multipart==0.0.32
 pyyaml==6.0.3
 redis==8.1.0
-regex==2026.7.19
 requests==2.34.2
-terminaltables==3.1.10
-termcolor==3.3.0
 urllib3==2.7.0
 webpreview==1.7.2
 yq==4.1.2

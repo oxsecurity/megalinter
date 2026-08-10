@@ -1,4 +1,4 @@
-import { default as fs } from "fs-extra";
+import { default as fs } from "fs";
 import * as path from "path";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
@@ -14,7 +14,7 @@ function loadVars() {
       `Bundled variables file not found at ${VARS_FILE}. Re-run \`make megalinter-build\` to regenerate it.`,
     );
   }
-  return fs.readJsonSync(VARS_FILE);
+  return JSON.parse(fs.readFileSync(VARS_FILE, "utf8"));
 }
 
 function matches(variable, pattern) {
