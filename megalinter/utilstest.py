@@ -638,9 +638,13 @@ def test_linter_report_sarif(linter, test_self):
         ):
             # https://github.com/gitleaks/gitleaks/issues/1858
             # betterleaks is a gitleaks fork and inherits the same SARIF
-            # behavior (findings are reported at "warning" level, not "error")
+            # behavior (findings are reported at "warning" level, not "error").
+            # osv-scanner and the Salesforce Code Analyzer eslint (aura) engine
+            # report all their SARIF findings at "warning" level too
             if linter.name not in [
                 "REPOSITORY_BETTERLEAKS",
+                "REPOSITORY_OSV_SCANNER",
+                "SALESFORCE_CODE_ANALYZER_AURA",
             ]:  # does not report errors
                 test_self.assertTrue(
                     linter.total_number_errors > 1,

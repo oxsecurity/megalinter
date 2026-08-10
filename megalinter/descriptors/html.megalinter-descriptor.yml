@@ -104,6 +104,7 @@ linters:
     cli_sarif_args:
       - "--format"
       - "sarif"
+    sarif_default_output_file: "htmlhint.sarif"
     examples:
       - "htmlhint myfile.html"
       - "htmlhint --config .htmlhintrc myfile.html"
