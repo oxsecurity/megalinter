@@ -129,7 +129,7 @@ class Linter:
         self.sarif_output_file = None
         self.sarif_default_output_file = None
         self.no_config_if_fix = False
-        self.cli_lint_extra_args = []  # Extra arguments to send to cli everytime
+        self.cli_lint_extra_args = []  # Extra arguments to send to cli every time
         self.cli_command_remove_args = (
             []
         )  # Arguments to remove in case fix argument is sent
@@ -141,7 +141,7 @@ class Linter:
         self.cli_lint_user_args = (
             []
         )  # Arguments from config, defined in <LINTER_KEY>_ARGUMENTS variable
-        # Extra arguments to send to cli everytime, just before file argument
+        # Extra arguments to send to cli every time, just before file argument
         self.cli_lint_extra_args_after = []
         self.cli_lint_mode_file_extra_args_after = []
         self.cli_lint_mode_list_of_files_extra_args_after = []
@@ -176,9 +176,9 @@ class Linter:
         self.common_linter_errors = []
         # Default arg name for configurations to use in linter version call
         self.cli_version_arg_name = "--version"
-        self.cli_version_extra_args = []  # Extra arguments to send to cli everytime
+        self.cli_version_extra_args = []  # Extra arguments to send to cli every time
         self.cli_help_arg_name = "-h"
-        self.cli_help_extra_args = []  # Extra arguments to send to cli everytime
+        self.cli_help_extra_args = []  # Extra arguments to send to cli every time
         self.cli_help_extra_commands = []
         # If linter --help doesn't return 0 when it's in success, override. ex: 1
         self.help_command_return_code = 0

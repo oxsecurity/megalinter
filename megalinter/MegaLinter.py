@@ -412,7 +412,7 @@ class Megalinter:
         # Generate reports
         for reporter in self.reporters:
             reporter.produce_report()
-        # Process commmands before closing MegaLinter
+        # Process commands before closing MegaLinter
         self.before_exit()
         # Manage return code
         self.check_results()

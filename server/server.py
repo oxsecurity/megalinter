@@ -70,7 +70,7 @@ else:
     status_code=status.HTTP_201_CREATED,
     summary="Requests a new analysis using repository url or snippet",
     description="""If the analysis initialization is successful, an id will be returned.
-    If webHookUrl is provided, everytime a linter will be completed, the result will be sent to this HTTP webhook
+    If webHookUrl is provided, every time a linter will be completed, the result will be sent to this HTTP webhook
     """,
 )
 async def request_analysis(

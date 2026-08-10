@@ -28,7 +28,7 @@ disables security scanning, so failures are generation problems, not vulnerabili
 it fails:
 
 - Read the Trivy error message in the log first; it names the file or subsystem that broke.
-- Fix or regenerate any corrupt/unparseable lockfile or manifest it points at (for example
+- Fix or regenerate any corrupt/unparsable lockfile or manifest it points at (for example
   re-run the package manager to rebuild `package-lock.json`, `poetry.lock`, `go.sum`...).
 - Exclude vendored or third-party trees Trivy cannot parse with `scan.skip-dirs` /
   `scan.skip-files` (see below) instead of deleting them.

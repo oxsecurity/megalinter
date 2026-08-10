@@ -119,6 +119,10 @@ extra-dependencies = ["mypy>=1.0.0"]
 [tool.hatch.envs.types.scripts]
 check = "mypy --install-types --non-interactive {args:megalinter}"
 
+[tool.codespell]
+ignore-words-list = "astroid,developper,edn,errorprone,lama,lication,shepard,thirdparty,valu"
+skip = "./docs/descriptors/*,./docs/licenses/*,*.css,*.lock,*/spell_codespell.md"
+
 [tool.coverage.run]
 source_pkgs = ["megalinter"]
 branch = false
