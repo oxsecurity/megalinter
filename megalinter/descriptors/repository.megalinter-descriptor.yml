@@ -540,7 +540,7 @@ linters:
   - class: OsvScannerLinter
     linter_name: osv-scanner
     name: REPOSITORY_OSV_SCANNER
-    can_output_sarif: false # disabled until it works !
+    can_output_sarif: true
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
       - ci_light
@@ -1087,6 +1087,7 @@ linters:
   # TRUFFLEHOG
   - class: TruffleHogLinter
     linter_name: trufflehog
+    can_output_sarif: true
     linter_text: |
       **TruffleHog** is an advanced secrets scanner that searches through git repositories, files, and other sources to find secrets, passwords, API keys, and other sensitive information that may have been accidentally committed to code. It combines pattern matching, entropy analysis, and verification capabilities to provide comprehensive secret detection.
 
@@ -1129,6 +1130,8 @@ linters:
       - .
     cli_help_arg_name: --help
     cli_version_arg_name: --version
+    cli_sarif_args:
+      - "--sarif"
     examples:
       - "trufflehog filesystem ."
     install:

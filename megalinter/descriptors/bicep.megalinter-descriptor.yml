@@ -12,6 +12,11 @@ linters:
     cli_lint_errors_regex: " : Error "
     cli_lint_extra_args:
       - "build"
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--stdout"
+      - "--diagnostics-format"
+      - "Sarif"
     cli_version_arg_name: --version
     cli_lint_mode: file
     supported_cli_lint_modes:

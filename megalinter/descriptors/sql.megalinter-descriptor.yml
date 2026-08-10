@@ -46,6 +46,10 @@ linters:
     cli_lint_errors_regex: "L:(.*)P:(.*)"
     cli_lint_extra_args:
       - lint
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--format"
+      - "sarif"
     cli_config_arg_name: "--config"
     cli_help_arg_name: "--help"
     cli_version_arg_name: "--version"

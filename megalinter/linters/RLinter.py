@@ -19,13 +19,26 @@ class RLinter(Linter):
             # Instruct lintr to walk up the directory tree
             f"lintr:::read_settings('{self.config_file_name}')",
             f"lints <- lintr::lint('{Path(file).name}')",
-            "print(lints)",
-            "quit(save = 'no', status = if (length(lints) > 0) 1 else 0)",
         ]
 
         if self.config_file:
             # Instruct lintr to load an absolute filepath
             r_commands.insert(0, f"options('lintr.linter_file' = '{self.config_file}')")
+
+        # RLinter builds its own R -e command instead of going through
+        # complete_command_line(), so it bypasses the standard SARIF argument
+        # injection (get_sarif_arguments() is called here for its side effect
+        # of resolving self.sarif_output_file, not for its cli_sarif_args return)
+        if self.can_output_sarif is True and self.output_sarif is True:
+            self.get_sarif_arguments()
+            r_commands.append(
+                f"lintr::sarif_output(lints, filename = '{self.sarif_output_file}')"
+            )
+
+        r_commands += [
+            "print(lints)",
+            "quit(save = 'no', status = if (length(lints) > 0) 1 else 0)",
+        ]
 
         # Build shell command
         cmd = ["R", "--slave", "-e", ";".join(r_commands)]

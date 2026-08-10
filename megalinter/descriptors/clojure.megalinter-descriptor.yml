@@ -43,6 +43,10 @@ linters:
     cli_config_arg_name: "--config"
     cli_lint_extra_args_after:
       - "--lint"
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--config"
+      - "{:output {:format :sarif}}"
     cli_lint_mode_project_extra_args_after:
       - .
     common_linter_errors:

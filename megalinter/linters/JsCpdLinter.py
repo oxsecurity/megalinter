@@ -19,6 +19,18 @@ class JsCpdLinter(Linter):
                 "--output",
                 f"{self.report_folder}/copy-paste/",
             ]
+        # jscpd's sarif reporter is a value within the single comma-joined
+        # --reporters string, not a standalone CLI flag: append it here
+        # rather than through cli_sarif_args, which would need a second
+        # --reporters occurrence that may not merge with the first.
+        # jscpd writes it to <output>/jscpd-sarif.json, picked up afterwards
+        # via sarif_default_output_file.
+        if self.can_output_sarif is True and self.output_sarif is True:
+            self.cli_lint_extra_args = [
+                item.replace("console,html", "console,html,sarif")
+                for item in self.cli_lint_extra_args
+            ]
+            self.sarif_default_output_file = "copy-paste/jscpd-sarif.json"
         cmd = super().build_lint_command(file)
         # Do not use Jscpd HTML reporter if deactivated
         if not utils.can_write_report_files(self.master):
