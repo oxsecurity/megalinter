@@ -83,6 +83,50 @@ linters:
       ```
 
       To add a single package with pnpm instead of installing the full tree, run `corepack enable pnpm` first, then `pnpm add --ignore-workspace --no-save <package>`.
+
+      ### Security linting with ESLint
+
+      The feature list above refers to security analysis "with security plugins". MegaLinter
+      does not bundle one: the ESLint plugins pre-installed in the image are
+      `eslint-plugin-import-x`, `-jest`, `-n`, `-prettier`, `-promise` and `-vue`. Referencing a
+      security plugin in your config without installing it first fails with
+      `Cannot find module 'eslint-plugin-...'`.
+
+      Install it into MegaLinter's npm root with a pre-command:
+
+      ```yaml
+      TYPESCRIPT_ES_PRE_COMMANDS:
+        - command: npm install eslint-plugin-security
+          cwd: root
+          continue_if_failed: false
+      ```
+
+      A bare `import` will not resolve from `/node-deps/node_modules`, for the reason described
+      in the previous section, so reference the plugin through `createRequire`:
+
+      ```js
+      import { createRequire } from 'module';
+      const require = createRequire(import.meta.url);
+      const security = require('eslint-plugin-security');
+
+      export default [
+        security.configs.recommended,
+      ];
+      ```
+
+      Plugins commonly used for this, all MIT-licensed:
+
+      | Plugin | Focus |
+      | --- | --- |
+      | [eslint-plugin-security](https://github.com/eslint-community/eslint-plugin-security) | Node.js injection and unsafe-API heuristics |
+      | [eslint-plugin-no-unsanitized](https://github.com/mozilla/eslint-plugin-no-unsanitized) | DOM XSS sinks such as `innerHTML` and `insertAdjacentHTML` |
+      | [@microsoft/eslint-plugin-sdl](https://github.com/microsoft/eslint-plugin-sdl) | Microsoft SDL rules for web code |
+      | [eslint-plugin-secure-coding](https://github.com/ofri-peretz/eslint) | Injection, sanitization and secret-handling patterns |
+      | [eslint-plugin-node-security](https://github.com/ofri-peretz/eslint) | Node runtime surface: `child_process`, `fs`, TLS |
+
+      If your project already lists a security plugin in its own `devDependencies`, installing
+      the project tree and running the workspace ESLint binary (workaround 2 above) is simpler:
+      your existing config then works unchanged.
     linter_url: https://typescript-eslint.io/
     linter_repo: https://github.com/typescript-eslint/typescript-eslint
     linter_rules_url: https://typescript-eslint.io/rules/
