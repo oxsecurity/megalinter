@@ -18,12 +18,12 @@ npx skills add oxsecurity/megalinter/skills -s '*' -y --copy
 
 ## Skills
 
-| Skill                                         | Purpose                                                                                                                                                                          |
-|:----------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [megalinter](megalinter/SKILL.md)             | Entry point: detects the repository state and orchestrates setup, check and fix in a loop until the repository is clean                                                          |
-| [megalinter-setup](megalinter-setup/SKILL.md) | Install or upgrade MegaLinter on a repository with `npx mega-linter-runner --install` / `--upgrade`                                                                              |
-| [megalinter-check](megalinter-check/SKILL.md) | Collect lint errors: watch a running CI job (GitHub, GitLab, Azure, Bitbucket) or run MegaLinter locally with docker or podman (offering to install/start the engine if missing) |
-| [megalinter-fix](megalinter-fix/SKILL.md)     | Fix the collected errors using per-linter fix guides, or disable rules/linters when fixing is not relevant                                                                       |
+| Skill                                         | Purpose                                                                                                                                                                                                 |
+|:----------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [megalinter](megalinter/SKILL.md)             | Entry point: detects the repository state and orchestrates setup, check and fix in a loop until the repository is clean                                                                                 |
+| [megalinter-setup](megalinter-setup/SKILL.md) | Install or upgrade MegaLinter on a repository with `npx mega-linter-runner --install` / `--upgrade`, and scaffold a [custom flavor](https://megalinter.io/latest/custom-flavors/) repository on request |
+| [megalinter-check](megalinter-check/SKILL.md) | Collect lint errors: watch a running CI job (GitHub, GitLab, Azure, Bitbucket) or run MegaLinter locally with docker or podman (offering to install/start the engine if missing)                        |
+| [megalinter-fix](megalinter-fix/SKILL.md)     | Fix the collected errors using per-linter fix guides, or disable rules/linters when fixing is not relevant                                                                                              |
 
 ## Sub-agents optimization
 
@@ -40,11 +40,22 @@ On agents without sub-agent support, every skill degrades gracefully to inline e
 
 `megalinter-check` always collects per-linter elapsed times: when a linter is unusually slow (over 30 seconds or 25% of the run), it reports speed improvement suggestions from its `performance.md` playbook (DB caching for security scanners, targeted exclusions, flavor selection, diff-only CI linting...) — even when nothing is failing. Suggestions are never applied without user agreement.
 
+## Custom flavors
+
+`megalinter-setup` can also scaffold and maintain a [custom flavor](https://megalinter.io/latest/custom-flavors/)
+repository — your own MegaLinter image containing only the linters you need, so runs start faster.
+Ask for it explicitly ("create a custom flavor") and the skill loads its `custom-flavor.md` guide, which first looks
+for a flavor you already own or administer (reusing or extending one beats maintaining two), then creates the
+repository and runs the generator. It also covers publishing (including the optional, and deliberately not required,
+`PAT_TOKEN`), AGPL-3.0 obligations, consuming the published image, and keeping the flavor in sync with new
+MegaLinter releases.
+
 ## Safety rules
 
 - Fixes are applied automatically only when safe; ambiguous cases are asked to the user
 - Disabling a linter or a rule always requires user confirmation
 - Commits are never pushed to the default branch (`main`/`master`)
+- Force-push is never used, with a single exception: when the MegaLinter CI job pushed its own `[MegaLinter] Apply linters fixes` commit, `megalinter-check` amends it with a 🤖 prefix and re-pushes it with `--force-with-lease`, which re-triggers the CI checks that a token-authored push does not trigger (on the default branch, the user is asked first)
 
 ## Maintenance
 

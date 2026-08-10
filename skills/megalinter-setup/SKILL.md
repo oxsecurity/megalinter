@@ -1,7 +1,7 @@
 ---
 name: megalinter-setup
-description: Install or upgrade MegaLinter on a repository. Use when the user wants to add MegaLinter to a project, set up linting CI, update MegaLinter configuration or version, or says "install megalinter", "setup linting", "add code quality checks". Always goes through npx mega-linter-runner (--install or --upgrade), then refines .mega-linter.yml.
-argument-hint: "[install|upgrade] [flavor, e.g. python|javascript|all]"
+description: Install or upgrade MegaLinter on a repository. Use when the user wants to add MegaLinter to a project, set up linting CI, update MegaLinter configuration or version, or says "install megalinter", "setup linting", "add code quality checks". Always goes through npx mega-linter-runner (--install or --upgrade), then refines .mega-linter.yml. Also sets up a MegaLinter custom flavor repository when the user explicitly asks for one.
+argument-hint: "[install|upgrade|custom-flavor] [flavor, e.g. python|javascript|all]"
 allowed-tools: Bash, Read, Grep, Glob, Edit, Write, WebFetch, Skill, AskUserQuestion
 user-invocable: true
 licence: MegaLinter by OX Security, Copyright 2026 - https://megalinter.io/
@@ -10,6 +10,8 @@ licence: MegaLinter by OX Security, Copyright 2026 - https://megalinter.io/
 # MegaLinter setup
 
 Install or upgrade MegaLinter on the current repository. **Always use `npx mega-linter-runner` to scaffold or upgrade the configuration — never write `.mega-linter.yml` or CI workflow files from scratch.** Only refine the generated files afterwards.
+
+**Custom flavor repositories**: if — and only if — the user explicitly asks to create or maintain a **custom MegaLinter flavor** (their own image with just the linters they need, published from a dedicated `megalinter-custom-flavor-*` repository), this is a different job from the install flow below: load `custom-flavor.md` from this skill's directory and follow it instead. Everything else on this page targets a project that *consumes* MegaLinter.
 
 ## 1. Analyze the repository
 

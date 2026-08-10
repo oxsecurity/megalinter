@@ -27,10 +27,54 @@ Collect the current MegaLinter errors and produce a compact error list that the 
    - Bitbucket Pipelines → `providers/bitbucket.md`
 3. Follow the guide: locate the MegaLinter job, wait for completion if running, fetch the logs of the MegaLinter step.
 4. Parse the MegaLinter summary (the `❌`/`✅` table) and per-linter error sections.
+5. Check whether MegaLinter pushed its own fixes onto the branch (see below).
+
+### MegaLinter auto-fix commits
+
+A repository using `APPLY_FIXES` with `APPLY_FIXES_MODE: commit` lets the MegaLinter job **push its fixes back onto the watched branch**, as a commit whose subject is `[MegaLinter] Apply linters fixes` (the `commit_message` of the CI templates — adapt the pattern below if the repository customized it). This has two consequences:
+
+- Your local branch is behind, so any later work must start by pulling.
+- **The checks are not re-run.** CI providers deliberately ignore pushes made with the CI token to prevent workflow loops, so the branch keeps the now-stale results of the run that produced the fixes — commonly leaving the PR stuck on pending or failed checks that the fixes have already resolved.
+
+Re-pushing that same commit under the user's own credentials produces a genuine push event and re-triggers the checks. Amending its message with a 🤖 prefix does exactly that, while making the re-push visible in the history. **This is the only situation in which these skills may force-push**, and only ever with `--force-with-lease`.
+
+Detection is pure git, so it works identically on GitHub, GitLab, Azure and Bitbucket:
+
+```bash
+BRANCH="$(git branch --show-current)"
+git fetch origin "$BRANCH"
+
+TIP_SUBJECT="$(git log -1 --format='%s' "origin/$BRANCH")"          # tip commit of the remote branch
+LOCAL_AHEAD="$(git rev-list --count "origin/$BRANCH..HEAD")"        # local commits not pushed yet
+```
+
+Amend **only when all of these hold** — otherwise do nothing and simply report what you saw:
+
+- `TIP_SUBJECT` is the auto-fix subject. If other commits landed **after** it, do nothing: those pushes already re-triggered the checks.
+- `TIP_SUBJECT` does not already start with 🤖 — it was amended by a previous pass, and re-amending would loop.
+- `LOCAL_AHEAD` is `0`. If you have local commits, just push them normally: that re-triggers the checks by itself and no amend is needed.
+- The working tree is clean (`git status --porcelain` is empty), otherwise the fast-forward below fails — commit or stash first.
+- The branch is **not** the default branch. On `main`/`master`, ask the user before amending and force-pushing.
+
+```bash
+git merge --ff-only "origin/$BRANCH"                     # fast-forward onto the auto-fix commit
+git commit --amend -m "🤖 $(git log -1 --format='%B')"   # keeps the original author, changes the SHA
+git push --force-with-lease origin "$BRANCH"             # never --force
+```
+
+Name the remote and branch explicitly on the push: a bare `git push --force-with-lease` fails on branches that have no upstream tracking configured. The lease is checked against the `origin/<branch>` ref you refreshed in the detection step, so the push is refused if anything landed meanwhile.
+
+Then tell the user the commit was amended and the checks re-triggered, and resume watching the new run. If `--force-with-lease` is rejected, the remote moved after your fetch: re-run the detection from the start instead of retrying with `--force`.
 
 ## Local mode
 
-Before the first local run, make sure the user is aware that running MegaLinter locally is **resource-consuming**: it needs a reasonably powerful machine (CPU, RAM, free disk space) and a good internet connection — MegaLinter is Docker-based and the first run downloads a large image (can be several GB depending on the flavor). Because of this, **watch mode (CI does the work) is usually the recommended option**. When both modes are possible (a MegaLinter CI job exists for the repository, or a branch/PR could be pushed to trigger one) and the user did not explicitly choose, **ask them** which mode to use (use your platform's structured question mechanism if it has one, with watch mode first/recommended) instead of starting a local run.
+Before the first local run, make sure the user is aware that running MegaLinter locally is **resource-consuming**:
+it needs a reasonably powerful machine (CPU, RAM, free disk space) and a good internet connection — MegaLinter is
+Docker-based and the first run downloads a large image (can be several GB depending on the flavor).
+Because of this, **watch mode (CI does the work) is usually the recommended option**.
+When both modes are possible (a MegaLinter CI job exists for the repository, or a branch/PR could be pushed to
+trigger one) and the user did not explicitly choose, **ask them** which mode to use (use your platform's structured
+question mechanism if it has one, with watch mode first/recommended) instead of starting a local run.
 
 ### Engine preflight (before every local run)
 
@@ -58,7 +102,12 @@ Tip: for repeated local runs (e.g. fix → re-check loops), install the runner o
 - **Cap parallelism on local machines**: MegaLinter defaults to one parallel linter process per CPU core, which can saturate a dev machine where Docker shares resources with everything else. When running on a local computer — not in CI (no `CI`/`GITHUB_ACTIONS`/`GITLAB_CI`-style environment variable set) — add `-e PARALLEL_PROCESS_NUMBER=4` to full runs (use the machine's core count instead if it has fewer than 4). Skip this when the repository configuration already sets `PARALLEL_PROCESS_NUMBER`; never write it into `.mega-linter.yml`, where it would also slow down CI.
 - **Always add `-e JSON_REPORTER=true`** to full runs: the JSON report is **not generated by default** (`JSON_REPORTER` defaults to `false`), and this env variable overrides the repository configuration, guaranteeing `megalinter-reports/mega-linter-report.json`.
 - Then read `megalinter-reports/mega-linter-report.json` and `megalinter-reports/linters_logs/ERROR-*.log` instead of parsing the console output, and extract the console tips from the persisted log file (see "Console tips" below) - do not re-read the whole console stream for them.
-- **A missing report file never means "wait"**: the runner is synchronous — once the command has exited, no report file will ever appear afterwards. Do not poll, sleep, or re-run for it. If the expected files are absent (the repository may set `REPORT_OUTPUT_FOLDER` to a custom folder or `none`, `TEXT_REPORTER: false`, or a different `TEXT_REPORTER_SUB_FOLDER`), fall back in order: check `REPORT_OUTPUT_FOLDER` in `.mega-linter.yml` and glob `**/mega-linter-report.json` / `**/linters_logs/` under it, then parse the console output — the `❌`/`✅` summary table and per-linter error sections are always printed there.
+- **A missing report file never means "wait"**: the runner is synchronous — once the command has exited, no report
+  file will ever appear afterwards. Do not poll, sleep, or re-run for it. If the expected files are absent (the
+  repository may set `REPORT_OUTPUT_FOLDER` to a custom folder or `none`, `TEXT_REPORTER: false`, or a different
+  `TEXT_REPORTER_SUB_FOLDER`), fall back in order: check `REPORT_OUTPUT_FOLDER` in `.mega-linter.yml` and glob
+  `**/mega-linter-report.json` / `**/linters_logs/` under it, then parse the console output — the `❌`/`✅` summary
+  table and per-linter error sections are always printed there.
 
 ### Run with a time bound - never wait unbounded
 
@@ -144,6 +193,17 @@ Whatever the mode, summarize the result in this shape (this is what `megalinter-
 ```
 
 Distinguish **blocking** linters (❌, fail the job) from non-blocking ones (⚠️, `DISABLE_ERRORS: true`). A `failure` status means the job/run itself broke (container engine, network, configuration): include a `"failure_reason"` field with a short cause excerpt instead of linter errors. In watch mode, a `"job_url"` field may be added for reference. Add the optional `"tips"` field when console tips were found (see below).
+
+In watch mode, add the optional `"auto_fix_commit"` field when MegaLinter pushed its own fixes onto the branch, so the caller knows the working copy is behind and whether the checks were re-triggered:
+
+```json
+"auto_fix_commit": {
+  "sha": "94873de",
+  "subject": "[MegaLinter] Apply linters fixes",
+  "is_branch_tip": true,
+  "amended": true
+}
+```
 
 ## Console tips (even when the run is green)
 

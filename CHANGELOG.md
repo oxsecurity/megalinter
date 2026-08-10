@@ -11,6 +11,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Breaking changes
 
 - Core
+  - **Agent skills**: when watching a CI job, the agent now handles the commit MegaLinter pushes itself with `APPLY_FIXES_MODE: commit`
+    - CI providers ignore pushes made with the CI token, so the branch used to stay stuck on the **stale checks** of the run that produced the fixes
+    - The agent amends that commit with a **🤖** prefix and re-pushes it with `--force-with-lease`, which re-triggers the checks (asking first on the default branch)
+    - Nothing is amended when a commit landed after the auto-fix one, when the message was already amended, or when you have unpushed commits — in all these cases a normal push already re-triggers the checks
+  - **Agent skills**: `megalinter-setup` can now set up a [custom flavor](https://megalinter.io/latest/custom-flavors/) repository on request, from the creation of the repository to publishing and maintaining the image
+    - It first looks for a custom flavor **you already own or administer**, to reuse or extend it instead of maintaining a second one
 
 - New linters
   - **[biome](https://biomejs.dev)**, one fast toolchain linting, formatting and sorting imports of JavaScript, TypeScript, JSX, TSX, JSON, CSS and GraphQL files, available as **JAVASCRIPT_BIOME**, **TYPESCRIPT_BIOME**, **JSX_BIOME**, **TSX_BIOME**, **JSON_BIOME**, **CSS_BIOME** and **GRAPHQL_BIOME**
