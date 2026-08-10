@@ -97,11 +97,11 @@ description: List of all known articles, blog posts and videos that talk about M
 ## Linters
 
 <!-- referring-linters-start -->
+- [bicep_linter](https://github.com/Azure/bicep#community-bicep-projects){target=_blank}
 - [checkstyle](https://checkstyle.org/index.html#Related_Tools_Active_Tools){target=_blank}
 - [clj-kondo](https://github.com/borkdude/clj-kondo/blob/master/doc/ci-integration.md#github){target=_blank}
-- [cljstyle](https://github.com/greglook/cljstyle/blob/main/doc/integrations.md){target=_blank}
+- [csharpier](https://csharpier.com/docs/Pre-commit#megalinter){target=_blank}
 - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#mega-linter){target=_blank}
-- [detekt](https://detekt.dev/docs/intro){target=_blank}
 - [djlint](https://djlint.com/docs/integrations/#megalinter){target=_blank}
 - [dotenv-linter](https://dotenv-linter.github.io/#/integrations/mega_linter){target=_blank}
 - [editorconfig-checker](https://github.com/editorconfig-checker/editorconfig-checker#mega-linter){target=_blank}
@@ -109,16 +109,30 @@ description: List of all known articles, blog posts and videos that talk about M
 - [hadolint](https://github.com/hadolint/hadolint/blob/master/docs/INTEGRATION.md#mega-linter){target=_blank}
 - [htmlhint](https://htmlhint.com/integrations/task-runner/){target=_blank}
 - [jscpd](https://github.com/kucherenko/jscpd#who-uses-jscpd){target=_blank}
-- [ktlint](https://github.com/pinterest/ktlint#-with-continuous-integration){target=_blank}
+- [ktlint](https://ktlint.github.io/ktlint/latest/install/integrations/){target=_blank}
+- [kubescape](https://github.com/kubescape/kubescape#cicd){target=_blank}
 - [lintr](https://lintr.r-lib.org/articles/continuous-integration.html){target=_blank}
+- [markdown-table-formatter](https://github.com/nvuillam/markdown-table-formatter#readme){target=_blank}
 - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/#mega-linter){target=_blank}
 - [npm-package-json-lint](https://npmpackagejsonlint.org/docs/integrations#megalinter){target=_blank}
+- [phplint](https://github.com/overtrue/phplint#run-it-with-megalinter){target=_blank}
 - [pmd](https://pmd.sourceforge.io/pmd-6.55.0/pmd_userdocs_tools_ci.html){target=_blank}
+- [prettier](https://prettier.io/docs/related-projects){target=_blank}
+- [proselint](https://github.com/amperser/proselint#readme){target=_blank}
+- [revive](https://github.com/mgechev/revive#megalinter){target=_blank}
+- [robocop](https://robocop.dev/stable/integrations/megalinter/){target=_blank}
+- [roslynator](https://github.com/dotnet/roslynator#command-line-tool){target=_blank}
 - [rst-lint](https://github.com/twolfson/restructuredtext-lint/wiki/Integration-in-other-tools#integration-in-other-tools){target=_blank}
 - [rstcheck](https://rstcheck.readthedocs.io/en/latest/usage/integration/#use-with-mega-linter){target=_blank}
 - [rubocop](https://docs.rubocop.org/rubocop/integration_with_other_tools.html#mega-linter-integration){target=_blank}
+- [ruff](https://github.com/astral-sh/ruff#whos-using-ruff){target=_blank}
+- [ruff-format](https://github.com/astral-sh/ruff#whos-using-ruff){target=_blank}
+- [rumdl](https://github.com/rvben/rumdl#megalinter){target=_blank}
 - [scalafix](https://scalacenter.github.io/scalafix/docs/users/installation.html#plugins-for-other-build-tools){target=_blank}
 - [secretlint](https://github.com/secretlint/secretlint#mega-linter){target=_blank}
+- [swiftlint](https://github.com/realm/SwiftLint#megalinter){target=_blank}
+- [vale](https://vale.sh/docs){target=_blank}
+- [zizmor](https://docs.zizmor.sh/integrations/){target=_blank}
 <!-- referring-linters-end -->
 
 <!-- /* cspell:enable */ -->

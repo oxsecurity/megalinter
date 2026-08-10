@@ -67,6 +67,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linter versions upgrades (N)
   - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.10.0 to **3.11.1** on 2026-08-09
   - [djlint](https://djlint.com/) from 1.44.1 to **1.44.2** on 2026-08-09
+  - [pylint](https://pylint.readthedocs.io) from 4.0.6 to **4.0.7** on 2026-08-10
 <!-- linter-versions-end -->
 
 ## [v10.0.0] - 2026-08-08
