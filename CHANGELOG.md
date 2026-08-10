@@ -11,12 +11,6 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Breaking changes
 
 - Core
-  - **Agent skills**: when watching a CI job, the agent now handles the commit MegaLinter pushes itself with `APPLY_FIXES_MODE: commit`
-    - CI providers ignore pushes made with the CI token, so the branch used to stay stuck on the **stale checks** of the run that produced the fixes
-    - The agent amends that commit with a **🤖** prefix and re-pushes it with `--force-with-lease`, which re-triggers the checks (asking first on the default branch)
-    - Nothing is amended when a commit landed after the auto-fix one, when the message was already amended, or when you have unpushed commits — in all these cases a normal push already re-triggers the checks
-  - **Agent skills**: `megalinter-setup` can now set up a [custom flavor](https://megalinter.io/latest/custom-flavors/) repository on request, from the creation of the repository to publishing and maintaining the image
-    - It first looks for a custom flavor **you already own or administer**, to reuse or extend it instead of maintaining a second one
 
 - New linters
   - **[biome](https://biomejs.dev)**, one fast toolchain linting, formatting and sorting imports of JavaScript, TypeScript, JSX, TSX, JSON, CSS and GraphQL files, available as **JAVASCRIPT_BIOME**, **TYPESCRIPT_BIOME**, **JSX_BIOME**, **TSX_BIOME**, **JSON_BIOME**, **CSS_BIOME** and **GRAPHQL_BIOME**
@@ -50,6 +44,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **Node.js 22 or higher** is now required (was 20)
   - **8 npm dependencies removed** (`chalk`, `fs-extra`, `which`, `uuid`, `find-package-json`, `simple-git`, `mem-fs`, `assert`), replaced by Node.js built-in modules: faster `npx mega-linter-runner` startup and a smaller supply-chain attack surface
   - Fixed `mega-linter-runner --version` displaying `error` instead of the version when the `npm_package_version` environment variable is not set
+
+- Agent Skills
+  - **megalinter-check** now handles the commit MegaLinter pushes itself when the repository uses `APPLY_FIXES_MODE: commit`
+    - CI providers ignore pushes made with the CI token, so the branch used to stay stuck on the **stale checks** of the run that produced the fixes
+    - The commit is amended with a **🤖** prefix and re-pushed with `--force-with-lease`, which re-triggers the checks (you are asked first on the default branch)
+    - Nothing is amended when another commit landed after the auto-fix one, when it was already amended, or when you have unpushed commits — a normal push already re-triggers the checks in those cases
+  - **megalinter-setup** can now set up a [custom flavor](https://megalinter.io/latest/custom-flavors/) repository on request, from creating the repository to publishing and maintaining the image
+    - It first looks for a custom flavor **you already own or administer**, to reuse or extend it instead of maintaining a second one
 
 - Dev
   - **6 Python dependencies removed** from the MegaLinter runtime, replaced by standard library equivalents: `commentjson`, `terminaltables` and `multiprocessing_logging` (unmaintained), plus `termcolor`, `regex` and the obsolete `importlib-metadata` backport
