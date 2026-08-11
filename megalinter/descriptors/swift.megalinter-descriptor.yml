@@ -50,6 +50,12 @@ linters:
     cli_version_arg_name: "--version"
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "Found ([0-9]+) violations"
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--reporter"
+      - "sarif"
+      - "--output"
+      - "{{SARIF_OUTPUT_FILE}}"
     common_linter_errors:
       - identifier: SWIFT_SWIFTLINT_ERROR_INVALID_CONFIG
         regex: "(Could not read configuration|Invalid configuration|YAML.*at line [0-9]+, column [0-9]+)"

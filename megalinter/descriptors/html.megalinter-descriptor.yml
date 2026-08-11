@@ -65,6 +65,7 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=monosans.djlint
   # HTML HINT
   - linter_name: htmlhint
+    can_output_sarif: true
     linter_text: |
       **HTMLHint** is a static code analysis tool for HTML that helps developers write better HTML code by detecting errors, enforcing best practices, and ensuring compliance with HTML standards. It provides fast, configurable HTML validation with comprehensive rule coverage.
 
@@ -100,6 +101,10 @@ linters:
     cli_config_arg_name: "--config"
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "found ([0-9]+) errors in"
+    cli_sarif_args:
+      - "--format"
+      - "sarif"
+    sarif_default_output_file: "htmlhint.sarif"
     examples:
       - "htmlhint myfile.html"
       - "htmlhint --config .htmlhintrc myfile.html"

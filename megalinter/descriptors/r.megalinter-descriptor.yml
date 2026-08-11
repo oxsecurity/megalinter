@@ -10,6 +10,7 @@ linters:
   # Lintr
   - class: RLinter
     linter_name: lintr
+    can_output_sarif: true
     linter_text: |
       **lintr** is a comprehensive static code analysis tool for R that checks for adherence to coding style guidelines, identifies syntax errors, and detects potential semantic issues. It serves as the primary linting solution for R codebases, ensuring code quality and consistency across projects.
 
@@ -50,7 +51,7 @@ linters:
           RUN apk add --no-cache --virtual .r-build-deps gcc g++ make musl-dev linux-headers libffi-dev libxml2-dev R-dev \
               && mkdir -p /home/r-library \
               && cp -r /usr/lib/R/library/ /home/r-library/ \
-              && Rscript -e "install.packages(c('lintr','purrr'), repos = 'https://cloud.r-project.org/')" \
+              && Rscript -e "install.packages(c('lintr','purrr','jsonlite'), repos = 'https://cloud.r-project.org/')" \
               && R -e "install.packages(list.dirs('/home/r-library',recursive = FALSE), repos = NULL, type = 'source')" \
               && apk del .r-build-deps
     supported_platforms:

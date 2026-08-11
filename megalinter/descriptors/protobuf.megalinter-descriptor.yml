@@ -29,6 +29,7 @@ linters:
     linter_rules_configuration_url: https://github.com/yoheimuta/protolint#rules
     linter_rules_inline_disable_url: https://github.com/yoheimuta/protolint#configuring
     linter_spdx_license: MIT
+    can_output_sarif: true
     config_file_name: .protolintrc.yml
     cli_lint_mode: list_of_files
     supported_cli_lint_modes:
@@ -41,6 +42,9 @@ linters:
     cli_lint_mode_project_extra_args_after:
       - .
     cli_lint_fix_arg_name: "--fix"
+    cli_sarif_args:
+      - "--add-reporter"
+      - "sarif:{{SARIF_OUTPUT_FILE}}"
     cli_version_arg_name: "version"
     help_command_return_code: 0
     examples:

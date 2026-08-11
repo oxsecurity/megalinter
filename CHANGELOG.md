@@ -32,6 +32,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Media
 
 - Linters enhancements
+  - **SARIF output** is now available for 13 more linters: **zizmor**, **bicep_linter**, **cppcheck**, **clj-kondo**, **roslynator**, **htmlhint**, **protolint**, **sqlfluff**, **swiftlint**, **osv-scanner**, **trufflehog**, **jscpd** and **lintr**. Enable it the same way as any other SARIF-capable linter, with `SARIF_REPORTER: true` (optionally scoped with `SARIF_REPORTER_LINTERS`)
+    - The 4 **Salesforce Code Analyzer** engines (`SALESFORCE_CODE_ANALYZER_APEX`, `_AURA`, `_LWC`, `_FLOW`) also gained SARIF output: their report switches from CSV to SARIF automatically when SARIF reporting is requested
+    - `csharp_roslynator` is bumped from 0.12.0 to **0.13.0**, the first release including its SARIF output support
+    - `clj-kondo`'s upstream SARIF output currently nests the `region` property one level too deep, which may affect line/column display in strict SARIF consumers (clj-kondo/clj-kondo#2345)
 
 - Fixes
   - The **API reporter** variables (`API_REPORTER`, `API_REPORTER_URL`…) are not flagged as **deprecated** anymore in the configuration JSON schema: they were collateral damage of the removal of the `API` descriptor in v10.0.0, and IDEs displayed them as obsolete

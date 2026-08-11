@@ -165,7 +165,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 RUN apk add --no-cache --virtual .r-build-deps gcc g++ make musl-dev linux-headers libffi-dev libxml2-dev R-dev \
     && mkdir -p /home/r-library \
     && cp -r /usr/lib/R/library/ /home/r-library/ \
-    && Rscript -e "install.packages(c('lintr','purrr'), repos = 'https://cloud.r-project.org/')" \
+    && Rscript -e "install.packages(c('lintr','purrr','jsonlite'), repos = 'https://cloud.r-project.org/')" \
     && R -e "install.packages(list.dirs('/home/r-library',recursive = FALSE), repos = NULL, type = 'source')" \
     && apk del .r-build-deps
 

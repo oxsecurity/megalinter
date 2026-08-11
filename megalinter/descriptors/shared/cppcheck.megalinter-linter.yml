@@ -19,6 +19,9 @@ cli_lint_mode_project_exclude_arg_name: -i
 cli_lint_mode_project_exclude_arg_value: "**/{{DIR}}/**"
 cli_lint_mode_project_extra_args_after:
   - .
+can_output_sarif: true
+cli_sarif_args:
+  - "--output-format=sarif"
 examples:
   - cppcheck myfile.cpp
 install:

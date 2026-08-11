@@ -45,7 +45,9 @@ supported_platforms:
           - RUN echo y|sfdx plugins:install sfdx-hardis
 linters:
   # Code Analyzer Apex
-  - linter_name: code-analyzer-apex
+  - class: SalesforceCodeAnalyzerLinter
+    linter_name: code-analyzer-apex
+    can_output_sarif: true
     name: SALESFORCE_CODE_ANALYZER_APEX
     files_sub_directory: force-app
     linter_text: |
@@ -144,7 +146,9 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode
 
   # Code Analyzer Aura
-  - linter_name: code-analyzer-aura
+  - class: SalesforceCodeAnalyzerLinter
+    linter_name: code-analyzer-aura
+    can_output_sarif: true
     name: SALESFORCE_CODE_ANALYZER_AURA
     files_sub_directory: force-app
     linter_text: |
@@ -241,7 +245,9 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode
 
   # Code Analyzer LWC
-  - linter_name: code-analyzer-lwc
+  - class: SalesforceCodeAnalyzerLinter
+    linter_name: code-analyzer-lwc
+    can_output_sarif: true
     name: SALESFORCE_CODE_ANALYZER_LWC
     files_sub_directory: force-app
     linter_text: |
@@ -339,7 +345,9 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode
 
   # Code Analyzer Flow
-  - linter_name: code-analyzer-flow
+  - class: SalesforceCodeAnalyzerLinter
+    linter_name: code-analyzer-flow
+    can_output_sarif: true
     name: SALESFORCE_CODE_ANALYZER_FLOW
     files_sub_directory: force-app
     linter_text: |

@@ -66,6 +66,7 @@ linters:
   # ZIZMOR
   - class: ZizmorLinter
     linter_name: zizmor
+    can_output_sarif: true
     linter_text: |
       **zizmor** is a static analysis tool for GitHub Actions. It can find many common security issues in typical GitHub Actions CI/CD setups.
 
@@ -102,6 +103,8 @@ linters:
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: ([0-9]+) findings?
     cli_version_arg_name: --version
+    cli_sarif_args:
+      - "--format=sarif"
     common_linter_errors:
       - identifier: ACTION_ZIZMOR_ERROR_GITHUB_API_UNREACHABLE
         regex: "(can't access [^:]+: missing or you have no access|couldn't list branches for)"

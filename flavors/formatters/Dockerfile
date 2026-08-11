@@ -78,7 +78,7 @@ ARG NPM_TYPESCRIPT_VERSION=6.0.3
 # renovate: datasource=nuget depName=csharpier
 ARG CSHARP_CSHARPIER_VERSION=1.2.6
 # renovate: datasource=nuget depName=roslynator.dotnet.cli
-ARG CSHARP_ROSLYNATOR_VERSION=0.12.0
+ARG CSHARP_ROSLYNATOR_VERSION=0.13.0
 # renovate: datasource=npm depName=prettier
 ARG NPM_PRETTIER_VERSION=3.9.6
 # renovate: datasource=npm depName=markdownlint-cli

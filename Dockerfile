@@ -206,7 +206,7 @@ ARG NPM_JSCPD_VERSION=5.0.14
 # renovate: datasource=nuget depName=csharpier
 ARG CSHARP_CSHARPIER_VERSION=1.2.6
 # renovate: datasource=nuget depName=roslynator.dotnet.cli
-ARG CSHARP_ROSLYNATOR_VERSION=0.12.0
+ARG CSHARP_ROSLYNATOR_VERSION=0.13.0
 # renovate: datasource=npm depName=stylelint
 ARG NPM_STYLELINT_VERSION=17.14.1
 # renovate: datasource=npm depName=stylelint-config-standard
@@ -1123,7 +1123,7 @@ ENV MYPY_CACHE_DIR=/tmp
 RUN apk add --no-cache --virtual .r-build-deps gcc g++ make musl-dev linux-headers libffi-dev libxml2-dev R-dev \
     && mkdir -p /home/r-library \
     && cp -r /usr/lib/R/library/ /home/r-library/ \
-    && Rscript -e "install.packages(c('lintr','purrr'), repos = 'https://cloud.r-project.org/')" \
+    && Rscript -e "install.packages(c('lintr','purrr','jsonlite'), repos = 'https://cloud.r-project.org/')" \
     && R -e "install.packages(list.dirs('/home/r-library',recursive = FALSE), repos = NULL, type = 'source')" \
     && apk del .r-build-deps
 
