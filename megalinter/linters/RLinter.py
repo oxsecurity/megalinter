@@ -33,10 +33,13 @@ class RLinter(Linter):
         if self.can_output_sarif is True and self.output_sarif is True:
             self.get_sarif_arguments()
             # lintr::sarif_output() requires a relative path ("Package path
-            # needs to be a relative path"); the R process's cwd is set to
-            # the file's own directory above
+            # needs to be a relative path"); the R process's actual cwd is
+            # self.workspace + the file's own directory (set via setwd()
+            # above) — Path(file).parent alone is often just "." and would
+            # resolve against this Python process's cwd instead
+            r_cwd = os.path.abspath(os.path.join(self.workspace, Path(file).parent))
             sarif_relative_path = os.path.relpath(
-                self.sarif_output_file, start=Path(file).parent
+                self.sarif_output_file, start=r_cwd
             ).replace("\\", "/")
             r_commands.append(
                 f"lintr::sarif_output(lints, filename = '{sarif_relative_path}')"
