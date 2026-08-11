@@ -45,7 +45,9 @@ class RLinter(Linter):
             # once the command has run (see execute_lint_command below)
             r_cwd = os.path.abspath(os.path.join(self.workspace, Path(file).parent))
             self._r_sarif_report = os.path.join(r_cwd, "lintr-report.sarif")
-            r_commands.append("lintr::sarif_output(lints, filename = 'lintr-report.sarif')")
+            r_commands.append(
+                "lintr::sarif_output(lints, filename = 'lintr-report.sarif')"
+            )
 
         r_commands += [
             "print(lints)",
