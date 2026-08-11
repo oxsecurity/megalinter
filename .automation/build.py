@@ -3208,9 +3208,21 @@ def ensure_removed_linters_flagged_in_config_schema() -> None:
     for prop_name, prop_schema in props.items():
         if not isinstance(prop_name, str) or not isinstance(prop_schema, dict):
             continue
-        if not is_removed_related_variable(prop_name):
-            continue
         title = prop_schema.get("title", "")
+        if not is_removed_related_variable(prop_name):
+            # A linter or descriptor can come back (see API_SPECTRAL in v10): remove the
+            # deprecation flags it got while it was removed, else editors keep displaying
+            # its variables as deprecated. Variables deprecated for other reasons
+            # (DEFAULT_BRANCH, MULTI_STATUS…) match no live linter or descriptor and are kept
+            if _infer_config_schema_descriptor_or_linter_category(prop_name) is None:
+                continue
+            if isinstance(title, str) and title.startswith("(deprecated) "):
+                prop_schema["title"] = title.removeprefix("(deprecated) ")
+                updated = True
+            if prop_schema.get("deprecated") is True:
+                del prop_schema["deprecated"]
+                updated = True
+            continue
         if isinstance(title, str) and "(deprecated)" not in title.lower():
             prop_schema["title"] = f"(deprecated) {title}"
             updated = True

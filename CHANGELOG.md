@@ -21,6 +21,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Disabled linters
 
 - Re-enabled linters
+  - **[spectral](https://megalinter.io/latest/descriptors/api_spectral/)** is back as **API_SPECTRAL**, together with the **API** descriptor, to lint your **OpenAPI**, **AsyncAPI** and **Arazzo** specifications ([#8717](https://github.com/oxsecurity/megalinter/issues/8717))
+    - It was removed in v10.0.0 because it crashed at startup on every run: the cause has been found and fixed
+    - Nothing to change in your configuration: `API_SPECTRAL` works again in `ENABLE_LINTERS` / `DISABLE_LINTERS`, and the default ruleset file is still `.spectral.yaml`
 
 - Deprecated linters
 
@@ -35,6 +38,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - `clj-kondo`'s upstream SARIF output currently nests the `region` property one level too deep, which may affect line/column display in strict SARIF consumers (clj-kondo/clj-kondo#2345)
 
 - Fixes
+  - The **API reporter** variables (`API_REPORTER`, `API_REPORTER_URL`…) are not flagged as **deprecated** anymore in the configuration JSON schema: they were collateral damage of the removal of the `API` descriptor in v10.0.0, and IDEs displayed them as obsolete
 
 - Reporters
 
@@ -43,6 +47,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Doc
   - New **Docker pulls per month** graph, showing the growth of MegaLinter adoption since October 2020, displayed in the README and on the [Flavors statistics](https://megalinter.io/latest/flavors-stats/) page
   - Refreshed the **MegaLinter references in linters documentation** (`linter_megalinter_ref_url`): verified all existing links, updated moved pages (ktlint, robocop, csharpier, zizmor, ruff, proselint), and opened 47 suggestion PRs on linters repositories that did not mention MegaLinter yet
+  - New **Security linting with ESLint** section in the JAVASCRIPT_ES and TYPESCRIPT_ES documentation: states that no security plugin is bundled, shows the `PRE_COMMANDS` recipe and the `createRequire` reference needed under flat config, and lists commonly used plugins. Closes the gap left by the "Security Issues (with security plugins)" line, which previously named no plugin and had no working example
 
 - mega-linter-runner
   - **Node.js 22 or higher** is now required (was 20)
@@ -59,6 +64,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **megalinter-setup** in upgrade mode now also updates the **installed skills and sub-agents** (`npx skills update`), so the guidance you run matches the MegaLinter version you just upgraded to
 
 - Dev
+  - **Deprecation flags of removed linters are now reversible** in the configuration JSON schema: `build.py` clears the `deprecated` flag and the `(deprecated)` title prefix of variables whose linter or descriptor is back, instead of only ever adding them
+  - **spectral is installed in its own `node_modules` tree** (`/node-deps-spectral`) instead of the shared `/node-deps` one, which is what made it crash: `@prantlf/jsonlint` pins `ajv` to exactly `8.17.1` and so owns the hoisted root copy, while `@stoplight/spectral-core` requires `ajv >= 8.18.0` and gets a nested one, so its hoisted `ajv-errors` bound to the other `ajv` instance and ajv generated invalid JavaScript (`SyntaxError: Unexpected token ':'` at `new Function`). Any npm linter sharing the tree with an exact-pinned transitive dependency can hit the same trap
   - **6 Python dependencies removed** from the MegaLinter runtime, replaced by standard library equivalents: `commentjson`, `terminaltables` and `multiprocessing_logging` (unmaintained), plus `termcolor`, `regex` and the obsolete `importlib-metadata` backport
   - **Shared linter definitions**: linter entries duplicated across several descriptors (eslint, prettier, v8r, dotnet-format, cpplint, cppcheck, clang-format) are now factorized in `megalinter/descriptors/shared/*.megalinter-linter.yml` files, referenced from descriptors with the new linter-level `extends` property (shallow merge, descriptor entry properties override the shared ones)
   - **Docker pulls monthly chart**: the auto-update workflow now regenerates `docs/assets/images/docker-pulls-monthly.svg` (new pulls per month since October 2020, all images and registries), via the new `.automation/docker_pulls_chart.py` called by `build.py` after the pull counters update
@@ -72,6 +79,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.10.0 to **3.11.1** on 2026-08-09
   - [djlint](https://djlint.com/) from 1.44.1 to **1.44.2** on 2026-08-09
   - [pylint](https://pylint.readthedocs.io) from 4.0.6 to **4.0.7** on 2026-08-10
+  - [grype](https://github.com/anchore/grype) from 0.116.1 to **0.117.0** on 2026-08-10
+  - [syft](https://github.com/anchore/syft) from 1.50.0 to **1.51.0** on 2026-08-10
 <!-- linter-versions-end -->
 
 ## [v10.0.0] - 2026-08-08
