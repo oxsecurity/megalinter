@@ -36,15 +36,18 @@ class RLinter(Linter):
         self._r_sarif_report = None
         if self.can_output_sarif is True and self.output_sarif is True:
             self.get_sarif_arguments()
-            # lintr::sarif_output() rejects both absolute paths and any
-            # relative path escaping the R process's own cwd ("Package path
-            # needs to be a relative path"), so it can never point directly
-            # at self.sarif_output_file (which lives under the report
-            # folder, outside the linted file's directory tree). Write a
-            # bare filename there instead and move it into place ourselves
-            # once the command has run (see execute_lint_command below)
+            # sarif_output() aborts with "Package path needs to be a
+            # relative path" whenever attr(lints, "path") is NULL — which it
+            # always is for plain lint() results (that attribute is only
+            # ever set by lint_dir()/lint_package()). Set it ourselves;
+            # the value only feeds the SARIF ROOTPATH URI, not file I/O, so
+            # any non-NULL path works. The filename itself must stay a bare
+            # name relative to the R process's own cwd, so write it there
+            # and move it into place ourselves once the command has run
+            # (see execute_lint_command below)
             r_cwd = os.path.abspath(os.path.join(self.workspace, Path(file).parent))
             self._r_sarif_report = os.path.join(r_cwd, "lintr-report.sarif")
+            r_commands.append("attr(lints, 'path') <- '.'")
             r_commands.append(
                 "lintr::sarif_output(lints, filename = 'lintr-report.sarif')"
             )
