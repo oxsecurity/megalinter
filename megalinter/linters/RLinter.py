@@ -5,12 +5,15 @@ https://github.com/r-lib/lintr
 """
 
 import os
+import shutil
 from pathlib import Path
 
 from megalinter import Linter
 
 
 class RLinter(Linter):
+    _r_sarif_report = None
+
     # Build the CLI command to call to lint a file
     def build_lint_command(self, file=None):
         # Build command in R format
@@ -30,20 +33,19 @@ class RLinter(Linter):
         # complete_command_line(), so it bypasses the standard SARIF argument
         # injection (get_sarif_arguments() is called here for its side effect
         # of resolving self.sarif_output_file, not for its cli_sarif_args return)
+        self._r_sarif_report = None
         if self.can_output_sarif is True and self.output_sarif is True:
             self.get_sarif_arguments()
-            # lintr::sarif_output() requires a relative path ("Package path
-            # needs to be a relative path"); the R process's actual cwd is
-            # self.workspace + the file's own directory (set via setwd()
-            # above) — Path(file).parent alone is often just "." and would
-            # resolve against this Python process's cwd instead
+            # lintr::sarif_output() rejects both absolute paths and any
+            # relative path escaping the R process's own cwd ("Package path
+            # needs to be a relative path"), so it can never point directly
+            # at self.sarif_output_file (which lives under the report
+            # folder, outside the linted file's directory tree). Write a
+            # bare filename there instead and move it into place ourselves
+            # once the command has run (see execute_lint_command below)
             r_cwd = os.path.abspath(os.path.join(self.workspace, Path(file).parent))
-            sarif_relative_path = os.path.relpath(
-                self.sarif_output_file, start=r_cwd
-            ).replace("\\", "/")
-            r_commands.append(
-                f"lintr::sarif_output(lints, filename = '{sarif_relative_path}')"
-            )
+            self._r_sarif_report = os.path.join(r_cwd, "lintr-report.sarif")
+            r_commands.append("lintr::sarif_output(lints, filename = 'lintr-report.sarif')")
 
         r_commands += [
             "print(lints)",
@@ -53,6 +55,12 @@ class RLinter(Linter):
         # Build shell command
         cmd = ["R", "--slave", "-e", ";".join(r_commands)]
         return cmd
+
+    def execute_lint_command(self, command):
+        return_code, return_output = super().execute_lint_command(command)
+        if self._r_sarif_report is not None and os.path.isfile(self._r_sarif_report):
+            shutil.move(self._r_sarif_report, self.sarif_output_file)
+        return return_code, return_output
 
     # Build the CLI command to request lintr version
     def build_version_command(self):
