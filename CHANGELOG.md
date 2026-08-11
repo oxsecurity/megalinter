@@ -34,7 +34,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Linters enhancements
   - **CLOJURE_CLJSTYLE** now forwards `EXCLUDED_DIRECTORIES` through its native repeatable `--ignore` argument, instead of a temporary `.cljstyle` written in your repository. Exclusions are now also applied when your repository already has a `.cljstyle` config, whose own ignore patterns are preserved
-  - **SQL_SQLFLUFF** now receives `EXCLUDED_DIRECTORIES` through the `ignore_paths` key of a generated sqlfluff configuration, instead of a temporary `.sqlfluffignore` written in your repository
+  - **SQL_SQLFLUFF** does not receive `EXCLUDED_DIRECTORIES` in `project` lint mode anymore: sqlfluff reads path exclusions only from a `.sqlfluffignore`, `.sqlfluff` or `pyproject.toml` located inside the analyzed sources, where MegaLinter used to write a temporary file. List the directories to skip in your own `.sqlfluffignore`, or keep the default `list_of_files` lint mode where MegaLinter filters the files itself
   - **SARIF output** is now available for 13 more linters: **zizmor**, **bicep_linter**, **cppcheck**, **clj-kondo**, **roslynator**, **htmlhint**, **protolint**, **sqlfluff**, **swiftlint**, **osv-scanner**, **trufflehog**, **jscpd** and **lintr**. Enable it the same way as any other SARIF-capable linter, with `SARIF_REPORTER: true` (optionally scoped with `SARIF_REPORTER_LINTERS`)
     - The 4 **Salesforce Code Analyzer** engines (`SALESFORCE_CODE_ANALYZER_APEX`, `_AURA`, `_LWC`, `_FLOW`) also gained SARIF output: their report switches from CSV to SARIF automatically when SARIF reporting is requested
     - `csharp_roslynator` is bumped from 0.12.0 to **0.13.0**, the first release including its SARIF output support
