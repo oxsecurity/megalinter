@@ -126,6 +126,8 @@ ARG POWERSHELL_VERSION=7.6.4
 
 # renovate: datasource=pypi depName=ansible-lint
 ARG PIP_ANSIBLE_LINT_VERSION=26.6.0
+# renovate: datasource=npm depName=@stoplight/spectral-cli
+ARG NPM_SPECTRAL_CLI_VERSION=6.16.3
 # renovate: datasource=github-tags depName=Azure/arm-ttk
 ARG ARM_TTK_VERSION=20250401
 ARG ARM_TTK_NAME='arm-ttk.zip'
@@ -276,13 +278,13 @@ RUN apk -U --no-cache upgrade \
                 icu-libs \
                 openjdk21 \
                 py3-pyflakes \
+                npm \
+                nodejs-current \
                 cppcheck \
                 helm \
                 re2 \
                 libxml2 \
                 libxml2-utils \
-                npm \
-                nodejs-current \
                 yarn \
     && git config --global core.autocrlf true
 #APK__END
@@ -501,6 +503,13 @@ ENV PATH="$JAVA_HOME/bin:${PATH}"
 # zizmor installation
 # Managed with COPY --link --from=cargo-bin-zizmor /out/bin/zizmor /usr/bin/zizmor
 # ansible-lint installation
+# spectral installation
+RUN npm --no-cache install --ignore-scripts --omit=dev --prefix /node-deps-spectral @stoplight/spectral-cli@${NPM_SPECTRAL_CLI_VERSION} \
+    && ln -s /node-deps-spectral/node_modules/.bin/spectral /usr/bin/spectral \
+    && (npm cache clean --force || true) \
+    && find /node-deps-spectral/node_modules -type f \( -iname "*.d.ts" -o -iname "*.map" -o -iname "*.md" -o -iname "*.markdown" \) -delete \
+    && find /node-deps-spectral/node_modules -type d \( -iname "__tests__" -o -iname "test" -o -iname "tests" -o -iname "docs" -o -iname ".github" \) -prune -exec rm -rf {} + \
+    && rm -rf /root/.npm
 # arm-ttk installation
 ENV ARM_TTK_PSD1="${ARM_TTK_DIRECTORY}/arm-ttk/arm-ttk/arm-ttk.psd1"
 RUN curl --retry 5 --retry-delay 5 -sLO "https://github.com/Azure/arm-ttk/releases/download/${ARM_TTK_VERSION}/${ARM_TTK_NAME}" \

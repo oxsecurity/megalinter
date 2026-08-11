@@ -60,8 +60,8 @@ REMOVED_LINTERS = {
     },
     "OPENAPI_SPECTRAL": {
         "removed_in": "8.0.0",
-        "replacement": None,
-        "reason": "Replaced by API_SPECTRAL, which has since been removed too",
+        "replacement": "API_SPECTRAL",
+        "reason": "Replaced by API_SPECTRAL, which runs the same linter on both OpenAPI and AsyncAPI files",
     },
     "SQL_SQL_LINT": {
         "removed_in": "8.0.0",
@@ -72,11 +72,6 @@ REMOVED_LINTERS = {
         "removed_in": "9.0.0",
         "replacement": "SPELL_LYCHEE",
         "reason": "lychee can be used instead and has much better performances",
-    },
-    "API_SPECTRAL": {
-        "removed_in": "10.0.0",
-        "replacement": None,
-        "reason": "Crashing with no upstream fix, and the API descriptor had no other linter",
     },
     "JSON_ESLINT_PLUGIN_JSONC": {
         "removed_in": "10.0.0",
@@ -172,13 +167,8 @@ REMOVED_DESCRIPTORS = {
     },
     "OPENAPI": {
         "removed_in": "8.0.0",
-        "replacement": None,
-        "reason": "Superseded by the API descriptor, which has since been removed too",
-    },
-    "API": {
-        "removed_in": "10.0.0",
-        "replacement": None,
-        "reason": "Its only linter, API_SPECTRAL, has been removed",
+        "replacement": "API",
+        "reason": "Superseded by the API descriptor",
     },
     "MAKEFILE": {
         "removed_in": "10.0.0",

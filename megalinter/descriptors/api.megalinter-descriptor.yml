@@ -1,0 +1,119 @@
+---
+descriptor_id: API
+descriptor_type: tooling_format
+descriptor_flavors:
+  - all_flavors # Any project can contain API specifications (AsyncAPI, OpenAI, etc.)
+file_extensions:
+  - ".yml"
+  - ".yaml"
+  - ".json"
+file_contains_regex:
+  - '"asyncapi":'
+  - '"openapi":'
+  - '"swagger":'
+  - "asyncapi:"
+  - "openapi:"
+  - "swagger:"
+linters:
+  # Spectral
+  - linter_name: spectral
+    can_output_sarif: true
+    linter_text: |
+      **Spectral** is a flexible JSON/YAML linter for creating automated style guides, with built-in support for **OpenAPI** (v3.1, v3.0, and v2.0), **Arazzo** v1.0, and **AsyncAPI** v2.x specifications.
+
+      **Key Features:**
+
+      - **Custom Rulesets**: Create custom rules to lint JSON or YAML objects
+      - **Ready-to-use Rulesets**: Validate and lint OpenAPI, AsyncAPI, and Arazzo documents out of the box
+      - **API Style Guides**: Automated API style guides using rulesets improve consistency across all your APIs
+      - **Built-in Functions**: Pattern checks, parameter validation, alphabetical ordering, character limits, and key presence validation
+      - **Custom Functions**: Create advanced custom functions for complex use cases
+      - **Multiple Output Formats**: Support for various output formats including SARIF, JUnit, HTML, and more
+
+      Spectral helps ensure your API specifications follow best practices and maintain consistency across your organization. It's particularly useful for enforcing API governance and automated quality checks in CI/CD pipelines.
+    linter_url: https://github.com/stoplightio/spectral
+    linter_repo: https://github.com/stoplightio/spectral
+    linter_rules_url: https://docs.stoplight.io/docs/spectral/4dec24461f3af-open-api-rules
+    linter_banner_image_url: https://github.com/stoplightio/spectral/raw/develop/docs/img/spectral-banner.png
+    linter_rules_configuration_url: https://docs.stoplight.io/docs/spectral/9ffa04e052cc1-spectral-cli#using-a-ruleset-file
+    linter_spdx_license: Apache-2.0
+    config_file_name: .spectral.yaml
+    cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+    cli_config_arg_name: "-r"
+    cli_lint_extra_args:
+      - "lint"
+    cli_help_arg_name: "--help"
+    cli_sarif_args:
+      - --format
+      - sarif
+      - --output
+      - "{{SARIF_OUTPUT_FILE}}"
+    cli_help_extra_args:
+      - "lint"
+    common_linter_errors:
+      - identifier: API_SPECTRAL_ERROR_RULESET_PARSE_FAILED
+        regex: "(Could not read ruleset at|No ruleset has been found|Provided ruleset is not an object|RulesetValidationError)"
+        message: |-
+          Spectral could not parse the ruleset file.
+          Checks:
+            - Verify the file passed via `-r` / `API_SPECTRAL_CONFIG_FILE` is valid YAML or JSON.
+            - Ensure `extends:` references resolvable rulesets (e.g. `spectral:oas`, `spectral:asyncapi`, or an installed npm package).
+            - If the ruleset is loaded over HTTP/HTTPS, confirm the URL is reachable from the MegaLinter container.
+      - identifier: API_SPECTRAL_ERROR_FUNCTION_NOT_DEFINED
+        regex: "(Function .* is not defined|Cannot find module .*functions)"
+        message: |-
+          Spectral could not resolve a function referenced by a rule.
+          Fixes:
+            - For core functions, double-check the spelling (e.g. `truthy`, `pattern`, `length`).
+            - For custom functions, list them under `functions:` in the ruleset and place the JS files under `functions/` next to the ruleset.
+            - When loading a ruleset over HTTP, custom functions are not auto-fetched — vendor the ruleset locally and point `-r` at it.
+      - identifier: API_SPECTRAL_ERROR_RULESET_REF_UNREACHABLE
+        regex: "(ENOTFOUND|ECONNREFUSED|ETIMEDOUT|getaddrinfo ENOTFOUND|fetch failed)"
+        message: |-
+          Spectral could not resolve a remote `$ref` or remote ruleset (network/DNS failure).
+          This is a transient remote-service issue.
+          Workarounds:
+            - Retry the run later.
+            - Vendor the referenced documents locally and update the `$ref` to a relative path.
+            - Temporarily mark the linter as non-blocking by adding to your .mega-linter.yml:
+                DISABLE_ERRORS_LINTERS:
+                  - API_SPECTRAL
+    examples:
+      - "spectral lint myfile.yml"
+      - "spectral lint -r .spectral.yaml myfile.yml"
+    test_folder: api
+    install:
+      # nodejs and npm are normally brought in by install.npm, which spectral can not use
+      # (see the isolated installation below), so they are requested explicitly
+      apk:
+        - npm
+        - nodejs-current
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=@stoplight/spectral-cli
+          ARG NPM_SPECTRAL_CLI_VERSION=6.16.3
+        # spectral must NOT be installed in the shared /node-deps tree: npm hoists a single ajv
+        # there, and spectral-core (ajv >=8.18) then ends up loading a different ajv copy than its
+        # own ajv-errors, which makes ajv generate invalid JavaScript and crash spectral at startup
+        # (see https://github.com/oxsecurity/megalinter/issues/8717)
+        - |-
+          RUN npm --no-cache install --ignore-scripts --omit=dev --prefix /node-deps-spectral @stoplight/spectral-cli@${NPM_SPECTRAL_CLI_VERSION} \
+              && ln -s /node-deps-spectral/node_modules/.bin/spectral /usr/bin/spectral \
+              && (npm cache clean --force || true) \
+              && find /node-deps-spectral/node_modules -type f \( -iname "*.d.ts" -o -iname "*.map" -o -iname "*.md" -o -iname "*.markdown" \) -delete \
+              && find /node-deps-spectral/node_modules -type d \( -iname "__tests__" -o -iname "test" -o -iname "tests" -o -iname "docs" -o -iname ".github" \) -prune -exec rm -rf {} + \
+              && rm -rf /root/.npm
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
+    ide:
+      stoplight:
+        - name: Native integration
+          url: https://stoplight.io/studio
+      vscode:
+        - name: vscode-spectral
+          url: https://github.com/stoplightio/vscode-spectral

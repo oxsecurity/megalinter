@@ -995,7 +995,7 @@
         "string",
         "array"
       ],
-      "title": "(deprecated) Excluding regex filter for API descriptor",
+      "title": "Excluding regex filter for API descriptor",
       "description": "API: Custom regex excluding filter: files matching this regex will NOT be linted",
       "category": "API",
       "section": "SCOPE",
@@ -1007,7 +1007,7 @@
         "string",
         "array"
       ],
-      "title": "(deprecated) Including regex filter for API descriptor",
+      "title": "Including regex filter for API descriptor",
       "description": "API: Custom regex including filter: only files matching this regex will be linted",
       "category": "API",
       "section": "SCOPE",
@@ -1016,7 +1016,7 @@
     "API_POST_COMMANDS": {
       "name": "API_POST_COMMANDS",
       "type": "array",
-      "title": "(deprecated) Post commands for API descriptor",
+      "title": "Post commands for API descriptor",
       "description": "API: List of bash commands to run after the linters",
       "examples": [
         [
@@ -1033,7 +1033,7 @@
     "API_PRE_COMMANDS": {
       "name": "API_PRE_COMMANDS",
       "type": "array",
-      "title": "(deprecated) Pre commands for API descriptor",
+      "title": "Pre commands for API descriptor",
       "description": "API: List of bash commands to run before the linters",
       "examples": [
         [
@@ -1050,7 +1050,7 @@
     "API_REPORTER": {
       "name": "API_REPORTER",
       "type": "boolean",
-      "title": "(deprecated) Activate API reporter (observability: Grafana, Datadog, Elastic, New Relic)",
+      "title": "Activate API reporter (observability: Grafana, Datadog, Elastic, New Relic)",
       "description": "Sends MegaLinter results (payload v2: run KPIs, linters, top rules & files) to observability backends. Configure the target(s) with API_REPORTER_PROVIDER and the provider variables",
       "default": false,
       "category": "API_REPORTER",
@@ -1059,49 +1059,49 @@
     "API_REPORTER_BASIC_AUTH_PASSWORD": {
       "name": "API_REPORTER_BASIC_AUTH_PASSWORD",
       "type": "string",
-      "title": "(deprecated) API reporter (grafana): logs endpoint basic auth password. Never hardcode it in a config variable, use secrets and context variables",
+      "title": "API reporter (grafana): logs endpoint basic auth password. Never hardcode it in a config variable, use secrets and context variables",
       "category": "API_REPORTER",
       "section": "GENERAL"
     },
     "API_REPORTER_BASIC_AUTH_USERNAME": {
       "name": "API_REPORTER_BASIC_AUTH_USERNAME",
       "type": "string",
-      "title": "(deprecated) API reporter (grafana): logs endpoint basic auth username. Use secrets and context variables",
+      "title": "API reporter (grafana): logs endpoint basic auth username. Use secrets and context variables",
       "category": "API_REPORTER",
       "section": "GENERAL"
     },
     "API_REPORTER_BEARER_TOKEN": {
       "name": "API_REPORTER_BEARER_TOKEN",
       "type": "string",
-      "title": "(deprecated) API reporter (grafana): logs endpoint bearer token. Never hardcode it in a config variable, use secrets and context variables",
+      "title": "API reporter (grafana): logs endpoint bearer token. Never hardcode it in a config variable, use secrets and context variables",
       "category": "API_REPORTER",
       "section": "GENERAL"
     },
     "API_REPORTER_DATADOG_API_KEY": {
       "name": "API_REPORTER_DATADOG_API_KEY",
       "type": "string",
-      "title": "(deprecated) API reporter (datadog): Datadog API key. Never hardcode it in a config variable, use secrets and context variables",
+      "title": "API reporter (datadog): Datadog API key. Never hardcode it in a config variable, use secrets and context variables",
       "category": "API_REPORTER",
       "section": "GENERAL"
     },
     "API_REPORTER_DATADOG_BEARER_TOKEN": {
       "name": "API_REPORTER_DATADOG_BEARER_TOKEN",
       "type": "string",
-      "title": "(deprecated) API reporter (datadog): Datadog bearer token (service account), used when no API key is defined. Never hardcode it in a config variable, use secrets and context variables",
+      "title": "API reporter (datadog): Datadog bearer token (service account), used when no API key is defined. Never hardcode it in a config variable, use secrets and context variables",
       "category": "API_REPORTER",
       "section": "GENERAL"
     },
     "API_REPORTER_DATADOG_SITE": {
       "name": "API_REPORTER_DATADOG_SITE",
       "type": "string",
-      "title": "(deprecated) API reporter (datadog): Datadog site (datadoghq.com, datadoghq.eu, us3.datadoghq.com...)",
+      "title": "API reporter (datadog): Datadog site (datadoghq.com, datadoghq.eu, us3.datadoghq.com...)",
       "category": "API_REPORTER",
       "section": "GENERAL"
     },
     "API_REPORTER_DEBUG": {
       "name": "API_REPORTER_DEBUG",
       "type": "boolean",
-      "title": "(deprecated) API reporter: log the payloads sent to the providers",
+      "title": "API reporter: log the payloads sent to the providers",
       "default": false,
       "category": "API_REPORTER",
       "section": "GENERAL"
@@ -1109,7 +1109,7 @@
     "API_REPORTER_DETAILS": {
       "name": "API_REPORTER_DETAILS",
       "type": "boolean",
-      "title": "(deprecated) API reporter: include per-rule and per-file breakdowns (parsed from SARIF output) in the payload",
+      "title": "API reporter: include per-rule and per-file breakdowns (parsed from SARIF output) in the payload",
       "default": true,
       "category": "API_REPORTER",
       "section": "GENERAL"
@@ -1117,84 +1117,84 @@
     "API_REPORTER_ELASTIC_API_KEY": {
       "name": "API_REPORTER_ELASTIC_API_KEY",
       "type": "string",
-      "title": "(deprecated) API reporter (elastic): Elasticsearch API key. Never hardcode it in a config variable, use secrets and context variables",
+      "title": "API reporter (elastic): Elasticsearch API key. Never hardcode it in a config variable, use secrets and context variables",
       "category": "API_REPORTER",
       "section": "GENERAL"
     },
     "API_REPORTER_ELASTIC_INDEX_PREFIX": {
       "name": "API_REPORTER_ELASTIC_INDEX_PREFIX",
       "type": "string",
-      "title": "(deprecated) API reporter (elastic): prefix of the megalinter-* indexes",
+      "title": "API reporter (elastic): prefix of the megalinter-* indexes",
       "category": "API_REPORTER",
       "section": "GENERAL"
     },
     "API_REPORTER_ELASTIC_URL": {
       "name": "API_REPORTER_ELASTIC_URL",
       "type": "string",
-      "title": "(deprecated) API reporter (elastic): Elasticsearch endpoint URL",
+      "title": "API reporter (elastic): Elasticsearch endpoint URL",
       "category": "API_REPORTER",
       "section": "GENERAL"
     },
     "API_REPORTER_METRICS_BASIC_AUTH_PASSWORD": {
       "name": "API_REPORTER_METRICS_BASIC_AUTH_PASSWORD",
       "type": "string",
-      "title": "(deprecated) API reporter (grafana): metrics endpoint basic auth password. Never hardcode it in a config variable, use secrets and context variables",
+      "title": "API reporter (grafana): metrics endpoint basic auth password. Never hardcode it in a config variable, use secrets and context variables",
       "category": "API_REPORTER",
       "section": "GENERAL"
     },
     "API_REPORTER_METRICS_BASIC_AUTH_USERNAME": {
       "name": "API_REPORTER_METRICS_BASIC_AUTH_USERNAME",
       "type": "string",
-      "title": "(deprecated) API reporter (grafana): metrics endpoint basic auth username. Use secrets and context variables",
+      "title": "API reporter (grafana): metrics endpoint basic auth username. Use secrets and context variables",
       "category": "API_REPORTER",
       "section": "GENERAL"
     },
     "API_REPORTER_METRICS_BEARER_TOKEN": {
       "name": "API_REPORTER_METRICS_BEARER_TOKEN",
       "type": "string",
-      "title": "(deprecated) API reporter (grafana): metrics endpoint bearer token. Never hardcode it in a config variable, use secrets and context variables",
+      "title": "API reporter (grafana): metrics endpoint bearer token. Never hardcode it in a config variable, use secrets and context variables",
       "category": "API_REPORTER",
       "section": "GENERAL"
     },
     "API_REPORTER_METRICS_URL": {
       "name": "API_REPORTER_METRICS_URL",
       "type": "string",
-      "title": "(deprecated) API reporter (grafana): metrics endpoint URL (e.g. Grafana Cloud Influx write URL)",
+      "title": "API reporter (grafana): metrics endpoint URL (e.g. Grafana Cloud Influx write URL)",
       "category": "API_REPORTER",
       "section": "GENERAL"
     },
     "API_REPORTER_NEWRELIC_LICENSE_KEY": {
       "name": "API_REPORTER_NEWRELIC_LICENSE_KEY",
       "type": "string",
-      "title": "(deprecated) API reporter (newrelic): New Relic license key (ingest). Never hardcode it in a config variable, use secrets and context variables",
+      "title": "API reporter (newrelic): New Relic license key (ingest). Never hardcode it in a config variable, use secrets and context variables",
       "category": "API_REPORTER",
       "section": "GENERAL"
     },
     "API_REPORTER_NEWRELIC_REGION": {
       "name": "API_REPORTER_NEWRELIC_REGION",
       "type": "string",
-      "title": "(deprecated) API reporter (newrelic): New Relic region (US or EU)",
+      "title": "API reporter (newrelic): New Relic region (US or EU)",
       "category": "API_REPORTER",
       "section": "GENERAL"
     },
     "API_REPORTER_ORG_IDENTIFIER": {
       "name": "API_REPORTER_ORG_IDENTIFIER",
       "type": "string",
-      "title": "(deprecated) API reporter: organization identifier added to all records",
+      "title": "API reporter: organization identifier added to all records",
       "category": "API_REPORTER",
       "section": "GENERAL"
     },
     "API_REPORTER_PAYLOAD_FORMAT": {
       "name": "API_REPORTER_PAYLOAD_FORMAT",
       "type": "string",
-      "title": "(deprecated) API reporter (grafana): logs payload format (auto, loki or default)",
+      "title": "API reporter (grafana): logs payload format (auto, loki or default)",
       "category": "API_REPORTER",
       "section": "GENERAL"
     },
     "API_REPORTER_PROVIDER": {
       "name": "API_REPORTER_PROVIDER",
       "type": "string",
-      "title": "(deprecated) API reporter: comma-separated list of target providers",
+      "title": "API reporter: comma-separated list of target providers",
       "description": "Available providers: grafana (default, direct Loki/Prometheus push via API_REPORTER_URL and API_REPORTER_METRICS_URL), datadog, elastic, newrelic. Example: grafana,datadog",
       "category": "API_REPORTER",
       "section": "GENERAL"
@@ -1202,7 +1202,7 @@
     "API_REPORTER_URL": {
       "name": "API_REPORTER_URL",
       "type": "string",
-      "title": "(deprecated) API reporter (grafana): logs endpoint URL (e.g. Loki push URL ending with /loki/api/v1/push)",
+      "title": "API reporter (grafana): logs endpoint URL (e.g. Loki push URL ending with /loki/api/v1/push)",
       "category": "API_REPORTER",
       "section": "GENERAL"
     },
@@ -1212,7 +1212,7 @@
         "array",
         "string"
       ],
-      "title": "(deprecated) API_SPECTRAL: Custom arguments",
+      "title": "API_SPECTRAL: Custom arguments",
       "description": "API_SPECTRAL: User custom arguments to add in linter CLI call",
       "category": "API_SPECTRAL",
       "section": "LINTER_COMMAND",
@@ -1221,7 +1221,7 @@
     "API_SPECTRAL_CLI_EXECUTABLE": {
       "name": "API_SPECTRAL_CLI_EXECUTABLE",
       "type": "array",
-      "title": "(deprecated) API_SPECTRAL: CLI Executable",
+      "title": "API_SPECTRAL: CLI Executable",
       "description": "API_SPECTRAL: Override CLI executable used to build the linter command line (rarely needed)",
       "default": [
         [
@@ -1235,7 +1235,7 @@
     "API_SPECTRAL_CLI_LINT_MODE": {
       "name": "API_SPECTRAL_CLI_LINT_MODE",
       "type": "string",
-      "title": "(deprecated) API_SPECTRAL: CLI lint mode",
+      "title": "API_SPECTRAL: CLI lint mode",
       "description": "API_SPECTRAL: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "list_of_files",
       "enum": [
@@ -1251,7 +1251,7 @@
         "array",
         "string"
       ],
-      "title": "(deprecated) API_SPECTRAL: Custom remove arguments",
+      "title": "API_SPECTRAL: Custom remove arguments",
       "description": "API_SPECTRAL: User custom arguments to remove before calling linter",
       "category": "API_SPECTRAL",
       "section": "LINTER_COMMAND",
@@ -1260,7 +1260,7 @@
     "API_SPECTRAL_CONFIG_FILE": {
       "name": "API_SPECTRAL_CONFIG_FILE",
       "type": "string",
-      "title": "(deprecated) API_SPECTRAL: Custom config file name",
+      "title": "API_SPECTRAL: Custom config file name",
       "description": "API_SPECTRAL: User custom config file name if different from default",
       "default": ".spectral.yaml",
       "category": "API_SPECTRAL",
@@ -1269,7 +1269,7 @@
     "API_SPECTRAL_DISABLE_ERRORS": {
       "name": "API_SPECTRAL_DISABLE_ERRORS",
       "type": "boolean",
-      "title": "(deprecated) API_SPECTRAL: Disable errors",
+      "title": "API_SPECTRAL: Disable errors",
       "description": "API_SPECTRAL: If true, API_SPECTRAL doesn't make MegaLinter fail even if errors are found",
       "default": false,
       "category": "API_SPECTRAL",
@@ -1278,7 +1278,7 @@
     "API_SPECTRAL_DISABLE_ERRORS_IF_LESS_THAN": {
       "name": "API_SPECTRAL_DISABLE_ERRORS_IF_LESS_THAN",
       "type": "number",
-      "title": "(deprecated) API_SPECTRAL: Maximum number of errors allowed",
+      "title": "API_SPECTRAL: Maximum number of errors allowed",
       "description": "API_SPECTRAL: If the number of errors found is less than this value, API_SPECTRAL doesn't make MegaLinter fail",
       "default": 0,
       "category": "API_SPECTRAL",
@@ -1287,7 +1287,7 @@
     "API_SPECTRAL_FILE_EXTENSIONS": {
       "name": "API_SPECTRAL_FILE_EXTENSIONS",
       "type": "array",
-      "title": "(deprecated) API_SPECTRAL: Matching files extensions",
+      "title": "API_SPECTRAL: Matching files extensions",
       "description": "API_SPECTRAL: Override descriptor/linter matching files extensions that will be used to select files to lint",
       "default": [
         ".yml",
@@ -1305,7 +1305,7 @@
     "API_SPECTRAL_FILE_NAMES_REGEX": {
       "name": "API_SPECTRAL_FILE_NAMES_REGEX",
       "type": "array",
-      "title": "(deprecated) API_SPECTRAL: Matching file name regexes",
+      "title": "API_SPECTRAL: Matching file name regexes",
       "description": "API_SPECTRAL: Override descriptor/linter matching file name regexes that will be used to select files to lint",
       "default": [],
       "examples": [
@@ -1322,7 +1322,7 @@
         "string",
         "array"
       ],
-      "title": "(deprecated) API_SPECTRAL: Excluding Regex",
+      "title": "API_SPECTRAL: Excluding Regex",
       "description": "",
       "category": "API_SPECTRAL",
       "section": "SCOPE",
@@ -1334,7 +1334,7 @@
         "string",
         "array"
       ],
-      "title": "(deprecated) API_SPECTRAL: Including Regex",
+      "title": "API_SPECTRAL: Including Regex",
       "description": "",
       "category": "API_SPECTRAL",
       "section": "SCOPE",
@@ -1343,7 +1343,7 @@
     "API_SPECTRAL_POST_COMMANDS": {
       "name": "API_SPECTRAL_POST_COMMANDS",
       "type": "array",
-      "title": "(deprecated) API_SPECTRAL: Post-run commands",
+      "title": "API_SPECTRAL: Post-run commands",
       "description": "API_SPECTRAL: Define bash commands to run after running API_SPECTRAL",
       "examples": [
         [
@@ -1360,7 +1360,7 @@
     "API_SPECTRAL_PRE_COMMANDS": {
       "name": "API_SPECTRAL_PRE_COMMANDS",
       "type": "array",
-      "title": "(deprecated) API_SPECTRAL: Pre-run commands",
+      "title": "API_SPECTRAL: Pre-run commands",
       "description": "API_SPECTRAL: Define bash commands to run before running API_SPECTRAL",
       "examples": [
         [
@@ -1377,7 +1377,7 @@
     "API_SPECTRAL_RULES_PATH": {
       "name": "API_SPECTRAL_RULES_PATH",
       "type": "string",
-      "title": "(deprecated) API_SPECTRAL: Custom config file path",
+      "title": "API_SPECTRAL: Custom config file path",
       "description": "API_SPECTRAL: Path where to find linter configuration file",
       "category": "API_SPECTRAL",
       "section": "LINTER_COMMAND"
@@ -1385,7 +1385,7 @@
     "API_SPECTRAL_UNSECURED_ENV_VARIABLES": {
       "name": "API_SPECTRAL_UNSECURED_ENV_VARIABLES",
       "type": "array",
-      "title": "(deprecated) API_SPECTRAL: Unsecured env variables",
+      "title": "API_SPECTRAL: Unsecured env variables",
       "description": "List of env variables explicitly not filtered before calling API_SPECTRAL and its pre/post commands",
       "default": [],
       "category": "API_SPECTRAL",

@@ -8,6 +8,7 @@
         "ACTION_ACTIONLINT",
         "ACTION_ZIZMOR",
         "ANSIBLE_ANSIBLE_LINT",
+        "API_SPECTRAL",
         "BASH_EXEC",
         "BASH_SHELLCHECK",
         "BASH_SHFMT",
