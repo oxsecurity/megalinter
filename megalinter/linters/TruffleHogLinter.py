@@ -12,23 +12,6 @@ from megalinter import Linter, config, utils
 class TruffleHogLinter(Linter):
     # Build the CLI command to call to lint a file
     def build_lint_command(self, file=None):
-        # --sarif is a global flag (parsed before the subcommand), unlike
-        # most linters' cli_sarif_args which are appended at the very end:
-        # insert it before "filesystem" rather than relying on the standard
-        # SARIF argument injection, which would place it after and get
-        # rejected as an unknown flag
-        if (
-            self.can_output_sarif is True
-            and self.output_sarif is True
-            and "--sarif" not in self.cli_lint_extra_args
-        ):
-            insert_index = self.cli_lint_extra_args.index("filesystem")
-            self.cli_lint_extra_args = (
-                self.cli_lint_extra_args[:insert_index]
-                + ["--sarif"]
-                + self.cli_lint_extra_args[insert_index:]
-            )
-
         cmd = super().build_lint_command(file)
 
         if not any(arg.startswith("--exclude-paths") for arg in cmd):

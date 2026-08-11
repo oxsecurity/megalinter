@@ -1087,7 +1087,6 @@ linters:
   # TRUFFLEHOG
   - class: TruffleHogLinter
     linter_name: trufflehog
-    can_output_sarif: true
     linter_text: |
       **TruffleHog** is an advanced secrets scanner that searches through git repositories, files, and other sources to find secrets, passwords, API keys, and other sensitive information that may have been accidentally committed to code. It combines pattern matching, entropy analysis, and verification capabilities to provide comprehensive secret detection.
 
