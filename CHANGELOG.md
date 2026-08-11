@@ -43,6 +43,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Doc
   - New **Docker pulls per month** graph, showing the growth of MegaLinter adoption since October 2020, displayed in the README and on the [Flavors statistics](https://megalinter.io/latest/flavors-stats/) page
   - Refreshed the **MegaLinter references in linters documentation** (`linter_megalinter_ref_url`): verified all existing links, updated moved pages (ktlint, robocop, csharpier, zizmor, ruff, proselint), and opened 47 suggestion PRs on linters repositories that did not mention MegaLinter yet
+  - New **Security linting with ESLint** section in the JAVASCRIPT_ES and TYPESCRIPT_ES documentation: states that no security plugin is bundled, shows the `PRE_COMMANDS` recipe and the `createRequire` reference needed under flat config, and lists commonly used plugins. Closes the gap left by the "Security Issues (with security plugins)" line, which previously named no plugin and had no working example
 
 - mega-linter-runner
   - **Node.js 22 or higher** is now required (was 20)
