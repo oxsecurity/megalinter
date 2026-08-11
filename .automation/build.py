@@ -3217,7 +3217,7 @@ def ensure_removed_linters_flagged_in_config_schema() -> None:
             if _infer_config_schema_descriptor_or_linter_category(prop_name) is None:
                 continue
             if isinstance(title, str) and title.startswith("(deprecated) "):
-                prop_schema["title"] = title[len("(deprecated) ") :]
+                prop_schema["title"] = title.removeprefix("(deprecated) ")
                 updated = True
             if prop_schema.get("deprecated") is True:
                 del prop_schema["deprecated"]
