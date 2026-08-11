@@ -21,6 +21,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Disabled linters
 
 - Re-enabled linters
+  - **[spectral](https://megalinter.io/latest/descriptors/api_spectral/)** is back as **API_SPECTRAL**, together with the **API** descriptor, to lint your **OpenAPI**, **AsyncAPI** and **Arazzo** specifications ([#8717](https://github.com/oxsecurity/megalinter/issues/8717))
+    - It was removed in v10.0.0 because it crashed at startup on every run: the cause has been found and fixed
+    - Nothing to change in your configuration: `API_SPECTRAL` works again in `ENABLE_LINTERS` / `DISABLE_LINTERS`, and the default ruleset file is still `.spectral.yaml`
 
 - Deprecated linters
 
@@ -31,6 +34,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linters enhancements
 
 - Fixes
+  - The **API reporter** variables (`API_REPORTER`, `API_REPORTER_URL`…) are not flagged as **deprecated** anymore in the configuration JSON schema: they were collateral damage of the removal of the `API` descriptor in v10.0.0, and IDEs displayed them as obsolete
 
 - Reporters
 
@@ -55,6 +59,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **megalinter-setup** in upgrade mode now also updates the **installed skills and sub-agents** (`npx skills update`), so the guidance you run matches the MegaLinter version you just upgraded to
 
 - Dev
+  - **Deprecation flags of removed linters are now reversible** in the configuration JSON schema: `build.py` clears the `deprecated` flag and the `(deprecated)` title prefix of variables whose linter or descriptor is back, instead of only ever adding them
+  - **spectral is installed in its own `node_modules` tree** (`/node-deps-spectral`) instead of the shared `/node-deps` one, which is what made it crash: `@prantlf/jsonlint` pins `ajv` to exactly `8.17.1` and so owns the hoisted root copy, while `@stoplight/spectral-core` requires `ajv >= 8.18.0` and gets a nested one, so its hoisted `ajv-errors` bound to the other `ajv` instance and ajv generated invalid JavaScript (`SyntaxError: Unexpected token ':'` at `new Function`). Any npm linter sharing the tree with an exact-pinned transitive dependency can hit the same trap
   - **6 Python dependencies removed** from the MegaLinter runtime, replaced by standard library equivalents: `commentjson`, `terminaltables` and `multiprocessing_logging` (unmaintained), plus `termcolor`, `regex` and the obsolete `importlib-metadata` backport
   - **Shared linter definitions**: linter entries duplicated across several descriptors (eslint, prettier, v8r, dotnet-format, cpplint, cppcheck, clang-format) are now factorized in `megalinter/descriptors/shared/*.megalinter-linter.yml` files, referenced from descriptors with the new linter-level `extends` property (shallow merge, descriptor entry properties override the shared ones)
   - **Docker pulls monthly chart**: the auto-update workflow now regenerates `docs/assets/images/docker-pulls-monthly.svg` (new pulls per month since October 2020, all images and registries), via the new `.automation/docker_pulls_chart.py` called by `build.py` after the pull counters update

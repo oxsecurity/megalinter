@@ -180,6 +180,8 @@ ARG SCALA_COURSIER_VERSION=2.1.24
 ARG NPM_TYPESCRIPT_VERSION=6.0.3
 # renovate: datasource=pypi depName=ansible-lint
 ARG PIP_ANSIBLE_LINT_VERSION=26.6.0
+# renovate: datasource=npm depName=@stoplight/spectral-cli
+ARG NPM_SPECTRAL_CLI_VERSION=6.16.3
 # renovate: datasource=github-tags depName=Azure/arm-ttk
 ARG ARM_TTK_VERSION=20250401
 ARG ARM_TTK_NAME='arm-ttk.zip'
@@ -493,6 +495,8 @@ RUN apk -U --no-cache upgrade \
                 musl-dev \
                 coreutils \
                 py3-pyflakes \
+                npm \
+                nodejs-current \
                 cppcheck \
                 cmd:clang-format \
                 helm \
@@ -503,8 +507,6 @@ RUN apk -U --no-cache upgrade \
                 R \
                 re2 \
                 unzip \
-                npm \
-                nodejs-current \
                 yarn \
                 ruby \
                 ruby-bundler \
@@ -889,8 +891,7 @@ ENV SF_AUTOUPDATE_DISABLE=true SF_CLI_DISABLE_AUTOUPDATE=true
 # Next line commented because already managed by another linter
 # ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN curl --retry-all-errors --retry 10 -fLo coursier https://github.com/coursier/coursier/releases/download/v${SCALA_COURSIER_VERSION}/coursier.jar && \
-        chmod +x coursier
-
+        chmod +x coursier \
 # TYPESCRIPT installation
 # VBDOTNET installation
 # Next line commented because already managed by another linter
@@ -904,6 +905,13 @@ RUN curl --retry-all-errors --retry 10 -fLo coursier https://github.com/coursier
 # zizmor installation
 # Managed with COPY --link --from=cargo-bin-zizmor /out/bin/zizmor /usr/bin/zizmor
 # ansible-lint installation
+# spectral installation
+    && npm --no-cache install --ignore-scripts --omit=dev --prefix /node-deps-spectral @stoplight/spectral-cli@${NPM_SPECTRAL_CLI_VERSION} \
+    && ln -s /node-deps-spectral/node_modules/.bin/spectral /usr/bin/spectral \
+    && (npm cache clean --force || true) \
+    && find /node-deps-spectral/node_modules -type f \( -iname "*.d.ts" -o -iname "*.map" -o -iname "*.md" -o -iname "*.markdown" \) -delete \
+    && find /node-deps-spectral/node_modules -type d \( -iname "__tests__" -o -iname "test" -o -iname "tests" -o -iname "docs" -o -iname ".github" \) -prune -exec rm -rf {} + \
+    && rm -rf /root/.npm
 # arm-ttk installation
 ENV ARM_TTK_PSD1="${ARM_TTK_DIRECTORY}/arm-ttk/arm-ttk/arm-ttk.psd1"
 RUN curl --retry 5 --retry-delay 5 -sLO "https://github.com/Azure/arm-ttk/releases/download/${ARM_TTK_VERSION}/${ARM_TTK_NAME}" \

@@ -1572,12 +1572,11 @@
     },
     "API_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/API_FILTER_REGEX_EXCLUDE",
-      "deprecated": true,
       "description": "API: Custom regex excluding filter: files matching this regex will NOT be linted",
       "items": {
         "type": "string"
       },
-      "title": "(deprecated) Excluding regex filter for API descriptor",
+      "title": "Excluding regex filter for API descriptor",
       "type": [
         "string",
         "array"
@@ -1589,12 +1588,11 @@
     },
     "API_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/API_FILTER_REGEX_INCLUDE",
-      "deprecated": true,
       "description": "API: Custom regex including filter: only files matching this regex will be linted",
       "items": {
         "type": "string"
       },
-      "title": "(deprecated) Including regex filter for API descriptor",
+      "title": "Including regex filter for API descriptor",
       "type": [
         "string",
         "array"
@@ -1606,7 +1604,6 @@
     },
     "API_POST_COMMANDS": {
       "$id": "#/properties/API_POST_COMMANDS",
-      "deprecated": true,
       "description": "API: List of bash commands to run after the linters",
       "examples": [
         [
@@ -1620,7 +1617,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "(deprecated) Post commands for API descriptor",
+      "title": "Post commands for API descriptor",
       "type": "array",
       "x-category": "API",
       "x-order": 500010,
@@ -1628,7 +1625,6 @@
     },
     "API_PRE_COMMANDS": {
       "$id": "#/properties/API_PRE_COMMANDS",
-      "deprecated": true,
       "description": "API: List of bash commands to run before the linters",
       "examples": [
         [
@@ -1642,7 +1638,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "(deprecated) Pre commands for API descriptor",
+      "title": "Pre commands for API descriptor",
       "type": "array",
       "x-category": "API",
       "x-order": 500000,
@@ -1651,9 +1647,8 @@
     "API_REPORTER": {
       "$id": "#/properties/API_REPORTER",
       "default": false,
-      "deprecated": true,
       "description": "Sends MegaLinter results (payload v2: run KPIs, linters, top rules & files) to observability backends. Configure the target(s) with API_REPORTER_PROVIDER and the provider variables",
-      "title": "(deprecated) Activate API reporter (observability: Grafana, Datadog, Elastic, New Relic)",
+      "title": "Activate API reporter (observability: Grafana, Datadog, Elastic, New Relic)",
       "type": "boolean",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1662,8 +1657,7 @@
     },
     "API_REPORTER_BASIC_AUTH_PASSWORD": {
       "$id": "#/properties/API_REPORTER_BASIC_AUTH_PASSWORD",
-      "deprecated": true,
-      "title": "(deprecated) API reporter (grafana): logs endpoint basic auth password. Never hardcode it in a config variable, use secrets and context variables",
+      "title": "API reporter (grafana): logs endpoint basic auth password. Never hardcode it in a config variable, use secrets and context variables",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1672,8 +1666,7 @@
     },
     "API_REPORTER_BASIC_AUTH_USERNAME": {
       "$id": "#/properties/API_REPORTER_BASIC_AUTH_USERNAME",
-      "deprecated": true,
-      "title": "(deprecated) API reporter (grafana): logs endpoint basic auth username. Use secrets and context variables",
+      "title": "API reporter (grafana): logs endpoint basic auth username. Use secrets and context variables",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1682,8 +1675,7 @@
     },
     "API_REPORTER_BEARER_TOKEN": {
       "$id": "#/properties/API_REPORTER_BEARER_TOKEN",
-      "deprecated": true,
-      "title": "(deprecated) API reporter (grafana): logs endpoint bearer token. Never hardcode it in a config variable, use secrets and context variables",
+      "title": "API reporter (grafana): logs endpoint bearer token. Never hardcode it in a config variable, use secrets and context variables",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1692,8 +1684,7 @@
     },
     "API_REPORTER_DATADOG_API_KEY": {
       "$id": "#/properties/API_REPORTER_DATADOG_API_KEY",
-      "deprecated": true,
-      "title": "(deprecated) API reporter (datadog): Datadog API key. Never hardcode it in a config variable, use secrets and context variables",
+      "title": "API reporter (datadog): Datadog API key. Never hardcode it in a config variable, use secrets and context variables",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1702,8 +1693,7 @@
     },
     "API_REPORTER_DATADOG_BEARER_TOKEN": {
       "$id": "#/properties/API_REPORTER_DATADOG_BEARER_TOKEN",
-      "deprecated": true,
-      "title": "(deprecated) API reporter (datadog): Datadog bearer token (service account), used when no API key is defined. Never hardcode it in a config variable, use secrets and context variables",
+      "title": "API reporter (datadog): Datadog bearer token (service account), used when no API key is defined. Never hardcode it in a config variable, use secrets and context variables",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1712,8 +1702,7 @@
     },
     "API_REPORTER_DATADOG_SITE": {
       "$id": "#/properties/API_REPORTER_DATADOG_SITE",
-      "deprecated": true,
-      "title": "(deprecated) API reporter (datadog): Datadog site (datadoghq.com, datadoghq.eu, us3.datadoghq.com...)",
+      "title": "API reporter (datadog): Datadog site (datadoghq.com, datadoghq.eu, us3.datadoghq.com...)",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1723,8 +1712,7 @@
     "API_REPORTER_DEBUG": {
       "$id": "#/properties/API_REPORTER_DEBUG",
       "default": false,
-      "deprecated": true,
-      "title": "(deprecated) API reporter: log the payloads sent to the providers",
+      "title": "API reporter: log the payloads sent to the providers",
       "type": "boolean",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1734,8 +1722,7 @@
     "API_REPORTER_DETAILS": {
       "$id": "#/properties/API_REPORTER_DETAILS",
       "default": true,
-      "deprecated": true,
-      "title": "(deprecated) API reporter: include per-rule and per-file breakdowns (parsed from SARIF output) in the payload",
+      "title": "API reporter: include per-rule and per-file breakdowns (parsed from SARIF output) in the payload",
       "type": "boolean",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1744,8 +1731,7 @@
     },
     "API_REPORTER_ELASTIC_API_KEY": {
       "$id": "#/properties/API_REPORTER_ELASTIC_API_KEY",
-      "deprecated": true,
-      "title": "(deprecated) API reporter (elastic): Elasticsearch API key. Never hardcode it in a config variable, use secrets and context variables",
+      "title": "API reporter (elastic): Elasticsearch API key. Never hardcode it in a config variable, use secrets and context variables",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1754,8 +1740,7 @@
     },
     "API_REPORTER_ELASTIC_INDEX_PREFIX": {
       "$id": "#/properties/API_REPORTER_ELASTIC_INDEX_PREFIX",
-      "deprecated": true,
-      "title": "(deprecated) API reporter (elastic): prefix of the megalinter-* indexes",
+      "title": "API reporter (elastic): prefix of the megalinter-* indexes",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1764,8 +1749,7 @@
     },
     "API_REPORTER_ELASTIC_URL": {
       "$id": "#/properties/API_REPORTER_ELASTIC_URL",
-      "deprecated": true,
-      "title": "(deprecated) API reporter (elastic): Elasticsearch endpoint URL",
+      "title": "API reporter (elastic): Elasticsearch endpoint URL",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1774,8 +1758,7 @@
     },
     "API_REPORTER_METRICS_BASIC_AUTH_PASSWORD": {
       "$id": "#/properties/API_REPORTER_METRICS_BASIC_AUTH_PASSWORD",
-      "deprecated": true,
-      "title": "(deprecated) API reporter (grafana): metrics endpoint basic auth password. Never hardcode it in a config variable, use secrets and context variables",
+      "title": "API reporter (grafana): metrics endpoint basic auth password. Never hardcode it in a config variable, use secrets and context variables",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1784,8 +1767,7 @@
     },
     "API_REPORTER_METRICS_BASIC_AUTH_USERNAME": {
       "$id": "#/properties/API_REPORTER_METRICS_BASIC_AUTH_USERNAME",
-      "deprecated": true,
-      "title": "(deprecated) API reporter (grafana): metrics endpoint basic auth username. Use secrets and context variables",
+      "title": "API reporter (grafana): metrics endpoint basic auth username. Use secrets and context variables",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1794,8 +1776,7 @@
     },
     "API_REPORTER_METRICS_BEARER_TOKEN": {
       "$id": "#/properties/API_REPORTER_METRICS_BEARER_TOKEN",
-      "deprecated": true,
-      "title": "(deprecated) API reporter (grafana): metrics endpoint bearer token. Never hardcode it in a config variable, use secrets and context variables",
+      "title": "API reporter (grafana): metrics endpoint bearer token. Never hardcode it in a config variable, use secrets and context variables",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1804,8 +1785,7 @@
     },
     "API_REPORTER_METRICS_URL": {
       "$id": "#/properties/API_REPORTER_METRICS_URL",
-      "deprecated": true,
-      "title": "(deprecated) API reporter (grafana): metrics endpoint URL (e.g. Grafana Cloud Influx write URL)",
+      "title": "API reporter (grafana): metrics endpoint URL (e.g. Grafana Cloud Influx write URL)",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1814,8 +1794,7 @@
     },
     "API_REPORTER_NEWRELIC_LICENSE_KEY": {
       "$id": "#/properties/API_REPORTER_NEWRELIC_LICENSE_KEY",
-      "deprecated": true,
-      "title": "(deprecated) API reporter (newrelic): New Relic license key (ingest). Never hardcode it in a config variable, use secrets and context variables",
+      "title": "API reporter (newrelic): New Relic license key (ingest). Never hardcode it in a config variable, use secrets and context variables",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1824,8 +1803,7 @@
     },
     "API_REPORTER_NEWRELIC_REGION": {
       "$id": "#/properties/API_REPORTER_NEWRELIC_REGION",
-      "deprecated": true,
-      "title": "(deprecated) API reporter (newrelic): New Relic region (US or EU)",
+      "title": "API reporter (newrelic): New Relic region (US or EU)",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1834,8 +1812,7 @@
     },
     "API_REPORTER_ORG_IDENTIFIER": {
       "$id": "#/properties/API_REPORTER_ORG_IDENTIFIER",
-      "deprecated": true,
-      "title": "(deprecated) API reporter: organization identifier added to all records",
+      "title": "API reporter: organization identifier added to all records",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1844,8 +1821,7 @@
     },
     "API_REPORTER_PAYLOAD_FORMAT": {
       "$id": "#/properties/API_REPORTER_PAYLOAD_FORMAT",
-      "deprecated": true,
-      "title": "(deprecated) API reporter (grafana): logs payload format (auto, loki or default)",
+      "title": "API reporter (grafana): logs payload format (auto, loki or default)",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1854,9 +1830,8 @@
     },
     "API_REPORTER_PROVIDER": {
       "$id": "#/properties/API_REPORTER_PROVIDER",
-      "deprecated": true,
       "description": "Available providers: grafana (default, direct Loki/Prometheus push via API_REPORTER_URL and API_REPORTER_METRICS_URL), datadog, elastic, newrelic. Example: grafana,datadog",
-      "title": "(deprecated) API reporter: comma-separated list of target providers",
+      "title": "API reporter: comma-separated list of target providers",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1865,8 +1840,7 @@
     },
     "API_REPORTER_URL": {
       "$id": "#/properties/API_REPORTER_URL",
-      "deprecated": true,
-      "title": "(deprecated) API reporter (grafana): logs endpoint URL (e.g. Loki push URL ending with /loki/api/v1/push)",
+      "title": "API reporter (grafana): logs endpoint URL (e.g. Loki push URL ending with /loki/api/v1/push)",
       "type": "string",
       "x-category": "API_REPORTER",
       "x-doc-key": "reporters/ApiReporter",
@@ -1875,7 +1849,6 @@
     },
     "API_SPECTRAL_ARGUMENTS": {
       "$id": "#/properties/API_SPECTRAL_ARGUMENTS",
-      "deprecated": true,
       "description": "API_SPECTRAL: User custom arguments to add in linter CLI call",
       "examples:": [
         "--foo",
@@ -1884,7 +1857,7 @@
       "items": {
         "type": "string"
       },
-      "title": "(deprecated) API_SPECTRAL: Custom arguments",
+      "title": "API_SPECTRAL: Custom arguments",
       "type": [
         "array",
         "string"
@@ -1900,12 +1873,11 @@
           "spectral"
         ]
       ],
-      "deprecated": true,
       "description": "API_SPECTRAL: Override CLI executable used to build the linter command line (rarely needed)",
       "items": {
         "type": "string"
       },
-      "title": "(deprecated) API_SPECTRAL: CLI Executable",
+      "title": "API_SPECTRAL: CLI Executable",
       "type": "array",
       "x-category": "API_SPECTRAL",
       "x-order": 200060,
@@ -1914,7 +1886,6 @@
     "API_SPECTRAL_CLI_LINT_MODE": {
       "$id": "#/properties/API_SPECTRAL_CLI_LINT_MODE",
       "default": "list_of_files",
-      "deprecated": true,
       "description": "API_SPECTRAL: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
@@ -1924,7 +1895,7 @@
         "File",
         "List of Files"
       ],
-      "title": "(deprecated) API_SPECTRAL: CLI lint mode",
+      "title": "API_SPECTRAL: CLI lint mode",
       "type": "string",
       "x-category": "API_SPECTRAL",
       "x-doc-key": "config-cli-lint-mode",
@@ -1933,7 +1904,6 @@
     },
     "API_SPECTRAL_COMMAND_REMOVE_ARGUMENTS": {
       "$id": "#/properties/API_SPECTRAL_COMMAND_REMOVE_ARGUMENTS",
-      "deprecated": true,
       "description": "API_SPECTRAL: User custom arguments to remove before calling linter",
       "examples:": [
         "--foo",
@@ -1942,7 +1912,7 @@
       "items": {
         "type": "string"
       },
-      "title": "(deprecated) API_SPECTRAL: Custom remove arguments",
+      "title": "API_SPECTRAL: Custom remove arguments",
       "type": [
         "array",
         "string"
@@ -1954,9 +1924,8 @@
     "API_SPECTRAL_CONFIG_FILE": {
       "$id": "#/properties/API_SPECTRAL_CONFIG_FILE",
       "default": ".spectral.yaml",
-      "deprecated": true,
       "description": "API_SPECTRAL: User custom config file name if different from default",
-      "title": "(deprecated) API_SPECTRAL: Custom config file name",
+      "title": "API_SPECTRAL: Custom config file name",
       "type": "string",
       "x-category": "API_SPECTRAL",
       "x-order": 200010,
@@ -1965,9 +1934,8 @@
     "API_SPECTRAL_DISABLE_ERRORS": {
       "$id": "#/properties/API_SPECTRAL_DISABLE_ERRORS",
       "default": false,
-      "deprecated": true,
       "description": "API_SPECTRAL: If true, API_SPECTRAL doesn't make MegaLinter fail even if errors are found",
-      "title": "(deprecated) API_SPECTRAL: Disable errors",
+      "title": "API_SPECTRAL: Disable errors",
       "type": "boolean",
       "x-category": "API_SPECTRAL",
       "x-order": 400000,
@@ -1976,9 +1944,8 @@
     "API_SPECTRAL_DISABLE_ERRORS_IF_LESS_THAN": {
       "$id": "#/properties/API_SPECTRAL_DISABLE_ERRORS_IF_LESS_THAN",
       "default": 0,
-      "deprecated": true,
       "description": "API_SPECTRAL: If the number of errors found is less than this value, API_SPECTRAL doesn't make MegaLinter fail",
-      "title": "(deprecated) API_SPECTRAL: Maximum number of errors allowed",
+      "title": "API_SPECTRAL: Maximum number of errors allowed",
       "type": "number",
       "x-category": "API_SPECTRAL",
       "x-order": 400010,
@@ -1991,7 +1958,6 @@
         ".yaml",
         ".json"
       ],
-      "deprecated": true,
       "description": "API_SPECTRAL: Override descriptor/linter matching files extensions that will be used to select files to lint",
       "examples": [
         ".py",
@@ -2000,7 +1966,7 @@
       "items": {
         "type": "string"
       },
-      "title": "(deprecated) API_SPECTRAL: Matching files extensions",
+      "title": "API_SPECTRAL: Matching files extensions",
       "type": "array",
       "x-category": "API_SPECTRAL",
       "x-order": 300020,
@@ -2009,7 +1975,6 @@
     "API_SPECTRAL_FILE_NAMES_REGEX": {
       "$id": "#/properties/API_SPECTRAL_FILE_NAMES_REGEX",
       "default": [],
-      "deprecated": true,
       "description": "API_SPECTRAL: Override descriptor/linter matching file name regexes that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -2018,7 +1983,7 @@
       "items": {
         "type": "string"
       },
-      "title": "(deprecated) API_SPECTRAL: Matching file name regexes",
+      "title": "API_SPECTRAL: Matching file name regexes",
       "type": "array",
       "x-category": "API_SPECTRAL",
       "x-order": 300030,
@@ -2026,12 +1991,11 @@
     },
     "API_SPECTRAL_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/API_SPECTRAL_FILTER_REGEX_EXCLUDE",
-      "deprecated": true,
       "description": "",
       "items": {
         "type": "string"
       },
-      "title": "(deprecated) API_SPECTRAL: Excluding Regex",
+      "title": "API_SPECTRAL: Excluding Regex",
       "type": [
         "string",
         "array"
@@ -2043,12 +2007,11 @@
     },
     "API_SPECTRAL_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/API_SPECTRAL_FILTER_REGEX_INCLUDE",
-      "deprecated": true,
       "description": "",
       "items": {
         "type": "string"
       },
-      "title": "(deprecated) API_SPECTRAL: Including Regex",
+      "title": "API_SPECTRAL: Including Regex",
       "type": [
         "string",
         "array"
@@ -2060,7 +2023,6 @@
     },
     "API_SPECTRAL_POST_COMMANDS": {
       "$id": "#/properties/API_SPECTRAL_POST_COMMANDS",
-      "deprecated": true,
       "description": "API_SPECTRAL: Define bash commands to run after running API_SPECTRAL",
       "examples": [
         [
@@ -2074,7 +2036,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "(deprecated) API_SPECTRAL: Post-run commands",
+      "title": "API_SPECTRAL: Post-run commands",
       "type": "array",
       "x-category": "API_SPECTRAL",
       "x-order": 500010,
@@ -2082,7 +2044,6 @@
     },
     "API_SPECTRAL_PRE_COMMANDS": {
       "$id": "#/properties/API_SPECTRAL_PRE_COMMANDS",
-      "deprecated": true,
       "description": "API_SPECTRAL: Define bash commands to run before running API_SPECTRAL",
       "examples": [
         [
@@ -2096,7 +2057,7 @@
       "items": {
         "$ref": "#/definitions/command_info"
       },
-      "title": "(deprecated) API_SPECTRAL: Pre-run commands",
+      "title": "API_SPECTRAL: Pre-run commands",
       "type": "array",
       "x-category": "API_SPECTRAL",
       "x-order": 500000,
@@ -2104,9 +2065,8 @@
     },
     "API_SPECTRAL_RULES_PATH": {
       "$id": "#/properties/API_SPECTRAL_RULES_PATH",
-      "deprecated": true,
       "description": "API_SPECTRAL: Path where to find linter configuration file",
-      "title": "(deprecated) API_SPECTRAL: Custom config file path",
+      "title": "API_SPECTRAL: Custom config file path",
       "type": "string",
       "x-category": "API_SPECTRAL",
       "x-order": 200040,
@@ -2115,12 +2075,11 @@
     "API_SPECTRAL_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/API_SPECTRAL_UNSECURED_ENV_VARIABLES",
       "default": [],
-      "deprecated": true,
       "description": "List of env variables explicitly not filtered before calling API_SPECTRAL and its pre/post commands",
       "items": {
         "type": "string"
       },
-      "title": "(deprecated) API_SPECTRAL: Unsecured env variables",
+      "title": "API_SPECTRAL: Unsecured env variables",
       "type": "array",
       "x-category": "API_SPECTRAL",
       "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
