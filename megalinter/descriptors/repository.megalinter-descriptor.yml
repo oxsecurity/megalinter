@@ -305,7 +305,7 @@ linters:
       - **Live secret validation** via CEL-based async HTTP requests per rule
       - **Custom rule support** using CEL (Common Expression Language) filter expressions
       - **Automatic encoding handling** — recursively decodes base64, hex, unicode, and nested archives
-      - **Multiple output formats** including JSON, SARIF, and custom Go templates
+      - **Multiple output formats** including JSON, SARIF, and custom Go templates. SARIF support is partial: findings are always reported at `warning` level rather than `error`, inherited from the same gitleaks behavior ([gitleaks/gitleaks#1858](https://github.com/gitleaks/gitleaks/issues/1858))
       - **Backward compatible** — reads existing `.gitleaks.toml` and `.gitleaksignore` files
       - **Pre-commit hook integration** to prevent secrets from being committed
       - **Baseline support** to ignore known secrets while catching new ones
@@ -554,7 +554,7 @@ linters:
 
       - **Broad ecosystem support**: Scans dependencies from multiple package managers and lockfile formats
       - **Source project scanning**: Recursively scans source directories for vulnerable packages
-      - **SARIF output**: Exports findings in SARIF format for CI and security platform integrations
+      - **SARIF output**: Exports findings in SARIF format for CI and security platform integrations. SARIF support is currently partial: every finding is reported at `warning` level regardless of the vulnerability's actual severity, so it can't be used to gate only on critical/high-severity issues ([upstream fix proposed](https://github.com/google/osv-scanner/pull/2982))
       - **Configurable behavior**: Supports repository-level configuration using `osv-scanner.toml`
       - **Reliable vulnerability data**: Uses OSV.dev vulnerability records maintained by the open source security community
       - **Fast CI usage**: Designed for automated security checks in pipelines and pre-commit workflows

@@ -22,7 +22,7 @@ linters:
 
       - **Multi-Language Support**: Detects copy-paste across 170+ programming languages including JavaScript, TypeScript, Python, Java, C#, and more
       - **Flexible Detection Algorithms**: Multiple algorithms for finding duplicates including token-based and semantic matching
-      - **Comprehensive Reporting**: Generates detailed reports in HTML, JSON, XML, Markdown, and other formats with visual diff highlighting
+      - **Comprehensive Reporting**: Generates detailed reports in HTML, JSON, XML, Markdown, SARIF and other formats with visual diff highlighting. SARIF support is partial: every clone is reported at `warning` level regardless of its size, so a 3-line duplicate and a 300-line one look identical to a SARIF consumer ([upstream issue](https://github.com/kucherenko/jscpd/issues/908))
       - **Configurable Thresholds**: Set minimum clone sizes, similarity percentages, and detection sensitivity for different file types
       - **Blame Integration**: Shows Git blame information to identify when and who introduced duplicated code
       - **Performance Optimization**: Efficient scanning algorithms that can handle large codebases with millions of lines
