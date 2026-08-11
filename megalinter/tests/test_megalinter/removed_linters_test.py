@@ -50,7 +50,9 @@ class removed_linters_test(unittest.TestCase):
         self.assertEqual(found, ["REPOSITORY_GITLEAKS"])
 
     def test_is_removed_related_variable(self):
-        self.assertTrue(is_removed_related_variable("API_SPECTRAL_CLI_EXECUTABLE"))
+        self.assertTrue(
+            is_removed_related_variable("MARKDOWN_REMARK_LINT_CLI_EXECUTABLE")
+        )
         self.assertTrue(is_removed_related_variable("MAKEFILE_FILTER_REGEX_INCLUDE"))
         self.assertFalse(is_removed_related_variable("PYTHON_RUFF_ARGUMENTS"))
         # A removed descriptor key must not match unrelated variables sharing its prefix
