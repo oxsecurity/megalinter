@@ -4,6 +4,7 @@ Use lintr to lint R files
 https://github.com/r-lib/lintr
 """
 
+import os
 from pathlib import Path
 
 from megalinter import Linter
@@ -31,8 +32,14 @@ class RLinter(Linter):
         # of resolving self.sarif_output_file, not for its cli_sarif_args return)
         if self.can_output_sarif is True and self.output_sarif is True:
             self.get_sarif_arguments()
+            # lintr::sarif_output() requires a relative path ("Package path
+            # needs to be a relative path"); the R process's cwd is set to
+            # the file's own directory above
+            sarif_relative_path = os.path.relpath(
+                self.sarif_output_file, start=Path(file).parent
+            ).replace("\\", "/")
             r_commands.append(
-                f"lintr::sarif_output(lints, filename = '{self.sarif_output_file}')"
+                f"lintr::sarif_output(lints, filename = '{sarif_relative_path}')"
             )
 
         r_commands += [
