@@ -118,6 +118,13 @@ def get_prebuilt_linter_version(linter_name):
 _excluded_directories_cache: dict[str, set[str]] = {}
 
 
+# MegaLinter writes its own files there while linters run, so it must never be
+# analyzed: a report file created or deleted mid-run makes project-mode linters
+# walking the workspace fail
+def get_report_output_folder_name(request_id):
+    return config.get(request_id, "REPORT_OUTPUT_FOLDER", "megalinter-reports")
+
+
 def get_excluded_directories(request_id):
     cache_key = str(request_id)
     cached = _excluded_directories_cache.get(cache_key)
@@ -143,12 +150,13 @@ def get_excluded_directories(request_id):
         ".wireit",
         ".yarn/cache",
         "node_modules",
-        config.get(request_id, "REPORT_OUTPUT_FOLDER", "megalinter-reports"),
     ]
     excluded_dirs = config.get_list(
         request_id, "EXCLUDED_DIRECTORIES", default_excluded_dirs
     )
     excluded_dirs += config.get_list(request_id, "ADDITIONAL_EXCLUDED_DIRECTORIES", [])
+    # Always excluded, even when EXCLUDED_DIRECTORIES is overridden
+    excluded_dirs += [get_report_output_folder_name(request_id)]
     result = set(excluded_dirs)
     _excluded_directories_cache[cache_key] = result
     return result

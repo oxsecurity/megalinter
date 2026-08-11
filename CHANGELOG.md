@@ -19,6 +19,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - `EXCLUDED_DIRECTORIES` are forwarded in project lint mode through a generated configuration extending the workspace one
 
 - Disabled linters
+  - **COFFEE_COFFEELINT** is disabled: CoffeeScript tooling is discontinued, and coffeelint can not receive `EXCLUDED_DIRECTORIES` in project lint mode (it has no exclusion option and reads `.coffeelintignore` only from its working directory). The linter will be removed in a future version
 
 - Re-enabled linters
   - **[spectral](https://megalinter.io/latest/descriptors/api_spectral/)** is back as **API_SPECTRAL**, together with the **API** descriptor, to lint your **OpenAPI**, **AsyncAPI** and **Arazzo** specifications ([#8717](https://github.com/oxsecurity/megalinter/issues/8717))
@@ -32,12 +33,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Media
 
 - Linters enhancements
+  - **CLOJURE_CLJSTYLE** now forwards `EXCLUDED_DIRECTORIES` through its native repeatable `--ignore` argument, instead of a temporary `.cljstyle` written in your repository. Exclusions are now also applied when your repository already has a `.cljstyle` config, whose own ignore patterns are preserved
+  - **SQL_SQLFLUFF** now receives `EXCLUDED_DIRECTORIES` through the `ignore_paths` key of a generated sqlfluff configuration, instead of a temporary `.sqlfluffignore` written in your repository
   - **SARIF output** is now available for 13 more linters: **zizmor**, **bicep_linter**, **cppcheck**, **clj-kondo**, **roslynator**, **htmlhint**, **protolint**, **sqlfluff**, **swiftlint**, **osv-scanner**, **trufflehog**, **jscpd** and **lintr**. Enable it the same way as any other SARIF-capable linter, with `SARIF_REPORTER: true` (optionally scoped with `SARIF_REPORTER_LINTERS`)
     - The 4 **Salesforce Code Analyzer** engines (`SALESFORCE_CODE_ANALYZER_APEX`, `_AURA`, `_LWC`, `_FLOW`) also gained SARIF output: their report switches from CSV to SARIF automatically when SARIF reporting is requested
     - `csharp_roslynator` is bumped from 0.12.0 to **0.13.0**, the first release including its SARIF output support
     - `clj-kondo`'s upstream SARIF output currently nests the `region` property one level too deep, which may affect line/column display in strict SARIF consumers (clj-kondo/clj-kondo#2345)
 
 - Fixes
+  - Fixed **random crashes of project-mode linters** (`REPOSITORY_TRIVY`, `REPOSITORY_GRYPE`, `REPOSITORY_SYFT`…) caused by MegaLinter writing temporary ignore files inside the analyzed sources: a file appearing then disappearing while another linter walked the repository aborted its scan (`walk dir error: ... no such file or directory`). **MegaLinter now writes only in REPORT_OUTPUT_FOLDER**, never in your sources
+  - **REPORT_OUTPUT_FOLDER** is now always excluded from what linters analyze, even when you override `EXCLUDED_DIRECTORIES`, and even when the folder does not exist yet when a linter starts
   - The **API reporter** variables (`API_REPORTER`, `API_REPORTER_URL`…) are not flagged as **deprecated** anymore in the configuration JSON schema: they were collateral damage of the removal of the `API` descriptor in v10.0.0, and IDEs displayed them as obsolete
 
 - Reporters
@@ -64,6 +69,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **megalinter-setup** in upgrade mode now also updates the **installed skills and sub-agents** (`npx skills update`), so the guidance you run matches the MegaLinter version you just upgraded to
 
 - Dev
+  - Retired the `cli_lint_mode_project_exclude_workspace_file_name` descriptor property and the `write_workspace_generated_file()` helper, and removed the property from the descriptor JSON schema so a future descriptor can not silently reintroduce a write inside the analyzed sources. Exclusion forwarding now offers three mechanisms only: native CLI flag, generated ignore file in the report folder, generated config via `manage_excluded_directories_config()`
   - **Deprecation flags of removed linters are now reversible** in the configuration JSON schema: `build.py` clears the `deprecated` flag and the `(deprecated)` title prefix of variables whose linter or descriptor is back, instead of only ever adding them
   - **spectral is installed in its own `node_modules` tree** (`/node-deps-spectral`) instead of the shared `/node-deps` one, which is what made it crash: `@prantlf/jsonlint` pins `ajv` to exactly `8.17.1` and so owns the hoisted root copy, while `@stoplight/spectral-core` requires `ajv >= 8.18.0` and gets a nested one, so its hoisted `ajv-errors` bound to the other `ajv` instance and ajv generated invalid JavaScript (`SyntaxError: Unexpected token ':'` at `new Function`). Any npm linter sharing the tree with an exact-pinned transitive dependency can hit the same trap
   - **6 Python dependencies removed** from the MegaLinter runtime, replaced by standard library equivalents: `commentjson`, `terminaltables` and `multiprocessing_logging` (unmaintained), plus `termcolor`, `regex` and the obsolete `importlib-metadata` backport

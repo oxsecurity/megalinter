@@ -87,8 +87,7 @@ linters:
           url: https://github.com/marcomorain/clojure-lint
 
     # cljstyle
-  - class: CljstyleLinter
-    linter_name: cljstyle
+  - linter_name: cljstyle
     linter_text: |
       **cljstyle** is a comprehensive tool for formatting Clojure code that transforms messy, inconsistent code into beautifully formatted, readable source files. It's a rewrite of the original cljfmt tool with enhanced capabilities and native compilation.
 
@@ -117,6 +116,9 @@ linters:
       - project
     cli_lint_extra_args:
       - "check"
+    # Repeatable, values are compiled as regexes matched against the full path,
+    # and they are added to the ignore set of the user .cljstyle config
+    cli_lint_mode_project_exclude_arg_name: "--ignore"
     cli_lint_mode_project_extra_args_after:
       - .
     cli_lint_fix_arg_name: "fix"

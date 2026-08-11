@@ -33,7 +33,6 @@ def build_linter(request_id, workspace="."):
     linter.output_sarif = False
     linter.sarif_output_file = None
     linter.sarif_default_output_file = None
-    linter.workspace_generated_files = []
     linter.unsecured_env_variables = []
     linter.timeout_seconds = None
     linter.timeout_config_var = None

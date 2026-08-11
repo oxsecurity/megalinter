@@ -59,8 +59,6 @@ cli_lint_mode_project_exclude_seed_values: ["**/.git/**"]    # defaults to re-in
 cli_lint_mode_project_exclude_ignore_file_arg_name: "--ignore-path"          # argument receiving the generated ignore file
 cli_lint_mode_project_exclude_ignore_file_seed_files: [".toolignore"]        # workspace files merged into it (first existing wins)
 cli_lint_mode_project_exclude_ignore_file_pass_existing: [".gitignore"]      # files re-passed via the same arg when it replaces their discovery
-# When the tool only discovers ignore files inside the analyzed repository:
-cli_lint_mode_project_exclude_workspace_file_name: ".toolignore"             # written at workspace root only if absent, removed after the run
 ```
 
 One more property preserves config-file lists that the CLI flag would replace:
@@ -69,12 +67,13 @@ One more property preserves config-file lists that the CLI flag would replace:
 cli_lint_mode_project_exclude_config_key: "scan.skip-dirs"   # dotted key path of the resolved config list the flag REPLACES: its entries are re-emitted first
 ```
 
+**Never write inside the analyzed sources.** Every file MegaLinter generates goes to `REPORT_OUTPUT_FOLDER` (`write_report_generated_file`). A file created then deleted at the workspace root during the run crashes the project-mode linters walking the tree at the same moment (trivy aborts with `walk dir error … no such file or directory`), and the failure is timing-dependent, so it surfaces as a random red build. A tool that can only read an ignore file it discovers itself inside the repository gets **no** exclusion forwarding — say so in `disabled_reason` or in `linter_text`, do not write the file.
+
 **Choosing the mechanism** (exactly ONE per linter — the base class applies all declared mechanisms, so declaring two forwards twice):
 
 1. Native CLI exclusion flag → `..._exclude_arg_name` (+ value template / separator / seed values / config key).
 2. Flag taking an ignore FILE → `..._exclude_ignore_file_*` (generated in the report folder, merged with seeds).
-3. Tool only discovers ignore files inside the repo → `..._exclude_workspace_file_name` (temp file at workspace root, only if absent, auto-removed).
-4. Anything needing a generated/merged CONFIG (yamllint extends, rubocop inherit_from, phpstan includes, TOML/PHP configs…) → override `manage_excluded_directories_config(cmd)` in the linter class. It is called only in project mode when forwarding is active (single gate: `is_project_exclude_forwarding_active`, overridable via `FORWARD_EXCLUDED_DIRECTORIES` / `<LINTER_KEY>_FORWARD_EXCLUDED_DIRECTORIES`). Use the base helpers `find_cli_argument_value_index`, `replace_or_append_cli_argument`, `write_report_generated_file`, `write_workspace_generated_file`, `read_workspace_file_lines`, and call `log_project_exclude_forwarding` so the action shows in the console log.
+3. Anything needing a generated/merged CONFIG (yamllint extends, rubocop inherit_from, phpstan includes, sqlfluff ignore_paths, TOML/PHP configs…) → override `manage_excluded_directories_config(cmd)` in the linter class. It is called only in project mode when forwarding is active (single gate: `is_project_exclude_forwarding_active`, overridable via `FORWARD_EXCLUDED_DIRECTORIES` / `<LINTER_KEY>_FORWARD_EXCLUDED_DIRECTORIES`). Use the base helpers `find_cli_argument_value_index`, `replace_or_append_cli_argument`, `write_report_generated_file`, `read_workspace_file_lines`, and call `log_project_exclude_forwarding` so the action shows in the console log.
 
 Rules and known traps (each was hit for real — verify against official docs/source before filling anything):
 

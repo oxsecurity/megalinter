@@ -125,8 +125,6 @@ ARG NPM_TYPESCRIPT_VERSION=6.0.3
 ARG PIP_ANSIBLE_LINT_VERSION=26.6.0
 # renovate: datasource=npm depName=@stoplight/spectral-cli
 ARG NPM_SPECTRAL_CLI_VERSION=6.16.3
-# renovate: datasource=npm depName=@coffeelint/cli
-ARG NPM_COFFEELINT_CLI_VERSION=5.2.11
 # renovate: datasource=npm depName=jscpd
 ARG NPM_JSCPD_VERSION=5.0.14
 # renovate: datasource=npm depName=stylelint
@@ -432,7 +430,6 @@ WORKDIR /node-deps
 RUN npm config set prefix /usr/local \
     && npm --no-cache install --ignore-scripts --omit=dev \
                 typescript@${NPM_TYPESCRIPT_VERSION} \
-                @coffeelint/cli@${NPM_COFFEELINT_CLI_VERSION} \
                 jscpd@${NPM_JSCPD_VERSION} \
                 stylelint@${NPM_STYLELINT_VERSION} \
                 stylelint-config-standard@${NPM_STYLELINT_CONFIG_STANDARD_VERSION} \
@@ -520,7 +517,6 @@ RUN npm --no-cache install --ignore-scripts --omit=dev --prefix /node-deps-spect
 #              # COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 # shfmt installation
 # Managed with COPY --link --from=shfmt /bin/shfmt /usr/bin/
-# coffeelint installation
 # jscpd installation
 # stylelint installation
 # biome installation
