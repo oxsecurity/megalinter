@@ -21,7 +21,6 @@
         "BICEP_BICEP_LINTER",
         "C_CPPCHECK",
         "C_CPPLINT",
-        "COFFEE_COFFEELINT",
         "COPYPASTE_JSCPD",
         "CPP_CPPCHECK",
         "CPP_CPPLINT",

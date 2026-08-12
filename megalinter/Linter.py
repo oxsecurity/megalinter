@@ -165,10 +165,6 @@ class Linter:
         self.cli_lint_mode_project_exclude_ignore_file_arg_name = None
         self.cli_lint_mode_project_exclude_ignore_file_seed_files = []
         self.cli_lint_mode_project_exclude_ignore_file_pass_existing = []
-        # When set, the generated ignore file is written at the workspace root
-        # under this name (only if absent, removed after the run), for linters
-        # that only discover ignore files inside the analyzed repository
-        self.cli_lint_mode_project_exclude_workspace_file_name = None
         self.cli_lint_errors_count = None
         self.cli_lint_errors_regex = None
         self.cli_lint_warnings_count = None
@@ -188,9 +184,6 @@ class Linter:
 
         self.log_lines_pre: list[str] = []
         self.log_lines_post: list[str] = []
-        # Files temporarily written inside the workspace (e.g. generated ignore
-        # files for linters that only discover them there), removed after run
-        self.workspace_generated_files: list[str] = []
 
         self.report_folder = ""
         self.reporters = []
@@ -1295,7 +1288,6 @@ class Linter:
             return_code, return_stdout
         )
         self.manage_sarif_output(return_stdout)
-        self.cleanup_workspace_generated_files()
         # Return linter result
         return return_code, return_stdout
 
@@ -1761,7 +1753,10 @@ class Linter:
     # prefixes. Only directories existing at the workspace root are kept, so
     # linter arguments and generated ignore/config files stay minimal. No
     # filesystem walk: a nested-only directory or a regex too complex to trim
-    # into an existing directory is simply skipped
+    # into an existing directory is simply skipped.
+    # REPORT_OUTPUT_FOLDER is the exception: MegaLinter writes into it while
+    # linters run, so it is always forwarded, even when it does not exist yet
+    # when the command line is built
     def get_project_exclude_directories(self):
         cached = getattr(self, "project_exclude_directories", None)
         if cached is not None:
@@ -1778,6 +1773,7 @@ class Linter:
             for candidate in utils.extract_dir_candidates_from_regex(exclude_regex):
                 excluded.add(candidate)
         workspace_abs = os.path.abspath(self.workspace)
+        always_forwarded = utils.get_report_output_folder_name(self.request_id)
         existing = set()
         for excl_dir in excluded:
             if not excl_dir:
@@ -1792,7 +1788,9 @@ class Linter:
                 if rel_dir == "." or rel_dir.startswith(".."):
                     continue
                 excl_dir = rel_dir.replace("\\", "/")
-            if os.path.isdir(os.path.join(self.workspace, excl_dir)):
+            if excl_dir == always_forwarded or os.path.isdir(
+                os.path.join(self.workspace, excl_dir)
+            ):
                 existing.add(excl_dir)
         self.project_exclude_directories = sorted(existing)
         return self.project_exclude_directories
@@ -1840,61 +1838,24 @@ class Linter:
         )
         return exclude_args
 
-    # Write a temporary file inside the workspace, for linters that only
-    # discover their ignore/config files there. Removed after the lint run
-    def write_workspace_generated_file(self, file_name, content_lines):
-        file_path = os.path.join(self.workspace, file_name)
-        with open(file_path, "w", encoding="utf-8") as file_handler:
-            file_handler.write("\n".join(content_lines) + "\n")
-        self.workspace_generated_files += [file_path]
-        self.log_project_exclude_forwarding(
-            f"Temporarily generated {file_path} in the workspace to forward "
-            f"EXCLUDED_DIRECTORIES to {self.linter_name}, removed after the run "
-            f"(disable with {self.name}_FORWARD_EXCLUDED_DIRECTORIES: false)"
-        )
-        return file_path
-
-    def cleanup_workspace_generated_files(self):
-        for generated_file in self.workspace_generated_files:
-            if os.path.isfile(generated_file):
-                os.remove(generated_file)
-        self.workspace_generated_files = []
-
     # Generic forwarding of excluded directories through an ignore file, driven
-    # by the cli_lint_mode_project_exclude_ignore_file_* descriptor properties
+    # by the cli_lint_mode_project_exclude_ignore_file_* descriptor properties.
+    # The generated file always lands in the report folder: MegaLinter never
+    # writes inside the analyzed sources, as a file appearing then disappearing
+    # there crashes the project-mode linters walking the tree at the same time
     def build_project_exclude_ignore_file_arguments(self, cmd):
         arg_name = self.cli_lint_mode_project_exclude_ignore_file_arg_name
-        workspace_file_name = self.cli_lint_mode_project_exclude_workspace_file_name
-        if arg_name is None and workspace_file_name is None:
+        if arg_name is None:
             return []
         if len(self.get_project_exclude_directories()) == 0:
             return []
-        if arg_name is not None and arg_name in cmd:
+        if arg_name in cmd:
             return []
         seed_lines = []
         for seed_file in self.cli_lint_mode_project_exclude_ignore_file_seed_files:
             seed_lines = self.read_workspace_file_lines(seed_file)
             if len(seed_lines) > 0:
                 break
-        if workspace_file_name is not None:
-            # Existing workspace file stays authoritative
-            if os.path.isfile(os.path.join(self.workspace, workspace_file_name)):
-                return []
-            lines = list(seed_lines)
-            for excluded_dir in self.get_project_exclude_directories():
-                # Line syntax follows the value template (gitignore-style bare
-                # name by default, glob like {{DIR}}/** for tools such as v8r)
-                line = self.cli_lint_mode_project_exclude_arg_value.replace(
-                    "{{DIR}}", excluded_dir
-                )
-                if line not in lines:
-                    lines.append(line)
-            self.write_workspace_generated_file(workspace_file_name, lines)
-            # Pass the base name so linters resolving ignore files inside the
-            # scanned tree (ex: secretlint) discover the generated file
-            if arg_name is None:
-                return []
-            return self.build_ignore_file_argument(arg_name, workspace_file_name)
         ignore_args = []
         for (
             existing_file

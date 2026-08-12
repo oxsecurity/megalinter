@@ -23,6 +23,8 @@ linters:
       - **Detailed Reporting**: Comprehensive error reporting with line numbers, positions, and fix suggestions
       - **Custom Rules**: Extensible architecture allowing custom rule development for specific requirements
       - **Performance Optimized**: Fast parsing and analysis even for large SQL codebases
+
+      Note: in `project` lint mode, `EXCLUDED_DIRECTORIES` can not be forwarded to sqlfluff. It reads path exclusions only from a `.sqlfluffignore`, a `.sqlfluff` or a `pyproject.toml` located inside the analyzed sources, where MegaLinter never writes. Add the directories to ignore in your own `.sqlfluffignore`, or keep the default `list_of_files` lint mode, where MegaLinter filters the files itself.
     linter_url: https://www.sqlfluff.com/
     linter_repo: https://github.com/sqlfluff/sqlfluff
     linter_spdx_license: MIT
@@ -38,7 +40,6 @@ linters:
       - file
       - list_of_files
       - project
-    cli_lint_mode_project_exclude_workspace_file_name: ".sqlfluffignore"
     cli_lint_fix_arg_name: fix
     cli_lint_fix_remove_args:
       - lint

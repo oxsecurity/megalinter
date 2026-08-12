@@ -867,16 +867,6 @@
             "title": "CLI project lint mode excluded directories separator",
             "type": "string"
           },
-          "cli_lint_mode_project_exclude_workspace_file_name": {
-            "$id": "#/properties/linters/items/properties/cli_lint_mode_project_exclude_workspace_file_name",
-            "description": "When set, the generated ignore file is written under this name at the workspace root (only if absent, removed after the run), for linters that only discover ignore files inside the analyzed repository. Combined with cli_lint_mode_project_exclude_ignore_file_arg_name, the file base name is passed as the argument value",
-            "examples": [
-              ".sqlfluffignore",
-              ".megalinter-secretlintignore"
-            ],
-            "title": "CLI project lint mode workspace-written ignore file name",
-            "type": "string"
-          },
           "cli_lint_mode_project_extra_args_after": {
             "$id": "#/properties/linters/items/properties/cli_lint_mode_project_extra_args_after",
             "default": [],

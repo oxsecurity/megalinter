@@ -6,13 +6,35 @@ Unit tests for utils class
 
 import re
 import unittest
+import uuid
 import warnings
 
+from megalinter import config
 from megalinter.logger import fetch_betterleaks_regexes, sanitize_string
-from megalinter.utils import fix_regex_pattern
+from megalinter.utils import fix_regex_pattern, get_excluded_directories
 
 
 class utils_test(unittest.TestCase):
+    def test_report_folder_excluded_even_when_excluded_directories_overridden(self):
+        # MegaLinter writes its reports there while linters run, so analyzing it
+        # makes project-mode linters fail on files created or deleted mid-run
+        request_id = str(uuid.uuid1())
+        config.init_config(
+            request_id,
+            None,
+            {
+                "EXCLUDED_DIRECTORIES": "custom_dir",
+                "REPORT_OUTPUT_FOLDER": "my-reports",
+            },
+        )
+        try:
+            excluded = get_excluded_directories(request_id)
+        finally:
+            config.delete(request_id)
+        self.assertIn("my-reports", excluded)
+        self.assertIn("custom_dir", excluded)
+        self.assertNotIn("node_modules", excluded)
+
     def test_sanitize_string(self):
         input_string = "AWS Key: AKIAIOSFODNN7EXAMPLE and GitHub Token: ghp_abcdEFGHijklMNOPqrstUVWXyz1234567890"
         sanitized = sanitize_string(input_string)

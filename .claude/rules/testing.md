@@ -24,6 +24,7 @@ globs: ["megalinter/tests/**/*.py", ".automation/test/**"]
 - `.wireit` is a default excluded directory that almost no tool skips natively, so `test_success_project_lint_mode` passes only if the forwarding actually excludes it — the fixture is a regression test for the forwarding, not for the linter rules
 - When adding forwarding to a linter, add its poison fixture; when a project success test fails on a file under `.wireit/`, the forwarding is broken, not the fixture
 - Constraints: only in folders with a `good/` subfolder, and only when every project-capable linter sharing the test folder has forwarding (otherwise the poison legitimately fails the non-forwarding tenant)
+- No poison fixture for a linter that can not receive exclusions at all (coffeelint, sqlfluff): its `good/` folder must stay clean, and the limitation is documented in the descriptor `linter_text` instead
 - Poisons may be vacuous for tools that natively skip the directory (dot-folder-skipping globs, verified-only secret scanners): they never false-fail, so that is acceptable
 
 ## Running Tests

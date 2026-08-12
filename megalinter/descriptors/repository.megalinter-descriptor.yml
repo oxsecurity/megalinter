@@ -680,7 +680,6 @@ linters:
       - "--no-gitignore"
     cli_lint_mode_project_exclude_ignore_file_arg_name: "--secretlintignore"
     cli_lint_mode_project_exclude_ignore_file_seed_files: [".secretlintignore", ".gitignore"]
-    cli_lint_mode_project_exclude_workspace_file_name: ".megalinter-secretlintignore"
     cli_lint_mode_project_extra_args_after:
       - "**/*"
     cli_sarif_args:

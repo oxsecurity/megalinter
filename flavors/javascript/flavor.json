@@ -13,7 +13,6 @@
         "BASH_EXEC",
         "BASH_SHELLCHECK",
         "BASH_SHFMT",
-        "COFFEE_COFFEELINT",
         "COPYPASTE_JSCPD",
         "CSS_STYLELINT",
         "CSS_BIOME",

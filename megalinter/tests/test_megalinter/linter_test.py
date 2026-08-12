@@ -4,10 +4,13 @@ Unit tests for Linter class
 
 """
 
+import os
+import tempfile
 import unittest
 import uuid
 from unittest import mock
 
+from megalinter import config
 from megalinter.Linter import Linter
 from megalinter.linters.StyleLintLinter import StyleLintLinter
 
@@ -61,6 +64,33 @@ class LinterTest(unittest.TestCase):
         self.assertTrue(
             self.run_activation(["JAVASCRIPT_ES"], ["JAVASCRIPT_ES"], "WHATEVER")
         )
+
+    def get_forwarded_exclude_directories(self, existing_directories):
+        linter = Linter.__new__(Linter)
+        linter.name = "REPOSITORY_TRIVY"
+        linter.request_id = str(uuid.uuid1())
+        linter.filter_regex_exclude_descriptor = None
+        linter.filter_regex_exclude_linter = None
+        config.init_config(linter.request_id, None, {})
+        try:
+            with tempfile.TemporaryDirectory() as workspace:
+                linter.workspace = workspace
+                for directory in existing_directories:
+                    os.makedirs(os.path.join(workspace, directory))
+                return linter.get_project_exclude_directories()
+        finally:
+            config.delete(linter.request_id)
+
+    def test_report_folder_is_forwarded_even_when_it_does_not_exist(self):
+        # Reporters write in the report folder while linters run: a project-mode
+        # linter must skip it even when it is not created yet at command build time
+        excluded = self.get_forwarded_exclude_directories([])
+        self.assertIn("megalinter-reports", excluded)
+
+    def test_other_excluded_directories_are_forwarded_only_when_existing(self):
+        excluded = self.get_forwarded_exclude_directories(["node_modules"])
+        self.assertIn("node_modules", excluded)
+        self.assertNotIn(".venv", excluded)
 
     def test_replace_vars_with_default_variables(self):
         linter = Linter.__new__(Linter)

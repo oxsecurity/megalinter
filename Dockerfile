@@ -199,8 +199,6 @@ ARG CLJ_KONDO_VERSION=2025.01.16
 ARG CLJ_STYLE_VERSION=0.17.642
 # renovate: datasource=pypi depName=cfn-lint
 ARG PIP_CFN_LINT_VERSION=1.54.0
-# renovate: datasource=npm depName=@coffeelint/cli
-ARG NPM_COFFEELINT_CLI_VERSION=5.2.11
 # renovate: datasource=npm depName=jscpd
 ARG NPM_JSCPD_VERSION=5.0.14
 # renovate: datasource=nuget depName=csharpier
@@ -731,7 +729,6 @@ RUN npm config set prefix /usr/local \
     && npm --no-cache install --ignore-scripts --omit=dev \
                 @salesforce/cli@${NPM_SALESFORCE_CLI_VERSION} \
                 typescript@${NPM_TYPESCRIPT_VERSION} \
-                @coffeelint/cli@${NPM_COFFEELINT_CLI_VERSION} \
                 jscpd@${NPM_JSCPD_VERSION} \
                 stylelint@${NPM_STYLELINT_VERSION} \
                 stylelint-config-standard@${NPM_STYLELINT_CONFIG_STANDARD_VERSION} \
@@ -946,7 +943,6 @@ esac \
     && chmod +x install-cljstyle \
     && ./install-cljstyle --static --version "$CLJ_STYLE_VERSION" \
 # cfn-lint installation
-# coffeelint installation
 # jscpd installation
 # cpplint installation
 # csharpier installation

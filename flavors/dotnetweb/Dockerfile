@@ -140,8 +140,6 @@ ARG BICEP_EXE='bicep'
 ARG BICEP_DIR='/usr/local/bin'
 # renovate: datasource=pypi depName=cpplint
 ARG PIP_CPPLINT_VERSION=2.0.2
-# renovate: datasource=npm depName=@coffeelint/cli
-ARG NPM_COFFEELINT_CLI_VERSION=5.2.11
 # renovate: datasource=npm depName=jscpd
 ARG NPM_JSCPD_VERSION=5.0.14
 # renovate: datasource=nuget depName=csharpier
@@ -462,7 +460,6 @@ WORKDIR /node-deps
 RUN npm config set prefix /usr/local \
     && npm --no-cache install --ignore-scripts --omit=dev \
                 typescript@${NPM_TYPESCRIPT_VERSION} \
-                @coffeelint/cli@${NPM_COFFEELINT_CLI_VERSION} \
                 jscpd@${NPM_JSCPD_VERSION} \
                 stylelint@${NPM_STYLELINT_VERSION} \
                 stylelint-config-standard@${NPM_STYLELINT_CONFIG_STANDARD_VERSION} \
@@ -596,7 +593,6 @@ esac \
 && chmod +x "${BICEP_EXE}" \
 && mv "${BICEP_EXE}" "${BICEP_DIR}" \
 # cpplint installation
-# coffeelint installation
 # jscpd installation
 # cpplint installation
 # csharpier installation
