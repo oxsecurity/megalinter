@@ -11,7 +11,7 @@ description: cppcheck, cpplint, clang-format are available to analyze CPP files 
 
 | Linter                                                                                | Additional                                                                                                                                                                           |
 |---------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [**cppcheck**](cpp_cppcheck.md)<br/>[_CPP_CPPCHECK_](cpp_cppcheck.md)                 |                                                                                                                                                                                      |
+| [**cppcheck**](cpp_cppcheck.md)<br/>[_CPP_CPPCHECK_](cpp_cppcheck.md)                 | ![sarif](https://shields.io/badge/-SARIF-orange)                                                                                                                                     |
 | [**cpplint**](cpp_cpplint.md)<br/>[_CPP_CPPLINT_](cpp_cpplint.md)                     | [![GitHub stars](https://img.shields.io/github/stars/cpplint/cpplint?cacheSeconds=3600)](https://github.com/cpplint/cpplint)                                                         |
 | [**clang-format**](cpp_clang_format.md)<br/>[_CPP_CLANG_FORMAT_](cpp_clang_format.md) | [![GitHub stars](https://img.shields.io/github/stars/llvm/llvm-project?cacheSeconds=3600)](https://github.com/llvm/llvm-project) ![autofix](https://shields.io/badge/-autofix-green) |
 

@@ -9,9 +9,9 @@ description: bicep_linter is available to analyze BICEP files in MegaLinter
 
 ## Linters
 
-| Linter                                                                                      | Additional                                                                                                           |
-|---------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
-| [**bicep_linter**](bicep_bicep_linter.md)<br/>[_BICEP_BICEP_LINTER_](bicep_bicep_linter.md) | [![GitHub stars](https://img.shields.io/github/stars/Azure/bicep?cacheSeconds=3600)](https://github.com/Azure/bicep) |
+| Linter                                                                                      | Additional                                                                                                                                                            |
+|---------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**bicep_linter**](bicep_bicep_linter.md)<br/>[_BICEP_BICEP_LINTER_](bicep_bicep_linter.md) | [![GitHub stars](https://img.shields.io/github/stars/Azure/bicep?cacheSeconds=3600)](https://github.com/Azure/bicep) ![sarif](https://shields.io/badge/-SARIF-orange) |
 
 ## Linted files
 

@@ -1650,63 +1650,63 @@
       "description": "Sends MegaLinter results (payload v2: run KPIs, linters, top rules & files) to observability backends. Configure the target(s) with API_REPORTER_PROVIDER and the provider variables",
       "title": "Activate API reporter (observability: Grafana, Datadog, Elastic, New Relic)",
       "type": "boolean",
-      "x-category": "API_REPORTER",
+      "x-category": "API",
       "x-doc-key": "reporters/ApiReporter",
-      "x-order": 950999,
+      "x-order": 900999,
       "x-section": "GENERAL"
     },
     "API_REPORTER_BASIC_AUTH_PASSWORD": {
       "$id": "#/properties/API_REPORTER_BASIC_AUTH_PASSWORD",
       "title": "API reporter (grafana): logs endpoint basic auth password. Never hardcode it in a config variable, use secrets and context variables",
       "type": "string",
-      "x-category": "API_REPORTER",
+      "x-category": "API",
       "x-doc-key": "reporters/ApiReporter",
-      "x-order": 950999,
+      "x-order": 900999,
       "x-section": "GENERAL"
     },
     "API_REPORTER_BASIC_AUTH_USERNAME": {
       "$id": "#/properties/API_REPORTER_BASIC_AUTH_USERNAME",
       "title": "API reporter (grafana): logs endpoint basic auth username. Use secrets and context variables",
       "type": "string",
-      "x-category": "API_REPORTER",
+      "x-category": "API",
       "x-doc-key": "reporters/ApiReporter",
-      "x-order": 950999,
+      "x-order": 900999,
       "x-section": "GENERAL"
     },
     "API_REPORTER_BEARER_TOKEN": {
       "$id": "#/properties/API_REPORTER_BEARER_TOKEN",
       "title": "API reporter (grafana): logs endpoint bearer token. Never hardcode it in a config variable, use secrets and context variables",
       "type": "string",
-      "x-category": "API_REPORTER",
+      "x-category": "API",
       "x-doc-key": "reporters/ApiReporter",
-      "x-order": 950999,
+      "x-order": 900999,
       "x-section": "GENERAL"
     },
     "API_REPORTER_DATADOG_API_KEY": {
       "$id": "#/properties/API_REPORTER_DATADOG_API_KEY",
       "title": "API reporter (datadog): Datadog API key. Never hardcode it in a config variable, use secrets and context variables",
       "type": "string",
-      "x-category": "API_REPORTER",
+      "x-category": "API",
       "x-doc-key": "reporters/ApiReporter",
-      "x-order": 950999,
+      "x-order": 900999,
       "x-section": "GENERAL"
     },
     "API_REPORTER_DATADOG_BEARER_TOKEN": {
       "$id": "#/properties/API_REPORTER_DATADOG_BEARER_TOKEN",
       "title": "API reporter (datadog): Datadog bearer token (service account), used when no API key is defined. Never hardcode it in a config variable, use secrets and context variables",
       "type": "string",
-      "x-category": "API_REPORTER",
+      "x-category": "API",
       "x-doc-key": "reporters/ApiReporter",
-      "x-order": 950999,
+      "x-order": 900999,
       "x-section": "GENERAL"
     },
     "API_REPORTER_DATADOG_SITE": {
       "$id": "#/properties/API_REPORTER_DATADOG_SITE",
       "title": "API reporter (datadog): Datadog site (datadoghq.com, datadoghq.eu, us3.datadoghq.com...)",
       "type": "string",
-      "x-category": "API_REPORTER",
+      "x-category": "API",
       "x-doc-key": "reporters/ApiReporter",
-      "x-order": 950999,
+      "x-order": 900999,
       "x-section": "GENERAL"
     },
     "API_REPORTER_DEBUG": {
@@ -1714,9 +1714,9 @@
       "default": false,
       "title": "API reporter: log the payloads sent to the providers",
       "type": "boolean",
-      "x-category": "API_REPORTER",
+      "x-category": "API",
       "x-doc-key": "reporters/ApiReporter",
-      "x-order": 950999,
+      "x-order": 900999,
       "x-section": "GENERAL"
     },
     "API_REPORTER_DETAILS": {
@@ -1724,108 +1724,108 @@
       "default": true,
       "title": "API reporter: include per-rule and per-file breakdowns (parsed from SARIF output) in the payload",
       "type": "boolean",
-      "x-category": "API_REPORTER",
+      "x-category": "API",
       "x-doc-key": "reporters/ApiReporter",
-      "x-order": 950999,
+      "x-order": 900999,
       "x-section": "GENERAL"
     },
     "API_REPORTER_ELASTIC_API_KEY": {
       "$id": "#/properties/API_REPORTER_ELASTIC_API_KEY",
       "title": "API reporter (elastic): Elasticsearch API key. Never hardcode it in a config variable, use secrets and context variables",
       "type": "string",
-      "x-category": "API_REPORTER",
+      "x-category": "API",
       "x-doc-key": "reporters/ApiReporter",
-      "x-order": 950999,
+      "x-order": 900999,
       "x-section": "GENERAL"
     },
     "API_REPORTER_ELASTIC_INDEX_PREFIX": {
       "$id": "#/properties/API_REPORTER_ELASTIC_INDEX_PREFIX",
       "title": "API reporter (elastic): prefix of the megalinter-* indexes",
       "type": "string",
-      "x-category": "API_REPORTER",
+      "x-category": "API",
       "x-doc-key": "reporters/ApiReporter",
-      "x-order": 950999,
+      "x-order": 900999,
       "x-section": "GENERAL"
     },
     "API_REPORTER_ELASTIC_URL": {
       "$id": "#/properties/API_REPORTER_ELASTIC_URL",
       "title": "API reporter (elastic): Elasticsearch endpoint URL",
       "type": "string",
-      "x-category": "API_REPORTER",
+      "x-category": "API",
       "x-doc-key": "reporters/ApiReporter",
-      "x-order": 950999,
+      "x-order": 900999,
       "x-section": "GENERAL"
     },
     "API_REPORTER_METRICS_BASIC_AUTH_PASSWORD": {
       "$id": "#/properties/API_REPORTER_METRICS_BASIC_AUTH_PASSWORD",
       "title": "API reporter (grafana): metrics endpoint basic auth password. Never hardcode it in a config variable, use secrets and context variables",
       "type": "string",
-      "x-category": "API_REPORTER",
+      "x-category": "API",
       "x-doc-key": "reporters/ApiReporter",
-      "x-order": 950999,
+      "x-order": 900999,
       "x-section": "GENERAL"
     },
     "API_REPORTER_METRICS_BASIC_AUTH_USERNAME": {
       "$id": "#/properties/API_REPORTER_METRICS_BASIC_AUTH_USERNAME",
       "title": "API reporter (grafana): metrics endpoint basic auth username. Use secrets and context variables",
       "type": "string",
-      "x-category": "API_REPORTER",
+      "x-category": "API",
       "x-doc-key": "reporters/ApiReporter",
-      "x-order": 950999,
+      "x-order": 900999,
       "x-section": "GENERAL"
     },
     "API_REPORTER_METRICS_BEARER_TOKEN": {
       "$id": "#/properties/API_REPORTER_METRICS_BEARER_TOKEN",
       "title": "API reporter (grafana): metrics endpoint bearer token. Never hardcode it in a config variable, use secrets and context variables",
       "type": "string",
-      "x-category": "API_REPORTER",
+      "x-category": "API",
       "x-doc-key": "reporters/ApiReporter",
-      "x-order": 950999,
+      "x-order": 900999,
       "x-section": "GENERAL"
     },
     "API_REPORTER_METRICS_URL": {
       "$id": "#/properties/API_REPORTER_METRICS_URL",
       "title": "API reporter (grafana): metrics endpoint URL (e.g. Grafana Cloud Influx write URL)",
       "type": "string",
-      "x-category": "API_REPORTER",
+      "x-category": "API",
       "x-doc-key": "reporters/ApiReporter",
-      "x-order": 950999,
+      "x-order": 900999,
       "x-section": "GENERAL"
     },
     "API_REPORTER_NEWRELIC_LICENSE_KEY": {
       "$id": "#/properties/API_REPORTER_NEWRELIC_LICENSE_KEY",
       "title": "API reporter (newrelic): New Relic license key (ingest). Never hardcode it in a config variable, use secrets and context variables",
       "type": "string",
-      "x-category": "API_REPORTER",
+      "x-category": "API",
       "x-doc-key": "reporters/ApiReporter",
-      "x-order": 950999,
+      "x-order": 900999,
       "x-section": "GENERAL"
     },
     "API_REPORTER_NEWRELIC_REGION": {
       "$id": "#/properties/API_REPORTER_NEWRELIC_REGION",
       "title": "API reporter (newrelic): New Relic region (US or EU)",
       "type": "string",
-      "x-category": "API_REPORTER",
+      "x-category": "API",
       "x-doc-key": "reporters/ApiReporter",
-      "x-order": 950999,
+      "x-order": 900999,
       "x-section": "GENERAL"
     },
     "API_REPORTER_ORG_IDENTIFIER": {
       "$id": "#/properties/API_REPORTER_ORG_IDENTIFIER",
       "title": "API reporter: organization identifier added to all records",
       "type": "string",
-      "x-category": "API_REPORTER",
+      "x-category": "API",
       "x-doc-key": "reporters/ApiReporter",
-      "x-order": 950999,
+      "x-order": 900999,
       "x-section": "GENERAL"
     },
     "API_REPORTER_PAYLOAD_FORMAT": {
       "$id": "#/properties/API_REPORTER_PAYLOAD_FORMAT",
       "title": "API reporter (grafana): logs payload format (auto, loki or default)",
       "type": "string",
-      "x-category": "API_REPORTER",
+      "x-category": "API",
       "x-doc-key": "reporters/ApiReporter",
-      "x-order": 950999,
+      "x-order": 900999,
       "x-section": "GENERAL"
     },
     "API_REPORTER_PROVIDER": {
@@ -1833,18 +1833,18 @@
       "description": "Available providers: grafana (default, direct Loki/Prometheus push via API_REPORTER_URL and API_REPORTER_METRICS_URL), datadog, elastic, newrelic. Example: grafana,datadog",
       "title": "API reporter: comma-separated list of target providers",
       "type": "string",
-      "x-category": "API_REPORTER",
+      "x-category": "API",
       "x-doc-key": "reporters/ApiReporter",
-      "x-order": 950999,
+      "x-order": 900999,
       "x-section": "GENERAL"
     },
     "API_REPORTER_URL": {
       "$id": "#/properties/API_REPORTER_URL",
       "title": "API reporter (grafana): logs endpoint URL (e.g. Loki push URL ending with /loki/api/v1/push)",
       "type": "string",
-      "x-category": "API_REPORTER",
+      "x-category": "API",
       "x-doc-key": "reporters/ApiReporter",
-      "x-order": 950999,
+      "x-order": 900999,
       "x-section": "GENERAL"
     },
     "API_SPECTRAL_ARGUMENTS": {
@@ -2071,6 +2071,19 @@
       "x-category": "API_SPECTRAL",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
+    },
+    "API_SPECTRAL_TIMEOUT_SECONDS": {
+      "$id": "#/properties/API_SPECTRAL_TIMEOUT_SECONDS",
+      "description": "API_SPECTRAL: Maximum duration in seconds of the API_SPECTRAL run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "API_SPECTRAL: Timeout in seconds",
+      "type": "integer",
+      "x-category": "API_SPECTRAL",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "API_SPECTRAL_UNSECURED_ENV_VARIABLES": {
       "$id": "#/properties/API_SPECTRAL_UNSECURED_ENV_VARIABLES",

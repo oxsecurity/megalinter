@@ -100,6 +100,7 @@ One guide per linter: load a guide only when the related linter reports errors.
 | ACTION_ACTIONLINT                 | ACTION         | [action_actionlint.md](action_actionlint.md)                                 |
 | ACTION_ZIZMOR                     | ACTION         | [action_zizmor.md](action_zizmor.md)                                         |
 | ANSIBLE_ANSIBLE_LINT              | ANSIBLE        | [ansible_ansible_lint.md](ansible_ansible_lint.md)                           |
+| API_SPECTRAL                      | API            | [api_spectral.md](api_spectral.md)                                           |
 | ARM_ARM_TTK                       | ARM            | [arm_arm_ttk.md](arm_arm_ttk.md)                                             |
 | BICEP_BICEP_LINTER                | BICEP          | [bicep_bicep_linter.md](bicep_bicep_linter.md)                               |
 | CLOUDFORMATION_CFN_LINT           | CLOUDFORMATION | [cloudformation_cfn_lint.md](cloudformation_cfn_lint.md)                     |

@@ -10,7 +10,6 @@ Their configuration variables remain valid in the [configuration JSON schema](ht
 
 | Linter                              | Removed in | Replacement                     | Reason                                                                                                                         |
 |:------------------------------------|:----------:|:--------------------------------|:-------------------------------------------------------------------------------------------------------------------------------|
-| `API_SPECTRAL`                      |  v10.0.0   | None                            | Crashing with no upstream fix, and the API descriptor had no other linter                                                      |
 | `JSON_ESLINT_PLUGIN_JSONC`          |  v10.0.0   | `JSON_PRETTIER`                 | Long-standing upstream bug in eslint-plugin-jsonc (ota-meshi/eslint-plugin-jsonc#328)                                          |
 | `LUA_SELENE`                        |  v10.0.0   | `LUA_LUACHECK`                  | Disabled since an unresolved upstream bug (Kampfkarren/selene#662)                                                             |
 | `MAKEFILE_CHECKMAKE`                |  v10.0.0   | None                            | Disabled for security issues (checkmake/checkmake#99), and the MAKEFILE descriptor had no other linter                         |
@@ -26,7 +25,7 @@ Their configuration variables remain valid in the [configuration JSON schema](ht
 | `TERRAFORM_TERRASCAN`               |  v10.0.0   | `REPOSITORY_CHECKOV`            | Upstream repository archived by Tenable and shipping unpatched CVEs with no prospect of a fixed release                        |
 | `MARKDOWN_MARKDOWN_LINK_CHECK`      |   v9.0.0   | `SPELL_LYCHEE`                  | lychee can be used instead and has much better performances                                                                    |
 | `CSS_SCSS_LINT`                     |   v8.0.0   | `CSS_STYLELINT`                 | Project discontinued, with its authors advising to use stylelint instead                                                       |
-| `OPENAPI_SPECTRAL`                  |   v8.0.0   | None                            | Replaced by API_SPECTRAL, which has since been removed too                                                                     |
+| `OPENAPI_SPECTRAL`                  |   v8.0.0   | `API_SPECTRAL`                  | Replaced by API_SPECTRAL, which runs the same linter on both OpenAPI and AsyncAPI files                                        |
 | `SQL_SQL_LINT`                      |   v8.0.0   | `SQL_SQLFLUFF`                  | No longer maintained (joereynolds/sql-lint#262)                                                                                |
 | `KUBERNETES_KUBEVAL`                |   v7.0.0   | `KUBERNETES_KUBECONFORM`        | No longer maintained, and its authors recommend kubeconform instead                                                            |
 | `REPOSITORY_GOODCHECK`              |   v7.0.0   | None                            | Upstream is not open-source anymore                                                                                            |
@@ -40,11 +39,10 @@ Their configuration variables remain valid in the [configuration JSON schema](ht
 
 ## Removed descriptors
 
-| Descriptor    | Removed in | Replacement  | Reason                                                             |
-|:--------------|:----------:|:-------------|:-------------------------------------------------------------------|
-| `API`         |  v10.0.0   | None         | Its only linter, API_SPECTRAL, has been removed                    |
-| `MAKEFILE`    |  v10.0.0   | None         | Its only linter, MAKEFILE_CHECKMAKE, has been removed              |
-| `PUPPET`      |  v10.0.0   | None         | Its only linter, PUPPET_PUPPET_LINT, has been removed              |
-| `OPENAPI`     |   v8.0.0   | None         | Superseded by the API descriptor, which has since been removed too |
-| `CREDENTIALS` |   v6.0.0   | `REPOSITORY` | Merged into the REPOSITORY descriptor                              |
-| `GIT`         |   v6.0.0   | `REPOSITORY` | Merged into the REPOSITORY descriptor                              |
+| Descriptor    | Removed in | Replacement  | Reason                                                |
+|:--------------|:----------:|:-------------|:------------------------------------------------------|
+| `MAKEFILE`    |  v10.0.0   | None         | Its only linter, MAKEFILE_CHECKMAKE, has been removed |
+| `PUPPET`      |  v10.0.0   | None         | Its only linter, PUPPET_PUPPET_LINT, has been removed |
+| `OPENAPI`     |   v8.0.0   | `API`        | Superseded by the API descriptor                      |
+| `CREDENTIALS` |   v6.0.0   | `REPOSITORY` | Merged into the REPOSITORY descriptor                 |
+| `GIT`         |   v6.0.0   | `REPOSITORY` | Merged into the REPOSITORY descriptor                 |

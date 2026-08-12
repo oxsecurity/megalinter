@@ -9,9 +9,9 @@ description: sqlfluff is available to analyze SQL files in MegaLinter
 
 ## Linters
 
-| Linter                                                                | Additional                                                                                                                                                                           |
-|-----------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [**sqlfluff**](sql_sqlfluff.md)<br/>[_SQL_SQLFLUFF_](sql_sqlfluff.md) | [![GitHub stars](https://img.shields.io/github/stars/sqlfluff/sqlfluff?cacheSeconds=3600)](https://github.com/sqlfluff/sqlfluff) ![autofix](https://shields.io/badge/-autofix-green) |
+| Linter                                                                | Additional                                                                                                                                                                                                                            |
+|-----------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**sqlfluff**](sql_sqlfluff.md)<br/>[_SQL_SQLFLUFF_](sql_sqlfluff.md) | [![GitHub stars](https://img.shields.io/github/stars/sqlfluff/sqlfluff?cacheSeconds=3600)](https://github.com/sqlfluff/sqlfluff) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) |
 
 ## Linted files
 
