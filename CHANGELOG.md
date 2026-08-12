@@ -36,6 +36,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - The 4 **Salesforce Code Analyzer** engines (`SALESFORCE_CODE_ANALYZER_APEX`, `_AURA`, `_LWC`, `_FLOW`) also gained SARIF output: their report switches from CSV to SARIF automatically when SARIF reporting is requested
     - `csharp_roslynator` is bumped from 0.12.0 to **0.13.0**, the first release including its SARIF output support
     - `clj-kondo`'s upstream SARIF output currently nests the `region` property one level too deep, which may affect line/column display in strict SARIF consumers (clj-kondo/clj-kondo#2345)
+  - **Prettier** linters (**JSON_PRETTIER**, **YAML_PRETTIER**, **JAVASCRIPT_PRETTIER**, **TYPESCRIPT_PRETTIER**) now tell you how to install a **Prettier plugin** when one declared in your `.prettierrc` fails to load with `Cannot find package ... imported from noop.js` ([#6980](https://github.com/oxsecurity/megalinter/issues/6980))
+    - Prettier v3 resolves plugins with a native ESM `import()` from the workspace and ignores `NODE_PATH`, so plugins installed with the default `cwd: root` land in `/node-deps` where Prettier never looks for them
+    - The guidance surfaced in the log is to install them through `<LINTER_KEY>_PRE_COMMANDS` with **`cwd: workspace`**, which keeps plain package names in `.prettierrc` so the very same config still works when you run Prettier locally without MegaLinter
 
 - Fixes
   - The **API reporter** variables (`API_REPORTER`, `API_REPORTER_URL`…) are not flagged as **deprecated** anymore in the configuration JSON schema: they were collateral damage of the removal of the `API` descriptor in v10.0.0, and IDEs displayed them as obsolete
