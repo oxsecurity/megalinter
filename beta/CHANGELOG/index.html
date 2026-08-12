@@ -15621,6 +15621,11 @@
 <li><code>clj-kondo</code>'s upstream SARIF output currently nests the <code>region</code> property one level too deep, which may affect line/column display in strict SARIF consumers (clj-kondo/clj-kondo#2345)</li>
 </ul>
 </li>
+<li><strong>Prettier</strong> linters (<strong>JSON_PRETTIER</strong>, <strong>YAML_PRETTIER</strong>, <strong>JAVASCRIPT_PRETTIER</strong>, <strong>TYPESCRIPT_PRETTIER</strong>) now tell you how to install a <strong>Prettier plugin</strong> when one declared in your <code>.prettierrc</code> fails to load with <code>Cannot find package ... imported from noop.js</code> (<a href="https://github.com/oxsecurity/megalinter/issues/6980">#6980</a>)<ul>
+<li>Prettier v3 resolves plugins with a native ESM <code>import()</code> from the workspace and ignores <code>NODE_PATH</code>, so plugins installed with the default <code>cwd: root</code> land in <code>/node-deps</code> where Prettier never looks for them</li>
+<li>The guidance surfaced in the log is to install them through <code>&lt;LINTER_KEY&gt;_PRE_COMMANDS</code> with <strong><code>cwd: workspace</code></strong>, which keeps plain package names in <code>.prettierrc</code> so the very same config still works when you run Prettier locally without MegaLinter</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
