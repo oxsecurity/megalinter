@@ -104,6 +104,20 @@ linters:
       - **Configuration Flexibility**: Supports project-specific formatting rules through .prettierrc when customization is needed
     linter_rules_inline_disable_url: https://prettier.io/docs/en/ignore.html#javascript
     test_folder: json_prettier
+    common_linter_errors:
+      - identifier: JSON_PRETTIER_ERROR_PLUGIN_NOT_FOUND
+        regex: "(Cannot find (package|module) '[^']+' imported from|Directory import '[^']+' is not supported resolving ES modules)"
+        message: |-
+          Prettier could not load a plugin declared in the `plugins` array of your `.prettierrc.*` (e.g. `prettier-plugin-toml`, `prettier-plugin-sh`, `@prettier/plugin-xml`).
+          Prettier v3 loads plugins with a native ESM `import()` resolved from its current working directory, which MegaLinter sets to the workspace. ESM ignores `NODE_PATH`, so plugins installed in MegaLinter's bundled npm root (`/node-deps/node_modules`) are invisible to Prettier, unlike for ESLint or stylelint.
+          Resolution: install the plugins in the workspace with a pre-command. `cwd: workspace` is required: with the default `cwd: root`, MegaLinter redirects `npm install` to `/node-deps`, where Prettier will not find them.
+              JSON_PRETTIER_PRE_COMMANDS:
+                - command: npm install --no-save prettier-plugin-toml prettier-plugin-sh
+                  cwd: workspace
+                  continue_if_failed: false
+          If the plugins are already listed in your `package.json`, run `npm ci` (or `npm install`) with the same `cwd: workspace` instead.
+          Keep plain package names in the `plugins` array of `.prettierrc.*`, so the very same config keeps working when you run Prettier locally without MegaLinter. Do not replace them with absolute `/node-deps/...` paths: those resolve only inside the MegaLinter image.
+          Also check that each package name matches the published npm package exactly (e.g. `@prettier/plugin-xml`, not `prettier-plugin-xml`).
     examples:
       - "prettier --check myfile.json"
       - "prettier --config .prettierrc.json --check myfile.json"
