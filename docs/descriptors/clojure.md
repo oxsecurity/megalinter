@@ -11,7 +11,7 @@ description: clj-kondo, cljstyle are available to analyze CLOJURE files in MegaL
 
 | Linter                                                                                | Additional                                                                                                                                                                           |
 |---------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [**clj-kondo**](clojure_clj_kondo.md)<br/>[_CLOJURE_CLJ_KONDO_](clojure_clj_kondo.md) | [![GitHub stars](https://img.shields.io/github/stars/borkdude/clj-kondo?cacheSeconds=3600)](https://github.com/borkdude/clj-kondo)                                                   |
+| [**clj-kondo**](clojure_clj_kondo.md)<br/>[_CLOJURE_CLJ_KONDO_](clojure_clj_kondo.md) | [![GitHub stars](https://img.shields.io/github/stars/borkdude/clj-kondo?cacheSeconds=3600)](https://github.com/borkdude/clj-kondo) ![sarif](https://shields.io/badge/-SARIF-orange)  |
 | [**cljstyle**](clojure_cljstyle.md)<br/>[_CLOJURE_CLJSTYLE_](clojure_cljstyle.md)     | [![GitHub stars](https://img.shields.io/github/stars/greglook/cljstyle?cacheSeconds=3600)](https://github.com/greglook/cljstyle) ![autofix](https://shields.io/badge/-autofix-green) |
 
 ## Linted files

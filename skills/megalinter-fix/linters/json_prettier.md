@@ -16,6 +16,8 @@
   - `JSON_PRETTIER_DISABLE_ERRORS_IF_LESS_THAN: <number>`: block only when the error count reaches the threshold — useful on a first install to accept the existing technical debt while preventing it from growing
   - `JSON_PRETTIER_FILTER_REGEX_EXCLUDE`: regex of files to exclude from this linter
   - `JSON_PRETTIER_ARGUMENTS`: additional CLI arguments for the linter
+- Known non-lint failure patterns (configuration/environment issues, see resolutions in the MegaLinter documentation page):
+  - `JSON_PRETTIER_ERROR_PLUGIN_NOT_FOUND`
 <!-- generated-descriptor-info-end -->
 
 ## Fix instructions

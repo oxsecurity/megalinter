@@ -84,6 +84,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [pylint](https://pylint.readthedocs.io) from 4.0.6 to **4.0.7** on 2026-08-10
   - [grype](https://github.com/anchore/grype) from 0.116.1 to **0.117.0** on 2026-08-10
   - [syft](https://github.com/anchore/syft) from 1.50.0 to **1.51.0** on 2026-08-10
+  - [spectral](https://github.com/stoplightio/spectral) from 6.15.0 to **6.16.3** on 2026-08-12
+  - [roslynator](https://github.com/dotnet/Roslynator) from 0.12.0.0 to **0.13.0.0** on 2026-08-12
 <!-- linter-versions-end -->
 
 ## [v10.0.0] - 2026-08-08
