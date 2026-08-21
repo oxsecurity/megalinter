@@ -14,7 +14,6 @@ One guide per linter: load a guide only when the related linter reports errors.
 | C_CLANG_FORMAT                    | C              | [c_clang_format.md](c_clang_format.md)                                       |
 | CLOJURE_CLJ_KONDO                 | CLOJURE        | [clojure_clj_kondo.md](clojure_clj_kondo.md)                                 |
 | CLOJURE_CLJSTYLE                  | CLOJURE        | [clojure_cljstyle.md](clojure_cljstyle.md)                                   |
-| COFFEE_COFFEELINT                 | COFFEE         | [coffee_coffeelint.md](coffee_coffeelint.md)                                 |
 | CPP_CPPCHECK                      | CPP            | [cpp_cppcheck.md](cpp_cppcheck.md)                                           |
 | CPP_CPPLINT                       | CPP            | [cpp_cpplint.md](cpp_cpplint.md)                                             |
 | CPP_CLANG_FORMAT                  | CPP            | [cpp_clang_format.md](cpp_clang_format.md)                                   |
