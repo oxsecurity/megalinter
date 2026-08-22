@@ -44,6 +44,78 @@ CVE-2026-39836
 CVE-2026-42499
 CVE-2026-42504
 
+# Go 1.26.6 security release (2026-08-13): five more stdlib CVEs. Trivy flags them on
+# every Go binary in the image because it reads the embedded toolchain version and does
+# no symbol reachability analysis, so a binary that never imports net/http or crypto/tls
+# is reported all the same. None of these binaries listens on a socket or terminates TLS.
+# - CVE-2026-56853 (net/http): DoS reachable only from Server.Serve/ListenAndServe with
+#   unencrypted HTTP/2 (h2c) explicitly enabled. A lint CLI binds no listener.
+# - CVE-2026-56862 (crypto/tls): DoS from a client flooding post-handshake KeyUpdate
+#   messages at a TLS *server*. Same reason: no linter terminates TLS.
+# - CVE-2026-56858 (html/template): NVD scores this 6.1 MEDIUM
+#   (AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N) - a reflected-XSS shape whose victim is a
+#   browser rendering the template output, and whose affected symbols are exactly
+#   Template.Execute / Template.ExecuteTemplate. None of these linters renders HTML for
+#   browser consumption at lint time, so the affected symbols are never called.
+# - CVE-2026-56860 (net/url): NVD 5.9 MEDIUM with AC:H - quadratic complexity in
+#   url.Parse on paths containing many ".." segments. url.Parse is widely called, but
+#   exploiting it needs a very long crafted URL and the worst case is a slow CI job.
+# - CVE-2026-56859 (encoding/xml): stack exhaustion on deeply nested XML. Unlike the
+#   entries above we do NOT claim this one is unreachable - linters do parse workspace
+#   files that may be attacker-authored XML. The impact is bounded instead: the worst
+#   case is one linter crashing inside a short-lived CI container, triggered by whoever
+#   committed the hostile file into their own repository. No data exposure, no
+#   long-lived service to take down.
+# Fixed in go1.26.6 / go1.25.13. MegaLinter compiles only revive and dustilock in-repo
+# (GO_IMAGE_VERSION, renovate-managed); every other Go binary is copied from an upstream
+# vendor image or release archive that is already pinned at its latest version, so their
+# stdlib is upstream's to rebuild. Remove once those images ship a fixed toolchain.
+CVE-2026-56853
+CVE-2026-56858
+CVE-2026-56859
+CVE-2026-56860
+CVE-2026-56862
+
+# Go 1.26.6 security release, second batch (trivy reports these against the toolchain
+# baked into each Go binary; it does no symbol reachability analysis).
+# - CVE-2026-33818 (encoding/asn1): DoS parsing crafted ASN.1. Availability only. The
+#   linters flagged here (actionlint, shfmt, editorconfig-checker, golangci-lint) parse
+#   YAML, shell, text and Go source - none of them decodes ASN.1 or X.509 at lint time.
+# - CVE-2026-46600 (golang.org/x/net/dns/dnsmessage): DoS parsing a malformed DNS
+#   response message. Reaching it requires the binary to perform its own DNS message
+#   parsing against a hostile resolver; these linters resolve no names at lint time,
+#   and the worst case would be one CLI crashing in its short-lived CI container.
+# Fixed in go1.26.6 / go1.25.13. MegaLinter compiles only revive and dustilock in-repo
+# and both now build on golang 1.26.7, so they are genuinely fixed; the remaining
+# binaries are copied from upstream vendor images (rhysd/actionlint, mvdan/shfmt,
+# mstruebing/editorconfig-checker) or prebuilt release archives already pinned at their
+# latest version, so their toolchain is upstream's to rebuild.
+# Remove once those vendor images ship a fixed toolchain.
+CVE-2026-33818
+CVE-2026-46600
+
+# --- Go x/mod module-authentication (editorconfig-checker, syft, trivy) ---
+# CVE-2026-56864 and CVE-2026-56865 are supply-chain integrity flaws in
+# golang.org/x/mod < 0.40.0: a malicious GOSUMDB could serve arbitrary module content
+# (56864) and a malicious GOPROXY could forge module content (56865). Both live in
+# x/mod's sumdb / module-proxy client, i.e. the code the go command runs while
+# DOWNLOADING and verifying modules.
+# That code is never executed by the linters that embed it. editorconfig-checker links
+# x/mod only to parse go.mod syntax and compare semver strings, and syft/trivy use it to
+# resolve module metadata while INSPECTING a checked-out tree: none of them fetches a
+# module, contacts a proxy or verifies a checksum database at lint time, so the
+# sumdb/proxy paths are dead code in those binaries. Module downloads during MegaLinter's
+# own Docker build are performed by the go toolchain's own copy of x/mod (now golang
+# 1.26.7) against the default proxy.golang.org / sum.golang.org, not by any linter.
+# golangci-lint and revive, which also embedded a vulnerable x/mod, have been upgraded to
+# 2.13.1 and v1.16.0 respectively - both vendor the fixed x/mod v0.40.0. No upgrade path
+# remains for the other three: editorconfig-checker v3.11.1 (x/mod v0.37.0), syft 1.50.0
+# and trivy 0.73.0 (both x/mod v0.38.0) are each the latest upstream release and all
+# predate the fix.
+# Remove once those three ship releases built with x/mod >= 0.40.0.
+CVE-2026-56864
+CVE-2026-56865
+
 # --- Go x/crypto, x/net, x/oauth2 (Go-based linters) ---
 # Transitive golang.org/x/* CVEs embedded in the same Go linters/scanners above.
 # SSH/crypto, HTTP/2, HTML and OAuth2 DoS or parsing flaws — none reachable from a
@@ -193,6 +265,18 @@ CVE-2026-47304
 CVE-2026-50525
 CVE-2026-50527
 CVE-2026-50648
+# CVE-2026-62901 is a DoS in System.Net.WebSockets, shipped by the same bundled .NET
+# runtime: a crafted permessage-deflate message ends its DEFLATE stream with BFINAL=1
+# while leaving compressed bytes unconsumed, so the inflater stops making forward
+# progress and the WebSocket receive loop hangs (CVSS 7.5, availability only, E:U - no
+# known exploit). The vulnerable runtime 10.0.10 ships inside PowerShell 7.6.4 and the
+# fix is runtime 10.0.11, but PowerShell 7.6.5 (2026-08-14) is still built against .NET
+# SDK 10.0.302, which carries runtime 10.0.10 - so bumping the pin does not clear the
+# finding and there is no upgrade path today. arm-ttk analyses ARM template JSON and the
+# powershell linters analyse .ps1 scripts: none of them ever opens a WebSocket, so the
+# vulnerable receive loop is never entered. Remove once a PowerShell release bundles
+# .NET runtime >= 10.0.11.
+CVE-2026-62901
 
 # --- Python deps (semgrep) ---
 # semgrep bundles the MCP Python SDK (mcp) for its experimental `semgrep mcp` server mode.
@@ -287,6 +371,15 @@ CVE-2026-56821
 CVE-2026-56822
 CVE-2026-59901
 GHSA-v74w-7mr3-4qg3
+# CVE-2026-73507 (netty-codec-xml) and CVE-2026-59902 (netty-transport-sctp) are two
+# more of the same, found in salesforce/code-analyzer-sfge-engine/dist/java-lib/. They
+# sit in the XML protocol codec and the SCTP transport - a wire-protocol decoder and a
+# niche network transport. The Salesforce Graph Engine walks Apex source locally to
+# build a call graph; it opens no socket, speaks no SCTP and decodes no network XML
+# frames, so neither jar is ever loaded. @salesforce/plugin-code-analyzer 5.15.0, which
+# vendors them, is the latest release, so there is no upgrade path.
+CVE-2026-59902
+CVE-2026-73507
 # jackson-core is bundled by npm-groovy-lint and Salesforce Code Analyzer for
 # parsing their own configuration and report files, not untrusted network input.
 # Worst case is a parser DoS that aborts the linter container it runs in.
@@ -335,6 +428,15 @@ CVE-2026-18446
 # and undici >= 7.29.0.
 CVE-2026-69192
 CVE-2026-13697
+# CVE-2026-73566 is a node-tar DoS: a crafted archive with a pathological long path
+# drives quadratic work in the path parser, hanging the process (availability only).
+# The vulnerable tar 7.5.19 is vendored in the Salesforce CLI's own node_modules.
+# node-tar is exercised when sf EXTRACTS an archive, which happens while installing
+# plugins at Docker build time from the npm registry - not at lint time, when
+# code-analyzer only reads workspace sources. A hostile .tar committed to a repository
+# is never handed to sf's extractor.
+# Remove once the pinned @salesforce/cli release vendors tar >= 7.5.21.
+CVE-2026-73566
 # CVE-2026-71556 is a symlink-follow flaw in go-git worktree WRITE operations: an
 # attacker who plants a symlink in a worktree can make the application overwrite
 # files (e.g. .git/config) when it writes through that path. The vulnerable

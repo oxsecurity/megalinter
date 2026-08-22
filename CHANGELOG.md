@@ -92,6 +92,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 1.50.0 to **1.51.0** on 2026-08-10
   - [spectral](https://github.com/stoplightio/spectral) from 6.15.0 to **6.16.3** on 2026-08-12
   - [roslynator](https://github.com/dotnet/Roslynator) from 0.12.0.0 to **0.13.0.0** on 2026-08-12
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.97 to **0.1.98** on 2026-08-21
+  - [terragrunt](https://docs.terragrunt.com/reference/cli/commands/hcl/fmt/) from 1.1.2 to **1.1.3** on 2026-08-21
 <!-- linter-versions-end -->
 
 ## [v10.0.0] - 2026-08-08
