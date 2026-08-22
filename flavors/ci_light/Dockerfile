@@ -25,7 +25,7 @@ ARG DOCKERFILE_HADOLINT_VERSION=v2.15.1-alpine
 # renovate: datasource=docker depName=ghcr.io/betterleaks/betterleaks
 ARG REPOSITORY_BETTERLEAKS_VERSION=v1.7.3
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.96.0
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.97.0
 #ARGTOP__END
 
 #############################################################################################

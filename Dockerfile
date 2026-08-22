@@ -45,7 +45,7 @@ ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
 # renovate: datasource=docker depName=ghcr.io/betterleaks/betterleaks
 ARG REPOSITORY_BETTERLEAKS_VERSION=v1.7.3
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.96.0
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.97.0
 # renovate: datasource=docker depName=jdkato/vale
 ARG SPELL_VALE_VERSION=v3.17.1
 # renovate: datasource=docker depName=lycheeverse/lychee
