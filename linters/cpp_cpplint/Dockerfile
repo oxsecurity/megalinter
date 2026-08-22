@@ -61,7 +61,7 @@ ARG PIP_CPPLINT_VERSION=2.0.2
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=26.2.1
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=21.7.3
+ARG PIP_VIRTUALENV_VERSION=21.7.4
 #ARG__END
 
 ####################
