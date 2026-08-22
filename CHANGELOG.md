@@ -94,6 +94,17 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [roslynator](https://github.com/dotnet/Roslynator) from 0.12.0.0 to **0.13.0.0** on 2026-08-12
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.97 to **0.1.98** on 2026-08-21
   - [terragrunt](https://docs.terragrunt.com/reference/cli/commands/hcl/fmt/) from 1.1.2 to **1.1.3** on 2026-08-21
+  - [biome](https://biomejs.dev) from 2.5.7 to **2.5.8** on 2026-08-22
+  - [golangci-lint](https://golangci-lint.run/) from 2.12.2 to **2.13.1** on 2026-08-22
+  - [revive](https://revive.run/) from 1.15.0 to **1.16.0** on 2026-08-22
+  - [eslint](https://eslint.org) from 10.8.0 to **10.8.1** on 2026-08-22
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.56.4 to **0.57.0** on 2026-08-22
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.112.0 to **1.113.0** on 2026-08-22
+  - [semgrep](https://semgrep.dev/) from 1.172.0 to **1.173.0** on 2026-08-22
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.73.0 to **0.74.0** on 2026-08-22
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.73.0 to **0.74.0** on 2026-08-22
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.96.0 to **3.97.0** on 2026-08-22
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 8.6.0 to **8.8.0** on 2026-08-22
 <!-- linter-versions-end -->
 
 ## [v10.0.0] - 2026-08-08

@@ -120,7 +120,7 @@ your existing config then works unchanged.
 
 ## eslint documentation
 
-- Version in MegaLinter: **10.8.0**
+- Version in MegaLinter: **10.8.1**
 - Visit [Official Web Site](https://typescript-eslint.io/){target=_blank}
 - See [How to configure eslint rules](https://typescript-eslint.io/getting-started/#configuration-values){target=_blank}
 - See [How to disable eslint rules in files](https://eslint.org/docs/latest/use/configure/rules#disabling-rules){target=_blank}
@@ -298,7 +298,7 @@ Miscellaneous:
 ARG NPM_TYPESCRIPT_VERSION=6.0.3
 # Linter install
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=10.8.0
+ARG NPM_ESLINT_VERSION=10.8.1
 # renovate: datasource=npm depName=@eslint/js
 ARG NPM_ESLINT_JS_VERSION=10.0.1
 # renovate: datasource=npm depName=eslint-config-prettier
@@ -306,9 +306,9 @@ ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.1.8
 # renovate: datasource=npm depName=eslint-plugin-import-x
 ARG NPM_ESLINT_PLUGIN_IMPORT_X_VERSION=4.17.1
 # renovate: datasource=npm depName=eslint-plugin-jest
-ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.16.0
+ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.16.1
 # renovate: datasource=npm depName=eslint-plugin-n
-ARG NPM_ESLINT_PLUGIN_N_VERSION=18.2.2
+ARG NPM_ESLINT_PLUGIN_N_VERSION=18.3.0
 # renovate: datasource=npm depName=eslint-plugin-prettier
 ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.6
 # renovate: datasource=npm depName=eslint-plugin-promise
@@ -318,24 +318,24 @@ ARG NPM_PRETTIER_VERSION=3.9.6
 # renovate: datasource=npm depName=prettyjson
 ARG NPM_PRETTYJSON_VERSION=1.2.5
 # renovate: datasource=npm depName=typescript-eslint
-ARG NPM_TYPESCRIPT_ESLINT_VERSION=8.66.0
+ARG NPM_TYPESCRIPT_ESLINT_VERSION=8.67.0
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 ```
 
 - NPM packages (node.js):
   - [typescript@6.0.3](https://www.npmjs.com/package/typescript/v/6.0.3)
-  - [eslint@10.8.0](https://www.npmjs.com/package/eslint/v/10.8.0)
+  - [eslint@10.8.1](https://www.npmjs.com/package/eslint/v/10.8.1)
   - [@eslint/js@10.0.1](https://www.npmjs.com/package/@eslint/js/v/10.0.1)
   - [eslint-config-prettier@10.1.8](https://www.npmjs.com/package/eslint-config-prettier/v/10.1.8)
   - [eslint-plugin-import-x@4.17.1](https://www.npmjs.com/package/eslint-plugin-import-x/v/4.17.1)
-  - [eslint-plugin-jest@29.16.0](https://www.npmjs.com/package/eslint-plugin-jest/v/29.16.0)
-  - [eslint-plugin-n@18.2.2](https://www.npmjs.com/package/eslint-plugin-n/v/18.2.2)
+  - [eslint-plugin-jest@29.16.1](https://www.npmjs.com/package/eslint-plugin-jest/v/29.16.1)
+  - [eslint-plugin-n@18.3.0](https://www.npmjs.com/package/eslint-plugin-n/v/18.3.0)
   - [eslint-plugin-prettier@5.5.6](https://www.npmjs.com/package/eslint-plugin-prettier/v/5.5.6)
   - [eslint-plugin-promise@7.3.0](https://www.npmjs.com/package/eslint-plugin-promise/v/7.3.0)
   - [prettier@3.9.6](https://www.npmjs.com/package/prettier/v/3.9.6)
   - [prettyjson@1.2.5](https://www.npmjs.com/package/prettyjson/v/1.2.5)
-  - [typescript-eslint@8.66.0](https://www.npmjs.com/package/typescript-eslint/v/8.66.0)
+  - [typescript-eslint@8.67.0](https://www.npmjs.com/package/typescript-eslint/v/8.67.0)
   - [@microsoft/eslint-formatter-sarif@3.1.0](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/3.1.0)
 
 ## Known errors and resolutions

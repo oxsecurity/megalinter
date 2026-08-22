@@ -28,7 +28,7 @@ description: How to use biome (configure, ignore files, ignore errors, help & ve
 
 ## biome documentation
 
-- Version in MegaLinter: **2.5.7**
+- Version in MegaLinter: **2.5.8**
 - Visit [Official Web Site](https://biomejs.dev){target=_blank}
 - See [How to configure biome rules](https://biomejs.dev/reference/configuration/){target=_blank}
 - See [How to disable biome rules in files](https://biomejs.dev/analyzer/suppressions/){target=_blank}
@@ -157,8 +157,8 @@ Available commands:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=@biomejs/biome
-ARG NPM_BIOMEJS_BIOME_VERSION=2.5.7
+ARG NPM_BIOMEJS_BIOME_VERSION=2.5.8
 ```
 
 - NPM packages (node.js):
-  - [@biomejs/biome@2.5.7](https://www.npmjs.com/package/@biomejs/biome/v/2.5.7)
+  - [@biomejs/biome@2.5.8](https://www.npmjs.com/package/@biomejs/biome/v/2.5.8)
