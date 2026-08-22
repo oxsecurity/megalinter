@@ -8,6 +8,7 @@ from typing import List
 
 import git
 from megalinter import MegaLinter
+from megalinter.run import enable_crash_diagnostics
 from pygments import lexers
 from server.errors import MegalinterServerException
 from server.types import AnalysisRequestInput, AnalysisStatus
@@ -20,6 +21,9 @@ def processAnalysisRequest(
     request_id: str,
     server_id: str,
 ):
+    # Server mode does not go through megalinter.run.main(), so apply the same
+    # crash diagnostics and thread stack size before any linters pool is created
+    enable_crash_diagnostics()
     analysis = MegaLinterAnalysis()
     analysis.initialize(
         AnalysisRequestInput.parse_obj(request_input), request_id, server_id
