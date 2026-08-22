@@ -34,7 +34,7 @@ dependencies = [
 
 [project.optional-dependencies]
 llm = [
-  "langchain-openai~=1.4.1",
+  "langchain-openai~=1.5.1",
   "langchain-anthropic~=1.5.2",
   "langchain-google-genai~=4.3.1",
   "langchain-mistralai~=1.1.1",
@@ -48,7 +48,7 @@ huggingface = [
   "torch",
 ]
 all-llm = [
-  "langchain-openai~=1.4.1",
+  "langchain-openai~=1.5.1",
   "langchain-anthropic~=1.5.2",
   "langchain-google-genai~=4.3.1",
   "langchain-mistralai~=1.1.1",
