@@ -4,6 +4,7 @@ Unit tests for CI providers Pull Request commit range resolution
 
 """
 
+import base64
 import json
 import os
 import tempfile
@@ -431,11 +432,11 @@ class CiProvidersReporterContextTest(unittest.TestCase):
         )
 
     def test_azure_api_headers_are_basic_auth_with_empty_user(self):
-        # base64(":tok")
-        self.assertEqual(
-            {"Authorization": "Basic OnRvaw=="},
-            self.azure_provider().get_api_headers(),
-        )
+        header = self.azure_provider().get_api_headers()["Authorization"]
+        scheme, _, encoded = header.partition(" ")
+        self.assertEqual("Basic", scheme)
+        # The ADO REST API expects an empty user name before the token
+        self.assertEqual(b":tok", base64.b64decode(encoded))
 
     def test_azure_artifacts_url(self):
         self.assertEqual(
