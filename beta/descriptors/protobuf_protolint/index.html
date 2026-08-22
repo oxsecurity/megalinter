@@ -12545,7 +12545,7 @@
 </ul>
 <h2 id="protolint-documentation">protolint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.56.4</strong></li>
+<li>Version in MegaLinter: <strong>0.57.0</strong></li>
 <li>Visit <a href="https://github.com/yoheimuta/protolint#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/yoheimuta/protolint#rules" target="_blank">How to configure protolint rules</a><ul>
 <li>If custom <code>.protolintrc.yml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.protolintrc.yml" target="_blank">.protolintrc.yml</a> will be used</li>
@@ -12851,7 +12851,7 @@
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=docker depName=yoheimuta/protolint</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">PROTOBUF_PROTOLINT_VERSION</span><span class="o">=</span><span class="m">0</span>.56.4
+<span class="k">ARG</span><span class="w"> </span><span class="nv">PROTOBUF_PROTOLINT_VERSION</span><span class="o">=</span><span class="m">0</span>.57.0
 <span class="k">FROM</span><span class="w"> </span><span class="s">yoheimuta/protolint:${PROTOBUF_PROTOLINT_VERSION}</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">protolint</span>
 <span class="k">COPY</span><span class="w"> </span>--link<span class="w"> </span>--from<span class="o">=</span>protolint<span class="w"> </span>/usr/local/bin/protolint<span class="w"> </span>/usr/bin/
 </code></pre></div></li>

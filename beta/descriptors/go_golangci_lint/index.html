@@ -12694,7 +12694,7 @@
 <p>Golangci-lint is the industry standard for Go code quality and is used by thousands of Go projects for maintaining high code standards and catching issues early in the development process.</p>
 <h2 id="golangci-lint-documentation">golangci-lint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>2.12.2</strong></li>
+<li>Version in MegaLinter: <strong>2.13.1</strong></li>
 <li>Visit <a href="https://golangci-lint.run/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://golangci-lint.run/usage/configuration/#config-file" target="_blank">How to configure golangci-lint rules</a><ul>
 <li>If custom <code>.golangci.yml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.golangci.yml" target="_blank">.golangci.yml</a> will be used</li>
@@ -12950,7 +12950,7 @@ Use<span class="w"> </span><span class="s2">"golangci-lint [command] --help"</sp
 <span class="w">    </span><span class="nv">go</span><span class="o">=</span><span class="si">${</span><span class="nv">GO_ALPINE_VERSION</span><span class="si">}</span>
 <span class="c"># Linter install</span>
 <span class="c"># renovate: datasource=github-tags depName=golangci/golangci-lint</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">GO_GOLANGCI_LINT_VERSION</span><span class="o">=</span><span class="m">2</span>.12.2
+<span class="k">ARG</span><span class="w"> </span><span class="nv">GO_GOLANGCI_LINT_VERSION</span><span class="o">=</span><span class="m">2</span>.13.1
 <span class="k">RUN</span><span class="w"> </span>wget<span class="w"> </span>-O-<span class="w"> </span>-nv<span class="w"> </span>https://golangci-lint.run/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span><span class="s2">"v</span><span class="si">${</span><span class="nv">GO_GOLANGCI_LINT_VERSION</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>golangci-lint<span class="w"> </span>--version
 </code></pre></div></li>

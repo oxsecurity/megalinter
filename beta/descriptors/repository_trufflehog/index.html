@@ -12525,7 +12525,7 @@
 </ul>
 <h2 id="trufflehog-documentation">trufflehog documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.96.0</strong></li>
+<li>Version in MegaLinter: <strong>3.97.0</strong></li>
 <li>Visit <a href="https://github.com/trufflesecurity/trufflehog#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/trufflesecurity/trufflehog#regex-detector-alpha" target="_blank">How to configure trufflehog rules</a></li>
 </ul>
@@ -12796,6 +12796,9 @@ Flags:
 <span class="w">      </span>--<span class="o">[</span>no-<span class="o">]</span>json-legacy<span class="w">         </span>Use<span class="w"> </span>the<span class="w"> </span>pre-v3.0<span class="w"> </span>JSON<span class="w"> </span>format.<span class="w"> </span>Only<span class="w"> </span>works<span class="w"> </span>with
 <span class="w">                                 </span>git,<span class="w"> </span>gitlab,<span class="w"> </span>and<span class="w"> </span>github<span class="w"> </span>sources.
 <span class="w">      </span>--<span class="o">[</span>no-<span class="o">]</span>github-actions<span class="w">      </span>Output<span class="w"> </span><span class="k">in</span><span class="w"> </span>GitHub<span class="w"> </span>Actions<span class="w"> </span>format.
+<span class="w">      </span>--<span class="o">[</span>no-<span class="o">]</span>sarif<span class="w">               </span>Output<span class="w"> </span><span class="k">in</span><span class="w"> </span>SARIF<span class="w"> </span>format<span class="w"> </span><span class="k">for</span><span class="w"> </span>upload
+<span class="w">                                 </span>to<span class="w"> </span>GitHub<span class="w"> </span>code<span class="w"> </span>scanning<span class="w"> </span><span class="o">(</span>e.g.<span class="w"> </span>via
+<span class="w">                                 </span>github/codeql-action/upload-sarif<span class="o">)</span>.
 <span class="w">      </span>--concurrency<span class="o">=</span>N<span class="w">            </span>Number<span class="w"> </span>of<span class="w"> </span>concurrent<span class="w"> </span>workers.
 <span class="w">      </span>--<span class="o">[</span>no-<span class="o">]</span>no-verification<span class="w">     </span>Don<span class="s1">'t verify the results.</span>
 <span class="s1">      --results=RESULTS          Specifies which type(s) of results to output:</span>
@@ -12929,7 +12932,7 @@ analyze
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=docker depName=trufflesecurity/trufflehog</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">REPOSITORY_TRUFFLEHOG_VERSION</span><span class="o">=</span><span class="m">3</span>.96.0
+<span class="k">ARG</span><span class="w"> </span><span class="nv">REPOSITORY_TRUFFLEHOG_VERSION</span><span class="o">=</span><span class="m">3</span>.97.0
 <span class="k">FROM</span><span class="w"> </span><span class="s">trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION}</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">trufflehog</span>
 <span class="k">COPY</span><span class="w"> </span>--link<span class="w"> </span>--from<span class="o">=</span>trufflehog<span class="w"> </span>/usr/bin/trufflehog<span class="w"> </span>/usr/bin/
 </code></pre></div></li>

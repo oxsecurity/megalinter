@@ -12675,7 +12675,7 @@ Arguments:
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=github-tags depName=checkmarx/dustilock</span>
 <span class="k">ARG</span><span class="w"> </span><span class="nv">REPOSITORY_DUSTILOCK_VERSION</span><span class="o">=</span><span class="m">1</span>.2.0
 <span class="c"># renovate: datasource=docker depName=golang versioning=semver</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">GO_IMAGE_VERSION</span><span class="o">=</span><span class="m">1</span>.26.5
+<span class="k">ARG</span><span class="w"> </span><span class="nv">GO_IMAGE_VERSION</span><span class="o">=</span><span class="m">1</span>.26.7
 <span class="k">FROM</span><span class="w"> </span><span class="s">golang:${GO_IMAGE_VERSION}-alpine</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">dustilock</span>
 <span class="k">ARG</span><span class="w"> </span>REPOSITORY_DUSTILOCK_VERSION
 <span class="k">RUN</span><span class="w"> </span><span class="nv">GOBIN</span><span class="o">=</span>/usr/bin<span class="w"> </span>go<span class="w"> </span>install<span class="w"> </span>github.com/checkmarx/dustilock@v<span class="si">${</span><span class="nv">REPOSITORY_DUSTILOCK_VERSION</span><span class="si">}</span>

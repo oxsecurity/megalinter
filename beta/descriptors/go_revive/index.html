@@ -12545,7 +12545,7 @@
 </ul>
 <h2 id="revive-documentation">revive documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.15.0</strong></li>
+<li>Version in MegaLinter: <strong>1.16.0</strong></li>
 <li>Visit <a href="https://revive.run/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://revive.run/docs#custom-configuration" target="_blank">How to configure revive rules</a></li>
 <li>See <a href="https://revive.run/docs#comment-directives" target="_blank">How to disable revive rules in files</a></li>
@@ -12745,7 +12745,7 @@ Usage<span class="w"> </span>of<span class="w"> </span>revive:
 <span class="w">  </span>-max_open_files<span class="w"> </span>int
 <span class="w">      </span>maximum<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>open<span class="w"> </span>files<span class="w"> </span>at<span class="w"> </span>the<span class="w"> </span>same<span class="w"> </span><span class="nb">time</span>
 <span class="w">  </span>-set_exit_status
-<span class="w">      </span><span class="nb">set</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span>status<span class="w"> </span>to<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="k">if</span><span class="w"> </span>any<span class="w"> </span>issues<span class="w"> </span>are<span class="w"> </span>found,<span class="w"> </span>overwrites<span class="w"> </span>errorCode<span class="w"> </span>and<span class="w"> </span>warningCode<span class="w"> </span><span class="k">in</span><span class="w"> </span>config
+<span class="w">      </span><span class="nb">set</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span>status<span class="w"> </span>to<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="k">if</span><span class="w"> </span>any<span class="w"> </span>issues<span class="w"> </span>are<span class="w"> </span>found,<span class="w"> </span>overwrites<span class="w"> </span>error-code<span class="w"> </span>and<span class="w"> </span>warning-code<span class="w"> </span><span class="k">in</span><span class="w"> </span>config
 <span class="w">  </span>-version
 <span class="w">      </span>get<span class="w"> </span>revive<span class="w"> </span>version
 </code></pre></div>
@@ -12759,9 +12759,9 @@ Usage<span class="w"> </span>of<span class="w"> </span>revive:
 <span class="w">    </span><span class="nv">go</span><span class="o">=</span><span class="si">${</span><span class="nv">GO_ALPINE_VERSION</span><span class="si">}</span>
 <span class="c"># Linter install</span>
 <span class="c"># renovate: datasource=github-tags depName=mgechev/revive</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">GO_REVIVE_VERSION</span><span class="o">=</span>v1.15.0
+<span class="k">ARG</span><span class="w"> </span><span class="nv">GO_REVIVE_VERSION</span><span class="o">=</span>v1.16.0
 <span class="c"># renovate: datasource=docker depName=golang versioning=semver</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">GO_IMAGE_VERSION</span><span class="o">=</span><span class="m">1</span>.26.5
+<span class="k">ARG</span><span class="w"> </span><span class="nv">GO_IMAGE_VERSION</span><span class="o">=</span><span class="m">1</span>.26.7
 <span class="k">FROM</span><span class="w"> </span><span class="s">golang:${GO_IMAGE_VERSION}-alpine</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">revive</span>
 <span class="c">## The golang image used as a builder is a temporary workaround (https://github.com/mgechev/revive/issues/787)</span>
 <span class="c">## for the released revive binaries not returning version numbers (devel).</span>
