@@ -76,6 +76,46 @@ CVE-2026-56859
 CVE-2026-56860
 CVE-2026-56862
 
+# Go 1.26.6 security release, second batch (trivy reports these against the toolchain
+# baked into each Go binary; it does no symbol reachability analysis).
+# - CVE-2026-33818 (encoding/asn1): DoS parsing crafted ASN.1. Availability only. The
+#   linters flagged here (actionlint, shfmt, editorconfig-checker, golangci-lint) parse
+#   YAML, shell, text and Go source - none of them decodes ASN.1 or X.509 at lint time.
+# - CVE-2026-46600 (golang.org/x/net/dns/dnsmessage): DoS parsing a malformed DNS
+#   response message. Reaching it requires the binary to perform its own DNS message
+#   parsing against a hostile resolver; these linters resolve no names at lint time,
+#   and the worst case would be one CLI crashing in its short-lived CI container.
+# Fixed in go1.26.6 / go1.25.13. MegaLinter compiles only revive and dustilock in-repo
+# and both now build on golang 1.26.7, so they are genuinely fixed; the remaining
+# binaries are copied from upstream vendor images (rhysd/actionlint, mvdan/shfmt,
+# mstruebing/editorconfig-checker) or prebuilt release archives already pinned at their
+# latest version, so their toolchain is upstream's to rebuild.
+# Remove once those vendor images ship a fixed toolchain.
+CVE-2026-33818
+CVE-2026-46600
+
+# --- Go x/mod module-authentication (editorconfig-checker, syft, trivy) ---
+# CVE-2026-56864 and CVE-2026-56865 are supply-chain integrity flaws in
+# golang.org/x/mod < 0.40.0: a malicious GOSUMDB could serve arbitrary module content
+# (56864) and a malicious GOPROXY could forge module content (56865). Both live in
+# x/mod's sumdb / module-proxy client, i.e. the code the go command runs while
+# DOWNLOADING and verifying modules.
+# That code is never executed by the linters that embed it. editorconfig-checker links
+# x/mod only to parse go.mod syntax and compare semver strings, and syft/trivy use it to
+# resolve module metadata while INSPECTING a checked-out tree: none of them fetches a
+# module, contacts a proxy or verifies a checksum database at lint time, so the
+# sumdb/proxy paths are dead code in those binaries. Module downloads during MegaLinter's
+# own Docker build are performed by the go toolchain's own copy of x/mod (now golang
+# 1.26.7) against the default proxy.golang.org / sum.golang.org, not by any linter.
+# golangci-lint and revive, which also embedded a vulnerable x/mod, have been upgraded to
+# 2.13.1 and v1.16.0 respectively - both vendor the fixed x/mod v0.40.0. No upgrade path
+# remains for the other three: editorconfig-checker v3.11.1 (x/mod v0.37.0), syft 1.50.0
+# and trivy 0.73.0 (both x/mod v0.38.0) are each the latest upstream release and all
+# predate the fix.
+# Remove once those three ship releases built with x/mod >= 0.40.0.
+CVE-2026-56864
+CVE-2026-56865
+
 # --- Go x/crypto, x/net, x/oauth2 (Go-based linters) ---
 # Transitive golang.org/x/* CVEs embedded in the same Go linters/scanners above.
 # SSH/crypto, HTTP/2, HTML and OAuth2 DoS or parsing flaws — none reachable from a

@@ -31,9 +31,9 @@ ARG DOCKERFILE_HADOLINT_VERSION=v2.15.1-alpine
 # renovate: datasource=docker depName=mstruebing/editorconfig-checker
 ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.11.1
 # renovate: datasource=github-tags depName=mgechev/revive
-ARG GO_REVIVE_VERSION=v1.15.0
+ARG GO_REVIVE_VERSION=v1.16.0
 # renovate: datasource=docker depName=golang versioning=semver
-ARG GO_IMAGE_VERSION=1.26.5
+ARG GO_IMAGE_VERSION=1.26.7
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.8.0-alpine
 # renovate: datasource=docker depName=ghcr.io/betterleaks/betterleaks
@@ -161,7 +161,7 @@ ARG NPM_BIOMEJS_BIOME_VERSION=2.5.7
 # renovate: datasource=github-releases depName=dotenv-linter/dotenv-linter extractVersion=^v(?<version>.+)$
 ARG DOTENV_LINTER_VERSION=4.0.0
 # renovate: datasource=github-tags depName=golangci/golangci-lint
-ARG GO_GOLANGCI_LINT_VERSION=2.12.2
+ARG GO_GOLANGCI_LINT_VERSION=2.13.1
 # renovate: datasource=npm depName=graphql
 ARG NPM_GRAPHQL_VERSION=16.14.2
 # renovate: datasource=npm depName=graphql-schema-linter
