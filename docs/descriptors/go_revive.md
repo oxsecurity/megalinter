@@ -22,7 +22,7 @@ description: How to use revive (configure, ignore files, ignore errors, help & v
 
 ## revive documentation
 
-- Version in MegaLinter: **1.15.0**
+- Version in MegaLinter: **1.16.0**
 - Visit [Official Web Site](https://revive.run/){target=_blank}
 - See [How to configure revive rules](https://revive.run/docs#custom-configuration){target=_blank}
 - See [How to disable revive rules in files](https://revive.run/docs#comment-directives){target=_blank}
@@ -118,7 +118,7 @@ Usage of revive:
   -max_open_files int
       maximum number of open files at the same time
   -set_exit_status
-      set exit status to 1 if any issues are found, overwrites errorCode and warningCode in config
+      set exit status to 1 if any issues are found, overwrites error-code and warning-code in config
   -version
       get revive version
 ```
@@ -134,9 +134,9 @@ RUN apk add --no-cache \
     go=${GO_ALPINE_VERSION}
 # Linter install
 # renovate: datasource=github-tags depName=mgechev/revive
-ARG GO_REVIVE_VERSION=v1.15.0
+ARG GO_REVIVE_VERSION=v1.16.0
 # renovate: datasource=docker depName=golang versioning=semver
-ARG GO_IMAGE_VERSION=1.26.5
+ARG GO_IMAGE_VERSION=1.26.7
 FROM golang:${GO_IMAGE_VERSION}-alpine AS revive
 ## The golang image used as a builder is a temporary workaround (https://github.com/mgechev/revive/issues/787)
 ## for the released revive binaries not returning version numbers (devel).

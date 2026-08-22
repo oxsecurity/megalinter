@@ -55,7 +55,7 @@ Golangci-lint is the industry standard for Go code quality and is used by thousa
 
 ## golangci-lint documentation
 
-- Version in MegaLinter: **2.12.2**
+- Version in MegaLinter: **2.13.1**
 - Visit [Official Web Site](https://golangci-lint.run/){target=_blank}
 - See [How to configure golangci-lint rules](https://golangci-lint.run/usage/configuration/#config-file){target=_blank}
   - If custom `.golangci.yml` config file isn't found, [.golangci.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.golangci.yml){target=_blank} will be used
@@ -182,7 +182,7 @@ RUN apk add --no-cache \
     go=${GO_ALPINE_VERSION}
 # Linter install
 # renovate: datasource=github-tags depName=golangci/golangci-lint
-ARG GO_GOLANGCI_LINT_VERSION=2.12.2
+ARG GO_GOLANGCI_LINT_VERSION=2.13.1
 RUN wget -O- -nv https://golangci-lint.run/install.sh | sh -s "v${GO_GOLANGCI_LINT_VERSION}" \
     && golangci-lint --version
 

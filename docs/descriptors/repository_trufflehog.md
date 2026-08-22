@@ -29,7 +29,7 @@ description: How to use trufflehog (configure, ignore files, ignore errors, help
 
 ## trufflehog documentation
 
-- Version in MegaLinter: **3.96.0**
+- Version in MegaLinter: **3.97.0**
 - Visit [Official Web Site](https://github.com/trufflesecurity/trufflehog#readme){target=_blank}
 - See [How to configure trufflehog rules](https://github.com/trufflesecurity/trufflehog#regex-detector-alpha){target=_blank}
 
@@ -125,6 +125,9 @@ Flags:
       --[no-]json-legacy         Use the pre-v3.0 JSON format. Only works with
                                  git, gitlab, and github sources.
       --[no-]github-actions      Output in GitHub Actions format.
+      --[no-]sarif               Output in SARIF format for upload
+                                 to GitHub code scanning (e.g. via
+                                 github/codeql-action/upload-sarif).
       --concurrency=N            Number of concurrent workers.
       --[no-]no-verification     Don't verify the results.
       --results=RESULTS          Specifies which type(s) of results to output:
@@ -262,7 +265,7 @@ analyze
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.96.0
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.97.0
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 ```
