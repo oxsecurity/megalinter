@@ -5,10 +5,10 @@ Post a comment on Github Pull Requests
 """
 
 import logging
-import re
 
 import github
 from megalinter import Reporter, config
+from megalinter.ci_providers import CiProviderGithubActions
 from megalinter.constants import ML_REPO_URL
 from megalinter.utils_reporter import build_markdown_summary
 
@@ -17,8 +17,6 @@ class GithubCommentReporter(Reporter):
     name = "GITHUB_COMMENT"
     scope = "mega-linter"
 
-    github_api_url = "https://api.github.com"
-    github_server_url = "https://github.com"
     issues_root = ML_REPO_URL + "/issues"
 
     def manage_activation(self):
@@ -61,25 +59,21 @@ class GithubCommentReporter(Reporter):
 
     def produce_report(self):
         # Post comment on GitHub pull request
-        if config.get(self.master.request_id, "GITHUB_TOKEN", "") != "":
-            github_repo = config.get(self.master.request_id, "GITHUB_REPOSITORY")
-            github_server_url = config.get(
-                self.master.request_id, "GITHUB_SERVER_URL", self.github_server_url
-            )
-            github_api_url = config.get(
-                self.master.request_id, "GITHUB_API_URL", self.github_api_url
-            )
-            run_id = config.get(self.master.request_id, "GITHUB_RUN_ID")
-            sha = config.get(self.master.request_id, "GITHUB_SHA")
+        # The reporter instantiates the GitHub provider directly instead of
+        # asking the factory: under Jenkins the platform is Jenkins, which maps
+        # its variables onto the GitHub ones this reporter needs
+        ci_provider = CiProviderGithubActions(self.master.request_id)
+        if ci_provider.get_auth_token() is not None:
+            github_repo = ci_provider.get_repo_slug()
+            github_api_url = ci_provider.get_api_url()
+            sha = ci_provider.get_commit_sha()
 
             if config.get(self.master.request_id, "CI_ACTION_RUN_URL", "") != "":
                 action_run_url = config.get(
                     self.master.request_id, "CI_ACTION_RUN_URL", ""
                 )
-            elif run_id is not None:
-                action_run_url = (
-                    f"{github_server_url}/{github_repo}/actions/runs/{run_id}"
-                )
+            elif config.get(self.master.request_id, "GITHUB_RUN_ID") is not None:
+                action_run_url = ci_provider.get_job_url()
             else:
                 action_run_url = ""
 
@@ -89,11 +83,10 @@ class GithubCommentReporter(Reporter):
                 [build_markdown_summary(self, action_run_url), "", marker, ""]
             )
 
-            # Post comment on pull request if found
+            # Post comment on pull request if found. A user-provided PAT wins,
+            # so the comment is attributed to the user rather than the bot
             github_auth = (
-                config.get(self.master.request_id, "PAT")
-                if config.get(self.master.request_id, "PAT", "") != ""
-                else config.get(self.master.request_id, "GITHUB_TOKEN")
+                ci_provider.get_user_auth_token() or ci_provider.get_auth_token()
             )
             g = github.Github(base_url=github_api_url, login_or_token=github_auth)
             try:
@@ -106,10 +99,8 @@ class GithubCommentReporter(Reporter):
                 return
             # Try to get PR from GITHUB_REF
             pr_list = []
-            ref = config.get(self.master.request_id, "GITHUB_REF", "")
-            m = re.compile("refs/pull/(\\d+)/merge").match(ref)
-            if m is not None:
-                pr_id = m.group(1)
+            pr_id = ci_provider.get_pr_number()
+            if pr_id is not None:
                 logging.debug(f"Identified PR#{pr_id} from environment")
                 try:
                     pr_list = [repo.get_pull(int(pr_id))]

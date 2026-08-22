@@ -54,6 +54,41 @@ class CiProviderGitlab(CiProvider):
     def get_server_url(self) -> str:
         return config.get(self.request_id, "CI_SERVER_URL", "https://gitlab.com")
 
+    def get_project_id(self):
+        return config.get(self.request_id, "CI_PROJECT_ID")
+
+    # Token provided by the runner, restricted to the job scope
+    def get_auth_token(self):
+        token = config.get(self.request_id, "CI_JOB_TOKEN", "")
+        return token if token != "" else None
+
+    # User-provided token, needed for anything the job token can not do
+    def get_user_auth_token(self):
+        token = config.get(self.request_id, "GITLAB_ACCESS_TOKEN_MEGALINTER", "")
+        return token if token != "" else None
+
+    # python-gitlab takes the two token kinds under different names
+    def get_api_auth_options(self):
+        user_token = self.get_user_auth_token()
+        if user_token is not None:
+            return {"private_token": user_token}
+        return {"job_token": self.get_auth_token()}
+
+    # Merge request iid, read from CI_MERGE_REQUEST_ID then from the
+    # "project!iid" pairs of CI_OPEN_MERGE_REQUESTS
+    def get_pr_number(self):
+        merge_request_id = config.get(self.request_id, "CI_MERGE_REQUEST_ID", "")
+        if merge_request_id != "":
+            return merge_request_id
+        open_merge_requests = config.get(self.request_id, "CI_OPEN_MERGE_REQUESTS", "")
+        if open_merge_requests != "":
+            return open_merge_requests.split(",")[0].split("!")[1]
+        return None
+
+    # Second spelling tried when the first id does not resolve
+    def get_pr_number_fallback(self):
+        return config.get(self.request_id, "CI_MERGE_REQUEST_IID", "none")
+
     # GitLab section names accept only letters, numbers, '_', '.' and '-'
     @staticmethod
     def sanitize_section_key(key: str) -> str:

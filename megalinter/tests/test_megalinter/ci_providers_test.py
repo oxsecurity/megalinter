@@ -390,5 +390,186 @@ class CiProvidersContextTest(unittest.TestCase):
         self.assertIs(type(provider), CiProvider)
 
 
+# The four comment reporters used to read these variables themselves. The
+# values they now get from the providers must stay identical, in particular
+# the API urls and the auth headers
+class CiProvidersReporterContextTest(unittest.TestCase):
+    def setUp(self):
+        self.request_id = str(uuid.uuid1())
+        config.init_config(self.request_id)
+
+    def tearDown(self):
+        config.delete(self.request_id)
+
+    def set_values(self, values):
+        for key, value in values.items():
+            config.set_value(self.request_id, key, value)
+
+    # ---------------- Azure ----------------
+
+    def azure_provider(self):
+        self.set_values(
+            {
+                "SYSTEM_COLLECTIONURI": "https://dev.azure.com/myorg/",
+                "SYSTEM_TEAMPROJECT": "My Project",
+                "SYSTEM_PULLREQUEST_PULLREQUESTID": "123",
+                "BUILD_BUILDID": "456",
+                "BUILD_REPOSITORY_ID": "repo-guid",
+                "SYSTEM_ACCESSTOKEN": "tok",
+            }
+        )
+        return CiProviderAzurePipelines(self.request_id)
+
+    def test_azure_git_api_url_matches_previous_format(self):
+        provider = self.azure_provider()
+        self.assertEqual(
+            "https://dev.azure.com/myorg/My%20Project/_apis/git"
+            "/repositories/repo-guid/pullRequests/123/threads?api-version=7.1",
+            provider.build_git_api_url(
+                "/repositories/repo-guid/pullRequests/123/threads"
+            ),
+        )
+
+    def test_azure_api_headers_are_basic_auth_with_empty_user(self):
+        # base64(":tok")
+        self.assertEqual(
+            {"Authorization": "Basic OnRvaw=="},
+            self.azure_provider().get_api_headers(),
+        )
+
+    def test_azure_artifacts_url(self):
+        self.assertEqual(
+            "https://dev.azure.com/myorg/My%20Project/_build/results?buildId=456"
+            "&view=artifacts&pathAsName=false&type=publishedArtifacts",
+            self.azure_provider().get_artifacts_url(),
+        )
+
+    def test_azure_pr_number_and_token(self):
+        provider = self.azure_provider()
+        self.assertEqual("123", provider.get_pr_number())
+        self.assertEqual("tok", provider.get_auth_token())
+
+    def test_azure_repository_id_falls_back_without_source_uri(self):
+        # No SYSTEM_PULLREQUEST_SOURCEREPOSITORYURI: BUILD_REPOSITORY_ID is used
+        # and no API call is attempted
+        self.assertEqual("repo-guid", self.azure_provider().get_repository_id())
+
+    def test_azure_repository_id_falls_back_when_lookup_fails(self):
+        provider = self.azure_provider()
+        config.set_value(
+            self.request_id,
+            "SYSTEM_PULLREQUEST_SOURCEREPOSITORYURI",
+            "https://dev.azure.com/myorg/_git/My%20Repo",
+        )
+        with mock.patch("requests.get", side_effect=Exception("boom")):
+            self.assertEqual("repo-guid", provider.get_repository_id())
+
+    def test_azure_repository_id_from_source_repository_uri(self):
+        provider = self.azure_provider()
+        config.set_value(
+            self.request_id,
+            "SYSTEM_PULLREQUEST_SOURCEREPOSITORYURI",
+            "https://dev.azure.com/myorg/_git/My%20Repo",
+        )
+        response = mock.Mock(status_code=200)
+        response.json.return_value = {"id": "resolved-guid"}
+        with mock.patch("requests.get", return_value=response) as requests_get:
+            self.assertEqual("resolved-guid", provider.get_repository_id())
+        # %20 is turned into a space before the lookup, as the reporter did
+        self.assertIn("/repositories/My Repo?", requests_get.call_args[0][0])
+
+    # ---------------- GitHub ----------------
+
+    def test_github_pr_number_from_ref(self):
+        config.set_value(self.request_id, "GITHUB_REF", "refs/pull/42/merge")
+        self.assertEqual("42", CiProviderGithubActions(self.request_id).get_pr_number())
+
+    def test_github_pr_number_none_on_other_refs(self):
+        config.set_value(self.request_id, "GITHUB_REF", "refs/heads/main")
+        self.assertIsNone(CiProviderGithubActions(self.request_id).get_pr_number())
+
+    # PAT must NOT replace GITHUB_TOKEN: commit statuses need statuses:write,
+    # which the documented fine-grained PAT (Contents only) does not carry
+    def test_github_runner_token_and_user_token_stay_distinct(self):
+        self.set_values({"GITHUB_TOKEN": "runner", "PAT": "user"})
+        provider = CiProviderGithubActions(self.request_id)
+        self.assertEqual("runner", provider.get_auth_token())
+        self.assertEqual("user", provider.get_user_auth_token())
+
+    def test_github_user_token_absent(self):
+        config.set_value(self.request_id, "GITHUB_TOKEN", "runner")
+        provider = CiProviderGithubActions(self.request_id)
+        self.assertIsNone(provider.get_user_auth_token())
+        self.assertEqual(
+            "runner", provider.get_user_auth_token() or provider.get_auth_token()
+        )
+
+    def test_github_api_url_default(self):
+        self.assertEqual(
+            "https://api.github.com",
+            CiProviderGithubActions(self.request_id).get_api_url(),
+        )
+
+    # ---------------- GitLab ----------------
+
+    def test_gitlab_auth_options_prefer_the_user_token(self):
+        self.set_values(
+            {
+                "CI_JOB_TOKEN": "job",
+                "GITLAB_ACCESS_TOKEN_MEGALINTER": "user",
+            }
+        )
+        self.assertEqual(
+            {"private_token": "user"},
+            CiProviderGitlab(self.request_id).get_api_auth_options(),
+        )
+
+    def test_gitlab_auth_options_fall_back_to_the_job_token(self):
+        config.set_value(self.request_id, "CI_JOB_TOKEN", "job")
+        self.assertEqual(
+            {"job_token": "job"},
+            CiProviderGitlab(self.request_id).get_api_auth_options(),
+        )
+
+    def test_gitlab_merge_request_id_from_open_merge_requests(self):
+        config.set_value(
+            self.request_id, "CI_OPEN_MERGE_REQUESTS", "group/proj!17,group/proj!18"
+        )
+        self.assertEqual("17", CiProviderGitlab(self.request_id).get_pr_number())
+
+    def test_gitlab_merge_request_id_prefers_the_explicit_variable(self):
+        self.set_values(
+            {
+                "CI_MERGE_REQUEST_ID": "99",
+                "CI_OPEN_MERGE_REQUESTS": "group/proj!17",
+            }
+        )
+        self.assertEqual("99", CiProviderGitlab(self.request_id).get_pr_number())
+
+    def test_gitlab_merge_request_id_none_when_nothing_is_set(self):
+        self.assertIsNone(CiProviderGitlab(self.request_id).get_pr_number())
+
+    # ---------------- Bitbucket ----------------
+
+    def test_bitbucket_reporter_context(self):
+        self.set_values(
+            {
+                "BITBUCKET_REPO_FULL_NAME": "org/repo",
+                "BITBUCKET_PR_ID": "8",
+                "BITBUCKET_REPO_ACCESS_TOKEN": "tok",
+            }
+        )
+        provider = CiProviderBitbucket(self.request_id)
+        self.assertEqual("org/repo", provider.get_repo_slug())
+        self.assertEqual("8", provider.get_pr_number())
+        self.assertEqual({"Authorization": "Bearer tok"}, provider.get_api_headers())
+
+    def test_bitbucket_context_none_when_unset(self):
+        provider = CiProviderBitbucket(self.request_id)
+        self.assertIsNone(provider.get_repo_slug())
+        self.assertIsNone(provider.get_pr_number())
+        self.assertIsNone(provider.get_auth_token())
+
+
 if __name__ == "__main__":
     unittest.main()

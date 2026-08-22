@@ -5,6 +5,7 @@ GitHub Actions CI provider
 
 import json
 import logging
+import re
 
 from megalinter import config, utils
 from megalinter.ci_providers.CiProvider import CiProvider
@@ -61,6 +62,34 @@ class CiProviderGithubActions(CiProvider):
             return ""
         run_id = config.get(self.request_id, "GITHUB_RUN_ID")
         return f"{self.get_server_url()}/{repo}/actions/runs/{run_id}"
+
+    def get_api_url(self) -> str:
+        return config.get(self.request_id, "GITHUB_API_URL", "https://api.github.com")
+
+    def get_commit_sha(self):
+        return config.get(self.request_id, "GITHUB_SHA")
+
+    def get_repo_slug(self):
+        return config.get(self.request_id, "GITHUB_REPOSITORY")
+
+    # Pull Request number carried by GITHUB_REF on pull_request events
+    def get_pr_number(self):
+        ref = config.get(self.request_id, "GITHUB_REF", "")
+        match = re.compile("refs/pull/(\\d+)/merge").match(ref)
+        return match.group(1) if match is not None else None
+
+    # Token provided by the runner, scoped by the workflow permissions
+    def get_auth_token(self):
+        token = config.get(self.request_id, "GITHUB_TOKEN", "")
+        return token if token != "" else None
+
+    # User-provided Personal Access Token, used only where the runner token is
+    # not enough (a push must re-trigger workflows). It is NOT a drop-in
+    # replacement: the documented fine-grained PAT is scoped to Contents only,
+    # so operations needing other scopes must keep using get_auth_token()
+    def get_user_auth_token(self):
+        token = config.get(self.request_id, "PAT", "")
+        return token if token != "" else None
 
     def log_section_start(self, section_key: str, section_title: str) -> str:
         return f"::group::{section_title} (expand for details)"

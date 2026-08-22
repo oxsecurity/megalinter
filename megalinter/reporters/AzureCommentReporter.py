@@ -4,20 +4,17 @@ Azure Comment reporter
 Post a comment on Azure Pipelines Pull Requests
 """
 
-import base64
 import logging
-import urllib.parse
 
 import requests
 from megalinter import Reporter, config
+from megalinter.ci_providers import CiProviderAzurePipelines
 from megalinter.utils_reporter import build_markdown_summary
 
 
 class AzureCommentReporter(Reporter):
     name = "AZURE_COMMENT"
     scope = "mega-linter"
-
-    api_version = "7.1"
 
     def manage_activation(self):
         if not config.exists(self.master.request_id, "SYSTEM_COLLECTIONURI"):
@@ -72,19 +69,14 @@ class AzureCommentReporter(Reporter):
         return f"<!-- megalinter: {identifier} -->"
 
     def produce_report(self):
+        # The reporter instantiates the Azure provider directly instead of
+        # asking the factory: under Jenkins the platform is Jenkins, which maps
+        # its variables onto the Azure ones this reporter needs
+        ci_provider = CiProviderAzurePipelines(self.master.request_id)
         # Post thread on Azure pull request
-        if config.get(self.master.request_id, "SYSTEM_ACCESSTOKEN", "") != "":
-            # Collect variables
-            SYSTEM_ACCESSTOKEN = config.get(
-                self.master.request_id, "SYSTEM_ACCESSTOKEN"
-            )
-            SYSTEM_COLLECTIONURI = config.get(
-                self.master.request_id, "SYSTEM_COLLECTIONURI"
-            )
-            SYSTEM_PULLREQUEST_PULLREQUESTID = config.get(
-                self.master.request_id, "SYSTEM_PULLREQUEST_PULLREQUESTID", ""
-            )
-            if SYSTEM_PULLREQUEST_PULLREQUESTID == "":
+        if ci_provider.get_auth_token() is not None:
+            pull_request_id = ci_provider.get_pr_number()
+            if pull_request_id is None:
                 logging.info(
                     "[Azure Comment Reporter] Missing value SYSTEM_PULLREQUEST_PULLREQUESTID\n"
                     + "You may need to configure a build validation policy to make it appear.\n"
@@ -92,32 +84,19 @@ class AzureCommentReporter(Reporter):
                     + "branch-policies?view=azure-devops&tabs=browser#build-validation"
                 )
                 return
-            SYSTEM_TEAMPROJECT = urllib.parse.quote(
-                config.get(self.master.request_id, "SYSTEM_TEAMPROJECT")
-            )
-            SYSTEM_PULLREQUEST_SOURCEREPOSITORYURI = config.get(
-                self.master.request_id, "SYSTEM_PULLREQUEST_SOURCEREPOSITORYURI", ""
-            )
-            BUILD_REPOSITORY_ID = config.get(
-                self.master.request_id, "BUILD_REPOSITORY_ID"
-            )
-            BUILD_BUILDID = config.get(
-                self.master.request_id,
-                "BUILD_BUILDID",
-                config.get(self.master.request_id, "BUILD_BUILD_ID"),
-            )
 
             # Build thread data
-            AZURE_COMMENT_REPORTER_LINKS_TYPE = config.get(
-                self.master.request_id, "AZURE_COMMENT_REPORTER_LINKS_TYPE", "artifacts"
-            )
-            if AZURE_COMMENT_REPORTER_LINKS_TYPE == "artifacts":
-                artifacts_url = (
-                    f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_build/results?buildId="
-                    f"{BUILD_BUILDID}&view=artifacts&pathAsName=false&type=publishedArtifacts"
+            if (
+                config.get(
+                    self.master.request_id,
+                    "AZURE_COMMENT_REPORTER_LINKS_TYPE",
+                    "artifacts",
                 )
+                == "artifacts"
+            ):
+                artifacts_url = ci_provider.get_artifacts_url()
             else:
-                artifacts_url = f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_build/results?buildId={BUILD_BUILDID}"
+                artifacts_url = ci_provider.get_job_url()
 
             # add comment marker, with extra newlines in between.
             marker = self.get_comment_marker()
@@ -133,66 +112,15 @@ class AzureCommentReporter(Reporter):
                 "status": comment_status,
             }
 
-            encoded_credentials = base64.b64encode(
-                f":{SYSTEM_ACCESSTOKEN}".encode("utf-8")
-            ).decode("utf-8")
-
-            headers = {"Authorization": f"Basic {encoded_credentials}"}
-
-            # Get repository id
-            if SYSTEM_PULLREQUEST_SOURCEREPOSITORYURI == "":
-                logging.info(
-                    "[Azure Comment Reporter] Missing ADO variable System.PullRequest.SourceRepositoryURI\n"
-                    + "Falling back to ADO variable Build.Repository.ID\n"
-                    + "See https://learn.microsoft.com/en-us/azure/devops/pipelines/"
-                    + "build/variables?view=azure-devops&tabs=yaml"
-                )
-                repository_id = BUILD_REPOSITORY_ID
-            else:
-                logging.info(
-                    "[Azure Comment Reporter] Using ADO variable System.PullRequest.SourceRepositoryURI\n"
-                    + "See https://learn.microsoft.com/en-us/azure/devops/pipelines/"
-                    + "build/variables?view=azure-devops&tabs=yaml"
-                )
-                repository_name = SYSTEM_PULLREQUEST_SOURCEREPOSITORYURI.split("/")[-1]
-                if (
-                    config.get(
-                        self.master.request_id,
-                        "AZURE_COMMENT_REPORTER_REPLACE_WITH_SPACES",
-                        "true",
-                    )
-                    == "true"
-                ):
-                    repository_name = repository_name.replace("%20", " ")
-                try:
-                    get_repository_response = requests.get(
-                        f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_apis"
-                        + "/git"
-                        + f"/repositories/{repository_name}"
-                        + f"?api-version={self.api_version}",
-                        headers=headers,
-                    )
-
-                    if get_repository_response.status_code != 200:
-                        get_repository_response.raise_for_status()
-
-                    repository_id = get_repository_response.json()["id"]
-                except Exception as err:
-                    logging.warning(
-                        f"[Azure Comment Reporter] Unable to find repo {repository_name}:"
-                        + str(err)
-                        + "\nUse fallback with BUILD_REPOSITORY_ID."
-                    )
-                    repository_id = BUILD_REPOSITORY_ID
+            headers = ci_provider.get_api_headers()
+            repository_id = ci_provider.get_repository_id()
+            threads_path = (
+                f"/repositories/{repository_id}/pullRequests/{pull_request_id}/threads"
+            )
 
             # Look for existing MegaLinter thread
             get_threads_response = requests.get(
-                f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_apis"
-                + "/git"
-                + f"/repositories/{repository_id}"
-                + f"/pullRequests/{SYSTEM_PULLREQUEST_PULLREQUESTID}"
-                + "/threads"
-                + f"?api-version={self.api_version}",
+                ci_provider.build_git_api_url(threads_path),
                 headers=headers,
             )
 
@@ -218,13 +146,10 @@ class AzureCommentReporter(Reporter):
             # Remove previous MegaLinter thread if existing
             if existing_thread_id is not None:
                 deleted_comment_response = requests.delete(
-                    f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_apis"
-                    + "/git"
-                    + f"/repositories/{repository_id}"
-                    + f"/pullRequests/{SYSTEM_PULLREQUEST_PULLREQUESTID}"
-                    + f"/threads/{existing_thread_id}"
-                    + f"/comments/{existing_thread_comment_id}"
-                    + f"?api-version={self.api_version}",
+                    ci_provider.build_git_api_url(
+                        f"{threads_path}/{existing_thread_id}"
+                        f"/comments/{existing_thread_comment_id}"
+                    ),
                     headers=headers,
                 )
 
@@ -236,12 +161,9 @@ class AzureCommentReporter(Reporter):
                 }
 
                 update_pull_request_thread_response = requests.patch(
-                    f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_apis"
-                    + "/git"
-                    + f"/repositories/{repository_id}"
-                    + f"/pullRequests/{SYSTEM_PULLREQUEST_PULLREQUESTID}"
-                    + f"/threads/{existing_thread_id}"
-                    + f"?api-version={self.api_version}",
+                    ci_provider.build_git_api_url(
+                        f"{threads_path}/{existing_thread_id}"
+                    ),
                     headers=headers,
                     json=existing_thread_data,
                 )
@@ -251,12 +173,7 @@ class AzureCommentReporter(Reporter):
 
             # Post thread
             create_pull_request_thread_response = requests.post(
-                f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_apis"
-                + "/git"
-                + f"/repositories/{repository_id}"
-                + f"/pullRequests/{SYSTEM_PULLREQUEST_PULLREQUESTID}"
-                + "/threads"
-                + f"?api-version={self.api_version}",
+                ci_provider.build_git_api_url(threads_path),
                 headers=headers,
                 json=thread_data,
             )
@@ -270,7 +187,7 @@ class AzureCommentReporter(Reporter):
                 logging.debug(f"Posted Azure Pipelines comment: {thread_data}")
                 logging.info(
                     "[Azure Comment Reporter] Posted summary as comment on "
-                    + f"{SYSTEM_TEAMPROJECT} #PR{SYSTEM_PULLREQUEST_PULLREQUESTID}"
+                    + f"{ci_provider.get_team_project()} #PR{pull_request_id}"
                 )
             else:
                 logging.warning(

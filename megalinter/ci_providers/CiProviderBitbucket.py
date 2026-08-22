@@ -39,6 +39,21 @@ class CiProviderBitbucket(CiProvider):
             f"{build_number}/steps/{urllib.parse.quote(step_uuid)}"
         )
 
+    def get_repo_slug(self):
+        slug = config.get(self.request_id, "BITBUCKET_REPO_FULL_NAME", "")
+        return slug if slug != "" else None
+
+    def get_pr_number(self):
+        pr_id = config.get(self.request_id, "BITBUCKET_PR_ID", "")
+        return pr_id if pr_id != "" else None
+
+    def get_auth_token(self):
+        token = config.get(self.request_id, "BITBUCKET_REPO_ACCESS_TOKEN", "")
+        return token if token != "" else None
+
+    def get_api_headers(self):
+        return {"Authorization": f"Bearer {self.get_auth_token()}"}
+
     def get_pr_commit_shas_hint(self) -> str:
         return (
             "Bitbucket Pipelines exposes no Pull Request commit range: define "

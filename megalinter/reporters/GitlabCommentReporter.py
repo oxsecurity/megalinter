@@ -8,6 +8,7 @@ import logging
 
 import gitlab
 from megalinter import Reporter, config
+from megalinter.ci_providers import CiProviderGitlab
 from megalinter.pre_post_factory import run_command
 from megalinter.utils_reporter import build_markdown_summary
 
@@ -15,8 +16,6 @@ from megalinter.utils_reporter import build_markdown_summary
 class GitlabCommentReporter(Reporter):
     name = "GITLAB_COMMENT"
     scope = "mega-linter"
-
-    gitlab_server_url = "https://gitlab.com"
 
     def manage_activation(self):
         if not config.exists(
@@ -58,40 +57,25 @@ class GitlabCommentReporter(Reporter):
 
     def produce_report(self):
         # Post comment on Gitlab pull request
+        # The reporter instantiates the GitLab provider directly instead of
+        # asking the factory: under Jenkins the platform is Jenkins, which maps
+        # its variables onto the GitLab ones this reporter needs
+        ci_provider = CiProviderGitlab(self.master.request_id)
         if (
-            config.get(self.master.request_id, "CI_JOB_TOKEN", "") != ""
-            or config.get(self.master.request_id, "GITLAB_ACCESS_TOKEN_MEGALINTER", "")
-            != ""
+            ci_provider.get_auth_token() is not None
+            or ci_provider.get_user_auth_token() is not None
         ):
             gitlab_repo = config.get(self.master.request_id, "CI_PROJECT_NAME")
-            gitlab_project_id = config.get(self.master.request_id, "CI_PROJECT_ID")
-            gitlab_merge_request_id = config.get(
-                self.master.request_id, "CI_MERGE_REQUEST_ID", ""
-            )
-            if gitlab_merge_request_id == "":
-                if (
-                    config.get(self.master.request_id, "CI_OPEN_MERGE_REQUESTS", "")
-                    != ""
-                ):
-                    gitlab_merge_request_id = (
-                        config.get(
-                            self.master.request_id,
-                            "CI_OPEN_MERGE_REQUESTS",
-                            "missing!missing",
-                        )
-                        .split(",")[0]
-                        .split("!")[1]
-                    )
-                else:
-                    logging.info(
-                        "[Gitlab Comment Reporter] No merge request has been found, so no comment has been posted"
-                    )
-                    return
+            gitlab_project_id = ci_provider.get_project_id()
+            gitlab_merge_request_id = ci_provider.get_pr_number()
+            if gitlab_merge_request_id is None:
+                logging.info(
+                    "[Gitlab Comment Reporter] No merge request has been found, so no comment has been posted"
+                )
+                return
 
-            gitlab_server_url = config.get(
-                self.master.request_id, "CI_SERVER_URL", self.gitlab_server_url
-            )
-            action_run_url = config.get(self.master.request_id, "CI_JOB_URL", "")
+            gitlab_server_url = ci_provider.get_server_url()
+            action_run_url = ci_provider.get_job_url()
 
             # add comment marker, with extra newlines in between.
             marker = self.get_comment_marker()
@@ -100,19 +84,7 @@ class GitlabCommentReporter(Reporter):
             )
 
             # Build gitlab options
-            gitlab_options = {}
-            # auth token
-            if (
-                config.get(self.master.request_id, "GITLAB_ACCESS_TOKEN_MEGALINTER", "")
-                != ""
-            ):
-                gitlab_options["private_token"] = config.get(
-                    self.master.request_id, "GITLAB_ACCESS_TOKEN_MEGALINTER"
-                )
-            else:
-                gitlab_options["job_token"] = config.get(
-                    self.master.request_id, "CI_JOB_TOKEN"
-                )
+            gitlab_options = ci_provider.get_api_auth_options()
             # Certificate management
             gitlab_certificate_path = config.get(
                 self.master.request_id, "GITLAB_CERTIFICATE_PATH", ""
@@ -166,9 +138,7 @@ class GitlabCommentReporter(Reporter):
             try:
                 mr = project.mergerequests.get(gitlab_merge_request_id)
             except gitlab.GitlabGetError:
-                gitlab_merge_request_id = config.get(
-                    self.master.request_id, "CI_MERGE_REQUEST_IID", "none"
-                )
+                gitlab_merge_request_id = ci_provider.get_pr_number_fallback()
                 try:
                     mr = project.mergerequests.get(gitlab_merge_request_id)
                 except gitlab.GitlabGetError as e:
