@@ -37,6 +37,6 @@ langchain_mistralai==1.1.6
 langchain_openai==1.4.2
 langchain_community==0.4.2
 langsmith==0.10.17
-orjson==3.11.9
+orjson==3.12.0
 pyjwt==2.13.0
 idna==3.18
