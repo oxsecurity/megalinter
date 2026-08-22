@@ -5,10 +5,18 @@
 replicaCount: 1
 namespace: ""
 image:
-  repository: nginx
-  pullPolicy: IfNotPresent
+  # Using a Chainguard image: minimal, non-root by default, and signed with
+  # cosign so it satisfies image signature verification controls.
+  repository: cgr.dev/chainguard/nginx
+  # Chainguard only publishes a "latest" tag on the public tier, so always
+  # pull to avoid running a stale cached image.
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "latest"
+
+# The Chainguard nginx image listens on 8080 (unprivileged port) instead of
+# the official image's 80, since it runs as a non-root user.
+containerPort: 8080
 
 imagePullSecrets: []
 nameOverride: ""
@@ -22,22 +30,36 @@ serviceAccount:
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
   name: ""
+  # Disable auto-mounting of the service account token: this workload does
+  # not need to talk to the Kubernetes API.
+  automount: false
 
 podAnnotations: {}
 labels: []
 
 podSecurityContext:
-  {}
-  # fsGroup: 2000
+  runAsNonRoot: true
+  runAsUser: 1000
+  runAsGroup: 1000
+  fsGroup: 1000
+  fsGroupChangePolicy: Always
+  seccompProfile:
+    type: RuntimeDefault
 
 securityContext:
-  {}
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
+  allowPrivilegeEscalation: false
+  privileged: false
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 1000
+  runAsGroup: 1000
+  seccompProfile:
+    type: RuntimeDefault
+  seLinuxOptions:
+    level: "s0:c123,c456"
+  capabilities:
+    drop:
+      - ALL
 
 service:
   type: ClusterIP
@@ -59,6 +81,11 @@ ingress:
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
+
+# Restrict ingress/egress traffic to the strict minimum needed by this
+# workload (HTTP traffic in, DNS resolution out).
+networkPolicy:
+  enabled: true
 
 resources:
   requests:            #we make sure this is set
