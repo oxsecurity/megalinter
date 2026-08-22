@@ -57,7 +57,7 @@ install:
   dockerfile:
     - |-
       # renovate: datasource=npm depName=@biomejs/biome
-      ARG NPM_BIOMEJS_BIOME_VERSION=2.5.7
+      ARG NPM_BIOMEJS_BIOME_VERSION=2.5.8
   npm:
     - "@biomejs/biome@${NPM_BIOMEJS_BIOME_VERSION}"
 supported_platforms:
