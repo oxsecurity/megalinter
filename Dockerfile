@@ -171,7 +171,7 @@ ARG POWERSHELL_VERSION=7.6.4
 # renovate: datasource=npm depName=@salesforce/cli
 ARG NPM_SALESFORCE_CLI_VERSION=2.146.3
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=3.0.0
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=3.0.5
 # renovate: datasource=npm depName=sfdx-hardis
 ARG SFDX_HARDIS_VERSION=7.23.0
 # renovate: datasource=github-tags depName=coursier/coursier
