@@ -2101,6 +2101,18 @@ The core architecture does the following:
     - **0** if no error (or only non blocking errors if user defined `DISABLE_ERRORS` or `<descriptor_or_linter_key>_DISABLE_ERRORS`)
     - **1** if errors
 
+> I run MegaLinter on an ARM machine (Apple Silicon, ARM CI runner) and linters crash randomly
+
+MegaLinter Docker images are published for **linux/amd64 only**, and `mega-linter-runner` explicitly requests that platform, so on an ARM host the whole container runs through **emulation** (QEMU or Rosetta).
+
+Emulation is a known source of random crashes that are **not** MegaLinter bugs: linters exit with `Segmentation fault`, `Killed`, or `qemu: uncaught target signal 11`, often on a different linter at each run.
+
+If you hit this:
+
+- Prefer running MegaLinter in your **CI** (GitHub Actions, GitLab CI…) on an amd64 runner, where no emulation happens
+- Reduce parallelism with `PARALLEL_PROCESS_NUMBER: 1` in `.mega-linter.yml`, which makes some emulation issues disappear
+- Build a [custom flavor](https://megalinter.io/latest/custom-flavors/) for `linux/arm64` if you need a native local image
+
 <!-- frequently-asked-questions-section-end -->
 
 <!-- how-to-contribute-section-start -->

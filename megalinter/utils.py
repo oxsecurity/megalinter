@@ -501,18 +501,23 @@ def list_updated_files(repo_home):
         except git.InvalidGitRepositoryError:
             logging.warning("Unable to find git repository to list updated files")
             return []
-    if not Path(repo.git_dir).resolve().is_relative_to(Path(repo_home).resolve()):
-        logging.warning(
-            "Your workspace is not a Git working copy root (e.g., the workspace is inside a submodule)"
-        )
-        return []
-    changed_files = [item.a_path for item in repo.index.diff(None)]
+    # Closing the repo releases the persistent "git cat-file" child process and its
+    # file descriptors: this function runs once per fixer linter, so leaking them
+    # can exhaust the file descriptor limit on a large run
+    with repo:
+        if not Path(repo.git_dir).resolve().is_relative_to(Path(repo_home).resolve()):
+            logging.warning(
+                "Your workspace is not a Git working copy root (e.g., the workspace is inside a submodule)"
+            )
+            return []
+        changed_files = [item.a_path for item in repo.index.diff(None)]
     return changed_files
 
 
 def is_git_repo(path):
     try:
-        _ = git.Repo(path).git_dir
+        with git.Repo(path) as repo:
+            _ = repo.git_dir
         return True
     except git.InvalidGitRepositoryError:
         return False
