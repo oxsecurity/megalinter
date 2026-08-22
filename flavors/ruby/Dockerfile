@@ -184,9 +184,9 @@ ARG PIP_SEMGREP_VERSION=1.172.0
 # renovate: datasource=github-tags depName=anchore/syft
 ARG REPOSITORY_SYFT_VERSION=1.50.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_VERSION=0.73.0
+ARG REPOSITORY_TRIVY_VERSION=0.74.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_SBOM_VERSION=0.73.0
+ARG REPOSITORY_TRIVY_SBOM_VERSION=0.74.0
 # renovate: datasource=rubygems depName=rubocop
 ARG GEM_RUBOCOP_VERSION=1.89.0
 # renovate: datasource=rubygems depName=rubocop-github
