@@ -57,6 +57,7 @@
         "TERRAFORM_TFLINT",
         "TERRAFORM_TERRAGRUNT",
         "TERRAFORM_TERRAFORM_FMT",
+        "TERRAFORM_TOFU_FMT",
         "XML_XMLLINT",
         "YAML_PRETTIER",
         "YAML_YAMLLINT",

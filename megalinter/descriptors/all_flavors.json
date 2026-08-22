@@ -200,6 +200,7 @@
             "TERRAFORM_TFLINT",
             "TERRAFORM_TERRAGRUNT",
             "TERRAFORM_TERRAFORM_FMT",
+            "TERRAFORM_TOFU_FMT",
             "TSX_ESLINT",
             "TSX_BIOME",
             "TYPESCRIPT_ES",
@@ -476,6 +477,7 @@
             "RST_RSTFMT",
             "SNAKEMAKE_SNAKEFMT",
             "TERRAFORM_TERRAFORM_FMT",
+            "TERRAFORM_TOFU_FMT",
             "TYPESCRIPT_PRETTIER",
             "VBDOTNET_DOTNET_FORMAT",
             "YAML_PRETTIER"
@@ -1188,6 +1190,7 @@
             "TERRAFORM_TFLINT",
             "TERRAFORM_TERRAGRUNT",
             "TERRAFORM_TERRAFORM_FMT",
+            "TERRAFORM_TOFU_FMT",
             "XML_XMLLINT",
             "YAML_PRETTIER",
             "YAML_YAMLLINT",

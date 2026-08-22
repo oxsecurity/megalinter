@@ -99,6 +99,7 @@
         "TERRAFORM_TFLINT",
         "TERRAFORM_TERRAGRUNT",
         "TERRAFORM_TERRAFORM_FMT",
+        "TERRAFORM_TOFU_FMT",
         "TSX_ESLINT",
         "TSX_BIOME",
         "TYPESCRIPT_ES",
