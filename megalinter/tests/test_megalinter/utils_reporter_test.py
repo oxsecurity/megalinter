@@ -7,6 +7,7 @@ Unit tests for utils_reporter
 import unittest
 
 from megalinter.utils_reporter import (
+    _build_missing_output_message,
     _build_table_content,
     _sort_linters_by_icon_severity,
     get_linter_status_icon,
@@ -24,7 +25,15 @@ class FakeLinter:
         total_number_warnings=0,
         disable_errors_if_less_than=None,
         linter_name="fake_linter",
+        can_output_sarif=False,
+        output_sarif=False,
+        sarif_output_file=None,
+        report_folder="/tmp/lint/megalinter-reports",
     ):
+        self.can_output_sarif = can_output_sarif
+        self.output_sarif = output_sarif
+        self.sarif_output_file = sarif_output_file
+        self.report_folder = report_folder
         self.status = status
         self.return_code = return_code
         self.number_errors = number_errors
@@ -147,3 +156,86 @@ class utils_reporter_test(unittest.TestCase):
         self.assertIn("Max errors", table)
         self.assertIn("☑️", table)
         self.assertIn("10", table)
+
+    @staticmethod
+    def sarif_linter():
+        return FakeLinter(
+            linter_name="ruff",
+            can_output_sarif=True,
+            output_sarif=True,
+            sarif_output_file="/tmp/lint/megalinter-reports/sarif/PYTHON_RUFF.sarif",
+        )
+
+    # A SARIF linter writes nothing to stdout: instead of a dead end, the
+    # details section names the report and links the artifacts
+    def test_missing_output_sarif_linter_with_run_url(self):
+        message = _build_missing_output_message(
+            self.sarif_linter(), "https://ci.example/run/1", "No output available"
+        )
+        self.assertIn("reports in SARIF format", message)
+        self.assertIn("[MegaLinter artifacts](https://ci.example/run/1)", message)
+        self.assertIn("`sarif/PYTHON_RUFF.sarif`", message)
+        # The absolute container path must never be shown to the user
+        self.assertNotIn("/tmp/lint", message)
+
+    def test_missing_output_sarif_linter_without_run_url(self):
+        message = _build_missing_output_message(
+            self.sarif_linter(), "", "No output available"
+        )
+        self.assertIn("reports in SARIF format", message)
+        self.assertIn("`sarif/PYTHON_RUFF.sarif`", message)
+        self.assertNotIn("](", message)
+
+    # The hint keys on the linter's SARIF intent, not on the file still being
+    # on disk: SarifReporter runs first and removes it when LOG_FILE is "none"
+    def test_missing_output_sarif_hint_does_not_need_the_file(self):
+        linter = self.sarif_linter()
+        self.assertIn(
+            "sarif/PYTHON_RUFF.sarif",
+            _build_missing_output_message(linter, "", "No output available"),
+        )
+
+    def test_missing_output_applies_to_the_file_not_found_case(self):
+        message = _build_missing_output_message(
+            self.sarif_linter(), "", "Linter output file not found"
+        )
+        self.assertIn("reports in SARIF format", message)
+
+    # Non-SARIF linters keep the previous wording untouched
+    def test_missing_output_non_sarif_linter_unchanged(self):
+        for default_message in ("No output available", "Linter output file not found"):
+            self.assertEqual(
+                default_message,
+                _build_missing_output_message(FakeLinter(), "", default_message),
+            )
+
+    def test_missing_output_sarif_capable_but_not_enabled_unchanged(self):
+        linter = FakeLinter(
+            can_output_sarif=True,
+            output_sarif=False,
+            sarif_output_file="/tmp/lint/megalinter-reports/sarif/PYTHON_RUFF.sarif",
+        )
+        self.assertEqual(
+            "No output available",
+            _build_missing_output_message(linter, "", "No output available"),
+        )
+
+    # report_folder is "" when the linter got no report_folder param: the
+    # message must stay a clean path, not walk out of the reports folder
+    def test_missing_output_sarif_without_report_folder(self):
+        linter = FakeLinter(
+            can_output_sarif=True,
+            output_sarif=True,
+            sarif_output_file="/sarif/PYTHON_RUFF.sarif",
+            report_folder="",
+        )
+        message = _build_missing_output_message(linter, "", "No output available")
+        self.assertIn("`sarif/PYTHON_RUFF.sarif`", message)
+        self.assertNotIn("..", message)
+
+    def test_missing_output_sarif_enabled_without_output_file_unchanged(self):
+        linter = FakeLinter(can_output_sarif=True, output_sarif=True)
+        self.assertEqual(
+            "No output available",
+            _build_missing_output_message(linter, "", "No output available"),
+        )

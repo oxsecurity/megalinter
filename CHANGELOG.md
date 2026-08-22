@@ -52,6 +52,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - The **API reporter** variables (`API_REPORTER`, `API_REPORTER_URL`…) are not flagged as **deprecated** anymore in the configuration JSON schema: they were collateral damage of the removal of the `API` descriptor in v10.0.0, and IDEs displayed them as obsolete
 
 - Reporters
+  - Linters reporting in **SARIF** format no longer show **No output available** in Pull Request comments and summaries: the details section now names the SARIF report to open and links the **MegaLinter artifacts** ([#8730](https://github.com/oxsecurity/megalinter/issues/8730))
+    - Applies to the **GitHub**, **GitLab**, **Azure** and **Bitbucket** comment reporters and to the markdown summary
+    - The link points where the reporter already links its detailed reports, so it follows `REPORTERS_ACTION_RUN_URL` when you set it
 
 - Flavors
 

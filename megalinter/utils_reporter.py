@@ -727,6 +727,32 @@ def _build_table_content(linters, reporter_self, action_run_url):
     return str(writer)
 
 
+# A linter reporting in SARIF writes nothing to stdout, so its details section
+# would otherwise be a dead end ("No output available"). Point at the SARIF
+# report to open instead, linked to the artifacts the footer already links to.
+# The condition is the linter's SARIF intent, not the presence of the file:
+# SarifReporter runs first (processing_order -9999) and deletes the per-linter
+# SARIF files when LOG_FILE is "none", so a filesystem check would be flaky
+def _build_missing_output_message(linter, action_run_url, default_message):
+    if (
+        linter.can_output_sarif is not True
+        or linter.output_sarif is not True
+        or linter.sarif_output_file is None
+    ):
+        return default_message
+    # Mirrors how Linter.get_sarif_arguments() builds the path, so the message
+    # stays a clean path inside the report folder even when report_folder is
+    # not set (relpath would then walk out with ../..)
+    sarif_report = f"sarif/{os.path.basename(linter.sarif_output_file)}"
+    message = f"No text output: {linter.linter_name} reports in SARIF format."
+    if action_run_url != "":
+        return (
+            f"{message} Download [MegaLinter artifacts]({action_run_url}) "
+            f"and open `{sarif_report}`"
+        )
+    return f"{message} See `{sarif_report}` in MegaLinter artifacts"
+
+
 def _build_sections_content(
     linters_with_issues, linters_ok, reporter_self, action_run_url, max_total_chars
 ):
@@ -805,11 +831,15 @@ def _build_sections_content(
                         # Escape any HTML in the output and wrap in code block
                         linter_output = f"```\n{linter_output.strip()}\n```"
                     else:
-                        linter_output = "No output available"
+                        linter_output = _build_missing_output_message(
+                            linter, action_run_url, "No output available"
+                        )
             except Exception as e:
                 linter_output = f"Error reading linter output: {str(e)}"
         else:
-            linter_output = "Linter output file not found"
+            linter_output = _build_missing_output_message(
+                linter, action_run_url, "Linter output file not found"
+            )
 
         # Get AI suggestions for this specific linter if available
         ai_suggestion_content = ""
