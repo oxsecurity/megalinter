@@ -371,6 +371,15 @@ CVE-2026-56821
 CVE-2026-56822
 CVE-2026-59901
 GHSA-v74w-7mr3-4qg3
+# CVE-2026-73507 (netty-codec-xml) and CVE-2026-59902 (netty-transport-sctp) are two
+# more of the same, found in salesforce/code-analyzer-sfge-engine/dist/java-lib/. They
+# sit in the XML protocol codec and the SCTP transport - a wire-protocol decoder and a
+# niche network transport. The Salesforce Graph Engine walks Apex source locally to
+# build a call graph; it opens no socket, speaks no SCTP and decodes no network XML
+# frames, so neither jar is ever loaded. @salesforce/plugin-code-analyzer 5.15.0, which
+# vendors them, is the latest release, so there is no upgrade path.
+CVE-2026-59902
+CVE-2026-73507
 # jackson-core is bundled by npm-groovy-lint and Salesforce Code Analyzer for
 # parsing their own configuration and report files, not untrusted network input.
 # Worst case is a parser DoS that aborts the linter container it runs in.
@@ -419,6 +428,15 @@ CVE-2026-18446
 # and undici >= 7.29.0.
 CVE-2026-69192
 CVE-2026-13697
+# CVE-2026-73566 is a node-tar DoS: a crafted archive with a pathological long path
+# drives quadratic work in the path parser, hanging the process (availability only).
+# The vulnerable tar 7.5.19 is vendored in the Salesforce CLI's own node_modules.
+# node-tar is exercised when sf EXTRACTS an archive, which happens while installing
+# plugins at Docker build time from the npm registry - not at lint time, when
+# code-analyzer only reads workspace sources. A hostile .tar committed to a repository
+# is never handed to sf's extractor.
+# Remove once the pinned @salesforce/cli release vendors tar >= 7.5.21.
+CVE-2026-73566
 # CVE-2026-71556 is a symlink-follow flaw in go-git worktree WRITE operations: an
 # attacker who plants a symlink in a worktree can make the application overwrite
 # files (e.g. .git/config) when it writes through that path. The vulnerable
