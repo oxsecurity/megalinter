@@ -15689,7 +15689,10 @@
 <li>Breaking changes</li>
 </ul>
 <ul>
-<li>Core</li>
+<li>Core<ul>
+<li>MegaLinter now prints a <strong>crash traceback</strong> when it is killed by a fatal signal (<code>SIGSEGV</code>, <code>SIGBUS</code>…), instead of exiting silently with no clue about what happened</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>New linters<ul>
@@ -15747,6 +15750,8 @@
 </ul>
 <ul>
 <li>Fixes<ul>
+<li>Fixed random <strong><code>Segmentation fault</code></strong> crashes of MegaLinter itself, which stopped the whole run with no error message (<a href="https://github.com/oxsecurity/megalinter/issues/8733">#8733</a>). MegaLinter threads now get a full-size stack instead of the 128 KiB default of the Alpine images</li>
+<li>Fixed leaked <strong><code>git</code> processes</strong> when <strong>APPLY_FIXES</strong> is active: one was left behind by every fixer linter, which could exhaust the available file descriptors on long runs</li>
 <li>Fixed <strong>random crashes of project-mode linters</strong> (<code>REPOSITORY_TRIVY</code>, <code>REPOSITORY_GRYPE</code>, <code>REPOSITORY_SYFT</code>…) caused by MegaLinter writing temporary ignore files inside the analyzed sources: a file appearing then disappearing while another linter walked the repository aborted its scan (<code>walk dir error: ... no such file or directory</code>). <strong>MegaLinter now writes only in REPORT_OUTPUT_FOLDER</strong>, never in your sources</li>
 <li><strong>REPORT_OUTPUT_FOLDER</strong> is now always excluded from what linters analyze, even when you override <code>EXCLUDED_DIRECTORIES</code>, and even when the folder does not exist yet when a linter starts</li>
 <li>The <strong>API reporter</strong> variables (<code>API_REPORTER</code>, <code>API_REPORTER_URL</code>…) are not flagged as <strong>deprecated</strong> anymore in the configuration JSON schema: they were collateral damage of the removal of the <code>API</code> descriptor in v10.0.0, and IDEs displayed them as obsolete</li>
@@ -15793,6 +15798,12 @@
 </ul>
 <ul>
 <li>Dev<ul>
+<li><strong>Crash diagnostics</strong>: <code>megalinter.run.enable_crash_diagnostics()</code> enables <code>faulthandler</code> and raises the thread stack size to 8 MiB (the glibc default) before any thread is started, and worker processes enable <code>faulthandler</code> too. musl gives threads a 128 KiB stack and CPython below 3.14.7 miscomputed its stack guard there (<a href="https://github.com/python/cpython/issues/148260">cpython#148260</a>), so C-level recursion in a thread - such as pickling the linter object graph in the <code>multiprocessing.Pool</code> handler threads, which reaches the whole <code>Megalinter</code> instance through <code>Linter.master</code> - crashed the process with <code>SIGSEGV</code> instead of raising <code>RecursionError</code><ul>
+<li>Verified on <code>python:3.14.6-alpine</code>: pickling a deeply nested object in a thread exits with signal 11, and either raising the thread stack size or moving to <code>python:3.14.7-alpine</code> turns it into a plain <code>RecursionError</code></li>
+<li><code>faulthandler</code> can not report a stack overflow itself (the handler has no stack left to run on), which is why the crash in <a href="https://github.com/oxsecurity/megalinter/issues/8733">#8733</a> left no output at all; it does report every other fatal signal</li>
+</ul>
+</li>
+<li>The Docker images assert a <strong>Python 3.14.7 floor</strong> at build time, the first release carrying the CPython musl thread stack fixes. The <code>python:3.14-alpine3.24</code> tag stays floating because <code>renovate.json5</code> scopes the <code>dockerfile</code> manager away from the main <code>Dockerfile</code>, whose <code>FROM</code> lines are generated from descriptors</li>
 <li>Retired the <code>cli_lint_mode_project_exclude_workspace_file_name</code> descriptor property and the <code>write_workspace_generated_file()</code> helper, and removed the property from the descriptor JSON schema so a future descriptor can not silently reintroduce a write inside the analyzed sources. Exclusion forwarding now offers three mechanisms only: native CLI flag, generated ignore file in the report folder, generated config via <code>manage_excluded_directories_config()</code></li>
 <li><strong>Deprecation flags of removed linters are now reversible</strong> in the configuration JSON schema: <code>build.py</code> clears the <code>deprecated</code> flag and the <code>(deprecated)</code> title prefix of variables whose linter or descriptor is back, instead of only ever adding them</li>
 <li><strong>spectral is installed in its own <code>node_modules</code> tree</strong> (<code>/node-deps-spectral</code>) instead of the shared <code>/node-deps</code> one, which is what made it crash: <code>@prantlf/jsonlint</code> pins <code>ajv</code> to exactly <code>8.17.1</code> and so owns the hoisted root copy, while <code>@stoplight/spectral-core</code> requires <code>ajv &gt;= 8.18.0</code> and gets a nested one, so its hoisted <code>ajv-errors</code> bound to the other <code>ajv</code> instance and ajv generated invalid JavaScript (<code>SyntaxError: Unexpected token ':'</code> at <code>new Function</code>). Any npm linter sharing the tree with an exact-pinned transitive dependency can hit the same trap</li>
