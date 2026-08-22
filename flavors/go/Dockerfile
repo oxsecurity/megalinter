@@ -136,7 +136,7 @@ ARG PIP_ANSIBLE_LINT_VERSION=26.6.0
 # renovate: datasource=npm depName=@stoplight/spectral-cli
 ARG NPM_SPECTRAL_CLI_VERSION=6.16.3
 # renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=5.0.14
+ARG NPM_JSCPD_VERSION=5.0.15
 # renovate: datasource=npm depName=stylelint
 ARG NPM_STYLELINT_VERSION=17.14.1
 # renovate: datasource=npm depName=stylelint-config-standard
