@@ -24,7 +24,7 @@ linters:
       - **Configuration Flexibility**: YAML-based configuration for team-specific linting preferences
     linter_url: https://github.com/yoheimuta/protolint
     linter_repo: https://github.com/yoheimuta/protolint
-    linter_megalinter_ref_url: https://github.com/yoheimuta/protolint/pull/559
+    linter_megalinter_ref_url: https://github.com/yoheimuta/protolint#ci-integration
     linter_rules_url: https://github.com/yoheimuta/protolint#rules
     linter_rules_configuration_url: https://github.com/yoheimuta/protolint#rules
     linter_rules_inline_disable_url: https://github.com/yoheimuta/protolint#configuring

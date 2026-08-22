@@ -2,7 +2,7 @@
 linter_name: cppcheck
 linter_url: https://cppcheck.sourceforge.io/
 linter_repo: https://cppcheck.sourceforge.io/
-linter_megalinter_ref_url: https://github.com/cppcheck-opensource/cppcheck/pull/8786
+linter_megalinter_ref_url: https://github.com/cppcheck-opensource/cppcheck-htdocs/pull/32
 linter_spdx_license: GPL-3.0
 linter_rules_url: https://sourceforge.net/p/cppcheck/wiki/ListOfChecks/
 linter_rules_configuration_url: https://cppcheck.sourceforge.io/manual.html#configuration
