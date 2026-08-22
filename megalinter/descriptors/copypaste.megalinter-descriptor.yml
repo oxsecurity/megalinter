@@ -67,7 +67,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=jscpd
-          ARG NPM_JSCPD_VERSION=5.0.14
+          ARG NPM_JSCPD_VERSION=5.0.15
       npm:
         - jscpd@${NPM_JSCPD_VERSION}
     # jscpd v5 is a Rust binary distributed through per-platform npm packages,
