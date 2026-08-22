@@ -12,7 +12,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=yoheimuta/protolint
-ARG PROTOBUF_PROTOLINT_VERSION=0.56.4
+ARG PROTOBUF_PROTOLINT_VERSION=0.57.0
 #ARGTOP__END
 
 #############################################################################################
