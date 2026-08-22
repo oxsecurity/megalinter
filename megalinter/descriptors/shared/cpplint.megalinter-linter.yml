@@ -3,7 +3,7 @@ class: CppLintLinter
 linter_name: cpplint
 linter_url: https://github.com/cpplint/cpplint
 linter_repo: https://github.com/cpplint/cpplint
-linter_megalinter_ref_url: https://github.com/cpplint/cpplint/pull/462
+linter_megalinter_ref_url: https://github.com/cpplint/cpplint#installation
 linter_spdx_license: BSD-3-Clause
 linter_rules_url: https://google.github.io/styleguide/cppguide.html
 cli_lint_mode: list_of_files

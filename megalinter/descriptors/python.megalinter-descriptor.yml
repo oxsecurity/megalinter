@@ -335,7 +335,7 @@ linters:
     is_formatter: true
     linter_url: https://pycqa.github.io/isort/
     linter_repo: https://github.com/PyCQA/isort
-    linter_megalinter_ref_url: https://github.com/PyCQA/isort/pull/2620
+    linter_megalinter_ref_url: "no"
     linter_spdx_license: MIT
     linter_speed: 5
     linter_banner_image_url: https://raw.githubusercontent.com/pycqa/isort/develop/art/logo_large.png
@@ -692,7 +692,7 @@ linters:
       **Note**: This linter only checks `.ipynb` files. Use PYTHON_MYPY for `.py` and `.pyi` files.
     linter_url: https://github.com/nbQA-dev/nbQA
     linter_repo: https://github.com/nbQA-dev/nbQA
-    linter_megalinter_ref_url: https://github.com/nbQA-dev/nbQA/pull/905
+    linter_megalinter_ref_url: https://github.com/nbQA-dev/nbQA#-used-by
     linter_rules_url: https://github.com/nbQA-dev/nbQA
     linter_spdx_license: MIT
     linter_speed: 2
@@ -772,7 +772,7 @@ linters:
     linter_url: https://github.com/Microsoft/pyright
     linter_rules_url: https://github.com/microsoft/pyright#type-checking-features
     linter_repo: https://github.com/microsoft/pyright
-    linter_megalinter_ref_url: https://github.com/microsoft/pyright/pull/11604
+    linter_megalinter_ref_url: https://microsoft.github.io/pyright/#/ci-integration
     linter_spdx_license: MIT
     linter_banner_image_url: https://github.com/microsoft/pyright/raw/main/docs/img/PyrightLarge.png
     linter_speed: 1

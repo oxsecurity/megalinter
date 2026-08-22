@@ -88,7 +88,7 @@ linters:
     name: SNAKEMAKE_SNAKEFMT
     linter_url: https://github.com/snakemake/snakefmt
     linter_repo: https://github.com/snakemake/snakefmt
-    linter_megalinter_ref_url: https://github.com/snakemake/snakefmt/pull/314
+    linter_megalinter_ref_url: https://github.com/snakemake/snakefmt#github-actions
     linter_rules_configuration_url: https://github.com/snakemake/snakefmt#configuration
     linter_spdx_license: MIT
     config_file_name: .snakefmt.toml

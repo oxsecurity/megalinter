@@ -20,7 +20,7 @@ linters:
       - security
     linter_url: https://github.com/terraform-linters/tflint
     linter_repo: https://github.com/terraform-linters/tflint
-    linter_megalinter_ref_url: https://github.com/terraform-linters/tflint/pull/2624
+    linter_megalinter_ref_url: "no"
     linter_rules_url: https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/README.md
     linter_rules_configuration_url: https://github.com/terraform-linters/tflint/blob/master/docs/user-guide/config.md
     linter_rules_inline_disable_url: https://github.com/terraform-linters/tflint/blob/master/docs/user-guide/annotations.md

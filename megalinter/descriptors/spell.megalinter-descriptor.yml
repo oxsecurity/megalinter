@@ -264,7 +264,7 @@ linters:
       - documentation
     linter_url: https://lychee.cli.rs
     linter_repo: https://github.com/lycheeverse/lychee
-    linter_megalinter_ref_url: https://github.com/lycheeverse/lychee/pull/2277
+    linter_megalinter_ref_url: https://github.com/lycheeverse/lychee#users
     linter_banner_image_url: https://raw.githubusercontent.com/lycheeverse/lychee/master/assets/banner.svg
     linter_image_url: https://raw.githubusercontent.com/lycheeverse/lychee/master/assets/logo.svg
     linter_rules_url: https://lychee.cli.rs/guides/cli/
