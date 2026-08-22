@@ -12268,119 +12268,119 @@
 <details>
 <summary>This file should have this code</summary>
 
-<div class="highlight"><pre><span></span><code>---
-# MegaLinter GitHub Action configuration file
-# More info at https://megalinter.io
-name: MegaLinter
+<div class="highlight"><pre><span></span><code><span class="nn">---</span>
+<span class="c1"># MegaLinter GitHub Action configuration file</span>
+<span class="c1"># More info at https://megalinter.io</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MegaLinter</span>
 
-on:
-  # Trigger mega-linter at every push. Action will also be visible from Pull Requests to main
-  push: # Comment this line to trigger action only on pull-requests (not recommended if you don't pay for GH Actions)
-  pull_request:
-    branches: [master, main]
+<span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># Trigger mega-linter at every push. Action will also be visible from Pull Requests to main</span>
+<span class="w">  </span><span class="nt">push</span><span class="p">:</span><span class="w"> </span><span class="c1"># Comment this line to trigger action only on pull-requests (not recommended if you don't pay for GH Actions)</span>
+<span class="w">  </span><span class="nt">pull_request</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">master</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">main</span><span class="p p-Indicator">]</span>
 
-env: # Comment env block if you don't want to apply fixes
-  # Apply linter fixes configuration
-  APPLY_FIXES: all # When active, APPLY_FIXES must also be defined as environment variable (in github/workflows/mega-linter.yml or other CI tool)
-  APPLY_FIXES_EVENT: pull_request # Decide which event triggers application of fixes in a commit or a PR (pull_request, push, all)
-  APPLY_FIXES_MODE: commit # If APPLY_FIXES is used, defines if the fixes are directly committed (commit) or posted in a PR (pull_request)
+<span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="c1"># Comment env block if you don't want to apply fixes</span>
+<span class="w">  </span><span class="c1"># Apply linter fixes configuration</span>
+<span class="w">  </span><span class="nt">APPLY_FIXES</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">all</span><span class="w"> </span><span class="c1"># When active, APPLY_FIXES must also be defined as environment variable (in github/workflows/mega-linter.yml or other CI tool)</span>
+<span class="w">  </span><span class="nt">APPLY_FIXES_EVENT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pull_request</span><span class="w"> </span><span class="c1"># Decide which event triggers application of fixes in a commit or a PR (pull_request, push, all)</span>
+<span class="w">  </span><span class="nt">APPLY_FIXES_MODE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">commit</span><span class="w"> </span><span class="c1"># If APPLY_FIXES is used, defines if the fixes are directly committed (commit) or posted in a PR (pull_request)</span>
 
-concurrency:
-  group: ${{ github.ref }}-${{ github.workflow }}
-  cancel-in-progress: true
+<span class="nt">concurrency</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ github.ref }}-${{ github.workflow }}</span>
+<span class="w">  </span><span class="nt">cancel-in-progress</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 
-permissions: {}
+<span class="nt">permissions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 
-jobs:
-  megalinter:
-    name: MegaLinter
-    runs-on: ubuntu-latest
-    permissions:
-      # Give the default GITHUB_TOKEN write permission to commit and push, comment issues &amp; post new PR
-      # Remove the ones you do not need
-      contents: write
-      issues: write
-      pull-requests: write
-    steps:
-      # Git Checkout
-      - name: Checkout Code
-        uses: actions/checkout@v6
-        with:
-          # SECURITY NOTE: Using a Personal Access Token (PAT) is NOT
-          # recommended. Open-source projects have been heavily targeted by
-          # supply-chain attacks in recent months, and a leaked PAT can give
-          # attackers broad write access to your repository: better safe
-          # than sorry! If you only need workflows to re-trigger after
-          # MegaLinter applies fixes, prefer one of these safer alternatives:
-          #   - Manually re-run the workflow from the GitHub Actions tab, or
-          #   - Push another commit on the branch to trigger workflows again.
-          # Only define `secrets.PAT` if you fully understand the trade-off.
-          token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
-          persist-credentials: false # Comment this line and uncomment the next one if you use APPLY_FIXES
-          # persist-credentials: true # zizmor: ignore[artipacked]
-          fetch-depth: 0 # If you use VALIDATE_ALL_CODEBASE = true, you can remove this line to improve performances
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">megalinter</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MegaLinter</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">permissions</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># Give the default GITHUB_TOKEN write permission to commit and push, comment issues &amp; post new PR</span>
+<span class="w">      </span><span class="c1"># Remove the ones you do not need</span>
+<span class="w">      </span><span class="nt">contents</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">write</span>
+<span class="w">      </span><span class="nt">issues</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">write</span>
+<span class="w">      </span><span class="nt">pull-requests</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">write</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># Git Checkout</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Checkout Code</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v6</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="c1"># SECURITY NOTE: Using a Personal Access Token (PAT) is NOT</span>
+<span class="w">          </span><span class="c1"># recommended. Open-source projects have been heavily targeted by</span>
+<span class="w">          </span><span class="c1"># supply-chain attacks in recent months, and a leaked PAT can give</span>
+<span class="w">          </span><span class="c1"># attackers broad write access to your repository: better safe</span>
+<span class="w">          </span><span class="c1"># than sorry! If you only need workflows to re-trigger after</span>
+<span class="w">          </span><span class="c1"># MegaLinter applies fixes, prefer one of these safer alternatives:</span>
+<span class="w">          </span><span class="c1">#   - Manually re-run the workflow from the GitHub Actions tab, or</span>
+<span class="w">          </span><span class="c1">#   - Push another commit on the branch to trigger workflows again.</span>
+<span class="w">          </span><span class="c1"># Only define `secrets.PAT` if you fully understand the trade-off.</span>
+<span class="w">          </span><span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.PAT || secrets.GITHUB_TOKEN }}</span>
+<span class="w">          </span><span class="nt">persist-credentials</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"> </span><span class="c1"># Comment this line and uncomment the next one if you use APPLY_FIXES</span>
+<span class="w">          </span><span class="c1"># persist-credentials: true # zizmor: ignore[artipacked]</span>
+<span class="w">          </span><span class="nt">fetch-depth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"> </span><span class="c1"># If you use VALIDATE_ALL_CODEBASE = true, you can remove this line to improve performances</span>
 
-      # MegaLinter
-      - name: MegaLinter
-        id: ml
-        # You can override MegaLinter flavor used to have faster performances
-        # More info at https://megalinter.io/flavors/
-        # MAJOR-RELEASE-IMPACTED
-        uses: oxsecurity/megalinter@v10
-        env:
-          # All available variables are described in documentation
-          # https://megalinter.io/configuration/
-          VALIDATE_ALL_CODEBASE: ${{ github.event_name == 'push' &amp;&amp; github.ref == 'refs/heads/main' }} # Validates all source when push on main, else just the git diff with main. Override with true if you always want to lint all sources
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # ADD YOUR CUSTOM ENV VARIABLES HERE OR DEFINE THEM IN A FILE .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
-          # DISABLE: COPYPASTE,SPELL # Uncomment to disable copy-paste and spell checks
+<span class="w">      </span><span class="c1"># MegaLinter</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MegaLinter</span>
+<span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ml</span>
+<span class="w">        </span><span class="c1"># You can override MegaLinter flavor used to have faster performances</span>
+<span class="w">        </span><span class="c1"># More info at https://megalinter.io/flavors/</span>
+<span class="w">        </span><span class="c1"># MAJOR-RELEASE-IMPACTED</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oxsecurity/megalinter@v10</span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">          </span><span class="c1"># All available variables are described in documentation</span>
+<span class="w">          </span><span class="c1"># https://megalinter.io/configuration/</span>
+<span class="w">          </span><span class="nt">VALIDATE_ALL_CODEBASE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ github.event_name == 'push' &amp;&amp; github.ref == 'refs/heads/main' }}</span><span class="w"> </span><span class="c1"># Validates all source when push on main, else just the git diff with main. Override with true if you always want to lint all sources</span>
+<span class="w">          </span><span class="nt">GITHUB_TOKEN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.GITHUB_TOKEN }}</span>
+<span class="w">          </span><span class="c1"># ADD YOUR CUSTOM ENV VARIABLES HERE OR DEFINE THEM IN A FILE .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY</span>
+<span class="w">          </span><span class="c1"># DISABLE: COPYPASTE,SPELL # Uncomment to disable copy-paste and spell checks</span>
 
-      # Upload MegaLinter artifacts
-      - name: Archive production artifacts
-        if: success() || failure()
-        uses: actions/upload-artifact@v7
-        with:
-          name: MegaLinter reports
-          include-hidden-files: "true"
-          path: |
-            megalinter-reports
-            mega-linter.log
+<span class="w">      </span><span class="c1"># Upload MegaLinter artifacts</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Archive production artifacts</span>
+<span class="w">        </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">success() || failure()</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/upload-artifact@v7</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MegaLinter reports</span>
+<span class="w">          </span><span class="nt">include-hidden-files</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
+<span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">            </span><span class="no">megalinter-reports</span>
+<span class="w">            </span><span class="no">mega-linter.log</span>
 
-      # Create pull request if applicable (for now works only on PR from same repository, not from forks)
-      - name: Create Pull Request with applied fixes
-        id: cpr
-        if: steps.ml.outputs.has_updated_sources == 1 &amp;&amp; (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) &amp;&amp; env.APPLY_FIXES_MODE == 'pull_request' &amp;&amp; (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository) &amp;&amp; !contains(github.event.head_commit.message, 'skip fix')
-        uses: peter-evans/create-pull-request@v8
-        with:
-          # SECURITY NOTE: see the warning on the checkout step above —
-          # using `secrets.PAT` is NOT recommended for security reasons.
-          # Prefer manually re-running the workflow or pushing another
-          # commit on the branch to trigger workflows again.
-          token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
-          commit-message: "[MegaLinter] Apply linters automatic fixes"
-          title: "[MegaLinter] Apply linters automatic fixes"
-          labels: bot
-      - name: Create PR output
-        if: steps.ml.outputs.has_updated_sources == 1 &amp;&amp; (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) &amp;&amp; env.APPLY_FIXES_MODE == 'pull_request' &amp;&amp; (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository) &amp;&amp; !contains(github.event.head_commit.message, 'skip fix')
-        env:
-          PR_NUMBER: ${{ steps.cpr.outputs.pull-request-number }}
-          PR_URL: ${{ steps.cpr.outputs.pull-request-url }}
-        run: |
-          echo "Pull Request Number - ${PR_NUMBER}"
-          echo "Pull Request URL - ${PR_URL}"
+<span class="w">      </span><span class="c1"># Create pull request if applicable (for now works only on PR from same repository, not from forks)</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create Pull Request with applied fixes</span>
+<span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cpr</span>
+<span class="w">        </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">steps.ml.outputs.has_updated_sources == 1 &amp;&amp; (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) &amp;&amp; env.APPLY_FIXES_MODE == 'pull_request' &amp;&amp; (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository) &amp;&amp; !contains(github.event.head_commit.message, 'skip fix')</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">peter-evans/create-pull-request@v8</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="c1"># SECURITY NOTE: see the warning on the checkout step above —</span>
+<span class="w">          </span><span class="c1"># using `secrets.PAT` is NOT recommended for security reasons.</span>
+<span class="w">          </span><span class="c1"># Prefer manually re-running the workflow or pushing another</span>
+<span class="w">          </span><span class="c1"># commit on the branch to trigger workflows again.</span>
+<span class="w">          </span><span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.PAT || secrets.GITHUB_TOKEN }}</span>
+<span class="w">          </span><span class="nt">commit-message</span><span class="p">:</span><span class="w"> </span><span class="s">"[MegaLinter]</span><span class="nv"> </span><span class="s">Apply</span><span class="nv"> </span><span class="s">linters</span><span class="nv"> </span><span class="s">automatic</span><span class="nv"> </span><span class="s">fixes"</span>
+<span class="w">          </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">"[MegaLinter]</span><span class="nv"> </span><span class="s">Apply</span><span class="nv"> </span><span class="s">linters</span><span class="nv"> </span><span class="s">automatic</span><span class="nv"> </span><span class="s">fixes"</span>
+<span class="w">          </span><span class="nt">labels</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bot</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create PR output</span>
+<span class="w">        </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">steps.ml.outputs.has_updated_sources == 1 &amp;&amp; (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) &amp;&amp; env.APPLY_FIXES_MODE == 'pull_request' &amp;&amp; (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository) &amp;&amp; !contains(github.event.head_commit.message, 'skip fix')</span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">PR_NUMBER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ steps.cpr.outputs.pull-request-number }}</span>
+<span class="w">          </span><span class="nt">PR_URL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ steps.cpr.outputs.pull-request-url }}</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">echo "Pull Request Number - ${PR_NUMBER}"</span>
+<span class="w">          </span><span class="no">echo "Pull Request URL - ${PR_URL}"</span>
 
-      # Push new commit if applicable (for now works only on PR from same repository, not from forks)
-      - name: Prepare commit
-        if: steps.ml.outputs.has_updated_sources == 1 &amp;&amp; (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) &amp;&amp; env.APPLY_FIXES_MODE == 'commit' &amp;&amp; github.ref != 'refs/heads/main' &amp;&amp; (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository) &amp;&amp; !contains(github.event.head_commit.message, 'skip fix')
-        run: sudo chown -Rc $UID .git/
-      - name: Commit and push applied linter fixes
-        if: steps.ml.outputs.has_updated_sources == 1 &amp;&amp; (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) &amp;&amp; env.APPLY_FIXES_MODE == 'commit' &amp;&amp; github.ref != 'refs/heads/main' &amp;&amp; (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository) &amp;&amp; !contains(github.event.head_commit.message, 'skip fix')
-        uses: stefanzweifel/git-auto-commit-action@v7
-        with:
-          branch: ${{ github.event.pull_request.head.ref || github.head_ref || github.ref }}
-          commit_message: "[MegaLinter] Apply linters fixes"
-          commit_user_name: megalinter-bot
-          commit_user_email: 129584137+megalinter-bot@users.noreply.github.com
+<span class="w">      </span><span class="c1"># Push new commit if applicable (for now works only on PR from same repository, not from forks)</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prepare commit</span>
+<span class="w">        </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">steps.ml.outputs.has_updated_sources == 1 &amp;&amp; (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) &amp;&amp; env.APPLY_FIXES_MODE == 'commit' &amp;&amp; github.ref != 'refs/heads/main' &amp;&amp; (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository) &amp;&amp; !contains(github.event.head_commit.message, 'skip fix')</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sudo chown -Rc $UID .git/</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Commit and push applied linter fixes</span>
+<span class="w">        </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">steps.ml.outputs.has_updated_sources == 1 &amp;&amp; (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) &amp;&amp; env.APPLY_FIXES_MODE == 'commit' &amp;&amp; github.ref != 'refs/heads/main' &amp;&amp; (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository) &amp;&amp; !contains(github.event.head_commit.message, 'skip fix')</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stefanzweifel/git-auto-commit-action@v7</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">branch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ github.event.pull_request.head.ref || github.head_ref || github.ref }}</span>
+<span class="w">          </span><span class="nt">commit_message</span><span class="p">:</span><span class="w"> </span><span class="s">"[MegaLinter]</span><span class="nv"> </span><span class="s">Apply</span><span class="nv"> </span><span class="s">linters</span><span class="nv"> </span><span class="s">fixes"</span>
+<span class="w">          </span><span class="nt">commit_user_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">megalinter-bot</span>
+<span class="w">          </span><span class="nt">commit_user_email</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">129584137+megalinter-bot@users.noreply.github.com</span>
 </code></pre></div>
 
 </details>

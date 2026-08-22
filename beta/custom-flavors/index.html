@@ -12851,10 +12851,10 @@ You can work directly on <strong>main</strong> branch, or create a sub-branch if
 <p><strong>Important:</strong> Check the <a href="../all_linters/">linters you have selected</a> in your flavor to see if they are compatible with <code>linux/arm64</code> platform.</p>
 </blockquote>
 <p>To build the image for ARM as well, edit <strong>megalinter-custom-flavor-builder.yml</strong> and change:</p>
-<div class="highlight"><pre><span></span><code>platform: "linux/amd64"
+<div class="highlight"><pre><span></span><code><span class="nt">platform</span><span class="p">:</span><span class="w"> </span><span class="s">"linux/amd64"</span>
 </code></pre></div>
 <p>To:</p>
-<div class="highlight"><pre><span></span><code>platform: "linux/amd64,linux/arm64"
+<div class="highlight"><pre><span></span><code><span class="nt">platform</span><span class="p">:</span><span class="w"> </span><span class="s">"linux/amd64,linux/arm64"</span>
 </code></pre></div>
 <h3 id="commit-and-push-your-changes">Commit and push your changes</h3>
 <p>Commit and push the generated files to GitHub.</p>

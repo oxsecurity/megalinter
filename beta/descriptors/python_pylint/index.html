@@ -12829,7 +12829,7 @@
 <td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" data-desc-position="bottom"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/supported-linters/">all</a></td>
 <td style="text-align: left;">Default MegaLinter Flavor</td>
-<td style="text-align: center;">132</td>
+<td style="text-align: center;">131</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta" data-desc-position="bottom"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"></a> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter" data-desc-position="bottom"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter"></a></td>
 </tr>
 <tr>
@@ -13065,174 +13065,43 @@ Main:
 <span class="s1">                        Warning level messages displayed, use "--disable=all</span>
 <span class="s1">                        --enable=classes --disable=W".</span>
 
-<span class="s1">Similarities:</span>
-<span class="s1">  Checks for similarities and duplicated code.</span>
+<span class="s1">Format:</span>
+<span class="s1">  Formatting checker.</span>
 
-<span class="s1">  --min-similarity-lines &lt;int&gt;</span>
-<span class="s1">                        Minimum lines number of a similarity. (default: 4)</span>
-<span class="s1">  --ignore-comments &lt;y or n&gt;</span>
-<span class="s1">                        Comments are removed from the similarity computation</span>
-<span class="s1">                        (default: True)</span>
-<span class="s1">  --ignore-docstrings &lt;y or n&gt;</span>
-<span class="s1">                        Docstrings are removed from the similarity computation</span>
-<span class="s1">                        (default: True)</span>
-<span class="s1">  --ignore-imports &lt;y or n&gt;</span>
-<span class="s1">                        Imports are removed from the similarity computation</span>
-<span class="s1">                        (default: True)</span>
-<span class="s1">  --ignore-signatures &lt;y or n&gt;</span>
-<span class="s1">                        Signatures are removed from the similarity computation</span>
-<span class="s1">                        (default: True)</span>
+<span class="s1">  --max-line-length &lt;int&gt;</span>
+<span class="s1">                        Maximum number of characters on a single line.</span>
+<span class="s1">                        Pylint'</span>s<span class="w"> </span>default<span class="w"> </span>of<span class="w"> </span><span class="m">100</span><span class="w"> </span>is<span class="w"> </span>based<span class="w"> </span>on<span class="w"> </span>PEP<span class="w"> </span><span class="m">8</span><span class="s1">'s guidance</span>
+<span class="s1">                        that teams may choose line lengths up to 99</span>
+<span class="s1">                        characters. (default: 100)</span>
+<span class="s1">  --ignore-long-lines &lt;regexp&gt;</span>
+<span class="s1">                        Regexp for a line that is allowed to be longer than</span>
+<span class="s1">                        the limit. (default: ^\s*(# )?&lt;?https?://\S+&gt;?$)</span>
+<span class="s1">  --single-line-if-stmt &lt;y or n&gt;</span>
+<span class="s1">                        Allow the body of an if to be on the same line as the</span>
+<span class="s1">                        test if there is no else. (default: False)</span>
+<span class="s1">  --single-line-class-stmt &lt;y or n&gt;</span>
+<span class="s1">                        Allow the body of a class to be on the same line as</span>
+<span class="s1">                        the declaration if body contains single statement.</span>
+<span class="s1">                        (default: False)</span>
+<span class="s1">  --max-module-lines &lt;int&gt;</span>
+<span class="s1">                        Maximum number of lines in a module. (default: 1000)</span>
+<span class="s1">  --indent-string &lt;string&gt;</span>
+<span class="s1">                        String used as indentation unit. This is usually " "</span>
+<span class="s1">                        (4 spaces) or "  " (1 tab). (default: )</span>
+<span class="s1">  --indent-after-paren &lt;int&gt;</span>
+<span class="s1">                        Number of spaces of indent required inside a hanging</span>
+<span class="s1">                        or continued line. (default: 4)</span>
+<span class="s1">  --expected-line-ending-format &lt;empty or LF or CRLF&gt;</span>
+<span class="s1">                        Expected format of line ending, e.g. empty (any line</span>
+<span class="s1">                        ending), LF or CRLF. (default: )</span>
 
-<span class="s1">Miscellaneous:</span>
-<span class="s1">  BaseChecker for encoding issues and fixme notes.</span>
+<span class="s1">Exceptions:</span>
+<span class="s1">  Exception related checks.</span>
 
-<span class="s1">  --notes &lt;comma separated values&gt;</span>
-<span class="s1">                        List of note tags to take in consideration, separated</span>
-<span class="s1">                        by a comma. (default: ('</span>FIXME<span class="s1">', '</span>XXX<span class="s1">', '</span>TODO<span class="s1">'))</span>
-<span class="s1">  --notes-rgx &lt;regexp&gt;  Regular expression of note tags to take in</span>
-<span class="s1">                        consideration. (default: )</span>
-<span class="s1">  --check-fixme-in-docstring &lt;y or n&gt;</span>
-<span class="s1">                        Whether or not to search for fixme'</span>s<span class="w"> </span><span class="k">in</span><span class="w"> </span>docstrings.
-<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
-
-Basic:
-<span class="w">  </span>--good-names<span class="w"> </span>&lt;names&gt;<span class="w">  </span>Good<span class="w"> </span>variable<span class="w"> </span>names<span class="w"> </span>which<span class="w"> </span>should<span class="w"> </span>always<span class="w"> </span>be<span class="w"> </span>accepted,
-<span class="w">                        </span>separated<span class="w"> </span>by<span class="w"> </span>a<span class="w"> </span>comma.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">(</span><span class="s1">'i'</span>,<span class="w"> </span><span class="s1">'j'</span>,<span class="w"> </span><span class="s1">'k'</span>,<span class="w"> </span><span class="s1">'ex'</span>,
-<span class="w">                        </span><span class="s1">'Run'</span>,<span class="w"> </span><span class="s1">'_'</span><span class="o">))</span>
-<span class="w">  </span>--good-names-rgxs<span class="w"> </span>&lt;names&gt;
-<span class="w">                        </span>Good<span class="w"> </span>variable<span class="w"> </span>names<span class="w"> </span>regexes,<span class="w"> </span>separated<span class="w"> </span>by<span class="w"> </span>a<span class="w"> </span>comma.<span class="w"> </span>If
-<span class="w">                        </span>names<span class="w"> </span>match<span class="w"> </span>any<span class="w"> </span>regex,<span class="w"> </span>they<span class="w"> </span>will<span class="w"> </span>always<span class="w"> </span>be<span class="w"> </span>accepted
-<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span><span class="o">)</span>
-<span class="w">  </span>--bad-names<span class="w"> </span>&lt;names&gt;<span class="w">   </span>Bad<span class="w"> </span>variable<span class="w"> </span>names<span class="w"> </span>which<span class="w"> </span>should<span class="w"> </span>always<span class="w"> </span>be<span class="w"> </span>refused,
-<span class="w">                        </span>separated<span class="w"> </span>by<span class="w"> </span>a<span class="w"> </span>comma.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">(</span><span class="s1">'foo'</span>,<span class="w"> </span><span class="s1">'bar'</span>,<span class="w"> </span><span class="s1">'baz'</span>,
-<span class="w">                        </span><span class="s1">'toto'</span>,<span class="w"> </span><span class="s1">'tutu'</span>,<span class="w"> </span><span class="s1">'tata'</span><span class="o">))</span>
-<span class="w">  </span>--bad-names-rgxs<span class="w"> </span>&lt;names&gt;
-<span class="w">                        </span>Bad<span class="w"> </span>variable<span class="w"> </span>names<span class="w"> </span>regexes,<span class="w"> </span>separated<span class="w"> </span>by<span class="w"> </span>a<span class="w"> </span>comma.<span class="w"> </span>If
-<span class="w">                        </span>names<span class="w"> </span>match<span class="w"> </span>any<span class="w"> </span>regex,<span class="w"> </span>they<span class="w"> </span>will<span class="w"> </span>always<span class="w"> </span>be<span class="w"> </span>refused
-<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span><span class="o">)</span>
-<span class="w">  </span>--name-group<span class="w"> </span>&lt;name1:name2&gt;
-<span class="w">                        </span>Colon-delimited<span class="w"> </span>sets<span class="w"> </span>of<span class="w"> </span>names<span class="w"> </span>that<span class="w"> </span>determine<span class="w"> </span>each
-<span class="w">                        </span>other<span class="s1">'s naming style when the name regexes allow</span>
-<span class="s1">                        several styles. (default: ())</span>
-<span class="s1">  --include-naming-hint &lt;y or n&gt;</span>
-<span class="s1">                        Include a hint for the correct naming format with</span>
-<span class="s1">                        invalid-name. (default: False)</span>
-<span class="s1">  --property-classes &lt;decorator names&gt;</span>
-<span class="s1">                        List of decorators that produce properties, such as</span>
-<span class="s1">                        abc.abstractproperty. Add to this list to register</span>
-<span class="s1">                        other decorators that produce valid properties. These</span>
-<span class="s1">                        decorators are taken in consideration only for</span>
-<span class="s1">                        invalid-name. (default: ('</span>abc.abstractproperty<span class="s1">',))</span>
-<span class="s1">  --argument-naming-style &lt;style&gt;</span>
-<span class="s1">                        Naming style matching correct argument names.</span>
-<span class="s1">                        (default: snake_case)</span>
-<span class="s1">  --argument-rgx &lt;regexp&gt;</span>
-<span class="s1">                        Regular expression matching correct argument names.</span>
-<span class="s1">                        Overrides argument-naming-style. If left empty,</span>
-<span class="s1">                        argument names will be checked with the set naming</span>
-<span class="s1">                        style. (default: None)</span>
-<span class="s1">  --attr-naming-style &lt;style&gt;</span>
-<span class="s1">                        Naming style matching correct attribute names.</span>
-<span class="s1">                        (default: snake_case)</span>
-<span class="s1">  --attr-rgx &lt;regexp&gt;   Regular expression matching correct attribute names.</span>
-<span class="s1">                        Overrides attr-naming-style. If left empty, attribute</span>
-<span class="s1">                        names will be checked with the set naming style.</span>
-<span class="s1">                        (default: None)</span>
-<span class="s1">  --class-naming-style &lt;style&gt;</span>
-<span class="s1">                        Naming style matching correct class names. (default:</span>
-<span class="s1">                        PascalCase)</span>
-<span class="s1">  --class-rgx &lt;regexp&gt;  Regular expression matching correct class names.</span>
-<span class="s1">                        Overrides class-naming-style. If left empty, class</span>
-<span class="s1">                        names will be checked with the set naming style.</span>
-<span class="s1">                        (default: None)</span>
-<span class="s1">  --class-attribute-naming-style &lt;style&gt;</span>
-<span class="s1">                        Naming style matching correct class attribute names.</span>
-<span class="s1">                        (default: any)</span>
-<span class="s1">  --class-attribute-rgx &lt;regexp&gt;</span>
-<span class="s1">                        Regular expression matching correct class attribute</span>
-<span class="s1">                        names. Overrides class-attribute-naming-style. If left</span>
-<span class="s1">                        empty, class attribute names will be checked with the</span>
-<span class="s1">                        set naming style. (default: None)</span>
-<span class="s1">  --class-const-naming-style &lt;style&gt;</span>
-<span class="s1">                        Naming style matching correct class constant names.</span>
-<span class="s1">                        (default: UPPER_CASE)</span>
-<span class="s1">  --class-const-rgx &lt;regexp&gt;</span>
-<span class="s1">                        Regular expression matching correct class constant</span>
-<span class="s1">                        names. Overrides class-const-naming-style. If left</span>
-<span class="s1">                        empty, class constant names will be checked with the</span>
-<span class="s1">                        set naming style. (default: None)</span>
-<span class="s1">  --const-naming-style &lt;style&gt;</span>
-<span class="s1">                        Naming style matching correct constant names.</span>
-<span class="s1">                        (default: UPPER_CASE)</span>
-<span class="s1">  --const-rgx &lt;regexp&gt;  Regular expression matching correct constant names.</span>
-<span class="s1">                        Overrides const-naming-style. If left empty, constant</span>
-<span class="s1">                        names will be checked with the set naming style.</span>
-<span class="s1">                        (default: None)</span>
-<span class="s1">  --function-naming-style &lt;style&gt;</span>
-<span class="s1">                        Naming style matching correct function names.</span>
-<span class="s1">                        (default: snake_case)</span>
-<span class="s1">  --function-rgx &lt;regexp&gt;</span>
-<span class="s1">                        Regular expression matching correct function names.</span>
-<span class="s1">                        Overrides function-naming-style. If left empty,</span>
-<span class="s1">                        function names will be checked with the set naming</span>
-<span class="s1">                        style. (default: None)</span>
-<span class="s1">  --inlinevar-naming-style &lt;style&gt;</span>
-<span class="s1">                        Naming style matching correct inline iteration names.</span>
-<span class="s1">                        (default: any)</span>
-<span class="s1">  --inlinevar-rgx &lt;regexp&gt;</span>
-<span class="s1">                        Regular expression matching correct inline iteration</span>
-<span class="s1">                        names. Overrides inlinevar-naming-style. If left</span>
-<span class="s1">                        empty, inline iteration names will be checked with the</span>
-<span class="s1">                        set naming style. (default: None)</span>
-<span class="s1">  --method-naming-style &lt;style&gt;</span>
-<span class="s1">                        Naming style matching correct method names. (default:</span>
-<span class="s1">                        snake_case)</span>
-<span class="s1">  --method-rgx &lt;regexp&gt;</span>
-<span class="s1">                        Regular expression matching correct method names.</span>
-<span class="s1">                        Overrides method-naming-style. If left empty, method</span>
-<span class="s1">                        names will be checked with the set naming style.</span>
-<span class="s1">                        (default: None)</span>
-<span class="s1">  --module-naming-style &lt;style&gt;</span>
-<span class="s1">                        Naming style matching correct module names. (default:</span>
-<span class="s1">                        snake_case)</span>
-<span class="s1">  --module-rgx &lt;regexp&gt;</span>
-<span class="s1">                        Regular expression matching correct module names.</span>
-<span class="s1">                        Overrides module-naming-style. If left empty, module</span>
-<span class="s1">                        names will be checked with the set naming style.</span>
-<span class="s1">                        (default: None)</span>
-<span class="s1">  --paramspec-rgx &lt;regexp&gt;</span>
-<span class="s1">                        Regular expression matching correct parameter</span>
-<span class="s1">                        specification variable names. If left empty, parameter</span>
-<span class="s1">                        specification variable names will be checked with the</span>
-<span class="s1">                        set naming style. (default: None)</span>
-<span class="s1">  --typealias-rgx &lt;regexp&gt;</span>
-<span class="s1">                        Regular expression matching correct type alias names.</span>
-<span class="s1">                        If left empty, type alias names will be checked with</span>
-<span class="s1">                        the set naming style. (default: None)</span>
-<span class="s1">  --typevar-rgx &lt;regexp&gt;</span>
-<span class="s1">                        Regular expression matching correct type variable</span>
-<span class="s1">                        names. If left empty, type variable names will be</span>
-<span class="s1">                        checked with the set naming style. (default: None)</span>
-<span class="s1">  --typevartuple-rgx &lt;regexp&gt;</span>
-<span class="s1">                        Regular expression matching correct type variable</span>
-<span class="s1">                        tuple names. If left empty, type variable tuple names</span>
-<span class="s1">                        will be checked with the set naming style. (default:</span>
-<span class="s1">                        None)</span>
-<span class="s1">  --variable-naming-style &lt;style&gt;</span>
-<span class="s1">                        Naming style matching correct variable names.</span>
-<span class="s1">                        (default: snake_case)</span>
-<span class="s1">  --variable-rgx &lt;regexp&gt;</span>
-<span class="s1">                        Regular expression matching correct variable names.</span>
-<span class="s1">                        Overrides variable-naming-style. If left empty,</span>
-<span class="s1">                        variable names will be checked with the set naming</span>
-<span class="s1">                        style. (default: None)</span>
-<span class="s1">  --no-docstring-rgx &lt;regexp&gt;</span>
-<span class="s1">                        Regular expression which should only match function or</span>
-<span class="s1">                        class names that do not require a docstring. (default:</span>
-<span class="s1">                        re.compile('</span>^_<span class="s1">'))</span>
-<span class="s1">  --docstring-min-length &lt;int&gt;</span>
-<span class="s1">                        Minimum line length for functions/classes that require</span>
-<span class="s1">                        docstrings, shorter ones are exempt. (default: -1)</span>
+<span class="s1">  --overgeneral-exceptions &lt;comma-separated class names&gt;</span>
+<span class="s1">                        Exceptions that will emit a warning when caught.</span>
+<span class="s1">                        (default: ('</span>builtins.BaseException<span class="s1">',</span>
+<span class="s1">                        '</span>builtins.Exception<span class="s1">'))</span>
 
 <span class="s1">Logging:</span>
 <span class="s1">  Checks use of the logging module.</span>
@@ -13246,67 +13115,35 @@ Basic:
 <span class="s1">                        `old` means using % formatting, `new` is for `{}`</span>
 <span class="s1">                        formatting. (default: old)</span>
 
-<span class="s1">Typecheck:</span>
-<span class="s1">  Try to find bugs in the code using type inference.</span>
+<span class="s1">Miscellaneous:</span>
+<span class="s1">  BaseChecker for encoding issues and fixme notes.</span>
 
-<span class="s1">  --ignore-on-opaque-inference &lt;y or n&gt;</span>
-<span class="s1">                        This flag controls whether pylint should warn about</span>
-<span class="s1">                        no-member and similar checks whenever an opaque object</span>
-<span class="s1">                        is returned when inferring. The inference can return</span>
-<span class="s1">                        multiple potential results while evaluating a Python</span>
-<span class="s1">                        object, but some branches might not be evaluated,</span>
-<span class="s1">                        which results in partial inference. In that case, it</span>
-<span class="s1">                        might be useful to still emit no-member and other</span>
-<span class="s1">                        checks for the rest of the inferred objects. (default:</span>
-<span class="s1">                        True)</span>
-<span class="s1">  --mixin-class-rgx &lt;regexp&gt;</span>
-<span class="s1">                        Regex pattern to define which classes are considered</span>
-<span class="s1">                        mixins. (default: .*[Mm]ixin)</span>
-<span class="s1">  --ignore-mixin-members &lt;y or n&gt;</span>
-<span class="s1">                        Tells whether missing members accessed in mixin class</span>
-<span class="s1">                        should be ignored. A class is considered mixin if its</span>
-<span class="s1">                        name matches the mixin-class-rgx option. (default:</span>
-<span class="s1">                        True)</span>
-<span class="s1">  --ignored-checks-for-mixins &lt;list of messages names&gt;</span>
-<span class="s1">                        List of symbolic message names to ignore for Mixin</span>
-<span class="s1">                        members. (default: ['</span>no-member<span class="s1">', '</span>not-async-context-
-<span class="w">                        </span>manager<span class="s1">', '</span>not-context-manager<span class="s1">', '</span>attribute-defined-
-<span class="w">                        </span>outside-init<span class="s1">'])</span>
-<span class="s1">  --ignore-none &lt;y or n&gt;</span>
-<span class="s1">                        Tells whether to warn about missing members when the</span>
-<span class="s1">                        owner of the attribute is inferred to be None.</span>
-<span class="s1">                        (default: True)</span>
-<span class="s1">  --ignored-classes &lt;members names&gt;</span>
-<span class="s1">                        List of class names for which member attributes should</span>
-<span class="s1">                        not be checked (useful for classes with dynamically</span>
-<span class="s1">                        set attributes). This supports the use of qualified</span>
-<span class="s1">                        names. (default: ('</span>optparse.Values<span class="s1">', '</span>thread._local<span class="s1">',</span>
-<span class="s1">                        '</span>_thread._local<span class="s1">', '</span>argparse.Namespace<span class="s1">'))</span>
-<span class="s1">  --generated-members &lt;members names&gt;</span>
-<span class="s1">                        List of members which are set dynamically and missed</span>
-<span class="s1">                        by pylint inference system, and so shouldn'</span>t<span class="w"> </span>trigger
-<span class="w">                        </span>E1101<span class="w"> </span>when<span class="w"> </span>accessed.<span class="w"> </span>Python<span class="w"> </span>regular<span class="w"> </span>expressions<span class="w"> </span>are
-<span class="w">                        </span>accepted.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">())</span>
-<span class="w">  </span>--contextmanager-decorators<span class="w"> </span>&lt;decorator<span class="w"> </span>names&gt;
-<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>decorators<span class="w"> </span>that<span class="w"> </span>produce<span class="w"> </span>context<span class="w"> </span>managers,<span class="w"> </span>such
-<span class="w">                        </span>as<span class="w"> </span>contextlib.contextmanager.<span class="w"> </span>Add<span class="w"> </span>to<span class="w"> </span>this<span class="w"> </span>list<span class="w"> </span>to
-<span class="w">                        </span>register<span class="w"> </span>other<span class="w"> </span>decorators<span class="w"> </span>that<span class="w"> </span>produce<span class="w"> </span>valid<span class="w"> </span>context
-<span class="w">                        </span>managers.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">[</span><span class="s1">'contextlib.contextmanager'</span><span class="o">])</span>
-<span class="w">  </span>--missing-member-hint-distance<span class="w"> </span>&lt;member<span class="w"> </span>hint<span class="w"> </span>edit<span class="w"> </span>distance&gt;
-<span class="w">                        </span>The<span class="w"> </span>maximum<span class="w"> </span>edit<span class="w"> </span>distance<span class="w"> </span>a<span class="w"> </span>name<span class="w"> </span>should<span class="w"> </span>have<span class="w"> </span><span class="k">in</span><span class="w"> </span>order
-<span class="w">                        </span>to<span class="w"> </span>be<span class="w"> </span>considered<span class="w"> </span>a<span class="w"> </span>similar<span class="w"> </span>match<span class="w"> </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span>missing<span class="w"> </span>member
-<span class="w">                        </span>name.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">1</span><span class="o">)</span>
-<span class="w">  </span>--missing-member-max-choices<span class="w"> </span>&lt;member<span class="w"> </span>hint<span class="w"> </span>max<span class="w"> </span>choices&gt;
-<span class="w">                        </span>The<span class="w"> </span>total<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>similar<span class="w"> </span>names<span class="w"> </span>that<span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span>taken
-<span class="w">                        </span><span class="k">in</span><span class="w"> </span>consideration<span class="w"> </span>when<span class="w"> </span>showing<span class="w"> </span>a<span class="w"> </span>hint<span class="w"> </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span>missing
-<span class="w">                        </span>member.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">1</span><span class="o">)</span>
-<span class="w">  </span>--missing-member-hint<span class="w"> </span>&lt;missing<span class="w"> </span>member<span class="w"> </span>hint&gt;
-<span class="w">                        </span>Show<span class="w"> </span>a<span class="w"> </span>hint<span class="w"> </span>with<span class="w"> </span>possible<span class="w"> </span>names<span class="w"> </span>when<span class="w"> </span>a<span class="w"> </span>member<span class="w"> </span>name<span class="w"> </span>was
-<span class="w">                        </span>not<span class="w"> </span>found.<span class="w"> </span>The<span class="w"> </span>aspect<span class="w"> </span>of<span class="w"> </span>finding<span class="w"> </span>the<span class="w"> </span>hint<span class="w"> </span>is<span class="w"> </span>based<span class="w"> </span>on
-<span class="w">                        </span>edit<span class="w"> </span>distance.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>True<span class="o">)</span>
-<span class="w">  </span>--signature-mutators<span class="w"> </span>&lt;decorator<span class="w"> </span>names&gt;
-<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>decorators<span class="w"> </span>that<span class="w"> </span>change<span class="w"> </span>the<span class="w"> </span>signature<span class="w"> </span>of<span class="w"> </span>a
-<span class="w">                        </span>decorated<span class="w"> </span><span class="k">function</span>.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">[])</span>
+<span class="s1">  --notes &lt;comma separated values&gt;</span>
+<span class="s1">                        List of note tags to take in consideration, separated</span>
+<span class="s1">                        by a comma. (default: ('</span>FIXME<span class="s1">', '</span>XXX<span class="s1">', '</span>TODO<span class="s1">'))</span>
+<span class="s1">  --notes-rgx &lt;regexp&gt;  Regular expression of note tags to take in</span>
+<span class="s1">                        consideration. (default: )</span>
+<span class="s1">  --check-fixme-in-docstring &lt;y or n&gt;</span>
+<span class="s1">                        Whether or not to search for fixme'</span>s<span class="w"> </span><span class="k">in</span><span class="w"> </span>docstrings.
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
+
+Similarities:
+<span class="w">  </span>Checks<span class="w"> </span><span class="k">for</span><span class="w"> </span>similarities<span class="w"> </span>and<span class="w"> </span>duplicated<span class="w"> </span>code.
+
+<span class="w">  </span>--min-similarity-lines<span class="w"> </span>&lt;int&gt;
+<span class="w">                        </span>Minimum<span class="w"> </span>lines<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>a<span class="w"> </span>similarity.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">4</span><span class="o">)</span>
+<span class="w">  </span>--ignore-comments<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
+<span class="w">                        </span>Comments<span class="w"> </span>are<span class="w"> </span>removed<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>similarity<span class="w"> </span>computation
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>True<span class="o">)</span>
+<span class="w">  </span>--ignore-docstrings<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
+<span class="w">                        </span>Docstrings<span class="w"> </span>are<span class="w"> </span>removed<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>similarity<span class="w"> </span>computation
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>True<span class="o">)</span>
+<span class="w">  </span>--ignore-imports<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
+<span class="w">                        </span>Imports<span class="w"> </span>are<span class="w"> </span>removed<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>similarity<span class="w"> </span>computation
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>True<span class="o">)</span>
+<span class="w">  </span>--ignore-signatures<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
+<span class="w">                        </span>Signatures<span class="w"> </span>are<span class="w"> </span>removed<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>similarity<span class="w"> </span>computation
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>True<span class="o">)</span>
 
 Spelling:
 <span class="w">  </span>Check<span class="w"> </span>spelling<span class="w"> </span><span class="k">in</span><span class="w"> </span>comments<span class="w"> </span>and<span class="w"> </span>docstrings.
@@ -13334,45 +13171,6 @@ Spelling:
 <span class="w">                        </span>of<span class="w"> </span>a<span class="w"> </span>comment<span class="w"> </span>and<span class="w"> </span>should<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>checked.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>fmt:
 <span class="w">                        </span>on,fmt:<span class="w"> </span>off,noqa:,noqa,nosec,isort:skip,mypy:<span class="o">)</span>
 
-Refactoring:
-<span class="w">  </span>Looks<span class="w"> </span><span class="k">for</span><span class="w"> </span>code<span class="w"> </span>which<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>refactored.
-
-<span class="w">  </span>--max-nested-blocks<span class="w"> </span>&lt;int&gt;
-<span class="w">                        </span>Maximum<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>nested<span class="w"> </span>blocks<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="k">function</span><span class="w"> </span>/<span class="w"> </span>method
-<span class="w">                        </span>body<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">5</span><span class="o">)</span>
-<span class="w">  </span>--never-returning-functions<span class="w"> </span>&lt;members<span class="w"> </span>names&gt;
-<span class="w">                        </span>Complete<span class="w"> </span>name<span class="w"> </span>of<span class="w"> </span>functions<span class="w"> </span>that<span class="w"> </span>never<span class="w"> </span>returns.<span class="w"> </span>When
-<span class="w">                        </span>checking<span class="w"> </span><span class="k">for</span><span class="w"> </span>inconsistent-return-statements<span class="w"> </span><span class="k">if</span><span class="w"> </span>a<span class="w"> </span>never
-<span class="w">                        </span>returning<span class="w"> </span><span class="k">function</span><span class="w"> </span>is<span class="w"> </span>called<span class="w"> </span><span class="k">then</span><span class="w"> </span>it<span class="w"> </span>will<span class="w"> </span>be
-<span class="w">                        </span>considered<span class="w"> </span>as<span class="w"> </span>an<span class="w"> </span>explicit<span class="w"> </span><span class="k">return</span><span class="w"> </span>statement<span class="w"> </span>and<span class="w"> </span>no
-<span class="w">                        </span>message<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>printed.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">(</span><span class="s1">'sys.exit'</span>,
-<span class="w">                        </span><span class="s1">'argparse.parse_error'</span><span class="o">))</span>
-<span class="w">  </span>--suggest-join-with-non-empty-separator<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
-<span class="w">                        </span>Let<span class="w"> </span><span class="s1">'consider-using-join'</span><span class="w"> </span>be<span class="w"> </span>raised<span class="w"> </span>when<span class="w"> </span>the<span class="w"> </span>separator
-<span class="w">                        </span>to<span class="w"> </span>join<span class="w"> </span>on<span class="w"> </span>would<span class="w"> </span>be<span class="w"> </span>non-empty<span class="w"> </span><span class="o">(</span>resulting<span class="w"> </span><span class="k">in</span><span class="w"> </span>expected
-<span class="w">                        </span>fixes<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>type:<span class="w"> </span><span class="sb">``</span><span class="s2">"- "</span><span class="w"> </span>+<span class="w"> </span><span class="s2">" - "</span>.join<span class="o">(</span>items<span class="o">)</span><span class="sb">``</span><span class="o">)</span>
-<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>True<span class="o">)</span>
-
-Method_args:
-<span class="w">  </span>BaseChecker<span class="w"> </span><span class="k">for</span><span class="w"> </span>method_args.
-
-<span class="w">  </span>--timeout-methods<span class="w"> </span>&lt;comma<span class="w"> </span>separated<span class="w"> </span>list&gt;
-<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>qualified<span class="w"> </span>names<span class="w"> </span><span class="o">(</span>i.e.,<span class="w"> </span>library.method<span class="o">)</span><span class="w"> </span>which
-<span class="w">                        </span>require<span class="w"> </span>a<span class="w"> </span>timeout<span class="w"> </span>parameter<span class="w"> </span>e.g.
-<span class="w">                        </span><span class="s1">'requests.api.get,requests.api.post'</span><span class="w"> </span><span class="o">(</span>default:
-<span class="w">                        </span><span class="o">(</span><span class="s1">'requests.api.delete'</span>,<span class="w"> </span><span class="s1">'requests.api.get'</span>,
-<span class="w">                        </span><span class="s1">'requests.api.head'</span>,<span class="w"> </span><span class="s1">'requests.api.options'</span>,
-<span class="w">                        </span><span class="s1">'requests.api.patch'</span>,<span class="w"> </span><span class="s1">'requests.api.post'</span>,
-<span class="w">                        </span><span class="s1">'requests.api.put'</span>,<span class="w"> </span><span class="s1">'requests.api.request'</span><span class="o">))</span>
-
-Exceptions:
-<span class="w">  </span>Exception<span class="w"> </span>related<span class="w"> </span>checks.
-
-<span class="w">  </span>--overgeneral-exceptions<span class="w"> </span>&lt;comma-separated<span class="w"> </span>class<span class="w"> </span>names&gt;
-<span class="w">                        </span>Exceptions<span class="w"> </span>that<span class="w"> </span>will<span class="w"> </span>emit<span class="w"> </span>a<span class="w"> </span>warning<span class="w"> </span>when<span class="w"> </span>caught.
-<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span><span class="o">(</span><span class="s1">'builtins.BaseException'</span>,
-<span class="w">                        </span><span class="s1">'builtins.Exception'</span><span class="o">))</span>
-
 String:
 <span class="w">  </span>Check<span class="w"> </span>string<span class="w"> </span>literals.
 
@@ -13386,66 +13184,6 @@ String:
 <span class="w">                        </span>generates<span class="w"> </span>a<span class="w"> </span>warning<span class="w"> </span>when<span class="w"> </span>the<span class="w"> </span>character<span class="w"> </span>used<span class="w"> </span>as<span class="w"> </span>a<span class="w"> </span>quote
 <span class="w">                        </span>delimiter<span class="w"> </span>is<span class="w"> </span>used<span class="w"> </span>inconsistently<span class="w"> </span>within<span class="w"> </span>a<span class="w"> </span>module.
 <span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
-
-Classes:
-<span class="w">  </span>Checker<span class="w"> </span><span class="k">for</span><span class="w"> </span>class<span class="w"> </span>nodes.
-
-<span class="w">  </span>--defining-attr-methods<span class="w"> </span>&lt;method<span class="w"> </span>names&gt;
-<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>method<span class="w"> </span>names<span class="w"> </span>used<span class="w"> </span>to<span class="w"> </span><span class="nb">declare</span><span class="w"> </span><span class="o">(</span>i.e.<span class="w"> </span>assign<span class="o">)</span>
-<span class="w">                        </span>instance<span class="w"> </span>attributes.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">(</span><span class="s1">'__init__'</span>,<span class="w"> </span><span class="s1">'__new__'</span>,
-<span class="w">                        </span><span class="s1">'setUp'</span>,<span class="w"> </span><span class="s1">'asyncSetUp'</span>,<span class="w"> </span><span class="s1">'__post_init__'</span><span class="o">))</span>
-<span class="w">  </span>--valid-classmethod-first-arg<span class="w"> </span>&lt;argument<span class="w"> </span>names&gt;
-<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>valid<span class="w"> </span>names<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>first<span class="w"> </span>argument<span class="w"> </span><span class="k">in</span><span class="w"> </span>a<span class="w"> </span>class
-<span class="w">                        </span>method.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">(</span><span class="s1">'cls'</span>,<span class="o">))</span>
-<span class="w">  </span>--valid-metaclass-classmethod-first-arg<span class="w"> </span>&lt;argument<span class="w"> </span>names&gt;
-<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>valid<span class="w"> </span>names<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>first<span class="w"> </span>argument<span class="w"> </span><span class="k">in</span><span class="w"> </span>a
-<span class="w">                        </span>metaclass<span class="w"> </span>class<span class="w"> </span>method.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">(</span><span class="s1">'mcs'</span>,<span class="o">))</span>
-<span class="w">  </span>--exclude-protected<span class="w"> </span>&lt;protected<span class="w"> </span>access<span class="w"> </span>exclusions&gt;
-<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>member<span class="w"> </span>names,<span class="w"> </span>which<span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span>excluded<span class="w"> </span>from
-<span class="w">                        </span>the<span class="w"> </span>protected<span class="w"> </span>access<span class="w"> </span>warning.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">(</span><span class="s1">'_asdict'</span>,
-<span class="w">                        </span><span class="s1">'_fields'</span>,<span class="w"> </span><span class="s1">'_replace'</span>,<span class="w"> </span><span class="s1">'_source'</span>,<span class="w"> </span><span class="s1">'_make'</span>,
-<span class="w">                        </span><span class="s1">'os._exit'</span><span class="o">))</span>
-<span class="w">  </span>--check-protected-access-in-special-methods<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
-<span class="w">                        </span>Warn<span class="w"> </span>about<span class="w"> </span>protected<span class="w"> </span>attribute<span class="w"> </span>access<span class="w"> </span>inside<span class="w"> </span>special
-<span class="w">                        </span>methods<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
-
-Imports:
-<span class="w">  </span>BaseChecker<span class="w"> </span><span class="k">for</span><span class="w"> </span>import<span class="w"> </span>statements.
-
-<span class="w">  </span>--deprecated-modules<span class="w"> </span>&lt;modules&gt;
-<span class="w">                        </span>Deprecated<span class="w"> </span>modules<span class="w"> </span>which<span class="w"> </span>should<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>used,<span class="w"> </span>separated
-<span class="w">                        </span>by<span class="w"> </span>a<span class="w"> </span>comma.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">())</span>
-<span class="w">  </span>--preferred-modules<span class="w"> </span>&lt;module:preferred-module&gt;
-<span class="w">                        </span>Couples<span class="w"> </span>of<span class="w"> </span>modules<span class="w"> </span>and<span class="w"> </span>preferred<span class="w"> </span>modules,<span class="w"> </span>separated<span class="w"> </span>by
-<span class="w">                        </span>a<span class="w"> </span>comma.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">())</span>
-<span class="w">  </span>--import-graph<span class="w"> </span>&lt;file.gv&gt;
-<span class="w">                        </span>Output<span class="w"> </span>a<span class="w"> </span>graph<span class="w"> </span><span class="o">(</span>.gv<span class="w"> </span>or<span class="w"> </span>any<span class="w"> </span>supported<span class="w"> </span>image<span class="w"> </span>format<span class="o">)</span><span class="w"> </span>of
-<span class="w">                        </span>all<span class="w"> </span><span class="o">(</span>i.e.<span class="w"> </span>internal<span class="w"> </span>and<span class="w"> </span>external<span class="o">)</span><span class="w"> </span>dependencies<span class="w"> </span>to<span class="w"> </span>the
-<span class="w">                        </span>given<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>report<span class="w"> </span>RP0402<span class="w"> </span>must<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>disabled<span class="o">)</span>.
-<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span><span class="o">)</span>
-<span class="w">  </span>--ext-import-graph<span class="w"> </span>&lt;file.gv&gt;
-<span class="w">                        </span>Output<span class="w"> </span>a<span class="w"> </span>graph<span class="w"> </span><span class="o">(</span>.gv<span class="w"> </span>or<span class="w"> </span>any<span class="w"> </span>supported<span class="w"> </span>image<span class="w"> </span>format<span class="o">)</span><span class="w"> </span>of
-<span class="w">                        </span>external<span class="w"> </span>dependencies<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>given<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>report<span class="w"> </span>RP0402
-<span class="w">                        </span>must<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>disabled<span class="o">)</span>.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">)</span>
-<span class="w">  </span>--int-import-graph<span class="w"> </span>&lt;file.gv&gt;
-<span class="w">                        </span>Output<span class="w"> </span>a<span class="w"> </span>graph<span class="w"> </span><span class="o">(</span>.gv<span class="w"> </span>or<span class="w"> </span>any<span class="w"> </span>supported<span class="w"> </span>image<span class="w"> </span>format<span class="o">)</span><span class="w"> </span>of
-<span class="w">                        </span>internal<span class="w"> </span>dependencies<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>given<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>report<span class="w"> </span>RP0402
-<span class="w">                        </span>must<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>disabled<span class="o">)</span>.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">)</span>
-<span class="w">  </span>--known-standard-library<span class="w"> </span>&lt;modules&gt;
-<span class="w">                        </span>Force<span class="w"> </span>import<span class="w"> </span>order<span class="w"> </span>to<span class="w"> </span>recognize<span class="w"> </span>a<span class="w"> </span>module<span class="w"> </span>as<span class="w"> </span>part<span class="w"> </span>of
-<span class="w">                        </span>the<span class="w"> </span>standard<span class="w"> </span>compatibility<span class="w"> </span>libraries.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">())</span>
-<span class="w">  </span>--known-third-party<span class="w"> </span>&lt;modules&gt;
-<span class="w">                        </span>Force<span class="w"> </span>import<span class="w"> </span>order<span class="w"> </span>to<span class="w"> </span>recognize<span class="w"> </span>a<span class="w"> </span>module<span class="w"> </span>as<span class="w"> </span>part<span class="w"> </span>of<span class="w"> </span>a
-<span class="w">                        </span>third<span class="w"> </span>party<span class="w"> </span>library.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">(</span><span class="s1">'enchant'</span>,<span class="o">))</span>
-<span class="w">  </span>--allow-any-import-level<span class="w"> </span>&lt;modules&gt;
-<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>modules<span class="w"> </span>that<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>imported<span class="w"> </span>at<span class="w"> </span>any<span class="w"> </span>level,<span class="w"> </span>not
-<span class="w">                        </span>just<span class="w"> </span>the<span class="w"> </span>top<span class="w"> </span>level<span class="w"> </span>one.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">())</span>
-<span class="w">  </span>--allow-wildcard-with-all<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
-<span class="w">                        </span>Allow<span class="w"> </span>wildcard<span class="w"> </span>imports<span class="w"> </span>from<span class="w"> </span>modules<span class="w"> </span>that<span class="w"> </span>define
-<span class="w">                        </span>__all__.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
-<span class="w">  </span>--allow-reexport-from-package<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
-<span class="w">                        </span>Allow<span class="w"> </span>explicit<span class="w"> </span>reexports<span class="w"> </span>by<span class="w"> </span><span class="nb">alias</span><span class="w"> </span>from<span class="w"> </span>a<span class="w"> </span>package
-<span class="w">                        </span>__init__.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
 
 Variables:
 <span class="w">  </span>BaseChecker<span class="w"> </span><span class="k">for</span><span class="w"> </span>variables.
@@ -13519,35 +13257,297 @@ Design:
 <span class="w">                        </span>ignore<span class="w"> </span>when<span class="w"> </span>counting<span class="w"> </span>public<span class="w"> </span>methods<span class="w"> </span><span class="o">(</span>see<span class="w"> </span>R0903<span class="o">)</span>
 <span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span><span class="o">[])</span>
 
-Format:
-<span class="w">  </span>Formatting<span class="w"> </span>checker.
+Imports:
+<span class="w">  </span>BaseChecker<span class="w"> </span><span class="k">for</span><span class="w"> </span>import<span class="w"> </span>statements.
 
-<span class="w">  </span>--max-line-length<span class="w"> </span>&lt;int&gt;
-<span class="w">                        </span>Maximum<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>characters<span class="w"> </span>on<span class="w"> </span>a<span class="w"> </span>single<span class="w"> </span>line.
-<span class="w">                        </span>Pylint<span class="s1">'s default of 100 is based on PEP 8'</span>s<span class="w"> </span>guidance
-<span class="w">                        </span>that<span class="w"> </span>teams<span class="w"> </span>may<span class="w"> </span>choose<span class="w"> </span>line<span class="w"> </span>lengths<span class="w"> </span>up<span class="w"> </span>to<span class="w"> </span><span class="m">99</span>
-<span class="w">                        </span>characters.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">100</span><span class="o">)</span>
-<span class="w">  </span>--ignore-long-lines<span class="w"> </span>&lt;regexp&gt;
-<span class="w">                        </span>Regexp<span class="w"> </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span>line<span class="w"> </span>that<span class="w"> </span>is<span class="w"> </span>allowed<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>longer<span class="w"> </span>than
-<span class="w">                        </span>the<span class="w"> </span>limit.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>^<span class="se">\s</span>*<span class="o">(</span><span class="c1"># )?&lt;?https?://\S+&gt;?$)</span>
-<span class="w">  </span>--single-line-if-stmt<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
-<span class="w">                        </span>Allow<span class="w"> </span>the<span class="w"> </span>body<span class="w"> </span>of<span class="w"> </span>an<span class="w"> </span><span class="k">if</span><span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>same<span class="w"> </span>line<span class="w"> </span>as<span class="w"> </span>the
-<span class="w">                        </span><span class="nb">test</span><span class="w"> </span><span class="k">if</span><span class="w"> </span>there<span class="w"> </span>is<span class="w"> </span>no<span class="w"> </span><span class="k">else</span>.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
-<span class="w">  </span>--single-line-class-stmt<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
-<span class="w">                        </span>Allow<span class="w"> </span>the<span class="w"> </span>body<span class="w"> </span>of<span class="w"> </span>a<span class="w"> </span>class<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>same<span class="w"> </span>line<span class="w"> </span>as
-<span class="w">                        </span>the<span class="w"> </span>declaration<span class="w"> </span><span class="k">if</span><span class="w"> </span>body<span class="w"> </span>contains<span class="w"> </span>single<span class="w"> </span>statement.
-<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
-<span class="w">  </span>--max-module-lines<span class="w"> </span>&lt;int&gt;
-<span class="w">                        </span>Maximum<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>lines<span class="w"> </span><span class="k">in</span><span class="w"> </span>a<span class="w"> </span>module.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">1000</span><span class="o">)</span>
-<span class="w">  </span>--indent-string<span class="w"> </span>&lt;string&gt;
-<span class="w">                        </span>String<span class="w"> </span>used<span class="w"> </span>as<span class="w"> </span>indentation<span class="w"> </span>unit.<span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>usually<span class="w"> </span><span class="s2">" "</span>
-<span class="w">                        </span><span class="o">(</span><span class="m">4</span><span class="w"> </span>spaces<span class="o">)</span><span class="w"> </span>or<span class="w"> </span><span class="s2">"  "</span><span class="w"> </span><span class="o">(</span><span class="m">1</span><span class="w"> </span>tab<span class="o">)</span>.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">)</span>
-<span class="w">  </span>--indent-after-paren<span class="w"> </span>&lt;int&gt;
-<span class="w">                        </span>Number<span class="w"> </span>of<span class="w"> </span>spaces<span class="w"> </span>of<span class="w"> </span>indent<span class="w"> </span>required<span class="w"> </span>inside<span class="w"> </span>a<span class="w"> </span>hanging
-<span class="w">                        </span>or<span class="w"> </span>continued<span class="w"> </span>line.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">4</span><span class="o">)</span>
-<span class="w">  </span>--expected-line-ending-format<span class="w"> </span>&lt;empty<span class="w"> </span>or<span class="w"> </span>LF<span class="w"> </span>or<span class="w"> </span>CRLF&gt;
-<span class="w">                        </span>Expected<span class="w"> </span>format<span class="w"> </span>of<span class="w"> </span>line<span class="w"> </span>ending,<span class="w"> </span>e.g.<span class="w"> </span>empty<span class="w"> </span><span class="o">(</span>any<span class="w"> </span>line
-<span class="w">                        </span>ending<span class="o">)</span>,<span class="w"> </span>LF<span class="w"> </span>or<span class="w"> </span>CRLF.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">)</span>
+<span class="w">  </span>--deprecated-modules<span class="w"> </span>&lt;modules&gt;
+<span class="w">                        </span>Deprecated<span class="w"> </span>modules<span class="w"> </span>which<span class="w"> </span>should<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>used,<span class="w"> </span>separated
+<span class="w">                        </span>by<span class="w"> </span>a<span class="w"> </span>comma.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">())</span>
+<span class="w">  </span>--preferred-modules<span class="w"> </span>&lt;module:preferred-module&gt;
+<span class="w">                        </span>Couples<span class="w"> </span>of<span class="w"> </span>modules<span class="w"> </span>and<span class="w"> </span>preferred<span class="w"> </span>modules,<span class="w"> </span>separated<span class="w"> </span>by
+<span class="w">                        </span>a<span class="w"> </span>comma.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">())</span>
+<span class="w">  </span>--import-graph<span class="w"> </span>&lt;file.gv&gt;
+<span class="w">                        </span>Output<span class="w"> </span>a<span class="w"> </span>graph<span class="w"> </span><span class="o">(</span>.gv<span class="w"> </span>or<span class="w"> </span>any<span class="w"> </span>supported<span class="w"> </span>image<span class="w"> </span>format<span class="o">)</span><span class="w"> </span>of
+<span class="w">                        </span>all<span class="w"> </span><span class="o">(</span>i.e.<span class="w"> </span>internal<span class="w"> </span>and<span class="w"> </span>external<span class="o">)</span><span class="w"> </span>dependencies<span class="w"> </span>to<span class="w"> </span>the
+<span class="w">                        </span>given<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>report<span class="w"> </span>RP0402<span class="w"> </span>must<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>disabled<span class="o">)</span>.
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span><span class="o">)</span>
+<span class="w">  </span>--ext-import-graph<span class="w"> </span>&lt;file.gv&gt;
+<span class="w">                        </span>Output<span class="w"> </span>a<span class="w"> </span>graph<span class="w"> </span><span class="o">(</span>.gv<span class="w"> </span>or<span class="w"> </span>any<span class="w"> </span>supported<span class="w"> </span>image<span class="w"> </span>format<span class="o">)</span><span class="w"> </span>of
+<span class="w">                        </span>external<span class="w"> </span>dependencies<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>given<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>report<span class="w"> </span>RP0402
+<span class="w">                        </span>must<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>disabled<span class="o">)</span>.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">)</span>
+<span class="w">  </span>--int-import-graph<span class="w"> </span>&lt;file.gv&gt;
+<span class="w">                        </span>Output<span class="w"> </span>a<span class="w"> </span>graph<span class="w"> </span><span class="o">(</span>.gv<span class="w"> </span>or<span class="w"> </span>any<span class="w"> </span>supported<span class="w"> </span>image<span class="w"> </span>format<span class="o">)</span><span class="w"> </span>of
+<span class="w">                        </span>internal<span class="w"> </span>dependencies<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>given<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>report<span class="w"> </span>RP0402
+<span class="w">                        </span>must<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>disabled<span class="o">)</span>.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">)</span>
+<span class="w">  </span>--known-standard-library<span class="w"> </span>&lt;modules&gt;
+<span class="w">                        </span>Force<span class="w"> </span>import<span class="w"> </span>order<span class="w"> </span>to<span class="w"> </span>recognize<span class="w"> </span>a<span class="w"> </span>module<span class="w"> </span>as<span class="w"> </span>part<span class="w"> </span>of
+<span class="w">                        </span>the<span class="w"> </span>standard<span class="w"> </span>compatibility<span class="w"> </span>libraries.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">())</span>
+<span class="w">  </span>--known-third-party<span class="w"> </span>&lt;modules&gt;
+<span class="w">                        </span>Force<span class="w"> </span>import<span class="w"> </span>order<span class="w"> </span>to<span class="w"> </span>recognize<span class="w"> </span>a<span class="w"> </span>module<span class="w"> </span>as<span class="w"> </span>part<span class="w"> </span>of<span class="w"> </span>a
+<span class="w">                        </span>third<span class="w"> </span>party<span class="w"> </span>library.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">(</span><span class="s1">'enchant'</span>,<span class="o">))</span>
+<span class="w">  </span>--allow-any-import-level<span class="w"> </span>&lt;modules&gt;
+<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>modules<span class="w"> </span>that<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>imported<span class="w"> </span>at<span class="w"> </span>any<span class="w"> </span>level,<span class="w"> </span>not
+<span class="w">                        </span>just<span class="w"> </span>the<span class="w"> </span>top<span class="w"> </span>level<span class="w"> </span>one.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">())</span>
+<span class="w">  </span>--allow-wildcard-with-all<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
+<span class="w">                        </span>Allow<span class="w"> </span>wildcard<span class="w"> </span>imports<span class="w"> </span>from<span class="w"> </span>modules<span class="w"> </span>that<span class="w"> </span>define
+<span class="w">                        </span>__all__.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
+<span class="w">  </span>--allow-reexport-from-package<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
+<span class="w">                        </span>Allow<span class="w"> </span>explicit<span class="w"> </span>reexports<span class="w"> </span>by<span class="w"> </span><span class="nb">alias</span><span class="w"> </span>from<span class="w"> </span>a<span class="w"> </span>package
+<span class="w">                        </span>__init__.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
+
+Method_args:
+<span class="w">  </span>BaseChecker<span class="w"> </span><span class="k">for</span><span class="w"> </span>method_args.
+
+<span class="w">  </span>--timeout-methods<span class="w"> </span>&lt;comma<span class="w"> </span>separated<span class="w"> </span>list&gt;
+<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>qualified<span class="w"> </span>names<span class="w"> </span><span class="o">(</span>i.e.,<span class="w"> </span>library.method<span class="o">)</span><span class="w"> </span>which
+<span class="w">                        </span>require<span class="w"> </span>a<span class="w"> </span>timeout<span class="w"> </span>parameter<span class="w"> </span>e.g.
+<span class="w">                        </span><span class="s1">'requests.api.get,requests.api.post'</span><span class="w"> </span><span class="o">(</span>default:
+<span class="w">                        </span><span class="o">(</span><span class="s1">'requests.api.delete'</span>,<span class="w"> </span><span class="s1">'requests.api.get'</span>,
+<span class="w">                        </span><span class="s1">'requests.api.head'</span>,<span class="w"> </span><span class="s1">'requests.api.options'</span>,
+<span class="w">                        </span><span class="s1">'requests.api.patch'</span>,<span class="w"> </span><span class="s1">'requests.api.post'</span>,
+<span class="w">                        </span><span class="s1">'requests.api.put'</span>,<span class="w"> </span><span class="s1">'requests.api.request'</span><span class="o">))</span>
+
+Typecheck:
+<span class="w">  </span>Try<span class="w"> </span>to<span class="w"> </span>find<span class="w"> </span>bugs<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>code<span class="w"> </span>using<span class="w"> </span><span class="nb">type</span><span class="w"> </span>inference.
+
+<span class="w">  </span>--ignore-on-opaque-inference<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
+<span class="w">                        </span>This<span class="w"> </span>flag<span class="w"> </span>controls<span class="w"> </span>whether<span class="w"> </span>pylint<span class="w"> </span>should<span class="w"> </span>warn<span class="w"> </span>about
+<span class="w">                        </span>no-member<span class="w"> </span>and<span class="w"> </span>similar<span class="w"> </span>checks<span class="w"> </span>whenever<span class="w"> </span>an<span class="w"> </span>opaque<span class="w"> </span>object
+<span class="w">                        </span>is<span class="w"> </span>returned<span class="w"> </span>when<span class="w"> </span>inferring.<span class="w"> </span>The<span class="w"> </span>inference<span class="w"> </span>can<span class="w"> </span><span class="k">return</span>
+<span class="w">                        </span>multiple<span class="w"> </span>potential<span class="w"> </span>results<span class="w"> </span><span class="k">while</span><span class="w"> </span>evaluating<span class="w"> </span>a<span class="w"> </span>Python
+<span class="w">                        </span>object,<span class="w"> </span>but<span class="w"> </span>some<span class="w"> </span>branches<span class="w"> </span>might<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>evaluated,
+<span class="w">                        </span>which<span class="w"> </span>results<span class="w"> </span><span class="k">in</span><span class="w"> </span>partial<span class="w"> </span>inference.<span class="w"> </span>In<span class="w"> </span>that<span class="w"> </span><span class="k">case</span>,<span class="w"> </span>it
+<span class="w">                        </span>might<span class="w"> </span>be<span class="w"> </span>useful<span class="w"> </span>to<span class="w"> </span>still<span class="w"> </span>emit<span class="w"> </span>no-member<span class="w"> </span>and<span class="w"> </span>other
+<span class="w">                        </span>checks<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>rest<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>inferred<span class="w"> </span>objects.<span class="w"> </span><span class="o">(</span>default:
+<span class="w">                        </span>True<span class="o">)</span>
+<span class="w">  </span>--mixin-class-rgx<span class="w"> </span>&lt;regexp&gt;
+<span class="w">                        </span>Regex<span class="w"> </span>pattern<span class="w"> </span>to<span class="w"> </span>define<span class="w"> </span>which<span class="w"> </span>classes<span class="w"> </span>are<span class="w"> </span>considered
+<span class="w">                        </span>mixins.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>.*<span class="o">[</span>Mm<span class="o">]</span>ixin<span class="o">)</span>
+<span class="w">  </span>--ignore-mixin-members<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
+<span class="w">                        </span>Tells<span class="w"> </span>whether<span class="w"> </span>missing<span class="w"> </span>members<span class="w"> </span>accessed<span class="w"> </span><span class="k">in</span><span class="w"> </span>mixin<span class="w"> </span>class
+<span class="w">                        </span>should<span class="w"> </span>be<span class="w"> </span>ignored.<span class="w"> </span>A<span class="w"> </span>class<span class="w"> </span>is<span class="w"> </span>considered<span class="w"> </span>mixin<span class="w"> </span><span class="k">if</span><span class="w"> </span>its
+<span class="w">                        </span>name<span class="w"> </span>matches<span class="w"> </span>the<span class="w"> </span>mixin-class-rgx<span class="w"> </span>option.<span class="w"> </span><span class="o">(</span>default:
+<span class="w">                        </span>True<span class="o">)</span>
+<span class="w">  </span>--ignored-checks-for-mixins<span class="w"> </span>&lt;list<span class="w"> </span>of<span class="w"> </span>messages<span class="w"> </span>names&gt;
+<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>symbolic<span class="w"> </span>message<span class="w"> </span>names<span class="w"> </span>to<span class="w"> </span>ignore<span class="w"> </span><span class="k">for</span><span class="w"> </span>Mixin
+<span class="w">                        </span>members.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">[</span><span class="s1">'no-member'</span>,<span class="w"> </span><span class="s1">'not-async-context-</span>
+<span class="s1">                        manager'</span>,<span class="w"> </span><span class="s1">'not-context-manager'</span>,<span class="w"> </span><span class="s1">'attribute-defined-</span>
+<span class="s1">                        outside-init'</span><span class="o">])</span>
+<span class="w">  </span>--ignore-none<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
+<span class="w">                        </span>Tells<span class="w"> </span>whether<span class="w"> </span>to<span class="w"> </span>warn<span class="w"> </span>about<span class="w"> </span>missing<span class="w"> </span>members<span class="w"> </span>when<span class="w"> </span>the
+<span class="w">                        </span>owner<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>attribute<span class="w"> </span>is<span class="w"> </span>inferred<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>None.
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>True<span class="o">)</span>
+<span class="w">  </span>--ignored-classes<span class="w"> </span>&lt;members<span class="w"> </span>names&gt;
+<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>class<span class="w"> </span>names<span class="w"> </span><span class="k">for</span><span class="w"> </span>which<span class="w"> </span>member<span class="w"> </span>attributes<span class="w"> </span>should
+<span class="w">                        </span>not<span class="w"> </span>be<span class="w"> </span>checked<span class="w"> </span><span class="o">(</span>useful<span class="w"> </span><span class="k">for</span><span class="w"> </span>classes<span class="w"> </span>with<span class="w"> </span>dynamically
+<span class="w">                        </span><span class="nb">set</span><span class="w"> </span>attributes<span class="o">)</span>.<span class="w"> </span>This<span class="w"> </span>supports<span class="w"> </span>the<span class="w"> </span>use<span class="w"> </span>of<span class="w"> </span>qualified
+<span class="w">                        </span>names.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">(</span><span class="s1">'optparse.Values'</span>,<span class="w"> </span><span class="s1">'thread._local'</span>,
+<span class="w">                        </span><span class="s1">'_thread._local'</span>,<span class="w"> </span><span class="s1">'argparse.Namespace'</span><span class="o">))</span>
+<span class="w">  </span>--generated-members<span class="w"> </span>&lt;members<span class="w"> </span>names&gt;
+<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>members<span class="w"> </span>which<span class="w"> </span>are<span class="w"> </span><span class="nb">set</span><span class="w"> </span>dynamically<span class="w"> </span>and<span class="w"> </span>missed
+<span class="w">                        </span>by<span class="w"> </span>pylint<span class="w"> </span>inference<span class="w"> </span>system,<span class="w"> </span>and<span class="w"> </span>so<span class="w"> </span>shouldn<span class="s1">'t trigger</span>
+<span class="s1">                        E1101 when accessed. Python regular expressions are</span>
+<span class="s1">                        accepted. (default: ())</span>
+<span class="s1">  --contextmanager-decorators &lt;decorator names&gt;</span>
+<span class="s1">                        List of decorators that produce context managers, such</span>
+<span class="s1">                        as contextlib.contextmanager. Add to this list to</span>
+<span class="s1">                        register other decorators that produce valid context</span>
+<span class="s1">                        managers. (default: ['</span>contextlib.contextmanager<span class="s1">'])</span>
+<span class="s1">  --missing-member-hint-distance &lt;member hint edit distance&gt;</span>
+<span class="s1">                        The maximum edit distance a name should have in order</span>
+<span class="s1">                        to be considered a similar match for a missing member</span>
+<span class="s1">                        name. (default: 1)</span>
+<span class="s1">  --missing-member-max-choices &lt;member hint max choices&gt;</span>
+<span class="s1">                        The total number of similar names that should be taken</span>
+<span class="s1">                        in consideration when showing a hint for a missing</span>
+<span class="s1">                        member. (default: 1)</span>
+<span class="s1">  --missing-member-hint &lt;missing member hint&gt;</span>
+<span class="s1">                        Show a hint with possible names when a member name was</span>
+<span class="s1">                        not found. The aspect of finding the hint is based on</span>
+<span class="s1">                        edit distance. (default: True)</span>
+<span class="s1">  --signature-mutators &lt;decorator names&gt;</span>
+<span class="s1">                        List of decorators that change the signature of a</span>
+<span class="s1">                        decorated function. (default: [])</span>
+
+<span class="s1">Basic:</span>
+<span class="s1">  --good-names &lt;names&gt;  Good variable names which should always be accepted,</span>
+<span class="s1">                        separated by a comma. (default: ('</span>i<span class="s1">', '</span>j<span class="s1">', '</span>k<span class="s1">', '</span>ex<span class="s1">',</span>
+<span class="s1">                        '</span>Run<span class="s1">', '</span>_<span class="s1">'))</span>
+<span class="s1">  --good-names-rgxs &lt;names&gt;</span>
+<span class="s1">                        Good variable names regexes, separated by a comma. If</span>
+<span class="s1">                        names match any regex, they will always be accepted</span>
+<span class="s1">                        (default: )</span>
+<span class="s1">  --bad-names &lt;names&gt;   Bad variable names which should always be refused,</span>
+<span class="s1">                        separated by a comma. (default: ('</span>foo<span class="s1">', '</span>bar<span class="s1">', '</span>baz<span class="s1">',</span>
+<span class="s1">                        '</span>toto<span class="s1">', '</span>tutu<span class="s1">', '</span>tata<span class="s1">'))</span>
+<span class="s1">  --bad-names-rgxs &lt;names&gt;</span>
+<span class="s1">                        Bad variable names regexes, separated by a comma. If</span>
+<span class="s1">                        names match any regex, they will always be refused</span>
+<span class="s1">                        (default: )</span>
+<span class="s1">  --name-group &lt;name1:name2&gt;</span>
+<span class="s1">                        Colon-delimited sets of names that determine each</span>
+<span class="s1">                        other'</span>s<span class="w"> </span>naming<span class="w"> </span>style<span class="w"> </span>when<span class="w"> </span>the<span class="w"> </span>name<span class="w"> </span>regexes<span class="w"> </span>allow
+<span class="w">                        </span>several<span class="w"> </span>styles.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">())</span>
+<span class="w">  </span>--include-naming-hint<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
+<span class="w">                        </span>Include<span class="w"> </span>a<span class="w"> </span>hint<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>correct<span class="w"> </span>naming<span class="w"> </span>format<span class="w"> </span>with
+<span class="w">                        </span>invalid-name.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
+<span class="w">  </span>--property-classes<span class="w"> </span>&lt;decorator<span class="w"> </span>names&gt;
+<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>decorators<span class="w"> </span>that<span class="w"> </span>produce<span class="w"> </span>properties,<span class="w"> </span>such<span class="w"> </span>as
+<span class="w">                        </span>abc.abstractproperty.<span class="w"> </span>Add<span class="w"> </span>to<span class="w"> </span>this<span class="w"> </span>list<span class="w"> </span>to<span class="w"> </span>register
+<span class="w">                        </span>other<span class="w"> </span>decorators<span class="w"> </span>that<span class="w"> </span>produce<span class="w"> </span>valid<span class="w"> </span>properties.<span class="w"> </span>These
+<span class="w">                        </span>decorators<span class="w"> </span>are<span class="w"> </span>taken<span class="w"> </span><span class="k">in</span><span class="w"> </span>consideration<span class="w"> </span>only<span class="w"> </span><span class="k">for</span>
+<span class="w">                        </span>invalid-name.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">(</span><span class="s1">'abc.abstractproperty'</span>,<span class="o">))</span>
+<span class="w">  </span>--argument-naming-style<span class="w"> </span>&lt;style&gt;
+<span class="w">                        </span>Naming<span class="w"> </span>style<span class="w"> </span>matching<span class="w"> </span>correct<span class="w"> </span>argument<span class="w"> </span>names.
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>snake_case<span class="o">)</span>
+<span class="w">  </span>--argument-rgx<span class="w"> </span>&lt;regexp&gt;
+<span class="w">                        </span>Regular<span class="w"> </span>expression<span class="w"> </span>matching<span class="w"> </span>correct<span class="w"> </span>argument<span class="w"> </span>names.
+<span class="w">                        </span>Overrides<span class="w"> </span>argument-naming-style.<span class="w"> </span>If<span class="w"> </span>left<span class="w"> </span>empty,
+<span class="w">                        </span>argument<span class="w"> </span>names<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>checked<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span><span class="nb">set</span><span class="w"> </span>naming
+<span class="w">                        </span>style.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>None<span class="o">)</span>
+<span class="w">  </span>--attr-naming-style<span class="w"> </span>&lt;style&gt;
+<span class="w">                        </span>Naming<span class="w"> </span>style<span class="w"> </span>matching<span class="w"> </span>correct<span class="w"> </span>attribute<span class="w"> </span>names.
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>snake_case<span class="o">)</span>
+<span class="w">  </span>--attr-rgx<span class="w"> </span>&lt;regexp&gt;<span class="w">   </span>Regular<span class="w"> </span>expression<span class="w"> </span>matching<span class="w"> </span>correct<span class="w"> </span>attribute<span class="w"> </span>names.
+<span class="w">                        </span>Overrides<span class="w"> </span>attr-naming-style.<span class="w"> </span>If<span class="w"> </span>left<span class="w"> </span>empty,<span class="w"> </span>attribute
+<span class="w">                        </span>names<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>checked<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span><span class="nb">set</span><span class="w"> </span>naming<span class="w"> </span>style.
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>None<span class="o">)</span>
+<span class="w">  </span>--class-naming-style<span class="w"> </span>&lt;style&gt;
+<span class="w">                        </span>Naming<span class="w"> </span>style<span class="w"> </span>matching<span class="w"> </span>correct<span class="w"> </span>class<span class="w"> </span>names.<span class="w"> </span><span class="o">(</span>default:
+<span class="w">                        </span>PascalCase<span class="o">)</span>
+<span class="w">  </span>--class-rgx<span class="w"> </span>&lt;regexp&gt;<span class="w">  </span>Regular<span class="w"> </span>expression<span class="w"> </span>matching<span class="w"> </span>correct<span class="w"> </span>class<span class="w"> </span>names.
+<span class="w">                        </span>Overrides<span class="w"> </span>class-naming-style.<span class="w"> </span>If<span class="w"> </span>left<span class="w"> </span>empty,<span class="w"> </span>class
+<span class="w">                        </span>names<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>checked<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span><span class="nb">set</span><span class="w"> </span>naming<span class="w"> </span>style.
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>None<span class="o">)</span>
+<span class="w">  </span>--class-attribute-naming-style<span class="w"> </span>&lt;style&gt;
+<span class="w">                        </span>Naming<span class="w"> </span>style<span class="w"> </span>matching<span class="w"> </span>correct<span class="w"> </span>class<span class="w"> </span>attribute<span class="w"> </span>names.
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>any<span class="o">)</span>
+<span class="w">  </span>--class-attribute-rgx<span class="w"> </span>&lt;regexp&gt;
+<span class="w">                        </span>Regular<span class="w"> </span>expression<span class="w"> </span>matching<span class="w"> </span>correct<span class="w"> </span>class<span class="w"> </span>attribute
+<span class="w">                        </span>names.<span class="w"> </span>Overrides<span class="w"> </span>class-attribute-naming-style.<span class="w"> </span>If<span class="w"> </span>left
+<span class="w">                        </span>empty,<span class="w"> </span>class<span class="w"> </span>attribute<span class="w"> </span>names<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>checked<span class="w"> </span>with<span class="w"> </span>the
+<span class="w">                        </span><span class="nb">set</span><span class="w"> </span>naming<span class="w"> </span>style.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>None<span class="o">)</span>
+<span class="w">  </span>--class-const-naming-style<span class="w"> </span>&lt;style&gt;
+<span class="w">                        </span>Naming<span class="w"> </span>style<span class="w"> </span>matching<span class="w"> </span>correct<span class="w"> </span>class<span class="w"> </span>constant<span class="w"> </span>names.
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>UPPER_CASE<span class="o">)</span>
+<span class="w">  </span>--class-const-rgx<span class="w"> </span>&lt;regexp&gt;
+<span class="w">                        </span>Regular<span class="w"> </span>expression<span class="w"> </span>matching<span class="w"> </span>correct<span class="w"> </span>class<span class="w"> </span>constant
+<span class="w">                        </span>names.<span class="w"> </span>Overrides<span class="w"> </span>class-const-naming-style.<span class="w"> </span>If<span class="w"> </span>left
+<span class="w">                        </span>empty,<span class="w"> </span>class<span class="w"> </span>constant<span class="w"> </span>names<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>checked<span class="w"> </span>with<span class="w"> </span>the
+<span class="w">                        </span><span class="nb">set</span><span class="w"> </span>naming<span class="w"> </span>style.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>None<span class="o">)</span>
+<span class="w">  </span>--const-naming-style<span class="w"> </span>&lt;style&gt;
+<span class="w">                        </span>Naming<span class="w"> </span>style<span class="w"> </span>matching<span class="w"> </span>correct<span class="w"> </span>constant<span class="w"> </span>names.
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>UPPER_CASE<span class="o">)</span>
+<span class="w">  </span>--const-rgx<span class="w"> </span>&lt;regexp&gt;<span class="w">  </span>Regular<span class="w"> </span>expression<span class="w"> </span>matching<span class="w"> </span>correct<span class="w"> </span>constant<span class="w"> </span>names.
+<span class="w">                        </span>Overrides<span class="w"> </span>const-naming-style.<span class="w"> </span>If<span class="w"> </span>left<span class="w"> </span>empty,<span class="w"> </span>constant
+<span class="w">                        </span>names<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>checked<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span><span class="nb">set</span><span class="w"> </span>naming<span class="w"> </span>style.
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>None<span class="o">)</span>
+<span class="w">  </span>--function-naming-style<span class="w"> </span>&lt;style&gt;
+<span class="w">                        </span>Naming<span class="w"> </span>style<span class="w"> </span>matching<span class="w"> </span>correct<span class="w"> </span><span class="k">function</span><span class="w"> </span>names.
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>snake_case<span class="o">)</span>
+<span class="w">  </span>--function-rgx<span class="w"> </span>&lt;regexp&gt;
+<span class="w">                        </span>Regular<span class="w"> </span>expression<span class="w"> </span>matching<span class="w"> </span>correct<span class="w"> </span><span class="k">function</span><span class="w"> </span>names.
+<span class="w">                        </span>Overrides<span class="w"> </span>function-naming-style.<span class="w"> </span>If<span class="w"> </span>left<span class="w"> </span>empty,
+<span class="w">                        </span><span class="k">function</span><span class="w"> </span>names<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>checked<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span><span class="nb">set</span><span class="w"> </span>naming
+<span class="w">                        </span>style.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>None<span class="o">)</span>
+<span class="w">  </span>--inlinevar-naming-style<span class="w"> </span>&lt;style&gt;
+<span class="w">                        </span>Naming<span class="w"> </span>style<span class="w"> </span>matching<span class="w"> </span>correct<span class="w"> </span>inline<span class="w"> </span>iteration<span class="w"> </span>names.
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>any<span class="o">)</span>
+<span class="w">  </span>--inlinevar-rgx<span class="w"> </span>&lt;regexp&gt;
+<span class="w">                        </span>Regular<span class="w"> </span>expression<span class="w"> </span>matching<span class="w"> </span>correct<span class="w"> </span>inline<span class="w"> </span>iteration
+<span class="w">                        </span>names.<span class="w"> </span>Overrides<span class="w"> </span>inlinevar-naming-style.<span class="w"> </span>If<span class="w"> </span>left
+<span class="w">                        </span>empty,<span class="w"> </span>inline<span class="w"> </span>iteration<span class="w"> </span>names<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>checked<span class="w"> </span>with<span class="w"> </span>the
+<span class="w">                        </span><span class="nb">set</span><span class="w"> </span>naming<span class="w"> </span>style.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>None<span class="o">)</span>
+<span class="w">  </span>--method-naming-style<span class="w"> </span>&lt;style&gt;
+<span class="w">                        </span>Naming<span class="w"> </span>style<span class="w"> </span>matching<span class="w"> </span>correct<span class="w"> </span>method<span class="w"> </span>names.<span class="w"> </span><span class="o">(</span>default:
+<span class="w">                        </span>snake_case<span class="o">)</span>
+<span class="w">  </span>--method-rgx<span class="w"> </span>&lt;regexp&gt;
+<span class="w">                        </span>Regular<span class="w"> </span>expression<span class="w"> </span>matching<span class="w"> </span>correct<span class="w"> </span>method<span class="w"> </span>names.
+<span class="w">                        </span>Overrides<span class="w"> </span>method-naming-style.<span class="w"> </span>If<span class="w"> </span>left<span class="w"> </span>empty,<span class="w"> </span>method
+<span class="w">                        </span>names<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>checked<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span><span class="nb">set</span><span class="w"> </span>naming<span class="w"> </span>style.
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>None<span class="o">)</span>
+<span class="w">  </span>--module-naming-style<span class="w"> </span>&lt;style&gt;
+<span class="w">                        </span>Naming<span class="w"> </span>style<span class="w"> </span>matching<span class="w"> </span>correct<span class="w"> </span>module<span class="w"> </span>names.<span class="w"> </span><span class="o">(</span>default:
+<span class="w">                        </span>snake_case<span class="o">)</span>
+<span class="w">  </span>--module-rgx<span class="w"> </span>&lt;regexp&gt;
+<span class="w">                        </span>Regular<span class="w"> </span>expression<span class="w"> </span>matching<span class="w"> </span>correct<span class="w"> </span>module<span class="w"> </span>names.
+<span class="w">                        </span>Overrides<span class="w"> </span>module-naming-style.<span class="w"> </span>If<span class="w"> </span>left<span class="w"> </span>empty,<span class="w"> </span>module
+<span class="w">                        </span>names<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>checked<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span><span class="nb">set</span><span class="w"> </span>naming<span class="w"> </span>style.
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>None<span class="o">)</span>
+<span class="w">  </span>--paramspec-rgx<span class="w"> </span>&lt;regexp&gt;
+<span class="w">                        </span>Regular<span class="w"> </span>expression<span class="w"> </span>matching<span class="w"> </span>correct<span class="w"> </span>parameter
+<span class="w">                        </span>specification<span class="w"> </span>variable<span class="w"> </span>names.<span class="w"> </span>If<span class="w"> </span>left<span class="w"> </span>empty,<span class="w"> </span>parameter
+<span class="w">                        </span>specification<span class="w"> </span>variable<span class="w"> </span>names<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>checked<span class="w"> </span>with<span class="w"> </span>the
+<span class="w">                        </span><span class="nb">set</span><span class="w"> </span>naming<span class="w"> </span>style.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>None<span class="o">)</span>
+<span class="w">  </span>--typealias-rgx<span class="w"> </span>&lt;regexp&gt;
+<span class="w">                        </span>Regular<span class="w"> </span>expression<span class="w"> </span>matching<span class="w"> </span>correct<span class="w"> </span><span class="nb">type</span><span class="w"> </span><span class="nb">alias</span><span class="w"> </span>names.
+<span class="w">                        </span>If<span class="w"> </span>left<span class="w"> </span>empty,<span class="w"> </span><span class="nb">type</span><span class="w"> </span><span class="nb">alias</span><span class="w"> </span>names<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>checked<span class="w"> </span>with
+<span class="w">                        </span>the<span class="w"> </span><span class="nb">set</span><span class="w"> </span>naming<span class="w"> </span>style.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>None<span class="o">)</span>
+<span class="w">  </span>--typevar-rgx<span class="w"> </span>&lt;regexp&gt;
+<span class="w">                        </span>Regular<span class="w"> </span>expression<span class="w"> </span>matching<span class="w"> </span>correct<span class="w"> </span><span class="nb">type</span><span class="w"> </span>variable
+<span class="w">                        </span>names.<span class="w"> </span>If<span class="w"> </span>left<span class="w"> </span>empty,<span class="w"> </span><span class="nb">type</span><span class="w"> </span>variable<span class="w"> </span>names<span class="w"> </span>will<span class="w"> </span>be
+<span class="w">                        </span>checked<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span><span class="nb">set</span><span class="w"> </span>naming<span class="w"> </span>style.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>None<span class="o">)</span>
+<span class="w">  </span>--typevartuple-rgx<span class="w"> </span>&lt;regexp&gt;
+<span class="w">                        </span>Regular<span class="w"> </span>expression<span class="w"> </span>matching<span class="w"> </span>correct<span class="w"> </span><span class="nb">type</span><span class="w"> </span>variable
+<span class="w">                        </span>tuple<span class="w"> </span>names.<span class="w"> </span>If<span class="w"> </span>left<span class="w"> </span>empty,<span class="w"> </span><span class="nb">type</span><span class="w"> </span>variable<span class="w"> </span>tuple<span class="w"> </span>names
+<span class="w">                        </span>will<span class="w"> </span>be<span class="w"> </span>checked<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span><span class="nb">set</span><span class="w"> </span>naming<span class="w"> </span>style.<span class="w"> </span><span class="o">(</span>default:
+<span class="w">                        </span>None<span class="o">)</span>
+<span class="w">  </span>--variable-naming-style<span class="w"> </span>&lt;style&gt;
+<span class="w">                        </span>Naming<span class="w"> </span>style<span class="w"> </span>matching<span class="w"> </span>correct<span class="w"> </span>variable<span class="w"> </span>names.
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>snake_case<span class="o">)</span>
+<span class="w">  </span>--variable-rgx<span class="w"> </span>&lt;regexp&gt;
+<span class="w">                        </span>Regular<span class="w"> </span>expression<span class="w"> </span>matching<span class="w"> </span>correct<span class="w"> </span>variable<span class="w"> </span>names.
+<span class="w">                        </span>Overrides<span class="w"> </span>variable-naming-style.<span class="w"> </span>If<span class="w"> </span>left<span class="w"> </span>empty,
+<span class="w">                        </span>variable<span class="w"> </span>names<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>checked<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span><span class="nb">set</span><span class="w"> </span>naming
+<span class="w">                        </span>style.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>None<span class="o">)</span>
+<span class="w">  </span>--no-docstring-rgx<span class="w"> </span>&lt;regexp&gt;
+<span class="w">                        </span>Regular<span class="w"> </span>expression<span class="w"> </span>which<span class="w"> </span>should<span class="w"> </span>only<span class="w"> </span>match<span class="w"> </span><span class="k">function</span><span class="w"> </span>or
+<span class="w">                        </span>class<span class="w"> </span>names<span class="w"> </span>that<span class="w"> </span><span class="k">do</span><span class="w"> </span>not<span class="w"> </span>require<span class="w"> </span>a<span class="w"> </span>docstring.<span class="w"> </span><span class="o">(</span>default:
+<span class="w">                        </span>re.compile<span class="o">(</span><span class="s1">'^_'</span><span class="o">))</span>
+<span class="w">  </span>--docstring-min-length<span class="w"> </span>&lt;int&gt;
+<span class="w">                        </span>Minimum<span class="w"> </span>line<span class="w"> </span>length<span class="w"> </span><span class="k">for</span><span class="w"> </span>functions/classes<span class="w"> </span>that<span class="w"> </span>require
+<span class="w">                        </span>docstrings,<span class="w"> </span>shorter<span class="w"> </span>ones<span class="w"> </span>are<span class="w"> </span>exempt.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>-1<span class="o">)</span>
+
+Classes:
+<span class="w">  </span>Checker<span class="w"> </span><span class="k">for</span><span class="w"> </span>class<span class="w"> </span>nodes.
+
+<span class="w">  </span>--defining-attr-methods<span class="w"> </span>&lt;method<span class="w"> </span>names&gt;
+<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>method<span class="w"> </span>names<span class="w"> </span>used<span class="w"> </span>to<span class="w"> </span><span class="nb">declare</span><span class="w"> </span><span class="o">(</span>i.e.<span class="w"> </span>assign<span class="o">)</span>
+<span class="w">                        </span>instance<span class="w"> </span>attributes.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">(</span><span class="s1">'__init__'</span>,<span class="w"> </span><span class="s1">'__new__'</span>,
+<span class="w">                        </span><span class="s1">'setUp'</span>,<span class="w"> </span><span class="s1">'asyncSetUp'</span>,<span class="w"> </span><span class="s1">'__post_init__'</span><span class="o">))</span>
+<span class="w">  </span>--valid-classmethod-first-arg<span class="w"> </span>&lt;argument<span class="w"> </span>names&gt;
+<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>valid<span class="w"> </span>names<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>first<span class="w"> </span>argument<span class="w"> </span><span class="k">in</span><span class="w"> </span>a<span class="w"> </span>class
+<span class="w">                        </span>method.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">(</span><span class="s1">'cls'</span>,<span class="o">))</span>
+<span class="w">  </span>--valid-metaclass-classmethod-first-arg<span class="w"> </span>&lt;argument<span class="w"> </span>names&gt;
+<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>valid<span class="w"> </span>names<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>first<span class="w"> </span>argument<span class="w"> </span><span class="k">in</span><span class="w"> </span>a
+<span class="w">                        </span>metaclass<span class="w"> </span>class<span class="w"> </span>method.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">(</span><span class="s1">'mcs'</span>,<span class="o">))</span>
+<span class="w">  </span>--exclude-protected<span class="w"> </span>&lt;protected<span class="w"> </span>access<span class="w"> </span>exclusions&gt;
+<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>member<span class="w"> </span>names,<span class="w"> </span>which<span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span>excluded<span class="w"> </span>from
+<span class="w">                        </span>the<span class="w"> </span>protected<span class="w"> </span>access<span class="w"> </span>warning.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">(</span><span class="s1">'_asdict'</span>,
+<span class="w">                        </span><span class="s1">'_fields'</span>,<span class="w"> </span><span class="s1">'_replace'</span>,<span class="w"> </span><span class="s1">'_source'</span>,<span class="w"> </span><span class="s1">'_make'</span>,
+<span class="w">                        </span><span class="s1">'os._exit'</span><span class="o">))</span>
+<span class="w">  </span>--check-protected-access-in-special-methods<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
+<span class="w">                        </span>Warn<span class="w"> </span>about<span class="w"> </span>protected<span class="w"> </span>attribute<span class="w"> </span>access<span class="w"> </span>inside<span class="w"> </span>special
+<span class="w">                        </span>methods<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
+
+Refactoring:
+<span class="w">  </span>Looks<span class="w"> </span><span class="k">for</span><span class="w"> </span>code<span class="w"> </span>which<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>refactored.
+
+<span class="w">  </span>--max-nested-blocks<span class="w"> </span>&lt;int&gt;
+<span class="w">                        </span>Maximum<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>nested<span class="w"> </span>blocks<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="k">function</span><span class="w"> </span>/<span class="w"> </span>method
+<span class="w">                        </span>body<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">5</span><span class="o">)</span>
+<span class="w">  </span>--never-returning-functions<span class="w"> </span>&lt;members<span class="w"> </span>names&gt;
+<span class="w">                        </span>Complete<span class="w"> </span>name<span class="w"> </span>of<span class="w"> </span>functions<span class="w"> </span>that<span class="w"> </span>never<span class="w"> </span>returns.<span class="w"> </span>When
+<span class="w">                        </span>checking<span class="w"> </span><span class="k">for</span><span class="w"> </span>inconsistent-return-statements<span class="w"> </span><span class="k">if</span><span class="w"> </span>a<span class="w"> </span>never
+<span class="w">                        </span>returning<span class="w"> </span><span class="k">function</span><span class="w"> </span>is<span class="w"> </span>called<span class="w"> </span><span class="k">then</span><span class="w"> </span>it<span class="w"> </span>will<span class="w"> </span>be
+<span class="w">                        </span>considered<span class="w"> </span>as<span class="w"> </span>an<span class="w"> </span>explicit<span class="w"> </span><span class="k">return</span><span class="w"> </span>statement<span class="w"> </span>and<span class="w"> </span>no
+<span class="w">                        </span>message<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>printed.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">(</span><span class="s1">'sys.exit'</span>,
+<span class="w">                        </span><span class="s1">'argparse.parse_error'</span><span class="o">))</span>
+<span class="w">  </span>--suggest-join-with-non-empty-separator<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
+<span class="w">                        </span>Let<span class="w"> </span><span class="s1">'consider-using-join'</span><span class="w"> </span>be<span class="w"> </span>raised<span class="w"> </span>when<span class="w"> </span>the<span class="w"> </span>separator
+<span class="w">                        </span>to<span class="w"> </span>join<span class="w"> </span>on<span class="w"> </span>would<span class="w"> </span>be<span class="w"> </span>non-empty<span class="w"> </span><span class="o">(</span>resulting<span class="w"> </span><span class="k">in</span><span class="w"> </span>expected
+<span class="w">                        </span>fixes<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>type:<span class="w"> </span><span class="sb">``</span><span class="s2">"- "</span><span class="w"> </span>+<span class="w"> </span><span class="s2">" - "</span>.join<span class="o">(</span>items<span class="o">)</span><span class="sb">``</span><span class="o">)</span>
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>True<span class="o">)</span>
 </code></pre></div>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
