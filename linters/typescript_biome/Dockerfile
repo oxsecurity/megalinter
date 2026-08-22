@@ -59,7 +59,7 @@ ARG TARGETARCH
 # renovate: datasource=npm depName=typescript
 ARG NPM_TYPESCRIPT_VERSION=6.0.3
 # renovate: datasource=npm depName=@biomejs/biome
-ARG NPM_BIOMEJS_BIOME_VERSION=2.5.7
+ARG NPM_BIOMEJS_BIOME_VERSION=2.5.8
 #ARG__END
 
 ####################
