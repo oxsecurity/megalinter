@@ -57,7 +57,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.16.2
+ARG PIP_RUFF_VERSION=0.16.3
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=26.2.1
 # renovate: datasource=pypi depName=virtualenv
