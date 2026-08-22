@@ -321,10 +321,69 @@ linters:
 
       You can also set the following MegaLinter environment variables manually:
 
-      - `PULL_REQUEST=true`
+      - `PULL_REQUEST=true` (only on Pull Requests, so you must compute the value in your pipeline and pass the outcome)
       - `REPOSITORY_BETTERLEAKS_PR_COMMITS_SCAN: true`
       - `REPOSITORY_BETTERLEAKS_PR_SOURCE_SHA` with the last commit SHA from your PR
       - `REPOSITORY_BETTERLEAKS_PR_TARGET_SHA` with the target branch commit SHA
+
+      Example commands to compute them:
+
+      ```bash
+      # Source commit SHA
+      git rev-list -n 1 refs/remotes/origin/<source_branch>
+      # Target commit SHA
+      git rev-parse refs/remotes/origin/<target_branch>
+      ```
+
+      **Note:** for GitLab, only self-managed and SaaS Premium/Ultimate are supported (a GitLab-specific limitation), and the [merged results pipelines](https://docs.gitlab.com/ee/ci/pipelines/merged_results_pipelines.html#enable-merged-results-pipelines){target=_blank} feature has to be enabled.
+
+      If the Pull Request commit range can not be determined (unsupported platform, shallow checkout, missing variables), betterleaks logs a warning and analyzes the whole repository instead.
+
+      The PR commits scan, when applicable, overrides the `--log-opts` argument if you set it in `REPOSITORY_BETTERLEAKS_ARGUMENTS`.
+
+      ### Repository checkout on Pull Requests
+
+      To scan only PR commits, the [shallow fetch](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---depthltdepthgt){target=_blank} for a repository checkout has to be 0, so the target branch commit is present locally.
+
+      #### GitHub Actions
+
+      ```yaml
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      ```
+
+      #### Azure Pipelines
+
+      ```yaml
+      - checkout: self
+        fetchDepth: 0
+      ```
+
+      #### GitLab Pipelines
+
+      ```yaml
+      variables:
+        GIT_DEPTH: 0
+      ```
+
+      #### Git
+
+      ```bash
+      git fetch --depth=0
+      ```
+
+      ### Azure Pipelines environment variables on Pull Requests
+
+      When running in a Docker container, Azure Pipelines requires some environment variables to be passed explicitly:
+
+      ```bash
+      docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
+          -e SYSTEM_PULLREQUEST_SOURCECOMMITID=$(System.PullRequest.SourceCommitId) \
+          -e SYSTEM_PULLREQUEST_TARGETBRANCH=$(System.PullRequest.TargetBranch) \
+          -e BUILD_REASON=$(Build.Reason) \
+          ghcr.io/oxsecurity/megalinter:v10
+      ```
 
       ## Migration from gitleaks
 

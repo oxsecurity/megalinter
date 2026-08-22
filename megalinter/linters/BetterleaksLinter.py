@@ -3,12 +3,12 @@
 Use BetterLeaks to check for credentials in repository
 """
 
-import json
+import logging
 import os
 import re
 
 import megalinter.utils as utils
-from megalinter import Linter, config
+from megalinter import Linter, ci_providers, config
 
 
 class BetterleaksLinter(Linter):
@@ -30,43 +30,26 @@ class BetterleaksLinter(Linter):
             self.request_id, "REPOSITORY_BETTERLEAKS_PR_TARGET_SHA"
         )
 
+        ci_provider = ci_providers.get_pr_ci_provider(self.request_id, self.workspace)
         if pr_source_sha is None or pr_target_sha is None:
-            if utils.is_azure_devops_pr():
-                pr_source_sha = config.get(
-                    self.request_id, "SYSTEM_PULLREQUEST_SOURCECOMMITID"
-                )
-                pr_target_sha = self.get_azure_devops_pr_target_sha(
-                    config.get(self.request_id, "SYSTEM_PULLREQUEST_TARGETBRANCH")
-                )
-            elif utils.is_github_pr():
-                pr_source_sha, pr_target_sha = self.get_github_sha()
-            elif utils.is_gitlab_mr() and utils.is_gitlab_premium():
-                pr_source_sha = config.get(
-                    self.request_id, "CI_MERGE_REQUEST_SOURCE_BRANCH_SHA"
-                )
-                pr_target_sha = config.get(
-                    self.request_id, "CI_MERGE_REQUEST_TARGET_BRANCH_SHA"
-                )
-            elif utils.is_gitlab_external_pr() and utils.is_gitlab_premium():
-                pr_source_sha = config.get(
-                    self.request_id, "CI_EXTERNAL_PULL_REQUEST_SOURCE_BRANCH_SHA"
-                )
-                pr_target_sha = config.get(
-                    self.request_id, "CI_EXTERNAL_PULL_REQUEST_TARGET_BRANCH_SHA"
-                )
+            pr_source_sha, pr_target_sha = ci_provider.get_pr_commit_shas()
+
+        if pr_source_sha is None or pr_target_sha is None:
+            self.log_pr_commits_scan_fallback(ci_provider)
 
         return pr_source_sha, pr_target_sha
 
-    def get_azure_devops_pr_target_sha(self, target_branch_name):
-        repo = utils.git.Repo(os.path.realpath(self.workspace))
-        return repo.commit(target_branch_name.replace("refs/heads", "origin"))
-
-    def get_github_sha(self):
-        with open(config.get(self.request_id, "GITHUB_EVENT_PATH")) as gh_event_file:
-            gh_event = json.load(gh_event_file)
-        return (
-            gh_event["pull_request"]["head"]["sha"],
-            gh_event["pull_request"]["base"]["sha"],
+    # REPOSITORY_BETTERLEAKS_PR_COMMITS_SCAN was requested but the commit range
+    # could not be computed: betterleaks scans the whole repository instead, and
+    # the user gets the platform specific hint to make the range available
+    def log_pr_commits_scan_fallback(self, ci_provider):
+        hint = ci_provider.get_pr_commit_shas_hint()
+        logging.warning(
+            f"[{self.linter_name}] REPOSITORY_BETTERLEAKS_PR_COMMITS_SCAN is enabled but "
+            "the Pull Request commit range could not be determined, so the whole "
+            f"repository is scanned. To scan only Pull Request commits, {hint}, or set "
+            "REPOSITORY_BETTERLEAKS_PR_SOURCE_SHA and REPOSITORY_BETTERLEAKS_PR_TARGET_SHA "
+            "yourself. See https://megalinter.io/latest/descriptors/repository_betterleaks/"
         )
 
     def build_lint_command(self, file=None):
