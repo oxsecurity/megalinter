@@ -10,6 +10,7 @@ import os
 import tempfile
 import unittest
 import uuid
+from contextlib import ExitStack
 from unittest import mock
 
 import git
@@ -23,14 +24,55 @@ from megalinter.ci_providers import (
     CiProviderJenkins,
 )
 
+# Platform variables that must not leak into the tests from the environment
+# actually running them: this suite runs inside GitHub Actions, where
+# GITHUB_ACTIONS, GITHUB_REPOSITORY, GITHUB_RUN_ID and friends are really set
+CI_VAR_PREFIXES = (
+    "GITHUB_",
+    "CI_",
+    "BITBUCKET_",
+    "SYSTEM_",
+    "BUILD_",
+    "JENKINS_",
+    "GITLAB_",
+)
+CI_VAR_NAMES = (
+    "TF_BUILD",
+    "CI",
+    "PAT",
+    "PULL_REQUEST",
+    "GIT_URL",
+    "GIT_BRANCH",
+    "CHANGE_ID",
+    "CHANGE_URL",
+    "MEGALINTER_MULTIRUN_KEY",
+)
 
-class CiProvidersTest(unittest.TestCase):
+
+class CiProviderTestCase(unittest.TestCase):
     def setUp(self):
         self.request_id = str(uuid.uuid1())
         config.init_config(self.request_id)
+        # Start from a platform-neutral configuration, whatever CI runs this
+        for key in list(config.copy(self.request_id).keys()):
+            if key.startswith(CI_VAR_PREFIXES) or key in CI_VAR_NAMES:
+                config.delete(self.request_id, key)
 
     def tearDown(self):
         config.delete(self.request_id)
+
+    # The is_* detectors read the global configuration, not the request one, so
+    # clearing the request config is not enough: activate exactly one provider
+    def activate_only(self, stack, provider_class, method):
+        for candidate in ci_providers.PROVIDER_CLASSES:
+            stack.enter_context(
+                mock.patch.object(
+                    candidate, method, return_value=candidate is provider_class
+                )
+            )
+
+
+class CiProvidersTest(CiProviderTestCase):
 
     @staticmethod
     def init_repo(repo_dir, branch_name="main"):
@@ -172,30 +214,21 @@ class CiProvidersTest(unittest.TestCase):
 
     # The factory never returns None, so callers need no missing provider branch
     def test_factory_falls_back_to_neutral_provider(self):
-        provider = ci_providers.get_pr_ci_provider(self.request_id, ".")
-        self.assertIsInstance(provider, CiProvider)
+        with ExitStack() as stack:
+            self.activate_only(stack, None, "is_pr_context")
+            provider = ci_providers.get_pr_ci_provider(self.request_id, ".")
+        self.assertIs(type(provider), CiProvider)
         self.assertEqual((None, None), provider.get_pr_commit_shas())
         self.assertIn("not auto-detected", provider.get_pr_commit_shas_hint())
 
-    def test_factory_detects_azure_pipelines(self):
-        with mock.patch("megalinter.utils.is_azure_devops_pr", return_value=True):
-            self.assertIsInstance(
-                ci_providers.get_pr_ci_provider(self.request_id, "."),
-                CiProviderAzurePipelines,
-            )
-
-    def test_factory_detects_github_actions(self):
-        with mock.patch("megalinter.utils.is_github_pr", return_value=True):
-            self.assertIsInstance(
-                ci_providers.get_pr_ci_provider(self.request_id, "."),
-                CiProviderGithubActions,
-            )
-
-    def test_factory_detects_gitlab(self):
-        with mock.patch("megalinter.utils.is_gitlab_mr", return_value=True):
-            self.assertIsInstance(
-                ci_providers.get_pr_ci_provider(self.request_id, "."), CiProviderGitlab
-            )
+    def test_factory_detects_each_pull_request_platform(self):
+        for provider_class in ci_providers.PROVIDER_CLASSES:
+            with ExitStack() as stack:
+                self.activate_only(stack, provider_class, "is_pr_context")
+                self.assertIsInstance(
+                    ci_providers.get_pr_ci_provider(self.request_id, "."),
+                    provider_class,
+                )
 
     # Every provider must offer actionable guidance when the range is missing
     def test_every_provider_exposes_a_hint(self):
@@ -204,13 +237,7 @@ class CiProvidersTest(unittest.TestCase):
             self.assertTrue(len(hint) > 0, f"{provider_class.__name__} has no hint")
 
 
-class CiProvidersContextTest(unittest.TestCase):
-    def setUp(self):
-        self.request_id = str(uuid.uuid1())
-        config.init_config(self.request_id)
-
-    def tearDown(self):
-        config.delete(self.request_id)
+class CiProvidersContextTest(CiProviderTestCase):
 
     def provider(self, provider_class):
         return provider_class(self.request_id, ".")
@@ -373,34 +400,25 @@ class CiProvidersContextTest(unittest.TestCase):
     # ---------------- get_ci_provider factory ----------------
 
     def test_get_ci_provider_detects_each_platform(self):
-        cases = [
-            ("megalinter.utils.is_azure_pipelines", CiProviderAzurePipelines),
-            ("megalinter.utils.is_github_actions", CiProviderGithubActions),
-            ("megalinter.utils.is_gitlab_ci", CiProviderGitlab),
-            ("megalinter.utils.is_bitbucket", CiProviderBitbucket),
-            ("megalinter.utils.is_jenkins", CiProviderJenkins),
-        ]
-        for target, expected_class in cases:
-            with mock.patch(target, return_value=True):
+        for provider_class in ci_providers.PROVIDER_CLASSES:
+            with ExitStack() as stack:
+                self.activate_only(stack, provider_class, "is_current")
                 self.assertIsInstance(
-                    ci_providers.get_ci_provider(self.request_id), expected_class
+                    ci_providers.get_ci_provider(self.request_id), provider_class
                 )
 
     def test_get_ci_provider_falls_back_to_neutral_provider(self):
-        provider = ci_providers.get_ci_provider(self.request_id)
-        self.assertIs(type(provider), CiProvider)
+        with ExitStack() as stack:
+            self.activate_only(stack, None, "is_current")
+            self.assertIs(
+                type(ci_providers.get_ci_provider(self.request_id)), CiProvider
+            )
 
 
 # The four comment reporters used to read these variables themselves. The
 # values they now get from the providers must stay identical, in particular
 # the API urls and the auth headers
-class CiProvidersReporterContextTest(unittest.TestCase):
-    def setUp(self):
-        self.request_id = str(uuid.uuid1())
-        config.init_config(self.request_id)
-
-    def tearDown(self):
-        config.delete(self.request_id)
+class CiProvidersReporterContextTest(CiProviderTestCase):
 
     def set_values(self, values):
         for key, value in values.items():
