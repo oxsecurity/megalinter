@@ -6,7 +6,7 @@ Produce MARKDOWN_SUMMARY report
 import logging
 import os
 
-from megalinter import Reporter, config, utils
+from megalinter import Reporter, ci_providers, config, utils
 from megalinter.constants import DEFAULT_MARKDOWN_SUMMARY_REPORT_FILE_NAME
 from megalinter.utils_reporter import build_markdown_summary
 
@@ -18,11 +18,9 @@ class MarkdownSummaryReporter(Reporter):
     def manage_activation(self):
         if not utils.can_write_report_files(self.master):
             self.is_active = False
-        elif (
-            config.get(self.master.request_id, "MARKDOWN_SUMMARY_REPORTER", "false")
-            == "true"
-            or "GITHUB_STEP_SUMMARY" in os.environ
-        ):
+        elif config.get(
+            self.master.request_id, "MARKDOWN_SUMMARY_REPORTER", "false"
+        ) == "true" or config.exists(self.master.request_id, "GITHUB_STEP_SUMMARY"):
             self.is_active = True
         else:
             self.is_active = False
@@ -43,16 +41,14 @@ class MarkdownSummaryReporter(Reporter):
             os.remove(summary_file_name)
         with open(summary_file_name, "w", encoding="utf-8") as summary_file:
             summary_file.write(summary)
-        # if GITHUB_STEP_SUMMARY is set, append to it
-        if "GITHUB_STEP_SUMMARY" in os.environ:
-            with open(
-                os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8"
-            ) as summary_file:
-                summary_file.write(summary)
+        # Publish on the CI job page when the platform supports it
+        published = ci_providers.get_ci_provider(
+            self.master.request_id
+        ).publish_job_summary(summary)
         logging.info(
             f"[MARKDOWN_SUMMARY Reporter] Generated {self.name} report: {summary_file_name}"
         )
-        if "GITHUB_STEP_SUMMARY" in os.environ:
+        if published is True:
             logging.info(
-                f"[MARKDOWN_SUMMARY Reporter] Also appended to GITHUB_STEP_SUMMARY: {os.environ['GITHUB_STEP_SUMMARY']}"
+                "[MARKDOWN_SUMMARY Reporter] Also published on the CI job summary"
             )

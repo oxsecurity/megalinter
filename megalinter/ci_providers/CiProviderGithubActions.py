@@ -14,6 +14,10 @@ class CiProviderGithubActions(CiProvider):
     name = "GitHub Actions"
 
     @staticmethod
+    def is_current() -> bool:
+        return utils.is_github_actions()
+
+    @staticmethod
     def is_pr_context() -> bool:
         return utils.is_github_pr()
 
@@ -39,3 +43,50 @@ class CiProviderGithubActions(CiProvider):
 
     def get_pr_commit_shas_hint(self) -> str:
         return "check out the repository with `fetch-depth: 0`"
+
+    def get_repo_name(self):
+        return self.split_repo_name(config.get(self.request_id, "GITHUB_REPOSITORY"))
+
+    def get_branch_name(self):
+        return config.get_first_var_set(
+            self.request_id, ["GITHUB_HEAD_REF", "GITHUB_REF_NAME"], None
+        )
+
+    def get_server_url(self) -> str:
+        return config.get(self.request_id, "GITHUB_SERVER_URL", "https://github.com")
+
+    def get_job_url(self) -> str:
+        repo = config.get(self.request_id, "GITHUB_REPOSITORY", "")
+        if repo == "":
+            return ""
+        run_id = config.get(self.request_id, "GITHUB_RUN_ID")
+        return f"{self.get_server_url()}/{repo}/actions/runs/{run_id}"
+
+    def log_section_start(self, section_key: str, section_title: str) -> str:
+        return f"::group::{section_title} (expand for details)"
+
+    def log_section_end(self, section_key: str) -> str:
+        return "::endgroup::"
+
+    def set_output(self, name: str, value) -> bool:
+        github_output = config.get(self.request_id, "GITHUB_OUTPUT", "")
+        if github_output == "":
+            return False
+        return self.append_to_platform_file(github_output, f"{name}={value}\n")
+
+    def publish_job_summary(self, markdown: str) -> bool:
+        summary_file = config.get(self.request_id, "GITHUB_STEP_SUMMARY", "")
+        if summary_file == "":
+            return False
+        return self.append_to_platform_file(summary_file, markdown)
+
+    # The runner owns these files: a failure to write must never break the run
+    @staticmethod
+    def append_to_platform_file(file_path, content) -> bool:
+        try:
+            with open(file_path, "a", encoding="utf-8") as platform_file:
+                platform_file.write(content)
+            return True
+        except OSError as e:
+            logging.warning(f"[GitHub Actions] Unable to write {file_path}: {str(e)}")
+            return False

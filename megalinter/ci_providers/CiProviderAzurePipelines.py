@@ -6,6 +6,7 @@ Azure Pipelines CI provider
 import logging
 import os
 import re
+import urllib.parse
 
 import git
 from megalinter import config, utils
@@ -14,6 +15,10 @@ from megalinter.ci_providers.CiProvider import CiProvider
 
 class CiProviderAzurePipelines(CiProvider):
     name = "Azure Pipelines"
+
+    @staticmethod
+    def is_current() -> bool:
+        return utils.is_azure_pipelines()
 
     @staticmethod
     def is_pr_context() -> bool:
@@ -62,3 +67,39 @@ class CiProviderAzurePipelines(CiProvider):
             "SYSTEM_PULLREQUEST_SOURCECOMMITID, SYSTEM_PULLREQUEST_TARGETBRANCH "
             "and BUILD_REASON to the MegaLinter container"
         )
+
+    def get_repo_name(self):
+        return self.split_repo_name(config.get(self.request_id, "BUILD_REPOSITORYNAME"))
+
+    def get_branch_name(self):
+        return config.get(self.request_id, "BUILD_SOURCEBRANCHNAME")
+
+    # Azure exposes the build id under two different names depending on the
+    # agent version
+    def get_build_id(self):
+        return config.get(
+            self.request_id,
+            "BUILD_BUILDID",
+            config.get(self.request_id, "BUILD_BUILD_ID"),
+        )
+
+    def get_collection_uri(self) -> str:
+        return config.get(self.request_id, "SYSTEM_COLLECTIONURI", "")
+
+    def get_job_url(self) -> str:
+        collection_uri = self.get_collection_uri()
+        if collection_uri == "":
+            return ""
+        team_project = urllib.parse.quote(
+            config.get(self.request_id, "SYSTEM_TEAMPROJECT")
+        )
+        return (
+            f"{collection_uri}{team_project}/_build/results"
+            f"?buildId={self.get_build_id()}"
+        )
+
+    def log_section_start(self, section_key: str, section_title: str) -> str:
+        return f"##[group]{section_title} (expand for details)"
+
+    def log_section_end(self, section_key: str) -> str:
+        return "##[endgroup]"

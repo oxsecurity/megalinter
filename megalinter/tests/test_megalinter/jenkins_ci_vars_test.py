@@ -4,7 +4,7 @@ from unittest.mock import patch
 from uuid import uuid1
 
 from megalinter import config
-from megalinter.reporters.jenkins_ci_vars import apply_jenkins_ci_vars
+from megalinter.ci_providers import apply_jenkins_ci_vars
 
 
 class JenkinsCiVarsTest(unittest.TestCase):

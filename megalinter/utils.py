@@ -6,7 +6,6 @@ import logging
 import os
 import re
 import tempfile
-import urllib.parse
 import warnings
 from fnmatch import fnmatch
 from pathlib import Path
@@ -524,33 +523,47 @@ def is_git_repo(path):
 
 
 def get_git_context_info(request_id, path):
-    # Repo name
-    repo_name = config.get_first_var_set(
-        request_id,
-        [
-            "GITHUB_REPOSITORY",
-            "GIT_URL",
-            "CI_PROJECT_NAME",
-            "BITBUCKET_REPO_SLUG",
-            "BUILD_REPOSITORYNAME",
-        ],
-        None,
-    )
-    if repo_name is not None:
-        repo_name = repo_name.split("/")[-1]  # Get last portion
-    # Branch name
-    branch_name = config.get_first_var_set(
-        request_id,
-        [
-            "GITHUB_HEAD_REF",
-            "GITHUB_REF_NAME",
-            "GIT_BRANCH",
-            "CI_COMMIT_REF_NAME",
-            "BITBUCKET_BRANCH",
-            "BUILD_SOURCEBRANCHNAME",
-        ],
-        None,
-    )
+    # Import here: ci_providers imports utils, so a module level import cycles
+    from megalinter import ci_providers
+
+    ci_provider = ci_providers.get_ci_provider(request_id)
+    repo_name = ci_provider.get_repo_name()
+    branch_name = ci_provider.get_branch_name()
+    # Explicit overrides win over whatever the provider computes
+    job_url = config.get_first_var_set(request_id, ["GITHUB_JOB_URL", "CI_JOB_URL"], "")
+    if job_url == "":
+        job_url = ci_provider.get_job_url()
+    # Keep honoring the platform variables even when the platform itself is not
+    # detected (MegaLinter run from a CI it does not recognize)
+    if repo_name is None:
+        repo_name = ci_providers.CiProvider.split_repo_name(
+            config.get_first_var_set(
+                request_id,
+                [
+                    "GITHUB_REPOSITORY",
+                    "GIT_URL",
+                    "CI_PROJECT_NAME",
+                    "BITBUCKET_REPO_SLUG",
+                    "BUILD_REPOSITORYNAME",
+                ],
+                None,
+            )
+        )
+    if branch_name is None:
+        branch_name = config.get_first_var_set(
+            request_id,
+            [
+                "GITHUB_HEAD_REF",
+                "GITHUB_REF_NAME",
+                "GIT_BRANCH",
+                "CI_COMMIT_REF_NAME",
+                "BITBUCKET_BRANCH",
+                "BUILD_SOURCEBRANCHNAME",
+            ],
+            None,
+        )
+    # Fall back to the local git repository for whatever the platform did not
+    # provide (also covers running outside any CI)
     if repo_name is None:
         try:
             repo = git.Repo(
@@ -576,47 +589,6 @@ def get_git_context_info(request_id, path):
             branch_name = branch.name
         except Exception:
             branch_name = "?"
-    # Job URL
-    job_url = config.get_first_var_set(
-        request_id,
-        [
-            "GITHUB_JOB_URL",
-            "CI_JOB_URL",
-        ],
-        "",
-    )
-    # GitHub job url
-    if job_url == "" and config.get(request_id, "GITHUB_REPOSITORY", "") != "":
-        github_server_url = config.get(
-            request_id, "GITHUB_SERVER_URL", "https://github.com"
-        )
-        github_repo = config.get(request_id, "GITHUB_REPOSITORY")
-        run_id = config.get(request_id, "GITHUB_RUN_ID")
-        job_url = f"{github_server_url}/{github_repo}/actions/runs/{run_id}"
-    # Azure Job url
-    elif job_url == "" and config.get(request_id, "SYSTEM_COLLECTIONURI", "") != "":
-        SYSTEM_COLLECTIONURI = config.get(request_id, "SYSTEM_COLLECTIONURI")
-        SYSTEM_TEAMPROJECT = urllib.parse.quote(
-            config.get(request_id, "SYSTEM_TEAMPROJECT")
-        )
-        BUILD_BUILDID = config.get(
-            request_id,
-            "BUILD_BUILDID",
-            config.get(request_id, "BUILD_BUILD_ID"),
-        )
-        job_url = f"{SYSTEM_COLLECTIONURI}{SYSTEM_TEAMPROJECT}/_build/results?buildId={BUILD_BUILDID}"
-    # BitBucket job url
-    elif job_url == "" and config.get(request_id, "BITBUCKET_STEP_UUID", "") != "":
-        bitbucket_project_url = config.get(request_id, "BITBUCKET_GIT_HTTP_ORIGIN", "")
-        bitbucket_pipeline_job_number = config.get(
-            request_id, "BITBUCKET_BUILD_NUMBER", ""
-        )
-        pipeline_step_run_uuid = config.get(request_id, "BITBUCKET_STEP_UUID", "")
-        pipeline_step_run_uuid = urllib.parse.quote(pipeline_step_run_uuid)
-        job_url = (
-            f"{bitbucket_project_url}/pipelines/results/"
-            f"{bitbucket_pipeline_job_number}/steps/{pipeline_step_run_uuid}"
-        )
     return {"repo_name": repo_name, "branch_name": branch_name, "job_url": job_url}
 
 
@@ -838,6 +810,10 @@ def is_bitbucket() -> bool:
     return config.get(None, "BITBUCKET_BUILD_NUMBER") is not None
 
 
+def is_bitbucket_pr() -> bool:
+    return is_bitbucket() and config.get(None, "BITBUCKET_PR_ID") is not None
+
+
 # Jenkins ref: https://www.jenkins.io/doc/book/pipeline/jenkinsfile/#using-environment-variables
 def is_jenkins() -> bool:
     return (
@@ -858,6 +834,7 @@ def is_ci() -> bool:
             or is_github_actions()
             or is_gitlab_ci()
             or is_azure_pipelines()
+            or is_bitbucket()
             or is_jenkins()
         )
         else False
@@ -873,6 +850,7 @@ def is_pr() -> bool:
             or is_gitlab_mr()
             or is_gitlab_external_pr()
             or is_azure_devops_pr()
+            or is_bitbucket_pr()
             or is_jenkins_pr()
         )
         else False
