@@ -34,7 +34,7 @@ DEFAULT_RELEASE = "v10"
 BETTERLEAKS_RULESET_FILE_NAME = "betterleaks-default.toml"
 BETTERLEAKS_RULESET_REPO = "betterleaks/betterleaks"
 # renovate: datasource=github-tags depName=betterleaks/betterleaks
-BETTERLEAKS_RULESET_VERSION = "v1.7.3"
+BETTERLEAKS_RULESET_VERSION = "v1.7.4"
 
 DEFAULT_DOCKERFILE_ARGS: list[str] = [
     "ARG TARGETPLATFORM",
