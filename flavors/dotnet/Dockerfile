@@ -125,7 +125,7 @@ ARG POWERSHELL_VERSION=7.6.4
 ARG POWERSHELL_VERSION=7.6.4
 
 # renovate: datasource=pypi depName=ansible-lint
-ARG PIP_ANSIBLE_LINT_VERSION=26.6.0
+ARG PIP_ANSIBLE_LINT_VERSION=26.8.0
 # renovate: datasource=npm depName=@stoplight/spectral-cli
 ARG NPM_SPECTRAL_CLI_VERSION=6.16.3
 # renovate: datasource=github-tags depName=Azure/arm-ttk
