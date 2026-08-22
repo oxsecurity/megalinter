@@ -54,6 +54,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - The target branch commit is now searched across several reference spellings, so a branch available only locally is found too
     - When the Pull Request commit range can not be determined — on any platform — betterleaks now logs a **warning explaining how to fix your checkout** and scans the whole repository, instead of aborting the run
     - The **Pull Request scan setup documentation** lost when gitleaks was replaced by betterleaks is restored on the [betterleaks page](https://megalinter.io/latest/descriptors/repository_betterleaks/): checkout depth for each platform, Azure Pipelines variables to forward to the container, and how to compute the SHAs yourself ([#8731](https://github.com/oxsecurity/megalinter/issues/8731))
+  - **Bitbucket Pipelines** is now recognized as a Pull Request context: `PULL_REQUEST` optimizations that were silently skipped there are applied again
+    - **REPOSITORY_CHECKOV** and **REPOSITORY_BETTERLEAKS** only analyze the Pull Request changes when asked to
+    - Set `BITBUCKET_PR_ID` in your pipeline (Bitbucket provides it on Pull Request builds) to benefit from it
 
 - Reporters
 
@@ -88,6 +91,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - New **`megalinter/ci_providers/`** package, mirroring the `api_providers` pattern: `CiProvider` base class plus `CiProviderAzurePipelines`, `CiProviderGithubActions` and `CiProviderGitlab`, exposing `get_pr_commit_shas()` and a platform specific `get_pr_commit_shas_hint()`
     - `ci_providers.get_pr_ci_provider()` returns the provider matching the current Pull Request context, falling back to the neutral base provider so callers never handle a missing provider
     - The Azure Pipelines and GitHub Pull Request SHA lookups moved out of `BetterleaksLinter`, which keeps only the orchestration, and are now covered by `ci_providers_test.py` outside Docker
+  - **CI platform knowledge is concentrated in `megalinter/ci_providers/`** instead of being spread across `utils`, `utils_reporter`, `MegaLinter` and the reporters
+    - `reporters/jenkins_ci_vars.py` becomes `ci_providers/CiProviderJenkins.py`: it was never a reporter, it is called from `Megalinter.__init__`
+    - New `CiProviderBitbucket`, and every provider implements `is_current()`, so `get_ci_provider()` resolves the platform running the build
+    - `CiProvider` exposes `get_repo_name()`, `get_branch_name()`, `get_job_url()`, `log_section_start/end()`, `set_output()`, `publish_job_summary()` and `markdown_supports_html_details`
+    - `utils.get_git_context_info()` and `utils_reporter.log_section_start/end()` delegate to the provider instead of their platform `if/elif` chains, and the GitHub run URL (built in 3 places), the Bitbucket step URL (2 places) and the Azure `BUILD_BUILDID`/`BUILD_BUILD_ID` fallback are deduplicated
+    - `utils.is_ci()` and `utils.is_pr()` were missing Bitbucket Pipelines; new `utils.is_bitbucket_pr()`
   - **spectral is installed in its own `node_modules` tree** (`/node-deps-spectral`) instead of the shared `/node-deps` one, which is what made it crash: `@prantlf/jsonlint` pins `ajv` to exactly `8.17.1` and so owns the hoisted root copy, while `@stoplight/spectral-core` requires `ajv >= 8.18.0` and gets a nested one, so its hoisted `ajv-errors` bound to the other `ajv` instance and ajv generated invalid JavaScript (`SyntaxError: Unexpected token ':'` at `new Function`). Any npm linter sharing the tree with an exact-pinned transitive dependency can hit the same trap
   - **6 Python dependencies removed** from the MegaLinter runtime, replaced by standard library equivalents: `commentjson`, `terminaltables` and `multiprocessing_logging` (unmaintained), plus `termcolor`, `regex` and the obsolete `importlib-metadata` backport
   - **Shared linter definitions**: linter entries duplicated across several descriptors (eslint, prettier, v8r, dotnet-format, cpplint, cppcheck, clang-format) are now factorized in `megalinter/descriptors/shared/*.megalinter-linter.yml` files, referenced from descriptors with the new linter-level `extends` property (shallow merge, descriptor entry properties override the shared ones)
