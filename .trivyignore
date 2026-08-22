@@ -44,6 +44,38 @@ CVE-2026-39836
 CVE-2026-42499
 CVE-2026-42504
 
+# Go 1.26.6 security release (2026-08-13): five more stdlib CVEs. Trivy flags them on
+# every Go binary in the image because it reads the embedded toolchain version and does
+# no symbol reachability analysis, so a binary that never imports net/http or crypto/tls
+# is reported all the same. None of these binaries listens on a socket or terminates TLS.
+# - CVE-2026-56853 (net/http): DoS reachable only from Server.Serve/ListenAndServe with
+#   unencrypted HTTP/2 (h2c) explicitly enabled. A lint CLI binds no listener.
+# - CVE-2026-56862 (crypto/tls): DoS from a client flooding post-handshake KeyUpdate
+#   messages at a TLS *server*. Same reason: no linter terminates TLS.
+# - CVE-2026-56858 (html/template): NVD scores this 6.1 MEDIUM
+#   (AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N) - a reflected-XSS shape whose victim is a
+#   browser rendering the template output, and whose affected symbols are exactly
+#   Template.Execute / Template.ExecuteTemplate. None of these linters renders HTML for
+#   browser consumption at lint time, so the affected symbols are never called.
+# - CVE-2026-56860 (net/url): NVD 5.9 MEDIUM with AC:H - quadratic complexity in
+#   url.Parse on paths containing many ".." segments. url.Parse is widely called, but
+#   exploiting it needs a very long crafted URL and the worst case is a slow CI job.
+# - CVE-2026-56859 (encoding/xml): stack exhaustion on deeply nested XML. Unlike the
+#   entries above we do NOT claim this one is unreachable - linters do parse workspace
+#   files that may be attacker-authored XML. The impact is bounded instead: the worst
+#   case is one linter crashing inside a short-lived CI container, triggered by whoever
+#   committed the hostile file into their own repository. No data exposure, no
+#   long-lived service to take down.
+# Fixed in go1.26.6 / go1.25.13. MegaLinter compiles only revive and dustilock in-repo
+# (GO_IMAGE_VERSION, renovate-managed); every other Go binary is copied from an upstream
+# vendor image or release archive that is already pinned at its latest version, so their
+# stdlib is upstream's to rebuild. Remove once those images ship a fixed toolchain.
+CVE-2026-56853
+CVE-2026-56858
+CVE-2026-56859
+CVE-2026-56860
+CVE-2026-56862
+
 # --- Go x/crypto, x/net, x/oauth2 (Go-based linters) ---
 # Transitive golang.org/x/* CVEs embedded in the same Go linters/scanners above.
 # SSH/crypto, HTTP/2, HTML and OAuth2 DoS or parsing flaws — none reachable from a
@@ -193,6 +225,18 @@ CVE-2026-47304
 CVE-2026-50525
 CVE-2026-50527
 CVE-2026-50648
+# CVE-2026-62901 is a DoS in System.Net.WebSockets, shipped by the same bundled .NET
+# runtime: a crafted permessage-deflate message ends its DEFLATE stream with BFINAL=1
+# while leaving compressed bytes unconsumed, so the inflater stops making forward
+# progress and the WebSocket receive loop hangs (CVSS 7.5, availability only, E:U - no
+# known exploit). The vulnerable runtime 10.0.10 ships inside PowerShell 7.6.4 and the
+# fix is runtime 10.0.11, but PowerShell 7.6.5 (2026-08-14) is still built against .NET
+# SDK 10.0.302, which carries runtime 10.0.10 - so bumping the pin does not clear the
+# finding and there is no upgrade path today. arm-ttk analyses ARM template JSON and the
+# powershell linters analyse .ps1 scripts: none of them ever opens a WebSocket, so the
+# vulnerable receive loop is never entered. Remove once a PowerShell release bundles
+# .NET runtime >= 10.0.11.
+CVE-2026-62901
 
 # --- Python deps (semgrep) ---
 # semgrep bundles the MCP Python SDK (mcp) for its experimental `semgrep mcp` server mode.
