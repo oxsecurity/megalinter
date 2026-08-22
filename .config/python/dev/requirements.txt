@@ -32,7 +32,7 @@ yq==4.1.2
 langchain_core==1.5.5
 langchain_anthropic==1.5.4
 langchain_deepseek==1.1.0
-langchain_google_genai==4.3.2
+langchain_google_genai==4.3.4
 langchain_mistralai==1.1.6
 langchain_openai==1.4.2
 langchain_community==0.4.2
