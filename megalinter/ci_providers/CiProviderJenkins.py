@@ -1,8 +1,18 @@
+#!/usr/bin/env python3
+"""
+Jenkins CI provider
+
+Jenkins exposes no platform native variables, so this provider detects the
+underlying SCM platform from GIT_URL / CHANGE_URL and maps Jenkins variables
+onto the ones the matching provider and comment reporter already understand.
+"""
+
 import logging
 import re
 import urllib.parse
 
-from megalinter import config
+from megalinter import config, utils
+from megalinter.ci_providers.CiProvider import CiProvider
 
 PLATFORM_KEYWORDS = {
     "github": "github",
@@ -273,3 +283,31 @@ def _map_bitbucket_vars(request_id, parsed):
     )
     if step_uuid:
         _safe_set(request_id, "BITBUCKET_STEP_UUID", step_uuid)
+
+
+class CiProviderJenkins(CiProvider):
+    name = "Jenkins"
+
+    @staticmethod
+    def is_current() -> bool:
+        return utils.is_jenkins()
+
+    @staticmethod
+    def is_pr_context() -> bool:
+        return utils.is_jenkins_pr()
+
+    def get_repo_name(self):
+        return self.split_repo_name(config.get(self.request_id, "GIT_URL"))
+
+    def get_branch_name(self):
+        return config.get(self.request_id, "GIT_BRANCH")
+
+    def get_job_url(self) -> str:
+        return config.get(self.request_id, "BUILD_URL", "")
+
+    def get_pr_commit_shas_hint(self) -> str:
+        return (
+            "Jenkins exposes no Pull Request commit range: define the SHAs "
+            "manually, and set JENKINS_REPO_PLATFORM when GIT_URL does not "
+            "identify your SCM platform"
+        )

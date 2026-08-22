@@ -5,10 +5,10 @@ Post a comment on Bitbucket Merge Requests
 """
 
 import logging
-import urllib.parse
 
 import requests
 from megalinter import Reporter, config
+from megalinter.ci_providers import CiProviderBitbucket
 from megalinter.utils_reporter import build_markdown_summary
 
 
@@ -54,30 +54,21 @@ class BitbucketCommentReporter(Reporter):
     def produce_report(self):
         # Post comment on Bitbucket pull request
 
-        BITBUCKET_REPO_ACCESS_TOKEN = config.get(
-            self.master.request_id, "BITBUCKET_REPO_ACCESS_TOKEN", ""
-        )
-        bitbucket_repo_fullname = config.get(
-            self.master.request_id, "BITBUCKET_REPO_FULL_NAME", ""
-        )
-        bitbucket_project_url = config.get(
-            self.master.request_id, "BITBUCKET_GIT_HTTP_ORIGIN", ""
-        )
-        bitbucket_pipeline_job_number = config.get(
-            self.master.request_id, "BITBUCKET_BUILD_NUMBER", ""
-        )
-        bitbucket_pr_id = config.get(self.master.request_id, "BITBUCKET_PR_ID", "")
-        pipeline_step_run_uuid = config.get(
-            self.master.request_id, "BITBUCKET_STEP_UUID", ""
-        )
+        # The reporter instantiates the Bitbucket provider directly instead of
+        # asking the factory: under Jenkins the platform is Jenkins, which maps
+        # its variables onto the Bitbucket ones this reporter needs
+        ci_provider = CiProviderBitbucket(self.master.request_id)
+        bitbucket_repo_fullname = ci_provider.get_repo_slug()
+        bitbucket_pr_id = ci_provider.get_pr_number()
+        pipeline_step_run_url = ci_provider.get_job_url()
 
         if (
-            BITBUCKET_REPO_ACCESS_TOKEN == ""
-            or bitbucket_repo_fullname == ""
-            or bitbucket_project_url == ""
-            or bitbucket_pipeline_job_number == ""
-            or bitbucket_pr_id == ""
-            or pipeline_step_run_uuid == ""
+            ci_provider.get_auth_token() is None
+            or bitbucket_repo_fullname is None
+            or bitbucket_pr_id is None
+            or pipeline_step_run_url == ""
+            or config.get(self.master.request_id, "BITBUCKET_GIT_HTTP_ORIGIN", "") == ""
+            or config.get(self.master.request_id, "BITBUCKET_BUILD_NUMBER", "") == ""
         ):
             logging.info(
                 "[Bitbucket Comment Reporter] Required Bitbucket CI CD variables not found, so skipped post of PR "
@@ -85,21 +76,13 @@ class BitbucketCommentReporter(Reporter):
             )
             return
 
-        pipeline_step_run_uuid = urllib.parse.quote(pipeline_step_run_uuid)
-        pipeline_step_run_url = (
-            f"{bitbucket_project_url}/pipelines/results/"
-            f"{bitbucket_pipeline_job_number}/steps/{pipeline_step_run_uuid}"
-        )
-
         # add comment marker, with extra newlines in between.
         marker = self.get_comment_marker()
         p_r_msg = "\n".join(
             [build_markdown_summary(self, pipeline_step_run_url), "", marker, ""]
         )
 
-        bitbucket_auth_header = {
-            "Authorization": f"Bearer {BITBUCKET_REPO_ACCESS_TOKEN}"
-        }
+        bitbucket_auth_header = ci_provider.get_api_headers()
 
         # To-Do: Ignore if PR is already merged
         try:

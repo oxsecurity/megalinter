@@ -27,6 +27,7 @@ from megalinter import (
     utils,
 )
 from megalinter.alpaca import alpaca
+from megalinter.ci_providers import apply_jenkins_ci_vars, get_ci_provider
 from megalinter.constants import (
     DEFAULT_DOCKER_WORKSPACE_DIR,
     DEFAULT_REPORT_FOLDER_NAME,
@@ -38,7 +39,6 @@ from megalinter.removed_linters import (
     REMOVED_LINTERS_DOC_URL,
     find_removed_references,
 )
-from megalinter.reporters.jenkins_ci_vars import apply_jenkins_ci_vars
 from megalinter.utils_reporter import (
     log_section_end,
     log_section_start,
@@ -1284,12 +1284,9 @@ class Megalinter:
             os.makedirs(self.report_folder, exist_ok=True)
 
     def check_results(self):
-        if config.exists(self.request_id, "GITHUB_OUTPUT"):
-            github_output_file = config.get(self.request_id, "GITHUB_OUTPUT")
-            with open(github_output_file, "a", encoding="utf-8") as output_stream:
-                output_stream.write(
-                    f"has_updated_sources={str(self.has_updated_sources)}\n"
-                )
+        get_ci_provider(self.request_id).set_output(
+            "has_updated_sources", str(self.has_updated_sources)
+        )
         if self.status == "success":
             logging.info(utils.green("✅ Successfully linted all files without errors"))
             config.delete(self.request_id)

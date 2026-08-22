@@ -8,14 +8,12 @@ import logging
 
 import requests
 from megalinter import Reporter, config
+from megalinter.ci_providers import CiProviderGithubActions
 
 
 class GithubStatusReporter(Reporter):
     name = "GITHUB_STATUS"
     scope = "linter"
-
-    github_api_url = "https://api.github.com"
-    github_server_url = "https://github.com"
 
     def __init__(self, params=None):
         # Activate GitHub Status by default
@@ -41,15 +39,10 @@ class GithubStatusReporter(Reporter):
             and config.exists(self.master.request_id, "GITHUB_SHA")
             and config.exists(self.master.request_id, "GITHUB_TOKEN")
         ):
-            github_repo = config.get(self.master.request_id, "GITHUB_REPOSITORY")
-            github_server_url = config.get(
-                self.master.request_id, "GITHUB_SERVER_URL", self.github_server_url
-            )
-            github_api_url = config.get(
-                self.master.request_id, "GITHUB_API_URL", self.github_api_url
-            )
-            sha = config.get(self.master.request_id, "GITHUB_SHA")
-            run_id = config.get(self.master.request_id, "GITHUB_RUN_ID")
+            ci_provider = CiProviderGithubActions(self.master.request_id)
+            github_repo = ci_provider.get_repo_slug()
+            github_api_url = ci_provider.get_api_url()
+            sha = ci_provider.get_commit_sha()
             success_msg = "No errors were found in the linting process"
             error_not_blocking = "Errors were detected but are considered not blocking"
             error_msg = (
@@ -58,11 +51,14 @@ class GithubStatusReporter(Reporter):
             url = f"{github_api_url}/repos/{github_repo}/statuses/{sha}"
             headers = {
                 "accept": "application/vnd.github.v3+json",
-                "authorization": f"Bearer {config.get(self.master.request_id, 'GITHUB_TOKEN')}",
+                # Deliberately the runner token, not PAT: a commit status needs
+                # the statuses:write scope, which the documented fine-grained
+                # PAT (Contents only) does not carry
+                "authorization": f"Bearer {ci_provider.get_auth_token()}",
                 "content-type": "application/json",
             }
             if config.exists(self.master.request_id, "GITHUB_RUN_ID"):
-                target_url = f"{github_server_url}/{github_repo}/actions/runs/{run_id}"
+                target_url = ci_provider.get_job_url()
             else:
                 target_url = config.get(self.master.request_id, "GITHUB_TARGET_URL")
             description = (
