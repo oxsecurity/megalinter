@@ -98,6 +98,7 @@ Before you go further, see the [**online documentation website, which offers muc
   - [Other](#other)
 - [Installation](#installation)
   - [Coding agents (skills)](#coding-agents-skills)
+  - [Coding Agents (Plugins)](#coding-agents-plugins)
   - [Assisted installation](#assisted-installation)
   - [Which version to use ?](#which-version-to-use-)
   - [GitHub Action](#github-action)
@@ -326,7 +327,7 @@ The fix guides combine information generated from the [linter descriptors](https
 - Disabling a linter or a rule always requires your confirmation
 - Commits are never pushed to the default branch
 
-See also the [installation page for coding agents](https://megalinter.io/latest/install-agent-skills/).
+See also the [installation page for coding agents](https://megalinter.io/latest/install-agent-skills/), or install everything at once as an [agent plugin](https://megalinter.io/latest/agent-plugins/).
 
 <!-- coding-agents-section-end -->
 
@@ -540,6 +541,58 @@ Then just ask your agent to _"setup megalinter"_ or _"run megalinter and fix the
 On coding agents supporting sub-agents (Claude Code, OpenCode, GitHub Copilot custom agents...), dedicated MegaLinter sub-agents (running on low-cost models) watch CI jobs and digest linter outputs to keep large logs out of your agent's context, and fix several linters in parallel.
 
 <!-- install-agent-skills-section-end -->
+<!-- agent-plugins-section-start -->
+<!-- markdown-headers
+---
+title: Install MegaLinter agent plugins
+description: Install the MegaLinter skills and sub-agents as a native plugin on Claude Code, Cursor, GitHub Copilot, Codex, Gemini CLI and Antigravity
+---
+-->
+## Coding Agents (Plugins)
+
+The MegaLinter [agent skills](https://megalinter.io/latest/install-agent-skills/) are also published as an **agent plugin**, so a single command installs all four skills at once, and keeps them updated.
+
+### Claude Code
+
+```bash
+/plugin marketplace add oxsecurity/megalinter
+/plugin install megalinter@megalinter
+```
+
+The three MegaLinter sub-agents are installed with the plugin, so there is nothing else to set up.
+
+### Cursor
+
+Add `https://github.com/oxsecurity/megalinter` as a plugin source from **Customize → Plugins**, then install **MegaLinter**. The sub-agents ship with the plugin.
+
+### GitHub Copilot
+
+```bash
+copilot plugin marketplace add oxsecurity/megalinter
+copilot plugin install megalinter@megalinter
+```
+
+### Codex
+
+```bash
+codex plugin marketplace add oxsecurity/megalinter
+```
+
+Then install **MegaLinter** from the `/plugins` browser.
+
+### Gemini CLI and Antigravity
+
+```bash
+gemini extensions install https://github.com/oxsecurity/megalinter
+```
+
+### Other coding agents
+
+Every other agent (Windsurf, Cline, Roo Code, Amp, OpenCode, Goose, OpenHands...) is covered by the [skills installation](https://megalinter.io/latest/install-agent-skills/) with `npx skills add oxsecurity/megalinter/skills`.
+
+Once installed, just ask your agent to _"setup megalinter"_ or _"run megalinter and fix the errors"_.
+
+<!-- agent-plugins-section-end -->
 <!-- install-assisted-section-start -->
 <!-- markdown-headers
 ---
@@ -1848,8 +1901,8 @@ _Note:_ IF you did not use `MegaLinter` as GitHub Action name, please read [GitH
 <!-- plugins-section-start -->
 <!-- markdown-headers
 ---
-title: MegaLinter plugins
-description: Build and use your own plugins for MegaLinter, like jupyfmt, nitpick, mustache and linkcheck
+title: MegaLinter linter plugins
+description: Build and use your own linter plugins for MegaLinter, like jupyfmt, nitpick, mustache and linkcheck
 ---
 -->
 ## Plugins

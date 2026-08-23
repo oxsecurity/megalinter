@@ -1,0 +1,17 @@
+{
+  "name": "megalinter",
+  "interface": {
+    "displayName": "MegaLinter"
+  },
+  "plugins": [
+    {
+      "name": "megalinter",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "description": "Set up, run and fix MegaLinter on any repository: 100+ linters for 69+ languages, 23+ formats and 21+ tooling formats, from CI or locally.",
+      "category": "Code Quality"
+    }
+  ]
+}

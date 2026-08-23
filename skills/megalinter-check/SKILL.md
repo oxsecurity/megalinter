@@ -237,6 +237,8 @@ When `slow_linters` is non-empty, load `performance.md` from this skill's direct
 
 If sub-agents are available and the agent definitions are installed (see `megalinter-setup`):
 
+When MegaLinter is installed as an agent plugin the definitions are namespaced (`megalinter:megalinter-watcher`, `megalinter:megalinter-runner`, `megalinter:megalinter-fixer`); installed as skills they keep their bare names. Use whichever form your platform lists.
+
 - Watch mode → spawn `megalinter-watcher` with the branch/PR reference; it polls, fetches and parses, and returns the output contract.
 - Local mode → spawn `megalinter-runner` with the command to run; it executes and digests the reports.
 - Targeted re-check → spawn one `megalinter-runner` per standalone linter run, in parallel (max 4).

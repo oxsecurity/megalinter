@@ -26,6 +26,7 @@ import megalinter
 import requests
 import webpreview
 import yaml
+from agent_plugin_manifests import sync as sync_agent_plugin_manifests
 from bs4 import BeautifulSoup
 from docker_pulls_chart import generate_docker_pulls_chart
 from docker_stats import update_docker_pulls_counter
@@ -3480,6 +3481,7 @@ def finalize_doc_build():
         # 'tooling-formats',
         # 'other',
         "install-agent-skills",
+        "agent-plugins",
         "install-assisted",
         "install-version",
         "install-github",
@@ -4572,6 +4574,7 @@ if __name__ == "__main__":
             # generate_documentation_all_users() # deprecated since now we use github-dependents-info
             generate_mkdocs_yml()
             generate_json_schema_docs()
+        sync_agent_plugin_manifests()
         validate_own_megalinter_config()
         manage_output_variables()
         reformat_markdown_tables()

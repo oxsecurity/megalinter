@@ -84,6 +84,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **megalinter-setup** can now set up a [custom flavor](https://megalinter.io/latest/custom-flavors/) repository on request, from creating the repository to publishing and maintaining the image
     - It first looks for a custom flavor **you already own or administer**, to reuse or extend it instead of maintaining a second one
   - **megalinter-setup** in upgrade mode now also updates the **installed skills and sub-agents** (`npx skills update`), so the guidance you run matches the MegaLinter version you just upgraded to
+  - The MegaLinter skills are now installable as an **agent plugin**, so one command brings the four skills and the three sub-agents at once, and keeps them updated
+    - **Claude Code**: `/plugin marketplace add oxsecurity/megalinter` then `/plugin install megalinter@megalinter`
+    - **Cursor**, **GitHub Copilot**, **Codex**, **Gemini CLI** and **Antigravity** each have their own install command, listed on the [Coding Agents (Plugins)](https://megalinter.io/latest/agent-plugins/) page
+    - The sub-agents ship with the plugin on **Claude Code** and **Cursor**; elsewhere the skills install alone and run inline
+    - `npx skills add oxsecurity/megalinter/skills` keeps working for every other coding agent
 
 - Dev
   - **Crash diagnostics**: `megalinter.run.enable_crash_diagnostics()` enables `faulthandler` and raises the thread stack size to 8 MiB (the glibc default) before any thread is started, and worker processes enable `faulthandler` too. musl gives threads a 128 KiB stack and CPython below 3.14.7 miscomputed its stack guard there ([cpython#148260](https://github.com/python/cpython/issues/148260)), so C-level recursion in a thread - such as pickling the linter object graph in the `multiprocessing.Pool` handler threads, which reaches the whole `Megalinter` instance through `Linter.master` - crashed the process with `SIGSEGV` instead of raising `RecursionError`
@@ -114,6 +119,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - CI
   - **Supply-chain hardening of dependency updates**: Renovate (`minimumReleaseAge`) and Dependabot (`cooldown`) now wait until a release is at least **7 days old** before proposing an upgrade, so compromised releases can be caught by the community first. Security fixes are not delayed and still open immediately
+  - New **Check agent plugins manifests** workflow validating the agent plugin manifests on every change to them or to `skills/`: `.automation/validate_agent_plugins.py` checks the root `plugin.json` against the published Agent Plugins 1.0 schema and keeps the per-vendor manifests consistent with it, then `claude plugin validate ./ --strict` checks the Claude Code marketplace and plugin manifests
+  - The auto-update workflow patch-bumps the agent plugin version when it regenerates the skills: the plugin follows its own release train, since its fix guides change far more often than MegaLinter is released. `plugin.json` is the single source of truth, mirrored into the per-vendor manifests by `.automation/agent_plugin_manifests.py` (called by `build.py`)
 
 - Linter versions upgrades (N)
   - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.10.0 to **3.11.1** on 2026-08-09

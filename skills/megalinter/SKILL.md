@@ -38,7 +38,12 @@ You orchestrate MegaLinter on this repository. MegaLinter is a mega-linter aggre
 
 ## Optimization: sub-agents (Claude Code and compatible agents)
 
-If your environment supports spawning sub-agents (e.g. a Task/Agent tool) and the `megalinter-watcher`, `megalinter-runner`, `megalinter-fixer` agent definitions are installed (the `megalinter-setup` skill installs them in your platform's agents folder, e.g. `.claude/agents/`, `.opencode/agent/`, `.github/agents/`):
+If your environment supports spawning sub-agents (e.g. a Task/Agent tool) and the `megalinter-watcher`, `megalinter-runner`, `megalinter-fixer` agent definitions are available:
+
+- Installed as an **agent plugin** (Claude Code, Cursor), they ship with the plugin and are namespaced — `megalinter:megalinter-watcher`, `megalinter:megalinter-runner`, `megalinter:megalinter-fixer`. Use whichever of the two forms your platform lists.
+- Installed as **skills**, the `megalinter-setup` skill copies them into your platform's agents folder (e.g. `.claude/agents/`, `.opencode/agent/`, `.github/agents/`) under their bare names.
+
+Then:
 
 - Delegate CI watching to `megalinter-watcher` and local runs to `megalinter-runner` — they keep the large logs out of your context and return only a compact error list.
 - Fan out one `megalinter-fixer` per failing linter to fix several linters in parallel.
