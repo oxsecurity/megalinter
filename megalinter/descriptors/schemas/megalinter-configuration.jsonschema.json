@@ -436,6 +436,7 @@
         "TERRAFORM_TERRAGRUNT",
         "TERRAFORM_TERRASCAN",
         "TERRAFORM_TFLINT",
+        "TERRAFORM_TOFU_FMT",
         "TSX_BIOME",
         "TSX_ESLINT",
         "TYPESCRIPT_BIOME",

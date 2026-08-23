@@ -18,6 +18,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Activated only when a **biome.json** or **biome.jsonc** configuration file is found in the repository
     - Supports **APPLY_FIXES** (safe fixes with `--write`) and native **SARIF** output
     - `EXCLUDED_DIRECTORIES` are forwarded in project lint mode through a generated configuration extending the workspace one
+  - **[tofu fmt](https://opentofu.org/docs/cli/commands/fmt/)**, the built-in formatter of **OpenTofu** (the MPL-2.0 licensed fork of Terraform), available as **TERRAFORM_TOFU_FMT** ([#8729](https://github.com/oxsecurity/megalinter/issues/8729))
+    - Analyzes **`.tofu`** files only, the OpenTofu specific extension, so it never doubles up with **TERRAFORM_TERRAFORM_FMT** which keeps `.tf`
+    - To format your `.tf` files with OpenTofu instead, set `TERRAFORM_TOFU_FMT_FILE_EXTENSIONS: [".tofu", ".tf", ".tfvars"]` and `DISABLE_LINTERS: [TERRAFORM_TERRAFORM_FMT]`
+    - Supports **APPLY_FIXES** to rewrite files in the canonical OpenTofu style
 
 - Disabled linters
   - **COFFEE_COFFEELINT** is disabled: CoffeeScript tooling is discontinued, and coffeelint can not receive `EXCLUDED_DIRECTORIES` in project lint mode (it has no exclusion option and reads `.coffeelintignore` only from its working directory). The linter will be removed in a future version

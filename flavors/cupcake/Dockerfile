@@ -46,6 +46,8 @@ ARG SPELL_LYCHEE_VERSION=0.24.2-alpine
 ARG TERRAFORM_TFLINT_VERSION=0.64.0
 # renovate: datasource=docker depName=alpine/terragrunt
 ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.8
+# renovate: datasource=docker depName=ghcr.io/opentofu/opentofu
+ARG TERRAFORM_TOFU_FMT_VERSION=1.12.6-minimal
 #ARGTOP__END
 
 #############################################################################################
@@ -94,6 +96,7 @@ FROM ghcr.io/terraform-linters/tflint:v${TERRAFORM_TFLINT_VERSION} AS tflint
 FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 # Next FROM line commented because already managed by another linter
 # FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
+FROM ghcr.io/opentofu/opentofu:${TERRAFORM_TOFU_FMT_VERSION} AS opentofu
 #FROM__END
 
 ##################
@@ -353,6 +356,7 @@ ARG REPOSITORY_TRUFFLEHOG_VERSION
 ARG SPELL_LYCHEE_VERSION
 ARG TERRAFORM_TFLINT_VERSION
 ARG TERRAFORM_TERRAGRUNT_VERSION
+ARG TERRAFORM_TOFU_FMT_VERSION
 #ARG__END
 
 ####################
@@ -469,6 +473,7 @@ COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
 COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
 COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 COPY --link --from=terragrunt /bin/terraform /usr/bin/
+COPY --link --from=opentofu /usr/local/bin/tofu /usr/bin/
 #COPY__END
 
 ##############################
@@ -885,6 +890,8 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOS
 # Managed with COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 # terraform-fmt installation
 # Managed with COPY --link --from=terragrunt /bin/terraform /usr/bin/
+# tofu-fmt installation
+# Managed with COPY --link --from=opentofu /usr/local/bin/tofu /usr/bin/
 # eslint installation
 # biome installation
 # eslint installation

@@ -210,3 +210,81 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform
     test_folder: terraform_fmt
     version_extract_regex: "(?<=Terraform v)\\d+(\\.\\d+)+"
+  # TOFU FMT
+  - linter_name: tofu-fmt
+    linter_text: |
+      **tofu fmt** is the built-in OpenTofu command that rewrites configuration files to a canonical format and style. OpenTofu is the community-driven, MPL-2.0 licensed fork of Terraform hosted by the Linux Foundation, and its formatter follows the same canonical style as `terraform fmt`.
+
+      **Key Features:**
+
+      - **Official Formatter**: Built into OpenTofu core, so formatting always matches the version of OpenTofu you run
+      - **Open Source**: OpenTofu stays under the **MPL-2.0** license, unlike Terraform which moved to BUSL-1.1
+      - **Canonical Formatting**: Applies consistent indentation, spacing and alignment across all configuration files
+      - **Broad File Coverage**: Formats configuration (`.tf`), variables (`.tfvars`) and test (`.tftest.hcl`) files
+      - **Automatic Fixing**: Rewrites files in place when **APPLY_FIXES** is enabled
+      - **Diff Mode**: Shows the formatting changes it would make, so reviews stay readable
+      - **Zero Configuration**: Intentionally opinionated, with no configuration or ignore file to maintain
+
+      ## Analyzed files
+
+      By default this linter only analyzes **`.tofu`** files, the OpenTofu specific extension that Terraform does not recognize. `.tf` files are left to [terraform fmt](https://megalinter.io/latest/descriptors/terraform_terraform_fmt/), so both formatters can stay enabled without doing the same work twice.
+
+      ## Formatting .tf files with OpenTofu
+
+      If your project runs OpenTofu and keeps its configuration in `.tf` files, point this linter at them and disable the Terraform one, so a single formatter owns them:
+
+      ```yaml
+      TERRAFORM_TOFU_FMT_FILE_EXTENSIONS: [".tofu", ".tf", ".tfvars"]
+      DISABLE_LINTERS: [TERRAFORM_TERRAFORM_FMT]
+      ```
+
+      `tofu fmt` also formats `.tftest.hcl` and `.tofutest.hcl` test files. They are not analyzed by default because the `.hcl` extension is already claimed by [terragrunt](https://megalinter.io/latest/descriptors/terraform_terragrunt/) in this descriptor: add them to `TERRAFORM_TOFU_FMT_FILE_EXTENSIONS` only if you also disable `TERRAFORM_TERRAGRUNT`, or you would format them twice.
+    name: TERRAFORM_TOFU_FMT
+    is_formatter: true
+    # OpenTofu specific extension, unknown to Terraform: keeps this linter from
+    # overlapping with TERRAFORM_TERRAFORM_FMT on the descriptor level ".tf"
+    file_extensions:
+      - ".tofu"
+    linter_spdx_license: MPL-2.0
+    linter_url: https://opentofu.org/docs/cli/commands/fmt/
+    linter_repo: https://github.com/opentofu/opentofu
+    linter_rules_configuration_url: https://opentofu.org/docs/language/syntax/style/
+    linter_speed: 5
+    linter_icon_png_url: https://raw.githubusercontent.com/opentofu/brand-artifacts/main/full/transparent/PNG/on-light.png
+    linter_banner_image_url: https://raw.githubusercontent.com/opentofu/brand-artifacts/main/full/transparent/SVG/on-light.svg
+    cli_executable: tofu
+    cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - list_of_files
+    cli_lint_extra_args:
+      - "fmt"
+      - "-diff"
+      - "-check"
+    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for MegaLinter
+    cli_lint_fix_remove_args:
+      - "-diff"
+      - "-check"
+    examples:
+      - "tofu fmt -diff -check myfile.tf"
+      - "tofu fmt myfile.tf"
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=docker depName=ghcr.io/opentofu/opentofu
+          ARG TERRAFORM_TOFU_FMT_VERSION=1.12.6-minimal
+        - FROM ghcr.io/opentofu/opentofu:${TERRAFORM_TOFU_FMT_VERSION} AS opentofu
+        - COPY --link --from=opentofu /usr/local/bin/tofu /usr/bin/
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
+    ide:
+      idea:
+        - name: Terraform and HCL
+          url: https://plugins.jetbrains.com/plugin/7808-terraform-and-hcl
+          id: org.intellij.plugins.hcl
+      vscode:
+        - name: OpenTofu
+          url: https://marketplace.visualstudio.com/items?itemName=OpenTofu.vscode-opentofu
+    test_folder: tofu_fmt
+    version_extract_regex: "(?<=OpenTofu v)\\d+(\\.\\d+)+"
