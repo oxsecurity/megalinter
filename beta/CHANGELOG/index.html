@@ -417,6 +417,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../agent-plugins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coding Agents (Plugins)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../install-assisted/" class="md-nav__link">
         
   
@@ -11777,7 +11805,7 @@
   <span class="md-ellipsis">
     
   
-    Plugins
+    Linter Plugins
   
 
     
@@ -15810,6 +15838,13 @@
 </ul>
 </li>
 <li><strong>megalinter-setup</strong> in upgrade mode now also updates the <strong>installed skills and sub-agents</strong> (<code>npx skills update</code>), so the guidance you run matches the MegaLinter version you just upgraded to</li>
+<li>The MegaLinter skills are now installable as an <strong>agent plugin</strong>, so one command brings the four skills and the three sub-agents at once, and keeps them updated<ul>
+<li><strong>Claude Code</strong>: <code>/plugin marketplace add oxsecurity/megalinter</code> then <code>/plugin install megalinter@megalinter</code></li>
+<li><strong>Cursor</strong>, <strong>GitHub Copilot</strong>, <strong>Codex</strong>, <strong>Gemini CLI</strong> and <strong>Antigravity</strong> each have their own install command, listed on the <a href="https://megalinter.io/latest/agent-plugins/">Coding Agents (Plugins)</a> page</li>
+<li>The sub-agents ship with the plugin on <strong>Claude Code</strong> and <strong>Cursor</strong>; elsewhere the skills install alone and run inline</li>
+<li><code>npx skills add oxsecurity/megalinter/skills</code> keeps working for every other coding agent</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -15854,6 +15889,8 @@
 <ul>
 <li>CI<ul>
 <li><strong>Supply-chain hardening of dependency updates</strong>: Renovate (<code>minimumReleaseAge</code>) and Dependabot (<code>cooldown</code>) now wait until a release is at least <strong>7 days old</strong> before proposing an upgrade, so compromised releases can be caught by the community first. Security fixes are not delayed and still open immediately</li>
+<li>New <strong>Check agent plugins manifests</strong> workflow validating the agent plugin manifests on every change to them or to <code>skills/</code>: <code>.automation/validate_agent_plugins.py</code> checks the root <code>plugin.json</code> against the published Agent Plugins 1.0 schema and keeps the per-vendor manifests consistent with it, then <code>claude plugin validate ./ --strict</code> checks the Claude Code marketplace and plugin manifests</li>
+<li>The auto-update workflow patch-bumps the agent plugin version when it regenerates the skills: the plugin follows its own release train, since its fix guides change far more often than MegaLinter is released. <code>plugin.json</code> is the single source of truth, mirrored into the per-vendor manifests by <code>.automation/agent_plugin_manifests.py</code> (called by <code>build.py</code>)</li>
 </ul>
 </li>
 </ul>
