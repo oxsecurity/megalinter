@@ -1,0 +1,20 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "megalinter",
+  "version": "1.0.0",
+  "description": "Set up, run and fix MegaLinter on any repository: 100+ linters for 69+ languages, 23+ formats and 21+ tooling formats, from CI or locally.",
+  "author": {
+    "name": "OX Security",
+    "url": "https://megalinter.io"
+  },
+  "homepage": "https://megalinter.io",
+  "repository": "https://github.com/oxsecurity/megalinter",
+  "license": "AGPL-3.0",
+  "keywords": [
+    "linter",
+    "code-quality",
+    "formatter",
+    "security",
+    "ci"
+  ]
+}

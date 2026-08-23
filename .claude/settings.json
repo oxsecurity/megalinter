@@ -14,5 +14,16 @@
       "Bash(docker buildx build *)",
       "Bash(docker run *)"
     ]
+  },
+  "extraKnownMarketplaces": {
+    "megalinter": {
+      "source": {
+        "source": "github",
+        "repo": "oxsecurity/megalinter"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "megalinter@megalinter": true
   }
 }

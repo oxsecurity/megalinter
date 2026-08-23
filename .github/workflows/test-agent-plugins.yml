@@ -1,0 +1,53 @@
+---
+name: "Check agent plugins manifests"
+on:
+  push:
+    paths:
+      - "plugin.json"
+      - "gemini-extension.json"
+      - ".claude-plugin/**"
+      - ".codex-plugin/**"
+      - ".cursor-plugin/**"
+      - ".agents/**"
+      - "skills/**"
+      - ".automation/validate_agent_plugins.py"
+      - ".github/workflows/test-agent-plugins.yml"
+  pull_request:
+    paths:
+      - "plugin.json"
+      - "gemini-extension.json"
+      - ".claude-plugin/**"
+      - ".codex-plugin/**"
+      - ".cursor-plugin/**"
+      - ".agents/**"
+      - "skills/**"
+      - ".automation/validate_agent_plugins.py"
+      - ".github/workflows/test-agent-plugins.yml"
+
+permissions: {}
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+
+  validate-agent-plugins:
+    name: Validate agent plugins manifests
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: 3.14.7
+      - run: pip install --upgrade jsonschema
+      # Checks the Agent Plugins 1.0 manifest against the published schema, and
+      # keeps the per-vendor manifests consistent with it
+      - run: python .automation/validate_agent_plugins.py
+      - run: npm install --global @anthropic-ai/claude-code
+      # Validates .claude-plugin/marketplace.json and, transitively, the plugin
+      # manifest it points to. Runs offline, no authentication required
+      - run: claude plugin validate ./ --strict

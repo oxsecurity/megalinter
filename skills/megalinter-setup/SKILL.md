@@ -71,7 +71,19 @@ definitions they installed, were copied into the project (or the user profile) w
 update themselves** — so an upgraded repository can still be driven by guidance written for an older MegaLinter.
 Refresh them whenever you run an upgrade, and whenever the user asks to update the MegaLinter skills.
 
-Check first how they are installed:
+**If MegaLinter was installed as an agent plugin** (its skills appear under namespaced names such as
+`megalinter:megalinter-setup`), the skills CLI does not manage them: update the plugin instead, and skip the rest of
+this section — the sub-agents are refreshed with it.
+
+| Platform                 | Update command                                      |
+|:-------------------------|:----------------------------------------------------|
+| Claude Code              | `/plugin update megalinter@megalinter`              |
+| Cursor                   | **Customize → Plugins**, then update **MegaLinter** |
+| GitHub Copilot           | `copilot plugin install megalinter@megalinter`      |
+| Codex                    | `codex plugin marketplace upgrade megalinter`       |
+| Gemini CLI / Antigravity | `gemini extensions update megalinter`               |
+
+Otherwise, check how they are installed:
 
 ```bash
 npx skills list
@@ -116,6 +128,11 @@ Validate the file against its JSON schema: <https://raw.githubusercontent.com/ox
 ## 4. Install or refresh the MegaLinter sub-agents (if your platform supports them)
 
 This skill ships three sub-agent definitions in its `agents/` folder (`megalinter-watcher`, `megalinter-runner`, `megalinter-fixer`) that make the other MegaLinter skills faster and cheaper by keeping CI logs and linter output out of the main context.
+
+**Skip this whole step if MegaLinter was installed as an agent plugin**: the plugin already ships the three
+definitions, and you can see them listed under their namespaced names (`megalinter:megalinter-watcher`,
+`megalinter:megalinter-runner`, `megalinter:megalinter-fixer`). Copying them again would install a second set
+under the bare names, drifting on the next plugin update.
 
 If the coding agent you are running on supports custom sub-agent definitions (Claude Code, OpenCode, GitHub Copilot, Codex... — you know whether you do), read `agents/INSTALL.md` in this skill's directory and follow the instructions for your platform: copy the three `agents/*.md` files to your platform's agents folder, adapting the frontmatter when needed.
 

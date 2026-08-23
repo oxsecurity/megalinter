@@ -70,6 +70,7 @@ nav:
   - "Coding Agents": "coding-agents.md"
   - "Installation":
     - "Coding Agents (Skills)": "install-agent-skills.md"
+    - "Coding Agents (Plugins)": "agent-plugins.md"
     - "Assisted Installation": "install-assisted.md"
     - "Which version to use ?": "install-version.md"
     - "GitHub Actions": "install-github.md"
@@ -420,7 +421,7 @@ nav:
   - "They talk about MegaLinter": "articles.md"
   - "They use MegaLinter": "used-by-stats.md"
   - "List of linters": "all_linters.md"
-  - "Plugins": "plugins.md"
+  - "Linter Plugins": "plugins.md"
   - "Special thanks": "special-thanks.md"
   - "Sponsoring": 'sponsor.md'
   - "Badge": "badge.md"

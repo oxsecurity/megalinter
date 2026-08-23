@@ -1,6 +1,9 @@
 {
   "threshold": 0,
-  "reporters": ["html", "markdown"],
+  "reporters": [
+    "html",
+    "markdown"
+  ],
   "ignore": [
     "**/node_modules/**",
     "**/.claude/**",
@@ -20,6 +23,10 @@
     "**/all_flavors.json",
     "**/flavor.json",
     "**/flavors/**",
+    "**/.claude-plugin/*.json",
+    "**/.codex-plugin/*.json",
+    "**/.cursor-plugin/*.json",
+    "**/.agents/plugins/*.json",
     "**/megalinter/descriptors/schemas/*.json",
     "**/megalinter/linters/RakuLinter.py",
     "**/megalinter/reporters/*.py",

@@ -4,6 +4,10 @@ The three definitions in this folder use the Claude Code agent format (YAML fron
 
 Load only the section matching the platform you are running on. In every case: create the target folder if missing, and ask the user before overwriting an existing file.
 
+## Installed as an agent plugin — nothing to do
+
+If MegaLinter was installed as an [agent plugin](https://megalinter.io/latest/agent-plugins/), the three definitions ship with it and are already available under their namespaced names (`megalinter:megalinter-watcher`, `megalinter:megalinter-runner`, `megalinter:megalinter-fixer`). Do not copy them anywhere: a second set under the bare names would drift on the next plugin update.
+
 ## Claude Code
 
 Copy the files as-is:

@@ -50,4 +50,6 @@ When fixing is not relevant (false positives, rule conflicts with project style,
 
 If sub-agents are available and `megalinter-fixer` is installed (see `megalinter-setup`), fan out **one `megalinter-fixer` per failing linter in parallel**, giving each: the linter key, its error list, and the content of its fix guide. Each fixer returns its fixed count, modified files, and an `unresolved` list (possibly containing `proposed_disable` suppressions — fixers never apply disables themselves). Consolidate, ask the user about every unresolved item and proposed disable, apply the confirmed ones yourself, then run the targeted re-check (via `megalinter-runner` agents when available).
 
+When MegaLinter is installed as an agent plugin the definitions are namespaced (`megalinter:megalinter-watcher`, `megalinter:megalinter-runner`, `megalinter:megalinter-fixer`); installed as skills they keep their bare names. Use whichever form your platform lists.
+
 Without sub-agents, fix linters sequentially inline.
