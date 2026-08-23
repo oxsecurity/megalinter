@@ -131,8 +131,8 @@ This skill ships three sub-agent definitions in its `agents/` folder (`megalinte
 
 **Skip this whole step if MegaLinter was installed as an agent plugin**: the plugin already ships the three
 definitions, and you can see them listed under their namespaced names (`megalinter:megalinter-watcher`,
-`megalinter:megalinter-runner`, `megalinter:megalinter-fixer`). Copying them again would install a second,
-unnamespaced set that drifts on the next plugin update.
+`megalinter:megalinter-runner`, `megalinter:megalinter-fixer`). Copying them again would install a second set
+under the bare names, drifting on the next plugin update.
 
 If the coding agent you are running on supports custom sub-agent definitions (Claude Code, OpenCode, GitHub Copilot, Codex... — you know whether you do), read `agents/INSTALL.md` in this skill's directory and follow the instructions for your platform: copy the three `agents/*.md` files to your platform's agents folder, adapting the frontmatter when needed.
 

@@ -24,6 +24,11 @@
     "developerName": "OX Security",
     "category": "Code Quality",
     "websiteURL": "https://megalinter.io",
-    "defaultPrompt": "Set up MegaLinter on this repository and fix the errors it reports"
+    "defaultPrompt": "Set up MegaLinter on this repository and fix the errors it reports",
+    "capabilities": [
+      "Install MegaLinter on a repository",
+      "Collect lint errors from a CI job or a local run",
+      "Fix lint errors with per-linter fix guides"
+    ]
   }
 }
