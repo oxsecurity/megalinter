@@ -8,13 +8,13 @@ Skills that make [MegaLinter](https://megalinter.io/) easy to drive from any cod
 
 A single command installs the four skills and the three sub-agents together, and keeps them updated.
 
-| Platform | Install |
-|:--- |:--- |
-| Claude Code | `/plugin marketplace add oxsecurity/megalinter` then `/plugin install megalinter@megalinter` |
-| Cursor | Add `https://github.com/oxsecurity/megalinter` from **Customize → Plugins**, then install **MegaLinter** |
-| GitHub Copilot | `copilot plugin marketplace add oxsecurity/megalinter` then `copilot plugin install megalinter@megalinter` |
-| Codex | `codex plugin marketplace add oxsecurity/megalinter`, then install from the `/plugins` browser |
-| Gemini CLI / Antigravity | `gemini extensions install https://github.com/oxsecurity/megalinter` |
+| Platform                 | Install                                                                                                    |
+|:-------------------------|:-----------------------------------------------------------------------------------------------------------|
+| Claude Code              | `/plugin marketplace add oxsecurity/megalinter` then `/plugin install megalinter@megalinter`               |
+| Cursor                   | Add `https://github.com/oxsecurity/megalinter` from **Customize → Plugins**, then install **MegaLinter**   |
+| GitHub Copilot           | `copilot plugin marketplace add oxsecurity/megalinter` then `copilot plugin install megalinter@megalinter` |
+| Codex                    | `codex plugin marketplace add oxsecurity/megalinter`, then install from the `/plugins` browser             |
+| Gemini CLI / Antigravity | `gemini extensions install https://github.com/oxsecurity/megalinter`                                       |
 
 The sub-agents ship with the plugin on Claude Code and Cursor, where they are namespaced
 (`megalinter:megalinter-fixer`). The other platforms install the skills only, which degrade gracefully to inline

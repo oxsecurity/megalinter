@@ -75,13 +75,13 @@ Refresh them whenever you run an upgrade, and whenever the user asks to update t
 `megalinter:megalinter-setup`), the skills CLI does not manage them: update the plugin instead, and skip the rest of
 this section — the sub-agents are refreshed with it.
 
-| Platform | Update command |
-|:--- |:--- |
-| Claude Code | `/plugin update megalinter@megalinter` |
-| Cursor | **Customize → Plugins**, then update **MegaLinter** |
-| GitHub Copilot | `copilot plugin install megalinter@megalinter` |
-| Codex | `codex plugin marketplace upgrade megalinter` |
-| Gemini CLI / Antigravity | `gemini extensions update megalinter` |
+| Platform                 | Update command                                      |
+|:-------------------------|:----------------------------------------------------|
+| Claude Code              | `/plugin update megalinter@megalinter`              |
+| Cursor                   | **Customize → Plugins**, then update **MegaLinter** |
+| GitHub Copilot           | `copilot plugin install megalinter@megalinter`      |
+| Codex                    | `codex plugin marketplace upgrade megalinter`       |
+| Gemini CLI / Antigravity | `gemini extensions update megalinter`               |
 
 Otherwise, check how they are installed:
 
