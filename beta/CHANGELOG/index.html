@@ -15702,6 +15702,12 @@
 <li><code>EXCLUDED_DIRECTORIES</code> are forwarded in project lint mode through a generated configuration extending the workspace one</li>
 </ul>
 </li>
+<li><strong><a href="https://opentofu.org/docs/cli/commands/fmt/">tofu fmt</a></strong>, the built-in formatter of <strong>OpenTofu</strong> (the MPL-2.0 licensed fork of Terraform), available as <strong>TERRAFORM_TOFU_FMT</strong> (<a href="https://github.com/oxsecurity/megalinter/issues/8729">#8729</a>)<ul>
+<li>Analyzes <strong><code>.tofu</code></strong> files only, the OpenTofu specific extension, so it never doubles up with <strong>TERRAFORM_TERRAFORM_FMT</strong> which keeps <code>.tf</code></li>
+<li>To format your <code>.tf</code> files with OpenTofu instead, set <code>TERRAFORM_TOFU_FMT_FILE_EXTENSIONS: [".tofu", ".tf", ".tfvars"]</code> and <code>DISABLE_LINTERS: [TERRAFORM_TERRAFORM_FMT]</code></li>
+<li>Supports <strong>APPLY_FIXES</strong> to rewrite files in the canonical OpenTofu style</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
