@@ -471,3 +471,25 @@ AVD-DS-0014
 DS-0014
 AVD-DS-0026
 DS-0026
+
+# --- OpenTofu binary (TERRAFORM_TOFU_FMT) ---
+# CVE-2026-39883 (GHSA-hfvc-g4fc-pqhx) is a PATH hijacking flaw in
+# go.opentelemetry.io/otel/sdk <= 1.42.0: the host-ID resource detector runs
+# `kenv -q smbios.system.uuid` as a bare command name, so a local attacker owning an
+# earlier $PATH entry gets code execution. CVSS is AV:L/PR:L - a local escalation
+# primitive, not remote code execution. The SDK is vendored in the OpenTofu binary
+# copied from ghcr.io/opentofu/opentofu:1.12.6-minimal, the latest release, and
+# MegaLinter cannot rebuild it against otel/sdk 1.43.0. Unreachable here for three
+# independent reasons:
+#  - Build tags: host_id_bsd.go is `dragonfly || freebsd || netbsd || openbsd ||
+#    solaris`, and host_id_exec.go which defines execCommand has no `linux` tag, so
+#    the exec.Command call site is not compiled into MegaLinter's linux/amd64 and
+#    linux/arm64 images. The linux reader only reads /etc/machine-id. Verified on the
+#    shipped binary: the `smbios.system.uuid` argument string is absent, while the
+#    linux reader's `machine-id` is present.
+#  - OpenTofu builds its OTel resource with resource.WithHost(), never
+#    resource.WithHostID(), so the vulnerable detector is in no detector set on any OS.
+#  - OpenTofu only initializes OpenTelemetry when OTEL_TRACES_EXPORTER=otlp, and
+#    MegaLinter runs tofu only as a local formatter (`tofu fmt`), setting no OTEL_ vars.
+# Remove once an OpenTofu release ships otel/sdk >= 1.43.0.
+CVE-2026-39883
