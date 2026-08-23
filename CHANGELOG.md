@@ -134,6 +134,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 8.6.0 to **8.8.0** on 2026-08-22
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.54.0 to **1.55.1** on 2026-08-23
   - [npm-package-json-lint](https://npmpackagejsonlint.org/) from 10.4.1 to **10.5.1** on 2026-08-23
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 5.0.14 to **5.0.15** on 2026-08-23
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.52 to **0.2.55** on 2026-08-23
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.4 to **7.6.5** on 2026-08-23
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.4 to **7.6.5** on 2026-08-23
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.411 to **1.1.413** on 2026-08-23
 <!-- linter-versions-end -->
 
 ## [v10.0.0] - 2026-08-08
