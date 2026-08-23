@@ -3,19 +3,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="ktlint, detekt are available to analyze KOTLIN files in MegaLinter">
+        <meta name="description" content="How to use tofu-fmt (configure, ignore files, ignore errors, help &amp; version documentations) to analyze TERRAFORM files">
       
       
         <meta name="author" content="Nicolas Vuillamy">
       
       
-        <link rel="canonical" href="https://megalinter.io/beta/descriptors/kotlin/">
+        <link rel="canonical" href="https://megalinter.io/beta/descriptors/terraform_tofu_fmt/">
       
       
-        <link rel="prev" href="../jsx_biome/">
+        <link rel="prev" href="../terraform_terraform_fmt/">
       
       
-        <link rel="next" href="../kotlin_ktlint/">
+        <link rel="next" href="../copypaste/">
       
       
         
@@ -26,7 +26,7 @@
     
     
       
-        <title>KOTLIN linters in MegaLinter - MegaLinter by OX Security</title>
+        <title>tofu-fmt configuration in MegaLinter - MegaLinter by OX Security</title>
       
     
     
@@ -65,13 +65,13 @@
 <meta name="twitter:image:src" content="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png">
 <meta name="twitter:site" content="@nvuillam">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="KOTLIN linters in MegaLinter">
-<meta name="twitter:description" content="ktlint, detekt are available to analyze KOTLIN files in MegaLinter">
+<meta name="twitter:title" content="tofu-fmt configuration in MegaLinter">
+<meta name="twitter:description" content="How to use tofu-fmt (configure, ignore files, ignore errors, help &amp; version documentations) to analyze TERRAFORM files">
 <meta property="og:image" content="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png">
 <meta property="og:image:alt" content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally.">
 <meta property="og:site_name" content="MegaLinter">
-<meta property="og:title" content="KOTLIN linters in MegaLinter">
-<meta property="og:description" content="ktlint, detekt are available to analyze KOTLIN files in MegaLinter">
+<meta property="og:title" content="tofu-fmt configuration in MegaLinter">
+<meta property="og:description" content="How to use tofu-fmt (configure, ignore files, ignore errors, help &amp; version documentations) to analyze TERRAFORM files">
 
 
 
@@ -102,7 +102,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#kotlin" class="md-skip">
+        <a href="#analyzed-files" class="md-skip">
           Skip to content
         </a>
       
@@ -141,7 +141,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              KOTLIN linters in MegaLinter
+              tofu-fmt configuration in MegaLinter
             
           </span>
         </div>
@@ -1195,20 +1195,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3">
         
           
           <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
@@ -1229,7 +1227,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3024,20 +3022,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_14" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_14">
         
           
           <label class="md-nav__link" for="__nav_6_3_14" id="__nav_6_3_14_label" tabindex="0">
@@ -3058,7 +3054,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_3_14_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_3_14_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_3_14">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3073,37 +3069,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    All KOTLIN linters
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../kotlin/" class="md-nav__link">
         
   
   
@@ -3119,87 +3088,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-      
-        <li class="md-nav__item">
-  <a href="#linters" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Linters
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#linted-files" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Linted files
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuration-in-megalinter" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Configuration in MegaLinter
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#behind-the-scenes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Behind the scenes
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Behind the scenes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installation
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -7341,18 +7229,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" checked="">
         
           
           <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
@@ -7373,7 +7263,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -8971,18 +8861,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5_15">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5_15" checked="">
         
           
           <label class="md-nav__link" for="__nav_6_5_15" id="__nav_6_5_15_label" tabindex="0">
@@ -9003,7 +8895,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_5_15_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_5_15_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_5_15">
             <span class="md-nav__icon md-icon"></span>
             
@@ -9130,10 +9022,35 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../terraform_tofu_fmt/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    tofu-fmt
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -9149,6 +9066,162 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#analyzed-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analyzed files
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#formatting-tf-files-with-opentofu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Formatting .tf files with OpenTofu
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tofu-fmt-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tofu-fmt documentation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-in-megalinter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration in MegaLinter
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ide-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IDE Integration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#megalinter-flavors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MegaLinter Flavors
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#behind-the-scenes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Behind the scenes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Behind the scenes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-are-identified-applicable-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How are identified applicable files
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-the-linting-is-performed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How the linting is performed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-calls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example calls
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#help-content" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Help content
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installation-on-mega-linter-docker-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation on mega-linter Docker image
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -12385,8 +12458,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -12395,10 +12466,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#linters" class="md-nav__link">
+  <a href="#analyzed-files" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Linters
+        Analyzed files
       
     </span>
   </a>
@@ -12406,10 +12477,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#linted-files" class="md-nav__link">
+  <a href="#formatting-tf-files-with-opentofu" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Linted files
+        Formatting .tf files with OpenTofu
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tofu-fmt-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tofu-fmt documentation
       
     </span>
   </a>
@@ -12421,6 +12503,28 @@
     <span class="md-ellipsis">
       
         Configuration in MegaLinter
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ide-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IDE Integration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#megalinter-flavors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MegaLinter Flavors
       
     </span>
   </a>
@@ -12440,10 +12544,54 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
+  <a href="#how-are-identified-applicable-files" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installation
+        How are identified applicable files
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-the-linting-is-performed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How the linting is performed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-calls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example calls
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#help-content" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Help content
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installation-on-mega-linter-docker-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation on mega-linter Docker image
       
     </span>
   </a>
@@ -12475,35 +12623,49 @@
   
 
 
-<!-- markdownlint-disable MD003 MD020 MD033 MD041 --><!-- @generated by .automation/build.py, please don't update manually --><!-- Instead, update descriptor file at https://github.com/oxsecurity/megalinter/tree/main/megalinter/descriptors/kotlin.yml --><h1 id="kotlin">KOTLIN</h1>
-<h2 id="linters">Linters</h2>
-<table>
-<thead>
-<tr>
-<th>Linter</th>
-<th>Additional</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../kotlin_ktlint/"><strong>ktlint</strong></a><br><a href="../kotlin_ktlint/"><em>KOTLIN_KTLINT</em></a></td>
-<td><a href="https://github.com/pinterest/ktlint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/pinterest/ktlint?cacheSeconds=3600"></a> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://shields.io/badge/-autofix-green" data-desc-position="bottom"><img alt="autofix" src="https://shields.io/badge/-autofix-green"></a> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://shields.io/badge/-SARIF-orange" data-desc-position="bottom"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"></a></td>
-</tr>
-<tr>
-<td><a href="../kotlin_detekt/"><strong>detekt</strong></a><br><a href="../kotlin_detekt/"><em>KOTLIN_DETEKT</em></a></td>
-<td><a href="https://github.com/detekt/detekt"><img alt="GitHub stars" src="https://img.shields.io/github/stars/detekt/detekt?cacheSeconds=3600"></a> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://shields.io/badge/-SARIF-orange" data-desc-position="bottom"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"></a></td>
-</tr>
-</tbody>
-</table>
-<h2 id="linted-files">Linted files</h2>
+  <h1>tofu-fmt</h1>
+
+<!-- markdownlint-disable MD033 MD041 --><!-- @generated by .automation/build.py, please don't update manually --><div align="center">
+  <a href="https://opentofu.org/docs/cli/commands/fmt/" target="blank" title="Visit linter Web Site">
+    <img src="https://raw.githubusercontent.com/opentofu/brand-artifacts/main/full/transparent/SVG/on-light.svg" alt="tofu-fmt" height="150px" class="megalinter-banner">
+  </a>
+</div>
+
+<p><a href="https://github.com/opentofu/opentofu"><img alt="GitHub stars" src="https://img.shields.io/github/stars/opentofu/opentofu?cacheSeconds=3600"></a> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://shields.io/badge/-format-yellow" data-desc-position="bottom"><img alt="formatter" src="https://shields.io/badge/-format-yellow"></a> <a href="https://github.com/opentofu/opentofu/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/opentofu/opentofu?sort=semver"></a> <a href="https://github.com/opentofu/opentofu/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/opentofu/opentofu"></a> <a href="https://github.com/opentofu/opentofu/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/opentofu/opentofu"></a> <a href="https://github.com/opentofu/opentofu/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/opentofu/opentofu"></a></p>
+<p><strong>tofu fmt</strong> is the built-in OpenTofu command that rewrites configuration files to a canonical format and style. OpenTofu is the community-driven, MPL-2.0 licensed fork of Terraform hosted by the Linux Foundation, and its formatter follows the same canonical style as <code>terraform fmt</code>.</p>
+<p><strong>Key Features:</strong></p>
 <ul>
-<li>File extensions:<ul>
-<li><code>.kt</code></li>
-<li><code>.kts</code></li>
+<li><strong>Official Formatter</strong>: Built into OpenTofu core, so formatting always matches the version of OpenTofu you run</li>
+<li><strong>Open Source</strong>: OpenTofu stays under the <strong>MPL-2.0</strong> license, unlike Terraform which moved to BUSL-1.1</li>
+<li><strong>Canonical Formatting</strong>: Applies consistent indentation, spacing and alignment across all configuration files</li>
+<li><strong>Broad File Coverage</strong>: Formats configuration (<code>.tf</code>), variables (<code>.tfvars</code>) and test (<code>.tftest.hcl</code>) files</li>
+<li><strong>Automatic Fixing</strong>: Rewrites files in place when <strong>APPLY_FIXES</strong> is enabled</li>
+<li><strong>Diff Mode</strong>: Shows the formatting changes it would make, so reviews stay readable</li>
+<li><strong>Zero Configuration</strong>: Intentionally opinionated, with no configuration or ignore file to maintain</li>
 </ul>
-</li>
+<h2 id="analyzed-files">Analyzed files</h2>
+<p>By default this linter only analyzes <strong><code>.tofu</code></strong> files, the OpenTofu specific extension that Terraform does not recognize. <code>.tf</code> files are left to <a href="https://megalinter.io/latest/descriptors/terraform_terraform_fmt/">terraform fmt</a>, so both formatters can stay enabled without doing the same work twice.</p>
+<h2 id="formatting-tf-files-with-opentofu">Formatting .tf files with OpenTofu</h2>
+<p>If your project runs OpenTofu and keeps its configuration in <code>.tf</code> files, point this linter at them and disable the Terraform one, so a single formatter owns them:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">TERRAFORM_TOFU_FMT_FILE_EXTENSIONS</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">".tofu"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">".tf"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">".tfvars"</span><span class="p p-Indicator">]</span>
+<span class="nt">DISABLE_LINTERS</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">TERRAFORM_TERRAFORM_FMT</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<p><code>tofu fmt</code> also formats <code>.tftest.hcl</code> and <code>.tofutest.hcl</code> test files. They are not analyzed by default because the <code>.hcl</code> extension is already claimed by <a href="https://megalinter.io/latest/descriptors/terraform_terragrunt/">terragrunt</a> in this descriptor: add them to <code>TERRAFORM_TOFU_FMT_FILE_EXTENSIONS</code> only if you also disable <code>TERRAFORM_TERRAGRUNT</code>, or you would format them twice.</p>
+<h2 id="tofu-fmt-documentation">tofu-fmt documentation</h2>
+<ul>
+<li>Version in MegaLinter: <strong>1.12.6</strong></li>
+<li>Visit <a href="https://opentofu.org/docs/cli/commands/fmt/" target="_blank">Official Web Site</a></li>
+<li>See <a href="https://opentofu.org/docs/language/syntax/style/" target="_blank">How to configure tofu-fmt rules</a></li>
 </ul>
+<p><a href="https://github.com/opentofu/opentofu" target="_blank"><img alt="opentofu - GitHub" src="https://gh-card.dev/repos/opentofu/opentofu.svg?fullname="></a></p>
 <h2 id="configuration-in-megalinter">Configuration in MegaLinter</h2>
+<ul>
+<li>Enable tofu-fmt by adding <code>TERRAFORM_TOFU_FMT</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">ENABLE_LINTERS variable</a></li>
+<li>Disable tofu-fmt by adding <code>TERRAFORM_TOFU_FMT</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">DISABLE_LINTERS variable</a></li>
+</ul>
+<ul>
+<li>Enable <strong>autofixes</strong> by adding <code>TERRAFORM_TOFU_FMT</code> in <a href="https://megalinter.io/beta/configuration/#apply-fixes">APPLY_FIXES variable</a></li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -12514,40 +12676,211 @@
 </thead>
 <tbody>
 <tr>
-<td>KOTLIN_PRE_COMMANDS</td>
-<td>List of bash commands to run before the linters</td>
-<td>None</td>
-</tr>
-<tr>
-<td>KOTLIN_POST_COMMANDS</td>
-<td>List of bash commands to run after the linters</td>
-<td>None</td>
-</tr>
-<tr>
-<td>KOTLIN_FILTER_REGEX_INCLUDE</td>
-<td>Custom regex including filter</td>
+<td>TERRAFORM_TOFU_FMT_ARGUMENTS</td>
+<td>User custom arguments to add in linter CLI call<br>Ex: <code>-s --foo "bar"</code></td>
 <td></td>
 </tr>
 <tr>
-<td>KOTLIN_FILTER_REGEX_EXCLUDE</td>
-<td>Custom regex excluding filter</td>
+<td>TERRAFORM_TOFU_FMT_COMMAND_REMOVE_ARGUMENTS</td>
+<td>User custom arguments to remove from command line before calling the linter<br>Ex: <code>-s --foo "bar"</code></td>
 <td></td>
+</tr>
+<tr>
+<td>TERRAFORM_TOFU_FMT_FILTER_REGEX_INCLUDE</td>
+<td>Custom regex including filter<br>Ex: <code>(src\|lib)</code></td>
+<td>Exclude no file</td>
+</tr>
+<tr>
+<td>TERRAFORM_TOFU_FMT_FILTER_REGEX_EXCLUDE</td>
+<td>Custom regex excluding filter<br>Ex: <code>(test\|examples)</code></td>
+<td>Exclude no file</td>
+</tr>
+<tr>
+<td>TERRAFORM_TOFU_FMT_CLI_LINT_MODE</td>
+<td>Override default CLI lint mode<br>- <code>list_of_files</code>: Call the linter with the list of files as argument</td>
+<td><code>list_of_files</code></td>
+</tr>
+<tr>
+<td>TERRAFORM_TOFU_FMT_FILE_EXTENSIONS</td>
+<td>Allowed file extensions. <code>"*"</code> matches any extension, <code>""</code> matches empty extension. Empty list excludes all files<br>Ex: <code>[".py", ""]</code></td>
+<td><code>[".tofu"]</code></td>
+</tr>
+<tr>
+<td>TERRAFORM_TOFU_FMT_FILE_NAMES_REGEX</td>
+<td>File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br>Ex: <code>["Dockerfile(-.+)?", "Jenkinsfile"]</code></td>
+<td>Include every file</td>
+</tr>
+<tr>
+<td>TERRAFORM_TOFU_FMT_PRE_COMMANDS</td>
+<td>List of bash commands to run before the linter</td>
+<td>None</td>
+</tr>
+<tr>
+<td>TERRAFORM_TOFU_FMT_POST_COMMANDS</td>
+<td>List of bash commands to run after the linter</td>
+<td>None</td>
+</tr>
+<tr>
+<td>TERRAFORM_TOFU_FMT_UNSECURED_ENV_VARIABLES</td>
+<td>List of env variables explicitly not filtered before calling TERRAFORM_TOFU_FMT and its pre/post commands</td>
+<td>None</td>
+</tr>
+<tr>
+<td>TERRAFORM_TOFU_FMT_DISABLE_ERRORS</td>
+<td>Run linter but consider errors as warnings</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>TERRAFORM_TOFU_FMT_DISABLE_ERRORS_IF_LESS_THAN</td>
+<td>Maximum number of errors allowed</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td>TERRAFORM_TOFU_FMT_TIMEOUT_SECONDS</td>
+<td>Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout</td>
+<td><code>300</code></td>
+</tr>
+<tr>
+<td>TERRAFORM_TOFU_FMT_CLI_EXECUTABLE</td>
+<td>Override CLI executable</td>
+<td><code>['tofu']</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="ide-integration">IDE Integration</h2>
+<p>Use tofu-fmt in your favorite IDE to catch errors before MegaLinter !</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><!-- --></th>
+<th>IDE</th>
+<th>Extension Name</th>
+<th style="text-align: center;">Install</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico" data-desc-position="bottom"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a></td>
+<td><a href="https://www.jetbrains.com/products.html#type=ide">IDEA</a></td>
+<td><a href="https://plugins.jetbrains.com/plugin/7808-terraform-and-hcl">Terraform and HCL</a></td>
+<td style="text-align: center;"><iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/7808"></iframe></td>
+</tr>
+<tr>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" data-desc-position="bottom"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a></td>
+<td><a href="https://code.visualstudio.com/">Visual Studio Code</a></td>
+<td><a href="https://marketplace.visualstudio.com/items?itemName=OpenTofu.vscode-opentofu">OpenTofu</a></td>
+<td style="text-align: center;"><a href="vscode:extension/OpenTofu.vscode-opentofu" target="_blank"><img alt="Install in VSCode" src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/btn_install_vscode.png"></a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="megalinter-flavors">MegaLinter Flavors</h2>
+<p>This linter is available in the following flavors</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><!-- --></th>
+<th style="text-align: left;">Flavor</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: center;">Embedded linters</th>
+<th style="text-align: right;">Info</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" data-desc-position="bottom"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a></td>
+<td style="text-align: left;"><a href="https://megalinter.io/beta/supported-linters/">all</a></td>
+<td style="text-align: left;">Default MegaLinter Flavor</td>
+<td style="text-align: center;">132</td>
+<td style="text-align: right;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta" data-desc-position="bottom"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"></a> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter" data-desc-position="bottom"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter"></a></td>
+</tr>
+<tr>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" data-desc-position="bottom"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a></td>
+<td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/cupcake/">cupcake</a></td>
+<td style="text-align: left;">MegaLinter for the most commonly used languages</td>
+<td style="text-align: center;">99</td>
+<td style="text-align: right;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta" data-desc-position="bottom"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"></a> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake" data-desc-position="bottom"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"></a></td>
+</tr>
+<tr>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/formatters.ico" data-desc-position="bottom"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/formatters.ico" alt="" height="32px" class="megalinter-icon"></a></td>
+<td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/formatters/">formatters</a></td>
+<td style="text-align: left;">Contains only formatters</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: right;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-formatters/beta" data-desc-position="bottom"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-formatters/beta"></a> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-formatters" data-desc-position="bottom"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-formatters"></a></td>
+</tr>
+<tr>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" data-desc-position="bottom"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a></td>
+<td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/terraform/">terraform</a></td>
+<td style="text-align: left;">Optimized for TERRAFORM based projects</td>
+<td style="text-align: center;">57</td>
+<td style="text-align: right;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta" data-desc-position="bottom"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta"></a> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform" data-desc-position="bottom"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform"></a></td>
 </tr>
 </tbody>
 </table>
 <h2 id="behind-the-scenes">Behind the scenes</h2>
-<h3 id="installation">Installation</h3>
+<h3 id="how-are-identified-applicable-files">How are identified applicable files</h3>
+<ul>
+<li>File extensions: <code>.tofu</code></li>
+</ul>
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
+<h3 id="how-the-linting-is-performed">How the linting is performed</h3>
+<ul>
+<li>tofu-fmt is called once with the list of files as arguments (<code>list_of_files</code> CLI lint mode)</li>
+</ul>
+<h3 id="example-calls">Example calls</h3>
+<div class="highlight"><pre><span></span><code>tofu<span class="w"> </span>fmt<span class="w"> </span>-diff<span class="w"> </span>-check<span class="w"> </span>myfile.tf
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>tofu<span class="w"> </span>fmt<span class="w"> </span>myfile.tf
+</code></pre></div>
+<h3 id="help-content">Help content</h3>
+<div class="highlight"><pre><span></span><code>Usage:<span class="w"> </span>tofu<span class="w"> </span><span class="o">[</span>global<span class="w"> </span>options<span class="o">]</span><span class="w"> </span>&lt;subcommand&gt;<span class="w"> </span><span class="o">[</span>args<span class="o">]</span>
+
+The<span class="w"> </span>available<span class="w"> </span>commands<span class="w"> </span><span class="k">for</span><span class="w"> </span>execution<span class="w"> </span>are<span class="w"> </span>listed<span class="w"> </span>below.
+The<span class="w"> </span>primary<span class="w"> </span>workflow<span class="w"> </span>commands<span class="w"> </span>are<span class="w"> </span>given<span class="w"> </span>first,<span class="w"> </span>followed<span class="w"> </span>by
+less<span class="w"> </span>common<span class="w"> </span>or<span class="w"> </span>more<span class="w"> </span>advanced<span class="w"> </span>commands.
+
+Main<span class="w"> </span>commands:
+<span class="w">  </span>init<span class="w">          </span>Prepare<span class="w"> </span>your<span class="w"> </span>working<span class="w"> </span>directory<span class="w"> </span><span class="k">for</span><span class="w"> </span>other<span class="w"> </span>commands
+<span class="w">  </span>validate<span class="w">      </span>Check<span class="w"> </span>whether<span class="w"> </span>the<span class="w"> </span>configuration<span class="w"> </span>is<span class="w"> </span>valid
+<span class="w">  </span>plan<span class="w">          </span>Show<span class="w"> </span>changes<span class="w"> </span>required<span class="w"> </span>by<span class="w"> </span>the<span class="w"> </span>current<span class="w"> </span>configuration
+<span class="w">  </span>apply<span class="w">         </span>Create<span class="w"> </span>or<span class="w"> </span>update<span class="w"> </span>infrastructure
+<span class="w">  </span>destroy<span class="w">       </span>Destroy<span class="w"> </span>previously-created<span class="w"> </span>infrastructure
+
+All<span class="w"> </span>other<span class="w"> </span>commands:
+<span class="w">  </span>console<span class="w">       </span>Try<span class="w"> </span>OpenTofu<span class="w"> </span>expressions<span class="w"> </span>at<span class="w"> </span>an<span class="w"> </span>interactive<span class="w"> </span><span class="nb">command</span><span class="w"> </span>prompt
+<span class="w">  </span>fmt<span class="w">           </span>Reformat<span class="w"> </span>your<span class="w"> </span>configuration<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>standard<span class="w"> </span>style
+<span class="w">  </span>force-unlock<span class="w">  </span>Release<span class="w"> </span>a<span class="w"> </span>stuck<span class="w"> </span>lock<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>current<span class="w"> </span>workspace
+<span class="w">  </span>get<span class="w">           </span>Install<span class="w"> </span>or<span class="w"> </span>upgrade<span class="w"> </span>remote<span class="w"> </span>OpenTofu<span class="w"> </span>modules
+<span class="w">  </span>graph<span class="w">         </span>Generate<span class="w"> </span>a<span class="w"> </span>Graphviz<span class="w"> </span>graph<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>steps<span class="w"> </span><span class="k">in</span><span class="w"> </span>an<span class="w"> </span>operation
+<span class="w">  </span>import<span class="w">        </span>Associate<span class="w"> </span>existing<span class="w"> </span>infrastructure<span class="w"> </span>with<span class="w"> </span>a<span class="w"> </span>OpenTofu<span class="w"> </span>resource
+<span class="w">  </span>login<span class="w">         </span>Obtain<span class="w"> </span>and<span class="w"> </span>save<span class="w"> </span>credentials<span class="w"> </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span>remote<span class="w"> </span>host
+<span class="w">  </span><span class="nb">logout</span><span class="w">        </span>Remove<span class="w"> </span>locally-stored<span class="w"> </span>credentials<span class="w"> </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span>remote<span class="w"> </span>host
+<span class="w">  </span>metadata<span class="w">      </span>Metadata<span class="w"> </span>related<span class="w"> </span>commands
+<span class="w">  </span>output<span class="w">        </span>Show<span class="w"> </span>output<span class="w"> </span>values<span class="w"> </span>from<span class="w"> </span>your<span class="w"> </span>root<span class="w"> </span>module
+<span class="w">  </span>providers<span class="w">     </span>Show<span class="w"> </span>the<span class="w"> </span>providers<span class="w"> </span>required<span class="w"> </span><span class="k">for</span><span class="w"> </span>this<span class="w"> </span>configuration
+<span class="w">  </span>refresh<span class="w">       </span>Update<span class="w"> </span>the<span class="w"> </span>state<span class="w"> </span>to<span class="w"> </span>match<span class="w"> </span>remote<span class="w"> </span>systems
+<span class="w">  </span>show<span class="w">          </span>Show<span class="w"> </span>the<span class="w"> </span>current<span class="w"> </span>state<span class="w"> </span>or<span class="w"> </span>a<span class="w"> </span>saved<span class="w"> </span>plan
+<span class="w">  </span>state<span class="w">         </span>Advanced<span class="w"> </span>state<span class="w"> </span>management
+<span class="w">  </span>taint<span class="w">         </span>Mark<span class="w"> </span>a<span class="w"> </span>resource<span class="w"> </span>instance<span class="w"> </span>as<span class="w"> </span>not<span class="w"> </span>fully<span class="w"> </span>functional
+<span class="w">  </span><span class="nb">test</span><span class="w">          </span>Execute<span class="w"> </span>integration<span class="w"> </span>tests<span class="w"> </span><span class="k">for</span><span class="w"> </span>OpenTofu<span class="w"> </span>modules
+<span class="w">  </span>untaint<span class="w">       </span>Remove<span class="w"> </span>the<span class="w"> </span><span class="s1">'tainted'</span><span class="w"> </span>state<span class="w"> </span>from<span class="w"> </span>a<span class="w"> </span>resource<span class="w"> </span>instance
+<span class="w">  </span>version<span class="w">       </span>Show<span class="w"> </span>the<span class="w"> </span>current<span class="w"> </span>OpenTofu<span class="w"> </span>version
+<span class="w">  </span>workspace<span class="w">     </span>Workspace<span class="w"> </span>management
+
+Global<span class="w"> </span>options<span class="w"> </span><span class="o">(</span>use<span class="w"> </span>these<span class="w"> </span>before<span class="w"> </span>the<span class="w"> </span>subcommand,<span class="w"> </span><span class="k">if</span><span class="w"> </span>any<span class="o">)</span>:
+<span class="w">  </span>-chdir<span class="o">=</span>DIR<span class="w">    </span>Switch<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>different<span class="w"> </span>working<span class="w"> </span>directory<span class="w"> </span>before<span class="w"> </span>executing<span class="w"> </span>the
+<span class="w">                </span>given<span class="w"> </span>subcommand.
+<span class="w">  </span>-help<span class="w">         </span>Show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>output,<span class="w"> </span>or<span class="w"> </span>the<span class="w"> </span><span class="nb">help</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span>specified<span class="w"> </span>subcommand.
+<span class="w">  </span>-version<span class="w">      </span>An<span class="w"> </span><span class="nb">alias</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span><span class="s2">"version"</span><span class="w"> </span>subcommand.
+</code></pre></div>
+<h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
 <li>Dockerfile commands :
-<div class="highlight"><pre><span></span><code><span class="k">ENV</span><span class="w"> </span><span class="nv">JAVA_HOME</span><span class="o">=</span>/usr/lib/jvm/java-21-openjdk
-<span class="k">ENV</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$JAVA_HOME</span><span class="s2">/bin:</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span><span class="s2">"</span>
+<div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=docker depName=ghcr.io/opentofu/opentofu</span>
+<span class="k">ARG</span><span class="w"> </span><span class="nv">TERRAFORM_TOFU_FMT_VERSION</span><span class="o">=</span><span class="m">1</span>.12.6-minimal
+<span class="k">FROM</span><span class="w"> </span><span class="s">ghcr.io/opentofu/opentofu:${TERRAFORM_TOFU_FMT_VERSION}</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">opentofu</span>
+<span class="k">COPY</span><span class="w"> </span>--link<span class="w"> </span>--from<span class="o">=</span>opentofu<span class="w"> </span>/usr/local/bin/tofu<span class="w"> </span>/usr/bin/
 </code></pre></div></li>
-</ul>
-<ul>
-<li>APK packages (Linux):<ul>
-<li><a href="https://pkgs.alpinelinux.org/packages?branch=v3.24&amp;arch=x86_64&amp;name=openjdk21">openjdk21</a></li>
-</ul>
-</li>
 </ul>
 
 
@@ -12581,7 +12914,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
-          <a href="../jsx_biome/" class="md-footer__link md-footer__link--prev" aria-label="Previous: biome">
+          <a href="../terraform_terraform_fmt/" class="md-footer__link md-footer__link--prev" aria-label="Previous: terraform-fmt">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -12591,20 +12924,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                biome
+                terraform-fmt
               </div>
             </div>
           </a>
         
         
           
-          <a href="../kotlin_ktlint/" class="md-footer__link md-footer__link--next" aria-label="Next: ktlint">
+          <a href="../copypaste/" class="md-footer__link md-footer__link--next" aria-label="Next: All COPYPASTE linters">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                ktlint
+                All COPYPASTE linters
               </div>
             </div>
             <div class="md-footer__button md-icon">
