@@ -304,7 +304,7 @@ ARG GEM_RUBOCOP_VERSION=1.89.0
 # renovate: datasource=rubygems depName=rubocop-github
 ARG GEM_RUBOCOP_GITHUB_VERSION=0.27.0
 # renovate: datasource=rubygems depName=rubocop-performance
-ARG GEM_RUBOCOP_PERFORMANCE_VERSION=1.26.1
+ARG GEM_RUBOCOP_PERFORMANCE_VERSION=1.27.0
 # renovate: datasource=rubygems depName=rubocop-rails
 ARG GEM_RUBOCOP_RAILS_VERSION=2.37.0
 # renovate: datasource=rubygems depName=rubocop-rake
