@@ -1,6 +1,6 @@
 {
   "name": "megalinter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Set up, run and fix MegaLinter on any repository: 100+ linters for 69+ languages, 23+ formats and 21+ tooling formats, from CI or locally.",
   "author": {
     "name": "OX Security"

@@ -150,6 +150,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.4 to **7.6.5** on 2026-08-23
   - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.4 to **7.6.5** on 2026-08-23
   - [pyright](https://github.com/Microsoft/pyright) from 1.1.411 to **1.1.413** on 2026-08-23
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 26.6.0 to **26.8.0** on 2026-08-23
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.16.2 to **0.16.3** on 2026-08-23
+  - [ruff](https://github.com/astral-sh/ruff) from 0.16.2 to **0.16.3** on 2026-08-23
+  - [checkov](https://www.checkov.io/) from 3.3.9 to **3.3.11** on 2026-08-23
 <!-- linter-versions-end -->
 
 ## [v10.0.0] - 2026-08-08
