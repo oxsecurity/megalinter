@@ -62,7 +62,7 @@ RUN python -c 'import sys; assert sys.version_info >= (3, 14, 7), "Python 3.14.7
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
-ARG POWERSHELL_VERSION=7.6.4
+ARG POWERSHELL_VERSION=7.6.5
 # renovate: datasource=github-tags depName=Azure/arm-ttk
 ARG ARM_TTK_VERSION=20250401
 ARG ARM_TTK_NAME='arm-ttk.zip'
