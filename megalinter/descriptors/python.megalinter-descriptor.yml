@@ -797,7 +797,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=pyright
-          ARG NPM_PYRIGHT_VERSION=1.1.411
+          ARG NPM_PYRIGHT_VERSION=1.1.413
       npm:
         - pyright@${NPM_PYRIGHT_VERSION}
     supported_platforms:
