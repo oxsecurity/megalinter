@@ -12537,7 +12537,7 @@
 </code></pre></div>
 <h2 id="jscpd-documentation">jscpd documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>5.0.14</strong></li>
+<li>Version in MegaLinter: <strong>5.0.15</strong></li>
 <li>Visit <a href="https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#config-file" target="_blank">How to configure jscpd rules</a><ul>
 <li>If custom <code>.jscpd.json</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.jscpd.json" target="_blank">.jscpd.json</a> will be used</li>
@@ -12824,6 +12824,8 @@ Options:
 <span class="w">          </span>Exit<span class="w"> </span>with<span class="w"> </span>code<span class="w"> </span><span class="k">if</span><span class="w"> </span>duplicates<span class="w"> </span>found<span class="w"> </span><span class="o">(</span>default<span class="w"> </span>code:<span class="w"> </span><span class="m">1</span><span class="o">)</span>
 <span class="w">  </span>-t,<span class="w"> </span>--threshold<span class="w"> </span>&lt;THRESHOLD&gt;
 <span class="w">          </span>Maximum<span class="w"> </span>duplication<span class="w"> </span>percentage<span class="w"> </span>before<span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="w">      </span>--sarif-error-tokens<span class="w"> </span>&lt;TOKENS&gt;
+<span class="w">          </span>Report<span class="w"> </span>SARIF<span class="w"> </span>results<span class="w"> </span>as<span class="w"> </span><span class="s2">"error"</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>clones<span class="w"> </span>with<span class="w"> </span>at<span class="w"> </span>least<span class="w"> </span>this<span class="w"> </span>many<span class="w"> </span>tokens<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>all<span class="w"> </span><span class="s2">"warning"</span><span class="o">)</span>
 <span class="w">  </span>-b,<span class="w"> </span>--blame
 <span class="w">          </span>Enrich<span class="w"> </span>clones<span class="w"> </span>with<span class="w"> </span>git<span class="w"> </span>blame<span class="w"> </span>data
 <span class="w">      </span>--no-gitignore
@@ -12869,12 +12871,12 @@ Options:
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=npm depName=jscpd</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">NPM_JSCPD_VERSION</span><span class="o">=</span><span class="m">5</span>.0.14
+<span class="k">ARG</span><span class="w"> </span><span class="nv">NPM_JSCPD_VERSION</span><span class="o">=</span><span class="m">5</span>.0.15
 </code></pre></div></li>
 </ul>
 <ul>
 <li>NPM packages (node.js):<ul>
-<li><a href="https://www.npmjs.com/package/jscpd/v/5.0.14">jscpd@5.0.14</a></li>
+<li><a href="https://www.npmjs.com/package/jscpd/v/5.0.15">jscpd@5.0.15</a></li>
 </ul>
 </li>
 </ul>

@@ -12486,7 +12486,7 @@
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="k">ARG</span><span class="w"> </span>TARGETPLATFORM
 <span class="c"># renovate: datasource=github-tags depName=PowerShell/PowerShell</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">POWERSHELL_VERSION</span><span class="o">=</span><span class="m">7</span>.6.4
+<span class="k">ARG</span><span class="w"> </span><span class="nv">POWERSHELL_VERSION</span><span class="o">=</span><span class="m">7</span>.6.5
 <span class="k">RUN</span><span class="w"> </span><span class="k">case</span><span class="w"> </span><span class="si">${</span><span class="nv">TARGETPLATFORM</span><span class="si">}</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span><span class="s2">"linux/amd64"</span><span class="o">)</span><span class="w">  </span><span class="nv">POWERSHELL_ARCH</span><span class="o">=</span>musl-x64<span class="w"> </span><span class="p">;;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span><span class="s2">"linux/arm64"</span><span class="o">)</span><span class="w">  </span><span class="nv">POWERSHELL_ARCH</span><span class="o">=</span>arm64<span class="w">    </span><span class="p">;;</span><span class="w"> </span><span class="se">\</span>
