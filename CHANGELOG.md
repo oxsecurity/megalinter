@@ -132,6 +132,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.73.0 to **0.74.0** on 2026-08-22
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.96.0 to **3.97.0** on 2026-08-22
   - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 8.6.0 to **8.8.0** on 2026-08-22
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.54.0 to **1.55.1** on 2026-08-23
+  - [npm-package-json-lint](https://npmpackagejsonlint.org/) from 10.4.1 to **10.5.1** on 2026-08-23
 <!-- linter-versions-end -->
 
 ## [v10.0.0] - 2026-08-08
