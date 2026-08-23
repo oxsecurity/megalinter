@@ -649,6 +649,11 @@
     "image": "https://avatars1.githubusercontent.com/u/54197850?s=400&v=4",
     "title": "terraform-linters/tflint"
   },
+  "tofu-fmt": {
+    "description": "The tofu fmt command rewrites configuration files to a canonical format and style.",
+    "image": "https://opentofu.org/img/og.png",
+    "title": "Command: fmt | OpenTofu"
+  },
   "trivy": {
     "description": "None",
     "image": null,

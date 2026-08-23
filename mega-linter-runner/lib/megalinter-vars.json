@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "variable_count": 2836,
+    "variable_count": 2850,
     "categories": {
       "ACTION": 4,
       "ACTION_ACTIONLINT": 17,
@@ -201,6 +201,7 @@
       "TERRAFORM_TERRAGRUNT": 16,
       "TERRAFORM_TERRASCAN": 15,
       "TERRAFORM_TFLINT": 18,
+      "TERRAFORM_TOFU_FMT": 14,
       "TEXT_REPORTER": 3,
       "TSX": 4,
       "TSX_BIOME": 17,
@@ -33748,6 +33749,184 @@
       "description": "List of env variables explicitly not filtered before calling TERRAFORM_TFLINT and its pre/post commands",
       "default": [],
       "category": "TERRAFORM_TFLINT",
+      "section": "SECURITY",
+      "items_type": "string"
+    },
+    "TERRAFORM_TOFU_FMT_ARGUMENTS": {
+      "name": "TERRAFORM_TOFU_FMT_ARGUMENTS",
+      "type": [
+        "array",
+        "string"
+      ],
+      "title": "TERRAFORM_TOFU_FMT: Custom arguments",
+      "description": "TERRAFORM_TOFU_FMT: User custom arguments to add in linter CLI call",
+      "category": "TERRAFORM_TOFU_FMT",
+      "section": "LINTER_COMMAND",
+      "items_type": "string"
+    },
+    "TERRAFORM_TOFU_FMT_CLI_EXECUTABLE": {
+      "name": "TERRAFORM_TOFU_FMT_CLI_EXECUTABLE",
+      "type": "array",
+      "title": "TERRAFORM_TOFU_FMT: CLI Executable",
+      "description": "TERRAFORM_TOFU_FMT: Override CLI executable used to build the linter command line (rarely needed)",
+      "default": [
+        [
+          "tofu"
+        ]
+      ],
+      "category": "TERRAFORM_TOFU_FMT",
+      "section": "LINTER_COMMAND",
+      "items_type": "string"
+    },
+    "TERRAFORM_TOFU_FMT_CLI_LINT_MODE": {
+      "name": "TERRAFORM_TOFU_FMT_CLI_LINT_MODE",
+      "type": "string",
+      "title": "TERRAFORM_TOFU_FMT: CLI lint mode",
+      "description": "TERRAFORM_TOFU_FMT: Override default CLI lint mode used to call the linter (rarely needed)",
+      "default": "list_of_files",
+      "enum": [
+        "list_of_files"
+      ],
+      "category": "TERRAFORM_TOFU_FMT",
+      "section": "LINTER_COMMAND"
+    },
+    "TERRAFORM_TOFU_FMT_COMMAND_REMOVE_ARGUMENTS": {
+      "name": "TERRAFORM_TOFU_FMT_COMMAND_REMOVE_ARGUMENTS",
+      "type": [
+        "array",
+        "string"
+      ],
+      "title": "TERRAFORM_TOFU_FMT: Custom remove arguments",
+      "description": "TERRAFORM_TOFU_FMT: User custom arguments to remove before calling linter",
+      "category": "TERRAFORM_TOFU_FMT",
+      "section": "LINTER_COMMAND",
+      "items_type": "string"
+    },
+    "TERRAFORM_TOFU_FMT_DISABLE_ERRORS": {
+      "name": "TERRAFORM_TOFU_FMT_DISABLE_ERRORS",
+      "type": "boolean",
+      "title": "TERRAFORM_TOFU_FMT: Disable errors",
+      "description": "TERRAFORM_TOFU_FMT: If true, TERRAFORM_TOFU_FMT doesn't make MegaLinter fail even if errors are found",
+      "default": false,
+      "category": "TERRAFORM_TOFU_FMT",
+      "section": "ERRORS"
+    },
+    "TERRAFORM_TOFU_FMT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "name": "TERRAFORM_TOFU_FMT_DISABLE_ERRORS_IF_LESS_THAN",
+      "type": "number",
+      "title": "TERRAFORM_TOFU_FMT: Maximum number of errors allowed",
+      "description": "TERRAFORM_TOFU_FMT: If the number of errors found is less than this value, TERRAFORM_TOFU_FMT doesn't make MegaLinter fail",
+      "default": 0,
+      "category": "TERRAFORM_TOFU_FMT",
+      "section": "ERRORS"
+    },
+    "TERRAFORM_TOFU_FMT_FILE_EXTENSIONS": {
+      "name": "TERRAFORM_TOFU_FMT_FILE_EXTENSIONS",
+      "type": "array",
+      "title": "TERRAFORM_TOFU_FMT: Matching files extensions",
+      "description": "TERRAFORM_TOFU_FMT: Override descriptor/linter matching files extensions that will be used to select files to lint",
+      "default": [
+        ".tofu"
+      ],
+      "examples": [
+        ".py",
+        ".myext"
+      ],
+      "category": "TERRAFORM_TOFU_FMT",
+      "section": "SCOPE",
+      "items_type": "string"
+    },
+    "TERRAFORM_TOFU_FMT_FILE_NAMES_REGEX": {
+      "name": "TERRAFORM_TOFU_FMT_FILE_NAMES_REGEX",
+      "type": "array",
+      "title": "TERRAFORM_TOFU_FMT: Matching file name regexes",
+      "description": "TERRAFORM_TOFU_FMT: Override descriptor/linter matching file name regexes that will be used to select files to lint",
+      "default": [],
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "category": "TERRAFORM_TOFU_FMT",
+      "section": "SCOPE",
+      "items_type": "string"
+    },
+    "TERRAFORM_TOFU_FMT_FILTER_REGEX_EXCLUDE": {
+      "name": "TERRAFORM_TOFU_FMT_FILTER_REGEX_EXCLUDE",
+      "type": [
+        "string",
+        "array"
+      ],
+      "title": "TERRAFORM_TOFU_FMT: Excluding Regex",
+      "description": "",
+      "category": "TERRAFORM_TOFU_FMT",
+      "section": "SCOPE",
+      "items_type": "string"
+    },
+    "TERRAFORM_TOFU_FMT_FILTER_REGEX_INCLUDE": {
+      "name": "TERRAFORM_TOFU_FMT_FILTER_REGEX_INCLUDE",
+      "type": [
+        "string",
+        "array"
+      ],
+      "title": "TERRAFORM_TOFU_FMT: Including Regex",
+      "description": "",
+      "category": "TERRAFORM_TOFU_FMT",
+      "section": "SCOPE",
+      "items_type": "string"
+    },
+    "TERRAFORM_TOFU_FMT_POST_COMMANDS": {
+      "name": "TERRAFORM_TOFU_FMT_POST_COMMANDS",
+      "type": "array",
+      "title": "TERRAFORM_TOFU_FMT: Post-run commands",
+      "description": "TERRAFORM_TOFU_FMT: Define bash commands to run after running TERRAFORM_TOFU_FMT",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "category": "TERRAFORM_TOFU_FMT",
+      "section": "PREPOSTCOMMANDS"
+    },
+    "TERRAFORM_TOFU_FMT_PRE_COMMANDS": {
+      "name": "TERRAFORM_TOFU_FMT_PRE_COMMANDS",
+      "type": "array",
+      "title": "TERRAFORM_TOFU_FMT: Pre-run commands",
+      "description": "TERRAFORM_TOFU_FMT: Define bash commands to run before running TERRAFORM_TOFU_FMT",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "category": "TERRAFORM_TOFU_FMT",
+      "section": "PREPOSTCOMMANDS"
+    },
+    "TERRAFORM_TOFU_FMT_TIMEOUT_SECONDS": {
+      "name": "TERRAFORM_TOFU_FMT_TIMEOUT_SECONDS",
+      "type": "integer",
+      "title": "TERRAFORM_TOFU_FMT: Timeout in seconds",
+      "description": "TERRAFORM_TOFU_FMT: Maximum duration in seconds of the TERRAFORM_TOFU_FMT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "category": "TERRAFORM_TOFU_FMT",
+      "section": "GENERAL"
+    },
+    "TERRAFORM_TOFU_FMT_UNSECURED_ENV_VARIABLES": {
+      "name": "TERRAFORM_TOFU_FMT_UNSECURED_ENV_VARIABLES",
+      "type": "array",
+      "title": "TERRAFORM_TOFU_FMT: Unsecured env variables",
+      "description": "List of env variables explicitly not filtered before calling TERRAFORM_TOFU_FMT and its pre/post commands",
+      "default": [],
+      "category": "TERRAFORM_TOFU_FMT",
       "section": "SECURITY",
       "items_type": "string"
     },

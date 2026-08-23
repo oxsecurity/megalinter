@@ -103,7 +103,7 @@ The fix guides combine information generated from the [linter descriptors](https
 - Disabling a linter or a rule always requires your confirmation
 - Commits are never pushed to the default branch
 
-See also the [installation page for coding agents](https://megalinter.io/latest/install-agent-skills/).
+See also the [installation page for coding agents](https://megalinter.io/latest/install-agent-skills/), or install everything at once as an [agent plugin](https://megalinter.io/latest/agent-plugins/).
 
 
 <!-- coding-agents-section-end -->
