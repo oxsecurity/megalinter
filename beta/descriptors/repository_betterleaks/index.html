@@ -9454,6 +9454,84 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Scan only Pull Request commits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#repository-checkout-on-pull-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repository checkout on Pull Requests
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Repository checkout on Pull Requests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#github-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GitHub Actions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#azure-pipelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Azure Pipelines
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gitlab-pipelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GitLab Pipelines
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Git
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#azure-pipelines-environment-variables-on-pull-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Azure Pipelines environment variables on Pull Requests
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -12413,6 +12491,84 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Scan only Pull Request commits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#repository-checkout-on-pull-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repository checkout on Pull Requests
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Repository checkout on Pull Requests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#github-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GitHub Actions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#azure-pipelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Azure Pipelines
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gitlab-pipelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GitLab Pipelines
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Git
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#azure-pipelines-environment-variables-on-pull-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Azure Pipelines environment variables on Pull Requests
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -12576,11 +12732,46 @@
 </ul>
 <p>You can also set the following MegaLinter environment variables manually:</p>
 <ul>
-<li><code>PULL_REQUEST=true</code></li>
+<li><code>PULL_REQUEST=true</code> (only on Pull Requests, so you must compute the value in your pipeline and pass the outcome)</li>
 <li><code>REPOSITORY_BETTERLEAKS_PR_COMMITS_SCAN: true</code></li>
 <li><code>REPOSITORY_BETTERLEAKS_PR_SOURCE_SHA</code> with the last commit SHA from your PR</li>
 <li><code>REPOSITORY_BETTERLEAKS_PR_TARGET_SHA</code> with the target branch commit SHA</li>
 </ul>
+<p>Example commands to compute them:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Source commit SHA</span>
+git<span class="w"> </span>rev-list<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>refs/remotes/origin/&lt;source_branch&gt;
+<span class="c1"># Target commit SHA</span>
+git<span class="w"> </span>rev-parse<span class="w"> </span>refs/remotes/origin/&lt;target_branch&gt;
+</code></pre></div>
+<p><strong>Note:</strong> for GitLab, only self-managed and SaaS Premium/Ultimate are supported (a GitLab-specific limitation), and the <a href="https://docs.gitlab.com/ee/ci/pipelines/merged_results_pipelines.html#enable-merged-results-pipelines" target="_blank">merged results pipelines</a> feature has to be enabled.</p>
+<p>If the Pull Request commit range can not be determined (unsupported platform, shallow checkout, missing variables), betterleaks logs a warning and analyzes the whole repository instead.</p>
+<p>The PR commits scan, when applicable, overrides the <code>--log-opts</code> argument if you set it in <code>REPOSITORY_BETTERLEAKS_ARGUMENTS</code>.</p>
+<h3 id="repository-checkout-on-pull-requests">Repository checkout on Pull Requests</h3>
+<p>To scan only PR commits, the <a href="https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---depthltdepthgt" target="_blank">shallow fetch</a> for a repository checkout has to be 0, so the target branch commit is present locally.</p>
+<h4 id="github-actions">GitHub Actions</h4>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v6</span>
+<span class="w">  </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">fetch-depth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+</code></pre></div>
+<h4 id="azure-pipelines">Azure Pipelines</h4>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">checkout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">self</span>
+<span class="w">  </span><span class="nt">fetchDepth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+</code></pre></div>
+<h4 id="gitlab-pipelines">GitLab Pipelines</h4>
+<div class="highlight"><pre><span></span><code><span class="nt">variables</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">GIT_DEPTH</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+</code></pre></div>
+<h4 id="git">Git</h4>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>fetch<span class="w"> </span>--depth<span class="o">=</span><span class="m">0</span>
+</code></pre></div>
+<h3 id="azure-pipelines-environment-variables-on-pull-requests">Azure Pipelines environment variables on Pull Requests</h3>
+<p>When running in a Docker container, Azure Pipelines requires some environment variables to be passed explicitly:</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-v<span class="w"> </span><span class="k">$(</span>System.DefaultWorkingDirectory<span class="k">)</span>:/tmp/lint<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-e<span class="w"> </span><span class="nv">SYSTEM_PULLREQUEST_SOURCECOMMITID</span><span class="o">=</span><span class="k">$(</span>System.PullRequest.SourceCommitId<span class="k">)</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-e<span class="w"> </span><span class="nv">SYSTEM_PULLREQUEST_TARGETBRANCH</span><span class="o">=</span><span class="k">$(</span>System.PullRequest.TargetBranch<span class="k">)</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-e<span class="w"> </span><span class="nv">BUILD_REASON</span><span class="o">=</span><span class="k">$(</span>Build.Reason<span class="k">)</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>ghcr.io/oxsecurity/megalinter:v10
+</code></pre></div>
 <h2 id="migration-from-gitleaks">Migration from gitleaks</h2>
 <p><code>REPOSITORY_GITLEAKS</code> was removed in MegaLinter v10. betterleaks reads your existing <code>.gitleaks.toml</code> configuration and <code>.gitleaksignore</code> files unchanged, so no configuration changes are needed to migrate.</p>
 <h2 id="betterleaks-documentation">betterleaks documentation</h2>
