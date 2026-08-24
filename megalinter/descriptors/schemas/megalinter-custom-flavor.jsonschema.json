@@ -154,6 +154,7 @@
         "TERRAFORM_TERRASCAN",
         "TERRAFORM_TFLINT",
         "TERRAFORM_TOFU_FMT",
+        "TERRAFORM_TOFU_VALIDATE",
         "TSX_BIOME",
         "TSX_ESLINT",
         "TYPESCRIPT_BIOME",

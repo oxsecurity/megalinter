@@ -22,6 +22,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Analyzes **`.tofu`** files only, the OpenTofu specific extension, so it never doubles up with **TERRAFORM_TERRAFORM_FMT** which keeps `.tf`
     - To format your `.tf` files with OpenTofu instead, set `TERRAFORM_TOFU_FMT_FILE_EXTENSIONS: [".tofu", ".tf", ".tfvars"]` and `DISABLE_LINTERS: [TERRAFORM_TERRAFORM_FMT]`
     - Supports **APPLY_FIXES** to rewrite files in the canonical OpenTofu style
+  - **[tofu validate](https://opentofu.org/docs/cli/commands/validate/)**, the built-in validator of **OpenTofu**, available as **TERRAFORM_TOFU_VALIDATE** ([#8793](https://github.com/oxsecurity/megalinter/issues/8793))
+    - Reports what formatters and rule-based linters can not see: unsupported or missing arguments, wrong attribute types, references to undeclared variables, locals or outputs, and broken module input contracts
+    - Analyzes both **`.tf`** and **`.tofu`** files, and validates each module directory of your repository
+    - Every directory is initialized with `tofu init -backend=false` beforehand, so no state is read, no state lock is taken and no cloud credentials are needed
+    - Set **TERRAFORM_TOFU_VALIDATE_INIT_ARGUMENTS** to change those initialization arguments, for example adding `-lockfile=readonly` to have an out-of-sync `.terraform.lock.hcl` reported as an error instead of being updated
 
 - Disabled linters
   - **COFFEE_COFFEELINT** is disabled: CoffeeScript tooling is discontinued, and coffeelint can not receive `EXCLUDED_DIRECTORIES` in project lint mode (it has no exclusion option and reads `.coffeelintignore` only from its working directory). The linter will be removed in a future version

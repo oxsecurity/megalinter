@@ -288,3 +288,112 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=OpenTofu.vscode-opentofu
     test_folder: tofu_fmt
     version_extract_regex: "(?<=OpenTofu v)\\d+(\\.\\d+)+"
+  # TOFU VALIDATE
+  - class: TofuValidateLinter
+    linter_name: tofu-validate
+    linter_text: |
+      **tofu validate** is the built-in OpenTofu command that checks whether a configuration is internally consistent and semantically valid, without reading any state or contacting any infrastructure. OpenTofu is the community-driven, MPL-2.0 licensed fork of Terraform hosted by the Linux Foundation.
+
+      It reports the errors that neither a formatter nor a rule-based linter can see: unsupported or missing arguments, wrong attribute types, references to undeclared variables, locals, resources or outputs, invalid expressions, and broken module input contracts.
+
+      **Key Features:**
+
+      - **Official Validator**: Built into OpenTofu core, so the checks always match the version of OpenTofu you run
+      - **Open Source**: OpenTofu stays under the **MPL-2.0** license, unlike Terraform which moved to BUSL-1.1
+      - **Schema Aware**: Validates resource and data source arguments against the real provider schemas
+      - **Expression Checking**: Resolves variable, local, output and module references across the whole module
+      - **No Infrastructure Access**: Never reads the state, never contacts a backend and never needs cloud credentials
+      - **Zero Configuration**: Intentionally opinionated, with no configuration or ignore file to maintain
+
+      ## Module initialization
+
+      `tofu validate` can only run on an initialized directory: it needs the provider schemas and the installed child modules of the module it validates. MegaLinter therefore runs the following command once per analyzed directory, before validating it:
+
+      ```shell
+      tofu -chdir=<directory> init -backend=false -input=false -no-color
+      ```
+
+      `-backend=false` is what keeps this a linter: backend initialization is skipped entirely, so no state is read, no state lock is acquired and no cloud credentials are required. The linter works on reusable module repositories that declare no backend at all, and in CI jobs with no access to the infrastructure.
+
+      Initialization does need network access to resolve providers and remote module sources, and credentials when they come from a private registry. A module declaring neither provider nor external module is initialized offline.
+
+      ## Initialization arguments
+
+      Use **TERRAFORM_TOFU_VALIDATE_INIT_ARGUMENTS** to change the arguments sent to `tofu init`. Adding `-lockfile=readonly` turns an out-of-sync `.terraform.lock.hcl` into a reported error, instead of letting the initialization update it:
+
+      ```yaml
+      TERRAFORM_TOFU_VALIDATE_INIT_ARGUMENTS:
+        - "-backend=false"
+        - "-input=false"
+        - "-no-color"
+        - "-lockfile=readonly"
+      ```
+
+      Initialization writes a `.terraform` directory in every analyzed module directory, as any OpenTofu run does. Add `.terraform` to `EXCLUDED_DIRECTORIES` when your repository vendors modules there and you do not want their `.tf` files validated as modules of their own.
+    name: TERRAFORM_TOFU_VALIDATE
+    linter_spdx_license: MPL-2.0
+    # Unlike tofu fmt, this linter has no terraform counterpart to overlap
+    # with, so it owns both the OpenTofu specific extension and ".tf"
+    file_extensions:
+      - ".tf"
+      - ".tofu"
+    linter_url: https://opentofu.org/docs/cli/commands/validate/
+    linter_repo: https://github.com/opentofu/opentofu
+    linter_rules_url: https://opentofu.org/docs/cli/commands/validate/
+    linter_rules_inline_disable_url: https://opentofu.org/docs/language/expressions/custom-conditions/
+    linter_speed: 3
+    linter_icon_png_url: https://raw.githubusercontent.com/opentofu/brand-artifacts/main/full/transparent/PNG/on-light.png
+    linter_banner_image_url: https://raw.githubusercontent.com/opentofu/brand-artifacts/main/full/transparent/SVG/on-light.svg
+    cli_executable: tofu
+    cli_lint_mode: file
+    supported_cli_lint_modes:
+      - file
+    cli_lint_extra_args:
+      - "validate"
+      - "-no-color"
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: "Error: "
+    variables:
+      - name: TERRAFORM_TOFU_VALIDATE_INIT_ARGUMENTS
+        default_value: "-backend=false -input=false -no-color"
+        description: Arguments sent to **tofu init** before validating each directory. Keep `-backend=false` unless you really want MegaLinter to initialize your backend and access your state.
+    common_linter_errors:
+      - identifier: TERRAFORM_TOFU_VALIDATE_ERROR_PROVIDER_UNAVAILABLE
+        regex: "Failed to query available provider packages"
+        message: |-
+          OpenTofu could not resolve the providers declared in `required_providers`.
+          Check that the registry is reachable from the MegaLinter run, that the provider source addresses are correct, and that credentials are available when the provider comes from a private registry.
+      - identifier: TERRAFORM_TOFU_VALIDATE_ERROR_MODULE_NOT_INSTALLED
+        regex: "Module not installed"
+        message: |-
+          A child module declared in a `module` block could not be installed.
+          Verify that its `source` resolves (git reference, registry module name and version constraint) and that the MegaLinter run can reach it.
+      - identifier: TERRAFORM_TOFU_VALIDATE_ERROR_INCONSISTENT_LOCK_FILE
+        regex: "Inconsistent dependency lock file"
+        message: |-
+          The `.terraform.lock.hcl` of the module does not satisfy its `required_providers`, and `-lockfile=readonly` forbids updating it.
+          Run `tofu init -upgrade` locally and commit the refreshed lock file, or remove `-lockfile=readonly` from `TERRAFORM_TOFU_VALIDATE_INIT_ARGUMENTS`.
+    examples:
+      - "tofu -chdir=mymodule init -backend=false -input=false -no-color"
+      - "tofu -chdir=mymodule validate -no-color"
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=docker depName=ghcr.io/opentofu/opentofu
+          ARG TERRAFORM_TOFU_FMT_VERSION=1.12.6-minimal
+        - FROM ghcr.io/opentofu/opentofu:${TERRAFORM_TOFU_FMT_VERSION} AS opentofu
+        - COPY --link --from=opentofu /usr/local/bin/tofu /usr/bin/
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
+    ide:
+      idea:
+        - name: Terraform and HCL
+          url: https://plugins.jetbrains.com/plugin/7808-terraform-and-hcl
+          id: org.intellij.plugins.hcl
+      vscode:
+        - name: OpenTofu
+          url: https://marketplace.visualstudio.com/items?itemName=OpenTofu.vscode-opentofu
+    test_folder: tofu_validate
+    version_extract_regex: "(?<=OpenTofu v)\\d+(\\.\\d+)+"
