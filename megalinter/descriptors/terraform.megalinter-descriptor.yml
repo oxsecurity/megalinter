@@ -317,6 +317,8 @@ linters:
 
       Mind that the extensions select the **directories** to validate, not the files to report on. `tofu validate` always validates a whole module, so once a directory has been selected, every `.tf` and `.tofu` file it contains is parsed and can produce diagnostics.
 
+      Do not add **`.tfvars`**, even though [tofu fmt](https://megalinter.io/latest/descriptors/terraform_tofu_fmt/) does format those files. `tofu validate` ignores variable definition files entirely, including auto-loaded ones, so a `.tfvars` file can never produce a diagnostic here. Worse, a directory holding only `.tfvars` files is an *empty directory* for OpenTofu, and `validate` reports it as valid: adding the extension would run a pointless initialization in every variables folder and report a misleading success.
+
       ## Module initialization
 
       `tofu validate` can only run on an initialized directory: it needs the provider schemas and the installed child modules of the module it validates. MegaLinter therefore runs the following command once per analyzed directory, before validating it:
