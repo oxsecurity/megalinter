@@ -386,6 +386,11 @@ linters:
         message: |-
           A child module declared in a `module` block could not be installed.
           Verify that its `source` resolves (git reference, registry module name and version constraint) and that the MegaLinter run can reach it.
+      - identifier: TERRAFORM_TOFU_VALIDATE_ERROR_MODULE_DOWNLOAD_FAILED
+        regex: "Failed to download module"
+        message: |-
+          A `module` block points to a remote `source` that can not be cloned from inside the MegaLinter container, most often a private repository: an `ssh://git@` source fails with `Host key verification failed` because the container has neither your SSH key nor a `known_hosts` entry for the host.
+          Make the credentials reachable from inside the container, rewrite those sources to an HTTPS URL git can authenticate with a token, or skip the directories concerned with `TERRAFORM_TOFU_VALIDATE_FILTER_REGEX_EXCLUDE`.
       - identifier: TERRAFORM_TOFU_VALIDATE_ERROR_UNREADABLE_MODULE_DIRECTORY
         regex: "Unreadable module directory"
         message: |-
