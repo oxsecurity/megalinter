@@ -331,6 +331,8 @@ linters:
 
       Initialization does need network access to resolve providers and remote module sources, and credentials when they come from a private registry. A module declaring neither provider nor external module is initialized offline.
 
+      Because initialization resolves dependencies, the analyzed repository has to be **self-contained**: a `module` block whose local `source` escapes the repository root, such as `../../modules/something`, can not be installed and is reported as `Unreadable module directory`. Vendor those modules, address them through a git or registry `source`, or skip the directories concerned with `TERRAFORM_TOFU_VALIDATE_FILTER_REGEX_EXCLUDE`.
+
       ## Initialization arguments
 
       Use **TERRAFORM_TOFU_VALIDATE_INIT_ARGUMENTS** to change the arguments sent to `tofu init`. Adding `-lockfile=readonly` turns an out-of-sync `.terraform.lock.hcl` into a reported error, instead of letting the initialization update it:
@@ -358,9 +360,12 @@ linters:
     linter_icon_png_url: https://raw.githubusercontent.com/opentofu/brand-artifacts/main/full/transparent/PNG/on-light.png
     linter_banner_image_url: https://raw.githubusercontent.com/opentofu/brand-artifacts/main/full/transparent/SVG/on-light.svg
     cli_executable: tofu
-    cli_lint_mode: file
+    # tofu validate works on a whole module: a single run validates each
+    # collected directory once, instead of once per file, so a module error is
+    # not repeated for every file of that module
+    cli_lint_mode: list_of_files
     supported_cli_lint_modes:
-      - file
+      - list_of_files
     cli_lint_extra_args:
       - "validate"
       - "-no-color"
@@ -381,6 +386,11 @@ linters:
         message: |-
           A child module declared in a `module` block could not be installed.
           Verify that its `source` resolves (git reference, registry module name and version constraint) and that the MegaLinter run can reach it.
+      - identifier: TERRAFORM_TOFU_VALIDATE_ERROR_UNREADABLE_MODULE_DIRECTORY
+        regex: "Unreadable module directory"
+        message: |-
+          A `module` block points to a local `source` directory that does not exist inside the analyzed workspace, usually a relative path escaping the repository root (`../../modules/...`).
+          Local module sources must be resolvable from the repository MegaLinter analyzes. Vendor the modules into the repository, use a git or registry `source`, or exclude those directories with `TERRAFORM_TOFU_VALIDATE_FILTER_REGEX_EXCLUDE`.
       - identifier: TERRAFORM_TOFU_VALIDATE_ERROR_INCONSISTENT_LOCK_FILE
         regex: "Inconsistent dependency lock file"
         message: |-
