@@ -24,7 +24,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Supports **APPLY_FIXES** to rewrite files in the canonical OpenTofu style
   - **[tofu validate](https://opentofu.org/docs/cli/commands/validate/)**, the built-in validator of **OpenTofu**, available as **TERRAFORM_TOFU_VALIDATE** ([#8793](https://github.com/oxsecurity/megalinter/issues/8793))
     - Reports what formatters and rule-based linters can not see: unsupported or missing arguments, wrong attribute types, references to undeclared variables, locals or outputs, and broken module input contracts
-    - Analyzes both **`.tf`** and **`.tofu`** files, and validates each module directory of your repository
+    - Analyzes **`.tofu`** files only, like **TERRAFORM_TOFU_FMT**, leaving `.tf` free for a future `terraform validate` linter. To validate `.tf` files, set `TERRAFORM_TOFU_VALIDATE_FILE_EXTENSIONS: [".tofu", ".tf"]`
+    - Validates one whole module per directory, so every `.tf` and `.tofu` file of a selected directory is parsed and can produce diagnostics
     - Every directory is initialized with `tofu init -backend=false` beforehand, so no state is read, no state lock is taken and no cloud credentials are needed
     - Set **TERRAFORM_TOFU_VALIDATE_INIT_ARGUMENTS** to change those initialization arguments, for example adding `-lockfile=readonly` to have an out-of-sync `.terraform.lock.hcl` reported as an error instead of being updated
 

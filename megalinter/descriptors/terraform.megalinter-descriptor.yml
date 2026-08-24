@@ -305,6 +305,18 @@ linters:
       - **No Infrastructure Access**: Never reads the state, never contacts a backend and never needs cloud credentials
       - **Zero Configuration**: Intentionally opinionated, with no configuration or ignore file to maintain
 
+      ## Analyzed files
+
+      By default this linter only analyzes **`.tofu`** files, the OpenTofu specific extension that Terraform does not recognize, exactly like [tofu fmt](https://megalinter.io/latest/descriptors/terraform_tofu_fmt/). Nothing is validated in a repository that keeps its OpenTofu configuration in `.tf` files until you add the extension:
+
+      ```yaml
+      TERRAFORM_TOFU_VALIDATE_FILE_EXTENSIONS: [".tofu", ".tf"]
+      ```
+
+      Keeping `.tofu` as the only default leaves `.tf` free for a future `terraform validate` linter, so enabling both would not validate the same repository twice.
+
+      Mind that the extensions select the **directories** to validate, not the files to report on. `tofu validate` always validates a whole module, so once a directory has been selected, every `.tf` and `.tofu` file it contains is parsed and can produce diagnostics.
+
       ## Module initialization
 
       `tofu validate` can only run on an initialized directory: it needs the provider schemas and the installed child modules of the module it validates. MegaLinter therefore runs the following command once per analyzed directory, before validating it:
@@ -329,13 +341,12 @@ linters:
         - "-lockfile=readonly"
       ```
 
-      Initialization writes a `.terraform` directory in every analyzed module directory, as any OpenTofu run does. Add `.terraform` to `EXCLUDED_DIRECTORIES` when your repository vendors modules there and you do not want their `.tf` files validated as modules of their own.
+      Initialization writes a `.terraform` directory in every analyzed module directory, as any OpenTofu run does. Add `.terraform` to `EXCLUDED_DIRECTORIES` when your repository vendors modules there and you do not want their configuration validated as modules of their own.
     name: TERRAFORM_TOFU_VALIDATE
     linter_spdx_license: MPL-2.0
-    # Unlike tofu fmt, this linter has no terraform counterpart to overlap
-    # with, so it owns both the OpenTofu specific extension and ".tf"
+    # OpenTofu specific extension, unknown to Terraform: leaves ".tf" free for
+    # a future terraform validate linter, as tofu fmt does for terraform fmt
     file_extensions:
-      - ".tf"
       - ".tofu"
     linter_url: https://opentofu.org/docs/cli/commands/validate/
     linter_repo: https://github.com/opentofu/opentofu
