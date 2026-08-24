@@ -428,6 +428,7 @@
         "chardef",
         "chardet",
         "charmap",
+        "chdir",
         "CHECKMAKE",
         "Checkmake",
         "checkmake",
