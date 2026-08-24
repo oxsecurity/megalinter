@@ -15832,7 +15832,14 @@
 </li>
 </ul>
 <ul>
-<li>Reporters</li>
+<li>Reporters<ul>
+<li>Linters reporting in <strong>SARIF</strong> format no longer show <strong>No output available</strong> in Pull Request comments and summaries: the details section now names the SARIF report to open and links the <strong>MegaLinter artifacts</strong> (<a href="https://github.com/oxsecurity/megalinter/issues/8730">#8730</a>)<ul>
+<li>Applies to the <strong>GitHub</strong>, <strong>GitLab</strong>, <strong>Azure</strong> and <strong>Bitbucket</strong> comment reporters and to the markdown summary</li>
+<li>The link points where the reporter already links its detailed reports, so it follows <code>REPORTERS_ACTION_RUN_URL</code> when you set it</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Flavors</li>
