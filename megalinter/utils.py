@@ -29,6 +29,10 @@ REPO_HOME_DEFAULT = (
 
 ANSI_ESCAPE_REGEX = re.compile(r"(\x9B|\x1B\[)[0-?]*[ -\/]*[@-~]")
 
+# Workspaces whose "git diff" already failed: list_updated_files runs once per
+# linted file, and a workspace that fails once keeps failing for the whole run
+UPDATED_FILES_FAILED_WORKSPACES: set[str] = set()
+
 # Replacements for temp folder in case of MegaLinter server
 LIST_OF_REPLACEMENTS_REGEX = []
 if os.environ.get("MEGALINTER_SERVER", "") == "true":
@@ -509,7 +513,27 @@ def list_updated_files(repo_home):
                 "Your workspace is not a Git working copy root (e.g., the workspace is inside a submodule)"
             )
             return []
-        changed_files = [item.a_path for item in repo.index.diff(None)]
+        try:
+            changed_files = [item.a_path for item in repo.index.diff(None)]
+        except git.GitCommandError as git_err:
+            # Listing updated files is best effort: a git failure must not end a
+            # run whose linters all passed. Known case (issue #8649): on a
+            # read-only workspace, a required content filter such as git-lfs
+            # can not write its temporary files and the diff exits 128.
+            # GitPython drains stderr before raising, so git's own message is
+            # usually lost: name the workspace and the command instead.
+            message = (
+                f"Unable to list updated files in {repo_home}: {str(git_err)}\n"
+                "If your workspace is mounted read-only, a required git filter "
+                "(e.g. git-lfs) can not write its temporary files: mount .git "
+                "as writable to let MegaLinter detect the files fixed by linters"
+            )
+            if repo_home in UPDATED_FILES_FAILED_WORKSPACES:
+                logging.debug(message)
+            else:
+                UPDATED_FILES_FAILED_WORKSPACES.add(repo_home)
+                logging.warning(message)
+            return []
     return changed_files
 
 
