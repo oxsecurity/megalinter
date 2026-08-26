@@ -62,6 +62,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - **REPOSITORY_CHECKOV** and **REPOSITORY_BETTERLEAKS** only analyze the Pull Request changes when asked to
     - Set `BITBUCKET_PR_ID` in your pipeline (Bitbucket provides it on Pull Request builds) to benefit from it
     - Fixed JSON config schema for Betterleaks
+  - A run where all linters pass does not **exit with an error** anymore when MegaLinter can not list the files updated by the linters ([#8649](https://github.com/oxsecurity/megalinter/issues/8649))
+    - Happens on a **read-only workspace** whose repository uses **git-lfs**: the required LFS filter has nowhere to write its temporary files, so the `git diff` used to detect updated files exits 128
+    - MegaLinter now logs a **warning** naming the workspace and the failed command, reports no updated source file, and completes the run. The `UPDATED_SOURCES_REPORTER: false` workaround is not needed anymore
 
 - Reporters
   - Linters reporting in **SARIF** format no longer show **No output available** in Pull Request comments and summaries: the details section now names the SARIF report to open and links the **MegaLinter artifacts** ([#8730](https://github.com/oxsecurity/megalinter/issues/8730))

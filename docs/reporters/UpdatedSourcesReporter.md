@@ -34,6 +34,12 @@ If you aren't using GitHub Actions, you can:
 - use [Email Reporter](EmailReporter.md): Updated source folder will be in the email attachment reports zip
 - publish folder `<WORKSPACE>/report/updated_sources` as artifact with your CI tool
 
+### Empty updated sources folder
+
+The folder is empty when MegaLinter can not list the files updated by the linters. This happens on a **read-only workspace** whose repository uses **git-lfs**: the LFS filter has nowhere to write its temporary files, so the `git diff` used to detect updated files fails.
+
+MegaLinter logs a warning naming the workspace and the failed command, then completes the run. Mount `.git` as writable to get the updated sources back.
+
 ## Configuration
 
 | Variable                     | Description                                             | Default value   |
