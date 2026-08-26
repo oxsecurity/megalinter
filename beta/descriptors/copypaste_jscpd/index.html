@@ -12593,7 +12593,7 @@
 </code></pre></div>
 <h2 id="jscpd-documentation">jscpd documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>5.0.15</strong></li>
+<li>Version in MegaLinter: <strong>5.0.16</strong></li>
 <li>Visit <a href="https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#config-file" target="_blank">How to configure jscpd rules</a><ul>
 <li>If custom <code>.jscpd.json</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.jscpd.json" target="_blank">.jscpd.json</a> will be used</li>
@@ -12909,9 +12909,19 @@ Options:
 <span class="w">      </span>--list
 <span class="w">          </span>List<span class="w"> </span>all<span class="w"> </span>supported<span class="w"> </span>formats<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
 <span class="w">      </span>--skip-local
-<span class="w">          </span>Skip<span class="w"> </span>clones<span class="w"> </span>where<span class="w"> </span>both<span class="w"> </span>fragments<span class="w"> </span>are<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>same<span class="w"> </span>directory<span class="w"> </span><span class="o">[</span>aliases:<span class="w"> </span>--skipLocal<span class="o">]</span>
+<span class="w">          </span>Skip<span class="w"> </span>clones<span class="w"> </span>where<span class="w"> </span>both<span class="w"> </span>fragments<span class="w"> </span>are<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>same<span class="w"> </span>directory<span class="w"> </span><span class="o">[</span>alias:<span class="w"> </span>--skipLocal<span class="o">]</span>
+<span class="w">      </span>--skip-isolated<span class="w"> </span>&lt;GROUPS&gt;
+<span class="w">          </span>Skip<span class="w"> </span>clones<span class="w"> </span>between<span class="w"> </span>different<span class="w"> </span>folders<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>same<span class="w"> </span>isolation<span class="w"> </span>group:<span class="w"> </span>comma-separated<span class="w"> </span>groups<span class="w"> </span>of<span class="w"> </span>pipe-separated<span class="w"> </span>folders<span class="w"> </span><span class="o">(</span>e.g.<span class="w"> </span><span class="s2">"packages/a|packages/b,libs/a|libs/b"</span><span class="o">)</span><span class="w"> </span><span class="o">[</span>alias:<span class="w"> </span>--skipIsolated<span class="o">]</span>
 <span class="w">      </span>--min-duplicated-lines<span class="w"> </span>&lt;MIN_DUPLICATED_LINES&gt;
 <span class="w">          </span>Minimum<span class="w"> </span>percentage<span class="w"> </span>of<span class="w"> </span>duplication<span class="w"> </span>to<span class="w"> </span>report<span class="w"> </span><span class="o">(</span><span class="m">0</span>-100<span class="o">)</span><span class="w"> </span><span class="o">[</span>default:<span class="w"> </span><span class="m">0</span><span class="o">]</span>
+<span class="w">      </span>--mcp
+<span class="w">          </span>Serve<span class="w"> </span>the<span class="w"> </span>Model<span class="w"> </span>Context<span class="w"> </span>Protocol<span class="w"> </span>over<span class="w"> </span>stdio:<span class="w"> </span>scan<span class="w"> </span>PATHs<span class="w"> </span>once,<span class="w"> </span><span class="k">then</span><span class="w"> </span>expose<span class="w"> </span>check_duplication<span class="w"> </span>/<span class="w"> </span>get_statistics<span class="w"> </span>/<span class="w"> </span>check_current_directory<span class="w"> </span>tools<span class="w"> </span>to<span class="w"> </span>MCP<span class="w"> </span>clients
+<span class="w">      </span>--summary
+<span class="w">          </span>Print<span class="w"> </span>a<span class="w"> </span>codebase<span class="w"> </span>summary:<span class="w"> </span>top<span class="w"> </span>files<span class="w"> </span>and<span class="w"> </span>folders<span class="w"> </span>by<span class="w"> </span>tokens,<span class="w"> </span>lines,<span class="w"> </span>size,<span class="w"> </span>complexity
+<span class="w">      </span>--summary-top<span class="w"> </span>&lt;N&gt;
+<span class="w">          </span>Number<span class="w"> </span>of<span class="w"> </span>entries<span class="w"> </span><span class="k">in</span><span class="w"> </span>each<span class="w"> </span>summary<span class="w"> </span>top<span class="w"> </span>list<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">10</span><span class="o">)</span>
+<span class="w">      </span>--summary-by<span class="w"> </span>&lt;METRIC&gt;
+<span class="w">          </span>Summary<span class="w"> </span>sort<span class="w"> </span>metric:<span class="w"> </span>tokens,<span class="w"> </span>lines,<span class="w"> </span>size,<span class="w"> </span>complexity<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>tokens<span class="o">)</span>
 <span class="w">  </span>-s,<span class="w"> </span>--silent
 <span class="w">          </span>Do<span class="w"> </span>not<span class="w"> </span>write<span class="w"> </span>detection<span class="w"> </span>progress<span class="w"> </span>and<span class="w"> </span>result<span class="w"> </span>to<span class="w"> </span>console
 <span class="w">      </span>--no-tips
@@ -12927,12 +12937,12 @@ Options:
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=npm depName=jscpd</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">NPM_JSCPD_VERSION</span><span class="o">=</span><span class="m">5</span>.0.15
+<span class="k">ARG</span><span class="w"> </span><span class="nv">NPM_JSCPD_VERSION</span><span class="o">=</span><span class="m">5</span>.0.16
 </code></pre></div></li>
 </ul>
 <ul>
 <li>NPM packages (node.js):<ul>
-<li><a href="https://www.npmjs.com/package/jscpd/v/5.0.15">jscpd@5.0.15</a></li>
+<li><a href="https://www.npmjs.com/package/jscpd/v/5.0.16">jscpd@5.0.16</a></li>
 </ul>
 </li>
 </ul>
