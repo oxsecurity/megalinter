@@ -61,6 +61,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **Bitbucket Pipelines** is now recognized as a Pull Request context: `PULL_REQUEST` optimizations that were silently skipped there are applied again
     - **REPOSITORY_CHECKOV** and **REPOSITORY_BETTERLEAKS** only analyze the Pull Request changes when asked to
     - Set `BITBUCKET_PR_ID` in your pipeline (Bitbucket provides it on Pull Request builds) to benefit from it
+    - Fixed JSON config schema for Betterleaks
 
 - Reporters
   - Linters reporting in **SARIF** format no longer show **No output available** in Pull Request comments and summaries: the details section now names the SARIF report to open and links the **MegaLinter artifacts** ([#8730](https://github.com/oxsecurity/megalinter/issues/8730))
