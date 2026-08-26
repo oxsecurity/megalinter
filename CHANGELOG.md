@@ -158,6 +158,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff-format](https://github.com/astral-sh/ruff) from 0.16.2 to **0.16.3** on 2026-08-23
   - [ruff](https://github.com/astral-sh/ruff) from 0.16.2 to **0.16.3** on 2026-08-23
   - [checkov](https://www.checkov.io/) from 3.3.9 to **3.3.11** on 2026-08-23
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 5.0.15 to **5.0.16** on 2026-08-25
+  - [biome](https://biomejs.dev) from 2.5.8 to **2.5.9** on 2026-08-25
 <!-- linter-versions-end -->
 
 ## [v10.0.0] - 2026-08-08

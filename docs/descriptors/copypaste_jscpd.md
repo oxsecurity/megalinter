@@ -45,7 +45,7 @@ Example:
 
 ## jscpd documentation
 
-- Version in MegaLinter: **5.0.15**
+- Version in MegaLinter: **5.0.16**
 - Visit [Official Web Site](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#readme){target=_blank}
 - See [How to configure jscpd rules](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#config-file){target=_blank}
   - If custom `.jscpd.json` config file isn't found, [.jscpd.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.jscpd.json){target=_blank} will be used
@@ -192,9 +192,19 @@ Options:
       --list
           List all supported formats and exit
       --skip-local
-          Skip clones where both fragments are in the same directory [aliases: --skipLocal]
+          Skip clones where both fragments are in the same directory [alias: --skipLocal]
+      --skip-isolated <GROUPS>
+          Skip clones between different folders of the same isolation group: comma-separated groups of pipe-separated folders (e.g. "packages/a|packages/b,libs/a|libs/b") [alias: --skipIsolated]
       --min-duplicated-lines <MIN_DUPLICATED_LINES>
           Minimum percentage of duplication to report (0-100) [default: 0]
+      --mcp
+          Serve the Model Context Protocol over stdio: scan PATHs once, then expose check_duplication / get_statistics / check_current_directory tools to MCP clients
+      --summary
+          Print a codebase summary: top files and folders by tokens, lines, size, complexity
+      --summary-top <N>
+          Number of entries in each summary top list (default: 10)
+      --summary-by <METRIC>
+          Summary sort metric: tokens, lines, size, complexity (default: tokens)
   -s, --silent
           Do not write detection progress and result to console
       --no-tips
@@ -212,8 +222,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=5.0.15
+ARG NPM_JSCPD_VERSION=5.0.16
 ```
 
 - NPM packages (node.js):
-  - [jscpd@5.0.15](https://www.npmjs.com/package/jscpd/v/5.0.15)
+  - [jscpd@5.0.16](https://www.npmjs.com/package/jscpd/v/5.0.16)
