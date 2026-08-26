@@ -45,15 +45,42 @@ class CheckovLinter(Linter):
                 github_conf_dir = ".megalinter_github_conf"
             self._cached_subprocess_env["CKV_GITHUB_CONF_DIR_NAME"] = github_conf_dir
 
-    def build_lint_command(self, file=None) -> list:
-        if (
-            config.get(self.request_id, "VALIDATE_ALL_CODEBASE") == "false"
+    # In project lint mode, checkov scans the whole workspace by itself. During a
+    # pull request run with VALIDATE_ALL_CODEBASE=false, restrict the scan to the
+    # files updated in the pull request. In file and list_of_files lint modes,
+    # MegaLinter already sends only the updated files to checkov.
+    def is_pr_diff_scan(self) -> bool:
+        return (
+            self.cli_lint_mode == "project"
+            and config.get(self.request_id, "VALIDATE_ALL_CODEBASE") == "false"
             and utils.is_pr()
-        ):
-            if "--file" not in self.cli_lint_extra_args_after:
+        )
+
+    # Files updated in the pull request. Defensive on purpose: master can be
+    # absent when the linter is run standalone or instantiated in unit tests
+    def get_pr_diff_files(self) -> list:
+        master = getattr(self, "master", None)
+        return getattr(master, "all_diff_files", None) or []
+
+    def collect_files(self, all_files):
+        super().collect_files(all_files)
+        # No file updated in the pull request means there is nothing for checkov
+        # to scan: skip it, instead of scanning the whole project (which the user
+        # opted out of with VALIDATE_ALL_CODEBASE=false)
+        if self.is_pr_diff_scan() and len(self.get_pr_diff_files()) == 0:
+            logging.info(
+                "[Checkov] Skipped, as no file has been updated in the pull request"
+            )
+            self.is_active = False
+
+    def build_lint_command(self, file=None) -> list:
+        if self.is_pr_diff_scan():
+            diff_files = self.get_pr_diff_files()
+            # Never append --file without any value: checkov would fail on its
+            # own arguments ("expected at least one argument") instead of linting
+            if len(diff_files) > 0 and "--file" not in self.cli_lint_extra_args_after:
                 self.cli_lint_extra_args_after.append("--file")
-                for file_to_lint in self.master.all_diff_files:
-                    self.cli_lint_extra_args_after.append(file_to_lint)
+                self.cli_lint_extra_args_after += diff_files
 
         cmd = super().build_lint_command(file)
 

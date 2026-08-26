@@ -990,6 +990,14 @@ class Linter:
                     file_errors_number,
                     file_warnings_number,
                 )
+        elif self.cli_lint_mode == "list_of_files" and len(self.files) == 0:
+            # Nothing to lint: appending an empty list of files to the command
+            # line builds an invalid command (ex: "checkov --file" with no value
+            # after it), and the linter would fail on its own arguments instead
+            # of reporting a lint result
+            logging.info(
+                f"{self.name} has no file to lint, so its command has not been run"
+            )
         else:
             # Lint all workspace in one command
             return_code, stdout = self.process_linter()
@@ -1645,12 +1653,16 @@ class Linter:
 
             cmd += self.cli_lint_mode_file_extra_args_after
         elif self.cli_lint_mode == "list_of_files":
-            self.cli_lint_mode_list_of_files_extra_args_after = self.replace_vars(
-                self.cli_lint_mode_list_of_files_extra_args_after,
-                additional_replace_variables,
-            )
+            # Arguments introducing the list of files (ex: --file) are added
+            # only when there is at least one file to lint, otherwise they would
+            # be left without value and make the linter command invalid
+            if len(self.files) > 0:
+                self.cli_lint_mode_list_of_files_extra_args_after = self.replace_vars(
+                    self.cli_lint_mode_list_of_files_extra_args_after,
+                    additional_replace_variables,
+                )
 
-            cmd += self.cli_lint_mode_list_of_files_extra_args_after
+                cmd += self.cli_lint_mode_list_of_files_extra_args_after
         elif self.cli_lint_mode == "project":
             # Single gate for every excluded-directories forwarding mechanism:
             # native CLI arguments, generated ignore files (report folder or
