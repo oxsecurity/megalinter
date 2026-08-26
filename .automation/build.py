@@ -143,6 +143,17 @@ IDE_LIST = {
     "vscode": {"label": "Visual Studio Code", "url": "https://code.visualstudio.com/"},
 }
 
+# Vulnerability database settings of the trivy linters, added to the generated
+# MegaLinter configuration schema from their descriptor variables
+TRIVY_DB_SCHEMA_LINTERS = ["REPOSITORY_TRIVY", "REPOSITORY_TRIVY_SBOM"]
+TRIVY_DB_SCHEMA_VARIABLE_TITLES = {
+    "DB_REPOSITORIES": "Vulnerability database repositories",
+    "JAVA_DB_REPOSITORIES": "Java vulnerability database repositories",
+    "DB_RETRY_ATTEMPTS": "Vulnerability database download attempts",
+    "DB_RETRY_INITIAL_DELAY": "Vulnerability database first retry delay",
+    "DB_RETRY_MAX_DELAY": "Vulnerability database maximum retry delay",
+}
+
 DESCRIPTORS_FOR_BUILD_CACHE = None
 
 MAIN_DOCKERFILE = f"{REPO_HOME}/Dockerfile"
@@ -1727,6 +1738,14 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         },
                     ],
                 ]
+            )
+        # Trivy linters expose vulnerability database mirrors and download
+        # retry settings consumed by TrivyLinter. Same narrow approach as
+        # betterleaks above: their descriptor variables are converted into
+        # configuration schema entries from their known name suffixes.
+        if linter.name in TRIVY_DB_SCHEMA_LINTERS:
+            add_in_config_schema_file(
+                build_trivy_db_config_schema_variables(linter, title_prefix)
             )
         linter_doc_md += [
             f"| {linter.name}_ARGUMENTS | User custom arguments to add in linter CLI call<br/>"
@@ -3329,6 +3348,32 @@ def validate_config_schema_root_x_metadata() -> None:
         for prop_name, missing_keys in sorted(missing, key=lambda x: x[0]):
             logging.warning("- %s: missing %s", prop_name, ", ".join(missing_keys))
         raise Exception("Config schema root properties missing x-keys")
+
+
+def build_trivy_db_config_schema_variables(linter, title_prefix):
+    schema_variables = []
+    for variable in linter.variables:
+        suffix = variable["name"].replace(f"{linter.name}_", "", 1)
+        if suffix not in TRIVY_DB_SCHEMA_VARIABLE_TITLES:
+            continue
+        default_value = variable["default_value"]
+        variable_schema = {
+            "$id": f"#/properties/{variable['name']}",
+            "description": f"{linter.name}: {variable['description']}",
+            "title": (
+                f"{title_prefix}{linter.name}: "
+                f"{TRIVY_DB_SCHEMA_VARIABLE_TITLES[suffix]}"
+            ),
+        }
+        if suffix.endswith("_REPOSITORIES"):
+            variable_schema["type"] = ["array", "string"]
+            variable_schema["items"] = {"type": "string"}
+            variable_schema["default"] = default_value.split(",")
+        else:
+            variable_schema["type"] = "integer"
+            variable_schema["default"] = int(default_value)
+        schema_variables += [[variable["name"], variable_schema]]
+    return schema_variables
 
 
 def add_in_config_schema_file(variables):
