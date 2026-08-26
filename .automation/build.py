@@ -1664,6 +1664,73 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 linter_doc_md += [
                     f"| {variable['name']} | {variable['description']} | `{variable['default_value']}` |"
                 ]
+        # Betterleaks has linter-specific PR scan variables that are consumed
+        # by BetterleaksLinter and documented from the descriptor, but they are
+        # not otherwise added to the generated MegaLinter configuration schema.
+        # Keep this narrow until descriptor variables carry enough type metadata
+        # to generate schema entries generically.
+        if linter.name == "REPOSITORY_BETTERLEAKS":
+            add_in_config_schema_file(
+                [
+                    [
+                        "REPOSITORY_BETTERLEAKS_PR_COMMITS_SCAN",
+                        {
+                            "$id": (
+                                "#/properties/"
+                                "REPOSITORY_BETTERLEAKS_PR_COMMITS_SCAN"
+                            ),
+                            "description": (
+                                "REPOSITORY_BETTERLEAKS: Scan only commits in "
+                                "the current Pull Request/Merge Request"
+                            ),
+                            "type": "boolean",
+                            "title": (
+                                f"{title_prefix}REPOSITORY_BETTERLEAKS: "
+                                "Scan Pull Request/Merge Request commits"
+                            ),
+                            "default": False,
+                        },
+                    ],
+                    [
+                        "REPOSITORY_BETTERLEAKS_PR_SOURCE_SHA",
+                        {
+                            "$id": (
+                                "#/properties/"
+                                "REPOSITORY_BETTERLEAKS_PR_SOURCE_SHA"
+                            ),
+                            "description": (
+                                "REPOSITORY_BETTERLEAKS: Source commit SHA of "
+                                "the Pull Request/Merge Request"
+                            ),
+                            "type": "string",
+                            "title": (
+                                f"{title_prefix}REPOSITORY_BETTERLEAKS: "
+                                "Pull Request/Merge Request source SHA"
+                            ),
+                            "default": "",
+                        },
+                    ],
+                    [
+                        "REPOSITORY_BETTERLEAKS_PR_TARGET_SHA",
+                        {
+                            "$id": (
+                                "#/properties/"
+                                "REPOSITORY_BETTERLEAKS_PR_TARGET_SHA"
+                            ),
+                            "description": (
+                                "REPOSITORY_BETTERLEAKS: Target commit SHA of "
+                                "the Pull Request/Merge Request"
+                            ),
+                            "type": "string",
+                            "title": (
+                                f"{title_prefix}REPOSITORY_BETTERLEAKS: "
+                                "Pull Request/Merge Request target SHA"
+                            ),
+                            "default": "",
+                        },
+                    ],
+                ]
+            )
         linter_doc_md += [
             f"| {linter.name}_ARGUMENTS | User custom arguments to add in linter CLI call<br/>"
             f'Ex: `-s --foo "bar"` |  |'
