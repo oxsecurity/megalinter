@@ -1066,13 +1066,10 @@ class Megalinter:
         return all_files
 
     def _is_excluded_dir(self, rel_dir_path, excluded_directories):
-        # Single source of truth for directory-exclusion matching, shared by
-        # full-codebase (os.walk) and changed-files (git diff) modes: a
-        # directory matches by its basename at any nesting level, or by its
-        # workspace-relative path.
-        rel_dir_path = rel_dir_path.replace("\\", "/")
-        basename = rel_dir_path.rsplit("/", 1)[-1]
-        return basename in excluded_directories or rel_dir_path in excluded_directories
+        # Directory-exclusion matching (basename at any nesting level, or
+        # workspace-relative path) is shared with the project lint mode
+        # exclusions forwarding: it lives in utils
+        return utils.is_excluded_dir(rel_dir_path, excluded_directories)
 
     def _is_in_excluded_directory(self, rel_file, excluded_directories):
         # Return True when any ancestor directory of rel_file is excluded.
@@ -1085,26 +1082,9 @@ class Megalinter:
         return False
 
     def _normalize_excluded_directories(self, excluded_directories):
-        # Convert absolute paths located inside the workspace into
-        # workspace-relative paths so they match the values produced by
-        # os.walk(). Workspace-relative entries are kept unchanged; absolute
-        # paths outside the workspace are dropped (they can never match).
-        workspace_abs = os.path.abspath(self.workspace)
-        normalized = set()
-        for excluded_dir in excluded_directories:
-            if not excluded_dir:
-                continue
-            if os.path.isabs(excluded_dir):
-                try:
-                    rel = os.path.relpath(excluded_dir, workspace_abs)
-                except ValueError:
-                    continue
-                if rel == "." or rel.startswith(".."):
-                    continue
-                normalized.add(rel.replace("\\", "/"))
-            else:
-                normalized.add(excluded_dir)
-        return normalized
+        return utils.normalize_excluded_directories(
+            self.workspace, excluded_directories
+        )
 
     def list_files_all(self):
         # List all files under workspace root directory

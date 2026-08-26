@@ -165,6 +165,94 @@ def get_excluded_directories(request_id):
     return result
 
 
+# Convert absolute paths located inside the workspace into workspace-relative
+# paths so they match the values produced by os.walk(). Workspace-relative
+# entries are kept unchanged; absolute paths outside the workspace are dropped
+# (they can never match)
+def normalize_excluded_directories(workspace, excluded_directories) -> set[str]:
+    workspace_abs = os.path.abspath(workspace)
+    normalized = set()
+    for excluded_dir in excluded_directories:
+        if not excluded_dir:
+            continue
+        if os.path.isabs(excluded_dir):
+            try:
+                rel = os.path.relpath(excluded_dir, workspace_abs)
+            except ValueError:
+                continue
+            if rel == "." or rel.startswith(".."):
+                continue
+            normalized.add(rel.replace("\\", "/"))
+        else:
+            normalized.add(excluded_dir.replace("\\", "/").strip("/"))
+    return normalized
+
+
+# Single source of truth for directory-exclusion matching, shared by
+# full-codebase (os.walk), changed-files (git diff) and project lint mode
+# exclusions forwarding: a directory matches by its basename at any nesting
+# level, or by its workspace-relative path. Returns the matched entry, so
+# callers can group found directories by the excluded entry they come from
+def match_excluded_dir(rel_dir_path, excluded_directories) -> Optional[str]:
+    rel_dir_path = rel_dir_path.replace("\\", "/").strip("/")
+    if rel_dir_path in excluded_directories:
+        return rel_dir_path
+    basename = rel_dir_path.rsplit("/", 1)[-1]
+    if basename in excluded_directories:
+        return basename
+    return None
+
+
+def is_excluded_dir(rel_dir_path, excluded_directories) -> bool:
+    return match_excluded_dir(rel_dir_path, excluded_directories) is not None
+
+
+_workspace_excluded_directories_cache: dict = {}
+
+
+# Locate every excluded directory in the workspace, at any nesting level:
+# EXCLUDED_DIRECTORIES and ADDITIONAL_EXCLUDED_DIRECTORIES are basenames
+# excluded wherever they are found, so a lookup limited to the workspace root
+# would miss directories like infrastructure/cdk.out. Returns a dict mapping
+# each matched excluded entry to the workspace-relative paths where it exists.
+# The walk never descends into a matched directory, so it stays cheap even on
+# repositories carrying huge node_modules, .venv or .terraform trees, and its
+# result is cached for the whole MegaLinter run
+def find_workspace_excluded_directories(
+    request_id, workspace, excluded_directories
+) -> dict:
+    excluded_directories = normalize_excluded_directories(
+        workspace, excluded_directories
+    )
+    cache_key = (
+        str(request_id),
+        os.path.abspath(workspace),
+        tuple(sorted(excluded_directories)),
+    )
+    cached = _workspace_excluded_directories_cache.get(cache_key)
+    if cached is not None:
+        return cached
+    found: dict[str, list[str]] = {}
+    for dir_path, sub_dirs, _files in os.walk(
+        workspace, topdown=True, followlinks=False
+    ):
+        rel_dir_path = os.path.relpath(dir_path, workspace).replace("\\", "/")
+        prefix = "" if rel_dir_path == "." else rel_dir_path + "/"
+        kept_sub_dirs = []
+        for sub_dir in sub_dirs:
+            rel_sub_dir = prefix + sub_dir
+            matched = match_excluded_dir(rel_sub_dir, excluded_directories)
+            if matched is not None:
+                found.setdefault(matched, []).append(rel_sub_dir)
+                continue  # never descend into an excluded directory
+            if sub_dir != ".git":
+                kept_sub_dirs.append(sub_dir)
+        sub_dirs[:] = kept_sub_dirs
+    result = {matched: sorted(paths) for matched, paths in found.items()}
+    _workspace_excluded_directories_cache[cache_key] = result
+    return result
+
+
 # Remove comments and trailing commas from JSONC content so it can be parsed
 # with json.loads (string contents are preserved untouched)
 def strip_jsonc(content: str) -> str:

@@ -116,7 +116,10 @@ class BetterleaksLinter(Linter):
             config_lines += ["useDefault = true"]
         config_lines += ["", "[allowlist]", "paths = ["]
         for excluded_dir in self.get_project_exclude_directories():
-            path_regex = re.escape(excluded_dir.replace("\\", "/")) + "/"
+            # allowlist paths are unanchored regexes matched against the file
+            # path: (^|/) keeps them matching the directory at any nesting
+            # level while not matching a directory merely ending with the name
+            path_regex = "(^|/)" + re.escape(excluded_dir.replace("\\", "/")) + "/"
             config_lines += [f"    '{path_regex}',"]
         config_lines += ["]"]
         generated_config = self.write_report_generated_file(

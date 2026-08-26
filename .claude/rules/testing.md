@@ -22,6 +22,7 @@ globs: ["megalinter/tests/**/*.py", ".automation/test/**"]
 ## Poison Fixtures (excluded directories forwarding guard)
 - Linters that forward `EXCLUDED_DIRECTORIES` in project lint mode (descriptor `cli_lint_mode_project_exclude_*` properties or a `manage_excluded_directories_config()` override) have a **poison fixture**: a deliberately failing file inside `.automation/test/<test_folder>/good/.wireit/`
 - `.wireit` is a default excluded directory that almost no tool skips natively, so `test_success_project_lint_mode` passes only if the forwarding actually excludes it — the fixture is a regression test for the forwarding, not for the linter rules
+- Excluded directories are matched by basename **at any nesting level**, so linters whose exclusion patterns match at any level also get a nested poison in `.automation/test/<test_folder>/good/<subdir>/.wireit/` (ex: `betterleaks/good/infrastructure/.wireit/`), guarding the nested forwarding fixed in issue #8806
 - When adding forwarding to a linter, add its poison fixture; when a project success test fails on a file under `.wireit/`, the forwarding is broken, not the fixture
 - Constraints: only in folders with a `good/` subfolder, and only when every project-capable linter sharing the test folder has forwarding (otherwise the poison legitimately fails the non-forwarding tenant)
 - No poison fixture for a linter that can not receive exclusions at all (coffeelint, sqlfluff): its `good/` folder must stay clean, and the limitation is documented in the descriptor `linter_text` instead

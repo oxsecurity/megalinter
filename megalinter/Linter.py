@@ -1750,17 +1750,28 @@ class Linter:
     # Directories forwarded to project-mode linters: EXCLUDED_DIRECTORIES +
     # ADDITIONAL_EXCLUDED_DIRECTORIES + directories identified from
     # FILTER_REGEX_EXCLUDE (global, descriptor or linter scoped) literal
-    # prefixes. Only directories existing at the workspace root are kept, so
-    # linter arguments and generated ignore/config files stay minimal. No
-    # filesystem walk: a nested-only directory or a regex too complex to trim
-    # into an existing directory is simply skipped.
+    # prefixes. Only entries actually found in the workspace are kept, so
+    # linter arguments and generated ignore/config files stay minimal, and
+    # nothing is forwarded when none exists. The lookup follows MegaLinter's
+    # own file filtering: excluded entries are directory basenames matched at
+    # any nesting level, so infrastructure/cdk.out is found for "cdk.out".
     # REPORT_OUTPUT_FOLDER is the exception: MegaLinter writes into it while
     # linters run, so it is always forwarded, even when it does not exist yet
     # when the command line is built
     def get_project_exclude_directories(self):
-        cached = getattr(self, "project_exclude_directories", None)
-        if cached is not None:
-            return cached
+        if getattr(self, "project_exclude_directories", None) is None:
+            self.compute_project_exclude_directories()
+        return self.project_exclude_directories
+
+    # Workspace-relative paths of every directory matching an excluded entry,
+    # for exclusion arguments requiring a real path instead of a directory
+    # name (ex: pmd --exclude, whose value template holds {{WORKSPACE}})
+    def get_project_exclude_directory_paths(self):
+        if getattr(self, "project_exclude_directory_paths", None) is None:
+            self.compute_project_exclude_directories()
+        return self.project_exclude_directory_paths
+
+    def compute_project_exclude_directories(self):
         excluded = set(utils.get_excluded_directories(self.request_id))
         exclude_regexes = (
             utils.normalize_regex_filter(
@@ -1772,28 +1783,18 @@ class Linter:
         for exclude_regex in exclude_regexes:
             for candidate in utils.extract_dir_candidates_from_regex(exclude_regex):
                 excluded.add(candidate)
-        workspace_abs = os.path.abspath(self.workspace)
-        always_forwarded = utils.get_report_output_folder_name(self.request_id)
-        existing = set()
-        for excl_dir in excluded:
-            if not excl_dir:
-                continue
-            if os.path.isabs(excl_dir):
-                # Keep absolute paths only when inside the workspace,
-                # converted to workspace-relative form
-                try:
-                    rel_dir = os.path.relpath(excl_dir, workspace_abs)
-                except ValueError:
-                    continue
-                if rel_dir == "." or rel_dir.startswith(".."):
-                    continue
-                excl_dir = rel_dir.replace("\\", "/")
-            if excl_dir == always_forwarded or os.path.isdir(
-                os.path.join(self.workspace, excl_dir)
-            ):
-                existing.add(excl_dir)
-        self.project_exclude_directories = sorted(existing)
-        return self.project_exclude_directories
+        found = utils.find_workspace_excluded_directories(
+            self.request_id, self.workspace, excluded
+        )
+        names = set(found.keys())
+        paths = {path for dir_paths in found.values() for path in dir_paths}
+        always_forwarded = utils.normalize_excluded_directories(
+            self.workspace, [utils.get_report_output_folder_name(self.request_id)]
+        )
+        names |= always_forwarded
+        paths |= always_forwarded
+        self.project_exclude_directories = sorted(names)
+        self.project_exclude_directory_paths = sorted(paths)
 
     def read_workspace_file_lines(self, file_name):
         file_path = os.path.join(self.workspace, file_name)
@@ -1812,9 +1813,17 @@ class Linter:
         arg_name = self.cli_lint_mode_project_exclude_arg_name
         seed_values = list(self.cli_lint_mode_project_exclude_seed_values)
         seed_values += self.get_config_list_seed_values()
+        # A {{WORKSPACE}}-anchored template builds an absolute path: it can not
+        # use a bare directory name, so each location found in the workspace is
+        # sent instead
+        excluded_dirs = (
+            self.get_project_exclude_directory_paths()
+            if "{{WORKSPACE}}" in self.cli_lint_mode_project_exclude_arg_value
+            else self.get_project_exclude_directories()
+        )
         values = seed_values + [
             self.cli_lint_mode_project_exclude_arg_value.replace("{{DIR}}", excl_dir)
-            for excl_dir in self.get_project_exclude_directories()
+            for excl_dir in excluded_dirs
         ]
         values = self.replace_vars(values)
         if len(values) == 0:

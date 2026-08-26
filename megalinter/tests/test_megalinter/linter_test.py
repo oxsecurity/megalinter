@@ -65,21 +65,29 @@ class LinterTest(unittest.TestCase):
             self.run_activation(["JAVASCRIPT_ES"], ["JAVASCRIPT_ES"], "WHATEVER")
         )
 
-    def get_forwarded_exclude_directories(self, existing_directories):
+    def build_exclude_forwarding_linter(self, workspace, config_values=None):
         linter = Linter.__new__(Linter)
         linter.name = "REPOSITORY_TRIVY"
         linter.request_id = str(uuid.uuid1())
         linter.filter_regex_exclude_descriptor = None
         linter.filter_regex_exclude_linter = None
-        config.init_config(linter.request_id, None, {})
-        try:
-            with tempfile.TemporaryDirectory() as workspace:
-                linter.workspace = workspace
+        linter.workspace = workspace
+        config.init_config(linter.request_id, None, config_values or {})
+        return linter
+
+    def get_forwarded_exclude_directories(
+        self, existing_directories, config_values=None, return_paths=False
+    ):
+        with tempfile.TemporaryDirectory() as workspace:
+            linter = self.build_exclude_forwarding_linter(workspace, config_values)
+            try:
                 for directory in existing_directories:
                     os.makedirs(os.path.join(workspace, directory))
+                if return_paths is True:
+                    return linter.get_project_exclude_directory_paths()
                 return linter.get_project_exclude_directories()
-        finally:
-            config.delete(linter.request_id)
+            finally:
+                config.delete(linter.request_id)
 
     def test_report_folder_is_forwarded_even_when_it_does_not_exist(self):
         # Reporters write in the report folder while linters run: a project-mode
@@ -89,6 +97,37 @@ class LinterTest(unittest.TestCase):
 
     def test_other_excluded_directories_are_forwarded_only_when_existing(self):
         excluded = self.get_forwarded_exclude_directories(["node_modules"])
+        self.assertIn("node_modules", excluded)
+        self.assertNotIn(".venv", excluded)
+
+    def test_nested_excluded_directories_are_forwarded(self):
+        # EXCLUDED_DIRECTORIES are basenames excluded at any nesting level:
+        # a directory that only exists deeper in the tree must be forwarded too
+        excluded = self.get_forwarded_exclude_directories(
+            [os.path.join("infrastructure", "cdk.out")],
+            {"ADDITIONAL_EXCLUDED_DIRECTORIES": "cdk.out"},
+        )
+        self.assertIn("cdk.out", excluded)
+
+    def test_nested_excluded_directory_paths_are_collected(self):
+        # {{WORKSPACE}} anchored exclusion arguments need real paths
+        paths = self.get_forwarded_exclude_directories(
+            [
+                os.path.join("infrastructure", "cdk.out"),
+                os.path.join("apps", "web", "cdk.out"),
+            ],
+            {"ADDITIONAL_EXCLUDED_DIRECTORIES": "cdk.out"},
+            return_paths=True,
+        )
+        self.assertIn("infrastructure/cdk.out", paths)
+        self.assertIn("apps/web/cdk.out", paths)
+        self.assertNotIn("cdk.out", paths)
+
+    def test_excluded_directories_walk_does_not_descend_into_matches(self):
+        # A directory nested inside an already excluded one is not reported
+        excluded = self.get_forwarded_exclude_directories(
+            [os.path.join("node_modules", "some-package", ".venv")]
+        )
         self.assertIn("node_modules", excluded)
         self.assertNotIn(".venv", excluded)
 
