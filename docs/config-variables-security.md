@@ -51,7 +51,7 @@ If you override `SECURED_ENV_VARIABLES_DEFAULT`, it replaces the default list, s
 
 SECURED_ENV_VARIABLES_DEFAULT contains exact names and (regular expressions) matching patterns for commonly used sensitive environment variables:
 
-- PAT
+- (^|_)(PAT)($|_)
 - SYSTEM_ACCESSTOKEN
 - (^|_)(USERNAME)($|_)
 - (^|_)(PASSWORD|PASSWD|PASS|PWD)($|_)
@@ -67,7 +67,7 @@ SECURED_ENV_VARIABLES_DEFAULT contains exact names and (regular expressions) mat
 - (SFDX_CLIENT_KEY_.*)
 - (^|_)(SLACK|DISCORD|TEAMS|WEBHOOK)_URL($|_)
 
-This compact list is intentionally pattern-based: variables such as `GITHUB_TOKEN`, `CI_JOB_TOKEN`, `NPM_TOKEN`, `GIT_AUTHORIZATION_BEARER`, `AWS_SECRET_ACCESS_KEY`, `AZURE_CLIENT_SECRET`, `OPENAI_API_KEY`, `DOCKER_PASSWORD`, and `SMTP_PASSWORD` are hidden through these broader matchers.
+This compact list is intentionally pattern-based: variables such as `GITHUB_TOKEN`, `CI_JOB_TOKEN`, `NPM_TOKEN`, `GIT_AUTHORIZATION_BEARER`, `AWS_SECRET_ACCESS_KEY`, `AZURE_CLIENT_SECRET`, `OPENAI_API_KEY`, `DOCKER_PASSWORD`, `SMTP_PASSWORD`, `AZURE_PAT`, and `PAT_GITHUB_COM` are hidden through these broader matchers.
 
 ## Security boundaries and threat model
 

@@ -14,7 +14,7 @@ RUN_CONFIGS = {}  # type: ignore[var-annotated]
 SKIP_DELETE_CONFIG = False
 _ENV_CACHE = None  # Cached copy of os.environ to avoid repeated copies
 DEFAULT_SECURED_ENV_VARIABLES = (
-    "PAT",
+    "(^|_)(PAT)($|_)",
     "SYSTEM_ACCESSTOKEN",
     "(^|_)(USERNAME)($|_)",
     "(^|_)(PASSWORD|PASSWD|PASS|PWD)($|_)",

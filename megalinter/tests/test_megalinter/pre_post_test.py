@@ -7,8 +7,9 @@ Unit tests for Megalinter class
 import os
 import unittest
 import uuid
+from types import SimpleNamespace
 
-from megalinter import config, utilstest
+from megalinter import config, pre_post_factory, utilstest
 
 
 class PrePostTest(unittest.TestCase):
@@ -73,3 +74,55 @@ class PrePostTest(unittest.TestCase):
         )
         config.SKIP_DELETE_CONFIG = False
         config.delete(self.request_id)
+
+
+class PrePostReplacementEnvVarsTest(unittest.TestCase):
+    def setUp(self):
+        if "MEGALINTER_CONFIG" in os.environ:
+            del os.environ["MEGALINTER_CONFIG"]
+
+    def build_command_env(self, with_replacement: bool):
+        request_id = str(uuid.uuid1())
+        config.init_config(
+            request_id,
+            None,
+            {
+                "GITHUB_TOKEN": "GITHUB_TOKEN_VALUE",
+                "PAT_GITHUB_COM": "PAT_GITHUB_COM_VALUE",
+            },
+        )
+        command_info = {"command": "echo test", "cwd": "root", "secured_env": True}
+        if with_replacement is True:
+            command_info["replacement_env_vars"] = [
+                {"var_dest": "GITHUB_TOKEN", "var_src": "PAT_GITHUB_COM"}
+            ]
+        mega_linter = SimpleNamespace(request_id=request_id, workspace=os.getcwd())
+        command_env = pre_post_factory.build_command_env(command_info, mega_linter)
+        config.delete(request_id)
+        return command_env
+
+    def test_secured_env_vars_are_hidden_from_commands(self):
+        command_env = self.build_command_env(False)
+        self.assertEqual(
+            command_env["GITHUB_TOKEN"],
+            "HIDDEN_BY_MEGALINTER",
+            "GITHUB_TOKEN is not visible",
+        )
+        self.assertEqual(
+            command_env["PAT_GITHUB_COM"],
+            "HIDDEN_BY_MEGALINTER",
+            "PAT_GITHUB_COM is not visible",
+        )
+
+    def test_replacement_env_vars_use_raw_config_value(self):
+        command_env = self.build_command_env(True)
+        self.assertEqual(
+            command_env["GITHUB_TOKEN"],
+            "PAT_GITHUB_COM_VALUE",
+            "GITHUB_TOKEN has received the value of PAT_GITHUB_COM",
+        )
+        self.assertEqual(
+            command_env["PAT_GITHUB_COM"],
+            "HIDDEN_BY_MEGALINTER",
+            "PAT_GITHUB_COM is not visible",
+        )

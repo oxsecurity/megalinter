@@ -29786,7 +29786,7 @@
       "title": "Default secured environment variables",
       "description": "List of default secured environment variables that will be hidden when calling linters. Can contain string or regex patterns. This should generally not be overridden, use (additional) SECURED_ENV_VARIABLES instead to add more variables to the list.",
       "default": [
-        "PAT",
+        "(^|_)(PAT)($|_)",
         "SYSTEM_ACCESSTOKEN",
         "(^|_)(USERNAME)($|_)",
         "(^|_)(PASSWORD|PASSWD|PASS|PWD)($|_)",
