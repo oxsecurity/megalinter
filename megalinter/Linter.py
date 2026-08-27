@@ -1813,16 +1813,19 @@ class Linter:
         arg_name = self.cli_lint_mode_project_exclude_arg_name
         seed_values = list(self.cli_lint_mode_project_exclude_seed_values)
         seed_values += self.get_config_list_seed_values()
-        # A {{WORKSPACE}}-anchored template builds an absolute path: it can not
-        # use a bare directory name, so each location found in the workspace is
-        # sent instead
+        # {{DIR}} is a bare directory name, matched by the tool at any nesting
+        # level. A template that can not do that sends workspace-relative paths
+        # instead: {{WORKSPACE}} because it builds an absolute path, {{DIR_PATH}}
+        # because the tool anchors its patterns on the workspace root
+        arg_value = self.cli_lint_mode_project_exclude_arg_value
+        uses_paths = "{{WORKSPACE}}" in arg_value or "{{DIR_PATH}}" in arg_value
         excluded_dirs = (
             self.get_project_exclude_directory_paths()
-            if "{{WORKSPACE}}" in self.cli_lint_mode_project_exclude_arg_value
+            if uses_paths
             else self.get_project_exclude_directories()
         )
         values = seed_values + [
-            self.cli_lint_mode_project_exclude_arg_value.replace("{{DIR}}", excl_dir)
+            arg_value.replace("{{DIR_PATH}}", excl_dir).replace("{{DIR}}", excl_dir)
             for excl_dir in excluded_dirs
         ]
         values = self.replace_vars(values)
@@ -1947,8 +1950,18 @@ class Linter:
         lines = list(seed_lines or [])
         if seed_file_name is not None:
             lines += self.read_workspace_file_lines(seed_file_name)
-        for excluded_dir in self.get_project_exclude_directories():
-            line = line_template.replace("{{DIR}}", excluded_dir.replace("\\", "/"))
+        # See build_project_exclude_arguments: a {{DIR_PATH}} template is
+        # anchored on the workspace root, so it needs the located paths
+        excluded_dirs = (
+            self.get_project_exclude_directory_paths()
+            if "{{DIR_PATH}}" in line_template
+            else self.get_project_exclude_directories()
+        )
+        for excluded_dir in excluded_dirs:
+            excluded_dir = excluded_dir.replace("\\", "/")
+            line = line_template.replace("{{DIR_PATH}}", excluded_dir).replace(
+                "{{DIR}}", excluded_dir
+            )
             if line not in lines:
                 lines.append(line)
         exclude_file = os.path.join(self.report_folder, file_name)

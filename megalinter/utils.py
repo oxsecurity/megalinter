@@ -118,6 +118,33 @@ def get_prebuilt_linter_version(linter_name):
     return None
 
 
+# Directories excluded by default. Kept as a module constant because
+# find_workspace_excluded_directories() prunes them from its walk even when
+# EXCLUDED_DIRECTORIES overrides the list: config.get_list() REPLACES the
+# defaults, so a user setting EXCLUDED_DIRECTORIES: ["cdk.out"] would otherwise
+# make the walk enumerate every node_modules, .venv and .terraform tree in full
+DEFAULT_EXCLUDED_DIRECTORIES = [
+    "__pycache__",
+    ".angular",
+    ".git",
+    ".jekyll-cache",
+    ".nx",
+    ".parcel-cache",
+    ".pnpm-store",
+    ".pytest_cache",
+    ".mypy_cache",
+    ".rbenv",
+    ".sf",
+    ".sfdx",
+    ".turbo",
+    ".venv",
+    ".terraform",
+    ".terragrunt-cache",
+    ".wireit",
+    ".yarn/cache",
+    "node_modules",
+]
+
 _excluded_directories_cache: dict[str, set[str]] = {}
 
 
@@ -133,29 +160,8 @@ def get_excluded_directories(request_id):
     cached = _excluded_directories_cache.get(cache_key)
     if cached is not None:
         return cached
-    default_excluded_dirs = [
-        "__pycache__",
-        ".angular",
-        ".git",
-        ".jekyll-cache",
-        ".nx",
-        ".parcel-cache",
-        ".pnpm-store",
-        ".pytest_cache",
-        ".mypy_cache",
-        ".rbenv",
-        ".sf",
-        ".sfdx",
-        ".turbo",
-        ".venv",
-        ".terraform",
-        ".terragrunt-cache",
-        ".wireit",
-        ".yarn/cache",
-        "node_modules",
-    ]
     excluded_dirs = config.get_list(
-        request_id, "EXCLUDED_DIRECTORIES", default_excluded_dirs
+        request_id, "EXCLUDED_DIRECTORIES", list(DEFAULT_EXCLUDED_DIRECTORIES)
     )
     excluded_dirs += config.get_list(request_id, "ADDITIONAL_EXCLUDED_DIRECTORIES", [])
     # Always excluded, even when EXCLUDED_DIRECTORIES is overridden
@@ -215,9 +221,12 @@ _workspace_excluded_directories_cache: dict = {}
 # excluded wherever they are found, so a lookup limited to the workspace root
 # would miss directories like infrastructure/cdk.out. Returns a dict mapping
 # each matched excluded entry to the workspace-relative paths where it exists.
-# The walk never descends into a matched directory, so it stays cheap even on
-# repositories carrying huge node_modules, .venv or .terraform trees, and its
-# result is cached for the whole MegaLinter run
+# The walk never descends into a matched directory, and prunes the default
+# excluded directories too even when EXCLUDED_DIRECTORIES replaced them, so a
+# custom exclusion list does not turn it into a full enumeration of every
+# node_modules, .venv or .terraform tree. The trade-off is that an excluded
+# directory living ONLY inside such a pruned tree is not reported. Result is
+# cached for the whole MegaLinter run
 def find_workspace_excluded_directories(
     request_id, workspace, excluded_directories
 ) -> dict:
@@ -232,6 +241,11 @@ def find_workspace_excluded_directories(
     cached = _workspace_excluded_directories_cache.get(cache_key)
     if cached is not None:
         return cached
+    # Pruned but not reported: they only keep the walk cheap
+    pruned_directories = (
+        normalize_excluded_directories(workspace, DEFAULT_EXCLUDED_DIRECTORIES)
+        - excluded_directories
+    )
     found: dict[str, list[str]] = {}
     for dir_path, sub_dirs, _files in os.walk(
         workspace, topdown=True, followlinks=False
@@ -245,12 +259,32 @@ def find_workspace_excluded_directories(
             if matched is not None:
                 found.setdefault(matched, []).append(rel_sub_dir)
                 continue  # never descend into an excluded directory
-            if sub_dir != ".git":
+            if not is_excluded_dir(rel_sub_dir, pruned_directories):
                 kept_sub_dirs.append(sub_dir)
         sub_dirs[:] = kept_sub_dirs
     result = {matched: sorted(paths) for matched, paths in found.items()}
     _workspace_excluded_directories_cache[cache_key] = result
     return result
+
+
+# Drop the cached excluded-directories of one request (or of every request when
+# request_id is None). Registered into config so that config.delete() clears
+# them: in server mode the process is long-lived and handles many analyses
+def clear_excluded_directories_caches(request_id=None):
+    if request_id is None:
+        _excluded_directories_cache.clear()
+        _workspace_excluded_directories_cache.clear()
+        return
+    _excluded_directories_cache.pop(str(request_id), None)
+    for cache_key in [
+        key
+        for key in _workspace_excluded_directories_cache
+        if key[0] == str(request_id)
+    ]:
+        del _workspace_excluded_directories_cache[cache_key]
+
+
+config.register_cache_cleaner(clear_excluded_directories_caches)
 
 
 # Remove comments and trailing commas from JSONC content so it can be parsed

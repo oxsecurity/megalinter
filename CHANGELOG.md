@@ -59,6 +59,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - A directory like `infrastructure/cdk.out` was previously scanned anyway, for example by **REPOSITORY_BETTERLEAKS**, which reported findings in generated files
     - Excluded entries are now looked up the same way MegaLinter filters files: by **directory name, at any nesting level**
     - Nothing changes when the excluded directory does not exist in your repository: it is still not sent to the linters
+    - This also covers **PYTHON_BANDIT**, **YAML_V8R**, **CSHARP_DOTNET_FORMAT**, **VBDOTNET_DOTNET_FORMAT** and **REPOSITORY_LS_LINT**, whose exclusions are anchored on the repository root: they now receive the **path of each nested directory** found
   - **REPORT_OUTPUT_FOLDER** is now always excluded from what linters analyze, even when you override `EXCLUDED_DIRECTORIES`, and even when the folder does not exist yet when a linter starts
   - The **API reporter** variables (`API_REPORTER`, `API_REPORTER_URL`…) are not flagged as **deprecated** anymore in the configuration JSON schema: they were collateral damage of the removal of the `API` descriptor in v10.0.0, and IDEs displayed them as obsolete
   - **REPOSITORY_BETTERLEAKS** does not crash the whole MegaLinter run anymore when `REPOSITORY_BETTERLEAKS_PR_COMMITS_SCAN: true` is used on **Azure Pipelines** with the default shallow checkout ([#8732](https://github.com/oxsecurity/megalinter/issues/8732))

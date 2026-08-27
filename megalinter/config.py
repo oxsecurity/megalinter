@@ -336,6 +336,16 @@ def copy(request_id):
     return get_config(request_id).copy()
 
 
+# Modules holding per-request caches register a cleaner here, so that delete()
+# drops them along with the config. Avoids config importing them back, which
+# would be circular
+_CACHE_CLEANERS = []
+
+
+def register_cache_cleaner(cleaner):
+    _CACHE_CLEANERS.append(cleaner)
+
+
 def delete(request_id=None, key=None):
     global RUN_CONFIGS
     global SKIP_DELETE_CONFIG
@@ -344,10 +354,14 @@ def delete(request_id=None, key=None):
     if request_id is None:
         RUN_CONFIGS = {}
         _ENV_CACHE = None
+        for cleaner in _CACHE_CLEANERS:
+            cleaner(None)
         return
     if key is None:
         if SKIP_DELETE_CONFIG is not True:
             del RUN_CONFIGS[request_id]
+            for cleaner in _CACHE_CLEANERS:
+                cleaner(request_id)
             logging.debug("Cleared MegaLinter runtime config for request " + request_id)
         return
     config = get_config(request_id)

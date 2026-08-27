@@ -10,7 +10,7 @@ import unittest
 import uuid
 from unittest import mock
 
-from megalinter import config
+from megalinter import config, utils
 from megalinter.Linter import Linter
 from megalinter.linters.StyleLintLinter import StyleLintLinter
 
@@ -130,6 +130,95 @@ class LinterTest(unittest.TestCase):
         )
         self.assertIn("node_modules", excluded)
         self.assertNotIn(".venv", excluded)
+
+    def test_default_excluded_directories_are_pruned_when_list_is_overridden(self):
+        # EXCLUDED_DIRECTORIES REPLACES the defaults, so overriding it with a
+        # single entry must not turn the lookup into a full walk of node_modules
+        walked = []
+        real_walk = os.walk
+
+        def counting_walk(top, *args, **kwargs):
+            for dir_path, sub_dirs, files in real_walk(top, *args, **kwargs):
+                walked.append(dir_path)
+                yield dir_path, sub_dirs, files
+
+        with tempfile.TemporaryDirectory() as workspace:
+            os.makedirs(os.path.join(workspace, "node_modules", "pkg", "deep"))
+            os.makedirs(os.path.join(workspace, "infrastructure", "cdk.out"))
+            linter = self.build_exclude_forwarding_linter(
+                workspace, {"EXCLUDED_DIRECTORIES": "cdk.out"}
+            )
+            try:
+                with mock.patch("megalinter.utils.os.walk", counting_walk):
+                    excluded = linter.get_project_exclude_directories()
+            finally:
+                config.delete(linter.request_id)
+
+        self.assertIn("cdk.out", excluded)
+        self.assertFalse(
+            [path for path in walked if "node_modules" in path],
+            "walk must not descend into node_modules",
+        )
+
+    def test_excluded_directories_caches_are_cleared_with_the_config(self):
+        with tempfile.TemporaryDirectory() as workspace:
+            linter = self.build_exclude_forwarding_linter(workspace)
+            os.makedirs(os.path.join(workspace, "node_modules"))
+            linter.get_project_exclude_directories()
+            self.assertTrue(
+                [
+                    key
+                    for key in utils._workspace_excluded_directories_cache
+                    if key[0] == str(linter.request_id)
+                ]
+            )
+            config.delete(linter.request_id)
+            self.assertNotIn(str(linter.request_id), utils._excluded_directories_cache)
+            self.assertFalse(
+                [
+                    key
+                    for key in utils._workspace_excluded_directories_cache
+                    if key[0] == str(linter.request_id)
+                ]
+            )
+
+    def build_exclude_arguments(self, arg_value, existing_directories):
+        with tempfile.TemporaryDirectory() as workspace:
+            linter = self.build_exclude_forwarding_linter(
+                workspace, {"ADDITIONAL_EXCLUDED_DIRECTORIES": "cdk.out"}
+            )
+            linter.cli_lint_mode_project_exclude_arg_name = "-x"
+            linter.cli_lint_mode_project_exclude_arg_value = arg_value
+            linter.cli_lint_mode_project_exclude_separator = None
+            linter.cli_lint_mode_project_exclude_seed_values = []
+            linter.cli_lint_mode_project_exclude_config_key = None
+            linter.final_config_file = None
+            linter.report_folder = os.path.join(workspace, "megalinter-reports")
+            linter.sarif_output_file = None
+            linter.linter_name = "trivy"
+            try:
+                for directory in existing_directories:
+                    os.makedirs(os.path.join(workspace, directory))
+                with mock.patch.object(Linter, "log_project_exclude_forwarding"):
+                    return linter.build_project_exclude_arguments()
+            finally:
+                config.delete(linter.request_id)
+
+    def test_dir_template_sends_bare_directory_names(self):
+        args = self.build_exclude_arguments(
+            "**/{{DIR}}/**", [os.path.join("infrastructure", "cdk.out")]
+        )
+        self.assertIn("**/cdk.out/**", args)
+
+    def test_dir_path_template_sends_located_paths(self):
+        # A root-anchored template can not match a nested directory by name:
+        # {{DIR_PATH}} emits one value per location actually found
+        args = self.build_exclude_arguments(
+            "./{{DIR_PATH}}",
+            [os.path.join("infrastructure", "cdk.out"), "cdk.out"],
+        )
+        self.assertIn("./infrastructure/cdk.out", args)
+        self.assertIn("./cdk.out", args)
 
     def test_replace_vars_with_default_variables(self):
         linter = Linter.__new__(Linter)
