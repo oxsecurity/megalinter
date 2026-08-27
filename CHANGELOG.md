@@ -74,6 +74,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - A run where all linters pass does not **exit with an error** anymore when MegaLinter can not list the files updated by the linters ([#8649](https://github.com/oxsecurity/megalinter/issues/8649))
     - Happens on a **read-only workspace** whose repository uses **git-lfs**: the required LFS filter has nowhere to write its temporary files, so the `git diff` used to detect updated files exits 128
     - MegaLinter now logs a **warning** naming the workspace and the failed command, reports no updated source file, and completes the run. The `UPDATED_SOURCES_REPORTER: false` workaround is not needed anymore
+  - **REPOSITORY_CHECKOV** does not fail anymore with `argument -f/--file: expected at least one argument` in a Pull Request where **no file has been updated** ([#8802](https://github.com/oxsecurity/megalinter/issues/8802))
+    - With `VALIDATE_ALL_CODEBASE: false`, checkov is now **skipped** when the Pull Request contains no updated file, instead of scanning the whole project or building an invalid command
+    - Any linter using the **`list_of_files` lint mode** with no file to analyze is skipped the same way, instead of being called with an empty list of files
 
 - Reporters
   - Linters reporting in **SARIF** format no longer show **No output available** in Pull Request comments and summaries: the details section now names the SARIF report to open and links the **MegaLinter artifacts** ([#8730](https://github.com/oxsecurity/megalinter/issues/8730))
