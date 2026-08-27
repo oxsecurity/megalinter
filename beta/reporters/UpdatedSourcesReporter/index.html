@@ -10567,6 +10567,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#empty-updated-sources-folder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Empty updated sources folder
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -12391,6 +12402,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#empty-updated-sources-folder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Empty updated sources folder
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -12446,6 +12468,9 @@
 <li>use <a href="../EmailReporter/">Email Reporter</a>: Updated source folder will be in the email attachment reports zip</li>
 <li>publish folder <code>&lt;WORKSPACE&gt;/report/updated_sources</code> as artifact with your CI tool</li>
 </ul>
+<h3 id="empty-updated-sources-folder">Empty updated sources folder</h3>
+<p>The folder is empty when MegaLinter can not list the files updated by the linters. This happens on a <strong>read-only workspace</strong> whose repository uses <strong>git-lfs</strong>: the LFS filter has nowhere to write its temporary files, so the <code>git diff</code> used to detect updated files fails.</p>
+<p>MegaLinter logs a warning naming the workspace and the failed command, then completes the run. Mount <code>.git</code> as writable to get the updated sources back.</p>
 <h2 id="configuration">Configuration</h2>
 <table>
 <thead>

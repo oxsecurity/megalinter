@@ -15812,6 +15812,11 @@
 </ul>
 <ul>
 <li>Fixes<ul>
+<li>MegaLinter does not crash anymore with <strong><code>This module only works with the 'fork' start method</code></strong> right after <code>Processing linters on [N] parallel cores</code>, which made every v10.0.0 run fail unless <code>PARALLEL: false</code> was set (<a href="https://github.com/oxsecurity/megalinter/issues/8808">#8808</a>)<ul>
+<li>The <strong><code>PARALLEL: false</code></strong> workaround is not needed anymore, on the main image as well as on custom flavors</li>
+<li>Messages logged by linters <strong>running in parallel</strong> are back in the console and in <code>megalinter.log</code>, including the extra output of <code>LOG_LEVEL: DEBUG</code></li>
+</ul>
+</li>
 <li>Fixed random <strong><code>Segmentation fault</code></strong> crashes of MegaLinter itself, which stopped the whole run with no error message (<a href="https://github.com/oxsecurity/megalinter/issues/8733">#8733</a>). MegaLinter threads now get a full-size stack instead of the 128 KiB default of the Alpine images</li>
 <li>Fixed leaked <strong><code>git</code> processes</strong> when <strong>APPLY_FIXES</strong> is active: one was left behind by every fixer linter, which could exhaust the available file descriptors on long runs</li>
 <li>Fixed <strong>random crashes of project-mode linters</strong> (<code>REPOSITORY_TRIVY</code>, <code>REPOSITORY_GRYPE</code>, <code>REPOSITORY_SYFT</code>…) caused by MegaLinter writing temporary ignore files inside the analyzed sources: a file appearing then disappearing while another linter walked the repository aborted its scan (<code>walk dir error: ... no such file or directory</code>). <strong>MegaLinter now writes only in REPORT_OUTPUT_FOLDER</strong>, never in your sources</li>
@@ -15827,6 +15832,11 @@
 <li><strong>REPOSITORY_CHECKOV</strong> and <strong>REPOSITORY_BETTERLEAKS</strong> only analyze the Pull Request changes when asked to</li>
 <li>Set <code>BITBUCKET_PR_ID</code> in your pipeline (Bitbucket provides it on Pull Request builds) to benefit from it</li>
 <li>Fixed JSON config schema for Betterleaks</li>
+</ul>
+</li>
+<li>A run where all linters pass does not <strong>exit with an error</strong> anymore when MegaLinter can not list the files updated by the linters (<a href="https://github.com/oxsecurity/megalinter/issues/8649">#8649</a>)<ul>
+<li>Happens on a <strong>read-only workspace</strong> whose repository uses <strong>git-lfs</strong>: the required LFS filter has nowhere to write its temporary files, so the <code>git diff</code> used to detect updated files exits 128</li>
+<li>MegaLinter now logs a <strong>warning</strong> naming the workspace and the failed command, reports no updated source file, and completes the run. The <code>UPDATED_SOURCES_REPORTER: false</code> workaround is not needed anymore</li>
 </ul>
 </li>
 </ul>
@@ -15886,6 +15896,12 @@
 </ul>
 <ul>
 <li>Dev<ul>
+<li><strong>Parallel linters logging does not depend on the multiprocessing start method anymore</strong>: <code>init_worker()</code> installs a <code>QueueHandler</code> on the worker root logger, built from the queue and the level passed by <code>process_linters_parallel()</code>, instead of relying on the handlers a <code>fork</code>ed worker inherits (<a href="https://github.com/oxsecurity/megalinter/issues/8808">#8808</a>)<ul>
+<li>Python 3.14 changed the default start method on Linux from <code>fork</code> to <code>forkserver</code>: workers then started with no handler and the default <code>WARNING</code> level, so their records were lost or written directly to their own stdout, bypassing the queue listener and the log file</li>
+<li>The <code>AssertionError</code> crash itself came from <code>multiprocessing_logging.install_mp_handler()</code>, which asserts the <code>fork</code> start method; the dependency was already dropped in this version</li>
+<li>New <code>parallel_logging_test.py</code> runs a worker with every start method available on the platform and checks that its records reach the main process handlers</li>
+</ul>
+</li>
 <li><strong>Crash diagnostics</strong>: <code>megalinter.run.enable_crash_diagnostics()</code> enables <code>faulthandler</code> and raises the thread stack size to 8 MiB (the glibc default) before any thread is started, and worker processes enable <code>faulthandler</code> too. musl gives threads a 128 KiB stack and CPython below 3.14.7 miscomputed its stack guard there (<a href="https://github.com/python/cpython/issues/148260">cpython#148260</a>), so C-level recursion in a thread - such as pickling the linter object graph in the <code>multiprocessing.Pool</code> handler threads, which reaches the whole <code>Megalinter</code> instance through <code>Linter.master</code> - crashed the process with <code>SIGSEGV</code> instead of raising <code>RecursionError</code><ul>
 <li>Verified on <code>python:3.14.6-alpine</code>: pickling a deeply nested object in a thread exits with signal 11, and either raising the thread stack size or moving to <code>python:3.14.7-alpine</code> turns it into a plain <code>RecursionError</code></li>
 <li><code>faulthandler</code> can not report a stack overflow itself (the handler has no stack left to run on), which is why the crash in <a href="https://github.com/oxsecurity/megalinter/issues/8733">#8733</a> left no output at all; it does report every other fatal signal</li>
