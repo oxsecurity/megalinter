@@ -15764,6 +15764,14 @@
 <li>Supports <strong>APPLY_FIXES</strong> to rewrite files in the canonical OpenTofu style</li>
 </ul>
 </li>
+<li><strong><a href="https://opentofu.org/docs/cli/commands/validate/">tofu validate</a></strong>, the built-in validator of <strong>OpenTofu</strong>, available as <strong>TERRAFORM_TOFU_VALIDATE</strong> (<a href="https://github.com/oxsecurity/megalinter/issues/8793">#8793</a>)<ul>
+<li>Reports what formatters and rule-based linters can not see: unsupported or missing arguments, wrong attribute types, references to undeclared variables, locals or outputs, and broken module input contracts</li>
+<li>Analyzes <strong><code>.tofu</code></strong> files only, like <strong>TERRAFORM_TOFU_FMT</strong>, leaving <code>.tf</code> free for a future <code>terraform validate</code> linter. To validate <code>.tf</code> files, set <code>TERRAFORM_TOFU_VALIDATE_FILE_EXTENSIONS: [".tofu", ".tf"]</code></li>
+<li>Validates one whole module per directory, so every <code>.tf</code> and <code>.tofu</code> file of a selected directory is parsed and can produce diagnostics</li>
+<li>Every directory is initialized with <code>tofu init -backend=false</code> beforehand, so no state is read, no state lock is taken and no cloud credentials are needed</li>
+<li>Set <strong>TERRAFORM_TOFU_VALIDATE_INIT_ARGUMENTS</strong> to change those initialization arguments, for example adding <code>-lockfile=readonly</code> to have an out-of-sync <code>.terraform.lock.hcl</code> reported as an error instead of being updated</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
