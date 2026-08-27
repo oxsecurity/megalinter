@@ -654,6 +654,11 @@
     "image": "https://opentofu.org/img/og.png",
     "title": "Command: fmt | OpenTofu"
   },
+  "tofu-validate": {
+    "description": "The `tofu validate` command is used to validate the syntax of the tofu files.",
+    "image": "https://opentofu.org/img/og.png",
+    "title": "Command: validate | OpenTofu"
+  },
   "trivy": {
     "description": "None",
     "image": null,

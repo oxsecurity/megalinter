@@ -93,6 +93,8 @@ FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 # Next FROM line commented because already managed by another linter
 # FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 FROM ghcr.io/opentofu/opentofu:${TERRAFORM_TOFU_FMT_VERSION} AS opentofu
+# Next FROM line commented because already managed by another linter
+# FROM ghcr.io/opentofu/opentofu:${TERRAFORM_TOFU_FMT_VERSION} AS opentofu
 #FROM__END
 
 ##################
@@ -326,6 +328,8 @@ COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
 COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 COPY --link --from=terragrunt /bin/terraform /usr/bin/
 COPY --link --from=opentofu /usr/local/bin/tofu /usr/bin/
+# Next COPY line commented because already managed by another linter
+# COPY --link --from=opentofu /usr/local/bin/tofu /usr/bin/
 #COPY__END
 
 ##############################
@@ -589,6 +593,9 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOS
 # Managed with COPY --link --from=terragrunt /bin/terraform /usr/bin/
 # tofu-fmt installation
 # Managed with COPY --link --from=opentofu /usr/local/bin/tofu /usr/bin/
+# tofu-validate installation
+# Managed with # Next COPY line commented because already managed by another linter
+#              # COPY --link --from=opentofu /usr/local/bin/tofu /usr/bin/
 # prettier installation
 # yamllint installation
 # v8r installation

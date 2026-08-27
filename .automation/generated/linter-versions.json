@@ -127,6 +127,7 @@
     "terrascan": "1.19.9",
     "tflint": "0.64.0",
     "tofu-fmt": "1.12.6",
+    "tofu-validate": "1.12.6",
     "trivy": "0.74.0",
     "trivy-sbom": "0.74.0",
     "trufflehog": "3.97.0",
