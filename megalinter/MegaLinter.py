@@ -62,27 +62,25 @@ REMOVED_LINTERS_NOTIFICATION_TEMPLATE = (
 
 
 # initialize worker processes
-def init_worker(request_config_in):
+def init_worker(request_config_in, log_queue, log_level):
     # declare scope of a new global variable
     global REQUEST_CONFIG
     # store argument in the global variable for this process
     REQUEST_CONFIG = request_config_in
     # Report worker crashes instead of letting the pool hang on a dead worker
     faulthandler.enable()
-    # Re-apply the %(message)s formatter in every worker process.
-    # A worker inheriting the parent logger config (start method "fork", the default
-    # up to Python 3.13) gets handlers that have been replaced by a QueueHandler
-    # whose formatter may not be propagated correctly, causing the default
-    # "%(levelname)s:%(name)s:%(message)s" format to appear in output instead of the
-    # plain message - which breaks CI annotation commands like "::group::" that must
-    # appear at the very start of a line. With "forkserver" (the default on Linux
-    # since Python 3.14) the worker inherits no handler at all, and the basicConfig
-    # fallback below applies.
-    formatter = logging.Formatter("%(message)s")
-    for handler in logging.root.handlers:
-        handler.setFormatter(formatter)
-    if not logging.root.handlers:
-        logging.basicConfig(format="%(message)s", stream=sys.stdout)
+    # Send the worker log records to the main process through the queue, whatever the
+    # multiprocessing start method is. A worker started with "fork" (the default up to
+    # Python 3.13) inherits the parent logger config, but a worker started with
+    # "forkserver" (the default on Linux since Python 3.14) or "spawn" starts with no
+    # handler and the default WARNING level, so its records would be lost.
+    # The %(message)s formatter is explicit because CI annotation commands like
+    # "::group::" must appear at the very start of a line, with no level prefix.
+    queue_handler = QueueHandler(log_queue)
+    queue_handler.setFormatter(logging.Formatter("%(message)s"))
+    root_logger = logging.getLogger()
+    root_logger.handlers = [queue_handler]
+    root_logger.setLevel(log_level)
 
 
 # Function to run linters using multiprocessing pool
@@ -479,6 +477,7 @@ class Megalinter:
         # being garbled (stdlib equivalent of the former multiprocessing_logging dep)
         root_logger = logging.getLogger()
         initial_handlers = root_logger.handlers[:]
+        log_level = root_logger.getEffectiveLevel()
         log_queue = mp.Queue()
         log_queue_listener = QueueListener(
             log_queue, *initial_handlers, respect_handler_level=True
@@ -488,7 +487,7 @@ class Megalinter:
         pool = mp.Pool(
             process_number,
             initializer=init_worker,
-            initargs=(config.get(self.request_id),),
+            initargs=(config.get(self.request_id), log_queue, log_level),
         )
         pool_results = []
         lock = threading.RLock()

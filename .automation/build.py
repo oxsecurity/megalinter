@@ -1676,8 +1676,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         "REPOSITORY_BETTERLEAKS_PR_COMMITS_SCAN",
                         {
                             "$id": (
-                                "#/properties/"
-                                "REPOSITORY_BETTERLEAKS_PR_COMMITS_SCAN"
+                                "#/properties/" "REPOSITORY_BETTERLEAKS_PR_COMMITS_SCAN"
                             ),
                             "description": (
                                 "REPOSITORY_BETTERLEAKS: Scan only commits in "
@@ -1695,8 +1694,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         "REPOSITORY_BETTERLEAKS_PR_SOURCE_SHA",
                         {
                             "$id": (
-                                "#/properties/"
-                                "REPOSITORY_BETTERLEAKS_PR_SOURCE_SHA"
+                                "#/properties/" "REPOSITORY_BETTERLEAKS_PR_SOURCE_SHA"
                             ),
                             "description": (
                                 "REPOSITORY_BETTERLEAKS: Source commit SHA of "
@@ -1714,8 +1712,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         "REPOSITORY_BETTERLEAKS_PR_TARGET_SHA",
                         {
                             "$id": (
-                                "#/properties/"
-                                "REPOSITORY_BETTERLEAKS_PR_TARGET_SHA"
+                                "#/properties/" "REPOSITORY_BETTERLEAKS_PR_TARGET_SHA"
                             ),
                             "description": (
                                 "REPOSITORY_BETTERLEAKS: Target commit SHA of "

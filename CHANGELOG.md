@@ -49,6 +49,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - The guidance surfaced in the log is to install them through `<LINTER_KEY>_PRE_COMMANDS` with **`cwd: workspace`**, which keeps plain package names in `.prettierrc` so the very same config still works when you run Prettier locally without MegaLinter
 
 - Fixes
+  - MegaLinter does not crash anymore with **`This module only works with the 'fork' start method`** right after `Processing linters on [N] parallel cores`, which made every v10.0.0 run fail unless `PARALLEL: false` was set ([#8808](https://github.com/oxsecurity/megalinter/issues/8808))
+    - The **`PARALLEL: false`** workaround is not needed anymore, on the main image as well as on custom flavors
+    - Messages logged by linters **running in parallel** are back in the console and in `megalinter.log`, including the extra output of `LOG_LEVEL: DEBUG`
   - Fixed random **`Segmentation fault`** crashes of MegaLinter itself, which stopped the whole run with no error message ([#8733](https://github.com/oxsecurity/megalinter/issues/8733)). MegaLinter threads now get a full-size stack instead of the 128 KiB default of the Alpine images
   - Fixed leaked **`git` processes** when **APPLY_FIXES** is active: one was left behind by every fixer linter, which could exhaust the available file descriptors on long runs
   - Fixed **random crashes of project-mode linters** (`REPOSITORY_TRIVY`, `REPOSITORY_GRYPE`, `REPOSITORY_SYFT`…) caused by MegaLinter writing temporary ignore files inside the analyzed sources: a file appearing then disappearing while another linter walked the repository aborted its scan (`walk dir error: ... no such file or directory`). **MegaLinter now writes only in REPORT_OUTPUT_FOLDER**, never in your sources
@@ -98,6 +101,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - `npx skills add oxsecurity/megalinter/skills` keeps working for every other coding agent
 
 - Dev
+  - **Parallel linters logging does not depend on the multiprocessing start method anymore**: `init_worker()` installs a `QueueHandler` on the worker root logger, built from the queue and the level passed by `process_linters_parallel()`, instead of relying on the handlers a `fork`ed worker inherits ([#8808](https://github.com/oxsecurity/megalinter/issues/8808))
+    - Python 3.14 changed the default start method on Linux from `fork` to `forkserver`: workers then started with no handler and the default `WARNING` level, so their records were lost or written directly to their own stdout, bypassing the queue listener and the log file
+    - The `AssertionError` crash itself came from `multiprocessing_logging.install_mp_handler()`, which asserts the `fork` start method; the dependency was already dropped in this version
+    - New `parallel_logging_test.py` runs a worker with every start method available on the platform and checks that its records reach the main process handlers
   - **Crash diagnostics**: `megalinter.run.enable_crash_diagnostics()` enables `faulthandler` and raises the thread stack size to 8 MiB (the glibc default) before any thread is started, and worker processes enable `faulthandler` too. musl gives threads a 128 KiB stack and CPython below 3.14.7 miscomputed its stack guard there ([cpython#148260](https://github.com/python/cpython/issues/148260)), so C-level recursion in a thread - such as pickling the linter object graph in the `multiprocessing.Pool` handler threads, which reaches the whole `Megalinter` instance through `Linter.master` - crashed the process with `SIGSEGV` instead of raising `RecursionError`
     - Verified on `python:3.14.6-alpine`: pickling a deeply nested object in a thread exits with signal 11, and either raising the thread stack size or moving to `python:3.14.7-alpine` turns it into a plain `RecursionError`
     - `faulthandler` can not report a stack overflow itself (the handler has no stack left to run on), which is why the crash in [#8733](https://github.com/oxsecurity/megalinter/issues/8733) left no output at all; it does report every other fatal signal
