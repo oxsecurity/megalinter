@@ -15847,6 +15847,11 @@
 <li>MegaLinter now logs a <strong>warning</strong> naming the workspace and the failed command, reports no updated source file, and completes the run. The <code>UPDATED_SOURCES_REPORTER: false</code> workaround is not needed anymore</li>
 </ul>
 </li>
+<li><strong>REPOSITORY_CHECKOV</strong> does not fail anymore with <code>argument -f/--file: expected at least one argument</code> in a Pull Request where <strong>no file has been updated</strong> (<a href="https://github.com/oxsecurity/megalinter/issues/8802">#8802</a>)<ul>
+<li>With <code>VALIDATE_ALL_CODEBASE: false</code>, checkov is now <strong>skipped</strong> when the Pull Request contains no updated file, instead of scanning the whole project or building an invalid command</li>
+<li>Any linter using the <strong><code>list_of_files</code> lint mode</strong> with no file to analyze is skipped the same way, instead of being called with an empty list of files</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
