@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "variable_count": 2850,
+    "variable_count": 2867,
     "categories": {
       "ACTION": 4,
       "ACTION_ACTIONLINT": 17,
@@ -140,7 +140,7 @@
       "RAKU": 4,
       "RAKU_RAKU": 16,
       "REPOSITORY": 12,
-      "REPOSITORY_BETTERLEAKS": 15,
+      "REPOSITORY_BETTERLEAKS": 18,
       "REPOSITORY_CHECKOV": 15,
       "REPOSITORY_DEVSKIM": 15,
       "REPOSITORY_DUSTILOCK": 13,
@@ -202,6 +202,7 @@
       "TERRAFORM_TERRASCAN": 15,
       "TERRAFORM_TFLINT": 18,
       "TERRAFORM_TOFU_FMT": 14,
+      "TERRAFORM_TOFU_VALIDATE": 14,
       "TEXT_REPORTER": 3,
       "TSX": 4,
       "TSX_BIOME": 17,
@@ -23212,6 +23213,33 @@
       "category": "REPOSITORY_BETTERLEAKS",
       "section": "PREPOSTCOMMANDS"
     },
+    "REPOSITORY_BETTERLEAKS_PR_COMMITS_SCAN": {
+      "name": "REPOSITORY_BETTERLEAKS_PR_COMMITS_SCAN",
+      "type": "boolean",
+      "title": "REPOSITORY_BETTERLEAKS: Scan Pull Request/Merge Request commits",
+      "description": "REPOSITORY_BETTERLEAKS: Scan only commits in the current Pull Request/Merge Request",
+      "default": false,
+      "category": "REPOSITORY_BETTERLEAKS",
+      "section": "GENERAL"
+    },
+    "REPOSITORY_BETTERLEAKS_PR_SOURCE_SHA": {
+      "name": "REPOSITORY_BETTERLEAKS_PR_SOURCE_SHA",
+      "type": "string",
+      "title": "REPOSITORY_BETTERLEAKS: Pull Request/Merge Request source SHA",
+      "description": "REPOSITORY_BETTERLEAKS: Source commit SHA of the Pull Request/Merge Request",
+      "default": "",
+      "category": "REPOSITORY_BETTERLEAKS",
+      "section": "GENERAL"
+    },
+    "REPOSITORY_BETTERLEAKS_PR_TARGET_SHA": {
+      "name": "REPOSITORY_BETTERLEAKS_PR_TARGET_SHA",
+      "type": "string",
+      "title": "REPOSITORY_BETTERLEAKS: Pull Request/Merge Request target SHA",
+      "description": "REPOSITORY_BETTERLEAKS: Target commit SHA of the Pull Request/Merge Request",
+      "default": "",
+      "category": "REPOSITORY_BETTERLEAKS",
+      "section": "GENERAL"
+    },
     "REPOSITORY_BETTERLEAKS_RULES_PATH": {
       "name": "REPOSITORY_BETTERLEAKS_RULES_PATH",
       "type": "string",
@@ -33935,6 +33963,184 @@
       "description": "List of env variables explicitly not filtered before calling TERRAFORM_TOFU_FMT and its pre/post commands",
       "default": [],
       "category": "TERRAFORM_TOFU_FMT",
+      "section": "SECURITY",
+      "items_type": "string"
+    },
+    "TERRAFORM_TOFU_VALIDATE_ARGUMENTS": {
+      "name": "TERRAFORM_TOFU_VALIDATE_ARGUMENTS",
+      "type": [
+        "array",
+        "string"
+      ],
+      "title": "TERRAFORM_TOFU_VALIDATE: Custom arguments",
+      "description": "TERRAFORM_TOFU_VALIDATE: User custom arguments to add in linter CLI call",
+      "category": "TERRAFORM_TOFU_VALIDATE",
+      "section": "LINTER_COMMAND",
+      "items_type": "string"
+    },
+    "TERRAFORM_TOFU_VALIDATE_CLI_EXECUTABLE": {
+      "name": "TERRAFORM_TOFU_VALIDATE_CLI_EXECUTABLE",
+      "type": "array",
+      "title": "TERRAFORM_TOFU_VALIDATE: CLI Executable",
+      "description": "TERRAFORM_TOFU_VALIDATE: Override CLI executable used to build the linter command line (rarely needed)",
+      "default": [
+        [
+          "tofu"
+        ]
+      ],
+      "category": "TERRAFORM_TOFU_VALIDATE",
+      "section": "LINTER_COMMAND",
+      "items_type": "string"
+    },
+    "TERRAFORM_TOFU_VALIDATE_CLI_LINT_MODE": {
+      "name": "TERRAFORM_TOFU_VALIDATE_CLI_LINT_MODE",
+      "type": "string",
+      "title": "TERRAFORM_TOFU_VALIDATE: CLI lint mode",
+      "description": "TERRAFORM_TOFU_VALIDATE: Override default CLI lint mode used to call the linter (rarely needed)",
+      "default": "list_of_files",
+      "enum": [
+        "list_of_files"
+      ],
+      "category": "TERRAFORM_TOFU_VALIDATE",
+      "section": "LINTER_COMMAND"
+    },
+    "TERRAFORM_TOFU_VALIDATE_COMMAND_REMOVE_ARGUMENTS": {
+      "name": "TERRAFORM_TOFU_VALIDATE_COMMAND_REMOVE_ARGUMENTS",
+      "type": [
+        "array",
+        "string"
+      ],
+      "title": "TERRAFORM_TOFU_VALIDATE: Custom remove arguments",
+      "description": "TERRAFORM_TOFU_VALIDATE: User custom arguments to remove before calling linter",
+      "category": "TERRAFORM_TOFU_VALIDATE",
+      "section": "LINTER_COMMAND",
+      "items_type": "string"
+    },
+    "TERRAFORM_TOFU_VALIDATE_DISABLE_ERRORS": {
+      "name": "TERRAFORM_TOFU_VALIDATE_DISABLE_ERRORS",
+      "type": "boolean",
+      "title": "TERRAFORM_TOFU_VALIDATE: Disable errors",
+      "description": "TERRAFORM_TOFU_VALIDATE: If true, TERRAFORM_TOFU_VALIDATE doesn't make MegaLinter fail even if errors are found",
+      "default": false,
+      "category": "TERRAFORM_TOFU_VALIDATE",
+      "section": "ERRORS"
+    },
+    "TERRAFORM_TOFU_VALIDATE_DISABLE_ERRORS_IF_LESS_THAN": {
+      "name": "TERRAFORM_TOFU_VALIDATE_DISABLE_ERRORS_IF_LESS_THAN",
+      "type": "number",
+      "title": "TERRAFORM_TOFU_VALIDATE: Maximum number of errors allowed",
+      "description": "TERRAFORM_TOFU_VALIDATE: If the number of errors found is less than this value, TERRAFORM_TOFU_VALIDATE doesn't make MegaLinter fail",
+      "default": 0,
+      "category": "TERRAFORM_TOFU_VALIDATE",
+      "section": "ERRORS"
+    },
+    "TERRAFORM_TOFU_VALIDATE_FILE_EXTENSIONS": {
+      "name": "TERRAFORM_TOFU_VALIDATE_FILE_EXTENSIONS",
+      "type": "array",
+      "title": "TERRAFORM_TOFU_VALIDATE: Matching files extensions",
+      "description": "TERRAFORM_TOFU_VALIDATE: Override descriptor/linter matching files extensions that will be used to select files to lint",
+      "default": [
+        ".tofu"
+      ],
+      "examples": [
+        ".py",
+        ".myext"
+      ],
+      "category": "TERRAFORM_TOFU_VALIDATE",
+      "section": "SCOPE",
+      "items_type": "string"
+    },
+    "TERRAFORM_TOFU_VALIDATE_FILE_NAMES_REGEX": {
+      "name": "TERRAFORM_TOFU_VALIDATE_FILE_NAMES_REGEX",
+      "type": "array",
+      "title": "TERRAFORM_TOFU_VALIDATE: Matching file name regexes",
+      "description": "TERRAFORM_TOFU_VALIDATE: Override descriptor/linter matching file name regexes that will be used to select files to lint",
+      "default": [],
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "category": "TERRAFORM_TOFU_VALIDATE",
+      "section": "SCOPE",
+      "items_type": "string"
+    },
+    "TERRAFORM_TOFU_VALIDATE_FILTER_REGEX_EXCLUDE": {
+      "name": "TERRAFORM_TOFU_VALIDATE_FILTER_REGEX_EXCLUDE",
+      "type": [
+        "string",
+        "array"
+      ],
+      "title": "TERRAFORM_TOFU_VALIDATE: Excluding Regex",
+      "description": "",
+      "category": "TERRAFORM_TOFU_VALIDATE",
+      "section": "SCOPE",
+      "items_type": "string"
+    },
+    "TERRAFORM_TOFU_VALIDATE_FILTER_REGEX_INCLUDE": {
+      "name": "TERRAFORM_TOFU_VALIDATE_FILTER_REGEX_INCLUDE",
+      "type": [
+        "string",
+        "array"
+      ],
+      "title": "TERRAFORM_TOFU_VALIDATE: Including Regex",
+      "description": "",
+      "category": "TERRAFORM_TOFU_VALIDATE",
+      "section": "SCOPE",
+      "items_type": "string"
+    },
+    "TERRAFORM_TOFU_VALIDATE_POST_COMMANDS": {
+      "name": "TERRAFORM_TOFU_VALIDATE_POST_COMMANDS",
+      "type": "array",
+      "title": "TERRAFORM_TOFU_VALIDATE: Post-run commands",
+      "description": "TERRAFORM_TOFU_VALIDATE: Define bash commands to run after running TERRAFORM_TOFU_VALIDATE",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "category": "TERRAFORM_TOFU_VALIDATE",
+      "section": "PREPOSTCOMMANDS"
+    },
+    "TERRAFORM_TOFU_VALIDATE_PRE_COMMANDS": {
+      "name": "TERRAFORM_TOFU_VALIDATE_PRE_COMMANDS",
+      "type": "array",
+      "title": "TERRAFORM_TOFU_VALIDATE: Pre-run commands",
+      "description": "TERRAFORM_TOFU_VALIDATE: Define bash commands to run before running TERRAFORM_TOFU_VALIDATE",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "category": "TERRAFORM_TOFU_VALIDATE",
+      "section": "PREPOSTCOMMANDS"
+    },
+    "TERRAFORM_TOFU_VALIDATE_TIMEOUT_SECONDS": {
+      "name": "TERRAFORM_TOFU_VALIDATE_TIMEOUT_SECONDS",
+      "type": "integer",
+      "title": "TERRAFORM_TOFU_VALIDATE: Timeout in seconds",
+      "description": "TERRAFORM_TOFU_VALIDATE: Maximum duration in seconds of the TERRAFORM_TOFU_VALIDATE run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "category": "TERRAFORM_TOFU_VALIDATE",
+      "section": "GENERAL"
+    },
+    "TERRAFORM_TOFU_VALIDATE_UNSECURED_ENV_VARIABLES": {
+      "name": "TERRAFORM_TOFU_VALIDATE_UNSECURED_ENV_VARIABLES",
+      "type": "array",
+      "title": "TERRAFORM_TOFU_VALIDATE: Unsecured env variables",
+      "description": "List of env variables explicitly not filtered before calling TERRAFORM_TOFU_VALIDATE and its pre/post commands",
+      "default": [],
+      "category": "TERRAFORM_TOFU_VALIDATE",
       "section": "SECURITY",
       "items_type": "string"
     },
