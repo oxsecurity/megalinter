@@ -1,5 +1,5 @@
 {
   "name": "megalinter",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Set up, run and fix MegaLinter on any repository: 100+ linters for 69+ languages, 23+ formats and 21+ tooling formats, from CI or locally."
 }

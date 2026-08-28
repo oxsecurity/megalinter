@@ -17,7 +17,7 @@
 <!-- mega-linter-title-end -->
 <!-- mega-linter-badges-start -->
 ![GitHub release](https://img.shields.io/github/v/release/oxsecurity/megalinter?sort=semver&color=%23FD80CD)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-26.8M-blue?color=%23FD80CD)](https://megalinter.io/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-27.1M-blue?color=%23FD80CD)](https://megalinter.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg?color=%23FD80CD)](https://npmjs.org/package/mega-linter-runner)
 [![Coding Agents](https://img.shields.io/badge/Coding%20Agents-compatible-%23FD80CD?logo=githubcopilot&logoColor=white)](https://megalinter.io/latest/coding-agents/)
 [![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?cacheSeconds=3600&color=%23FD80CD)](https://github.com/oxsecurity/megalinter/stargazers/)
@@ -29,7 +29,7 @@
 <!-- welcome-phrase-start -->
 MegaLinter is an **open-source** tool for **CI/CD workflows** that analyzes the **consistency of your code**, **IaC**, **configuration**, and **scripts** in your repository to **ensure all your project sources are clean and formatted**, no matter which IDE or toolbox is used by your developers. Powered by [**OX Security**](https://www.ox.security/?ref=megalinter).
 
-Supports [**66** languages](supported-linters.md#languages), [**24** formats](supported-linters.md#formats), [**21** tooling formats](supported-linters.md#tooling-formats), and is **ready to use out of the box** as a GitHub Action or with any CI system. It is **highly configurable** and **free for all uses**.
+Supports [**66** languages](supported-linters.md#languages), [**24** formats](supported-linters.md#formats), [**22** tooling formats](supported-linters.md#tooling-formats), and is **ready to use out of the box** as a GitHub Action or with any CI system. It is **highly configurable** and **free for all uses**.
 
 MegaLinter has **native integrations** with popular CI/CD tools and is compliant with most [**Coding Agents**](https://megalinter.io/latest/coding-agents/).
 
@@ -252,6 +252,7 @@ All linters are integrated into the [MegaLinter Docker image](https://hub.docker
 |   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->    | [**TERRAFORM**](descriptors/terraform.md)           | [**terragrunt**](descriptors/terraform_terragrunt.md)<br/>[_TERRAFORM_TERRAGRUNT_](descriptors/terraform_terragrunt.md)                                                  |                                     [![GitHub stars](https://img.shields.io/github/stars/gruntwork-io/terragrunt?cacheSeconds=3600)](https://github.com/gruntwork-io/terragrunt) ![autofix](https://shields.io/badge/-autofix-green)                                      |
 |   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->    | [**TERRAFORM**](descriptors/terraform.md)           | [**terraform-fmt**](descriptors/terraform_terraform_fmt.md)<br/>[_TERRAFORM_TERRAFORM_FMT_](descriptors/terraform_terraform_fmt.md)                                      |                                        [![GitHub stars](https://img.shields.io/github/stars/hashicorp/terraform?cacheSeconds=3600)](https://github.com/hashicorp/terraform) ![formatter](https://shields.io/badge/-format-yellow)                                         |
 |   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->    | [**TERRAFORM**](descriptors/terraform.md)           | [**tofu-fmt**](descriptors/terraform_tofu_fmt.md)<br/>[_TERRAFORM_TOFU_FMT_](descriptors/terraform_tofu_fmt.md)                                                          |                                          [![GitHub stars](https://img.shields.io/github/stars/opentofu/opentofu?cacheSeconds=3600)](https://github.com/opentofu/opentofu) ![formatter](https://shields.io/badge/-format-yellow)                                           |
+|   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->    | [**TERRAFORM**](descriptors/terraform.md)           | [**tofu-validate**](descriptors/terraform_tofu_validate.md)<br/>[_TERRAFORM_TOFU_VALIDATE_](descriptors/terraform_tofu_validate.md)                                      |                                                                     [![GitHub stars](https://img.shields.io/github/stars/opentofu/opentofu?cacheSeconds=3600)](https://github.com/opentofu/opentofu)                                                                      |
 
 ### Other
 

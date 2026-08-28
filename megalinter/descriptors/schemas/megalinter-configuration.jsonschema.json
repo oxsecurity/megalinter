@@ -28400,6 +28400,36 @@
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
     },
+    "REPOSITORY_BETTERLEAKS_PR_COMMITS_SCAN": {
+      "$id": "#/properties/REPOSITORY_BETTERLEAKS_PR_COMMITS_SCAN",
+      "default": false,
+      "description": "REPOSITORY_BETTERLEAKS: Scan only commits in the current Pull Request/Merge Request",
+      "title": "REPOSITORY_BETTERLEAKS: Scan Pull Request/Merge Request commits",
+      "type": "boolean",
+      "x-category": "REPOSITORY_BETTERLEAKS",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
+    "REPOSITORY_BETTERLEAKS_PR_SOURCE_SHA": {
+      "$id": "#/properties/REPOSITORY_BETTERLEAKS_PR_SOURCE_SHA",
+      "default": "",
+      "description": "REPOSITORY_BETTERLEAKS: Source commit SHA of the Pull Request/Merge Request",
+      "title": "REPOSITORY_BETTERLEAKS: Pull Request/Merge Request source SHA",
+      "type": "string",
+      "x-category": "REPOSITORY_BETTERLEAKS",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
+    "REPOSITORY_BETTERLEAKS_PR_TARGET_SHA": {
+      "$id": "#/properties/REPOSITORY_BETTERLEAKS_PR_TARGET_SHA",
+      "default": "",
+      "description": "REPOSITORY_BETTERLEAKS: Target commit SHA of the Pull Request/Merge Request",
+      "title": "REPOSITORY_BETTERLEAKS: Pull Request/Merge Request target SHA",
+      "type": "string",
+      "x-category": "REPOSITORY_BETTERLEAKS",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
     "REPOSITORY_BETTERLEAKS_RULES_PATH": {
       "$id": "#/properties/REPOSITORY_BETTERLEAKS_RULES_PATH",
       "description": "REPOSITORY_BETTERLEAKS: Path where to find linter configuration file",
@@ -42097,6 +42127,235 @@
       "title": "TERRAFORM_TOFU_FMT: Unsecured env variables",
       "type": "array",
       "x-category": "TERRAFORM_TOFU_FMT",
+      "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
+      "x-order": 600000,
+      "x-section": "SECURITY"
+    },
+    "TERRAFORM_TOFU_VALIDATE_ARGUMENTS": {
+      "$id": "#/properties/TERRAFORM_TOFU_VALIDATE_ARGUMENTS",
+      "description": "TERRAFORM_TOFU_VALIDATE: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TERRAFORM_TOFU_VALIDATE: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ],
+      "x-category": "TERRAFORM_TOFU_VALIDATE",
+      "x-order": 200020,
+      "x-section": "LINTER_COMMAND"
+    },
+    "TERRAFORM_TOFU_VALIDATE_CLI_EXECUTABLE": {
+      "$id": "#/properties/TERRAFORM_TOFU_VALIDATE_CLI_EXECUTABLE",
+      "default": [
+        [
+          "tofu"
+        ]
+      ],
+      "description": "TERRAFORM_TOFU_VALIDATE: Override CLI executable used to build the linter command line (rarely needed)",
+      "items": {
+        "type": "string"
+      },
+      "title": "TERRAFORM_TOFU_VALIDATE: CLI Executable",
+      "type": "array",
+      "x-category": "TERRAFORM_TOFU_VALIDATE",
+      "x-order": 200060,
+      "x-section": "LINTER_COMMAND"
+    },
+    "TERRAFORM_TOFU_VALIDATE_CLI_LINT_MODE": {
+      "$id": "#/properties/TERRAFORM_TOFU_VALIDATE_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "description": "TERRAFORM_TOFU_VALIDATE: Override default CLI lint mode used to call the linter (rarely needed)",
+      "enum": [
+        "list_of_files"
+      ],
+      "enumNames": [
+        "List of Files"
+      ],
+      "title": "TERRAFORM_TOFU_VALIDATE: CLI lint mode",
+      "type": "string",
+      "x-category": "TERRAFORM_TOFU_VALIDATE",
+      "x-doc-key": "config-cli-lint-mode",
+      "x-order": 200050,
+      "x-section": "LINTER_COMMAND"
+    },
+    "TERRAFORM_TOFU_VALIDATE_COMMAND_REMOVE_ARGUMENTS": {
+      "$id": "#/properties/TERRAFORM_TOFU_VALIDATE_COMMAND_REMOVE_ARGUMENTS",
+      "description": "TERRAFORM_TOFU_VALIDATE: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TERRAFORM_TOFU_VALIDATE: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ],
+      "x-category": "TERRAFORM_TOFU_VALIDATE",
+      "x-order": 200020,
+      "x-section": "LINTER_COMMAND"
+    },
+    "TERRAFORM_TOFU_VALIDATE_DISABLE_ERRORS": {
+      "$id": "#/properties/TERRAFORM_TOFU_VALIDATE_DISABLE_ERRORS",
+      "default": false,
+      "description": "TERRAFORM_TOFU_VALIDATE: If true, TERRAFORM_TOFU_VALIDATE doesn't make MegaLinter fail even if errors are found",
+      "title": "TERRAFORM_TOFU_VALIDATE: Disable errors",
+      "type": "boolean",
+      "x-category": "TERRAFORM_TOFU_VALIDATE",
+      "x-order": 400000,
+      "x-section": "ERRORS"
+    },
+    "TERRAFORM_TOFU_VALIDATE_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/TERRAFORM_TOFU_VALIDATE_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "description": "TERRAFORM_TOFU_VALIDATE: If the number of errors found is less than this value, TERRAFORM_TOFU_VALIDATE doesn't make MegaLinter fail",
+      "title": "TERRAFORM_TOFU_VALIDATE: Maximum number of errors allowed",
+      "type": "number",
+      "x-category": "TERRAFORM_TOFU_VALIDATE",
+      "x-order": 400010,
+      "x-section": "ERRORS"
+    },
+    "TERRAFORM_TOFU_VALIDATE_FILE_EXTENSIONS": {
+      "$id": "#/properties/TERRAFORM_TOFU_VALIDATE_FILE_EXTENSIONS",
+      "default": [
+        ".tofu"
+      ],
+      "description": "TERRAFORM_TOFU_VALIDATE: Override descriptor/linter matching files extensions that will be used to select files to lint",
+      "examples": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TERRAFORM_TOFU_VALIDATE: Matching files extensions",
+      "type": "array",
+      "x-category": "TERRAFORM_TOFU_VALIDATE",
+      "x-order": 300020,
+      "x-section": "SCOPE"
+    },
+    "TERRAFORM_TOFU_VALIDATE_FILE_NAMES_REGEX": {
+      "$id": "#/properties/TERRAFORM_TOFU_VALIDATE_FILE_NAMES_REGEX",
+      "default": [],
+      "description": "TERRAFORM_TOFU_VALIDATE: Override descriptor/linter matching file name regexes that will be used to select files to lint",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TERRAFORM_TOFU_VALIDATE: Matching file name regexes",
+      "type": "array",
+      "x-category": "TERRAFORM_TOFU_VALIDATE",
+      "x-order": 300030,
+      "x-section": "SCOPE"
+    },
+    "TERRAFORM_TOFU_VALIDATE_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/TERRAFORM_TOFU_VALIDATE_FILTER_REGEX_EXCLUDE",
+      "description": "",
+      "items": {
+        "type": "string"
+      },
+      "title": "TERRAFORM_TOFU_VALIDATE: Excluding Regex",
+      "type": [
+        "string",
+        "array"
+      ],
+      "x-category": "TERRAFORM_TOFU_VALIDATE",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "TERRAFORM_TOFU_VALIDATE_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/TERRAFORM_TOFU_VALIDATE_FILTER_REGEX_INCLUDE",
+      "description": "",
+      "items": {
+        "type": "string"
+      },
+      "title": "TERRAFORM_TOFU_VALIDATE: Including Regex",
+      "type": [
+        "string",
+        "array"
+      ],
+      "x-category": "TERRAFORM_TOFU_VALIDATE",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
+    },
+    "TERRAFORM_TOFU_VALIDATE_POST_COMMANDS": {
+      "$id": "#/properties/TERRAFORM_TOFU_VALIDATE_POST_COMMANDS",
+      "description": "TERRAFORM_TOFU_VALIDATE: Define bash commands to run after running TERRAFORM_TOFU_VALIDATE",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "TERRAFORM_TOFU_VALIDATE: Post-run commands",
+      "type": "array",
+      "x-category": "TERRAFORM_TOFU_VALIDATE",
+      "x-order": 500010,
+      "x-section": "PREPOSTCOMMANDS"
+    },
+    "TERRAFORM_TOFU_VALIDATE_PRE_COMMANDS": {
+      "$id": "#/properties/TERRAFORM_TOFU_VALIDATE_PRE_COMMANDS",
+      "description": "TERRAFORM_TOFU_VALIDATE: Define bash commands to run before running TERRAFORM_TOFU_VALIDATE",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "TERRAFORM_TOFU_VALIDATE: Pre-run commands",
+      "type": "array",
+      "x-category": "TERRAFORM_TOFU_VALIDATE",
+      "x-order": 500000,
+      "x-section": "PREPOSTCOMMANDS"
+    },
+    "TERRAFORM_TOFU_VALIDATE_TIMEOUT_SECONDS": {
+      "$id": "#/properties/TERRAFORM_TOFU_VALIDATE_TIMEOUT_SECONDS",
+      "description": "TERRAFORM_TOFU_VALIDATE: Maximum duration in seconds of the TERRAFORM_TOFU_VALIDATE run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "TERRAFORM_TOFU_VALIDATE: Timeout in seconds",
+      "type": "integer",
+      "x-category": "TERRAFORM_TOFU_VALIDATE",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
+    "TERRAFORM_TOFU_VALIDATE_UNSECURED_ENV_VARIABLES": {
+      "$id": "#/properties/TERRAFORM_TOFU_VALIDATE_UNSECURED_ENV_VARIABLES",
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling TERRAFORM_TOFU_VALIDATE and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "TERRAFORM_TOFU_VALIDATE: Unsecured env variables",
+      "type": "array",
+      "x-category": "TERRAFORM_TOFU_VALIDATE",
       "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
       "x-order": 600000,
       "x-section": "SECURITY"

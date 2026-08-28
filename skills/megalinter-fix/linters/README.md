@@ -117,6 +117,7 @@ One guide per linter: load a guide only when the related linter reports errors.
 | TERRAFORM_TERRAGRUNT              | TERRAFORM      | [terraform_terragrunt.md](terraform_terragrunt.md)                           |
 | TERRAFORM_TERRAFORM_FMT           | TERRAFORM      | [terraform_terraform_fmt.md](terraform_terraform_fmt.md)                     |
 | TERRAFORM_TOFU_FMT                | TERRAFORM      | [terraform_tofu_fmt.md](terraform_tofu_fmt.md)                               |
+| TERRAFORM_TOFU_VALIDATE           | TERRAFORM      | [terraform_tofu_validate.md](terraform_tofu_validate.md)                     |
 | COPYPASTE_JSCPD                   | COPYPASTE      | [copypaste_jscpd.md](copypaste_jscpd.md)                                     |
 | REPOSITORY_CHECKOV                | REPOSITORY     | [repository_checkov.md](repository_checkov.md)                               |
 | REPOSITORY_DEVSKIM                | REPOSITORY     | [repository_devskim.md](repository_devskim.md)                               |

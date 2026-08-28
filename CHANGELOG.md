@@ -188,6 +188,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 3.3.9 to **3.3.11** on 2026-08-23
   - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 5.0.15 to **5.0.16** on 2026-08-25
   - [biome](https://biomejs.dev) from 2.5.8 to **2.5.9** on 2026-08-25
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.55 to **0.2.57** on 2026-08-28
+  - [grype](https://github.com/anchore/grype) from 0.117.0 to **0.118.0** on 2026-08-28
+  - [syft](https://github.com/anchore/syft) from 1.51.0 to **1.51.1** on 2026-08-28
 <!-- linter-versions-end -->
 
 ## [v10.0.0] - 2026-08-08
