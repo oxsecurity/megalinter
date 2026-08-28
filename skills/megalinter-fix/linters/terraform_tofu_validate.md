@@ -8,7 +8,7 @@
 - Auto-fix support: no (errors must be fixed manually)
 - Rules index: <https://opentofu.org/docs/cli/commands/validate/>
 - How to disable rules inline: <https://opentofu.org/docs/language/expressions/custom-conditions/>
-- Error line format (regex): `Error: `
+- Error line format (regex): `Error:`
 - MegaLinter tuning variables (in `.mega-linter.yml`):
   - `DISABLE_LINTERS`: add `TERRAFORM_TOFU_VALIDATE` to fully disable this linter
   - `TERRAFORM_TOFU_VALIDATE_DISABLE_ERRORS: true`: keep the linter active but non-blocking

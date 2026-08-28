@@ -9,6 +9,7 @@ on:
       - ".codex-plugin/**"
       - ".cursor-plugin/**"
       - ".agents/**"
+      - "com.github.copilot/**"
       - "skills/**"
       - ".automation/validate_agent_plugins.py"
       - ".github/workflows/test-agent-plugins.yml"
@@ -20,6 +21,7 @@ on:
       - ".codex-plugin/**"
       - ".cursor-plugin/**"
       - ".agents/**"
+      - "com.github.copilot/**"
       - "skills/**"
       - ".automation/validate_agent_plugins.py"
       - ".github/workflows/test-agent-plugins.yml"
@@ -51,3 +53,34 @@ jobs:
       # Validates .claude-plugin/marketplace.json and, transitively, the plugin
       # manifest it points to. Runs offline, no authentication required
       - run: claude plugin validate ./ --strict
+      - run: npm install --global @github/copilot
+      # Loads the repository as an external plugin in the Copilot CLI and checks
+      # it is accepted with no manifest error. --plugin-dir mounts a local plugin,
+      # so this runs offline, without a marketplace and without authentication.
+      # Note: `plugins list` never enumerates the skills a plugin provides (checked
+      # against a control plugin), so this asserts the plugin loads, not that each
+      # skill is exposed
+      - name: Validate the plugin loads in the GitHub Copilot CLI
+        run: |
+          copilot --plugin-dir "${GITHUB_WORKSPACE}" plugins list --json > copilot-plugins.json
+          cat copilot-plugins.json
+          python - <<'EOF'
+          import json
+          import sys
+
+          with open("copilot-plugins.json", encoding="utf-8") as inventory_file:
+              inventory = json.load(inventory_file)
+          errors = inventory.get("errors", [])
+          if errors:
+              sys.exit(f"Copilot CLI reported plugin errors: {errors}")
+          loaded = [
+              entry
+              for entry in inventory.get("plugins", [])
+              if entry.get("kind") == "plugin" and entry.get("name") == "megalinter"
+          ]
+          if not loaded:
+              sys.exit("Copilot CLI did not load the megalinter plugin")
+          if not loaded[0].get("enabled"):
+              sys.exit(f"Copilot CLI loaded the megalinter plugin disabled: {loaded[0]}")
+          print(f"Copilot CLI loaded the megalinter plugin: {loaded[0]}")
+          EOF

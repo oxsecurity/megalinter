@@ -96,6 +96,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Fixed `mega-linter-runner --version` displaying `error` instead of the version when the `npm_package_version` environment variable is not set
 
 - Agent Skills
+  - The MegaLinter **agent plugin** now ships its three sub-agents to **GitHub Copilot** clients (VS Code, Copilot CLI, the Copilot app)
+    - Agent Plugins 1.0 standardizes skills but not sub-agents, so Copilot loads them from `com.github.copilot/agents`: the plugin now carries them there, generated from the Claude Code definitions so the two can not drift
+    - **megalinter-setup** installs them correctly outside the plugin too: on Copilot the file name must end with **`.agent.md`** in `.github/agents/`, and the `model: haiku` override must be dropped
+    - The skills stop guessing how they were installed from the skill naming, which only some platforms namespace: the install mode is now read from the filesystem, and you are asked when it stays ambiguous
+    - The `licence` frontmatter key of the four skills is corrected to **`license`**, the spelling agents actually read
   - **megalinter-check** now handles the commit MegaLinter pushes itself when the repository uses `APPLY_FIXES_MODE: commit`
     - CI providers ignore pushes made with the CI token, so the branch used to stay stuck on the **stale checks** of the run that produced the fixes
     - The commit is amended with a **🤖** prefix and re-pushed with `--force-with-lease`, which re-triggers the checks (you are asked first on the default branch)
