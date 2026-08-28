@@ -32,6 +32,21 @@ class LinterTestRoot:
             },
         )
 
+    # A linter gated on a credential declares a "variable_is_set" activation
+    # rule. When that credential is absent the linter is not even activated, so
+    # its lint tests can not run: skip them instead of failing. This is the
+    # normal situation on pull request jobs from a forked repository, where
+    # GitHub does not expose repository secrets.
+    def skip_if_required_variables_missing(self, linter):
+        for rule in linter.activation_rules:
+            if rule.get("type") != "variable_is_set":
+                continue
+            if config.get(self.request_id, rule["variable"], "") == "":
+                raise unittest.SkipTest(
+                    f"{rule['variable']} is not set: "
+                    f"{linter.linter_name} can not be tested"
+                )
+
     def lint_mode_setup(self, mode):
         config.set_value(
             self.request_id,
@@ -51,6 +66,7 @@ class LinterTestRoot:
         self.request_id = str(uuid.uuid1())
         utilstest.linter_test_setup({"request_id": self.request_id})
         probe_linter = self.get_linter_instance(self.request_id)
+        self.skip_if_required_variables_missing(probe_linter)
         if not probe_linter.is_cli_lint_mode_supported(mode):
             raise unittest.SkipTest(f"Linter does not support lint_mode: {mode}")
         # CI optimization: when a linter supports both file and list_of_files,
@@ -124,6 +140,7 @@ class LinterTestRoot:
             {"request_id": self.request_id, "report_type": "SARIF"}
         )
         linter = self.get_linter_instance(self.request_id)
+        self.skip_if_required_variables_missing(linter)
         linter.pre_test("test_report_sarif")
         utilstest.test_linter_report_sarif(linter, self)
         linter.post_test("test_report_sarif")

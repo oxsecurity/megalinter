@@ -145,11 +145,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **Docker pulls monthly chart**: the auto-update workflow now regenerates `docs/assets/images/docker-pulls-monthly.svg` (new pulls per month since October 2020, all images and registries), via the new `.automation/docker_pulls_chart.py` called by `build.py` after the pull counters update
     - Historical monthly points are frozen in `.automation/generated/docker-pulls-monthly.json` (built once from the tracked stats plus a Web Archive reconstruction of the collection gaps); the script only appends newly completed months computed from `flavors-stats.json`
   - Docker pull counters now also track the **standalone `megalinter-only-*` images**: their download counts are stored in `flavors-stats.json` and included in the README badge total
+  - New descriptor `activation_rules` type **`variable_is_set`**, activating a linter as soon as a variable holds a value. The existing `variable` type can only compare a variable to a fixed `expected_value`, which can not express "a credential is present" - the condition **SALESFORCE_CODE_ANALYZER_APEXGURU** needs on `SFDX_AUTH_URL`
+    - Linter tests gated on such a variable **skip themselves** when it is missing, instead of failing: `LinterTestRoot.skip_if_required_variables_missing()` guards the per-lint-mode and SARIF tests, while the version and help tests keep running since they need no credential
 
 - CI
   - **Supply-chain hardening of dependency updates**: Renovate (`minimumReleaseAge`) and Dependabot (`cooldown`) now wait until a release is at least **7 days old** before proposing an upgrade, so compromised releases can be caught by the community first. Security fixes are not delayed and still open immediately
   - New **Check agent plugins manifests** workflow validating the agent plugin manifests on every change to them or to `skills/`: `.automation/validate_agent_plugins.py` checks the root `plugin.json` against the published Agent Plugins 1.0 schema and keeps the per-vendor manifests consistent with it, then `claude plugin validate ./ --strict` checks the Claude Code marketplace and plugin manifests
   - The auto-update workflow patch-bumps the agent plugin version when it regenerates the skills: the plugin follows its own release train, since its fix guides change far more often than MegaLinter is released. `plugin.json` is the single source of truth, mirrored into the per-vendor manifests by `.automation/agent_plugin_manifests.py` (called by `build.py`)
+  - The test workflows forward the **`SFDX_AUTH_URL`** repository secret to the test container, so the **SALESFORCE_CODE_ANALYZER_APEXGURU** lint tests can reach a connected org. The secret is not exposed on pull requests from forked repositories, where those tests skip themselves
 
 - Linter versions upgrades (N)
   - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.10.0 to **3.11.1** on 2026-08-09
