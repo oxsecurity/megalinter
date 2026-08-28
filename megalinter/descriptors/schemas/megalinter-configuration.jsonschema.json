@@ -51,6 +51,39 @@
           "type": "array",
           "x-order": 990070
         },
+        "replacement_env_vars": {
+          "description": "Copy the value of existing ENV variables into other ENV variables, only for the scope of this command. Useful to provide a specific credential to a single command without altering the environment of the other linters. Source values are read from the MegaLinter configuration, so they are sent to the command even if they are secured env variables.",
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "var_dest": {
+                "description": "Name of the ENV variable that will receive the value of var_src when running the command",
+                "examples": [
+                  "GITHUB_TOKEN"
+                ],
+                "title": "Target ENV variable",
+                "type": "string"
+              },
+              "var_src": {
+                "description": "Name of the ENV variable whose value will be copied into var_dest",
+                "examples": [
+                  "MY_GITHUB_COM_TOKEN"
+                ],
+                "title": "Source ENV variable",
+                "type": "string"
+              }
+            },
+            "required": [
+              "var_dest",
+              "var_src"
+            ],
+            "title": "ENV variable replacement",
+            "type": "object"
+          },
+          "title": "Replacement ENV variables",
+          "type": "array",
+          "x-order": 990065
+        },
         "secured_env": {
           "default": true,
           "description": "Apply filtering of secured env variables before calling the command (default true). Be careful if you disable it, it will expose all env variables to the command, including secret ones.",
@@ -36749,7 +36782,7 @@
     "SECURED_ENV_VARIABLES_DEFAULT": {
       "$id": "#/properties/SECURED_ENV_VARIABLES_DEFAULT",
       "default": [
-        "PAT",
+        "(^|_)(PAT)($|_)",
         "SYSTEM_ACCESSTOKEN",
         "(^|_)(USERNAME)($|_)",
         "(^|_)(PASSWORD|PASSWD|PASS|PWD)($|_)",
