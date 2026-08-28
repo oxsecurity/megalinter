@@ -76,11 +76,11 @@ not a reliable signal: only some platforms prefix plugin skills with the plugin 
 and no platform lets you query where a skill came from. Determine it from the filesystem, and ask the user when it
 stays ambiguous:
 
-| Evidence in the repository or user profile                                     | Install mode |
-|:--------------------------------------------------------------------------------|:-------------|
-| A MegaLinter plugin folder (`megalinter` under a `plugins/` directory of your platform) | plugin       |
+| Evidence in the repository or user profile                                                                                  | Install mode |
+|:----------------------------------------------------------------------------------------------------------------------------|:-------------|
+| A MegaLinter plugin folder (`megalinter` under a `plugins/` directory of your platform)                                     | plugin       |
 | `.claude/skills/megalinter*`, `.github/skills/megalinter*`, `.agents/skills/megalinter*` or the same under the user profile | skills       |
-| Neither, or both                                                                 | ask the user |
+| Neither, or both                                                                                                            | ask the user |
 
 **If it was installed as an agent plugin**, the skills CLI does not manage it: update the plugin instead, and skip the
 rest of this section — the sub-agents are refreshed with it.
