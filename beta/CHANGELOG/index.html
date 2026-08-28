@@ -15914,6 +15914,13 @@
 </ul>
 <ul>
 <li>Agent Skills<ul>
+<li>The MegaLinter <strong>agent plugin</strong> now ships its three sub-agents to <strong>GitHub Copilot</strong> clients (VS Code, Copilot CLI, the Copilot app)<ul>
+<li>Agent Plugins 1.0 standardizes skills but not sub-agents, so Copilot loads them from <code>com.github.copilot/agents</code>: the plugin now carries them there, generated from the Claude Code definitions so the two can not drift</li>
+<li><strong>megalinter-setup</strong> installs them correctly outside the plugin too: on Copilot the file name must end with <strong><code>.agent.md</code></strong> in <code>.github/agents/</code>, and the <code>model: haiku</code> override must be dropped</li>
+<li>The skills stop guessing how they were installed from the skill naming, which only some platforms namespace: the install mode is now read from the filesystem, and you are asked when it stays ambiguous</li>
+<li>The <code>licence</code> frontmatter key of the four skills is corrected to <strong><code>license</code></strong>, the spelling agents actually read</li>
+</ul>
+</li>
 <li><strong>megalinter-check</strong> now handles the commit MegaLinter pushes itself when the repository uses <code>APPLY_FIXES_MODE: commit</code><ul>
 <li>CI providers ignore pushes made with the CI token, so the branch used to stay stuck on the <strong>stale checks</strong> of the run that produced the fixes</li>
 <li>The commit is amended with a <strong>🤖</strong> prefix and re-pushed with <code>--force-with-lease</code>, which re-triggers the checks (you are asked first on the default branch)</li>
