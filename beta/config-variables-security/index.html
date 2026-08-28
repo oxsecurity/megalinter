@@ -12519,7 +12519,7 @@
 <p>If you override <code>SECURED_ENV_VARIABLES_DEFAULT</code>, it replaces the default list, so it's better to only define <code>SECURED_ENV_VARIABLES</code> to add items to the default list.</p>
 <p>SECURED_ENV_VARIABLES_DEFAULT contains exact names and (regular expressions) matching patterns for commonly used sensitive environment variables:</p>
 <ul>
-<li>PAT</li>
+<li>(^|<em>)(PAT)($|</em>)</li>
 <li>SYSTEM_ACCESSTOKEN</li>
 <li>(^|<em>)(USERNAME)($|</em>)</li>
 <li>(^|<em>)(PASSWORD|PASSWD|PASS|PWD)($|</em>)</li>
@@ -12535,7 +12535,7 @@
 <li>(SFDX_CLIENT_KEY_.*)</li>
 <li>(^|<em>)(SLACK|DISCORD|TEAMS|WEBHOOK)_URL($|</em>)</li>
 </ul>
-<p>This compact list is intentionally pattern-based: variables such as <code>GITHUB_TOKEN</code>, <code>CI_JOB_TOKEN</code>, <code>NPM_TOKEN</code>, <code>GIT_AUTHORIZATION_BEARER</code>, <code>AWS_SECRET_ACCESS_KEY</code>, <code>AZURE_CLIENT_SECRET</code>, <code>OPENAI_API_KEY</code>, <code>DOCKER_PASSWORD</code>, and <code>SMTP_PASSWORD</code> are hidden through these broader matchers.</p>
+<p>This compact list is intentionally pattern-based: variables such as <code>GITHUB_TOKEN</code>, <code>CI_JOB_TOKEN</code>, <code>NPM_TOKEN</code>, <code>GIT_AUTHORIZATION_BEARER</code>, <code>AWS_SECRET_ACCESS_KEY</code>, <code>AZURE_CLIENT_SECRET</code>, <code>OPENAI_API_KEY</code>, <code>DOCKER_PASSWORD</code>, <code>SMTP_PASSWORD</code>, <code>AZURE_PAT</code>, and <code>PAT_GITHUB_COM</code> are hidden through these broader matchers.</p>
 <h2 id="security-boundaries-and-threat-model">Security boundaries and threat model</h2>
 <p>When a linter or plugin command is executed, MegaLinter builds a child-process environment where matched sensitive variables are replaced with <code>HIDDEN_BY_MEGALINTER</code>.</p>
 <p>This means:</p>

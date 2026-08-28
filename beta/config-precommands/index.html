@@ -12347,6 +12347,10 @@
 <span class="w">    </span><span class="nt">venv</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">flake8</span><span class="w"> </span><span class="c1"># Will be run within the flake8 Python virtualenv. There is one virtualenv per Python-based linter, with the same name</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export MY_OUTPUT_VAR="my output var" &amp;&amp; export MY_OUTPUT_VAR2="my output var2"</span>
 <span class="w">    </span><span class="nt">output_variables</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"MY_OUTPUT_VAR"</span><span class="p p-Indicator">,</span><span class="s">"MY_OUTPUT_VAR2"</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1"># Will collect the values of output variables and update MegaLinter's own ENV context</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo "Command using another ENV variable value"</span>
+<span class="w">    </span><span class="nt">replacement_env_vars</span><span class="p">:</span><span class="w"> </span><span class="c1"># Copies the value of MY_SECRET_VAR into GITHUB_TOKEN, for this command only</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">var_src</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_SECRET_VAR</span>
+<span class="w">        </span><span class="nt">var_dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GITHUB_TOKEN</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo "Some command called before loading MegaLinter plugins"</span>
 <span class="w">    </span><span class="nt">cwd</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">workspace</span><span class="w">   </span><span class="c1"># Will be run at the root of the workspace (usually your repository root)</span>
 <span class="w">    </span><span class="nt">continue_if_failed</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span><span class="w">  </span><span class="c1"># Will stop the process if the command fails (return code &gt; 0)</span>
@@ -12404,6 +12408,11 @@
 <tr>
 <td><strong>output_variables</strong></td>
 <td>ENV variables to read from output after running the commands, and store in MegaLinter's ENV context so they can be reused in subsequent commands</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><strong>replacement_env_vars</strong></td>
+<td>ENV variables to copy into other ENV variables, for the scope of this command only. Each item contains <code>var_src</code> and <code>var_dest</code>. Values are read from MegaLinter configuration, so secured env variables are sent to the command</td>
 <td><code>[]</code></td>
 </tr>
 <tr>
