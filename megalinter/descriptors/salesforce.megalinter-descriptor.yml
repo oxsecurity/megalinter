@@ -145,6 +145,125 @@ linters:
         - name: Salesforce Extension Pack
           url: https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode
 
+  # Code Analyzer ApexGuru
+  - class: SalesforceCodeAnalyzerApexGuruLinter
+    linter_name: code-analyzer-apexguru
+    can_output_sarif: true
+    name: SALESFORCE_CODE_ANALYZER_APEXGURU
+    files_sub_directory: force-app
+    activation_rules:
+      - type: variable_is_set
+        variable: SFDX_AUTH_URL
+    linter_text: |
+      **ApexGuru** is the AI-driven engine of Salesforce Code Analyzer. Unlike the other engines, it does not analyze your sources locally: it sends your Apex classes and triggers to a connected Salesforce org, where an LLM combined with Java Virtual Machine runtime traces detects SOQL inefficiencies, critical anti-patterns and scalability hotspots that static analysis alone can not see.
+
+      **Key Features:**
+
+      - **Runtime-Aware Analysis**: Correlates your Apex sources with JVM traces collected in the org to surface issues that only appear at execution time
+      - **Performance & Scalability**: Detects SOQL inefficiencies, expensive schema describe calls and governor-limit hotspots
+      - **Actionable Recommendations**: Reports exact line-level highlights, severity ratings and suggested code changes (`--include-suggestions`)
+      - **Unified Toolchain**: Runs via the same Salesforce Code Analyzer v5 plugin and `code-analyzer.yml` configuration as the Apex, Aura, Flow and LWC engines
+      - **Multiple Output Formats**: Supports CSV, JSON, HTML, XML and SARIF output
+
+      **Requirements**
+
+      ApexGuru only analyzes `.cls` and `.trigger` files, and it requires a connected org where ApexGuru is enabled. It is available at no extra charge for Unlimited Edition production orgs, full copy sandboxes, Signature orgs and Scale Test customers, and requires Scale Center to be enabled. See [Activate and Use ApexGuru](https://help.salesforce.com/s/articleView?id=xcloud.apexguru_workflow.htm&type=5).
+
+      **Activation**
+
+      Because it needs an authenticated org, this linter is **inactive by default**: it activates only when the `SFDX_AUTH_URL` variable is defined. Store the [Salesforce DX auth url](https://developer.salesforce.com/docs/platform/salesforce-cli-reference/guide/cli_reference_org_display.html) of the target org in a **CI secret** named `SFDX_AUTH_URL`, and MegaLinter logs in to that org before running ApexGuru.
+
+      **Configuration**
+
+      Engine settings (`target_org`, `api_timeout_ms`, `api_initial_retry_ms`, `api_max_retry_ms`, `api_backoff_multiplier`) go under `engines.apexguru` in your `code-analyzer.yml`.
+
+      If your root folder is not **force-app**, please set variable `SALESFORCE_CODE_ANALYZER_APEXGURU_DIRECTORY`
+
+      See more details in [Help](#help-content)
+    linter_url: https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/engine-apexguru.html
+    linter_repo: https://github.com/forcedotcom/code-analyzer
+    linter_rules_url: https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/engine-apexguru.html
+    linter_rules_configuration_url: https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/config.html
+    linter_spdx_license: BSD-3-Clause
+    # Remote analysis in the connected org, polled until it completes
+    # (5 minutes default timeout): by far the slowest Code Analyzer engine
+    linter_speed: 1
+    config_file_name: code-analyzer.yml
+    cli_executable: sf
+    cli_config_arg_name: "--config-file"
+    cli_lint_extra_args:
+      - "code-analyzer"
+      - "run"
+      - "--rule-selector"
+      - "apexguru"
+      - "--workspace"
+      - "."
+      - "--include-suggestions"
+      - "--severity-threshold"
+      - "Moderate"
+      - "--output-file"
+      - "{{REPORT_FOLDER}}/code-analyzer-report-apexguru.csv"
+      - "--view"
+      - "table"
+    cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
+    cli_help_extra_args:
+      - "code-analyzer"
+      - "run"
+    cli_version_extra_args:
+      - "plugins"
+    cli_version_arg_name: ""
+    version_extract_regex: "(?<=code-analyzer )\\d+(\\.\\d+)+"
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "Found ([0-9]+) violation\\(s\\)"
+    common_linter_errors:
+      - identifier: SALESFORCE_CODE_ANALYZER_APEXGURU_ERROR_CONFIG_INVALID
+        regex: "(Failed to parse the configuration content|The specified configuration file .* does not exist|The specified configuration file .* has an unsupported file extension|The configuration content is invalid)"
+        message: |-
+          code-analyzer could not load the configuration file (code-analyzer.yml).
+          Verify the file is valid v5 YAML and that its path is reachable from the workspace.
+          Generate a starter config with: sf code-analyzer config -f code-analyzer.yml
+      - identifier: SALESFORCE_CODE_ANALYZER_APEXGURU_ERROR_NO_ORG
+        regex: "(No authorization information found for|No default (environment|org) found|NoDefaultEnvError|Unable to (find|resolve) the target org|The org .* is not authenticated)"
+        message: |-
+          ApexGuru needs an authenticated Salesforce org and could not resolve one.
+          Verify that the SFDX_AUTH_URL variable holds a valid Salesforce DX auth url, obtained with: sf org display --target-org <alias> --verbose --json
+          You can also select another org with the `target_org` setting of the apexguru engine in your code-analyzer.yml
+      - identifier: SALESFORCE_CODE_ANALYZER_APEXGURU_ERROR_NOT_ENABLED
+        regex: "(ApexGuru is (not|un)available|ApexGuru .* not enabled|not entitled to use ApexGuru|Scale Center .* not enabled)"
+        message: |-
+          ApexGuru is not enabled on the connected org.
+          It requires Scale Center and is available for Unlimited Edition production orgs, full copy sandboxes, Signature orgs and Scale Test customers.
+          Enable it by following https://help.salesforce.com/s/articleView?id=xcloud.apexguru_workflow.htm&type=5 , or disable this linter with DISABLE_LINTERS: [SALESFORCE_CODE_ANALYZER_APEXGURU]
+      - identifier: SALESFORCE_CODE_ANALYZER_APEXGURU_ERROR_TIMEOUT
+        regex: "(ApexGuru .* timed out|timed out after .* milliseconds|api_timeout_ms)"
+        message: |-
+          The ApexGuru analysis did not complete before the engine timeout (5 minutes by default).
+          Raise the `api_timeout_ms` setting of the apexguru engine in your code-analyzer.yml, or reduce the analyzed scope with FILTER_REGEX_EXCLUDE.
+    examples:
+      - "sf code-analyzer run --rule-selector apexguru --workspace . --include-suggestions --output-file results.csv"
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
+          ARG SALESFORCE_CODE_ANALYZER_VERSION=5.15.0
+        - |-
+          RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
+              && (npm cache clean --force || true) \
+              && rm -rf /root/.npm/_cacache
+    supported_platforms:
+      platform:
+        - linux/amd64
+        # Errors when building the image
+        #- linux/arm64
+    ide:
+      vscode:
+        - name: Salesforce Code Analyzer
+          url: https://marketplace.visualstudio.com/items?itemName=salesforce.sfdx-code-analyzer-vscode
+        - name: Salesforce Extension Pack
+          url: https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode
+
   # Code Analyzer Aura
   - class: SalesforceCodeAnalyzerLinter
     linter_name: code-analyzer-aura

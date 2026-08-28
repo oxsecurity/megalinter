@@ -18,6 +18,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Activated only when a **biome.json** or **biome.jsonc** configuration file is found in the repository
     - Supports **APPLY_FIXES** (safe fixes with `--write`) and native **SARIF** output
     - `EXCLUDED_DIRECTORIES` are forwarded in project lint mode through a generated configuration extending the workspace one
+  - **[ApexGuru](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/engine-apexguru.html)**, the AI-driven engine of **Salesforce Code Analyzer**, available as **SALESFORCE_CODE_ANALYZER_APEXGURU**
+    - Detects **SOQL inefficiencies**, critical anti-patterns and scalability hotspots in your `.cls` and `.trigger` files, with line-level highlights, severity ratings and suggested fixes
+    - The analysis runs **in a connected Salesforce org**, not locally: store the [auth url](https://developer.salesforce.com/docs/platform/salesforce-cli-reference/guide/cli_reference_org_display.html) of the target org in a CI secret named **`SFDX_AUTH_URL`**, and MegaLinter logs in to that org before the scan
+    - **Inactive by default**: it activates only when `SFDX_AUTH_URL` is defined, so nothing changes for existing Salesforce projects
+    - Requires **ApexGuru to be enabled** on the org: it needs Scale Center, and is available for Unlimited Edition production orgs, full copy sandboxes, Signature orgs and Scale Test customers
+    - Supports native **SARIF** output, like the other Code Analyzer engines
   - **[tofu fmt](https://opentofu.org/docs/cli/commands/fmt/)**, the built-in formatter of **OpenTofu** (the MPL-2.0 licensed fork of Terraform), available as **TERRAFORM_TOFU_FMT** ([#8729](https://github.com/oxsecurity/megalinter/issues/8729))
     - Analyzes **`.tofu`** files only, the OpenTofu specific extension, so it never doubles up with **TERRAFORM_TERRAFORM_FMT** which keeps `.tf`
     - To format your `.tf` files with OpenTofu instead, set `TERRAFORM_TOFU_FMT_FILE_EXTENSIONS: [".tofu", ".tf", ".tfvars"]` and `DISABLE_LINTERS: [TERRAFORM_TERRAFORM_FMT]`
