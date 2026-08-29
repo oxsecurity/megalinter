@@ -12,6 +12,7 @@ This page provides a comprehensive comparison of all supported LLM providers for
 | [Mistral AI](llm-provider/llm_provider_mistralai.md)      |    $     |    Cloud    |       Easy       | European alternative         |
 | [DeepSeek](llm-provider/llm_provider_deepseek.md)         |    $     |    Cloud    |       Easy       | Code-focused models          |
 | [Grok](llm-provider/llm_provider_grok.md)                 |    $$    |    Cloud    |       Easy       | xAI's conversational model   |
+| [OrcaRouter](llm-provider/llm_provider_orcarouter.md)     |    $$    |    Cloud    |       Easy       | Multi-model AI gateway       |
 | [Ollama](llm-provider/llm_provider_ollama.md)             |   Free   |    Local    |      Medium      | Privacy, offline use         |
 | [Hugging Face](llm-provider/llm_provider_huggingface.md)  |  Free*   | Local/Cloud |       Hard       | Open models, customization   |
 
