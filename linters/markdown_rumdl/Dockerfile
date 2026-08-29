@@ -62,7 +62,7 @@ RUN python -c 'import sys; assert sys.version_info >= (3, 14, 7), "Python 3.14.7
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.2.57
+ARG PIP_RUMDL_VERSION=0.2.60
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=26.2.1
 # renovate: datasource=pypi depName=virtualenv
