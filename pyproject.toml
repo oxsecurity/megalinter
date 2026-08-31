@@ -80,6 +80,7 @@ dependencies = [
   "markdown",
   # Zensical-compatible fork of mike; GitHub-only, not published on PyPI.
   # Kept in sync with .config/python/dev/requirements.txt.
+  # renovate: datasource=git-refs depName=https://github.com/squidfunk/mike branch=master
   "mike @ git+https://github.com/squidfunk/mike@2d4ad799442f4592db8ad53b179bfb33db8c69ac",
   "pymdown-extensions",
   "mdx_truly_sane_lists",

@@ -11,7 +11,7 @@ jsonschema==4.26.0
 markdown==3.10.3
 mdx_truly_sane_lists==1.3
 # renovate: datasource=git-refs depName=https://github.com/squidfunk/mike branch=master
-mike @ git+https://github.com/squidfunk/mike@2d4ad799442f4592db8ad53b179bfb33db8c69ac  # renovate: ignore
+mike @ git+https://github.com/squidfunk/mike@2d4ad799442f4592db8ad53b179bfb33db8c69ac
 pygithub==2.10.0
 pymdown-extensions==11.0.2
 pytablewriter==1.2.1
