@@ -3,19 +3,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="hadolint is available to analyze DOCKERFILE files in MegaLinter">
+        <meta name="description" content="MegaLinter is an open-source tool for CI/CD workflows that analyzes the consistency of your code, IaC, configuration, and scripts in your repository to ensure all your project sources are clean and formatted, no matter which IDE or toolbox is used by your developers. Powered by OX Security.Supports 66 languages, 24 formats, 22 tooling formats, and is ready to use out of the box as a GitHub Action or with any CI system. It is highly configurable and free for all uses.MegaLinter has native integrations with popular CI/CD tools and is compliant with most Coding Agents.">
       
       
         <meta name="author" content="Nicolas Vuillamy">
       
       
-        <link rel="canonical" href="https://megalinter.io/beta/descriptors/dockerfile/">
+        <link rel="canonical" href="https://megalinter.io/beta/llm-provider/llm_provider_orcarouter/">
       
       
-        <link rel="prev" href="../cloudformation_cfn_lint/">
+        <link rel="prev" href="../llm_provider_openai/">
       
       
-        <link rel="next" href="../dockerfile_hadolint/">
+        <link rel="next" href="../llm_provider_ollama/">
       
       
         
@@ -26,7 +26,7 @@
     
     
       
-        <title>DOCKERFILE linters in MegaLinter - MegaLinter by OX Security</title>
+        <title>OrcaRouter - MegaLinter by OX Security</title>
       
     
     
@@ -62,16 +62,19 @@
     
 
 
+<meta property="description" content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally.">
 <meta name="twitter:image:src" content="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png">
 <meta name="twitter:site" content="@nvuillam">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="DOCKERFILE linters in MegaLinter">
-<meta name="twitter:description" content="hadolint is available to analyze DOCKERFILE files in MegaLinter">
+<meta name="twitter:title" content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally.">
+<meta name="twitter:description" content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally.">
 <meta property="og:image" content="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png">
 <meta property="og:image:alt" content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally.">
 <meta property="og:site_name" content="MegaLinter">
-<meta property="og:title" content="DOCKERFILE linters in MegaLinter">
-<meta property="og:description" content="hadolint is available to analyze DOCKERFILE files in MegaLinter">
+<meta property="og:type" content="object">
+<meta property="og:title" content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally.">
+<meta property="og:url" content="https://megalinter.io">
+<meta property="og:description" content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally.">
 
 
 
@@ -102,7 +105,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#dockerfile" class="md-skip">
+        <a href="#orcarouter-provider" class="md-skip">
           Skip to content
         </a>
       
@@ -141,7 +144,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              DOCKERFILE linters in MegaLinter
+              OrcaRouter
             
           </span>
         </div>
@@ -1090,20 +1093,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -1124,7 +1125,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1320,7 +1321,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bash/" class="md-nav__link">
+      <a href="../../descriptors/bash/" class="md-nav__link">
         
   
   
@@ -1348,7 +1349,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bash_bash_exec/" class="md-nav__link">
+      <a href="../../descriptors/bash_bash_exec/" class="md-nav__link">
         
   
   
@@ -1376,7 +1377,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bash_shellcheck/" class="md-nav__link">
+      <a href="../../descriptors/bash_shellcheck/" class="md-nav__link">
         
   
   
@@ -1404,7 +1405,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bash_shfmt/" class="md-nav__link">
+      <a href="../../descriptors/bash_shfmt/" class="md-nav__link">
         
   
   
@@ -1487,7 +1488,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../c/" class="md-nav__link">
+      <a href="../../descriptors/c/" class="md-nav__link">
         
   
   
@@ -1515,7 +1516,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../c_cppcheck/" class="md-nav__link">
+      <a href="../../descriptors/c_cppcheck/" class="md-nav__link">
         
   
   
@@ -1543,7 +1544,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../c_cpplint/" class="md-nav__link">
+      <a href="../../descriptors/c_cpplint/" class="md-nav__link">
         
   
   
@@ -1571,7 +1572,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../c_clang_format/" class="md-nav__link">
+      <a href="../../descriptors/c_clang_format/" class="md-nav__link">
         
   
   
@@ -1654,7 +1655,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../clojure/" class="md-nav__link">
+      <a href="../../descriptors/clojure/" class="md-nav__link">
         
   
   
@@ -1682,7 +1683,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../clojure_clj_kondo/" class="md-nav__link">
+      <a href="../../descriptors/clojure_clj_kondo/" class="md-nav__link">
         
   
   
@@ -1710,7 +1711,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../clojure_cljstyle/" class="md-nav__link">
+      <a href="../../descriptors/clojure_cljstyle/" class="md-nav__link">
         
   
   
@@ -1793,7 +1794,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../coffee/" class="md-nav__link">
+      <a href="../../descriptors/coffee/" class="md-nav__link">
         
   
   
@@ -1821,7 +1822,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../coffee_coffeelint/" class="md-nav__link">
+      <a href="../../descriptors/coffee_coffeelint/" class="md-nav__link">
         
   
   
@@ -1904,7 +1905,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cpp/" class="md-nav__link">
+      <a href="../../descriptors/cpp/" class="md-nav__link">
         
   
   
@@ -1932,7 +1933,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cpp_cppcheck/" class="md-nav__link">
+      <a href="../../descriptors/cpp_cppcheck/" class="md-nav__link">
         
   
   
@@ -1960,7 +1961,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cpp_cpplint/" class="md-nav__link">
+      <a href="../../descriptors/cpp_cpplint/" class="md-nav__link">
         
   
   
@@ -1988,7 +1989,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cpp_clang_format/" class="md-nav__link">
+      <a href="../../descriptors/cpp_clang_format/" class="md-nav__link">
         
   
   
@@ -2071,7 +2072,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../csharp/" class="md-nav__link">
+      <a href="../../descriptors/csharp/" class="md-nav__link">
         
   
   
@@ -2099,7 +2100,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../csharp_dotnet_format/" class="md-nav__link">
+      <a href="../../descriptors/csharp_dotnet_format/" class="md-nav__link">
         
   
   
@@ -2127,7 +2128,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../csharp_csharpier/" class="md-nav__link">
+      <a href="../../descriptors/csharp_csharpier/" class="md-nav__link">
         
   
   
@@ -2155,7 +2156,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../csharp_roslynator/" class="md-nav__link">
+      <a href="../../descriptors/csharp_roslynator/" class="md-nav__link">
         
   
   
@@ -2238,7 +2239,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dart/" class="md-nav__link">
+      <a href="../../descriptors/dart/" class="md-nav__link">
         
   
   
@@ -2266,7 +2267,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dart_dartanalyzer/" class="md-nav__link">
+      <a href="../../descriptors/dart_dartanalyzer/" class="md-nav__link">
         
   
   
@@ -2349,7 +2350,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../go/" class="md-nav__link">
+      <a href="../../descriptors/go/" class="md-nav__link">
         
   
   
@@ -2377,7 +2378,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../go_golangci_lint/" class="md-nav__link">
+      <a href="../../descriptors/go_golangci_lint/" class="md-nav__link">
         
   
   
@@ -2405,7 +2406,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../go_revive/" class="md-nav__link">
+      <a href="../../descriptors/go_revive/" class="md-nav__link">
         
   
   
@@ -2488,7 +2489,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../groovy/" class="md-nav__link">
+      <a href="../../descriptors/groovy/" class="md-nav__link">
         
   
   
@@ -2516,7 +2517,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../groovy_npm_groovy_lint/" class="md-nav__link">
+      <a href="../../descriptors/groovy_npm_groovy_lint/" class="md-nav__link">
         
   
   
@@ -2599,7 +2600,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../java/" class="md-nav__link">
+      <a href="../../descriptors/java/" class="md-nav__link">
         
   
   
@@ -2627,7 +2628,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../java_checkstyle/" class="md-nav__link">
+      <a href="../../descriptors/java_checkstyle/" class="md-nav__link">
         
   
   
@@ -2655,7 +2656,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../java_pmd/" class="md-nav__link">
+      <a href="../../descriptors/java_pmd/" class="md-nav__link">
         
   
   
@@ -2738,7 +2739,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../javascript/" class="md-nav__link">
+      <a href="../../descriptors/javascript/" class="md-nav__link">
         
   
   
@@ -2766,7 +2767,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../javascript_eslint/" class="md-nav__link">
+      <a href="../../descriptors/javascript_eslint/" class="md-nav__link">
         
   
   
@@ -2794,7 +2795,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../javascript_standard/" class="md-nav__link">
+      <a href="../../descriptors/javascript_standard/" class="md-nav__link">
         
   
   
@@ -2822,7 +2823,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../javascript_prettier/" class="md-nav__link">
+      <a href="../../descriptors/javascript_prettier/" class="md-nav__link">
         
   
   
@@ -2850,7 +2851,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../javascript_biome/" class="md-nav__link">
+      <a href="../../descriptors/javascript_biome/" class="md-nav__link">
         
   
   
@@ -2933,7 +2934,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../jsx/" class="md-nav__link">
+      <a href="../../descriptors/jsx/" class="md-nav__link">
         
   
   
@@ -2961,7 +2962,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../jsx_eslint/" class="md-nav__link">
+      <a href="../../descriptors/jsx_eslint/" class="md-nav__link">
         
   
   
@@ -2989,7 +2990,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../jsx_biome/" class="md-nav__link">
+      <a href="../../descriptors/jsx_biome/" class="md-nav__link">
         
   
   
@@ -3072,7 +3073,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../kotlin/" class="md-nav__link">
+      <a href="../../descriptors/kotlin/" class="md-nav__link">
         
   
   
@@ -3100,7 +3101,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../kotlin_ktlint/" class="md-nav__link">
+      <a href="../../descriptors/kotlin_ktlint/" class="md-nav__link">
         
   
   
@@ -3128,7 +3129,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../kotlin_detekt/" class="md-nav__link">
+      <a href="../../descriptors/kotlin_detekt/" class="md-nav__link">
         
   
   
@@ -3211,7 +3212,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../lua/" class="md-nav__link">
+      <a href="../../descriptors/lua/" class="md-nav__link">
         
   
   
@@ -3239,7 +3240,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../lua_luacheck/" class="md-nav__link">
+      <a href="../../descriptors/lua_luacheck/" class="md-nav__link">
         
   
   
@@ -3267,7 +3268,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../lua_stylua/" class="md-nav__link">
+      <a href="../../descriptors/lua_stylua/" class="md-nav__link">
         
   
   
@@ -3350,7 +3351,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../perl/" class="md-nav__link">
+      <a href="../../descriptors/perl/" class="md-nav__link">
         
   
   
@@ -3378,7 +3379,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../perl_perlcritic/" class="md-nav__link">
+      <a href="../../descriptors/perl_perlcritic/" class="md-nav__link">
         
   
   
@@ -3461,7 +3462,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../php/" class="md-nav__link">
+      <a href="../../descriptors/php/" class="md-nav__link">
         
   
   
@@ -3489,7 +3490,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../php_phpcs/" class="md-nav__link">
+      <a href="../../descriptors/php_phpcs/" class="md-nav__link">
         
   
   
@@ -3517,7 +3518,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../php_phpstan/" class="md-nav__link">
+      <a href="../../descriptors/php_phpstan/" class="md-nav__link">
         
   
   
@@ -3545,7 +3546,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../php_psalm/" class="md-nav__link">
+      <a href="../../descriptors/php_psalm/" class="md-nav__link">
         
   
   
@@ -3573,7 +3574,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../php_phplint/" class="md-nav__link">
+      <a href="../../descriptors/php_phplint/" class="md-nav__link">
         
   
   
@@ -3601,7 +3602,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../php_php_cs_fixer/" class="md-nav__link">
+      <a href="../../descriptors/php_php_cs_fixer/" class="md-nav__link">
         
   
   
@@ -3684,7 +3685,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../powershell/" class="md-nav__link">
+      <a href="../../descriptors/powershell/" class="md-nav__link">
         
   
   
@@ -3712,7 +3713,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../powershell_powershell/" class="md-nav__link">
+      <a href="../../descriptors/powershell_powershell/" class="md-nav__link">
         
   
   
@@ -3740,7 +3741,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../powershell_powershell_formatter/" class="md-nav__link">
+      <a href="../../descriptors/powershell_powershell_formatter/" class="md-nav__link">
         
   
   
@@ -3823,7 +3824,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../python/" class="md-nav__link">
+      <a href="../../descriptors/python/" class="md-nav__link">
         
   
   
@@ -3851,7 +3852,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../python_pylint/" class="md-nav__link">
+      <a href="../../descriptors/python_pylint/" class="md-nav__link">
         
   
   
@@ -3879,7 +3880,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../python_black/" class="md-nav__link">
+      <a href="../../descriptors/python_black/" class="md-nav__link">
         
   
   
@@ -3907,7 +3908,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../python_flake8/" class="md-nav__link">
+      <a href="../../descriptors/python_flake8/" class="md-nav__link">
         
   
   
@@ -3935,7 +3936,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../python_isort/" class="md-nav__link">
+      <a href="../../descriptors/python_isort/" class="md-nav__link">
         
   
   
@@ -3963,7 +3964,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../python_bandit/" class="md-nav__link">
+      <a href="../../descriptors/python_bandit/" class="md-nav__link">
         
   
   
@@ -3991,7 +3992,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../python_mypy/" class="md-nav__link">
+      <a href="../../descriptors/python_mypy/" class="md-nav__link">
         
   
   
@@ -4019,7 +4020,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../python_nbqa/" class="md-nav__link">
+      <a href="../../descriptors/python_nbqa/" class="md-nav__link">
         
   
   
@@ -4047,7 +4048,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../python_pyright/" class="md-nav__link">
+      <a href="../../descriptors/python_pyright/" class="md-nav__link">
         
   
   
@@ -4075,7 +4076,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../python_ruff/" class="md-nav__link">
+      <a href="../../descriptors/python_ruff/" class="md-nav__link">
         
   
   
@@ -4103,7 +4104,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../python_ruff_format/" class="md-nav__link">
+      <a href="../../descriptors/python_ruff_format/" class="md-nav__link">
         
   
   
@@ -4186,7 +4187,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../r/" class="md-nav__link">
+      <a href="../../descriptors/r/" class="md-nav__link">
         
   
   
@@ -4214,7 +4215,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../r_lintr/" class="md-nav__link">
+      <a href="../../descriptors/r_lintr/" class="md-nav__link">
         
   
   
@@ -4297,7 +4298,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../raku/" class="md-nav__link">
+      <a href="../../descriptors/raku/" class="md-nav__link">
         
   
   
@@ -4325,7 +4326,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../raku_raku/" class="md-nav__link">
+      <a href="../../descriptors/raku_raku/" class="md-nav__link">
         
   
   
@@ -4408,7 +4409,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ruby/" class="md-nav__link">
+      <a href="../../descriptors/ruby/" class="md-nav__link">
         
   
   
@@ -4436,7 +4437,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ruby_rubocop/" class="md-nav__link">
+      <a href="../../descriptors/ruby_rubocop/" class="md-nav__link">
         
   
   
@@ -4519,7 +4520,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../rust/" class="md-nav__link">
+      <a href="../../descriptors/rust/" class="md-nav__link">
         
   
   
@@ -4547,7 +4548,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../rust_clippy/" class="md-nav__link">
+      <a href="../../descriptors/rust_clippy/" class="md-nav__link">
         
   
   
@@ -4630,7 +4631,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../salesforce/" class="md-nav__link">
+      <a href="../../descriptors/salesforce/" class="md-nav__link">
         
   
   
@@ -4658,7 +4659,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../salesforce_code_analyzer_apex/" class="md-nav__link">
+      <a href="../../descriptors/salesforce_code_analyzer_apex/" class="md-nav__link">
         
   
   
@@ -4686,7 +4687,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../salesforce_code_analyzer_aura/" class="md-nav__link">
+      <a href="../../descriptors/salesforce_code_analyzer_aura/" class="md-nav__link">
         
   
   
@@ -4714,7 +4715,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../salesforce_code_analyzer_lwc/" class="md-nav__link">
+      <a href="../../descriptors/salesforce_code_analyzer_lwc/" class="md-nav__link">
         
   
   
@@ -4742,7 +4743,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../salesforce_code_analyzer_flow/" class="md-nav__link">
+      <a href="../../descriptors/salesforce_code_analyzer_flow/" class="md-nav__link">
         
   
   
@@ -4825,7 +4826,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../scala/" class="md-nav__link">
+      <a href="../../descriptors/scala/" class="md-nav__link">
         
   
   
@@ -4853,7 +4854,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../scala_scalafix/" class="md-nav__link">
+      <a href="../../descriptors/scala_scalafix/" class="md-nav__link">
         
   
   
@@ -4936,7 +4937,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sql/" class="md-nav__link">
+      <a href="../../descriptors/sql/" class="md-nav__link">
         
   
   
@@ -4964,7 +4965,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sql_sqlfluff/" class="md-nav__link">
+      <a href="../../descriptors/sql_sqlfluff/" class="md-nav__link">
         
   
   
@@ -5047,7 +5048,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../swift/" class="md-nav__link">
+      <a href="../../descriptors/swift/" class="md-nav__link">
         
   
   
@@ -5075,7 +5076,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../swift_swiftlint/" class="md-nav__link">
+      <a href="../../descriptors/swift_swiftlint/" class="md-nav__link">
         
   
   
@@ -5158,7 +5159,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tsx/" class="md-nav__link">
+      <a href="../../descriptors/tsx/" class="md-nav__link">
         
   
   
@@ -5186,7 +5187,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tsx_eslint/" class="md-nav__link">
+      <a href="../../descriptors/tsx_eslint/" class="md-nav__link">
         
   
   
@@ -5214,7 +5215,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tsx_biome/" class="md-nav__link">
+      <a href="../../descriptors/tsx_biome/" class="md-nav__link">
         
   
   
@@ -5297,7 +5298,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../typescript/" class="md-nav__link">
+      <a href="../../descriptors/typescript/" class="md-nav__link">
         
   
   
@@ -5325,7 +5326,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../typescript_eslint/" class="md-nav__link">
+      <a href="../../descriptors/typescript_eslint/" class="md-nav__link">
         
   
   
@@ -5353,7 +5354,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../typescript_ts_standard/" class="md-nav__link">
+      <a href="../../descriptors/typescript_ts_standard/" class="md-nav__link">
         
   
   
@@ -5381,7 +5382,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../typescript_prettier/" class="md-nav__link">
+      <a href="../../descriptors/typescript_prettier/" class="md-nav__link">
         
   
   
@@ -5409,7 +5410,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../typescript_biome/" class="md-nav__link">
+      <a href="../../descriptors/typescript_biome/" class="md-nav__link">
         
   
   
@@ -5492,7 +5493,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../vbdotnet/" class="md-nav__link">
+      <a href="../../descriptors/vbdotnet/" class="md-nav__link">
         
   
   
@@ -5520,7 +5521,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../vbdotnet_dotnet_format/" class="md-nav__link">
+      <a href="../../descriptors/vbdotnet_dotnet_format/" class="md-nav__link">
         
   
   
@@ -5686,7 +5687,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../css/" class="md-nav__link">
+      <a href="../../descriptors/css/" class="md-nav__link">
         
   
   
@@ -5714,7 +5715,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../css_stylelint/" class="md-nav__link">
+      <a href="../../descriptors/css_stylelint/" class="md-nav__link">
         
   
   
@@ -5742,7 +5743,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../css_biome/" class="md-nav__link">
+      <a href="../../descriptors/css_biome/" class="md-nav__link">
         
   
   
@@ -5825,7 +5826,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../env/" class="md-nav__link">
+      <a href="../../descriptors/env/" class="md-nav__link">
         
   
   
@@ -5853,7 +5854,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../env_dotenv_linter/" class="md-nav__link">
+      <a href="../../descriptors/env_dotenv_linter/" class="md-nav__link">
         
   
   
@@ -5936,7 +5937,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../graphql/" class="md-nav__link">
+      <a href="../../descriptors/graphql/" class="md-nav__link">
         
   
   
@@ -5964,7 +5965,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../graphql_graphql_schema_linter/" class="md-nav__link">
+      <a href="../../descriptors/graphql_graphql_schema_linter/" class="md-nav__link">
         
   
   
@@ -5992,7 +5993,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../graphql_biome/" class="md-nav__link">
+      <a href="../../descriptors/graphql_biome/" class="md-nav__link">
         
   
   
@@ -6075,7 +6076,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../html/" class="md-nav__link">
+      <a href="../../descriptors/html/" class="md-nav__link">
         
   
   
@@ -6103,7 +6104,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../html_djlint/" class="md-nav__link">
+      <a href="../../descriptors/html_djlint/" class="md-nav__link">
         
   
   
@@ -6131,7 +6132,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../html_htmlhint/" class="md-nav__link">
+      <a href="../../descriptors/html_htmlhint/" class="md-nav__link">
         
   
   
@@ -6214,7 +6215,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../json/" class="md-nav__link">
+      <a href="../../descriptors/json/" class="md-nav__link">
         
   
   
@@ -6242,7 +6243,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../json_jsonlint/" class="md-nav__link">
+      <a href="../../descriptors/json_jsonlint/" class="md-nav__link">
         
   
   
@@ -6270,7 +6271,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../json_v8r/" class="md-nav__link">
+      <a href="../../descriptors/json_v8r/" class="md-nav__link">
         
   
   
@@ -6298,7 +6299,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../json_prettier/" class="md-nav__link">
+      <a href="../../descriptors/json_prettier/" class="md-nav__link">
         
   
   
@@ -6326,7 +6327,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../json_npm_package_json_lint/" class="md-nav__link">
+      <a href="../../descriptors/json_npm_package_json_lint/" class="md-nav__link">
         
   
   
@@ -6354,7 +6355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../json_biome/" class="md-nav__link">
+      <a href="../../descriptors/json_biome/" class="md-nav__link">
         
   
   
@@ -6437,7 +6438,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../latex/" class="md-nav__link">
+      <a href="../../descriptors/latex/" class="md-nav__link">
         
   
   
@@ -6465,7 +6466,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../latex_chktex/" class="md-nav__link">
+      <a href="../../descriptors/latex_chktex/" class="md-nav__link">
         
   
   
@@ -6548,7 +6549,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../markdown/" class="md-nav__link">
+      <a href="../../descriptors/markdown/" class="md-nav__link">
         
   
   
@@ -6576,7 +6577,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../markdown_markdownlint/" class="md-nav__link">
+      <a href="../../descriptors/markdown_markdownlint/" class="md-nav__link">
         
   
   
@@ -6604,7 +6605,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../markdown_markdown_table_formatter/" class="md-nav__link">
+      <a href="../../descriptors/markdown_markdown_table_formatter/" class="md-nav__link">
         
   
   
@@ -6632,7 +6633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../markdown_rumdl/" class="md-nav__link">
+      <a href="../../descriptors/markdown_rumdl/" class="md-nav__link">
         
   
   
@@ -6715,7 +6716,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../protobuf/" class="md-nav__link">
+      <a href="../../descriptors/protobuf/" class="md-nav__link">
         
   
   
@@ -6743,7 +6744,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../protobuf_protolint/" class="md-nav__link">
+      <a href="../../descriptors/protobuf_protolint/" class="md-nav__link">
         
   
   
@@ -6826,7 +6827,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../rst/" class="md-nav__link">
+      <a href="../../descriptors/rst/" class="md-nav__link">
         
   
   
@@ -6854,7 +6855,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../rst_rst_lint/" class="md-nav__link">
+      <a href="../../descriptors/rst_rst_lint/" class="md-nav__link">
         
   
   
@@ -6882,7 +6883,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../rst_rstcheck/" class="md-nav__link">
+      <a href="../../descriptors/rst_rstcheck/" class="md-nav__link">
         
   
   
@@ -6910,7 +6911,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../rst_rstfmt/" class="md-nav__link">
+      <a href="../../descriptors/rst_rstfmt/" class="md-nav__link">
         
   
   
@@ -6993,7 +6994,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../xml/" class="md-nav__link">
+      <a href="../../descriptors/xml/" class="md-nav__link">
         
   
   
@@ -7021,7 +7022,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../xml_xmllint/" class="md-nav__link">
+      <a href="../../descriptors/xml_xmllint/" class="md-nav__link">
         
   
   
@@ -7104,7 +7105,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../yaml/" class="md-nav__link">
+      <a href="../../descriptors/yaml/" class="md-nav__link">
         
   
   
@@ -7132,7 +7133,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../yaml_prettier/" class="md-nav__link">
+      <a href="../../descriptors/yaml_prettier/" class="md-nav__link">
         
   
   
@@ -7160,7 +7161,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../yaml_yamllint/" class="md-nav__link">
+      <a href="../../descriptors/yaml_yamllint/" class="md-nav__link">
         
   
   
@@ -7188,7 +7189,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../yaml_v8r/" class="md-nav__link">
+      <a href="../../descriptors/yaml_v8r/" class="md-nav__link">
         
   
   
@@ -7229,20 +7230,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5">
         
           
           <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
@@ -7263,7 +7262,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -7356,7 +7355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../action/" class="md-nav__link">
+      <a href="../../descriptors/action/" class="md-nav__link">
         
   
   
@@ -7384,7 +7383,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../action_actionlint/" class="md-nav__link">
+      <a href="../../descriptors/action_actionlint/" class="md-nav__link">
         
   
   
@@ -7412,7 +7411,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../action_zizmor/" class="md-nav__link">
+      <a href="../../descriptors/action_zizmor/" class="md-nav__link">
         
   
   
@@ -7495,7 +7494,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ansible/" class="md-nav__link">
+      <a href="../../descriptors/ansible/" class="md-nav__link">
         
   
   
@@ -7523,7 +7522,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ansible_ansible_lint/" class="md-nav__link">
+      <a href="../../descriptors/ansible_ansible_lint/" class="md-nav__link">
         
   
   
@@ -7606,7 +7605,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../api/" class="md-nav__link">
+      <a href="../../descriptors/api/" class="md-nav__link">
         
   
   
@@ -7634,7 +7633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../api_spectral/" class="md-nav__link">
+      <a href="../../descriptors/api_spectral/" class="md-nav__link">
         
   
   
@@ -7717,7 +7716,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../arm/" class="md-nav__link">
+      <a href="../../descriptors/arm/" class="md-nav__link">
         
   
   
@@ -7745,7 +7744,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../arm_arm_ttk/" class="md-nav__link">
+      <a href="../../descriptors/arm_arm_ttk/" class="md-nav__link">
         
   
   
@@ -7828,7 +7827,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bicep/" class="md-nav__link">
+      <a href="../../descriptors/bicep/" class="md-nav__link">
         
   
   
@@ -7856,7 +7855,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bicep_bicep_linter/" class="md-nav__link">
+      <a href="../../descriptors/bicep_bicep_linter/" class="md-nav__link">
         
   
   
@@ -7939,7 +7938,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloudformation/" class="md-nav__link">
+      <a href="../../descriptors/cloudformation/" class="md-nav__link">
         
   
   
@@ -7967,7 +7966,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloudformation_cfn_lint/" class="md-nav__link">
+      <a href="../../descriptors/cloudformation_cfn_lint/" class="md-nav__link">
         
   
   
@@ -8000,20 +7999,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5_8" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5_8">
         
           
           <label class="md-nav__link" for="__nav_6_5_8" id="__nav_6_5_8_label" tabindex="0">
@@ -8034,7 +8031,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_5_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_5_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_5_8">
             <span class="md-nav__icon md-icon"></span>
             
@@ -8049,37 +8046,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    All DOCKERFILE linters
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../descriptors/dockerfile/" class="md-nav__link">
         
   
   
@@ -8095,59 +8065,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-      
-        <li class="md-nav__item">
-  <a href="#linters" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Linters
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#linted-files" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Linted files
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuration-in-megalinter" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Configuration in MegaLinter
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -8160,7 +8077,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dockerfile_hadolint/" class="md-nav__link">
+      <a href="../../descriptors/dockerfile_hadolint/" class="md-nav__link">
         
   
   
@@ -8243,7 +8160,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../editorconfig/" class="md-nav__link">
+      <a href="../../descriptors/editorconfig/" class="md-nav__link">
         
   
   
@@ -8271,7 +8188,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../editorconfig_editorconfig_checker/" class="md-nav__link">
+      <a href="../../descriptors/editorconfig_editorconfig_checker/" class="md-nav__link">
         
   
   
@@ -8354,7 +8271,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gherkin/" class="md-nav__link">
+      <a href="../../descriptors/gherkin/" class="md-nav__link">
         
   
   
@@ -8382,7 +8299,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gherkin_gherkin_lint/" class="md-nav__link">
+      <a href="../../descriptors/gherkin_gherkin_lint/" class="md-nav__link">
         
   
   
@@ -8465,7 +8382,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes/" class="md-nav__link">
+      <a href="../../descriptors/kubernetes/" class="md-nav__link">
         
   
   
@@ -8493,7 +8410,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes_kubeconform/" class="md-nav__link">
+      <a href="../../descriptors/kubernetes_kubeconform/" class="md-nav__link">
         
   
   
@@ -8521,7 +8438,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes_helm/" class="md-nav__link">
+      <a href="../../descriptors/kubernetes_helm/" class="md-nav__link">
         
   
   
@@ -8549,7 +8466,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes_kubescape/" class="md-nav__link">
+      <a href="../../descriptors/kubernetes_kubescape/" class="md-nav__link">
         
   
   
@@ -8632,7 +8549,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../robotframework/" class="md-nav__link">
+      <a href="../../descriptors/robotframework/" class="md-nav__link">
         
   
   
@@ -8660,7 +8577,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../robotframework_robocop/" class="md-nav__link">
+      <a href="../../descriptors/robotframework_robocop/" class="md-nav__link">
         
   
   
@@ -8743,7 +8660,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../snakemake/" class="md-nav__link">
+      <a href="../../descriptors/snakemake/" class="md-nav__link">
         
   
   
@@ -8771,7 +8688,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../snakemake_snakemake/" class="md-nav__link">
+      <a href="../../descriptors/snakemake_snakemake/" class="md-nav__link">
         
   
   
@@ -8799,7 +8716,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../snakemake_snakefmt/" class="md-nav__link">
+      <a href="../../descriptors/snakemake_snakefmt/" class="md-nav__link">
         
   
   
@@ -8882,7 +8799,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tekton/" class="md-nav__link">
+      <a href="../../descriptors/tekton/" class="md-nav__link">
         
   
   
@@ -8910,7 +8827,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tekton_tekton_lint/" class="md-nav__link">
+      <a href="../../descriptors/tekton_tekton_lint/" class="md-nav__link">
         
   
   
@@ -8993,7 +8910,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../terraform/" class="md-nav__link">
+      <a href="../../descriptors/terraform/" class="md-nav__link">
         
   
   
@@ -9021,7 +8938,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../terraform_tflint/" class="md-nav__link">
+      <a href="../../descriptors/terraform_tflint/" class="md-nav__link">
         
   
   
@@ -9049,7 +8966,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../terraform_terragrunt/" class="md-nav__link">
+      <a href="../../descriptors/terraform_terragrunt/" class="md-nav__link">
         
   
   
@@ -9077,7 +8994,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../terraform_terraform_fmt/" class="md-nav__link">
+      <a href="../../descriptors/terraform_terraform_fmt/" class="md-nav__link">
         
   
   
@@ -9105,7 +9022,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../terraform_tofu_fmt/" class="md-nav__link">
+      <a href="../../descriptors/terraform_tofu_fmt/" class="md-nav__link">
         
   
   
@@ -9133,7 +9050,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../terraform_tofu_validate/" class="md-nav__link">
+      <a href="../../descriptors/terraform_tofu_validate/" class="md-nav__link">
         
   
   
@@ -9299,7 +9216,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../copypaste/" class="md-nav__link">
+      <a href="../../descriptors/copypaste/" class="md-nav__link">
         
   
   
@@ -9327,7 +9244,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../copypaste_jscpd/" class="md-nav__link">
+      <a href="../../descriptors/copypaste_jscpd/" class="md-nav__link">
         
   
   
@@ -9410,7 +9327,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../repository/" class="md-nav__link">
+      <a href="../../descriptors/repository/" class="md-nav__link">
         
   
   
@@ -9438,7 +9355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../repository_checkov/" class="md-nav__link">
+      <a href="../../descriptors/repository_checkov/" class="md-nav__link">
         
   
   
@@ -9466,7 +9383,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../repository_devskim/" class="md-nav__link">
+      <a href="../../descriptors/repository_devskim/" class="md-nav__link">
         
   
   
@@ -9494,7 +9411,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../repository_dustilock/" class="md-nav__link">
+      <a href="../../descriptors/repository_dustilock/" class="md-nav__link">
         
   
   
@@ -9522,7 +9439,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../repository_git_diff/" class="md-nav__link">
+      <a href="../../descriptors/repository_git_diff/" class="md-nav__link">
         
   
   
@@ -9550,7 +9467,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../repository_betterleaks/" class="md-nav__link">
+      <a href="../../descriptors/repository_betterleaks/" class="md-nav__link">
         
   
   
@@ -9578,7 +9495,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../repository_grype/" class="md-nav__link">
+      <a href="../../descriptors/repository_grype/" class="md-nav__link">
         
   
   
@@ -9606,7 +9523,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../repository_ls_lint/" class="md-nav__link">
+      <a href="../../descriptors/repository_ls_lint/" class="md-nav__link">
         
   
   
@@ -9634,7 +9551,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../repository_osv_scanner/" class="md-nav__link">
+      <a href="../../descriptors/repository_osv_scanner/" class="md-nav__link">
         
   
   
@@ -9662,7 +9579,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../repository_secretlint/" class="md-nav__link">
+      <a href="../../descriptors/repository_secretlint/" class="md-nav__link">
         
   
   
@@ -9690,7 +9607,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../repository_semgrep/" class="md-nav__link">
+      <a href="../../descriptors/repository_semgrep/" class="md-nav__link">
         
   
   
@@ -9718,7 +9635,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../repository_syft/" class="md-nav__link">
+      <a href="../../descriptors/repository_syft/" class="md-nav__link">
         
   
   
@@ -9746,7 +9663,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../repository_trivy/" class="md-nav__link">
+      <a href="../../descriptors/repository_trivy/" class="md-nav__link">
         
   
   
@@ -9774,7 +9691,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../repository_trivy_sbom/" class="md-nav__link">
+      <a href="../../descriptors/repository_trivy_sbom/" class="md-nav__link">
         
   
   
@@ -9802,7 +9719,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../repository_trufflehog/" class="md-nav__link">
+      <a href="../../descriptors/repository_trufflehog/" class="md-nav__link">
         
   
   
@@ -9830,7 +9747,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../repository_kingfisher/" class="md-nav__link">
+      <a href="../../descriptors/repository_kingfisher/" class="md-nav__link">
         
   
   
@@ -9913,7 +9830,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../spell/" class="md-nav__link">
+      <a href="../../descriptors/spell/" class="md-nav__link">
         
   
   
@@ -9941,7 +9858,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../spell_cspell/" class="md-nav__link">
+      <a href="../../descriptors/spell_cspell/" class="md-nav__link">
         
   
   
@@ -9969,7 +9886,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../spell_proselint/" class="md-nav__link">
+      <a href="../../descriptors/spell_proselint/" class="md-nav__link">
         
   
   
@@ -9997,7 +9914,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../spell_vale/" class="md-nav__link">
+      <a href="../../descriptors/spell_vale/" class="md-nav__link">
         
   
   
@@ -10025,7 +9942,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../spell_lychee/" class="md-nav__link">
+      <a href="../../descriptors/spell_lychee/" class="md-nav__link">
         
   
   
@@ -10053,7 +9970,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../spell_codespell/" class="md-nav__link">
+      <a href="../../descriptors/spell_codespell/" class="md-nav__link">
         
   
   
@@ -10825,18 +10742,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked="">
         
           
           <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
@@ -10857,7 +10776,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             
@@ -10900,18 +10819,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2" checked="">
         
           
           <label class="md-nav__link" for="__nav_9_2" id="__nav_9_2_label" tabindex="0">
@@ -10932,7 +10853,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_9_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -10978,7 +10899,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../llm-provider/llm_provider_anthropic/" class="md-nav__link">
+      <a href="../llm_provider_anthropic/" class="md-nav__link">
         
   
   
@@ -11006,7 +10927,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../llm-provider/llm_provider_deepseek/" class="md-nav__link">
+      <a href="../llm_provider_deepseek/" class="md-nav__link">
         
   
   
@@ -11034,7 +10955,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../llm-provider/llm_provider_google_genai/" class="md-nav__link">
+      <a href="../llm_provider_google_genai/" class="md-nav__link">
         
   
   
@@ -11062,7 +10983,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../llm-provider/llm_provider_mistralai/" class="md-nav__link">
+      <a href="../llm_provider_mistralai/" class="md-nav__link">
         
   
   
@@ -11090,7 +11011,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../llm-provider/llm_provider_openai/" class="md-nav__link">
+      <a href="../llm_provider_openai/" class="md-nav__link">
         
   
   
@@ -11115,10 +11036,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../llm-provider/llm_provider_orcarouter/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OrcaRouter
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -11134,6 +11082,126 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#official-model-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Official Model List
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration Options
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration Options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Issues
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Debug Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -11146,7 +11214,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../llm-provider/llm_provider_ollama/" class="md-nav__link">
+      <a href="../llm_provider_ollama/" class="md-nav__link">
         
   
   
@@ -11174,7 +11242,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../llm-provider/llm_provider_huggingface/" class="md-nav__link">
+      <a href="../llm_provider_huggingface/" class="md-nav__link">
         
   
   
@@ -12423,10 +12491,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#linters" class="md-nav__link">
+  <a href="#setup" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Linters
+        Setup
       
     </span>
   </a>
@@ -12434,10 +12502,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#linted-files" class="md-nav__link">
+  <a href="#official-model-list" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Linted files
+        Official Model List
       
     </span>
   </a>
@@ -12445,13 +12513,80 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#configuration-in-megalinter" class="md-nav__link">
+  <a href="#configuration-options" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Configuration in MegaLinter
+        Configuration Options
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Configuration Options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Issues
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Debug Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -12475,71 +12610,85 @@
   
 
 
-<!-- markdownlint-disable MD003 MD020 MD033 MD041 --><!-- @generated by .automation/build.py, please don't update manually --><!-- Instead, update descriptor file at https://github.com/oxsecurity/megalinter/tree/main/megalinter/descriptors/dockerfile.yml --><h1 id="dockerfile">DOCKERFILE</h1>
-<h2 id="linters">Linters</h2>
-<table>
-<thead>
-<tr>
-<th>Linter</th>
-<th>Additional</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../dockerfile_hadolint/"><strong>hadolint</strong></a><br><a href="../dockerfile_hadolint/"><em>DOCKERFILE_HADOLINT</em></a></td>
-<td><a href="https://github.com/hadolint/hadolint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/hadolint/hadolint?cacheSeconds=3600"></a> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://shields.io/badge/-SARIF-orange" data-desc-position="bottom"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange"></a></td>
-</tr>
-</tbody>
-</table>
-<h2 id="linted-files">Linted files</h2>
+<div align="center">
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://www.orcarouter.ai/favicon.ico" data-desc-position="bottom"><img src="https://www.orcarouter.ai/favicon.ico" alt="OrcaRouter Logo" height="64"></a>
+</div>
+
+<h1 id="orcarouter-provider">OrcaRouter Provider</h1>
+<p><a href="https://www.orcarouter.ai">OrcaRouter</a> is an OpenAI-compatible AI gateway built for both models and agents. Like OpenRouter, it exposes a provider/model namespace across many models — but it also combines adaptive routing, automatic failover, zero-markup inference, observability, guardrails, and agent-tool governance behind the same endpoint. It uses the OpenAI-compatible API format.</p>
+<h2 id="setup">Setup</h2>
+<ol>
+<li>
+<p><strong>Get API Key</strong>: Sign up at <a href="https://www.orcarouter.ai">OrcaRouter</a></p>
+</li>
+<li>
+<p><strong>Set Environment Variable</strong>:</p>
+</li>
+</ol>
+<p>Set <strong>ORCAROUTER_API_KEY=sk-orca-your-api-key</strong> in your CI/CD secret variables.</p>
+<blockquote>
+<p>Make sure the secret variable is sent to MegaLinter from your CI/CD workflow. Example in GitHub Action: <code>ORCAROUTER_API_KEY: ${{ secrets.ORCAROUTER_API_KEY }}</code></p>
+</blockquote>
+<ol>
+<li><strong>Configure MegaLinter</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nt">LLM_ADVISOR_ENABLED</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">LLM_PROVIDER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">orcarouter</span>
+<span class="nt">LLM_MODEL_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">orcarouter/fusion-mini</span>
+<span class="nt">LLM_MAX_TOKENS</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="nt">LLM_TEMPERATURE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
+</code></pre></div>
+<h2 id="official-model-list">Official Model List</h2>
+<p>For the most up-to-date list of OrcaRouter models and their capabilities, see the official OrcaRouter documentation:</p>
 <ul>
-<li>File names:<ul>
-<li><code>Containerfile</code></li>
-<li><code>(.*\.)?Dockerfile</code></li>
+<li><a href="https://www.orcarouter.ai/models">OrcaRouter Models</a></li>
+</ul>
+<h2 id="configuration-options">Configuration Options</h2>
+<h3 id="basic-configuration">Basic Configuration</h3>
+<div class="highlight"><pre><span></span><code><span class="nt">LLM_PROVIDER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">orcarouter</span>
+<span class="nt">LLM_MODEL_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">orcarouter/fusion-mini</span>
+</code></pre></div>
+<h3 id="advanced-configuration">Advanced Configuration</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Custom API endpoint (if needed)</span>
+<span class="nt">ORCAROUTER_BASE_URL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://api.orcarouter.ai/v1</span>
+</code></pre></div>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="common-issues">Common Issues</h3>
+<ol>
+<li>
+<p><strong>"Invalid API key"</strong></p>
+<ul>
+<li>Verify API key is correct</li>
+<li>Check account status and access</li>
+<li>Ensure OrcaRouter API access is enabled</li>
 </ul>
 </li>
+<li>
+<p><strong>"Rate limit exceeded"</strong></p>
+<ul>
+<li>Check your plan's rate limits</li>
+<li>Implement exponential backoff</li>
+<li>Contact OrcaRouter support for higher limits</li>
 </ul>
-<h2 id="configuration-in-megalinter">Configuration in MegaLinter</h2>
-<table>
-<thead>
-<tr>
-<th>Variable</th>
-<th>Description</th>
-<th>Default value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>DOCKERFILE_PRE_COMMANDS</td>
-<td>List of bash commands to run before the linters</td>
-<td>None</td>
-</tr>
-<tr>
-<td>DOCKERFILE_POST_COMMANDS</td>
-<td>List of bash commands to run after the linters</td>
-<td>None</td>
-</tr>
-<tr>
-<td>DOCKERFILE_FILTER_REGEX_INCLUDE</td>
-<td>Custom regex including filter</td>
-<td></td>
-</tr>
-<tr>
-<td>DOCKERFILE_FILTER_REGEX_EXCLUDE</td>
-<td>Custom regex excluding filter</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+</li>
+<li>
+<p><strong>"Model not available"</strong></p>
+<ul>
+<li>Verify model name: <code>orcarouter/fusion-mini</code></li>
+<li>Check the model list at <a href="https://www.orcarouter.ai/models">OrcaRouter Models</a></li>
+<li>Ensure you have access to the model</li>
+</ul>
+</li>
+</ol>
+<h3 id="debug-mode">Debug Mode</h3>
+<div class="highlight"><pre><span></span><code><span class="nt">LOG_LEVEL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEBUG</span>
+</code></pre></div>
 
 
 
 
 
 
-
-  
-  
 
 
 
@@ -12563,7 +12712,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
-          <a href="../cloudformation_cfn_lint/" class="md-footer__link md-footer__link--prev" aria-label="Previous: cfn-lint">
+          <a href="../llm_provider_openai/" class="md-footer__link md-footer__link--prev" aria-label="Previous: OpenAI">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -12573,20 +12722,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                cfn-lint
+                OpenAI
               </div>
             </div>
           </a>
         
         
           
-          <a href="../dockerfile_hadolint/" class="md-footer__link md-footer__link--next" aria-label="Next: hadolint">
+          <a href="../llm_provider_ollama/" class="md-footer__link md-footer__link--next" aria-label="Next: Ollama">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                hadolint
+                Ollama
               </div>
             </div>
             <div class="md-footer__button md-icon">

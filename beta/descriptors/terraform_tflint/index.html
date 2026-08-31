@@ -11190,6 +11190,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../llm-provider/llm_provider_orcarouter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OrcaRouter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../llm-provider/llm_provider_ollama/" class="md-nav__link">
         
   
@@ -12607,7 +12635,12 @@
 </ul>
 <blockquote>
 <p>If you are using the GitHub action please use the <code>TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES: GITHUB_TOKEN</code> to prevent plugin download issues</p>
-<p>If you have issues with tflint --init, create a GitHub Personal Access Token and set its value to PAT_GITHUB_COM variable.</p>
+<p>If <code>tflint --init</code> can not download plugins (for example when <code>GITHUB_TOKEN</code> targets a GitHub Enterprise instance and not github.com), use the tflint native host-specific token variable <code>GITHUB_TOKEN_github_com</code>: create a github.com Personal Access Token, set it in <code>GITHUB_TOKEN_github_com</code>, then allow tflint to read it.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GITHUB_TOKEN_github_com</span>
+</code></pre></div>
+<p>tflint gives priority to <code>GITHUB_TOKEN_{host}</code> over <code>GITHUB_TOKEN</code>, so other linters and reporters keep using your regular <code>GITHUB_TOKEN</code>.</p>
+<p><code>PAT_GITHUB_COM</code> does the same thing and is <strong>deprecated</strong>: it will be removed in a future major release, use <code>GITHUB_TOKEN_github_com</code> instead.</p>
 </blockquote>
 <p>Note: It's recommended to create your own <code>.tflint.hcl</code> custom config file tailored to your project's specific needs.
 The default configuration enables all supported languages and rules, which may not be optimal for every project.</p>
@@ -12644,7 +12677,7 @@ The default configuration enables all supported languages and rules, which may n
 </tr>
 <tr>
 <td>PAT_GITHUB_COM</td>
-<td>If you have issues with tflint --init, create a GitHub Personal Access Token and set its value to PAT_GITHUB_COM variable.</td>
+<td>DEPRECATED: github.com Personal Access Token copied into GITHUB_TOKEN when running <strong>tflint --init</strong>. Use tflint native variable <code>GITHUB_TOKEN_github_com</code> instead (with <code>TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES</code>), as PAT_GITHUB_COM will be removed in a future major release.</td>
 <td>``</td>
 </tr>
 <tr>

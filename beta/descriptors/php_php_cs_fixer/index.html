@@ -11240,6 +11240,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../llm-provider/llm_provider_orcarouter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OrcaRouter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../llm-provider/llm_provider_ollama/" class="md-nav__link">
         
   
@@ -12711,7 +12739,7 @@
 </ul>
 <h2 id="php-cs-fixer-documentation">php-cs-fixer documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.95.18</strong></li>
+<li>Version in MegaLinter: <strong>3.95.21</strong></li>
 <li>Visit <a href="https://cs.symfony.com/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/blob/master/doc/config.rst" target="_blank">How to configure php-cs-fixer rules</a><ul>
 <li>If custom <code>.php-cs-fixer.dist.php</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.php-cs-fixer.dist.php" target="_blank">.php-cs-fixer.dist.php</a> will be used</li>
@@ -12971,7 +12999,7 @@ Options:
 <span class="k">ENV</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"/usr/local/composer/vendor/bin:</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span><span class="s2">"</span>
 <span class="c"># Linter install</span>
 <span class="c"># renovate: datasource=packagist depName=friendsofphp/php-cs-fixer</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION</span><span class="o">=</span>v3.95.18
+<span class="k">ARG</span><span class="w"> </span><span class="nv">PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION</span><span class="o">=</span>v3.95.21
 <span class="k">RUN</span><span class="w"> </span><span class="nv">GITHUB_AUTH_TOKEN</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>cat<span class="w"> </span>/run/secrets/GITHUB_TOKEN<span class="k">)</span><span class="s2">"</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span>GITHUB_AUTH_TOKEN<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>composer<span class="w"> </span>global<span class="w"> </span>require<span class="w"> </span>friendsofphp/php-cs-fixer:<span class="si">${</span><span class="nv">PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION</span><span class="si">}</span><span class="w"> </span>--with-all-dependencies
 </code></pre></div></li>
 </ul>

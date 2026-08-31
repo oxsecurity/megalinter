@@ -11389,6 +11389,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../llm-provider/llm_provider_orcarouter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OrcaRouter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../llm-provider/llm_provider_ollama/" class="md-nav__link">
         
   
@@ -12995,7 +13023,7 @@
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/megalinter-llm-advisor.gif" data-desc-position="bottom"><img alt="Advisor" src="../assets/images/megalinter-llm-advisor.gif"></a></p>
 <h2 id="features">Features</h2>
 <ul>
-<li><strong>Multi-Provider Support</strong>: Works with OpenAI, Anthropic, Google Gemini, Hugging Face, Mistral AI, DeepSeek, Grok, and local Ollama models</li>
+<li><strong>Multi-Provider Support</strong>: Works with OpenAI, Anthropic, Google Gemini, Hugging Face, Mistral AI, DeepSeek, Grok, OrcaRouter, and local Ollama models</li>
 <li><strong>Context-Aware Suggestions</strong>: Analyzes code context around errors for better recommendations</li>
 <li><strong>Integrated Reporting</strong>: AI suggestions appear directly in MegaLinter reports</li>
 <li><strong>Configurable</strong>: Control which models to use and how many errors to analyze</li>
@@ -13048,6 +13076,12 @@
 <td><a href="../llm-provider/llm_provider_grok/">Setup Guide</a></td>
 </tr>
 <tr>
+<td><a href="../llm-provider/llm_provider_orcarouter/">OrcaRouter</a></td>
+<td>Yes</td>
+<td>Cloud</td>
+<td><a href="../llm-provider/llm_provider_orcarouter/">Setup Guide</a></td>
+</tr>
+<tr>
 <td><a href="../llm-provider/llm_provider_ollama/">Ollama</a></td>
 <td>No</td>
 <td>Local</td>
@@ -13072,7 +13106,7 @@
 <span class="nt">LLM_ADVISOR_ENABLED</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 
 <span class="c1"># Choose your provider and model</span>
-<span class="nt">LLM_PROVIDER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openai</span><span class="w">  </span><span class="c1"># openai, anthropic, google, huggingface, mistral, deepseek, grok, ollama</span>
+<span class="nt">LLM_PROVIDER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openai</span><span class="w">  </span><span class="c1"># openai, anthropic, google, huggingface, mistral, deepseek, grok, orcarouter, ollama</span>
 <span class="nt">LLM_MODEL_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpt-4.1-mini</span>
 <span class="nt">LLM_MAX_TOKENS</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">LLM_TEMPERATURE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
