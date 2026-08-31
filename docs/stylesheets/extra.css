@@ -1,4 +1,47 @@
 /* stylelint-disable SelectorFormat, selector-class-pattern */
+
+/* Satoshi (Indian Type Foundry, via Fontshare) — self-hosted.
+   The theme `font:` option only understands Google Fonts, so Satoshi is
+   declared here and wired up through --md-text-font below. */
+@font-face {
+  font-family: "Satoshi";
+  src: url("../assets/fonts/Satoshi-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("../assets/fonts/Satoshi-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("../assets/fonts/Satoshi-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("../assets/fonts/Satoshi-900.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* The theme wraps this in its own fallback stack, so it must be a single
+   family name. A comma-separated list here becomes one quoted family that
+   matches nothing — which is what silently disabled Satoshi before. */
+:root {
+  --md-text-font: "Satoshi";
+}
+
 .megalinter-banner {
   height: 50px;
   max-height: 150px;
