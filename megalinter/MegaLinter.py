@@ -1126,6 +1126,9 @@ class Megalinter:
             utils.get_excluded_directories(self.request_id)
         )
         all_files = []
+        # Excluded directories pruned below, recorded so that the project lint
+        # mode forwarding does not have to walk the workspace a second time
+        found_excluded_directories: dict[str, list[str]] = {}
         for dirpath, dirnames, filenames in os.walk(
             self.workspace, topdown=True, followlinks=False
         ):
@@ -1134,14 +1137,25 @@ class Megalinter:
             # descending into them (e.g. node_modules, .git, .venv, …).
             # This must happen before any `continue` to avoid walking
             # thousands of entries inside excluded trees.
-            dirnames[:] = [
-                d
-                for d in dirnames
-                if not self._is_excluded_dir(
-                    os.path.join(rel_dirpath, d).replace(".\\", "").replace("./", ""),
-                    excluded_directories,
+            kept_dirnames = []
+            for dirname in dirnames:
+                rel_dirname = (
+                    os.path.join(rel_dirpath, dirname)
+                    .replace(".\\", "")
+                    .replace("./", "")
+                    .replace("\\", "/")
                 )
-            ]
+                matched_entries = utils.match_excluded_dir_entries(
+                    rel_dirname, excluded_directories
+                )
+                if len(matched_entries) == 0:
+                    kept_dirnames += [dirname]
+                    continue
+                for matched in matched_entries:
+                    found_excluded_directories.setdefault(matched, []).append(
+                        rel_dirname
+                    )
+            dirnames[:] = kept_dirnames
             if rel_dirpath != "." and self._is_excluded_dir(
                 rel_dirpath, excluded_directories
             ):
@@ -1150,6 +1164,12 @@ class Megalinter:
                 os.path.relpath(os.path.join(dirpath, file), self.workspace)
                 for file in sorted(filenames)
             ]
+        utils.prime_workspace_excluded_directories(
+            self.request_id,
+            self.workspace,
+            excluded_directories,
+            found_excluded_directories,
+        )
         return all_files
 
     def list_git_ignored_files(self):

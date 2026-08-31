@@ -361,6 +361,86 @@ class LinterTest(unittest.TestCase):
         for linter_paths in paths:
             self.assertIn("packages/a/docs", linter_paths)
 
+    def test_file_listing_walk_feeds_the_forwarding_lookup(self):
+        # In full-codebase mode MegaLinter already walks the workspace to list
+        # the files, pruning the very same directories: the forwarding lookup
+        # rides on it instead of walking a second time
+        with tempfile.TemporaryDirectory() as workspace:
+            for directory in [
+                ("src", "node_modules"),
+                ("infrastructure", "cdk.out"),
+                ("src", "keep"),
+            ]:
+                os.makedirs(os.path.join(workspace, *directory))
+            request_id = str(uuid.uuid1())
+            config.init_config(
+                request_id, None, {"ADDITIONAL_EXCLUDED_DIRECTORIES": "cdk.out"}
+            )
+            linter = Linter.__new__(Linter)
+            linter.name = "REPOSITORY_TRIVY"
+            linter.request_id = request_id
+            linter.workspace = workspace
+            linter.filter_regex_exclude_descriptor = None
+            linter.filter_regex_exclude_linter = None
+            linter.cli_lint_mode = "project"
+            linter.cli_lint_mode_project_exclude_arg_name = "-x"
+            linter.cli_lint_mode_project_exclude_ignore_file_arg_name = None
+            mega_linter = Megalinter.__new__(Megalinter)
+            mega_linter.request_id = request_id
+            mega_linter.workspace = workspace
+            mega_linter.active_linters = [linter]
+            walks = []
+            real_walk = utils.walk_workspace_excluded_directories
+
+            def counting_walk(*args, **kwargs):
+                walks.append(args)
+                return real_walk(*args, **kwargs)
+
+            try:
+                mega_linter.list_files_all()
+                with mock.patch.object(
+                    utils, "walk_workspace_excluded_directories", counting_walk
+                ):
+                    mega_linter.prepare_project_exclude_directories()
+                    paths = linter.get_project_exclude_directory_paths()
+            finally:
+                config.delete(request_id)
+
+        self.assertFalse(walks, "the workspace must not be walked a second time")
+        self.assertIn("src/node_modules", paths)
+        self.assertIn("infrastructure/cdk.out", paths)
+
+    def test_file_listing_harvest_matches_the_standalone_walk(self):
+        with tempfile.TemporaryDirectory() as workspace:
+            for directory in [
+                ("src", "node_modules", "pkg"),
+                ("infrastructure", "cdk.out"),
+                ("packages", "a", ".venv"),
+                ("src", "keep"),
+            ]:
+                os.makedirs(os.path.join(workspace, *directory))
+            request_id = str(uuid.uuid1())
+            config.init_config(
+                request_id, None, {"ADDITIONAL_EXCLUDED_DIRECTORIES": "cdk.out"}
+            )
+            excluded = utils.get_excluded_directories(request_id)
+            try:
+                utils.clear_excluded_directories_caches(request_id)
+                walked = utils.find_workspace_excluded_directories(
+                    request_id, workspace, excluded
+                )
+                utils.clear_excluded_directories_caches(request_id)
+                mega_linter = Megalinter.__new__(Megalinter)
+                mega_linter.request_id = request_id
+                mega_linter.workspace = workspace
+                mega_linter.list_files_all()
+                harvested = utils.find_workspace_excluded_directories(
+                    request_id, workspace, excluded
+                )
+            finally:
+                config.delete(request_id)
+        self.assertEqual(walked, harvested)
+
     def test_linter_without_forwarding_mechanism_skips_the_lookup(self):
         with tempfile.TemporaryDirectory() as workspace:
             linter = self.build_exclude_forwarding_linter(workspace)

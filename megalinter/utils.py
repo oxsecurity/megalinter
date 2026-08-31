@@ -278,6 +278,26 @@ def walk_workspace_excluded_directories(
     return {matched: sorted(paths) for matched, paths in found.items()}
 
 
+# Seed the cache with excluded directories already located by another walk of
+# the workspace. MegaLinter's own file listing (Megalinter.list_files_all)
+# prunes the very same directories, so in full-codebase mode the forwarding
+# lookup costs nothing at all. Finding a directory in MORE places than the
+# standalone walk would is never wrong: its own pruning is only a cost
+# optimization, and every reported path is genuinely an excluded directory
+def prime_workspace_excluded_directories(
+    request_id, workspace, searched_directories, found
+) -> None:
+    searched = normalize_excluded_directories(workspace, searched_directories)
+    cache_key = (str(request_id), os.path.abspath(workspace))
+    cached = _workspace_excluded_directories_cache.get(cache_key)
+    if cached is not None and searched <= cached[0]:
+        return
+    _workspace_excluded_directories_cache[cache_key] = (
+        searched,
+        {matched: sorted(set(paths)) for matched, paths in found.items()},
+    )
+
+
 # Locate every excluded directory in the workspace, at any nesting level:
 # EXCLUDED_DIRECTORIES and ADDITIONAL_EXCLUDED_DIRECTORIES are basenames
 # excluded wherever they are found, so a lookup limited to the workspace root

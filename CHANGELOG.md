@@ -61,7 +61,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Nothing changes when the excluded directory does not exist in your repository: it is still not sent to the linters
     - This also covers **PYTHON_BANDIT**, **YAML_V8R**, **CSHARP_DOTNET_FORMAT**, **VBDOTNET_DOTNET_FORMAT** and **REPOSITORY_LS_LINT**, whose exclusions are anchored on the repository root: they now receive the **path of each nested directory** found
     - A **`^`-anchored FILTER_REGEX_EXCLUDE** keeps excluding root-level directories only: `^docs/` does not silence findings in `packages/a/docs` anymore
-    - Looking up the excluded directories **never descends** into an excluded directory, and adds no measurable time to your run: the repository is walked **once**, whatever the number of linters
+    - Looking up the excluded directories **never descends** into an excluded directory, and costs **no extra repository scan**: it reuses the one MegaLinter already does to list your files, and falls back to a single scan when only changed files are analyzed
   - **REPOSITORY_TRUFFLEHOG** does not silently skip findings anymore in a directory whose name merely **ends with** an excluded one: with `dist` excluded, secrets in `mydist/` were not reported
   - **REPORT_OUTPUT_FOLDER** is now always excluded from what linters analyze, even when you override `EXCLUDED_DIRECTORIES`, and even when the folder does not exist yet when a linter starts
   - The **API reporter** variables (`API_REPORTER`, `API_REPORTER_URL`…) are not flagged as **deprecated** anymore in the configuration JSON schema: they were collateral damage of the removal of the `API` descriptor in v10.0.0, and IDEs displayed them as obsolete
