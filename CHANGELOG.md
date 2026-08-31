@@ -133,6 +133,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - `npx skills add oxsecurity/megalinter/skills` keeps working for every other coding agent
 
 - Dev
+  - **REPOSITORY_TRUFFLEHOG tests no longer depend on a third-party endpoint.** The good and bad fixtures differed only by a basic-auth credential that trufflehog validated over the network, so the whole test suite went red whenever the runner could not reach that site
+    - The fixtures now differ by what is **detected**, the good ones carrying no secret material at all, and the tests drop `--only-verified`, which stays the production default
+    - The `.wireit` poison fixture gains a private key, so the excluded-directories forwarding guard actually fires instead of being vacuous
   - The documentation site is now built with **[Zensical](https://zensical.org/)**, the successor of Material for MkDocs, replacing `mkdocs`, `mkdocs-material` and `mkdocs-glightbox`
     - `mkdocs.yml` stays the configuration file, so `.automation/build.py` nav generation is unchanged; `hatch run docs:serve` and `hatch run docs:build` now call `zensical`
     - Versioned deploys still use **mike**, from the Zensical-compatible fork `squidfunk/mike` pinned to a commit SHA and watched by a new Renovate custom manager
