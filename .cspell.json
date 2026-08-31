@@ -609,6 +609,7 @@
         "disablesystemassertions",
         "daemonless",
         "displaymath",
+        "disqus",
         "distutils",
         "DJLINT",
         "djlint",
