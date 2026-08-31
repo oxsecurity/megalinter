@@ -50,9 +50,13 @@ class TruffleHogLinter(Linter):
                     line.strip() for line in ignore_file if line.strip() != ""
                 ]
         for excluded_dir in self.get_project_exclude_directories():
-            # Unanchored regex: matches the directory at any nesting level,
-            # consistently with EXCLUDED_DIRECTORIES behavior in file listing
-            excluded_dir_regex = re.escape(excluded_dir.replace("\\", "/")) + "/"
+            # (^|/) keeps the regex matching the directory at any nesting level,
+            # consistently with EXCLUDED_DIRECTORIES behavior in file listing,
+            # while not matching a directory merely ENDING with the name: a
+            # bare "dist" entry must not silence findings in "my-dist/"
+            excluded_dir_regex = (
+                "(^|/)" + re.escape(excluded_dir.replace("\\", "/")) + "/"
+            )
             if excluded_dir_regex not in exclude_regexes:
                 exclude_regexes += [excluded_dir_regex]
         exclude_paths_file = os.path.join(

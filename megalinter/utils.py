@@ -118,6 +118,33 @@ def get_prebuilt_linter_version(linter_name):
     return None
 
 
+# Directories excluded by default. Kept as a module constant because
+# find_workspace_excluded_directories() prunes them from its walk even when
+# EXCLUDED_DIRECTORIES overrides the list: config.get_list() REPLACES the
+# defaults, so a user setting EXCLUDED_DIRECTORIES: ["cdk.out"] would otherwise
+# make the walk enumerate every node_modules, .venv and .terraform tree in full
+DEFAULT_EXCLUDED_DIRECTORIES = [
+    "__pycache__",
+    ".angular",
+    ".git",
+    ".jekyll-cache",
+    ".nx",
+    ".parcel-cache",
+    ".pnpm-store",
+    ".pytest_cache",
+    ".mypy_cache",
+    ".rbenv",
+    ".sf",
+    ".sfdx",
+    ".turbo",
+    ".venv",
+    ".terraform",
+    ".terragrunt-cache",
+    ".wireit",
+    ".yarn/cache",
+    "node_modules",
+]
+
 _excluded_directories_cache: dict[str, set[str]] = {}
 
 
@@ -133,29 +160,8 @@ def get_excluded_directories(request_id):
     cached = _excluded_directories_cache.get(cache_key)
     if cached is not None:
         return cached
-    default_excluded_dirs = [
-        "__pycache__",
-        ".angular",
-        ".git",
-        ".jekyll-cache",
-        ".nx",
-        ".parcel-cache",
-        ".pnpm-store",
-        ".pytest_cache",
-        ".mypy_cache",
-        ".rbenv",
-        ".sf",
-        ".sfdx",
-        ".turbo",
-        ".venv",
-        ".terraform",
-        ".terragrunt-cache",
-        ".wireit",
-        ".yarn/cache",
-        "node_modules",
-    ]
     excluded_dirs = config.get_list(
-        request_id, "EXCLUDED_DIRECTORIES", default_excluded_dirs
+        request_id, "EXCLUDED_DIRECTORIES", list(DEFAULT_EXCLUDED_DIRECTORIES)
     )
     excluded_dirs += config.get_list(request_id, "ADDITIONAL_EXCLUDED_DIRECTORIES", [])
     # Always excluded, even when EXCLUDED_DIRECTORIES is overridden
@@ -163,6 +169,178 @@ def get_excluded_directories(request_id):
     result = set(excluded_dirs)
     _excluded_directories_cache[cache_key] = result
     return result
+
+
+# Convert absolute paths located inside the workspace into workspace-relative
+# paths so they match the values produced by os.walk(). Workspace-relative
+# entries are kept unchanged; absolute paths outside the workspace are dropped
+# (they can never match)
+def normalize_excluded_directories(workspace, excluded_directories) -> set[str]:
+    workspace_abs = os.path.abspath(workspace)
+    normalized = set()
+    for excluded_dir in excluded_directories:
+        if not excluded_dir:
+            continue
+        if os.path.isabs(excluded_dir):
+            try:
+                rel = os.path.relpath(excluded_dir, workspace_abs)
+            except ValueError:
+                continue
+            if rel == "." or rel.startswith(".."):
+                continue
+            normalized.add(rel.replace("\\", "/"))
+        else:
+            # Strip before testing emptiness: a bare "/" would otherwise add an
+            # empty entry, which matches nothing but is a trap for callers
+            relative = excluded_dir.replace("\\", "/").strip("/")
+            if relative != "":
+                normalized.add(relative)
+    return normalized
+
+
+# Single source of truth for directory-exclusion matching, shared by
+# full-codebase (os.walk), changed-files (git diff) and project lint mode
+# exclusions forwarding: a directory matches by its basename at any nesting
+# level, or by its workspace-relative path. Returns the matched entry, so
+# callers can group found directories by the excluded entry they come from
+def match_excluded_dir(rel_dir_path, excluded_directories) -> Optional[str]:
+    rel_dir_path = rel_dir_path.replace("\\", "/").strip("/")
+    if rel_dir_path in excluded_directories:
+        return rel_dir_path
+    basename = rel_dir_path.rsplit("/", 1)[-1]
+    if basename in excluded_directories:
+        return basename
+    return None
+
+
+def is_excluded_dir(rel_dir_path, excluded_directories) -> bool:
+    return match_excluded_dir(rel_dir_path, excluded_directories) is not None
+
+
+# Every entry the directory matches, not only the first one. The workspace walk
+# is shared by all the linters of a run, so a located directory must be filed
+# under each entry it matches: a linter excluding "docs" and another excluding
+# "packages/a/docs" both have to find packages/a/docs in the result
+def match_excluded_dir_entries(rel_dir_path, excluded_directories) -> set[str]:
+    rel_dir_path = rel_dir_path.replace("\\", "/").strip("/")
+    matched = set()
+    if rel_dir_path in excluded_directories:
+        matched.add(rel_dir_path)
+    basename = rel_dir_path.rsplit("/", 1)[-1]
+    if basename in excluded_directories:
+        matched.add(basename)
+    return matched
+
+
+# Cache of the workspace walk, keyed by (request_id, workspace). The value is
+# a (searched entries, found map) couple: a later call whose entries are a
+# subset of the ones already searched is served from it, so a whole MegaLinter
+# run needs a single walk. Cleared with the config (server mode is long-lived)
+_workspace_excluded_directories_cache: dict = {}
+
+
+# Directories the walk must never descend into: the run's excluded directories
+# plus the built-in defaults. The defaults are added even when
+# EXCLUDED_DIRECTORIES replaced them (config.get_list REPLACES the defaults),
+# so a custom exclusion list can not turn the walk into a full enumeration of
+# every node_modules, .venv or .terraform tree. Deliberately independent of
+# what is being searched, so every linter of a run walks the same shape
+def get_walk_pruned_directories(request_id, workspace) -> set[str]:
+    return normalize_excluded_directories(
+        workspace,
+        list(DEFAULT_EXCLUDED_DIRECTORIES) + list(get_excluded_directories(request_id)),
+    )
+
+
+def walk_workspace_excluded_directories(
+    request_id, workspace, searched_directories
+) -> dict:
+    pruned_directories = get_walk_pruned_directories(request_id, workspace)
+    found: dict[str, list[str]] = {}
+    for dir_path, sub_dirs, _files in os.walk(
+        workspace, topdown=True, followlinks=False
+    ):
+        rel_dir_path = os.path.relpath(dir_path, workspace).replace("\\", "/")
+        prefix = "" if rel_dir_path == "." else rel_dir_path + "/"
+        kept_sub_dirs = []
+        for sub_dir in sub_dirs:
+            rel_sub_dir = prefix + sub_dir
+            for matched in match_excluded_dir_entries(
+                rel_sub_dir, searched_directories
+            ):
+                found.setdefault(matched, []).append(rel_sub_dir)
+            # Never descend into a directory that is excluded from the analysis:
+            # its content is not linted, so nothing inside it has to be
+            # forwarded, and enumerating it is pure cost
+            if not is_excluded_dir(rel_sub_dir, pruned_directories):
+                kept_sub_dirs.append(sub_dir)
+        sub_dirs[:] = kept_sub_dirs
+    return {matched: sorted(paths) for matched, paths in found.items()}
+
+
+# Seed the cache with excluded directories already located by another walk of
+# the workspace. MegaLinter's own file listing (Megalinter.list_files_all)
+# prunes the very same directories, so in full-codebase mode the forwarding
+# lookup costs nothing at all. Finding a directory in MORE places than the
+# standalone walk would is never wrong: its own pruning is only a cost
+# optimization, and every reported path is genuinely an excluded directory
+def prime_workspace_excluded_directories(
+    request_id, workspace, searched_directories, found
+) -> None:
+    searched = normalize_excluded_directories(workspace, searched_directories)
+    cache_key = (str(request_id), os.path.abspath(workspace))
+    cached = _workspace_excluded_directories_cache.get(cache_key)
+    if cached is not None and searched <= cached[0]:
+        return
+    _workspace_excluded_directories_cache[cache_key] = (
+        searched,
+        {matched: sorted(set(paths)) for matched, paths in found.items()},
+    )
+
+
+# Locate every excluded directory in the workspace, at any nesting level:
+# EXCLUDED_DIRECTORIES and ADDITIONAL_EXCLUDED_DIRECTORIES are basenames
+# excluded wherever they are found, so a lookup limited to the workspace root
+# would miss directories like infrastructure/cdk.out. Returns a dict mapping
+# each searched entry to the workspace-relative paths where it exists
+def find_workspace_excluded_directories(
+    request_id, workspace, excluded_directories
+) -> dict:
+    searched = normalize_excluded_directories(workspace, excluded_directories)
+    cache_key = (str(request_id), os.path.abspath(workspace))
+    cached = _workspace_excluded_directories_cache.get(cache_key)
+    if cached is None or not searched <= cached[0]:
+        # Walk once for the union of everything searched so far: linters only
+        # differ by the candidates extracted from their FILTER_REGEX_EXCLUDE,
+        # and the walk shape does not depend on what is searched
+        all_searched = searched if cached is None else searched | cached[0]
+        cached = (
+            all_searched,
+            walk_workspace_excluded_directories(request_id, workspace, all_searched),
+        )
+        _workspace_excluded_directories_cache[cache_key] = cached
+    return {name: paths for name, paths in cached[1].items() if name in searched}
+
+
+# Drop the cached excluded-directories of one request (or of every request when
+# request_id is None). Registered into config so that config.delete() and
+# config.set() clear them: in server mode the process is long-lived and handles
+# many analyses, and a configuration change invalidates both caches
+def clear_excluded_directories_caches(request_id=None):
+    if request_id is None:
+        _excluded_directories_cache.clear()
+        _workspace_excluded_directories_cache.clear()
+        return
+    _excluded_directories_cache.pop(str(request_id), None)
+    for cache_key in [
+        key
+        for key in _workspace_excluded_directories_cache
+        if key[0] == str(request_id)
+    ]:
+        del _workspace_excluded_directories_cache[cache_key]
+
+
+config.register_cache_cleaner(clear_excluded_directories_caches)
 
 
 # Remove comments and trailing commas from JSONC content so it can be parsed
@@ -201,6 +379,13 @@ def strip_jsonc(content: str) -> str:
 
 _REGEX_METACHARACTERS = set(".^$*+?()[]{}|\\")
 _REGEX_QUANTIFIERS = set("*+?{")
+
+
+# A regex starting with ^ is anchored on the workspace root: the directories it
+# excludes are only the root-level ones, so its candidates must not be matched
+# at any nesting level like EXCLUDED_DIRECTORIES entries are
+def is_root_anchored_regex(regex) -> bool:
+    return str(regex).strip().startswith("^")
 
 
 # Extract literal directory candidates from an exclusion regex, without any
