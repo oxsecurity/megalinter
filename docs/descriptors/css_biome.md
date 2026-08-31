@@ -28,7 +28,7 @@ description: How to use biome (configure, ignore files, ignore errors, help & ve
 
 ## biome documentation
 
-- Version in MegaLinter: **2.5.9**
+- Version in MegaLinter: **2.5.10**
 - Visit [Official Web Site](https://biomejs.dev){target=_blank}
 - See [How to configure biome rules](https://biomejs.dev/reference/configuration/){target=_blank}
 - See [How to disable biome rules in files](https://biomejs.dev/analyzer/suppressions/){target=_blank}
@@ -162,9 +162,9 @@ Available commands:
 ARG NPM_TYPESCRIPT_VERSION=6.0.3
 # Linter install
 # renovate: datasource=npm depName=@biomejs/biome
-ARG NPM_BIOMEJS_BIOME_VERSION=2.5.9
+ARG NPM_BIOMEJS_BIOME_VERSION=2.5.10
 ```
 
 - NPM packages (node.js):
   - [typescript@6.0.3](https://www.npmjs.com/package/typescript/v/6.0.3)
-  - [@biomejs/biome@2.5.9](https://www.npmjs.com/package/@biomejs/biome/v/2.5.9)
+  - [@biomejs/biome@2.5.10](https://www.npmjs.com/package/@biomejs/biome/v/2.5.10)
