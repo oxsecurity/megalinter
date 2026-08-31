@@ -35,7 +35,11 @@ YAML_V8R_FILTER_REGEX_EXCLUDE: '(descriptors|templates/\.mega-linter\.yml|\.code
 # checking them all makes lychee the slowest linter of the run
 SPELL_LYCHEE_FILTER_REGEX_EXCLUDE: '(valestyles|\.github|docs/licenses|skills/megalinter-fix/linters)'
 BASH_FILTER_REGEX_EXCLUDE: "(lib)"
-MARKDOWN_FILTER_REGEX_EXCLUDE: '(license\.md|docs/licenses)'
+# The generated linter guides carry error-format regexes whose significant
+# trailing space markdownlint --fix strips (MD038), corrupting the regex and
+# leaving the tree dirty on every run. They are generated, and already
+# excluded from cspell and lychee for the same reason.
+MARKDOWN_FILTER_REGEX_EXCLUDE: '(license\.md|docs/licenses|skills/megalinter-fix/linters)'
 SPELL_VALE_FILE_EXTENSIONS:
   - .md
 SPELL_FILTER_REGEX_EXCLUDE: (valestyles|\.github|docs/licenses)

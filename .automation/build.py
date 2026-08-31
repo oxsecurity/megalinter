@@ -3535,6 +3535,13 @@ def finalize_doc_build():
         f"{REPO_HOME}{os.path.sep}README.md",
         target_file,
     )
+    # README.md has no level 1 heading, so the doc engine builds the home page
+    # title from the file name ("Index"). Front matter makes it "Home" again.
+    with open(target_file, "r+", encoding="utf-8") as f:
+        index_content = f.read()
+        f.seek(0)
+        f.truncate()
+        f.write(f"---\ntitle: Home\n---\n{index_content}")
     # Split README sections into individual files
     moves = [
         "quick-start",

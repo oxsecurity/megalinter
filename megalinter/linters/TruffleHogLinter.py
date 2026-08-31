@@ -73,3 +73,12 @@ class TruffleHogLinter(Linter):
             config.set_value(
                 self.request_id, "REPOSITORY_TRUFFLEHOG_FILE_EXTENSIONS", [".keys"]
             )
+        # Tests assert on detection, not on verification. --only-verified stays
+        # the production default, but keeping it here would make the test result
+        # depend on a third-party endpoint authenticating the fixture credential
+        # from the runner, which is not always reachable.
+        config.set_value(
+            self.request_id,
+            "REPOSITORY_TRUFFLEHOG_COMMAND_REMOVE_ARGUMENTS",
+            ["--only-verified"],
+        )

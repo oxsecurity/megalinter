@@ -10,8 +10,10 @@ site_description: MegaLinter is an open-source tool for CI/CD workflows that ana
 copyright: Copyright &copy; 2024 <a href="https://www.ox.security/?ref=megalinter" target= "_blank">OX Security</a> &amp; <a href="https://github.com/nvuillam" target="_blank">Nicolas Vuillamy</a>
 theme:
   name: material
-  font: 
-    text: Satoshi, sans-serif
+  # Satoshi is not a Google Font: it is self-hosted from docs/assets/fonts and
+  # declared in docs/stylesheets/extra.css. Disabling the theme font loader
+  # avoids a useless request to fonts.googleapis.com for a family it lacks.
+  font: false
   custom_dir: docs/overrides
   features:
     - content.code.copy
@@ -19,8 +21,20 @@ theme:
     - navigation.footer
   logo: assets/images/mega-linter-square.png
   favicon: assets/images/mega-linter-square.png
+  # Colors themselves live in docs/stylesheets/extra.css (OX Security palette)
   palette:
-    primary: white
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: white
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
 plugins:
   - glightbox
   - search
@@ -31,8 +45,8 @@ markdown_extensions:
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.emoji:
-      emoji_index: !!python/name:material.extensions.emoji.twemoji
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      emoji_index: !!python/name:zensical.extensions.emoji.twemoji
+      emoji_generator: !!python/name:zensical.extensions.emoji.to_svg
   - pymdownx.snippets:
       base_path: docs
       check_paths: true

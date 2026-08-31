@@ -30,7 +30,7 @@ Your goal is to fully understand what the user wants before any design or implem
    - **Config / `.mega-linter.yml` issue** — fits `/diagnose-config`.
    - **Core Python change** — orchestrator, base classes, config, reporters, server, LLM advisor, runner.
    - **Build system / `.automation/build.py` change**.
-   - **Documentation / mkdocs change**.
+   - **Documentation / Zensical change**.
 3. **Ask clarifying questions** about:
    - The user goal (feature, bug fix, refactor, infrastructure).
    - Which descriptor(s), linter(s), flavor(s), or module(s) are affected.

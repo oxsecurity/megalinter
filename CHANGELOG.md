@@ -102,6 +102,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Flavors
 
 - Doc
+  - **Comments are back** at the bottom of every documentation page, powered by [Giscus](https://giscus.app/) and backed by [MegaLinter GitHub Discussions](https://github.com/oxsecurity/megalinter/discussions): ask a question or share a tip right from the page it applies to. The previous utteranc.es widget had silently stopped rendering
+  - [megalinter.io](https://megalinter.io/) gets a **dark mode**: use the toggle in the header, or let it follow your system preference
+  - Refreshed **look and feel**, aligned with the [OX Security](https://www.ox.security/?ref=megalinter) brand: navy, indigo and lime replace the previous purple palette, and the **Satoshi** typeface is now actually loaded (it was silently falling back to the default font)
   - New **Docker pulls per month** graph, showing the growth of MegaLinter adoption since October 2020, displayed in the README and on the [Flavors statistics](https://megalinter.io/latest/flavors-stats/) page
   - Refreshed the **MegaLinter references in linters documentation** (`linter_megalinter_ref_url`): verified all existing links, updated moved pages (ktlint, robocop, csharpier, zizmor, ruff, proselint), and opened 47 suggestion PRs on linters repositories that did not mention MegaLinter yet
   - New **Security linting with ESLint** section in the JAVASCRIPT_ES and TYPESCRIPT_ES documentation: states that no security plugin is bundled, shows the `PRE_COMMANDS` recipe and the `createRequire` reference needed under flat config, and lists commonly used plugins. Closes the gap left by the "Security Issues (with security plugins)" line, which previously named no plugin and had no working example
@@ -131,6 +134,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - `npx skills add oxsecurity/megalinter/skills` keeps working for every other coding agent
 
 - Dev
+  - **REPOSITORY_TRUFFLEHOG tests no longer depend on a third-party endpoint.** The good and bad fixtures differed only by a basic-auth credential that trufflehog validated over the network, so the whole test suite went red whenever the runner could not reach that site
+    - The fixtures now differ by what is **detected**, the good ones carrying no secret material at all, and the tests drop `--only-verified`, which stays the production default
+    - The `.wireit` poison fixture gains a private key, so the excluded-directories forwarding guard actually fires instead of being vacuous
+  - The documentation site is now built with **[Zensical](https://zensical.org/)**, the successor of Material for MkDocs, replacing `mkdocs`, `mkdocs-material` and `mkdocs-glightbox`
+    - `mkdocs.yml` stays the configuration file, so `.automation/build.py` nav generation is unchanged; `hatch run docs:serve` and `hatch run docs:build` now call `zensical`
+    - Versioned deploys still use **mike**, from the Zensical-compatible fork `squidfunk/mike` pinned to a commit SHA and watched by a new Renovate custom manager
+    - The `Check MkDocs generation` workflow becomes `Check documentation generation` (`test-docs.yml`) and also runs on `docs/**` changes
+    - Three long-dead pieces of documentation configuration were found and removed or fixed on the way: the `disqus` template block (Material has no such block, so comments never rendered), the `Satoshi, sans-serif` theme font (one quoted family name that matched nothing), and the `h1[content~=Home]` CSS rule (`h1` has no `content` attribute)
   - **Parallel linters logging does not depend on the multiprocessing start method anymore**: `init_worker()` installs a `QueueHandler` on the worker root logger, built from the queue and the level passed by `process_linters_parallel()`, instead of relying on the handlers a `fork`ed worker inherits ([#8808](https://github.com/oxsecurity/megalinter/issues/8808))
     - Python 3.14 changed the default start method on Linux from `fork` to `forkserver`: workers then started with no handler and the default `WARNING` level, so their records were lost or written directly to their own stdout, bypassing the queue listener and the log file
     - The `AssertionError` crash itself came from `multiprocessing_logging.install_mp_handler()`, which asserts the `fork` start method; the dependency was already dropped in this version
@@ -164,6 +175,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Docker pull counters now also track the **standalone `megalinter-only-*` images**: their download counts are stored in `flavors-stats.json` and included in the README badge total
 
 - CI
+  - The generated linter guides in `skills/megalinter-fix/linters/` are excluded from the markdown linters: their error-format regexes end with a significant space that `markdownlint --fix` strips, which corrupted the documented regex and left the working tree dirty, failing the auto-fix commit step on every pull request
   - **Supply-chain hardening of dependency updates**: Renovate (`minimumReleaseAge`) and Dependabot (`cooldown`) now wait until a release is at least **7 days old** before proposing an upgrade, so compromised releases can be caught by the community first. Security fixes are not delayed and still open immediately
   - New **Check agent plugins manifests** workflow validating the agent plugin manifests on every change to them or to `skills/`: `.automation/validate_agent_plugins.py` checks the root `plugin.json` against the published Agent Plugins 1.0 schema and keeps the per-vendor manifests consistent with it, then `claude plugin validate ./ --strict` checks the Claude Code marketplace and plugin manifests
   - The auto-update workflow patch-bumps the agent plugin version when it regenerates the skills: the plugin follows its own release train, since its fix guides change far more often than MegaLinter is released. `plugin.json` is the single source of truth, mirrored into the per-vendor manifests by `.automation/agent_plugin_manifests.py` (called by `build.py`)
