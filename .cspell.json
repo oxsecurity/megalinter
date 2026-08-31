@@ -1221,6 +1221,8 @@
         "optionator",
         "OPTIONNAME",
         "optparse",
+        "ORCAROUTER",
+        "orcarouter",
         "orjson",
         "Ortelius",
         "outfile",
