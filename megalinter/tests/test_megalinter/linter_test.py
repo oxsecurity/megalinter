@@ -4,6 +4,7 @@ Unit tests for Linter class
 
 """
 
+import contextlib
 import os
 import tempfile
 import unittest
@@ -279,6 +280,46 @@ class LinterTest(unittest.TestCase):
         ]
         self.assertFalse(descended, f"walk descended into excluded dirs: {descended}")
 
+    def init_exclude_workspace(self, workspace, directories, config_values=None):
+        for directory in directories:
+            os.makedirs(os.path.join(workspace, *directory))
+        request_id = str(uuid.uuid1())
+        config.init_config(request_id, None, config_values or {})
+        return request_id
+
+    def build_mega_linter_with_project_linters(self, request_id, workspace, regexes):
+        linters = []
+        for index, regex in enumerate(regexes):
+            linter = Linter.__new__(Linter)
+            linter.name = f"LINTER_{index}"
+            linter.request_id = request_id
+            linter.workspace = workspace
+            linter.filter_regex_exclude_descriptor = None
+            linter.filter_regex_exclude_linter = regex
+            linter.cli_lint_mode = "project"
+            linter.cli_lint_mode_project_exclude_arg_name = "-x"
+            linter.cli_lint_mode_project_exclude_ignore_file_arg_name = None
+            linters += [linter]
+        mega_linter = Megalinter.__new__(Megalinter)
+        mega_linter.request_id = request_id
+        mega_linter.workspace = workspace
+        mega_linter.active_linters = linters
+        return mega_linter, linters
+
+    @contextlib.contextmanager
+    def count_workspace_walks(self):
+        walks = []
+        real_walk = utils.walk_workspace_excluded_directories
+
+        def counting_walk(*args, **kwargs):
+            walks.append(args)
+            return real_walk(*args, **kwargs)
+
+        with mock.patch.object(
+            utils, "walk_workspace_excluded_directories", counting_walk
+        ):
+            yield walks
+
     def test_workspace_is_walked_only_once_for_the_whole_run(self):
         # The walk is cached per process, and worker processes do not share it:
         # the main process primes it for every linter before the pool is created
@@ -287,33 +328,11 @@ class LinterTest(unittest.TestCase):
             os.makedirs(os.path.join(workspace, "b", "docs"))
             request_id = str(uuid.uuid1())
             config.init_config(request_id, None, {})
-            linters = []
-            for index, regex in enumerate([None, "docs/", "build/", None, "(^|/)d/"]):
-                linter = Linter.__new__(Linter)
-                linter.name = f"LINTER_{index}"
-                linter.request_id = request_id
-                linter.workspace = workspace
-                linter.filter_regex_exclude_descriptor = None
-                linter.filter_regex_exclude_linter = regex
-                linter.cli_lint_mode = "project"
-                linter.cli_lint_mode_project_exclude_arg_name = "-x"
-                linter.cli_lint_mode_project_exclude_ignore_file_arg_name = None
-                linters += [linter]
-            mega_linter = Megalinter.__new__(Megalinter)
-            mega_linter.request_id = request_id
-            mega_linter.workspace = workspace
-            mega_linter.active_linters = linters
-            walks = []
-            real_walk = utils.walk_workspace_excluded_directories
-
-            def counting_walk(*args, **kwargs):
-                walks.append(args)
-                return real_walk(*args, **kwargs)
-
+            mega_linter, linters = self.build_mega_linter_with_project_linters(
+                request_id, workspace, [None, "docs/", "build/", None, "(^|/)d/"]
+            )
             try:
-                with mock.patch.object(
-                    utils, "walk_workspace_excluded_directories", counting_walk
-                ):
+                with self.count_workspace_walks() as walks:
                     mega_linter.prepare_project_exclude_directories()
                     for linter in linters:
                         linter.get_project_exclude_directories()
@@ -335,22 +354,9 @@ class LinterTest(unittest.TestCase):
             config.init_config(
                 request_id, None, {"ADDITIONAL_EXCLUDED_DIRECTORIES": "docs"}
             )
-            linters = []
-            for index, regex in enumerate([None, "packages/a/docs/"]):
-                linter = Linter.__new__(Linter)
-                linter.name = f"LINTER_{index}"
-                linter.request_id = request_id
-                linter.workspace = workspace
-                linter.filter_regex_exclude_descriptor = None
-                linter.filter_regex_exclude_linter = regex
-                linter.cli_lint_mode = "project"
-                linter.cli_lint_mode_project_exclude_arg_name = "-x"
-                linter.cli_lint_mode_project_exclude_ignore_file_arg_name = None
-                linters += [linter]
-            mega_linter = Megalinter.__new__(Megalinter)
-            mega_linter.request_id = request_id
-            mega_linter.workspace = workspace
-            mega_linter.active_linters = linters
+            mega_linter, linters = self.build_mega_linter_with_project_linters(
+                request_id, workspace, [None, "packages/a/docs/"]
+            )
             try:
                 mega_linter.prepare_project_exclude_directories()
                 paths = [
@@ -366,43 +372,19 @@ class LinterTest(unittest.TestCase):
         # the files, pruning the very same directories: the forwarding lookup
         # rides on it instead of walking a second time
         with tempfile.TemporaryDirectory() as workspace:
-            for directory in [
-                ("src", "node_modules"),
-                ("infrastructure", "cdk.out"),
-                ("src", "keep"),
-            ]:
-                os.makedirs(os.path.join(workspace, *directory))
-            request_id = str(uuid.uuid1())
-            config.init_config(
-                request_id, None, {"ADDITIONAL_EXCLUDED_DIRECTORIES": "cdk.out"}
+            request_id = self.init_exclude_workspace(
+                workspace,
+                [("src", "node_modules"), ("infrastructure", "cdk.out"), ("src", "k")],
+                {"ADDITIONAL_EXCLUDED_DIRECTORIES": "cdk.out"},
             )
-            linter = Linter.__new__(Linter)
-            linter.name = "REPOSITORY_TRIVY"
-            linter.request_id = request_id
-            linter.workspace = workspace
-            linter.filter_regex_exclude_descriptor = None
-            linter.filter_regex_exclude_linter = None
-            linter.cli_lint_mode = "project"
-            linter.cli_lint_mode_project_exclude_arg_name = "-x"
-            linter.cli_lint_mode_project_exclude_ignore_file_arg_name = None
-            mega_linter = Megalinter.__new__(Megalinter)
-            mega_linter.request_id = request_id
-            mega_linter.workspace = workspace
-            mega_linter.active_linters = [linter]
-            walks = []
-            real_walk = utils.walk_workspace_excluded_directories
-
-            def counting_walk(*args, **kwargs):
-                walks.append(args)
-                return real_walk(*args, **kwargs)
-
+            mega_linter, linters = self.build_mega_linter_with_project_linters(
+                request_id, workspace, [None]
+            )
             try:
                 mega_linter.list_files_all()
-                with mock.patch.object(
-                    utils, "walk_workspace_excluded_directories", counting_walk
-                ):
+                with self.count_workspace_walks() as walks:
                     mega_linter.prepare_project_exclude_directories()
-                    paths = linter.get_project_exclude_directory_paths()
+                    paths = linters[0].get_project_exclude_directory_paths()
             finally:
                 config.delete(request_id)
 
@@ -412,16 +394,15 @@ class LinterTest(unittest.TestCase):
 
     def test_file_listing_harvest_matches_the_standalone_walk(self):
         with tempfile.TemporaryDirectory() as workspace:
-            for directory in [
-                ("src", "node_modules", "pkg"),
-                ("infrastructure", "cdk.out"),
-                ("packages", "a", ".venv"),
-                ("src", "keep"),
-            ]:
-                os.makedirs(os.path.join(workspace, *directory))
-            request_id = str(uuid.uuid1())
-            config.init_config(
-                request_id, None, {"ADDITIONAL_EXCLUDED_DIRECTORIES": "cdk.out"}
+            request_id = self.init_exclude_workspace(
+                workspace,
+                [
+                    ("src", "node_modules", "pkg"),
+                    ("infrastructure", "cdk.out"),
+                    ("packages", "a", ".venv"),
+                    ("src", "keep"),
+                ],
+                {"ADDITIONAL_EXCLUDED_DIRECTORIES": "cdk.out"},
             )
             excluded = utils.get_excluded_directories(request_id)
             try:

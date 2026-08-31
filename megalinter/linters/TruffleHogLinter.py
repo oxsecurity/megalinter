@@ -53,7 +53,7 @@ class TruffleHogLinter(Linter):
             # (^|/) keeps the regex matching the directory at any nesting level,
             # consistently with EXCLUDED_DIRECTORIES behavior in file listing,
             # while not matching a directory merely ENDING with the name: a
-            # bare "dist" entry must not silence findings in "mydist/"
+            # bare "dist" entry must not silence findings in "my-dist/"
             excluded_dir_regex = (
                 "(^|/)" + re.escape(excluded_dir.replace("\\", "/")) + "/"
             )
