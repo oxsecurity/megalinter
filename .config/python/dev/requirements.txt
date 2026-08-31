@@ -15,7 +15,7 @@ mkdocs==1.6.1
 mkdocs-glightbox==0.5.2
 mkdocs-material==9.7.7
 pygithub==2.10.0
-pymdown-extensions==11.0.1
+pymdown-extensions==11.0.2
 pytablewriter==1.2.1
 pytest-cov==7.1.0
 pytest-timeout==2.4.0
