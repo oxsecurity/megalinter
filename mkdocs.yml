@@ -393,6 +393,7 @@ nav:
           - "Google GenAI": "llm-provider/llm_provider_google_genai.md"
           - "MistralAI": "llm-provider/llm_provider_mistralai.md"
           - "OpenAI": "llm-provider/llm_provider_openai.md"
+          - "OrcaRouter": "llm-provider/llm_provider_orcarouter.md"
           - "Ollama": "llm-provider/llm_provider_ollama.md"
           - "Hugging Face": "llm-provider/llm_provider_huggingface.md"
   - "Flavors":

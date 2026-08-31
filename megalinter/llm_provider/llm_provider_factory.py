@@ -23,6 +23,7 @@ class LLMProviderFactory:
         "mistral": ("llm_provider_mistral", "MistralProvider"),
         "deepseek": ("llm_provider_deepseek", "DeepSeekProvider"),
         "grok": ("llm_provider_grok", "GrokProvider"),
+        "orcarouter": ("llm_provider_orcarouter", "OrcaRouterProvider"),
     }
 
     @classmethod
@@ -76,6 +77,7 @@ class LLMProviderFactory:
             "mistral": "Mistral AI models",
             "deepseek": "DeepSeek models",
             "grok": "Grok (xAI) models",
+            "orcarouter": "OrcaRouter models",
         }
 
     @classmethod
@@ -89,4 +91,5 @@ class LLMProviderFactory:
             "MISTRAL_API_KEY",
             "DEEPSEEK_API_KEY",
             "GROK_API_KEY",
+            "ORCAROUTER_API_KEY",
         ]

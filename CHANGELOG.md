@@ -12,6 +12,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Core
   - MegaLinter now prints a **crash traceback** when it is killed by a fatal signal (`SIGSEGV`, `SIGBUS`…), instead of exiting silently with no clue about what happened
+  - The **LLM Advisor** supports a new provider, **OrcaRouter**, an OpenAI-compatible AI gateway: set **`LLM_PROVIDER: orcarouter`** and **`ORCAROUTER_API_KEY`** in your environment to get fix suggestions routed through [OrcaRouter](https://www.orcarouter.ai) (see the [OrcaRouter provider page](https://megalinter.io/latest/llm-provider/llm_provider_orcarouter/))
 
 - New linters
   - **[biome](https://biomejs.dev)**, one fast toolchain linting, formatting and sorting imports of JavaScript, TypeScript, JSX, TSX, JSON, CSS and GraphQL files, available as **JAVASCRIPT_BIOME**, **TYPESCRIPT_BIOME**, **JSX_BIOME**, **TSX_BIOME**, **JSON_BIOME**, **CSS_BIOME** and **GRAPHQL_BIOME**
