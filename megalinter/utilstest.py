@@ -61,8 +61,13 @@ def linter_test_setup(params=None):
     test_name = os.environ.get("PYTEST_CURRENT_TEST", "")
     test_keywords = os.environ.get("TEST_KEYWORDS", "")
     # Special cases with names resembling each other
-    if (test_keywords == "php_phpcs" and "php_phpcsfixer" in test_name) or (
-        test_keywords == "python_ruff" and "python_ruff_format" in test_name
+    if (
+        (test_keywords == "php_phpcs" and "php_phpcsfixer" in test_name)
+        or (test_keywords == "python_ruff" and "python_ruff_format" in test_name)
+        or (
+            test_keywords == "salesforce_code_analyzer_apex"
+            and "salesforce_code_analyzer_apexguru" in test_name
+        )
     ):
         raise unittest.SkipTest("This test class should not be run in this campaign")
     if params is None:

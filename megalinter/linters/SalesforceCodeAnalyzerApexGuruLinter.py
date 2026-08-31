@@ -11,6 +11,7 @@ from megalinter.linters.SalesforceCodeAnalyzerLinter import (
 )
 
 SFDX_AUTH_URL_VAR = "SFDX_AUTH_URL"
+ORG_ALIAS = "megalinter-apexguru"
 
 
 class SalesforceCodeAnalyzerApexGuruLinter(SalesforceCodeAnalyzerLinter):
@@ -22,12 +23,17 @@ class SalesforceCodeAnalyzerApexGuruLinter(SalesforceCodeAnalyzerLinter):
     # replaced by HIDDEN_BY_MEGALINTER in sub-process environments unless it is
     # explicitly allowed: the auth url is expanded by the login command itself,
     # never by MegaLinter, so it stays out of the logs.
+    # The default org must be set with `sf config set --global`: the login runs
+    # from the root folder, never inside the analyzed sources, so a project
+    # scoped default would not be visible from the workspace where
+    # `sf code-analyzer run` is executed.
     def before_lint_files(self):
         if SFDX_AUTH_URL_VAR not in self.unsecured_env_variables:
             self.unsecured_env_variables += [SFDX_AUTH_URL_VAR]
         login_command = (
             f'echo "${SFDX_AUTH_URL_VAR}" | sf org login sfdx-url'
-            " --sfdx-url-stdin --set-default --alias megalinter-apexguru"
+            f" --sfdx-url-stdin --alias {ORG_ALIAS}"
+            f" && sf config set target-org={ORG_ALIAS} --global"
         )
         logging.debug("apexguru before_lint_files: " + login_command)
         if self.pre_commands is None:
