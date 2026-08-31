@@ -1,12 +1,12 @@
 ---
-description: Documentation conventions for mkdocs-material
+description: Documentation conventions for Zensical
 globs: ["docs/**/*.md", "*.md"]
 ---
 
 # Documentation Rules
 
-## mkdocs-material Compliance
-All markdown files must be mkdocs-material compliant:
+## Zensical Compliance
+All markdown files must be Zensical-compliant:
 - Always leave a blank line after a heading (`##`, `###`, etc.)
 - Always leave a blank line before a bulleted list or numbered list
 - Always leave a blank line after a bulleted list or numbered list

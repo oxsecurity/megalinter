@@ -16,7 +16,7 @@ globs: ["CHANGELOG.md"]
 - Highlight the key words/expressions in **bold** so the page can be scanned: the feature name, the variable/option, or the headline figure — one or two bold spans per entry, never whole sentences
 - Name the things users interact with: configuration variables, linter keys, CLI options, documentation pages. Link doc pages and fixed issues
 - In user-facing sections, do NOT include implementation details: internal module/class/file names, build-system mechanics, refactoring narratives, how a fix works internally, why CI is faster — that detail belongs under the `Dev`/`CI` sections (see below)
-- Every markdown table must have an **empty line before and after it** (mkdocs-material and markdownlint requirement), including tables nested under a bullet
+- Every markdown table must have an **empty line before and after it** (Zensical and markdownlint requirement), including tables nested under a bullet
 - Performance and size improvements are shown as **before/after tables** (`| ... | Before | After | Delta |`): user-visible measures (Docker image sizes, MegaLinter run duration, startup time) as a table in the user-facing section; repository CI job timings as a table in the `CI` section. Put the numbers in the table, not inline in the bullets. Lead image-size tables with the main and flavor images (the most used), then standalone images; measure sizes from ghcr.io manifests (sum of amd64 `layers[].size` = compressed download size — Docker Hub tags are stale)
 
 ## What goes where

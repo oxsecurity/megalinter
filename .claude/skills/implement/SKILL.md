@@ -17,7 +17,7 @@ Read `.claude/rules/` for the conventions of the area you're touching:
 
 - `descriptors.md` — YAML descriptor schema and property coverage
 - `python-style.md` — Python conventions
-- `documentation.md` — mkdocs-material markdown rules
+- `documentation.md` — Zensical markdown rules
 - `generated-files.md` — what NOT to edit
 - `testing.md` — test structure and fixtures
 
@@ -65,7 +65,7 @@ Read `.claude/rules/` for the conventions of the area you're touching:
 9. **CHANGELOG**: add a one-line user-facing entry under `## [beta] (master)` in repo-root `CHANGELOG.md`. Write it for end users per `.claude/rules/changelog.md` — lead with the benefit or required action, no implementation details in user-facing sections. Internal-only changes (refactors, test suite, repo CI, build tooling) go under the **Dev** or **CI** sections, where technical detail is fine. **Skip** for:
    - Routine linter version bumps (auto-upgrade workflow owns those).
    - CVE-ignore entries.
-10. **Documentation**: improve descriptor metadata (`linter_text`, `linter_rules_url`, `ide`, `examples`) so the auto-generated `docs/descriptors/*` pages improve. mkdocs-material: blank line after every heading, blank line before/after every list.
+10. **Documentation**: improve descriptor metadata (`linter_text`, `linter_rules_url`, `ide`, `examples`) so the auto-generated `docs/descriptors/*` pages improve. Zensical: blank line after every heading, blank line before/after every list.
 
 Continue iterating until the change is complete. Do not stop to ask whether to continue mid-task.
 

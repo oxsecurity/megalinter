@@ -101,6 +101,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Flavors
 
 - Doc
+  - [megalinter.io](https://megalinter.io/) gets a **dark mode**: use the toggle in the header, or let it follow your system preference
+  - Refreshed **look and feel**, aligned with the [OX Security](https://www.ox.security/?ref=megalinter) brand: navy, indigo and lime replace the previous purple palette, and the **Satoshi** typeface is now actually loaded (it was silently falling back to the default font)
   - New **Docker pulls per month** graph, showing the growth of MegaLinter adoption since October 2020, displayed in the README and on the [Flavors statistics](https://megalinter.io/latest/flavors-stats/) page
   - Refreshed the **MegaLinter references in linters documentation** (`linter_megalinter_ref_url`): verified all existing links, updated moved pages (ktlint, robocop, csharpier, zizmor, ruff, proselint), and opened 47 suggestion PRs on linters repositories that did not mention MegaLinter yet
   - New **Security linting with ESLint** section in the JAVASCRIPT_ES and TYPESCRIPT_ES documentation: states that no security plugin is bundled, shows the `PRE_COMMANDS` recipe and the `createRequire` reference needed under flat config, and lists commonly used plugins. Closes the gap left by the "Security Issues (with security plugins)" line, which previously named no plugin and had no working example
@@ -130,6 +132,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - `npx skills add oxsecurity/megalinter/skills` keeps working for every other coding agent
 
 - Dev
+  - The documentation site is now built with **[Zensical](https://zensical.org/)**, the successor of Material for MkDocs, replacing `mkdocs`, `mkdocs-material` and `mkdocs-glightbox`
+    - `mkdocs.yml` stays the configuration file, so `.automation/build.py` nav generation is unchanged; `hatch run docs:serve` and `hatch run docs:build` now call `zensical`
+    - Versioned deploys still use **mike**, from the Zensical-compatible fork `squidfunk/mike` pinned to a commit SHA and watched by a new Renovate custom manager
+    - The `Check MkDocs generation` workflow becomes `Check documentation generation` (`test-docs.yml`) and also runs on `docs/**` changes
+    - Three long-dead pieces of documentation configuration were found and removed or fixed on the way: the `disqus` template block (Material has no such block, so comments never rendered), the `Satoshi, sans-serif` theme font (one quoted family name that matched nothing), and the `h1[content~=Home]` CSS rule (`h1` has no `content` attribute)
   - **Parallel linters logging does not depend on the multiprocessing start method anymore**: `init_worker()` installs a `QueueHandler` on the worker root logger, built from the queue and the level passed by `process_linters_parallel()`, instead of relying on the handlers a `fork`ed worker inherits ([#8808](https://github.com/oxsecurity/megalinter/issues/8808))
     - Python 3.14 changed the default start method on Linux from `fork` to `forkserver`: workers then started with no handler and the default `WARNING` level, so their records were lost or written directly to their own stdout, bypassing the queue listener and the log file
     - The `AssertionError` crash itself came from `multiprocessing_logging.install_mp_handler()`, which asserts the `fork` start method; the dependency was already dropped in this version
