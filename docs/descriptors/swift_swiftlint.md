@@ -22,7 +22,7 @@ description: How to use swiftlint (configure, ignore files, ignore errors, help 
 
 ## swiftlint documentation
 
-- Version in MegaLinter: **0.65.0**
+- Version in MegaLinter: **0.65.1**
 - Visit [Official Web Site](https://github.com/realm/SwiftLint#readme){target=_blank}
 - See [How to configure swiftlint rules](https://github.com/realm/SwiftLint#configuration){target=_blank}
 - See [How to disable swiftlint rules in files](https://github.com/realm/SwiftLint#disable-rules-in-code){target=_blank}
@@ -134,7 +134,7 @@ SUBCOMMANDS:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=github-releases depName=realm/SwiftLint
-ARG SWIFT_SWIFTLINT_VERSION=0.65.0
+ARG SWIFT_SWIFTLINT_VERSION=0.65.1
 RUN case "${TARGETARCH}" in \
       amd64) SWIFTLINT_ARCH=amd64 ;; \
       arm64) SWIFTLINT_ARCH=arm64 ;; \

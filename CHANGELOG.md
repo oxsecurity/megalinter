@@ -204,6 +204,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rumdl](https://github.com/rvben/rumdl) from 0.2.55 to **0.2.57** on 2026-08-28
   - [grype](https://github.com/anchore/grype) from 0.117.0 to **0.118.0** on 2026-08-28
   - [syft](https://github.com/anchore/syft) from 1.51.0 to **1.51.1** on 2026-08-28
+  - [biome](https://biomejs.dev) from 2.5.9 to **2.5.10** on 2026-08-31
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.57 to **0.2.60** on 2026-08-31
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.18 to **3.95.21** on 2026-08-31
+  - [phpstan](https://phpstan.org/) from 2.2.8 to **2.2.9** on 2026-08-31
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.16.3 to **0.16.4** on 2026-08-31
+  - [ruff](https://github.com/astral-sh/ruff) from 0.16.3 to **0.16.4** on 2026-08-31
+  - [checkov](https://www.checkov.io/) from 3.3.11 to **3.3.13** on 2026-08-31
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.65.0 to **0.65.1** on 2026-08-31
 <!-- linter-versions-end -->
 
 ## [v10.0.0] - 2026-08-08
