@@ -167,7 +167,7 @@ ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=13.0.0
 # renovate: datasource=npm depName=stylelint-scss
 ARG NPM_STYLELINT_SCSS_VERSION=7.2.0
 # renovate: datasource=npm depName=@biomejs/biome
-ARG NPM_BIOMEJS_BIOME_VERSION=2.5.9
+ARG NPM_BIOMEJS_BIOME_VERSION=2.5.10
 # renovate: datasource=github-releases depName=dotenv-linter/dotenv-linter extractVersion=^v(?<version>.+)$
 ARG DOTENV_LINTER_VERSION=4.0.0
 # renovate: datasource=github-tags depName=golangci/golangci-lint
@@ -234,13 +234,13 @@ ARG NPM_MARKDOWNLINT_CLI_VERSION=0.49.1
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.2.57
+ARG PIP_RUMDL_VERSION=0.2.60
 # renovate: datasource=packagist depName=squizlabs/php_codesniffer
 ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=4.0.4
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
 ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.6.0
 # renovate: datasource=packagist depName=phpstan/phpstan
-ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.2.8
+ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.2.9
 # renovate: datasource=packagist depName=phpstan/extension-installer
 ARG PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION=1.4.3
 # renovate: datasource=packagist depName=vimeo/psalm
@@ -248,7 +248,7 @@ ARG PHP_VIMEO_PSALM_VERSION=6.16.1
 # renovate: datasource=packagist depName=overtrue/phplint
 ARG PHP_OVERTRUE_PHPLINT_VERSION=9.7.2
 # renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
-ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.95.18
+ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.95.21
 # renovate: datasource=pypi depName=pylint
 ARG PIP_PYLINT_VERSION=4.0.7
 # renovate: datasource=pypi depName=typing-extensions
@@ -268,7 +268,7 @@ ARG NPM_PYRIGHT_VERSION=1.1.413
 # renovate: datasource=pypi depName=ruff
 ARG PIP_RUFF_VERSION=0.16.4
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.3.11
+ARG PIP_CHECKOV_VERSION=3.3.13
 # renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.117.0
 # renovate: datasource=github-releases depName=loeffel-io/ls-lint extractVersion=^v(?<version>.+)$
@@ -322,7 +322,7 @@ ARG PIP_CODESPELL_VERSION=2.4.3
 # renovate: datasource=pypi depName=sqlfluff
 ARG PIP_SQLFLUFF_VERSION=4.3.0
 # renovate: datasource=github-releases depName=realm/SwiftLint
-ARG SWIFT_SWIFTLINT_VERSION=0.65.0
+ARG SWIFT_SWIFTLINT_VERSION=0.65.1
 # renovate: datasource=npm depName=prettyjson
 ARG NPM_PRETTYJSON_VERSION=1.2.5
 # renovate: datasource=npm depName=@typescript-eslint/eslint-plugin

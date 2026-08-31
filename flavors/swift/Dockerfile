@@ -169,9 +169,9 @@ ARG NPM_MARKDOWNLINT_CLI_VERSION=0.49.1
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.2.57
+ARG PIP_RUMDL_VERSION=0.2.60
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.3.11
+ARG PIP_CHECKOV_VERSION=3.3.13
 # renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.117.0
 # renovate: datasource=github-releases depName=loeffel-io/ls-lint extractVersion=^v(?<version>.+)$
@@ -205,7 +205,7 @@ ARG PIP_CODESPELL_VERSION=2.4.3
 # renovate: datasource=pypi depName=sqlfluff
 ARG PIP_SQLFLUFF_VERSION=4.3.0
 # renovate: datasource=github-releases depName=realm/SwiftLint
-ARG SWIFT_SWIFTLINT_VERSION=0.65.0
+ARG SWIFT_SWIFTLINT_VERSION=0.65.1
 # renovate: datasource=npm depName=@ibm/tekton-lint
 ARG NPM_IBM_TEKTON_LINT_VERSION=1.2.0
 # renovate: datasource=pypi depName=yamllint
