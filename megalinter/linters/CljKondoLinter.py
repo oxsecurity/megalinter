@@ -3,6 +3,8 @@
 Use clj-kondo to check Clojure files
 """
 
+import re
+
 from megalinter import Linter
 
 
@@ -14,8 +16,12 @@ class CljKondoLinter(Linter):
     def manage_excluded_directories_config(self, cmd):
         if "--config" in cmd:
             return cmd
+        # The directory name is a literal, not a pattern: escape it so that a
+        # name like "cdk.out" does not match "cdkxout". The backslashes are
+        # doubled because the regex travels inside an EDN string, whose reader
+        # only accepts a short list of escape sequences
         exclude_regexes = " ".join(
-            f'"(^|/){excluded_dir}/"'
+            '"(^|/)' + re.escape(excluded_dir).replace("\\", "\\\\") + '/"'
             for excluded_dir in self.get_project_exclude_directories()
         )
         cmd += ["--config", "{:exclude-files [" + exclude_regexes + "]}"]

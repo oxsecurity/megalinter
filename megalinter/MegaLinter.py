@@ -332,6 +332,15 @@ class Megalinter:
                     active_linter.master, active_linter, run_before_linters=True
                 )
 
+            # Locate the excluded directories to forward once, here in the main
+            # process: the workspace walk is cached per process, so it would
+            # otherwise be repeated in every worker of the pool (and the cache
+            # is not even inherited with the "forkserver" start method, the
+            # Python 3.14 default on Linux). Done after the linter pre-commands
+            # so the directories they create are taken into account, and before
+            # the pool, so the computed values are pickled into the workers
+            self.prepare_project_exclude_directories()
+
             self.process_linters_parallel(self.active_linters, linters_do_fixes)
 
             for active_linter in self.active_linters:
@@ -421,6 +430,28 @@ class Megalinter:
         self.check_results()
 
     # noinspection PyMethodMayBeStatic
+    def prepare_project_exclude_directories(self):
+        forwarding_linters = [
+            active_linter
+            for active_linter in self.active_linters
+            if active_linter.cli_lint_mode == "project"
+            and active_linter.has_project_exclude_forwarding()
+            and active_linter.is_project_exclude_forwarding_active()
+        ]
+        if len(forwarding_linters) == 0:
+            return
+        # Prime the cache with the union of what every linter looks for: linters
+        # only differ by the candidates extracted from their FILTER_REGEX_EXCLUDE,
+        # so a single walk then serves all of them from the cache
+        searched = set()
+        for linter in forwarding_linters:
+            searched |= linter.get_project_exclude_search_entries()[0]
+        utils.find_workspace_excluded_directories(
+            self.request_id, self.workspace, searched
+        )
+        for linter in forwarding_linters:
+            linter.compute_project_exclude_directories()
+
     def process_linters_serial(self, active_linters):
         for linter in active_linters:
             linter.run()

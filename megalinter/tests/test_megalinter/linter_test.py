@@ -11,8 +11,9 @@ import uuid
 from unittest import mock
 
 from megalinter import config, utils
-from megalinter.Linter import Linter
+from megalinter.Linter import MAX_PROJECT_EXCLUDE_ARG_BYTES, Linter
 from megalinter.linters.StyleLintLinter import StyleLintLinter
+from megalinter.MegaLinter import Megalinter
 
 
 class LinterTest(unittest.TestCase):
@@ -65,21 +66,29 @@ class LinterTest(unittest.TestCase):
             self.run_activation(["JAVASCRIPT_ES"], ["JAVASCRIPT_ES"], "WHATEVER")
         )
 
-    def build_exclude_forwarding_linter(self, workspace, config_values=None):
+    def build_exclude_forwarding_linter(
+        self, workspace, config_values=None, filter_regex_exclude=None
+    ):
         linter = Linter.__new__(Linter)
         linter.name = "REPOSITORY_TRIVY"
         linter.request_id = str(uuid.uuid1())
         linter.filter_regex_exclude_descriptor = None
-        linter.filter_regex_exclude_linter = None
+        linter.filter_regex_exclude_linter = filter_regex_exclude
         linter.workspace = workspace
         config.init_config(linter.request_id, None, config_values or {})
         return linter
 
     def get_forwarded_exclude_directories(
-        self, existing_directories, config_values=None, return_paths=False
+        self,
+        existing_directories,
+        config_values=None,
+        return_paths=False,
+        filter_regex_exclude=None,
     ):
         with tempfile.TemporaryDirectory() as workspace:
-            linter = self.build_exclude_forwarding_linter(workspace, config_values)
+            linter = self.build_exclude_forwarding_linter(
+                workspace, config_values, filter_regex_exclude
+            )
             try:
                 for directory in existing_directories:
                     os.makedirs(os.path.join(workspace, directory))
@@ -203,6 +212,214 @@ class LinterTest(unittest.TestCase):
                     return linter.build_project_exclude_arguments()
             finally:
                 config.delete(linter.request_id)
+
+    def test_root_anchored_filter_regex_exclude_stays_root_level(self):
+        # "^docs/" excludes the ROOT docs directory only: forwarding its
+        # candidate at any nesting level would silence findings in
+        # packages/a/docs, which the user regex does not exclude
+        paths = self.get_forwarded_exclude_directories(
+            ["docs", os.path.join("packages", "a", "docs")],
+            return_paths=True,
+            filter_regex_exclude="^docs/",
+        )
+        self.assertIn("docs", paths)
+        self.assertNotIn("packages/a/docs", paths)
+
+    def test_root_anchored_filter_regex_exclude_dropped_when_absent_at_root(self):
+        excluded = self.get_forwarded_exclude_directories(
+            [os.path.join("packages", "a", "docs")],
+            filter_regex_exclude="^docs/",
+        )
+        self.assertNotIn("docs", excluded)
+
+    def test_unanchored_filter_regex_exclude_matches_any_nesting_level(self):
+        paths = self.get_forwarded_exclude_directories(
+            ["docs", os.path.join("packages", "a", "docs")],
+            return_paths=True,
+            filter_regex_exclude="(^|/)docs/",
+        )
+        self.assertIn("docs", paths)
+        self.assertIn("packages/a/docs", paths)
+
+    def test_walk_never_descends_into_a_known_excluded_directory(self):
+        # Excluded directories are not linted, so nothing inside them has to be
+        # forwarded: the walk must skip them wherever they are, not only at the
+        # workspace root
+        visited = []
+        real_walk = os.walk
+
+        def counting_walk(top, *args, **kwargs):
+            for dir_path, sub_dirs, files in real_walk(top, *args, **kwargs):
+                visited.append(dir_path)
+                yield dir_path, sub_dirs, files
+
+        with tempfile.TemporaryDirectory() as workspace:
+            for directory in [
+                ("node_modules", "pkg", "deep"),
+                ("src", "node_modules", "pkg", "deep"),
+                ("src", ".venv", "lib"),
+                ("src", "keep"),
+            ]:
+                os.makedirs(os.path.join(workspace, *directory))
+            linter = self.build_exclude_forwarding_linter(workspace)
+            try:
+                with mock.patch("megalinter.utils.os.walk", counting_walk):
+                    paths = linter.get_project_exclude_directory_paths()
+            finally:
+                config.delete(linter.request_id)
+
+        self.assertIn("node_modules", paths)
+        self.assertIn("src/node_modules", paths)
+        self.assertIn("src/.venv", paths)
+        descended = [
+            path
+            for path in visited
+            for excluded in ("node_modules", ".venv")
+            if excluded in path.replace("\\", "/").split("/")
+        ]
+        self.assertFalse(descended, f"walk descended into excluded dirs: {descended}")
+
+    def test_workspace_is_walked_only_once_for_the_whole_run(self):
+        # The walk is cached per process, and worker processes do not share it:
+        # the main process primes it for every linter before the pool is created
+        with tempfile.TemporaryDirectory() as workspace:
+            os.makedirs(os.path.join(workspace, "a", "node_modules"))
+            os.makedirs(os.path.join(workspace, "b", "docs"))
+            request_id = str(uuid.uuid1())
+            config.init_config(request_id, None, {})
+            linters = []
+            for index, regex in enumerate([None, "docs/", "build/", None, "(^|/)d/"]):
+                linter = Linter.__new__(Linter)
+                linter.name = f"LINTER_{index}"
+                linter.request_id = request_id
+                linter.workspace = workspace
+                linter.filter_regex_exclude_descriptor = None
+                linter.filter_regex_exclude_linter = regex
+                linter.cli_lint_mode = "project"
+                linter.cli_lint_mode_project_exclude_arg_name = "-x"
+                linter.cli_lint_mode_project_exclude_ignore_file_arg_name = None
+                linters += [linter]
+            mega_linter = Megalinter.__new__(Megalinter)
+            mega_linter.request_id = request_id
+            mega_linter.workspace = workspace
+            mega_linter.active_linters = linters
+            walks = []
+            real_walk = utils.walk_workspace_excluded_directories
+
+            def counting_walk(*args, **kwargs):
+                walks.append(args)
+                return real_walk(*args, **kwargs)
+
+            try:
+                with mock.patch.object(
+                    utils, "walk_workspace_excluded_directories", counting_walk
+                ):
+                    mega_linter.prepare_project_exclude_directories()
+                    for linter in linters:
+                        linter.get_project_exclude_directories()
+            finally:
+                config.delete(request_id)
+
+        self.assertEqual(len(walks), 1, "the workspace must be walked exactly once")
+        # Each linter still only receives what its own configuration excludes
+        self.assertIn("docs", linters[1].project_exclude_directories)
+        self.assertNotIn("docs", linters[0].project_exclude_directories)
+
+    def test_shared_walk_keeps_every_matching_entry_for_every_linter(self):
+        # The run-wide walk is done for the UNION of what the linters search, so
+        # a located directory must be filed under each entry it matches: here
+        # one linter excludes "docs" and the other the exact nested path
+        with tempfile.TemporaryDirectory() as workspace:
+            os.makedirs(os.path.join(workspace, "packages", "a", "docs"))
+            request_id = str(uuid.uuid1())
+            config.init_config(
+                request_id, None, {"ADDITIONAL_EXCLUDED_DIRECTORIES": "docs"}
+            )
+            linters = []
+            for index, regex in enumerate([None, "packages/a/docs/"]):
+                linter = Linter.__new__(Linter)
+                linter.name = f"LINTER_{index}"
+                linter.request_id = request_id
+                linter.workspace = workspace
+                linter.filter_regex_exclude_descriptor = None
+                linter.filter_regex_exclude_linter = regex
+                linter.cli_lint_mode = "project"
+                linter.cli_lint_mode_project_exclude_arg_name = "-x"
+                linter.cli_lint_mode_project_exclude_ignore_file_arg_name = None
+                linters += [linter]
+            mega_linter = Megalinter.__new__(Megalinter)
+            mega_linter.request_id = request_id
+            mega_linter.workspace = workspace
+            mega_linter.active_linters = linters
+            try:
+                mega_linter.prepare_project_exclude_directories()
+                paths = [
+                    linter.get_project_exclude_directory_paths() for linter in linters
+                ]
+            finally:
+                config.delete(request_id)
+        for linter_paths in paths:
+            self.assertIn("packages/a/docs", linter_paths)
+
+    def test_linter_without_forwarding_mechanism_skips_the_lookup(self):
+        with tempfile.TemporaryDirectory() as workspace:
+            linter = self.build_exclude_forwarding_linter(workspace)
+            linter.cli_lint_mode_project_exclude_arg_name = None
+            linter.cli_lint_mode_project_exclude_ignore_file_arg_name = None
+            try:
+                self.assertFalse(linter.has_project_exclude_forwarding())
+                linter.cli_lint_mode_project_exclude_arg_name = "-x"
+                self.assertTrue(linter.has_project_exclude_forwarding())
+            finally:
+                config.delete(linter.request_id)
+        # A custom linter class always hooks into the forwarding somewhere
+        style_lint = StyleLintLinter.__new__(StyleLintLinter)
+        style_lint.cli_lint_mode_project_exclude_arg_name = None
+        style_lint.cli_lint_mode_project_exclude_ignore_file_arg_name = None
+        self.assertTrue(style_lint.has_project_exclude_forwarding())
+
+    def test_exclude_arguments_stay_below_the_system_argument_limit(self):
+        # One value per located directory can exceed MAX_ARG_STRLEN on a large
+        # monorepo, and execve then fails with E2BIG instead of running the linter
+        values = [f"./packages/pkg{index:05d}/src/__pycache__" for index in range(4000)]
+        linter = Linter.__new__(Linter)
+        linter.linter_name = "bandit"
+        linter.log_lines_pre = []
+        kept = linter.limit_project_exclude_values(values)
+        self.assertLess(len(kept), len(values))
+        self.assertLessEqual(
+            len(",".join(kept).encode("utf-8")), MAX_PROJECT_EXCLUDE_ARG_BYTES
+        )
+        # Shallowest paths are the ones kept: they cover the most files
+        self.assertIn(values[0], kept)
+        self.assertTrue(
+            any("were sent to bandit" in line for line in linter.log_lines_pre)
+        )
+
+    def test_workspace_template_uses_paths_in_generated_ignore_files(self):
+        # build_project_exclude_arguments and build_project_exclude_ignore_file
+        # share one predicate, so a {{WORKSPACE}} template gets paths in both
+        with tempfile.TemporaryDirectory() as workspace:
+            linter = self.build_exclude_forwarding_linter(
+                workspace, {"ADDITIONAL_EXCLUDED_DIRECTORIES": "cdk.out"}
+            )
+            linter.report_folder = os.path.join(workspace, "megalinter-reports")
+            linter.linter_name = "trivy"
+            linter.sarif_output_file = None
+            linter.final_config_file = None
+            linter.log_lines_pre = []
+            try:
+                os.makedirs(os.path.join(workspace, "infrastructure", "cdk.out"))
+                ignore_file = linter.build_project_exclude_ignore_file(
+                    "test-ignore.txt", line_template="{{WORKSPACE}}/{{DIR}}"
+                )
+                with open(ignore_file, encoding="utf-8") as file_handler:
+                    lines = [line.strip().replace("\\", "/") for line in file_handler]
+            finally:
+                config.delete(linter.request_id)
+        expected = os.path.join(workspace, "infrastructure/cdk.out").replace("\\", "/")
+        self.assertIn(expected, lines)
+        self.assertTrue(all("{{" not in line for line in lines), lines)
 
     def test_dir_template_sends_bare_directory_names(self):
         args = self.build_exclude_arguments(
