@@ -101,6 +101,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Flavors
 
 - Doc
+  - **Comments are back** at the bottom of every documentation page, powered by [Giscus](https://giscus.app/) and backed by [MegaLinter GitHub Discussions](https://github.com/oxsecurity/megalinter/discussions): ask a question or share a tip right from the page it applies to. The previous utteranc.es widget had silently stopped rendering
   - [megalinter.io](https://megalinter.io/) gets a **dark mode**: use the toggle in the header, or let it follow your system preference
   - Refreshed **look and feel**, aligned with the [OX Security](https://www.ox.security/?ref=megalinter) brand: navy, indigo and lime replace the previous purple palette, and the **Satoshi** typeface is now actually loaded (it was silently falling back to the default font)
   - New **Docker pulls per month** graph, showing the growth of MegaLinter adoption since October 2020, displayed in the README and on the [Flavors statistics](https://megalinter.io/latest/flavors-stats/) page
