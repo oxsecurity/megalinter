@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="/beta/assets/images/mega-linter-square.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="zensical-0.0.57">
     
     
       
@@ -27,10 +27,15 @@
       
     
     
-      <link rel="stylesheet" href="/beta/assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="/beta/assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      <link rel="stylesheet" href="/beta/assets/stylesheets/modern/main.5da3a30f.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="/beta/assets/stylesheets/modern/palette.812a03bb.min.css">
       
       
 
@@ -40,18 +45,12 @@
       
     
     
-      
-        
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Satoshi,+sans-serif:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Satoshi, sans-serif";--md-code-font:"Roboto Mono"}</style>
       
     
     
       <link rel="stylesheet" href="/beta/stylesheets/extra.css">
     
-    <script>__md_scope=new URL("/beta",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("/beta",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
       
 
@@ -80,6 +79,8 @@
   
     
     
+      
+    
     
     
     
@@ -88,8 +89,12 @@
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
     <div data-md-component="skip">
+      
+        <a href="#__skip" class="md-skip">
+          Skip to content
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -107,14 +112,14 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/beta/." title="MegaLinter by OX Security" class="md-header__button md-logo" aria-label="MegaLinter by OX Security" data-md-component="logo">
+    <a href="/beta/" title="MegaLinter by OX Security" class="md-header__button md-logo" aria-label="MegaLinter by OX Security" data-md-component="logo">
       
-  <img src="/beta/assets/images/mega-linter-square.png" alt="logo">
+  <img src="/beta/assets/images/mega-linter-square.png" alt="MegaLinter by OX Security">
 
     </a>
-    <label class="md-header__button md-icon" for="__drawer">
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -134,63 +139,62 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
     
     
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
     
-      
-      
-        <label class="md-header__button md-icon" for="__search">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        </label>
-        <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
       </label>
-      <nav class="md-search__options" aria-label="Search">
-        
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-        </button>
-      </nav>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
       
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Initializing search
-          </div>
-          <ol class="md-search-result__list" role="presentation"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
 </div>
       
     
-    
-      <div class="md-header__source">
+    <div class="md-header__source">
+      
         <a href="https://github.com/oxsecurity/megalinter" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub
   </div>
 </a>
-      </div>
-    
+      
+    </div>
   </nav>
   
 </header>
@@ -216,9 +220,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/beta/." title="MegaLinter by OX Security" class="md-nav__button md-logo" aria-label="MegaLinter by OX Security" data-md-component="logo">
+    <a href="/beta/" title="MegaLinter by OX Security" class="md-nav__button md-logo" aria-label="MegaLinter by OX Security" data-md-component="logo">
       
-  <img src="/beta/assets/images/mega-linter-square.png" alt="logo">
+  <img src="/beta/assets/images/mega-linter-square.png" alt="MegaLinter by OX Security">
 
     </a>
     MegaLinter by OX Security
@@ -228,7 +232,7 @@
       <a href="https://github.com/oxsecurity/megalinter" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub
@@ -245,15 +249,14 @@
   
   
     <li class="md-nav__item">
-      <a href="/beta/." class="md-nav__link">
+      <a href="/beta/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Home
-  
+  Home
 
     
   </span>
@@ -279,8 +282,7 @@
   <span class="md-ellipsis">
     
   
-    Quick Start
-  
+  Quick Start
 
     
   </span>
@@ -306,8 +308,7 @@
   <span class="md-ellipsis">
     
   
-    Coding Agents
-  
+  Coding Agents
 
     
   </span>
@@ -344,8 +345,7 @@
   <span class="md-ellipsis">
     
   
-    Installation
-  
+  Installation
 
     
   </span>
@@ -360,8 +360,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Installation
-  
+  Installation
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -380,8 +379,7 @@
   <span class="md-ellipsis">
     
   
-    Coding Agents (Skills)
-  
+  Coding Agents (Skills)
 
     
   </span>
@@ -408,8 +406,7 @@
   <span class="md-ellipsis">
     
   
-    Coding Agents (Plugins)
-  
+  Coding Agents (Plugins)
 
     
   </span>
@@ -436,8 +433,7 @@
   <span class="md-ellipsis">
     
   
-    Assisted Installation
-  
+  Assisted Installation
 
     
   </span>
@@ -464,8 +460,7 @@
   <span class="md-ellipsis">
     
   
-    Which version to use ?
-  
+  Which version to use ?
 
     
   </span>
@@ -492,8 +487,7 @@
   <span class="md-ellipsis">
     
   
-    GitHub Actions
-  
+  GitHub Actions
 
     
   </span>
@@ -520,8 +514,7 @@
   <span class="md-ellipsis">
     
   
-    Gitlab CI
-  
+  Gitlab CI
 
     
   </span>
@@ -548,8 +541,7 @@
   <span class="md-ellipsis">
     
   
-    Azure Pipelines
-  
+  Azure Pipelines
 
     
   </span>
@@ -576,8 +568,7 @@
   <span class="md-ellipsis">
     
   
-    Bitbucket Pipelines
-  
+  Bitbucket Pipelines
 
     
   </span>
@@ -604,8 +595,7 @@
   <span class="md-ellipsis">
     
   
-    Jenkins
-  
+  Jenkins
 
     
   </span>
@@ -632,8 +622,7 @@
   <span class="md-ellipsis">
     
   
-    Concourse CI
-  
+  Concourse CI
 
     
   </span>
@@ -660,8 +649,7 @@
   <span class="md-ellipsis">
     
   
-    Drone CI
-  
+  Drone CI
 
     
   </span>
@@ -688,8 +676,7 @@
   <span class="md-ellipsis">
     
   
-    Docker (CLI)
-  
+  Docker (CLI)
 
     
   </span>
@@ -716,8 +703,7 @@
   <span class="md-ellipsis">
     
   
-    Run locally
-  
+  Run locally
 
     
   </span>
@@ -762,8 +748,7 @@
   <span class="md-ellipsis">
     
   
-    Configuration
-  
+  Configuration
 
     
   </span>
@@ -778,8 +763,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Configuration
-  
+  Configuration
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -798,8 +782,7 @@
   <span class="md-ellipsis">
     
   
-    .mega-linter.yml file
-  
+  .mega-linter.yml file
 
     
   </span>
@@ -826,8 +809,7 @@
   <span class="md-ellipsis">
     
   
-    Common Variables
-  
+  Common Variables
 
     
   </span>
@@ -854,8 +836,7 @@
   <span class="md-ellipsis">
     
   
-    Activation / Deactivation
-  
+  Activation / Deactivation
 
     
   </span>
@@ -882,8 +863,7 @@
   <span class="md-ellipsis">
     
   
-    Filtering files
-  
+  Filtering files
 
     
   </span>
@@ -910,8 +890,7 @@
   <span class="md-ellipsis">
     
   
-    Apply fixes
-  
+  Apply fixes
 
     
   </span>
@@ -938,8 +917,7 @@
   <span class="md-ellipsis">
     
   
-    Linter scopes variables
-  
+  Linter scopes variables
 
     
   </span>
@@ -966,8 +944,7 @@
   <span class="md-ellipsis">
     
   
-    Pre-commands
-  
+  Pre-commands
 
     
   </span>
@@ -994,8 +971,7 @@
   <span class="md-ellipsis">
     
   
-    Post-commands
-  
+  Post-commands
 
     
   </span>
@@ -1022,8 +998,7 @@
   <span class="md-ellipsis">
     
   
-    ENV variables security
-  
+  ENV variables security
 
     
   </span>
@@ -1050,8 +1025,7 @@
   <span class="md-ellipsis">
     
   
-    CLI lint mode
-  
+  CLI lint mode
 
     
   </span>
@@ -1096,8 +1070,7 @@
   <span class="md-ellipsis">
     
   
-    Linters
-  
+  Linters
 
     
   </span>
@@ -1112,8 +1085,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Linters
-  
+  Linters
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -1132,8 +1104,7 @@
   <span class="md-ellipsis">
     
   
-    All supported linters
-  
+  All supported linters
 
     
   </span>
@@ -1160,8 +1131,7 @@
   <span class="md-ellipsis">
     
   
-    Removed linters
-  
+  Removed linters
 
     
   </span>
@@ -1199,8 +1169,7 @@
   <span class="md-ellipsis">
     
   
-    Languages linters
-  
+  Languages linters
 
     
   </span>
@@ -1215,8 +1184,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Languages linters
-  
+  Languages linters
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -1228,15 +1196,14 @@
   
   
     <li class="md-nav__item">
-      <a href="/beta/./supported-linters/#languages" class="md-nav__link">
+      <a href="/beta/supported-linters/#languages" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    All language linters
-  
+  All language linters
 
     
   </span>
@@ -1274,8 +1241,7 @@
   <span class="md-ellipsis">
     
   
-    BASH
-  
+  BASH
 
     
   </span>
@@ -1290,8 +1256,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    BASH
-  
+  BASH
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -1310,8 +1275,7 @@
   <span class="md-ellipsis">
     
   
-    All BASH linters
-  
+  All BASH linters
 
     
   </span>
@@ -1338,8 +1302,7 @@
   <span class="md-ellipsis">
     
   
-    bash-exec
-  
+  bash-exec
 
     
   </span>
@@ -1366,8 +1329,7 @@
   <span class="md-ellipsis">
     
   
-    shellcheck
-  
+  shellcheck
 
     
   </span>
@@ -1394,8 +1356,7 @@
   <span class="md-ellipsis">
     
   
-    shfmt
-  
+  shfmt
 
     
   </span>
@@ -1441,8 +1402,7 @@
   <span class="md-ellipsis">
     
   
-    C
-  
+  C
 
     
   </span>
@@ -1457,8 +1417,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    C
-  
+  C
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -1477,8 +1436,7 @@
   <span class="md-ellipsis">
     
   
-    All C linters
-  
+  All C linters
 
     
   </span>
@@ -1505,8 +1463,7 @@
   <span class="md-ellipsis">
     
   
-    cppcheck
-  
+  cppcheck
 
     
   </span>
@@ -1533,8 +1490,7 @@
   <span class="md-ellipsis">
     
   
-    cpplint
-  
+  cpplint
 
     
   </span>
@@ -1561,8 +1517,7 @@
   <span class="md-ellipsis">
     
   
-    clang-format
-  
+  clang-format
 
     
   </span>
@@ -1608,8 +1563,7 @@
   <span class="md-ellipsis">
     
   
-    CLOJURE
-  
+  CLOJURE
 
     
   </span>
@@ -1624,8 +1578,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    CLOJURE
-  
+  CLOJURE
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -1644,8 +1597,7 @@
   <span class="md-ellipsis">
     
   
-    All CLOJURE linters
-  
+  All CLOJURE linters
 
     
   </span>
@@ -1672,8 +1624,7 @@
   <span class="md-ellipsis">
     
   
-    clj-kondo
-  
+  clj-kondo
 
     
   </span>
@@ -1700,8 +1651,7 @@
   <span class="md-ellipsis">
     
   
-    cljstyle
-  
+  cljstyle
 
     
   </span>
@@ -1747,8 +1697,7 @@
   <span class="md-ellipsis">
     
   
-    COFFEE
-  
+  COFFEE
 
     
   </span>
@@ -1763,8 +1712,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    COFFEE
-  
+  COFFEE
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -1783,8 +1731,7 @@
   <span class="md-ellipsis">
     
   
-    All COFFEE linters
-  
+  All COFFEE linters
 
     
   </span>
@@ -1811,8 +1758,7 @@
   <span class="md-ellipsis">
     
   
-    coffeelint
-  
+  coffeelint
 
     
   </span>
@@ -1858,8 +1804,7 @@
   <span class="md-ellipsis">
     
   
-    C++ (CPP)
-  
+  C++ (CPP)
 
     
   </span>
@@ -1874,8 +1819,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    C++ (CPP)
-  
+  C++ (CPP)
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -1894,8 +1838,7 @@
   <span class="md-ellipsis">
     
   
-    All C++ (CPP) linters
-  
+  All C++ (CPP) linters
 
     
   </span>
@@ -1922,8 +1865,7 @@
   <span class="md-ellipsis">
     
   
-    cppcheck
-  
+  cppcheck
 
     
   </span>
@@ -1950,8 +1892,7 @@
   <span class="md-ellipsis">
     
   
-    cpplint
-  
+  cpplint
 
     
   </span>
@@ -1978,8 +1919,7 @@
   <span class="md-ellipsis">
     
   
-    clang-format
-  
+  clang-format
 
     
   </span>
@@ -2025,8 +1965,7 @@
   <span class="md-ellipsis">
     
   
-    C# (CSHARP)
-  
+  C# (CSHARP)
 
     
   </span>
@@ -2041,8 +1980,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    C# (CSHARP)
-  
+  C# (CSHARP)
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -2061,8 +1999,7 @@
   <span class="md-ellipsis">
     
   
-    All C# (CSHARP) linters
-  
+  All C# (CSHARP) linters
 
     
   </span>
@@ -2089,8 +2026,7 @@
   <span class="md-ellipsis">
     
   
-    dotnet-format
-  
+  dotnet-format
 
     
   </span>
@@ -2117,8 +2053,7 @@
   <span class="md-ellipsis">
     
   
-    csharpier
-  
+  csharpier
 
     
   </span>
@@ -2145,8 +2080,7 @@
   <span class="md-ellipsis">
     
   
-    roslynator
-  
+  roslynator
 
     
   </span>
@@ -2192,8 +2126,7 @@
   <span class="md-ellipsis">
     
   
-    DART
-  
+  DART
 
     
   </span>
@@ -2208,8 +2141,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    DART
-  
+  DART
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -2228,8 +2160,7 @@
   <span class="md-ellipsis">
     
   
-    All DART linters
-  
+  All DART linters
 
     
   </span>
@@ -2256,8 +2187,7 @@
   <span class="md-ellipsis">
     
   
-    dartanalyzer
-  
+  dartanalyzer
 
     
   </span>
@@ -2303,8 +2233,7 @@
   <span class="md-ellipsis">
     
   
-    GO
-  
+  GO
 
     
   </span>
@@ -2319,8 +2248,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    GO
-  
+  GO
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -2339,8 +2267,7 @@
   <span class="md-ellipsis">
     
   
-    All GO linters
-  
+  All GO linters
 
     
   </span>
@@ -2367,8 +2294,7 @@
   <span class="md-ellipsis">
     
   
-    golangci-lint
-  
+  golangci-lint
 
     
   </span>
@@ -2395,8 +2321,7 @@
   <span class="md-ellipsis">
     
   
-    revive
-  
+  revive
 
     
   </span>
@@ -2442,8 +2367,7 @@
   <span class="md-ellipsis">
     
   
-    GROOVY
-  
+  GROOVY
 
     
   </span>
@@ -2458,8 +2382,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    GROOVY
-  
+  GROOVY
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -2478,8 +2401,7 @@
   <span class="md-ellipsis">
     
   
-    All GROOVY linters
-  
+  All GROOVY linters
 
     
   </span>
@@ -2506,8 +2428,7 @@
   <span class="md-ellipsis">
     
   
-    npm-groovy-lint
-  
+  npm-groovy-lint
 
     
   </span>
@@ -2553,8 +2474,7 @@
   <span class="md-ellipsis">
     
   
-    JAVA
-  
+  JAVA
 
     
   </span>
@@ -2569,8 +2489,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    JAVA
-  
+  JAVA
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -2589,8 +2508,7 @@
   <span class="md-ellipsis">
     
   
-    All JAVA linters
-  
+  All JAVA linters
 
     
   </span>
@@ -2617,8 +2535,7 @@
   <span class="md-ellipsis">
     
   
-    checkstyle
-  
+  checkstyle
 
     
   </span>
@@ -2645,8 +2562,7 @@
   <span class="md-ellipsis">
     
   
-    pmd
-  
+  pmd
 
     
   </span>
@@ -2692,8 +2608,7 @@
   <span class="md-ellipsis">
     
   
-    JAVASCRIPT
-  
+  JAVASCRIPT
 
     
   </span>
@@ -2708,8 +2623,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    JAVASCRIPT
-  
+  JAVASCRIPT
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -2728,8 +2642,7 @@
   <span class="md-ellipsis">
     
   
-    All JAVASCRIPT linters
-  
+  All JAVASCRIPT linters
 
     
   </span>
@@ -2756,8 +2669,7 @@
   <span class="md-ellipsis">
     
   
-    eslint
-  
+  eslint
 
     
   </span>
@@ -2784,8 +2696,7 @@
   <span class="md-ellipsis">
     
   
-    standard
-  
+  standard
 
     
   </span>
@@ -2812,8 +2723,7 @@
   <span class="md-ellipsis">
     
   
-    prettier
-  
+  prettier
 
     
   </span>
@@ -2840,8 +2750,7 @@
   <span class="md-ellipsis">
     
   
-    biome
-  
+  biome
 
     
   </span>
@@ -2887,8 +2796,7 @@
   <span class="md-ellipsis">
     
   
-    JSX
-  
+  JSX
 
     
   </span>
@@ -2903,8 +2811,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    JSX
-  
+  JSX
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -2923,8 +2830,7 @@
   <span class="md-ellipsis">
     
   
-    All JSX linters
-  
+  All JSX linters
 
     
   </span>
@@ -2951,8 +2857,7 @@
   <span class="md-ellipsis">
     
   
-    eslint
-  
+  eslint
 
     
   </span>
@@ -2979,8 +2884,7 @@
   <span class="md-ellipsis">
     
   
-    biome
-  
+  biome
 
     
   </span>
@@ -3026,8 +2930,7 @@
   <span class="md-ellipsis">
     
   
-    KOTLIN
-  
+  KOTLIN
 
     
   </span>
@@ -3042,8 +2945,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    KOTLIN
-  
+  KOTLIN
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -3062,8 +2964,7 @@
   <span class="md-ellipsis">
     
   
-    All KOTLIN linters
-  
+  All KOTLIN linters
 
     
   </span>
@@ -3090,8 +2991,7 @@
   <span class="md-ellipsis">
     
   
-    ktlint
-  
+  ktlint
 
     
   </span>
@@ -3118,8 +3018,7 @@
   <span class="md-ellipsis">
     
   
-    detekt
-  
+  detekt
 
     
   </span>
@@ -3165,8 +3064,7 @@
   <span class="md-ellipsis">
     
   
-    LUA
-  
+  LUA
 
     
   </span>
@@ -3181,8 +3079,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    LUA
-  
+  LUA
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -3201,8 +3098,7 @@
   <span class="md-ellipsis">
     
   
-    All LUA linters
-  
+  All LUA linters
 
     
   </span>
@@ -3229,8 +3125,7 @@
   <span class="md-ellipsis">
     
   
-    luacheck
-  
+  luacheck
 
     
   </span>
@@ -3257,8 +3152,7 @@
   <span class="md-ellipsis">
     
   
-    stylua
-  
+  stylua
 
     
   </span>
@@ -3304,8 +3198,7 @@
   <span class="md-ellipsis">
     
   
-    PERL
-  
+  PERL
 
     
   </span>
@@ -3320,8 +3213,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    PERL
-  
+  PERL
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -3340,8 +3232,7 @@
   <span class="md-ellipsis">
     
   
-    All PERL linters
-  
+  All PERL linters
 
     
   </span>
@@ -3368,8 +3259,7 @@
   <span class="md-ellipsis">
     
   
-    perlcritic
-  
+  perlcritic
 
     
   </span>
@@ -3415,8 +3305,7 @@
   <span class="md-ellipsis">
     
   
-    PHP
-  
+  PHP
 
     
   </span>
@@ -3431,8 +3320,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    PHP
-  
+  PHP
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -3451,8 +3339,7 @@
   <span class="md-ellipsis">
     
   
-    All PHP linters
-  
+  All PHP linters
 
     
   </span>
@@ -3479,8 +3366,7 @@
   <span class="md-ellipsis">
     
   
-    phpcs
-  
+  phpcs
 
     
   </span>
@@ -3507,8 +3393,7 @@
   <span class="md-ellipsis">
     
   
-    phpstan
-  
+  phpstan
 
     
   </span>
@@ -3535,8 +3420,7 @@
   <span class="md-ellipsis">
     
   
-    psalm
-  
+  psalm
 
     
   </span>
@@ -3563,8 +3447,7 @@
   <span class="md-ellipsis">
     
   
-    phplint
-  
+  phplint
 
     
   </span>
@@ -3591,8 +3474,7 @@
   <span class="md-ellipsis">
     
   
-    php-cs-fixer
-  
+  php-cs-fixer
 
     
   </span>
@@ -3638,8 +3520,7 @@
   <span class="md-ellipsis">
     
   
-    POWERSHELL
-  
+  POWERSHELL
 
     
   </span>
@@ -3654,8 +3535,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    POWERSHELL
-  
+  POWERSHELL
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -3674,8 +3554,7 @@
   <span class="md-ellipsis">
     
   
-    All POWERSHELL linters
-  
+  All POWERSHELL linters
 
     
   </span>
@@ -3702,8 +3581,7 @@
   <span class="md-ellipsis">
     
   
-    powershell
-  
+  powershell
 
     
   </span>
@@ -3730,8 +3608,7 @@
   <span class="md-ellipsis">
     
   
-    powershell_formatter
-  
+  powershell_formatter
 
     
   </span>
@@ -3777,8 +3654,7 @@
   <span class="md-ellipsis">
     
   
-    PYTHON
-  
+  PYTHON
 
     
   </span>
@@ -3793,8 +3669,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    PYTHON
-  
+  PYTHON
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -3813,8 +3688,7 @@
   <span class="md-ellipsis">
     
   
-    All PYTHON linters
-  
+  All PYTHON linters
 
     
   </span>
@@ -3841,8 +3715,7 @@
   <span class="md-ellipsis">
     
   
-    pylint
-  
+  pylint
 
     
   </span>
@@ -3869,8 +3742,7 @@
   <span class="md-ellipsis">
     
   
-    black
-  
+  black
 
     
   </span>
@@ -3897,8 +3769,7 @@
   <span class="md-ellipsis">
     
   
-    flake8
-  
+  flake8
 
     
   </span>
@@ -3925,8 +3796,7 @@
   <span class="md-ellipsis">
     
   
-    isort
-  
+  isort
 
     
   </span>
@@ -3953,8 +3823,7 @@
   <span class="md-ellipsis">
     
   
-    bandit
-  
+  bandit
 
     
   </span>
@@ -3981,8 +3850,7 @@
   <span class="md-ellipsis">
     
   
-    mypy
-  
+  mypy
 
     
   </span>
@@ -4009,8 +3877,7 @@
   <span class="md-ellipsis">
     
   
-    nbqa
-  
+  nbqa
 
     
   </span>
@@ -4037,8 +3904,7 @@
   <span class="md-ellipsis">
     
   
-    pyright
-  
+  pyright
 
     
   </span>
@@ -4065,8 +3931,7 @@
   <span class="md-ellipsis">
     
   
-    ruff
-  
+  ruff
 
     
   </span>
@@ -4093,8 +3958,7 @@
   <span class="md-ellipsis">
     
   
-    ruff-format
-  
+  ruff-format
 
     
   </span>
@@ -4140,8 +4004,7 @@
   <span class="md-ellipsis">
     
   
-    R
-  
+  R
 
     
   </span>
@@ -4156,8 +4019,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    R
-  
+  R
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -4176,8 +4038,7 @@
   <span class="md-ellipsis">
     
   
-    All R linters
-  
+  All R linters
 
     
   </span>
@@ -4204,8 +4065,7 @@
   <span class="md-ellipsis">
     
   
-    lintr
-  
+  lintr
 
     
   </span>
@@ -4251,8 +4111,7 @@
   <span class="md-ellipsis">
     
   
-    RAKU
-  
+  RAKU
 
     
   </span>
@@ -4267,8 +4126,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    RAKU
-  
+  RAKU
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -4287,8 +4145,7 @@
   <span class="md-ellipsis">
     
   
-    All RAKU linters
-  
+  All RAKU linters
 
     
   </span>
@@ -4315,8 +4172,7 @@
   <span class="md-ellipsis">
     
   
-    raku
-  
+  raku
 
     
   </span>
@@ -4362,8 +4218,7 @@
   <span class="md-ellipsis">
     
   
-    RUBY
-  
+  RUBY
 
     
   </span>
@@ -4378,8 +4233,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    RUBY
-  
+  RUBY
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -4398,8 +4252,7 @@
   <span class="md-ellipsis">
     
   
-    All RUBY linters
-  
+  All RUBY linters
 
     
   </span>
@@ -4426,8 +4279,7 @@
   <span class="md-ellipsis">
     
   
-    rubocop
-  
+  rubocop
 
     
   </span>
@@ -4473,8 +4325,7 @@
   <span class="md-ellipsis">
     
   
-    RUST
-  
+  RUST
 
     
   </span>
@@ -4489,8 +4340,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    RUST
-  
+  RUST
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -4509,8 +4359,7 @@
   <span class="md-ellipsis">
     
   
-    All RUST linters
-  
+  All RUST linters
 
     
   </span>
@@ -4537,8 +4386,7 @@
   <span class="md-ellipsis">
     
   
-    clippy
-  
+  clippy
 
     
   </span>
@@ -4584,8 +4432,7 @@
   <span class="md-ellipsis">
     
   
-    SALESFORCE
-  
+  SALESFORCE
 
     
   </span>
@@ -4600,8 +4447,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    SALESFORCE
-  
+  SALESFORCE
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -4620,8 +4466,7 @@
   <span class="md-ellipsis">
     
   
-    All SALESFORCE linters
-  
+  All SALESFORCE linters
 
     
   </span>
@@ -4648,8 +4493,7 @@
   <span class="md-ellipsis">
     
   
-    code-analyzer-apex
-  
+  code-analyzer-apex
 
     
   </span>
@@ -4676,8 +4520,7 @@
   <span class="md-ellipsis">
     
   
-    code-analyzer-aura
-  
+  code-analyzer-aura
 
     
   </span>
@@ -4704,8 +4547,7 @@
   <span class="md-ellipsis">
     
   
-    code-analyzer-lwc
-  
+  code-analyzer-lwc
 
     
   </span>
@@ -4732,8 +4574,7 @@
   <span class="md-ellipsis">
     
   
-    code-analyzer-flow
-  
+  code-analyzer-flow
 
     
   </span>
@@ -4779,8 +4620,7 @@
   <span class="md-ellipsis">
     
   
-    SCALA
-  
+  SCALA
 
     
   </span>
@@ -4795,8 +4635,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    SCALA
-  
+  SCALA
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -4815,8 +4654,7 @@
   <span class="md-ellipsis">
     
   
-    All SCALA linters
-  
+  All SCALA linters
 
     
   </span>
@@ -4843,8 +4681,7 @@
   <span class="md-ellipsis">
     
   
-    scalafix
-  
+  scalafix
 
     
   </span>
@@ -4890,8 +4727,7 @@
   <span class="md-ellipsis">
     
   
-    SQL
-  
+  SQL
 
     
   </span>
@@ -4906,8 +4742,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    SQL
-  
+  SQL
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -4926,8 +4761,7 @@
   <span class="md-ellipsis">
     
   
-    All SQL linters
-  
+  All SQL linters
 
     
   </span>
@@ -4954,8 +4788,7 @@
   <span class="md-ellipsis">
     
   
-    sqlfluff
-  
+  sqlfluff
 
     
   </span>
@@ -5001,8 +4834,7 @@
   <span class="md-ellipsis">
     
   
-    SWIFT
-  
+  SWIFT
 
     
   </span>
@@ -5017,8 +4849,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    SWIFT
-  
+  SWIFT
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -5037,8 +4868,7 @@
   <span class="md-ellipsis">
     
   
-    All SWIFT linters
-  
+  All SWIFT linters
 
     
   </span>
@@ -5065,8 +4895,7 @@
   <span class="md-ellipsis">
     
   
-    swiftlint
-  
+  swiftlint
 
     
   </span>
@@ -5112,8 +4941,7 @@
   <span class="md-ellipsis">
     
   
-    TSX
-  
+  TSX
 
     
   </span>
@@ -5128,8 +4956,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    TSX
-  
+  TSX
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -5148,8 +4975,7 @@
   <span class="md-ellipsis">
     
   
-    All TSX linters
-  
+  All TSX linters
 
     
   </span>
@@ -5176,8 +5002,7 @@
   <span class="md-ellipsis">
     
   
-    eslint
-  
+  eslint
 
     
   </span>
@@ -5204,8 +5029,7 @@
   <span class="md-ellipsis">
     
   
-    biome
-  
+  biome
 
     
   </span>
@@ -5251,8 +5075,7 @@
   <span class="md-ellipsis">
     
   
-    TYPESCRIPT
-  
+  TYPESCRIPT
 
     
   </span>
@@ -5267,8 +5090,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    TYPESCRIPT
-  
+  TYPESCRIPT
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -5287,8 +5109,7 @@
   <span class="md-ellipsis">
     
   
-    All TYPESCRIPT linters
-  
+  All TYPESCRIPT linters
 
     
   </span>
@@ -5315,8 +5136,7 @@
   <span class="md-ellipsis">
     
   
-    eslint
-  
+  eslint
 
     
   </span>
@@ -5343,8 +5163,7 @@
   <span class="md-ellipsis">
     
   
-    ts-standard
-  
+  ts-standard
 
     
   </span>
@@ -5371,8 +5190,7 @@
   <span class="md-ellipsis">
     
   
-    prettier
-  
+  prettier
 
     
   </span>
@@ -5399,8 +5217,7 @@
   <span class="md-ellipsis">
     
   
-    biome
-  
+  biome
 
     
   </span>
@@ -5446,8 +5263,7 @@
   <span class="md-ellipsis">
     
   
-    Visual Basic .NET (VBDOTNET)
-  
+  Visual Basic .NET (VBDOTNET)
 
     
   </span>
@@ -5462,8 +5278,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Visual Basic .NET (VBDOTNET)
-  
+  Visual Basic .NET (VBDOTNET)
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -5482,8 +5297,7 @@
   <span class="md-ellipsis">
     
   
-    All Visual Basic .NET (VBDOTNET) linters
-  
+  All Visual Basic .NET (VBDOTNET) linters
 
     
   </span>
@@ -5510,8 +5324,7 @@
   <span class="md-ellipsis">
     
   
-    dotnet-format
-  
+  dotnet-format
 
     
   </span>
@@ -5565,8 +5378,7 @@
   <span class="md-ellipsis">
     
   
-    Formats linters
-  
+  Formats linters
 
     
   </span>
@@ -5581,8 +5393,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Formats linters
-  
+  Formats linters
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -5594,15 +5405,14 @@
   
   
     <li class="md-nav__item">
-      <a href="/beta/./supported-linters/#formats" class="md-nav__link">
+      <a href="/beta/supported-linters/#formats" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    All formats linters
-  
+  All formats linters
 
     
   </span>
@@ -5640,8 +5450,7 @@
   <span class="md-ellipsis">
     
   
-    CSS
-  
+  CSS
 
     
   </span>
@@ -5656,8 +5465,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    CSS
-  
+  CSS
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -5676,8 +5484,7 @@
   <span class="md-ellipsis">
     
   
-    All CSS linters
-  
+  All CSS linters
 
     
   </span>
@@ -5704,8 +5511,7 @@
   <span class="md-ellipsis">
     
   
-    stylelint
-  
+  stylelint
 
     
   </span>
@@ -5732,8 +5538,7 @@
   <span class="md-ellipsis">
     
   
-    biome
-  
+  biome
 
     
   </span>
@@ -5779,8 +5584,7 @@
   <span class="md-ellipsis">
     
   
-    ENV
-  
+  ENV
 
     
   </span>
@@ -5795,8 +5599,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    ENV
-  
+  ENV
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -5815,8 +5618,7 @@
   <span class="md-ellipsis">
     
   
-    All ENV linters
-  
+  All ENV linters
 
     
   </span>
@@ -5843,8 +5645,7 @@
   <span class="md-ellipsis">
     
   
-    dotenv-linter
-  
+  dotenv-linter
 
     
   </span>
@@ -5890,8 +5691,7 @@
   <span class="md-ellipsis">
     
   
-    GRAPHQL
-  
+  GRAPHQL
 
     
   </span>
@@ -5906,8 +5706,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    GRAPHQL
-  
+  GRAPHQL
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -5926,8 +5725,7 @@
   <span class="md-ellipsis">
     
   
-    All GRAPHQL linters
-  
+  All GRAPHQL linters
 
     
   </span>
@@ -5954,8 +5752,7 @@
   <span class="md-ellipsis">
     
   
-    graphql-schema-linter
-  
+  graphql-schema-linter
 
     
   </span>
@@ -5982,8 +5779,7 @@
   <span class="md-ellipsis">
     
   
-    biome
-  
+  biome
 
     
   </span>
@@ -6029,8 +5825,7 @@
   <span class="md-ellipsis">
     
   
-    HTML
-  
+  HTML
 
     
   </span>
@@ -6045,8 +5840,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    HTML
-  
+  HTML
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -6065,8 +5859,7 @@
   <span class="md-ellipsis">
     
   
-    All HTML linters
-  
+  All HTML linters
 
     
   </span>
@@ -6093,8 +5886,7 @@
   <span class="md-ellipsis">
     
   
-    djlint
-  
+  djlint
 
     
   </span>
@@ -6121,8 +5913,7 @@
   <span class="md-ellipsis">
     
   
-    htmlhint
-  
+  htmlhint
 
     
   </span>
@@ -6168,8 +5959,7 @@
   <span class="md-ellipsis">
     
   
-    JSON
-  
+  JSON
 
     
   </span>
@@ -6184,8 +5974,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    JSON
-  
+  JSON
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -6204,8 +5993,7 @@
   <span class="md-ellipsis">
     
   
-    All JSON linters
-  
+  All JSON linters
 
     
   </span>
@@ -6232,8 +6020,7 @@
   <span class="md-ellipsis">
     
   
-    jsonlint
-  
+  jsonlint
 
     
   </span>
@@ -6260,8 +6047,7 @@
   <span class="md-ellipsis">
     
   
-    v8r
-  
+  v8r
 
     
   </span>
@@ -6288,8 +6074,7 @@
   <span class="md-ellipsis">
     
   
-    prettier
-  
+  prettier
 
     
   </span>
@@ -6316,8 +6101,7 @@
   <span class="md-ellipsis">
     
   
-    npm-package-json-lint
-  
+  npm-package-json-lint
 
     
   </span>
@@ -6344,8 +6128,7 @@
   <span class="md-ellipsis">
     
   
-    biome
-  
+  biome
 
     
   </span>
@@ -6391,8 +6174,7 @@
   <span class="md-ellipsis">
     
   
-    LATEX
-  
+  LATEX
 
     
   </span>
@@ -6407,8 +6189,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    LATEX
-  
+  LATEX
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -6427,8 +6208,7 @@
   <span class="md-ellipsis">
     
   
-    All LATEX linters
-  
+  All LATEX linters
 
     
   </span>
@@ -6455,8 +6235,7 @@
   <span class="md-ellipsis">
     
   
-    chktex
-  
+  chktex
 
     
   </span>
@@ -6502,8 +6281,7 @@
   <span class="md-ellipsis">
     
   
-    MARKDOWN
-  
+  MARKDOWN
 
     
   </span>
@@ -6518,8 +6296,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    MARKDOWN
-  
+  MARKDOWN
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -6538,8 +6315,7 @@
   <span class="md-ellipsis">
     
   
-    All MARKDOWN linters
-  
+  All MARKDOWN linters
 
     
   </span>
@@ -6566,8 +6342,7 @@
   <span class="md-ellipsis">
     
   
-    markdownlint
-  
+  markdownlint
 
     
   </span>
@@ -6594,8 +6369,7 @@
   <span class="md-ellipsis">
     
   
-    markdown-table-formatter
-  
+  markdown-table-formatter
 
     
   </span>
@@ -6622,8 +6396,7 @@
   <span class="md-ellipsis">
     
   
-    rumdl
-  
+  rumdl
 
     
   </span>
@@ -6669,8 +6442,7 @@
   <span class="md-ellipsis">
     
   
-    PROTOBUF
-  
+  PROTOBUF
 
     
   </span>
@@ -6685,8 +6457,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    PROTOBUF
-  
+  PROTOBUF
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -6705,8 +6476,7 @@
   <span class="md-ellipsis">
     
   
-    All PROTOBUF linters
-  
+  All PROTOBUF linters
 
     
   </span>
@@ -6733,8 +6503,7 @@
   <span class="md-ellipsis">
     
   
-    protolint
-  
+  protolint
 
     
   </span>
@@ -6780,8 +6549,7 @@
   <span class="md-ellipsis">
     
   
-    RST
-  
+  RST
 
     
   </span>
@@ -6796,8 +6564,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    RST
-  
+  RST
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -6816,8 +6583,7 @@
   <span class="md-ellipsis">
     
   
-    All RST linters
-  
+  All RST linters
 
     
   </span>
@@ -6844,8 +6610,7 @@
   <span class="md-ellipsis">
     
   
-    rst-lint
-  
+  rst-lint
 
     
   </span>
@@ -6872,8 +6637,7 @@
   <span class="md-ellipsis">
     
   
-    rstcheck
-  
+  rstcheck
 
     
   </span>
@@ -6900,8 +6664,7 @@
   <span class="md-ellipsis">
     
   
-    rstfmt
-  
+  rstfmt
 
     
   </span>
@@ -6947,8 +6710,7 @@
   <span class="md-ellipsis">
     
   
-    XML
-  
+  XML
 
     
   </span>
@@ -6963,8 +6725,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    XML
-  
+  XML
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -6983,8 +6744,7 @@
   <span class="md-ellipsis">
     
   
-    All XML linters
-  
+  All XML linters
 
     
   </span>
@@ -7011,8 +6771,7 @@
   <span class="md-ellipsis">
     
   
-    xmllint
-  
+  xmllint
 
     
   </span>
@@ -7058,8 +6817,7 @@
   <span class="md-ellipsis">
     
   
-    YAML
-  
+  YAML
 
     
   </span>
@@ -7074,8 +6832,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    YAML
-  
+  YAML
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -7094,8 +6851,7 @@
   <span class="md-ellipsis">
     
   
-    All YAML linters
-  
+  All YAML linters
 
     
   </span>
@@ -7122,8 +6878,7 @@
   <span class="md-ellipsis">
     
   
-    prettier
-  
+  prettier
 
     
   </span>
@@ -7150,8 +6905,7 @@
   <span class="md-ellipsis">
     
   
-    yamllint
-  
+  yamllint
 
     
   </span>
@@ -7178,8 +6932,7 @@
   <span class="md-ellipsis">
     
   
-    v8r
-  
+  v8r
 
     
   </span>
@@ -7233,8 +6986,7 @@
   <span class="md-ellipsis">
     
   
-    Tooling Formats linters
-  
+  Tooling Formats linters
 
     
   </span>
@@ -7249,8 +7001,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Tooling Formats linters
-  
+  Tooling Formats linters
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -7262,15 +7013,14 @@
   
   
     <li class="md-nav__item">
-      <a href="/beta/./supported-linters/#tooling-formats" class="md-nav__link">
+      <a href="/beta/supported-linters/#tooling-formats" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    All tooling formats linters
-  
+  All tooling formats linters
 
     
   </span>
@@ -7308,8 +7058,7 @@
   <span class="md-ellipsis">
     
   
-    ACTION
-  
+  ACTION
 
     
   </span>
@@ -7324,8 +7073,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    ACTION
-  
+  ACTION
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -7344,8 +7092,7 @@
   <span class="md-ellipsis">
     
   
-    All ACTION linters
-  
+  All ACTION linters
 
     
   </span>
@@ -7372,8 +7119,7 @@
   <span class="md-ellipsis">
     
   
-    actionlint
-  
+  actionlint
 
     
   </span>
@@ -7400,8 +7146,7 @@
   <span class="md-ellipsis">
     
   
-    zizmor
-  
+  zizmor
 
     
   </span>
@@ -7447,8 +7192,7 @@
   <span class="md-ellipsis">
     
   
-    ANSIBLE
-  
+  ANSIBLE
 
     
   </span>
@@ -7463,8 +7207,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    ANSIBLE
-  
+  ANSIBLE
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -7483,8 +7226,7 @@
   <span class="md-ellipsis">
     
   
-    All ANSIBLE linters
-  
+  All ANSIBLE linters
 
     
   </span>
@@ -7511,8 +7253,7 @@
   <span class="md-ellipsis">
     
   
-    ansible-lint
-  
+  ansible-lint
 
     
   </span>
@@ -7558,8 +7299,7 @@
   <span class="md-ellipsis">
     
   
-    API
-  
+  API
 
     
   </span>
@@ -7574,8 +7314,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    API
-  
+  API
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -7594,8 +7333,7 @@
   <span class="md-ellipsis">
     
   
-    All API linters
-  
+  All API linters
 
     
   </span>
@@ -7622,8 +7360,7 @@
   <span class="md-ellipsis">
     
   
-    spectral
-  
+  spectral
 
     
   </span>
@@ -7669,8 +7406,7 @@
   <span class="md-ellipsis">
     
   
-    ARM
-  
+  ARM
 
     
   </span>
@@ -7685,8 +7421,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    ARM
-  
+  ARM
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -7705,8 +7440,7 @@
   <span class="md-ellipsis">
     
   
-    All ARM linters
-  
+  All ARM linters
 
     
   </span>
@@ -7733,8 +7467,7 @@
   <span class="md-ellipsis">
     
   
-    arm-ttk
-  
+  arm-ttk
 
     
   </span>
@@ -7780,8 +7513,7 @@
   <span class="md-ellipsis">
     
   
-    BICEP
-  
+  BICEP
 
     
   </span>
@@ -7796,8 +7528,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    BICEP
-  
+  BICEP
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -7816,8 +7547,7 @@
   <span class="md-ellipsis">
     
   
-    All BICEP linters
-  
+  All BICEP linters
 
     
   </span>
@@ -7844,8 +7574,7 @@
   <span class="md-ellipsis">
     
   
-    bicep_linter
-  
+  bicep_linter
 
     
   </span>
@@ -7891,8 +7620,7 @@
   <span class="md-ellipsis">
     
   
-    CLOUDFORMATION
-  
+  CLOUDFORMATION
 
     
   </span>
@@ -7907,8 +7635,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    CLOUDFORMATION
-  
+  CLOUDFORMATION
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -7927,8 +7654,7 @@
   <span class="md-ellipsis">
     
   
-    All CLOUDFORMATION linters
-  
+  All CLOUDFORMATION linters
 
     
   </span>
@@ -7955,8 +7681,7 @@
   <span class="md-ellipsis">
     
   
-    cfn-lint
-  
+  cfn-lint
 
     
   </span>
@@ -8002,8 +7727,7 @@
   <span class="md-ellipsis">
     
   
-    DOCKERFILE
-  
+  DOCKERFILE
 
     
   </span>
@@ -8018,8 +7742,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    DOCKERFILE
-  
+  DOCKERFILE
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -8038,8 +7761,7 @@
   <span class="md-ellipsis">
     
   
-    All DOCKERFILE linters
-  
+  All DOCKERFILE linters
 
     
   </span>
@@ -8066,8 +7788,7 @@
   <span class="md-ellipsis">
     
   
-    hadolint
-  
+  hadolint
 
     
   </span>
@@ -8113,8 +7834,7 @@
   <span class="md-ellipsis">
     
   
-    EDITORCONFIG
-  
+  EDITORCONFIG
 
     
   </span>
@@ -8129,8 +7849,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    EDITORCONFIG
-  
+  EDITORCONFIG
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -8149,8 +7868,7 @@
   <span class="md-ellipsis">
     
   
-    All EDITORCONFIG linters
-  
+  All EDITORCONFIG linters
 
     
   </span>
@@ -8177,8 +7895,7 @@
   <span class="md-ellipsis">
     
   
-    editorconfig-checker
-  
+  editorconfig-checker
 
     
   </span>
@@ -8224,8 +7941,7 @@
   <span class="md-ellipsis">
     
   
-    GHERKIN
-  
+  GHERKIN
 
     
   </span>
@@ -8240,8 +7956,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    GHERKIN
-  
+  GHERKIN
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -8260,8 +7975,7 @@
   <span class="md-ellipsis">
     
   
-    All GHERKIN linters
-  
+  All GHERKIN linters
 
     
   </span>
@@ -8288,8 +8002,7 @@
   <span class="md-ellipsis">
     
   
-    gherkin-lint
-  
+  gherkin-lint
 
     
   </span>
@@ -8335,8 +8048,7 @@
   <span class="md-ellipsis">
     
   
-    KUBERNETES
-  
+  KUBERNETES
 
     
   </span>
@@ -8351,8 +8063,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    KUBERNETES
-  
+  KUBERNETES
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -8371,8 +8082,7 @@
   <span class="md-ellipsis">
     
   
-    All KUBERNETES linters
-  
+  All KUBERNETES linters
 
     
   </span>
@@ -8399,8 +8109,7 @@
   <span class="md-ellipsis">
     
   
-    kubeconform
-  
+  kubeconform
 
     
   </span>
@@ -8427,8 +8136,7 @@
   <span class="md-ellipsis">
     
   
-    helm
-  
+  helm
 
     
   </span>
@@ -8455,8 +8163,7 @@
   <span class="md-ellipsis">
     
   
-    kubescape
-  
+  kubescape
 
     
   </span>
@@ -8502,8 +8209,7 @@
   <span class="md-ellipsis">
     
   
-    ROBOTFRAMEWORK
-  
+  ROBOTFRAMEWORK
 
     
   </span>
@@ -8518,8 +8224,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    ROBOTFRAMEWORK
-  
+  ROBOTFRAMEWORK
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -8538,8 +8243,7 @@
   <span class="md-ellipsis">
     
   
-    All ROBOTFRAMEWORK linters
-  
+  All ROBOTFRAMEWORK linters
 
     
   </span>
@@ -8566,8 +8270,7 @@
   <span class="md-ellipsis">
     
   
-    robocop
-  
+  robocop
 
     
   </span>
@@ -8613,8 +8316,7 @@
   <span class="md-ellipsis">
     
   
-    SNAKEMAKE
-  
+  SNAKEMAKE
 
     
   </span>
@@ -8629,8 +8331,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    SNAKEMAKE
-  
+  SNAKEMAKE
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -8649,8 +8350,7 @@
   <span class="md-ellipsis">
     
   
-    All SNAKEMAKE linters
-  
+  All SNAKEMAKE linters
 
     
   </span>
@@ -8677,8 +8377,7 @@
   <span class="md-ellipsis">
     
   
-    snakemake
-  
+  snakemake
 
     
   </span>
@@ -8705,8 +8404,7 @@
   <span class="md-ellipsis">
     
   
-    snakefmt
-  
+  snakefmt
 
     
   </span>
@@ -8752,8 +8450,7 @@
   <span class="md-ellipsis">
     
   
-    TEKTON
-  
+  TEKTON
 
     
   </span>
@@ -8768,8 +8465,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    TEKTON
-  
+  TEKTON
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -8788,8 +8484,7 @@
   <span class="md-ellipsis">
     
   
-    All TEKTON linters
-  
+  All TEKTON linters
 
     
   </span>
@@ -8816,8 +8511,7 @@
   <span class="md-ellipsis">
     
   
-    tekton-lint
-  
+  tekton-lint
 
     
   </span>
@@ -8863,8 +8557,7 @@
   <span class="md-ellipsis">
     
   
-    TERRAFORM
-  
+  TERRAFORM
 
     
   </span>
@@ -8879,8 +8572,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    TERRAFORM
-  
+  TERRAFORM
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -8899,8 +8591,7 @@
   <span class="md-ellipsis">
     
   
-    All TERRAFORM linters
-  
+  All TERRAFORM linters
 
     
   </span>
@@ -8927,8 +8618,7 @@
   <span class="md-ellipsis">
     
   
-    tflint
-  
+  tflint
 
     
   </span>
@@ -8955,8 +8645,7 @@
   <span class="md-ellipsis">
     
   
-    terragrunt
-  
+  terragrunt
 
     
   </span>
@@ -8983,8 +8672,7 @@
   <span class="md-ellipsis">
     
   
-    terraform-fmt
-  
+  terraform-fmt
 
     
   </span>
@@ -9011,8 +8699,7 @@
   <span class="md-ellipsis">
     
   
-    tofu-fmt
-  
+  tofu-fmt
 
     
   </span>
@@ -9039,8 +8726,7 @@
   <span class="md-ellipsis">
     
   
-    tofu-validate
-  
+  tofu-validate
 
     
   </span>
@@ -9094,8 +8780,7 @@
   <span class="md-ellipsis">
     
   
-    Other checks
-  
+  Other checks
 
     
   </span>
@@ -9110,8 +8795,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Other checks
-  
+  Other checks
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -9123,15 +8807,14 @@
   
   
     <li class="md-nav__item">
-      <a href="/beta/./supported-linters/#other" class="md-nav__link">
+      <a href="/beta/supported-linters/#other" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    All other linters
-  
+  All other linters
 
     
   </span>
@@ -9169,8 +8852,7 @@
   <span class="md-ellipsis">
     
   
-    COPYPASTE
-  
+  COPYPASTE
 
     
   </span>
@@ -9185,8 +8867,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    COPYPASTE
-  
+  COPYPASTE
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -9205,8 +8886,7 @@
   <span class="md-ellipsis">
     
   
-    All COPYPASTE linters
-  
+  All COPYPASTE linters
 
     
   </span>
@@ -9233,8 +8913,7 @@
   <span class="md-ellipsis">
     
   
-    jscpd
-  
+  jscpd
 
     
   </span>
@@ -9280,8 +8959,7 @@
   <span class="md-ellipsis">
     
   
-    REPOSITORY
-  
+  REPOSITORY
 
     
   </span>
@@ -9296,8 +8974,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    REPOSITORY
-  
+  REPOSITORY
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -9316,8 +8993,7 @@
   <span class="md-ellipsis">
     
   
-    All REPOSITORY linters
-  
+  All REPOSITORY linters
 
     
   </span>
@@ -9344,8 +9020,7 @@
   <span class="md-ellipsis">
     
   
-    checkov
-  
+  checkov
 
     
   </span>
@@ -9372,8 +9047,7 @@
   <span class="md-ellipsis">
     
   
-    devskim
-  
+  devskim
 
     
   </span>
@@ -9400,8 +9074,7 @@
   <span class="md-ellipsis">
     
   
-    dustilock
-  
+  dustilock
 
     
   </span>
@@ -9428,8 +9101,7 @@
   <span class="md-ellipsis">
     
   
-    git_diff
-  
+  git_diff
 
     
   </span>
@@ -9456,8 +9128,7 @@
   <span class="md-ellipsis">
     
   
-    betterleaks
-  
+  betterleaks
 
     
   </span>
@@ -9484,8 +9155,7 @@
   <span class="md-ellipsis">
     
   
-    grype
-  
+  grype
 
     
   </span>
@@ -9512,8 +9182,7 @@
   <span class="md-ellipsis">
     
   
-    ls-lint
-  
+  ls-lint
 
     
   </span>
@@ -9540,8 +9209,7 @@
   <span class="md-ellipsis">
     
   
-    osv-scanner
-  
+  osv-scanner
 
     
   </span>
@@ -9568,8 +9236,7 @@
   <span class="md-ellipsis">
     
   
-    secretlint
-  
+  secretlint
 
     
   </span>
@@ -9596,8 +9263,7 @@
   <span class="md-ellipsis">
     
   
-    semgrep
-  
+  semgrep
 
     
   </span>
@@ -9624,8 +9290,7 @@
   <span class="md-ellipsis">
     
   
-    syft
-  
+  syft
 
     
   </span>
@@ -9652,8 +9317,7 @@
   <span class="md-ellipsis">
     
   
-    trivy
-  
+  trivy
 
     
   </span>
@@ -9680,8 +9344,7 @@
   <span class="md-ellipsis">
     
   
-    trivy-sbom
-  
+  trivy-sbom
 
     
   </span>
@@ -9708,8 +9371,7 @@
   <span class="md-ellipsis">
     
   
-    trufflehog
-  
+  trufflehog
 
     
   </span>
@@ -9736,8 +9398,7 @@
   <span class="md-ellipsis">
     
   
-    kingfisher
-  
+  kingfisher
 
     
   </span>
@@ -9783,8 +9444,7 @@
   <span class="md-ellipsis">
     
   
-    SPELL
-  
+  SPELL
 
     
   </span>
@@ -9799,8 +9459,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    SPELL
-  
+  SPELL
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -9819,8 +9478,7 @@
   <span class="md-ellipsis">
     
   
-    All SPELL linters
-  
+  All SPELL linters
 
     
   </span>
@@ -9847,8 +9505,7 @@
   <span class="md-ellipsis">
     
   
-    cspell
-  
+  cspell
 
     
   </span>
@@ -9875,8 +9532,7 @@
   <span class="md-ellipsis">
     
   
-    proselint
-  
+  proselint
 
     
   </span>
@@ -9903,8 +9559,7 @@
   <span class="md-ellipsis">
     
   
-    vale
-  
+  vale
 
     
   </span>
@@ -9931,8 +9586,7 @@
   <span class="md-ellipsis">
     
   
-    lychee
-  
+  lychee
 
     
   </span>
@@ -9959,8 +9613,7 @@
   <span class="md-ellipsis">
     
   
-    codespell
-  
+  codespell
 
     
   </span>
@@ -10021,8 +9674,7 @@
   <span class="md-ellipsis">
     
   
-    Observability
-  
+  Observability
 
     
   </span>
@@ -10037,8 +9689,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Observability
-  
+  Observability
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -10057,8 +9708,7 @@
   <span class="md-ellipsis">
     
   
-    Observability home
-  
+  Observability home
 
     
   </span>
@@ -10085,8 +9735,7 @@
   <span class="md-ellipsis">
     
   
-    Grafana
-  
+  Grafana
 
     
   </span>
@@ -10113,8 +9762,7 @@
   <span class="md-ellipsis">
     
   
-    Datadog
-  
+  Datadog
 
     
   </span>
@@ -10141,8 +9789,7 @@
   <span class="md-ellipsis">
     
   
-    Elastic
-  
+  Elastic
 
     
   </span>
@@ -10169,8 +9816,7 @@
   <span class="md-ellipsis">
     
   
-    New Relic
-  
+  New Relic
 
     
   </span>
@@ -10215,8 +9861,7 @@
   <span class="md-ellipsis">
     
   
-    Reporters
-  
+  Reporters
 
     
   </span>
@@ -10231,8 +9876,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Reporters
-  
+  Reporters
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -10251,8 +9895,7 @@
   <span class="md-ellipsis">
     
   
-    All reporters
-  
+  All reporters
 
     
   </span>
@@ -10279,8 +9922,7 @@
   <span class="md-ellipsis">
     
   
-    Text files
-  
+  Text files
 
     
   </span>
@@ -10307,8 +9949,7 @@
   <span class="md-ellipsis">
     
   
-    GitHub Pull Request comments
-  
+  GitHub Pull Request comments
 
     
   </span>
@@ -10335,8 +9976,7 @@
   <span class="md-ellipsis">
     
   
-    Gitlab Merge Request comments
-  
+  Gitlab Merge Request comments
 
     
   </span>
@@ -10363,8 +10003,7 @@
   <span class="md-ellipsis">
     
   
-    Azure Pull Request comments
-  
+  Azure Pull Request comments
 
     
   </span>
@@ -10391,8 +10030,7 @@
   <span class="md-ellipsis">
     
   
-    Bitbucket Pull Request comments
-  
+  Bitbucket Pull Request comments
 
     
   </span>
@@ -10419,8 +10057,7 @@
   <span class="md-ellipsis">
     
   
-    API / Observability
-  
+  API / Observability
 
     
   </span>
@@ -10447,8 +10084,7 @@
   <span class="md-ellipsis">
     
   
-    GitHub Status
-  
+  GitHub Status
 
     
   </span>
@@ -10475,8 +10111,7 @@
   <span class="md-ellipsis">
     
   
-    SARIF Reporter
-  
+  SARIF Reporter
 
     
   </span>
@@ -10503,8 +10138,7 @@
   <span class="md-ellipsis">
     
   
-    Updated sources
-  
+  Updated sources
 
     
   </span>
@@ -10531,8 +10165,7 @@
   <span class="md-ellipsis">
     
   
-    E-mail
-  
+  E-mail
 
     
   </span>
@@ -10559,8 +10192,7 @@
   <span class="md-ellipsis">
     
   
-    File.io
-  
+  File.io
 
     
   </span>
@@ -10587,8 +10219,7 @@
   <span class="md-ellipsis">
     
   
-    IDE Configuration
-  
+  IDE Configuration
 
     
   </span>
@@ -10615,8 +10246,7 @@
   <span class="md-ellipsis">
     
   
-    TAP files
-  
+  TAP files
 
     
   </span>
@@ -10643,8 +10273,7 @@
   <span class="md-ellipsis">
     
   
-    Console
-  
+  Console
 
     
   </span>
@@ -10671,8 +10300,7 @@
   <span class="md-ellipsis">
     
   
-    JSON
-  
+  JSON
 
     
   </span>
@@ -10699,8 +10327,7 @@
   <span class="md-ellipsis">
     
   
-    Markdown Summary
-  
+  Markdown Summary
 
     
   </span>
@@ -10745,8 +10372,7 @@
   <span class="md-ellipsis">
     
   
-    LLM Advisor
-  
+  LLM Advisor
 
     
   </span>
@@ -10761,8 +10387,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    LLM Advisor
-  
+  LLM Advisor
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -10781,8 +10406,7 @@
   <span class="md-ellipsis">
     
   
-    LLM Advisor
-  
+  LLM Advisor
 
     
   </span>
@@ -10820,8 +10444,7 @@
   <span class="md-ellipsis">
     
   
-    LLM Providers
-  
+  LLM Providers
 
     
   </span>
@@ -10836,8 +10459,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    LLM Providers
-  
+  LLM Providers
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -10856,8 +10478,7 @@
   <span class="md-ellipsis">
     
   
-    All LLM providers
-  
+  All LLM providers
 
     
   </span>
@@ -10884,8 +10505,7 @@
   <span class="md-ellipsis">
     
   
-    Anthropic
-  
+  Anthropic
 
     
   </span>
@@ -10912,8 +10532,7 @@
   <span class="md-ellipsis">
     
   
-    DeepSeek
-  
+  DeepSeek
 
     
   </span>
@@ -10940,8 +10559,7 @@
   <span class="md-ellipsis">
     
   
-    Google GenAI
-  
+  Google GenAI
 
     
   </span>
@@ -10968,8 +10586,7 @@
   <span class="md-ellipsis">
     
   
-    MistralAI
-  
+  MistralAI
 
     
   </span>
@@ -10996,8 +10613,7 @@
   <span class="md-ellipsis">
     
   
-    OpenAI
-  
+  OpenAI
 
     
   </span>
@@ -11024,8 +10640,7 @@
   <span class="md-ellipsis">
     
   
-    OrcaRouter
-  
+  OrcaRouter
 
     
   </span>
@@ -11052,8 +10667,7 @@
   <span class="md-ellipsis">
     
   
-    Ollama
-  
+  Ollama
 
     
   </span>
@@ -11080,8 +10694,7 @@
   <span class="md-ellipsis">
     
   
-    Hugging Face
-  
+  Hugging Face
 
     
   </span>
@@ -11134,8 +10747,7 @@
   <span class="md-ellipsis">
     
   
-    Flavors
-  
+  Flavors
 
     
   </span>
@@ -11150,8 +10762,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Flavors
-  
+  Flavors
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -11170,8 +10781,7 @@
   <span class="md-ellipsis">
     
   
-    All flavors
-  
+  All flavors
 
     
   </span>
@@ -11198,8 +10808,7 @@
   <span class="md-ellipsis">
     
   
-    Custom flavors
-  
+  Custom flavors
 
     
   </span>
@@ -11226,8 +10835,7 @@
   <span class="md-ellipsis">
     
   
-    c_cpp
-  
+  c_cpp
 
     
   </span>
@@ -11254,8 +10862,7 @@
   <span class="md-ellipsis">
     
   
-    ci_light
-  
+  ci_light
 
     
   </span>
@@ -11282,8 +10889,7 @@
   <span class="md-ellipsis">
     
   
-    cupcake
-  
+  cupcake
 
     
   </span>
@@ -11310,8 +10916,7 @@
   <span class="md-ellipsis">
     
   
-    documentation
-  
+  documentation
 
     
   </span>
@@ -11338,8 +10943,7 @@
   <span class="md-ellipsis">
     
   
-    dotnet
-  
+  dotnet
 
     
   </span>
@@ -11366,8 +10970,7 @@
   <span class="md-ellipsis">
     
   
-    dotnetweb
-  
+  dotnetweb
 
     
   </span>
@@ -11394,8 +10997,7 @@
   <span class="md-ellipsis">
     
   
-    formatters
-  
+  formatters
 
     
   </span>
@@ -11422,8 +11024,7 @@
   <span class="md-ellipsis">
     
   
-    go
-  
+  go
 
     
   </span>
@@ -11450,8 +11051,7 @@
   <span class="md-ellipsis">
     
   
-    java
-  
+  java
 
     
   </span>
@@ -11478,8 +11078,7 @@
   <span class="md-ellipsis">
     
   
-    javascript
-  
+  javascript
 
     
   </span>
@@ -11506,8 +11105,7 @@
   <span class="md-ellipsis">
     
   
-    php
-  
+  php
 
     
   </span>
@@ -11534,8 +11132,7 @@
   <span class="md-ellipsis">
     
   
-    python
-  
+  python
 
     
   </span>
@@ -11562,8 +11159,7 @@
   <span class="md-ellipsis">
     
   
-    ruby
-  
+  ruby
 
     
   </span>
@@ -11590,8 +11186,7 @@
   <span class="md-ellipsis">
     
   
-    rust
-  
+  rust
 
     
   </span>
@@ -11618,8 +11213,7 @@
   <span class="md-ellipsis">
     
   
-    salesforce
-  
+  salesforce
 
     
   </span>
@@ -11646,8 +11240,7 @@
   <span class="md-ellipsis">
     
   
-    security
-  
+  security
 
     
   </span>
@@ -11674,8 +11267,7 @@
   <span class="md-ellipsis">
     
   
-    swift
-  
+  swift
 
     
   </span>
@@ -11702,8 +11294,7 @@
   <span class="md-ellipsis">
     
   
-    terraform
-  
+  terraform
 
     
   </span>
@@ -11730,8 +11321,7 @@
   <span class="md-ellipsis">
     
   
-    Flavors statistics
-  
+  Flavors statistics
 
     
   </span>
@@ -11765,8 +11355,7 @@
   <span class="md-ellipsis">
     
   
-    Run locally
-  
+  Run locally
 
     
   </span>
@@ -11792,8 +11381,7 @@
   <span class="md-ellipsis">
     
   
-    They talk about MegaLinter
-  
+  They talk about MegaLinter
 
     
   </span>
@@ -11819,8 +11407,7 @@
   <span class="md-ellipsis">
     
   
-    They use MegaLinter
-  
+  They use MegaLinter
 
     
   </span>
@@ -11846,8 +11433,7 @@
   <span class="md-ellipsis">
     
   
-    List of linters
-  
+  List of linters
 
     
   </span>
@@ -11873,8 +11459,7 @@
   <span class="md-ellipsis">
     
   
-    Linter Plugins
-  
+  Linter Plugins
 
     
   </span>
@@ -11900,8 +11485,7 @@
   <span class="md-ellipsis">
     
   
-    Special thanks
-  
+  Special thanks
 
     
   </span>
@@ -11927,8 +11511,7 @@
   <span class="md-ellipsis">
     
   
-    Sponsoring
-  
+  Sponsoring
 
     
   </span>
@@ -11954,8 +11537,7 @@
   <span class="md-ellipsis">
     
   
-    Badge
-  
+  Badge
 
     
   </span>
@@ -11981,8 +11563,7 @@
   <span class="md-ellipsis">
     
   
-    MegaLinter vs Super-Linter
-  
+  MegaLinter vs Super-Linter
 
     
   </span>
@@ -12008,8 +11589,7 @@
   <span class="md-ellipsis">
     
   
-    FAQ
-  
+  FAQ
 
     
   </span>
@@ -12046,8 +11626,7 @@
   <span class="md-ellipsis">
     
   
-    Contribute
-  
+  Contribute
 
     
   </span>
@@ -12062,8 +11641,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Contribute
-  
+  Contribute
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -12082,8 +11660,7 @@
   <span class="md-ellipsis">
     
   
-    How-to Contribute
-  
+  How-to Contribute
 
     
   </span>
@@ -12110,8 +11687,7 @@
   <span class="md-ellipsis">
     
   
-    Contributing Guide
-  
+  Contributing Guide
 
     
   </span>
@@ -12156,8 +11732,7 @@
   <span class="md-ellipsis">
     
   
-    License
-  
+  License
 
     
   </span>
@@ -12172,8 +11747,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    License
-  
+  License
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -12192,8 +11766,7 @@
   <span class="md-ellipsis">
     
   
-    AGPL V3 License
-  
+  AGPL V3 License
 
     
   </span>
@@ -12220,8 +11793,7 @@
   <span class="md-ellipsis">
     
   
-    License explanations
-  
+  License explanations
 
     
   </span>
@@ -12255,8 +11827,7 @@
   <span class="md-ellipsis">
     
   
-    Changelog
-  
+  Changelog
 
     
   </span>
@@ -12282,8 +11853,7 @@
   <span class="md-ellipsis">
     
   
-    Try OX Security ASPM
-  
+  Try OX Security ASPM
 
     
   </span>
@@ -12305,10 +11875,17 @@
               
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                    
+                  
                   <div class="md-sidebar__inner">
                     
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
   
   
   
@@ -12361,7 +11938,7 @@
       
     
     <a href="https://www.linkedin.com/company/ox-security/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
     </a>
   
     
@@ -12372,7 +11949,7 @@
       
     
     <a href="https://github.com/oxsecurity/megalinter/issues" target="_blank" rel="noopener" title="github.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M464 256a208 208 0 1 0-416 0 208 208 0 1 0 416 0M0 256a256 256 0 1 1 512 0 256 256 0 1 1-512 0m256-80c-17.7 0-32 14.3-32 32 0 13.3-10.7 24-24 24s-24-10.7-24-24c0-44.2 35.8-80 80-80s80 35.8 80 80c0 47.2-36 67.2-56 74.5v3.8c0 13.3-10.7 24-24 24s-24-10.7-24-24v-8.1c0-20.5 14.8-35.2 30.1-40.2 6.4-2.1 13.2-5.5 18.2-10.3 4.3-4.2 7.7-10 7.7-19.6 0-17.7-14.3-32-32-32zm-32 192a32 32 0 1 1 64 0 32 32 0 1 1-64 0"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M464 256a208 208 0 1 0-416 0 208 208 0 1 0 416 0M0 256a256 256 0 1 1 512 0 256 256 0 1 1-512 0m256-80c-17.7 0-32 14.3-32 32 0 13.3-10.7 24-24 24s-24-10.7-24-24c0-44.2 35.8-80 80-80s80 35.8 80 80c0 47.2-36 67.2-56 74.5v3.8c0 13.3-10.7 24-24 24s-24-10.7-24-24v-8.1c0-20.5 14.8-35.2 30.1-40.2 6.4-2.1 13.2-5.5 18.2-10.3 4.3-4.2 7.7-10 7.7-19.6 0-17.7-14.3-32-32-32zm-32 192a32 32 0 1 1 64 0 32 32 0 1 1-64 0"/></svg>
     </a>
   
     
@@ -12383,7 +11960,7 @@
       
     
     <a href="https://github.com/oxsecurity/megalinter" target="_blank" rel="noopener" title="github.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M216.5 362.5c-66-8-112.5-55.5-112.5-117 0-25 9-52 24-70-6.5-16.5-5.5-51.5 2-66 20-2.5 47 8 63 22.5 19-6 39-9 63.5-9s44.5 3 62.5 8.5c15.5-14 43-24.5 63-22 7 13.5 8 48.5 1.5 65.5 16 19 24.5 44.5 24.5 70.5 0 61.5-46.5 108-113.5 116.5 17 11 28.5 35 28.5 62.5v52c0 15 12.5 23.5 27.5 17.5C441 459.5 512 369 512 257 512 115.5 397 0 255.5 0S0 115.5 0 257c0 111 70.5 203 165.5 237.5 13.5 5 26.5-4 26.5-17.5v-40c-7 3-16 5-24 5-33 0-52.5-18-66.5-51.5-5.5-13.5-11.5-21.5-23-23-6-.5-8-3-8-6 0-6 10-10.5 20-10.5 14.5 0 27 9 40 27.5 10 14.5 20.5 21 33 21s20.5-4.5 32-16c8.5-8.5 15-16 21-21"/></svg>
     </a>
   
     
@@ -12394,7 +11971,7 @@
       
     
     <a href="https://hub.docker.com/r/oxsecurity/megalinter" target="_blank" rel="noopener" title="hub.docker.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M349.9 236.3h-66.1v-59.4h66.1zm0-204.3h-66.1v60.7h66.1zm78.2 144.8H362v59.4h66.1zm-156.3-72.1h-66.1v60.1h66.1zm78.1 0h-66.1v60.1h66.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4.4 67.6.1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1zm78.1 0h-66.1v59.4h66.1zm-78.1-72.1h-66.1v60.1h66.1z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M349.9 236.3h-66.1v-59.4h66.1zm0-204.3h-66.1v60.7h66.1zm78.2 144.8H362v59.4h66.1zm-156.3-72.1h-66.1v60.1h66.1zm78.1 0h-66.1v60.1h66.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4.4 67.6.1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1zm78.1 0h-66.1v59.4h66.1zm-78.1-72.1h-66.1v60.1h66.1z"/></svg>
     </a>
   
     
@@ -12405,7 +11982,7 @@
       
     
     <a href="https://twitter.com/NicolasVuillamy" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M459.4 151.7c.3 4.5.3 9.1.3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47.1 8.4 1 16.6 1.3 25.3 1.3 49.1 0 94.2-16.6 130.3-44.8-46.1-1-84.8-31.2-98.1-72.8 6.5 1 13 1.6 19.8 1.6 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.1-52-84.1-103v-1.3c14 7.8 30.2 12.7 47.4 13.3-28.3-18.8-46.8-51-46.8-87.4 0-19.5 5.2-37.4 14.3-53C87.4 130.8 165 172.4 252.1 176.9c-1.6-7.8-2.6-15.9-2.6-24C249.5 95.1 296.3 48 354.4 48c30.2 0 57.5 12.7 76.7 33.1 23.7-4.5 46.5-13.3 66.6-25.3-7.8 24.4-24.4 44.8-46.1 57.8 21.1-2.3 41.6-8.1 60.4-16.2-14.3 20.8-32.2 39.3-52.6 54.3"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M459.4 151.7c.3 4.5.3 9.1.3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47.1 8.4 1 16.6 1.3 25.3 1.3 49.1 0 94.2-16.6 130.3-44.8-46.1-1-84.8-31.2-98.1-72.8 6.5 1 13 1.6 19.8 1.6 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.1-52-84.1-103v-1.3c14 7.8 30.2 12.7 47.4 13.3-28.3-18.8-46.8-51-46.8-87.4 0-19.5 5.2-37.4 14.3-53C87.4 130.8 165 172.4 252.1 176.9c-1.6-7.8-2.6-15.9-2.6-24C249.5 95.1 296.3 48 354.4 48c30.2 0 57.5 12.7 76.7 33.1 23.7-4.5 46.5-13.3 66.6-25.3-7.8 24.4-24.4 44.8-46.1 57.8 21.1-2.3 41.6-8.1 60.4-16.2-14.3 20.8-32.2 39.3-52.6 54.3"/></svg>
     </a>
   
 </div>
@@ -12423,10 +12000,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "/beta", "features": ["content.code.copy", "navigation.instant", "navigation.footer"], "search": "/beta/assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate":null,"base":"/beta","features":["content.code.copy","navigation.instant","navigation.footer"],"search":"/beta/assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"default":"latest","provider":"mike"}}</script>
     
     
-      <script src="/beta/assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="/beta/assets/javascripts/bundle.49251538.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
       

@@ -1,0 +1,54 @@
+<!--
+  Giscus comments (GitHub Discussions backed), replacing the utteranc.es block
+  that never rendered because it targeted a template block the theme does not
+  define. Discussions are created lazily in the Announcements category of
+  oxsecurity/megalinter, one per page, matched on the page path.
+  Add "comments: false" to a page front matter to hide the widget there.
+-->
+{% if page.meta.comments != false %}
+<h2 id="__comments">Comments</h2>
+<script src="https://giscus.app/client.js"
+        data-repo="oxsecurity/megalinter"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkzMDQ4MzAyMjY="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOEitXEs4CQAhP"
+        data-mapping="pathname"
+        data-strict="1"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+
+<script>
+  // Keep the Giscus iframe in sync with the palette toggle: it is a
+  // cross-origin frame, so the theme can only be changed by postMessage.
+  (function () {
+    var giscusTheme = function () {
+      var scheme = document.body.getAttribute("data-md-color-scheme");
+      return scheme === "slate" ? "dark" : "light";
+    };
+    var apply = function () {
+      var frame = document.querySelector("iframe.giscus-frame");
+      if (frame) {
+        frame.contentWindow.postMessage(
+          { giscus: { setConfig: { theme: giscusTheme() } } },
+          "https://giscus.app"
+        );
+      }
+    };
+    new MutationObserver(apply).observe(document.body, {
+      attributes: true,
+      attributeFilter: ["data-md-color-scheme"]
+    });
+    window.addEventListener("message", function (event) {
+      if (event.origin === "https://giscus.app") {
+        apply();
+      }
+    });
+  })();
+</script>
+{% endif %}
