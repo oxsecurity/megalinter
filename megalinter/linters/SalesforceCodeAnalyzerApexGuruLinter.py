@@ -27,12 +27,15 @@ class SalesforceCodeAnalyzerApexGuruLinter(SalesforceCodeAnalyzerLinter):
     # from the root folder, never inside the analyzed sources, so a project
     # scoped default would not be visible from the workspace where
     # `sf code-analyzer run` is executed.
+    # `--sfdx-url-stdin` must be the LAST argument: the sf CLI declares it as a
+    # value flag, so any argument following it is swallowed as its value and the
+    # command fails with `Unexpected argument`.
     def before_lint_files(self):
         if SFDX_AUTH_URL_VAR not in self.unsecured_env_variables:
             self.unsecured_env_variables += [SFDX_AUTH_URL_VAR]
         login_command = (
             f'echo "${SFDX_AUTH_URL_VAR}" | sf org login sfdx-url'
-            f" --sfdx-url-stdin --alias {ORG_ALIAS}"
+            f" --alias {ORG_ALIAS} --sfdx-url-stdin"
             f" && sf config set target-org={ORG_ALIAS} --global"
         )
         logging.debug("apexguru before_lint_files: " + login_command)

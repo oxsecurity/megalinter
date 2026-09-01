@@ -270,9 +270,6 @@ jobs:
           DOCKER_IMAGE: ${{ needs.build.outputs.image-tag }}
           GH_SHA: ${{ github.sha }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # Salesforce org auth url used by SALESFORCE_CODE_ANALYZER_APEXGURU.
-          # Empty on pull requests from forks: the ApexGuru tests then skip themselves
-          SFDX_AUTH_URL: ${{ secrets.SFDX_AUTH_URL }}
         run: |
           GITHUB_REPOSITORY=$([ "$EVENT_NAME" == "pull_request" ] && echo "$PR_HEAD_REPO" || echo "$GH_REPOSITORY")
           GITHUB_BRANCH=$([ "$EVENT_NAME" == "pull_request" ] && echo "$HEAD_REF" || echo "$REF_NAME")
@@ -290,7 +287,7 @@ jobs:
           fi
           docker image ls
           # shellcheck disable=SC2086
-          docker run $CI_ENV -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER="${GH_SHA}" -e OUTPUT_DETAIL=detailed -e GITHUB_SHA="${GH_SHA}" -e GITHUB_REPOSITORY="${GITHUB_REPOSITORY}" -e GITHUB_BRANCH="${GITHUB_BRANCH}" -e GITHUB_TOKEN="${GITHUB_TOKEN}" -e SFDX_AUTH_URL="${SFDX_AUTH_URL}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v "${GITHUB_WORKSPACE}:/tmp/lint" "${DOCKER_IMAGE}"
+          docker run $CI_ENV -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER="${GH_SHA}" -e OUTPUT_DETAIL=detailed -e GITHUB_SHA="${GH_SHA}" -e GITHUB_REPOSITORY="${GITHUB_REPOSITORY}" -e GITHUB_BRANCH="${GITHUB_BRANCH}" -e GITHUB_TOKEN="${GITHUB_TOKEN}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v "${GITHUB_WORKSPACE}:/tmp/lint" "${DOCKER_IMAGE}"
         timeout-minutes: 120
 
       - name: Archive production artifacts (test-cases)
