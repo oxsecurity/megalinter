@@ -493,3 +493,37 @@ DS-0026
 #    MegaLinter runs tofu only as a local formatter (`tofu fmt`), setting no OTEL_ vars.
 # Remove once an OpenTofu release ships otel/sdk >= 1.43.0.
 CVE-2026-39883
+
+# --- Go x/crypto/ssh source-address bypass (vale, betterleaks, tflint, tofu) ---
+# CVE-2026-56854 (GO-2026-6303) extends the CVE-2026-46595 fix above: the
+# source-address critical option in the Permissions returned by an auth callback was
+# only enforced on the PublicKeyCallback / VerifiedPublicKeyCallback paths, so a
+# restriction set by PasswordCallback, KeyboardInteractiveCallback,
+# NoClientAuthCallback or GSSAPIWithMICConfig.AllowLogin was silently ignored. The Go
+# vuln DB lists a single affected symbol, ssh.NewServerConn: this is a SERVER-side
+# authorization bypass, reachable only by an application that terminates SSH itself and
+# uses source-address as an authz control. NVD scores it 7.5 HIGH
+# (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N, confidentiality only), and CISA's SSVC record
+# says exploitation=none; trivy's CRITICAL rating is a vendor rating, not NVD's.
+# No binary in the image runs an SSH server, and for two of the four the vulnerable
+# package is not even linked:
+#  - vale reaches x/crypto only through Masterminds/sprig, which imports exactly
+#    bcrypt and scrypt; there is no crypto/ssh reference anywhere in the vale tree.
+#  - betterleaks is the same shape through go-sprout/sprout (bcrypt + scrypt only).
+#  - tflint links x/crypto/ssh for a single call, ssh.ParseRawPrivateKey in the HCL
+#    rsadecrypt function, plus x/crypto/openpgp for plugin release signatures. No
+#    ServerConfig, no handshake, no listener.
+#  - tofu links x/crypto/ssh through its remote-exec/file provisioner communicator,
+#    which is client-only (ssh.NewClientConn, ssh.Dial, ssh.ClientConfig) and runs only
+#    during `apply`. MegaLinter runs tofu as `tofu fmt` and `tofu validate
+#    -backend=false`, so no communicator is ever built.
+# No upgrade path for these four: vale v3.19.0 and its v3 branch still carry x/crypto
+# v0.52.0, betterleaks v1.8.1 and main carry v0.53.0, tflint 0.64.0 is the latest
+# release and carries v0.53.0 (its master branch is already on v0.55.0, so the next
+# release fixes that copy), and OpenTofu's stable v1.12 branch is still on v0.52.0
+# (only main and 1.13.0-beta1 carry v0.55.0). The terragrunt and terraform binaries had
+# a real fix and were upgraded instead, via alpine/terragrunt 1.16.0 (terragrunt v1.1.4
+# and terraform 1.16.0, both on x/crypto >= 0.55.0).
+# Remove once vale, betterleaks, tflint and OpenTofu ship releases built with
+# x/crypto >= 0.55.0.
+CVE-2026-56854
