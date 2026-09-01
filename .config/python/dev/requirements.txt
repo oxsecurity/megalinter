@@ -3,7 +3,7 @@ aiofiles==25.1.0
 aiohttp==3.14.3
 beautifulsoup4==4.15.0
 fastapi==0.141.1
-gitpython==3.1.59
+gitpython==3.1.60
 giturlparse==0.15.0
 json-schema-for-humans==1.5.1
 jsonpickle==4.1.2
