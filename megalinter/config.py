@@ -14,7 +14,7 @@ RUN_CONFIGS = {}  # type: ignore[var-annotated]
 SKIP_DELETE_CONFIG = False
 _ENV_CACHE = None  # Cached copy of os.environ to avoid repeated copies
 DEFAULT_SECURED_ENV_VARIABLES = (
-    "PAT",
+    "(^|_)(PAT)($|_)",
     "SYSTEM_ACCESSTOKEN",
     "(^|_)(USERNAME)($|_)",
     "(^|_)(PASSWORD|PASSWD|PASS|PWD)($|_)",
@@ -276,6 +276,7 @@ def set(request_id, config_var, value):
     global RUN_CONFIGS
     assert request_id in RUN_CONFIGS, "Config has not been initialized yet !"
     RUN_CONFIGS[request_id][config_var] = value
+    clear_registered_caches(request_id)
 
 
 # Get list of elements from configuration. It can be list of strings or objects
@@ -336,6 +337,21 @@ def copy(request_id):
     return get_config(request_id).copy()
 
 
+# Modules holding per-request caches register a cleaner here, so that delete()
+# drops them along with the config. Avoids config importing them back, which
+# would be circular
+_CACHE_CLEANERS = []
+
+
+def register_cache_cleaner(cleaner):
+    _CACHE_CLEANERS.append(cleaner)
+
+
+def clear_registered_caches(request_id=None):
+    for cleaner in _CACHE_CLEANERS:
+        cleaner(request_id)
+
+
 def delete(request_id=None, key=None):
     global RUN_CONFIGS
     global SKIP_DELETE_CONFIG
@@ -344,16 +360,19 @@ def delete(request_id=None, key=None):
     if request_id is None:
         RUN_CONFIGS = {}
         _ENV_CACHE = None
+        clear_registered_caches(None)
         return
     if key is None:
         if SKIP_DELETE_CONFIG is not True:
             del RUN_CONFIGS[request_id]
+            clear_registered_caches(request_id)
             logging.debug("Cleared MegaLinter runtime config for request " + request_id)
         return
     config = get_config(request_id)
     if key in config:
         del config[key]
     set_config(request_id, config)
+    clear_registered_caches(request_id)
 
 
 def build_env(request_id, secured=True, allow_list=[]):

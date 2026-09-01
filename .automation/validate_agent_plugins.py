@@ -7,12 +7,16 @@ import urllib.request
 
 import jsonschema
 from agent_plugin_manifests import (
+    AGENT_NAMES,
+    AGENT_SOURCE_DIR,
+    COPILOT_AGENTS_DIR,
     REFERENCE_MANIFEST,
     REPO_HOME,
     SHARED_ENTRY_FIELDS,
     SHARED_FIELDS,
     TARGET_MARKETPLACE_MANIFESTS,
     TARGET_PLUGIN_MANIFESTS,
+    build_copilot_agent,
     read_manifest,
 )
 
@@ -91,12 +95,37 @@ def check_referenced_paths(errors: list[str]) -> None:
             )
 
 
+# Copilot clients do not read the vendor manifests declaring the sub-agents: they
+# load them from com.github.copilot/agents. Those files are generated, so a source
+# definition edited without re-running the sync would silently ship a stale agent.
+def check_copilot_agents(errors: list[str]) -> None:
+    for name in AGENT_NAMES:
+        source = os.path.join(REPO_HOME, AGENT_SOURCE_DIR, f"{name}.md")
+        target = os.path.join(REPO_HOME, COPILOT_AGENTS_DIR, f"{name}.agent.md")
+        if not os.path.isfile(target):
+            errors.append(
+                f"{COPILOT_AGENTS_DIR}/{name}.agent.md is missing: "
+                "run python .automation/agent_plugin_manifests.py"
+            )
+            continue
+        with open(source, encoding="utf-8") as source_file:
+            expected = build_copilot_agent(source_file.read())
+        with open(target, encoding="utf-8") as target_file:
+            if target_file.read() != expected:
+                errors.append(
+                    f"{COPILOT_AGENTS_DIR}/{name}.agent.md is out of sync with "
+                    f"{AGENT_SOURCE_DIR}/{name}.md: "
+                    "run python .automation/agent_plugin_manifests.py"
+                )
+
+
 def main() -> int:
     logging.basicConfig(level=logging.INFO, format="%(message)s")
     errors: list[str] = []
     check_agent_plugins_schema(errors)
     check_shared_fields(errors)
     check_referenced_paths(errors)
+    check_copilot_agents(errors)
     if len(errors) > 0:
         for error in errors:
             logging.error(f"  {error}")

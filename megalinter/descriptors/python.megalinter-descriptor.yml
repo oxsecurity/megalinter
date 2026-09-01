@@ -453,7 +453,7 @@ linters:
     cli_lint_extra_args:
       - --quiet
     cli_lint_mode_project_exclude_arg_name: "-x"
-    cli_lint_mode_project_exclude_arg_value: "./{{DIR}}"
+    cli_lint_mode_project_exclude_arg_value: "./{{DIR_PATH}}"
     cli_lint_mode_project_exclude_separator: ","
     cli_lint_mode_project_exclude_seed_values:
       ["./.svn", "./CVS", "./.bzr", "./.hg", "./.git", "./__pycache__", "./.tox", "./.eggs", "*.egg"]
@@ -893,7 +893,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=ruff
-          ARG PIP_RUFF_VERSION=0.16.3
+          ARG PIP_RUFF_VERSION=0.16.4
       pip:
         - ruff==${PIP_RUFF_VERSION}
     supported_platforms:
@@ -967,7 +967,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=ruff
-          ARG PIP_RUFF_VERSION=0.16.3
+          ARG PIP_RUFF_VERSION=0.16.4
       pip:
         - ruff==${PIP_RUFF_VERSION}
     supported_platforms:

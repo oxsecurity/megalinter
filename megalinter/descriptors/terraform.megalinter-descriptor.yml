@@ -40,7 +40,16 @@ linters:
 
       > If you are using the GitHub action please use the `TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES: GITHUB_TOKEN` to prevent plugin download issues
 
-      > If you have issues with tflint --init, create a GitHub Personal Access Token and set its value to PAT_GITHUB_COM variable.
+      > If `tflint --init` can not download plugins (for example when `GITHUB_TOKEN` targets a GitHub Enterprise instance and not github.com), use the tflint native host-specific token variable `GITHUB_TOKEN_github_com`: create a github.com Personal Access Token, set it in `GITHUB_TOKEN_github_com`, then allow tflint to read it.
+
+      > ```yaml
+      > TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES:
+      >   - GITHUB_TOKEN_github_com
+      > ```
+
+      > tflint gives priority to `GITHUB_TOKEN_{host}` over `GITHUB_TOKEN`, so other linters and reporters keep using your regular `GITHUB_TOKEN`.
+
+      > `PAT_GITHUB_COM` does the same thing and is **deprecated**: it will be removed in a future major release, use `GITHUB_TOKEN_github_com` instead.
 
       Note: It's recommended to create your own `.tflint.hcl` custom config file tailored to your project's specific needs.
       The default configuration enables all supported languages and rules, which may not be optimal for every project.
@@ -66,7 +75,7 @@ linters:
         description: Allows to send the full env to **tflint --init**. Initialized with default value `true`. Set to `false` to allow `tflint --init` to access your env vars.
       - name: PAT_GITHUB_COM
         default_value: ""
-        description: If you have issues with tflint --init, create a GitHub Personal Access Token and set its value to PAT_GITHUB_COM variable.
+        description: "DEPRECATED: github.com Personal Access Token copied into GITHUB_TOKEN when running **tflint --init**. Use tflint native variable `GITHUB_TOKEN_github_com` instead (with `TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES`), as PAT_GITHUB_COM will be removed in a future major release."
     test_folder: terraform_tflint
     examples:
       - "tflint"
@@ -142,7 +151,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=alpine/terragrunt
-          ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.8
+          ARG TERRAFORM_TERRAGRUNT_VERSION=1.16.0
         - FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
         - COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
     supported_platforms:
@@ -190,7 +199,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=alpine/terragrunt
-          ARG TERRAFORM_TERRAGRUNT_VERSION=1.15.8
+          ARG TERRAFORM_TERRAGRUNT_VERSION=1.16.0
         - FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
         - COPY --link --from=terragrunt /bin/terraform /usr/bin/
     supported_platforms:

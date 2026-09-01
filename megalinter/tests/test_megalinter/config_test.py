@@ -461,6 +461,33 @@ class config_test(unittest.TestCase):
             "OX_API_KEY is not visible",
         )
 
+    def test_config_secure_env_vars_personal_access_tokens(self):
+        request_id = str(uuid.uuid1())
+        config.init_config(
+            request_id,
+            None,
+            {
+                "PAT": "PAT_VALUE",
+                "PAT_GITHUB_COM": "PAT_GITHUB_COM_VALUE",
+                "AZURE_PAT": "AZURE_PAT_VALUE",
+                "MY_PAT_FOR_CI": "MY_PAT_FOR_CI_VALUE",
+                "PATH_TO_SOMETHING": "PATH_TO_SOMETHING_VALUE",
+                "COMPATIBILITY_MODE": "COMPATIBILITY_MODE_VALUE",
+                "LOG_LEVEL": "DEBUG",
+            },
+        )
+        cli_env = config.build_env(request_id)
+        for hidden_var in ["PAT", "PAT_GITHUB_COM", "AZURE_PAT", "MY_PAT_FOR_CI"]:
+            self.assertTrue(
+                cli_env[hidden_var] == "HIDDEN_BY_MEGALINTER",
+                f"{hidden_var} is not visible",
+            )
+        for visible_var in ["PATH", "PATH_TO_SOMETHING", "COMPATIBILITY_MODE"]:
+            self.assertTrue(
+                cli_env[visible_var] != "HIDDEN_BY_MEGALINTER",
+                f"{visible_var} is visible",
+            )
+
     def test_config_secure_env_vars_override_default(self):
         request_id = str(uuid.uuid1())
         config.init_config(

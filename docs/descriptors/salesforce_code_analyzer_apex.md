@@ -153,7 +153,7 @@ GLOBAL FLAGS
  ›   Warning: @salesforce/cli update available from 2.148.3 to 2.149.9.
 
 Streaming logs in real time to:
-    /tmp/sfca-2026_08_28_06_17_05_113.log
+    /tmp/sfca-2026_08_31_12_58_44_583.log
 
 Selecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, sfge, cpd; Completion: 0%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, sfge, cpd; Completion: 12%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, sfge, cpd; Completion: 25%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, sfge, cpd; Completion: 26%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, sfge, cpd; Completion: 27%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, sfge, cpd; Completion: 28%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, sfge, cpd; Completion: 29%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, sfge, cpd; Completion: 30%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, sfge, cpd; Completion: 31%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, sfge, cpd; Completion: 32%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, sfge, cpd; Completion: 33%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, sfge, cpd; Completion: 34%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, sfge, cpd; Completion: 35%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, sfge, cpd; Completion: 36%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, sfge, cpd; Completion: 37%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, sfge, cpd; Completion: 50%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, sfge, cpd; Completion: 59%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, sfge, cpd; Completion: 62%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, sfge, cpd; Completion: 63%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, sfge, cpd; Completion: 64%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, sfge, cpd; Completion: 69%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, sfge, cpd; Completion: 77%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, sfge, cpd; Completion: 78%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, sfge, cpd; Completion: 78%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, sfge, cpd; Completion: 86%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, sfge, cpd; Completion: 87%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, sfge, cpd; Completion: 88%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, sfge, cpd; Completion: 89%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, sfge, cpd; Completion: 97%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, sfge, cpd; Completion: 98%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, sfge, cpd; Completion: 99%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, eslint, apexguru, flow, pmd, sfge, cpd; Completion: 100%; Elapsed time: 1sSelecting rules... done.
 
@@ -484,7 +484,7 @@ Found 311 rule(s) from 6 engine(s):
     4 cpd rule(s) found.
 
 Additional log information written to:
-    /tmp/sfca-2026_08_28_06_17_05_113.log
+    /tmp/sfca-2026_08_31_12_58_44_583.log
 ```
 
 ### Installation on mega-linter Docker image
@@ -495,7 +495,7 @@ Additional log information written to:
 # renovate: datasource=npm depName=@salesforce/cli
 ARG NPM_SALESFORCE_CLI_VERSION=2.148.3
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=3.0.5
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=3.0.6
 # renovate: datasource=npm depName=sfdx-hardis
 ARG SFDX_HARDIS_VERSION=7.23.0
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk

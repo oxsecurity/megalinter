@@ -76,12 +76,13 @@ installer = "uv"
 
 [tool.hatch.envs.docs]
 dependencies = [
-  "mkdocs",
+  "zensical==0.0.57",
   "markdown",
-  "mike",
-  "mkdocs-material",
+  # Zensical-compatible fork of mike; GitHub-only, not published on PyPI.
+  # Kept in sync with .config/python/dev/requirements.txt.
+  # renovate: datasource=git-refs depName=https://github.com/squidfunk/mike branch=master
+  "mike @ git+https://github.com/squidfunk/mike@2d4ad799442f4592db8ad53b179bfb33db8c69ac",
   "pymdown-extensions",
-  "mkdocs-glightbox==0.5.2",
   "mdx_truly_sane_lists",
   "jsonschema",
   "json-schema-for-humans",
@@ -97,11 +98,12 @@ parallel = true
 retries = 2
 
 [tool.hatch.envs.docs.scripts]
-# build = "mkdocs build --clean --strict"
-prettify = "hatch run python -m json.tool --sort-keys --no-indent ./site/search/search_index.json ./site/search/search_index.json"
-build-only = ["mkdocs build --clean {args}"]
-build = ["build-only {args}", "prettify"]
-serve = "mkdocs serve --dev-addr localhost:8000 {args}"
+# Zensical's search engine emits ./site/search.json, not the
+# ./site/search/search_index.json that mkdocs produced, so the old
+# prettify step has no target and has been dropped.
+build-only = ["zensical build --clean {args}"]
+build = ["build-only {args}"]
+serve = "zensical serve --dev-addr localhost:8000 {args}"
 
 [tool.hatch.envs.build]
 template = "docs"

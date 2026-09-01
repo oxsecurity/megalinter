@@ -36,8 +36,11 @@ npx mega-linter-runner --flavor python --release beta
 # Tests - run inside Docker containers (linters not installed locally)
 # See "Testing" section below
 
-# Documentation
+# Documentation (built with Zensical, configured by mkdocs.yml)
 hatch run docs:serve            # Local docs server at http://127.0.0.1:8000
+hatch run docs:build            # One-shot build into ./site
+# Versioned deploys use the Zensical-compatible mike fork (SHA-pinned in
+# .config/python/dev/requirements.txt) - see .github/workflows/build-deploy-docs.yml
 
 # Dependencies
 uv lock                         # After modifying pyproject.toml
@@ -117,7 +120,7 @@ In CI, filter tests via commit message body: `TEST_KEYWORDS=python_ruff_test`. U
 - Place imports at the top of files
 - Use `megalinter.config.get(request_id, "VAR", default)` for config access, never `os.environ` directly
 - Use `logging` module for output, never `print()`
-- Documentation files must be mkdocs-material compliant: always have a blank line after headers and before bulleted lists
+- Documentation files must be Zensical-compliant: always have a blank line after headers and before bulleted lists
 - Auto-generated docs come from descriptors - update descriptor metadata to improve docs
 
 ## Git & PR Conventions
@@ -186,5 +189,5 @@ Context-aware rules in `.claude/rules/` are automatically loaded based on which 
 - `python-style.md` - Python conventions (no docstrings, config access patterns, linter subclass guidelines)
 - `descriptors.md` - YAML descriptor schema, naming, version pinning, test fixtures
 - `generated-files.md` - Prevents editing auto-generated Dockerfiles, docs, test classes
-- `documentation.md` - mkdocs-material markdown formatting rules
+- `documentation.md` - Zensical markdown formatting rules
 - `testing.md` - Test structure, fixtures, Docker-based test execution

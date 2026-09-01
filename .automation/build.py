@@ -3542,6 +3542,13 @@ def finalize_doc_build():
         f"{REPO_HOME}{os.path.sep}README.md",
         target_file,
     )
+    # README.md has no level 1 heading, so the doc engine builds the home page
+    # title from the file name ("Index"). Front matter makes it "Home" again.
+    with open(target_file, "r+", encoding="utf-8") as f:
+        index_content = f.read()
+        f.seek(0)
+        f.truncate()
+        f.write(f"---\ntitle: Home\n---\n{index_content}")
     # Split README sections into individual files
     moves = [
         "quick-start",
@@ -3614,7 +3621,7 @@ def finalize_doc_build():
         "<!-- mega-linter-badges-start -->",
         "<!-- mega-linter-badges-end -->",
         """![GitHub release](https://img.shields.io/github/v/release/oxsecurity/megalinter?sort=semver&color=%23FD80CD)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-27.1M-blue?color=%23FD80CD)](https://megalinter.io/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-27.2M-blue?color=%23FD80CD)](https://megalinter.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg?color=%23FD80CD)](https://npmjs.org/package/mega-linter-runner)
 [![Coding Agents](https://img.shields.io/badge/Coding%20Agents-compatible-%23FD80CD?logo=githubcopilot&logoColor=white)](https://megalinter.io/latest/coding-agents/)
 [![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?cacheSeconds=3600&color=%23FD80CD)](https://github.com/oxsecurity/megalinter/stargazers/)
