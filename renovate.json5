@@ -135,6 +135,22 @@
         'betterleaks/betterleaks',
       ],
     },
+    {
+      // npm-package-json-lint-config-default majors require the matching
+      // npm-package-json-lint major (config-default v10 needs linter v11), so
+      // separate PRs can never be merged on their own: group them together.
+      groupName: 'npm-package-json-lint',
+      matchPackageNames: [
+        'npm-package-json-lint',
+        'npm-package-json-lint-config-default',
+      ],
+      matchUpdateTypes: [
+        'digest',
+        'patch',
+        'minor',
+        'major',
+      ],
+    },
   ],
   customManagers: [
     {
