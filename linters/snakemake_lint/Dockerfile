@@ -66,7 +66,7 @@ ARG PIP_SNAKEMAKE_VERSION=9.25.2
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=26.2.1
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=21.7.4
+ARG PIP_VIRTUALENV_VERSION=21.7.5
 #ARG__END
 
 ####################
