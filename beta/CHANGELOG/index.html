@@ -15388,6 +15388,16 @@
 <li><code>EXCLUDED_DIRECTORIES</code> are forwarded in project lint mode through a generated configuration extending the workspace one</li>
 </ul>
 </li>
+<li><strong><a href="https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/engine-apexguru.html">ApexGuru</a></strong>, the AI-driven engine of <strong>Salesforce Code Analyzer</strong>, available as <strong>SALESFORCE_CODE_ANALYZER_APEXGURU</strong><ul>
+<li>Detects <strong>SOQL inefficiencies</strong>, critical anti-patterns and scalability hotspots in your <code>.cls</code> and <code>.trigger</code> files, with line-level highlights, severity ratings and suggested fixes</li>
+<li>The analysis runs <strong>in a connected Salesforce org</strong>, not locally: store the <a href="https://developer.salesforce.com/docs/platform/salesforce-cli-reference/guide/cli_reference_org_display.html">auth url</a> of the target org in a CI secret named <strong><code>SFDX_AUTH_URL</code></strong>, and MegaLinter logs in to that org before the scan</li>
+<li>The scan is sent to that org <strong>explicitly</strong>, so a <code>.sfdx/sfdx-config.json</code> left at the root of the repository, usually naming a long gone scratch org, can not hijack it</li>
+<li><strong>Inactive by default</strong>: it activates only when <code>SFDX_AUTH_URL</code> is defined, so nothing changes for existing Salesforce projects</li>
+<li>Requires <strong>ApexGuru to be enabled</strong> on the org: it needs Scale Center, and is available for Unlimited Edition production orgs, full copy sandboxes, Signature orgs and Scale Test customers</li>
+<li>A run where the engine <strong>could not analyze anything</strong> is reported as an <strong>error</strong> rather than a silent success, together with the reason and how to fix it</li>
+<li>Supports native <strong>SARIF</strong> output, like the other Code Analyzer engines</li>
+</ul>
+</li>
 <li><strong><a href="https://opentofu.org/docs/cli/commands/fmt/">tofu fmt</a></strong>, the built-in formatter of <strong>OpenTofu</strong> (the MPL-2.0 licensed fork of Terraform), available as <strong>TERRAFORM_TOFU_FMT</strong> (<a href="https://github.com/oxsecurity/megalinter/issues/8729">#8729</a>)<ul>
 <li>Analyzes <strong><code>.tofu</code></strong> files only, the OpenTofu specific extension, so it never doubles up with <strong>TERRAFORM_TERRAFORM_FMT</strong> which keeps <code>.tf</code></li>
 <li>To format your <code>.tf</code> files with OpenTofu instead, set <code>TERRAFORM_TOFU_FMT_FILE_EXTENSIONS: [".tofu", ".tf", ".tfvars"]</code> and <code>DISABLE_LINTERS: [TERRAFORM_TERRAFORM_FMT]</code></li>
@@ -15625,6 +15635,10 @@
 </ul>
 </li>
 <li>Docker pull counters now also track the <strong>standalone <code>megalinter-only-*</code> images</strong>: their download counts are stored in <code>flavors-stats.json</code> and included in the README badge total</li>
+<li>New descriptor <code>activation_rules</code> type <strong><code>variable_is_set</code></strong>, activating a linter as soon as a variable holds a value. The existing <code>variable</code> type can only compare a variable to a fixed <code>expected_value</code>, which can not express "a credential is present" - the condition <strong>SALESFORCE_CODE_ANALYZER_APEXGURU</strong> needs on <code>SFDX_AUTH_URL</code><ul>
+<li>Linter tests gated on such a variable <strong>skip themselves</strong> when it is missing, instead of failing: <code>LinterTestRoot.skip_if_required_variables_missing()</code> guards the per-lint-mode and SARIF tests, while the version and help tests keep running since they need no credential</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -15634,6 +15648,7 @@
 <li><strong>Supply-chain hardening of dependency updates</strong>: Renovate (<code>minimumReleaseAge</code>) and Dependabot (<code>cooldown</code>) now wait until a release is at least <strong>7 days old</strong> before proposing an upgrade, so compromised releases can be caught by the community first. Security fixes are not delayed and still open immediately</li>
 <li>New <strong>Check agent plugins manifests</strong> workflow validating the agent plugin manifests on every change to them or to <code>skills/</code>: <code>.automation/validate_agent_plugins.py</code> checks the root <code>plugin.json</code> against the published Agent Plugins 1.0 schema and keeps the per-vendor manifests consistent with it, then <code>claude plugin validate ./ --strict</code> checks the Claude Code marketplace and plugin manifests</li>
 <li>The auto-update workflow patch-bumps the agent plugin version when it regenerates the skills: the plugin follows its own release train, since its fix guides change far more often than MegaLinter is released. <code>plugin.json</code> is the single source of truth, mirrored into the per-vendor manifests by <code>.automation/agent_plugin_manifests.py</code> (called by <code>build.py</code>)</li>
+<li>The test workflows forward the <strong><code>SFDX_AUTH_URL</code></strong> repository secret to the test container, so the <strong>SALESFORCE_CODE_ANALYZER_APEXGURU</strong> lint tests can reach a connected org. The secret is not exposed on pull requests from forked repositories, where those tests skip themselves</li>
 </ul>
 </li>
 </ul>
