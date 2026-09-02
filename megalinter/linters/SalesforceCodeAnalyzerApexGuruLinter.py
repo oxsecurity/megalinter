@@ -27,16 +27,23 @@ class SalesforceCodeAnalyzerApexGuruLinter(SalesforceCodeAnalyzerLinter):
     # from the root folder, never inside the analyzed sources, so a project
     # scoped default would not be visible from the workspace where
     # `sf code-analyzer run` is executed.
-    # `--sfdx-url-stdin` must be the LAST argument: the sf CLI declares it as a
-    # value flag, so any argument following it is swallowed as its value and the
-    # command fails with `Unexpected argument`.
+    # The auth url is written to a temporary file outside the workspace instead
+    # of being piped to `--sfdx-url-stdin`: the sf CLI declares that flag as a
+    # value flag, and quotes back the standard input it received in its
+    # argument parsing errors, which would print the org refresh token in the
+    # job log. With `--sfdx-url-file` an error can only quote the file path.
     def before_lint_files(self):
         if SFDX_AUTH_URL_VAR not in self.unsecured_env_variables:
             self.unsecured_env_variables += [SFDX_AUTH_URL_VAR]
+        # mktemp creates the file with 0600 permissions, readable by root only
         login_command = (
-            f'echo "${SFDX_AUTH_URL_VAR}" | sf org login sfdx-url'
-            f" --alias {ORG_ALIAS} --sfdx-url-stdin"
-            f" && sf config set target-org={ORG_ALIAS} --global"
+            "auth_file=$(mktemp)"
+            f' && printf "%s" "${SFDX_AUTH_URL_VAR}" > "$auth_file"'
+            ' && sf org login sfdx-url --sfdx-url-file "$auth_file"'
+            f" --alias {ORG_ALIAS}"
+            '; login_status=$?; rm -f "$auth_file"'
+            "; [ $login_status -ne 0 ] && exit $login_status"
+            f"; sf config set target-org={ORG_ALIAS} --global"
         )
         logging.debug("apexguru before_lint_files: " + login_command)
         if self.pre_commands is None:

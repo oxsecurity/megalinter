@@ -34,13 +34,9 @@ class LinterTestRoot:
 
     # A linter gated on a credential declares a "variable_is_set" activation
     # rule. When that credential is absent the linter is not even activated, so
-    # its lint tests can not run: skip them instead of failing.
-    # MegaLinter's own CI deliberately does not define such credentials, so
-    # these lint tests always skip here: the remote services they talk to
-    # (an ApexGuru enabled Salesforce org, for SALESFORCE_CODE_ANALYZER_APEXGURU)
-    # are neither free nor deterministic, so their findings can not be asserted.
-    # Define the variable in the docker run of the test workflows to exercise
-    # them against a real service.
+    # its lint tests can not run: skip them instead of failing. This is the
+    # normal situation on pull request jobs from a forked repository, where
+    # GitHub does not expose repository secrets.
     def skip_if_required_variables_missing(self, linter):
         for rule in linter.activation_rules:
             if rule.get("type") != "variable_is_set":
