@@ -632,6 +632,19 @@ def check_activation_rules(activation_rules, linter):
                     f"(set {rule['variable']}={rule['expected_value']} to activate)"
                 )
                 break
+        # For linters requiring a credential or a connection string, the value
+        # can not be known in advance: activate as soon as the variable is set
+        elif rule["type"] == "variable_is_set":
+            value = config.get(linter.request_id, rule["variable"], "")
+            if value != "":
+                active = True
+            else:
+                active = False
+                reason = (
+                    f"{rule['variable']} is not set "
+                    f"(define {rule['variable']} to activate)"
+                )
+                break
     return active, reason
 
 

@@ -19,6 +19,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Activated only when a **biome.json** or **biome.jsonc** configuration file is found in the repository
     - Supports **APPLY_FIXES** (safe fixes with `--write`) and native **SARIF** output
     - `EXCLUDED_DIRECTORIES` are forwarded in project lint mode through a generated configuration extending the workspace one
+  - **[ApexGuru](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/engine-apexguru.html)**, the AI-driven engine of **Salesforce Code Analyzer**, available as **SALESFORCE_CODE_ANALYZER_APEXGURU**
+    - Detects **SOQL inefficiencies**, critical anti-patterns and scalability hotspots in your `.cls` and `.trigger` files, with line-level highlights, severity ratings and suggested fixes
+    - The analysis runs **in a connected Salesforce org**, not locally: store the [auth url](https://developer.salesforce.com/docs/platform/salesforce-cli-reference/guide/cli_reference_org_display.html) of the target org in a CI secret named **`SFDX_AUTH_URL`**, and MegaLinter logs in to that org before the scan
+    - The scan is sent to that org **explicitly**, so a `.sfdx/sfdx-config.json` left at the root of the repository, usually naming a long gone scratch org, can not hijack it
+    - **Inactive by default**: it activates only when `SFDX_AUTH_URL` is defined, so nothing changes for existing Salesforce projects
+    - Requires **ApexGuru to be enabled** on the org: it needs Scale Center, and is available for Unlimited Edition production orgs, full copy sandboxes, Signature orgs and Scale Test customers
+    - A run where the engine **could not analyze anything** is reported as an **error** rather than a silent success, together with the reason and how to fix it
+    - Supports native **SARIF** output, like the other Code Analyzer engines
   - **[tofu fmt](https://opentofu.org/docs/cli/commands/fmt/)**, the built-in formatter of **OpenTofu** (the MPL-2.0 licensed fork of Terraform), available as **TERRAFORM_TOFU_FMT** ([#8729](https://github.com/oxsecurity/megalinter/issues/8729))
     - Analyzes **`.tofu`** files only, the OpenTofu specific extension, so it never doubles up with **TERRAFORM_TERRAFORM_FMT** which keeps `.tf`
     - To format your `.tf` files with OpenTofu instead, set `TERRAFORM_TOFU_FMT_FILE_EXTENSIONS: [".tofu", ".tf", ".tfvars"]` and `DISABLE_LINTERS: [TERRAFORM_TERRAFORM_FMT]`
@@ -173,12 +181,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **Docker pulls monthly chart**: the auto-update workflow now regenerates `docs/assets/images/docker-pulls-monthly.svg` (new pulls per month since October 2020, all images and registries), via the new `.automation/docker_pulls_chart.py` called by `build.py` after the pull counters update
     - Historical monthly points are frozen in `.automation/generated/docker-pulls-monthly.json` (built once from the tracked stats plus a Web Archive reconstruction of the collection gaps); the script only appends newly completed months computed from `flavors-stats.json`
   - Docker pull counters now also track the **standalone `megalinter-only-*` images**: their download counts are stored in `flavors-stats.json` and included in the README badge total
+  - New descriptor `activation_rules` type **`variable_is_set`**, activating a linter as soon as a variable holds a value. The existing `variable` type can only compare a variable to a fixed `expected_value`, which can not express "a credential is present" - the condition **SALESFORCE_CODE_ANALYZER_APEXGURU** needs on `SFDX_AUTH_URL`
+    - Linter tests gated on such a variable **skip themselves** when it is missing, instead of failing: `LinterTestRoot.skip_if_required_variables_missing()` guards the per-lint-mode and SARIF tests, while the version and help tests keep running since they need no credential
 
 - CI
   - The generated linter guides in `skills/megalinter-fix/linters/` are excluded from the markdown linters: their error-format regexes end with a significant space that `markdownlint --fix` strips, which corrupted the documented regex and left the working tree dirty, failing the auto-fix commit step on every pull request
   - **Supply-chain hardening of dependency updates**: Renovate (`minimumReleaseAge`) and Dependabot (`cooldown`) now wait until a release is at least **7 days old** before proposing an upgrade, so compromised releases can be caught by the community first. Security fixes are not delayed and still open immediately
   - New **Check agent plugins manifests** workflow validating the agent plugin manifests on every change to them or to `skills/`: `.automation/validate_agent_plugins.py` checks the root `plugin.json` against the published Agent Plugins 1.0 schema and keeps the per-vendor manifests consistent with it, then `claude plugin validate ./ --strict` checks the Claude Code marketplace and plugin manifests
   - The auto-update workflow patch-bumps the agent plugin version when it regenerates the skills: the plugin follows its own release train, since its fix guides change far more often than MegaLinter is released. `plugin.json` is the single source of truth, mirrored into the per-vendor manifests by `.automation/agent_plugin_manifests.py` (called by `build.py`)
+  - The test workflows forward the **`SFDX_AUTH_URL`** repository secret to the test container, so the **SALESFORCE_CODE_ANALYZER_APEXGURU** lint tests can reach a connected org. The secret is not exposed on pull requests from forked repositories, where those tests skip themselves
 
 - Linter versions upgrades (N)
   - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.10.0 to **3.11.1** on 2026-08-09

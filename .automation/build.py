@@ -1655,10 +1655,17 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         ]
         if hasattr(linter, "activation_rules"):
             for rule in linter.activation_rules:
-                linter_doc_md += [
-                    f"| {rule['variable']} | For {linter.linter_name} to be active, {rule['variable']} must be "
-                    f"`{rule['expected_value']}` | `{rule['default_value']}` |"
-                ]
+                rule_doc = (
+                    f"| {rule['variable']} | For {linter.linter_name} to be "
+                    f"active, {rule['variable']} must be "
+                )
+                if rule.get("type") == "variable_is_set":
+                    rule_doc += "defined and not empty | _(not set)_ |"
+                else:
+                    rule_doc += (
+                        f"`{rule['expected_value']}` | " f"`{rule['default_value']}` |"
+                    )
+                linter_doc_md += [rule_doc]
         if hasattr(linter, "variables"):
             for variable in linter.variables:
                 linter_doc_md += [
