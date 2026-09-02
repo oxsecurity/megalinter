@@ -22,8 +22,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **[ApexGuru](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/engine-apexguru.html)**, the AI-driven engine of **Salesforce Code Analyzer**, available as **SALESFORCE_CODE_ANALYZER_APEXGURU**
     - Detects **SOQL inefficiencies**, critical anti-patterns and scalability hotspots in your `.cls` and `.trigger` files, with line-level highlights, severity ratings and suggested fixes
     - The analysis runs **in a connected Salesforce org**, not locally: store the [auth url](https://developer.salesforce.com/docs/platform/salesforce-cli-reference/guide/cli_reference_org_display.html) of the target org in a CI secret named **`SFDX_AUTH_URL`**, and MegaLinter logs in to that org before the scan
+    - The scan is sent to that org **explicitly**, so a `.sfdx/sfdx-config.json` left at the root of the repository, usually naming a long gone scratch org, can not hijack it
     - **Inactive by default**: it activates only when `SFDX_AUTH_URL` is defined, so nothing changes for existing Salesforce projects
     - Requires **ApexGuru to be enabled** on the org: it needs Scale Center, and is available for Unlimited Edition production orgs, full copy sandboxes, Signature orgs and Scale Test customers
+    - A run where the engine **could not analyze anything** is reported as an **error** rather than a silent success, together with the reason and how to fix it
     - Supports native **SARIF** output, like the other Code Analyzer engines
   - **[tofu fmt](https://opentofu.org/docs/cli/commands/fmt/)**, the built-in formatter of **OpenTofu** (the MPL-2.0 licensed fork of Terraform), available as **TERRAFORM_TOFU_FMT** ([#8729](https://github.com/oxsecurity/megalinter/issues/8729))
     - Analyzes **`.tofu`** files only, the OpenTofu specific extension, so it never doubles up with **TERRAFORM_TERRAFORM_FMT** which keeps `.tf`
