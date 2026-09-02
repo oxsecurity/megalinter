@@ -173,6 +173,8 @@ linters:
 
       Because it needs an authenticated org, this linter is **inactive by default**: it activates only when the `SFDX_AUTH_URL` variable is defined. Store the [Salesforce DX auth url](https://developer.salesforce.com/docs/platform/salesforce-cli-reference/guide/cli_reference_org_display.html) of the target org in a **CI secret** named `SFDX_AUTH_URL`, and MegaLinter logs in to that org before running ApexGuru.
 
+      The scan is then explicitly sent to that org with `--target-org`, so the `.sfdx/sfdx-config.json` present at the root of most Salesforce repositories, which usually points to a long gone scratch org, can not hijack it.
+
       **Configuration**
 
       Engine settings (`target_org`, `api_timeout_ms`, `api_initial_retry_ms`, `api_max_retry_ms`, `api_backoff_multiplier`) go under `engines.apexguru` in your `code-analyzer.yml`.
@@ -229,7 +231,13 @@ linters:
         message: |-
           ApexGuru needs an authenticated Salesforce org and could not resolve one.
           Verify that the SFDX_AUTH_URL variable holds a valid Salesforce DX auth url, obtained with: sf org display --target-org <alias> --verbose --json
-          You can also select another org with the `target_org` setting of the apexguru engine in your code-analyzer.yml
+          The auth url must not be expired: revoked or rotated refresh tokens make the login fail before the scan starts.
+      - identifier: SALESFORCE_CODE_ANALYZER_APEXGURU_ERROR_ENGINE_SKIPPED
+        regex: "ApexGuru skipped: "
+        message: |-
+          The ApexGuru engine did not analyze anything: it skipped itself and reported no violation.
+          The reason is printed right after `ApexGuru skipped:` in the linter output above.
+          MegaLinter turns this into an error on purpose, so that a run analyzing nothing is not reported as a success.
       - identifier: SALESFORCE_CODE_ANALYZER_APEXGURU_ERROR_NOT_ENABLED
         regex: "(ApexGuru is (not|un)available|ApexGuru .* not enabled|not entitled to use ApexGuru|Scale Center .* not enabled)"
         message: |-

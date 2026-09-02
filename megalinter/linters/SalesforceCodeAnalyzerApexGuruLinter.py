@@ -5,6 +5,7 @@ https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/en
 """
 
 import logging
+import re
 
 from megalinter.linters.SalesforceCodeAnalyzerLinter import (
     SalesforceCodeAnalyzerLinter,
@@ -49,3 +50,30 @@ class SalesforceCodeAnalyzerApexGuruLinter(SalesforceCodeAnalyzerLinter):
         if self.pre_commands is None:
             self.pre_commands = []
         self.pre_commands.append({"command": login_command, "cwd": "root"})
+
+    # The org must be named on the command line, not left to the sf CLI default
+    # org resolution: nearly every Salesforce repository holds a
+    # `.sfdx/sfdx-config.json` at its root, and that workspace local
+    # `defaultusername` wins over the global default set by the login above.
+    # It usually points to a long gone scratch org, and ApexGuru then skips
+    # itself with `Failed to authenticate: No default org found`.
+    def build_lint_command(self, file=None):
+        cmd = super().build_lint_command(file)
+        if "--target-org" not in cmd and "-o" not in cmd:
+            cmd += ["--target-org", ORG_ALIAS]
+        return cmd
+
+    # `sf code-analyzer run` exits 0 when the ApexGuru engine could not run at
+    # all: it prints `ApexGuru skipped: <reason>` as a warning, reports zero
+    # violations and returns a success. That silently hides that nothing was
+    # analyzed, so turn it into a linter error and let common_linter_errors
+    # display the matching resolution.
+    def execute_lint_command(self, command):
+        return_code, return_stdout = super().execute_lint_command(command)
+        if return_code == 0 and re.search(r"ApexGuru skipped: ", return_stdout or ""):
+            logging.error(
+                "[code-analyzer-apexguru] the ApexGuru engine did not analyze "
+                "anything, see the reason in the linter output"
+            )
+            return_code = 1
+        return return_code, return_stdout
