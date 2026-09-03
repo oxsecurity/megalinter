@@ -432,7 +432,7 @@ ARG PIP_PIP_VERSION=26.2.1
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=21.7.5
 # renovate: datasource=github-tags depName=rust-lang/rust
-ARG RUST_RUST_VERSION=1.97.1
+ARG RUST_RUST_VERSION=1.98.0
 
 ARG TARGETARCH
 ARG CARGO_SARIF_FMT_VERSION

@@ -102,7 +102,7 @@ DEFAULT_DOCKERFILE_PIPENV_ARGS = [
 ]
 
 DEFAULT_DOCKERFILE_RUST_ARGS = [
-    "# renovate: datasource=github-tags depName=rust-lang/rust\nARG RUST_RUST_VERSION=1.97.1",
+    "# renovate: datasource=github-tags depName=rust-lang/rust\nARG RUST_RUST_VERSION=1.98.0",
 ]
 
 DEFAULT_DOCKERFILE_FLAVOR_ARGS = [
