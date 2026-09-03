@@ -374,7 +374,7 @@ ARG REPOSITORY_KINGFISHER_VERSION=1.113.0
 # renovate: datasource=pypi depName=robotframework-robocop
 ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=8.8.0
 # renovate: datasource=pypi depName=Pygments
-ARG PIP_PYGMENTS_VERSION=2.20.0
+ARG PIP_PYGMENTS_VERSION=2.21.0
 # renovate: datasource=pypi depName=restructuredtext_lint
 ARG PIP_RESTRUCTUREDTEXT_LINT_VERSION=2.0.2
 # renovate: datasource=pypi depName=rstcheck
