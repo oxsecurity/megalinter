@@ -290,7 +290,7 @@ ARG REPOSITORY_TRIVY_VERSION=0.74.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.74.0
 # renovate: datasource=pypi depName=robotframework-robocop
-ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=8.8.0
+ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=9.0.0
 # renovate: datasource=pypi depName=Pygments
 ARG PIP_PYGMENTS_VERSION=2.20.0
 # renovate: datasource=pypi depName=restructuredtext_lint
