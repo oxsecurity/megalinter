@@ -62,7 +62,7 @@ RUN python -c 'import sys; assert sys.version_info >= (3, 14, 7), "Python 3.14.7
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=10.8.1
+ARG NPM_ESLINT_VERSION=10.9.1
 # renovate: datasource=npm depName=@eslint-react/eslint-plugin
 ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.18.6
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
