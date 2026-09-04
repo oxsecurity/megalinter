@@ -193,7 +193,7 @@ ARG PIP_NBQA_VERSION=1.9.1
 # renovate: datasource=npm depName=pyright
 ARG NPM_PYRIGHT_VERSION=1.1.413
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.16.4
+ARG PIP_RUFF_VERSION=0.16.5
 # renovate: datasource=pypi depName=checkov
 ARG PIP_CHECKOV_VERSION=3.3.15
 # renovate: datasource=github-tags depName=anchore/grype
