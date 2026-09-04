@@ -62,7 +62,7 @@ RUN python -c 'import sys; assert sys.version_info >= (3, 14, 7), "Python 3.14.7
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.3.13
+ARG PIP_CHECKOV_VERSION=3.3.15
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=26.2.1
 # renovate: datasource=pypi depName=virtualenv
