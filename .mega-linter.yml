@@ -65,6 +65,10 @@ REPOSITORY_KINGFISHER_ARGUMENTS:
   - "docs"
   - "--exclude"
   - "gitleaks-default.toml"
+  # Same as gitleaks-default.toml above: the vendored betterleaks ruleset stores
+  # detection patterns that kingfisher v2 reports as the secrets themselves
+  - "--exclude"
+  - "betterleaks-default.toml"
 REPOSITORY_OSV_SCANNER_ARGUMENTS:
   - "--experimental-exclude=g:**/.automation/test/**"
   # Disable transitive-dep resolution: it calls deps.dev which has been
