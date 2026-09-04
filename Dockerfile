@@ -372,7 +372,7 @@ ARG REPOSITORY_TRIVY_SBOM_VERSION=0.74.0
 # renovate: datasource=github-tags depName=mongodb/kingfisher
 ARG REPOSITORY_KINGFISHER_VERSION=2.0.0
 # renovate: datasource=pypi depName=robotframework-robocop
-ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=8.8.0
+ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=9.0.0
 # renovate: datasource=pypi depName=Pygments
 ARG PIP_PYGMENTS_VERSION=2.21.0
 # renovate: datasource=pypi depName=restructuredtext_lint
