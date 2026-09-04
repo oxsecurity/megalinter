@@ -29,7 +29,7 @@ ARG BASH_SHFMT_VERSION=v3.13.1-alpine
 # renovate: datasource=docker depName=hadolint/hadolint
 ARG DOCKERFILE_HADOLINT_VERSION=v2.15.1-alpine
 # renovate: datasource=docker depName=mstruebing/editorconfig-checker
-ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.11.1
+ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.11.2
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.8.0-alpine
 # renovate: datasource=docker depName=yoheimuta/protolint
@@ -141,7 +141,7 @@ ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=13.0.0
 # renovate: datasource=npm depName=stylelint-scss
 ARG NPM_STYLELINT_SCSS_VERSION=7.2.0
 # renovate: datasource=npm depName=@biomejs/biome
-ARG NPM_BIOMEJS_BIOME_VERSION=2.5.10
+ARG NPM_BIOMEJS_BIOME_VERSION=2.5.11
 # renovate: datasource=github-releases depName=dotenv-linter/dotenv-linter extractVersion=^v(?<version>.+)$
 ARG DOTENV_LINTER_VERSION=4.0.0
 # renovate: datasource=npm depName=graphql

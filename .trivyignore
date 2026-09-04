@@ -301,7 +301,7 @@ CVE-2026-59950
 # container. Remove once checkov allows aiohttp >= 3.14.3.
 CVE-2026-69244
 
-# --- Go deps (protolint, terragrunt, tflint, grype, syft, trivy) ---
+# --- Go deps (protolint, terraform, terragrunt, tofu, tflint, grype, syft, trivy) ---
 # google.golang.org/grpc < 1.82.1 is statically linked into these Go binaries by
 # their upstream release builds; MegaLinter pins each tool at its latest release
 # (renovate-managed) and cannot rebuild them, so there is no upgrade path until
@@ -310,6 +310,31 @@ CVE-2026-69244
 # an attacker-controlled gRPC endpoint, so the vulnerable transport code is never
 # reached. Remove once the pinned releases embed grpc >= 1.82.1.
 GHSA-hrxh-6v49-42gf
+
+# CVE-2026-84304 (GHSA-vp52-pcj8-j9qc, published 2026-09-01) is a heap-exhaustion DoS
+# in google.golang.org/grpc < 1.83.1: a peer that fragments a stream into millions of
+# 1-byte HTTP/2 DATA frames makes the receiver allocate per-fragment tracking
+# structures until it OOMs or panics. CVSS 4.0 scores it 8.7, but availability only
+# (AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H) - no confidentiality or integrity impact.
+# Five binaries in the image embed a vulnerable grpc from their upstream release build,
+# and every MegaLinter pin is already the newest release available:
+#  - protolint 0.57.0 -> grpc v1.79.1 (latest release; master still on v1.79.1)
+#  - tofu 1.12.6 -> grpc v1.79.3 (latest stable; main on v1.83.0, still vulnerable)
+#  - tflint 0.64.0 -> grpc v1.82.0 (latest release; master on v1.83.1, unreleased)
+#  - terraform 1.16.0, grype 0.117.0, syft 1.51.0, trivy 0.74.0 -> grpc v1.82.1
+#  - terragrunt from alpine/terragrunt:1.16.0 -> grpc v1.83.0
+# grype 0.118.0 and syft 1.51.1 are newer but still ship grpc v1.83.0, so no bump fixes
+# this today. None of these binaries listens on a gRPC socket: the scanners reach grpc
+# only through their OpenTelemetry OTLP exporter (client side, disabled by default), and
+# terraform, tofu and tflint speak grpc over a local pipe to plugin processes they spawn
+# themselves. The one path that genuinely enters the vulnerable receive code is
+# TERRAFORM_TOFU_VALIDATE, which runs `tofu init -backend=false` and then talks to the
+# provider plugins declared by the repository under analysis. The impact there is
+# bounded rather than absent: the worst case is that one linter process exhausting
+# memory inside its short-lived CI container, triggered by whoever declared the provider
+# in their own repository. No data exposure, and no long-lived service to take down.
+# Remove once the pinned releases embed grpc >= 1.83.1.
+CVE-2026-84304
 
 # --- Go x/text norm.Iter infinite loop (all Go-based linters + bundled scanners) ---
 # CVE-2026-56852: golang.org/x/text/unicode/norm's norm.Iter can spin forever on
@@ -409,14 +434,36 @@ GHSA-gcfj-64vw-6mp9
 # CVE-2026-18446 is a host-confusion flaw in fast-uri's URI parsing: a crafted URL
 # can make the parsed host differ from what a browser/other parser would see, which
 # matters when fast-uri output feeds security decisions (SSRF allowlists, redirect
-# validation). The vulnerable 3.1.2 copy is vendored inside @salesforce/cli's own
-# locked node_modules (MegaLinter pins the latest sf release, 2.145.6, published
-# before the 3.1.5/4.1.2 fix shipped, so there is no upgrade path yet). At lint
-# time sf runs as a local static-analysis CLI: fast-uri is reached through ajv's
-# JSON-schema validation of the CLI's own config and schema files, never to parse
-# attacker-controlled URLs for trust decisions. Remove once @salesforce/cli ships
-# fast-uri >= 3.1.5.
+# validation). @salesforce/cli (pinned 2.148.3) now shrinkwraps fast-uri 3.1.5, which
+# carries the fix, but @salesforce/plugin-code-analyzer (pinned 5.15.0, and 5.16.0
+# too) still shrinkwraps 3.1.4, so a vulnerable copy remains and there is no upgrade
+# path yet. At lint time sf runs as a local static-analysis CLI: fast-uri is reached
+# through ajv's JSON-schema validation of the CLI's own config and schema files, never
+# to parse attacker-controlled URLs for trust decisions. Remove once
+# @salesforce/plugin-code-analyzer shrinkwraps fast-uri >= 3.1.5.
 CVE-2026-18446
+# CVE-2026-75899, CVE-2026-75931, CVE-2026-75975 and CVE-2026-76172 (advisories
+# published 2026-09-02) are four more host-confusion / SSRF-shaped parsing flaws in
+# fast-uri, all fixed in 3.1.6. CVSS 7.5 but integrity only (C:N/I:H/A:N): they matter
+# when the parsed host feeds a security decision - an SSRF allowlist or a redirect
+# validation. Two vulnerable copies ship in the salesforce images, and both are frozen
+# by an upstream npm-shrinkwrap.json, which npm applies to that dependency's whole
+# subtree, so no install-time resolution can lift them:
+#  - fast-uri 3.1.5, shrinkwrapped by @salesforce/cli (pinned 2.148.3; the newest sf
+#    release, 2.151.6, still pins 3.1.5)
+#  - fast-uri 3.1.4, shrinkwrapped by @salesforce/plugin-code-analyzer (pinned 5.15.0;
+#    5.16.0 still pins 3.1.4)
+# In both trees the only package requiring fast-uri is ajv 8.20.0, with range ^3.0.1,
+# which uses it to resolve the JSON-Schema $id/$ref of the CLI's own config and schema
+# files. ajv fetches no URL, and no linter hands an attacker-controlled URL to fast-uri
+# for a trust decision: sf and sfdx-hardis only ever dial the Salesforce endpoints of
+# the org they are authenticated against, through axios/undici and not through fast-uri.
+# Remove once @salesforce/cli and @salesforce/plugin-code-analyzer shrinkwrap
+# fast-uri >= 3.1.6.
+CVE-2026-75899
+CVE-2026-75931
+CVE-2026-75975
+CVE-2026-76172
 # CVE-2026-69192 (ip-address) and CVE-2026-13697 (undici) live in the same
 # @salesforce/cli vendored node_modules (/usr/local/share/sf) of the standalone
 # salesforce-code-analyzer images, with the same no-upgrade-path situation (sf

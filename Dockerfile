@@ -29,7 +29,7 @@ ARG BASH_SHFMT_VERSION=v3.13.1-alpine
 # renovate: datasource=docker depName=hadolint/hadolint
 ARG DOCKERFILE_HADOLINT_VERSION=v2.15.1-alpine
 # renovate: datasource=docker depName=mstruebing/editorconfig-checker
-ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.11.1
+ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.11.2
 # renovate: datasource=github-tags depName=mgechev/revive
 ARG GO_REVIVE_VERSION=v1.16.0
 # renovate: datasource=docker depName=golang versioning=semver
@@ -183,7 +183,7 @@ ARG NPM_SALESFORCE_CLI_VERSION=2.148.3
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=3.0.6
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=7.23.0
+ARG SFDX_HARDIS_VERSION=8.3.0
 # renovate: datasource=github-tags depName=coursier/coursier
 ARG SCALA_COURSIER_VERSION=2.1.24
 # renovate: datasource=npm depName=typescript
@@ -224,7 +224,7 @@ ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=13.0.0
 # renovate: datasource=npm depName=stylelint-scss
 ARG NPM_STYLELINT_SCSS_VERSION=7.2.0
 # renovate: datasource=npm depName=@biomejs/biome
-ARG NPM_BIOMEJS_BIOME_VERSION=2.5.10
+ARG NPM_BIOMEJS_BIOME_VERSION=2.5.11
 # renovate: datasource=dart-version depName=dart
 ARG DART_VERSION='3.12.2'
 # renovate: datasource=github-releases depName=dotenv-linter/dotenv-linter extractVersion=^v(?<version>.+)$
