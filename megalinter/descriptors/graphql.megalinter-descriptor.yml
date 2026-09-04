@@ -9,6 +9,12 @@ file_extensions:
 linters:
   # GraphQL Schema Linter
   - linter_name: graphql-schema-linter
+    disabled: true
+    disabled_reason: graphql-schema-linter is unmaintained (no release or commit
+      since May 2022) and its peer dependency range pins graphql to ^15 || ^16,
+      which blocks the whole GraphQL npm install from moving to graphql v17. Use
+      GRAPHQL_BIOME to lint GraphQL files. The linter will be removed in a future
+      version
     linter_text: |
       **graphql-schema-linter** validates GraphQL schema definitions against a comprehensive set of rules to ensure consistency, best practices, and adherence to GraphQL conventions. It helps maintain high-quality, well-documented GraphQL APIs with consistent structure and proper documentation.
 

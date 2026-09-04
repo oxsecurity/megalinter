@@ -40,6 +40,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Disabled linters
   - **COFFEE_COFFEELINT** is disabled: CoffeeScript tooling is discontinued, and coffeelint can not receive `EXCLUDED_DIRECTORIES` in project lint mode (it has no exclusion option and reads `.coffeelintignore` only from its working directory). The linter will be removed in a future version
+  - **GRAPHQL_GRAPHQL_SCHEMA_LINTER** is disabled: [graphql-schema-linter](https://github.com/cjoudrey/graphql-schema-linter) is unmaintained, with no release or commit since May 2022, and its peer dependency range pins **graphql** to `^15 || ^16`, which held the whole GraphQL install back from **graphql v17**. Use **[GRAPHQL_BIOME](https://megalinter.io/latest/descriptors/graphql_biome/)** to lint your GraphQL files. The linter will be removed in a future version
 
 - Re-enabled linters
   - **[spectral](https://megalinter.io/latest/descriptors/api_spectral/)** is back as **API_SPECTRAL**, together with the **API** descriptor, to lint your **OpenAPI**, **AsyncAPI** and **Arazzo** specifications ([#8717](https://github.com/oxsecurity/megalinter/issues/8717))
