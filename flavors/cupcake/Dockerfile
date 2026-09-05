@@ -171,7 +171,7 @@ ARG NPM_BIOMEJS_BIOME_VERSION=2.5.11
 # renovate: datasource=github-releases depName=dotenv-linter/dotenv-linter extractVersion=^v(?<version>.+)$
 ARG DOTENV_LINTER_VERSION=4.0.0
 # renovate: datasource=github-tags depName=golangci/golangci-lint
-ARG GO_GOLANGCI_LINT_VERSION=2.13.1
+ARG GO_GOLANGCI_LINT_VERSION=2.13.2
 # renovate: datasource=npm depName=graphql
 ARG NPM_GRAPHQL_VERSION=16.14.2
 # renovate: datasource=npm depName=graphql-schema-linter
