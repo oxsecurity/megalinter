@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **raku** (MegaLinter key: `RAKU_RAKU`)
 - Descriptor: **RAKU** (language)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/raku_raku/>
+- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/raku_raku/>
 - Official documentation: <https://raku.org/>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `META6.json` (custom path can be defined with `RAKU_RAKU_CONFIG_FILE`)

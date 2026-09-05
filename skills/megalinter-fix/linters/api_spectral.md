@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **spectral** (MegaLinter key: `API_SPECTRAL`)
 - Descriptor: **API** (tooling_format)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/api_spectral/>
+- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/api_spectral/>
 - Official documentation: <https://github.com/stoplightio/spectral>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.spectral.yaml` (custom path can be defined with `API_SPECTRAL_CONFIG_FILE`)

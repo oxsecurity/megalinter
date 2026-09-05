@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **kingfisher** (MegaLinter key: `REPOSITORY_KINGFISHER`)
 - Descriptor: **REPOSITORY** (other)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/repository_kingfisher/>
+- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/repository_kingfisher/>
 - Official documentation: <https://github.com/mongodb/kingfisher>
 - Auto-fix support: no (errors must be fixed manually)
 - Rules index: <https://mongodb.github.io/kingfisher/rules/builtin-rules>

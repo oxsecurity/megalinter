@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **npm-groovy-lint** (MegaLinter key: `GROOVY_NPM_GROOVY_LINT`)
 - Descriptor: **GROOVY** (language)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/groovy_npm_groovy_lint/>
+- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/groovy_npm_groovy_lint/>
 - Official documentation: <https://nvuillam.github.io/npm-groovy-lint/>
 - Auto-fix support: **yes** — add `GROOVY_NPM_GROOVY_LINT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter GROOVY_NPM_GROOVY_LINT --fix` (runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: use `npx mega-linter-runner@beta` only when that property is `beta`)
 - Configuration file: `.groovylintrc.json` (custom path can be defined with `GROOVY_NPM_GROOVY_LINT_CONFIG_FILE`)

@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **code-analyzer-flow** (MegaLinter key: `SALESFORCE_CODE_ANALYZER_FLOW`)
 - Descriptor: **SALESFORCE** (language)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/salesforce_code_analyzer_flow/>
+- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/salesforce_code_analyzer_flow/>
 - Official documentation: <https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/engine-flow.html>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `code-analyzer-flow.yml` (custom path can be defined with `SALESFORCE_CODE_ANALYZER_FLOW_CONFIG_FILE`)

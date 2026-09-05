@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **stylelint** (MegaLinter key: `CSS_STYLELINT`)
 - Descriptor: **CSS** (format)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/css_stylelint/>
+- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/css_stylelint/>
 - Official documentation: <https://stylelint.io>
 - Auto-fix support: **yes** — add `CSS_STYLELINT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter CSS_STYLELINT --fix` (runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: use `npx mega-linter-runner@beta` only when that property is `beta`)
 - Configuration file: `.stylelintrc.json` (custom path can be defined with `CSS_STYLELINT_CONFIG_FILE`)

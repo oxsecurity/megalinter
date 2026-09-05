@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **shellcheck** (MegaLinter key: `BASH_SHELLCHECK`)
 - Descriptor: **BASH** (language)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/bash_shellcheck/>
+- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/bash_shellcheck/>
 - Official documentation: <https://github.com/koalaman/shellcheck>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.shellcheckrc` (custom path can be defined with `BASH_SHELLCHECK_CONFIG_FILE`)

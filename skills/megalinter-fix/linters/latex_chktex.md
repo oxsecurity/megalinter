@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **chktex** (MegaLinter key: `LATEX_CHKTEX`)
 - Descriptor: **LATEX** (format)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/latex_chktex/>
+- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/latex_chktex/>
 - Official documentation: <https://www.nongnu.org/chktex>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.chktexrc` (custom path can be defined with `LATEX_CHKTEX_CONFIG_FILE`)

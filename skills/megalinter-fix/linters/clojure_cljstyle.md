@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **cljstyle** (MegaLinter key: `CLOJURE_CLJSTYLE`)
 - Descriptor: **CLOJURE** (language)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/clojure_cljstyle/>
+- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/clojure_cljstyle/>
 - Official documentation: <https://github.com/greglook/cljstyle>
 - Auto-fix support: **yes** — add `CLOJURE_CLJSTYLE` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter CLOJURE_CLJSTYLE --fix` (runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: use `npx mega-linter-runner@beta` only when that property is `beta`)
 - Configuration file: `.cljstyle` (custom path can be defined with `CLOJURE_CLJSTYLE_CONFIG_FILE`)

@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **jsonlint** (MegaLinter key: `JSON_JSONLINT`)
 - Descriptor: **JSON** (format)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/json_jsonlint/>
+- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/json_jsonlint/>
 - Official documentation: <https://github.com/prantlf/jsonlint>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.jsonlintrc` (custom path can be defined with `JSON_JSONLINT_CONFIG_FILE`)

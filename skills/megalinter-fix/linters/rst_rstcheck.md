@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **rstcheck** (MegaLinter key: `RST_RSTCHECK`)
 - Descriptor: **RST** (format)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/rst_rstcheck/>
+- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/rst_rstcheck/>
 - Official documentation: <https://github.com/myint/rstcheck>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.rstcheck.cfg` (custom path can be defined with `RST_RSTCHECK_CONFIG_FILE`)

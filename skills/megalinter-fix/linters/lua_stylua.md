@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **stylua** (MegaLinter key: `LUA_STYLUA`)
 - Descriptor: **LUA** (language)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/lua_stylua/>
+- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/lua_stylua/>
 - Official documentation: <https://github.com/JohnnyMorganz/StyLua>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `stylua.toml` (custom path can be defined with `LUA_STYLUA_CONFIG_FILE`)

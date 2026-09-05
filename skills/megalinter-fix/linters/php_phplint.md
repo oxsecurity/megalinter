@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **phplint** (MegaLinter key: `PHP_PHPLINT`)
 - Descriptor: **PHP** (language)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/php_phplint/>
+- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/php_phplint/>
 - Official documentation: <https://github.com/overtrue/phplint>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.phplint.yml` (custom path can be defined with `PHP_PHPLINT_CONFIG_FILE`)

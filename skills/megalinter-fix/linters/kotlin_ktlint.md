@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **ktlint** (MegaLinter key: `KOTLIN_KTLINT`)
 - Descriptor: **KOTLIN** (language)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/kotlin_ktlint/>
+- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/kotlin_ktlint/>
 - Official documentation: <https://ktlint.github.io>
 - Auto-fix support: **yes** — add `KOTLIN_KTLINT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter KOTLIN_KTLINT --fix` (runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: use `npx mega-linter-runner@beta` only when that property is `beta`)
 - Rules index: <https://ktlint.github.io/#rules>

@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **cspell** (MegaLinter key: `SPELL_CSPELL`)
 - Descriptor: **SPELL** (other)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/spell_cspell/>
+- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/spell_cspell/>
 - Official documentation: <https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.cspell.json` (custom path can be defined with `SPELL_CSPELL_CONFIG_FILE`)

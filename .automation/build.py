@@ -4474,6 +4474,23 @@ def generate_version():
     # git add , commit & tag
     repo = git.Repo(os.getcwd())
     repo.git.add(update=True)
+    # add(update=True) stages tracked files only, so a page generated for the first
+    # time (the license page of a new linter, a new descriptor doc…) silently missed
+    # every release and ended up as a dead link on megalinter.io. Stage the untracked
+    # files of the generated folders too (untracked_files already honors .gitignore).
+    generated_dirs = (
+        "docs/",
+        "linters/",
+        "flavors/",
+        "skills/",
+        ".automation/generated/",
+    )
+    new_generated_files = [
+        file for file in repo.untracked_files if file.startswith(generated_dirs)
+    ]
+    if len(new_generated_files) > 0:
+        logging.info("Staging newly generated files: " + ", ".join(new_generated_files))
+        repo.git.add("--", *new_generated_files)
     repo.git.commit("-m", "Release MegaLinter " + RELEASE_TAG)
     repo.create_tag(RELEASE_TAG)
 

@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **v8r** (MegaLinter key: `YAML_V8R`)
 - Descriptor: **YAML** (format)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/yaml_v8r/>
+- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/yaml_v8r/>
 - Official documentation: <https://github.com/chris48s/v8r>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.v8rrc.yml` (custom path can be defined with `YAML_V8R_CONFIG_FILE`)

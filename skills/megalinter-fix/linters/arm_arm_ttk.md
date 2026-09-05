@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **arm-ttk** (MegaLinter key: `ARM_ARM_TTK`)
 - Descriptor: **ARM** (tooling_format)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/arm_arm_ttk/>
+- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/arm_arm_ttk/>
 - Official documentation: <https://github.com/Azure/arm-ttk>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.arm-ttk.psd1` (custom path can be defined with `ARM_ARM_TTK_CONFIG_FILE`)

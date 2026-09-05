@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **swiftlint** (MegaLinter key: `SWIFT_SWIFTLINT`)
 - Descriptor: **SWIFT** (language)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/swift_swiftlint/>
+- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/swift_swiftlint/>
 - Official documentation: <https://github.com/realm/SwiftLint>
 - Auto-fix support: **yes** — add `SWIFT_SWIFTLINT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter SWIFT_SWIFTLINT --fix` (runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: use `npx mega-linter-runner@beta` only when that property is `beta`)
 - Configuration file: `.swiftlint.yml` (custom path can be defined with `SWIFT_SWIFTLINT_CONFIG_FILE`)

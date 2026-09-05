@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **cpplint** (MegaLinter key: `CPP_CPPLINT`)
 - Descriptor: **CPP** (language)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/cpp_cpplint/>
+- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/cpp_cpplint/>
 - Official documentation: <https://github.com/cpplint/cpplint>
 - Auto-fix support: no (errors must be fixed manually)
 - Rules index: <https://google.github.io/styleguide/cppguide.html>

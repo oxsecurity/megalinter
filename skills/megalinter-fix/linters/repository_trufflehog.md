@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **trufflehog** (MegaLinter key: `REPOSITORY_TRUFFLEHOG`)
 - Descriptor: **REPOSITORY** (other)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/repository_trufflehog/>
+- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/repository_trufflehog/>
 - Official documentation: <https://github.com/trufflesecurity/trufflehog>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.trufflehog.yml` (custom path can be defined with `REPOSITORY_TRUFFLEHOG_CONFIG_FILE`)

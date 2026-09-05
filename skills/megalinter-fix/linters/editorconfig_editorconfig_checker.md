@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **editorconfig-checker** (MegaLinter key: `EDITORCONFIG_EDITORCONFIG_CHECKER`)
 - Descriptor: **EDITORCONFIG** (tooling_format)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/editorconfig_editorconfig_checker/>
+- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/editorconfig_editorconfig_checker/>
 - Official documentation: <https://editorconfig-checker.github.io/>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.editorconfig-checker.json` (custom path can be defined with `EDITORCONFIG_EDITORCONFIG_CHECKER_CONFIG_FILE`)

@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **trivy-sbom** (MegaLinter key: `REPOSITORY_TRIVY_SBOM`)
 - Descriptor: **REPOSITORY** (other)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/repository_trivy_sbom/>
+- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/repository_trivy_sbom/>
 - Official documentation: <https://aquasecurity.github.io/trivy/>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `trivy-sbom.yaml` (custom path can be defined with `REPOSITORY_TRIVY_SBOM_CONFIG_FILE`)

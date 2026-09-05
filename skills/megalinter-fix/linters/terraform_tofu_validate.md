@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **tofu-validate** (MegaLinter key: `TERRAFORM_TOFU_VALIDATE`)
 - Descriptor: **TERRAFORM** (tooling_format)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/terraform_tofu_validate/>
+- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/terraform_tofu_validate/>
 - Official documentation: <https://opentofu.org/docs/cli/commands/validate/>
 - Auto-fix support: no (errors must be fixed manually)
 - Rules index: <https://opentofu.org/docs/cli/commands/validate/>

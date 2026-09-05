@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **tflint** (MegaLinter key: `TERRAFORM_TFLINT`)
 - Descriptor: **TERRAFORM** (tooling_format)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/terraform_tflint/>
+- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/terraform_tflint/>
 - Official documentation: <https://github.com/terraform-linters/tflint>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.tflint.hcl` (custom path can be defined with `TERRAFORM_TFLINT_CONFIG_FILE`)

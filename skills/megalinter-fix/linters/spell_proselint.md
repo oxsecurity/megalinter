@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **proselint** (MegaLinter key: `SPELL_PROSELINT`)
 - Descriptor: **SPELL** (other)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/spell_proselint/>
+- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/spell_proselint/>
 - Official documentation: <https://github.com/amperser/proselint>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.proselintrc.json` (custom path can be defined with `SPELL_PROSELINT_CONFIG_FILE`)

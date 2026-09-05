@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **actionlint** (MegaLinter key: `ACTION_ACTIONLINT`)
 - Descriptor: **ACTION** (tooling_format)
-- MegaLinter documentation: <https://megalinter.io/beta/descriptors/action_actionlint/>
+- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/action_actionlint/>
 - Official documentation: <https://rhysd.github.io/actionlint/>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `actionlint.yml` (custom path can be defined with `ACTION_ACTIONLINT_CONFIG_FILE`)
