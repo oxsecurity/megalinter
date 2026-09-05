@@ -15,6 +15,7 @@
 #   python tick_dashboard.py --issue 3630 --repo oxsecurity/megalinter
 
 import argparse
+import io
 import json
 import os
 import re
@@ -25,7 +26,8 @@ import tempfile
 # Renovate labels checkboxes with emoji; the Windows console defaults to cp1252
 # and would crash printing them.
 for _stream in (sys.stdout, sys.stderr):
-    _stream.reconfigure(encoding="utf-8", errors="replace")
+    if isinstance(_stream, io.TextIOWrapper):
+        _stream.reconfigure(encoding="utf-8", errors="replace")
 
 DASHBOARD_TITLE_DEFAULT = "Dependency Dashboard"
 RENOVATE_AUTHORS = ("app/renovate", "renovate[bot]", "renovate-bot")
