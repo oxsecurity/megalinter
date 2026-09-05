@@ -11924,6 +11924,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v1010-2026-09-05" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        [v10.1.0] - 2026-09-05
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v1000-2026-08-08" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -13692,6 +13703,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v1010-2026-09-05" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        [v10.1.0] - 2026-09-05
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v1000-2026-08-08" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -15401,21 +15423,75 @@
 <li>Breaking changes</li>
 </ul>
 <ul>
+<li>Core</li>
+</ul>
+<ul>
+<li>New linters</li>
+</ul>
+<ul>
+<li>Disabled linters</li>
+</ul>
+<ul>
+<li>Re-enabled linters</li>
+</ul>
+<ul>
+<li>Deprecated linters</li>
+</ul>
+<ul>
+<li>Removed linters</li>
+</ul>
+<ul>
+<li>Media</li>
+</ul>
+<ul>
+<li>Linters enhancements</li>
+</ul>
+<ul>
+<li>Fixes</li>
+</ul>
+<ul>
+<li>Reporters</li>
+</ul>
+<ul>
+<li>Flavors</li>
+</ul>
+<ul>
+<li>Doc</li>
+</ul>
+<ul>
+<li>mega-linter-runner</li>
+</ul>
+<ul>
+<li>Agent Skills</li>
+</ul>
+<ul>
+<li>Dev</li>
+</ul>
+<ul>
+<li>CI</li>
+</ul>
+<ul>
+<li>Linter versions upgrades (N)</li>
+</ul>
+<!-- linter-versions-end -->
+
+<h2 id="v1010-2026-09-05">[v10.1.0] - 2026-09-05</h2>
+<ul>
 <li>Core<ul>
-<li>MegaLinter now prints a <strong>crash traceback</strong> when it is killed by a fatal signal (<code>SIGSEGV</code>, <code>SIGBUS</code>…), instead of exiting silently with no clue about what happened</li>
-<li>The <strong>LLM Advisor</strong> supports a new provider, <strong>OrcaRouter</strong>, an OpenAI-compatible AI gateway: set <strong><code>LLM_PROVIDER: orcarouter</code></strong> and <strong><code>ORCAROUTER_API_KEY</code></strong> in your environment to get fix suggestions routed through <a href="https://www.orcarouter.ai">OrcaRouter</a> (see the <a href="https://megalinter.io/latest/llm-provider/llm_provider_orcarouter/">OrcaRouter provider page</a>)</li>
+<li>MegaLinter now prints a <strong>crash traceback</strong> when it is killed by a fatal signal (<code>SIGSEGV</code>, <code>SIGBUS</code>…), instead of exiting silently with no clue about what happened (#8779)</li>
+<li>The <strong>LLM Advisor</strong> supports a new provider, <strong>OrcaRouter</strong>, an OpenAI-compatible AI gateway: set <strong><code>LLM_PROVIDER: orcarouter</code></strong> and <strong><code>ORCAROUTER_API_KEY</code></strong> in your environment to get fix suggestions routed through <a href="https://www.orcarouter.ai">OrcaRouter</a> (see the <a href="https://megalinter.io/latest/llm-provider/llm_provider_orcarouter/">OrcaRouter provider page</a>) (#8826)</li>
 </ul>
 </li>
 </ul>
 <ul>
 <li>New linters<ul>
-<li><strong><a href="https://biomejs.dev">biome</a></strong>, one fast toolchain linting, formatting and sorting imports of JavaScript, TypeScript, JSX, TSX, JSON, CSS and GraphQL files, available as <strong>JAVASCRIPT_BIOME</strong>, <strong>TYPESCRIPT_BIOME</strong>, <strong>JSX_BIOME</strong>, <strong>TSX_BIOME</strong>, <strong>JSON_BIOME</strong>, <strong>CSS_BIOME</strong> and <strong>GRAPHQL_BIOME</strong><ul>
+<li><strong><a href="https://biomejs.dev">biome</a></strong>, one fast toolchain linting, formatting and sorting imports of JavaScript, TypeScript, JSX, TSX, JSON, CSS and GraphQL files, available as <strong>JAVASCRIPT_BIOME</strong>, <strong>TYPESCRIPT_BIOME</strong>, <strong>JSX_BIOME</strong>, <strong>TSX_BIOME</strong>, <strong>JSON_BIOME</strong>, <strong>CSS_BIOME</strong> and <strong>GRAPHQL_BIOME</strong> (#8706)<ul>
 <li>Activated only when a <strong>biome.json</strong> or <strong>biome.jsonc</strong> configuration file is found in the repository</li>
 <li>Supports <strong>APPLY_FIXES</strong> (safe fixes with <code>--write</code>) and native <strong>SARIF</strong> output</li>
 <li><code>EXCLUDED_DIRECTORIES</code> are forwarded in project lint mode through a generated configuration extending the workspace one</li>
 </ul>
 </li>
-<li><strong><a href="https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/engine-apexguru.html">ApexGuru</a></strong>, the AI-driven engine of <strong>Salesforce Code Analyzer</strong>, available as <strong>SALESFORCE_CODE_ANALYZER_APEXGURU</strong><ul>
+<li><strong><a href="https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/engine-apexguru.html">ApexGuru</a></strong>, the AI-driven engine of <strong>Salesforce Code Analyzer</strong>, available as <strong>SALESFORCE_CODE_ANALYZER_APEXGURU</strong> (#8820)<ul>
 <li>Detects <strong>SOQL inefficiencies</strong>, critical anti-patterns and scalability hotspots in your <code>.cls</code> and <code>.trigger</code> files, with line-level highlights, severity ratings and suggested fixes</li>
 <li>The analysis runs <strong>in a connected Salesforce org</strong>, not locally: store the <a href="https://developer.salesforce.com/docs/platform/salesforce-cli-reference/guide/cli_reference_org_display.html">auth url</a> of the target org in a CI secret named <strong><code>SFDX_AUTH_URL</code></strong>, and MegaLinter logs in to that org before the scan</li>
 <li>The scan is sent to that org <strong>explicitly</strong>, so a <code>.sfdx/sfdx-config.json</code> left at the root of the repository, usually naming a long gone scratch org, can not hijack it</li>
@@ -15444,8 +15520,8 @@
 </ul>
 <ul>
 <li>Disabled linters<ul>
-<li><strong>COFFEE_COFFEELINT</strong> is disabled: CoffeeScript tooling is discontinued, and coffeelint can not receive <code>EXCLUDED_DIRECTORIES</code> in project lint mode (it has no exclusion option and reads <code>.coffeelintignore</code> only from its working directory). The linter will be removed in a future version</li>
-<li><strong>GRAPHQL_GRAPHQL_SCHEMA_LINTER</strong> is disabled: <a href="https://github.com/cjoudrey/graphql-schema-linter">graphql-schema-linter</a> is unmaintained, with no release or commit since May 2022, and its peer dependency range pins <strong>graphql</strong> to <code>^15 || ^16</code>, which held the whole GraphQL install back from <strong>graphql v17</strong>. Use <strong><a href="https://megalinter.io/latest/descriptors/graphql_biome/">GRAPHQL_BIOME</a></strong> to lint your GraphQL files. The linter will be removed in a future version</li>
+<li><strong>COFFEE_COFFEELINT</strong> is disabled: CoffeeScript tooling is discontinued, and coffeelint can not receive <code>EXCLUDED_DIRECTORIES</code> in project lint mode (it has no exclusion option and reads <code>.coffeelintignore</code> only from its working directory). The linter will be removed in a future version (#8720)</li>
+<li><strong>GRAPHQL_GRAPHQL_SCHEMA_LINTER</strong> is disabled: <a href="https://github.com/cjoudrey/graphql-schema-linter">graphql-schema-linter</a> is unmaintained, with no release or commit since May 2022, and its peer dependency range pins <strong>graphql</strong> to <code>^15 || ^16</code>, which held the whole GraphQL install back from <strong>graphql v17</strong>. Use <strong><a href="https://megalinter.io/latest/descriptors/graphql_biome/">GRAPHQL_BIOME</a></strong> to lint your GraphQL files. The linter will be removed in a future version (#8894)</li>
 </ul>
 </li>
 </ul>
@@ -15460,24 +15536,15 @@
 </li>
 </ul>
 <ul>
-<li>Deprecated linters</li>
-</ul>
-<ul>
-<li>Removed linters</li>
-</ul>
-<ul>
-<li>Media</li>
-</ul>
-<ul>
 <li>Linters enhancements<ul>
 <li><strong>TERRAFORM_TFLINT</strong> now documents the tflint native <strong><code>GITHUB_TOKEN_github_com</code></strong> variable to authenticate plugin downloads on github.com, which is the recommended way to fix <code>tflint --init</code> failures when your <code>GITHUB_TOKEN</code> targets a GitHub Enterprise instance (<a href="https://github.com/oxsecurity/megalinter/issues/8795">#8795</a>)<ul>
 <li>Set your github.com token in <code>GITHUB_TOKEN_github_com</code>, then list it in <code>TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES</code>: tflint gives it priority over <code>GITHUB_TOKEN</code>, which other linters and reporters keep using</li>
 <li><strong><code>PAT_GITHUB_COM</code> is deprecated</strong>: it still works and now logs a warning, and will be removed in a future major release</li>
 </ul>
 </li>
-<li><strong>CLOJURE_CLJSTYLE</strong> now forwards <code>EXCLUDED_DIRECTORIES</code> through its native repeatable <code>--ignore</code> argument, instead of a temporary <code>.cljstyle</code> written in your repository. Exclusions are now also applied when your repository already has a <code>.cljstyle</code> config, whose own ignore patterns are preserved</li>
-<li><strong>SQL_SQLFLUFF</strong> does not receive <code>EXCLUDED_DIRECTORIES</code> in <code>project</code> lint mode anymore: sqlfluff reads path exclusions only from a <code>.sqlfluffignore</code>, <code>.sqlfluff</code> or <code>pyproject.toml</code> located inside the analyzed sources, where MegaLinter used to write a temporary file. List the directories to skip in your own <code>.sqlfluffignore</code>, or keep the default <code>list_of_files</code> lint mode where MegaLinter filters the files itself</li>
-<li><strong>SARIF output</strong> is now available for 13 more linters: <strong>zizmor</strong>, <strong>bicep_linter</strong>, <strong>cppcheck</strong>, <strong>clj-kondo</strong>, <strong>roslynator</strong>, <strong>htmlhint</strong>, <strong>protolint</strong>, <strong>sqlfluff</strong>, <strong>swiftlint</strong>, <strong>osv-scanner</strong>, <strong>trufflehog</strong>, <strong>jscpd</strong> and <strong>lintr</strong>. Enable it the same way as any other SARIF-capable linter, with <code>SARIF_REPORTER: true</code> (optionally scoped with <code>SARIF_REPORTER_LINTERS</code>)<ul>
+<li><strong>CLOJURE_CLJSTYLE</strong> now forwards <code>EXCLUDED_DIRECTORIES</code> through its native repeatable <code>--ignore</code> argument, instead of a temporary <code>.cljstyle</code> written in your repository. Exclusions are now also applied when your repository already has a <code>.cljstyle</code> config, whose own ignore patterns are preserved (#8720)</li>
+<li><strong>SQL_SQLFLUFF</strong> does not receive <code>EXCLUDED_DIRECTORIES</code> in <code>project</code> lint mode anymore: sqlfluff reads path exclusions only from a <code>.sqlfluffignore</code>, <code>.sqlfluff</code> or <code>pyproject.toml</code> located inside the analyzed sources, where MegaLinter used to write a temporary file. List the directories to skip in your own <code>.sqlfluffignore</code>, or keep the default <code>list_of_files</code> lint mode where MegaLinter filters the files itself (#8720)</li>
+<li><strong>SARIF output</strong> is now available for 13 more linters: <strong>zizmor</strong>, <strong>bicep_linter</strong>, <strong>cppcheck</strong>, <strong>clj-kondo</strong>, <strong>roslynator</strong>, <strong>htmlhint</strong>, <strong>protolint</strong>, <strong>sqlfluff</strong>, <strong>swiftlint</strong>, <strong>osv-scanner</strong>, <strong>trufflehog</strong>, <strong>jscpd</strong> and <strong>lintr</strong>. Enable it the same way as any other SARIF-capable linter, with <code>SARIF_REPORTER: true</code> (optionally scoped with <code>SARIF_REPORTER_LINTERS</code>) (#8715)<ul>
 <li>The 4 <strong>Salesforce Code Analyzer</strong> engines (<code>SALESFORCE_CODE_ANALYZER_APEX</code>, <code>_AURA</code>, <code>_LWC</code>, <code>_FLOW</code>) also gained SARIF output: their report switches from CSV to SARIF automatically when SARIF reporting is requested</li>
 <li><code>csharp_roslynator</code> is bumped from 0.12.0 to <strong>0.13.0</strong>, the first release including its SARIF output support</li>
 <li><code>clj-kondo</code>'s upstream SARIF output currently nests the <code>region</code> property one level too deep, which may affect line/column display in strict SARIF consumers (clj-kondo/clj-kondo#2345)</li>
@@ -15505,8 +15572,8 @@
 </ul>
 </li>
 <li>Fixed random <strong><code>Segmentation fault</code></strong> crashes of MegaLinter itself, which stopped the whole run with no error message (<a href="https://github.com/oxsecurity/megalinter/issues/8733">#8733</a>). MegaLinter threads now get a full-size stack instead of the 128 KiB default of the Alpine images</li>
-<li>Fixed leaked <strong><code>git</code> processes</strong> when <strong>APPLY_FIXES</strong> is active: one was left behind by every fixer linter, which could exhaust the available file descriptors on long runs</li>
-<li>Fixed <strong>random crashes of project-mode linters</strong> (<code>REPOSITORY_TRIVY</code>, <code>REPOSITORY_GRYPE</code>, <code>REPOSITORY_SYFT</code>…) caused by MegaLinter writing temporary ignore files inside the analyzed sources: a file appearing then disappearing while another linter walked the repository aborted its scan (<code>walk dir error: ... no such file or directory</code>). <strong>MegaLinter now writes only in REPORT_OUTPUT_FOLDER</strong>, never in your sources</li>
+<li>Fixed leaked <strong><code>git</code> processes</strong> when <strong>APPLY_FIXES</strong> is active: one was left behind by every fixer linter, which could exhaust the available file descriptors on long runs (#8779)</li>
+<li>Fixed <strong>random crashes of project-mode linters</strong> (<code>REPOSITORY_TRIVY</code>, <code>REPOSITORY_GRYPE</code>, <code>REPOSITORY_SYFT</code>…) caused by MegaLinter writing temporary ignore files inside the analyzed sources: a file appearing then disappearing while another linter walked the repository aborted its scan (<code>walk dir error: ... no such file or directory</code>). <strong>MegaLinter now writes only in REPORT_OUTPUT_FOLDER</strong>, never in your sources (#8720)</li>
 <li><strong>EXCLUDED_DIRECTORIES</strong> and <strong>ADDITIONAL_EXCLUDED_DIRECTORIES</strong> are now forwarded to <code>project</code> lint mode linters even when the directory is <strong>nested</strong>, not only when it sits at the root of your repository (<a href="https://github.com/oxsecurity/megalinter/issues/8806">#8806</a>)<ul>
 <li>A directory like <code>infrastructure/cdk.out</code> was previously scanned anyway, for example by <strong>REPOSITORY_BETTERLEAKS</strong>, which reported findings in generated files</li>
 <li>Excluded entries are now looked up the same way MegaLinter filters files: by <strong>directory name, at any nesting level</strong></li>
@@ -15516,19 +15583,19 @@
 <li>Looking up the excluded directories <strong>never descends</strong> into an excluded directory, and costs <strong>no extra repository scan</strong>: it reuses the one MegaLinter already does to list your files, and falls back to a single scan when only changed files are analyzed</li>
 </ul>
 </li>
-<li><strong>REPOSITORY_TRUFFLEHOG</strong> does not silently skip findings anymore in a directory whose name merely <strong>ends with</strong> an excluded one: with <code>dist</code> excluded, secrets in <code>my-dist/</code> were not reported</li>
-<li><strong>REPORT_OUTPUT_FOLDER</strong> is now always excluded from what linters analyze, even when you override <code>EXCLUDED_DIRECTORIES</code>, and even when the folder does not exist yet when a linter starts</li>
-<li>The <strong>API reporter</strong> variables (<code>API_REPORTER</code>, <code>API_REPORTER_URL</code>…) are not flagged as <strong>deprecated</strong> anymore in the configuration JSON schema: they were collateral damage of the removal of the <code>API</code> descriptor in v10.0.0, and IDEs displayed them as obsolete</li>
+<li><strong>REPOSITORY_TRUFFLEHOG</strong> does not silently skip findings anymore in a directory whose name merely <strong>ends with</strong> an excluded one: with <code>dist</code> excluded, secrets in <code>my-dist/</code> were not reported (#8811)</li>
+<li><strong>REPORT_OUTPUT_FOLDER</strong> is now always excluded from what linters analyze, even when you override <code>EXCLUDED_DIRECTORIES</code>, and even when the folder does not exist yet when a linter starts (#8720)</li>
+<li>The <strong>API reporter</strong> variables (<code>API_REPORTER</code>, <code>API_REPORTER_URL</code>…) are not flagged as <strong>deprecated</strong> anymore in the configuration JSON schema: they were collateral damage of the removal of the <code>API</code> descriptor in v10.0.0, and IDEs displayed them as obsolete (#8718)</li>
 <li><strong>REPOSITORY_BETTERLEAKS</strong> does not crash the whole MegaLinter run anymore when <code>REPOSITORY_BETTERLEAKS_PR_COMMITS_SCAN: true</code> is used on <strong>Azure Pipelines</strong> with the default shallow checkout (<a href="https://github.com/oxsecurity/megalinter/issues/8732">#8732</a>)<ul>
 <li>The target branch commit is now searched across several reference spellings, so a branch available only locally is found too</li>
 <li>When the Pull Request commit range can not be determined — on any platform — betterleaks now logs a <strong>warning explaining how to fix your checkout</strong> and scans the whole repository, instead of aborting the run</li>
 <li>The <strong>Pull Request scan setup documentation</strong> lost when gitleaks was replaced by betterleaks is restored on the <a href="https://megalinter.io/latest/descriptors/repository_betterleaks/">betterleaks page</a>: checkout depth for each platform, Azure Pipelines variables to forward to the container, and how to compute the SHAs yourself (<a href="https://github.com/oxsecurity/megalinter/issues/8731">#8731</a>)</li>
 </ul>
 </li>
-<li><strong>Bitbucket Pipelines</strong> is now recognized as a Pull Request context: <code>PULL_REQUEST</code> optimizations that were silently skipped there are applied again<ul>
+<li>The <strong>REPOSITORY_BETTERLEAKS Pull Request scan variables</strong> (<code>REPOSITORY_BETTERLEAKS_PR_COMMITS_SCAN</code>, <code>REPOSITORY_BETTERLEAKS_PR_SOURCE_SHA</code>, <code>REPOSITORY_BETTERLEAKS_PR_TARGET_SHA</code>) are now declared in the configuration JSON schema, so your IDE stops flagging them as unknown keys in <code>.mega-linter.yml</code> (#8805)</li>
+<li><strong>Bitbucket Pipelines</strong> is now recognized as a Pull Request context: <code>PULL_REQUEST</code> optimizations that were silently skipped there are applied again (#8780)<ul>
 <li><strong>REPOSITORY_CHECKOV</strong> and <strong>REPOSITORY_BETTERLEAKS</strong> only analyze the Pull Request changes when asked to</li>
 <li>Set <code>BITBUCKET_PR_ID</code> in your pipeline (Bitbucket provides it on Pull Request builds) to benefit from it</li>
-<li>Fixed JSON config schema for Betterleaks</li>
 </ul>
 </li>
 <li>A run where all linters pass does not <strong>exit with an error</strong> anymore when MegaLinter can not list the files updated by the linters (<a href="https://github.com/oxsecurity/megalinter/issues/8649">#8649</a>)<ul>
@@ -15555,48 +15622,45 @@
 </li>
 </ul>
 <ul>
-<li>Flavors</li>
-</ul>
-<ul>
 <li>Doc<ul>
 <li><strong>Comments are back</strong> at the bottom of every documentation page, powered by <a href="https://giscus.app/">Giscus</a> and backed by <a href="https://github.com/oxsecurity/megalinter/discussions">MegaLinter GitHub Discussions</a>: ask a question or share a tip right from the page it applies to. The previous utteranc.es widget had silently stopped rendering</li>
-<li><a href="https://megalinter.io/">megalinter.io</a> gets a <strong>dark mode</strong>: use the toggle in the header, or let it follow your system preference</li>
-<li>Refreshed <strong>look and feel</strong>, aligned with the <a href="https://www.ox.security/?ref=megalinter">OX Security</a> brand: navy, indigo and lime replace the previous purple palette, and the <strong>Satoshi</strong> typeface is now actually loaded (it was silently falling back to the default font)</li>
-<li>New <strong>Docker pulls per month</strong> graph, showing the growth of MegaLinter adoption since October 2020, displayed in the README and on the <a href="https://megalinter.io/latest/flavors-stats/">Flavors statistics</a> page</li>
-<li>Refreshed the <strong>MegaLinter references in linters documentation</strong> (<code>linter_megalinter_ref_url</code>): verified all existing links, updated moved pages (ktlint, robocop, csharpier, zizmor, ruff, proselint), and opened 47 suggestion PRs on linters repositories that did not mention MegaLinter yet</li>
-<li>New <strong>Security linting with ESLint</strong> section in the JAVASCRIPT_ES and TYPESCRIPT_ES documentation: states that no security plugin is bundled, shows the <code>PRE_COMMANDS</code> recipe and the <code>createRequire</code> reference needed under flat config, and lists commonly used plugins. Closes the gap left by the "Security Issues (with security plugins)" line, which previously named no plugin and had no working example</li>
+<li><a href="https://megalinter.io/">megalinter.io</a> gets a <strong>dark mode</strong>: use the toggle in the header, or let it follow your system preference (#8848)</li>
+<li>Refreshed <strong>look and feel</strong>, aligned with the <a href="https://www.ox.security/?ref=megalinter">OX Security</a> brand: navy, indigo and lime replace the previous purple palette, and the <strong>Satoshi</strong> typeface is now actually loaded (it was silently falling back to the default font) (#8848)</li>
+<li>New <strong>Docker pulls per month</strong> graph, showing the growth of MegaLinter adoption since October 2020, displayed in the README and on the <a href="https://megalinter.io/latest/flavors-stats/">Flavors statistics</a> page (#8698)</li>
+<li>Refreshed the <strong>MegaLinter references in linters documentation</strong> (<code>linter_megalinter_ref_url</code>): verified all existing links, updated moved pages (ktlint, robocop, csharpier, zizmor, ruff, proselint), and opened 47 suggestion PRs on linters repositories that did not mention MegaLinter yet (#8701, #8777)</li>
+<li>New <strong>Security linting with ESLint</strong> section in the JAVASCRIPT_ES and TYPESCRIPT_ES documentation: states that no security plugin is bundled, shows the <code>PRE_COMMANDS</code> recipe and the <code>createRequire</code> reference needed under flat config, and lists commonly used plugins. Closes the gap left by the "Security Issues (with security plugins)" line, which previously named no plugin and had no working example (#8712)</li>
 </ul>
 </li>
 </ul>
 <ul>
 <li>mega-linter-runner<ul>
-<li><strong>Node.js 22 or higher</strong> is now required (was 20)</li>
-<li><strong>8 npm dependencies removed</strong> (<code>chalk</code>, <code>fs-extra</code>, <code>which</code>, <code>uuid</code>, <code>find-package-json</code>, <code>simple-git</code>, <code>mem-fs</code>, <code>assert</code>), replaced by Node.js built-in modules: faster <code>npx mega-linter-runner</code> startup and a smaller supply-chain attack surface</li>
-<li>Fixed <code>mega-linter-runner --version</code> displaying <code>error</code> instead of the version when the <code>npm_package_version</code> environment variable is not set</li>
+<li><strong>Node.js 22 or higher</strong> is now required (was 20) (#8710)</li>
+<li><strong>8 npm dependencies removed</strong> (<code>chalk</code>, <code>fs-extra</code>, <code>which</code>, <code>uuid</code>, <code>find-package-json</code>, <code>simple-git</code>, <code>mem-fs</code>, <code>assert</code>), replaced by Node.js built-in modules: faster <code>npx mega-linter-runner</code> startup and a smaller supply-chain attack surface (#8710)</li>
+<li>Fixed <code>mega-linter-runner --version</code> displaying <code>error</code> instead of the version when the <code>npm_package_version</code> environment variable is not set (#8710)</li>
 </ul>
 </li>
 </ul>
 <ul>
 <li>Agent Skills<ul>
-<li>The MegaLinter <strong>agent plugin</strong> now ships its three sub-agents to <strong>GitHub Copilot</strong> clients (VS Code, Copilot CLI, the Copilot app)<ul>
+<li>The MegaLinter <strong>agent plugin</strong> now ships its three sub-agents to <strong>GitHub Copilot</strong> clients (VS Code, Copilot CLI, the Copilot app) (#8821)<ul>
 <li>Agent Plugins 1.0 standardizes skills but not sub-agents, so Copilot loads them from <code>com.github.copilot/agents</code>: the plugin now carries them there, generated from the Claude Code definitions so the two can not drift</li>
 <li><strong>megalinter-setup</strong> installs them correctly outside the plugin too: on Copilot the file name must end with <strong><code>.agent.md</code></strong> in <code>.github/agents/</code>, and the <code>model: haiku</code> override must be dropped</li>
 <li>The skills stop guessing how they were installed from the skill naming, which only some platforms namespace: the install mode is now read from the filesystem, and you are asked when it stays ambiguous</li>
 <li>The <code>licence</code> frontmatter key of the four skills is corrected to <strong><code>license</code></strong>, the spelling agents actually read</li>
 </ul>
 </li>
-<li><strong>megalinter-check</strong> now handles the commit MegaLinter pushes itself when the repository uses <code>APPLY_FIXES_MODE: commit</code><ul>
+<li><strong>megalinter-check</strong> now handles the commit MegaLinter pushes itself when the repository uses <code>APPLY_FIXES_MODE: commit</code> (#8713)<ul>
 <li>CI providers ignore pushes made with the CI token, so the branch used to stay stuck on the <strong>stale checks</strong> of the run that produced the fixes</li>
 <li>The commit is amended with a <strong>🤖</strong> prefix and re-pushed with <code>--force-with-lease</code>, which re-triggers the checks (you are asked first on the default branch)</li>
 <li>Nothing is amended when another commit landed after the auto-fix one, when it was already amended, or when you have local commits left to push — a normal push already re-triggers the checks in those cases</li>
 </ul>
 </li>
-<li><strong>megalinter-setup</strong> can now set up a <a href="https://megalinter.io/latest/custom-flavors/">custom flavor</a> repository on request, from creating the repository to publishing and maintaining the image<ul>
+<li><strong>megalinter-setup</strong> can now set up a <a href="https://megalinter.io/latest/custom-flavors/">custom flavor</a> repository on request, from creating the repository to publishing and maintaining the image (#8713)<ul>
 <li>It first looks for a custom flavor <strong>you already own or administer</strong>, to reuse or extend it instead of maintaining a second one</li>
 </ul>
 </li>
-<li><strong>megalinter-setup</strong> in upgrade mode now also updates the <strong>installed skills and sub-agents</strong> (<code>npx skills update</code>), so the guidance you run matches the MegaLinter version you just upgraded to</li>
-<li>The MegaLinter skills are now installable as an <strong>agent plugin</strong>, so one command brings the four skills and the three sub-agents at once, and keeps them updated<ul>
+<li><strong>megalinter-setup</strong> in upgrade mode now also updates the <strong>installed skills and sub-agents</strong> (<code>npx skills update</code>), so the guidance you run matches the MegaLinter version you just upgraded to (#8713)</li>
+<li>The MegaLinter skills are now installable as an <strong>agent plugin</strong>, so one command brings the four skills and the three sub-agents at once, and keeps them updated (#8791)<ul>
 <li><strong>Claude Code</strong>: <code>/plugin marketplace add oxsecurity/megalinter</code> then <code>/plugin install megalinter@megalinter</code></li>
 <li><strong>Cursor</strong>, <strong>GitHub Copilot</strong>, <strong>Codex</strong>, <strong>Gemini CLI</strong> and <strong>Antigravity</strong> each have their own install command, listed on the <a href="https://megalinter.io/latest/agent-plugins/">Coding Agents (Plugins)</a> page</li>
 <li>The sub-agents ship with the plugin on <strong>Claude Code</strong> and <strong>Cursor</strong>; elsewhere the skills install alone and run inline</li>
@@ -15608,12 +15672,12 @@
 </ul>
 <ul>
 <li>Dev<ul>
-<li><strong>REPOSITORY_TRUFFLEHOG tests no longer depend on a third-party endpoint.</strong> The good and bad fixtures differed only by a basic-auth credential that trufflehog validated over the network, so the whole test suite went red whenever the runner could not reach that site<ul>
+<li><strong>REPOSITORY_TRUFFLEHOG tests no longer depend on a third-party endpoint.</strong> The good and bad fixtures differed only by a basic-auth credential that trufflehog validated over the network, so the whole test suite went red whenever the runner could not reach that site (#8848)<ul>
 <li>The fixtures now differ by what is <strong>detected</strong>, the good ones carrying no secret material at all, and the tests drop <code>--only-verified</code>, which stays the production default</li>
 <li>The <code>.wireit</code> poison fixture gains a private key, so the excluded-directories forwarding guard actually fires instead of being vacuous</li>
 </ul>
 </li>
-<li>The documentation site is now built with <strong><a href="https://zensical.org/">Zensical</a></strong>, the successor of Material for MkDocs, replacing <code>mkdocs</code>, <code>mkdocs-material</code> and <code>mkdocs-glightbox</code><ul>
+<li>The documentation site is now built with <strong><a href="https://zensical.org/">Zensical</a></strong>, the successor of Material for MkDocs, replacing <code>mkdocs</code>, <code>mkdocs-material</code> and <code>mkdocs-glightbox</code> (#8848)<ul>
 <li><code>mkdocs.yml</code> stays the configuration file, so <code>.automation/build.py</code> nav generation is unchanged; <code>hatch run docs:serve</code> and <code>hatch run docs:build</code> now call <code>zensical</code></li>
 <li>Versioned deploys still use <strong>mike</strong>, from the Zensical-compatible fork <code>squidfunk/mike</code> pinned to a commit SHA and watched by a new Renovate custom manager</li>
 <li>The <code>Check MkDocs generation</code> workflow becomes <code>Check documentation generation</code> (<code>test-docs.yml</code>) and also runs on <code>docs/**</code> changes</li>
@@ -15626,24 +15690,24 @@
 <li>New <code>parallel_logging_test.py</code> runs a worker with every start method available on the platform and checks that its records reach the main process handlers</li>
 </ul>
 </li>
-<li><strong><code>replacement_env_vars</code></strong> is now declared in the MegaLinter configuration JSON schema (<code>command_info</code> definition, with its <code>var_src</code> / <code>var_dest</code> items) and documented in the <a href="https://megalinter.io/latest/config-precommands/">Pre-commands</a> page: it was implemented but validated by nothing, as <code>additionalProperties</code> is unset<ul>
+<li><strong><code>replacement_env_vars</code></strong> is now declared in the MegaLinter configuration JSON schema (<code>command_info</code> definition, with its <code>var_src</code> / <code>var_dest</code> items) and documented in the <a href="https://megalinter.io/latest/config-precommands/">Pre-commands</a> page: it was implemented but validated by nothing, as <code>additionalProperties</code> is unset (#8812)<ul>
 <li><code>pre_post_factory.build_command_env()</code> extracts the child environment build from <code>run_command()</code>, and resolves <code>var_src</code> from the raw configuration instead of the already secured environment, so a secured source variable is not copied as <code>HIDDEN_BY_MEGALINTER</code></li>
 </ul>
 </li>
-<li><strong>Crash diagnostics</strong>: <code>megalinter.run.enable_crash_diagnostics()</code> enables <code>faulthandler</code> and raises the thread stack size to 8 MiB (the glibc default) before any thread is started, and worker processes enable <code>faulthandler</code> too. musl gives threads a 128 KiB stack and CPython below 3.14.7 miscomputed its stack guard there (<a href="https://github.com/python/cpython/issues/148260">cpython#148260</a>), so C-level recursion in a thread - such as pickling the linter object graph in the <code>multiprocessing.Pool</code> handler threads, which reaches the whole <code>Megalinter</code> instance through <code>Linter.master</code> - crashed the process with <code>SIGSEGV</code> instead of raising <code>RecursionError</code><ul>
+<li><strong>Crash diagnostics</strong>: <code>megalinter.run.enable_crash_diagnostics()</code> enables <code>faulthandler</code> and raises the thread stack size to 8 MiB (the glibc default) before any thread is started, and worker processes enable <code>faulthandler</code> too. musl gives threads a 128 KiB stack and CPython below 3.14.7 miscomputed its stack guard there (<a href="https://github.com/python/cpython/issues/148260">cpython#148260</a>), so C-level recursion in a thread - such as pickling the linter object graph in the <code>multiprocessing.Pool</code> handler threads, which reaches the whole <code>Megalinter</code> instance through <code>Linter.master</code> - crashed the process with <code>SIGSEGV</code> instead of raising <code>RecursionError</code> (#8779)<ul>
 <li>Verified on <code>python:3.14.6-alpine</code>: pickling a deeply nested object in a thread exits with signal 11, and either raising the thread stack size or moving to <code>python:3.14.7-alpine</code> turns it into a plain <code>RecursionError</code></li>
 <li><code>faulthandler</code> can not report a stack overflow itself (the handler has no stack left to run on), which is why the crash in <a href="https://github.com/oxsecurity/megalinter/issues/8733">#8733</a> left no output at all; it does report every other fatal signal</li>
 </ul>
 </li>
-<li>The Docker images assert a <strong>Python 3.14.7 floor</strong> at build time, the first release carrying the CPython musl thread stack fixes. The <code>python:3.14-alpine3.24</code> tag stays floating because <code>renovate.json5</code> scopes the <code>dockerfile</code> manager away from the main <code>Dockerfile</code>, whose <code>FROM</code> lines are generated from descriptors</li>
-<li>Retired the <code>cli_lint_mode_project_exclude_workspace_file_name</code> descriptor property and the <code>write_workspace_generated_file()</code> helper, and removed the property from the descriptor JSON schema so a future descriptor can not silently reintroduce a write inside the analyzed sources. Exclusion forwarding now offers three mechanisms only: native CLI flag, generated ignore file in the report folder, generated config via <code>manage_excluded_directories_config()</code></li>
-<li><strong>Deprecation flags of removed linters are now reversible</strong> in the configuration JSON schema: <code>build.py</code> clears the <code>deprecated</code> flag and the <code>(deprecated)</code> title prefix of variables whose linter or descriptor is back, instead of only ever adding them</li>
-<li>New <strong><code>megalinter/ci_providers/</code></strong> package, mirroring the <code>api_providers</code> pattern: <code>CiProvider</code> base class plus <code>CiProviderAzurePipelines</code>, <code>CiProviderGithubActions</code> and <code>CiProviderGitlab</code>, exposing <code>get_pr_commit_shas()</code> and a platform specific <code>get_pr_commit_shas_hint()</code><ul>
+<li>The Docker images assert a <strong>Python 3.14.7 floor</strong> at build time, the first release carrying the CPython musl thread stack fixes. The <code>python:3.14-alpine3.24</code> tag stays floating because <code>renovate.json5</code> scopes the <code>dockerfile</code> manager away from the main <code>Dockerfile</code>, whose <code>FROM</code> lines are generated from descriptors (#8779)</li>
+<li>Retired the <code>cli_lint_mode_project_exclude_workspace_file_name</code> descriptor property and the <code>write_workspace_generated_file()</code> helper, and removed the property from the descriptor JSON schema so a future descriptor can not silently reintroduce a write inside the analyzed sources. Exclusion forwarding now offers three mechanisms only: native CLI flag, generated ignore file in the report folder, generated config via <code>manage_excluded_directories_config()</code> (#8720)</li>
+<li><strong>Deprecation flags of removed linters are now reversible</strong> in the configuration JSON schema: <code>build.py</code> clears the <code>deprecated</code> flag and the <code>(deprecated)</code> title prefix of variables whose linter or descriptor is back, instead of only ever adding them (#8718)</li>
+<li>New <strong><code>megalinter/ci_providers/</code></strong> package, mirroring the <code>api_providers</code> pattern: <code>CiProvider</code> base class plus <code>CiProviderAzurePipelines</code>, <code>CiProviderGithubActions</code> and <code>CiProviderGitlab</code>, exposing <code>get_pr_commit_shas()</code> and a platform specific <code>get_pr_commit_shas_hint()</code> (#8780)<ul>
 <li><code>ci_providers.get_pr_ci_provider()</code> returns the provider matching the current Pull Request context, falling back to the neutral base provider so callers never handle a missing provider</li>
 <li>The Azure Pipelines and GitHub Pull Request SHA lookups moved out of <code>BetterleaksLinter</code>, which keeps only the orchestration, and are now covered by <code>ci_providers_test.py</code> outside Docker</li>
 </ul>
 </li>
-<li><strong>CI platform knowledge is concentrated in <code>megalinter/ci_providers/</code></strong> instead of being spread across <code>utils</code>, <code>utils_reporter</code>, <code>MegaLinter</code> and the reporters<ul>
+<li><strong>CI platform knowledge is concentrated in <code>megalinter/ci_providers/</code></strong> instead of being spread across <code>utils</code>, <code>utils_reporter</code>, <code>MegaLinter</code> and the reporters (#8780)<ul>
 <li><code>reporters/jenkins_ci_vars.py</code> becomes <code>ci_providers/CiProviderJenkins.py</code>: it was never a reporter, it is called from <code>Megalinter.__init__</code></li>
 <li>New <code>CiProviderBitbucket</code>, and every provider implements <code>is_current()</code>, so <code>get_ci_provider()</code> resolves the platform running the build</li>
 <li><code>CiProvider</code> exposes <code>get_repo_name()</code>, <code>get_branch_name()</code>, <code>get_job_url()</code>, <code>log_section_start/end()</code>, <code>set_output()</code>, <code>publish_job_summary()</code> and <code>markdown_supports_html_details</code></li>
@@ -15655,107 +15719,82 @@
 <li>GitHub keeps <code>get_auth_token()</code> (<code>GITHUB_TOKEN</code>) and <code>get_user_auth_token()</code> (<code>PAT</code>) <strong>separate on purpose</strong>: commit statuses need the <code>statuses:write</code> scope that the documented fine-grained PAT does not carry</li>
 </ul>
 </li>
-<li><strong>spectral is installed in its own <code>node_modules</code> tree</strong> (<code>/node-deps-spectral</code>) instead of the shared <code>/node-deps</code> one, which is what made it crash: <code>@prantlf/jsonlint</code> pins <code>ajv</code> to exactly <code>8.17.1</code> and so owns the hoisted root copy, while <code>@stoplight/spectral-core</code> requires <code>ajv &gt;= 8.18.0</code> and gets a nested one, so its hoisted <code>ajv-errors</code> bound to the other <code>ajv</code> instance and ajv generated invalid JavaScript (<code>SyntaxError: Unexpected token ':'</code> at <code>new Function</code>). Any npm linter sharing the tree with an exact-pinned transitive dependency can hit the same trap</li>
-<li><strong>6 Python dependencies removed</strong> from the MegaLinter runtime, replaced by standard library equivalents: <code>commentjson</code>, <code>terminaltables</code> and <code>multiprocessing_logging</code> (unmaintained), plus <code>termcolor</code>, <code>regex</code> and the obsolete <code>importlib-metadata</code> backport</li>
-<li><strong>Shared linter definitions</strong>: linter entries duplicated across several descriptors (eslint, prettier, v8r, dotnet-format, cpplint, cppcheck, clang-format) are now factorized in <code>megalinter/descriptors/shared/*.megalinter-linter.yml</code> files, referenced from descriptors with the new linter-level <code>extends</code> property (shallow merge, descriptor entry properties override the shared ones)</li>
-<li><strong>Docker pulls monthly chart</strong>: the auto-update workflow now regenerates <code>docs/assets/images/docker-pulls-monthly.svg</code> (new pulls per month since October 2020, all images and registries), via the new <code>.automation/docker_pulls_chart.py</code> called by <code>build.py</code> after the pull counters update<ul>
+<li><strong>spectral is installed in its own <code>node_modules</code> tree</strong> (<code>/node-deps-spectral</code>) instead of the shared <code>/node-deps</code> one, which is what made it crash: <code>@prantlf/jsonlint</code> pins <code>ajv</code> to exactly <code>8.17.1</code> and so owns the hoisted root copy, while <code>@stoplight/spectral-core</code> requires <code>ajv &gt;= 8.18.0</code> and gets a nested one, so its hoisted <code>ajv-errors</code> bound to the other <code>ajv</code> instance and ajv generated invalid JavaScript (<code>SyntaxError: Unexpected token ':'</code> at <code>new Function</code>). Any npm linter sharing the tree with an exact-pinned transitive dependency can hit the same trap (#8718)</li>
+<li><strong>6 Python dependencies removed</strong> from the MegaLinter runtime, replaced by standard library equivalents: <code>commentjson</code>, <code>terminaltables</code> and <code>multiprocessing_logging</code> (unmaintained), plus <code>termcolor</code>, <code>regex</code> and the obsolete <code>importlib-metadata</code> backport (#8710)</li>
+<li><strong>Shared linter definitions</strong>: linter entries duplicated across several descriptors (eslint, prettier, v8r, dotnet-format, cpplint, cppcheck, clang-format) are now factorized in <code>megalinter/descriptors/shared/*.megalinter-linter.yml</code> files, referenced from descriptors with the new linter-level <code>extends</code> property (shallow merge, descriptor entry properties override the shared ones) (#8705)</li>
+<li><strong>Docker pulls monthly chart</strong>: the auto-update workflow now regenerates <code>docs/assets/images/docker-pulls-monthly.svg</code> (new pulls per month since October 2020, all images and registries), via the new <code>.automation/docker_pulls_chart.py</code> called by <code>build.py</code> after the pull counters update (#8698)<ul>
 <li>Historical monthly points are frozen in <code>.automation/generated/docker-pulls-monthly.json</code> (built once from the tracked stats plus a Web Archive reconstruction of the collection gaps); the script only appends newly completed months computed from <code>flavors-stats.json</code></li>
 </ul>
 </li>
-<li>Docker pull counters now also track the <strong>standalone <code>megalinter-only-*</code> images</strong>: their download counts are stored in <code>flavors-stats.json</code> and included in the README badge total</li>
-<li>New descriptor <code>activation_rules</code> type <strong><code>variable_is_set</code></strong>, activating a linter as soon as a variable holds a value. The existing <code>variable</code> type can only compare a variable to a fixed <code>expected_value</code>, which can not express "a credential is present" - the condition <strong>SALESFORCE_CODE_ANALYZER_APEXGURU</strong> needs on <code>SFDX_AUTH_URL</code><ul>
+<li>Docker pull counters now also track the <strong>standalone <code>megalinter-only-*</code> images</strong>: their download counts are stored in <code>flavors-stats.json</code> and included in the README badge total (#8698)</li>
+<li>New descriptor <code>activation_rules</code> type <strong><code>variable_is_set</code></strong>, activating a linter as soon as a variable holds a value. The existing <code>variable</code> type can only compare a variable to a fixed <code>expected_value</code>, which can not express "a credential is present" - the condition <strong>SALESFORCE_CODE_ANALYZER_APEXGURU</strong> needs on <code>SFDX_AUTH_URL</code> (#8820)<ul>
 <li>Linter tests gated on such a variable <strong>skip themselves</strong> when it is missing, instead of failing: <code>LinterTestRoot.skip_if_required_variables_missing()</code> guards the per-lint-mode and SARIF tests, while the version and help tests keep running since they need no credential</li>
 </ul>
 </li>
+<li>The release build stages <strong>newly generated documentation pages</strong> too: <code>build.py</code> staged only already-tracked files (<code>git add -u</code>), so a page created for the first time was left out of the release commit and 404ed on megalinter.io — as <code>docs/licenses/rumdl.md</code> and <code>docs/licenses/zizmor.md</code> still do since v10.0.0</li>
 </ul>
 </li>
 </ul>
 <ul>
 <li>CI<ul>
-<li>The generated linter guides in <code>skills/megalinter-fix/linters/</code> are excluded from the markdown linters: their error-format regexes end with a significant space that <code>markdownlint --fix</code> strips, which corrupted the documented regex and left the working tree dirty, failing the auto-fix commit step on every pull request</li>
-<li><strong>Supply-chain hardening of dependency updates</strong>: Renovate (<code>minimumReleaseAge</code>) and Dependabot (<code>cooldown</code>) now wait until a release is at least <strong>7 days old</strong> before proposing an upgrade, so compromised releases can be caught by the community first. Security fixes are not delayed and still open immediately</li>
-<li>New <strong>Check agent plugins manifests</strong> workflow validating the agent plugin manifests on every change to them or to <code>skills/</code>: <code>.automation/validate_agent_plugins.py</code> checks the root <code>plugin.json</code> against the published Agent Plugins 1.0 schema and keeps the per-vendor manifests consistent with it, then <code>claude plugin validate ./ --strict</code> checks the Claude Code marketplace and plugin manifests</li>
-<li>The auto-update workflow patch-bumps the agent plugin version when it regenerates the skills: the plugin follows its own release train, since its fix guides change far more often than MegaLinter is released. <code>plugin.json</code> is the single source of truth, mirrored into the per-vendor manifests by <code>.automation/agent_plugin_manifests.py</code> (called by <code>build.py</code>)</li>
-<li>The test workflows forward the <strong><code>SFDX_AUTH_URL</code></strong> repository secret to the test container, so the <strong>SALESFORCE_CODE_ANALYZER_APEXGURU</strong> lint tests can reach a connected org. The secret is not exposed on pull requests from forked repositories, where those tests skip themselves</li>
-<li>The <strong>Auto-Update Linters</strong> workflow is fixed: <code>entrypoint.sh</code> still installed the MkDocs documentation stack, so <code>build.sh</code> aborted with <code>zensical: command not found</code> since the Zensical migration and no linter version update pull request could be created</li>
+<li>The generated linter guides in <code>skills/megalinter-fix/linters/</code> are excluded from the markdown linters: their error-format regexes end with a significant space that <code>markdownlint --fix</code> strips, which corrupted the documented regex and left the working tree dirty, failing the auto-fix commit step on every pull request (#8848)</li>
+<li><strong>Supply-chain hardening of dependency updates</strong>: Renovate (<code>minimumReleaseAge</code>) and Dependabot (<code>cooldown</code>) now wait until a release is at least <strong>7 days old</strong> before proposing an upgrade, so compromised releases can be caught by the community first. Security fixes are not delayed and still open immediately (#8710)</li>
+<li>New <strong>Check agent plugins manifests</strong> workflow validating the agent plugin manifests on every change to them or to <code>skills/</code>: <code>.automation/validate_agent_plugins.py</code> checks the root <code>plugin.json</code> against the published Agent Plugins 1.0 schema and keeps the per-vendor manifests consistent with it, then <code>claude plugin validate ./ --strict</code> checks the Claude Code marketplace and plugin manifests (#8791)</li>
+<li>The auto-update workflow patch-bumps the agent plugin version when it regenerates the skills: the plugin follows its own release train, since its fix guides change far more often than MegaLinter is released. <code>plugin.json</code> is the single source of truth, mirrored into the per-vendor manifests by <code>.automation/agent_plugin_manifests.py</code> (called by <code>build.py</code>) (#8791)</li>
+<li>The test workflows forward the <strong><code>SFDX_AUTH_URL</code></strong> repository secret to the test container, so the <strong>SALESFORCE_CODE_ANALYZER_APEXGURU</strong> lint tests can reach a connected org. The secret is not exposed on pull requests from forked repositories, where those tests skip themselves (#8820)</li>
+<li>The <strong>Auto-Update Linters</strong> workflow is fixed: <code>entrypoint.sh</code> still installed the MkDocs documentation stack, so <code>build.sh</code> aborted with <code>zensical: command not found</code> since the Zensical migration and no linter version update pull request could be created (#8901)</li>
 </ul>
 </li>
 </ul>
 <ul>
-<li>Linter versions upgrades (N)<ul>
-<li><a href="https://editorconfig-checker.github.io/">editorconfig-checker</a> from 3.10.0 to <strong>3.11.1</strong> on 2026-08-09</li>
-<li><a href="https://djlint.com/">djlint</a> from 1.44.1 to <strong>1.44.2</strong> on 2026-08-09</li>
-<li><a href="https://pylint.readthedocs.io">pylint</a> from 4.0.6 to <strong>4.0.7</strong> on 2026-08-10</li>
-<li><a href="https://github.com/anchore/grype">grype</a> from 0.116.1 to <strong>0.117.0</strong> on 2026-08-10</li>
-<li><a href="https://github.com/anchore/syft">syft</a> from 1.50.0 to <strong>1.51.0</strong> on 2026-08-10</li>
-<li><a href="https://github.com/stoplightio/spectral">spectral</a> from 6.15.0 to <strong>6.16.3</strong> on 2026-08-12</li>
-<li><a href="https://github.com/dotnet/Roslynator">roslynator</a> from 0.12.0.0 to <strong>0.13.0.0</strong> on 2026-08-12</li>
-<li><a href="https://github.com/rust-lang/rust-clippy">clippy</a> from 0.1.97 to <strong>0.1.98</strong> on 2026-08-21</li>
-<li><a href="https://docs.terragrunt.com/reference/cli/commands/hcl/fmt/">terragrunt</a> from 1.1.2 to <strong>1.1.3</strong> on 2026-08-21</li>
-<li><a href="https://biomejs.dev">biome</a> from 2.5.7 to <strong>2.5.8</strong> on 2026-08-22</li>
-<li><a href="https://golangci-lint.run/">golangci-lint</a> from 2.12.2 to <strong>2.13.1</strong> on 2026-08-22</li>
-<li><a href="https://revive.run/">revive</a> from 1.15.0 to <strong>1.16.0</strong> on 2026-08-22</li>
-<li><a href="https://eslint.org">eslint</a> from 10.8.0 to <strong>10.8.1</strong> on 2026-08-22</li>
-<li><a href="https://github.com/yoheimuta/protolint">protolint</a> from 0.56.4 to <strong>0.57.0</strong> on 2026-08-22</li>
-<li><a href="https://github.com/mongodb/kingfisher">kingfisher</a> from 1.112.0 to <strong>1.113.0</strong> on 2026-08-22</li>
-<li><a href="https://semgrep.dev/">semgrep</a> from 1.172.0 to <strong>1.173.0</strong> on 2026-08-22</li>
-<li><a href="https://aquasecurity.github.io/trivy/">trivy-sbom</a> from 0.73.0 to <strong>0.74.0</strong> on 2026-08-22</li>
-<li><a href="https://aquasecurity.github.io/trivy/">trivy</a> from 0.73.0 to <strong>0.74.0</strong> on 2026-08-22</li>
-<li><a href="https://github.com/trufflesecurity/trufflehog">trufflehog</a> from 3.96.0 to <strong>3.97.0</strong> on 2026-08-22</li>
-<li><a href="https://github.com/MarketSquare/robotframework-robocop">robocop</a> from 8.6.0 to <strong>8.8.0</strong> on 2026-08-22</li>
-<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 1.54.0 to <strong>1.55.1</strong> on 2026-08-23</li>
-<li><a href="https://npmpackagejsonlint.org/">npm-package-json-lint</a> from 10.4.1 to <strong>10.5.1</strong> on 2026-08-23</li>
-<li><a href="https://github.com/kucherenko/jscpd/tree/master/apps/jscpd">jscpd</a> from 5.0.14 to <strong>5.0.15</strong> on 2026-08-23</li>
-<li><a href="https://github.com/rvben/rumdl">rumdl</a> from 0.2.52 to <strong>0.2.55</strong> on 2026-08-23</li>
-<li><a href="https://github.com/PowerShell/PSScriptAnalyzer">powershell_formatter</a> from 7.6.4 to <strong>7.6.5</strong> on 2026-08-23</li>
-<li><a href="https://github.com/PowerShell/PSScriptAnalyzer">powershell</a> from 7.6.4 to <strong>7.6.5</strong> on 2026-08-23</li>
-<li><a href="https://github.com/Microsoft/pyright">pyright</a> from 1.1.411 to <strong>1.1.413</strong> on 2026-08-23</li>
-<li><a href="https://ansible-lint.readthedocs.io/">ansible-lint</a> from 26.6.0 to <strong>26.8.0</strong> on 2026-08-23</li>
-<li><a href="https://github.com/astral-sh/ruff">ruff-format</a> from 0.16.2 to <strong>0.16.3</strong> on 2026-08-23</li>
-<li><a href="https://github.com/astral-sh/ruff">ruff</a> from 0.16.2 to <strong>0.16.3</strong> on 2026-08-23</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 3.3.9 to <strong>3.3.11</strong> on 2026-08-23</li>
-<li><a href="https://github.com/kucherenko/jscpd/tree/master/apps/jscpd">jscpd</a> from 5.0.15 to <strong>5.0.16</strong> on 2026-08-25</li>
-<li><a href="https://biomejs.dev">biome</a> from 2.5.8 to <strong>2.5.9</strong> on 2026-08-25</li>
-<li><a href="https://github.com/rvben/rumdl">rumdl</a> from 0.2.55 to <strong>0.2.57</strong> on 2026-08-28</li>
-<li><a href="https://github.com/anchore/grype">grype</a> from 0.117.0 to <strong>0.118.0</strong> on 2026-08-28</li>
-<li><a href="https://github.com/anchore/syft">syft</a> from 1.51.0 to <strong>1.51.1</strong> on 2026-08-28</li>
-<li><a href="https://biomejs.dev">biome</a> from 2.5.9 to <strong>2.5.10</strong> on 2026-08-31</li>
-<li><a href="https://github.com/rvben/rumdl">rumdl</a> from 0.2.57 to <strong>0.2.60</strong> on 2026-08-31</li>
-<li><a href="https://cs.symfony.com/">php-cs-fixer</a> from 3.95.18 to <strong>3.95.21</strong> on 2026-08-31</li>
-<li><a href="https://phpstan.org/">phpstan</a> from 2.2.8 to <strong>2.2.9</strong> on 2026-08-31</li>
-<li><a href="https://github.com/astral-sh/ruff">ruff-format</a> from 0.16.3 to <strong>0.16.4</strong> on 2026-08-31</li>
-<li><a href="https://github.com/astral-sh/ruff">ruff</a> from 0.16.3 to <strong>0.16.4</strong> on 2026-08-31</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 3.3.11 to <strong>3.3.13</strong> on 2026-08-31</li>
-<li><a href="https://github.com/realm/SwiftLint">swiftlint</a> from 0.65.0 to <strong>0.65.1</strong> on 2026-08-31</li>
-<li><a href="https://biomejs.dev">biome</a> from 2.5.10 to <strong>2.5.11</strong> on 2026-09-05</li>
-<li><a href="https://golangci-lint.run/">golangci-lint</a> from 2.13.1 to <strong>2.13.2</strong> on 2026-09-05</li>
-<li><a href="https://eslint.org">eslint</a> from 10.8.1 to <strong>10.9.1</strong> on 2026-09-05</li>
-<li><a href="https://npmpackagejsonlint.org/">npm-package-json-lint</a> from 10.5.1 to <strong>11.0.0</strong> on 2026-09-05</li>
-<li><a href="https://github.com/rvben/rumdl">rumdl</a> from 0.2.60 to <strong>0.2.62</strong> on 2026-09-05</li>
-<li><a href="https://cs.symfony.com/">php-cs-fixer</a> from 3.95.21 to <strong>3.95.23</strong> on 2026-09-05</li>
-<li><a href="https://github.com/astral-sh/ruff">ruff-format</a> from 0.16.4 to <strong>0.16.5</strong> on 2026-09-05</li>
-<li><a href="https://github.com/astral-sh/ruff">ruff</a> from 0.16.4 to <strong>0.16.5</strong> on 2026-09-05</li>
-<li><a href="https://www.checkov.io/">checkov</a> from 3.3.13 to <strong>3.3.15</strong> on 2026-09-05</li>
-<li><a href="https://github.com/mongodb/kingfisher">kingfisher</a> from 1.113.0 to <strong>2.0.0</strong> on 2026-09-05</li>
-<li><a href="https://github.com/secretlint/secretlint">secretlint</a> from 13.0.4 to <strong>13.0.5</strong> on 2026-09-05</li>
-<li><a href="https://semgrep.dev/">semgrep</a> from 1.173.0 to <strong>1.175.0</strong> on 2026-09-05</li>
-<li><a href="https://github.com/trufflesecurity/trufflehog">trufflehog</a> from 3.97.0 to <strong>3.97.1</strong> on 2026-09-05</li>
-<li><a href="https://github.com/MarketSquare/robotframework-robocop">robocop</a> from 8.8.0 to <strong>9.0.0</strong> on 2026-09-05</li>
-<li><a href="https://rubocop.org/">rubocop</a> from 1.89.0 to <strong>1.90.0</strong> on 2026-09-05</li>
-<li><a href="https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html">code-analyzer-apex</a> from 5.15.0 to <strong>5.16.0</strong> on 2026-09-05</li>
-<li><a href="https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html">code-analyzer-aura</a> from 5.15.0 to <strong>5.16.0</strong> on 2026-09-05</li>
-<li><a href="https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/engine-flow.html">code-analyzer-flow</a> from 5.15.0 to <strong>5.16.0</strong> on 2026-09-05</li>
-<li><a href="https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html">code-analyzer-lwc</a> from 5.15.0 to <strong>5.16.0</strong> on 2026-09-05</li>
-<li><a href="https://snakemake.github.io/">snakemake</a> from 9.25.1 to <strong>9.26.1</strong> on 2026-09-05</li>
-<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 10.0.1 to <strong>10.1.1</strong> on 2026-09-05</li>
-<li><a href="https://vale.sh/">vale</a> from 3.17.1 to <strong>3.18.0</strong> on 2026-09-05</li>
-<li><a href="https://developer.hashicorp.com/terraform/cli/commands/fmt">terraform-fmt</a> from 1.15.8 to <strong>1.16.0</strong> on 2026-09-05</li>
-<li><a href="https://docs.terragrunt.com/reference/cli/commands/hcl/fmt/">terragrunt</a> from 1.1.3 to <strong>1.1.4</strong> on 2026-09-05</li>
+<li>Linter versions upgrades (44)<ul>
+<li><a href="https://ansible-lint.readthedocs.io/">ansible-lint</a> from 26.6.0 to <strong>26.8.0</strong></li>
+<li><a href="https://biomejs.dev">biome</a> from 2.5.7 to <strong>2.5.11</strong></li>
+<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 1.54.0 to <strong>1.55.1</strong></li>
+<li><a href="https://www.checkov.io/">checkov</a> from 3.3.9 to <strong>3.3.15</strong></li>
+<li><a href="https://github.com/rust-lang/rust-clippy">clippy</a> from 0.1.97 to <strong>0.1.98</strong></li>
+<li><a href="https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html">code-analyzer-apex</a> from 5.15.0 to <strong>5.16.0</strong></li>
+<li><a href="https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html">code-analyzer-aura</a> from 5.15.0 to <strong>5.16.0</strong></li>
+<li><a href="https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/engine-flow.html">code-analyzer-flow</a> from 5.15.0 to <strong>5.16.0</strong></li>
+<li><a href="https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html">code-analyzer-lwc</a> from 5.15.0 to <strong>5.16.0</strong></li>
+<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 10.0.1 to <strong>10.1.1</strong></li>
+<li><a href="https://djlint.com/">djlint</a> from 1.44.1 to <strong>1.44.2</strong></li>
+<li><a href="https://editorconfig-checker.github.io/">editorconfig-checker</a> from 3.10.0 to <strong>3.11.1</strong></li>
+<li><a href="https://eslint.org">eslint</a> from 10.8.0 to <strong>10.9.1</strong></li>
+<li><a href="https://golangci-lint.run/">golangci-lint</a> from 2.12.2 to <strong>2.13.2</strong></li>
+<li><a href="https://github.com/anchore/grype">grype</a> from 0.116.1 to <strong>0.118.0</strong></li>
+<li><a href="https://github.com/kucherenko/jscpd/tree/master/apps/jscpd">jscpd</a> from 5.0.14 to <strong>5.0.16</strong></li>
+<li><a href="https://github.com/mongodb/kingfisher">kingfisher</a> from 1.112.0 to <strong>2.0.0</strong></li>
+<li><a href="https://npmpackagejsonlint.org/">npm-package-json-lint</a> from 10.4.1 to <strong>11.0.0</strong></li>
+<li><a href="https://cs.symfony.com/">php-cs-fixer</a> from 3.95.18 to <strong>3.95.23</strong></li>
+<li><a href="https://phpstan.org/">phpstan</a> from 2.2.8 to <strong>2.2.9</strong></li>
+<li><a href="https://github.com/PowerShell/PSScriptAnalyzer">powershell</a> from 7.6.4 to <strong>7.6.5</strong></li>
+<li><a href="https://github.com/PowerShell/PSScriptAnalyzer">powershell_formatter</a> from 7.6.4 to <strong>7.6.5</strong></li>
+<li><a href="https://github.com/yoheimuta/protolint">protolint</a> from 0.56.4 to <strong>0.57.0</strong></li>
+<li><a href="https://pylint.readthedocs.io">pylint</a> from 4.0.6 to <strong>4.0.7</strong></li>
+<li><a href="https://github.com/Microsoft/pyright">pyright</a> from 1.1.411 to <strong>1.1.413</strong></li>
+<li><a href="https://revive.run/">revive</a> from 1.15.0 to <strong>1.16.0</strong></li>
+<li><a href="https://github.com/MarketSquare/robotframework-robocop">robocop</a> from 8.6.0 to <strong>9.0.0</strong></li>
+<li><a href="https://github.com/dotnet/Roslynator">roslynator</a> from 0.12.0.0 to <strong>0.13.0.0</strong></li>
+<li><a href="https://rubocop.org/">rubocop</a> from 1.89.0 to <strong>1.90.0</strong></li>
+<li><a href="https://github.com/astral-sh/ruff">ruff</a> from 0.16.2 to <strong>0.16.5</strong></li>
+<li><a href="https://github.com/astral-sh/ruff">ruff-format</a> from 0.16.2 to <strong>0.16.5</strong></li>
+<li><a href="https://github.com/rvben/rumdl">rumdl</a> from 0.2.52 to <strong>0.2.62</strong></li>
+<li><a href="https://github.com/secretlint/secretlint">secretlint</a> from 13.0.4 to <strong>13.0.5</strong></li>
+<li><a href="https://semgrep.dev/">semgrep</a> from 1.172.0 to <strong>1.175.0</strong></li>
+<li><a href="https://snakemake.github.io/">snakemake</a> from 9.25.1 to <strong>9.26.1</strong></li>
+<li><a href="https://github.com/stoplightio/spectral">spectral</a> from 6.15.0 to <strong>6.16.3</strong></li>
+<li><a href="https://github.com/realm/SwiftLint">swiftlint</a> from 0.65.0 to <strong>0.65.1</strong></li>
+<li><a href="https://github.com/anchore/syft">syft</a> from 1.50.0 to <strong>1.51.1</strong></li>
+<li><a href="https://developer.hashicorp.com/terraform/cli/commands/fmt">terraform-fmt</a> from 1.15.8 to <strong>1.16.0</strong></li>
+<li><a href="https://docs.terragrunt.com/reference/cli/commands/hcl/fmt/">terragrunt</a> from 1.1.2 to <strong>1.1.4</strong></li>
+<li><a href="https://aquasecurity.github.io/trivy/">trivy</a> from 0.73.0 to <strong>0.74.0</strong></li>
+<li><a href="https://aquasecurity.github.io/trivy/">trivy-sbom</a> from 0.73.0 to <strong>0.74.0</strong></li>
+<li><a href="https://github.com/trufflesecurity/trufflehog">trufflehog</a> from 3.96.0 to <strong>3.97.1</strong></li>
+<li><a href="https://vale.sh/">vale</a> from 3.17.1 to <strong>3.18.0</strong></li>
 </ul>
 </li>
 </ul>
-<!-- linter-versions-end -->
-
 <h2 id="v1000-2026-08-08">[v10.0.0] - 2026-08-08</h2>
 <ul>
 <li>Breaking changes<ul>
