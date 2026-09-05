@@ -62,7 +62,7 @@ RUN python -c 'import sys; assert sys.version_info >= (3, 14, 7), "Python 3.14.7
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=npm depName=typescript
-ARG NPM_TYPESCRIPT_VERSION=6.0.3
+ARG NPM_TYPESCRIPT_VERSION=7.0.2
 # renovate: datasource=npm depName=eslint
 ARG NPM_ESLINT_VERSION=10.9.1
 # renovate: datasource=npm depName=eslint-config-prettier
