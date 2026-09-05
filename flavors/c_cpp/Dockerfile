@@ -144,10 +144,6 @@ ARG NPM_STYLELINT_SCSS_VERSION=7.2.0
 ARG DOTENV_LINTER_VERSION=4.0.0
 # renovate: datasource=npm depName=gherkin-lint
 ARG NPM_GHERKIN_LINT_VERSION=4.2.4
-# renovate: datasource=npm depName=graphql
-ARG NPM_GRAPHQL_VERSION=16.14.2
-# renovate: datasource=npm depName=graphql-schema-linter
-ARG NPM_GRAPHQL_SCHEMA_LINTER_VERSION=3.0.1
 # renovate: datasource=npm depName=npm-groovy-lint
 ARG NPM_GROOVY_LINT_VERSION=18.0.0
 # renovate: datasource=pypi depName=djlint
@@ -408,8 +404,6 @@ RUN npm config set prefix /usr/local \
                 stylelint-config-sass-guidelines@${NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION} \
                 stylelint-scss@${NPM_STYLELINT_SCSS_VERSION} \
                 gherkin-lint@${NPM_GHERKIN_LINT_VERSION} \
-                graphql@${NPM_GRAPHQL_VERSION} \
-                graphql-schema-linter@${NPM_GRAPHQL_SCHEMA_LINTER_VERSION} \
                 npm-groovy-lint@${NPM_GROOVY_LINT_VERSION} \
                 htmlhint@${NPM_HTMLHINT_VERSION} \
                 @prantlf/jsonlint@${NPM_PRANTLF_JSONLINT_VERSION} \
@@ -488,7 +482,6 @@ RUN npm --no-cache install --ignore-scripts --omit=dev --prefix /node-deps-spect
       "https://github.com/dotenv-linter/dotenv-linter/releases/download/v${DOTENV_LINTER_VERSION}/dotenv-linter-alpine-${ARCH}.tar.gz" \
       | tar -xz -C /usr/local/bin \
 # gherkin-lint installation
-# graphql-schema-linter installation
 # npm-groovy-lint installation
 # Next line commented because already managed by another linter
 # ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
