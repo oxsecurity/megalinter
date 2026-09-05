@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **kubeconform** (MegaLinter key: `KUBERNETES_KUBECONFORM`)
 - Descriptor: **KUBERNETES** (tooling_format)
-- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/kubernetes_kubeconform/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/kubernetes_kubeconform/>
 - Official documentation: <https://github.com/yannh/kubeconform>
 - Auto-fix support: no (errors must be fixed manually)
 - Rules configuration: <https://github.com/yannh/kubeconform#usage>

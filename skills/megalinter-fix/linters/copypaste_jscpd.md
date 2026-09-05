@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **jscpd** (MegaLinter key: `COPYPASTE_JSCPD`)
 - Descriptor: **COPYPASTE** (other)
-- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/copypaste_jscpd/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/copypaste_jscpd/>
 - Official documentation: <https://github.com/kucherenko/jscpd/tree/master/apps/jscpd>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.jscpd.json` (custom path can be defined with `COPYPASTE_JSCPD_CONFIG_FILE`)

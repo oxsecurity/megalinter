@@ -9,10 +9,10 @@ description: actionlint, zizmor are available to analyze ACTION files in MegaLin
 
 ## Linters
 
-| Linter | Additional |
-| ------ | ---------- |
-| [**actionlint**](action_actionlint.md)<br/>[_ACTION_ACTIONLINT_](action_actionlint.md) | [![GitHub stars](https://img.shields.io/github/stars/rhysd/actionlint?cacheSeconds=3600)](https://github.com/rhysd/actionlint) |
-| [**zizmor**](action_zizmor.md)<br/>[_ACTION_ZIZMOR_](action_zizmor.md) | [![GitHub stars](https://img.shields.io/github/stars/zizmorcore/zizmor?cacheSeconds=3600)](https://github.com/zizmorcore/zizmor) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) |
+| Linter                                                                                 | Additional                                                                                                                                                                                                                            |
+|----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**actionlint**](action_actionlint.md)<br/>[_ACTION_ACTIONLINT_](action_actionlint.md) | [![GitHub stars](https://img.shields.io/github/stars/rhysd/actionlint?cacheSeconds=3600)](https://github.com/rhysd/actionlint)                                                                                                        |
+| [**zizmor**](action_zizmor.md)<br/>[_ACTION_ZIZMOR_](action_zizmor.md)                 | [![GitHub stars](https://img.shields.io/github/stars/zizmorcore/zizmor?cacheSeconds=3600)](https://github.com/zizmorcore/zizmor) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) |
 
 ## Linted files
 
@@ -22,10 +22,10 @@ description: actionlint, zizmor are available to analyze ACTION files in MegaLin
 
 ## Configuration in MegaLinter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| ACTION_PRE_COMMANDS | List of bash commands to run before the linters | None |
-| ACTION_POST_COMMANDS | List of bash commands to run after the linters | None |
-| ACTION_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| ACTION_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                    | Description                                     | Default value |
+|-----------------------------|-------------------------------------------------|---------------|
+| ACTION_PRE_COMMANDS         | List of bash commands to run before the linters | None          |
+| ACTION_POST_COMMANDS        | List of bash commands to run after the linters  | None          |
+| ACTION_FILTER_REGEX_INCLUDE | Custom regex including filter                   |               |
+| ACTION_FILTER_REGEX_EXCLUDE | Custom regex excluding filter                   |               |
 

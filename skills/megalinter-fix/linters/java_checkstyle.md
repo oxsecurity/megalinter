@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **checkstyle** (MegaLinter key: `JAVA_CHECKSTYLE`)
 - Descriptor: **JAVA** (language)
-- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/java_checkstyle/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/java_checkstyle/>
 - Official documentation: <https://checkstyle.org/>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `sun_checks.xml` (custom path can be defined with `JAVA_CHECKSTYLE_CONFIG_FILE`)

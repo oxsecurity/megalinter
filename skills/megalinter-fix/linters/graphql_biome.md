@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **biome** (MegaLinter key: `GRAPHQL_BIOME`)
 - Descriptor: **GRAPHQL** (format)
-- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/graphql_biome/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/graphql_biome/>
 - Official documentation: <https://biomejs.dev>
 - Auto-fix support: **yes** — add `GRAPHQL_BIOME` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter GRAPHQL_BIOME --fix` (runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: use `npx mega-linter-runner@beta` only when that property is `beta`)
 - Configuration file: `biome.json` (custom path can be defined with `GRAPHQL_BIOME_CONFIG_FILE`)

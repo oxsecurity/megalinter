@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **detekt** (MegaLinter key: `KOTLIN_DETEKT`)
 - Descriptor: **KOTLIN** (language)
-- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/kotlin_detekt/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/kotlin_detekt/>
 - Official documentation: <https://detekt.dev/>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `detekt-config.yml` (custom path can be defined with `KOTLIN_DETEKT_CONFIG_FILE`)

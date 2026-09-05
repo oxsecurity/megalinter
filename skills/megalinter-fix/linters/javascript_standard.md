@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **standard** (MegaLinter key: `JAVASCRIPT_STANDARD`)
 - Descriptor: **JAVASCRIPT** (language)
-- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/javascript_standard/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/javascript_standard/>
 - Official documentation: <https://standardjs.com/>
 - Auto-fix support: **yes** — add `JAVASCRIPT_STANDARD` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter JAVASCRIPT_STANDARD --fix` (runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: use `npx mega-linter-runner@beta` only when that property is `beta`)
 - Rules index: <https://standardjs.com/rules.html>

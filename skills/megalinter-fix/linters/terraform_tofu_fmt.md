@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **tofu-fmt** (MegaLinter key: `TERRAFORM_TOFU_FMT`)
 - Descriptor: **TERRAFORM** (tooling_format)
-- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/terraform_tofu_fmt/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/terraform_tofu_fmt/>
 - Official documentation: <https://opentofu.org/docs/cli/commands/fmt/>
 - Auto-fix support: **yes** — add `TERRAFORM_TOFU_FMT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter TERRAFORM_TOFU_FMT --fix` (runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: use `npx mega-linter-runner@beta` only when that property is `beta`)
 - Rules configuration: <https://opentofu.org/docs/language/syntax/style/>

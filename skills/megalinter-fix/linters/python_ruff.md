@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **ruff** (MegaLinter key: `PYTHON_RUFF`)
 - Descriptor: **PYTHON** (language)
-- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/python_ruff/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/python_ruff/>
 - Official documentation: <https://github.com/astral-sh/ruff>
 - Auto-fix support: **yes** — add `PYTHON_RUFF` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter PYTHON_RUFF --fix` (runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: use `npx mega-linter-runner@beta` only when that property is `beta`)
 - Configuration file: `.ruff.toml` (custom path can be defined with `PYTHON_RUFF_CONFIG_FILE`)

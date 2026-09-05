@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **rstfmt** (MegaLinter key: `RST_RSTFMT`)
 - Descriptor: **RST** (format)
-- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/rst_rstfmt/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/rst_rstfmt/>
 - Official documentation: <https://github.com/dzhu/rstfmt>
 - Auto-fix support: **yes** — add `RST_RSTFMT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter RST_RSTFMT --fix` (runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: use `npx mega-linter-runner@beta` only when that property is `beta`)
 - Rules configuration: <https://github.com/dzhu/rstfmt#usage>

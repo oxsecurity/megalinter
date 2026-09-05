@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **php-cs-fixer** (MegaLinter key: `PHP_PHPCSFIXER`)
 - Descriptor: **PHP** (language)
-- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/php_php_cs_fixer/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/php_php_cs_fixer/>
 - Official documentation: <https://cs.symfony.com/>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.php-cs-fixer.dist.php` (custom path can be defined with `PHP_PHPCSFIXER_CONFIG_FILE`)

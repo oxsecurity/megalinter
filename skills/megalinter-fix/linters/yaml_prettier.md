@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **prettier** (MegaLinter key: `YAML_PRETTIER`)
 - Descriptor: **YAML** (format)
-- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/yaml_prettier/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/yaml_prettier/>
 - Official documentation: <https://prettier.io/>
 - Auto-fix support: **yes** — add `YAML_PRETTIER` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter YAML_PRETTIER --fix` (runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: use `npx mega-linter-runner@beta` only when that property is `beta`)
 - Configuration file: `.prettierrc.json` (custom path can be defined with `YAML_PRETTIER_CONFIG_FILE`)

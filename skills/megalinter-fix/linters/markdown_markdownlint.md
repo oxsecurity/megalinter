@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **markdownlint** (MegaLinter key: `MARKDOWN_MARKDOWNLINT`)
 - Descriptor: **MARKDOWN** (format)
-- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/markdown_markdownlint/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/markdown_markdownlint/>
 - Official documentation: <https://github.com/DavidAnson/markdownlint>
 - Auto-fix support: **yes** — add `MARKDOWN_MARKDOWNLINT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter MARKDOWN_MARKDOWNLINT --fix` (runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: use `npx mega-linter-runner@beta` only when that property is `beta`)
 - Configuration file: `.markdownlint.json` (custom path can be defined with `MARKDOWN_MARKDOWNLINT_CONFIG_FILE`)
