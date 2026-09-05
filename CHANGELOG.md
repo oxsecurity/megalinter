@@ -238,6 +238,30 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/astral-sh/ruff) from 0.16.3 to **0.16.4** on 2026-08-31
   - [checkov](https://www.checkov.io/) from 3.3.11 to **3.3.13** on 2026-08-31
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.65.0 to **0.65.1** on 2026-08-31
+  - [biome](https://biomejs.dev) from 2.5.10 to **2.5.11** on 2026-09-05
+  - [golangci-lint](https://golangci-lint.run/) from 2.13.1 to **2.13.2** on 2026-09-05
+  - [eslint](https://eslint.org) from 10.8.1 to **10.9.1** on 2026-09-05
+  - [npm-package-json-lint](https://npmpackagejsonlint.org/) from 10.5.1 to **11.0.0** on 2026-09-05
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.60 to **0.2.62** on 2026-09-05
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.21 to **3.95.23** on 2026-09-05
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.16.4 to **0.16.5** on 2026-09-05
+  - [ruff](https://github.com/astral-sh/ruff) from 0.16.4 to **0.16.5** on 2026-09-05
+  - [checkov](https://www.checkov.io/) from 3.3.13 to **3.3.15** on 2026-09-05
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 1.113.0 to **2.0.0** on 2026-09-05
+  - [secretlint](https://github.com/secretlint/secretlint) from 13.0.4 to **13.0.5** on 2026-09-05
+  - [semgrep](https://semgrep.dev/) from 1.173.0 to **1.175.0** on 2026-09-05
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.97.0 to **3.97.1** on 2026-09-05
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 8.8.0 to **9.0.0** on 2026-09-05
+  - [rubocop](https://rubocop.org/) from 1.89.0 to **1.90.0** on 2026-09-05
+  - [code-analyzer-apex](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.15.0 to **5.16.0** on 2026-09-05
+  - [code-analyzer-aura](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.15.0 to **5.16.0** on 2026-09-05
+  - [code-analyzer-flow](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/engine-flow.html) from 5.15.0 to **5.16.0** on 2026-09-05
+  - [code-analyzer-lwc](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html) from 5.15.0 to **5.16.0** on 2026-09-05
+  - [snakemake](https://snakemake.github.io/) from 9.25.1 to **9.26.1** on 2026-09-05
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 10.0.1 to **10.1.1** on 2026-09-05
+  - [vale](https://vale.sh/) from 3.17.1 to **3.18.0** on 2026-09-05
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.15.8 to **1.16.0** on 2026-09-05
+  - [terragrunt](https://docs.terragrunt.com/reference/cli/commands/hcl/fmt/) from 1.1.3 to **1.1.4** on 2026-09-05
 <!-- linter-versions-end -->
 
 ## [v10.0.0] - 2026-08-08
