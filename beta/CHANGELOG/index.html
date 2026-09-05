@@ -15650,6 +15650,7 @@
 <li>New <strong>Check agent plugins manifests</strong> workflow validating the agent plugin manifests on every change to them or to <code>skills/</code>: <code>.automation/validate_agent_plugins.py</code> checks the root <code>plugin.json</code> against the published Agent Plugins 1.0 schema and keeps the per-vendor manifests consistent with it, then <code>claude plugin validate ./ --strict</code> checks the Claude Code marketplace and plugin manifests</li>
 <li>The auto-update workflow patch-bumps the agent plugin version when it regenerates the skills: the plugin follows its own release train, since its fix guides change far more often than MegaLinter is released. <code>plugin.json</code> is the single source of truth, mirrored into the per-vendor manifests by <code>.automation/agent_plugin_manifests.py</code> (called by <code>build.py</code>)</li>
 <li>The test workflows forward the <strong><code>SFDX_AUTH_URL</code></strong> repository secret to the test container, so the <strong>SALESFORCE_CODE_ANALYZER_APEXGURU</strong> lint tests can reach a connected org. The secret is not exposed on pull requests from forked repositories, where those tests skip themselves</li>
+<li>The <strong>Auto-Update Linters</strong> workflow is fixed: <code>entrypoint.sh</code> still installed the MkDocs documentation stack, so <code>build.sh</code> aborted with <code>zensical: command not found</code> since the Zensical migration and no linter version update pull request could be created</li>
 </ul>
 </li>
 </ul>
