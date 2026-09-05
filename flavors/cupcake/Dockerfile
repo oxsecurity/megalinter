@@ -171,7 +171,7 @@ ARG NPM_BIOMEJS_BIOME_VERSION=2.5.11
 # renovate: datasource=github-releases depName=dotenv-linter/dotenv-linter extractVersion=^v(?<version>.+)$
 ARG DOTENV_LINTER_VERSION=4.0.0
 # renovate: datasource=github-tags depName=golangci/golangci-lint
-ARG GO_GOLANGCI_LINT_VERSION=2.13.1
+ARG GO_GOLANGCI_LINT_VERSION=2.13.2
 # renovate: datasource=npm depName=npm-groovy-lint
 ARG NPM_GROOVY_LINT_VERSION=18.0.0
 # renovate: datasource=pypi depName=djlint
@@ -216,7 +216,7 @@ ARG NPM_PACKAGE_JSON_LINT_VERSION=11.0.0
 # renovate: datasource=npm depName=npm-package-json-lint-config-default
 ARG NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION=10.0.0
 # renovate: datasource=npm depName=@eslint-react/eslint-plugin
-ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.18.6
+ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.18.7
 # renovate: datasource=github-tags depName=pinterest/ktlint
 ARG KTLINT_VERSION=1.8.0
 
@@ -230,7 +230,7 @@ ARG NPM_MARKDOWNLINT_CLI_VERSION=0.49.1
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.2.60
+ARG PIP_RUMDL_VERSION=0.2.62
 # renovate: datasource=packagist depName=squizlabs/php_codesniffer
 ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=4.0.4
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
@@ -244,7 +244,7 @@ ARG PHP_VIMEO_PSALM_VERSION=6.16.1
 # renovate: datasource=packagist depName=overtrue/phplint
 ARG PHP_OVERTRUE_PHPLINT_VERSION=9.7.2
 # renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
-ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.95.22
+ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.95.23
 # renovate: datasource=pypi depName=pylint
 ARG PIP_PYLINT_VERSION=4.0.7
 # renovate: datasource=pypi depName=typing-extensions
@@ -254,7 +254,7 @@ ARG PIP_BLACK_VERSION=26.5.1
 # renovate: datasource=pypi depName=flake8
 ARG PIP_FLAKE8_VERSION=7.3.0
 # renovate: datasource=pypi depName=isort
-ARG PIP_ISORT_VERSION=8.0.1
+ARG PIP_ISORT_VERSION=9.0.1
 # renovate: datasource=pypi depName=mypy
 ARG PIP_MYPY_VERSION=1.19.1
 # renovate: datasource=pypi depName=nbqa
@@ -262,23 +262,23 @@ ARG PIP_NBQA_VERSION=1.9.1
 # renovate: datasource=npm depName=pyright
 ARG NPM_PYRIGHT_VERSION=1.1.413
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.16.4
+ARG PIP_RUFF_VERSION=0.16.5
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.3.13
+ARG PIP_CHECKOV_VERSION=3.3.15
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.117.0
+ARG REPOSITORY_GRYPE_VERSION=0.118.0
 # renovate: datasource=github-releases depName=loeffel-io/ls-lint extractVersion=^v(?<version>.+)$
 ARG REPOSITORY_LS_LINT_VERSION=2.3.1
 # renovate: datasource=repology depName=alpine_3_24/osv-scanner versioning=loose
 ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.8-r1
 # renovate: datasource=npm depName=secretlint
-ARG NPM_SECRETLINT_VERSION=13.0.4
+ARG NPM_SECRETLINT_VERSION=13.0.5
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
-ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=13.0.4
+ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=13.0.5
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
-ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=13.0.4
+ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=13.0.5
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.173.0
+ARG PIP_SEMGREP_VERSION=1.175.0
 # renovate: datasource=github-tags depName=anchore/syft
 ARG REPOSITORY_SYFT_VERSION=1.51.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
@@ -286,7 +286,7 @@ ARG REPOSITORY_TRIVY_VERSION=0.74.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.74.0
 # renovate: datasource=pypi depName=robotframework-robocop
-ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=8.8.0
+ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=9.0.0
 # renovate: datasource=pypi depName=Pygments
 ARG PIP_PYGMENTS_VERSION=2.21.0
 # renovate: datasource=pypi depName=restructuredtext_lint
@@ -294,11 +294,11 @@ ARG PIP_RESTRUCTUREDTEXT_LINT_VERSION=2.0.2
 # renovate: datasource=pypi depName=rstcheck
 ARG PIP_RSTCHECK_VERSION=6.3.0
 # renovate: datasource=pypi depName=click
-ARG PIP_RSTCHECK_CLICK_VERSION=8.4.2
+ARG PIP_RSTCHECK_CLICK_VERSION=8.5.0
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=rubygems depName=rubocop
-ARG GEM_RUBOCOP_VERSION=1.89.0
+ARG GEM_RUBOCOP_VERSION=1.90.0
 # renovate: datasource=rubygems depName=rubocop-github
 ARG GEM_RUBOCOP_GITHUB_VERSION=0.27.0
 # renovate: datasource=rubygems depName=rubocop-performance
@@ -322,11 +322,11 @@ ARG SWIFT_SWIFTLINT_VERSION=0.65.1
 # renovate: datasource=npm depName=prettyjson
 ARG NPM_PRETTYJSON_VERSION=1.2.5
 # renovate: datasource=npm depName=@typescript-eslint/eslint-plugin
-ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.67.0
+ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.68.0
 # renovate: datasource=npm depName=@typescript-eslint/parser
-ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.67.0
+ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.68.0
 # renovate: datasource=npm depName=typescript-eslint
-ARG NPM_TYPESCRIPT_ESLINT_VERSION=8.67.0
+ARG NPM_TYPESCRIPT_ESLINT_VERSION=8.68.0
 # renovate: datasource=npm depName=ts-standard
 ARG NPM_TS_STANDARD_VERSION=12.0.2
 # renovate: datasource=pypi depName=yamllint
@@ -336,7 +336,7 @@ ARG PIP_PIP_VERSION=26.2.1
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=21.7.5
 # renovate: datasource=github-tags depName=rust-lang/rust
-ARG RUST_RUST_VERSION=1.97.1
+ARG RUST_RUST_VERSION=1.98.0
 
 ARG CARGO_SARIF_FMT_VERSION
 ARG ACTION_ACTIONLINT_VERSION

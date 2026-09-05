@@ -47,7 +47,7 @@ ARG REPOSITORY_BETTERLEAKS_VERSION=v1.7.3
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
 ARG REPOSITORY_TRUFFLEHOG_VERSION=3.97.1
 # renovate: datasource=docker depName=jdkato/vale
-ARG SPELL_VALE_VERSION=v3.17.1
+ARG SPELL_VALE_VERSION=v3.18.0
 # renovate: datasource=docker depName=lycheeverse/lychee
 ARG SPELL_LYCHEE_VERSION=0.24.2-alpine
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
@@ -179,7 +179,7 @@ ARG GO_ALPINE_VERSION=1.26.3-r0
 ARG POWERSHELL_VERSION=7.6.5
 
 # renovate: datasource=npm depName=@salesforce/cli
-ARG NPM_SALESFORCE_CLI_VERSION=2.148.3
+ARG NPM_SALESFORCE_CLI_VERSION=2.150.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=3.0.6
 # renovate: datasource=npm depName=sfdx-hardis
@@ -232,7 +232,7 @@ ARG DOTENV_LINTER_VERSION=4.0.0
 # renovate: datasource=npm depName=gherkin-lint
 ARG NPM_GHERKIN_LINT_VERSION=4.2.4
 # renovate: datasource=github-tags depName=golangci/golangci-lint
-ARG GO_GOLANGCI_LINT_VERSION=2.13.1
+ARG GO_GOLANGCI_LINT_VERSION=2.13.2
 # renovate: datasource=npm depName=npm-groovy-lint
 ARG NPM_GROOVY_LINT_VERSION=18.0.0
 # renovate: datasource=pypi depName=djlint
@@ -277,7 +277,7 @@ ARG NPM_PACKAGE_JSON_LINT_VERSION=11.0.0
 # renovate: datasource=npm depName=npm-package-json-lint-config-default
 ARG NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION=10.0.0
 # renovate: datasource=npm depName=@eslint-react/eslint-plugin
-ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.18.6
+ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.18.7
 # renovate: datasource=github-tags depName=pinterest/ktlint
 ARG KTLINT_VERSION=1.8.0
 
@@ -294,7 +294,7 @@ ARG NPM_MARKDOWNLINT_CLI_VERSION=0.49.1
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.2.60
+ARG PIP_RUMDL_VERSION=0.2.62
 # renovate: datasource=github-tags depName=skaji/cpm
 ARG PERL_PERLCRITIC_VERSION=v1.1.5
 
@@ -311,7 +311,7 @@ ARG PHP_VIMEO_PSALM_VERSION=6.16.1
 # renovate: datasource=packagist depName=overtrue/phplint
 ARG PHP_OVERTRUE_PHPLINT_VERSION=9.7.2
 # renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
-ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.95.22
+ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.95.23
 # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
 ARG PSSA_VERSION='1.25.0'
 
@@ -324,7 +324,7 @@ ARG PIP_BLACK_VERSION=26.5.1
 # renovate: datasource=pypi depName=flake8
 ARG PIP_FLAKE8_VERSION=7.3.0
 # renovate: datasource=pypi depName=isort
-ARG PIP_ISORT_VERSION=8.0.1
+ARG PIP_ISORT_VERSION=9.0.1
 # renovate: datasource=pypi depName=bandit
 ARG PIP_BANDIT_VERSION=1.9.4
 # renovate: datasource=pypi depName=bandit_sarif_formatter
@@ -336,29 +336,29 @@ ARG PIP_NBQA_VERSION=1.9.1
 # renovate: datasource=npm depName=pyright
 ARG NPM_PYRIGHT_VERSION=1.1.413
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.16.4
+ARG PIP_RUFF_VERSION=0.16.5
 # renovate: datasource=github-tags depName=nxadm/rakudo-pkg
 ARG RAKU_RAKU_VERSION=2026.03
 ARG RAKU_RAKU_ALPINE_VERSION=3.23
 
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.3.13
+ARG PIP_CHECKOV_VERSION=3.3.15
 # renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
 ARG REPOSITORY_DEVSKIM_VERSION=1.0.70
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.117.0
+ARG REPOSITORY_GRYPE_VERSION=0.118.0
 # renovate: datasource=github-releases depName=loeffel-io/ls-lint extractVersion=^v(?<version>.+)$
 ARG REPOSITORY_LS_LINT_VERSION=2.3.1
 # renovate: datasource=repology depName=alpine_3_24/osv-scanner versioning=loose
 ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.8-r1
 # renovate: datasource=npm depName=secretlint
-ARG NPM_SECRETLINT_VERSION=13.0.4
+ARG NPM_SECRETLINT_VERSION=13.0.5
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
-ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=13.0.4
+ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=13.0.5
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
-ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=13.0.4
+ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=13.0.5
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.173.0
+ARG PIP_SEMGREP_VERSION=1.175.0
 # renovate: datasource=github-tags depName=anchore/syft
 ARG REPOSITORY_SYFT_VERSION=1.51.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
@@ -366,9 +366,9 @@ ARG REPOSITORY_TRIVY_VERSION=0.74.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.74.0
 # renovate: datasource=github-tags depName=mongodb/kingfisher
-ARG REPOSITORY_KINGFISHER_VERSION=1.113.0
+ARG REPOSITORY_KINGFISHER_VERSION=2.0.0
 # renovate: datasource=pypi depName=robotframework-robocop
-ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=8.8.0
+ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=9.0.0
 # renovate: datasource=pypi depName=Pygments
 ARG PIP_PYGMENTS_VERSION=2.21.0
 # renovate: datasource=pypi depName=restructuredtext_lint
@@ -376,11 +376,11 @@ ARG PIP_RESTRUCTUREDTEXT_LINT_VERSION=2.0.2
 # renovate: datasource=pypi depName=rstcheck
 ARG PIP_RSTCHECK_VERSION=6.3.0
 # renovate: datasource=pypi depName=click
-ARG PIP_RSTCHECK_CLICK_VERSION=8.4.2
+ARG PIP_RSTCHECK_CLICK_VERSION=8.5.0
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=rubygems depName=rubocop
-ARG GEM_RUBOCOP_VERSION=1.89.0
+ARG GEM_RUBOCOP_VERSION=1.90.0
 # renovate: datasource=rubygems depName=rubocop-github
 ARG GEM_RUBOCOP_GITHUB_VERSION=0.27.0
 # renovate: datasource=rubygems depName=rubocop-performance
@@ -392,11 +392,11 @@ ARG GEM_RUBOCOP_RAKE_VERSION=0.7.1
 # renovate: datasource=rubygems depName=rubocop-rspec
 ARG GEM_RUBOCOP_RSPEC_VERSION=3.10.2
 # renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
-ARG SALESFORCE_CODE_ANALYZER_VERSION=5.15.0
+ARG SALESFORCE_CODE_ANALYZER_VERSION=5.16.0
 # renovate: datasource=github-tags depName=scalacenter/scalafix
 ARG SCALA_SCALAFIX_VERSION=0.14.7
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.25.2
+ARG PIP_SNAKEMAKE_VERSION=9.26.1
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=2.0.3
 # renovate: datasource=npm depName=cspell
@@ -414,11 +414,11 @@ ARG NPM_IBM_TEKTON_LINT_VERSION=1.2.0
 # renovate: datasource=npm depName=prettyjson
 ARG NPM_PRETTYJSON_VERSION=1.2.5
 # renovate: datasource=npm depName=@typescript-eslint/eslint-plugin
-ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.67.0
+ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.68.0
 # renovate: datasource=npm depName=@typescript-eslint/parser
-ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.67.0
+ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.68.0
 # renovate: datasource=npm depName=typescript-eslint
-ARG NPM_TYPESCRIPT_ESLINT_VERSION=8.67.0
+ARG NPM_TYPESCRIPT_ESLINT_VERSION=8.68.0
 # renovate: datasource=npm depName=ts-standard
 ARG NPM_TS_STANDARD_VERSION=12.0.2
 # renovate: datasource=pypi depName=yamllint
@@ -428,7 +428,7 @@ ARG PIP_PIP_VERSION=26.2.1
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=21.7.5
 # renovate: datasource=github-tags depName=rust-lang/rust
-ARG RUST_RUST_VERSION=1.97.1
+ARG RUST_RUST_VERSION=1.98.0
 
 ARG TARGETARCH
 ARG CARGO_SARIF_FMT_VERSION

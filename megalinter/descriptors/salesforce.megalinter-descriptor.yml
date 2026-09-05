@@ -12,7 +12,7 @@ install:
   dockerfile:
     - |-
       # renovate: datasource=npm depName=@salesforce/cli
-      ARG NPM_SALESFORCE_CLI_VERSION=2.148.3
+      ARG NPM_SALESFORCE_CLI_VERSION=2.150.6
     - |-
       # renovate: datasource=npm depName=@salesforce/plugin-packaging
       ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=3.0.6
@@ -120,7 +120,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
-          ARG SALESFORCE_CODE_ANALYZER_VERSION=5.15.0
+          ARG SALESFORCE_CODE_ANALYZER_VERSION=5.16.0
         - |-
           RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
               && (npm cache clean --force || true) \
@@ -255,7 +255,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
-          ARG SALESFORCE_CODE_ANALYZER_VERSION=5.15.0
+          ARG SALESFORCE_CODE_ANALYZER_VERSION=5.16.0
         - |-
           RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
               && (npm cache clean --force || true) \
@@ -356,7 +356,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
-          ARG SALESFORCE_CODE_ANALYZER_VERSION=5.15.0
+          ARG SALESFORCE_CODE_ANALYZER_VERSION=5.16.0
         - |-
           RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
               && (npm cache clean --force || true) \
@@ -456,7 +456,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
-          ARG SALESFORCE_CODE_ANALYZER_VERSION=5.15.0
+          ARG SALESFORCE_CODE_ANALYZER_VERSION=5.16.0
         - |-
           RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
               && (npm cache clean --force || true) \
@@ -553,7 +553,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
-          ARG SALESFORCE_CODE_ANALYZER_VERSION=5.15.0
+          ARG SALESFORCE_CODE_ANALYZER_VERSION=5.16.0
         - |-
           RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
               && (npm cache clean --force || true) \
