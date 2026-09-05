@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "variable_count": 2867,
+    "variable_count": 2883,
     "categories": {
       "ACTION": 4,
       "ACTION_ACTIONLINT": 17,
@@ -170,6 +170,7 @@
       "R_LINTR": 16,
       "SALESFORCE": 13,
       "SALESFORCE_CODE_ANALYZER_APEX": 16,
+      "SALESFORCE_CODE_ANALYZER_APEXGURU": 16,
       "SALESFORCE_CODE_ANALYZER_AURA": 16,
       "SALESFORCE_CODE_ANALYZER_FLOW": 15,
       "SALESFORCE_CODE_ANALYZER_LWC": 16,
@@ -27846,6 +27847,189 @@
       ],
       "category": "R",
       "section": "PREPOSTCOMMANDS"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEXGURU_ARGUMENTS": {
+      "name": "SALESFORCE_CODE_ANALYZER_APEXGURU_ARGUMENTS",
+      "type": [
+        "array",
+        "string"
+      ],
+      "title": "SALESFORCE_CODE_ANALYZER_APEXGURU: Custom arguments",
+      "description": "SALESFORCE_CODE_ANALYZER_APEXGURU: User custom arguments to add in linter CLI call",
+      "category": "SALESFORCE_CODE_ANALYZER_APEXGURU",
+      "section": "LINTER_COMMAND",
+      "items_type": "string"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEXGURU_CLI_EXECUTABLE": {
+      "name": "SALESFORCE_CODE_ANALYZER_APEXGURU_CLI_EXECUTABLE",
+      "type": "array",
+      "title": "SALESFORCE_CODE_ANALYZER_APEXGURU: CLI Executable",
+      "description": "SALESFORCE_CODE_ANALYZER_APEXGURU: Override CLI executable used to build the linter command line (rarely needed)",
+      "default": [
+        [
+          "sf"
+        ]
+      ],
+      "category": "SALESFORCE_CODE_ANALYZER_APEXGURU",
+      "section": "LINTER_COMMAND",
+      "items_type": "string"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEXGURU_CLI_LINT_MODE": {
+      "name": "SALESFORCE_CODE_ANALYZER_APEXGURU_CLI_LINT_MODE",
+      "type": "string",
+      "title": "SALESFORCE_CODE_ANALYZER_APEXGURU: CLI lint mode",
+      "description": "SALESFORCE_CODE_ANALYZER_APEXGURU: Override default CLI lint mode used to call the linter (rarely needed)",
+      "default": "project",
+      "enum": [
+        "project"
+      ],
+      "category": "SALESFORCE_CODE_ANALYZER_APEXGURU",
+      "section": "LINTER_COMMAND"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEXGURU_COMMAND_REMOVE_ARGUMENTS": {
+      "name": "SALESFORCE_CODE_ANALYZER_APEXGURU_COMMAND_REMOVE_ARGUMENTS",
+      "type": [
+        "array",
+        "string"
+      ],
+      "title": "SALESFORCE_CODE_ANALYZER_APEXGURU: Custom remove arguments",
+      "description": "SALESFORCE_CODE_ANALYZER_APEXGURU: User custom arguments to remove before calling linter",
+      "category": "SALESFORCE_CODE_ANALYZER_APEXGURU",
+      "section": "LINTER_COMMAND",
+      "items_type": "string"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEXGURU_CONFIG_FILE": {
+      "name": "SALESFORCE_CODE_ANALYZER_APEXGURU_CONFIG_FILE",
+      "type": "string",
+      "title": "SALESFORCE_CODE_ANALYZER_APEXGURU: Custom config file name",
+      "description": "SALESFORCE_CODE_ANALYZER_APEXGURU: User custom config file name if different from default",
+      "default": "code-analyzer.yml",
+      "category": "SALESFORCE_CODE_ANALYZER_APEXGURU",
+      "section": "LINTER_COMMAND"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEXGURU_DIRECTORY": {
+      "name": "SALESFORCE_CODE_ANALYZER_APEXGURU_DIRECTORY",
+      "type": "string",
+      "title": "SALESFORCE_CODE_ANALYZER_APEXGURU: Directory containing SALESFORCE files",
+      "description": "Directory that must be found to activate linter. Use value \"any\" to always activate",
+      "default": "force-app",
+      "category": "SALESFORCE_CODE_ANALYZER_APEXGURU",
+      "section": "ACTIVATION"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEXGURU_DISABLE_ERRORS": {
+      "name": "SALESFORCE_CODE_ANALYZER_APEXGURU_DISABLE_ERRORS",
+      "type": "boolean",
+      "title": "SALESFORCE_CODE_ANALYZER_APEXGURU: Disable errors",
+      "description": "SALESFORCE_CODE_ANALYZER_APEXGURU: If true, SALESFORCE_CODE_ANALYZER_APEXGURU doesn't make MegaLinter fail even if errors are found",
+      "default": false,
+      "category": "SALESFORCE_CODE_ANALYZER_APEXGURU",
+      "section": "ERRORS"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEXGURU_DISABLE_ERRORS_IF_LESS_THAN": {
+      "name": "SALESFORCE_CODE_ANALYZER_APEXGURU_DISABLE_ERRORS_IF_LESS_THAN",
+      "type": "number",
+      "title": "SALESFORCE_CODE_ANALYZER_APEXGURU: Maximum number of errors allowed",
+      "description": "SALESFORCE_CODE_ANALYZER_APEXGURU: If the number of errors found is less than this value, SALESFORCE_CODE_ANALYZER_APEXGURU doesn't make MegaLinter fail",
+      "default": 0,
+      "category": "SALESFORCE_CODE_ANALYZER_APEXGURU",
+      "section": "ERRORS"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEXGURU_FILTER_REGEX_EXCLUDE": {
+      "name": "SALESFORCE_CODE_ANALYZER_APEXGURU_FILTER_REGEX_EXCLUDE",
+      "type": [
+        "string",
+        "array"
+      ],
+      "title": "SALESFORCE_CODE_ANALYZER_APEXGURU: Excluding Regex",
+      "description": "SALESFORCE_CODE_ANALYZER_APEXGURU: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with SALESFORCE_CODE_ANALYZER_APEXGURU_CLI_LINT_MODE = project",
+      "category": "SALESFORCE_CODE_ANALYZER_APEXGURU",
+      "section": "SCOPE",
+      "items_type": "string"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEXGURU_FILTER_REGEX_INCLUDE": {
+      "name": "SALESFORCE_CODE_ANALYZER_APEXGURU_FILTER_REGEX_INCLUDE",
+      "type": [
+        "string",
+        "array"
+      ],
+      "title": "SALESFORCE_CODE_ANALYZER_APEXGURU: Including Regex",
+      "description": "SALESFORCE_CODE_ANALYZER_APEXGURU: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with SALESFORCE_CODE_ANALYZER_APEXGURU_CLI_LINT_MODE = project",
+      "category": "SALESFORCE_CODE_ANALYZER_APEXGURU",
+      "section": "SCOPE",
+      "items_type": "string"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEXGURU_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "SALESFORCE_CODE_ANALYZER_APEXGURU_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "SALESFORCE_CODE_ANALYZER_APEXGURU: Forward excluded directories in project lint mode",
+      "description": "SALESFORCE_CODE_ANALYZER_APEXGURU: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "SALESFORCE_CODE_ANALYZER_APEXGURU",
+      "section": "GENERAL"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEXGURU_POST_COMMANDS": {
+      "name": "SALESFORCE_CODE_ANALYZER_APEXGURU_POST_COMMANDS",
+      "type": "array",
+      "title": "SALESFORCE_CODE_ANALYZER_APEXGURU: Post-run commands",
+      "description": "SALESFORCE_CODE_ANALYZER_APEXGURU: Define bash commands to run after running SALESFORCE_CODE_ANALYZER_APEXGURU",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "category": "SALESFORCE_CODE_ANALYZER_APEXGURU",
+      "section": "PREPOSTCOMMANDS"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEXGURU_PRE_COMMANDS": {
+      "name": "SALESFORCE_CODE_ANALYZER_APEXGURU_PRE_COMMANDS",
+      "type": "array",
+      "title": "SALESFORCE_CODE_ANALYZER_APEXGURU: Pre-run commands",
+      "description": "SALESFORCE_CODE_ANALYZER_APEXGURU: Define bash commands to run before running SALESFORCE_CODE_ANALYZER_APEXGURU",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "category": "SALESFORCE_CODE_ANALYZER_APEXGURU",
+      "section": "PREPOSTCOMMANDS"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEXGURU_RULES_PATH": {
+      "name": "SALESFORCE_CODE_ANALYZER_APEXGURU_RULES_PATH",
+      "type": "string",
+      "title": "SALESFORCE_CODE_ANALYZER_APEXGURU: Custom config file path",
+      "description": "SALESFORCE_CODE_ANALYZER_APEXGURU: Path where to find linter configuration file",
+      "category": "SALESFORCE_CODE_ANALYZER_APEXGURU",
+      "section": "LINTER_COMMAND"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEXGURU_TIMEOUT_SECONDS": {
+      "name": "SALESFORCE_CODE_ANALYZER_APEXGURU_TIMEOUT_SECONDS",
+      "type": "integer",
+      "title": "SALESFORCE_CODE_ANALYZER_APEXGURU: Timeout in seconds",
+      "description": "SALESFORCE_CODE_ANALYZER_APEXGURU: Maximum duration in seconds of the SALESFORCE_CODE_ANALYZER_APEXGURU run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "category": "SALESFORCE_CODE_ANALYZER_APEXGURU",
+      "section": "GENERAL"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEXGURU_UNSECURED_ENV_VARIABLES": {
+      "name": "SALESFORCE_CODE_ANALYZER_APEXGURU_UNSECURED_ENV_VARIABLES",
+      "type": "array",
+      "title": "SALESFORCE_CODE_ANALYZER_APEXGURU: Unsecured env variables",
+      "description": "List of env variables explicitly not filtered before calling SALESFORCE_CODE_ANALYZER_APEXGURU and its pre/post commands",
+      "default": [],
+      "category": "SALESFORCE_CODE_ANALYZER_APEXGURU",
+      "section": "SECURITY",
+      "items_type": "string"
     },
     "SALESFORCE_CODE_ANALYZER_APEX_ARGUMENTS": {
       "name": "SALESFORCE_CODE_ANALYZER_APEX_ARGUMENTS",
