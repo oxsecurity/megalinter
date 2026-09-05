@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **terraform-fmt** (MegaLinter key: `TERRAFORM_TERRAFORM_FMT`)
 - Descriptor: **TERRAFORM** (tooling_format)
-- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/terraform_terraform_fmt/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/terraform_terraform_fmt/>
 - Official documentation: <https://developer.hashicorp.com/terraform/cli/commands/fmt>
 - Auto-fix support: **yes** — add `TERRAFORM_TERRAFORM_FMT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter TERRAFORM_TERRAFORM_FMT --fix` (runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: use `npx mega-linter-runner@beta` only when that property is `beta`)
 - MegaLinter tuning variables (in `.mega-linter.yml`):

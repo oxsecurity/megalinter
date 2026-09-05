@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **dustilock** (MegaLinter key: `REPOSITORY_DUSTILOCK`)
 - Descriptor: **REPOSITORY** (other)
-- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/repository_dustilock/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/repository_dustilock/>
 - Official documentation: <https://github.com/Checkmarx/dustilock>
 - Auto-fix support: no (errors must be fixed manually)
 - Error line format (regex): `(error )`

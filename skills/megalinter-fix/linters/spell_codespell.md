@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **codespell** (MegaLinter key: `SPELL_CODESPELL`)
 - Descriptor: **SPELL** (other)
-- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/spell_codespell/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/spell_codespell/>
 - Official documentation: <https://github.com/codespell-project/codespell>
 - Auto-fix support: **yes** — add `SPELL_CODESPELL` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter SPELL_CODESPELL --fix` (runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: use `npx mega-linter-runner@beta` only when that property is `beta`)
 - Configuration file: `.codespellrc` (custom path can be defined with `SPELL_CODESPELL_CONFIG_FILE`)

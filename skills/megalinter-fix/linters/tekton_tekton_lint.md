@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **tekton-lint** (MegaLinter key: `TEKTON_TEKTON_LINT`)
 - Descriptor: **TEKTON** (tooling_format)
-- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/tekton_tekton_lint/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/tekton_tekton_lint/>
 - Official documentation: <https://github.com/IBM/tekton-lint>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.tektonlintrc.yaml` (custom path can be defined with `TEKTON_TEKTON_LINT_CONFIG_FILE`)

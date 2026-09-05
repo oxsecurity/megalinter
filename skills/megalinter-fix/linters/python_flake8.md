@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **flake8** (MegaLinter key: `PYTHON_FLAKE8`)
 - Descriptor: **PYTHON** (language)
-- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/python_flake8/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/python_flake8/>
 - Official documentation: <https://flake8.pycqa.org>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.flake8` (custom path can be defined with `PYTHON_FLAKE8_CONFIG_FILE`)

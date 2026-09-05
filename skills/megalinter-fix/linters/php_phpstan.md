@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **phpstan** (MegaLinter key: `PHP_PHPSTAN`)
 - Descriptor: **PHP** (language)
-- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/php_phpstan/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/php_phpstan/>
 - Official documentation: <https://phpstan.org/>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `phpstan.neon.dist` (custom path can be defined with `PHP_PHPSTAN_CONFIG_FILE`)

@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **shfmt** (MegaLinter key: `BASH_SHFMT`)
 - Descriptor: **BASH** (language)
-- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/bash_shfmt/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/bash_shfmt/>
 - Official documentation: <https://github.com/mvdan/sh>
 - Auto-fix support: **yes** — add `BASH_SHFMT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter BASH_SHFMT --fix` (runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: use `npx mega-linter-runner@beta` only when that property is `beta`)
 - Rules configuration: <https://github.com/mvdan/sh/blob/master/cmd/shfmt/shfmt.1.scd>

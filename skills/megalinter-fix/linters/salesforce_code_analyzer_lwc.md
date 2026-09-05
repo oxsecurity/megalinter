@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **code-analyzer-lwc** (MegaLinter key: `SALESFORCE_CODE_ANALYZER_LWC`)
 - Descriptor: **SALESFORCE** (language)
-- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/salesforce_code_analyzer_lwc/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/salesforce_code_analyzer_lwc/>
 - Official documentation: <https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/get-started.html>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `code-analyzer.yml` (custom path can be defined with `SALESFORCE_CODE_ANALYZER_LWC_CONFIG_FILE`)

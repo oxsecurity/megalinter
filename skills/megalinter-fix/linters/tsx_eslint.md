@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **eslint** (MegaLinter key: `TSX_ESLINT`)
 - Descriptor: **TSX** (language)
-- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/tsx_eslint/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/tsx_eslint/>
 - Official documentation: <https://github.com/Rel1cx/eslint-react>
 - Auto-fix support: **yes** — add `TSX_ESLINT` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter TSX_ESLINT --fix` (runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: use `npx mega-linter-runner@beta` only when that property is `beta`)
 - Configuration file: `eslint.config.cjs` (custom path can be defined with `TSX_ESLINT_CONFIG_FILE`)

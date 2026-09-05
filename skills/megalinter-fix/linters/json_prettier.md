@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **prettier** (MegaLinter key: `JSON_PRETTIER`)
 - Descriptor: **JSON** (format)
-- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/json_prettier/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/json_prettier/>
 - Official documentation: <https://prettier.io/>
 - Auto-fix support: **yes** — add `JSON_PRETTIER` (or `all`) to the `APPLY_FIXES` variable, or run locally `npx mega-linter-runner --linter JSON_PRETTIER --fix` (runner and image versions follow `MEGALINTER_VERSION` of `.mega-linter.yml`: use `npx mega-linter-runner@beta` only when that property is `beta`)
 - Configuration file: `.prettierrc.json` (custom path can be defined with `JSON_PRETTIER_CONFIG_FILE`)

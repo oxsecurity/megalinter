@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **mypy** (MegaLinter key: `PYTHON_MYPY`)
 - Descriptor: **PYTHON** (language)
-- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/python_mypy/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/python_mypy/>
 - Official documentation: <https://mypy.readthedocs.io/en/stable/>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.mypy.ini` (custom path can be defined with `PYTHON_MYPY_CONFIG_FILE`)

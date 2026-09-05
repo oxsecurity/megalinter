@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **bicep_linter** (MegaLinter key: `BICEP_BICEP_LINTER`)
 - Descriptor: **BICEP** (tooling_format)
-- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/bicep_bicep_linter/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/bicep_bicep_linter/>
 - Official documentation: <https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter>
 - Auto-fix support: no (errors must be fixed manually)
 - Rules index: <https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#default-rules>

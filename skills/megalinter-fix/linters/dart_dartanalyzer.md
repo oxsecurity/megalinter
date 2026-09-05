@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **dartanalyzer** (MegaLinter key: `DART_DARTANALYZER`)
 - Descriptor: **DART** (language)
-- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/dart_dartanalyzer/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/dart_dartanalyzer/>
 - Official documentation: <https://dart.dev/tools/dart-analyze>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `analysis_options.yaml` (custom path can be defined with `DART_DARTANALYZER_CONFIG_FILE`)

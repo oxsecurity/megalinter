@@ -3,7 +3,7 @@
 <!-- generated-descriptor-info-start -->
 - Linter: **devskim** (MegaLinter key: `REPOSITORY_DEVSKIM`)
 - Descriptor: **REPOSITORY** (other)
-- MegaLinter documentation: <https://megalinter.io/10.1.0/descriptors/repository_devskim/>
+- MegaLinter documentation: <https://megalinter.io/beta/descriptors/repository_devskim/>
 - Official documentation: <https://github.com/microsoft/DevSkim>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.devskim.json` (custom path can be defined with `REPOSITORY_DEVSKIM_CONFIG_FILE`)
