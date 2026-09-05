@@ -15418,6 +15418,7 @@
 <ul>
 <li>Disabled linters<ul>
 <li><strong>COFFEE_COFFEELINT</strong> is disabled: CoffeeScript tooling is discontinued, and coffeelint can not receive <code>EXCLUDED_DIRECTORIES</code> in project lint mode (it has no exclusion option and reads <code>.coffeelintignore</code> only from its working directory). The linter will be removed in a future version</li>
+<li><strong>GRAPHQL_GRAPHQL_SCHEMA_LINTER</strong> is disabled: <a href="https://github.com/cjoudrey/graphql-schema-linter">graphql-schema-linter</a> is unmaintained, with no release or commit since May 2022, and its peer dependency range pins <strong>graphql</strong> to <code>^15 || ^16</code>, which held the whole GraphQL install back from <strong>graphql v17</strong>. Use <strong><a href="https://megalinter.io/latest/descriptors/graphql_biome/">GRAPHQL_BIOME</a></strong> to lint your GraphQL files. The linter will be removed in a future version</li>
 </ul>
 </li>
 </ul>
