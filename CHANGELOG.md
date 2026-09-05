@@ -191,6 +191,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - New **Check agent plugins manifests** workflow validating the agent plugin manifests on every change to them or to `skills/`: `.automation/validate_agent_plugins.py` checks the root `plugin.json` against the published Agent Plugins 1.0 schema and keeps the per-vendor manifests consistent with it, then `claude plugin validate ./ --strict` checks the Claude Code marketplace and plugin manifests
   - The auto-update workflow patch-bumps the agent plugin version when it regenerates the skills: the plugin follows its own release train, since its fix guides change far more often than MegaLinter is released. `plugin.json` is the single source of truth, mirrored into the per-vendor manifests by `.automation/agent_plugin_manifests.py` (called by `build.py`)
   - The test workflows forward the **`SFDX_AUTH_URL`** repository secret to the test container, so the **SALESFORCE_CODE_ANALYZER_APEXGURU** lint tests can reach a connected org. The secret is not exposed on pull requests from forked repositories, where those tests skip themselves
+  - The **Auto-Update Linters** workflow is fixed: `entrypoint.sh` still installed the MkDocs documentation stack, so `build.sh` aborted with `zensical: command not found` since the Zensical migration and no linter version update pull request could be created
 
 - Linter versions upgrades (N)
   - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.10.0 to **3.11.1** on 2026-08-09
