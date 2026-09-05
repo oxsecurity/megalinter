@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="code-analyzer-apex, code-analyzer-aura, code-analyzer-lwc, code-analyzer-flow are available to analyze SALESFORCE files in MegaLinter">
+        <meta name="description" content="code-analyzer-apex, code-analyzer-apexguru, code-analyzer-aura, code-analyzer-lwc, code-analyzer-flow are available to analyze SALESFORCE files in MegaLinter">
       
       
         <meta name="author" content="Nicolas Vuillamy">
@@ -68,12 +68,12 @@
 <meta name="twitter:site" content="@nvuillam" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="SALESFORCE linters in MegaLinter" />
-<meta name="twitter:description" content="code-analyzer-apex, code-analyzer-aura, code-analyzer-lwc, code-analyzer-flow are available to analyze SALESFORCE files in MegaLinter" />
+<meta name="twitter:description" content="code-analyzer-apex, code-analyzer-apexguru, code-analyzer-aura, code-analyzer-lwc, code-analyzer-flow are available to analyze SALESFORCE files in MegaLinter" />
 <meta property="og:image" content="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" />
 <meta property="og:image:alt" content="🦙 MegaLinter analyzes 48 languages, 22 formats, 19 tooling formats, excessive copy-pastes and spelling mistakes in your repository sources with a GitHub Action, other CI tools or locally." />
 <meta property="og:site_name" content="MegaLinter" />
 <meta property="og:title" content="SALESFORCE linters in MegaLinter" />
-<meta property="og:description" content="code-analyzer-apex, code-analyzer-aura, code-analyzer-lwc, code-analyzer-flow are available to analyze SALESFORCE files in MegaLinter" />
+<meta property="og:description" content="code-analyzer-apex, code-analyzer-apexguru, code-analyzer-aura, code-analyzer-lwc, code-analyzer-flow are available to analyze SALESFORCE files in MegaLinter" />
 
 
 
@@ -4612,6 +4612,33 @@
     
   
   code-analyzer-apex
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../salesforce_code_analyzer_apexguru/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  code-analyzer-apexguru
 
     
   </span>
@@ -12120,6 +12147,10 @@
 <td><a href="https://github.com/forcedotcom/code-analyzer"><img alt="GitHub stars" src="https://img.shields.io/github/stars/forcedotcom/code-analyzer?cacheSeconds=3600" /></a> <a class="glightbox" data-type="image" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange" /></a></td>
 </tr>
 <tr>
+<td><a href="../salesforce_code_analyzer_apexguru/"><strong>code-analyzer-apexguru</strong></a><br/><a href="../salesforce_code_analyzer_apexguru/"><em>SALESFORCE_CODE_ANALYZER_APEXGURU</em></a></td>
+<td><a href="https://github.com/forcedotcom/code-analyzer"><img alt="GitHub stars" src="https://img.shields.io/github/stars/forcedotcom/code-analyzer?cacheSeconds=3600" /></a> <a class="glightbox" data-type="image" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange" /></a></td>
+</tr>
+<tr>
 <td><a href="../salesforce_code_analyzer_aura/"><strong>code-analyzer-aura</strong></a><br/><a href="../salesforce_code_analyzer_aura/"><em>SALESFORCE_CODE_ANALYZER_AURA</em></a></td>
 <td><a href="https://github.com/forcedotcom/code-analyzer"><img alt="GitHub stars" src="https://img.shields.io/github/stars/forcedotcom/code-analyzer?cacheSeconds=3600" /></a> <a class="glightbox" data-type="image" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange" /></a></td>
 </tr>
@@ -12171,11 +12202,11 @@
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=npm depName=@salesforce/cli</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">NPM_SALESFORCE_CLI_VERSION</span><span class="o">=</span><span class="m">2</span>.148.3
+<span class="k">ARG</span><span class="w"> </span><span class="nv">NPM_SALESFORCE_CLI_VERSION</span><span class="o">=</span><span class="m">2</span>.150.6
 <span class="c"># renovate: datasource=npm depName=@salesforce/plugin-packaging</span>
 <span class="k">ARG</span><span class="w"> </span><span class="nv">NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION</span><span class="o">=</span><span class="m">3</span>.0.6
 <span class="c"># renovate: datasource=npm depName=sfdx-hardis</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">SFDX_HARDIS_VERSION</span><span class="o">=</span><span class="m">7</span>.23.0
+<span class="k">ARG</span><span class="w"> </span><span class="nv">SFDX_HARDIS_VERSION</span><span class="o">=</span><span class="m">8</span>.3.0
 <span class="k">ENV</span><span class="w"> </span><span class="nv">JAVA_HOME</span><span class="o">=</span>/usr/lib/jvm/java-21-openjdk
 <span class="k">ENV</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$JAVA_HOME</span><span class="s2">/bin:</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span><span class="s2">"</span>
 <span class="k">ENV</span><span class="w"> </span><span class="nv">XDG_DATA_HOME</span><span class="o">=</span>/usr/local/share
@@ -12193,7 +12224,7 @@
 </ul>
 </li>
 <li>NPM packages (node.js):<ul>
-<li><a href="https://www.npmjs.com/package/@salesforce/cli/v/2.148.3">@salesforce/cli@2.148.3</a></li>
+<li><a href="https://www.npmjs.com/package/@salesforce/cli/v/2.150.6">@salesforce/cli@2.150.6</a></li>
 </ul>
 </li>
 </ul>

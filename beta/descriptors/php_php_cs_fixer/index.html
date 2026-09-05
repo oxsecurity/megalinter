@@ -4725,6 +4725,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../salesforce_code_analyzer_apexguru/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  code-analyzer-apexguru
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../salesforce_code_analyzer_aura/" class="md-nav__link">
         
   
@@ -12312,7 +12339,7 @@
 </ul>
 <h2 id="php-cs-fixer-documentation">php-cs-fixer documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.95.21</strong></li>
+<li>Version in MegaLinter: <strong>3.95.23</strong></li>
 <li>Visit <a href="https://cs.symfony.com/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/blob/master/doc/config.rst" target="_blank">How to configure php-cs-fixer rules</a><ul>
 <li>If custom <code>.php-cs-fixer.dist.php</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.php-cs-fixer.dist.php" target="_blank">.php-cs-fixer.dist.php</a> will be used</li>
@@ -12491,14 +12518,14 @@
 <td style="text-align: center;"><a class="glightbox" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" data-type="image"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/cupcake/">cupcake</a></td>
 <td style="text-align: left;">MegaLinter for the most commonly used languages</td>
-<td style="text-align: center;">100</td>
+<td style="text-align: center;">99</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta" /></a> <a class="glightbox" data-type="image" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake" /></a></td>
 </tr>
 <tr>
 <td style="text-align: center;"><a class="glightbox" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" data-type="image"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/php/">php</a></td>
 <td style="text-align: left;">Optimized for PHP based projects</td>
-<td style="text-align: center;">58</td>
+<td style="text-align: center;">57</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta" /></a> <a class="glightbox" data-type="image" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-php"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-php" /></a></td>
 </tr>
 </tbody>
@@ -12572,7 +12599,7 @@ Options:
 <span class="k">ENV</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"/usr/local/composer/vendor/bin:</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span><span class="s2">"</span>
 <span class="c"># Linter install</span>
 <span class="c"># renovate: datasource=packagist depName=friendsofphp/php-cs-fixer</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION</span><span class="o">=</span>v3.95.21
+<span class="k">ARG</span><span class="w"> </span><span class="nv">PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION</span><span class="o">=</span>v3.95.23
 <span class="k">RUN</span><span class="w"> </span><span class="nv">GITHUB_AUTH_TOKEN</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>cat<span class="w"> </span>/run/secrets/GITHUB_TOKEN<span class="k">)</span><span class="s2">"</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span>GITHUB_AUTH_TOKEN<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>composer<span class="w"> </span>global<span class="w"> </span>require<span class="w"> </span>friendsofphp/php-cs-fixer:<span class="si">${</span><span class="nv">PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION</span><span class="si">}</span><span class="w"> </span>--with-all-dependencies
 </code></pre></div></li>
 </ul>

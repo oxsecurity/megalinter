@@ -4732,6 +4732,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../salesforce_code_analyzer_apexguru/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  code-analyzer-apexguru
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../salesforce_code_analyzer_aura/" class="md-nav__link">
         
   
@@ -12329,7 +12356,7 @@
 </ul>
 <h2 id="rubocop-documentation">rubocop documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.89.0</strong></li>
+<li>Version in MegaLinter: <strong>1.90.0</strong></li>
 <li>Visit <a href="https://rubocop.org/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://docs.rubocop.org/rubocop/configuration.html" target="_blank">How to configure rubocop rules</a><ul>
 <li>If custom <code>.ruby-lint.yml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruby-lint.yml" target="_blank">.ruby-lint.yml</a> will be used</li>
@@ -12517,14 +12544,14 @@
 <td style="text-align: center;"><a class="glightbox" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" data-type="image"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/cupcake/">cupcake</a></td>
 <td style="text-align: left;">MegaLinter for the most commonly used languages</td>
-<td style="text-align: center;">100</td>
+<td style="text-align: center;">99</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta" /></a> <a class="glightbox" data-type="image" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake" /></a></td>
 </tr>
 <tr>
 <td style="text-align: center;"><a class="glightbox" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" data-type="image"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/ruby/">ruby</a></td>
 <td style="text-align: left;">Optimized for RUBY based projects</td>
-<td style="text-align: center;">54</td>
+<td style="text-align: center;">53</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/beta" /></a> <a class="glightbox" data-type="image" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby" /></a></td>
 </tr>
 </tbody>
@@ -12678,6 +12705,8 @@ Caching:
 <span class="s1">        --display-only-safe-correctable</span>
 <span class="s1">                                     Only output safe-correctable offense messages</span>
 <span class="s1">                                     when combined with --display-only-correctable.</span>
+<span class="s1">        --display-suppressed         Also output offenses suppressed by directive</span>
+<span class="s1">                                     comments. They do not affect the exit code.</span>
 
 <span class="s1">Autocorrection:</span>
 <span class="s1">    -a, --autocorrect                Autocorrect offenses (only when it'</span>s<span class="w"> </span>safe<span class="o">)</span>.
@@ -12695,6 +12724,8 @@ Config<span class="w"> </span>Generation:
 <span class="w">        </span>--regenerate-todo<span class="w">            </span>Regenerate<span class="w"> </span>the<span class="w"> </span>TODO<span class="w"> </span>configuration<span class="w"> </span>file<span class="w"> </span>using
 <span class="w">                                     </span>the<span class="w"> </span>last<span class="w"> </span>configuration.<span class="w"> </span>If<span class="w"> </span>there<span class="w"> </span>is<span class="w"> </span>no<span class="w"> </span>existing
 <span class="w">                                     </span>TODO<span class="w"> </span>file,<span class="w"> </span>acts<span class="w"> </span>like<span class="w"> </span>--auto-gen-config.
+<span class="w">        </span>--report-unused-todo-entries<span class="w"> </span>Also<span class="w"> </span>report<span class="w"> </span>TODO<span class="w"> </span>configuration<span class="w"> </span>file<span class="w"> </span>entries<span class="w"> </span>that
+<span class="w">                                     </span>are<span class="w"> </span>no<span class="w"> </span>longer<span class="w"> </span>needed,<span class="w"> </span>and<span class="w"> </span>fail<span class="w"> </span><span class="k">if</span><span class="w"> </span>any<span class="w"> </span>are<span class="w"> </span>found.
 <span class="w">        </span>--exclude-limit<span class="w"> </span>COUNT<span class="w">        </span>Set<span class="w"> </span>the<span class="w"> </span>limit<span class="w"> </span><span class="k">for</span><span class="w"> </span>how<span class="w"> </span>many<span class="w"> </span>files<span class="w"> </span>to<span class="w"> </span>explicitly<span class="w"> </span>exclude.
 <span class="w">                                     </span>If<span class="w"> </span>there<span class="w"> </span>are<span class="w"> </span>more<span class="w"> </span>files<span class="w"> </span>than<span class="w"> </span>the<span class="w"> </span>limit,<span class="w"> </span>the<span class="w"> </span>cop<span class="w"> </span>will
 <span class="w">                                     </span>be<span class="w"> </span>disabled<span class="w"> </span>instead.<span class="w"> </span>Default<span class="w"> </span>is<span class="w"> </span><span class="m">15</span>.
@@ -12746,7 +12777,7 @@ Profiling<span class="w"> </span>Options:
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=rubygems depName=rubocop</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">GEM_RUBOCOP_VERSION</span><span class="o">=</span><span class="m">1</span>.89.0
+<span class="k">ARG</span><span class="w"> </span><span class="nv">GEM_RUBOCOP_VERSION</span><span class="o">=</span><span class="m">1</span>.90.0
 <span class="c"># renovate: datasource=rubygems depName=rubocop-github</span>
 <span class="k">ARG</span><span class="w"> </span><span class="nv">GEM_RUBOCOP_GITHUB_VERSION</span><span class="o">=</span><span class="m">0</span>.27.0
 <span class="c"># renovate: datasource=rubygems depName=rubocop-performance</span>
@@ -12761,7 +12792,7 @@ Profiling<span class="w"> </span>Options:
 </ul>
 <ul>
 <li>GEM packages (Ruby) :<ul>
-<li><a href="https://rubygems.org/gems/rubocop/versions/1.89.0">rubocop:1.89.0</a></li>
+<li><a href="https://rubygems.org/gems/rubocop/versions/1.90.0">rubocop:1.90.0</a></li>
 <li><a href="https://rubygems.org/gems/rubocop-github/versions/0.27.0">rubocop-github:0.27.0</a></li>
 <li><a href="https://rubygems.org/gems/rubocop-performance/versions/1.27.0">rubocop-performance:1.27.0</a></li>
 <li><a href="https://rubygems.org/gems/rubocop-rails/versions/2.37.0">rubocop-rails:2.37.0</a></li>

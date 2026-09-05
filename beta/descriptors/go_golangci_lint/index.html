@@ -4743,6 +4743,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../salesforce_code_analyzer_apexguru/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  code-analyzer-apexguru
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../salesforce_code_analyzer_aura/" class="md-nav__link">
         
   
@@ -12378,7 +12405,7 @@
 <p>Golangci-lint is the industry standard for Go code quality and is used by thousands of Go projects for maintaining high code standards and catching issues early in the development process.</p>
 <h2 id="golangci-lint-documentation">golangci-lint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>2.13.1</strong></li>
+<li>Version in MegaLinter: <strong>2.13.2</strong></li>
 <li>Visit <a href="https://golangci-lint.run/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://golangci-lint.run/usage/configuration/#config-file" target="_blank">How to configure golangci-lint rules</a><ul>
 <li>If custom <code>.golangci.yml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.golangci.yml" target="_blank">.golangci.yml</a> will be used</li>
@@ -12566,14 +12593,14 @@
 <td style="text-align: center;"><a class="glightbox" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" data-type="image"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/cupcake/">cupcake</a></td>
 <td style="text-align: left;">MegaLinter for the most commonly used languages</td>
-<td style="text-align: center;">100</td>
+<td style="text-align: center;">99</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta" /></a> <a class="glightbox" data-type="image" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake" /></a></td>
 </tr>
 <tr>
 <td style="text-align: center;"><a class="glightbox" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" data-type="image"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/go/">go</a></td>
 <td style="text-align: left;">Optimized for GO based projects</td>
-<td style="text-align: center;">55</td>
+<td style="text-align: center;">54</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta" /></a> <a class="glightbox" data-type="image" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-go"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-go" /></a></td>
 </tr>
 </tbody>
@@ -12634,7 +12661,7 @@ Use<span class="w"> </span><span class="s2">"golangci-lint [command] --help"</sp
 <span class="w">    </span><span class="nv">go</span><span class="o">=</span><span class="si">${</span><span class="nv">GO_ALPINE_VERSION</span><span class="si">}</span>
 <span class="c"># Linter install</span>
 <span class="c"># renovate: datasource=github-tags depName=golangci/golangci-lint</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">GO_GOLANGCI_LINT_VERSION</span><span class="o">=</span><span class="m">2</span>.13.1
+<span class="k">ARG</span><span class="w"> </span><span class="nv">GO_GOLANGCI_LINT_VERSION</span><span class="o">=</span><span class="m">2</span>.13.2
 <span class="k">RUN</span><span class="w"> </span>wget<span class="w"> </span>-O-<span class="w"> </span>-nv<span class="w"> </span>https://golangci-lint.run/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span><span class="s2">"v</span><span class="si">${</span><span class="nv">GO_GOLANGCI_LINT_VERSION</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>golangci-lint<span class="w"> </span>--version
 </code></pre></div></li>

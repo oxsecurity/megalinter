@@ -4736,6 +4736,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../salesforce_code_analyzer_apexguru/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  code-analyzer-apexguru
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../salesforce_code_analyzer_aura/" class="md-nav__link">
         
   
@@ -12521,14 +12548,14 @@
 <td style="text-align: center;"><a class="glightbox" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" data-type="image"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/cupcake/">cupcake</a></td>
 <td style="text-align: left;">MegaLinter for the most commonly used languages</td>
-<td style="text-align: center;">100</td>
+<td style="text-align: center;">99</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta" /></a> <a class="glightbox" data-type="image" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake" /></a></td>
 </tr>
 <tr>
 <td style="text-align: center;"><a class="glightbox" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" data-type="image"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/python/">python</a></td>
 <td style="text-align: left;">Optimized for PYTHON based projects</td>
-<td style="text-align: center;">70</td>
+<td style="text-align: center;">69</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta" /></a> <a class="glightbox" data-type="image" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-python"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-python" /></a></td>
 </tr>
 </tbody>
@@ -12750,125 +12777,93 @@ Main:
 <span class="s1">                        Warning level messages displayed, use "--disable=all</span>
 <span class="s1">                        --enable=classes --disable=W".</span>
 
-<span class="s1">Format:</span>
-<span class="s1">  Formatting checker.</span>
+<span class="s1">Spelling:</span>
+<span class="s1">  Check spelling in comments and docstrings.</span>
 
-<span class="s1">  --max-line-length &lt;int&gt;</span>
-<span class="s1">                        Maximum number of characters on a single line.</span>
-<span class="s1">                        Pylint'</span>s<span class="w"> </span>default<span class="w"> </span>of<span class="w"> </span><span class="m">100</span><span class="w"> </span>is<span class="w"> </span>based<span class="w"> </span>on<span class="w"> </span>PEP<span class="w"> </span><span class="m">8</span><span class="s1">'s guidance</span>
-<span class="s1">                        that teams may choose line lengths up to 99</span>
-<span class="s1">                        characters. (default: 100)</span>
-<span class="s1">  --ignore-long-lines &lt;regexp&gt;</span>
-<span class="s1">                        Regexp for a line that is allowed to be longer than</span>
-<span class="s1">                        the limit. (default: ^\s*(# )?&lt;?https?://\S+&gt;?$)</span>
-<span class="s1">  --single-line-if-stmt &lt;y or n&gt;</span>
-<span class="s1">                        Allow the body of an if to be on the same line as the</span>
-<span class="s1">                        test if there is no else. (default: False)</span>
-<span class="s1">  --single-line-class-stmt &lt;y or n&gt;</span>
-<span class="s1">                        Allow the body of a class to be on the same line as</span>
-<span class="s1">                        the declaration if body contains single statement.</span>
-<span class="s1">                        (default: False)</span>
-<span class="s1">  --max-module-lines &lt;int&gt;</span>
-<span class="s1">                        Maximum number of lines in a module. (default: 1000)</span>
-<span class="s1">  --indent-string &lt;string&gt;</span>
-<span class="s1">                        String used as indentation unit. This is usually " "</span>
-<span class="s1">                        (4 spaces) or "  " (1 tab). (default: )</span>
-<span class="s1">  --indent-after-paren &lt;int&gt;</span>
-<span class="s1">                        Number of spaces of indent required inside a hanging</span>
-<span class="s1">                        or continued line. (default: 4)</span>
-<span class="s1">  --expected-line-ending-format &lt;empty or LF or CRLF&gt;</span>
-<span class="s1">                        Expected format of line ending, e.g. empty (any line</span>
-<span class="s1">                        ending), LF or CRLF. (default: )</span>
+<span class="s1">  --spelling-dict &lt;dict name&gt;</span>
+<span class="s1">                        Spelling dictionary name. No available dictionaries :</span>
+<span class="s1">                        You need to install both the python package and the</span>
+<span class="s1">                        system dependency for enchant to work. (default: )</span>
+<span class="s1">  --spelling-ignore-words &lt;comma separated words&gt;</span>
+<span class="s1">                        List of comma separated words that should not be</span>
+<span class="s1">                        checked. (default: )</span>
+<span class="s1">  --spelling-private-dict-file &lt;path to file&gt;</span>
+<span class="s1">                        A path to a file that contains the private dictionary;</span>
+<span class="s1">                        one word per line. (default: )</span>
+<span class="s1">  --spelling-store-unknown-words &lt;y or n&gt;</span>
+<span class="s1">                        Tells whether to store unknown words to the private</span>
+<span class="s1">                        dictionary (see the --spelling-private-dict-file</span>
+<span class="s1">                        option) instead of raising a message. (default: n)</span>
+<span class="s1">  --max-spelling-suggestions N</span>
+<span class="s1">                        Limits count of emitted suggestions for spelling</span>
+<span class="s1">                        mistakes. (default: 4)</span>
+<span class="s1">  --spelling-ignore-comment-directives &lt;comma separated words&gt;</span>
+<span class="s1">                        List of comma separated words that should be</span>
+<span class="s1">                        considered directives if they appear at the beginning</span>
+<span class="s1">                        of a comment and should not be checked. (default: fmt:</span>
+<span class="s1">                        on,fmt: off,noqa:,noqa,nosec,isort:skip,mypy:)</span>
 
-<span class="s1">Exceptions:</span>
-<span class="s1">  Exception related checks.</span>
+<span class="s1">Typecheck:</span>
+<span class="s1">  Try to find bugs in the code using type inference.</span>
 
-<span class="s1">  --overgeneral-exceptions &lt;comma-separated class names&gt;</span>
-<span class="s1">                        Exceptions that will emit a warning when caught.</span>
-<span class="s1">                        (default: ('</span>builtins.BaseException<span class="s1">',</span>
-<span class="s1">                        '</span>builtins.Exception<span class="s1">'))</span>
-
-<span class="s1">Logging:</span>
-<span class="s1">  Checks use of the logging module.</span>
-
-<span class="s1">  --logging-modules &lt;comma separated list&gt;</span>
-<span class="s1">                        Logging modules to check that the string format</span>
-<span class="s1">                        arguments are in logging function parameter format.</span>
-<span class="s1">                        (default: ('</span>logging<span class="s1">',))</span>
-<span class="s1">  --logging-format-style &lt;old (%) or new ({)&gt;</span>
-<span class="s1">                        The type of string formatting that logging methods do.</span>
-<span class="s1">                        `old` means using % formatting, `new` is for `{}`</span>
-<span class="s1">                        formatting. (default: old)</span>
-
-<span class="s1">Miscellaneous:</span>
-<span class="s1">  BaseChecker for encoding issues and fixme notes.</span>
-
-<span class="s1">  --notes &lt;comma separated values&gt;</span>
-<span class="s1">                        List of note tags to take in consideration, separated</span>
-<span class="s1">                        by a comma. (default: ('</span>FIXME<span class="s1">', '</span>XXX<span class="s1">', '</span>TODO<span class="s1">'))</span>
-<span class="s1">  --notes-rgx &lt;regexp&gt;  Regular expression of note tags to take in</span>
-<span class="s1">                        consideration. (default: )</span>
-<span class="s1">  --check-fixme-in-docstring &lt;y or n&gt;</span>
-<span class="s1">                        Whether or not to search for fixme'</span>s<span class="w"> </span><span class="k">in</span><span class="w"> </span>docstrings.
-<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
-
-Similarities:
-<span class="w">  </span>Checks<span class="w"> </span><span class="k">for</span><span class="w"> </span>similarities<span class="w"> </span>and<span class="w"> </span>duplicated<span class="w"> </span>code.
-
-<span class="w">  </span>--min-similarity-lines<span class="w"> </span>&lt;int&gt;
-<span class="w">                        </span>Minimum<span class="w"> </span>lines<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>a<span class="w"> </span>similarity.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">4</span><span class="o">)</span>
-<span class="w">  </span>--ignore-comments<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
-<span class="w">                        </span>Comments<span class="w"> </span>are<span class="w"> </span>removed<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>similarity<span class="w"> </span>computation
-<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>True<span class="o">)</span>
-<span class="w">  </span>--ignore-docstrings<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
-<span class="w">                        </span>Docstrings<span class="w"> </span>are<span class="w"> </span>removed<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>similarity<span class="w"> </span>computation
-<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>True<span class="o">)</span>
-<span class="w">  </span>--ignore-imports<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
-<span class="w">                        </span>Imports<span class="w"> </span>are<span class="w"> </span>removed<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>similarity<span class="w"> </span>computation
-<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>True<span class="o">)</span>
-<span class="w">  </span>--ignore-signatures<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
-<span class="w">                        </span>Signatures<span class="w"> </span>are<span class="w"> </span>removed<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>similarity<span class="w"> </span>computation
-<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>True<span class="o">)</span>
-
-Spelling:
-<span class="w">  </span>Check<span class="w"> </span>spelling<span class="w"> </span><span class="k">in</span><span class="w"> </span>comments<span class="w"> </span>and<span class="w"> </span>docstrings.
-
-<span class="w">  </span>--spelling-dict<span class="w"> </span>&lt;dict<span class="w"> </span>name&gt;
-<span class="w">                        </span>Spelling<span class="w"> </span>dictionary<span class="w"> </span>name.<span class="w"> </span>No<span class="w"> </span>available<span class="w"> </span>dictionaries<span class="w"> </span>:
-<span class="w">                        </span>You<span class="w"> </span>need<span class="w"> </span>to<span class="w"> </span>install<span class="w"> </span>both<span class="w"> </span>the<span class="w"> </span>python<span class="w"> </span>package<span class="w"> </span>and<span class="w"> </span>the
-<span class="w">                        </span>system<span class="w"> </span>dependency<span class="w"> </span><span class="k">for</span><span class="w"> </span>enchant<span class="w"> </span>to<span class="w"> </span>work.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">)</span>
-<span class="w">  </span>--spelling-ignore-words<span class="w"> </span>&lt;comma<span class="w"> </span>separated<span class="w"> </span>words&gt;
-<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>comma<span class="w"> </span>separated<span class="w"> </span>words<span class="w"> </span>that<span class="w"> </span>should<span class="w"> </span>not<span class="w"> </span>be
-<span class="w">                        </span>checked.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">)</span>
-<span class="w">  </span>--spelling-private-dict-file<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>file&gt;
-<span class="w">                        </span>A<span class="w"> </span>path<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>file<span class="w"> </span>that<span class="w"> </span>contains<span class="w"> </span>the<span class="w"> </span>private<span class="w"> </span>dictionary<span class="p">;</span>
-<span class="w">                        </span>one<span class="w"> </span>word<span class="w"> </span>per<span class="w"> </span>line.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">)</span>
-<span class="w">  </span>--spelling-store-unknown-words<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
-<span class="w">                        </span>Tells<span class="w"> </span>whether<span class="w"> </span>to<span class="w"> </span>store<span class="w"> </span>unknown<span class="w"> </span>words<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>private
-<span class="w">                        </span>dictionary<span class="w"> </span><span class="o">(</span>see<span class="w"> </span>the<span class="w"> </span>--spelling-private-dict-file
-<span class="w">                        </span>option<span class="o">)</span><span class="w"> </span>instead<span class="w"> </span>of<span class="w"> </span>raising<span class="w"> </span>a<span class="w"> </span>message.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>n<span class="o">)</span>
-<span class="w">  </span>--max-spelling-suggestions<span class="w"> </span>N
-<span class="w">                        </span>Limits<span class="w"> </span>count<span class="w"> </span>of<span class="w"> </span>emitted<span class="w"> </span>suggestions<span class="w"> </span><span class="k">for</span><span class="w"> </span>spelling
-<span class="w">                        </span>mistakes.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">4</span><span class="o">)</span>
-<span class="w">  </span>--spelling-ignore-comment-directives<span class="w"> </span>&lt;comma<span class="w"> </span>separated<span class="w"> </span>words&gt;
-<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>comma<span class="w"> </span>separated<span class="w"> </span>words<span class="w"> </span>that<span class="w"> </span>should<span class="w"> </span>be
-<span class="w">                        </span>considered<span class="w"> </span>directives<span class="w"> </span><span class="k">if</span><span class="w"> </span>they<span class="w"> </span>appear<span class="w"> </span>at<span class="w"> </span>the<span class="w"> </span>beginning
-<span class="w">                        </span>of<span class="w"> </span>a<span class="w"> </span>comment<span class="w"> </span>and<span class="w"> </span>should<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>checked.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>fmt:
-<span class="w">                        </span>on,fmt:<span class="w"> </span>off,noqa:,noqa,nosec,isort:skip,mypy:<span class="o">)</span>
-
-String:
-<span class="w">  </span>Check<span class="w"> </span>string<span class="w"> </span>literals.
-
-<span class="w">  </span>--check-str-concat-over-line-jumps<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
-<span class="w">                        </span>This<span class="w"> </span>flag<span class="w"> </span>controls<span class="w"> </span>whether<span class="w"> </span>the<span class="w"> </span>implicit-str-concat
-<span class="w">                        </span>should<span class="w"> </span>generate<span class="w"> </span>a<span class="w"> </span>warning<span class="w"> </span>on<span class="w"> </span>implicit<span class="w"> </span>string
-<span class="w">                        </span>concatenation<span class="w"> </span><span class="k">in</span><span class="w"> </span>sequences<span class="w"> </span>defined<span class="w"> </span>over<span class="w"> </span>several<span class="w"> </span>lines.
-<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
-<span class="w">  </span>--check-quote-consistency<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
-<span class="w">                        </span>This<span class="w"> </span>flag<span class="w"> </span>controls<span class="w"> </span>whether<span class="w"> </span>inconsistent-quotes
-<span class="w">                        </span>generates<span class="w"> </span>a<span class="w"> </span>warning<span class="w"> </span>when<span class="w"> </span>the<span class="w"> </span>character<span class="w"> </span>used<span class="w"> </span>as<span class="w"> </span>a<span class="w"> </span>quote
-<span class="w">                        </span>delimiter<span class="w"> </span>is<span class="w"> </span>used<span class="w"> </span>inconsistently<span class="w"> </span>within<span class="w"> </span>a<span class="w"> </span>module.
-<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
+<span class="s1">  --ignore-on-opaque-inference &lt;y or n&gt;</span>
+<span class="s1">                        This flag controls whether pylint should warn about</span>
+<span class="s1">                        no-member and similar checks whenever an opaque object</span>
+<span class="s1">                        is returned when inferring. The inference can return</span>
+<span class="s1">                        multiple potential results while evaluating a Python</span>
+<span class="s1">                        object, but some branches might not be evaluated,</span>
+<span class="s1">                        which results in partial inference. In that case, it</span>
+<span class="s1">                        might be useful to still emit no-member and other</span>
+<span class="s1">                        checks for the rest of the inferred objects. (default:</span>
+<span class="s1">                        True)</span>
+<span class="s1">  --mixin-class-rgx &lt;regexp&gt;</span>
+<span class="s1">                        Regex pattern to define which classes are considered</span>
+<span class="s1">                        mixins. (default: .*[Mm]ixin)</span>
+<span class="s1">  --ignore-mixin-members &lt;y or n&gt;</span>
+<span class="s1">                        Tells whether missing members accessed in mixin class</span>
+<span class="s1">                        should be ignored. A class is considered mixin if its</span>
+<span class="s1">                        name matches the mixin-class-rgx option. (default:</span>
+<span class="s1">                        True)</span>
+<span class="s1">  --ignored-checks-for-mixins &lt;list of messages names&gt;</span>
+<span class="s1">                        List of symbolic message names to ignore for Mixin</span>
+<span class="s1">                        members. (default: ['</span>no-member<span class="s1">', '</span>not-async-context-
+<span class="w">                        </span>manager<span class="s1">', '</span>not-context-manager<span class="s1">', '</span>attribute-defined-
+<span class="w">                        </span>outside-init<span class="s1">'])</span>
+<span class="s1">  --ignore-none &lt;y or n&gt;</span>
+<span class="s1">                        Tells whether to warn about missing members when the</span>
+<span class="s1">                        owner of the attribute is inferred to be None.</span>
+<span class="s1">                        (default: True)</span>
+<span class="s1">  --ignored-classes &lt;members names&gt;</span>
+<span class="s1">                        List of class names for which member attributes should</span>
+<span class="s1">                        not be checked (useful for classes with dynamically</span>
+<span class="s1">                        set attributes). This supports the use of qualified</span>
+<span class="s1">                        names. (default: ('</span>optparse.Values<span class="s1">', '</span>thread._local<span class="s1">',</span>
+<span class="s1">                        '</span>_thread._local<span class="s1">', '</span>argparse.Namespace<span class="s1">'))</span>
+<span class="s1">  --generated-members &lt;members names&gt;</span>
+<span class="s1">                        List of members which are set dynamically and missed</span>
+<span class="s1">                        by pylint inference system, and so shouldn'</span>t<span class="w"> </span>trigger
+<span class="w">                        </span>E1101<span class="w"> </span>when<span class="w"> </span>accessed.<span class="w"> </span>Python<span class="w"> </span>regular<span class="w"> </span>expressions<span class="w"> </span>are
+<span class="w">                        </span>accepted.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">())</span>
+<span class="w">  </span>--contextmanager-decorators<span class="w"> </span>&lt;decorator<span class="w"> </span>names&gt;
+<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>decorators<span class="w"> </span>that<span class="w"> </span>produce<span class="w"> </span>context<span class="w"> </span>managers,<span class="w"> </span>such
+<span class="w">                        </span>as<span class="w"> </span>contextlib.contextmanager.<span class="w"> </span>Add<span class="w"> </span>to<span class="w"> </span>this<span class="w"> </span>list<span class="w"> </span>to
+<span class="w">                        </span>register<span class="w"> </span>other<span class="w"> </span>decorators<span class="w"> </span>that<span class="w"> </span>produce<span class="w"> </span>valid<span class="w"> </span>context
+<span class="w">                        </span>managers.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">[</span><span class="s1">'contextlib.contextmanager'</span><span class="o">])</span>
+<span class="w">  </span>--missing-member-hint-distance<span class="w"> </span>&lt;member<span class="w"> </span>hint<span class="w"> </span>edit<span class="w"> </span>distance&gt;
+<span class="w">                        </span>The<span class="w"> </span>maximum<span class="w"> </span>edit<span class="w"> </span>distance<span class="w"> </span>a<span class="w"> </span>name<span class="w"> </span>should<span class="w"> </span>have<span class="w"> </span><span class="k">in</span><span class="w"> </span>order
+<span class="w">                        </span>to<span class="w"> </span>be<span class="w"> </span>considered<span class="w"> </span>a<span class="w"> </span>similar<span class="w"> </span>match<span class="w"> </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span>missing<span class="w"> </span>member
+<span class="w">                        </span>name.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">1</span><span class="o">)</span>
+<span class="w">  </span>--missing-member-max-choices<span class="w"> </span>&lt;member<span class="w"> </span>hint<span class="w"> </span>max<span class="w"> </span>choices&gt;
+<span class="w">                        </span>The<span class="w"> </span>total<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>similar<span class="w"> </span>names<span class="w"> </span>that<span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span>taken
+<span class="w">                        </span><span class="k">in</span><span class="w"> </span>consideration<span class="w"> </span>when<span class="w"> </span>showing<span class="w"> </span>a<span class="w"> </span>hint<span class="w"> </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span>missing
+<span class="w">                        </span>member.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">1</span><span class="o">)</span>
+<span class="w">  </span>--missing-member-hint<span class="w"> </span>&lt;missing<span class="w"> </span>member<span class="w"> </span>hint&gt;
+<span class="w">                        </span>Show<span class="w"> </span>a<span class="w"> </span>hint<span class="w"> </span>with<span class="w"> </span>possible<span class="w"> </span>names<span class="w"> </span>when<span class="w"> </span>a<span class="w"> </span>member<span class="w"> </span>name<span class="w"> </span>was
+<span class="w">                        </span>not<span class="w"> </span>found.<span class="w"> </span>The<span class="w"> </span>aspect<span class="w"> </span>of<span class="w"> </span>finding<span class="w"> </span>the<span class="w"> </span>hint<span class="w"> </span>is<span class="w"> </span>based<span class="w"> </span>on
+<span class="w">                        </span>edit<span class="w"> </span>distance.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>True<span class="o">)</span>
+<span class="w">  </span>--signature-mutators<span class="w"> </span>&lt;decorator<span class="w"> </span>names&gt;
+<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>decorators<span class="w"> </span>that<span class="w"> </span>change<span class="w"> </span>the<span class="w"> </span>signature<span class="w"> </span>of<span class="w"> </span>a
+<span class="w">                        </span>decorated<span class="w"> </span><span class="k">function</span>.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">[])</span>
 
 Variables:
 <span class="w">  </span>BaseChecker<span class="w"> </span><span class="k">for</span><span class="w"> </span>variables.
@@ -12942,117 +12937,110 @@ Design:
 <span class="w">                        </span>ignore<span class="w"> </span>when<span class="w"> </span>counting<span class="w"> </span>public<span class="w"> </span>methods<span class="w"> </span><span class="o">(</span>see<span class="w"> </span>R0903<span class="o">)</span>
 <span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span><span class="o">[])</span>
 
-Imports:
-<span class="w">  </span>BaseChecker<span class="w"> </span><span class="k">for</span><span class="w"> </span>import<span class="w"> </span>statements.
+Similarities:
+<span class="w">  </span>Checks<span class="w"> </span><span class="k">for</span><span class="w"> </span>similarities<span class="w"> </span>and<span class="w"> </span>duplicated<span class="w"> </span>code.
 
-<span class="w">  </span>--deprecated-modules<span class="w"> </span>&lt;modules&gt;
-<span class="w">                        </span>Deprecated<span class="w"> </span>modules<span class="w"> </span>which<span class="w"> </span>should<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>used,<span class="w"> </span>separated
-<span class="w">                        </span>by<span class="w"> </span>a<span class="w"> </span>comma.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">())</span>
-<span class="w">  </span>--preferred-modules<span class="w"> </span>&lt;module:preferred-module&gt;
-<span class="w">                        </span>Couples<span class="w"> </span>of<span class="w"> </span>modules<span class="w"> </span>and<span class="w"> </span>preferred<span class="w"> </span>modules,<span class="w"> </span>separated<span class="w"> </span>by
-<span class="w">                        </span>a<span class="w"> </span>comma.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">())</span>
-<span class="w">  </span>--import-graph<span class="w"> </span>&lt;file.gv&gt;
-<span class="w">                        </span>Output<span class="w"> </span>a<span class="w"> </span>graph<span class="w"> </span><span class="o">(</span>.gv<span class="w"> </span>or<span class="w"> </span>any<span class="w"> </span>supported<span class="w"> </span>image<span class="w"> </span>format<span class="o">)</span><span class="w"> </span>of
-<span class="w">                        </span>all<span class="w"> </span><span class="o">(</span>i.e.<span class="w"> </span>internal<span class="w"> </span>and<span class="w"> </span>external<span class="o">)</span><span class="w"> </span>dependencies<span class="w"> </span>to<span class="w"> </span>the
-<span class="w">                        </span>given<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>report<span class="w"> </span>RP0402<span class="w"> </span>must<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>disabled<span class="o">)</span>.
-<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span><span class="o">)</span>
-<span class="w">  </span>--ext-import-graph<span class="w"> </span>&lt;file.gv&gt;
-<span class="w">                        </span>Output<span class="w"> </span>a<span class="w"> </span>graph<span class="w"> </span><span class="o">(</span>.gv<span class="w"> </span>or<span class="w"> </span>any<span class="w"> </span>supported<span class="w"> </span>image<span class="w"> </span>format<span class="o">)</span><span class="w"> </span>of
-<span class="w">                        </span>external<span class="w"> </span>dependencies<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>given<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>report<span class="w"> </span>RP0402
-<span class="w">                        </span>must<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>disabled<span class="o">)</span>.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">)</span>
-<span class="w">  </span>--int-import-graph<span class="w"> </span>&lt;file.gv&gt;
-<span class="w">                        </span>Output<span class="w"> </span>a<span class="w"> </span>graph<span class="w"> </span><span class="o">(</span>.gv<span class="w"> </span>or<span class="w"> </span>any<span class="w"> </span>supported<span class="w"> </span>image<span class="w"> </span>format<span class="o">)</span><span class="w"> </span>of
-<span class="w">                        </span>internal<span class="w"> </span>dependencies<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>given<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>report<span class="w"> </span>RP0402
-<span class="w">                        </span>must<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>disabled<span class="o">)</span>.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">)</span>
-<span class="w">  </span>--known-standard-library<span class="w"> </span>&lt;modules&gt;
-<span class="w">                        </span>Force<span class="w"> </span>import<span class="w"> </span>order<span class="w"> </span>to<span class="w"> </span>recognize<span class="w"> </span>a<span class="w"> </span>module<span class="w"> </span>as<span class="w"> </span>part<span class="w"> </span>of
-<span class="w">                        </span>the<span class="w"> </span>standard<span class="w"> </span>compatibility<span class="w"> </span>libraries.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">())</span>
-<span class="w">  </span>--known-third-party<span class="w"> </span>&lt;modules&gt;
-<span class="w">                        </span>Force<span class="w"> </span>import<span class="w"> </span>order<span class="w"> </span>to<span class="w"> </span>recognize<span class="w"> </span>a<span class="w"> </span>module<span class="w"> </span>as<span class="w"> </span>part<span class="w"> </span>of<span class="w"> </span>a
-<span class="w">                        </span>third<span class="w"> </span>party<span class="w"> </span>library.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">(</span><span class="s1">'enchant'</span>,<span class="o">))</span>
-<span class="w">  </span>--allow-any-import-level<span class="w"> </span>&lt;modules&gt;
-<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>modules<span class="w"> </span>that<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>imported<span class="w"> </span>at<span class="w"> </span>any<span class="w"> </span>level,<span class="w"> </span>not
-<span class="w">                        </span>just<span class="w"> </span>the<span class="w"> </span>top<span class="w"> </span>level<span class="w"> </span>one.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">())</span>
-<span class="w">  </span>--allow-wildcard-with-all<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
-<span class="w">                        </span>Allow<span class="w"> </span>wildcard<span class="w"> </span>imports<span class="w"> </span>from<span class="w"> </span>modules<span class="w"> </span>that<span class="w"> </span>define
-<span class="w">                        </span>__all__.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
-<span class="w">  </span>--allow-reexport-from-package<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
-<span class="w">                        </span>Allow<span class="w"> </span>explicit<span class="w"> </span>reexports<span class="w"> </span>by<span class="w"> </span><span class="nb">alias</span><span class="w"> </span>from<span class="w"> </span>a<span class="w"> </span>package
-<span class="w">                        </span>__init__.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
-
-Method_args:
-<span class="w">  </span>BaseChecker<span class="w"> </span><span class="k">for</span><span class="w"> </span>method_args.
-
-<span class="w">  </span>--timeout-methods<span class="w"> </span>&lt;comma<span class="w"> </span>separated<span class="w"> </span>list&gt;
-<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>qualified<span class="w"> </span>names<span class="w"> </span><span class="o">(</span>i.e.,<span class="w"> </span>library.method<span class="o">)</span><span class="w"> </span>which
-<span class="w">                        </span>require<span class="w"> </span>a<span class="w"> </span>timeout<span class="w"> </span>parameter<span class="w"> </span>e.g.
-<span class="w">                        </span><span class="s1">'requests.api.get,requests.api.post'</span><span class="w"> </span><span class="o">(</span>default:
-<span class="w">                        </span><span class="o">(</span><span class="s1">'requests.api.delete'</span>,<span class="w"> </span><span class="s1">'requests.api.get'</span>,
-<span class="w">                        </span><span class="s1">'requests.api.head'</span>,<span class="w"> </span><span class="s1">'requests.api.options'</span>,
-<span class="w">                        </span><span class="s1">'requests.api.patch'</span>,<span class="w"> </span><span class="s1">'requests.api.post'</span>,
-<span class="w">                        </span><span class="s1">'requests.api.put'</span>,<span class="w"> </span><span class="s1">'requests.api.request'</span><span class="o">))</span>
-
-Typecheck:
-<span class="w">  </span>Try<span class="w"> </span>to<span class="w"> </span>find<span class="w"> </span>bugs<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>code<span class="w"> </span>using<span class="w"> </span><span class="nb">type</span><span class="w"> </span>inference.
-
-<span class="w">  </span>--ignore-on-opaque-inference<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
-<span class="w">                        </span>This<span class="w"> </span>flag<span class="w"> </span>controls<span class="w"> </span>whether<span class="w"> </span>pylint<span class="w"> </span>should<span class="w"> </span>warn<span class="w"> </span>about
-<span class="w">                        </span>no-member<span class="w"> </span>and<span class="w"> </span>similar<span class="w"> </span>checks<span class="w"> </span>whenever<span class="w"> </span>an<span class="w"> </span>opaque<span class="w"> </span>object
-<span class="w">                        </span>is<span class="w"> </span>returned<span class="w"> </span>when<span class="w"> </span>inferring.<span class="w"> </span>The<span class="w"> </span>inference<span class="w"> </span>can<span class="w"> </span><span class="k">return</span>
-<span class="w">                        </span>multiple<span class="w"> </span>potential<span class="w"> </span>results<span class="w"> </span><span class="k">while</span><span class="w"> </span>evaluating<span class="w"> </span>a<span class="w"> </span>Python
-<span class="w">                        </span>object,<span class="w"> </span>but<span class="w"> </span>some<span class="w"> </span>branches<span class="w"> </span>might<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>evaluated,
-<span class="w">                        </span>which<span class="w"> </span>results<span class="w"> </span><span class="k">in</span><span class="w"> </span>partial<span class="w"> </span>inference.<span class="w"> </span>In<span class="w"> </span>that<span class="w"> </span><span class="k">case</span>,<span class="w"> </span>it
-<span class="w">                        </span>might<span class="w"> </span>be<span class="w"> </span>useful<span class="w"> </span>to<span class="w"> </span>still<span class="w"> </span>emit<span class="w"> </span>no-member<span class="w"> </span>and<span class="w"> </span>other
-<span class="w">                        </span>checks<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>rest<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>inferred<span class="w"> </span>objects.<span class="w"> </span><span class="o">(</span>default:
-<span class="w">                        </span>True<span class="o">)</span>
-<span class="w">  </span>--mixin-class-rgx<span class="w"> </span>&lt;regexp&gt;
-<span class="w">                        </span>Regex<span class="w"> </span>pattern<span class="w"> </span>to<span class="w"> </span>define<span class="w"> </span>which<span class="w"> </span>classes<span class="w"> </span>are<span class="w"> </span>considered
-<span class="w">                        </span>mixins.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>.*<span class="o">[</span>Mm<span class="o">]</span>ixin<span class="o">)</span>
-<span class="w">  </span>--ignore-mixin-members<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
-<span class="w">                        </span>Tells<span class="w"> </span>whether<span class="w"> </span>missing<span class="w"> </span>members<span class="w"> </span>accessed<span class="w"> </span><span class="k">in</span><span class="w"> </span>mixin<span class="w"> </span>class
-<span class="w">                        </span>should<span class="w"> </span>be<span class="w"> </span>ignored.<span class="w"> </span>A<span class="w"> </span>class<span class="w"> </span>is<span class="w"> </span>considered<span class="w"> </span>mixin<span class="w"> </span><span class="k">if</span><span class="w"> </span>its
-<span class="w">                        </span>name<span class="w"> </span>matches<span class="w"> </span>the<span class="w"> </span>mixin-class-rgx<span class="w"> </span>option.<span class="w"> </span><span class="o">(</span>default:
-<span class="w">                        </span>True<span class="o">)</span>
-<span class="w">  </span>--ignored-checks-for-mixins<span class="w"> </span>&lt;list<span class="w"> </span>of<span class="w"> </span>messages<span class="w"> </span>names&gt;
-<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>symbolic<span class="w"> </span>message<span class="w"> </span>names<span class="w"> </span>to<span class="w"> </span>ignore<span class="w"> </span><span class="k">for</span><span class="w"> </span>Mixin
-<span class="w">                        </span>members.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">[</span><span class="s1">'no-member'</span>,<span class="w"> </span><span class="s1">'not-async-context-</span>
-<span class="s1">                        manager'</span>,<span class="w"> </span><span class="s1">'not-context-manager'</span>,<span class="w"> </span><span class="s1">'attribute-defined-</span>
-<span class="s1">                        outside-init'</span><span class="o">])</span>
-<span class="w">  </span>--ignore-none<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
-<span class="w">                        </span>Tells<span class="w"> </span>whether<span class="w"> </span>to<span class="w"> </span>warn<span class="w"> </span>about<span class="w"> </span>missing<span class="w"> </span>members<span class="w"> </span>when<span class="w"> </span>the
-<span class="w">                        </span>owner<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>attribute<span class="w"> </span>is<span class="w"> </span>inferred<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>None.
+<span class="w">  </span>--min-similarity-lines<span class="w"> </span>&lt;int&gt;
+<span class="w">                        </span>Minimum<span class="w"> </span>lines<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>a<span class="w"> </span>similarity.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">4</span><span class="o">)</span>
+<span class="w">  </span>--ignore-comments<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
+<span class="w">                        </span>Comments<span class="w"> </span>are<span class="w"> </span>removed<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>similarity<span class="w"> </span>computation
 <span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>True<span class="o">)</span>
-<span class="w">  </span>--ignored-classes<span class="w"> </span>&lt;members<span class="w"> </span>names&gt;
-<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>class<span class="w"> </span>names<span class="w"> </span><span class="k">for</span><span class="w"> </span>which<span class="w"> </span>member<span class="w"> </span>attributes<span class="w"> </span>should
-<span class="w">                        </span>not<span class="w"> </span>be<span class="w"> </span>checked<span class="w"> </span><span class="o">(</span>useful<span class="w"> </span><span class="k">for</span><span class="w"> </span>classes<span class="w"> </span>with<span class="w"> </span>dynamically
-<span class="w">                        </span><span class="nb">set</span><span class="w"> </span>attributes<span class="o">)</span>.<span class="w"> </span>This<span class="w"> </span>supports<span class="w"> </span>the<span class="w"> </span>use<span class="w"> </span>of<span class="w"> </span>qualified
-<span class="w">                        </span>names.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">(</span><span class="s1">'optparse.Values'</span>,<span class="w"> </span><span class="s1">'thread._local'</span>,
-<span class="w">                        </span><span class="s1">'_thread._local'</span>,<span class="w"> </span><span class="s1">'argparse.Namespace'</span><span class="o">))</span>
-<span class="w">  </span>--generated-members<span class="w"> </span>&lt;members<span class="w"> </span>names&gt;
-<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>members<span class="w"> </span>which<span class="w"> </span>are<span class="w"> </span><span class="nb">set</span><span class="w"> </span>dynamically<span class="w"> </span>and<span class="w"> </span>missed
-<span class="w">                        </span>by<span class="w"> </span>pylint<span class="w"> </span>inference<span class="w"> </span>system,<span class="w"> </span>and<span class="w"> </span>so<span class="w"> </span>shouldn<span class="s1">'t trigger</span>
-<span class="s1">                        E1101 when accessed. Python regular expressions are</span>
-<span class="s1">                        accepted. (default: ())</span>
-<span class="s1">  --contextmanager-decorators &lt;decorator names&gt;</span>
-<span class="s1">                        List of decorators that produce context managers, such</span>
-<span class="s1">                        as contextlib.contextmanager. Add to this list to</span>
-<span class="s1">                        register other decorators that produce valid context</span>
-<span class="s1">                        managers. (default: ['</span>contextlib.contextmanager<span class="s1">'])</span>
-<span class="s1">  --missing-member-hint-distance &lt;member hint edit distance&gt;</span>
-<span class="s1">                        The maximum edit distance a name should have in order</span>
-<span class="s1">                        to be considered a similar match for a missing member</span>
-<span class="s1">                        name. (default: 1)</span>
-<span class="s1">  --missing-member-max-choices &lt;member hint max choices&gt;</span>
-<span class="s1">                        The total number of similar names that should be taken</span>
-<span class="s1">                        in consideration when showing a hint for a missing</span>
-<span class="s1">                        member. (default: 1)</span>
-<span class="s1">  --missing-member-hint &lt;missing member hint&gt;</span>
-<span class="s1">                        Show a hint with possible names when a member name was</span>
-<span class="s1">                        not found. The aspect of finding the hint is based on</span>
-<span class="s1">                        edit distance. (default: True)</span>
-<span class="s1">  --signature-mutators &lt;decorator names&gt;</span>
-<span class="s1">                        List of decorators that change the signature of a</span>
-<span class="s1">                        decorated function. (default: [])</span>
+<span class="w">  </span>--ignore-docstrings<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
+<span class="w">                        </span>Docstrings<span class="w"> </span>are<span class="w"> </span>removed<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>similarity<span class="w"> </span>computation
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>True<span class="o">)</span>
+<span class="w">  </span>--ignore-imports<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
+<span class="w">                        </span>Imports<span class="w"> </span>are<span class="w"> </span>removed<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>similarity<span class="w"> </span>computation
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>True<span class="o">)</span>
+<span class="w">  </span>--ignore-signatures<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
+<span class="w">                        </span>Signatures<span class="w"> </span>are<span class="w"> </span>removed<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>similarity<span class="w"> </span>computation
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>True<span class="o">)</span>
+
+Miscellaneous:
+<span class="w">  </span>BaseChecker<span class="w"> </span><span class="k">for</span><span class="w"> </span>encoding<span class="w"> </span>issues<span class="w"> </span>and<span class="w"> </span>fixme<span class="w"> </span>notes.
+
+<span class="w">  </span>--notes<span class="w"> </span>&lt;comma<span class="w"> </span>separated<span class="w"> </span>values&gt;
+<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>note<span class="w"> </span>tags<span class="w"> </span>to<span class="w"> </span>take<span class="w"> </span><span class="k">in</span><span class="w"> </span>consideration,<span class="w"> </span>separated
+<span class="w">                        </span>by<span class="w"> </span>a<span class="w"> </span>comma.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">(</span><span class="s1">'FIXME'</span>,<span class="w"> </span><span class="s1">'XXX'</span>,<span class="w"> </span><span class="s1">'TODO'</span><span class="o">))</span>
+<span class="w">  </span>--notes-rgx<span class="w"> </span>&lt;regexp&gt;<span class="w">  </span>Regular<span class="w"> </span>expression<span class="w"> </span>of<span class="w"> </span>note<span class="w"> </span>tags<span class="w"> </span>to<span class="w"> </span>take<span class="w"> </span><span class="k">in</span>
+<span class="w">                        </span>consideration.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">)</span>
+<span class="w">  </span>--check-fixme-in-docstring<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
+<span class="w">                        </span>Whether<span class="w"> </span>or<span class="w"> </span>not<span class="w"> </span>to<span class="w"> </span>search<span class="w"> </span><span class="k">for</span><span class="w"> </span>fixme<span class="s1">'s in docstrings.</span>
+<span class="s1">                        (default: False)</span>
+
+<span class="s1">Refactoring:</span>
+<span class="s1">  Looks for code which can be refactored.</span>
+
+<span class="s1">  --max-nested-blocks &lt;int&gt;</span>
+<span class="s1">                        Maximum number of nested blocks for function / method</span>
+<span class="s1">                        body (default: 5)</span>
+<span class="s1">  --never-returning-functions &lt;members names&gt;</span>
+<span class="s1">                        Complete name of functions that never returns. When</span>
+<span class="s1">                        checking for inconsistent-return-statements if a never</span>
+<span class="s1">                        returning function is called then it will be</span>
+<span class="s1">                        considered as an explicit return statement and no</span>
+<span class="s1">                        message will be printed. (default: ('</span>sys.exit<span class="s1">',</span>
+<span class="s1">                        '</span>argparse.parse_error<span class="s1">'))</span>
+<span class="s1">  --suggest-join-with-non-empty-separator &lt;y or n&gt;</span>
+<span class="s1">                        Let '</span>consider-using-join<span class="s1">' be raised when the separator</span>
+<span class="s1">                        to join on would be non-empty (resulting in expected</span>
+<span class="s1">                        fixes of the type: ``"- " + " - ".join(items)``)</span>
+<span class="s1">                        (default: True)</span>
+
+<span class="s1">String:</span>
+<span class="s1">  Check string literals.</span>
+
+<span class="s1">  --check-str-concat-over-line-jumps &lt;y or n&gt;</span>
+<span class="s1">                        This flag controls whether the implicit-str-concat</span>
+<span class="s1">                        should generate a warning on implicit string</span>
+<span class="s1">                        concatenation in sequences defined over several lines.</span>
+<span class="s1">                        (default: False)</span>
+<span class="s1">  --check-quote-consistency &lt;y or n&gt;</span>
+<span class="s1">                        This flag controls whether inconsistent-quotes</span>
+<span class="s1">                        generates a warning when the character used as a quote</span>
+<span class="s1">                        delimiter is used inconsistently within a module.</span>
+<span class="s1">                        (default: False)</span>
+
+<span class="s1">Method_args:</span>
+<span class="s1">  BaseChecker for method_args.</span>
+
+<span class="s1">  --timeout-methods &lt;comma separated list&gt;</span>
+<span class="s1">                        List of qualified names (i.e., library.method) which</span>
+<span class="s1">                        require a timeout parameter e.g.</span>
+<span class="s1">                        '</span>requests.api.get,requests.api.post<span class="s1">' (default:</span>
+<span class="s1">                        ('</span>requests.api.delete<span class="s1">', '</span>requests.api.get<span class="s1">',</span>
+<span class="s1">                        '</span>requests.api.head<span class="s1">', '</span>requests.api.options<span class="s1">',</span>
+<span class="s1">                        '</span>requests.api.patch<span class="s1">', '</span>requests.api.post<span class="s1">',</span>
+<span class="s1">                        '</span>requests.api.put<span class="s1">', '</span>requests.api.request<span class="s1">'))</span>
+
+<span class="s1">Exceptions:</span>
+<span class="s1">  Exception related checks.</span>
+
+<span class="s1">  --overgeneral-exceptions &lt;comma-separated class names&gt;</span>
+<span class="s1">                        Exceptions that will emit a warning when caught.</span>
+<span class="s1">                        (default: ('</span>builtins.BaseException<span class="s1">',</span>
+<span class="s1">                        '</span>builtins.Exception<span class="s1">'))</span>
+
+<span class="s1">Classes:</span>
+<span class="s1">  Checker for class nodes.</span>
+
+<span class="s1">  --defining-attr-methods &lt;method names&gt;</span>
+<span class="s1">                        List of method names used to declare (i.e. assign)</span>
+<span class="s1">                        instance attributes. (default: ('</span>__init__<span class="s1">', '</span>__new__<span class="s1">',</span>
+<span class="s1">                        '</span>setUp<span class="s1">', '</span>asyncSetUp<span class="s1">', '</span>__post_init__<span class="s1">'))</span>
+<span class="s1">  --valid-classmethod-first-arg &lt;argument names&gt;</span>
+<span class="s1">                        List of valid names for the first argument in a class</span>
+<span class="s1">                        method. (default: ('</span>cls<span class="s1">',))</span>
+<span class="s1">  --valid-metaclass-classmethod-first-arg &lt;argument names&gt;</span>
+<span class="s1">                        List of valid names for the first argument in a</span>
+<span class="s1">                        metaclass class method. (default: ('</span>mcs<span class="s1">',))</span>
+<span class="s1">  --exclude-protected &lt;protected access exclusions&gt;</span>
+<span class="s1">                        List of member names, which should be excluded from</span>
+<span class="s1">                        the protected access warning. (default: ('</span>_asdict<span class="s1">',</span>
+<span class="s1">                        '</span>_fields<span class="s1">', '</span>_replace<span class="s1">', '</span>_source<span class="s1">', '</span>_make<span class="s1">',</span>
+<span class="s1">                        '</span>os._exit<span class="s1">'))</span>
+<span class="s1">  --check-protected-access-in-special-methods &lt;y or n&gt;</span>
+<span class="s1">                        Warn about protected attribute access inside special</span>
+<span class="s1">                        methods (default: False)</span>
 
 <span class="s1">Basic:</span>
 <span class="s1">  --good-names &lt;names&gt;  Good variable names which should always be accepted,</span>
@@ -13193,46 +13181,85 @@ Typecheck:
 <span class="w">                        </span>Minimum<span class="w"> </span>line<span class="w"> </span>length<span class="w"> </span><span class="k">for</span><span class="w"> </span>functions/classes<span class="w"> </span>that<span class="w"> </span>require
 <span class="w">                        </span>docstrings,<span class="w"> </span>shorter<span class="w"> </span>ones<span class="w"> </span>are<span class="w"> </span>exempt.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>-1<span class="o">)</span>
 
-Classes:
-<span class="w">  </span>Checker<span class="w"> </span><span class="k">for</span><span class="w"> </span>class<span class="w"> </span>nodes.
+Logging:
+<span class="w">  </span>Checks<span class="w"> </span>use<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>logging<span class="w"> </span>module.
 
-<span class="w">  </span>--defining-attr-methods<span class="w"> </span>&lt;method<span class="w"> </span>names&gt;
-<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>method<span class="w"> </span>names<span class="w"> </span>used<span class="w"> </span>to<span class="w"> </span><span class="nb">declare</span><span class="w"> </span><span class="o">(</span>i.e.<span class="w"> </span>assign<span class="o">)</span>
-<span class="w">                        </span>instance<span class="w"> </span>attributes.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">(</span><span class="s1">'__init__'</span>,<span class="w"> </span><span class="s1">'__new__'</span>,
-<span class="w">                        </span><span class="s1">'setUp'</span>,<span class="w"> </span><span class="s1">'asyncSetUp'</span>,<span class="w"> </span><span class="s1">'__post_init__'</span><span class="o">))</span>
-<span class="w">  </span>--valid-classmethod-first-arg<span class="w"> </span>&lt;argument<span class="w"> </span>names&gt;
-<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>valid<span class="w"> </span>names<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>first<span class="w"> </span>argument<span class="w"> </span><span class="k">in</span><span class="w"> </span>a<span class="w"> </span>class
-<span class="w">                        </span>method.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">(</span><span class="s1">'cls'</span>,<span class="o">))</span>
-<span class="w">  </span>--valid-metaclass-classmethod-first-arg<span class="w"> </span>&lt;argument<span class="w"> </span>names&gt;
-<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>valid<span class="w"> </span>names<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>first<span class="w"> </span>argument<span class="w"> </span><span class="k">in</span><span class="w"> </span>a
-<span class="w">                        </span>metaclass<span class="w"> </span>class<span class="w"> </span>method.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">(</span><span class="s1">'mcs'</span>,<span class="o">))</span>
-<span class="w">  </span>--exclude-protected<span class="w"> </span>&lt;protected<span class="w"> </span>access<span class="w"> </span>exclusions&gt;
-<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>member<span class="w"> </span>names,<span class="w"> </span>which<span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span>excluded<span class="w"> </span>from
-<span class="w">                        </span>the<span class="w"> </span>protected<span class="w"> </span>access<span class="w"> </span>warning.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">(</span><span class="s1">'_asdict'</span>,
-<span class="w">                        </span><span class="s1">'_fields'</span>,<span class="w"> </span><span class="s1">'_replace'</span>,<span class="w"> </span><span class="s1">'_source'</span>,<span class="w"> </span><span class="s1">'_make'</span>,
-<span class="w">                        </span><span class="s1">'os._exit'</span><span class="o">))</span>
-<span class="w">  </span>--check-protected-access-in-special-methods<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
-<span class="w">                        </span>Warn<span class="w"> </span>about<span class="w"> </span>protected<span class="w"> </span>attribute<span class="w"> </span>access<span class="w"> </span>inside<span class="w"> </span>special
-<span class="w">                        </span>methods<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
+<span class="w">  </span>--logging-modules<span class="w"> </span>&lt;comma<span class="w"> </span>separated<span class="w"> </span>list&gt;
+<span class="w">                        </span>Logging<span class="w"> </span>modules<span class="w"> </span>to<span class="w"> </span>check<span class="w"> </span>that<span class="w"> </span>the<span class="w"> </span>string<span class="w"> </span>format
+<span class="w">                        </span>arguments<span class="w"> </span>are<span class="w"> </span><span class="k">in</span><span class="w"> </span>logging<span class="w"> </span><span class="k">function</span><span class="w"> </span>parameter<span class="w"> </span>format.
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span><span class="o">(</span><span class="s1">'logging'</span>,<span class="o">))</span>
+<span class="w">  </span>--logging-format-style<span class="w"> </span>&lt;old<span class="w"> </span><span class="o">(</span>%<span class="o">)</span><span class="w"> </span>or<span class="w"> </span>new<span class="w"> </span><span class="o">({)</span>&gt;
+<span class="w">                        </span>The<span class="w"> </span><span class="nb">type</span><span class="w"> </span>of<span class="w"> </span>string<span class="w"> </span>formatting<span class="w"> </span>that<span class="w"> </span>logging<span class="w"> </span>methods<span class="w"> </span><span class="k">do</span>.
+<span class="w">                        </span><span class="sb">`</span>old<span class="sb">`</span><span class="w"> </span>means<span class="w"> </span>using<span class="w"> </span>%<span class="w"> </span>formatting,<span class="w"> </span><span class="sb">`</span>new<span class="sb">`</span><span class="w"> </span>is<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="sb">`</span><span class="o">{}</span><span class="sb">`</span>
+<span class="w">                        </span>formatting.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>old<span class="o">)</span>
 
-Refactoring:
-<span class="w">  </span>Looks<span class="w"> </span><span class="k">for</span><span class="w"> </span>code<span class="w"> </span>which<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>refactored.
+Format:
+<span class="w">  </span>Formatting<span class="w"> </span>checker.
 
-<span class="w">  </span>--max-nested-blocks<span class="w"> </span>&lt;int&gt;
-<span class="w">                        </span>Maximum<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>nested<span class="w"> </span>blocks<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="k">function</span><span class="w"> </span>/<span class="w"> </span>method
-<span class="w">                        </span>body<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">5</span><span class="o">)</span>
-<span class="w">  </span>--never-returning-functions<span class="w"> </span>&lt;members<span class="w"> </span>names&gt;
-<span class="w">                        </span>Complete<span class="w"> </span>name<span class="w"> </span>of<span class="w"> </span>functions<span class="w"> </span>that<span class="w"> </span>never<span class="w"> </span>returns.<span class="w"> </span>When
-<span class="w">                        </span>checking<span class="w"> </span><span class="k">for</span><span class="w"> </span>inconsistent-return-statements<span class="w"> </span><span class="k">if</span><span class="w"> </span>a<span class="w"> </span>never
-<span class="w">                        </span>returning<span class="w"> </span><span class="k">function</span><span class="w"> </span>is<span class="w"> </span>called<span class="w"> </span><span class="k">then</span><span class="w"> </span>it<span class="w"> </span>will<span class="w"> </span>be
-<span class="w">                        </span>considered<span class="w"> </span>as<span class="w"> </span>an<span class="w"> </span>explicit<span class="w"> </span><span class="k">return</span><span class="w"> </span>statement<span class="w"> </span>and<span class="w"> </span>no
-<span class="w">                        </span>message<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>printed.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">(</span><span class="s1">'sys.exit'</span>,
-<span class="w">                        </span><span class="s1">'argparse.parse_error'</span><span class="o">))</span>
-<span class="w">  </span>--suggest-join-with-non-empty-separator<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
-<span class="w">                        </span>Let<span class="w"> </span><span class="s1">'consider-using-join'</span><span class="w"> </span>be<span class="w"> </span>raised<span class="w"> </span>when<span class="w"> </span>the<span class="w"> </span>separator
-<span class="w">                        </span>to<span class="w"> </span>join<span class="w"> </span>on<span class="w"> </span>would<span class="w"> </span>be<span class="w"> </span>non-empty<span class="w"> </span><span class="o">(</span>resulting<span class="w"> </span><span class="k">in</span><span class="w"> </span>expected
-<span class="w">                        </span>fixes<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>type:<span class="w"> </span><span class="sb">``</span><span class="s2">"- "</span><span class="w"> </span>+<span class="w"> </span><span class="s2">" - "</span>.join<span class="o">(</span>items<span class="o">)</span><span class="sb">``</span><span class="o">)</span>
-<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>True<span class="o">)</span>
+<span class="w">  </span>--max-line-length<span class="w"> </span>&lt;int&gt;
+<span class="w">                        </span>Maximum<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>characters<span class="w"> </span>on<span class="w"> </span>a<span class="w"> </span>single<span class="w"> </span>line.
+<span class="w">                        </span>Pylint<span class="s1">'s default of 100 is based on PEP 8'</span>s<span class="w"> </span>guidance
+<span class="w">                        </span>that<span class="w"> </span>teams<span class="w"> </span>may<span class="w"> </span>choose<span class="w"> </span>line<span class="w"> </span>lengths<span class="w"> </span>up<span class="w"> </span>to<span class="w"> </span><span class="m">99</span>
+<span class="w">                        </span>characters.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">100</span><span class="o">)</span>
+<span class="w">  </span>--ignore-long-lines<span class="w"> </span>&lt;regexp&gt;
+<span class="w">                        </span>Regexp<span class="w"> </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span>line<span class="w"> </span>that<span class="w"> </span>is<span class="w"> </span>allowed<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>longer<span class="w"> </span>than
+<span class="w">                        </span>the<span class="w"> </span>limit.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>^<span class="se">\s</span>*<span class="o">(</span><span class="c1"># )?&lt;?https?://\S+&gt;?$)</span>
+<span class="w">  </span>--single-line-if-stmt<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
+<span class="w">                        </span>Allow<span class="w"> </span>the<span class="w"> </span>body<span class="w"> </span>of<span class="w"> </span>an<span class="w"> </span><span class="k">if</span><span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>same<span class="w"> </span>line<span class="w"> </span>as<span class="w"> </span>the
+<span class="w">                        </span><span class="nb">test</span><span class="w"> </span><span class="k">if</span><span class="w"> </span>there<span class="w"> </span>is<span class="w"> </span>no<span class="w"> </span><span class="k">else</span>.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
+<span class="w">  </span>--single-line-class-stmt<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
+<span class="w">                        </span>Allow<span class="w"> </span>the<span class="w"> </span>body<span class="w"> </span>of<span class="w"> </span>a<span class="w"> </span>class<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>same<span class="w"> </span>line<span class="w"> </span>as
+<span class="w">                        </span>the<span class="w"> </span>declaration<span class="w"> </span><span class="k">if</span><span class="w"> </span>body<span class="w"> </span>contains<span class="w"> </span>single<span class="w"> </span>statement.
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
+<span class="w">  </span>--max-module-lines<span class="w"> </span>&lt;int&gt;
+<span class="w">                        </span>Maximum<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>lines<span class="w"> </span><span class="k">in</span><span class="w"> </span>a<span class="w"> </span>module.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">1000</span><span class="o">)</span>
+<span class="w">  </span>--indent-string<span class="w"> </span>&lt;string&gt;
+<span class="w">                        </span>String<span class="w"> </span>used<span class="w"> </span>as<span class="w"> </span>indentation<span class="w"> </span>unit.<span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>usually<span class="w"> </span><span class="s2">" "</span>
+<span class="w">                        </span><span class="o">(</span><span class="m">4</span><span class="w"> </span>spaces<span class="o">)</span><span class="w"> </span>or<span class="w"> </span><span class="s2">"  "</span><span class="w"> </span><span class="o">(</span><span class="m">1</span><span class="w"> </span>tab<span class="o">)</span>.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">)</span>
+<span class="w">  </span>--indent-after-paren<span class="w"> </span>&lt;int&gt;
+<span class="w">                        </span>Number<span class="w"> </span>of<span class="w"> </span>spaces<span class="w"> </span>of<span class="w"> </span>indent<span class="w"> </span>required<span class="w"> </span>inside<span class="w"> </span>a<span class="w"> </span>hanging
+<span class="w">                        </span>or<span class="w"> </span>continued<span class="w"> </span>line.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">4</span><span class="o">)</span>
+<span class="w">  </span>--expected-line-ending-format<span class="w"> </span>&lt;empty<span class="w"> </span>or<span class="w"> </span>LF<span class="w"> </span>or<span class="w"> </span>CRLF&gt;
+<span class="w">                        </span>Expected<span class="w"> </span>format<span class="w"> </span>of<span class="w"> </span>line<span class="w"> </span>ending,<span class="w"> </span>e.g.<span class="w"> </span>empty<span class="w"> </span><span class="o">(</span>any<span class="w"> </span>line
+<span class="w">                        </span>ending<span class="o">)</span>,<span class="w"> </span>LF<span class="w"> </span>or<span class="w"> </span>CRLF.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">)</span>
+
+Imports:
+<span class="w">  </span>BaseChecker<span class="w"> </span><span class="k">for</span><span class="w"> </span>import<span class="w"> </span>statements.
+
+<span class="w">  </span>--deprecated-modules<span class="w"> </span>&lt;modules&gt;
+<span class="w">                        </span>Deprecated<span class="w"> </span>modules<span class="w"> </span>which<span class="w"> </span>should<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>used,<span class="w"> </span>separated
+<span class="w">                        </span>by<span class="w"> </span>a<span class="w"> </span>comma.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">())</span>
+<span class="w">  </span>--preferred-modules<span class="w"> </span>&lt;module:preferred-module&gt;
+<span class="w">                        </span>Couples<span class="w"> </span>of<span class="w"> </span>modules<span class="w"> </span>and<span class="w"> </span>preferred<span class="w"> </span>modules,<span class="w"> </span>separated<span class="w"> </span>by
+<span class="w">                        </span>a<span class="w"> </span>comma.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">())</span>
+<span class="w">  </span>--import-graph<span class="w"> </span>&lt;file.gv&gt;
+<span class="w">                        </span>Output<span class="w"> </span>a<span class="w"> </span>graph<span class="w"> </span><span class="o">(</span>.gv<span class="w"> </span>or<span class="w"> </span>any<span class="w"> </span>supported<span class="w"> </span>image<span class="w"> </span>format<span class="o">)</span><span class="w"> </span>of
+<span class="w">                        </span>all<span class="w"> </span><span class="o">(</span>i.e.<span class="w"> </span>internal<span class="w"> </span>and<span class="w"> </span>external<span class="o">)</span><span class="w"> </span>dependencies<span class="w"> </span>to<span class="w"> </span>the
+<span class="w">                        </span>given<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>report<span class="w"> </span>RP0402<span class="w"> </span>must<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>disabled<span class="o">)</span>.
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span><span class="o">)</span>
+<span class="w">  </span>--ext-import-graph<span class="w"> </span>&lt;file.gv&gt;
+<span class="w">                        </span>Output<span class="w"> </span>a<span class="w"> </span>graph<span class="w"> </span><span class="o">(</span>.gv<span class="w"> </span>or<span class="w"> </span>any<span class="w"> </span>supported<span class="w"> </span>image<span class="w"> </span>format<span class="o">)</span><span class="w"> </span>of
+<span class="w">                        </span>external<span class="w"> </span>dependencies<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>given<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>report<span class="w"> </span>RP0402
+<span class="w">                        </span>must<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>disabled<span class="o">)</span>.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">)</span>
+<span class="w">  </span>--int-import-graph<span class="w"> </span>&lt;file.gv&gt;
+<span class="w">                        </span>Output<span class="w"> </span>a<span class="w"> </span>graph<span class="w"> </span><span class="o">(</span>.gv<span class="w"> </span>or<span class="w"> </span>any<span class="w"> </span>supported<span class="w"> </span>image<span class="w"> </span>format<span class="o">)</span><span class="w"> </span>of
+<span class="w">                        </span>internal<span class="w"> </span>dependencies<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>given<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>report<span class="w"> </span>RP0402
+<span class="w">                        </span>must<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>disabled<span class="o">)</span>.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">)</span>
+<span class="w">  </span>--known-standard-library<span class="w"> </span>&lt;modules&gt;
+<span class="w">                        </span>Force<span class="w"> </span>import<span class="w"> </span>order<span class="w"> </span>to<span class="w"> </span>recognize<span class="w"> </span>a<span class="w"> </span>module<span class="w"> </span>as<span class="w"> </span>part<span class="w"> </span>of
+<span class="w">                        </span>the<span class="w"> </span>standard<span class="w"> </span>compatibility<span class="w"> </span>libraries.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">())</span>
+<span class="w">  </span>--known-third-party<span class="w"> </span>&lt;modules&gt;
+<span class="w">                        </span>Force<span class="w"> </span>import<span class="w"> </span>order<span class="w"> </span>to<span class="w"> </span>recognize<span class="w"> </span>a<span class="w"> </span>module<span class="w"> </span>as<span class="w"> </span>part<span class="w"> </span>of<span class="w"> </span>a
+<span class="w">                        </span>third<span class="w"> </span>party<span class="w"> </span>library.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">(</span><span class="s1">'enchant'</span>,<span class="o">))</span>
+<span class="w">  </span>--allow-any-import-level<span class="w"> </span>&lt;modules&gt;
+<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>modules<span class="w"> </span>that<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>imported<span class="w"> </span>at<span class="w"> </span>any<span class="w"> </span>level,<span class="w"> </span>not
+<span class="w">                        </span>just<span class="w"> </span>the<span class="w"> </span>top<span class="w"> </span>level<span class="w"> </span>one.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">())</span>
+<span class="w">  </span>--allow-wildcard-with-all<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
+<span class="w">                        </span>Allow<span class="w"> </span>wildcard<span class="w"> </span>imports<span class="w"> </span>from<span class="w"> </span>modules<span class="w"> </span>that<span class="w"> </span>define
+<span class="w">                        </span>__all__.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
+<span class="w">  </span>--allow-reexport-from-package<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
+<span class="w">                        </span>Allow<span class="w"> </span>explicit<span class="w"> </span>reexports<span class="w"> </span>by<span class="w"> </span><span class="nb">alias</span><span class="w"> </span>from<span class="w"> </span>a<span class="w"> </span>package
+<span class="w">                        </span>__init__.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
 </code></pre></div>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
