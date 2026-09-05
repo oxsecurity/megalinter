@@ -29,7 +29,7 @@ webpreview==1.7.2
 yq==4.1.2
 zensical==0.0.57
 langchain_core==1.6.1
-langchain_anthropic==1.6.1
+langchain_anthropic==1.7.0
 langchain_deepseek==1.1.0
 langchain_google_genai==4.3.7
 langchain_mistralai==1.1.6

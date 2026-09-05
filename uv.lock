@@ -974,16 +974,16 @@ wheels = [
 
 [[package]]
 name = "langchain-anthropic"
-version = "1.5.4"
+version = "1.7.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "anthropic" },
     { name = "langchain-core" },
     { name = "pydantic" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/d8/9d/d56f68ec9a2c8aba3b7639e5d7a502d82cbf71c31e178a06c0955d789792/langchain_anthropic-1.5.4.tar.gz", hash = "sha256:113cb9bdac3169f2da65ea395dedb290e30dc6f899d01c205ba88aa88a2a02c2", size = 718860, upload-time = "2026-08-05T19:03:16.848Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/81/28/94fa0b41c1dc70fc177d83ea5b48917651cc24da208d236bdebbe3600b8f/langchain_anthropic-1.7.1.tar.gz", hash = "sha256:ac087159e1356ae933d5443ded2bca72912a2ed34ea171520fcfdaddfb838687", size = 750799, upload-time = "2026-09-03T15:41:42.355Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/23/d8/47fb549e91f55a54ce829b5034a21360d9383342a3bf4986188e254e89e4/langchain_anthropic-1.5.4-py3-none-any.whl", hash = "sha256:730a9cb1ad384c9f1642840469c1ebbf20237066b1635f5d4fa9876e365fceaf", size = 56025, upload-time = "2026-08-05T19:03:15.579Z" },
+    { url = "https://files.pythonhosted.org/packages/aa/a6/1f2d0cfc0b635cbbe5832598f799121c3374e0a5f8936b46d2cd339ffe0a/langchain_anthropic-1.7.1-py3-none-any.whl", hash = "sha256:c461166def7b7d9d05de518d80afd041a6fcd0d49b07d3216d2a6b9a5069cb37", size = 60887, upload-time = "2026-09-03T15:41:40.931Z" },
 ]
 
 [[package]]
@@ -1028,7 +1028,7 @@ wheels = [
 
 [[package]]
 name = "langchain-core"
-version = "1.5.6"
+version = "1.6.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "httpx" },
@@ -1042,9 +1042,9 @@ dependencies = [
     { name = "typing-extensions" },
     { name = "uuid-utils" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/27/b9/893806b89f77e1271fe6e10ce41682ff5fe43d071564e1d8e39dbb5d4d6d/langchain_core-1.5.6.tar.gz", hash = "sha256:b5f73bd9688c457b31ec73657a0ad56948f889fae27acee79286e9c285632ee6", size = 984873, upload-time = "2026-08-17T21:26:35.921Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/89/7b/406b4a8dd43dd01f69e04aafdee206809a2097134b2f944e12802eae7948/langchain_core-1.6.2.tar.gz", hash = "sha256:1ec6d3a98f7c8cdbb5bb0deff86e7ca37e16bf4f8f49f022d10723656c62352d", size = 1004390, upload-time = "2026-09-04T21:29:22.769Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/5d/0a/890504397885c9d1ae45f2e06c3000dd9f4445439602b6a990a88b32c0ac/langchain_core-1.5.6-py3-none-any.whl", hash = "sha256:d6cf37bf695ecc22cddeb8461a684e353190b2ce430d99eb22bc11c0c7c00ea5", size = 567016, upload-time = "2026-08-17T21:26:34.595Z" },
+    { url = "https://files.pythonhosted.org/packages/a8/62/d3fb7c215cb2f237c3fe84880bf347a38deafef6033b6d5f1339ba8ca401/langchain_core-1.6.2-py3-none-any.whl", hash = "sha256:21e6c7cf097c68b777fd69ea00864f09bd9ca76ac73e3e3fa14e1ee366eb4711", size = 571690, upload-time = "2026-09-04T21:29:21.175Z" },
 ]
 
 [[package]]
@@ -1120,7 +1120,7 @@ wheels = [
 
 [[package]]
 name = "langchain-openai"
-version = "1.5.2"
+version = "1.6.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "certifi" },
@@ -1128,9 +1128,9 @@ dependencies = [
     { name = "openai" },
     { name = "tiktoken" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/40/f8/4b3d87b64d5ae2ae85a9bee4e943ad04d2ce25c790cadd87ba67f03c6596/langchain_openai-1.5.2.tar.gz", hash = "sha256:94b83536d943ff661bb74cf607534ff6e7c7d1c3b2235e33a1e09e3af1d77bfc", size = 3289190, upload-time = "2026-08-18T17:37:53.191Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/58/aa/5b4dbe8f90c44729fb7800bfde113ce1bc7c9687115d2e0d20fb377671e9/langchain_openai-1.6.0.tar.gz", hash = "sha256:7c545cc1f2bee048a7e219f375b78cd820b32c876ccf825320e25e1e94132577", size = 3290712, upload-time = "2026-08-19T21:44:45.334Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/35/61/6aa67be92298b40d51427cd4d6834aed4914bd322676422543bea33fe527/langchain_openai-1.5.2-py3-none-any.whl", hash = "sha256:ace745b422eecce5cec3f4a1802c95853de91a8283adbfcea4f2ac457f2a8181", size = 124547, upload-time = "2026-08-18T17:37:51.913Z" },
+    { url = "https://files.pythonhosted.org/packages/2b/fd/e22f2ffa2e2cf6043eb56f6a6bc5e18ac24da9b48b92cd458ba54af24b9e/langchain_openai-1.6.0-py3-none-any.whl", hash = "sha256:648112bbd135aa51d60d4aa2fd4ad353628a8d92a2f8e779244a0d9869a16f18", size = 125078, upload-time = "2026-08-19T21:44:44.242Z" },
 ]
 
 [[package]]
@@ -1327,11 +1327,11 @@ llm = [
 requires-dist = [
     { name = "gitpython" },
     { name = "jsonpickle" },
-    { name = "langchain-anthropic", marker = "extra == 'all-llm'", specifier = "~=1.5.2" },
-    { name = "langchain-anthropic", marker = "extra == 'llm'", specifier = "~=1.5.2" },
+    { name = "langchain-anthropic", marker = "extra == 'all-llm'", specifier = "~=1.7.0" },
+    { name = "langchain-anthropic", marker = "extra == 'llm'", specifier = "~=1.7.0" },
     { name = "langchain-community", marker = "extra == 'all-llm'", specifier = "~=0.4.1" },
     { name = "langchain-community", marker = "extra == 'llm'", specifier = "~=0.4.1" },
-    { name = "langchain-core", specifier = "~=1.5.1" },
+    { name = "langchain-core", specifier = "~=1.6.1" },
     { name = "langchain-deepseek", marker = "extra == 'all-llm'", specifier = "~=1.1.0" },
     { name = "langchain-deepseek", marker = "extra == 'llm'", specifier = "~=1.1.0" },
     { name = "langchain-google-genai", marker = "extra == 'all-llm'", specifier = "~=4.3.1" },
@@ -1342,8 +1342,8 @@ requires-dist = [
     { name = "langchain-mistralai", marker = "extra == 'llm'", specifier = "~=1.1.1" },
     { name = "langchain-ollama", marker = "extra == 'all-llm'", specifier = "~=1.1.0" },
     { name = "langchain-ollama", marker = "extra == 'llm'", specifier = "~=1.1.0" },
-    { name = "langchain-openai", marker = "extra == 'all-llm'", specifier = "~=1.5.2" },
-    { name = "langchain-openai", marker = "extra == 'llm'", specifier = "~=1.5.2" },
+    { name = "langchain-openai", marker = "extra == 'all-llm'", specifier = "~=1.6.0" },
+    { name = "langchain-openai", marker = "extra == 'llm'", specifier = "~=1.6.0" },
     { name = "pygithub" },
     { name = "pyjwt", specifier = ">=2.12.0" },
     { name = "pytablewriter" },
