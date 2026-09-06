@@ -84,7 +84,6 @@ nav:
   - "Getting Started":
       - "Which version to use ?": "install-version.md"
       - "Assisted Installation": "install-assisted.md"
-      - "MegaLinter vs Super-Linter": "mega-linter-vs-super-linter.md"
       - "FAQ": "frequently-asked-questions.md"
   - "Installation":
       - "Coding Agents":
@@ -446,6 +445,7 @@ nav:
               - "Ollama": "llm-provider/llm_provider_ollama.md"
               - "Hugging Face": "llm-provider/llm_provider_huggingface.md"
   - "About":
+      - "MegaLinter vs Super-Linter": "mega-linter-vs-super-linter.md"
       - "They talk about MegaLinter": "articles.md"
       - "They use MegaLinter": "used-by-stats.md"
       - "Badge": "badge.md"
