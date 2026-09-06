@@ -2620,7 +2620,7 @@ def update_mkdocs_and_workflow_yml_with_flavors():
     mkdocs_yml = []
     gha_workflow_yml = ["        flavor:", "          ["]
     for flavor_id, _flavor_info in megalinter.flavor_factory.get_all_flavors().items():
-        mkdocs_yml += [f'      - "{flavor_id}": "flavors/{flavor_id}.md"']
+        mkdocs_yml += [f'          - "{flavor_id}": "flavors/{flavor_id}.md"']
         gha_workflow_yml += [f'            "{flavor_id}",']
     gha_workflow_yml += ["          ]"]
     # Update mkdocs.yml file

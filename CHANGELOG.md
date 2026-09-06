@@ -33,6 +33,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Flavors
 
 - Doc
+  - The [documentation](https://megalinter.io) menu is reorganized from **24 root entries down to 9**: pages are now grouped under **Getting Started**, **Installation**, **Configuration**, **Linters**, **Reporting** and **About**, so the sidebar can be scanned at a glance
+    - **Installation** groups the CI/CD platforms, the coding agents and the local usage pages in three sub-menus
+    - **Flavors** and **Linter Plugins** moved under **Configuration**, **Observability** and **LLM Advisor** under **Reporting**
+    - All documentation **URLs are unchanged**: only the menu structure was updated
 
 - mega-linter-runner
 
