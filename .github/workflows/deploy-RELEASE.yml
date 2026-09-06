@@ -374,14 +374,16 @@ jobs:
         env:
           STEPS_VERSION_OUTPUTS_CTAG: ${{ steps.version.outputs.ctag }}
       - name: Mike deploy current version
-        # MAJOR-RELEASE-IMPACTED
+        # The moving major-version doc is derived from the released version, so it never
+        # goes stale: it was hardcoded to "9" and kept overwriting /9/ with v10 content.
         # mike version names are the major number without the "v" prefix (e.g. "10", not "v10").
         # The final command deploys the "latest" version with the full release as an alias
         # (matches the historical layout in versions.json: {"version": "latest", "aliases": ["x.y.z"]}).
         run: |
+          MAJOR="${STEPS_VERSION_OUTPUTS_CVERSION%%.*}"
           mike delete latest || true
-          mike delete 9 || true
-          mike deploy 9
+          mike delete "${MAJOR}" || true
+          mike deploy "${MAJOR}"
           mike deploy --push latest "${STEPS_VERSION_OUTPUTS_CVERSION}"
         env:
           STEPS_VERSION_OUTPUTS_CVERSION: ${{ steps.version.outputs.cversion }}

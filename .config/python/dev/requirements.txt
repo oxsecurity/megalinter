@@ -3,7 +3,7 @@ aiofiles==25.1.0
 aiohttp==3.14.3
 beautifulsoup4==4.15.0
 fastapi==0.141.1
-gitpython==3.1.60
+gitpython==3.1.61
 giturlparse==0.15.0
 json-schema-for-humans==1.5.1
 jsonpickle==4.1.2
@@ -29,13 +29,13 @@ webpreview==1.7.2
 yq==4.1.2
 zensical==0.0.57
 langchain_core==1.6.1
-langchain_anthropic==1.6.1
+langchain_anthropic==1.7.0
 langchain_deepseek==1.1.0
 langchain_google_genai==4.3.7
 langchain_mistralai==1.1.6
 langchain_openai==1.6.0
 langchain_community==0.4.2
-langsmith==0.11.1
+langsmith==0.11.2
 orjson==3.12.0
 pyjwt==2.13.0
 idna==3.19

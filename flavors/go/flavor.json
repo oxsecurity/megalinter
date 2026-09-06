@@ -20,7 +20,6 @@
         "ENV_DOTENV_LINTER",
         "GO_GOLANGCI_LINT",
         "GO_REVIVE",
-        "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
         "GROOVY_NPM_GROOVY_LINT",
         "HTML_DJLINT",
         "HTML_HTMLHINT",

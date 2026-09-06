@@ -125,7 +125,7 @@ Usage:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=github-tags depName=skaji/cpm
-ARG PERL_PERLCRITIC_VERSION=v1.1.4
+ARG PERL_PERLCRITIC_VERSION=v1.1.5
 
 # cpm compiles XS modules during installation: the toolchain is only
 # needed within this RUN and evicted from the final layers

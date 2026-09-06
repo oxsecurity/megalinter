@@ -153,11 +153,7 @@ ARG NPM_STYLELINT_SCSS_VERSION=7.2.0
 # renovate: datasource=github-releases depName=dotenv-linter/dotenv-linter extractVersion=^v(?<version>.+)$
 ARG DOTENV_LINTER_VERSION=4.0.0
 # renovate: datasource=github-tags depName=golangci/golangci-lint
-ARG GO_GOLANGCI_LINT_VERSION=2.13.1
-# renovate: datasource=npm depName=graphql
-ARG NPM_GRAPHQL_VERSION=16.14.2
-# renovate: datasource=npm depName=graphql-schema-linter
-ARG NPM_GRAPHQL_SCHEMA_LINTER_VERSION=3.0.1
+ARG GO_GOLANGCI_LINT_VERSION=2.13.2
 # renovate: datasource=npm depName=npm-groovy-lint
 ARG NPM_GROOVY_LINT_VERSION=18.0.0
 # renovate: datasource=pypi depName=djlint
@@ -187,7 +183,7 @@ ARG PIP_RUMDL_VERSION=0.2.62
 # renovate: datasource=pypi depName=checkov
 ARG PIP_CHECKOV_VERSION=3.3.15
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.117.0
+ARG REPOSITORY_GRYPE_VERSION=0.118.0
 # renovate: datasource=github-releases depName=loeffel-io/ls-lint extractVersion=^v(?<version>.+)$
 ARG REPOSITORY_LS_LINT_VERSION=2.3.1
 # renovate: datasource=repology depName=alpine_3_24/osv-scanner versioning=loose
@@ -207,7 +203,7 @@ ARG REPOSITORY_TRIVY_VERSION=0.74.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.74.0
 # renovate: datasource=pypi depName=snakemake
-ARG PIP_SNAKEMAKE_VERSION=9.26.0
+ARG PIP_SNAKEMAKE_VERSION=9.26.1
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=2.0.3
 # renovate: datasource=npm depName=cspell
@@ -414,8 +410,6 @@ RUN npm config set prefix /usr/local \
                 stylelint-config-standard@${NPM_STYLELINT_CONFIG_STANDARD_VERSION} \
                 stylelint-config-sass-guidelines@${NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION} \
                 stylelint-scss@${NPM_STYLELINT_SCSS_VERSION} \
-                graphql@${NPM_GRAPHQL_VERSION} \
-                graphql-schema-linter@${NPM_GRAPHQL_SCHEMA_LINTER_VERSION} \
                 npm-groovy-lint@${NPM_GROOVY_LINT_VERSION} \
                 htmlhint@${NPM_HTMLHINT_VERSION} \
                 @prantlf/jsonlint@${NPM_PRANTLF_JSONLINT_VERSION} \
@@ -499,7 +493,6 @@ RUN npm --no-cache install --ignore-scripts --omit=dev --prefix /node-deps-spect
     && golangci-lint --version \
 # revive installation
 # Managed with COPY --link --from=revive /usr/bin/revive /usr/bin/revive
-# graphql-schema-linter installation
 # npm-groovy-lint installation
 # Next line commented because already managed by another linter
 # ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk

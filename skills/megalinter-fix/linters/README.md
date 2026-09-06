@@ -59,6 +59,7 @@ One guide per linter: load a guide only when the related linter reports errors.
 | RUBY_RUBOCOP                      | RUBY           | [ruby_rubocop.md](ruby_rubocop.md)                                           |
 | RUST_CLIPPY                       | RUST           | [rust_clippy.md](rust_clippy.md)                                             |
 | SALESFORCE_CODE_ANALYZER_APEX     | SALESFORCE     | [salesforce_code_analyzer_apex.md](salesforce_code_analyzer_apex.md)         |
+| SALESFORCE_CODE_ANALYZER_APEXGURU | SALESFORCE     | [salesforce_code_analyzer_apexguru.md](salesforce_code_analyzer_apexguru.md) |
 | SALESFORCE_CODE_ANALYZER_AURA     | SALESFORCE     | [salesforce_code_analyzer_aura.md](salesforce_code_analyzer_aura.md)         |
 | SALESFORCE_CODE_ANALYZER_LWC      | SALESFORCE     | [salesforce_code_analyzer_lwc.md](salesforce_code_analyzer_lwc.md)           |
 | SALESFORCE_CODE_ANALYZER_FLOW     | SALESFORCE     | [salesforce_code_analyzer_flow.md](salesforce_code_analyzer_flow.md)         |
@@ -75,7 +76,6 @@ One guide per linter: load a guide only when the related linter reports errors.
 | CSS_STYLELINT                     | CSS            | [css_stylelint.md](css_stylelint.md)                                         |
 | CSS_BIOME                         | CSS            | [css_biome.md](css_biome.md)                                                 |
 | ENV_DOTENV_LINTER                 | ENV            | [env_dotenv_linter.md](env_dotenv_linter.md)                                 |
-| GRAPHQL_GRAPHQL_SCHEMA_LINTER     | GRAPHQL        | [graphql_graphql_schema_linter.md](graphql_graphql_schema_linter.md)         |
 | GRAPHQL_BIOME                     | GRAPHQL        | [graphql_biome.md](graphql_biome.md)                                         |
 | HTML_DJLINT                       | HTML           | [html_djlint.md](html_djlint.md)                                             |
 | HTML_HTMLHINT                     | HTML           | [html_htmlhint.md](html_htmlhint.md)                                         |

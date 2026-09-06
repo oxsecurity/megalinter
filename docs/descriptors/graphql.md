@@ -9,10 +9,10 @@ description: graphql-schema-linter, biome are available to analyze GRAPHQL files
 
 ## Linters
 
-| Linter                                                                                                                                | Additional                                                                                                                                                                                                                    |
-|---------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [**graphql-schema-linter**](graphql_graphql_schema_linter.md)<br/>[_GRAPHQL_GRAPHQL_SCHEMA_LINTER_](graphql_graphql_schema_linter.md) | [![GitHub stars](https://img.shields.io/github/stars/cjoudrey/graphql-schema-linter?cacheSeconds=3600)](https://github.com/cjoudrey/graphql-schema-linter)                                                                    |
-| [**biome**](graphql_biome.md)<br/>[_GRAPHQL_BIOME_](graphql_biome.md)                                                                 | [![GitHub stars](https://img.shields.io/github/stars/biomejs/biome?cacheSeconds=3600)](https://github.com/biomejs/biome) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) |
+| Linter | Additional |
+| ------ | ---------- |
+| [**graphql-schema-linter**](graphql_graphql_schema_linter.md)<br/>[_GRAPHQL_GRAPHQL_SCHEMA_LINTER_](graphql_graphql_schema_linter.md) | <span title="Disabled: graphql-schema-linter is unmaintained (no release or commit since May 2022) and its peer dependency range pins graphql to ^15 || ^16, which blocks the whole GraphQL npm install from moving to graphql v17. Use GRAPHQL_BIOME to lint GraphQL files. The linter will be removed in a future version">🚫</span> [![GitHub stars](https://img.shields.io/github/stars/cjoudrey/graphql-schema-linter?cacheSeconds=3600)](https://github.com/cjoudrey/graphql-schema-linter) |
+| [**biome**](graphql_biome.md)<br/>[_GRAPHQL_BIOME_](graphql_biome.md) | [![GitHub stars](https://img.shields.io/github/stars/biomejs/biome?cacheSeconds=3600)](https://github.com/biomejs/biome) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) |
 
 ## Linted files
 

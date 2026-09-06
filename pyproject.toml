@@ -21,7 +21,7 @@ classifiers = [
 dependencies = [
   "gitpython",
   "jsonpickle",
-  "langchain-core~=1.5.1",
+  "langchain-core~=1.6.1",
   "pygithub",
   "pyjwt>=2.12.0",
   "pytablewriter",
@@ -34,8 +34,8 @@ dependencies = [
 
 [project.optional-dependencies]
 llm = [
-  "langchain-openai~=1.5.2",
-  "langchain-anthropic~=1.5.2",
+  "langchain-openai~=1.6.0",
+  "langchain-anthropic~=1.7.0",
   "langchain-google-genai~=4.3.1",
   "langchain-mistralai~=1.1.1",
   "langchain-ollama~=1.1.0",
@@ -48,8 +48,8 @@ huggingface = [
   "torch",
 ]
 all-llm = [
-  "langchain-openai~=1.5.2",
-  "langchain-anthropic~=1.5.2",
+  "langchain-openai~=1.6.0",
+  "langchain-anthropic~=1.7.0",
   "langchain-google-genai~=4.3.1",
   "langchain-mistralai~=1.1.1",
   "langchain-ollama~=1.1.0",
