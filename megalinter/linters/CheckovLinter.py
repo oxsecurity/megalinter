@@ -82,7 +82,7 @@ class CheckovLinter(Linter):
                 self.cli_lint_extra_args_after.append("--file")
                 self.cli_lint_extra_args_after += diff_files
 
-            if len(diff_files) > 0
+            if len(diff_files) > 0:
                 self.self.cli_lint_mode_project_extra_args_after.remove("--directory")
                 self.self.cli_lint_mode_project_extra_args_after.remove(".")
 
