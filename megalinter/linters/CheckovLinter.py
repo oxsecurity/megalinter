@@ -82,6 +82,10 @@ class CheckovLinter(Linter):
                 self.cli_lint_extra_args_after.append("--file")
                 self.cli_lint_extra_args_after += diff_files
 
+            if len(diff_files) > 0
+                self.self.cli_lint_mode_project_extra_args_after.remove("--directory")
+                self.self.cli_lint_mode_project_extra_args_after.remove(".")
+
         cmd = super().build_lint_command(file)
 
         # Delegate secrets scanning to the dedicated secret scanners active in
