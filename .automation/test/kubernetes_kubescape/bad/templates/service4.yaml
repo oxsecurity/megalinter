@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: grafana-secondary
+  name: grafana-secondary
+spec:
+  selector:
+    matchLabels:
+      app: grafana-secondary
+  template:
+    metadata:
+      labels:
+        app: grafana-secondary
+    spec:
+      securityContext:
+        fsGroup: 472
+        supplementalGroups:
+          - 0
+      containers:
+        - name: grafana-secondary
+          image: grafana/grafana:9.2.1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3001
+              name: http-grafana
+              protocol: TCP
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+          volumeMounts:
+            - mountPath: /var/lib/grafana
+              name: grafana-secondary-pv
+      volumes:
+        - name: grafana-secondary-pv
+          persistentVolumeClaim:
+            claimName: grafana-secondary-pvc
