@@ -574,3 +574,18 @@ CVE-2026-39883
 # Remove once vale, betterleaks, tflint and OpenTofu ship releases built with
 # x/crypto >= 0.55.0.
 CVE-2026-56854
+
+# --- util-linux (Alpine base image: libblkid, libmount, libuuid) ---
+# CVE-2026-78408 (CVSS 7.9): `nsenter --join-cgroup` opens the target cgroup.procs
+# file as root and keeps that file descriptor open across later namespace/credential
+# changes and execve(), so a privileged operator who runs --join-cgroup against an
+# attacker-controlled target lets an unprivileged process inside inherit root's
+# ability to migrate (and kill) unrelated host processes. The flagged libraries are
+# transitive shared-lib dependencies pulled in by the python:3.14-alpine3.24 base
+# image; MegaLinter never installs or invokes the util-linux CLI tools and does not
+# call nsenter anywhere in the image or the Python codebase (verified: no `nsenter`
+# reference in the repository). The vulnerable code path (a privileged operator
+# joining an untrusted target's cgroup) is never entered.
+# Remove once python:3.14-alpine3.24 rebuilds on an Alpine 3.24 point release
+# carrying util-linux >= 2.42.3-r1.
+CVE-2026-78408
