@@ -249,6 +249,37 @@ CVE-2026-69152
 # Remove once roslynator.dotnet.cli ships a build with Microsoft.Build >= 17.8.29.
 CVE-2025-26646
 
+# --- .NET SDK/runtime (Alpine apk dotnet10-sdk: CSHARP_DOTNET_FORMAT, VBDOTNET_DOTNET_FORMAT) ---
+# Ten CVEs from Microsoft's August/September 2026 .NET security releases, flagged
+# against the aspnetcore10-runtime/-targeting-pack, dotnet-host and dotnet10-*
+# apk sub-packages installed by `apk add --no-cache dotnet10-sdk` (unpinned — it
+# always resolves to Alpine's current dotnet10-sdk build, 10.0.10-r0; Alpine has not
+# yet rebuilt the package against the fixed 10.0.12, so there is no upgrade to pin to).
+# Checked each advisory individually:
+#  - CVE-2026-62871 is a heap overflow in the WPF font subsetter (Windows Presentation
+#    Foundation) - a Windows-only GUI stack that does not exist on this Alpine image.
+#  - CVE-2026-62897 ("`.NET Framework`: Local Code Execution") and CVE-2026-62886,
+#    CVE-2026-69439, CVE-2026-69522, CVE-2026-71328 (all "`.NET and Visual Studio`")
+#    are .NET Framework / Visual Studio advisories - Windows-only runtime and IDE
+#    products, neither of which ships on Linux or inside this image at all.
+#  - CVE-2026-62898, CVE-2026-62909, CVE-2026-69806 and CVE-2026-70354 are local
+#    elevation-of-privilege / information-disclosure bugs that need a distinct,
+#    less-privileged attacker process on the same host to exploit against a more
+#    privileged one. `dotnet format` runs as the single non-root user in a
+#    short-lived, single-tenant CI container - there is no second, less-privileged
+#    principal present to mount the attack.
+# Remove once Alpine 3.24's dotnet10-sdk package rebuilds on .NET >= 10.0.12.
+CVE-2026-62871
+CVE-2026-62886
+CVE-2026-62897
+CVE-2026-62898
+CVE-2026-62909
+CVE-2026-69439
+CVE-2026-69522
+CVE-2026-69806
+CVE-2026-70354
+CVE-2026-71328
+
 # --- .NET deps (PowerShell-based linters: arm-ttk, powershell, powershell_formatter) ---
 # System.Security.Cryptography.Xml 10.0.6 ships inside the .NET runtime bundled with
 # PowerShell 7.6.4, which is the latest release (renovate tracks PowerShell/PowerShell
@@ -405,6 +436,14 @@ GHSA-v74w-7mr3-4qg3
 # vendors them, is the latest release, so there is no upgrade path.
 CVE-2026-59902
 CVE-2026-73507
+# CVE-2026-75595 (CVSS 9.1) is an SNI-routing bypass in netty-handler's
+# SslClientHelloHandler: a fragmented TLS ClientHello can make a TLS *server* fall back
+# to its default SslContext instead of the per-SNI one, defeating a deployment that
+# relies solely on per-SNI clientAuth=REQUIRE for mutual TLS. Code Analyzer terminates
+# no TLS and routes no inbound connections by SNI - it is a local static-analysis CLI,
+# so SslClientHelloHandler is never invoked. Same "latest release, no upgrade path"
+# situation as the entries above.
+CVE-2026-75595
 # jackson-core is bundled by npm-groovy-lint and Salesforce Code Analyzer for
 # parsing their own configuration and report files, not untrusted network input.
 # Worst case is a parser DoS that aborts the linter container it runs in.
@@ -495,6 +534,42 @@ CVE-2026-73566
 # path is unreachable. Remove once trivy/grype/syft ship releases built with
 # go-git >= 5.19.2.
 CVE-2026-71556
+# @xmldom/xmldom 0.9.10 and js-yaml (two vendored copies found, at 4.1.1 and 4.3.1)
+# live in the same class of vendored node_modules as the Salesforce
+# entries above. xmldom's CVEs are all shaped around a *browser* rendering its parsed
+# output (attribute/DocType/markup injection leading to client-side script execution
+# or XSS) or a *server* feeding it attacker-controlled XML over a request; the linter
+# tree here only feeds xmldom its own local config/report/metadata files and never
+# renders anything in a browser. js-yaml's CVE-2026-84375 is the same quadratic-CPU
+# parser-DoS shape as CVE-2026-59870 above, now fixed one patch further (4.3.2):
+# reached only by parsing local YAML config, not untrusted network input.
+# Remove once the pinned linter releases vendor @xmldom/xmldom >= 0.9.11/0.8.14 and
+# js-yaml >= 4.3.2/3.15.2.
+CVE-2026-83605
+CVE-2026-83606
+CVE-2026-83607
+CVE-2026-83608
+CVE-2026-83609
+CVE-2026-83612
+CVE-2026-83613
+CVE-2026-83614
+CVE-2026-83615
+CVE-2026-83616
+CVE-2026-83618
+CVE-2026-84375
+
+# --- gRPC-Go xDS server DoS (protolint, terraform/tofu, terragrunt, tflint, grype,
+#     syft, trivy Go binaries) ---
+# CVE-2026-84445 is a crash-DoS in gRPC-Go's xDS server implementation triggered by a
+# malformed xDS resource response reaching a server that has enabled xDS. Every
+# flagged binary here embeds google.golang.org/grpc only as an RPC client/library
+# dependency (e.g. provider plugin RPC, internal tooling) — none of them starts a
+# gRPC xDS server, so the vulnerable server-side code path is never entered. Each
+# binary is the latest upstream release and grpc-go is not independently
+# rebuildable inside these images. Remove once protolint, OpenTofu/terraform,
+# terragrunt, tflint, grype, syft and trivy all ship releases built with
+# grpc-go >= 1.82.2/1.83.2.
+CVE-2026-84445
 
 # --- Dockerfile misconfigurations (REPOSITORY_TRIVY misconfig scan) ---
 # These are trivy's own Dockerfile checks fired against MegaLinter's generated
