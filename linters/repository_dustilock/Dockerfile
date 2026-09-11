@@ -14,7 +14,7 @@
 # renovate: datasource=github-tags depName=checkmarx/dustilock
 ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
 # renovate: datasource=docker depName=golang versioning=semver
-ARG GO_IMAGE_VERSION=1.26.7
+ARG GO_IMAGE_VERSION=1.27.0
 #ARGTOP__END
 
 #############################################################################################
