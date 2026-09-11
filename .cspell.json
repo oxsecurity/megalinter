@@ -1012,6 +1012,7 @@
         "linterrc",
         "linterversion",
         "lintignore",
+        "lintlang",
         "LINTR",
         "Lintr",
         "lintr",

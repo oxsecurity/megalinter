@@ -54,3 +54,9 @@ plugins:
     docUrl: https://github.com/wesley-dean/mega-linter-plugin-fmlint/blob/main/README.md
     pluginUrl: https://github.com/wesley-dean/mega-linter-plugin-fmlint/blob/main/mega-linter-plugin-fmlint/fmlint.megalinter-descriptor.yml
     author: "[Wesley Dean](https://github.com/wesley-dean)"
+  # LintLang for AI agent instructions, tool definitions and prompts
+  - name: lintlang
+    description: Deterministic offline linter for AI agent instructions, tool definitions and prompt files (AI_LINTLANG)
+    docUrl: https://github.com/hermes-labs-ai/lintlang/blob/main/mega-linter-plugin-lintlang/README.md
+    pluginUrl: https://raw.githubusercontent.com/hermes-labs-ai/lintlang/main/mega-linter-plugin-lintlang/lintlang.megalinter-descriptor.yml
+    author: "[Rolando Bosch](https://github.com/roli-lpci)"
