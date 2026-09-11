@@ -155,6 +155,21 @@ def call_mega_linter(env_vars):
     return mega_linter, output
 
 
+# Remote analysis services whose rate limiting fails a test run without any
+# MegaLinter regression: the test is skipped instead, in CI jobs only
+CI_SKIPPED_SERVICE_ERRORS = {
+    "SALESFORCE_CODE_ANALYZER_APEXGURU": r"429 Too Many Requests",
+}
+
+
+def skip_if_ci_service_error(linter, output):
+    error_regex = CI_SKIPPED_SERVICE_ERRORS.get(linter.name)
+    if error_regex is not None and utils.is_ci() and re.search(error_regex, output):
+        raise unittest.SkipTest(
+            f"{linter.name}: remote service error in CI ({error_regex})"
+        )
+
+
 def test_linter_success(linter, test_self):
     if linter.disabled is True or "all" in getattr(
         linter, "descriptor_flavors_exclude", []
@@ -186,6 +201,7 @@ def test_linter_success(linter, test_self):
     }
     env_vars.update(linter.test_variables)
     mega_linter, output = call_mega_linter(env_vars)
+    skip_if_ci_service_error(linter, output)
     test_self.assertTrue(
         len(mega_linter.linters) > 0, "Linters have been created and run"
     )
@@ -264,6 +280,7 @@ def test_linter_failure(linter, test_self):
     }
     env_vars_failure.update(linter.test_variables)
     mega_linter, output = call_mega_linter(env_vars_failure)
+    skip_if_ci_service_error(linter, output)
 
     # Check linter run
     test_self.assertTrue(
@@ -607,7 +624,8 @@ def test_linter_report_sarif(linter, test_self):
         "request_id": test_self.request_id,
     }
     env_vars.update(linter.test_variables)
-    mega_linter, _output = call_mega_linter(env_vars)
+    mega_linter, output = call_mega_linter(env_vars)
+    skip_if_ci_service_error(linter, output)
     test_self.assertTrue(
         len(mega_linter.linters) > 0, "Linters have been created and run"
     )
