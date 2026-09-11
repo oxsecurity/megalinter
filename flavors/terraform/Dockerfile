@@ -186,7 +186,7 @@ ARG REPOSITORY_GRYPE_VERSION=0.118.0
 # renovate: datasource=github-releases depName=loeffel-io/ls-lint extractVersion=^v(?<version>.+)$
 ARG REPOSITORY_LS_LINT_VERSION=2.3.1
 # renovate: datasource=repology depName=alpine_3_24/osv-scanner versioning=loose
-ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.8-r1
+ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.8-r2
 # renovate: datasource=npm depName=secretlint
 ARG NPM_SECRETLINT_VERSION=13.0.5
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend

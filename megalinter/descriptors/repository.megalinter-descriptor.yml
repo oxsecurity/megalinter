@@ -678,7 +678,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=repology depName=alpine_3_24/osv-scanner versioning=loose
-          ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.8-r1
+          ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.8-r2
         - |-
           RUN apk add --no-cache \
               osv-scanner=${REPOSITORY_OSV_SCANNER_VERSION}

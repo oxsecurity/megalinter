@@ -122,7 +122,7 @@ ARG REPOSITORY_DEVSKIM_VERSION=1.0.70
 # renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.118.0
 # renovate: datasource=repology depName=alpine_3_24/osv-scanner versioning=loose
-ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.8-r1
+ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.8-r2
 # renovate: datasource=npm depName=secretlint
 ARG NPM_SECRETLINT_VERSION=13.0.5
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
