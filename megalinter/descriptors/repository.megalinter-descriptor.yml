@@ -232,7 +232,7 @@ linters:
           ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
         - |-
           # renovate: datasource=docker depName=golang versioning=semver
-          ARG GO_IMAGE_VERSION=1.26.7
+          ARG GO_IMAGE_VERSION=1.27.0
         # The golang image used as a builder is a temporary workaround
         # Dustilock is not released as a binary or container
         - |-
@@ -678,7 +678,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=repology depName=alpine_3_24/osv-scanner versioning=loose
-          ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.8-r1
+          ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.8-r2
         - |-
           RUN apk add --no-cache \
               osv-scanner=${REPOSITORY_OSV_SCANNER_VERSION}
@@ -1279,7 +1279,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=mongodb/kingfisher
-          ARG REPOSITORY_KINGFISHER_VERSION=2.0.0
+          ARG REPOSITORY_KINGFISHER_VERSION=2.1.0
         - |
           RUN curl --silent --location https://raw.githubusercontent.com/mongodb/kingfisher/main/scripts/install-kingfisher.sh | bash -s -- /usr/local/bin --tag "v${REPOSITORY_KINGFISHER_VERSION}"
     supported_platforms:

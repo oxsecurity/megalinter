@@ -14,7 +14,7 @@
 # renovate: datasource=github-tags depName=mgechev/revive
 ARG GO_REVIVE_VERSION=v1.16.0
 # renovate: datasource=docker depName=golang versioning=semver
-ARG GO_IMAGE_VERSION=1.26.7
+ARG GO_IMAGE_VERSION=1.27.0
 #ARGTOP__END
 
 #############################################################################################
@@ -70,7 +70,7 @@ RUN python -c 'import sys; assert sys.version_info >= (3, 14, 7), "Python 3.14.7
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=repology depName=alpine_3_24/go versioning=loose
-ARG GO_ALPINE_VERSION=1.26.3-r0
+ARG GO_ALPINE_VERSION=1.26.8-r0
 
 ARG GO_REVIVE_VERSION
 ARG GO_IMAGE_VERSION

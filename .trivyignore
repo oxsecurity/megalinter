@@ -335,6 +335,17 @@ GHSA-hrxh-6v49-42gf
 # in their own repository. No data exposure, and no long-lived service to take down.
 # Remove once the pinned releases embed grpc >= 1.83.1.
 CVE-2026-84304
+# CVE-2026-84445 (GHSA-2v4p-qf9q-27wj, published 2026-09-08): gRPC-Go servers created
+# with xds.NewGRPCServer() panic when a request carries neither `:authority` nor `Host`,
+# killing the server process (DoS). Fixed in grpc 1.82.2 / 1.83.2. The same eight
+# binaries embed an affected grpc (v1.79.1 to v1.83.0). Only terraform has a fixed
+# release (1.16.2, grpc v1.83.2), but the image takes terraform from the pinned
+# alpine/terragrunt tag; protolint 0.57.0, tofu 1.12.6, tflint 0.64.0, terragrunt,
+# grype 0.118.0, syft 1.51.1 and trivy 0.74.0 latest releases still embed an affected
+# grpc. The flaw is confined to xDS-enabled servers, and none of these projects imports
+# google.golang.org/grpc/xds, so the panicking interceptor is never installed.
+# Remove once the pinned releases embed grpc >= 1.82.2 / 1.83.2.
+CVE-2026-84445
 
 # --- Go x/text norm.Iter infinite loop (all Go-based linters + bundled scanners) ---
 # CVE-2026-56852: golang.org/x/text/unicode/norm's norm.Iter can spin forever on
@@ -405,6 +416,17 @@ GHSA-v74w-7mr3-4qg3
 # vendors them, is the latest release, so there is no upgrade path.
 CVE-2026-59902
 CVE-2026-73507
+# CVE-2026-75595 (GHSA-c4c3-7fpv-j4q5, CRITICAL) is an SNI-routing bypass in
+# netty-handler's SslClientHelloHandler: a fragmented TLS ClientHello makes a TLS
+# *server* fall back to its default SslContext, defeating deployments that enforce
+# mTLS only through per-SNI SslContext selection. Same jar folder and situation as
+# above: netty-handler 4.1.127.Final ships in
+# salesforce/code-analyzer-sfge-engine/dist/java-lib/, and code-analyzer-sfge-engine
+# 0.25.0 (shrinkwrapped by code-analyzer 5.16.0) is the latest release. The Graph
+# Engine terminates no TLS and accepts no inbound connection, so SslClientHelloHandler
+# is never instantiated. Remove once code-analyzer-sfge-engine bundles
+# netty-handler >= 4.1.137.Final.
+CVE-2026-75595
 # jackson-core is bundled by npm-groovy-lint and Salesforce Code Analyzer for
 # parsing their own configuration and report files, not untrusted network input.
 # Worst case is a parser DoS that aborts the linter container it runs in.
@@ -464,6 +486,15 @@ CVE-2026-75899
 CVE-2026-75931
 CVE-2026-75975
 CVE-2026-76172
+# CVE-2026-84375 (GHSA-2883-xcg3-v3hh) is a CPU-exhaustion DoS in js-yaml merge keys:
+# maxTotalMergeKeys does not count empty mappings, so merging a long sequence of `{}`
+# many times costs O(N*K) CPU. Fixed in 4.3.2 / 3.15.2. sfdx-hardis 8.7.1 pins 4.3.2,
+# but @cparra/apexdocs 3.24.2 (pins js-yaml 4.1.1 exactly) and
+# @salesforce/plugin-code-analyzer 5.16.0 (shrinkwraps 4.3.1) are both the latest
+# releases, so their copies have no upgrade path. Availability only: the worst case is
+# one CPU-bound process in a short-lived CI container, with no data exposure.
+# Remove once apexdocs and code-analyzer depend on js-yaml >= 4.3.2.
+CVE-2026-84375
 # CVE-2026-69192 (ip-address) and CVE-2026-13697 (undici) live in the same
 # @salesforce/cli vendored node_modules (/usr/local/share/sf) of the standalone
 # salesforce-code-analyzer images, with the same no-upgrade-path situation (sf
