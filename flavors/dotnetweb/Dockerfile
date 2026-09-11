@@ -365,7 +365,7 @@ COPY --link --from=cargo-bin-shellcheck-sarif /out/bin/shellcheck-sarif /usr/bin
 # COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 COPY --link --from=shfmt /bin/shfmt /usr/bin/
 COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
-COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
+COPY --link --from=editorconfig-checker /usr/bin/editorconfig-checker /usr/bin/editorconfig-checker
 COPY --link --from=kubeconform /kubeconform /usr/bin/
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 COPY --link --from=betterleaks /usr/bin/betterleaks /usr/bin/
@@ -603,7 +603,7 @@ esac \
 # hadolint installation
 # Managed with COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 # editorconfig-checker installation
-# Managed with COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
+# Managed with COPY --link --from=editorconfig-checker /usr/bin/editorconfig-checker /usr/bin/editorconfig-checker
 # dotenv-linter installation
     && set -eu; \
     case "$TARGETPLATFORM" in \

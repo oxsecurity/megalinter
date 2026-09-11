@@ -119,7 +119,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #############################################################################################
 
 #COPY__START
-COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
+COPY --link --from=editorconfig-checker /usr/bin/editorconfig-checker /usr/bin/editorconfig-checker
 #COPY__END
 
 ##############################
@@ -163,7 +163,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 #OTHER__START
 # editorconfig-checker installation
-# Managed with COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
+# Managed with COPY --link --from=editorconfig-checker /usr/bin/editorconfig-checker /usr/bin/editorconfig-checker
 #OTHER__END
 
 ################################
