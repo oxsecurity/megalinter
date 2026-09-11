@@ -62,7 +62,7 @@ RUN python -c 'import sys; assert sys.version_info >= (3, 14, 7), "Python 3.14.7
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=github-tags depName=pmd/pmd extractVersion=^pmd_releases/(?<version>.*)$
-ARG PMD_VERSION=7.26.0
+ARG PMD_VERSION=7.27.0
 
 #ARG__END
 
