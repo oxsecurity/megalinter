@@ -398,6 +398,14 @@ class Linter:
                             f"{self.workspace}{os.path.sep}{self.linter_rules_path}"
                             + f"{os.path.sep}{file_to_check}"
                         )
+                    # in user repo ./config folder (https://dot-config.github.io)
+                    elif os.path.isfile(
+                        f"{self.workspace}{os.path.sep}.config{os.path.sep}{file_to_check}"
+                    ):
+                        found_file = (
+                            f"{self.workspace}{os.path.sep}.config"
+                            + f"{os.path.sep}{file_to_check}"
+                        )
                     elif os.path.isfile(
                         f"{self.workspace}{os.path.sep}{self.files_sub_directory}{os.path.sep}{file_to_check}"
                     ):
@@ -637,7 +645,8 @@ class Linter:
         # 2: repo + config_file_name
         # 3: linter_rules_path + config_file_name
         # 4: workspace root + linter_rules_path + config_file_name
-        # 5: mega-linter default rules path + config_file_name
+        # 5: workspace root + .config + config_file_name (https://dot-config.github.io)
+        # 6: mega-linter default rules path + config_file_name
         if (
             self.config_file_name is not None
             and self.config_file_name != "LINTER_DEFAULT"
@@ -692,6 +701,21 @@ class Linter:
                     + os.path.sep
                     + self.config_file_name
                 )
+            # in user repo ./config folder (https://dot-config.github.io)
+            elif os.path.isfile(
+                self.workspace
+                + os.path.sep
+                + ".config"
+                + os.path.sep
+                + self.config_file_name
+            ):
+                self.config_file = (
+                    self.workspace
+                    + os.path.sep
+                    + ".config"
+                    + os.path.sep
+                    + self.config_file_name
+                )
             # in user repo directory provided in <Linter>RULES_PATH or LINTER_RULES_PATH
             elif os.path.isfile(
                 self.default_rules_location + os.path.sep + self.config_file_name
@@ -716,7 +740,8 @@ class Linter:
         # 2: repo + ignore_file_name
         # 3: linter_rules_path + ignore_file_name
         # 4: workspace root + linter_rules_path + ignore_file_name
-        # 5: mega-linter default rules path + ignore_file_name
+        # 5: workspace root + .config + ignore_file_name (https://dot-config.github.io)
+        # 6: mega-linter default rules path + ignore_file_name
         if (
             self.ignore_file_name is not None
             and self.ignore_file_name != "LINTER_DEFAULT"
@@ -768,6 +793,21 @@ class Linter:
                     self.workspace
                     + os.path.sep
                     + self.linter_rules_path
+                    + os.path.sep
+                    + self.ignore_file_name
+                )
+            # in user repo ./config folder (https://dot-config.github.io)
+            elif os.path.isfile(
+                self.workspace
+                + os.path.sep
+                + ".config"
+                + os.path.sep
+                + self.ignore_file_name
+            ):
+                self.ignore_file = (
+                    self.workspace
+                    + os.path.sep
+                    + ".config"
                     + os.path.sep
                     + self.ignore_file_name
                 )

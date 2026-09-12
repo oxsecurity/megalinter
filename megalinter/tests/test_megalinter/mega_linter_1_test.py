@@ -280,6 +280,51 @@ class mega_linter_1_test(unittest.TestCase):
                 linter_rules_path + os.path.sep + "vale.ini",
             )
 
+    def test_dot_config_folder_resolves_active_only_if_file_found(self):
+        self.before_start()
+        with tempfile.TemporaryDirectory() as tmp_workspace:
+            # No .github/linters folder here: config files live directly in
+            # the project-level .config subfolder (https://dot-config.github.io)
+            dot_config_dir = tmp_workspace + os.path.sep + ".config"
+            os.makedirs(dot_config_dir, exist_ok=True)
+            with open(
+                dot_config_dir + os.path.sep + "ls-lint.yaml", "w", encoding="utf-8"
+            ) as f:
+                f.write("ls:\n  .js: regex:...[a-z]+\n")
+
+            config.set_value(
+                self.request_id, "REPOSITORY_LS_LINT_CONFIG_FILE", "ls-lint.yaml"
+            )
+
+            linter_rules_path = (
+                tmp_workspace + os.path.sep + ".github" + os.path.sep + "linters"
+            )
+            default_rules_location = utils.get_default_rules_location()
+            base_params = {
+                "default_linter_activation": True,
+                "enable_descriptors": [],
+                "enable_linters": [],
+                "disable_descriptors": [],
+                "disable_linters": [],
+                "disable_errors_linters": [],
+                "github_workspace": tmp_workspace,
+                "workspace": tmp_workspace,
+                "linter_rules_path": linter_rules_path,
+                "default_rules_location": default_rules_location,
+                "post_linter_status": True,
+                "request_id": self.request_id,
+            }
+
+            ls_lint = linter_factory.build_linter("REPOSITORY", "ls-lint", base_params)
+            self.assertTrue(
+                ls_lint.is_active,
+                "REPOSITORY_LS_LINT should be active when config exists under .config",
+            )
+            self.assertEqual(
+                ls_lint.config_file,
+                dot_config_dir + os.path.sep + "ls-lint.yaml",
+            )
+
     def test_override_linter_rules_path_remote(self):
         self.before_start()
         mega_linter, output = utilstest.call_mega_linter(
