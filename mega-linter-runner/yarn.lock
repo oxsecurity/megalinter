@@ -2881,9 +2881,9 @@ yeoman-environment@^6.0.0:
     which-package-manager "^1.0.1"
 
 yeoman-generator@^8.0.0:
-  version "8.3.0"
-  resolved "https://registry.yarnpkg.com/yeoman-generator/-/yeoman-generator-8.3.0.tgz#2d26b53033d193eec4e97df18b9120f63c3afe2f"
-  integrity sha512-stpxbDj2KQj4CysTd15z51uMJmfXdTzvlQ9TSMwZxVaN5NJ6a0zWMX84GNx+bEhntZs6FoFS5Hnkdck4NRyu1g==
+  version "8.3.1"
+  resolved "https://registry.yarnpkg.com/yeoman-generator/-/yeoman-generator-8.3.1.tgz#60a32a085afa953ce26b361eab830643c878eeb8"
+  integrity sha512-XYyd8ELUrByoGpqP4Lbd1oVjalWMCrEOG4ZXiyi21/yjGSIFAfORvzkEnjXztjdMNYqfeT6laGxhJb8hiA0wWg==
   dependencies:
     "@types/debug" "^4.1.13"
     "@types/lodash-es" "^4.17.12"
