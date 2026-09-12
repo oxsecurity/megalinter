@@ -125,6 +125,16 @@ def init_config(request_id, workspace=None, params=None):
             ".megalinter.yml",
             ".mega-linter.yaml",
             ".megalinter.yaml",
+            # Also support the project-level .config subfolder convention
+            # (https://dot-config.github.io), with or without the leading dot
+            ".config/mega-linter.yml",
+            ".config/megalinter.yml",
+            ".config/mega-linter.yaml",
+            ".config/megalinter.yaml",
+            ".config/.mega-linter.yml",
+            ".config/.megalinter.yml",
+            ".config/.mega-linter.yaml",
+            ".config/.megalinter.yaml",
         ]:
             if os.path.isfile(workspace + os.path.sep + candidate):
                 config_file = workspace + os.path.sep + candidate
