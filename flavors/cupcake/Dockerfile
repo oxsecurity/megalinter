@@ -246,7 +246,7 @@ ARG PHP_OVERTRUE_PHPLINT_VERSION=9.7.2
 # renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
 ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.95.24
 # renovate: datasource=pypi depName=pylint
-ARG PIP_PYLINT_VERSION=4.0.7
+ARG PIP_PYLINT_VERSION=4.0.8
 # renovate: datasource=pypi depName=typing-extensions
 ARG PIP_TYPING_EXTENSIONS_VERSION=4.16.0
 # renovate: datasource=pypi depName=black
