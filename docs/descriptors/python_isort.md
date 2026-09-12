@@ -29,7 +29,7 @@ description: How to use isort (configure, ignore files, ignore errors, help & ve
 
 ## isort documentation
 
-- Version in MegaLinter: **8.0.1**
+- Version in MegaLinter: **9.0.1**
 - Visit [Official Web Site](https://pycqa.github.io/isort/){target=_blank}
 - See [How to configure isort rules](https://pycqa.github.io/isort/docs/configuration/config_files.html){target=_blank}
   - If custom `.isort.cfg` config file isn't found, [.isort.cfg](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.isort.cfg){target=_blank} will be used
@@ -132,7 +132,7 @@ usage: isort [-h] [-V] [--vn] [-v] [--only-modified] [--dedup-headings] [-q]
              [--filename FILENAME] [--allow-root] [-a ADD_IMPORTS] [--append]
              [--af] [--rm REMOVE_IMPORTS] [--float-to-top]
              [--dont-float-to-top] [--ca] [--cs] [-e] [--ff]
-             [--fgw [FORCE_GRID_WRAP]] [-i INDENT]
+             [--fgw [FORCE_GRID_WRAP]] [--fs FORCED_SEPARATE] [-i INDENT]
              [--lbi LINES_BEFORE_IMPORTS] [--lai LINES_AFTER_IMPORTS]
              [--lbt LINES_BETWEEN_TYPES] [--le LINE_ENDING] [--ls] [--lss]
              [-m {GRID,VERTICAL,HANGING_INDENT,VERTICAL_HANGING_INDENT,VERTICAL_GRID,VERTICAL_GRID_GROUPED,VERTICAL_GRID_GROUPED_NO_COMMA,NOQA,VERTICAL_HANGING_INDENT_BRACKET,VERTICAL_PREFIX_FROM_MODULE_IMPORT,HANGING_INDENT_WITH_PARENTHESES,BACKSLASH_GRID,0,1,2,3,4,5,6,7,8,9,10,11}]
@@ -152,7 +152,7 @@ usage: isort [-h] [-V] [--vn] [-v] [--only-modified] [--dedup-headings] [-q]
              [-f KNOWN_FUTURE_LIBRARY] [-o KNOWN_THIRD_PARTY]
              [-p KNOWN_FIRST_PARTY] [--known-local-folder KNOWN_LOCAL_FOLDER]
              [--virtual-env VIRTUAL_ENV] [--conda-env CONDA_ENV]
-             [--py {all,2,27,3,310,311,312,313,314,36,37,38,39,auto}]
+             [--py {all,2,27,3,310,311,312,313,314,315,36,37,38,39,auto}]
              [files ...]
 
 Sort Python import definitions alphabetically within logical sections. Run
@@ -160,7 +160,7 @@ with no arguments to see a quick start guide, otherwise, one or more
 files/directories/stdin must be provided. Use `-` as the first argument to
 represent stdin. Use --interactive to use the pre 5.0.0 interactive behavior.
 If you've used isort 4 but are new to isort 5, see the upgrading guide:
-https://pycqa.github.io/isort/docs/upgrade_guides/5.0.0.html
+https://isort.readthedocs.io/en/latest/upgrade_guides/5.0.0.html
 
 general options:
   -h, --help            show this help message and exit
@@ -294,6 +294,10 @@ general output options:
                         passed as CLI flag without value) to be grid wrapped
                         regardless of line length. If 0 is passed in (the
                         global default) only line length is considered.
+  --fs, --forced-separate FORCED_SEPARATE
+                        Force specified sub modules to show separately. To
+                        specify multiple modules, use the argument multiple
+                        times: --forced-separate typing --forced-separate six.
   -i, --indent INDENT   String to place for indents defaults to " " (4
                         spaces).
   --lbi, --lines-before-imports LINES_BEFORE_IMPORTS
@@ -478,7 +482,7 @@ section output options:
   --conda-env CONDA_ENV
                         Conda environment to use for determining whether a
                         package is third-party
-  --py, --python-version {all,2,27,3,310,311,312,313,314,36,37,38,39,auto}
+  --py, --python-version {all,2,27,3,310,311,312,313,314,315,36,37,38,39,auto}
                         Tells isort to set the known standard library based on
                         the specified Python version. Default is to assume any
                         Python 3 version could be the target, and use a union

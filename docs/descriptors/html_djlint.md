@@ -29,7 +29,7 @@ For example, define `HTML_DJLINT_ARGUMENTS: ["--profile", "django"]` to select d
 
 ## djlint documentation
 
-- Version in MegaLinter: **1.44.2**
+- Version in MegaLinter: **1.45.2**
 - Visit [Official Web Site](https://djlint.com/){target=_blank}
 - See [How to configure djlint rules](https://djlint.com/docs/configuration/){target=_blank}
 - See [How to disable djlint rules in files](https://djlint.com/docs/ignoring-code/){target=_blank}
@@ -160,6 +160,9 @@ Options:
   --configuration FILE            Path to global configuration file in
                                   djlint.toml, .djlint.toml, or .djlintrc
                                   format
+  --prefer-configuration          Let --configuration override the project's
+                                  own config file, rather than the other way
+                                  round.
   --rules FILE                    Path to custom rules file in
                                   .djlint_rules.yaml format
   --statistics                    Count the number of occurrences of each
@@ -195,8 +198,19 @@ Options:
                                   <img> becomes <img />
   --no-line-after-yaml            Do not add a blank line after yaml front
                                   matter.
+  --name-endblocks                Name the endblock of a block written across
+                                  lines.
+  --sort-attributes               Sort attributes by name, with id first and
+                                  class second.
+  --no-indent-inner-html          Do not indent <head> and <body> below
+                                  <html>.
   --no-function-formatting        Do not attempt to format function contents.
   --no-set-formatting             Do not attempt to format set contents.
+  --keep-br-inline                Keep <br> on the line of the text it breaks.
+  --no-entity-formatting          Do not rewrite entity references as
+                                  characters.
+  --quote-style [double|single]   Quotes to use for strings inside template
+                                  tags. [default: double]
   --max-blank-lines INTEGER       Consolidate blank lines down to x lines.
                                   [default: 0]
   --github-output / --no-github-output
@@ -209,8 +223,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=djlint
-ARG PIP_DJLINT_VERSION=1.44.2
+ARG PIP_DJLINT_VERSION=1.45.2
 ```
 
 - PIP packages (Python):
-  - [djlint==1.44.2](https://pypi.org/project/djlint/1.44.2)
+  - [djlint==1.45.2](https://pypi.org/project/djlint/1.45.2)

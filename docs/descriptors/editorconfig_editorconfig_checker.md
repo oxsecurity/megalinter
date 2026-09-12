@@ -20,13 +20,13 @@ description: How to use editorconfig-checker (configure, ignore files, ignore er
 - **Universal Validation**: Works with any file type including code, configuration files, plain text, XML, and more
 - **EditorConfig Compliance**: Enforces indentation, line endings, character encoding, and whitespace rules from `.editorconfig`
 - **Multi-Platform Support**: Available as native binaries, npm package, PHP composer package, Python pip package, and Docker image
-- **Configurable Rules**: Fine-tune validation with `.ecrc` configuration files and command-line flags
+- **Configurable Rules**: Fine-tune validation with `.editorconfig-checker.json` configuration files and command-line flags
 - **Comprehensive Checks**: Validates indent style, insert final newline, trim trailing whitespace, and end-of-line characters
 - **Flexible Exclusions**: Exclude specific files, directories, or content types from validation
 
 ## editorconfig-checker documentation
 
-- Version in MegaLinter: **3.11.1**
+- Version in MegaLinter: **4.0.1**
 - Visit [Official Web Site](https://editorconfig-checker.github.io/){target=_blank}
 - See [How to configure editorconfig-checker rules](https://github.com/editorconfig-checker/editorconfig-checker#configuration){target=_blank}
 - See [How to disable editorconfig-checker rules in files](https://github.com/editorconfig-checker/editorconfig-checker#excluding){target=_blank}
@@ -126,7 +126,7 @@ OPTIONS:
   -disable-charset
       disables only the charset check
   -disable-end-of-line
-      disables the trailing whitespace check
+      disables the end-of-line check
   -disable-indent-size
       disables only the indent-size check
   -disable-indentation
@@ -143,6 +143,8 @@ OPTIONS:
       a regex which files should be excluded from checking - needs to be a valid regular expression. Combine patterns with | (pipe): -exclude "vendor|testdata"
   -f value
       specify the output format: default, codeclimate, gcc, github-actions (default default)
+  -fix
+      fix supported EditorConfig violations before checking
   -format value
       specify the output format: default, codeclimate, gcc, github-actions (default default)
   -h  print the help
@@ -166,8 +168,8 @@ OPTIONS:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=mstruebing/editorconfig-checker
-ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=v3.11.2
+ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=4.0.1
 FROM mstruebing/editorconfig-checker:${EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION} AS editorconfig-checker
-COPY --link --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
+COPY --link --from=editorconfig-checker /usr/bin/editorconfig-checker /usr/bin/editorconfig-checker
 ```
 

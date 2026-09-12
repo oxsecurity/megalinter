@@ -21,7 +21,7 @@ description: How to use shfmt (configure, ignore files, ignore errors, help & ve
 
 ## shfmt documentation
 
-- Version in MegaLinter: **3.13.1**
+- Version in MegaLinter: **3.14.0**
 - Visit [Official Web Site](https://github.com/mvdan/sh#readme){target=_blank}
 - See [How to configure shfmt rules](https://github.com/mvdan/sh/blob/master/cmd/shfmt/shfmt.1.scd){target=_blank}
 - See [How to disable shfmt rules in files](https://github.com/mvdan/sh/blob/master/cmd/shfmt/shfmt.1.scd){target=_blank}
@@ -130,6 +130,7 @@ directory, all shell scripts found under that directory will be used.
   -w,     --write     write result to file instead of stdout
   -d,     --diff      error with a diff when the formatting differs
   --apply-ignore      always apply EditorConfig ignore rules
+  --detect str        how to detect shell files when walking: default, exec, or all
   --filename str      provide a name for the standard input file
 
 Parser options:
@@ -165,7 +166,7 @@ For more information and to report bugs, see https://github.com/mvdan/sh.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=mvdan/shfmt
-ARG BASH_SHFMT_VERSION=v3.13.1-alpine
+ARG BASH_SHFMT_VERSION=v3.14.0-alpine
 FROM mvdan/shfmt:${BASH_SHFMT_VERSION} AS shfmt
 COPY --link --from=shfmt /bin/shfmt /usr/bin/
 ```
