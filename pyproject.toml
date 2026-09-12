@@ -76,7 +76,7 @@ installer = "uv"
 
 [tool.hatch.envs.docs]
 dependencies = [
-  "zensical==0.0.57",
+  "zensical==0.0.59",
   "markdown",
   # Zensical-compatible fork of mike; GitHub-only, not published on PyPI.
   # Kept in sync with .config/python/dev/requirements.txt.
