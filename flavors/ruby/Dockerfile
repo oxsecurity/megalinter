@@ -143,7 +143,7 @@ ARG DOTENV_LINTER_VERSION=4.0.0
 # renovate: datasource=npm depName=npm-groovy-lint
 ARG NPM_GROOVY_LINT_VERSION=18.0.0
 # renovate: datasource=pypi depName=djlint
-ARG PIP_DJLINT_VERSION=1.44.2
+ARG PIP_DJLINT_VERSION=1.45.2
 # renovate: datasource=npm depName=htmlhint
 ARG NPM_HTMLHINT_VERSION=1.9.2
 # renovate: datasource=npm depName=@prantlf/jsonlint
