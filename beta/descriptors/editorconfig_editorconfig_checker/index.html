@@ -12227,13 +12227,13 @@
 <li><strong>Universal Validation</strong>: Works with any file type including code, configuration files, plain text, XML, and more</li>
 <li><strong>EditorConfig Compliance</strong>: Enforces indentation, line endings, character encoding, and whitespace rules from <code>.editorconfig</code></li>
 <li><strong>Multi-Platform Support</strong>: Available as native binaries, npm package, PHP composer package, Python pip package, and Docker image</li>
-<li><strong>Configurable Rules</strong>: Fine-tune validation with <code>.ecrc</code> configuration files and command-line flags</li>
+<li><strong>Configurable Rules</strong>: Fine-tune validation with <code>.editorconfig-checker.json</code> configuration files and command-line flags</li>
 <li><strong>Comprehensive Checks</strong>: Validates indent style, insert final newline, trim trailing whitespace, and end-of-line characters</li>
 <li><strong>Flexible Exclusions</strong>: Exclude specific files, directories, or content types from validation</li>
 </ul>
 <h2 id="editorconfig-checker-documentation">editorconfig-checker documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.11.1</strong></li>
+<li>Version in MegaLinter: <strong>4.0.1</strong></li>
 <li>Visit <a href="https://editorconfig-checker.github.io/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/editorconfig-checker/editorconfig-checker#configuration" target="_blank">How to configure editorconfig-checker rules</a></li>
 <li>See <a href="https://github.com/editorconfig-checker/editorconfig-checker#excluding" target="_blank">How to disable editorconfig-checker rules in files</a></li>
@@ -12504,7 +12504,7 @@ OPTIONS:
 <span class="w">  </span>-disable-charset
 <span class="w">      </span>disables<span class="w"> </span>only<span class="w"> </span>the<span class="w"> </span>charset<span class="w"> </span>check
 <span class="w">  </span>-disable-end-of-line
-<span class="w">      </span>disables<span class="w"> </span>the<span class="w"> </span>trailing<span class="w"> </span>whitespace<span class="w"> </span>check
+<span class="w">      </span>disables<span class="w"> </span>the<span class="w"> </span>end-of-line<span class="w"> </span>check
 <span class="w">  </span>-disable-indent-size
 <span class="w">      </span>disables<span class="w"> </span>only<span class="w"> </span>the<span class="w"> </span>indent-size<span class="w"> </span>check
 <span class="w">  </span>-disable-indentation
@@ -12521,6 +12521,8 @@ OPTIONS:
 <span class="w">      </span>a<span class="w"> </span>regex<span class="w"> </span>which<span class="w"> </span>files<span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span>excluded<span class="w"> </span>from<span class="w"> </span>checking<span class="w"> </span>-<span class="w"> </span>needs<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>a<span class="w"> </span>valid<span class="w"> </span>regular<span class="w"> </span>expression.<span class="w"> </span>Combine<span class="w"> </span>patterns<span class="w"> </span>with<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="o">(</span>pipe<span class="o">)</span>:<span class="w"> </span>-exclude<span class="w"> </span><span class="s2">"vendor|testdata"</span>
 <span class="w">  </span>-f<span class="w"> </span>value
 <span class="w">      </span>specify<span class="w"> </span>the<span class="w"> </span>output<span class="w"> </span>format:<span class="w"> </span>default,<span class="w"> </span>codeclimate,<span class="w"> </span>gcc,<span class="w"> </span>github-actions<span class="w"> </span><span class="o">(</span>default<span class="w"> </span>default<span class="o">)</span>
+<span class="w">  </span>-fix
+<span class="w">      </span>fix<span class="w"> </span>supported<span class="w"> </span>EditorConfig<span class="w"> </span>violations<span class="w"> </span>before<span class="w"> </span>checking
 <span class="w">  </span>-format<span class="w"> </span>value
 <span class="w">      </span>specify<span class="w"> </span>the<span class="w"> </span>output<span class="w"> </span>format:<span class="w"> </span>default,<span class="w"> </span>codeclimate,<span class="w"> </span>gcc,<span class="w"> </span>github-actions<span class="w"> </span><span class="o">(</span>default<span class="w"> </span>default<span class="o">)</span>
 <span class="w">  </span>-h<span class="w">  </span>print<span class="w"> </span>the<span class="w"> </span><span class="nb">help</span>
@@ -12542,9 +12544,9 @@ OPTIONS:
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=docker depName=mstruebing/editorconfig-checker</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION</span><span class="o">=</span>v3.11.2
+<span class="k">ARG</span><span class="w"> </span><span class="nv">EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION</span><span class="o">=</span><span class="m">4</span>.0.1
 <span class="k">FROM</span><span class="w"> </span><span class="s">mstruebing/editorconfig-checker:${EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION}</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">editorconfig-checker</span>
-<span class="k">COPY</span><span class="w"> </span>--link<span class="w"> </span>--from<span class="o">=</span>editorconfig-checker<span class="w"> </span>/usr/bin/ec<span class="w"> </span>/usr/bin/editorconfig-checker
+<span class="k">COPY</span><span class="w"> </span>--link<span class="w"> </span>--from<span class="o">=</span>editorconfig-checker<span class="w"> </span>/usr/bin/editorconfig-checker<span class="w"> </span>/usr/bin/editorconfig-checker
 </code></pre></div></li>
 </ul>
 

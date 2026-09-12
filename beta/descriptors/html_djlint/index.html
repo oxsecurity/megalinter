@@ -12257,7 +12257,7 @@
 <p>For example, define <code>HTML_DJLINT_ARGUMENTS: ["--profile", "django"]</code> to select django format</p>
 <h2 id="djlint-documentation">djlint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.44.2</strong></li>
+<li>Version in MegaLinter: <strong>1.45.2</strong></li>
 <li>Visit <a href="https://djlint.com/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://djlint.com/docs/configuration/" target="_blank">How to configure djlint rules</a></li>
 <li>See <a href="https://djlint.com/docs/ignoring-code/" target="_blank">How to disable djlint rules in files</a></li>
@@ -12568,6 +12568,9 @@ Options:
 <span class="w">  </span>--configuration<span class="w"> </span>FILE<span class="w">            </span>Path<span class="w"> </span>to<span class="w"> </span>global<span class="w"> </span>configuration<span class="w"> </span>file<span class="w"> </span><span class="k">in</span>
 <span class="w">                                  </span>djlint.toml,<span class="w"> </span>.djlint.toml,<span class="w"> </span>or<span class="w"> </span>.djlintrc
 <span class="w">                                  </span>format
+<span class="w">  </span>--prefer-configuration<span class="w">          </span>Let<span class="w"> </span>--configuration<span class="w"> </span>override<span class="w"> </span>the<span class="w"> </span>project<span class="err">'</span>s
+<span class="w">                                  </span>own<span class="w"> </span>config<span class="w"> </span>file,<span class="w"> </span>rather<span class="w"> </span>than<span class="w"> </span>the<span class="w"> </span>other<span class="w"> </span>way
+<span class="w">                                  </span>round.
 <span class="w">  </span>--rules<span class="w"> </span>FILE<span class="w">                    </span>Path<span class="w"> </span>to<span class="w"> </span>custom<span class="w"> </span>rules<span class="w"> </span>file<span class="w"> </span><span class="k">in</span>
 <span class="w">                                  </span>.djlint_rules.yaml<span class="w"> </span>format
 <span class="w">  </span>--statistics<span class="w">                    </span>Count<span class="w"> </span>the<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>occurrences<span class="w"> </span>of<span class="w"> </span>each
@@ -12603,8 +12606,19 @@ Options:
 <span class="w">                                  </span>&lt;img&gt;<span class="w"> </span>becomes<span class="w"> </span>&lt;img<span class="w"> </span>/&gt;
 <span class="w">  </span>--no-line-after-yaml<span class="w">            </span>Do<span class="w"> </span>not<span class="w"> </span>add<span class="w"> </span>a<span class="w"> </span>blank<span class="w"> </span>line<span class="w"> </span>after<span class="w"> </span>yaml<span class="w"> </span>front
 <span class="w">                                  </span>matter.
+<span class="w">  </span>--name-endblocks<span class="w">                </span>Name<span class="w"> </span>the<span class="w"> </span>endblock<span class="w"> </span>of<span class="w"> </span>a<span class="w"> </span>block<span class="w"> </span>written<span class="w"> </span>across
+<span class="w">                                  </span>lines.
+<span class="w">  </span>--sort-attributes<span class="w">               </span>Sort<span class="w"> </span>attributes<span class="w"> </span>by<span class="w"> </span>name,<span class="w"> </span>with<span class="w"> </span>id<span class="w"> </span>first<span class="w"> </span>and
+<span class="w">                                  </span>class<span class="w"> </span>second.
+<span class="w">  </span>--no-indent-inner-html<span class="w">          </span>Do<span class="w"> </span>not<span class="w"> </span>indent<span class="w"> </span>&lt;head&gt;<span class="w"> </span>and<span class="w"> </span>&lt;body&gt;<span class="w"> </span>below
+<span class="w">                                  </span>&lt;html&gt;.
 <span class="w">  </span>--no-function-formatting<span class="w">        </span>Do<span class="w"> </span>not<span class="w"> </span>attempt<span class="w"> </span>to<span class="w"> </span>format<span class="w"> </span><span class="k">function</span><span class="w"> </span>contents.
 <span class="w">  </span>--no-set-formatting<span class="w">             </span>Do<span class="w"> </span>not<span class="w"> </span>attempt<span class="w"> </span>to<span class="w"> </span>format<span class="w"> </span><span class="nb">set</span><span class="w"> </span>contents.
+<span class="w">  </span>--keep-br-inline<span class="w">                </span>Keep<span class="w"> </span>&lt;br&gt;<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>line<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>text<span class="w"> </span>it<span class="w"> </span>breaks.
+<span class="w">  </span>--no-entity-formatting<span class="w">          </span>Do<span class="w"> </span>not<span class="w"> </span>rewrite<span class="w"> </span>entity<span class="w"> </span>references<span class="w"> </span>as
+<span class="w">                                  </span>characters.
+<span class="w">  </span>--quote-style<span class="w"> </span><span class="o">[</span>double<span class="p">|</span>single<span class="o">]</span><span class="w">   </span>Quotes<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span><span class="k">for</span><span class="w"> </span>strings<span class="w"> </span>inside<span class="w"> </span>template
+<span class="w">                                  </span>tags.<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span>double<span class="o">]</span>
 <span class="w">  </span>--max-blank-lines<span class="w"> </span>INTEGER<span class="w">       </span>Consolidate<span class="w"> </span>blank<span class="w"> </span>lines<span class="w"> </span>down<span class="w"> </span>to<span class="w"> </span>x<span class="w"> </span>lines.
 <span class="w">                                  </span><span class="o">[</span>default:<span class="w"> </span><span class="m">0</span><span class="o">]</span>
 <span class="w">  </span>--github-output<span class="w"> </span>/<span class="w"> </span>--no-github-output
@@ -12615,12 +12629,12 @@ Options:
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=pypi depName=djlint</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">PIP_DJLINT_VERSION</span><span class="o">=</span><span class="m">1</span>.44.2
+<span class="k">ARG</span><span class="w"> </span><span class="nv">PIP_DJLINT_VERSION</span><span class="o">=</span><span class="m">1</span>.45.2
 </code></pre></div></li>
 </ul>
 <ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/djlint/1.44.2">djlint==1.44.2</a></li>
+<li><a href="https://pypi.org/project/djlint/1.45.2">djlint==1.45.2</a></li>
 </ul>
 </li>
 </ul>

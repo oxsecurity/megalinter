@@ -12248,7 +12248,7 @@
 </code></pre></div>
 <h2 id="jscpd-documentation">jscpd documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>5.0.16</strong></li>
+<li>Version in MegaLinter: <strong>5.1.2</strong></li>
 <li>Visit <a href="https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#config-file" target="_blank">How to configure jscpd rules</a><ul>
 <li>If custom <code>.jscpd.json</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.jscpd.json" target="_blank">.jscpd.json</a> will be used</li>
@@ -12526,7 +12526,7 @@ Options:
 <span class="w">      </span>--ignore-pattern<span class="w"> </span>&lt;IGNORE_PATTERN&gt;
 <span class="w">          </span>Code-level<span class="w"> </span>regex<span class="w"> </span>patterns<span class="w"> </span>to<span class="w"> </span>skip<span class="w"> </span>matching<span class="w"> </span>tokens<span class="w"> </span>during<span class="w"> </span>detection,<span class="w"> </span>e.g.<span class="w"> </span><span class="s2">"//\\s*cpd-disable"</span><span class="w"> </span><span class="o">(</span>comma-separated<span class="o">)</span>
 <span class="w">  </span>-r,<span class="w"> </span>--reporters<span class="w"> </span>&lt;REPORTERS&gt;
-<span class="w">          </span>Output<span class="w"> </span>reporters<span class="w"> </span><span class="o">(</span>comma-separated<span class="o">)</span>:<span class="w"> </span>console,json,xml,csv,html,markdown,badge,sarif,ai,xcode,threshold,silent,console-full<span class="w"> </span>Aliases:<span class="w"> </span><span class="s2">"full"</span><span class="w"> </span>and<span class="w"> </span><span class="s2">"consoleFull"</span><span class="w"> </span>are<span class="w"> </span>accepted<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="s2">"console-full"</span>
+<span class="w">          </span>Output<span class="w"> </span>reporters<span class="w"> </span><span class="o">(</span>comma-separated<span class="o">)</span>:<span class="w"> </span>console,json,xml,csv,html,markdown,badge,sarif,codeclimate,openmetrics,ai,xcode,threshold,silent,console-full<span class="w"> </span>Aliases:<span class="w"> </span><span class="s2">"full"</span><span class="w"> </span>and<span class="w"> </span><span class="s2">"consoleFull"</span><span class="w"> </span>are<span class="w"> </span>accepted<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="s2">"console-full"</span><span class="p">;</span><span class="w"> </span><span class="s2">"gitlab"</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="s2">"codeclimate"</span>
 <span class="w">  </span>-o,<span class="w"> </span>--output<span class="w"> </span>&lt;OUTPUT&gt;
 <span class="w">          </span>Output<span class="w"> </span>directory<span class="w"> </span><span class="k">for</span><span class="w"> </span>file<span class="w"> </span>reporters
 <span class="w">  </span>-c,<span class="w"> </span>--config<span class="w"> </span>&lt;CONFIG&gt;
@@ -12537,6 +12537,14 @@ Options:
 <span class="w">          </span>Maximum<span class="w"> </span>duplication<span class="w"> </span>percentage<span class="w"> </span>before<span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
 <span class="w">      </span>--sarif-error-tokens<span class="w"> </span>&lt;TOKENS&gt;
 <span class="w">          </span>Report<span class="w"> </span>SARIF<span class="w"> </span>results<span class="w"> </span>as<span class="w"> </span><span class="s2">"error"</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>clones<span class="w"> </span>with<span class="w"> </span>at<span class="w"> </span>least<span class="w"> </span>this<span class="w"> </span>many<span class="w"> </span>tokens<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>all<span class="w"> </span><span class="s2">"warning"</span><span class="o">)</span>
+<span class="w">      </span>--baseline<span class="w"> </span>&lt;FILE&gt;
+<span class="w">          </span>Path<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>clone<span class="w"> </span>baseline<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>e.g.<span class="w"> </span>.jscpd-baseline.json<span class="o">)</span>:<span class="w"> </span>clones<span class="w"> </span>whose<span class="w"> </span>fingerprint<span class="w"> </span>is<span class="w"> </span>absent<span class="w"> </span>from<span class="w"> </span>it<span class="w"> </span>are<span class="w"> </span>reported<span class="w"> </span>as<span class="w"> </span>new
+<span class="w">      </span>--update-baseline
+<span class="w">          </span>Rewrite<span class="w"> </span>the<span class="w"> </span>baseline<span class="w"> </span>file<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>current<span class="w"> </span>run,<span class="w"> </span>creating<span class="w"> </span>it<span class="w"> </span><span class="k">if</span><span class="w"> </span>missing,<span class="w"> </span>and<span class="w"> </span>print<span class="w"> </span>added/removed<span class="w"> </span>fingerprint<span class="w"> </span>counts<span class="w"> </span><span class="o">(</span>requires<span class="w"> </span>--baseline<span class="o">)</span>
+<span class="w">      </span>--fail-on-new-clones<span class="w"> </span><span class="o">[</span>&lt;N&gt;<span class="o">]</span>
+<span class="w">          </span>Exit<span class="w"> </span><span class="m">1</span><span class="w"> </span>when<span class="w"> </span>more<span class="w"> </span>than<span class="w"> </span>N<span class="w"> </span>new<span class="w"> </span>clones<span class="w"> </span>are<span class="w"> </span>found<span class="w"> </span><span class="o">(</span>default<span class="w"> </span>N:<span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w"> </span>requires<span class="w"> </span>--baseline<span class="w"> </span>or<span class="w"> </span>--baseline-from-ref<span class="o">)</span>
+<span class="w">      </span>--baseline-from-ref<span class="w"> </span>&lt;REF&gt;
+<span class="w">          </span>Compare<span class="w"> </span>against<span class="w"> </span>an<span class="w"> </span>ephemeral<span class="w"> </span>baseline<span class="w"> </span>built<span class="w"> </span>from<span class="w"> </span>a<span class="w"> </span>git<span class="w"> </span>ref<span class="err">'</span>s<span class="w"> </span>tree<span class="w"> </span><span class="o">(</span>e.g.<span class="w"> </span>origin/main<span class="o">)</span>:<span class="w"> </span>the<span class="w"> </span>base<span class="w"> </span>ref<span class="w"> </span>is<span class="w"> </span>scanned<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span>same<span class="w"> </span>configuration<span class="w"> </span>and<span class="w"> </span>clones<span class="w"> </span>absent<span class="w"> </span>from<span class="w"> </span>it<span class="w"> </span>are<span class="w"> </span>reported<span class="w"> </span>as<span class="w"> </span>new
 <span class="w">  </span>-b,<span class="w"> </span>--blame
 <span class="w">          </span>Enrich<span class="w"> </span>clones<span class="w"> </span>with<span class="w"> </span>git<span class="w"> </span>blame<span class="w"> </span>data
 <span class="w">      </span>--no-gitignore
@@ -12592,12 +12600,12 @@ Options:
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=npm depName=jscpd</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">NPM_JSCPD_VERSION</span><span class="o">=</span><span class="m">5</span>.0.16
+<span class="k">ARG</span><span class="w"> </span><span class="nv">NPM_JSCPD_VERSION</span><span class="o">=</span><span class="m">5</span>.1.2
 </code></pre></div></li>
 </ul>
 <ul>
 <li>NPM packages (node.js):<ul>
-<li><a href="https://www.npmjs.com/package/jscpd/v/5.0.16">jscpd@5.0.16</a></li>
+<li><a href="https://www.npmjs.com/package/jscpd/v/5.1.2">jscpd@5.1.2</a></li>
 </ul>
 </li>
 </ul>

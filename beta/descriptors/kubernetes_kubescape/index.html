@@ -12258,7 +12258,7 @@
 </ul>
 <h2 id="kubescape-documentation">kubescape documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>4.0.9</strong></li>
+<li>Version in MegaLinter: <strong>4.0.14</strong></li>
 <li>Visit <a href="https://github.com/kubescape/kubescape#readme" target="_blank">Official Web Site</a></li>
 </ul>
 <p><a href="https://github.com/kubescape/kubescape" target="_blank"><img alt="kubescape - GitHub" src="https://gh-card.dev/repos/kubescape/kubescape.svg?fullname=" /></a></p>
@@ -12555,14 +12555,16 @@ Examples:
 Available<span class="w"> </span>Commands:
 <span class="w">  </span>completion<span class="w">    </span>Generate<span class="w"> </span>autocompletion<span class="w"> </span>script
 <span class="w">  </span>config<span class="w">        </span>Handle<span class="w"> </span>cached<span class="w"> </span>configurations
+<span class="w">  </span>decrypt<span class="w">       </span>Decrypt<span class="w"> </span>a<span class="w"> </span>report<span class="w"> </span>produced<span class="w"> </span>by<span class="w"> </span>kubescape<span class="w"> </span>scan<span class="w"> </span>--encrypt
 <span class="w">  </span>diff<span class="w">          </span>Compare<span class="w"> </span>two<span class="w"> </span>Kubescape<span class="w"> </span>scan<span class="w"> </span>JSON<span class="w"> </span>reports<span class="w"> </span>and<span class="w"> </span>show<span class="w"> </span>what<span class="w"> </span>changed
 <span class="w">  </span>download<span class="w">      </span>Download<span class="w"> </span>artifacts,attack-tracks,control,controls-inputs,exceptions,framework
 <span class="w">  </span>fix<span class="w">           </span>Propose<span class="w"> </span>a<span class="w"> </span>fix<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>misconfiguration<span class="w"> </span>found<span class="w"> </span>when<span class="w"> </span>scanning<span class="w"> </span>Kubernetes<span class="w"> </span>manifest<span class="w"> </span>files
 <span class="w">  </span><span class="nb">help</span><span class="w">          </span>Help<span class="w"> </span>about<span class="w"> </span>any<span class="w"> </span><span class="nb">command</span>
-<span class="w">  </span>list<span class="w">          </span>List<span class="w"> </span>frameworks/controls<span class="w"> </span>will<span class="w"> </span>list<span class="w"> </span>the<span class="w"> </span>supported<span class="w"> </span>frameworks<span class="w"> </span>and<span class="w"> </span>controls
+<span class="w">  </span>list<span class="w">          </span>List<span class="w"> </span>the<span class="w"> </span>supported<span class="w"> </span>frameworks,<span class="w"> </span>controls<span class="w"> </span>and<span class="w"> </span>control<span class="w"> </span>configuration
 <span class="w">  </span>mcpserver<span class="w">     </span>Start<span class="w"> </span>the<span class="w"> </span>Kubescape<span class="w"> </span>MCP<span class="w"> </span>server
 <span class="w">  </span>operator<span class="w">      </span>The<span class="w"> </span>operator<span class="w"> </span>is<span class="w"> </span>used<span class="w"> </span>to<span class="w"> </span>communicate<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span>Kubescape<span class="w"> </span>Operator<span class="w"> </span>within<span class="w"> </span>the<span class="w"> </span>cluster<span class="w"> </span>components.
 <span class="w">  </span>patch<span class="w">         </span>Patch<span class="w"> </span>container<span class="w"> </span>images<span class="w"> </span>to<span class="w"> </span>fix<span class="w"> </span>known<span class="w"> </span>OS-level<span class="w"> </span>vulnerabilities
+<span class="w">  </span>policy<span class="w">        </span>Author<span class="w"> </span>and<span class="w"> </span><span class="nb">test</span><span class="w"> </span>custom<span class="w"> </span>Rego<span class="w"> </span>controls
 <span class="w">  </span>prerequisites<span class="w"> </span>Check<span class="w"> </span>prerequisites<span class="w"> </span><span class="k">for</span><span class="w"> </span>installing<span class="w"> </span>Kubescape<span class="w"> </span>Operator
 <span class="w">  </span>scan<span class="w">          </span>Scan<span class="w"> </span>a<span class="w"> </span>Kubernetes<span class="w"> </span>cluster<span class="w"> </span>or<span class="w"> </span>YAML<span class="w"> </span>files<span class="w"> </span><span class="k">for</span><span class="w"> </span>image<span class="w"> </span>vulnerabilities<span class="w"> </span>and<span class="w"> </span>misconfigurations
 <span class="w">  </span>update<span class="w">        </span>Update<span class="w"> </span>to<span class="w"> </span>latest<span class="w"> </span>release<span class="w"> </span>version
@@ -12582,7 +12584,7 @@ Use<span class="w"> </span><span class="s2">"kubescape [command] --help"</span><
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=github-releases depName=kubescape/kubescape extractVersion=^v(?&lt;version&gt;.+)$</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">KUBERNETES_KUBESCAPE_VERSION</span><span class="o">=</span><span class="m">4</span>.0.9
+<span class="k">ARG</span><span class="w"> </span><span class="nv">KUBERNETES_KUBESCAPE_VERSION</span><span class="o">=</span><span class="m">4</span>.0.14
 <span class="k">RUN</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-eu<span class="p">;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s2">"</span><span class="nv">$TARGETPLATFORM</span><span class="s2">"</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="se">\</span>
 <span class="w">      </span>linux/amd64<span class="o">)</span><span class="w"> </span><span class="nv">ARCH</span><span class="o">=</span>amd64<span class="w"> </span><span class="p">;;</span><span class="w"> </span><span class="se">\</span>

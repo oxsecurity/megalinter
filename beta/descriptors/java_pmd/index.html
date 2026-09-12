@@ -12234,7 +12234,7 @@
 </ul>
 <h2 id="pmd-documentation">pmd documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>7.26.0</strong></li>
+<li>Version in MegaLinter: <strong>7.27.0</strong></li>
 <li>Visit <a href="https://pmd.github.io/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://docs.pmd-code.org/pmd-doc-6.55.0/pmd_userdocs_configuring_rules.html" target="_blank">How to configure pmd rules</a><ul>
 <li>If custom <code>java-pmd-ruleset.xml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/java-pmd-ruleset.xml" target="_blank">java-pmd-ruleset.xml</a> will be used</li>
@@ -12427,7 +12427,7 @@ Exit<span class="w"> </span>Codes:
 <span class="k">ENV</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$JAVA_HOME</span><span class="s2">/bin:</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span><span class="s2">"</span>
 <span class="c"># Linter install</span>
 <span class="c"># renovate: datasource=github-tags depName=pmd/pmd extractVersion=^pmd_releases/(?&lt;version&gt;.*)$</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">PMD_VERSION</span><span class="o">=</span><span class="m">7</span>.26.0
+<span class="k">ARG</span><span class="w"> </span><span class="nv">PMD_VERSION</span><span class="o">=</span><span class="m">7</span>.27.0
 
 <span class="k">RUN</span><span class="w"> </span>wget<span class="w"> </span>--quiet<span class="w"> </span>https://github.com/pmd/pmd/releases/download/pmd_releases%2F<span class="si">${</span><span class="nv">PMD_VERSION</span><span class="si">}</span>/pmd-dist-<span class="si">${</span><span class="nv">PMD_VERSION</span><span class="si">}</span>-bin.zip<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>unzip<span class="w"> </span>pmd-dist-<span class="si">${</span><span class="nv">PMD_VERSION</span><span class="si">}</span>-bin.zip<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Error unzipping"</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>

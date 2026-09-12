@@ -12335,7 +12335,7 @@
 </ul>
 <h2 id="kingfisher-documentation">kingfisher documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>2.0.0</strong></li>
+<li>Version in MegaLinter: <strong>2.1.0</strong></li>
 <li>Visit <a href="https://github.com/mongodb/kingfisher#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://mongodb.github.io/kingfisher/usage/advanced/?h=inline#inline-ignore-directives" target="_blank">How to disable kingfisher rules in files</a></li>
 <li>See <a href="https://mongodb.github.io/kingfisher/rules/builtin-rules" target="_blank">Index of problems detected by kingfisher</a></li>
@@ -12473,16 +12473,17 @@
 Usage:<span class="w"> </span>kingfisher<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span><span class="w"> </span>&lt;COMMAND&gt;
 
 Commands:
-<span class="w">  </span>scan<span class="w">        </span>Scan<span class="w"> </span>content<span class="w"> </span><span class="k">for</span><span class="w"> </span>secrets<span class="w"> </span>and<span class="w"> </span>sensitive<span class="w"> </span>information
-<span class="w">  </span>rules<span class="w">       </span>Manage<span class="w"> </span>rules
-<span class="w">  </span>validate<span class="w">    </span>Directly<span class="w"> </span>validate<span class="w"> </span>a<span class="w"> </span>known<span class="w"> </span>secret<span class="w"> </span>against<span class="w"> </span>a<span class="w"> </span>rule<span class="s1">'s validator (bypasses pattern</span>
-<span class="s1">              matching)</span>
-<span class="s1">  revoke      Directly revoke a known secret against a rule'</span>s<span class="w"> </span>revocation<span class="w"> </span>config
-<span class="w">  </span>access-map<span class="w">  </span>Map<span class="w"> </span>a<span class="w"> </span>cloud<span class="w"> </span>credential<span class="w"> </span>to<span class="w"> </span>its<span class="w"> </span>identity,<span class="w"> </span>permissions,<span class="w"> </span>and<span class="w"> </span>blast<span class="w"> </span>radius
-<span class="w">  </span>view<span class="w">        </span>View<span class="w"> </span>Kingfisher<span class="w"> </span>JSON/JSONL<span class="w"> </span>reports<span class="w"> </span><span class="k">in</span><span class="w"> </span>a<span class="w"> </span><span class="nb">local</span><span class="w"> </span>web<span class="w"> </span>UI
-<span class="w">  </span>config<span class="w">      </span>Generate<span class="w"> </span>or<span class="w"> </span>inspect<span class="w"> </span><span class="sb">`</span>kingfisher.yaml<span class="sb">`</span><span class="w"> </span>project<span class="w"> </span>config<span class="w"> </span>files
-<span class="w">  </span>update<span class="w">      </span>Update<span class="w"> </span>the<span class="w"> </span>Kingfisher<span class="w"> </span>binary
-<span class="w">  </span><span class="nb">help</span><span class="w">        </span>Print<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>or<span class="w"> </span>the<span class="w"> </span><span class="nb">help</span><span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>given<span class="w"> </span>subcommand<span class="o">(</span>s<span class="o">)</span>
+<span class="w">  </span>scan<span class="w">          </span>Scan<span class="w"> </span>content<span class="w"> </span><span class="k">for</span><span class="w"> </span>secrets<span class="w"> </span>and<span class="w"> </span>sensitive<span class="w"> </span>information
+<span class="w">  </span>rules<span class="w">         </span>Manage<span class="w"> </span>rules
+<span class="w">  </span>validate<span class="w">      </span>Directly<span class="w"> </span>validate<span class="w"> </span>a<span class="w"> </span>known<span class="w"> </span>secret<span class="w"> </span>against<span class="w"> </span>a<span class="w"> </span>rule<span class="s1">'s validator (bypasses pattern</span>
+<span class="s1">                matching)</span>
+<span class="s1">  revoke        Directly revoke a known secret against a rule'</span>s<span class="w"> </span>revocation<span class="w"> </span>config
+<span class="w">  </span>access-map<span class="w">    </span>Map<span class="w"> </span>a<span class="w"> </span>cloud<span class="w"> </span>credential<span class="w"> </span>from<span class="w"> </span>a<span class="w"> </span>provider<span class="w"> </span>credential<span class="w"> </span>artifact
+<span class="w">  </span>blast-radius<span class="w">  </span>Directly<span class="w"> </span>map<span class="w"> </span>a<span class="w"> </span>known<span class="w"> </span>secret<span class="w"> </span>to<span class="w"> </span>its<span class="w"> </span>identity,<span class="w"> </span>permissions,<span class="w"> </span>and<span class="w"> </span>blast<span class="w"> </span>radius
+<span class="w">  </span>view<span class="w">          </span>View<span class="w"> </span>Kingfisher<span class="w"> </span>JSON/JSONL<span class="w"> </span>reports<span class="w"> </span><span class="k">in</span><span class="w"> </span>a<span class="w"> </span><span class="nb">local</span><span class="w"> </span>web<span class="w"> </span>UI
+<span class="w">  </span>config<span class="w">        </span>Generate<span class="w"> </span>or<span class="w"> </span>inspect<span class="w"> </span><span class="sb">`</span>kingfisher.yaml<span class="sb">`</span><span class="w"> </span>project<span class="w"> </span>config<span class="w"> </span>files
+<span class="w">  </span>update<span class="w">        </span>Update<span class="w"> </span>the<span class="w"> </span>Kingfisher<span class="w"> </span>binary
+<span class="w">  </span><span class="nb">help</span><span class="w">          </span>Print<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>or<span class="w"> </span>the<span class="w"> </span><span class="nb">help</span><span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>given<span class="w"> </span>subcommand<span class="o">(</span>s<span class="o">)</span>
 
 Options:
 <span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">     </span>Print<span class="w"> </span><span class="nb">help</span><span class="w"> </span><span class="o">(</span>see<span class="w"> </span>more<span class="w"> </span>with<span class="w"> </span><span class="s1">'--help'</span><span class="o">)</span>
@@ -12507,7 +12508,7 @@ Global<span class="w"> </span>Options:
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=github-tags depName=mongodb/kingfisher</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">REPOSITORY_KINGFISHER_VERSION</span><span class="o">=</span><span class="m">2</span>.0.0
+<span class="k">ARG</span><span class="w"> </span><span class="nv">REPOSITORY_KINGFISHER_VERSION</span><span class="o">=</span><span class="m">2</span>.1.0
 <span class="k">RUN</span><span class="w"> </span>curl<span class="w"> </span>--silent<span class="w"> </span>--location<span class="w"> </span>https://raw.githubusercontent.com/mongodb/kingfisher/main/scripts/install-kingfisher.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash<span class="w"> </span>-s<span class="w"> </span>--<span class="w"> </span>/usr/local/bin<span class="w"> </span>--tag<span class="w"> </span><span class="s2">"v</span><span class="si">${</span><span class="nv">REPOSITORY_KINGFISHER_VERSION</span><span class="si">}</span><span class="s2">"</span>
 </code></pre></div></li>
 </ul>

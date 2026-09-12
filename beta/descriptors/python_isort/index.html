@@ -12258,7 +12258,7 @@
 </ul>
 <h2 id="isort-documentation">isort documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>8.0.1</strong></li>
+<li>Version in MegaLinter: <strong>9.0.1</strong></li>
 <li>Visit <a href="https://pycqa.github.io/isort/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://pycqa.github.io/isort/docs/configuration/config_files.html" target="_blank">How to configure isort rules</a><ul>
 <li>If custom <code>.isort.cfg</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.isort.cfg" target="_blank">.isort.cfg</a> will be used</li>
@@ -12486,7 +12486,7 @@
 <span class="w">             </span><span class="o">[</span>--filename<span class="w"> </span>FILENAME<span class="o">]</span><span class="w"> </span><span class="o">[</span>--allow-root<span class="o">]</span><span class="w"> </span><span class="o">[</span>-a<span class="w"> </span>ADD_IMPORTS<span class="o">]</span><span class="w"> </span><span class="o">[</span>--append<span class="o">]</span>
 <span class="w">             </span><span class="o">[</span>--af<span class="o">]</span><span class="w"> </span><span class="o">[</span>--rm<span class="w"> </span>REMOVE_IMPORTS<span class="o">]</span><span class="w"> </span><span class="o">[</span>--float-to-top<span class="o">]</span>
 <span class="w">             </span><span class="o">[</span>--dont-float-to-top<span class="o">]</span><span class="w"> </span><span class="o">[</span>--ca<span class="o">]</span><span class="w"> </span><span class="o">[</span>--cs<span class="o">]</span><span class="w"> </span><span class="o">[</span>-e<span class="o">]</span><span class="w"> </span><span class="o">[</span>--ff<span class="o">]</span>
-<span class="w">             </span><span class="o">[</span>--fgw<span class="w"> </span><span class="o">[</span>FORCE_GRID_WRAP<span class="o">]]</span><span class="w"> </span><span class="o">[</span>-i<span class="w"> </span>INDENT<span class="o">]</span>
+<span class="w">             </span><span class="o">[</span>--fgw<span class="w"> </span><span class="o">[</span>FORCE_GRID_WRAP<span class="o">]]</span><span class="w"> </span><span class="o">[</span>--fs<span class="w"> </span>FORCED_SEPARATE<span class="o">]</span><span class="w"> </span><span class="o">[</span>-i<span class="w"> </span>INDENT<span class="o">]</span>
 <span class="w">             </span><span class="o">[</span>--lbi<span class="w"> </span>LINES_BEFORE_IMPORTS<span class="o">]</span><span class="w"> </span><span class="o">[</span>--lai<span class="w"> </span>LINES_AFTER_IMPORTS<span class="o">]</span>
 <span class="w">             </span><span class="o">[</span>--lbt<span class="w"> </span>LINES_BETWEEN_TYPES<span class="o">]</span><span class="w"> </span><span class="o">[</span>--le<span class="w"> </span>LINE_ENDING<span class="o">]</span><span class="w"> </span><span class="o">[</span>--ls<span class="o">]</span><span class="w"> </span><span class="o">[</span>--lss<span class="o">]</span>
 <span class="w">             </span><span class="o">[</span>-m<span class="w"> </span><span class="o">{</span>GRID,VERTICAL,HANGING_INDENT,VERTICAL_HANGING_INDENT,VERTICAL_GRID,VERTICAL_GRID_GROUPED,VERTICAL_GRID_GROUPED_NO_COMMA,NOQA,VERTICAL_HANGING_INDENT_BRACKET,VERTICAL_PREFIX_FROM_MODULE_IMPORT,HANGING_INDENT_WITH_PARENTHESES,BACKSLASH_GRID,0,1,2,3,4,5,6,7,8,9,10,11<span class="o">}]</span>
@@ -12506,7 +12506,7 @@
 <span class="w">             </span><span class="o">[</span>-f<span class="w"> </span>KNOWN_FUTURE_LIBRARY<span class="o">]</span><span class="w"> </span><span class="o">[</span>-o<span class="w"> </span>KNOWN_THIRD_PARTY<span class="o">]</span>
 <span class="w">             </span><span class="o">[</span>-p<span class="w"> </span>KNOWN_FIRST_PARTY<span class="o">]</span><span class="w"> </span><span class="o">[</span>--known-local-folder<span class="w"> </span>KNOWN_LOCAL_FOLDER<span class="o">]</span>
 <span class="w">             </span><span class="o">[</span>--virtual-env<span class="w"> </span>VIRTUAL_ENV<span class="o">]</span><span class="w"> </span><span class="o">[</span>--conda-env<span class="w"> </span>CONDA_ENV<span class="o">]</span>
-<span class="w">             </span><span class="o">[</span>--py<span class="w"> </span><span class="o">{</span>all,2,27,3,310,311,312,313,314,36,37,38,39,auto<span class="o">}]</span>
+<span class="w">             </span><span class="o">[</span>--py<span class="w"> </span><span class="o">{</span>all,2,27,3,310,311,312,313,314,315,36,37,38,39,auto<span class="o">}]</span>
 <span class="w">             </span><span class="o">[</span>files<span class="w"> </span>...<span class="o">]</span>
 
 Sort<span class="w"> </span>Python<span class="w"> </span>import<span class="w"> </span>definitions<span class="w"> </span>alphabetically<span class="w"> </span>within<span class="w"> </span>logical<span class="w"> </span>sections.<span class="w"> </span>Run
@@ -12514,7 +12514,7 @@ with<span class="w"> </span>no<span class="w"> </span>arguments<span class="w"> 
 files/directories/stdin<span class="w"> </span>must<span class="w"> </span>be<span class="w"> </span>provided.<span class="w"> </span>Use<span class="w"> </span><span class="sb">`</span>-<span class="sb">`</span><span class="w"> </span>as<span class="w"> </span>the<span class="w"> </span>first<span class="w"> </span>argument<span class="w"> </span>to
 represent<span class="w"> </span>stdin.<span class="w"> </span>Use<span class="w"> </span>--interactive<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>the<span class="w"> </span>pre<span class="w"> </span><span class="m">5</span>.0.0<span class="w"> </span>interactive<span class="w"> </span>behavior.
 If<span class="w"> </span>you<span class="s1">'ve used isort 4 but are new to isort 5, see the upgrading guide:</span>
-<span class="s1">https://pycqa.github.io/isort/docs/upgrade_guides/5.0.0.html</span>
+<span class="s1">https://isort.readthedocs.io/en/latest/upgrade_guides/5.0.0.html</span>
 
 <span class="s1">general options:</span>
 <span class="s1">  -h, --help            show this help message and exit</span>
@@ -12648,6 +12648,10 @@ If<span class="w"> </span>you<span class="s1">'ve used isort 4 but are new to is
 <span class="w">                        </span>passed<span class="w"> </span>as<span class="w"> </span>CLI<span class="w"> </span>flag<span class="w"> </span>without<span class="w"> </span>value<span class="o">)</span><span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>grid<span class="w"> </span>wrapped
 <span class="w">                        </span>regardless<span class="w"> </span>of<span class="w"> </span>line<span class="w"> </span>length.<span class="w"> </span>If<span class="w"> </span><span class="m">0</span><span class="w"> </span>is<span class="w"> </span>passed<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">(</span>the
 <span class="w">                        </span>global<span class="w"> </span>default<span class="o">)</span><span class="w"> </span>only<span class="w"> </span>line<span class="w"> </span>length<span class="w"> </span>is<span class="w"> </span>considered.
+<span class="w">  </span>--fs,<span class="w"> </span>--forced-separate<span class="w"> </span>FORCED_SEPARATE
+<span class="w">                        </span>Force<span class="w"> </span>specified<span class="w"> </span>sub<span class="w"> </span>modules<span class="w"> </span>to<span class="w"> </span>show<span class="w"> </span>separately.<span class="w"> </span>To
+<span class="w">                        </span>specify<span class="w"> </span>multiple<span class="w"> </span>modules,<span class="w"> </span>use<span class="w"> </span>the<span class="w"> </span>argument<span class="w"> </span>multiple
+<span class="w">                        </span>times:<span class="w"> </span>--forced-separate<span class="w"> </span>typing<span class="w"> </span>--forced-separate<span class="w"> </span>six.
 <span class="w">  </span>-i,<span class="w"> </span>--indent<span class="w"> </span>INDENT<span class="w">   </span>String<span class="w"> </span>to<span class="w"> </span>place<span class="w"> </span><span class="k">for</span><span class="w"> </span>indents<span class="w"> </span>defaults<span class="w"> </span>to<span class="w"> </span><span class="s2">" "</span><span class="w"> </span><span class="o">(</span><span class="m">4</span>
 <span class="w">                        </span>spaces<span class="o">)</span>.
 <span class="w">  </span>--lbi,<span class="w"> </span>--lines-before-imports<span class="w"> </span>LINES_BEFORE_IMPORTS
@@ -12832,7 +12836,7 @@ If<span class="w"> </span>you<span class="s1">'ve used isort 4 but are new to is
 <span class="w">  </span>--conda-env<span class="w"> </span>CONDA_ENV
 <span class="w">                        </span>Conda<span class="w"> </span>environment<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span><span class="k">for</span><span class="w"> </span>determining<span class="w"> </span>whether<span class="w"> </span>a
 <span class="w">                        </span>package<span class="w"> </span>is<span class="w"> </span>third-party
-<span class="w">  </span>--py,<span class="w"> </span>--python-version<span class="w"> </span><span class="o">{</span>all,2,27,3,310,311,312,313,314,36,37,38,39,auto<span class="o">}</span>
+<span class="w">  </span>--py,<span class="w"> </span>--python-version<span class="w"> </span><span class="o">{</span>all,2,27,3,310,311,312,313,314,315,36,37,38,39,auto<span class="o">}</span>
 <span class="w">                        </span>Tells<span class="w"> </span>isort<span class="w"> </span>to<span class="w"> </span><span class="nb">set</span><span class="w"> </span>the<span class="w"> </span>known<span class="w"> </span>standard<span class="w"> </span>library<span class="w"> </span>based<span class="w"> </span>on
 <span class="w">                        </span>the<span class="w"> </span>specified<span class="w"> </span>Python<span class="w"> </span>version.<span class="w"> </span>Default<span class="w"> </span>is<span class="w"> </span>to<span class="w"> </span>assume<span class="w"> </span>any
 <span class="w">                        </span>Python<span class="w"> </span><span class="m">3</span><span class="w"> </span>version<span class="w"> </span>could<span class="w"> </span>be<span class="w"> </span>the<span class="w"> </span>target,<span class="w"> </span>and<span class="w"> </span>use<span class="w"> </span>a<span class="w"> </span>union

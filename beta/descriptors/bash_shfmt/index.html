@@ -12256,7 +12256,7 @@
 </ul>
 <h2 id="shfmt-documentation">shfmt documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.13.1</strong></li>
+<li>Version in MegaLinter: <strong>3.14.0</strong></li>
 <li>Visit <a href="https://github.com/mvdan/sh#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/mvdan/sh/blob/master/cmd/shfmt/shfmt.1.scd" target="_blank">How to configure shfmt rules</a></li>
 <li>See <a href="https://github.com/mvdan/sh/blob/master/cmd/shfmt/shfmt.1.scd" target="_blank">How to disable shfmt rules in files</a></li>
@@ -12573,6 +12573,7 @@ directory,<span class="w"> </span>all<span class="w"> </span>shell<span class="w
 <span class="w">  </span>-w,<span class="w">     </span>--write<span class="w">     </span>write<span class="w"> </span>result<span class="w"> </span>to<span class="w"> </span>file<span class="w"> </span>instead<span class="w"> </span>of<span class="w"> </span>stdout
 <span class="w">  </span>-d,<span class="w">     </span>--diff<span class="w">      </span>error<span class="w"> </span>with<span class="w"> </span>a<span class="w"> </span>diff<span class="w"> </span>when<span class="w"> </span>the<span class="w"> </span>formatting<span class="w"> </span>differs
 <span class="w">  </span>--apply-ignore<span class="w">      </span>always<span class="w"> </span>apply<span class="w"> </span>EditorConfig<span class="w"> </span>ignore<span class="w"> </span>rules
+<span class="w">  </span>--detect<span class="w"> </span>str<span class="w">        </span>how<span class="w"> </span>to<span class="w"> </span>detect<span class="w"> </span>shell<span class="w"> </span>files<span class="w"> </span>when<span class="w"> </span>walking:<span class="w"> </span>default,<span class="w"> </span>exec,<span class="w"> </span>or<span class="w"> </span>all
 <span class="w">  </span>--filename<span class="w"> </span>str<span class="w">      </span>provide<span class="w"> </span>a<span class="w"> </span>name<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>standard<span class="w"> </span>input<span class="w"> </span>file
 
 Parser<span class="w"> </span>options:
@@ -12606,7 +12607,7 @@ For<span class="w"> </span>more<span class="w"> </span>information<span class="w
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=docker depName=mvdan/shfmt</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">BASH_SHFMT_VERSION</span><span class="o">=</span>v3.13.1-alpine
+<span class="k">ARG</span><span class="w"> </span><span class="nv">BASH_SHFMT_VERSION</span><span class="o">=</span>v3.14.0-alpine
 <span class="k">FROM</span><span class="w"> </span><span class="s">mvdan/shfmt:${BASH_SHFMT_VERSION}</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">shfmt</span>
 <span class="k">COPY</span><span class="w"> </span>--link<span class="w"> </span>--from<span class="o">=</span>shfmt<span class="w"> </span>/bin/shfmt<span class="w"> </span>/usr/bin/
 </code></pre></div></li>
