@@ -23,7 +23,7 @@ description: How to use rumdl (configure, ignore files, ignore errors, help & ve
 
 ## rumdl documentation
 
-- Version in MegaLinter: **0.2.62**
+- Version in MegaLinter: **0.2.65**
 - Visit [Official Web Site](https://github.com/rvben/rumdl#readme){target=_blank}
 - See [How to configure rumdl rules](https://github.com/rvben/rumdl/blob/main/docs/global-settings.md){target=_blank}
 - See [How to disable rumdl rules in files](https://github.com/rvben/rumdl/blob/main/docs/inline-configuration.md){target=_blank}
@@ -124,7 +124,7 @@ rumdl check --fix myfile.md myfile2.md myfile3.md
 ### Help content
 
 ```shell
-A fast Markdown linter written in Rust (Ru(st) MarkDown Linter)
+A fast Markdown linter and formatter written in Rust
 
 Usage: rumdl [OPTIONS] <COMMAND>
 
@@ -158,8 +158,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.2.62
+ARG PIP_RUMDL_VERSION=0.2.65
 ```
 
 - PIP packages (Python):
-  - [rumdl==0.2.62](https://pypi.org/project/rumdl/0.2.62)
+  - [rumdl==0.2.65](https://pypi.org/project/rumdl/0.2.65)

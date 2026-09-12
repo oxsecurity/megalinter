@@ -46,6 +46,29 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Per-linter test jobs (`deploy-DEV-linters.yml`, `deploy-BETA-linters.yml`) now pass `GITHUB_ACTIONS` to the test container
 
 - Linter versions upgrades (N)
+  - [shfmt](https://github.com/mvdan/sh) from 3.13.1 to **3.14.0** on 2026-09-12
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.55.1 to **1.56.0** on 2026-09-12
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 5.0.16 to **5.1.2** on 2026-09-12
+  - [dotnet-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format) from 10.0.302 to **10.0.303** on 2026-09-12
+  - [biome](https://biomejs.dev) from 2.5.11 to **2.5.12** on 2026-09-12
+  - [stylelint](https://stylelint.io) from 17.14.1 to **17.15.0** on 2026-09-12
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 3.11.1 to **4.0.1** on 2026-09-12
+  - [djlint](https://djlint.com/) from 1.44.2 to **1.45.2** on 2026-09-12
+  - [pmd](https://pmd.github.io/) from 7.26.0 to **7.27.0** on 2026-09-12
+  - [eslint](https://eslint.org) from 10.9.1 to **10.10.0** on 2026-09-12
+  - [kubescape](https://github.com/kubescape/kubescape) from 4.0.9 to **4.0.14** on 2026-09-12
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.62 to **0.2.65** on 2026-09-12
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.23 to **3.95.24** on 2026-09-12
+  - [phpstan](https://phpstan.org/) from 2.2.9 to **2.2.13** on 2026-09-12
+  - [isort](https://pycqa.github.io/isort/) from 8.0.1 to **9.0.1** on 2026-09-12
+  - [pylint](https://pylint.readthedocs.io) from 4.0.7 to **4.0.8** on 2026-09-12
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.16.5 to **0.16.6** on 2026-09-12
+  - [ruff](https://github.com/astral-sh/ruff) from 0.16.5 to **0.16.6** on 2026-09-12
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 2.0.0 to **2.1.0** on 2026-09-12
+  - [semgrep](https://semgrep.dev/) from 1.175.0 to **1.175.1** on 2026-09-12
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.97.1 to **3.97.4** on 2026-09-12
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 10.1.1 to **10.2.2** on 2026-09-12
+  - [vale](https://vale.sh/) from 3.18.0 to **3.20.0** on 2026-09-12
 <!-- linter-versions-end -->
 
 ## [v10.1.0] - 2026-09-05

@@ -45,7 +45,7 @@ Example:
 
 ## jscpd documentation
 
-- Version in MegaLinter: **5.0.16**
+- Version in MegaLinter: **5.1.2**
 - Visit [Official Web Site](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#readme){target=_blank}
 - See [How to configure jscpd rules](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#config-file){target=_blank}
   - If custom `.jscpd.json` config file isn't found, [.jscpd.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.jscpd.json){target=_blank} will be used
@@ -154,7 +154,7 @@ Options:
       --ignore-pattern <IGNORE_PATTERN>
           Code-level regex patterns to skip matching tokens during detection, e.g. "//\\s*cpd-disable" (comma-separated)
   -r, --reporters <REPORTERS>
-          Output reporters (comma-separated): console,json,xml,csv,html,markdown,badge,sarif,ai,xcode,threshold,silent,console-full Aliases: "full" and "consoleFull" are accepted for "console-full"
+          Output reporters (comma-separated): console,json,xml,csv,html,markdown,badge,sarif,codeclimate,openmetrics,ai,xcode,threshold,silent,console-full Aliases: "full" and "consoleFull" are accepted for "console-full"; "gitlab" for "codeclimate"
   -o, --output <OUTPUT>
           Output directory for file reporters
   -c, --config <CONFIG>
@@ -165,6 +165,14 @@ Options:
           Maximum duplication percentage before exit 1
       --sarif-error-tokens <TOKENS>
           Report SARIF results as "error" for clones with at least this many tokens (default: all "warning")
+      --baseline <FILE>
+          Path to a clone baseline file (e.g. .jscpd-baseline.json): clones whose fingerprint is absent from it are reported as new
+      --update-baseline
+          Rewrite the baseline file from the current run, creating it if missing, and print added/removed fingerprint counts (requires --baseline)
+      --fail-on-new-clones [<N>]
+          Exit 1 when more than N new clones are found (default N: 0; requires --baseline or --baseline-from-ref)
+      --baseline-from-ref <REF>
+          Compare against an ephemeral baseline built from a git ref's tree (e.g. origin/main): the base ref is scanned with the same configuration and clones absent from it are reported as new
   -b, --blame
           Enrich clones with git blame data
       --no-gitignore
@@ -222,8 +230,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=5.0.16
+ARG NPM_JSCPD_VERSION=5.1.2
 ```
 
 - NPM packages (node.js):
-  - [jscpd@5.0.16](https://www.npmjs.com/package/jscpd/v/5.0.16)
+  - [jscpd@5.1.2](https://www.npmjs.com/package/jscpd/v/5.1.2)

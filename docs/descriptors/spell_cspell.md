@@ -24,7 +24,7 @@ If you do not want cspell to analyze the files names, define `SPELL_CSPELL_ANALY
 
 ## cspell documentation
 
-- Version in MegaLinter: **10.1.1**
+- Version in MegaLinter: **10.2.2**
 - Visit [Official Web Site](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#readme){target=_blank}
 - See [How to configure cspell rules](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#customization){target=_blank}
 - See [How to disable cspell rules in files](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#enable--disable-checking-sections-of-code){target=_blank}
@@ -145,8 +145,8 @@ Commands:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=cspell
-ARG NPM_CSPELL_VERSION=10.1.1
+ARG NPM_CSPELL_VERSION=10.2.2
 ```
 
 - NPM packages (node.js):
-  - [cspell@10.1.1](https://www.npmjs.com/package/cspell/v/10.1.1)
+  - [cspell@10.2.2](https://www.npmjs.com/package/cspell/v/10.2.2)
