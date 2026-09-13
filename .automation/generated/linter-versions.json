@@ -10,7 +10,7 @@
     "black": "26.5.1",
     "cfn-lint": "1.56.0",
     "checkmake": "0.2.0",
-    "checkov": "3.3.15",
+    "checkov": "3.3.16",
     "checkstyle": "12.1.0",
     "chktex": "1.7.8",
     "clang-format": "22.1.3",
