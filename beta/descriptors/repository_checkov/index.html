@@ -12236,7 +12236,7 @@
 <p>When another active linter of the same MegaLinter run is a dedicated secret scanner (<a href="https://megalinter.io/latest/descriptors/repository_betterleaks/">betterleaks</a>, <a href="https://megalinter.io/latest/descriptors/repository_kingfisher/">kingfisher</a>, <a href="https://megalinter.io/latest/descriptors/repository_secretlint/">secretlint</a> or <a href="https://megalinter.io/latest/descriptors/repository_trufflehog/">trufflehog</a>), MegaLinter automatically adds <code>--skip-framework secrets</code> to the checkov command, so the secrets scan is not duplicated. Define <code>--framework</code> or <code>--skip-framework</code> in <code>REPOSITORY_CHECKOV_ARGUMENTS</code> or in your checkov config file to override this behavior.</p>
 <h2 id="checkov-documentation">checkov documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.3.15</strong></li>
+<li>Version in MegaLinter: <strong>3.3.16</strong></li>
 <li>Visit <a href="https://www.checkov.io/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/bridgecrewio/checkov#configuration-using-a-config-file" target="_blank">How to configure checkov rules</a><ul>
 <li>If custom <code>.checkov.yml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.checkov.yml" target="_blank">.checkov.yml</a> will be used</li>
@@ -12888,12 +12888,12 @@ config<span class="w"> </span>file<span class="w"> </span>values<span class="w">
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=pypi depName=checkov</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">PIP_CHECKOV_VERSION</span><span class="o">=</span><span class="m">3</span>.3.15
+<span class="k">ARG</span><span class="w"> </span><span class="nv">PIP_CHECKOV_VERSION</span><span class="o">=</span><span class="m">3</span>.3.16
 </code></pre></div></li>
 </ul>
 <ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/checkov/3.3.15">checkov==3.3.15</a></li>
+<li><a href="https://pypi.org/project/checkov/3.3.16">checkov==3.3.16</a></li>
 </ul>
 </li>
 </ul>
