@@ -70,6 +70,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 10.1.1 to **10.2.2** on 2026-09-12
   - [vale](https://vale.sh/) from 3.18.0 to **3.20.0** on 2026-09-12
   - [semgrep](https://semgrep.dev/) from 1.175.1 to **1.176.1** on 2026-09-12
+  - [checkov](https://www.checkov.io/) from 3.3.15 to **3.3.16** on 2026-09-13
 <!-- linter-versions-end -->
 
 ## [v10.1.0] - 2026-09-05
