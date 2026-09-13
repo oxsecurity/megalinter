@@ -69,6 +69,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.97.1 to **3.97.4** on 2026-09-12
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 10.1.1 to **10.2.2** on 2026-09-12
   - [vale](https://vale.sh/) from 3.18.0 to **3.20.0** on 2026-09-12
+  - [semgrep](https://semgrep.dev/) from 1.175.1 to **1.176.1** on 2026-09-12
 <!-- linter-versions-end -->
 
 ## [v10.1.0] - 2026-09-05
