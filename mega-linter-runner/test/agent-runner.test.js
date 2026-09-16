@@ -332,6 +332,25 @@ describe("Timeout handling", () => {
     assert.ok(calls.indexOf(stopCall) < calls.indexOf(rmCall));
   });
 
+  it("on timeout with --container-engine container, uses `-n 30` (no --tail) for logs", async () => {
+    const { r, calls } = makeRunnerWithFakeEngine({ timeoutOnRun: true });
+    const res = await r.run({
+      image: "megalinter-test:fake",
+      nodockerpull: true,
+      timeout: 5,
+      containerEngine: "container",
+      path: await makeTmpLintDir(),
+    });
+    assert.strictEqual(res.status, 124);
+    const runCall = calls.find((call) => call.args[0] === "run");
+    const nameIndex = runCall.args.indexOf("--name");
+    const containerName = runCall.args[nameIndex + 1];
+    const logsCall = calls.find((call) => call.args[0] === "logs");
+    assert.deepStrictEqual(logsCall.args, ["logs", "-n", "30", containerName]);
+    const rmCall = calls.find((call) => call.args[0] === "rm");
+    assert.deepStrictEqual(rmCall.args, ["rm", "--force", containerName]);
+  });
+
   it("on timeout, keeps a user-provided --container-name for the cleanup commands", async () => {
     const { r, calls } = makeRunnerWithFakeEngine({ timeoutOnRun: true });
     const res = await r.run({
