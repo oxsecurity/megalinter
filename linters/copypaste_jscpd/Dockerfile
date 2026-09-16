@@ -62,7 +62,7 @@ RUN python -c 'import sys; assert sys.version_info >= (3, 14, 7), "Python 3.14.7
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=5.1.2
+ARG NPM_JSCPD_VERSION=5.2.0
 #ARG__END
 
 ####################
