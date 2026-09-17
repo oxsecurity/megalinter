@@ -127,7 +127,7 @@ ARG TARGETARCH
 # renovate: datasource=npm depName=@salesforce/cli
 ARG NPM_SALESFORCE_CLI_VERSION=2.150.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=3.0.6
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=3.0.7
 # renovate: datasource=npm depName=sfdx-hardis
 ARG SFDX_HARDIS_VERSION=8.7.1
 # renovate: datasource=pypi depName=ansible-lint
