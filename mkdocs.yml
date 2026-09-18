@@ -409,6 +409,7 @@ nav:
           - "MistralAI": "llm-provider/llm_provider_mistralai.md"
           - "OpenAI": "llm-provider/llm_provider_openai.md"
           - "OrcaRouter": "llm-provider/llm_provider_orcarouter.md"
+          - "API Route": "llm-provider/llm_provider_api_route.md"
           - "Ollama": "llm-provider/llm_provider_ollama.md"
           - "Hugging Face": "llm-provider/llm_provider_huggingface.md"
   - "Flavors":
