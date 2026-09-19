@@ -37,5 +37,5 @@ langchain_openai==1.6.0
 langchain_community==0.4.2
 langsmith==0.12.1
 orjson==3.12.0
-pyjwt==2.13.0
+pyjwt==2.14.0
 idna==3.19
