@@ -870,6 +870,11 @@ chalk@^5.6.2:
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-5.6.2.tgz#b1238b6e23ea337af71c7f8a295db5af0c158aea"
   integrity sha512-7NzBL0rN6fMUW+f7A6Io4h40qQlG+xGmtMxfbnH/K7TAtt8JQWVQK+6g0UXKMeVJoyV5EkkNsErQ8pVD3bLHbA==
 
+chalk@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/chalk/-/chalk-6.0.0.tgz#a3bae843bc8454f41ef66ef3fd584dcf34dd805d"
+  integrity sha512-2uNTXIuTTxk7ciZgAU1BQcgnchcG0xXnrs6jzkQfj9SsRa9M2s5zE8WT96hS6KmG4MzWHSrvH43DF1m4XRkrFg==
+
 chardet@^2.1.1:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/chardet/-/chardet-2.2.0.tgz#005d664f2cbd4961888d2e2c32c5a69e59d8eec4"
@@ -1141,6 +1146,24 @@ events-universal@^1.0.0:
   dependencies:
     bare-events "^2.7.0"
 
+execa@^10.0.1:
+  version "10.0.1"
+  resolved "https://registry.yarnpkg.com/execa/-/execa-10.0.1.tgz#7e5ed6cc9d5ac2cc4160036c624934137f0750ff"
+  integrity sha512-ge98qjkRK4IB7tL7Ju/6qmm5LHoH1eEMt5FNZrz3f4UIYhF28lggX20z3FaX1sgc67msLEn0N0BscOs29iuwyw==
+  dependencies:
+    "@sindresorhus/merge-streams" "^4.0.0"
+    figures "^6.1.0"
+    get-stream "^9.0.1"
+    human-signals "^8.0.1"
+    is-plain-obj "^4.1.0"
+    is-stream "^4.0.1"
+    npm-run-path "^6.0.0"
+    pretty-ms "^9.3.0"
+    signal-exit "^4.1.0"
+    strip-final-newline "^4.0.0"
+    which-command "^0.1.0"
+    yoctocolors "^2.1.2"
+
 execa@^9.6.1:
   version "9.6.1"
   resolved "https://registry.yarnpkg.com/execa/-/execa-9.6.1.tgz#5b90acedc6bdc0fa9b9a6ddf8f9cbb0c75a7c471"
@@ -1310,7 +1333,7 @@ get-east-asian-width@^1.5.0:
   resolved "https://registry.yarnpkg.com/get-east-asian-width/-/get-east-asian-width-1.6.0.tgz#216900f91df11a8b2c198c3e1d93d6c035a776b9"
   integrity sha512-QRbvDIbx6YklUe6RxeTeleMR0yv3cYH6PsPZHcnVn7xv7zO1BHN8r0XETu8n6Ye3Q+ahtSarc3WgtNWmehIBfA==
 
-get-stream@^9.0.0:
+get-stream@^9.0.0, get-stream@^9.0.1:
   version "9.0.1"
   resolved "https://registry.yarnpkg.com/get-stream/-/get-stream-9.0.1.tgz#95157d21df8eb90d1647102b63039b1df60ebd27"
   integrity sha512-kVCxPF3vQM/N0B1PmoqVUqgHP+EeVjmZSQn+1oCRPxd2P21P2F19lIgbR3HBosbB1PUhOAoctJnfEn2GbN2eZA==
@@ -1723,10 +1746,10 @@ make-fetch-happen@^15.0.0, make-fetch-happen@^15.0.1, make-fetch-happen@^15.0.4:
     proc-log "^6.0.0"
     ssri "^13.0.0"
 
-mem-fs-editor@^12.0.4:
-  version "12.0.8"
-  resolved "https://registry.yarnpkg.com/mem-fs-editor/-/mem-fs-editor-12.0.8.tgz#97031fdf1c555a80b7ba2963f9192d82328a3c14"
-  integrity sha512-+kCqJcfWxLwwAQL9sNGM6KFehhAxf+CpUbf4BTR61exES5jv1/JufZGM2/6menk9TyN6/XutgZCBa7dn87152g==
+mem-fs-editor@^12.0.4, mem-fs-editor@^12.0.9:
+  version "12.0.9"
+  resolved "https://registry.yarnpkg.com/mem-fs-editor/-/mem-fs-editor-12.0.9.tgz#ef255411dff7a1ea660a4ee2d4919e5ecdfcf7c8"
+  integrity sha512-KxqAoF6EOH0cKp+eh1uE2lkrrkdf/oqbfq+qiWFVCT1t9k5uUsC19noYYeK7PS5k08E3Ym0YJnbGyNXYSgr2fg==
   dependencies:
     "@types/ejs" "^3.1.5"
     "@types/picomatch" "^4.0.2"
@@ -2244,7 +2267,7 @@ pretty-bytes@^7.1.0:
   resolved "https://registry.yarnpkg.com/pretty-bytes/-/pretty-bytes-7.1.3.tgz#a56c483bd71fb7475bbf882d9c248f6a27771616"
   integrity sha512-U2KZ675nqba6XSBppSjU2pRgc9Ffx9+uUtd/RTWYmOawVkZuUbBYuwdtFZQmLv+yMgQ2TQxWWuOpyNje67J9tg==
 
-pretty-ms@^9.2.0:
+pretty-ms@^9.2.0, pretty-ms@^9.3.0:
   version "9.3.1"
   resolved "https://registry.yarnpkg.com/pretty-ms/-/pretty-ms-9.3.1.tgz#7b58d8fbf376f01602ff05230358e8fa5e0f072b"
   integrity sha512-HzMy3Geq23nVALD/M2LliU+F+M+gVNsvkQWWqeBZ8HDiCgzo6YPJ/Omrmtq24EFrIsk0a3EkQGEd7bDOo+IhGA==
@@ -2415,7 +2438,7 @@ rxjs@^7.8.2:
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-semver@7.8.5, semver@^7.1.1, semver@^7.3.5, semver@^7.3.7, semver@^7.5.3, semver@^7.6.0, semver@^7.7.4:
+semver@7.8.5, semver@^7.1.1, semver@^7.3.5, semver@^7.3.7, semver@^7.5.3, semver@^7.6.0, semver@^7.7.4, semver@^7.8.5:
   version "7.8.5"
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.8.5.tgz#39b646037dd50c14fb451e7e4cac58ed8b863f69"
   integrity sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==
@@ -2497,7 +2520,7 @@ socks@^2.8.3:
     ip-address "^10.1.1"
     smart-buffer "^4.2.0"
 
-sort-keys@^6.0.0:
+sort-keys@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/sort-keys/-/sort-keys-6.0.1.tgz#496d3f5ff9d42c45ba8ad5b500e9022f7e854e17"
   integrity sha512-w7xWRu8U9MneKNna8ptG194jp9PLtbd/Rl6gwrmbK4yUeKbE66a64rHgl0iKTBBDr/hpanx7zMGP1Qo8MRkc/w==
@@ -2704,10 +2727,10 @@ type-fest@^4.39.1:
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-4.41.0.tgz#6ae1c8e5731273c2bf1f58ad39cbae2c91a46c58"
   integrity sha512-TeTSQ6H5YHvpqVwBRcnLDCBnDOHWYu7IvGbHT6N8AOymcr9PJGjc1GTtiWZTYg0NCgYwvnYWEkVChQAr9bjfwA==
 
-type-fest@^5.2.0, type-fest@^5.4.4, type-fest@^5.6.0:
-  version "5.9.0"
-  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-5.9.0.tgz#0a4dd554d397f1a44447477eaeb3d1f4d8c7680f"
-  integrity sha512-yANm3Jr3GiJ1qgJlxGAVxTOIcEOk1rhQHamlXtnrCK7EHP4HeM9OGxtMg/W7HFdrVzw/ZWJKGVIJusVH85sLtw==
+type-fest@^5.2.0, type-fest@^5.4.4, type-fest@^5.9.0:
+  version "5.10.0"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-5.10.0.tgz#bf0131fdf662889c94c409d37402e364fb2016f7"
+  integrity sha512-NoSdpq/WEiAg5sjmBkmV/hfxv6HJH4NqPNrqjtSO5CwRmpsDfaf4begxW34KdJykH/l1yHtwBWQkCRdoXO8mPA==
   dependencies:
     tagged-tag "^1.0.0"
 
@@ -2796,6 +2819,11 @@ walk-up-path@^4.0.0:
   resolved "https://registry.yarnpkg.com/walk-up-path/-/walk-up-path-4.0.0.tgz#590666dcf8146e2d72318164f1f2ac6ef51d4198"
   integrity sha512-3hu+tD8YzSLGuFYtPRb48vdhKMi0KQV5sn+uWr8+7dMEq/2G/dtLrdDinkLjqq5TIbIBjYJ4Ax/n3YiaW7QM8A==
 
+which-command@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/which-command/-/which-command-0.1.0.tgz#62828a961c1104d660fbdc397b5a540c629f3d6c"
+  integrity sha512-XZyoF5/5hZtXitIwzrU4NKK+Wtbb9aB9CezUEw2Q0wlYK8NUYQxC1rRXgNueYLtBAJwXIb+/tFVk4dozciNJMA==
+
 which-package-manager@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/which-package-manager/-/which-package-manager-1.0.1.tgz#69d934142db2179b6d16881690ff7c4f1f9edf75"
@@ -2880,27 +2908,27 @@ yeoman-environment@^6.0.0:
     untildify "^6.0.0"
     which-package-manager "^1.0.1"
 
-yeoman-generator@^8.0.0:
-  version "8.3.1"
-  resolved "https://registry.yarnpkg.com/yeoman-generator/-/yeoman-generator-8.3.1.tgz#60a32a085afa953ce26b361eab830643c878eeb8"
-  integrity sha512-XYyd8ELUrByoGpqP4Lbd1oVjalWMCrEOG4ZXiyi21/yjGSIFAfORvzkEnjXztjdMNYqfeT6laGxhJb8hiA0wWg==
+yeoman-generator@^9.1.0:
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/yeoman-generator/-/yeoman-generator-9.1.0.tgz#acbf994ccdaf7280e3009422658b24e344dc4b32"
+  integrity sha512-dfQE5eJhYQUvgGIggH5/X9+0VwxjrrCuZ3QO39MkvEa3363Bcw5/d++yUCRUy9MvvytfEZv4XsdOFluHMmTj3w==
   dependencies:
     "@types/debug" "^4.1.13"
     "@types/lodash-es" "^4.17.12"
     "@yeoman/namespace" "^2.1.0"
-    chalk "^5.6.2"
+    chalk "^6.0.0"
     debug "^4.4.3"
-    execa "^9.6.1"
+    execa "^10.0.1"
     latest-version "^9.0.0"
     lodash-es "^4.18.1"
-    mem-fs-editor "^12.0.4"
+    mem-fs-editor "^12.0.9"
     minimist "^1.2.8"
     read-package-up "^12.0.0"
-    semver "^7.7.4"
+    semver "^7.8.5"
     simple-git "^3.36.0"
-    sort-keys "^6.0.0"
+    sort-keys "^6.0.1"
     text-table "^0.2.0"
-    type-fest "^5.6.0"
+    type-fest "^5.9.0"
 
 yocto-queue@^0.1.0:
   version "0.1.0"
@@ -2912,7 +2940,7 @@ yocto-queue@^1.0.0:
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-1.2.2.tgz#3e09c95d3f1aa89a58c114c99223edf639152c00"
   integrity sha512-4LCcse/U2MHZ63HAJVE+v71o7yOdIe4cZ70Wpf8D/IyjDKYQLV5GD46B+hSTjJsvV5PztjvHoU580EftxjDZFQ==
 
-yoctocolors@^2.1.1:
+yoctocolors@^2.1.1, yoctocolors@^2.1.2:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/yoctocolors/-/yoctocolors-2.2.0.tgz#c4b68ee477f3982c33e4de24a5aa4a354be506d3"
   integrity sha512-xYqdZFUK/VYazNl/oCDYN+3WloWQwMfZxBoiNt6qNyk+xfOdi598muWE42rNZFp1kNOiqW936q5RhUdnpqElSg==
