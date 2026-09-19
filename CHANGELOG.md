@@ -72,6 +72,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [vale](https://vale.sh/) from 3.18.0 to **3.20.0** on 2026-09-12
   - [semgrep](https://semgrep.dev/) from 1.175.1 to **1.176.1** on 2026-09-12
   - [checkov](https://www.checkov.io/) from 3.3.15 to **3.3.16** on 2026-09-13
+  - [grype](https://github.com/anchore/grype) from 0.118.0 to **0.119.0** on 2026-09-19
+  - [syft](https://github.com/anchore/syft) from 1.51.1 to **1.52.0** on 2026-09-19
 <!-- linter-versions-end -->
 
 ## [v10.1.0] - 2026-09-05
