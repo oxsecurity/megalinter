@@ -62,7 +62,7 @@ RUN python -c 'import sys; assert sys.version_info >= (3, 14, 7), "Python 3.14.7
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=npm depName=@ibm/tekton-lint
-ARG NPM_IBM_TEKTON_LINT_VERSION=1.2.0
+ARG NPM_IBM_TEKTON_LINT_VERSION=1.2.4
 #ARG__END
 
 ####################
