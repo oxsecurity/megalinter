@@ -169,7 +169,7 @@ ARG PIP_RUMDL_VERSION=0.2.65
 # renovate: datasource=packagist depName=squizlabs/php_codesniffer
 ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=4.0.4
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
-ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.6.0
+ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.7.0
 # renovate: datasource=packagist depName=phpstan/phpstan
 ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.2.13
 # renovate: datasource=packagist depName=phpstan/extension-installer
