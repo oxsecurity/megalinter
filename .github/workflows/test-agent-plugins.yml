@@ -70,13 +70,20 @@ jobs:
 
           with open("copilot-plugins.json", encoding="utf-8") as inventory_file:
               inventory = json.load(inventory_file)
-          errors = inventory.get("errors", [])
-          if errors:
-              sys.exit(f"Copilot CLI reported plugin errors: {errors}")
+          # The Copilot CLI has shipped `plugins list --json` as either a
+          # {"plugins": [...], "errors": [...]} wrapper or a bare array of
+          # plugin entries; accept both shapes.
+          if isinstance(inventory, dict):
+              errors = inventory.get("errors", [])
+              if errors:
+                  sys.exit(f"Copilot CLI reported plugin errors: {errors}")
+              plugins = inventory.get("plugins", [])
+          else:
+              plugins = inventory
           loaded = [
               entry
-              for entry in inventory.get("plugins", [])
-              if entry.get("kind") == "plugin" and entry.get("name") == "megalinter"
+              for entry in plugins
+              if entry.get("kind", "plugin") == "plugin" and entry.get("name") == "megalinter"
           ]
           if not loaded:
               sys.exit("Copilot CLI did not load the megalinter plugin")
