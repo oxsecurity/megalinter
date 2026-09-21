@@ -572,6 +572,22 @@ DS-0026
 # Remove once an OpenTofu release ships otel/sdk >= 1.43.0.
 CVE-2026-39883
 
+# --- OpenTofu binary, oras-go symlink extraction (TERRAFORM_TOFU_FMT / TOFU_VALIDATE) ---
+# CVE-2026-85731 is an arbitrary file write in oras.land/oras-go/v2 < 2.6.2: file.Store's
+# tar extraction follows a symlink chain inside a pulled OCI artifact, letting a malicious
+# artifact write outside the destination directory. Fixed in oras-go 2.6.2. It is flagged
+# against usr/bin/tofu, the OpenTofu binary copied from
+# ghcr.io/opentofu/opentofu:1.12.6-minimal, the latest stable release, which still vendors
+# oras-go 2.6.1 - the fix ships only in the unreleased v1.13.0-rc1/beta1, so there is no
+# upgrade path today. OpenTofu vendors oras-go for OCI provider-mirror and module-source
+# support (internal/getproviders/oci_registry_mirror_source.go,
+# internal/getmodules/oci_getter.go), reachable only when the analyzed repository declares
+# an OCI registry as a provider or module source, during `tofu init -backend=false` in
+# TERRAFORM_TOFU_VALIDATE; `tofu fmt` never runs init. Same bounded-impact reasoning as
+# CVE-2026-84304 above, on the same binary.
+# Remove once a stable OpenTofu release embeds oras-go >= 2.6.2.
+CVE-2026-85731
+
 # --- Go x/crypto/ssh source-address bypass (vale, betterleaks, tflint, tofu) ---
 # CVE-2026-56854 (GO-2026-6303) extends the CVE-2026-46595 fix above: the
 # source-address critical option in the Permissions returned by an auth callback was
