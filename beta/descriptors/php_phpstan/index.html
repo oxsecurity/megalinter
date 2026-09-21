@@ -12313,7 +12313,7 @@
 </ul>
 <h2 id="phpstan-documentation">phpstan documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>2.2.13</strong></li>
+<li>Version in MegaLinter: <strong>2.2.14</strong></li>
 <li>Visit <a href="https://phpstan.org/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://phpstan.org/config-reference#neon-format" target="_blank">How to configure phpstan rules</a><ul>
 <li>If custom <code>phpstan.neon.dist</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/phpstan.neon.dist" target="_blank">phpstan.neon.dist</a> will be used</li>
@@ -12526,11 +12526,11 @@ Options:
 <span class="k">ENV</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"/usr/local/composer/vendor/bin:</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span><span class="s2">"</span>
 <span class="c"># Linter install</span>
 <span class="c"># renovate: datasource=packagist depName=phpstan/phpstan</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">PHP_PHPSTAN_PHPSTAN_VERSION</span><span class="o">=</span><span class="m">2</span>.2.13
+<span class="k">ARG</span><span class="w"> </span><span class="nv">PHP_PHPSTAN_PHPSTAN_VERSION</span><span class="o">=</span><span class="m">2</span>.2.14
 <span class="c"># renovate: datasource=packagist depName=phpstan/extension-installer</span>
 <span class="k">ARG</span><span class="w"> </span><span class="nv">PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION</span><span class="o">=</span><span class="m">1</span>.4.3
 <span class="c"># renovate: datasource=packagist depName=bartlett/sarif-php-converters</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION</span><span class="o">=</span><span class="m">1</span>.6.0
+<span class="k">ARG</span><span class="w"> </span><span class="nv">PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION</span><span class="o">=</span><span class="m">1</span>.7.0
 <span class="k">RUN</span><span class="w"> </span><span class="nv">GITHUB_AUTH_TOKEN</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>cat<span class="w"> </span>/run/secrets/GITHUB_TOKEN<span class="k">)</span><span class="s2">"</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span>GITHUB_AUTH_TOKEN<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>composer<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>allow-plugins.phpstan/extension-installer<span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>composer<span class="w"> </span>global<span class="w"> </span>require<span class="w"> </span>phpstan/phpstan:<span class="si">${</span><span class="nv">PHP_PHPSTAN_PHPSTAN_VERSION</span><span class="si">}</span><span class="w"> </span>phpstan/extension-installer:<span class="si">${</span><span class="nv">PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION</span><span class="si">}</span><span class="w"> </span>bartlett/sarif-php-converters:<span class="si">${</span><span class="nv">PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION</span><span class="si">}</span>
 </code></pre></div></li>
 </ul>

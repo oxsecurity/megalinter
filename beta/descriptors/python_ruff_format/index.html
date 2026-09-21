@@ -12254,7 +12254,7 @@
 </ul>
 <h2 id="ruff-format-documentation">ruff-format documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.16.6</strong></li>
+<li>Version in MegaLinter: <strong>0.16.7</strong></li>
 <li>Visit <a href="https://github.com/astral-sh/ruff#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://docs.astral.sh/ruff/configuration/" target="_blank">How to configure ruff-format rules</a><ul>
 <li>If custom <code>.ruff.toml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruff.toml" target="_blank">.ruff.toml</a> will be used</li>
@@ -12495,7 +12495,7 @@ Commands:
 <span class="s1">      --config &lt;CONFIG_OPTION&gt;</span>
 <span class="s1">          Either a path to a TOML configuration file (`pyproject.toml` or `ruff.toml`), or a TOML</span>
 <span class="s1">          `&lt;KEY&gt; = &lt;VALUE&gt;` pair (such as you might find in a `ruff.toml` configuration file)</span>
-<span class="s1">          overriding a specific configuration option (e.g., `--config "lint.line-length = 100"` or</span>
+<span class="s1">          overriding a specific configuration option (e.g., `--config "line-length = 100"` or</span>
 <span class="s1">          `--config "format.quote-style = '</span>single<span class="err">'</span><span class="s2">"`). Overrides of individual settings using this</span>
 <span class="s2">          option always take precedence over all configuration files, including configuration files</span>
 <span class="s2">          that were also specified using `--config`</span>
@@ -12517,12 +12517,12 @@ Commands:
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=pypi depName=ruff</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">PIP_RUFF_VERSION</span><span class="o">=</span><span class="m">0</span>.16.6
+<span class="k">ARG</span><span class="w"> </span><span class="nv">PIP_RUFF_VERSION</span><span class="o">=</span><span class="m">0</span>.16.7
 </code></pre></div></li>
 </ul>
 <ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/ruff/0.16.6">ruff==0.16.6</a></li>
+<li><a href="https://pypi.org/project/ruff/0.16.7">ruff==0.16.7</a></li>
 </ul>
 </li>
 </ul>

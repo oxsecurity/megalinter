@@ -12688,7 +12688,7 @@ Miscellaneous<span class="w"> </span>Options:
 <span class="c"># renovate: datasource=packagist depName=squizlabs/php_codesniffer</span>
 <span class="k">ARG</span><span class="w"> </span><span class="nv">PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION</span><span class="o">=</span><span class="m">4</span>.0.4
 <span class="c"># renovate: datasource=packagist depName=bartlett/sarif-php-converters</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION</span><span class="o">=</span><span class="m">1</span>.6.0
+<span class="k">ARG</span><span class="w"> </span><span class="nv">PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION</span><span class="o">=</span><span class="m">1</span>.7.0
 <span class="k">RUN</span><span class="w"> </span><span class="nv">GITHUB_AUTH_TOKEN</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>cat<span class="w"> </span>/run/secrets/GITHUB_TOKEN<span class="k">)</span><span class="s2">"</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span>GITHUB_AUTH_TOKEN<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>composer<span class="w"> </span>global<span class="w"> </span>require<span class="w"> </span>squizlabs/php_codesniffer:<span class="si">${</span><span class="nv">PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION</span><span class="si">}</span><span class="w"> </span>bartlett/sarif-php-converters:<span class="si">${</span><span class="nv">PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION</span><span class="si">}</span>
 </code></pre></div></li>
 </ul>

@@ -12257,7 +12257,7 @@
 <p>For example, define <code>HTML_DJLINT_ARGUMENTS: ["--profile", "django"]</code> to select django format</p>
 <h2 id="djlint-documentation">djlint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.45.2</strong></li>
+<li>Version in MegaLinter: <strong>1.46.1</strong></li>
 <li>Visit <a href="https://djlint.com/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://djlint.com/docs/configuration/" target="_blank">How to configure djlint rules</a></li>
 <li>See <a href="https://djlint.com/docs/ignoring-code/" target="_blank">How to disable djlint rules in files</a></li>
@@ -12623,18 +12623,20 @@ Options:
 <span class="w">                                  </span><span class="o">[</span>default:<span class="w"> </span><span class="m">0</span><span class="o">]</span>
 <span class="w">  </span>--github-output<span class="w"> </span>/<span class="w"> </span>--no-github-output
 <span class="w">                                  </span>Output<span class="w"> </span>GitHub-compatible<span class="w"> </span>formatting.
+<span class="w">  </span>--sarif<span class="w">                         </span>Output<span class="w"> </span>findings<span class="w"> </span>as<span class="w"> </span>SARIF<span class="w"> </span><span class="m">2</span>.1.0<span class="w"> </span>json,<span class="w"> </span><span class="k">for</span>
+<span class="w">                                  </span>GitHub<span class="w"> </span>code<span class="w"> </span>scanning<span class="w"> </span>and<span class="w"> </span>other<span class="w"> </span>tools.
 <span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">                      </span>Show<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span>exit.
 </code></pre></div>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=pypi depName=djlint</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">PIP_DJLINT_VERSION</span><span class="o">=</span><span class="m">1</span>.45.2
+<span class="k">ARG</span><span class="w"> </span><span class="nv">PIP_DJLINT_VERSION</span><span class="o">=</span><span class="m">1</span>.46.1
 </code></pre></div></li>
 </ul>
 <ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/djlint/1.45.2">djlint==1.45.2</a></li>
+<li><a href="https://pypi.org/project/djlint/1.46.1">djlint==1.46.1</a></li>
 </ul>
 </li>
 </ul>

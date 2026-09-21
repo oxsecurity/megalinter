@@ -12338,7 +12338,7 @@
 </tr>
 <tr>
 <td><code>--container-engine</code></td>
-<td>Allows to specify a docker engine (<code>docker</code> or <code>podman</code>)</td>
+<td>Allows to specify a container engine (<code>docker</code>, <code>podman</code>, or <code>container</code>)</td>
 <td><code>docker</code></td>
 </tr>
 <tr>
@@ -12460,6 +12460,9 @@ mega-linter-runner<span class="w"> </span>--linter<span class="w"> </span>PYTHON
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># Use Podman as engine</span>
 mega-linter-runner<span class="w"> </span>--flavor<span class="w"> </span>documentation<span class="w"> </span>--container-engine<span class="w"> </span>podman
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Use Apple's native container engine on macOS (Apple Silicon only)</span>
+mega-linter-runner<span class="w"> </span>--flavor<span class="w"> </span>documentation<span class="w"> </span>--container-engine<span class="w"> </span>container<span class="w"> </span>--platform<span class="w"> </span>linux/arm64
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># Bound the run to 30 minutes: on timeout the container is stopped and removed, and its last log lines are displayed</span>
 mega-linter-runner<span class="w"> </span>--timeout<span class="w"> </span><span class="m">1800</span>

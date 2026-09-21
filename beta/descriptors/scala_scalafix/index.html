@@ -12334,7 +12334,7 @@
 <p><strong>Note</strong>: In MegaLinter, only syntactic rules are applied as there is no prior compilation or semantic database generation. Semantic options cannot be used in this context.</p>
 <h2 id="scalafix-documentation">scalafix documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.14.7</strong></li>
+<li>Version in MegaLinter: <strong>0.14.9</strong></li>
 <li>Visit <a href="https://scalacenter.github.io/scalafix/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://scalacenter.github.io/scalafix/docs/users/configuration.html" target="_blank">How to configure scalafix rules</a><ul>
 <li>If custom <code>.scalafix.conf</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.scalafix.conf" target="_blank">.scalafix.conf</a> will be used</li>
@@ -12488,7 +12488,7 @@
 <div class="highlight"><pre><span></span><code>scalafix<span class="w"> </span>--config<span class="w"> </span>.scalafix.conf<span class="w"> </span>myfile.scala
 </code></pre></div>
 <h3 id="help-content">Help content</h3>
-<div class="highlight"><pre><span></span><code>Scalafix<span class="w"> </span><span class="m">0</span>.14.7
+<div class="highlight"><pre><span></span><code>Scalafix<span class="w"> </span><span class="m">0</span>.14.9
 Usage:<span class="w"> </span>scalafix<span class="w"> </span><span class="o">[</span>options<span class="o">]</span><span class="w"> </span><span class="o">[</span>&lt;path&gt;<span class="w"> </span>...<span class="o">]</span>
 
 Scalafix<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>refactoring<span class="w"> </span>and<span class="w"> </span>linting<span class="w"> </span>tool.<span class="w"> </span>Scalafix<span class="w"> </span>supports<span class="w"> </span>both<span class="w"> </span>syntactic<span class="w"> </span>and
@@ -12517,6 +12517,10 @@ Common<span class="w"> </span>options:
 <span class="s1">  --stdout</span>
 <span class="s1">    Print fixed output to stdout instead of writing in-place.</span>
 
+<span class="s1">  --dry-run</span>
+<span class="s1">    Report linter errors and how many files would be fixed by a subsequent run.</span>
+<span class="s1">    Unlike --check, auto-fixable violations alone do not fail the run.</span>
+
 <span class="s1">  --diff</span>
 <span class="s1">    If set, only apply scalafix to added and edited files in git diff against the</span>
 <span class="s1">    master branch.</span>
@@ -12525,7 +12529,7 @@ Common<span class="w"> </span>options:
 <span class="s1">    If set, only apply scalafix to added and edited files in git diff against a</span>
 <span class="s1">    provided branch, commit or tag.</span>
 
-<span class="s1">  --scala-version ScalaVersion (default: "3.8.4")</span>
+<span class="s1">  --scala-version ScalaVersion (default: "3.9.0")</span>
 <span class="s1">    The major or binary Scala version that the provided files are targeting, or the</span>
 <span class="s1">    full version that was used to compile them when a classpath is provided.</span>
 
@@ -12549,7 +12553,8 @@ Common<span class="w"> </span>options:
 <span class="s1">Semantic options:</span>
 
 <span class="s1">  --classpath Classpath (default: "&lt;classpath&gt;")</span>
-<span class="s1">    Full classpath of the files to fix, required for semantic rules. The source</span>
+<span class="s1">    Full classpath of the files to fix, required for semantic rules, as a list of</span>
+<span class="s1">    filesystem paths separated by '</span>:<span class="s1">' on Unix or '</span><span class="p">;</span><span class="s1">' on Windows. The source</span>
 <span class="s1">    files that should be fixed must be compiled with semanticdb-scalac.</span>
 <span class="s1">    Dependencies are required by rules like ExplicitResultTypes, but the</span>
 <span class="s1">    dependencies do not need to be compiled with semanticdb-scalac.</span>
@@ -12601,7 +12606,7 @@ Common<span class="w"> </span>options:
 <span class="s1">    `nio.FileSystem.getPathMatcher`.</span>
 
 <span class="s1">  --tool-classpath URLClassLoader (default: "&lt;classloader&gt;")</span>
-<span class="s1">    Additional classpath for compiling and classloading custom rules, as a set of</span>
+<span class="s1">    Additional classpath for compiling and classloading custom rules, as a list of</span>
 <span class="s1">    filesystem paths, separated by '</span>:<span class="s1">' on Unix or '</span><span class="p">;</span><span class="s1">' on Windows.</span>
 
 <span class="s1">  --charset Charset (default: "UTF-8")</span>
@@ -12643,7 +12648,7 @@ Common<span class="w"> </span>options:
 
 <span class="c"># Linter install</span>
 <span class="c"># renovate: datasource=github-tags depName=scalacenter/scalafix</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">SCALA_SCALAFIX_VERSION</span><span class="o">=</span><span class="m">0</span>.14.7
+<span class="k">ARG</span><span class="w"> </span><span class="nv">SCALA_SCALAFIX_VERSION</span><span class="o">=</span><span class="m">0</span>.14.9
 <span class="k">RUN</span><span class="w"> </span>./coursier<span class="w"> </span>install<span class="w"> </span>scalafix:<span class="si">${</span><span class="nv">SCALA_SCALAFIX_VERSION</span><span class="si">}</span><span class="w"> </span>--quiet<span class="w"> </span>--install-dir<span class="w"> </span>/usr/bin<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/root/.cache
 </code></pre></div></li>
 </ul>

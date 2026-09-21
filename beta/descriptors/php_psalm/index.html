@@ -12336,7 +12336,7 @@
 </ul>
 <h2 id="psalm-documentation">psalm documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>Psalm.6.16.1@</strong></li>
+<li>Version in MegaLinter: <strong>Psalm.6.17.1@</strong></li>
 <li>Visit <a href="https://psalm.dev" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://psalm.dev/docs/running_psalm/configuration/" target="_blank">How to configure psalm rules</a><ul>
 <li>If custom <code>psalm.xml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/psalm.xml" target="_blank">psalm.xml</a> will be used</li>
@@ -12723,7 +12723,7 @@ Miscellaneous:
 <span class="k">ENV</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"/usr/local/composer/vendor/bin:</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span><span class="s2">"</span>
 <span class="c"># Linter install</span>
 <span class="c"># renovate: datasource=packagist depName=vimeo/psalm</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">PHP_VIMEO_PSALM_VERSION</span><span class="o">=</span><span class="m">6</span>.16.1
+<span class="k">ARG</span><span class="w"> </span><span class="nv">PHP_VIMEO_PSALM_VERSION</span><span class="o">=</span><span class="m">6</span>.17.1
 <span class="k">RUN</span><span class="w"> </span><span class="nv">GITHUB_AUTH_TOKEN</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>cat<span class="w"> </span>/run/secrets/GITHUB_TOKEN<span class="k">)</span><span class="s2">"</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span>GITHUB_AUTH_TOKEN<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>composer<span class="w"> </span>global<span class="w"> </span>require<span class="w"> </span>vimeo/psalm:<span class="si">${</span><span class="nv">PHP_VIMEO_PSALM_VERSION</span><span class="si">}</span>
 </code></pre></div></li>
 </ul>

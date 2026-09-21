@@ -12258,7 +12258,7 @@
 <p>By default, Bicep linter errors are set as warnings. To customize linter settings, use a <code>bicepconfig.json</code> file. For more information, see the <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config-linter#customize-linter">documentation for the Bicep Linter</a></p>
 <h2 id="bicep_linter-documentation">bicep_linter documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.46.1</strong></li>
+<li>Version in MegaLinter: <strong>0.47.16</strong></li>
 <li>Visit <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config" target="_blank">How to configure bicep_linter rules</a></li>
 <li>See <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#silencing-false-positives" target="_blank">How to disable bicep_linter rules in files</a></li>
@@ -12457,13 +12457,14 @@ Commands:
 <span class="w">  </span>what-if<span class="w"> </span>&lt;Parameters<span class="w"> </span>file&gt;<span class="w">       </span><span class="o">[</span>Experimental<span class="o">]</span><span class="w"> </span>Previews<span class="w"> </span>the<span class="w"> </span>changes<span class="w"> </span>a<span class="w"> </span>deployment<span class="w"> </span>would<span class="w"> </span>make.
 <span class="w">  </span>teardown<span class="w"> </span>&lt;Parameters<span class="w"> </span>file&gt;<span class="w">      </span><span class="o">[</span>Experimental<span class="o">]</span><span class="w"> </span>Tears<span class="w"> </span>down<span class="w"> </span>resources<span class="w"> </span>deployed<span class="w"> </span>by<span class="w"> </span>a<span class="w"> </span>.bicepparam<span class="w"> </span>file.
 <span class="w">  </span>console<span class="w">                         </span>Opens<span class="w"> </span>an<span class="w"> </span>interactive<span class="w"> </span>Bicep<span class="w"> </span>console.
+<span class="w">  </span>docs<span class="w">                            </span><span class="o">[</span>Experimental<span class="o">]</span><span class="w"> </span>Generates<span class="w"> </span>documentation<span class="w"> </span><span class="k">for</span><span class="w"> </span>Bicep<span class="w"> </span>modules.
 </code></pre></div>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="k">ARG</span><span class="w"> </span>TARGETPLATFORM
 <span class="c"># renovate: datasource=github-tags depName=Azure/bicep</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">BICEP_VERSION</span><span class="o">=</span><span class="m">0</span>.46.1
+<span class="k">ARG</span><span class="w"> </span><span class="nv">BICEP_VERSION</span><span class="o">=</span><span class="m">0</span>.47.16
 <span class="k">ARG</span><span class="w"> </span><span class="nv">BICEP_EXE</span><span class="o">=</span><span class="s1">'bicep'</span>
 <span class="k">ARG</span><span class="w"> </span><span class="nv">BICEP_DIR</span><span class="o">=</span><span class="s1">'/usr/local/bin'</span>
 <span class="k">RUN</span><span class="w"> </span><span class="k">case</span><span class="w"> </span><span class="si">${</span><span class="nv">TARGETPLATFORM</span><span class="si">}</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="se">\</span>

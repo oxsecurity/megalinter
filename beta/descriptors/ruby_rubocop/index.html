@@ -12356,7 +12356,7 @@
 </ul>
 <h2 id="rubocop-documentation">rubocop documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.90.0</strong></li>
+<li>Version in MegaLinter: <strong>1.91.0</strong></li>
 <li>Visit <a href="https://rubocop.org/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://docs.rubocop.org/rubocop/configuration.html" target="_blank">How to configure rubocop rules</a><ul>
 <li>If custom <code>.ruby-lint.yml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruby-lint.yml" target="_blank">.ruby-lint.yml</a> will be used</li>
@@ -12600,6 +12600,10 @@ Basic<span class="w"> </span>Options:
 <span class="w">                                     </span>disabled<span class="w"> </span>by<span class="w"> </span>default.<span class="w"> </span>Overrides
 <span class="w">                                     </span><span class="sb">`</span>AllCops/EnabledByDefault<span class="sb">`</span><span class="w"> </span>and
 <span class="w">                                     </span><span class="sb">`</span>AllCops/DisabledByDefault<span class="sb">`</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>config<span class="w"> </span>files.
+<span class="w">        </span>--<span class="o">[</span>no-<span class="o">]</span>preview<span class="w">               </span>Opt<span class="w"> </span><span class="k">in</span><span class="w"> </span>to<span class="w"> </span>unstable<span class="w"> </span>behavior:<span class="w"> </span>cops<span class="w"> </span>that<span class="w"> </span>are
+<span class="w">                                     </span><span class="sb">`</span>Enabled:<span class="w"> </span>preview<span class="sb">`</span>,<span class="w"> </span>and<span class="w"> </span>changes<span class="w"> </span>to<span class="w"> </span>existing
+<span class="w">                                     </span>cops<span class="w"> </span>that<span class="w"> </span>are<span class="w"> </span>not<span class="w"> </span>the<span class="w"> </span>default<span class="w"> </span>yet.
+<span class="w">                                     </span>Overrides<span class="w"> </span><span class="sb">`</span>AllCops:<span class="w"> </span>Preview<span class="sb">`</span>.
 <span class="w">        </span>--ignore-disable-comments<span class="w">    </span>Report<span class="w"> </span>offenses<span class="w"> </span>even<span class="w"> </span><span class="k">if</span><span class="w"> </span>they<span class="w"> </span>have<span class="w"> </span>been<span class="w"> </span>manually<span class="w"> </span>disabled
 <span class="w">                                     </span>with<span class="w"> </span>a<span class="w"> </span><span class="sb">`</span>rubocop:disable<span class="sb">`</span><span class="w"> </span>or<span class="w"> </span><span class="sb">`</span>rubocop:todo<span class="sb">`</span><span class="w"> </span>directive.
 <span class="w">        </span>--force-exclusion<span class="w">            </span>Any<span class="w"> </span>files<span class="w"> </span>excluded<span class="w"> </span>by<span class="w"> </span><span class="sb">`</span>Exclude<span class="sb">`</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>configuration
@@ -12613,6 +12617,10 @@ Basic<span class="w"> </span>Options:
 <span class="w">        </span>--ignore-unrecognized-cops<span class="w">   </span>Ignore<span class="w"> </span>unrecognized<span class="w"> </span>cops<span class="w"> </span>or<span class="w"> </span>departments<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>config.
 <span class="w">        </span>--force-default-config<span class="w">       </span>Use<span class="w"> </span>default<span class="w"> </span>configuration<span class="w"> </span>even<span class="w"> </span><span class="k">if</span><span class="w"> </span>configuration
 <span class="w">                                     </span>files<span class="w"> </span>are<span class="w"> </span>present<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>directory<span class="w"> </span>tree.
+<span class="w">        </span>--changed<span class="w"> </span><span class="o">[</span>REVISION<span class="o">]</span><span class="w">         </span>Inspect<span class="w"> </span>only<span class="w"> </span>the<span class="w"> </span>files<span class="w"> </span>that<span class="w"> </span>differ<span class="w"> </span>from<span class="w"> </span>a<span class="w"> </span>git
+<span class="w">                                     </span>revision,<span class="w"> </span>defaulting<span class="w"> </span>to<span class="w"> </span>HEAD.<span class="w"> </span>Untracked<span class="w"> </span>files
+<span class="w">                                     </span>count<span class="w"> </span>as<span class="w"> </span>changed.<span class="w"> </span>Pass<span class="w"> </span>a<span class="w"> </span>revision<span class="w"> </span>with
+<span class="w">                                     </span><span class="sb">`</span>--changed<span class="o">=</span>REVISION<span class="sb">`</span>.
 <span class="w">    </span>-s,<span class="w"> </span>--stdin<span class="w"> </span>FILE<span class="w">                 </span>Pipe<span class="w"> </span><span class="nb">source</span><span class="w"> </span>from<span class="w"> </span>STDIN,<span class="w"> </span>using<span class="w"> </span>FILE<span class="w"> </span><span class="k">in</span><span class="w"> </span>offense
 <span class="w">                                     </span>reports.<span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>useful<span class="w"> </span><span class="k">for</span><span class="w"> </span>editor<span class="w"> </span>integration.
 <span class="w">        </span>--editor-mode<span class="w">                </span>Optimize<span class="w"> </span>real-time<span class="w"> </span>feedback<span class="w"> </span><span class="k">in</span><span class="w"> </span>editors,
@@ -12625,6 +12633,7 @@ Basic<span class="w"> </span>Options:
 <span class="w">                                     </span>This<span class="w"> </span>is<span class="w"> </span>used<span class="w"> </span>to<span class="w"> </span>prevent<span class="w"> </span>cops<span class="w"> </span>from<span class="w"> </span>failing<span class="w"> </span>silently.
 <span class="w">                                     </span>Default<span class="w"> </span>is<span class="w"> </span>false.
 <span class="w">        </span>--fail-level<span class="w"> </span>SEVERITY<span class="w">        </span>Minimum<span class="w"> </span>severity<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span>with<span class="w"> </span>error<span class="w"> </span>code.
+<span class="w">                                     </span>Overrides<span class="w"> </span><span class="sb">`</span>AllCops:<span class="w"> </span>FailLevel<span class="sb">`</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>configuration.
 <span class="w">                                       </span><span class="o">[</span>A<span class="o">]</span><span class="w"> </span>autocorrect
 <span class="w">                                       </span><span class="o">[</span>I<span class="o">]</span><span class="w"> </span>info
 <span class="w">                                       </span><span class="o">[</span>R<span class="o">]</span><span class="w"> </span>refactor
@@ -12680,6 +12689,7 @@ Caching:
 <span class="s1">                                       [pa]cman</span>
 <span class="s1">                                       [p]rogress (default)</span>
 <span class="s1">                                       [q]uiet</span>
+<span class="s1">                                       [sa]rif</span>
 <span class="s1">                                       [s]imple</span>
 <span class="s1">                                       [t]ap</span>
 <span class="s1">                                       [w]orst</span>
@@ -12717,6 +12727,10 @@ Caching:
 <span class="w">        </span>--disable-uncorrectable<span class="w">      </span>Used<span class="w"> </span>with<span class="w"> </span>--autocorrect<span class="w"> </span>to<span class="w"> </span>annotate<span class="w"> </span>any
 <span class="w">                                     </span>offenses<span class="w"> </span>that<span class="w"> </span><span class="k">do</span><span class="w"> </span>not<span class="w"> </span>support<span class="w"> </span>autocorrect
 <span class="w">                                     </span>with<span class="w"> </span><span class="sb">`</span>rubocop:todo<span class="sb">`</span><span class="w"> </span>comments.
+<span class="w">        </span>--diff<span class="w">                       </span>Print<span class="w"> </span>a<span class="w"> </span>unified<span class="w"> </span>diff<span class="w"> </span>of<span class="w"> </span>what<span class="w"> </span>autocorrection
+<span class="w">                                     </span>would<span class="w"> </span>change,<span class="w"> </span>without<span class="w"> </span>writing<span class="w"> </span>any<span class="w"> </span>files.
+<span class="w">                                     </span>Turns<span class="w"> </span>on<span class="w"> </span>safe<span class="w"> </span>autocorrection<span class="w"> </span>unless<span class="w"> </span>a<span class="w"> </span>mode
+<span class="w">                                     </span>was<span class="w"> </span>already<span class="w"> </span>given<span class="w"> </span>with<span class="w"> </span>-a,<span class="w"> </span>-A<span class="w"> </span>or<span class="w"> </span>-x.
 
 Config<span class="w"> </span>Generation:
 <span class="w">        </span>--auto-gen-config<span class="w">            </span>Generate<span class="w"> </span>a<span class="w"> </span>configuration<span class="w"> </span>file<span class="w"> </span>acting<span class="w"> </span>as<span class="w"> </span>a
@@ -12777,7 +12791,7 @@ Profiling<span class="w"> </span>Options:
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=rubygems depName=rubocop</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">GEM_RUBOCOP_VERSION</span><span class="o">=</span><span class="m">1</span>.90.0
+<span class="k">ARG</span><span class="w"> </span><span class="nv">GEM_RUBOCOP_VERSION</span><span class="o">=</span><span class="m">1</span>.91.0
 <span class="c"># renovate: datasource=rubygems depName=rubocop-github</span>
 <span class="k">ARG</span><span class="w"> </span><span class="nv">GEM_RUBOCOP_GITHUB_VERSION</span><span class="o">=</span><span class="m">0</span>.27.0
 <span class="c"># renovate: datasource=rubygems depName=rubocop-performance</span>
@@ -12792,7 +12806,7 @@ Profiling<span class="w"> </span>Options:
 </ul>
 <ul>
 <li>GEM packages (Ruby) :<ul>
-<li><a href="https://rubygems.org/gems/rubocop/versions/1.90.0">rubocop:1.90.0</a></li>
+<li><a href="https://rubygems.org/gems/rubocop/versions/1.91.0">rubocop:1.91.0</a></li>
 <li><a href="https://rubygems.org/gems/rubocop-github/versions/0.27.0">rubocop-github:0.27.0</a></li>
 <li><a href="https://rubygems.org/gems/rubocop-performance/versions/1.27.0">rubocop-performance:1.27.0</a></li>
 <li><a href="https://rubygems.org/gems/rubocop-rails/versions/2.37.0">rubocop-rails:2.37.0</a></li>
