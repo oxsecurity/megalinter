@@ -22,7 +22,7 @@ description: How to use scalafix (configure, ignore files, ignore errors, help &
 
 ## scalafix documentation
 
-- Version in MegaLinter: **0.14.7**
+- Version in MegaLinter: **0.14.9**
 - Visit [Official Web Site](https://scalacenter.github.io/scalafix/){target=_blank}
 - See [How to configure scalafix rules](https://scalacenter.github.io/scalafix/docs/users/configuration.html){target=_blank}
   - If custom `.scalafix.conf` config file isn't found, [.scalafix.conf](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.scalafix.conf){target=_blank} will be used
@@ -97,7 +97,7 @@ scalafix --config .scalafix.conf myfile.scala
 ### Help content
 
 ```shell
-Scalafix 0.14.7
+Scalafix 0.14.9
 Usage: scalafix [options] [<path> ...]
 
 Scalafix is a refactoring and linting tool. Scalafix supports both syntactic and
@@ -126,6 +126,10 @@ Common options:
   --stdout
     Print fixed output to stdout instead of writing in-place.
 
+  --dry-run
+    Report linter errors and how many files would be fixed by a subsequent run.
+    Unlike --check, auto-fixable violations alone do not fail the run.
+
   --diff
     If set, only apply scalafix to added and edited files in git diff against the
     master branch.
@@ -134,7 +138,7 @@ Common options:
     If set, only apply scalafix to added and edited files in git diff against a
     provided branch, commit or tag.
 
-  --scala-version ScalaVersion (default: "3.8.4")
+  --scala-version ScalaVersion (default: "3.9.0")
     The major or binary Scala version that the provided files are targeting, or the
     full version that was used to compile them when a classpath is provided.
 
@@ -158,7 +162,8 @@ Common options:
 Semantic options:
 
   --classpath Classpath (default: "<classpath>")
-    Full classpath of the files to fix, required for semantic rules. The source
+    Full classpath of the files to fix, required for semantic rules, as a list of
+    filesystem paths separated by ':' on Unix or ';' on Windows. The source
     files that should be fixed must be compiled with semanticdb-scalac.
     Dependencies are required by rules like ExplicitResultTypes, but the
     dependencies do not need to be compiled with semanticdb-scalac.
@@ -210,7 +215,7 @@ Less common options:
     `nio.FileSystem.getPathMatcher`.
 
   --tool-classpath URLClassLoader (default: "<classloader>")
-    Additional classpath for compiling and classloading custom rules, as a set of
+    Additional classpath for compiling and classloading custom rules, as a list of
     filesystem paths, separated by ':' on Unix or ';' on Windows.
 
   --charset Charset (default: "UTF-8")
@@ -255,7 +260,7 @@ RUN curl --retry-all-errors --retry 10 -fLo coursier https://github.com/coursier
 
 # Linter install
 # renovate: datasource=github-tags depName=scalacenter/scalafix
-ARG SCALA_SCALAFIX_VERSION=0.14.7
+ARG SCALA_SCALAFIX_VERSION=0.14.9
 RUN ./coursier install scalafix:${SCALA_SCALAFIX_VERSION} --quiet --install-dir /usr/bin && rm -rf /root/.cache
 ```
 

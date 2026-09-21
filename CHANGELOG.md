@@ -73,6 +73,28 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [vale](https://vale.sh/) from 3.18.0 to **3.20.0** on 2026-09-12
   - [semgrep](https://semgrep.dev/) from 1.175.1 to **1.176.1** on 2026-09-12
   - [checkov](https://www.checkov.io/) from 3.3.15 to **3.3.16** on 2026-09-13
+  - [shfmt](https://github.com/mvdan/sh) from 3.14.0 to **3.14.1** on 2026-09-21
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.46.1 to **0.47.16** on 2026-09-21
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.56.0 to **1.56.3** on 2026-09-21
+  - [biome](https://biomejs.dev) from 2.5.12 to **2.5.13** on 2026-09-21
+  - [djlint](https://djlint.com/) from 1.45.2 to **1.46.1** on 2026-09-21
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.65 to **0.2.73** on 2026-09-21
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.24 to **3.95.25** on 2026-09-21
+  - [phpstan](https://phpstan.org/) from 2.2.13 to **2.2.14** on 2026-09-21
+  - [psalm](https://psalm.dev) from Psalm.6.16.1@ to **Psalm.6.17.1@** on 2026-09-21
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.413 to **1.1.414** on 2026-09-21
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.16.6 to **0.16.7** on 2026-09-21
+  - [ruff](https://github.com/astral-sh/ruff) from 0.16.6 to **0.16.7** on 2026-09-21
+  - [checkov](https://www.checkov.io/) from 3.3.16 to **3.3.17** on 2026-09-21
+  - [grype](https://github.com/anchore/grype) from 0.118.0 to **0.119.0** on 2026-09-21
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 2.1.0 to **2.2.0** on 2026-09-21
+  - [semgrep](https://semgrep.dev/) from 1.176.1 to **1.177.0** on 2026-09-21
+  - [syft](https://github.com/anchore/syft) from 1.51.1 to **1.52.0** on 2026-09-21
+  - [rubocop](https://rubocop.org/) from 1.90.0 to **1.91.0** on 2026-09-21
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.14.7 to **0.14.9** on 2026-09-21
+  - [snakemake](https://snakemake.github.io/) from 9.26.1 to **9.27.0** on 2026-09-21
+  - [vale](https://vale.sh/) from 3.20.0 to **3.21.0** on 2026-09-21
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.16.0 to **1.16.2** on 2026-09-21
 <!-- linter-versions-end -->
 
 ## [v10.1.0] - 2026-09-05

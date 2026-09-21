@@ -21,7 +21,7 @@ description: How to use shfmt (configure, ignore files, ignore errors, help & ve
 
 ## shfmt documentation
 
-- Version in MegaLinter: **3.14.0**
+- Version in MegaLinter: **3.14.1**
 - Visit [Official Web Site](https://github.com/mvdan/sh#readme){target=_blank}
 - See [How to configure shfmt rules](https://github.com/mvdan/sh/blob/master/cmd/shfmt/shfmt.1.scd){target=_blank}
 - See [How to disable shfmt rules in files](https://github.com/mvdan/sh/blob/master/cmd/shfmt/shfmt.1.scd){target=_blank}
@@ -166,7 +166,7 @@ For more information and to report bugs, see https://github.com/mvdan/sh.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=mvdan/shfmt
-ARG BASH_SHFMT_VERSION=v3.14.0-alpine
+ARG BASH_SHFMT_VERSION=v3.14.1-alpine
 FROM mvdan/shfmt:${BASH_SHFMT_VERSION} AS shfmt
 COPY --link --from=shfmt /bin/shfmt /usr/bin/
 ```
