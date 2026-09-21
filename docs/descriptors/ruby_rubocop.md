@@ -27,7 +27,7 @@ description: How to use rubocop (configure, ignore files, ignore errors, help & 
 
 ## rubocop documentation
 
-- Version in MegaLinter: **1.90.0**
+- Version in MegaLinter: **1.91.0**
 - Visit [Official Web Site](https://rubocop.org/){target=_blank}
 - See [How to configure rubocop rules](https://docs.rubocop.org/rubocop/configuration.html){target=_blank}
   - If custom `.ruby-lint.yml` config file isn't found, [.ruby-lint.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruby-lint.yml){target=_blank} will be used
@@ -142,6 +142,10 @@ Basic Options:
                                      disabled by default. Overrides
                                      `AllCops/EnabledByDefault` and
                                      `AllCops/DisabledByDefault` in config files.
+        --[no-]preview               Opt in to unstable behavior: cops that are
+                                     `Enabled: preview`, and changes to existing
+                                     cops that are not the default yet.
+                                     Overrides `AllCops: Preview`.
         --ignore-disable-comments    Report offenses even if they have been manually disabled
                                      with a `rubocop:disable` or `rubocop:todo` directive.
         --force-exclusion            Any files excluded by `Exclude` in configuration
@@ -155,6 +159,10 @@ Basic Options:
         --ignore-unrecognized-cops   Ignore unrecognized cops or departments in the config.
         --force-default-config       Use default configuration even if configuration
                                      files are present in the directory tree.
+        --changed [REVISION]         Inspect only the files that differ from a git
+                                     revision, defaulting to HEAD. Untracked files
+                                     count as changed. Pass a revision with
+                                     `--changed=REVISION`.
     -s, --stdin FILE                 Pipe source from STDIN, using FILE in offense
                                      reports. This is useful for editor integration.
         --editor-mode                Optimize real-time feedback in editors,
@@ -167,6 +175,7 @@ Basic Options:
                                      This is used to prevent cops from failing silently.
                                      Default is false.
         --fail-level SEVERITY        Minimum severity for exit with error code.
+                                     Overrides `AllCops: FailLevel` in the configuration.
                                        [A] autocorrect
                                        [I] info
                                        [R] refactor
@@ -222,6 +231,7 @@ Output Options:
                                        [pa]cman
                                        [p]rogress (default)
                                        [q]uiet
+                                       [sa]rif
                                        [s]imple
                                        [t]ap
                                        [w]orst
@@ -259,6 +269,10 @@ Autocorrection:
         --disable-uncorrectable      Used with --autocorrect to annotate any
                                      offenses that do not support autocorrect
                                      with `rubocop:todo` comments.
+        --diff                       Print a unified diff of what autocorrection
+                                     would change, without writing any files.
+                                     Turns on safe autocorrection unless a mode
+                                     was already given with -a, -A or -x.
 
 Config Generation:
         --auto-gen-config            Generate a configuration file acting as a
@@ -321,7 +335,7 @@ Profiling Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=rubygems depName=rubocop
-ARG GEM_RUBOCOP_VERSION=1.90.0
+ARG GEM_RUBOCOP_VERSION=1.91.0
 # renovate: datasource=rubygems depName=rubocop-github
 ARG GEM_RUBOCOP_GITHUB_VERSION=0.27.0
 # renovate: datasource=rubygems depName=rubocop-performance
@@ -335,7 +349,7 @@ ARG GEM_RUBOCOP_RSPEC_VERSION=3.10.2
 ```
 
 - GEM packages (Ruby) :
-  - [rubocop:1.90.0](https://rubygems.org/gems/rubocop/versions/1.90.0)
+  - [rubocop:1.91.0](https://rubygems.org/gems/rubocop/versions/1.91.0)
   - [rubocop-github:0.27.0](https://rubygems.org/gems/rubocop-github/versions/0.27.0)
   - [rubocop-performance:1.27.0](https://rubygems.org/gems/rubocop-performance/versions/1.27.0)
   - [rubocop-rails:2.37.0](https://rubygems.org/gems/rubocop-rails/versions/2.37.0)

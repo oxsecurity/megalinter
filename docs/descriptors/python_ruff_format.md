@@ -19,7 +19,7 @@ description: How to use ruff-format (configure, ignore files, ignore errors, hel
 
 ## ruff-format documentation
 
-- Version in MegaLinter: **0.16.6**
+- Version in MegaLinter: **0.16.7**
 - Visit [Official Web Site](https://github.com/astral-sh/ruff#readme){target=_blank}
 - See [How to configure ruff-format rules](https://docs.astral.sh/ruff/configuration/){target=_blank}
   - If custom `.ruff.toml` config file isn't found, [.ruff.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruff.toml){target=_blank} will be used
@@ -140,7 +140,7 @@ Global options:
       --config <CONFIG_OPTION>
           Either a path to a TOML configuration file (`pyproject.toml` or `ruff.toml`), or a TOML
           `<KEY> = <VALUE>` pair (such as you might find in a `ruff.toml` configuration file)
-          overriding a specific configuration option (e.g., `--config "lint.line-length = 100"` or
+          overriding a specific configuration option (e.g., `--config "line-length = 100"` or
           `--config "format.quote-style = 'single'"`). Overrides of individual settings using this
           option always take precedence over all configuration files, including configuration files
           that were also specified using `--config`
@@ -164,8 +164,8 @@ For help with a specific command, see: `ruff help <command>`.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.16.6
+ARG PIP_RUFF_VERSION=0.16.7
 ```
 
 - PIP packages (Python):
-  - [ruff==0.16.6](https://pypi.org/project/ruff/0.16.6)
+  - [ruff==0.16.7](https://pypi.org/project/ruff/0.16.7)
