@@ -15477,6 +15477,7 @@
 <li>Per-linter test jobs (<code>deploy-DEV-linters.yml</code>, <code>deploy-BETA-linters.yml</code>) now pass <code>GITHUB_ACTIONS</code> to the test container</li>
 </ul>
 </li>
+<li><strong><code>test-agent-plugins.yml</code></strong> validation script now accepts both the <code>{"plugins": [...], "errors": [...]}</code> wrapper and the bare-array shape the GitHub Copilot CLI's <code>plugins list --json</code> can return, fixing a crash of the "Validate agent plugins manifests" check</li>
 </ul>
 </li>
 </ul>
