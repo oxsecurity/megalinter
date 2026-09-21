@@ -763,9 +763,9 @@ arrify@^3.0.0:
   integrity sha512-tLkvA81vQG/XqE2mjDkGQHoOINtMHtysSnemrmoGe6PydDPMRbVugqyk4A6V/WDWEfm3l+0d8anA9r8cv/5Jaw==
 
 b4a@^1.6.4:
-  version "1.8.1"
-  resolved "https://registry.yarnpkg.com/b4a/-/b4a-1.8.1.tgz#7f16334ca80127aeb26064a28841acbf174840a4"
-  integrity sha512-aiqre1Nr0B/6DgE2N5vwTc+2/oQZ4Wh1t4NznYY4E00y8LCt6NqdRv81so00oo27D8MVKTpUa/MwUUtBLXCoDw==
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/b4a/-/b4a-1.9.0.tgz#6336313b6e76b299c397afa68676ec6ebc788845"
+  integrity sha512-dpfcF9fDNR6++cthXR67iyhgqWy9CBouAvIWhIntzBG6cvK/cnIPiZQjBwi/ZqjjBEDGfoNDtmB0kTjroOJ3pQ==
 
 balanced-match@^1.0.0:
   version "1.0.2"
@@ -813,9 +813,9 @@ brace-expansion@^2.0.2:
     balanced-match "^1.0.0"
 
 brace-expansion@^5.0.8:
-  version "5.0.9"
-  resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-5.0.9.tgz#7c72438809b5fa5babf54199a1f1c281a6984fcf"
-  integrity sha512-ScQ4IuvIEF1TMlP7Zt+vjJ//9zlPb2SDcxWxM3bk8s6t6GGdJ7KO1dCcTidOPJKePW30LE/2cT7wCyPho9/Wxg==
+  version "5.0.12"
+  resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-5.0.12.tgz#995fbb4750a77c4d16a7dc942ff2ca6ef8e675ec"
+  integrity sha512-YovQ3rzhaLMIrDjNDMkNS01tea93qhEhG5xy8f6+R0l+dw3Ki+5sCoIoI942iuLZTHWogWktgwVDhU09iNEimQ==
   dependencies:
     balanced-match "^4.0.2"
 
@@ -1700,10 +1700,15 @@ log-symbols@^7.0.1:
     is-unicode-supported "^2.0.0"
     yoctocolors "^2.1.1"
 
-lru-cache@^11.0.0, lru-cache@^11.1.0, lru-cache@^11.2.1:
+lru-cache@^11.0.0, lru-cache@^11.2.1:
   version "11.5.2"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-11.5.2.tgz#00e16665c90c620fba14a3c368732a976493f760"
   integrity sha512-4pfM1Ff0x50o0tQwb5ucw/RzNyD0/YJME6IVcStalZuMWxdt3sR3huStTtxz4PUmvZfRguvDejasvQ2kifR11g==
+
+lru-cache@^11.1.0:
+  version "11.5.3"
+  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-11.5.3.tgz#a7767b4034e35269562d2b9da2b185b5df70c421"
+  integrity sha512-U4N8FgzmWxc8k1VH8Kr6lQg18U7Fjvby6wXHVRX/ZZ7IwWbRMgrRbP0Wrb5q5NVinryp4SQampHKdvtecItxUg==
 
 make-fetch-happen@^15.0.0, make-fetch-happen@^15.0.1, make-fetch-happen@^15.0.4:
   version "15.0.6"
@@ -1727,6 +1732,26 @@ mem-fs-editor@^12.0.4:
   version "12.0.8"
   resolved "https://registry.yarnpkg.com/mem-fs-editor/-/mem-fs-editor-12.0.8.tgz#97031fdf1c555a80b7ba2963f9192d82328a3c14"
   integrity sha512-+kCqJcfWxLwwAQL9sNGM6KFehhAxf+CpUbf4BTR61exES5jv1/JufZGM2/6menk9TyN6/XutgZCBa7dn87152g==
+  dependencies:
+    "@types/ejs" "^3.1.5"
+    "@types/picomatch" "^4.0.2"
+    binaryextensions "^6.11.0"
+    commondir "^1.0.0"
+    debug "^4.4.3"
+    deep-extend "^0.6.0"
+    ejs "^6.0.1"
+    isbinaryfile "5.0.7"
+    minimatch "^10.2.5"
+    multimatch "^8.0.0"
+    normalize-path "^3.0.0"
+    textextensions "^6.11.0"
+    tinyglobby "^0.2.15"
+    vinyl "^3.0.1"
+
+mem-fs-editor@^12.0.9:
+  version "12.0.9"
+  resolved "https://registry.yarnpkg.com/mem-fs-editor/-/mem-fs-editor-12.0.9.tgz#ef255411dff7a1ea660a4ee2d4919e5ecdfcf7c8"
+  integrity sha512-KxqAoF6EOH0cKp+eh1uE2lkrrkdf/oqbfq+qiWFVCT1t9k5uUsC19noYYeK7PS5k08E3Ym0YJnbGyNXYSgr2fg==
   dependencies:
     "@types/ejs" "^3.1.5"
     "@types/picomatch" "^4.0.2"
@@ -2534,9 +2559,9 @@ spdx-expression-parse@^4.0.0:
     spdx-license-ids "^3.0.0"
 
 spdx-license-ids@^3.0.0:
-  version "3.0.23"
-  resolved "https://registry.yarnpkg.com/spdx-license-ids/-/spdx-license-ids-3.0.23.tgz#b069e687b1291a32f126893ed76a27a745ee2133"
-  integrity sha512-CWLcCCH7VLu13TgOH+r8p1O/Znwhqv/dbb6lqWy67G+pT1kHmeD/+V36AVb/vq8QMIQwVShJ6Ssl5FPh0fuSdw==
+  version "3.0.24"
+  resolved "https://registry.yarnpkg.com/spdx-license-ids/-/spdx-license-ids-3.0.24.tgz#550436df9dc7dcf5c29832ceda40256a9b00de3a"
+  integrity sha512-cLS9TtWkIQFyLkJ3/5aFQAOHOSKTlOs/7WDut/XPSdjom1fJhUdkepeJAKXa9Y05+FabHd0sti+Et559vDtkpQ==
 
 ssri@^13.0.0:
   version "13.0.1"
@@ -2705,9 +2730,9 @@ type-fest@^4.39.1:
   integrity sha512-TeTSQ6H5YHvpqVwBRcnLDCBnDOHWYu7IvGbHT6N8AOymcr9PJGjc1GTtiWZTYg0NCgYwvnYWEkVChQAr9bjfwA==
 
 type-fest@^5.2.0, type-fest@^5.4.4, type-fest@^5.6.0:
-  version "5.9.0"
-  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-5.9.0.tgz#0a4dd554d397f1a44447477eaeb3d1f4d8c7680f"
-  integrity sha512-yANm3Jr3GiJ1qgJlxGAVxTOIcEOk1rhQHamlXtnrCK7EHP4HeM9OGxtMg/W7HFdrVzw/ZWJKGVIJusVH85sLtw==
+  version "5.10.0"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-5.10.0.tgz#bf0131fdf662889c94c409d37402e364fb2016f7"
+  integrity sha512-NoSdpq/WEiAg5sjmBkmV/hfxv6HJH4NqPNrqjtSO5CwRmpsDfaf4begxW34KdJykH/l1yHtwBWQkCRdoXO8mPA==
   dependencies:
     tagged-tag "^1.0.0"
 
@@ -2881,9 +2906,9 @@ yeoman-environment@^6.0.0:
     which-package-manager "^1.0.1"
 
 yeoman-generator@^8.0.0:
-  version "8.3.1"
-  resolved "https://registry.yarnpkg.com/yeoman-generator/-/yeoman-generator-8.3.1.tgz#60a32a085afa953ce26b361eab830643c878eeb8"
-  integrity sha512-XYyd8ELUrByoGpqP4Lbd1oVjalWMCrEOG4ZXiyi21/yjGSIFAfORvzkEnjXztjdMNYqfeT6laGxhJb8hiA0wWg==
+  version "8.4.0"
+  resolved "https://registry.yarnpkg.com/yeoman-generator/-/yeoman-generator-8.4.0.tgz#6e503e965f11d051887b90da32735563140c5984"
+  integrity sha512-8yMkAfuAPqOaN9dsdf2hGxgCGuSIV3c/RmPKXWoe5YZ4HX2zXnDS9D/AoXlUw9OSPeRVpBe4vh92vTBi840Evw==
   dependencies:
     "@types/debug" "^4.1.13"
     "@types/lodash-es" "^4.17.12"
@@ -2893,7 +2918,7 @@ yeoman-generator@^8.0.0:
     execa "^9.6.1"
     latest-version "^9.0.0"
     lodash-es "^4.18.1"
-    mem-fs-editor "^12.0.4"
+    mem-fs-editor "^12.0.9"
     minimist "^1.2.8"
     read-package-up "^12.0.0"
     semver "^7.7.4"
