@@ -95,6 +95,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.github.io/) from 9.26.1 to **9.27.0** on 2026-09-21
   - [vale](https://vale.sh/) from 3.20.0 to **3.21.0** on 2026-09-21
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.16.0 to **1.16.2** on 2026-09-21
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 5.1.2 to **5.2.0** on 2026-09-22
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.5 to **7.6.6** on 2026-09-22
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.5 to **7.6.6** on 2026-09-22
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 10.2.2 to **10.3.1** on 2026-09-22
+  - [tekton-lint](https://github.com/IBM/tekton-lint) from 1.2.0 to **1.2.4** on 2026-09-22
 <!-- linter-versions-end -->
 
 ## [v10.1.0] - 2026-09-05

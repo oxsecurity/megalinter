@@ -45,7 +45,7 @@ Example:
 
 ## jscpd documentation
 
-- Version in MegaLinter: **5.1.2**
+- Version in MegaLinter: **5.2.0**
 - Visit [Official Web Site](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#readme){target=_blank}
 - See [How to configure jscpd rules](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#config-file){target=_blank}
   - If custom `.jscpd.json` config file isn't found, [.jscpd.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.jscpd.json){target=_blank} will be used
@@ -143,6 +143,10 @@ Options:
           Minimum number of lines to consider a duplicate
   -x, --max-lines <MAX_LINES>
           Maximum number of lines per block to consider
+      --max-gap-lines <N>
+          Merge clones of the same file pair that are separated by at most N unmatched lines in both files into one near-miss clone (Type-3, reported as "similar"); 0 disables
+      --similarity <RATIO>
+          Report JavaScript/TypeScript function pairs whose AST similarity reaches RATIO as near-miss clones (Type-3, "similar"). A number in (0, 1]; the default 1 means exact matches only, e.g. 0.85 enables it
   -m, --mode <MODE>
           Detection mode: mild, weak, strict
       --skip-comments
@@ -189,6 +193,12 @@ Options:
           Use absolute paths in reports
       --ignore-case
           Ignore case of symbols in code (experimental)
+      --ignore-identifiers
+          Treat all identifiers as equal, so clones that differ only in variable, function or type names are found (Type-2 clones)
+      --ignore-literals
+          Treat all string and numeric literals as equal, so clones that differ only in literal values are found
+      --ignore-annotations
+          Skip annotations and decorators (@Name, @Name(...)) in Java, Kotlin, Scala, Groovy, Python, Dart, Swift, JavaScript and TypeScript
       --formats-exts <FORMATS_EXTS>
           Custom format-to-extension mappings (e.g. javascript:es,es6;dart:dt)
       --formats-names <FORMATS_NAMES>
@@ -216,7 +226,7 @@ Options:
   -s, --silent
           Do not write detection progress and result to console
       --no-tips
-          Do not print tips and promotional messages after detection
+          Do not print tips and promotional messages after detection (also skipped when stdout is not a terminal or CI or JSCPD_NO_TIPS is set)
       --debug
           Print merged config (CLI + config file) as JSON and exit without running detection
   -h, --help
@@ -230,8 +240,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=5.1.2
+ARG NPM_JSCPD_VERSION=5.2.0
 ```
 
 - NPM packages (node.js):
-  - [jscpd@5.1.2](https://www.npmjs.com/package/jscpd/v/5.1.2)
+  - [jscpd@5.2.0](https://www.npmjs.com/package/jscpd/v/5.2.0)
