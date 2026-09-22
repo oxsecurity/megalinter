@@ -12248,7 +12248,7 @@
 </code></pre></div>
 <h2 id="jscpd-documentation">jscpd documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>5.1.2</strong></li>
+<li>Version in MegaLinter: <strong>5.2.0</strong></li>
 <li>Visit <a href="https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#config-file" target="_blank">How to configure jscpd rules</a><ul>
 <li>If custom <code>.jscpd.json</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.jscpd.json" target="_blank">.jscpd.json</a> will be used</li>
@@ -12515,6 +12515,10 @@ Options:
 <span class="w">          </span>Minimum<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>lines<span class="w"> </span>to<span class="w"> </span>consider<span class="w"> </span>a<span class="w"> </span>duplicate
 <span class="w">  </span>-x,<span class="w"> </span>--max-lines<span class="w"> </span>&lt;MAX_LINES&gt;
 <span class="w">          </span>Maximum<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>lines<span class="w"> </span>per<span class="w"> </span>block<span class="w"> </span>to<span class="w"> </span>consider
+<span class="w">      </span>--max-gap-lines<span class="w"> </span>&lt;N&gt;
+<span class="w">          </span>Merge<span class="w"> </span>clones<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>same<span class="w"> </span>file<span class="w"> </span>pair<span class="w"> </span>that<span class="w"> </span>are<span class="w"> </span>separated<span class="w"> </span>by<span class="w"> </span>at<span class="w"> </span>most<span class="w"> </span>N<span class="w"> </span>unmatched<span class="w"> </span>lines<span class="w"> </span><span class="k">in</span><span class="w"> </span>both<span class="w"> </span>files<span class="w"> </span>into<span class="w"> </span>one<span class="w"> </span>near-miss<span class="w"> </span>clone<span class="w"> </span><span class="o">(</span>Type-3,<span class="w"> </span>reported<span class="w"> </span>as<span class="w"> </span><span class="s2">"similar"</span><span class="o">)</span><span class="p">;</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>disables
+<span class="w">      </span>--similarity<span class="w"> </span>&lt;RATIO&gt;
+<span class="w">          </span>Report<span class="w"> </span>JavaScript/TypeScript<span class="w"> </span><span class="k">function</span><span class="w"> </span>pairs<span class="w"> </span>whose<span class="w"> </span>AST<span class="w"> </span>similarity<span class="w"> </span>reaches<span class="w"> </span>RATIO<span class="w"> </span>as<span class="w"> </span>near-miss<span class="w"> </span>clones<span class="w"> </span><span class="o">(</span>Type-3,<span class="w"> </span><span class="s2">"similar"</span><span class="o">)</span>.<span class="w"> </span>A<span class="w"> </span>number<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">(</span><span class="m">0</span>,<span class="w"> </span><span class="m">1</span><span class="o">]</span><span class="p">;</span><span class="w"> </span>the<span class="w"> </span>default<span class="w"> </span><span class="m">1</span><span class="w"> </span>means<span class="w"> </span>exact<span class="w"> </span>matches<span class="w"> </span>only,<span class="w"> </span>e.g.<span class="w"> </span><span class="m">0</span>.85<span class="w"> </span>enables<span class="w"> </span>it
 <span class="w">  </span>-m,<span class="w"> </span>--mode<span class="w"> </span>&lt;MODE&gt;
 <span class="w">          </span>Detection<span class="w"> </span>mode:<span class="w"> </span>mild,<span class="w"> </span>weak,<span class="w"> </span>strict
 <span class="w">      </span>--skip-comments
@@ -12561,6 +12565,12 @@ Options:
 <span class="w">          </span>Use<span class="w"> </span>absolute<span class="w"> </span>paths<span class="w"> </span><span class="k">in</span><span class="w"> </span>reports
 <span class="w">      </span>--ignore-case
 <span class="w">          </span>Ignore<span class="w"> </span><span class="k">case</span><span class="w"> </span>of<span class="w"> </span>symbols<span class="w"> </span><span class="k">in</span><span class="w"> </span>code<span class="w"> </span><span class="o">(</span>experimental<span class="o">)</span>
+<span class="w">      </span>--ignore-identifiers
+<span class="w">          </span>Treat<span class="w"> </span>all<span class="w"> </span>identifiers<span class="w"> </span>as<span class="w"> </span>equal,<span class="w"> </span>so<span class="w"> </span>clones<span class="w"> </span>that<span class="w"> </span>differ<span class="w"> </span>only<span class="w"> </span><span class="k">in</span><span class="w"> </span>variable,<span class="w"> </span><span class="k">function</span><span class="w"> </span>or<span class="w"> </span><span class="nb">type</span><span class="w"> </span>names<span class="w"> </span>are<span class="w"> </span>found<span class="w"> </span><span class="o">(</span>Type-2<span class="w"> </span>clones<span class="o">)</span>
+<span class="w">      </span>--ignore-literals
+<span class="w">          </span>Treat<span class="w"> </span>all<span class="w"> </span>string<span class="w"> </span>and<span class="w"> </span>numeric<span class="w"> </span>literals<span class="w"> </span>as<span class="w"> </span>equal,<span class="w"> </span>so<span class="w"> </span>clones<span class="w"> </span>that<span class="w"> </span>differ<span class="w"> </span>only<span class="w"> </span><span class="k">in</span><span class="w"> </span>literal<span class="w"> </span>values<span class="w"> </span>are<span class="w"> </span>found
+<span class="w">      </span>--ignore-annotations
+<span class="w">          </span>Skip<span class="w"> </span>annotations<span class="w"> </span>and<span class="w"> </span>decorators<span class="w"> </span><span class="o">(</span>@Name,<span class="w"> </span>@Name<span class="o">(</span>...<span class="o">))</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>Java,<span class="w"> </span>Kotlin,<span class="w"> </span>Scala,<span class="w"> </span>Groovy,<span class="w"> </span>Python,<span class="w"> </span>Dart,<span class="w"> </span>Swift,<span class="w"> </span>JavaScript<span class="w"> </span>and<span class="w"> </span>TypeScript
 <span class="w">      </span>--formats-exts<span class="w"> </span>&lt;FORMATS_EXTS&gt;
 <span class="w">          </span>Custom<span class="w"> </span>format-to-extension<span class="w"> </span>mappings<span class="w"> </span><span class="o">(</span>e.g.<span class="w"> </span>javascript:es,es6<span class="p">;</span>dart:dt<span class="o">)</span>
 <span class="w">      </span>--formats-names<span class="w"> </span>&lt;FORMATS_NAMES&gt;
@@ -12588,7 +12598,7 @@ Options:
 <span class="w">  </span>-s,<span class="w"> </span>--silent
 <span class="w">          </span>Do<span class="w"> </span>not<span class="w"> </span>write<span class="w"> </span>detection<span class="w"> </span>progress<span class="w"> </span>and<span class="w"> </span>result<span class="w"> </span>to<span class="w"> </span>console
 <span class="w">      </span>--no-tips
-<span class="w">          </span>Do<span class="w"> </span>not<span class="w"> </span>print<span class="w"> </span>tips<span class="w"> </span>and<span class="w"> </span>promotional<span class="w"> </span>messages<span class="w"> </span>after<span class="w"> </span>detection
+<span class="w">          </span>Do<span class="w"> </span>not<span class="w"> </span>print<span class="w"> </span>tips<span class="w"> </span>and<span class="w"> </span>promotional<span class="w"> </span>messages<span class="w"> </span>after<span class="w"> </span>detection<span class="w"> </span><span class="o">(</span>also<span class="w"> </span>skipped<span class="w"> </span>when<span class="w"> </span>stdout<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>a<span class="w"> </span>terminal<span class="w"> </span>or<span class="w"> </span>CI<span class="w"> </span>or<span class="w"> </span>JSCPD_NO_TIPS<span class="w"> </span>is<span class="w"> </span><span class="nb">set</span><span class="o">)</span>
 <span class="w">      </span>--debug
 <span class="w">          </span>Print<span class="w"> </span>merged<span class="w"> </span>config<span class="w"> </span><span class="o">(</span>CLI<span class="w"> </span>+<span class="w"> </span>config<span class="w"> </span>file<span class="o">)</span><span class="w"> </span>as<span class="w"> </span>JSON<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span><span class="w"> </span>without<span class="w"> </span>running<span class="w"> </span>detection
 <span class="w">  </span>-h,<span class="w"> </span>--help
@@ -12600,12 +12610,12 @@ Options:
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=npm depName=jscpd</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">NPM_JSCPD_VERSION</span><span class="o">=</span><span class="m">5</span>.1.2
+<span class="k">ARG</span><span class="w"> </span><span class="nv">NPM_JSCPD_VERSION</span><span class="o">=</span><span class="m">5</span>.2.0
 </code></pre></div></li>
 </ul>
 <ul>
 <li>NPM packages (node.js):<ul>
-<li><a href="https://www.npmjs.com/package/jscpd/v/5.1.2">jscpd@5.1.2</a></li>
+<li><a href="https://www.npmjs.com/package/jscpd/v/5.2.0">jscpd@5.2.0</a></li>
 </ul>
 </li>
 </ul>
