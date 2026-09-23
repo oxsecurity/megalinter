@@ -266,7 +266,7 @@ jobs:
 
       - name: Build Image
         id: build_linter
-        uses: docker/build-push-action@53b7df96c91f9c12dcc8a07bcb9ccacbed38856a # v7
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7
         continue-on-error: true
         with:
           context: .
@@ -292,7 +292,7 @@ jobs:
       # manifest with evicted blobs ('blob sha256:...: not found').
       - name: Build Image (no-cache fallback)
         if: ${{ steps.build_linter.outcome == 'failure' }}
-        uses: docker/build-push-action@53b7df96c91f9c12dcc8a07bcb9ccacbed38856a # v7
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7
         with:
           context: .
           file: linters/${{ matrix.linter }}/Dockerfile
