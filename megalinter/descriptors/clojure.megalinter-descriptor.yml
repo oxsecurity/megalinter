@@ -21,34 +21,57 @@ linters:
 
       **Key Features:**
 
-      - **Comprehensive Error Detection**: Detects arity errors, unused private vars, unresolved symbols, redefined vars, missing map keys, and many other issues
+      - **Comprehensive Error Detection**: Detects arity errors, unused private vars, unresolved symbols, redefined vars, missing map keys, conditions that are always true or false, and many other issues
       - **Style Guide Recommendations**: Enforces best practices from Stuart Sierra's "how to ns" and the Clojure Style Guide
-      - **Advanced Analysis**: Provides type checking, format string validation, shadowed vars detection, and Datalog syntax checking
-      - **Macro Support**: Built-in support for core macros and popular community libraries, with extensible configuration for custom macros
+      - **Type Checking**: Infers argument and return types, including destructured map keys and values, and reports type mismatches at call sites
+      - **Modern Clojure Support**: Understands the latest Clojure and ClojureScript syntax, such as Clojure 1.13 required keys (`:keys!`) in map destructuring
+      - **Macro Support**: Built-in support for core macros and popular community libraries, with extensible configuration and hooks for custom macros
       - **Fast Performance**: Compiled to native code using GraalVM for fast startup and execution
-      - **Cache System**: Incremental analysis with project-wide cache for cross-namespace lint detection
-    linter_url: https://github.com/borkdude/clj-kondo
-    linter_repo: https://github.com/borkdude/clj-kondo
+
+      **MegaLinter integration notes:**
+
+      - All the files are linted in a single clj-kondo run (`list_of_files` lint mode), so cross-namespace checks such as arity errors on vars defined in other files are reported without a cache
+      - clj-kondo runs with `--cache false`, so it neither reads nor writes the `.clj-kondo/.cache` folder while MegaLinter analyzes your repository. To use a cache you built beforehand (for example with `--dependencies`), set `CLOJURE_CLJ_KONDO_COMMAND_REMOVE_ARGUMENTS: ["--cache", "false"]`
+      - In `project` lint mode, `EXCLUDED_DIRECTORIES` are forwarded as an `:output {:exclude-files [...]}` inline configuration, merged with your own: files located in excluded directories are still analyzed, but their findings are not reported
+    linter_url: https://github.com/clj-kondo/clj-kondo
+    linter_repo: https://github.com/clj-kondo/clj-kondo
     linter_spdx_license: EPL-1.0
-    linter_rules_url: https://github.com/borkdude/clj-kondo#features
-    linter_banner_image_url: https://github.com/borkdude/clj-kondo/raw/master/logo/logo-300dpi.png
-    linter_rules_configuration_url: https://github.com/borkdude/clj-kondo/blob/master/doc/config.md#configuration
+    linter_rules_url: https://github.com/clj-kondo/clj-kondo/blob/master/doc/linters.md
+    linter_banner_image_url: https://github.com/clj-kondo/clj-kondo/raw/master/logo/logo-300dpi.png
+    linter_rules_configuration_url: https://github.com/clj-kondo/clj-kondo/blob/master/doc/config.md#configuration
+    linter_rules_ignore_config_url: https://github.com/clj-kondo/clj-kondo/blob/master/doc/config.md#exclude-files-from-being-linted
     linter_rules_inline_disable_url: https://github.com/clj-kondo/clj-kondo/blob/master/doc/config.md#ignore-warnings-in-an-expression
-    linter_megalinter_ref_url: https://github.com/borkdude/clj-kondo/blob/master/doc/ci-integration.md#github
+    linter_megalinter_ref_url: https://github.com/clj-kondo/clj-kondo/blob/master/doc/ci-integration.md#github
     config_file_name: .clj-kondo/config.edn
-    cli_lint_mode: file
+    cli_lint_mode: list_of_files
     supported_cli_lint_modes:
       - file
+      - list_of_files
       - project
     cli_config_arg_name: "--config"
-    cli_lint_extra_args_after:
+    # Do not read or write the cache in .clj-kondo/.cache of the analyzed sources
+    cli_lint_extra_args:
+      - "--cache"
+      - "false"
+    # --lint must be the last option in every lint mode: clj-kondo assigns all
+    # the following arguments to it
+    cli_lint_mode_file_extra_args_after:
       - "--lint"
+    cli_lint_mode_list_of_files_extra_args_after:
+      - "--lint"
+    # In project mode, the excluded directories --config is appended before
+    # these arguments
+    cli_lint_mode_project_extra_args_after:
+      - "--lint"
+      - .
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "linting took [0-9]+ms, errors: ([0-9]+)"
+    cli_lint_warnings_count: regex_number
+    cli_lint_warnings_regex: "linting took [0-9]+ms, errors: [0-9]+, warnings: ([0-9]+)"
     can_output_sarif: true
     cli_sarif_args:
       - "--config"
       - "{:output {:format :sarif}}"
-    cli_lint_mode_project_extra_args_after:
-      - .
     common_linter_errors:
       - identifier: CLOJURE_CLJ_KONDO_ERROR_CONFIG_INVALID
         regex: "(error while reading .*\\.clj-kondo|No reader function for tag|Invalid (token|leading character|EDN)|Unmatched delimiter)"
@@ -60,7 +83,8 @@ linters:
             - Compare against the reference config at <https://github.com/clj-kondo/clj-kondo/blob/master/doc/config.md>.
     examples:
       - "clj-kondo --lint myfile.clj"
-      - "clj-kondo --lint --config .clj-kondo/config.edn myfile.clj"
+      - "clj-kondo --lint myfile.clj myotherfile.cljs"
+      - "clj-kondo --config .clj-kondo/config.edn --lint myfile.clj"
     install:
       dockerfile:
         - |
@@ -74,17 +98,29 @@ linters:
       platform:
         - linux/amd64
         # install-clj-kondo auto-picks clj-kondo-*-linux-static-amd64.zip on amd64.
-        # arm64 release is glibc-linked (clj-kondo-*-linux-aarch64.zip), so Alpine arm64 isn't supported.
+        # arm64 release is glibc-linked (clj-kondo-*-linux-aarch64.zip): GraalVM
+        # builds static musl binaries only on x86_64, so Alpine arm64 isn't supported.
         #- linux/arm64
     ide:
       emacs:
         - name: flycheck-clj-kondo
           url: https://github.com/borkdude/flycheck-clj-kondo
+        - name: flymake-kondor
+          url: https://github.com/turbo-cafe/flymake-kondor
+      idea:
+        - name: Clojure Extras
+          url: https://plugins.jetbrains.com/plugin/18108-clojure-extras
+      sublime:
+        - name: SublimeLinter-contrib-clj-kondo
+          url: https://github.com/ToxicFrog/SublimeLinter-contrib-clj-kondo
+      vim:
+        - name: ALE
+          url: https://github.com/dense-analysis/ale
       vscode:
-        - name: clj-kondo
-          url: https://marketplace.visualstudio.com/items?itemName=borkdude.clj-kondo
-        - name: Clojure lint
-          url: https://github.com/marcomorain/clojure-lint
+        - name: Calva
+          url: https://marketplace.visualstudio.com/items?itemName=betterthantomorrow.calva
+        - name: clojure-lsp
+          url: https://clojure-lsp.io/
 
     # cljstyle
   - linter_name: cljstyle
