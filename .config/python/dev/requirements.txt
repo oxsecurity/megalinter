@@ -24,7 +24,7 @@ python-multipart==0.0.32
 pyyaml==6.0.3
 redis==8.1.0
 requests==2.34.2
-urllib3==2.7.0
+urllib3==2.8.0
 webpreview==1.7.2
 yq==4.1.2
 zensical==0.0.63
