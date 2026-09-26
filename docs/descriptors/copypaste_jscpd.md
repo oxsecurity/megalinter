@@ -45,7 +45,7 @@ Example:
 
 ## jscpd documentation
 
-- Version in MegaLinter: **5.2.0**
+- Version in MegaLinter: **5.2.1**
 - Visit [Official Web Site](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#readme){target=_blank}
 - See [How to configure jscpd rules](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#config-file){target=_blank}
   - If custom `.jscpd.json` config file isn't found, [.jscpd.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.jscpd.json){target=_blank} will be used
@@ -175,6 +175,8 @@ Options:
           Rewrite the baseline file from the current run, creating it if missing, and print added/removed fingerprint counts (requires --baseline)
       --fail-on-new-clones [<N>]
           Exit 1 when more than N new clones are found (default N: 0; requires --baseline or --baseline-from-ref)
+      --fail-on-empty
+          Exit 1 when the scan analyzes no files: the paths exist but nothing matched the --format, --ignore and --pattern filters, or every file was below --min-tokens
       --baseline-from-ref <REF>
           Compare against an ephemeral baseline built from a git ref's tree (e.g. origin/main): the base ref is scanned with the same configuration and clones absent from it are reported as new
   -b, --blame
@@ -223,6 +225,14 @@ Options:
           Number of entries in each summary top list (default: 10)
       --summary-by <METRIC>
           Summary sort metric: tokens, lines, size, complexity (default: tokens)
+      --history <RANGE>
+          Duplication trend over git history: scan every commit in RANGE (e.g. v5.0.0..HEAD) with this configuration and print a chart and a table
+      --history-since <DATE>
+          Like --history, selecting commits since DATE (e.g. 2026-01-01); combines with --history to bound the range
+      --history-every <N>
+          Keep every Nth commit of the history series, counted from the newest (default: 1)
+      --history-limit <N>
+          Maximum number of commits in the history series, sampled evenly (default: 30)
   -s, --silent
           Do not write detection progress and result to console
       --no-tips
@@ -240,8 +250,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=5.2.0
+ARG NPM_JSCPD_VERSION=5.2.1
 ```
 
 - NPM packages (node.js):
-  - [jscpd@5.2.0](https://www.npmjs.com/package/jscpd/v/5.2.0)
+  - [jscpd@5.2.1](https://www.npmjs.com/package/jscpd/v/5.2.1)
