@@ -26,7 +26,7 @@ redis==8.1.0
 requests==2.34.2
 urllib3==2.8.0
 webpreview==1.7.2
-yq==4.1.2
+yq==4.2.0
 zensical==0.0.63
 langchain_core==1.6.3
 langchain_anthropic==1.7.2
