@@ -100,6 +100,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.5 to **7.6.6** on 2026-09-22
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 10.2.2 to **10.3.1** on 2026-09-22
   - [tekton-lint](https://github.com/IBM/tekton-lint) from 1.2.0 to **1.2.4** on 2026-09-22
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 5.2.0 to **5.2.1** on 2026-09-27
+  - [biome](https://biomejs.dev) from 2.5.13 to **2.5.14** on 2026-09-27
+  - [pmd](https://pmd.github.io/) from 7.27.0 to **7.28.0** on 2026-09-27
+  - [prettier](https://prettier.io/) from 3.9.6 to **3.9.8** on 2026-09-27
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.73 to **0.2.74** on 2026-09-27
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.25 to **3.95.26** on 2026-09-27
+  - [psalm](https://psalm.dev) from Psalm.6.17.1@ to **Psalm.6.17.2@** on 2026-09-27
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.16.7 to **0.16.8** on 2026-09-27
+  - [ruff](https://github.com/astral-sh/ruff) from 0.16.7 to **0.16.8** on 2026-09-27
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 10.3.1 to **10.3.3** on 2026-09-27
 <!-- linter-versions-end -->
 
 ## [v10.1.0] - 2026-09-05
