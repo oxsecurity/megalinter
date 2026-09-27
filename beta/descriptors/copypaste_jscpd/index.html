@@ -12390,7 +12390,7 @@
 </code></pre></div>
 <h2 id="jscpd-documentation">jscpd documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>5.2.0</strong></li>
+<li>Version in MegaLinter: <strong>5.2.1</strong></li>
 <li>Visit <a href="https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#config-file" target="_blank">How to configure jscpd rules</a><ul>
 <li>If custom <code>.jscpd.json</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.jscpd.json" target="_blank">.jscpd.json</a> will be used</li>
@@ -12689,6 +12689,8 @@ Options:
 <span class="w">          </span>Rewrite<span class="w"> </span>the<span class="w"> </span>baseline<span class="w"> </span>file<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>current<span class="w"> </span>run,<span class="w"> </span>creating<span class="w"> </span>it<span class="w"> </span><span class="k">if</span><span class="w"> </span>missing,<span class="w"> </span>and<span class="w"> </span>print<span class="w"> </span>added/removed<span class="w"> </span>fingerprint<span class="w"> </span>counts<span class="w"> </span><span class="o">(</span>requires<span class="w"> </span>--baseline<span class="o">)</span>
 <span class="w">      </span>--fail-on-new-clones<span class="w"> </span><span class="o">[</span>&lt;N&gt;<span class="o">]</span>
 <span class="w">          </span>Exit<span class="w"> </span><span class="m">1</span><span class="w"> </span>when<span class="w"> </span>more<span class="w"> </span>than<span class="w"> </span>N<span class="w"> </span>new<span class="w"> </span>clones<span class="w"> </span>are<span class="w"> </span>found<span class="w"> </span><span class="o">(</span>default<span class="w"> </span>N:<span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w"> </span>requires<span class="w"> </span>--baseline<span class="w"> </span>or<span class="w"> </span>--baseline-from-ref<span class="o">)</span>
+<span class="w">      </span>--fail-on-empty
+<span class="w">          </span>Exit<span class="w"> </span><span class="m">1</span><span class="w"> </span>when<span class="w"> </span>the<span class="w"> </span>scan<span class="w"> </span>analyzes<span class="w"> </span>no<span class="w"> </span>files:<span class="w"> </span>the<span class="w"> </span>paths<span class="w"> </span>exist<span class="w"> </span>but<span class="w"> </span>nothing<span class="w"> </span>matched<span class="w"> </span>the<span class="w"> </span>--format,<span class="w"> </span>--ignore<span class="w"> </span>and<span class="w"> </span>--pattern<span class="w"> </span>filters,<span class="w"> </span>or<span class="w"> </span>every<span class="w"> </span>file<span class="w"> </span>was<span class="w"> </span>below<span class="w"> </span>--min-tokens
 <span class="w">      </span>--baseline-from-ref<span class="w"> </span>&lt;REF&gt;
 <span class="w">          </span>Compare<span class="w"> </span>against<span class="w"> </span>an<span class="w"> </span>ephemeral<span class="w"> </span>baseline<span class="w"> </span>built<span class="w"> </span>from<span class="w"> </span>a<span class="w"> </span>git<span class="w"> </span>ref<span class="err">'</span>s<span class="w"> </span>tree<span class="w"> </span><span class="o">(</span>e.g.<span class="w"> </span>origin/main<span class="o">)</span>:<span class="w"> </span>the<span class="w"> </span>base<span class="w"> </span>ref<span class="w"> </span>is<span class="w"> </span>scanned<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span>same<span class="w"> </span>configuration<span class="w"> </span>and<span class="w"> </span>clones<span class="w"> </span>absent<span class="w"> </span>from<span class="w"> </span>it<span class="w"> </span>are<span class="w"> </span>reported<span class="w"> </span>as<span class="w"> </span>new
 <span class="w">  </span>-b,<span class="w"> </span>--blame
@@ -12737,6 +12739,14 @@ Options:
 <span class="w">          </span>Number<span class="w"> </span>of<span class="w"> </span>entries<span class="w"> </span><span class="k">in</span><span class="w"> </span>each<span class="w"> </span>summary<span class="w"> </span>top<span class="w"> </span>list<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">10</span><span class="o">)</span>
 <span class="w">      </span>--summary-by<span class="w"> </span>&lt;METRIC&gt;
 <span class="w">          </span>Summary<span class="w"> </span>sort<span class="w"> </span>metric:<span class="w"> </span>tokens,<span class="w"> </span>lines,<span class="w"> </span>size,<span class="w"> </span>complexity<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>tokens<span class="o">)</span>
+<span class="w">      </span>--history<span class="w"> </span>&lt;RANGE&gt;
+<span class="w">          </span>Duplication<span class="w"> </span>trend<span class="w"> </span>over<span class="w"> </span>git<span class="w"> </span>history:<span class="w"> </span>scan<span class="w"> </span>every<span class="w"> </span>commit<span class="w"> </span><span class="k">in</span><span class="w"> </span>RANGE<span class="w"> </span><span class="o">(</span>e.g.<span class="w"> </span>v5.0.0..HEAD<span class="o">)</span><span class="w"> </span>with<span class="w"> </span>this<span class="w"> </span>configuration<span class="w"> </span>and<span class="w"> </span>print<span class="w"> </span>a<span class="w"> </span>chart<span class="w"> </span>and<span class="w"> </span>a<span class="w"> </span>table
+<span class="w">      </span>--history-since<span class="w"> </span>&lt;DATE&gt;
+<span class="w">          </span>Like<span class="w"> </span>--history,<span class="w"> </span>selecting<span class="w"> </span>commits<span class="w"> </span>since<span class="w"> </span>DATE<span class="w"> </span><span class="o">(</span>e.g.<span class="w"> </span><span class="m">2026</span>-01-01<span class="o">)</span><span class="p">;</span><span class="w"> </span>combines<span class="w"> </span>with<span class="w"> </span>--history<span class="w"> </span>to<span class="w"> </span>bound<span class="w"> </span>the<span class="w"> </span>range
+<span class="w">      </span>--history-every<span class="w"> </span>&lt;N&gt;
+<span class="w">          </span>Keep<span class="w"> </span>every<span class="w"> </span>Nth<span class="w"> </span>commit<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span><span class="nb">history</span><span class="w"> </span>series,<span class="w"> </span>counted<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>newest<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">1</span><span class="o">)</span>
+<span class="w">      </span>--history-limit<span class="w"> </span>&lt;N&gt;
+<span class="w">          </span>Maximum<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>commits<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span><span class="nb">history</span><span class="w"> </span>series,<span class="w"> </span>sampled<span class="w"> </span>evenly<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">30</span><span class="o">)</span>
 <span class="w">  </span>-s,<span class="w"> </span>--silent
 <span class="w">          </span>Do<span class="w"> </span>not<span class="w"> </span>write<span class="w"> </span>detection<span class="w"> </span>progress<span class="w"> </span>and<span class="w"> </span>result<span class="w"> </span>to<span class="w"> </span>console
 <span class="w">      </span>--no-tips
@@ -12752,12 +12762,12 @@ Options:
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=npm depName=jscpd</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">NPM_JSCPD_VERSION</span><span class="o">=</span><span class="m">5</span>.2.0
+<span class="k">ARG</span><span class="w"> </span><span class="nv">NPM_JSCPD_VERSION</span><span class="o">=</span><span class="m">5</span>.2.1
 </code></pre></div></li>
 </ul>
 <ul>
 <li>NPM packages (node.js):<ul>
-<li><a href="https://www.npmjs.com/package/jscpd/v/5.2.0">jscpd@5.2.0</a></li>
+<li><a href="https://www.npmjs.com/package/jscpd/v/5.2.1">jscpd@5.2.1</a></li>
 </ul>
 </li>
 </ul>
