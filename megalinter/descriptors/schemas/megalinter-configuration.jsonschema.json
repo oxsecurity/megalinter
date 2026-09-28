@@ -3941,14 +3941,16 @@
     },
     "CLOJURE_CLJ_KONDO_CLI_LINT_MODE": {
       "$id": "#/properties/CLOJURE_CLJ_KONDO_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "description": "CLOJURE_CLJ_KONDO: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "enumNames": [
         "File",
+        "List of Files",
         "Project"
       ],
       "title": "CLOJURE_CLJ_KONDO: CLI lint mode",

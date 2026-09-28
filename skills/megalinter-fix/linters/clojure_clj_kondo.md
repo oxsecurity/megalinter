@@ -31,6 +31,8 @@ Fix the most common categories as follows:
 - `unused-binding`, unused private var, unused namespace/referred var/import: delete the dead code, or rename an intentionally unused binding to `_`.
 - Duplicate map keys, set elements or requires: remove the duplicate entry.
 - `redundant-do`, `inline-def`, missing `:else` in `cond`: unwrap the superfluous `do`, replace nested `def` with `let`, add an `:else` branch.
+- `type-mismatch` (`Expected: number, received: keyword.`): pass a value of the expected type. When the type comes from how a parameter is used in the function body, fix the call site rather than the function.
+- `constant-condition` (`Condition always true`): the test can never change, for example a function (`(when inc ...)`) or a `filter`/`remove` result, which is always a truthy seq. Test what was meant, such as `(seq (filter ...))`, or remove the dead branch.
 - Warnings coming from macros clj-kondo does not understand: teach it the macro via `:lint-as` or hooks in the configuration instead of suppressing each call site.
 
 ## Inline disable
@@ -57,6 +59,8 @@ Shorter notation to fully ignore some linters: `{:ignore [:unresolved-symbol :in
 ```edn
 {:exclude-files "generated/.*\\.clj$"}
 ```
+
+The top-level `:exclude-files` is a single regex string, and it skips the files before analysis. To only hide findings, use `:output {:exclude-files [...]}`, which takes a vector of regexes and is merged with the patterns MegaLinter forwards from `EXCLUDED_DIRECTORIES` in `project` lint mode.
 
 Scope a rule change to specific namespaces with `:config-in-ns` (optionally combined with `:ns-groups` patterns), or via `{:clj-kondo/config '...}` metadata on the `ns` form itself.
 
