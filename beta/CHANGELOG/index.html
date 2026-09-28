@@ -15620,6 +15620,7 @@
 </ul>
 </li>
 <li><strong><code>test-agent-plugins.yml</code></strong> validation script now accepts both the <code>{"plugins": [...], "errors": [...]}</code> wrapper and the bare-array shape the GitHub Copilot CLI's <code>plugins list --json</code> can return, fixing a crash of the "Validate agent plugins manifests" check</li>
+<li><strong><code>REPOSITORY_DUSTILOCK</code></strong> is now non-blocking in MegaLinter's own <code>.mega-linter.yml</code>: dustilock reports any PyPI lookup error (such as intermittent <code>503</code> responses) as a package "available for public registration", which failed the "Run against all code base - DEV" job on unrelated PRs</li>
 </ul>
 </li>
 </ul>
