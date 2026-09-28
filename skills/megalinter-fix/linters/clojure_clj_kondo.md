@@ -4,12 +4,14 @@
 - Linter: **clj-kondo** (MegaLinter key: `CLOJURE_CLJ_KONDO`)
 - Descriptor: **CLOJURE** (language)
 - MegaLinter documentation: <https://megalinter.io/beta/descriptors/clojure_clj_kondo/>
-- Official documentation: <https://github.com/borkdude/clj-kondo>
+- Official documentation: <https://github.com/clj-kondo/clj-kondo>
 - Auto-fix support: no (errors must be fixed manually)
 - Configuration file: `.clj-kondo/config.edn` (custom path can be defined with `CLOJURE_CLJ_KONDO_CONFIG_FILE`)
-- Rules index: <https://github.com/borkdude/clj-kondo#features>
-- Rules configuration: <https://github.com/borkdude/clj-kondo/blob/master/doc/config.md#configuration>
+- Rules index: <https://github.com/clj-kondo/clj-kondo/blob/master/doc/linters.md>
+- Rules configuration: <https://github.com/clj-kondo/clj-kondo/blob/master/doc/config.md#configuration>
 - How to disable rules inline: <https://github.com/clj-kondo/clj-kondo/blob/master/doc/config.md#ignore-warnings-in-an-expression>
+- How to ignore files and directories: <https://github.com/clj-kondo/clj-kondo/blob/master/doc/config.md#exclude-files-from-being-linted>
+- Error line format (regex): `linting took [0-9]+ms, errors: ([0-9]+)`
 - MegaLinter tuning variables (in `.mega-linter.yml`):
   - `DISABLE_LINTERS`: add `CLOJURE_CLJ_KONDO` to fully disable this linter
   - `CLOJURE_CLJ_KONDO_DISABLE_ERRORS: true`: keep the linter active but non-blocking

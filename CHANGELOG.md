@@ -123,6 +123,19 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff-format](https://github.com/astral-sh/ruff) from 0.16.7 to **0.16.8** on 2026-09-27
   - [ruff](https://github.com/astral-sh/ruff) from 0.16.7 to **0.16.8** on 2026-09-27
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 10.3.1 to **10.3.3** on 2026-09-27
+  - [clj-kondo](https://github.com/clj-kondo/clj-kondo) from 2025.01.16 to **2026.08.04** on 2026-09-28
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.56.3 to **1.57.0** on 2026-09-28
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 5.2.1 to **5.3.0** on 2026-09-28
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 4.0.1 to **4.0.2** on 2026-09-28
+  - [djlint](https://djlint.com/) from 1.46.1 to **1.46.2** on 2026-09-28
+  - [eslint](https://eslint.org) from 10.10.0 to **10.11.0** on 2026-09-28
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.74 to **0.2.75** on 2026-09-28
+  - [psalm](https://psalm.dev) from Psalm.6.17.2@ to **Psalm.6.18.0@** on 2026-09-28
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 2.2.0 to **2.5.0** on 2026-09-28
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.97.4 to **3.97.5** on 2026-09-28
+  - [vale](https://vale.sh/) from 3.21.0 to **3.22.0** on 2026-09-28
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.16.2 to **1.16.3** on 2026-09-28
+  - [terragrunt](https://docs.terragrunt.com/reference/cli/commands/hcl/fmt/) from 1.1.4 to **1.1.5** on 2026-09-28
 <!-- linter-versions-end -->
 
 ## [v10.1.0] - 2026-09-05

@@ -120,7 +120,7 @@ your existing config then works unchanged.
 
 ## eslint documentation
 
-- Version in MegaLinter: **10.10.0**
+- Version in MegaLinter: **10.11.0**
 - Visit [Official Web Site](https://typescript-eslint.io/){target=_blank}
 - See [How to configure eslint rules](https://typescript-eslint.io/getting-started/#configuration-values){target=_blank}
 - See [How to disable eslint rules in files](https://eslint.org/docs/latest/use/configure/rules#disabling-rules){target=_blank}
@@ -298,7 +298,7 @@ Miscellaneous:
 ARG NPM_TYPESCRIPT_VERSION=6.0.3
 # Linter install
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=10.10.0
+ARG NPM_ESLINT_VERSION=10.11.0
 # renovate: datasource=npm depName=@eslint/js
 ARG NPM_ESLINT_JS_VERSION=10.0.1
 # renovate: datasource=npm depName=eslint-config-prettier
@@ -325,7 +325,7 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 
 - NPM packages (node.js):
   - [typescript@6.0.3](https://www.npmjs.com/package/typescript/v/6.0.3)
-  - [eslint@10.10.0](https://www.npmjs.com/package/eslint/v/10.10.0)
+  - [eslint@10.11.0](https://www.npmjs.com/package/eslint/v/10.11.0)
   - [@eslint/js@10.0.1](https://www.npmjs.com/package/@eslint/js/v/10.0.1)
   - [eslint-config-prettier@10.1.8](https://www.npmjs.com/package/eslint-config-prettier/v/10.1.8)
   - [eslint-plugin-import-x@4.17.1](https://www.npmjs.com/package/eslint-plugin-import-x/v/4.17.1)
