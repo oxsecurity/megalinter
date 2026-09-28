@@ -125,7 +125,7 @@ RUN python -c 'import sys; assert sys.version_info >= (3, 14, 7), "Python 3.14.7
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=npm depName=typescript
-ARG NPM_TYPESCRIPT_VERSION=6.0.3
+ARG NPM_TYPESCRIPT_VERSION=7.0.2
 # renovate: datasource=pypi depName=ansible-lint
 ARG PIP_ANSIBLE_LINT_VERSION=26.8.0
 # renovate: datasource=npm depName=@stoplight/spectral-cli
