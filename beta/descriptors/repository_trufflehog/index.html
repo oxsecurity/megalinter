@@ -12378,7 +12378,7 @@
 </ul>
 <h2 id="trufflehog-documentation">trufflehog documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.97.4</strong></li>
+<li>Version in MegaLinter: <strong>3.97.5</strong></li>
 <li>Visit <a href="https://github.com/trufflesecurity/trufflehog#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/trufflesecurity/trufflehog#regex-detector-alpha" target="_blank">How to configure trufflehog rules</a></li>
 </ul>
@@ -12671,6 +12671,8 @@ Flags:
 <span class="s1">      --filter-entropy=FILTER-ENTROPY</span>
 <span class="s1">                                 Filter unverified results with Shannon entropy.</span>
 <span class="s1">                                 Start with 3.0.</span>
+<span class="s1">      --[no-]no-ignore-tag       Report results even if the line has a</span>
+<span class="s1">                                 '</span>trufflehog:ignore<span class="s1">' comment.</span>
 <span class="s1">      --max-decode-depth=5       Maximum depth of iterative decoding.</span>
 <span class="s1">                                 Each decoder'</span>s<span class="w"> </span>output<span class="w"> </span>is<span class="w"> </span>fed<span class="w"> </span>back<span class="w"> </span>through<span class="w"> </span>all
 <span class="w">                                 </span>decoders,<span class="w"> </span>up<span class="w"> </span>to<span class="w"> </span>this<span class="w"> </span>limit.<span class="w"> </span><span class="nv">1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>single<span class="w"> </span>pass,<span class="w"> </span><span class="m">2</span>+
@@ -12785,7 +12787,7 @@ analyze
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=docker depName=trufflesecurity/trufflehog</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">REPOSITORY_TRUFFLEHOG_VERSION</span><span class="o">=</span><span class="m">3</span>.97.4
+<span class="k">ARG</span><span class="w"> </span><span class="nv">REPOSITORY_TRUFFLEHOG_VERSION</span><span class="o">=</span><span class="m">3</span>.97.5
 <span class="k">FROM</span><span class="w"> </span><span class="s">trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION}</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">trufflehog</span>
 <span class="k">COPY</span><span class="w"> </span>--link<span class="w"> </span>--from<span class="o">=</span>trufflehog<span class="w"> </span>/usr/bin/trufflehog<span class="w"> </span>/usr/bin/
 </code></pre></div></li>
