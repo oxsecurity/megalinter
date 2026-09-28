@@ -341,14 +341,14 @@ ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=40.0.0
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
 ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=13.0.0
 # renovate: datasource=npm depName=stylelint-scss
-ARG NPM_STYLELINT_SCSS_VERSION=7.2.0
+ARG NPM_STYLELINT_SCSS_VERSION=7.3.0
 ```
 
 - NPM packages (node.js):
   - [stylelint@17.15.0](https://www.npmjs.com/package/stylelint/v/17.15.0)
   - [stylelint-config-standard@40.0.0](https://www.npmjs.com/package/stylelint-config-standard/v/40.0.0)
   - [stylelint-config-sass-guidelines@13.0.0](https://www.npmjs.com/package/stylelint-config-sass-guidelines/v/13.0.0)
-  - [stylelint-scss@7.2.0](https://www.npmjs.com/package/stylelint-scss/v/7.2.0)
+  - [stylelint-scss@7.3.0](https://www.npmjs.com/package/stylelint-scss/v/7.3.0)
 
 ## Known errors and resolutions
 

@@ -78,7 +78,7 @@ To add a single package with pnpm instead of installing the full tree, run `core
 
 ## eslint documentation
 
-- Version in MegaLinter: **10.10.0**
+- Version in MegaLinter: **10.11.0**
 - Visit [Official Web Site](https://github.com/Rel1cx/eslint-react#readme){target=_blank}
 - See [How to configure eslint rules](https://eslint-react.xyz/docs/getting-started/installation){target=_blank}
 - See [How to disable eslint rules in files](https://eslint.org/docs/latest/use/configure/rules#disabling-rules){target=_blank}
@@ -254,7 +254,7 @@ Miscellaneous:
 # renovate: datasource=npm depName=typescript
 ARG NPM_TYPESCRIPT_VERSION=6.0.3
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=10.10.0
+ARG NPM_ESLINT_VERSION=10.11.0
 # renovate: datasource=npm depName=eslint-config-prettier
 ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.1.8
 # renovate: datasource=npm depName=eslint-plugin-jest
@@ -262,7 +262,7 @@ ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.16.6
 # renovate: datasource=npm depName=eslint-plugin-prettier
 ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.6
 # renovate: datasource=npm depName=@eslint-react/eslint-plugin
-ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.19.1
+ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.20.5
 # renovate: datasource=npm depName=prettier
 ARG NPM_PRETTIER_VERSION=3.9.8
 # renovate: datasource=npm depName=prettyjson
@@ -277,11 +277,11 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 
 - NPM packages (node.js):
   - [typescript@6.0.3](https://www.npmjs.com/package/typescript/v/6.0.3)
-  - [eslint@10.10.0](https://www.npmjs.com/package/eslint/v/10.10.0)
+  - [eslint@10.11.0](https://www.npmjs.com/package/eslint/v/10.11.0)
   - [eslint-config-prettier@10.1.8](https://www.npmjs.com/package/eslint-config-prettier/v/10.1.8)
   - [eslint-plugin-jest@29.16.6](https://www.npmjs.com/package/eslint-plugin-jest/v/29.16.6)
   - [eslint-plugin-prettier@5.5.6](https://www.npmjs.com/package/eslint-plugin-prettier/v/5.5.6)
-  - [@eslint-react/eslint-plugin@5.19.1](https://www.npmjs.com/package/@eslint-react/eslint-plugin/v/5.19.1)
+  - [@eslint-react/eslint-plugin@5.20.5](https://www.npmjs.com/package/@eslint-react/eslint-plugin/v/5.20.5)
   - [prettier@3.9.8](https://www.npmjs.com/package/prettier/v/3.9.8)
   - [prettyjson@1.2.5](https://www.npmjs.com/package/prettyjson/v/1.2.5)
   - [@typescript-eslint/eslint-plugin@8.70.0](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin/v/8.70.0)

@@ -45,7 +45,7 @@ Example:
 
 ## jscpd documentation
 
-- Version in MegaLinter: **5.2.1**
+- Version in MegaLinter: **5.3.0**
 - Visit [Official Web Site](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#readme){target=_blank}
 - See [How to configure jscpd rules](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#config-file){target=_blank}
   - If custom `.jscpd.json` config file isn't found, [.jscpd.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.jscpd.json){target=_blank} will be used
@@ -147,6 +147,8 @@ Options:
           Merge clones of the same file pair that are separated by at most N unmatched lines in both files into one near-miss clone (Type-3, reported as "similar"); 0 disables
       --similarity <RATIO>
           Report JavaScript/TypeScript function pairs whose AST similarity reaches RATIO as near-miss clones (Type-3, "similar"). A number in (0, 1]; the default 1 means exact matches only, e.g. 0.85 enables it
+      --kind <LIST>
+          Report only clones of these kinds: exact, renamed, similar, gap, ast (comma-separated). renamed needs --ignore-identifiers, --ignore-literals or --ignore-annotations; gap needs --max-gap-lines; ast needs --similarity
   -m, --mode <MODE>
           Detection mode: mild, weak, strict
       --skip-comments
@@ -233,6 +235,26 @@ Options:
           Keep every Nth commit of the history series, counted from the newest (default: 1)
       --history-limit <N>
           Maximum number of commits in the history series, sampled evenly (default: 30)
+      --dead-code
+          Find dead code instead of duplicates: unused files, exports, symbols and imports across JavaScript, TypeScript and Python
+      --complexity
+          Report complexity only: the --summary tables ranked by complexity, without clone detection (reporters: console, ai, json)
+      --dashboard
+          Print one screen with the whole picture: the health score, project size, duplication, complexity and dead code (JavaScript, TypeScript, Python). Reporters: console, json, badge, markdown, html
+      --health
+          Print only the project health badge: one 0-100 score with a grade, from duplication, dead code and complexity, plus the metrics of --health-input. Reporters: console, ai, json, badge, markdown, html
+      --health-input <FILE>
+          JSON file with metrics from other tools (coverage, tests, security) to include in the health score: {"metrics": [{"id", "score"} or {"id", "value", "halfLife", "direction"}]}
+      --dead-code-categories <LIST>
+          Dead-code findings to report: unused-file, unused-export, unused-symbol, unused-import, unused-member, or `all` (with --dead-code)
+      --min-confidence <N>
+          Drop dead-code findings below this confidence, 0-100 (with --dead-code)
+      --entry <GLOB>
+          Treat files matching this glob as dead-code entry points (repeatable)
+      --include-tests
+          Report dead code inside test, fixture and example files
+      --include-entry-exports
+          Report exports of entry-point files, which are usually a public API
   -s, --silent
           Do not write detection progress and result to console
       --no-tips
@@ -250,8 +272,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=5.2.1
+ARG NPM_JSCPD_VERSION=5.3.0
 ```
 
 - NPM packages (node.js):
-  - [jscpd@5.2.1](https://www.npmjs.com/package/jscpd/v/5.2.1)
+  - [jscpd@5.3.0](https://www.npmjs.com/package/jscpd/v/5.3.0)
