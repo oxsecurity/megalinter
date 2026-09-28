@@ -15586,10 +15586,26 @@
 <li>Media</li>
 </ul>
 <ul>
-<li>Linters enhancements</li>
+<li>Linters enhancements<ul>
+<li><strong>CLOJURE_CLJ_KONDO</strong> now lints all your Clojure files in a single clj-kondo run, with the new default <strong><code>list_of_files</code></strong> lint mode<ul>
+<li>Cross-namespace checks, such as calls with a wrong number of arguments to a function defined in another file, are now reported without a clj-kondo cache</li>
+<li>The console log and reports now show clj-kondo's <strong>warnings count</strong>, and its <strong>errors count</strong> when errors are found, instead of a single error for any failing run</li>
+<li>clj-kondo now runs with <code>--cache false</code>: it no longer writes into your repository's <code>.clj-kondo/.cache</code> folder during the run, and no longer reads a cache built beforehand. To use such a cache, for example one built with <code>--dependencies</code>, set <code>CLOJURE_CLJ_KONDO_COMMAND_REMOVE_ARGUMENTS: ["--cache", "false"]</code></li>
+<li>To lint each file separately as before, set <code>CLOJURE_CLJ_KONDO_CLI_LINT_MODE: file</code></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <ul>
-<li>Fixes</li>
+<li>Fixes<ul>
+<li><strong>CLOJURE_CLJ_KONDO</strong> now really forwards <code>EXCLUDED_DIRECTORIES</code> and <code>ADDITIONAL_EXCLUDED_DIRECTORIES</code> in <code>project</code> lint mode: they were never applied before, so files in folders like <code>node_modules</code> or <code>.wireit</code> could be reported<ul>
+<li>The directories are passed as a merged <code>:output {:exclude-files [...]}</code> inline configuration, so your own <code>:output :exclude-files</code> patterns in <code>.clj-kondo/config.edn</code> are kept</li>
+<li>Disable the forwarding with <code>CLOJURE_CLJ_KONDO_FORWARD_EXCLUDED_DIRECTORIES: false</code></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Reporters</li>
@@ -15607,10 +15623,18 @@
 </li>
 </ul>
 <ul>
-<li>Agent Skills</li>
+<li>Agent Skills<ul>
+<li><strong>megalinter-fix</strong> now explains how to fix clj-kondo <code>:type-mismatch</code> and <code>:constant-condition</code> findings, and the difference between the top-level <code>:exclude-files</code> and <code>:output :exclude-files</code> clj-kondo settings</li>
+</ul>
+</li>
 </ul>
 <ul>
-<li>Dev</li>
+<li>Dev<ul>
+<li><code>CLOJURE_CLJ_KONDO</code> test fixtures are split into <code>good/</code> and <code>bad/</code> folders, so the <code>project</code> lint mode tests no longer lint the failing files, and <code>.wireit</code> poison fixtures now guard the excluded directories forwarding, at root and nested levels</li>
+<li><code>CljKondoLinter</code> forwards excluded directories through <code>:output :exclude-files</code> instead of a top-level <code>:exclude-files</code> vector (an invalid value), and no longer skips the forwarding when a <code>--config</code> file is passed, which was always the case since the default <code>TEMPLATES/.clj-kondo/config.edn</code> is used when the repository has none</li>
+<li><code>--lint</code> moved from <code>cli_lint_extra_args_after</code> to the per-mode <code>cli_lint_mode_*_extra_args_after</code> properties, because clj-kondo assigns every following argument to the last option: the forwarded <code>--config</code> must come before it</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>CI<ul>
