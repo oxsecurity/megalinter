@@ -58,6 +58,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Only in CI (`utils.is_ci()`): local test runs still fail, so a real regression stays visible
     - Per-linter test jobs (`deploy-DEV-linters.yml`, `deploy-BETA-linters.yml`) now pass `GITHUB_ACTIONS` to the test container
   - **`test-agent-plugins.yml`** validation script now accepts both the `{"plugins": [...], "errors": [...]}` wrapper and the bare-array shape the GitHub Copilot CLI's `plugins list --json` can return, fixing a crash of the "Validate agent plugins manifests" check
+  - **`REPOSITORY_DUSTILOCK`** is now non-blocking in MegaLinter's own `.mega-linter.yml`: dustilock reports any PyPI lookup error (such as intermittent `503` responses) as a package "available for public registration", which failed the "Run against all code base - DEV" job on unrelated PRs
 
 - Linter versions upgrades (N)
   - [shfmt](https://github.com/mvdan/sh) from 3.13.1 to **3.14.0** on 2026-09-12
@@ -112,6 +113,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.5 to **7.6.6** on 2026-09-22
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 10.2.2 to **10.3.1** on 2026-09-22
   - [tekton-lint](https://github.com/IBM/tekton-lint) from 1.2.0 to **1.2.4** on 2026-09-22
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 5.2.0 to **5.2.1** on 2026-09-27
+  - [biome](https://biomejs.dev) from 2.5.13 to **2.5.14** on 2026-09-27
+  - [pmd](https://pmd.github.io/) from 7.27.0 to **7.28.0** on 2026-09-27
+  - [prettier](https://prettier.io/) from 3.9.6 to **3.9.8** on 2026-09-27
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.73 to **0.2.74** on 2026-09-27
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.25 to **3.95.26** on 2026-09-27
+  - [psalm](https://psalm.dev) from Psalm.6.17.1@ to **Psalm.6.17.2@** on 2026-09-27
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.16.7 to **0.16.8** on 2026-09-27
+  - [ruff](https://github.com/astral-sh/ruff) from 0.16.7 to **0.16.8** on 2026-09-27
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 10.3.1 to **10.3.3** on 2026-09-27
 <!-- linter-versions-end -->
 
 ## [v10.1.0] - 2026-09-05

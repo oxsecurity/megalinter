@@ -22,6 +22,8 @@ DISABLE_LINTERS:
 DISABLE_ERRORS_LINTERS:
   - PYTHON_BANDIT
   - REPOSITORY_DEVSKIM
+  # Reports any PyPI/npm lookup failure (503, rate limit) as an unclaimed package
+  - REPOSITORY_DUSTILOCK
   - REPOSITORY_SEMGREP
   - SPELL_LYCHEE
   - YAML_YAMLLINT

@@ -29,23 +29,23 @@ ARG BASH_SHFMT_VERSION=v3.14.1-alpine
 # renovate: datasource=docker depName=hadolint/hadolint
 ARG DOCKERFILE_HADOLINT_VERSION=v2.15.1-alpine
 # renovate: datasource=docker depName=mstruebing/editorconfig-checker
-ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=4.0.1
+ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=4.0.2
 # renovate: datasource=github-tags depName=mgechev/revive
 ARG GO_REVIVE_VERSION=v1.16.0
 # renovate: datasource=docker depName=golang versioning=semver
-ARG GO_IMAGE_VERSION=1.27.0
+ARG GO_IMAGE_VERSION=1.27.1
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.8.0-alpine
 # renovate: datasource=docker depName=ghcr.io/betterleaks/betterleaks
 ARG REPOSITORY_BETTERLEAKS_VERSION=v1.7.3
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.97.4
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.97.5
 # renovate: datasource=docker depName=lycheeverse/lychee
 ARG SPELL_LYCHEE_VERSION=0.24.2-alpine
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
 ARG TERRAFORM_TFLINT_VERSION=0.64.0
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.16.2
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.16.3
 # renovate: datasource=docker depName=ghcr.io/opentofu/opentofu
 ARG TERRAFORM_TOFU_FMT_VERSION=1.12.6-minimal
 #ARGTOP__END
@@ -155,9 +155,9 @@ ARG CLJ_KONDO_VERSION=2026.08.04
 # renovate: datasource=github-tags depName=greglook/cljstyle
 ARG CLJ_STYLE_VERSION=0.17.642
 # renovate: datasource=pypi depName=cfn-lint
-ARG PIP_CFN_LINT_VERSION=1.56.3
+ARG PIP_CFN_LINT_VERSION=1.57.0
 # renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=5.2.1
+ARG NPM_JSCPD_VERSION=5.3.0
 # renovate: datasource=npm depName=stylelint
 ARG NPM_STYLELINT_VERSION=17.15.0
 # renovate: datasource=npm depName=stylelint-config-standard
@@ -165,7 +165,7 @@ ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=40.0.0
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
 ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=13.0.0
 # renovate: datasource=npm depName=stylelint-scss
-ARG NPM_STYLELINT_SCSS_VERSION=7.2.0
+ARG NPM_STYLELINT_SCSS_VERSION=7.3.0
 # renovate: datasource=npm depName=@biomejs/biome
 ARG NPM_BIOMEJS_BIOME_VERSION=2.5.14
 # renovate: datasource=github-releases depName=dotenv-linter/dotenv-linter extractVersion=^v(?<version>.+)$
@@ -175,7 +175,7 @@ ARG GO_GOLANGCI_LINT_VERSION=2.13.2
 # renovate: datasource=npm depName=npm-groovy-lint
 ARG NPM_GROOVY_LINT_VERSION=18.0.0
 # renovate: datasource=pypi depName=djlint
-ARG PIP_DJLINT_VERSION=1.46.1
+ARG PIP_DJLINT_VERSION=1.46.2
 # renovate: datasource=npm depName=htmlhint
 ARG NPM_HTMLHINT_VERSION=1.9.2
 # renovate: datasource=github-releases depName=checkstyle/checkstyle
@@ -184,7 +184,7 @@ ARG JAVA_CHECKSTYLE_VERSION=12.1.0
 ARG PMD_VERSION=7.28.0
 
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=10.10.0
+ARG NPM_ESLINT_VERSION=10.11.0
 # renovate: datasource=npm depName=@eslint/js
 ARG NPM_ESLINT_JS_VERSION=10.0.1
 # renovate: datasource=npm depName=eslint-config-prettier
@@ -216,7 +216,7 @@ ARG NPM_PACKAGE_JSON_LINT_VERSION=11.0.0
 # renovate: datasource=npm depName=npm-package-json-lint-config-default
 ARG NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION=10.0.0
 # renovate: datasource=npm depName=@eslint-react/eslint-plugin
-ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.19.0
+ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.20.4
 # renovate: datasource=github-tags depName=pinterest/ktlint
 ARG KTLINT_VERSION=1.8.0
 
@@ -230,7 +230,7 @@ ARG NPM_MARKDOWNLINT_CLI_VERSION=0.49.1
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.2.74
+ARG PIP_RUMDL_VERSION=0.2.75
 # renovate: datasource=packagist depName=squizlabs/php_codesniffer
 ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=4.0.4
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
@@ -266,7 +266,7 @@ ARG PIP_RUFF_VERSION=0.16.8
 # renovate: datasource=pypi depName=checkov
 ARG PIP_CHECKOV_VERSION=3.3.17
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.118.0
+ARG REPOSITORY_GRYPE_VERSION=0.119.0
 # renovate: datasource=github-releases depName=loeffel-io/ls-lint extractVersion=^v(?<version>.+)$
 ARG REPOSITORY_LS_LINT_VERSION=2.3.1
 # renovate: datasource=repology depName=alpine_3_24/osv-scanner versioning=loose
@@ -280,7 +280,7 @@ ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=13.0.5
 # renovate: datasource=pypi depName=semgrep
 ARG PIP_SEMGREP_VERSION=1.177.0
 # renovate: datasource=github-tags depName=anchore/syft
-ARG REPOSITORY_SYFT_VERSION=1.51.1
+ARG REPOSITORY_SYFT_VERSION=1.52.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_VERSION=0.74.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
@@ -304,7 +304,7 @@ ARG GEM_RUBOCOP_GITHUB_VERSION=0.27.0
 # renovate: datasource=rubygems depName=rubocop-performance
 ARG GEM_RUBOCOP_PERFORMANCE_VERSION=1.27.0
 # renovate: datasource=rubygems depName=rubocop-rails
-ARG GEM_RUBOCOP_RAILS_VERSION=2.37.0
+ARG GEM_RUBOCOP_RAILS_VERSION=2.38.0
 # renovate: datasource=rubygems depName=rubocop-rake
 ARG GEM_RUBOCOP_RAKE_VERSION=0.7.1
 # renovate: datasource=rubygems depName=rubocop-rspec
@@ -334,7 +334,7 @@ ARG PIP_YAMLLINT_VERSION=1.38.0
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=26.2.1
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=21.7.16
+ARG PIP_VIRTUALENV_VERSION=21.9.0
 # renovate: datasource=github-tags depName=rust-lang/rust
 ARG RUST_RUST_VERSION=1.98.1
 
