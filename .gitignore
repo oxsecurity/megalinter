@@ -202,3 +202,6 @@ dmypy.json
 pyrightconfig.json
 .claude/settings.local.json
 .megalinter-cache/
+
+# Salesforce CLI files
+.sf/
