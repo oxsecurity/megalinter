@@ -83,7 +83,7 @@ linters:
             - Compare against the reference config at <https://github.com/clj-kondo/clj-kondo/blob/master/doc/config.md>.
     examples:
       - "clj-kondo --lint myfile.clj"
-      - "clj-kondo --lint myfile.clj myotherfile.cljs"
+      - "clj-kondo --lint src test"
       - "clj-kondo --config .clj-kondo/config.edn --lint myfile.clj"
     install:
       dockerfile:
