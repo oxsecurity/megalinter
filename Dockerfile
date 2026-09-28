@@ -222,7 +222,7 @@ ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=40.0.0
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
 ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=13.0.0
 # renovate: datasource=npm depName=stylelint-scss
-ARG NPM_STYLELINT_SCSS_VERSION=7.2.0
+ARG NPM_STYLELINT_SCSS_VERSION=7.3.0
 # renovate: datasource=npm depName=@biomejs/biome
 ARG NPM_BIOMEJS_BIOME_VERSION=2.5.14
 # renovate: datasource=dart-version depName=dart
