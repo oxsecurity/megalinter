@@ -232,7 +232,7 @@ linters:
           ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
         - |-
           # renovate: datasource=docker depName=golang versioning=semver
-          ARG GO_IMAGE_VERSION=1.27.0
+          ARG GO_IMAGE_VERSION=1.27.1
         # The golang image used as a builder is a temporary workaround
         # Dustilock is not released as a binary or container
         - |-
@@ -522,7 +522,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=anchore/grype
-          ARG REPOSITORY_GRYPE_VERSION=0.118.0
+          ARG REPOSITORY_GRYPE_VERSION=0.119.0
         - RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin
     supported_platforms:
       platform:
@@ -914,7 +914,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=anchore/syft
-          ARG REPOSITORY_SYFT_VERSION=1.51.1
+          ARG REPOSITORY_SYFT_VERSION=1.52.0
         - RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOSITORY_SYFT_VERSION}/install.sh | sh -s -- -b /usr/local/bin
     supported_platforms:
       platform:
@@ -1193,7 +1193,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=trufflesecurity/trufflehog
-          ARG REPOSITORY_TRUFFLEHOG_VERSION=3.97.4
+          ARG REPOSITORY_TRUFFLEHOG_VERSION=3.97.5
         - FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
         - COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
     supported_platforms:
@@ -1279,7 +1279,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=mongodb/kingfisher
-          ARG REPOSITORY_KINGFISHER_VERSION=2.2.0
+          ARG REPOSITORY_KINGFISHER_VERSION=2.5.0
         - |
           RUN curl --silent --location https://raw.githubusercontent.com/mongodb/kingfisher/main/scripts/install-kingfisher.sh | bash -s -- /usr/local/bin --tag "v${REPOSITORY_KINGFISHER_VERSION}"
     supported_platforms:

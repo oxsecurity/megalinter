@@ -62,7 +62,7 @@ RUN python -c 'import sys; assert sys.version_info >= (3, 14, 7), "Python 3.14.7
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=npm depName=prettier
-ARG NPM_PRETTIER_VERSION=3.9.6
+ARG NPM_PRETTIER_VERSION=3.9.8
 #ARG__END
 
 ####################

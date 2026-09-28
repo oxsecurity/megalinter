@@ -453,6 +453,14 @@ CVE-2026-59887
 GHSA-5p4m-2wfm-xmqj
 GHSA-8r6m-32jq-jx6q
 GHSA-gcfj-64vw-6mp9
+# image-size 1.2.1 is pulled into /usr/local/share/sf/node_modules by sfdx-hardis ->
+# pptxgenjs@4.0.1 (latest, unmaintained since 2025-06), which declares it but never
+# require()s it: pptxgenjs sizes images via 'sizeof' (gitbrent/PptxGenJS#1474), and
+# sfdx-hardis does not import it either, so the vulnerable JXL/HEIF/ICNS parsers are
+# never loaded. No 1.x fix exists (fixed only in 2.0.3). Remove when pptxgenjs drops
+# or upgrades image-size, or sfdx-hardis replaces pptxgenjs.
+CVE-2025-71329
+CVE-2025-71330
 # CVE-2026-18446 is a host-confusion flaw in fast-uri's URI parsing: a crafted URL
 # can make the parsed host differ from what a browser/other parser would see, which
 # matters when fast-uri output feeds security decisions (SSRF allowlists, redirect

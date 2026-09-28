@@ -30,7 +30,7 @@ install:
   dockerfile:
     - |-
       # renovate: datasource=npm depName=prettier
-      ARG NPM_PRETTIER_VERSION=3.9.6
+      ARG NPM_PRETTIER_VERSION=3.9.8
   npm:
     - prettier@${NPM_PRETTIER_VERSION}
 supported_platforms:

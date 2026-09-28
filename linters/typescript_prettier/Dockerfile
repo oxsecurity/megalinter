@@ -64,7 +64,7 @@ ARG TARGETARCH
 # renovate: datasource=npm depName=typescript
 ARG NPM_TYPESCRIPT_VERSION=6.0.3
 # renovate: datasource=npm depName=prettier
-ARG NPM_PRETTIER_VERSION=3.9.6
+ARG NPM_PRETTIER_VERSION=3.9.8
 #ARG__END
 
 ####################

@@ -12,7 +12,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=docker depName=mstruebing/editorconfig-checker
-ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=4.0.1
+ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=4.0.2
 #ARGTOP__END
 
 #############################################################################################
