@@ -19,11 +19,13 @@ class LsLintLinter(Linter):
             workspace_config = os.path.join(self.workspace, ".ls-lint.yml")
             if os.path.isfile(workspace_config):
                 cmd += ["--config", workspace_config]
-        # Literal root-level entries only: glob entries would make ls-lint
-        # walk the whole tree once per pattern to expand them
+        # Literal paths only: glob entries would make ls-lint walk the whole
+        # tree once per pattern to expand them. ls-lint resolves ignore entries
+        # from the root, so each location found in the workspace is sent, not
+        # the bare directory name which would only match at the root
         ignore_lines = ["ignore:"] + [
             f"  - {excluded_dir}"
-            for excluded_dir in self.get_project_exclude_directories()
+            for excluded_dir in self.get_project_exclude_directory_paths()
         ]
         generated_config = self.write_report_generated_file(
             "ls-lint-ignore.yml", ignore_lines

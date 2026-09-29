@@ -25,6 +25,10 @@ PRE_COMMANDS:
     venv: flake8 # Will be run within the flake8 Python virtualenv. There is one virtualenv per Python-based linter, with the same name
   - command: export MY_OUTPUT_VAR="my output var" && export MY_OUTPUT_VAR2="my output var2"
     output_variables: ["MY_OUTPUT_VAR","MY_OUTPUT_VAR2"] # Will collect the values of output variables and update MegaLinter's own ENV context
+  - command: echo "Command using another ENV variable value"
+    replacement_env_vars: # Copies the value of MY_SECRET_VAR into GITHUB_TOKEN, for this command only
+      - var_src: MY_SECRET_VAR
+        var_dest: GITHUB_TOKEN
   - command: echo "Some command called before loading MegaLinter plugins"
     cwd: workspace   # Will be run at the root of the workspace (usually your repository root)
     continue_if_failed: False  # Will stop the process if the command fails (return code > 0)
@@ -35,17 +39,18 @@ PRE_COMMANDS:
 
 > **Note**: to keep them lightweight, MegaLinter images do not embed a compilation toolchain. If a pre-command needs to compile native code (e.g. a pip package distributed only as source), install the toolchain first within your pre-command: `apk add --no-cache gcc make musl-dev`.
 
-| Property               | Description                                                                                                                                      | Default value |
-|------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
-| **command**            | Command line to run                                                                                                                              | Mandatory     |
-| **cwd**                | Directory where to run the command (`workspace` or `root`)                                                                                       | `root`        |
-| **run_before_linters** | If set to `true`, runs the command before the execution of the linters themselves, required for npm/pip commands that cannot be run in parallel  | `false`       |
-| **run_after_linters**  | If set to `true`, runs the command after the execution of the linters themselves                                                                 | `false`       |
-| **secured_env**        | Apply filtering of secured environment variables before calling the command (default true).<br/>Be careful if you disable it!                    | `true`        |
-| **continue_if_failed** | If set to `false`, stop the MegaLinter process in case of command failure                                                                        | `true`        |
-| **venv**               | If set, runs the command in the related Python venv                                                                                              | <!-- -->      |
-| **output_variables**   | ENV variables to read from output after running the commands, and store in MegaLinter's ENV context so they can be reused in subsequent commands | `[]`          |
-| **tag**                | Tag defining at which command entry point the command will be run (available tags: `before_plugins`)                                             | <!-- -->      |
+| Property                 | Description                                                                                                                                                                                                                      | Default value |
+|--------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
+| **command**              | Command line to run                                                                                                                                                                                                              | Mandatory     |
+| **cwd**                  | Directory where to run the command (`workspace` or `root`)                                                                                                                                                                       | `root`        |
+| **run_before_linters**   | If set to `true`, runs the command before the execution of the linters themselves, required for npm/pip commands that cannot be run in parallel                                                                                  | `false`       |
+| **run_after_linters**    | If set to `true`, runs the command after the execution of the linters themselves                                                                                                                                                 | `false`       |
+| **secured_env**          | Apply filtering of secured environment variables before calling the command (default true).<br/>Be careful if you disable it!                                                                                                    | `true`        |
+| **continue_if_failed**   | If set to `false`, stop the MegaLinter process in case of command failure                                                                                                                                                        | `true`        |
+| **venv**                 | If set, runs the command in the related Python venv                                                                                                                                                                              | <!-- -->      |
+| **output_variables**     | ENV variables to read from output after running the commands, and store in MegaLinter's ENV context so they can be reused in subsequent commands                                                                                 | `[]`          |
+| **replacement_env_vars** | ENV variables to copy into other ENV variables, for the scope of this command only. Each item contains `var_src` and `var_dest`. Values are read from MegaLinter configuration, so secured env variables are sent to the command | `[]`          |
+| **tag**                  | Tag defining at which command entry point the command will be run (available tags: `before_plugins`)                                                                                                                             | <!-- -->      |
 
 
 <!-- config-precommands-section-end -->

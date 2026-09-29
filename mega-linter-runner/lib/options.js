@@ -37,7 +37,7 @@ export const KNOWN_FLAVORS = [
   "terraform",
 ];
 
-export const KNOWN_CONTAINER_ENGINES = ["docker", "podman"];
+export const KNOWN_CONTAINER_ENGINES = ["docker", "podman", "container"];
 
 export const KNOWN_SETUP_CI_SYSTEMS = [
   "gitHubActions",
@@ -290,7 +290,8 @@ export const optionsDefinition = optionator.default({
       default: "docker",
       description:
         "Container engine binary to invoke.\n" +
-        `Allowed values: ${KNOWN_CONTAINER_ENGINES.join(", ")}.`,
+        `Allowed values: ${KNOWN_CONTAINER_ENGINES.join(", ")}.\n` +
+        "`container` is Apple's native macOS engine (Apple Silicon only): https://github.com/apple/container",
       example: KNOWN_CONTAINER_ENGINES,
     },
     {

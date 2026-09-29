@@ -167,6 +167,12 @@ export class MegaLinterRunner {
   - To run MegaLinter locally, please install Podman: https://podman.io/docs/installation
   - To run Podman on CI, use a base image containing Podman engine`);
       }
+      else if (this.containerEngine === "container") {
+        console.error(`
+  ERROR: Apple's container engine has not been found on your system.
+  - To run MegaLinter locally, please install container (macOS 15+, Apple Silicon only): https://github.com/apple/container
+  - Start it once installed with: container system start`);
+      }
       else {
         console.error(`
   ERROR: Docker engine has not been found on your system.
@@ -178,6 +184,11 @@ export class MegaLinterRunner {
     // Get platform to use with docker pull & run
     const imagePlatform = options.platform || "linux/amd64";
 
+    // Apple's `container` has no `docker pull`/`docker inspect --format` equivalents:
+    // images live under the `image` subcommand and `image inspect` is JSON-only
+    // (https://github.com/apple/container/blob/main/docs/command-reference.md)
+    const isAppleContainer = this.containerEngine === "container";
+
     // Pull docker image. Pinned version tags (vX.Y.Z) are immutable: skip the pull
     // (and its registry round-trip) when the image is already available locally
     // for the requested platform
@@ -185,20 +196,39 @@ export class MegaLinterRunner {
       !options.image && /^v\d+\.\d+\.\d+$/.test(release)
         ? spawnSync(
             this.containerEngine,
-            [
-              "image",
-              "inspect",
-              "--format",
-              "{{.Os}}/{{.Architecture}}",
-              dockerImage,
-            ],
+            isAppleContainer
+              ? ["image", "inspect", dockerImage]
+              : [
+                  "image",
+                  "inspect",
+                  "--format",
+                  "{{.Os}}/{{.Architecture}}",
+                  dockerImage,
+                ],
             { encoding: "utf8", windowsHide: true }
           )
         : null;
-    const pinnedVersionLocallyAvailable =
-      pinnedInspect !== null &&
-      pinnedInspect.status === 0 &&
-      (pinnedInspect.stdout || "").trim() === imagePlatform;
+    let pinnedVersionLocallyAvailable = false;
+    if (pinnedInspect !== null && pinnedInspect.status === 0) {
+      if (isAppleContainer) {
+        try {
+          const parsed = JSON.parse(pinnedInspect.stdout || "[]");
+          const image = Array.isArray(parsed) ? parsed[0] : parsed;
+          const variants = (image && image.variants) || [];
+          pinnedVersionLocallyAvailable = variants.some(
+            (variant) =>
+              variant.platform &&
+              `${variant.platform.os}/${variant.platform.architecture}` ===
+                imagePlatform
+          );
+        } catch {
+          pinnedVersionLocallyAvailable = false;
+        }
+      } else {
+        pinnedVersionLocallyAvailable =
+          (pinnedInspect.stdout || "").trim() === imagePlatform;
+      }
+    }
     if (pinnedVersionLocallyAvailable) {
       console.log(
         `Skipped pull of ${dockerImage} (pinned version already available locally)`
@@ -213,7 +243,9 @@ export class MegaLinterRunner {
       );
       const spawnResPull = spawnSync(
         this.containerEngine,
-        ["pull", "--platform", imagePlatform, dockerImage],
+        isAppleContainer
+          ? ["image", "pull", "--platform", imagePlatform, dockerImage]
+          : ["pull", "--platform", imagePlatform, dockerImage],
         {
           detached: false,
           stdio: "inherit",
@@ -456,10 +488,13 @@ export class MegaLinterRunner {
       )
     );
     // Capture the log tail before removing the container: it usually shows the
-    // exact step where the run was stuck
+    // exact step where the run was stuck. Apple's `container logs` has no
+    // `--tail`, only `-n <n>`.
     const logsRes = this.spawnSyncFn(
       this.containerEngine,
-      ["logs", "--tail", "30", containerName],
+      this.containerEngine === "container"
+        ? ["logs", "-n", "30", containerName]
+        : ["logs", "--tail", "30", containerName],
       { encoding: "utf8", windowsHide: true }
     );
     const logsOutput = `${logsRes.stdout || ""}${logsRes.stderr || ""}`.trim();
@@ -489,10 +524,14 @@ export class MegaLinterRunner {
         `Container ${containerName} has been stopped and removed: no orphan container is left behind.`
       );
     } else {
+      const checkCommand =
+        this.containerEngine === "container"
+          ? `${this.containerEngine} list --all`
+          : `${this.containerEngine} ps --all --filter name=${containerName}`;
       console.error(
         c.yellow(
           `[WARNING] Unable to confirm removal of container ${containerName}. ` +
-            `Check manually with: ${this.containerEngine} ps --all --filter name=${containerName}`
+            `Check manually with: ${checkCommand}`
         )
       );
     }

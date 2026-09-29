@@ -159,7 +159,11 @@ describe("CLI parsing — scalar flags", () => {
   it("exposes known flavors / engines / platforms as exported constants", async () => {
     const opts = await import("../lib/options.js");
     assert.ok(opts.KNOWN_FLAVORS.includes("python"));
-    assert.deepStrictEqual(opts.KNOWN_CONTAINER_ENGINES, ["docker", "podman"]);
+    assert.deepStrictEqual(opts.KNOWN_CONTAINER_ENGINES, [
+      "docker",
+      "podman",
+      "container",
+    ]);
     assert.ok(opts.KNOWN_PLATFORMS.includes("linux/amd64"));
   });
 
@@ -169,7 +173,7 @@ describe("CLI parsing — scalar flags", () => {
     const engineHelp = optionsDefinition.generateHelpForOption(
       "container-engine",
     );
-    assert.match(engineHelp, /docker.*podman/);
+    assert.match(engineHelp, /docker.*podman.*container/);
   });
 });
 
@@ -303,6 +307,11 @@ describe("CLI parsing — container options", () => {
   it("defaults container-engine to docker", () => {
     const o = parse([]);
     assert.strictEqual(o.containerEngine, "docker");
+  });
+
+  it("parses --container-engine container (Apple's macOS engine)", () => {
+    const o = parse(["--container-engine", "container"]);
+    assert.strictEqual(o.containerEngine, "container");
   });
 
   it("parses --remove-container", () => {

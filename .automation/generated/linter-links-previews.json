@@ -99,6 +99,11 @@
     "image": null,
     "title": "Get Started | Salesforce Code Analyzer | Salesforce Developers"
   },
+  "code-analyzer-apexguru": {
+    "description": "ApexGuru is an AI-driven performance and code optimization engine integrated into Salesforce Code Analyzer. It works alongside the PMD, ESLint, and Re",
+    "image": null,
+    "title": "ApexGuru | Engines | Salesforce Code Analyzer | Salesforce Developers"
+  },
   "code-analyzer-aura": {
     "description": "To get started scanning your code with Salesforce Code Analyzer, follow this developer workflow and choose resources that match your learning style.",
     "image": null,
@@ -653,6 +658,11 @@
     "description": "The tofu fmt command rewrites configuration files to a canonical format and style.",
     "image": "https://opentofu.org/img/og.png",
     "title": "Command: fmt | OpenTofu"
+  },
+  "tofu-validate": {
+    "description": "The `tofu validate` command is used to validate the syntax of the tofu files.",
+    "image": "https://opentofu.org/img/og.png",
+    "title": "Command: validate | OpenTofu"
   },
   "trivy": {
     "description": "None",

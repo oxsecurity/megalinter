@@ -4,7 +4,7 @@ description: Fix the errors reported by MegaLinter. Use after megalinter-check f
 argument-hint: "[linter keys or pasted MegaLinter error list]"
 allowed-tools: Bash, Read, Grep, Glob, Edit, Write, Agent, Skill, AskUserQuestion, WebSearch, WebFetch
 user-invocable: true
-licence: MegaLinter by OX Security, Copyright 2026 - https://megalinter.io/
+license: MegaLinter by OX Security, Copyright 2026 - https://megalinter.io/
 ---
 
 # MegaLinter fix

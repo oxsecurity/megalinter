@@ -68,7 +68,7 @@ Verify the implementation by regenerating from descriptors, building the linter 
    - **`print()` calls** → switch to `logging`.
    - For deeper debugging, delegate to the `test-debugger` agent.
 
-6. **Markdown checks** (for any docs touched): mkdocs-material requires blank lines after headings and around lists. Run `hatch run docs:serve` locally if a visual check is needed.
+6. **Markdown checks** (for any docs touched): Zensical requires blank lines after headings and around lists. Run `hatch run docs:serve` locally if a visual check is needed.
 
 7. **Report results**:
    - Tests run, pass/fail counts, platforms covered.

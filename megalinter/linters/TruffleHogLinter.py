@@ -50,9 +50,13 @@ class TruffleHogLinter(Linter):
                     line.strip() for line in ignore_file if line.strip() != ""
                 ]
         for excluded_dir in self.get_project_exclude_directories():
-            # Unanchored regex: matches the directory at any nesting level,
-            # consistently with EXCLUDED_DIRECTORIES behavior in file listing
-            excluded_dir_regex = re.escape(excluded_dir.replace("\\", "/")) + "/"
+            # (^|/) keeps the regex matching the directory at any nesting level,
+            # consistently with EXCLUDED_DIRECTORIES behavior in file listing,
+            # while not matching a directory merely ENDING with the name: a
+            # bare "dist" entry must not silence findings in "my-dist/"
+            excluded_dir_regex = (
+                "(^|/)" + re.escape(excluded_dir.replace("\\", "/")) + "/"
+            )
             if excluded_dir_regex not in exclude_regexes:
                 exclude_regexes += [excluded_dir_regex]
         exclude_paths_file = os.path.join(
@@ -69,3 +73,12 @@ class TruffleHogLinter(Linter):
             config.set_value(
                 self.request_id, "REPOSITORY_TRUFFLEHOG_FILE_EXTENSIONS", [".keys"]
             )
+        # Tests assert on detection, not on verification. --only-verified stays
+        # the production default, but keeping it here would make the test result
+        # depend on a third-party endpoint authenticating the fixture credential
+        # from the runner, which is not always reachable.
+        config.set_value(
+            self.request_id,
+            "REPOSITORY_TRUFFLEHOG_COMMAND_REMOVE_ARGUMENTS",
+            ["--only-verified"],
+        )

@@ -68,7 +68,7 @@ Verify the implementation by regenerating from descriptors, building the linter 
    - `os.environ` direct access → switch to `megalinter.config.get(...)`.
    - `print()` calls → switch to `logging`.
 
-6. **Markdown checks** (for any docs touched): mkdocs-material requires blank lines after headings and around lists. Visual check with `hatch run docs:serve` (`http://127.0.0.1:8000`).
+6. **Markdown checks** (for any docs touched): Zensical requires blank lines after headings and around lists. Visual check with `hatch run docs:serve` (`http://127.0.0.1:8000`).
 
 7. **Report**:
    - Tests run, pass/fail counts, platforms covered.

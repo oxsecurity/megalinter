@@ -14,7 +14,7 @@ Read `.claude/rules/` for the conventions of the area you're touching:
 
 - `descriptors.md` — YAML descriptor schema and property coverage
 - `python-style.md` — Python conventions
-- `documentation.md` — mkdocs-material markdown rules
+- `documentation.md` — Zensical markdown rules
 - `generated-files.md` — what NOT to edit
 - `testing.md` — test structure and fixtures
 
@@ -65,7 +65,7 @@ Read `.claude/rules/` for the conventions of the area you're touching:
    - The change is a routine linter version bump (the auto-upgrade workflow owns those entries).
    - The change ignores a CVE (per project memory).
    - The change is internal-only (refactor, test, build plumbing) with no user-visible impact.
-10. **Documentation**: improve descriptor metadata (`linter_text`, `linter_rules_url`, `ide`, `examples`) to drive better auto-generated docs. mkdocs-material formatting: blank line after each heading, blank line before/after every list.
+10. **Documentation**: improve descriptor metadata (`linter_text`, `linter_rules_url`, `ide`, `examples`) to drive better auto-generated docs. Zensical formatting: blank line after each heading, blank line before/after every list.
 
 Continue iterating until all changes are implemented. Do not stop to ask whether to continue mid-task.
 

@@ -64,7 +64,7 @@ ARG TARGETARCH
 # renovate: datasource=packagist depName=overtrue/phplint
 ARG PHP_OVERTRUE_PHPLINT_VERSION=9.7.2
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
-ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.6.0
+ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.7.0
 #ARG__END
 
 ####################

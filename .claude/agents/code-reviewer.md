@@ -29,7 +29,7 @@ You are a code reviewer specialized in the MegaLinter Python codebase. Review ch
 5. **Linter subclasses**: Overrides only necessary methods, keeps logic minimal
 6. **Error handling**: No defensive handling for internal code paths
 7. **Logging**: Uses `logging`, not `print()`
-8. **mkdocs compliance**: Any markdown has blank lines after headers and before/after lists
+8. **Zensical compliance**: Any markdown has blank lines after headers and before/after lists
 9. **CHANGELOG**: User-facing changes are noted in `CHANGELOG.md` at repo root (not docs/)
 
 ## Architecture Awareness

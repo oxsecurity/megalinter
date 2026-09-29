@@ -135,6 +135,22 @@
         'betterleaks/betterleaks',
       ],
     },
+    {
+      // npm-package-json-lint-config-default majors require the matching
+      // npm-package-json-lint major (config-default v10 needs linter v11), so
+      // separate PRs can never be merged on their own: group them together.
+      groupName: 'npm-package-json-lint',
+      matchPackageNames: [
+        'npm-package-json-lint',
+        'npm-package-json-lint-config-default',
+      ],
+      matchUpdateTypes: [
+        'digest',
+        'patch',
+        'minor',
+        'major',
+      ],
+    },
   ],
   customManagers: [
     {
@@ -178,6 +194,17 @@
       ],
       matchStrings: [
         '# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (?:lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?\\s+[A-Z0-9_]+_VERSION\\s*=\\s*["\'](?<currentValue>[^"\']+)["\']',
+      ],
+    },
+    {
+      customType: 'regex',
+      description: 'Update the commit SHA of git-pinned Python dependencies (e.g. the Zensical-compatible mike fork)',
+      managerFilePatterns: [
+        '/(^|/)requirements\\.txt$/',
+        '/(^|/)pyproject\\.toml$/',
+      ],
+      matchStrings: [
+        '# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?) branch=(?<currentValue>[^\\s]+?)\\s+["\']?[A-Za-z0-9_.-]+ @ git\\+[^@\\s]+@(?<currentDigest>[0-9a-f]{40})',
       ],
     },
     {

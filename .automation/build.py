@@ -1666,10 +1666,17 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         ]
         if hasattr(linter, "activation_rules"):
             for rule in linter.activation_rules:
-                linter_doc_md += [
-                    f"| {rule['variable']} | For {linter.linter_name} to be active, {rule['variable']} must be "
-                    f"`{rule['expected_value']}` | `{rule['default_value']}` |"
-                ]
+                rule_doc = (
+                    f"| {rule['variable']} | For {linter.linter_name} to be "
+                    f"active, {rule['variable']} must be "
+                )
+                if rule.get("type") == "variable_is_set":
+                    rule_doc += "defined and not empty | _(not set)_ |"
+                else:
+                    rule_doc += (
+                        f"`{rule['expected_value']}` | " f"`{rule['default_value']}` |"
+                    )
+                linter_doc_md += [rule_doc]
         if hasattr(linter, "variables"):
             for variable in linter.variables:
                 linter_doc_md += [
@@ -3580,6 +3587,13 @@ def finalize_doc_build():
         f"{REPO_HOME}{os.path.sep}README.md",
         target_file,
     )
+    # README.md has no level 1 heading, so the doc engine builds the home page
+    # title from the file name ("Index"). Front matter makes it "Home" again.
+    with open(target_file, "r+", encoding="utf-8") as f:
+        index_content = f.read()
+        f.seek(0)
+        f.truncate()
+        f.write(f"---\ntitle: Home\n---\n{index_content}")
     # Split README sections into individual files
     moves = [
         "quick-start",
@@ -3652,7 +3666,7 @@ def finalize_doc_build():
         "<!-- mega-linter-badges-start -->",
         "<!-- mega-linter-badges-end -->",
         """![GitHub release](https://img.shields.io/github/v/release/oxsecurity/megalinter?sort=semver&color=%23FD80CD)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-27.1M-blue?color=%23FD80CD)](https://megalinter.io/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-27.8M-blue?color=%23FD80CD)](https://megalinter.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg?color=%23FD80CD)](https://npmjs.org/package/mega-linter-runner)
 [![Coding Agents](https://img.shields.io/badge/Coding%20Agents-compatible-%23FD80CD?logo=githubcopilot&logoColor=white)](https://megalinter.io/latest/coding-agents/)
 [![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?cacheSeconds=3600&color=%23FD80CD)](https://github.com/oxsecurity/megalinter/stargazers/)
@@ -4505,6 +4519,23 @@ def generate_version():
     # git add , commit & tag
     repo = git.Repo(os.getcwd())
     repo.git.add(update=True)
+    # add(update=True) stages tracked files only, so a page generated for the first
+    # time (the license page of a new linter, a new descriptor doc…) silently missed
+    # every release and ended up as a dead link on megalinter.io. Stage the untracked
+    # files of the generated folders too (untracked_files already honors .gitignore).
+    generated_dirs = (
+        "docs/",
+        "linters/",
+        "flavors/",
+        "skills/",
+        ".automation/generated/",
+    )
+    new_generated_files = [
+        file for file in repo.untracked_files if file.startswith(generated_dirs)
+    ]
+    if len(new_generated_files) > 0:
+        logging.info("Staging newly generated files: " + ", ".join(new_generated_files))
+        repo.git.add("--", *new_generated_files)
     repo.git.commit("-m", "Release MegaLinter " + RELEASE_TAG)
     repo.create_tag(RELEASE_TAG)
 

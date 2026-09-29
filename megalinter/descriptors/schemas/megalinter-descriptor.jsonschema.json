@@ -780,11 +780,12 @@
           "cli_lint_mode_project_exclude_arg_value": {
             "$id": "#/properties/linters/items/properties/cli_lint_mode_project_exclude_arg_value",
             "default": "{{DIR}}",
-            "description": "Template used to build the value sent with cli_lint_mode_project_exclude_arg_name for each excluded directory. {{DIR}} is replaced by the directory name",
+            "description": "Template used to build the value sent with cli_lint_mode_project_exclude_arg_name for each excluded directory. {{DIR}} is replaced by the directory name, matched by the linter at any nesting level. Use {{DIR_PATH}} instead when the linter anchors its patterns on the workspace root: it is replaced by each workspace-relative path where the directory was found",
             "examples": [
               "{{DIR}}",
               "./{{DIR}}/**",
-              "**/{{DIR}}/**"
+              "**/{{DIR}}/**",
+              "./{{DIR_PATH}}"
             ],
             "title": "CLI project lint mode excluded directories argument value template",
             "type": "string"

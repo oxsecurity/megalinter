@@ -25,6 +25,13 @@ class TfLintLinter(megalinter.Linter):
             == "false"
             else True
         )
+        if config.get(self.request_id, "PAT_GITHUB_COM", "") != "":
+            logging.warning(
+                "PAT_GITHUB_COM is deprecated and will be removed in a future major release. "
+                "Use tflint native host-specific token variable instead: set your github.com "
+                "token in GITHUB_TOKEN_github_com, and add it to "
+                "TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES in your .mega-linter.yml"
+            )
         replacement_def = dict(
             {"var_dest": "GITHUB_TOKEN", "var_src": "PAT_GITHUB_COM"}
         )

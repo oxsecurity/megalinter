@@ -3513,7 +3513,7 @@
             />
         </svg>
     <a href="#linters_items_cli_lint_mode_project_exclude_arg_value" onclick="anchorLink('linters_items_cli_lint_mode_project_exclude_arg_value')">cli_lint_mode_project_exclude_arg_value</a></div><h4>CLI project lint mode excluded directories argument value template</h4><span class="badge badge-dark value-type">Type: string</span> <span class="badge badge-success default-value">Default: "{{DIR}}"</span><br/>
-<span class="description"><p>Template used to build the value sent with cli<em>lint</em>mode<em>project</em>exclude<em>arg</em>name for each excluded directory. {{DIR}} is replaced by the directory name</p>
+<span class="description"><p>Template used to build the value sent with cli<em>lint</em>mode<em>project</em>exclude<em>arg</em>name for each excluded directory. {{DIR}} is replaced by the directory name, matched by the linter at any nesting level. Use {{DIR_PATH}} instead when the linter anchors its patterns on the workspace root: it is replaced by each workspace-relative path where the directory was found</p>
 </span>
         
 
@@ -3527,6 +3527,8 @@
 </div><div id="linters_items_cli_lint_mode_project_exclude_arg_value_ex2" class="jumbotron examples"><div class="highlight"><pre><span></span><span class="s2">"./{{DIR}}/**"</span>
 </pre></div>
 </div><div id="linters_items_cli_lint_mode_project_exclude_arg_value_ex3" class="jumbotron examples"><div class="highlight"><pre><span></span><span class="s2">"**/{{DIR}}/**"</span>
+</pre></div>
+</div><div id="linters_items_cli_lint_mode_project_exclude_arg_value_ex4" class="jumbotron examples"><div class="highlight"><pre><span></span><span class="s2">"./{{DIR_PATH}}"</span>
 </pre></div>
 </div>
             </div>

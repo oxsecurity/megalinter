@@ -22,6 +22,8 @@ DISABLE_LINTERS:
 DISABLE_ERRORS_LINTERS:
   - PYTHON_BANDIT
   - REPOSITORY_DEVSKIM
+  # Reports any PyPI/npm lookup failure (503, rate limit) as an unclaimed package
+  - REPOSITORY_DUSTILOCK
   - REPOSITORY_SEMGREP
   - SPELL_LYCHEE
   - YAML_YAMLLINT
@@ -35,7 +37,11 @@ YAML_V8R_FILTER_REGEX_EXCLUDE: '(descriptors|templates/\.mega-linter\.yml|\.code
 # checking them all makes lychee the slowest linter of the run
 SPELL_LYCHEE_FILTER_REGEX_EXCLUDE: '(valestyles|\.github|docs/licenses|skills/megalinter-fix/linters)'
 BASH_FILTER_REGEX_EXCLUDE: "(lib)"
-MARKDOWN_FILTER_REGEX_EXCLUDE: '(license\.md|docs/licenses)'
+# The generated linter guides carry error-format regexes whose significant
+# trailing space markdownlint --fix strips (MD038), corrupting the regex and
+# leaving the tree dirty on every run. They are generated, and already
+# excluded from cspell and lychee for the same reason.
+MARKDOWN_FILTER_REGEX_EXCLUDE: '(license\.md|docs/licenses|skills/megalinter-fix/linters)'
 SPELL_VALE_FILE_EXTENSIONS:
   - .md
 SPELL_FILTER_REGEX_EXCLUDE: (valestyles|\.github|docs/licenses)
@@ -61,6 +67,10 @@ REPOSITORY_KINGFISHER_ARGUMENTS:
   - "docs"
   - "--exclude"
   - "gitleaks-default.toml"
+  # Same as gitleaks-default.toml above: the vendored betterleaks ruleset stores
+  # detection patterns that kingfisher v2 reports as the secrets themselves
+  - "--exclude"
+  - "betterleaks-default.toml"
 REPOSITORY_OSV_SCANNER_ARGUMENTS:
   - "--experimental-exclude=g:**/.automation/test/**"
   # Disable transitive-dep resolution: it calls deps.dev which has been

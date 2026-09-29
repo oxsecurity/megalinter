@@ -20,6 +20,7 @@ This directory contains the modular LLM provider system for MegaLinter's AI-powe
 | Mistral AI   | `llm_provider_mistral.py`     | Mistral Small, Medium, Large    | Yes          |
 | DeepSeek     | `llm_provider_deepseek.py`    | DeepSeek Chat, DeepSeek Coder   | Yes          |
 | Grok         | `llm_provider_grok.py`        | Grok Beta (xAI)                 | Yes          |
+| OrcaRouter   | `llm_provider_orcarouter.py`  | Any model routed by OrcaRouter  | Yes          |
 | Hugging Face | `llm_provider_huggingface.py` | Any HF transformer model        | Optional     |
 | Ollama       | `llm_provider_ollama.py`      | Llama, CodeLlama, Mistral, etc. | No           |
 

@@ -7,6 +7,8 @@ from pathlib import Path
 
 REPO_HOME = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 REFERENCE_MANIFEST = "plugin.json"
+NEWLINE = chr(10)
+SEPARATOR = "---" + NEWLINE
 
 # Per-vendor plugin manifests mirroring the identity declared in the Agent Plugins
 # 1.0 manifest.
@@ -26,6 +28,22 @@ TARGET_MARKETPLACE_MANIFESTS = [
 ]
 SHARED_FIELDS = ["name", "version", "description", "license", "homepage", "repository"]
 SHARED_ENTRY_FIELDS = ["name", "description", "license", "homepage", "repository"]
+
+# Agent Plugins 1.0 standardizes skills, auto-discovered from skills/, but not
+# sub-agents: Copilot clients load those from com.github.copilot/agents, named
+# <name>.agent.md. Their bodies are identical to the Claude Code definitions, so
+# they are generated from them to avoid drift. Only the frontmatter differs:
+# Copilot tool aliases already accept the Claude tool names (Read -> read,
+# Grep/Glob -> search, Bash -> execute, WebFetch/WebSearch -> web), but "haiku"
+# is not a Copilot model id, so the model override is dropped.
+AGENT_SOURCE_DIR = "skills/megalinter-setup/agents"
+AGENT_NAMES = ["megalinter-watcher", "megalinter-runner", "megalinter-fixer"]
+COPILOT_AGENTS_DIR = "com.github.copilot/agents"
+COPILOT_DROPPED_FRONTMATTER_KEYS = ["model"]
+COPILOT_GENERATED_NOTICE = (
+    f"<!-- @generated from {AGENT_SOURCE_DIR}/<name>.md "
+    "by .automation/agent_plugin_manifests.py, do not edit -->"
+)
 
 
 def read_manifest(relative_path: str) -> dict:
@@ -61,6 +79,41 @@ def sync() -> None:
         if updated is True:
             write_manifest(target, manifest)
             logging.info(f"Updated agent plugin marketplace {target}")
+    sync_copilot_agents()
+
+
+def build_copilot_agent(source_text: str) -> str:
+    _, frontmatter, body = source_text.split(SEPARATOR, 2)
+    kept = [
+        line
+        for line in frontmatter.splitlines()
+        if line.split(":", 1)[0].strip() not in COPILOT_DROPPED_FRONTMATTER_KEYS
+    ]
+    return (
+        SEPARATOR
+        + NEWLINE.join(kept)
+        + NEWLINE
+        + SEPARATOR
+        + NEWLINE
+        + COPILOT_GENERATED_NOTICE
+        + NEWLINE
+        + body.rstrip(NEWLINE)
+        + NEWLINE
+    )
+
+
+def sync_copilot_agents() -> None:
+    target_dir = Path(f"{REPO_HOME}/{COPILOT_AGENTS_DIR}")
+    target_dir.mkdir(parents=True, exist_ok=True)
+    for name in AGENT_NAMES:
+        source_path = Path(f"{REPO_HOME}/{AGENT_SOURCE_DIR}/{name}.md")
+        content = build_copilot_agent(source_path.read_text(encoding="utf-8"))
+        target = target_dir / f"{name}.agent.md"
+        current = target.read_text(encoding="utf-8") if target.is_file() else None
+        if current != content:
+            with target.open("w", encoding="utf-8", newline=NEWLINE) as target_file:
+                target_file.write(content)
+            logging.info(f"Updated Copilot agent {COPILOT_AGENTS_DIR}/{name}.agent.md")
 
 
 def bump_patch() -> str:

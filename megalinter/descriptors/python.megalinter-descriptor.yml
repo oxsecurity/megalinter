@@ -105,7 +105,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=pylint
-          ARG PIP_PYLINT_VERSION=4.0.7
+          ARG PIP_PYLINT_VERSION=4.0.8
         - |-
           # renovate: datasource=pypi depName=typing-extensions
           ARG PIP_TYPING_EXTENSIONS_VERSION=4.16.0
@@ -373,7 +373,7 @@ linters:
           ARG PIP_BLACK_VERSION=26.5.1
         - |-
           # renovate: datasource=pypi depName=isort
-          ARG PIP_ISORT_VERSION=8.0.1
+          ARG PIP_ISORT_VERSION=9.0.1
       pip:
         - black==${PIP_BLACK_VERSION}
         - isort==${PIP_ISORT_VERSION}
@@ -453,7 +453,7 @@ linters:
     cli_lint_extra_args:
       - --quiet
     cli_lint_mode_project_exclude_arg_name: "-x"
-    cli_lint_mode_project_exclude_arg_value: "./{{DIR}}"
+    cli_lint_mode_project_exclude_arg_value: "./{{DIR_PATH}}"
     cli_lint_mode_project_exclude_separator: ","
     cli_lint_mode_project_exclude_seed_values:
       ["./.svn", "./CVS", "./.bzr", "./.hg", "./.git", "./__pycache__", "./.tox", "./.eggs", "*.egg"]
@@ -797,7 +797,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=pyright
-          ARG NPM_PYRIGHT_VERSION=1.1.413
+          ARG NPM_PYRIGHT_VERSION=1.1.414
       npm:
         - pyright@${NPM_PYRIGHT_VERSION}
     supported_platforms:
@@ -893,7 +893,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=ruff
-          ARG PIP_RUFF_VERSION=0.16.3
+          ARG PIP_RUFF_VERSION=0.16.8
       pip:
         - ruff==${PIP_RUFF_VERSION}
     supported_platforms:
@@ -967,7 +967,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=ruff
-          ARG PIP_RUFF_VERSION=0.16.3
+          ARG PIP_RUFF_VERSION=0.16.8
       pip:
         - ruff==${PIP_RUFF_VERSION}
     supported_platforms:

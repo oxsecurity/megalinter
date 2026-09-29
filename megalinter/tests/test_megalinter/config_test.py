@@ -9,6 +9,7 @@ import glob
 import io
 import os
 import re
+import tempfile
 import unittest
 import uuid
 from unittest.mock import patch
@@ -76,6 +77,45 @@ class config_test(unittest.TestCase):
             )
         finally:
             self.restore_branch_in_input_files(changed_files)
+
+    def test_local_config_dot_config_folder_success(self):
+        # A .mega-linter.yml-style config file placed under the project-level
+        # .config subfolder (https://dot-config.github.io) must be picked up
+        # when no config file is present at the workspace root.
+        with tempfile.TemporaryDirectory() as tmp_workspace:
+            dot_config_dir = tmp_workspace + os.path.sep + ".config"
+            os.makedirs(dot_config_dir, exist_ok=True)
+            with open(
+                dot_config_dir + os.path.sep + "megalinter.yaml",
+                "w",
+                encoding="utf-8",
+            ) as f:
+                f.write('FILTER_REGEX_INCLUDE: "(dot-config)"\n')
+            request_id = str(uuid.uuid1())
+            config.init_config(request_id, tmp_workspace, {})
+            self.assertEqual(
+                "(dot-config)", config.get(request_id, "FILTER_REGEX_INCLUDE")
+            )
+            config.delete(request_id)
+
+    def test_local_config_dot_config_folder_dotted_filename_success(self):
+        # Some dot-config adopters keep the leading dot on the filename
+        # (e.g. .config/.megalinter.yaml): that variant must be supported too.
+        with tempfile.TemporaryDirectory() as tmp_workspace:
+            dot_config_dir = tmp_workspace + os.path.sep + ".config"
+            os.makedirs(dot_config_dir, exist_ok=True)
+            with open(
+                dot_config_dir + os.path.sep + ".megalinter.yaml",
+                "w",
+                encoding="utf-8",
+            ) as f:
+                f.write('FILTER_REGEX_INCLUDE: "(dotted-dot-config)"\n')
+            request_id = str(uuid.uuid1())
+            config.init_config(request_id, tmp_workspace, {})
+            self.assertEqual(
+                "(dotted-dot-config)", config.get(request_id, "FILTER_REGEX_INCLUDE")
+            )
+            config.delete(request_id)
 
     def test_local_config_extends_success(self):
         changed_files = self.replace_branch_in_input_files()
@@ -460,6 +500,33 @@ class config_test(unittest.TestCase):
             "OX_API_KEY=HIDDEN_BY_MEGALINTER" in output,
             "OX_API_KEY is not visible",
         )
+
+    def test_config_secure_env_vars_personal_access_tokens(self):
+        request_id = str(uuid.uuid1())
+        config.init_config(
+            request_id,
+            None,
+            {
+                "PAT": "PAT_VALUE",
+                "PAT_GITHUB_COM": "PAT_GITHUB_COM_VALUE",
+                "AZURE_PAT": "AZURE_PAT_VALUE",
+                "MY_PAT_FOR_CI": "MY_PAT_FOR_CI_VALUE",
+                "PATH_TO_SOMETHING": "PATH_TO_SOMETHING_VALUE",
+                "COMPATIBILITY_MODE": "COMPATIBILITY_MODE_VALUE",
+                "LOG_LEVEL": "DEBUG",
+            },
+        )
+        cli_env = config.build_env(request_id)
+        for hidden_var in ["PAT", "PAT_GITHUB_COM", "AZURE_PAT", "MY_PAT_FOR_CI"]:
+            self.assertTrue(
+                cli_env[hidden_var] == "HIDDEN_BY_MEGALINTER",
+                f"{hidden_var} is not visible",
+            )
+        for visible_var in ["PATH", "PATH_TO_SOMETHING", "COMPATIBILITY_MODE"]:
+            self.assertTrue(
+                cli_env[visible_var] != "HIDDEN_BY_MEGALINTER",
+                f"{visible_var} is visible",
+            )
 
     def test_config_secure_env_vars_override_default(self):
         request_id = str(uuid.uuid1())

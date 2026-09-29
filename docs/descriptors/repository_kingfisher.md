@@ -22,7 +22,7 @@ description: How to use kingfisher (configure, ignore files, ignore errors, help
 
 ## kingfisher documentation
 
-- Version in MegaLinter: **1.113.0**
+- Version in MegaLinter: **2.5.0**
 - Visit [Official Web Site](https://github.com/mongodb/kingfisher#readme){target=_blank}
 - See [How to disable kingfisher rules in files](https://mongodb.github.io/kingfisher/usage/advanced/?h=inline#inline-ignore-directives){target=_blank}
 - See [Index of problems detected by kingfisher](https://mongodb.github.io/kingfisher/rules/builtin-rules){target=_blank}
@@ -56,7 +56,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                   | Description               | Embedded linters |                                                                                                                                                                                         Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor |       132        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor |       133        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/) | Optimized for security    |        24        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 
 ## Behind the scenes
@@ -89,16 +89,17 @@ Kingfisher - Detect and validate secrets across files and full Git history
 Usage: kingfisher [OPTIONS] <COMMAND>
 
 Commands:
-  scan        Scan content for secrets and sensitive information
-  rules       Manage rules
-  validate    Directly validate a known secret against a rule's validator (bypasses pattern
-              matching)
-  revoke      Directly revoke a known secret against a rule's revocation config
-  access-map  Map a cloud credential to its identity, permissions, and blast radius
-  view        View Kingfisher JSON/JSONL reports in a local web UI
-  config      Generate or inspect `kingfisher.yaml` project config files
-  update      Update the Kingfisher binary
-  help        Print this message or the help of the given subcommand(s)
+  scan          Scan content for secrets and sensitive information
+  rules         Manage rules
+  validate      Directly validate a known secret against a rule's validator (bypasses pattern
+                matching)
+  revoke        Directly revoke a known secret against a rule's revocation config
+  access-map    Map a cloud credential from a provider credential artifact
+  blast-radius  Directly map a known secret to its identity, permissions, and blast radius
+  view          View Kingfisher JSON/JSONL reports in a local web UI
+  config        Generate or inspect `kingfisher.yaml` project config files
+  update        Update the Kingfisher binary
+  help          Print this message or the help of the given subcommand(s)
 
 Options:
   -h, --help     Print help (see more with '--help')
@@ -125,7 +126,7 @@ Global Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=github-tags depName=mongodb/kingfisher
-ARG REPOSITORY_KINGFISHER_VERSION=1.113.0
+ARG REPOSITORY_KINGFISHER_VERSION=2.5.0
 RUN curl --silent --location https://raw.githubusercontent.com/mongodb/kingfisher/main/scripts/install-kingfisher.sh | bash -s -- /usr/local/bin --tag "v${REPOSITORY_KINGFISHER_VERSION}"
 
 ```

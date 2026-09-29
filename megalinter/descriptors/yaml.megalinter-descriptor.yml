@@ -133,7 +133,7 @@ linters:
       - **Schema Store Integration**: Leverages the extensive collection of schemas from schemastore.org for popular tools and frameworks
       - **Detailed Error Reporting**: Provides clear, actionable validation error messages with line and column information
     cli_lint_mode_project_exclude_ignore_file_arg_name: "--ignore-pattern-files="
-    cli_lint_mode_project_exclude_arg_value: "{{DIR}}/**"
+    cli_lint_mode_project_exclude_arg_value: "{{DIR_PATH}}/**"
     cli_lint_mode_project_exclude_ignore_file_pass_existing: [".v8rignore", ".gitignore"]
     cli_lint_mode_project_extra_args_after:
       - "**/*.{yml,yaml}"

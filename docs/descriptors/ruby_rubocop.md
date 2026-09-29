@@ -27,7 +27,7 @@ description: How to use rubocop (configure, ignore files, ignore errors, help & 
 
 ## rubocop documentation
 
-- Version in MegaLinter: **1.89.0**
+- Version in MegaLinter: **1.91.0**
 - Visit [Official Web Site](https://rubocop.org/){target=_blank}
 - See [How to configure rubocop rules](https://docs.rubocop.org/rubocop/configuration.html){target=_blank}
   - If custom `.ruby-lint.yml` config file isn't found, [.ruby-lint.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruby-lint.yml){target=_blank} will be used
@@ -82,9 +82,9 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       132        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       133        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        99        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.io/beta/flavors/ruby/)       | Optimized for RUBY based projects               |        54        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.io/beta/flavors/ruby/)       | Optimized for RUBY based projects               |        53        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby) |
 
 ## Behind the scenes
 
@@ -142,6 +142,10 @@ Basic Options:
                                      disabled by default. Overrides
                                      `AllCops/EnabledByDefault` and
                                      `AllCops/DisabledByDefault` in config files.
+        --[no-]preview               Opt in to unstable behavior: cops that are
+                                     `Enabled: preview`, and changes to existing
+                                     cops that are not the default yet.
+                                     Overrides `AllCops: Preview`.
         --ignore-disable-comments    Report offenses even if they have been manually disabled
                                      with a `rubocop:disable` or `rubocop:todo` directive.
         --force-exclusion            Any files excluded by `Exclude` in configuration
@@ -155,6 +159,10 @@ Basic Options:
         --ignore-unrecognized-cops   Ignore unrecognized cops or departments in the config.
         --force-default-config       Use default configuration even if configuration
                                      files are present in the directory tree.
+        --changed [REVISION]         Inspect only the files that differ from a git
+                                     revision, defaulting to HEAD. Untracked files
+                                     count as changed. Pass a revision with
+                                     `--changed=REVISION`.
     -s, --stdin FILE                 Pipe source from STDIN, using FILE in offense
                                      reports. This is useful for editor integration.
         --editor-mode                Optimize real-time feedback in editors,
@@ -167,6 +175,7 @@ Basic Options:
                                      This is used to prevent cops from failing silently.
                                      Default is false.
         --fail-level SEVERITY        Minimum severity for exit with error code.
+                                     Overrides `AllCops: FailLevel` in the configuration.
                                        [A] autocorrect
                                        [I] info
                                        [R] refactor
@@ -222,6 +231,7 @@ Output Options:
                                        [pa]cman
                                        [p]rogress (default)
                                        [q]uiet
+                                       [sa]rif
                                        [s]imple
                                        [t]ap
                                        [w]orst
@@ -247,6 +257,8 @@ Output Options:
         --display-only-safe-correctable
                                      Only output safe-correctable offense messages
                                      when combined with --display-only-correctable.
+        --display-suppressed         Also output offenses suppressed by directive
+                                     comments. They do not affect the exit code.
 
 Autocorrection:
     -a, --autocorrect                Autocorrect offenses (only when it's safe).
@@ -257,6 +269,10 @@ Autocorrection:
         --disable-uncorrectable      Used with --autocorrect to annotate any
                                      offenses that do not support autocorrect
                                      with `rubocop:todo` comments.
+        --diff                       Print a unified diff of what autocorrection
+                                     would change, without writing any files.
+                                     Turns on safe autocorrection unless a mode
+                                     was already given with -a, -A or -x.
 
 Config Generation:
         --auto-gen-config            Generate a configuration file acting as a
@@ -264,6 +280,8 @@ Config Generation:
         --regenerate-todo            Regenerate the TODO configuration file using
                                      the last configuration. If there is no existing
                                      TODO file, acts like --auto-gen-config.
+        --report-unused-todo-entries Also report TODO configuration file entries that
+                                     are no longer needed, and fail if any are found.
         --exclude-limit COUNT        Set the limit for how many files to explicitly exclude.
                                      If there are more files than the limit, the cop will
                                      be disabled instead. Default is 15.
@@ -317,13 +335,13 @@ Profiling Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=rubygems depName=rubocop
-ARG GEM_RUBOCOP_VERSION=1.89.0
+ARG GEM_RUBOCOP_VERSION=1.91.0
 # renovate: datasource=rubygems depName=rubocop-github
 ARG GEM_RUBOCOP_GITHUB_VERSION=0.27.0
 # renovate: datasource=rubygems depName=rubocop-performance
 ARG GEM_RUBOCOP_PERFORMANCE_VERSION=1.27.0
 # renovate: datasource=rubygems depName=rubocop-rails
-ARG GEM_RUBOCOP_RAILS_VERSION=2.37.0
+ARG GEM_RUBOCOP_RAILS_VERSION=2.38.0
 # renovate: datasource=rubygems depName=rubocop-rake
 ARG GEM_RUBOCOP_RAKE_VERSION=0.7.1
 # renovate: datasource=rubygems depName=rubocop-rspec
@@ -331,10 +349,10 @@ ARG GEM_RUBOCOP_RSPEC_VERSION=3.10.2
 ```
 
 - GEM packages (Ruby) :
-  - [rubocop:1.89.0](https://rubygems.org/gems/rubocop/versions/1.89.0)
+  - [rubocop:1.91.0](https://rubygems.org/gems/rubocop/versions/1.91.0)
   - [rubocop-github:0.27.0](https://rubygems.org/gems/rubocop-github/versions/0.27.0)
   - [rubocop-performance:1.27.0](https://rubygems.org/gems/rubocop-performance/versions/1.27.0)
-  - [rubocop-rails:2.37.0](https://rubygems.org/gems/rubocop-rails/versions/2.37.0)
+  - [rubocop-rails:2.38.0](https://rubygems.org/gems/rubocop-rails/versions/2.38.0)
   - [rubocop-rake:0.7.1](https://rubygems.org/gems/rubocop-rake/versions/0.7.1)
   - [rubocop-rspec:3.10.2](https://rubygems.org/gems/rubocop-rspec/versions/3.10.2)
 

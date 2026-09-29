@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "variable_count": 2850,
+    "variable_count": 2883,
     "categories": {
       "ACTION": 4,
       "ACTION_ACTIONLINT": 17,
@@ -140,7 +140,7 @@
       "RAKU": 4,
       "RAKU_RAKU": 16,
       "REPOSITORY": 12,
-      "REPOSITORY_BETTERLEAKS": 15,
+      "REPOSITORY_BETTERLEAKS": 18,
       "REPOSITORY_CHECKOV": 15,
       "REPOSITORY_DEVSKIM": 15,
       "REPOSITORY_DUSTILOCK": 13,
@@ -170,6 +170,7 @@
       "R_LINTR": 16,
       "SALESFORCE": 13,
       "SALESFORCE_CODE_ANALYZER_APEX": 16,
+      "SALESFORCE_CODE_ANALYZER_APEXGURU": 16,
       "SALESFORCE_CODE_ANALYZER_AURA": 16,
       "SALESFORCE_CODE_ANALYZER_FLOW": 15,
       "SALESFORCE_CODE_ANALYZER_LWC": 16,
@@ -202,6 +203,7 @@
       "TERRAFORM_TERRASCAN": 15,
       "TERRAFORM_TFLINT": 18,
       "TERRAFORM_TOFU_FMT": 14,
+      "TERRAFORM_TOFU_VALIDATE": 14,
       "TEXT_REPORTER": 3,
       "TSX": 4,
       "TSX_BIOME": 17,
@@ -1545,6 +1547,7 @@
         "RUST_CLIPPY",
         "R_LINTR",
         "SALESFORCE_CODE_ANALYZER_APEX",
+        "SALESFORCE_CODE_ANALYZER_APEXGURU",
         "SALESFORCE_CODE_ANALYZER_AURA",
         "SALESFORCE_CODE_ANALYZER_FLOW",
         "SALESFORCE_CODE_ANALYZER_LWC",
@@ -1573,6 +1576,7 @@
         "TERRAFORM_TERRASCAN",
         "TERRAFORM_TFLINT",
         "TERRAFORM_TOFU_FMT",
+        "TERRAFORM_TOFU_VALIDATE",
         "TSX_BIOME",
         "TSX_ESLINT",
         "TYPESCRIPT_BIOME",
@@ -2983,9 +2987,10 @@
       "type": "string",
       "title": "CLOJURE_CLJ_KONDO: CLI lint mode",
       "description": "CLOJURE_CLJ_KONDO: Override default CLI lint mode used to call the linter (rarely needed)",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
+        "list_of_files",
         "project"
       ],
       "category": "CLOJURE_CLJ_KONDO",
@@ -7086,6 +7091,7 @@
         "RUST_CLIPPY",
         "R_LINTR",
         "SALESFORCE_CODE_ANALYZER_APEX",
+        "SALESFORCE_CODE_ANALYZER_APEXGURU",
         "SALESFORCE_CODE_ANALYZER_AURA",
         "SALESFORCE_CODE_ANALYZER_FLOW",
         "SALESFORCE_CODE_ANALYZER_LWC",
@@ -7114,6 +7120,7 @@
         "TERRAFORM_TERRASCAN",
         "TERRAFORM_TFLINT",
         "TERRAFORM_TOFU_FMT",
+        "TERRAFORM_TOFU_VALIDATE",
         "TSX_BIOME",
         "TSX_ESLINT",
         "TYPESCRIPT_BIOME",
@@ -7262,6 +7269,7 @@
         "RUST_CLIPPY",
         "R_LINTR",
         "SALESFORCE_CODE_ANALYZER_APEX",
+        "SALESFORCE_CODE_ANALYZER_APEXGURU",
         "SALESFORCE_CODE_ANALYZER_AURA",
         "SALESFORCE_CODE_ANALYZER_FLOW",
         "SALESFORCE_CODE_ANALYZER_LWC",
@@ -7290,6 +7298,7 @@
         "TERRAFORM_TERRASCAN",
         "TERRAFORM_TFLINT",
         "TERRAFORM_TOFU_FMT",
+        "TERRAFORM_TOFU_VALIDATE",
         "TSX_BIOME",
         "TSX_ESLINT",
         "TYPESCRIPT_BIOME",
@@ -8247,6 +8256,7 @@
         "RUST_CLIPPY",
         "R_LINTR",
         "SALESFORCE_CODE_ANALYZER_APEX",
+        "SALESFORCE_CODE_ANALYZER_APEXGURU",
         "SALESFORCE_CODE_ANALYZER_AURA",
         "SALESFORCE_CODE_ANALYZER_FLOW",
         "SALESFORCE_CODE_ANALYZER_LWC",
@@ -8275,6 +8285,7 @@
         "TERRAFORM_TERRASCAN",
         "TERRAFORM_TFLINT",
         "TERRAFORM_TOFU_FMT",
+        "TERRAFORM_TOFU_VALIDATE",
         "TSX_BIOME",
         "TSX_ESLINT",
         "TYPESCRIPT_BIOME",
@@ -8423,6 +8434,7 @@
         "RUST_CLIPPY",
         "R_LINTR",
         "SALESFORCE_CODE_ANALYZER_APEX",
+        "SALESFORCE_CODE_ANALYZER_APEXGURU",
         "SALESFORCE_CODE_ANALYZER_AURA",
         "SALESFORCE_CODE_ANALYZER_FLOW",
         "SALESFORCE_CODE_ANALYZER_LWC",
@@ -8451,6 +8463,7 @@
         "TERRAFORM_TERRASCAN",
         "TERRAFORM_TFLINT",
         "TERRAFORM_TOFU_FMT",
+        "TERRAFORM_TOFU_VALIDATE",
         "TSX_BIOME",
         "TSX_ESLINT",
         "TYPESCRIPT_BIOME",
@@ -15648,6 +15661,7 @@
         "RUST_CLIPPY",
         "R_LINTR",
         "SALESFORCE_CODE_ANALYZER_APEX",
+        "SALESFORCE_CODE_ANALYZER_APEXGURU",
         "SALESFORCE_CODE_ANALYZER_AURA",
         "SALESFORCE_CODE_ANALYZER_FLOW",
         "SALESFORCE_CODE_ANALYZER_LWC",
@@ -15676,6 +15690,7 @@
         "TERRAFORM_TERRASCAN",
         "TERRAFORM_TFLINT",
         "TERRAFORM_TOFU_FMT",
+        "TERRAFORM_TOFU_VALIDATE",
         "TSX_BIOME",
         "TSX_ESLINT",
         "TYPESCRIPT_BIOME",
@@ -15837,6 +15852,7 @@
         "RUST_CLIPPY",
         "R_LINTR",
         "SALESFORCE_CODE_ANALYZER_APEX",
+        "SALESFORCE_CODE_ANALYZER_APEXGURU",
         "SALESFORCE_CODE_ANALYZER_AURA",
         "SALESFORCE_CODE_ANALYZER_FLOW",
         "SALESFORCE_CODE_ANALYZER_LWC",
@@ -15865,6 +15881,7 @@
         "TERRAFORM_TERRASCAN",
         "TERRAFORM_TFLINT",
         "TERRAFORM_TOFU_FMT",
+        "TERRAFORM_TOFU_VALIDATE",
         "TSX_BIOME",
         "TSX_ESLINT",
         "TYPESCRIPT_BIOME",
@@ -23205,6 +23222,33 @@
       "category": "REPOSITORY_BETTERLEAKS",
       "section": "PREPOSTCOMMANDS"
     },
+    "REPOSITORY_BETTERLEAKS_PR_COMMITS_SCAN": {
+      "name": "REPOSITORY_BETTERLEAKS_PR_COMMITS_SCAN",
+      "type": "boolean",
+      "title": "REPOSITORY_BETTERLEAKS: Scan Pull Request/Merge Request commits",
+      "description": "REPOSITORY_BETTERLEAKS: Scan only commits in the current Pull Request/Merge Request",
+      "default": false,
+      "category": "REPOSITORY_BETTERLEAKS",
+      "section": "GENERAL"
+    },
+    "REPOSITORY_BETTERLEAKS_PR_SOURCE_SHA": {
+      "name": "REPOSITORY_BETTERLEAKS_PR_SOURCE_SHA",
+      "type": "string",
+      "title": "REPOSITORY_BETTERLEAKS: Pull Request/Merge Request source SHA",
+      "description": "REPOSITORY_BETTERLEAKS: Source commit SHA of the Pull Request/Merge Request",
+      "default": "",
+      "category": "REPOSITORY_BETTERLEAKS",
+      "section": "GENERAL"
+    },
+    "REPOSITORY_BETTERLEAKS_PR_TARGET_SHA": {
+      "name": "REPOSITORY_BETTERLEAKS_PR_TARGET_SHA",
+      "type": "string",
+      "title": "REPOSITORY_BETTERLEAKS: Pull Request/Merge Request target SHA",
+      "description": "REPOSITORY_BETTERLEAKS: Target commit SHA of the Pull Request/Merge Request",
+      "default": "",
+      "category": "REPOSITORY_BETTERLEAKS",
+      "section": "GENERAL"
+    },
     "REPOSITORY_BETTERLEAKS_RULES_PATH": {
       "name": "REPOSITORY_BETTERLEAKS_RULES_PATH",
       "type": "string",
@@ -27805,6 +27849,189 @@
       "category": "R",
       "section": "PREPOSTCOMMANDS"
     },
+    "SALESFORCE_CODE_ANALYZER_APEXGURU_ARGUMENTS": {
+      "name": "SALESFORCE_CODE_ANALYZER_APEXGURU_ARGUMENTS",
+      "type": [
+        "array",
+        "string"
+      ],
+      "title": "SALESFORCE_CODE_ANALYZER_APEXGURU: Custom arguments",
+      "description": "SALESFORCE_CODE_ANALYZER_APEXGURU: User custom arguments to add in linter CLI call",
+      "category": "SALESFORCE_CODE_ANALYZER_APEXGURU",
+      "section": "LINTER_COMMAND",
+      "items_type": "string"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEXGURU_CLI_EXECUTABLE": {
+      "name": "SALESFORCE_CODE_ANALYZER_APEXGURU_CLI_EXECUTABLE",
+      "type": "array",
+      "title": "SALESFORCE_CODE_ANALYZER_APEXGURU: CLI Executable",
+      "description": "SALESFORCE_CODE_ANALYZER_APEXGURU: Override CLI executable used to build the linter command line (rarely needed)",
+      "default": [
+        [
+          "sf"
+        ]
+      ],
+      "category": "SALESFORCE_CODE_ANALYZER_APEXGURU",
+      "section": "LINTER_COMMAND",
+      "items_type": "string"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEXGURU_CLI_LINT_MODE": {
+      "name": "SALESFORCE_CODE_ANALYZER_APEXGURU_CLI_LINT_MODE",
+      "type": "string",
+      "title": "SALESFORCE_CODE_ANALYZER_APEXGURU: CLI lint mode",
+      "description": "SALESFORCE_CODE_ANALYZER_APEXGURU: Override default CLI lint mode used to call the linter (rarely needed)",
+      "default": "project",
+      "enum": [
+        "project"
+      ],
+      "category": "SALESFORCE_CODE_ANALYZER_APEXGURU",
+      "section": "LINTER_COMMAND"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEXGURU_COMMAND_REMOVE_ARGUMENTS": {
+      "name": "SALESFORCE_CODE_ANALYZER_APEXGURU_COMMAND_REMOVE_ARGUMENTS",
+      "type": [
+        "array",
+        "string"
+      ],
+      "title": "SALESFORCE_CODE_ANALYZER_APEXGURU: Custom remove arguments",
+      "description": "SALESFORCE_CODE_ANALYZER_APEXGURU: User custom arguments to remove before calling linter",
+      "category": "SALESFORCE_CODE_ANALYZER_APEXGURU",
+      "section": "LINTER_COMMAND",
+      "items_type": "string"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEXGURU_CONFIG_FILE": {
+      "name": "SALESFORCE_CODE_ANALYZER_APEXGURU_CONFIG_FILE",
+      "type": "string",
+      "title": "SALESFORCE_CODE_ANALYZER_APEXGURU: Custom config file name",
+      "description": "SALESFORCE_CODE_ANALYZER_APEXGURU: User custom config file name if different from default",
+      "default": "code-analyzer.yml",
+      "category": "SALESFORCE_CODE_ANALYZER_APEXGURU",
+      "section": "LINTER_COMMAND"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEXGURU_DIRECTORY": {
+      "name": "SALESFORCE_CODE_ANALYZER_APEXGURU_DIRECTORY",
+      "type": "string",
+      "title": "SALESFORCE_CODE_ANALYZER_APEXGURU: Directory containing SALESFORCE files",
+      "description": "Directory that must be found to activate linter. Use value \"any\" to always activate",
+      "default": "force-app",
+      "category": "SALESFORCE_CODE_ANALYZER_APEXGURU",
+      "section": "ACTIVATION"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEXGURU_DISABLE_ERRORS": {
+      "name": "SALESFORCE_CODE_ANALYZER_APEXGURU_DISABLE_ERRORS",
+      "type": "boolean",
+      "title": "SALESFORCE_CODE_ANALYZER_APEXGURU: Disable errors",
+      "description": "SALESFORCE_CODE_ANALYZER_APEXGURU: If true, SALESFORCE_CODE_ANALYZER_APEXGURU doesn't make MegaLinter fail even if errors are found",
+      "default": false,
+      "category": "SALESFORCE_CODE_ANALYZER_APEXGURU",
+      "section": "ERRORS"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEXGURU_DISABLE_ERRORS_IF_LESS_THAN": {
+      "name": "SALESFORCE_CODE_ANALYZER_APEXGURU_DISABLE_ERRORS_IF_LESS_THAN",
+      "type": "number",
+      "title": "SALESFORCE_CODE_ANALYZER_APEXGURU: Maximum number of errors allowed",
+      "description": "SALESFORCE_CODE_ANALYZER_APEXGURU: If the number of errors found is less than this value, SALESFORCE_CODE_ANALYZER_APEXGURU doesn't make MegaLinter fail",
+      "default": 0,
+      "category": "SALESFORCE_CODE_ANALYZER_APEXGURU",
+      "section": "ERRORS"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEXGURU_FILTER_REGEX_EXCLUDE": {
+      "name": "SALESFORCE_CODE_ANALYZER_APEXGURU_FILTER_REGEX_EXCLUDE",
+      "type": [
+        "string",
+        "array"
+      ],
+      "title": "SALESFORCE_CODE_ANALYZER_APEXGURU: Excluding Regex",
+      "description": "SALESFORCE_CODE_ANALYZER_APEXGURU: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with SALESFORCE_CODE_ANALYZER_APEXGURU_CLI_LINT_MODE = project",
+      "category": "SALESFORCE_CODE_ANALYZER_APEXGURU",
+      "section": "SCOPE",
+      "items_type": "string"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEXGURU_FILTER_REGEX_INCLUDE": {
+      "name": "SALESFORCE_CODE_ANALYZER_APEXGURU_FILTER_REGEX_INCLUDE",
+      "type": [
+        "string",
+        "array"
+      ],
+      "title": "SALESFORCE_CODE_ANALYZER_APEXGURU: Including Regex",
+      "description": "SALESFORCE_CODE_ANALYZER_APEXGURU: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with SALESFORCE_CODE_ANALYZER_APEXGURU_CLI_LINT_MODE = project",
+      "category": "SALESFORCE_CODE_ANALYZER_APEXGURU",
+      "section": "SCOPE",
+      "items_type": "string"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEXGURU_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "SALESFORCE_CODE_ANALYZER_APEXGURU_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "SALESFORCE_CODE_ANALYZER_APEXGURU: Forward excluded directories in project lint mode",
+      "description": "SALESFORCE_CODE_ANALYZER_APEXGURU: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "SALESFORCE_CODE_ANALYZER_APEXGURU",
+      "section": "GENERAL"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEXGURU_POST_COMMANDS": {
+      "name": "SALESFORCE_CODE_ANALYZER_APEXGURU_POST_COMMANDS",
+      "type": "array",
+      "title": "SALESFORCE_CODE_ANALYZER_APEXGURU: Post-run commands",
+      "description": "SALESFORCE_CODE_ANALYZER_APEXGURU: Define bash commands to run after running SALESFORCE_CODE_ANALYZER_APEXGURU",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "category": "SALESFORCE_CODE_ANALYZER_APEXGURU",
+      "section": "PREPOSTCOMMANDS"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEXGURU_PRE_COMMANDS": {
+      "name": "SALESFORCE_CODE_ANALYZER_APEXGURU_PRE_COMMANDS",
+      "type": "array",
+      "title": "SALESFORCE_CODE_ANALYZER_APEXGURU: Pre-run commands",
+      "description": "SALESFORCE_CODE_ANALYZER_APEXGURU: Define bash commands to run before running SALESFORCE_CODE_ANALYZER_APEXGURU",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "category": "SALESFORCE_CODE_ANALYZER_APEXGURU",
+      "section": "PREPOSTCOMMANDS"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEXGURU_RULES_PATH": {
+      "name": "SALESFORCE_CODE_ANALYZER_APEXGURU_RULES_PATH",
+      "type": "string",
+      "title": "SALESFORCE_CODE_ANALYZER_APEXGURU: Custom config file path",
+      "description": "SALESFORCE_CODE_ANALYZER_APEXGURU: Path where to find linter configuration file",
+      "category": "SALESFORCE_CODE_ANALYZER_APEXGURU",
+      "section": "LINTER_COMMAND"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEXGURU_TIMEOUT_SECONDS": {
+      "name": "SALESFORCE_CODE_ANALYZER_APEXGURU_TIMEOUT_SECONDS",
+      "type": "integer",
+      "title": "SALESFORCE_CODE_ANALYZER_APEXGURU: Timeout in seconds",
+      "description": "SALESFORCE_CODE_ANALYZER_APEXGURU: Maximum duration in seconds of the SALESFORCE_CODE_ANALYZER_APEXGURU run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "category": "SALESFORCE_CODE_ANALYZER_APEXGURU",
+      "section": "GENERAL"
+    },
+    "SALESFORCE_CODE_ANALYZER_APEXGURU_UNSECURED_ENV_VARIABLES": {
+      "name": "SALESFORCE_CODE_ANALYZER_APEXGURU_UNSECURED_ENV_VARIABLES",
+      "type": "array",
+      "title": "SALESFORCE_CODE_ANALYZER_APEXGURU: Unsecured env variables",
+      "description": "List of env variables explicitly not filtered before calling SALESFORCE_CODE_ANALYZER_APEXGURU and its pre/post commands",
+      "default": [],
+      "category": "SALESFORCE_CODE_ANALYZER_APEXGURU",
+      "section": "SECURITY",
+      "items_type": "string"
+    },
     "SALESFORCE_CODE_ANALYZER_APEX_ARGUMENTS": {
       "name": "SALESFORCE_CODE_ANALYZER_APEX_ARGUMENTS",
       "type": [
@@ -29465,6 +29692,7 @@
         "RUST_CLIPPY",
         "R_LINTR",
         "SALESFORCE_CODE_ANALYZER_APEX",
+        "SALESFORCE_CODE_ANALYZER_APEXGURU",
         "SALESFORCE_CODE_ANALYZER_AURA",
         "SALESFORCE_CODE_ANALYZER_FLOW",
         "SALESFORCE_CODE_ANALYZER_LWC",
@@ -29493,6 +29721,7 @@
         "TERRAFORM_TERRASCAN",
         "TERRAFORM_TFLINT",
         "TERRAFORM_TOFU_FMT",
+        "TERRAFORM_TOFU_VALIDATE",
         "TSX_BIOME",
         "TSX_ESLINT",
         "TYPESCRIPT_BIOME",
@@ -29786,7 +30015,7 @@
       "title": "Default secured environment variables",
       "description": "List of default secured environment variables that will be hidden when calling linters. Can contain string or regex patterns. This should generally not be overridden, use (additional) SECURED_ENV_VARIABLES instead to add more variables to the list.",
       "default": [
-        "PAT",
+        "(^|_)(PAT)($|_)",
         "SYSTEM_ACCESSTOKEN",
         "(^|_)(USERNAME)($|_)",
         "(^|_)(PASSWORD|PASSWD|PASS|PWD)($|_)",
@@ -33927,6 +34156,184 @@
       "description": "List of env variables explicitly not filtered before calling TERRAFORM_TOFU_FMT and its pre/post commands",
       "default": [],
       "category": "TERRAFORM_TOFU_FMT",
+      "section": "SECURITY",
+      "items_type": "string"
+    },
+    "TERRAFORM_TOFU_VALIDATE_ARGUMENTS": {
+      "name": "TERRAFORM_TOFU_VALIDATE_ARGUMENTS",
+      "type": [
+        "array",
+        "string"
+      ],
+      "title": "TERRAFORM_TOFU_VALIDATE: Custom arguments",
+      "description": "TERRAFORM_TOFU_VALIDATE: User custom arguments to add in linter CLI call",
+      "category": "TERRAFORM_TOFU_VALIDATE",
+      "section": "LINTER_COMMAND",
+      "items_type": "string"
+    },
+    "TERRAFORM_TOFU_VALIDATE_CLI_EXECUTABLE": {
+      "name": "TERRAFORM_TOFU_VALIDATE_CLI_EXECUTABLE",
+      "type": "array",
+      "title": "TERRAFORM_TOFU_VALIDATE: CLI Executable",
+      "description": "TERRAFORM_TOFU_VALIDATE: Override CLI executable used to build the linter command line (rarely needed)",
+      "default": [
+        [
+          "tofu"
+        ]
+      ],
+      "category": "TERRAFORM_TOFU_VALIDATE",
+      "section": "LINTER_COMMAND",
+      "items_type": "string"
+    },
+    "TERRAFORM_TOFU_VALIDATE_CLI_LINT_MODE": {
+      "name": "TERRAFORM_TOFU_VALIDATE_CLI_LINT_MODE",
+      "type": "string",
+      "title": "TERRAFORM_TOFU_VALIDATE: CLI lint mode",
+      "description": "TERRAFORM_TOFU_VALIDATE: Override default CLI lint mode used to call the linter (rarely needed)",
+      "default": "list_of_files",
+      "enum": [
+        "list_of_files"
+      ],
+      "category": "TERRAFORM_TOFU_VALIDATE",
+      "section": "LINTER_COMMAND"
+    },
+    "TERRAFORM_TOFU_VALIDATE_COMMAND_REMOVE_ARGUMENTS": {
+      "name": "TERRAFORM_TOFU_VALIDATE_COMMAND_REMOVE_ARGUMENTS",
+      "type": [
+        "array",
+        "string"
+      ],
+      "title": "TERRAFORM_TOFU_VALIDATE: Custom remove arguments",
+      "description": "TERRAFORM_TOFU_VALIDATE: User custom arguments to remove before calling linter",
+      "category": "TERRAFORM_TOFU_VALIDATE",
+      "section": "LINTER_COMMAND",
+      "items_type": "string"
+    },
+    "TERRAFORM_TOFU_VALIDATE_DISABLE_ERRORS": {
+      "name": "TERRAFORM_TOFU_VALIDATE_DISABLE_ERRORS",
+      "type": "boolean",
+      "title": "TERRAFORM_TOFU_VALIDATE: Disable errors",
+      "description": "TERRAFORM_TOFU_VALIDATE: If true, TERRAFORM_TOFU_VALIDATE doesn't make MegaLinter fail even if errors are found",
+      "default": false,
+      "category": "TERRAFORM_TOFU_VALIDATE",
+      "section": "ERRORS"
+    },
+    "TERRAFORM_TOFU_VALIDATE_DISABLE_ERRORS_IF_LESS_THAN": {
+      "name": "TERRAFORM_TOFU_VALIDATE_DISABLE_ERRORS_IF_LESS_THAN",
+      "type": "number",
+      "title": "TERRAFORM_TOFU_VALIDATE: Maximum number of errors allowed",
+      "description": "TERRAFORM_TOFU_VALIDATE: If the number of errors found is less than this value, TERRAFORM_TOFU_VALIDATE doesn't make MegaLinter fail",
+      "default": 0,
+      "category": "TERRAFORM_TOFU_VALIDATE",
+      "section": "ERRORS"
+    },
+    "TERRAFORM_TOFU_VALIDATE_FILE_EXTENSIONS": {
+      "name": "TERRAFORM_TOFU_VALIDATE_FILE_EXTENSIONS",
+      "type": "array",
+      "title": "TERRAFORM_TOFU_VALIDATE: Matching files extensions",
+      "description": "TERRAFORM_TOFU_VALIDATE: Override descriptor/linter matching files extensions that will be used to select files to lint",
+      "default": [
+        ".tofu"
+      ],
+      "examples": [
+        ".py",
+        ".myext"
+      ],
+      "category": "TERRAFORM_TOFU_VALIDATE",
+      "section": "SCOPE",
+      "items_type": "string"
+    },
+    "TERRAFORM_TOFU_VALIDATE_FILE_NAMES_REGEX": {
+      "name": "TERRAFORM_TOFU_VALIDATE_FILE_NAMES_REGEX",
+      "type": "array",
+      "title": "TERRAFORM_TOFU_VALIDATE: Matching file name regexes",
+      "description": "TERRAFORM_TOFU_VALIDATE: Override descriptor/linter matching file name regexes that will be used to select files to lint",
+      "default": [],
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "category": "TERRAFORM_TOFU_VALIDATE",
+      "section": "SCOPE",
+      "items_type": "string"
+    },
+    "TERRAFORM_TOFU_VALIDATE_FILTER_REGEX_EXCLUDE": {
+      "name": "TERRAFORM_TOFU_VALIDATE_FILTER_REGEX_EXCLUDE",
+      "type": [
+        "string",
+        "array"
+      ],
+      "title": "TERRAFORM_TOFU_VALIDATE: Excluding Regex",
+      "description": "",
+      "category": "TERRAFORM_TOFU_VALIDATE",
+      "section": "SCOPE",
+      "items_type": "string"
+    },
+    "TERRAFORM_TOFU_VALIDATE_FILTER_REGEX_INCLUDE": {
+      "name": "TERRAFORM_TOFU_VALIDATE_FILTER_REGEX_INCLUDE",
+      "type": [
+        "string",
+        "array"
+      ],
+      "title": "TERRAFORM_TOFU_VALIDATE: Including Regex",
+      "description": "",
+      "category": "TERRAFORM_TOFU_VALIDATE",
+      "section": "SCOPE",
+      "items_type": "string"
+    },
+    "TERRAFORM_TOFU_VALIDATE_POST_COMMANDS": {
+      "name": "TERRAFORM_TOFU_VALIDATE_POST_COMMANDS",
+      "type": "array",
+      "title": "TERRAFORM_TOFU_VALIDATE: Post-run commands",
+      "description": "TERRAFORM_TOFU_VALIDATE: Define bash commands to run after running TERRAFORM_TOFU_VALIDATE",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "category": "TERRAFORM_TOFU_VALIDATE",
+      "section": "PREPOSTCOMMANDS"
+    },
+    "TERRAFORM_TOFU_VALIDATE_PRE_COMMANDS": {
+      "name": "TERRAFORM_TOFU_VALIDATE_PRE_COMMANDS",
+      "type": "array",
+      "title": "TERRAFORM_TOFU_VALIDATE: Pre-run commands",
+      "description": "TERRAFORM_TOFU_VALIDATE: Define bash commands to run before running TERRAFORM_TOFU_VALIDATE",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "category": "TERRAFORM_TOFU_VALIDATE",
+      "section": "PREPOSTCOMMANDS"
+    },
+    "TERRAFORM_TOFU_VALIDATE_TIMEOUT_SECONDS": {
+      "name": "TERRAFORM_TOFU_VALIDATE_TIMEOUT_SECONDS",
+      "type": "integer",
+      "title": "TERRAFORM_TOFU_VALIDATE: Timeout in seconds",
+      "description": "TERRAFORM_TOFU_VALIDATE: Maximum duration in seconds of the TERRAFORM_TOFU_VALIDATE run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "category": "TERRAFORM_TOFU_VALIDATE",
+      "section": "GENERAL"
+    },
+    "TERRAFORM_TOFU_VALIDATE_UNSECURED_ENV_VARIABLES": {
+      "name": "TERRAFORM_TOFU_VALIDATE_UNSECURED_ENV_VARIABLES",
+      "type": "array",
+      "title": "TERRAFORM_TOFU_VALIDATE: Unsecured env variables",
+      "description": "List of env variables explicitly not filtered before calling TERRAFORM_TOFU_VALIDATE and its pre/post commands",
+      "default": [],
+      "category": "TERRAFORM_TOFU_VALIDATE",
       "section": "SECURITY",
       "items_type": "string"
     },

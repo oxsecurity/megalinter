@@ -332,6 +332,15 @@ class Megalinter:
                     active_linter.master, active_linter, run_before_linters=True
                 )
 
+            # Locate the excluded directories to forward once, here in the main
+            # process: the workspace walk is cached per process, so it would
+            # otherwise be repeated in every worker of the pool (and the cache
+            # is not even inherited with the "forkserver" start method, the
+            # Python 3.14 default on Linux). Done after the linter pre-commands
+            # so the directories they create are taken into account, and before
+            # the pool, so the computed values are pickled into the workers
+            self.prepare_project_exclude_directories()
+
             self.process_linters_parallel(self.active_linters, linters_do_fixes)
 
             for active_linter in self.active_linters:
@@ -421,6 +430,28 @@ class Megalinter:
         self.check_results()
 
     # noinspection PyMethodMayBeStatic
+    def prepare_project_exclude_directories(self):
+        forwarding_linters = [
+            active_linter
+            for active_linter in self.active_linters
+            if active_linter.cli_lint_mode == "project"
+            and active_linter.has_project_exclude_forwarding()
+            and active_linter.is_project_exclude_forwarding_active()
+        ]
+        if len(forwarding_linters) == 0:
+            return
+        # Prime the cache with the union of what every linter looks for: linters
+        # only differ by the candidates extracted from their FILTER_REGEX_EXCLUDE,
+        # so a single walk then serves all of them from the cache
+        searched = set()
+        for linter in forwarding_linters:
+            searched |= linter.get_project_exclude_search_entries()[0]
+        utils.find_workspace_excluded_directories(
+            self.request_id, self.workspace, searched
+        )
+        for linter in forwarding_linters:
+            linter.compute_project_exclude_directories()
+
     def process_linters_serial(self, active_linters):
         for linter in active_linters:
             linter.run()
@@ -1066,13 +1097,10 @@ class Megalinter:
         return all_files
 
     def _is_excluded_dir(self, rel_dir_path, excluded_directories):
-        # Single source of truth for directory-exclusion matching, shared by
-        # full-codebase (os.walk) and changed-files (git diff) modes: a
-        # directory matches by its basename at any nesting level, or by its
-        # workspace-relative path.
-        rel_dir_path = rel_dir_path.replace("\\", "/")
-        basename = rel_dir_path.rsplit("/", 1)[-1]
-        return basename in excluded_directories or rel_dir_path in excluded_directories
+        # Directory-exclusion matching (basename at any nesting level, or
+        # workspace-relative path) is shared with the project lint mode
+        # exclusions forwarding: it lives in utils
+        return utils.is_excluded_dir(rel_dir_path, excluded_directories)
 
     def _is_in_excluded_directory(self, rel_file, excluded_directories):
         # Return True when any ancestor directory of rel_file is excluded.
@@ -1085,26 +1113,9 @@ class Megalinter:
         return False
 
     def _normalize_excluded_directories(self, excluded_directories):
-        # Convert absolute paths located inside the workspace into
-        # workspace-relative paths so they match the values produced by
-        # os.walk(). Workspace-relative entries are kept unchanged; absolute
-        # paths outside the workspace are dropped (they can never match).
-        workspace_abs = os.path.abspath(self.workspace)
-        normalized = set()
-        for excluded_dir in excluded_directories:
-            if not excluded_dir:
-                continue
-            if os.path.isabs(excluded_dir):
-                try:
-                    rel = os.path.relpath(excluded_dir, workspace_abs)
-                except ValueError:
-                    continue
-                if rel == "." or rel.startswith(".."):
-                    continue
-                normalized.add(rel.replace("\\", "/"))
-            else:
-                normalized.add(excluded_dir)
-        return normalized
+        return utils.normalize_excluded_directories(
+            self.workspace, excluded_directories
+        )
 
     def list_files_all(self):
         # List all files under workspace root directory
@@ -1115,6 +1126,9 @@ class Megalinter:
             utils.get_excluded_directories(self.request_id)
         )
         all_files = []
+        # Excluded directories pruned below, recorded so that the project lint
+        # mode forwarding does not have to walk the workspace a second time
+        found_excluded_directories: dict[str, list[str]] = {}
         for dirpath, dirnames, filenames in os.walk(
             self.workspace, topdown=True, followlinks=False
         ):
@@ -1123,14 +1137,25 @@ class Megalinter:
             # descending into them (e.g. node_modules, .git, .venv, …).
             # This must happen before any `continue` to avoid walking
             # thousands of entries inside excluded trees.
-            dirnames[:] = [
-                d
-                for d in dirnames
-                if not self._is_excluded_dir(
-                    os.path.join(rel_dirpath, d).replace(".\\", "").replace("./", ""),
-                    excluded_directories,
+            kept_dirnames = []
+            for dirname in dirnames:
+                rel_dirname = (
+                    os.path.join(rel_dirpath, dirname)
+                    .replace(".\\", "")
+                    .replace("./", "")
+                    .replace("\\", "/")
                 )
-            ]
+                matched_entries = utils.match_excluded_dir_entries(
+                    rel_dirname, excluded_directories
+                )
+                if len(matched_entries) == 0:
+                    kept_dirnames += [dirname]
+                    continue
+                for matched in matched_entries:
+                    found_excluded_directories.setdefault(matched, []).append(
+                        rel_dirname
+                    )
+            dirnames[:] = kept_dirnames
             if rel_dirpath != "." and self._is_excluded_dir(
                 rel_dirpath, excluded_directories
             ):
@@ -1139,6 +1164,12 @@ class Megalinter:
                 os.path.relpath(os.path.join(dirpath, file), self.workspace)
                 for file in sorted(filenames)
             ]
+        utils.prime_workspace_excluded_directories(
+            self.request_id,
+            self.workspace,
+            excluded_directories,
+            found_excluded_directories,
+        )
         return all_files
 
     def list_git_ignored_files(self):

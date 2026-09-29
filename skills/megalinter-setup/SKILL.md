@@ -4,7 +4,7 @@ description: Install or upgrade MegaLinter on a repository. Use when the user wa
 argument-hint: "[install|upgrade|custom-flavor] [flavor, e.g. python|javascript|all]"
 allowed-tools: Bash, Read, Grep, Glob, Edit, Write, WebFetch, Skill, AskUserQuestion
 user-invocable: true
-licence: MegaLinter by OX Security, Copyright 2026 - https://megalinter.io/
+license: MegaLinter by OX Security, Copyright 2026 - https://megalinter.io/
 ---
 
 # MegaLinter setup
@@ -71,9 +71,19 @@ definitions they installed, were copied into the project (or the user profile) w
 update themselves** — so an upgraded repository can still be driven by guidance written for an older MegaLinter.
 Refresh them whenever you run an upgrade, and whenever the user asks to update the MegaLinter skills.
 
-**If MegaLinter was installed as an agent plugin** (its skills appear under namespaced names such as
-`megalinter:megalinter-setup`), the skills CLI does not manage them: update the plugin instead, and skip the rest of
-this section — the sub-agents are refreshed with it.
+**First determine how MegaLinter was installed**, because the two install modes update differently. Namespacing is
+not a reliable signal: only some platforms prefix plugin skills with the plugin name (`megalinter:megalinter-setup`),
+and no platform lets you query where a skill came from. Determine it from the filesystem, and ask the user when it
+stays ambiguous:
+
+| Evidence in the repository or user profile                                                                                  | Install mode |
+|:----------------------------------------------------------------------------------------------------------------------------|:-------------|
+| A MegaLinter plugin folder (`megalinter` under a `plugins/` directory of your platform)                                     | plugin       |
+| `.claude/skills/megalinter*`, `.github/skills/megalinter*`, `.agents/skills/megalinter*` or the same under the user profile | skills       |
+| Neither, or both                                                                                                            | ask the user |
+
+**If it was installed as an agent plugin**, the skills CLI does not manage it: update the plugin instead, and skip the
+rest of this section — the sub-agents are refreshed with it.
 
 | Platform                 | Update command                                      |
 |:-------------------------|:----------------------------------------------------|
@@ -130,11 +140,14 @@ Validate the file against its JSON schema: <https://raw.githubusercontent.com/ox
 This skill ships three sub-agent definitions in its `agents/` folder (`megalinter-watcher`, `megalinter-runner`, `megalinter-fixer`) that make the other MegaLinter skills faster and cheaper by keeping CI logs and linter output out of the main context.
 
 **Skip this whole step if MegaLinter was installed as an agent plugin**: the plugin already ships the three
-definitions, and you can see them listed under their namespaced names (`megalinter:megalinter-watcher`,
-`megalinter:megalinter-runner`, `megalinter:megalinter-fixer`). Copying them again would install a second set
-under the bare names, drifting on the next plugin update.
+definitions (declared for Claude Code and Cursor, and carried as `com.github.copilot/agents/*.agent.md` for the
+Copilot clients). Copying them again would install a second set that drifts on the next plugin update.
 
-If the coding agent you are running on supports custom sub-agent definitions (Claude Code, OpenCode, GitHub Copilot, Codex... — you know whether you do), read `agents/INSTALL.md` in this skill's directory and follow the instructions for your platform: copy the three `agents/*.md` files to your platform's agents folder, adapting the frontmatter when needed.
+Confirm before skipping: check that the three agents are actually listed among the agents available to you, under
+either their namespaced (`megalinter:megalinter-watcher`) or bare (`megalinter-watcher`) name. If they are not — the
+platform may not load the plugin's agents — tell the user, and install them from `agents/` as described below.
+
+If the coding agent you are running on supports custom sub-agent definitions (Claude Code, OpenCode, GitHub Copilot, Codex... — you know whether you do), read `agents/INSTALL.md` in this skill's directory and follow the instructions for your platform: copy the three `agents/*.md` files to your platform's agents folder, adapting the file name and the frontmatter when needed. Copilot in particular requires a `.agent.md` suffix in `.github/agents/`, and rejects the `model: haiku` override.
 
 If a target file already exists, ask the user before overwriting it. In upgrade mode the existing files are precisely
 what needs replacing: show the user what changed, and preserve any customization they made (a model override, an

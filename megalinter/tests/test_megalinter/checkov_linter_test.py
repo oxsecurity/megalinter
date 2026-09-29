@@ -1,12 +1,17 @@
 #!/usr/bin/env python3
 """
-Unit tests for CheckovLinter automatic secrets framework delegation.
+Unit tests for CheckovLinter automatic secrets framework delegation and
+pull request diff scan.
 
 When another active linter of the run is a dedicated secret scanner
 (betterleaks, kingfisher, secretlint, trufflehog), checkov must be called
 with "--skip-framework secrets" to avoid duplicating the secrets scan,
 unless the user already expressed a framework intent through
 REPOSITORY_CHECKOV_ARGUMENTS or the checkov config file.
+
+In a pull request run with VALIDATE_ALL_CODEBASE=false, checkov scans only the
+files updated in the pull request, and must never be called with an empty
+--file argument (issue #8802).
 """
 
 import os
@@ -14,6 +19,7 @@ import tempfile
 import unittest
 import uuid
 from types import SimpleNamespace
+from unittest import mock
 
 from megalinter import config, linter_factory, utils
 
@@ -40,9 +46,10 @@ def _build_checkov_linter(request_id, workspace, extra_config=None):
     return linter_factory.build_linter("REPOSITORY", "checkov", base_params)
 
 
-def _master_with_active_linters(linter_names):
+def _master_with_active_linters(linter_names, all_diff_files=None):
     return SimpleNamespace(
-        active_linters=[SimpleNamespace(name=name) for name in linter_names]
+        active_linters=[SimpleNamespace(name=name) for name in linter_names],
+        all_diff_files=all_diff_files if all_diff_files is not None else [],
     )
 
 
@@ -183,6 +190,83 @@ class CheckovLinterTest(unittest.TestCase):
             self.assertEqual(first_cmd.count("--skip-framework"), 1)
             self.assertEqual(second_cmd.count("--skip-framework"), 1)
             self.assertEqual(second_cmd.count("secrets"), 1)
+
+
+class CheckovLinterPullRequestTest(unittest.TestCase):
+    def setUp(self):
+        self.request_id = str(uuid.uuid1())
+
+    def tearDown(self):
+        config.delete(self.request_id)
+
+    def _build_pr_checkov(self, workspace, all_diff_files, extra_config=None):
+        pr_config = {"VALIDATE_ALL_CODEBASE": "false"}
+        if extra_config is not None:
+            pr_config.update(extra_config)
+        checkov = _build_checkov_linter(self.request_id, workspace, pr_config)
+        checkov.master = _master_with_active_linters(
+            ["REPOSITORY_CHECKOV"], all_diff_files
+        )
+        return checkov
+
+    def test_pull_request_updated_files_are_scanned(self):
+        with tempfile.TemporaryDirectory() as workspace:
+            checkov = self._build_pr_checkov(workspace, ["infra/main.tf"])
+            with mock.patch("megalinter.utils.is_pr", return_value=True):
+                cmd = checkov.build_lint_command()
+            self.assertIn("--file", cmd)
+            self.assertEqual(cmd[cmd.index("--file") + 1], "infra/main.tf")
+
+    def test_pull_request_without_updated_file_does_not_add_file_argument(self):
+        with tempfile.TemporaryDirectory() as workspace:
+            checkov = self._build_pr_checkov(workspace, [])
+            with mock.patch("megalinter.utils.is_pr", return_value=True):
+                cmd = checkov.build_lint_command()
+            self.assertNotIn("--file", cmd)
+            self.assertIn("--directory", cmd)
+
+    def test_pull_request_without_updated_file_deactivates_checkov(self):
+        with tempfile.TemporaryDirectory() as workspace:
+            checkov = self._build_pr_checkov(workspace, [])
+            with mock.patch("megalinter.utils.is_pr", return_value=True):
+                checkov.collect_files([])
+            self.assertFalse(checkov.is_active)
+
+    def test_pull_request_with_updated_files_keeps_checkov_active(self):
+        with tempfile.TemporaryDirectory() as workspace:
+            checkov = self._build_pr_checkov(workspace, ["infra/main.tf"])
+            with mock.patch("megalinter.utils.is_pr", return_value=True):
+                checkov.collect_files(["infra/main.tf"])
+            self.assertTrue(checkov.is_active)
+
+    def test_updated_files_are_not_added_outside_project_lint_mode(self):
+        with tempfile.TemporaryDirectory() as workspace:
+            checkov = self._build_pr_checkov(
+                workspace,
+                ["infra/main.tf"],
+                {"REPOSITORY_CHECKOV_CLI_LINT_MODE": "list_of_files"},
+            )
+            with mock.patch("megalinter.utils.is_pr", return_value=True):
+                cmd = checkov.build_lint_command()
+            # MegaLinter sends the files it kept itself in list_of_files mode,
+            # and there is none here, so no --file argument must be built
+            self.assertNotIn("--file", cmd)
+
+    def test_lint_command_is_not_run_without_file_in_list_of_files_mode(self):
+        with tempfile.TemporaryDirectory() as workspace:
+            checkov = _build_checkov_linter(
+                self.request_id,
+                workspace,
+                {"REPOSITORY_CHECKOV_CLI_LINT_MODE": "list_of_files"},
+            )
+            checkov.master = _master_with_active_linters(["REPOSITORY_CHECKOV"])
+            checkov.reporters = []
+            checkov.files = []
+            with mock.patch.object(checkov, "process_linter") as process_linter_mock:
+                checkov.run()
+            process_linter_mock.assert_not_called()
+            self.assertEqual(checkov.status, "success")
+            self.assertEqual(checkov.return_code, 0)
 
 
 if __name__ == "__main__":

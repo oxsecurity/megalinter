@@ -120,21 +120,7 @@ def run_command(command_info, log_key, mega_linter, linter=None):
     if "secured_env" not in command_info:
         command_info["secured_env"] = True
     command_info = complete_command(command_info)
-    unsecured_env_variables = []
-    if linter is not None:
-        unsecured_env_variables = linter.unsecured_env_variables
-    subprocess_env = {
-        **config.build_env(
-            mega_linter.request_id, command_info["secured_env"], unsecured_env_variables
-        )
-    }
-    # Complete with replacement variables if necessary
-    if "replacement_env_vars" in command_info:
-        for replacement in command_info["replacement_env_vars"]:
-            if replacement["var_src"] in subprocess_env:
-                var_src_name = replacement["var_src"]
-                var_dest_name = replacement["var_dest"]
-                subprocess_env[var_dest_name] = subprocess_env[var_src_name]
+    subprocess_env = build_command_env(command_info, mega_linter, linter)
     add_in_logs(
         linter,
         log_key,
@@ -191,6 +177,34 @@ def run_command(command_info, log_key, mega_linter, linter=None):
         "status": return_code,
         "stdout": return_stdout,
     }
+
+
+# Build the environment variables sent to a pre/post command subprocess
+def build_command_env(command_info, mega_linter, linter=None):
+    unsecured_env_variables = []
+    if linter is not None:
+        unsecured_env_variables = linter.unsecured_env_variables
+    subprocess_env = {
+        **config.build_env(
+            mega_linter.request_id, command_info["secured_env"], unsecured_env_variables
+        )
+    }
+    # Complete with replacement variables if necessary.
+    # Source values are read from the raw config and not from subprocess_env, as
+    # they can be secured env variables already replaced by HIDDEN_BY_MEGALINTER
+    if "replacement_env_vars" in command_info:
+        raw_config = config.get(mega_linter.request_id)
+        for replacement in command_info["replacement_env_vars"]:
+            var_src_name = replacement["var_src"]
+            var_dest_name = replacement["var_dest"]
+            if var_src_name in raw_config:
+                var_src_value = raw_config[var_src_name]
+                subprocess_env[var_dest_name] = (
+                    var_src_value
+                    if isinstance(var_src_value, str)
+                    else str(var_src_value)
+                )
+    return subprocess_env
 
 
 def complete_command(command_info: dict):

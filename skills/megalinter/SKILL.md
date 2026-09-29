@@ -4,7 +4,7 @@ description: Entry point for everything MegaLinter. Use when the user wants to l
 argument-hint: "[request, e.g. 'run megalinter and fix the errors' or 'make the CI lint job pass']"
 allowed-tools: Bash, Read, Grep, Glob, Skill, Agent, AskUserQuestion
 user-invocable: true
-licence: MegaLinter by OX Security, Copyright 2026 - https://megalinter.io/
+license: MegaLinter by OX Security, Copyright 2026 - https://megalinter.io/
 ---
 
 # MegaLinter orchestrator
@@ -40,8 +40,10 @@ You orchestrate MegaLinter on this repository. MegaLinter is a mega-linter aggre
 
 If your environment supports spawning sub-agents (e.g. a Task/Agent tool) and the `megalinter-watcher`, `megalinter-runner`, `megalinter-fixer` agent definitions are available:
 
-- Installed as an **agent plugin** (Claude Code, Cursor), they ship with the plugin and are namespaced — `megalinter:megalinter-watcher`, `megalinter:megalinter-runner`, `megalinter:megalinter-fixer`. Use whichever of the two forms your platform lists.
-- Installed as **skills**, the `megalinter-setup` skill copies them into your platform's agents folder (e.g. `.claude/agents/`, `.opencode/agent/`, `.github/agents/`) under their bare names.
+- Installed as an **agent plugin** (Claude Code, Cursor, Copilot), they ship with the plugin. Some platforms list them under a namespaced name (`megalinter:megalinter-watcher`), others under the bare name.
+- Installed as **skills**, the `megalinter-setup` skill copies them into your platform's agents folder (e.g. `.claude/agents/`, `.opencode/agent/`, `.github/agents/` where the file name ends with `.agent.md`) under their bare names.
+
+Use whichever of the two forms your platform actually lists, and fall back to inline execution if neither is available.
 
 Then:
 
