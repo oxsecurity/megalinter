@@ -35,6 +35,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **CLOJURE_CLJ_KONDO** now really forwards `EXCLUDED_DIRECTORIES` and `ADDITIONAL_EXCLUDED_DIRECTORIES` in `project` lint mode: they were never applied before, so files in folders like `node_modules` or `.wireit` could be reported
     - The directories are passed as a merged `:output {:exclude-files [...]}` inline configuration, so your own `:output :exclude-files` patterns in `.clj-kondo/config.edn` are kept
     - Disable the forwarding with `CLOJURE_CLJ_KONDO_FORWARD_EXCLUDED_DIRECTORIES: false`
+  - **REPOSITORY_TRIVY** and **REPOSITORY_TRIVY_SBOM** do not end the run with `--skip-db-update cannot be specified on the first run` anymore when a registry rate-limits the download of the vulnerability database ([#8807](https://github.com/oxsecurity/megalinter/issues/8807))
+    - trivy is now pointed at **all official database mirrors** (`mirror.gcr.io`, `ghcr.io` and `public.ecr.aws`) and uses the first one that answers
+    - Download retries are **spaced with increasing waits** (10s, 20s, 40s, 60s), so they no longer all land within the same rate limit minute
+    - The final attempt against an already downloaded database now runs only when there is one, and an explicit message tells you what to do when there is not
+    - New variables to tune it: `REPOSITORY_TRIVY_DB_REPOSITORIES`, `REPOSITORY_TRIVY_JAVA_DB_REPOSITORIES`, `REPOSITORY_TRIVY_DB_RETRY_ATTEMPTS`, `REPOSITORY_TRIVY_DB_RETRY_INITIAL_DELAY`, `REPOSITORY_TRIVY_DB_RETRY_MAX_DELAY`, and their `REPOSITORY_TRIVY_SBOM_` counterparts
 
 - Reporters
 
