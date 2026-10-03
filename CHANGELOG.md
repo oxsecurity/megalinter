@@ -11,6 +11,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Breaking changes
 
 - Core
+  - The **LLM Advisor** supports a new provider, **Cheaper Inference**, an OpenAI-compatible LLM gateway: set **`LLM_PROVIDER: cheaperinference`** and **`CHEAPER_INFERENCE_API_KEY`** in your environment to get fix suggestions through [Cheaper Inference](https://cheaperinference.com) (see the [Cheaper Inference provider page](https://megalinter.io/latest/llm-provider/llm_provider_cheaperinference/))
 
 - New linters
 

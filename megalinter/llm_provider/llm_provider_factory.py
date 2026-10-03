@@ -24,6 +24,10 @@ class LLMProviderFactory:
         "deepseek": ("llm_provider_deepseek", "DeepSeekProvider"),
         "grok": ("llm_provider_grok", "GrokProvider"),
         "orcarouter": ("llm_provider_orcarouter", "OrcaRouterProvider"),
+        "cheaperinference": (
+            "llm_provider_cheaperinference",
+            "CheaperInferenceProvider",
+        ),
     }
 
     @classmethod
@@ -78,6 +82,7 @@ class LLMProviderFactory:
             "deepseek": "DeepSeek models",
             "grok": "Grok (xAI) models",
             "orcarouter": "OrcaRouter models",
+            "cheaperinference": "Cheaper Inference models",
         }
 
     @classmethod
@@ -92,4 +97,5 @@ class LLMProviderFactory:
             "DEEPSEEK_API_KEY",
             "GROK_API_KEY",
             "ORCAROUTER_API_KEY",
+            "CHEAPER_INFERENCE_API_KEY",
         ]
