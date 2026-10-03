@@ -11,6 +11,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Breaking changes
 
 - Core
+  - The **LLM Advisor** supports **API Route**, an OpenAI-compatible multi-model gateway: set **`LLM_PROVIDER: api-route`** and **`API_ROUTE_API_KEY`** to use API Route models through MegaLinter.
 
 - New linters
 

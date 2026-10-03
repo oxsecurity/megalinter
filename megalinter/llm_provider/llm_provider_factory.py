@@ -24,6 +24,7 @@ class LLMProviderFactory:
         "deepseek": ("llm_provider_deepseek", "DeepSeekProvider"),
         "grok": ("llm_provider_grok", "GrokProvider"),
         "orcarouter": ("llm_provider_orcarouter", "OrcaRouterProvider"),
+        "api-route": ("llm_provider_api_route", "ApiRouteProvider"),
     }
 
     @classmethod
@@ -78,6 +79,7 @@ class LLMProviderFactory:
             "deepseek": "DeepSeek models",
             "grok": "Grok (xAI) models",
             "orcarouter": "OrcaRouter models",
+            "api-route": "API Route models",
         }
 
     @classmethod
@@ -92,4 +94,5 @@ class LLMProviderFactory:
             "DEEPSEEK_API_KEY",
             "GROK_API_KEY",
             "ORCAROUTER_API_KEY",
+            "API_ROUTE_API_KEY",
         ]
