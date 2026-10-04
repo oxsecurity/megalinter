@@ -629,3 +629,39 @@ CVE-2026-85731
 # Remove once vale, betterleaks, tflint and OpenTofu ship releases built with
 # x/crypto >= 0.55.0.
 CVE-2026-56854
+
+# --- urllib3 vendored in pip (all images) ---
+# pip 26.2.1, the latest pip release, vendors urllib3 2.7.0 (pip/_vendor/urllib3). The urllib3
+# installed for MegaLinter itself is already on the fixed 2.8.0: only pip's private copy is
+# flagged, and it can not be upgraded independently of pip.
+# CVE-2026-97687: target-server TLS settings leak onto the HTTPS proxy connection when an
+# application configures proxy_ssl_context / use_forwarding_for_https together with distinct
+# target TLS settings. pip does not configure HTTPS forwarding nor per-target TLS identities.
+# CVE-2026-97689: unbounded memory allocation when a malicious server sends an unterminated
+# chunk-size line. Availability only.
+# pip is used while building the images, and at runtime only if the user explicitly runs it
+# in a pre/post command, against the package index they chose themselves.
+# These ids also cover the urllib3 used by MegaLinter (2.8.0, fixed): keep it >= 2.8.0.
+# Remove once pip vendors urllib3 >= 2.8.0.
+CVE-2026-97687
+CVE-2026-97689
+
+# --- npm braces (mega-linter-runner/yarn.lock) ---
+# CVE-2026-93687 is a stack-exhaustion DoS in braces' recursive AST walkers: a deeply nested
+# brace pattern terminates the Node process with an uncaught RangeError. Availability only.
+# mega-linter-runner only reaches braces through micromatch (fast-glob / globby), expanding
+# glob patterns taken from its own code and from the user's local paths - never from network
+# traffic or any other attacker-controlled source - in a one-shot CLI.
+# No upgrade path today: the advisory covers every release up to 3.0.3, which is the latest.
+# Remove once a patched braces release ships.
+CVE-2026-93687
+
+# --- npm http-cache-semantics (mega-linter-runner/yarn.lock) ---
+# CVE-2026-93748 lets a client using a large max-stale directive read another user's response
+# from a SHARED HTTP cache. mega-linter-runner only reaches http-cache-semantics through
+# make-fetch-happen (npm-registry-fetch, sigstore, tuf-js), whose cache is the local on-disk
+# npm cache of the single user running the CLI: there is no shared cache and no other user
+# whose responses could be disclosed.
+# No upgrade path today: the advisory covers every release up to 4.2.0, which is the latest.
+# Remove once a patched http-cache-semantics release ships.
+CVE-2026-93748
