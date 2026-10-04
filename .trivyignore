@@ -665,3 +665,50 @@ CVE-2026-93687
 # No upgrade path today: the advisory covers every release up to 4.2.0, which is the latest.
 # Remove once a patched http-cache-semantics release ships.
 CVE-2026-93748
+
+# --- npm axios (npm-groovy-lint) ---
+# npm-groovy-lint 18.0.0, its latest release, pins axios 1.18.1 (fixed in 1.20.0).
+# npm-groovy-lint uses axios for one thing only: plain HTTP/1.1 calls from its CLI to the
+# CodeNarc server it spawns itself on 127.0.0.1 (lib/codenarc-caller.js). None of the
+# vulnerable paths is entered:
+#  - CVE-2026-101898, CVE-2026-101901: HTTP/2 adapter only (httpVersion: 2 is never set).
+#  - CVE-2026-101907: fetch adapter with maxRedirects: 0 (the default Node http adapter is
+#    used, and the local server never redirects).
+#  - CVE-2026-101903: ReDoS on an attacker-controlled data: URL (only the fixed local
+#    http://127.0.0.1 URL is requested).
+#  - CVE-2026-101906: ReDoS on a crafted redirect Location (same: no redirect from the
+#    local CodeNarc server).
+#  - CVE-2026-101905, CVE-2026-101909: prototype-pollution gadgets that need a separate
+#    prototype-pollution flaw in the same process, fed by attacker-controlled input.
+# Remove once npm-groovy-lint ships a release depending on axios >= 1.20.0.
+CVE-2026-101898
+CVE-2026-101901
+CVE-2026-101903
+CVE-2026-101905
+CVE-2026-101906
+CVE-2026-101907
+CVE-2026-101909
+
+# --- Java jackson (npm-groovy-lint) ---
+# npm-groovy-lint 18.0.0, its latest release, bundles jackson-core and jackson-databind
+# 2.22.0 with CodeNarc (fixed in 2.22.3). All five are parser / deserializer DoS flaws
+# (ReDoS on stringified numbers, unbounded error-token buffer, unbounded Duration parsing,
+# type id cache growth, quadratic forward-reference completion). Jackson is used there to
+# read the linter's own configuration and the requests sent by its own CLI on 127.0.0.1,
+# not untrusted network input. Worst case is a DoS aborting the one-shot linter container.
+# Remove once npm-groovy-lint bundles jackson >= 2.22.3.
+CVE-2026-89407
+CVE-2026-89425
+CVE-2026-68497
+CVE-2026-91776
+CVE-2026-91777
+
+# --- npm brace-expansion (gherkin-lint) ---
+# Two more stack-exhaustion DoS in brace-expansion (parseCommaParts recursion, nested brace
+# groups), same context as CVE-2026-14257 / CVE-2026-69152 above: brace-expansion 1.1.14 is
+# resolved through gherkin-lint's glob@7 / minimatch@3 chain and only expands glob patterns
+# coming from the repository's own configuration, so the worst case remains a repo owner
+# DoS-ing their own one-shot CI job. gherkin-lint 4.2.4 (2023) is its latest release.
+# Remove once the bundled linters' dependency trees resolve brace-expansion >= 1.1.20.
+CVE-2026-102276
+CVE-2026-102278
