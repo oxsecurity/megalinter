@@ -114,7 +114,7 @@ sf code-analyzer run --rule-selector apexguru --workspace . --include-suggestion
 ### Help content
 
 ```shell
- ›   Warning: @salesforce/cli update available from 2.151.6 to 2.151.7.
+ ›   Warning: @salesforce/cli update available from 2.151.6 to 2.152.14.
 Analyze your code with a selection of rules to ensure good coding practices.
 
 USAGE
