@@ -23,7 +23,7 @@ class TrivyLinter(Linter):
                 return return_code, return_output
             if attempt < max_retries - 1:
                 time.sleep(3.0)
-                logging.info(
+                self.log_linter_notice(
                     f"[Trivy] Hit TOOMANYREQUESTS: try again (attempt {attempt + 2}/{max_retries})"
                 )
             else:

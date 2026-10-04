@@ -35,6 +35,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **CLOJURE_CLJ_KONDO** now really forwards `EXCLUDED_DIRECTORIES` and `ADDITIONAL_EXCLUDED_DIRECTORIES` in `project` lint mode: they were never applied before, so files in folders like `node_modules` or `.wireit` could be reported
     - The directories are passed as a merged `:output {:exclude-files [...]}` inline configuration, so your own `:output :exclude-files` patterns in `.clj-kondo/config.edn` are kept
     - Disable the forwarding with `CLOJURE_CLJ_KONDO_FORWARD_EXCLUDED_DIRECTORIES: false`
+  - **Linter notices** (such as checkov `--skip-framework secrets`) are now displayed inside the section of their linter in the console log, instead of out of context before the first linter
 
 - Reporters
 

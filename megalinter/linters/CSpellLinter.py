@@ -48,7 +48,7 @@ class CSpellLinter(Linter):
                     f.write(file_names_txt)
                 self.files += [self.temp_file_name]
             except Exception as e:
-                logging.info(
+                self.log_linter_notice(
                     "[cspell] Unable to check file names on a readonly workspace: "
                     + str(e)
                 )
