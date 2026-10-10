@@ -46,7 +46,7 @@ linters:
         - ARG TARGETPLATFORM
         - |
           # renovate: datasource=github-tags depName=nxadm/rakudo-pkg
-          ARG RAKU_RAKU_VERSION=2026.03
+          ARG RAKU_RAKU_VERSION=v2026.08
           ARG RAKU_RAKU_ALPINE_VERSION=3.23
         - |
           RUN case ${TARGETPLATFORM} in \
