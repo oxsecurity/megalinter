@@ -21,6 +21,7 @@ This directory contains the modular LLM provider system for MegaLinter's AI-powe
 | DeepSeek     | `llm_provider_deepseek.py`    | DeepSeek Chat, DeepSeek Coder   | Yes          |
 | Grok         | `llm_provider_grok.py`        | Grok Beta (xAI)                 | Yes          |
 | OrcaRouter   | `llm_provider_orcarouter.py`  | Any model routed by OrcaRouter  | Yes          |
+| API Route     | `llm_provider_api_route.py`    | GPT, Claude, Gemini, and more   | Yes          |
 | Hugging Face | `llm_provider_huggingface.py` | Any HF transformer model        | Optional     |
 | Ollama       | `llm_provider_ollama.py`      | Llama, CodeLlama, Mistral, etc. | No           |
 

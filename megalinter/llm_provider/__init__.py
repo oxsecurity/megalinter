@@ -22,6 +22,7 @@ _LAZY_PROVIDER_MODULES = {
     "DeepSeekProvider": "llm_provider_deepseek",
     "GrokProvider": "llm_provider_grok",
     "OrcaRouterProvider": "llm_provider_orcarouter",
+    "ApiRouteProvider": "llm_provider_api_route",
 }
 
 __all__ = [
