@@ -12615,7 +12615,7 @@ Usage<span class="w"> </span>of<span class="w"> </span>revive:
 <span class="c"># renovate: datasource=github-tags depName=mgechev/revive</span>
 <span class="k">ARG</span><span class="w"> </span><span class="nv">GO_REVIVE_VERSION</span><span class="o">=</span>v1.16.0
 <span class="c"># renovate: datasource=docker depName=golang versioning=semver</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">GO_IMAGE_VERSION</span><span class="o">=</span><span class="m">1</span>.27.1
+<span class="k">ARG</span><span class="w"> </span><span class="nv">GO_IMAGE_VERSION</span><span class="o">=</span><span class="m">1</span>.27.2
 <span class="k">FROM</span><span class="w"> </span><span class="s">golang:${GO_IMAGE_VERSION}-alpine</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">revive</span>
 <span class="c">## The golang image used as a builder is a temporary workaround (https://github.com/mgechev/revive/issues/787)</span>
 <span class="c">## for the released revive binaries not returning version numbers (devel).</span>
