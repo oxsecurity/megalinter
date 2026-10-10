@@ -299,7 +299,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=flake8
-          ARG PIP_FLAKE8_VERSION=7.3.0
+          ARG PIP_FLAKE8_VERSION=7.4.1
       pip:
         - flake8==${PIP_FLAKE8_VERSION}
     supported_platforms:
