@@ -384,6 +384,15 @@ CVE-2026-56852
 # Remove once pip revendors msgpack >= 1.2.1 / setuptools >= 78.1.1.
 GHSA-6v7p-g79w-8964
 CVE-2025-47273
+# - CVE-2026-97687 (HTTPS proxy TLS interception) and CVE-2026-97689 (unbounded memory
+#   DoS) hit urllib3 2.7.0, the copy vendored under pip/_vendor and listed in the same
+#   SBOM. Both only matter when pip itself downloads over a proxy / from a hostile
+#   server, which happens at Docker build time against PyPI, never at lint time.
+#   MegaLinter's own urllib3 is 2.8.0 (uv.lock); pip 26.2.1 is the latest release and
+#   still pins urllib3==2.7.0 in its vendor.txt.
+# Remove once pip revendors urllib3 >= 2.8.0.
+CVE-2026-97687
+CVE-2026-97689
 
 # --- Java deps (pmd, scalafix, salesforce code analyzer, npm-groovy-lint) ---
 # jline-remote-telnet is JLine's *telnet server* component, bundled transitively
