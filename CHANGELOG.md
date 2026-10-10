@@ -144,6 +144,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [grype](https://github.com/anchore/grype) from 0.119.0 to **0.120.1** on 2026-10-10
   - [syft](https://github.com/anchore/syft) from 1.52.0 to **1.54.1** on 2026-10-10
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.98 to **0.1.99** on 2026-10-10
+  - [black](https://black.readthedocs.io/en/stable/) from 26.10.0 to **26.10.1** on 2026-10-10
+  - [semgrep](https://semgrep.dev/) from 1.177.0 to **1.180.0** on 2026-10-10
 <!-- linter-versions-end -->
 
 ## [v10.1.0] - 2026-09-05
