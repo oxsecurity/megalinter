@@ -94,6 +94,22 @@ CVE-2026-56862
 CVE-2026-33818
 CVE-2026-46600
 
+# Go 1.27.2 / 1.26.9 security release: three more stdlib DoS CVEs, flagged on the
+# toolchain baked into actionlint, shfmt, golangci-lint, editorconfig-checker and revive.
+# - CVE-2026-78667 (net/http): DoS via crafted HTTP Range headers, in the file-serving
+#   code of an HTTP *server*. No linter serves files over HTTP.
+# - CVE-2026-78669 (net/http HTTP/2): DoS via excessive HTTP/2 SETTINGS frames sent by a
+#   hostile peer. These linters open no HTTP/2 connection at lint time.
+# - CVE-2026-97031 (crypto/tls): DoS via multiple ECH outer extension references in a
+#   ClientHello, i.e. against a TLS *server*. No linter terminates TLS.
+# actionlint 1.7.12, shfmt 3.14.1, editorconfig-checker 4.0.2 are the latest upstream
+# releases, and golangci-lint follows the linter auto-upgrade; revive is compiled in-repo
+# and gets fixed when GO_IMAGE_VERSION (renovate-managed) reaches 1.27.2.
+# Remove once those binaries are built with go >= 1.27.2 / 1.26.9.
+CVE-2026-78667
+CVE-2026-78669
+CVE-2026-97031
+
 # --- Go x/mod module-authentication (editorconfig-checker, syft, trivy) ---
 # CVE-2026-56864 and CVE-2026-56865 are supply-chain integrity flaws in
 # golang.org/x/mod < 0.40.0: a malicious GOSUMDB could serve arbitrary module content
@@ -384,15 +400,6 @@ CVE-2026-56852
 # Remove once pip revendors msgpack >= 1.2.1 / setuptools >= 78.1.1.
 GHSA-6v7p-g79w-8964
 CVE-2025-47273
-# - CVE-2026-97687 (HTTPS proxy TLS interception) and CVE-2026-97689 (unbounded memory
-#   DoS) hit urllib3 2.7.0, the copy vendored under pip/_vendor and listed in the same
-#   SBOM. Both only matter when pip itself downloads over a proxy / from a hostile
-#   server, which happens at Docker build time against PyPI, never at lint time.
-#   MegaLinter's own urllib3 is 2.8.0 (uv.lock); pip 26.2.1 is the latest release and
-#   still pins urllib3==2.7.0 in its vendor.txt.
-# Remove once pip revendors urllib3 >= 2.8.0.
-CVE-2026-97687
-CVE-2026-97689
 
 # --- Java deps (pmd, scalafix, salesforce code analyzer, npm-groovy-lint) ---
 # jline-remote-telnet is JLine's *telnet server* component, bundled transitively
