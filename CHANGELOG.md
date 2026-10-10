@@ -136,6 +136,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [vale](https://vale.sh/) from 3.21.0 to **3.22.0** on 2026-09-28
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.16.2 to **1.16.3** on 2026-09-28
   - [terragrunt](https://docs.terragrunt.com/reference/cli/commands/hcl/fmt/) from 1.1.4 to **1.1.5** on 2026-09-28
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 5.3.0 to **5.3.1** on 2026-10-10
+  - [black](https://black.readthedocs.io/en/stable/) from 26.5.1 to **26.10.0** on 2026-10-10
+  - [isort](https://pycqa.github.io/isort/) from 9.0.1 to **9.0.2** on 2026-10-10
+  - [checkov](https://www.checkov.io/) from 3.3.17 to **3.3.19** on 2026-10-10
+  - [grype](https://github.com/anchore/grype) from 0.119.0 to **0.120.1** on 2026-10-10
+  - [syft](https://github.com/anchore/syft) from 1.52.0 to **1.54.1** on 2026-10-10
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.98 to **0.1.99** on 2026-10-10
 <!-- linter-versions-end -->
 
 ## [v10.1.0] - 2026-09-05

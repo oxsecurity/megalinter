@@ -50,7 +50,7 @@ Black is successfully used by many projects, small and big, and has become the d
 
 ## black documentation
 
-- Version in MegaLinter: **26.5.1**
+- Version in MegaLinter: **26.10.0**
 - Visit [Official Web Site](https://black.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure black rules](https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-format){target=_blank}
   - If custom `pyproject.toml` config file isn't found, [pyproject.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/pyproject.toml){target=_blank} will be used
@@ -184,7 +184,7 @@ Options:
                                   expected to make it into the stable style
                                   Black's next major release. Implies
                                   --preview.
-  --enable-unstable-feature [string_processing|hug_parens_with_braces_and_square_brackets|wrap_comprehension_in|simplify_power_operator_hugging|wrap_long_dict_values_in_parens|fix_if_guard_explosion_in_case_statement|pyi_overload_group_blank_lines|pyi_blank_line_before_decorated_class]
+  --enable-unstable-feature [string_processing|hug_parens_with_braces_and_square_brackets|wrap_comprehension_in|simplify_power_operator_hugging|wrap_long_dict_values_in_parens|fix_if_guard_explosion_in_case_statement|pyi_overload_group_blank_lines|fix_unnecessary_parens_in_indexed_assignment|pyi_blank_line_before_decorated_class|pyi_blank_line_after_function_docstring|hug_comparator|parenthesize_tuple_in_yield|fmt_off_class_blank_lines|remove_redundant_generator_parentheses|normalize_tstring_prefix|remove_redundant_unpacking_parentheses|fix_magic_trailing_comma_trailer_split|keep_dict_keys_with_operators|blank_line_after_stub_method]
                                   Enable specific features included in the
                                   `--unstable` style. Requires `--preview`. No
                                   compatibility guarantees are provided on the
