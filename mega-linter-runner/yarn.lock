@@ -2832,9 +2832,9 @@ yallist@^5.0.0:
   integrity sha512-YgvUTfwqyc7UXVMrB+SImsVYSmTS8X/tSrtdNZMImM+n7+QTriRXyXim0mBrTXNeqzVF0KWGgHPeiyViFFrNDw==
 
 yeoman-environment@^7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/yeoman-environment/-/yeoman-environment-7.0.0.tgz#bf90e28bbfed20f6b4c312ba203221861f5f18b7"
-  integrity sha512-QZUZ/J2WudYjDDFSqUwH7OvUmykyrwTD9+Z1/OmG+ZJYy0ZDjIv9UNq9FHn3m9UW4fGjy1lWEsjl3BwzyEPNyg==
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/yeoman-environment/-/yeoman-environment-7.2.0.tgz#2590d76d73e4def5324f4e74ae4bc24e58af28e5"
+  integrity sha512-R5apOf4ixsiQuOws4lOKRZyEuB8dqgRmKV4drolx6qrXk3t/YyBLfycAEhDx/HvhJ+ktuZxuSF0g7CNZX9KHtA==
   dependencies:
     "@yeoman/adapter" "^5.0.0"
     "@yeoman/conflicter" "^4.2.0"
