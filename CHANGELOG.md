@@ -146,6 +146,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.98 to **0.1.99** on 2026-10-10
   - [black](https://black.readthedocs.io/en/stable/) from 26.10.0 to **26.10.1** on 2026-10-10
   - [semgrep](https://semgrep.dev/) from 1.177.0 to **1.180.0** on 2026-10-10
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.75 to **0.2.78** on 2026-10-10
 <!-- linter-versions-end -->
 
 ## [v10.1.0] - 2026-09-05
