@@ -252,7 +252,7 @@ ARG PIP_TYPING_EXTENSIONS_VERSION=4.16.0
 # renovate: datasource=pypi depName=black
 ARG PIP_BLACK_VERSION=26.5.1
 # renovate: datasource=pypi depName=flake8
-ARG PIP_FLAKE8_VERSION=7.3.0
+ARG PIP_FLAKE8_VERSION=7.4.1
 # renovate: datasource=pypi depName=isort
 ARG PIP_ISORT_VERSION=9.0.1
 # renovate: datasource=pypi depName=mypy
