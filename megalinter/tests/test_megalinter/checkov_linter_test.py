@@ -76,6 +76,17 @@ class CheckovLinterTest(unittest.TestCase):
             cmd = self._lint_command_with_betterleaks(checkov)
             self._assert_single_skip_framework(cmd, "secrets")
 
+    def test_skip_framework_notice_displayed_once_in_linter_section(self):
+        with tempfile.TemporaryDirectory() as workspace:
+            checkov = _build_checkov_linter(self.request_id, workspace)
+            self._lint_command_with_betterleaks(checkov)
+            self._lint_command_with_betterleaks(checkov)
+            notices = [
+                line for line in checkov.log_lines_pre if "--skip-framework" in line
+            ]
+            self.assertEqual(len(notices), 1)
+            self.assertIn("REPOSITORY_BETTERLEAKS", notices[0])
+
     def test_skip_framework_added_for_each_dedicated_secret_scanner(self):
         for scanner in [
             "REPOSITORY_BETTERLEAKS",

@@ -105,17 +105,13 @@ class CheckovLinter(Linter):
                 and self.config_file_defines_frameworks() is False
             ):
                 cmd += ["--skip-framework", "secrets"]
-                # build_lint_command runs once per file in file lint mode:
-                # log the delegation notice only once per linter run
-                if getattr(self, "skip_secrets_framework_logged", False) is False:
-                    logging.info(
-                        "[Checkov] Adding '--skip-framework secrets' to the checkov "
-                        "command, as secrets scanning is delegated to "
-                        f"{', '.join(active_secret_scanners)}. Define --framework or "
-                        "--skip-framework in REPOSITORY_CHECKOV_ARGUMENTS to override "
-                        "this behavior."
-                    )
-                    self.skip_secrets_framework_logged = True
+                self.log_linter_notice(
+                    "[Checkov] Adding '--skip-framework secrets' to the checkov "
+                    "command, as secrets scanning is delegated to "
+                    f"{', '.join(active_secret_scanners)}. Define --framework or "
+                    "--skip-framework in REPOSITORY_CHECKOV_ARGUMENTS to override "
+                    "this behavior."
+                )
         return cmd
 
     # Names of the dedicated secret scanners active in the current run.
