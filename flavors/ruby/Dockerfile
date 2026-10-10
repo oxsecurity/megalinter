@@ -191,7 +191,7 @@ ARG REPOSITORY_TRIVY_SBOM_VERSION=0.74.0
 # renovate: datasource=rubygems depName=rubocop
 ARG GEM_RUBOCOP_VERSION=1.91.0
 # renovate: datasource=rubygems depName=rubocop-github
-ARG GEM_RUBOCOP_GITHUB_VERSION=0.27.0
+ARG GEM_RUBOCOP_GITHUB_VERSION=0.29.0
 # renovate: datasource=rubygems depName=rubocop-performance
 ARG GEM_RUBOCOP_PERFORMANCE_VERSION=1.27.0
 # renovate: datasource=rubygems depName=rubocop-rails
