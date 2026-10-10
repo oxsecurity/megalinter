@@ -33,7 +33,7 @@ ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=4.0.2
 # renovate: datasource=github-tags depName=mgechev/revive
 ARG GO_REVIVE_VERSION=v1.16.0
 # renovate: datasource=docker depName=golang versioning=semver
-ARG GO_IMAGE_VERSION=1.27.1
+ARG GO_IMAGE_VERSION=1.27.2
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.8.0-alpine
 # renovate: datasource=docker depName=yoheimuta/protolint
@@ -195,7 +195,7 @@ ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=13.0.5
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
 ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=13.0.5
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.177.0
+ARG PIP_SEMGREP_VERSION=1.180.0
 # renovate: datasource=github-tags depName=anchore/syft
 ARG REPOSITORY_SYFT_VERSION=1.52.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy

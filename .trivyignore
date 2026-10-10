@@ -95,7 +95,7 @@ CVE-2026-33818
 CVE-2026-46600
 
 # Go 1.27.2 / 1.26.9 security release: three more stdlib DoS CVEs, flagged on the
-# toolchain baked into actionlint, shfmt, golangci-lint, editorconfig-checker and revive.
+# toolchain baked into every Go binary of the images.
 # - CVE-2026-78667 (net/http): DoS via crafted HTTP Range headers, in the file-serving
 #   code of an HTTP *server*. No linter serves files over HTTP.
 # - CVE-2026-78669 (net/http HTTP/2): DoS via excessive HTTP/2 SETTINGS frames sent by a
@@ -103,8 +103,10 @@ CVE-2026-46600
 # - CVE-2026-97031 (crypto/tls): DoS via multiple ECH outer extension references in a
 #   ClientHello, i.e. against a TLS *server*. No linter terminates TLS.
 # actionlint 1.7.12, shfmt 3.14.1, editorconfig-checker 4.0.2 are the latest upstream
-# releases, and golangci-lint follows the linter auto-upgrade; revive is compiled in-repo
-# and gets fixed when GO_IMAGE_VERSION (renovate-managed) reaches 1.27.2.
+# releases, and the other Go binaries (golangci-lint, kubeconform, protolint, ls-lint,
+# betterleaks, vale, terraform/tofu, terragrunt, tflint, grype, syft, trivy) are copied
+# from upstream images or release archives too. revive and dustilock are compiled
+# in-repo and now build on golang 1.27.2, so they are genuinely fixed.
 # Remove once those binaries are built with go >= 1.27.2 / 1.26.9.
 CVE-2026-78667
 CVE-2026-78669
@@ -539,6 +541,40 @@ CVE-2026-13697
 # is never handed to sf's extractor.
 # Remove once the pinned @salesforce/cli release vendors tar >= 7.5.21.
 CVE-2026-73566
+# Five more advisories in the Salesforce CLI's vendored node_modules. @salesforce/cli
+# 2.153.5, the latest release, still shrinkwraps basic-ftp 5.3.1, fast-uri 3.1.5,
+# source-map-js 1.2.1 and undici 6.28.0 / 7.29.0 / 8.9.0, so there is no upgrade path.
+# - CVE-2026-102990 (basic-ftp): DoS while parsing a crafted Unix directory listing sent
+#   by an FTP server. basic-ftp is only reached through sf's proxy-agent chain for an
+#   ftp:// PAC/proxy URL the user would configure themselves; nothing lists FTP folders
+#   at lint time.
+# - CVE-2026-84292 (fast-uri): authority injection when SERIALIZING a URI object with an
+#   unvalidated port. fast-uri is ajv's URI resolver, used to validate sf's own JSON
+#   schemas; no URI is built from workspace content.
+# - CVE-2026-93749 (source-map-js): DoS on a malformed indexed source map. Availability
+#   only, bounded to one linter crashing in its short-lived CI container.
+# - CVE-2026-19534 (undici): DoS when a WebSocket server answers with an unrequested
+#   subprotocol. code-analyzer opens no WebSocket.
+# - CVE-2026-84961 (undici): BalancedPool drops its `connect` options, so a custom TLS
+#   configuration is not applied to the pooled connections. Only code that builds a
+#   BalancedPool is affected; @jsforce/jsforce-node 3.10.24, which carries the flagged
+#   undici 8.9.0 and performs the org calls (ApexGuru), contains no BalancedPool usage.
+# Remove once the pinned @salesforce/cli release vendors basic-ftp >= 6.2.1,
+# fast-uri >= 3.1.7, source-map-js >= 1.2.2 and undici >= 6.28.1 / 7.29.1 / 8.10.2.
+CVE-2026-102990
+CVE-2026-84292
+CVE-2026-93749
+CVE-2026-19534
+CVE-2026-84961
+# CVE-2026-68494 (jackson-core 2.15.2) and CVE-2026-75140 (jsoup 1.22.2) are two more
+# jars shipped by @salesforce/plugin-code-analyzer 5.16.0, the latest release. Both are
+# parser DoS: jackson-core's async (non-blocking) JSON parser, which the engines do not
+# use to read their own config/report files, and jsoup on deeply nested XML. jsoup can
+# be fed workspace files, so this one is not claimed unreachable: the worst case is the
+# linter crashing in its CI container on a file committed to the analysed repository.
+# Remove once code-analyzer bundles jackson-core >= 2.18.8 and jsoup >= 1.23.2.
+CVE-2026-68494
+CVE-2026-75140
 # CVE-2026-71556 is a symlink-follow flaw in go-git worktree WRITE operations: an
 # attacker who plants a symlink in a worktree can make the application overwrite
 # files (e.g. .git/config) when it writes through that path. The vulnerable

@@ -33,7 +33,7 @@ ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=4.0.2
 # renovate: datasource=github-tags depName=mgechev/revive
 ARG GO_REVIVE_VERSION=v1.16.0
 # renovate: datasource=docker depName=golang versioning=semver
-ARG GO_IMAGE_VERSION=1.27.1
+ARG GO_IMAGE_VERSION=1.27.2
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.8.0-alpine
 # renovate: datasource=github-releases depName=JohnnyMorganz/StyLua extractVersion=^v(?<version>.+)$
@@ -183,7 +183,7 @@ ARG NPM_SALESFORCE_CLI_VERSION=2.151.6
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=3.0.7
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=8.9.0
+ARG SFDX_HARDIS_VERSION=8.16.0
 # renovate: datasource=github-tags depName=coursier/coursier
 ARG SCALA_COURSIER_VERSION=2.1.24
 # renovate: datasource=npm depName=typescript
@@ -358,7 +358,7 @@ ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=13.0.5
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
 ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=13.0.5
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.177.0
+ARG PIP_SEMGREP_VERSION=1.180.0
 # renovate: datasource=github-tags depName=anchore/syft
 ARG REPOSITORY_SYFT_VERSION=1.52.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
