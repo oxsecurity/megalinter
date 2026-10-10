@@ -541,17 +541,17 @@
     "@sigstore/core" "^3.2.1"
     "@sigstore/protobuf-specs" "^0.5.0"
 
-"@simple-git/args-pathspec@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@simple-git/args-pathspec/-/args-pathspec-1.0.3.tgz#9ef4a2ad5f49ab4056362d03f93f775b93118ca5"
-  integrity sha512-ngJMaHlsWDTfjyq9F3VIQ8b7NXbBLq5j9i5bJ6XLYtD6qlDXT7fdKY2KscWWUF8t18xx052Y/PUO1K1TRc9yKA==
+"@simple-git/args-pathspec@1.0.4", "@simple-git/args-pathspec@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@simple-git/args-pathspec/-/args-pathspec-1.0.4.tgz#808f3b9eb40c34e8fe215c10a470812090043536"
+  integrity sha512-EtMX6XjRWSastG2SdkmSQByPtJ9dx/NIjnHbpQPCYt62j4RmSx5rgLTGpw0YCjF5h191gZOmBfheOT23cRSFdw==
 
-"@simple-git/argv-parser@^1.1.0":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@simple-git/argv-parser/-/argv-parser-1.1.1.tgz#275b839c6eeb5030872c73b1ea839a416885da9d"
-  integrity sha512-Q9lBcfQ+VQCpQqGJFHe5yooOS5hGdLFFbJ5R+R5aDsnkPCahtn1hSkMcORX65J2Z5lxSkD0lQorMsncuBQxYUw==
+"@simple-git/argv-parser@2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@simple-git/argv-parser/-/argv-parser-2.0.1.tgz#37c5168866b2635179630e372516aebd2690010d"
+  integrity sha512-M++IaVWrN+vYalilOHfwvT2IL3wYZtVEBQpmX6DLSOJLtxbZ+SUeIDE3IiPogzhPACLajwtxfa5rp+ZX1FczzQ==
   dependencies:
-    "@simple-git/args-pathspec" "^1.0.3"
+    "@simple-git/args-pathspec" "^1.0.4"
 
 "@sindresorhus/merge-streams@^4.0.0":
   version "4.0.0"
@@ -2432,15 +2432,15 @@ sigstore@^4.0.0:
     "@sigstore/tuf" "^4.0.2"
     "@sigstore/verify" "^3.1.1"
 
-simple-git@^3.36.0:
-  version "3.36.0"
-  resolved "https://registry.yarnpkg.com/simple-git/-/simple-git-3.36.0.tgz#019b28c0a35847ee34299c6fb63770ab1b2dffb7"
-  integrity sha512-cGQjLjK8bxJw4QuYT7gxHw3/IouVESbhahSsHrX97MzCL1gu2u7oy38W6L2ZIGECEfIBG4BabsWDPjBxJENv9Q==
+simple-git@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/simple-git/-/simple-git-4.0.2.tgz#3697e35c050699ce88d4203a101e7db8da21acb7"
+  integrity sha512-l0sIsv9VrPwovKELFDBOj/lhmIcbMvxBk2B+hRhsMM4/VL3gKtuZvYnBNixVo+N/0HnqQx2cBdLvxnAbygHpqA==
   dependencies:
     "@kwsites/file-exists" "^1.1.1"
     "@kwsites/promise-deferred" "^1.1.1"
-    "@simple-git/args-pathspec" "^1.0.3"
-    "@simple-git/argv-parser" "^1.1.0"
+    "@simple-git/args-pathspec" "1.0.4"
+    "@simple-git/argv-parser" "2.0.1"
     debug "^4.4.0"
 
 sisteransi@^1.0.5:
@@ -2858,10 +2858,10 @@ yeoman-environment@^7.0.0:
     untildify "^6.0.0"
     which-package-manager "^1.0.1"
 
-yeoman-generator@^9.0.0:
-  version "9.2.0"
-  resolved "https://registry.yarnpkg.com/yeoman-generator/-/yeoman-generator-9.2.0.tgz#633b654cfdc22b4ad7c8e235fcf24df4cdda3a64"
-  integrity sha512-ynyFY2BIEE21+feOeDJb8BUrv0C8G/+PWqk7mmf1y1CSKRxBzyyOrrB5eeO96nwvCMiZ2KYjdMFAw5tn+FMy9Q==
+yeoman-generator@^10.0.1:
+  version "10.0.1"
+  resolved "https://registry.yarnpkg.com/yeoman-generator/-/yeoman-generator-10.0.1.tgz#92d75b9d2fd0b744afdc9415e5fca809deb6b1de"
+  integrity sha512-soThDMqOoqxxxDyJzKAXsU9qg6KaiACoeL6V7GGy3RZaJ7Sxi2aji8GIcRx+y7eH0A7lWObP0gCq1Ob+0VEDkw==
   dependencies:
     "@types/debug" "^4.1.13"
     "@types/lodash-es" "^4.17.12"
@@ -2875,7 +2875,7 @@ yeoman-generator@^9.0.0:
     minimist "^1.2.8"
     read-package-up "^12.0.0"
     semver "^7.8.5"
-    simple-git "^3.36.0"
+    simple-git "^4.0.2"
     sort-keys "^6.0.1"
     text-table "^0.2.0"
     type-fest "^5.9.0"

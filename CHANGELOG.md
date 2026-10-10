@@ -44,6 +44,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - mega-linter-runner
   - **`--container-engine container`**: run MegaLinter with Apple's native macOS container engine (Apple Silicon only, no Docker Desktop needed): <https://github.com/apple/container>
+  - **Node.js 22.18+ or 24.11+** is now required (was 22.0+): upgrade Node.js if `npx mega-linter-runner` reports an unsupported engine. This comes with a security upgrade of the `simple-git` dependency
 
 - Agent Skills
   - **megalinter-fix** now explains how to fix clj-kondo `:type-mismatch` and `:constant-condition` findings, and the difference between the top-level `:exclude-files` and `:output :exclude-files` clj-kondo settings
