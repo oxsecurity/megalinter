@@ -12,7 +12,7 @@
 #############################################################################################
 #ARGTOP__START
 # renovate: datasource=github-tags depName=mgechev/revive
-ARG GO_REVIVE_VERSION=v1.16.0
+ARG GO_REVIVE_VERSION=v1.17.0
 # renovate: datasource=docker depName=golang versioning=semver
 ARG GO_IMAGE_VERSION=1.27.2
 #ARGTOP__END
