@@ -232,7 +232,7 @@ linters:
           ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
         - |-
           # renovate: datasource=docker depName=golang versioning=semver
-          ARG GO_IMAGE_VERSION=1.27.1
+          ARG GO_IMAGE_VERSION=1.27.2
         # The golang image used as a builder is a temporary workaround
         # Dustilock is not released as a binary or container
         - |-
@@ -830,7 +830,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=semgrep
-          ARG PIP_SEMGREP_VERSION=1.177.0
+          ARG PIP_SEMGREP_VERSION=1.180.0
         - |-
           # Wrap semgrep so its OCaml 5 runtime does not abort with
           # "Failed to allocate signal stack for domain 0", which happens when the

@@ -45,7 +45,7 @@ Example:
 
 ## jscpd documentation
 
-- Version in MegaLinter: **5.3.0**
+- Version in MegaLinter: **5.3.1**
 - Visit [Official Web Site](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#readme){target=_blank}
 - See [How to configure jscpd rules](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#config-file){target=_blank}
   - If custom `.jscpd.json` config file isn't found, [.jscpd.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.jscpd.json){target=_blank} will be used
@@ -272,8 +272,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=5.3.0
+ARG NPM_JSCPD_VERSION=5.3.1
 ```
 
 - NPM packages (node.js):
-  - [jscpd@5.3.0](https://www.npmjs.com/package/jscpd/v/5.3.0)
+  - [jscpd@5.3.1](https://www.npmjs.com/package/jscpd/v/5.3.1)
