@@ -31,7 +31,7 @@ ARG DOCKERFILE_HADOLINT_VERSION=v2.15.1-alpine
 # renovate: datasource=docker depName=mstruebing/editorconfig-checker
 ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=4.0.2
 # renovate: datasource=github-tags depName=mgechev/revive
-ARG GO_REVIVE_VERSION=v1.16.0
+ARG GO_REVIVE_VERSION=v1.17.0
 # renovate: datasource=docker depName=golang versioning=semver
 ARG GO_IMAGE_VERSION=1.27.2
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
