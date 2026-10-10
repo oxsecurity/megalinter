@@ -210,7 +210,7 @@ ARG CLJ_STYLE_VERSION=0.17.642
 # renovate: datasource=pypi depName=cfn-lint
 ARG PIP_CFN_LINT_VERSION=1.57.0
 # renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=5.3.1
+ARG NPM_JSCPD_VERSION=5.3.3
 # renovate: datasource=nuget depName=csharpier
 ARG CSHARP_CSHARPIER_VERSION=1.2.6
 # renovate: datasource=nuget depName=roslynator.dotnet.cli
