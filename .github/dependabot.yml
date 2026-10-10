@@ -42,6 +42,45 @@ updates:
     ignore:
       - dependency-name: "*"
 
+  # Same for the other ecosystems that have fixtures under .automation/test:
+  # the poison fixtures in good/.wireit/ (e.g. requirements.txt with django==1.2)
+  # must stay vulnerable, they guard the excluded directories forwarding.
+  - package-ecosystem: "pip"
+    directories:
+      - "/.automation/test/**"
+    schedule:
+      interval: "weekly"
+    ignore:
+      - dependency-name: "*"
+  - package-ecosystem: "uv"
+    directories:
+      - "/.automation/test/**"
+    schedule:
+      interval: "weekly"
+    ignore:
+      - dependency-name: "*"
+  - package-ecosystem: "bundler"
+    directories:
+      - "/.automation/test/**"
+    schedule:
+      interval: "weekly"
+    ignore:
+      - dependency-name: "*"
+  - package-ecosystem: "gomod"
+    directories:
+      - "/.automation/test/**"
+    schedule:
+      interval: "weekly"
+    ignore:
+      - dependency-name: "*"
+  - package-ecosystem: "cargo"
+    directories:
+      - "/.automation/test/**"
+    schedule:
+      interval: "weekly"
+    ignore:
+      - dependency-name: "*"
+
   # Maintain dependencies for ruby with bundler
   - package-ecosystem: "bundler"
     directory: "/"
