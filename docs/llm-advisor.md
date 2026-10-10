@@ -6,24 +6,25 @@ MegaLinter includes an AI-powered advisor that provides intelligent fix suggesti
 
 ## Features
 
-- **Multi-Provider Support**: Works with OpenAI, Anthropic, Google Gemini, Hugging Face, Mistral AI, DeepSeek, Grok, OrcaRouter, and local Ollama models
+- **Multi-Provider Support**: Works with OpenAI, Anthropic, Google Gemini, Hugging Face, Mistral AI, DeepSeek, Grok, OrcaRouter, Cheaper Inference, and local Ollama models
 - **Context-Aware Suggestions**: Analyzes code context around errors for better recommendations
 - **Integrated Reporting**: AI suggestions appear directly in MegaLinter reports
 - **Configurable**: Control which models to use and how many errors to analyze
 
 ## Supported LLM Providers
 
-| Provider                                                  | API Key Required | Local/Cloud | Documentation                                            |
-|-----------------------------------------------------------|------------------|-------------|----------------------------------------------------------|
-| [OpenAI](llm-provider/llm_provider_openai.md)             | Yes              | Cloud       | [Setup Guide](llm-provider/llm_provider_openai.md)       |
-| [Anthropic](llm-provider/llm_provider_anthropic.md)       | Yes              | Cloud       | [Setup Guide](llm-provider/llm_provider_anthropic.md)    |
-| [Google GenAI](llm-provider/llm_provider_google_genai.md) | Yes              | Cloud       | [Setup Guide](llm-provider/llm_provider_google_genai.md) |
-| [Mistral AI](llm-provider/llm_provider_mistralai.md)      | Yes              | Cloud       | [Setup Guide](llm-provider/llm_provider_mistralai.md)    |
-| [DeepSeek](llm-provider/llm_provider_deepseek.md)         | Yes              | Cloud       | [Setup Guide](llm-provider/llm_provider_deepseek.md)     |
-| [Grok](llm-provider/llm_provider_grok.md)                 | Yes              | Cloud       | [Setup Guide](llm-provider/llm_provider_grok.md)         |
-| [OrcaRouter](llm-provider/llm_provider_orcarouter.md)     | Yes              | Cloud       | [Setup Guide](llm-provider/llm_provider_orcarouter.md)   |
-| [Ollama](llm-provider/llm_provider_ollama.md)             | No               | Local       | [Setup Guide](llm-provider/llm_provider_ollama.md)       |
-| [Hugging Face](llm-provider/llm_provider_huggingface.md)  | Optional         | Local/Cloud | [Setup Guide](llm-provider/llm_provider_huggingface.md)  |
+| Provider                                                           | API Key Required | Local/Cloud | Documentation                                                |
+|--------------------------------------------------------------------|------------------|-------------|--------------------------------------------------------------|
+| [OpenAI](llm-provider/llm_provider_openai.md)                      | Yes              | Cloud       | [Setup Guide](llm-provider/llm_provider_openai.md)           |
+| [Anthropic](llm-provider/llm_provider_anthropic.md)                | Yes              | Cloud       | [Setup Guide](llm-provider/llm_provider_anthropic.md)        |
+| [Google GenAI](llm-provider/llm_provider_google_genai.md)          | Yes              | Cloud       | [Setup Guide](llm-provider/llm_provider_google_genai.md)     |
+| [Mistral AI](llm-provider/llm_provider_mistralai.md)               | Yes              | Cloud       | [Setup Guide](llm-provider/llm_provider_mistralai.md)        |
+| [DeepSeek](llm-provider/llm_provider_deepseek.md)                  | Yes              | Cloud       | [Setup Guide](llm-provider/llm_provider_deepseek.md)         |
+| [Grok](llm-provider/llm_provider_grok.md)                          | Yes              | Cloud       | [Setup Guide](llm-provider/llm_provider_grok.md)             |
+| [OrcaRouter](llm-provider/llm_provider_orcarouter.md)              | Yes              | Cloud       | [Setup Guide](llm-provider/llm_provider_orcarouter.md)       |
+| [Cheaper Inference](llm-provider/llm_provider_cheaperinference.md) | Yes              | Cloud       | [Setup Guide](llm-provider/llm_provider_cheaperinference.md) |
+| [Ollama](llm-provider/llm_provider_ollama.md)                      | No               | Local       | [Setup Guide](llm-provider/llm_provider_ollama.md)           |
+| [Hugging Face](llm-provider/llm_provider_huggingface.md)           | Optional         | Local/Cloud | [Setup Guide](llm-provider/llm_provider_huggingface.md)      |
 
 See [All LLM Providers](llm-providers.md) for a complete comparison and setup instructions.
 
@@ -38,7 +39,7 @@ See [All LLM Providers](llm-providers.md) for a complete comparison and setup in
 LLM_ADVISOR_ENABLED: true
 
 # Choose your provider and model
-LLM_PROVIDER: openai  # openai, anthropic, google, huggingface, mistral, deepseek, grok, orcarouter, ollama
+LLM_PROVIDER: openai  # openai, anthropic, google, huggingface, mistral, deepseek, grok, orcarouter, cheaperinference, ollama
 LLM_MODEL_NAME: gpt-4.1-mini
 LLM_MAX_TOKENS: 1000
 LLM_TEMPERATURE: 0.1
