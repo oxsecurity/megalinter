@@ -337,7 +337,7 @@ ARG PIP_NBQA_VERSION=1.9.1
 ARG NPM_PYRIGHT_VERSION=1.1.414
 # renovate: datasource=pypi depName=ruff
 ARG PIP_RUFF_VERSION=0.16.8
-# renovate: datasource=github-tags depName=nxadm/rakudo-pkg
+# renovate: datasource=github-tags depName=nxadm/rakudo-pkg extractVersion=^v(?<version>.+)$
 ARG RAKU_RAKU_VERSION=2026.03
 ARG RAKU_RAKU_ALPINE_VERSION=3.23
 
