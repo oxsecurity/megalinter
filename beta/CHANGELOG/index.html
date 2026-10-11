@@ -15640,6 +15640,7 @@
 </ul>
 <ul>
 <li>CI<ul>
+<li><strong>Dependabot</strong> no longer opens version or security update PRs for the pip, uv, bundler, gomod and cargo test fixtures under <code>.automation/test/</code>: they must stay outdated, in particular the <code>.wireit</code> poison fixtures guarding the excluded directories forwarding</li>
 <li><strong>ApexGuru rate limits</strong> no longer fail CI test jobs: when Salesforce's ApexGuru service answers <code>429 Too Many Requests</code>, the <code>SALESFORCE_CODE_ANALYZER_APEXGURU</code> success, failure and SARIF tests are skipped instead of failed<ul>
 <li>Only in CI (<code>utils.is_ci()</code>): local test runs still fail, so a real regression stays visible</li>
 <li>Per-linter test jobs (<code>deploy-DEV-linters.yml</code>, <code>deploy-BETA-linters.yml</code>) now pass <code>GITHUB_ACTIONS</code> to the test container</li>
