@@ -55,6 +55,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - `--lint` moved from `cli_lint_extra_args_after` to the per-mode `cli_lint_mode_*_extra_args_after` properties, because clj-kondo assigns every following argument to the last option: the forwarded `--config` must come before it
 
 - CI
+  - **Dependabot** no longer opens version or security update PRs for the pip, uv, bundler, gomod and cargo test fixtures under `.automation/test/`: they must stay outdated, in particular the `.wireit` poison fixtures guarding the excluded directories forwarding
   - **ApexGuru rate limits** no longer fail CI test jobs: when Salesforce's ApexGuru service answers `429 Too Many Requests`, the `SALESFORCE_CODE_ANALYZER_APEXGURU` success, failure and SARIF tests are skipped instead of failed
     - Only in CI (`utils.is_ci()`): local test runs still fail, so a real regression stays visible
     - Per-linter test jobs (`deploy-DEV-linters.yml`, `deploy-BETA-linters.yml`) now pass `GITHUB_ACTIONS` to the test container
