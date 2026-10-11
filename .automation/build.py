@@ -1237,7 +1237,6 @@ def generate_descriptor_documentation(descriptor):
             [
                 f"{descriptor.get('descriptor_id')}_PRE_COMMANDS",
                 {
-                    "$id": f"#/properties/{descriptor.get('descriptor_id')}_PRE_COMMANDS",
                     "description": (
                         f"{descriptor.get('descriptor_id')}: "
                         "List of bash commands to run before the linters"
@@ -1259,7 +1258,6 @@ def generate_descriptor_documentation(descriptor):
             [
                 f"{descriptor.get('descriptor_id')}_POST_COMMANDS",
                 {
-                    "$id": f"#/properties/{descriptor.get('descriptor_id')}_POST_COMMANDS",
                     "description": f"{descriptor.get('descriptor_id')}: List of bash commands to run after the linters",
                     "type": "array",
                     "title": f"Post commands for {descriptor.get('descriptor_id')} descriptor",
@@ -1278,7 +1276,6 @@ def generate_descriptor_documentation(descriptor):
             [
                 f"{descriptor.get('descriptor_id')}_FILTER_REGEX_INCLUDE",
                 {
-                    "$id": f"#/properties/{descriptor.get('descriptor_id')}_FILTER_REGEX_INCLUDE",
                     "description": (
                         f"{descriptor.get('descriptor_id')}: "
                         "Custom regex including filter: only files matching this regex will be linted"
@@ -1292,7 +1289,6 @@ def generate_descriptor_documentation(descriptor):
             [
                 f"{descriptor.get('descriptor_id')}_FILTER_REGEX_EXCLUDE",
                 {
-                    "$id": f"#/properties/{descriptor.get('descriptor_id')}_FILTER_REGEX_EXCLUDE",
                     "description": (
                         f"{descriptor.get('descriptor_id')}: "
                         "Custom regex excluding filter: files matching this regex will NOT be linted"
@@ -1682,9 +1678,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     [
                         "REPOSITORY_BETTERLEAKS_PR_COMMITS_SCAN",
                         {
-                            "$id": (
-                                "#/properties/" "REPOSITORY_BETTERLEAKS_PR_COMMITS_SCAN"
-                            ),
                             "description": (
                                 "REPOSITORY_BETTERLEAKS: Scan only commits in "
                                 "the current Pull Request/Merge Request"
@@ -1700,9 +1693,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     [
                         "REPOSITORY_BETTERLEAKS_PR_SOURCE_SHA",
                         {
-                            "$id": (
-                                "#/properties/" "REPOSITORY_BETTERLEAKS_PR_SOURCE_SHA"
-                            ),
                             "description": (
                                 "REPOSITORY_BETTERLEAKS: Source commit SHA of "
                                 "the Pull Request/Merge Request"
@@ -1718,9 +1708,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     [
                         "REPOSITORY_BETTERLEAKS_PR_TARGET_SHA",
                         {
-                            "$id": (
-                                "#/properties/" "REPOSITORY_BETTERLEAKS_PR_TARGET_SHA"
-                            ),
                             "description": (
                                 "REPOSITORY_BETTERLEAKS: Target commit SHA of "
                                 "the Pull Request/Merge Request"
@@ -1771,7 +1758,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 [
                     f"{linter.name}_FILTER_REGEX_INCLUDE",
                     {
-                        "$id": f"#/properties/{linter.name}_FILTER_REGEX_INCLUDE",
                         "description": (
                             f"{linter.name}: "
                             "Custom regex including filter: "
@@ -1789,7 +1775,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 [
                     f"{linter.name}_FILTER_REGEX_EXCLUDE",
                     {
-                        "$id": f"#/properties/{linter.name}_FILTER_REGEX_EXCLUDE",
                         "description": (
                             f"{linter.name}: "
                             "Custom regex excluding filter: "
@@ -1830,7 +1815,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 [
                     f"{linter.name}_CLI_LINT_MODE",
                     {
-                        "$id": f"#/properties/{linter.name}_CLI_LINT_MODE",
                         "description": (
                             f"{linter.name}: "
                             "Override default CLI lint mode used to call the linter (rarely needed)"
@@ -1857,7 +1841,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     [
                         f"{linter.name}_FORWARD_EXCLUDED_DIRECTORIES",
                         {
-                            "$id": f"#/properties/{linter.name}_FORWARD_EXCLUDED_DIRECTORIES",
                             "description": (
                                 f"{linter.name}: "
                                 "In project CLI lint mode, forward excluded directories to the "
@@ -1899,7 +1882,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     [
                         f"{linter.name}_FILE_EXTENSIONS",
                         {
-                            "$id": f"#/properties/{linter.name}_FILE_EXTENSIONS",
                             "description": (
                                 f"{linter.name}: "
                                 "Override descriptor/linter matching files extensions that will be used "
@@ -1918,7 +1900,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     [
                         f"{linter.name}_FILE_NAMES_REGEX",
                         {
-                            "$id": f"#/properties/{linter.name}_FILE_NAMES_REGEX",
                             "description": (
                                 f"{linter.name}: "
                                 "Override descriptor/linter matching file name regexes that will be used "
@@ -1955,7 +1936,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 [
                     f"{linter.name}_COMMAND_REMOVE_ARGUMENTS",
                     {
-                        "$id": f"#/properties/{linter.name}_COMMAND_REMOVE_ARGUMENTS",
                         "type": ["array", "string"],
                         "title": f"{title_prefix}{linter.name}: Custom remove arguments",
                         "description": f"{linter.name}: User custom arguments to remove before calling linter",
@@ -1966,7 +1946,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 [
                     f"{linter.name}_ARGUMENTS",
                     {
-                        "$id": f"#/properties/{linter.name}_ARGUMENTS",
                         "type": ["array", "string"],
                         "title": f"{title_prefix}{linter.name}: Custom arguments",
                         "description": f"{linter.name}: User custom arguments to add in linter CLI call",
@@ -1977,7 +1956,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 [
                     f"{linter.name}_PRE_COMMANDS",
                     {
-                        "$id": f"#/properties/{linter.name}_PRE_COMMANDS",
                         "title": f"{linter.name}: Pre-run commands",
                         "type": "array",
                         "description": (
@@ -1999,7 +1977,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 [
                     f"{linter.name}_POST_COMMANDS",
                     {
-                        "$id": f"#/properties/{linter.name}_POST_COMMANDS",
                         "title": f"{linter.name}: Post-run commands",
                         "type": "array",
                         "description": (
@@ -2021,7 +1998,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 [
                     f"{linter.name}_DISABLE_ERRORS",
                     {
-                        "$id": f"#/properties/{linter.name}_DISABLE_ERRORS",
                         "type": "boolean",
                         "default": False,
                         "description": (
@@ -2034,7 +2010,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 [
                     f"{linter.name}_DISABLE_ERRORS_IF_LESS_THAN",
                     {
-                        "$id": f"#/properties/{linter.name}_DISABLE_ERRORS_IF_LESS_THAN",
                         "type": "number",
                         "default": 0,
                         "description": (
@@ -2048,7 +2023,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 [
                     f"{linter.name}_TIMEOUT_SECONDS",
                     {
-                        "$id": f"#/properties/{linter.name}_TIMEOUT_SECONDS",
                         "type": "integer",
                         "description": (
                             f"{linter.name}: "
@@ -2064,7 +2038,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 [
                     f"{linter.name}_CLI_EXECUTABLE",
                     {
-                        "$id": f"#/properties/{linter.name}_CLI_EXECUTABLE",
                         "type": "array",
                         "default": [linter.cli_executable],
                         "description": (
@@ -2078,7 +2051,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 [
                     f"{linter.name}_UNSECURED_ENV_VARIABLES",
                     {
-                        "$id": f"#/properties/{linter.name}_UNSECURED_ENV_VARIABLES",
                         "type": "array",
                         "default": [],
                         "description": "List of env variables explicitly "
@@ -2104,7 +2076,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     [
                         f"{linter.name}_CONFIG_FILE",
                         {
-                            "$id": f"#/properties/{linter.name}_CONFIG_FILE",
                             "type": "string",
                             "title": f"{title_prefix}{linter.name}: Custom config file name",
                             "default": linter.config_file_name,
@@ -2114,7 +2085,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     [
                         f"{linter.name}_RULES_PATH",
                         {
-                            "$id": f"#/properties/{linter.name}_RULES_PATH",
                             "type": "string",
                             "title": f"{title_prefix}{linter.name}: Custom config file path",
                             "description": f"{linter.name}: Path where to find linter configuration file",
@@ -2148,7 +2118,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     [
                         f"{linter.name}_DIRECTORY",
                         {
-                            "$id": f"#/properties/{linter.name}_DIRECTORY",
                             "type": "string",
                             "description": (
                                 'Directory that must be found to activate linter. Use value "any" to always activate'
@@ -3481,6 +3450,50 @@ def validate_own_megalinter_config():
             )
 
 
+# Check the JSON Schemas themselves: compliance with their meta-schema, and no "$id"
+# holding a JSON Pointer fragment ("#/properties/..."), which draft-07 forbids and
+# strict validators reject (issue #9177)
+def validate_json_schemas():
+    errors = 0
+    schema_files = sorted(
+        glob.glob(f"{REPO_HOME}/megalinter/descriptors/schemas/*.jsonschema.json")
+    )
+    for schema_file in schema_files:
+        logging.info("Validating " + os.path.basename(schema_file))
+        with open(schema_file, "r", encoding="utf-8") as schema_file1:
+            json_schema = json.load(schema_file1)
+        try:
+            jsonschema.Draft7Validator.check_schema(json_schema)
+        except jsonschema.exceptions.SchemaError as schema_error:
+            logging.error(f"{os.path.basename(schema_file)} is not a valid JSON schema")
+            logging.error(f"reason: {str(schema_error)}")
+            errors = errors + 1
+        for invalid_id in list_json_pointer_ids(json_schema):
+            logging.error(
+                f"{os.path.basename(schema_file)}: invalid $id {invalid_id} "
+                "(JSON Pointer fragments are not allowed in $id)"
+            )
+            errors = errors + 1
+    if errors > 0:
+        raise ValueError(
+            "Errors have been found while validating JSON schemas, please check logs"
+        )
+
+
+def list_json_pointer_ids(node) -> list[str]:
+    invalid_ids: list[str] = []
+    if isinstance(node, dict):
+        node_id = node.get("$id")
+        if isinstance(node_id, str) and "#/" in node_id:
+            invalid_ids.append(node_id)
+        for value in node.values():
+            invalid_ids += list_json_pointer_ids(value)
+    elif isinstance(node, list):
+        for item in node:
+            invalid_ids += list_json_pointer_ids(item)
+    return invalid_ids
+
+
 # Apply descriptor JSON Schema to every descriptor file
 def validate_descriptors():
     with open(DESCRIPTOR_JSON_SCHEMA, "r", encoding="utf-8") as schema_file:
@@ -3509,7 +3522,6 @@ def validate_descriptors():
             "definitions": descriptor_schema_data.get("definitions", {}),
             **descriptor_schema_data["properties"]["linters"]["items"],
         }
-        shared_linter_schema.pop("$id", None)
         shared_linter_files = sorted(
             glob.glob(
                 f"{REPO_HOME}/megalinter/descriptors/shared/*.megalinter-linter.yml"
@@ -4671,6 +4683,7 @@ if __name__ == "__main__":
             generate_json_schema_docs()
         sync_agent_plugin_manifests()
         validate_own_megalinter_config()
+        validate_json_schemas()
         manage_output_variables()
         reformat_markdown_tables()
         from generate_runner_vars import generate as generate_runner_vars
