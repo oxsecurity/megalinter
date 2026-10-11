@@ -946,6 +946,14 @@ linters:
 
       **Note**: You can ignore specific findings by defining a [.trivyignore file](https://aquasecurity.github.io/trivy/latest/docs/configuration/filtering/#by-finding-ids) at your repository root.
 
+      **Vulnerability database download**: the registries hosting the trivy database apply rate limits, and a busy CI can be throttled with a `TOOMANYREQUESTS` error. MegaLinter mitigates it out of the box:
+
+      - trivy is pointed at all official database mirrors (`mirror.gcr.io`, `ghcr.io` and `public.ecr.aws`), and uses the first one that answers
+      - a download failure is retried with increasing waits, so the retries span more than one rate limit window
+      - if every attempt fails, trivy runs against the database downloaded by a previous run or shipped within the MegaLinter docker image, when there is one
+
+      You can tune this behaviour with `REPOSITORY_TRIVY_DB_REPOSITORIES`, `REPOSITORY_TRIVY_JAVA_DB_REPOSITORIES`, `REPOSITORY_TRIVY_DB_RETRY_ATTEMPTS`, `REPOSITORY_TRIVY_DB_RETRY_INITIAL_DELAY` and `REPOSITORY_TRIVY_DB_RETRY_MAX_DELAY`. Setting `TRIVY_DB_REPOSITORY` or `TRIVY_JAVA_DB_REPOSITORY`, or defining `db.repository` in your trivy configuration file, disables the MegaLinter mirrors and uses yours instead. Caching the trivy database folder (`TRIVY_CACHE_DIR`) between CI runs avoids the download altogether.
+
       **Tip**: if you see errors related to files that do not exist, you can bypass them using "--skip-dirs"
 
       Example:
@@ -991,28 +999,38 @@ linters:
       - identifier: REPOSITORY_TRIVY_ERROR_TOOMANYREQUESTS
         regex: "TOOMANYREQUESTS"
         message: |-
-          trivy was rate-limited by GitHub Container Registry (ghcr.io) while downloading the vulnerability database.
+          trivy was rate-limited by a container registry while downloading its vulnerability database.
           This is a registry rate limit, not a vulnerability finding.
+          MegaLinter already tries every official mirror (mirror.gcr.io, ghcr.io, public.ecr.aws) and retries with increasing waits before giving up.
           Workarounds:
-            - Retry the run later (the limit is per-namespace and resets quickly).
-            - Authenticate pulls so requests count against your own quota. MegaLinter strips token/password env vars by default, so whitelist them for this linter in your .mega-linter.yml:
-                REPOSITORY_TRIVY_UNSECURED_ENV_VARIABLES:
-                  - GITHUB_TOKEN
-                  - TRIVY_USERNAME
-                  - TRIVY_PASSWORD
-            - Mirror the trivy-db to your own registry and point trivy at it via `TRIVY_DB_REPOSITORY`.
-            - Cache `~/.cache/trivy` across CI runs.
+            - Persist the trivy cache folder between CI runs and point `TRIVY_CACHE_DIR` at it: no download, no rate limit.
+            - Give the retries more time in your .mega-linter.yml:
+                REPOSITORY_TRIVY_DB_RETRY_ATTEMPTS: 8
+                REPOSITORY_TRIVY_DB_RETRY_MAX_DELAY: 120
+            - Mirror the trivy database to a registry you control and list it first:
+                REPOSITORY_TRIVY_DB_REPOSITORIES:
+                  - my.registry.example.com/trivy-db:2
+                  - mirror.gcr.io/aquasec/trivy-db:2
+                  - ghcr.io/aquasecurity/trivy-db:2
             - Temporarily mark the linter as non-blocking by adding to your .mega-linter.yml:
                 DISABLE_ERRORS_LINTERS:
                   - REPOSITORY_TRIVY
       - identifier: REPOSITORY_TRIVY_ERROR_DB_DOWNLOAD_FAILED
         regex: "(failed to download (vulnerability )?(DB|database)|database download error|could not pull image)"
         message: |-
-          trivy could not download or refresh its vulnerability database from the configured registry.
+          trivy could not download or refresh its vulnerability database from any of the configured registries.
           Workarounds:
             - Retry the run; this is often transient.
-            - Set `TRIVY_DB_REPOSITORY` to an alternative mirror (e.g. an internal registry or AWS ECR Public Gallery).
-            - Pre-populate `~/.cache/trivy` in CI.
+            - Persist the trivy cache folder between CI runs and point `TRIVY_CACHE_DIR` at it.
+            - List a mirror you control first in `REPOSITORY_TRIVY_DB_REPOSITORIES` (the value replaces the default mirrors, so keep the official ones after yours).
+            - Check that your runner can reach mirror.gcr.io, ghcr.io and public.ecr.aws; a corporate proxy intercepting TLS makes every mirror fail with a certificate error.
+      - identifier: REPOSITORY_TRIVY_ERROR_FIRST_RUN_NO_DB
+        regex: "--skip-db-update cannot be specified on the first run"
+        message: |-
+          trivy was asked to skip the database update while no database has ever been downloaded, which it refuses to do.
+          Resolutions:
+            - Remove `--skip-db-update` from `REPOSITORY_TRIVY_ARGUMENTS` and from `db.skip-update` in your trivy configuration file, or run trivy once with network access to populate its cache.
+            - When running in an air-gapped environment, download the database elsewhere and mount it into the folder pointed at by `TRIVY_CACHE_DIR`.
       - identifier: REPOSITORY_TRIVY_ERROR_REGISTRY_UNAUTHORIZED
         regex: "(UNAUTHORIZED: authentication required|unexpected status (code )?401|status 401 Unauthorized)"
         message: |-
@@ -1044,6 +1062,22 @@ linters:
       vscode:
         - name: VSCode Trivy
           url: https://marketplace.visualstudio.com/items?itemName=AquaSecurityOfficial.trivy-vulnerability-scanner
+    variables:
+      - name: REPOSITORY_TRIVY_DB_REPOSITORIES
+        description: OCI repositories where the vulnerability database is downloaded from, tried in order. Set to an empty value to let trivy use its own defaults
+        default_value: "mirror.gcr.io/aquasec/trivy-db:2,ghcr.io/aquasecurity/trivy-db:2,public.ecr.aws/aquasecurity/trivy-db:2"
+      - name: REPOSITORY_TRIVY_JAVA_DB_REPOSITORIES
+        description: OCI repositories where the Java vulnerability database is downloaded from, tried in order. Set to an empty value to let trivy use its own defaults
+        default_value: "mirror.gcr.io/aquasec/trivy-java-db:1,ghcr.io/aquasecurity/trivy-java-db:1,public.ecr.aws/aquasecurity/trivy-java-db:1"
+      - name: REPOSITORY_TRIVY_DB_RETRY_ATTEMPTS
+        description: Number of times trivy is run again when the vulnerability database can not be downloaded
+        default_value: "5"
+      - name: REPOSITORY_TRIVY_DB_RETRY_INITIAL_DELAY
+        description: Number of seconds waited before the first database download retry, doubled at each new attempt
+        default_value: "10"
+      - name: REPOSITORY_TRIVY_DB_RETRY_MAX_DELAY
+        description: Maximum number of seconds waited between two database download retries
+        default_value: "60"
 
   # TRIVY SBOM
   - class: TrivySbomLinter
@@ -1100,27 +1134,30 @@ linters:
       - identifier: REPOSITORY_TRIVY_SBOM_ERROR_TOOMANYREQUESTS
         regex: "TOOMANYREQUESTS"
         message: |-
-          trivy-sbom was rate-limited by GitHub Container Registry (ghcr.io) while downloading the trivy DB.
+          trivy-sbom was rate-limited by a container registry while downloading the trivy database.
           This is a registry rate limit, not an SBOM error.
+          MegaLinter already tries every official mirror (mirror.gcr.io, ghcr.io, public.ecr.aws) and retries with increasing waits before giving up.
           Workarounds:
-            - Retry the run later.
-            - Authenticate pulls. MegaLinter strips token/password env vars by default, so whitelist them for this linter in your .mega-linter.yml:
-                REPOSITORY_TRIVY_SBOM_UNSECURED_ENV_VARIABLES:
-                  - GITHUB_TOKEN
-                  - TRIVY_USERNAME
-                  - TRIVY_PASSWORD
-            - Mirror trivy-db to your own registry via `TRIVY_DB_REPOSITORY`.
+            - Persist the trivy cache folder between CI runs and point `TRIVY_CACHE_DIR` at it: no download, no rate limit.
+            - Give the retries more time in your .mega-linter.yml:
+                REPOSITORY_TRIVY_SBOM_DB_RETRY_ATTEMPTS: 8
+                REPOSITORY_TRIVY_SBOM_DB_RETRY_MAX_DELAY: 120
+            - Mirror the trivy database to a registry you control and list it first:
+                REPOSITORY_TRIVY_SBOM_DB_REPOSITORIES:
+                  - my.registry.example.com/trivy-db:2
+                  - mirror.gcr.io/aquasec/trivy-db:2
+                  - ghcr.io/aquasecurity/trivy-db:2
             - Temporarily mark the linter as non-blocking by adding to your .mega-linter.yml:
                 DISABLE_ERRORS_LINTERS:
                   - REPOSITORY_TRIVY_SBOM
       - identifier: REPOSITORY_TRIVY_SBOM_ERROR_DB_DOWNLOAD_FAILED
         regex: "(failed to download (vulnerability )?(DB|database)|database download error)"
         message: |-
-          trivy-sbom could not download or refresh its vulnerability database.
+          trivy-sbom could not download or refresh its vulnerability database from any of the configured registries.
           Workarounds:
             - Retry the run; this is often transient.
-            - Set `TRIVY_DB_REPOSITORY` to an alternative mirror.
-            - Pre-populate `~/.cache/trivy` in CI.
+            - Persist the trivy cache folder between CI runs and point `TRIVY_CACHE_DIR` at it.
+            - List a mirror you control first in `REPOSITORY_TRIVY_SBOM_DB_REPOSITORIES` (the value replaces the default mirrors, so keep the official ones after yours).
     test_folder: trivy
     examples:
       - "trivy fs --format cyclonedx ."
@@ -1141,6 +1178,22 @@ linters:
       vscode:
         - name: VSCode Trivy
           url: https://marketplace.visualstudio.com/items?itemName=AquaSecurityOfficial.trivy-vulnerability-scanner
+    variables:
+      - name: REPOSITORY_TRIVY_SBOM_DB_REPOSITORIES
+        description: OCI repositories where the vulnerability database is downloaded from, tried in order. Set to an empty value to let trivy use its own defaults
+        default_value: "mirror.gcr.io/aquasec/trivy-db:2,ghcr.io/aquasecurity/trivy-db:2,public.ecr.aws/aquasecurity/trivy-db:2"
+      - name: REPOSITORY_TRIVY_SBOM_JAVA_DB_REPOSITORIES
+        description: OCI repositories where the Java vulnerability database is downloaded from, tried in order. Set to an empty value to let trivy use its own defaults
+        default_value: "mirror.gcr.io/aquasec/trivy-java-db:1,ghcr.io/aquasecurity/trivy-java-db:1,public.ecr.aws/aquasecurity/trivy-java-db:1"
+      - name: REPOSITORY_TRIVY_SBOM_DB_RETRY_ATTEMPTS
+        description: Number of times trivy is run again when the vulnerability database can not be downloaded
+        default_value: "5"
+      - name: REPOSITORY_TRIVY_SBOM_DB_RETRY_INITIAL_DELAY
+        description: Number of seconds waited before the first database download retry, doubled at each new attempt
+        default_value: "10"
+      - name: REPOSITORY_TRIVY_SBOM_DB_RETRY_MAX_DELAY
+        description: Maximum number of seconds waited between two database download retries
+        default_value: "60"
 
   # TRUFFLEHOG
   - class: TruffleHogLinter
