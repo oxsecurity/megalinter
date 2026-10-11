@@ -29,7 +29,7 @@ description: How to use psalm (configure, ignore files, ignore errors, help & ve
 
 ## psalm documentation
 
-- Version in MegaLinter: **Psalm.6.16.1@**
+- Version in MegaLinter: **Psalm.6.19.1@**
 - Visit [Official Web Site](https://psalm.dev){target=_blank}
 - See [How to configure psalm rules](https://psalm.dev/docs/running_psalm/configuration/){target=_blank}
   - If custom `psalm.xml` config file isn't found, [psalm.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/psalm.xml){target=_blank} will be used
@@ -205,7 +205,9 @@ Plugins:
 
 Output:
     -m, --monochrome
-        Enable monochrome output
+        Enable monochrome output.
+        Auto-enabled when NO_COLOR is set to a non-empty value or when
+        an AI coding agent is driving the shell.
 
     --output-format=console
         Changes the output format.
@@ -215,10 +217,13 @@ Output:
             text, xml
 
     --no-progress
-        Disable the progress indicator
+        Disable the progress indicator.
+        Auto-enabled when an AI coding agent is driving the shell
+        (CI always keeps its phase breadcrumbs).
 
     --long-progress
-        Use a progress indicator suitable for Continuous Integration logs
+        Use a progress indicator suitable for Continuous Integration logs.
+        Auto-enabled in CI and when stderr is not attached to a terminal.
 
     --stats
         Shows a breakdown of Psalm’s ability to infer types in the codebase
@@ -312,7 +317,7 @@ ENV COMPOSER_HOME=/usr/local/composer
 ENV PATH="/usr/local/composer/vendor/bin:${PATH}"
 # Linter install
 # renovate: datasource=packagist depName=vimeo/psalm
-ARG PHP_VIMEO_PSALM_VERSION=6.16.1
+ARG PHP_VIMEO_PSALM_VERSION=6.19.1
 RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require vimeo/psalm:${PHP_VIMEO_PSALM_VERSION}
 
 ```

@@ -26,8 +26,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Media
 
 - Linters enhancements
+  - **CLOJURE_CLJ_KONDO** now lints all your Clojure files in a single clj-kondo run, with the new default **`list_of_files`** lint mode
+    - Cross-namespace checks, such as calls with a wrong number of arguments to a function defined in another file, are now reported without a clj-kondo cache
+    - The console log and reports now show clj-kondo's **warnings count**, and its **errors count** when errors are found, instead of a single error for any failing run
+    - clj-kondo now runs with `--cache false`: it no longer writes into your repository's `.clj-kondo/.cache` folder during the run, and no longer reads a cache built beforehand. To use such a cache, for example one built with `--dependencies`, set `CLOJURE_CLJ_KONDO_COMMAND_REMOVE_ARGUMENTS: ["--cache", "false"]`
+    - To lint each file separately as before, set `CLOJURE_CLJ_KONDO_CLI_LINT_MODE: file`
 
 - Fixes
+  - **CLOJURE_CLJ_KONDO** now really forwards `EXCLUDED_DIRECTORIES` and `ADDITIONAL_EXCLUDED_DIRECTORIES` in `project` lint mode: they were never applied before, so files in folders like `node_modules` or `.wireit` could be reported
+    - The directories are passed as a merged `:output {:exclude-files [...]}` inline configuration, so your own `:output :exclude-files` patterns in `.clj-kondo/config.edn` are kept
+    - Disable the forwarding with `CLOJURE_CLJ_KONDO_FORWARD_EXCLUDED_DIRECTORIES: false`
 
 - Reporters
 
@@ -37,16 +45,23 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - mega-linter-runner
   - **`--container-engine container`**: run MegaLinter with Apple's native macOS container engine (Apple Silicon only, no Docker Desktop needed): <https://github.com/apple/container>
+  - **Node.js 22.18+ or 24.11+** is now required (was 22.0+): upgrade Node.js if `npx mega-linter-runner` reports an unsupported engine. This comes with a security upgrade of the `simple-git` dependency
 
 - Agent Skills
+  - **megalinter-fix** now explains how to fix clj-kondo `:type-mismatch` and `:constant-condition` findings, and the difference between the top-level `:exclude-files` and `:output :exclude-files` clj-kondo settings
 
 - Dev
+  - `CLOJURE_CLJ_KONDO` test fixtures are split into `good/` and `bad/` folders, so the `project` lint mode tests no longer lint the failing files, and `.wireit` poison fixtures now guard the excluded directories forwarding, at root and nested levels
+  - `CljKondoLinter` forwards excluded directories through `:output :exclude-files` instead of a top-level `:exclude-files` vector (an invalid value), and no longer skips the forwarding when a `--config` file is passed, which was always the case since the default `TEMPLATES/.clj-kondo/config.edn` is used when the repository has none
+  - `--lint` moved from `cli_lint_extra_args_after` to the per-mode `cli_lint_mode_*_extra_args_after` properties, because clj-kondo assigns every following argument to the last option: the forwarded `--config` must come before it
 
 - CI
+  - **Dependabot** no longer opens version or security update PRs for the pip, uv, bundler, gomod and cargo test fixtures under `.automation/test/`: they must stay outdated, in particular the `.wireit` poison fixtures guarding the excluded directories forwarding
   - **ApexGuru rate limits** no longer fail CI test jobs: when Salesforce's ApexGuru service answers `429 Too Many Requests`, the `SALESFORCE_CODE_ANALYZER_APEXGURU` success, failure and SARIF tests are skipped instead of failed
     - Only in CI (`utils.is_ci()`): local test runs still fail, so a real regression stays visible
     - Per-linter test jobs (`deploy-DEV-linters.yml`, `deploy-BETA-linters.yml`) now pass `GITHUB_ACTIONS` to the test container
   - **`test-agent-plugins.yml`** validation script now accepts both the `{"plugins": [...], "errors": [...]}` wrapper and the bare-array shape the GitHub Copilot CLI's `plugins list --json` can return, fixing a crash of the "Validate agent plugins manifests" check
+  - **`REPOSITORY_DUSTILOCK`** is now non-blocking in MegaLinter's own `.mega-linter.yml`: dustilock reports any PyPI lookup error (such as intermittent `503` responses) as a package "available for public registration", which failed the "Run against all code base - DEV" job on unrelated PRs
 
 - Linter versions upgrades (N)
   - [shfmt](https://github.com/mvdan/sh) from 3.13.1 to **3.14.0** on 2026-09-12
@@ -74,6 +89,95 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [vale](https://vale.sh/) from 3.18.0 to **3.20.0** on 2026-09-12
   - [semgrep](https://semgrep.dev/) from 1.175.1 to **1.176.1** on 2026-09-12
   - [checkov](https://www.checkov.io/) from 3.3.15 to **3.3.16** on 2026-09-13
+  - [shfmt](https://github.com/mvdan/sh) from 3.14.0 to **3.14.1** on 2026-09-21
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.46.1 to **0.47.16** on 2026-09-21
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.56.0 to **1.56.3** on 2026-09-21
+  - [biome](https://biomejs.dev) from 2.5.12 to **2.5.13** on 2026-09-21
+  - [djlint](https://djlint.com/) from 1.45.2 to **1.46.1** on 2026-09-21
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.65 to **0.2.73** on 2026-09-21
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.24 to **3.95.25** on 2026-09-21
+  - [phpstan](https://phpstan.org/) from 2.2.13 to **2.2.14** on 2026-09-21
+  - [psalm](https://psalm.dev) from Psalm.6.16.1@ to **Psalm.6.17.1@** on 2026-09-21
+  - [pyright](https://github.com/Microsoft/pyright) from 1.1.413 to **1.1.414** on 2026-09-21
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.16.6 to **0.16.7** on 2026-09-21
+  - [ruff](https://github.com/astral-sh/ruff) from 0.16.6 to **0.16.7** on 2026-09-21
+  - [checkov](https://www.checkov.io/) from 3.3.16 to **3.3.17** on 2026-09-21
+  - [grype](https://github.com/anchore/grype) from 0.118.0 to **0.119.0** on 2026-09-21
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 2.1.0 to **2.2.0** on 2026-09-21
+  - [semgrep](https://semgrep.dev/) from 1.176.1 to **1.177.0** on 2026-09-21
+  - [syft](https://github.com/anchore/syft) from 1.51.1 to **1.52.0** on 2026-09-21
+  - [rubocop](https://rubocop.org/) from 1.90.0 to **1.91.0** on 2026-09-21
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.14.7 to **0.14.9** on 2026-09-21
+  - [snakemake](https://snakemake.github.io/) from 9.26.1 to **9.27.0** on 2026-09-21
+  - [vale](https://vale.sh/) from 3.20.0 to **3.21.0** on 2026-09-21
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.16.0 to **1.16.2** on 2026-09-21
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 5.1.2 to **5.2.0** on 2026-09-22
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.5 to **7.6.6** on 2026-09-22
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.5 to **7.6.6** on 2026-09-22
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 10.2.2 to **10.3.1** on 2026-09-22
+  - [tekton-lint](https://github.com/IBM/tekton-lint) from 1.2.0 to **1.2.4** on 2026-09-22
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 5.2.0 to **5.2.1** on 2026-09-27
+  - [biome](https://biomejs.dev) from 2.5.13 to **2.5.14** on 2026-09-27
+  - [pmd](https://pmd.github.io/) from 7.27.0 to **7.28.0** on 2026-09-27
+  - [prettier](https://prettier.io/) from 3.9.6 to **3.9.8** on 2026-09-27
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.73 to **0.2.74** on 2026-09-27
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.25 to **3.95.26** on 2026-09-27
+  - [psalm](https://psalm.dev) from Psalm.6.17.1@ to **Psalm.6.17.2@** on 2026-09-27
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.16.7 to **0.16.8** on 2026-09-27
+  - [ruff](https://github.com/astral-sh/ruff) from 0.16.7 to **0.16.8** on 2026-09-27
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 10.3.1 to **10.3.3** on 2026-09-27
+  - [clj-kondo](https://github.com/clj-kondo/clj-kondo) from 2025.01.16 to **2026.08.04** on 2026-09-28
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.56.3 to **1.57.0** on 2026-09-28
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 5.2.1 to **5.3.0** on 2026-09-28
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 4.0.1 to **4.0.2** on 2026-09-28
+  - [djlint](https://djlint.com/) from 1.46.1 to **1.46.2** on 2026-09-28
+  - [eslint](https://eslint.org) from 10.10.0 to **10.11.0** on 2026-09-28
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.74 to **0.2.75** on 2026-09-28
+  - [psalm](https://psalm.dev) from Psalm.6.17.2@ to **Psalm.6.18.0@** on 2026-09-28
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 2.2.0 to **2.5.0** on 2026-09-28
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.97.4 to **3.97.5** on 2026-09-28
+  - [vale](https://vale.sh/) from 3.21.0 to **3.22.0** on 2026-09-28
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.16.2 to **1.16.3** on 2026-09-28
+  - [terragrunt](https://docs.terragrunt.com/reference/cli/commands/hcl/fmt/) from 1.1.4 to **1.1.5** on 2026-09-28
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 5.3.0 to **5.3.1** on 2026-10-10
+  - [black](https://black.readthedocs.io/en/stable/) from 26.5.1 to **26.10.0** on 2026-10-10
+  - [isort](https://pycqa.github.io/isort/) from 9.0.1 to **9.0.2** on 2026-10-10
+  - [checkov](https://www.checkov.io/) from 3.3.17 to **3.3.19** on 2026-10-10
+  - [grype](https://github.com/anchore/grype) from 0.119.0 to **0.120.1** on 2026-10-10
+  - [syft](https://github.com/anchore/syft) from 1.52.0 to **1.54.1** on 2026-10-10
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.98 to **0.1.99** on 2026-10-10
+  - [black](https://black.readthedocs.io/en/stable/) from 26.10.0 to **26.10.1** on 2026-10-10
+  - [semgrep](https://semgrep.dev/) from 1.177.0 to **1.180.0** on 2026-10-10
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 26.8.0 to **26.9.0** on 2026-10-11
+  - [spectral](https://github.com/stoplightio/spectral) from 6.16.3 to **6.17.0** on 2026-10-11
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.57.0 to **1.57.1** on 2026-10-11
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 5.3.1 to **5.4.0** on 2026-10-11
+  - [biome](https://biomejs.dev) from 2.5.14 to **2.5.15** on 2026-10-11
+  - [stylelint](https://stylelint.io) from 17.15.0 to **17.16.0** on 2026-10-11
+  - [golangci-lint](https://golangci-lint.run/) from 2.13.2 to **2.14.0** on 2026-10-11
+  - [revive](https://revive.run/) from 1.16.0 to **1.17.0** on 2026-10-11
+  - [djlint](https://djlint.com/) from 1.46.2 to **1.46.4** on 2026-10-11
+  - [eslint](https://eslint.org) from 10.11.0 to **10.12.0** on 2026-10-11
+  - [prettier](https://prettier.io/) from 3.9.8 to **3.9.9** on 2026-10-11
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.75 to **0.2.78** on 2026-10-11
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.26 to **3.95.27** on 2026-10-11
+  - [phpstan](https://phpstan.org/) from 2.2.14 to **2.2.16** on 2026-10-11
+  - [psalm](https://psalm.dev) from Psalm.6.18.0@ to **Psalm.6.19.1@** on 2026-10-11
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.57.0 to **0.58.0** on 2026-10-11
+  - [flake8](https://flake8.pycqa.org) from 7.3.0 to **7.4.1** on 2026-10-11
+  - [pylint](https://pylint.readthedocs.io) from 4.0.8 to **4.1.2** on 2026-10-11
+  - [checkov](https://www.checkov.io/) from 3.3.19 to **3.3.22** on 2026-10-11
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 2.5.0 to **2.9.1** on 2026-10-11
+  - [secretlint](https://github.com/secretlint/secretlint) from 13.0.5 to **13.0.7** on 2026-10-11
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.74.0 to **0.75.0** on 2026-10-11
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.74.0 to **0.75.0** on 2026-10-11
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.97.5 to **3.97.9** on 2026-10-11
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 9.0.0 to **9.1.0** on 2026-10-11
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 10.3.3 to **10.3.6** on 2026-10-11
+  - [vale](https://vale.sh/) from 3.22.0 to **3.24.0** on 2026-10-11
+  - [sqlfluff](https://www.sqlfluff.com/) from 4.3.0 to **4.4.0** on 2026-10-11
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.16.3 to **1.16.4** on 2026-10-11
+  - [terragrunt](https://docs.terragrunt.com/reference/cli/commands/hcl/fmt/) from 1.1.5 to **1.1.6** on 2026-10-11
 <!-- linter-versions-end -->
 
 ## [v10.1.0] - 2026-09-05

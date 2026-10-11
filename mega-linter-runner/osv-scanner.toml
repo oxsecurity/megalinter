@@ -26,3 +26,29 @@ version = "2.1.2"
 ecosystem = "npm"
 vulnerability.ignore = true
 reason = "DoS via crafted brace pattern; only reachable via minimatch@9 (mocha devDependency and @yeoman/transform) expanding trusted globs in a one-shot CLI. No 2.x backport exists."
+
+# braces 3.0.3 (yarn.lock) — GHSA-vfj7-8cjw-p6xm, stack-exhaustion DoS through
+# deeply nested brace patterns. Reached only through micromatch (fast-glob, globby),
+# expanding glob patterns that come from our own code and from the user's local
+# paths, never from an attacker, in a one-shot CLI. 3.0.3 is the latest release and
+# the advisory has no fixed version.
+# Scoped to the exact vulnerable version. Remove when a patched braces ships.
+[[PackageOverrides]]
+name = "braces"
+version = "3.0.3"
+ecosystem = "npm"
+vulnerability.ignore = true
+reason = "DoS via deeply nested brace pattern; only reachable via micromatch expanding trusted globs in a one-shot CLI. No fixed version exists."
+
+# http-cache-semantics 4.2.0 (yarn.lock) — GHSA-ch52-4w7c-c8xp, cross-user response
+# disclosure from a SHARED cache through the max-stale directive. Reached only
+# through make-fetch-happen (npm-registry-fetch, sigstore, tuf-js), whose cache is
+# the local npm cache of the single user running the CLI: there is no shared cache.
+# 4.2.0 is the latest release and the advisory has no fixed version.
+# Scoped to the exact vulnerable version. Remove when a patched release ships.
+[[PackageOverrides]]
+name = "http-cache-semantics"
+version = "4.2.0"
+ecosystem = "npm"
+vulnerability.ignore = true
+reason = "Shared-cache cross-user disclosure; only reachable via make-fetch-happen with the private local npm cache of a one-shot CLI. No fixed version exists."

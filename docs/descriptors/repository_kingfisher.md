@@ -22,7 +22,7 @@ description: How to use kingfisher (configure, ignore files, ignore errors, help
 
 ## kingfisher documentation
 
-- Version in MegaLinter: **2.1.0**
+- Version in MegaLinter: **2.9.1**
 - Visit [Official Web Site](https://github.com/mongodb/kingfisher#readme){target=_blank}
 - See [How to disable kingfisher rules in files](https://mongodb.github.io/kingfisher/usage/advanced/?h=inline#inline-ignore-directives){target=_blank}
 - See [Index of problems detected by kingfisher](https://mongodb.github.io/kingfisher/rules/builtin-rules){target=_blank}
@@ -90,12 +90,14 @@ Usage: kingfisher [OPTIONS] <COMMAND>
 
 Commands:
   scan          Scan content for secrets and sensitive information
+  wizard        Open the native scan wizard and report workspace (requires a GUI-enabled build)
+                [alias: gui]
   rules         Manage rules
   validate      Directly validate a known secret against a rule's validator (bypasses pattern
                 matching)
   revoke        Directly revoke a known secret against a rule's revocation config
-  access-map    Map a cloud credential from a provider credential artifact
-  blast-radius  Directly map a known secret to its identity, permissions, and blast radius
+  blast-radius  Directly map a known secret to its identity, permissions, and blast radius [alias:
+                access-map]
   view          View Kingfisher JSON/JSONL reports in a local web UI
   config        Generate or inspect `kingfisher.yaml` project config files
   update        Update the Kingfisher binary
@@ -126,7 +128,7 @@ Global Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=github-tags depName=mongodb/kingfisher
-ARG REPOSITORY_KINGFISHER_VERSION=2.1.0
+ARG REPOSITORY_KINGFISHER_VERSION=2.9.1
 RUN curl --silent --location https://raw.githubusercontent.com/mongodb/kingfisher/main/scripts/install-kingfisher.sh | bash -s -- /usr/local/bin --tag "v${REPOSITORY_KINGFISHER_VERSION}"
 
 ```
