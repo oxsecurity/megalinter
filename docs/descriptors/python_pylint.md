@@ -41,7 +41,7 @@ For legacy projects, start with `--errors-only` flag and progressively enable mo
 
 ## pylint documentation
 
-- Version in MegaLinter: **4.0.8**
+- Version in MegaLinter: **4.1.2**
 - Visit [Official Web Site](https://pylint.readthedocs.io){target=_blank}
 - See [How to configure pylint rules](https://pylint.readthedocs.io/en/stable/user_guide/configuration/index.html){target=_blank}
   - If custom `.pylintrc` config file isn't found, [.pylintrc](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.pylintrc){target=_blank} will be used
@@ -262,6 +262,13 @@ Main:
                         Resolve imports to .pyi stubs if available. May reduce
                         no-member messages and increase not-an-iterable
                         messages. (default: False)
+  --files               The files to lint. The flag can also be omitted as
+                        pylint will try to lint any file passed as argument.
+                        This can be used to set files to a directory in a
+                        configuration file and invoke pylint by only typing
+                        pylint on the command line. Any file passed as
+                        argument will overwrite any file set in the
+                        configuration file. (default: [])
 
 Reports:
   Options related to output formatting and reporting
@@ -269,9 +276,9 @@ Reports:
   --output-format, -f <format>
                         Set the output format. Available formats are: 'text',
                         'parseable', 'colorized', 'json2' (improved json
-                        format), 'json' (old json format), msvs (visual
-                        studio) and 'github' (GitHub actions). You can also
-                        give a reporter class, e.g.
+                        format), 'json' (old json format), 'msvs' (visual
+                        studio), 'github' (GitHub actions) and 'junit' (JUnit
+                        XML). You can also give a reporter class, e.g.
                         mypackage.mymodule.MyReporterClass.
   --reports, -r <y or n>
                         Tells whether to display a full report or only the
@@ -702,6 +709,9 @@ Imports:
   --known-standard-library <modules>
                         Force import order to recognize a module as part of
                         the standard compatibility libraries. (default: ())
+  --known-first-party <modules>
+                        Force import order to recognize a module as part of a
+                        first party library. (default: ())
   --known-third-party <modules>
                         Force import order to recognize a module as part of a
                         third party library. (default: ('enchant',))
@@ -776,6 +786,13 @@ Typecheck:
   --signature-mutators <decorator names>
                         List of decorators that change the signature of a
                         decorated function. (default: [])
+  --known-side-effects-only-functions <function:suggestion>
+                        Couples of functions with side effects that are often
+                        believed to return something and the equivalent
+                        function that does return something, separated by a
+                        comma. Used to hint at the right function to use in
+                        the 'assignment-from-no-return' message. (default:
+                        ('reverse:reversed', 'sort:sorted'))
 
 Format:
   Formatting checker.
@@ -788,6 +805,9 @@ Format:
   --ignore-long-lines <regexp>
                         Regexp for a line that is allowed to be longer than
                         the limit. (default: ^\s*(# )?<?https?://\S+>?$)
+  --ignore-pattern-in-long-lines <regexp>
+                        Regexp for a part of a line that will not be counted
+                        when calculating the line length. (default: None)
   --single-line-if-stmt <y or n>
                         Allow the body of an if to be on the same line as the
                         test if there is no else. (default: False)
@@ -813,13 +833,13 @@ Format:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=pylint
-ARG PIP_PYLINT_VERSION=4.0.8
+ARG PIP_PYLINT_VERSION=4.1.2
 # renovate: datasource=pypi depName=typing-extensions
 ARG PIP_TYPING_EXTENSIONS_VERSION=4.16.0
 ```
 
 - PIP packages (Python):
-  - [pylint==4.0.8](https://pypi.org/project/pylint/4.0.8)
+  - [pylint==4.1.2](https://pypi.org/project/pylint/4.1.2)
   - [typing-extensions==4.16.0](https://pypi.org/project/typing-extensions/4.16.0)
 
 ## Known errors and resolutions

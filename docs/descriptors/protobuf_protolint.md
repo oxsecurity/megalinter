@@ -22,7 +22,7 @@ description: How to use protolint (configure, ignore files, ignore errors, help 
 
 ## protolint documentation
 
-- Version in MegaLinter: **0.57.0**
+- Version in MegaLinter: **0.58.0**
 - Visit [Official Web Site](https://github.com/yoheimuta/protolint#readme){target=_blank}
 - See [How to configure protolint rules](https://github.com/yoheimuta/protolint#rules){target=_blank}
   - If custom `.protolintrc.yml` config file isn't found, [.protolintrc.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.protolintrc.yml){target=_blank} will be used
@@ -141,6 +141,8 @@ Usage of lint:
       plugins to provide custom lint rule set. Note that it's necessary to specify it as path format'
   -reporter value
       formatter to output results in the specific format. Available reporters are "plain"(default), "junit", "json", "sarif", and "unix".
+  -stdin_filename string
+      a filename for the text passed via stdin. (default "stdin.proto")
   -v  verbose output that includes parsing process details
 ```
 
@@ -149,7 +151,7 @@ Usage of lint:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=yoheimuta/protolint
-ARG PROTOBUF_PROTOLINT_VERSION=0.57.0
+ARG PROTOBUF_PROTOLINT_VERSION=0.58.0
 FROM yoheimuta/protolint:${PROTOBUF_PROTOLINT_VERSION} AS protolint
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
 ```

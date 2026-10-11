@@ -337,7 +337,7 @@ Profiling Options:
 # renovate: datasource=rubygems depName=rubocop
 ARG GEM_RUBOCOP_VERSION=1.91.0
 # renovate: datasource=rubygems depName=rubocop-github
-ARG GEM_RUBOCOP_GITHUB_VERSION=0.27.0
+ARG GEM_RUBOCOP_GITHUB_VERSION=0.29.0
 # renovate: datasource=rubygems depName=rubocop-performance
 ARG GEM_RUBOCOP_PERFORMANCE_VERSION=1.27.0
 # renovate: datasource=rubygems depName=rubocop-rails
@@ -350,7 +350,7 @@ ARG GEM_RUBOCOP_RSPEC_VERSION=3.10.2
 
 - GEM packages (Ruby) :
   - [rubocop:1.91.0](https://rubygems.org/gems/rubocop/versions/1.91.0)
-  - [rubocop-github:0.27.0](https://rubygems.org/gems/rubocop-github/versions/0.27.0)
+  - [rubocop-github:0.29.0](https://rubygems.org/gems/rubocop-github/versions/0.29.0)
   - [rubocop-performance:1.27.0](https://rubygems.org/gems/rubocop-performance/versions/1.27.0)
   - [rubocop-rails:2.38.0](https://rubygems.org/gems/rubocop-rails/versions/2.38.0)
   - [rubocop-rake:0.7.1](https://rubygems.org/gems/rubocop-rake/versions/0.7.1)
