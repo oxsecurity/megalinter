@@ -498,9 +498,9 @@ section output options:
 # renovate: datasource=pypi depName=black
 ARG PIP_BLACK_VERSION=26.5.1
 # renovate: datasource=pypi depName=isort
-ARG PIP_ISORT_VERSION=9.0.1
+ARG PIP_ISORT_VERSION=9.0.2
 ```
 
 - PIP packages (Python):
   - [black==26.5.1](https://pypi.org/project/black/26.5.1)
-  - [isort==9.0.1](https://pypi.org/project/isort/9.0.1)
+  - [isort==9.0.2](https://pypi.org/project/isort/9.0.2)

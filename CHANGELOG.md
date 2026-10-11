@@ -147,6 +147,36 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.98 to **0.1.99** on 2026-10-10
   - [black](https://black.readthedocs.io/en/stable/) from 26.10.0 to **26.10.1** on 2026-10-10
   - [semgrep](https://semgrep.dev/) from 1.177.0 to **1.180.0** on 2026-10-10
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 26.8.0 to **26.9.0** on 2026-10-11
+  - [spectral](https://github.com/stoplightio/spectral) from 6.16.3 to **6.17.0** on 2026-10-11
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.57.0 to **1.57.1** on 2026-10-11
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 5.3.1 to **5.4.0** on 2026-10-11
+  - [biome](https://biomejs.dev) from 2.5.14 to **2.5.15** on 2026-10-11
+  - [stylelint](https://stylelint.io) from 17.15.0 to **17.16.0** on 2026-10-11
+  - [golangci-lint](https://golangci-lint.run/) from 2.13.2 to **2.14.0** on 2026-10-11
+  - [revive](https://revive.run/) from 1.16.0 to **1.17.0** on 2026-10-11
+  - [djlint](https://djlint.com/) from 1.46.2 to **1.46.4** on 2026-10-11
+  - [eslint](https://eslint.org) from 10.11.0 to **10.12.0** on 2026-10-11
+  - [prettier](https://prettier.io/) from 3.9.8 to **3.9.9** on 2026-10-11
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.75 to **0.2.78** on 2026-10-11
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.26 to **3.95.27** on 2026-10-11
+  - [phpstan](https://phpstan.org/) from 2.2.14 to **2.2.16** on 2026-10-11
+  - [psalm](https://psalm.dev) from Psalm.6.18.0@ to **Psalm.6.19.1@** on 2026-10-11
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.57.0 to **0.58.0** on 2026-10-11
+  - [flake8](https://flake8.pycqa.org) from 7.3.0 to **7.4.1** on 2026-10-11
+  - [pylint](https://pylint.readthedocs.io) from 4.0.8 to **4.1.2** on 2026-10-11
+  - [checkov](https://www.checkov.io/) from 3.3.19 to **3.3.22** on 2026-10-11
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 2.5.0 to **2.9.1** on 2026-10-11
+  - [secretlint](https://github.com/secretlint/secretlint) from 13.0.5 to **13.0.7** on 2026-10-11
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.74.0 to **0.75.0** on 2026-10-11
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.74.0 to **0.75.0** on 2026-10-11
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.97.5 to **3.97.9** on 2026-10-11
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 9.0.0 to **9.1.0** on 2026-10-11
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 10.3.3 to **10.3.6** on 2026-10-11
+  - [vale](https://vale.sh/) from 3.22.0 to **3.24.0** on 2026-10-11
+  - [sqlfluff](https://www.sqlfluff.com/) from 4.3.0 to **4.4.0** on 2026-10-11
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.16.3 to **1.16.4** on 2026-10-11
+  - [terragrunt](https://docs.terragrunt.com/reference/cli/commands/hcl/fmt/) from 1.1.5 to **1.1.6** on 2026-10-11
 <!-- linter-versions-end -->
 
 ## [v10.1.0] - 2026-09-05

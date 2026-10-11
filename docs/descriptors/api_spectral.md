@@ -28,7 +28,7 @@ Spectral helps ensure your API specifications follow best practices and maintain
 
 ## spectral documentation
 
-- Version in MegaLinter: **6.16.3**
+- Version in MegaLinter: **6.17.0**
 - Visit [Official Web Site](https://github.com/stoplightio/spectral#readme){target=_blank}
 - See [How to configure spectral rules](https://docs.stoplight.io/docs/spectral/9ffa04e052cc1-spectral-cli#using-a-ruleset-file){target=_blank}
   - If custom `.spectral.yaml` config file isn't found, [.spectral.yaml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.spectral.yaml){target=_blank} will be used
@@ -148,7 +148,7 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=@stoplight/spectral-cli
-ARG NPM_SPECTRAL_CLI_VERSION=6.16.3
+ARG NPM_SPECTRAL_CLI_VERSION=6.17.0
 RUN npm --no-cache install --ignore-scripts --omit=dev --prefix /node-deps-spectral @stoplight/spectral-cli@${NPM_SPECTRAL_CLI_VERSION} \
     && ln -s /node-deps-spectral/node_modules/.bin/spectral /usr/bin/spectral \
     && (npm cache clean --force || true) \
