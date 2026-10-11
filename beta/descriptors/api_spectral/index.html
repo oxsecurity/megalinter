@@ -12499,7 +12499,7 @@
 <p>Spectral helps ensure your API specifications follow best practices and maintain consistency across your organization. It's particularly useful for enforcing API governance and automated quality checks in CI/CD pipelines.</p>
 <h2 id="spectral-documentation">spectral documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>6.16.3</strong></li>
+<li>Version in MegaLinter: <strong>6.17.0</strong></li>
 <li>Visit <a href="https://github.com/stoplightio/spectral#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://docs.stoplight.io/docs/spectral/9ffa04e052cc1-spectral-cli#using-a-ruleset-file" target="_blank">How to configure spectral rules</a><ul>
 <li>If custom <code>.spectral.yaml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.spectral.yaml" target="_blank">.spectral.yaml</a> will be used</li>
@@ -12796,7 +12796,7 @@ Options:
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=npm depName=@stoplight/spectral-cli</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">NPM_SPECTRAL_CLI_VERSION</span><span class="o">=</span><span class="m">6</span>.16.3
+<span class="k">ARG</span><span class="w"> </span><span class="nv">NPM_SPECTRAL_CLI_VERSION</span><span class="o">=</span><span class="m">6</span>.17.0
 <span class="k">RUN</span><span class="w"> </span>npm<span class="w"> </span>--no-cache<span class="w"> </span>install<span class="w"> </span>--ignore-scripts<span class="w"> </span>--omit<span class="o">=</span>dev<span class="w"> </span>--prefix<span class="w"> </span>/node-deps-spectral<span class="w"> </span>@stoplight/spectral-cli@<span class="si">${</span><span class="nv">NPM_SPECTRAL_CLI_VERSION</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/node-deps-spectral/node_modules/.bin/spectral<span class="w"> </span>/usr/bin/spectral<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">(</span>npm<span class="w"> </span>cache<span class="w"> </span>clean<span class="w"> </span>--force<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span><span class="o">)</span><span class="w"> </span><span class="se">\</span>

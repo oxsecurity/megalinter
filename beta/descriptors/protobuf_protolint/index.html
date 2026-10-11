@@ -12400,7 +12400,7 @@
 </ul>
 <h2 id="protolint-documentation">protolint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.57.0</strong></li>
+<li>Version in MegaLinter: <strong>0.58.0</strong></li>
 <li>Visit <a href="https://github.com/yoheimuta/protolint#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/yoheimuta/protolint#rules" target="_blank">How to configure protolint rules</a><ul>
 <li>If custom <code>.protolintrc.yml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.protolintrc.yml" target="_blank">.protolintrc.yml</a> will be used</li>
@@ -12700,13 +12700,15 @@
 <span class="w">      </span>plugins<span class="w"> </span>to<span class="w"> </span>provide<span class="w"> </span>custom<span class="w"> </span>lint<span class="w"> </span>rule<span class="w"> </span>set.<span class="w"> </span>Note<span class="w"> </span>that<span class="w"> </span>it<span class="s1">'s necessary to specify it as path format'</span>
 <span class="w">  </span>-reporter<span class="w"> </span>value
 <span class="w">      </span>formatter<span class="w"> </span>to<span class="w"> </span>output<span class="w"> </span>results<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>specific<span class="w"> </span>format.<span class="w"> </span>Available<span class="w"> </span>reporters<span class="w"> </span>are<span class="w"> </span><span class="s2">"plain"</span><span class="o">(</span>default<span class="o">)</span>,<span class="w"> </span><span class="s2">"junit"</span>,<span class="w"> </span><span class="s2">"json"</span>,<span class="w"> </span><span class="s2">"sarif"</span>,<span class="w"> </span>and<span class="w"> </span><span class="s2">"unix"</span>.
+<span class="w">  </span>-stdin_filename<span class="w"> </span>string
+<span class="w">      </span>a<span class="w"> </span>filename<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>text<span class="w"> </span>passed<span class="w"> </span>via<span class="w"> </span>stdin.<span class="w"> </span><span class="o">(</span>default<span class="w"> </span><span class="s2">"stdin.proto"</span><span class="o">)</span>
 <span class="w">  </span>-v<span class="w">  </span>verbose<span class="w"> </span>output<span class="w"> </span>that<span class="w"> </span>includes<span class="w"> </span>parsing<span class="w"> </span>process<span class="w"> </span>details
 </code></pre></div>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=docker depName=yoheimuta/protolint</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">PROTOBUF_PROTOLINT_VERSION</span><span class="o">=</span><span class="m">0</span>.57.0
+<span class="k">ARG</span><span class="w"> </span><span class="nv">PROTOBUF_PROTOLINT_VERSION</span><span class="o">=</span><span class="m">0</span>.58.0
 <span class="k">FROM</span><span class="w"> </span><span class="s">yoheimuta/protolint:${PROTOBUF_PROTOLINT_VERSION}</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">protolint</span>
 <span class="k">COPY</span><span class="w"> </span>--link<span class="w"> </span>--from<span class="o">=</span>protolint<span class="w"> </span>/usr/local/bin/protolint<span class="w"> </span>/usr/bin/
 </code></pre></div></li>

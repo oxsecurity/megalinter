@@ -12479,7 +12479,7 @@
 </ul>
 <h2 id="psalm-documentation">psalm documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>Psalm.6.18.0@</strong></li>
+<li>Version in MegaLinter: <strong>Psalm.6.19.1@</strong></li>
 <li>Visit <a href="https://psalm.dev" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://psalm.dev/docs/running_psalm/configuration/" target="_blank">How to configure psalm rules</a><ul>
 <li>If custom <code>psalm.xml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/psalm.xml" target="_blank">psalm.xml</a> will be used</li>
@@ -12761,7 +12761,9 @@ Plugins:
 
 Output:
 <span class="w">    </span>-m,<span class="w"> </span>--monochrome
-<span class="w">        </span>Enable<span class="w"> </span>monochrome<span class="w"> </span>output
+<span class="w">        </span>Enable<span class="w"> </span>monochrome<span class="w"> </span>output.
+<span class="w">        </span>Auto-enabled<span class="w"> </span>when<span class="w"> </span>NO_COLOR<span class="w"> </span>is<span class="w"> </span><span class="nb">set</span><span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>non-empty<span class="w"> </span>value<span class="w"> </span>or<span class="w"> </span>when
+<span class="w">        </span>an<span class="w"> </span>AI<span class="w"> </span>coding<span class="w"> </span>agent<span class="w"> </span>is<span class="w"> </span>driving<span class="w"> </span>the<span class="w"> </span>shell.
 
 <span class="w">    </span>--output-format<span class="o">=</span>console
 <span class="w">        </span>Changes<span class="w"> </span>the<span class="w"> </span>output<span class="w"> </span>format.
@@ -12771,10 +12773,13 @@ Output:
 <span class="w">            </span>text,<span class="w"> </span>xml
 
 <span class="w">    </span>--no-progress
-<span class="w">        </span>Disable<span class="w"> </span>the<span class="w"> </span>progress<span class="w"> </span>indicator
+<span class="w">        </span>Disable<span class="w"> </span>the<span class="w"> </span>progress<span class="w"> </span>indicator.
+<span class="w">        </span>Auto-enabled<span class="w"> </span>when<span class="w"> </span>an<span class="w"> </span>AI<span class="w"> </span>coding<span class="w"> </span>agent<span class="w"> </span>is<span class="w"> </span>driving<span class="w"> </span>the<span class="w"> </span>shell
+<span class="w">        </span><span class="o">(</span>CI<span class="w"> </span>always<span class="w"> </span>keeps<span class="w"> </span>its<span class="w"> </span>phase<span class="w"> </span>breadcrumbs<span class="o">)</span>.
 
 <span class="w">    </span>--long-progress
-<span class="w">        </span>Use<span class="w"> </span>a<span class="w"> </span>progress<span class="w"> </span>indicator<span class="w"> </span>suitable<span class="w"> </span><span class="k">for</span><span class="w"> </span>Continuous<span class="w"> </span>Integration<span class="w"> </span>logs
+<span class="w">        </span>Use<span class="w"> </span>a<span class="w"> </span>progress<span class="w"> </span>indicator<span class="w"> </span>suitable<span class="w"> </span><span class="k">for</span><span class="w"> </span>Continuous<span class="w"> </span>Integration<span class="w"> </span>logs.
+<span class="w">        </span>Auto-enabled<span class="w"> </span><span class="k">in</span><span class="w"> </span>CI<span class="w"> </span>and<span class="w"> </span>when<span class="w"> </span>stderr<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>attached<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>terminal.
 
 <span class="w">    </span>--stats
 <span class="w">        </span>Shows<span class="w"> </span>a<span class="w"> </span>breakdown<span class="w"> </span>of<span class="w"> </span>Psalm’s<span class="w"> </span>ability<span class="w"> </span>to<span class="w"> </span>infer<span class="w"> </span>types<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>codebase
@@ -12866,7 +12871,7 @@ Miscellaneous:
 <span class="k">ENV</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"/usr/local/composer/vendor/bin:</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span><span class="s2">"</span>
 <span class="c"># Linter install</span>
 <span class="c"># renovate: datasource=packagist depName=vimeo/psalm</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">PHP_VIMEO_PSALM_VERSION</span><span class="o">=</span><span class="m">6</span>.18.0
+<span class="k">ARG</span><span class="w"> </span><span class="nv">PHP_VIMEO_PSALM_VERSION</span><span class="o">=</span><span class="m">6</span>.19.1
 <span class="k">RUN</span><span class="w"> </span><span class="nv">GITHUB_AUTH_TOKEN</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>cat<span class="w"> </span>/run/secrets/GITHUB_TOKEN<span class="k">)</span><span class="s2">"</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span>GITHUB_AUTH_TOKEN<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>composer<span class="w"> </span>global<span class="w"> </span>require<span class="w"> </span>vimeo/psalm:<span class="si">${</span><span class="nv">PHP_VIMEO_PSALM_VERSION</span><span class="si">}</span>
 </code></pre></div></li>
 </ul>

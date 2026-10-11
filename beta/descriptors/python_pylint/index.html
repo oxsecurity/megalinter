@@ -12518,7 +12518,7 @@
 <p>For legacy projects, start with <code>--errors-only</code> flag and progressively enable more checks. Works best alongside other tools like ruff, mypy, black, and isort for comprehensive Python code quality.</p>
 <h2 id="pylint-documentation">pylint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>4.0.8</strong></li>
+<li>Version in MegaLinter: <strong>4.1.2</strong></li>
 <li>Visit <a href="https://pylint.readthedocs.io" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://pylint.readthedocs.io/en/stable/user_guide/configuration/index.html" target="_blank">How to configure pylint rules</a><ul>
 <li>If custom <code>.pylintrc</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.pylintrc" target="_blank">.pylintrc</a> will be used</li>
@@ -12859,6 +12859,13 @@ Main:
 <span class="s1">                        Resolve imports to .pyi stubs if available. May reduce</span>
 <span class="s1">                        no-member messages and increase not-an-iterable</span>
 <span class="s1">                        messages. (default: False)</span>
+<span class="s1">  --files               The files to lint. The flag can also be omitted as</span>
+<span class="s1">                        pylint will try to lint any file passed as argument.</span>
+<span class="s1">                        This can be used to set files to a directory in a</span>
+<span class="s1">                        configuration file and invoke pylint by only typing</span>
+<span class="s1">                        pylint on the command line. Any file passed as</span>
+<span class="s1">                        argument will overwrite any file set in the</span>
+<span class="s1">                        configuration file. (default: [])</span>
 
 <span class="s1">Reports:</span>
 <span class="s1">  Options related to output formatting and reporting</span>
@@ -12866,9 +12873,9 @@ Main:
 <span class="s1">  --output-format, -f &lt;format&gt;</span>
 <span class="s1">                        Set the output format. Available formats are: '</span>text<span class="s1">',</span>
 <span class="s1">                        '</span>parseable<span class="s1">', '</span>colorized<span class="s1">', '</span>json2<span class="s1">' (improved json</span>
-<span class="s1">                        format), '</span>json<span class="s1">' (old json format), msvs (visual</span>
-<span class="s1">                        studio) and '</span>github<span class="s1">' (GitHub actions). You can also</span>
-<span class="s1">                        give a reporter class, e.g.</span>
+<span class="s1">                        format), '</span>json<span class="s1">' (old json format), '</span>msvs<span class="s1">' (visual</span>
+<span class="s1">                        studio), '</span>github<span class="s1">' (GitHub actions) and '</span>junit<span class="s1">' (JUnit</span>
+<span class="s1">                        XML). You can also give a reporter class, e.g.</span>
 <span class="s1">                        mypackage.mymodule.MyReporterClass.</span>
 <span class="s1">  --reports, -r &lt;y or n&gt;</span>
 <span class="s1">                        Tells whether to display a full report or only the</span>
@@ -13299,6 +13306,9 @@ Miscellaneous:
 <span class="s1">  --known-standard-library &lt;modules&gt;</span>
 <span class="s1">                        Force import order to recognize a module as part of</span>
 <span class="s1">                        the standard compatibility libraries. (default: ())</span>
+<span class="s1">  --known-first-party &lt;modules&gt;</span>
+<span class="s1">                        Force import order to recognize a module as part of a</span>
+<span class="s1">                        first party library. (default: ())</span>
 <span class="s1">  --known-third-party &lt;modules&gt;</span>
 <span class="s1">                        Force import order to recognize a module as part of a</span>
 <span class="s1">                        third party library. (default: ('</span>enchant<span class="s1">',))</span>
@@ -13373,6 +13383,13 @@ Miscellaneous:
 <span class="w">  </span>--signature-mutators<span class="w"> </span>&lt;decorator<span class="w"> </span>names&gt;
 <span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>decorators<span class="w"> </span>that<span class="w"> </span>change<span class="w"> </span>the<span class="w"> </span>signature<span class="w"> </span>of<span class="w"> </span>a
 <span class="w">                        </span>decorated<span class="w"> </span><span class="k">function</span>.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">[])</span>
+<span class="w">  </span>--known-side-effects-only-functions<span class="w"> </span>&lt;<span class="k">function</span>:suggestion&gt;
+<span class="w">                        </span>Couples<span class="w"> </span>of<span class="w"> </span>functions<span class="w"> </span>with<span class="w"> </span>side<span class="w"> </span>effects<span class="w"> </span>that<span class="w"> </span>are<span class="w"> </span>often
+<span class="w">                        </span>believed<span class="w"> </span>to<span class="w"> </span><span class="k">return</span><span class="w"> </span>something<span class="w"> </span>and<span class="w"> </span>the<span class="w"> </span>equivalent
+<span class="w">                        </span><span class="k">function</span><span class="w"> </span>that<span class="w"> </span>does<span class="w"> </span><span class="k">return</span><span class="w"> </span>something,<span class="w"> </span>separated<span class="w"> </span>by<span class="w"> </span>a
+<span class="w">                        </span>comma.<span class="w"> </span>Used<span class="w"> </span>to<span class="w"> </span>hint<span class="w"> </span>at<span class="w"> </span>the<span class="w"> </span>right<span class="w"> </span><span class="k">function</span><span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span><span class="k">in</span>
+<span class="w">                        </span>the<span class="w"> </span><span class="s1">'assignment-from-no-return'</span><span class="w"> </span>message.<span class="w"> </span><span class="o">(</span>default:
+<span class="w">                        </span><span class="o">(</span><span class="s1">'reverse:reversed'</span>,<span class="w"> </span><span class="s1">'sort:sorted'</span><span class="o">))</span>
 
 Format:
 <span class="w">  </span>Formatting<span class="w"> </span>checker.
@@ -13385,6 +13402,9 @@ Format:
 <span class="w">  </span>--ignore-long-lines<span class="w"> </span>&lt;regexp&gt;
 <span class="w">                        </span>Regexp<span class="w"> </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span>line<span class="w"> </span>that<span class="w"> </span>is<span class="w"> </span>allowed<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>longer<span class="w"> </span>than
 <span class="w">                        </span>the<span class="w"> </span>limit.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>^<span class="se">\s</span>*<span class="o">(</span><span class="c1"># )?&lt;?https?://\S+&gt;?$)</span>
+<span class="w">  </span>--ignore-pattern-in-long-lines<span class="w"> </span>&lt;regexp&gt;
+<span class="w">                        </span>Regexp<span class="w"> </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span>part<span class="w"> </span>of<span class="w"> </span>a<span class="w"> </span>line<span class="w"> </span>that<span class="w"> </span>will<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>counted
+<span class="w">                        </span>when<span class="w"> </span>calculating<span class="w"> </span>the<span class="w"> </span>line<span class="w"> </span>length.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>None<span class="o">)</span>
 <span class="w">  </span>--single-line-if-stmt<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
 <span class="w">                        </span>Allow<span class="w"> </span>the<span class="w"> </span>body<span class="w"> </span>of<span class="w"> </span>an<span class="w"> </span><span class="k">if</span><span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>same<span class="w"> </span>line<span class="w"> </span>as<span class="w"> </span>the
 <span class="w">                        </span><span class="nb">test</span><span class="w"> </span><span class="k">if</span><span class="w"> </span>there<span class="w"> </span>is<span class="w"> </span>no<span class="w"> </span><span class="k">else</span>.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
@@ -13408,14 +13428,14 @@ Format:
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=pypi depName=pylint</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">PIP_PYLINT_VERSION</span><span class="o">=</span><span class="m">4</span>.0.8
+<span class="k">ARG</span><span class="w"> </span><span class="nv">PIP_PYLINT_VERSION</span><span class="o">=</span><span class="m">4</span>.1.2
 <span class="c"># renovate: datasource=pypi depName=typing-extensions</span>
 <span class="k">ARG</span><span class="w"> </span><span class="nv">PIP_TYPING_EXTENSIONS_VERSION</span><span class="o">=</span><span class="m">4</span>.16.0
 </code></pre></div></li>
 </ul>
 <ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/pylint/4.0.8">pylint==4.0.8</a></li>
+<li><a href="https://pypi.org/project/pylint/4.1.2">pylint==4.1.2</a></li>
 <li><a href="https://pypi.org/project/typing-extensions/4.16.0">typing-extensions==4.16.0</a></li>
 </ul>
 </li>

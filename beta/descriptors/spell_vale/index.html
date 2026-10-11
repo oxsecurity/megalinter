@@ -12400,7 +12400,7 @@
 MegaLinter analyze markdown and restructuredText files by default, you can change that using SPELL_VALE_FILE_EXTENSIONS variable.</p>
 <h2 id="vale-documentation">vale documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.22.0</strong></li>
+<li>Version in MegaLinter: <strong>3.24.0</strong></li>
 <li>Visit <a href="https://vale.sh/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://vale.sh/explorer/" target="_blank">How to configure vale rules</a></li>
 <li>See <a href="https://vale.sh/docs/topics/vocab/" target="_blank">How to disable vale rules in files</a></li>
@@ -12719,6 +12719,7 @@ To<span class="w"> </span>get<span class="w"> </span>started,<span class="w"> </
 
 <span class="s1">More flags:</span>
 
+<span class="s1"> --coverage        With `vale test`: fail when a rule produced no alert in any case.</span>
 <span class="s1"> --ext             An extension to associate with stdin (--ext=.md).</span>
 <span class="s1"> --ignore-syntax   Lint all files line-by-line.</span>
 <span class="s1"> --no-color        Don'</span>t<span class="w"> </span>colorize<span class="w"> </span>CLI<span class="w"> </span>output.
@@ -12736,14 +12737,15 @@ To<span class="w"> </span>get<span class="w"> </span>started,<span class="w"> </
 <span class="s1"> ls-metrics  Print the given file'</span>s<span class="w"> </span>internal<span class="w"> </span>metrics<span class="w"> </span>to<span class="w"> </span>stdout.
 <span class="w"> </span>ls-vars<span class="w">     </span>Print<span class="w"> </span>the<span class="w"> </span>supported<span class="w"> </span>environment<span class="w"> </span>variables<span class="w"> </span>to<span class="w"> </span>stdout.
 <span class="w"> </span>sync<span class="w">        </span>Download<span class="w"> </span>and<span class="w"> </span>install<span class="w"> </span>external<span class="w"> </span>configuration<span class="w"> </span>sources.
+<span class="w"> </span><span class="nb">test</span><span class="w">        </span>Run<span class="w"> </span>the<span class="w"> </span><span class="nb">test</span><span class="w"> </span>cases<span class="w"> </span>kept<span class="w"> </span>beside<span class="w"> </span>a<span class="w"> </span>configuration<span class="s1">'s rules.</span>
 
-Run<span class="w"> </span>vale<span class="w"> </span>&lt;command&gt;<span class="w"> </span>--help<span class="w"> </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span>command<span class="err">'</span>s<span class="w"> </span>own<span class="w"> </span>help.
+<span class="s1">Run vale &lt;command&gt; --help for a command'</span>s<span class="w"> </span>own<span class="w"> </span>help.
 </code></pre></div>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=docker depName=jdkato/vale</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">SPELL_VALE_VERSION</span><span class="o">=</span>v3.22.0
+<span class="k">ARG</span><span class="w"> </span><span class="nv">SPELL_VALE_VERSION</span><span class="o">=</span>v3.24.0
 <span class="k">FROM</span><span class="w"> </span><span class="s">jdkato/vale:${SPELL_VALE_VERSION}</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">vale</span>
 <span class="k">COPY</span><span class="w"> </span>--link<span class="w"> </span>--from<span class="o">=</span>vale<span class="w"> </span>/bin/vale<span class="w"> </span>/bin/vale
 </code></pre></div></li>
