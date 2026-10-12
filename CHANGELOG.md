@@ -35,6 +35,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **CLOJURE_CLJ_KONDO** now really forwards `EXCLUDED_DIRECTORIES` and `ADDITIONAL_EXCLUDED_DIRECTORIES` in `project` lint mode: they were never applied before, so files in folders like `node_modules` or `.wireit` could be reported
     - The directories are passed as a merged `:output {:exclude-files [...]}` inline configuration, so your own `:output :exclude-files` patterns in `.clj-kondo/config.edn` are kept
     - Disable the forwarding with `CLOJURE_CLJ_KONDO_FORWARD_EXCLUDED_DIRECTORIES: false`
+  - The **`.mega-linter.yml` JSON Schema** is no longer rejected by strict JSON Schema validators with `Invalid anchor value`: the invalid `$id` values are removed from the configuration and descriptor schemas. Fixes [#9177](https://github.com/oxsecurity/megalinter/issues/9177)
 
 - Reporters
 
@@ -50,6 +51,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **megalinter-fix** now explains how to fix clj-kondo `:type-mismatch` and `:constant-condition` findings, and the difference between the top-level `:exclude-files` and `:output :exclude-files` clj-kondo settings
 
 - Dev
+  - The build now fails when a JSON Schema in `megalinter/descriptors/schemas/` is not compliant with its draft-07 meta-schema, or declares an `$id` holding a JSON Pointer fragment (`validate_json_schemas` in `.automation/build.py`)
   - `CLOJURE_CLJ_KONDO` test fixtures are split into `good/` and `bad/` folders, so the `project` lint mode tests no longer lint the failing files, and `.wireit` poison fixtures now guard the excluded directories forwarding, at root and nested levels
   - `CljKondoLinter` forwards excluded directories through `:output :exclude-files` instead of a top-level `:exclude-files` vector (an invalid value), and no longer skips the forwarding when a `--config` file is passed, which was always the case since the default `TEMPLATES/.clj-kondo/config.edn` is used when the repository has none
   - `--lint` moved from `cli_lint_extra_args_after` to the per-mode `cli_lint_mode_*_extra_args_after` properties, because clj-kondo assigns every following argument to the last option: the forwarded `--config` must come before it
