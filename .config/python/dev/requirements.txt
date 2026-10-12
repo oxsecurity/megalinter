@@ -1,6 +1,6 @@
 # Please check changes with entrypoint.sh and keep in sync
 aiofiles==25.1.0
-aiohttp==3.14.3
+aiohttp==3.14.4
 beautifulsoup4==4.15.0
 fastapi==0.142.2
 gitpython==3.2.0
