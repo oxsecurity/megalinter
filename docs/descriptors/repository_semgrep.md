@@ -29,7 +29,7 @@ Exception for standalone and security flavors docker images, that use a list of 
 
 ## semgrep documentation
 
-- Version in MegaLinter: **1.177.0**
+- Version in MegaLinter: **1.180.0**
 - Visit [Official Web Site](https://semgrep.dev/){target=_blank}
 - See [How to configure semgrep rules](https://semgrep.dev/docs/running-rules/){target=_blank}
 - See [How to disable semgrep rules in files](https://semgrep.dev/docs/ignoring-findings/#inline-comments){target=_blank}
@@ -307,9 +307,11 @@ OPTIONS
            Output results incrementally. REQUIRES --experimental
 
        --interfile-timeout=INT (absent=0)
-           Maximum time to spend on interfile analysis. If set to 0 will not
-           have time limit. Defaults to 0 s for all CLI scans. For CI scans,
-           it defaults to 3 hours.
+           Maximum time to spend on interfile analysis. The time budget is
+           enforced by being divided among analysis steps, so scans may take
+           less time than the specified timeout. If set to 0, a blanket
+           higher timeout is used for each analysis step. Defaults to 0 s for
+           all CLI scans. For CI scans, it defaults to 3 hours.
 
        -j VALUE, --jobs=VALUE (absent=3)
            Degree of parallelism to use for parallel scanning, either using
@@ -779,7 +781,7 @@ BUGS
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.177.0
+ARG PIP_SEMGREP_VERSION=1.180.0
 # Wrap semgrep so its OCaml 5 runtime does not abort with
 # "Failed to allocate signal stack for domain 0", which happens when the
 # stack rlimit is unlimited (the case on some CI runners). Cap it to a
@@ -790,4 +792,4 @@ RUN mv /venvs/semgrep/bin/semgrep /venvs/semgrep/bin/semgrep-bin \
 ```
 
 - PIP packages (Python):
-  - [semgrep==1.177.0](https://pypi.org/project/semgrep/1.177.0)
+  - [semgrep==1.180.0](https://pypi.org/project/semgrep/1.180.0)

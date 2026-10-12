@@ -801,6 +801,7 @@
         "GOLANGCI",
         "golangci",
         "golint",
+        "gomod",
         "GOODCHECK",
         "goodcheck",
         "goodwithtech",

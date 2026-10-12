@@ -30,7 +30,7 @@ Note: in `project` lint mode, `EXCLUDED_DIRECTORIES` can not be forwarded to sql
 
 ## sqlfluff documentation
 
-- Version in MegaLinter: **4.3.0**
+- Version in MegaLinter: **4.4.0**
 - Visit [Official Web Site](https://www.sqlfluff.com/){target=_blank}
 - See [How to configure sqlfluff rules](https://docs.sqlfluff.com/en/stable/configuration/index.html){target=_blank}
   - If custom `.sqlfluff` config file isn't found, [.sqlfluff](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.sqlfluff){target=_blank} will be used
@@ -154,11 +154,11 @@ Commands:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=sqlfluff
-ARG PIP_SQLFLUFF_VERSION=4.3.0
+ARG PIP_SQLFLUFF_VERSION=4.4.0
 ```
 
 - PIP packages (Python):
-  - [sqlfluff==4.3.0](https://pypi.org/project/sqlfluff/4.3.0)
+  - [sqlfluff==4.4.0](https://pypi.org/project/sqlfluff/4.4.0)
 
 ## Known errors and resolutions
 

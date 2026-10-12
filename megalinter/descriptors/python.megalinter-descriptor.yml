@@ -105,7 +105,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=pylint
-          ARG PIP_PYLINT_VERSION=4.0.8
+          ARG PIP_PYLINT_VERSION=4.1.2
         - |-
           # renovate: datasource=pypi depName=typing-extensions
           ARG PIP_TYPING_EXTENSIONS_VERSION=4.16.0
@@ -299,7 +299,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=flake8
-          ARG PIP_FLAKE8_VERSION=7.3.0
+          ARG PIP_FLAKE8_VERSION=7.4.1
       pip:
         - flake8==${PIP_FLAKE8_VERSION}
     supported_platforms:
@@ -373,7 +373,7 @@ linters:
           ARG PIP_BLACK_VERSION=26.5.1
         - |-
           # renovate: datasource=pypi depName=isort
-          ARG PIP_ISORT_VERSION=9.0.1
+          ARG PIP_ISORT_VERSION=9.0.2
       pip:
         - black==${PIP_BLACK_VERSION}
         - isort==${PIP_ISORT_VERSION}

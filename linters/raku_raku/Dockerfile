@@ -61,8 +61,8 @@ RUN python -c 'import sys; assert sys.version_info >= (3, 14, 7), "Python 3.14.7
 #ARG__START
 ARG TARGETPLATFORM
 ARG TARGETARCH
-# renovate: datasource=github-tags depName=nxadm/rakudo-pkg
-ARG RAKU_RAKU_VERSION=2026.03
+# renovate: datasource=github-tags depName=nxadm/rakudo-pkg extractVersion=^v(?<version>.+)$
+ARG RAKU_RAKU_VERSION=2026.08
 ARG RAKU_RAKU_ALPINE_VERSION=3.23
 
 #ARG__END
