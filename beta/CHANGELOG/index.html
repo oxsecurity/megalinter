@@ -15605,6 +15605,7 @@
 <li>Disable the forwarding with <code>CLOJURE_CLJ_KONDO_FORWARD_EXCLUDED_DIRECTORIES: false</code></li>
 </ul>
 </li>
+<li>The <strong><code>.mega-linter.yml</code> JSON Schema</strong> is no longer rejected by strict JSON Schema validators with <code>Invalid anchor value</code>: the invalid <code>$id</code> values are removed from the configuration and descriptor schemas. Fixes <a href="https://github.com/oxsecurity/megalinter/issues/9177">#9177</a></li>
 </ul>
 </li>
 </ul>
@@ -15632,6 +15633,7 @@
 </ul>
 <ul>
 <li>Dev<ul>
+<li>The build now fails when a JSON Schema in <code>megalinter/descriptors/schemas/</code> is not compliant with its draft-07 meta-schema, or declares an <code>$id</code> holding a JSON Pointer fragment (<code>validate_json_schemas</code> in <code>.automation/build.py</code>)</li>
 <li><code>CLOJURE_CLJ_KONDO</code> test fixtures are split into <code>good/</code> and <code>bad/</code> folders, so the <code>project</code> lint mode tests no longer lint the failing files, and <code>.wireit</code> poison fixtures now guard the excluded directories forwarding, at root and nested levels</li>
 <li><code>CljKondoLinter</code> forwards excluded directories through <code>:output :exclude-files</code> instead of a top-level <code>:exclude-files</code> vector (an invalid value), and no longer skips the forwarding when a <code>--config</code> file is passed, which was always the case since the default <code>TEMPLATES/.clj-kondo/config.edn</code> is used when the repository has none</li>
 <li><code>--lint</code> moved from <code>cli_lint_extra_args_after</code> to the per-mode <code>cli_lint_mode_*_extra_args_after</code> properties, because clj-kondo assigns every following argument to the last option: the forwarded <code>--config</code> must come before it</li>
