@@ -179,6 +179,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sqlfluff](https://www.sqlfluff.com/) from 4.3.0 to **4.4.0** on 2026-10-11
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.16.3 to **1.16.4** on 2026-10-11
   - [terragrunt](https://docs.terragrunt.com/reference/cli/commands/hcl/fmt/) from 1.1.5 to **1.1.6** on 2026-10-11
+  - [phpstan](https://phpstan.org/) from 2.2.16 to **2.2.17** on 2026-10-12
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.16.8 to **0.16.10** on 2026-10-12
+  - [ruff](https://github.com/astral-sh/ruff) from 0.16.8 to **0.16.10** on 2026-10-12
+  - [raku](https://raku.org/) from 2026.03 to **2026.08** on 2026-10-12
 <!-- linter-versions-end -->
 
 ## [v10.1.0] - 2026-09-05
