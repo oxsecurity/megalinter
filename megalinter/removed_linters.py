@@ -212,7 +212,7 @@ def _descriptor_variable_suffixes() -> set[str]:
     properties = schema["properties"]
     descriptors = schema["definitions"]["enum_descriptor_keys"]["enum"]
     return {
-        name[len(category) :]
+        name.removeprefix(category)
         for name, definition in properties.items()
         if (category := definition.get("x-category")) in descriptors
         and name.startswith(category + "_")
@@ -232,7 +232,7 @@ def find_removed_references(
             and matched_linter is None
             and explicit_config_keys is not None
             and config_key not in explicit_config_keys
-            and config_key[len(matched) :] not in _descriptor_variable_suffixes()
+            and config_key.removeprefix(matched) not in _descriptor_variable_suffixes()
         ):
             continue
         if matched is not None:
