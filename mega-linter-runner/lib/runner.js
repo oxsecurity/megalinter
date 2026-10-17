@@ -25,11 +25,12 @@ import { createEnv } from "yeoman-environment";
 import { load as yamlLoad } from "js-yaml";
 
 function isSElinuxOn() {
-  return ["Enforcing", "Permissive", "enforcing", "permissive"].includes(process.env.SELINUX_MODE);
+  return ["Enforcing", "Permissive", "enforcing", "permissive"].includes(
+    process.env.SELINUX_MODE,
+  );
 }
 
 export class MegaLinterRunner {
-
   constructor() {
     // Injectable for tests: lets unit tests fake the container engine calls
     this.spawnSyncFn = spawnSync;
@@ -64,7 +65,7 @@ export class MegaLinterRunner {
           const packageJsonFile = path.join(
             dirname(fileURLToPath(import.meta.url)),
             "..",
-            "package.json"
+            "package.json",
           );
           v = JSON.parse(fs.readFileSync(packageJsonFile, "utf8")).version;
         } catch (e) {
@@ -90,7 +91,7 @@ export class MegaLinterRunner {
       const env = createEnv();
       const __dirname = dirname(fileURLToPath(import.meta.url));
       const generatorPath = path.resolve(
-        path.join(__dirname, "..", "generators", "mega-linter")
+        path.join(__dirname, "..", "generators", "mega-linter"),
       );
       console.log("Yeoman generator used: " + generatorPath);
       if (options.prompt === false) {
@@ -110,12 +111,14 @@ export class MegaLinterRunner {
     // Run custom flavor generator
     if (options.customFlavorSetup) {
       if (options.customFlavorLinters) {
-        globalThis.customFlavorLinters = options.customFlavorLinters.split(",").map((linter) => linter.trim());
+        globalThis.customFlavorLinters = options.customFlavorLinters
+          .split(",")
+          .map((linter) => linter.trim());
       }
       const env = createEnv();
       const __dirname = dirname(fileURLToPath(import.meta.url));
       const generatorPath = path.resolve(
-        path.join(__dirname, "..", "generators", "mega-linter-custom-flavor")
+        path.join(__dirname, "..", "generators", "mega-linter-custom-flavor"),
       );
       console.log("Yeoman generator used: " + generatorPath);
       env.run(generatorPath);
@@ -140,7 +143,7 @@ export class MegaLinterRunner {
       );
       const codeTotalRunner = new CodeTotalRunner(options);
       await codeTotalRunner.run();
-      return { status: 0 }
+      return { status: 0 };
     }
 
     // Build MegaLinter docker image name with flavor and release version
@@ -154,7 +157,7 @@ export class MegaLinterRunner {
     const localConfig = this.readLocalConfig(path.resolve(options.path || "."));
     const { dockerImage, release } = this.resolveDockerImage(
       options,
-      localConfig
+      localConfig,
     );
     this.checkPreviousVersion(release);
 
@@ -166,14 +169,12 @@ export class MegaLinterRunner {
   ERROR: Podman engine has not been found on your system.
   - To run MegaLinter locally, please install Podman: https://podman.io/docs/installation
   - To run Podman on CI, use a base image containing Podman engine`);
-      }
-      else if (this.containerEngine === "container") {
+      } else if (this.containerEngine === "container") {
         console.error(`
   ERROR: Apple's container engine has not been found on your system.
   - To run MegaLinter locally, please install container (macOS 15+, Apple Silicon only): https://github.com/apple/container
   - Start it once installed with: container system start`);
-      }
-      else {
+      } else {
         console.error(`
   ERROR: Docker engine has not been found on your system.
   - to run MegaLinter locally, please install docker desktop: https://www.docker.com/products/docker-desktop
@@ -205,7 +206,7 @@ export class MegaLinterRunner {
                   "{{.Os}}/{{.Architecture}}",
                   dockerImage,
                 ],
-            { encoding: "utf8", windowsHide: true }
+            { encoding: "utf8", windowsHide: true },
           )
         : null;
     let pinnedVersionLocallyAvailable = false;
@@ -219,7 +220,7 @@ export class MegaLinterRunner {
             (variant) =>
               variant.platform &&
               `${variant.platform.os}/${variant.platform.architecture}` ===
-                imagePlatform
+                imagePlatform,
           );
         } catch {
           pinnedVersionLocallyAvailable = false;
@@ -231,15 +232,15 @@ export class MegaLinterRunner {
     }
     if (pinnedVersionLocallyAvailable) {
       console.log(
-        `Skipped pull of ${dockerImage} (pinned version already available locally)`
+        `Skipped pull of ${dockerImage} (pinned version already available locally)`,
       );
     } else if (options.nodockerpull !== true) {
       console.info(`Pulling docker image ${dockerImage} ... `);
       console.info(
-        "INFO: this operation can be long during the first use of mega-linter-runner"
+        "INFO: this operation can be long during the first use of mega-linter-runner",
       );
       console.info(
-        "The next runs, it will be immediate (thanks to docker cache !)"
+        "The next runs, it will be immediate (thanks to docker cache !)",
       );
       const spawnResPull = spawnSync(
         this.containerEngine,
@@ -251,7 +252,7 @@ export class MegaLinterRunner {
           stdio: "inherit",
           windowsHide: true,
           windowsVerbatimArguments: true,
-        }
+        },
       );
       // Manage case when unable to pull docker image
       if (spawnResPull.status !== 0) {
@@ -260,7 +261,7 @@ export class MegaLinterRunner {
           errorMsg: `Unable to pull [${dockerImage}]: \n${JSON.stringify(
             spawnResPull,
             null,
-            2
+            2,
           )}`,
         };
       }
@@ -286,14 +287,14 @@ export class MegaLinterRunner {
       "build",
     ];
     const heavyDirsFound = heavyDirCandidates.filter((dir) =>
-      fs.existsSync(path.join(lintPath, dir))
+      fs.existsSync(path.join(lintPath, dir)),
     );
     if (heavyDirsFound.length > 0) {
       console.log(
         `Heavy folders detected in workspace (${heavyDirsFound.join(", ")}): ` +
           "local runs can be slower than CI on a fresh checkout. " +
           "Excluded directories are forwarded to project-mode linters that support native exclusions; " +
-          "you can also skip project-mode linters entirely with -e SKIP_CLI_LINT_MODES=project"
+          "you can also skip project-mode linters entirely with -e SKIP_CLI_LINT_MODES=project",
       );
     }
     const dotenvPath = path.join(lintPath, ".env");
@@ -317,12 +318,18 @@ export class MegaLinterRunner {
         }
         envVarsFromDotenv.push(`${key}=${value}`);
       });
-      const tmpDir = await fs.promises.mkdtemp(path.join(os.tmpdir(), "megalinter-"));
+      const tmpDir = await fs.promises.mkdtemp(
+        path.join(os.tmpdir(), "megalinter-"),
+      );
       emptyEnvFile = path.join(tmpDir, "empty.env");
       await fs.promises.writeFile(emptyEnvFile, "");
     }
     const commandArgs = ["run", "--platform", imagePlatform];
-    const removeContainer = options["removeContainer"] ? true : options["noRemoveContainer"] ? false : true;
+    const removeContainer = options["removeContainer"]
+      ? true
+      : options["noRemoveContainer"]
+        ? false
+        : true;
     if (removeContainer) {
       commandArgs.push("--rm");
     }
@@ -335,7 +342,7 @@ export class MegaLinterRunner {
       // emulation in particular), which leaves orphan containers running
       containerName = `megalinter-runner-${Math.random().toString(36).slice(2, 10)}`;
       console.info(
-        `--timeout: the container will be named ${containerName} so it can be stopped and removed if the time limit is reached`
+        `--timeout: the container will be named ${containerName} so it can be stopped and removed if the time limit is reached`,
       );
     }
     if (containerName) {
@@ -383,7 +390,7 @@ export class MegaLinterRunner {
       }
     }
     commandArgs.push(
-      ...this.standaloneLinterEnvArgs(options, envVarsFromDotenv)
+      ...this.standaloneLinterEnvArgs(options, envVarsFromDotenv),
     );
     // Files only
     if (options.filesonly === true) {
@@ -396,8 +403,8 @@ export class MegaLinterRunner {
       if (releaseMajorMatch && Number(releaseMajorMatch[1]) < 10) {
         console.warn(
           c.yellow(
-            `[WARNING] --prerun requires MegaLinter v10 or beta: with ${release}, a full lint run will happen instead. Use --release beta (or set MEGALINTER_VERSION: beta in .mega-linter.yml).`
-          )
+            `[WARNING] --prerun requires MegaLinter v10 or beta: with ${release}, a full lint run will happen instead. Use --release beta (or set MEGALINTER_VERSION: beta in .mega-linter.yml).`,
+          ),
         );
       }
     }
@@ -405,7 +412,7 @@ export class MegaLinterRunner {
     if ((options._ || []).length > 0) {
       commandArgs.push(
         ...["-e"],
-        `MEGALINTER_FILES_TO_LINT=${options._.join(",")}`
+        `MEGALINTER_FILES_TO_LINT=${options._.join(",")}`,
       );
     }
     commandArgs.push(dockerImage);
@@ -415,9 +422,9 @@ export class MegaLinterRunner {
       commandArgs[i - 1] === "-e"
         ? arg.replace(
             /^([^=]*(?:KEY|TOKEN|SECRET|PASSWORD|CREDENTIAL|_PAT\b|AUTH)[^=]*)=.+$/i,
-            "$1=***"
+            "$1=***",
           )
-        : arg
+        : arg,
     );
     console.log(`Command: ${this.containerEngine} ${maskedArgs.join(" ")}`);
     const spawnOptions = {
@@ -434,7 +441,7 @@ export class MegaLinterRunner {
     const spawnRes = this.spawnSyncFn(
       this.containerEngine,
       commandArgs,
-      spawnOptions
+      spawnOptions,
     );
     if (spawnRes.error && spawnRes.error.code === "ETIMEDOUT") {
       const errorMsg = this.handleRunTimeout(containerName, timeoutSeconds);
@@ -449,7 +456,9 @@ export class MegaLinterRunner {
       const jsonOutputFile = path.join(
         lintPath,
         reportSubFolder,
-        options.prerun === true ? "prerun-report.json" : "mega-linter-report.json"
+        options.prerun === true
+          ? "prerun-report.json"
+          : "mega-linter-report.json",
       );
       if (fs.existsSync(jsonOutputFile)) {
         const jsonRaw = await fs.promises.readFile(jsonOutputFile, "utf8");
@@ -467,7 +476,7 @@ export class MegaLinterRunner {
     const timeoutSeconds = Number(options.timeout);
     if (!Number.isInteger(timeoutSeconds) || timeoutSeconds <= 0) {
       throw new Error(
-        `Invalid --timeout value: ${options.timeout}. It must be a positive number of seconds.`
+        `Invalid --timeout value: ${options.timeout}. It must be a positive number of seconds.`,
       );
     }
     return timeoutSeconds;
@@ -484,8 +493,8 @@ export class MegaLinterRunner {
         `[ERROR] ${errorMsg} Common causes: a bind-mounted workspace with slow I/O ` +
           "(e.g. a Windows path mounted into a WSL2-backed container engine), " +
           "a linter waiting on a slow or unreachable network resource, " +
-          "or a genuinely large repository needing a longer --timeout."
-      )
+          "or a genuinely large repository needing a longer --timeout.",
+      ),
     );
     // Capture the log tail before removing the container: it usually shows the
     // exact step where the run was stuck. Apple's `container logs` has no
@@ -495,21 +504,21 @@ export class MegaLinterRunner {
       this.containerEngine === "container"
         ? ["logs", "-n", "30", containerName]
         : ["logs", "--tail", "30", containerName],
-      { encoding: "utf8", windowsHide: true }
+      { encoding: "utf8", windowsHide: true },
     );
     const logsOutput = `${logsRes.stdout || ""}${logsRes.stderr || ""}`.trim();
     if (logsRes.status === 0 && logsOutput) {
       console.error(
         c.yellow(
-          `Last log lines of container ${containerName} before it was stopped:`
-        )
+          `Last log lines of container ${containerName} before it was stopped:`,
+        ),
       );
       console.error(logsOutput);
     }
     const stopRes = this.spawnSyncFn(
       this.containerEngine,
       ["stop", containerName],
-      { encoding: "utf8", windowsHide: true }
+      { encoding: "utf8", windowsHide: true },
     );
     // With --rm (the default), stopping the container also removes it: the rm
     // fallback covers --no-remove-container and cases where --rm did not fire
@@ -517,11 +526,11 @@ export class MegaLinterRunner {
     const rmRes = this.spawnSyncFn(
       this.containerEngine,
       ["rm", "--force", containerName],
-      { encoding: "utf8", windowsHide: true }
+      { encoding: "utf8", windowsHide: true },
     );
     if (stopRes.status === 0 || rmRes.status === 0) {
       console.error(
-        `Container ${containerName} has been stopped and removed: no orphan container is left behind.`
+        `Container ${containerName} has been stopped and removed: no orphan container is left behind.`,
       );
     } else {
       const checkCommand =
@@ -531,8 +540,8 @@ export class MegaLinterRunner {
       console.error(
         c.yellow(
           `[WARNING] Unable to confirm removal of container ${containerName}. ` +
-            `Check manually with: ${checkCommand}`
-        )
+            `Check manually with: ${checkCommand}`,
+        ),
       );
     }
     return errorMsg;
@@ -546,18 +555,18 @@ export class MegaLinterRunner {
     const dockerImageName = options.linter
       ? `ghcr.io/oxsecurity/megalinter-only-${options.linter.toLowerCase()}`
       : // v4 retrocompatibility >>
-      flavor === "all" && this.isv4(release)
+        flavor === "all" && this.isv4(release)
         ? "nvuillam/mega-linter"
         : flavor !== "all" && this.isv4(release)
           ? `nvuillam/mega-linter-${flavor}`
           : // << v4 retrocompatibility
-          // v5 retrocompatibility >>
-          flavor === "all" && this.isv5(release)
+            // v5 retrocompatibility >>
+            flavor === "all" && this.isv5(release)
             ? "megalinter/megalinter"
             : flavor !== "all" && this.isv5(release)
               ? `megalinter/megalinter-${flavor}`
               : // << v5 retrocompatibility
-              flavor === "all"
+                flavor === "all"
                 ? "ghcr.io/oxsecurity/megalinter"
                 : `ghcr.io/oxsecurity/megalinter-${flavor}`;
     return {
@@ -577,7 +586,7 @@ export class MegaLinterRunner {
       : null;
     if (applyFixesConfig && applyFixesConfig !== "none") {
       console.info(
-        `Fixes will be applied (APPLY_FIXES=${applyFixesConfig} from .mega-linter.yml)`
+        `Fixes will be applied (APPLY_FIXES=${applyFixesConfig} from .mega-linter.yml)`,
       );
       return [];
     }
@@ -599,7 +608,7 @@ export class MegaLinterRunner {
     if (!userEnvVars.some((e) => e.startsWith("REPORT_OUTPUT_FOLDER="))) {
       envArgs.push(
         "-e",
-        `REPORT_OUTPUT_FOLDER=/tmp/lint/megalinter-reports/${linterKey.toLowerCase()}`
+        `REPORT_OUTPUT_FOLDER=/tmp/lint/megalinter-reports/${linterKey.toLowerCase()}`,
       );
     }
     return envArgs;
@@ -632,7 +641,7 @@ export class MegaLinterRunner {
       console.warn(
         "[--install] Existing files that may be overwritten have been backed up " +
           `with a .megalinter-setup.bak extension: ${backedUp.join(", ")}. ` +
-          "Compare them with the generated files to restore your customizations, then delete the backups."
+          "Compare them with the generated files to restore your customizations, then delete the backups.",
       );
     }
     return backedUp;
@@ -648,8 +657,8 @@ export class MegaLinterRunner {
     } catch (e) {
       console.warn(
         c.yellow(
-          `[WARNING] Unable to parse ${configFilePath}: ${e.message}. Ignoring it.`
-        )
+          `[WARNING] Unable to parse ${configFilePath}: ${e.message}. Ignoring it.`,
+        ),
       );
       return {};
     }
@@ -659,7 +668,7 @@ export class MegaLinterRunner {
     if (options.setupCi && !KNOWN_SETUP_CI_SYSTEMS.includes(options.setupCi)) {
       throw new Error(
         `Invalid --setup-ci value: ${options.setupCi}. ` +
-          `Allowed values: ${KNOWN_SETUP_CI_SYSTEMS.join(", ")}`
+          `Allowed values: ${KNOWN_SETUP_CI_SYSTEMS.join(", ")}`,
       );
     }
     if (
@@ -667,12 +676,15 @@ export class MegaLinterRunner {
       !["all", "diff"].includes(options.setupValidateAllCodeBase)
     ) {
       throw new Error(
-        `Invalid --setup-validate-all-code-base value: ${options.setupValidateAllCodeBase}. Allowed values: all, diff`
+        `Invalid --setup-validate-all-code-base value: ${options.setupValidateAllCodeBase}. Allowed values: all, diff`,
       );
     }
-    if (options.release && !["beta", DEFAULT_RELEASE].includes(options.release)) {
+    if (
+      options.release &&
+      !["beta", DEFAULT_RELEASE].includes(options.release)
+    ) {
       console.info(
-        `--install only generates configuration for ${DEFAULT_RELEASE} or beta: using ${DEFAULT_RELEASE} instead of ${options.release}`
+        `--install only generates configuration for ${DEFAULT_RELEASE} or beta: using ${DEFAULT_RELEASE} instead of ${options.release}`,
       );
     }
     if (
@@ -681,7 +693,7 @@ export class MegaLinterRunner {
     ) {
       throw new Error(
         `Invalid --setup-dashboards value: ${options.setupDashboards}. ` +
-          `Allowed values: ${KNOWN_DASHBOARD_PROVIDERS.join(", ")}`
+          `Allowed values: ${KNOWN_DASHBOARD_PROVIDERS.join(", ")}`,
       );
     }
     const answers = {
@@ -701,7 +713,7 @@ export class MegaLinterRunner {
       dashboards: options.setupDashboards,
     };
     Object.keys(answers).forEach(
-      (key) => answers[key] === undefined && delete answers[key]
+      (key) => answers[key] === undefined && delete answers[key],
     );
     return answers;
   }
@@ -740,7 +752,7 @@ export class MegaLinterRunner {
       console.error(
         "Set the required auth environment variables then run: " +
           `npx mega-linter-runner --upload-dashboards ${provider}\n` +
-          "Documentation: https://megalinter.io/latest/reporters/ApiReporter/"
+          "Documentation: https://megalinter.io/latest/reporters/ApiReporter/",
       );
     }
   }
@@ -756,29 +768,33 @@ export class MegaLinterRunner {
   }
 
   checkPreviousVersion(release) {
-    if (release.includes("v4") || release.includes("v5") || release.includes("v6")) {
+    if (
+      release.includes("v4") ||
+      release.includes("v5") ||
+      release.includes("v6")
+    ) {
       console.warn(
         c.bold(
-          "#######################################################################"
-        )
-      );
-      console.warn(
-        c.bold(`MEGA-LINTER HAS A NEW ${DEFAULT_RELEASE} VERSION. Please upgrade to benefit of latest features :)`)
-      );
-      console.warn(
-        c.bold(
-          "- Running the command at the root of your repo (requires node.js): npx mega-linter-runner@latest --upgrade"
-        )
+          "#######################################################################",
+        ),
       );
       console.warn(
         c.bold(
-          `- or replace ${release} by ${DEFAULT_RELEASE} in your scripts`
-        )
+          `MEGA-LINTER HAS A NEW ${DEFAULT_RELEASE} VERSION. Please upgrade to benefit of latest features :)`,
+        ),
       );
       console.warn(
         c.bold(
-          "#######################################################################"
-        )
+          "- Running the command at the root of your repo (requires node.js): npx mega-linter-runner@latest --upgrade",
+        ),
+      );
+      console.warn(
+        c.bold(`- or replace ${release} by ${DEFAULT_RELEASE} in your scripts`),
+      );
+      console.warn(
+        c.bold(
+          "#######################################################################",
+        ),
       );
     }
   }
