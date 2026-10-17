@@ -45,6 +45,7 @@ linters:
       - project
     cli_lint_mode_project_exclude_arg_name: "--exclude"
     cli_lint_mode_project_exclude_arg_value: "**/{{DIR}}/**"
+    cli_lint_mode_project_exclude_seed_values: ["node_modules/**"]
     cli_lint_mode_project_extra_args_after:
       - .
     cli_lint_mode_project_config_paths_regex: "(?m)(^\\s*\"files\"\\s*:\\s*\\[\\s*[\"'])|(^files[ \\t]*:[ \\t]*(?:\\[[ \\t]*[^\\]\\s]|\\n[ \\t]*-[ \\t]))"

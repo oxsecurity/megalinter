@@ -178,6 +178,8 @@ linters:
     cli_lint_mode_project_exclude_arg_name: "--exclude"
     cli_lint_mode_project_exclude_arg_value: "**/{{DIR}}/**"
     cli_lint_mode_project_exclude_separator: ","
+    cli_lint_mode_project_exclude_config_key: ["global.exclude", "exclude", "tool.rumdl.global.exclude", "tool.rumdl.exclude"]
+    cli_lint_mode_project_exclude_config_files: ["rumdl.toml", ".config/rumdl.toml", "pyproject.toml"]
     cli_lint_extra_args:
       - "check"
     cli_lint_fix_arg_name: "--fix"

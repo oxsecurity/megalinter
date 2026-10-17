@@ -460,6 +460,35 @@ class Megalinter:
         for linter in active_linters:
             linter.run()
 
+    # All cores are used in CI, where the runner is dedicated to the job. On a
+    # developer machine one core is kept free, so it stays responsive while
+    # MegaLinter runs
+    def get_parallel_process_number(self):
+        if config.exists(self.request_id, "PARALLEL_PROCESS_NUMBER"):
+            process_number = int(config.get(self.request_id, "PARALLEL_PROCESS_NUMBER"))
+            logging.info(
+                f"Processing linters on [{str(process_number)}] parallel cores… "
+                "(according to variable PARALLEL_PROCESS_NUMBER)"
+            )
+            return process_number
+        cpu_count = mp.cpu_count()
+        if utils.is_ci():
+            process_number = cpu_count
+            free_core_info = ""
+        else:
+            process_number = max(1, cpu_count - 1)
+            free_core_info = (
+                f" of [{str(cpu_count)}], one core is kept free outside CI"
+                if process_number < cpu_count
+                else ""
+            )
+        logging.info(
+            f"Processing linters on [{str(process_number)}] parallel cores"
+            f"{free_core_info}… "
+            "(can be changed with variable PARALLEL_PROCESS_NUMBER)"
+        )
+        return process_number
+
     def process_linters_parallel(self, active_linters, linters_do_fixes):
         initial_groups = []
         follower_groups = {}
@@ -495,18 +524,7 @@ class Megalinter:
                 initial_groups += [[linter]]
         initial_groups = linter_factory.sort_linters_groups_by_speed(initial_groups)
         # Execute linters in asynchronous pool to improve overall performances
-        if config.exists(self.request_id, "PARALLEL_PROCESS_NUMBER"):
-            process_number = int(config.get(self.request_id, "PARALLEL_PROCESS_NUMBER"))
-            logging.info(
-                f"Processing linters on [{str(process_number)}] parallel cores… "
-                "(according to variable PARALLEL_PROCESS_NUMBER)"
-            )
-        else:
-            process_number = mp.cpu_count()
-            logging.info(
-                f"Processing linters on [{str(process_number)}] parallel cores… "
-                "(can be decreased with variable PARALLEL_PROCESS_NUMBER in case of performance issues)"
-            )
+        process_number = self.get_parallel_process_number()
         # Tunnel log records of worker processes through a multiprocessing queue,
         # so they are emitted by the initial handlers in the main process without
         # being garbled (stdlib equivalent of the former multiprocessing_logging dep)
