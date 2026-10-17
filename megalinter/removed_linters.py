@@ -198,13 +198,36 @@ def is_removed_related_variable(property_name: str) -> bool:
     )
 
 
+# Options MegaLinter reads at descriptor level (<DESCRIPTOR>_<OPTION>), see Linter.py
+# and pre_post_factory.py. <DESCRIPTOR>_DIRECTORY is left out on purpose: no removed
+# descriptor ever supported it, and CREDENTIALS_DIRECTORY is set by systemd.
+DESCRIPTOR_VARIABLE_SUFFIXES = (
+    "_FILTER_REGEX_INCLUDE",
+    "_FILTER_REGEX_EXCLUDE",
+    "_PRE_COMMANDS",
+    "_POST_COMMANDS",
+    "_CONFIG_FILE",
+    "_FILE_NAME",
+    "_IGNORE_FILE",
+    "_RULES_PATH",
+    "_DISABLE_ERRORS",
+)
+
+
 def find_removed_references(config_keys, linter_names, descriptor_names) -> list[str]:
     found = {name for name in linter_names if name in REMOVED_LINTERS}
     found |= {name for name in descriptor_names if name in REMOVED_DESCRIPTORS}
     for config_key in config_keys:
-        matched = _match_prefix(config_key, REMOVED_LINTERS) or _match_prefix(
-            config_key, REMOVED_DESCRIPTORS
-        )
+        matched = _match_prefix(config_key, REMOVED_LINTERS)
+        if matched is None:
+            # Removed descriptor names are generic prefixes (GIT_, MAKEFILE_...) shared
+            # with unrelated variables such as GitLab's GIT_STRATEGY: only report
+            # actual MegaLinter descriptor options
+            descriptor = _match_prefix(config_key, REMOVED_DESCRIPTORS)
+            if descriptor is not None and (
+                config_key.removeprefix(descriptor) in DESCRIPTOR_VARIABLE_SUFFIXES
+            ):
+                matched = descriptor
         if matched is not None:
             found.add(matched)
     return sorted(found)
