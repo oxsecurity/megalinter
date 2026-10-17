@@ -38,10 +38,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - The **`.mega-linter.yml` JSON Schema** is no longer rejected by strict JSON Schema validators with `Invalid anchor value`: the invalid `$id` values are removed from the configuration and descriptor schemas. Fixes [#9177](https://github.com/oxsecurity/megalinter/issues/9177)
 
 - Reporters
+  - The **SARIF Reporter** is not flagged as **beta** anymore in the documentation
 
 - Flavors
 
 - Doc
+  - The [documentation](https://megalinter.io) menu is reorganized from **24 root entries down to 10**, so the sidebar can be scanned at a glance
+    - **Coding Agents**, **Installation**, **Configuration**, **Linters**, **Flavors**, **Reporters** and **About** are now the main entries
+    - **Observability** moved under **Reporters**, **LLM Advisor** and **Linter Plugins** under **Configuration**
+    - All documentation **URLs are unchanged**: only the menu structure was updated
 
 - mega-linter-runner
   - **`--container-engine container`**: run MegaLinter with Apple's native macOS container engine (Apple Silicon only, no Docker Desktop needed): <https://github.com/apple/container>
