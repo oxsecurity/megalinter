@@ -96,13 +96,34 @@ class BetterleaksLinter(Linter):
     # Forward excluded directories in project mode: betterleaks has no exclusion
     # argument, so generate a config extending the resolved one with allowlist
     # path regexes. When MegaLinter resolved no config, extend the workspace
-    # config that betterleaks would have auto-discovered (e.g. a .gitleaks.toml
-    # kept from gitleaks), and only fall back to the default embedded ruleset
+    # config that betterleaks would have used instead: the one given through
+    # its environment variables (that the generated -c overrides), else the
+    # auto-discovered one (e.g. a .gitleaks.toml kept from gitleaks), and only
+    # fall back to the default embedded ruleset
     def manage_excluded_directories_config(self, cmd):
         config_index = self.find_cli_argument_value_index(cmd, ("-c", "--config"))
         extend_path = None
+        env_config_path = config.get(
+            self.request_id,
+            "BETTERLEAKS_CONFIG",
+            config.get(self.request_id, "GITLEAKS_CONFIG", ""),
+        )
+        env_config_toml = config.get(
+            self.request_id,
+            "BETTERLEAKS_CONFIG_TOML",
+            config.get(self.request_id, "GITLEAKS_CONFIG_TOML", ""),
+        )
         if config_index is not None:
             extend_path = cmd[config_index].replace("\\", "/")
+        elif env_config_path != "":
+            # Resolved from the betterleaks working directory, the workspace
+            if not os.path.isabs(env_config_path):
+                env_config_path = os.path.join(self.workspace, env_config_path)
+            extend_path = env_config_path.replace("\\", "/")
+        elif env_config_toml != "":
+            extend_path = self.write_report_generated_file(
+                "betterleaks-env-config.toml", env_config_toml.splitlines()
+            ).replace("\\", "/")
         else:
             for discoverable_config in [".betterleaks.toml", ".gitleaks.toml"]:
                 workspace_config = os.path.join(self.workspace, discoverable_config)

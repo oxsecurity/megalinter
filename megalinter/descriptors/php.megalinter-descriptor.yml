@@ -68,6 +68,7 @@ linters:
     cli_lint_mode_project_exclude_separator: ","
     cli_lint_mode_project_extra_args_after:
       - .
+    cli_lint_mode_project_config_paths_regex: "<file\\b[^>]*>\\s*[^<\\s][^<]*</file\\s*>"
     cli_config_arg_name: "--standard="
     cli_sarif_args:
       - "--report=\\Bartlett\\Sarif\\Converter\\Reporter\\PhpCsReport"
@@ -160,6 +161,7 @@ linters:
       - "1G"
     cli_lint_mode_project_extra_args_after:
       - .
+    cli_lint_mode_project_config_paths_regex: "(?m)^parameters[ \\t]*:[ \\t]*(?:#.*)?\\n(?:[ \\t]*(?:#.*)?\\n)*([ \\t]+)(?:\\S.*\\n(?:\\1.*\\n|[ \\t]*(?:#.*)?\\n)*?\\1)?paths[ \\t]*:"
     cli_sarif_args:
       - "--error-format=sarif"
     cli_lint_errors_count: regex_number
@@ -244,6 +246,7 @@ linters:
       - --output-format=console
     cli_lint_mode_project_extra_args_after:
       - .
+    cli_lint_mode_project_config_paths_regex: "<projectFiles\\b"
     cli_config_arg_name: "--config="
     cli_sarif_args:
       - "--report={{SARIF_OUTPUT_FILE}}"
@@ -319,8 +322,7 @@ linters:
       - list_of_files
       - project
     cli_lint_mode_project_exclude_arg_name: "--exclude"
-    cli_lint_mode_project_extra_args_after:
-      - .
+    cli_lint_mode_project_exclude_config_key: "exclude"
     cli_sarif_args:
       - "--format=\\Overtrue\\PHPLint\\Output\\SarifOutput"
       - "--output={{SARIF_OUTPUT_FILE}}"
@@ -384,6 +386,7 @@ linters:
       - "--show-progress=none"
     cli_lint_mode_project_extra_args_after:
       - .
+    cli_lint_mode_project_config_paths_regex: "(?m)^(?![ \\t]*(?://|#|\\*|/\\*)).*?->\\s*(?:in|append)\\s*\\("
     cli_config_arg_name: "--config"
     cli_lint_fix_remove_args:
       - "--dry-run"

@@ -36,8 +36,6 @@ linters:
       - file
       - list_of_files
       - project
-    cli_lint_mode_project_extra_args_after:
-      - .
     cli_lint_fix_arg_name: "--safe-auto-correct"
     common_linter_errors:
       - identifier: RUBY_RUBOCOP_ERROR_UNABLE_TO_LOAD_PLUGIN
