@@ -400,9 +400,8 @@ class ExcludeForwardingConfigTest(unittest.TestCase):
             generated,
         )
 
-    def test_yamllint_keeps_ignore_inherited_through_extends(self):
-        self.write_workspace_file("base.yml", "ignore: |\n  fixtures/\n")
-        config_file = self.write_workspace_file(".yamllint.yml", "extends: base.yml\n")
+    def build_yamllint_generated_config(self, config_content):
+        config_file = self.write_workspace_file(".yamllint.yml", config_content)
         linter = self.build_linter(YamllintLinter, name="YAML_YAMLLINT")
         with mock.patch.object(
             YamllintLinter, "get_project_exclude_directories", return_value=["vendor"]
@@ -411,7 +410,11 @@ class ExcludeForwardingConfigTest(unittest.TestCase):
                 ["yamllint", "-c", config_file]
             )
         with open(cmd[2], encoding="utf-8") as file_handler:
-            generated = yaml.safe_load(file_handler)
+            return yaml.safe_load(file_handler)
+
+    def test_yamllint_keeps_ignore_inherited_through_extends(self):
+        self.write_workspace_file("base.yml", "ignore: |\n  fixtures/\n")
+        generated = self.build_yamllint_generated_config("extends: base.yml\n")
         self.assertEqual(["fixtures/", "vendor/"], generated["ignore"])
 
     def test_yamllint_reads_relative_config_from_the_workspace(self):
@@ -424,18 +427,9 @@ class ExcludeForwardingConfigTest(unittest.TestCase):
         self.assertEqual(([], []), linter.find_effective_ignore(".yamllint.yml"))
 
     def test_yamllint_forwards_with_ignore_from_file(self):
-        config_file = self.write_workspace_file(
-            ".yamllint.yml", "ignore-from-file: .gitignore\n"
+        generated = self.build_yamllint_generated_config(
+            "ignore-from-file: .gitignore\n"
         )
-        linter = self.build_linter(YamllintLinter, name="YAML_YAMLLINT")
-        with mock.patch.object(
-            YamllintLinter, "get_project_exclude_directories", return_value=["vendor"]
-        ):
-            cmd = linter.manage_excluded_directories_config(
-                ["yamllint", "-c", config_file]
-            )
-        with open(cmd[2], encoding="utf-8") as file_handler:
-            generated = yaml.safe_load(file_handler)
         self.assertNotIn("ignore", generated)
         self.assertEqual(".gitignore", generated["ignore-from-file"][0])
         with open(generated["ignore-from-file"][1], encoding="utf-8") as file_handler:
