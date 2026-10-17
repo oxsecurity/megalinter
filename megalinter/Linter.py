@@ -152,6 +152,13 @@ class Linter:
         self.cli_lint_mode_file_extra_args_after = []
         self.cli_lint_mode_list_of_files_extra_args_after = []
         self.cli_lint_mode_project_extra_args_after = []
+        # Regex matched against the linter config file: when found, the config
+        # defines the paths to analyze and cli_lint_mode_project_extra_args_after
+        # is not added, as it would override them (ex: phpcs <file>)
+        self.cli_lint_mode_project_config_paths_regex = None
+        # Workspace-relative .gitignored directories, set by MegaLinter when
+        # IGNORE_GITIGNORED_FILES is active, forwarded with excluded directories
+        self.project_gitignored_directories = []
         # Native CLI argument used to forward EXCLUDED_DIRECTORIES /
         # ADDITIONAL_EXCLUDED_DIRECTORIES to linters running in project mode
         self.cli_lint_mode_project_exclude_arg_name = None
@@ -1722,12 +1729,23 @@ class Linter:
             if forward_exclusions:
                 cmd += self.build_project_exclude_arguments()
                 cmd = self.manage_excluded_directories_config(cmd)
-            self.cli_lint_mode_project_extra_args_after = self.replace_vars(
-                self.cli_lint_mode_project_extra_args_after,
-                additional_replace_variables,
-            )
+                self.log_project_gitignored_directories_forwarding()
+            # The paths to analyze (ex: ".") would override the ones defined in
+            # the linter's own configuration (phpcs <file>, phpstan paths...),
+            # making it analyze folders the user deliberately left out
+            if self.is_project_paths_defined_in_config():
+                self.log_lines_pre += [
+                    f"[Project paths] {self.config_file_label} defines the paths to "
+                    f"analyze, so {' '.join(self.cli_lint_mode_project_extra_args_after)} "
+                    "is not added to the command line"
+                ]
+            else:
+                self.cli_lint_mode_project_extra_args_after = self.replace_vars(
+                    self.cli_lint_mode_project_extra_args_after,
+                    additional_replace_variables,
+                )
 
-            cmd += self.cli_lint_mode_project_extra_args_after
+                cmd += self.cli_lint_mode_project_extra_args_after
             # Ignore file arguments come after the positional arguments: array
             # options (ex: v8r --ignore-pattern-files) greedily consume every
             # following non-option argument
@@ -1801,6 +1819,35 @@ class Linter:
             == "true"
         )
 
+    def is_project_paths_defined_in_config(self):
+        if (
+            self.cli_lint_mode_project_config_paths_regex is None
+            or len(self.cli_lint_mode_project_extra_args_after) == 0
+            or self.config_file is None
+            or not os.path.isfile(self.config_file)
+        ):
+            return False
+        with open(self.config_file, encoding="utf-8", errors="ignore") as file:
+            config_content = file.read()
+        return (
+            re.search(self.cli_lint_mode_project_config_paths_regex, config_content)
+            is not None
+        )
+
+    def log_project_gitignored_directories_forwarding(self):
+        gitignored_dirs = [
+            gitignored_dir
+            for gitignored_dir in self.project_gitignored_directories
+            if gitignored_dir in self.get_project_exclude_directories()
+        ]
+        if len(gitignored_dirs) > 0:
+            self.log_project_exclude_forwarding(
+                f"Forwarded {len(gitignored_dirs)} .gitignored directories "
+                f"({', '.join(gitignored_dirs[0:10])}"
+                f"{',…' if len(gitignored_dirs) > 10 else ''}) with the excluded "
+                "directories (disable with IGNORE_GITIGNORED_FILES: false)"
+            )
+
     def log_project_exclude_forwarding(self, message):
         log_line = f"[Excluded directories] {message}"
         if log_line not in self.log_lines_pre:
@@ -1870,6 +1917,11 @@ class Linter:
             ):
                 names.add(candidate)
                 paths.add(candidate)
+        # .gitignored directories are located by git itself: they exist, and
+        # their workspace-relative path designates exactly the ignored location
+        gitignored_dirs = set(self.project_gitignored_directories)
+        names |= gitignored_dirs
+        paths |= gitignored_dirs
         always_forwarded = utils.normalize_excluded_directories(
             self.workspace, [utils.get_report_output_folder_name(self.request_id)]
         )
@@ -1955,7 +2007,12 @@ class Linter:
         seed_values += self.get_config_list_seed_values()
         arg_value = self.cli_lint_mode_project_exclude_arg_value
         generated_values = self.build_project_exclude_values(arg_value)
-        if self.project_exclude_template_uses_paths(arg_value):
+        # .gitignored directories can be numerous (ex: one build folder per
+        # package of a monorepo), so they are capped like path templates
+        if (
+            self.project_exclude_template_uses_paths(arg_value)
+            or len(self.project_gitignored_directories) > 0
+        ):
             generated_values = self.limit_project_exclude_values(generated_values)
         values = seed_values + generated_values
         values = self.replace_vars(values)

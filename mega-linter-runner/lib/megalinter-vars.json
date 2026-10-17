@@ -8857,7 +8857,7 @@
       "name": "FORWARD_EXCLUDED_DIRECTORIES",
       "type": "boolean",
       "title": "Forward excluded directories to project lint mode linters",
-      "description": "In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES) to the linters through their native exclusion arguments or generated ignore/config files. Can be overridden per-linter with <LINTER_KEY>_FORWARD_EXCLUDED_DIRECTORIES",
+      "description": "In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES, and .gitignored directories when IGNORE_GITIGNORED_FILES is true) to the linters through their native exclusion arguments or generated ignore/config files. Can be overridden per-linter with <LINTER_KEY>_FORWARD_EXCLUDED_DIRECTORIES",
       "default": true,
       "category": "GENERAL",
       "section": "SCOPE"

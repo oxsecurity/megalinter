@@ -1037,9 +1037,13 @@ class Megalinter:
             "\n- ".join(filtered_files),
         )
 
-        # Collect matching files for each linter
+        # Collect matching files for each linter. Project-mode linters analyze
+        # the whole workspace, so .gitignored directories are forwarded to them
+        # with the excluded directories
+        gitignored_directories = self.get_gitignored_directories(ignored_files)
         for linter in self.linters:
             linter.collect_files(filtered_files)
+            linter.project_gitignored_directories = gitignored_directories
             if len(linter.files) == 0 and linter.lint_all_files is False:
                 linter.is_active = False
 
@@ -1111,6 +1115,23 @@ class Megalinter:
             if self._is_excluded_dir(progressive, excluded_directories):
                 return True
         return False
+
+    # Workspace-relative directories reported as ignored by git ls-files
+    # --directory ("dir/**" entries, relative to the repository root)
+    def get_gitignored_directories(self, ignored_files):
+        repo_root = os.path.realpath(self.github_workspace)
+        workspace = os.path.realpath(self.workspace)
+        gitignored_directories = set()
+        for ignored_file in ignored_files:
+            if not ignored_file.endswith("/**"):
+                continue
+            rel_dir = os.path.relpath(
+                os.path.join(repo_root, ignored_file[: -len("/**")]), workspace
+            ).replace("\\", "/")
+            if rel_dir == "." or rel_dir.startswith(".."):
+                continue
+            gitignored_directories.add(rel_dir)
+        return sorted(gitignored_directories)
 
     def _normalize_excluded_directories(self, excluded_directories):
         return utils.normalize_excluded_directories(

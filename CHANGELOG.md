@@ -36,6 +36,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - The directories are passed as a merged `:output {:exclude-files [...]}` inline configuration, so your own `:output :exclude-files` patterns in `.clj-kondo/config.edn` are kept
     - Disable the forwarding with `CLOJURE_CLJ_KONDO_FORWARD_EXCLUDED_DIRECTORIES: false`
   - The **`.mega-linter.yml` JSON Schema** is no longer rejected by strict JSON Schema validators with `Invalid anchor value`: the invalid `$id` values are removed from the configuration and descriptor schemas. Fixes [#9177](https://github.com/oxsecurity/megalinter/issues/9177)
+  - **Project lint mode** no longer overrides the paths defined in the linters' own configuration: since v10, folders such as `vendor/` were analyzed again by linters like phpcs, phpstan or editorconfig-checker, making runs slow and noisy. Fixes [#8955](https://github.com/oxsecurity/megalinter/issues/8955)
+    - Linters that analyze the current folder by default are no longer passed `.`: eslint, biome, standard, ruff, ruff format, flake8, rubocop, phplint, jscpd, gherkin-lint, dart analyze, cljstyle and editorconfig-checker (which honours `.gitignore` again)
+    - Linters requiring a path receive `.` only when their configuration does not define the paths to analyze: phpcs (`<file>`), phpstan (`paths`), psalm (`<projectFiles>`), php-cs-fixer (Finder `in()`), pylint and mypy (`files`), pyright (`include`), cfn-lint (`templates`), checkov (`directory`) and cspell (`files`)
+    - The `<LINTER_KEY>_COMMAND_REMOVE_ARGUMENTS: "."` workaround is no longer needed
+  - With **`IGNORE_GITIGNORED_FILES: true`** (default), the directories ignored by git are now forwarded to project lint mode linters with `EXCLUDED_DIRECTORIES`: a gitignored `vendor/` or `build/` folder is no longer analyzed by phpcs, trivy, checkov... Disable it per linter with `<LINTER_KEY>_FORWARD_EXCLUDED_DIRECTORIES: false`
 
 - Reporters
 
@@ -55,6 +60,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - `CLOJURE_CLJ_KONDO` test fixtures are split into `good/` and `bad/` folders, so the `project` lint mode tests no longer lint the failing files, and `.wireit` poison fixtures now guard the excluded directories forwarding, at root and nested levels
   - `CljKondoLinter` forwards excluded directories through `:output :exclude-files` instead of a top-level `:exclude-files` vector (an invalid value), and no longer skips the forwarding when a `--config` file is passed, which was always the case since the default `TEMPLATES/.clj-kondo/config.edn` is used when the repository has none
   - `--lint` moved from `cli_lint_extra_args_after` to the per-mode `cli_lint_mode_*_extra_args_after` properties, because clj-kondo assigns every following argument to the last option: the forwarded `--config` must come before it
+  - New descriptor property **`cli_lint_mode_project_config_paths_regex`**: a regex searched in the resolved linter config file; when it matches, `cli_lint_mode_project_extra_args_after` is not sent, as it would override the paths defined in the config. Every project-mode `.` was reviewed against the tools' docs/source (rules in `.claude/rules/descriptors.md`)
+  - `Megalinter.get_gitignored_directories()` extracts the ignored directories from the `git ls-files --directory` output, and `Linter.compute_project_exclude_directories()` forwards them by workspace-relative path, capped by `limit_project_exclude_values()`
+  - `PhpCsFixerLinter` no longer drops `.` itself (the descriptor regex does it), and `JsCpdLinter` rebases the configured `path` entries when it generates its config in the report folder
+  - `PHP_PHPCS` regression fixture: `.automation/test/php/good/phpcs.xml` lists the files to analyze, and `out_of_config_paths.inc` (not collected by MegaLinter) fails the `project` lint mode test if `.` overrides them
 
 - CI
   - **Dependabot** no longer opens version or security update PRs for the pip, uv, bundler, gomod and cargo test fixtures under `.automation/test/`: they must stay outdated, in particular the `.wireit` poison fixtures guarding the excluded directories forwarding

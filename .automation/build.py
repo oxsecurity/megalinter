@@ -1833,7 +1833,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         if "project" in linter.supported_cli_lint_modes:
             linter_doc_md += [
                 f"| {linter.name}_FORWARD_EXCLUDED_DIRECTORIES | In project CLI lint mode, forward "
-                "excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES) to the "
+                "excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES, and "
+                ".gitignored directories when IGNORE_GITIGNORED_FILES is true) to the "
                 "linter through its native exclusion arguments or generated ignore/config files | `true` |"
             ]
             add_in_config_schema_file(
