@@ -1,17 +1,20 @@
 #!/usr/bin/env python3
 
+import configparser
 import importlib
 import json
 import logging
 import os
 import re
 import tempfile
+import tomllib
 import warnings
 from fnmatch import fnmatch
 from pathlib import Path
 from typing import Any, Optional, Pattern, Sequence, Union
 
 import git
+import yaml
 from megalinter import config, logger
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
 
@@ -217,6 +220,15 @@ def is_excluded_dir(rel_dir_path, excluded_directories) -> bool:
     return match_excluded_dir(rel_dir_path, excluded_directories) is not None
 
 
+# True when the directory or one of its parents is excluded
+def is_in_excluded_dir(rel_dir_path, excluded_directories) -> bool:
+    parts = rel_dir_path.replace("\\", "/").strip("/").split("/")
+    return any(
+        is_excluded_dir("/".join(parts[: index + 1]), excluded_directories)
+        for index in range(len(parts))
+    )
+
+
 # Every entry the directory matches, not only the first one. The workspace walk
 # is shared by all the linters of a run, so a located directory must be filed
 # under each entry it matches: a linter excluding "docs" and another excluding
@@ -375,6 +387,60 @@ def strip_jsonc(content: str) -> str:
             result.append(char)
             index += 1
     return re.sub(r",(\s*[}\]])", r"\1", "".join(result))
+
+
+# A file whose first meaningful line is a [section] header is INI (.flake8,
+# .pylintrc, .bandit...), whatever its name
+INI_SECTION_HEADER_REGEX = re.compile(r"\s*(?:[#;][^\n]*\n\s*)*\[[^\]\n]+\][ \t]*\r?\n")
+
+
+# Load a linter configuration file as nested dicts, whatever its format: TOML,
+# JSON (with comments), INI (sections as dicts of raw string values) or YAML.
+# An unreadable file gives an empty dict, so callers never crash on it
+def load_config_file_content(file_path: str) -> dict:
+    with open(file_path, encoding="utf-8-sig", errors="ignore") as file_handler:
+        content = file_handler.read()
+    extension = os.path.splitext(file_path)[1].lower()
+    try:
+        if extension == ".toml":
+            loaded = tomllib.loads(content)
+        elif extension in (".yml", ".yaml"):
+            loaded = yaml.safe_load(content)
+        elif extension in (".json", ".jsonc", ".json5") or content.lstrip().startswith(
+            "{"
+        ):
+            loaded = json.loads(strip_jsonc(content))
+        elif extension in (".ini", ".cfg") or INI_SECTION_HEADER_REGEX.match(content):
+            parser = configparser.ConfigParser(interpolation=None, strict=False)
+            parser.read_string(content)
+            loaded = {section: dict(parser[section]) for section in parser.sections()}
+        else:
+            loaded = yaml.safe_load(content)
+    except (ValueError, configparser.Error, yaml.YAMLError) as exc:
+        logging.warning(
+            f"Unable to parse configuration file {file_path}, its exclusions can "
+            f"not be preserved when forwarding EXCLUDED_DIRECTORIES: {exc}"
+        )
+        return {}
+    return loaded if isinstance(loaded, dict) else {}
+
+
+# Value of a dotted key path in a loaded configuration, or None. A * segment
+# matches any key at its level (ex: pylint reads "ignore" in any INI section)
+def find_config_key_value(node: Any, keys: list) -> Any:
+    if len(keys) == 0:
+        return node
+    if not isinstance(node, dict):
+        return None
+    if keys[0] == "*":
+        candidates = list(node.values())
+    else:
+        candidates = [node[keys[0]]] if keys[0] in node else []
+    for candidate in candidates:
+        value = find_config_key_value(candidate, keys[1:])
+        if value is not None:
+            return value
+    return None
 
 
 _REGEX_METACHARACTERS = set(".^$*+?()[]{}|\\")

@@ -9814,11 +9814,20 @@
     },
     "FORWARD_EXCLUDED_DIRECTORIES": {
       "default": true,
-      "description": "In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES) to the linters through their native exclusion arguments or generated ignore/config files. Can be overridden per-linter with <LINTER_KEY>_FORWARD_EXCLUDED_DIRECTORIES",
+      "description": "In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES, and .gitignored directories when IGNORE_GITIGNORED_FILES is true) to the linters through their native exclusion arguments or generated ignore/config files. Can be overridden per-linter with <LINTER_KEY>_FORWARD_EXCLUDED_DIRECTORIES",
       "title": "Forward excluded directories to project lint mode linters",
       "type": "boolean",
       "x-category": "GENERAL",
       "x-order": 200045,
+      "x-section": "SCOPE"
+    },
+    "FORWARD_GITIGNORED_DIRECTORIES": {
+      "default": true,
+      "description": "When IGNORE_GITIGNORED_FILES is true, also forward the directories ignored by git (ex: vendor, build) to project CLI lint mode linters, with the excluded directories. A directory sharing its name with a tracked one (ex: a gitignored /lib/ and a tracked src/lib) is only sent to the linters receiving workspace-relative paths",
+      "title": "Forward .gitignored directories to project lint mode linters",
+      "type": "boolean",
+      "x-category": "GENERAL",
+      "x-order": 200046,
       "x-section": "SCOPE"
     },
     "GHERKIN_FILTER_REGEX_EXCLUDE": {
@@ -20532,7 +20541,7 @@
       "x-section": "PERFORMANCE"
     },
     "PARALLEL_PROCESS_NUMBER": {
-      "description": "All available cores are used by default. If there are too many, you need to decrease the number of used cores in order to enhance performances",
+      "description": "All available cores are used in CI, and all but one outside CI to keep your machine responsive. If there are too many, you need to decrease the number of used cores in order to enhance performances",
       "examples": [
         4
       ],

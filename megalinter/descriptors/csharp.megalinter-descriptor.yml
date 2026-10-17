@@ -80,7 +80,9 @@ linters:
     cli_lint_extra_args:
       - "check"
     cli_lint_mode_project_exclude_ignore_file_arg_name: "--ignore-path"
-    cli_lint_mode_project_exclude_ignore_file_seed_files: [".csharpierignore"]
+    # --ignore-path replaces both files, merged so .csharpierignore keeps priority
+    cli_lint_mode_project_exclude_ignore_file_seed_files: [".gitignore", ".csharpierignore"]
+    cli_lint_mode_project_exclude_ignore_file_merge_all_seeds: true
     cli_lint_mode_project_extra_args_after:
       - .
     cli_lint_fix_arg_name: "format"

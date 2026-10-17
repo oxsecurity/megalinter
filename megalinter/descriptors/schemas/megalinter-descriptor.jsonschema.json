@@ -709,6 +709,15 @@
             "title": "CLI Lint extra arguments (after config args)",
             "type": "array"
           },
+          "cli_lint_mode_project_config_paths_regex": {
+            "description": "Regular expression searched in the linter configuration file. When it matches, the configuration defines the paths to analyze, and cli_lint_mode_project_extra_args_after is not sent in project lint mode, as it would override them. Declare it only for linters that require a path argument when their configuration does not define one",
+            "examples": [
+              "<file>",
+              "(?m)^\\s+paths\\s*:"
+            ],
+            "title": "CLI project lint mode: paths defined in configuration regex",
+            "type": "string"
+          },
           "cli_lint_mode_project_exclude_arg_name": {
             "description": "Native linter CLI argument used to forward each excluded directory (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES) when running in project lint mode. If it ends with = or :, the value is concatenated to the argument name",
             "examples": [
@@ -731,15 +740,57 @@
             "title": "CLI project lint mode excluded directories argument value template",
             "type": "string"
           },
+          "cli_lint_mode_project_exclude_config_files": {
+            "default": [],
+            "description": "Workspace config files also searched for cli_lint_mode_project_exclude_config_key, after the config file resolved by MegaLinter or passed in ARGUMENTS, for linters discovering their configuration themselves",
+            "examples": [
+              [
+                "pyproject.toml",
+                "djlint.toml"
+              ]
+            ],
+            "items": {
+              "type": "string"
+            },
+            "title": "CLI project lint mode excluded directories config files",
+            "type": "array"
+          },
           "cli_lint_mode_project_exclude_config_key": {
-            "description": "Dotted key path of the resolved config file list that the exclusion argument replaces: its entries are re-emitted first so they are preserved",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            ],
+            "description": "Dotted key path (or list of alternative ones, the first one found wins) of the user config setting that the exclusion argument replaces: its entries are re-emitted first so they are preserved. TOML, JSON, INI (first segment = section) and YAML config files are read, a * segment matches any key, and a comma or newline separated string value is split (kept whole when the separator is |). With ignore file forwarding, the entries are the user's ignore files, re-passed instead of cli_lint_mode_project_exclude_ignore_file_pass_existing",
             "examples": [
               "skip-path",
-              "exclude",
-              "scan.skip-dirs"
+              "scan.skip-dirs",
+              [
+                "flake8.extend-exclude",
+                "flake8.extend_exclude"
+              ]
             ],
-            "title": "CLI project lint mode excluded directories config list key",
-            "type": "string"
+            "title": "CLI project lint mode excluded directories config list key"
+          },
+          "cli_lint_mode_project_exclude_conflicting_args": {
+            "default": [],
+            "description": "User arguments that can not be combined with the excluded directories forwarding: nothing is forwarded when one of them is found in the command line",
+            "examples": [
+              [
+                "--no-ignore"
+              ]
+            ],
+            "items": {
+              "type": "string"
+            },
+            "title": "CLI project lint mode excluded directories conflicting arguments",
+            "type": "array"
           },
           "cli_lint_mode_project_exclude_ignore_file_arg_name": {
             "description": "CLI argument receiving a generated ignore file that forwards excluded directories in project lint mode",
@@ -749,6 +800,12 @@
             ],
             "title": "CLI project lint mode generated ignore file argument name",
             "type": "string"
+          },
+          "cli_lint_mode_project_exclude_ignore_file_merge_all_seeds": {
+            "default": false,
+            "description": "Merge the lines of every existing cli_lint_mode_project_exclude_ignore_file_seed_files file, in order, when the generated ignore file replaces all of them (ex: csharpier --ignore-path replaces .gitignore and .csharpierignore)",
+            "title": "CLI project lint mode generated ignore file merges all seed files",
+            "type": "boolean"
           },
           "cli_lint_mode_project_exclude_ignore_file_pass_existing": {
             "default": [],
@@ -767,7 +824,7 @@
           },
           "cli_lint_mode_project_exclude_ignore_file_seed_files": {
             "default": [],
-            "description": "Workspace files whose lines seed the generated ignore file (first existing file wins)",
+            "description": "Workspace files whose lines seed the generated ignore file (first existing file wins, unless cli_lint_mode_project_exclude_ignore_file_merge_all_seeds is true)",
             "examples": [
               [
                 ".csharpierignore"
