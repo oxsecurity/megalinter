@@ -26,7 +26,11 @@ class PhpCsFixerLinter(Linter):
                 "<?php",
                 "",
                 f"$config = require '{included_config}';",
-                f"$config->getFinder()->exclude([{exclude_dirs}]);",
+                # setFinder() also accepts plain iterables, which have no exclude()
+                "$finder = $config->getFinder();",
+                "if ($finder instanceof \\Symfony\\Component\\Finder\\Finder) {",
+                f"    $finder->exclude([{exclude_dirs}]);",
+                "}",
                 "return $config;",
             ],
         )

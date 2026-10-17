@@ -69,11 +69,18 @@ cli_lint_mode_project_exclude_ignore_file_seed_files: [".toolignore"]        # w
 cli_lint_mode_project_exclude_ignore_file_pass_existing: [".gitignore"]      # files re-passed via the same arg when it replaces their discovery
 ```
 
-One more property preserves config-file lists that the CLI flag would replace:
+More properties preserve the user's config-file exclusions that the CLI flag would replace:
 
 ```yaml
-cli_lint_mode_project_exclude_config_key: "scan.skip-dirs"   # dotted key path of the resolved config list the flag REPLACES: its entries are re-emitted first
+cli_lint_mode_project_exclude_config_key: "scan.skip-dirs"   # dotted key path (or list of alternatives) of the user config setting the flag REPLACES: its entries are re-emitted first
+cli_lint_mode_project_exclude_config_files: ["pyproject.toml"]   # workspace configs also searched, for tools discovering their config themselves
+cli_lint_mode_project_exclude_conflicting_args: ["--no-ignore"]   # user args that can not be combined with the forwarding: nothing is forwarded
+cli_lint_mode_project_exclude_ignore_file_merge_all_seeds: true   # merge every existing seed file instead of the first one (csharpier: .gitignore + .csharpierignore)
 ```
+
+The config key is read from the config resolved by MegaLinter, else the one the user passes in `ARGUMENTS` (`-c x` or `--config=x`), then `config_files`. TOML, JSON (with comments), INI (first key segment = section, `*` = any section) and YAML are parsed. A comma/newline separated string is split, kept whole when the separator is `|` (regex flags). With ignore-file forwarding, the config key lists the user's ignore files, re-passed instead of `_pass_existing` (v8r `ignorePatternFiles`). A single-occurrence flag (separator set) already present in the user's `ARGUMENTS` is merged into the generated occurrence.
+
+**Audit every new forwarding against the tool's source**: check whether its CLI value REPLACES the same setting from its config file (phplint `$options['exclude'] ?? $configuration['exclude']`, black/flake8/isort/pylint/djlint/rumdl/robocop/npm-groovy-lint) and whether it replaces built-in defaults (ansible-lint, cspell, pylint `CVS`). Issue #8955 lost a user's `exclude: [examples/fixtures/]` this way.
 
 **Never write inside the analyzed sources.** Every file MegaLinter generates goes to `REPORT_OUTPUT_FOLDER` (`write_report_generated_file`). A file created then deleted at the workspace root during the run crashes the project-mode linters walking the tree at the same moment (trivy aborts with `walk dir error … no such file or directory`), and the failure is timing-dependent, so it surfaces as a random red build. A tool that can only read exclusions from a file it discovers itself inside the repository gets **no** exclusion forwarding (coffeelint, and sqlfluff whose `ignore_paths` is read only from a config file located between the working directory and the analyzed path) — say so in `disabled_reason` or in `linter_text`, do not write the file.
 

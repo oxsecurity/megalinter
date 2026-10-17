@@ -18106,7 +18106,7 @@
       "name": "PARALLEL_PROCESS_NUMBER",
       "type": "number",
       "title": "Parallel process number",
-      "description": "All available cores are used by default. If there are too many, you need to decrease the number of used cores in order to enhance performances",
+      "description": "All available cores are used in CI, and all but one outside CI to keep your machine responsive. If there are too many, you need to decrease the number of used cores in order to enhance performances",
       "examples": [
         4
       ],
