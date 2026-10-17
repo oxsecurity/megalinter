@@ -8,17 +8,12 @@ export async function which(command) {
   const extensions = isWindows
     ? (process.env.PATHEXT || ".COM;.EXE;.BAT;.CMD").split(";")
     : [""];
-  const directories = (process.env.PATH || "")
-    .split(path.delimiter)
-    .filter(Boolean);
+  const directories = (process.env.PATH || "").split(path.delimiter).filter(Boolean);
   for (const directory of directories) {
     for (const extension of extensions) {
       const candidate = path.join(directory, command + extension);
       try {
-        await access(
-          candidate,
-          isWindows ? fsConstants.F_OK : fsConstants.X_OK,
-        );
+        await access(candidate, isWindows ? fsConstants.F_OK : fsConstants.X_OK);
         return candidate;
       } catch {
         // Not found here: try next candidate

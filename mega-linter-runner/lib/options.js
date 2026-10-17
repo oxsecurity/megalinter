@@ -7,7 +7,7 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-import * as optionator from "optionator";
+import * as optionator from 'optionator';
 import { DEFAULT_RELEASE } from "./config.js";
 import { KNOWN_DASHBOARD_PROVIDERS } from "./upload-dashboards.js";
 
@@ -94,10 +94,7 @@ export const optionsDefinition = optionator.default({
         "Pass files to lint as positional arguments to restrict the analysis. " +
         "Reports are written to megalinter-reports/<linter_key> so several standalone runs can be launched in parallel. " +
         "Mutually exclusive with --flavor and --image.",
-      example: [
-        "PYTHON_RUFF",
-        "MARKDOWN_MARKDOWNLINT src/README.md docs/index.md",
-      ],
+      example: ["PYTHON_RUFF", "MARKDOWN_MARKDOWNLINT src/README.md docs/index.md"],
     },
     {
       option: "image",
@@ -178,7 +175,8 @@ export const optionsDefinition = optionator.default({
     {
       option: "debug",
       type: "Boolean",
-      description: "Enable verbose logs (equivalent to -e LOG_LEVEL=DEBUG).",
+      description:
+        "Enable verbose logs (equivalent to -e LOG_LEVEL=DEBUG).",
     },
     {
       option: "timeout",
@@ -235,8 +233,7 @@ export const optionsDefinition = optionator.default({
     {
       option: "setup-default-branch",
       type: "String",
-      description:
-        "[--install] Default branch of the repository. Default: main.",
+      description: "[--install] Default branch of the repository. Default: main.",
       example: ["main", "master"],
     },
     {
@@ -256,8 +253,7 @@ export const optionsDefinition = optionator.default({
       option: "custom-flavor-setup",
       alias: "cfs",
       type: "Boolean",
-      description:
-        "Generate scaffolding files to build a custom MegaLinter flavor.",
+      description: "Generate scaffolding files to build a custom MegaLinter flavor.",
     },
     {
       option: "custom-flavor-linters",
@@ -283,7 +279,8 @@ export const optionsDefinition = optionator.default({
       option: "container-name",
       alias: "containername",
       type: "String",
-      description: "Override the container name passed to `docker run --name`.",
+      description:
+        "Override the container name passed to `docker run --name`.",
       example: ["my-megalinter-run"],
     },
     {
@@ -318,7 +315,8 @@ export const optionsDefinition = optionator.default({
     {
       option: "no-user-map",
       type: "Boolean",
-      description: "Run the container as root.",
+      description:
+        "Run the container as root.",
     },
     {
       option: "codetotal",

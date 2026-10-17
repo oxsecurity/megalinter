@@ -24,19 +24,12 @@ describe("CLI parsing — agent options", () => {
   });
 
   it("rejects --linter combined with --flavor", () => {
-    assert.throws(() =>
-      parse(["--linter", "PYTHON_RUFF", "--flavor", "python"]),
-    );
+    assert.throws(() => parse(["--linter", "PYTHON_RUFF", "--flavor", "python"]));
   });
 
   it("rejects --linter combined with --image", () => {
     assert.throws(() =>
-      parse([
-        "--linter",
-        "PYTHON_RUFF",
-        "--image",
-        "ghcr.io/oxsecurity/megalinter:latest",
-      ]),
+      parse(["--linter", "PYTHON_RUFF", "--image", "ghcr.io/oxsecurity/megalinter:latest"])
     );
   });
 
@@ -74,29 +67,29 @@ describe("Docker image resolution", () => {
   it("uses MEGALINTER_FLAVOR and MEGALINTER_VERSION from .mega-linter.yml", () => {
     const res = runner.resolveDockerImage(
       {},
-      { MEGALINTER_FLAVOR: "python", MEGALINTER_VERSION: "v9.1.0" },
+      { MEGALINTER_FLAVOR: "python", MEGALINTER_VERSION: "v9.1.0" }
     );
     assert.strictEqual(
       res.dockerImage,
-      "ghcr.io/oxsecurity/megalinter-python:v9.1.0",
+      "ghcr.io/oxsecurity/megalinter-python:v9.1.0"
     );
   });
 
   it("CLI flags override .mega-linter.yml values", () => {
     const res = runner.resolveDockerImage(
       { flavor: "javascript", release: "beta" },
-      { MEGALINTER_FLAVOR: "python", MEGALINTER_VERSION: "v9.1.0" },
+      { MEGALINTER_FLAVOR: "python", MEGALINTER_VERSION: "v9.1.0" }
     );
     assert.strictEqual(
       res.dockerImage,
-      "ghcr.io/oxsecurity/megalinter-javascript:beta",
+      "ghcr.io/oxsecurity/megalinter-javascript:beta"
     );
   });
 
   it("--image overrides everything", () => {
     const res = runner.resolveDockerImage(
       { image: "my-registry.com/megalinter:custom" },
-      { MEGALINTER_FLAVOR: "python" },
+      { MEGALINTER_FLAVOR: "python" }
     );
     assert.strictEqual(res.dockerImage, "my-registry.com/megalinter:custom");
   });
@@ -105,7 +98,7 @@ describe("Docker image resolution", () => {
     const res = runner.resolveDockerImage({ release: "stable" }, {});
     assert.strictEqual(
       res.dockerImage,
-      `ghcr.io/oxsecurity/megalinter:${DEFAULT_RELEASE}`,
+      `ghcr.io/oxsecurity/megalinter:${DEFAULT_RELEASE}`
     );
   });
 
@@ -113,18 +106,18 @@ describe("Docker image resolution", () => {
     const res = runner.resolveDockerImage({ linter: "PYTHON_RUFF" }, {});
     assert.strictEqual(
       res.dockerImage,
-      "ghcr.io/oxsecurity/megalinter-only-python_ruff:latest",
+      "ghcr.io/oxsecurity/megalinter-only-python_ruff:latest"
     );
   });
 
   it("standalone linter image uses MEGALINTER_VERSION from config", () => {
     const res = runner.resolveDockerImage(
       { linter: "MARKDOWN_MARKDOWNLINT" },
-      { MEGALINTER_VERSION: "beta" },
+      { MEGALINTER_VERSION: "beta" }
     );
     assert.strictEqual(
       res.dockerImage,
-      "ghcr.io/oxsecurity/megalinter-only-markdown_markdownlint:beta",
+      "ghcr.io/oxsecurity/megalinter-only-markdown_markdownlint:beta"
     );
   });
 });
@@ -145,23 +138,23 @@ describe("APPLY_FIXES resolution", () => {
     assert.deepStrictEqual(
       runner.applyFixesEnvArgs(
         { fix: true },
-        { APPLY_FIXES: ["JAVASCRIPT_ES", "MARKDOWN_MARKDOWNLINT"] },
+        { APPLY_FIXES: ["JAVASCRIPT_ES", "MARKDOWN_MARKDOWNLINT"] }
       ),
-      [],
+      []
     );
   });
 
   it("does not override APPLY_FIXES=all from .mega-linter.yml", () => {
     assert.deepStrictEqual(
       runner.applyFixesEnvArgs({ fix: true }, { APPLY_FIXES: "all" }),
-      [],
+      []
     );
   });
 
   it("injects APPLY_FIXES=all with --fix when config says none", () => {
     assert.deepStrictEqual(
       runner.applyFixesEnvArgs({ fix: true }, { APPLY_FIXES: "none" }),
-      ["-e", "APPLY_FIXES=all"],
+      ["-e", "APPLY_FIXES=all"]
     );
   });
 });
@@ -179,7 +172,7 @@ describe("Standalone linter env args", () => {
         "ENABLE_LINTERS=PYTHON_RUFF",
         "-e",
         "REPORT_OUTPUT_FOLDER=/tmp/lint/megalinter-reports/python_ruff",
-      ],
+      ]
     );
   });
 
@@ -189,7 +182,7 @@ describe("Standalone linter env args", () => {
         linter: "PYTHON_RUFF",
         env: ["REPORT_OUTPUT_FOLDER=/tmp/lint/custom"],
       }),
-      ["-e", "ENABLE_LINTERS=PYTHON_RUFF"],
+      ["-e", "ENABLE_LINTERS=PYTHON_RUFF"]
     );
   });
 });
@@ -204,7 +197,7 @@ describe("Local .mega-linter.yml config reading", () => {
     const tmpDir = await fs.promises.mkdtemp(path.join(os.tmpdir(), "ml-cfg-"));
     await fs.promises.writeFile(
       path.join(tmpDir, ".mega-linter.yml"),
-      "MEGALINTER_FLAVOR: python\nMEGALINTER_VERSION: v9\nAPPLY_FIXES: all\n",
+      "MEGALINTER_FLAVOR: python\nMEGALINTER_VERSION: v9\nAPPLY_FIXES: all\n"
     );
     const config = runner.readLocalConfig(tmpDir);
     assert.strictEqual(config.MEGALINTER_FLAVOR, "python");
@@ -216,7 +209,7 @@ describe("Local .mega-linter.yml config reading", () => {
     const tmpDir = await fs.promises.mkdtemp(path.join(os.tmpdir(), "ml-cfg-"));
     await fs.promises.writeFile(
       path.join(tmpDir, ".mega-linter.yml"),
-      "invalid: [unclosed\n  - :::\n",
+      "invalid: [unclosed\n  - :::\n"
     );
     assert.deepStrictEqual(runner.readLocalConfig(tmpDir), {});
   });
@@ -225,16 +218,13 @@ describe("Local .mega-linter.yml config reading", () => {
 describe("Setup targets backup", () => {
   it("backs up pre-existing generator targets", async () => {
     const tmpDir = await fs.promises.mkdtemp(path.join(os.tmpdir(), "ml-bak-"));
-    await fs.promises.writeFile(
-      path.join(tmpDir, ".mega-linter.yml"),
-      "APPLY_FIXES: all\n",
-    );
+    await fs.promises.writeFile(path.join(tmpDir, ".mega-linter.yml"), "APPLY_FIXES: all\n");
     await fs.promises.mkdir(path.join(tmpDir, ".github", "workflows"), {
       recursive: true,
     });
     await fs.promises.writeFile(
       path.join(tmpDir, ".github", "workflows", "mega-linter.yml"),
-      "name: custom\n",
+      "name: custom\n"
     );
     const backedUp = runner.backupExistingSetupTargets(tmpDir);
     assert.deepStrictEqual(backedUp, [
@@ -244,9 +234,9 @@ describe("Setup targets backup", () => {
     assert.strictEqual(
       await fs.promises.readFile(
         path.join(tmpDir, ".mega-linter.yml.megalinter-setup.bak"),
-        "utf8",
+        "utf8"
       ),
-      "APPLY_FIXES: all\n",
+      "APPLY_FIXES: all\n"
     );
     assert.ok(
       fs.existsSync(
@@ -254,9 +244,9 @@ describe("Setup targets backup", () => {
           tmpDir,
           ".github",
           "workflows",
-          "mega-linter.yml.megalinter-setup.bak",
-        ),
-      ),
+          "mega-linter.yml.megalinter-setup.bak"
+        )
+      )
     );
   });
 
@@ -278,11 +268,7 @@ describe("Timeout handling", () => {
         return { error, status: null, signal: "SIGKILL" };
       }
       if (args[0] === "logs") {
-        return {
-          status: 0,
-          stdout: "collecting files...\nstuck here\n",
-          stderr: "",
-        };
+        return { status: 0, stdout: "collecting files...\nstuck here\n", stderr: "" };
       }
       return { status: 0, stdout: "", stderr: "" };
     };
@@ -305,15 +291,15 @@ describe("Timeout handling", () => {
   it("resolveTimeoutSeconds rejects zero, negative and non-numeric values", () => {
     assert.throws(
       () => runner.resolveTimeoutSeconds({ timeout: 0 }),
-      /Invalid --timeout value/,
+      /Invalid --timeout value/
     );
     assert.throws(
       () => runner.resolveTimeoutSeconds({ timeout: -5 }),
-      /Invalid --timeout value/,
+      /Invalid --timeout value/
     );
     assert.throws(
       () => runner.resolveTimeoutSeconds({ timeout: "abc" }),
-      /Invalid --timeout value/,
+      /Invalid --timeout value/
     );
   });
 
@@ -336,12 +322,7 @@ describe("Timeout handling", () => {
     const containerName = runCall.args[nameIndex + 1];
     assert.match(containerName, /^megalinter-runner-/);
     const logsCall = calls.find((call) => call.args[0] === "logs");
-    assert.deepStrictEqual(logsCall.args, [
-      "logs",
-      "--tail",
-      "30",
-      containerName,
-    ]);
+    assert.deepStrictEqual(logsCall.args, ["logs", "--tail", "30", containerName]);
     const stopCall = calls.find((call) => call.args[0] === "stop");
     assert.deepStrictEqual(stopCall.args, ["stop", containerName]);
     const rmCall = calls.find((call) => call.args[0] === "rm");
@@ -399,14 +380,8 @@ describe("Timeout handling", () => {
     assert.strictEqual(runCall.args.indexOf("--name"), -1);
     assert.strictEqual(runCall.opts.timeout, undefined);
     assert.strictEqual(runCall.opts.killSignal, undefined);
-    assert.strictEqual(
-      calls.some((call) => call.args[0] === "stop"),
-      false,
-    );
-    assert.strictEqual(
-      calls.some((call) => call.args[0] === "rm"),
-      false,
-    );
+    assert.strictEqual(calls.some((call) => call.args[0] === "stop"), false);
+    assert.strictEqual(calls.some((call) => call.args[0] === "rm"), false);
   });
 });
 
@@ -448,14 +423,14 @@ describe("Setup answers from CLI options", () => {
   it("rejects an unknown --setup-ci value", () => {
     assert.throws(
       () => runner.buildSetupAnswers({ setupCi: "github" }),
-      /Invalid --setup-ci value: github/,
+      /Invalid --setup-ci value: github/
     );
   });
 
   it("rejects an unknown --setup-validate-all-code-base value", () => {
     assert.throws(
       () => runner.buildSetupAnswers({ setupValidateAllCodeBase: "full" }),
-      /Invalid --setup-validate-all-code-base value: full/,
+      /Invalid --setup-validate-all-code-base value: full/
     );
   });
 });

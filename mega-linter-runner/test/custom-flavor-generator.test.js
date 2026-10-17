@@ -123,10 +123,7 @@ describe("Custom flavor generator (--custom-flavor-setup)", function () {
         "utf8",
       );
       assert.match(readme, /MyPythonFlavor/);
-      assert.match(
-        readme,
-        /https:\/\/github\.com\/example\/megalinter-custom-flavor-python/,
-      );
+      assert.match(readme, /https:\/\/github\.com\/example\/megalinter-custom-flavor-python/);
     });
 
     it("rejects an invalid linter key when seeded via globalThis.customFlavorLinters", async () => {

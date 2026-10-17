@@ -618,18 +618,18 @@ jobs:
     const confirmedUpgrade = this.noPrompt
       ? true
       : (
-          await prompts({
-            name: "upgrade",
-            message: c.blueBright(
-              `This assistant will automatically upgrade your local files so you use MegaLinter ${DEFAULT_RELEASE}\nPlease confirm to proceed :)`,
-            ),
-            type: "confirm",
-            initial: true,
-          })
-        ).upgrade;
+        await prompts({
+          name: "upgrade",
+          message: c.blueBright(
+            `This assistant will automatically upgrade your local files so you use MegaLinter ${DEFAULT_RELEASE}\nPlease confirm to proceed :)`
+          ),
+          type: "confirm",
+          initial: true,
+        })
+      ).upgrade;
     if (confirmedUpgrade === false) {
       console.log(
-        `You should upgrade to ${DEFAULT_RELEASE} to benefit from latest versions of linters, and more features :)`,
+        `You should upgrade to ${DEFAULT_RELEASE} to benefit from latest versions of linters, and more features :)`
       );
       return;
     }
@@ -638,12 +638,12 @@ jobs:
     this.manageGitIgnore();
     console.log("");
     console.log(
-      c.green("You MegaLinter local configuration files has been updated !"),
+      c.green("You MegaLinter local configuration files has been updated !")
     );
     console.log(
       c.grey(
-        "Now stage and commit updated files then push to see latest version of MegaLinter in action !",
-      ),
+        "Now stage and commit updated files then push to see latest version of MegaLinter in action !"
+      )
     );
     console.log("");
     if (this.noPrompt) {
@@ -654,8 +654,8 @@ jobs:
       name: "ox",
       message: c.blueBright(
         `MegaLinter is now part of ${c.green(
-          "OX Security",
-        )}. -> https://www.ox.security/?ref=megalinter\n\nDo you want to try OX Security to secure your software supply chain security ?`,
+          "OX Security"
+        )}. -> https://www.ox.security/?ref=megalinter\n\nDo you want to try OX Security to secure your software supply chain security ?`
       ),
       type: "confirm",
       initial: true,
@@ -668,18 +668,10 @@ jobs:
   async applyReplacements() {
     // List yaml and shell files
     const globPattern1 = `**/*.{yaml,yml,sh,bash}`;
-    const files1 = await glob(globPattern1, {
-      cwd: process.cwd(),
-      dot: true,
-      ignore: GLOB_IGNORE_PATTERNS,
-    });
+    const files1 = await glob(globPattern1, { cwd: process.cwd(), dot: true, ignore: GLOB_IGNORE_PATTERNS });
     // List Jenkinsfile
     const globPattern2 = `**/Jenkinsfile`;
-    const files2 = await glob(globPattern2, {
-      cwd: process.cwd(),
-      dot: true,
-      ignore: GLOB_IGNORE_PATTERNS,
-    });
+    const files2 = await glob(globPattern2, { cwd: process.cwd(), dot: true, ignore: GLOB_IGNORE_PATTERNS });
 
     // Analyze all files and make appropriate replacements
     const allFiles = files1.concat(files2);
@@ -692,11 +684,11 @@ jobs:
       for (const replacementItem of this.replacements) {
         const newFileContent = updatedFileContent.replace(
           replacementItem.regex,
-          replacementItem.replacement,
+          replacementItem.replacement
         );
         if (newFileContent !== updatedFileContent) {
           console.log(
-            `- Updating ${file} with replacement ${replacementItem.regex} -> ${replacementItem.replacement} ...`,
+            `- Updating ${file} with replacement ${replacementItem.regex} -> ${replacementItem.replacement} ...`
           );
           updatedFileContent = newFileContent;
           appliedReplacements++;
@@ -711,9 +703,9 @@ jobs:
     console.log(
       c.bold(
         `mega-linter-runner applied ${c.green(
-          appliedReplacements,
-        )} replacements in ${c.green(updatedFiles)} files.`,
-      ),
+          appliedReplacements
+        )} replacements in ${c.green(updatedFiles)} files.`
+      )
     );
   }
 
@@ -734,7 +726,7 @@ jobs:
     if (doWrite) {
       fs.writeFileSync(gitIgnoreFile, gitIgnoreTextLines.join("\n") + "\n");
       console.log(
-        "Updated .gitignore file to exclude megalinter-reports from commits",
+        "Updated .gitignore file to exclude megalinter-reports from commits"
       );
     }
   }

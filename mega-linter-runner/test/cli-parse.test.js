@@ -66,7 +66,10 @@ describe("CLI parsing — env flag", () => {
 
 describe("CLI parsing — custom-flavor-linters", () => {
   it("keeps comma-separated list intact with space form", () => {
-    const o = parse(["--custom-flavor-linters", "YAML_PRETTIER,YAML_YAMLLINT"]);
+    const o = parse([
+      "--custom-flavor-linters",
+      "YAML_PRETTIER,YAML_YAMLLINT",
+    ]);
     assert.strictEqual(o.customFlavorLinters, "YAML_PRETTIER,YAML_YAMLLINT");
   });
 
@@ -85,18 +88,17 @@ describe("env-parser — expandEnvEntries (backward compatibility)", () => {
   });
 
   it("expands legacy KEY=VAL,KEY=VAL form into multiple entries", () => {
-    assert.deepStrictEqual(expandEnvEntries(["VAR1=foo,VAR2=bar"]), [
-      "VAR1=foo",
-      "VAR2=bar",
-    ]);
+    assert.deepStrictEqual(
+      expandEnvEntries(["VAR1=foo,VAR2=bar"]),
+      ["VAR1=foo", "VAR2=bar"],
+    );
   });
 
   it("expands three comma-separated KEY=VAL pairs", () => {
-    assert.deepStrictEqual(expandEnvEntries(["A=1,B=2,C=3"]), [
-      "A=1",
-      "B=2",
-      "C=3",
-    ]);
+    assert.deepStrictEqual(
+      expandEnvEntries(["A=1,B=2,C=3"]),
+      ["A=1", "B=2", "C=3"],
+    );
   });
 
   it("does not split when only some parts look like KEY=VAL", () => {
@@ -131,7 +133,10 @@ describe("env-parser — expandEnvEntries (backward compatibility)", () => {
   });
 
   it("preserves empty-value KEY=VAL pairs in legacy form", () => {
-    assert.deepStrictEqual(expandEnvEntries(["FOO=,BAR="]), ["FOO=", "BAR="]);
+    assert.deepStrictEqual(
+      expandEnvEntries(["FOO=,BAR="]),
+      ["FOO=", "BAR="],
+    );
   });
 
   it("returns non-array input unchanged", () => {
@@ -165,8 +170,9 @@ describe("CLI parsing — scalar flags", () => {
   it("advertises allowed values in the option help text", () => {
     const help = optionsDefinition.generateHelpForOption("flavor");
     assert.match(help, /Allowed values:.*python/);
-    const engineHelp =
-      optionsDefinition.generateHelpForOption("container-engine");
+    const engineHelp = optionsDefinition.generateHelpForOption(
+      "container-engine",
+    );
     assert.match(engineHelp, /docker.*podman.*container/);
   });
 });
@@ -255,10 +261,7 @@ describe("CLI parsing — boolean flags", () => {
   });
 
   it("parses --custom-flavor-setup and --cfs alias", () => {
-    assert.strictEqual(
-      parse(["--custom-flavor-setup"]).customFlavorSetup,
-      true,
-    );
+    assert.strictEqual(parse(["--custom-flavor-setup"]).customFlavorSetup, true);
     assert.strictEqual(parse(["--cfs"]).customFlavorSetup, true);
   });
 
