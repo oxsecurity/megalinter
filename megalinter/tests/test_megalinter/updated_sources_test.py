@@ -13,7 +13,6 @@ from types import SimpleNamespace
 from unittest import mock
 
 import git
-
 from megalinter import MegaLinter, config, utils
 from megalinter.reporters.EmailReporter import EmailReporter
 from megalinter.reporters.FileIoReporter import FileIoReporter
