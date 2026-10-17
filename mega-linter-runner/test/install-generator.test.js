@@ -29,7 +29,9 @@ const DEFAULT_ANSWERS = {
 async function runGenerator(answers, generatorOptions = undefined) {
   const originalCwd = process.cwd();
   const tmpDir = await fs.promises.mkdtemp(path.join(os.tmpdir(), "ml-gen-"));
-  const adapter = new TestAdapter({ mockedAnswers: { ...DEFAULT_ANSWERS, ...answers } });
+  const adapter = new TestAdapter({
+    mockedAnswers: { ...DEFAULT_ANSWERS, ...answers },
+  });
   try {
     process.chdir(tmpDir);
     const env = createEnv({ adapter, cwd: tmpDir });
@@ -59,7 +61,10 @@ describe("Install generator (--install)", function () {
       fs.existsSync(path.join(tmpDir, ".gitignore")),
       ".gitignore should be created",
     );
-    const gitignore = await fs.promises.readFile(path.join(tmpDir, ".gitignore"), "utf8");
+    const gitignore = await fs.promises.readFile(
+      path.join(tmpDir, ".gitignore"),
+      "utf8",
+    );
     assert.match(gitignore, /megalinter-reports\//);
   });
 

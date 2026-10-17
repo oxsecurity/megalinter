@@ -1,8 +1,8 @@
 import { asciiArt } from "../../lib/ascii.js";
-import Generator from 'yeoman-generator';
+import Generator from "yeoman-generator";
 import { execFileSync } from "child_process";
 import c from "../../lib/colors.js";
-import fs from "fs"
+import fs from "fs";
 import { load as yamlLoad } from "js-yaml";
 
 function gitOutput(args) {
@@ -20,23 +20,26 @@ function getFirstRemoteFetchUrl() {
 export default class GeneratorMegaLinter extends Generator {
   async prompting() {
     console.log(asciiArt());
-    this.log(c.cyan(
-      `Welcome to the MegaLinter Custom Flavor generator !
-When you don't know what option to select, please use default values`
-    ));
+    this.log(
+      c.cyan(
+        `Welcome to the MegaLinter Custom Flavor generator !
+When you don't know what option to select, please use default values`,
+      ),
+    );
 
     // Verify that the repo name contains "megalinter-custom-flavor"
     if (!getFirstRemoteFetchUrl().includes("megalinter-custom-flavor")) {
       const errorMessage = `
 ERROR: This generator must be run in a repository whose name includes 'megalinter-custom-flavor'
 Example: 'megalinter-custom-flavor-python-light'
-`
+`;
       this.log(c.red(c.bold(errorMessage)));
       throw new Error(errorMessage);
     }
     // Fetch https://raw.githubusercontent.com/megalinter/megalinter/main/megalinter/descriptors/schemas/megalinter-configuration.jsonschema.json
     this.log("Fetching MegaLinter configuration schema...");
-    const url = 'https://raw.githubusercontent.com/megalinter/megalinter/main/megalinter/descriptors/schemas/megalinter-configuration.jsonschema.json';
+    const url =
+      "https://raw.githubusercontent.com/megalinter/megalinter/main/megalinter/descriptors/schemas/megalinter-configuration.jsonschema.json";
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`Failed to fetch schema from ${url}`);
@@ -54,36 +57,43 @@ Example: 'megalinter-custom-flavor-python-light'
         }
       });
       defaultSelectedLinters = globalThis.customFlavorLinters;
-    }
-    else {
+    } else {
       // Initialize data from existing configuration
-      const customFlavorConfigPath = this.destinationPath('megalinter-custom-flavor.yml');
+      const customFlavorConfigPath = this.destinationPath(
+        "megalinter-custom-flavor.yml",
+      );
       if (fs.existsSync(customFlavorConfigPath)) {
-        const customFlavorConfigContent = fs.readFileSync(customFlavorConfigPath, 'utf8');
+        const customFlavorConfigContent = fs.readFileSync(
+          customFlavorConfigPath,
+          "utf8",
+        );
         const customFlavorConfig = yamlLoad(customFlavorConfigContent);
         if (customFlavorConfig.label) {
           defaultFlavorLabel = customFlavorConfig.label;
         }
         if (customFlavorConfig.linters) {
-          defaultSelectedLinters = customFlavorConfig.linters.map((linter) => linter.replace(/^\s*-\s*/, '').trim());
+          defaultSelectedLinters = customFlavorConfig.linters.map((linter) =>
+            linter.replace(/^\s*-\s*/, "").trim(),
+          );
         }
       }
     }
 
     const prompts = [
       {
-        type: 'input',
-        name: 'customFlavorLabel',
-        message: 'What is the label of your custom flavor?',
-        default: defaultFlavorLabel
+        type: "input",
+        name: "customFlavorLabel",
+        message: "What is the label of your custom flavor?",
+        default: defaultFlavorLabel,
       },
       {
-        type: 'checkbox',
-        name: 'selectedLinters',
-        message: 'Please select the linters you want to include in your custom flavor:',
+        type: "checkbox",
+        name: "selectedLinters",
+        message:
+          "Please select the linters you want to include in your custom flavor:",
         choices: linterKeys,
-        default: defaultSelectedLinters
-      }
+        default: defaultSelectedLinters,
+      },
     ];
 
     return this.prompt(prompts).then(async (props) => {
@@ -101,8 +111,10 @@ Example: 'megalinter-custom-flavor-python-light'
 
   end() {
     this.log("You're all set !");
-    this.log(c.green(
-      "Now commit, push then create a GitHub Release to generate your custom flavor !")
+    this.log(
+      c.green(
+        "Now commit, push then create a GitHub Release to generate your custom flavor !",
+      ),
     );
   }
 
@@ -110,16 +122,22 @@ Example: 'megalinter-custom-flavor-python-light'
     // Custom flavor label
     this.customFlavorLabel = this.props.customFlavorLabel;
     // Custom flavor selected linters
-    this.selectedLinters = this.props.selectedLinters.map((linter) => `  - ${linter}`).join("\n");
+    this.selectedLinters = this.props.selectedLinters
+      .map((linter) => `  - ${linter}`)
+      .join("\n");
     // Check at least one linter is selected
     if (this.selectedLinters.length === 0) {
-      throw new Error("You must select at least one linter for your custom flavor");
+      throw new Error(
+        "You must select at least one linter for your custom flavor",
+      );
     }
     // Markdown list: no leading indent, else markdownlint MD007 fails in the generated README
-    this.selectedLintersWithLinks = this.props.selectedLinters.map((linter) => {
-      const linterUrl = `https://megalinter.io/latest/descriptors/${linter.toLowerCase()}/`;
-      return `- [${linter}](${linterUrl})`;
-    }).join("\n");
+    this.selectedLintersWithLinks = this.props.selectedLinters
+      .map((linter) => {
+        const linterUrl = `https://megalinter.io/latest/descriptors/${linter.toLowerCase()}/`;
+        return `- [${linter}](${linterUrl})`;
+      })
+      .join("\n");
     // Custom flavor author is git username
     let author = "";
     try {
@@ -130,21 +148,25 @@ Example: 'megalinter-custom-flavor-python-light'
     this.customFlavorAuthor = author;
     // Get remote repo
     const remoteUrl = getFirstRemoteFetchUrl();
-    
+
     // Handle both HTTPS and SSH git origins
     let repoPath, repoUrl;
-    if (remoteUrl.startsWith('https://github.com/')) {
+    if (remoteUrl.startsWith("https://github.com/")) {
       // HTTPS format: https://github.com/user/repo.git
-      repoPath = remoteUrl.replace('https://github.com/', '').replace('.git', '');
-      repoUrl = remoteUrl.replace('.git', '');
-    } else if (remoteUrl.startsWith('git@github.com:')) {
+      repoPath = remoteUrl
+        .replace("https://github.com/", "")
+        .replace(".git", "");
+      repoUrl = remoteUrl.replace(".git", "");
+    } else if (remoteUrl.startsWith("git@github.com:")) {
       // SSH format: git@github.com:user/repo.git
-      repoPath = remoteUrl.replace('git@github.com:', '').replace('.git', '');
+      repoPath = remoteUrl.replace("git@github.com:", "").replace(".git", "");
       repoUrl = `https://github.com/${repoPath}`;
     } else {
-      throw new Error(`Unsupported git remote format: ${remoteUrl}. Only GitHub HTTPS and SSH formats are supported.`);
+      throw new Error(
+        `Unsupported git remote format: ${remoteUrl}. Only GitHub HTTPS and SSH formats are supported.`,
+      );
     }
-    
+
     this.customFlavorRepo = repoPath;
     this.customFlavorRepoUrl = repoUrl;
     // Custom flavor docker image version
@@ -158,25 +180,29 @@ Example: 'megalinter-custom-flavor-python-light'
       {
         CUSTOM_FLAVOR_LABEL: this.customFlavorLabel,
         CUSTOM_FLAVOR_LINTERS: this.selectedLinters,
-      }
+      },
     );
   }
 
   _generateGitHubWorkflows() {
     this.fs.copyTpl(
       this.templatePath("megalinter-custom-flavor-builder.yml"),
-      this.destinationPath("./.github/workflows/megalinter-custom-flavor-builder.yml"),
-      {}
+      this.destinationPath(
+        "./.github/workflows/megalinter-custom-flavor-builder.yml",
+      ),
+      {},
     );
     this.fs.copyTpl(
       this.templatePath("check-new-megalinter-version.yml"),
-      this.destinationPath("./.github/workflows/check-new-megalinter-version.yml"),
-      {}
+      this.destinationPath(
+        "./.github/workflows/check-new-megalinter-version.yml",
+      ),
+      {},
     );
     this.fs.copyTpl(
       this.templatePath("zizmor.yml"),
       this.destinationPath("./.github/zizmor.yml"),
-      {}
+      {},
     );
   }
 
@@ -188,7 +214,7 @@ Example: 'megalinter-custom-flavor-python-light'
         CUSTOM_FLAVOR_LABEL: this.customFlavorLabel,
         CUSTOM_FLAVOR_AUTHOR: this.customFlavorAuthor,
         DOCKER_IMAGE_VERSION: this.customFlavorDockerImageVersion,
-      }
+      },
     );
   }
 
@@ -204,8 +230,7 @@ Example: 'megalinter-custom-flavor-python-light'
         CUSTOM_FLAVOR_REPO: this.customFlavorRepo,
         CUSTOM_FLAVOR_REPO_URL: this.customFlavorRepoUrl,
         CUSTOM_FLAVOR_AUTHOR: this.customFlavorAuthor,
-      }
+      },
     );
   }
-
 }
