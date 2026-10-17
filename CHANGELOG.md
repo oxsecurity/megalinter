@@ -34,6 +34,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Fixes
   - **GitLab and Git environment variables** such as `GIT_STRATEGY` no longer trigger a false removed-linter warning. Removed MegaLinter options and linter selections still warn. Fixes [#9024](https://github.com/oxsecurity/megalinter/issues/9024)
+  - **Pull request runs in private repositories** no longer crash with a git traceback when the checkout does not persist credentials: MegaLinter warns, explains how to enable the git diff mode (`persist-credentials: true` or **`GIT_AUTHORIZATION_BEARER`**) and lints the whole codebase. Fixes [#9104](https://github.com/oxsecurity/megalinter/issues/9104)
+  - **`FAIL_IF_UPDATED_SOURCES`** is now reliable. Fixes [#9103](https://github.com/oxsecurity/megalinter/issues/9103)
+    - A warning is shown when its value is neither `true` nor `false` (for example an empty CI variable), and the console log tells whether the option is active
+    - The failure reason, naming the linters that updated sources, is shown even when other linters failed too
+    - It takes precedence over `DISABLE_ERRORS: true`: the exit code is 1, as the summary says
+    - Sources updated by `project` lint mode linters and by `POST_COMMANDS` now fail the run too, and set the `has_updated_sources` output
+  - The **Email reporter** no longer sends a mail for a successful run without updated sources unless `EMAIL_REPORTER_SEND_SUCCESS` is `true`, and the **File.io reporter** skips such runs when `FILEIO_REPORTER_SEND_SUCCESS` is `true`, as documented
   - **CLOJURE_CLJ_KONDO** now really forwards `EXCLUDED_DIRECTORIES` and `ADDITIONAL_EXCLUDED_DIRECTORIES` in `project` lint mode: they were never applied before, so files in folders like `node_modules` or `.wireit` could be reported
     - The directories are passed as a merged `:output {:exclude-files [...]}` inline configuration, so your own `:output :exclude-files` patterns in `.clj-kondo/config.edn` are kept
     - Disable the forwarding with `CLOJURE_CLJ_KONDO_FORWARD_EXCLUDED_DIRECTORIES: false`

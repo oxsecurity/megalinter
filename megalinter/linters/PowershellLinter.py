@@ -41,6 +41,7 @@ class PowershellLinter(Linter):
             pwsh_script[0] += f" -ScriptDefinition (Get-Content -Path '{file}' -Raw)"
 
             if self.apply_fixes is True:
+                self.try_fix = True
                 file_encoding = config.get(
                     self.request_id,
                     "POWERSHELL_POWERSHELL_FORMATTER_OUTPUT_ENCODING",
@@ -57,6 +58,7 @@ class PowershellLinter(Linter):
             and self.cli_lint_fix_arg_name is not None
         ):
             pwsh_script[0] += f" {self.cli_lint_fix_arg_name}"
+            self.try_fix = True
 
         if self.linter_name == "powershell":
             pwsh_script[0] = self.format_powershell_output(pwsh_script[0])
