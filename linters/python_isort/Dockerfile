@@ -64,11 +64,11 @@ ARG TARGETARCH
 # renovate: datasource=pypi depName=black
 ARG PIP_BLACK_VERSION=26.5.1
 # renovate: datasource=pypi depName=isort
-ARG PIP_ISORT_VERSION=9.0.1
+ARG PIP_ISORT_VERSION=9.0.2
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=26.2.1
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=21.9.1
+ARG PIP_VIRTUALENV_VERSION=21.14.5
 #ARG__END
 
 ####################

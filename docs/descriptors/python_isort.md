@@ -29,7 +29,7 @@ description: How to use isort (configure, ignore files, ignore errors, help & ve
 
 ## isort documentation
 
-- Version in MegaLinter: **9.0.1**
+- Version in MegaLinter: **9.0.2**
 - Visit [Official Web Site](https://pycqa.github.io/isort/){target=_blank}
 - See [How to configure isort rules](https://pycqa.github.io/isort/docs/configuration/config_files.html){target=_blank}
   - If custom `.isort.cfg` config file isn't found, [.isort.cfg](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.isort.cfg){target=_blank} will be used
@@ -498,9 +498,9 @@ section output options:
 # renovate: datasource=pypi depName=black
 ARG PIP_BLACK_VERSION=26.5.1
 # renovate: datasource=pypi depName=isort
-ARG PIP_ISORT_VERSION=9.0.1
+ARG PIP_ISORT_VERSION=9.0.2
 ```
 
 - PIP packages (Python):
   - [black==26.5.1](https://pypi.org/project/black/26.5.1)
-  - [isort==9.0.1](https://pypi.org/project/isort/9.0.1)
+  - [isort==9.0.2](https://pypi.org/project/isort/9.0.2)

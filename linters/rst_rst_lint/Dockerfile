@@ -68,7 +68,7 @@ ARG PIP_RESTRUCTUREDTEXT_LINT_VERSION=2.0.2
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=26.2.1
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=21.9.1
+ARG PIP_VIRTUALENV_VERSION=21.14.5
 #ARG__END
 
 ####################
