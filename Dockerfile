@@ -320,7 +320,7 @@ ARG PIP_PYLINT_VERSION=4.1.2
 # renovate: datasource=pypi depName=typing-extensions
 ARG PIP_TYPING_EXTENSIONS_VERSION=4.16.0
 # renovate: datasource=pypi depName=black
-ARG PIP_BLACK_VERSION=26.5.1
+ARG PIP_BLACK_VERSION=26.10.1
 # renovate: datasource=pypi depName=flake8
 ARG PIP_FLAKE8_VERSION=7.4.1
 # renovate: datasource=pypi depName=isort
