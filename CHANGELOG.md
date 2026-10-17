@@ -88,6 +88,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Per-linter test jobs (`deploy-DEV-linters.yml`, `deploy-BETA-linters.yml`) now pass `GITHUB_ACTIONS` to the test container
   - **`test-agent-plugins.yml`** validation script now accepts both the `{"plugins": [...], "errors": [...]}` wrapper and the bare-array shape the GitHub Copilot CLI's `plugins list --json` can return, fixing a crash of the "Validate agent plugins manifests" check
   - **`REPOSITORY_DUSTILOCK`** is now non-blocking in MegaLinter's own `.mega-linter.yml`: dustilock reports any PyPI lookup error (such as intermittent `503` responses) as a package "available for public registration", which failed the "Run against all code base - DEV" job on unrelated PRs
+  - **Renovate and Dependabot** now apply the same waiting rule: 7 days after a release, none for security updates
+    - GitHub Actions are updated by Dependabot only (Renovate's `github-actions` manager is disabled): Renovate can not date SHA-pinned digest updates, so they stayed pending forever and duplicated Dependabot's PRs
+    - Renovate lock file maintenance is disabled: a lock file refresh has no release date, so it could never pass the 7-day check
+    - Dependabot now also updates the actions of `flavors/custom-builder/action.yml`
 
 - Linter versions upgrades (N)
   - [shfmt](https://github.com/mvdan/sh) from 3.13.1 to **3.14.0** on 2026-09-12
