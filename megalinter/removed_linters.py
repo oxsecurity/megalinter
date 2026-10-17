@@ -1,7 +1,3 @@
-import json
-from functools import cache
-from pathlib import Path
-
 from megalinter.constants import ML_DOC_URL
 
 REMOVED_LINTERS_DOC_URL = f"{ML_DOC_URL}/removed-linters/"
@@ -202,39 +198,36 @@ def is_removed_related_variable(property_name: str) -> bool:
     )
 
 
-@cache
-def _descriptor_variable_suffixes() -> set[str]:
-    schema_path = (
-        Path(__file__).parent
-        / "descriptors/schemas/megalinter-configuration.jsonschema.json"
-    )
-    schema = json.loads(schema_path.read_text(encoding="utf-8"))
-    properties = schema["properties"]
-    descriptors = schema["definitions"]["enum_descriptor_keys"]["enum"]
-    return {
-        name.removeprefix(category)
-        for name, definition in properties.items()
-        if (category := definition.get("x-category")) in descriptors
-        and name.startswith(category + "_")
-    }
+# Options MegaLinter reads at descriptor level (<DESCRIPTOR>_<OPTION>), see Linter.py
+# and pre_post_factory.py. <DESCRIPTOR>_DIRECTORY is left out on purpose: no removed
+# descriptor ever supported it, and CREDENTIALS_DIRECTORY is set by systemd.
+DESCRIPTOR_VARIABLE_SUFFIXES = (
+    "_FILTER_REGEX_INCLUDE",
+    "_FILTER_REGEX_EXCLUDE",
+    "_PRE_COMMANDS",
+    "_POST_COMMANDS",
+    "_CONFIG_FILE",
+    "_FILE_NAME",
+    "_IGNORE_FILE",
+    "_RULES_PATH",
+    "_DISABLE_ERRORS",
+)
 
 
-def find_removed_references(
-    config_keys, linter_names, descriptor_names, *, explicit_config_keys=None
-) -> list[str]:
+def find_removed_references(config_keys, linter_names, descriptor_names) -> list[str]:
     found = {name for name in linter_names if name in REMOVED_LINTERS}
     found |= {name for name in descriptor_names if name in REMOVED_DESCRIPTORS}
     for config_key in config_keys:
-        matched_linter = _match_prefix(config_key, REMOVED_LINTERS)
-        matched = matched_linter or _match_prefix(config_key, REMOVED_DESCRIPTORS)
-        if (
-            matched is not None
-            and matched_linter is None
-            and explicit_config_keys is not None
-            and config_key not in explicit_config_keys
-            and config_key.removeprefix(matched) not in _descriptor_variable_suffixes()
-        ):
-            continue
+        matched = _match_prefix(config_key, REMOVED_LINTERS)
+        if matched is None:
+            # Removed descriptor names are generic prefixes (GIT_, MAKEFILE_...) shared
+            # with unrelated variables such as GitLab's GIT_STRATEGY: only report
+            # actual MegaLinter descriptor options
+            descriptor = _match_prefix(config_key, REMOVED_DESCRIPTORS)
+            if descriptor is not None and (
+                config_key.removeprefix(descriptor) in DESCRIPTOR_VARIABLE_SUFFIXES
+            ):
+                matched = descriptor
         if matched is not None:
             found.add(matched)
     return sorted(found)

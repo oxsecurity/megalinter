@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-import builtins
 import json
 import logging
 import os
@@ -12,7 +11,6 @@ import requests
 import yaml
 
 RUN_CONFIGS = {}  # type: ignore[var-annotated]
-_EXPLICIT_CONFIG_KEYS: dict[str, builtins.set[str]] = {}
 SKIP_DELETE_CONFIG = False
 _ENV_CACHE = None  # Cached copy of os.environ to avoid repeated copies
 DEFAULT_SECURED_ENV_VARIABLES = (
@@ -75,9 +73,6 @@ def init_config(request_id, workspace=None, params=None):
     global RUN_CONFIGS
     global _ENV_CACHE
     _ENV_CACHE = None  # Invalidate env cache on config init
-    if request_id not in RUN_CONFIGS:
-        _EXPLICIT_CONFIG_KEYS[request_id] = builtins.set()
-    _EXPLICIT_CONFIG_KEYS.setdefault(request_id, builtins.set()).update(params)
     if request_id in RUN_CONFIGS:
         existing_config = get_config(request_id)
         new_config = existing_config | params
@@ -151,7 +146,6 @@ def init_config(request_id, workspace=None, params=None):
             if config_data is None:  # .mega-linter.yml existing but empty
                 runtime_config = env_plus_params
             else:
-                _EXPLICIT_CONFIG_KEYS[request_id].update(config_data)
                 # append config file variables to env variables, with priority to env variables
                 runtime_config = config_data | env_plus_params
             RUN_CONFIGS[request_id][
@@ -170,7 +164,6 @@ def init_config(request_id, workspace=None, params=None):
             runtime_config,
             combined_config,
             RUN_CONFIGS[request_id]["CONFIG_SOURCE"],
-            _EXPLICIT_CONFIG_KEYS[request_id],
         )
         runtime_config = combined_config
     # Print & set config in cache
@@ -178,9 +171,7 @@ def init_config(request_id, workspace=None, params=None):
     set_config(request_id, runtime_config)
 
 
-def combine_config(
-    workspace, config, combined_config, config_source, explicit_keys=None
-):
+def combine_config(workspace, config, combined_config, config_source):
     config_properties_to_append = []
 
     if "CONFIG_PROPERTIES_TO_APPEND" in config:
@@ -208,8 +199,6 @@ def combine_config(
                 workspace + os.path.sep + extends_item, "r", encoding="utf-8"
             ) as f:
                 extends_config_data = yaml.safe_load(f)
-        if explicit_keys is not None:
-            explicit_keys.update(extends_config_data)
         merge_dicts(combined_config, extends_config_data, config_properties_to_append)
         config_source += f"\n[config] - extends from: {extends_item}"
         if "EXTENDS" in extends_config_data:
@@ -218,7 +207,6 @@ def combine_config(
                 extends_config_data,
                 combined_config,
                 config_source,
-                explicit_keys,
             )
     merge_dicts(combined_config, config, config_properties_to_append)
     return config_source
@@ -261,10 +249,6 @@ def get_config(request_id=None):
         if _ENV_CACHE is None:
             _ENV_CACHE = os.environ.copy()
         return _ENV_CACHE
-
-
-def get_explicit_config_keys(request_id) -> builtins.set[str]:
-    return _EXPLICIT_CONFIG_KEYS.get(request_id, builtins.set())
 
 
 def set_config(request_id, runtime_config):
@@ -385,21 +369,18 @@ def delete(request_id=None, key=None):
     # Global delete (used for tests)
     if request_id is None:
         RUN_CONFIGS = {}
-        _EXPLICIT_CONFIG_KEYS.clear()
         _ENV_CACHE = None
         clear_registered_caches(None)
         return
     if key is None:
         if SKIP_DELETE_CONFIG is not True:
             del RUN_CONFIGS[request_id]
-            _EXPLICIT_CONFIG_KEYS.pop(request_id, None)
             clear_registered_caches(request_id)
             logging.debug("Cleared MegaLinter runtime config for request " + request_id)
         return
     config = get_config(request_id)
     if key in config:
         del config[key]
-        _EXPLICIT_CONFIG_KEYS.get(request_id, builtins.set()).discard(key)
     set_config(request_id, config)
     clear_registered_caches(request_id)
 

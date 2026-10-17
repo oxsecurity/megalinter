@@ -772,7 +772,6 @@ class Megalinter:
             config.get(self.request_id),
             self.enable_linters + self.disable_linters,
             self.enable_descriptors + self.disable_descriptors,
-            explicit_config_keys=config.get_explicit_config_keys(self.request_id),
         )
         for removed_reference in removed_references:
             register_user_notification(
