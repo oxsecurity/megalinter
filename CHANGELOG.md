@@ -33,6 +33,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - To lint each file separately as before, set `CLOJURE_CLJ_KONDO_CLI_LINT_MODE: file`
 
 - Fixes
+  - **GitLab and Git environment variables** such as `GIT_STRATEGY` no longer trigger a false removed-linter warning. Removed MegaLinter options and linter selections still warn. Fixes [#9024](https://github.com/oxsecurity/megalinter/issues/9024)
+  - **Pull request runs in private repositories** no longer crash with a git traceback when the checkout does not persist credentials: MegaLinter warns, explains how to enable the git diff mode (`persist-credentials: true` or **`GIT_AUTHORIZATION_BEARER`**) and lints the whole codebase. Fixes [#9104](https://github.com/oxsecurity/megalinter/issues/9104)
+  - **`FAIL_IF_UPDATED_SOURCES`** is now reliable. Fixes [#9103](https://github.com/oxsecurity/megalinter/issues/9103)
+    - A warning is shown when its value is neither `true` nor `false` (for example an empty CI variable), and the console log tells whether the option is active
+    - The failure reason, naming the linters that updated sources, is shown even when other linters failed too
+    - It takes precedence over `DISABLE_ERRORS: true`: the exit code is 1, as the summary says
+    - Sources updated by `project` lint mode linters and by `POST_COMMANDS` now fail the run too, and set the `has_updated_sources` output
+  - The **Email reporter** no longer sends a mail for a successful run without updated sources unless `EMAIL_REPORTER_SEND_SUCCESS` is `true`, and the **File.io reporter** skips such runs when `FILEIO_REPORTER_SEND_SUCCESS` is `true`, as documented
   - **CLOJURE_CLJ_KONDO** now really forwards `EXCLUDED_DIRECTORIES` and `ADDITIONAL_EXCLUDED_DIRECTORIES` in `project` lint mode: they were never applied before, so files in folders like `node_modules` or `.wireit` could be reported
     - The directories are passed as a merged `:output {:exclude-files [...]}` inline configuration, so your own `:output :exclude-files` patterns in `.clj-kondo/config.edn` are kept
     - Disable the forwarding with `CLOJURE_CLJ_KONDO_FORWARD_EXCLUDED_DIRECTORIES: false`
@@ -98,6 +106,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Per-linter test jobs (`deploy-DEV-linters.yml`, `deploy-BETA-linters.yml`) now pass `GITHUB_ACTIONS` to the test container
   - **`test-agent-plugins.yml`** validation script now accepts both the `{"plugins": [...], "errors": [...]}` wrapper and the bare-array shape the GitHub Copilot CLI's `plugins list --json` can return, fixing a crash of the "Validate agent plugins manifests" check
   - **`REPOSITORY_DUSTILOCK`** is now non-blocking in MegaLinter's own `.mega-linter.yml`: dustilock reports any PyPI lookup error (such as intermittent `503` responses) as a package "available for public registration", which failed the "Run against all code base - DEV" job on unrelated PRs
+  - **Renovate and Dependabot** now apply the same waiting rule: 7 days after a release, none for security updates
+    - GitHub Actions are updated by Dependabot only (Renovate's `github-actions` manager is disabled): Renovate can not date SHA-pinned digest updates, so they stayed pending forever and duplicated Dependabot's PRs
+    - Renovate lock file maintenance is disabled: a lock file refresh has no release date, so it could never pass the 7-day check
+    - Dependabot now also updates the actions of `flavors/custom-builder/action.yml`
 
 - Linter versions upgrades (N)
   - [shfmt](https://github.com/mvdan/sh) from 3.13.1 to **3.14.0** on 2026-09-12

@@ -790,3 +790,13 @@ CVE-2026-91777
 # Remove once the bundled linters' dependency trees resolve brace-expansion >= 1.1.20.
 CVE-2026-102276
 CVE-2026-102278
+
+# --- Go golang.org/x/text (betterleaks, kubeconform, revive, tflint, tofu) ---
+# CVE-2026-56851 is an out-of-bounds slice panic in the precis Nickname profile, fixed in
+# x/text 0.41.0. betterleaks v1.9.0, kubeconform v0.8.0, revive v1.17.1 and tflint v0.64.0
+# (their latest releases) still embed 0.37.0 to 0.39.0, and none of the five tools imports
+# x/text/secure/precis: the panic is only reachable by code normalizing user nicknames,
+# which one-shot static analysis CLIs never do. Worst case is a crash of a single linter run.
+# Remove once these tools release builds with golang.org/x/text >= 0.41.0 (tflint master
+# already has 0.43.0, opentofu 1.13.1 has 0.41.0).
+CVE-2026-56851

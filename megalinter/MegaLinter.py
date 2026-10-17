@@ -208,9 +208,10 @@ class Megalinter:
         self.return_code = 0
         self.has_git_extraheader = False
         self.has_updated_sources = 0
-        self.fail_if_updated_sources = (
-            config.get(self.request_id, "FAIL_IF_UPDATED_SOURCES", "false") == "true"
-        )
+        self.updated_sources_baseline = None
+        self.updated_sources_files = []
+        self.updated_sources_failure = False
+        self.fail_if_updated_sources = self.read_fail_if_updated_sources()
         self.flavor_suggestions = None
 
         # Initialize plugins
@@ -288,6 +289,16 @@ class Megalinter:
                 if linter.apply_fixes is True:
                     linters_do_fixes = True
 
+        if linters_do_fixes is True or self.fail_if_updated_sources is True:
+            logging.info(
+                "FAIL_IF_UPDATED_SOURCES is "
+                + (
+                    "active: MegaLinter will fail if sources are updated by linters or POST_COMMANDS"
+                    if self.fail_if_updated_sources is True
+                    else "not active: sources updated by linters will not fail the run"
+                )
+            )
+
         # Display warning if selected flavors doesn't match all linters
         if (
             flavor_factory.check_active_linters_match_flavor(
@@ -325,6 +336,11 @@ class Megalinter:
 
         for active_descriptor_id in active_descriptor_ids:
             pre_post_factory.run_descriptor_pre_commands(self, active_descriptor_id)
+
+        if linters_do_fixes is True or self.fail_if_updated_sources is True:
+            self.updated_sources_baseline = utils.snapshot_updated_files(
+                self.github_workspace
+            )
 
         ran_parallel = (
             config.get(self.request_id, "PARALLEL", "true") == "true"
@@ -370,21 +386,6 @@ class Megalinter:
             # Blocking linter error
             if linter.return_code > 0:
                 self.return_code = linter.return_code
-            # Update number fixed
-            if linter.number_fixed > 0:
-                self.has_updated_sources = 1
-        # Handle FAIL_IF_UPDATED_SOURCES
-        if (
-            self.has_updated_sources > 0
-            and self.fail_if_updated_sources is True
-            and self.status != "error"
-            and self.return_code == 0
-        ):
-            self.status = "error"
-            self.return_code = 1
-            self.result_message = (
-                "MegaLinter failed because of FAIL_IF_UPDATED_SOURCES=true"
-            )
 
         # Sort linters before reports production
         self.linters = sorted(
@@ -424,6 +425,8 @@ class Megalinter:
 
         # Run user-defined commands
         self.post_commands_results = pre_post_factory.run_post_commands(self)
+
+        self.manage_updated_sources()
 
         # Generate reports
         for reporter in self.reporters:
@@ -963,7 +966,7 @@ class Megalinter:
             try:
                 all_files = self.list_files_git_diff()
                 self.all_diff_files = all_files
-            except git.InvalidGitRepositoryError as git_err:
+            except (git.InvalidGitRepositoryError, git.GitCommandError) as git_err:
                 logging.warning(
                     "Unable to list updated files from git diff. Switch to VALIDATE_ALL_CODE_BASE=true"
                 )
@@ -1103,7 +1106,16 @@ class Megalinter:
             )
             local_ref = f"refs/remotes/{default_branch_remote}"
             # Try to fetch default_branch from origin, because it isn't cached locally.
-            repo.git.fetch("origin", f"{remote_ref}:{local_ref}")
+            try:
+                repo.git.fetch("origin", f"{remote_ref}:{local_ref}")
+            except git.GitCommandError:
+                logging.warning(
+                    f"Unable to fetch {remote_ref} from origin to list the updated files. "
+                    "In a private repository, use persist-credentials: true in "
+                    "actions/checkout, or define GIT_AUTHORIZATION_BEARER, to make the "
+                    "git diff mode available"
+                )
+                raise
         # Make git diff to list files (and exclude symlinks)
         try:
             # Use optimized way from https://github.com/oxsecurity/megalinter/pull/3472
@@ -1462,7 +1474,6 @@ class Megalinter:
         if self.status == "success":
             logging.info(utils.green("✅ Successfully linted all files without errors"))
             config.delete(self.request_id)
-            self.check_updated_sources_failure()
         elif self.status == "warning":
             logging.warning(
                 utils.yellow(
@@ -1470,7 +1481,6 @@ class Megalinter:
                 )
             )
             config.delete(self.request_id)
-            self.check_updated_sources_failure()
         else:
             logging.error(utils.red("❌ Error(s) have been found during linting"))
             logging.warning(
@@ -1479,7 +1489,17 @@ class Megalinter:
             )
             logging.warning(f"More info at {ML_DOC_URL}/configuration/")
             if self.cli is True:
-                if config.get(self.request_id, "DISABLE_ERRORS", "false") == "true":
+                if (
+                    config.get(self.request_id, "DISABLE_ERRORS", "false") == "true"
+                    and self.updated_sources_failure is True
+                ):
+                    logging.error(
+                        "FAIL_IF_UPDATED_SOURCES=true takes precedence over "
+                        "DISABLE_ERRORS=true"
+                    )
+                    config.delete(self.request_id)
+                    sys.exit(1)
+                elif config.get(self.request_id, "DISABLE_ERRORS", "false") == "true":
                     config.delete(self.request_id)
                     sys.exit(0)
                 else:
@@ -1487,14 +1507,54 @@ class Megalinter:
                     sys.exit(self.return_code)
             config.delete(self.request_id)
 
-    def check_updated_sources_failure(self):
-        if self.has_updated_sources > 0 and self.fail_if_updated_sources is True:
-            logging.error(
-                utils.red(
-                    "❌ Sources has been updated by linter autofixes, and FAIL_IF_UPDATED_SOURCES has been set to true"
-                )
+    def read_fail_if_updated_sources(self):
+        value = config.get(self.request_id, "FAIL_IF_UPDATED_SOURCES", "false")
+        if value not in ["true", "false"]:
+            logging.warning(
+                f"FAIL_IF_UPDATED_SOURCES value [{value}] is not recognized: "
+                "the option is disabled. Accepted values are true or false "
+                "(an empty CI variable overrides the value of .mega-linter.yml)"
             )
-            sys.exit(1)
+        return value == "true"
+
+    def manage_updated_sources(self):
+        fixing_linters = [
+            linter.name for linter in self.linters if linter.number_fixed > 0
+        ]
+        if self.updated_sources_baseline is not None:
+            self.updated_sources_files = utils.diff_updated_files_snapshots(
+                self.updated_sources_baseline,
+                utils.snapshot_updated_files(self.github_workspace),
+            )
+        if len(fixing_linters) > 0 or len(self.updated_sources_files) > 0:
+            self.has_updated_sources = 1
+        if self.has_updated_sources == 0 or self.fail_if_updated_sources is False:
+            return
+        self.status = "error"
+        if self.return_code == 0:
+            self.return_code = 1
+        self.updated_sources_failure = True
+        message = (
+            "MegaLinter failed because of FAIL_IF_UPDATED_SOURCES=true: "
+            "sources have been updated by "
+            + (
+                ", ".join(sorted(fixing_linters))
+                if len(fixing_linters) > 0
+                else "project mode linters or POST_COMMANDS"
+            )
+        )
+        if config.get(self.request_id, "UPDATED_SOURCES_REPORTER", "true") == "true":
+            updated_dir = config.get(
+                self.request_id, "UPDATED_SOURCES_REPORTER_DIR", "updated_sources"
+            )
+            message += (
+                ". Commit the fixed files, available in the "
+                f"{updated_dir} folder of the reports"
+            )
+        if self.result_message != "":
+            self.result_message += os.linesep
+        self.result_message += message
+        logging.error(utils.red("❌ " + message))
 
     def before_exit(self):
         # Clean git repository
