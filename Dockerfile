@@ -277,7 +277,7 @@ ARG NPM_PACKAGE_JSON_LINT_VERSION=11.0.0
 # renovate: datasource=npm depName=npm-package-json-lint-config-default
 ARG NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION=10.0.0
 # renovate: datasource=npm depName=@eslint-react/eslint-plugin
-ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.23.5
+ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.24.4
 # renovate: datasource=github-tags depName=pinterest/ktlint
 ARG KTLINT_VERSION=1.8.0
 
@@ -303,7 +303,7 @@ ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=4.0.4
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
 ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.7.0
 # renovate: datasource=packagist depName=phpstan/phpstan
-ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.2.16
+ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.2.17
 # renovate: datasource=packagist depName=phpstan/extension-installer
 ARG PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION=1.4.3
 # renovate: datasource=packagist depName=vimeo/psalm
@@ -336,7 +336,7 @@ ARG PIP_NBQA_VERSION=1.9.1
 # renovate: datasource=npm depName=pyright
 ARG NPM_PYRIGHT_VERSION=1.1.414
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.16.8
+ARG PIP_RUFF_VERSION=0.16.10
 # renovate: datasource=github-tags depName=nxadm/rakudo-pkg extractVersion=^v(?<version>.+)$
 ARG RAKU_RAKU_VERSION=2026.08
 ARG RAKU_RAKU_ALPINE_VERSION=3.23
