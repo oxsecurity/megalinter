@@ -52,6 +52,10 @@ from megalinter.utils_reporter import (
 # enough to avoid false positives while still bounding the worst case, and is
 # in line with other bounded calls in this codebase (30s HTTP timeouts).
 GIT_LS_FILES_TIMEOUT_SECONDS = 120
+# Total size of the .gitignored directories forwarded to project-mode
+# linters: every directory becomes a value in their command lines or generated
+# configs, which must stay far below the system argument size limits
+MAX_GITIGNORED_DIRECTORIES_BYTES = 32 * 1024
 
 REMOVED_LINTERS_NOTIFICATION_KEY = "removed_linters_references"
 REMOVED_LINTERS_NOTIFICATION_TEMPLATE = (
@@ -1037,9 +1041,25 @@ class Megalinter:
             "\n- ".join(filtered_files),
         )
 
-        # Collect matching files for each linter
+        # Collect matching files for each linter. Project-mode linters analyze
+        # the whole workspace, so .gitignored directories are forwarded to them
+        # with the excluded directories
+        gitignored_directories = []
+        gitignored_name_directories = []
+        if (
+            len(ignored_files) > 0
+            and config.get(self.request_id, "FORWARD_GITIGNORED_DIRECTORIES", "true")
+            == "true"
+        ):
+            gitignored_directories = self.get_gitignored_directories(ignored_files)
+            gitignored_name_directories = self.get_unambiguous_gitignored_directories(
+                gitignored_directories,
+                all_files if self.validate_all_code_base else None,
+            )
         for linter in self.linters:
             linter.collect_files(filtered_files)
+            linter.project_gitignored_directories = gitignored_directories
+            linter.project_gitignored_name_directories = gitignored_name_directories
             if len(linter.files) == 0 and linter.lint_all_files is False:
                 linter.is_active = False
 
@@ -1111,6 +1131,110 @@ class Megalinter:
             if self._is_excluded_dir(progressive, excluded_directories):
                 return True
         return False
+
+    # Workspace-relative directories reported as ignored by git ls-files
+    # --directory ("dir/**" entries, relative to the repository root). The ones
+    # inside an excluded directory (ex: packages/a/node_modules) are already
+    # forwarded through its name. Capped, shallowest first, as every directory
+    # becomes a value in the linters command lines or generated configs
+    def get_gitignored_directories(self, ignored_files):
+        repo_root = os.path.realpath(self.github_workspace)
+        excluded_directories = utils.get_excluded_directories(self.request_id)
+        gitignored_directories = sorted(
+            (
+                gitignored_dir
+                for gitignored_dir in utils.normalize_excluded_directories(
+                    os.path.realpath(self.workspace),
+                    [
+                        os.path.join(repo_root, ignored_file[: -len("/**")])
+                        for ignored_file in ignored_files
+                        if ignored_file.endswith("/**")
+                    ],
+                )
+                if not utils.is_in_excluded_dir(gitignored_dir, excluded_directories)
+            ),
+            key=lambda gitignored_dir: (gitignored_dir.count("/"), gitignored_dir),
+        )
+        kept = []
+        total = 0
+        for gitignored_dir in gitignored_directories:
+            total += len(gitignored_dir.encode("utf-8")) + 1
+            if total > MAX_GITIGNORED_DIRECTORIES_BYTES:
+                logging.info(
+                    f"- Only {len(kept)} of the {len(gitignored_directories)} "
+                    ".gitignored directories are forwarded to project lint mode "
+                    "linters: add the deepest ones to ADDITIONAL_EXCLUDED_DIRECTORIES"
+                )
+                break
+            kept += [gitignored_dir]
+        return sorted(kept)
+
+    # Tools matching a forwarded directory at any nesting level (ex: **/lib/**)
+    # would also skip the directories sharing its path suffix (ex: tracked
+    # src/lib sources for a gitignored /lib/ build output): such directories
+    # are only forwarded to the tools receiving workspace-relative paths.
+    # Without the workspace file list (changed files mode), the tracked files
+    # are listed with git, and nothing is considered safe if that fails
+    def get_unambiguous_gitignored_directories(
+        self, gitignored_directories, workspace_files
+    ):
+        if workspace_files is None:
+            workspace_files = self.list_git_tracked_files()
+            if workspace_files is None:
+                return []
+        gitignored = set(gitignored_directories)
+        gitignored_by_name: dict[str, set[str]] = {}
+        for gitignored_dir in gitignored_directories:
+            gitignored_by_name.setdefault(gitignored_dir.rsplit("/", 1)[-1], set()).add(
+                gitignored_dir
+            )
+        ambiguous = set()
+        seen_dirs = set()
+        for workspace_file in workspace_files:
+            parts = workspace_file.replace("\\", "/").split("/")[:-1]
+            for index, part in enumerate(parts):
+                dir_path = "/".join(parts[: index + 1])
+                if dir_path in gitignored:
+                    break
+                if dir_path in seen_dirs:
+                    continue
+                seen_dirs.add(dir_path)
+                for gitignored_dir in gitignored_by_name.get(part, ()):
+                    if dir_path.endswith("/" + gitignored_dir):
+                        ambiguous.add(gitignored_dir)
+        return [
+            gitignored_dir
+            for gitignored_dir in gitignored_directories
+            if gitignored_dir not in ambiguous
+        ]
+
+    # Workspace-relative tracked files, or None when git can not list them
+    def list_git_tracked_files(self):
+        repo_root = os.path.realpath(self.github_workspace)
+        workspace = os.path.realpath(self.workspace)
+        execute_kwargs = {}
+        if sys.platform != "win32":
+            execute_kwargs["kill_after_timeout"] = GIT_LS_FILES_TIMEOUT_SECONDS
+        try:
+            tracked_files = (
+                git.Repo(repo_root)
+                .git.execute(["git", "ls-files"], **execute_kwargs)
+                .splitlines()
+            )
+        except Exception as git_err:
+            logging.warning(f"Unable to list git tracked files ({str(git_err)})")
+            return None
+        workspace_files = []
+        for tracked_file in tracked_files:
+            try:
+                rel_file = os.path.relpath(
+                    os.path.join(repo_root, tracked_file), workspace
+                )
+            except ValueError:
+                continue
+            if not rel_file.startswith(".."):
+                workspace_files += [rel_file]
+        return workspace_files
 
     def _normalize_excluded_directories(self, excluded_directories):
         return utils.normalize_excluded_directories(
