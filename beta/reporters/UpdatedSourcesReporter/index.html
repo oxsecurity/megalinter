@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/images/mega-linter-square.png">
-      <meta name="generator" content="zensical-0.0.68">
+      <meta name="generator" content="zensical-0.0.69">
     
     
       
@@ -36,7 +36,7 @@
       
         
       
-      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.595f2bf5.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.e15858d4.min.css">
       
         
           
@@ -10374,6 +10374,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#fail-the-run-when-fixes-are-applied" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Fail the run when fixes are applied
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#empty-updated-sources-folder" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -12198,6 +12209,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#fail-the-run-when-fixes-are-applied" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Fail the run when fixes are applied
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#empty-updated-sources-folder" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -12263,6 +12285,8 @@
 <li>use <a href="../EmailReporter/">Email Reporter</a>: Updated source folder will be in the email attachment reports zip</li>
 <li>publish folder <code>&lt;WORKSPACE&gt;/report/updated_sources</code> as artifact with your CI tool</li>
 </ul>
+<h3 id="fail-the-run-when-fixes-are-applied">Fail the run when fixes are applied</h3>
+<p>Set <code>FAIL_IF_UPDATED_SOURCES</code> to <code>true</code> to make the run fail when sources have been updated, so a developer commits the content of the <strong>updated_sources</strong> folder. The failure reason is shown in the console and in the reports, and the option takes precedence over <code>DISABLE_ERRORS</code>. See <a href="../../config-apply-fixes/">Apply fixes</a>.</p>
 <h3 id="empty-updated-sources-folder">Empty updated sources folder</h3>
 <p>The folder is empty when MegaLinter can not list the files updated by the linters. This happens on a <strong>read-only workspace</strong> whose repository uses <strong>git-lfs</strong>: the LFS filter has nowhere to write its temporary files, so the <code>git diff</code> used to detect updated files fails.</p>
 <p>MegaLinter logs a warning naming the workspace and the failed command, then completes the run. Mount <code>.git</code> as writable to get the updated sources back.</p>
@@ -12501,7 +12525,7 @@
       <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["content.code.copy","navigation.instant","navigation.footer"],"redirect":null,"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"default":"latest","provider":"mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.3c842f4c.min.js"></script>
+      <script src="../../assets/javascripts/bundle.8b1c90bd.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
       

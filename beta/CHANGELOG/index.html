@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../assets/images/mega-linter-square.png">
-      <meta name="generator" content="zensical-0.0.68">
+      <meta name="generator" content="zensical-0.0.69">
     
     
       
@@ -36,7 +36,7 @@
       
         
       
-      <link rel="stylesheet" href="../assets/stylesheets/modern/main.595f2bf5.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/modern/main.e15858d4.min.css">
       
         
           
@@ -15601,6 +15601,15 @@
 </ul>
 <ul>
 <li>Fixes<ul>
+<li><strong>Pull request runs in private repositories</strong> no longer crash with a git traceback when the checkout does not persist credentials: MegaLinter warns, explains how to enable the git diff mode (<code>persist-credentials: true</code> or <strong><code>GIT_AUTHORIZATION_BEARER</code></strong>) and lints the whole codebase. Fixes <a href="https://github.com/oxsecurity/megalinter/issues/9104">#9104</a></li>
+<li><strong><code>FAIL_IF_UPDATED_SOURCES</code></strong> is now reliable. Fixes <a href="https://github.com/oxsecurity/megalinter/issues/9103">#9103</a><ul>
+<li>A warning is shown when its value is neither <code>true</code> nor <code>false</code> (for example an empty CI variable), and the console log tells whether the option is active</li>
+<li>The failure reason, naming the linters that updated sources, is shown even when other linters failed too</li>
+<li>It takes precedence over <code>DISABLE_ERRORS: true</code>: the exit code is 1, as the summary says</li>
+<li>Sources updated by <code>project</code> lint mode linters and by <code>POST_COMMANDS</code> now fail the run too, and set the <code>has_updated_sources</code> output</li>
+</ul>
+</li>
+<li>The <strong>Email reporter</strong> no longer sends a mail for a successful run without updated sources unless <code>EMAIL_REPORTER_SEND_SUCCESS</code> is <code>true</code>, and the <strong>File.io reporter</strong> skips such runs when <code>FILEIO_REPORTER_SEND_SUCCESS</code> is <code>true</code>, as documented</li>
 <li><strong>CLOJURE_CLJ_KONDO</strong> now really forwards <code>EXCLUDED_DIRECTORIES</code> and <code>ADDITIONAL_EXCLUDED_DIRECTORIES</code> in <code>project</code> lint mode: they were never applied before, so files in folders like <code>node_modules</code> or <code>.wireit</code> could be reported<ul>
 <li>The directories are passed as a merged <code>:output {:exclude-files [...]}</code> inline configuration, so your own <code>:output :exclude-files</code> patterns in <code>.clj-kondo/config.edn</code> are kept</li>
 <li>Disable the forwarding with <code>CLOJURE_CLJ_KONDO_FORWARD_EXCLUDED_DIRECTORIES: false</code></li>
@@ -24280,7 +24289,7 @@
       <script id="__config" type="application/json">{"annotate":null,"base":"..","features":["content.code.copy","navigation.instant","navigation.footer"],"redirect":null,"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"default":"latest","provider":"mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.3c842f4c.min.js"></script>
+      <script src="../assets/javascripts/bundle.8b1c90bd.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
       
