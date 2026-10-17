@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../assets/images/mega-linter-square.png">
-      <meta name="generator" content="zensical-0.0.67">
+      <meta name="generator" content="zensical-0.0.68">
     
     
       
@@ -36,12 +36,12 @@
       
         
       
-      <link rel="stylesheet" href="../assets/stylesheets/modern/main.4ae390e2.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/modern/main.595f2bf5.min.css">
       
         
           
         
-        <link rel="stylesheet" href="../assets/stylesheets/modern/palette.96d1a7e4.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/modern/palette.b27955a4.min.css">
       
       
 
@@ -95,14 +95,11 @@
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
     <div data-md-component="skip">
-      
-        
-        <a href="#changelog" class="md-skip">
-          Skip to content
-        </a>
-      
+      <a href="#__skip" class="md-skip">
+        Skip to content
+      </a>
     </div>
     <div data-md-component="announce">
       
@@ -15550,6 +15547,7 @@
             <div class="md-content" data-md-component="content">
               
               <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
                 
                   
 
@@ -15606,6 +15604,17 @@
 </ul>
 </li>
 <li>The <strong><code>.mega-linter.yml</code> JSON Schema</strong> is no longer rejected by strict JSON Schema validators with <code>Invalid anchor value</code>: the invalid <code>$id</code> values are removed from the configuration and descriptor schemas. Fixes <a href="https://github.com/oxsecurity/megalinter/issues/9177">#9177</a></li>
+<li><strong>Project lint mode</strong> no longer overrides the paths defined in the linters' own configuration: since v10, folders such as <code>vendor/</code> were analyzed again by linters like phpcs, phpstan or editorconfig-checker, making runs slow and noisy. Fixes <a href="https://github.com/oxsecurity/megalinter/issues/8955">#8955</a><ul>
+<li>Linters that analyze the current folder by default are no longer passed <code>.</code>: eslint, biome, standard, ruff, ruff format, flake8, rubocop, phplint, jscpd, gherkin-lint, dart analyze, cljstyle and editorconfig-checker (which honours <code>.gitignore</code> again)</li>
+<li>Linters requiring a path receive <code>.</code> only when their configuration does not define the paths to analyze: phpcs (<code>&lt;file&gt;</code>), phpstan (<code>paths</code>), psalm (<code>&lt;projectFiles&gt;</code>), php-cs-fixer (Finder <code>in()</code>), pylint and mypy (<code>files</code>), pyright (<code>include</code>), cfn-lint (<code>templates</code>), checkov (<code>directory</code>) and cspell (<code>files</code>)</li>
+<li>The <code>&lt;LINTER_KEY&gt;_COMMAND_REMOVE_ARGUMENTS: "."</code> workaround is no longer needed</li>
+</ul>
+</li>
+<li>With <strong><code>IGNORE_GITIGNORED_FILES: true</code></strong> (default), the directories ignored by git are now forwarded to project lint mode linters with <code>EXCLUDED_DIRECTORIES</code>: a gitignored <code>vendor/</code> or <code>build/</code> folder is no longer analyzed by phpcs, trivy, checkov...<ul>
+<li>A gitignored directory sharing its name with a tracked one (ex: <code>/lib/</code> build output and <code>src/lib</code> sources) is only sent to the linters receiving exact paths, so your tracked sources stay analyzed</li>
+<li>Disable it with the new <strong><code>FORWARD_GITIGNORED_DIRECTORIES: false</code></strong> variable</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -15637,6 +15646,11 @@
 <li><code>CLOJURE_CLJ_KONDO</code> test fixtures are split into <code>good/</code> and <code>bad/</code> folders, so the <code>project</code> lint mode tests no longer lint the failing files, and <code>.wireit</code> poison fixtures now guard the excluded directories forwarding, at root and nested levels</li>
 <li><code>CljKondoLinter</code> forwards excluded directories through <code>:output :exclude-files</code> instead of a top-level <code>:exclude-files</code> vector (an invalid value), and no longer skips the forwarding when a <code>--config</code> file is passed, which was always the case since the default <code>TEMPLATES/.clj-kondo/config.edn</code> is used when the repository has none</li>
 <li><code>--lint</code> moved from <code>cli_lint_extra_args_after</code> to the per-mode <code>cli_lint_mode_*_extra_args_after</code> properties, because clj-kondo assigns every following argument to the last option: the forwarded <code>--config</code> must come before it</li>
+<li>New descriptor property <strong><code>cli_lint_mode_project_config_paths_regex</code></strong>: a regex searched in the resolved linter config file; when it matches, <code>cli_lint_mode_project_extra_args_after</code> is not sent, as it would override the paths defined in the config. Every project-mode <code>.</code> was reviewed against the tools' docs/source (rules in <code>.claude/rules/descriptors.md</code>)</li>
+<li><code>Megalinter.get_gitignored_directories()</code> extracts the ignored directories from the <code>git ls-files --directory</code> output (skipping the ones inside an excluded directory, capped to <code>MAX_GITIGNORED_DIRECTORIES_BYTES</code>), and <code>get_unambiguous_gitignored_directories()</code> keeps for <code>{{DIR}}</code> templates only the ones whose path suffix no tracked directory shares; <code>Linter.compute_project_exclude_directories()</code> forwards them through <code>project_gitignored_name_directories</code> / <code>project_gitignored_directories</code></li>
+<li><code>cli_lint_mode_project_config_paths_regex</code> is searched in the config file with XML comments removed, so a commented-out <code>&lt;file&gt;</code> or <code>&lt;projectFiles&gt;</code> does not count</li>
+<li><code>PhpCsFixerLinter</code> no longer drops <code>.</code> itself (the descriptor regex does it), and <code>JsCpdLinter</code> rebases the configured <code>path</code> entries when it generates its config in the report folder</li>
+<li><code>PHP_PHPCS</code> regression fixture: <code>.automation/test/php/good/phpcs.xml</code> lists the files to analyze, and <code>out_of_config_paths.inc</code> (not collected by MegaLinter) fails the <code>project</code> lint mode test if <code>.</code> overrides them</li>
 </ul>
 </li>
 </ul>
@@ -24247,7 +24261,7 @@
       <script id="__config" type="application/json">{"annotate":null,"base":"..","features":["content.code.copy","navigation.instant","navigation.footer"],"redirect":null,"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"default":"latest","provider":"mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.67a597eb.min.js"></script>
+      <script src="../assets/javascripts/bundle.3c842f4c.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
       
