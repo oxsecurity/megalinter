@@ -15564,7 +15564,10 @@
 <li>Breaking changes</li>
 </ul>
 <ul>
-<li>Core</li>
+<li>Core<ul>
+<li>Outside CI, <strong><code>PARALLEL_PROCESS_NUMBER</code></strong> now defaults to the number of cores minus one, so your machine stays responsive while MegaLinter runs. CI runs still use every core, and setting the variable still overrides the default</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>New linters</li>
@@ -15615,6 +15618,16 @@
 <li>Disable it with the new <strong><code>FORWARD_GITIGNORED_DIRECTORIES: false</code></strong> variable</li>
 </ul>
 </li>
+<li><strong>Your own exclusions are kept</strong> when MegaLinter forwards <code>EXCLUDED_DIRECTORIES</code> to <code>project</code> lint mode linters: the forwarded directories used to replace the exclusions defined in the linter's own configuration, so folders you left out were analyzed again. Fixes <a href="https://github.com/oxsecurity/megalinter/issues/8955">#8955</a><ul>
+<li>Exclusions from your config file are now kept for phplint (<code>exclude</code>), pylint (<code>ignore</code>), black (<code>extend-exclude</code>), flake8 (<code>extend-exclude</code>), isort (<code>extend_skip</code>), bandit (<code>.bandit</code> <code>exclude</code>), nbqa (<code>exclude</code>), djlint (<code>extend_exclude</code>), robocop (<code>exclude</code>), npm-groovy-lint (<code>ignorepattern</code>), rumdl (<code>exclude</code>) and jsonlint (<code>patterns</code>)</li>
+<li>The tools' own default exclusions are kept for ansible-lint, cspell, pylint and gherkin-lint</li>
+<li>csharpier keeps honouring <code>.gitignore</code>, v8r your <code>ignorePatternFiles</code>, yamllint an <code>ignore</code> inherited through <code>extends</code> or an <code>ignore-from-file</code>, and StyLua the file patterns of <code>.styluaignore</code> and <code>.gitignore</code> (and <code>.luau</code> files are linted again)</li>
+<li>The config file passed in your <code>&lt;LINTER_KEY&gt;_ARGUMENTS</code> is read too, and an exclusion argument you already pass there (ex: phpcs <code>--ignore=</code>) is merged with the forwarded directories instead of being overridden</li>
+</ul>
+</li>
+<li><strong>phpstan</strong> no longer reports unknown classes when MegaLinter forwards <code>EXCLUDED_DIRECTORIES</code>: the forwarded directories are excluded from analysis only, so the symbols of your <code>scanDirectories</code> (ex: <code>vendor-bin/*/vendor</code>) are found again. Fixes <a href="https://github.com/oxsecurity/megalinter/issues/8955">#8955</a></li>
+<li><strong>robocop</strong> now receives your <code>robocop.toml</code> through <code>--config</code>: the <code>-c</code> argument sent before is robocop's <code>--configure</code> option</li>
+<li><strong>betterleaks</strong> keeps the configuration given in <code>BETTERLEAKS_CONFIG</code>, <code>GITLEAKS_CONFIG</code> or their <code>*_CONFIG_TOML</code> variants when MegaLinter forwards <code>EXCLUDED_DIRECTORIES</code></li>
 </ul>
 </li>
 </ul>
@@ -15651,6 +15664,12 @@
 <li><code>cli_lint_mode_project_config_paths_regex</code> is searched in the config file with XML comments removed, so a commented-out <code>&lt;file&gt;</code> or <code>&lt;projectFiles&gt;</code> does not count</li>
 <li><code>PhpCsFixerLinter</code> no longer drops <code>.</code> itself (the descriptor regex does it), and <code>JsCpdLinter</code> rebases the configured <code>path</code> entries when it generates its config in the report folder</li>
 <li><code>PHP_PHPCS</code> regression fixture: <code>.automation/test/php/good/phpcs.xml</code> lists the files to analyze, and <code>out_of_config_paths.inc</code> (not collected by MegaLinter) fails the <code>project</code> lint mode test if <code>.</code> overrides them</li>
+<li>Descriptor property <strong><code>cli_lint_mode_project_exclude_config_key</code></strong> now reads TOML, JSON (with comments), INI and YAML configs, accepts a list of alternative key paths and a <code>*</code> wildcard segment, splits comma separated string values (kept whole for <code>|</code> joined regexes), and also reads the config passed in <code>ARGUMENTS</code><ul>
+<li>New descriptor properties: <strong><code>cli_lint_mode_project_exclude_config_files</code></strong> (workspace configs discovered by the tool itself), <strong><code>cli_lint_mode_project_exclude_conflicting_args</code></strong> (user arguments disabling the forwarding) and <strong><code>cli_lint_mode_project_exclude_ignore_file_merge_all_seeds</code></strong></li>
+<li>With ignore file forwarding, <code>cli_lint_mode_project_exclude_config_key</code> lists the user's ignore files, re-passed instead of <code>cli_lint_mode_project_exclude_ignore_file_pass_existing</code></li>
+</ul>
+</li>
+<li><code>PhpstanLinter</code> generates <code>excludePaths: analyse:</code> instead of a plain list (<code>analyseAndScan</code>), <code>YamllintLinter</code> follows the <code>extends</code> chain and supports <code>ignore-from-file</code>, <code>PhpCsFixerLinter</code> guards <code>exclude()</code> against non-Finder iterables, and <code>MegaLinter.get_parallel_process_number()</code> holds the default parallelism</li>
 </ul>
 </li>
 </ul>
