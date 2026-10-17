@@ -5,6 +5,7 @@ Unit tests for Linter class
 """
 
 import contextlib
+import json
 import os
 import tempfile
 import unittest
@@ -13,6 +14,7 @@ from unittest import mock
 
 from megalinter import config, utils
 from megalinter.Linter import MAX_PROJECT_EXCLUDE_ARG_BYTES, Linter
+from megalinter.linters.JsCpdLinter import JsCpdLinter
 from megalinter.linters.StyleLintLinter import StyleLintLinter
 from megalinter.MegaLinter import Megalinter
 
@@ -76,6 +78,8 @@ class LinterTest(unittest.TestCase):
         linter.filter_regex_exclude_descriptor = None
         linter.filter_regex_exclude_linter = filter_regex_exclude
         linter.workspace = workspace
+        linter.project_gitignored_directories = []
+        linter.project_gitignored_name_directories = []
         config.init_config(linter.request_id, None, config_values or {})
         return linter
 
@@ -296,6 +300,8 @@ class LinterTest(unittest.TestCase):
             linter.workspace = workspace
             linter.filter_regex_exclude_descriptor = None
             linter.filter_regex_exclude_linter = regex
+            linter.project_gitignored_directories = []
+            linter.project_gitignored_name_directories = []
             linter.cli_lint_mode = "project"
             linter.cli_lint_mode_project_exclude_arg_name = "-x"
             linter.cli_lint_mode_project_exclude_ignore_file_arg_name = None
@@ -626,3 +632,144 @@ runs:
             result = linter.get_sarif_result_count(sarif, "error")
 
         self.assertEqual(0, result)
+
+    def test_gitignored_directories_are_forwarded_by_path(self):
+        # With IGNORE_GITIGNORED_FILES, the folders git ignores (ex: vendor/)
+        # are not linted, so project-mode linters must skip them too (#8955)
+        with tempfile.TemporaryDirectory() as workspace:
+            linter = self.build_exclude_forwarding_linter(workspace)
+            linter.project_gitignored_directories = ["lib", "tools/a/vendor", "vendor"]
+            # A tracked src/lib exists: "lib" is only sent as a path
+            linter.project_gitignored_name_directories = ["tools/a/vendor", "vendor"]
+            try:
+                excluded = linter.get_project_exclude_directories()
+                paths = linter.get_project_exclude_directory_paths()
+            finally:
+                config.delete(linter.request_id)
+        self.assertIn("vendor", excluded)
+        self.assertIn("tools/a/vendor", excluded)
+        self.assertNotIn("lib", excluded)
+        self.assertIn("lib", paths)
+        self.assertIn("tools/a/vendor", paths)
+
+    def build_project_paths_linter(self, config_content, regex):
+        linter = Linter.__new__(Linter)
+        linter.cli_lint_mode_project_config_paths_regex = regex
+        linter.cli_lint_mode_project_extra_args_after = ["."]
+        linter.config_file = None
+        if config_content is not None:
+            with tempfile.NamedTemporaryFile(
+                "w", suffix=".xml", delete=False, encoding="utf-8"
+            ) as config_file:
+                config_file.write(config_content)
+            linter.config_file = config_file.name
+        return linter
+
+    def assert_project_paths_defined_in_config(self, config_content, regex, expected):
+        linter = self.build_project_paths_linter(config_content, regex)
+        try:
+            self.assertEqual(expected, linter.is_project_paths_defined_in_config())
+        finally:
+            if linter.config_file is not None:
+                os.remove(linter.config_file)
+
+    def test_project_paths_defined_in_config_skip_project_args(self):
+        # "." would override the paths of phpcs.xml and analyze vendor/ (#8955)
+        self.assert_project_paths_defined_in_config(
+            "<ruleset><file>src</file></ruleset>", "<file>", True
+        )
+
+    def test_project_args_kept_when_config_defines_no_paths(self):
+        self.assert_project_paths_defined_in_config(
+            "<ruleset><rule ref='PSR12'/></ruleset>", "<file>", False
+        )
+
+    def test_project_args_kept_without_config_file(self):
+        self.assert_project_paths_defined_in_config(None, "<file>", False)
+
+    def test_project_args_kept_without_config_paths_regex(self):
+        self.assert_project_paths_defined_in_config(
+            "<ruleset><file>src</file></ruleset>", None, False
+        )
+
+    def build_gitignored_mega_linter(self, repo_root):
+        mega_linter = Megalinter.__new__(Megalinter)
+        mega_linter.request_id = str(uuid.uuid1())
+        mega_linter.github_workspace = repo_root
+        mega_linter.workspace = repo_root
+        config.init_config(mega_linter.request_id, None, {})
+        return mega_linter
+
+    def test_gitignored_directories_are_relative_to_the_workspace(self):
+        with tempfile.TemporaryDirectory() as repo_root:
+            mega_linter = self.build_gitignored_mega_linter(repo_root)
+            try:
+                self.assertEqual(
+                    ["packages/a/build", "vendor"],
+                    mega_linter.get_gitignored_directories(
+                        ["vendor/**", "stub.php", "packages/a/build/**"]
+                    ),
+                )
+                # Workspace in a sub-folder of the repository: paths are rebased,
+                # and directories outside of the workspace are dropped
+                mega_linter.workspace = os.path.join(repo_root, "packages")
+                self.assertEqual(
+                    ["a/build"],
+                    mega_linter.get_gitignored_directories(
+                        ["vendor/**", "packages/a/build/**"]
+                    ),
+                )
+            finally:
+                config.delete(mega_linter.request_id)
+
+    def test_gitignored_directories_inside_excluded_ones_are_skipped(self):
+        # Nested node_modules escape the git pathspec exclusions, but they are
+        # already forwarded through the excluded directory name
+        with tempfile.TemporaryDirectory() as repo_root:
+            mega_linter = self.build_gitignored_mega_linter(repo_root)
+            try:
+                gitignored = mega_linter.get_gitignored_directories(
+                    ["packages/a/node_modules/**", "packages/a/dist/**"]
+                )
+            finally:
+                config.delete(mega_linter.request_id)
+        self.assertEqual(["packages/a/dist"], gitignored)
+
+    def test_gitignored_directories_sharing_a_tracked_name_are_path_only(self):
+        # A gitignored /lib/ forwarded as **/lib/** would also skip src/lib
+        mega_linter = Megalinter.__new__(Megalinter)
+        self.assertEqual(
+            ["tools/vendor", "vendor"],
+            mega_linter.get_unambiguous_gitignored_directories(
+                ["lib", "tools/vendor", "vendor"],
+                [
+                    "src/lib/main.py",
+                    "lib/generated.py",
+                    "vendor/pkg/lib/file.php",
+                    "README.md",
+                ],
+            ),
+        )
+
+    def test_jscpd_generated_config_keeps_configured_paths(self):
+        # Without "." in project mode, jscpd analyzes the paths of its config,
+        # resolved against the config directory: the generated config lives in
+        # the report folder, so they must be rebased on the original one
+        with tempfile.TemporaryDirectory() as workspace:
+            config_file = os.path.join(workspace, ".jscpd.json")
+            with open(config_file, "w", encoding="utf-8") as file_handler:
+                file_handler.write('{"path": ["src"], "ignore": ["**/*.md"]}')
+            linter = JsCpdLinter.__new__(JsCpdLinter)
+            linter.name = "COPYPASTE_JSCPD"
+            linter.report_folder = os.path.join(workspace, "megalinter-reports")
+            linter.log_lines_pre = []
+            with mock.patch.object(
+                JsCpdLinter, "get_project_exclude_directories", return_value=["vendor"]
+            ):
+                cmd = linter.manage_excluded_directories_config(
+                    ["jscpd", "-c", config_file]
+                )
+            with open(cmd[2], encoding="utf-8") as file_handler:
+                generated = json.load(file_handler)
+        self.assertEqual([os.path.join(workspace, "src")], generated["path"])
+        self.assertEqual(["**/*.md", "**/vendor/**"], generated["ignore"])

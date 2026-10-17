@@ -37,8 +37,6 @@ supported_cli_lint_modes:
 cli_lint_extra_args:
   - "check"
   - "--max-diagnostics=none"
-cli_lint_mode_project_extra_args_after:
-  - "."
 config_file_name: biome.json
 cli_config_arg_name: "--config-path"
 cli_lint_fix_arg_name: "--write"
