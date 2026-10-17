@@ -59,6 +59,7 @@ linters:
       - list_of_files
       - project
     cli_lint_mode_project_exclude_arg_name: "--exclude"
+    cli_lint_mode_project_exclude_seed_values: [".cache", ".git", ".hg", ".svn", ".tox"]
     cli_config_extra_args:
       - "-v"
     cli_sarif_args:

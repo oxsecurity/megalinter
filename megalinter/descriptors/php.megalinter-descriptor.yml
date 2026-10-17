@@ -322,6 +322,7 @@ linters:
       - list_of_files
       - project
     cli_lint_mode_project_exclude_arg_name: "--exclude"
+    cli_lint_mode_project_exclude_config_key: "exclude"
     cli_sarif_args:
       - "--format=\\Overtrue\\PHPLint\\Output\\SarifOutput"
       - "--output={{SARIF_OUTPUT_FILE}}"
