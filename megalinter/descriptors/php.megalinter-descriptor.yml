@@ -161,7 +161,7 @@ linters:
       - "1G"
     cli_lint_mode_project_extra_args_after:
       - .
-    cli_lint_mode_project_config_paths_regex: "(?m)^parameters[ \\t]*:[ \\t]*(?:#.*)?\\n(?:[ \\t]*(?:#.*)?\\n|[ \\t]+\\S.*\\n)*?(?:\\t| {2,4})paths[ \\t]*:"
+    cli_lint_mode_project_config_paths_regex: "(?m)^parameters[ \\t]*:[ \\t]*(?:#.*)?\\n(?:[ \\t]*(?:#.*)?\\n)*([ \\t]+)(?:\\S.*\\n(?:\\1.*\\n|[ \\t]*(?:#.*)?\\n)*?\\1)?paths[ \\t]*:"
     cli_sarif_args:
       - "--error-format=sarif"
     cli_lint_errors_count: regex_number
@@ -385,7 +385,7 @@ linters:
       - "--show-progress=none"
     cli_lint_mode_project_extra_args_after:
       - .
-    cli_lint_mode_project_config_paths_regex: "->\\s*(?:in|append)\\s*\\("
+    cli_lint_mode_project_config_paths_regex: "(?m)^(?![ \\t]*(?://|#|\\*|/\\*)).*?->\\s*(?:in|append)\\s*\\("
     cli_config_arg_name: "--config"
     cli_lint_fix_remove_args:
       - "--dry-run"

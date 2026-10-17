@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "variable_count": 2883,
+    "variable_count": 2884,
     "categories": {
       "ACTION": 4,
       "ACTION_ACTIONLINT": 17,
@@ -55,7 +55,7 @@
       "ENV": 4,
       "ENV_DOTENV_LINTER": 15,
       "FILEIO_REPORTER": 2,
-      "GENERAL": 57,
+      "GENERAL": 58,
       "GHERKIN": 4,
       "GHERKIN_GHERKIN_LINT": 17,
       "GITHUB_COMMENT_REPORTER": 5,
@@ -8858,6 +8858,15 @@
       "type": "boolean",
       "title": "Forward excluded directories to project lint mode linters",
       "description": "In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES, and .gitignored directories when IGNORE_GITIGNORED_FILES is true) to the linters through their native exclusion arguments or generated ignore/config files. Can be overridden per-linter with <LINTER_KEY>_FORWARD_EXCLUDED_DIRECTORIES",
+      "default": true,
+      "category": "GENERAL",
+      "section": "SCOPE"
+    },
+    "FORWARD_GITIGNORED_DIRECTORIES": {
+      "name": "FORWARD_GITIGNORED_DIRECTORIES",
+      "type": "boolean",
+      "title": "Forward .gitignored directories to project lint mode linters",
+      "description": "When IGNORE_GITIGNORED_FILES is true, also forward the directories ignored by git (ex: vendor, build) to project CLI lint mode linters, with the excluded directories. A directory sharing its name with a tracked one (ex: a gitignored /lib/ and a tracked src/lib) is only sent to the linters receiving workspace-relative paths",
       "default": true,
       "category": "GENERAL",
       "section": "SCOPE"

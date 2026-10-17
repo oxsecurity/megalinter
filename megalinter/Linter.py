@@ -157,8 +157,11 @@ class Linter:
         # is not added, as it would override them (ex: phpcs <file>)
         self.cli_lint_mode_project_config_paths_regex = None
         # Workspace-relative .gitignored directories, set by MegaLinter when
-        # IGNORE_GITIGNORED_FILES is active, forwarded with excluded directories
+        # IGNORE_GITIGNORED_FILES is active, forwarded with excluded directories.
+        # The name ones can also be sent to tools matching them at any nesting
+        # level, as no tracked directory shares their path suffix
         self.project_gitignored_directories = []
+        self.project_gitignored_name_directories = []
         # Native CLI argument used to forward EXCLUDED_DIRECTORIES /
         # ADDITIONAL_EXCLUDED_DIRECTORIES to linters running in project mode
         self.cli_lint_mode_project_exclude_arg_name = None
@@ -1829,24 +1832,34 @@ class Linter:
             return False
         with open(self.config_file, encoding="utf-8", errors="ignore") as file:
             config_content = file.read()
+        # A commented-out XML entry (ex: <!-- <file>src</file> -->) defines nothing
+        config_content = re.sub(r"<!--.*?-->", "", config_content, flags=re.DOTALL)
         return (
             re.search(self.cli_lint_mode_project_config_paths_regex, config_content)
             is not None
         )
 
     def log_project_gitignored_directories_forwarding(self):
-        gitignored_dirs = [
-            gitignored_dir
-            for gitignored_dir in self.project_gitignored_directories
-            if gitignored_dir in self.get_project_exclude_directories()
-        ]
-        if len(gitignored_dirs) > 0:
-            self.log_project_exclude_forwarding(
-                f"Forwarded {len(gitignored_dirs)} .gitignored directories "
-                f"({', '.join(gitignored_dirs[0:10])}"
-                f"{',…' if len(gitignored_dirs) > 10 else ''}) with the excluded "
-                "directories (disable with IGNORE_GITIGNORED_FILES: false)"
-            )
+        gitignored_dirs = self.project_gitignored_directories
+        if len(gitignored_dirs) == 0:
+            return
+        path_only_dirs = sorted(
+            set(gitignored_dirs) - set(self.project_gitignored_name_directories)
+        )
+        path_only_info = (
+            f", {len(path_only_dirs)} of them ({', '.join(path_only_dirs[0:5])}) "
+            "only as workspace-relative paths, as tracked directories share their "
+            "name"
+            if len(path_only_dirs) > 0
+            else ""
+        )
+        self.log_project_exclude_forwarding(
+            f"Forwarded {len(gitignored_dirs)} .gitignored directories "
+            f"({', '.join(gitignored_dirs[0:10])}"
+            f"{',…' if len(gitignored_dirs) > 10 else ''}) with the excluded "
+            f"directories{path_only_info} "
+            "(disable with FORWARD_GITIGNORED_DIRECTORIES: false)"
+        )
 
     def log_project_exclude_forwarding(self, message):
         log_line = f"[Excluded directories] {message}"
@@ -1919,9 +1932,8 @@ class Linter:
                 paths.add(candidate)
         # .gitignored directories are located by git itself: they exist, and
         # their workspace-relative path designates exactly the ignored location
-        gitignored_dirs = set(self.project_gitignored_directories)
-        names |= gitignored_dirs
-        paths |= gitignored_dirs
+        names |= set(self.project_gitignored_name_directories)
+        paths |= set(self.project_gitignored_directories)
         always_forwarded = utils.normalize_excluded_directories(
             self.workspace, [utils.get_report_output_folder_name(self.request_id)]
         )
@@ -2011,7 +2023,7 @@ class Linter:
         # package of a monorepo), so they are capped like path templates
         if (
             self.project_exclude_template_uses_paths(arg_value)
-            or len(self.project_gitignored_directories) > 0
+            or len(self.project_gitignored_name_directories) > 0
         ):
             generated_values = self.limit_project_exclude_values(generated_values)
         values = seed_values + generated_values

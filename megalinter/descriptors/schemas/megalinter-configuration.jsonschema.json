@@ -9821,6 +9821,15 @@
       "x-order": 200045,
       "x-section": "SCOPE"
     },
+    "FORWARD_GITIGNORED_DIRECTORIES": {
+      "default": true,
+      "description": "When IGNORE_GITIGNORED_FILES is true, also forward the directories ignored by git (ex: vendor, build) to project CLI lint mode linters, with the excluded directories. A directory sharing its name with a tracked one (ex: a gitignored /lib/ and a tracked src/lib) is only sent to the linters receiving workspace-relative paths",
+      "title": "Forward .gitignored directories to project lint mode linters",
+      "type": "boolean",
+      "x-category": "GENERAL",
+      "x-order": 200046,
+      "x-section": "SCOPE"
+    },
     "GHERKIN_FILTER_REGEX_EXCLUDE": {
       "description": "GHERKIN: Custom regex excluding filter: files matching this regex will NOT be linted",
       "items": {
