@@ -22,7 +22,7 @@ description: How to use kingfisher (configure, ignore files, ignore errors, help
 
 ## kingfisher documentation
 
-- Version in MegaLinter: **2.9.1**
+- Version in MegaLinter: **2.11.1**
 - Visit [Official Web Site](https://github.com/mongodb/kingfisher#readme){target=_blank}
 - See [How to disable kingfisher rules in files](https://mongodb.github.io/kingfisher/usage/advanced/?h=inline#inline-ignore-directives){target=_blank}
 - See [Index of problems detected by kingfisher](https://mongodb.github.io/kingfisher/rules/builtin-rules){target=_blank}
@@ -34,21 +34,21 @@ description: How to use kingfisher (configure, ignore files, ignore errors, help
 - Enable kingfisher by adding `REPOSITORY_KINGFISHER` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable kingfisher by adding `REPOSITORY_KINGFISHER` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                           | Description                                                                                                                                                                                                         | Default value    |
-|----------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------|
-| REPOSITORY_KINGFISHER_ARGUMENTS                    | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                  |
-| REPOSITORY_KINGFISHER_COMMAND_REMOVE_ARGUMENTS     | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                  |
-| REPOSITORY_KINGFISHER_FILTER_REGEX_INCLUDE         | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with REPOSITORY_KINGFISHER_CLI_LINT_MODE = project                                                                                          | Exclude no file  |
-| REPOSITORY_KINGFISHER_FILTER_REGEX_EXCLUDE         | Custom regex excluding filter<br/>Ex: `(test\|examples)`<br/>⚠️ Not available with REPOSITORY_KINGFISHER_CLI_LINT_MODE = project                                                                                    | Exclude no file  |
-| REPOSITORY_KINGFISHER_CLI_LINT_MODE                | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `project`        |
-| REPOSITORY_KINGFISHER_FORWARD_EXCLUDED_DIRECTORIES | In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES) to the linter through its native exclusion arguments or generated ignore/config files               | `true`           |
-| REPOSITORY_KINGFISHER_PRE_COMMANDS                 | List of bash commands to run before the linter                                                                                                                                                                      | None             |
-| REPOSITORY_KINGFISHER_POST_COMMANDS                | List of bash commands to run after the linter                                                                                                                                                                       | None             |
-| REPOSITORY_KINGFISHER_UNSECURED_ENV_VARIABLES      | List of env variables explicitly not filtered before calling REPOSITORY_KINGFISHER and its pre/post commands                                                                                                        | None             |
-| REPOSITORY_KINGFISHER_DISABLE_ERRORS               | Run linter but consider errors as warnings                                                                                                                                                                          | `false`          |
-| REPOSITORY_KINGFISHER_DISABLE_ERRORS_IF_LESS_THAN  | Maximum number of errors allowed                                                                                                                                                                                    | `0`              |
-| REPOSITORY_KINGFISHER_TIMEOUT_SECONDS              | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout | `300`            |
-| REPOSITORY_KINGFISHER_CLI_EXECUTABLE               | Override CLI executable                                                                                                                                                                                             | `['kingfisher']` |
+| Variable                                           | Description                                                                                                                                                                                                                                                             | Default value    |
+|----------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------|
+| REPOSITORY_KINGFISHER_ARGUMENTS                    | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                                |                  |
+| REPOSITORY_KINGFISHER_COMMAND_REMOVE_ARGUMENTS     | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                                                                    |                  |
+| REPOSITORY_KINGFISHER_FILTER_REGEX_INCLUDE         | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with REPOSITORY_KINGFISHER_CLI_LINT_MODE = project                                                                                                                                              | Exclude no file  |
+| REPOSITORY_KINGFISHER_FILTER_REGEX_EXCLUDE         | Custom regex excluding filter<br/>Ex: `(test\|examples)`<br/>⚠️ Not available with REPOSITORY_KINGFISHER_CLI_LINT_MODE = project                                                                                                                                        | Exclude no file  |
+| REPOSITORY_KINGFISHER_CLI_LINT_MODE                | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project                                                     | `project`        |
+| REPOSITORY_KINGFISHER_FORWARD_EXCLUDED_DIRECTORIES | In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES, and .gitignored directories when IGNORE_GITIGNORED_FILES is true) to the linter through its native exclusion arguments or generated ignore/config files | `true`           |
+| REPOSITORY_KINGFISHER_PRE_COMMANDS                 | List of bash commands to run before the linter                                                                                                                                                                                                                          | None             |
+| REPOSITORY_KINGFISHER_POST_COMMANDS                | List of bash commands to run after the linter                                                                                                                                                                                                                           | None             |
+| REPOSITORY_KINGFISHER_UNSECURED_ENV_VARIABLES      | List of env variables explicitly not filtered before calling REPOSITORY_KINGFISHER and its pre/post commands                                                                                                                                                            | None             |
+| REPOSITORY_KINGFISHER_DISABLE_ERRORS               | Run linter but consider errors as warnings                                                                                                                                                                                                                              | `false`          |
+| REPOSITORY_KINGFISHER_DISABLE_ERRORS_IF_LESS_THAN  | Maximum number of errors allowed                                                                                                                                                                                                                                        | `0`              |
+| REPOSITORY_KINGFISHER_TIMEOUT_SECONDS              | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout                                                     | `300`            |
+| REPOSITORY_KINGFISHER_CLI_EXECUTABLE               | Override CLI executable                                                                                                                                                                                                                                                 | `['kingfisher']` |
 
 ## MegaLinter Flavors
 
@@ -98,8 +98,8 @@ Commands:
   revoke        Directly revoke a known secret against a rule's revocation config
   blast-radius  Directly map a known secret to its identity, permissions, and blast radius [alias:
                 access-map]
-  view          View Kingfisher JSON/JSONL reports in a local web UI
-  config        Generate or inspect `kingfisher.yaml` project config files
+  view          View JSON, JSONL, and SARIF reports in a local web UI
+  config        Generate a reusable `kingfisher.yaml` project config
   update        Update the Kingfisher binary
   help          Print this message or the help of the given subcommand(s)
 
@@ -128,7 +128,7 @@ Global Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=github-tags depName=mongodb/kingfisher
-ARG REPOSITORY_KINGFISHER_VERSION=2.9.1
+ARG REPOSITORY_KINGFISHER_VERSION=2.11.1
 RUN curl --silent --location https://raw.githubusercontent.com/mongodb/kingfisher/main/scripts/install-kingfisher.sh | bash -s -- /usr/local/bin --tag "v${REPOSITORY_KINGFISHER_VERSION}"
 
 ```
