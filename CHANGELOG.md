@@ -195,6 +195,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff-format](https://github.com/astral-sh/ruff) from 0.16.8 to **0.16.10** on 2026-10-12
   - [ruff](https://github.com/astral-sh/ruff) from 0.16.8 to **0.16.10** on 2026-10-12
   - [raku](https://raku.org/) from 2026.03 to **2026.08** on 2026-10-12
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.47.16 to **0.48.1** on 2026-10-17
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.6 to **7.6.7** on 2026-10-17
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.6 to **7.6.7** on 2026-10-17
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 2.9.1 to **2.11.1** on 2026-10-17
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.97.9 to **3.99.2** on 2026-10-17
 <!-- linter-versions-end -->
 
 ## [v10.1.0] - 2026-09-05
