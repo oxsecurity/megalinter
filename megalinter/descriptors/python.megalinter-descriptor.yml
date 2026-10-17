@@ -65,6 +65,7 @@ linters:
     cli_lint_mode_project_exclude_separator: ","
     cli_lint_mode_project_extra_args_after:
       - .
+    cli_lint_mode_project_config_paths_regex: "(?mi)^\\[(?:tool\\.pylint\\.)?(?:main|master)\\][ \\t]*\\n(?:(?!\\[).*\\n)*?[ \\t]*files[ \\t]*="
     config_file_name: .pylintrc
     cli_config_arg_name: "--rcfile"
     cli_lint_errors_count: regex_count
@@ -265,8 +266,6 @@ linters:
       - project
     cli_lint_mode_project_exclude_arg_name: "--extend-exclude="
     cli_lint_mode_project_exclude_separator: ","
-    cli_lint_mode_project_extra_args_after:
-      - .
     config_file_name: .flake8
     cli_config_arg_name: "--config"
     cli_lint_errors_count: total_lines
@@ -558,6 +557,7 @@ linters:
     cli_lint_mode_project_exclude_arg_value: "/{{DIR}}/"
     cli_lint_mode_project_extra_args_after:
       - .
+    cli_lint_mode_project_config_paths_regex: "(?m)^\\[(?:tool\\.)?mypy\\][ \\t]*\\n(?:(?!\\[).*\\n)*?[ \\t]*(?:files|packages|modules)[ \\t]*="
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: "Found ([0-9]+) error"
     cli_config_arg_name: "--config-file"
@@ -785,6 +785,7 @@ linters:
       - project
     cli_lint_mode_project_extra_args_after:
       - .
+    cli_lint_mode_project_config_paths_regex: "\"include\"\\s*:"
     config_file_name: pyrightconfig.json
     cli_config_arg_name: -p
     cli_lint_errors_count: regex_sum
@@ -859,8 +860,6 @@ linters:
       - "check"
     cli_lint_mode_project_exclude_arg_name: "--extend-exclude"
     cli_lint_mode_project_exclude_separator: ","
-    cli_lint_mode_project_extra_args_after:
-      - .
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "Found ([0-9]+) error"
     config_file_name: ".ruff.toml"
@@ -949,8 +948,6 @@ linters:
       - project
     cli_lint_mode_project_exclude_arg_name: "--extend-exclude"
     cli_lint_mode_project_exclude_separator: ","
-    cli_lint_mode_project_extra_args_after:
-      - .
     cli_config_arg_name: "--config"
     cli_help_arg_name: "help"
     cli_version_arg_name: "--version"

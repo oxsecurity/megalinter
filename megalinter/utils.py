@@ -217,6 +217,15 @@ def is_excluded_dir(rel_dir_path, excluded_directories) -> bool:
     return match_excluded_dir(rel_dir_path, excluded_directories) is not None
 
 
+# True when the directory or one of its parents is excluded
+def is_in_excluded_dir(rel_dir_path, excluded_directories) -> bool:
+    parts = rel_dir_path.replace("\\", "/").strip("/").split("/")
+    return any(
+        is_excluded_dir("/".join(parts[: index + 1]), excluded_directories)
+        for index in range(len(parts))
+    )
+
+
 # Every entry the directory matches, not only the first one. The workspace walk
 # is shared by all the linters of a run, so a located directory must be filed
 # under each entry it matches: a linter excluding "docs" and another excluding

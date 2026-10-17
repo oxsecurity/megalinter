@@ -155,8 +155,6 @@ linters:
     # Repeatable, values are compiled as regexes matched against the full path,
     # and they are added to the ignore set of the user .cljstyle config
     cli_lint_mode_project_exclude_arg_name: "--ignore"
-    cli_lint_mode_project_extra_args_after:
-      - .
     cli_lint_fix_arg_name: "fix"
     cli_lint_fix_remove_args:
       - "check"

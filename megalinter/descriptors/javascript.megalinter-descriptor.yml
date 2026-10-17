@@ -289,8 +289,6 @@ linters:
       - list_of_files
       - project
     cli_lint_fix_arg_name: "--fix"
-    cli_lint_mode_project_extra_args_after:
-      - .
     test_folder: javascript_standard
     examples:
       - "standard myfile.js"
