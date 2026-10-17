@@ -709,6 +709,15 @@
             "title": "CLI Lint extra arguments (after config args)",
             "type": "array"
           },
+          "cli_lint_mode_project_config_paths_regex": {
+            "description": "Regular expression searched in the linter configuration file. When it matches, the configuration defines the paths to analyze, and cli_lint_mode_project_extra_args_after is not sent in project lint mode, as it would override them. Declare it only for linters that require a path argument when their configuration does not define one",
+            "examples": [
+              "<file>",
+              "(?m)^\\s+paths\\s*:"
+            ],
+            "title": "CLI project lint mode: paths defined in configuration regex",
+            "type": "string"
+          },
           "cli_lint_mode_project_exclude_arg_name": {
             "description": "Native linter CLI argument used to forward each excluded directory (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES) when running in project lint mode. If it ends with = or :, the value is concatenated to the argument name",
             "examples": [

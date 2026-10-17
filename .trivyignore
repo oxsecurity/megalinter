@@ -295,6 +295,18 @@ CVE-2026-50648
 # vulnerable receive loop is never entered. Remove once a PowerShell release bundles
 # .NET runtime >= 10.0.11.
 CVE-2026-62901
+# System.Security.Cryptography.Pkcs and System.Security.Cryptography.Xml 10.0.10 are still
+# bundled with PowerShell 7.6.7 (2026-10-13), the latest release: it moved the runtime to
+# 10.0.13 but kept these packages, fixed in 10.0.13, so there is no upgrade path today.
+# All four are denial of service, in CMS/PKCS (SignedCms, EnvelopedCms) and XML signature /
+# encryption (SignedXml, EncryptedXml) processing: arm-ttk analyses ARM template JSON and the
+# powershell linters analyse .ps1 scripts, none of them signs, verifies or decrypts CMS or
+# XML content, and a one-shot CI run has no availability to deny. Remove once a PowerShell
+# release bundles these packages >= 10.0.13.
+CVE-2026-84008
+CVE-2026-96958
+CVE-2026-96959
+CVE-2026-96960
 
 # --- Python deps (semgrep) ---
 # semgrep bundles the MCP Python SDK (mcp) for its experimental `semgrep mcp` server mode.
