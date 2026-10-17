@@ -15601,6 +15601,7 @@
 </ul>
 <ul>
 <li>Fixes<ul>
+<li><strong>GitLab and Git environment variables</strong> such as <code>GIT_STRATEGY</code> no longer trigger a false removed-linter warning. Removed MegaLinter options and linter selections still warn. Fixes <a href="https://github.com/oxsecurity/megalinter/issues/9024">#9024</a></li>
 <li><strong>Pull request runs in private repositories</strong> no longer crash with a git traceback when the checkout does not persist credentials: MegaLinter warns, explains how to enable the git diff mode (<code>persist-credentials: true</code> or <strong><code>GIT_AUTHORIZATION_BEARER</code></strong>) and lints the whole codebase. Fixes <a href="https://github.com/oxsecurity/megalinter/issues/9104">#9104</a></li>
 <li><strong><code>FAIL_IF_UPDATED_SOURCES</code></strong> is now reliable. Fixes <a href="https://github.com/oxsecurity/megalinter/issues/9103">#9103</a><ul>
 <li>A warning is shown when its value is neither <code>true</code> nor <code>false</code> (for example an empty CI variable), and the console log tells whether the option is active</li>
@@ -15692,6 +15693,12 @@
 </li>
 <li><strong><code>test-agent-plugins.yml</code></strong> validation script now accepts both the <code>{"plugins": [...], "errors": [...]}</code> wrapper and the bare-array shape the GitHub Copilot CLI's <code>plugins list --json</code> can return, fixing a crash of the "Validate agent plugins manifests" check</li>
 <li><strong><code>REPOSITORY_DUSTILOCK</code></strong> is now non-blocking in MegaLinter's own <code>.mega-linter.yml</code>: dustilock reports any PyPI lookup error (such as intermittent <code>503</code> responses) as a package "available for public registration", which failed the "Run against all code base - DEV" job on unrelated PRs</li>
+<li><strong>Renovate and Dependabot</strong> now apply the same waiting rule: 7 days after a release, none for security updates<ul>
+<li>GitHub Actions are updated by Dependabot only (Renovate's <code>github-actions</code> manager is disabled): Renovate can not date SHA-pinned digest updates, so they stayed pending forever and duplicated Dependabot's PRs</li>
+<li>Renovate lock file maintenance is disabled: a lock file refresh has no release date, so it could never pass the 7-day check</li>
+<li>Dependabot now also updates the actions of <code>flavors/custom-builder/action.yml</code></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
