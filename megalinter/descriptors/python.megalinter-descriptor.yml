@@ -212,7 +212,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=black
-          ARG PIP_BLACK_VERSION=26.5.1
+          ARG PIP_BLACK_VERSION=26.10.1
       pip:
         - black[jupyter]==${PIP_BLACK_VERSION}
     supported_platforms:
@@ -369,7 +369,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=black
-          ARG PIP_BLACK_VERSION=26.5.1
+          ARG PIP_BLACK_VERSION=26.10.1
         - |-
           # renovate: datasource=pypi depName=isort
           ARG PIP_ISORT_VERSION=9.0.2
