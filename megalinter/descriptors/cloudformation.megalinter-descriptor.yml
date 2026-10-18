@@ -63,7 +63,10 @@ linters:
       - list_of_files
       - project
     cli_lint_mode_project_extra_args_after:
-      - .
+      - --ignore-bad-template
+      - "**/*.json"
+      - "**/*.yaml"
+      - "**/*.yml"
     cli_lint_mode_project_config_paths_regex: "(?m)^[ \\t{]*[\"']?(?:templates|deployment_files)[\"']?[ \\t]*:"
     cli_sarif_args:
       - --format

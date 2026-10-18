@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import configparser
+import hashlib
 import importlib
 import json
 import logging
@@ -799,6 +800,32 @@ def list_updated_files(repo_home):
                 logging.warning(message)
             return []
     return changed_files
+
+
+UPDATED_SOURCES_IGNORED_FILES = ["linter-helps.json", "linter-versions.json"]
+
+
+def snapshot_updated_files(repo_home):
+    snapshot = {}
+    for updated_file in list_updated_files(repo_home):
+        if os.path.basename(updated_file) in UPDATED_SOURCES_IGNORED_FILES:
+            continue
+        snapshot[updated_file] = None
+        for root in [repo_home, REPO_HOME_DEFAULT]:
+            source_file = root + os.path.sep + updated_file
+            if os.path.isfile(source_file):
+                with open(source_file, "rb") as f:
+                    snapshot[updated_file] = hashlib.sha256(f.read()).hexdigest()
+                break
+    return snapshot
+
+
+def diff_updated_files_snapshots(before, after):
+    return sorted(
+        updated_file
+        for updated_file, file_hash in after.items()
+        if updated_file not in before or before[updated_file] != file_hash
+    )
 
 
 def is_git_repo(path):
