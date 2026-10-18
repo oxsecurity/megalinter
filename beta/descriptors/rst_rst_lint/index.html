@@ -12378,6 +12378,7 @@
 <li><strong>Command-line interface</strong> for easy integration into build processes</li>
 <li><strong>Fast processing</strong> optimized for large documentation projects</li>
 </ul>
+<p>In <code>project</code> lint mode, rst-lint walks every <code>.rst</code> file below the workspace: it has no exclusion option, so <code>EXCLUDED_DIRECTORIES</code> are not applied. Prefer the default <code>list_of_files</code> mode when excluded directories contain <code>.rst</code> files.</p>
 <h2 id="rst-lint-documentation">rst-lint documentation</h2>
 <ul>
 <li>Version in MegaLinter: <strong>2.0.2</strong></li>
@@ -12528,6 +12529,8 @@
 </ul>
 <h3 id="example-calls">Example calls</h3>
 <div class="highlight"><pre><span></span><code>rst-lint<span class="w"> </span>myfile.rst
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>rst-lint<span class="w"> </span>.
 </code></pre></div>
 <h3 id="help-content">Help content</h3>
 <div class="highlight"><pre><span></span><code>usage:<span class="w"> </span>rst-lint<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>--version<span class="o">]</span><span class="w"> </span><span class="o">[</span>--format<span class="w"> </span><span class="o">{</span>text,json<span class="o">}]</span>
