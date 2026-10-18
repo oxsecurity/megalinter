@@ -4,6 +4,8 @@
 
 # API Route Provider
 
+<!-- cspell:words Kimi -->
+
 [API Route](https://www.api-route.com) is an OpenAI-compatible multi-model AI API gateway. It provides one base URL and API key for accessing models from multiple providers, including GPT, Claude, Gemini, Kimi, and Qwen.
 
 ## Setup
