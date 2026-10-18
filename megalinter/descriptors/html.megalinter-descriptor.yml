@@ -39,6 +39,8 @@ linters:
       - project
     cli_lint_mode_project_exclude_arg_name: "--extend-exclude"
     cli_lint_mode_project_exclude_separator: ","
+    cli_lint_mode_project_exclude_config_key: ["tool.djlint.extend_exclude", "extend_exclude"]
+    cli_lint_mode_project_exclude_config_files: ["pyproject.toml", "djlint.toml", ".djlint.toml", ".djlintrc"]
     cli_lint_mode_project_extra_args_after:
       - .
     cli_lint_errors_count: regex_count
@@ -49,7 +51,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=djlint
-          ARG PIP_DJLINT_VERSION=1.46.2
+          ARG PIP_DJLINT_VERSION=1.46.4
       pip:
         - djlint==${PIP_DJLINT_VERSION}
     supported_platforms:

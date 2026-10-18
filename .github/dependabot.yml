@@ -5,11 +5,16 @@
 # Supply-chain hardening: every version-update block waits until a release is
 # at least 7 days old (cooldown) before opening a PR, so compromised releases
 # can be caught by the community first. Dependabot SECURITY updates are not
-# subject to cooldown and still open immediately.
+# subject to cooldown and still open immediately. Renovate applies the same
+# rule (minimumReleaseAge: 7 days, none for vulnerability alerts): keep both in sync.
 version: 2
 updates:
+  # Dependabot alone owns GitHub Actions: Renovate's github-actions manager is
+  # disabled (see renovate.json5), so keep every SHA-pinned action here
   - package-ecosystem: github-actions
-    directory: "/"
+    directories:
+      - "/"
+      - "/flavors/custom-builder"
     schedule:
       interval: weekly
     open-pull-requests-limit: 10
@@ -35,6 +40,45 @@ updates:
   # update PRs (see dependabot/dependabot-core#14408); an `ignore` wildcard is
   # the only lever that also covers security updates.
   - package-ecosystem: "npm"
+    directories:
+      - "/.automation/test/**"
+    schedule:
+      interval: "weekly"
+    ignore:
+      - dependency-name: "*"
+
+  # Same for the other ecosystems that have fixtures under .automation/test:
+  # the poison fixtures in good/.wireit/ (e.g. requirements.txt with django==1.2)
+  # must stay vulnerable, they guard the excluded directories forwarding.
+  - package-ecosystem: "pip"
+    directories:
+      - "/.automation/test/**"
+    schedule:
+      interval: "weekly"
+    ignore:
+      - dependency-name: "*"
+  - package-ecosystem: "uv"
+    directories:
+      - "/.automation/test/**"
+    schedule:
+      interval: "weekly"
+    ignore:
+      - dependency-name: "*"
+  - package-ecosystem: "bundler"
+    directories:
+      - "/.automation/test/**"
+    schedule:
+      interval: "weekly"
+    ignore:
+      - dependency-name: "*"
+  - package-ecosystem: "gomod"
+    directories:
+      - "/.automation/test/**"
+    schedule:
+      interval: "weekly"
+    ignore:
+      - dependency-name: "*"
+  - package-ecosystem: "cargo"
     directories:
       - "/.automation/test/**"
     schedule:

@@ -29,7 +29,7 @@ Exception for standalone and security flavors docker images, that use a list of 
 
 ## semgrep documentation
 
-- Version in MegaLinter: **1.177.0**
+- Version in MegaLinter: **1.180.0**
 - Visit [Official Web Site](https://semgrep.dev/){target=_blank}
 - See [How to configure semgrep rules](https://semgrep.dev/docs/running-rules/){target=_blank}
 - See [How to disable semgrep rules in files](https://semgrep.dev/docs/ignoring-findings/#inline-comments){target=_blank}
@@ -44,23 +44,23 @@ Exception for standalone and security flavors docker images, that use a list of 
 - Enable semgrep by adding `REPOSITORY_SEMGREP` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable semgrep by adding `REPOSITORY_SEMGREP` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                        | Description                                                                                                                                                                                                         | Default value   |
-|-------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|
-| REPOSITORY_SEMGREP_RULESETS                     | List of semgrep rulesets identifiers that you want to enforce                                                                                                                                                       | `auto`          |
-| REPOSITORY_SEMGREP_RULESETS_TYPE                | MegaLinter semgrep ruleset list preset id . Available values: security                                                                                                                                              | ``              |
-| REPOSITORY_SEMGREP_ARGUMENTS                    | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                 |
-| REPOSITORY_SEMGREP_COMMAND_REMOVE_ARGUMENTS     | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                 |
-| REPOSITORY_SEMGREP_FILTER_REGEX_INCLUDE         | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with REPOSITORY_SEMGREP_CLI_LINT_MODE = project                                                                                             | Exclude no file |
-| REPOSITORY_SEMGREP_FILTER_REGEX_EXCLUDE         | Custom regex excluding filter<br/>Ex: `(test\|examples)`<br/>⚠️ Not available with REPOSITORY_SEMGREP_CLI_LINT_MODE = project                                                                                       | Exclude no file |
-| REPOSITORY_SEMGREP_CLI_LINT_MODE                | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `project`       |
-| REPOSITORY_SEMGREP_FORWARD_EXCLUDED_DIRECTORIES | In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES) to the linter through its native exclusion arguments or generated ignore/config files               | `true`          |
-| REPOSITORY_SEMGREP_PRE_COMMANDS                 | List of bash commands to run before the linter                                                                                                                                                                      | None            |
-| REPOSITORY_SEMGREP_POST_COMMANDS                | List of bash commands to run after the linter                                                                                                                                                                       | None            |
-| REPOSITORY_SEMGREP_UNSECURED_ENV_VARIABLES      | List of env variables explicitly not filtered before calling REPOSITORY_SEMGREP and its pre/post commands                                                                                                           | None            |
-| REPOSITORY_SEMGREP_DISABLE_ERRORS               | Run linter but consider errors as warnings                                                                                                                                                                          | `false`         |
-| REPOSITORY_SEMGREP_DISABLE_ERRORS_IF_LESS_THAN  | Maximum number of errors allowed                                                                                                                                                                                    | `0`             |
-| REPOSITORY_SEMGREP_TIMEOUT_SECONDS              | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout | `300`           |
-| REPOSITORY_SEMGREP_CLI_EXECUTABLE               | Override CLI executable                                                                                                                                                                                             | `['semgrep']`   |
+| Variable                                        | Description                                                                                                                                                                                                                                                             | Default value   |
+|-------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|
+| REPOSITORY_SEMGREP_RULESETS                     | List of semgrep rulesets identifiers that you want to enforce                                                                                                                                                                                                           | `auto`          |
+| REPOSITORY_SEMGREP_RULESETS_TYPE                | MegaLinter semgrep ruleset list preset id . Available values: security                                                                                                                                                                                                  | ``              |
+| REPOSITORY_SEMGREP_ARGUMENTS                    | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                                |                 |
+| REPOSITORY_SEMGREP_COMMAND_REMOVE_ARGUMENTS     | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                                                                    |                 |
+| REPOSITORY_SEMGREP_FILTER_REGEX_INCLUDE         | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with REPOSITORY_SEMGREP_CLI_LINT_MODE = project                                                                                                                                                 | Exclude no file |
+| REPOSITORY_SEMGREP_FILTER_REGEX_EXCLUDE         | Custom regex excluding filter<br/>Ex: `(test\|examples)`<br/>⚠️ Not available with REPOSITORY_SEMGREP_CLI_LINT_MODE = project                                                                                                                                           | Exclude no file |
+| REPOSITORY_SEMGREP_CLI_LINT_MODE                | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project                                                     | `project`       |
+| REPOSITORY_SEMGREP_FORWARD_EXCLUDED_DIRECTORIES | In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES, and .gitignored directories when IGNORE_GITIGNORED_FILES is true) to the linter through its native exclusion arguments or generated ignore/config files | `true`          |
+| REPOSITORY_SEMGREP_PRE_COMMANDS                 | List of bash commands to run before the linter                                                                                                                                                                                                                          | None            |
+| REPOSITORY_SEMGREP_POST_COMMANDS                | List of bash commands to run after the linter                                                                                                                                                                                                                           | None            |
+| REPOSITORY_SEMGREP_UNSECURED_ENV_VARIABLES      | List of env variables explicitly not filtered before calling REPOSITORY_SEMGREP and its pre/post commands                                                                                                                                                               | None            |
+| REPOSITORY_SEMGREP_DISABLE_ERRORS               | Run linter but consider errors as warnings                                                                                                                                                                                                                              | `false`         |
+| REPOSITORY_SEMGREP_DISABLE_ERRORS_IF_LESS_THAN  | Maximum number of errors allowed                                                                                                                                                                                                                                        | `0`             |
+| REPOSITORY_SEMGREP_TIMEOUT_SECONDS              | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout                                                     | `300`           |
+| REPOSITORY_SEMGREP_CLI_EXECUTABLE               | Override CLI executable                                                                                                                                                                                                                                                 | `['semgrep']`   |
 
 ## IDE Integration
 
@@ -307,9 +307,11 @@ OPTIONS
            Output results incrementally. REQUIRES --experimental
 
        --interfile-timeout=INT (absent=0)
-           Maximum time to spend on interfile analysis. If set to 0 will not
-           have time limit. Defaults to 0 s for all CLI scans. For CI scans,
-           it defaults to 3 hours.
+           Maximum time to spend on interfile analysis. The time budget is
+           enforced by being divided among analysis steps, so scans may take
+           less time than the specified timeout. If set to 0, a blanket
+           higher timeout is used for each analysis step. Defaults to 0 s for
+           all CLI scans. For CI scans, it defaults to 3 hours.
 
        -j VALUE, --jobs=VALUE (absent=3)
            Degree of parallelism to use for parallel scanning, either using
@@ -779,7 +781,7 @@ BUGS
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.177.0
+ARG PIP_SEMGREP_VERSION=1.180.0
 # Wrap semgrep so its OCaml 5 runtime does not abort with
 # "Failed to allocate signal stack for domain 0", which happens when the
 # stack rlimit is unlimited (the case on some CI runners). Cap it to a
@@ -790,4 +792,4 @@ RUN mv /venvs/semgrep/bin/semgrep /venvs/semgrep/bin/semgrep-bin \
 ```
 
 - PIP packages (Python):
-  - [semgrep==1.177.0](https://pypi.org/project/semgrep/1.177.0)
+  - [semgrep==1.180.0](https://pypi.org/project/semgrep/1.180.0)

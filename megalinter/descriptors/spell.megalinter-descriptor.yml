@@ -45,8 +45,10 @@ linters:
       - project
     cli_lint_mode_project_exclude_arg_name: "--exclude"
     cli_lint_mode_project_exclude_arg_value: "**/{{DIR}}/**"
+    cli_lint_mode_project_exclude_seed_values: ["node_modules/**"]
     cli_lint_mode_project_extra_args_after:
       - .
+    cli_lint_mode_project_config_paths_regex: "(?m)(^\\s*\"files\"\\s*:\\s*\\[\\s*[\"'])|(^files[ \\t]*:[ \\t]*(?:\\[[ \\t]*[^\\]\\s]|\\n[ \\t]*-[ \\t]))"
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "Issues found: ([0-9]+) in .* file"
     examples:
@@ -56,7 +58,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=cspell
-          ARG NPM_CSPELL_VERSION=10.3.3
+          ARG NPM_CSPELL_VERSION=10.3.6
       npm:
         - "cspell@${NPM_CSPELL_VERSION}"
     supported_platforms:
@@ -209,7 +211,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=jdkato/vale
-          ARG SPELL_VALE_VERSION=v3.22.0
+          ARG SPELL_VALE_VERSION=v3.24.0
         - FROM jdkato/vale:${SPELL_VALE_VERSION} AS vale
         - COPY --link --from=vale /bin/vale /bin/vale
     supported_platforms:

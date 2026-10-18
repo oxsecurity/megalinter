@@ -3,7 +3,6 @@
   extends: [
     'config:recommended',
     'customManagers:dockerfileVersions',
-    ':maintainLockFilesWeekly',
     ':separateMultipleMajorReleases',
     ':semanticCommits',
     ':label(dependencies)',
@@ -28,6 +27,15 @@
     minimumReleaseAge: null,
   },
   osvVulnerabilityAlerts: true,
+  // GitHub Actions are owned by Dependabot (.github/dependabot.yml). Renovate
+  // can not date the SHA-pinned digest updates (`uses: x@<sha> # v7`), so with
+  // minimumReleaseAgeBehaviour 'timestamp-required' they stayed pending
+  // forever, while Dependabot applies its 7-day cooldown on the tag release.
+  // Lock file maintenance is not enabled for the same reason: a lock file
+  // refresh has no release timestamp, so it could never pass minimumReleaseAge.
+  'github-actions': {
+    enabled: false,
+  },
   hostRules: [
     {
       // repology.org is slow/flaky and frequently times out from the hosted runner.

@@ -13,3 +13,23 @@
 # override would break minimatch's declared range and raise the runtime floor to Node >= 20.
 # Remove once minimatch depends on brace-expansion >= 5.0.8.
 CVE-2026-14257
+
+# --- npm braces (yarn.lock) ---
+# CVE-2026-93687 is a stack-exhaustion DoS in braces' recursive AST walkers: a deeply nested
+# brace pattern terminates the Node process with an uncaught RangeError. Availability only.
+# mega-linter-runner only reaches braces through micromatch (fast-glob / globby), expanding
+# glob patterns taken from its own code and from the user's local paths - never from network
+# traffic or any other attacker-controlled source - in a one-shot CLI.
+# No upgrade path today: the advisory covers every release up to 3.0.3, which is the latest.
+# Remove once a patched braces release ships.
+CVE-2026-93687
+
+# --- npm http-cache-semantics (yarn.lock) ---
+# CVE-2026-93748 lets a client using a large max-stale directive read another user's response
+# from a SHARED HTTP cache. mega-linter-runner only reaches http-cache-semantics through
+# make-fetch-happen (npm-registry-fetch, sigstore, tuf-js), whose cache is the local on-disk
+# npm cache of the single user running the CLI: there is no shared cache and no other user
+# whose responses could be disclosed.
+# No upgrade path today: the advisory covers every release up to 4.2.0, which is the latest.
+# Remove once a patched http-cache-semantics release ships.
+CVE-2026-93748

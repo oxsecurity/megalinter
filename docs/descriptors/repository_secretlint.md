@@ -28,7 +28,7 @@ description: How to use secretlint (configure, ignore files, ignore errors, help
 
 ## secretlint documentation
 
-- Version in MegaLinter: **13.0.5**
+- Version in MegaLinter: **13.0.7**
 - Visit [Official Web Site](https://github.com/secretlint/secretlint#readme){target=_blank}
 - See [How to configure secretlint rules](https://github.com/secretlint/secretlint#configuration){target=_blank}
   - If custom `.secretlintrc.json` config file isn't found, [.secretlintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.secretlintrc.json){target=_blank} will be used
@@ -43,23 +43,23 @@ description: How to use secretlint (configure, ignore files, ignore errors, help
 - Enable secretlint by adding `REPOSITORY_SECRETLINT` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable secretlint by adding `REPOSITORY_SECRETLINT` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                           | Description                                                                                                                                                                                                         | Default value                                   |
-|----------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| REPOSITORY_SECRETLINT_ARGUMENTS                    | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
-| REPOSITORY_SECRETLINT_COMMAND_REMOVE_ARGUMENTS     | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                                                 |
-| REPOSITORY_SECRETLINT_FILTER_REGEX_INCLUDE         | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with REPOSITORY_SECRETLINT_CLI_LINT_MODE = project                                                                                          | Exclude no file                                 |
-| REPOSITORY_SECRETLINT_FILTER_REGEX_EXCLUDE         | Custom regex excluding filter<br/>Ex: `(test\|examples)`<br/>⚠️ Not available with REPOSITORY_SECRETLINT_CLI_LINT_MODE = project                                                                                    | Exclude no file                                 |
-| REPOSITORY_SECRETLINT_CLI_LINT_MODE                | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `project`                                       |
-| REPOSITORY_SECRETLINT_FORWARD_EXCLUDED_DIRECTORIES | In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES) to the linter through its native exclusion arguments or generated ignore/config files               | `true`                                          |
-| REPOSITORY_SECRETLINT_PRE_COMMANDS                 | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
-| REPOSITORY_SECRETLINT_POST_COMMANDS                | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
-| REPOSITORY_SECRETLINT_UNSECURED_ENV_VARIABLES      | List of env variables explicitly not filtered before calling REPOSITORY_SECRETLINT and its pre/post commands                                                                                                        | None                                            |
-| REPOSITORY_SECRETLINT_CONFIG_FILE                  | secretlint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                               | `.secretlintrc.json`                            |
-| REPOSITORY_SECRETLINT_RULES_PATH                   | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
-| REPOSITORY_SECRETLINT_DISABLE_ERRORS               | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
-| REPOSITORY_SECRETLINT_DISABLE_ERRORS_IF_LESS_THAN  | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
-| REPOSITORY_SECRETLINT_TIMEOUT_SECONDS              | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout | `300`                                           |
-| REPOSITORY_SECRETLINT_CLI_EXECUTABLE               | Override CLI executable                                                                                                                                                                                             | `['secretlint']`                                |
+| Variable                                           | Description                                                                                                                                                                                                                                                             | Default value                                   |
+|----------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| REPOSITORY_SECRETLINT_ARGUMENTS                    | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                                |                                                 |
+| REPOSITORY_SECRETLINT_COMMAND_REMOVE_ARGUMENTS     | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                                                                    |                                                 |
+| REPOSITORY_SECRETLINT_FILTER_REGEX_INCLUDE         | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with REPOSITORY_SECRETLINT_CLI_LINT_MODE = project                                                                                                                                              | Exclude no file                                 |
+| REPOSITORY_SECRETLINT_FILTER_REGEX_EXCLUDE         | Custom regex excluding filter<br/>Ex: `(test\|examples)`<br/>⚠️ Not available with REPOSITORY_SECRETLINT_CLI_LINT_MODE = project                                                                                                                                        | Exclude no file                                 |
+| REPOSITORY_SECRETLINT_CLI_LINT_MODE                | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project                                                     | `project`                                       |
+| REPOSITORY_SECRETLINT_FORWARD_EXCLUDED_DIRECTORIES | In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES, and .gitignored directories when IGNORE_GITIGNORED_FILES is true) to the linter through its native exclusion arguments or generated ignore/config files | `true`                                          |
+| REPOSITORY_SECRETLINT_PRE_COMMANDS                 | List of bash commands to run before the linter                                                                                                                                                                                                                          | None                                            |
+| REPOSITORY_SECRETLINT_POST_COMMANDS                | List of bash commands to run after the linter                                                                                                                                                                                                                           | None                                            |
+| REPOSITORY_SECRETLINT_UNSECURED_ENV_VARIABLES      | List of env variables explicitly not filtered before calling REPOSITORY_SECRETLINT and its pre/post commands                                                                                                                                                            | None                                            |
+| REPOSITORY_SECRETLINT_CONFIG_FILE                  | secretlint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                                                                   | `.secretlintrc.json`                            |
+| REPOSITORY_SECRETLINT_RULES_PATH                   | Path where to find linter configuration file                                                                                                                                                                                                                            | Workspace folder, then MegaLinter default rules |
+| REPOSITORY_SECRETLINT_DISABLE_ERRORS               | Run linter but consider errors as warnings                                                                                                                                                                                                                              | `false`                                         |
+| REPOSITORY_SECRETLINT_DISABLE_ERRORS_IF_LESS_THAN  | Maximum number of errors allowed                                                                                                                                                                                                                                        | `0`                                             |
+| REPOSITORY_SECRETLINT_TIMEOUT_SECONDS              | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout                                                     | `300`                                           |
+| REPOSITORY_SECRETLINT_CLI_EXECUTABLE               | Override CLI executable                                                                                                                                                                                                                                                 | `['secretlint']`                                |
 
 ## MegaLinter Flavors
 
@@ -192,14 +192,14 @@ Exit Status
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=secretlint
-ARG NPM_SECRETLINT_VERSION=13.0.5
+ARG NPM_SECRETLINT_VERSION=13.0.7
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
-ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=13.0.5
+ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=13.0.7
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
-ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=13.0.5
+ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=13.0.7
 ```
 
 - NPM packages (node.js):
-  - [secretlint@13.0.5](https://www.npmjs.com/package/secretlint/v/13.0.5)
-  - [@secretlint/secretlint-rule-preset-recommend@13.0.5](https://www.npmjs.com/package/@secretlint/secretlint-rule-preset-recommend/v/13.0.5)
-  - [@secretlint/secretlint-formatter-sarif@13.0.5](https://www.npmjs.com/package/@secretlint/secretlint-formatter-sarif/v/13.0.5)
+  - [secretlint@13.0.7](https://www.npmjs.com/package/secretlint/v/13.0.7)
+  - [@secretlint/secretlint-rule-preset-recommend@13.0.7](https://www.npmjs.com/package/@secretlint/secretlint-rule-preset-recommend/v/13.0.7)
+  - [@secretlint/secretlint-formatter-sarif@13.0.7](https://www.npmjs.com/package/@secretlint/secretlint-formatter-sarif/v/13.0.7)

@@ -37,8 +37,19 @@ linters:
       - file
       - list_of_files
       - project
+    # tekton-lint only lints the globs given on the command line or in the
+    # globs list of .tektonlintrc.yaml: send the YAML globs unless the config
+    # defines its own
+    cli_lint_mode_project_extra_args_after:
+      - "**/*.yml"
+      - "**/*.yaml"
+    cli_lint_mode_project_config_paths_regex: "(?m)^globs[ \\t]*:[ \\t]*(?:\\[[ \\t]*[^\\]\\s]|\\n[ \\t]*-[ \\t])"
+    # fast-glob negated patterns, applied to every glob (command line and config)
+    cli_lint_mode_project_exclude_arg_name: ""
+    cli_lint_mode_project_exclude_arg_value: "!**/{{DIR}}/**"
     examples:
       - "tekton-lint myfile.yml"
+      - 'tekton-lint "**/*.yml" "**/*.yaml"'
     install:
       dockerfile:
         - |-

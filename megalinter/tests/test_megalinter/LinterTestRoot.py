@@ -47,15 +47,10 @@ class LinterTestRoot:
                     f"{linter.linter_name} can not be tested"
                 )
 
-    def lint_mode_setup(self, mode):
-        config.set_value(
-            self.request_id,
-            self.descriptor_id.upper()
-            + "_"
-            + self.linter_name.upper()
-            + "_CLI_LINT_MODE",
-            mode,
-        )
+    # The override variable is named after the linter key (Linter.name), in
+    # which "-" is replaced by "_": CLOJURE_CLJ_KONDO, not CLOJURE_CLJ-KONDO
+    def lint_mode_setup(self, linter, mode):
+        config.set_value(self.request_id, linter.name + "_CLI_LINT_MODE", mode)
 
     # Run a success/failure test forcing a specific cli_lint_mode.
     # The linter is first built without the override to learn which modes it
@@ -75,8 +70,15 @@ class LinterTestRoot:
             raise unittest.SkipTest(
                 "Skipping file lint_mode: covered by list_of_files (CI optimization)"
             )
-        self.lint_mode_setup(mode)
+        self.lint_mode_setup(probe_linter, mode)
         linter = self.get_linter_instance(self.request_id)
+        # Guard against an override that is silently ignored: the test would
+        # then run in the default lint mode instead of the requested one
+        if linter.is_active:
+            assert linter.cli_lint_mode == mode, (
+                f"{linter.name}_CLI_LINT_MODE={mode} was not applied: "
+                f"the linter runs in lint mode {linter.cli_lint_mode}"
+            )
         linter.pre_test(test_name)
         test_func(linter, self)
         linter.post_test(test_name)
