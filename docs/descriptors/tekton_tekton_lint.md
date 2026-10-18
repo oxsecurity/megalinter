@@ -97,6 +97,10 @@ tekton-lint is called once on the whole project directory (`project` CLI lint mo
 tekton-lint myfile.yml
 ```
 
+```shell
+tekton-lint "**/*.yml" "**/*.yaml"
+```
+
 
 ### Help content
 

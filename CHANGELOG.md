@@ -237,6 +237,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.6 to **7.6.7** on 2026-10-17
   - [kingfisher](https://github.com/mongodb/kingfisher) from 2.9.1 to **2.11.1** on 2026-10-17
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.97.9 to **3.99.2** on 2026-10-17
+  - [revive](https://revive.run/) from 1.17.0 to **1.17.1** on 2026-10-18
 <!-- linter-versions-end -->
 
 ## [v10.1.0] - 2026-09-05
