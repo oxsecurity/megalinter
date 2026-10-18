@@ -12377,7 +12377,7 @@
 </ul>
 <h2 id="trufflehog-documentation">trufflehog documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.97.9</strong></li>
+<li>Version in MegaLinter: <strong>3.99.2</strong></li>
 <li>Visit <a href="https://github.com/trufflesecurity/trufflehog#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/trufflesecurity/trufflehog#regex-detector-alpha" target="_blank">How to configure trufflehog rules</a></li>
 </ul>
@@ -12423,7 +12423,7 @@
 </tr>
 <tr>
 <td>REPOSITORY_TRUFFLEHOG_FORWARD_EXCLUDED_DIRECTORIES</td>
-<td>In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES) to the linter through its native exclusion arguments or generated ignore/config files</td>
+<td>In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES, and .gitignored directories when IGNORE_GITIGNORED_FILES is true) to the linter through its native exclusion arguments or generated ignore/config files</td>
 <td><code>true</code></td>
 </tr>
 <tr>
@@ -12660,6 +12660,9 @@ Flags:
 <span class="s1">                                 filtered_unverified (unverified but would</span>
 <span class="s1">                                 have been filtered out). Defaults to</span>
 <span class="s1">                                 verified,unverified,unknown.</span>
+<span class="s1">      --deduplication-cache-size=5000</span>
+<span class="s1">                                 Max size of the results deduplication cache,</span>
+<span class="s1">                                 setting to 0 disables</span>
 <span class="s1">      --[no-]no-color            Disable colorized output</span>
 <span class="s1">      --[no-]allow-verification-overlap</span>
 <span class="s1">                                 Allow verification of similar credentials</span>
@@ -12786,7 +12789,7 @@ analyze
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=docker depName=trufflesecurity/trufflehog</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">REPOSITORY_TRUFFLEHOG_VERSION</span><span class="o">=</span><span class="m">3</span>.97.9
+<span class="k">ARG</span><span class="w"> </span><span class="nv">REPOSITORY_TRUFFLEHOG_VERSION</span><span class="o">=</span><span class="m">3</span>.99.2
 <span class="k">FROM</span><span class="w"> </span><span class="s">trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION}</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">trufflehog</span>
 <span class="k">COPY</span><span class="w"> </span>--link<span class="w"> </span>--from<span class="o">=</span>trufflehog<span class="w"> </span>/usr/bin/trufflehog<span class="w"> </span>/usr/bin/
 </code></pre></div></li>

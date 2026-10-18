@@ -12476,7 +12476,7 @@
 </ul>
 <h2 id="kingfisher-documentation">kingfisher documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>2.9.1</strong></li>
+<li>Version in MegaLinter: <strong>2.11.1</strong></li>
 <li>Visit <a href="https://github.com/mongodb/kingfisher#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://mongodb.github.io/kingfisher/usage/advanced/?h=inline#inline-ignore-directives" target="_blank">How to disable kingfisher rules in files</a></li>
 <li>See <a href="https://mongodb.github.io/kingfisher/rules/builtin-rules" target="_blank">Index of problems detected by kingfisher</a></li>
@@ -12523,7 +12523,7 @@
 </tr>
 <tr>
 <td>REPOSITORY_KINGFISHER_FORWARD_EXCLUDED_DIRECTORIES</td>
-<td>In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES) to the linter through its native exclusion arguments or generated ignore/config files</td>
+<td>In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES, and .gitignored directories when IGNORE_GITIGNORED_FILES is true) to the linter through its native exclusion arguments or generated ignore/config files</td>
 <td><code>true</code></td>
 </tr>
 <tr>
@@ -12623,8 +12623,8 @@ Commands:
 <span class="s1">  revoke        Directly revoke a known secret against a rule'</span>s<span class="w"> </span>revocation<span class="w"> </span>config
 <span class="w">  </span>blast-radius<span class="w">  </span>Directly<span class="w"> </span>map<span class="w"> </span>a<span class="w"> </span>known<span class="w"> </span>secret<span class="w"> </span>to<span class="w"> </span>its<span class="w"> </span>identity,<span class="w"> </span>permissions,<span class="w"> </span>and<span class="w"> </span>blast<span class="w"> </span>radius<span class="w"> </span><span class="o">[</span>alias:
 <span class="w">                </span>access-map<span class="o">]</span>
-<span class="w">  </span>view<span class="w">          </span>View<span class="w"> </span>Kingfisher<span class="w"> </span>JSON/JSONL<span class="w"> </span>reports<span class="w"> </span><span class="k">in</span><span class="w"> </span>a<span class="w"> </span><span class="nb">local</span><span class="w"> </span>web<span class="w"> </span>UI
-<span class="w">  </span>config<span class="w">        </span>Generate<span class="w"> </span>or<span class="w"> </span>inspect<span class="w"> </span><span class="sb">`</span>kingfisher.yaml<span class="sb">`</span><span class="w"> </span>project<span class="w"> </span>config<span class="w"> </span>files
+<span class="w">  </span>view<span class="w">          </span>View<span class="w"> </span>JSON,<span class="w"> </span>JSONL,<span class="w"> </span>and<span class="w"> </span>SARIF<span class="w"> </span>reports<span class="w"> </span><span class="k">in</span><span class="w"> </span>a<span class="w"> </span><span class="nb">local</span><span class="w"> </span>web<span class="w"> </span>UI
+<span class="w">  </span>config<span class="w">        </span>Generate<span class="w"> </span>a<span class="w"> </span>reusable<span class="w"> </span><span class="sb">`</span>kingfisher.yaml<span class="sb">`</span><span class="w"> </span>project<span class="w"> </span>config
 <span class="w">  </span>update<span class="w">        </span>Update<span class="w"> </span>the<span class="w"> </span>Kingfisher<span class="w"> </span>binary
 <span class="w">  </span><span class="nb">help</span><span class="w">          </span>Print<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>or<span class="w"> </span>the<span class="w"> </span><span class="nb">help</span><span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>given<span class="w"> </span>subcommand<span class="o">(</span>s<span class="o">)</span>
 
@@ -12651,7 +12651,7 @@ Global<span class="w"> </span>Options:
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=github-tags depName=mongodb/kingfisher</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">REPOSITORY_KINGFISHER_VERSION</span><span class="o">=</span><span class="m">2</span>.9.1
+<span class="k">ARG</span><span class="w"> </span><span class="nv">REPOSITORY_KINGFISHER_VERSION</span><span class="o">=</span><span class="m">2</span>.11.1
 <span class="k">RUN</span><span class="w"> </span>curl<span class="w"> </span>--silent<span class="w"> </span>--location<span class="w"> </span>https://raw.githubusercontent.com/mongodb/kingfisher/main/scripts/install-kingfisher.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash<span class="w"> </span>-s<span class="w"> </span>--<span class="w"> </span>/usr/local/bin<span class="w"> </span>--tag<span class="w"> </span><span class="s2">"v</span><span class="si">${</span><span class="nv">REPOSITORY_KINGFISHER_VERSION</span><span class="si">}</span><span class="s2">"</span>
 </code></pre></div></li>
 </ul>

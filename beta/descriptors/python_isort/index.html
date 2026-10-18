@@ -12452,7 +12452,7 @@
 </tr>
 <tr>
 <td>PYTHON_ISORT_FORWARD_EXCLUDED_DIRECTORIES</td>
-<td>In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES) to the linter through its native exclusion arguments or generated ignore/config files</td>
+<td>In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES, and .gitignored directories when IGNORE_GITIGNORED_FILES is true) to the linter through its native exclusion arguments or generated ignore/config files</td>
 <td><code>true</code></td>
 </tr>
 <tr>
@@ -12989,14 +12989,14 @@ If<span class="w"> </span>you<span class="s1">'ve used isort 4 but are new to is
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=pypi depName=black</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">PIP_BLACK_VERSION</span><span class="o">=</span><span class="m">26</span>.5.1
+<span class="k">ARG</span><span class="w"> </span><span class="nv">PIP_BLACK_VERSION</span><span class="o">=</span><span class="m">26</span>.10.1
 <span class="c"># renovate: datasource=pypi depName=isort</span>
 <span class="k">ARG</span><span class="w"> </span><span class="nv">PIP_ISORT_VERSION</span><span class="o">=</span><span class="m">9</span>.0.2
 </code></pre></div></li>
 </ul>
 <ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/black/26.5.1">black==26.5.1</a></li>
+<li><a href="https://pypi.org/project/black/26.10.1">black==26.10.1</a></li>
 <li><a href="https://pypi.org/project/isort/9.0.2">isort==9.0.2</a></li>
 </ul>
 </li>

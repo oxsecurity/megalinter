@@ -948,6 +948,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#fail-if-sources-are-updated" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Fail if sources are updated
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#apply-fixes-issues" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -12147,6 +12158,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#fail-if-sources-are-updated" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Fail if sources are updated
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#apply-fixes-issues" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -12202,6 +12224,14 @@
 <li><strong>APPLY_FIXES_EVENT</strong>: <code>all</code>, <code>push</code>, <code>pull_request</code>, <code>none</code> <em>(use none in case of use of <a href="../reporters/UpdatedSourcesReporter/">Updated sources reporter</a>)</em></li>
 <li><strong>APPLY_FIXES_MODE</strong>: <code>commit</code> to create a new commit and push it on the same branch, or <code>pull_request</code> to create a new PR targeting the branch.</li>
 </ul>
+<h2 id="fail-if-sources-are-updated">Fail if sources are updated</h2>
+<p>If you do not want MegaLinter to commit the fixes, for example because you use the <a href="../reporters/UpdatedSourcesReporter/">Updated sources reporter</a>, set <strong>FAIL_IF_UPDATED_SOURCES</strong> to <code>true</code>: the run fails when sources have been updated by a linter, a formatter or a <code>POST_COMMANDS</code> command, so a developer commits the fixes.</p>
+<ul>
+<li>Only <code>true</code> and <code>false</code> are accepted. Any other value, including an empty CI variable (which overrides the value of <code>.mega-linter.yml</code>), disables the option and MegaLinter logs a warning</li>
+<li>The console log tells whether the option is active, and names it as the failure reason, even when other linters failed too</li>
+<li>The option takes precedence over <code>DISABLE_ERRORS</code>: the run exits with code 1, as the summary says</li>
+<li>Fixes applied by linters running in <code>project</code> lint mode are taken into account, as they are part of the Updated sources reporter ZIP</li>
+</ul>
 <h2 id="apply-fixes-issues">Apply fixes issues</h2>
 <p>You may see GitHub permission errors, or workflows not running on the new commit.</p>
 <blockquote>
@@ -12230,6 +12260,7 @@ Before adding a <code>PAT</code> secret, ask yourself if you really need workflo
 <ul>
 <li>You can use the <a href="../reporters/UpdatedSourcesReporter/">Updated sources reporter</a> if you don't want fixes to be automatically applied on the Git branch. Instead, download them in a ZIP file and manually extract them into your project.</li>
 <li>If used, <code>APPLY_FIXES_EVENT</code> and <code>APPLY_FIXES_MODE</code> cannot be defined in the <code>.mega-linter.yml</code> config file; they must be set as environment variables.</li>
+<li>When only the updated files are linted (<code>VALIDATE_ALL_CODEBASE: false</code>), MegaLinter fetches the base branch with git. In a private repository, use <code>persist-credentials: true</code> in <code>actions/checkout</code> or define <code>GIT_AUTHORIZATION_BEARER</code>: otherwise MegaLinter logs a warning and lints the whole codebase</li>
 <li>If you use <code>APPLY_FIXES</code>, add the following line to your <code>.gitignore</code> file:</li>
 </ul>
 <div class="highlight"><pre><span></span><code>megalinter-reports/

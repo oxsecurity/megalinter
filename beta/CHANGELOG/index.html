@@ -15638,6 +15638,14 @@
 <li><strong>phpstan</strong> no longer reports unknown classes when MegaLinter forwards <code>EXCLUDED_DIRECTORIES</code>: the forwarded directories are excluded from analysis only, so the symbols of your <code>scanDirectories</code> (ex: <code>vendor-bin/*/vendor</code>) are found again. Fixes <a href="https://github.com/oxsecurity/megalinter/issues/8955">#8955</a></li>
 <li><strong>robocop</strong> now receives your <code>robocop.toml</code> through <code>--config</code>: the <code>-c</code> argument sent before is robocop's <code>--configure</code> option</li>
 <li><strong>betterleaks</strong> keeps the configuration given in <code>BETTERLEAKS_CONFIG</code>, <code>GITLEAKS_CONFIG</code> or their <code>*_CONFIG_TOML</code> variants when MegaLinter forwards <code>EXCLUDED_DIRECTORIES</code></li>
+<li>Fixed <strong>lint modes that never worked</strong>. Fixes <a href="https://github.com/oxsecurity/megalinter/issues/9030">#9030</a><ul>
+<li><strong><code>RST_RST_LINT_CLI_LINT_MODE: project</code></strong> now lints the <code>.rst</code> files of the workspace, instead of failing with rst-lint's usage message</li>
+<li><strong><code>TEKTON_TEKTON_LINT_CLI_LINT_MODE: project</code></strong> now lints the <code>.yml</code> and <code>.yaml</code> files of the workspace (or the <code>globs</code> of your <code>.tektonlintrc.yaml</code>), instead of failing with <code>No paths match glob ""</code>. <code>EXCLUDED_DIRECTORIES</code> are applied too</li>
+<li><strong><code>CLOUDFORMATION_CFN_LINT_CLI_LINT_MODE: project</code></strong> now lints the <code>.json</code>, <code>.yaml</code> and <code>.yml</code> files of the workspace (or the <code>templates</code> of your <code>.cfnlintrc</code>), instead of failing with <code>Template references a directory, not a file</code></li>
+<li><strong><code>ENV_DOTENV_LINTER_CLI_LINT_MODE: project</code></strong> now lints the <code>.env</code> files of the workspace and its subfolders, instead of failing with dotenv-linter's usage message. <code>EXCLUDED_DIRECTORIES</code> are applied at any nesting level</li>
+<li><strong>REPOSITORY_LS_LINT</strong> and <strong>SALESFORCE_CODE_ANALYZER_FLOW</strong> only accept the <code>project</code> lint mode: in <code>file</code> or <code>list_of_files</code> mode they analyzed no file at all. If you set <code>REPOSITORY_LS_LINT_CLI_LINT_MODE</code> to another mode, remove it</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -15667,6 +15675,12 @@
 <li>Dev<ul>
 <li>The build now fails when a JSON Schema in <code>megalinter/descriptors/schemas/</code> is not compliant with its draft-07 meta-schema, or declares an <code>$id</code> holding a JSON Pointer fragment (<code>validate_json_schemas</code> in <code>.automation/build.py</code>)</li>
 <li><code>CLOJURE_CLJ_KONDO</code> test fixtures are split into <code>good/</code> and <code>bad/</code> folders, so the <code>project</code> lint mode tests no longer lint the failing files, and <code>.wireit</code> poison fixtures now guard the excluded directories forwarding, at root and nested levels</li>
+<li>Linter tests now really run the non-default lint modes of linters whose name contains a hyphen (clj-kondo, cfn-lint, rst-lint, tekton-lint...) or is overridden (eslint <code>ES</code>, nbqa mypy): <code>LinterTestRoot</code> set <code>&lt;DESCRIPTOR&gt;_&lt;LINTER-NAME&gt;_CLI_LINT_MODE</code> instead of the linter key, so the override was ignored. A new assertion fails the test when the requested lint mode is not applied (<a href="https://github.com/oxsecurity/megalinter/issues/9030">#9030</a>)<ul>
+<li>Test fixtures of <code>CLOUDFORMATION_CFN_LINT</code>, <code>EDITORCONFIG_EDITORCONFIG_CHECKER</code>, <code>ENV_DOTENV_LINTER</code>, <code>GHERKIN_GHERKIN_LINT</code> and <code>GROOVY_NPM_GROOVY_LINT</code> are split into <code>good/</code> and <code>bad/</code> folders, so the <code>project</code> lint mode tests no longer lint the failing files</li>
+<li><code>TEKTON_TEKTON_LINT</code> gets a <code>.wireit</code> poison fixture guarding its new excluded directories forwarding, and <code>ENV_DOTENV_LINTER</code> root and nested ones</li>
+<li>The <code>.editorconfig</code> of the <code>EDITORCONFIG_EDITORCONFIG_CHECKER</code> fixtures moves into <code>good/</code> and <code>bad/</code>, so the linter is activated in the split folders, and the <code>TYPESCRIPT_ES</code> / <code>TYPESCRIPT_STANDARD</code> fixtures no longer fail on their own <code>eslint.config.js</code> in <code>project</code> lint mode</li>
+</ul>
+</li>
 <li><code>CljKondoLinter</code> forwards excluded directories through <code>:output :exclude-files</code> instead of a top-level <code>:exclude-files</code> vector (an invalid value), and no longer skips the forwarding when a <code>--config</code> file is passed, which was always the case since the default <code>TEMPLATES/.clj-kondo/config.edn</code> is used when the repository has none</li>
 <li><code>--lint</code> moved from <code>cli_lint_extra_args_after</code> to the per-mode <code>cli_lint_mode_*_extra_args_after</code> properties, because clj-kondo assigns every following argument to the last option: the forwarded <code>--config</code> must come before it</li>
 <li>New descriptor property <strong><code>cli_lint_mode_project_config_paths_regex</code></strong>: a regex searched in the resolved linter config file; when it matches, <code>cli_lint_mode_project_extra_args_after</code> is not sent, as it would override the paths defined in the config. Every project-mode <code>.</code> was reviewed against the tools' docs/source (rules in <code>.claude/rules/descriptors.md</code>)</li>
@@ -15822,6 +15836,13 @@
 <li><a href="https://github.com/astral-sh/ruff">ruff-format</a> from 0.16.8 to <strong>0.16.10</strong> on 2026-10-12</li>
 <li><a href="https://github.com/astral-sh/ruff">ruff</a> from 0.16.8 to <strong>0.16.10</strong> on 2026-10-12</li>
 <li><a href="https://raku.org/">raku</a> from 2026.03 to <strong>2026.08</strong> on 2026-10-12</li>
+<li><a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter">bicep_linter</a> from 0.47.16 to <strong>0.48.1</strong> on 2026-10-17</li>
+<li><a href="https://github.com/aws-cloudformation/cfn-lint">cfn-lint</a> from 1.57.1 to <strong>1.57.2</strong> on 2026-10-17</li>
+<li><a href="https://prettier.io/">prettier</a> from 3.9.9 to <strong>3.9.10</strong> on 2026-10-17</li>
+<li><a href="https://github.com/PowerShell/PSScriptAnalyzer">powershell_formatter</a> from 7.6.6 to <strong>7.6.7</strong> on 2026-10-17</li>
+<li><a href="https://github.com/PowerShell/PSScriptAnalyzer">powershell</a> from 7.6.6 to <strong>7.6.7</strong> on 2026-10-17</li>
+<li><a href="https://github.com/mongodb/kingfisher">kingfisher</a> from 2.9.1 to <strong>2.11.1</strong> on 2026-10-17</li>
+<li><a href="https://github.com/trufflesecurity/trufflehog">trufflehog</a> from 3.97.9 to <strong>3.99.2</strong> on 2026-10-17</li>
 </ul>
 </li>
 </ul>

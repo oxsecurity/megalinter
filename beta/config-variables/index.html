@@ -12263,7 +12263,7 @@
 <tr>
 <td><strong>FAIL_IF_UPDATED_SOURCES</strong></td>
 <td><code>false</code></td>
-<td>If set to <code>true</code>, MegaLinter fails if a linter or formatter has autofixed sources, even if there are no errors</td>
+<td>If set to <code>true</code>, MegaLinter fails if a linter, a formatter or a post-command has updated sources, even if there are no errors and even if <code>DISABLE_ERRORS</code> is <code>true</code></td>
 </tr>
 <tr>
 <td><a href="../config-filtering/"><strong>FILTER_REGEX_EXCLUDE</strong></a></td>
@@ -12288,7 +12288,7 @@
 <tr>
 <td><strong>GIT_AUTHORIZATION_BEARER</strong></td>
 <td><!-- --></td>
-<td>If set, calls git with <strong><code>Authorization: Bearer</code>+value</strong></td>
+<td>If set, calls git with <strong><code>Authorization: Bearer</code>+value</strong> (useful to list the updated files in a private repository whose checkout does not persist credentials)</td>
 </tr>
 <tr>
 <td><strong>GITHUB_WORKSPACE</strong></td>

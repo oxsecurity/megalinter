@@ -12600,7 +12600,7 @@
 </tr>
 <tr>
 <td>GO_GOLANGCI_LINT_FORWARD_EXCLUDED_DIRECTORIES</td>
-<td>In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES) to the linter through its native exclusion arguments or generated ignore/config files</td>
+<td>In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES, and .gitignored directories when IGNORE_GITIGNORED_FILES is true) to the linter through its native exclusion arguments or generated ignore/config files</td>
 <td><code>true</code></td>
 </tr>
 <tr>
@@ -12797,7 +12797,7 @@ Use<span class="w"> </span><span class="s2">"golangci-lint [command] --help"</sp
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># Parent descriptor install</span>
 <span class="c"># renovate: datasource=repology depName=alpine_3_24/go versioning=loose</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">GO_ALPINE_VERSION</span><span class="o">=</span><span class="m">1</span>.26.8-r0
+<span class="k">ARG</span><span class="w"> </span><span class="nv">GO_ALPINE_VERSION</span><span class="o">=</span><span class="m">1</span>.26.9-r0
 <span class="k">RUN</span><span class="w"> </span>apk<span class="w"> </span>add<span class="w"> </span>--no-cache<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="nv">go</span><span class="o">=</span><span class="si">${</span><span class="nv">GO_ALPINE_VERSION</span><span class="si">}</span>
 <span class="c"># Linter install</span>
