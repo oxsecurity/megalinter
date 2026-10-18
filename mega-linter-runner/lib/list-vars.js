@@ -61,13 +61,13 @@ function renderHuman(variables, pattern, meta) {
     if (Array.isArray(v.items_enum) && v.items_enum.length > 0) {
       const preview = v.items_enum.slice(0, 6).join(", ");
       const suffix =
-        v.items_enum.length > 6
-          ? `, … (${v.items_enum.length} values)`
-          : "";
+        v.items_enum.length > 6 ? `, … (${v.items_enum.length} values)` : "";
       lines.push(`    item values: ${preview}${suffix}`);
     }
     if (Array.isArray(v.examples) && v.examples.length > 0) {
-      lines.push(`    examples: ${v.examples.map((e) => JSON.stringify(e)).join(", ")}`);
+      lines.push(
+        `    examples: ${v.examples.map((e) => JSON.stringify(e)).join(", ")}`,
+      );
     }
     lines.push("");
   }
@@ -88,7 +88,11 @@ export function listVars({ pattern, asJson } = {}) {
     return {
       stdout: JSON.stringify(
         {
-          _meta: { ...data._meta, pattern: pattern || null, returned: filtered.length },
+          _meta: {
+            ...data._meta,
+            pattern: pattern || null,
+            returned: filtered.length,
+          },
           variables: filtered,
         },
         null,

@@ -31,7 +31,7 @@ ARG DOCKERFILE_HADOLINT_VERSION=v2.15.1-alpine
 # renovate: datasource=docker depName=mstruebing/editorconfig-checker
 ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=4.0.2
 # renovate: datasource=github-tags depName=mgechev/revive
-ARG GO_REVIVE_VERSION=v1.17.0
+ARG GO_REVIVE_VERSION=v1.17.1
 # renovate: datasource=docker depName=golang versioning=semver
 ARG GO_IMAGE_VERSION=1.27.2
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
@@ -39,7 +39,7 @@ ARG KUBERNETES_KUBECONFORM_VERSION=v0.8.0-alpine
 # renovate: datasource=docker depName=ghcr.io/betterleaks/betterleaks
 ARG REPOSITORY_BETTERLEAKS_VERSION=v1.7.3
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.97.9
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.99.2
 # renovate: datasource=docker depName=lycheeverse/lychee
 ARG SPELL_LYCHEE_VERSION=0.24.2-alpine
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
@@ -142,7 +142,7 @@ RUN python -c 'import sys; assert sys.version_info >= (3, 14, 7), "Python 3.14.7
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=repology depName=alpine_3_24/go versioning=loose
-ARG GO_ALPINE_VERSION=1.26.8-r0
+ARG GO_ALPINE_VERSION=1.26.9-r0
 # renovate: datasource=npm depName=typescript
 ARG NPM_TYPESCRIPT_VERSION=6.0.3
 # renovate: datasource=pypi depName=ansible-lint
@@ -155,7 +155,7 @@ ARG CLJ_KONDO_VERSION=2026.08.04
 # renovate: datasource=github-tags depName=greglook/cljstyle
 ARG CLJ_STYLE_VERSION=0.17.642
 # renovate: datasource=pypi depName=cfn-lint
-ARG PIP_CFN_LINT_VERSION=1.57.1
+ARG PIP_CFN_LINT_VERSION=1.57.2
 # renovate: datasource=npm depName=jscpd
 ARG NPM_JSCPD_VERSION=5.4.0
 # renovate: datasource=npm depName=stylelint
@@ -206,7 +206,7 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 # renovate: datasource=npm depName=standard
 ARG NPM_STANDARD_VERSION=17.1.2
 # renovate: datasource=npm depName=prettier
-ARG NPM_PRETTIER_VERSION=3.9.9
+ARG NPM_PRETTIER_VERSION=3.9.10
 # renovate: datasource=npm depName=@prantlf/jsonlint
 ARG NPM_PRANTLF_JSONLINT_VERSION=17.0.1
 # renovate: datasource=npm depName=v8r
@@ -216,7 +216,7 @@ ARG NPM_PACKAGE_JSON_LINT_VERSION=11.0.0
 # renovate: datasource=npm depName=npm-package-json-lint-config-default
 ARG NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION=10.0.0
 # renovate: datasource=npm depName=@eslint-react/eslint-plugin
-ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.23.5
+ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.24.10
 # renovate: datasource=github-tags depName=pinterest/ktlint
 ARG KTLINT_VERSION=1.8.0
 
@@ -236,7 +236,7 @@ ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=4.0.4
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
 ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.7.0
 # renovate: datasource=packagist depName=phpstan/phpstan
-ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.2.16
+ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.2.17
 # renovate: datasource=packagist depName=phpstan/extension-installer
 ARG PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION=1.4.3
 # renovate: datasource=packagist depName=vimeo/psalm
@@ -250,7 +250,7 @@ ARG PIP_PYLINT_VERSION=4.1.2
 # renovate: datasource=pypi depName=typing-extensions
 ARG PIP_TYPING_EXTENSIONS_VERSION=4.16.0
 # renovate: datasource=pypi depName=black
-ARG PIP_BLACK_VERSION=26.5.1
+ARG PIP_BLACK_VERSION=26.10.1
 # renovate: datasource=pypi depName=flake8
 ARG PIP_FLAKE8_VERSION=7.4.1
 # renovate: datasource=pypi depName=isort
@@ -262,15 +262,15 @@ ARG PIP_NBQA_VERSION=1.9.1
 # renovate: datasource=npm depName=pyright
 ARG NPM_PYRIGHT_VERSION=1.1.414
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.16.8
+ARG PIP_RUFF_VERSION=0.16.10
 # renovate: datasource=pypi depName=checkov
 ARG PIP_CHECKOV_VERSION=3.3.22
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.120.0
+ARG REPOSITORY_GRYPE_VERSION=0.120.1
 # renovate: datasource=github-releases depName=loeffel-io/ls-lint extractVersion=^v(?<version>.+)$
 ARG REPOSITORY_LS_LINT_VERSION=2.3.1
 # renovate: datasource=repology depName=alpine_3_24/osv-scanner versioning=loose
-ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.8-r2
+ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.8-r3
 # renovate: datasource=npm depName=secretlint
 ARG NPM_SECRETLINT_VERSION=13.0.7
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
@@ -280,7 +280,7 @@ ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=13.0.7
 # renovate: datasource=pypi depName=semgrep
 ARG PIP_SEMGREP_VERSION=1.180.0
 # renovate: datasource=github-tags depName=anchore/syft
-ARG REPOSITORY_SYFT_VERSION=1.54.0
+ARG REPOSITORY_SYFT_VERSION=1.54.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_VERSION=0.75.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
@@ -322,11 +322,11 @@ ARG SWIFT_SWIFTLINT_VERSION=0.65.1
 # renovate: datasource=npm depName=prettyjson
 ARG NPM_PRETTYJSON_VERSION=1.2.5
 # renovate: datasource=npm depName=@typescript-eslint/eslint-plugin
-ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.71.0
+ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.71.1
 # renovate: datasource=npm depName=@typescript-eslint/parser
-ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.71.0
+ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.71.1
 # renovate: datasource=npm depName=typescript-eslint
-ARG NPM_TYPESCRIPT_ESLINT_VERSION=8.71.0
+ARG NPM_TYPESCRIPT_ESLINT_VERSION=8.71.1
 # renovate: datasource=npm depName=ts-standard
 ARG NPM_TS_STANDARD_VERSION=12.0.2
 # renovate: datasource=pypi depName=yamllint

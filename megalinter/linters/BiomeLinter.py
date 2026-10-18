@@ -16,7 +16,10 @@ class BiomeLinter(Linter):
                 if os.path.isfile(candidate):
                     user_config_file = candidate
                     break
-        # A child files.includes replaces the parent one: re-emit user entries first
+        # The user entries are re-emitted before the negated patterns. Current
+        # Biome versions append a child files.includes to the extended one, so
+        # they are duplicates there, but a version replacing the parent list
+        # would otherwise receive negated patterns only, which include nothing
         includes = ["**"]
         if user_config_file is not None:
             user_includes = (

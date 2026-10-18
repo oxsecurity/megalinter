@@ -11,6 +11,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Breaking changes
 
 - Core
+  - Outside CI, **`PARALLEL_PROCESS_NUMBER`** now defaults to the number of cores minus one, so your machine stays responsive while MegaLinter runs. CI runs still use every core, and setting the variable still overrides the default
   - The **LLM Advisor** supports **API Route**, an OpenAI-compatible multi-model gateway: set **`LLM_PROVIDER: api-route`** and **`API_ROUTE_API_KEY`** to use API Route models through MegaLinter.
 
 - New linters
@@ -33,9 +34,39 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - To lint each file separately as before, set `CLOJURE_CLJ_KONDO_CLI_LINT_MODE: file`
 
 - Fixes
+  - **GitLab and Git environment variables** such as `GIT_STRATEGY` no longer trigger a false removed-linter warning. Removed MegaLinter options and linter selections still warn. Fixes [#9024](https://github.com/oxsecurity/megalinter/issues/9024)
+  - **Pull request runs in private repositories** no longer crash with a git traceback when the checkout does not persist credentials: MegaLinter warns, explains how to enable the git diff mode (`persist-credentials: true` or **`GIT_AUTHORIZATION_BEARER`**) and lints the whole codebase. Fixes [#9104](https://github.com/oxsecurity/megalinter/issues/9104)
+  - **`FAIL_IF_UPDATED_SOURCES`** is now reliable. Fixes [#9103](https://github.com/oxsecurity/megalinter/issues/9103)
+    - A warning is shown when its value is neither `true` nor `false` (for example an empty CI variable), and the console log tells whether the option is active
+    - The failure reason, naming the linters that updated sources, is shown even when other linters failed too
+    - It takes precedence over `DISABLE_ERRORS: true`: the exit code is 1, as the summary says
+    - Sources updated by `project` lint mode linters and by `POST_COMMANDS` now fail the run too, and set the `has_updated_sources` output
+  - The **Email reporter** no longer sends a mail for a successful run without updated sources unless `EMAIL_REPORTER_SEND_SUCCESS` is `true`, and the **File.io reporter** skips such runs when `FILEIO_REPORTER_SEND_SUCCESS` is `true`, as documented
   - **CLOJURE_CLJ_KONDO** now really forwards `EXCLUDED_DIRECTORIES` and `ADDITIONAL_EXCLUDED_DIRECTORIES` in `project` lint mode: they were never applied before, so files in folders like `node_modules` or `.wireit` could be reported
     - The directories are passed as a merged `:output {:exclude-files [...]}` inline configuration, so your own `:output :exclude-files` patterns in `.clj-kondo/config.edn` are kept
     - Disable the forwarding with `CLOJURE_CLJ_KONDO_FORWARD_EXCLUDED_DIRECTORIES: false`
+  - The **`.mega-linter.yml` JSON Schema** is no longer rejected by strict JSON Schema validators with `Invalid anchor value`: the invalid `$id` values are removed from the configuration and descriptor schemas. Fixes [#9177](https://github.com/oxsecurity/megalinter/issues/9177)
+  - **Project lint mode** no longer overrides the paths defined in the linters' own configuration: since v10, folders such as `vendor/` were analyzed again by linters like phpcs, phpstan or editorconfig-checker, making runs slow and noisy. Fixes [#8955](https://github.com/oxsecurity/megalinter/issues/8955)
+    - Linters that analyze the current folder by default are no longer passed `.`: eslint, biome, standard, ruff, ruff format, flake8, rubocop, phplint, jscpd, gherkin-lint, dart analyze, cljstyle and editorconfig-checker (which honours `.gitignore` again)
+    - Linters requiring a path receive `.` only when their configuration does not define the paths to analyze: phpcs (`<file>`), phpstan (`paths`), psalm (`<projectFiles>`), php-cs-fixer (Finder `in()`), pylint and mypy (`files`), pyright (`include`), cfn-lint (`templates`), checkov (`directory`) and cspell (`files`)
+    - The `<LINTER_KEY>_COMMAND_REMOVE_ARGUMENTS: "."` workaround is no longer needed
+  - With **`IGNORE_GITIGNORED_FILES: true`** (default), the directories ignored by git are now forwarded to project lint mode linters with `EXCLUDED_DIRECTORIES`: a gitignored `vendor/` or `build/` folder is no longer analyzed by phpcs, trivy, checkov...
+    - A gitignored directory sharing its name with a tracked one (ex: `/lib/` build output and `src/lib` sources) is only sent to the linters receiving exact paths, so your tracked sources stay analyzed
+    - Disable it with the new **`FORWARD_GITIGNORED_DIRECTORIES: false`** variable
+  - **Your own exclusions are kept** when MegaLinter forwards `EXCLUDED_DIRECTORIES` to `project` lint mode linters: the forwarded directories used to replace the exclusions defined in the linter's own configuration, so folders you left out were analyzed again. Fixes [#8955](https://github.com/oxsecurity/megalinter/issues/8955)
+    - Exclusions from your config file are now kept for phplint (`exclude`), pylint (`ignore`), black (`extend-exclude`), flake8 (`extend-exclude`), isort (`extend_skip`), bandit (`.bandit` `exclude`), nbqa (`exclude`), djlint (`extend_exclude`), robocop (`exclude`), npm-groovy-lint (`ignorepattern`), rumdl (`exclude`) and jsonlint (`patterns`)
+    - The tools' own default exclusions are kept for ansible-lint, cspell, pylint and gherkin-lint
+    - csharpier keeps honouring `.gitignore`, v8r your `ignorePatternFiles`, yamllint an `ignore` inherited through `extends` or an `ignore-from-file`, and StyLua the file patterns of `.styluaignore` and `.gitignore` (and `.luau` files are linted again)
+    - The config file passed in your `<LINTER_KEY>_ARGUMENTS` is read too, and an exclusion argument you already pass there (ex: phpcs `--ignore=`) is merged with the forwarded directories instead of being overridden
+  - **phpstan** no longer reports unknown classes when MegaLinter forwards `EXCLUDED_DIRECTORIES`: the forwarded directories are excluded from analysis only, so the symbols of your `scanDirectories` (ex: `vendor-bin/*/vendor`) are found again. Fixes [#8955](https://github.com/oxsecurity/megalinter/issues/8955)
+  - **robocop** now receives your `robocop.toml` through `--config`: the `-c` argument sent before is robocop's `--configure` option
+  - **betterleaks** keeps the configuration given in `BETTERLEAKS_CONFIG`, `GITLEAKS_CONFIG` or their `*_CONFIG_TOML` variants when MegaLinter forwards `EXCLUDED_DIRECTORIES`
+  - Fixed **lint modes that never worked**. Fixes [#9030](https://github.com/oxsecurity/megalinter/issues/9030)
+    - **`RST_RST_LINT_CLI_LINT_MODE: project`** now lints the `.rst` files of the workspace, instead of failing with rst-lint's usage message
+    - **`TEKTON_TEKTON_LINT_CLI_LINT_MODE: project`** now lints the `.yml` and `.yaml` files of the workspace (or the `globs` of your `.tektonlintrc.yaml`), instead of failing with `No paths match glob ""`. `EXCLUDED_DIRECTORIES` are applied too
+    - **`CLOUDFORMATION_CFN_LINT_CLI_LINT_MODE: project`** now lints the `.json`, `.yaml` and `.yml` files of the workspace (or the `templates` of your `.cfnlintrc`), instead of failing with `Template references a directory, not a file`
+    - **`ENV_DOTENV_LINTER_CLI_LINT_MODE: project`** now lints the `.env` files of the workspace and its subfolders, instead of failing with dotenv-linter's usage message. `EXCLUDED_DIRECTORIES` are applied at any nesting level
+    - **REPOSITORY_LS_LINT** and **SALESFORCE_CODE_ANALYZER_FLOW** only accept the `project` lint mode: in `file` or `list_of_files` mode they analyzed no file at all. If you set `REPOSITORY_LS_LINT_CLI_LINT_MODE` to another mode, remove it
 
 - Reporters
 
@@ -51,9 +82,23 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **megalinter-fix** now explains how to fix clj-kondo `:type-mismatch` and `:constant-condition` findings, and the difference between the top-level `:exclude-files` and `:output :exclude-files` clj-kondo settings
 
 - Dev
+  - The build now fails when a JSON Schema in `megalinter/descriptors/schemas/` is not compliant with its draft-07 meta-schema, or declares an `$id` holding a JSON Pointer fragment (`validate_json_schemas` in `.automation/build.py`)
   - `CLOJURE_CLJ_KONDO` test fixtures are split into `good/` and `bad/` folders, so the `project` lint mode tests no longer lint the failing files, and `.wireit` poison fixtures now guard the excluded directories forwarding, at root and nested levels
+  - Linter tests now really run the non-default lint modes of linters whose name contains a hyphen (clj-kondo, cfn-lint, rst-lint, tekton-lint...) or is overridden (eslint `ES`, nbqa mypy): `LinterTestRoot` set `<DESCRIPTOR>_<LINTER-NAME>_CLI_LINT_MODE` instead of the linter key, so the override was ignored. A new assertion fails the test when the requested lint mode is not applied ([#9030](https://github.com/oxsecurity/megalinter/issues/9030))
+    - Test fixtures of `CLOUDFORMATION_CFN_LINT`, `EDITORCONFIG_EDITORCONFIG_CHECKER`, `ENV_DOTENV_LINTER`, `GHERKIN_GHERKIN_LINT` and `GROOVY_NPM_GROOVY_LINT` are split into `good/` and `bad/` folders, so the `project` lint mode tests no longer lint the failing files
+    - `TEKTON_TEKTON_LINT` gets a `.wireit` poison fixture guarding its new excluded directories forwarding, and `ENV_DOTENV_LINTER` root and nested ones
+    - The `.editorconfig` of the `EDITORCONFIG_EDITORCONFIG_CHECKER` fixtures moves into `good/` and `bad/`, so the linter is activated in the split folders, and the `TYPESCRIPT_ES` / `TYPESCRIPT_STANDARD` fixtures no longer fail on their own `eslint.config.js` in `project` lint mode
   - `CljKondoLinter` forwards excluded directories through `:output :exclude-files` instead of a top-level `:exclude-files` vector (an invalid value), and no longer skips the forwarding when a `--config` file is passed, which was always the case since the default `TEMPLATES/.clj-kondo/config.edn` is used when the repository has none
   - `--lint` moved from `cli_lint_extra_args_after` to the per-mode `cli_lint_mode_*_extra_args_after` properties, because clj-kondo assigns every following argument to the last option: the forwarded `--config` must come before it
+  - New descriptor property **`cli_lint_mode_project_config_paths_regex`**: a regex searched in the resolved linter config file; when it matches, `cli_lint_mode_project_extra_args_after` is not sent, as it would override the paths defined in the config. Every project-mode `.` was reviewed against the tools' docs/source (rules in `.claude/rules/descriptors.md`)
+  - `Megalinter.get_gitignored_directories()` extracts the ignored directories from the `git ls-files --directory` output (skipping the ones inside an excluded directory, capped to `MAX_GITIGNORED_DIRECTORIES_BYTES`), and `get_unambiguous_gitignored_directories()` keeps for `{{DIR}}` templates only the ones whose path suffix no tracked directory shares; `Linter.compute_project_exclude_directories()` forwards them through `project_gitignored_name_directories` / `project_gitignored_directories`
+  - `cli_lint_mode_project_config_paths_regex` is searched in the config file with XML comments removed, so a commented-out `<file>` or `<projectFiles>` does not count
+  - `PhpCsFixerLinter` no longer drops `.` itself (the descriptor regex does it), and `JsCpdLinter` rebases the configured `path` entries when it generates its config in the report folder
+  - `PHP_PHPCS` regression fixture: `.automation/test/php/good/phpcs.xml` lists the files to analyze, and `out_of_config_paths.inc` (not collected by MegaLinter) fails the `project` lint mode test if `.` overrides them
+  - Descriptor property **`cli_lint_mode_project_exclude_config_key`** now reads TOML, JSON (with comments), INI and YAML configs, accepts a list of alternative key paths and a `*` wildcard segment, splits comma separated string values (kept whole for `|` joined regexes), and also reads the config passed in `ARGUMENTS`
+    - New descriptor properties: **`cli_lint_mode_project_exclude_config_files`** (workspace configs discovered by the tool itself), **`cli_lint_mode_project_exclude_conflicting_args`** (user arguments disabling the forwarding) and **`cli_lint_mode_project_exclude_ignore_file_merge_all_seeds`**
+    - With ignore file forwarding, `cli_lint_mode_project_exclude_config_key` lists the user's ignore files, re-passed instead of `cli_lint_mode_project_exclude_ignore_file_pass_existing`
+  - `PhpstanLinter` generates `excludePaths: analyse:` instead of a plain list (`analyseAndScan`), `YamllintLinter` follows the `extends` chain and supports `ignore-from-file`, `PhpCsFixerLinter` guards `exclude()` against non-Finder iterables, and `MegaLinter.get_parallel_process_number()` holds the default parallelism
 
 - CI
   - **Dependabot** no longer opens version or security update PRs for the pip, uv, bundler, gomod and cargo test fixtures under `.automation/test/`: they must stay outdated, in particular the `.wireit` poison fixtures guarding the excluded directories forwarding
@@ -62,6 +107,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Per-linter test jobs (`deploy-DEV-linters.yml`, `deploy-BETA-linters.yml`) now pass `GITHUB_ACTIONS` to the test container
   - **`test-agent-plugins.yml`** validation script now accepts both the `{"plugins": [...], "errors": [...]}` wrapper and the bare-array shape the GitHub Copilot CLI's `plugins list --json` can return, fixing a crash of the "Validate agent plugins manifests" check
   - **`REPOSITORY_DUSTILOCK`** is now non-blocking in MegaLinter's own `.mega-linter.yml`: dustilock reports any PyPI lookup error (such as intermittent `503` responses) as a package "available for public registration", which failed the "Run against all code base - DEV" job on unrelated PRs
+  - **Renovate and Dependabot** now apply the same waiting rule: 7 days after a release, none for security updates
+    - GitHub Actions are updated by Dependabot only (Renovate's `github-actions` manager is disabled): Renovate can not date SHA-pinned digest updates, so they stayed pending forever and duplicated Dependabot's PRs
+    - Renovate lock file maintenance is disabled: a lock file refresh has no release date, so it could never pass the 7-day check
+    - Dependabot now also updates the actions of `flavors/custom-builder/action.yml`
 
 - Linter versions upgrades (N)
   - [shfmt](https://github.com/mvdan/sh) from 3.13.1 to **3.14.0** on 2026-09-12
@@ -178,6 +227,17 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sqlfluff](https://www.sqlfluff.com/) from 4.3.0 to **4.4.0** on 2026-10-11
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.16.3 to **1.16.4** on 2026-10-11
   - [terragrunt](https://docs.terragrunt.com/reference/cli/commands/hcl/fmt/) from 1.1.5 to **1.1.6** on 2026-10-11
+  - [phpstan](https://phpstan.org/) from 2.2.16 to **2.2.17** on 2026-10-12
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.16.8 to **0.16.10** on 2026-10-12
+  - [ruff](https://github.com/astral-sh/ruff) from 0.16.8 to **0.16.10** on 2026-10-12
+  - [raku](https://raku.org/) from 2026.03 to **2026.08** on 2026-10-12
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.47.16 to **0.48.1** on 2026-10-17
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.57.1 to **1.57.2** on 2026-10-17
+  - [prettier](https://prettier.io/) from 3.9.9 to **3.9.10** on 2026-10-17
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.6 to **7.6.7** on 2026-10-17
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.6 to **7.6.7** on 2026-10-17
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 2.9.1 to **2.11.1** on 2026-10-17
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.97.9 to **3.99.2** on 2026-10-17
 <!-- linter-versions-end -->
 
 ## [v10.1.0] - 2026-09-05

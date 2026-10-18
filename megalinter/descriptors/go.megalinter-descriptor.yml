@@ -10,7 +10,7 @@ install:
   dockerfile:
     - |-
       # renovate: datasource=repology depName=alpine_3_24/go versioning=loose
-      ARG GO_ALPINE_VERSION=1.26.8-r0
+      ARG GO_ALPINE_VERSION=1.26.9-r0
     - |-
       RUN apk add --no-cache \
           go=${GO_ALPINE_VERSION}
@@ -203,7 +203,7 @@ linters:
         # - COPY --link --from=revive /usr/bin/revive /usr/bin/revive
         - |-
           # renovate: datasource=github-tags depName=mgechev/revive
-          ARG GO_REVIVE_VERSION=v1.17.0
+          ARG GO_REVIVE_VERSION=v1.17.1
         - |-
           # renovate: datasource=docker depName=golang versioning=semver
           ARG GO_IMAGE_VERSION=1.27.2
