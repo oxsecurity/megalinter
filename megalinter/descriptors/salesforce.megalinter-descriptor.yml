@@ -519,6 +519,8 @@ linters:
       - "--view"
       - "table"
     cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
     cli_help_extra_args:
       - "code-analyzer"
       - "run"

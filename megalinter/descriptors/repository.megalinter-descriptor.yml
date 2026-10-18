@@ -523,7 +523,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=anchore/grype
-          ARG REPOSITORY_GRYPE_VERSION=0.120.0
+          ARG REPOSITORY_GRYPE_VERSION=0.120.1
         - RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin
     supported_platforms:
       platform:
@@ -554,10 +554,9 @@ linters:
     linter_banner_image_url: https://raw.githubusercontent.com/loeffel-io/ls-lint/master/assets/logo/ls-lint.png
     active_only_if_file_found:
       - ".ls-lint.yml"
+    # ls-lint checks the names of the whole directory tree against .ls-lint.yml
     cli_lint_mode: project
     supported_cli_lint_modes:
-      - file
-      - list_of_files
       - project
     cli_config_arg_name: "--config"
     config_file_name: ".ls-lint.yml"
@@ -915,7 +914,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-tags depName=anchore/syft
-          ARG REPOSITORY_SYFT_VERSION=1.54.0
+          ARG REPOSITORY_SYFT_VERSION=1.54.1
         - RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOSITORY_SYFT_VERSION}/install.sh | sh -s -- -b /usr/local/bin
     supported_platforms:
       platform:
