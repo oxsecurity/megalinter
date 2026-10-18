@@ -60,6 +60,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **phpstan** no longer reports unknown classes when MegaLinter forwards `EXCLUDED_DIRECTORIES`: the forwarded directories are excluded from analysis only, so the symbols of your `scanDirectories` (ex: `vendor-bin/*/vendor`) are found again. Fixes [#8955](https://github.com/oxsecurity/megalinter/issues/8955)
   - **robocop** now receives your `robocop.toml` through `--config`: the `-c` argument sent before is robocop's `--configure` option
   - **betterleaks** keeps the configuration given in `BETTERLEAKS_CONFIG`, `GITLEAKS_CONFIG` or their `*_CONFIG_TOML` variants when MegaLinter forwards `EXCLUDED_DIRECTORIES`
+  - Fixed **lint modes that never worked**. Fixes [#9030](https://github.com/oxsecurity/megalinter/issues/9030)
+    - **`RST_RST_LINT_CLI_LINT_MODE: project`** now lints the `.rst` files of the workspace, instead of failing with rst-lint's usage message
+    - **`TEKTON_TEKTON_LINT_CLI_LINT_MODE: project`** now lints the `.yml` and `.yaml` files of the workspace (or the `globs` of your `.tektonlintrc.yaml`), instead of failing with `No paths match glob ""`. `EXCLUDED_DIRECTORIES` are applied too
+    - **`CLOUDFORMATION_CFN_LINT_CLI_LINT_MODE: project`** now lints the `.json`, `.yaml` and `.yml` files of the workspace (or the `templates` of your `.cfnlintrc`), instead of failing with `Template references a directory, not a file`
+    - **`ENV_DOTENV_LINTER_CLI_LINT_MODE: project`** now lints the `.env` files of the workspace and its subfolders, instead of failing with dotenv-linter's usage message. `EXCLUDED_DIRECTORIES` are applied at any nesting level
+    - **REPOSITORY_LS_LINT** and **SALESFORCE_CODE_ANALYZER_FLOW** only accept the `project` lint mode: in `file` or `list_of_files` mode they analyzed no file at all. If you set `REPOSITORY_LS_LINT_CLI_LINT_MODE` to another mode, remove it
 
 - Reporters
 
@@ -77,6 +83,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Dev
   - The build now fails when a JSON Schema in `megalinter/descriptors/schemas/` is not compliant with its draft-07 meta-schema, or declares an `$id` holding a JSON Pointer fragment (`validate_json_schemas` in `.automation/build.py`)
   - `CLOJURE_CLJ_KONDO` test fixtures are split into `good/` and `bad/` folders, so the `project` lint mode tests no longer lint the failing files, and `.wireit` poison fixtures now guard the excluded directories forwarding, at root and nested levels
+  - Linter tests now really run the non-default lint modes of linters whose name contains a hyphen (clj-kondo, cfn-lint, rst-lint, tekton-lint...) or is overridden (eslint `ES`, nbqa mypy): `LinterTestRoot` set `<DESCRIPTOR>_<LINTER-NAME>_CLI_LINT_MODE` instead of the linter key, so the override was ignored. A new assertion fails the test when the requested lint mode is not applied ([#9030](https://github.com/oxsecurity/megalinter/issues/9030))
+    - Test fixtures of `CLOUDFORMATION_CFN_LINT`, `EDITORCONFIG_EDITORCONFIG_CHECKER`, `ENV_DOTENV_LINTER`, `GHERKIN_GHERKIN_LINT` and `GROOVY_NPM_GROOVY_LINT` are split into `good/` and `bad/` folders, so the `project` lint mode tests no longer lint the failing files
+    - `TEKTON_TEKTON_LINT` gets a `.wireit` poison fixture guarding its new excluded directories forwarding, and `ENV_DOTENV_LINTER` root and nested ones
+    - The `.editorconfig` of the `EDITORCONFIG_EDITORCONFIG_CHECKER` fixtures moves into `good/` and `bad/`, so the linter is activated in the split folders, and the `TYPESCRIPT_ES` / `TYPESCRIPT_STANDARD` fixtures no longer fail on their own `eslint.config.js` in `project` lint mode
   - `CljKondoLinter` forwards excluded directories through `:output :exclude-files` instead of a top-level `:exclude-files` vector (an invalid value), and no longer skips the forwarding when a `--config` file is passed, which was always the case since the default `TEMPLATES/.clj-kondo/config.edn` is used when the repository has none
   - `--lint` moved from `cli_lint_extra_args_after` to the per-mode `cli_lint_mode_*_extra_args_after` properties, because clj-kondo assigns every following argument to the last option: the forwarded `--config` must come before it
   - New descriptor property **`cli_lint_mode_project_config_paths_regex`**: a regex searched in the resolved linter config file; when it matches, `cli_lint_mode_project_extra_args_after` is not sent, as it would override the paths defined in the config. Every project-mode `.` was reviewed against the tools' docs/source (rules in `.claude/rules/descriptors.md`)
