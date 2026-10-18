@@ -28556,13 +28556,9 @@
       "default": "project",
       "description": "REPOSITORY_LS_LINT: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
-        "file",
-        "list_of_files",
         "project"
       ],
       "enumNames": [
-        "File",
-        "List of Files",
         "Project"
       ],
       "title": "REPOSITORY_LS_LINT: CLI lint mode",
@@ -32945,10 +32941,10 @@
       "default": "project",
       "description": "SALESFORCE_CODE_ANALYZER_FLOW: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
-        "file"
+        "project"
       ],
       "enumNames": [
-        "File"
+        "Project"
       ],
       "title": "SALESFORCE_CODE_ANALYZER_FLOW: CLI lint mode",
       "type": "string",
@@ -33012,7 +33008,7 @@
       "x-section": "ERRORS"
     },
     "SALESFORCE_CODE_ANALYZER_FLOW_FILTER_REGEX_EXCLUDE": {
-      "description": "",
+      "description": "SALESFORCE_CODE_ANALYZER_FLOW: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with SALESFORCE_CODE_ANALYZER_FLOW_CLI_LINT_MODE = project",
       "items": {
         "type": "string"
       },
@@ -33027,7 +33023,7 @@
       "x-section": "SCOPE"
     },
     "SALESFORCE_CODE_ANALYZER_FLOW_FILTER_REGEX_INCLUDE": {
-      "description": "",
+      "description": "SALESFORCE_CODE_ANALYZER_FLOW: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with SALESFORCE_CODE_ANALYZER_FLOW_CLI_LINT_MODE = project",
       "items": {
         "type": "string"
       },
@@ -33040,6 +33036,15 @@
       "x-doc-key": "config-filtering",
       "x-order": 300000,
       "x-section": "SCOPE"
+    },
+    "SALESFORCE_CODE_ANALYZER_FLOW_FORWARD_EXCLUDED_DIRECTORIES": {
+      "default": true,
+      "description": "SALESFORCE_CODE_ANALYZER_FLOW: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "title": "SALESFORCE_CODE_ANALYZER_FLOW: Forward excluded directories in project lint mode",
+      "type": "boolean",
+      "x-category": "SALESFORCE_CODE_ANALYZER_FLOW",
+      "x-order": 900999,
+      "x-section": "GENERAL"
     },
     "SALESFORCE_CODE_ANALYZER_FLOW_POST_COMMANDS": {
       "description": "SALESFORCE_CODE_ANALYZER_FLOW: Define bash commands to run after running SALESFORCE_CODE_ANALYZER_FLOW",

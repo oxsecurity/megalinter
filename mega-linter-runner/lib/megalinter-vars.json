@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "variable_count": 2884,
+    "variable_count": 2885,
     "categories": {
       "ACTION": 4,
       "ACTION_ACTIONLINT": 17,
@@ -172,7 +172,7 @@
       "SALESFORCE_CODE_ANALYZER_APEX": 16,
       "SALESFORCE_CODE_ANALYZER_APEXGURU": 16,
       "SALESFORCE_CODE_ANALYZER_AURA": 16,
-      "SALESFORCE_CODE_ANALYZER_FLOW": 15,
+      "SALESFORCE_CODE_ANALYZER_FLOW": 16,
       "SALESFORCE_CODE_ANALYZER_LWC": 16,
       "SALESFORCE_LIGHTNING_FLOW_SCANNER": 14,
       "SALESFORCE_SFDX_SCANNER_APEX": 14,
@@ -24768,8 +24768,6 @@
       "description": "REPOSITORY_LS_LINT: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "project",
       "enum": [
-        "file",
-        "list_of_files",
         "project"
       ],
       "category": "REPOSITORY_LS_LINT",
@@ -28440,7 +28438,7 @@
       "description": "SALESFORCE_CODE_ANALYZER_FLOW: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "project",
       "enum": [
-        "file"
+        "project"
       ],
       "category": "SALESFORCE_CODE_ANALYZER_FLOW",
       "section": "LINTER_COMMAND"
@@ -28500,7 +28498,7 @@
         "array"
       ],
       "title": "SALESFORCE_CODE_ANALYZER_FLOW: Excluding Regex",
-      "description": "",
+      "description": "SALESFORCE_CODE_ANALYZER_FLOW: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with SALESFORCE_CODE_ANALYZER_FLOW_CLI_LINT_MODE = project",
       "category": "SALESFORCE_CODE_ANALYZER_FLOW",
       "section": "SCOPE",
       "items_type": "string"
@@ -28512,10 +28510,19 @@
         "array"
       ],
       "title": "SALESFORCE_CODE_ANALYZER_FLOW: Including Regex",
-      "description": "",
+      "description": "SALESFORCE_CODE_ANALYZER_FLOW: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with SALESFORCE_CODE_ANALYZER_FLOW_CLI_LINT_MODE = project",
       "category": "SALESFORCE_CODE_ANALYZER_FLOW",
       "section": "SCOPE",
       "items_type": "string"
+    },
+    "SALESFORCE_CODE_ANALYZER_FLOW_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "SALESFORCE_CODE_ANALYZER_FLOW_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "SALESFORCE_CODE_ANALYZER_FLOW: Forward excluded directories in project lint mode",
+      "description": "SALESFORCE_CODE_ANALYZER_FLOW: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "SALESFORCE_CODE_ANALYZER_FLOW",
+      "section": "GENERAL"
     },
     "SALESFORCE_CODE_ANALYZER_FLOW_POST_COMMANDS": {
       "name": "SALESFORCE_CODE_ANALYZER_FLOW_POST_COMMANDS",
