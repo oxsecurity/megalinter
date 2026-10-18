@@ -24,6 +24,8 @@ description: How to use rst-lint (configure, ignore files, ignore errors, help &
 - **Command-line interface** for easy integration into build processes
 - **Fast processing** optimized for large documentation projects
 
+In `project` lint mode, rst-lint walks every `.rst` file below the workspace: it has no exclusion option, so `EXCLUDED_DIRECTORIES` are not applied. Prefer the default `list_of_files` mode when excluded directories contain `.rst` files.
+
 ## rst-lint documentation
 
 - Version in MegaLinter: **2.0.2**
@@ -85,6 +87,10 @@ rst-lint is called once on the whole project directory (`project` CLI lint mode)
 
 ```shell
 rst-lint myfile.rst
+```
+
+```shell
+rst-lint .
 ```
 
 
