@@ -29,7 +29,7 @@ description: How to use psalm (configure, ignore files, ignore errors, help & ve
 
 ## psalm documentation
 
-- Version in MegaLinter: **Psalm.6.19.1@**
+- Version in MegaLinter: **Psalm.6.19.2@**
 - Visit [Official Web Site](https://psalm.dev){target=_blank}
 - See [How to configure psalm rules](https://psalm.dev/docs/running_psalm/configuration/){target=_blank}
   - If custom `psalm.xml` config file isn't found, [psalm.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/psalm.xml){target=_blank} will be used
@@ -162,7 +162,8 @@ Surfacing issues:
 
     --find-dead-code[=auto]
     --find-unused-code[=auto]
-        Look for unused code. Options are 'auto' or 'always'. If no value is specified, default is 'auto'
+        Look for unused code. Options are 'auto' or 'always'. If no value is specified, default is 'auto'.
+        Unused code detection is already on by default (see the findUnusedCode config option)
 
     --find-unused-psalm-suppress
         Finds all @psalm-suppress annotations that aren’t used
@@ -317,7 +318,7 @@ ENV COMPOSER_HOME=/usr/local/composer
 ENV PATH="/usr/local/composer/vendor/bin:${PATH}"
 # Linter install
 # renovate: datasource=packagist depName=vimeo/psalm
-ARG PHP_VIMEO_PSALM_VERSION=6.19.1
+ARG PHP_VIMEO_PSALM_VERSION=6.19.2
 RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require vimeo/psalm:${PHP_VIMEO_PSALM_VERSION}
 
 ```

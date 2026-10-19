@@ -240,6 +240,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [revive](https://revive.run/) from 1.17.0 to **1.17.1** on 2026-10-18
   - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 5.4.0 to **5.4.1** on 2026-10-19
   - [rumdl](https://github.com/rvben/rumdl) from 0.2.78 to **0.2.79** on 2026-10-19
+  - [psalm](https://psalm.dev) from Psalm.6.19.1@ to **Psalm.6.19.2@** on 2026-10-19
+  - [pylint](https://pylint.readthedocs.io) from 4.1.2 to **4.1.3** on 2026-10-19
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.16.4 to **1.16.5** on 2026-10-19
 <!-- linter-versions-end -->
 
 ## [v10.1.0] - 2026-09-05
