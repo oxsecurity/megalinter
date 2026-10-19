@@ -41,7 +41,7 @@ For legacy projects, start with `--errors-only` flag and progressively enable mo
 
 ## pylint documentation
 
-- Version in MegaLinter: **4.1.2**
+- Version in MegaLinter: **4.1.3**
 - Visit [Official Web Site](https://pylint.readthedocs.io){target=_blank}
 - See [How to configure pylint rules](https://pylint.readthedocs.io/en/stable/user_guide/configuration/index.html){target=_blank}
   - If custom `.pylintrc` config file isn't found, [.pylintrc](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.pylintrc){target=_blank} will be used
@@ -609,7 +609,9 @@ Similarities:
   Checks for similarities and duplicated code.
 
   --min-similarity-lines <int>
-                        Minimum lines number of a similarity. (default: 4)
+                        Minimum lines number of a similarity. Setting it to 0
+                        will disable the check, but you should use
+                        disable=duplicate-code instead. (default: 4)
   --ignore-comments <y or n>
                         Comments are removed from the similarity computation
                         (default: True)
@@ -833,13 +835,13 @@ Format:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=pylint
-ARG PIP_PYLINT_VERSION=4.1.2
+ARG PIP_PYLINT_VERSION=4.1.3
 # renovate: datasource=pypi depName=typing-extensions
 ARG PIP_TYPING_EXTENSIONS_VERSION=4.16.0
 ```
 
 - PIP packages (Python):
-  - [pylint==4.1.2](https://pypi.org/project/pylint/4.1.2)
+  - [pylint==4.1.3](https://pypi.org/project/pylint/4.1.3)
   - [typing-extensions==4.16.0](https://pypi.org/project/typing-extensions/4.16.0)
 
 ## Known errors and resolutions
