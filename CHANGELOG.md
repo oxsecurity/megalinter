@@ -238,6 +238,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [kingfisher](https://github.com/mongodb/kingfisher) from 2.9.1 to **2.11.1** on 2026-10-17
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.97.9 to **3.99.2** on 2026-10-17
   - [revive](https://revive.run/) from 1.17.0 to **1.17.1** on 2026-10-18
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 5.4.0 to **5.4.1** on 2026-10-19
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.78 to **0.2.79** on 2026-10-19
 <!-- linter-versions-end -->
 
 ## [v10.1.0] - 2026-09-05

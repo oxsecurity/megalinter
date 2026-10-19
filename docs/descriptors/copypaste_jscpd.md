@@ -45,7 +45,7 @@ Example:
 
 ## jscpd documentation
 
-- Version in MegaLinter: **5.4.0**
+- Version in MegaLinter: **5.4.1**
 - Visit [Official Web Site](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#readme){target=_blank}
 - See [How to configure jscpd rules](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#config-file){target=_blank}
   - If custom `.jscpd.json` config file isn't found, [.jscpd.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.jscpd.json){target=_blank} will be used
@@ -145,8 +145,10 @@ Options:
           Maximum number of lines per block to consider
       --max-gap-lines <N>
           Merge clones of the same file pair that are separated by at most N unmatched lines in both files into one near-miss clone (Type-3, reported as "similar"); 0 disables
-      --similarity <RATIO>
-          Report JavaScript/TypeScript function pairs whose AST similarity reaches RATIO as near-miss clones (Type-3, "similar"). A number in (0, 1]; the default 1 means exact matches only, e.g. 0.85 enables it
+      --similarity[=<RATIO>]
+          Report pairs of functions and methods with a similar structure as near-miss clones (Type-3, "similar"): each one's syntax tree is normalized, the names of the functions and methods it calls and its operators stay while local names, field names and literals become markers, and two functions score the share of subtrees their trees have in common. RATIO is the lowest score reported, a number in (0, 1]; without it the config's similarity, else 0.8. JavaScript, TypeScript, Python, Java, Kotlin, Scala, C#, Go, Rust, C, C++, PHP, Ruby, Swift and Clojure, also in Markdown code blocks and Vue, Svelte and Astro scripts; test files are left out
+      --min-nodes <N>
+          The fewest nodes a function's normalized syntax tree needs for --similarity to compare it, 20 by default: smaller functions match too easily
       --semantic
           Find semantic clones (Type-4, experimental): functions that do the same thing written differently, in one language or across languages, e.g. a Rust backend and a Svelte frontend. Compares embeddings of the functions' code, computed on this machine by a model that --semantic-download fetches once, or by an embeddings API (--semantic-url). Functions of JavaScript, TypeScript, JSX, TSX, Vue, Svelte, Astro, Python, Rust, Go, Java, Kotlin, C#, C, C++, PHP, Ruby, Scala and Swift
       --semantic-scope <SCOPE>
@@ -180,9 +182,11 @@ Options:
       --ignore-pattern <IGNORE_PATTERN>
           Code-level regex patterns to skip matching tokens during detection, e.g. "//\\s*cpd-disable" (comma-separated)
   -r, --reporters <REPORTERS>
-          Output reporters (comma-separated): console,json,xml,csv,html,markdown,badge,sarif,codeclimate,openmetrics,ai,xcode,threshold,silent,console-full Aliases: "full" and "consoleFull" are accepted for "console-full"; "gitlab" for "codeclimate"
+          Output reporters (comma-separated): console,json,xml,csv,html,markdown,badge,sarif,codeclimate,openmetrics,edn,ai,xcode,threshold,silent,console-full Aliases: "full" and "consoleFull" are accepted for "console-full"; "gitlab" for "codeclimate"
   -o, --output <OUTPUT>
           Output directory for file reporters
+      --report-name <REPORT_NAME>
+          Base name for report files, without the extension (default: jscpd-report): the json, xml, csv, html, markdown, sarif and edn reports. Lets several tools write into one directory without overwriting each other's reports. The badge, OpenMetrics and CodeClimate files and the reports of --dashboard, --health, --dead-code and --compare keep their names
   -c, --config <CONFIG>
           Path to config file (.jscpd.json)
       --exit-code [<EXIT_CODE>]
@@ -194,13 +198,17 @@ Options:
       --baseline <FILE>
           Path to a clone baseline file (e.g. .jscpd-baseline.json): clones whose fingerprint is absent from it are reported as new
       --update-baseline
-          Rewrite the baseline file from the current run, creating it if missing, and print added/removed fingerprint counts (requires --baseline)
+          Rewrite the baseline file from the current run, creating it if missing, and print added/removed fingerprint counts (requires --baseline or --changed)
       --fail-on-new-clones [<N>]
-          Exit 1 when more than N new clones are found (default N: 0; requires --baseline or --baseline-from-ref)
+          Exit 1 when more than N new clones are found (default N: 0; requires --baseline, --baseline-from-ref or --changed)
       --fail-on-empty
           Exit 1 when the scan analyzes no files: the paths exist but nothing matched the --format, --ignore and --pattern filters, or every file was below --min-tokens
       --baseline-from-ref <REF>
           Compare against an ephemeral baseline built from a git ref's tree (e.g. origin/main): the base ref is scanned with the same configuration and clones absent from it are reported as new
+      --changed
+          Report only the clones of the files git lists as changed: staged, unstaged and untracked ones, a renamed file under its new name. Every file is still scanned, so a changed file's clone of an unchanged one is found. The first run saves the clones of HEAD to the --baseline file (.jscpd-baseline.json at the repository root by default), built again when HEAD moves, and clones absent from it are reported as new
+      --changed-only
+          Like --changed, with only the changed files scanned: they are compared with one another, not with the rest of the project
   -b, --blame
           Enrich clones with git blame data
       --no-gitignore
@@ -238,7 +246,7 @@ Options:
       --skip-isolated <GROUPS>
           Skip clones between different folders of the same isolation group: comma-separated groups of pipe-separated folders (e.g. "packages/a|packages/b,libs/a|libs/b") [alias: --skipIsolated]
       --mcp
-          Serve the Model Context Protocol over stdio: scan PATHs once, then expose check_duplication / get_statistics / check_current_directory tools to MCP clients
+          Serve the Model Context Protocol over stdio: scan PATHs, then answer an AI assistant's tool calls (check_duplication, get_file_clones, get_statistics, check_current_directory, compare_folders). By default the tools report what jscpd reports with the same options; a call can ask for any of the four types of clone, and --kind sets other defaults
       --lsp
           Serve the Language Server Protocol over stdio: an editor starts jscpd for its workspace and gets findings as diagnostics in the files it edits, updated as the text changes. Clones by default; --lsp-analyses picks the analyses. Each .jscpd.json in the workspace is a project of its own
       --lsp-analyses <LIST>
@@ -298,8 +306,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=5.4.0
+ARG NPM_JSCPD_VERSION=5.4.1
 ```
 
 - NPM packages (node.js):
-  - [jscpd@5.4.0](https://www.npmjs.com/package/jscpd/v/5.4.0)
+  - [jscpd@5.4.1](https://www.npmjs.com/package/jscpd/v/5.4.1)
