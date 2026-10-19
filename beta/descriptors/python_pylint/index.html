@@ -12516,7 +12516,7 @@
 <p>For legacy projects, start with <code>--errors-only</code> flag and progressively enable more checks. Works best alongside other tools like ruff, mypy, black, and isort for comprehensive Python code quality.</p>
 <h2 id="pylint-documentation">pylint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>4.1.2</strong></li>
+<li>Version in MegaLinter: <strong>4.1.3</strong></li>
 <li>Visit <a href="https://pylint.readthedocs.io" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://pylint.readthedocs.io/en/stable/user_guide/configuration/index.html" target="_blank">How to configure pylint rules</a><ul>
 <li>If custom <code>.pylintrc</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.pylintrc" target="_blank">.pylintrc</a> will be used</li>
@@ -13204,7 +13204,9 @@ Miscellaneous:
 <span class="s1">  Checks for similarities and duplicated code.</span>
 
 <span class="s1">  --min-similarity-lines &lt;int&gt;</span>
-<span class="s1">                        Minimum lines number of a similarity. (default: 4)</span>
+<span class="s1">                        Minimum lines number of a similarity. Setting it to 0</span>
+<span class="s1">                        will disable the check, but you should use</span>
+<span class="s1">                        disable=duplicate-code instead. (default: 4)</span>
 <span class="s1">  --ignore-comments &lt;y or n&gt;</span>
 <span class="s1">                        Comments are removed from the similarity computation</span>
 <span class="s1">                        (default: True)</span>
@@ -13426,14 +13428,14 @@ Format:
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=pypi depName=pylint</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">PIP_PYLINT_VERSION</span><span class="o">=</span><span class="m">4</span>.1.2
+<span class="k">ARG</span><span class="w"> </span><span class="nv">PIP_PYLINT_VERSION</span><span class="o">=</span><span class="m">4</span>.1.3
 <span class="c"># renovate: datasource=pypi depName=typing-extensions</span>
 <span class="k">ARG</span><span class="w"> </span><span class="nv">PIP_TYPING_EXTENSIONS_VERSION</span><span class="o">=</span><span class="m">4</span>.16.0
 </code></pre></div></li>
 </ul>
 <ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/pylint/4.1.2">pylint==4.1.2</a></li>
+<li><a href="https://pypi.org/project/pylint/4.1.3">pylint==4.1.3</a></li>
 <li><a href="https://pypi.org/project/typing-extensions/4.16.0">typing-extensions==4.16.0</a></li>
 </ul>
 </li>
