@@ -158,6 +158,9 @@ ARG KTLINT_VERSION=1.8.0
 # renovate: datasource=github-tags depName=detekt/detekt
 ARG DETEKT_VERSION=1.23.8
 
+# renovate: datasource=packagist depName=fidry/cpu-core-counter
+ARG PHP_THEOFIDRY_CPU_CORE_COUNTER_VERSION=1.4.1
+
 # renovate: datasource=github-releases depName=kubescape/kubescape extractVersion=^v(?<version>.+)$
 ARG KUBERNETES_KUBESCAPE_VERSION=4.0.14
 # renovate: datasource=npm depName=markdownlint-cli
@@ -169,7 +172,7 @@ ARG PIP_RUMDL_VERSION=0.2.79
 # renovate: datasource=packagist depName=squizlabs/php_codesniffer
 ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=4.0.4
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
-ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.7.0
+ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.8.1
 # renovate: datasource=packagist depName=phpstan/phpstan
 ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.2.17
 # renovate: datasource=packagist depName=phpstan/extension-installer
@@ -177,7 +180,7 @@ ARG PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION=1.4.3
 # renovate: datasource=packagist depName=vimeo/psalm
 ARG PHP_VIMEO_PSALM_VERSION=6.19.2
 # renovate: datasource=packagist depName=overtrue/phplint
-ARG PHP_OVERTRUE_PHPLINT_VERSION=9.7.2
+ARG PHP_OVERTRUE_PHPLINT_VERSION=9.8.0
 # renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
 ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.95.27
 # renovate: datasource=pypi depName=checkov
@@ -549,7 +552,7 @@ RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GI
 RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require vimeo/psalm:${PHP_VIMEO_PSALM_VERSION}
 
 # phplint installation
-RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require overtrue/phplint:${PHP_OVERTRUE_PHPLINT_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION}
+RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require overtrue/phplint:${PHP_OVERTRUE_PHPLINT_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION} fidry/cpu-core-counter:${PHP_THEOFIDRY_CPU_CORE_COUNTER_VERSION}
 
 # php-cs-fixer installation
 RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require friendsofphp/php-cs-fixer:${PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION} --with-all-dependencies

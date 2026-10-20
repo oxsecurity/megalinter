@@ -321,26 +321,31 @@ linters:
       - file
       - list_of_files
       - project
+    cli_lint_extra_args:
+      - "lint"
     cli_lint_mode_project_exclude_arg_name: "--exclude"
     cli_lint_mode_project_exclude_config_key: "exclude"
     cli_sarif_args:
-      - "--format=\\Overtrue\\PHPLint\\Output\\SarifOutput"
-      - "--output={{SARIF_OUTPUT_FILE}}"
+      - "--output-format=\\Overtrue\\PHPLint\\Output\\SarifOutput"
+      - "--output-file={{SARIF_OUTPUT_FILE}}"
     examples:
-      - "phplint myfile.php"
-      - "phplint mydir"
-      - "phplint mydir myfile.php"
-      - "phplint mydir -vvv"
+      - "phplint lint myfile.php"
+      - "phplint lint mydir"
+      - "phplint lint mydir myfile.php"
+      - "phplint lint mydir -vvv"
     install:
       dockerfile:
         - |-
           # renovate: datasource=packagist depName=overtrue/phplint
-          ARG PHP_OVERTRUE_PHPLINT_VERSION=9.7.2
+          ARG PHP_OVERTRUE_PHPLINT_VERSION=9.8.0
         - |-
           # renovate: datasource=packagist depName=bartlett/sarif-php-converters
-          ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.7.0
+          ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.8.1
+        - |-
+          # renovate: datasource=packagist depName=fidry/cpu-core-counter
+          ARG PHP_THEOFIDRY_CPU_CORE_COUNTER_VERSION=1.4.1
         - |
-          RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require overtrue/phplint:${PHP_OVERTRUE_PHPLINT_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION}
+          RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require overtrue/phplint:${PHP_OVERTRUE_PHPLINT_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION} fidry/cpu-core-counter:${PHP_THEOFIDRY_CPU_CORE_COUNTER_VERSION}
     supported_platforms:
       platform:
         - linux/amd64

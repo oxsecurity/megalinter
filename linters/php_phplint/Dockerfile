@@ -62,9 +62,11 @@ RUN python -c 'import sys; assert sys.version_info >= (3, 14, 7), "Python 3.14.7
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=packagist depName=overtrue/phplint
-ARG PHP_OVERTRUE_PHPLINT_VERSION=9.7.2
+ARG PHP_OVERTRUE_PHPLINT_VERSION=9.8.0
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
-ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.7.0
+ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.8.1
+# renovate: datasource=packagist depName=fidry/cpu-core-counter
+ARG PHP_THEOFIDRY_CPU_CORE_COUNTER_VERSION=1.4.1
 #ARG__END
 
 ####################
@@ -184,7 +186,7 @@ RUN update-alternatives --install /usr/bin/php php /usr/bin/php84 110
 ENV COMPOSER_HOME=/usr/local/composer
 ENV PATH="/usr/local/composer/vendor/bin:${PATH}"
 # phplint installation
-RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require overtrue/phplint:${PHP_OVERTRUE_PHPLINT_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION}
+RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require overtrue/phplint:${PHP_OVERTRUE_PHPLINT_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION} fidry/cpu-core-counter:${PHP_THEOFIDRY_CPU_CORE_COUNTER_VERSION}
 
 #OTHER__END
 
