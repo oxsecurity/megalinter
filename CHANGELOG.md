@@ -12,6 +12,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Core
   - Outside CI, **`PARALLEL_PROCESS_NUMBER`** now defaults to the number of cores minus one, so your machine stays responsive while MegaLinter runs. CI runs still use every core, and setting the variable still overrides the default
+  - The **LLM Advisor** supports **API Route**, an OpenAI-compatible multi-model gateway: set **`LLM_PROVIDER: api-route`** and **`API_ROUTE_API_KEY`** to use API Route models through MegaLinter.
 
 - New linters
 
