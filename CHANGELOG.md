@@ -243,6 +243,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [psalm](https://psalm.dev) from Psalm.6.19.1@ to **Psalm.6.19.2@** on 2026-10-19
   - [pylint](https://pylint.readthedocs.io) from 4.1.2 to **4.1.3** on 2026-10-19
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.16.4 to **1.16.5** on 2026-10-19
+  - [grype](https://github.com/anchore/grype) from 0.120.1 to **0.121.0** on 2026-10-20
+  - [syft](https://github.com/anchore/syft) from 1.54.1 to **1.55.0** on 2026-10-20
 <!-- linter-versions-end -->
 
 ## [v10.1.0] - 2026-09-05
