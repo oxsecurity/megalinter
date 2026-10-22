@@ -25,11 +25,17 @@ inputs:
   dockerhub-repo:
     description: "Upload the custom flavor to DockerHub"
     required: false
+  trivy-db-repository:
+    description: "Comma-separated trivy vulnerability database repositories, tried in order when building a flavor that includes trivy"
+    required: false
+    default: ""
 
 runs:
   using: "composite"
   steps:
     - name: Build Custom MegaLinter Flavor
+      env:
+        TRIVY_DB_REPOSITORY: ${{ inputs.trivy-db-repository }}
       run: |
         # BUILD CUSTOM MEGALINTER FLAVOR
         docker run --rm \
@@ -40,6 +46,7 @@ runs:
             -e CUSTOM_FLAVOR_BUILD_REPO=${{ env.CUSTOM_FLAVOR_BUILD_REPO }} \
             -e CUSTOM_FLAVOR_BUILD_REPO_URL=${{ env.CUSTOM_FLAVOR_BUILD_REPO_URL }} \
             -e CUSTOM_FLAVOR_BUILD_USER=${{ env.CUSTOM_FLAVOR_BUILD_USER }} \
+            -e TRIVY_DB_REPOSITORY \
           ghcr.io/oxsecurity/megalinter-custom-flavor-builder:${{ inputs.megalinter-custom-flavor-builder-tag }}
       shell: bash
     

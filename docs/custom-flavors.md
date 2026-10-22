@@ -111,6 +111,16 @@ To:
 platform: "linux/amd64,linux/arm64"
 ```
 
+### Optional: Choose the trivy database mirrors
+
+If your flavor includes `REPOSITORY_TRIVY` or `REPOSITORY_TRIVY_SBOM`, the trivy vulnerability database is downloaded while building the image. MegaLinter tries `mirror.gcr.io`, `ghcr.io` and `public.ecr.aws` in turn, and retries when none of them answers.
+
+To use other mirrors, for example a registry you control, edit **megalinter-custom-flavor-builder.yml** and add the `trivy-db-repository` input with a comma-separated list of repositories, tried in order:
+
+```yml
+trivy-db-repository: "my-registry.example.com/trivy-db:2,public.ecr.aws/aquasecurity/trivy-db:2"
+```
+
 ### Commit and push your changes
 
 Commit and push the generated files to GitHub.

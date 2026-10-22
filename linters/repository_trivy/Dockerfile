@@ -63,6 +63,7 @@ ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=github-tags depName=aquasecurity/trivy
 ARG REPOSITORY_TRIVY_VERSION=0.75.0
+ARG TRIVY_DB_REPOSITORY=mirror.gcr.io/aquasec/trivy-db:2,ghcr.io/aquasecurity/trivy-db:2,public.ecr.aws/aquasecurity/trivy-db:2
 #ARG__END
 
 ####################
@@ -163,7 +164,13 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #OTHER__START
 # trivy installation
 RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_VERSION}" \
-    && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
+    && for attempt in 1 2 3 4 5; do \
+         for db_repository in $(echo "${TRIVY_DB_REPOSITORY}" | tr ',' ' '); do \
+           trivy image --download-db-only --no-progress --db-repository "${db_repository}" && break 2; \
+         done; \
+         [ "${attempt}" -eq 5 ] || sleep $((attempt * 10)); \
+       done \
+    && test -f "${HOME}/.cache/trivy/db/trivy.db"
 
 #OTHER__END
 
