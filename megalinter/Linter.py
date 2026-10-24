@@ -1036,7 +1036,7 @@ class Linter:
                 file_warnings_number = 0
                 file_warnings_number = self.get_total_number_warnings(stdout)
                 self.total_number_warnings += file_warnings_number
-                if return_code > 0:
+                if return_code != 0:
                     file_status = "error"
                     self.status = "warning" if self.disable_errors is True else "error"
                     self.return_code = (
