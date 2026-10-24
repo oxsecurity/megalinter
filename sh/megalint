@@ -1,0 +1,131 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Install in your own bin and then use megalint script to automatch
+# megalinter version/flavor as used in github/gitlab action.
+
+APPLY_FIXES=""
+VALIDATE_ALL="true"
+VERBOSE="false"
+ENV_VARS=()
+
+show_help() {
+	cat <<EOF
+Usage: lint [OPTIONS]
+
+Options:
+  -f, --fix           Automatically apply formatting fixes (sets APPLY_FIXES=all)
+  -c, --changes-only  Lint only changed files (sets VALIDATE_ALL_CODEBASE=false)
+  -e, --env "K=V"     Pass environment variable (can be repeated)
+  -v, --verbose       Enable verbose script debugging
+  -h, --help          Show this help message
+EOF
+}
+
+# Parse options
+while [[ $# -gt 0 ]]; do
+	case $1 in
+	-f | --fix)
+		APPLY_FIXES="all"
+		shift
+		;;
+	-c | --changes-only)
+		VALIDATE_ALL="false"
+		shift
+		;;
+	-e | --env)
+		if [[ -z "${2:-}" ]]; then
+			echo "Error: --env requires an argument (e.g., KEY=VALUE)" >&2
+			exit 1
+		fi
+		ENV_VARS+=("-e" "$2")
+		shift 2
+		;;
+	-v | --verbose)
+		VERBOSE="true"
+		shift
+		;;
+	-h | --help)
+		show_help
+		exit 0
+		;;
+	*)
+		echo "Error: Unknown option '$1'. Use --help for usage." >&2
+		exit 1
+		;;
+	esac
+done
+
+if [[ "$VERBOSE" == "true" ]]; then
+	set -x
+	echo "--> Verbose mode enabled"
+fi
+
+# Detect container runtime
+if command -v podman &>/dev/null; then
+	ENGINE="podman"
+elif command -v docker &>/dev/null; then
+	ENGINE="docker"
+else
+	echo "Error: Neither podman nor docker found in PATH." >&2
+	exit 1
+fi
+
+# Extract image from CI configs
+ML_RAW=""
+if ls .github/workflows/*.yml 1>/dev/null 2>&1; then
+	for file in .github/workflows/*.yml; do
+		ML_RAW=$(grep -oE 'oxsecurity/megalinter/[^[:space:]"]+' "$file" 2>/dev/null | head -n 1 || true)
+		if [[ -n "$ML_RAW" ]]; then
+			break
+		fi
+	done
+fi
+
+if [[ -z "$ML_RAW" ]] && [[ -f ".gitlab-ci.yml" ]]; then
+	ML_RAW=$(grep -oE 'oxsecurity/megalinter/[^[:space:]"]+' .gitlab-ci.yml 2>/dev/null | head -n 1 || true)
+fi
+
+if [[ -z "$ML_RAW" ]]; then
+	echo "Error: Could not extract MegaLinter image from CI config files." >&2
+	exit 1
+fi
+
+# Normalize GitHub Action flavor paths to flat GHCR image names:
+# e.g. oxsecurity/megalinter/flavors/python@v10.1.0 -> ghcr.io/oxsecurity/megalinter-python:v10.1.0
+ML_IMAGE="$ML_RAW"
+if [[ "$ML_IMAGE" =~ /flavors/ ]]; then
+	FLAVOR_NAME=$(echo "$ML_IMAGE" | sed -E 's|.*\/flavors\/([^@]+).*|\1|')
+	VERSION_TAG=$(echo "$ML_IMAGE" | grep -oE '@.+' || echo ":latest")
+	VERSION_TAG="${VERSION_TAG//@/:}"
+	ML_IMAGE="ghcr.io/oxsecurity/megalinter-${FLAVOR_NAME}${VERSION_TAG}"
+else
+	# Fallback general normalization
+	ML_IMAGE="${ML_IMAGE//@/:}"
+	if [[ "$ML_IMAGE" != ghcr.io/* ]] && [[ "$ML_IMAGE" == oxsecurity/* ]]; then
+		ML_IMAGE="ghcr.io/$ML_IMAGE"
+	fi
+fi
+
+echo "--> Using container engine: $ENGINE"
+echo "--> Target image:         $ML_IMAGE"
+
+# Build execution array
+CMD=(
+	"$ENGINE" "run" "--rm"
+	"-v" "$(pwd):/tmp/lint"
+	"-e" "DEFAULT_WORKSPACE=/tmp/lint"
+	"-e" "VALIDATE_ALL_CODEBASE=$VALIDATE_ALL"
+)
+
+if [[ -n "$APPLY_FIXES" ]]; then
+	CMD+=("-e" "APPLY_FIXES=$APPLY_FIXES")
+fi
+
+if [[ ${#ENV_VARS[@]} -gt 0 ]]; then
+	CMD+=("${ENV_VARS[@]}")
+fi
+
+CMD+=("$ML_IMAGE" "$@")
+
+exec "${CMD[@]}"
