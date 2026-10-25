@@ -204,6 +204,11 @@
     "image": null,
     "title": "Introduction | eslint-plugin-jsonc"
   },
+  "evergreen": {
+    "description": "Local-first deprecation intelligence for software repositories.",
+    "image": "/evergreen/evergreen/assets/brand/evergreen-mark-adaptive.svg",
+    "title": "Evergreen documentation"
+  },
   "flake8": {
     "description": "To install Flake8, open an interactive shell and run:",
     "image": null,

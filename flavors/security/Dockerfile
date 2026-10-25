@@ -139,6 +139,8 @@ ARG REPOSITORY_TRIVY_VERSION=0.75.0
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.75.0
 # renovate: datasource=github-tags depName=mongodb/kingfisher
 ARG REPOSITORY_KINGFISHER_VERSION=2.11.1
+# renovate: datasource=npm depName=evergreen-deprecation
+ARG NPM_EVERGREEN_DEPRECATION_VERSION=0.6.0
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=26.2.1
 # renovate: datasource=pypi depName=virtualenv
@@ -286,7 +288,8 @@ RUN npm config set prefix /usr/local \
     && npm --no-cache install --ignore-scripts --omit=dev \
                 secretlint@${NPM_SECRETLINT_VERSION} \
                 @secretlint/secretlint-rule-preset-recommend@${NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION} \
-                @secretlint/secretlint-formatter-sarif@${NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION} && \
+                @secretlint/secretlint-formatter-sarif@${NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION} \
+                evergreen-deprecation@${NPM_EVERGREEN_DEPRECATION_VERSION} && \
     echo "Cleaning npm cache…" \
     && (npm cache clean --force || true) \
     && echo "Changing owner of node_modules files…" \
@@ -368,6 +371,7 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOS
 # kingfisher installation
     && curl --silent --location https://raw.githubusercontent.com/mongodb/kingfisher/main/scripts/install-kingfisher.sh | bash -s -- /usr/local/bin --tag "v${REPOSITORY_KINGFISHER_VERSION}"
 
+# evergreen installation
 # tflint installation
 # Managed with COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
 # terragrunt installation

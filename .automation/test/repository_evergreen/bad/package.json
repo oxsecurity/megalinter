@@ -1,0 +1,8 @@
+{
+  "name": "evergreen-bad-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "request": "2.88.2"
+  }
+}

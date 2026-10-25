@@ -367,6 +367,8 @@ ARG REPOSITORY_TRIVY_VERSION=0.75.0
 ARG REPOSITORY_TRIVY_SBOM_VERSION=0.75.0
 # renovate: datasource=github-tags depName=mongodb/kingfisher
 ARG REPOSITORY_KINGFISHER_VERSION=2.11.1
+# renovate: datasource=npm depName=evergreen-deprecation
+ARG NPM_EVERGREEN_DEPRECATION_VERSION=0.6.0
 # renovate: datasource=pypi depName=robotframework-robocop
 ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=9.1.0
 # renovate: datasource=pypi depName=Pygments
@@ -771,6 +773,7 @@ RUN npm config set prefix /usr/local \
                 secretlint@${NPM_SECRETLINT_VERSION} \
                 @secretlint/secretlint-rule-preset-recommend@${NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION} \
                 @secretlint/secretlint-formatter-sarif@${NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION} \
+                evergreen-deprecation@${NPM_EVERGREEN_DEPRECATION_VERSION} \
                 cspell@${NPM_CSPELL_VERSION} \
                 @ibm/tekton-lint@${NPM_IBM_TEKTON_LINT_VERSION} \
                 prettyjson@${NPM_PRETTYJSON_VERSION} \
@@ -1187,6 +1190,7 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOS
 # Managed with COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 # kingfisher installation
     && curl --silent --location https://raw.githubusercontent.com/mongodb/kingfisher/main/scripts/install-kingfisher.sh | bash -s -- /usr/local/bin --tag "v${REPOSITORY_KINGFISHER_VERSION}" \
+# evergreen installation
 # robocop installation
 # rst-lint installation
 # rstcheck installation

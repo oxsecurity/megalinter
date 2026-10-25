@@ -1286,3 +1286,55 @@ linters:
       platform:
         - linux/amd64
         - linux/arm64
+  # EVERGREEN
+  - class: EvergreenLinter
+    linter_name: evergreen
+    can_output_sarif: true
+    descriptor_flavors:
+      - all
+      - security
+    linter_text: |
+      **Evergreen** is a local-first scanner that finds evidence-backed lifecycle risks in a repository: deprecated packages, end-of-life runtimes and retired APIs. Every finding names the rule, the evidence source and the exact file and line.
+
+      **Key Features:**
+
+      - **Lifecycle focus**: complements vulnerability and secret scanners by reporting dependencies and runtimes that are deprecated or past end of life
+      - **Offline scans**: reads manifests, lockfiles and bundled lifecycle data only; it never uses the network or executes repository code
+      - **Sourced rules**: every lifecycle claim cites an authoritative, versioned source
+      - **SARIF output**: findings carry precise locations for code scanning dashboards
+      - **Many ecosystems**: npm, Python, Go, Java, .NET, Docker, GitHub Actions and more
+    linter_url: https://arminazimi.github.io/evergreen/
+    linter_repo: https://github.com/arminazimi/evergreen
+    linter_megalinter_ref_url: "no"
+    linter_rules_url: https://github.com/arminazimi/evergreen/blob/main/docs/RULES.md
+    linter_spdx_license: MIT
+    linter_speed: 1
+    test_folder: repository_evergreen
+    cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
+    cli_lint_extra_args:
+      - scan
+      - --fail-on
+      - low
+    cli_lint_mode_project_extra_args_after:
+      - .
+    cli_sarif_args:
+      - --format
+      - sarif
+    cli_lint_errors_count: regex_sum
+    cli_lint_errors_regex: "Findings: ([0-9]+)"
+    examples:
+      - "evergreen scan ."
+      - "evergreen scan . --fail-on high"
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=evergreen-deprecation
+          ARG NPM_EVERGREEN_DEPRECATION_VERSION=0.6.0
+      npm:
+        - evergreen-deprecation@${NPM_EVERGREEN_DEPRECATION_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
