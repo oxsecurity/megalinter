@@ -335,7 +335,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=packagist depName=overtrue/phplint
-          ARG PHP_OVERTRUE_PHPLINT_VERSION=9.7.2
+          ARG PHP_OVERTRUE_PHPLINT_VERSION=9.7.3
         - |-
           # renovate: datasource=packagist depName=bartlett/sarif-php-converters
           ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.8.1
