@@ -13,7 +13,7 @@
 #ARGTOP__START
 ARG TARGETARCH
 # renovate: datasource=github-releases depName=JohnnyMorganz/StyLua extractVersion=^v(?<version>.+)$
-ARG CARGO_STYLUA_VERSION=2.5.2
+ARG CARGO_STYLUA_VERSION=2.6.0
 #ARGTOP__END
 
 #############################################################################################
