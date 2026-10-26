@@ -85,12 +85,12 @@
     "optionator": "^0.9.1",
     "which": "^2.0.2",
     "yeoman-environment": "^6.0.0",
-    "yeoman-generator": "^7.5.1",
+    "yeoman-generator": "^10.2.1",
     "yosay": "^2.0.2"
   },
   "devDependencies": {
     "assert": "^2.0.0",
     "eslint": "^10.6.0",
-    "mocha": "^11.1.0"
+    "mocha": "^12.0.3"
   }
 }
