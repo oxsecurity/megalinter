@@ -31,12 +31,16 @@ linters:
     linter_rules_configuration_url: https://robocop.dev/stable/configuration/
     linter_rules_inline_disable_url: https://robocop.dev/stable/configuration/disablers/
     config_file_name: robocop.toml
+    # -c is the short form of --configure (rule parameters) in robocop
+    cli_config_arg_name: "--config"
     cli_lint_mode: list_of_files
     supported_cli_lint_modes:
       - file
       - list_of_files
       - project
     cli_lint_mode_project_exclude_arg_name: "--exclude"
+    cli_lint_mode_project_exclude_config_key: ["exclude", "tool.robocop.exclude"]
+    cli_lint_mode_project_exclude_config_files: ["pyproject.toml"]
     # robocop 8.2.9 ships a broken `--version` flag, so read the installed version
     # via the venv's Python and importlib.metadata until upstream restores it.
     cli_executable_version: /venvs/robocop/bin/python
@@ -71,7 +75,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=robotframework-robocop
-          ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=9.0.0
+          ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=9.1.0
       pip:
         - robotframework-robocop==${PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION}
     supported_platforms:

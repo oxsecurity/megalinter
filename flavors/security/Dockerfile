@@ -25,15 +25,15 @@ ARG KUBERNETES_KUBECONFORM_VERSION=v0.8.0-alpine
 # renovate: datasource=github-tags depName=checkmarx/dustilock
 ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
 # renovate: datasource=docker depName=golang versioning=semver
-ARG GO_IMAGE_VERSION=1.27.1
+ARG GO_IMAGE_VERSION=1.27.3
 # renovate: datasource=docker depName=ghcr.io/betterleaks/betterleaks
 ARG REPOSITORY_BETTERLEAKS_VERSION=v1.7.3
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.97.5
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.99.2
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
-ARG TERRAFORM_TFLINT_VERSION=0.64.0
+ARG TERRAFORM_TFLINT_VERSION=0.65.0
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.16.3
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.17.0
 #ARGTOP__END
 
 #############################################################################################
@@ -106,9 +106,9 @@ RUN python -c 'import sys; assert sys.version_info >= (3, 14, 7), "Python 3.14.7
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=pypi depName=ansible-lint
-ARG PIP_ANSIBLE_LINT_VERSION=26.8.0
+ARG PIP_ANSIBLE_LINT_VERSION=26.10.0
 # renovate: datasource=pypi depName=cfn-lint
-ARG PIP_CFN_LINT_VERSION=1.57.0
+ARG PIP_CFN_LINT_VERSION=1.57.2
 # renovate: datasource=github-releases depName=kubescape/kubescape extractVersion=^v(?<version>.+)$
 ARG KUBERNETES_KUBESCAPE_VERSION=4.0.14
 # renovate: datasource=pypi depName=bandit
@@ -116,33 +116,33 @@ ARG PIP_BANDIT_VERSION=1.9.4
 # renovate: datasource=pypi depName=bandit_sarif_formatter
 ARG PIP_BANDIT_SARIF_FORMATTER_VERSION=1.1.1
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.3.17
+ARG PIP_CHECKOV_VERSION=3.3.22
 # renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
 ARG REPOSITORY_DEVSKIM_VERSION=1.0.70
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.119.0
+ARG REPOSITORY_GRYPE_VERSION=0.120.1
 # renovate: datasource=repology depName=alpine_3_24/osv-scanner versioning=loose
-ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.8-r2
+ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.8-r3
 # renovate: datasource=npm depName=secretlint
-ARG NPM_SECRETLINT_VERSION=13.0.5
+ARG NPM_SECRETLINT_VERSION=13.0.7
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
-ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=13.0.5
+ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=13.0.7
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
-ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=13.0.5
+ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=13.0.7
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.177.0
+ARG PIP_SEMGREP_VERSION=1.180.0
 # renovate: datasource=github-tags depName=anchore/syft
-ARG REPOSITORY_SYFT_VERSION=1.52.0
+ARG REPOSITORY_SYFT_VERSION=1.54.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_VERSION=0.74.0
+ARG REPOSITORY_TRIVY_VERSION=0.76.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_SBOM_VERSION=0.74.0
+ARG REPOSITORY_TRIVY_SBOM_VERSION=0.76.1
 # renovate: datasource=github-tags depName=mongodb/kingfisher
-ARG REPOSITORY_KINGFISHER_VERSION=2.5.0
+ARG REPOSITORY_KINGFISHER_VERSION=2.11.1
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=26.2.1
+ARG PIP_PIP_VERSION=26.2.2
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=21.9.0
+ARG PIP_VIRTUALENV_VERSION=21.14.13
 
 ARG CARGO_SARIF_FMT_VERSION
 ARG CARGO_SHELLCHECK_SARIF_VERSION

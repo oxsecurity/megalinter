@@ -92915,7 +92915,41 @@
             />
         </svg>
     <a href="#FORWARD_EXCLUDED_DIRECTORIES" onclick="anchorLink('FORWARD_EXCLUDED_DIRECTORIES')">FORWARD_EXCLUDED_DIRECTORIES</a></div><h4>Forward excluded directories to project lint mode linters</h4><span class="badge badge-dark value-type">Type: boolean</span> <span class="badge badge-success default-value">Default: true</span><br/>
-<span class="description"><p>In project CLI lint mode, forward excluded directories (EXCLUDED<em>DIRECTORIES + ADDITIONAL</em>EXCLUDED<em>DIRECTORIES) to the linters through their native exclusion arguments or generated ignore/config files. Can be overridden per-linter with &lt;LINTER_KEY&gt;</em>FORWARD<em>EXCLUDED</em>DIRECTORIES</p>
+<span class="description"><p>In project CLI lint mode, forward excluded directories (EXCLUDED<em>DIRECTORIES + ADDITIONAL</em>EXCLUDED<em>DIRECTORIES, and .gitignored directories when IGNORE</em>GITIGNORED<em>FILES is true) to the linters through their native exclusion arguments or generated ignore/config files. Can be overridden per-linter with &lt;LINTER_KEY&gt;</em>FORWARD<em>EXCLUDED</em>DIRECTORIES</p>
+</span>
+        
+
+        
+        
+
+        
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionFORWARD_GITIGNORED_DIRECTORIES">
+    <div class="card">
+        <div class="card-header" id="headingFORWARD_GITIGNORED_DIRECTORIES">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#FORWARD_GITIGNORED_DIRECTORIES"
+                        aria-expanded="" aria-controls="FORWARD_GITIGNORED_DIRECTORIES" onclick="setAnchor('#FORWARD_GITIGNORED_DIRECTORIES')"><span class="property-name">FORWARD_GITIGNORED_DIRECTORIES</span></button>
+            </h2>
+        </div>
+
+        <div id="FORWARD_GITIGNORED_DIRECTORIES"
+             class="collapse property-definition-div" aria-labelledby="headingFORWARD_GITIGNORED_DIRECTORIES"
+             data-parent="#accordionFORWARD_GITIGNORED_DIRECTORIES">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#FORWARD_GITIGNORED_DIRECTORIES" onclick="anchorLink('FORWARD_GITIGNORED_DIRECTORIES')">FORWARD_GITIGNORED_DIRECTORIES</a></div><h4>Forward .gitignored directories to project lint mode linters</h4><span class="badge badge-dark value-type">Type: boolean</span> <span class="badge badge-success default-value">Default: true</span><br/>
+<span class="description"><p>When IGNORE<em>GITIGNORED</em>FILES is true, also forward the directories ignored by git (ex: vendor, build) to project CLI lint mode linters, with the excluded directories. A directory sharing its name with a tracked one (ex: a gitignored /lib/ and a tracked src/lib) is only sent to the linters receiving workspace-relative paths</p>
 </span>
         
 
@@ -195789,7 +195823,7 @@
             />
         </svg>
     <a href="#PARALLEL_PROCESS_NUMBER" onclick="anchorLink('PARALLEL_PROCESS_NUMBER')">PARALLEL_PROCESS_NUMBER</a></div><h4>Parallel process number</h4><span class="badge badge-dark value-type">Type: number</span><br/>
-<span class="description"><p>All available cores are used by default. If there are too many, you need to decrease the number of used cores in order to enhance performances</p>
+<span class="description"><p>All available cores are used in CI, and all but one outside CI to keep your machine responsive. If there are too many, you need to decrease the number of used cores in order to enhance performances</p>
 </span>
         
 
@@ -273156,7 +273190,7 @@
 <span class="description"><p>REPOSITORY<em>LS</em>LINT: Override default CLI lint mode used to call the linter (rarely needed)</p>
 </span><div class="enum-value" id="REPOSITORY_LS_LINT_CLI_LINT_MODE_enum">
             <h4>Must be one of:</h4>
-            <ul class="list-group"><li class="list-group-item enum-item">"file"</li><li class="list-group-item enum-item">"list_of_files"</li><li class="list-group-item enum-item">"project"</li></ul>
+            <ul class="list-group"><li class="list-group-item enum-item">"project"</li></ul>
             </div>
         
 
@@ -318250,7 +318284,7 @@
 <span class="description"><p>SALESFORCE<em>CODE</em>ANALYZER_FLOW: Override default CLI lint mode used to call the linter (rarely needed)</p>
 </span><div class="enum-value" id="SALESFORCE_CODE_ANALYZER_FLOW_CLI_LINT_MODE_enum">
             <h4>Must be one of:</h4>
-            <ul class="list-group"><li class="list-group-item enum-item">"file"</li></ul>
+            <ul class="list-group"><li class="list-group-item enum-item">"project"</li></ul>
             </div>
         
 
@@ -318482,7 +318516,8 @@
             />
         </svg>
     <a href="#SALESFORCE_CODE_ANALYZER_FLOW_FILTER_REGEX_EXCLUDE" onclick="anchorLink('SALESFORCE_CODE_ANALYZER_FLOW_FILTER_REGEX_EXCLUDE')">SALESFORCE_CODE_ANALYZER_FLOW_FILTER_REGEX_EXCLUDE</a></div><h4>SALESFORCE_CODE_ANALYZER_FLOW: Excluding Regex</h4><span class="badge badge-dark value-type">Type: string or array of string</span><br/>
-
+<span class="description"><p>SALESFORCE<em>CODE</em>ANALYZER<em>FLOW: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with SALESFORCE</em>CODE<em>ANALYZER</em>FLOW<em>CLI</em>LINT_MODE = project</p>
+</span>
         
 
         
@@ -318515,7 +318550,42 @@
             />
         </svg>
     <a href="#SALESFORCE_CODE_ANALYZER_FLOW_FILTER_REGEX_INCLUDE" onclick="anchorLink('SALESFORCE_CODE_ANALYZER_FLOW_FILTER_REGEX_INCLUDE')">SALESFORCE_CODE_ANALYZER_FLOW_FILTER_REGEX_INCLUDE</a></div><h4>SALESFORCE_CODE_ANALYZER_FLOW: Including Regex</h4><span class="badge badge-dark value-type">Type: string or array of string</span><br/>
+<span class="description"><p>SALESFORCE<em>CODE</em>ANALYZER<em>FLOW: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with SALESFORCE</em>CODE<em>ANALYZER</em>FLOW<em>CLI</em>LINT_MODE = project</p>
+</span>
+        
 
+        
+        
+
+        
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionSALESFORCE_CODE_ANALYZER_FLOW_FORWARD_EXCLUDED_DIRECTORIES">
+    <div class="card">
+        <div class="card-header" id="headingSALESFORCE_CODE_ANALYZER_FLOW_FORWARD_EXCLUDED_DIRECTORIES">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#SALESFORCE_CODE_ANALYZER_FLOW_FORWARD_EXCLUDED_DIRECTORIES"
+                        aria-expanded="" aria-controls="SALESFORCE_CODE_ANALYZER_FLOW_FORWARD_EXCLUDED_DIRECTORIES" onclick="setAnchor('#SALESFORCE_CODE_ANALYZER_FLOW_FORWARD_EXCLUDED_DIRECTORIES')"><span class="property-name">SALESFORCE_CODE_ANALYZER_FLOW_FORWARD_EXCLUDED_DIRECTORIES</span></button>
+            </h2>
+        </div>
+
+        <div id="SALESFORCE_CODE_ANALYZER_FLOW_FORWARD_EXCLUDED_DIRECTORIES"
+             class="collapse property-definition-div" aria-labelledby="headingSALESFORCE_CODE_ANALYZER_FLOW_FORWARD_EXCLUDED_DIRECTORIES"
+             data-parent="#accordionSALESFORCE_CODE_ANALYZER_FLOW_FORWARD_EXCLUDED_DIRECTORIES">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#SALESFORCE_CODE_ANALYZER_FLOW_FORWARD_EXCLUDED_DIRECTORIES" onclick="anchorLink('SALESFORCE_CODE_ANALYZER_FLOW_FORWARD_EXCLUDED_DIRECTORIES')">SALESFORCE_CODE_ANALYZER_FLOW_FORWARD_EXCLUDED_DIRECTORIES</a></div><h4>SALESFORCE_CODE_ANALYZER_FLOW: Forward excluded directories in project lint mode</h4><span class="badge badge-dark value-type">Type: boolean</span> <span class="badge badge-success default-value">Default: true</span><br/>
+<span class="description"><p>SALESFORCE<em>CODE</em>ANALYZER_FLOW: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files</p>
+</span>
         
 
         

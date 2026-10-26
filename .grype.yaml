@@ -22,3 +22,17 @@ ignore:
   # Remove once minimatch depends on brace-expansion >= 5.0.8.
   - vulnerability: GHSA-mh99-v99m-4gvg
   - vulnerability: CVE-2026-14257
+  # braces 3.0.3 in mega-linter-runner/yarn.lock: stack-exhaustion DoS through deeply nested
+  # brace patterns, reached solely through micromatch (fast-glob, globby) over glob patterns
+  # from our own code and the user's local paths, never attacker-controlled input.
+  # 3.0.3 is the latest release and the advisory has no fixed version.
+  # Remove once a patched braces release ships.
+  - vulnerability: GHSA-vfj7-8cjw-p6xm
+  - vulnerability: CVE-2026-93687
+  # http-cache-semantics 4.2.0 in mega-linter-runner/yarn.lock: cross-user response disclosure
+  # from a SHARED cache through max-stale, reached solely through make-fetch-happen whose
+  # cache is the private local npm cache of the user running the one-shot CLI.
+  # 4.2.0 is the latest release and the advisory has no fixed version.
+  # Remove once a patched http-cache-semantics release ships.
+  - vulnerability: GHSA-ch52-4w7c-c8xp
+  - vulnerability: CVE-2026-93748

@@ -17,6 +17,15 @@ Only for the GitHub Actions workflow file, if you use it:
 - **APPLY_FIXES_EVENT**: `all`, `push`, `pull_request`, `none` _(use none in case of use of [Updated sources reporter](reporters/UpdatedSourcesReporter.md))_
 - **APPLY_FIXES_MODE**: `commit` to create a new commit and push it on the same branch, or `pull_request` to create a new PR targeting the branch.
 
+## Fail if sources are updated
+
+If you do not want MegaLinter to commit the fixes, for example because you use the [Updated sources reporter](reporters/UpdatedSourcesReporter.md), set **FAIL_IF_UPDATED_SOURCES** to `true`: the run fails when sources have been updated by a linter, a formatter or a `POST_COMMANDS` command, so a developer commits the fixes.
+
+- Only `true` and `false` are accepted. Any other value, including an empty CI variable (which overrides the value of `.mega-linter.yml`), disables the option and MegaLinter logs a warning
+- The console log tells whether the option is active, and names it as the failure reason, even when other linters failed too
+- The option takes precedence over `DISABLE_ERRORS`: the run exits with code 1, as the summary says
+- Fixes applied by linters running in `project` lint mode are taken into account, as they are part of the Updated sources reporter ZIP
+
 ## Apply fixes issues
 
 You may see GitHub permission errors, or workflows not running on the new commit.
@@ -45,6 +54,7 @@ To solve these issues, apply one of the following solutions.
 
 - You can use the [Updated sources reporter](reporters/UpdatedSourcesReporter.md) if you don't want fixes to be automatically applied on the Git branch. Instead, download them in a ZIP file and manually extract them into your project.
 - If used, `APPLY_FIXES_EVENT` and `APPLY_FIXES_MODE` cannot be defined in the `.mega-linter.yml` config file; they must be set as environment variables.
+- When only the updated files are linted (`VALIDATE_ALL_CODEBASE: false`), MegaLinter fetches the base branch with git. In a private repository, use `persist-credentials: true` in `actions/checkout` or define `GIT_AUTHORIZATION_BEARER`: otherwise MegaLinter logs a warning and lints the whole codebase
 - If you use `APPLY_FIXES`, add the following line to your `.gitignore` file:
 
 ```shell

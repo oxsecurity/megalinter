@@ -99,7 +99,7 @@ description: List of all known articles, blog posts and videos that talk about M
 <!-- referring-linters-start -->
 - [bicep_linter](https://github.com/Azure/bicep#community-bicep-projects){target=_blank}
 - [checkstyle](https://checkstyle.org/index.html#Related_Tools_Active_Tools){target=_blank}
-- [clj-kondo](https://github.com/borkdude/clj-kondo/blob/master/doc/ci-integration.md#github){target=_blank}
+- [clj-kondo](https://github.com/clj-kondo/clj-kondo/blob/master/doc/ci-integration.md#github){target=_blank}
 - [cpplint](https://github.com/cpplint/cpplint#installation){target=_blank}
 - [csharpier](https://csharpier.com/docs/Pre-commit#megalinter){target=_blank}
 - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#mega-linter){target=_blank}

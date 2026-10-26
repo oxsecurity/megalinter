@@ -29,7 +29,7 @@ For example, define `HTML_DJLINT_ARGUMENTS: ["--profile", "django"]` to select d
 
 ## djlint documentation
 
-- Version in MegaLinter: **1.46.2**
+- Version in MegaLinter: **1.46.4**
 - Visit [Official Web Site](https://djlint.com/){target=_blank}
 - See [How to configure djlint rules](https://djlint.com/docs/configuration/){target=_blank}
 - See [How to disable djlint rules in files](https://djlint.com/docs/ignoring-code/){target=_blank}
@@ -42,23 +42,23 @@ For example, define `HTML_DJLINT_ARGUMENTS: ["--profile", "django"]` to select d
 - Enable djlint by adding `HTML_DJLINT` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable djlint by adding `HTML_DJLINT` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                 | Description                                                                                                                                                                                                         | Default value       |
-|------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------|
-| HTML_DJLINT_ARGUMENTS                    | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                     |
-| HTML_DJLINT_COMMAND_REMOVE_ARGUMENTS     | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                     |
-| HTML_DJLINT_FILTER_REGEX_INCLUDE         | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with HTML_DJLINT_CLI_LINT_MODE = project                                                                                                    | Exclude no file     |
-| HTML_DJLINT_FILTER_REGEX_EXCLUDE         | Custom regex excluding filter<br/>Ex: `(test\|examples)`<br/>⚠️ Not available with HTML_DJLINT_CLI_LINT_MODE = project                                                                                              | Exclude no file     |
-| HTML_DJLINT_CLI_LINT_MODE                | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`     |
-| HTML_DJLINT_FORWARD_EXCLUDED_DIRECTORIES | In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES) to the linter through its native exclusion arguments or generated ignore/config files               | `true`              |
-| HTML_DJLINT_FILE_EXTENSIONS              | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".html", ".htm"]` |
-| HTML_DJLINT_FILE_NAMES_REGEX             | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file  |
-| HTML_DJLINT_PRE_COMMANDS                 | List of bash commands to run before the linter                                                                                                                                                                      | None                |
-| HTML_DJLINT_POST_COMMANDS                | List of bash commands to run after the linter                                                                                                                                                                       | None                |
-| HTML_DJLINT_UNSECURED_ENV_VARIABLES      | List of env variables explicitly not filtered before calling HTML_DJLINT and its pre/post commands                                                                                                                  | None                |
-| HTML_DJLINT_DISABLE_ERRORS               | Run linter but consider errors as warnings                                                                                                                                                                          | `false`             |
-| HTML_DJLINT_DISABLE_ERRORS_IF_LESS_THAN  | Maximum number of errors allowed                                                                                                                                                                                    | `0`                 |
-| HTML_DJLINT_TIMEOUT_SECONDS              | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout | `300`               |
-| HTML_DJLINT_CLI_EXECUTABLE               | Override CLI executable                                                                                                                                                                                             | `['djlint']`        |
+| Variable                                 | Description                                                                                                                                                                                                                                                             | Default value       |
+|------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------|
+| HTML_DJLINT_ARGUMENTS                    | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                                |                     |
+| HTML_DJLINT_COMMAND_REMOVE_ARGUMENTS     | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                                                                    |                     |
+| HTML_DJLINT_FILTER_REGEX_INCLUDE         | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with HTML_DJLINT_CLI_LINT_MODE = project                                                                                                                                                        | Exclude no file     |
+| HTML_DJLINT_FILTER_REGEX_EXCLUDE         | Custom regex excluding filter<br/>Ex: `(test\|examples)`<br/>⚠️ Not available with HTML_DJLINT_CLI_LINT_MODE = project                                                                                                                                                  | Exclude no file     |
+| HTML_DJLINT_CLI_LINT_MODE                | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project                                                     | `list_of_files`     |
+| HTML_DJLINT_FORWARD_EXCLUDED_DIRECTORIES | In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES, and .gitignored directories when IGNORE_GITIGNORED_FILES is true) to the linter through its native exclusion arguments or generated ignore/config files | `true`              |
+| HTML_DJLINT_FILE_EXTENSIONS              | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                                                                                 | `[".html", ".htm"]` |
+| HTML_DJLINT_FILE_NAMES_REGEX             | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                                                                            | Include every file  |
+| HTML_DJLINT_PRE_COMMANDS                 | List of bash commands to run before the linter                                                                                                                                                                                                                          | None                |
+| HTML_DJLINT_POST_COMMANDS                | List of bash commands to run after the linter                                                                                                                                                                                                                           | None                |
+| HTML_DJLINT_UNSECURED_ENV_VARIABLES      | List of env variables explicitly not filtered before calling HTML_DJLINT and its pre/post commands                                                                                                                                                                      | None                |
+| HTML_DJLINT_DISABLE_ERRORS               | Run linter but consider errors as warnings                                                                                                                                                                                                                              | `false`             |
+| HTML_DJLINT_DISABLE_ERRORS_IF_LESS_THAN  | Maximum number of errors allowed                                                                                                                                                                                                                                        | `0`                 |
+| HTML_DJLINT_TIMEOUT_SECONDS              | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout                                                     | `300`               |
+| HTML_DJLINT_CLI_EXECUTABLE               | Override CLI executable                                                                                                                                                                                                                                                 | `['djlint']`        |
 
 ## IDE Integration
 
@@ -225,8 +225,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=djlint
-ARG PIP_DJLINT_VERSION=1.46.2
+ARG PIP_DJLINT_VERSION=1.46.4
 ```
 
 - PIP packages (Python):
-  - [djlint==1.46.2](https://pypi.org/project/djlint/1.46.2)
+  - [djlint==1.46.4](https://pypi.org/project/djlint/1.46.4)

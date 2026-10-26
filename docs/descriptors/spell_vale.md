@@ -24,7 +24,7 @@ MegaLinter analyze markdown and restructuredText files by default, you can chang
 
 ## vale documentation
 
-- Version in MegaLinter: **3.22.0**
+- Version in MegaLinter: **3.24.0**
 - Visit [Official Web Site](https://vale.sh/){target=_blank}
 - See [How to configure vale rules](https://vale.sh/explorer/){target=_blank}
 - See [How to disable vale rules in files](https://vale.sh/docs/topics/vocab/){target=_blank}
@@ -37,25 +37,25 @@ MegaLinter analyze markdown and restructuredText files by default, you can chang
 - Enable vale by adding `SPELL_VALE` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable vale by adding `SPELL_VALE` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                | Description                                                                                                                                                                                                         | Default value                                   |
-|-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| SPELL_VALE_ARGUMENTS                    | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
-| SPELL_VALE_COMMAND_REMOVE_ARGUMENTS     | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                                                 |
-| SPELL_VALE_FILTER_REGEX_INCLUDE         | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with SPELL_VALE_CLI_LINT_MODE = project                                                                                                     | Exclude no file                                 |
-| SPELL_VALE_FILTER_REGEX_EXCLUDE         | Custom regex excluding filter<br/>Ex: `(test\|examples)`<br/>⚠️ Not available with SPELL_VALE_CLI_LINT_MODE = project                                                                                               | Exclude no file                                 |
-| SPELL_VALE_CLI_LINT_MODE                | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
-| SPELL_VALE_FORWARD_EXCLUDED_DIRECTORIES | In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES) to the linter through its native exclusion arguments or generated ignore/config files               | `true`                                          |
-| SPELL_VALE_FILE_EXTENSIONS              | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".md", ".rst"]`                               |
-| SPELL_VALE_FILE_NAMES_REGEX             | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
-| SPELL_VALE_PRE_COMMANDS                 | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
-| SPELL_VALE_POST_COMMANDS                | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
-| SPELL_VALE_UNSECURED_ENV_VARIABLES      | List of env variables explicitly not filtered before calling SPELL_VALE and its pre/post commands                                                                                                                   | None                                            |
-| SPELL_VALE_CONFIG_FILE                  | vale configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                     | `.vale.ini`                                     |
-| SPELL_VALE_RULES_PATH                   | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
-| SPELL_VALE_DISABLE_ERRORS               | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
-| SPELL_VALE_DISABLE_ERRORS_IF_LESS_THAN  | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
-| SPELL_VALE_TIMEOUT_SECONDS              | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout | `300`                                           |
-| SPELL_VALE_CLI_EXECUTABLE               | Override CLI executable                                                                                                                                                                                             | `['vale']`                                      |
+| Variable                                | Description                                                                                                                                                                                                                                                             | Default value                                   |
+|-----------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| SPELL_VALE_ARGUMENTS                    | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                                |                                                 |
+| SPELL_VALE_COMMAND_REMOVE_ARGUMENTS     | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                                                                    |                                                 |
+| SPELL_VALE_FILTER_REGEX_INCLUDE         | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with SPELL_VALE_CLI_LINT_MODE = project                                                                                                                                                         | Exclude no file                                 |
+| SPELL_VALE_FILTER_REGEX_EXCLUDE         | Custom regex excluding filter<br/>Ex: `(test\|examples)`<br/>⚠️ Not available with SPELL_VALE_CLI_LINT_MODE = project                                                                                                                                                   | Exclude no file                                 |
+| SPELL_VALE_CLI_LINT_MODE                | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project                                                     | `list_of_files`                                 |
+| SPELL_VALE_FORWARD_EXCLUDED_DIRECTORIES | In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES, and .gitignored directories when IGNORE_GITIGNORED_FILES is true) to the linter through its native exclusion arguments or generated ignore/config files | `true`                                          |
+| SPELL_VALE_FILE_EXTENSIONS              | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                                                                                 | `[".md", ".rst"]`                               |
+| SPELL_VALE_FILE_NAMES_REGEX             | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                                                                            | Include every file                              |
+| SPELL_VALE_PRE_COMMANDS                 | List of bash commands to run before the linter                                                                                                                                                                                                                          | None                                            |
+| SPELL_VALE_POST_COMMANDS                | List of bash commands to run after the linter                                                                                                                                                                                                                           | None                                            |
+| SPELL_VALE_UNSECURED_ENV_VARIABLES      | List of env variables explicitly not filtered before calling SPELL_VALE and its pre/post commands                                                                                                                                                                       | None                                            |
+| SPELL_VALE_CONFIG_FILE                  | vale configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                                                                         | `.vale.ini`                                     |
+| SPELL_VALE_RULES_PATH                   | Path where to find linter configuration file                                                                                                                                                                                                                            | Workspace folder, then MegaLinter default rules |
+| SPELL_VALE_DISABLE_ERRORS               | Run linter but consider errors as warnings                                                                                                                                                                                                                              | `false`                                         |
+| SPELL_VALE_DISABLE_ERRORS_IF_LESS_THAN  | Maximum number of errors allowed                                                                                                                                                                                                                                        | `0`                                             |
+| SPELL_VALE_TIMEOUT_SECONDS              | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout                                                     | `300`                                           |
+| SPELL_VALE_CLI_EXECUTABLE               | Override CLI executable                                                                                                                                                                                                                                                 | `['vale']`                                      |
 
 ## IDE Integration
 
@@ -153,6 +153,7 @@ Flags:
 
 More flags:
 
+ --coverage        With `vale test`: fail when a rule produced no alert in any case.
  --ext             An extension to associate with stdin (--ext=.md).
  --ignore-syntax   Lint all files line-by-line.
  --no-color        Don't colorize CLI output.
@@ -170,6 +171,7 @@ Commands:
  ls-metrics  Print the given file's internal metrics to stdout.
  ls-vars     Print the supported environment variables to stdout.
  sync        Download and install external configuration sources.
+ test        Run the test cases kept beside a configuration's rules.
 
 Run vale <command> --help for a command's own help.
 
@@ -180,7 +182,7 @@ Run vale <command> --help for a command's own help.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=jdkato/vale
-ARG SPELL_VALE_VERSION=v3.22.0
+ARG SPELL_VALE_VERSION=v3.24.0
 FROM jdkato/vale:${SPELL_VALE_VERSION} AS vale
 COPY --link --from=vale /bin/vale /bin/vale
 ```

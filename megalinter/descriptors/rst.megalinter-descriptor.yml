@@ -27,6 +27,8 @@ linters:
       - **PyPI upload validation** preventing documentation upload failures
       - **Command-line interface** for easy integration into build processes
       - **Fast processing** optimized for large documentation projects
+
+      In `project` lint mode, rst-lint walks every `.rst` file below the workspace: it has no exclusion option, so `EXCLUDED_DIRECTORIES` are not applied. Prefer the default `list_of_files` mode when excluded directories contain `.rst` files.
     linter_url: https://github.com/twolfson/restructuredtext-lint
     linter_repo: https://github.com/twolfson/restructuredtext-lint
     linter_spdx_license: Unlicense
@@ -38,8 +40,12 @@ linters:
       - file
       - list_of_files
       - project
+    # rst-lint requires a path: a directory is walked recursively for *.rst files
+    cli_lint_mode_project_extra_args_after:
+      - .
     examples:
       - "rst-lint myfile.rst"
+      - "rst-lint ."
     install:
       dockerfile:
         - |-

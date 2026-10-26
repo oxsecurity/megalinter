@@ -29,7 +29,7 @@ description: How to use psalm (configure, ignore files, ignore errors, help & ve
 
 ## psalm documentation
 
-- Version in MegaLinter: **Psalm.6.18.0@**
+- Version in MegaLinter: **Psalm.6.19.2@**
 - Visit [Official Web Site](https://psalm.dev){target=_blank}
 - See [How to configure psalm rules](https://psalm.dev/docs/running_psalm/configuration/){target=_blank}
   - If custom `psalm.xml` config file isn't found, [psalm.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/psalm.xml){target=_blank} will be used
@@ -43,25 +43,25 @@ description: How to use psalm (configure, ignore files, ignore errors, help & ve
 - Enable psalm by adding `PHP_PSALM` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable psalm by adding `PHP_PSALM` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                               | Description                                                                                                                                                                                                         | Default value                                   |
-|----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| PHP_PSALM_ARGUMENTS                    | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
-| PHP_PSALM_COMMAND_REMOVE_ARGUMENTS     | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                                                 |
-| PHP_PSALM_FILTER_REGEX_INCLUDE         | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with PHP_PSALM_CLI_LINT_MODE = project                                                                                                      | Exclude no file                                 |
-| PHP_PSALM_FILTER_REGEX_EXCLUDE         | Custom regex excluding filter<br/>Ex: `(test\|examples)`<br/>⚠️ Not available with PHP_PSALM_CLI_LINT_MODE = project                                                                                                | Exclude no file                                 |
-| PHP_PSALM_CLI_LINT_MODE                | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
-| PHP_PSALM_FORWARD_EXCLUDED_DIRECTORIES | In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES) to the linter through its native exclusion arguments or generated ignore/config files               | `true`                                          |
-| PHP_PSALM_FILE_EXTENSIONS              | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".php"]`                                      |
-| PHP_PSALM_FILE_NAMES_REGEX             | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
-| PHP_PSALM_PRE_COMMANDS                 | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
-| PHP_PSALM_POST_COMMANDS                | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
-| PHP_PSALM_UNSECURED_ENV_VARIABLES      | List of env variables explicitly not filtered before calling PHP_PSALM and its pre/post commands                                                                                                                    | None                                            |
-| PHP_PSALM_CONFIG_FILE                  | psalm configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                    | `psalm.xml`                                     |
-| PHP_PSALM_RULES_PATH                   | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
-| PHP_PSALM_DISABLE_ERRORS               | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
-| PHP_PSALM_DISABLE_ERRORS_IF_LESS_THAN  | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
-| PHP_PSALM_TIMEOUT_SECONDS              | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout | `300`                                           |
-| PHP_PSALM_CLI_EXECUTABLE               | Override CLI executable                                                                                                                                                                                             | `['psalm']`                                     |
+| Variable                               | Description                                                                                                                                                                                                                                                             | Default value                                   |
+|----------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| PHP_PSALM_ARGUMENTS                    | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                                |                                                 |
+| PHP_PSALM_COMMAND_REMOVE_ARGUMENTS     | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                                                                    |                                                 |
+| PHP_PSALM_FILTER_REGEX_INCLUDE         | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with PHP_PSALM_CLI_LINT_MODE = project                                                                                                                                                          | Exclude no file                                 |
+| PHP_PSALM_FILTER_REGEX_EXCLUDE         | Custom regex excluding filter<br/>Ex: `(test\|examples)`<br/>⚠️ Not available with PHP_PSALM_CLI_LINT_MODE = project                                                                                                                                                    | Exclude no file                                 |
+| PHP_PSALM_CLI_LINT_MODE                | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project                                                     | `list_of_files`                                 |
+| PHP_PSALM_FORWARD_EXCLUDED_DIRECTORIES | In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES, and .gitignored directories when IGNORE_GITIGNORED_FILES is true) to the linter through its native exclusion arguments or generated ignore/config files | `true`                                          |
+| PHP_PSALM_FILE_EXTENSIONS              | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                                                                                 | `[".php"]`                                      |
+| PHP_PSALM_FILE_NAMES_REGEX             | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                                                                            | Include every file                              |
+| PHP_PSALM_PRE_COMMANDS                 | List of bash commands to run before the linter                                                                                                                                                                                                                          | None                                            |
+| PHP_PSALM_POST_COMMANDS                | List of bash commands to run after the linter                                                                                                                                                                                                                           | None                                            |
+| PHP_PSALM_UNSECURED_ENV_VARIABLES      | List of env variables explicitly not filtered before calling PHP_PSALM and its pre/post commands                                                                                                                                                                        | None                                            |
+| PHP_PSALM_CONFIG_FILE                  | psalm configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                                                                        | `psalm.xml`                                     |
+| PHP_PSALM_RULES_PATH                   | Path where to find linter configuration file                                                                                                                                                                                                                            | Workspace folder, then MegaLinter default rules |
+| PHP_PSALM_DISABLE_ERRORS               | Run linter but consider errors as warnings                                                                                                                                                                                                                              | `false`                                         |
+| PHP_PSALM_DISABLE_ERRORS_IF_LESS_THAN  | Maximum number of errors allowed                                                                                                                                                                                                                                        | `0`                                             |
+| PHP_PSALM_TIMEOUT_SECONDS              | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout                                                     | `300`                                           |
+| PHP_PSALM_CLI_EXECUTABLE               | Override CLI executable                                                                                                                                                                                                                                                 | `['psalm']`                                     |
 
 ## IDE Integration
 
@@ -162,7 +162,8 @@ Surfacing issues:
 
     --find-dead-code[=auto]
     --find-unused-code[=auto]
-        Look for unused code. Options are 'auto' or 'always'. If no value is specified, default is 'auto'
+        Look for unused code. Options are 'auto' or 'always'. If no value is specified, default is 'auto'.
+        Unused code detection is already on by default (see the findUnusedCode config option)
 
     --find-unused-psalm-suppress
         Finds all @psalm-suppress annotations that aren’t used
@@ -205,7 +206,9 @@ Plugins:
 
 Output:
     -m, --monochrome
-        Enable monochrome output
+        Enable monochrome output.
+        Auto-enabled when NO_COLOR is set to a non-empty value or when
+        an AI coding agent is driving the shell.
 
     --output-format=console
         Changes the output format.
@@ -215,10 +218,13 @@ Output:
             text, xml
 
     --no-progress
-        Disable the progress indicator
+        Disable the progress indicator.
+        Auto-enabled when an AI coding agent is driving the shell
+        (CI always keeps its phase breadcrumbs).
 
     --long-progress
-        Use a progress indicator suitable for Continuous Integration logs
+        Use a progress indicator suitable for Continuous Integration logs.
+        Auto-enabled in CI and when stderr is not attached to a terminal.
 
     --stats
         Shows a breakdown of Psalm’s ability to infer types in the codebase
@@ -312,7 +318,7 @@ ENV COMPOSER_HOME=/usr/local/composer
 ENV PATH="/usr/local/composer/vendor/bin:${PATH}"
 # Linter install
 # renovate: datasource=packagist depName=vimeo/psalm
-ARG PHP_VIMEO_PSALM_VERSION=6.18.0
+ARG PHP_VIMEO_PSALM_VERSION=6.19.2
 RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require vimeo/psalm:${PHP_VIMEO_PSALM_VERSION}
 
 ```

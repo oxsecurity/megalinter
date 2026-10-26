@@ -59,6 +59,7 @@ linters:
       - list_of_files
       - project
     cli_lint_mode_project_exclude_arg_name: "--exclude"
+    cli_lint_mode_project_exclude_seed_values: [".cache", ".git", ".hg", ".svn", ".tox"]
     cli_config_extra_args:
       - "-v"
     cli_sarif_args:
@@ -105,7 +106,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=ansible-lint
-          ARG PIP_ANSIBLE_LINT_VERSION=26.8.0
+          ARG PIP_ANSIBLE_LINT_VERSION=26.10.0
       pip:
         - ansible-lint==${PIP_ANSIBLE_LINT_VERSION}
     supported_platforms:

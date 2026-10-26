@@ -77,7 +77,7 @@ To add a single package with pnpm instead of installing the full tree, run `core
 
 ## eslint documentation
 
-- Version in MegaLinter: **10.11.0**
+- Version in MegaLinter: **10.12.0**
 - Visit [Official Web Site](https://github.com/Rel1cx/eslint-react#readme){target=_blank}
 - See [How to configure eslint rules](https://eslint-react.xyz/docs/getting-started/installation){target=_blank}
 - See [How to disable eslint rules in files](https://eslint.org/docs/latest/use/configure/rules#disabling-rules){target=_blank}
@@ -93,25 +93,25 @@ To add a single package with pnpm instead of installing the full tree, run `core
 
 - Enable **autofixes** by adding `JSX_ESLINT` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
-| Variable                                | Description                                                                                                                                                                                                         | Default value                                   |
-|-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| JSX_ESLINT_ARGUMENTS                    | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
-| JSX_ESLINT_COMMAND_REMOVE_ARGUMENTS     | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                                                 |
-| JSX_ESLINT_FILTER_REGEX_INCLUDE         | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with JSX_ESLINT_CLI_LINT_MODE = project                                                                                                     | Exclude no file                                 |
-| JSX_ESLINT_FILTER_REGEX_EXCLUDE         | Custom regex excluding filter<br/>Ex: `(test\|examples)`<br/>⚠️ Not available with JSX_ESLINT_CLI_LINT_MODE = project                                                                                               | Exclude no file                                 |
-| JSX_ESLINT_CLI_LINT_MODE                | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
-| JSX_ESLINT_FORWARD_EXCLUDED_DIRECTORIES | In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES) to the linter through its native exclusion arguments or generated ignore/config files               | `true`                                          |
-| JSX_ESLINT_FILE_EXTENSIONS              | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".jsx"]`                                      |
-| JSX_ESLINT_FILE_NAMES_REGEX             | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
-| JSX_ESLINT_PRE_COMMANDS                 | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
-| JSX_ESLINT_POST_COMMANDS                | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
-| JSX_ESLINT_UNSECURED_ENV_VARIABLES      | List of env variables explicitly not filtered before calling JSX_ESLINT and its pre/post commands                                                                                                                   | None                                            |
-| JSX_ESLINT_CONFIG_FILE                  | eslint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                   | `eslint.config.cjs`                             |
-| JSX_ESLINT_RULES_PATH                   | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
-| JSX_ESLINT_DISABLE_ERRORS               | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
-| JSX_ESLINT_DISABLE_ERRORS_IF_LESS_THAN  | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
-| JSX_ESLINT_TIMEOUT_SECONDS              | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout | `300`                                           |
-| JSX_ESLINT_CLI_EXECUTABLE               | Override CLI executable                                                                                                                                                                                             | `['eslint']`                                    |
+| Variable                                | Description                                                                                                                                                                                                                                                             | Default value                                   |
+|-----------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| JSX_ESLINT_ARGUMENTS                    | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                                |                                                 |
+| JSX_ESLINT_COMMAND_REMOVE_ARGUMENTS     | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                                                                    |                                                 |
+| JSX_ESLINT_FILTER_REGEX_INCLUDE         | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with JSX_ESLINT_CLI_LINT_MODE = project                                                                                                                                                         | Exclude no file                                 |
+| JSX_ESLINT_FILTER_REGEX_EXCLUDE         | Custom regex excluding filter<br/>Ex: `(test\|examples)`<br/>⚠️ Not available with JSX_ESLINT_CLI_LINT_MODE = project                                                                                                                                                   | Exclude no file                                 |
+| JSX_ESLINT_CLI_LINT_MODE                | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project                                                     | `list_of_files`                                 |
+| JSX_ESLINT_FORWARD_EXCLUDED_DIRECTORIES | In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES, and .gitignored directories when IGNORE_GITIGNORED_FILES is true) to the linter through its native exclusion arguments or generated ignore/config files | `true`                                          |
+| JSX_ESLINT_FILE_EXTENSIONS              | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                                                                                 | `[".jsx"]`                                      |
+| JSX_ESLINT_FILE_NAMES_REGEX             | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                                                                            | Include every file                              |
+| JSX_ESLINT_PRE_COMMANDS                 | List of bash commands to run before the linter                                                                                                                                                                                                                          | None                                            |
+| JSX_ESLINT_POST_COMMANDS                | List of bash commands to run after the linter                                                                                                                                                                                                                           | None                                            |
+| JSX_ESLINT_UNSECURED_ENV_VARIABLES      | List of env variables explicitly not filtered before calling JSX_ESLINT and its pre/post commands                                                                                                                                                                       | None                                            |
+| JSX_ESLINT_CONFIG_FILE                  | eslint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                                                                       | `eslint.config.cjs`                             |
+| JSX_ESLINT_RULES_PATH                   | Path where to find linter configuration file                                                                                                                                                                                                                            | Workspace folder, then MegaLinter default rules |
+| JSX_ESLINT_DISABLE_ERRORS               | Run linter but consider errors as warnings                                                                                                                                                                                                                              | `false`                                         |
+| JSX_ESLINT_DISABLE_ERRORS_IF_LESS_THAN  | Maximum number of errors allowed                                                                                                                                                                                                                                        | `0`                                             |
+| JSX_ESLINT_TIMEOUT_SECONDS              | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout                                                     | `300`                                           |
+| JSX_ESLINT_CLI_EXECUTABLE               | Override CLI executable                                                                                                                                                                                                                                                 | `['eslint']`                                    |
 
 ## IDE Integration
 
@@ -251,16 +251,16 @@ Miscellaneous:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=10.11.0
+ARG NPM_ESLINT_VERSION=10.12.0
 # renovate: datasource=npm depName=@eslint-react/eslint-plugin
-ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.20.5
+ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.26.1
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 ```
 
 - NPM packages (node.js):
-  - [eslint@10.11.0](https://www.npmjs.com/package/eslint/v/10.11.0)
-  - [@eslint-react/eslint-plugin@5.20.5](https://www.npmjs.com/package/@eslint-react/eslint-plugin/v/5.20.5)
+  - [eslint@10.12.0](https://www.npmjs.com/package/eslint/v/10.12.0)
+  - [@eslint-react/eslint-plugin@5.26.1](https://www.npmjs.com/package/@eslint-react/eslint-plugin/v/5.26.1)
   - [@microsoft/eslint-formatter-sarif@3.1.0](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/3.1.0)
 
 ## Known errors and resolutions

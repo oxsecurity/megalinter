@@ -64,9 +64,9 @@ ARG TARGETARCH
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=26.2.1
+ARG PIP_PIP_VERSION=26.2.2
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=21.9.0
+ARG PIP_VIRTUALENV_VERSION=21.14.13
 #ARG__END
 
 ####################

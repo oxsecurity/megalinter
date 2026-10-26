@@ -50,7 +50,7 @@ Black is successfully used by many projects, small and big, and has become the d
 
 ## black documentation
 
-- Version in MegaLinter: **26.5.1**
+- Version in MegaLinter: **26.10.1**
 - Visit [Official Web Site](https://black.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure black rules](https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-format){target=_blank}
   - If custom `pyproject.toml` config file isn't found, [pyproject.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/pyproject.toml){target=_blank} will be used
@@ -64,26 +64,26 @@ Black is successfully used by many projects, small and big, and has become the d
 
 - Enable **autofixes** by adding `PYTHON_BLACK` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
-| Variable                                  | Description                                                                                                                                                                                                         | Default value                                   |
-|-------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| PYTHON_DEFAULT_STYLE                      | For black to be active, PYTHON_DEFAULT_STYLE must be `black`                                                                                                                                                        | `black`                                         |
-| PYTHON_BLACK_ARGUMENTS                    | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
-| PYTHON_BLACK_COMMAND_REMOVE_ARGUMENTS     | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                                                 |
-| PYTHON_BLACK_FILTER_REGEX_INCLUDE         | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with PYTHON_BLACK_CLI_LINT_MODE = project                                                                                                   | Exclude no file                                 |
-| PYTHON_BLACK_FILTER_REGEX_EXCLUDE         | Custom regex excluding filter<br/>Ex: `(test\|examples)`<br/>⚠️ Not available with PYTHON_BLACK_CLI_LINT_MODE = project                                                                                             | Exclude no file                                 |
-| PYTHON_BLACK_CLI_LINT_MODE                | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
-| PYTHON_BLACK_FORWARD_EXCLUDED_DIRECTORIES | In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES) to the linter through its native exclusion arguments or generated ignore/config files               | `true`                                          |
-| PYTHON_BLACK_FILE_EXTENSIONS              | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".py", ".pyi", ".ipynb"]`                     |
-| PYTHON_BLACK_FILE_NAMES_REGEX             | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
-| PYTHON_BLACK_PRE_COMMANDS                 | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
-| PYTHON_BLACK_POST_COMMANDS                | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
-| PYTHON_BLACK_UNSECURED_ENV_VARIABLES      | List of env variables explicitly not filtered before calling PYTHON_BLACK and its pre/post commands                                                                                                                 | None                                            |
-| PYTHON_BLACK_CONFIG_FILE                  | black configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                    | `pyproject.toml`                                |
-| PYTHON_BLACK_RULES_PATH                   | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
-| PYTHON_BLACK_DISABLE_ERRORS               | Run linter but consider errors as warnings                                                                                                                                                                          | `true`                                          |
-| PYTHON_BLACK_DISABLE_ERRORS_IF_LESS_THAN  | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
-| PYTHON_BLACK_TIMEOUT_SECONDS              | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout | `300`                                           |
-| PYTHON_BLACK_CLI_EXECUTABLE               | Override CLI executable                                                                                                                                                                                             | `['black']`                                     |
+| Variable                                  | Description                                                                                                                                                                                                                                                             | Default value                                   |
+|-------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| PYTHON_DEFAULT_STYLE                      | For black to be active, PYTHON_DEFAULT_STYLE must be `black`                                                                                                                                                                                                            | `black`                                         |
+| PYTHON_BLACK_ARGUMENTS                    | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                                |                                                 |
+| PYTHON_BLACK_COMMAND_REMOVE_ARGUMENTS     | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                                                                    |                                                 |
+| PYTHON_BLACK_FILTER_REGEX_INCLUDE         | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with PYTHON_BLACK_CLI_LINT_MODE = project                                                                                                                                                       | Exclude no file                                 |
+| PYTHON_BLACK_FILTER_REGEX_EXCLUDE         | Custom regex excluding filter<br/>Ex: `(test\|examples)`<br/>⚠️ Not available with PYTHON_BLACK_CLI_LINT_MODE = project                                                                                                                                                 | Exclude no file                                 |
+| PYTHON_BLACK_CLI_LINT_MODE                | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project                                                     | `list_of_files`                                 |
+| PYTHON_BLACK_FORWARD_EXCLUDED_DIRECTORIES | In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES, and .gitignored directories when IGNORE_GITIGNORED_FILES is true) to the linter through its native exclusion arguments or generated ignore/config files | `true`                                          |
+| PYTHON_BLACK_FILE_EXTENSIONS              | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                                                                                 | `[".py", ".pyi", ".ipynb"]`                     |
+| PYTHON_BLACK_FILE_NAMES_REGEX             | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                                                                            | Include every file                              |
+| PYTHON_BLACK_PRE_COMMANDS                 | List of bash commands to run before the linter                                                                                                                                                                                                                          | None                                            |
+| PYTHON_BLACK_POST_COMMANDS                | List of bash commands to run after the linter                                                                                                                                                                                                                           | None                                            |
+| PYTHON_BLACK_UNSECURED_ENV_VARIABLES      | List of env variables explicitly not filtered before calling PYTHON_BLACK and its pre/post commands                                                                                                                                                                     | None                                            |
+| PYTHON_BLACK_CONFIG_FILE                  | black configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                                                                        | `pyproject.toml`                                |
+| PYTHON_BLACK_RULES_PATH                   | Path where to find linter configuration file                                                                                                                                                                                                                            | Workspace folder, then MegaLinter default rules |
+| PYTHON_BLACK_DISABLE_ERRORS               | Run linter but consider errors as warnings                                                                                                                                                                                                                              | `true`                                          |
+| PYTHON_BLACK_DISABLE_ERRORS_IF_LESS_THAN  | Maximum number of errors allowed                                                                                                                                                                                                                                        | `0`                                             |
+| PYTHON_BLACK_TIMEOUT_SECONDS              | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout                                                     | `300`                                           |
+| PYTHON_BLACK_CLI_EXECUTABLE               | Override CLI executable                                                                                                                                                                                                                                                 | `['black']`                                     |
 
 ## IDE Integration
 
@@ -184,7 +184,7 @@ Options:
                                   expected to make it into the stable style
                                   Black's next major release. Implies
                                   --preview.
-  --enable-unstable-feature [string_processing|hug_parens_with_braces_and_square_brackets|wrap_comprehension_in|simplify_power_operator_hugging|wrap_long_dict_values_in_parens|fix_if_guard_explosion_in_case_statement|pyi_overload_group_blank_lines|pyi_blank_line_before_decorated_class]
+  --enable-unstable-feature [string_processing|hug_parens_with_braces_and_square_brackets|wrap_comprehension_in|simplify_power_operator_hugging|wrap_long_dict_values_in_parens|fix_if_guard_explosion_in_case_statement|pyi_overload_group_blank_lines|fix_unnecessary_parens_in_indexed_assignment|pyi_blank_line_before_decorated_class|pyi_blank_line_after_function_docstring|hug_comparator|parenthesize_tuple_in_yield|fmt_off_class_blank_lines|remove_redundant_generator_parentheses|normalize_tstring_prefix|remove_redundant_unpacking_parentheses|fix_magic_trailing_comma_trailer_split|keep_dict_keys_with_operators|blank_line_after_stub_method|keep_commented_expressions_together|avoid_parens_for_unbreakable_rhs_in_assignments|parenthesize_expressions_with_comments|keep_trailers_on_bracket_comment_overflow]
                                   Enable specific features included in the
                                   `--unstable` style. Requires `--preview`. No
                                   compatibility guarantees are provided on the
@@ -276,8 +276,11 @@ Options:
   --version                       Show the version and exit.
   --config FILE                   Read configuration options from a
                                   configuration file.
+  --cache-dir DIRECTORY           Store the cache in this directory. Takes
+                                  precedence over BLACK_CACHE_DIR.
   --no-cache                      Skip reading and writing the cache, forcing
                                   Black to reformat all included files.
+                                  Overrides --cache-dir.
   -h, --help                      Show this message and exit.
 ```
 
@@ -286,8 +289,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=black
-ARG PIP_BLACK_VERSION=26.5.1
+ARG PIP_BLACK_VERSION=26.10.1
 ```
 
 - PIP packages (Python):
-  - [black[jupyter]==26.5.1](https://pypi.org/project/black[jupyter]/26.5.1)
+  - [black[jupyter]==26.10.1](https://pypi.org/project/black[jupyter]/26.10.1)

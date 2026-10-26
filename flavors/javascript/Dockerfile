@@ -33,13 +33,13 @@ ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=4.0.2
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.8.0-alpine
 # renovate: datasource=docker depName=yoheimuta/protolint
-ARG PROTOBUF_PROTOLINT_VERSION=0.57.0
+ARG PROTOBUF_PROTOLINT_VERSION=0.58.0
 # renovate: datasource=docker depName=ghcr.io/betterleaks/betterleaks
 ARG REPOSITORY_BETTERLEAKS_VERSION=v1.7.3
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.97.5
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.99.2
 # renovate: datasource=docker depName=jdkato/vale
-ARG SPELL_VALE_VERSION=v3.22.0
+ARG SPELL_VALE_VERSION=v3.24.0
 # renovate: datasource=docker depName=lycheeverse/lychee
 ARG SPELL_LYCHEE_VERSION=0.24.2-alpine
 #ARGTOP__END
@@ -127,13 +127,13 @@ ARG TARGETARCH
 # renovate: datasource=npm depName=typescript
 ARG NPM_TYPESCRIPT_VERSION=6.0.3
 # renovate: datasource=pypi depName=ansible-lint
-ARG PIP_ANSIBLE_LINT_VERSION=26.8.0
+ARG PIP_ANSIBLE_LINT_VERSION=26.10.0
 # renovate: datasource=npm depName=@stoplight/spectral-cli
-ARG NPM_SPECTRAL_CLI_VERSION=6.16.3
+ARG NPM_SPECTRAL_CLI_VERSION=6.17.0
 # renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=5.3.1
+ARG NPM_JSCPD_VERSION=5.4.1
 # renovate: datasource=npm depName=stylelint
-ARG NPM_STYLELINT_VERSION=17.15.0
+ARG NPM_STYLELINT_VERSION=17.16.0
 # renovate: datasource=npm depName=stylelint-config-standard
 ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=40.0.0
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
@@ -141,17 +141,17 @@ ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=13.0.0
 # renovate: datasource=npm depName=stylelint-scss
 ARG NPM_STYLELINT_SCSS_VERSION=7.3.0
 # renovate: datasource=npm depName=@biomejs/biome
-ARG NPM_BIOMEJS_BIOME_VERSION=2.5.14
+ARG NPM_BIOMEJS_BIOME_VERSION=2.5.15
 # renovate: datasource=github-releases depName=dotenv-linter/dotenv-linter extractVersion=^v(?<version>.+)$
 ARG DOTENV_LINTER_VERSION=4.0.0
 # renovate: datasource=npm depName=npm-groovy-lint
 ARG NPM_GROOVY_LINT_VERSION=18.0.0
 # renovate: datasource=pypi depName=djlint
-ARG PIP_DJLINT_VERSION=1.46.2
+ARG PIP_DJLINT_VERSION=1.46.4
 # renovate: datasource=npm depName=htmlhint
 ARG NPM_HTMLHINT_VERSION=1.9.2
 # renovate: datasource=npm depName=eslint
-ARG NPM_ESLINT_VERSION=10.11.0
+ARG NPM_ESLINT_VERSION=10.12.0
 # renovate: datasource=npm depName=@eslint/js
 ARG NPM_ESLINT_JS_VERSION=10.0.1
 # renovate: datasource=npm depName=eslint-config-prettier
@@ -159,21 +159,21 @@ ARG NPM_ESLINT_CONFIG_PRETTIER_VERSION=10.1.8
 # renovate: datasource=npm depName=eslint-plugin-import-x
 ARG NPM_ESLINT_PLUGIN_IMPORT_X_VERSION=4.17.1
 # renovate: datasource=npm depName=eslint-plugin-jest
-ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.16.6
+ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.16.11
 # renovate: datasource=npm depName=eslint-plugin-n
-ARG NPM_ESLINT_PLUGIN_N_VERSION=18.3.0
+ARG NPM_ESLINT_PLUGIN_N_VERSION=18.4.1
 # renovate: datasource=npm depName=eslint-plugin-prettier
 ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.6
 # renovate: datasource=npm depName=eslint-plugin-promise
 ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=7.3.0
 # renovate: datasource=npm depName=eslint-plugin-vue
-ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.11.0
+ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.11.1
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 # renovate: datasource=npm depName=standard
 ARG NPM_STANDARD_VERSION=17.1.2
 # renovate: datasource=npm depName=prettier
-ARG NPM_PRETTIER_VERSION=3.9.8
+ARG NPM_PRETTIER_VERSION=3.9.10
 # renovate: datasource=npm depName=@prantlf/jsonlint
 ARG NPM_PRANTLF_JSONLINT_VERSION=17.0.1
 # renovate: datasource=npm depName=v8r
@@ -183,7 +183,7 @@ ARG NPM_PACKAGE_JSON_LINT_VERSION=11.0.0
 # renovate: datasource=npm depName=npm-package-json-lint-config-default
 ARG NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION=10.0.0
 # renovate: datasource=npm depName=@eslint-react/eslint-plugin
-ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.20.5
+ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.26.2
 # renovate: datasource=github-tags depName=pinterest/ktlint
 ARG KTLINT_VERSION=1.8.0
 
@@ -197,59 +197,59 @@ ARG NPM_MARKDOWNLINT_CLI_VERSION=0.49.1
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.2.75
+ARG PIP_RUMDL_VERSION=0.2.79
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.3.17
+ARG PIP_CHECKOV_VERSION=3.3.22
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.119.0
+ARG REPOSITORY_GRYPE_VERSION=0.120.1
 # renovate: datasource=github-releases depName=loeffel-io/ls-lint extractVersion=^v(?<version>.+)$
 ARG REPOSITORY_LS_LINT_VERSION=2.3.1
 # renovate: datasource=repology depName=alpine_3_24/osv-scanner versioning=loose
-ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.8-r2
+ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.8-r3
 # renovate: datasource=npm depName=secretlint
-ARG NPM_SECRETLINT_VERSION=13.0.5
+ARG NPM_SECRETLINT_VERSION=13.0.7
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
-ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=13.0.5
+ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=13.0.7
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
-ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=13.0.5
+ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=13.0.7
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.177.0
+ARG PIP_SEMGREP_VERSION=1.180.0
 # renovate: datasource=github-tags depName=anchore/syft
-ARG REPOSITORY_SYFT_VERSION=1.52.0
+ARG REPOSITORY_SYFT_VERSION=1.54.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_VERSION=0.74.0
+ARG REPOSITORY_TRIVY_VERSION=0.76.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_SBOM_VERSION=0.74.0
+ARG REPOSITORY_TRIVY_SBOM_VERSION=0.76.1
 # renovate: datasource=pypi depName=snakemake
 ARG PIP_SNAKEMAKE_VERSION=9.27.0
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=2.0.3
 # renovate: datasource=npm depName=cspell
-ARG NPM_CSPELL_VERSION=10.3.3
+ARG NPM_CSPELL_VERSION=10.3.6
 # renovate: datasource=pypi depName=proselint
 ARG PIP_PROSELINT_VERSION=0.16.0
 # renovate: datasource=pypi depName=codespell
 ARG PIP_CODESPELL_VERSION=2.4.3
 # renovate: datasource=pypi depName=sqlfluff
-ARG PIP_SQLFLUFF_VERSION=4.3.0
+ARG PIP_SQLFLUFF_VERSION=4.4.0
 # renovate: datasource=npm depName=@ibm/tekton-lint
 ARG NPM_IBM_TEKTON_LINT_VERSION=1.2.4
 # renovate: datasource=npm depName=prettyjson
 ARG NPM_PRETTYJSON_VERSION=1.2.5
 # renovate: datasource=npm depName=@typescript-eslint/eslint-plugin
-ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.70.0
+ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.71.1
 # renovate: datasource=npm depName=@typescript-eslint/parser
-ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.70.0
+ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.71.1
 # renovate: datasource=npm depName=typescript-eslint
-ARG NPM_TYPESCRIPT_ESLINT_VERSION=8.70.0
+ARG NPM_TYPESCRIPT_ESLINT_VERSION=8.71.1
 # renovate: datasource=npm depName=ts-standard
 ARG NPM_TS_STANDARD_VERSION=12.0.2
 # renovate: datasource=pypi depName=yamllint
 ARG PIP_YAMLLINT_VERSION=1.38.0
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=26.2.1
+ARG PIP_PIP_VERSION=26.2.2
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=21.9.0
+ARG PIP_VIRTUALENV_VERSION=21.14.13
 
 ARG CARGO_SARIF_FMT_VERSION
 ARG ACTION_ACTIONLINT_VERSION

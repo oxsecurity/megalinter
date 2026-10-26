@@ -45,7 +45,7 @@ Example:
 
 ## jscpd documentation
 
-- Version in MegaLinter: **5.3.0**
+- Version in MegaLinter: **5.4.1**
 - Visit [Official Web Site](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#readme){target=_blank}
 - See [How to configure jscpd rules](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#config-file){target=_blank}
   - If custom `.jscpd.json` config file isn't found, [.jscpd.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.jscpd.json){target=_blank} will be used
@@ -58,23 +58,23 @@ Example:
 - Enable jscpd by adding `COPYPASTE_JSCPD` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable jscpd by adding `COPYPASTE_JSCPD` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable                                     | Description                                                                                                                                                                                                         | Default value                                   |
-|----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| COPYPASTE_JSCPD_ARGUMENTS                    | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
-| COPYPASTE_JSCPD_COMMAND_REMOVE_ARGUMENTS     | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                                                 |
-| COPYPASTE_JSCPD_FILTER_REGEX_INCLUDE         | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with COPYPASTE_JSCPD_CLI_LINT_MODE = project                                                                                                | Exclude no file                                 |
-| COPYPASTE_JSCPD_FILTER_REGEX_EXCLUDE         | Custom regex excluding filter<br/>Ex: `(test\|examples)`<br/>⚠️ Not available with COPYPASTE_JSCPD_CLI_LINT_MODE = project                                                                                          | Exclude no file                                 |
-| COPYPASTE_JSCPD_CLI_LINT_MODE                | Override default CLI lint mode<br/>- `project`: Call the linter from the root of the project                                                                                                                        | `project`                                       |
-| COPYPASTE_JSCPD_FORWARD_EXCLUDED_DIRECTORIES | In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES) to the linter through its native exclusion arguments or generated ignore/config files               | `true`                                          |
-| COPYPASTE_JSCPD_PRE_COMMANDS                 | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
-| COPYPASTE_JSCPD_POST_COMMANDS                | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
-| COPYPASTE_JSCPD_UNSECURED_ENV_VARIABLES      | List of env variables explicitly not filtered before calling COPYPASTE_JSCPD and its pre/post commands                                                                                                              | None                                            |
-| COPYPASTE_JSCPD_CONFIG_FILE                  | jscpd configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                    | `.jscpd.json`                                   |
-| COPYPASTE_JSCPD_RULES_PATH                   | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
-| COPYPASTE_JSCPD_DISABLE_ERRORS               | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
-| COPYPASTE_JSCPD_DISABLE_ERRORS_IF_LESS_THAN  | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
-| COPYPASTE_JSCPD_TIMEOUT_SECONDS              | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout | `300`                                           |
-| COPYPASTE_JSCPD_CLI_EXECUTABLE               | Override CLI executable                                                                                                                                                                                             | `['jscpd']`                                     |
+| Variable                                     | Description                                                                                                                                                                                                                                                             | Default value                                   |
+|----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| COPYPASTE_JSCPD_ARGUMENTS                    | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                                |                                                 |
+| COPYPASTE_JSCPD_COMMAND_REMOVE_ARGUMENTS     | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                                                                    |                                                 |
+| COPYPASTE_JSCPD_FILTER_REGEX_INCLUDE         | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with COPYPASTE_JSCPD_CLI_LINT_MODE = project                                                                                                                                                    | Exclude no file                                 |
+| COPYPASTE_JSCPD_FILTER_REGEX_EXCLUDE         | Custom regex excluding filter<br/>Ex: `(test\|examples)`<br/>⚠️ Not available with COPYPASTE_JSCPD_CLI_LINT_MODE = project                                                                                                                                              | Exclude no file                                 |
+| COPYPASTE_JSCPD_CLI_LINT_MODE                | Override default CLI lint mode<br/>- `project`: Call the linter from the root of the project                                                                                                                                                                            | `project`                                       |
+| COPYPASTE_JSCPD_FORWARD_EXCLUDED_DIRECTORIES | In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES, and .gitignored directories when IGNORE_GITIGNORED_FILES is true) to the linter through its native exclusion arguments or generated ignore/config files | `true`                                          |
+| COPYPASTE_JSCPD_PRE_COMMANDS                 | List of bash commands to run before the linter                                                                                                                                                                                                                          | None                                            |
+| COPYPASTE_JSCPD_POST_COMMANDS                | List of bash commands to run after the linter                                                                                                                                                                                                                           | None                                            |
+| COPYPASTE_JSCPD_UNSECURED_ENV_VARIABLES      | List of env variables explicitly not filtered before calling COPYPASTE_JSCPD and its pre/post commands                                                                                                                                                                  | None                                            |
+| COPYPASTE_JSCPD_CONFIG_FILE                  | jscpd configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                                                                        | `.jscpd.json`                                   |
+| COPYPASTE_JSCPD_RULES_PATH                   | Path where to find linter configuration file                                                                                                                                                                                                                            | Workspace folder, then MegaLinter default rules |
+| COPYPASTE_JSCPD_DISABLE_ERRORS               | Run linter but consider errors as warnings                                                                                                                                                                                                                              | `false`                                         |
+| COPYPASTE_JSCPD_DISABLE_ERRORS_IF_LESS_THAN  | Maximum number of errors allowed                                                                                                                                                                                                                                        | `0`                                             |
+| COPYPASTE_JSCPD_TIMEOUT_SECONDS              | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout                                                     | `300`                                           |
+| COPYPASTE_JSCPD_CLI_EXECUTABLE               | Override CLI executable                                                                                                                                                                                                                                                 | `['jscpd']`                                     |
 
 ## MegaLinter Flavors
 
@@ -145,10 +145,32 @@ Options:
           Maximum number of lines per block to consider
       --max-gap-lines <N>
           Merge clones of the same file pair that are separated by at most N unmatched lines in both files into one near-miss clone (Type-3, reported as "similar"); 0 disables
-      --similarity <RATIO>
-          Report JavaScript/TypeScript function pairs whose AST similarity reaches RATIO as near-miss clones (Type-3, "similar"). A number in (0, 1]; the default 1 means exact matches only, e.g. 0.85 enables it
+      --similarity[=<RATIO>]
+          Report pairs of functions and methods with a similar structure as near-miss clones (Type-3, "similar"): each one's syntax tree is normalized, the names of the functions and methods it calls and its operators stay while local names, field names and literals become markers, and two functions score the share of subtrees their trees have in common. RATIO is the lowest score reported, a number in (0, 1]; without it the config's similarity, else 0.8. JavaScript, TypeScript, Python, Java, Kotlin, Scala, C#, Go, Rust, C, C++, PHP, Ruby, Swift and Clojure, also in Markdown code blocks and Vue, Svelte and Astro scripts; test files are left out
+      --min-nodes <N>
+          The fewest nodes a function's normalized syntax tree needs for --similarity to compare it, 20 by default: smaller functions match too easily
+      --semantic
+          Find semantic clones (Type-4, experimental): functions that do the same thing written differently, in one language or across languages, e.g. a Rust backend and a Svelte frontend. Compares embeddings of the functions' code, computed on this machine by a model that --semantic-download fetches once, or by an embeddings API (--semantic-url). Functions of JavaScript, TypeScript, JSX, TSX, Vue, Svelte, Astro, Python, Rust, Go, Java, Kotlin, C#, C, C++, PHP, Ruby, Scala and Swift
+      --semantic-scope <SCOPE>
+          Which semantic clones to report: all (default), same (within one language: several implementations of one feature) or cross (across languages: a rule written once per side) [possible values: all, same, cross]
+      --semantic-provider <PROVIDER>
+          Where embeddings come from: local (default: a model run in-process, fetched once by --semantic-download) or http (an OpenAI-compatible embeddings API at --semantic-url; giving a URL selects it) [possible values: local, http]
+      --semantic-download [<MODEL>]
+          Download a local embedding model into the jscpd cache directory, checking its checksum: MODEL, or the one --semantic-model names, or CodeRankEmbed (548 MB from huggingface.co). Alone it exits after the download; with --semantic it goes on to scan, with MODEL unless --semantic-model names another
+      --semantic-rebuild-cache
+          With --semantic: embed every function again and replace the cached vectors of the model in use for the scanned paths, instead of reusing them. The caches of other paths and models and the downloaded model stay
+      --semantic-threshold <RATIO>
+          Lowest cosine similarity of a semantic clone across languages, in (0, 1] (default: the model's calibrated value, 0.4125 for the default model; --semantic-models lists them, and a model not listed gets 0.6). A pair within one language needs more: see --semantic-same-threshold
+      --semantic-same-threshold <RATIO>
+          Lowest cosine similarity of a semantic clone within one language, in (0, 1] (default: the model's calibrated value, 0.6375 for the default model; when --semantic-threshold is set, that value plus the model's gap between the two, 0.225 for the default model and 0.15 for a model not listed by --semantic-models)
+      --semantic-model <NAME>
+          Embedding model for --semantic (default: CodeRankEmbed for the local provider; for http, unclemusclez/jina-embeddings-v2-base-code, Ollama's name for jina-embeddings-v2-base-code). A model that --semantic-models lists, named as it is there, by its Hugging Face id or by its Ollama name, gets its calibrated thresholds; an API gets the name as given
+      --semantic-models
+          List the embedding models jscpd has calibrated thresholds for, with their licenses and where they run, and exit
+      --semantic-url <URL>
+          OpenAI-compatible embeddings API for --semantic, e.g. http://localhost:11434/v1 for Ollama; selects the http provider. A key the API needs is read from the JSCPD_SEMANTIC_API_KEY environment variable, and is sent only to a URL given here or to a server on this machine
       --kind <LIST>
-          Report only clones of these kinds: exact, renamed, similar, gap, ast (comma-separated). renamed needs --ignore-identifiers, --ignore-literals or --ignore-annotations; gap needs --max-gap-lines; ast needs --similarity
+          Report only clones of these kinds: exact, renamed, similar, gap, ast, semantic (comma-separated). renamed needs --ignore-identifiers, --ignore-literals or --ignore-annotations; gap needs --max-gap-lines; ast needs --similarity; semantic needs --semantic
   -m, --mode <MODE>
           Detection mode: mild, weak, strict
       --skip-comments
@@ -160,9 +182,11 @@ Options:
       --ignore-pattern <IGNORE_PATTERN>
           Code-level regex patterns to skip matching tokens during detection, e.g. "//\\s*cpd-disable" (comma-separated)
   -r, --reporters <REPORTERS>
-          Output reporters (comma-separated): console,json,xml,csv,html,markdown,badge,sarif,codeclimate,openmetrics,ai,xcode,threshold,silent,console-full Aliases: "full" and "consoleFull" are accepted for "console-full"; "gitlab" for "codeclimate"
+          Output reporters (comma-separated): console,json,xml,csv,html,markdown,badge,sarif,codeclimate,openmetrics,edn,ai,xcode,threshold,silent,console-full Aliases: "full" and "consoleFull" are accepted for "console-full"; "gitlab" for "codeclimate"
   -o, --output <OUTPUT>
           Output directory for file reporters
+      --report-name <REPORT_NAME>
+          Base name for report files, without the extension (default: jscpd-report): the json, xml, csv, html, markdown, sarif and edn reports. Lets several tools write into one directory without overwriting each other's reports. The badge, OpenMetrics and CodeClimate files and the reports of --dashboard, --health, --dead-code and --compare keep their names
   -c, --config <CONFIG>
           Path to config file (.jscpd.json)
       --exit-code [<EXIT_CODE>]
@@ -174,13 +198,17 @@ Options:
       --baseline <FILE>
           Path to a clone baseline file (e.g. .jscpd-baseline.json): clones whose fingerprint is absent from it are reported as new
       --update-baseline
-          Rewrite the baseline file from the current run, creating it if missing, and print added/removed fingerprint counts (requires --baseline)
+          Rewrite the baseline file from the current run, creating it if missing, and print added/removed fingerprint counts (requires --baseline or --changed)
       --fail-on-new-clones [<N>]
-          Exit 1 when more than N new clones are found (default N: 0; requires --baseline or --baseline-from-ref)
+          Exit 1 when more than N new clones are found (default N: 0; requires --baseline, --baseline-from-ref or --changed)
       --fail-on-empty
           Exit 1 when the scan analyzes no files: the paths exist but nothing matched the --format, --ignore and --pattern filters, or every file was below --min-tokens
       --baseline-from-ref <REF>
           Compare against an ephemeral baseline built from a git ref's tree (e.g. origin/main): the base ref is scanned with the same configuration and clones absent from it are reported as new
+      --changed
+          Report only the clones of the files git lists as changed: staged, unstaged and untracked ones, a renamed file under its new name. Every file is still scanned, so a changed file's clone of an unchanged one is found. The first run saves the clones of HEAD to the --baseline file (.jscpd-baseline.json at the repository root by default), built again when HEAD moves, and clones absent from it are reported as new
+      --changed-only
+          Like --changed, with only the changed files scanned: they are compared with one another, not with the rest of the project
   -b, --blame
           Enrich clones with git blame data
       --no-gitignore
@@ -217,10 +245,12 @@ Options:
           Skip clones where both fragments are in the same directory [alias: --skipLocal]
       --skip-isolated <GROUPS>
           Skip clones between different folders of the same isolation group: comma-separated groups of pipe-separated folders (e.g. "packages/a|packages/b,libs/a|libs/b") [alias: --skipIsolated]
-      --min-duplicated-lines <MIN_DUPLICATED_LINES>
-          Minimum percentage of duplication to report (0-100) [default: 0]
       --mcp
-          Serve the Model Context Protocol over stdio: scan PATHs once, then expose check_duplication / get_statistics / check_current_directory tools to MCP clients
+          Serve the Model Context Protocol over stdio: scan PATHs, then answer an AI assistant's tool calls (check_duplication, get_file_clones, get_statistics, check_current_directory, compare_folders). By default the tools report what jscpd reports with the same options; a call can ask for any of the four types of clone, and --kind sets other defaults
+      --lsp
+          Serve the Language Server Protocol over stdio: an editor starts jscpd for its workspace and gets findings as diagnostics in the files it edits, updated as the text changes. Clones by default; --lsp-analyses picks the analyses. Each .jscpd.json in the workspace is a project of its own
+      --lsp-analyses <LIST>
+          The analyses --lsp runs, comma-separated: clones, ast (similar functions), semantic, dead-code, complexity, or all (default: clones). The lsp section of .jscpd.json and the editor's settings switch each on or off over this list
       --summary
           Print a codebase summary: top files and folders by tokens, lines, size, complexity
       --summary-top <N>
@@ -237,6 +267,8 @@ Options:
           Maximum number of commits in the history series, sampled evenly (default: 30)
       --dead-code
           Find dead code instead of duplicates: unused files, exports, symbols and imports across JavaScript, TypeScript and Python
+      --compare
+          Compare two folders function by function: which functions of the first have a counterpart in the second and which do not, and the other way round. For a port to another language or platform, the source first and the target second (jscpd --compare python-lib/ rust-lib/), or two implementations of one app (jscpd --compare ios/ android/). Pairs functions with the --semantic model, so the --semantic-* options apply; counts functions of at least --min-lines lines and --min-tokens tokens (30 by default here). Reporters: console, console-full, json, markdown
       --complexity
           Report complexity only: the --summary tables ranked by complexity, without clone detection (reporters: console, ai, json)
       --dashboard
@@ -249,6 +281,8 @@ Options:
           Dead-code findings to report: unused-file, unused-export, unused-symbol, unused-import, unused-member, or `all` (with --dead-code)
       --min-confidence <N>
           Drop dead-code findings below this confidence, 0-100 (with --dead-code)
+      --rust-diagnostics <FILE>
+          Rust dead code from the compiler, for --dead-code, --dashboard and --health: a file of `cargo check --message-format=json` output, or `-` to read it from stdin
       --entry <GLOB>
           Treat files matching this glob as dead-code entry points (repeatable)
       --include-tests
@@ -272,8 +306,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=5.3.0
+ARG NPM_JSCPD_VERSION=5.4.1
 ```
 
 - NPM packages (node.js):
-  - [jscpd@5.3.0](https://www.npmjs.com/package/jscpd/v/5.3.0)
+  - [jscpd@5.4.1](https://www.npmjs.com/package/jscpd/v/5.4.1)

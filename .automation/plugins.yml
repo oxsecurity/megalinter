@@ -60,3 +60,15 @@ plugins:
     docUrl: https://github.com/hermes-labs-ai/lintlang/blob/main/mega-linter-plugin-lintlang/README.md
     pluginUrl: https://raw.githubusercontent.com/hermes-labs-ai/lintlang/main/mega-linter-plugin-lintlang/lintlang.megalinter-descriptor.yml
     author: "[Rolando Bosch](https://github.com/roli-lpci)"
+  # Blinter for Windows batch files
+  - name: blinter
+    description: Static analysis linter for Windows batch files (.bat and .cmd)
+    docUrl: https://github.com/BatchLang/Blinter/blob/main/docs/MegaLinter.md
+    pluginUrl: https://raw.githubusercontent.com/BatchLang/Blinter/main/mega-linter-plugin-blinter/blinter.megalinter-descriptor.yml
+    author: "[tboy1337](https://github.com/tboy1337)"
+  # glsec for GitLab CI/CD security
+  - name: glsec
+    description: Static security linter for GitLab CI/CD configuration files (GITLAB_GLSEC)
+    docUrl: https://github.com/glsec/glsec#megalinter
+    pluginUrl: https://raw.githubusercontent.com/glsec/glsec/main/mega-linter-plugin-glsec/glsec.megalinter-descriptor.yml
+    author: "[Nicolai Ehrhardt](https://github.com/predictor2718)"

@@ -41,6 +41,9 @@ linters:
       - --quiet
     cli_lint_mode_project_exclude_arg_name: ""
     cli_lint_mode_project_exclude_arg_value: "!**/{{DIR}}/**"
+    cli_lint_mode_project_exclude_config_key: "patterns"
+    cli_lint_mode_project_exclude_config_files: [".jsonlintrc.json", ".jsonlintrc.yml", ".jsonlintrc.yaml"]
+    cli_lint_mode_project_config_paths_regex: "(?m)(^\\s*\"patterns\"\\s*:\\s*\\[\\s*[\"'])|(^patterns[ \\t]*:[ \\t]*(?:\\[[ \\t]*[^\\]\\s]|\\n[ \\t]*-[ \\t]))"
     cli_lint_mode_project_extra_args_after:
       - "**/*.json"
     test_folder: json_jsonlint
