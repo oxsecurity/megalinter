@@ -60,6 +60,17 @@
       allowedVersions: '<5',
     },
     {
+      // TypeScript 7 is the native (Go) port and drops the JS compiler API that
+      // typescript-eslint relies on: @typescript-eslint/type-utils crashes on load
+      // ("Cannot read properties of undefined (reading 'Any')"), breaking
+      // TYPESCRIPT_ES, TYPESCRIPT_STANDARD, TSX_ESLINT... Keep TypeScript on v6
+      // until typescript-eslint and the other dependents support v7 (see #8404).
+      matchPackageNames: [
+        'typescript',
+      ],
+      allowedVersions: '<7',
+    },
+    {
       matchPackageNames: [
         'uv',
         'astral-sh/uv',
