@@ -35,6 +35,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
+          CLOSE_MESSAGE: "Closing: this pull request only updates frozen test fixtures (`bad/` or `.wireit/` folders under `.automation/test/`). They intentionally contain outdated or vulnerable dependencies so MegaLinter security linters have something to detect, and must not be bumped."
+          MIXED_MESSAGE: "⚠️ This pull request also updates frozen test fixtures (`bad/` or `.wireit/` folders under `.automation/test/`), which must keep their outdated or vulnerable dependencies. Revert these files before merging:"
         run: |
           set -euo pipefail
           frozen_regex='^\.automation/test/([^/]+/)*(bad|\.wireit)/'
@@ -49,10 +51,11 @@ jobs:
             exit 0
           fi
 
-          frozen_list="$(printf '%s\n' "${frozen}" | sed 's/^/- `/; s/$/`/')"
+          bt="$(printf '\140')"
+          frozen_list="$(printf '%s\n' "${frozen}" | sed "s/^/- ${bt}/; s/\$/${bt}/")"
 
           if [ -z "${others}" ]; then
-            body="$(printf '%s\nClosing: this pull request only updates frozen test fixtures (`bad/` or `.wireit/` folders under `.automation/test/`). They intentionally contain outdated or vulnerable dependencies so MegaLinter security linters have something to detect, and must not be bumped.\n\n%s\n' "${marker}" "${frozen_list}")"
+            body="$(printf '%s\n%s\n\n%s\n' "${marker}" "${CLOSE_MESSAGE}" "${frozen_list}")"
             gh pr comment "${PR_NUMBER}" --repo "${REPO}" --body "${body}"
             gh pr close "${PR_NUMBER}" --repo "${REPO}"
             exit 0
@@ -63,5 +66,5 @@ jobs:
             echo "Mixed pull request already flagged"
             exit 0
           fi
-          body="$(printf '%s\n⚠️ This pull request also updates frozen test fixtures (`bad/` or `.wireit/` folders under `.automation/test/`), which must keep their outdated or vulnerable dependencies. Revert these files before merging:\n\n%s\n' "${marker}" "${frozen_list}")"
+          body="$(printf '%s\n%s\n\n%s\n' "${marker}" "${MIXED_MESSAGE}" "${frozen_list}")"
           gh pr comment "${PR_NUMBER}" --repo "${REPO}" --body "${body}"
