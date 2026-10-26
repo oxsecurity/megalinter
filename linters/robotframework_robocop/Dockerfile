@@ -66,7 +66,7 @@ ARG PIP_ROBOT_FRAMEWORK_ROBOCOP_VERSION=9.1.0
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=26.2.2
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=21.14.9
+ARG PIP_VIRTUALENV_VERSION=21.14.13
 #ARG__END
 
 ####################
