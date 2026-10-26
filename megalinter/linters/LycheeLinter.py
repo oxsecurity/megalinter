@@ -56,8 +56,9 @@ class LycheeLinter(Linter):
     def build_ignore_file_exclude_arguments(self):
         if self.ignore_file is None or not os.path.isfile(self.ignore_file):
             return []
+        # Lint commands run in the workspace, where lychee finds it by itself
         if os.path.abspath(self.ignore_file) == os.path.abspath(
-            os.path.join(os.getcwd(), ".lycheeignore")
+            os.path.join(self.workspace, ".lycheeignore")
         ):
             return []
         exclude_args = []
