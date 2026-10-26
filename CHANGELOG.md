@@ -101,6 +101,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - CI
   - **Dependabot** no longer opens version or security update PRs for the pip, uv, bundler, gomod and cargo test fixtures under `.automation/test/`: they must stay outdated, in particular the `.wireit` poison fixtures guarding the excluded directories forwarding
+  - New **`close-frozen-fixture-prs.yml`** workflow: Dependabot security updates ignore the `dependabot.yml` ignore rules, so it closes the Dependabot PRs that only bump frozen fixtures (`bad/` and `.wireit/` folders under `.automation/test/`), and flags the PRs mixing them with other updates
+  - **Renovate** keeps `typescript` on v6: TypeScript 7 drops the JavaScript compiler API that typescript-eslint needs ([#8404](https://github.com/oxsecurity/megalinter/pull/8404))
   - **ApexGuru rate limits** no longer fail CI test jobs: when Salesforce's ApexGuru service answers `429 Too Many Requests`, the `SALESFORCE_CODE_ANALYZER_APEXGURU` success, failure and SARIF tests are skipped instead of failed
     - Only in CI (`utils.is_ci()`): local test runs still fail, so a real regression stays visible
     - Per-linter test jobs (`deploy-DEV-linters.yml`, `deploy-BETA-linters.yml`) now pass `GITHUB_ACTIONS` to the test container

@@ -1,0 +1,67 @@
+---
+#############################################
+#############################################
+## Close Dependabot PRs on frozen fixtures ##
+#############################################
+#############################################
+# Test fixtures in .automation/test/<test_folder>/bad/ and in the .wireit/
+# poison fixtures intentionally ship outdated / vulnerable dependencies, so
+# MegaLinter's security linters (grype, osv-scanner, trivy, syft...) have
+# something to detect. Dependabot security updates do not honour the
+# `ignore: "*"` rules of dependabot.yml for these folders, so this workflow:
+#   - closes a Dependabot PR when every file it changes is a frozen fixture
+#   - comments once on a Dependabot PR mixing frozen fixtures with other files
+#     (good/ fixtures and real dependencies must keep being updated)
+# Renovate is not concerned: it skips .automation/test entirely (ignorePaths).
+name: "Close Dependabot PRs on frozen fixtures"
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+    paths:
+      - ".automation/test/**"
+
+permissions: {}
+
+jobs:
+  close-frozen-fixture-prs:
+    name: Close Dependabot PRs on frozen fixtures
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Close or flag the pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+          frozen_regex='^\.automation/test/([^/]+/)*(bad|\.wireit)/'
+          marker='<!-- frozen-fixture-check -->'
+
+          files="$(gh api --paginate "repos/${REPO}/pulls/${PR_NUMBER}/files" --jq '.[].filename')"
+          frozen="$(printf '%s\n' "${files}" | grep -E "${frozen_regex}" || true)"
+          others="$(printf '%s\n' "${files}" | grep -vE "${frozen_regex}" | grep -v '^$' || true)"
+
+          if [ -z "${frozen}" ]; then
+            echo "No frozen fixture changed: nothing to do"
+            exit 0
+          fi
+
+          frozen_list="$(printf '%s\n' "${frozen}" | sed 's/^/- `/; s/$/`/')"
+
+          if [ -z "${others}" ]; then
+            body="$(printf '%s\nClosing: this pull request only updates frozen test fixtures (`bad/` or `.wireit/` folders under `.automation/test/`). They intentionally contain outdated or vulnerable dependencies so MegaLinter security linters have something to detect, and must not be bumped.\n\n%s\n' "${marker}" "${frozen_list}")"
+            gh pr comment "${PR_NUMBER}" --repo "${REPO}" --body "${body}"
+            gh pr close "${PR_NUMBER}" --repo "${REPO}"
+            exit 0
+          fi
+
+          already="$(gh api --paginate "repos/${REPO}/issues/${PR_NUMBER}/comments" --jq ".[] | select(.body | startswith(\"${marker}\")) | .id")"
+          if [ -n "${already}" ]; then
+            echo "Mixed pull request already flagged"
+            exit 0
+          fi
+          body="$(printf '%s\n⚠️ This pull request also updates frozen test fixtures (`bad/` or `.wireit/` folders under `.automation/test/`), which must keep their outdated or vulnerable dependencies. Revert these files before merging:\n\n%s\n' "${marker}" "${frozen_list}")"
+          gh pr comment "${PR_NUMBER}" --repo "${REPO}" --body "${body}"
