@@ -1,5 +1,5 @@
 aiofiles==25.1.0
-gitpython==3.2.0
+gitpython==3.2.1
 fastapi==0.143.0
 h11==0.16.0
 python-multipart==0.0.32
