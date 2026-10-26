@@ -196,7 +196,7 @@ ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.17.0
 # renovate: datasource=npm depName=eslint-plugin-n
 ARG NPM_ESLINT_PLUGIN_N_VERSION=18.5.0
 # renovate: datasource=npm depName=eslint-plugin-prettier
-ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.6
+ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.7
 # renovate: datasource=npm depName=eslint-plugin-promise
 ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=7.3.0
 # renovate: datasource=npm depName=eslint-plugin-vue
