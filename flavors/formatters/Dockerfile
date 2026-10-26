@@ -17,9 +17,9 @@ ARG CARGO_SARIF_FMT_VERSION=0.8.0
 # renovate: datasource=docker depName=mvdan/shfmt
 ARG BASH_SHFMT_VERSION=v3.14.1-alpine
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.16.5
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.17.0
 # renovate: datasource=docker depName=ghcr.io/opentofu/opentofu
-ARG TERRAFORM_TOFU_FMT_VERSION=1.12.6-minimal
+ARG TERRAFORM_TOFU_FMT_VERSION=1.13.2-minimal
 #ARGTOP__END
 
 #############################################################################################
@@ -109,9 +109,9 @@ ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=2.0.3
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=26.2.1
+ARG PIP_PIP_VERSION=26.2.2
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=21.14.7
+ARG PIP_VIRTUALENV_VERSION=21.14.9
 
 ARG CARGO_SARIF_FMT_VERSION
 ARG BASH_SHFMT_VERSION

@@ -64,9 +64,9 @@ ARG TARGETARCH
 # renovate: datasource=pypi depName=flake8
 ARG PIP_FLAKE8_VERSION=7.4.1
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=26.2.1
+ARG PIP_PIP_VERSION=26.2.2
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=21.14.7
+ARG PIP_VIRTUALENV_VERSION=21.14.9
 #ARG__END
 
 ####################

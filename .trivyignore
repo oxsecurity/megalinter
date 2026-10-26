@@ -613,6 +613,37 @@ CVE-2026-75140
 # go-git >= 5.19.2.
 CVE-2026-71556
 
+# --- npm DoS advisories, October 2026 (Salesforce CLI tree, /usr/local/share/sf + /node-deps) ---
+# Three availability-only advisories in transitive npm packages that the pinned linters
+# vendor through upstream npm-shrinkwrap.json files or exact pins, so no install-time
+# resolution can lift them. All run in a one-shot CLI container on local workspace files.
+# - CVE-2026-109869 (undici < 6.29.1 / 7.30.1 / 8.12.2): a malicious HTTP server answers
+#   with an excessive number of content encodings then closes the connection, crashing the
+#   client. Flagged copies: @salesforce/cli 2.153.5 shrinkwraps undici 6.28.0 (bundled npm,
+#   node-gyp), 7.29.0 and 8.9.0 (@jsforce/jsforce-node); @salesforce/plugin-code-analyzer
+#   5.16.0 (latest) shrinkwraps 7.29.0; sfdx-hardis 8.16.0 pins 8.11.2. Even the newest
+#   @salesforce/cli (2.155.7) still ships 6.28.0, 7.30.0 and 8.11.2, so there is no upgrade
+#   path. sf / code-analyzer / sfdx-hardis only ever connect to the Salesforce org the user
+#   authenticated against (and npm's registry at image build time), never to an
+#   attacker-chosen server; worst case is one crashed linter run.
+# - CVE-2023-54404 (zod < 4.6.6): validating a huge array of invalid items with an
+#   unbounded array schema allocates one issue object per element (memory DoS). Flagged
+#   copies: zod 4.4.3 (@salesforce/cli 2.153.5 and plugin-code-analyzer 5.16.0 shrinkwraps)
+#   and 3.25.76 (code-analyzer -> retire, and sfdx-hardis -> puppeteer-core -> chromium-bidi).
+#   zod validates the tools' own config / protocol messages, not attacker-supplied arrays
+#   of arbitrary size; worst case is one OOM-killed linter process.
+# - CVE-2026-111759 (markdown-it < 14.3.2 / 15.0.2, flagged 12.3.2): quadratic time in the
+#   smartquotes rule, reachable ONLY when the `typographer: true` option is enabled, on
+#   crafted Markdown. Trivy reports this copy under the aggregate "Node.js" target without
+#   a file path; no linter MegaLinter runs renders workspace Markdown with typographer
+#   enabled, and the worst case is a CPU-bound CI step.
+# Remove once @salesforce/cli, @salesforce/plugin-code-analyzer and sfdx-hardis ship
+# undici >= 6.29.1 / 7.30.1 / 8.12.2 and zod >= 4.6.6 (sfdx-hardis 8.20.0 already pins
+# undici 8.12.2), and the markdown-it 12.3.2 copy is upgraded.
+CVE-2026-109869
+CVE-2023-54404
+CVE-2026-111759
+
 # --- Dockerfile misconfigurations (REPOSITORY_TRIVY misconfig scan) ---
 # These are trivy's own Dockerfile checks fired against MegaLinter's generated
 # Dockerfiles — the images that RUN the linters. They intentionally run as root
@@ -800,3 +831,30 @@ CVE-2026-102278
 # Remove once these tools release builds with golang.org/x/text >= 0.41.0 (tflint master
 # already has 0.43.0, opentofu 1.13.1 has 0.41.0).
 CVE-2026-56851
+
+# --- Go klauspost/compress S2 dictionary overflow (betterleaks) ---
+# CVE-2026-63209 is a signed integer overflow in github.com/klauspost/compress/s2 NewDict()
+# (>= 1.16.0, < 1.18.7): a crafted dictionary passes the repeat-index check, then
+# Dict.Encode() reads out of bounds and the process crashes (SIGSEGV). Availability-only.
+# Exploitation needs an application that builds an S2 *encoder* from an attacker-supplied
+# dictionary; a secret scanner only reads and decompresses workspace content, it never
+# compresses with a caller-provided S2 dictionary. Worst case is one crashed one-shot CLI.
+# tflint (0.65.0) and tofu (1.13.2) were upgraded past the fix; betterleaks v1.9.0, the
+# latest release, still embeds klauspost/compress 1.18.6.
+# Remove once betterleaks ships a release built with klauspost/compress >= 1.18.7.
+CVE-2026-63209
+
+# --- Go stdlib crypto/x509 eMudhra intermediates denylist (many Go linters) ---
+# CVE-2026-111943 (GO-2026-6809): Go 1.26.10 / 1.27.3 hard-deny 8 eMudhra intermediates
+# under "emSign ECC Root CA - G3" whose private keys were found to be weak. Older Go builds
+# still accept them in Certificate.Verify. Exploitation needs an attacker who has recovered
+# one of those keys AND sits on the CI network path.
+# Upgraded past the fix: terraform/terragrunt (alpine/terragrunt 1.17.0), tflint 0.65.0,
+# tofu 1.13.2, trivy/trivy-sbom 0.76.1, revive/dustilock (golang 1.27.3 builder).
+# No network TLS at lint time (not reachable): golangci-lint, vale (no `vale sync`),
+# actionlint, editorconfig-checker, ls-lint, protolint, shfmt (+ snakefmt's copy),
+# betterleaks (TLS only with --validate, not passed by default).
+# Reachable, accepted risk until upstream ships rebuilds: grype (vuln DB download from
+# grype.anchore.io), syft (update check), kubeconform (schema download over HTTPS).
+# Remove once grype, syft, kubeconform and the binaries above ship Go >= 1.26.10 builds.
+CVE-2026-111943
