@@ -58,7 +58,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=cspell
-          ARG NPM_CSPELL_VERSION=10.3.6
+          ARG NPM_CSPELL_VERSION=10.4.0
       npm:
         - "cspell@${NPM_CSPELL_VERSION}"
     supported_platforms:
