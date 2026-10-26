@@ -137,7 +137,7 @@ ARG TARGETARCH
 # renovate: datasource=repology depName=alpine_3_24/go versioning=loose
 ARG GO_ALPINE_VERSION=1.26.10-r0
 # renovate: datasource=pypi depName=ansible-lint
-ARG PIP_ANSIBLE_LINT_VERSION=26.10.0
+ARG PIP_ANSIBLE_LINT_VERSION=26.10.1
 # renovate: datasource=npm depName=@stoplight/spectral-cli
 ARG NPM_SPECTRAL_CLI_VERSION=6.17.0
 # renovate: datasource=npm depName=jscpd
