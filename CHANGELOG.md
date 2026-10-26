@@ -35,7 +35,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Fixes
   - **Custom flavors** including trivy no longer fail to build when the trivy vulnerability database mirror `mirror.gcr.io` is unavailable. Fixes [#9254](https://github.com/oxsecurity/megalinter/issues/9254)
     - The database download now tries `mirror.gcr.io`, `ghcr.io` and `public.ecr.aws` in turn, and waits between retries
-    - Choose other mirrors with the new **`trivy-db-repository`** input of the custom flavor builder action, see [Custom flavors](https://megalinter.io/latest/custom-flavors/)
+    - Choose other mirrors with the new **`TRIVY_DB_REPOSITORY`** variable of the custom flavor builder workflow, see [Custom flavors](https://megalinter.io/latest/custom-flavors/)
     - A failed image build now fails the build step of the action, instead of a later `No such object` error when pushing the image
   - **GitLab and Git environment variables** such as `GIT_STRATEGY` no longer trigger a false removed-linter warning. Removed MegaLinter options and linter selections still warn. Fixes [#9024](https://github.com/oxsecurity/megalinter/issues/9024)
   - **Pull request runs in private repositories** no longer crash with a git traceback when the checkout does not persist credentials: MegaLinter warns, explains how to enable the git diff mode (`persist-credentials: true` or **`GIT_AUTHORIZATION_BEARER`**) and lints the whole codebase. Fixes [#9104](https://github.com/oxsecurity/megalinter/issues/9104)
