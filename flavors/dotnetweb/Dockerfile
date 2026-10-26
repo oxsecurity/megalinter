@@ -241,9 +241,9 @@ ARG PIP_SEMGREP_VERSION=1.180.0
 # renovate: datasource=github-tags depName=anchore/syft
 ARG REPOSITORY_SYFT_VERSION=1.54.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_VERSION=0.75.0
+ARG REPOSITORY_TRIVY_VERSION=0.76.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_SBOM_VERSION=0.75.0
+ARG REPOSITORY_TRIVY_SBOM_VERSION=0.76.1
 # renovate: datasource=pypi depName=snakemake
 ARG PIP_SNAKEMAKE_VERSION=9.27.0
 # renovate: datasource=pypi depName=snakefmt
@@ -271,9 +271,9 @@ ARG NPM_TS_STANDARD_VERSION=12.0.2
 # renovate: datasource=pypi depName=yamllint
 ARG PIP_YAMLLINT_VERSION=1.38.0
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=26.2.1
+ARG PIP_PIP_VERSION=26.2.2
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=21.14.7
+ARG PIP_VIRTUALENV_VERSION=21.14.13
 
 ARG CARGO_SARIF_FMT_VERSION
 ARG ACTION_ACTIONLINT_VERSION

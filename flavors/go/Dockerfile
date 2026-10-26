@@ -33,7 +33,7 @@ ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=4.0.2
 # renovate: datasource=github-tags depName=mgechev/revive
 ARG GO_REVIVE_VERSION=v1.17.1
 # renovate: datasource=docker depName=golang versioning=semver
-ARG GO_IMAGE_VERSION=1.27.2
+ARG GO_IMAGE_VERSION=1.27.3
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.8.0-alpine
 # renovate: datasource=docker depName=yoheimuta/protolint
@@ -135,7 +135,7 @@ RUN python -c 'import sys; assert sys.version_info >= (3, 14, 7), "Python 3.14.7
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=repology depName=alpine_3_24/go versioning=loose
-ARG GO_ALPINE_VERSION=1.26.9-r0
+ARG GO_ALPINE_VERSION=1.26.10-r0
 # renovate: datasource=pypi depName=ansible-lint
 ARG PIP_ANSIBLE_LINT_VERSION=26.10.0
 # renovate: datasource=npm depName=@stoplight/spectral-cli
@@ -199,9 +199,9 @@ ARG PIP_SEMGREP_VERSION=1.180.0
 # renovate: datasource=github-tags depName=anchore/syft
 ARG REPOSITORY_SYFT_VERSION=1.54.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_VERSION=0.75.0
+ARG REPOSITORY_TRIVY_VERSION=0.76.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_SBOM_VERSION=0.75.0
+ARG REPOSITORY_TRIVY_SBOM_VERSION=0.76.1
 # renovate: datasource=pypi depName=snakemake
 ARG PIP_SNAKEMAKE_VERSION=9.27.0
 # renovate: datasource=pypi depName=snakefmt
@@ -219,9 +219,9 @@ ARG NPM_IBM_TEKTON_LINT_VERSION=1.2.4
 # renovate: datasource=pypi depName=yamllint
 ARG PIP_YAMLLINT_VERSION=1.38.0
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=26.2.1
+ARG PIP_PIP_VERSION=26.2.2
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=21.14.7
+ARG PIP_VIRTUALENV_VERSION=21.14.13
 
 ARG CARGO_SARIF_FMT_VERSION
 ARG ACTION_ACTIONLINT_VERSION

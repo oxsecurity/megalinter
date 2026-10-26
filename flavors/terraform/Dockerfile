@@ -43,11 +43,11 @@ ARG SPELL_VALE_VERSION=v3.24.0
 # renovate: datasource=docker depName=lycheeverse/lychee
 ARG SPELL_LYCHEE_VERSION=0.24.2-alpine
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
-ARG TERRAFORM_TFLINT_VERSION=0.64.0
+ARG TERRAFORM_TFLINT_VERSION=0.65.0
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.16.5
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.17.0
 # renovate: datasource=docker depName=ghcr.io/opentofu/opentofu
-ARG TERRAFORM_TOFU_FMT_VERSION=1.12.6-minimal
+ARG TERRAFORM_TOFU_FMT_VERSION=1.13.2-minimal
 #ARGTOP__END
 
 #############################################################################################
@@ -198,9 +198,9 @@ ARG PIP_SEMGREP_VERSION=1.180.0
 # renovate: datasource=github-tags depName=anchore/syft
 ARG REPOSITORY_SYFT_VERSION=1.54.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_VERSION=0.75.0
+ARG REPOSITORY_TRIVY_VERSION=0.76.1
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_SBOM_VERSION=0.75.0
+ARG REPOSITORY_TRIVY_SBOM_VERSION=0.76.1
 # renovate: datasource=pypi depName=snakemake
 ARG PIP_SNAKEMAKE_VERSION=9.27.0
 # renovate: datasource=pypi depName=snakefmt
@@ -218,9 +218,9 @@ ARG NPM_IBM_TEKTON_LINT_VERSION=1.2.4
 # renovate: datasource=pypi depName=yamllint
 ARG PIP_YAMLLINT_VERSION=1.38.0
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=26.2.1
+ARG PIP_PIP_VERSION=26.2.2
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=21.14.7
+ARG PIP_VIRTUALENV_VERSION=21.14.13
 
 ARG CARGO_SARIF_FMT_VERSION
 ARG ACTION_ACTIONLINT_VERSION
