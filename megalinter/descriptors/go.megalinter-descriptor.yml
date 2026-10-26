@@ -94,7 +94,7 @@ linters:
                   - GOPRIVATE
                   - GOSUMDB
                   - GONOSUMCHECK
-            - Pre-populate `$GOPATH/pkg/mod` in CI cache to avoid downloads on each run.
+            - Pre-populate the Go module cache (`go env GOMODCACHE`) in CI cache to avoid downloads on each run.
       - identifier: GO_GOLANGCI_LINT_ERROR_CONFIG_INVALID
         regex: "(can't load config:|failed to load config|unsupported version of the configuration|is not a linter, it cannot be enabled or disabled|is a formatter)"
         message: |-

@@ -33,6 +33,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - To lint each file separately as before, set `CLOJURE_CLJ_KONDO_CLI_LINT_MODE: file`
 
 - Fixes
+  - **Go linters** such as **GO_GOLANGCI_LINT** now work when MegaLinter runs as a non-root user (**`MEGALINTER_UID`** / **`MEGALINTER_GID`**): Go module and build caches go to the user's home folder, unless you set `GOMODCACHE` / `GOCACHE` yourself. Fixes [#9280](https://github.com/oxsecurity/megalinter/issues/9280)
   - **GitLab and Git environment variables** such as `GIT_STRATEGY` no longer trigger a false removed-linter warning. Removed MegaLinter options and linter selections still warn. Fixes [#9024](https://github.com/oxsecurity/megalinter/issues/9024)
   - **Pull request runs in private repositories** no longer crash with a git traceback when the checkout does not persist credentials: MegaLinter warns, explains how to enable the git diff mode (`persist-credentials: true` or **`GIT_AUTHORIZATION_BEARER`**) and lints the whole codebase. Fixes [#9104](https://github.com/oxsecurity/megalinter/issues/9104)
   - **`FAIL_IF_UPDATED_SOURCES`** is now reliable. Fixes [#9103](https://github.com/oxsecurity/megalinter/issues/9103)
@@ -81,6 +82,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **megalinter-fix** now explains how to fix clj-kondo `:type-mismatch` and `:constant-condition` findings, and the difference between the top-level `:exclude-files` and `:output :exclude-files` clj-kondo settings
 
 - Dev
+  - The runtime image tests (`mega-linter-runner/test/runtime-image.test.js`) run `GO_GOLANGCI_LINT` on a fixture with an external dependency (`.automation/test/golang_runtime_deps`), so the Go module cache is exercised as root and non-root
   - The build now fails when a JSON Schema in `megalinter/descriptors/schemas/` is not compliant with its draft-07 meta-schema, or declares an `$id` holding a JSON Pointer fragment (`validate_json_schemas` in `.automation/build.py`)
   - `CLOJURE_CLJ_KONDO` test fixtures are split into `good/` and `bad/` folders, so the `project` lint mode tests no longer lint the failing files, and `.wireit` poison fixtures now guard the excluded directories forwarding, at root and nested levels
   - Linter tests now really run the non-default lint modes of linters whose name contains a hyphen (clj-kondo, cfn-lint, rst-lint, tekton-lint...) or is overridden (eslint `ES`, nbqa mypy): `LinterTestRoot` set `<DESCRIPTOR>_<LINTER-NAME>_CLI_LINT_MODE` instead of the linter key, so the override was ignored. A new assertion fails the test when the requested lint mode is not applied ([#9030](https://github.com/oxsecurity/megalinter/issues/9030))

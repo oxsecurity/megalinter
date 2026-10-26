@@ -220,6 +220,17 @@ const runtimeFixtureCases = [
       /✅ Linted \[JSON\] files with \[npm-package-json-lint\] successfully/,
   },
   {
+    title: "GO_GOLANGCI_LINT",
+    prepare: () =>
+      prepareFixtureDir(
+        "megalinter-go-",
+        path.join(".automation", "test", "golang_runtime_deps"),
+      ),
+    enabledLinter: "GO_GOLANGCI_LINT",
+    successPattern:
+      /✅ Linted \[GO\] files with \[golangci-lint\] successfully/,
+  },
+  {
     title: "SALESFORCE_CODE_ANALYZER_APEX",
     prepare: () =>
       prepareFixtureDir(
