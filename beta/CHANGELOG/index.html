@@ -15613,6 +15613,7 @@
 <li>A failed image build now fails the build step of the action, instead of a later <code>No such object</code> error when pushing the image</li>
 </ul>
 </li>
+<li><strong>Go linters</strong> such as <strong>GO_GOLANGCI_LINT</strong> now work when MegaLinter runs as a non-root user (<strong><code>MEGALINTER_UID</code></strong> / <strong><code>MEGALINTER_GID</code></strong>): Go module and build caches go to the user's home folder, unless you set <code>GOMODCACHE</code> / <code>GOCACHE</code> yourself. Fixes <a href="https://github.com/oxsecurity/megalinter/issues/9280">#9280</a></li>
 <li><strong>A linter stopped by a signal</strong> (negative return code, such as an out-of-memory kill) now fails in <code>file</code> lint mode instead of reporting SUCCESS with 0 errors, and a <code>PRE_COMMANDS</code> / <code>POST_COMMANDS</code> entry with <code>continue_if_failed: false</code> stops the run. Fixes <a href="https://github.com/oxsecurity/megalinter/issues/9257">#9257</a></li>
 <li><strong>GitLab and Git environment variables</strong> such as <code>GIT_STRATEGY</code> no longer trigger a false removed-linter warning. Removed MegaLinter options and linter selections still warn. Fixes <a href="https://github.com/oxsecurity/megalinter/issues/9024">#9024</a></li>
 <li><strong>Pull request runs in private repositories</strong> no longer crash with a git traceback when the checkout does not persist credentials: MegaLinter warns, explains how to enable the git diff mode (<code>persist-credentials: true</code> or <strong><code>GIT_AUTHORIZATION_BEARER</code></strong>) and lints the whole codebase. Fixes <a href="https://github.com/oxsecurity/megalinter/issues/9104">#9104</a></li>
@@ -15686,6 +15687,7 @@
 </ul>
 <ul>
 <li>Dev<ul>
+<li>The runtime image tests (<code>mega-linter-runner/test/runtime-image.test.js</code>) run <code>GO_GOLANGCI_LINT</code> on a fixture with an external dependency (<code>.automation/test/golang_runtime_deps</code>), so the Go module cache is exercised as root and non-root</li>
 <li>The build now fails when a JSON Schema in <code>megalinter/descriptors/schemas/</code> is not compliant with its draft-07 meta-schema, or declares an <code>$id</code> holding a JSON Pointer fragment (<code>validate_json_schemas</code> in <code>.automation/build.py</code>)</li>
 <li><code>CLOJURE_CLJ_KONDO</code> test fixtures are split into <code>good/</code> and <code>bad/</code> folders, so the <code>project</code> lint mode tests no longer lint the failing files, and <code>.wireit</code> poison fixtures now guard the excluded directories forwarding, at root and nested levels</li>
 <li>Linter tests now really run the non-default lint modes of linters whose name contains a hyphen (clj-kondo, cfn-lint, rst-lint, tekton-lint...) or is overridden (eslint <code>ES</code>, nbqa mypy): <code>LinterTestRoot</code> set <code>&lt;DESCRIPTOR&gt;_&lt;LINTER-NAME&gt;_CLI_LINT_MODE</code> instead of the linter key, so the override was ignored. A new assertion fails the test when the requested lint mode is not applied (<a href="https://github.com/oxsecurity/megalinter/issues/9030">#9030</a>)<ul>
