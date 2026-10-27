@@ -143,7 +143,7 @@ def run_command(command_info, log_key, mega_linter, linter=None):
     else:
         add_in_logs(linter, log_key, [f"{log_key} error:\n{return_stdout}"])
     # If user defined command to fail in case of crash, stop running MegaLinter
-    if return_code > 0 and command_info.get("continue_if_failed", True) is False:
+    if return_code != 0 and command_info.get("continue_if_failed", True) is False:
         raise Exception(
             f"{log_key}: User command failed, stop running MegaLinter\n{return_stdout}"
         )
