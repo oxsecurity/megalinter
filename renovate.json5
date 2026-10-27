@@ -60,6 +60,29 @@
       allowedVersions: '<5',
     },
     {
+      // TypeScript 7 is the native (Go) port and drops the JS compiler API that
+      // typescript-eslint relies on: @typescript-eslint/type-utils crashes on load
+      // ("Cannot read properties of undefined (reading 'Any')"), breaking
+      // TYPESCRIPT_ES, TYPESCRIPT_STANDARD, TSX_ESLINT... Keep TypeScript on v6
+      // until typescript-eslint and the other dependents support v7 (see #8404).
+      matchPackageNames: [
+        'typescript',
+      ],
+      allowedVersions: '<7',
+    },
+    {
+      // Test fixtures under .automation/test (except the frozen bad/ and .wireit/
+      // ones, see ignorePaths) only need to stay current: one weekly grouped PR
+      // instead of one PR per fixture dependency.
+      matchFileNames: [
+        '.automation/test/**',
+      ],
+      groupName: 'test fixtures',
+      schedule: [
+        'before 4am on Monday',
+      ],
+    },
+    {
       matchPackageNames: [
         'uv',
         'astral-sh/uv',
@@ -226,8 +249,13 @@
       ],
     },
   ],
+  // Frozen test fixtures: the bad/ folders and the .wireit/ poison fixtures under
+  // .automation/test intentionally ship outdated / vulnerable dependencies so
+  // MegaLinter's security linters have something to detect. Every other test
+  // folder (good/, fix/...) is kept up to date.
   ignorePaths: [
-    '.automation/test/**',
+    '.automation/test/**/bad/**',
+    '.automation/test/**/.wireit/**',
   ],
   dockerfile: {
     managerFilePatterns: [
