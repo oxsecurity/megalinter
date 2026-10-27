@@ -225,7 +225,7 @@ ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=pypi depName=snakemake
 ARG PIP_SNAKEMAKE_VERSION=9.27.0
 # renovate: datasource=pypi depName=snakefmt
-ARG PIP_SNAKEFMT_VERSION=2.0.3
+ARG PIP_SNAKEFMT_VERSION=2.1.0
 # renovate: datasource=npm depName=cspell
 ARG NPM_CSPELL_VERSION=10.4.0
 # renovate: datasource=pypi depName=proselint
