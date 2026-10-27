@@ -11156,6 +11156,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#optional-choose-the-trivy-database-mirrors" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Optional: Choose the trivy database mirrors
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#commit-and-push-your-changes" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -12503,6 +12514,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#optional-choose-the-trivy-database-mirrors" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Optional: Choose the trivy database mirrors
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#commit-and-push-your-changes" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -12709,6 +12731,12 @@ You can work directly on <strong>main</strong> branch, or create a sub-branch if
 </code></pre></div>
 <p>To:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">platform</span><span class="p">:</span><span class="w"> </span><span class="s">"linux/amd64,linux/arm64"</span>
+</code></pre></div>
+<h3 id="optional-choose-the-trivy-database-mirrors">Optional: Choose the trivy database mirrors</h3>
+<p>If your flavor includes <code>REPOSITORY_TRIVY</code> or <code>REPOSITORY_TRIVY_SBOM</code>, the trivy vulnerability database is downloaded while building the image. MegaLinter tries <code>mirror.gcr.io</code>, <code>ghcr.io</code> and <code>public.ecr.aws</code> in turn, and retries when none of them answers.</p>
+<p>To use other mirrors, for example a registry you control, edit <strong>megalinter-custom-flavor-builder.yml</strong> and set the <code>TRIVY_DB_REPOSITORY</code> variable in the <code>env:</code> section of the <strong>Build MegaLinter Custom Flavor</strong> step, with a comma-separated list of repositories tried in order:</p>
+<div class="highlight"><pre><span></span><code><span class="w">        </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">TRIVY_DB_REPOSITORY</span><span class="p">:</span><span class="w"> </span><span class="s">"my-registry.example.com/trivy-db:2,public.ecr.aws/aquasecurity/trivy-db:2"</span>
 </code></pre></div>
 <h3 id="commit-and-push-your-changes">Commit and push your changes</h3>
 <p>Commit and push the generated files to GitHub.</p>
