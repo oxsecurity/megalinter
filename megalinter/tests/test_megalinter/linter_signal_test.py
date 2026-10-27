@@ -72,7 +72,9 @@ class LinterSignalTest(unittest.TestCase):
         command = {"command": "exit 0", "continue_if_failed": False}
         mega_linter = SimpleNamespace(workspace=".", request_id=self.request_id)
         with (
-            mock.patch.object(pre_post_factory, "complete_command", side_effect=lambda c: c),
+            mock.patch.object(
+                pre_post_factory, "complete_command", side_effect=lambda c: c
+            ),
             mock.patch.object(pre_post_factory, "build_command_env", return_value={}),
             mock.patch.object(pre_post_factory.subprocess, "run", return_value=killed),
         ):
