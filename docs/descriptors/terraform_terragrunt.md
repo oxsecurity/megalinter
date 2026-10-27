@@ -23,7 +23,7 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 
 ## terragrunt documentation
 
-- Version in MegaLinter: **1.1.6**
+- Version in MegaLinter: **1.2.1**
 - Visit [Official Web Site](https://docs.terragrunt.com/reference/cli/commands/hcl/fmt/){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/quick-start/#add-terragrunthcl-to-your-project){target=_blank}
 
@@ -106,6 +106,7 @@ Main commands:
 
 Catalog commands:
    catalog        Launch the user interface for searching and managing your module catalog.
+   login          Sign in to the Gruntwork Developer Portal.
    scaffold       Scaffold a new Terragrunt module.
 
 Discovery commands:
@@ -117,6 +118,7 @@ Configuration commands:
    dag            Interact with the Directed Acyclic Graph (DAG).
    hcl            Interact with HCL files.
    info           List of commands to display Terragrunt settings.
+   mcp            Serve Terragrunt operations to AI agents over the Model Context Protocol (stdio). Requires the 'mcp-command' experiment.
    render         Render the final terragrunt config, with all variables, includes, and functions resolved, in the specified format.
 
 OpenTofu shortcuts:
@@ -145,10 +147,10 @@ Global Options:
    --no-tip value             Disable specific tips from being displayed. [$TG_NO_TIP]
    --no-tips                  Disable all tips from being displayed. (default: false) [$TG_NO_TIPS]
    --non-interactive          Assume "yes" for all prompts. (default: false) [$TG_NON_INTERACTIVE]
-   --profile-cpu value        Write a CPU profile to the given path. Requires the 'profiling' experiment. [$TG_PROFILE_CPU]
-   --profile-dir value        Directory to write profile files (cpu, mem, goroutine). Requires the 'profiling' experiment. [$TG_PROFILE_DIR]
-   --profile-goroutine value  Write a goroutine profile to the given path. Requires the 'profiling' experiment. [$TG_PROFILE_GOROUTINE]
-   --profile-mem value        Write a memory (heap) profile to the given path. Requires the 'profiling' experiment. [$TG_PROFILE_MEM]
+   --profile-cpu value        Write a CPU profile to the given path. [$TG_PROFILE_CPU]
+   --profile-dir value        Directory to write profile files (cpu, mem, goroutine). [$TG_PROFILE_DIR]
+   --profile-goroutine value  Write a goroutine profile to the given path. [$TG_PROFILE_GOROUTINE]
+   --profile-mem value        Write a memory (heap) profile to the given path. [$TG_PROFILE_MEM]
    --strict-control value     Enables specific strict controls. For a list of available controls, run 'terragrunt info strict'. [$TG_STRICT_CONTROL]
    --strict-mode              Enables strict mode for Terragrunt. For more information, run 'terragrunt info strict'. (default: false) [$TG_STRICT_MODE]
    --working-dir value        The path to the directory of Terragrunt configurations. Default is current directory. [$TG_WORKING_DIR]
@@ -167,7 +169,7 @@ See also:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.16.5
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.17.0
 FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 ```

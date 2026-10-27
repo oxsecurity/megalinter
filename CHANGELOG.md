@@ -252,6 +252,29 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.16.4 to **1.16.5** on 2026-10-19
   - [grype](https://github.com/anchore/grype) from 0.120.1 to **0.121.0** on 2026-10-20
   - [syft](https://github.com/anchore/syft) from 1.54.1 to **1.55.0** on 2026-10-20
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 26.9.0 to **26.10.1** on 2026-10-27
+  - [golangci-lint](https://golangci-lint.run/) from 2.14.0 to **2.15.0** on 2026-10-27
+  - [eslint](https://eslint.org) from 10.12.0 to **10.13.0** on 2026-10-27
+  - [stylua](https://github.com/JohnnyMorganz/StyLua) from 2.5.2 to **2.6.0** on 2026-10-27
+  - [rumdl](https://github.com/rvben/rumdl) from 0.2.79 to **0.3.0** on 2026-10-27
+  - [phplint](https://github.com/overtrue/phplint) from 9.7.2 to **9.7.3** on 2026-10-27
+  - [phpstan](https://phpstan.org/) from 2.2.17 to **2.3.1** on 2026-10-27
+  - [psalm](https://psalm.dev) from Psalm.6.19.2@ to **Psalm.6.20.0@** on 2026-10-27
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.16.10 to **0.17.1** on 2026-10-27
+  - [ruff](https://github.com/astral-sh/ruff) from 0.16.10 to **0.17.1** on 2026-10-27
+  - [raku](https://raku.org/) from 2026.08 to **2026.09** on 2026-10-27
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 2.11.1 to **2.13.0** on 2026-10-27
+  - [semgrep](https://semgrep.dev/) from 1.180.0 to **1.181.0** on 2026-10-27
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.75.0 to **0.76.1** on 2026-10-27
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.75.0 to **0.76.1** on 2026-10-27
+  - [rubocop](https://rubocop.org/) from 1.91.0 to **1.92.0** on 2026-10-27
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 2.0.3 to **2.1.0** on 2026-10-27
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 10.3.6 to **10.4.0** on 2026-10-27
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.16.5 to **1.17.0** on 2026-10-27
+  - [terragrunt](https://docs.terragrunt.com/reference/cli/commands/hcl/fmt/) from 1.1.6 to **1.2.1** on 2026-10-27
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.64.0 to **0.65.0** on 2026-10-27
+  - [tofu-fmt](https://opentofu.org/docs/cli/commands/fmt/) from 1.12.6 to **1.13.2** on 2026-10-27
+  - [tofu-validate](https://opentofu.org/docs/cli/commands/validate/) from 1.12.6 to **1.13.2** on 2026-10-27
 <!-- linter-versions-end -->
 
 ## [v10.1.0] - 2026-09-05

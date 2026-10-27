@@ -22,7 +22,7 @@ description: How to use raku (configure, ignore files, ignore errors, help & ver
 
 ## raku documentation
 
-- Version in MegaLinter: **2026.08**
+- Version in MegaLinter: **2026.09**
 - Visit [Official Web Site](https://raku.org/){target=_blank}
 - See [How to configure raku rules](https://docs.raku.org/language/pragmas){target=_blank}
 - See [How to disable raku rules in files](https://docs.raku.org/language/pragmas#no){target=_blank}
@@ -185,7 +185,7 @@ The following environment variables are respected:
 ```dockerfile
 ARG TARGETPLATFORM
 # renovate: datasource=github-tags depName=nxadm/rakudo-pkg extractVersion=^v(?<version>.+)$
-ARG RAKU_RAKU_VERSION=2026.08
+ARG RAKU_RAKU_VERSION=2026.09
 ARG RAKU_RAKU_ALPINE_VERSION=3.23
 
 RUN case ${TARGETPLATFORM} in \
