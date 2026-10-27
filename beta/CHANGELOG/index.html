@@ -15707,6 +15707,7 @@
 </ul>
 </li>
 <li><code>PhpstanLinter</code> generates <code>excludePaths: analyse:</code> instead of a plain list (<code>analyseAndScan</code>), <code>YamllintLinter</code> follows the <code>extends</code> chain and supports <code>ignore-from-file</code>, <code>PhpCsFixerLinter</code> guards <code>exclude()</code> against non-Finder iterables, and <code>MegaLinter.get_parallel_process_number()</code> holds the default parallelism</li>
+<li>The <code>PSScriptAnalyzer</code> install step of the <code>POWERSHELL</code> descriptor now uses <code>-ErrorAction Stop</code>, so a PowerShell Gallery failure breaks the Docker build instead of silently producing an image without <code>Invoke-ScriptAnalyzer</code></li>
 </ul>
 </li>
 </ul>
