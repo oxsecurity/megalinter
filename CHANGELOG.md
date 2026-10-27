@@ -33,6 +33,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - To lint each file separately as before, set `CLOJURE_CLJ_KONDO_CLI_LINT_MODE: file`
 
 - Fixes
+  - **Custom flavors** including trivy no longer fail to build when the trivy vulnerability database mirror `mirror.gcr.io` is unavailable. Fixes [#9254](https://github.com/oxsecurity/megalinter/issues/9254)
+    - The database download now tries `mirror.gcr.io`, `ghcr.io` and `public.ecr.aws` in turn, and waits between retries
+    - Choose other mirrors with the new **`TRIVY_DB_REPOSITORY`** variable of the custom flavor builder workflow, see [Custom flavors](https://megalinter.io/latest/custom-flavors/)
+    - A failed image build now fails the build step of the action, instead of a later `No such object` error when pushing the image
   - **Go linters** such as **GO_GOLANGCI_LINT** now work when MegaLinter runs as a non-root user (**`MEGALINTER_UID`** / **`MEGALINTER_GID`**): Go module and build caches go to the user's home folder, unless you set `GOMODCACHE` / `GOCACHE` yourself. Fixes [#9280](https://github.com/oxsecurity/megalinter/issues/9280)
   - **GitLab and Git environment variables** such as `GIT_STRATEGY` no longer trigger a false removed-linter warning. Removed MegaLinter options and linter selections still warn. Fixes [#9024](https://github.com/oxsecurity/megalinter/issues/9024)
   - **Pull request runs in private repositories** no longer crash with a git traceback when the checkout does not persist credentials: MegaLinter warns, explains how to enable the git diff mode (`persist-credentials: true` or **`GIT_AUTHORIZATION_BEARER`**) and lints the whole codebase. Fixes [#9104](https://github.com/oxsecurity/megalinter/issues/9104)
@@ -103,6 +107,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - CI
   - **Dependabot** no longer opens version or security update PRs for the pip, uv, bundler, gomod and cargo test fixtures under `.automation/test/`: they must stay outdated, in particular the `.wireit` poison fixtures guarding the excluded directories forwarding
+  - New **`close-frozen-fixture-prs.yml`** workflow: Dependabot security updates ignore the `dependabot.yml` ignore rules, so it closes the Dependabot PRs that only bump frozen fixtures (`bad/` and `.wireit/` folders under `.automation/test/`), and flags the PRs mixing them with other updates
+  - **Renovate** now keeps the test fixtures under `.automation/test/` up to date (good/, fix/... folders) in one weekly grouped PR, and only skips the frozen `bad/` and `.wireit/` fixtures
+  - **Renovate** keeps `typescript` on v6: TypeScript 7 drops the JavaScript compiler API that typescript-eslint needs ([#8404](https://github.com/oxsecurity/megalinter/pull/8404))
   - **ApexGuru rate limits** no longer fail CI test jobs: when Salesforce's ApexGuru service answers `429 Too Many Requests`, the `SALESFORCE_CODE_ANALYZER_APEXGURU` success, failure and SARIF tests are skipped instead of failed
     - Only in CI (`utils.is_ci()`): local test runs still fail, so a real regression stays visible
     - Per-linter test jobs (`deploy-DEV-linters.yml`, `deploy-BETA-linters.yml`) now pass `GITHUB_ACTIONS` to the test container

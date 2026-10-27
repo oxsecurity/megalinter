@@ -40,6 +40,7 @@ runs:
             -e CUSTOM_FLAVOR_BUILD_REPO=${{ env.CUSTOM_FLAVOR_BUILD_REPO }} \
             -e CUSTOM_FLAVOR_BUILD_REPO_URL=${{ env.CUSTOM_FLAVOR_BUILD_REPO_URL }} \
             -e CUSTOM_FLAVOR_BUILD_USER=${{ env.CUSTOM_FLAVOR_BUILD_USER }} \
+            -e "TRIVY_DB_REPOSITORY=${{ env.TRIVY_DB_REPOSITORY }}" \
           ghcr.io/oxsecurity/megalinter-custom-flavor-builder:${{ inputs.megalinter-custom-flavor-builder-tag }}
       shell: bash
     
