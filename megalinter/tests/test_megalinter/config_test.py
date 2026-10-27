@@ -280,18 +280,24 @@ class config_test(unittest.TestCase):
             "https://evil.example/x.yml": False,
         }
         for url, token_expected in urls.items():
-            with patch.dict(os.environ, {"GITHUB_TOKEN": "fake-token"}), patch(
-                "megalinter.config.http_get_with_retry", return_value=response
-            ) as http_get:
+            with (
+                patch.dict(os.environ, {"GITHUB_TOKEN": "fake-token"}),
+                patch(
+                    "megalinter.config.http_get_with_retry", return_value=response
+                ) as http_get,
+            ):
                 config.combine_config(None, {"EXTENDS": url}, {}, "")
                 headers = http_get.call_args.kwargs["headers"]
                 if token_expected:
                     self.assertEqual("token fake-token", headers["Authorization"], url)
                 else:
                     self.assertNotIn("Authorization", headers, url)
-        with patch.dict(os.environ), patch(
-            "megalinter.config.http_get_with_retry", return_value=response
-        ) as http_get:
+        with (
+            patch.dict(os.environ),
+            patch(
+                "megalinter.config.http_get_with_retry", return_value=response
+            ) as http_get,
+        ):
             os.environ.pop("GITHUB_TOKEN", None)
             config.combine_config(
                 None,
