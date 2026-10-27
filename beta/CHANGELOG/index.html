@@ -15602,6 +15602,11 @@
 </ul>
 <ul>
 <li>Fixes<ul>
+<li><strong><code>EXTENDS</code></strong> now sends <code>GITHUB_TOKEN</code> only to <code>https://raw.githubusercontent.com</code>, to read configs in private repositories. A URL that merely starts with that text no longer receives it. See <a href="https://github.com/oxsecurity/megalinter/security/advisories/GHSA-rq55-6pj8-6v8v">GHSA-rq55-6pj8-6v8v</a><ul>
+<li>Only extend from URLs hosted on an account or server owned by your organization, see <a href="https://megalinter.io/latest/config-variables/">Configuration</a></li>
+</ul>
+</li>
+<li><strong>SPELL_LYCHEE</strong> now applies the <code>.lycheeignore</code> rules MegaLinter finds outside the repository root (for example in <code>.github/linters</code> with <strong><code>LINTER_RULES_PATH</code></strong>). Fixes <a href="https://github.com/oxsecurity/megalinter/issues/9281">#9281</a></li>
 <li><strong>Custom flavors</strong> including trivy no longer fail to build when the trivy vulnerability database mirror <code>mirror.gcr.io</code> is unavailable. Fixes <a href="https://github.com/oxsecurity/megalinter/issues/9254">#9254</a><ul>
 <li>The database download now tries <code>mirror.gcr.io</code>, <code>ghcr.io</code> and <code>public.ecr.aws</code> in turn, and waits between retries</li>
 <li>Choose other mirrors with the new <strong><code>TRIVY_DB_REPOSITORY</code></strong> variable of the custom flavor builder workflow, see <a href="https://megalinter.io/latest/custom-flavors/">Custom flavors</a></li>
