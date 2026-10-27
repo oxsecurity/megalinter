@@ -56,6 +56,9 @@ chown -R "${MEGALINTER_RUNTIME_UID}:${MEGALINTER_RUNTIME_GID}" "${MEGALINTER_RUN
 
 export HOME="${MEGALINTER_RUNTIME_HOME}"
 export USER="${MEGALINTER_RUNTIME_USER}"
+# Go defaults to $GOPATH/pkg/mod (/go, owned by root): use the runtime user home instead
+export GOMODCACHE="${GOMODCACHE:-${MEGALINTER_RUNTIME_HOME}/go/pkg/mod}"
+export GOCACHE="${GOCACHE:-${MEGALINTER_RUNTIME_HOME}/.cache/go-build}"
 export MEGALINTER_USER_SWITCHED=true
 
 exec su-exec "${MEGALINTER_RUNTIME_UID}:${MEGALINTER_RUNTIME_GID}" /entrypoint.sh "$@"
