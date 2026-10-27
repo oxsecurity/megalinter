@@ -62,7 +62,7 @@ RUN python -c 'import sys; assert sys.version_info >= (3, 14, 7), "Python 3.14.7
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=github-releases depName=loeffel-io/ls-lint extractVersion=^v(?<version>.+)$
-ARG REPOSITORY_LS_LINT_VERSION=2.3.1
+ARG REPOSITORY_LS_LINT_VERSION=2.3.2
 #ARG__END
 
 ####################

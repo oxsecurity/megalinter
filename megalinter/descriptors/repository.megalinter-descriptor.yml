@@ -579,7 +579,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-releases depName=loeffel-io/ls-lint extractVersion=^v(?<version>.+)$
-          ARG REPOSITORY_LS_LINT_VERSION=2.3.1
+          ARG REPOSITORY_LS_LINT_VERSION=2.3.2
         - |-
           RUN set -eu; \
               case "$TARGETPLATFORM" in \
