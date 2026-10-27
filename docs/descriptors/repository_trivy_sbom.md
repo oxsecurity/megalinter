@@ -28,7 +28,7 @@ description: How to use trivy-sbom (configure, ignore files, ignore errors, help
 
 ## trivy-sbom documentation
 
-- Version in MegaLinter: **0.75.0**
+- Version in MegaLinter: **0.76.1**
 - Visit [Official Web Site](https://aquasecurity.github.io/trivy/){target=_blank}
 - See [How to configure trivy-sbom rules](https://aquasecurity.github.io/trivy/latest/docs/configuration/){target=_blank}
 - See [How to ignore files and directories with trivy-sbom](https://aquasecurity.github.io/trivy/latest/docs/configuration/filtering/#by-inline-comments){target=_blank}
@@ -184,9 +184,16 @@ Use "trivy [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_SBOM_VERSION=0.75.0
+ARG REPOSITORY_TRIVY_SBOM_VERSION=0.76.1
+ARG TRIVY_DB_REPOSITORY=mirror.gcr.io/aquasec/trivy-db:2,ghcr.io/aquasecurity/trivy-db:2,public.ecr.aws/aquasecurity/trivy-db:2
 RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_SBOM_VERSION}" \
-    && (trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress || trivy image --download-db-only --no-progress)
+    && for attempt in 1 2 3 4 5; do \
+         for db_repository in $(echo "${TRIVY_DB_REPOSITORY}" | tr ',' ' '); do \
+           trivy image --download-db-only --no-progress --db-repository "${db_repository}" && break 2; \
+         done; \
+         [ "${attempt}" -eq 5 ] || sleep $((attempt * 10)); \
+       done \
+    && test -f "${HOME}/.cache/trivy/db/trivy.db"
 
 ```
 

@@ -136,7 +136,7 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=@coffeelint/cli
-ARG NPM_COFFEELINT_CLI_VERSION=5.2.11
+ARG NPM_COFFEELINT_CLI_VERSION=5.2.12
 ```
 
 - NPM packages (node.js):
