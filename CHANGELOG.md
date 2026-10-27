@@ -33,6 +33,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - To lint each file separately as before, set `CLOJURE_CLJ_KONDO_CLI_LINT_MODE: file`
 
 - Fixes
+  - **SPELL_LYCHEE** now applies the `.lycheeignore` rules MegaLinter finds outside the repository root (for example in `.github/linters` with **`LINTER_RULES_PATH`**). Fixes [#9281](https://github.com/oxsecurity/megalinter/issues/9281)
   - **Custom flavors** including trivy no longer fail to build when the trivy vulnerability database mirror `mirror.gcr.io` is unavailable. Fixes [#9254](https://github.com/oxsecurity/megalinter/issues/9254)
     - The database download now tries `mirror.gcr.io`, `ghcr.io` and `public.ecr.aws` in turn, and waits between retries
     - Choose other mirrors with the new **`TRIVY_DB_REPOSITORY`** variable of the custom flavor builder workflow, see [Custom flavors](https://megalinter.io/latest/custom-flavors/)
