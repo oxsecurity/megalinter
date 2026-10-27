@@ -279,7 +279,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=packagist depName=vimeo/psalm
-          ARG PHP_VIMEO_PSALM_VERSION=6.19.2
+          ARG PHP_VIMEO_PSALM_VERSION=6.20.0
         - |
           RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require vimeo/psalm:${PHP_VIMEO_PSALM_VERSION}
     supported_platforms:
@@ -335,7 +335,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=packagist depName=overtrue/phplint
-          ARG PHP_OVERTRUE_PHPLINT_VERSION=9.7.2
+          ARG PHP_OVERTRUE_PHPLINT_VERSION=9.7.3
         - |-
           # renovate: datasource=packagist depName=bartlett/sarif-php-converters
           ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.8.1
