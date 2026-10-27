@@ -5,6 +5,7 @@ Unit tests for Megalinter class
 """
 
 import glob
+import json
 import logging
 import os
 import re
@@ -15,7 +16,14 @@ from types import SimpleNamespace
 from unittest.mock import patch
 
 import requests
-from megalinter import Linter, MegaLinter, utils_reporter, utils_sarif, utilstest
+from megalinter import (
+    Linter,
+    MegaLinter,
+    config,
+    utils_reporter,
+    utils_sarif,
+    utilstest,
+)
 from megalinter.constants import DEFAULT_SARIF_REPORT_FILE_NAME
 from megalinter.reporters.SarifReporter import SarifReporter
 
@@ -119,6 +127,77 @@ class mega_linter_3_sarif_test(unittest.TestCase):
         self.assertTrue(
             os.path.isfile(expected_output_file),
             "Output aggregated SARIF file " + expected_output_file + " should exist",
+        )
+
+    def produce_combined_sarif(self, normalize_linters_output):
+        # Aggregate one sample SARIF report whose URIs still carry the
+        # /github/workspace/ prefix, then return the combined report text.
+        request_id = str(uuid.uuid1())
+        run_config = {}
+        if normalize_linters_output is not None:
+            run_config["SARIF_REPORTER_NORMALIZE_LINTERS_OUTPUT"] = (
+                normalize_linters_output
+            )
+        config.set_config(request_id, run_config)
+        tmp_report_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
+        os.makedirs(tmp_report_folder)
+        # Write a SARIF input whose URI still carries the /github/workspace/
+        # prefix, so the test does not depend on repository fixtures.
+        sarif_input = tmp_report_folder + os.path.sep + "SAMPLE.sarif"
+        sarif_content = {
+            "version": "2.1.0",
+            "runs": [
+                {
+                    "tool": {"driver": {"name": "SAMPLE"}},
+                    "results": [
+                        {
+                            "locations": [
+                                {
+                                    "physicalLocation": {
+                                        "artifactLocation": {
+                                            "uri": "/github/workspace/src/app.py"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                }
+            ],
+        }
+        with open(sarif_input, "w", encoding="utf-8") as sarif_file:
+            json.dump(sarif_content, sarif_file)
+        linter = SimpleNamespace(
+            name="SAMPLE_LINTER",
+            can_output_sarif=True,
+            sarif_output_file=sarif_input,
+        )
+        master = SimpleNamespace(
+            request_id=request_id,
+            linters=[linter],
+            report_folder=tmp_report_folder,
+        )
+        reporter = SarifReporter({"master": master, "report_folder": tmp_report_folder})
+        reporter.produce_report()
+        output_file = tmp_report_folder + os.path.sep + DEFAULT_SARIF_REPORT_FILE_NAME
+        with open(output_file, encoding="utf-8") as output:
+            return output.read()
+
+    def test_sarif_combined_respects_normalize_off(self):
+        combined = self.produce_combined_sarif("false")
+        self.assertIn(
+            "/github/workspace/",
+            combined,
+            "With SARIF_REPORTER_NORMALIZE_LINTERS_OUTPUT=false the combined "
+            "report must keep the workspace prefix",
+        )
+
+    def test_sarif_combined_normalizes_by_default(self):
+        combined = self.produce_combined_sarif(None)
+        self.assertNotIn(
+            "/github/workspace/",
+            combined,
+            "By default the combined report must drop the workspace prefix",
         )
 
     def test_sarif_fix_removes_empty_artifact_changes(self):
