@@ -106,6 +106,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - New descriptor properties: **`cli_lint_mode_project_exclude_config_files`** (workspace configs discovered by the tool itself), **`cli_lint_mode_project_exclude_conflicting_args`** (user arguments disabling the forwarding) and **`cli_lint_mode_project_exclude_ignore_file_merge_all_seeds`**
     - With ignore file forwarding, `cli_lint_mode_project_exclude_config_key` lists the user's ignore files, re-passed instead of `cli_lint_mode_project_exclude_ignore_file_pass_existing`
   - `PhpstanLinter` generates `excludePaths: analyse:` instead of a plain list (`analyseAndScan`), `YamllintLinter` follows the `extends` chain and supports `ignore-from-file`, `PhpCsFixerLinter` guards `exclude()` against non-Finder iterables, and `MegaLinter.get_parallel_process_number()` holds the default parallelism
+  - The `PSScriptAnalyzer` install step of the `POWERSHELL` descriptor now uses `-ErrorAction Stop`, so a PowerShell Gallery failure breaks the Docker build instead of silently producing an image without `Invoke-ScriptAnalyzer`
 
 - CI
   - **Dependabot** no longer opens version or security update PRs for the pip, uv, bundler, gomod and cargo test fixtures under `.automation/test/`: they must stay outdated, in particular the `.wireit` poison fixtures guarding the excluded directories forwarding
