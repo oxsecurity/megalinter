@@ -12450,7 +12450,7 @@
 <p><code>tofu fmt</code> also formats <code>.tftest.hcl</code> and <code>.tofutest.hcl</code> test files. They are not analyzed by default because the <code>.hcl</code> extension is already claimed by <a href="https://megalinter.io/latest/descriptors/terraform_terragrunt/">terragrunt</a> in this descriptor: add them to <code>TERRAFORM_TOFU_FMT_FILE_EXTENSIONS</code> only if you also disable <code>TERRAFORM_TERRAGRUNT</code>, or you would format them twice.</p>
 <h2 id="tofu-fmt-documentation">tofu-fmt documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.12.6</strong></li>
+<li>Version in MegaLinter: <strong>1.13.2</strong></li>
 <li>Visit <a href="https://opentofu.org/docs/cli/commands/fmt/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://opentofu.org/docs/language/syntax/style/" target="_blank">How to configure tofu-fmt rules</a></li>
 </ul>
@@ -12632,16 +12632,15 @@
 <h3 id="help-content">Help content</h3>
 <div class="highlight"><pre><span></span><code>Usage:<span class="w"> </span>tofu<span class="w"> </span><span class="o">[</span>global<span class="w"> </span>options<span class="o">]</span><span class="w"> </span>&lt;subcommand&gt;<span class="w"> </span><span class="o">[</span>args<span class="o">]</span>
 
-The<span class="w"> </span>available<span class="w"> </span>commands<span class="w"> </span><span class="k">for</span><span class="w"> </span>execution<span class="w"> </span>are<span class="w"> </span>listed<span class="w"> </span>below.
-The<span class="w"> </span>primary<span class="w"> </span>workflow<span class="w"> </span>commands<span class="w"> </span>are<span class="w"> </span>given<span class="w"> </span>first,<span class="w"> </span>followed<span class="w"> </span>by
-less<span class="w"> </span>common<span class="w"> </span>or<span class="w"> </span>more<span class="w"> </span>advanced<span class="w"> </span>commands.
+<span class="w">  </span>The<span class="w"> </span>available<span class="w"> </span>commands<span class="w"> </span><span class="k">for</span><span class="w"> </span>execution<span class="w"> </span>are<span class="w"> </span>listed<span class="w"> </span>below.<span class="w"> </span>The<span class="w"> </span>primary<span class="w"> </span>workflow
+<span class="w">  </span>commands<span class="w"> </span>are<span class="w"> </span>given<span class="w"> </span>first,<span class="w"> </span>followed<span class="w"> </span>by<span class="w"> </span>less<span class="w"> </span>common<span class="w"> </span>or<span class="w"> </span>more<span class="w"> </span>advanced<span class="w"> </span>commands.
 
 Main<span class="w"> </span>commands:
-<span class="w">  </span>init<span class="w">          </span>Prepare<span class="w"> </span>your<span class="w"> </span>working<span class="w"> </span>directory<span class="w"> </span><span class="k">for</span><span class="w"> </span>other<span class="w"> </span>commands
-<span class="w">  </span>validate<span class="w">      </span>Check<span class="w"> </span>whether<span class="w"> </span>the<span class="w"> </span>configuration<span class="w"> </span>is<span class="w"> </span>valid
-<span class="w">  </span>plan<span class="w">          </span>Show<span class="w"> </span>changes<span class="w"> </span>required<span class="w"> </span>by<span class="w"> </span>the<span class="w"> </span>current<span class="w"> </span>configuration
-<span class="w">  </span>apply<span class="w">         </span>Create<span class="w"> </span>or<span class="w"> </span>update<span class="w"> </span>infrastructure
-<span class="w">  </span>destroy<span class="w">       </span>Destroy<span class="w"> </span>previously-created<span class="w"> </span>infrastructure
+<span class="w">  </span>init<span class="w">      </span>Prepare<span class="w"> </span>your<span class="w"> </span>working<span class="w"> </span>directory<span class="w"> </span><span class="k">for</span><span class="w"> </span>other<span class="w"> </span>commands
+<span class="w">  </span>validate<span class="w">  </span>Check<span class="w"> </span>whether<span class="w"> </span>the<span class="w"> </span>configuration<span class="w"> </span>is<span class="w"> </span>valid
+<span class="w">  </span>plan<span class="w">      </span>Show<span class="w"> </span>changes<span class="w"> </span>required<span class="w"> </span>by<span class="w"> </span>the<span class="w"> </span>current<span class="w"> </span>configuration
+<span class="w">  </span>apply<span class="w">     </span>Create<span class="w"> </span>or<span class="w"> </span>update<span class="w"> </span>infrastructure
+<span class="w">  </span>destroy<span class="w">   </span>Destroy<span class="w"> </span>previously-created<span class="w"> </span>infrastructure
 
 All<span class="w"> </span>other<span class="w"> </span>commands:
 <span class="w">  </span>console<span class="w">       </span>Try<span class="w"> </span>OpenTofu<span class="w"> </span>expressions<span class="w"> </span>at<span class="w"> </span>an<span class="w"> </span>interactive<span class="w"> </span><span class="nb">command</span><span class="w"> </span>prompt
@@ -12664,17 +12663,20 @@ All<span class="w"> </span>other<span class="w"> </span>commands:
 <span class="w">  </span>version<span class="w">       </span>Show<span class="w"> </span>the<span class="w"> </span>current<span class="w"> </span>OpenTofu<span class="w"> </span>version
 <span class="w">  </span>workspace<span class="w">     </span>Workspace<span class="w"> </span>management
 
-Global<span class="w"> </span>options<span class="w"> </span><span class="o">(</span>use<span class="w"> </span>these<span class="w"> </span>before<span class="w"> </span>the<span class="w"> </span>subcommand,<span class="w"> </span><span class="k">if</span><span class="w"> </span>any<span class="o">)</span>:
-<span class="w">  </span>-chdir<span class="o">=</span>DIR<span class="w">    </span>Switch<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>different<span class="w"> </span>working<span class="w"> </span>directory<span class="w"> </span>before<span class="w"> </span>executing<span class="w"> </span>the
-<span class="w">                </span>given<span class="w"> </span>subcommand.
-<span class="w">  </span>-help<span class="w">         </span>Show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>output,<span class="w"> </span>or<span class="w"> </span>the<span class="w"> </span><span class="nb">help</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span>specified<span class="w"> </span>subcommand.
-<span class="w">  </span>-version<span class="w">      </span>An<span class="w"> </span><span class="nb">alias</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span><span class="s2">"version"</span><span class="w"> </span>subcommand.
+Global<span class="w"> </span>options<span class="w"> </span><span class="o">(</span>use<span class="w"> </span>these<span class="w"> </span>before<span class="w"> </span>the<span class="w"> </span>subcommand,<span class="w"> </span><span class="k">if</span><span class="w"> </span>any<span class="o">)</span>
+<span class="w">  </span>-chdir<span class="o">=</span>DIR<span class="w">               </span>Switch<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>different<span class="w"> </span>working<span class="w"> </span>directory<span class="w"> </span>before
+<span class="w">                           </span>executing<span class="w"> </span>the<span class="w"> </span>given<span class="w"> </span>subcommand.
+<span class="w">  </span>-help<span class="w">                    </span>Show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>output,<span class="w"> </span>or<span class="w"> </span>the<span class="w"> </span><span class="nb">help</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span>specified
+<span class="w">                           </span>subcommand.
+<span class="w">  </span>-install-autocomplete<span class="w">    </span>Install<span class="w"> </span>Autocomplete<span class="w"> </span>scripts
+<span class="w">  </span>-uninstall-autocomplete<span class="w">  </span>Uninstall<span class="w"> </span>Autocomplete<span class="w"> </span>scripts
+<span class="w">  </span>-version<span class="w">                 </span>An<span class="w"> </span><span class="nb">alias</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span><span class="s2">"version"</span><span class="w"> </span>subcommand.
 </code></pre></div>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=docker depName=ghcr.io/opentofu/opentofu</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">TERRAFORM_TOFU_FMT_VERSION</span><span class="o">=</span><span class="m">1</span>.12.6-minimal
+<span class="k">ARG</span><span class="w"> </span><span class="nv">TERRAFORM_TOFU_FMT_VERSION</span><span class="o">=</span><span class="m">1</span>.13.2-minimal
 <span class="k">FROM</span><span class="w"> </span><span class="s">ghcr.io/opentofu/opentofu:${TERRAFORM_TOFU_FMT_VERSION}</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">opentofu</span>
 <span class="k">COPY</span><span class="w"> </span>--link<span class="w"> </span>--from<span class="o">=</span>opentofu<span class="w"> </span>/usr/local/bin/tofu<span class="w"> </span>/usr/bin/
 </code></pre></div></li>

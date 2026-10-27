@@ -12401,7 +12401,7 @@
 </ul>
 <h2 id="stylua-documentation">stylua documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>2.5.2</strong></li>
+<li>Version in MegaLinter: <strong>2.6.0</strong></li>
 <li>Visit <a href="https://github.com/JohnnyMorganz/StyLua#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/JohnnyMorganz/StyLua?tab=readme-ov-file#configuration" target="_blank">How to configure stylua rules</a></li>
 <li>See <a href="https://github.com/JohnnyMorganz/StyLua?tab=readme-ov-file#ignoring-parts-of-a-file" target="_blank">How to disable stylua rules in files</a></li>
@@ -12582,7 +12582,7 @@
 <div class="highlight"><pre><span></span><code>stylua<span class="w"> </span>--config-path<span class="w"> </span>chktexrc.toml<span class="w"> </span>--check<span class="w"> </span>myfile.lua
 </code></pre></div>
 <h3 id="help-content">Help content</h3>
-<div class="highlight"><pre><span></span><code>stylua<span class="w"> </span><span class="m">2</span>.5.2
+<div class="highlight"><pre><span></span><code>stylua<span class="w"> </span><span class="m">2</span>.6.0
 A<span class="w"> </span>utility<span class="w"> </span>to<span class="w"> </span>format<span class="w"> </span>Lua<span class="w"> </span>code
 
 USAGE:
@@ -12659,8 +12659,8 @@ FORMATTING<span class="w"> </span>OPTIONS:
 <span class="w">            </span><span class="o">[</span>possible<span class="w"> </span>values:<span class="w"> </span>Always,<span class="w"> </span>NoSingleString,<span class="w"> </span>NoSingleTable,<span class="w"> </span>None,<span class="w"> </span>Input<span class="o">]</span>
 
 <span class="w">        </span>--collapse-simple-statement<span class="w"> </span>&lt;COLLAPSE_SIMPLE_STATEMENT&gt;
-<span class="w">            </span>Specify<span class="w"> </span>whether<span class="w"> </span>to<span class="w"> </span>collapse<span class="w"> </span>simple<span class="w"> </span>statements<span class="w"> </span><span class="o">[</span>possible<span class="w"> </span>values:<span class="w"> </span>Never,<span class="w"> </span>FunctionOnly,
-<span class="w">            </span>ConditionalOnly,<span class="w"> </span>Always<span class="o">]</span>
+<span class="w">            </span>Specify<span class="w"> </span>whether<span class="w"> </span>to<span class="w"> </span>collapse<span class="w"> </span>simple<span class="w"> </span>statements<span class="w"> </span><span class="o">[</span>possible<span class="w"> </span>values:<span class="w"> </span>Never,<span class="w"> </span>Input,
+<span class="w">            </span>FunctionOnly,<span class="w"> </span>ConditionalOnly,<span class="w"> </span>Always<span class="o">]</span>
 
 <span class="w">        </span>--column-width<span class="w"> </span>&lt;COLUMN_WIDTH&gt;
 <span class="w">            </span>The<span class="w"> </span>column<span class="w"> </span>width<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>to<span class="w"> </span>attempt<span class="w"> </span>to<span class="w"> </span>wrap<span class="w"> </span>lines
@@ -12696,7 +12696,7 @@ FORMATTING<span class="w"> </span>OPTIONS:
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=github-releases depName=JohnnyMorganz/StyLua extractVersion=^v(?&lt;version&gt;.+)$</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">CARGO_STYLUA_VERSION</span><span class="o">=</span><span class="m">2</span>.5.2
+<span class="k">ARG</span><span class="w"> </span><span class="nv">CARGO_STYLUA_VERSION</span><span class="o">=</span><span class="m">2</span>.6.0
 <span class="k">FROM</span><span class="w"> </span><span class="s">alpine:3.24</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">cargo-bin-stylua</span>
 <span class="k">ARG</span><span class="w"> </span>TARGETARCH
 <span class="k">ARG</span><span class="w"> </span>CARGO_STYLUA_VERSION

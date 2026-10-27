@@ -12400,7 +12400,7 @@ Copy it at the root of your repository, read it, remove real spelling errors (af
 If you do not want cspell to analyze the files names, define <code>SPELL_CSPELL_ANALYZE_FILE_NAMES</code> to <code>false</code></p>
 <h2 id="cspell-documentation">cspell documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>10.3.6</strong></li>
+<li>Version in MegaLinter: <strong>10.4.0</strong></li>
 <li>Visit <a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#customization" target="_blank">How to configure cspell rules</a></li>
 <li>See <a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#enable--disable-checking-sections-of-code" target="_blank">How to disable cspell rules in files</a></li>
@@ -12699,17 +12699,126 @@ Commands:
 <span class="w">                                        </span>the<span class="w"> </span>cspell<span class="w"> </span>global<span class="w"> </span>config.
 <span class="w">  </span>dictionaries<span class="w"> </span><span class="o">[</span>options<span class="o">]</span><span class="w">                </span>List<span class="w"> </span>dictionaries
 <span class="w">  </span><span class="nb">help</span><span class="w"> </span><span class="o">[</span>command<span class="o">]</span><span class="w">                        </span>display<span class="w"> </span><span class="nb">help</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">command</span>
+
+Options<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="s2">"lint"</span><span class="w"> </span><span class="o">(</span>the<span class="w"> </span>default<span class="w"> </span><span class="nb">command</span><span class="o">)</span>:
+<span class="w">  </span>-c,<span class="w"> </span>--config<span class="w"> </span>&lt;cspell.json&gt;<span class="w">     </span>Configuration<span class="w"> </span>file<span class="w"> </span>to<span class="w"> </span>use.<span class="w">  </span>By<span class="w"> </span>default<span class="w"> </span>cspell
+<span class="w">                                 </span>looks<span class="w"> </span><span class="k">for</span><span class="w"> </span>cspell.json<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>current<span class="w"> </span>directory.
+<span class="w">  </span>--no-config-search<span class="w">             </span>Disable<span class="w"> </span>automatic<span class="w"> </span>searching<span class="w"> </span><span class="k">for</span><span class="w"> </span>additional
+<span class="w">                                 </span>configuration<span class="w"> </span>files<span class="w"> </span><span class="k">in</span><span class="w"> </span>parent<span class="w"> </span>directories.<span class="w"> </span>Only
+<span class="w">                                 </span>the<span class="w"> </span>specified<span class="w"> </span>config<span class="w"> </span>file<span class="w"> </span><span class="o">(</span><span class="k">if</span><span class="w"> </span>any<span class="o">)</span><span class="w"> </span>will<span class="w"> </span>be
+<span class="w">                                 </span>used.
+<span class="w">  </span>--stop-config-search-at<span class="w"> </span>&lt;dir&gt;<span class="w">  </span>Specify<span class="w"> </span>a<span class="w"> </span>directory<span class="w"> </span>at<span class="w"> </span>which<span class="w"> </span>to<span class="w"> </span>stop<span class="w"> </span>searching
+<span class="w">                                 </span><span class="k">for</span><span class="w"> </span>configuration<span class="w"> </span>files<span class="w"> </span>when<span class="w"> </span>walking<span class="w"> </span>up<span class="w"> </span>from
+<span class="w">                                 </span>the<span class="w"> </span>files<span class="w"> </span>being<span class="w"> </span>checked.<span class="w"> </span>Useful<span class="w"> </span><span class="k">for</span><span class="w"> </span>limiting
+<span class="w">                                 </span>config<span class="w"> </span>inheritance.
+<span class="w">  </span>-v,<span class="w"> </span>--verbose<span class="w">                  </span>Display<span class="w"> </span>more<span class="w"> </span>information<span class="w"> </span>about<span class="w"> </span>the<span class="w"> </span>files<span class="w"> </span>being
+<span class="w">                                 </span>checked.<span class="w"> </span>Add<span class="w"> </span>more<span class="w"> </span>than<span class="w"> </span>one<span class="w"> </span>-v<span class="w"> </span><span class="k">for</span><span class="w"> </span>increased
+<span class="w">                                 </span>verbosity.
+<span class="w">  </span>--locale<span class="w"> </span>&lt;locale&gt;<span class="w">              </span>Set<span class="w"> </span>language<span class="w"> </span>locales.<span class="w"> </span>i.e.<span class="w"> </span><span class="s2">"en,fr"</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>English
+<span class="w">                                 </span>and<span class="w"> </span>French,<span class="w"> </span>or<span class="w"> </span><span class="s2">"en-GB"</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>British<span class="w"> </span>English.
+<span class="w">  </span>--language-id<span class="w"> </span>&lt;file-type&gt;<span class="w">      </span>Force<span class="w"> </span>programming<span class="w"> </span>language<span class="w"> </span><span class="k">for</span><span class="w"> </span>unknown
+<span class="w">                                 </span>extensions.<span class="w"> </span>i.e.<span class="w"> </span><span class="s2">"php"</span><span class="w"> </span>or<span class="w"> </span><span class="s2">"scala"</span>
+<span class="w">  </span>--words-only<span class="w">                   </span>Only<span class="w"> </span>output<span class="w"> </span>the<span class="w"> </span>words<span class="w"> </span>not<span class="w"> </span>found<span class="w"> </span><span class="k">in</span><span class="w"> </span>the
+<span class="w">                                 </span>dictionaries.
+<span class="w">  </span>-u,<span class="w"> </span>--unique<span class="w">                   </span>Only<span class="w"> </span>output<span class="w"> </span>the<span class="w"> </span>first<span class="w"> </span>instance<span class="w"> </span>of<span class="w"> </span>a<span class="w"> </span>word<span class="w"> </span>not
+<span class="w">                                 </span>found<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>dictionaries.
+<span class="w">  </span>-e,<span class="w"> </span>--exclude<span class="w"> </span>&lt;glob&gt;<span class="w">           </span>Exclude<span class="w"> </span>files<span class="w"> </span>matching<span class="w"> </span>the<span class="w"> </span>glob<span class="w"> </span>pattern.<span class="w"> </span>This
+<span class="w">                                 </span>option<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>used<span class="w"> </span>multiple<span class="w"> </span><span class="nb">times</span><span class="w"> </span>to<span class="w"> </span>add
+<span class="w">                                 </span>multiple<span class="w"> </span>globs.
+<span class="w">  </span>--file-list<span class="w"> </span>&lt;path<span class="w"> </span>or<span class="w"> </span>stdin&gt;<span class="w">    </span>Specify<span class="w"> </span>a<span class="w"> </span>list<span class="w"> </span>of<span class="w"> </span>files<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>spell<span class="w"> </span>checked.
+<span class="w">                                 </span>The<span class="w"> </span>list<span class="w"> </span>is<span class="w"> </span>filtered<span class="w"> </span>against<span class="w"> </span>the<span class="w"> </span>glob<span class="w"> </span>file
+<span class="w">                                 </span>patterns.<span class="w"> </span>Note:<span class="w"> </span>the<span class="w"> </span>format<span class="w"> </span>is<span class="w"> </span><span class="m">1</span><span class="w"> </span>file<span class="w"> </span>path<span class="w"> </span>per
+<span class="w">                                 </span>line.
+<span class="w">  </span>--file<span class="w"> </span><span class="o">[</span>file...<span class="o">]</span><span class="w">               </span>Specify<span class="w"> </span>files<span class="w"> </span>to<span class="w"> </span>spell<span class="w"> </span>check.<span class="w"> </span>They<span class="w"> </span>are<span class="w"> </span>filtered
+<span class="w">                                 </span>by<span class="w"> </span>the<span class="w"> </span><span class="o">[</span>globs...<span class="o">]</span>.
+<span class="w">  </span>--force-check<span class="w">                  </span>Force<span class="w"> </span>the<span class="w"> </span>--file<span class="w"> </span>or<span class="w"> </span>--file-list<span class="w"> </span>documents<span class="w"> </span>to<span class="w"> </span>be
+<span class="w">                                 </span>checked<span class="w"> </span>even<span class="w"> </span><span class="k">if</span><span class="w"> </span>it<span class="w"> </span>would<span class="w"> </span>normally<span class="w"> </span>be<span class="w"> </span>excluded.
+<span class="w">  </span>--follow-symlinks<span class="w">              </span>Allow<span class="w"> </span>checking<span class="w"> </span>--file<span class="w"> </span>and<span class="w"> </span>--file-list<span class="w"> </span>documents
+<span class="w">                                 </span>referenced<span class="w"> </span>by<span class="w"> </span>symbolic<span class="w"> </span>links.
+<span class="w">  </span>--no-issues<span class="w">                    </span>Do<span class="w"> </span>not<span class="w"> </span>show<span class="w"> </span>the<span class="w"> </span>spelling<span class="w"> </span>errors.
+<span class="w">  </span>--no-progress<span class="w">                  </span>Turn<span class="w"> </span>off<span class="w"> </span>progress<span class="w"> </span>messages
+<span class="w">  </span>--no-summary<span class="w">                   </span>Turn<span class="w"> </span>off<span class="w"> </span>summary<span class="w"> </span>message<span class="w"> </span><span class="k">in</span><span class="w"> </span>console.
+<span class="w">  </span>-s,<span class="w"> </span>--silent<span class="w">                   </span>Silent<span class="w"> </span>mode,<span class="w"> </span>suppress<span class="w"> </span>error<span class="w"> </span>messages.
+<span class="w">  </span>--no-exit-code<span class="w">                 </span>Do<span class="w"> </span>not<span class="w"> </span><span class="k">return</span><span class="w"> </span>an<span class="w"> </span><span class="nb">exit</span><span class="w"> </span>code<span class="w"> </span><span class="k">if</span><span class="w"> </span>issues<span class="w"> </span>are<span class="w"> </span>found.
+<span class="w">  </span>--quiet<span class="w">                        </span>Only<span class="w"> </span>show<span class="w"> </span>spelling<span class="w"> </span>issues<span class="w"> </span>or<span class="w"> </span>errors.
+<span class="w">  </span>--fail-fast<span class="w">                    </span>Exit<span class="w"> </span>after<span class="w"> </span>first<span class="w"> </span>file<span class="w"> </span>with<span class="w"> </span>an<span class="w"> </span>issue<span class="w"> </span>or<span class="w"> </span>error.
+<span class="w">  </span>--continue-on-error<span class="w">            </span>Continue<span class="w"> </span>processing<span class="w"> </span>files<span class="w"> </span>even<span class="w"> </span><span class="k">if</span><span class="w"> </span>there<span class="w"> </span>is<span class="w"> </span>a
+<span class="w">                                 </span>configuration<span class="w"> </span>error.
+<span class="w">  </span>-r,<span class="w"> </span>--root<span class="w"> </span>&lt;root<span class="w"> </span>folder&gt;<span class="w">       </span>Root<span class="w"> </span>directory,<span class="w"> </span>defaults<span class="w"> </span>to<span class="w"> </span>current<span class="w"> </span>directory.
+<span class="w">  </span>--no-relative<span class="w">                  </span>Issues<span class="w"> </span>are<span class="w"> </span>displayed<span class="w"> </span>with<span class="w"> </span>absolute<span class="w"> </span>path<span class="w"> </span>instead
+<span class="w">                                 </span>of<span class="w"> </span>relative<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>root.
+<span class="w">  </span>--show-context<span class="w">                 </span>Show<span class="w"> </span>the<span class="w"> </span>surrounding<span class="w"> </span>text<span class="w"> </span>around<span class="w"> </span>an<span class="w"> </span>issue.
+<span class="w">  </span>--show-suggestions<span class="w">             </span>Show<span class="w"> </span>spelling<span class="w"> </span>suggestions.
+<span class="w">  </span>--no-show-suggestions<span class="w">          </span>Do<span class="w"> </span>not<span class="w"> </span>show<span class="w"> </span>spelling<span class="w"> </span>suggestions<span class="w"> </span>or<span class="w"> </span>fixes.
+<span class="w">  </span>--no-must-find-files<span class="w">           </span>Do<span class="w"> </span>not<span class="w"> </span>error<span class="w"> </span><span class="k">if</span><span class="w"> </span>no<span class="w"> </span>files<span class="w"> </span>are<span class="w"> </span>found.
+<span class="w">  </span>--cache<span class="w">                        </span>Use<span class="w"> </span>cache<span class="w"> </span>to<span class="w"> </span>only<span class="w"> </span>check<span class="w"> </span>changed<span class="w"> </span>files.
+<span class="w">  </span>--no-cache<span class="w">                     </span>Do<span class="w"> </span>not<span class="w"> </span>use<span class="w"> </span>cache.
+<span class="w">  </span>--cache-reset<span class="w">                  </span>Reset<span class="w"> </span>the<span class="w"> </span>cache<span class="w"> </span>file.
+<span class="w">  </span>--cache-strategy<span class="w"> </span>&lt;strategy&gt;<span class="w">    </span>Strategy<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span><span class="k">for</span><span class="w"> </span>detecting<span class="w"> </span>changed<span class="w"> </span>files.
+<span class="w">                                 </span><span class="o">(</span>choices:<span class="w"> </span><span class="s2">"content"</span>,<span class="w"> </span><span class="s2">"metadata"</span>,<span class="w"> </span>default:
+<span class="w">                                 </span><span class="s2">"content"</span><span class="o">)</span>
+<span class="w">  </span>--cache-location<span class="w"> </span>&lt;path&gt;<span class="w">        </span>Path<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>cache<span class="w"> </span>file<span class="w"> </span>or<span class="w"> </span>directory.<span class="w"> </span><span class="o">(</span>default:
+<span class="w">                                 </span><span class="s2">".cspellcache"</span><span class="o">)</span>
+<span class="w">  </span>--dot<span class="w">                          </span>Include<span class="w"> </span>files<span class="w"> </span>and<span class="w"> </span>directories<span class="w"> </span>starting<span class="w"> </span>with<span class="w"> </span><span class="sb">`</span>.<span class="sb">`</span>
+<span class="w">                                 </span><span class="o">(</span>period<span class="o">)</span><span class="w"> </span>when<span class="w"> </span>matching<span class="w"> </span>globs.
+<span class="w">  </span>--glob-symlinks<span class="w">                </span>Follow<span class="w"> </span>symbolic<span class="w"> </span>links<span class="w"> </span>when<span class="w"> </span>matching<span class="w"> </span>globs.
+<span class="w">  </span>--gitignore<span class="w">                    </span>Ignore<span class="w"> </span>files<span class="w"> </span>matching<span class="w"> </span>glob<span class="w"> </span>patterns<span class="w"> </span>found<span class="w"> </span><span class="k">in</span>
+<span class="w">                                 </span>.gitignore<span class="w"> </span>files.
+<span class="w">  </span>--no-gitignore<span class="w">                 </span>Do<span class="w"> </span>NOT<span class="w"> </span>use<span class="w"> </span>.gitignore<span class="w"> </span>files.
+<span class="w">  </span>--gitignore-root<span class="w"> </span>&lt;path&gt;<span class="w">        </span>Prevent<span class="w"> </span>searching<span class="w"> </span><span class="k">for</span><span class="w"> </span>.gitignore<span class="w"> </span>files<span class="w"> </span>past
+<span class="w">                                 </span>root.
+<span class="w">  </span>--validate-directives<span class="w">          </span>Validate<span class="w"> </span>in-document<span class="w"> </span>CSpell<span class="w"> </span>directives.
+<span class="w">  </span>--max-file-size<span class="w"> </span>&lt;size&gt;<span class="w">         </span>Prevent<span class="w"> </span>checking<span class="w"> </span>large<span class="w"> </span>files.<span class="w"> </span>i.e<span class="w"> </span>1MB,<span class="w"> </span>50KB,
+<span class="w">                                 </span>1GB
+<span class="w">  </span>--color<span class="w">                        </span>Force<span class="w"> </span>color.
+<span class="w">  </span>--no-color<span class="w">                     </span>Turn<span class="w"> </span>off<span class="w"> </span>color.
+<span class="w">  </span>--no-default-configuration<span class="w">     </span>Do<span class="w"> </span>not<span class="w"> </span>load<span class="w"> </span>the<span class="w"> </span>default<span class="w"> </span>configuration<span class="w"> </span>and
+<span class="w">                                 </span>dictionaries.
+<span class="w">  </span>--dictionary<span class="w"> </span>&lt;name&gt;<span class="w">            </span>Enable<span class="w"> </span>a<span class="w"> </span>dictionary<span class="w"> </span>by<span class="w"> </span>name.
+<span class="w">  </span>--disable-dictionary<span class="w"> </span>&lt;name&gt;<span class="w">    </span>Disable<span class="w"> </span>a<span class="w"> </span>dictionary<span class="w"> </span>by<span class="w"> </span>name.
+<span class="w">  </span>--reporter<span class="w"> </span>&lt;module<span class="p">|</span>path&gt;<span class="w">       </span>Specify<span class="w"> </span>one<span class="w"> </span>or<span class="w"> </span>more<span class="w"> </span>reporters<span class="w"> </span>to<span class="w"> </span>use.
+<span class="w">  </span>--report<span class="w"> </span>&lt;level&gt;<span class="w">               </span>Set<span class="w"> </span>how<span class="w"> </span>unknown<span class="w"> </span>words<span class="w"> </span>are<span class="w"> </span>reported<span class="w"> </span><span class="o">(</span>choices:
+<span class="w">                                 </span><span class="s2">"all"</span>,<span class="w"> </span><span class="s2">"simple"</span>,<span class="w"> </span><span class="s2">"typos"</span>,<span class="w"> </span><span class="s2">"flagged"</span><span class="o">)</span>
+<span class="w">  </span>--issue-template<span class="w"> </span><span class="o">[</span>template<span class="o">]</span><span class="w">    </span>Use<span class="w"> </span>a<span class="w"> </span>custom<span class="w"> </span>issue<span class="w"> </span>template.<span class="w"> </span>See<span class="w"> </span>--help
+<span class="w">                                 </span>--issue-template<span class="w"> </span><span class="k">for</span><span class="w"> </span>details.
+
+More<span class="w"> </span>Examples:
+
+<span class="w">    </span>cspell<span class="w"> </span><span class="s2">"**/*.js"</span><span class="w"> </span>--reporter<span class="w"> </span>@cspell/cspell-json-reporter
+<span class="w">        </span>This<span class="w"> </span>will<span class="w"> </span>spell<span class="w"> </span>check<span class="w"> </span>all<span class="w"> </span><span class="s2">".js"</span><span class="w"> </span>files<span class="w"> </span>recursively<span class="w"> </span>and<span class="w"> </span>use
+<span class="w">        </span><span class="s2">"@cspell/cspell-json-reporter"</span>.
+
+<span class="w">    </span>cspell<span class="w"> </span>.<span class="w"> </span>--reporter<span class="w"> </span>default
+<span class="w">        </span>This<span class="w"> </span>will<span class="w"> </span>force<span class="w"> </span>the<span class="w"> </span>default<span class="w"> </span>reporter<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>used<span class="w"> </span>overriding
+<span class="w">        </span>any<span class="w"> </span>reporters<span class="w"> </span>defined<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>configuration.
+
+<span class="w">    </span>cspell<span class="w"> </span>.<span class="w"> </span>--reporter<span class="w"> </span>./&lt;path&gt;/reporter.cjs
+<span class="w">        </span>Use<span class="w"> </span>a<span class="w"> </span>custom<span class="w"> </span>reporter.<span class="w"> </span>See<span class="w"> </span>API<span class="w"> </span><span class="k">for</span><span class="w"> </span>details.
+
+<span class="w">    </span>cspell<span class="w"> </span><span class="s2">"*.md"</span><span class="w"> </span>--exclude<span class="w"> </span>CHANGELOG.md<span class="w"> </span>--files<span class="w"> </span>README.md<span class="w"> </span>CHANGELOG.md
+<span class="w">        </span>Spell<span class="w"> </span>check<span class="w"> </span>only<span class="w"> </span>check<span class="w"> </span><span class="s2">"README.md"</span><span class="w"> </span>but<span class="w"> </span>NOT<span class="w"> </span><span class="s2">"CHANGELOG.md"</span>.
+
+<span class="w">    </span>cspell<span class="w"> </span><span class="s2">"/*.md"</span><span class="w"> </span>--no-must-find-files<span class="w"> </span>--files<span class="w"> </span><span class="nv">$FILES</span>
+<span class="w">        </span>Only<span class="w"> </span>spell<span class="w"> </span>check<span class="w"> </span>the<span class="w"> </span><span class="s2">"/*.md"</span><span class="w"> </span>files<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nv">$FILES</span>,
+<span class="w">        </span>where<span class="w"> </span><span class="nv">$FILES</span><span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>shell<span class="w"> </span>variable<span class="w"> </span>containing<span class="w"> </span>the<span class="w"> </span>list<span class="w"> </span>of<span class="w"> </span>files.
+
+<span class="w">    </span>cspell<span class="w"> </span>--help<span class="w"> </span>--verbose
+<span class="w">        </span>Show<span class="w"> </span>all<span class="w"> </span>options<span class="w"> </span>including<span class="w"> </span>hidden<span class="w"> </span>options.
+
+References:
+<span class="w">    </span>https://cspell.org
+<span class="w">    </span>https://github.com/streetsidesoftware/cspell
 </code></pre></div>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=npm depName=cspell</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">NPM_CSPELL_VERSION</span><span class="o">=</span><span class="m">10</span>.3.6
+<span class="k">ARG</span><span class="w"> </span><span class="nv">NPM_CSPELL_VERSION</span><span class="o">=</span><span class="m">10</span>.4.0
 </code></pre></div></li>
 </ul>
 <ul>
 <li>NPM packages (node.js):<ul>
-<li><a href="https://www.npmjs.com/package/cspell/v/10.3.6">cspell@10.3.6</a></li>
+<li><a href="https://www.npmjs.com/package/cspell/v/10.4.0">cspell@10.4.0</a></li>
 </ul>
 </li>
 </ul>

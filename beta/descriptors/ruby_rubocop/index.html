@@ -12498,7 +12498,7 @@
 </ul>
 <h2 id="rubocop-documentation">rubocop documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.91.0</strong></li>
+<li>Version in MegaLinter: <strong>1.92.0</strong></li>
 <li>Visit <a href="https://rubocop.org/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://docs.rubocop.org/rubocop/configuration.html" target="_blank">How to configure rubocop rules</a><ul>
 <li>If custom <code>.ruby-lint.yml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruby-lint.yml" target="_blank">.ruby-lint.yml</a> will be used</li>
@@ -12859,6 +12859,11 @@ Caching:
 <span class="s1">                                     when combined with --display-only-correctable.</span>
 <span class="s1">        --display-suppressed         Also output offenses suppressed by directive</span>
 <span class="s1">                                     comments. They do not affect the exit code.</span>
+<span class="s1">        --max-offenses-per-cop COUNT Report at most COUNT offenses per cop across the</span>
+<span class="s1">                                     whole run, so a single noisy cop cannot bury the</span>
+<span class="s1">                                     rest. Offenses beyond the limit are not reported</span>
+<span class="s1">                                     and do not count towards the totals, the same way</span>
+<span class="s1">                                     the other display filters work.</span>
 
 <span class="s1">Autocorrection:</span>
 <span class="s1">    -a, --autocorrect                Autocorrect offenses (only when it'</span>s<span class="w"> </span>safe<span class="o">)</span>.
@@ -12914,6 +12919,10 @@ Additional<span class="w"> </span>Modes:
 <span class="w">        </span>--show-docs-url<span class="w"> </span><span class="o">[</span>COP1,COP2,...<span class="o">]</span>
 <span class="w">                                     </span>Display<span class="w"> </span>url<span class="w"> </span>to<span class="w"> </span>documentation<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>given
 <span class="w">                                     </span>cops,<span class="w"> </span>or<span class="w"> </span>base<span class="w"> </span>url<span class="w"> </span>by<span class="w"> </span>default.
+<span class="w">        </span>--explain<span class="w"> </span>COP1,COP2,...<span class="w">      </span>Explain<span class="w"> </span>what<span class="w"> </span>the<span class="w"> </span>given<span class="w"> </span>cops<span class="w"> </span><span class="k">do</span>:<span class="w"> </span>their
+<span class="w">                                     </span>description,<span class="w"> </span>configuration,<span class="w"> </span>whether<span class="w"> </span>they
+<span class="w">                                     </span>correct,<span class="w"> </span>and<span class="w"> </span>the<span class="w"> </span>examples<span class="w"> </span>from<span class="w"> </span>their<span class="w"> </span>own
+<span class="w">                                     </span>documentation.
 
 General<span class="w"> </span>Options:
 <span class="w">        </span>--init<span class="w">                       </span>Generate<span class="w"> </span>a<span class="w"> </span>.rubocop.yml<span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>current<span class="w"> </span>directory.
@@ -12933,7 +12942,7 @@ Profiling<span class="w"> </span>Options:
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=rubygems depName=rubocop</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">GEM_RUBOCOP_VERSION</span><span class="o">=</span><span class="m">1</span>.91.0
+<span class="k">ARG</span><span class="w"> </span><span class="nv">GEM_RUBOCOP_VERSION</span><span class="o">=</span><span class="m">1</span>.92.0
 <span class="c"># renovate: datasource=rubygems depName=rubocop-github</span>
 <span class="k">ARG</span><span class="w"> </span><span class="nv">GEM_RUBOCOP_GITHUB_VERSION</span><span class="o">=</span><span class="m">0</span>.29.0
 <span class="c"># renovate: datasource=rubygems depName=rubocop-performance</span>
@@ -12948,7 +12957,7 @@ Profiling<span class="w"> </span>Options:
 </ul>
 <ul>
 <li>GEM packages (Ruby) :<ul>
-<li><a href="https://rubygems.org/gems/rubocop/versions/1.91.0">rubocop:1.91.0</a></li>
+<li><a href="https://rubygems.org/gems/rubocop/versions/1.92.0">rubocop:1.92.0</a></li>
 <li><a href="https://rubygems.org/gems/rubocop-github/versions/0.29.0">rubocop-github:0.29.0</a></li>
 <li><a href="https://rubygems.org/gems/rubocop-performance/versions/1.27.0">rubocop-performance:1.27.0</a></li>
 <li><a href="https://rubygems.org/gems/rubocop-rails/versions/2.38.0">rubocop-rails:2.38.0</a></li>

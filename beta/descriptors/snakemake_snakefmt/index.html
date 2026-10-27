@@ -12380,7 +12380,7 @@
 </ul>
 <h2 id="snakefmt-documentation">snakefmt documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>2.0.3</strong></li>
+<li>Version in MegaLinter: <strong>2.1.0</strong></li>
 <li>Visit <a href="https://github.com/snakemake/snakefmt#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/snakemake/snakefmt#configuration" target="_blank">How to configure snakefmt rules</a><ul>
 <li>If custom <code>.snakefmt.toml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.snakefmt.toml" target="_blank">.snakefmt.toml</a> will be used</li>
@@ -12649,6 +12649,20 @@ Options:
 <span class="w">                                  </span><span class="o">[</span>default:<span class="w"> </span><span class="m">88</span><span class="o">]</span>
 <span class="w">  </span>-s,<span class="w"> </span>--sort<span class="w"> </span>/<span class="w"> </span>-S,<span class="w"> </span>--no-sort<span class="w">      </span>Sort<span class="w"> </span>directives<span class="w"> </span><span class="k">in</span><span class="w"> </span>rules<span class="w"> </span>and<span class="w"> </span>modules.
 <span class="w">                                  </span><span class="o">[</span>default:<span class="w"> </span>sort<span class="o">]</span>
+<span class="w">  </span>-o,<span class="w"> </span>--directive-order<span class="w"> </span>NAMES<span class="w">     </span>Comma-separated<span class="w"> </span>order<span class="w"> </span>of<span class="w"> </span>all<span class="w"> </span>the<span class="w"> </span>directives
+<span class="w">                                  </span>of<span class="w"> </span>rules,<span class="w"> </span>checkpoints<span class="w"> </span>and<span class="w"> </span><span class="sb">`</span>use<span class="w"> </span>rule<span class="sb">`</span><span class="w"> </span>blocks.
+<span class="w">                                  </span>Action<span class="w"> </span>directives<span class="w"> </span><span class="o">(</span>run,<span class="w"> </span>shell,<span class="w"> </span>script,<span class="w"> </span>...<span class="o">)</span>
+<span class="w">                                  </span>are<span class="w"> </span>not<span class="w"> </span>listed<span class="w"> </span>as<span class="w"> </span>they<span class="w"> </span>always<span class="w"> </span>come<span class="w"> </span>last.<span class="w"> </span>In
+<span class="w">                                  </span>the<span class="w"> </span>config<span class="w"> </span>file<span class="w"> </span>this<span class="w"> </span>is<span class="w"> </span>an<span class="w"> </span>array<span class="w"> </span>of<span class="w"> </span>strings.
+<span class="w">                                  </span>Use<span class="w"> </span>--print-directive-order<span class="w"> </span>to<span class="w"> </span>see<span class="w"> </span>the
+<span class="w">                                  </span>default<span class="w"> </span>order.
+<span class="w">  </span>-m,<span class="w"> </span>--module-directive-order<span class="w"> </span>NAMES
+<span class="w">                                  </span>Comma-separated<span class="w"> </span>order<span class="w"> </span>of<span class="w"> </span>all<span class="w"> </span>the<span class="w"> </span>directives
+<span class="w">                                  </span>of<span class="w"> </span>modules.<span class="w"> </span>In<span class="w"> </span>the<span class="w"> </span>config<span class="w"> </span>file<span class="w"> </span>this<span class="w"> </span>is<span class="w"> </span>an
+<span class="w">                                  </span>array<span class="w"> </span>of<span class="w"> </span>strings.
+<span class="w">  </span>-p,<span class="w"> </span>--print-directive-order<span class="w">     </span>Print<span class="w"> </span>the<span class="w"> </span>directive<span class="w"> </span>orders<span class="w"> </span><span class="k">in</span><span class="w"> </span>effect,<span class="w"> </span>as
+<span class="w">                                  </span>lines<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>config<span class="w"> </span>file<span class="w"> </span>and<span class="w"> </span>as<span class="w"> </span><span class="nb">command</span>
+<span class="w">                                  </span>line<span class="w"> </span>options,<span class="w"> </span><span class="k">then</span><span class="w"> </span>exit.
 <span class="w">  </span>-f,<span class="w"> </span>--format-shell<span class="w"> </span>/<span class="w"> </span>-F,<span class="w"> </span>--no-format-shell
 <span class="w">                                  </span>Format<span class="w"> </span>shell<span class="w"> </span>directives<span class="w"> </span>using<span class="w"> </span>shfmt.
 <span class="w">                                  </span><span class="o">[</span>default:<span class="w"> </span>format-shell<span class="o">]</span>
@@ -12689,12 +12703,12 @@ Options:
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=pypi depName=snakefmt</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">PIP_SNAKEFMT_VERSION</span><span class="o">=</span><span class="m">2</span>.0.3
+<span class="k">ARG</span><span class="w"> </span><span class="nv">PIP_SNAKEFMT_VERSION</span><span class="o">=</span><span class="m">2</span>.1.0
 </code></pre></div></li>
 </ul>
 <ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/snakefmt/2.0.3">snakefmt==2.0.3</a></li>
+<li><a href="https://pypi.org/project/snakefmt/2.1.0">snakefmt==2.1.0</a></li>
 </ul>
 </li>
 </ul>
