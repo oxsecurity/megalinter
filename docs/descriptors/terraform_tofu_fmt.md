@@ -42,7 +42,7 @@ DISABLE_LINTERS: [TERRAFORM_TERRAFORM_FMT]
 
 ## tofu-fmt documentation
 
-- Version in MegaLinter: **1.12.6**
+- Version in MegaLinter: **1.13.2**
 - Visit [Official Web Site](https://opentofu.org/docs/cli/commands/fmt/){target=_blank}
 - See [How to configure tofu-fmt rules](https://opentofu.org/docs/language/syntax/style/){target=_blank}
 
@@ -120,16 +120,15 @@ tofu fmt myfile.tf
 ```shell
 Usage: tofu [global options] <subcommand> [args]
 
-The available commands for execution are listed below.
-The primary workflow commands are given first, followed by
-less common or more advanced commands.
+  The available commands for execution are listed below. The primary workflow
+  commands are given first, followed by less common or more advanced commands.
 
 Main commands:
-  init          Prepare your working directory for other commands
-  validate      Check whether the configuration is valid
-  plan          Show changes required by the current configuration
-  apply         Create or update infrastructure
-  destroy       Destroy previously-created infrastructure
+  init      Prepare your working directory for other commands
+  validate  Check whether the configuration is valid
+  plan      Show changes required by the current configuration
+  apply     Create or update infrastructure
+  destroy   Destroy previously-created infrastructure
 
 All other commands:
   console       Try OpenTofu expressions at an interactive command prompt
@@ -152,11 +151,14 @@ All other commands:
   version       Show the current OpenTofu version
   workspace     Workspace management
 
-Global options (use these before the subcommand, if any):
-  -chdir=DIR    Switch to a different working directory before executing the
-                given subcommand.
-  -help         Show this help output, or the help for a specified subcommand.
-  -version      An alias for the "version" subcommand.
+Global options (use these before the subcommand, if any)
+  -chdir=DIR               Switch to a different working directory before
+                           executing the given subcommand.
+  -help                    Show this help output, or the help for a specified
+                           subcommand.
+  -install-autocomplete    Install Autocomplete scripts
+  -uninstall-autocomplete  Uninstall Autocomplete scripts
+  -version                 An alias for the "version" subcommand.
 ```
 
 ### Installation on mega-linter Docker image
@@ -164,7 +166,7 @@ Global options (use these before the subcommand, if any):
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=ghcr.io/opentofu/opentofu
-ARG TERRAFORM_TOFU_FMT_VERSION=1.12.6-minimal
+ARG TERRAFORM_TOFU_FMT_VERSION=1.13.2-minimal
 FROM ghcr.io/opentofu/opentofu:${TERRAFORM_TOFU_FMT_VERSION} AS opentofu
 COPY --link --from=opentofu /usr/local/bin/tofu /usr/bin/
 ```

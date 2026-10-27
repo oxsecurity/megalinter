@@ -24,7 +24,7 @@ If you do not want cspell to analyze the files names, define `SPELL_CSPELL_ANALY
 
 ## cspell documentation
 
-- Version in MegaLinter: **10.3.6**
+- Version in MegaLinter: **10.4.0**
 - Visit [Official Web Site](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#readme){target=_blank}
 - See [How to configure cspell rules](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#customization){target=_blank}
 - See [How to disable cspell rules in files](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#enable--disable-checking-sections-of-code){target=_blank}
@@ -138,6 +138,116 @@ Commands:
                                         the cspell global config.
   dictionaries [options]                List dictionaries
   help [command]                        display help for command
+
+Options for "lint" (the default command):
+  -c, --config <cspell.json>     Configuration file to use.  By default cspell
+                                 looks for cspell.json in the current directory.
+  --no-config-search             Disable automatic searching for additional
+                                 configuration files in parent directories. Only
+                                 the specified config file (if any) will be
+                                 used.
+  --stop-config-search-at <dir>  Specify a directory at which to stop searching
+                                 for configuration files when walking up from
+                                 the files being checked. Useful for limiting
+                                 config inheritance.
+  -v, --verbose                  Display more information about the files being
+                                 checked. Add more than one -v for increased
+                                 verbosity.
+  --locale <locale>              Set language locales. i.e. "en,fr" for English
+                                 and French, or "en-GB" for British English.
+  --language-id <file-type>      Force programming language for unknown
+                                 extensions. i.e. "php" or "scala"
+  --words-only                   Only output the words not found in the
+                                 dictionaries.
+  -u, --unique                   Only output the first instance of a word not
+                                 found in the dictionaries.
+  -e, --exclude <glob>           Exclude files matching the glob pattern. This
+                                 option can be used multiple times to add
+                                 multiple globs.
+  --file-list <path or stdin>    Specify a list of files to be spell checked.
+                                 The list is filtered against the glob file
+                                 patterns. Note: the format is 1 file path per
+                                 line.
+  --file [file...]               Specify files to spell check. They are filtered
+                                 by the [globs...].
+  --force-check                  Force the --file or --file-list documents to be
+                                 checked even if it would normally be excluded.
+  --follow-symlinks              Allow checking --file and --file-list documents
+                                 referenced by symbolic links.
+  --no-issues                    Do not show the spelling errors.
+  --no-progress                  Turn off progress messages
+  --no-summary                   Turn off summary message in console.
+  -s, --silent                   Silent mode, suppress error messages.
+  --no-exit-code                 Do not return an exit code if issues are found.
+  --quiet                        Only show spelling issues or errors.
+  --fail-fast                    Exit after first file with an issue or error.
+  --continue-on-error            Continue processing files even if there is a
+                                 configuration error.
+  -r, --root <root folder>       Root directory, defaults to current directory.
+  --no-relative                  Issues are displayed with absolute path instead
+                                 of relative to the root.
+  --show-context                 Show the surrounding text around an issue.
+  --show-suggestions             Show spelling suggestions.
+  --no-show-suggestions          Do not show spelling suggestions or fixes.
+  --no-must-find-files           Do not error if no files are found.
+  --cache                        Use cache to only check changed files.
+  --no-cache                     Do not use cache.
+  --cache-reset                  Reset the cache file.
+  --cache-strategy <strategy>    Strategy to use for detecting changed files.
+                                 (choices: "content", "metadata", default:
+                                 "content")
+  --cache-location <path>        Path to the cache file or directory. (default:
+                                 ".cspellcache")
+  --dot                          Include files and directories starting with `.`
+                                 (period) when matching globs.
+  --glob-symlinks                Follow symbolic links when matching globs.
+  --gitignore                    Ignore files matching glob patterns found in
+                                 .gitignore files.
+  --no-gitignore                 Do NOT use .gitignore files.
+  --gitignore-root <path>        Prevent searching for .gitignore files past
+                                 root.
+  --validate-directives          Validate in-document CSpell directives.
+  --max-file-size <size>         Prevent checking large files. i.e 1MB, 50KB,
+                                 1GB
+  --color                        Force color.
+  --no-color                     Turn off color.
+  --no-default-configuration     Do not load the default configuration and
+                                 dictionaries.
+  --dictionary <name>            Enable a dictionary by name.
+  --disable-dictionary <name>    Disable a dictionary by name.
+  --reporter <module|path>       Specify one or more reporters to use.
+  --report <level>               Set how unknown words are reported (choices:
+                                 "all", "simple", "typos", "flagged")
+  --issue-template [template]    Use a custom issue template. See --help
+                                 --issue-template for details.
+
+More Examples:
+
+    cspell "**/*.js" --reporter @cspell/cspell-json-reporter
+        This will spell check all ".js" files recursively and use
+        "@cspell/cspell-json-reporter".
+
+    cspell . --reporter default
+        This will force the default reporter to be used overriding
+        any reporters defined in the configuration.
+
+    cspell . --reporter ./<path>/reporter.cjs
+        Use a custom reporter. See API for details.
+
+    cspell "*.md" --exclude CHANGELOG.md --files README.md CHANGELOG.md
+        Spell check only check "README.md" but NOT "CHANGELOG.md".
+
+    cspell "/*.md" --no-must-find-files --files $FILES
+        Only spell check the "/*.md" files in $FILES,
+        where $FILES is a shell variable containing the list of files.
+
+    cspell --help --verbose
+        Show all options including hidden options.
+
+References:
+    https://cspell.org
+    https://github.com/streetsidesoftware/cspell
+
 ```
 
 ### Installation on mega-linter Docker image
@@ -145,8 +255,8 @@ Commands:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=cspell
-ARG NPM_CSPELL_VERSION=10.3.6
+ARG NPM_CSPELL_VERSION=10.4.0
 ```
 
 - NPM packages (node.js):
-  - [cspell@10.3.6](https://www.npmjs.com/package/cspell/v/10.3.6)
+  - [cspell@10.4.0](https://www.npmjs.com/package/cspell/v/10.4.0)

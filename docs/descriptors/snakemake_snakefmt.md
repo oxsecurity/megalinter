@@ -25,7 +25,7 @@ description: How to use snakefmt (configure, ignore files, ignore errors, help &
 
 ## snakefmt documentation
 
-- Version in MegaLinter: **2.0.3**
+- Version in MegaLinter: **2.1.0**
 - Visit [Official Web Site](https://github.com/snakemake/snakefmt#readme){target=_blank}
 - See [How to configure snakefmt rules](https://github.com/snakemake/snakefmt#configuration){target=_blank}
   - If custom `.snakefmt.toml` config file isn't found, [.snakefmt.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.snakefmt.toml){target=_blank} will be used
@@ -127,6 +127,20 @@ Options:
                                   [default: 88]
   -s, --sort / -S, --no-sort      Sort directives in rules and modules.
                                   [default: sort]
+  -o, --directive-order NAMES     Comma-separated order of all the directives
+                                  of rules, checkpoints and `use rule` blocks.
+                                  Action directives (run, shell, script, ...)
+                                  are not listed as they always come last. In
+                                  the config file this is an array of strings.
+                                  Use --print-directive-order to see the
+                                  default order.
+  -m, --module-directive-order NAMES
+                                  Comma-separated order of all the directives
+                                  of modules. In the config file this is an
+                                  array of strings.
+  -p, --print-directive-order     Print the directive orders in effect, as
+                                  lines for the config file and as command
+                                  line options, then exit.
   -f, --format-shell / -F, --no-format-shell
                                   Format shell directives using shfmt.
                                   [default: format-shell]
@@ -169,8 +183,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=snakefmt
-ARG PIP_SNAKEFMT_VERSION=2.0.3
+ARG PIP_SNAKEFMT_VERSION=2.1.0
 ```
 
 - PIP packages (Python):
-  - [snakefmt==2.0.3](https://pypi.org/project/snakefmt/2.0.3)
+  - [snakefmt==2.1.0](https://pypi.org/project/snakefmt/2.1.0)

@@ -27,7 +27,7 @@ description: How to use rubocop (configure, ignore files, ignore errors, help & 
 
 ## rubocop documentation
 
-- Version in MegaLinter: **1.91.0**
+- Version in MegaLinter: **1.92.0**
 - Visit [Official Web Site](https://rubocop.org/){target=_blank}
 - See [How to configure rubocop rules](https://docs.rubocop.org/rubocop/configuration.html){target=_blank}
   - If custom `.ruby-lint.yml` config file isn't found, [.ruby-lint.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruby-lint.yml){target=_blank} will be used
@@ -259,6 +259,11 @@ Output Options:
                                      when combined with --display-only-correctable.
         --display-suppressed         Also output offenses suppressed by directive
                                      comments. They do not affect the exit code.
+        --max-offenses-per-cop COUNT Report at most COUNT offenses per cop across the
+                                     whole run, so a single noisy cop cannot bury the
+                                     rest. Offenses beyond the limit are not reported
+                                     and do not count towards the totals, the same way
+                                     the other display filters work.
 
 Autocorrection:
     -a, --autocorrect                Autocorrect offenses (only when it's safe).
@@ -314,6 +319,10 @@ Additional Modes:
         --show-docs-url [COP1,COP2,...]
                                      Display url to documentation for the given
                                      cops, or base url by default.
+        --explain COP1,COP2,...      Explain what the given cops do: their
+                                     description, configuration, whether they
+                                     correct, and the examples from their own
+                                     documentation.
 
 General Options:
         --init                       Generate a .rubocop.yml file in the current directory.
@@ -335,7 +344,7 @@ Profiling Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=rubygems depName=rubocop
-ARG GEM_RUBOCOP_VERSION=1.91.0
+ARG GEM_RUBOCOP_VERSION=1.92.0
 # renovate: datasource=rubygems depName=rubocop-github
 ARG GEM_RUBOCOP_GITHUB_VERSION=0.29.0
 # renovate: datasource=rubygems depName=rubocop-performance
@@ -349,7 +358,7 @@ ARG GEM_RUBOCOP_RSPEC_VERSION=3.10.2
 ```
 
 - GEM packages (Ruby) :
-  - [rubocop:1.91.0](https://rubygems.org/gems/rubocop/versions/1.91.0)
+  - [rubocop:1.92.0](https://rubygems.org/gems/rubocop/versions/1.92.0)
   - [rubocop-github:0.29.0](https://rubygems.org/gems/rubocop-github/versions/0.29.0)
   - [rubocop-performance:1.27.0](https://rubygems.org/gems/rubocop-performance/versions/1.27.0)
   - [rubocop-rails:2.38.0](https://rubygems.org/gems/rubocop-rails/versions/2.38.0)

@@ -114,7 +114,7 @@ sf code-analyzer run --rule-selector apexguru --workspace . --include-suggestion
 ### Help content
 
 ```shell
- ›   Warning: @salesforce/cli update available from 2.153.5 to 2.154.4.
+ ›   Warning: @salesforce/cli update available from 2.155.7 to 2.155.8.
 Analyze your code with a selection of rules to ensure good coding practices.
 
 USAGE
@@ -163,11 +163,11 @@ GLOBAL FLAGS
 ```dockerfile
 # Parent descriptor install
 # renovate: datasource=npm depName=@salesforce/cli
-ARG NPM_SALESFORCE_CLI_VERSION=2.153.5
+ARG NPM_SALESFORCE_CLI_VERSION=2.155.7
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=3.0.13
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=3.0.14
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=8.16.0
+ARG SFDX_HARDIS_VERSION=8.19.0
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 ENV XDG_DATA_HOME=/usr/local/share
