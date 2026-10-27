@@ -33,6 +33,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - To lint each file separately as before, set `CLOJURE_CLJ_KONDO_CLI_LINT_MODE: file`
 
 - Fixes
+  - **`EXTENDS`** now sends `GITHUB_TOKEN` only to `https://raw.githubusercontent.com`, to read configs in private repositories. A URL that merely starts with that text no longer receives it. See [GHSA-rq55-6pj8-6v8v](https://github.com/oxsecurity/megalinter/security/advisories/GHSA-rq55-6pj8-6v8v)
+    - Only extend from URLs hosted on an account or server owned by your organization, see [Configuration](https://megalinter.io/latest/config-variables/)
   - **Custom flavors** including trivy no longer fail to build when the trivy vulnerability database mirror `mirror.gcr.io` is unavailable. Fixes [#9254](https://github.com/oxsecurity/megalinter/issues/9254)
     - The database download now tries `mirror.gcr.io`, `ghcr.io` and `public.ecr.aws` in turn, and waits between retries
     - Choose other mirrors with the new **`TRIVY_DB_REPOSITORY`** variable of the custom flavor builder workflow, see [Custom flavors](https://megalinter.io/latest/custom-flavors/)

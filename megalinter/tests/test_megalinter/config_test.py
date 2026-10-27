@@ -255,6 +255,52 @@ class config_test(unittest.TestCase):
         finally:
             self.restore_branch_in_input_files(changed_files)
 
+    def test_is_github_raw_url(self):
+        for url in [
+            "https://raw.githubusercontent.com/o/r/main/x.yml",
+            "https://RAW.githubusercontent.com/o/r/main/x.yml",
+            "https://raw.githubusercontent.com:443/o/r/main/x.yml",
+        ]:
+            self.assertTrue(config.is_github_raw_url(url), url)
+        for url in [
+            "https://raw.githubusercontent.com.evil.example/x.yml",
+            "https://raw.githubusercontent.com@evil.example/x.yml",
+            "https://user@raw.githubusercontent.com/x.yml",
+            "http://raw.githubusercontent.com/o/r/main/x.yml",
+            "https://evil.example/raw.githubusercontent.com/x.yml",
+        ]:
+            self.assertFalse(config.is_github_raw_url(url), url)
+
+    def test_extends_github_token_sent_only_to_github_raw(self):
+        response = type("Response", (), {"status_code": 200, "content": b"A: b"})()
+        urls = {
+            "https://raw.githubusercontent.com/o/r/main/x.yml": True,
+            "https://raw.githubusercontent.com.evil.example/x.yml": False,
+            "https://raw.githubusercontent.com@evil.example/x.yml": False,
+            "https://evil.example/x.yml": False,
+        }
+        for url, token_expected in urls.items():
+            with patch.dict(os.environ, {"GITHUB_TOKEN": "fake-token"}), patch(
+                "megalinter.config.http_get_with_retry", return_value=response
+            ) as http_get:
+                config.combine_config(None, {"EXTENDS": url}, {}, "")
+                headers = http_get.call_args.kwargs["headers"]
+                if token_expected:
+                    self.assertEqual("token fake-token", headers["Authorization"], url)
+                else:
+                    self.assertNotIn("Authorization", headers, url)
+        with patch.dict(os.environ), patch(
+            "megalinter.config.http_get_with_retry", return_value=response
+        ) as http_get:
+            os.environ.pop("GITHUB_TOKEN", None)
+            config.combine_config(
+                None,
+                {"EXTENDS": "https://raw.githubusercontent.com/o/r/main/x.yml"},
+                {},
+                "",
+            )
+            self.assertNotIn("Authorization", http_get.call_args.kwargs["headers"])
+
     def test_remote_config_extends_success(self):
         changed_files = self.replace_branch_in_input_files()
         remote_config = self.test_folder + "remote_extends/base.mega-linter.yml"

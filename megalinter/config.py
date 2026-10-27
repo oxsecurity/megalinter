@@ -6,6 +6,7 @@ import re
 import shlex
 import tempfile
 import time
+from urllib.parse import urlsplit
 
 import requests
 import yaml
@@ -64,6 +65,19 @@ def http_get_with_retry(url, headers=None, retries=3, timeout=30, backoff_base=2
         return last_response
     raise RuntimeError(
         f"Unable to retrieve {url} after {retries} attempts: {last_error}"
+    )
+
+
+# Only the real raw.githubusercontent.com host may receive GITHUB_TOKEN: a string
+# prefix also matches raw.githubusercontent.com.evil.example and
+# raw.githubusercontent.com@evil.example
+def is_github_raw_url(url):
+    parsed = urlsplit(url)
+    return (
+        parsed.scheme == "https"
+        and parsed.hostname == "raw.githubusercontent.com"
+        and parsed.username is None
+        and parsed.password is None
     )
 
 
@@ -183,10 +197,7 @@ def combine_config(workspace, config, combined_config, config_source):
     for extends_item in extends:
         if extends_item.startswith("http"):
             headers = {}
-            if (
-                extends_item.startswith("https://raw.githubusercontent.com")
-                and "GITHUB_TOKEN" in os.environ
-            ):
+            if is_github_raw_url(extends_item) and "GITHUB_TOKEN" in os.environ:
                 github_token = os.environ["GITHUB_TOKEN"]
                 headers["Authorization"] = f"token {github_token}"
             r = http_get_with_retry(extends_item, headers=headers)
