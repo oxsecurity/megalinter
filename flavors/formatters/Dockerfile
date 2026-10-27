@@ -300,7 +300,7 @@ esac \
 # markdown-table-formatter installation
 # rumdl installation
 # powershell_formatter installation
-    && pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
+    && pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force -ErrorAction Stop'
 # black installation
 # isort installation
 # ruff-format installation
