@@ -4619,8 +4619,11 @@ def build_custom_flavor(dockerfile):
         dockerfile,
         "--secret",
         "id=GITHUB_TOKEN",
-        work_dir,
     ]
+    trivy_db_repository = os.getenv("TRIVY_DB_REPOSITORY", "")
+    if trivy_db_repository != "":
+        command += ["--build-arg", f"TRIVY_DB_REPOSITORY={trivy_db_repository}"]
+    command += [work_dir]
     logging.info("Platforms to build on: " + platform)
     logging.info("Running command: " + " ".join(command))
     process = subprocess.run(
@@ -4631,6 +4634,9 @@ def build_custom_flavor(dockerfile):
     )
     stdout = utils.clean_string(process.stdout)
     logging.info(f"Build custom flavor results: ({process.returncode})\n" + stdout)
+    if process.returncode != 0:
+        logging.error("Custom flavor docker image build failed")
+        sys.exit(process.returncode)
 
 
 if __name__ == "__main__":
