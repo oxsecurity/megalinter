@@ -15608,6 +15608,7 @@
 <li>A failed image build now fails the build step of the action, instead of a later <code>No such object</code> error when pushing the image</li>
 </ul>
 </li>
+<li><strong>A linter stopped by a signal</strong> (negative return code, such as an out-of-memory kill) now fails in <code>file</code> lint mode instead of reporting SUCCESS with 0 errors, and a <code>PRE_COMMANDS</code> / <code>POST_COMMANDS</code> entry with <code>continue_if_failed: false</code> stops the run. Fixes <a href="https://github.com/oxsecurity/megalinter/issues/9257">#9257</a></li>
 <li><strong>GitLab and Git environment variables</strong> such as <code>GIT_STRATEGY</code> no longer trigger a false removed-linter warning. Removed MegaLinter options and linter selections still warn. Fixes <a href="https://github.com/oxsecurity/megalinter/issues/9024">#9024</a></li>
 <li><strong>Pull request runs in private repositories</strong> no longer crash with a git traceback when the checkout does not persist credentials: MegaLinter warns, explains how to enable the git diff mode (<code>persist-credentials: true</code> or <strong><code>GIT_AUTHORIZATION_BEARER</code></strong>) and lints the whole codebase. Fixes <a href="https://github.com/oxsecurity/megalinter/issues/9104">#9104</a></li>
 <li><strong><code>FAIL_IF_UPDATED_SOURCES</code></strong> is now reliable. Fixes <a href="https://github.com/oxsecurity/megalinter/issues/9103">#9103</a><ul>
