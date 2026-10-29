@@ -858,3 +858,42 @@ CVE-2026-63209
 # grype.anchore.io), syft (update check), kubeconform (schema download over HTTPS).
 # Remove once grype, syft, kubeconform and the binaries above ship Go >= 1.26.10 builds.
 CVE-2026-111943
+
+# --- Image-wide advisories, late October 2026 (blocked every Renovate PR's DEV scan) ---
+# - CVE-2026-56857 (Go stdlib os.Root, CRITICAL, fixed in Go 1.26.9 / 1.27.2): Root.Mkdir /
+#   Root.MkdirAll can create a directory outside the root when the last path component is a
+#   Windows junction. Windows-only: junctions do not exist on Linux, and every MegaLinter image
+#   is Linux (amd64/arm64), so the vulnerable code path is never reached. Flagged in golangci-lint, vale, actionlint, betterleaks, editorconfig-checker,
+#   kubeconform, protolint, shfmt (+ snakefmt's copy), grype and syft.
+# - CVE-2026-116587 (go-jose/v4 < 4.1.6): CPU DoS when parsing a JWK holding a crafted RSA key.
+#   Flagged in terraform, terragrunt, tflint, tofu (v4.1.4) and grype, syft, trivy (v4.1.5).
+#   These tools only parse JWKs from OIDC/registry auth they initiate themselves, never from
+#   workspace files; worst case is one CPU-bound CI step. trivy 0.76.1 is the latest release.
+# - CVE-2026-102554 (guava < 33.7.2): uncontrolled allocation during Java *native
+#   deserialization* of CompactHashMap/CompactHashSet/MapMakerInternalMap. Flagged copies
+#   33.4.8, 33.6.0 and 33.7.1 (pmd, salesforce code analyzer, npm-groovy-lint). None of these
+#   CLIs deserializes Java object streams from the workspace or the network; memory DoS only.
+# - CVE-2026-87018 (undici): uncaught assertion when a TLS 1.2 server renegotiates with a
+#   different certificate; a crash of one linter run, and only against a malicious server.
+# - CVE-2026-109829 (undici): shared-cache poisoning, reachable only with an originless Agent
+#   composing compose(redirect(), cache()) with type 'shared'. No bundled tool configures the
+#   undici cache interceptor that way.
+# - CVE-2026-109383 (undici): a custom tls.checkServerIdentity callback passed to Agent is
+#   dropped. Node's default hostname and chain validation still apply; only extra pinning
+#   written by the caller is lost. The Salesforce tools do not set checkServerIdentity.
+#   undici copies: @salesforce/cli 2.155.7 (6.28.0, 7.30.0, 8.11.2), plugin-code-analyzer
+#   5.16.0 (latest, 7.29.0). sfdx-hardis was upgraded to 8.20.1, which pins undici 8.12.2.
+# - CVE-2026-114613 (msgpack < 1.2.3): memory leak in the _cmsgpack *C extension*. The 1.1.2
+#   copy is pip's vendored SBOM entry (see "Python deps vendored by pip" above): pip ships only
+#   msgpack's pure-Python fallback, which the advisory states is not affected.
+# Remove once the Go tools ship builds with go-jose >= 4.1.6, guava >= 33.7.2 reaches pmd /
+# code analyzer / npm-groovy-lint, @salesforce/cli + plugin-code-analyzer ship undici
+# >= 6.29.1 / 7.30.1 / 8.12.2, and pip revendors msgpack >= 1.2.3. CVE-2026-56857 can stay
+# until the Go binaries are rebuilt with Go >= 1.26.9 (not exploitable on Linux regardless).
+CVE-2026-56857
+CVE-2026-116587
+CVE-2026-102554
+CVE-2026-87018
+CVE-2026-109829
+CVE-2026-109383
+CVE-2026-114613
