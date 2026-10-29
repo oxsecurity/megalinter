@@ -86,7 +86,7 @@
     "which": "^4.0.0",
     "yeoman-environment": "^6.0.0",
     "yeoman-generator": "^9.0.0",
-    "yosay": "^2.0.2"
+    "yosay": "^3.0.0"
   },
   "devDependencies": {
     "assert": "^2.0.0",
