@@ -85,7 +85,7 @@
     "optionator": "^0.9.1",
     "which": "^7.0.0",
     "yeoman-environment": "^8.0.0",
-    "yeoman-generator": "^9.0.0",
+    "yeoman-generator": "^10.0.0",
     "yosay": "^3.0.0"
   },
   "devDependencies": {
