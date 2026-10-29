@@ -1516,9 +1516,12 @@ class Linter:
         # Convert SARIF into human readable text for Console & Text reporters
         if sarif_confirmed is True and self.master.sarif_to_human is True:
             with open(self.sarif_output_file, "r", encoding="utf-8") as file:
-                self.stdout_human = utils_reporter.convert_sarif_to_human(
-                    file.read(), self.request_id
+                sarif_text = utils_sarif.remove_suppressed_results_from_text(
+                    file.read()
                 )
+            self.stdout_human = utils_reporter.convert_sarif_to_human(
+                sarif_text, self.request_id
+            )
 
     # Returns linter version (can be overridden in special cases, like version has special format)
     def get_linter_version(self):
@@ -2394,7 +2397,9 @@ class Linter:
             if sarif and sarif["runs"]:
                 for run in sarif["runs"]:
                     for result in run["results"]:
-                        if result["level"] == level:
+                        if result["level"] == level and not utils_sarif.is_suppressed(
+                            result
+                        ):
                             total_result += 1
             else:
                 logging.warning("Unable to find results in:" + stdout)
@@ -2437,6 +2442,8 @@ class Linter:
                             ]["level"]
 
                 for result in run["results"]:
+                    if utils_sarif.is_suppressed(result):
+                        continue
                     count_results = False
 
                     if "level" in result:

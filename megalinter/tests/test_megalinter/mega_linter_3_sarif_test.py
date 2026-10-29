@@ -237,6 +237,51 @@ class mega_linter_3_sarif_test(unittest.TestCase):
         self.assertEqual(fixed_sarif["runs"][0]["results"][0]["fixes"], [valid_fix])
         self.assertNotIn("fixes", fixed_sarif["runs"][0]["results"][1])
 
+    def test_sarif_is_suppressed(self):
+        cases = [
+            ({}, False),
+            ({"suppressions": []}, False),
+            ({"suppressions": [{"kind": "inSource"}]}, True),
+            ({"suppressions": [{"kind": "external", "status": "accepted"}]}, True),
+            ({"suppressions": [{"kind": "external", "status": "underReview"}]}, False),
+            ({"suppressions": [{"kind": "external", "status": "rejected"}]}, False),
+            (
+                {
+                    "suppressions": [
+                        {"kind": "inSource"},
+                        {"kind": "external", "status": "rejected"},
+                    ]
+                },
+                False,
+            ),
+        ]
+        for result, expected in cases:
+            with self.subTest(result=result):
+                self.assertEqual(expected, utils_sarif.is_suppressed(result))
+
+    def test_sarif_remove_suppressed_results_from_text(self):
+        sarif_file = (
+            root
+            + f"{os.path.sep}.automation{os.path.sep}test{os.path.sep}sarif_reports"
+            + f"{os.path.sep}REPOSITORY_SEMGREP.sarif"
+        )
+        with open(sarif_file, "r", encoding="utf-8") as f:
+            sarif_text = f.read()
+
+        filtered = json.loads(
+            utils_sarif.remove_suppressed_results_from_text(sarif_text)
+        )
+
+        results = filtered["runs"][0]["results"]
+        self.assertEqual(1, len(results))
+        self.assertNotIn("suppressions", results[0])
+        # The SARIF report itself keeps the suppressed result
+        self.assertEqual(2, len(json.loads(sarif_text)["runs"][0]["results"]))
+        self.assertEqual(
+            "not a sarif",
+            utils_sarif.remove_suppressed_results_from_text("not a sarif"),
+        )
+
     # Keep only the endpoints that are currently up and accept the same kind of body
     # than ApiReporter, so a remote outage does not make the test fail.
     # Stops as soon as enough endpoints have been collected
