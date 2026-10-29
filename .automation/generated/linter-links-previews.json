@@ -204,6 +204,11 @@
     "image": null,
     "title": "Introduction | eslint-plugin-jsonc"
   },
+  "evergreen": {
+    "description": "Local-first deprecation intelligence for software repositories. - arminazimi/evergreen",
+    "image": "https://repository-images.githubusercontent.com/1417728413/6fba7d93-ca6a-4db2-957f-505a930be43b",
+    "title": "GitHub - arminazimi/evergreen: Local-first deprecation intelligence for software repositories."
+  },
   "flake8": {
     "description": "To install Flake8, open an interactive shell and run:",
     "image": null,

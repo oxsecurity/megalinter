@@ -104,6 +104,8 @@ ARG NPM_PRANTLF_JSONLINT_VERSION=17.0.1
 ARG NPM_V8R_VERSION=6.1.0
 # renovate: datasource=npm depName=prettier
 ARG NPM_PRETTIER_VERSION=3.9.10
+# renovate: datasource=npm depName=evergreen-deprecation
+ARG NPM_EVERGREEN_DEPRECATION_VERSION=0.7.1
 # renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.121.0
 # renovate: datasource=github-releases depName=loeffel-io/ls-lint extractVersion=^v(?<version>.+)$
@@ -254,6 +256,7 @@ RUN npm config set prefix /usr/local \
                 @prantlf/jsonlint@${NPM_PRANTLF_JSONLINT_VERSION} \
                 v8r@${NPM_V8R_VERSION} \
                 prettier@${NPM_PRETTIER_VERSION} \
+                evergreen-deprecation@${NPM_EVERGREEN_DEPRECATION_VERSION} \
                 secretlint@${NPM_SECRETLINT_VERSION} \
                 @secretlint/secretlint-rule-preset-recommend@${NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION} \
                 @secretlint/secretlint-formatter-sarif@${NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION} && \
@@ -302,6 +305,7 @@ ENV PATH="$JAVA_HOME/bin:${PATH}"
 # jsonlint installation
 # v8r installation
 # prettier installation
+# evergreen installation
 # betterleaks installation
 # Managed with COPY --link --from=betterleaks /usr/bin/betterleaks /usr/bin/
 # grype installation

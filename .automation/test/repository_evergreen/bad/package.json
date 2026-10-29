@@ -1,0 +1,10 @@
+{
+  "name": "megalinter-evergreen-bad",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Intentionally deprecated dependencies so REPOSITORY_EVERGREEN reports findings. Kept static (protect from Dependabot) so versions are never silently upgraded.",
+  "dependencies": {
+    "request": "^2.88.0",
+    "request-promise": "^4.2.6"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "megalinter-evergreen-good",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=24.0.0"
+  }
+}

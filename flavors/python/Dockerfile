@@ -192,6 +192,8 @@ ARG NPM_PYRIGHT_VERSION=1.1.414
 ARG PIP_RUFF_VERSION=0.17.1
 # renovate: datasource=pypi depName=checkov
 ARG PIP_CHECKOV_VERSION=3.3.30
+# renovate: datasource=npm depName=evergreen-deprecation
+ARG NPM_EVERGREEN_DEPRECATION_VERSION=0.7.1
 # renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.121.0
 # renovate: datasource=github-releases depName=loeffel-io/ls-lint extractVersion=^v(?<version>.+)$
@@ -489,6 +491,7 @@ RUN npm config set prefix /usr/local \
                 markdownlint-cli@${NPM_MARKDOWNLINT_CLI_VERSION} \
                 markdown-table-formatter@${NPM_MARKDOWN_TABLE_FORMATTER_VERSION} \
                 pyright@${NPM_PYRIGHT_VERSION} \
+                evergreen-deprecation@${NPM_EVERGREEN_DEPRECATION_VERSION} \
                 secretlint@${NPM_SECRETLINT_VERSION} \
                 @secretlint/secretlint-rule-preset-recommend@${NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION} \
                 @secretlint/secretlint-formatter-sarif@${NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION} \
@@ -612,6 +615,7 @@ ENV MYPY_CACHE_DIR=/tmp
 # ruff installation
 # ruff-format installation
 # checkov installation
+# evergreen installation
 # betterleaks installation
 # Managed with COPY --link --from=betterleaks /usr/bin/betterleaks /usr/bin/
 # grype installation

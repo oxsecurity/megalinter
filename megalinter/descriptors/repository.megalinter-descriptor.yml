@@ -245,6 +245,69 @@ linters:
       platform:
         - linux/amd64
         - linux/arm64
+  # EVERGREEN
+  - linter_name: evergreen
+    can_output_sarif: true
+    descriptor_flavors:
+      - all_flavors # Applicable to CI in any language project
+      - ci_light
+      - cupcake
+    linter_speed: 4
+    linter_text: |
+      **Evergreen** finds evidence-backed lifecycle risks in a repository: deprecated packages, end-of-life runtimes, and retired APIs. Scans are local-first and offline (bundled registry data only; no network calls during the scan), and every finding names its detector, rule, evidence source, and exact location.
+
+      **Key Features:**
+
+      - **Multi-ecosystem coverage**: Detects lifecycle risks across npm, Node.js, Python, Go, Ruby, Java, GitHub Actions, containers, Terraform, and more
+      - **Exact locations**: Points at the manifest line or source usage that triggered the finding
+      - **Authoritative evidence**: Lifecycle claims cite versioned sources (release schedules, deprecation notices) rather than popularity or "a newer version exists"
+      - **SARIF output**: Emits SARIF 2.1.0 for GitHub code scanning and MegaLinter's SARIF reporter
+      - **Migration context**: Findings include replacement guidance, deadlines, and verification commands when available
+      - **Offline and deterministic**: No network access during scans; bundled data only
+
+      Optional repository config: place a `.evergreen.json` at the workspace root (auto-discovered). See the [CLI playbook](https://github.com/arminazimi/evergreen/blob/main/docs/playbooks/cli.md).
+
+      Default MegaLinter invocation uses `--fail-on info` so any finding fails the linter. Override with `REPOSITORY_EVERGREEN_ARGUMENTS` (for example `["--fail-on", "high"]`) or disable errors via `DISABLE_ERRORS_LINTERS`.
+
+      MegaLinter `EXCLUDED_DIRECTORIES` are not forwarded: Evergreen already skips `node_modules`, vendor/build trees, and hidden directories while discovering projects. To drop findings by path, pass `--ignore` via `REPOSITORY_EVERGREEN_ARGUMENTS` or configure ignore patterns in `.evergreen.json`.
+    linter_url: https://github.com/arminazimi/evergreen
+    linter_repo: https://github.com/arminazimi/evergreen
+    linter_spdx_license: Apache-2.0
+    linter_rules_url: https://github.com/arminazimi/evergreen/tree/main/docs/rules
+    linter_rules_configuration_url: https://github.com/arminazimi/evergreen/blob/main/docs/playbooks/cli.md
+    linter_rules_ignore_config_url: https://github.com/arminazimi/evergreen/blob/main/docs/playbooks/cli.md
+    cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
+    cli_lint_extra_args:
+      - scan
+      - --fail-on
+      - info
+    cli_lint_mode_project_extra_args_after:
+      - "{{WORKSPACE}}"
+    cli_sarif_args:
+      - --format
+      - sarif
+    cli_help_arg_name: --help
+    cli_version_arg_name: --version
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "Findings: ([0-9]+)"
+    test_folder: repository_evergreen
+    examples:
+      - "evergreen scan ."
+      - "evergreen scan . --fail-on high"
+      - "evergreen scan . --format sarif --fail-on info"
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=evergreen-deprecation
+          ARG NPM_EVERGREEN_DEPRECATION_VERSION=0.7.1
+      npm:
+        - evergreen-deprecation@${NPM_EVERGREEN_DEPRECATION_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
   # GIT_DIFF
   - linter_name: git_diff
     lint_all_files: true

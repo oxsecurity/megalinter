@@ -14,6 +14,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Outside CI, **`PARALLEL_PROCESS_NUMBER`** now defaults to the number of cores minus one, so your machine stays responsive while MegaLinter runs. CI runs still use every core, and setting the variable still overrides the default
 
 - New linters
+  - Add [Evergreen](https://github.com/arminazimi/evergreen) linter for repositories — finds deprecated packages, end-of-life runtimes, and retired APIs with SARIF output
 
 - Disabled linters
 
