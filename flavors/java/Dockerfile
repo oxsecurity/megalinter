@@ -128,8 +128,8 @@ ARG TARGETARCH
 ARG PIP_ANSIBLE_LINT_VERSION=26.10.1
 # renovate: datasource=npm depName=@stoplight/spectral-cli
 ARG NPM_SPECTRAL_CLI_VERSION=6.17.0
-# renovate: datasource=github-tags depName=clj-kondo/clj-kondo
-ARG CLJ_KONDO_VERSION=v2026.10.20
+# renovate: datasource=github-tags depName=clj-kondo/clj-kondo extractVersion=^v(?<version>.+)$
+ARG CLJ_KONDO_VERSION=2026.10.20
 
 # renovate: datasource=github-tags depName=greglook/cljstyle
 ARG CLJ_STYLE_VERSION=0.17.642
