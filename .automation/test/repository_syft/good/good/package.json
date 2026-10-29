@@ -83,7 +83,7 @@
     "fs-extra": "^11.0.0",
     "glob-promise": "^4.2.2",
     "optionator": "^0.9.1",
-    "which": "^4.0.0",
+    "which": "^7.0.0",
     "yeoman-environment": "^8.0.0",
     "yeoman-generator": "^9.0.0",
     "yosay": "^3.0.0"
