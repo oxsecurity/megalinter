@@ -897,3 +897,14 @@ CVE-2026-87018
 CVE-2026-109829
 CVE-2026-109383
 CVE-2026-114613
+
+# --- npm marked 2.1.3 (Salesforce CLI -> @salesforce/plugin-info -> marked-terminal) ---
+# CVE-2022-21680 / CVE-2022-21681: ReDoS in marked's block.def and inline.reflinkSearch
+# regexes on crafted Markdown. @salesforce/cli >= 2.156 ships @salesforce/plugin-info 4.0.18,
+# whose marked-terminal 4.2.0 peer-depends on marked ^1 || ^2, so npm now installs marked
+# 2.1.3 for it (older CLIs resolved an out-of-range 4.3.0). marked-terminal only renders
+# Salesforce's own release notes for `sf info releasenotes display`, which no MegaLinter
+# linter calls; workspace Markdown never reaches it. Worst case is a CPU-bound CI step.
+# Remove once @salesforce/plugin-info drops marked-terminal 4.x or moves to marked >= 4.0.10.
+CVE-2022-21680
+CVE-2022-21681
