@@ -179,7 +179,7 @@ ARG GO_ALPINE_VERSION=1.26.10-r0
 ARG POWERSHELL_VERSION=7.6.7
 
 # renovate: datasource=npm depName=@salesforce/cli
-ARG NPM_SALESFORCE_CLI_VERSION=2.155.7
+ARG NPM_SALESFORCE_CLI_VERSION=2.156.7
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=3.0.14
 # renovate: datasource=npm depName=sfdx-hardis
