@@ -28,7 +28,7 @@ description: How to use biome (configure, ignore files, ignore errors, help & ve
 
 ## biome documentation
 
-- Version in MegaLinter: **2.5.15**
+- Version in MegaLinter: **2.6.2**
 - Visit [Official Web Site](https://biomejs.dev){target=_blank}
 - See [How to configure biome rules](https://biomejs.dev/reference/configuration/){target=_blank}
 - See [How to disable biome rules in files](https://biomejs.dev/analyzer/suppressions/){target=_blank}
@@ -141,6 +141,7 @@ Available commands:
     ci             Runs formatting checks, linting checks, and assist actions in CI without
                    modifying files.
     init           Creates a default Biome configuration file in the current working directory.
+    inspect        Inspects Biome state without modifying files.
     lsp-proxy      Ensures that the Biome daemon server is running, then forwards Language Server
                    Protocol messages between the daemon server and standard input and output.
     migrate        Previews configuration updates required by breaking changes. The `prettier` and
@@ -162,9 +163,9 @@ Available commands:
 ARG NPM_TYPESCRIPT_VERSION=6.0.3
 # Linter install
 # renovate: datasource=npm depName=@biomejs/biome
-ARG NPM_BIOMEJS_BIOME_VERSION=2.5.15
+ARG NPM_BIOMEJS_BIOME_VERSION=2.6.2
 ```
 
 - NPM packages (node.js):
   - [typescript@6.0.3](https://www.npmjs.com/package/typescript/v/6.0.3)
-  - [@biomejs/biome@2.5.15](https://www.npmjs.com/package/@biomejs/biome/v/2.5.15)
+  - [@biomejs/biome@2.6.2](https://www.npmjs.com/package/@biomejs/biome/v/2.6.2)
