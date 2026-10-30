@@ -12192,6 +12192,7 @@
 <h1 id="sarif-reporter-beta">SARIF Reporter (beta)</h1>
 <p>Generates a full execution log in SARIF format within a file named <strong>mega-linter-report.sarif</strong> , located in report folder.</p>
 <p>Note: Only linters able to handle SARIF will provide output in the aggregated SARIF file.</p>
+<p>Results that a linter marks as suppressed in its SARIF output (for example a finding silenced with <code># nosemgrep</code>) are not counted as errors or warnings, and are not listed in the console and text reports. They are kept in the SARIF files, so tools reading them still see the suppression.</p>
 <p>This reporter <strong>is deactivated by default</strong>.</p>
 <p><a class="glightbox" data-type="image" href="../../assets/images/SarifReporter_1.jpg"><img alt="Screenshot" src="../../assets/images/SarifReporter_1.jpg" /></a></p>
 <p><a class="glightbox" data-type="image" href="../../assets/images/SarifReporter_2.jpg"><img alt="Screenshot" src="../../assets/images/SarifReporter_2.jpg" /></a></p>
