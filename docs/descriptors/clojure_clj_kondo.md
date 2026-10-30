@@ -32,7 +32,7 @@ description: How to use clj-kondo (configure, ignore files, ignore errors, help 
 
 ## clj-kondo documentation
 
-- Version in MegaLinter: **2026.08.04**
+- Version in MegaLinter: **2026.10.20**
 - Visit [Official Web Site](https://github.com/clj-kondo/clj-kondo#readme){target=_blank}
 - See [How to configure clj-kondo rules](https://github.com/clj-kondo/clj-kondo/blob/master/doc/config.md#configuration){target=_blank}
   - If custom `.clj-kondo/config.edn` config file isn't found, [.clj-kondo/config.edn](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.clj-kondo/config.edn){target=_blank} will be used
@@ -124,7 +124,7 @@ clj-kondo --config .clj-kondo/config.edn --lint myfile.clj
 ### Help content
 
 ```shell
-clj-kondo v2026.08.04
+clj-kondo v2026.10.20
 
 Options:
 
@@ -176,8 +176,8 @@ Options:
 
 - Dockerfile commands :
 ```dockerfile
-# renovate: datasource=github-tags depName=clj-kondo/clj-kondo
-ARG CLJ_KONDO_VERSION=2026.08.04
+# renovate: datasource=github-tags depName=clj-kondo/clj-kondo extractVersion=^v(?<version>.+)$
+ARG CLJ_KONDO_VERSION=2026.10.20
 
 RUN curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/clj-kondo/clj-kondo/refs/tags/v${CLJ_KONDO_VERSION}/script/install-clj-kondo \
     && chmod +x install-clj-kondo \

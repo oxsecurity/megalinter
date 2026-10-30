@@ -45,7 +45,7 @@ Example:
 
 ## jscpd documentation
 
-- Version in MegaLinter: **5.4.1**
+- Version in MegaLinter: **5.4.2**
 - Visit [Official Web Site](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#readme){target=_blank}
 - See [How to configure jscpd rules](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#config-file){target=_blank}
   - If custom `.jscpd.json` config file isn't found, [.jscpd.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.jscpd.json){target=_blank} will be used
@@ -146,7 +146,7 @@ Options:
       --max-gap-lines <N>
           Merge clones of the same file pair that are separated by at most N unmatched lines in both files into one near-miss clone (Type-3, reported as "similar"); 0 disables
       --similarity[=<RATIO>]
-          Report pairs of functions and methods with a similar structure as near-miss clones (Type-3, "similar"): each one's syntax tree is normalized, the names of the functions and methods it calls and its operators stay while local names, field names and literals become markers, and two functions score the share of subtrees their trees have in common. RATIO is the lowest score reported, a number in (0, 1]; without it the config's similarity, else 0.8. JavaScript, TypeScript, Python, Java, Kotlin, Scala, C#, Go, Rust, C, C++, PHP, Ruby, Swift and Clojure, also in Markdown code blocks and Vue, Svelte and Astro scripts; test files are left out
+          Report pairs of functions and methods with a similar structure as near-miss clones (Type-3, "similar"): each one's syntax tree is normalized, the names of the functions and methods it calls and its operators stay while local names, field names and literals become markers, each name standing for one name on the other side, and two functions score the share of subtrees their trees have in common. RATIO is the lowest score reported, a number in (0, 1]; without it the config's similarity, else 0.8. JavaScript, TypeScript, Python, Java, Kotlin, Scala, C#, Go, Rust, C, C++, PHP, Ruby, Swift and Clojure, also in Markdown code blocks and Vue, Svelte and Astro scripts; test files are left out
       --min-nodes <N>
           The fewest nodes a function's normalized syntax tree needs for --similarity to compare it, 20 by default: smaller functions match too easily
       --semantic
@@ -225,8 +225,8 @@ Options:
           Use absolute paths in reports
       --ignore-case
           Ignore case of symbols in code (experimental)
-      --ignore-identifiers
-          Treat all identifiers as equal, so clones that differ only in variable, function or type names are found (Type-2 clones)
+      --ignore-identifiers[=<MATCHING>]
+          Treat identifiers as equal, so clones that differ only in variable, function or type names are found (Type-2 clones). Alone or as =consistent, two fragments match only where every name stands for one name on the other side, so `d = a + b` matches `s = p + q` but not `x = x + x`; =blind lets any name match any other, in --similarity too, as jscpd 5.4 did, besides renaming the identifiers of token clones. Without a value, the config's ignoreIdentifiers decides between the two, else consistent [possible values: blind, consistent]
       --ignore-literals
           Treat all string and numeric literals as equal, so clones that differ only in literal values are found
       --ignore-annotations
@@ -234,7 +234,7 @@ Options:
       --formats-exts <FORMATS_EXTS>
           Custom format-to-extension mappings (e.g. javascript:es,es6;dart:dt)
       --formats-names <FORMATS_NAMES>
-          Custom format-to-filename mappings (e.g. makefile:Makefile,GNUmakefile;docker:Dockerfile)
+          Custom format-to-filename mappings (e.g. python:Tiltfile,BUCK;ruby:Buildfile)
       --cross-formats <CROSS_FORMATS>
           Detect clones across formats: semicolon-separated groups of comma-separated formats (e.g. "javascript,typescript;css,scss"). Preset: js-ts = javascript,jsx,typescript,tsx. TypeScript files in a group that also contains JavaScript are compared with type annotations stripped
   -p, --pattern <PATTERN>
@@ -257,14 +257,14 @@ Options:
           Number of entries in each summary top list (default: 10)
       --summary-by <METRIC>
           Summary sort metric: tokens, lines, size, complexity (default: tokens)
-      --history <RANGE>
-          Duplication trend over git history: scan every commit in RANGE (e.g. v5.0.0..HEAD) with this configuration and print a chart and a table
+      --history [<RANGE>]
+          Duplication and health trend over git history: scan the commits of RANGE (e.g. v5.0.0..HEAD), following first parents, with this configuration and print charts and a table. Without RANGE, the config's history or the newest --history-limit commits (30) of the current branch. A value after the flag is the range, so write the paths before it or the range as --history=RANGE
       --history-since <DATE>
           Like --history, selecting commits since DATE (e.g. 2026-01-01); combines with --history to bound the range
       --history-every <N>
           Keep every Nth commit of the history series, counted from the newest (default: 1)
       --history-limit <N>
-          Maximum number of commits in the history series, sampled evenly (default: 30)
+          Maximum number of commits in the history series: a range is sampled evenly, a bare --history takes the newest (default: 30)
       --dead-code
           Find dead code instead of duplicates: unused files, exports, symbols and imports across JavaScript, TypeScript and Python
       --compare
@@ -306,8 +306,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=5.4.1
+ARG NPM_JSCPD_VERSION=5.4.2
 ```
 
 - NPM packages (node.js):
-  - [jscpd@5.4.1](https://www.npmjs.com/package/jscpd/v/5.4.1)
+  - [jscpd@5.4.2](https://www.npmjs.com/package/jscpd/v/5.4.2)
