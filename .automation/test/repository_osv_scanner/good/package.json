@@ -78,6 +78,6 @@
   "author": "Nicolas Vuillamy",
   "license": "MIT",
   "dependencies": {
-    "chalk": "^5.3.0"
+    "chalk": "^6.0.0"
   }
 }
