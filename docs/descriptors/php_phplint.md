@@ -22,7 +22,7 @@ description: How to use phplint (configure, ignore files, ignore errors, help & 
 
 ## phplint documentation
 
-- Version in MegaLinter: **9.7.3**
+- Version in MegaLinter: **9.8.0**
 - Visit [Official Web Site](https://github.com/overtrue/phplint#readme){target=_blank}
 - See [How to configure phplint rules](https://github.com/overtrue/phplint/blob/main/docs/configuration.md#configuration){target=_blank}
   - If custom `.phplint.yml` config file isn't found, [.phplint.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.phplint.yml){target=_blank} will be used
@@ -108,33 +108,30 @@ Usage:
   lint [options] [--] [<path>...]
 
 Arguments:
-  path                               Path to file or directory to lint (default: working directory)
+  path                                   Path to file or directory to lint (default: working directory)
 
 Options:
-      --exclude=EXCLUDE              Path to file or directory to exclude from linting (multiple values allowed)
-      --extensions=EXTENSIONS        Check only files with selected extensions (multiple values allowed)
-  -j, --jobs=JOBS                    Number of paralleled jobs to run
-  -c, --configuration=CONFIGURATION  Read configuration from config file [default: ".phplint.yml"]
-      --no-configuration             Ignore default configuration file (.phplint.yml)
-      --cache=CACHE                  Path to the cache directory (Deprecated option, use "cache-dir" instead)
-      --cache-dir=CACHE-DIR          Path to the cache directory
-      --cache-ttl=CACHE-TTL          Limit cached data for a period of time (>0: time to live in seconds) [default: 3600]
-      --no-cache                     Ignore cached data
-  -p, --progress=PROGRESS            Show the progress output
-      --no-progress                  Hide the progress output
-  -o, --output=OUTPUT                Generate an output to the specified path (default: standard output)
-      --format=FORMAT                Format of requested reports (multiple values allowed)
-  -w, --warning                      Also show warnings
-      --memory-limit=MEMORY-LIMIT    Memory limit for analysis
-      --ignore-exit-code             Ignore exit codes so there are no "failure" exit code even when no files processed
-      --bootstrap=BOOTSTRAP          A PHP script that is included before the linter run
-  -h, --help                         Display help for the given command. When no command is given display help for the lint command
-      --silent                       Do not output any message
-  -q, --quiet                        Only errors are displayed. All other output is suppressed
-  -V, --version                      Display this application version
-      --ansi|--no-ansi               Force (or disable --no-ansi) ANSI output
-  -n, --no-interaction               Do not ask any interactive question
-  -v|vv|vvv, --verbose               Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
+      --exclude=EXCLUDE                  Path to file or directory to exclude from linting (multiple values allowed)
+      --file-extensions=FILE-EXTENSIONS  Check only files with selected extensions (multiple values allowed)
+  -j, --jobs=JOBS                        Number of paralleled jobs to run
+  -w, --warning                          Also show warnings
+      --memory-limit=MEMORY-LIMIT        Memory limit for analysis
+      --ignore-exit-code                 Ignore exit codes so there are no "failure" exit code even when no files processed
+      --dry-run                          Only shows which files would have been analysed
+      --output-format=OUTPUT-FORMAT       (multiple values allowed)
+      --output-file=OUTPUT-FILE
+  -h, --help                             Display help for the given command. When no command is given display help for the list command
+      --silent                           Do not output any message
+  -q, --quiet                            Only errors are displayed. All other output is suppressed
+  -V, --version                          Display this application version
+      --ansi|--no-ansi                   Force (or disable --no-ansi) ANSI output
+  -n, --no-interaction                   Do not ask any interactive question
+  -e, --env=ENV                          The Environment name [default: "dev"]
+  -b, --bootstrap=BOOTSTRAP              PHP script that is included before the application run [default: ""]
+  -x, --extensions=EXTENSIONS            Allows to change/extend features easily with one or more extensions [default: ["cache_manager","diagnose_manager","output_manager","profile_manager","progress_manager"]] (multiple values allowed)
+  -c, --configuration=CONFIGURATION      Path to configuration file [default: "auto"]
+      --no-configuration                 Ignore default configuration file (Deprecated option, use "--configuration never" instead)
+  -v|vv|vvv, --verbose                   Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
 ```
 
 ### Installation on mega-linter Docker image
@@ -148,10 +145,12 @@ ENV COMPOSER_HOME=/usr/local/composer
 ENV PATH="/usr/local/composer/vendor/bin:${PATH}"
 # Linter install
 # renovate: datasource=packagist depName=overtrue/phplint
-ARG PHP_OVERTRUE_PHPLINT_VERSION=9.7.3
+ARG PHP_OVERTRUE_PHPLINT_VERSION=9.8.0
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
 ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.8.1
 RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require overtrue/phplint:${PHP_OVERTRUE_PHPLINT_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION}
 
+# phplint 9.8+ needs an explicit mode, legacy keeps the 9.7 CLI behavior
+ENV PLINT_MODE=legacy
 ```
 

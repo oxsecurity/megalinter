@@ -1,6 +1,6 @@
 aiofiles==25.1.0
 gitpython==3.2.1
-fastapi==0.159.1
+fastapi==0.162.0
 h11==0.16.0
 python-multipart==0.0.32
 pygments==2.21.0

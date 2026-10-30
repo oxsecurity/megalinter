@@ -12,7 +12,7 @@ import unittest
 import uuid
 from unittest import mock
 
-from megalinter import config, utils
+from megalinter import config, utils, utilstest
 from megalinter.Linter import MAX_PROJECT_EXCLUDE_ARG_BYTES, Linter
 from megalinter.linters.JsCpdLinter import JsCpdLinter
 from megalinter.linters.StyleLintLinter import StyleLintLinter
@@ -632,6 +632,51 @@ runs:
             result = linter.get_sarif_result_count(sarif, "error")
 
         self.assertEqual(0, result)
+
+    def test_sarif_suppressed_results_are_not_counted(self):
+        # A result silenced in source (ex: # nosemgrep) is not a warning (#9373)
+        linter = Linter.__new__(Linter)
+        linter.sarif_output_file = os.path.join(
+            utilstest.get_root_dir(),
+            ".automation",
+            "test",
+            "sarif_reports",
+            "REPOSITORY_SEMGREP.sarif",
+        )
+        linter.sarif_default_output_file = None
+
+        self.assertEqual(1, linter.get_sarif_result_count("", "warning"))
+        self.assertEqual(0, linter.get_sarif_result_count("", "error"))
+
+    def test_sarif_count_mode_skips_suppressed_results(self):
+        # cli_lint_errors_count: sarif (devskim) parses the SARIF from stdout
+        linter = Linter.__new__(Linter)
+        linter.output_sarif = False
+        linter.cli_lint_errors_count = "sarif"
+        stdout = json.dumps(
+            {
+                "runs": [
+                    {
+                        "results": [
+                            {"level": "error"},
+                            {"level": "error", "suppressions": [{"kind": "inSource"}]},
+                            {
+                                "level": "error",
+                                "suppressions": [
+                                    {"kind": "external", "status": "underReview"}
+                                ],
+                            },
+                        ]
+                    }
+                ]
+            }
+        )
+
+        result = linter.get_result_count(
+            stdout, "error", "cli_lint_errors_count", "cli_lint_errors_regex"
+        )
+
+        self.assertEqual(2, result)
 
     def test_gitignored_directories_are_forwarded_by_path(self):
         # With IGNORE_GITIGNORED_FILES, the folders git ignores (ex: vendor/)

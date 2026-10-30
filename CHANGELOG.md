@@ -33,6 +33,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - To lint each file separately as before, set `CLOJURE_CLJ_KONDO_CLI_LINT_MODE: file`
 
 - Fixes
+  - With **`SARIF_REPORTER: true`**, findings the linter marks as **suppressed** in its SARIF output (for example `# nosemgrep`) no longer count as errors or warnings, and no longer appear in the console log, text reports and PR/MR comments. The SARIF reports still contain them. Fixes [#9373](https://github.com/oxsecurity/megalinter/issues/9373)
   - Improved security: **R_LINTR**, **POWERSHELL_POWERSHELL**, **POWERSHELL_POWERSHELL_FORMATTER** and **ARM_ARM_TTK** now handle **file names containing quotes or special characters** safely
     - Files whose name contains control characters (such as a line break) are now skipped by these linters, with a warning in the log
   - **`EXTENDS`** now sends `GITHUB_TOKEN` only to `https://raw.githubusercontent.com`, to read configs in private repositories. A URL that merely starts with that text no longer receives it. See [GHSA-rq55-6pj8-6v8v](https://github.com/oxsecurity/megalinter/security/advisories/GHSA-rq55-6pj8-6v8v)
@@ -116,6 +117,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **Dependabot** no longer opens version or security update PRs for the pip, uv, bundler, gomod and cargo test fixtures under `.automation/test/`: they must stay outdated, in particular the `.wireit` poison fixtures guarding the excluded directories forwarding
   - New **`close-frozen-fixture-prs.yml`** workflow: Dependabot security updates ignore the `dependabot.yml` ignore rules, so it closes the Dependabot PRs that only bump frozen fixtures (`bad/` and `.wireit/` folders under `.automation/test/`), and flags the PRs mixing them with other updates
   - **Renovate** now keeps the test fixtures under `.automation/test/` up to date (good/, fix/... folders) in one weekly grouped PR, and only skips the frozen `bad/` and `.wireit/` fixtures
+  - **One Python version** everywhere: `.python-version` is the single reference
+    - Every `python` base image (main, flavors, linters, server, quick and custom-flavor Dockerfiles) is pinned to the same patch instead of a floating `3.14` tag
+    - CI workflows read it through `python-version-file`, and the local `make bootstrap` fallback launcher follows it
+    - Renovate bumps `.python-version` and every base image in one `Python` PR, patches apart from minor upgrades
+    - The image build sets `UV_PYTHON_DOWNLOADS=never`, so a mismatch fails the build instead of silently bundling another Python
   - **Renovate** keeps `typescript` on v6: TypeScript 7 drops the JavaScript compiler API that typescript-eslint needs ([#8404](https://github.com/oxsecurity/megalinter/pull/8404))
   - **ApexGuru rate limits** no longer fail CI test jobs: when Salesforce's ApexGuru service answers `429 Too Many Requests`, the `SALESFORCE_CODE_ANALYZER_APEXGURU` success, failure and SARIF tests are skipped instead of failed
     - Only in CI (`utils.is_ci()`): local test runs still fail, so a real regression stays visible
@@ -284,6 +290,24 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [tflint](https://github.com/terraform-linters/tflint) from 0.64.0 to **0.65.0** on 2026-10-27
   - [tofu-fmt](https://opentofu.org/docs/cli/commands/fmt/) from 1.12.6 to **1.13.2** on 2026-10-27
   - [tofu-validate](https://opentofu.org/docs/cli/commands/validate/) from 1.12.6 to **1.13.2** on 2026-10-27
+  - [clj-kondo](https://github.com/clj-kondo/clj-kondo) from 2026.08.04 to **2026.10.20** on 2026-10-30
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.57.2 to **1.58.0** on 2026-10-30
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 5.4.1 to **5.4.2** on 2026-10-30
+  - [biome](https://biomejs.dev) from 2.5.15 to **2.6.2** on 2026-10-30
+  - [djlint](https://djlint.com/) from 1.46.4 to **1.47.0** on 2026-10-30
+  - [phplint](https://github.com/overtrue/phplint) from 9.7.3 to **9.8.0** on 2026-10-30
+  - [psalm](https://psalm.dev) from Psalm.6.20.0@ to **Psalm.6.20.1@** on 2026-10-30
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.7 to **7.6.8** on 2026-10-30
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.7 to **7.6.8** on 2026-10-30
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.17.1 to **0.17.2** on 2026-10-30
+  - [ruff](https://github.com/astral-sh/ruff) from 0.17.1 to **0.17.2** on 2026-10-30
+  - [checkov](https://www.checkov.io/) from 3.3.22 to **3.3.30** on 2026-10-30
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 2.13.0 to **2.14.0** on 2026-10-30
+  - [ls-lint](https://ls-lint.org/) from 2.3.1 to **2.3.2** on 2026-10-30
+  - [semgrep](https://semgrep.dev/) from 1.181.0 to **1.182.1** on 2026-10-30
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.99.2 to **3.99.4** on 2026-10-30
+  - [rubocop](https://rubocop.org/) from 1.92.0 to **1.92.1** on 2026-10-30
+  - [snakemake](https://snakemake.github.io/) from 9.27.0 to **9.27.1** on 2026-10-30
 <!-- linter-versions-end -->
 
 ## [v10.1.0] - 2026-09-05

@@ -335,12 +335,15 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=packagist depName=overtrue/phplint
-          ARG PHP_OVERTRUE_PHPLINT_VERSION=9.7.3
+          ARG PHP_OVERTRUE_PHPLINT_VERSION=9.8.0
         - |-
           # renovate: datasource=packagist depName=bartlett/sarif-php-converters
           ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.8.1
         - |
           RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require overtrue/phplint:${PHP_OVERTRUE_PHPLINT_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION}
+        - |-
+          # phplint 9.8+ needs an explicit mode, legacy keeps the 9.7 CLI behavior
+          ENV PLINT_MODE=legacy
     supported_platforms:
       platform:
         - linux/amd64

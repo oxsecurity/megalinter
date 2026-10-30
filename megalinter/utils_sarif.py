@@ -189,6 +189,43 @@ def fix_sarif(linter_sarif_obj, linter):
     return linter_sarif_obj
 
 
+# A result is suppressed (ex: # nosemgrep) when all its suppressions are accepted:
+# it must be excluded from counts and human-readable details (SARIF 2.1.0 §3.27.23)
+# A suppression without status is accepted, "underReview" and "rejected" are not (§3.35.3)
+def is_suppressed(result: dict) -> bool:
+    suppressions = result.get("suppressions") or []
+    return len(suppressions) > 0 and all(
+        suppression.get("status", "accepted") == "accepted"
+        for suppression in suppressions
+    )
+
+
+# Returns a copy of the SARIF without its suppressed results. The SARIF report
+# itself keeps them, so SARIF consumers still see the suppressions
+def remove_suppressed_results(sarif_obj: dict) -> dict:
+    runs = []
+    for run in sarif_obj.get("runs") or []:
+        results = run.get("results")
+        if isinstance(results, list):
+            run = {
+                **run,
+                "results": [result for result in results if not is_suppressed(result)],
+            }
+        runs.append(run)
+    return {**sarif_obj, "runs": runs}
+
+
+def remove_suppressed_results_from_text(sarif_text: str) -> str:
+    try:
+        sarif_obj = json.loads(sarif_text)
+    except JSONDecodeError:
+        # Invalid SARIF has already been reported by normalize_sarif_files
+        return sarif_text
+    if not isinstance(sarif_obj, dict):
+        return sarif_text
+    return json.dumps(remove_suppressed_results(sarif_obj), indent=2)
+
+
 # Replace startLine and endLine in region or contextRegion
 def fix_sarif_physical_location(physical_location):
     for location_key in physical_location.keys():

@@ -29,7 +29,7 @@ For example, define `HTML_DJLINT_ARGUMENTS: ["--profile", "django"]` to select d
 
 ## djlint documentation
 
-- Version in MegaLinter: **1.46.4**
+- Version in MegaLinter: **1.47.0**
 - Visit [Official Web Site](https://djlint.com/){target=_blank}
 - See [How to configure djlint rules](https://djlint.com/docs/configuration/){target=_blank}
 - See [How to disable djlint rules in files](https://djlint.com/docs/ignoring-code/){target=_blank}
@@ -202,6 +202,7 @@ Options:
                                   lines.
   --sort-attributes               Sort attributes by name, with id first and
                                   class second.
+  --sort-load-tags                Sort the libraries in {% load %} tags.
   --no-indent-inner-html          Do not indent <head> and <body> below
                                   <html>.
   --no-function-formatting        Do not attempt to format function contents.
@@ -225,8 +226,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=djlint
-ARG PIP_DJLINT_VERSION=1.46.4
+ARG PIP_DJLINT_VERSION=1.47.0
 ```
 
 - PIP packages (Python):
-  - [djlint==1.46.4](https://pypi.org/project/djlint/1.46.4)
+  - [djlint==1.47.0](https://pypi.org/project/djlint/1.47.0)
