@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Unit tests for GHSA-c32q-gm5x-gjxh: the name of a scanned file must never be
+Unit tests: the name of a scanned file must never be
 written in the R / PowerShell script built by the R, PowerShell and ARM
 linters, otherwise a quote in the name runs as interpreter code.
 """
