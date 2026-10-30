@@ -149,8 +149,8 @@ ARG NPM_TYPESCRIPT_VERSION=6.0.3
 ARG PIP_ANSIBLE_LINT_VERSION=26.10.1
 # renovate: datasource=pypi depName=cpplint
 ARG PIP_CPPLINT_VERSION=2.0.2
-# renovate: datasource=github-tags depName=clj-kondo/clj-kondo
-ARG CLJ_KONDO_VERSION=2026.08.04
+# renovate: datasource=github-tags depName=clj-kondo/clj-kondo extractVersion=^v(?<version>.+)$
+ARG CLJ_KONDO_VERSION=2026.10.20
 
 # renovate: datasource=github-tags depName=greglook/cljstyle
 ARG CLJ_STYLE_VERSION=0.17.642
