@@ -6,6 +6,10 @@ Use PHP CS Fixer to check PHP code formatting
 from megalinter import Linter
 
 
+def _php_single_quoted(value):
+    return "'" + value.replace("\\", "\\\\").replace("'", "\\'") + "'"
+
+
 class PhpCsFixerLinter(Linter):
     # Forward excluded directories through a generated PHP config requiring
     # the resolved one and chaining Finder exclusions. Only applied when a
@@ -17,7 +21,7 @@ class PhpCsFixerLinter(Linter):
             return cmd
         included_config = cmd[config_index].replace("\\", "/")
         exclude_dirs = ", ".join(
-            f"'{excluded_dir}'"
+            _php_single_quoted(excluded_dir)
             for excluded_dir in self.get_project_exclude_directories()
         )
         generated_config = self.write_report_generated_file(
@@ -25,7 +29,7 @@ class PhpCsFixerLinter(Linter):
             [
                 "<?php",
                 "",
-                f"$config = require '{included_config}';",
+                f"$config = require {_php_single_quoted(included_config)};",
                 # setFinder() also accepts plain iterables, which have no exclude()
                 "$finder = $config->getFinder();",
                 "if ($finder instanceof \\Symfony\\Component\\Finder\\Finder) {",

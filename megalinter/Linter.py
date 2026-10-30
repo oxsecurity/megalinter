@@ -213,6 +213,7 @@ class Linter:
         self.report_folder = ""
         self.reporters = []
         self.lint_command_log: list[str] = []
+        self.lint_command_env: dict[str, str] | None = None
         self.lint_cwd_log = ""
 
         # Initialize parameters
@@ -1282,6 +1283,21 @@ class Linter:
             + utils.format_bullet_list(self.files)
         )
 
+    # Drop files whose name can not be carried safely to an interpreter
+    # through an environment variable (line breaks, NUL...)
+    def drop_files_unsafe_for_interpreter(self):
+        safe_files = []
+        for file in self.files:
+            if re.search(r"[\x00-\x1f\x7f]", file):
+                logging.warning(
+                    f"[{self.linter_name}] Skipped {file!r}: its name contains "
+                    "control characters that can not be passed safely to the linter"
+                )
+            else:
+                safe_files.append(file)
+        self.files = safe_files
+        self.files_number = len(self.files)
+
     # lint a single file or whole project
     def process_linter(self, file=None):
         # Remove previous run SARIF file if necessary
@@ -1313,6 +1329,9 @@ class Linter:
                 **config.build_env(self.request_id, True, self.unsecured_env_variables),
                 "FORCE_COLOR": "0",
             }
+        if self.lint_command_env:
+            subprocess_env = {**subprocess_env, **self.lint_command_env}
+            logging.debug(f"[{self.linter_name}] Command env: {self.lint_command_env}")
         if isinstance(command, str):
             self.lint_command_log.append(command)
             # Call linter with a sub-process

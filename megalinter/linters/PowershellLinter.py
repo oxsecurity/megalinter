@@ -4,6 +4,8 @@ Use PowerShell to lint Powershell files
 https://github.com/PowerShell/PSScriptAnalyzer
 """
 
+import logging
+import re
 import sys
 from shutil import get_terminal_size
 
@@ -17,8 +19,18 @@ class PowershellLinter(Linter):
         self.cli_executable_help = [*self.cli_executable]
         self.cli_executable_version = [*self.cli_executable]
 
+    def collect_files(self, all_files):
+        super().collect_files(all_files)
+        self.drop_files_unsafe_for_interpreter()
+
     # Build the CLI command to call to lint a file with a powershell script
     def build_lint_command(self, file=None):
+        # Paths are passed through environment variables: writing them in the
+        # script would let a quote in a file name run as PowerShell code
+        self.lint_command_env = {
+            "MEGALINTER_LINT_FILE": str(file),
+            "MEGALINTER_LINT_WORKSPACE": str(self.workspace),
+        }
         pwsh_script = []
         if self.linter_name == "powershell":
             # Prevent Out-String (piped later) to strip ANSI escape sequences
@@ -30,15 +42,19 @@ class PowershellLinter(Linter):
             pwsh_script = ["Invoke-Formatter"]
 
         if self.config_file is not None:
-            pwsh_script[0] += " -Settings " + self.config_file
+            self.lint_command_env["MEGALINTER_LINT_CONFIG_FILE"] = str(self.config_file)
+            pwsh_script[0] += " -Settings $env:MEGALINTER_LINT_CONFIG_FILE"
 
         if self.linter_name == "powershell":
             if self.cli_lint_mode == "file":
-                pwsh_script[0] += f" -Path '{file}'"
+                pwsh_script[0] += " -Path $env:MEGALINTER_LINT_FILE"
             elif self.cli_lint_mode == "project":
-                pwsh_script[0] += f" -Path '{self.workspace}' -Recurse"
+                pwsh_script[0] += " -Path $env:MEGALINTER_LINT_WORKSPACE -Recurse"
         elif self.linter_name == "powershell_formatter":
-            pwsh_script[0] += f" -ScriptDefinition (Get-Content -Path '{file}' -Raw)"
+            pwsh_script[0] += (
+                " -ScriptDefinition"
+                " (Get-Content -LiteralPath $env:MEGALINTER_LINT_FILE -Raw)"
+            )
 
             if self.apply_fixes is True:
                 self.try_fix = True
@@ -47,10 +63,17 @@ class PowershellLinter(Linter):
                     "POWERSHELL_POWERSHELL_FORMATTER_OUTPUT_ENCODING",
                     "utf8",
                 )
+                if not re.fullmatch(r"[A-Za-z0-9_-]+", file_encoding):
+                    logging.warning(
+                        f"Invalid POWERSHELL_POWERSHELL_FORMATTER_OUTPUT_ENCODING "
+                        f"{file_encoding!r}, using utf8"
+                    )
+                    file_encoding = "utf8"
 
-                pwsh_script[
-                    0
-                ] += f" | Out-File '{file}' -Encoding {file_encoding} -NoNewline"
+                pwsh_script[0] += (
+                    " | Out-File -LiteralPath $env:MEGALINTER_LINT_FILE"
+                    f" -Encoding {file_encoding} -NoNewline"
+                )
 
         if (
             self.linter_name == "powershell"
