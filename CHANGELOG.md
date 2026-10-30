@@ -33,7 +33,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - To lint each file separately as before, set `CLOJURE_CLJ_KONDO_CLI_LINT_MODE: file`
 
 - Fixes
-  - **R_LINTR**, **POWERSHELL_POWERSHELL**, **POWERSHELL_POWERSHELL_FORMATTER** and **ARM_ARM_TTK** no longer run code hidden in a **crafted file name** (for example a name containing a quote). See [GHSA-c32q-gm5x-gjxh](https://github.com/oxsecurity/megalinter/security/advisories/GHSA-c32q-gm5x-gjxh)
+  - Improved security: **R_LINTR**, **POWERSHELL_POWERSHELL**, **POWERSHELL_POWERSHELL_FORMATTER** and **ARM_ARM_TTK** now handle **file names containing quotes or special characters** safely
     - Files whose name contains control characters (such as a line break) are now skipped by these linters, with a warning in the log
   - **`EXTENDS`** now sends `GITHUB_TOKEN` only to `https://raw.githubusercontent.com`, to read configs in private repositories. A URL that merely starts with that text no longer receives it. See [GHSA-rq55-6pj8-6v8v](https://github.com/oxsecurity/megalinter/security/advisories/GHSA-rq55-6pj8-6v8v)
     - Only extend from URLs hosted on an account or server owned by your organization, see [Configuration](https://megalinter.io/latest/config-variables/)
