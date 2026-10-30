@@ -25,11 +25,14 @@
 # Build wheel for megalinter python package
 ##################
 FROM ghcr.io/astral-sh/uv:0.12.3 AS uv
-FROM python:3.14-alpine3.24 AS build-ml-core
+FROM python:3.14.9-alpine3.24 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
+# Always build with the base image Python: never let uv download another one
+# when .python-version and the image patch drift apart, fail instead
+ENV UV_PYTHON_DOWNLOADS=never
 # Install dependencies
 #UV_SYNC__START
 RUN --mount=type=cache,target=/root/.cache/uv \
@@ -46,7 +49,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 ##################
 # Get base image #
 ##################
-FROM python:3.14-alpine3.24
+FROM python:3.14.9-alpine3.24
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
 
