@@ -34,19 +34,23 @@ LINTERS = [
 
 def _build_linter(request_id, workspace, descriptor_id, linter_name):
     params = {
-        "default_linter_activation": True,
-        "enable_descriptors": [],
-        "enable_linters": [],
-        "disable_descriptors": [],
-        "disable_linters": [],
-        "disable_errors_linters": [],
-        "github_workspace": workspace,
-        "workspace": workspace,
-        "linter_rules_path": workspace,
-        "default_rules_location": utils.get_default_rules_location(),
-        "post_linter_status": False,
-        "request_id": request_id,
+        key: []
+        for key in (
+            "enable_descriptors",
+            "enable_linters",
+            "disable_descriptors",
+            "disable_linters",
+            "disable_errors_linters",
+        )
     }
+    for key in ("github_workspace", "workspace", "linter_rules_path"):
+        params[key] = workspace
+    params.update(
+        default_linter_activation=True,
+        default_rules_location=utils.get_default_rules_location(),
+        post_linter_status=False,
+        request_id=request_id,
+    )
     return linter_factory.build_linter(descriptor_id, linter_name, params)
 
 
