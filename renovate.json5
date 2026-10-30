@@ -254,7 +254,7 @@
   // MegaLinter's security linters have something to detect. Every other test
   // folder (good/, fix/...) is kept up to date, except repository_syft/good/good:
   // a snapshot of an old mega-linter-runner whose lock file only exists as SBOM input
-  // for syft, and that npm can no longer regenerate (EALLOWREMOTE on npm-6.14.18.tgz).
+  // for syft, and that npm refuses to regenerate (remote npm-6.14.18.tgz download blocked).
   ignorePaths: [
     '.automation/test/**/bad/**',
     '.automation/test/**/.wireit/**',
