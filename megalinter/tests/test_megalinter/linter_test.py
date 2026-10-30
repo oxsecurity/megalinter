@@ -12,15 +12,11 @@ import unittest
 import uuid
 from unittest import mock
 
-from megalinter import config, utils
+from megalinter import config, utils, utilstest
 from megalinter.Linter import MAX_PROJECT_EXCLUDE_ARG_BYTES, Linter
 from megalinter.linters.JsCpdLinter import JsCpdLinter
 from megalinter.linters.StyleLintLinter import StyleLintLinter
 from megalinter.MegaLinter import Megalinter
-
-REPO_ROOT = os.path.abspath(
-    os.path.join(os.path.dirname(__file__), os.pardir, os.pardir, os.pardir)
-)
 
 
 class LinterTest(unittest.TestCase):
@@ -641,7 +637,7 @@ runs:
         # A result silenced in source (ex: # nosemgrep) is not a warning (#9373)
         linter = Linter.__new__(Linter)
         linter.sarif_output_file = os.path.join(
-            REPO_ROOT,
+            utilstest.get_root_dir(),
             ".automation",
             "test",
             "sarif_reports",

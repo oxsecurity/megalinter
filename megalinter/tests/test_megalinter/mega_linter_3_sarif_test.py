@@ -27,15 +27,7 @@ from megalinter import (
 from megalinter.constants import DEFAULT_SARIF_REPORT_FILE_NAME
 from megalinter.reporters.SarifReporter import SarifReporter
 
-root = (
-    os.path.dirname(os.path.abspath(__file__))
-    + os.path.sep
-    + ".."
-    + os.path.sep
-    + ".."
-    + os.path.sep
-    + ".."
-)
+root = utilstest.get_root_dir()
 
 # Public echo endpoints used to check that ApiReporter really posts data.
 # They are tried in order, so that a single unavailable remote server does not
