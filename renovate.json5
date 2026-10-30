@@ -83,6 +83,26 @@
       ],
     },
     {
+      // One Python version for every MegaLinter context: .python-version (local uv,
+      // CI setup-python via python-version-file) and every python:X.Y.Z-alpine base
+      // image (Dockerfile, flavors/, linters/, server/). Bump them all in the same PR,
+      // as the image build refuses to download a Python that differs from its base
+      // image (UV_PYTHON_DOWNLOADS=never). Patches come apart from minor upgrades, so
+      // closing a 3.15 PR never holds back 3.14 security patches.
+      groupName: 'Python',
+      matchDatasources: [
+        'docker',
+      ],
+      matchDepNames: [
+        'python',
+      ],
+      // Test fixtures keep their own weekly group
+      matchFileNames: [
+        '!.automation/test/**',
+      ],
+      separateMinorPatch: true,
+    },
+    {
       matchPackageNames: [
         'uv',
         'astral-sh/uv',

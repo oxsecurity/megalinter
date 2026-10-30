@@ -98,11 +98,14 @@ FROM lycheeverse/lychee:${SPELL_LYCHEE_VERSION} AS lychee
 # Build wheel for megalinter python package
 ##################
 FROM ghcr.io/astral-sh/uv:0.12.3 AS uv
-FROM python:3.14-alpine3.24 AS build-ml-core
+FROM python:3.14.9-alpine3.24 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
+# Always build with the base image Python: never let uv download another one
+# when .python-version and the image patch drift apart, fail instead
+ENV UV_PYTHON_DOWNLOADS=never
 # Install dependencies
 #UV_SYNC__START
 RUN --mount=type=cache,target=/root/.cache/uv \
@@ -119,11 +122,12 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 ##################
 # Get base image #
 ##################
-FROM python:3.14-alpine3.24
+FROM python:3.14.9-alpine3.24
 # Python 3.14.7 is the first release fixing the CPython stack limit check and the
 # 128 KiB default thread stack size on musl (https://github.com/python/cpython/issues/148260),
 # without which deep recursion in a thread segfaults MegaLinter instead of raising
-# RecursionError. The base image tag floats, so assert the floor at build time.
+# RecursionError. The tag is pinned to the .python-version patch (Renovate bumps both
+# together, see renovate.json5), and the floor is asserted at build time.
 RUN python -c 'import sys; assert sys.version_info >= (3, 14, 7), "Python 3.14.7+ required (musl thread stack fixes), got " + sys.version' \
     && python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
@@ -141,7 +145,7 @@ ARG PIP_ANSIBLE_LINT_VERSION=26.10.1
 # renovate: datasource=npm depName=@stoplight/spectral-cli
 ARG NPM_SPECTRAL_CLI_VERSION=6.17.0
 # renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=5.4.1
+ARG NPM_JSCPD_VERSION=5.4.2
 # renovate: datasource=npm depName=stylelint
 ARG NPM_STYLELINT_VERSION=17.16.0
 # renovate: datasource=npm depName=stylelint-config-standard

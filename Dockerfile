@@ -134,11 +134,14 @@ FROM ghcr.io/opentofu/opentofu:${TERRAFORM_TOFU_FMT_VERSION} AS opentofu
 # Build wheel for megalinter python package
 ##################
 FROM ghcr.io/astral-sh/uv:0.12.3 AS uv
-FROM python:3.14-alpine3.24 AS build-ml-core
+FROM python:3.14.9-alpine3.24 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
 WORKDIR /
 COPY --from=uv /uv /uvx /bin/
+# Always build with the base image Python: never let uv download another one
+# when .python-version and the image patch drift apart, fail instead
+ENV UV_PYTHON_DOWNLOADS=never
 # Install dependencies
 #UV_SYNC__START
 RUN --mount=type=cache,target=/root/.cache/uv \
@@ -155,11 +158,12 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 ##################
 # Get base image #
 ##################
-FROM python:3.14-alpine3.24
+FROM python:3.14.9-alpine3.24
 # Python 3.14.7 is the first release fixing the CPython stack limit check and the
 # 128 KiB default thread stack size on musl (https://github.com/python/cpython/issues/148260),
 # without which deep recursion in a thread segfaults MegaLinter instead of raising
-# RecursionError. The base image tag floats, so assert the floor at build time.
+# RecursionError. The tag is pinned to the .python-version patch (Renovate bumps both
+# together, see renovate.json5), and the floor is asserted at build time.
 RUN python -c 'import sys; assert sys.version_info >= (3, 14, 7), "Python 3.14.7+ required (musl thread stack fixes), got " + sys.version' \
     && python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
@@ -210,7 +214,7 @@ ARG CLJ_STYLE_VERSION=0.17.642
 # renovate: datasource=pypi depName=cfn-lint
 ARG PIP_CFN_LINT_VERSION=1.58.0
 # renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=5.4.1
+ARG NPM_JSCPD_VERSION=5.4.2
 # renovate: datasource=nuget depName=csharpier
 ARG CSHARP_CSHARPIER_VERSION=1.2.6
 # renovate: datasource=nuget depName=roslynator.dotnet.cli
@@ -296,7 +300,7 @@ ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
 # renovate: datasource=pypi depName=rumdl
 ARG PIP_RUMDL_VERSION=0.3.0
 # renovate: datasource=github-tags depName=skaji/cpm
-ARG PERL_PERLCRITIC_VERSION=v1.1.5
+ARG PERL_PERLCRITIC_VERSION=v1.1.6
 
 # renovate: datasource=packagist depName=squizlabs/php_codesniffer
 ARG PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION=4.0.4

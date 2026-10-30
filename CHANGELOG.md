@@ -115,6 +115,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **Dependabot** no longer opens version or security update PRs for the pip, uv, bundler, gomod and cargo test fixtures under `.automation/test/`: they must stay outdated, in particular the `.wireit` poison fixtures guarding the excluded directories forwarding
   - New **`close-frozen-fixture-prs.yml`** workflow: Dependabot security updates ignore the `dependabot.yml` ignore rules, so it closes the Dependabot PRs that only bump frozen fixtures (`bad/` and `.wireit/` folders under `.automation/test/`), and flags the PRs mixing them with other updates
   - **Renovate** now keeps the test fixtures under `.automation/test/` up to date (good/, fix/... folders) in one weekly grouped PR, and only skips the frozen `bad/` and `.wireit/` fixtures
+  - **One Python version** everywhere: `.python-version` is the single reference
+    - Every `python` base image (main, flavors, linters, server, quick and custom-flavor Dockerfiles) is pinned to the same patch instead of a floating `3.14` tag
+    - CI workflows read it through `python-version-file`, and the local `make bootstrap` fallback launcher follows it
+    - Renovate bumps `.python-version` and every base image in one `Python` PR, patches apart from minor upgrades
+    - The image build sets `UV_PYTHON_DOWNLOADS=never`, so a mismatch fails the build instead of silently bundling another Python
   - **Renovate** keeps `typescript` on v6: TypeScript 7 drops the JavaScript compiler API that typescript-eslint needs ([#8404](https://github.com/oxsecurity/megalinter/pull/8404))
   - **ApexGuru rate limits** no longer fail CI test jobs: when Salesforce's ApexGuru service answers `429 Too Many Requests`, the `SALESFORCE_CODE_ANALYZER_APEXGURU` success, failure and SARIF tests are skipped instead of failed
     - Only in CI (`utils.is_ci()`): local test runs still fail, so a real regression stays visible
