@@ -27,15 +27,7 @@ from megalinter import (
 from megalinter.constants import DEFAULT_SARIF_REPORT_FILE_NAME
 from megalinter.reporters.SarifReporter import SarifReporter
 
-root = (
-    os.path.dirname(os.path.abspath(__file__))
-    + os.path.sep
-    + ".."
-    + os.path.sep
-    + ".."
-    + os.path.sep
-    + ".."
-)
+root = utilstest.get_root_dir()
 
 # Public echo endpoints used to check that ApiReporter really posts data.
 # They are tried in order, so that a single unavailable remote server does not
@@ -98,7 +90,7 @@ class mega_linter_3_sarif_test(unittest.TestCase):
     def test_sarif_fix(self):
         self.before_start()
         # Create megalinter
-        mega_linter = MegaLinter.Megalinter({"request_id": uuid.uuid1()})
+        mega_linter = MegaLinter.Megalinter({"request_id": self.request_id})
         # Create sample linters
         sarif_dir = (
             root
@@ -107,7 +99,7 @@ class mega_linter_3_sarif_test(unittest.TestCase):
         sarif_dir_absolute = os.path.realpath(sarif_dir)
         for sarif_file in glob.glob(f"{sarif_dir_absolute}{os.path.sep}*.sarif"):
             # Create linter
-            linter = Linter(None, {})
+            linter = Linter({"request_id": self.request_id}, {})
             linter.name = "SAMPLE_" + os.path.basename(sarif_file)
             linter.can_output_sarif = True
             linter.sarif_output_file = sarif_file
@@ -236,6 +228,51 @@ class mega_linter_3_sarif_test(unittest.TestCase):
 
         self.assertEqual(fixed_sarif["runs"][0]["results"][0]["fixes"], [valid_fix])
         self.assertNotIn("fixes", fixed_sarif["runs"][0]["results"][1])
+
+    def test_sarif_is_suppressed(self):
+        cases = [
+            ({}, False),
+            ({"suppressions": []}, False),
+            ({"suppressions": [{"kind": "inSource"}]}, True),
+            ({"suppressions": [{"kind": "external", "status": "accepted"}]}, True),
+            ({"suppressions": [{"kind": "external", "status": "underReview"}]}, False),
+            ({"suppressions": [{"kind": "external", "status": "rejected"}]}, False),
+            (
+                {
+                    "suppressions": [
+                        {"kind": "inSource"},
+                        {"kind": "external", "status": "rejected"},
+                    ]
+                },
+                False,
+            ),
+        ]
+        for result, expected in cases:
+            with self.subTest(result=result):
+                self.assertEqual(expected, utils_sarif.is_suppressed(result))
+
+    def test_sarif_remove_suppressed_results_from_text(self):
+        sarif_file = (
+            root
+            + f"{os.path.sep}.automation{os.path.sep}test{os.path.sep}sarif_reports"
+            + f"{os.path.sep}REPOSITORY_SEMGREP.sarif"
+        )
+        with open(sarif_file, "r", encoding="utf-8") as f:
+            sarif_text = f.read()
+
+        filtered = json.loads(
+            utils_sarif.remove_suppressed_results_from_text(sarif_text)
+        )
+
+        results = filtered["runs"][0]["results"]
+        self.assertEqual(1, len(results))
+        self.assertNotIn("suppressions", results[0])
+        # The SARIF report itself keeps the suppressed result
+        self.assertEqual(2, len(json.loads(sarif_text)["runs"][0]["results"]))
+        self.assertEqual(
+            "not a sarif",
+            utils_sarif.remove_suppressed_results_from_text("not a sarif"),
+        )
 
     # Keep only the endpoints that are currently up and accept the same kind of body
     # than ApiReporter, so a remote outage does not make the test fail.

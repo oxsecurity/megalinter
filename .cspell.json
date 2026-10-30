@@ -1190,6 +1190,7 @@
         "norc",
         "norionomura",
         "normalsize",
+        "nosemgrep",
         "noserver",
         "nosetests",
         "nostic",
