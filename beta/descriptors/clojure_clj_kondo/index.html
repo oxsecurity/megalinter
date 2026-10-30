@@ -12461,7 +12461,7 @@
 </ul>
 <h2 id="clj-kondo-documentation">clj-kondo documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>2026.08.04</strong></li>
+<li>Version in MegaLinter: <strong>2026.10.20</strong></li>
 <li>Visit <a href="https://github.com/clj-kondo/clj-kondo#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/clj-kondo/clj-kondo/blob/master/doc/config.md#configuration" target="_blank">How to configure clj-kondo rules</a><ul>
 <li>If custom <code>.clj-kondo/config.edn</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.clj-kondo/config.edn" target="_blank">.clj-kondo/config.edn</a> will be used</li>
@@ -12686,7 +12686,7 @@
 <div class="highlight"><pre><span></span><code>clj-kondo<span class="w"> </span>--config<span class="w"> </span>.clj-kondo/config.edn<span class="w"> </span>--lint<span class="w"> </span>myfile.clj
 </code></pre></div>
 <h3 id="help-content">Help content</h3>
-<div class="highlight"><pre><span></span><code>clj-kondo<span class="w"> </span>v2026.08.04
+<div class="highlight"><pre><span></span><code>clj-kondo<span class="w"> </span>v2026.10.20
 
 Options:
 
@@ -12735,8 +12735,8 @@ Options:
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
 <li>Dockerfile commands :
-<div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=github-tags depName=clj-kondo/clj-kondo</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">CLJ_KONDO_VERSION</span><span class="o">=</span><span class="m">2026</span>.08.04
+<div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=github-tags depName=clj-kondo/clj-kondo extractVersion=^v(?&lt;version&gt;.+)$</span>
+<span class="k">ARG</span><span class="w"> </span><span class="nv">CLJ_KONDO_VERSION</span><span class="o">=</span><span class="m">2026</span>.10.20
 
 <span class="k">RUN</span><span class="w"> </span>curl<span class="w"> </span>--retry<span class="w"> </span><span class="m">5</span><span class="w"> </span>--retry-delay<span class="w"> </span><span class="m">5</span><span class="w"> </span>-sLO<span class="w"> </span>https://raw.githubusercontent.com/clj-kondo/clj-kondo/refs/tags/v<span class="si">${</span><span class="nv">CLJ_KONDO_VERSION</span><span class="si">}</span>/script/install-clj-kondo<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>install-clj-kondo<span class="w"> </span><span class="se">\</span>

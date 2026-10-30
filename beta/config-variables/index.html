@@ -12256,7 +12256,7 @@
 <tr>
 <td><strong>EXTENDS</strong></td>
 <td><!-- --></td>
-<td>Base <code>mega-linter.yml</code> config file(s) to extend local configuration from. Can be a single URL or a list of <code>.mega-linter.yml</code> config files URLs. Later files take precedence.</td>
+<td>Base <code>mega-linter.yml</code> config file(s) to extend local configuration from. Can be a single URL or a list of <code>.mega-linter.yml</code> config files URLs. Later files take precedence. Only extend from URLs owned by your organization: the extended config is merged into the run. <code>GITHUB_TOKEN</code> is only sent to <code>raw.githubusercontent.com</code>.</td>
 </tr>
 <tr>
 <td><strong>FAIL_IF_MISSING_LINTER_IN_FLAVOR</strong></td>

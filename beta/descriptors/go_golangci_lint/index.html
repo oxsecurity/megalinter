@@ -12827,7 +12827,7 @@ Resolutions:
         - GOPRIVATE
         - GOSUMDB
         - GONOSUMCHECK
-  - Pre-populate `$GOPATH/pkg/mod` in CI cache to avoid downloads on each run.
+  - Pre-populate the Go module cache (`go env GOMODCACHE`) in CI cache to avoid downloads on each run.
 </code></pre></div>
 <h3 id="go_golangci_lint_error_config_invalid">GO_GOLANGCI_LINT_ERROR_CONFIG_INVALID</h3>
 <p><strong>Detection pattern (regex):</strong></p>
