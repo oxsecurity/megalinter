@@ -90,7 +90,7 @@ class mega_linter_3_sarif_test(unittest.TestCase):
     def test_sarif_fix(self):
         self.before_start()
         # Create megalinter
-        mega_linter = MegaLinter.Megalinter({"request_id": uuid.uuid1()})
+        mega_linter = MegaLinter.Megalinter({"request_id": self.request_id})
         # Create sample linters
         sarif_dir = (
             root
@@ -99,7 +99,7 @@ class mega_linter_3_sarif_test(unittest.TestCase):
         sarif_dir_absolute = os.path.realpath(sarif_dir)
         for sarif_file in glob.glob(f"{sarif_dir_absolute}{os.path.sep}*.sarif"):
             # Create linter
-            linter = Linter(None, {})
+            linter = Linter({"request_id": self.request_id}, {})
             linter.name = "SAMPLE_" + os.path.basename(sarif_file)
             linter.can_output_sarif = True
             linter.sarif_output_file = sarif_file
