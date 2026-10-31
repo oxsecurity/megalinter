@@ -177,7 +177,7 @@ ARG DOTENV_LINTER_VERSION=4.0.0
 # renovate: datasource=github-tags depName=golangci/golangci-lint
 ARG GO_GOLANGCI_LINT_VERSION=2.15.0
 # renovate: datasource=npm depName=npm-groovy-lint
-ARG NPM_GROOVY_LINT_VERSION=18.0.0
+ARG NPM_GROOVY_LINT_VERSION=19.0.0
 # renovate: datasource=pypi depName=djlint
 ARG PIP_DJLINT_VERSION=1.47.0
 # renovate: datasource=npm depName=htmlhint

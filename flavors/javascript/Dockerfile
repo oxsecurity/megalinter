@@ -149,7 +149,7 @@ ARG NPM_BIOMEJS_BIOME_VERSION=2.6.2
 # renovate: datasource=github-releases depName=dotenv-linter/dotenv-linter extractVersion=^v(?<version>.+)$
 ARG DOTENV_LINTER_VERSION=4.0.0
 # renovate: datasource=npm depName=npm-groovy-lint
-ARG NPM_GROOVY_LINT_VERSION=18.0.0
+ARG NPM_GROOVY_LINT_VERSION=19.0.0
 # renovate: datasource=pypi depName=djlint
 ARG PIP_DJLINT_VERSION=1.47.0
 # renovate: datasource=npm depName=htmlhint
