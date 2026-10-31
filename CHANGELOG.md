@@ -314,6 +314,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [kubescape](https://github.com/kubescape/kubescape) from 4.0.14 to **4.0.16** on 2026-10-31
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.99.4 to **3.99.7** on 2026-10-31
   - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 9.1.0 to **9.1.2** on 2026-10-31
+  - [phpstan](https://phpstan.org/) from 2.3.1 to **2.3.2** on 2026-10-31
 <!-- linter-versions-end -->
 
 ## [v10.1.0] - 2026-09-05
