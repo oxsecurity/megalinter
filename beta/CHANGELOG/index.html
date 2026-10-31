@@ -15592,6 +15592,10 @@
 </ul>
 <ul>
 <li>Linters enhancements<ul>
+<li><strong>GROOVY_NPM_GROOVY_LINT</strong> upgraded to npm-groovy-lint <strong>v19</strong>: up to 18 times faster, and its default <code>recommended</code> preset now reports likely mistakes only (no style or layout rules)<ul>
+<li>To get style and layout findings back, set <code>"extends": "advanced"</code> (or <code>"all"</code>) in your <code>.groovylintrc.json</code>, see the <a href="https://nvuillam.github.io/npm-groovy-lint/#migrating-from-v18-to-v19">migration guide</a></li>
+</ul>
+</li>
 <li><strong>CLOJURE_CLJ_KONDO</strong> now lints all your Clojure files in a single clj-kondo run, with the new default <strong><code>list_of_files</code></strong> lint mode<ul>
 <li>Cross-namespace checks, such as calls with a wrong number of arguments to a function defined in another file, are now reported without a clj-kondo cache</li>
 <li>The console log and reports now show clj-kondo's <strong>warnings count</strong>, and its <strong>errors count</strong> when errors are found, instead of a single error for any failing run</li>
