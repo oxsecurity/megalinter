@@ -310,6 +310,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.99.2 to **3.99.4** on 2026-10-30
   - [rubocop](https://rubocop.org/) from 1.92.0 to **1.92.1** on 2026-10-30
   - [snakemake](https://snakemake.github.io/) from 9.27.0 to **9.27.1** on 2026-10-30
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 18.0.0 to **19.0.0** on 2026-10-31
+  - [kubescape](https://github.com/kubescape/kubescape) from 4.0.14 to **4.0.16** on 2026-10-31
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.99.4 to **3.99.7** on 2026-10-31
+  - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 9.1.0 to **9.1.2** on 2026-10-31
 <!-- linter-versions-end -->
 
 ## [v10.1.0] - 2026-09-05

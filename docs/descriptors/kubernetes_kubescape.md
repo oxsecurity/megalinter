@@ -29,7 +29,7 @@ description: How to use kubescape (configure, ignore files, ignore errors, help 
 
 ## kubescape documentation
 
-- Version in MegaLinter: **4.0.14**
+- Version in MegaLinter: **4.0.16**
 - Visit [Official Web Site](https://github.com/kubescape/kubescape#readme){target=_blank}
 
 [![kubescape - GitHub](https://gh-card.dev/repos/kubescape/kubescape.svg?fullname=)](https://github.com/kubescape/kubescape){target=_blank}
@@ -151,6 +151,7 @@ Available Commands:
   operator      The operator is used to communicate with the Kubescape Operator within the cluster components.
   patch         Patch container images to fix known OS-level vulnerabilities
   policy        Author and test custom Rego controls
+  predict       Predict the impact of security policy enforcement
   prerequisites Check prerequisites for installing Kubescape Operator
   scan          Scan a Kubernetes cluster or YAML files for image vulnerabilities and misconfigurations
   update        Update to latest release version
@@ -172,7 +173,7 @@ Use "kubescape [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=github-releases depName=kubescape/kubescape extractVersion=^v(?<version>.+)$
-ARG KUBERNETES_KUBESCAPE_VERSION=4.0.14
+ARG KUBERNETES_KUBESCAPE_VERSION=4.0.16
 RUN set -eu; \
     case "$TARGETPLATFORM" in \
       linux/amd64) ARCH=amd64 ;; \
