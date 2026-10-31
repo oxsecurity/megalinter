@@ -315,6 +315,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.99.4 to **3.99.7** on 2026-10-31
   - [robocop](https://github.com/MarketSquare/robotframework-robocop) from 9.1.0 to **9.1.2** on 2026-10-31
   - [phpstan](https://phpstan.org/) from 2.3.1 to **2.3.2** on 2026-10-31
+  - [biome](https://biomejs.dev) from 2.6.2 to **2.6.3** on 2026-10-31
 <!-- linter-versions-end -->
 
 ## [v10.1.0] - 2026-09-05
