@@ -12457,7 +12457,7 @@
 </ul>
 <h2 id="phpstan-documentation">phpstan documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>2.3.1</strong></li>
+<li>Version in MegaLinter: <strong>2.3.2</strong></li>
 <li>Visit <a href="https://phpstan.org/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://phpstan.org/config-reference#neon-format" target="_blank">How to configure phpstan rules</a><ul>
 <li>If custom <code>phpstan.neon.dist</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/phpstan.neon.dist" target="_blank">phpstan.neon.dist</a> will be used</li>
@@ -12646,7 +12646,7 @@ Options:
 <span class="w">  </span>-b,<span class="w"> </span>--generate-baseline<span class="o">[=</span>GENERATE-BASELINE<span class="o">]</span><span class="w">  </span>Path<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>file<span class="w"> </span>where<span class="w"> </span>the<span class="w"> </span>baseline<span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span>saved<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span>false<span class="o">]</span>
 <span class="w">      </span>--allow-empty-baseline<span class="w">                   </span>Do<span class="w"> </span>not<span class="w"> </span>error<span class="w"> </span>out<span class="w"> </span>when<span class="w"> </span>the<span class="w"> </span>generated<span class="w"> </span>baseline<span class="w"> </span>is<span class="w"> </span>empty
 <span class="w">      </span>--memory-limit<span class="o">=</span>MEMORY-LIMIT<span class="w">              </span>Memory<span class="w"> </span>limit<span class="w"> </span><span class="k">for</span><span class="w"> </span>analysis
-<span class="w">      </span>--xdebug<span class="w">                                 </span>Allow<span class="w"> </span>running<span class="w"> </span>with<span class="w"> </span>Xdebug<span class="w"> </span><span class="k">for</span><span class="w"> </span>debugging<span class="w"> </span>purposes
+<span class="w">      </span>--xdebug<span class="w">                                 </span>Allow<span class="w"> </span>running<span class="w"> </span>with<span class="w"> </span>Xdebug<span class="w"> </span><span class="k">for</span><span class="w"> </span>debugging<span class="w"> </span>purposes<span class="w"> </span><span class="o">(</span>pcov<span class="w"> </span>and<span class="w"> </span>uopz<span class="w"> </span>are<span class="w"> </span>still<span class="w"> </span>turned<span class="w"> </span>off<span class="o">)</span>
 <span class="w">      </span>--tmp-file<span class="o">=</span>TMP-FILE<span class="w">                      </span><span class="o">(</span>Editor<span class="w"> </span>mode<span class="o">)</span><span class="w"> </span>Edited<span class="w"> </span>file<span class="w"> </span>used<span class="w"> </span><span class="k">in</span><span class="w"> </span>place<span class="w"> </span>of<span class="w"> </span>--instead-of<span class="w"> </span>file
 <span class="w">      </span>--instead-of<span class="o">=</span>INSTEAD-OF<span class="w">                  </span><span class="o">(</span>Editor<span class="w"> </span>mode<span class="o">)</span><span class="w"> </span>File<span class="w"> </span>being<span class="w"> </span>replaced<span class="w"> </span>by<span class="w"> </span>--tmp-file
 <span class="w">      </span>--fix<span class="w">                                    </span>Fix<span class="w"> </span>auto-fixable<span class="w"> </span>errors<span class="w"> </span><span class="o">(</span>experimental<span class="o">)</span>
@@ -12670,7 +12670,7 @@ Options:
 <span class="k">ENV</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"/usr/local/composer/vendor/bin:</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span><span class="s2">"</span>
 <span class="c"># Linter install</span>
 <span class="c"># renovate: datasource=packagist depName=phpstan/phpstan</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">PHP_PHPSTAN_PHPSTAN_VERSION</span><span class="o">=</span><span class="m">2</span>.3.1
+<span class="k">ARG</span><span class="w"> </span><span class="nv">PHP_PHPSTAN_PHPSTAN_VERSION</span><span class="o">=</span><span class="m">2</span>.3.2
 <span class="c"># renovate: datasource=packagist depName=phpstan/extension-installer</span>
 <span class="k">ARG</span><span class="w"> </span><span class="nv">PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION</span><span class="o">=</span><span class="m">1</span>.4.3
 <span class="c"># renovate: datasource=packagist depName=bartlett/sarif-php-converters</span>
