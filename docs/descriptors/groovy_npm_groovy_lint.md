@@ -20,11 +20,11 @@ description: How to use npm-groovy-lint (configure, ignore files, ignore errors,
 - **Inline rule disabling** using comments for granular control
 - **Gradle script support** for build file quality analysis
 - **Multi-file processing** for batch operations on large codebases
-- **Java 17 compatibility** ensuring modern runtime support
+- **Java 17 to 25 compatibility** ensuring modern runtime support
 
 ## npm-groovy-lint documentation
 
-- Version in MegaLinter: **18.0.0**
+- Version in MegaLinter: **19.0.0**
 - Visit [Official Web Site](https://nvuillam.github.io/npm-groovy-lint/){target=_blank}
 - See [How to configure npm-groovy-lint rules](https://github.com/nvuillam/npm-groovy-lint#configuration){target=_blank}
   - If custom `.groovylintrc.json` config file isn't found, [.groovylintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.groovylintrc.json){target=_blank} will be used
@@ -132,7 +132,7 @@ npm-groovy-lint [options]
   -s, --source String          Source text to lint (if no path/files arguments)
   --sourcefilepath String      Full path of the file whose content is sent in source argument
   --parse                      Try to parse the source code with GroovyShell and return errors (use argument --no-parse if you want to deactivate)
-  -c, --config String          Custom path to directory containing GroovyLint config file.
+  -c, --config String          Custom path to directory containing GroovyLint config file, or the name of a bundled preset (recommended, advanced, all, format, grails, tests, jenkinsfile, recommended-jenkinsfile).
  Default: Found groovylintrc.js/json/yml/package.json config file, or default npm-groovy-lint config if not defined.
 Note: command-line arguments have priority on config file properties - default: /
   --format                     Format source code
@@ -151,10 +151,10 @@ Note: command-line arguments have priority on config file properties - default: 
   --failoninfo                 (Deprecated) Fails if at least one error is found
   --codenarcargs               Use core CodeNarc arguments (all npm-groovy-lint arguments will be ignored). Doc: http://codenarc.github.io/CodeNarc/codenarc-command-line.html
   --noserver                   For better performances, npm-groovy-lint runs a local server to keep CodeNarc alive instead of loading java/groovy at each call. If you don't want that, send this argument
-  --serverhost String          If use of CodeNarc server, host where is the CodeNarc server (default: localhost) - default: http://localhost
+  --serverhost String          If use of CodeNarc server, host where is the CodeNarc server (default: 127.0.0.1, the server only listens on the IPv4 loopback) - default: http://127.0.0.1
   --serverport String          If use of CodeNarc server, port of the CodeNarc server (default: 7484) - default: 7484
   -j, --javaexecutable String  If you do not want to use default java executable to run CodeNarcServer, you can override it - default: java
-  --javaoptions String         Override java options - default: -Xms256m,-Xmx2048m
+  --javaoptions String         Override java options. Default: -Xms256m and a maximum heap of half the available memory, between -Xmx2048m and -Xmx4096m
   --killserver                 Terminate the CodeNarcServer if running
   --nolintafter                Do not lint again after format and fix options (useful for client calling Npm Groovy Lint)
   --returnrules                Return rule descriptions and url if this argument is set
@@ -163,6 +163,7 @@ Note: command-line arguments have priority on config file properties - default: 
   -v, --version                Show version
   -p, --path path::String      (DEPRECATED) Directory containing the files to lint (default: current directory) - default: .
   -f, --files String           (DEPRECATED) Comma-separated list of Ant-style file patterns specifying files that must be included
+  -P, --parallelism Int        Number of threads used to analyse files in parallel (default: auto, max 4). Use 1 to disable.
 ```
 
 ### Installation on mega-linter Docker image
@@ -172,13 +173,13 @@ Note: command-line arguments have priority on config file properties - default: 
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 # renovate: datasource=npm depName=npm-groovy-lint
-ARG NPM_GROOVY_LINT_VERSION=18.0.0
+ARG NPM_GROOVY_LINT_VERSION=19.0.0
 ```
 
 - APK packages (Linux):
   - [openjdk21](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=openjdk21)
 - NPM packages (node.js):
-  - [npm-groovy-lint@18.0.0](https://www.npmjs.com/package/npm-groovy-lint/v/18.0.0)
+  - [npm-groovy-lint@19.0.0](https://www.npmjs.com/package/npm-groovy-lint/v/19.0.0)
 
 ## Known errors and resolutions
 
