@@ -29,7 +29,7 @@ linters:
       - **Inline rule disabling** using comments for granular control
       - **Gradle script support** for build file quality analysis
       - **Multi-file processing** for batch operations on large codebases
-      - **Java 17 compatibility** ensuring modern runtime support
+      - **Java 17 to 25 compatibility** ensuring modern runtime support
     can_output_sarif: true
     linter_url: https://nvuillam.github.io/npm-groovy-lint/
     linter_repo: https://github.com/nvuillam/npm-groovy-lint
@@ -78,7 +78,7 @@ linters:
         - ENV PATH="$JAVA_HOME/bin:${PATH}"
         - |-
           # renovate: datasource=npm depName=npm-groovy-lint
-          ARG NPM_GROOVY_LINT_VERSION=18.0.0
+          ARG NPM_GROOVY_LINT_VERSION=19.0.0
       npm:
         - npm-groovy-lint@${NPM_GROOVY_LINT_VERSION}
     supported_platforms:

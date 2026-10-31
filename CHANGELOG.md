@@ -26,6 +26,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Media
 
 - Linters enhancements
+  - **GROOVY_NPM_GROOVY_LINT** upgraded to npm-groovy-lint **v19**: up to 18 times faster, and its default `recommended` preset now reports likely mistakes only (no style or layout rules)
+    - To get style and layout findings back, set `"extends": "advanced"` (or `"all"`) in your `.groovylintrc.json`, see the [migration guide](https://nvuillam.github.io/npm-groovy-lint/#migrating-from-v18-to-v19)
   - **CLOJURE_CLJ_KONDO** now lints all your Clojure files in a single clj-kondo run, with the new default **`list_of_files`** lint mode
     - Cross-namespace checks, such as calls with a wrong number of arguments to a function defined in another file, are now reported without a clj-kondo cache
     - The console log and reports now show clj-kondo's **warnings count**, and its **errors count** when errors are found, instead of a single error for any failing run
