@@ -12402,7 +12402,7 @@
 </ul>
 <h2 id="kubescape-documentation">kubescape documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>4.0.14</strong></li>
+<li>Version in MegaLinter: <strong>4.0.16</strong></li>
 <li>Visit <a href="https://github.com/kubescape/kubescape#readme" target="_blank">Official Web Site</a></li>
 </ul>
 <p><a href="https://github.com/kubescape/kubescape" target="_blank"><img alt="kubescape - GitHub" src="https://gh-card.dev/repos/kubescape/kubescape.svg?fullname=" /></a></p>
@@ -12709,6 +12709,7 @@ Available<span class="w"> </span>Commands:
 <span class="w">  </span>operator<span class="w">      </span>The<span class="w"> </span>operator<span class="w"> </span>is<span class="w"> </span>used<span class="w"> </span>to<span class="w"> </span>communicate<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span>Kubescape<span class="w"> </span>Operator<span class="w"> </span>within<span class="w"> </span>the<span class="w"> </span>cluster<span class="w"> </span>components.
 <span class="w">  </span>patch<span class="w">         </span>Patch<span class="w"> </span>container<span class="w"> </span>images<span class="w"> </span>to<span class="w"> </span>fix<span class="w"> </span>known<span class="w"> </span>OS-level<span class="w"> </span>vulnerabilities
 <span class="w">  </span>policy<span class="w">        </span>Author<span class="w"> </span>and<span class="w"> </span><span class="nb">test</span><span class="w"> </span>custom<span class="w"> </span>Rego<span class="w"> </span>controls
+<span class="w">  </span>predict<span class="w">       </span>Predict<span class="w"> </span>the<span class="w"> </span>impact<span class="w"> </span>of<span class="w"> </span>security<span class="w"> </span>policy<span class="w"> </span>enforcement
 <span class="w">  </span>prerequisites<span class="w"> </span>Check<span class="w"> </span>prerequisites<span class="w"> </span><span class="k">for</span><span class="w"> </span>installing<span class="w"> </span>Kubescape<span class="w"> </span>Operator
 <span class="w">  </span>scan<span class="w">          </span>Scan<span class="w"> </span>a<span class="w"> </span>Kubernetes<span class="w"> </span>cluster<span class="w"> </span>or<span class="w"> </span>YAML<span class="w"> </span>files<span class="w"> </span><span class="k">for</span><span class="w"> </span>image<span class="w"> </span>vulnerabilities<span class="w"> </span>and<span class="w"> </span>misconfigurations
 <span class="w">  </span>update<span class="w">        </span>Update<span class="w"> </span>to<span class="w"> </span>latest<span class="w"> </span>release<span class="w"> </span>version
@@ -12728,7 +12729,7 @@ Use<span class="w"> </span><span class="s2">"kubescape [command] --help"</span><
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=github-releases depName=kubescape/kubescape extractVersion=^v(?&lt;version&gt;.+)$</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">KUBERNETES_KUBESCAPE_VERSION</span><span class="o">=</span><span class="m">4</span>.0.14
+<span class="k">ARG</span><span class="w"> </span><span class="nv">KUBERNETES_KUBESCAPE_VERSION</span><span class="o">=</span><span class="m">4</span>.0.16
 <span class="k">RUN</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-eu<span class="p">;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s2">"</span><span class="nv">$TARGETPLATFORM</span><span class="s2">"</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="se">\</span>
 <span class="w">      </span>linux/amd64<span class="o">)</span><span class="w"> </span><span class="nv">ARCH</span><span class="o">=</span>amd64<span class="w"> </span><span class="p">;;</span><span class="w"> </span><span class="se">\</span>
