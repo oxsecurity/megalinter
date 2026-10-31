@@ -15605,6 +15605,10 @@
 <ul>
 <li>Fixes<ul>
 <li>With <strong><code>SARIF_REPORTER: true</code></strong>, findings the linter marks as <strong>suppressed</strong> in its SARIF output (for example <code># nosemgrep</code>) no longer count as errors or warnings, and no longer appear in the console log, text reports and PR/MR comments. The SARIF reports still contain them. Fixes <a href="https://github.com/oxsecurity/megalinter/issues/9373">#9373</a></li>
+<li>Improved security: <strong>R_LINTR</strong>, <strong>POWERSHELL_POWERSHELL</strong>, <strong>POWERSHELL_POWERSHELL_FORMATTER</strong> and <strong>ARM_ARM_TTK</strong> now handle <strong>file names containing quotes or special characters</strong> safely<ul>
+<li>Files whose name contains control characters (such as a line break) are now skipped by these linters, with a warning in the log</li>
+</ul>
+</li>
 <li><strong><code>EXTENDS</code></strong> now sends <code>GITHUB_TOKEN</code> only to <code>https://raw.githubusercontent.com</code>, to read configs in private repositories. A URL that merely starts with that text no longer receives it. See <a href="https://github.com/oxsecurity/megalinter/security/advisories/GHSA-rq55-6pj8-6v8v">GHSA-rq55-6pj8-6v8v</a><ul>
 <li>Only extend from URLs hosted on an account or server owned by your organization, see <a href="https://megalinter.io/latest/config-variables/">Configuration</a></li>
 </ul>
