@@ -52,3 +52,36 @@ version = "4.2.0"
 ecosystem = "npm"
 vulnerability.ignore = true
 reason = "Shared-cache cross-user disclosure; only reachable via make-fetch-happen with the private local npm cache of a one-shot CLI. No fixed version exists."
+
+# minimatch 10.2.6 and 9.0.9 (mega-linter-runner/yarn.lock) — GHSA-g3hv-75wg-m249,
+# DoS through globparts amplification of a crafted pattern. The fix only ships in
+# minimatch 11, outside the ^9 / ^10 ranges of every parent (eslint, @npmcli/*,
+# @yeoman/*, glob 13). Not exploitable here: the patterns come from our own code
+# and from the user's local paths, never from an attacker, in a one-shot CLI.
+# Remove when the parents move to minimatch@11.
+[[PackageOverrides]]
+name = "minimatch"
+version = "10.2.6"
+ecosystem = "npm"
+vulnerability.ignore = true
+reason = "DoS via crafted glob pattern; patterns are trusted in a one-shot CLI. Fix only in minimatch 11, outside the parents' ^10 range."
+
+[[PackageOverrides]]
+name = "minimatch"
+version = "9.0.9"
+ecosystem = "npm"
+vulnerability.ignore = true
+reason = "DoS via crafted glob pattern; patterns are trusted in a one-shot CLI. Fix only in minimatch 11, outside @yeoman/transform's ^9 range."
+
+# glob 13.0.6 (mega-linter-runner/yarn.lock) — GHSA-3g3m-2fjr-6pw4, a walk keeps
+# reading the file system after its AbortSignal fired. Not exploitable here: no
+# caller relies on cancellation as a security boundary (mega-linter-runner passes
+# no signal), and the walked paths are the user's own local files. The fix only
+# ships in glob 14, outside the ^13 range of @npmcli/* and cacache.
+# Remove when the parents move to glob@14.
+[[PackageOverrides]]
+name = "glob"
+version = "13.0.6"
+ecosystem = "npm"
+vulnerability.ignore = true
+reason = "Post-abort traversal of local trusted paths; no caller relies on AbortSignal. Fix only in glob 14, outside the parents' ^13 range."
