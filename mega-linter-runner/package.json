@@ -82,7 +82,7 @@
   "author": "Nicolas Vuillamy",
   "license": "MIT",
   "dependencies": {
-    "glob": "^13.0.0",
+    "glob": "^14.0.0",
     "js-yaml": "^5.2.2",
     "open": "^11.0.0",
     "optionator": "^0.9.3",
