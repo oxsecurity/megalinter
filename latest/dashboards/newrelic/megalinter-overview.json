@@ -1,0 +1,1198 @@
+{
+  "name": "MegaLinter - Overview",
+  "description": "MegaLinter results: quality gate, errors, linters and top rules. Generated from MegaLinter payload v2.",
+  "permissions": "PUBLIC_READ_WRITE",
+  "variables": [
+    {
+      "name": "gitRepoName",
+      "title": "Repository (Repository detail page)",
+      "type": "NRQL",
+      "isMultiSelection": false,
+      "replacementStrategy": "STRING",
+      "nrqlQuery": {
+        "accountIds": [
+          "${NEW_RELIC_ACCOUNT_ID}"
+        ],
+        "query": "SELECT uniques(gitRepoName) FROM Metric WHERE source = 'MegaLinter' SINCE 30 days ago"
+      },
+      "defaultValues": [
+        {
+          "value": {
+            "string": "%"
+          }
+        }
+      ],
+      "options": {
+        "ignoreTimeRange": true
+      }
+    },
+    {
+      "name": "gitBranchName",
+      "title": "Branch",
+      "type": "NRQL",
+      "isMultiSelection": false,
+      "replacementStrategy": "STRING",
+      "nrqlQuery": {
+        "accountIds": [
+          "${NEW_RELIC_ACCOUNT_ID}"
+        ],
+        "query": "SELECT uniques(gitBranchName) FROM Metric WHERE source = 'MegaLinter' SINCE 30 days ago"
+      },
+      "defaultValues": [
+        {
+          "value": {
+            "string": "%"
+          }
+        }
+      ],
+      "options": {
+        "ignoreTimeRange": true
+      }
+    }
+  ],
+  "pages": [
+    {
+      "name": "Overview",
+      "widgets": [
+        {
+          "title": "Quality gate pass rate (%)",
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "width": 3,
+            "height": 3
+          },
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${NEW_RELIC_ACCOUNT_ID}"
+                ],
+                "query": "SELECT average(`megalinter.run.qualityGate`) * 100 AS 'Pass rate %' FROM Metric WHERE source = 'MegaLinter' AND gitBranchName LIKE {{gitBranchName}} SINCE 30 days ago"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Quality gate failure rate (%)",
+          "layout": {
+            "column": 4,
+            "row": 1,
+            "width": 3,
+            "height": 3
+          },
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${NEW_RELIC_ACCOUNT_ID}"
+                ],
+                "query": "SELECT (1 - average(`megalinter.run.qualityGate`)) * 100 AS 'Failure rate %' FROM Metric WHERE source = 'MegaLinter' AND gitBranchName LIKE {{gitBranchName}} SINCE 30 days ago"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "thresholds": [
+              {
+                "alertSeverity": "WARNING",
+                "value": 1
+              },
+              {
+                "alertSeverity": "CRITICAL",
+                "value": 25
+              }
+            ]
+          }
+        },
+        {
+          "title": "Blocking errors",
+          "layout": {
+            "column": 7,
+            "row": 1,
+            "width": 3,
+            "height": 3
+          },
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${NEW_RELIC_ACCOUNT_ID}"
+                ],
+                "query": "SELECT latest(`megalinter.run.blockingErrors`) AS 'Blocking errors' FROM Metric WHERE source = 'MegaLinter' AND gitBranchName LIKE {{gitBranchName}} FACET gitRepoName LIMIT 50 SINCE 30 days ago"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "thresholds": [
+              {
+                "alertSeverity": "WARNING",
+                "value": 1
+              },
+              {
+                "alertSeverity": "CRITICAL",
+                "value": 10
+              }
+            ]
+          },
+          "linkedEntityGuids": [
+            "__REPOSITORY_DETAIL_PAGE_GUID__"
+          ]
+        },
+        {
+          "title": "Errors auto-fixed",
+          "layout": {
+            "column": 10,
+            "row": 1,
+            "width": 3,
+            "height": 3
+          },
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${NEW_RELIC_ACCOUNT_ID}"
+                ],
+                "query": "SELECT sum(`megalinter.run.totalErrorsFixed`) AS 'Errors fixed' FROM Metric WHERE source = 'MegaLinter' AND gitBranchName LIKE {{gitBranchName}} FACET gitRepoName LIMIT 50 SINCE 30 days ago"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          },
+          "linkedEntityGuids": [
+            "__REPOSITORY_DETAIL_PAGE_GUID__"
+          ]
+        },
+        {
+          "title": "Repository health score evolution",
+          "layout": {
+            "column": 1,
+            "row": 4,
+            "width": 6,
+            "height": 3
+          },
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${NEW_RELIC_ACCOUNT_ID}"
+                ],
+                "query": "SELECT max(`megalinter.run.healthScore`) FROM Metric WHERE source = 'MegaLinter' AND gitBranchName LIKE {{gitBranchName}} FACET gitRepoName LIMIT 25 TIMESERIES 1 day SINCE 30 days ago"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          },
+          "linkedEntityGuids": [
+            "__REPOSITORY_DETAIL_PAGE_GUID__"
+          ]
+        },
+        {
+          "title": "Run duration by repository (s)",
+          "layout": {
+            "column": 7,
+            "row": 4,
+            "width": 6,
+            "height": 3
+          },
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${NEW_RELIC_ACCOUNT_ID}"
+                ],
+                "query": "SELECT max(`megalinter.run.runDurationS`) FROM Metric WHERE source = 'MegaLinter' AND gitBranchName LIKE {{gitBranchName}} FACET gitRepoName LIMIT 25 TIMESERIES 1 day SINCE 30 days ago"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          },
+          "linkedEntityGuids": [
+            "__REPOSITORY_DETAIL_PAGE_GUID__"
+          ]
+        },
+        {
+          "title": "Errors by linter",
+          "layout": {
+            "column": 1,
+            "row": 7,
+            "width": 4,
+            "height": 4
+          },
+          "visualization": {
+            "id": "viz.bar"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${NEW_RELIC_ACCOUNT_ID}"
+                ],
+                "query": "SELECT max(`megalinter.linter.numberErrorsFound`) FROM Metric WHERE source = 'MegaLinter' AND gitBranchName LIKE {{gitBranchName}} FACET linterKey SINCE 30 days ago LIMIT 15"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Top rules",
+          "layout": {
+            "column": 5,
+            "row": 7,
+            "width": 4,
+            "height": 4
+          },
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${NEW_RELIC_ACCOUNT_ID}"
+                ],
+                "query": "SELECT sum(occurrences) AS 'Occurrences' FROM Log WHERE recordType = 'rule' AND source = 'MegaLinter' AND gitBranchName LIKE {{gitBranchName}} FACET ruleId, linterKey SINCE 30 days ago LIMIT 20"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Top files",
+          "layout": {
+            "column": 9,
+            "row": 7,
+            "width": 4,
+            "height": 4
+          },
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${NEW_RELIC_ACCOUNT_ID}"
+                ],
+                "query": "SELECT sum(occurrences) AS 'Occurrences' FROM Log WHERE recordType = 'file' AND source = 'MegaLinter' AND gitBranchName LIKE {{gitBranchName}} FACET file, linterKey SINCE 30 days ago LIMIT 20"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Runs (period)",
+          "layout": {
+            "column": 1,
+            "row": 11,
+            "width": 2,
+            "height": 3
+          },
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${NEW_RELIC_ACCOUNT_ID}"
+                ],
+                "query": "SELECT count(*) AS 'Runs' FROM Log WHERE recordType = 'run' AND source = 'MegaLinter' AND gitBranchName LIKE {{gitBranchName}} SINCE 30 days ago"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Time saved by auto-fixes (min)",
+          "layout": {
+            "column": 3,
+            "row": 11,
+            "width": 2,
+            "height": 3
+          },
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${NEW_RELIC_ACCOUNT_ID}"
+                ],
+                "query": "SELECT sum(`megalinter.run.totalErrorsFixed`) * 5 AS 'Minutes saved' FROM Metric WHERE source = 'MegaLinter' AND gitBranchName LIKE {{gitBranchName}} SINCE 30 days ago"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Blocking vs non-blocking errors",
+          "layout": {
+            "column": 5,
+            "row": 11,
+            "width": 4,
+            "height": 3
+          },
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${NEW_RELIC_ACCOUNT_ID}"
+                ],
+                "query": "SELECT max(`megalinter.run.blockingErrors`) AS 'Blocking', max(`megalinter.run.nonBlockingErrors`) AS 'Non-blocking' FROM Metric WHERE source = 'MegaLinter' AND gitBranchName LIKE {{gitBranchName}} TIMESERIES 1 day SINCE 30 days ago"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "colors": {
+              "seriesOverrides": [
+                {
+                  "seriesName": "Blocking",
+                  "color": "#d62728"
+                },
+                {
+                  "seriesName": "Non-blocking",
+                  "color": "#ffbf00"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "title": "Errors auto-fixed by repository",
+          "layout": {
+            "column": 9,
+            "row": 11,
+            "width": 4,
+            "height": 3
+          },
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${NEW_RELIC_ACCOUNT_ID}"
+                ],
+                "query": "SELECT max(`megalinter.run.totalErrorsFixed`) FROM Metric WHERE source = 'MegaLinter' AND gitBranchName LIKE {{gitBranchName}} FACET gitRepoName LIMIT 25 TIMESERIES 1 day SINCE 30 days ago"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Slowest linters (s)",
+          "layout": {
+            "column": 1,
+            "row": 14,
+            "width": 4,
+            "height": 4
+          },
+          "visualization": {
+            "id": "viz.bar"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${NEW_RELIC_ACCOUNT_ID}"
+                ],
+                "query": "SELECT max(`megalinter.linter.elapsedTime`) FROM Metric WHERE source = 'MegaLinter' AND gitBranchName LIKE {{gitBranchName}} FACET linterKey SINCE 30 days ago LIMIT 15"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Files analyzed by repository",
+          "layout": {
+            "column": 5,
+            "row": 14,
+            "width": 4,
+            "height": 4
+          },
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${NEW_RELIC_ACCOUNT_ID}"
+                ],
+                "query": "SELECT max(`megalinter.run.filesAnalyzed`) FROM Metric WHERE source = 'MegaLinter' AND gitBranchName LIKE {{gitBranchName}} FACET gitRepoName LIMIT 25 TIMESERIES 1 day SINCE 30 days ago"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "MegaLinter versions",
+          "layout": {
+            "column": 9,
+            "row": 14,
+            "width": 4,
+            "height": 4
+          },
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${NEW_RELIC_ACCOUNT_ID}"
+                ],
+                "query": "SELECT latest(`megalinter.megalinterVersion`) AS 'Version', latest(`megalinter.megalinterFlavor`) AS 'Flavor' FROM Log WHERE recordType = 'run' AND source = 'MegaLinter' AND gitBranchName LIKE {{gitBranchName}} FACET gitRepoName SINCE 30 days ago LIMIT 50"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Rating (A-E)",
+          "layout": {
+            "column": 1,
+            "row": 18,
+            "width": 4,
+            "height": 4
+          },
+          "visualization": {
+            "id": "viz.pie"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${NEW_RELIC_ACCOUNT_ID}"
+                ],
+                "query": "SELECT count(*) FROM Metric WHERE metricName = 'megalinter.run.healthScore' AND source = 'MegaLinter' AND gitRepoName LIKE {{gitRepoName}} AND gitBranchName LIKE {{gitBranchName}} FACET cases(WHERE `megalinter.run.healthScore` >= 90 AS 'A', WHERE `megalinter.run.healthScore` >= 80 AS 'B', WHERE `megalinter.run.healthScore` >= 65 AS 'C', WHERE `megalinter.run.healthScore` >= 50 AS 'D', WHERE `megalinter.run.healthScore` < 50 AS 'E') SINCE 30 days ago"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          },
+          "linkedEntityGuids": [
+            "__RATING_PAGE_GUID__"
+          ]
+        },
+        {
+          "title": "Top auto-fixing linters",
+          "layout": {
+            "column": 5,
+            "row": 18,
+            "width": 8,
+            "height": 4
+          },
+          "visualization": {
+            "id": "viz.bar"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${NEW_RELIC_ACCOUNT_ID}"
+                ],
+                "query": "SELECT sum(`megalinter.linter.numberErrorsFixed`) AS 'Errors fixed' FROM Metric WHERE source = 'MegaLinter' AND gitBranchName LIKE {{gitBranchName}} FACET linterKey SINCE 30 days ago LIMIT 15"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Total errors by repository",
+          "layout": {
+            "column": 1,
+            "row": 22,
+            "width": 12,
+            "height": 3
+          },
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${NEW_RELIC_ACCOUNT_ID}"
+                ],
+                "query": "SELECT max(`megalinter.run.totalErrors`) FROM Metric WHERE source = 'MegaLinter' AND gitBranchName LIKE {{gitBranchName}} FACET gitRepoName LIMIT 25 TIMESERIES 1 day SINCE 30 days ago"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          },
+          "linkedEntityGuids": [
+            "__REPOSITORY_DETAIL_PAGE_GUID__"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Repository detail",
+      "widgets": [
+        {
+          "title": "Health score",
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "width": 4,
+            "height": 3
+          },
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${NEW_RELIC_ACCOUNT_ID}"
+                ],
+                "query": "SELECT latest(`megalinter.run.healthScore`) AS 'Health score' FROM Metric WHERE source = 'MegaLinter' AND gitBranchName LIKE {{gitBranchName}} AND gitRepoName LIKE {{gitRepoName}} SINCE 30 days ago"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          },
+          "linkedEntityGuids": [
+            "__RATING_PAGE_GUID__"
+          ]
+        },
+        {
+          "title": "Quality gate",
+          "layout": {
+            "column": 5,
+            "row": 1,
+            "width": 4,
+            "height": 3
+          },
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${NEW_RELIC_ACCOUNT_ID}"
+                ],
+                "query": "SELECT latest(`megalinter.run.qualityGate`) AS 'Quality gate (1=pass)' FROM Metric WHERE source = 'MegaLinter' AND gitBranchName LIKE {{gitBranchName}} AND gitRepoName LIKE {{gitRepoName}} SINCE 30 days ago"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Errors auto-fixed",
+          "layout": {
+            "column": 9,
+            "row": 1,
+            "width": 4,
+            "height": 3
+          },
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${NEW_RELIC_ACCOUNT_ID}"
+                ],
+                "query": "SELECT latest(`megalinter.run.totalErrorsFixed`) AS 'Errors fixed' FROM Metric WHERE source = 'MegaLinter' AND gitBranchName LIKE {{gitBranchName}} AND gitRepoName LIKE {{gitRepoName}} SINCE 30 days ago"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Health score evolution",
+          "layout": {
+            "column": 1,
+            "row": 4,
+            "width": 6,
+            "height": 3
+          },
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${NEW_RELIC_ACCOUNT_ID}"
+                ],
+                "query": "SELECT max(`megalinter.run.healthScore`) FROM Metric WHERE source = 'MegaLinter' AND gitBranchName LIKE {{gitBranchName}} AND gitRepoName LIKE {{gitRepoName}} FACET gitBranchName TIMESERIES 1 day SINCE 30 days ago"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Blocking vs non-blocking errors",
+          "layout": {
+            "column": 7,
+            "row": 4,
+            "width": 6,
+            "height": 3
+          },
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${NEW_RELIC_ACCOUNT_ID}"
+                ],
+                "query": "SELECT max(`megalinter.run.blockingErrors`) AS 'Blocking', max(`megalinter.run.nonBlockingErrors`) AS 'Non-blocking' FROM Metric WHERE source = 'MegaLinter' AND gitBranchName LIKE {{gitBranchName}} AND gitRepoName LIKE {{gitRepoName}} TIMESERIES 1 day SINCE 30 days ago"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "colors": {
+              "seriesOverrides": [
+                {
+                  "seriesName": "Blocking",
+                  "color": "#d62728"
+                },
+                {
+                  "seriesName": "Non-blocking",
+                  "color": "#ffbf00"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "title": "Errors by linter over time",
+          "layout": {
+            "column": 1,
+            "row": 7,
+            "width": 6,
+            "height": 3
+          },
+          "visualization": {
+            "id": "viz.area"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${NEW_RELIC_ACCOUNT_ID}"
+                ],
+                "query": "SELECT max(`megalinter.linter.numberErrorsFound`) FROM Metric WHERE source = 'MegaLinter' AND gitBranchName LIKE {{gitBranchName}} AND gitRepoName LIKE {{gitRepoName}} FACET linterKey TIMESERIES 1 day SINCE 30 days ago"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Errors by language over time",
+          "layout": {
+            "column": 7,
+            "row": 7,
+            "width": 6,
+            "height": 3
+          },
+          "visualization": {
+            "id": "viz.area"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${NEW_RELIC_ACCOUNT_ID}"
+                ],
+                "query": "SELECT sum(`megalinter.linter.numberErrorsFound`) FROM Metric WHERE source = 'MegaLinter' AND gitBranchName LIKE {{gitBranchName}} AND gitRepoName LIKE {{gitRepoName}} FACET descriptor TIMESERIES 1 day SINCE 30 days ago"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Slowest linters (s)",
+          "layout": {
+            "column": 1,
+            "row": 10,
+            "width": 4,
+            "height": 3
+          },
+          "visualization": {
+            "id": "viz.bar"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${NEW_RELIC_ACCOUNT_ID}"
+                ],
+                "query": "SELECT max(`megalinter.linter.elapsedTime`) FROM Metric WHERE source = 'MegaLinter' AND gitBranchName LIKE {{gitBranchName}} AND gitRepoName LIKE {{gitRepoName}} FACET linterKey SINCE 30 days ago LIMIT 15"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Top rules",
+          "layout": {
+            "column": 5,
+            "row": 10,
+            "width": 4,
+            "height": 3
+          },
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${NEW_RELIC_ACCOUNT_ID}"
+                ],
+                "query": "SELECT sum(occurrences) AS 'Occurrences' FROM Log WHERE recordType = 'rule' AND source = 'MegaLinter' AND gitBranchName LIKE {{gitBranchName}} AND gitRepoName LIKE {{gitRepoName}} FACET ruleId, linterKey SINCE 30 days ago LIMIT 20"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Top files",
+          "layout": {
+            "column": 9,
+            "row": 10,
+            "width": 4,
+            "height": 3
+          },
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${NEW_RELIC_ACCOUNT_ID}"
+                ],
+                "query": "SELECT sum(occurrences) AS 'Occurrences' FROM Log WHERE recordType = 'file' AND source = 'MegaLinter' AND gitBranchName LIKE {{gitBranchName}} AND gitRepoName LIKE {{gitRepoName}} FACET file, linterKey SINCE 30 days ago LIMIT 20"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Run duration (s)",
+          "layout": {
+            "column": 1,
+            "row": 13,
+            "width": 6,
+            "height": 3
+          },
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${NEW_RELIC_ACCOUNT_ID}"
+                ],
+                "query": "SELECT max(`megalinter.run.runDurationS`) FROM Metric WHERE source = 'MegaLinter' AND gitBranchName LIKE {{gitBranchName}} AND gitRepoName LIKE {{gitRepoName}} TIMESERIES 1 day SINCE 30 days ago"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Files analyzed",
+          "layout": {
+            "column": 7,
+            "row": 13,
+            "width": 6,
+            "height": 3
+          },
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${NEW_RELIC_ACCOUNT_ID}"
+                ],
+                "query": "SELECT max(`megalinter.run.filesAnalyzed`) FROM Metric WHERE source = 'MegaLinter' AND gitBranchName LIKE {{gitBranchName}} AND gitRepoName LIKE {{gitRepoName}} TIMESERIES 1 day SINCE 30 days ago"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Why this rating?",
+      "widgets": [
+        {
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "width": 6,
+            "height": 4
+          },
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "## How the rating / health score is computed\n\nHealth score (0-100) = `100 x (linters in success + 0.5 x linters with non-blocking errors) / total linters`\n\n| Rating | Health score |\n|---|---|\n| A | >= 90 |\n| B | >= 80 |\n| C | >= 65 |\n| D | >= 50 |\n| E | < 50 |\n\nTo improve it: fix the linters in error first (full share each), then the warnings (half share each). Use the Repository and Branch variables to focus this page."
+          }
+        },
+        {
+          "title": "Health score",
+          "layout": {
+            "column": 7,
+            "row": 1,
+            "width": 3,
+            "height": 3
+          },
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${NEW_RELIC_ACCOUNT_ID}"
+                ],
+                "query": "SELECT latest(`megalinter.run.healthScore`) AS 'Health score' FROM Metric WHERE source = 'MegaLinter' AND gitRepoName LIKE {{gitRepoName}} AND gitBranchName LIKE {{gitBranchName}} SINCE 30 days ago"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Total linters",
+          "layout": {
+            "column": 10,
+            "row": 1,
+            "width": 3,
+            "height": 3
+          },
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${NEW_RELIC_ACCOUNT_ID}"
+                ],
+                "query": "SELECT latest(`megalinter.run.lintersCount`) AS 'Linters' FROM Metric WHERE source = 'MegaLinter' AND gitRepoName LIKE {{gitRepoName}} AND gitBranchName LIKE {{gitBranchName}} SINCE 30 days ago"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Linters in success",
+          "layout": {
+            "column": 1,
+            "row": 5,
+            "width": 4,
+            "height": 3
+          },
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${NEW_RELIC_ACCOUNT_ID}"
+                ],
+                "query": "SELECT latest(`megalinter.run.lintersSuccess`) AS 'Success' FROM Metric WHERE source = 'MegaLinter' AND gitRepoName LIKE {{gitRepoName}} AND gitBranchName LIKE {{gitBranchName}} SINCE 30 days ago"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Linters with warnings (0.5 share)",
+          "layout": {
+            "column": 5,
+            "row": 5,
+            "width": 4,
+            "height": 3
+          },
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${NEW_RELIC_ACCOUNT_ID}"
+                ],
+                "query": "SELECT latest(`megalinter.run.lintersWarning`) AS 'Warnings' FROM Metric WHERE source = 'MegaLinter' AND gitRepoName LIKE {{gitRepoName}} AND gitBranchName LIKE {{gitBranchName}} SINCE 30 days ago"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "thresholds": [
+              {
+                "alertSeverity": "WARNING",
+                "value": 1
+              }
+            ]
+          }
+        },
+        {
+          "title": "Linters in error (0 share)",
+          "layout": {
+            "column": 9,
+            "row": 5,
+            "width": 4,
+            "height": 3
+          },
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${NEW_RELIC_ACCOUNT_ID}"
+                ],
+                "query": "SELECT latest(`megalinter.run.lintersError`) AS 'Errors' FROM Metric WHERE source = 'MegaLinter' AND gitRepoName LIKE {{gitRepoName}} AND gitBranchName LIKE {{gitBranchName}} SINCE 30 days ago"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "thresholds": [
+              {
+                "alertSeverity": "CRITICAL",
+                "value": 1
+              }
+            ]
+          }
+        },
+        {
+          "title": "Linters dragging the score down",
+          "layout": {
+            "column": 1,
+            "row": 8,
+            "width": 12,
+            "height": 4
+          },
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${NEW_RELIC_ACCOUNT_ID}"
+                ],
+                "query": "SELECT latest(`megalinter.linter.numberErrorsFound`) AS 'Errors', latest(`megalinter.linter.blocking`) AS 'Blocking' FROM Metric WHERE source = 'MegaLinter' AND gitRepoName LIKE {{gitRepoName}} AND gitBranchName LIKE {{gitBranchName}} FACET linterKey SINCE 30 days ago LIMIT 50"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

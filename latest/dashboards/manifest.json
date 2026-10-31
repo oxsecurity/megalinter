@@ -1,0 +1,129 @@
+{
+  "payloadVersion": 2,
+  "generator": ".automation/build_dashboards.py",
+  "metrics": {
+    "prometheus": [
+      "megalinter_run_qualityGate",
+      "megalinter_run_healthScore",
+      "megalinter_run_blockingErrors",
+      "megalinter_run_nonBlockingErrors",
+      "megalinter_run_totalErrors",
+      "megalinter_run_totalErrorsFixed",
+      "megalinter_run_lintersCount",
+      "megalinter_run_lintersSuccess",
+      "megalinter_run_lintersWarning",
+      "megalinter_run_lintersError",
+      "megalinter_run_filesAnalyzed",
+      "megalinter_run_runDurationS",
+      "megalinter_linter_run_numberErrorsFound",
+      "megalinter_linter_run_blocking",
+      "megalinter_linter_run_numberFilesFound",
+      "megalinter_linter_run_numberErrorsFixed",
+      "megalinter_linter_run_elapsedTime"
+    ],
+    "datadog": [
+      "megalinter.run.qualityGate",
+      "megalinter.run.healthScore",
+      "megalinter.run.blockingErrors",
+      "megalinter.run.nonBlockingErrors",
+      "megalinter.run.totalErrors",
+      "megalinter.run.totalErrorsFixed",
+      "megalinter.run.lintersCount",
+      "megalinter.run.lintersSuccess",
+      "megalinter.run.lintersWarning",
+      "megalinter.run.lintersError",
+      "megalinter.run.filesAnalyzed",
+      "megalinter.run.runDurationS",
+      "megalinter.linter.numberErrorsFound",
+      "megalinter.linter.blocking",
+      "megalinter.linter.numberFilesFound",
+      "megalinter.linter.numberErrorsFixed",
+      "megalinter.linter.elapsedTime"
+    ],
+    "newrelic": [
+      "megalinter.run.qualityGate",
+      "megalinter.run.healthScore",
+      "megalinter.run.blockingErrors",
+      "megalinter.run.nonBlockingErrors",
+      "megalinter.run.totalErrors",
+      "megalinter.run.totalErrorsFixed",
+      "megalinter.run.lintersCount",
+      "megalinter.run.lintersSuccess",
+      "megalinter.run.lintersWarning",
+      "megalinter.run.lintersError",
+      "megalinter.run.filesAnalyzed",
+      "megalinter.run.runDurationS",
+      "megalinter.linter.numberErrorsFound",
+      "megalinter.linter.blocking",
+      "megalinter.linter.numberFilesFound",
+      "megalinter.linter.numberErrorsFixed",
+      "megalinter.linter.elapsedTime"
+    ]
+  },
+  "labels": {
+    "base": [
+      "source",
+      "orgIdentifier",
+      "gitIdentifier",
+      "gitRepoName",
+      "gitBranchName"
+    ],
+    "run": [
+      "megalinterVersion",
+      "megalinterFlavor"
+    ],
+    "linter": [
+      "descriptor",
+      "linter",
+      "linterKey"
+    ],
+    "recordTypes": [
+      "run",
+      "linter",
+      "rule",
+      "file"
+    ]
+  },
+  "dashboards": [
+    {
+      "provider": "grafana",
+      "file": "grafana/megalinter-org-overview.json",
+      "uid": "megalinter-org-overview"
+    },
+    {
+      "provider": "grafana",
+      "file": "grafana/megalinter-repository.json",
+      "uid": "megalinter-repository"
+    },
+    {
+      "provider": "grafana",
+      "file": "grafana/megalinter-linter-detail.json",
+      "uid": "megalinter-linter-detail"
+    },
+    {
+      "provider": "grafana",
+      "file": "grafana/megalinter-rules-files.json",
+      "uid": "megalinter-rules-files"
+    },
+    {
+      "provider": "grafana",
+      "file": "grafana/megalinter-rating.json",
+      "uid": "megalinter-rating"
+    },
+    {
+      "provider": "datadog",
+      "file": "datadog/megalinter-overview.json",
+      "title": "MegaLinter - Overview"
+    },
+    {
+      "provider": "newrelic",
+      "file": "newrelic/megalinter-overview.json",
+      "title": "MegaLinter - Overview"
+    },
+    {
+      "provider": "elastic",
+      "file": "elastic/megalinter-dashboards.ndjson",
+      "title": "MegaLinter - Overview"
+    }
+  ]
+}
