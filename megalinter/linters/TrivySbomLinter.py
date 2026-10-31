@@ -6,15 +6,18 @@ Use Trivy to generate SBOM (Software bill of materials)
 import json
 import os
 
-from megalinter import Linter, config, utils
+from megalinter import config, utils
 from megalinter.constants import (
     DEFAULT_SARIF_SCHEMA_URI,
     DEFAULT_SARIF_VERSION,
     ML_DOC_URL_DESCRIPTORS_ROOT,
 )
+from megalinter.linters.TrivyLinter import TrivyLinter
 
 
-class TrivySbomLinter(Linter):
+# Inherits from TrivyLinter to get the vulnerability database mirrors and
+# download retries: trivy-sbom queries the very same registries
+class TrivySbomLinter(TrivyLinter):
     # Provide additional details in text reporter logs
     # Add SBOM output file
     # noinspection PyMethodMayBeStatic
