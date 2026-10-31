@@ -1,0 +1,136 @@
+/* stylelint-disable SelectorFormat, selector-class-pattern */
+
+/* Satoshi (Indian Type Foundry, via Fontshare) — self-hosted.
+   The theme `font:` option only understands Google Fonts, so Satoshi is
+   declared here and wired up through --md-text-font below. */
+@font-face {
+  font-family: "Satoshi";
+  src: url("../assets/fonts/Satoshi-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("../assets/fonts/Satoshi-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("../assets/fonts/Satoshi-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("../assets/fonts/Satoshi-900.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* The theme wraps this in its own fallback stack, so it must be a single
+   family name. A comma-separated list here becomes one quoted family that
+   matches nothing — which is what silently disabled Satoshi before. */
+:root {
+  --md-text-font: "Satoshi";
+}
+
+.megalinter-banner {
+  height: 50px;
+  max-height: 150px;
+}
+
+.megalinter-logo {
+  height: 70px;
+  max-height: 70px;
+}
+
+.megalinter-icon {
+  max-height: 32px;
+  max-width: 32px;
+}
+
+.md-typeset__table {
+  min-width: 100%;
+}
+
+.md-typeset table:not([class]) {
+  display: table;
+}
+
+/* light mode table header bgcolor */
+.md-typeset__table th {
+  background-color: #eaedfe;
+}
+
+/* dark mode table header bgcolor */
+[data-md-color-scheme="slate"] .md-typeset__table th {
+  background-color: hsla(var(--md-hue),25%,25%,1)
+}
+
+/* light mode alternating table bg colors */
+.md-typeset__table tr:nth-child(2n) {
+  background-color: #f7f7ff;
+}
+
+/* dark mode alternating table bg colors */
+[data-md-color-scheme="slate"] .md-typeset__table tr:nth-child(2n) {
+  background-color: hsla(var(--md-hue),25%,25%,1)
+}
+
+/* OX Security palette (https://www.ox.security)
+   navy #061C37 / #07224A, indigo #3F11F7, lime #C6F43C, off-white #F7F7FF.
+   Scoped per scheme so the slate overrides below are not clobbered: an
+   unscoped :root rule has the same specificity and would win by order. */
+[data-md-color-scheme="default"] {
+  --md-default-fg-color: #061c37;
+  --md-default-fg-color--light: #4a5a6e;
+  --md-default-fg-color--lighter: #959ea9;
+  --md-default-fg-color--lightest: #e8e8ed;
+  --md-default-bg-color: #fff;
+  --md-default-bg-color--light: #f7f7ff;
+  --md-default-bg-color--lighter: #f7f7ff;
+  --md-default-bg-color--lightest: #fff;
+  --md-primary-fg-color: #061c37;
+  --md-primary-fg-color--light: #07224a;
+  --md-primary-fg-color--dark: #03101f;
+  --md-primary-bg-color: #fff;
+  --md-primary-bg-color--light: #f7f7ff;
+  --md-accent-fg-color: #3f11f7;
+  --md-accent-fg-color--transparent: rgba(63, 17, 247, 0.1);
+  --md-accent-bg-color: #fff;
+  --md-accent-bg-color--light: #f7f7ff;
+  --md-typeset-a-color: #3f11f7;
+  --md-typeset-mark-color: #e3ff8f;
+  --md-footer-bg-color: #061c37;
+  --md-footer-bg-color--dark: #03101f;
+  --md-typeset-table-color--light: #eaedfe;
+}
+
+/* Navy slate: --md-hue drives every computed dark surface in the theme. */
+[data-md-color-scheme="slate"] {
+  --md-hue: 212;
+  --md-default-bg-color: #061c37;
+  --md-primary-fg-color: #061c37;
+  --md-primary-fg-color--light: #07224a;
+  --md-primary-fg-color--dark: #03101f;
+  --md-primary-bg-color: #f7f7ff;
+  --md-primary-bg-color--light: #fff;
+
+  /* Indigo is unreadable on navy, so dark mode leans on the lime accent. */
+  --md-accent-fg-color: #c6f43c;
+  --md-accent-fg-color--transparent: rgba(198, 244, 60, 0.1);
+  --md-accent-bg-color: #061c37;
+  --md-accent-bg-color--light: #07224a;
+  --md-typeset-a-color: #c6f43c;
+  --md-typeset-mark-color: rgba(198, 244, 60, 0.3);
+  --md-footer-bg-color: #03101f;
+  --md-footer-bg-color--dark: #020b16;
+}
