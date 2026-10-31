@@ -14,20 +14,35 @@ from megalinter import Linter
 class RLinter(Linter):
     _r_sarif_report = None
 
+    def collect_files(self, all_files):
+        super().collect_files(all_files)
+        self.drop_files_unsafe_for_interpreter()
+
     # Build the CLI command to call to lint a file
     def build_lint_command(self, file=None):
+        # Paths are passed through environment variables: writing them in the
+        # R script would let a quote in a file name run as R code
+        self.lint_command_env = {
+            "MEGALINTER_LINT_FILE_DIR": str(Path(file).parent),
+            "MEGALINTER_LINT_FILE_NAME": Path(file).name,
+            "MEGALINTER_LINT_CONFIG_FILE_NAME": str(self.config_file_name),
+        }
         # Build command in R format
         r_commands = [
             # Change the working directory to match the file
-            f"setwd('{Path(file).parent}')",
+            "setwd(Sys.getenv('MEGALINTER_LINT_FILE_DIR'))",
             # Instruct lintr to walk up the directory tree
-            f"lintr:::read_settings('{self.config_file_name}')",
-            f"lints <- lintr::lint('{Path(file).name}')",
+            "lintr:::read_settings(Sys.getenv('MEGALINTER_LINT_CONFIG_FILE_NAME'))",
+            "lints <- lintr::lint(Sys.getenv('MEGALINTER_LINT_FILE_NAME'))",
         ]
 
         if self.config_file:
+            self.lint_command_env["MEGALINTER_LINT_CONFIG_FILE"] = str(self.config_file)
             # Instruct lintr to load an absolute filepath
-            r_commands.insert(0, f"options('lintr.linter_file' = '{self.config_file}')")
+            r_commands.insert(
+                0,
+                "options('lintr.linter_file' = Sys.getenv('MEGALINTER_LINT_CONFIG_FILE'))",
+            )
 
         # RLinter builds its own R -e command instead of going through
         # complete_command_line(), so it bypasses the standard SARIF argument

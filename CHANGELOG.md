@@ -34,6 +34,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Fixes
   - With **`SARIF_REPORTER: true`**, findings the linter marks as **suppressed** in its SARIF output (for example `# nosemgrep`) no longer count as errors or warnings, and no longer appear in the console log, text reports and PR/MR comments. The SARIF reports still contain them. Fixes [#9373](https://github.com/oxsecurity/megalinter/issues/9373)
+  - Improved security: **R_LINTR**, **POWERSHELL_POWERSHELL**, **POWERSHELL_POWERSHELL_FORMATTER** and **ARM_ARM_TTK** now handle **file names containing quotes or special characters** safely
+    - Files whose name contains control characters (such as a line break) are now skipped by these linters, with a warning in the log
   - **`EXTENDS`** now sends `GITHUB_TOKEN` only to `https://raw.githubusercontent.com`, to read configs in private repositories. A URL that merely starts with that text no longer receives it. See [GHSA-rq55-6pj8-6v8v](https://github.com/oxsecurity/megalinter/security/advisories/GHSA-rq55-6pj8-6v8v)
     - Only extend from URLs hosted on an account or server owned by your organization, see [Configuration](https://megalinter.io/latest/config-variables/)
   - **SPELL_LYCHEE** now applies the `.lycheeignore` rules MegaLinter finds outside the repository root (for example in `.github/linters` with **`LINTER_RULES_PATH`**). Fixes [#9281](https://github.com/oxsecurity/megalinter/issues/9281)

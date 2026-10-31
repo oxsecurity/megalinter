@@ -48,6 +48,7 @@
     "**/README.md",
     "**/skills/**/*.md",
     "**/licenses/*.md",
-    "**/TEMPLATES/java-pmd-ruleset.xml"
+    "**/TEMPLATES/java-pmd-ruleset.xml",
+    "**/osv-scanner.toml"
   ]
 }
