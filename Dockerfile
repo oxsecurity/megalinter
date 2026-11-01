@@ -294,7 +294,7 @@ ARG KUBERNETES_KUBESCAPE_VERSION=4.0.16
 ARG LUA_LUACHECK_VERSION=3.3.1
 
 # renovate: datasource=npm depName=markdownlint-cli
-ARG NPM_MARKDOWNLINT_CLI_VERSION=0.49.1
+ARG NPM_MARKDOWNLINT_CLI_VERSION=0.50.0
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=2.1.0
 # renovate: datasource=pypi depName=rumdl
