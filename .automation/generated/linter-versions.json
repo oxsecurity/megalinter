@@ -65,7 +65,7 @@
     "luacheck": "1.2.0",
     "lychee": "0.24.2",
     "markdown-link-check": "3.12.2",
-    "markdown-table-formatter": "1.7.0",
+    "markdown-table-formatter": "2.1.0",
     "markdownlint": "0.49.1",
     "misspell": "0.3.4",
     "mypy": "1.19.1",

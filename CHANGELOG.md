@@ -43,6 +43,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - CI
 
 - Linter versions upgrades (N)
+  - [markdown-table-formatter](https://www.npmjs.com/package/markdown-table-formatter) from 1.7.0 to **2.1.0** on 2026-11-02
 <!-- linter-versions-end -->
 
 ## [v10.2.0] - 2026-10-31

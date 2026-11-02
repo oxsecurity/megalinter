@@ -4,28 +4,28 @@
 <text x="70.0" y="62.0" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="13" fill="#52514e">New pulls per month, all images (main + flavors + standalone), all registries and historical image names - 29.2M pulls in total</text>
 <line x1="70.0" y1="425.0" x2="1120.0" y2="425.0" stroke="#c3c2b7" stroke-width="1"/>
 <line x1="70.0" y1="342.5" x2="1120.0" y2="342.5" stroke="#e1e0d9" stroke-width="1"/>
-<text x="62.0" y="346.5" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="11" fill="#898781" text-anchor="end">200k</text>
+<text x="62.0" y="346.5" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="11" fill="#898781" text-anchor="end">375k</text>
 <line x1="70.0" y1="260.0" x2="1120.0" y2="260.0" stroke="#e1e0d9" stroke-width="1"/>
-<text x="62.0" y="264.0" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="11" fill="#898781" text-anchor="end">400k</text>
+<text x="62.0" y="264.0" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="11" fill="#898781" text-anchor="end">750k</text>
 <line x1="70.0" y1="177.5" x2="1120.0" y2="177.5" stroke="#e1e0d9" stroke-width="1"/>
-<text x="62.0" y="181.5" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="11" fill="#898781" text-anchor="end">600k</text>
+<text x="62.0" y="181.5" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="11" fill="#898781" text-anchor="end">1.12M</text>
 <line x1="70.0" y1="95.0" x2="1120.0" y2="95.0" stroke="#e1e0d9" stroke-width="1"/>
-<text x="62.0" y="99.0" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="11" fill="#898781" text-anchor="end">800k</text>
-<path d="M77.3,425.0 L77.3,422.9 L91.9,419.9 L106.5,418.2 L121.0,416.3 L135.6,415.1 L150.2,413.7 L164.8,406.8 L179.4,399.4 L194.0,396.9 L208.5,394.5 L223.1,392.8 L237.7,388.6 L252.3,387.4 L266.9,386.4 L281.5,385.3 L296.0,383.8 L310.6,381.6 L325.2,379.8 L339.8,378.3 L354.4,377.3 L369.0,376.6 L383.5,376.1 L398.1,374.7 L412.7,373.2 L427.3,372.6 L441.9,372.2 L456.5,370.6 L471.0,368.9 L485.6,367.4 L500.2,365.9 L514.8,363.8 L529.4,358.3 L544.0,353.7 L558.5,352.5 L573.1,350.8 L587.7,349.5 L602.3,348.0 L616.9,346.1 L631.5,341.6 L646.0,337.9 L660.6,334.7 L675.2,331.6 L689.8,327.1 L704.4,324.0 L719.0,320.5 L733.5,316.7 L748.1,311.2 L762.7,309.9 L777.3,301.8 L791.9,299.0 L806.5,296.7 L821.0,290.4 L835.6,287.0 L850.2,284.1 L864.8,281.6 L879.4,278.2 L894.0,275.2 L908.5,268.6 L923.1,262.1 L937.7,252.2 L952.3,241.3 L966.9,236.7 L981.5,233.2 L996.0,230.2 L1010.6,223.8 L1025.2,217.1 L1039.8,213.0 L1054.4,208.6 L1069.0,203.7 L1083.5,200.1 L1098.1,180.1 L1112.7,104.3 L1112.7,425.0 Z" fill="#2a78d6" fill-opacity="0.10"/>
-<polyline points="77.3,422.9 91.9,419.9 106.5,418.2 121.0,416.3 135.6,415.1 150.2,413.7 164.8,406.8 179.4,399.4 194.0,396.9 208.5,394.5 223.1,392.8 237.7,388.6 252.3,387.4 266.9,386.4 281.5,385.3 296.0,383.8 310.6,381.6 325.2,379.8 339.8,378.3 354.4,377.3 369.0,376.6 383.5,376.1 398.1,374.7 412.7,373.2 427.3,372.6 441.9,372.2 456.5,370.6 471.0,368.9 485.6,367.4 500.2,365.9 514.8,363.8 529.4,358.3 544.0,353.7 558.5,352.5 573.1,350.8 587.7,349.5 602.3,348.0 616.9,346.1 631.5,341.6 646.0,337.9 660.6,334.7 675.2,331.6 689.8,327.1 704.4,324.0 719.0,320.5 733.5,316.7 748.1,311.2 762.7,309.9 777.3,301.8 791.9,299.0 806.5,296.7 821.0,290.4 835.6,287.0 850.2,284.1 864.8,281.6 879.4,278.2 894.0,275.2 908.5,268.6 923.1,262.1 937.7,252.2 952.3,241.3 966.9,236.7 981.5,233.2 996.0,230.2 1010.6,223.8 1025.2,217.1 1039.8,213.0 1054.4,208.6 1069.0,203.7 1083.5,200.1 1098.1,180.1 1112.7,104.3" fill="none" stroke="#2a78d6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="1112.7" cy="104.3" r="6" fill="#fcfcfb"/>
-<circle cx="1112.7" cy="104.3" r="4" fill="#2a78d6"/>
-<text x="1122.7" y="108.3" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="12" font-weight="650" fill="#0b0b0b">+777k</text>
-<line x1="121.0" y1="425.0" x2="121.0" y2="429.0" stroke="#c3c2b7" stroke-width="1"/>
-<text x="121.0" y="443.0" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="11" fill="#898781" text-anchor="middle">2021</text>
-<line x1="296.0" y1="425.0" x2="296.0" y2="429.0" stroke="#c3c2b7" stroke-width="1"/>
-<text x="296.0" y="443.0" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="11" fill="#898781" text-anchor="middle">2022</text>
-<line x1="471.0" y1="425.0" x2="471.0" y2="429.0" stroke="#c3c2b7" stroke-width="1"/>
-<text x="471.0" y="443.0" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="11" fill="#898781" text-anchor="middle">2023</text>
-<line x1="646.0" y1="425.0" x2="646.0" y2="429.0" stroke="#c3c2b7" stroke-width="1"/>
-<text x="646.0" y="443.0" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="11" fill="#898781" text-anchor="middle">2024</text>
-<line x1="821.0" y1="425.0" x2="821.0" y2="429.0" stroke="#c3c2b7" stroke-width="1"/>
-<text x="821.0" y="443.0" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="11" fill="#898781" text-anchor="middle">2025</text>
-<line x1="996.0" y1="425.0" x2="996.0" y2="429.0" stroke="#c3c2b7" stroke-width="1"/>
-<text x="996.0" y="443.0" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="11" fill="#898781" text-anchor="middle">2026</text>
+<text x="62.0" y="99.0" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="11" fill="#898781" text-anchor="end">1.50M</text>
+<path d="M77.2,425.0 L77.2,423.9 L91.6,422.3 L106.0,421.4 L120.3,420.4 L134.7,419.7 L149.1,419.0 L163.5,415.3 L177.9,411.3 L192.3,410.0 L206.6,408.7 L221.0,407.8 L235.4,405.6 L249.8,404.9 L264.2,404.4 L278.6,403.8 L292.9,403.0 L307.3,401.8 L321.7,400.9 L336.1,400.1 L350.5,399.5 L364.9,399.2 L379.2,398.9 L393.6,398.2 L408.0,397.4 L422.4,397.1 L436.8,396.8 L451.2,396.0 L465.5,395.1 L479.9,394.3 L494.3,393.5 L508.7,392.3 L523.1,389.4 L537.5,387.0 L551.8,386.3 L566.2,385.5 L580.6,384.7 L595.0,383.9 L609.4,382.9 L623.8,380.5 L638.2,378.6 L652.5,376.8 L666.9,375.2 L681.3,372.8 L695.7,371.1 L710.1,369.2 L724.5,367.3 L738.8,364.3 L753.2,363.6 L767.6,359.3 L782.0,357.8 L796.4,356.6 L810.8,353.2 L825.1,351.4 L839.5,349.9 L853.9,348.5 L868.3,346.7 L882.7,345.1 L897.1,341.6 L911.4,338.1 L925.8,332.9 L940.2,327.1 L954.6,324.6 L969.0,322.7 L983.4,321.1 L997.7,317.7 L1012.1,314.1 L1026.5,311.9 L1040.9,309.6 L1055.3,307.0 L1069.7,305.1 L1084.0,294.4 L1098.4,254.0 L1112.8,176.4 L1112.8,425.0 Z" fill="#2a78d6" fill-opacity="0.10"/>
+<polyline points="77.2,423.9 91.6,422.3 106.0,421.4 120.3,420.4 134.7,419.7 149.1,419.0 163.5,415.3 177.9,411.3 192.3,410.0 206.6,408.7 221.0,407.8 235.4,405.6 249.8,404.9 264.2,404.4 278.6,403.8 292.9,403.0 307.3,401.8 321.7,400.9 336.1,400.1 350.5,399.5 364.9,399.2 379.2,398.9 393.6,398.2 408.0,397.4 422.4,397.1 436.8,396.8 451.2,396.0 465.5,395.1 479.9,394.3 494.3,393.5 508.7,392.3 523.1,389.4 537.5,387.0 551.8,386.3 566.2,385.5 580.6,384.7 595.0,383.9 609.4,382.9 623.8,380.5 638.2,378.6 652.5,376.8 666.9,375.2 681.3,372.8 695.7,371.1 710.1,369.2 724.5,367.3 738.8,364.3 753.2,363.6 767.6,359.3 782.0,357.8 796.4,356.6 810.8,353.2 825.1,351.4 839.5,349.9 853.9,348.5 868.3,346.7 882.7,345.1 897.1,341.6 911.4,338.1 925.8,332.9 940.2,327.1 954.6,324.6 969.0,322.7 983.4,321.1 997.7,317.7 1012.1,314.1 1026.5,311.9 1040.9,309.6 1055.3,307.0 1069.7,305.1 1084.0,294.4 1098.4,254.0 1112.8,176.4" fill="none" stroke="#2a78d6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1112.8" cy="176.4" r="6" fill="#fcfcfb"/>
+<circle cx="1112.8" cy="176.4" r="4" fill="#2a78d6"/>
+<text x="1122.8" y="180.4" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="12" font-weight="650" fill="#0b0b0b">+1.13M</text>
+<line x1="120.3" y1="425.0" x2="120.3" y2="429.0" stroke="#c3c2b7" stroke-width="1"/>
+<text x="120.3" y="443.0" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="11" fill="#898781" text-anchor="middle">2021</text>
+<line x1="292.9" y1="425.0" x2="292.9" y2="429.0" stroke="#c3c2b7" stroke-width="1"/>
+<text x="292.9" y="443.0" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="11" fill="#898781" text-anchor="middle">2022</text>
+<line x1="465.5" y1="425.0" x2="465.5" y2="429.0" stroke="#c3c2b7" stroke-width="1"/>
+<text x="465.5" y="443.0" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="11" fill="#898781" text-anchor="middle">2023</text>
+<line x1="638.2" y1="425.0" x2="638.2" y2="429.0" stroke="#c3c2b7" stroke-width="1"/>
+<text x="638.2" y="443.0" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="11" fill="#898781" text-anchor="middle">2024</text>
+<line x1="810.8" y1="425.0" x2="810.8" y2="429.0" stroke="#c3c2b7" stroke-width="1"/>
+<text x="810.8" y="443.0" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="11" fill="#898781" text-anchor="middle">2025</text>
+<line x1="983.4" y1="425.0" x2="983.4" y2="429.0" stroke="#c3c2b7" stroke-width="1"/>
+<text x="983.4" y="443.0" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="11" fill="#898781" text-anchor="middle">2026</text>
 </svg>
