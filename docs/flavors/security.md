@@ -34,8 +34,8 @@ Optimized for security
 
 ### Formats
 
-| <!-- --> | Format | Linter | Additional  |
-| :---: | ----------------- | -------------- | :-----:  |
+| <!-- --> | Format | Linter | Additional |
+|:--------:|--------|--------|:----------:|
 
 ### Tooling formats
 
