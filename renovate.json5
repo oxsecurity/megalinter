@@ -83,6 +83,29 @@
       ],
     },
     {
+      // Renovate's Docker datasource only supports release timestamps from Docker Hub.
+      // These packages are hosted on ghcr.io, so Renovate cannot extract timestamps and
+      // marks all versions as 'pending'. This is a documented Renovate limitation:
+      // https://docs.renovatebot.com/modules/datasource/docker/#release-timestamp-support
+      matchPackageNames: [
+        '/^ghcr\.io\/.*$/',
+      ],
+      minimumReleaseAgeBehaviour: "timestamp-optional",
+    },
+    {
+      // Renovate's git datasource does not support release timestamps. Leaving updates
+      // pending indefinitely. Keep the exception scoped to those datasources;
+      // releases with timestamps still use the configured age gate.
+      // This is a documented Renovate limitation:
+      // https://docs.renovatebot.com/modules/datasource/git-refs/#table-of-values
+      // https://docs.renovatebot.com/modules/datasource/git-tags/#table-of-values
+      matchDatasources: [
+        'git-refs',
+        'git-tags',
+      ],
+      minimumReleaseAgeBehaviour: 'timestamp-optional',
+    },
+    {
       // One Python version for every MegaLinter context: .python-version (local uv,
       // CI setup-python via python-version-file) and every python:X.Y.Z-alpine base
       // image (Dockerfile, flavors/, linters/, server/). Bump them all in the same PR,
@@ -223,7 +246,7 @@
         '/(^|/).*\\.megalinter-linter\\.ya?ml$/',
       ],
       matchStrings: [
-        '# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?\\s(?:ENV|ARG)\\s+[A-Za-z0-9_]+?_VERSION[ =]["\']?(?<currentValue>.+?)["\']?\\s',
+        '# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?\\s+(?:ENV|ARG)\\s+[A-Za-z0-9_]+?_VERSION[ =]["\']?(?<currentValue>.+?)["\']?\\s',
         '# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?\\s+(?:ENV|ARG)\\s+[A-Za-z0-9_]+?_VERSION[ =]["\']?(?<currentValue>.+?)["\']?\\s',
       ],
     },
