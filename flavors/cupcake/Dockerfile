@@ -260,7 +260,7 @@ ARG PIP_FLAKE8_VERSION=7.4.1
 # renovate: datasource=pypi depName=isort
 ARG PIP_ISORT_VERSION=9.0.2
 # renovate: datasource=pypi depName=mypy
-ARG PIP_MYPY_VERSION=1.19.1
+ARG PIP_MYPY_VERSION=2.4.0
 # renovate: datasource=pypi depName=nbqa
 ARG PIP_NBQA_VERSION=1.9.1
 # renovate: datasource=npm depName=pyright
