@@ -21,7 +21,7 @@ classifiers = [
 dependencies = [
   "gitpython",
   "jsonpickle",
-  "langchain-core~=1.6.1",
+  "langchain-core~=1.7.0",
   "pygithub",
   "pyjwt>=2.12.0",
   "pytablewriter",
