@@ -41,6 +41,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Dev
 
 - CI
+  - **Renovate** now creates PRs for dependencies from `ghcr.io`
+  - **Renovate** now creates PRs for dependencies using `git-refs` and `git-tags` datasources.
 
 - Linter versions upgrades (N)
 <!-- linter-versions-end -->
