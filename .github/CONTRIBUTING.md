@@ -100,11 +100,11 @@ Available commands can be listed with the help command by posting the following 
 
 Which returns:
 >
-> Command | Description
-> --- | ---
-> /build | Updates the Dockerfile, documentation, and other files from the yml descriptors
+> Command        | Description
+> ---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+> /build         | Updates the Dockerfile, documentation, and other files from the yml descriptors
 > /build [ref=…] | Same as /build, but executes workflow in any branch using the ref named argument. The reference can be a branch, tag, or a commit SHA. This can be useful to test workflows in PR branches before merging.
-> /help | Returns this help message
+> /help          | Returns this help message
 
 ### Without write access
 
