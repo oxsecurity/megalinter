@@ -7,16 +7,8 @@ Post a comment on the Jira tickets referenced by labels of the current Pull Requ
 import logging
 import re
 
-import github
-import gitlab
-import requests
 from atlassian import Jira
-from megalinter import Reporter, config
-from megalinter.ci_providers import (
-    CiProviderAzurePipelines,
-    CiProviderGithubActions,
-    CiProviderGitlab,
-)
+from megalinter import Reporter, ci_providers, config
 from megalinter.utils_reporter import get_linter_summary_data
 
 DEFAULT_LABEL_REGEX = r"^(?:jira[:/])?([A-Za-z][A-Za-z0-9_]+-\d+)$"
@@ -84,100 +76,18 @@ class JiraReporter(Reporter):
                 issue_keys.append(issue_key)
         return issue_keys
 
-    # Returns (labels, job url, pull request reference), labels being None when
-    # no Pull Request can be resolved on the current platform
+    # Returns (labels, report url, pull request reference), labels being None
+    # when the current platform exposes no Pull Request labels
     def get_pull_request_info(self):
-        request_id = self.master.request_id
-        if config.exists(request_id, "GITHUB_REPOSITORY"):
-            return self.get_github_pull_request_info()
-        if config.exists(request_id, "CI_PROJECT_ID"):
-            return self.get_gitlab_pull_request_info()
-        if config.exists(request_id, "SYSTEM_COLLECTIONURI"):
-            return self.get_azure_pull_request_info()
-        logging.debug(
-            "[Jira Reporter] Not running on GitHub, GitLab or Azure Pipelines, "
-            "so no Pull Request labels can be read"
-        )
-        return None, "", ""
-
-    def get_github_pull_request_info(self):
-        ci_provider = CiProviderGithubActions(self.master.request_id)
-        token = ci_provider.get_auth_token()
-        pr_number = ci_provider.get_pr_number()
-        if token is None or pr_number is None:
+        ci_provider = ci_providers.get_pr_ci_provider(self.master.request_id)
+        labels = ci_provider.get_pr_labels()
+        if labels is None:
             logging.info(
-                "[Jira Reporter] No GitHub token or Pull Request found, "
+                f"[Jira Reporter] No Pull Request labels available on {ci_provider.name}, "
                 "so no Jira comment has been posted"
             )
             return None, "", ""
-        repo_slug = ci_provider.get_repo_slug()
-        try:
-            gh = github.Github(
-                auth=github.Auth.Token(token), base_url=ci_provider.get_api_url()
-            )
-            pull_request = gh.get_repo(repo_slug).get_pull(int(pr_number))
-            labels = [label.name for label in pull_request.labels]
-        except Exception as e:
-            logging.warning(f"[Jira Reporter] Unable to read GitHub PR labels: {e}")
-            return None, "", ""
-        return labels, ci_provider.get_job_url(), f"{repo_slug} #PR{pr_number}"
-
-    def get_gitlab_pull_request_info(self):
-        ci_provider = CiProviderGitlab(self.master.request_id)
-        mr_id = ci_provider.get_pr_number()
-        if mr_id is None or (
-            ci_provider.get_auth_token() is None
-            and ci_provider.get_user_auth_token() is None
-        ):
-            logging.info(
-                "[Jira Reporter] No GitLab token or merge request found, "
-                "so no Jira comment has been posted"
-            )
-            return None, "", ""
-        project_id = ci_provider.get_project_id()
-        try:
-            gl = gitlab.Gitlab(
-                ci_provider.get_server_url(), **ci_provider.get_api_auth_options()
-            )
-            merge_request = gl.projects.get(project_id).mergerequests.get(mr_id)
-            labels = list(merge_request.labels)
-        except Exception as e:
-            logging.warning(f"[Jira Reporter] Unable to read GitLab MR labels: {e}")
-            return None, "", ""
-        return labels, ci_provider.get_job_url(), f"project {project_id} #MR{mr_id}"
-
-    def get_azure_pull_request_info(self):
-        ci_provider = CiProviderAzurePipelines(self.master.request_id)
-        pr_id = ci_provider.get_pr_number()
-        if ci_provider.get_auth_token() is None or pr_id is None:
-            logging.info(
-                "[Jira Reporter] No Azure token or Pull Request found, "
-                "so no Jira comment has been posted"
-            )
-            return None, "", ""
-        try:
-            repository_id = ci_provider.get_repository_id()
-            response = requests.get(
-                ci_provider.build_git_api_url(
-                    f"/repositories/{repository_id}/pullRequests/{pr_id}/labels"
-                ),
-                headers=ci_provider.get_api_headers(),
-                timeout=60,
-            )
-            response.raise_for_status()
-            labels = [
-                label["name"]
-                for label in response.json().get("value", [])
-                if label.get("active", True)
-            ]
-        except Exception as e:
-            logging.warning(f"[Jira Reporter] Unable to read Azure PR labels: {e}")
-            return None, "", ""
-        return (
-            labels,
-            ci_provider.get_artifacts_url(),
-            f"{ci_provider.get_team_project()} #PR{pr_id}",
-        )
+        return labels, ci_provider.get_report_url(), ci_provider.get_pr_reference()
 
     def build_jira_client(self):
         request_id = self.master.request_id
