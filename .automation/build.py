@@ -1621,7 +1621,9 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         if repo is not None and repo.github is True:
             # pylint: disable=no-member
             linter_doc_md += [
-                f"[![{repo.repo} - GitHub](https://github-stats-extended.vercel.app/api/pin/?username={repo.owner}&repo={repo.repo}&show_owner=true)]"
+                f"[![{repo.repo} - GitHub]("
+                "https://github-stats-extended.vercel.app/api/pin/"
+                f"?username={repo.owner}&repo={repo.repo}&show_owner=true)]"
                 f"(https://github.com/{repo.owner}/{repo.repo}){{target=_blank}}",
                 "",
                 # pylint: enable=no-member
@@ -4169,7 +4171,9 @@ def generate_documentation_all_users():
         repo_name = repo_name.split("/")[0]
         # pylint: disable=no-member
         linter_doc_md += [
-            f"[![{repo_full} - GitHub](https://github-stats-extended.vercel.app/api/pin/?username={repo_owner}&repo={repo_name}&show_owner=true)]"
+            f"[![{repo_full} - GitHub]("
+            "https://github-stats-extended.vercel.app/api/pin/"
+            f"?username={repo_owner}&repo={repo_name}&show_owner=true)]"
             f"(https://github.com/{repo_full}){{target=_blank}}",
         ]
         # pylint: enable=no-member
