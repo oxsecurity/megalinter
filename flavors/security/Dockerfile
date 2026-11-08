@@ -112,7 +112,7 @@ ARG TARGETARCH
 # renovate: datasource=pypi depName=ansible-lint
 ARG PIP_ANSIBLE_LINT_VERSION=26.10.1
 # renovate: datasource=pypi depName=cfn-lint
-ARG PIP_CFN_LINT_VERSION=1.58.0
+ARG PIP_CFN_LINT_VERSION=1.59.0
 # renovate: datasource=github-releases depName=kubescape/kubescape extractVersion=^v(?<version>.+)$
 ARG KUBERNETES_KUBESCAPE_VERSION=4.0.16
 # renovate: datasource=pypi depName=bandit
