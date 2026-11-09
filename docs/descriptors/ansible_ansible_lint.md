@@ -37,7 +37,7 @@ Ansible-lint helps teams maintain consistent, secure, and well-structured Ansibl
 - See [How to disable ansible-lint rules in files](https://ansible-lint.readthedocs.io/usage/#muting-warnings-to-avoid-false-positives){target=_blank}
 - See [Index of problems detected by ansible-lint](https://ansible-lint.readthedocs.io/rules/){target=_blank}
 
-[![ansible-lint - GitHub](https://gh-card.dev/repos/ansible/ansible-lint.svg?fullname=)](https://github.com/ansible/ansible-lint){target=_blank}
+[![ansible-lint - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=ansible&repo=ansible-lint&show_owner=true)](https://github.com/ansible/ansible-lint){target=_blank}
 
 ## Configuration in MegaLinter
 

@@ -34,7 +34,7 @@ description: How to use ktlint (configure, ignore files, ignore errors, help & v
 - See [How to disable ktlint rules in files](https://pinterest.github.io/ktlint/latest/faq/#how-do-i-suppress-errors-for-a-lineblockfile){target=_blank}
 - See [Index of problems detected by ktlint](https://ktlint.github.io/#rules){target=_blank}
 
-[![ktlint - GitHub](https://gh-card.dev/repos/pinterest/ktlint.svg?fullname=)](https://github.com/pinterest/ktlint){target=_blank}
+[![ktlint - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=pinterest&repo=ktlint&show_owner=true)](https://github.com/pinterest/ktlint){target=_blank}
 
 ## Configuration in MegaLinter
 

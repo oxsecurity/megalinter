@@ -32,7 +32,7 @@ description: How to use php-cs-fixer (configure, ignore files, ignore errors, he
 - See [How to disable php-cs-fixer rules in files](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/blob/master/doc/usage.rst#ignoring-code){target=_blank}
 - See [Index of problems detected by php-cs-fixer](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/blob/master/doc/rules/index.rst){target=_blank}
 
-[![PHP-CS-Fixer - GitHub](https://gh-card.dev/repos/PHP-CS-Fixer/PHP-CS-Fixer.svg?fullname=)](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer){target=_blank}
+[![PHP-CS-Fixer - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=PHP-CS-Fixer&repo=PHP-CS-Fixer&show_owner=true)](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer){target=_blank}
 
 ## Configuration in MegaLinter
 

@@ -35,7 +35,7 @@ description: How to use dotenv-linter (configure, ignore files, ignore errors, h
 - See [How to disable dotenv-linter rules in files](https://dotenv-linter.github.io/#/usage/check?id=skip-checks){target=_blank}
 - See [Index of problems detected by dotenv-linter](https://dotenv-linter.github.io/#/?id=dotenv-linter){target=_blank}
 
-[![dotenv-linter - GitHub](https://gh-card.dev/repos/dotenv-linter/dotenv-linter.svg?fullname=)](https://github.com/dotenv-linter/dotenv-linter){target=_blank}
+[![dotenv-linter - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=dotenv-linter&repo=dotenv-linter&show_owner=true)](https://github.com/dotenv-linter/dotenv-linter){target=_blank}
 
 ## Configuration in MegaLinter
 

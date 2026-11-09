@@ -26,7 +26,7 @@ description: How to use dartanalyzer (configure, ignore files, ignore errors, he
 - See [How to disable dartanalyzer rules in files](https://dart.dev/tools/analysis#ignoring-rules){target=_blank}
 - See [Index of problems detected by dartanalyzer](https://dart.dev/tools/linter-rules#rules){target=_blank}
 
-[![sdk - GitHub](https://gh-card.dev/repos/dart-lang/sdk.svg?fullname=)](https://github.com/dart-lang/sdk){target=_blank}
+[![sdk - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=dart-lang&repo=sdk&show_owner=true)](https://github.com/dart-lang/sdk){target=_blank}
 
 ## Configuration in MegaLinter
 

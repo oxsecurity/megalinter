@@ -33,7 +33,7 @@ _Disabled reason: graphql-schema-linter is unmaintained (no release or commit si
 - See [How to disable graphql-schema-linter rules in files](https://github.com/cjoudrey/graphql-schema-linter#inline-rule-overrides){target=_blank}
 - See [Index of problems detected by graphql-schema-linter](https://github.com/cjoudrey/graphql-schema-linter#built-in-rules){target=_blank}
 
-[![graphql-schema-linter - GitHub](https://gh-card.dev/repos/cjoudrey/graphql-schema-linter.svg?fullname=)](https://github.com/cjoudrey/graphql-schema-linter){target=_blank}
+[![graphql-schema-linter - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=cjoudrey&repo=graphql-schema-linter&show_owner=true)](https://github.com/cjoudrey/graphql-schema-linter){target=_blank}
 
 ## Configuration in MegaLinter
 

@@ -27,7 +27,7 @@ description: How to use roslynator (configure, ignore files, ignore errors, help
 - See [How to disable roslynator rules in files](https://josefpihrt.github.io/docs/roslynator/how-to-suppress-diagnostic){target=_blank}
 - See [Index of problems detected by roslynator](https://josefpihrt.github.io/docs/roslynator/analyzers){target=_blank}
 
-[![Roslynator - GitHub](https://gh-card.dev/repos/dotnet/Roslynator.svg?fullname=)](https://github.com/dotnet/Roslynator){target=_blank}
+[![Roslynator - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=dotnet&repo=Roslynator&show_owner=true)](https://github.com/dotnet/Roslynator){target=_blank}
 
 ## Configuration in MegaLinter
 

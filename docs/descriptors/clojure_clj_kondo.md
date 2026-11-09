@@ -40,7 +40,7 @@ description: How to use clj-kondo (configure, ignore files, ignore errors, help 
 - See [How to ignore files and directories with clj-kondo](https://github.com/clj-kondo/clj-kondo/blob/master/doc/config.md#exclude-files-from-being-linted){target=_blank}
 - See [Index of problems detected by clj-kondo](https://github.com/clj-kondo/clj-kondo/blob/master/doc/linters.md){target=_blank}
 
-[![clj-kondo - GitHub](https://gh-card.dev/repos/clj-kondo/clj-kondo.svg?fullname=)](https://github.com/clj-kondo/clj-kondo){target=_blank}
+[![clj-kondo - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=clj-kondo&repo=clj-kondo&show_owner=true)](https://github.com/clj-kondo/clj-kondo){target=_blank}
 
 ## Configuration in MegaLinter
 

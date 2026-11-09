@@ -51,7 +51,7 @@ Example:
   - If custom `.jscpd.json` config file isn't found, [.jscpd.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.jscpd.json){target=_blank} will be used
 - See [How to disable jscpd rules in files](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd#ignored-blocks){target=_blank}
 
-[![jscpd - GitHub](https://gh-card.dev/repos/kucherenko/jscpd.svg?fullname=)](https://github.com/kucherenko/jscpd){target=_blank}
+[![jscpd - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=kucherenko&repo=jscpd&show_owner=true)](https://github.com/kucherenko/jscpd){target=_blank}
 
 ## Configuration in MegaLinter
 

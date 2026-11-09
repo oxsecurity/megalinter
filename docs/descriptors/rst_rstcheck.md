@@ -30,7 +30,7 @@ description: How to use rstcheck (configure, ignore files, ignore errors, help &
 - See [How to configure rstcheck rules](https://github.com/myint/rstcheck#configuration-file){target=_blank}
 - See [How to disable rstcheck rules in files](https://github.com/myint/rstcheck#ignore-specific-errors){target=_blank}
 
-[![rstcheck - GitHub](https://gh-card.dev/repos/myint/rstcheck.svg?fullname=)](https://github.com/myint/rstcheck){target=_blank}
+[![rstcheck - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=myint&repo=rstcheck&show_owner=true)](https://github.com/myint/rstcheck){target=_blank}
 
 ## Configuration in MegaLinter
 

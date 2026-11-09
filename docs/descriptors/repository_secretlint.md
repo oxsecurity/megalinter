@@ -28,7 +28,7 @@ description: How to use secretlint (configure, ignore files, ignore errors, help
 
 ## secretlint documentation
 
-- Version in MegaLinter: **13.0.7**
+- Version in MegaLinter: **13.1.0**
 - Visit [Official Web Site](https://github.com/secretlint/secretlint#readme){target=_blank}
 - See [How to configure secretlint rules](https://github.com/secretlint/secretlint#configuration){target=_blank}
   - If custom `.secretlintrc.json` config file isn't found, [.secretlintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.secretlintrc.json){target=_blank} will be used
@@ -36,7 +36,7 @@ description: How to use secretlint (configure, ignore files, ignore errors, help
   - You can define a `.secretlintignore` file to ignore files and folders
 - See [Index of problems detected by secretlint](https://github.com/secretlint/secretlint#rule-packages){target=_blank}
 
-[![secretlint - GitHub](https://gh-card.dev/repos/secretlint/secretlint.svg?fullname=)](https://github.com/secretlint/secretlint){target=_blank}
+[![secretlint - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=secretlint&repo=secretlint&show_owner=true)](https://github.com/secretlint/secretlint){target=_blank}
 
 ## Configuration in MegaLinter
 
@@ -179,6 +179,7 @@ Exit Status
 
   - 0:
     - Linting succeeded, no errors found.
+    - Found only "warning" or "info" severity messages.
     - Found lint error but --output is specified.
   - 1:
     - Linting failed, errors found.
@@ -192,14 +193,14 @@ Exit Status
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=secretlint
-ARG NPM_SECRETLINT_VERSION=13.0.7
+ARG NPM_SECRETLINT_VERSION=13.1.0
 # renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend
-ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=13.0.7
+ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=13.1.0
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
-ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=13.0.7
+ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=13.1.0
 ```
 
 - NPM packages (node.js):
-  - [secretlint@13.0.7](https://www.npmjs.com/package/secretlint/v/13.0.7)
-  - [@secretlint/secretlint-rule-preset-recommend@13.0.7](https://www.npmjs.com/package/@secretlint/secretlint-rule-preset-recommend/v/13.0.7)
-  - [@secretlint/secretlint-formatter-sarif@13.0.7](https://www.npmjs.com/package/@secretlint/secretlint-formatter-sarif/v/13.0.7)
+  - [secretlint@13.1.0](https://www.npmjs.com/package/secretlint/v/13.1.0)
+  - [@secretlint/secretlint-rule-preset-recommend@13.1.0](https://www.npmjs.com/package/@secretlint/secretlint-rule-preset-recommend/v/13.1.0)
+  - [@secretlint/secretlint-formatter-sarif@13.1.0](https://www.npmjs.com/package/@secretlint/secretlint-formatter-sarif/v/13.1.0)

@@ -30,13 +30,13 @@ Note: in `project` lint mode, `EXCLUDED_DIRECTORIES` can not be forwarded to sql
 
 ## sqlfluff documentation
 
-- Version in MegaLinter: **4.4.0**
+- Version in MegaLinter: **4.5.0**
 - Visit [Official Web Site](https://www.sqlfluff.com/){target=_blank}
 - See [How to configure sqlfluff rules](https://docs.sqlfluff.com/en/stable/configuration/index.html){target=_blank}
   - If custom `.sqlfluff` config file isn't found, [.sqlfluff](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.sqlfluff){target=_blank} will be used
 - See [Index of problems detected by sqlfluff](https://docs.sqlfluff.com/en/stable/rules.html){target=_blank}
 
-[![sqlfluff - GitHub](https://gh-card.dev/repos/sqlfluff/sqlfluff.svg?fullname=)](https://github.com/sqlfluff/sqlfluff){target=_blank}
+[![sqlfluff - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=sqlfluff&repo=sqlfluff&show_owner=true)](https://github.com/sqlfluff/sqlfluff){target=_blank}
 
 ## Configuration in MegaLinter
 
@@ -154,11 +154,11 @@ Commands:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=sqlfluff
-ARG PIP_SQLFLUFF_VERSION=4.4.0
+ARG PIP_SQLFLUFF_VERSION=4.5.0
 ```
 
 - PIP packages (Python):
-  - [sqlfluff==4.4.0](https://pypi.org/project/sqlfluff/4.4.0)
+  - [sqlfluff==4.5.0](https://pypi.org/project/sqlfluff/4.5.0)
 
 ## Known errors and resolutions
 

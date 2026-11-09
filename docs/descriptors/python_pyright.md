@@ -36,7 +36,7 @@ description: How to use pyright (configure, ignore files, ignore errors, help & 
 - See [How to disable pyright rules in files](https://github.com/microsoft/pyright/blob/main/docs/comments.md#file-level-type-controls){target=_blank}
 - See [Index of problems detected by pyright](https://github.com/microsoft/pyright#type-checking-features){target=_blank}
 
-[![pyright - GitHub](https://gh-card.dev/repos/Microsoft/pyright.svg?fullname=)](https://github.com/Microsoft/pyright){target=_blank}
+[![pyright - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=Microsoft&repo=pyright&show_owner=true)](https://github.com/Microsoft/pyright){target=_blank}
 
 ## Configuration in MegaLinter
 

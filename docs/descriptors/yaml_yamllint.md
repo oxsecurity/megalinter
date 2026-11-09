@@ -32,7 +32,7 @@ description: How to use yamllint (configure, ignore files, ignore errors, help &
 - See [How to disable yamllint rules in files](https://yamllint.readthedocs.io/en/stable/disable_with_comments.html){target=_blank}
 - See [Index of problems detected by yamllint](https://yamllint.readthedocs.io/en/stable/rules.html){target=_blank}
 
-[![yamllint - GitHub](https://gh-card.dev/repos/adrienverge/yamllint.svg?fullname=)](https://github.com/adrienverge/yamllint){target=_blank}
+[![yamllint - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=adrienverge&repo=yamllint&show_owner=true)](https://github.com/adrienverge/yamllint){target=_blank}
 
 ## Configuration in MegaLinter
 

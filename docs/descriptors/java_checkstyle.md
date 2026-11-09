@@ -33,7 +33,7 @@ description: How to use checkstyle (configure, ignore files, ignore errors, help
 - See [How to disable checkstyle rules in files](https://checkstyle.org/checks/annotation/suppresswarnings.html#SuppressWarnings){target=_blank}
 - See [Index of problems detected by checkstyle](https://checkstyle.org/checks.html){target=_blank}
 
-[![checkstyle - GitHub](https://gh-card.dev/repos/checkstyle/checkstyle.svg?fullname=)](https://github.com/checkstyle/checkstyle){target=_blank}
+[![checkstyle - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=checkstyle&repo=checkstyle&show_owner=true)](https://github.com/checkstyle/checkstyle){target=_blank}
 
 ## Configuration in MegaLinter
 

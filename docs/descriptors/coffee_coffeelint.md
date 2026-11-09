@@ -31,7 +31,7 @@ _Disabled reason: CoffeeScript tooling is discontinued, and coffeelint can not h
 - See [How to disable coffeelint rules in files](https://coffeelint.github.io/#options){target=_blank}
 - See [Index of problems detected by coffeelint](https://coffeelint.github.io/#options){target=_blank}
 
-[![coffeelint - GitHub](https://gh-card.dev/repos/clutchski/coffeelint.svg?fullname=)](https://github.com/clutchski/coffeelint){target=_blank}
+[![coffeelint - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=clutchski&repo=coffeelint&show_owner=true)](https://github.com/clutchski/coffeelint){target=_blank}
 
 ## Configuration in MegaLinter
 
@@ -136,7 +136,7 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=@coffeelint/cli
-ARG NPM_COFFEELINT_CLI_VERSION=5.2.12
+ARG NPM_COFFEELINT_CLI_VERSION=5.2.15
 ```
 
 - NPM packages (node.js):

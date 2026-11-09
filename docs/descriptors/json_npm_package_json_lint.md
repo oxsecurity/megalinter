@@ -30,7 +30,7 @@ description: How to use npm-package-json-lint (configure, ignore files, ignore e
   - You can define a `.npmpackagejsonlintignore` file to ignore files and folders
 - See [Index of problems detected by npm-package-json-lint](https://npmpackagejsonlint.org/docs/rules){target=_blank}
 
-[![npm-package-json-lint - GitHub](https://gh-card.dev/repos/tclindner/npm-package-json-lint.svg?fullname=)](https://github.com/tclindner/npm-package-json-lint){target=_blank}
+[![npm-package-json-lint - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=tclindner&repo=npm-package-json-lint&show_owner=true)](https://github.com/tclindner/npm-package-json-lint){target=_blank}
 
 ## Configuration in MegaLinter
 

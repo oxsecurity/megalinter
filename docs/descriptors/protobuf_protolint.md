@@ -29,7 +29,7 @@ description: How to use protolint (configure, ignore files, ignore errors, help 
 - See [How to disable protolint rules in files](https://github.com/yoheimuta/protolint#configuring){target=_blank}
 - See [Index of problems detected by protolint](https://github.com/yoheimuta/protolint#rules){target=_blank}
 
-[![protolint - GitHub](https://gh-card.dev/repos/yoheimuta/protolint.svg?fullname=)](https://github.com/yoheimuta/protolint){target=_blank}
+[![protolint - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=yoheimuta&repo=protolint&show_owner=true)](https://github.com/yoheimuta/protolint){target=_blank}
 
 ## Configuration in MegaLinter
 

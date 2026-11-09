@@ -36,7 +36,7 @@ description: How to use psalm (configure, ignore files, ignore errors, help & ve
 - See [How to disable psalm rules in files](https://psalm.dev/docs/running_psalm/dealing_with_code_issues/#docblock-suppression){target=_blank}
 - See [Index of problems detected by psalm](https://psalm.dev/docs/running_psalm/issues/){target=_blank}
 
-[![psalm - GitHub](https://gh-card.dev/repos/vimeo/psalm.svg?fullname=)](https://github.com/vimeo/psalm){target=_blank}
+[![psalm - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=vimeo&repo=psalm&show_owner=true)](https://github.com/vimeo/psalm){target=_blank}
 
 ## Configuration in MegaLinter
 

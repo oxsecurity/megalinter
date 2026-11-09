@@ -46,14 +46,14 @@ CFN-Lint helps ensure your CloudFormation templates are valid, secure, and follo
 
 ## cfn-lint documentation
 
-- Version in MegaLinter: **1.58.0**
+- Version in MegaLinter: **1.59.0**
 - Visit [Official Web Site](https://github.com/aws-cloudformation/cfn-lint#readme){target=_blank}
 - See [How to configure cfn-lint rules](https://github.com/aws-cloudformation/cfn-lint#configuration){target=_blank}
   - If custom `.cfnlintrc.yml` config file isn't found, [.cfnlintrc.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.cfnlintrc.yml){target=_blank} will be used
 - See [How to disable cfn-lint rules in files](https://github.com/aws-cloudformation/cfn-lint#metadata){target=_blank}
 - See [Index of problems detected by cfn-lint](https://github.com/aws-cloudformation/cfn-lint/blob/main/docs/rules.md){target=_blank}
 
-[![cfn-lint - GitHub](https://gh-card.dev/repos/aws-cloudformation/cfn-lint.svg?fullname=)](https://github.com/aws-cloudformation/cfn-lint){target=_blank}
+[![cfn-lint - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=aws-cloudformation&repo=cfn-lint&show_owner=true)](https://github.com/aws-cloudformation/cfn-lint){target=_blank}
 
 ## Configuration in MegaLinter
 
@@ -208,11 +208,11 @@ Advanced / Debugging:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=cfn-lint
-ARG PIP_CFN_LINT_VERSION=1.58.0
+ARG PIP_CFN_LINT_VERSION=1.59.0
 ```
 
 - PIP packages (Python):
-  - [cfn-lint[sarif]==1.58.0](https://pypi.org/project/cfn-lint[sarif]/1.58.0)
+  - [cfn-lint[sarif]==1.59.0](https://pypi.org/project/cfn-lint[sarif]/1.59.0)
 
 ## Known errors and resolutions
 
