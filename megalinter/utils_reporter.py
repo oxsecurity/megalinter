@@ -9,8 +9,10 @@ from megalinter import ci_providers, config, utils
 from megalinter.constants import (
     DEFAULT_RELEASE,
     ML_DOC_URL,
+    ML_DOC_URL_BASE,
     ML_DOC_URL_DESCRIPTORS_ROOT,
     ML_REPO,
+    ML_REPO_URL,
     ML_VERSION,
     OX_MARKDOWN_LINK,
 )
@@ -139,9 +141,8 @@ def build_markdown_summary_header(reporter_self, action_run_url=""):
         status_label = "Success with warnings"
     else:
         status_label = reporter_self.master.status.capitalize()
-    status_with_href = log_link(status_label, action_run_url)
     return (
-        f"## {status_icon}[MegaLinter]({ML_DOC_URL}) analysis: {status_with_href}"
+        f"## {status_icon} MegaLinter analysis: {status_label}"
         + os.linesep
         + os.linesep
     )
@@ -224,21 +225,17 @@ def build_markdown_summary_footer(reporter_self, action_run_url=""):
 
     user_notifications = build_user_notifications(reporter_self.master)
     if user_notifications:
-        footer += os.linesep + "### Notices" + os.linesep + os.linesep
+        footer += os.linesep + "### Notices" + os.linesep
         for notice in user_notifications:
-            footer += notice + os.linesep + os.linesep
+            footer += os.linesep + notice + os.linesep
 
-    if action_run_url != "":
-        footer += (
-            "See detailed reports in [MegaLinter artifacts"
-            f"]({action_run_url})" + os.linesep
-        )
-    else:
-        footer += "See detailed reports in MegaLinter artifacts" + os.linesep
+    reports_link = log_link("MegaLinter artifacts", action_run_url)
+    footer += os.linesep + f"See detailed reports in {reports_link}" + os.linesep
 
     if reporter_self.master.validate_all_code_base is False:
         footer += (
-            "_Set `VALIDATE_ALL_CODEBASE: true` in mega-linter.yml to validate "
+            os.linesep
+            + "_Set `VALIDATE_ALL_CODEBASE: true` in mega-linter.yml to validate "
             + "all sources, not only the diff_"
             + os.linesep
         )
@@ -254,13 +251,17 @@ def build_markdown_summary_footer(reporter_self, action_run_url=""):
         custom_flavor_message = (
             "Your project could benefit from a custom flavor, "
             "which would allow you to run only the linters you need, and thus improve runtime performances. "
-            "(Skip this info by defining `FLAVOR_SUGGESTIONS: false`)\n\n"
-            f"  - Documentation: [Custom Flavors]({ML_DOC_URL}/custom-flavors/)\n"
-            f"  - Command: `{custom_flavor_command}`"
+            "(Skip this info by defining `FLAVOR_SUGGESTIONS: false`)"
+            + os.linesep
+            + os.linesep
+            + f"  - Documentation: [Custom Flavors]({ML_DOC_URL}/custom-flavors/)"
+            + os.linesep
+            + f"  - Command: `{custom_flavor_command}`"
+            + os.linesep
         )
         if len(reporter_self.master.flavor_suggestions) == 1:
             if not is_custom_flavor():
-                footer += os.linesep + os.linesep + custom_flavor_message
+                footer += os.linesep + custom_flavor_message
         else:
             footer += (
                 os.linesep
@@ -282,37 +283,47 @@ def build_markdown_summary_footer(reporter_self, action_run_url=""):
                     f" ({suggestion['linters_number']} linters)" + os.linesep
                 )
             if not is_custom_flavor():
-                footer += os.linesep + os.linesep + custom_flavor_message
-        footer += os.linesep
+                footer += os.linesep + custom_flavor_message
 
-    # Link to ox
+    promotion = _build_markdown_summary_promotion(reporter_self)
+    footer += os.linesep + promotion + os.linesep
+
+    if config.exists(
+        reporter_self.master.request_id, "JOB_SUMMARY_ADDITIONAL_MARKDOWN"
+    ):
+        footer += (
+            os.linesep
+            + config.get(
+                reporter_self.master.request_id, "JOB_SUMMARY_ADDITIONAL_MARKDOWN", ""
+            )
+            + os.linesep
+        )
+
+    return footer
+
+
+def _build_markdown_summary_promotion(reporter_self) -> str:
     if (
         config.get(
             reporter_self.master.request_id, "REPORTERS_MARKDOWN_TYPE", "advanced"
         )
         == "simple"
     ):
-        footer += (
-            os.linesep
-            + "MegaLinter is provided by [OX Security]"
-            + "(https://www.ox.security/?ref=megalinter)"
+        promotion = (
+            f"[MegaLinter]({ML_DOC_URL_BASE}) is brought to you by "
+            "[OX Security](https://www.ox.security/?ref=megalinter). "
+            "Please consider supporting the project by "
+            f"[starring the repository]({ML_REPO_URL})."
         )
     else:
-        footer += os.linesep + OX_MARKDOWN_LINK
-
-    footer += (
-        os.linesep
-        + "Show us your support by [**starring ⭐ the repository**](https://github.com/oxsecurity/megalinter)"
-    )
-
-    if config.exists(
-        reporter_self.master.request_id, "JOB_SUMMARY_ADDITIONAL_MARKDOWN"
-    ):
-        footer += os.linesep + config.get(
-            reporter_self.master.request_id, "JOB_SUMMARY_ADDITIONAL_MARKDOWN", ""
+        promotion = (
+            OX_MARKDOWN_LINK
+            + os.linesep
+            + os.linesep
+            + f"Please consider supporting [MegaLinter]({ML_DOC_URL_BASE}) by "
+            + f"[starring the repository]({ML_REPO_URL})."
         )
-
-    return footer
+    return promotion
 
 
 def register_user_notification(master, key, template, value=None, extras=None):
