@@ -34,7 +34,7 @@ description: How to use prettier (configure, ignore files, ignore errors, help &
 - See [How to disable prettier rules in files](https://prettier.io/docs/en/ignore.html#javascript){target=_blank}
 - See [Index of problems detected by prettier](https://prettier.io/docs/en/options.html){target=_blank}
 
-[![prettier - GitHub](https://gh-card.dev/repos/prettier/prettier.svg?fullname=)](https://github.com/prettier/prettier){target=_blank}
+[![prettier - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=prettier&repo=prettier&show_owner=true)](https://github.com/prettier/prettier){target=_blank}
 
 ## Configuration in MegaLinter
 

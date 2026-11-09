@@ -52,7 +52,7 @@ Bandit is essential for maintaining secure Python codebases and is widely used i
 - See [How to disable bandit rules in files](https://bandit.readthedocs.io/en/latest/config.html#suppressing-individual-lines){target=_blank}
 - See [Index of problems detected by bandit](https://bandit.readthedocs.io/en/latest/plugins/index.html#complete-test-plugin-listing){target=_blank}
 
-[![bandit - GitHub](https://gh-card.dev/repos/PyCQA/bandit.svg?fullname=)](https://github.com/PyCQA/bandit){target=_blank}
+[![bandit - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=PyCQA&repo=bandit&show_owner=true)](https://github.com/PyCQA/bandit){target=_blank}
 
 ## Configuration in MegaLinter
 

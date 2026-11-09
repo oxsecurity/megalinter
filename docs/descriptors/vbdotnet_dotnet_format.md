@@ -27,7 +27,7 @@ description: How to use dotnet-format (configure, ignore files, ignore errors, h
 - See [How to configure dotnet-format rules](https://github.com/dotnet/sdk/tree/main/documentation/format/docs){target=_blank}
 - See [How to disable dotnet-format rules in files](https://docs.microsoft.com/en-us/dotnet/fundamentals/code-analysis/suppress-warnings){target=_blank}
 
-[![sdk - GitHub](https://gh-card.dev/repos/dotnet/sdk.svg?fullname=)](https://github.com/dotnet/sdk){target=_blank}
+[![sdk - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=dotnet&repo=sdk&show_owner=true)](https://github.com/dotnet/sdk){target=_blank}
 
 ## Configuration in MegaLinter
 

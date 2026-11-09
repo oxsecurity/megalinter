@@ -27,7 +27,7 @@ description: How to use jsonlint (configure, ignore files, ignore errors, help &
 - See [How to configure jsonlint rules](https://github.com/prantlf/jsonlint#configuration){target=_blank}
 - See [Index of problems detected by jsonlint](https://github.com/prantlf/jsonlint#configuration){target=_blank}
 
-[![jsonlint - GitHub](https://gh-card.dev/repos/prantlf/jsonlint.svg?fullname=)](https://github.com/prantlf/jsonlint){target=_blank}
+[![jsonlint - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=prantlf&repo=jsonlint&show_owner=true)](https://github.com/prantlf/jsonlint){target=_blank}
 
 ## Configuration in MegaLinter
 

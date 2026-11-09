@@ -55,7 +55,7 @@ Black is successfully used by many projects, small and big, and has become the d
 - See [How to configure black rules](https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-format){target=_blank}
   - If custom `pyproject.toml` config file isn't found, [pyproject.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/pyproject.toml){target=_blank} will be used
 
-[![black - GitHub](https://gh-card.dev/repos/psf/black.svg?fullname=)](https://github.com/psf/black){target=_blank}
+[![black - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=psf&repo=black&show_owner=true)](https://github.com/psf/black){target=_blank}
 
 ## Configuration in MegaLinter
 

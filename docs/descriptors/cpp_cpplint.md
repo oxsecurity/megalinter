@@ -25,7 +25,7 @@ description: How to use cpplint (configure, ignore files, ignore errors, help & 
 - Visit [Official Web Site](https://github.com/cpplint/cpplint#readme){target=_blank}
 - See [Index of problems detected by cpplint](https://google.github.io/styleguide/cppguide.html){target=_blank}
 
-[![cpplint - GitHub](https://gh-card.dev/repos/cpplint/cpplint.svg?fullname=)](https://github.com/cpplint/cpplint){target=_blank}
+[![cpplint - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=cpplint&repo=cpplint&show_owner=true)](https://github.com/cpplint/cpplint){target=_blank}
 
 ## Configuration in MegaLinter
 

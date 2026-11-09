@@ -36,7 +36,7 @@ description: How to use mypy (configure, ignore files, ignore errors, help & ver
   - If custom `.mypy.ini` config file isn't found, [.mypy.ini](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.mypy.ini){target=_blank} will be used
 - See [How to disable mypy rules in files](https://mypy.readthedocs.io/en/stable/inline_config.html#inline-config){target=_blank}
 
-[![mypy - GitHub](https://gh-card.dev/repos/python/mypy.svg?fullname=)](https://github.com/python/mypy){target=_blank}
+[![mypy - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=python&repo=mypy&show_owner=true)](https://github.com/python/mypy){target=_blank}
 
 ## Configuration in MegaLinter
 

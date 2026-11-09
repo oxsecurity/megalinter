@@ -45,6 +45,23 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - CI
 
 - Linter versions upgrades (N)
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.58.0 to **1.59.0** on 2026-11-09
+  - [djlint](https://djlint.com/) from 1.47.0 to **1.49.2** on 2026-11-09
+  - [pmd](https://pmd.github.io/) from 7.28.0 to **7.29.0** on 2026-11-09
+  - [eslint](https://eslint.org) from 10.13.0 to **10.14.0** on 2026-11-09
+  - [kubescape](https://github.com/kubescape/kubescape) from 4.0.16 to **4.0.17** on 2026-11-09
+  - [markdown-table-formatter](https://www.npmjs.com/package/markdown-table-formatter) from 1.7.0 to **2.1.0** on 2026-11-09
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.8 to **7.6.9** on 2026-11-09
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.8 to **7.6.9** on 2026-11-09
+  - [flake8](https://flake8.pycqa.org) from 7.4.1 to **7.5.0** on 2026-11-09
+  - [checkov](https://www.checkov.io/) from 3.3.30 to **3.4.0** on 2026-11-09
+  - [grype](https://github.com/anchore/grype) from 0.121.0 to **0.121.2** on 2026-11-09
+  - [secretlint](https://github.com/secretlint/secretlint) from 13.0.7 to **13.1.0** on 2026-11-09
+  - [semgrep](https://semgrep.dev/) from 1.182.1 to **1.183.0** on 2026-11-09
+  - [syft](https://github.com/anchore/syft) from 1.55.0 to **1.57.0** on 2026-11-09
+  - [rubocop](https://rubocop.org/) from 1.92.1 to **1.92.2** on 2026-11-09
+  - [vale](https://vale.sh/) from 3.24.0 to **3.26.0** on 2026-11-09
+  - [sqlfluff](https://www.sqlfluff.com/) from 4.4.0 to **4.5.0** on 2026-11-09
 <!-- linter-versions-end -->
 
 ## [v10.2.0] - 2026-10-31

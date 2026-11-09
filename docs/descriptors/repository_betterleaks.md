@@ -109,7 +109,7 @@ docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
 - See [How to ignore files and directories with betterleaks](https://github.com/betterleaks/betterleaks#betterleaksignore){target=_blank}
   - You can define a `.betterleaksignore` file to ignore files and folders
 
-[![betterleaks - GitHub](https://gh-card.dev/repos/betterleaks/betterleaks.svg?fullname=)](https://github.com/betterleaks/betterleaks){target=_blank}
+[![betterleaks - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=betterleaks&repo=betterleaks&show_owner=true)](https://github.com/betterleaks/betterleaks){target=_blank}
 
 ## Configuration in MegaLinter
 

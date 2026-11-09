@@ -34,7 +34,7 @@ description: How to use ts-standard (configure, ignore files, ignore errors, hel
 - See [How to disable ts-standard rules in files](https://standardjs.com/#how-do-i-disable-a-rule){target=_blank}
 - See [Index of problems detected by ts-standard](https://standardjs.com/rules.html){target=_blank}
 
-[![ts-standard - GitHub](https://gh-card.dev/repos/standard/ts-standard.svg?fullname=)](https://github.com/standard/ts-standard){target=_blank}
+[![ts-standard - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=standard&repo=ts-standard&show_owner=true)](https://github.com/standard/ts-standard){target=_blank}
 
 ## Configuration in MegaLinter
 

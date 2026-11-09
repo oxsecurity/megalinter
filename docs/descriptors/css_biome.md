@@ -34,7 +34,7 @@ description: How to use biome (configure, ignore files, ignore errors, help & ve
 - See [How to disable biome rules in files](https://biomejs.dev/analyzer/suppressions/){target=_blank}
 - See [Index of problems detected by biome](https://biomejs.dev/linter/rules/){target=_blank}
 
-[![biome - GitHub](https://gh-card.dev/repos/biomejs/biome.svg?fullname=)](https://github.com/biomejs/biome){target=_blank}
+[![biome - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=biomejs&repo=biome&show_owner=true)](https://github.com/biomejs/biome){target=_blank}
 
 ## Configuration in MegaLinter
 

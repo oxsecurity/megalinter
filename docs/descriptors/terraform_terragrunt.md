@@ -27,7 +27,7 @@ description: How to use terragrunt (configure, ignore files, ignore errors, help
 - Visit [Official Web Site](https://docs.terragrunt.com/reference/cli/commands/hcl/fmt/){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/quick-start/#add-terragrunthcl-to-your-project){target=_blank}
 
-[![terragrunt - GitHub](https://gh-card.dev/repos/gruntwork-io/terragrunt.svg?fullname=)](https://github.com/gruntwork-io/terragrunt){target=_blank}
+[![terragrunt - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=gruntwork-io&repo=terragrunt&show_owner=true)](https://github.com/gruntwork-io/terragrunt){target=_blank}
 
 ## Configuration in MegaLinter
 

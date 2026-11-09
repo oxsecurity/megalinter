@@ -27,7 +27,7 @@ description: How to use phplint (configure, ignore files, ignore errors, help & 
 - See [How to configure phplint rules](https://github.com/overtrue/phplint/blob/main/docs/configuration.md#configuration){target=_blank}
   - If custom `.phplint.yml` config file isn't found, [.phplint.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.phplint.yml){target=_blank} will be used
 
-[![phplint - GitHub](https://gh-card.dev/repos/overtrue/phplint.svg?fullname=)](https://github.com/overtrue/phplint){target=_blank}
+[![phplint - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=overtrue&repo=phplint&show_owner=true)](https://github.com/overtrue/phplint){target=_blank}
 
 ## Configuration in MegaLinter
 

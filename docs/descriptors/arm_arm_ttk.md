@@ -28,7 +28,7 @@ ARM TTK helps ensure your ARM templates are secure, maintainable, and follow Azu
 - See [How to configure arm-ttk rules](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/test-toolkit#customize-tests){target=_blank}
   - If custom `.arm-ttk.psd1` config file isn't found, [.arm-ttk.psd1](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.arm-ttk.psd1){target=_blank} will be used
 
-[![arm-ttk - GitHub](https://gh-card.dev/repos/Azure/arm-ttk.svg?fullname=)](https://github.com/Azure/arm-ttk){target=_blank}
+[![arm-ttk - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=Azure&repo=arm-ttk&show_owner=true)](https://github.com/Azure/arm-ttk){target=_blank}
 
 ## Configuration in MegaLinter
 
@@ -130,7 +130,7 @@ Check the spelling of the name, or if a path was included, verify that the path 
 # Parent descriptor install
 ARG TARGETPLATFORM
 # renovate: datasource=github-tags depName=PowerShell/PowerShell
-ARG POWERSHELL_VERSION=7.6.8
+ARG POWERSHELL_VERSION=7.6.9
 RUN case ${TARGETPLATFORM} in \
   "linux/amd64")  POWERSHELL_ARCH=musl-x64 ;; \
   "linux/arm64")  POWERSHELL_ARCH=arm64    ;; \

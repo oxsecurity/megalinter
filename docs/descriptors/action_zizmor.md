@@ -31,7 +31,7 @@ description: How to use zizmor (configure, ignore files, ignore errors, help & v
 - See [How to disable zizmor rules in files](https://docs.zizmor.sh/usage/#with-comments){target=_blank}
 - See [Index of problems detected by zizmor](https://docs.zizmor.sh/audits/){target=_blank}
 
-[![zizmor - GitHub](https://gh-card.dev/repos/zizmorcore/zizmor.svg?fullname=)](https://github.com/zizmorcore/zizmor){target=_blank}
+[![zizmor - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=zizmorcore&repo=zizmor&show_owner=true)](https://github.com/zizmorcore/zizmor){target=_blank}
 
 ## Configuration in MegaLinter
 

@@ -26,7 +26,7 @@ description: How to use cljstyle (configure, ignore files, ignore errors, help &
 - See [How to disable cljstyle rules in files](https://github.com/greglook/cljstyle#ignoring-forms){target=_blank}
 - See [Index of problems detected by cljstyle](https://github.com/greglook/cljstyle/blob/main/doc/configuration.md#format-rules){target=_blank}
 
-[![cljstyle - GitHub](https://gh-card.dev/repos/greglook/cljstyle.svg?fullname=)](https://github.com/greglook/cljstyle){target=_blank}
+[![cljstyle - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=greglook&repo=cljstyle&show_owner=true)](https://github.com/greglook/cljstyle){target=_blank}
 
 ## Configuration in MegaLinter
 

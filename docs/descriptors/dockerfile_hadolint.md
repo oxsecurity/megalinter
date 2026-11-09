@@ -46,7 +46,7 @@ Hadolint ensures your Dockerfiles are secure, efficient, and maintainable while 
 - See [How to disable hadolint rules in files](https://github.com/hadolint/hadolint#inline-ignores){target=_blank}
 - See [Index of problems detected by hadolint](https://github.com/hadolint/hadolint#rules){target=_blank}
 
-[![hadolint - GitHub](https://gh-card.dev/repos/hadolint/hadolint.svg?fullname=)](https://github.com/hadolint/hadolint){target=_blank}
+[![hadolint - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=hadolint&repo=hadolint&show_owner=true)](https://github.com/hadolint/hadolint){target=_blank}
 
 ## Configuration in MegaLinter
 

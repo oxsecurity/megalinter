@@ -48,7 +48,7 @@ For legacy projects, start with `--errors-only` flag and progressively enable mo
 - See [How to disable pylint rules in files](https://pylint.readthedocs.io/en/stable/user_guide/messages/message_control.html){target=_blank}
 - See [Index of problems detected by pylint](https://pylint.readthedocs.io/en/stable/user_guide/messages/index.html){target=_blank}
 
-[![pylint - GitHub](https://gh-card.dev/repos/pylint-dev/pylint.svg?fullname=)](https://github.com/pylint-dev/pylint){target=_blank}
+[![pylint - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=pylint-dev&repo=pylint&show_owner=true)](https://github.com/pylint-dev/pylint){target=_blank}
 
 ## Configuration in MegaLinter
 

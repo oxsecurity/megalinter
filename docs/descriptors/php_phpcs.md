@@ -30,7 +30,7 @@ description: How to use phpcs (configure, ignore files, ignore errors, help & ve
 - See [How to ignore files and directories with phpcs](https://github.com/PHPCSStandards/PHP_CodeSniffer/wiki/Advanced-Usage#ignoring-files-and-folders){target=_blank}
 - See [Index of problems detected by phpcs](https://gist.github.com/tmsnvd/057ef1cf4fd412e8c8e866e5ba5119bc){target=_blank}
 
-[![PHP_CodeSniffer - GitHub](https://gh-card.dev/repos/PHPCSStandards/PHP_CodeSniffer.svg?fullname=)](https://github.com/PHPCSStandards/PHP_CodeSniffer){target=_blank}
+[![PHP_CodeSniffer - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=PHPCSStandards&repo=PHP_CodeSniffer&show_owner=true)](https://github.com/PHPCSStandards/PHP_CodeSniffer){target=_blank}
 
 ## Configuration in MegaLinter
 

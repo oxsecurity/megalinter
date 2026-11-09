@@ -31,7 +31,7 @@ description: How to use markdownlint (configure, ignore files, ignore errors, he
 - See [How to ignore files and directories with markdownlint](https://github.com/igorshubovych/markdownlint-cli#ignoring-files){target=_blank}
 - See [Index of problems detected by markdownlint](https://github.com/DavidAnson/markdownlint#rules--aliases){target=_blank}
 
-[![markdownlint - GitHub](https://gh-card.dev/repos/DavidAnson/markdownlint.svg?fullname=)](https://github.com/DavidAnson/markdownlint){target=_blank}
+[![markdownlint - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=DavidAnson&repo=markdownlint&show_owner=true)](https://github.com/DavidAnson/markdownlint){target=_blank}
 
 ## Configuration in MegaLinter
 

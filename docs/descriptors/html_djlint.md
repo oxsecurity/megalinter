@@ -29,13 +29,13 @@ For example, define `HTML_DJLINT_ARGUMENTS: ["--profile", "django"]` to select d
 
 ## djlint documentation
 
-- Version in MegaLinter: **1.47.0**
+- Version in MegaLinter: **1.49.2**
 - Visit [Official Web Site](https://djlint.com/){target=_blank}
 - See [How to configure djlint rules](https://djlint.com/docs/configuration/){target=_blank}
 - See [How to disable djlint rules in files](https://djlint.com/docs/ignoring-code/){target=_blank}
 - See [Index of problems detected by djlint](https://djlint.com/docs/linter/){target=_blank}
 
-[![djlint - GitHub](https://gh-card.dev/repos/Riverside-Healthcare/djlint.svg?fullname=)](https://github.com/Riverside-Healthcare/djlint){target=_blank}
+[![djlint - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=Riverside-Healthcare&repo=djlint&show_owner=true)](https://github.com/Riverside-Healthcare/djlint){target=_blank}
 
 ## Configuration in MegaLinter
 
@@ -123,6 +123,8 @@ Usage: djlint [OPTIONS] SRC ...
 
 Options:
   --version                       Show the version and exit.
+  --lsp                           Run as a language server over stdio, for
+                                  editors.
   -e, --extension TEXT            File extension to check [default: html]
   -i, --ignore TEXT               Codes to ignore. ex: "H014,H017"
   --reformat                      Reformat the file(s).
@@ -226,8 +228,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=djlint
-ARG PIP_DJLINT_VERSION=1.47.0
+ARG PIP_DJLINT_VERSION=1.49.2
 ```
 
 - PIP packages (Python):
-  - [djlint==1.47.0](https://pypi.org/project/djlint/1.47.0)
+  - [djlint==1.49.2](https://pypi.org/project/djlint/1.49.2)

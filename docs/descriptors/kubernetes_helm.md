@@ -32,7 +32,7 @@ description: How to use helm (configure, ignore files, ignore errors, help & ver
 - See [How to configure helm rules](https://helm.sh/docs/helm/helm_lint/){target=_blank}
 - See [How to disable helm rules in files](https://helm.sh/docs/topics/charts/#schema-files){target=_blank}
 
-[![helm - GitHub](https://gh-card.dev/repos/helm/helm.svg?fullname=)](https://github.com/helm/helm){target=_blank}
+[![helm - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=helm&repo=helm&show_owner=true)](https://github.com/helm/helm){target=_blank}
 
 ## Configuration in MegaLinter
 

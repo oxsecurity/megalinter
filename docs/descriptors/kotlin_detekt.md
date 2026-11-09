@@ -38,7 +38,7 @@ description: How to use detekt (configure, ignore files, ignore errors, help & v
 - See [How to disable detekt rules in files](https://detekt.dev/suppressing-rules.html){target=_blank}
 - See [Index of problems detected by detekt](https://detekt.dev/docs/rules/comments){target=_blank}
 
-[![detekt - GitHub](https://gh-card.dev/repos/detekt/detekt.svg?fullname=)](https://github.com/detekt/detekt){target=_blank}
+[![detekt - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=detekt&repo=detekt&show_owner=true)](https://github.com/detekt/detekt){target=_blank}
 
 ## Configuration in MegaLinter
 
