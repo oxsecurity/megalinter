@@ -12399,13 +12399,13 @@
 </ul>
 <h2 id="powershell_formatter-documentation">powershell_formatter documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>7.6.8</strong></li>
+<li>Version in MegaLinter: <strong>7.6.9</strong></li>
 <li>Visit <a href="https://github.com/PowerShell/PSScriptAnalyzer#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#explicit" target="_blank">How to configure powershell_formatter rules</a></li>
 <li>See <a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer?view=ps-modules#suppressing-rules" target="_blank">How to disable powershell_formatter rules in files</a></li>
 <li>See <a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/readme?view=ps-modules" target="_blank">Index of problems detected by powershell_formatter</a></li>
 </ul>
-<p><a href="https://github.com/PowerShell/PSScriptAnalyzer" target="_blank"><img alt="PSScriptAnalyzer - GitHub" src="https://gh-card.dev/repos/PowerShell/PSScriptAnalyzer.svg?fullname=" /></a></p>
+<p><a href="https://github.com/PowerShell/PSScriptAnalyzer" target="_blank"><img alt="PSScriptAnalyzer - GitHub" src="https://github-stats-extended.vercel.app/api/pin/?username=PowerShell&amp;repo=PSScriptAnalyzer&amp;show_owner=true" /></a></p>
 <h2 id="configuration-in-megalinter">Configuration in MegaLinter</h2>
 <ul>
 <li>Enable powershell_formatter by adding <code>POWERSHELL_POWERSHELL_FORMATTER</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">ENABLE_LINTERS variable</a></li>
@@ -12931,7 +12931,7 @@ All<span class="w"> </span>parameters<span class="w"> </span>are<span class="w">
 <div class="highlight"><pre><span></span><code><span class="c"># Parent descriptor install</span>
 <span class="k">ARG</span><span class="w"> </span>TARGETPLATFORM
 <span class="c"># renovate: datasource=github-tags depName=PowerShell/PowerShell</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">POWERSHELL_VERSION</span><span class="o">=</span><span class="m">7</span>.6.8
+<span class="k">ARG</span><span class="w"> </span><span class="nv">POWERSHELL_VERSION</span><span class="o">=</span><span class="m">7</span>.6.9
 
 <span class="k">RUN</span><span class="w"> </span><span class="k">case</span><span class="w"> </span><span class="si">${</span><span class="nv">TARGETPLATFORM</span><span class="si">}</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span><span class="s2">"linux/amd64"</span><span class="o">)</span><span class="w">  </span><span class="nv">POWERSHELL_ARCH</span><span class="o">=</span>musl-x64<span class="w"> </span><span class="p">;;</span><span class="w"> </span><span class="se">\</span>

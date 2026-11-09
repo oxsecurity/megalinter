@@ -12401,13 +12401,13 @@
 MegaLinter analyze markdown and restructuredText files by default, you can change that using SPELL_VALE_FILE_EXTENSIONS variable.</p>
 <h2 id="vale-documentation">vale documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.24.0</strong></li>
+<li>Version in MegaLinter: <strong>3.26.0</strong></li>
 <li>Visit <a href="https://vale.sh/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://vale.sh/explorer/" target="_blank">How to configure vale rules</a></li>
 <li>See <a href="https://vale.sh/docs/topics/vocab/" target="_blank">How to disable vale rules in files</a></li>
 <li>See <a href="https://vale.sh/hub/" target="_blank">Index of problems detected by vale</a></li>
 </ul>
-<p><a href="https://github.com/errata-ai/vale" target="_blank"><img alt="vale - GitHub" src="https://gh-card.dev/repos/errata-ai/vale.svg?fullname=" /></a></p>
+<p><a href="https://github.com/errata-ai/vale" target="_blank"><img alt="vale - GitHub" src="https://github-stats-extended.vercel.app/api/pin/?username=errata-ai&amp;repo=vale&amp;show_owner=true" /></a></p>
 <h2 id="configuration-in-megalinter">Configuration in MegaLinter</h2>
 <ul>
 <li>Enable vale by adding <code>SPELL_VALE</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">ENABLE_LINTERS variable</a></li>
@@ -12746,7 +12746,7 @@ To<span class="w"> </span>get<span class="w"> </span>started,<span class="w"> </
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=docker depName=jdkato/vale</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">SPELL_VALE_VERSION</span><span class="o">=</span>v3.24.0
+<span class="k">ARG</span><span class="w"> </span><span class="nv">SPELL_VALE_VERSION</span><span class="o">=</span>v3.26.0
 <span class="k">FROM</span><span class="w"> </span><span class="s">jdkato/vale:${SPELL_VALE_VERSION}</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">vale</span>
 <span class="k">COPY</span><span class="w"> </span>--link<span class="w"> </span>--from<span class="o">=</span>vale<span class="w"> </span>/bin/vale<span class="w"> </span>/bin/vale
 </code></pre></div></li>

@@ -12379,7 +12379,7 @@
 </ul>
 <h2 id="secretlint-documentation">secretlint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>13.0.7</strong></li>
+<li>Version in MegaLinter: <strong>13.1.0</strong></li>
 <li>Visit <a href="https://github.com/secretlint/secretlint#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/secretlint/secretlint#configuration" target="_blank">How to configure secretlint rules</a><ul>
 <li>If custom <code>.secretlintrc.json</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.secretlintrc.json" target="_blank">.secretlintrc.json</a> will be used</li>
@@ -12391,7 +12391,7 @@
 </li>
 <li>See <a href="https://github.com/secretlint/secretlint#rule-packages" target="_blank">Index of problems detected by secretlint</a></li>
 </ul>
-<p><a href="https://github.com/secretlint/secretlint" target="_blank"><img alt="secretlint - GitHub" src="https://gh-card.dev/repos/secretlint/secretlint.svg?fullname=" /></a></p>
+<p><a href="https://github.com/secretlint/secretlint" target="_blank"><img alt="secretlint - GitHub" src="https://github-stats-extended.vercel.app/api/pin/?username=secretlint&amp;repo=secretlint&amp;show_owner=true" /></a></p>
 <h2 id="configuration-in-megalinter">Configuration in MegaLinter</h2>
 <ul>
 <li>Enable secretlint by adding <code>REPOSITORY_SECRETLINT</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">ENABLE_LINTERS variable</a></li>
@@ -12706,6 +12706,7 @@ Exit<span class="w"> </span>Status
 
 <span class="w">  </span>-<span class="w"> </span><span class="m">0</span>:
 <span class="w">    </span>-<span class="w"> </span>Linting<span class="w"> </span>succeeded,<span class="w"> </span>no<span class="w"> </span>errors<span class="w"> </span>found.
+<span class="w">    </span>-<span class="w"> </span>Found<span class="w"> </span>only<span class="w"> </span><span class="s2">"warning"</span><span class="w"> </span>or<span class="w"> </span><span class="s2">"info"</span><span class="w"> </span>severity<span class="w"> </span>messages.
 <span class="w">    </span>-<span class="w"> </span>Found<span class="w"> </span>lint<span class="w"> </span>error<span class="w"> </span>but<span class="w"> </span>--output<span class="w"> </span>is<span class="w"> </span>specified.
 <span class="w">  </span>-<span class="w"> </span><span class="m">1</span>:
 <span class="w">    </span>-<span class="w"> </span>Linting<span class="w"> </span>failed,<span class="w"> </span>errors<span class="w"> </span>found.
@@ -12716,18 +12717,18 @@ Exit<span class="w"> </span>Status
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=npm depName=secretlint</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">NPM_SECRETLINT_VERSION</span><span class="o">=</span><span class="m">13</span>.0.7
+<span class="k">ARG</span><span class="w"> </span><span class="nv">NPM_SECRETLINT_VERSION</span><span class="o">=</span><span class="m">13</span>.1.0
 <span class="c"># renovate: datasource=npm depName=@secretlint/secretlint-rule-preset-recommend</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION</span><span class="o">=</span><span class="m">13</span>.0.7
+<span class="k">ARG</span><span class="w"> </span><span class="nv">NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION</span><span class="o">=</span><span class="m">13</span>.1.0
 <span class="c"># renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION</span><span class="o">=</span><span class="m">13</span>.0.7
+<span class="k">ARG</span><span class="w"> </span><span class="nv">NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION</span><span class="o">=</span><span class="m">13</span>.1.0
 </code></pre></div></li>
 </ul>
 <ul>
 <li>NPM packages (node.js):<ul>
-<li><a href="https://www.npmjs.com/package/secretlint/v/13.0.7">secretlint@13.0.7</a></li>
-<li><a href="https://www.npmjs.com/package/@secretlint/secretlint-rule-preset-recommend/v/13.0.7">@secretlint/secretlint-rule-preset-recommend@13.0.7</a></li>
-<li><a href="https://www.npmjs.com/package/@secretlint/secretlint-formatter-sarif/v/13.0.7">@secretlint/secretlint-formatter-sarif@13.0.7</a></li>
+<li><a href="https://www.npmjs.com/package/secretlint/v/13.1.0">secretlint@13.1.0</a></li>
+<li><a href="https://www.npmjs.com/package/@secretlint/secretlint-rule-preset-recommend/v/13.1.0">@secretlint/secretlint-rule-preset-recommend@13.1.0</a></li>
+<li><a href="https://www.npmjs.com/package/@secretlint/secretlint-formatter-sarif/v/13.1.0">@secretlint/secretlint-formatter-sarif@13.1.0</a></li>
 </ul>
 </li>
 </ul>

@@ -12402,10 +12402,10 @@
 </ul>
 <h2 id="kubescape-documentation">kubescape documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>4.0.16</strong></li>
+<li>Version in MegaLinter: <strong>4.0.17</strong></li>
 <li>Visit <a href="https://github.com/kubescape/kubescape#readme" target="_blank">Official Web Site</a></li>
 </ul>
-<p><a href="https://github.com/kubescape/kubescape" target="_blank"><img alt="kubescape - GitHub" src="https://gh-card.dev/repos/kubescape/kubescape.svg?fullname=" /></a></p>
+<p><a href="https://github.com/kubescape/kubescape" target="_blank"><img alt="kubescape - GitHub" src="https://github-stats-extended.vercel.app/api/pin/?username=kubescape&amp;repo=kubescape&amp;show_owner=true" /></a></p>
 <h2 id="configuration-in-megalinter">Configuration in MegaLinter</h2>
 <ul>
 <li>Enable kubescape by adding <code>KUBERNETES_KUBESCAPE</code> in <a href="https://megalinter.io/beta/configuration/#activation-and-deactivation">ENABLE_LINTERS variable</a></li>
@@ -12729,7 +12729,7 @@ Use<span class="w"> </span><span class="s2">"kubescape [command] --help"</span><
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=github-releases depName=kubescape/kubescape extractVersion=^v(?&lt;version&gt;.+)$</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">KUBERNETES_KUBESCAPE_VERSION</span><span class="o">=</span><span class="m">4</span>.0.16
+<span class="k">ARG</span><span class="w"> </span><span class="nv">KUBERNETES_KUBESCAPE_VERSION</span><span class="o">=</span><span class="m">4</span>.0.17
 <span class="k">RUN</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-eu<span class="p">;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s2">"</span><span class="nv">$TARGETPLATFORM</span><span class="s2">"</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="se">\</span>
 <span class="w">      </span>linux/amd64<span class="o">)</span><span class="w"> </span><span class="nv">ARCH</span><span class="o">=</span>amd64<span class="w"> </span><span class="p">;;</span><span class="w"> </span><span class="se">\</span>
