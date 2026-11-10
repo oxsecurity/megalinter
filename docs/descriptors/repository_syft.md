@@ -29,7 +29,7 @@ description: How to use syft (configure, ignore files, ignore errors, help & ver
 
 ## syft documentation
 
-- Version in MegaLinter: **1.57.0**
+- Version in MegaLinter: **1.57.1**
 - Visit [Official Web Site](https://github.com/anchore/syft#readme){target=_blank}
 
 [![syft - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=anchore&repo=syft&show_owner=true)](https://github.com/anchore/syft){target=_blank}
