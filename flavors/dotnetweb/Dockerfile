@@ -271,8 +271,6 @@ ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.72.0
 ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.72.0
 # renovate: datasource=npm depName=typescript-eslint
 ARG NPM_TYPESCRIPT_ESLINT_VERSION=8.72.0
-# renovate: datasource=npm depName=ts-standard
-ARG NPM_TS_STANDARD_VERSION=12.0.2
 # renovate: datasource=pypi depName=yamllint
 ARG PIP_YAMLLINT_VERSION=1.38.0
 # renovate: datasource=pypi depName=pip
@@ -502,8 +500,7 @@ RUN npm config set prefix /usr/local \
                 prettyjson@${NPM_PRETTYJSON_VERSION} \
                 @typescript-eslint/eslint-plugin@${NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION} \
                 @typescript-eslint/parser@${NPM_TYPESCRIPT_ESLINT_PARSER_VERSION} \
-                typescript-eslint@${NPM_TYPESCRIPT_ESLINT_VERSION} \
-                ts-standard@${NPM_TS_STANDARD_VERSION} && \
+                typescript-eslint@${NPM_TYPESCRIPT_ESLINT_VERSION} && \
     echo "Cleaning npm cache…" \
     && (npm cache clean --force || true) \
     && echo "Changing owner of node_modules files…" \
@@ -737,7 +734,6 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOS
 # eslint installation
 # biome installation
 # eslint installation
-# ts-standard installation
 # prettier installation
 # biome installation
 # prettier installation

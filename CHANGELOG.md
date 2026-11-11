@@ -22,6 +22,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Removed linters
 
+  - **Removed 4 unmaintained linters** and the **`COFFEE`** descriptor
+    - Existing `.mega-linter.yml` files keep validating and ignore removed entries with a notice; see [Removed linters](https://megalinter.io/latest/removed-linters/)
+    - **`COFFEE_COFFEELINT`** (and the **`COFFEE`** descriptor): CoffeeScript tooling is discontinued and `coffeelint` cannot honor `EXCLUDED_DIRECTORIES`
+    - **`GRAPHQL_GRAPHQL_SCHEMA_LINTER`**: unmaintained upstream; use **`GRAPHQL_BIOME`** instead
+    - **`REPOSITORY_DUSTILOCK`**: unmaintained dependency-confusion scanner; use **`REPOSITORY_TRIVY`** or **`REPOSITORY_OSV_SCANNER`** instead
+    - **`TYPESCRIPT_STANDARD`**: unmaintained `ts-standard` pins legacy ESLint/TypeScript tooling; use **`TYPESCRIPT_ES`** or **`TYPESCRIPT_BIOME`** instead
+
 - Media
 
 - Linters enhancements
@@ -64,6 +71,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sqlfluff](https://www.sqlfluff.com/) from 4.4.0 to **4.5.0** on 2026-11-09
   - [grype](https://github.com/anchore/grype) from 0.121.2 to **0.121.3** on 2026-11-10
   - [syft](https://github.com/anchore/syft) from 1.57.0 to **1.57.1** on 2026-11-10
+  - [eslint](https://typescript-eslint.io/) from 10.14.0 to **10.13.0** on 2026-11-11
 <!-- linter-versions-end -->
 
 ## [v10.2.0] - 2026-10-31
