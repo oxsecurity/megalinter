@@ -1,7 +1,5 @@
 ## ✅ MegaLinter analysis: Success
 
-
-
 |Descriptor|                                 Linter                                 |Files|Fixed|Errors|Max errors|Warnings|
 |----------|------------------------------------------------------------------------|----:|----:|-----:|---------:|-------:|
 |✅ FAKE   |[fake_linter](https://megalinter.io/latest/descriptors/fake_fake_linter)|    0|     |     0|          |       0|
