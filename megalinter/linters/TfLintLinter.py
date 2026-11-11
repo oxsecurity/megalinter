@@ -5,6 +5,8 @@ https://github.com/terraform-linters/tflint
 """
 
 import logging
+import os
+import shlex
 
 import megalinter
 from megalinter import config
@@ -16,7 +18,10 @@ class TfLintLinter(megalinter.Linter):
         # Build pre-command
         tflint_init_command = "tflint --init"
         if self.config_file is not None:
-            tflint_init_command += f" --config {self.config_file}"
+            # Quoted, with forward slashes: the command runs in bash, which would
+            # interpret the backslashes of a Windows path (native mode)
+            config_path = str(self.config_file).replace(os.sep, "/")
+            tflint_init_command += f" --config {shlex.quote(config_path)}"
         logging.debug("tflint before_lint_files: " + tflint_init_command)
         # Add to pre-commands
         tflint_secured_env = (

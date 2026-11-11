@@ -125,6 +125,8 @@ linters:
       linter_overrides:
         cli_lint_extra_args:
           - -summary
+        # Both path separators (Windows)
+        cli_lint_mode_project_exclude_arg_value: '(^|[/\\]){{DIR}}[/\\]'
     supported_platforms:
       platform:
         - linux/amd64

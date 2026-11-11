@@ -113,6 +113,8 @@ linters:
       linter_overrides:
         cli_lint_extra_args: ["-jar", "{{NATIVE_INSTALL_DIR}}/checkstyle-all.jar"]
         cli_version_extra_args: ["-jar", "{{NATIVE_INSTALL_DIR}}/checkstyle-all.jar"]
+        # Both path separators (Windows)
+        cli_lint_mode_project_exclude_arg_value: '[/\\]{{DIR}}([/\\]|$)'
       provenance:
         unverified: "Checkstyle publishes the all-in-one jar only as a GitHub release asset, without signature, checksum file or attestation (Maven Central only carries the thin jar)"
       platforms:
