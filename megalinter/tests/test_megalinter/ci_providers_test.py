@@ -589,6 +589,106 @@ class CiProvidersReporterContextTest(CiProviderTestCase):
         self.assertIsNone(provider.get_pr_number())
         self.assertIsNone(provider.get_auth_token())
 
+    # ---------------- Pull Request labels ----------------
+
+    def test_base_provider_has_no_pr_labels(self):
+        provider = CiProvider(self.request_id)
+        self.assertIsNone(provider.get_pr_labels())
+        self.assertEqual("", provider.get_pr_reference())
+        self.assertEqual(provider.get_job_url(), provider.get_report_url())
+
+    def test_bitbucket_and_jenkins_inherit_no_pr_labels(self):
+        self.assertIsNone(CiProviderBitbucket(self.request_id).get_pr_labels())
+        self.assertIsNone(CiProviderJenkins(self.request_id).get_pr_labels())
+
+    def test_github_pr_labels(self):
+        self.set_values(
+            {
+                "GITHUB_TOKEN": "tok",
+                "GITHUB_REPOSITORY": "org/repo",
+                "GITHUB_REF": "refs/pull/5/merge",
+            }
+        )
+        label = mock.Mock()
+        label.name = "PROJ-1"
+        with mock.patch("github.Github") as github_mock:
+            pull = github_mock.return_value.get_repo.return_value.get_pull
+            pull.return_value.labels = [label]
+            provider = CiProviderGithubActions(self.request_id)
+            self.assertEqual(["PROJ-1"], provider.get_pr_labels())
+            pull.assert_called_once_with(5)
+        self.assertEqual("org/repo #PR5", provider.get_pr_reference())
+
+    def test_github_pr_labels_none_without_token_or_on_error(self):
+        provider = CiProviderGithubActions(self.request_id)
+        self.assertIsNone(provider.get_pr_labels())
+        self.set_values(
+            {
+                "GITHUB_TOKEN": "tok",
+                "GITHUB_REPOSITORY": "org/repo",
+                "GITHUB_REF": "refs/pull/5/merge",
+            }
+        )
+        with mock.patch("github.Github", side_effect=Exception("boom")):
+            self.assertIsNone(provider.get_pr_labels())
+
+    def test_gitlab_pr_labels(self):
+        self.set_values(
+            {
+                "CI_JOB_TOKEN": "tok",
+                "CI_PROJECT_ID": "12",
+                "CI_MERGE_REQUEST_ID": "7",
+            }
+        )
+        with mock.patch("gitlab.Gitlab") as gitlab_mock:
+            get_mr = (
+                gitlab_mock.return_value.projects.get.return_value.mergerequests.get
+            )
+            get_mr.return_value.labels = ["PROJ-2", "bug"]
+            provider = CiProviderGitlab(self.request_id)
+            self.assertEqual(["PROJ-2", "bug"], provider.get_pr_labels())
+            get_mr.assert_called_once_with("7")
+        self.assertEqual("project 12 #MR7", provider.get_pr_reference())
+
+    def test_gitlab_pr_labels_none_without_merge_request(self):
+        self.set_values({"CI_JOB_TOKEN": "tok"})
+        self.assertIsNone(CiProviderGitlab(self.request_id).get_pr_labels())
+
+    def test_azure_pr_labels(self):
+        self.set_values(
+            {
+                "SYSTEM_ACCESSTOKEN": "tok",
+                "SYSTEM_COLLECTIONURI": "https://dev.azure.com/org/",
+                "SYSTEM_TEAMPROJECT": "proj",
+                "SYSTEM_PULLREQUEST_PULLREQUESTID": "9",
+                "BUILD_REPOSITORY_ID": "repo-id",
+            }
+        )
+        response = mock.Mock()
+        response.json.return_value = {
+            "value": [
+                {"name": "PROJ-3", "active": True},
+                {"name": "PROJ-4", "active": False},
+            ]
+        }
+        provider = CiProviderAzurePipelines(self.request_id)
+        with mock.patch("requests.get", return_value=response) as get_mock:
+            self.assertEqual(["PROJ-3"], provider.get_pr_labels())
+            self.assertIn("/pullRequests/9/labels", get_mock.call_args.args[0])
+        self.assertEqual("proj #PR9", provider.get_pr_reference())
+        self.assertEqual(provider.get_artifacts_url(), provider.get_report_url())
+
+    def test_azure_pr_labels_none_on_error(self):
+        self.set_values(
+            {
+                "SYSTEM_ACCESSTOKEN": "tok",
+                "SYSTEM_COLLECTIONURI": "https://dev.azure.com/org/",
+                "SYSTEM_PULLREQUEST_PULLREQUESTID": "9",
+            }
+        )
+        with mock.patch("requests.get", side_effect=Exception("boom")):
+            self.assertIsNone(CiProviderAzurePipelines(self.request_id).get_pr_labels())
+
 
 if __name__ == "__main__":
     unittest.main()

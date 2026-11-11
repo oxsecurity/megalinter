@@ -32,6 +32,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Reporters
 
+  - Add **Jira reporter**: posts the lint summary as a comment on the Jira ticket(s) referenced by **labels** of a GitHub, GitLab or Azure DevOps Pull Request. Set `JIRA_URL` with `JIRA_API_TOKEN` or `JIRA_PERSONAL_ACCESS_TOKEN`, see [documentation](https://megalinter.io/latest/reporters/JiraReporter/)
+
 - Flavors
 
 - Doc

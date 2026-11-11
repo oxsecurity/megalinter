@@ -3,9 +3,11 @@
 GitLab CI provider
 """
 
+import logging
 import re
 import time
 
+import gitlab
 from megalinter import config, utils
 from megalinter.ci_providers.CiProvider import CiProvider
 
@@ -84,6 +86,29 @@ class CiProviderGitlab(CiProvider):
         if open_merge_requests != "":
             return open_merge_requests.split(",")[0].split("!")[1]
         return None
+
+    def get_pr_reference(self) -> str:
+        return f"project {self.get_project_id()} #MR{self.get_pr_number()}"
+
+    def get_pr_labels(self):
+        mr_id = self.get_pr_number()
+        if mr_id is None or (
+            self.get_auth_token() is None and self.get_user_auth_token() is None
+        ):
+            logging.info(
+                f"[{self.name}] No GitLab token or merge request found, "
+                "so merge request labels are unavailable"
+            )
+            return None
+        try:
+            gl = gitlab.Gitlab(self.get_server_url(), **self.get_api_auth_options())
+            merge_request = gl.projects.get(self.get_project_id()).mergerequests.get(
+                mr_id
+            )
+            return list(merge_request.labels)
+        except Exception as e:
+            logging.warning(f"[{self.name}] Unable to read merge request labels: {e}")
+            return None
 
     # Second spelling tried when the first id does not resolve
     def get_pr_number_fallback(self):
