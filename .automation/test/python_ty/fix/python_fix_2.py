@@ -1,0 +1,1 @@
+y = "hello"  # type: ignore

@@ -341,6 +341,8 @@ ARG PIP_NBQA_VERSION=1.9.1
 ARG NPM_PYRIGHT_VERSION=1.1.414
 # renovate: datasource=pypi depName=ruff
 ARG PIP_RUFF_VERSION=0.17.2
+# renovate: datasource=pypi depName=ty
+ARG PIP_TY_VERSION=0.0.100
 # renovate: datasource=github-tags depName=nxadm/rakudo-pkg extractVersion=^v(?<version>.+)$
 ARG RAKU_RAKU_VERSION=2026.09
 ARG RAKU_RAKU_ALPINE_VERSION=3.23
@@ -676,6 +678,10 @@ RUN apk add --no-cache --virtual .ml-build-deps gcc libffi-dev make musl-dev rub
     && VIRTUAL_ENV="/venvs/ruff-format" uv pip install ruff==${PIP_RUFF_VERSION} \
     && VIRTUAL_ENV="/venvs/ruff-format" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/ruff-format" rm -rf /venvs/ruff-format/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
+    && uv venv --seed --no-project --no-managed-python "/venvs/ty" \
+    && VIRTUAL_ENV="/venvs/ty" uv pip install ty==${PIP_TY_VERSION} \
+    && VIRTUAL_ENV="/venvs/ty" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
+    && VIRTUAL_ENV="/venvs/ty" rm -rf /venvs/ty/lib/python3.13/site-packages/setuptools/_vendor/wheel* \
     && uv venv --seed --no-project --no-managed-python "/venvs/checkov" \
     && VIRTUAL_ENV="/venvs/checkov" uv pip install checkov==${PIP_CHECKOV_VERSION} \
     && VIRTUAL_ENV="/venvs/checkov" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
@@ -727,7 +733,7 @@ RUN apk add --no-cache --virtual .ml-build-deps gcc libffi-dev make musl-dev rub
     && find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
     && rm -rf /root/.cache \
     && apk del .ml-build-deps
-ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/cpplint/bin:/venvs/cfn-lint/bin:/venvs/djlint/bin:/venvs/rumdl/bin:/venvs/pylint/bin:/venvs/black/bin:/venvs/flake8/bin:/venvs/isort/bin:/venvs/bandit/bin:/venvs/mypy/bin:/venvs/nbqa/bin:/venvs/ruff/bin:/venvs/ruff-format/bin:/venvs/checkov/bin:/venvs/semgrep/bin:/venvs/robocop/bin:/venvs/rst-lint/bin:/venvs/rstcheck/bin:/venvs/rstfmt/bin:/venvs/snakemake/bin:/venvs/snakefmt/bin:/venvs/proselint/bin:/venvs/codespell/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
+ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/cpplint/bin:/venvs/cfn-lint/bin:/venvs/djlint/bin:/venvs/rumdl/bin:/venvs/pylint/bin:/venvs/black/bin:/venvs/flake8/bin:/venvs/isort/bin:/venvs/bandit/bin:/venvs/mypy/bin:/venvs/nbqa/bin:/venvs/ruff/bin:/venvs/ruff-format/bin:/venvs/ty/bin:/venvs/checkov/bin:/venvs/semgrep/bin:/venvs/robocop/bin:/venvs/rst-lint/bin:/venvs/rstcheck/bin:/venvs/rstfmt/bin:/venvs/snakemake/bin:/venvs/snakefmt/bin:/venvs/proselint/bin:/venvs/codespell/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
 #PIPVENV__END
 
 ############################
@@ -1126,6 +1132,7 @@ ENV MYPY_CACHE_DIR=/tmp
 # pyright installation
 # ruff installation
 # ruff-format installation
+# ty installation
 # lintr installation
 # R packages are compiled from source during installation: the
 # toolchain and -dev headers are only needed within this RUN and
