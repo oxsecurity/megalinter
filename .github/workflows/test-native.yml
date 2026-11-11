@@ -128,7 +128,6 @@ jobs:
       NATIVE_INSTALL_RUNTIMES: auto
       VERSION_GET_AT_RUNTIME: "true"
       PYTHONUTF8: "1"
-      MEGALINTER_HOME: ${{ runner.temp }}/megalinter-home
       LINTERS: ${{ matrix.linters }}
       TESTS: ${{ matrix.tests }}
     steps:
@@ -136,6 +135,8 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
+      - name: Set the native install folder
+        run: echo "MEGALINTER_HOME=${RUNNER_TEMP}/megalinter-home" >> "${GITHUB_ENV}"
       - name: Setup Python
         uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
         with:
@@ -215,7 +216,6 @@ jobs:
       NATIVE_IGNORE_HOST_RUNTIMES: "true"
       VERSION_GET_AT_RUNTIME: "true"
       PYTHONUTF8: "1"
-      MEGALINTER_HOME: ${{ runner.temp }}/megalinter-home
       LINTERS: ${{ matrix.linters }}
       TESTS: ${{ matrix.tests }}
     steps:
@@ -223,6 +223,8 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
+      - name: Set the native install folder
+        run: echo "MEGALINTER_HOME=${RUNNER_TEMP}/megalinter-home" >> "${GITHUB_ENV}"
       - name: Setup Python
         uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
         with:

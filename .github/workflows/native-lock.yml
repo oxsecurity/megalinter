@@ -42,8 +42,8 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
-    environment:
-      name: auto-update
+    # The auto-update environment (holding the PAT) only allows main: feature branch runs use GITHUB_TOKEN
+    environment: ${{ github.ref == 'refs/heads/main' && 'auto-update' || '' }}
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
