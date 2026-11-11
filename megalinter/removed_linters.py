@@ -144,6 +144,30 @@ REMOVED_LINTERS = {
         "reason": "Upstream repository archived by Tenable and shipping"
         " unpatched CVEs with no prospect of a fixed release",
     },
+    "COFFEE_COFFEELINT": {
+        "removed_in": "11.0.0",
+        "replacement": None,
+        "reason": "CoffeeScript tooling is discontinued, coffeelint cannot honor"
+        " EXCLUDED_DIRECTORIES, and the COFFEE descriptor had no other linter",
+    },
+    "GRAPHQL_GRAPHQL_SCHEMA_LINTER": {
+        "removed_in": "11.0.0",
+        "replacement": "GRAPHQL_BIOME",
+        "reason": "Unmaintained upstream (no release since May 2022) and pins"
+        " graphql to ^15/^16, blocking graphql v17; use GRAPHQL_BIOME instead",
+    },
+    "REPOSITORY_DUSTILOCK": {
+        "removed_in": "11.0.0",
+        "replacement": None,
+        "reason": "Unmaintained Checkmarx dependency-confusion scanner; use"
+        " REPOSITORY_TRIVY or REPOSITORY_OSV_SCANNER for dependency scanning",
+    },
+    "TYPESCRIPT_STANDARD": {
+        "removed_in": "11.0.0",
+        "replacement": "TYPESCRIPT_ES",
+        "reason": "ts-standard is unmaintained and pins legacy ESLint/TypeScript"
+        " tooling; use TYPESCRIPT_ES or TYPESCRIPT_BIOME instead",
+    },
 }
 
 # Linter keys that were never shipped under that exact name but have been valid
@@ -179,6 +203,11 @@ REMOVED_DESCRIPTORS = {
         "removed_in": "10.0.0",
         "replacement": None,
         "reason": "Its only linter, PUPPET_PUPPET_LINT, has been removed",
+    },
+    "COFFEE": {
+        "removed_in": "11.0.0",
+        "replacement": None,
+        "reason": "Its only linter, COFFEE_COFFEELINT, has been removed",
     },
 }
 
