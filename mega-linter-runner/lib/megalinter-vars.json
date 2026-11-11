@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "variable_count": 2885,
+    "variable_count": 2900,
     "categories": {
       "ACTION": 4,
       "ACTION_ACTIONLINT": 17,
@@ -55,7 +55,7 @@
       "ENV": 4,
       "ENV_DOTENV_LINTER": 15,
       "FILEIO_REPORTER": 2,
-      "GENERAL": 58,
+      "GENERAL": 65,
       "GHERKIN": 4,
       "GHERKIN_GHERKIN_LINT": 17,
       "GITHUB_COMMENT_REPORTER": 5,
@@ -98,7 +98,7 @@
       "KUBERNETES_KUBESCAPE": 16,
       "LATEX": 4,
       "LATEX_CHKTEX": 16,
-      "LLM": 10,
+      "LLM": 18,
       "LUA": 4,
       "LUA_LUACHECK": 17,
       "LUA_SELENE": 15,
@@ -880,6 +880,25 @@
       ],
       "category": "ANSIBLE",
       "section": "PREPOSTCOMMANDS"
+    },
+    "ANTHROPIC_API_VERSION": {
+      "name": "ANTHROPIC_API_VERSION",
+      "type": "string",
+      "title": "ANTHROPIC: API version",
+      "description": "Value of the anthropic-version header sent to the Anthropic API. With 2026-10-21 or later, LLM_TEMPERATURE is not sent (removed from the API)",
+      "default": "2023-06-01",
+      "category": "LLM",
+      "section": "MISC"
+    },
+    "ANTHROPIC_BASE_URL": {
+      "name": "ANTHROPIC_BASE_URL",
+      "type": "string",
+      "title": "ANTHROPIC: Base URL",
+      "description": "Base URL of the Anthropic API, without the version segment (a trailing /v1 is accepted). /v1/messages is appended to it",
+      "default": "https://api.anthropic.com",
+      "examples": ["https://api.anthropic.com"],
+      "category": "LLM",
+      "section": "MISC"
     },
     "API_FILTER_REGEX_EXCLUDE": {
       "name": "API_FILTER_REGEX_EXCLUDE",
@@ -5919,6 +5938,16 @@
       "category": "DART",
       "section": "PREPOSTCOMMANDS"
     },
+    "DEEPSEEK_BASE_URL": {
+      "name": "DEEPSEEK_BASE_URL",
+      "type": "string",
+      "title": "DEEPSEEK: Base URL",
+      "description": "Base URL of the DeepSeek API. /chat/completions is appended to it",
+      "default": "https://api.deepseek.com/v1",
+      "examples": ["https://api.deepseek.com/v1"],
+      "category": "LLM",
+      "section": "MISC"
+    },
     "DEFAULT_BRANCH": {
       "name": "DEFAULT_BRANCH",
       "type": "string",
@@ -8067,6 +8096,16 @@
       "category": "GITLAB_COMMENT_REPORTER",
       "section": "GENERAL"
     },
+    "GOOGLE_BASE_URL": {
+      "name": "GOOGLE_BASE_URL",
+      "type": "string",
+      "title": "GOOGLE: Base URL",
+      "description": "Base URL of the Google Gemini API. /v1beta is appended when the URL has no version segment, then /models/{model}:generateContent",
+      "default": "https://generativelanguage.googleapis.com",
+      "examples": ["https://generativelanguage.googleapis.com"],
+      "category": "LLM",
+      "section": "MISC"
+    },
     "GO_FILTER_REGEX_EXCLUDE": {
       "name": "GO_FILTER_REGEX_EXCLUDE",
       "type": ["string", "array"],
@@ -8861,6 +8900,16 @@
       ],
       "category": "GRAPHQL",
       "section": "PREPOSTCOMMANDS"
+    },
+    "GROK_BASE_URL": {
+      "name": "GROK_BASE_URL",
+      "type": "string",
+      "title": "GROK: Base URL",
+      "description": "Base URL of the Grok (xAI) API, including the version segment. /chat/completions is appended to it",
+      "default": "https://api.x.ai/v1",
+      "examples": ["https://api.x.ai/v1"],
+      "category": "LLM",
+      "section": "MISC"
     },
     "GROOVY_FILTER_REGEX_EXCLUDE": {
       "name": "GROOVY_FILTER_REGEX_EXCLUDE",
@@ -15628,6 +15677,14 @@
       "category": "GENERAL",
       "section": "GENERAL"
     },
+    "MEGALINTER_HOME": {
+      "name": "MEGALINTER_HOME",
+      "type": "string",
+      "title": "Native mode home folder",
+      "description": "Native mode (MegaLinter without Docker): folder where linters, language runtimes and downloads are installed. Defaults to ~/.megalinter",
+      "category": "GENERAL",
+      "section": "MISC"
+    },
     "MEGALINTER_VERSION": {
       "name": "MEGALINTER_VERSION",
       "type": "string",
@@ -15638,6 +15695,16 @@
       "category": "GENERAL",
       "section": "GENERAL"
     },
+    "MISTRAL_BASE_URL": {
+      "name": "MISTRAL_BASE_URL",
+      "type": "string",
+      "title": "MISTRAL: Base URL",
+      "description": "Base URL of the Mistral AI API, including the version segment. /chat/completions is appended to it",
+      "default": "https://api.mistral.ai/v1",
+      "examples": ["https://api.mistral.ai/v1"],
+      "category": "LLM",
+      "section": "MISC"
+    },
     "MULTI_STATUS": {
       "name": "MULTI_STATUS",
       "type": "boolean",
@@ -15647,12 +15714,89 @@
       "category": "GENERAL",
       "section": "OUTPUT"
     },
+    "NATIVE_ENV_ALLOWLIST": {
+      "name": "NATIVE_ENV_ALLOWLIST",
+      "type": "array",
+      "title": "Native mode environment allowlist",
+      "description": "Native mode: additional host environment variables given to the linters. By default linters only receive an allowlist of system variables, so that secrets of the host do not leak to them",
+      "category": "GENERAL",
+      "section": "MISC",
+      "items_type": "string"
+    },
+    "NATIVE_IGNORE_HOST_RUNTIMES": {
+      "name": "NATIVE_IGNORE_HOST_RUNTIMES",
+      "type": "boolean",
+      "title": "Native mode ignore host runtimes",
+      "description": "Native mode: ignore the language runtimes (node, java, dotnet...) already installed on the host, and use the ones installed by MegaLinter in MEGALINTER_HOME",
+      "default": false,
+      "category": "GENERAL",
+      "section": "MISC"
+    },
+    "NATIVE_INSTALL_RUNTIMES": {
+      "name": "NATIVE_INSTALL_RUNTIMES",
+      "type": "string",
+      "title": "Native mode runtimes installation",
+      "description": "Native mode: what to do when a language runtime required by a linter is missing. ask: propose to install it in MEGALINTER_HOME (interactive terminals only), auto: install it without asking, never: only print how to install it",
+      "default": "ask",
+      "enum": ["ask", "auto", "never"],
+      "category": "GENERAL",
+      "section": "MISC"
+    },
+    "NATIVE_LINTERS": {
+      "name": "NATIVE_LINTERS",
+      "type": "array",
+      "title": "Native mode linters",
+      "description": "Native mode (MegaLinter without Docker): linters allowed to run on this machine, one by linter key (example: [PYTHON_BLACK, JAVASCRIPT_ES]). Nothing runs natively without being listed. The value 'all' means every linter matching your configuration, it is discouraged: it installs many linters (slow) and you must fully trust the security of all of them",
+      "examples": [["PYTHON_BLACK", "JAVASCRIPT_ES"], ["all"]],
+      "category": "GENERAL",
+      "section": "MISC",
+      "items_type": "string"
+    },
+    "NATIVE_MISSING_LINTERS": {
+      "name": "NATIVE_MISSING_LINTERS",
+      "type": "string",
+      "title": "Native mode missing linters",
+      "description": "Native mode: what to do with a linter listed in NATIVE_LINTERS that is not installed. install: install it, skip: skip it, fail: stop with an error",
+      "default": "install",
+      "enum": ["install", "skip", "fail"],
+      "category": "GENERAL",
+      "section": "MISC"
+    },
+    "NATIVE_OFFLINE": {
+      "name": "NATIVE_OFFLINE",
+      "type": "boolean",
+      "title": "Native mode offline",
+      "description": "Native mode: never download anything, install only from the local download cache",
+      "default": false,
+      "category": "GENERAL",
+      "section": "MISC"
+    },
     "OLLAMA_BASE_URL": {
       "name": "OLLAMA_BASE_URL",
       "type": "string",
       "title": "OLLAMA: Base URL",
-      "description": "Base URL to connect to Ollama server",
+      "description": "Base URL to connect to Ollama server, with or without the /api segment. /api/generate is appended to it",
       "default": "http://localhost:11434",
+      "category": "LLM",
+      "section": "MISC"
+    },
+    "OPENAI_BASE_URL": {
+      "name": "OPENAI_BASE_URL",
+      "type": "string",
+      "title": "OPENAI: Base URL",
+      "description": "Base URL of the OpenAI (or OpenAI-compatible) API, including the version segment. /chat/completions is appended to it",
+      "default": "https://api.openai.com/v1",
+      "examples": ["https://api.openai.com/v1"],
+      "category": "LLM",
+      "section": "MISC"
+    },
+    "ORCAROUTER_BASE_URL": {
+      "name": "ORCAROUTER_BASE_URL",
+      "type": "string",
+      "title": "ORCAROUTER: Base URL",
+      "description": "Base URL of the OrcaRouter API, including the version segment. /chat/completions is appended to it",
+      "default": "https://api.orcarouter.ai/v1",
+      "examples": ["https://api.orcarouter.ai/v1"],
       "category": "LLM",
       "section": "MISC"
     },
