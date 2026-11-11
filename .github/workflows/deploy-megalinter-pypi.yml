@@ -70,6 +70,11 @@ jobs:
               f.write(f'__version__ = "{version}"' + chr(10))
           EOF
 
+      # The default linter configurations (TEMPLATES) are shipped inside the package. They are
+      # copied at publish time only, so that editable installs (Docker images) are unchanged
+      - name: Bundle the default configurations
+        run: cp -r TEMPLATES megalinter/_templates
+
       # The wheel carries every Python dependency of the core, pinned with hashes (from uv.lock)
       - name: Export the hashed core requirements
         run: uv export --frozen --no-dev --no-emit-project --format requirements-txt --output-file megalinter/_core-requirements.lock

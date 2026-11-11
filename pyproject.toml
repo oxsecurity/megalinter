@@ -59,9 +59,6 @@ path = "megalinter/__about__.py"
 packages = ["megalinter"]
 exclude = ["megalinter/tests", "**/__pycache__"]
 
-[tool.hatch.build.targets.wheel.force-include]
-"TEMPLATES" = "megalinter/_templates"
-
 [tool.hatch.envs.default]
 installer = "uv"
 
