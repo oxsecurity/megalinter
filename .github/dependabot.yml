@@ -3,10 +3,10 @@
 # GitHub Dependabot Config info #
 #################################
 # Supply-chain hardening: every version-update block waits until a release is
-# at least 7 days old (cooldown) before opening a PR, so compromised releases
+# at least 14 days old (cooldown) before opening a PR, so compromised releases
 # can be caught by the community first. Dependabot SECURITY updates are not
 # subject to cooldown and still open immediately. Renovate applies the same
-# rule (minimumReleaseAge: 7 days, none for vulnerability alerts): keep both in sync.
+# rule (minimumReleaseAge: 14 days, none for vulnerability alerts): keep both in sync.
 version: 2
 updates:
   # Dependabot alone owns GitHub Actions: Renovate's github-actions manager is
@@ -19,7 +19,7 @@ updates:
       interval: weekly
     open-pull-requests-limit: 10
     cooldown:
-      default-days: 7
+      default-days: 14
 
   # Maintain dependencies for js with npm
   - package-ecosystem: "npm"
@@ -28,7 +28,7 @@ updates:
       interval: "weekly"
     open-pull-requests-limit: 10
     cooldown:
-      default-days: 7
+      default-days: 14
 
   # Test fixtures under .automation/test: Dependabot opens NO version update PR
   # there (`ignore: "*"` below), to avoid duplicates with Renovate, which keeps
@@ -95,7 +95,7 @@ updates:
       interval: "weekly"
     open-pull-requests-limit: 10
     cooldown:
-      default-days: 7
+      default-days: 14
 
   # Maintain dependencies for docker
   - package-ecosystem: "docker"
@@ -104,28 +104,28 @@ updates:
       interval: "weekly"
     open-pull-requests-limit: 10
     cooldown:
-      default-days: 7
+      default-days: 14
   - package-ecosystem: "docker"
     directory: "/flavors"
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 10
     cooldown:
-      default-days: 7
+      default-days: 14
   - package-ecosystem: "docker"
     directory: "/linters"
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 10
     cooldown:
-      default-days: 7
+      default-days: 14
   - package-ecosystem: "docker"
     directory: "/server"
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 10
     cooldown:
-      default-days: 7
+      default-days: 14
 
   # Maintain dependencies for python with pip
   - package-ecosystem: "pip"
@@ -134,21 +134,21 @@ updates:
       interval: "weekly"
     open-pull-requests-limit: 10
     cooldown:
-      default-days: 7
+      default-days: 14
   - package-ecosystem: "pip"
     directory: "/megalinter"
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 10
     cooldown:
-      default-days: 7
+      default-days: 14
   - package-ecosystem: "pip"
     directory: "/server"
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 10
     cooldown:
-      default-days: 7
+      default-days: 14
 
   - package-ecosystem: "devcontainers"
     directory: "/"
@@ -156,4 +156,4 @@ updates:
       interval: weekly
     open-pull-requests-limit: 10
     cooldown:
-      default-days: 7
+      default-days: 14
