@@ -93,6 +93,21 @@ linters:
               chmod +x /tmp/coursier && \
               /tmp/coursier install scalafix:${SCALA_SCALAFIX_VERSION} --quiet --install-dir /usr/bin && \
               rm -rf /tmp/coursier /root/.cache
+    native_install:
+      method: runtime_provided
+      requires:
+        - runtime: java
+          version: ">=8"
+      suggest:
+        windows: "Install Coursier (https://get-coursier.io/docs/cli-installation#windows) then run: cs install scalafix"
+        darwin: "brew install coursier/formulas/coursier && cs setup && cs install scalafix"
+        linux: "Install Coursier (https://get-coursier.io/docs/cli-installation) then run: cs install scalafix"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64

@@ -72,6 +72,45 @@ linters:
           && curl --retry 5 --retry-delay 5 -sLo ${BICEP_EXE} "https://github.com/Azure/bicep/releases/download/v${BICEP_VERSION}/bicep-linux-${BICEP_ARCH}" \
           && chmod +x "${BICEP_EXE}" \
           && mv "${BICEP_EXE}" "${BICEP_DIR}"
+    native_install:
+      method: binary
+      version: "${BICEP_VERSION}"
+      libc: glibc
+      assets:
+        linux/amd64:
+          url: "https://github.com/Azure/bicep/releases/download/v{{VERSION}}/bicep-linux-x64"
+          archive: none
+          name: bicep
+        linux/arm64:
+          url: "https://github.com/Azure/bicep/releases/download/v{{VERSION}}/bicep-linux-arm64"
+          archive: none
+          name: bicep
+        darwin/amd64:
+          url: "https://github.com/Azure/bicep/releases/download/v{{VERSION}}/bicep-osx-x64"
+          archive: none
+          name: bicep
+        darwin/arm64:
+          url: "https://github.com/Azure/bicep/releases/download/v{{VERSION}}/bicep-osx-arm64"
+          archive: none
+          name: bicep
+        windows/amd64:
+          url: "https://github.com/Azure/bicep/releases/download/v{{VERSION}}/bicep-win-x64.exe"
+          archive: none
+          name: bicep.exe
+      executables:
+        bicep: bicep
+      provenance:
+        unverified: "The Bicep release publishes the binaries without checksum file, signature or GitHub attestation (they only carry a Microsoft Authenticode signature)"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
+      overrides:
+        windows/amd64:
+          executables:
+            bicep: bicep.exe
     supported_platforms:
       platform:
         - linux/amd64

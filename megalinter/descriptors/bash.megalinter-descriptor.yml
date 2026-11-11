@@ -60,6 +60,24 @@ linters:
         - |
           RUN printf '#!/bin/bash \\n\\nif [[ -x "$1" ]]; then exit 0; else echo "Error: File:[$1] is not executable"; exit 1; fi' > /usr/bin/bash-exec \
               && chmod +x /usr/bin/bash-exec
+    native_install:
+      method: runtime_provided
+      suggest:
+        windows: "winget install --id Git.Git -e (provides Git Bash: add its bin folder to PATH)"
+        darwin: "bash is preinstalled on macOS (brew install bash for a recent version)"
+        linux: "Install bash from your distribution (example: sudo apt install bash)"
+      linter_overrides:
+        cli_executable: bash
+        cli_lint_extra_args:
+          - -c
+          - 'if [[ -x "$1" ]]; then exit 0; else echo "Error: File:[$1] is not executable"; exit 1; fi'
+          - bash-exec
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -138,6 +156,37 @@ linters:
           ARG BASH_SHELLCHECK_VERSION=v0.11.0
         - FROM koalaman/shellcheck:${BASH_SHELLCHECK_VERSION} AS shellcheck
         - COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
+    native_install:
+      method: binary
+      version: "${BASH_SHELLCHECK_VERSION}"
+      assets:
+        linux/amd64:
+          url: https://github.com/koalaman/shellcheck/releases/download/{{VERSION}}/shellcheck-{{VERSION}}.linux.x86_64.tar.gz
+          archive: tar.gz
+          strip_components: 1
+        linux/arm64:
+          url: https://github.com/koalaman/shellcheck/releases/download/{{VERSION}}/shellcheck-{{VERSION}}.linux.aarch64.tar.gz
+          archive: tar.gz
+          strip_components: 1
+        darwin/amd64:
+          url: https://github.com/koalaman/shellcheck/releases/download/{{VERSION}}/shellcheck-{{VERSION}}.darwin.x86_64.tar.gz
+          archive: tar.gz
+          strip_components: 1
+        darwin/arm64:
+          url: https://github.com/koalaman/shellcheck/releases/download/{{VERSION}}/shellcheck-{{VERSION}}.darwin.aarch64.tar.gz
+          archive: tar.gz
+          strip_components: 1
+        windows/amd64:
+          url: https://github.com/koalaman/shellcheck/releases/download/{{VERSION}}/shellcheck-{{VERSION}}.zip
+          archive: zip
+      provenance:
+        unverified: "koalaman/shellcheck publishes no checksum file, signature or attestation with its releases (the Docker image is the only other source)"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -206,6 +255,39 @@ linters:
           ARG BASH_SHFMT_VERSION=v3.14.1-alpine
         - FROM mvdan/shfmt:${BASH_SHFMT_VERSION} AS shfmt
         - COPY --link --from=shfmt /bin/shfmt /usr/bin/
+    native_install:
+      method: binary
+      # renovate: datasource=github-releases depName=mvdan/sh extractVersion=^v(?<version>.+)$
+      version: "3.14.1"
+      assets:
+        linux/amd64:
+          url: https://github.com/mvdan/sh/releases/download/v{{VERSION}}/shfmt_v{{VERSION}}_linux_amd64
+          archive: none
+          name: shfmt
+        linux/arm64:
+          url: https://github.com/mvdan/sh/releases/download/v{{VERSION}}/shfmt_v{{VERSION}}_linux_arm64
+          archive: none
+          name: shfmt
+        darwin/amd64:
+          url: https://github.com/mvdan/sh/releases/download/v{{VERSION}}/shfmt_v{{VERSION}}_darwin_amd64
+          archive: none
+          name: shfmt
+        darwin/arm64:
+          url: https://github.com/mvdan/sh/releases/download/v{{VERSION}}/shfmt_v{{VERSION}}_darwin_arm64
+          archive: none
+          name: shfmt
+        windows/amd64:
+          url: https://github.com/mvdan/sh/releases/download/v{{VERSION}}/shfmt_v{{VERSION}}_windows_amd64.exe
+          archive: none
+          name: shfmt.exe
+      provenance:
+        github_attestation: mvdan/sh
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64

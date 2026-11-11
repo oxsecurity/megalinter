@@ -61,6 +61,17 @@ linters:
           ARG NPM_CSPELL_VERSION=10.4.0
       npm:
         - "cspell@${NPM_CSPELL_VERSION}"
+    native_install:
+      method: npm
+      requires:
+        - runtime: node
+          version: ">=22.18.0"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -137,6 +148,18 @@ linters:
           ARG PIP_PROSELINT_VERSION=0.16.0
       pip:
         - proselint==${PIP_PROSELINT_VERSION}
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.10"
+      libc: glibc
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -214,6 +237,35 @@ linters:
           ARG SPELL_VALE_VERSION=v3.26.0
         - FROM jdkato/vale:${SPELL_VALE_VERSION} AS vale
         - COPY --link --from=vale /bin/vale /bin/vale
+    native_install:
+      method: binary
+      # Docker takes Vale from the jdkato/vale image (tag v3.26.0): the release asset names carry the version without the v prefix, so it is repeated here
+      # renovate: datasource=github-releases depName=vale-cli/vale extractVersion=^v(?<version>.*)$
+      version: "3.26.0"
+      assets:
+        linux/amd64:
+          url: https://github.com/vale-cli/vale/releases/download/v{{VERSION}}/vale_{{VERSION}}_Linux_64-bit.tar.gz
+          archive: tar.gz
+        linux/arm64:
+          url: https://github.com/vale-cli/vale/releases/download/v{{VERSION}}/vale_{{VERSION}}_Linux_arm64.tar.gz
+          archive: tar.gz
+        darwin/amd64:
+          url: https://github.com/vale-cli/vale/releases/download/v{{VERSION}}/vale_{{VERSION}}_macOS_64-bit.tar.gz
+          archive: tar.gz
+        darwin/arm64:
+          url: https://github.com/vale-cli/vale/releases/download/v{{VERSION}}/vale_{{VERSION}}_macOS_arm64.tar.gz
+          archive: tar.gz
+        windows/amd64:
+          url: https://github.com/vale-cli/vale/releases/download/v{{VERSION}}/vale_{{VERSION}}_Windows_64-bit.zip
+          archive: zip
+      provenance:
+        github_attestation: vale-cli/vale
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -323,6 +375,40 @@ linters:
           ARG SPELL_LYCHEE_VERSION=0.24.2-alpine
         - FROM lycheeverse/lychee:${SPELL_LYCHEE_VERSION} AS lychee
         - COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
+    native_install:
+      method: binary
+      # Docker takes lychee from the lycheeverse/lychee image (tag 0.24.2-alpine): the release asset URLs need the bare version
+      # renovate: datasource=github-releases depName=lycheeverse/lychee extractVersion=^lychee-v(?<version>.*)$
+      version: "0.24.2"
+      assets:
+        linux/amd64:
+          url: https://github.com/lycheeverse/lychee/releases/download/lychee-v{{VERSION}}/lychee-x86_64-unknown-linux-musl.tar.gz
+          archive: tar.gz
+          strip_components: 1
+        linux/arm64:
+          url: https://github.com/lycheeverse/lychee/releases/download/lychee-v{{VERSION}}/lychee-aarch64-unknown-linux-musl.tar.gz
+          archive: tar.gz
+          strip_components: 1
+        darwin/amd64:
+          url: https://github.com/lycheeverse/lychee/releases/download/lychee-v{{VERSION}}/lychee-x86_64-apple-darwin.tar.gz
+          archive: tar.gz
+          strip_components: 1
+        darwin/arm64:
+          url: https://github.com/lycheeverse/lychee/releases/download/lychee-v{{VERSION}}/lychee-aarch64-apple-darwin.tar.gz
+          archive: tar.gz
+          strip_components: 1
+        windows/amd64:
+          url: https://github.com/lycheeverse/lychee/releases/download/lychee-v{{VERSION}}/lychee-x86_64-pc-windows-msvc.zip
+          archive: zip
+          strip_components: 1
+      provenance:
+        checksums_url: "https://github.com/lycheeverse/lychee/releases/download/lychee-v{{VERSION}}/{{ASSET_NAME}}.sha256"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -403,6 +489,17 @@ linters:
           ARG PIP_CODESPELL_VERSION=2.4.3
       pip:
         - codespell==${PIP_CODESPELL_VERSION}
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.9"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64

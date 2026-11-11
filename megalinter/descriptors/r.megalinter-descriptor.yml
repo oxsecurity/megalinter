@@ -36,6 +36,25 @@ linters:
     linter_version_cache: "0.0.0"
     examples:
       - 'R --slave -e "errors <- lintr::lint(''myfile.r''); print(errors); quit(save = ''no'', status = if (length(errors) > 0) 1 else 0) "'
+    # lintr and its dependencies are built from source by R: no pinned and verifiable install exists,
+    # so they are provided by the host and installed by the user
+    native_install:
+      method: runtime_provided
+      requires:
+        - runtime: r
+          version: ">=4.1"
+      suggest:
+        windows: "Rscript -e \"install.packages(c('lintr', 'purrr', 'jsonlite'))\""
+        darwin: "Rscript -e \"install.packages(c('lintr', 'purrr', 'jsonlite'))\""
+        linux: "Rscript -e \"install.packages(c('lintr', 'purrr', 'jsonlite'))\""
+      linter_overrides:
+        cli_executable: R
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     install:
       apk:
         - libcurl

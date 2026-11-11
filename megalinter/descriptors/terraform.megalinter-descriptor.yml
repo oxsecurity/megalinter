@@ -87,6 +87,33 @@ linters:
           ARG TERRAFORM_TFLINT_VERSION=0.65.0
         - FROM ghcr.io/terraform-linters/tflint:v${TERRAFORM_TFLINT_VERSION} AS tflint
         - COPY --link --from=tflint /usr/local/bin/tflint /usr/bin/
+    native_install:
+      method: binary
+      version: "${TERRAFORM_TFLINT_VERSION}"
+      assets:
+        linux/amd64:
+          url: https://github.com/terraform-linters/tflint/releases/download/v{{VERSION}}/tflint_linux_amd64.zip
+          archive: zip
+        linux/arm64:
+          url: https://github.com/terraform-linters/tflint/releases/download/v{{VERSION}}/tflint_linux_arm64.zip
+          archive: zip
+        darwin/amd64:
+          url: https://github.com/terraform-linters/tflint/releases/download/v{{VERSION}}/tflint_darwin_amd64.zip
+          archive: zip
+        darwin/arm64:
+          url: https://github.com/terraform-linters/tflint/releases/download/v{{VERSION}}/tflint_darwin_arm64.zip
+          archive: zip
+        windows/amd64:
+          url: https://github.com/terraform-linters/tflint/releases/download/v{{VERSION}}/tflint_windows_amd64.zip
+          archive: zip
+      provenance:
+        github_attestation: terraform-linters/tflint
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -154,6 +181,39 @@ linters:
           ARG TERRAFORM_TERRAGRUNT_VERSION=1.17.0
         - FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
         - COPY --link --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
+    native_install:
+      method: binary
+      # renovate: datasource=github-releases depName=gruntwork-io/terragrunt extractVersion=^v(?<version>.+)$
+      version: "1.2.2"
+      assets:
+        linux/amd64:
+          url: https://github.com/gruntwork-io/terragrunt/releases/download/v{{VERSION}}/terragrunt_linux_amd64
+          archive: none
+          name: terragrunt
+        linux/arm64:
+          url: https://github.com/gruntwork-io/terragrunt/releases/download/v{{VERSION}}/terragrunt_linux_arm64
+          archive: none
+          name: terragrunt
+        darwin/amd64:
+          url: https://github.com/gruntwork-io/terragrunt/releases/download/v{{VERSION}}/terragrunt_darwin_amd64
+          archive: none
+          name: terragrunt
+        darwin/arm64:
+          url: https://github.com/gruntwork-io/terragrunt/releases/download/v{{VERSION}}/terragrunt_darwin_arm64
+          archive: none
+          name: terragrunt
+        windows/amd64:
+          url: https://github.com/gruntwork-io/terragrunt/releases/download/v{{VERSION}}/terragrunt_windows_amd64.exe
+          archive: none
+          name: terragrunt.exe
+      provenance:
+        github_attestation: gruntwork-io/terragrunt
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -202,6 +262,36 @@ linters:
           ARG TERRAFORM_TERRAGRUNT_VERSION=1.17.0
         - FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
         - COPY --link --from=terragrunt /bin/terraform /usr/bin/
+    native_install:
+      method: binary
+      version: "${TERRAFORM_TERRAGRUNT_VERSION}"
+      assets:
+        linux/amd64:
+          url: https://releases.hashicorp.com/terraform/{{VERSION}}/terraform_{{VERSION}}_linux_amd64.zip
+          archive: zip
+        linux/arm64:
+          url: https://releases.hashicorp.com/terraform/{{VERSION}}/terraform_{{VERSION}}_linux_arm64.zip
+          archive: zip
+        darwin/amd64:
+          url: https://releases.hashicorp.com/terraform/{{VERSION}}/terraform_{{VERSION}}_darwin_amd64.zip
+          archive: zip
+        darwin/arm64:
+          url: https://releases.hashicorp.com/terraform/{{VERSION}}/terraform_{{VERSION}}_darwin_arm64.zip
+          archive: zip
+        windows/amd64:
+          url: https://releases.hashicorp.com/terraform/{{VERSION}}/terraform_{{VERSION}}_windows_amd64.zip
+          archive: zip
+      provenance:
+        checksums_url: https://releases.hashicorp.com/terraform/{{VERSION}}/terraform_{{VERSION}}_SHA256SUMS
+        gpg:
+          keyring: hashicorp.asc
+          signature_url: https://releases.hashicorp.com/terraform/{{VERSION}}/terraform_{{VERSION}}_SHA256SUMS.sig
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -283,6 +373,39 @@ linters:
           ARG TERRAFORM_TOFU_FMT_VERSION=1.13.2-minimal
         - FROM ghcr.io/opentofu/opentofu:${TERRAFORM_TOFU_FMT_VERSION} AS opentofu
         - COPY --link --from=opentofu /usr/local/bin/tofu /usr/bin/
+    native_install:
+      method: binary
+      # renovate: datasource=github-releases depName=opentofu/opentofu extractVersion=^v(?<version>.+)$
+      version: "1.13.2"
+      assets:
+        linux/amd64:
+          url: https://github.com/opentofu/opentofu/releases/download/v{{VERSION}}/tofu_{{VERSION}}_linux_amd64.zip
+          archive: zip
+        linux/arm64:
+          url: https://github.com/opentofu/opentofu/releases/download/v{{VERSION}}/tofu_{{VERSION}}_linux_arm64.zip
+          archive: zip
+        darwin/amd64:
+          url: https://github.com/opentofu/opentofu/releases/download/v{{VERSION}}/tofu_{{VERSION}}_darwin_amd64.zip
+          archive: zip
+        darwin/arm64:
+          url: https://github.com/opentofu/opentofu/releases/download/v{{VERSION}}/tofu_{{VERSION}}_darwin_arm64.zip
+          archive: zip
+        windows/amd64:
+          url: https://github.com/opentofu/opentofu/releases/download/v{{VERSION}}/tofu_{{VERSION}}_windows_amd64.zip
+          archive: zip
+      provenance:
+        # The signing identity contains the release branch: update it with each OpenTofu minor version
+        cosign:
+          identity: https://github.com/opentofu/opentofu/.github/workflows/release.yml@refs/heads/v1.13
+          issuer: https://token.actions.githubusercontent.com
+          signature_url: https://github.com/opentofu/opentofu/releases/download/v{{VERSION}}/{{ASSET_NAME}}.sig
+          certificate_url: https://github.com/opentofu/opentofu/releases/download/v{{VERSION}}/{{ASSET_NAME}}.pem
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -420,6 +543,39 @@ linters:
           ARG TERRAFORM_TOFU_FMT_VERSION=1.13.2-minimal
         - FROM ghcr.io/opentofu/opentofu:${TERRAFORM_TOFU_FMT_VERSION} AS opentofu
         - COPY --link --from=opentofu /usr/local/bin/tofu /usr/bin/
+    native_install:
+      method: binary
+      # renovate: datasource=github-releases depName=opentofu/opentofu extractVersion=^v(?<version>.+)$
+      version: "1.13.2"
+      assets:
+        linux/amd64:
+          url: https://github.com/opentofu/opentofu/releases/download/v{{VERSION}}/tofu_{{VERSION}}_linux_amd64.zip
+          archive: zip
+        linux/arm64:
+          url: https://github.com/opentofu/opentofu/releases/download/v{{VERSION}}/tofu_{{VERSION}}_linux_arm64.zip
+          archive: zip
+        darwin/amd64:
+          url: https://github.com/opentofu/opentofu/releases/download/v{{VERSION}}/tofu_{{VERSION}}_darwin_amd64.zip
+          archive: zip
+        darwin/arm64:
+          url: https://github.com/opentofu/opentofu/releases/download/v{{VERSION}}/tofu_{{VERSION}}_darwin_arm64.zip
+          archive: zip
+        windows/amd64:
+          url: https://github.com/opentofu/opentofu/releases/download/v{{VERSION}}/tofu_{{VERSION}}_windows_amd64.zip
+          archive: zip
+      provenance:
+        # The signing identity contains the release branch: update it with each OpenTofu minor version
+        cosign:
+          identity: https://github.com/opentofu/opentofu/.github/workflows/release.yml@refs/heads/v1.13
+          issuer: https://token.actions.githubusercontent.com
+          signature_url: https://github.com/opentofu/opentofu/releases/download/v{{VERSION}}/{{ASSET_NAME}}.sig
+          certificate_url: https://github.com/opentofu/opentofu/releases/download/v{{VERSION}}/{{ASSET_NAME}}.pem
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64

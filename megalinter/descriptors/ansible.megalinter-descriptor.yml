@@ -109,6 +109,18 @@ linters:
           ARG PIP_ANSIBLE_LINT_VERSION=26.10.1
       pip:
         - ansible-lint==${PIP_ANSIBLE_LINT_VERSION}
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.10"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+      unsupported:
+        windows/amd64: "ansible-lint does not support Windows (Ansible requires a POSIX system). Use Docker."
     supported_platforms:
       platform:
         - linux/amd64

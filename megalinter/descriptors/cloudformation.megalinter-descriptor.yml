@@ -99,6 +99,17 @@ linters:
           ARG PIP_CFN_LINT_VERSION=1.59.0
       pip:
         - cfn-lint[sarif]==${PIP_CFN_LINT_VERSION}
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.10"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64

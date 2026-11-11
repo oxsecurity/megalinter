@@ -27,6 +27,19 @@ examples:
 install:
   apk:
     - cppcheck
+native_install:
+  # No portable build with verifiable provenance for all platforms: cppcheck is provided by the host
+  method: runtime_provided
+  suggest:
+    windows: "winget install --id Cppcheck.Cppcheck -e"
+    darwin: "brew install cppcheck"
+    linux: "Install cppcheck from your distribution (example: sudo apt install cppcheck)"
+  platforms:
+    - linux/amd64
+    - linux/arm64
+    - darwin/amd64
+    - darwin/arm64
+    - windows/amd64
 supported_platforms:
   platform:
     - linux/amd64

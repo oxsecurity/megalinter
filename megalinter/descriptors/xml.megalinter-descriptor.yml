@@ -54,6 +54,18 @@ linters:
         - libxml2
         - libxml2-utils
         - libgcc
+    native_install:
+      method: runtime_provided
+      suggest:
+        darwin: "xmllint is preinstalled on macOS (brew install libxml2 for a recent version)"
+        linux: "Install libxml2 utilities from your distribution (example: sudo apt install libxml2-utils)"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+      unsupported:
+        windows/amd64: "xmllint (libxml2) has no official Windows distribution. Use Docker."
     supported_platforms:
       platform:
         - linux/amd64

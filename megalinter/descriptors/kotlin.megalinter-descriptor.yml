@@ -79,6 +79,31 @@ linters:
           RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/download/${KTLINT_VERSION}/ktlint && \
               chmod a+x ktlint && \
               mv "ktlint" /usr/bin/
+    native_install:
+      method: binary
+      version: "${KTLINT_VERSION}"
+      requires:
+        - runtime: java
+          version: ">=8"
+      assets:
+        any:
+          url: "https://github.com/pinterest/ktlint/releases/download/{{VERSION}}/ktlint"
+          archive: none
+          name: ktlint
+      executables:
+        ktlint:
+          launcher: java
+          args: ["-jar", "{{NATIVE_INSTALL_DIR}}/ktlint"]
+      provenance:
+        gpg:
+          keyring: ktlint.asc
+          signature_url: "https://github.com/pinterest/ktlint/releases/download/{{VERSION}}/ktlint.asc"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -155,6 +180,32 @@ linters:
               mv -n detekt-cli-${DETEKT_VERSION}/bin/* usr/bin && \
               mv -n detekt-cli-${DETEKT_VERSION}/lib/* usr/lib && \
               rm -rf detekt-cli-${DETEKT_VERSION}.zip detekt-cli-${DETEKT_VERSION}
+    native_install:
+      method: binary
+      version: "${DETEKT_VERSION}"
+      requires:
+        - runtime: java
+          version: ">=8"
+      assets:
+        any:
+          # Same all-in-one jar as the one inside the GitHub release zip, published on Maven Central with a GPG signature
+          url: "https://repo1.maven.org/maven2/io/gitlab/arturbosch/detekt/detekt-cli/{{VERSION}}/detekt-cli-{{VERSION}}-all.jar"
+          archive: none
+          name: detekt-cli-all.jar
+      executables:
+        detekt-cli:
+          launcher: java
+          args: ["-jar", "{{NATIVE_INSTALL_DIR}}/detekt-cli-all.jar"]
+      provenance:
+        gpg:
+          keyring: detekt.asc
+          signature_url: "https://repo1.maven.org/maven2/io/gitlab/arturbosch/detekt/detekt-cli/{{VERSION}}/{{ASSET_NAME}}.asc"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64

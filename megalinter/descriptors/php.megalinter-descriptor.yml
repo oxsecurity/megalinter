@@ -96,6 +96,33 @@ linters:
       - "phpcs myfile.php"
       - "phpcs --standard=phpcs.xml myfile.php"
       - "phpcs --standard=phpcs.xml mydir/ myfile.php"
+    native_install:
+      method: binary
+      version: "${PHP_SQUIZLABS_PHP_CODESNIFFER_VERSION}"
+      requires:
+        - runtime: php
+          version: ">=7.2"
+      assets:
+        any:
+          url: https://github.com/PHPCSStandards/PHP_CodeSniffer/releases/download/{{VERSION}}/phpcs.phar
+          archive: none
+          name: phpcs.phar
+      executables:
+        phpcs:
+          launcher: php
+          args:
+            - "{{NATIVE_INSTALL_DIR}}/phpcs.phar"
+      provenance:
+        github_attestation: PHPCSStandards/PHP_CodeSniffer
+      linter_overrides:
+        # SARIF output needs bartlett/sarif-php-converters, a Composer package only installed in Docker
+        can_output_sarif: false
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     install:
       dockerfile:
         - |-
@@ -188,6 +215,33 @@ linters:
       - "phpstan analyse --no-progress --no-ansi -c phpstan.neon myfile.php"
       - "phpstan analyse --no-progress --no-ansi myfile1.php myfile2.php"
       - "phpstan analyse --no-progress --no-ansi mydir1/ mydir2/ myfile.php"
+    native_install:
+      method: binary
+      version: "${PHP_PHPSTAN_PHPSTAN_VERSION}"
+      requires:
+        - runtime: php
+          version: ">=7.4"
+      assets:
+        any:
+          url: https://github.com/phpstan/phpstan/releases/download/{{VERSION}}/phpstan.phar
+          archive: none
+          name: phpstan.phar
+      executables:
+        phpstan:
+          launcher: php
+          args:
+            - "{{NATIVE_INSTALL_DIR}}/phpstan.phar"
+      provenance:
+        github_attestation: phpstan/phpstan
+      linter_overrides:
+        # SARIF output needs bartlett/sarif-php-converters, a Composer package only installed in Docker
+        can_output_sarif: false
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     install:
       dockerfile:
         - |-
@@ -275,6 +329,32 @@ linters:
       - "psalm myfile.php mydir/"
       - "psalm --config=psalm.xml myfile.php"
       - "psalm --config=psalm.xml myfile.php mydir/"
+    native_install:
+      method: binary
+      version: "${PHP_VIMEO_PSALM_VERSION}"
+      requires:
+        - runtime: php
+          version: ">=8.1.31"
+      assets:
+        any:
+          url: https://github.com/vimeo/psalm/releases/download/{{VERSION}}/psalm.phar
+          archive: none
+          name: psalm.phar
+      executables:
+        psalm:
+          launcher: php
+          args:
+            - "{{NATIVE_INSTALL_DIR}}/psalm.phar"
+      provenance:
+        gpg:
+          keyring: psalm.asc
+          signature_url: https://github.com/vimeo/psalm/releases/download/{{VERSION}}/psalm.phar.asc
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     install:
       dockerfile:
         - |-
@@ -331,6 +411,36 @@ linters:
       - "phplint mydir"
       - "phplint mydir myfile.php"
       - "phplint mydir -vvv"
+    native_install:
+      method: binary
+      version: "${PHP_OVERTRUE_PHPLINT_VERSION}"
+      requires:
+        - runtime: php
+          version: ">=8.2"
+      assets:
+        any:
+          url: https://github.com/overtrue/phplint/releases/download/{{VERSION}}/phplint.phar
+          archive: none
+          name: phplint.phar
+      executables:
+        phplint:
+          launcher: php
+          args:
+            - "{{NATIVE_INSTALL_DIR}}/phplint.phar"
+      env:
+        # phplint 9.8+ needs an explicit mode, legacy keeps the 9.7 CLI behavior
+        PLINT_MODE: legacy
+      provenance:
+        unverified: "overtrue/phplint publishes the phar without signature, attestation or checksum file: the sha256 is pinned on first download by the lock"
+      linter_overrides:
+        # SARIF output needs bartlett/sarif-php-converters, a Composer package only installed in Docker
+        can_output_sarif: false
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     install:
       dockerfile:
         - |-
@@ -414,6 +524,30 @@ linters:
       - "php-cs-fixer check myfile.php"
       - "php-cs-fixer check mydir"
       - "php-cs-fixer check --config .php-cs-fixer.php"
+    native_install:
+      method: binary
+      version: "${PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION}"
+      requires:
+        - runtime: php
+          version: ">=7.4"
+      assets:
+        any:
+          url: https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/releases/download/{{VERSION}}/php-cs-fixer.phar
+          archive: none
+          name: php-cs-fixer.phar
+      executables:
+        php-cs-fixer:
+          launcher: php
+          args:
+            - "{{NATIVE_INSTALL_DIR}}/php-cs-fixer.phar"
+      provenance:
+        unverified: "PHP-CS-Fixer publishes a GPG signature (php-cs-fixer.phar.asc) but its signing key is not retrievable with a user ID from any public keyserver, so it cannot be verified: the sha256 is pinned on first download by the lock"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     install:
       dockerfile:
         - |-

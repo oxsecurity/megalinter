@@ -75,6 +75,23 @@ linters:
                     continue_if_failed: false
     examples:
       - "perlcritic myfile.pl"
+    # Perl::Critic is built from source with XS dependencies (PPI, Params::Util...): no pinned and
+    # verifiable install exists, so it is provided by the host and installed by the user
+    native_install:
+      method: runtime_provided
+      requires:
+        - runtime: perl
+          version: ">=5.10.1"
+      suggest:
+        windows: "cpan -T Perl::Critic"
+        darwin: "cpan -T Perl::Critic"
+        linux: "cpan -T Perl::Critic (or, on Debian/Ubuntu: sudo apt install libperl-critic-perl)"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     install:
       dockerfile:
         - |
