@@ -318,10 +318,10 @@ ARG GEM_RUBOCOP_RAKE_VERSION=0.7.1
 ARG GEM_RUBOCOP_RSPEC_VERSION=3.10.2
 # renovate: datasource=npm depName=cspell
 ARG NPM_CSPELL_VERSION=10.4.0
-# renovate: datasource=pypi depName=proselint
-ARG PIP_PROSELINT_VERSION=0.16.0
 # renovate: datasource=pypi depName=codespell
 ARG PIP_CODESPELL_VERSION=2.4.3
+# renovate: datasource=github-releases depName=crate-ci/typos extractVersion=^v(?<version>.+)$
+ARG SPELL_TYPOS_VERSION=1.52.0
 # renovate: datasource=pypi depName=sqlfluff
 ARG PIP_SQLFLUFF_VERSION=4.5.0
 # renovate: datasource=github-releases depName=realm/SwiftLint
@@ -408,7 +408,6 @@ RUN apk -U --no-cache upgrade \
                 py3-pyflakes \
                 cppcheck \
                 helm \
-                re2 \
                 unzip \
                 libxml2 \
                 libxml2-utils \
@@ -491,7 +490,7 @@ COPY --link --from=opentofu /usr/local/bin/tofu /usr/bin/
 #############################################################################################
 
 #GEM__START
-RUN apk add --no-cache --virtual .ml-build-deps gcc libffi-dev make musl-dev ruby-dev build-base re2-dev py3-pybind11-dev && \
+RUN apk add --no-cache --virtual .ml-build-deps gcc libffi-dev make musl-dev ruby-dev && \
     echo 'gem: --no-document' >> ~/.gemrc && \
     gem install \
           rubocop:${GEM_RUBOCOP_VERSION} \
@@ -510,7 +509,7 @@ RUN apk add --no-cache --virtual .ml-build-deps gcc libffi-dev make musl-dev rub
 #############################################################################################
 
 #PIPVENV__START
-RUN apk add --no-cache --virtual .ml-build-deps gcc libffi-dev make musl-dev ruby-dev build-base re2-dev py3-pybind11-dev && \
+RUN apk add --no-cache --virtual .ml-build-deps gcc libffi-dev make musl-dev ruby-dev && \
     export UV_LINK_MODE=hardlink \
     && uv pip install --system --no-cache pip==${PIP_PIP_VERSION} virtualenv==${PIP_VIRTUALENV_VERSION} \
     && uv venv --seed --no-project --no-managed-python "/venvs/ansible-lint" \
@@ -593,10 +592,6 @@ RUN apk add --no-cache --virtual .ml-build-deps gcc libffi-dev make musl-dev rub
     && VIRTUAL_ENV="/venvs/rstfmt" uv pip install rstfmt==${PIP_RSTFMT_VERSION} \
     && VIRTUAL_ENV="/venvs/rstfmt" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
     && VIRTUAL_ENV="/venvs/rstfmt" rm -rf /venvs/rstfmt/lib/python3*/site-packages/setuptools/_vendor/wheel* \
-    && uv venv --seed --no-project --no-managed-python "/venvs/proselint" \
-    && VIRTUAL_ENV="/venvs/proselint" uv pip install proselint==${PIP_PROSELINT_VERSION} \
-    && VIRTUAL_ENV="/venvs/proselint" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
-    && VIRTUAL_ENV="/venvs/proselint" rm -rf /venvs/proselint/lib/python3*/site-packages/setuptools/_vendor/wheel* \
     && uv venv --seed --no-project --no-managed-python "/venvs/codespell" \
     && VIRTUAL_ENV="/venvs/codespell" uv pip install codespell==${PIP_CODESPELL_VERSION} \
     && VIRTUAL_ENV="/venvs/codespell" uv pip install --upgrade "wheel>=0.46.2" "setuptools>=75.8.0" \
@@ -612,7 +607,7 @@ RUN apk add --no-cache --virtual .ml-build-deps gcc libffi-dev make musl-dev rub
     && find /venvs \( -type f \( -iname \*.pyc -o -iname \*.pyo \) -o -type d -iname __pycache__ \) -delete \
     && rm -rf /root/.cache \
     && apk del .ml-build-deps
-ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/cpplint/bin:/venvs/cfn-lint/bin:/venvs/djlint/bin:/venvs/rumdl/bin:/venvs/pylint/bin:/venvs/black/bin:/venvs/flake8/bin:/venvs/isort/bin:/venvs/mypy/bin:/venvs/nbqa/bin:/venvs/ruff/bin:/venvs/ruff-format/bin:/venvs/ty/bin:/venvs/checkov/bin:/venvs/semgrep/bin:/venvs/robocop/bin:/venvs/rst-lint/bin:/venvs/rstcheck/bin:/venvs/rstfmt/bin:/venvs/proselint/bin:/venvs/codespell/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
+ENV PATH="${PATH}":/venvs/ansible-lint/bin:/venvs/cpplint/bin:/venvs/cfn-lint/bin:/venvs/djlint/bin:/venvs/rumdl/bin:/venvs/pylint/bin:/venvs/black/bin:/venvs/flake8/bin:/venvs/isort/bin:/venvs/mypy/bin:/venvs/nbqa/bin:/venvs/ruff/bin:/venvs/ruff-format/bin:/venvs/ty/bin:/venvs/checkov/bin:/venvs/semgrep/bin:/venvs/robocop/bin:/venvs/rst-lint/bin:/venvs/rstcheck/bin:/venvs/rstfmt/bin:/venvs/codespell/bin:/venvs/sqlfluff/bin:/venvs/yamllint/bin
 #PIPVENV__END
 
 ############################
@@ -891,10 +886,18 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOS
 # rstfmt installation
 # rubocop installation
 # cspell installation
-# proselint installation
 # lychee installation
 # Managed with COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
 # codespell installation
+# typos installation
+    && case "${TARGETARCH}" in \
+      amd64) TYPOS_ARCH="x86_64" ;; \
+      arm64) TYPOS_ARCH="aarch64" ;; \
+      *) echo "Unsupported TARGETARCH: ${TARGETARCH}" && exit 1 ;; \
+    esac && \
+    curl -fsSL "https://github.com/crate-ci/typos/releases/download/v${SPELL_TYPOS_VERSION}/typos-v${SPELL_TYPOS_VERSION}-${TYPOS_ARCH}-unknown-linux-musl.tar.gz" \
+    | tar -xz -C /usr/local/bin ./typos && \
+    chmod +x /usr/local/bin/typos \
 # sqlfluff installation
 # swiftlint installation
     && case "${TARGETARCH}" in \
