@@ -133,7 +133,7 @@ ARG PIP_ANSIBLE_LINT_VERSION=26.10.1
 # renovate: datasource=npm depName=@stoplight/spectral-cli
 ARG NPM_SPECTRAL_CLI_VERSION=6.17.0
 # renovate: datasource=github-tags depName=clj-kondo/clj-kondo extractVersion=^v(?<version>.+)$
-ARG CLJ_KONDO_VERSION=2026.10.20
+ARG CLJ_KONDO_VERSION=2026.10.26
 
 # renovate: datasource=github-tags depName=greglook/cljstyle
 ARG CLJ_STYLE_VERSION=0.17.642
@@ -181,7 +181,7 @@ ARG NPM_MARKDOWNLINT_CLI_VERSION=0.49.1
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=2.1.0
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.3.0
+ARG PIP_RUMDL_VERSION=0.3.2
 # renovate: datasource=pypi depName=checkov
 ARG PIP_CHECKOV_VERSION=3.4.0
 # renovate: datasource=github-tags depName=anchore/grype

@@ -9,8 +9,10 @@ from megalinter import ci_providers, config, utils
 from megalinter.constants import (
     DEFAULT_RELEASE,
     ML_DOC_URL,
+    ML_DOC_URL_BASE,
     ML_DOC_URL_DESCRIPTORS_ROOT,
     ML_REPO,
+    ML_REPO_URL,
     ML_VERSION,
     OX_MARKDOWN_LINK,
 )
@@ -85,17 +87,26 @@ def build_markdown_summary(reporter_self, action_run_url="", max_total_chars=400
         )
 
 
+def _join_markdown_blocks(blocks) -> str:
+    # Paragraphs separated by exactly one blank line, whatever line breaks each
+    # block starts or ends with; empty blocks are skipped
+    return (os.linesep * 2).join(
+        block.strip("\r\n")
+        for block in blocks
+        if block is not None and block.strip() != ""
+    ) + os.linesep
+
+
 def build_markdown_summary_table(reporter_self, action_run_url=""):
-    # Build complete message using helper functions
-    p_r_msg = build_markdown_summary_header(reporter_self, action_run_url)
-
-    # Build table content using helper function
-    table_content = _build_table_content(
-        reporter_self.master.linters, reporter_self, action_run_url
+    p_r_msg = _join_markdown_blocks(
+        [
+            build_markdown_summary_header(reporter_self, action_run_url),
+            _build_table_content(
+                reporter_self.master.linters, reporter_self, action_run_url
+            ),
+            build_markdown_summary_footer(reporter_self, action_run_url),
+        ]
     )
-    p_r_msg += table_content + os.linesep
-    p_r_msg += build_markdown_summary_footer(reporter_self, action_run_url)
-
     logging.debug("\n" + p_r_msg)
     return p_r_msg
 
@@ -103,9 +114,6 @@ def build_markdown_summary_table(reporter_self, action_run_url=""):
 def build_markdown_summary_sections(
     reporter_self, action_run_url="", max_total_chars=40000
 ):
-    # Build complete message using helper functions
-    p_r_msg = build_markdown_summary_header(reporter_self, action_run_url)
-
     # Separate linters into two groups: those with issues and those that are OK
     linters_with_issues, linters_ok = _separate_linters_by_issues(
         reporter_self.master.linters
@@ -114,15 +122,19 @@ def build_markdown_summary_sections(
     # Sort linters with issues by severity
     linters_with_issues.sort(key=_sort_linters_by_icon_severity)
 
-    # Build sections content
-    sections_content = _build_sections_content(
-        linters_with_issues, linters_ok, reporter_self, action_run_url, max_total_chars
+    p_r_msg = _join_markdown_blocks(
+        [
+            build_markdown_summary_header(reporter_self, action_run_url),
+            _build_sections_content(
+                linters_with_issues,
+                linters_ok,
+                reporter_self,
+                action_run_url,
+                max_total_chars,
+            ),
+            build_markdown_summary_footer(reporter_self, action_run_url),
+        ]
     )
-    p_r_msg += sections_content
-
-    # Add footer content
-    p_r_msg += build_markdown_summary_footer(reporter_self, action_run_url)
-
     logging.debug("\n" + p_r_msg)
     return p_r_msg
 
@@ -139,9 +151,8 @@ def build_markdown_summary_header(reporter_self, action_run_url=""):
         status_label = "Success with warnings"
     else:
         status_label = reporter_self.master.status.capitalize()
-    status_with_href = log_link(status_label, action_run_url)
     return (
-        f"## {status_icon}[MegaLinter]({ML_DOC_URL}) analysis: {status_with_href}"
+        f"## {status_icon} MegaLinter analysis: {status_label}"
         + os.linesep
         + os.linesep
     )
@@ -217,30 +228,19 @@ def get_linter_summary_data(linter, action_run_url=""):
 
 
 def build_markdown_summary_footer(reporter_self, action_run_url=""):
-    footer = ""
-
-    if reporter_self.master.result_message != "":
-        footer += reporter_self.master.result_message + os.linesep
+    blocks = [reporter_self.master.result_message]
 
     user_notifications = build_user_notifications(reporter_self.master)
     if user_notifications:
-        footer += os.linesep + "### Notices" + os.linesep + os.linesep
-        for notice in user_notifications:
-            footer += notice + os.linesep + os.linesep
+        blocks += ["### Notices", *user_notifications]
 
-    if action_run_url != "":
-        footer += (
-            "See detailed reports in [MegaLinter artifacts"
-            f"]({action_run_url})" + os.linesep
-        )
-    else:
-        footer += "See detailed reports in MegaLinter artifacts" + os.linesep
+    reports_link = log_link("MegaLinter artifacts", action_run_url)
+    blocks.append(f"See detailed reports in {reports_link}")
 
     if reporter_self.master.validate_all_code_base is False:
-        footer += (
+        blocks.append(
             "_Set `VALIDATE_ALL_CODEBASE: true` in mega-linter.yml to validate "
             + "all sources, not only the diff_"
-            + os.linesep
         )
 
     if reporter_self.master.flavor_suggestions is not None:
@@ -254,19 +254,22 @@ def build_markdown_summary_footer(reporter_self, action_run_url=""):
         custom_flavor_message = (
             "Your project could benefit from a custom flavor, "
             "which would allow you to run only the linters you need, and thus improve runtime performances. "
-            "(Skip this info by defining `FLAVOR_SUGGESTIONS: false`)\n\n"
-            f"  - Documentation: [Custom Flavors]({ML_DOC_URL}/custom-flavors/)\n"
-            f"  - Command: `{custom_flavor_command}`"
+            "(Skip this info by defining `FLAVOR_SUGGESTIONS: false`)"
+            + os.linesep
+            + os.linesep
+            + f"  - Documentation: [Custom Flavors]({ML_DOC_URL}/custom-flavors/)"
+            + os.linesep
+            + f"  - Command: `{custom_flavor_command}`"
         )
         if len(reporter_self.master.flavor_suggestions) == 1:
             if not is_custom_flavor():
-                footer += os.linesep + os.linesep + custom_flavor_message
+                blocks.append(custom_flavor_message)
         else:
-            footer += (
-                os.linesep
-                + "You could have the same capabilities but better runtime performances"
-                " if you use a MegaLinter flavor:" + os.linesep
+            blocks.append(
+                "You could have the same capabilities but better runtime performances"
+                " if you use a MegaLinter flavor:"
             )
+            flavor_list = ""
             for suggestion in reporter_self.master.flavor_suggestions:
                 if "new_flavor_linter_names" in suggestion:
                     continue
@@ -277,42 +280,45 @@ def build_markdown_summary_footer(reporter_self, action_run_url=""):
                 action_path = (
                     f"{ML_REPO}/flavors/{suggestion['flavor']}@{action_version}"
                 )
-                footer += (
+                flavor_list += (
                     f"- [{action_path}]({ML_DOC_URL}/flavors/{suggestion['flavor']}/)"
                     f" ({suggestion['linters_number']} linters)" + os.linesep
                 )
+            blocks.append(flavor_list)
             if not is_custom_flavor():
-                footer += os.linesep + os.linesep + custom_flavor_message
-        footer += os.linesep
+                blocks.append(custom_flavor_message)
 
-    # Link to ox
+    blocks += [
+        _build_markdown_summary_promotion(reporter_self),
+        config.get(
+            reporter_self.master.request_id, "JOB_SUMMARY_ADDITIONAL_MARKDOWN", ""
+        ),
+    ]
+    return _join_markdown_blocks(blocks)
+
+
+def _build_markdown_summary_promotion(reporter_self) -> str:
     if (
         config.get(
             reporter_self.master.request_id, "REPORTERS_MARKDOWN_TYPE", "advanced"
         )
         == "simple"
     ):
-        footer += (
-            os.linesep
-            + "MegaLinter is provided by [OX Security]"
-            + "(https://www.ox.security/?ref=megalinter)"
+        promotion = (
+            f"[MegaLinter]({ML_DOC_URL_BASE}) is brought to you by "
+            "[OX Security](https://www.ox.security/?ref=megalinter). "
+            "Please consider supporting the project by "
+            f"[starring the repository]({ML_REPO_URL})."
         )
     else:
-        footer += os.linesep + OX_MARKDOWN_LINK
-
-    footer += (
-        os.linesep
-        + "Show us your support by [**starring ⭐ the repository**](https://github.com/oxsecurity/megalinter)"
-    )
-
-    if config.exists(
-        reporter_self.master.request_id, "JOB_SUMMARY_ADDITIONAL_MARKDOWN"
-    ):
-        footer += os.linesep + config.get(
-            reporter_self.master.request_id, "JOB_SUMMARY_ADDITIONAL_MARKDOWN", ""
+        promotion = (
+            OX_MARKDOWN_LINK
+            + os.linesep
+            + os.linesep
+            + f"Please consider supporting [MegaLinter]({ML_DOC_URL_BASE}) by "
+            + f"[starring the repository]({ML_REPO_URL})."
         )
-
-    return footer
+    return promotion
 
 
 def register_user_notification(master, key, template, value=None, extras=None):
@@ -877,8 +883,7 @@ def _build_sections_content(
 def build_markdown_summary_sections_table(
     reporter_self, action_run_url="", max_total_chars=40000
 ):
-    # Build complete message using helper functions
-    p_r_msg = build_markdown_summary_header(reporter_self, action_run_url)
+    blocks = [build_markdown_summary_header(reporter_self, action_run_url)]
 
     # Separate linters into two groups: those with issues and those that are OK
     linters_with_issues, linters_ok = _separate_linters_by_issues(
@@ -890,22 +895,22 @@ def build_markdown_summary_sections_table(
 
     # Build sections content for linters with issues only
     if linters_with_issues:
-        p_r_msg += "## Linters with Issues\n\n"
-        sections_content = _build_sections_content(
-            linters_with_issues, [], reporter_self, action_run_url, max_total_chars
-        )
-        p_r_msg += sections_content
+        blocks += [
+            "## Linters with Issues",
+            _build_sections_content(
+                linters_with_issues, [], reporter_self, action_run_url, max_total_chars
+            ),
+        ]
 
     # Build table for all linters
-    p_r_msg += "\n\n"
-    table_content = _build_table_content(
-        reporter_self.master.linters, reporter_self, action_run_url
-    )
-    p_r_msg += table_content + os.linesep
+    blocks += [
+        _build_table_content(
+            reporter_self.master.linters, reporter_self, action_run_url
+        ),
+        build_markdown_summary_footer(reporter_self, action_run_url),
+    ]
 
-    # Add footer content
-    p_r_msg += build_markdown_summary_footer(reporter_self, action_run_url)
-
+    p_r_msg = _join_markdown_blocks(blocks)
     logging.debug("\n" + p_r_msg)
     return p_r_msg
 
@@ -913,15 +918,13 @@ def build_markdown_summary_sections_table(
 def build_markdown_summary_table_sections(
     reporter_self, action_run_url="", max_total_chars=40000
 ):
-    # Build complete message using helper functions
-    p_r_msg = build_markdown_summary_header(reporter_self, action_run_url)
-
     # Build table for all linters first
-    p_r_msg += "\n\n"
-    table_content = _build_table_content(
-        reporter_self.master.linters, reporter_self, action_run_url
-    )
-    p_r_msg += table_content + os.linesep
+    blocks = [
+        build_markdown_summary_header(reporter_self, action_run_url),
+        _build_table_content(
+            reporter_self.master.linters, reporter_self, action_run_url
+        ),
+    ]
 
     # Separate linters into two groups: those with issues and those that are OK
     linters_with_issues, linters_ok = _separate_linters_by_issues(
@@ -933,14 +936,15 @@ def build_markdown_summary_table_sections(
 
     # Build sections content for linters with issues only
     if linters_with_issues:
-        p_r_msg += "## Detailed Issues\n\n"
-        sections_content = _build_sections_content(
-            linters_with_issues, [], reporter_self, action_run_url, max_total_chars
-        )
-        p_r_msg += sections_content
+        blocks += [
+            "## Detailed Issues",
+            _build_sections_content(
+                linters_with_issues, [], reporter_self, action_run_url, max_total_chars
+            ),
+        ]
 
-    # Add footer content
-    p_r_msg += build_markdown_summary_footer(reporter_self, action_run_url)
+    blocks.append(build_markdown_summary_footer(reporter_self, action_run_url))
 
+    p_r_msg = _join_markdown_blocks(blocks)
     logging.debug("\n" + p_r_msg)
     return p_r_msg
