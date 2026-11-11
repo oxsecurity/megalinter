@@ -1,0 +1,349 @@
+{
+  "$id": "http://github.com/oxsecurity/megalinter-native-runtimes.json",
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "MegaLinter native runtimes",
+  "description": "Language runtimes used by native mode (MegaLinter without Docker): how to detect them on the host, how to install them without admin rights, and what to suggest when they are missing",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "runtimes"
+  ],
+  "properties": {
+    "runtimes": {
+      "type": "object",
+      "description": "Runtimes by identifier (python, node, java...). The identifier is the value of requires[].runtime in linter native_install",
+      "additionalProperties": {
+        "$ref": "#/definitions/runtime"
+      }
+    }
+  },
+  "definitions": {
+    "platform": {
+      "type": "string",
+      "enum": [
+        "linux/amd64",
+        "linux/arm64",
+        "darwin/amd64",
+        "darwin/arm64",
+        "windows/amd64"
+      ]
+    },
+    "runtime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "detect",
+        "suggest"
+      ],
+      "properties": {
+        "detect": {
+          "type": "object",
+          "description": "How to find the runtime already installed on the host",
+          "additionalProperties": false,
+          "required": [
+            "executables",
+            "version_command",
+            "version_regex"
+          ],
+          "properties": {
+            "executables": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              },
+              "description": "Executable names searched on PATH, in order"
+            },
+            "version_command": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              },
+              "description": "Command printing the version, {{EXECUTABLE}} is the executable found"
+            },
+            "version_regex": {
+              "type": "string",
+              "description": "Regular expression whose first group captures the version"
+            }
+          }
+        },
+        "suggest": {
+          "type": "object",
+          "description": "Official install command per OS, shown when the runtime is missing and not provisioned",
+          "additionalProperties": false,
+          "required": [
+            "windows",
+            "darwin",
+            "linux"
+          ],
+          "properties": {
+            "windows": {
+              "type": "string"
+            },
+            "darwin": {
+              "type": "string"
+            },
+            "linux": {
+              "type": "string"
+            }
+          }
+        },
+        "provision": {
+          "$ref": "#/definitions/provision"
+        }
+      }
+    },
+    "provision": {
+      "type": "object",
+      "description": "Pinned and verified download installed in ~/.megalinter/runtimes without admin rights. Either {via: uv}, or a version with assets and provenance",
+      "additionalProperties": false,
+      "properties": {
+        "via": {
+          "type": "string",
+          "enum": [
+            "uv"
+          ],
+          "description": "Tool provisioning the runtime: no other property is allowed"
+        },
+        "version": {
+          "type": "string",
+          "description": "Pinned version, available as {{VERSION}} in the asset URLs. Must carry a renovate comment on the line above when a renovate datasource exists"
+        },
+        "assets": {
+          "type": "object",
+          "description": "Download by platform. Only the platforms the vendor publishes",
+          "minProperties": 1,
+          "propertyNames": {
+            "$ref": "#/definitions/platform"
+          },
+          "additionalProperties": {
+            "$ref": "#/definitions/asset"
+          }
+        },
+        "provenance": {
+          "$ref": "#/definitions/provenance"
+        },
+        "env": {
+          "type": "object",
+          "description": "Environment variables set when a linter requires the runtime, {{NATIVE_INSTALL_DIR}} is available",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "path": {
+          "type": "array",
+          "description": "Install-relative directories prepended to PATH (\".\" is the install directory itself)",
+          "items": {
+            "type": "string"
+          }
+        },
+        "libc": {
+          "type": "string",
+          "enum": [
+            "any",
+            "glibc",
+            "musl"
+          ],
+          "default": "any",
+          "description": "glibc: the Linux builds are not usable on musl hosts (Alpine)"
+        },
+        "overrides": {
+          "type": "object",
+          "description": "Partial provision (path, env) replacing the keys for one platform only",
+          "propertyNames": {
+            "$ref": "#/definitions/platform"
+          },
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "env": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              },
+              "path": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "via"
+          ],
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "version"
+                ]
+              },
+              {
+                "required": [
+                  "assets"
+                ]
+              },
+              {
+                "required": [
+                  "provenance"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "required": [
+            "version",
+            "assets",
+            "provenance"
+          ],
+          "not": {
+            "required": [
+              "via"
+            ]
+          }
+        }
+      ]
+    },
+    "asset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "url"
+      ],
+      "properties": {
+        "url": {
+          "type": "string",
+          "pattern": "^https://",
+          "description": "HTTPS download URL, {{VERSION}} is available"
+        },
+        "archive": {
+          "type": "string",
+          "enum": [
+            "none",
+            "zip",
+            "tar.gz",
+            "tar.xz",
+            "tar.bz2",
+            "gz"
+          ],
+          "default": "none"
+        },
+        "strip_components": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 0
+        },
+        "name": {
+          "type": "string",
+          "description": "File name to store the download under when archive is none"
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "description": "How the lock generator verifies the download. Same vocabulary as native_install.provenance. gpg together with checksums_url means the signature covers the checksums file",
+      "additionalProperties": false,
+      "properties": {
+        "github_attestation": {
+          "type": "string",
+          "description": "owner/repo publishing GitHub artifact attestations"
+        },
+        "cosign": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "identity",
+            "issuer"
+          ],
+          "properties": {
+            "identity": {
+              "type": "string"
+            },
+            "issuer": {
+              "type": "string"
+            },
+            "signature_url": {
+              "type": "string"
+            },
+            "certificate_url": {
+              "type": "string"
+            }
+          }
+        },
+        "gpg": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "keyring",
+            "signature_url"
+          ],
+          "properties": {
+            "keyring": {
+              "type": "string",
+              "description": "Keyring file name in .automation/native-keys/"
+            },
+            "signature_url": {
+              "type": "string",
+              "pattern": "^https://",
+              "description": "Detached signature of the asset, or of the checksums file when checksums_url is also set. {{VERSION}} and {{ASSET_NAME}} are available"
+            }
+          }
+        },
+        "checksums_url": {
+          "type": "string",
+          "pattern": "^https://",
+          "description": "Checksum file published by the same release. {{VERSION}} and {{ASSET_NAME}} are available"
+        },
+        "checksums_format": {
+          "type": "string",
+          "enum": [
+            "sha256sum",
+            "sha512sum"
+          ],
+          "default": "sha256sum"
+        },
+        "unverified": {
+          "type": "string",
+          "minLength": 10,
+          "description": "Justification, reviewed in the pull request"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "github_attestation"
+          ]
+        },
+        {
+          "required": [
+            "cosign"
+          ]
+        },
+        {
+          "required": [
+            "gpg"
+          ]
+        },
+        {
+          "required": [
+            "checksums_url"
+          ]
+        },
+        {
+          "required": [
+            "unverified"
+          ]
+        }
+      ]
+    }
+  }
+}

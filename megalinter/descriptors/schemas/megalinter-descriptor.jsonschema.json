@@ -80,6 +80,317 @@
       "required": [],
       "title": "Command",
       "type": "object"
+    },
+    "native_install": {
+      "additionalProperties": false,
+      "description": "How the linter is installed when MegaLinter runs natively (without Docker). See .claude/rules/native-install.md",
+      "properties": {
+        "allow_install_scripts": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "package": {
+                "type": "string"
+              },
+              "reason": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "package",
+              "reason"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "allow_source_build": {
+          "additionalProperties": false,
+          "properties": {
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "reason"
+          ],
+          "type": "object"
+        },
+        "assets": {
+          "additionalProperties": {
+            "additionalProperties": false,
+            "properties": {
+              "archive": {
+                "default": "none",
+                "enum": [
+                  "none",
+                  "zip",
+                  "tar.gz",
+                  "tar.xz",
+                  "tar.bz2",
+                  "gz"
+                ],
+                "type": "string"
+              },
+              "name": {
+                "description": "File name to store the download under when archive is none",
+                "type": "string"
+              },
+              "strip_components": {
+                "default": 0,
+                "minimum": 0,
+                "type": "integer"
+              },
+              "url": {
+                "description": "HTTPS download URL, {{VERSION}} is available",
+                "pattern": "^https://",
+                "type": "string"
+              }
+            },
+            "required": [
+              "url"
+            ],
+            "type": "object"
+          },
+          "propertyNames": {
+            "pattern": "^(any|linux/amd64|linux/arm64|darwin/amd64|darwin/arm64|windows/amd64)$",
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "env": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "executables": {
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "args": {
+                    "description": "Arguments given to the launcher before the user arguments, {{NATIVE_INSTALL_DIR}} is available",
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "launcher": {
+                    "description": "Runtime command starting the tool (java, php, pwsh, python, node...)",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "launcher"
+                ],
+                "type": "object"
+              }
+            ]
+          },
+          "type": "object"
+        },
+        "libc": {
+          "default": "any",
+          "enum": [
+            "any",
+            "glibc",
+            "musl"
+          ],
+          "type": "string"
+        },
+        "linter_overrides": {
+          "description": "Linter properties replaced only when running natively",
+          "type": "object"
+        },
+        "method": {
+          "enum": [
+            "pip",
+            "npm",
+            "gem",
+            "go",
+            "dotnet_tool",
+            "powershell_module",
+            "binary",
+            "runtime_provided"
+          ],
+          "type": "string"
+        },
+        "overrides": {
+          "additionalProperties": {
+            "type": "object"
+          },
+          "description": "Per-platform partial native_install replacing keys for that platform only",
+          "propertyNames": {
+            "enum": [
+              "linux/amd64",
+              "linux/arm64",
+              "darwin/amd64",
+              "darwin/arm64",
+              "windows/amd64"
+            ],
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "packages": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "path": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "platforms": {
+          "items": {
+            "enum": [
+              "linux/amd64",
+              "linux/arm64",
+              "darwin/amd64",
+              "darwin/arm64",
+              "windows/amd64"
+            ],
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "provenance": {
+          "additionalProperties": false,
+          "properties": {
+            "checksums_format": {
+              "default": "sha256sum",
+              "enum": [
+                "sha256sum",
+                "sha512sum"
+              ],
+              "type": "string"
+            },
+            "checksums_url": {
+              "pattern": "^https://",
+              "type": "string"
+            },
+            "cosign": {
+              "additionalProperties": false,
+              "properties": {
+                "certificate_url": {
+                  "type": "string"
+                },
+                "identity": {
+                  "type": "string"
+                },
+                "issuer": {
+                  "type": "string"
+                },
+                "signature_url": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "identity",
+                "issuer"
+              ],
+              "type": "object"
+            },
+            "github_attestation": {
+              "description": "owner/repo publishing GitHub artifact attestations",
+              "type": "string"
+            },
+            "gpg": {
+              "additionalProperties": false,
+              "properties": {
+                "keyring": {
+                  "description": "Keyring file name in .automation/native-keys/",
+                  "type": "string"
+                },
+                "signature_url": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "keyring",
+                "signature_url"
+              ],
+              "type": "object"
+            },
+            "unverified": {
+              "description": "Justification, reviewed in the pull request",
+              "minLength": 10,
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "requires": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "runtime": {
+                "description": "Runtime identifier declared in native-runtimes.yml",
+                "type": "string"
+              },
+              "version": {
+                "description": "Version constraint, example: >=21",
+                "type": "string"
+              }
+            },
+            "required": [
+              "runtime"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "suggest": {
+          "additionalProperties": {
+            "minLength": 5,
+            "type": "string"
+          },
+          "description": "Official install command per OS (windows, darwin, linux) shown for host-provided tools (method runtime_provided) that MegaLinter does not download itself",
+          "propertyNames": {
+            "enum": [
+              "windows",
+              "darwin",
+              "linux"
+            ]
+          },
+          "type": "object"
+        },
+        "unsupported": {
+          "additionalProperties": {
+            "minLength": 10,
+            "type": "string"
+          },
+          "propertyNames": {
+            "enum": [
+              "linux/amd64",
+              "linux/arm64",
+              "darwin/amd64",
+              "darwin/arm64",
+              "windows/amd64"
+            ],
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "version": {
+          "description": "Literal version, ${ARG_NAME} or ${FROM_TAG:image/name}",
+          "type": "string"
+        }
+      },
+      "required": [
+        "method"
+      ],
+      "title": "Native installation",
+      "type": "object"
     }
   },
   "description": "Descriptor definition for MegaLinter",
@@ -1421,6 +1732,9 @@
             ],
             "title": "Linter configuration key",
             "type": "string"
+          },
+          "native_install": {
+            "$ref": "#/definitions/native_install"
           },
           "post_commands": {
             "default": [],

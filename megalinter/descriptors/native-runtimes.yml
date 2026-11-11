@@ -1,0 +1,369 @@
+# Language runtimes used by native mode (MegaLinter without Docker).
+# Validated by schemas/megalinter-native-runtimes.jsonschema.json
+#
+# detect:    how to find the runtime already installed on the host
+# provision: (optional) pinned, verified download installed in ~/.megalinter/runtimes
+#            without admin rights, when the user accepts it (NATIVE_INSTALL_RUNTIMES=ask|auto)
+#            - via: uv        the runtime is provisioned by uv (python only), no other field
+#            - version        pinned version, available as {{VERSION}} in the URLs
+#            - assets         same shape as native_install.assets of the linters
+#                             (platform -> {url, archive, strip_components}).
+#                             {{VERSION}} and {{ASSET_NAME}} (file name of the asset URL) are available
+#            - provenance     same vocabulary as native_install.provenance
+#                             (see .claude/rules/native-install.md). `gpg` together with
+#                             `checksums_url` means the signature covers the checksums file,
+#                             which then gives the digest of the asset
+#            - env            variables set when a linter requires the runtime ({{NATIVE_INSTALL_DIR}} available)
+#            - path           install-relative directories prepended to PATH
+#            - libc           glibc: no download on musl hosts (Alpine)
+#            - overrides      platform -> partial provision (path, env) replacing keys for that platform only
+#            Runtimes without provision (ruby, r, rust, swift, git) have no portable and verifiable
+#            build installable without admin rights: they are only suggested.
+# suggest:   official install command per OS, shown when the runtime is missing
+#            and it is not provisioned
+runtimes:
+  python:
+    detect:
+      executables: [python3, python]
+      version_command: ["{{EXECUTABLE}}", "--version"]
+      version_regex: 'Python (\d+[\d.]*)'
+    suggest:
+      windows: "winget install --id Python.Python.3.13 -e"
+      darwin: "brew install python"
+      linux: "Install Python 3 from your distribution (example: sudo apt install python3 python3-venv)"
+    provision:
+      via: uv
+  node:
+    detect:
+      executables: [node]
+      version_command: ["{{EXECUTABLE}}", "--version"]
+      version_regex: 'v(\d+[\d.]*)'
+    suggest:
+      windows: "winget install --id OpenJS.NodeJS.LTS -e"
+      darwin: "brew install node"
+      linux: "Install Node.js LTS from https://nodejs.org/en/download or your distribution"
+    provision:
+      # renovate: datasource=node-version depName=node
+      version: "24.22.2"
+      assets:
+        linux/amd64:
+          url: "https://nodejs.org/dist/v{{VERSION}}/node-v{{VERSION}}-linux-x64.tar.xz"
+          archive: tar.xz
+          strip_components: 1
+        linux/arm64:
+          url: "https://nodejs.org/dist/v{{VERSION}}/node-v{{VERSION}}-linux-arm64.tar.xz"
+          archive: tar.xz
+          strip_components: 1
+        darwin/amd64:
+          url: "https://nodejs.org/dist/v{{VERSION}}/node-v{{VERSION}}-darwin-x64.tar.gz"
+          archive: tar.gz
+          strip_components: 1
+        darwin/arm64:
+          url: "https://nodejs.org/dist/v{{VERSION}}/node-v{{VERSION}}-darwin-arm64.tar.gz"
+          archive: tar.gz
+          strip_components: 1
+        windows/amd64:
+          url: "https://nodejs.org/dist/v{{VERSION}}/node-v{{VERSION}}-win-x64.zip"
+          archive: zip
+          strip_components: 1
+      provenance:
+        # SHASUMS256.txt is signed by the Node.js releasers (keys of nodejs/release-keys, see .automation/native-keys/README.md)
+        gpg:
+          keyring: nodejs.asc
+          signature_url: "https://nodejs.org/dist/v{{VERSION}}/SHASUMS256.txt.sig"
+        checksums_url: "https://nodejs.org/dist/v{{VERSION}}/SHASUMS256.txt"
+        checksums_format: sha256sum
+      libc: glibc
+      path: ["bin"]
+      overrides:
+        windows/amd64:
+          path: ["."]
+  java:
+    detect:
+      executables: [java]
+      version_command: ["{{EXECUTABLE}}", "-version"]
+      version_regex: 'version "(\d+[\d.]*)'
+    suggest:
+      windows: "winget install --id EclipseAdoptium.Temurin.21.JDK -e"
+      darwin: "brew install --cask temurin@21"
+      linux: "Install OpenJDK 21 from your distribution (example: sudo apt install openjdk-21-jre-headless)"
+    provision:
+      # Eclipse Temurin 21 LTS. The release tag (jdk-21.0.13+9) and the file names (21.0.13_9) differ,
+      # so the URLs carry the literal version: update them together with the version
+      # renovate: datasource=java-version depName=java
+      version: "21.0.13+9"
+      assets:
+        linux/amd64:
+          url: "https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.13%2B9/OpenJDK21U-jdk_x64_linux_hotspot_21.0.13_9.tar.gz"
+          archive: tar.gz
+          strip_components: 1
+        linux/arm64:
+          url: "https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.13%2B9/OpenJDK21U-jdk_aarch64_linux_hotspot_21.0.13_9.tar.gz"
+          archive: tar.gz
+          strip_components: 1
+        darwin/amd64:
+          url: "https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.13%2B9/OpenJDK21U-jdk_x64_mac_hotspot_21.0.13_9.tar.gz"
+          archive: tar.gz
+          strip_components: 3 # jdk-<version>/Contents/Home
+        darwin/arm64:
+          url: "https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.13%2B9/OpenJDK21U-jdk_aarch64_mac_hotspot_21.0.13_9.tar.gz"
+          archive: tar.gz
+          strip_components: 3 # jdk-<version>/Contents/Home
+        windows/amd64:
+          url: "https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.13%2B9/OpenJDK21U-jdk_x64_windows_hotspot_21.0.13_9.zip"
+          archive: zip
+          strip_components: 1
+      provenance:
+        # Detached GPG signature of each archive, made with the Adoptium signing key (see .automation/native-keys/README.md)
+        gpg:
+          keyring: adoptium.asc
+          signature_url: "https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.13%2B9/{{ASSET_NAME}}.sig"
+      env:
+        JAVA_HOME: "{{NATIVE_INSTALL_DIR}}"
+      path: ["bin"]
+  dotnet:
+    detect:
+      executables: [dotnet]
+      version_command: ["{{EXECUTABLE}}", "--version"]
+      version_regex: '(\d+[\d.]*)'
+    suggest:
+      windows: "winget install --id Microsoft.DotNet.SDK.9 -e"
+      darwin: "brew install --cask dotnet-sdk"
+      linux: "Install the .NET SDK from https://learn.microsoft.com/dotnet/core/install/linux"
+    provision:
+      # .NET 10 LTS SDK (.NET 9 reached end of support on 2026-11-10)
+      # renovate: datasource=dotnet-version depName=dotnet-sdk
+      version: "10.0.404"
+      assets:
+        linux/amd64:
+          url: "https://builds.dotnet.microsoft.com/dotnet/Sdk/{{VERSION}}/dotnet-sdk-{{VERSION}}-linux-x64.tar.gz"
+          archive: tar.gz
+        linux/arm64:
+          url: "https://builds.dotnet.microsoft.com/dotnet/Sdk/{{VERSION}}/dotnet-sdk-{{VERSION}}-linux-arm64.tar.gz"
+          archive: tar.gz
+        darwin/amd64:
+          url: "https://builds.dotnet.microsoft.com/dotnet/Sdk/{{VERSION}}/dotnet-sdk-{{VERSION}}-osx-x64.tar.gz"
+          archive: tar.gz
+        darwin/arm64:
+          url: "https://builds.dotnet.microsoft.com/dotnet/Sdk/{{VERSION}}/dotnet-sdk-{{VERSION}}-osx-arm64.tar.gz"
+          archive: tar.gz
+        windows/amd64:
+          url: "https://builds.dotnet.microsoft.com/dotnet/Sdk/{{VERSION}}/dotnet-sdk-{{VERSION}}-win-x64.zip"
+          archive: zip
+      provenance:
+        # sha512 list of the .NET release the SDK ships in (named after the runtime version 10.0.15,
+        # not the SDK version): update it together with the version. Same digests as releases.json
+        checksums_url: "https://builds.dotnet.microsoft.com/dotnet/checksums/10.0.15-sha.txt"
+        checksums_format: sha512sum
+      libc: glibc
+      env:
+        DOTNET_ROOT: "{{NATIVE_INSTALL_DIR}}"
+        DOTNET_CLI_TELEMETRY_OPTOUT: "1"
+        DOTNET_NOLOGO: "1"
+      path: ["."]
+  go:
+    detect:
+      executables: [go]
+      version_command: ["{{EXECUTABLE}}", "version"]
+      version_regex: 'go(\d+[\d.]*)'
+    suggest:
+      windows: "winget install --id GoLang.Go -e"
+      darwin: "brew install go"
+      linux: "Install Go from https://go.dev/doc/install or your distribution"
+    provision:
+      # renovate: datasource=golang-version depName=go
+      version: "1.27.4"
+      assets:
+        linux/amd64:
+          url: "https://dl.google.com/go/go{{VERSION}}.linux-amd64.tar.gz"
+          archive: tar.gz
+          strip_components: 1
+        linux/arm64:
+          url: "https://dl.google.com/go/go{{VERSION}}.linux-arm64.tar.gz"
+          archive: tar.gz
+          strip_components: 1
+        darwin/amd64:
+          url: "https://dl.google.com/go/go{{VERSION}}.darwin-amd64.tar.gz"
+          archive: tar.gz
+          strip_components: 1
+        darwin/arm64:
+          url: "https://dl.google.com/go/go{{VERSION}}.darwin-arm64.tar.gz"
+          archive: tar.gz
+          strip_components: 1
+        windows/amd64:
+          url: "https://dl.google.com/go/go{{VERSION}}.windows-amd64.zip"
+          archive: zip
+          strip_components: 1
+      provenance:
+        # <asset>.sha256 contains the bare sha256 (no file name), the value shown on go.dev/dl
+        checksums_url: "https://dl.google.com/go/{{ASSET_NAME}}.sha256"
+        checksums_format: sha256sum
+      env:
+        GOROOT: "{{NATIVE_INSTALL_DIR}}"
+        GOTOOLCHAIN: local
+      path: ["bin"]
+  powershell:
+    detect:
+      executables: [pwsh]
+      version_command: ["{{EXECUTABLE}}", "-NoLogo", "-NoProfile", "-Command", "$PSVersionTable.PSVersion.ToString()"]
+      version_regex: '(\d+[\d.]*)'
+    suggest:
+      windows: "winget install --id Microsoft.PowerShell -e"
+      darwin: "brew install --cask powershell"
+      linux: "Install PowerShell from https://learn.microsoft.com/powershell/scripting/install/installing-powershell-on-linux"
+    provision:
+      # PowerShell 7.6 LTS
+      # renovate: datasource=github-releases depName=PowerShell/PowerShell extractVersion=^v(?<version>.+)$
+      version: "7.6.10"
+      assets:
+        linux/amd64:
+          url: "https://github.com/PowerShell/PowerShell/releases/download/v{{VERSION}}/powershell-{{VERSION}}-linux-x64.tar.gz"
+          archive: tar.gz
+        linux/arm64:
+          url: "https://github.com/PowerShell/PowerShell/releases/download/v{{VERSION}}/powershell-{{VERSION}}-linux-arm64.tar.gz"
+          archive: tar.gz
+        darwin/amd64:
+          url: "https://github.com/PowerShell/PowerShell/releases/download/v{{VERSION}}/powershell-{{VERSION}}-osx-x64.tar.gz"
+          archive: tar.gz
+        darwin/arm64:
+          url: "https://github.com/PowerShell/PowerShell/releases/download/v{{VERSION}}/powershell-{{VERSION}}-osx-arm64.tar.gz"
+          archive: tar.gz
+        windows/amd64:
+          url: "https://github.com/PowerShell/PowerShell/releases/download/v{{VERSION}}/PowerShell-{{VERSION}}-win-x64.zip"
+          archive: zip
+      provenance:
+        # No GitHub attestation nor signature is published: hashes.sha256 of the same release
+        # (UTF-16 encoded, sha256sum layout)
+        checksums_url: "https://github.com/PowerShell/PowerShell/releases/download/v{{VERSION}}/hashes.sha256"
+        checksums_format: sha256sum
+      libc: glibc
+      env:
+        POWERSHELL_TELEMETRY_OPTOUT: "1"
+      path: ["."]
+  dart:
+    detect:
+      executables: [dart]
+      version_command: ["{{EXECUTABLE}}", "--version"]
+      version_regex: 'Dart SDK version: (\d+[\d.]*)'
+    suggest:
+      windows: "winget install --id Google.DartSDK -e"
+      darwin: "brew install dart-sdk"
+      linux: "Install the Dart SDK from https://dart.dev/get-dart"
+    provision:
+      # renovate: datasource=dart-version depName=dart
+      version: "3.14.0"
+      assets:
+        linux/amd64:
+          url: "https://storage.googleapis.com/dart-archive/channels/stable/release/{{VERSION}}/sdk/dartsdk-linux-x64-release.zip"
+          archive: zip
+          strip_components: 1
+        linux/arm64:
+          url: "https://storage.googleapis.com/dart-archive/channels/stable/release/{{VERSION}}/sdk/dartsdk-linux-arm64-release.zip"
+          archive: zip
+          strip_components: 1
+        darwin/amd64:
+          url: "https://storage.googleapis.com/dart-archive/channels/stable/release/{{VERSION}}/sdk/dartsdk-macos-x64-release.zip"
+          archive: zip
+          strip_components: 1
+        darwin/arm64:
+          url: "https://storage.googleapis.com/dart-archive/channels/stable/release/{{VERSION}}/sdk/dartsdk-macos-arm64-release.zip"
+          archive: zip
+          strip_components: 1
+        windows/amd64:
+          url: "https://storage.googleapis.com/dart-archive/channels/stable/release/{{VERSION}}/sdk/dartsdk-windows-x64-release.zip"
+          archive: zip
+          strip_components: 1
+      provenance:
+        checksums_url: "https://storage.googleapis.com/dart-archive/channels/stable/release/{{VERSION}}/sdk/{{ASSET_NAME}}.sha256sum"
+        checksums_format: sha256sum
+      libc: glibc
+      path: ["bin"]
+  php:
+    detect:
+      executables: [php]
+      version_command: ["{{EXECUTABLE}}", "--version"]
+      version_regex: 'PHP (\d+[\d.]*)'
+    suggest:
+      windows: "winget install --id PHP.PHP.8.4 -e"
+      darwin: "brew install php"
+      linux: "Install PHP CLI from your distribution (example: sudo apt install php-cli)"
+    provision:
+      # Windows only (windows.php.net publishes no other platform): Linux and macOS use the distribution or Homebrew PHP.
+      # "-1" is the build revision of the Windows packages. windows.php.net moves superseded builds to /releases/archives/
+      # renovate: datasource=github-tags depName=php/php-src extractVersion=^php-(?<version>\d+\.\d+\.\d+)$
+      version: "8.4.27"
+      assets:
+        windows/amd64:
+          url: "https://windows.php.net/downloads/releases/php-{{VERSION}}-1-nts-Win32-vs17-x64.zip"
+          archive: zip
+      provenance:
+        checksums_url: "https://windows.php.net/downloads/releases/sha256sum.txt"
+        checksums_format: sha256sum
+      path: ["."]
+  perl:
+    detect:
+      executables: [perl]
+      version_command: ["{{EXECUTABLE}}", "-e", "printf q(%vd), $^V"]
+      version_regex: '(\d+[\d.]*)'
+    suggest:
+      windows: "winget install --id StrawberryPerl.StrawberryPerl -e"
+      darwin: "brew install perl"
+      linux: "Install Perl from your distribution (example: sudo apt install perl)"
+    provision:
+      # Windows only: Strawberry Perl portable edition. Linux and macOS use the system Perl.
+      # The release tag is SP_<numeric version>_64bit (SP_54231_64bit): update the URL together with the version
+      version: "5.42.3.1"
+      assets:
+        windows/amd64:
+          url: "https://github.com/StrawberryPerl/Perl-Dist-Strawberry/releases/download/SP_54231_64bit/strawberry-perl-{{VERSION}}-64bit-portable.zip"
+          archive: zip
+      provenance:
+        # Expected sha256 6a081a811781c30aca51dbc036afd93092af91e3297901f02c17043795a10690,
+        # published only in https://strawberryperl.com/releases.json
+        unverified: "Strawberry Perl publishes the sha256 only in strawberryperl.com/releases.json, not as a checksums file, signature or attestation; the lock pins the sha256 of the first download, to be compared with that JSON"
+      path: ["perl/site/bin", "perl/bin", "c/bin"]
+  ruby:
+    detect:
+      executables: [ruby]
+      version_command: ["{{EXECUTABLE}}", "--version"]
+      version_regex: 'ruby (\d+[\d.]*)'
+    suggest:
+      windows: "winget install --id RubyInstallerTeam.RubyWithDevKit.3.4 -e"
+      darwin: "brew install ruby"
+      linux: "Install Ruby from your distribution (example: sudo apt install ruby-full)"
+  r:
+    detect:
+      executables: [Rscript]
+      version_command: ["{{EXECUTABLE}}", "--version"]
+      version_regex: 'version (\d+[\d.]*)'
+    suggest:
+      windows: "winget install --id RProject.R -e"
+      darwin: "brew install --cask r"
+      linux: "Install R from https://cran.r-project.org/bin/linux/"
+  rust:
+    detect:
+      executables: [cargo]
+      version_command: ["{{EXECUTABLE}}", "--version"]
+      version_regex: 'cargo (\d+[\d.]*)'
+    suggest:
+      windows: "winget install --id Rustlang.Rustup -e"
+      darwin: "brew install rustup && rustup-init"
+      linux: "Install rustup from https://rustup.rs (download the installer, review it, then run it)"
+  swift:
+    detect:
+      executables: [swift]
+      version_command: ["{{EXECUTABLE}}", "--version"]
+      version_regex: 'Swift version (\d+[\d.]*)'
+    suggest:
+      windows: "winget install --id Swift.Toolchain -e"
+      darwin: "xcode-select --install"
+      linux: "Install Swift from https://www.swift.org/install/linux/"
+  git:
+    detect:
+      executables: [git]
+      version_command: ["{{EXECUTABLE}}", "--version"]
+      version_regex: 'git version (\d+[\d.]*)'
+    suggest:
+      windows: "winget install --id Git.Git -e"
+      darwin: "brew install git"
+      linux: "sudo apt install git"
