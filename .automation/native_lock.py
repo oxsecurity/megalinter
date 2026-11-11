@@ -8,6 +8,7 @@
 import argparse
 import base64
 import codecs
+import gzip
 import hashlib
 import json
 import logging
@@ -18,6 +19,7 @@ import subprocess
 import sys
 import tempfile
 import threading
+import time
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 
@@ -179,6 +181,51 @@ def verify_gpg(provenance, version, target_file, folder, asset_name):
     return "gpg:" + gpg_info["keyring"]
 
 
+SIGSTORE_RETRIES = 3
+SIGSTORE_RETRY_DELAY_SECONDS = 15
+RELEASE_TAG_REGEX = re.compile(r"/releases/download/([^/]+)/")
+
+
+def run_sigstore(command):
+    for attempt in range(1, SIGSTORE_RETRIES + 1):
+        try:
+            with SIGSTORE_LOCK:
+                return run(command)
+        except NativeError as e:
+            # The sigstore trust root download (TUF) fails transiently on a cold cache
+            if "Sigstore verifier" not in str(e) or attempt == SIGSTORE_RETRIES:
+                raise
+            time.sleep(SIGSTORE_RETRY_DELAY_SECONDS)
+
+
+# Build provenance attestation (actions/attest-build-provenance), else attestation of an
+# immutable GitHub release (gh release verify-asset): both are signed by GitHub
+def verify_github_attestation(repository, asset_file, asset_url):
+    gh = require_tool("gh")
+    try:
+        run_sigstore([gh, "attestation", "verify", asset_file, "--repo", repository])
+        return "github_attestation:" + repository
+    except NativeError as build_error:
+        tag = RELEASE_TAG_REGEX.search(asset_url)
+        if tag is None:
+            raise
+        try:
+            run_sigstore(
+                [
+                    gh,
+                    "release",
+                    "verify-asset",
+                    tag.group(1),
+                    asset_file,
+                    "--repo",
+                    repository,
+                ]
+            )
+        except NativeError as release_error:
+            raise NativeError(f"{build_error}\n{release_error}") from release_error
+        return f"github_release_attestation:{repository}@{tag.group(1)}"
+
+
 def verify_asset(provenance, version, asset_file, asset_url, sha256, folder):
     verifications = []
     asset_name = os.path.basename(asset_url.split("?")[0])
@@ -218,18 +265,11 @@ def verify_asset(provenance, version, asset_file, asset_url, sha256, folder):
             )
         )
     if provenance.get("github_attestation"):
-        gh = require_tool("gh")
-        run(
-            [
-                gh,
-                "attestation",
-                "verify",
-                asset_file,
-                "--repo",
-                provenance["github_attestation"],
-            ]
+        verifications.append(
+            verify_github_attestation(
+                provenance["github_attestation"], asset_file, asset_url
+            )
         )
-        verifications.append("github_attestation:" + provenance["github_attestation"])
     if not verifications:
         raise NativeError("provenance declares no verification mechanism")
     return verifications
@@ -392,12 +432,23 @@ def lock_gem(key, resolved, folder):
     return {"common": {"gemfile": gemfile, "gemfile_lock": gemfile_lock}}
 
 
-def nuget_package_hash(package, version):
-    url = f"https://api.nuget.org/v3/registration5-gz-semver2/{package.lower()}/{version.lower()}.json"
+GZIP_MAGIC = bytes([0x1F, 0x8B])
+
+
+def read_json_url(url):
     with build_opener().open(url, timeout=60) as response:
-        leaf = json.loads(response.read())
-    with build_opener().open(leaf["catalogEntry"], timeout=60) as response:
-        return json.loads(response.read())["packageHash"]
+        content = response.read()
+    # NuGet registration endpoints answer gzip-compressed documents
+    if content[:2] == GZIP_MAGIC:
+        content = gzip.decompress(content)
+    return json.loads(content)
+
+
+def nuget_package_hash(package, version):
+    leaf = read_json_url(
+        f"https://api.nuget.org/v3/registration5-gz-semver2/{package.lower()}/{version.lower()}.json"
+    )
+    return read_json_url(leaf["catalogEntry"])["packageHash"]
 
 
 def lock_dotnet_tool(key, resolved, folder):
@@ -628,7 +679,9 @@ def main(argv=None):
         for spec in specs:
             try:
                 logging.info(f"{spec.key}: {lock_linter(spec, options, folder)}")
-            except (NativeError, OSError, subprocess.TimeoutExpired, KeyError) as e:
+            except (
+                Exception
+            ) as e:  # noqa: BLE001 - report every failing lock and continue
                 logging.error(f"{spec.key}: FAILED: {e}")
                 failures.append(spec.key)
         if options.runtimes:
@@ -637,7 +690,9 @@ def main(argv=None):
                     logging.info(
                         f"runtime {name}: {lock_runtime(name, definition, options, folder)}"
                     )
-                except (NativeError, OSError, subprocess.TimeoutExpired, KeyError) as e:
+                except (
+                    Exception
+                ) as e:  # noqa: BLE001 - report every failing lock and continue
                     logging.error(f"runtime {name}: FAILED: {e}")
                     failures.append("runtime " + name)
     finally:
