@@ -10671,6 +10671,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#api-endpoint-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        API Endpoint Configuration
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#advisor-level-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -12480,6 +12491,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#api-endpoint-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        API Endpoint Configuration
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#advisor-level-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -12761,7 +12783,7 @@
 
 
 <h1 id="ai-powered-fix-suggestions-llm-advisor">AI-Powered Fix Suggestions (LLM Advisor)</h1>
-<p>MegaLinter includes an AI-powered advisor that provides intelligent fix suggestions for linter errors using various Large Language Models (LLMs) through LangChain.</p>
+<p>MegaLinter includes an AI-powered advisor that provides intelligent fix suggestions for linter errors using various Large Language Models (LLMs).</p>
 <p><a class="glightbox" data-type="image" href="../assets/images/megalinter-llm-advisor.gif"><img alt="Advisor" src="../assets/images/megalinter-llm-advisor.gif" /></a></p>
 <h2 id="features">Features</h2>
 <ul>
@@ -12867,6 +12889,68 @@
 <span class="nt">LLM_TEMPERATURE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span><span class="w">                       </span><span class="c1"># Temperature for generation (0.0-1.0)</span>
 <span class="nt">LLM_ADVISOR_POSITION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">after_linter_output</span><span class="w">  </span><span class="c1"># Display Advisor suggestions before or after linter output</span>
 </code></pre></div>
+<h2 id="api-endpoint-configuration">API Endpoint Configuration</h2>
+<p>Every cloud provider calls its official API by default. Set the matching <code>*_BASE_URL</code> variable to use a proxy, a gateway or a self-hosted compatible server. A trailing <code>/</code> is always accepted.</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Expected value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OPENAI_BASE_URL</code></td>
+<td><code>https://api.openai.com/v1</code></td>
+<td>URL including the version segment (<code>/v1</code>): <code>/chat/completions</code> is appended</td>
+</tr>
+<tr>
+<td><code>ANTHROPIC_BASE_URL</code></td>
+<td><code>https://api.anthropic.com</code></td>
+<td>URL without the version segment: <code>/v1/messages</code> is appended (a trailing <code>/v1</code> is accepted)</td>
+</tr>
+<tr>
+<td><code>GOOGLE_BASE_URL</code></td>
+<td><code>https://generativelanguage.googleapis.com</code></td>
+<td>URL with or without the version segment: <code>/v1beta</code> is added when missing, then <code>/models/&lt;model&gt;:generateContent</code></td>
+</tr>
+<tr>
+<td><code>MISTRAL_BASE_URL</code></td>
+<td><code>https://api.mistral.ai/v1</code></td>
+<td>URL including the version segment (<code>/v1</code>): <code>/chat/completions</code> is appended</td>
+</tr>
+<tr>
+<td><code>DEEPSEEK_BASE_URL</code></td>
+<td><code>https://api.deepseek.com/v1</code></td>
+<td>URL of the OpenAI-compatible API: <code>/chat/completions</code> is appended</td>
+</tr>
+<tr>
+<td><code>GROK_BASE_URL</code></td>
+<td><code>https://api.x.ai/v1</code></td>
+<td>URL including the version segment (<code>/v1</code>): <code>/chat/completions</code> is appended</td>
+</tr>
+<tr>
+<td><code>ORCAROUTER_BASE_URL</code></td>
+<td><code>https://api.orcarouter.ai/v1</code></td>
+<td>URL including the version segment (<code>/v1</code>): <code>/chat/completions</code> is appended</td>
+</tr>
+<tr>
+<td><code>OLLAMA_BASE_URL</code></td>
+<td><code>http://localhost:11434</code></td>
+<td>Ollama server URL, with or without <code>/api</code>: <code>/api/generate</code> is appended</td>
+</tr>
+</tbody>
+</table>
+<p>Notes:</p>
+<ul>
+<li>A full endpoint URL (ending with <code>/chat/completions</code>, <code>/v1/messages</code> or <code>/api/generate</code>) is also accepted</li>
+<li>Hugging Face runs the model locally, so it has no endpoint to configure</li>
+<li>To use <a href="https://docs.ollama.com/api/authentication">Ollama cloud</a>, set <code>OLLAMA_BASE_URL: https://ollama.com</code> and the <code>OLLAMA_API_KEY</code> secret variable (not needed for a local Ollama server)</li>
+<li><code>ANTHROPIC_API_VERSION</code> (default <code>2023-06-01</code>) sets the <code>anthropic-version</code> header. With <code>2026-10-21</code> or later, <code>LLM_TEMPERATURE</code> is not sent, as this API version removed it. Claude 4.7 and later models never receive it either, as they only accept the default temperature</li>
+<li>Proxies are taken from <code>HTTPS_PROXY</code>, <code>HTTP_PROXY</code> and <code>NO_PROXY</code>. A custom CA bundle can be set with <code>REQUESTS_CA_BUNDLE</code>, <code>CURL_CA_BUNDLE</code>, <code>SSL_CERT_FILE</code> or <code>SSL_CERT_DIR</code></li>
+<li>Requests failing with a connection error, HTTP 429 or HTTP 5xx are retried twice, honoring the <code>Retry-After</code> header</li>
+</ul>
 <h2 id="advisor-level-configuration">Advisor Level Configuration</h2>
 <p>The <code>LLM_ADVISOR_LEVEL</code> setting controls when AI suggestions are triggered:</p>
 <h3 id="error-default">ERROR (Default)</h3>
@@ -13051,7 +13135,6 @@ Example fix:
 <p><strong>"LLM Advisor not available"</strong></p>
 <ul>
 <li>Check that <code>LLM_ADVISOR_ENABLED: true</code></li>
-<li>Verify LangChain dependencies are installed</li>
 <li>Ensure API keys are set correctly</li>
 </ul>
 </li>
