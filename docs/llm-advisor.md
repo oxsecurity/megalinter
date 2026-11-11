@@ -64,16 +64,16 @@ LLM_ADVISOR_POSITION: after_linter_output  # Display Advisor suggestions before 
 
 Every cloud provider calls its official API by default. Set the matching `*_BASE_URL` variable to use a proxy, a gateway or a self-hosted compatible server. A trailing `/` is always accepted.
 
-| Variable              | Default                                     | Expected value                                                                                                     |
-|-----------------------|---------------------------------------------|--------------------------------------------------------------------------------------------------------------------|
-| `OPENAI_BASE_URL`     | `https://api.openai.com/v1`                 | URL including the version segment (`/v1`): `/chat/completions` is appended                                        |
-| `ANTHROPIC_BASE_URL`  | `https://api.anthropic.com`                 | URL without the version segment: `/v1/messages` is appended (a trailing `/v1` is accepted)                        |
-| `GOOGLE_BASE_URL`     | `https://generativelanguage.googleapis.com` | URL with or without the version segment: `/v1beta` is added when missing, then `/models/<model>:generateContent`  |
-| `MISTRAL_BASE_URL`    | `https://api.mistral.ai/v1`                 | URL including the version segment (`/v1`): `/chat/completions` is appended                                        |
-| `DEEPSEEK_BASE_URL`   | `https://api.deepseek.com/v1`               | URL of the OpenAI-compatible API: `/chat/completions` is appended                                                 |
-| `GROK_BASE_URL`       | `https://api.x.ai/v1`                       | URL including the version segment (`/v1`): `/chat/completions` is appended                                        |
-| `ORCAROUTER_BASE_URL` | `https://api.orcarouter.ai/v1`              | URL including the version segment (`/v1`): `/chat/completions` is appended                                        |
-| `OLLAMA_BASE_URL`     | `http://localhost:11434`                    | Ollama server URL, with or without `/api`: `/api/generate` is appended                                            |
+| Variable              | Default                                     | Expected value                                                                                                   |
+|-----------------------|---------------------------------------------|------------------------------------------------------------------------------------------------------------------|
+| `OPENAI_BASE_URL`     | `https://api.openai.com/v1`                 | URL including the version segment (`/v1`): `/chat/completions` is appended                                       |
+| `ANTHROPIC_BASE_URL`  | `https://api.anthropic.com`                 | URL without the version segment: `/v1/messages` is appended (a trailing `/v1` is accepted)                       |
+| `GOOGLE_BASE_URL`     | `https://generativelanguage.googleapis.com` | URL with or without the version segment: `/v1beta` is added when missing, then `/models/<model>:generateContent` |
+| `MISTRAL_BASE_URL`    | `https://api.mistral.ai/v1`                 | URL including the version segment (`/v1`): `/chat/completions` is appended                                       |
+| `DEEPSEEK_BASE_URL`   | `https://api.deepseek.com/v1`               | URL of the OpenAI-compatible API: `/chat/completions` is appended                                                |
+| `GROK_BASE_URL`       | `https://api.x.ai/v1`                       | URL including the version segment (`/v1`): `/chat/completions` is appended                                       |
+| `ORCAROUTER_BASE_URL` | `https://api.orcarouter.ai/v1`              | URL including the version segment (`/v1`): `/chat/completions` is appended                                       |
+| `OLLAMA_BASE_URL`     | `http://localhost:11434`                    | Ollama server URL, with or without `/api`: `/api/generate` is appended                                           |
 
 Notes:
 
