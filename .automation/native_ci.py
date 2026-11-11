@@ -79,12 +79,55 @@ def supported_on(spec, platform):
     return platform in resolved.get("platforms", []), resolved
 
 
-def build_matrix(shard_size):
+# Linters whose runtimes are provisioned by MegaLinter (node, java, dotnet, go, powershell, dart,
+# python through uv, php on Windows): installed with the host runtimes ignored
+PROVISIONING_LINTERS = [
+    "PYTHON_BLACK",
+    "CSS_STYLELINT",
+    "JAVA_CHECKSTYLE",
+    "CSHARP_CSHARPIER",
+    "REPOSITORY_DUSTILOCK",
+    "POWERSHELL_POWERSHELL",
+    "DART_DARTANALYZER",
+]
+PROVISIONING_LINTERS_WINDOWS = ["PHP_PHPCS"]
+
+
+def selected_runners(platforms):
+    if platforms == "all":
+        return RUNNERS
+    wanted = platforms.split(",")
+    return [runner for runner in RUNNERS if runner["platform"] in wanted]
+
+
+def build_provisioning_matrix(platforms):
+    modules = test_modules()
+    specs = {spec.key: spec for spec in load_native_specs()}
+    include = []
+    # One runner per OS is enough to check that the runtimes are downloaded and verified
+    for runner in selected_runners(platforms):
+        if runner["platform"] == "darwin/amd64":
+            continue
+        keys = PROVISIONING_LINTERS + (
+            PROVISIONING_LINTERS_WINDOWS
+            if runner["platform"] == "windows/amd64"
+            else []
+        )
+        tests = [
+            modules[(specs[key].descriptor_id, specs[key].linter_name)] for key in keys
+        ]
+        include.append(
+            {"os": runner["os"], "linters": ",".join(keys), "tests": " or ".join(tests)}
+        )
+    return {"include": include}
+
+
+def build_matrix(shard_size, platforms="all"):
     catalog = load_runtime_catalog()
     modules = test_modules()
     specs = load_native_specs()
     include = []
-    for runner in RUNNERS:
+    for runner in selected_runners(platforms):
         entries = []
         for spec in specs:
             if spec.linter.get("disabled") is True:
@@ -191,11 +234,20 @@ def main(argv=None):
     commands = parser.add_subparsers(dest="command", required=True)
     matrix = commands.add_parser("matrix")
     matrix.add_argument("--shard-size", type=int, default=10)
+    matrix.add_argument(
+        "--platforms", default="all", help="all, or comma-separated platforms"
+    )
+    provisioning = commands.add_parser("provisioning-matrix")
+    provisioning.add_argument("--platforms", default="all")
     prepare_parser = commands.add_parser("prepare")
     prepare_parser.add_argument("--linters", required=True)
     arguments = parser.parse_args(argv)
     if arguments.command == "matrix":
-        sys.stdout.write(json.dumps(build_matrix(arguments.shard_size)) + "\n")
+        matrix_value = build_matrix(arguments.shard_size, arguments.platforms)
+        sys.stdout.write(json.dumps(matrix_value) + "\n")
+    elif arguments.command == "provisioning-matrix":
+        matrix_value = build_provisioning_matrix(arguments.platforms)
+        sys.stdout.write(json.dumps(matrix_value) + "\n")
     else:
         prepare([key for key in arguments.linters.split(",") if key])
     return 0

@@ -1,8 +1,10 @@
 ---
 name: "Test native mode"
-# Installs EVERY linter natively (no Docker) on the 5 supported platforms, then runs the usual
-# linter test classes against the native installs. Nothing is installed on a developer machine:
-# this workflow is where the native installs are exercised.
+# Installs EVERY linter natively (no Docker), then runs the usual linter test classes against the
+# native installs. Nothing is installed on a developer machine: this workflow is where the native
+# installs are exercised.
+# - pull requests and pushes to main: Linux x86-64 only (macOS and Windows runners are expensive)
+# - nightly, manual runs, and pull requests labeled native-full-matrix: the 5 native platforms
 on:
   push:
     branches:
@@ -14,6 +16,7 @@ on:
       - ".github/workflows/test-native.yml"
       - "pyproject.toml"
   pull_request:
+    types: [opened, synchronize, reopened, labeled]
     paths:
       - "megalinter/**"
       - ".automation/native*"
@@ -22,9 +25,12 @@ on:
       - "pyproject.toml"
   # Upstream artifacts and registries can change: check regularly that every install still works
   schedule:
-    - cron: "17 4 * * 1"
+    - cron: "17 4 * * *"
   workflow_dispatch:
     inputs:
+      platforms:
+        description: "all, or comma-separated platforms (linux/amd64,linux/arm64,darwin/amd64,darwin/arm64,windows/amd64)"
+        default: "all"
       shard_size:
         description: "Number of linters installed and tested per job"
         default: "10"
@@ -33,12 +39,14 @@ permissions:
   contents: read
 
 concurrency:
-  group: ${{ github.ref }}-${{ github.workflow }}
+  # Adding an unrelated label to a pull request must not cancel the running tests
+  group: ${{ github.ref }}-${{ github.workflow }}-${{ github.event.action == 'labeled' && github.event.label.name != 'native-full-matrix' && github.event.label.name || 'tests' }}
   cancel-in-progress: true
 
 jobs:
   descriptors:
     name: Native descriptors and locks
+    if: github.event.action != 'labeled' || github.event.label.name == 'native-full-matrix'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -62,6 +70,7 @@ jobs:
 
   unit:
     name: Unit tests (${{ matrix.os }})
+    if: github.event.action != 'labeled' || github.event.label.name == 'native-full-matrix'
     runs-on: ${{ matrix.os }}
     timeout-minutes: 30
     strategy:
@@ -88,11 +97,12 @@ jobs:
   matrix:
     name: Compute the install matrix
     # Renovate bumps descriptor versions, which makes their locks stale until the "Native locks" workflow refreshes them after merge
-    if: ${{ !startsWith(github.head_ref, 'renovate/') }}
+    if: ${{ !startsWith(github.head_ref, 'renovate/') && (github.event.action != 'labeled' || github.event.label.name == 'native-full-matrix') }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     outputs:
       matrix: ${{ steps.matrix.outputs.matrix }}
+      provisioning: ${{ steps.matrix.outputs.provisioning }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -108,7 +118,16 @@ jobs:
         id: matrix
         env:
           SHARD_SIZE: ${{ inputs.shard_size || '10' }}
-        run: echo "matrix=$(python .automation/native_ci.py matrix --shard-size "$SHARD_SIZE")" >> "$GITHUB_OUTPUT"
+          PLATFORMS: >-
+            ${{
+              inputs.platforms
+              || ((github.event_name == 'schedule' || contains(github.event.pull_request.labels.*.name, 'native-full-matrix')) && 'all')
+              || 'linux/amd64'
+            }}
+        run: |
+          echo "Platforms: ${PLATFORMS}"
+          echo "matrix=$(python .automation/native_ci.py matrix --shard-size "$SHARD_SIZE" --platforms "$PLATFORMS")" >> "$GITHUB_OUTPUT"
+          echo "provisioning=$(python .automation/native_ci.py provisioning-matrix --platforms "$PLATFORMS")" >> "$GITHUB_OUTPUT"
 
   linters:
     name: ${{ matrix.name }} (${{ matrix.os }})
@@ -208,27 +227,14 @@ jobs:
   # MegaLinter downloads and verifies the language runtimes itself when the host has none
   provisioning:
     name: Runtime provisioning (${{ matrix.os }})
-    needs: [descriptors]
+    needs: [matrix, descriptors]
     # Renovate bumps descriptor versions, which makes their locks stale until the "Native locks" workflow refreshes them after merge
     if: ${{ !startsWith(github.head_ref, 'renovate/') }}
     runs-on: ${{ matrix.os }}
     timeout-minutes: 90
     strategy:
       fail-fast: false
-      matrix:
-        include:
-          - os: ubuntu-latest
-            linters: PYTHON_BLACK,CSS_STYLELINT,JAVA_CHECKSTYLE,CSHARP_CSHARPIER,REPOSITORY_DUSTILOCK,POWERSHELL_POWERSHELL,DART_DARTANALYZER
-            tests: python_black_test or css_stylelint_test or java_checkstyle_test or csharp_csharpier_test or repository_dustilock_test or powershell_powershell_test or dart_dartanalyzer_test
-          - os: ubuntu-24.04-arm
-            linters: PYTHON_BLACK,CSS_STYLELINT,JAVA_CHECKSTYLE,CSHARP_CSHARPIER,REPOSITORY_DUSTILOCK,POWERSHELL_POWERSHELL,DART_DARTANALYZER
-            tests: python_black_test or css_stylelint_test or java_checkstyle_test or csharp_csharpier_test or repository_dustilock_test or powershell_powershell_test or dart_dartanalyzer_test
-          - os: macos-latest
-            linters: PYTHON_BLACK,CSS_STYLELINT,JAVA_CHECKSTYLE,CSHARP_CSHARPIER,REPOSITORY_DUSTILOCK,POWERSHELL_POWERSHELL,DART_DARTANALYZER
-            tests: python_black_test or css_stylelint_test or java_checkstyle_test or csharp_csharpier_test or repository_dustilock_test or powershell_powershell_test or dart_dartanalyzer_test
-          - os: windows-latest
-            linters: PYTHON_BLACK,CSS_STYLELINT,JAVA_CHECKSTYLE,CSHARP_CSHARPIER,REPOSITORY_DUSTILOCK,POWERSHELL_POWERSHELL,DART_DARTANALYZER,PHP_PHPCS
-            tests: python_black_test or css_stylelint_test or java_checkstyle_test or csharp_csharpier_test or repository_dustilock_test or powershell_powershell_test or dart_dartanalyzer_test or php_phpcs_test
+      matrix: ${{ fromJSON(needs.matrix.outputs.provisioning) }}
     defaults:
       run:
         shell: bash
