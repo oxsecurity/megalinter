@@ -18,6 +18,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Configuration variables are unchanged
     - The API endpoint of every provider can be overridden with a `<PROVIDER>_BASE_URL` variable: new **`ANTHROPIC_BASE_URL`** and **`GOOGLE_BASE_URL`**, joining the existing ones
     - Suggestions are now returned for models whose answers were previously lost (Gemini 3+, Mistral reasoning models), and Claude 4.7+ models no longer fail on the temperature setting
+    - The default Anthropic model is now **`claude-sonnet-5-5`**: the previous default, `claude-3-7-sonnet-latest`, has been retired by Anthropic, so `LLM_PROVIDER: anthropic` without `LLM_MODEL_NAME` failed
     - `ANTHROPIC_API_VERSION` is now applied, and `OLLAMA_API_KEY` enables Ollama cloud
     - Local Hugging Face models: install them in `PRE_COMMANDS` with `pip install transformers torch` (`langchain-huggingface` is no longer needed)
 

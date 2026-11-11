@@ -282,11 +282,10 @@ class TestAnthropicProvider(LLMProviderHttpTestBase):
         self.assertEqual(
             call["json"],
             {
-                "model": "claude-3-7-sonnet-latest",
+                "model": "claude-sonnet-5-5",
                 "max_tokens": 1000,
                 "messages": [{"role": "user", "content": USER_PROMPT}],
                 "system": SYSTEM_PROMPT,
-                "temperature": 0.1,
             },
         )
 

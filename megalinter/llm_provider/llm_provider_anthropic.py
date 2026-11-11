@@ -24,7 +24,7 @@ class AnthropicProvider(LLMProvider):
     MODEL_VERSION_REGEX = re.compile(r"^claude-(?:[a-z]+-)?(\d+)(?:-(\d{1,2}))?(?=-|$)")
 
     def get_default_model(self) -> str:
-        return "claude-3-7-sonnet-latest"
+        return "claude-sonnet-5-5"
 
     def load_config(self, request_id: Optional[str] = None) -> Dict[str, Any]:
         return {
