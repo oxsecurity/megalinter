@@ -26,7 +26,7 @@ FROM ghcr.io/opentofu/opentofu:${TERRAFORM_TOFU_FMT_VERSION} AS opentofu
 # Build wheel for megalinter python package
 ##################
 FROM ghcr.io/astral-sh/uv:0.12.3 AS uv
-FROM python:3.14.9-alpine3.24 AS build-ml-core
+FROM python:3.15.1-alpine3.24 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3.13/site-packages/setuptools/_vendor/wheel*
 WORKDIR /
@@ -50,7 +50,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 ##################
 # Get base image #
 ##################
-FROM python:3.14.9-alpine3.24
+FROM python:3.15.1-alpine3.24
 # Python 3.14.7 is the first release fixing the CPython stack limit check and the
 # 128 KiB default thread stack size on musl (https://github.com/python/cpython/issues/148260),
 # without which deep recursion in a thread segfaults MegaLinter instead of raising
