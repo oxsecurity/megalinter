@@ -434,7 +434,7 @@ linters:
       **Key Features:**
 
       - **Low False Positives**: Targets unambiguous common misspellings in identifiers, comments, strings, and filenames
-      - **Auto-Fix Support**: Automatically corrects unambiguous typos in-place with `--write-changes` while safely reporting ambiguous cases
+      - **Opt-In Auto-Fix Support**: Auto-fix (`--write-changes`) is disabled by default (`APPLY_FIXES` defaults to `none`), even when `SPELL_TYPOS` is active; when explicitly enabled via `APPLY_FIXES`, it corrects unambiguous typos in-place while reporting ambiguous cases (review identifier fixes carefully if code defines external API contracts)
       - **Blazing Fast**: Built in Rust for monorepo-scale repositories with negligible CI overhead
       - **Flexible Configuration**: Supports `typos.toml`, `_typos.toml`, `.typos.toml`, `pyproject.toml`, and `Cargo.toml`
     test_folder: spell_typos
