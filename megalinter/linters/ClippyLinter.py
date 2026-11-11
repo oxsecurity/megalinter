@@ -7,13 +7,21 @@ import logging
 import os
 
 import megalinter
+from megalinter import config
 
 
 class ClippyLinter(megalinter.Linter):
     # To execute before linting files
     def before_lint_files(self):
-        # Build pre-command
-        if not os.path.isfile(os.path.expandvars("${HOME}/.rustup/settings.toml")):
+        # The image installs a single pinned toolchain and makes it the default
+        # in RUSTUP_HOME: switching to "stable" there would download a second one
+        rustup_home = config.get(
+            self.request_id,
+            "RUSTUP_HOME",
+            os.path.expandvars("${HOME}/.rustup"),
+        )
+        rustup_settings = os.path.join(rustup_home, "settings.toml")
+        if not os.path.isfile(rustup_settings):
             rustup_init_command = 'echo "Init RUST toolkit" && rustup default stable'
             if self.pre_commands is None:
                 self.pre_commands = []
@@ -23,7 +31,4 @@ class ClippyLinter(megalinter.Linter):
                 {"command": rustup_init_command, "cwd": self.workspace}
             )
         else:
-            logging.debug(
-                "RUST settings found: "
-                + os.path.expandvars("${HOME}/.rustup/settings.toml")
-            )
+            logging.debug("RUST settings found: " + rustup_settings)

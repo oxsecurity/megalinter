@@ -119,6 +119,16 @@ FLAVORS_DIR = REPO_HOME + "/flavors"
 LINTERS_DIR = REPO_HOME + "/linters"
 GLOBAL_FLAVORS_FILE = REPO_HOME + "/megalinter/descriptors/all_flavors.json"
 
+# Files of npm packages that node never loads at runtime: source maps, type
+# declarations and package-manager metadata. TypeScript's own lib declarations
+# and @types are kept, as type-aware linting reads them
+NPM_UNUSED_FILES_CLEANUP_COMMAND = (
+    'find {path} -type f \\( -name "*.map" -o -name "*.d.ts" -o -name "*.d.mts"'
+    ' -o -name "*.d.cts" -o -name ".npmignore" -o -name ".travis.yml"'
+    ' -o -name "package-lock.json" -o -name ".package-lock.json" \\)'
+    ' -not -path "*/typescript/lib/*" -not -path "*/@types/*" -delete'
+)
+
 BASE_SHIELD_IMAGE_LINK = "https://img.shields.io/docker/image-size"
 BASE_SHIELD_COUNT_LINK = "https://img.shields.io/docker/pulls"
 
@@ -529,12 +539,15 @@ def build_dockerfile(
                 + "    && curl https://sh.rustup.rs -sSf |"
                 + " sh -s -- -y --profile minimal --default-toolchain ${RUST_RUST_VERSION} --no-modify-path \\\n"
                 + '    && export PATH="${CARGO_HOME}/bin:${PATH}" \\\n'
-                + "    && rustup default stable \\\n"
                 + f"    && {rustup_cargo_cmd} \\\n"
                 + '    && for bin in "${CARGO_HOME}"/bin/*; do \\\n'
                 + '         ln -sf "$bin" /usr/local/bin/"$(basename "$bin")"; \\\n'
                 + "       done \\\n"
-                + '    && rm -rf "${CARGO_HOME}/registry" "${CARGO_HOME}/git" /root/.cache/sccache\n'
+                # Sanitizer runtimes are only usable with nightly -Zsanitizer,
+                # and the offline docs are never read in the image
+                + '    && rm -rf "${CARGO_HOME}/registry" "${CARGO_HOME}/git" /root/.cache/sccache \\\n'
+                + '       "${RUSTUP_HOME}"/toolchains/*/share/doc \\\n'
+                + '       "${RUSTUP_HOME}"/toolchains/*/lib/rustlib/*/lib/librustc-*_rt.*san.a\n'
                 + "ENV RUSTUP_HOME=/usr/local/rustup\n"
                 + "ENV CARGO_HOME=/usr/local/cargo\n"
                 + 'ENV PATH="/usr/local/cargo/bin:${PATH}"'
@@ -631,28 +644,14 @@ def build_dockerfile(
             #    + "    && npm audit fix --audit-level=critical || true \\\n" # Deactivated for now
             + '    echo "Cleaning npm cache…" \\\n'
             + "    && (npm cache clean --force || true) \\\n"
+            # No inline "#" comment in this RUN: once Docker joins the continued
+            # lines, it would comment out every following command (it disabled
+            # this whole cleanup until now)
+            # chown: fix for https://github.com/npm/cli/issues/5900
             + '    && echo "Changing owner of node_modules files…" \\\n'
-            + '    && chown -R "$(id -u)":"$(id -g)" node_modules # fix for https://github.com/npm/cli/issues/5900 \\\n'
+            + '    && chown -R "$(id -u)":"$(id -g)" node_modules \\\n'
             + '    && echo "Removing extra node_module files…" \\\n'
-            + '    && find . \\( -not -path "/proc" \\)'
-            + " -and \\( -type f"
-            + ' \\( -iname "*.d.ts"'
-            + ' -o -iname "*.map"'
-            + ' -o -iname "*.npmignore"'
-            + ' -o -iname "*.travis.yml"'
-            + ' -o -iname "*.md"'
-            + ' -o -iname "*.markdown"'
-            + ' -o -iname ".package-lock.json"'
-            + ' -o -iname "package-lock.json"'
-            + " \\) \\) -delete \\\n"
-            + '    && echo "Removing test and doc directories from node_modules…" \\\n'
-            + "    && find ./node_modules -type d"
-            + ' \\( -iname "__tests__"'
-            + ' -o -iname "test"'
-            + ' -o -iname "tests"'
-            + ' -o -iname "docs"'
-            + ' -o -iname ".github"'
-            + " \\) -prune -exec rm -rf {} + \\\n"
+            + f"    && {NPM_UNUSED_FILES_CLEANUP_COMMAND.format(path='./node_modules')} \\\n"
             + "    && rm -rf /root/.npm\n"
             + "WORKDIR /\n"
         )
@@ -708,7 +707,7 @@ def build_dockerfile(
                 + f'    && VIRTUAL_ENV="/venvs/{pip_linter}" uv pip install --upgrade '
                 + '"wheel>=0.46.2" "setuptools>=75.8.0" \\\n'
                 + f'    && VIRTUAL_ENV="/venvs/{pip_linter}" rm -rf '
-                + f"/venvs/{pip_linter}/lib/python3.13/site-packages/setuptools/_vendor/wheel* \\\n"
+                + f"/venvs/{pip_linter}/lib/python3*/site-packages/setuptools/_vendor/wheel* \\\n"
             )
             env_path_command += f":/venvs/{pip_linter}/bin"
         pipenv_install_command += "".join(venv_install_segments)
@@ -832,30 +831,6 @@ def generate_linter_dockerfiles():
                 os.makedirs(os.path.dirname(dockerfile), exist_ok=True)
             descriptor_and_linter = descriptor_items + [vars(linter)]
             copyfile(f"{REPO_HOME}/Dockerfile", dockerfile)
-            # Standalone images exclude the LLM Advisor SDKs (installed via the
-            # "llm" extra in the main and flavor images) to stay lightweight
-            replace_between_markers(
-                dockerfile,
-                "#UV_SYNC__START",
-                "#UV_SYNC__END",
-                "RUN --mount=type=cache,target=/root/.cache/uv \\\n"
-                "    --mount=type=bind,source=uv.lock,target=uv.lock \\\n"
-                "    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \\\n"
-                "    uv sync --frozen --no-install-project\n"
-                "# Copy the project into the image\n"
-                "COPY . .\n"
-                "# Sync the project\n"
-                "RUN --mount=type=cache,target=/root/.cache/uv \\\n"
-                "    uv sync --frozen",
-            )
-            replace_between_markers(
-                dockerfile,
-                "#PIP_PROJECT__START",
-                "#PIP_PROJECT__END",
-                "RUN --mount=type=cache,target=/root/.cache/uv,from=build-ml-core \\\n"
-                "    --mount=from=uv,source=/uv,target=/bin/uv \\\n"
-                "    uv pip install --system -e .",
-            )
             extra_lines = [
                 f"ENV ENABLE_LINTERS={linter.name} \\",
                 "    FLAVOR_SUGGESTIONS=false \\",

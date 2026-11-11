@@ -130,7 +130,9 @@ linters:
               && mv /tmp/dart-sdk/* /usr/lib/dart/ \
               && chmod +x /usr/lib/dart/bin/dart \
               && chmod +x /usr/lib/dart/bin/dartaotruntime \
-              && rm -rf /tmp/dart-sdk /tmp/dart-sdk.zip
+              && rm -rf /tmp/dart-sdk /tmp/dart-sdk.zip \
+                 /usr/lib/dart/bin/dartaotruntime_asan /usr/lib/dart/bin/dartaotruntime_msan /usr/lib/dart/bin/dartaotruntime_tsan \
+              && find /usr/lib/dart/bin/resources -type f -name "*.map" -delete
         - ENV PATH="/usr/lib/dart/bin:${PATH}"
     supported_platforms:
       platform:

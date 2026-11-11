@@ -1545,6 +1545,27 @@
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
     },
+    "ANTHROPIC_API_VERSION": {
+      "default": "2023-06-01",
+      "description": "Value of the anthropic-version header sent to the Anthropic API. With 2026-10-21 or later, LLM_TEMPERATURE is not sent (removed from the API)",
+      "title": "ANTHROPIC: API version",
+      "type": "string",
+      "x-category": "LLM",
+      "x-order": 950999,
+      "x-section": "MISC"
+    },
+    "ANTHROPIC_BASE_URL": {
+      "default": "https://api.anthropic.com",
+      "description": "Base URL of the Anthropic API, without the version segment (a trailing /v1 is accepted). /v1/messages is appended to it",
+      "examples": [
+        "https://api.anthropic.com"
+      ],
+      "title": "ANTHROPIC: Base URL",
+      "type": "string",
+      "x-category": "LLM",
+      "x-order": 950999,
+      "x-section": "MISC"
+    },
     "API_FILTER_REGEX_EXCLUDE": {
       "description": "API: Custom regex excluding filter: files matching this regex will NOT be linted",
       "items": {
@@ -8356,6 +8377,18 @@
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
     },
+    "DEEPSEEK_BASE_URL": {
+      "default": "https://api.deepseek.com/v1",
+      "description": "Base URL of the DeepSeek API. /chat/completions is appended to it",
+      "examples": [
+        "https://api.deepseek.com/v1"
+      ],
+      "title": "DEEPSEEK: Base URL",
+      "type": "string",
+      "x-category": "LLM",
+      "x-order": 950999,
+      "x-section": "MISC"
+    },
     "DEFAULT_BRANCH": {
       "default": "HEAD",
       "deprecated": true,
@@ -10233,6 +10266,18 @@
       "x-order": 950975,
       "x-section": "GENERAL"
     },
+    "GOOGLE_BASE_URL": {
+      "default": "https://generativelanguage.googleapis.com",
+      "description": "Base URL of the Google Gemini API. /v1beta is appended when the URL has no version segment, then /models/{model}:generateContent",
+      "examples": [
+        "https://generativelanguage.googleapis.com"
+      ],
+      "title": "GOOGLE: Base URL",
+      "type": "string",
+      "x-category": "LLM",
+      "x-order": 950999,
+      "x-section": "MISC"
+    },
     "GO_FILTER_REGEX_EXCLUDE": {
       "description": "GO: Custom regex excluding filter: files matching this regex will NOT be linted",
       "items": {
@@ -11341,6 +11386,18 @@
       "x-category": "GRAPHQL",
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
+    },
+    "GROK_BASE_URL": {
+      "default": "https://api.x.ai/v1",
+      "description": "Base URL of the Grok (xAI) API, including the version segment. /chat/completions is appended to it",
+      "examples": [
+        "https://api.x.ai/v1"
+      ],
+      "title": "GROK: Base URL",
+      "type": "string",
+      "x-category": "LLM",
+      "x-order": 950999,
+      "x-section": "MISC"
     },
     "GROOVY_FILTER_REGEX_EXCLUDE": {
       "description": "GROOVY: Custom regex excluding filter: files matching this regex will NOT be linted",
@@ -20481,6 +20538,18 @@
       "x-order": 249001,
       "x-section": "GENERAL"
     },
+    "MISTRAL_BASE_URL": {
+      "default": "https://api.mistral.ai/v1",
+      "description": "Base URL of the Mistral AI API, including the version segment. /chat/completions is appended to it",
+      "examples": [
+        "https://api.mistral.ai/v1"
+      ],
+      "title": "MISTRAL: Base URL",
+      "type": "string",
+      "x-category": "LLM",
+      "x-order": 950999,
+      "x-section": "MISC"
+    },
     "MULTI_STATUS": {
       "default": true,
       "deprecated": true,
@@ -20493,8 +20562,32 @@
     },
     "OLLAMA_BASE_URL": {
       "default": "http://localhost:11434",
-      "description": "Base URL to connect to Ollama server",
+      "description": "Base URL to connect to Ollama server, with or without the /api segment. /api/generate is appended to it",
       "title": "OLLAMA: Base URL",
+      "type": "string",
+      "x-category": "LLM",
+      "x-order": 950999,
+      "x-section": "MISC"
+    },
+    "OPENAI_BASE_URL": {
+      "default": "https://api.openai.com/v1",
+      "description": "Base URL of the OpenAI (or OpenAI-compatible) API, including the version segment. /chat/completions is appended to it",
+      "examples": [
+        "https://api.openai.com/v1"
+      ],
+      "title": "OPENAI: Base URL",
+      "type": "string",
+      "x-category": "LLM",
+      "x-order": 950999,
+      "x-section": "MISC"
+    },
+    "ORCAROUTER_BASE_URL": {
+      "default": "https://api.orcarouter.ai/v1",
+      "description": "Base URL of the OrcaRouter API, including the version segment. /chat/completions is appended to it",
+      "examples": [
+        "https://api.orcarouter.ai/v1"
+      ],
+      "title": "ORCAROUTER: Base URL",
       "type": "string",
       "x-category": "LLM",
       "x-order": 950999,

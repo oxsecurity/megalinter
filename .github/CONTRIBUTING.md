@@ -159,7 +159,6 @@ MegaLinter uses **uv** (fast Python package installer) and **hatch** (modern Pyt
    ```toml
    [project.optional-dependencies]
    huggingface = [
-     "langchain-huggingface",
      "new-ai-package==2.1.0",  # Add your package here
      "transformers",
      "torch",

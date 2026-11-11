@@ -11,6 +11,22 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Breaking changes
 
 - Core
+  - **Lighter Docker images**: the main image download shrinks by **21%**, with the same linters and the same behavior (#9497)
+    - The Rust toolchain used by `RUST_CLIPPY` is now installed once instead of twice
+    - Files never used at runtime are no longer shipped: leftover download archives, duplicate .NET tool packages and unused .NET framework builds, source maps and type declarations of Node.js linters and Salesforce CLI plugins, unused Rust and Dart runtime extras, and build caches
+    - Compressed download size on ghcr.io, linux/amd64 (before = previous beta):
+
+      | Image               |  Before |   After |          Delta |
+      |---------------------|--------:|--------:|---------------:|
+      | `megalinter` (main) | 4.31 GB | 3.42 GB | -894 MB (-21%) |
+
+  - **LLM Advisor no longer depends on LangChain**: it calls each provider's API directly, so MegaLinter installs **28 Python packages instead of 97** in every image, and the [LLM Advisor](https://megalinter.io/latest/llm-advisor/) now also works in standalone `megalinter-only-*` images (#9497)
+    - Configuration variables are unchanged
+    - The API endpoint of every provider can be overridden with a `<PROVIDER>_BASE_URL` variable: new **`ANTHROPIC_BASE_URL`** and **`GOOGLE_BASE_URL`**, joining the existing ones
+    - Suggestions are now returned for models whose answers were previously lost (Gemini 3+, Mistral reasoning models), and Claude 4.7+ models no longer fail on the temperature setting
+    - The default Anthropic model is now **`claude-sonnet-5-5`**: the previous default, `claude-3-7-sonnet-latest`, has been retired by Anthropic, so `LLM_PROVIDER: anthropic` without `LLM_MODEL_NAME` failed
+    - `ANTHROPIC_API_VERSION` is now applied, and `OLLAMA_API_KEY` enables Ollama cloud
+    - Local Hugging Face models: install them in `PRE_COMMANDS` with `pip install transformers torch` (`langchain-huggingface` is no longer needed)
 
 - New linters
 
@@ -45,6 +61,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Agent Skills
 
 - Dev
+  - Generated npm installs: the `.map` / `.d.ts` cleanup never ran, because an inline `# fix for ...` comment after `chown` commented out every following command once Docker joined the continued `RUN` lines. Fixed, and the cleanup now keeps `typescript/lib` and `@types` declarations used by type-aware linting
+  - Rust: `build.py` no longer runs `rustup default stable` after installing the pinned `RUST_RUST_VERSION` toolchain (it installed a second, identical toolchain of ~800 MB). `ClippyLinter` now reads the rustup settings from `RUSTUP_HOME`, so it no longer switches to `stable` at runtime
+  - Cleanups moved inside the `RUN` that creates the files (overlayfs never reclaims files deleted in a later layer): coursier now installs scalafix from `/tmp` in a single `RUN`, and the PowerShell tarball, detekt archive, luarocks cache, `sf` caches and npm logs are deleted where they are created
+  - .NET tools: each install deletes the tool `.nupkg` archives and the `tools/net*` folders other than the newest one supported by the SDK, which is the one the tool shims load
+  - The setuptools vendored `wheel` cleanup targeted `python3.13` paths while the images run Python 3.14: paths are now version-agnostic
+  - LLM providers rewritten on `requests`: shared `LLMProvider` HTTP helper (retries on connection errors, 429 and 5xx with `Retry-After`, masked API keys in errors, `SSL_CERT_FILE` / `SSL_CERT_DIR` support) and `llm_provider_openai_compatible.py` adapter, covered by offline tests in `test_llm_providers_http.py`. The `llm` extra is removed, and so is the `build.py` override that stripped it from standalone images
 
 - CI
   - Dependency updates wait longer: Renovate (`minimumReleaseAge`) and Dependabot (`cooldown`) now propose an upgrade only once the release is **14 days old** (was 7). Security fixes are not delayed and still open immediately
