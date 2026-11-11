@@ -44,9 +44,9 @@ linters:
         - runtime: r
           version: ">=4.1"
       suggest:
-        windows: "Rscript -e \"install.packages(c('lintr', 'purrr', 'jsonlite'))\""
-        darwin: "Rscript -e \"install.packages(c('lintr', 'purrr', 'jsonlite'))\""
-        linux: "Rscript -e \"install.packages(c('lintr', 'purrr', 'jsonlite'))\""
+        windows: 'Rscript -e "install.packages(c(''lintr'', ''purrr'', ''jsonlite''))"'
+        darwin: 'Rscript -e "install.packages(c(''lintr'', ''purrr'', ''jsonlite''))"'
+        linux: 'Rscript -e "install.packages(c(''lintr'', ''purrr'', ''jsonlite''))"'
       linter_overrides:
         cli_executable: R
       platforms:

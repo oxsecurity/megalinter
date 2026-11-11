@@ -30,6 +30,9 @@ install:
 native_install:
   # No portable build with verifiable provenance for all platforms: cppcheck is provided by the host
   method: runtime_provided
+  # Host cppcheck versions do not all support globs in -i: forward the excluded folders as paths
+  linter_overrides:
+    cli_lint_mode_project_exclude_arg_value: "{{DIR_PATH}}"
   suggest:
     windows: "winget install --id Cppcheck.Cppcheck -e"
     darwin: "brew install cppcheck"

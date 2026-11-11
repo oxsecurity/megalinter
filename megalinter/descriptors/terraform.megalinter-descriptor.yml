@@ -90,6 +90,9 @@ linters:
     native_install:
       method: binary
       version: "${TERRAFORM_TFLINT_VERSION}"
+      # tflint --init downloads (and verifies the signature of) the ruleset plugins here
+      env:
+        TFLINT_PLUGIN_DIR: "{{NATIVE_INSTALL_DIR}}/plugins"
       assets:
         linux/amd64:
           url: https://github.com/terraform-linters/tflint/releases/download/v{{VERSION}}/tflint_linux_amd64.zip

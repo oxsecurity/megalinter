@@ -23,7 +23,7 @@ from megalinter.native.state import read_state, update_state
 from megalinter.utils import get_descriptor_dir
 
 VERSION_TIMEOUT_SECONDS = 30
-CONSTRAINT_REGEX = re.compile(r"^\s*(>=|<=|==|>|<)?\s*(\d+(?:\.\d+)*)\s*$")
+CONSTRAINT_REGEX = re.compile(r"^\s*(>=|<=|==|>|<|~)?\s*(\d+(?:\.\d+)*)\s*$")
 POLICIES = ["ask", "auto", "never"]
 
 
@@ -51,30 +51,44 @@ def version_tuple(version):
     return tuple(int(number) for number in numbers)
 
 
+def compare(current, operator, wanted):
+    length = max(len(current), len(wanted))
+    current = current + (0,) * (length - len(current))
+    padded = wanted + (0,) * (length - len(wanted))
+    if operator == ">=":
+        return current >= padded
+    if operator == ">":
+        return current > padded
+    if operator == "<=":
+        return current <= padded
+    if operator == "<":
+        return current < padded
+    if operator == "~":
+        # Compatible release: ~8.3.16 means >=8.3.16 and <8.4, ~8.3 means >=8.3 and <9
+        upper = wanted[:-1] if len(wanted) > 1 else wanted
+        upper = upper[:-1] + (upper[-1] + 1,)
+        return current >= padded and compare(current, "<", upper)
+    return current == padded
+
+
+# "X || Y": alternatives, "X, Y": all clauses of an alternative
 def satisfies(version, constraint):
     if not constraint:
         return True
     current = version_tuple(version)
-    for clause in constraint.split(","):
-        match = CONSTRAINT_REGEX.match(clause)
-        if match is None:
-            raise NativeError(f"Unsupported version constraint: {constraint}")
-        operator = match.group(1) or "=="
-        wanted = version_tuple(match.group(2))
-        length = max(len(current), len(wanted))
-        padded_current = current + (0,) * (length - len(current))
-        padded_wanted = wanted + (0,) * (length - len(wanted))
-        if operator == ">=" and not padded_current >= padded_wanted:
-            return False
-        if operator == ">" and not padded_current > padded_wanted:
-            return False
-        if operator == "<=" and not padded_current <= padded_wanted:
-            return False
-        if operator == "<" and not padded_current < padded_wanted:
-            return False
-        if operator == "==" and not padded_current == padded_wanted:
-            return False
-    return True
+    for alternative in constraint.split("||"):
+        clauses = [clause for clause in alternative.split(",") if clause.strip()]
+        matches = []
+        for clause in clauses:
+            match = CONSTRAINT_REGEX.match(clause)
+            if match is None:
+                raise NativeError(f"Unsupported version constraint: {constraint}")
+            matches.append(
+                compare(current, match.group(1) or "==", version_tuple(match.group(2)))
+            )
+        if all(matches):
+            return True
+    return False
 
 
 def detect_on_host(name, definition, search_path=None):

@@ -40,6 +40,7 @@ class TfLintLinter(megalinter.Linter):
             "cwd": self.workspace,
             "secured_env": tflint_secured_env,
             "replacement_env_vars": [replacement_def],
+            "megalinter_internal": True,
         }
         if self.pre_commands is None:
             self.pre_commands = []

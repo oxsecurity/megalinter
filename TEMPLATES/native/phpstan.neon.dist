@@ -1,0 +1,4 @@
+# Native mode (MegaLinter without Docker): same as phpstan.neon.dist, without the SARIF
+# error formatter installed by Composer in the Docker images
+parameters:
+	level: 0

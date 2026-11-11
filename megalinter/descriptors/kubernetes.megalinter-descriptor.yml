@@ -192,6 +192,10 @@ linters:
       method: binary
       # renovate: datasource=github-releases depName=helm/helm extractVersion=^v(?<version>.+)$
       version: "4.3.1"
+      # helm 4 requires the chart path (helm 3 defaulted to the current folder)
+      linter_overrides:
+        cli_lint_mode_project_extra_args_after:
+          - "."
       assets:
         linux/amd64:
           url: https://get.helm.sh/helm-v{{VERSION}}-linux-amd64.tar.gz

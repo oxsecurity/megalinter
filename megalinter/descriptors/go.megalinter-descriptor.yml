@@ -134,6 +134,9 @@ linters:
     native_install:
       method: binary
       version: "${GO_GOLANGCI_LINT_VERSION}"
+      # golangci-lint loads the packages with the go toolchain
+      requires:
+        - runtime: go
       assets:
         linux/amd64:
           url: https://github.com/golangci/golangci-lint/releases/download/v{{VERSION}}/golangci-lint-{{VERSION}}-linux-amd64.tar.gz

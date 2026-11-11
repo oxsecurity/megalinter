@@ -334,7 +334,8 @@ linters:
       version: "${PHP_VIMEO_PSALM_VERSION}"
       requires:
         - runtime: php
-          version: ">=8.1.31"
+          # Requirement of the psalm phar (Box requirements checker)
+          version: "~8.1.31 || ~8.2.27 || ~8.3.16 || ~8.4.3 || >=8.5"
       assets:
         any:
           url: https://github.com/vimeo/psalm/releases/download/{{VERSION}}/psalm.phar

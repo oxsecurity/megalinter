@@ -40,7 +40,7 @@ RUNNERS = [
     {"os": "windows-latest", "platform": "windows/amd64"},
 ]
 # Runtimes without a verifiable portable download, installed on the runner by a setup action
-SETUP_ACTION_RUNTIMES = ["ruby", "r", "rust"]
+SETUP_ACTION_RUNTIMES = ["ruby", "r", "rust", "php"]
 SAFE_SUGGEST_PREFIXES = (
     "sudo apt-get install",
     "sudo apt install",
@@ -97,7 +97,13 @@ def build_matrix(shard_size):
                 requirement["runtime"]
                 for requirement in effective.get("requires", [])
                 if requirement["runtime"] in SETUP_ACTION_RUNTIMES
-                and not catalog[requirement["runtime"]].get("provision")
+                and runner["platform"]
+                not in (
+                    (catalog[requirement["runtime"]].get("provision") or {}).get(
+                        "assets"
+                    )
+                    or {}
+                )
             }
             entries.append((spec, runtimes))
         entries.sort(key=lambda entry: entry[0].key)
@@ -107,6 +113,13 @@ def build_matrix(shard_size):
                 modules[(spec.descriptor_id, spec.linter_name)]
                 for spec, _ in shard
                 if (spec.descriptor_id, spec.linter_name) in modules
+                and not is_host_provided(spec)
+            ]
+            host_tests = [
+                modules[(spec.descriptor_id, spec.linter_name)]
+                for spec, _ in shard
+                if (spec.descriptor_id, spec.linter_name) in modules
+                and is_host_provided(spec)
             ]
             include.append(
                 {
@@ -119,6 +132,7 @@ def build_matrix(shard_size):
                         spec.key for spec, _ in shard if is_host_provided(spec)
                     ),
                     "tests": " or ".join(tests),
+                    "host_tests": " or ".join(host_tests),
                     "host_runtimes": ",".join(
                         sorted(set().union(*[r for _, r in shard]))
                     ),

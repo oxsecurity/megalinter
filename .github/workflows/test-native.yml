@@ -131,6 +131,7 @@ jobs:
       LINTERS: ${{ matrix.linters }}
       HOST_LINTERS: ${{ matrix.host_linters }}
       TESTS: ${{ matrix.tests }}
+      HOST_TESTS: ${{ matrix.host_tests }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -156,6 +157,11 @@ jobs:
       - name: Setup R
         if: contains(matrix.host_runtimes, 'r')
         uses: r-lib/actions/setup-r@f9a764fea8d5c63df6ef9a5c7795bf7deb5d7e05 # v2
+      - name: Setup PHP
+        if: contains(matrix.host_runtimes, 'php')
+        uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
+        with:
+          php-version: "8.4"
       - name: Add the Rust clippy component
         if: contains(matrix.host_runtimes, 'rust')
         run: rustup component add clippy
@@ -177,9 +183,17 @@ jobs:
 
       # The usual test classes, run against the native installs
       - name: Test linters
+        if: env.TESTS != ''
         # GITHUB_WORKSPACE (the repository checkout) would make MegaLinter use the repository's own
         # .github/linters configurations instead of the default ones, unlike the Docker test runs
         run: env -u GITHUB_WORKSPACE python -m pytest megalinter/tests/test_megalinter/linters -k "$TESTS" -v --timeout=600 --reruns 2 --reruns-delay 5
+
+      # Host-provided tools come in the version of the runner, which can differ from the Docker one:
+      # their results are reported without failing the job
+      - name: Test host-provided linters
+        if: env.HOST_TESTS != ''
+        continue-on-error: true
+        run: env -u GITHUB_WORKSPACE python -m pytest megalinter/tests/test_megalinter/linters -k "$HOST_TESTS" -v --timeout=600 --reruns 1 --reruns-delay 5
 
       - name: Upload reports
         if: failure()

@@ -39,7 +39,7 @@ from megalinter import config, pre_post_factory, utils, utils_reporter, utils_sa
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
 from megalinter.llm_advisor import LLMAdvisor
 from megalinter.native import toolchain as native_toolchain
-from megalinter.native.context import find_git_bash
+from megalinter.native.context import find_git_bash, is_native_mode
 
 # Default maximum duration of a single linter command. Far above any legitimate
 # single-linter runtime (the slowest project scanners take minutes), so false
@@ -741,6 +741,16 @@ class Linter:
                     + self.config_file_name
                 )
             # in user repo directory provided in <Linter>RULES_PATH or LINTER_RULES_PATH
+            # Native mode: a default configuration can have a variant for native
+            # installs (ex: phpstan without the SARIF formatter installed by Composer)
+            elif is_native_mode() and os.path.isfile(
+                os.path.join(
+                    self.default_rules_location, "native", self.config_file_name
+                )
+            ):
+                self.config_file = os.path.join(
+                    self.default_rules_location, "native", self.config_file_name
+                )
             elif os.path.isfile(
                 self.default_rules_location + os.path.sep + self.config_file_name
             ):
@@ -1358,7 +1368,15 @@ class Linter:
         if self.lint_command_env:
             subprocess_env = {**subprocess_env, **self.lint_command_env}
             logging.debug(f"[{self.linter_name}] Command env: {self.lint_command_env}")
-        if isinstance(command, str):
+        if isinstance(command, str) and sys.platform == "win32":
+            self.lint_command_log.append(command)
+            # Windows: shell=True would wrap the command for cmd.exe, so call Git Bash
+            # directly with the command as a single argument
+            return_code, return_stdout = self._run_lint_subprocess(
+                [find_git_bash() or shutil.which("bash"), "-c", command],
+                {"cwd": cwd, "env": subprocess_env},
+            )
+        elif isinstance(command, str):
             self.lint_command_log.append(command)
             # Call linter with a sub-process
             return_code, return_stdout = self._run_lint_subprocess(
@@ -1367,11 +1385,7 @@ class Linter:
                     "shell": True,
                     "cwd": cwd,
                     "env": subprocess_env,
-                    "executable": (
-                        (find_git_bash() or shutil.which("bash"))
-                        if sys.platform == "win32"
-                        else "/bin/bash"
-                    ),
+                    "executable": "/bin/bash",
                 },
             )
         else:

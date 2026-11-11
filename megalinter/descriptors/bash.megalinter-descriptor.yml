@@ -159,6 +159,9 @@ linters:
     native_install:
       method: binary
       version: "${BASH_SHELLCHECK_VERSION}"
+      # SARIF output needs the shellcheck-sarif converter, only published for some platforms
+      linter_overrides:
+        can_output_sarif: false
       assets:
         linux/amd64:
           url: https://github.com/koalaman/shellcheck/releases/download/{{VERSION}}/shellcheck-{{VERSION}}.linux.x86_64.tar.gz
