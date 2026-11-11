@@ -5,4 +5,4 @@
 .automation/generated/flavors-stats.json linguist-generated=true
 .automation/generated/linter-helps.json linguist-generated=true
 docs/descriptors/repository_checkov.md linguist-generated=true
-docs/descriptors/terraform_checkov.md linguist-generated=true
+docs/descriptors/terraform_checkov.md linguist-generated=truemegalinter/descriptors/native-locks/** linguist-generated=true
