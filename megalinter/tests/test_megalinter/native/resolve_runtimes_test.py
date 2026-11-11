@@ -1,4 +1,7 @@
+import os
 import unittest
+
+import megalinter
 
 from megalinter.native.catalog import load_native_specs
 from megalinter.native.resolve import (
@@ -10,6 +13,9 @@ from megalinter.native.resolve import (
 )
 from megalinter.native.runtimes import satisfies, version_tuple
 
+MEGALINTER_DESCRIPTORS = os.path.join(
+    os.path.dirname(megalinter.__file__), "descriptors"
+)
 DOCKERFILE = [
     "# renovate: datasource=pypi depName=black\nARG PIP_BLACK_VERSION=26.10.1",
     "FROM hadolint/hadolint:v2.14.0 AS hadolint\nCOPY --from=hadolint /bin/hadolint /usr/bin/",
@@ -111,7 +117,9 @@ class VersionTest(unittest.TestCase):
 # so that they can run inside the Docker images
 class DescriptorsTest(unittest.TestCase):
     def test_every_linter_resolves_its_native_install(self):
-        specs = load_native_specs()
+        # The descriptors of MegaLinter itself: in the Docker images, test plugins are also
+        # downloaded in the descriptors folder, and plugins do not declare native installs
+        specs = load_native_specs(descriptor_dir=MEGALINTER_DESCRIPTORS)
         self.assertGreater(len(specs), 100)
         for spec in specs:
             self.assertIsNotNone(spec.native_install, spec.key)

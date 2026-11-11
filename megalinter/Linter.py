@@ -57,6 +57,8 @@ MAX_PROJECT_EXCLUDE_ARG_BYTES = 64 * 1024
 
 class Linter:
     TEMPLATES_DIR = "/action/lib/.automation/"
+    # Native mode (MegaLinter without Docker): toolchain of the installed linter
+    native_toolchain = None
 
     # Constructor: Initialize Linter instance with name and config variables
     def __init__(self, params=None, linter_config=None):

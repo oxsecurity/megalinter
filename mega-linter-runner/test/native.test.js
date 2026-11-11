@@ -1,3 +1,4 @@
+// cspell:ignore packagetype bdist (PyPI JSON API fields)
 import assert from "assert";
 import crypto from "crypto";
 import fs from "fs";

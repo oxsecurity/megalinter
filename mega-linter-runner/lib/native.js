@@ -1,3 +1,4 @@
+// cspell:ignore packagetype bdist (PyPI JSON API fields)
 // Run MegaLinter natively (without Docker)
 //
 // The runner does not lint anything itself: it installs the `megalinter` Python package of the
