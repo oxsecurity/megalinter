@@ -147,22 +147,6 @@
       ],
     },
     {
-      groupName: 'langchain',
-      matchPackageNames: [
-        'langchain_*',
-        'langchain*',
-      ],
-      schedule: [
-        'before 3pm every 3 day',
-      ],
-      matchUpdateTypes: [
-        'digest',
-        'patch',
-        'minor',
-        'major',
-      ],
-    },
-    {
       groupName: 'Salesforce packages',
       matchPackageNames: [
         '@salesforce/**',

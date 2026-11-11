@@ -1,6 +1,6 @@
 # AI-Powered Fix Suggestions (LLM Advisor)
 
-MegaLinter includes an AI-powered advisor that provides intelligent fix suggestions for linter errors using various Large Language Models (LLMs) through LangChain.
+MegaLinter includes an AI-powered advisor that provides intelligent fix suggestions for linter errors using various Large Language Models (LLMs).
 
 ![Advisor](assets/images/megalinter-llm-advisor.gif)
 
@@ -59,6 +59,30 @@ LLM_MAX_TOKENS: 1000                       # Maximum tokens for response
 LLM_TEMPERATURE: 0.1                       # Temperature for generation (0.0-1.0)
 LLM_ADVISOR_POSITION: after_linter_output  # Display Advisor suggestions before or after linter output
 ```
+
+## API Endpoint Configuration
+
+Every cloud provider calls its official API by default. Set the matching `*_BASE_URL` variable to use a proxy, a gateway or a self-hosted compatible server. A trailing `/` is always accepted.
+
+| Variable              | Default                                     | Expected value                                                                                                     |
+|-----------------------|---------------------------------------------|--------------------------------------------------------------------------------------------------------------------|
+| `OPENAI_BASE_URL`     | `https://api.openai.com/v1`                 | URL including the version segment (`/v1`): `/chat/completions` is appended                                        |
+| `ANTHROPIC_BASE_URL`  | `https://api.anthropic.com`                 | URL without the version segment: `/v1/messages` is appended (a trailing `/v1` is accepted)                        |
+| `GOOGLE_BASE_URL`     | `https://generativelanguage.googleapis.com` | URL with or without the version segment: `/v1beta` is added when missing, then `/models/<model>:generateContent`  |
+| `MISTRAL_BASE_URL`    | `https://api.mistral.ai/v1`                 | URL including the version segment (`/v1`): `/chat/completions` is appended                                        |
+| `DEEPSEEK_BASE_URL`   | `https://api.deepseek.com/v1`               | URL of the OpenAI-compatible API: `/chat/completions` is appended                                                 |
+| `GROK_BASE_URL`       | `https://api.x.ai/v1`                       | URL including the version segment (`/v1`): `/chat/completions` is appended                                        |
+| `ORCAROUTER_BASE_URL` | `https://api.orcarouter.ai/v1`              | URL including the version segment (`/v1`): `/chat/completions` is appended                                        |
+| `OLLAMA_BASE_URL`     | `http://localhost:11434`                    | Ollama server URL, with or without `/api`: `/api/generate` is appended                                            |
+
+Notes:
+
+- A full endpoint URL (ending with `/chat/completions`, `/v1/messages` or `/api/generate`) is also accepted
+- Hugging Face runs the model locally, so it has no endpoint to configure
+- To use [Ollama cloud](https://docs.ollama.com/api/authentication), set `OLLAMA_BASE_URL: https://ollama.com` and the `OLLAMA_API_KEY` secret variable (not needed for a local Ollama server)
+- `ANTHROPIC_API_VERSION` (default `2023-06-01`) sets the `anthropic-version` header. With `2026-10-21` or later, `LLM_TEMPERATURE` is not sent, as this API version removed it. Claude 4.7 and later models never receive it either, as they only accept the default temperature
+- Proxies are taken from `HTTPS_PROXY`, `HTTP_PROXY` and `NO_PROXY`. A custom CA bundle can be set with `REQUESTS_CA_BUNDLE`, `CURL_CA_BUNDLE`, `SSL_CERT_FILE` or `SSL_CERT_DIR`
+- Requests failing with a connection error, HTTP 429 or HTTP 5xx are retried twice, honoring the `Retry-After` header
 
 ## Advisor Level Configuration
 
@@ -282,7 +306,6 @@ Example fix:
 1. **"LLM Advisor not available"**
 
    - Check that `LLM_ADVISOR_ENABLED: true`
-   - Verify LangChain dependencies are installed
    - Ensure API keys are set correctly
 
 2. **"Failed to initialize LLM"**

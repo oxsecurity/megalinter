@@ -178,7 +178,19 @@ linters:
           ARG REPOSITORY_DEVSKIM_VERSION=1.0.70
         - RUN apk add --no-cache dotnet10-sdk && install -d /usr/local/dotnet-tools
         - ENV PATH="${PATH}:/usr/local/dotnet-tools"
-        - RUN dotnet tool install --allow-roll-forward --tool-path /usr/local/dotnet-tools Microsoft.CST.DevSkim.CLI --version ${REPOSITORY_DEVSKIM_VERSION}
+        # Delete the tool nupkg archives and the target framework folders the
+        # tool shim does not load (it loads the newest one supported by the SDK)
+        - |-
+          RUN dotnet tool install --allow-roll-forward --tool-path /usr/local/dotnet-tools Microsoft.CST.DevSkim.CLI --version ${REPOSITORY_DEVSKIM_VERSION} \
+              && find /usr/local/dotnet-tools/.store -name "*.nupkg" -delete \
+              && DOTNET_SDK_MAJOR="$(dotnet --version | cut -d. -f1)" \
+              && for tools_dir in /usr/local/dotnet-tools/.store/*/*/*/*/tools; do \
+                   keep="$(ls "$tools_dir" | grep -E '^net[0-9]+[.][0-9]+$' | sed -e 's/^net//' -e 's/[.].*//' | awk -v max="$DOTNET_SDK_MAJOR" '$1 <= max' | sort -n | tail -n 1)"; \
+                   [ -n "$keep" ] || continue; \
+                   for tfm_dir in "$tools_dir"/net[0-9]*; do \
+                     case "$(basename "$tfm_dir")" in "net${keep}".*) ;; *) rm -rf "$tfm_dir" ;; esac; \
+                   done; \
+                 done
     supported_platforms:
       platform:
         - linux/amd64

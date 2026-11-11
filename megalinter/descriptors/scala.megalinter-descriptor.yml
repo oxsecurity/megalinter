@@ -9,12 +9,6 @@ install:
   dockerfile:
     - ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
     - ENV PATH="$JAVA_HOME/bin:${PATH}"
-    - |-
-      # renovate: datasource=github-tags depName=coursier/coursier
-      ARG SCALA_COURSIER_VERSION=2.1.26
-    - |
-      RUN curl --retry-all-errors --retry 10 -fLo coursier https://github.com/coursier/coursier/releases/download/v${SCALA_COURSIER_VERSION}/coursier.jar && \
-              chmod +x coursier
 supported_platforms:
   platform:
     - linux/amd64
@@ -90,7 +84,15 @@ linters:
         - |-
           # renovate: datasource=github-tags depName=scalacenter/scalafix
           ARG SCALA_SCALAFIX_VERSION=0.14.9
-        - RUN ./coursier install scalafix:${SCALA_SCALAFIX_VERSION} --quiet --install-dir /usr/bin && rm -rf /root/.cache
+        - |-
+          # renovate: datasource=github-tags depName=coursier/coursier
+          ARG SCALA_COURSIER_VERSION=2.1.26
+        # coursier is only needed to install scalafix: download and delete it in the same layer
+        - |
+          RUN curl --retry-all-errors --retry 10 -fLo /tmp/coursier https://github.com/coursier/coursier/releases/download/v${SCALA_COURSIER_VERSION}/coursier.jar && \
+              chmod +x /tmp/coursier && \
+              /tmp/coursier install scalafix:${SCALA_SCALAFIX_VERSION} --quiet --install-dir /usr/bin && \
+              rm -rf /tmp/coursier /root/.cache
     supported_platforms:
       platform:
         - linux/amd64

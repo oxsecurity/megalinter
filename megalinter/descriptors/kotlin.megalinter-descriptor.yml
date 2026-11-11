@@ -153,7 +153,8 @@ linters:
               chmod a+x detekt-cli-${DETEKT_VERSION}/bin/* && \
               chmod a+x detekt-cli-${DETEKT_VERSION}/lib/* && \
               mv -n detekt-cli-${DETEKT_VERSION}/bin/* usr/bin && \
-              mv -n detekt-cli-${DETEKT_VERSION}/lib/* usr/lib
+              mv -n detekt-cli-${DETEKT_VERSION}/lib/* usr/lib && \
+              rm -rf detekt-cli-${DETEKT_VERSION}.zip detekt-cli-${DETEKT_VERSION}
     supported_platforms:
       platform:
         - linux/amd64
