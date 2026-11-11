@@ -1,10 +1,11 @@
 ---
 # Publishes the megalinter Python package (native mode: `megalinter` command) to PyPI
 #
-# - beta: pre-release `<last release>.post0.dev<timestamp>`, at most one per day. pip and uv ignore
-#   it unless asked (`--pre`), and `mega-linter-runner --native --release beta` installs it
-# - stable: the version of megalinter/__about__.py, published only when the repository variable
-#   PUBLISH_PYPI_STABLE is "true" (switched on when native mode leaves beta)
+# Same model as mega-linter-runner (deploy-mega-linter-runner.yml):
+# - beta: on each push to main (deploy-BETA.yml), pre-release `<last release>.post0.dev<timestamp>`.
+#   pip and uv ignore it unless asked (`--pre`), `mega-linter-runner --native --release beta` installs it
+# - stable: on each GitHub release (deploy-RELEASE.yml), version of megalinter/__about__.py
+# Both are published from the release-runner environment, which requires a manual approval
 #
 # PyPI Trusted Publishing (OIDC, no token stored) with attestations: the runner verifies that the wheel
 # was published by this workflow of oxsecurity/megalinter before installing it.
@@ -29,13 +30,12 @@ concurrency:
 jobs:
   build:
     name: Build the wheel (${{ inputs.channel }})
-    if: github.repository == 'oxsecurity/megalinter' && (inputs.channel == 'beta' || vars.PUBLISH_PYPI_STABLE == 'true')
+    if: github.repository == 'oxsecurity/megalinter'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     permissions:
       contents: read
     outputs:
-      skip: ${{ steps.version.outputs.skip }}
       version: ${{ steps.version.outputs.version }}
     steps:
       - name: Checkout Code
@@ -51,50 +51,33 @@ jobs:
       - name: Setup uv
         uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
 
-      # Beta: skip when the last beta is less than 24 hours old
       - name: Compute the version
         id: version
         env:
           CHANNEL: ${{ inputs.channel }}
         run: |
           python - <<'EOF'
-          import datetime, json, os, re, urllib.request
+          import datetime, os, re
 
           about = open("megalinter/__about__.py", encoding="utf-8").read()
-          release = re.search(r'__version__ = "([^"]+)"', about).group(1)
-          now = datetime.datetime.now(datetime.timezone.utc)
-          skip = False
-          version = release
+          version = re.search(r'__version__ = "([^"]+)"', about).group(1)
           if os.environ["CHANNEL"] == "beta":
-              version = f"{release}.post0.dev{now:%Y%m%d%H%M%S}"
-              try:
-                  with urllib.request.urlopen("https://pypi.org/pypi/megalinter/json", timeout=60) as response:
-                      published = json.load(response)["releases"]
-              except urllib.error.HTTPError:
-                  published = {}
-              for existing, files in published.items():
-                  if ".dev" not in existing or not files:
-                      continue
-                  uploaded = datetime.datetime.fromisoformat(files[0]["upload_time_iso_8601"].replace("Z", "+00:00"))
-                  if now - uploaded < datetime.timedelta(hours=24):
-                      skip = True
+              now = datetime.datetime.now(datetime.timezone.utc)
+              version = f"{version}.post0.dev{now:%Y%m%d%H%M%S}"
           with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:
-              output.write(f"skip={'true' if skip else 'false'}\nversion={version}\n")
+              output.write(f"version={version}" + chr(10))
           with open("megalinter/__about__.py", "w", encoding="utf-8") as f:
-              f.write(f'__version__ = "{version}"\n')
+              f.write(f'__version__ = "{version}"' + chr(10))
           EOF
 
       # The wheel carries every Python dependency of the core, pinned with hashes (from uv.lock)
       - name: Export the hashed core requirements
-        if: steps.version.outputs.skip != 'true'
         run: uv export --frozen --no-dev --no-emit-project --format requirements-txt --output-file megalinter/_core-requirements.lock
 
       - name: Build the wheel
-        if: steps.version.outputs.skip != 'true'
         run: uv build --wheel --out-dir dist
 
       - name: Check the wheel content
-        if: steps.version.outputs.skip != 'true'
         run: |
           python - <<'EOF'
           import glob, zipfile
@@ -114,7 +97,6 @@ jobs:
           EOF
 
       - name: Upload the wheel
-        if: steps.version.outputs.skip != 'true'
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: megalinter-wheel
@@ -124,11 +106,11 @@ jobs:
   publish:
     name: Publish to PyPI (${{ inputs.channel }})
     needs: build
-    if: needs.build.outputs.skip != 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    # Same protected environment as mega-linter-runner: each publish is approved manually
     environment:
-      name: pypi
+      name: release-runner
       url: https://pypi.org/project/megalinter/
     permissions:
       # Trusted Publishing (OIDC): no PyPI token is stored anywhere

@@ -65,7 +65,7 @@ jobs:
               },
             });
 
-  # Native mode: pre-release of the megalinter Python package (at most one per day, see the workflow)
+  # Native mode: pre-release of the megalinter Python package, like mega-linter-runner (manual approval)
   publish_pypi:
     name: Publish megalinter to PyPI (beta)
     if: github.repository == 'oxsecurity/megalinter' && !contains(github.event.head_commit.message, 'skip deploy') && !contains(github.event.head_commit.message, 'Release MegaLinter v')

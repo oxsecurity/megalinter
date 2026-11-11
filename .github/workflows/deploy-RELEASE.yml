@@ -50,7 +50,7 @@ jobs:
               },
             });
 
-  # Native mode: the workflow only publishes when the repository variable PUBLISH_PYPI_STABLE is "true"
+  # Native mode: release of the megalinter Python package, like mega-linter-runner (manual approval)
   publish_pypi:
     name: Publish megalinter to PyPI (release)
     if: github.repository == 'oxsecurity/megalinter' && !contains(github.event.head_commit.message, 'skip deploy')
