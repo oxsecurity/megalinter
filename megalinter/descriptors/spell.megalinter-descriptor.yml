@@ -73,6 +73,10 @@ linters:
   - class: ProselintLinter
     linter_name: proselint
     name: SPELL_PROSELINT
+    deprecated: true
+    deprecated_description: "proselint is unmaintained and suffers from high false-positive rates and Python packaging conflicts. Migrate to Vale (SPELL_VALE) for prose style checking or typos (SPELL_TYPOS) for fast source-code spell checking."
+    descriptor_flavors_exclude:
+      - cupcake
     linter_spdx_license: BSD-3-Clause
     lint_all_other_linters_files: false
     file_extensions:
@@ -92,6 +96,14 @@ linters:
       - **Security Awareness**: Identifies sensitive information like credit card numbers and passwords in text
       - **Rich Output Formats**: Provides detailed suggestions with source attribution, severity levels, and potential replacements
       - **Extensible Configuration**: Fully customizable checks through JSON configuration files
+
+      ### Migration Guide
+
+      `SPELL_PROSELINT` is deprecated and will be removed in a future major release. Replace it with `SPELL_VALE` for prose style linting and `SPELL_TYPOS` for fast source-code spell checking:
+
+      - **Editorial and prose style linting (`SPELL_VALE`)**: Replace `.proselintrc.json` with a `.vale.ini` configuration file and install community prose style packages (such as `write-good`, `Google`, or `Microsoft`) via `vale sync`.
+      - **Fast source-code spell checking (`SPELL_TYPOS`)**: Enable `SPELL_TYPOS` (configured via `typos.toml`, `_typos.toml`, `.typos.toml`, `pyproject.toml`, or `Cargo.toml`) to catch unambiguous misspellings across source files, comments, and documentation with `--write-changes` auto-fix support.
+      - **Disable `SPELL_PROSELINT`**: Remove `.proselintrc.json` once migrated, or add `DISABLE_LINTERS: [SPELL_PROSELINT]` to your `.mega-linter.yml` configuration.
     linter_speed: 2
     linter_url: https://github.com/amperser/proselint
     linter_repo: https://github.com/amperser/proselint
@@ -407,3 +419,94 @@ linters:
       platform:
         - linux/amd64
         - linux/arm64
+
+  # TYPOS
+  - class: TyposLinter
+    linter_name: typos
+    name: SPELL_TYPOS
+    can_output_sarif: false
+    is_formatter: true
+    linter_spdx_license: "MIT OR Apache-2.0"
+    linter_speed: 5
+    linter_text: |
+      **typos** is a fast source-code spell checker written in Rust that catches low-false-positive spelling mistakes across codebases and monorepos.
+
+      **Key Features:**
+
+      - **Low False Positives**: Targets unambiguous common misspellings in identifiers, comments, strings, and filenames
+      - **Auto-Fix Support**: Automatically corrects unambiguous typos in-place with `--write-changes` while safely reporting ambiguous cases
+      - **Blazing Fast**: Built in Rust for monorepo-scale repositories with negligible CI overhead
+      - **Flexible Configuration**: Supports `typos.toml`, `_typos.toml`, `.typos.toml`, `pyproject.toml`, and `Cargo.toml`
+    test_folder: spell_typos
+    test_format_fix_file_extensions:
+      - ".md"
+      - ".py"
+      - ".txt"
+    descriptor_flavors:
+      - all_flavors
+      - cupcake
+      - documentation
+    linter_url: https://github.com/crate-ci/typos
+    linter_repo: https://github.com/crate-ci/typos
+    linter_megalinter_ref_url: https://github.com/crate-ci/typos#getting-started
+    linter_rules_url: https://github.com/crate-ci/typos/blob/main/docs/reference.md
+    linter_rules_configuration_url: https://github.com/crate-ci/typos/blob/main/docs/reference.md#configuration
+    linter_rules_inline_disable_url: https://github.com/crate-ci/typos/blob/main/docs/reference.md#defaultextend-ignore-re
+    linter_rules_ignore_config_url: https://github.com/crate-ci/typos/blob/main/docs/reference.md#filesextend-exclude
+    config_file_name: typos.toml
+    cli_config_arg_name: --config
+    cli_help_arg_name: --help
+    cli_version_arg_name: --version
+    cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_fix_arg_name: --write-changes
+    cli_lint_extra_args:
+      - --format
+      - json
+      - --force-exclude
+    cli_lint_mode_project_extra_args_after:
+      - "."
+    cli_lint_mode_project_exclude_arg_name: "--exclude"
+    cli_lint_mode_project_exclude_arg_value: "**/{{DIR}}/**"
+    cli_lint_mode_project_exclude_config_key:
+      - "files.extend-exclude"
+      - "tool.typos.files.extend-exclude"
+      - "workspace.metadata.typos.files.extend-exclude"
+      - "package.metadata.typos.files.extend-exclude"
+    cli_lint_mode_project_exclude_config_files:
+      - "typos.toml"
+      - "_typos.toml"
+      - ".typos.toml"
+      - "pyproject.toml"
+      - "Cargo.toml"
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: '"type"\s*:\s*"typo"'
+    examples:
+      - typos
+      - typos --config typos.toml myfile.py
+      - typos --write-changes myfile.md
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=github-releases depName=crate-ci/typos extractVersion=^v(?<version>.+)$
+          ARG SPELL_TYPOS_VERSION=1.52.0
+        - |-
+          RUN case "${TARGETARCH}" in \
+                amd64) TYPOS_ARCH="x86_64" ;; \
+                arm64) TYPOS_ARCH="aarch64" ;; \
+                *) echo "Unsupported TARGETARCH: ${TARGETARCH}" && exit 1 ;; \
+              esac && \
+              curl -fsSL "https://github.com/crate-ci/typos/releases/download/v${SPELL_TYPOS_VERSION}/typos-v${SPELL_TYPOS_VERSION}-${TYPOS_ARCH}-unknown-linux-musl.tar.gz" \
+              | tar -xz -C /usr/local/bin ./typos && \
+              chmod +x /usr/local/bin/typos
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
+    ide:
+      vscode:
+        - name: Typos spell checker
+          url: https://marketplace.visualstudio.com/items?itemName=tekumara.typos-vscode
