@@ -32,7 +32,9 @@ on:
 permissions: {}
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
-  cancel-in-progress: false
+  # On feature branches the latest descriptors supersede a pending generation; on main every
+  # generation completes (its pull request is updated)
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 jobs:
   native_locks:
