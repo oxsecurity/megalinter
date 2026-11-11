@@ -64,6 +64,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [rubocop](https://rubocop.org/) from 1.92.1 to **1.92.2** on 2026-11-09
   - [vale](https://vale.sh/) from 3.24.0 to **3.26.0** on 2026-11-09
   - [sqlfluff](https://www.sqlfluff.com/) from 4.4.0 to **4.5.0** on 2026-11-09
+  - [grype](https://github.com/anchore/grype) from 0.121.2 to **0.121.3** on 2026-11-10
+  - [syft](https://github.com/anchore/syft) from 1.57.0 to **1.57.1** on 2026-11-10
 <!-- linter-versions-end -->
 
 ## [v10.2.0] - 2026-10-31
