@@ -16,6 +16,7 @@ on:
       - "megalinter/descriptors/native-runtimes.yml"
       - ".automation/native_lock.py"
       - ".automation/native-keys/**"
+      - ".github/workflows/native-lock.yml"
   # Manual run (from main, where the workflow exists for workflow_dispatch)
   workflow_dispatch:
     inputs:
