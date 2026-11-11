@@ -191,12 +191,16 @@ jobs:
       # The install test: every linter of the shard downloaded by MegaLinter is installed from its lock
       - name: Install linters
         if: env.LINTERS != ''
-        run: megalinter install-linters ${LINTERS//,/ } --runtimes auto
+        run: |
+          read -ra keys <<< "${LINTERS//,/ }"
+          megalinter install-linters "${keys[@]}" --runtimes auto
       # Linters provided by the host can only be tested where the runner provides them:
       # their tests are skipped when the tool is missing
       - name: Register host-provided linters
         if: env.HOST_LINTERS != ''
-        run: megalinter install-linters ${HOST_LINTERS//,/ } --runtimes auto || echo "::warning::Some host-provided tools are not available on this runner, their tests are skipped"
+        run: |
+          read -ra keys <<< "${HOST_LINTERS//,/ }"
+          megalinter install-linters "${keys[@]}" --runtimes auto || echo "::warning::Some host-provided tools are not available on this runner, their tests are skipped"
       - name: Show native status
         run: megalinter list-linters --json
 
@@ -216,7 +220,7 @@ jobs:
 
       - name: Upload reports
         if: failure()
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: reports-${{ strategy.job-index }}
           path: |
@@ -263,6 +267,8 @@ jobs:
       - name: Install MegaLinter
         run: python -m pip install -e . jsonschema pytest pytest-timeout pytest-rerunfailures
       - name: Install linters and their runtimes
-        run: megalinter install-linters ${LINTERS//,/ } --runtimes auto
+        run: |
+          read -ra keys <<< "${LINTERS//,/ }"
+          megalinter install-linters "${keys[@]}" --runtimes auto
       - name: Test linter versions
         run: env -u GITHUB_WORKSPACE python -m pytest megalinter/tests/test_megalinter/linters -k "($TESTS) and test_get_linter_version" -v --timeout=600 --reruns 2 --reruns-delay 5

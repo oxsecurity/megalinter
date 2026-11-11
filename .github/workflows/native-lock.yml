@@ -92,7 +92,7 @@ jobs:
         env:
           FORCE: ${{ inputs.force && '--force' || '' }}
           ACCEPT_CHANGES: ${{ inputs.accept_changes && '--accept-changes' || '' }}
-        run: python .automation/native_lock.py --runtimes --verify-signatures $FORCE $ACCEPT_CHANGES
+        run: python .automation/native_lock.py --runtimes --verify-signatures ${FORCE:+"$FORCE"} ${ACCEPT_CHANGES:+"$ACCEPT_CHANGES"}
 
       - name: Stage generated changes
         if: ${{ !cancelled() }}
@@ -113,7 +113,7 @@ jobs:
 
       - name: Create Pull Request
         if: ${{ !cancelled() && github.ref == 'refs/heads/main' }}
-        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
         with:
           # SECURITY NOTE: see auto-update-linters.yml (PAT only used so that the pull request triggers the CI)
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}

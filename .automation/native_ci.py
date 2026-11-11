@@ -151,7 +151,8 @@ def build_matrix(shard_size, platforms="all"):
             entries.append((spec, runtimes))
         entries.sort(key=lambda entry: entry[0].key)
         for index in range(0, len(entries), shard_size):
-            shard = entries[index : index + shard_size]
+            shard_end = index + shard_size
+            shard = entries[index:shard_end]
             tests = [
                 modules[(spec.descriptor_id, spec.linter_name)]
                 for spec, _ in shard

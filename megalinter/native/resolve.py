@@ -52,7 +52,7 @@ def resolve_version_reference(value, spec):
     def replace(match):
         ref = match.group(1)
         if ref.startswith("FROM_TAG:"):
-            image = ref[len("FROM_TAG:") :]
+            image = ref.removeprefix("FROM_TAG:")
             for line in lines:
                 from_match = FROM_REGEX.match(line)
                 if (
