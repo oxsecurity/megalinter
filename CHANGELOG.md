@@ -64,6 +64,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [sqlfluff](https://www.sqlfluff.com/) from 4.4.0 to **4.5.0** on 2026-11-09
   - [grype](https://github.com/anchore/grype) from 0.121.2 to **0.121.3** on 2026-11-10
   - [syft](https://github.com/anchore/syft) from 1.57.0 to **1.57.1** on 2026-11-10
+  - [clj-kondo](https://github.com/clj-kondo/clj-kondo) from 2026.10.20 to **2026.10.26** on 2026-11-11
+  - [npm-package-json-lint](https://npmpackagejsonlint.org/) from 11.0.0 to **11.0.1** on 2026-11-11
+  - [phpstan](https://phpstan.org/) from 2.3.2 to **2.3.5** on 2026-11-11
+  - [git_diff](https://git-scm.com) from 2.54.0 to **2.54.1** on 2026-11-11
 <!-- linter-versions-end -->
 
 ## [v10.2.0] - 2026-10-31
