@@ -11,10 +11,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Breaking changes
 
 - Core
-  - **Lighter Docker images**, with the same linters and the same behavior
+  - **Lighter Docker images**: the main image download shrinks by **21%**, with the same linters and the same behavior (#9497)
     - The Rust toolchain used by `RUST_CLIPPY` is now installed once instead of twice
     - Files never used at runtime are no longer shipped: leftover download archives, duplicate .NET tool packages and unused .NET framework builds, source maps and type declarations of Node.js linters and Salesforce CLI plugins, unused Rust and Dart runtime extras, and build caches
-  - **LLM Advisor no longer depends on LangChain**: it calls each provider's API directly, so MegaLinter installs **28 Python packages instead of 97** in every image, and the [LLM Advisor](https://megalinter.io/latest/llm-advisor/) now also works in standalone `megalinter-only-*` images
+    - Compressed download size on ghcr.io, linux/amd64 (before = previous beta):
+
+      | Image               |  Before |   After |          Delta |
+      |---------------------|--------:|--------:|---------------:|
+      | `megalinter` (main) | 4.31 GB | 3.42 GB | -894 MB (-21%) |
+
+  - **LLM Advisor no longer depends on LangChain**: it calls each provider's API directly, so MegaLinter installs **28 Python packages instead of 97** in every image, and the [LLM Advisor](https://megalinter.io/latest/llm-advisor/) now also works in standalone `megalinter-only-*` images (#9497)
     - Configuration variables are unchanged
     - The API endpoint of every provider can be overridden with a `<PROVIDER>_BASE_URL` variable: new **`ANTHROPIC_BASE_URL`** and **`GOOGLE_BASE_URL`**, joining the existing ones
     - Suggestions are now returned for models whose answers were previously lost (Gemini 3+, Mistral reasoning models), and Claude 4.7+ models no longer fail on the temperature setting
