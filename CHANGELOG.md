@@ -29,6 +29,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Local Hugging Face models: install them in `PRE_COMMANDS` with `pip install transformers torch` (`langchain-huggingface` is no longer needed)
 
 - New linters
+  - **[typos](https://github.com/crate-ci/typos)**, a fast source-code spell checker written in Rust that catches low-false-positive misspellings across identifiers, comments, strings, and filenames, available as **SPELL_TYPOS**
+    - Supports **APPLY_FIXES** (`--write-changes` for unambiguous typos), `file`, `list_of_files`, and `project` lint modes, and forwards `EXCLUDED_DIRECTORIES` in project lint mode
 
   - Add [ty](https://docs.astral.sh/ty/) linter for PYTHON — fast Python type checker and language server written in Rust
 
@@ -37,6 +39,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Re-enabled linters
 
 - Deprecated linters
+  - **SPELL_PROSELINT** (`proselint`) — deprecated because `proselint` is unmaintained with high false-positive rates and Python packaging conflicts. Migrate to **SPELL_VALE** (`vale`) for prose style checking or **SPELL_TYPOS** (`typos`) for fast source-code spell checking. Will be removed in a future major release; disable it by adding `SPELL_PROSELINT` to `DISABLE_LINTERS` in your `.mega-linter.yml`.
 
 - Removed linters
 

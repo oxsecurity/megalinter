@@ -694,6 +694,11 @@
     "image": "https://raw.githubusercontent.com/astral-sh/ty/main/docs/assets/logo-letter.svg",
     "title": "ty - Astral"
   },
+  "typos": {
+    "description": "Source code spell checker. Contribute to crate-ci/typos development by creating an account on GitHub.",
+    "image": "https://opengraph.githubassets.com/304c6dc401f9b281aee68cc2037938c423949a4c159a24b323c9cb728c8f0f94/crate-ci/typos",
+    "title": "GitHub - crate-ci/typos: Source code spell checker"
+  },
   "v8r": {
     "description": "\u2714\ufe0f A command-line JSON and YAML validator that's on your wavelength - chris48s/v8r",
     "image": "https://avatars0.githubusercontent.com/u/6025893?s=400&v=4",

@@ -23,6 +23,7 @@
         "PYTHON_RUFF_FORMAT",
         "RST_RSTFMT",
         "SNAKEMAKE_SNAKEFMT",
+        "SPELL_TYPOS",
         "TERRAFORM_TERRAFORM_FMT",
         "TERRAFORM_TOFU_FMT",
         "TYPESCRIPT_PRETTIER",
