@@ -5,11 +5,18 @@ Unit tests for utils_reporter
 """
 
 import unittest
+import uuid
+from pathlib import Path
+from types import SimpleNamespace
+from unittest.mock import patch
 
+from megalinter import Reporter, config, utilstest
 from megalinter.utils_reporter import (
     _build_missing_output_message,
     _build_table_content,
     _sort_linters_by_icon_severity,
+    build_markdown_summary,
+    build_markdown_summary_header,
     get_linter_status_icon,
     get_linter_summary_data,
 )
@@ -56,6 +63,71 @@ class FakeMaster:
 
 class FakeReporter:
     master = FakeMaster()
+
+
+class MarkdownSummaryTest(unittest.TestCase):
+    maxDiff = None
+
+    def setUp(self):
+        self.request_id = str(uuid.uuid4())
+        config.set_config(self.request_id, {"REPORTERS_MARKDOWN_TYPE": "simple"})
+        self.addCleanup(config.RUN_CONFIGS.pop, self.request_id)
+        self.enterContext(
+            patch.multiple(
+                "megalinter.utils_reporter",
+                ML_DOC_URL="https://megalinter.io/latest",
+                ML_DOC_URL_DESCRIPTORS_ROOT="https://megalinter.io/latest/descriptors",
+            )
+        )
+        self.master = SimpleNamespace(
+            request_id=self.request_id,
+            return_code=0,
+            status="success",
+            result_message="",
+            validate_all_code_base=True,
+            flavor_suggestions=None,
+            linters=[FakeLinter()],
+            show_elapsed_time=False,
+            user_notifications={},
+        )
+        self.reporter = Reporter({"master": self.master, "report_folder": ""})
+
+    def test_heading(self):
+        for status, return_code, heading in (
+            ("success", 0, "✅ MegaLinter analysis: Success"),
+            ("warning", 0, "✅⚠️ MegaLinter analysis: Success with warnings"),
+            ("error", 1, "❌ MegaLinter analysis: Error"),
+        ):
+            with self.subTest(status=status):
+                self.master.status = status
+                self.master.return_code = return_code
+                self.assertEqual(
+                    f"## {heading}",
+                    build_markdown_summary_header(self.reporter).strip(),
+                )
+
+    def test_summary(self):
+        snapshots = Path(utilstest.get_root_dir()) / ".automation/test/markdown_summary"
+        self.master.result_message = "One file was updated."
+        self.master.validate_all_code_base = False
+        config.set(
+            self.request_id, "REPORTERS_ACTION_RUN_URL", "https://ci.example/run/1"
+        )
+        config.set(
+            self.request_id,
+            "JOB_SUMMARY_ADDITIONAL_MARKDOWN",
+            "<!-- Project-specific notes -->",
+        )
+        for markdown_type in ("simple", "advanced"):
+            with self.subTest(markdown_type=markdown_type):
+                config.set(self.request_id, "REPORTERS_MARKDOWN_TYPE", markdown_type)
+                summary = build_markdown_summary(self.reporter)
+                expected = (snapshots / f"expected-{markdown_type}.md").read_text(
+                    encoding="utf-8"
+                )
+                self.assertMultiLineEqual(
+                    expected.strip(), "\n".join(summary.splitlines()).strip()
+                )
 
 
 class utils_reporter_test(unittest.TestCase):

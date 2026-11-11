@@ -32,6 +32,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Reporters
 
+  - **PR/MR comments** now have cleaner headings and footers. Fixes [#9488](https://github.com/oxsecurity/megalinter/issues/9488)
+
 - Flavors
 
 - Doc
