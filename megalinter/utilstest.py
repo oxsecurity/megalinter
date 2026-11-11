@@ -14,11 +14,15 @@ from datetime import datetime
 from shutil import copytree
 
 from git import Repo
+
 from megalinter import Megalinter, config, utils
 from megalinter.constants import (
     DEFAULT_DOCKER_WORKSPACE_DIR,
     DEFAULT_REPORT_FOLDER_NAME,
 )
+from megalinter.native.context import is_native_mode
+from megalinter.native.installer import NativeInstaller
+from megalinter.native.resolve import spec_from_linter
 
 REPO_HOME = (
     DEFAULT_DOCKER_WORKSPACE_DIR
@@ -140,6 +144,18 @@ def print_output(output):
             print(line)
 
 
+def attach_native_toolchain(linter):
+    if not is_native_mode():
+        return linter
+    installer = NativeInstaller(linter.request_id)
+    spec = spec_from_linter(linter)
+    status, reason = installer.status(spec)
+    if status == "unsupported":
+        raise unittest.SkipTest(reason)
+    linter.native_toolchain = installer.toolchain(spec)
+    return linter
+
+
 def call_mega_linter(env_vars):
     usage_stdout = io.StringIO()
     request_id = env_vars["request_id"]
@@ -147,6 +163,10 @@ def call_mega_linter(env_vars):
         # Set env variables
         for env_var_key, env_var_value in env_vars.items():
             config.set_value(request_id, env_var_key, env_var_value)
+        # Native mode: linters are installed beforehand (megalinter install-linters)
+        if is_native_mode() and "ENABLE_LINTERS" in env_vars:
+            config.set_value(request_id, "NATIVE_LINTERS", env_vars["ENABLE_LINTERS"])
+            config.set_value(request_id, "NATIVE_MISSING_LINTERS", "fail")
         # Call linter
         mega_linter = Megalinter({"request_id": request_id})
         mega_linter.run()

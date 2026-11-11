@@ -93,6 +93,13 @@ def run_commands(all_commands, log_key, mega_linter, linter=None):
     if all_commands is None:
         logging.debug(f"{log_key} No commands declared in user configuration")
         return pre_commands_results
+    if config.native_repo_untrusted() and len(all_commands) > 0:
+        logging.warning(
+            f"{log_key} Skipped {len(all_commands)} command(s) declared in the repository "
+            "configuration (native mode): trust the repository with --trust-repo-commands "
+            "(or NATIVE_TRUST_REPO_COMMANDS=true in the environment) to run them on this machine"
+        )
+        return pre_commands_results
     for command_info in all_commands:
         pre_command_result = run_command(command_info, log_key, mega_linter, linter)
         pre_commands_results += [pre_command_result]
@@ -210,7 +217,9 @@ def build_command_env(command_info, mega_linter, linter=None):
 def complete_command(command_info: dict):
     # Force npm install in /node-deps ONLY if cwd is root
     command: str = command_info["command"]
-    if command.startswith("npm i") and command_info.get("cwd", "root") == "root":
+    if os.environ.get("MEGALINTER_NATIVE", "false") == "true":
+        pass
+    elif command.startswith("npm i") and command_info.get("cwd", "root") == "root":
         command_info["command"] = "cd /node-deps && " + command_info["command"]
     # Pip dependencies case
     elif command_info.get("venv", None) is not None:

@@ -41,6 +41,9 @@ all-llm = [
   "torch",
 ]
 
+[project.scripts]
+megalinter = "megalinter.cli:main"
+
 [project.urls]
 Homepage = "https://megalinter.io/"
 Documentation = "https://megalinter.io/"
@@ -51,6 +54,13 @@ Changelog = "https://github.com/oxsecurity/megalinter/blob/main/CHANGELOG.md"
 
 [tool.hatch.version]
 path = "megalinter/__about__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["megalinter"]
+exclude = ["megalinter/tests", "**/__pycache__"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"TEMPLATES" = "megalinter/_templates"
 
 [tool.hatch.envs.default]
 installer = "uv"

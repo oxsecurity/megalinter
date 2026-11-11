@@ -7,6 +7,7 @@ import sys
 
 import requests
 import yaml
+
 from megalinter import config, linter_factory, utils
 
 
@@ -18,6 +19,13 @@ def list_plugins(request_id):
 # Load & install plugins from external URLs
 def initialize_plugins(request_id):
     plugins = list_plugins(request_id)
+    if len(plugins) > 0 and config.native_repo_untrusted():
+        logging.warning(
+            "[native] PLUGINS ignored: trust the repository with --trust-repo-commands "
+            "(or NATIVE_TRUST_REPO_COMMANDS=true in the environment) to load them. "
+            "Plugin install commands are never run natively."
+        )
+        return
     for plugin in plugins:
         descriptor_file = load_plugin(plugin)
         install_plugin(descriptor_file, request_id)
@@ -79,6 +87,12 @@ def load_plugin(plugin):
 # Run plugin installation routines
 def install_plugin(descriptor_file, request_id):
     descriptor = linter_factory.build_descriptor_info(descriptor_file)
+    if os.environ.get("MEGALINTER_NATIVE", "false") == "true":
+        logging.warning(
+            "[Plugins] Install commands of plugins are never run in native mode: "
+            f"install the linters of {descriptor['descriptor_id']} yourself"
+        )
+        return
     # Install descriptor level items
     if "install" in descriptor:
         process_install(descriptor["install"], request_id)

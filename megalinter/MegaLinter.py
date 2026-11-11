@@ -17,6 +17,7 @@ from shutil import copytree
 from uuid import uuid1
 
 import git
+
 from megalinter import (
     Linter,
     config,
@@ -34,6 +35,14 @@ from megalinter.constants import (
     ML_DOC_URL,
 )
 from megalinter.logger import display_header, initialize_logger, manage_upgrade_message
+from megalinter.native import selection as native_selection
+from megalinter.native.context import (
+    NativeError,
+    is_native_mode,
+    require_git_bash,
+)
+from megalinter.native.installer import NativeInstaller
+from megalinter.native.resolve import spec_from_linter
 from megalinter.prerun_report import run_prerun
 from megalinter.removed_linters import (
     REMOVED_LINTERS_DOC_URL,
@@ -126,6 +135,11 @@ class Megalinter:
 
         # Initialization for lint request cases
         self.workspace = self.get_workspace(params)
+        self.native_mode = is_native_mode()
+        if self.native_mode is True:
+            utils.add_workspace_replacements(self.workspace)
+            if sys.platform == "win32":
+                require_git_bash()
         # Do not send secrets to linter executables
         config.init_config(self.request_id, self.workspace, params)
 
@@ -919,10 +933,69 @@ class Megalinter:
                     "Some linters were skipped due to activation rules:\n"
                     + reasons_lines
                 )
+        if self.native_mode is True:
+            self.apply_native_selection(
+                {linter.name for linter in all_linters}, self.linter_version_only
+            )
         # Sort linters by language and linter_name
         self.linters = sorted(
             self.linters, key=lambda lamb: (lamb.processing_order, lamb.descriptor_id)
         )
+
+    # Keep only the linters explicitly enabled for native mode, install the missing ones
+    def apply_native_selection(self, known_linter_keys, versions_only=False):
+        if versions_only is True:
+            return
+        selection = native_selection.select_native_linters(
+            self.request_id, self.linters, known_linter_keys
+        )
+        if len(selection.selected) == 0 and selection.wants_all is False:
+            logging.warning(native_selection.EMPTY_MESSAGE)
+        if len(selection.listed_not_active) > 0:
+            logging.info(
+                "Listed in NATIVE_LINTERS but not active for this repository "
+                "(activation rules, ENABLE/DISABLE...): "
+                + ", ".join(selection.listed_not_active)
+            )
+        if len(selection.not_listed) > 0 and self.show_skipped_native_linters():
+            logging.info(
+                "Skipped linters (not listed in NATIVE_LINTERS): "
+                + ", ".join(sorted(linter.name for linter in selection.not_listed))
+            )
+        installer = NativeInstaller(self.request_id)
+        missing_policy = config.get(
+            self.request_id, "NATIVE_MISSING_LINTERS", "install"
+        )
+        ready_linters = []
+        errors = []
+        for linter in selection.selected:
+            spec = spec_from_linter(linter)
+            try:
+                status, reason = installer.status(spec)
+                if status == "unsupported":
+                    raise NativeError(reason)
+                if status == "not installed":
+                    if missing_policy == "skip":
+                        logging.warning(f"{linter.name} is not installed: skipped")
+                        continue
+                    if missing_policy == "fail":
+                        raise NativeError(
+                            f"{linter.name} is not installed: run `megalinter install-linters`"
+                        )
+                    installer.install(spec)
+                linter.native_toolchain = installer.toolchain(spec)
+                ready_linters.append(linter)
+            except NativeError as e:
+                if selection.wants_all is True:
+                    logging.warning(f"{linter.name} skipped in native mode: {e}")
+                else:
+                    errors.append(f"{linter.name}: {e}")
+        if len(errors) > 0:
+            raise NativeError("\n".join(errors))
+        self.linters = ready_linters
+
+    def show_skipped_native_linters(self):
+        return config.get(self.request_id, "SHOW_SKIPPED_LINTERS", "true") == "true"
 
     # List all reporters, then instantiate each of them
     def load_reporters(self):

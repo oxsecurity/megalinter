@@ -34,9 +34,12 @@ import urllib.request
 from time import perf_counter
 
 import yaml
+
 from megalinter import config, pre_post_factory, utils, utils_reporter, utils_sarif
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
 from megalinter.llm_advisor import LLMAdvisor
+from megalinter.native import toolchain as native_toolchain
+from megalinter.native.context import find_git_bash
 
 # Default maximum duration of a single linter command. Far above any legitimate
 # single-linter runtime (the slowest project scanners take minutes), so false
@@ -215,6 +218,7 @@ class Linter:
         self.lint_command_log: list[str] = []
         self.lint_command_env: dict[str, str] | None = None
         self.lint_cwd_log = ""
+        self.native_toolchain = None
 
         # Initialize parameters
         default_params = {
@@ -1009,10 +1013,12 @@ class Linter:
 
         # Pre-compute subprocess environment once per linter run to avoid
         # rebuilding secured-variable regexes on every file
-        self._cached_subprocess_env = {
-            **config.build_env(self.request_id, True, self.unsecured_env_variables),
-            "FORCE_COLOR": "0",
-        }
+        self._cached_subprocess_env = self.native_environment(
+            {
+                **config.build_env(self.request_id, True, self.unsecured_env_variables),
+                "FORCE_COLOR": "0",
+            }
+        )
 
         # Initialize linter reports
         for reporter in self.reporters:
@@ -1316,6 +1322,22 @@ class Linter:
         )
         return return_code, return_output
 
+    def native_environment(self, env):
+        if self.native_toolchain is None:
+            return env
+        return native_toolchain.build_subprocess_env(
+            env, self.native_toolchain, self.request_id, self.unsecured_env_variables
+        )
+
+    def native_search_path(self, env=None):
+        if self.native_toolchain is None:
+            return None
+        if env is not None:
+            return env.get("PATH")
+        return os.pathsep.join(
+            [*self.native_toolchain.path_dirs, os.environ.get("PATH", "")]
+        )
+
     # Execute a linting command . Can be overridden for special cases, like use of PowerShell script
     # noinspection PyMethodMayBeStatic
     def execute_lint_command(self, command):
@@ -1325,10 +1347,14 @@ class Linter:
         # Use pre-computed env from run(), fall back to building it if called standalone
         subprocess_env = getattr(self, "_cached_subprocess_env", None)
         if subprocess_env is None:
-            subprocess_env = {
-                **config.build_env(self.request_id, True, self.unsecured_env_variables),
-                "FORCE_COLOR": "0",
-            }
+            subprocess_env = self.native_environment(
+                {
+                    **config.build_env(
+                        self.request_id, True, self.unsecured_env_variables
+                    ),
+                    "FORCE_COLOR": "0",
+                }
+            )
         if self.lint_command_env:
             subprocess_env = {**subprocess_env, **self.lint_command_env}
             logging.debug(f"[{self.linter_name}] Command env: {self.lint_command_env}")
@@ -1342,14 +1368,18 @@ class Linter:
                     "cwd": cwd,
                     "env": subprocess_env,
                     "executable": (
-                        shutil.which("bash") if sys.platform == "win32" else "/bin/bash"
+                        (find_git_bash() or shutil.which("bash"))
+                        if sys.platform == "win32"
+                        else "/bin/bash"
                     ),
                 },
             )
         else:
             # Use full executable path if we are on Windows
             if sys.platform == "win32":
-                cli_absolute = shutil.which(command[0])
+                cli_absolute = shutil.which(
+                    command[0], path=self.native_search_path(subprocess_env)
+                )
                 if cli_absolute is not None:
                     command[0] = cli_absolute
                 else:
@@ -1574,11 +1604,13 @@ class Linter:
         command = self.build_version_command()
         logging.debug("Linter version command: " + str(command))
         cwd = os.getcwd() if command[0] != "npm" else "~/"
-        subprocess_env = {
-            **config.build_env(self.request_id, True, self.unsecured_env_variables),
-            "FORCE_COLOR": "0",
-            "NO_COLOR": "true",
-        }
+        subprocess_env = self.native_environment(
+            {
+                **config.build_env(self.request_id, True, self.unsecured_env_variables),
+                "FORCE_COLOR": "0",
+                "NO_COLOR": "true",
+            }
+        )
         try:
             process = subprocess.run(
                 command,
@@ -1618,17 +1650,21 @@ class Linter:
             try:
                 if isinstance(command, str):
                     command = command.split(" ")
+                subprocess_env = self.native_environment(
+                    {
+                        **config.build_env(
+                            self.request_id, True, self.unsecured_env_variables
+                        ),
+                        "FORCE_COLOR": "0",
+                    }
+                )
                 if sys.platform == "win32":
-                    cli_absolute = shutil.which(command[0])
+                    cli_absolute = shutil.which(
+                        command[0], path=self.native_search_path(subprocess_env)
+                    )
                     if cli_absolute is not None:
                         command[0] = cli_absolute
                 logging.debug("Linter help command: " + str(command))
-                subprocess_env = {
-                    **config.build_env(
-                        self.request_id, True, self.unsecured_env_variables
-                    ),
-                    "FORCE_COLOR": "0",
-                }
                 process = subprocess.run(
                     command,
                     stdout=subprocess.PIPE,
@@ -2502,7 +2538,7 @@ class Linter:
     # Build the CLI command to get linter version (can be overridden if --version is not the way to get the version)
     def build_version_command(self):
         cmd = [*self.cli_executable_version]
-        cli_absolute = shutil.which(cmd[0])
+        cli_absolute = shutil.which(cmd[0], path=self.native_search_path())
         if cli_absolute is not None:
             cmd[0] = cli_absolute
         cmd += self.cli_version_extra_args

@@ -16,6 +16,9 @@ class LinterTestRoot:
     request_id: str | None = None
 
     def get_linter_instance(self, request_id):
+        return utilstest.attach_native_toolchain(self.build_linter_instance(request_id))
+
+    def build_linter_instance(self, request_id):
         return linter_factory.build_linter(
             self.descriptor_id,
             self.linter_name,

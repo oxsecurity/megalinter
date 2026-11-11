@@ -28,13 +28,19 @@ class StyleLintLinter(Linter):
         # Passing --config-basedir tells stylelint where to look for extended packages.
         # Do not add it if the user already defined it in CSS_STYLELINT_ARGUMENTS,
         # or asked to get rid of it using CSS_STYLELINT_COMMAND_REMOVE_ARGUMENTS
+        node_deps_dir = self.get_node_deps_dir()
         if (
-            os.path.isdir(NODE_DEPS_DIR)
+            node_deps_dir is not None
             and CONFIG_BASEDIR_ARG not in cmd
             and CONFIG_BASEDIR_ARG not in self.cli_command_remove_args
         ):
-            cmd += [CONFIG_BASEDIR_ARG, NODE_DEPS_DIR]
+            cmd += [CONFIG_BASEDIR_ARG, node_deps_dir]
         return cmd
+
+    def get_node_deps_dir(self):
+        if self.native_toolchain is not None:
+            return self.native_toolchain.install_dir
+        return NODE_DEPS_DIR if os.path.isdir(NODE_DEPS_DIR) else None
 
     def pre_test(self, test_name):
         if test_name.startswith("test_failure"):

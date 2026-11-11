@@ -4,7 +4,14 @@ import logging
 import os
 
 import yaml
+
 from megalinter import Linter, flavor_factory
+from megalinter.native.context import (
+    current_platform,
+    is_native_mode,
+    megalinter_home,
+)
+from megalinter.native.resolve import apply_native_overrides
 from megalinter.utils import get_descriptor_dir
 
 
@@ -138,6 +145,14 @@ def build_descriptor_linters(file, linter_init_params=None, linter_names=None):
             ):
                 continue
             linter_descriptor = resolve_linter_extends(linter_descriptor)
+            if is_native_mode():
+                linter_descriptor = apply_native_overrides(
+                    linter_descriptor,
+                    current_platform(),
+                    language_descriptor["descriptor_id"],
+                    language_descriptor.get("install"),
+                    megalinter_home(),
+                )
 
             # Use custom class if defined in file
             linter_class = Linter
