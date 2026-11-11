@@ -25,7 +25,7 @@ description: How to use osv-scanner (configure, ignore files, ignore errors, hel
 - See [How to configure osv-scanner rules](https://google.github.io/osv-scanner/configuration/){target=_blank}
 - See [How to ignore files and directories with osv-scanner](https://google.github.io/osv-scanner/usage/scan-source#ignored-files){target=_blank}
 
-[![osv-scanner - GitHub](https://gh-card.dev/repos/google/osv-scanner.svg?fullname=)](https://github.com/google/osv-scanner){target=_blank}
+[![osv-scanner - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=google&repo=osv-scanner&show_owner=true)](https://github.com/google/osv-scanner){target=_blank}
 
 ## Configuration in MegaLinter
 

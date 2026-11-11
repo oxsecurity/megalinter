@@ -29,10 +29,10 @@ description: How to use kubescape (configure, ignore files, ignore errors, help 
 
 ## kubescape documentation
 
-- Version in MegaLinter: **4.0.16**
+- Version in MegaLinter: **4.0.17**
 - Visit [Official Web Site](https://github.com/kubescape/kubescape#readme){target=_blank}
 
-[![kubescape - GitHub](https://gh-card.dev/repos/kubescape/kubescape.svg?fullname=)](https://github.com/kubescape/kubescape){target=_blank}
+[![kubescape - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=kubescape&repo=kubescape&show_owner=true)](https://github.com/kubescape/kubescape){target=_blank}
 
 ## Configuration in MegaLinter
 
@@ -173,7 +173,7 @@ Use "kubescape [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=github-releases depName=kubescape/kubescape extractVersion=^v(?<version>.+)$
-ARG KUBERNETES_KUBESCAPE_VERSION=4.0.16
+ARG KUBERNETES_KUBESCAPE_VERSION=4.0.17
 RUN set -eu; \
     case "$TARGETPLATFORM" in \
       linux/amd64) ARCH=amd64 ;; \

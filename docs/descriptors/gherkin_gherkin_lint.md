@@ -32,7 +32,7 @@ description: How to use gherkin-lint (configure, ignore files, ignore errors, he
 - See [How to disable gherkin-lint rules in files](https://github.com/gherkin-lint/gherkin-lint#ignoring-feature-files){target=_blank}
 - See [Index of problems detected by gherkin-lint](https://github.com/gherkin-lint/gherkin-lint#available-rules){target=_blank}
 
-[![gherkin-lint - GitHub](https://gh-card.dev/repos/gherkin-lint/gherkin-lint.svg?fullname=)](https://github.com/gherkin-lint/gherkin-lint){target=_blank}
+[![gherkin-lint - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=gherkin-lint&repo=gherkin-lint&show_owner=true)](https://github.com/gherkin-lint/gherkin-lint){target=_blank}
 
 ## Configuration in MegaLinter
 

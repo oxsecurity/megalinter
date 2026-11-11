@@ -30,7 +30,7 @@ By default, Bicep linter errors are set as warnings. To customize linter setting
 - See [How to disable bicep_linter rules in files](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#silencing-false-positives){target=_blank}
 - See [Index of problems detected by bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#default-rules){target=_blank}
 
-[![bicep - GitHub](https://gh-card.dev/repos/Azure/bicep.svg?fullname=)](https://github.com/Azure/bicep){target=_blank}
+[![bicep - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=Azure&repo=bicep&show_owner=true)](https://github.com/Azure/bicep){target=_blank}
 
 ## Configuration in MegaLinter
 

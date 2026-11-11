@@ -62,7 +62,7 @@ Golangci-lint is the industry standard for Go code quality and is used by thousa
 - See [How to disable golangci-lint rules in files](https://golangci-lint.run/usage/false-positives/#nolint){target=_blank}
 - See [Index of problems detected by golangci-lint](https://golangci-lint.run/usage/linters/){target=_blank}
 
-[![golangci-lint - GitHub](https://gh-card.dev/repos/golangci/golangci-lint.svg?fullname=)](https://github.com/golangci/golangci-lint){target=_blank}
+[![golangci-lint - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=golangci&repo=golangci-lint&show_owner=true)](https://github.com/golangci/golangci-lint){target=_blank}
 
 ## Configuration in MegaLinter
 

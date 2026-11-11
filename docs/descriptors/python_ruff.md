@@ -27,7 +27,7 @@ description: How to use ruff (configure, ignore files, ignore errors, help & ver
 - See [How to disable ruff rules in files](https://docs.astral.sh/ruff/linter/#error-suppression){target=_blank}
 - See [Index of problems detected by ruff](https://docs.astral.sh/ruff/rules/){target=_blank}
 
-[![ruff - GitHub](https://gh-card.dev/repos/astral-sh/ruff.svg?fullname=)](https://github.com/astral-sh/ruff){target=_blank}
+[![ruff - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=astral-sh&repo=ruff&show_owner=true)](https://github.com/astral-sh/ruff){target=_blank}
 
 ## Configuration in MegaLinter
 

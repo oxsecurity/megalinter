@@ -20,14 +20,14 @@ pytest-timeout==2.4.0
 pytest-xdist==3.8.0
 pytest-rerunfailures==16.7
 python-gitlab==8.6.0
-python-multipart==0.0.32
+python-multipart==0.0.33
 pyyaml==6.0.3
 redis==8.1.0
 requests==2.34.2
 urllib3==2.8.0
 webpreview==1.7.2
 yq==4.4.5
-zensical==0.0.72
+zensical==0.0.74
 langchain_core==1.6.13
 langchain_anthropic==1.7.6
 langchain_deepseek==1.1.1

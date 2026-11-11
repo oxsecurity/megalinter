@@ -35,7 +35,7 @@ description: How to use isort (configure, ignore files, ignore errors, help & ve
   - If custom `.isort.cfg` config file isn't found, [.isort.cfg](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.isort.cfg){target=_blank} will be used
 - See [How to disable isort rules in files](https://pycqa.github.io/isort/docs/configuration/action_comments.html){target=_blank}
 
-[![isort - GitHub](https://gh-card.dev/repos/PyCQA/isort.svg?fullname=)](https://github.com/PyCQA/isort){target=_blank}
+[![isort - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=PyCQA&repo=isort&show_owner=true)](https://github.com/PyCQA/isort){target=_blank}
 
 ## Configuration in MegaLinter
 

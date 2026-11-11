@@ -33,7 +33,7 @@ description: How to use trivy-sbom (configure, ignore files, ignore errors, help
 - See [How to configure trivy-sbom rules](https://aquasecurity.github.io/trivy/latest/docs/configuration/){target=_blank}
 - See [How to ignore files and directories with trivy-sbom](https://aquasecurity.github.io/trivy/latest/docs/configuration/filtering/#by-inline-comments){target=_blank}
 
-[![trivy - GitHub](https://gh-card.dev/repos/aquasecurity/trivy.svg?fullname=)](https://github.com/aquasecurity/trivy){target=_blank}
+[![trivy - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=aquasecurity&repo=trivy&show_owner=true)](https://github.com/aquasecurity/trivy){target=_blank}
 
 ## Configuration in MegaLinter
 

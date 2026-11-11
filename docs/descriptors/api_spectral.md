@@ -34,7 +34,7 @@ Spectral helps ensure your API specifications follow best practices and maintain
   - If custom `.spectral.yaml` config file isn't found, [.spectral.yaml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.spectral.yaml){target=_blank} will be used
 - See [Index of problems detected by spectral](https://docs.stoplight.io/docs/spectral/4dec24461f3af-open-api-rules){target=_blank}
 
-[![spectral - GitHub](https://gh-card.dev/repos/stoplightio/spectral.svg?fullname=)](https://github.com/stoplightio/spectral){target=_blank}
+[![spectral - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=stoplightio&repo=spectral&show_owner=true)](https://github.com/stoplightio/spectral){target=_blank}
 
 ## Configuration in MegaLinter
 

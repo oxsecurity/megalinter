@@ -33,7 +33,7 @@ description: How to use kubeconform (configure, ignore files, ignore errors, hel
 - See [How to configure kubeconform rules](https://github.com/yannh/kubeconform#usage){target=_blank}
 - See [How to disable kubeconform rules in files](https://github.com/yannh/kubeconform#disabling-validation-for-specific-resources){target=_blank}
 
-[![kubeconform - GitHub](https://gh-card.dev/repos/yannh/kubeconform.svg?fullname=)](https://github.com/yannh/kubeconform){target=_blank}
+[![kubeconform - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=yannh&repo=kubeconform&show_owner=true)](https://github.com/yannh/kubeconform){target=_blank}
 
 ## Configuration in MegaLinter
 

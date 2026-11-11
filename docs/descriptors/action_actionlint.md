@@ -25,7 +25,7 @@ description: How to use actionlint (configure, ignore files, ignore errors, help
 - Visit [Official Web Site](https://rhysd.github.io/actionlint/){target=_blank}
 - See [How to configure actionlint rules](https://github.com/rhysd/actionlint/blob/main/docs/config.md){target=_blank}
 
-[![actionlint - GitHub](https://gh-card.dev/repos/rhysd/actionlint.svg?fullname=)](https://github.com/rhysd/actionlint){target=_blank}
+[![actionlint - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=rhysd&repo=actionlint&show_owner=true)](https://github.com/rhysd/actionlint){target=_blank}
 
 ## Configuration in MegaLinter
 

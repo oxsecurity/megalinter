@@ -30,7 +30,7 @@ description: How to use snakefmt (configure, ignore files, ignore errors, help &
 - See [How to configure snakefmt rules](https://github.com/snakemake/snakefmt#configuration){target=_blank}
   - If custom `.snakefmt.toml` config file isn't found, [.snakefmt.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.snakefmt.toml){target=_blank} will be used
 
-[![snakefmt - GitHub](https://gh-card.dev/repos/snakemake/snakefmt.svg?fullname=)](https://github.com/snakemake/snakefmt){target=_blank}
+[![snakefmt - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=snakemake&repo=snakefmt&show_owner=true)](https://github.com/snakemake/snakefmt){target=_blank}
 
 ## Configuration in MegaLinter
 

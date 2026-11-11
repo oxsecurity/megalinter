@@ -45,7 +45,7 @@ The default configuration enables all supported languages and rules, which may n
 - See [How to disable tflint rules in files](https://github.com/terraform-linters/tflint/blob/master/docs/user-guide/annotations.md){target=_blank}
 - See [Index of problems detected by tflint](https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/README.md){target=_blank}
 
-[![tflint - GitHub](https://gh-card.dev/repos/terraform-linters/tflint.svg?fullname=)](https://github.com/terraform-linters/tflint){target=_blank}
+[![tflint - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=terraform-linters&repo=tflint&show_owner=true)](https://github.com/terraform-linters/tflint){target=_blank}
 
 ## Configuration in MegaLinter
 

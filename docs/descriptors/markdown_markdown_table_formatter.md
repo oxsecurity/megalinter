@@ -21,12 +21,12 @@ description: How to use markdown-table-formatter (configure, ignore files, ignor
 
 ## markdown-table-formatter documentation
 
-- Version in MegaLinter: **1.7.0**
+- Version in MegaLinter: **2.1.0**
 - Visit [Official Web Site](https://www.npmjs.com/package/markdown-table-formatter){target=_blank}
 - See [How to configure markdown-table-formatter rules](https://github.com/nvuillam/markdown-table-formatter#options){target=_blank}
 - See [How to disable markdown-table-formatter rules in files](https://github.com/nvuillam/markdown-table-formatter#ignoring-code-blocks){target=_blank}
 
-[![markdown-table-formatter - GitHub](https://gh-card.dev/repos/nvuillam/markdown-table-formatter.svg?fullname=)](https://github.com/nvuillam/markdown-table-formatter){target=_blank}
+[![markdown-table-formatter - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=nvuillam&repo=markdown-table-formatter&show_owner=true)](https://github.com/nvuillam/markdown-table-formatter){target=_blank}
 
 ## Configuration in MegaLinter
 
@@ -132,8 +132,8 @@ markdown-table-formatter [options]
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=markdown-table-formatter
-ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
+ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=2.1.0
 ```
 
 - NPM packages (node.js):
-  - [markdown-table-formatter@1.7.0](https://www.npmjs.com/package/markdown-table-formatter/v/1.7.0)
+  - [markdown-table-formatter@2.1.0](https://www.npmjs.com/package/markdown-table-formatter/v/2.1.0)

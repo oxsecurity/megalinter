@@ -26,7 +26,7 @@ description: How to use tekton-lint (configure, ignore files, ignore errors, hel
 - See [How to configure tekton-lint rules](https://github.com/IBM/tekton-lint#configuring-tekton-lint){target=_blank}
 - See [Index of problems detected by tekton-lint](https://github.com/IBM/tekton-lint#rules){target=_blank}
 
-[![tekton-lint - GitHub](https://gh-card.dev/repos/IBM/tekton-lint.svg?fullname=)](https://github.com/IBM/tekton-lint){target=_blank}
+[![tekton-lint - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=IBM&repo=tekton-lint&show_owner=true)](https://github.com/IBM/tekton-lint){target=_blank}
 
 ## Configuration in MegaLinter
 

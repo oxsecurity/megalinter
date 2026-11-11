@@ -33,7 +33,7 @@ description: How to use ls-lint (configure, ignore files, ignore errors, help & 
 - Visit [Official Web Site](https://ls-lint.org/){target=_blank}
 - See [Index of problems detected by ls-lint](https://ls-lint.org/2.2/configuration/the-rules.html){target=_blank}
 
-[![ls-lint - GitHub](https://gh-card.dev/repos/loeffel-io/ls-lint.svg?fullname=)](https://github.com/loeffel-io/ls-lint){target=_blank}
+[![ls-lint - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=loeffel-io&repo=ls-lint&show_owner=true)](https://github.com/loeffel-io/ls-lint){target=_blank}
 
 ## Configuration in MegaLinter
 

@@ -31,7 +31,7 @@ description: How to use proselint (configure, ignore files, ignore errors, help 
 - See [How to configure proselint rules](https://github.com/amperser/proselint#checks){target=_blank}
 - See [Index of problems detected by proselint](https://github.com/amperser/proselint#checks){target=_blank}
 
-[![proselint - GitHub](https://gh-card.dev/repos/amperser/proselint.svg?fullname=)](https://github.com/amperser/proselint){target=_blank}
+[![proselint - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=amperser&repo=proselint&show_owner=true)](https://github.com/amperser/proselint){target=_blank}
 
 ## Configuration in MegaLinter
 

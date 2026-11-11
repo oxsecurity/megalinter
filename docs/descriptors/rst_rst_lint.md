@@ -33,7 +33,7 @@ In `project` lint mode, rst-lint walks every `.rst` file below the workspace: it
 - See [How to configure rst-lint rules](https://github.com/twolfson/restructuredtext-lint#cli-utility){target=_blank}
 - See [How to disable rst-lint rules in files](https://docutils.sourceforge.io/docs/ref/rst/directives.html#raw-data-pass-through){target=_blank}
 
-[![restructuredtext-lint - GitHub](https://gh-card.dev/repos/twolfson/restructuredtext-lint.svg?fullname=)](https://github.com/twolfson/restructuredtext-lint){target=_blank}
+[![restructuredtext-lint - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=twolfson&repo=restructuredtext-lint&show_owner=true)](https://github.com/twolfson/restructuredtext-lint){target=_blank}
 
 ## Configuration in MegaLinter
 

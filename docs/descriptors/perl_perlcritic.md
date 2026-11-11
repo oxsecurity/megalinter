@@ -34,7 +34,7 @@ description: How to use perlcritic (configure, ignore files, ignore errors, help
 - See [How to disable perlcritic rules in files](https://metacpan.org/pod/Perl::Critic#BENDING-THE-RULES){target=_blank}
 - See [Index of problems detected by perlcritic](https://metacpan.org/pod/Perl::Critic#THE-POLICIES){target=_blank}
 
-[![Perl-Critic - GitHub](https://gh-card.dev/repos/Perl-Critic/Perl-Critic.svg?fullname=)](https://github.com/Perl-Critic/Perl-Critic){target=_blank}
+[![Perl-Critic - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=Perl-Critic&repo=Perl-Critic&show_owner=true)](https://github.com/Perl-Critic/Perl-Critic){target=_blank}
 
 ## Configuration in MegaLinter
 

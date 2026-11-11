@@ -25,7 +25,7 @@ description: How to use lintr (configure, ignore files, ignore errors, help & ve
 - See [How to disable lintr rules in files](https://lintr.r-lib.org/articles/lintr.html#exclusions){target=_blank}
 - See [Index of problems detected by lintr](https://lintr.r-lib.org/reference/index.html){target=_blank}
 
-[![lintr - GitHub](https://gh-card.dev/repos/r-lib/lintr.svg?fullname=)](https://github.com/r-lib/lintr){target=_blank}
+[![lintr - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=r-lib&repo=lintr&show_owner=true)](https://github.com/r-lib/lintr){target=_blank}
 
 ## Configuration in MegaLinter
 

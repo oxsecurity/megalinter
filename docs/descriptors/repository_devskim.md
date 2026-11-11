@@ -40,7 +40,7 @@ Example:
   - If custom `.devskim.json` config file isn't found, [.devskim.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.devskim.json){target=_blank} will be used
 - See [How to ignore files and directories with devskim](https://github.com/microsoft/DevSkim/wiki/Analyze-Command){target=_blank}
 
-[![DevSkim - GitHub](https://gh-card.dev/repos/microsoft/DevSkim.svg?fullname=)](https://github.com/microsoft/DevSkim){target=_blank}
+[![DevSkim - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=microsoft&repo=DevSkim&show_owner=true)](https://github.com/microsoft/DevSkim){target=_blank}
 
 ## Configuration in MegaLinter
 

@@ -46,7 +46,7 @@ DISABLE_LINTERS: [TERRAFORM_TERRAFORM_FMT]
 - Visit [Official Web Site](https://opentofu.org/docs/cli/commands/fmt/){target=_blank}
 - See [How to configure tofu-fmt rules](https://opentofu.org/docs/language/syntax/style/){target=_blank}
 
-[![opentofu - GitHub](https://gh-card.dev/repos/opentofu/opentofu.svg?fullname=)](https://github.com/opentofu/opentofu){target=_blank}
+[![opentofu - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=opentofu&repo=opentofu&show_owner=true)](https://github.com/opentofu/opentofu){target=_blank}
 
 ## Configuration in MegaLinter
 

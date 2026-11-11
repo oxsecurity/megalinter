@@ -27,7 +27,7 @@ description: How to use raku (configure, ignore files, ignore errors, help & ver
 - See [How to configure raku rules](https://docs.raku.org/language/pragmas){target=_blank}
 - See [How to disable raku rules in files](https://docs.raku.org/language/pragmas#no){target=_blank}
 
-[![rakudo - GitHub](https://gh-card.dev/repos/rakudo/rakudo.svg?fullname=)](https://github.com/rakudo/rakudo){target=_blank}
+[![rakudo - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=rakudo&repo=rakudo&show_owner=true)](https://github.com/rakudo/rakudo){target=_blank}
 
 ## Configuration in MegaLinter
 

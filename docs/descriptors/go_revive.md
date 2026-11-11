@@ -28,7 +28,7 @@ description: How to use revive (configure, ignore files, ignore errors, help & v
 - See [How to disable revive rules in files](https://revive.run/docs#comment-directives){target=_blank}
 - See [Index of problems detected by revive](https://revive.run/r){target=_blank}
 
-[![revive - GitHub](https://gh-card.dev/repos/mgechev/revive.svg?fullname=)](https://github.com/mgechev/revive){target=_blank}
+[![revive - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=mgechev&repo=revive&show_owner=true)](https://github.com/mgechev/revive){target=_blank}
 
 ## Configuration in MegaLinter
 

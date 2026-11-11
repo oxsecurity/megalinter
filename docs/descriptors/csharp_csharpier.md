@@ -28,7 +28,7 @@ description: How to use csharpier (configure, ignore files, ignore errors, help 
 - See [How to ignore files and directories with csharpier](https://csharpier.com/docs/Ignore){target=_blank}
   - You can define a `.csharpierignore` file to ignore files and folders
 
-[![csharpier - GitHub](https://gh-card.dev/repos/belav/csharpier.svg?fullname=)](https://github.com/belav/csharpier){target=_blank}
+[![csharpier - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=belav&repo=csharpier&show_owner=true)](https://github.com/belav/csharpier){target=_blank}
 
 ## Configuration in MegaLinter
 

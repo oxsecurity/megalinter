@@ -27,7 +27,7 @@ description: How to use rstfmt (configure, ignore files, ignore errors, help & v
 - Visit [Official Web Site](https://github.com/dzhu/rstfmt#readme){target=_blank}
 - See [How to configure rstfmt rules](https://github.com/dzhu/rstfmt#usage){target=_blank}
 
-[![rstfmt - GitHub](https://gh-card.dev/repos/dzhu/rstfmt.svg?fullname=)](https://github.com/dzhu/rstfmt){target=_blank}
+[![rstfmt - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=dzhu&repo=rstfmt&show_owner=true)](https://github.com/dzhu/rstfmt){target=_blank}
 
 ## Configuration in MegaLinter
 

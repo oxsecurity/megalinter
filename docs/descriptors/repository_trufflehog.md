@@ -33,7 +33,7 @@ description: How to use trufflehog (configure, ignore files, ignore errors, help
 - Visit [Official Web Site](https://github.com/trufflesecurity/trufflehog#readme){target=_blank}
 - See [How to configure trufflehog rules](https://github.com/trufflesecurity/trufflehog#regex-detector-alpha){target=_blank}
 
-[![trufflehog - GitHub](https://gh-card.dev/repos/trufflesecurity/trufflehog.svg?fullname=)](https://github.com/trufflesecurity/trufflehog){target=_blank}
+[![trufflehog - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=trufflesecurity&repo=trufflehog&show_owner=true)](https://github.com/trufflesecurity/trufflehog){target=_blank}
 
 ## Configuration in MegaLinter
 

@@ -31,7 +31,7 @@ description: How to use editorconfig-checker (configure, ignore files, ignore er
 - See [How to configure editorconfig-checker rules](https://github.com/editorconfig-checker/editorconfig-checker#configuration){target=_blank}
 - See [How to disable editorconfig-checker rules in files](https://github.com/editorconfig-checker/editorconfig-checker#excluding){target=_blank}
 
-[![editorconfig-checker - GitHub](https://gh-card.dev/repos/editorconfig-checker/editorconfig-checker.svg?fullname=)](https://github.com/editorconfig-checker/editorconfig-checker){target=_blank}
+[![editorconfig-checker - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=editorconfig-checker&repo=editorconfig-checker&show_owner=true)](https://github.com/editorconfig-checker/editorconfig-checker){target=_blank}
 
 ## Configuration in MegaLinter
 

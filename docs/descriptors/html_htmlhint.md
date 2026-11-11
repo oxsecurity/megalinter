@@ -31,7 +31,7 @@ description: How to use htmlhint (configure, ignore files, ignore errors, help &
 - See [How to disable htmlhint rules in files](https://htmlhint.com/configuration/){target=_blank}
 - See [Index of problems detected by htmlhint](https://htmlhint.com/docs/user-guide/list-rules){target=_blank}
 
-[![HTMLHint - GitHub](https://gh-card.dev/repos/htmlhint/HTMLHint.svg?fullname=)](https://github.com/htmlhint/HTMLHint){target=_blank}
+[![HTMLHint - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=htmlhint&repo=HTMLHint&show_owner=true)](https://github.com/htmlhint/HTMLHint){target=_blank}
 
 ## Configuration in MegaLinter
 

@@ -43,7 +43,7 @@ See more details in [Help](#help-content)
   - If custom `code-analyzer.yml` config file isn't found, [code-analyzer.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/code-analyzer.yml){target=_blank} will be used
 - See [Index of problems detected by code-analyzer-apexguru](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/engine-apexguru.html){target=_blank}
 
-[![code-analyzer - GitHub](https://gh-card.dev/repos/forcedotcom/code-analyzer.svg?fullname=)](https://github.com/forcedotcom/code-analyzer){target=_blank}
+[![code-analyzer - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=forcedotcom&repo=code-analyzer&show_owner=true)](https://github.com/forcedotcom/code-analyzer){target=_blank}
 
 ## Configuration in MegaLinter
 
@@ -114,7 +114,7 @@ sf code-analyzer run --rule-selector apexguru --workspace . --include-suggestion
 ### Help content
 
 ```shell
- ›   Warning: @salesforce/cli update available from 2.156.7 to 2.156.8.
+ ›   Warning: @salesforce/cli update available from 2.157.7 to 2.157.8.
 Analyze your code with a selection of rules to ensure good coding practices.
 
 USAGE
@@ -163,11 +163,11 @@ GLOBAL FLAGS
 ```dockerfile
 # Parent descriptor install
 # renovate: datasource=npm depName=@salesforce/cli
-ARG NPM_SALESFORCE_CLI_VERSION=2.156.7
+ARG NPM_SALESFORCE_CLI_VERSION=2.157.7
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
 ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=3.0.14
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=8.20.1
+ARG SFDX_HARDIS_VERSION=8.21.0
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 ENV XDG_DATA_HOME=/usr/local/share
