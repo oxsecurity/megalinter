@@ -67,7 +67,6 @@
         "TSX_ESLINT",
         "TSX_BIOME",
         "TYPESCRIPT_ES",
-        "TYPESCRIPT_STANDARD",
         "TYPESCRIPT_PRETTIER",
         "TYPESCRIPT_BIOME",
         "XML_XMLLINT",

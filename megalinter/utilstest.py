@@ -247,7 +247,7 @@ def test_linter_success(linter, test_self):
 def test_linter_failure(linter, test_self):
     if (
         (linter.disabled is True)
-        or (linter.linter_name in ["dustilock", "syft"])  # ugly
+        or (linter.linter_name in ["syft"])  # ugly
         or ("all" in getattr(linter, "descriptor_flavors_exclude", []))
     ):
         raise unittest.SkipTest("Linter or test has been disabled")
@@ -655,7 +655,6 @@ def test_linter_report_sarif(linter, test_self):
             and linter.cli_lint_mode != "file"
             and linter.name
             not in [
-                "REPOSITORY_DUSTILOCK",
                 "REPOSITORY_SYFT",
             ]
         ):

@@ -40,8 +40,6 @@ ARG KUBERNETES_KUBECONFORM_VERSION=v0.8.0-alpine
 ARG CARGO_STYLUA_VERSION=2.6.0
 # renovate: datasource=docker depName=yoheimuta/protolint
 ARG PROTOBUF_PROTOLINT_VERSION=0.58.0
-# renovate: datasource=github-tags depName=checkmarx/dustilock
-ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
 # renovate: datasource=docker depName=ghcr.io/betterleaks/betterleaks
 ARG REPOSITORY_BETTERLEAKS_VERSION=v1.7.3
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
@@ -114,9 +112,6 @@ RUN set -eu; mkdir -p /out/bin; \
     rm /tmp/stylua.zip && \
     chmod +x /out/bin/stylua
 FROM yoheimuta/protolint:${PROTOBUF_PROTOLINT_VERSION} AS protolint
-FROM golang:${GO_IMAGE_VERSION}-alpine AS dustilock
-ARG REPOSITORY_DUSTILOCK_VERSION
-RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v${REPOSITORY_DUSTILOCK_VERSION}
 FROM ghcr.io/betterleaks/betterleaks:${REPOSITORY_BETTERLEAKS_VERSION} AS betterleaks
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
 FROM jdkato/vale:${SPELL_VALE_VERSION} AS vale
@@ -424,8 +419,6 @@ ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.72.0
 ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.72.0
 # renovate: datasource=npm depName=typescript-eslint
 ARG NPM_TYPESCRIPT_ESLINT_VERSION=8.72.0
-# renovate: datasource=npm depName=ts-standard
-ARG NPM_TS_STANDARD_VERSION=12.0.2
 # renovate: datasource=pypi depName=yamllint
 ARG PIP_YAMLLINT_VERSION=1.38.0
 # renovate: datasource=pypi depName=pip
@@ -449,7 +442,6 @@ ARG GO_IMAGE_VERSION
 ARG KUBERNETES_KUBECONFORM_VERSION
 ARG CARGO_STYLUA_VERSION
 ARG PROTOBUF_PROTOLINT_VERSION
-ARG REPOSITORY_DUSTILOCK_VERSION
 ARG REPOSITORY_BETTERLEAKS_VERSION
 ARG REPOSITORY_TRUFFLEHOG_VERSION
 ARG SPELL_VALE_VERSION
@@ -578,7 +570,6 @@ COPY --link --from=kubeconform /kubeconform /usr/bin/
 COPY --link --from=chktex /usr/bin/chktex /usr/bin/
 COPY --link --from=cargo-bin-stylua /out/bin/stylua /usr/bin/stylua
 COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
-COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 COPY --link --from=betterleaks /usr/bin/betterleaks /usr/bin/
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 COPY --link --from=vale /bin/vale /bin/vale
@@ -781,8 +772,7 @@ RUN npm config set prefix /usr/local \
                 prettyjson@${NPM_PRETTYJSON_VERSION} \
                 @typescript-eslint/eslint-plugin@${NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION} \
                 @typescript-eslint/parser@${NPM_TYPESCRIPT_ESLINT_PARSER_VERSION} \
-                typescript-eslint@${NPM_TYPESCRIPT_ESLINT_VERSION} \
-                ts-standard@${NPM_TS_STANDARD_VERSION} && \
+                typescript-eslint@${NPM_TYPESCRIPT_ESLINT_VERSION} && \
     echo "Cleaning npm cache…" \
     && (npm cache clean --force || true) \
     && echo "Changing owner of node_modules files…" \
@@ -1154,8 +1144,6 @@ ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$
 # Next line commented because already managed by another linter
 # ENV PATH="${PATH}:/usr/local/dotnet-tools"
 RUN dotnet tool install --allow-roll-forward --tool-path /usr/local/dotnet-tools Microsoft.CST.DevSkim.CLI --version ${REPOSITORY_DEVSKIM_VERSION} \
-# dustilock installation
-# Managed with COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
 # betterleaks installation
 # Managed with COPY --link --from=betterleaks /usr/bin/betterleaks /usr/bin/
 # grype installation
@@ -1273,7 +1261,6 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOS
 # eslint installation
 # biome installation
 # eslint installation
-# ts-standard installation
 # prettier installation
 # biome installation
 # prettier installation

@@ -3495,7 +3495,7 @@
         "array",
         "string"
       ],
-      "title": "COFFEE_COFFEELINT: Custom arguments",
+      "title": "(deprecated) COFFEE_COFFEELINT: Custom arguments",
       "description": "COFFEE_COFFEELINT: User custom arguments to add in linter CLI call",
       "category": "COFFEE_COFFEELINT",
       "section": "LINTER_COMMAND",
@@ -3504,7 +3504,7 @@
     "COFFEE_COFFEELINT_CLI_EXECUTABLE": {
       "name": "COFFEE_COFFEELINT_CLI_EXECUTABLE",
       "type": "array",
-      "title": "COFFEE_COFFEELINT: CLI Executable",
+      "title": "(deprecated) COFFEE_COFFEELINT: CLI Executable",
       "description": "COFFEE_COFFEELINT: Override CLI executable used to build the linter command line (rarely needed)",
       "default": [
         [
@@ -3518,7 +3518,7 @@
     "COFFEE_COFFEELINT_CLI_LINT_MODE": {
       "name": "COFFEE_COFFEELINT_CLI_LINT_MODE",
       "type": "string",
-      "title": "COFFEE_COFFEELINT: CLI lint mode",
+      "title": "(deprecated) COFFEE_COFFEELINT: CLI lint mode",
       "description": "COFFEE_COFFEELINT: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "list_of_files",
       "enum": [
@@ -3535,7 +3535,7 @@
         "array",
         "string"
       ],
-      "title": "COFFEE_COFFEELINT: Custom remove arguments",
+      "title": "(deprecated) COFFEE_COFFEELINT: Custom remove arguments",
       "description": "COFFEE_COFFEELINT: User custom arguments to remove before calling linter",
       "category": "COFFEE_COFFEELINT",
       "section": "LINTER_COMMAND",
@@ -3544,7 +3544,7 @@
     "COFFEE_COFFEELINT_CONFIG_FILE": {
       "name": "COFFEE_COFFEELINT_CONFIG_FILE",
       "type": "string",
-      "title": "COFFEE_COFFEELINT: Custom config file name",
+      "title": "(deprecated) COFFEE_COFFEELINT: Custom config file name",
       "description": "COFFEE_COFFEELINT: User custom config file name if different from default",
       "default": ".coffee-lint.json",
       "category": "COFFEE_COFFEELINT",
@@ -3553,7 +3553,7 @@
     "COFFEE_COFFEELINT_DISABLE_ERRORS": {
       "name": "COFFEE_COFFEELINT_DISABLE_ERRORS",
       "type": "boolean",
-      "title": "COFFEE_COFFEELINT: Disable errors",
+      "title": "(deprecated) COFFEE_COFFEELINT: Disable errors",
       "description": "COFFEE_COFFEELINT: If true, COFFEE_COFFEELINT doesn't make MegaLinter fail even if errors are found",
       "default": false,
       "category": "COFFEE_COFFEELINT",
@@ -3562,7 +3562,7 @@
     "COFFEE_COFFEELINT_DISABLE_ERRORS_IF_LESS_THAN": {
       "name": "COFFEE_COFFEELINT_DISABLE_ERRORS_IF_LESS_THAN",
       "type": "number",
-      "title": "COFFEE_COFFEELINT: Maximum number of errors allowed",
+      "title": "(deprecated) COFFEE_COFFEELINT: Maximum number of errors allowed",
       "description": "COFFEE_COFFEELINT: If the number of errors found is less than this value, COFFEE_COFFEELINT doesn't make MegaLinter fail",
       "default": 0,
       "category": "COFFEE_COFFEELINT",
@@ -3571,7 +3571,7 @@
     "COFFEE_COFFEELINT_FILE_EXTENSIONS": {
       "name": "COFFEE_COFFEELINT_FILE_EXTENSIONS",
       "type": "array",
-      "title": "COFFEE_COFFEELINT: Matching files extensions",
+      "title": "(deprecated) COFFEE_COFFEELINT: Matching files extensions",
       "description": "COFFEE_COFFEELINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
       "default": [
         ".coffee"
@@ -3587,7 +3587,7 @@
     "COFFEE_COFFEELINT_FILE_NAMES_REGEX": {
       "name": "COFFEE_COFFEELINT_FILE_NAMES_REGEX",
       "type": "array",
-      "title": "COFFEE_COFFEELINT: Matching file name regexes",
+      "title": "(deprecated) COFFEE_COFFEELINT: Matching file name regexes",
       "description": "COFFEE_COFFEELINT: Override descriptor/linter matching file name regexes that will be used to select files to lint",
       "default": [],
       "examples": [
@@ -3604,7 +3604,7 @@
         "string",
         "array"
       ],
-      "title": "COFFEE_COFFEELINT: Excluding Regex",
+      "title": "(deprecated) COFFEE_COFFEELINT: Excluding Regex",
       "description": "COFFEE_COFFEELINT: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with COFFEE_COFFEELINT_CLI_LINT_MODE = project",
       "category": "COFFEE_COFFEELINT",
       "section": "SCOPE",
@@ -3616,7 +3616,7 @@
         "string",
         "array"
       ],
-      "title": "COFFEE_COFFEELINT: Including Regex",
+      "title": "(deprecated) COFFEE_COFFEELINT: Including Regex",
       "description": "COFFEE_COFFEELINT: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with COFFEE_COFFEELINT_CLI_LINT_MODE = project",
       "category": "COFFEE_COFFEELINT",
       "section": "SCOPE",
@@ -3625,7 +3625,7 @@
     "COFFEE_COFFEELINT_FORWARD_EXCLUDED_DIRECTORIES": {
       "name": "COFFEE_COFFEELINT_FORWARD_EXCLUDED_DIRECTORIES",
       "type": "boolean",
-      "title": "COFFEE_COFFEELINT: Forward excluded directories in project lint mode",
+      "title": "(deprecated) COFFEE_COFFEELINT: Forward excluded directories in project lint mode",
       "description": "COFFEE_COFFEELINT: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
       "default": true,
       "category": "COFFEE_COFFEELINT",
@@ -3634,7 +3634,7 @@
     "COFFEE_COFFEELINT_POST_COMMANDS": {
       "name": "COFFEE_COFFEELINT_POST_COMMANDS",
       "type": "array",
-      "title": "COFFEE_COFFEELINT: Post-run commands",
+      "title": "(deprecated) COFFEE_COFFEELINT: Post-run commands",
       "description": "COFFEE_COFFEELINT: Define bash commands to run after running COFFEE_COFFEELINT",
       "examples": [
         [
@@ -3651,7 +3651,7 @@
     "COFFEE_COFFEELINT_PRE_COMMANDS": {
       "name": "COFFEE_COFFEELINT_PRE_COMMANDS",
       "type": "array",
-      "title": "COFFEE_COFFEELINT: Pre-run commands",
+      "title": "(deprecated) COFFEE_COFFEELINT: Pre-run commands",
       "description": "COFFEE_COFFEELINT: Define bash commands to run before running COFFEE_COFFEELINT",
       "examples": [
         [
@@ -3668,7 +3668,7 @@
     "COFFEE_COFFEELINT_RULES_PATH": {
       "name": "COFFEE_COFFEELINT_RULES_PATH",
       "type": "string",
-      "title": "COFFEE_COFFEELINT: Custom config file path",
+      "title": "(deprecated) COFFEE_COFFEELINT: Custom config file path",
       "description": "COFFEE_COFFEELINT: Path where to find linter configuration file",
       "category": "COFFEE_COFFEELINT",
       "section": "LINTER_COMMAND"
@@ -3676,7 +3676,7 @@
     "COFFEE_COFFEELINT_TIMEOUT_SECONDS": {
       "name": "COFFEE_COFFEELINT_TIMEOUT_SECONDS",
       "type": "integer",
-      "title": "COFFEE_COFFEELINT: Timeout in seconds",
+      "title": "(deprecated) COFFEE_COFFEELINT: Timeout in seconds",
       "description": "COFFEE_COFFEELINT: Maximum duration in seconds of the COFFEE_COFFEELINT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
       "examples": [
         3600,
@@ -3688,7 +3688,7 @@
     "COFFEE_COFFEELINT_UNSECURED_ENV_VARIABLES": {
       "name": "COFFEE_COFFEELINT_UNSECURED_ENV_VARIABLES",
       "type": "array",
-      "title": "COFFEE_COFFEELINT: Unsecured env variables",
+      "title": "(deprecated) COFFEE_COFFEELINT: Unsecured env variables",
       "description": "List of env variables explicitly not filtered before calling COFFEE_COFFEELINT and its pre/post commands",
       "default": [],
       "category": "COFFEE_COFFEELINT",
@@ -3701,7 +3701,7 @@
         "string",
         "array"
       ],
-      "title": "Excluding regex filter for COFFEE descriptor",
+      "title": "(deprecated) Excluding regex filter for COFFEE descriptor",
       "description": "COFFEE: Custom regex excluding filter: files matching this regex will NOT be linted",
       "category": "COFFEE",
       "section": "SCOPE",
@@ -3713,7 +3713,7 @@
         "string",
         "array"
       ],
-      "title": "Including regex filter for COFFEE descriptor",
+      "title": "(deprecated) Including regex filter for COFFEE descriptor",
       "description": "COFFEE: Custom regex including filter: only files matching this regex will be linted",
       "category": "COFFEE",
       "section": "SCOPE",
@@ -3722,7 +3722,7 @@
     "COFFEE_POST_COMMANDS": {
       "name": "COFFEE_POST_COMMANDS",
       "type": "array",
-      "title": "Post commands for COFFEE descriptor",
+      "title": "(deprecated) Post commands for COFFEE descriptor",
       "description": "COFFEE: List of bash commands to run after the linters",
       "examples": [
         [
@@ -3739,7 +3739,7 @@
     "COFFEE_PRE_COMMANDS": {
       "name": "COFFEE_PRE_COMMANDS",
       "type": "array",
-      "title": "Pre commands for COFFEE descriptor",
+      "title": "(deprecated) Pre commands for COFFEE descriptor",
       "description": "COFFEE: List of bash commands to run before the linters",
       "examples": [
         [
@@ -9909,7 +9909,7 @@
         "array",
         "string"
       ],
-      "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Custom arguments",
+      "title": "(deprecated) GRAPHQL_GRAPHQL_SCHEMA_LINTER: Custom arguments",
       "description": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: User custom arguments to add in linter CLI call",
       "category": "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
       "section": "LINTER_COMMAND",
@@ -9918,7 +9918,7 @@
     "GRAPHQL_GRAPHQL_SCHEMA_LINTER_CLI_EXECUTABLE": {
       "name": "GRAPHQL_GRAPHQL_SCHEMA_LINTER_CLI_EXECUTABLE",
       "type": "array",
-      "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: CLI Executable",
+      "title": "(deprecated) GRAPHQL_GRAPHQL_SCHEMA_LINTER: CLI Executable",
       "description": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Override CLI executable used to build the linter command line (rarely needed)",
       "default": [
         [
@@ -9932,7 +9932,7 @@
     "GRAPHQL_GRAPHQL_SCHEMA_LINTER_CLI_LINT_MODE": {
       "name": "GRAPHQL_GRAPHQL_SCHEMA_LINTER_CLI_LINT_MODE",
       "type": "string",
-      "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: CLI lint mode",
+      "title": "(deprecated) GRAPHQL_GRAPHQL_SCHEMA_LINTER: CLI lint mode",
       "description": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "list_of_files",
       "enum": [
@@ -9949,7 +9949,7 @@
         "array",
         "string"
       ],
-      "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Custom remove arguments",
+      "title": "(deprecated) GRAPHQL_GRAPHQL_SCHEMA_LINTER: Custom remove arguments",
       "description": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: User custom arguments to remove before calling linter",
       "category": "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
       "section": "LINTER_COMMAND",
@@ -9958,7 +9958,7 @@
     "GRAPHQL_GRAPHQL_SCHEMA_LINTER_CONFIG_FILE": {
       "name": "GRAPHQL_GRAPHQL_SCHEMA_LINTER_CONFIG_FILE",
       "type": "string",
-      "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Custom config file name",
+      "title": "(deprecated) GRAPHQL_GRAPHQL_SCHEMA_LINTER: Custom config file name",
       "description": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: User custom config file name if different from default",
       "default": ".graphql-schema-linterrc",
       "category": "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
@@ -9967,7 +9967,7 @@
     "GRAPHQL_GRAPHQL_SCHEMA_LINTER_DISABLE_ERRORS": {
       "name": "GRAPHQL_GRAPHQL_SCHEMA_LINTER_DISABLE_ERRORS",
       "type": "boolean",
-      "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Disable errors",
+      "title": "(deprecated) GRAPHQL_GRAPHQL_SCHEMA_LINTER: Disable errors",
       "description": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: If true, GRAPHQL_GRAPHQL_SCHEMA_LINTER doesn't make MegaLinter fail even if errors are found",
       "default": false,
       "category": "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
@@ -9976,7 +9976,7 @@
     "GRAPHQL_GRAPHQL_SCHEMA_LINTER_DISABLE_ERRORS_IF_LESS_THAN": {
       "name": "GRAPHQL_GRAPHQL_SCHEMA_LINTER_DISABLE_ERRORS_IF_LESS_THAN",
       "type": "number",
-      "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Maximum number of errors allowed",
+      "title": "(deprecated) GRAPHQL_GRAPHQL_SCHEMA_LINTER: Maximum number of errors allowed",
       "description": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: If the number of errors found is less than this value, GRAPHQL_GRAPHQL_SCHEMA_LINTER doesn't make MegaLinter fail",
       "default": 0,
       "category": "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
@@ -9985,7 +9985,7 @@
     "GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILE_EXTENSIONS": {
       "name": "GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILE_EXTENSIONS",
       "type": "array",
-      "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Matching files extensions",
+      "title": "(deprecated) GRAPHQL_GRAPHQL_SCHEMA_LINTER: Matching files extensions",
       "description": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Override descriptor/linter matching files extensions that will be used to select files to lint",
       "default": [
         ".graphql"
@@ -10001,7 +10001,7 @@
     "GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILE_NAMES_REGEX": {
       "name": "GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILE_NAMES_REGEX",
       "type": "array",
-      "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Matching file name regexes",
+      "title": "(deprecated) GRAPHQL_GRAPHQL_SCHEMA_LINTER: Matching file name regexes",
       "description": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Override descriptor/linter matching file name regexes that will be used to select files to lint",
       "default": [],
       "examples": [
@@ -10018,7 +10018,7 @@
         "string",
         "array"
       ],
-      "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Excluding Regex",
+      "title": "(deprecated) GRAPHQL_GRAPHQL_SCHEMA_LINTER: Excluding Regex",
       "description": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with GRAPHQL_GRAPHQL_SCHEMA_LINTER_CLI_LINT_MODE = project",
       "category": "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
       "section": "SCOPE",
@@ -10030,7 +10030,7 @@
         "string",
         "array"
       ],
-      "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Including Regex",
+      "title": "(deprecated) GRAPHQL_GRAPHQL_SCHEMA_LINTER: Including Regex",
       "description": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with GRAPHQL_GRAPHQL_SCHEMA_LINTER_CLI_LINT_MODE = project",
       "category": "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
       "section": "SCOPE",
@@ -10039,7 +10039,7 @@
     "GRAPHQL_GRAPHQL_SCHEMA_LINTER_FORWARD_EXCLUDED_DIRECTORIES": {
       "name": "GRAPHQL_GRAPHQL_SCHEMA_LINTER_FORWARD_EXCLUDED_DIRECTORIES",
       "type": "boolean",
-      "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Forward excluded directories in project lint mode",
+      "title": "(deprecated) GRAPHQL_GRAPHQL_SCHEMA_LINTER: Forward excluded directories in project lint mode",
       "description": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
       "default": true,
       "category": "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
@@ -10048,7 +10048,7 @@
     "GRAPHQL_GRAPHQL_SCHEMA_LINTER_POST_COMMANDS": {
       "name": "GRAPHQL_GRAPHQL_SCHEMA_LINTER_POST_COMMANDS",
       "type": "array",
-      "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Post-run commands",
+      "title": "(deprecated) GRAPHQL_GRAPHQL_SCHEMA_LINTER: Post-run commands",
       "description": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Define bash commands to run after running GRAPHQL_GRAPHQL_SCHEMA_LINTER",
       "examples": [
         [
@@ -10065,7 +10065,7 @@
     "GRAPHQL_GRAPHQL_SCHEMA_LINTER_PRE_COMMANDS": {
       "name": "GRAPHQL_GRAPHQL_SCHEMA_LINTER_PRE_COMMANDS",
       "type": "array",
-      "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Pre-run commands",
+      "title": "(deprecated) GRAPHQL_GRAPHQL_SCHEMA_LINTER: Pre-run commands",
       "description": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Define bash commands to run before running GRAPHQL_GRAPHQL_SCHEMA_LINTER",
       "examples": [
         [
@@ -10082,7 +10082,7 @@
     "GRAPHQL_GRAPHQL_SCHEMA_LINTER_RULES_PATH": {
       "name": "GRAPHQL_GRAPHQL_SCHEMA_LINTER_RULES_PATH",
       "type": "string",
-      "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Custom config file path",
+      "title": "(deprecated) GRAPHQL_GRAPHQL_SCHEMA_LINTER: Custom config file path",
       "description": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Path where to find linter configuration file",
       "category": "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
       "section": "LINTER_COMMAND"
@@ -10090,7 +10090,7 @@
     "GRAPHQL_GRAPHQL_SCHEMA_LINTER_TIMEOUT_SECONDS": {
       "name": "GRAPHQL_GRAPHQL_SCHEMA_LINTER_TIMEOUT_SECONDS",
       "type": "integer",
-      "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Timeout in seconds",
+      "title": "(deprecated) GRAPHQL_GRAPHQL_SCHEMA_LINTER: Timeout in seconds",
       "description": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Maximum duration in seconds of the GRAPHQL_GRAPHQL_SCHEMA_LINTER run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
       "examples": [
         3600,
@@ -10102,7 +10102,7 @@
     "GRAPHQL_GRAPHQL_SCHEMA_LINTER_UNSECURED_ENV_VARIABLES": {
       "name": "GRAPHQL_GRAPHQL_SCHEMA_LINTER_UNSECURED_ENV_VARIABLES",
       "type": "array",
-      "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Unsecured env variables",
+      "title": "(deprecated) GRAPHQL_GRAPHQL_SCHEMA_LINTER: Unsecured env variables",
       "description": "List of env variables explicitly not filtered before calling GRAPHQL_GRAPHQL_SCHEMA_LINTER and its pre/post commands",
       "default": [],
       "category": "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
@@ -23646,7 +23646,7 @@
         "array",
         "string"
       ],
-      "title": "REPOSITORY_DUSTILOCK: Custom arguments",
+      "title": "(deprecated) REPOSITORY_DUSTILOCK: Custom arguments",
       "description": "REPOSITORY_DUSTILOCK: User custom arguments to add in linter CLI call",
       "category": "REPOSITORY_DUSTILOCK",
       "section": "LINTER_COMMAND",
@@ -23655,7 +23655,7 @@
     "REPOSITORY_DUSTILOCK_CLI_EXECUTABLE": {
       "name": "REPOSITORY_DUSTILOCK_CLI_EXECUTABLE",
       "type": "array",
-      "title": "REPOSITORY_DUSTILOCK: CLI Executable",
+      "title": "(deprecated) REPOSITORY_DUSTILOCK: CLI Executable",
       "description": "REPOSITORY_DUSTILOCK: Override CLI executable used to build the linter command line (rarely needed)",
       "default": [
         [
@@ -23669,7 +23669,7 @@
     "REPOSITORY_DUSTILOCK_CLI_LINT_MODE": {
       "name": "REPOSITORY_DUSTILOCK_CLI_LINT_MODE",
       "type": "string",
-      "title": "REPOSITORY_DUSTILOCK: CLI lint mode",
+      "title": "(deprecated) REPOSITORY_DUSTILOCK: CLI lint mode",
       "description": "REPOSITORY_DUSTILOCK: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "project",
       "enum": [
@@ -23684,7 +23684,7 @@
         "array",
         "string"
       ],
-      "title": "REPOSITORY_DUSTILOCK: Custom remove arguments",
+      "title": "(deprecated) REPOSITORY_DUSTILOCK: Custom remove arguments",
       "description": "REPOSITORY_DUSTILOCK: User custom arguments to remove before calling linter",
       "category": "REPOSITORY_DUSTILOCK",
       "section": "LINTER_COMMAND",
@@ -23693,7 +23693,7 @@
     "REPOSITORY_DUSTILOCK_DISABLE_ERRORS": {
       "name": "REPOSITORY_DUSTILOCK_DISABLE_ERRORS",
       "type": "boolean",
-      "title": "REPOSITORY_DUSTILOCK: Disable errors",
+      "title": "(deprecated) REPOSITORY_DUSTILOCK: Disable errors",
       "description": "REPOSITORY_DUSTILOCK: If true, REPOSITORY_DUSTILOCK doesn't make MegaLinter fail even if errors are found",
       "default": false,
       "category": "REPOSITORY_DUSTILOCK",
@@ -23702,7 +23702,7 @@
     "REPOSITORY_DUSTILOCK_DISABLE_ERRORS_IF_LESS_THAN": {
       "name": "REPOSITORY_DUSTILOCK_DISABLE_ERRORS_IF_LESS_THAN",
       "type": "number",
-      "title": "REPOSITORY_DUSTILOCK: Maximum number of errors allowed",
+      "title": "(deprecated) REPOSITORY_DUSTILOCK: Maximum number of errors allowed",
       "description": "REPOSITORY_DUSTILOCK: If the number of errors found is less than this value, REPOSITORY_DUSTILOCK doesn't make MegaLinter fail",
       "default": 0,
       "category": "REPOSITORY_DUSTILOCK",
@@ -23714,7 +23714,7 @@
         "string",
         "array"
       ],
-      "title": "REPOSITORY_DUSTILOCK: Excluding Regex",
+      "title": "(deprecated) REPOSITORY_DUSTILOCK: Excluding Regex",
       "description": "REPOSITORY_DUSTILOCK: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with REPOSITORY_DUSTILOCK_CLI_LINT_MODE = project",
       "category": "REPOSITORY_DUSTILOCK",
       "section": "SCOPE",
@@ -23726,7 +23726,7 @@
         "string",
         "array"
       ],
-      "title": "REPOSITORY_DUSTILOCK: Including Regex",
+      "title": "(deprecated) REPOSITORY_DUSTILOCK: Including Regex",
       "description": "REPOSITORY_DUSTILOCK: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with REPOSITORY_DUSTILOCK_CLI_LINT_MODE = project",
       "category": "REPOSITORY_DUSTILOCK",
       "section": "SCOPE",
@@ -23735,7 +23735,7 @@
     "REPOSITORY_DUSTILOCK_FORWARD_EXCLUDED_DIRECTORIES": {
       "name": "REPOSITORY_DUSTILOCK_FORWARD_EXCLUDED_DIRECTORIES",
       "type": "boolean",
-      "title": "REPOSITORY_DUSTILOCK: Forward excluded directories in project lint mode",
+      "title": "(deprecated) REPOSITORY_DUSTILOCK: Forward excluded directories in project lint mode",
       "description": "REPOSITORY_DUSTILOCK: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
       "default": true,
       "category": "REPOSITORY_DUSTILOCK",
@@ -23744,7 +23744,7 @@
     "REPOSITORY_DUSTILOCK_POST_COMMANDS": {
       "name": "REPOSITORY_DUSTILOCK_POST_COMMANDS",
       "type": "array",
-      "title": "REPOSITORY_DUSTILOCK: Post-run commands",
+      "title": "(deprecated) REPOSITORY_DUSTILOCK: Post-run commands",
       "description": "REPOSITORY_DUSTILOCK: Define bash commands to run after running REPOSITORY_DUSTILOCK",
       "examples": [
         [
@@ -23761,7 +23761,7 @@
     "REPOSITORY_DUSTILOCK_PRE_COMMANDS": {
       "name": "REPOSITORY_DUSTILOCK_PRE_COMMANDS",
       "type": "array",
-      "title": "REPOSITORY_DUSTILOCK: Pre-run commands",
+      "title": "(deprecated) REPOSITORY_DUSTILOCK: Pre-run commands",
       "description": "REPOSITORY_DUSTILOCK: Define bash commands to run before running REPOSITORY_DUSTILOCK",
       "examples": [
         [
@@ -23778,7 +23778,7 @@
     "REPOSITORY_DUSTILOCK_TIMEOUT_SECONDS": {
       "name": "REPOSITORY_DUSTILOCK_TIMEOUT_SECONDS",
       "type": "integer",
-      "title": "REPOSITORY_DUSTILOCK: Timeout in seconds",
+      "title": "(deprecated) REPOSITORY_DUSTILOCK: Timeout in seconds",
       "description": "REPOSITORY_DUSTILOCK: Maximum duration in seconds of the REPOSITORY_DUSTILOCK run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
       "examples": [
         3600,
@@ -23790,7 +23790,7 @@
     "REPOSITORY_DUSTILOCK_UNSECURED_ENV_VARIABLES": {
       "name": "REPOSITORY_DUSTILOCK_UNSECURED_ENV_VARIABLES",
       "type": "array",
-      "title": "REPOSITORY_DUSTILOCK: Unsecured env variables",
+      "title": "(deprecated) REPOSITORY_DUSTILOCK: Unsecured env variables",
       "description": "List of env variables explicitly not filtered before calling REPOSITORY_DUSTILOCK and its pre/post commands",
       "default": [],
       "category": "REPOSITORY_DUSTILOCK",
@@ -35540,7 +35540,7 @@
         "array",
         "string"
       ],
-      "title": "TYPESCRIPT_STANDARD: Custom arguments",
+      "title": "(deprecated) TYPESCRIPT_STANDARD: Custom arguments",
       "description": "TYPESCRIPT_STANDARD: User custom arguments to add in linter CLI call",
       "category": "TYPESCRIPT_STANDARD",
       "section": "LINTER_COMMAND",
@@ -35549,7 +35549,7 @@
     "TYPESCRIPT_STANDARD_CLI_EXECUTABLE": {
       "name": "TYPESCRIPT_STANDARD_CLI_EXECUTABLE",
       "type": "array",
-      "title": "TYPESCRIPT_STANDARD: CLI Executable",
+      "title": "(deprecated) TYPESCRIPT_STANDARD: CLI Executable",
       "description": "TYPESCRIPT_STANDARD: Override CLI executable used to build the linter command line (rarely needed)",
       "default": [
         [
@@ -35563,7 +35563,7 @@
     "TYPESCRIPT_STANDARD_CLI_LINT_MODE": {
       "name": "TYPESCRIPT_STANDARD_CLI_LINT_MODE",
       "type": "string",
-      "title": "TYPESCRIPT_STANDARD: CLI lint mode",
+      "title": "(deprecated) TYPESCRIPT_STANDARD: CLI lint mode",
       "description": "TYPESCRIPT_STANDARD: Override default CLI lint mode used to call the linter (rarely needed)",
       "default": "list_of_files",
       "enum": [
@@ -35580,7 +35580,7 @@
         "array",
         "string"
       ],
-      "title": "TYPESCRIPT_STANDARD: Custom remove arguments",
+      "title": "(deprecated) TYPESCRIPT_STANDARD: Custom remove arguments",
       "description": "TYPESCRIPT_STANDARD: User custom arguments to remove before calling linter",
       "category": "TYPESCRIPT_STANDARD",
       "section": "LINTER_COMMAND",
@@ -35589,7 +35589,7 @@
     "TYPESCRIPT_STANDARD_DISABLE_ERRORS": {
       "name": "TYPESCRIPT_STANDARD_DISABLE_ERRORS",
       "type": "boolean",
-      "title": "TYPESCRIPT_STANDARD: Disable errors",
+      "title": "(deprecated) TYPESCRIPT_STANDARD: Disable errors",
       "description": "TYPESCRIPT_STANDARD: If true, TYPESCRIPT_STANDARD doesn't make MegaLinter fail even if errors are found",
       "default": false,
       "category": "TYPESCRIPT_STANDARD",
@@ -35598,7 +35598,7 @@
     "TYPESCRIPT_STANDARD_DISABLE_ERRORS_IF_LESS_THAN": {
       "name": "TYPESCRIPT_STANDARD_DISABLE_ERRORS_IF_LESS_THAN",
       "type": "number",
-      "title": "TYPESCRIPT_STANDARD: Maximum number of errors allowed",
+      "title": "(deprecated) TYPESCRIPT_STANDARD: Maximum number of errors allowed",
       "description": "TYPESCRIPT_STANDARD: If the number of errors found is less than this value, TYPESCRIPT_STANDARD doesn't make MegaLinter fail",
       "default": 0,
       "category": "TYPESCRIPT_STANDARD",
@@ -35607,7 +35607,7 @@
     "TYPESCRIPT_STANDARD_FILE_EXTENSIONS": {
       "name": "TYPESCRIPT_STANDARD_FILE_EXTENSIONS",
       "type": "array",
-      "title": "TYPESCRIPT_STANDARD: Matching files extensions",
+      "title": "(deprecated) TYPESCRIPT_STANDARD: Matching files extensions",
       "description": "TYPESCRIPT_STANDARD: Override descriptor/linter matching files extensions that will be used to select files to lint",
       "default": [
         ".ts"
@@ -35623,7 +35623,7 @@
     "TYPESCRIPT_STANDARD_FILE_NAMES_REGEX": {
       "name": "TYPESCRIPT_STANDARD_FILE_NAMES_REGEX",
       "type": "array",
-      "title": "TYPESCRIPT_STANDARD: Matching file name regexes",
+      "title": "(deprecated) TYPESCRIPT_STANDARD: Matching file name regexes",
       "description": "TYPESCRIPT_STANDARD: Override descriptor/linter matching file name regexes that will be used to select files to lint",
       "default": [],
       "examples": [
@@ -35640,7 +35640,7 @@
         "string",
         "array"
       ],
-      "title": "TYPESCRIPT_STANDARD: Excluding Regex",
+      "title": "(deprecated) TYPESCRIPT_STANDARD: Excluding Regex",
       "description": "TYPESCRIPT_STANDARD: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with TYPESCRIPT_STANDARD_CLI_LINT_MODE = project",
       "category": "TYPESCRIPT_STANDARD",
       "section": "SCOPE",
@@ -35652,7 +35652,7 @@
         "string",
         "array"
       ],
-      "title": "TYPESCRIPT_STANDARD: Including Regex",
+      "title": "(deprecated) TYPESCRIPT_STANDARD: Including Regex",
       "description": "TYPESCRIPT_STANDARD: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with TYPESCRIPT_STANDARD_CLI_LINT_MODE = project",
       "category": "TYPESCRIPT_STANDARD",
       "section": "SCOPE",
@@ -35661,7 +35661,7 @@
     "TYPESCRIPT_STANDARD_FORWARD_EXCLUDED_DIRECTORIES": {
       "name": "TYPESCRIPT_STANDARD_FORWARD_EXCLUDED_DIRECTORIES",
       "type": "boolean",
-      "title": "TYPESCRIPT_STANDARD: Forward excluded directories in project lint mode",
+      "title": "(deprecated) TYPESCRIPT_STANDARD: Forward excluded directories in project lint mode",
       "description": "TYPESCRIPT_STANDARD: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
       "default": true,
       "category": "TYPESCRIPT_STANDARD",
@@ -35670,7 +35670,7 @@
     "TYPESCRIPT_STANDARD_POST_COMMANDS": {
       "name": "TYPESCRIPT_STANDARD_POST_COMMANDS",
       "type": "array",
-      "title": "TYPESCRIPT_STANDARD: Post-run commands",
+      "title": "(deprecated) TYPESCRIPT_STANDARD: Post-run commands",
       "description": "TYPESCRIPT_STANDARD: Define bash commands to run after running TYPESCRIPT_STANDARD",
       "examples": [
         [
@@ -35687,7 +35687,7 @@
     "TYPESCRIPT_STANDARD_PRE_COMMANDS": {
       "name": "TYPESCRIPT_STANDARD_PRE_COMMANDS",
       "type": "array",
-      "title": "TYPESCRIPT_STANDARD: Pre-run commands",
+      "title": "(deprecated) TYPESCRIPT_STANDARD: Pre-run commands",
       "description": "TYPESCRIPT_STANDARD: Define bash commands to run before running TYPESCRIPT_STANDARD",
       "examples": [
         [
@@ -35704,7 +35704,7 @@
     "TYPESCRIPT_STANDARD_TIMEOUT_SECONDS": {
       "name": "TYPESCRIPT_STANDARD_TIMEOUT_SECONDS",
       "type": "integer",
-      "title": "TYPESCRIPT_STANDARD: Timeout in seconds",
+      "title": "(deprecated) TYPESCRIPT_STANDARD: Timeout in seconds",
       "description": "TYPESCRIPT_STANDARD: Maximum duration in seconds of the TYPESCRIPT_STANDARD run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
       "examples": [
         3600,
@@ -35716,7 +35716,7 @@
     "TYPESCRIPT_STANDARD_UNSECURED_ENV_VARIABLES": {
       "name": "TYPESCRIPT_STANDARD_UNSECURED_ENV_VARIABLES",
       "type": "array",
-      "title": "TYPESCRIPT_STANDARD: Unsecured env variables",
+      "title": "(deprecated) TYPESCRIPT_STANDARD: Unsecured env variables",
       "description": "List of env variables explicitly not filtered before calling TYPESCRIPT_STANDARD and its pre/post commands",
       "default": [],
       "category": "TYPESCRIPT_STANDARD",
