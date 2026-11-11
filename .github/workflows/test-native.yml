@@ -177,7 +177,9 @@ jobs:
 
       # The usual test classes, run against the native installs
       - name: Test linters
-        run: python -m pytest megalinter/tests/test_megalinter/linters -k "$TESTS" -v --timeout=600 --reruns 2 --reruns-delay 5
+        # GITHUB_WORKSPACE (the repository checkout) would make MegaLinter use the repository's own
+        # .github/linters configurations instead of the default ones, unlike the Docker test runs
+        run: env -u GITHUB_WORKSPACE python -m pytest megalinter/tests/test_megalinter/linters -k "$TESTS" -v --timeout=600 --reruns 2 --reruns-delay 5
 
       - name: Upload reports
         if: failure()
@@ -243,4 +245,4 @@ jobs:
       - name: Install linters and their runtimes
         run: megalinter install-linters ${LINTERS//,/ } --runtimes auto
       - name: Test linter versions
-        run: python -m pytest megalinter/tests/test_megalinter/linters -k "($TESTS) and test_get_linter_version" -v --timeout=600 --reruns 2 --reruns-delay 5
+        run: env -u GITHUB_WORKSPACE python -m pytest megalinter/tests/test_megalinter/linters -k "($TESTS) and test_get_linter_version" -v --timeout=600 --reruns 2 --reruns-delay 5

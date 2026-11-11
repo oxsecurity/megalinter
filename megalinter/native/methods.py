@@ -116,6 +116,8 @@ def install_pip(ctx):
                 uv,
                 "venv",
                 venv,
+                # pip in the venv, like Docker: mypy --install-types uses it
+                "--seed",
                 "--no-config",
                 *(["--python", constraint] if constraint else []),
             ],

@@ -114,8 +114,15 @@ def installed_toolchain(home, key, resolved_native_install, policy="never"):
     path_dirs = list(entry.get("path_dirs", []))
     env = dict(entry.get("env", {}))
     try:
+        # An installed Python linter runs from its own virtual environment
         runtimes = resolve_requirements(
-            resolved_native_install.get("requires"), home, policy
+            [
+                requirement
+                for requirement in resolved_native_install.get("requires", [])
+                if requirement["runtime"] != "python"
+            ],
+            home,
+            policy,
         )
     except NativeError:
         return None
