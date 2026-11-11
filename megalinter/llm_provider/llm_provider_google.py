@@ -86,7 +86,7 @@ class GoogleProvider(LLMProvider):
     def generate(self, prompt: str, system_prompt: Optional[str] = None) -> str:
         model_name = self.get_model_name()
         if model_name.startswith("models/"):
-            model_name = model_name[len("models/") :]
+            model_name = model_name.removeprefix("models/")
         response = self.post_json(
             f"{self.get_base_url()}/models/{model_name}:generateContent",
             self.build_payload(prompt, system_prompt),

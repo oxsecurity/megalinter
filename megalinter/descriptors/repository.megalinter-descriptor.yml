@@ -185,7 +185,12 @@ linters:
               && find /usr/local/dotnet-tools/.store -name "*.nupkg" -delete \
               && DOTNET_SDK_MAJOR="$(dotnet --version | cut -d. -f1)" \
               && for tools_dir in /usr/local/dotnet-tools/.store/*/*/*/*/tools; do \
-                   keep="$(ls "$tools_dir" | grep -E '^net[0-9]+[.][0-9]+$' | sed -e 's/^net//' -e 's/[.].*//' | awk -v max="$DOTNET_SDK_MAJOR" '$1 <= max' | sort -n | tail -n 1)"; \
+                   keep=""; \
+                   for tfm_dir in "$tools_dir"/net[0-9]*.[0-9]*; do \
+                     tfm_major="${tfm_dir##*/net}"; tfm_major="${tfm_major%%.*}"; \
+                     case "$tfm_major" in ""|*[!0-9]*) continue ;; esac; \
+                     if [ "$tfm_major" -le "$DOTNET_SDK_MAJOR" ] && [ "$tfm_major" -gt "${keep:-0}" ]; then keep="$tfm_major"; fi; \
+                   done; \
                    [ -n "$keep" ] || continue; \
                    for tfm_dir in "$tools_dir"/net[0-9]*; do \
                      case "$(basename "$tfm_dir")" in "net${keep}".*) ;; *) rm -rf "$tfm_dir" ;; esac; \
