@@ -76,6 +76,8 @@ def build_matrix(shard_size):
     for runner in RUNNERS:
         entries = []
         for spec in specs:
+            if spec.linter.get("disabled") is True:
+                continue
             supported, resolved = supported_on(spec, runner["platform"])
             if not supported:
                 continue

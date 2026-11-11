@@ -129,29 +129,25 @@ def file_digest(path, algorithm):
 def verify_cosign(provenance, version, target_file, folder, asset_name):
     cosign = require_tool("cosign")
     cosign_info = provenance["cosign"]
-    signature, _, _ = download(
-        render(cosign_info["signature_url"], version, asset_name), folder, "cosign.sig"
-    )
-    command = [
-        cosign,
-        "verify-blob",
-        "--certificate-identity",
-        render(cosign_info["identity"], version),
-        "--certificate-oidc-issuer",
-        cosign_info["issuer"],
-        "--signature",
-        signature,
-    ]
-    if cosign_info.get("certificate_url"):
-        certificate, _, _ = download(
-            render(cosign_info["certificate_url"], version, asset_name),
-            folder,
-            "cosign.pem",
-        )
-        command += ["--certificate", certificate]
-    with SIGSTORE_LOCK:
-        run([*command, target_file])
-    return "cosign:" + render(cosign_info["identity"], version)
+    if cosign_info.get("identity"):
+        identity = render(cosign_info["identity"], version)
+        command = [cosign, "verify-blob", "--certificate-identity", identity]
+    else:
+        identity = render(cosign_info["identity_regexp"], version)
+        command = [cosign, "verify-blob", "--certificate-identity-regexp", identity]
+    command += ["--certificate-oidc-issuer", cosign_info["issuer"]]
+    for key, option, file_name in (
+        ("bundle_url", "--bundle", "cosign.sigstore.json"),
+        ("signature_url", "--signature", "cosign.sig"),
+        ("certificate_url", "--certificate", "cosign.pem"),
+    ):
+        if cosign_info.get(key):
+            downloaded, _, _ = download(
+                render(cosign_info[key], version, asset_name), folder, file_name
+            )
+            command += [option, downloaded]
+    run_sigstore([*command, target_file])
+    return "cosign:" + identity
 
 
 def verify_gpg(provenance, version, target_file, folder, asset_name):
@@ -566,6 +562,8 @@ def read_previous(key):
 
 
 def lock_linter(spec, options, folder):
+    if spec.linter.get("disabled") is True:
+        return "skipped (disabled linter)"
     resolved = resolve_native_install(spec)
     previous = read_previous(spec.key)
     spec_hash = native_lock.compute_spec_hash(resolved)
@@ -628,6 +626,8 @@ def lock_runtime(name, definition, options, folder):
 def check_locks(specs):
     stale = []
     for spec in specs:
+        if spec.linter.get("disabled") is True:
+            continue
         previous = read_previous(spec.key)
         resolved = resolve_native_install(spec)
         if previous is None or previous.get(

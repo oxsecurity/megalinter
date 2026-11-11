@@ -93,12 +93,14 @@ jobs:
         run: python .automation/native_lock.py --runtimes --verify-signatures $FORCE $ACCEPT_CHANGES
 
       - name: Stage generated changes
+        if: ${{ !cancelled() }}
         run: |
           git add -A megalinter/descriptors/native-locks
           git status --short
 
       - name: Commit locks on the branch
-        if: github.ref != 'refs/heads/main'
+        # Locks generated successfully are kept even when some linters failed (the run stays red)
+        if: ${{ !cancelled() && github.ref != 'refs/heads/main' }}
         uses: stefanzweifel/git-auto-commit-action@d0b01107b5db882071f96de5dd4b54961ea93f4c # v7
         with:
           branch: ${{ github.ref_name }}
@@ -108,7 +110,7 @@ jobs:
           commit_user_email: 129584137+megalinter-bot@users.noreply.github.com
 
       - name: Create Pull Request
-        if: github.ref == 'refs/heads/main'
+        if: ${{ !cancelled() && github.ref == 'refs/heads/main' }}
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8
         with:
           # SECURITY NOTE: see auto-update-linters.yml (PAT only used so that the pull request triggers the CI)

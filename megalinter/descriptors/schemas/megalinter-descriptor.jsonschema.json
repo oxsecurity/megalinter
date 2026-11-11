@@ -281,11 +281,19 @@
             "cosign": {
               "additionalProperties": false,
               "properties": {
+                "bundle_url": {
+                  "type": "string",
+                  "description": "Sigstore bundle (.sigstore.json) of the signed file"
+                },
                 "certificate_url": {
                   "type": "string"
                 },
                 "identity": {
                   "type": "string"
+                },
+                "identity_regexp": {
+                  "type": "string",
+                  "description": "Regular expression matching the signer identity, when it varies (release workflow ref)"
                 },
                 "issuer": {
                   "type": "string"
@@ -295,10 +303,21 @@
                 }
               },
               "required": [
-                "identity",
                 "issuer"
               ],
-              "type": "object"
+              "type": "object",
+              "anyOf": [
+                {
+                  "required": [
+                    "identity"
+                  ]
+                },
+                {
+                  "required": [
+                    "identity_regexp"
+                  ]
+                }
+              ]
             },
             "github_attestation": {
               "description": "owner/repo publishing GitHub artifact attestations",

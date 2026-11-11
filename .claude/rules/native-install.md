@@ -35,7 +35,7 @@ The build (`.automation/build.py`) fails when a linter has no `native_install`, 
 Pick the strongest mechanism the upstream offers, in this order:
 
 1. `github_attestation: owner/repo`: GitHub artifact attestation (`gh attestation verify`)
-2. `cosign: {identity, issuer}` / `sigstore`: keyless signature of the asset
+2. `cosign: {identity | identity_regexp, issuer, signature_url | bundle_url, certificate_url}`: keyless signature of the asset, or of the `checksums_url` file when both are declared
 3. `gpg: {keyring, signature_url}`: keyring stored in `.automation/native-keys/`
 4. `checksums_url`: checksum file published by the same release (`{{VERSION}}` and `{{ASSET_NAME}}` available), possibly with `checksums_format: sha256sum|sha512sum`
 5. `unverified: "<justification>"`: last resort, reviewed in the PR. The lock generator pins the sha256 on first download and fails on any later change of the same version

@@ -1340,8 +1340,14 @@ linters:
         windows/amd64:
           executables:
             trivy: trivy.exe
+      # The aquasecurity organization restricts its GitHub API by IP allow list: attestations can not
+      # be fetched from CI runners, the checksums file is verified with its cosign sigstore bundle
       provenance:
-        github_attestation: aquasecurity/trivy
+        checksums_url: "https://github.com/aquasecurity/trivy/releases/download/v{{VERSION}}/trivy_{{VERSION}}_checksums.txt"
+        cosign:
+          bundle_url: "https://github.com/aquasecurity/trivy/releases/download/v{{VERSION}}/trivy_{{VERSION}}_checksums.txt.sigstore.json"
+          identity_regexp: '^https://github\.com/aquasecurity/trivy/\.github/workflows/.+@refs/tags/v{{VERSION}}$'
+          issuer: https://token.actions.githubusercontent.com
     supported_platforms:
       platform:
         - linux/amd64
@@ -1477,8 +1483,14 @@ linters:
         windows/amd64:
           executables:
             trivy: trivy.exe
+      # The aquasecurity organization restricts its GitHub API by IP allow list: attestations can not
+      # be fetched from CI runners, the checksums file is verified with its cosign sigstore bundle
       provenance:
-        github_attestation: aquasecurity/trivy
+        checksums_url: "https://github.com/aquasecurity/trivy/releases/download/v{{VERSION}}/trivy_{{VERSION}}_checksums.txt"
+        cosign:
+          bundle_url: "https://github.com/aquasecurity/trivy/releases/download/v{{VERSION}}/trivy_{{VERSION}}_checksums.txt.sigstore.json"
+          identity_regexp: '^https://github\.com/aquasecurity/trivy/\.github/workflows/.+@refs/tags/v{{VERSION}}$'
+          issuer: https://token.actions.githubusercontent.com
     supported_platforms:
       platform:
         - linux/amd64
