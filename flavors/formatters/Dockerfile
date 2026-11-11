@@ -94,7 +94,7 @@ ARG CSHARP_ROSLYNATOR_VERSION=0.13.0
 # renovate: datasource=npm depName=prettier
 ARG NPM_PRETTIER_VERSION=3.9.10
 # renovate: datasource=npm depName=markdownlint-cli
-ARG NPM_MARKDOWNLINT_CLI_VERSION=0.49.1
+ARG NPM_MARKDOWNLINT_CLI_VERSION=0.50.0
 # renovate: datasource=npm depName=markdown-table-formatter
 ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=2.1.0
 # renovate: datasource=pypi depName=rumdl
