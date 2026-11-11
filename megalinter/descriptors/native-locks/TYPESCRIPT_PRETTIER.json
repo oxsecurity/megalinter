@@ -56,6 +56,7 @@
     }
   },
   "format": 1,
+  "generator": 2,
   "linter": "TYPESCRIPT_PRETTIER",
   "method": "npm",
   "spec_hash": "2e2c09dd70433e4ed502527098f27d200cee145ad51f4fe7b6163c6689d111fa"

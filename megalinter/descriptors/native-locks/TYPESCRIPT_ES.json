@@ -3448,6 +3448,7 @@
     }
   },
   "format": 1,
+  "generator": 2,
   "linter": "TYPESCRIPT_ES",
   "method": "npm",
   "spec_hash": "89b1b62ef6cb285f4f3ef7a4fd909529e04bfad355262cec8040d363c0480ab4"

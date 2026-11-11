@@ -1623,6 +1623,7 @@
     }
   },
   "format": 1,
+  "generator": 2,
   "linter": "CSS_STYLELINT",
   "method": "npm",
   "spec_hash": "0c9799d2561b112f4c38ef020bfa5ddabe4a143af8609d80d4891755143ea2bb"

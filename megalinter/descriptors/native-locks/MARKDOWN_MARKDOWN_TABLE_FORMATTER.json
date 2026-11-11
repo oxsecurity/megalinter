@@ -38,6 +38,7 @@
     }
   },
   "format": 1,
+  "generator": 2,
   "linter": "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
   "method": "npm",
   "spec_hash": "15205c72decdb55043ff698b038f2c5d72b6ad59dc32a03c202c562274cafdf6"

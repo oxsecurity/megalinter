@@ -241,6 +241,7 @@
     }
   },
   "format": 1,
+  "generator": 2,
   "linter": "TYPESCRIPT_BIOME",
   "method": "npm",
   "spec_hash": "a1c7dc9df16d2fb1ab8da3bed459bf099d1335549c51423b6f13dd9032dc59dd"

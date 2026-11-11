@@ -56,6 +56,7 @@
     }
   },
   "format": 1,
+  "generator": 2,
   "linter": "PYTHON_PYRIGHT",
   "method": "npm",
   "spec_hash": "d35dfb2b541dacd0404a38016147f1e2c473b5c522b073fb7f1127bd5d59ea1a"

@@ -1131,6 +1131,7 @@
     }
   },
   "format": 1,
+  "generator": 2,
   "linter": "MARKDOWN_MARKDOWNLINT",
   "method": "npm",
   "spec_hash": "7c7777499ad54205a976d91187170accd815389bc93d8ffa4af6671f7aa68aa2"

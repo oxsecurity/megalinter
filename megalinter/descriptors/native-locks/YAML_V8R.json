@@ -1299,6 +1299,7 @@
     }
   },
   "format": 1,
+  "generator": 2,
   "linter": "YAML_V8R",
   "method": "npm",
   "spec_hash": "d5079fdf6ea30c66cf025582e86978f70e66eb22181be3f2e312adf86a3ea749"

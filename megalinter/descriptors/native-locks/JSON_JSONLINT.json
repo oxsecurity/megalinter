@@ -470,6 +470,7 @@
     }
   },
   "format": 1,
+  "generator": 2,
   "linter": "JSON_JSONLINT",
   "method": "npm",
   "spec_hash": "e5e7f80ded959bbf80e5f1753f1f0398dfc71299ea5cf618be666d98663b6e09"

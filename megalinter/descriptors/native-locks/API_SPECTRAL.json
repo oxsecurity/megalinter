@@ -3243,6 +3243,7 @@
     }
   },
   "format": 1,
+  "generator": 2,
   "linter": "API_SPECTRAL",
   "method": "npm",
   "spec_hash": "d9c2f0c4066d8c1a7a2ddcb2fa60bfe4d63eaf21744565e9d4443014eef57fbf"

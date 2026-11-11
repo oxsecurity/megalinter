@@ -1056,7 +1056,8 @@
     }
   },
   "format": 1,
+  "generator": 2,
   "linter": "TEKTON_TEKTON_LINT",
   "method": "npm",
-  "spec_hash": "02759221c011a214910484aa879c5e2e69019c6952373f5595d57cbd20516ccf"
+  "spec_hash": "5f9239c0a00d1130138dcb3cc5bb60cbc3f3ba1d6496d52a292082c057227955"
 }

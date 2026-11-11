@@ -1275,6 +1275,7 @@
     }
   },
   "format": 1,
+  "generator": 2,
   "linter": "JSON_NPM_PACKAGE_JSON_LINT",
   "method": "npm",
   "spec_hash": "d645df9a0e91ba8006876d2c0d150bef1333b49354356ee2393c3f99abbd25c5"

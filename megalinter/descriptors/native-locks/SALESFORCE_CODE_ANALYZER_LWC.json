@@ -3525,6 +3525,7 @@
           "extraneous": true,
           "integrity": "sha512-Svl7tq8k/08+p6CXPpRjQ1fKX+1odH/BQbb48fV6fj3CWHhsoIOoY87w1oHXm0qEpkIK3ZfVgp0hed3XBXzXMQ==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "aix"
           ],
@@ -3541,6 +3542,7 @@
           "extraneous": true,
           "integrity": "sha512-0k2F129Xdio1TdJfzJ8sy1Q47vUD2NnwdhiAf7drUN1EBTfPf4hsFCtmMgu/6m8JSzsBrlmVjudMBQqOfG8usQ==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "android"
           ],
@@ -3557,6 +3559,7 @@
           "extraneous": true,
           "integrity": "sha512-34EGEbCIAgosYz6goLcopX6Mo7NyGv9tfwEM2/7Ce2VcVRk568iSvniGWcUXIy7wEDR1wzolcxcriFVrWYcwBg==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "android"
           ],
@@ -3573,6 +3576,7 @@
           "extraneous": true,
           "integrity": "sha512-dbwY7ltSMDWsRatcRpCnES4F+im88OCUgGZjy52shC7GqHRE/cYlxNbB4Z4UpJswpcc4Qxd2oE/ufM0p61IKng==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "android"
           ],
@@ -3589,6 +3593,7 @@
           "extraneous": true,
           "integrity": "sha512-TZbWkQY7kvTAXbXUT7uVACR5cMHsDiSz9z7ZKAX/RTq/WJEk3QyRr0wZpNhBDX+/0CtdqUIJlOiodQcta6tY3Q==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "darwin"
           ],
@@ -3605,6 +3610,7 @@
           "extraneous": true,
           "integrity": "sha512-zfdzgK9ACBNZLI/CyHTOx81SyNbM6YXn7rxSgX97VjyiPl9W1i4Ka4fgKECEoFCKGpvBj5qArWIGgQjOwkgskQ==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "darwin"
           ],
@@ -3621,6 +3627,7 @@
           "extraneous": true,
           "integrity": "sha512-wG2EA8ENdEI0qhkSZMjfqrdY+ziCYCPMmtZjjIwOmXFjmyzEHn+UUxk5of+SYsjtfs3VpnlC7QLzSI5hY/rOAw==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "freebsd"
           ],
@@ -3637,6 +3644,7 @@
           "extraneous": true,
           "integrity": "sha512-i7dZ9vQgnvSCzi/rYCXNgtF/U+eKZNJBzu3eTQbRgHnM7tNSizLOkRFAl3qzVc/Op/u5YkHHa4pf/3DOYHthLQ==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "freebsd"
           ],
@@ -3653,6 +3661,7 @@
           "extraneous": true,
           "integrity": "sha512-qVXBOHQS+d5Y722GwJzJUtOLlX7km3CraOaGormF1pDtPd2C/l1SHRPgjLunLGe51Sh5YYWKMFDyV4SxgMQYTQ==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "linux"
           ],
@@ -3669,6 +3678,7 @@
           "extraneous": true,
           "integrity": "sha512-yHs+0uc8+nvEAfAfxrWQKK5peSNzBc4PegcMO0EJ2hT71uA7vB8Ihg2e77R2P7SG5uYjPbHlLLmve4LLLRCf0g==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "linux"
           ],
@@ -3685,6 +3695,7 @@
           "extraneous": true,
           "integrity": "sha512-d1z4ZuP0ajrfz/FhGT4vv278rX8KnPPJx8i5+AtK7TYbx9Le9F1hyzurZpkEyjkGa9dUGhQow4C1NmeGvqxN2w==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "linux"
           ],
@@ -3701,6 +3712,7 @@
           "extraneous": true,
           "integrity": "sha512-M5sRjUVZrkm1OAPR3dlOYzNmN+loZKGVi1VUQGrwuqLcbR6qeAz+famMhjASeH3YVKvZz+zT1jlh/keC3Rj/lg==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "linux"
           ],
@@ -3717,6 +3729,7 @@
           "extraneous": true,
           "integrity": "sha512-mRObBZeHh2OxcBFPWE/FjylkRgZdYuiTR3vaTozquCGOH14iP9oN4x4Ge81CoIDYQrXmIxpFumJBu5MtZpnQJQ==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "linux"
           ],
@@ -3733,6 +3746,7 @@
           "extraneous": true,
           "integrity": "sha512-slScBsMAb3GFDcdrCgLwZtPYRoH2H/youv10QiZyRjmsP48fznoveWytSgCI/R0ZcUgpc0ZhIUEx6LHts8yrfQ==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "linux"
           ],
@@ -3749,6 +3763,7 @@
           "extraneous": true,
           "integrity": "sha512-kw0owk1o0GFETUJyW0jc0G4Yzs0BHZn0JDZ8JRT088vjJYX777BAs1fDGxAC+q831qOs2DTC96mNsG2opdfyyQ==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "linux"
           ],
@@ -3765,6 +3780,7 @@
           "extraneous": true,
           "integrity": "sha512-/lAIjX8aYFRByhh6L5rYtPEDRqa9de/4V/juOXcta5frjvzXO4/sqEtyytse0g3zZFuWu5cDN0MkLz2qRDD2Ag==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "linux"
           ],
@@ -3781,6 +3797,7 @@
           "extraneous": true,
           "integrity": "sha512-u/anNYF2mmVOEDwLtnQ1wOr3EZ9sTNGLWrsYGYwHWzGA3Si84IOkHXlbWTD1NB+9/1lcnweYKO54uhxZydNzfA==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "linux"
           ],
@@ -3797,6 +3814,7 @@
           "extraneous": true,
           "integrity": "sha512-oks0DYbLwWMmaakTsCb+zL4E+aHRVLom9IJZOAthMQEPiQmydXHkziYEsGYRx0uNV/IjEKGAV941JzH02pflqw==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "netbsd"
           ],
@@ -3813,6 +3831,7 @@
           "extraneous": true,
           "integrity": "sha512-aeL6lAnN89Hz43Mlh1G8ARasbuoYvSITDEx0tHh5b7jJnHcssqgjy9Yx430GDpmCa6OyrKoS0aNRjKundRizGg==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "netbsd"
           ],
@@ -3829,6 +3848,7 @@
           "extraneous": true,
           "integrity": "sha512-MEFJe5C3R8pwXdZ5Y21oo6m7ePiS0d9pWucn99O/wvyJZChoIQKrQDxKrGeW8F5+T0okTHesAmDeiHDTIq0V/Q==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "openbsd"
           ],
@@ -3845,6 +3865,7 @@
           "extraneous": true,
           "integrity": "sha512-i/ZLIOafE0Z8cI/XANJAixoJL/uRAoS2xOA3rb0xN+KK0K177cMAsQYkzHtBrtMXAKuAc7HGgcWiZ/sRC1Nxgw==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "openbsd"
           ],
@@ -3861,6 +3882,7 @@
           "extraneous": true,
           "integrity": "sha512-ge+Z7EXFNt2BO1oAMsVpiQ8EwndV9i1xXerAeTIK7AtPs3bKFXQM7nlRxDSIUIMeueR1CNXxqztLzdNeReKBJg==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "openharmony"
           ],
@@ -3877,6 +3899,7 @@
           "extraneous": true,
           "integrity": "sha512-BEjgtECkL3vY+SaSQ6nzVfiALUeFxpawyp8Jmf5PtYhf1Ug40N1h/hxlhts+f1FvSvarEigdxS3BlSMI2PJLcQ==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "sunos"
           ],
@@ -3893,6 +3916,7 @@
           "extraneous": true,
           "integrity": "sha512-lCv9eK/H6ZJWbE7bh2nw54CZ9M2nupBxJcTsdk/QQnWkdSjKGuxmmH8/GWrlT1eMmZfn4dGcCjRte397WqfQXA==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "win32"
           ],
@@ -3909,6 +3933,7 @@
           "extraneous": true,
           "integrity": "sha512-zvb/mB2bSCoJOpoCBgYKKpX6YM6mJBlBUVUtVj41DlZJVEB6/0CKlRYxP5wWl1C1ILiCoAU5wZZ4q1P3qeS6Eg==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "win32"
           ],
@@ -3925,6 +3950,7 @@
           "extraneous": true,
           "integrity": "sha512-bm4Mowrv+GXMlpWX++EcXw/iLyd1o3+bJkC2DkWXYVvgZCqD/bSj9ctZeAMC3cIxgjRVR2Dufaiu4YPxr5gW1A==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "win32"
           ],
@@ -6738,6 +6764,7 @@
           "extraneous": true,
           "integrity": "sha512-c0wdcekXtQvvn5Tsrk/+op/gUArrbWaFduBnTLP2l1cKLSQs4diMWjJw3m6A0DdzT8dAAX95KpkJ3qynCePbmw==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "android"
           ],
@@ -6751,6 +6778,7 @@
           "extraneous": true,
           "integrity": "sha512-3YjElDdWN+qXAFbJ/CzPV+0wspLqh54k/I6GfdYtEJRqg7buSgc1yPM3B+93j1M4neobtkATHZTmxK2AMVGfnA==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "android"
           ],
@@ -6764,6 +6792,7 @@
           "extraneous": true,
           "integrity": "sha512-Pch2pFNOxxz1hTjypIdPyRTR6riiwRl84+VcN9djS680fw+Co1nAJINrdpqp7KV0NvyuU8ilZXZCjd7ykJl1GQ==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "darwin"
           ],
@@ -6777,6 +6806,7 @@
           "extraneous": true,
           "integrity": "sha512-LEuncFUHFiF8t4yZVZvvZA1wk0pjAscRnsrn1EfTEmN4HXotBi2YtcnLRyaK6UbuczW7xZS5ES+81Rdz8Z0T6g==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "darwin"
           ],
@@ -6790,6 +6820,7 @@
           "extraneous": true,
           "integrity": "sha512-zvBUvsQUpOWALdDsk6qbS8bXf2VxmPisuudNDrY7x0p0jBdsoZl8HsHczIOgkQiZldmcacMKtBzpoGVNeIe2bQ==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "freebsd"
           ],
@@ -6803,6 +6834,7 @@
           "extraneous": true,
           "integrity": "sha512-C2KmNrcSem/AMg984H/dev+si0lieQGdXdR/lYGJnuumXnFb9Y7QdiI62obFdLlxRYLBv4P0eUVIDbD4c1vVvw==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "freebsd"
           ],
@@ -6816,6 +6848,7 @@
           "extraneous": true,
           "integrity": "sha512-ggXnsTAEzNQx74XpunRsiZ9aBZDsI7XIa0hm2nzR9f4WzH5/f/d73ZSDaC5ejJ8YLY4NW+V3wr0tjOaeCq8hqA==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "linux"
           ],
@@ -6829,6 +6862,7 @@
           "extraneous": true,
           "integrity": "sha512-2vng+FlzNUhKZxtej3IUqJgbZoQk2M/dwQM20+ULV0R/E/8tr9/P6uEf2iiGIk4HL0zMKh5Jry7mUHdUOvyGgA==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "linux"
           ],
@@ -6842,6 +6876,7 @@
           "extraneous": true,
           "integrity": "sha512-LLLFZKt4/Nraf9rxDkhiU8QVgLF4WmCkfr0L4fj0fPfIZFBib0DeiFk1hhaYKd03LFAFJcxHslhDFlNJLylf5Q==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "linux"
           ],
@@ -6855,6 +6890,7 @@
           "extraneous": true,
           "integrity": "sha512-WJkdQCvS9sWNOUBJZfQRKpZGFBztRzcowI+nndmflKgU4XY+3a420FgTOSKTsVqJbnzSxeT4vaJalpOaPo2YCQ==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "linux"
           ],
@@ -6868,6 +6904,7 @@
           "extraneous": true,
           "integrity": "sha512-PwHXCCS2n64/1Ot6rP1YEYA02MGYBcQlr8CSZZyrUG2O7NH6NklYmvr9v3Jy+5e/eDeNchc/ukmKJi9LuflMIQ==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "linux"
           ],
@@ -6881,6 +6918,7 @@
           "extraneous": true,
           "integrity": "sha512-vUjxINQu3RC8NZS3ykk1gN65gIz8pAopOq2HXuZhiIxHdx7TFvDG+jgrdSgInu1Eza4/Rfi2VzZgyIgEH4WOaw==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "linux"
           ],
@@ -6894,6 +6932,7 @@
           "extraneous": true,
           "integrity": "sha512-wzko4aJ13+0G3kGnviCg5gnXFKd40izKsrf2uOw12US4XqprkDrmwOpeW14aSNa37V8bfPcz5Fkob6LZ3BAPmA==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "linux"
           ],
@@ -6907,6 +6946,7 @@
           "extraneous": true,
           "integrity": "sha512-8120ue0JUMSwy11stlwnfdX3pPd+WZYGCDBwEHWtIHi6pOpZmsEF5QKB7a/UN+XFdqvobxz98kv8RTqikyCEBw==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "linux"
           ],
@@ -6920,6 +6960,7 @@
           "extraneous": true,
           "integrity": "sha512-XLFHnR3tXMjbOCh2vtVJHmxt+995uJsTERQyseFDRA0xxMxyTZPLa3OIUlyFaO4mF/Lu0FjmWHCuPXJT1n/IOg==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "linux"
           ],
@@ -6933,6 +6974,7 @@
           "extraneous": true,
           "integrity": "sha512-se6yXvNGMIl0f+RQzyh7XAmia8/9kplQx424wnG2w0C1oi6XgO6Y8otKhdXFHbHs88Ihavzmvh1NWjuovE76BQ==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "linux"
           ],
@@ -6946,6 +6988,7 @@
           "extraneous": true,
           "integrity": "sha512-gNoxRefktVIiGflpONuxWWXZAzIQG++z9qHO3xKwk4WdDMuQja3JHGfE1u0i3PfPDyvhypdk+WrgIJqLhGG7sg==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "linux"
           ],
@@ -6959,6 +7002,7 @@
           "extraneous": true,
           "integrity": "sha512-V4KtWtQfAFMU7+9/A/VDps/VI8CHd3cYz0L8sgJzz8qK7eY7wI4ruFD82UYIYvW9Z4DtlTfhQcsl4XyPHW5uSg==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "linux"
           ],
@@ -6972,6 +7016,7 @@
           "extraneous": true,
           "integrity": "sha512-LBx9LYXvj2CBkMkjLdNAWLwH0MLMin7do2VcVo9kVPibGLkY0BQQut2fv7NVqkXqZ/CrAu9LqDHVV1xHCMpCPw==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "linux"
           ],
@@ -6985,6 +7030,7 @@
           "extraneous": true,
           "integrity": "sha512-ABVf3Q0RCu7NcyCCOZQI0pJ3GuSdfSl8EXcy88QtdceIMIoCUdfhsJChZ64L9zVM2aJHjde1Bhn5uqSRcX9ySA==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "openbsd"
           ],
@@ -6998,6 +7044,7 @@
           "extraneous": true,
           "integrity": "sha512-+2Cy/ldweGBLlPIKsQLF8U5N44a0KDdbrk1rAjHOM9M2K+kGdIVjHLmmrZIcx+9Ny3ke/1JomCsDI1ocb11+sg==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "openharmony"
           ],
@@ -7011,6 +7058,7 @@
           "extraneous": true,
           "integrity": "sha512-dtZvzc8BedpSaFNy75x6uiWwAGTH+aZHDtdrqP6qk+WcLJrfti6sGje1ZJ9UxyzDLF23d/mV+PaMwuC0hL7UVA==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "win32"
           ],
@@ -7024,6 +7072,7 @@
           "extraneous": true,
           "integrity": "sha512-Rj8Ra4noo+aYy7sKBggCx0407mws34kAb1ySyWuq5DAtFBQdkSwnsjCgPrhPe9cvgBKZIukpE+CVHvORCS93kQ==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "win32"
           ],
@@ -7037,6 +7086,7 @@
           "extraneous": true,
           "integrity": "sha512-vp7N084ew/odXn2gi/mzm9mUkQu9l6AiN6dt4IeUM2Uvm9o+cVmP+YkqbMOteLbiGgqBBlJZjIMYVCfOOIVbVQ==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "win32"
           ],
@@ -7050,6 +7100,7 @@
           "extraneous": true,
           "integrity": "sha512-MOG/3gTOn4Fwf574RVOaY61I5o6P90legkFADiTyn1hyjNydT+cerU2rLUwPdZkKKyJ+iT+K9p7WXK4LM1Ka6g==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "win32"
           ],
@@ -12724,6 +12775,7 @@
           "hasInstallScript": true,
           "integrity": "sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==",
           "license": "MIT",
+          "optional": true,
           "os": [
             "darwin"
           ],
@@ -26989,6 +27041,7 @@
     }
   },
   "format": 1,
+  "generator": 2,
   "linter": "SALESFORCE_CODE_ANALYZER_LWC",
   "method": "npm",
   "spec_hash": "9f82d2ab077917cdfe9824b0e8e51c2f5b363e522a03fcfe5c28ac7873da3f07"

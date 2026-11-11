@@ -2841,6 +2841,7 @@
     }
   },
   "format": 1,
+  "generator": 2,
   "linter": "TSX_ESLINT",
   "method": "npm",
   "spec_hash": "c1769d9c9019a256bd0d5551df6e2bc9bc5832c37e7657245027c0dd9357441d"

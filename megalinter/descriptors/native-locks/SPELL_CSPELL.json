@@ -1063,6 +1063,7 @@
     }
   },
   "format": 1,
+  "generator": 2,
   "linter": "SPELL_CSPELL",
   "method": "npm",
   "spec_hash": "37c557afa94ca787febe1edcf130d8b78f72addb81131d3b01dc3497cf8522af"

@@ -167,6 +167,7 @@
     }
   },
   "format": 1,
+  "generator": 2,
   "linter": "COPYPASTE_JSCPD",
   "method": "npm",
   "spec_hash": "aab087ef673d312e7c5b8f158c02c1de3ed1ae3450b1856dee200ca095a838c9"

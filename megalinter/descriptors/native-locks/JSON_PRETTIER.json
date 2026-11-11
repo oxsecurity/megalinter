@@ -41,6 +41,7 @@
     }
   },
   "format": 1,
+  "generator": 2,
   "linter": "JSON_PRETTIER",
   "method": "npm",
   "spec_hash": "fcbfb38e1b2569654ebe7c7c4ebff217477adfbf20ccbe1619cf117b57c385ef"

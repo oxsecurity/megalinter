@@ -295,6 +295,7 @@
     }
   },
   "format": 1,
+  "generator": 2,
   "linter": "GROOVY_NPM_GROOVY_LINT",
   "method": "npm",
   "spec_hash": "2655c070556c2de60ceac67ddec3b58f781ba3f43876bc8b5bfd4607807bc96a"

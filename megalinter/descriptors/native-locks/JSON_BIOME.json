@@ -226,6 +226,7 @@
     }
   },
   "format": 1,
+  "generator": 2,
   "linter": "JSON_BIOME",
   "method": "npm",
   "spec_hash": "cb921b1a651e02cc8eeadee7ab2483bcade563a7bc867ae7336473d0f88685f1"

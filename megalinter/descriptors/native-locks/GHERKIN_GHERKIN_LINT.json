@@ -398,6 +398,7 @@
     }
   },
   "format": 1,
+  "generator": 2,
   "linter": "GHERKIN_GHERKIN_LINT",
   "method": "npm",
   "spec_hash": "c6dd58edec8aa8dcc706385c53d4333292d6849c23d9c464ffb83630f21a4235"

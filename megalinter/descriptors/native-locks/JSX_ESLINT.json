@@ -2313,6 +2313,7 @@
     }
   },
   "format": 1,
+  "generator": 2,
   "linter": "JSX_ESLINT",
   "method": "npm",
   "spec_hash": "d60f22f126c87246f816a453a2a534b9557f97d61a0d8025e8d82201d17c6b29"

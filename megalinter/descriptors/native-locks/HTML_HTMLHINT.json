@@ -323,6 +323,7 @@
     }
   },
   "format": 1,
+  "generator": 2,
   "linter": "HTML_HTMLHINT",
   "method": "npm",
   "spec_hash": "e48c934889f2703140dcfded7753b91e3db14802ccd2ef7066a654fd47d2695a"
