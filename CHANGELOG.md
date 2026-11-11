@@ -43,6 +43,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Dev
 
 - CI
+  - **Renovate** now creates PRs for dependencies from `ghcr.io`
+  - **Renovate** now creates PRs for dependencies using `git-refs` and `git-tags` datasources.
 
 - Linter versions upgrades (N)
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.58.0 to **1.59.0** on 2026-11-09
