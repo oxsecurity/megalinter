@@ -30,14 +30,14 @@ When another active linter of the same MegaLinter run is a dedicated secret scan
 
 ## checkov documentation
 
-- Version in MegaLinter: **3.3.30**
+- Version in MegaLinter: **3.4.0**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to configure checkov rules](https://github.com/bridgecrewio/checkov#configuration-using-a-config-file){target=_blank}
   - If custom `.checkov.yml` config file isn't found, [.checkov.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.checkov.yml){target=_blank} will be used
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}
 
-[![checkov - GitHub](https://gh-card.dev/repos/bridgecrewio/checkov.svg?fullname=)](https://github.com/bridgecrewio/checkov){target=_blank}
+[![checkov - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=bridgecrewio&repo=checkov&show_owner=true)](https://github.com/bridgecrewio/checkov){target=_blank}
 
 ## Configuration in MegaLinter
 
@@ -147,7 +147,7 @@ usage: checkov [-h] [-v] [--support] [-d DIRECTORY] [--add-check]
                [--secrets-scan-file-type SECRETS_SCAN_FILE_TYPE]
                [--enable-secret-scan-all-files]
                [--block-list-secret-scan BLOCK_LIST_SECRET_SCAN]
-               [--summary-position {bottom,top}]
+               [--summary-position {top,bottom}]
                [--skip-resources-without-violations] [--deep-analysis]
                [--no-fail-on-crash] [--mask MASK] [--scan-secrets-history]
                [--secrets-history-timeout SECRETS_HISTORY_TIMEOUT]
@@ -473,7 +473,7 @@ options:
   --block-list-secret-scan BLOCK_LIST_SECRET_SCAN
                         List of files to filter out from the secret scanner
                         [env var: CKV_SECRETS_SCAN_BLOCK_LIST]
-  --summary-position {bottom,top}
+  --summary-position {top,bottom}
                         Chose whether the summary will be appended on top
                         (before the checks results) or on bottom (after check
                         results), default is on top.
@@ -515,8 +515,8 @@ config file values which override defaults.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.3.30
+ARG PIP_CHECKOV_VERSION=3.4.0
 ```
 
 - PIP packages (Python):
-  - [checkov==3.3.30](https://pypi.org/project/checkov/3.3.30)
+  - [checkov==3.4.0](https://pypi.org/project/checkov/3.4.0)

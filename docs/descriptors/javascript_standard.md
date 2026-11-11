@@ -34,7 +34,7 @@ description: How to use standard (configure, ignore files, ignore errors, help &
 - See [How to disable standard rules in files](https://standardjs.com/#how-do-i-disable-a-rule){target=_blank}
 - See [Index of problems detected by standard](https://standardjs.com/rules.html){target=_blank}
 
-[![standard - GitHub](https://gh-card.dev/repos/standard/standard.svg?fullname=)](https://github.com/standard/standard){target=_blank}
+[![standard - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=standard&repo=standard&show_owner=true)](https://github.com/standard/standard){target=_blank}
 
 ## Configuration in MegaLinter
 

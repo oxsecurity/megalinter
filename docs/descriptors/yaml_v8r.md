@@ -23,7 +23,7 @@ description: How to use v8r (configure, ignore files, ignore errors, help & vers
 - Visit [Official Web Site](https://github.com/chris48s/v8r#readme){target=_blank}
 - See [Index of problems detected by v8r](https://www.schemastore.org/){target=_blank}
 
-[![v8r - GitHub](https://gh-card.dev/repos/chris48s/v8r.svg?fullname=)](https://github.com/chris48s/v8r){target=_blank}
+[![v8r - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=chris48s&repo=v8r&show_owner=true)](https://github.com/chris48s/v8r){target=_blank}
 
 ## Configuration in MegaLinter
 

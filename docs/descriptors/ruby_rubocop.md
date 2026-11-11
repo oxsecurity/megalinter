@@ -27,14 +27,14 @@ description: How to use rubocop (configure, ignore files, ignore errors, help & 
 
 ## rubocop documentation
 
-- Version in MegaLinter: **1.92.1**
+- Version in MegaLinter: **1.92.2**
 - Visit [Official Web Site](https://rubocop.org/){target=_blank}
 - See [How to configure rubocop rules](https://docs.rubocop.org/rubocop/configuration.html){target=_blank}
   - If custom `.ruby-lint.yml` config file isn't found, [.ruby-lint.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruby-lint.yml){target=_blank} will be used
 - See [How to disable rubocop rules in files](https://docs.rubocop.org/rubocop/configuration.html#disabling-cops-within-source-code){target=_blank}
 - See [Index of problems detected by rubocop](https://docs.rubocop.org/rubocop/cops.html){target=_blank}
 
-[![rubocop - GitHub](https://gh-card.dev/repos/rubocop-hq/rubocop.svg?fullname=)](https://github.com/rubocop-hq/rubocop){target=_blank}
+[![rubocop - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=rubocop-hq&repo=rubocop&show_owner=true)](https://github.com/rubocop-hq/rubocop){target=_blank}
 
 ## Configuration in MegaLinter
 
@@ -344,7 +344,7 @@ Profiling Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=rubygems depName=rubocop
-ARG GEM_RUBOCOP_VERSION=1.92.1
+ARG GEM_RUBOCOP_VERSION=1.92.2
 # renovate: datasource=rubygems depName=rubocop-github
 ARG GEM_RUBOCOP_GITHUB_VERSION=0.29.0
 # renovate: datasource=rubygems depName=rubocop-performance
@@ -358,7 +358,7 @@ ARG GEM_RUBOCOP_RSPEC_VERSION=3.10.2
 ```
 
 - GEM packages (Ruby) :
-  - [rubocop:1.92.1](https://rubygems.org/gems/rubocop/versions/1.92.1)
+  - [rubocop:1.92.2](https://rubygems.org/gems/rubocop/versions/1.92.2)
   - [rubocop-github:0.29.0](https://rubygems.org/gems/rubocop-github/versions/0.29.0)
   - [rubocop-performance:1.27.0](https://rubygems.org/gems/rubocop-performance/versions/1.27.0)
   - [rubocop-rails:2.38.0](https://rubygems.org/gems/rubocop-rails/versions/2.38.0)

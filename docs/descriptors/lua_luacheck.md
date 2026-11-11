@@ -32,7 +32,7 @@ description: How to use luacheck (configure, ignore files, ignore errors, help &
 - See [How to disable luacheck rules in files](https://luacheck.readthedocs.io/en/stable/inline.html){target=_blank}
 - See [Index of problems detected by luacheck](https://luacheck.readthedocs.io/en/stable/warnings.html){target=_blank}
 
-[![luacheck - GitHub](https://gh-card.dev/repos/lunarmodules/luacheck.svg?fullname=)](https://github.com/lunarmodules/luacheck){target=_blank}
+[![luacheck - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=lunarmodules&repo=luacheck&show_owner=true)](https://github.com/lunarmodules/luacheck){target=_blank}
 
 ## Configuration in MegaLinter
 

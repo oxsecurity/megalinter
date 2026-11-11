@@ -31,7 +31,7 @@ description: How to use npm-groovy-lint (configure, ignore files, ignore errors,
 - See [How to disable npm-groovy-lint rules in files](https://github.com/nvuillam/npm-groovy-lint#disabling-rules-in-source){target=_blank}
 - See [Index of problems detected by npm-groovy-lint](https://codenarc.org/codenarc-rule-index.html){target=_blank}
 
-[![npm-groovy-lint - GitHub](https://gh-card.dev/repos/nvuillam/npm-groovy-lint.svg?fullname=)](https://github.com/nvuillam/npm-groovy-lint){target=_blank}
+[![npm-groovy-lint - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=nvuillam&repo=npm-groovy-lint&show_owner=true)](https://github.com/nvuillam/npm-groovy-lint){target=_blank}
 
 ## Configuration in MegaLinter
 

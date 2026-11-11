@@ -29,7 +29,7 @@ Exception for standalone and security flavors docker images, that use a list of 
 
 ## semgrep documentation
 
-- Version in MegaLinter: **1.182.1**
+- Version in MegaLinter: **1.183.0**
 - Visit [Official Web Site](https://semgrep.dev/){target=_blank}
 - See [How to configure semgrep rules](https://semgrep.dev/docs/running-rules/){target=_blank}
 - See [How to disable semgrep rules in files](https://semgrep.dev/docs/ignoring-findings/#inline-comments){target=_blank}
@@ -37,7 +37,7 @@ Exception for standalone and security flavors docker images, that use a list of 
   - You can define a `.semgrepignore` file to ignore files and folders
 - See [Index of problems detected by semgrep](https://semgrep.dev/r){target=_blank}
 
-[![semgrep - GitHub](https://gh-card.dev/repos/returntocorp/semgrep.svg?fullname=)](https://github.com/returntocorp/semgrep){target=_blank}
+[![semgrep - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=returntocorp&repo=semgrep&show_owner=true)](https://github.com/returntocorp/semgrep){target=_blank}
 
 ## Configuration in MegaLinter
 
@@ -774,6 +774,11 @@ BUGS
        If you encounter an issue, please report it at
        https://github.com/semgrep/semgrep/issues
 
+THIRD-PARTY LICENSES
+       Semgrep includes open source software. The licenses and notices for
+       these dependencies are listed at
+       https://semgrep.dev/cli-credits?version=1.183.0
+
 ```
 
 ### Installation on mega-linter Docker image
@@ -781,7 +786,7 @@ BUGS
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.182.1
+ARG PIP_SEMGREP_VERSION=1.183.0
 # Wrap semgrep so its OCaml 5 runtime does not abort with
 # "Failed to allocate signal stack for domain 0", which happens when the
 # stack rlimit is unlimited (the case on some CI runners). Cap it to a
@@ -792,4 +797,4 @@ RUN mv /venvs/semgrep/bin/semgrep /venvs/semgrep/bin/semgrep-bin \
 ```
 
 - PIP packages (Python):
-  - [semgrep==1.182.1](https://pypi.org/project/semgrep/1.182.1)
+  - [semgrep==1.183.0](https://pypi.org/project/semgrep/1.183.0)

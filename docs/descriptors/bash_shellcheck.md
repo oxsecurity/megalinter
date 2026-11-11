@@ -28,7 +28,7 @@ description: How to use shellcheck (configure, ignore files, ignore errors, help
 - See [How to disable shellcheck rules in files](https://github.com/koalaman/shellcheck/wiki/Ignore){target=_blank}
 - See [Index of problems detected by shellcheck](https://github.com/koalaman/shellcheck#gallery-of-bad-code){target=_blank}
 
-[![shellcheck - GitHub](https://gh-card.dev/repos/koalaman/shellcheck.svg?fullname=)](https://github.com/koalaman/shellcheck){target=_blank}
+[![shellcheck - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=koalaman&repo=shellcheck&show_owner=true)](https://github.com/koalaman/shellcheck){target=_blank}
 
 ## Configuration in MegaLinter
 

@@ -34,7 +34,7 @@ description: How to use nbqa (configure, ignore files, ignore errors, help & ver
 - Visit [Official Web Site](https://github.com/nbQA-dev/nbQA#readme){target=_blank}
 - See [Index of problems detected by nbqa](https://github.com/nbQA-dev/nbQA){target=_blank}
 
-[![nbQA - GitHub](https://gh-card.dev/repos/nbQA-dev/nbQA.svg?fullname=)](https://github.com/nbQA-dev/nbQA){target=_blank}
+[![nbQA - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=nbQA-dev&repo=nbQA&show_owner=true)](https://github.com/nbQA-dev/nbQA){target=_blank}
 
 ## Configuration in MegaLinter
 

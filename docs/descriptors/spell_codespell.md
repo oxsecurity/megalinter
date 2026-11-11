@@ -20,7 +20,7 @@ See the [codespell documentation](https://github.com/codespell-project/codespell
 - See [How to configure codespell rules](https://github.com/codespell-project/codespell?tab=readme-ov-file#using-a-config-file){target=_blank}
 - See [How to disable codespell rules in files](https://github.com/codespell-project/codespell?tab=readme-ov-file#inline-ignore){target=_blank}
 
-[![codespell - GitHub](https://gh-card.dev/repos/codespell-project/codespell.svg?fullname=)](https://github.com/codespell-project/codespell){target=_blank}
+[![codespell - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=codespell-project&repo=codespell&show_owner=true)](https://github.com/codespell-project/codespell){target=_blank}
 
 ## Configuration in MegaLinter
 

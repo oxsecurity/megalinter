@@ -28,7 +28,7 @@ description: How to use swiftlint (configure, ignore files, ignore errors, help 
 - See [How to disable swiftlint rules in files](https://github.com/realm/SwiftLint#disable-rules-in-code){target=_blank}
 - See [Index of problems detected by swiftlint](https://realm.github.io/SwiftLint/rule-directory.html){target=_blank}
 
-[![SwiftLint - GitHub](https://gh-card.dev/repos/realm/SwiftLint.svg?fullname=)](https://github.com/realm/SwiftLint){target=_blank}
+[![SwiftLint - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=realm&repo=SwiftLint&show_owner=true)](https://github.com/realm/SwiftLint){target=_blank}
 
 ## Configuration in MegaLinter
 

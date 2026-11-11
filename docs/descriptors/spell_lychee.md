@@ -43,7 +43,7 @@ https://github.com/sgerrand/alpine-pkg-glibc/releases/download
   - You can define a `.lycheeignore` file to ignore files and folders
 - See [Index of problems detected by lychee](https://lychee.cli.rs/guides/cli/){target=_blank}
 
-[![lychee - GitHub](https://gh-card.dev/repos/lycheeverse/lychee.svg?fullname=)](https://github.com/lycheeverse/lychee){target=_blank}
+[![lychee - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=lycheeverse&repo=lychee&show_owner=true)](https://github.com/lycheeverse/lychee){target=_blank}
 
 ## Configuration in MegaLinter
 

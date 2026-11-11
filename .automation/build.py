@@ -1621,7 +1621,9 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         if repo is not None and repo.github is True:
             # pylint: disable=no-member
             linter_doc_md += [
-                f"[![{repo.repo} - GitHub](https://gh-card.dev/repos/{repo.owner}/{repo.repo}.svg?fullname=)]"
+                f"[![{repo.repo} - GitHub]("
+                "https://github-stats-extended.vercel.app/api/pin/"
+                f"?username={repo.owner}&repo={repo.repo}&show_owner=true)]"
                 f"(https://github.com/{repo.owner}/{repo.repo}){{target=_blank}}",
                 "",
                 # pylint: enable=no-member
@@ -3634,7 +3636,7 @@ def finalize_doc_build():
         "<!-- mega-linter-badges-start -->",
         "<!-- mega-linter-badges-end -->",
         """![GitHub release](https://img.shields.io/github/v/release/oxsecurity/megalinter?sort=semver&color=%23FD80CD)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-29.0M-blue?color=%23FD80CD)](https://megalinter.io/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-29.2M-blue?color=%23FD80CD)](https://megalinter.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg?color=%23FD80CD)](https://npmjs.org/package/mega-linter-runner)
 [![Coding Agents](https://img.shields.io/badge/Coding%20Agents-compatible-%23FD80CD?logo=githubcopilot&logoColor=white)](https://megalinter.io/latest/coding-agents/)
 [![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?cacheSeconds=3600&color=%23FD80CD)](https://github.com/oxsecurity/megalinter/stargazers/)
@@ -4165,9 +4167,13 @@ def generate_documentation_all_users():
             repo_full = repo["repo_url"].replace("https://github.com/", "")
         else:
             continue
+        repo_owner, _, repo_name = repo_full.strip("/").partition("/")
+        repo_name = repo_name.split("/")[0]
         # pylint: disable=no-member
         linter_doc_md += [
-            f"[![{repo_full} - GitHub](https://gh-card.dev/repos/{repo_full}.svg?fullname=)]"
+            f"[![{repo_full} - GitHub]("
+            "https://github-stats-extended.vercel.app/api/pin/"
+            f"?username={repo_owner}&repo={repo_name}&show_owner=true)]"
             f"(https://github.com/{repo_full}){{target=_blank}}",
         ]
         # pylint: enable=no-member

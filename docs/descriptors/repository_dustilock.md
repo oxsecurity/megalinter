@@ -32,7 +32,7 @@ description: How to use dustilock (configure, ignore files, ignore errors, help 
 - Version in MegaLinter: **1.2.0**
 - Visit [Official Web Site](https://github.com/Checkmarx/dustilock#readme){target=_blank}
 
-[![dustilock - GitHub](https://gh-card.dev/repos/Checkmarx/dustilock.svg?fullname=)](https://github.com/Checkmarx/dustilock){target=_blank}
+[![dustilock - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=Checkmarx&repo=dustilock&show_owner=true)](https://github.com/Checkmarx/dustilock){target=_blank}
 
 ## Configuration in MegaLinter
 

@@ -29,7 +29,7 @@ If you do not want cspell to analyze the files names, define `SPELL_CSPELL_ANALY
 - See [How to configure cspell rules](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#customization){target=_blank}
 - See [How to disable cspell rules in files](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#enable--disable-checking-sections-of-code){target=_blank}
 
-[![cspell - GitHub](https://gh-card.dev/repos/streetsidesoftware/cspell.svg?fullname=)](https://github.com/streetsidesoftware/cspell){target=_blank}
+[![cspell - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=streetsidesoftware&repo=cspell&show_owner=true)](https://github.com/streetsidesoftware/cspell){target=_blank}
 
 ## Configuration in MegaLinter
 

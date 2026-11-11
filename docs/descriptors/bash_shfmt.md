@@ -26,7 +26,7 @@ description: How to use shfmt (configure, ignore files, ignore errors, help & ve
 - See [How to configure shfmt rules](https://github.com/mvdan/sh/blob/master/cmd/shfmt/shfmt.1.scd){target=_blank}
 - See [How to disable shfmt rules in files](https://github.com/mvdan/sh/blob/master/cmd/shfmt/shfmt.1.scd){target=_blank}
 
-[![sh - GitHub](https://gh-card.dev/repos/mvdan/sh.svg?fullname=)](https://github.com/mvdan/sh){target=_blank}
+[![sh - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=mvdan&repo=sh&show_owner=true)](https://github.com/mvdan/sh){target=_blank}
 
 ## Configuration in MegaLinter
 

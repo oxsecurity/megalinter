@@ -75,7 +75,7 @@ Initialization writes a `.terraform` directory in every analyzed module director
 - See [How to disable tofu-validate rules in files](https://opentofu.org/docs/language/expressions/custom-conditions/){target=_blank}
 - See [Index of problems detected by tofu-validate](https://opentofu.org/docs/cli/commands/validate/){target=_blank}
 
-[![opentofu - GitHub](https://gh-card.dev/repos/opentofu/opentofu.svg?fullname=)](https://github.com/opentofu/opentofu){target=_blank}
+[![opentofu - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=opentofu&repo=opentofu&show_owner=true)](https://github.com/opentofu/opentofu){target=_blank}
 
 ## Configuration in MegaLinter
 

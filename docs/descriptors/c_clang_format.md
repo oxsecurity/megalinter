@@ -28,7 +28,7 @@ description: How to use clang-format (configure, ignore files, ignore errors, he
 - See [How to disable clang-format rules in files](https://releases.llvm.org/21.1.0/tools/clang/docs/ClangFormatStyleOptions.html#disabling-formatting-on-a-piece-of-code){target=_blank}
 - See [Index of problems detected by clang-format](https://releases.llvm.org/21.1.0/tools/clang/docs/ClangFormat.html){target=_blank}
 
-[![llvm-project - GitHub](https://gh-card.dev/repos/llvm/llvm-project.svg?fullname=)](https://github.com/llvm/llvm-project){target=_blank}
+[![llvm-project - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=llvm&repo=llvm-project&show_owner=true)](https://github.com/llvm/llvm-project){target=_blank}
 
 ## Configuration in MegaLinter
 

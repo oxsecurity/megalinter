@@ -33,7 +33,7 @@ description: How to use terraform-fmt (configure, ignore files, ignore errors, h
 - Version in MegaLinter: **1.17.0**
 - Visit [Official Web Site](https://developer.hashicorp.com/terraform/cli/commands/fmt){target=_blank}
 
-[![terraform - GitHub](https://gh-card.dev/repos/hashicorp/terraform.svg?fullname=)](https://github.com/hashicorp/terraform){target=_blank}
+[![terraform - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=hashicorp&repo=terraform&show_owner=true)](https://github.com/hashicorp/terraform){target=_blank}
 
 ## Configuration in MegaLinter
 

@@ -30,7 +30,7 @@ RoboCop is a linter and code formatter for the Robot Framework. It helps maintai
 - See [How to disable robocop rules in files](https://robocop.dev/stable/configuration/disablers/){target=_blank}
 - See [Index of problems detected by robocop](https://robocop.dev/stable/rules_list/){target=_blank}
 
-[![robotframework-robocop - GitHub](https://gh-card.dev/repos/MarketSquare/robotframework-robocop.svg?fullname=)](https://github.com/MarketSquare/robotframework-robocop){target=_blank}
+[![robotframework-robocop - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=MarketSquare&repo=robotframework-robocop&show_owner=true)](https://github.com/MarketSquare/robotframework-robocop){target=_blank}
 
 ## Configuration in MegaLinter
 
@@ -108,11 +108,13 @@ robocop check myfile.robot
  Full documentation available at https://robocop.dev.
 
 ╭─ Options ────────────────────────────────────────────────────────────────────╮
-│ --version                       Show the version and exit.                   │
-│ --install-completion            Install completion for the current shell.    │
-│ --show-completion               Show completion for the current shell, to    │
-│                                 copy it or customize the installation.       │
-│ --help                -h        Show this message and exit.                  │
+│ --version                     <bool>  Show the version and exit.             │
+│ --install-completion          <bool>  Install completion for the current     │
+│                                       shell.                                 │
+│ --show-completion             <bool>  Show completion for the current shell, │
+│                                       to copy it or customize the            │
+│                                       installation.                          │
+│ --help                -h      <bool>  Show this message and exit.            │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ╭─ Commands ───────────────────────────────────────────────────────────────────╮
 │ check    Lint Robot Framework files.                                         │

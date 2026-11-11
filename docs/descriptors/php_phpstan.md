@@ -28,7 +28,7 @@ description: How to use phpstan (configure, ignore files, ignore errors, help & 
   - If custom `phpstan.neon.dist` config file isn't found, [phpstan.neon.dist](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/phpstan.neon.dist){target=_blank} will be used
 - See [How to disable phpstan rules in files](https://phpstan.org/user-guide/ignoring-errors#ignoring-in-code-using-phpdocs){target=_blank}
 
-[![phpstan - GitHub](https://gh-card.dev/repos/phpstan/phpstan.svg?fullname=)](https://github.com/phpstan/phpstan){target=_blank}
+[![phpstan - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=phpstan&repo=phpstan&show_owner=true)](https://github.com/phpstan/phpstan){target=_blank}
 
 ## Configuration in MegaLinter
 

@@ -29,7 +29,7 @@ description: How to use scalafix (configure, ignore files, ignore errors, help &
 - See [How to disable scalafix rules in files](https://scalacenter.github.io/scalafix/docs/users/suppression.html){target=_blank}
 - See [Index of problems detected by scalafix](https://scalacenter.github.io/scalafix/docs/rules/overview.html){target=_blank}
 
-[![scalafix - GitHub](https://gh-card.dev/repos/scalacenter/scalafix.svg?fullname=)](https://github.com/scalacenter/scalafix){target=_blank}
+[![scalafix - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=scalacenter&repo=scalafix&show_owner=true)](https://github.com/scalacenter/scalafix){target=_blank}
 
 ## Configuration in MegaLinter
 

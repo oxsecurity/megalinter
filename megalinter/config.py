@@ -361,7 +361,7 @@ def copy(request_id):
 # Modules holding per-request caches register a cleaner here, so that delete()
 # drops them along with the config. Avoids config importing them back, which
 # would be circular
-_CACHE_CLEANERS = []
+_CACHE_CLEANERS: list = []
 
 
 def register_cache_cleaner(cleaner):

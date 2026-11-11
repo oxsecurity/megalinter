@@ -29,7 +29,7 @@ description: How to use rumdl (configure, ignore files, ignore errors, help & ve
 - See [How to disable rumdl rules in files](https://github.com/rvben/rumdl/blob/main/docs/inline-configuration.md){target=_blank}
 - See [Index of problems detected by rumdl](https://github.com/rvben/rumdl/blob/main/docs/RULES.md){target=_blank}
 
-[![rumdl - GitHub](https://gh-card.dev/repos/rvben/rumdl.svg?fullname=)](https://github.com/rvben/rumdl){target=_blank}
+[![rumdl - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=rvben&repo=rumdl&show_owner=true)](https://github.com/rvben/rumdl){target=_blank}
 
 ## Configuration in MegaLinter
 
