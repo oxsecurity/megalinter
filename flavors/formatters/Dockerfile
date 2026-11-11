@@ -112,6 +112,8 @@ ARG PIP_RUFF_VERSION=0.17.2
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=2.1.0
+# renovate: datasource=github-releases depName=crate-ci/typos extractVersion=^v(?<version>.+)$
+ARG SPELL_TYPOS_VERSION=1.52.0
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=26.2.2
 # renovate: datasource=pypi depName=virtualenv
@@ -331,12 +333,21 @@ esac \
 # markdown-table-formatter installation
 # rumdl installation
 # powershell_formatter installation
-    && pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force -ErrorAction Stop'
+    && pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force -ErrorAction Stop' \
 # black installation
 # isort installation
 # ruff-format installation
 # rstfmt installation
 # snakefmt installation
+# typos installation
+    && case "${TARGETARCH}" in \
+      amd64) TYPOS_ARCH="x86_64" ;; \
+      arm64) TYPOS_ARCH="aarch64" ;; \
+      *) echo "Unsupported TARGETARCH: ${TARGETARCH}" && exit 1 ;; \
+    esac && \
+    curl -fsSL "https://github.com/crate-ci/typos/releases/download/v${SPELL_TYPOS_VERSION}/typos-v${SPELL_TYPOS_VERSION}-${TYPOS_ARCH}-unknown-linux-musl.tar.gz" \
+    | tar -xz -C /usr/local/bin ./typos && \
+    chmod +x /usr/local/bin/typos
 # terraform-fmt installation
 # Managed with COPY --link --from=terragrunt /bin/terraform /usr/bin/
 # tofu-fmt installation
