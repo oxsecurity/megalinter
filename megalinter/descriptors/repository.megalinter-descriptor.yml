@@ -856,6 +856,9 @@ linters:
       method: binary
       # renovate: datasource=github-releases depName=google/osv-scanner extractVersion=^v(?<version>.+)$
       version: "2.7.1"
+      # The official binary exits 0 on --help (the Alpine package used in Docker exits 127)
+      linter_overrides:
+        help_command_return_code: 0
       platforms:
         - linux/amd64
         - linux/arm64
