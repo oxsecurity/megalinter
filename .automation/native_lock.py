@@ -39,6 +39,8 @@ from megalinter.native.runtimes import load_runtime_catalog  # noqa: E402
 
 KEYS_DIR = os.path.join(REPO_HOME, ".automation", "native-keys")
 DOWNLOAD_WORKERS = 6
+# Bump the version of a method when its lock content changes: existing locks are regenerated
+GENERATOR_VERSIONS = {"npm": 2}
 COMMAND_TIMEOUT_SECONDS = 1800
 NPM_SIGNATURES_TIMEOUT_SECONDS = 900
 # gh and cosign share a sigstore TUF cache that does not support concurrent refreshes
@@ -331,6 +333,28 @@ def parse_npm_package(package):
     return name, version
 
 
+# Platform-specific packages reachable only through optionalDependencies are optional for npm, but
+# packages vendored with their own shrinkwrap (esbuild in @salesforce/plugin-code-analyzer) are
+# locked without the flag, and npm ci then fails with EBADPLATFORM on the other platforms
+def mark_platform_packages_optional(package_lock):
+    packages = package_lock.get("packages", {})
+    optional_names = set()
+    required_names = set()
+    for entry in packages.values():
+        optional_names.update((entry.get("optionalDependencies") or {}).keys())
+        required_names.update((entry.get("dependencies") or {}).keys())
+    for path, entry in packages.items():
+        name = path.rsplit("node_modules/", 1)[-1]
+        if (
+            path
+            and (entry.get("os") or entry.get("cpu"))
+            and name in optional_names
+            and name not in required_names
+        ):
+            entry["optional"] = True
+    return package_lock
+
+
 def lock_npm(key, resolved, folder, verify_signatures):
     work = tempfile.mkdtemp(dir=folder)
     dependencies = dict(parse_npm_package(package) for package in resolved["packages"])
@@ -370,7 +394,7 @@ def lock_npm(key, resolved, folder, verify_signatures):
     with open(os.path.join(work, "package.json"), "r", encoding="utf-8") as f:
         package_json = json.load(f)
     with open(os.path.join(work, "package-lock.json"), "r", encoding="utf-8") as f:
-        package_lock = json.load(f)
+        package_lock = mark_platform_packages_optional(json.load(f))
     return {"common": {"package_json": package_json, "package_lock": package_lock}}
 
 
@@ -567,7 +591,13 @@ def lock_linter(spec, options, folder):
     resolved = resolve_native_install(spec)
     previous = read_previous(spec.key)
     spec_hash = native_lock.compute_spec_hash(resolved)
-    if previous and previous.get("spec_hash") == spec_hash and not options.force:
+    generator = GENERATOR_VERSIONS.get(resolved["method"], 1)
+    if (
+        previous
+        and previous.get("spec_hash") == spec_hash
+        and previous.get("generator", 1) >= generator
+        and not options.force
+    ):
         return "unchanged"
     if options.accept_changes:
         previous = None
@@ -577,7 +607,13 @@ def lock_linter(spec, options, folder):
     content = LOCKERS[method](spec.key, resolved, folder, previous, options)
     native_lock.write_lock(
         spec.key,
-        {"linter": spec.key, "method": method, "spec_hash": spec_hash, **content},
+        {
+            "linter": spec.key,
+            "method": method,
+            "spec_hash": spec_hash,
+            "generator": generator,
+            **content,
+        },
     )
     return "locked"
 

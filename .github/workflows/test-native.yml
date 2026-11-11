@@ -129,6 +129,7 @@ jobs:
       VERSION_GET_AT_RUNTIME: "true"
       PYTHONUTF8: "1"
       LINTERS: ${{ matrix.linters }}
+      HOST_LINTERS: ${{ matrix.host_linters }}
       TESTS: ${{ matrix.tests }}
     steps:
       - name: Checkout Code
@@ -160,11 +161,17 @@ jobs:
         run: rustup component add clippy
       # Tools that MegaLinter does not download itself (declared with `suggest`)
       - name: Install host-provided tools
-        run: python .automation/native_ci.py prepare --linters "$LINTERS"
+        run: python .automation/native_ci.py prepare --linters "$LINTERS,$HOST_LINTERS"
 
-      # The install test: every linter of the shard is installed from its lock
+      # The install test: every linter of the shard downloaded by MegaLinter is installed from its lock
       - name: Install linters
+        if: env.LINTERS != ''
         run: megalinter install-linters ${LINTERS//,/ } --runtimes auto
+      # Linters provided by the host can only be tested where the runner provides them:
+      # their tests are skipped when the tool is missing
+      - name: Register host-provided linters
+        if: env.HOST_LINTERS != ''
+        run: megalinter install-linters ${HOST_LINTERS//,/ } --runtimes auto || echo "::warning::Some host-provided tools are not available on this runner, their tests are skipped"
       - name: Show native status
         run: megalinter list-linters --json
 

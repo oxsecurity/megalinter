@@ -1592,6 +1592,9 @@ class Linter:
         m = reg.search(version_output)
         if m:
             self.linter_version_cache = ".".join(m.group().split())
+        elif self.native_toolchain is not None and self.native_toolchain.version:
+            # Native mode: some release builds report no version (phplint: dev-main)
+            self.linter_version_cache = self.native_toolchain.version
         else:
             logging.error(
                 f"Unable to extract version with regex {str(reg)} from {version_output}"
@@ -2172,7 +2175,11 @@ class Linter:
     # ignore file referenced by absolute path (ex: v8r)
     def build_ignore_file_argument(self, arg_name, value):
         if os.path.isabs(value):
-            value = os.path.relpath(value, self.workspace).replace("\\", "/")
+            try:
+                value = os.path.relpath(value, self.workspace).replace("\\", "/")
+            except ValueError:
+                # Windows: the report folder can be on another drive than the workspace
+                value = value.replace("\\", "/")
         if arg_name.endswith("=") or arg_name.endswith(":"):
             return [arg_name + value]
         return [arg_name, value]

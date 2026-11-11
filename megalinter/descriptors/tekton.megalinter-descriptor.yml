@@ -71,4 +71,5 @@ linters:
         - linux/arm64
         - darwin/amd64
         - darwin/arm64
-        - windows/amd64
+      unsupported:
+        windows/amd64: "tekton-lint builds the paths of its own files incorrectly on Windows (the drive letter is repeated, ENOENT). Use Docker."

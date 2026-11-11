@@ -117,10 +117,10 @@ linters:
       platforms:
         - linux/amd64
         - linux/arm64
-        - darwin/amd64
         - darwin/arm64
       unsupported:
         windows/amd64: "ansible-lint does not support Windows (Ansible requires a POSIX system). Use Docker."
+        darwin/amd64: "ansible-lint depends on cryptography, which only publishes Apple Silicon wheels for macOS. Use Docker."
     supported_platforms:
       platform:
         - linux/amd64

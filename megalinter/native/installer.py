@@ -180,6 +180,7 @@ class NativeInstaller:
                 "spec_hash": compute_spec_hash(resolved),
                 "platform": self.platform,
                 "path_dirs": result.path_dirs,
+                "version": effective.get("version"),
                 "env": result.env,
                 "os": current_os_family(),
             },

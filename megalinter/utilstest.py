@@ -20,7 +20,7 @@ from megalinter.constants import (
     DEFAULT_DOCKER_WORKSPACE_DIR,
     DEFAULT_REPORT_FOLDER_NAME,
 )
-from megalinter.native.context import is_native_mode
+from megalinter.native.context import NativeError, is_native_mode
 from megalinter.native.installer import NativeInstaller
 from megalinter.native.resolve import spec_from_linter
 
@@ -152,6 +152,14 @@ def attach_native_toolchain(linter):
     status, reason = installer.status(spec)
     if status == "unsupported":
         raise unittest.SkipTest(reason)
+    # Tools provided by the host (not downloaded by MegaLinter) can be absent from a runner
+    if status in ("host-provided", "not installed") and (
+        spec.native_install["method"] == "runtime_provided"
+    ):
+        try:
+            installer.install(spec)
+        except NativeError as e:
+            raise unittest.SkipTest(f"{linter.name} is not available on this host: {e}")
     linter.native_toolchain = installer.toolchain(spec)
     return linter
 

@@ -140,6 +140,21 @@ class ExtractTest(unittest.TestCase):
         with self.assertRaises(NativeError):
             extract.extract_archive(self.archive, "tar.gz", self.destination)
 
+    def test_tar_relative_symlink_inside_archive_is_allowed(self):
+        self.write_tar(
+            [
+                ("node/lib/npm-cli.js", b"x", tarfile.REGTYPE, None),
+                ("node/bin/npm", b"", tarfile.SYMTYPE, "../lib/npm-cli.js"),
+            ]
+        )
+        extract.extract_archive(self.archive, "tar.gz", self.destination, 1)
+        self.assertTrue(os.path.lexists(os.path.join(self.destination, "bin", "npm")))
+
+    def test_tar_relative_symlink_escaping_after_strip_is_rejected(self):
+        self.write_tar([("node/bin/npm", b"", tarfile.SYMTYPE, "../../../outside")])
+        with self.assertRaises(NativeError):
+            extract.extract_archive(self.archive, "tar.gz", self.destination, 1)
+
     def test_tar_device_file_is_rejected(self):
         self.write_tar([("dev", b"", tarfile.CHRTYPE, "")])
         with self.assertRaises(NativeError):

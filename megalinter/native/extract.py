@@ -41,12 +41,25 @@ def extract_tar(path, kind, destination, strip_components):
             relative = strip_member_name(member.name, strip_components)
             if relative is None:
                 continue
-            if member.issym() or member.islnk():
+            if member.issym():
+                # Relative links are allowed as long as they stay inside the archive
+                # (node: bin/npm -> ../lib/node_modules/npm/bin/npm-cli.js)
                 link_target = member.linkname.replace("\\", "/")
-                if link_target.startswith("/") or ".." in link_target.split("/"):
+                resolved = posixpath.normpath(
+                    posixpath.join(posixpath.dirname(relative), link_target)
+                )
+                if link_target.startswith("/") or resolved.split("/")[0] == "..":
                     raise NativeError(
                         f"Unsafe link in archive: {member.name} -> {member.linkname}"
                     )
+            if member.islnk():
+                # Hard link targets are archive paths: strip them like the member names
+                link_target = strip_member_name(member.linkname, strip_components)
+                if link_target is None:
+                    raise NativeError(
+                        f"Unsafe link in archive: {member.name} -> {member.linkname}"
+                    )
+                member.linkname = link_target
             if not (
                 member.isfile() or member.isdir() or member.issym() or member.islnk()
             ):

@@ -153,9 +153,16 @@ def install_explicit_linters(arguments):
     if unknown:
         raise NativeError("Unknown linter(s): " + ", ".join(unknown))
     installer = NativeInstaller()
+    errors = []
     for key in arguments.linters:
-        installer.install(by_key[key], force=arguments.force)
-        logging.info(f"{key}: installed")
+        try:
+            installer.install(by_key[key], force=arguments.force)
+            logging.info(f"{key}: installed")
+        except NativeError as e:
+            logging.error(f"{key}: {e}")
+            errors.append(key)
+    if errors:
+        raise NativeError("Not installed: " + ", ".join(errors))
     return 0
 
 

@@ -126,6 +126,9 @@ runtimes:
       executables: [dotnet]
       version_command: ["{{EXECUTABLE}}", "--version"]
       version_regex: '(\d+[\d.]*)'
+      # .NET tool launchers locate the runtime through DOTNET_ROOT
+      env:
+        DOTNET_ROOT: "{{EXECUTABLE_DIR}}"
     suggest:
       windows: "winget install --id Microsoft.DotNet.SDK.9 -e"
       darwin: "brew install --cask dotnet-sdk"

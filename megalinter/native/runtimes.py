@@ -104,7 +104,12 @@ def detect_on_host(name, definition, search_path=None):
             # Java 8 and older report 1.x
             if name == "java" and version.startswith("1."):
                 version = version[2:]
-            return RuntimeInfo(name, version, "host", executable=found)
+            executable_dir = os.path.dirname(os.path.realpath(found))
+            env = {
+                key: value.replace("{{EXECUTABLE_DIR}}", executable_dir)
+                for key, value in (detect.get("env") or {}).items()
+            }
+            return RuntimeInfo(name, version, "host", executable=found, env=env)
     return None
 
 

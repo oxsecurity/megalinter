@@ -47,16 +47,37 @@ ALLOWED_ENV_NAMES = {
     "FORCE_COLOR",
     "NO_COLOR",
     "CI",
+    # Toolchain locations (not secrets): linters launched by a runtime need them
+    "JAVA_HOME",
+    "DOTNET_ROOT",
+    "DOTNET_ROOT_X64",
+    "DOTNET_CLI_HOME",
+    "NUGET_PACKAGES",
+    "GOROOT",
+    "GOPATH",
+    "GOMODCACHE",
+    "CARGO_HOME",
+    "RUSTUP_HOME",
+    "RUSTUP_TOOLCHAIN",
+    "GEM_HOME",
+    "GEM_PATH",
+    "R_HOME",
+    "R_LIBS_USER",
+    "PERL5LIB",
+    "PERL_LOCAL_LIB_ROOT",
+    "COMPOSER_HOME",
+    "PSMODULEPATH",
 }
 ALLOWED_ENV_PREFIXES = ("LC_", "XDG_", "MEGALINTER_", "MEGALINTER")
 PATH_NAME = "PATH"
 
 
 class Toolchain:
-    def __init__(self, path_dirs=None, env=None, install_dir=None):
+    def __init__(self, path_dirs=None, env=None, install_dir=None, version=None):
         self.path_dirs = path_dirs or []
         self.env = env or {}
         self.install_dir = install_dir
+        self.version = version
 
 
 def is_allowed_env_name(name, extra_allowed):
@@ -103,7 +124,7 @@ def installed_toolchain(home, key, resolved_native_install, policy="never"):
             path_dirs.append(os.path.dirname(runtime.executable))
         path_dirs.extend(runtime.path_dirs)
         env.update(runtime.env)
-    return Toolchain(path_dirs, env, entry["dir"])
+    return Toolchain(path_dirs, env, entry["dir"], entry.get("version"))
 
 
 def build_subprocess_env(base_env, toolchain, request_id, unsecured_variables=None):

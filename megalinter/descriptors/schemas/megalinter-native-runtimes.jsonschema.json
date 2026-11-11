@@ -65,6 +65,13 @@
             "version_regex": {
               "type": "string",
               "description": "Regular expression whose first group captures the version"
+            },
+            "env": {
+              "type": "object",
+              "description": "Environment variables set when the runtime is found on the host ({{EXECUTABLE_DIR}}: real directory of the executable)",
+              "additionalProperties": {
+                "type": "string"
+              }
             }
           }
         },
