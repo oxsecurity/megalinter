@@ -143,6 +143,7 @@
         "SPELL_LYCHEE",
         "SPELL_MISSPELL",
         "SPELL_PROSELINT",
+        "SPELL_TYPOS",
         "SPELL_VALE",
         "SQL_SQLFLUFF",
         "SQL_SQL_LINT",
