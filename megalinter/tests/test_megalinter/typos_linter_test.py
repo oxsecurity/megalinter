@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# cspell:ignore adress recieve retrive seperate
 
 import json
 import os
@@ -340,6 +341,46 @@ class TyposLinterTest(unittest.TestCase):
         self.assertEqual(api_data["numberErrorsFound"], expected_errors)
         self.assertEqual(api_data["output"], expected_human)
 
+    def _run_with_formatter_error_modes(
+        self,
+        cli_lint_mode,
+        files,
+        mock_side_effect,
+        expected_human,
+        expected_errors,
+        extra_assertions=None,
+    ):
+        for formatters_disable_errors, expected_status, expected_rc in [
+            (None, "warning", 0),
+            ("false", "error", 1),
+        ]:
+            with self.subTest(formatters_disable_errors=formatters_disable_errors):
+                self._configure_reporters(formatters_disable_errors)
+                linter = build_typos_linter(
+                    self.request_id,
+                    self.workspace,
+                    self.report_folder,
+                    cli_lint_mode=cli_lint_mode,
+                )
+                linter.files = list(files)
+                with mock.patch.object(
+                    linter, "_run_lint_subprocess", side_effect=mock_side_effect
+                ):
+                    with self.assertLogs(level="INFO") as captured_logs:
+                        linter.run()
+
+                self.assertIn(expected_human, "\n".join(captured_logs.output))
+                if extra_assertions is not None:
+                    extra_assertions(linter)
+                self._assert_reporter_outputs(
+                    linter=linter,
+                    expected_human=expected_human,
+                    expected_status=expected_status,
+                    expected_return_code=expected_rc,
+                    expected_errors=expected_errors,
+                    expected_file_results_count=len(files),
+                )
+
     def test_run_list_of_files_with_reporters(self):
         ndjson = "\n".join(
             [
@@ -369,35 +410,14 @@ class TyposLinterTest(unittest.TestCase):
         expected_human = "./a.py:1:2: `teh` -> the\n./a.py:5:0: `recieve` -> receive"
         file_a = os.path.join(self.workspace, "a.py")
 
-        for formatters_disable_errors, expected_status, expected_rc in [
-            (None, "warning", 0),
-            ("false", "error", 1),
-        ]:
-            with self.subTest(formatters_disable_errors=formatters_disable_errors):
-                self._configure_reporters(formatters_disable_errors)
-                linter = build_typos_linter(
-                    self.request_id,
-                    self.workspace,
-                    self.report_folder,
-                    cli_lint_mode="list_of_files",
-                )
-                linter.files = [file_a]
-                with mock.patch.object(
-                    linter, "_run_lint_subprocess", return_value=(2, ndjson)
-                ):
-                    with self.assertLogs(level="INFO") as captured_logs:
-                        linter.run()
-
-                self.assertEqual(linter.stdout, ndjson)
-                self.assertIn(expected_human, "\n".join(captured_logs.output))
-                self._assert_reporter_outputs(
-                    linter=linter,
-                    expected_human=expected_human,
-                    expected_status=expected_status,
-                    expected_return_code=expected_rc,
-                    expected_errors=2,
-                    expected_file_results_count=1,
-                )
+        self._run_with_formatter_error_modes(
+            cli_lint_mode="list_of_files",
+            files=[file_a],
+            mock_side_effect=[(2, ndjson)],
+            expected_human=expected_human,
+            expected_errors=2,
+            extra_assertions=lambda linter: self.assertEqual(linter.stdout, ndjson),
+        )
 
     def test_run_file_mode_with_reporters(self):
         good_file = os.path.join(self.workspace, "good.txt")
@@ -430,37 +450,19 @@ class TyposLinterTest(unittest.TestCase):
             f"{bad_file}:1:0: `teh` -> the\n{bad_file}:2:4: `seperate` -> separate"
         )
 
-        for formatters_disable_errors, expected_status, expected_rc in [
-            (None, "warning", 0),
-            ("false", "error", 1),
-        ]:
-            with self.subTest(formatters_disable_errors=formatters_disable_errors):
-                self._configure_reporters(formatters_disable_errors)
-                linter = build_typos_linter(
-                    self.request_id,
-                    self.workspace,
-                    self.report_folder,
-                    cli_lint_mode="file",
-                )
-                linter.files = [good_file, bad_file]
-                with mock.patch.object(
-                    linter,
-                    "_run_lint_subprocess",
-                    side_effect=[(0, ""), (2, bad_ndjson)],
-                ):
-                    linter.run()
+        def assert_file_results(linter):
+            self.assertEqual(linter.files_lint_results[0]["status_code"], 0)
+            self.assertEqual(linter.files_lint_results[1]["errors_number"], 2)
+            self.assertEqual(linter.files_lint_results[1]["stdout"], expected_human)
 
-                self.assertEqual(linter.files_lint_results[0]["status_code"], 0)
-                self.assertEqual(linter.files_lint_results[1]["errors_number"], 2)
-                self.assertEqual(linter.files_lint_results[1]["stdout"], expected_human)
-                self._assert_reporter_outputs(
-                    linter=linter,
-                    expected_human=expected_human,
-                    expected_status=expected_status,
-                    expected_return_code=expected_rc,
-                    expected_errors=2,
-                    expected_file_results_count=2,
-                )
+        self._run_with_formatter_error_modes(
+            cli_lint_mode="file",
+            files=[good_file, bad_file],
+            mock_side_effect=[(0, ""), (2, bad_ndjson)],
+            expected_human=expected_human,
+            expected_errors=2,
+            extra_assertions=assert_file_results,
+        )
 
     def test_run_project_mode_clean_and_failing(self):
         linter_clean = build_typos_linter(
@@ -526,16 +528,7 @@ class TyposLinterTest(unittest.TestCase):
             [".md", ".py", ".txt"],
         )
 
-    def test_apply_fixes_all_end_to_end(self):
-        if shutil.which("typos") is None:
-            self.skipTest("typos binary not available on PATH")
-
-        target_file = os.path.join(self.workspace, "guide.md")
-        with open(target_file, "w", encoding="utf-8") as handle:
-            handle.write(
-                "Follow teh checklist to recieve updates in a seperate environment.\n"
-            )
-
+    def _create_megalinter_for_workspace(self, extra_config):
         e2e_request_id = f"test-typos-e2e-{uuid.uuid4()}"
         self.addCleanup(
             lambda: (
@@ -544,40 +537,80 @@ class TyposLinterTest(unittest.TestCase):
                 else None
             )
         )
-        config.init_config(
-            e2e_request_id,
-            self.workspace,
-            {
-                "DEFAULT_WORKSPACE": self.workspace,
-                "GITHUB_WORKSPACE": self.workspace,
-                "ENABLE_LINTERS": "SPELL_TYPOS",
-                "APPLY_FIXES": "all",
-                "SPELL_TYPOS_FILE_EXTENSIONS": [".md"],
-                "PARALLEL": "false",
-                "IGNORE_GITIGNORED_FILES": "false",
-                "VALIDATE_ALL_CODEBASE": "true",
-                "REPORT_OUTPUT_FOLDER": "none",
-                "TEXT_REPORTER": "false",
-                "CONSOLE_REPORTER": "false",
-                "GITHUB_COMMENT_REPORTER": "false",
-                "GITHUB_STATUS_REPORTER": "false",
-                "CONFIG_REPORTER": "false",
-                "API_REPORTER": "false",
-                "SARIF_REPORTER": "false",
-                "UPDATED_SOURCES_REPORTER": "false",
-                "FLAVOR_SUGGESTIONS": "false",
-            },
-        )
-        mega_linter = Megalinter(
-            {"request_id": e2e_request_id, "workspace": self.workspace}
-        )
-        mega_linter.run()
+        cfg = {
+            "DEFAULT_WORKSPACE": self.workspace,
+            "GITHUB_WORKSPACE": self.workspace,
+            "ENABLE_LINTERS": "SPELL_TYPOS",
+            "SPELL_TYPOS_FILE_EXTENSIONS": [".md"],
+            "PARALLEL": "false",
+            "IGNORE_GITIGNORED_FILES": "false",
+            "VALIDATE_ALL_CODEBASE": "true",
+            "REPORT_OUTPUT_FOLDER": "none",
+            "TEXT_REPORTER": "false",
+            "CONSOLE_REPORTER": "false",
+            "GITHUB_COMMENT_REPORTER": "false",
+            "GITHUB_STATUS_REPORTER": "false",
+            "CONFIG_REPORTER": "false",
+            "API_REPORTER": "false",
+            "SARIF_REPORTER": "false",
+            "UPDATED_SOURCES_REPORTER": "false",
+            "FLAVOR_SUGGESTIONS": "false",
+        }
+        cfg.update(extra_config)
+        config.init_config(e2e_request_id, self.workspace, cfg)
+        return Megalinter({"request_id": e2e_request_id, "workspace": self.workspace})
 
+    def test_default_config_active_without_autofix(self):
+        target_file = os.path.join(self.workspace, "guide.md")
+        with open(target_file, "w", encoding="utf-8") as handle:
+            handle.write("Follow teh checklist.\n")
+
+        mega_linter = self._create_megalinter_for_workspace({})
+        active_linters = [
+            linter for linter in mega_linter.linters if linter.is_active is True
+        ]
+        self.assertEqual([linter.name for linter in active_linters], ["SPELL_TYPOS"])
+        typos_linter = active_linters[0]
+        self.assertEqual(mega_linter.apply_fixes, "none")
+        self.assertFalse(typos_linter.apply_fixes)
+        cmd = typos_linter.build_lint_command(target_file)
+        self.assertNotIn("--write-changes", cmd)
+
+    def _run_megalinter_end_to_end(self, extra_config, content, filename="guide.md"):
+        if shutil.which("typos") is None:
+            self.skipTest("typos binary not available on PATH")
+
+        target_file = os.path.join(self.workspace, filename)
+        with open(target_file, "w", encoding="utf-8") as handle:
+            handle.write(content)
+
+        mega_linter = self._create_megalinter_for_workspace(extra_config)
+        mega_linter.run()
         self.assertEqual(mega_linter.return_code, 0)
         active_linters = [
             linter for linter in mega_linter.linters if linter.is_active is True
         ]
         self.assertEqual([linter.name for linter in active_linters], ["SPELL_TYPOS"])
+        return active_linters[0], target_file
+
+    def test_default_config_active_without_autofix_end_to_end(self):
+        original_content = (
+            "Follow teh checklist to recieve updates in a seperate environment.\n"
+        )
+        typos_linter, target_file = self._run_megalinter_end_to_end(
+            {}, original_content
+        )
+        self.assertFalse(typos_linter.apply_fixes)
+        self.assertEqual(typos_linter.status, "warning")
+        self.assertEqual(typos_linter.total_number_errors, 3)
+        with open(target_file, "r", encoding="utf-8") as handle:
+            self.assertEqual(handle.read(), original_content)
+
+    def test_apply_fixes_all_end_to_end(self):
+        _, target_file = self._run_megalinter_end_to_end(
+            {"APPLY_FIXES": "all"},
+            "Follow teh checklist to recieve updates in a seperate environment.\n",
+        )
         with open(target_file, "r", encoding="utf-8") as handle:
             self.assertEqual(
                 handle.read(),

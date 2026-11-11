@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Unit tests for the SPELL descriptor and its linters."""
 
+# cspell:ignore activatable recieve
+
 import os
 import re
 import tempfile
@@ -8,7 +10,6 @@ import unittest
 import uuid
 
 import yaml
-
 from megalinter import config, linter_factory, utils
 
 REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
@@ -132,6 +133,8 @@ class SpellDescriptorTest(unittest.TestCase):
 
             self.assertEqual(typos.name, "SPELL_TYPOS")
             self.assertEqual(typos.linter_name, "typos")
+            self.assertTrue(typos.is_active)
+            self.assertFalse(typos.apply_fixes)
             self.assertTrue(typos.is_formatter)
             self.assertEqual(typos.cli_lint_fix_arg_name, "--write-changes")
             self.assertEqual(
