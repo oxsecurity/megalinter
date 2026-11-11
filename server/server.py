@@ -87,7 +87,7 @@ async def request_analysis(
     request_id = "RQ_" + str(uuid1())
     job = q.enqueue(
         "server.server_worker.processAnalysisRequest",
-        item.dict(),
+        item.model_dump(),
         request_id,
         server_id,
     )
@@ -99,6 +99,11 @@ async def request_analysis(
 
 @app.post("/upload-file")
 async def create_upload_file(file: UploadFile):
+    if not file.filename:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Uploaded file must have a filename",
+        )
     file_upload_id = "FILE_" + str(uuid1())
     uploaded_file_path = os.path.join("/tmp/server-files", file_upload_id)
     os.makedirs(uploaded_file_path)
