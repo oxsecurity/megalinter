@@ -99,6 +99,7 @@
         "PYTHON_PYRIGHT",
         "PYTHON_RUFF",
         "PYTHON_RUFF_FORMAT",
+        "PYTHON_TY",
         "RAKU_RAKU",
         "REPOSITORY_BETTERLEAKS",
         "REPOSITORY_CHECKOV",

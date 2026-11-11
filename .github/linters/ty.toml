@@ -1,0 +1,13 @@
+[environment]
+extra-paths = [".automation"]
+
+[[overrides]]
+include = [
+    ".automation/build.py",
+    ".automation/validate_agent_plugins.py",
+    "megalinter/llm_provider/**",
+    "server/**",
+]
+
+[overrides.rules]
+import-not-found = "ignore"

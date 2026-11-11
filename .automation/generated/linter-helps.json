@@ -14049,6 +14049,22 @@
         "  -h, --help            Display this help dialog",
         ""
     ],
+    "ty": [
+        "An extremely fast Python type checker.",
+        "",
+        "Usage: ty <COMMAND>",
+        "",
+        "Commands:",
+        "  check    Check a project for type errors",
+        "  server   Start the language server",
+        "  version  Display ty's version",
+        "  explain  Explain rules and other parts of ty",
+        "  help     Print this message or the help of the given subcommand(s)",
+        "",
+        "Options:",
+        "  -h, --help     Print help",
+        "  -V, --version  Print version"
+    ],
     "v8r": [
         "\u2139 No config file found",
         "v8r <patterns..>",

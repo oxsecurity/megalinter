@@ -30,6 +30,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - New linters
 
+  - Add [ty](https://docs.astral.sh/ty/) linter for PYTHON — fast Python type checker and language server written in Rust
+
 - Disabled linters
 
 - Re-enabled linters
