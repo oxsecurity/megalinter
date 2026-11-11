@@ -9,7 +9,6 @@ from megalinter.native.resolve import (
     resolve_version_reference,
 )
 from megalinter.native.runtimes import satisfies, version_tuple
-from megalinter.native.spec import validate_all
 
 DOCKERFILE = [
     "# renovate: datasource=pypi depName=black\nARG PIP_BLACK_VERSION=26.10.1",
@@ -107,11 +106,16 @@ class VersionTest(unittest.TestCase):
         self.assertEqual(version_tuple("21.0.13+9"), (21, 0, 13))
 
 
+# The complete native_install validation (JSON schema, platforms, versions) runs in the build
+# and in the "Native descriptors and locks" CI job: these tests only use the core dependencies,
+# so that they can run inside the Docker images
 class DescriptorsTest(unittest.TestCase):
-    def test_every_linter_declares_a_valid_native_install(self):
-        specs, errors = validate_all()
+    def test_every_linter_resolves_its_native_install(self):
+        specs = load_native_specs()
         self.assertGreater(len(specs), 100)
-        self.assertEqual(errors, [])
+        for spec in specs:
+            self.assertIsNotNone(spec.native_install, spec.key)
+            resolve_native_install(spec)
 
     def test_linter_keys_are_unique(self):
         keys = [spec.key for spec in load_native_specs()]
