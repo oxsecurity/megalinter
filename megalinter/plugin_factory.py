@@ -7,7 +7,6 @@ import sys
 
 import requests
 import yaml
-
 from megalinter import config, linter_factory, utils
 
 

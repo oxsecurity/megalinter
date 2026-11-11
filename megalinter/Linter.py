@@ -34,7 +34,6 @@ import urllib.request
 from time import perf_counter
 
 import yaml
-
 from megalinter import config, pre_post_factory, utils, utils_reporter, utils_sarif
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
 from megalinter.llm_advisor import LLMAdvisor

@@ -17,7 +17,6 @@ from shutil import copytree
 from uuid import uuid1
 
 import git
-
 from megalinter import (
     Linter,
     config,

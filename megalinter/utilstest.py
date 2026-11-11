@@ -14,7 +14,6 @@ from datetime import datetime
 from shutil import copytree
 
 from git import Repo
-
 from megalinter import Megalinter, config, utils
 from megalinter.constants import (
     DEFAULT_DOCKER_WORKSPACE_DIR,

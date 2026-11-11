@@ -4,7 +4,6 @@ import logging
 import os
 
 import yaml
-
 from megalinter import Linter, flavor_factory
 from megalinter.native.context import (
     current_platform,

@@ -2,7 +2,6 @@ import glob
 import os
 
 import yaml
-
 from megalinter.linter_factory import resolve_linter_extends
 from megalinter.native.resolve import NativeLinterSpec
 from megalinter.utils import get_descriptor_dir

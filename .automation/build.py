@@ -32,7 +32,6 @@ from docker_pulls_chart import generate_docker_pulls_chart
 from docker_stats import update_docker_pulls_counter
 from giturlparse import parse
 from megalinter import config, utils
-from megalinter.native.spec import validate_all
 from megalinter.constants import (
     DEFAULT_DOCKERFILE_APK_PACKAGES,
     DEFAULT_DOCKERFILE_ARGS,
@@ -56,6 +55,7 @@ from megalinter.constants import (
     ML_REPO,
     ML_REPO_URL,
 )
+from megalinter.native.spec import validate_all
 from megalinter.removed_linters import (
     REMOVED_DESCRIPTORS,
     REMOVED_LINTER_ALIASES,
@@ -2700,7 +2700,9 @@ def get_native_install_md(item, linter_key):
     ]
     for requirement in native.get("requires", []):
         constraint = f" {requirement['version']}" if requirement.get("version") else ""
-        linter_doc_md += [f"- Requires the {requirement['runtime']} runtime{constraint}"]
+        linter_doc_md += [
+            f"- Requires the {requirement['runtime']} runtime{constraint}"
+        ]
     linter_doc_md += [
         "",
         "```yaml",
@@ -2717,7 +2719,11 @@ def get_native_install_md(item, linter_key):
             support = "❌ " + (native.get("unsupported") or {}).get(platform, "")
         linter_doc_md += [f"| {label} | {support} |"]
     if native["method"] == "runtime_provided" and native.get("suggest"):
-        linter_doc_md += ["", "This tool is not downloaded by MegaLinter, install it yourself:", ""]
+        linter_doc_md += [
+            "",
+            "This tool is not downloaded by MegaLinter, install it yourself:",
+            "",
+        ]
         for system, command in native["suggest"].items():
             linter_doc_md += [f"- {system}: `{command}`"]
     return linter_doc_md + [""]

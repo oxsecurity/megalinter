@@ -5,7 +5,6 @@ import sys
 
 import jsonschema
 import yaml
-
 from megalinter.native.catalog import load_native_specs
 from megalinter.native.resolve import (
     METHODS_WITHOUT_VERSION,

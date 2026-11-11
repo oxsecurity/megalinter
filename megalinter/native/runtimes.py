@@ -6,7 +6,6 @@ import subprocess
 import sys
 
 import yaml
-
 from megalinter import config
 from megalinter.native import extract
 from megalinter.native.context import (
