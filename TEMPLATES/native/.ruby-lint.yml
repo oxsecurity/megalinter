@@ -1,9 +1,10 @@
 ---
-# Native mode (MegaLinter without Docker): same as .ruby-lint.yml, with the line endings of
-# the Docker image (LF) on every platform: rubocop expects CRLF on Windows by default
+# Native mode (MegaLinter without Docker): same as .ruby-lint.yml, without the line endings
+# check: on Windows, rubocop expects CRLF by default and writes its fixes with CRLF, so LF
+# files and fixed files would be reported. Git normalizes line endings (.gitattributes)
 inherit_gem:
   rubocop-github:
     - config/default.yml
 
 Layout/EndOfLine:
-  EnforcedStyle: lf
+  Enabled: false
