@@ -1,0 +1,9 @@
+---
+# Native mode (MegaLinter without Docker): same as .ruby-lint.yml, with the line endings of
+# the Docker image (LF) on every platform: rubocop expects CRLF on Windows by default
+inherit_gem:
+  rubocop-github:
+    - config/default.yml
+
+Layout/EndOfLine:
+  EnforcedStyle: lf
