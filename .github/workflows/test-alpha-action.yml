@@ -1,0 +1,70 @@
+# Temporary test workflow: shows that the alpha MegaLinter image can be pulled
+# and run, both through the GitHub Action (oxsecurity/megalinter@alpha) and
+# with a plain docker pull/run like an Azure DevOps pipeline does.
+# Do not merge.
+---
+name: Test alpha action
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/test-alpha-action.yml
+
+permissions: {}
+
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  github-action:
+    name: GitHub Action oxsecurity/megalinter@alpha
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - name: MegaLinter alpha
+        uses: oxsecurity/megalinter@alpha # zizmor: ignore[unpinned-uses,ref-confusion]
+        env:
+          VALIDATE_ALL_CODEBASE: true
+          FILTER_REGEX_INCLUDE: test-alpha-action\.yml
+          ENABLE_LINTERS: ACTION_ACTIONLINT,YAML_YAMLLINT
+          GITHUB_COMMENT_REPORTER: false
+          GITHUB_STATUS_REPORTER: false
+          LLM_ADVISOR_ENABLED: false
+
+  docker-pull:
+    name: docker pull + run (Azure DevOps style)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - name: Pull MegaLinter alpha
+        run: |
+          docker version
+          time docker pull ghcr.io/oxsecurity/megalinter:alpha
+          docker image ls ghcr.io/oxsecurity/megalinter
+
+      - name: Run MegaLinter alpha
+        run: |
+          docker run --rm \
+            -v "${GITHUB_WORKSPACE}:/tmp/lint:rw" \
+            -e VALIDATE_ALL_CODEBASE=true \
+            -e FILTER_REGEX_INCLUDE='test-alpha-action\.yml' \
+            -e ENABLE_LINTERS=ACTION_ACTIONLINT,YAML_YAMLLINT \
+            -e LLM_ADVISOR_ENABLED=false \
+            ghcr.io/oxsecurity/megalinter:alpha
