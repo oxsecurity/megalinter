@@ -100,7 +100,7 @@ jobs:
 
         # You can override MegaLinter flavor used to have faster performances
         # More info at https://megalinter.io/flavors/
-        uses: oxsecurity/megalinter/flavors/python@beta # zizmor: ignore[unpinned-uses,ref-confusion]
+        uses: oxsecurity/megalinter@alpha # zizmor: ignore[unpinned-uses,ref-confusion]
 
         id: ml
 
