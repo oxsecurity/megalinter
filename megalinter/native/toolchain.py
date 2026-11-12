@@ -16,6 +16,12 @@ ALLOWED_ENV_NAMES = {
     "TMP",
     "TMPDIR",
     "SYSTEMROOT",
+    # Windows expands system folders (ProgramData...) with these: ruby's rubygems fails without them
+    "SYSTEMDRIVE",
+    "ALLUSERSPROFILE",
+    "HOMEDRIVE",
+    "HOMEPATH",
+    "PUBLIC",
     "WINDIR",
     "COMSPEC",
     "PATHEXT",
