@@ -68,13 +68,16 @@ def run_command(command, env, cwd=None):
         raise NativeError(f"Unable to run {' '.join(command)}: {e}") from e
     if process.returncode != 0:
         lines = process.stdout.decode("utf-8", errors="replace").splitlines()
-        # The cause is often printed first, above a long backtrace (ruby, java)
+        # The cause is often printed first, above a long backtrace (ruby, java),
+        # sometimes after interpreter warnings
         if len(lines) > OUTPUT_HEAD_LINES + OUTPUT_TAIL_LINES:
-            lines = [
-                *lines[:OUTPUT_HEAD_LINES],
-                "[...]",
-                *lines[-OUTPUT_TAIL_LINES:],
-            ]
+            tail = lines[-OUTPUT_TAIL_LINES:]
+            head = [
+                line
+                for line in lines[:-OUTPUT_TAIL_LINES]
+                if ": warning: " not in line and not line.lstrip().startswith("from ")
+            ][:OUTPUT_HEAD_LINES]
+            lines = [*head, "[...]", *tail]
         output = "\n".join(lines)
         raise NativeError(
             f"{' '.join(command)} failed ({process.returncode}):\n{output}"
