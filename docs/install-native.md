@@ -98,6 +98,27 @@ Ruby, R and Rust have no portable, verifiable download: install them with your p
 | `megalinter doctor`                   | Check Git Bash, uv, runtimes and the install folder          |
 | `megalinter cache prune`              | Empty the download cache                                     |
 
+## Pre-commit hook
+
+Native mode makes MegaLinter fast enough to run on each commit with [pre-commit](https://pre-commit.com/):
+
+```yaml
+repos:
+  - repo: https://github.com/oxsecurity/megalinter
+    rev: vX.Y.Z # Git tag of a MegaLinter version that includes native mode
+    hooks:
+      - id: megalinter-native-incremental # Changed files only, skips the linters that run in project mode
+        stages:
+          - pre-commit
+      - id: megalinter-native-full # Also runs the linters that run in project mode
+        stages:
+          - pre-push
+```
+
+- Only the linters of `NATIVE_LINTERS` run, on the files of the commit, and their fixes are applied
+- Install them once with `npx mega-linter-runner --install-linters`: a hook can not ask whether to install a missing language runtime
+- `megalinter-incremental` and `megalinter-full` are the same hooks with Docker
+
 ## Configuration
 
 | Variable                      | Default         | Description                                                           |
@@ -113,5 +134,7 @@ Ruby, R and Rust have no portable, verifiable download: install them with your p
 ## Differences with Docker
 
 - Results can differ from Docker: operating system, tool versions provided by the host, file system case sensitivity and path separators.
+- Linters installed by MegaLinter always run the version pinned for your MegaLinter version, as in its Docker image. After a MegaLinter upgrade, they are reinstalled at their new version on the next run.
+- Tools provided by the host (SwiftLint, Raku, scalafix, xmllint, cppcheck...) run the version installed on your machine. When MegaLinter's Docker image pins a different version, a warning shows both versions. `megalinter list-linters` shows which linters use the version installed on your machine.
 - Some linters are not available natively on every platform, with the reason shown in their documentation page and by `megalinter list-linters`. Use Docker for those.
 - Flavors do not apply: you choose the linters one by one.

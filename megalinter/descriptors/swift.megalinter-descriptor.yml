@@ -107,6 +107,8 @@ linters:
               rm -rf /tmp/swiftlint /tmp/swiftlint.zip
     native_install:
       method: runtime_provided
+      # Version of the Docker image: a different host version triggers a warning
+      version: "${SWIFT_SWIFTLINT_VERSION}"
       suggest:
         darwin: "brew install swiftlint"
         linux: "Install SwiftLint from https://github.com/realm/SwiftLint#installation (Homebrew on Linux: brew install swiftlint, or the swiftlint_linux zip of a release)"

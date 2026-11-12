@@ -95,6 +95,8 @@ linters:
               rm -rf /tmp/coursier /root/.cache
     native_install:
       method: runtime_provided
+      # Version of the Docker image: a different host version triggers a warning
+      version: "${SCALA_SCALAFIX_VERSION}"
       requires:
         - runtime: java
           version: ">=8"

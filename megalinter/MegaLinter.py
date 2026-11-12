@@ -40,7 +40,7 @@ from megalinter.native.context import (
     is_native_mode,
     require_git_bash,
 )
-from megalinter.native.installer import NativeInstaller
+from megalinter.native.installer import NativeInstaller, host_version_matches
 from megalinter.native.resolve import spec_from_linter
 from megalinter.prerun_report import run_prerun
 from megalinter.removed_linters import (
@@ -983,6 +983,9 @@ class Megalinter:
                         )
                     installer.install(spec)
                 linter.native_toolchain = installer.toolchain(spec)
+                self.check_host_linter_version(
+                    linter, installer.pinned_host_version(spec)
+                )
                 ready_linters.append(linter)
             except NativeError as e:
                 if selection.wants_all is True:
@@ -992,6 +995,21 @@ class Megalinter:
         if len(errors) > 0:
             raise NativeError("\n".join(errors))
         self.linters = ready_linters
+
+    # A tool taken from the host can differ from the one of the Docker image used in CI
+    def check_host_linter_version(self, linter, pinned_version):
+        if pinned_version is None:
+            return
+        host_version = linter.get_linter_version()
+        if host_version == "ERROR" or host_version_matches(
+            host_version, pinned_version
+        ):
+            return
+        logging.warning(
+            f"{linter.name}: {linter.linter_name} {host_version} found on this machine, "
+            f"but the MegaLinter Docker image uses {pinned_version}: results may differ from CI. "
+            f"Install {linter.linter_name} {pinned_version} to get the same results"
+        )
 
     def show_skipped_native_linters(self):
         return config.get(self.request_id, "SHOW_SKIPPED_LINTERS", "true") == "true"

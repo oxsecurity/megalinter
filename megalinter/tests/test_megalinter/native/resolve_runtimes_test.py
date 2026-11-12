@@ -2,7 +2,9 @@ import os
 import unittest
 
 import megalinter
+from megalinter.MegaLinter import Megalinter
 from megalinter.native.catalog import load_native_specs
+from megalinter.native.installer import NativeInstaller, host_version_matches
 from megalinter.native.resolve import (
     NativeLinterSpec,
     apply_native_overrides,
@@ -127,3 +129,47 @@ class DescriptorsTest(unittest.TestCase):
     def test_linter_keys_are_unique(self):
         keys = [spec.key for spec in load_native_specs()]
         self.assertEqual(len(keys), len(set(keys)))
+
+
+class FakeHostLinter:
+    name = "SWIFT_SWIFTLINT"
+    linter_name = "swiftlint"
+
+    def __init__(self, version):
+        self.version = version
+
+    def get_linter_version(self):
+        return self.version
+
+
+class HostVersionTest(unittest.TestCase):
+    def test_versions_match_without_v_prefix(self):
+        self.assertTrue(host_version_matches("v2026.09", "2026.09"))
+        self.assertTrue(host_version_matches("0.65.1", "0.65.1"))
+        self.assertFalse(host_version_matches("0.63.0", "0.65.1"))
+
+    def test_pinned_version_only_for_host_tools(self):
+        specs = {spec.key: spec for spec in load_native_specs(MEGALINTER_DESCRIPTORS)}
+        installer = NativeInstaller()
+        self.assertRegex(
+            installer.pinned_host_version(specs["SWIFT_SWIFTLINT"]), r"^\d+\.\d+"
+        )
+        self.assertIsNone(installer.pinned_host_version(specs["PYTHON_BLACK"]))
+        self.assertIsNone(installer.pinned_host_version(specs["XML_XMLLINT"]))
+
+    def test_different_host_version_is_a_warning(self):
+        with self.assertLogs(level="WARNING") as logs:
+            Megalinter.check_host_linter_version(
+                None, FakeHostLinter("0.63.0"), "0.65.1"
+            )
+        self.assertIn("swiftlint 0.63.0 found on this machine", logs.output[0])
+        self.assertIn("uses 0.65.1", logs.output[0])
+
+    def test_same_or_unknown_host_version_is_silent(self):
+        for version in ("0.65.1", "ERROR"):
+            with self.assertNoLogs(level="WARNING"):
+                Megalinter.check_host_linter_version(
+                    None, FakeHostLinter(version), "0.65.1"
+                )
+        with self.assertNoLogs(level="WARNING"):
+            Megalinter.check_host_linter_version(None, FakeHostLinter("1.0"), None)

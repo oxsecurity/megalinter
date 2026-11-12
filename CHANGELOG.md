@@ -18,6 +18,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Missing language runtimes can be installed for you with **`NATIVE_INSTALL_RUNTIMES`** (`ask`, `auto`, `never`)
     - Commands, plugins and remote `EXTENDS` declared by the analyzed repository are **ignored** unless you pass `--trust-repo-commands`
     - Docker remains the default and the recommended mode, especially for code you do not fully trust
+    - New **pre-commit hooks** `megalinter-native-incremental` and `megalinter-native-full` lint the files of each commit without Docker
+    - Linters installed by MegaLinter always run the version of its Docker image. For **tools provided by your machine** (SwiftLint, Raku, scalafix...), a warning shows when their version differs from the Docker image
     - New `megalinter` command on PyPI: `run`, `install-linters`, `list-linters`, `doctor`
   - **Lighter Docker images**: the main image download shrinks by **21%**, with the same linters and the same behavior (#9497)
     - The Rust toolchain used by `RUST_CLIPPY` is now installed once instead of twice
@@ -67,6 +69,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - mega-linter-runner
 
   - New **`--native`** option to run MegaLinter without Docker, and **`--install-linters`** to install the linters it needs (not to be confused with `--install`, which sets up MegaLinter in your repository)
+    - With `--native`, the files given as arguments are the only ones linted, and `--env` accepts the same quoted values as with Docker (`"'ENABLE=MARKDOWN,YAML'"`)
 
 - Agent Skills
 

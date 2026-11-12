@@ -84,6 +84,8 @@ repos:
           - push
 ```
 
+To lint without Docker, use the `megalinter-native-incremental` and `megalinter-native-full` hooks instead: see [Pre-commit hook in native mode](https://megalinter.io/latest/install-native/#pre-commit-hook).
+
 See [`.pre-commit-hooks.yaml`](https://github.com/oxsecurity/megalinter/blob/main/.pre-commit-hooks.yaml) for more details.
 
 ## Usage

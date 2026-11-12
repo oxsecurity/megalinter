@@ -96,7 +96,13 @@ export class NativeRunner {
     if (options.trustRepoCommands === true) {
       env.NATIVE_TRUST_REPO_COMMANDS = "true";
     }
-    for (const entry of expandEnvEntries(options.env || [])) {
+    // Files given as arguments (pre-commit hooks), relative to the workspace
+    if (options.installLinters !== true && (options._ || []).length > 0) {
+      env.MEGALINTER_FILES_TO_LINT = options._.map(String).join(",");
+    }
+    for (const rawEntry of expandEnvEntries(options.env || [])) {
+      // Same quoting as with Docker, where a shell removes it: "'KEY=VALUE1,VALUE2'"
+      const entry = String(rawEntry).replace(/^(['"])(.*)\1$/s, "$2");
       const separator = entry.indexOf("=");
       if (separator > 0) {
         env[entry.slice(0, separator)] = entry.slice(separator + 1);

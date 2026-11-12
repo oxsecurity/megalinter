@@ -539,7 +539,8 @@ linters:
           Resolutions:
             - Check the profile name in your config.
             - Make sure `tests` / `skips` lists reference valid plugin IDs (B101, B602, ...).
-    version_extract_regex: "(?<=bandit )\\d+(\\.\\d+)+"
+    # On Windows, bandit prints the path of its bandit.EXE launcher
+    version_extract_regex: "(?i)(?<=bandit )\\d+(\\.\\d+)+|(?<=bandit\\.exe )\\d+(\\.\\d+)+"
     test_folder: python_bandit
     examples:
       - "bandit myfile.py"

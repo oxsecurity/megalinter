@@ -182,12 +182,21 @@ def command_list_linters(arguments):
     rows = []
     for spec in load_native_specs():
         status, reason = installer.status(spec)
-        rows.append({"linter": spec.key, "status": status, "reason": reason})
+        row = {"linter": spec.key, "status": status, "reason": reason}
+        if resolve_native_install(spec)["method"] == "runtime_provided":
+            # The tool comes from the host: MegaLinter only knows the version of its Docker image
+            row["host_tool"] = True
+            row["docker_version"] = installer.pinned_host_version(spec)
+        rows.append(row)
     if arguments.json:
         logging.info(json.dumps(rows, indent=2))
         return 0
     for row in rows:
         suffix = f" - {row['reason']}" if row["reason"] else ""
+        if row.get("host_tool") and row["status"] != "unsupported":
+            suffix += " - uses the version installed on this machine"
+            if row["docker_version"]:
+                suffix += f" (Docker image: {row['docker_version']})"
         logging.info(f"{row['linter']:<40} {row['status']}{suffix}")
     return 0
 

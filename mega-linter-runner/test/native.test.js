@@ -110,6 +110,26 @@ describe("mega-linter-runner native mode", () => {
       assert.strictEqual(env.NATIVE_LINTERS, "PYTHON_BLACK");
       assert.strictEqual(env.FOO, "bar=baz");
     });
+
+    it("accepts the quoted --env values of the Docker mode", () => {
+      const runner = makeRunner(async () => {});
+      const env = runner.buildEnvironment({
+        env: ["'ENABLE=MARKDOWN,YAML'", '"LOG_LEVEL=warning"'],
+      });
+      assert.strictEqual(env.ENABLE, "MARKDOWN,YAML");
+      assert.strictEqual(env.LOG_LEVEL, "warning");
+    });
+
+    it("lints only the files given as arguments (pre-commit)", () => {
+      const runner = makeRunner(async () => {});
+      const env = runner.buildEnvironment({ _: ["src/a.py", "README.md"] });
+      assert.strictEqual(env.MEGALINTER_FILES_TO_LINT, "src/a.py,README.md");
+      const installEnv = runner.buildEnvironment({
+        installLinters: true,
+        _: ["PYTHON_BLACK"],
+      });
+      assert.strictEqual(installEnv.MEGALINTER_FILES_TO_LINT, undefined);
+    });
   });
 
   describe("release resolution", () => {

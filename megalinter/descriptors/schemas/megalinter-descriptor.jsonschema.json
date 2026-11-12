@@ -401,7 +401,7 @@
           "type": "object"
         },
         "version": {
-          "description": "Literal version, ${ARG_NAME} or ${FROM_TAG:image/name}",
+          "description": "Literal version, ${ARG_NAME} or ${FROM_TAG:image/name}. For runtime_provided: version of the Docker image, compared with the version of the tool found on the host (warning when they differ)",
           "type": "string"
         }
       },

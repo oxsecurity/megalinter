@@ -40,7 +40,15 @@ from megalinter.native.runtimes import load_runtime_catalog  # noqa: E402
 KEYS_DIR = os.path.join(REPO_HOME, ".automation", "native-keys")
 DOWNLOAD_WORKERS = 6
 # Bump the version of a method when its lock content changes: existing locks are regenerated
-GENERATOR_VERSIONS = {"npm": 2}
+GENERATOR_VERSIONS = {"npm": 2, "gem": 2}
+# A frozen bundle only installs on a platform listed in Gemfile.lock: list every native one, Windows included
+GEM_PLATFORMS = [
+    "x86_64-linux",
+    "aarch64-linux",
+    "x86_64-darwin",
+    "arm64-darwin",
+    "x64-mingw-ucrt",
+]
 COMMAND_TIMEOUT_SECONDS = 1800
 NPM_SIGNATURES_TIMEOUT_SECONDS = 900
 # gh and cosign share a sigstore TUF cache that does not support concurrent refreshes
@@ -444,7 +452,7 @@ def lock_gem(key, resolved, folder):
     with open(os.path.join(work, "Gemfile"), "w", encoding="utf-8") as f:
         f.write("\n".join(lines) + "\n")
     bundle = require_tool("bundle")
-    run([bundle, "lock", "--add-checksums"], cwd=work)
+    run([bundle, "lock", "--add-checksums", "--add-platform", *GEM_PLATFORMS], cwd=work)
     with open(os.path.join(work, "Gemfile"), "r", encoding="utf-8") as f:
         gemfile = f.read()
     with open(os.path.join(work, "Gemfile.lock"), "r", encoding="utf-8") as f:

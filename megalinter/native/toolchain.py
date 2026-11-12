@@ -143,5 +143,10 @@ def build_subprocess_env(base_env, toolchain, request_id, unsecured_variables=No
     env[PATH_NAME] = os.pathsep.join(
         [*toolchain.path_dirs, *([host_path] if host_path else [])]
     )
+    # Linter outputs are read as UTF-8, like in the Docker image: Python tools must not
+    # write with the Windows code page, which fails on the first non-latin character
+    if os.name == "nt":
+        env["PYTHONUTF8"] = "1"
+        env["PYTHONIOENCODING"] = "utf-8"
     env.update(toolchain.env)
     return env

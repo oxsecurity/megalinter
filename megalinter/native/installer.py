@@ -87,6 +87,13 @@ class NativeInstaller:
     def is_host_provided(self, resolved):
         return resolved["method"] == "runtime_provided" and not resolved.get("requires")
 
+    # Version of the Docker image for a tool taken from the host (runtime_provided with version)
+    def pinned_host_version(self, spec):
+        resolved = resolve_native_install(spec)
+        if resolved["method"] != "runtime_provided":
+            return None
+        return resolved.get("version")
+
     def status(self, spec):
         try:
             resolved, effective = self.prepare(spec)
@@ -180,7 +187,12 @@ class NativeInstaller:
                 "spec_hash": compute_spec_hash(resolved),
                 "platform": self.platform,
                 "path_dirs": result.path_dirs,
-                "version": effective.get("version"),
+                # A host-provided tool keeps its own version: the pinned one is only compared with it
+                "version": (
+                    None
+                    if effective["method"] == "runtime_provided"
+                    else effective.get("version")
+                ),
                 "env": result.env,
                 "os": current_os_family(),
             },
@@ -193,3 +205,10 @@ class NativeInstaller:
         shutil.rmtree(os.path.dirname(entry["dir"]), ignore_errors=True)
         update_state(self.home, "linters", spec.key, None)
         return True
+
+
+def host_version_matches(host_version, pinned_version):
+    def normalize(version):
+        return str(version).strip().removeprefix("v").removeprefix("V")
+
+    return normalize(host_version) == normalize(pinned_version)
