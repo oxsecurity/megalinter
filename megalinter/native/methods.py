@@ -301,9 +301,13 @@ def install_gem(ctx):
         "BUNDLE_FROZEN": "true",
         "BUNDLE_PATH": os.path.join(ctx.destination, "vendor"),
     }
-    run_command([find_tool("bundle", env), "install"], env, cwd=ctx.destination)
+    bundle = find_tool("bundle", env)
+    run_command([bundle, "install"], env, cwd=ctx.destination)
+    # Windows: bundle.bat finds ruby.exe next to itself with %~dp0, which cmd.exe resolves
+    # to the current directory when the script is called by its quoted name from PATH
+    shim_bundle = "bundle" if is_posix() else bundle
     for name in ctx.tool_names:
-        write_shim(ctx.destination, name, ["bundle", "exec", name])
+        write_shim(ctx.destination, name, [shim_bundle, "exec", name])
     return InstallResult(
         [shim_directory(ctx.destination)],
         {
