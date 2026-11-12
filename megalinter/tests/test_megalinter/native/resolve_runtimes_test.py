@@ -2,7 +2,6 @@ import os
 import unittest
 
 import megalinter
-
 from megalinter.native.catalog import load_native_specs
 from megalinter.native.resolve import (
     NativeLinterSpec,
