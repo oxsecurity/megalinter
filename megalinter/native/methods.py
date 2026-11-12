@@ -17,6 +17,7 @@ from megalinter.native.download import fetch_verified
 from megalinter.native.runtimes import satisfies
 
 INSTALL_TIMEOUT_SECONDS = 1800
+OUTPUT_HEAD_LINES = 10
 OUTPUT_TAIL_LINES = 30
 PYTHON_RUNTIME = "python"
 
@@ -66,12 +67,18 @@ def run_command(command, env, cwd=None):
     except (OSError, subprocess.TimeoutExpired) as e:
         raise NativeError(f"Unable to run {' '.join(command)}: {e}") from e
     if process.returncode != 0:
-        tail = "\n".join(
-            process.stdout.decode("utf-8", errors="replace").splitlines()[
-                -OUTPUT_TAIL_LINES:
+        lines = process.stdout.decode("utf-8", errors="replace").splitlines()
+        # The cause is often printed first, above a long backtrace (ruby, java)
+        if len(lines) > OUTPUT_HEAD_LINES + OUTPUT_TAIL_LINES:
+            lines = [
+                *lines[:OUTPUT_HEAD_LINES],
+                "[...]",
+                *lines[-OUTPUT_TAIL_LINES:],
             ]
+        output = "\n".join(lines)
+        raise NativeError(
+            f"{' '.join(command)} failed ({process.returncode}):\n{output}"
         )
-        raise NativeError(f"{' '.join(command)} failed ({process.returncode}):\n{tail}")
 
 
 def find_tool(name, env):
