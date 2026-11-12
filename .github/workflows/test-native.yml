@@ -210,6 +210,11 @@ jobs:
         # GITHUB_WORKSPACE (the repository checkout) would make MegaLinter use the repository's own
         # .github/linters configurations instead of the default ones, unlike the Docker test runs
         run: env -u GITHUB_WORKSPACE python -m pytest megalinter/tests/test_megalinter/linters -k "$TESTS" -v --timeout=600 --reruns 2 --reruns-delay 5
+        env:
+          # Read-only token, like the Docker test runs: tflint downloads its plugins from the GitHub API,
+          # whose anonymous rate limit is shared by every job of the runner IP. MegaLinter hides it from
+          # the linters, except the ones whose tests allow it (TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES)
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Host-provided tools come in the version of the runner, which can differ from the Docker one:
       # their results are reported without failing the job
