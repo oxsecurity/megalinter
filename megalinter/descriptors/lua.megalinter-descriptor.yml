@@ -73,7 +73,8 @@ linters:
               && cd .. && rm -r luarocks-${LUA_LUACHECK_VERSION}-super-linter/ \
               && luarocks install luacheck \
               && cd / \
-              && apk del .lua-build-deps
+              && apk del .lua-build-deps \
+              && rm -rf /root/.cache/luarocks
     supported_platforms:
       platform:
         - linux/amd64

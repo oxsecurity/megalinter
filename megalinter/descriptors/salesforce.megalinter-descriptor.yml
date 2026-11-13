@@ -26,7 +26,8 @@ install:
       RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION} \
           && echo y|sf plugins install sfdx-hardis@${SFDX_HARDIS_VERSION} \
           && (npm cache clean --force || true) \
-          && rm -rf /root/.npm/_cacache
+          && find /usr/local/share/sf/node_modules -type f \( -name "*.map" -o -name "*.d.ts" -o -name "*.d.mts" -o -name "*.d.cts" \) -not -path "*/typescript/lib/*" -not -path "*/@types/*" -delete \
+          && rm -rf /root/.npm /root/.cache/sf /tmp/v8-compile-cache-*
     - ENV SF_AUTOUPDATE_DISABLE=true SF_CLI_DISABLE_AUTOUPDATE=true
   # Salesforce DX
   npm:
@@ -124,7 +125,8 @@ linters:
         - |-
           RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
               && (npm cache clean --force || true) \
-              && rm -rf /root/.npm/_cacache
+              && find /usr/local/share/sf/node_modules -type f \( -name "*.map" -o -name "*.d.ts" -o -name "*.d.mts" -o -name "*.d.cts" \) -not -path "*/typescript/lib/*" -not -path "*/@types/*" -delete \
+              && rm -rf /root/.npm /root/.cache/sf /tmp/v8-compile-cache-*
     supported_platforms:
       platform:
         - linux/amd64
@@ -259,7 +261,8 @@ linters:
         - |-
           RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
               && (npm cache clean --force || true) \
-              && rm -rf /root/.npm/_cacache
+              && find /usr/local/share/sf/node_modules -type f \( -name "*.map" -o -name "*.d.ts" -o -name "*.d.mts" -o -name "*.d.cts" \) -not -path "*/typescript/lib/*" -not -path "*/@types/*" -delete \
+              && rm -rf /root/.npm /root/.cache/sf /tmp/v8-compile-cache-*
     supported_platforms:
       platform:
         - linux/amd64
@@ -360,7 +363,8 @@ linters:
         - |-
           RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
               && (npm cache clean --force || true) \
-              && rm -rf /root/.npm/_cacache
+              && find /usr/local/share/sf/node_modules -type f \( -name "*.map" -o -name "*.d.ts" -o -name "*.d.mts" -o -name "*.d.cts" \) -not -path "*/typescript/lib/*" -not -path "*/@types/*" -delete \
+              && rm -rf /root/.npm /root/.cache/sf /tmp/v8-compile-cache-*
     supported_platforms:
       platform:
         - linux/amd64
@@ -460,7 +464,8 @@ linters:
         - |-
           RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
               && (npm cache clean --force || true) \
-              && rm -rf /root/.npm/_cacache
+              && find /usr/local/share/sf/node_modules -type f \( -name "*.map" -o -name "*.d.ts" -o -name "*.d.mts" -o -name "*.d.cts" \) -not -path "*/typescript/lib/*" -not -path "*/@types/*" -delete \
+              && rm -rf /root/.npm /root/.cache/sf /tmp/v8-compile-cache-*
     supported_platforms:
       platform:
         - linux/amd64
@@ -559,7 +564,8 @@ linters:
         - |-
           RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
               && (npm cache clean --force || true) \
-              && rm -rf /root/.npm/_cacache
+              && find /usr/local/share/sf/node_modules -type f \( -name "*.map" -o -name "*.d.ts" -o -name "*.d.mts" -o -name "*.d.cts" \) -not -path "*/typescript/lib/*" -not -path "*/@types/*" -delete \
+              && rm -rf /root/.npm /root/.cache/sf /tmp/v8-compile-cache-*
     test_folder: salesforce-lfs
     supported_platforms:
       platform:

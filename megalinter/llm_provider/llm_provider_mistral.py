@@ -3,16 +3,22 @@
 Mistral AI LLM Provider for MegaLinter
 """
 
-import logging
 from typing import Any, Dict, Optional
 
-from langchain_mistralai import ChatMistralAI
 from megalinter import config
 
-from .llm_provider import LLMProvider
+from .llm_provider_openai_compatible import OpenAICompatibleProvider
 
 
-class MistralProvider(LLMProvider):
+class MistralProvider(OpenAICompatibleProvider):
+
+    DISPLAY_NAME = "Mistral"
+    API_KEY_VAR_NAME = "MISTRAL_API_KEY"
+    DEFAULT_BASE_URL = "https://api.mistral.ai/v1"
+    MAX_TOKENS_FIELD = "max_tokens"
+    USE_DEVELOPER_ROLE_FOR_O_SERIES = False
+    OMIT_TEMPERATURE_FOR_GPT5_REASONING = False
+    EXTRA_PAYLOAD: Dict[str, Any] = {"top_p": 1}
 
     def get_default_model(self) -> str:
         return "mistral-large-latest"
@@ -37,33 +43,3 @@ class MistralProvider(LLMProvider):
                 )
             ),
         }
-
-    def initialize(self) -> bool:
-        try:
-            api_key = self.get_config_value("api_key")
-            if not api_key:
-                raise ValueError("MISTRAL_API_KEY is required")
-
-            model_name = self.get_config_value("model_name") or self.get_default_model()
-            base_url = self.get_config_value("base_url")
-            temperature = self.get_config_value("temperature")
-            max_tokens = self.get_config_value("max_tokens")
-
-            kwargs = {
-                "model": model_name,
-                "temperature": temperature,
-                "max_tokens": max_tokens,
-                "api_key": api_key,
-            }
-
-            if base_url:
-                kwargs["endpoint"] = base_url
-
-            self.llm = ChatMistralAI(**kwargs)
-
-            logging.debug(f"Mistral provider initialized with model {model_name}")
-            return True
-
-        except Exception as e:
-            logging.error(f"Failed to initialize Mistral provider: {str(e)}")
-            return False

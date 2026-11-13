@@ -22,7 +22,6 @@ dependencies = [
   "atlassian-python-api",
   "gitpython",
   "jsonpickle",
-  "langchain-core~=1.6.1",
   "pygithub",
   "pyjwt>=2.12.0",
   "pytablewriter",
@@ -34,29 +33,11 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-llm = [
-  "langchain-openai~=1.7.2",
-  "langchain-anthropic~=1.7.0",
-  "langchain-google-genai~=4.4.0",
-  "langchain-mistralai~=1.1.1",
-  "langchain-ollama~=1.1.0",
-  "langchain-deepseek~=1.1.0",
-  "langchain-community~=0.4.1",
-]
 huggingface = [
-  "langchain-huggingface",
   "transformers",
   "torch",
 ]
 all-llm = [
-  "langchain-openai~=1.7.2",
-  "langchain-anthropic~=1.7.0",
-  "langchain-google-genai~=4.4.0",
-  "langchain-mistralai~=1.1.1",
-  "langchain-ollama~=1.1.0",
-  "langchain-deepseek~=1.1.0",
-  "langchain-community~=0.4.1",
-  "langchain-huggingface",
   "transformers",
   "torch",
 ]

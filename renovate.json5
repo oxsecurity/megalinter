@@ -15,11 +15,11 @@
     ':automergeDigest', // enable for PRs updating digests
     ':automergePatch', // enable for lock files, patch and pin
   ],
-  // Supply-chain hardening: wait until a release is at least 7 days old before
+  // Supply-chain hardening: wait until a release is at least 14 days old before
   // proposing it, so compromised releases can be caught and yanked by the
   // community first. Replaces the npm-only 'security:minimumReleaseAgeNpm'
   // preset (3 days) with a stricter setting covering every datasource.
-  minimumReleaseAge: '7 days',
+  minimumReleaseAge: '14 days',
   vulnerabilityAlerts: {
     enabled: true,
     // Security fixes must not wait out the cooldown (this is Renovate's
@@ -30,7 +30,7 @@
   // GitHub Actions are owned by Dependabot (.github/dependabot.yml). Renovate
   // can not date the SHA-pinned digest updates (`uses: x@<sha> # v7`), so with
   // minimumReleaseAgeBehaviour 'timestamp-required' they stayed pending
-  // forever, while Dependabot applies its 7-day cooldown on the tag release.
+  // forever, while Dependabot applies its 14-day cooldown on the tag release.
   // Lock file maintenance is not enabled for the same reason: a lock file
   // refresh has no release timestamp, so it could never pass minimumReleaseAge.
   'github-actions': {
@@ -144,22 +144,6 @@
       ],
       schedule: [
         'before 10am every 4 day',
-      ],
-    },
-    {
-      groupName: 'langchain',
-      matchPackageNames: [
-        'langchain_*',
-        'langchain*',
-      ],
-      schedule: [
-        'before 3pm every 3 day',
-      ],
-      matchUpdateTypes: [
-        'digest',
-        'patch',
-        'minor',
-        'major',
       ],
     },
     {

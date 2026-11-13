@@ -21,7 +21,7 @@ Set **ANTHROPIC_API_KEY=sk-ant-your-api-key** in your CI/CD secret variables.
 ```yaml
 LLM_ADVISOR_ENABLED: true
 LLM_PROVIDER: anthropic
-LLM_MODEL_NAME: claude-3-7-sonnet-latest
+LLM_MODEL_NAME: claude-sonnet-5-5
 LLM_MAX_TOKENS: 1000
 LLM_TEMPERATURE: 0.1
 ```
@@ -30,7 +30,7 @@ LLM_TEMPERATURE: 0.1
 
 For the most up-to-date list of Claude models and their capabilities, see the official Anthropic documentation:
 
-- [Anthropic Claude Model List](https://docs.anthropic.com/claude/docs/models-overview)
+- [Anthropic Claude Model List](https://platform.claude.com/docs/en/about-claude/models/overview)
 
 ## Configuration Options
 
@@ -38,7 +38,7 @@ For the most up-to-date list of Claude models and their capabilities, see the of
 
 ```yaml
 LLM_PROVIDER: anthropic
-LLM_MODEL_NAME: claude-3-7-sonnet-latest
+LLM_MODEL_NAME: claude-sonnet-5-5
 ```
 
 ### Advanced Configuration

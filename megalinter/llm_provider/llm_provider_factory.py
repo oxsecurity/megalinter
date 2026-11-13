@@ -12,8 +12,8 @@ from .llm_provider import LLMProvider
 
 class LLMProviderFactory:
 
-    # Provider classes are imported lazily in create_provider: each provider module
-    # pulls a heavy LLM SDK that would slow down every MegaLinter startup
+    # Provider classes are imported lazily in create_provider, only when LLM Advisor
+    # is enabled
     SUPPORTED_PROVIDERS = {
         "openai": ("llm_provider_openai", "OpenAIProvider"),
         "anthropic": ("llm_provider_anthropic", "AnthropicProvider"),
@@ -40,17 +40,16 @@ class LLMProviderFactory:
             module_name, class_name = cls.SUPPORTED_PROVIDERS[provider_name]
             try:
                 provider_module = import_module(f".{module_name}", __package__)
-            except ModuleNotFoundError:
+            except ModuleNotFoundError as e:
                 logging.warning(
-                    f"[LLM Advisor] The {provider_name} provider SDK is not installed "
-                    "in this image (standalone linter images exclude LLM Advisor "
-                    "dependencies): use the main or a flavor MegaLinter image, "
-                    'or pip install "megalinter[llm]"'
+                    f"[LLM Advisor] The {provider_name} provider could not be loaded, "
+                    f"a Python package is missing: {str(e)}"
                 )
                 return None
             provider_class = getattr(provider_module, class_name)
             provider: LLMProvider  # type: ignore[assignment]
             provider = provider_class()  # type: ignore[abstract]
+            provider.request_id = request_id
 
             # Load configuration using the provider's own method
             config = provider.load_config(request_id)
