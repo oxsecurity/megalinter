@@ -1,5 +1,6 @@
 import os
 import unittest
+from unittest import mock
 
 import megalinter
 from megalinter.MegaLinter import Megalinter
@@ -12,7 +13,7 @@ from megalinter.native.resolve import (
     resolve_native_install,
     resolve_version_reference,
 )
-from megalinter.native.runtimes import satisfies, version_tuple
+from megalinter.native.runtimes import ask_user, satisfies, version_tuple
 
 MEGALINTER_DESCRIPTORS = os.path.join(
     os.path.dirname(megalinter.__file__), "descriptors"
@@ -94,6 +95,30 @@ class ResolveTest(unittest.TestCase):
         self.assertIs(
             apply_native_overrides(descriptor, "linux/amd64", "X", {}, "/h"), descriptor
         )
+
+
+class AskUserTest(unittest.TestCase):
+    # Windows reports the NUL device as a terminal: reading it ends at once
+    def test_no_input_means_no(self):
+        with (
+            mock.patch("sys.stdin") as stdin,
+            mock.patch("builtins.input", side_effect=EOFError),
+        ):
+            stdin.isatty.return_value = True
+            self.assertFalse(ask_user("Install dotnet?"))
+
+    def test_yes(self):
+        with (
+            mock.patch("sys.stdin") as stdin,
+            mock.patch("builtins.input", return_value="y"),
+        ):
+            stdin.isatty.return_value = True
+            self.assertTrue(ask_user("Install dotnet?"))
+
+    def test_not_a_terminal_means_no(self):
+        with mock.patch("sys.stdin") as stdin:
+            stdin.isatty.return_value = False
+            self.assertFalse(ask_user("Install dotnet?"))
 
 
 class VersionTest(unittest.TestCase):

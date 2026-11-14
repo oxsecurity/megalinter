@@ -10,7 +10,7 @@ description: Run MegaLinter directly on your machine, without Docker, with the l
 
 MegaLinter can run directly on your machine, without a container engine and without downloading a multi-GB image. Only the linters you list are installed, so a run starts in seconds.
 
-Supported platforms: Linux (x86-64 and ARM64), macOS (Intel and Apple Silicon), Windows with Git Bash, and WSL (Linux).
+Supported platforms: Linux (x86-64 and ARM64), macOS (Apple Silicon), Windows with Git Bash, and WSL (Linux). Intel Macs are not supported: `cryptography`, needed to verify the MegaLinter package, no longer publishes builds for them. Use Docker there.
 
 ## Quick start
 

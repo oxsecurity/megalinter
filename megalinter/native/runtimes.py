@@ -232,7 +232,12 @@ def provision_runtime(name, definition, home, offline=False):
 def ask_user(question):
     if not sys.stdin.isatty():
         return False
-    answer = input(f"{question} [y/N] ")
+    try:
+        answer = input(f"{question} [y/N] ")
+    except EOFError:
+        # Windows reports the NUL device (no input at all) as a terminal
+        logging.info("")
+        return False
     return answer.strip().lower() in ("y", "yes")
 
 
@@ -271,7 +276,7 @@ def missing_runtime_message(name, constraint, definition):
     message = f"Runtime {name}{(' ' + constraint) if constraint else ''} not found."
     command = suggest_command(definition)
     if command:
-        message += f" Install it with: {command}"
+        message += f" Install it with: {command}."
     if can_provision(definition):
         message += (
             " Or allow MegaLinter to install it with NATIVE_INSTALL_RUNTIMES=auto."
