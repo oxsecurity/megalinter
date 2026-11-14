@@ -1919,6 +1919,7 @@
         "ucrt",
         "CAFILE",
         "backslashreplace",
+        "libyaml",
         "SYSTEMROOT",
         "temurin",
         "Temurin",
