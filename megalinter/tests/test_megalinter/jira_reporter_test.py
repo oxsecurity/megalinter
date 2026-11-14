@@ -5,7 +5,7 @@ from unittest import mock
 
 from megalinter import config
 from megalinter.ci_providers import CiProviderAzurePipelines, CiProviderGithubActions
-from megalinter.reporters.JiraReporter import JiraReporter
+from megalinter.reporters.JiraReporter import JiraReporter, markdown_to_jira
 
 
 class FakeMaster:
@@ -26,6 +26,13 @@ class JiraReporterTest(unittest.TestCase):
         config.set_value(self.request_id, "JIRA_URL", "https://jira.example.com")
         config.set_value(self.request_id, "JIRA_API_TOKEN", "tok")
         config.set_value(self.request_id, "JIRA_USERNAME", "me@example.com")
+
+        summary_patch = mock.patch(
+            "megalinter.reporters.JiraReporter.build_markdown_summary",
+            side_effect=lambda reporter, url, max_chars: f"## Summary\n\n[logs]({url})",
+        )
+        summary_patch.start()
+        self.addCleanup(summary_patch.stop)
 
     def tearDown(self):
         config.delete(self.request_id)
@@ -83,7 +90,8 @@ class JiraReporterTest(unittest.TestCase):
         )
         body = jira.issue_add_comment.call_args_list[0].args[1]
         self.assertIn("org/repo #PR5", body)
-        self.assertIn("https://github.com/org/repo/actions/runs/1", body)
+        self.assertIn("h2. Summary", body)
+        self.assertIn("[logs|https://github.com/org/repo/actions/runs/1]", body)
 
     def test_azure_uses_report_url_and_updates_existing_comment(self):
         patch = self.mock_provider(
@@ -123,6 +131,30 @@ class JiraReporterTest(unittest.TestCase):
             jira_class, jira = self.run_reporter(patch)
             jira.issue_add_comment.assert_not_called()
             jira.issue_edit_comment.assert_not_called()
+
+    def test_custom_label_regex(self):
+        config.set_value(
+            self.request_id, "JIRA_REPORTER_LABEL_REGEX", r"^ticket-([a-z]+-\d+)$"
+        )
+        patch = self.mock_provider(
+            CiProviderGithubActions, ["PROJ-1", "ticket-abc-9"], "r #PR1", ""
+        )
+        _, jira = self.run_reporter(patch)
+        jira.issue_add_comment.assert_called_once()
+        self.assertEqual("ABC-9", jira.issue_add_comment.call_args.args[0])
+
+    def test_markdown_to_jira_conversion(self):
+        markdown = (
+            "## ✅[MegaLinter](https://x.io) analysis: **Success**\n\n"
+            "| Linter | Errors |\n| - | -: |\n| [ruff](http://d) | `{1}` |\n\n"
+            "```\nfoo {bar}\n```\n\n- item\n  - sub\n1. one\n"
+        )
+        self.assertEqual(
+            "h2. ✅[MegaLinter|https://x.io] analysis: *Success*\n\n"
+            "||Linter||Errors||\n|[ruff|http://d]|{{\\{1\\}}}|\n\n"
+            "{code}\nfoo {bar}\n{code}\n\n* item\n** sub\n# one",
+            markdown_to_jira(markdown),
+        )
 
     def test_jira_error_does_not_raise(self):
         patch = self.mock_provider(CiProviderGithubActions, ["PROJ-1"], "r #PR1", "")

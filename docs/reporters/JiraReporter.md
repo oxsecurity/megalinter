@@ -16,7 +16,27 @@ Add a label named after the Jira ticket key (ex: `PROJ-123`) to your Pull Reques
 - Several labels referencing different tickets post the comment on each of them
 - Labels that do not look like a Jira key are ignored
 - By default, labels `PROJ-123`, `jira:PROJ-123` and `jira/PROJ-123` are recognized. Change this with `JIRA_REPORTER_LABEL_REGEX` (the first capturing group, if any, must contain the ticket key)
+- The comment contains the same summary as the other Pull Request comment reporters, converted to Jira wiki markup. Use `REPORTERS_MARKDOWN_SUMMARY_TYPE` to choose between `sections`, `table` or both
 - Future MegaLinter runs update the existing Jira comment instead of posting a new one. Set `JIRA_REPORTER_OVERWRITE_COMMENT` to `false` to post a new comment each time
+
+### Custom label regex examples
+
+`JIRA_REPORTER_LABEL_REGEX` is a regular expression matched against the whole label. If it has a capturing group, the first group is the ticket key (converted to upper case), otherwise the whole label is used.
+
+| Label convention  | `JIRA_REPORTER_LABEL_REGEX`                          | Matches (ticket key)        |
+|-------------------|------------------------------------------------------|-----------------------------|
+| Default           | `^(?:jira[:/])?([A-Za-z][A-Za-z0-9_]+-\d+)$`         | `PROJ-123`, `jira:PROJ-123` |
+| Prefix `ticket-`  | `^ticket-([A-Za-z][A-Za-z0-9_]+-\d+)$`               | `ticket-PROJ-123`           |
+| Prefix `jira_`    | `^jira_([A-Za-z][A-Za-z0-9_]+-\d+)$`                 | `jira_PROJ-123`             |
+| Label with space  | `^Jira: ([A-Za-z][A-Za-z0-9_]+-\d+)$`                | `Jira: PROJ-123`            |
+| Only some projects | `^((?:PROJ\|OPS)-\d+)$`                             | `PROJ-1`, `OPS-42` only     |
+| Key anywhere in label | `(?i)\b([A-Z][A-Z0-9_]+-\d+)\b`                  | `fix-PROJ-123-login`        |
+
+Example in `.mega-linter.yml`:
+
+```yaml
+JIRA_REPORTER_LABEL_REGEX: '^ticket-([A-Za-z][A-Za-z0-9_]+-\d+)$'
+```
 
 ## Configuration
 
