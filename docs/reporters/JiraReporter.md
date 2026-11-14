@@ -11,6 +11,10 @@ It works with GitHub Pull Requests, GitLab Merge Requests and Azure DevOps Pull 
 
 ## Usage
 
+![Screenshot](../assets/images/JiraReporter.png)
+
+_Illustrative example of the comment posted on a Jira ticket_
+
 Add a label named after the Jira ticket key (ex: `PROJ-123`) to your Pull Request. At the end of the MegaLinter run, a comment containing the lint results summary and a link to the detailed logs is posted on the ticket.
 
 - Several labels referencing different tickets post the comment on each of them
