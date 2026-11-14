@@ -15,6 +15,7 @@ import json
 import logging
 import os
 import platform
+import re
 import shutil
 import signal
 import statistics
@@ -350,6 +351,10 @@ class Benchmark:
         result["lint"] = lint
         if lint:
             result["linters"], result["report"] = read_linter_results(self.workspace)
+        if (lint and not result["linters"]) or (
+            not lint and result.get("return_code") != 0
+        ):
+            result["error_excerpt"] = error_excerpt(log_file)
         for line in log_tail(log_file):
             logging.info(line)
         logging.info("::endgroup::")
@@ -360,6 +365,17 @@ class Benchmark:
         self.results["steps"].append(result)
         self.save()
         return result
+
+
+# The error messages of a failed command, shown in the summary
+def error_excerpt(log_file: str, max_lines: int = 3) -> list[str]:
+    pattern = re.compile(r"\b(error|cause|fatal)\b\s*:", re.IGNORECASE)
+    excerpt: list[str] = []
+    for line in log_tail(log_file, 400):
+        text = line.strip()[:300]
+        if pattern.search(text) and text not in excerpt:
+            excerpt.append(text)
+    return excerpt[:max_lines]
 
 
 def last_line(log_file: str) -> str:
@@ -588,11 +604,21 @@ def seconds(step: Result | None) -> str:
     value = f"{step['seconds']:.2f}"
     if step.get("timed_out"):
         return value + " (timeout)"
+    if step.get("lint") and not step.get("linters"):
+        return value + " (failed)"
+    if not step.get("lint") and step.get("return_code") != 0:
+        return value + " (failed)"
     return value
 
 
+# Median of the runs that worked: failed runs (no report) are left out
 def median_seconds(steps: list[Result]) -> str:
-    values = [step["seconds"] for step in steps if step.get("seconds") is not None]
+    values = [
+        step["seconds"]
+        for step in steps
+        if step.get("seconds") is not None
+        and (step.get("linters") if step.get("lint") else step.get("return_code") == 0)
+    ]
     return f"{statistics.median(values):.2f}" if values else ""
 
 
@@ -647,7 +673,10 @@ def section_machines(results: list[Result]) -> list[str]:
     for result in results:
         machine = result["machine"]
         versions = result.get("versions", {})
-        version_cells = [f"runner {versions.get('runner', '')}"]
+        runner_version = versions.get("runner", "").replace(
+            "mega-linter-runner version ", ""
+        )
+        version_cells = [f"runner {runner_version}"]
         if versions.get("core"):
             version_cells.append("core " + ", ".join(versions["core"]))
         if versions.get("docker"):
@@ -781,17 +810,22 @@ def section_native_other_runs(results: list[Result]) -> list[str]:
             continue
         steps = steps_by_id(result)
         fix = steps.get("native_fix") or {}
+        linters = fix.get("linters", {})
         fixed = [
-            f"{key} {values.get('fixed')}"
-            for key, values in sorted(fix.get("linters", {}).items())
-            if values.get("fixed")
+            f"{key} {linters[key].get('fixed')}"
+            for key in LINTERS
+            if linters.get(key, {}).get("fixed")
+        ]
+        errors_left = [
+            f"{key} {linters[key].get('errors')}" for key in LINTERS if key in linters
         ]
         rows.append(
             [
                 result["platform"],
                 seconds(steps.get("native_fix")),
-                ", ".join(fixed),
                 seconds(steps.get("native_single_file")),
+                ", ".join(fixed),
+                ", ".join(errors_left),
             ]
         )
     lines = [
@@ -802,7 +836,13 @@ def section_native_other_runs(results: list[Result]) -> list[str]:
         "",
     ]
     return lines + table(
-        ["Platform", "`--fix` run (s)", "Fixed (from the report)", "Single file (s)"],
+        [
+            "Platform",
+            "`--fix` run (s)",
+            "Single file (s)",
+            "Fixed (count of the report)",
+            "Errors left after `--fix`",
+        ],
         rows,
         1,
     )
@@ -1013,7 +1053,10 @@ def section_errors(results: list[Result]) -> list[str]:
     if differences:
         lines += ["Different counts: " + "; ".join(differences), ""]
     elif rows:
-        lines += ["Every platform and mode reports the same number of errors.", ""]
+        lines += [
+            "Every platform and mode that produced a report finds the same number of errors.",
+            "",
+        ]
     return lines
 
 
@@ -1031,6 +1074,11 @@ def section_failures(results: list[Result]) -> list[str]:
                 problem = f"exit code {step.get('return_code')}"
             elif step.get("lint") and not step.get("linters"):
                 problem = "no report"
+            if problem and step.get("error_excerpt"):
+                excerpt = "<br>".join(
+                    f"`{line.replace('`', '')}`" for line in step["error_excerpt"]
+                )
+                problem = f"{problem}: {excerpt.replace('|', '¦')}"
             if problem:
                 rows.append(
                     [result["platform"], result["mode"], f"`{step['id']}`", problem]
