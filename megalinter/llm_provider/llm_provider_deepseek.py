@@ -3,16 +3,20 @@
 DeepSeek LLM Provider for MegaLinter
 """
 
-import logging
 from typing import Any, Dict, Optional
 
-from langchain_deepseek import ChatDeepSeek
 from megalinter import config
 
-from .llm_provider import LLMProvider
+from .llm_provider_openai_compatible import OpenAICompatibleProvider
 
 
-class DeepSeekProvider(LLMProvider):
+class DeepSeekProvider(OpenAICompatibleProvider):
+
+    DISPLAY_NAME = "DeepSeek"
+    API_KEY_VAR_NAME = "DEEPSEEK_API_KEY"
+    DEFAULT_BASE_URL = "https://api.deepseek.com/v1"
+    MAX_TOKENS_FIELD = "max_tokens"
+    USE_DEVELOPER_ROLE_FOR_O_SERIES = False
 
     def get_default_model(self) -> str:
         return "deepseek-chat"
@@ -39,29 +43,3 @@ class DeepSeekProvider(LLMProvider):
                 )
             ),
         }
-
-    def initialize(self) -> bool:
-        try:
-            api_key = self.get_config_value("api_key")
-            if not api_key:
-                raise ValueError("DEEPSEEK_API_KEY is required")
-
-            model_name = self.get_config_value("model_name") or self.get_default_model()
-            base_url = self.get_config_value("base_url", "https://api.deepseek.com/v1")
-            temperature = self.get_config_value("temperature")
-            max_tokens = self.get_config_value("max_tokens")
-
-            self.llm = ChatDeepSeek(
-                model=model_name,
-                temperature=temperature,
-                max_tokens=max_tokens,
-                api_key=api_key,
-                base_url=base_url,
-            )
-
-            logging.debug(f"DeepSeek provider initialized with model {model_name}")
-            return True
-
-        except Exception as e:
-            logging.error(f"Failed to initialize DeepSeek provider: {str(e)}")
-            return False

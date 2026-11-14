@@ -38,7 +38,7 @@ See more details in [Help](#help-content)
 - See [How to disable code-analyzer-aura rules in files](https://eslint.org/docs/latest/use/configure/rules#disabling-rules){target=_blank}
 - See [Index of problems detected by code-analyzer-aura](https://github.com/forcedotcom/eslint-plugin-aura#rules){target=_blank}
 
-[![code-analyzer - GitHub](https://gh-card.dev/repos/forcedotcom/code-analyzer.svg?fullname=)](https://github.com/forcedotcom/code-analyzer){target=_blank}
+[![code-analyzer - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=forcedotcom&repo=code-analyzer&show_owner=true)](https://github.com/forcedotcom/code-analyzer){target=_blank}
 
 ## Configuration in MegaLinter
 
@@ -78,7 +78,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                             | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:----------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor               |       133        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor               |       134        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/) | Optimized for Salesforce based projects |        58        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
 
 ## Behind the scenes
@@ -107,7 +107,7 @@ sf code-analyzer run --rule-selector eslint --workspace . --file-glob '**/aura/*
 ### Help content
 
 ```shell
- ›   Warning: @salesforce/cli update available from 2.156.7 to 2.156.8.
+ ›   Warning: @salesforce/cli update available from 2.157.7 to 2.158.7.
 Analyze your code with a selection of rules to ensure good coding practices.
 
 USAGE
@@ -148,12 +148,12 @@ FLAGS
 GLOBAL FLAGS
   --flags-dir=<value>  Import flag values from a directory.
 
- ›   Warning: @salesforce/cli update available from 2.156.7 to 2.156.8.
+ ›   Warning: @salesforce/cli update available from 2.157.7 to 2.158.7.
 
 Streaming logs in real time to:
-    /tmp/sfca-2026_10_31_21_13_40_863.log
+    /tmp/sfca-2026_11_13_02_31_20_914.log
 
-Selecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, sfge, pmd, cpd; Completion: 0%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, sfge, pmd, cpd; Completion: 11%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, sfge, pmd, cpd; Completion: 22%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, sfge, pmd, cpd; Completion: 33%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, sfge, pmd, cpd; Completion: 34%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, sfge, pmd, cpd; Completion: 35%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, sfge, pmd, cpd; Completion: 36%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, sfge, pmd, cpd; Completion: 37%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, sfge, pmd, cpd; Completion: 38%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, sfge, pmd, cpd; Completion: 39%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, sfge, pmd, cpd; Completion: 40%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, sfge, pmd, cpd; Completion: 41%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, sfge, pmd, cpd; Completion: 42%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, sfge, pmd, cpd; Completion: 43%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, sfge, pmd, cpd; Completion: 44%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, sfge, pmd, cpd; Completion: 55%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, sfge, pmd, cpd; Completion: 63%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, sfge, pmd, cpd; Completion: 66%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, sfge, pmd, cpd; Completion: 67%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, sfge, pmd, cpd; Completion: 68%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, sfge, pmd, cpd; Completion: 72%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, sfge, pmd, cpd; Completion: 79%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, sfge, pmd, cpd; Completion: 80%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, sfge, pmd, cpd; Completion: 80%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, sfge, pmd, cpd; Completion: 87%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, sfge, pmd, cpd; Completion: 88%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, sfge, pmd, cpd; Completion: 89%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, sfge, pmd, cpd; Completion: 90%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, sfge, pmd, cpd; Completion: 97%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, sfge, pmd, cpd; Completion: 98%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, sfge, pmd, cpd; Completion: 99%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, sfge, pmd, cpd; Completion: 100%; Elapsed time: 1sSelecting rules... done.
+Selecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 0%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 11%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 22%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 23%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 24%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 25%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 26%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 27%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 28%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 29%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 30%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 31%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 32%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 33%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 44%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 55%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 63%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 66%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 67%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 68%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 72%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 79%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 80%; Elapsed time: 0sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 80%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 87%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 88%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 89%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 90%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 97%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 98%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 99%; Elapsed time: 1sSelecting rules... Eligible engines: retire-js, regex, uibundle, eslint, apexguru, flow, pmd, cpd, sfge; Completion: 100%; Elapsed time: 1sSelecting rules... done.
 
   #     Name                                                              Engine   Severity       Tag
  ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -706,7 +706,7 @@ Found 540 rule(s) from 1 engine(s):
     540 eslint rule(s) found.
 
 Additional log information written to:
-    /tmp/sfca-2026_10_31_21_13_40_863.log
+    /tmp/sfca-2026_11_13_02_31_20_914.log
 ```
 
 ### Installation on mega-linter Docker image
@@ -715,25 +715,27 @@ Additional log information written to:
 ```dockerfile
 # Parent descriptor install
 # renovate: datasource=npm depName=@salesforce/cli
-ARG NPM_SALESFORCE_CLI_VERSION=2.156.7
+ARG NPM_SALESFORCE_CLI_VERSION=2.157.7
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=3.0.14
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=3.0.17
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=8.20.1
+ARG SFDX_HARDIS_VERSION=8.21.0
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 ENV XDG_DATA_HOME=/usr/local/share
 RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION} \
     && echo y|sf plugins install sfdx-hardis@${SFDX_HARDIS_VERSION} \
     && (npm cache clean --force || true) \
-    && rm -rf /root/.npm/_cacache
+    && find /usr/local/share/sf/node_modules -type f \( -name "*.map" -o -name "*.d.ts" -o -name "*.d.mts" -o -name "*.d.cts" \) -not -path "*/typescript/lib/*" -not -path "*/@types/*" -delete \
+    && rm -rf /root/.npm /root/.cache/sf /tmp/v8-compile-cache-*
 ENV SF_AUTOUPDATE_DISABLE=true SF_CLI_DISABLE_AUTOUPDATE=true
 # Linter install
 # renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
 ARG SALESFORCE_CODE_ANALYZER_VERSION=5.16.0
 RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
     && (npm cache clean --force || true) \
-    && rm -rf /root/.npm/_cacache
+    && find /usr/local/share/sf/node_modules -type f \( -name "*.map" -o -name "*.d.ts" -o -name "*.d.mts" -o -name "*.d.cts" \) -not -path "*/typescript/lib/*" -not -path "*/@types/*" -delete \
+    && rm -rf /root/.npm /root/.cache/sf /tmp/v8-compile-cache-*
 ```
 
 

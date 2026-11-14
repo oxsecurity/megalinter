@@ -31,7 +31,7 @@ _Disabled reason: CoffeeScript tooling is discontinued, and coffeelint can not h
 - See [How to disable coffeelint rules in files](https://coffeelint.github.io/#options){target=_blank}
 - See [Index of problems detected by coffeelint](https://coffeelint.github.io/#options){target=_blank}
 
-[![coffeelint - GitHub](https://gh-card.dev/repos/clutchski/coffeelint.svg?fullname=)](https://github.com/clutchski/coffeelint){target=_blank}
+[![coffeelint - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=clutchski&repo=coffeelint&show_owner=true)](https://github.com/clutchski/coffeelint){target=_blank}
 
 ## Configuration in MegaLinter
 
@@ -72,7 +72,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       133        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       134        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -136,7 +136,7 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=@coffeelint/cli
-ARG NPM_COFFEELINT_CLI_VERSION=5.2.12
+ARG NPM_COFFEELINT_CLI_VERSION=5.2.15
 ```
 
 - NPM packages (node.js):

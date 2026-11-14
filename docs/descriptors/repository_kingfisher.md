@@ -27,7 +27,7 @@ description: How to use kingfisher (configure, ignore files, ignore errors, help
 - See [How to disable kingfisher rules in files](https://mongodb.github.io/kingfisher/usage/advanced/?h=inline#inline-ignore-directives){target=_blank}
 - See [Index of problems detected by kingfisher](https://mongodb.github.io/kingfisher/rules/builtin-rules){target=_blank}
 
-[![kingfisher - GitHub](https://gh-card.dev/repos/mongodb/kingfisher.svg?fullname=)](https://github.com/mongodb/kingfisher){target=_blank}
+[![kingfisher - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=mongodb&repo=kingfisher&show_owner=true)](https://github.com/mongodb/kingfisher){target=_blank}
 
 ## Configuration in MegaLinter
 
@@ -56,7 +56,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                   | Description               | Embedded linters |                                                                                                                                                                                         Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor |       133        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor |       134        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/) | Optimized for security    |        24        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 
 ## Behind the scenes

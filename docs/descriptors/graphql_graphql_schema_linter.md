@@ -33,7 +33,7 @@ _Disabled reason: graphql-schema-linter is unmaintained (no release or commit si
 - See [How to disable graphql-schema-linter rules in files](https://github.com/cjoudrey/graphql-schema-linter#inline-rule-overrides){target=_blank}
 - See [Index of problems detected by graphql-schema-linter](https://github.com/cjoudrey/graphql-schema-linter#built-in-rules){target=_blank}
 
-[![graphql-schema-linter - GitHub](https://gh-card.dev/repos/cjoudrey/graphql-schema-linter.svg?fullname=)](https://github.com/cjoudrey/graphql-schema-linter){target=_blank}
+[![graphql-schema-linter - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=cjoudrey&repo=graphql-schema-linter&show_owner=true)](https://github.com/cjoudrey/graphql-schema-linter){target=_blank}
 
 ## Configuration in MegaLinter
 
@@ -66,7 +66,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       133        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       134        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 

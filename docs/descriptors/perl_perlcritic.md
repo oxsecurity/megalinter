@@ -34,7 +34,7 @@ description: How to use perlcritic (configure, ignore files, ignore errors, help
 - See [How to disable perlcritic rules in files](https://metacpan.org/pod/Perl::Critic#BENDING-THE-RULES){target=_blank}
 - See [Index of problems detected by perlcritic](https://metacpan.org/pod/Perl::Critic#THE-POLICIES){target=_blank}
 
-[![Perl-Critic - GitHub](https://gh-card.dev/repos/Perl-Critic/Perl-Critic.svg?fullname=)](https://github.com/Perl-Critic/Perl-Critic){target=_blank}
+[![Perl-Critic - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=Perl-Critic&repo=Perl-Critic&show_owner=true)](https://github.com/Perl-Critic/Perl-Critic){target=_blank}
 
 ## Configuration in MegaLinter
 
@@ -65,7 +65,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       133        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       134        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 

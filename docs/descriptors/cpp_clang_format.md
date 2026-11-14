@@ -26,7 +26,7 @@ description: How to use clang-format (configure, ignore files, ignore errors, he
 - See [How to disable clang-format rules in files](https://releases.llvm.org/21.1.0/tools/clang/docs/ClangFormatStyleOptions.html#disabling-formatting-on-a-piece-of-code){target=_blank}
 - See [Index of problems detected by clang-format](https://releases.llvm.org/21.1.0/tools/clang/docs/ClangFormat.html){target=_blank}
 
-[![llvm-project - GitHub](https://gh-card.dev/repos/llvm/llvm-project.svg?fullname=)](https://github.com/llvm/llvm-project){target=_blank}
+[![llvm-project - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=llvm&repo=llvm-project&show_owner=true)](https://github.com/llvm/llvm-project){target=_blank}
 
 ## Configuration in MegaLinter
 
@@ -69,7 +69,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description                       | Embedded linters |                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:----------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor         |       133        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor         |       134        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico" alt="" height="32px" class="megalinter-icon"></a>        | [c_cpp](https://megalinter.io/beta/flavors/c_cpp/)   | Optimized for pure C/C++ projects |        59        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp) |
 
 ## Behind the scenes

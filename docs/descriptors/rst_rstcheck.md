@@ -30,7 +30,7 @@ description: How to use rstcheck (configure, ignore files, ignore errors, help &
 - See [How to configure rstcheck rules](https://github.com/myint/rstcheck#configuration-file){target=_blank}
 - See [How to disable rstcheck rules in files](https://github.com/myint/rstcheck#ignore-specific-errors){target=_blank}
 
-[![rstcheck - GitHub](https://gh-card.dev/repos/myint/rstcheck.svg?fullname=)](https://github.com/myint/rstcheck){target=_blank}
+[![rstcheck - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=myint&repo=rstcheck&show_owner=true)](https://github.com/myint/rstcheck){target=_blank}
 
 ## Configuration in MegaLinter
 
@@ -71,9 +71,9 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       133        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        99        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        69        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       134        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |       100        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        70        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
 
@@ -122,10 +122,10 @@ rstcheck -c .rstcheck.cfg myfile.rst
 │                                          .rstcheck.cfg | setup.cfg. If       │
 │                                          'NONE' is passed no config file is  │
 │                                          loaded at all.                      │
-│ --warn-unknown-settings                  Log a WARNING for unknown settings  │
+│ --warn-unknown-settings          <bool>  Log a WARNING for unknown settings  │
 │                                          in config files. Can be hidden via  │
 │                                          --log-level.                        │
-│ --recursive              -r              Recursively search passed           │
+│ --recursive              -r      <bool>  Recursively search passed           │
 │                                          directories for RST files to check. │
 │ --report-level                   LEVEL   The report level of the linting     │
 │                                          issues found. Valid levels are:     │
@@ -160,8 +160,8 @@ rstcheck -c .rstcheck.cfg myfile.rst
 │                                          is used and automatic discovery     │
 │                                          fails. May be relative or absolute. │
 │                                          Can be set in config file.          │
-│ --version                                Print versions and exit.            │
-│ --help                                   Show this message and exit.         │
+│ --version                        <bool>  Print versions and exit.            │
+│ --help                           <bool>  Show this message and exit.         │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 
 ```

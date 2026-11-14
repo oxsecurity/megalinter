@@ -302,7 +302,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=flake8
-          ARG PIP_FLAKE8_VERSION=7.4.1
+          ARG PIP_FLAKE8_VERSION=7.5.0
       pip:
         - flake8==${PIP_FLAKE8_VERSION}
     supported_platforms:
@@ -988,3 +988,99 @@ linters:
       vscode:
         - name: Ruff
           url: https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff
+
+  # ty
+  - linter_name: ty
+    name: PYTHON_TY
+    can_output_sarif: true
+    file_extensions:
+      - ".py"
+      - ".pyi"
+    linter_text: |
+      **ty** is an extremely fast Python type checker and language server written in Rust by Astral (the creators of Ruff and uv).
+
+      **Key features:**
+
+      - **High Performance**: Built from the ground up in Rust for blazing-fast type checking and language server operations
+      - **Incremental Analysis**: Salsa-based query system providing instant diagnostics on save or edit
+      - **Language Server Support**: Full Language Server Protocol (LSP) implementation supporting code completion, navigation, and hover documentation
+      - **Advanced Type System**: Features first-class intersection types, advanced type narrowing, and sophisticated reachability analysis
+      - **Gradual Adoption**: Checks unannotated code bodies by default with flexible configuration options and suppression comments
+    linter_url: https://docs.astral.sh/ty/
+    linter_repo: https://github.com/astral-sh/ty
+    linter_image_url: https://raw.githubusercontent.com/astral-sh/ty/main/docs/assets/logo-letter.svg
+    linter_spdx_license: MIT
+    linter_speed: 5
+    linter_rules_url: https://docs.astral.sh/ty/rules/
+    linter_rules_configuration_url: https://docs.astral.sh/ty/configuration/
+    linter_rules_inline_disable_url: https://docs.astral.sh/ty/configuration/#suppression
+    linter_rules_ignore_config_url: https://docs.astral.sh/ty/configuration/#file-selection
+    cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_extra_args:
+      - "check"
+      - "--no-progress"
+      - "--force-exclude"
+    cli_config_arg_name: "--config-file"
+    cli_lint_fix_arg_name: "--fix"
+    cli_version_arg_name: "--version"
+    cli_help_arg_name: "--help"
+    cli_lint_mode_project_exclude_arg_name: "--exclude"
+    cli_lint_mode_project_exclude_config_key:
+      - "src.exclude"
+      - "tool.ty.src.exclude"
+    cli_lint_mode_project_exclude_config_files:
+      - "ty.toml"
+      - "pyproject.toml"
+    cli_lint_mode_project_extra_args_after:
+      - .
+    cli_lint_mode_project_config_paths_regex: "(?m)^\\[(?:tool\\.ty\\.)?src\\][ \\t]*\\n(?:(?!\\[).*\\n)*?[ \\t]*(?:include|files)[ \\t]*="
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "Found ([0-9]+) diagnostic"
+    config_file_name: "ty.toml"
+    common_linter_errors:
+      - identifier: PYTHON_TY_ERROR_CONFIG_PARSE
+        regex: "(Error loading configuration file|is not a valid `ty\\.toml`|TOML parse error)"
+        message: |-
+          ty could not parse its configuration file (`ty.toml` or `pyproject.toml`).
+          Resolutions:
+            - Validate the TOML syntax of your ty config.
+            - Ensure configuration options match the pinned ty version schema.
+      - identifier: PYTHON_TY_ERROR_IMPORT_NOT_FOUND
+        regex: "(error\\[import-not-found\\]|Cannot resolve imported module)"
+        message: |-
+          ty could not resolve a third-party or local module import (`import-not-found`).
+          Because ty runs inside MegaLinter's isolated container, it will not see packages installed only in your project's environment unless configured.
+          Resolutions:
+            - Install your project dependencies before linting and point ty to that environment via `PYTHON_TY_PRE_COMMANDS` or `--python` in `PYTHON_TY_ARGUMENTS`:
+                PYTHON_TY_PRE_COMMANDS:
+                  - command: "pip install -r requirements.txt"
+                    venv: ty
+                    continue_if_failed: false
+            - For first-party modules outside the repository root (e.g. `.automation/` or `src/`), add them under `[environment] extra-paths` in `ty.toml` or `[tool.ty.environment]` in `pyproject.toml`.
+            - To ignore missing-import errors when external stubs/packages are unavailable, set `import-not-found = "ignore"` under `[rules]` (`[tool.ty.rules]` in `pyproject.toml`).
+    cli_sarif_args:
+      - --output-format
+      - sarif
+    test_folder: python_ty
+    examples:
+      - "ty check myfile.py"
+      - "ty check --config-file ty.toml myfile.py"
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=ty
+          ARG PIP_TY_VERSION=0.0.100
+      pip:
+        - ty==${PIP_TY_VERSION}
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
+    ide:
+      vscode:
+        - name: ty
+          url: https://marketplace.visualstudio.com/items?itemName=astral-sh.ty

@@ -26,7 +26,7 @@ description: How to use dartanalyzer (configure, ignore files, ignore errors, he
 - See [How to disable dartanalyzer rules in files](https://dart.dev/tools/analysis#ignoring-rules){target=_blank}
 - See [Index of problems detected by dartanalyzer](https://dart.dev/tools/linter-rules#rules){target=_blank}
 
-[![sdk - GitHub](https://gh-card.dev/repos/dart-lang/sdk.svg?fullname=)](https://github.com/dart-lang/sdk){target=_blank}
+[![sdk - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=dart-lang&repo=sdk&show_owner=true)](https://github.com/dart-lang/sdk){target=_blank}
 
 ## Configuration in MegaLinter
 
@@ -68,7 +68,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       133        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       134        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -176,7 +176,9 @@ esac \
     && mv /tmp/dart-sdk/* /usr/lib/dart/ \
     && chmod +x /usr/lib/dart/bin/dart \
     && chmod +x /usr/lib/dart/bin/dartaotruntime \
-    && rm -rf /tmp/dart-sdk /tmp/dart-sdk.zip
+    && rm -rf /tmp/dart-sdk /tmp/dart-sdk.zip \
+       /usr/lib/dart/bin/dartaotruntime_asan /usr/lib/dart/bin/dartaotruntime_msan /usr/lib/dart/bin/dartaotruntime_tsan \
+    && find /usr/lib/dart/bin/resources -type f -name "*.map" -delete
 
 ENV PATH="/usr/lib/dart/bin:${PATH}"
 ```

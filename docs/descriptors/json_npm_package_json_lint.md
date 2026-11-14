@@ -22,7 +22,7 @@ description: How to use npm-package-json-lint (configure, ignore files, ignore e
 
 ## npm-package-json-lint documentation
 
-- Version in MegaLinter: **11.0.0**
+- Version in MegaLinter: **11.0.1**
 - Visit [Official Web Site](https://npmpackagejsonlint.org/){target=_blank}
 - See [How to configure npm-package-json-lint rules](https://npmpackagejsonlint.org/docs/configuration){target=_blank}
   - If custom `.npmpackagejsonlintrc.json` config file isn't found, [.npmpackagejsonlintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.npmpackagejsonlintrc.json){target=_blank} will be used
@@ -30,7 +30,7 @@ description: How to use npm-package-json-lint (configure, ignore files, ignore e
   - You can define a `.npmpackagejsonlintignore` file to ignore files and folders
 - See [Index of problems detected by npm-package-json-lint](https://npmpackagejsonlint.org/docs/rules){target=_blank}
 
-[![npm-package-json-lint - GitHub](https://gh-card.dev/repos/tclindner/npm-package-json-lint.svg?fullname=)](https://github.com/tclindner/npm-package-json-lint){target=_blank}
+[![npm-package-json-lint - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=tclindner&repo=npm-package-json-lint&show_owner=true)](https://github.com/tclindner/npm-package-json-lint){target=_blank}
 
 ## Configuration in MegaLinter
 
@@ -63,8 +63,8 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                                              | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                                |       133        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)       | MegaLinter for the most commonly used languages          |        99        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                                |       134        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)       | MegaLinter for the most commonly used languages          |       100        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)         | Optimized for C, C++, C# or VB based projects            |        66        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)   | Optimized for C, C++, C# or VB based projects with JS/TS |        81        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        68        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
@@ -135,11 +135,11 @@ npmPkgJsonLint --configFile .npmpackagejsonlintrc.json .
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=npm-package-json-lint
-ARG NPM_PACKAGE_JSON_LINT_VERSION=11.0.0
+ARG NPM_PACKAGE_JSON_LINT_VERSION=11.0.1
 # renovate: datasource=npm depName=npm-package-json-lint-config-default
 ARG NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION=10.0.0
 ```
 
 - NPM packages (node.js):
-  - [npm-package-json-lint@11.0.0](https://www.npmjs.com/package/npm-package-json-lint/v/11.0.0)
+  - [npm-package-json-lint@11.0.1](https://www.npmjs.com/package/npm-package-json-lint/v/11.0.1)
   - [npm-package-json-lint-config-default@10.0.0](https://www.npmjs.com/package/npm-package-json-lint-config-default/v/10.0.0)

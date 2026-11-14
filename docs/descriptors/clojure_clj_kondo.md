@@ -32,7 +32,7 @@ description: How to use clj-kondo (configure, ignore files, ignore errors, help 
 
 ## clj-kondo documentation
 
-- Version in MegaLinter: **2026.10.20**
+- Version in MegaLinter: **2026.10.26**
 - Visit [Official Web Site](https://github.com/clj-kondo/clj-kondo#readme){target=_blank}
 - See [How to configure clj-kondo rules](https://github.com/clj-kondo/clj-kondo/blob/master/doc/config.md#configuration){target=_blank}
   - If custom `.clj-kondo/config.edn` config file isn't found, [.clj-kondo/config.edn](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.clj-kondo/config.edn){target=_blank} will be used
@@ -40,7 +40,7 @@ description: How to use clj-kondo (configure, ignore files, ignore errors, help 
 - See [How to ignore files and directories with clj-kondo](https://github.com/clj-kondo/clj-kondo/blob/master/doc/config.md#exclude-files-from-being-linted){target=_blank}
 - See [Index of problems detected by clj-kondo](https://github.com/clj-kondo/clj-kondo/blob/master/doc/linters.md){target=_blank}
 
-[![clj-kondo - GitHub](https://gh-card.dev/repos/clj-kondo/clj-kondo.svg?fullname=)](https://github.com/clj-kondo/clj-kondo){target=_blank}
+[![clj-kondo - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=clj-kondo&repo=clj-kondo&show_owner=true)](https://github.com/clj-kondo/clj-kondo){target=_blank}
 
 ## Configuration in MegaLinter
 
@@ -87,8 +87,8 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       133        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        99        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       134        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |       100        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
 |        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)       | Optimized for JAVA based projects               |        57        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
 
 ## Behind the scenes
@@ -124,7 +124,7 @@ clj-kondo --config .clj-kondo/config.edn --lint myfile.clj
 ### Help content
 
 ```shell
-clj-kondo v2026.10.20
+clj-kondo v2026.10.26
 
 Options:
 
@@ -177,7 +177,7 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=github-tags depName=clj-kondo/clj-kondo extractVersion=^v(?<version>.+)$
-ARG CLJ_KONDO_VERSION=2026.10.20
+ARG CLJ_KONDO_VERSION=2026.10.26
 
 RUN curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/clj-kondo/clj-kondo/refs/tags/v${CLJ_KONDO_VERSION}/script/install-clj-kondo \
     && chmod +x install-clj-kondo \

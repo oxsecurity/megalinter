@@ -29,7 +29,7 @@ description: How to use scalafix (configure, ignore files, ignore errors, help &
 - See [How to disable scalafix rules in files](https://scalacenter.github.io/scalafix/docs/users/suppression.html){target=_blank}
 - See [Index of problems detected by scalafix](https://scalacenter.github.io/scalafix/docs/rules/overview.html){target=_blank}
 
-[![scalafix - GitHub](https://gh-card.dev/repos/scalacenter/scalafix.svg?fullname=)](https://github.com/scalacenter/scalafix){target=_blank}
+[![scalafix - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=scalacenter&repo=scalafix&show_owner=true)](https://github.com/scalacenter/scalafix){target=_blank}
 
 ## Configuration in MegaLinter
 
@@ -62,7 +62,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       133        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       134        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -253,15 +253,16 @@ Less common options:
 # Parent descriptor install
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
-# renovate: datasource=github-tags depName=coursier/coursier
-ARG SCALA_COURSIER_VERSION=2.1.26
-RUN curl --retry-all-errors --retry 10 -fLo coursier https://github.com/coursier/coursier/releases/download/v${SCALA_COURSIER_VERSION}/coursier.jar && \
-        chmod +x coursier
-
 # Linter install
 # renovate: datasource=github-tags depName=scalacenter/scalafix
 ARG SCALA_SCALAFIX_VERSION=0.14.9
-RUN ./coursier install scalafix:${SCALA_SCALAFIX_VERSION} --quiet --install-dir /usr/bin && rm -rf /root/.cache
+# renovate: datasource=github-tags depName=coursier/coursier
+ARG SCALA_COURSIER_VERSION=2.1.26
+RUN curl --retry-all-errors --retry 10 -fLo /tmp/coursier https://github.com/coursier/coursier/releases/download/v${SCALA_COURSIER_VERSION}/coursier.jar && \
+    chmod +x /tmp/coursier && \
+    /tmp/coursier install scalafix:${SCALA_SCALAFIX_VERSION} --quiet --install-dir /usr/bin && \
+    rm -rf /tmp/coursier /root/.cache
+
 ```
 
 

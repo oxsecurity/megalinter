@@ -415,6 +415,7 @@
         "PYTHON_PYRIGHT",
         "PYTHON_RUFF",
         "PYTHON_RUFF_FORMAT",
+        "PYTHON_TY",
         "RAKU_RAKU",
         "REPOSITORY_BETTERLEAKS",
         "REPOSITORY_CHECKOV",
@@ -1543,6 +1544,27 @@
       "x-category": "ANSIBLE",
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
+    },
+    "ANTHROPIC_API_VERSION": {
+      "default": "2023-06-01",
+      "description": "Value of the anthropic-version header sent to the Anthropic API. With 2026-10-21 or later, LLM_TEMPERATURE is not sent (removed from the API)",
+      "title": "ANTHROPIC: API version",
+      "type": "string",
+      "x-category": "LLM",
+      "x-order": 950999,
+      "x-section": "MISC"
+    },
+    "ANTHROPIC_BASE_URL": {
+      "default": "https://api.anthropic.com",
+      "description": "Base URL of the Anthropic API, without the version segment (a trailing /v1 is accepted). /v1/messages is appended to it",
+      "examples": [
+        "https://api.anthropic.com"
+      ],
+      "title": "ANTHROPIC: Base URL",
+      "type": "string",
+      "x-category": "LLM",
+      "x-order": 950999,
+      "x-section": "MISC"
     },
     "API_FILTER_REGEX_EXCLUDE": {
       "description": "API: Custom regex excluding filter: files matching this regex will NOT be linted",
@@ -8355,6 +8377,18 @@
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
     },
+    "DEEPSEEK_BASE_URL": {
+      "default": "https://api.deepseek.com/v1",
+      "description": "Base URL of the DeepSeek API. /chat/completions is appended to it",
+      "examples": [
+        "https://api.deepseek.com/v1"
+      ],
+      "title": "DEEPSEEK: Base URL",
+      "type": "string",
+      "x-category": "LLM",
+      "x-order": 950999,
+      "x-section": "MISC"
+    },
     "DEFAULT_BRANCH": {
       "default": "HEAD",
       "deprecated": true,
@@ -10232,6 +10266,18 @@
       "x-order": 950975,
       "x-section": "GENERAL"
     },
+    "GOOGLE_BASE_URL": {
+      "default": "https://generativelanguage.googleapis.com",
+      "description": "Base URL of the Google Gemini API. /v1beta is appended when the URL has no version segment, then /models/{model}:generateContent",
+      "examples": [
+        "https://generativelanguage.googleapis.com"
+      ],
+      "title": "GOOGLE: Base URL",
+      "type": "string",
+      "x-category": "LLM",
+      "x-order": 950999,
+      "x-section": "MISC"
+    },
     "GO_FILTER_REGEX_EXCLUDE": {
       "description": "GO: Custom regex excluding filter: files matching this regex will NOT be linted",
       "items": {
@@ -11340,6 +11386,18 @@
       "x-category": "GRAPHQL",
       "x-order": 500000,
       "x-section": "PREPOSTCOMMANDS"
+    },
+    "GROK_BASE_URL": {
+      "default": "https://api.x.ai/v1",
+      "description": "Base URL of the Grok (xAI) API, including the version segment. /chat/completions is appended to it",
+      "examples": [
+        "https://api.x.ai/v1"
+      ],
+      "title": "GROK: Base URL",
+      "type": "string",
+      "x-category": "LLM",
+      "x-order": 950999,
+      "x-section": "MISC"
     },
     "GROOVY_FILTER_REGEX_EXCLUDE": {
       "description": "GROOVY: Custom regex excluding filter: files matching this regex will NOT be linted",
@@ -20480,6 +20538,18 @@
       "x-order": 249001,
       "x-section": "GENERAL"
     },
+    "MISTRAL_BASE_URL": {
+      "default": "https://api.mistral.ai/v1",
+      "description": "Base URL of the Mistral AI API, including the version segment. /chat/completions is appended to it",
+      "examples": [
+        "https://api.mistral.ai/v1"
+      ],
+      "title": "MISTRAL: Base URL",
+      "type": "string",
+      "x-category": "LLM",
+      "x-order": 950999,
+      "x-section": "MISC"
+    },
     "MULTI_STATUS": {
       "default": true,
       "deprecated": true,
@@ -20492,8 +20562,32 @@
     },
     "OLLAMA_BASE_URL": {
       "default": "http://localhost:11434",
-      "description": "Base URL to connect to Ollama server",
+      "description": "Base URL to connect to Ollama server, with or without the /api segment. /api/generate is appended to it",
       "title": "OLLAMA: Base URL",
+      "type": "string",
+      "x-category": "LLM",
+      "x-order": 950999,
+      "x-section": "MISC"
+    },
+    "OPENAI_BASE_URL": {
+      "default": "https://api.openai.com/v1",
+      "description": "Base URL of the OpenAI (or OpenAI-compatible) API, including the version segment. /chat/completions is appended to it",
+      "examples": [
+        "https://api.openai.com/v1"
+      ],
+      "title": "OPENAI: Base URL",
+      "type": "string",
+      "x-category": "LLM",
+      "x-order": 950999,
+      "x-section": "MISC"
+    },
+    "ORCAROUTER_BASE_URL": {
+      "default": "https://api.orcarouter.ai/v1",
+      "description": "Base URL of the OrcaRouter API, including the version segment. /chat/completions is appended to it",
+      "examples": [
+        "https://api.orcarouter.ai/v1"
+      ],
+      "title": "ORCAROUTER: Base URL",
       "type": "string",
       "x-category": "LLM",
       "x-order": 950999,
@@ -26142,6 +26236,252 @@
       "title": "PYTHON_RUFF: Unsecured env variables",
       "type": "array",
       "x-category": "PYTHON_RUFF",
+      "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
+      "x-order": 600000,
+      "x-section": "SECURITY"
+    },
+    "PYTHON_TY_ARGUMENTS": {
+      "description": "PYTHON_TY: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_TY: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ],
+      "x-category": "PYTHON_TY",
+      "x-order": 200020,
+      "x-section": "LINTER_COMMAND"
+    },
+    "PYTHON_TY_CLI_EXECUTABLE": {
+      "default": [
+        [
+          "ty"
+        ]
+      ],
+      "description": "PYTHON_TY: Override CLI executable used to build the linter command line (rarely needed)",
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_TY: CLI Executable",
+      "type": "array",
+      "x-category": "PYTHON_TY",
+      "x-order": 200060,
+      "x-section": "LINTER_COMMAND"
+    },
+    "PYTHON_TY_CLI_LINT_MODE": {
+      "default": "list_of_files",
+      "description": "PYTHON_TY: Override default CLI lint mode used to call the linter (rarely needed)",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
+      "title": "PYTHON_TY: CLI lint mode",
+      "type": "string",
+      "x-category": "PYTHON_TY",
+      "x-doc-key": "config-cli-lint-mode",
+      "x-order": 200050,
+      "x-section": "LINTER_COMMAND"
+    },
+    "PYTHON_TY_COMMAND_REMOVE_ARGUMENTS": {
+      "description": "PYTHON_TY: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_TY: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ],
+      "x-category": "PYTHON_TY",
+      "x-order": 200020,
+      "x-section": "LINTER_COMMAND"
+    },
+    "PYTHON_TY_CONFIG_FILE": {
+      "default": "ty.toml",
+      "description": "PYTHON_TY: User custom config file name if different from default",
+      "title": "PYTHON_TY: Custom config file name",
+      "type": "string",
+      "x-category": "PYTHON_TY",
+      "x-order": 200010,
+      "x-section": "LINTER_COMMAND"
+    },
+    "PYTHON_TY_DISABLE_ERRORS": {
+      "default": false,
+      "description": "PYTHON_TY: If true, PYTHON_TY doesn't make MegaLinter fail even if errors are found",
+      "title": "PYTHON_TY: Disable errors",
+      "type": "boolean",
+      "x-category": "PYTHON_TY",
+      "x-order": 400000,
+      "x-section": "ERRORS"
+    },
+    "PYTHON_TY_DISABLE_ERRORS_IF_LESS_THAN": {
+      "default": 0,
+      "description": "PYTHON_TY: If the number of errors found is less than this value, PYTHON_TY doesn't make MegaLinter fail",
+      "title": "PYTHON_TY: Maximum number of errors allowed",
+      "type": "number",
+      "x-category": "PYTHON_TY",
+      "x-order": 400010,
+      "x-section": "ERRORS"
+    },
+    "PYTHON_TY_FILE_EXTENSIONS": {
+      "default": [
+        ".py",
+        ".pyi"
+      ],
+      "description": "PYTHON_TY: Override descriptor/linter matching files extensions that will be used to select files to lint",
+      "examples": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_TY: Matching files extensions",
+      "type": "array",
+      "x-category": "PYTHON_TY",
+      "x-order": 300020,
+      "x-section": "SCOPE"
+    },
+    "PYTHON_TY_FILE_NAMES_REGEX": {
+      "default": [],
+      "description": "PYTHON_TY: Override descriptor/linter matching file name regexes that will be used to select files to lint",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_TY: Matching file name regexes",
+      "type": "array",
+      "x-category": "PYTHON_TY",
+      "x-order": 300030,
+      "x-section": "SCOPE"
+    },
+    "PYTHON_TY_FILTER_REGEX_EXCLUDE": {
+      "description": "PYTHON_TY: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with PYTHON_TY_CLI_LINT_MODE = project",
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_TY: Excluding Regex",
+      "type": [
+        "string",
+        "array"
+      ],
+      "x-category": "PYTHON_TY",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "PYTHON_TY_FILTER_REGEX_INCLUDE": {
+      "description": "PYTHON_TY: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with PYTHON_TY_CLI_LINT_MODE = project",
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_TY: Including Regex",
+      "type": [
+        "string",
+        "array"
+      ],
+      "x-category": "PYTHON_TY",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
+    },
+    "PYTHON_TY_FORWARD_EXCLUDED_DIRECTORIES": {
+      "default": true,
+      "description": "PYTHON_TY: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "title": "PYTHON_TY: Forward excluded directories in project lint mode",
+      "type": "boolean",
+      "x-category": "PYTHON_TY",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
+    "PYTHON_TY_POST_COMMANDS": {
+      "description": "PYTHON_TY: Define bash commands to run after running PYTHON_TY",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "PYTHON_TY: Post-run commands",
+      "type": "array",
+      "x-category": "PYTHON_TY",
+      "x-order": 500010,
+      "x-section": "PREPOSTCOMMANDS"
+    },
+    "PYTHON_TY_PRE_COMMANDS": {
+      "description": "PYTHON_TY: Define bash commands to run before running PYTHON_TY",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "PYTHON_TY: Pre-run commands",
+      "type": "array",
+      "x-category": "PYTHON_TY",
+      "x-order": 500000,
+      "x-section": "PREPOSTCOMMANDS"
+    },
+    "PYTHON_TY_RULES_PATH": {
+      "description": "PYTHON_TY: Path where to find linter configuration file",
+      "title": "PYTHON_TY: Custom config file path",
+      "type": "string",
+      "x-category": "PYTHON_TY",
+      "x-order": 200040,
+      "x-section": "LINTER_COMMAND"
+    },
+    "PYTHON_TY_TIMEOUT_SECONDS": {
+      "description": "PYTHON_TY: Maximum duration in seconds of the PYTHON_TY run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "PYTHON_TY: Timeout in seconds",
+      "type": "integer",
+      "x-category": "PYTHON_TY",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
+    "PYTHON_TY_UNSECURED_ENV_VARIABLES": {
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling PYTHON_TY and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_TY: Unsecured env variables",
+      "type": "array",
+      "x-category": "PYTHON_TY",
       "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
       "x-order": 600000,
       "x-section": "SECURITY"

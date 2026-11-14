@@ -22,14 +22,14 @@ description: How to use flake8 (configure, ignore files, ignore errors, help & v
 
 ## flake8 documentation
 
-- Version in MegaLinter: **7.4.1**
+- Version in MegaLinter: **7.5.0**
 - Visit [Official Web Site](https://flake8.pycqa.org){target=_blank}
 - See [How to configure flake8 rules](https://flake8.pycqa.org/en/latest/user/configuration.html#project-configuration){target=_blank}
   - If custom `.flake8` config file isn't found, [.flake8](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.flake8){target=_blank} will be used
 - See [How to disable flake8 rules in files](https://flake8.pycqa.org/en/3.1.1/user/ignoring-errors.html#in-line-ignoring-errors){target=_blank}
 - See [Index of problems detected by flake8](https://flake8.pycqa.org/en/latest/user/error-codes.html){target=_blank}
 
-[![flake8 - GitHub](https://gh-card.dev/repos/PyCQA/flake8.svg?fullname=)](https://github.com/PyCQA/flake8){target=_blank}
+[![flake8 - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=PyCQA&repo=flake8&show_owner=true)](https://github.com/PyCQA/flake8){target=_blank}
 
 ## Configuration in MegaLinter
 
@@ -70,9 +70,9 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       133        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |        99        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        69        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       134        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |       100        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        70        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
 
@@ -209,7 +209,7 @@ pyflakes:
   --builtins BUILTINS   define more built-ins, comma separated
   --doctests            also check syntax of the doctests
 
-Installed plugins: mccabe: 0.7.0, pycodestyle: 2.15.0, pyflakes: 4.0.3
+Installed plugins: mccabe: 0.7.0, pycodestyle: 2.15.0, pyflakes: 4.1.0
 ```
 
 ### Installation on mega-linter Docker image
@@ -217,11 +217,11 @@ Installed plugins: mccabe: 0.7.0, pycodestyle: 2.15.0, pyflakes: 4.0.3
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=flake8
-ARG PIP_FLAKE8_VERSION=7.4.1
+ARG PIP_FLAKE8_VERSION=7.5.0
 ```
 
 - PIP packages (Python):
-  - [flake8==7.4.1](https://pypi.org/project/flake8/7.4.1)
+  - [flake8==7.5.0](https://pypi.org/project/flake8/7.5.0)
 
 ## Known errors and resolutions
 

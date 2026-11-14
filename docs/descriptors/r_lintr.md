@@ -25,7 +25,7 @@ description: How to use lintr (configure, ignore files, ignore errors, help & ve
 - See [How to disable lintr rules in files](https://lintr.r-lib.org/articles/lintr.html#exclusions){target=_blank}
 - See [Index of problems detected by lintr](https://lintr.r-lib.org/reference/index.html){target=_blank}
 
-[![lintr - GitHub](https://gh-card.dev/repos/r-lib/lintr.svg?fullname=)](https://github.com/r-lib/lintr){target=_blank}
+[![lintr - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=r-lib&repo=lintr&show_owner=true)](https://github.com/r-lib/lintr){target=_blank}
 
 ## Configuration in MegaLinter
 
@@ -69,7 +69,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       133        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       134        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
