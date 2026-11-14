@@ -1919,7 +1919,10 @@
         "ucrt",
         "CAFILE",
         "backslashreplace",
+        "machdep",
+        "maxrss",
         "SYSTEMROOT",
+        "taskkill",
         "temurin",
         "Temurin",
         "WRONLY"
