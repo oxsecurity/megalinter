@@ -7,6 +7,7 @@ import json
 import logging
 import re
 
+import github
 from megalinter import config, utils
 from megalinter.ci_providers.CiProvider import CiProvider
 
@@ -77,6 +78,28 @@ class CiProviderGithubActions(CiProvider):
         ref = config.get(self.request_id, "GITHUB_REF", "")
         match = re.compile("refs/pull/(\\d+)/merge").match(ref)
         return match.group(1) if match is not None else None
+
+    def get_pr_reference(self) -> str:
+        return f"{self.get_repo_slug()} #PR{self.get_pr_number()}"
+
+    def get_pr_labels(self):
+        token = self.get_auth_token()
+        pr_number = self.get_pr_number()
+        if token is None or pr_number is None:
+            logging.info(
+                f"[{self.name}] No GitHub token or Pull Request found, "
+                "so Pull Request labels are unavailable"
+            )
+            return None
+        try:
+            gh = github.Github(
+                auth=github.Auth.Token(token), base_url=self.get_api_url()
+            )
+            pull_request = gh.get_repo(self.get_repo_slug()).get_pull(int(pr_number))
+            return [label.name for label in pull_request.labels]
+        except Exception as e:
+            logging.warning(f"[{self.name}] Unable to read Pull Request labels: {e}")
+            return None
 
     # Token provided by the runner, scoped by the workflow permissions
     def get_auth_token(self):

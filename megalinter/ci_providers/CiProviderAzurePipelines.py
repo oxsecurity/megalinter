@@ -109,6 +109,39 @@ class CiProviderAzurePipelines(CiProvider):
             return ""
         return f"{job_url}&view=artifacts&pathAsName=false&type=publishedArtifacts"
 
+    # Azure links the published artifacts rather than the build page
+    def get_report_url(self) -> str:
+        return self.get_artifacts_url()
+
+    def get_pr_reference(self) -> str:
+        return f"{self.get_team_project()} #PR{self.get_pr_number()}"
+
+    def get_pr_labels(self):
+        pr_id = self.get_pr_number()
+        if self.get_auth_token() is None or pr_id is None:
+            logging.info(
+                f"[{self.name}] No Azure token or Pull Request found, "
+                "so Pull Request labels are unavailable"
+            )
+            return None
+        try:
+            response = requests.get(
+                self.build_git_api_url(
+                    f"/repositories/{self.get_repository_id()}/pullRequests/{pr_id}/labels"
+                ),
+                headers=self.get_api_headers(),
+                timeout=60,
+            )
+            response.raise_for_status()
+            return [
+                label["name"]
+                for label in response.json().get("value", [])
+                if label.get("active", True)
+            ]
+        except Exception as e:
+            logging.warning(f"[{self.name}] Unable to read Pull Request labels: {e}")
+            return None
+
     def get_pr_number(self):
         pr_id = config.get(self.request_id, "SYSTEM_PULLREQUEST_PULLREQUESTID", "")
         return pr_id if pr_id != "" else None
