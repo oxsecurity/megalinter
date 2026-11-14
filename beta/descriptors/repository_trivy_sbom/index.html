@@ -9716,6 +9716,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#installation-without-docker-native-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Installation without Docker (native mode)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -12470,6 +12481,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#installation-without-docker-native-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Installation without Docker (native mode)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -12911,6 +12933,43 @@ Use<span class="w"> </span><span class="s2">"trivy [command] --help"</span><span
 <span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">test</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span><span class="s2">/.cache/trivy/db/trivy.db"</span>
 </code></pre></div></li>
 </ul>
+<h3 id="installation-without-docker-native-mode">Installation without Docker (native mode)</h3>
+<p>This linter can run without Docker, see <a href="https://megalinter.io/latest/install-native/">native mode</a>.</p>
+<ul>
+<li>Install method: Verified release download</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">NATIVE_LINTERS</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">REPOSITORY_TRIVY_SBOM</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Platform</th>
+<th style="text-align: left;">Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Linux (x86-64)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">Linux (ARM64)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">macOS (Intel)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">macOS (Apple Silicon)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">Windows (Git Bash)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+</tbody>
+</table>
 <h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
 <p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
 <h3 id="repository_trivy_sbom_error_toomanyrequests">REPOSITORY_TRIVY_SBOM_ERROR_TOOMANYREQUESTS</h3>

@@ -3652,6 +3652,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#installation-without-docker-native-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Installation without Docker (native mode)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -12470,6 +12481,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#installation-without-docker-native-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Installation without Docker (native mode)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -12958,6 +12980,44 @@ Miscellaneous:
 <span class="k">RUN</span><span class="w"> </span><span class="nv">GITHUB_AUTH_TOKEN</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>cat<span class="w"> </span>/run/secrets/GITHUB_TOKEN<span class="k">)</span><span class="s2">"</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span>GITHUB_AUTH_TOKEN<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>composer<span class="w"> </span>global<span class="w"> </span>require<span class="w"> </span>vimeo/psalm:<span class="si">${</span><span class="nv">PHP_VIMEO_PSALM_VERSION</span><span class="si">}</span>
 </code></pre></div></li>
 </ul>
+<h3 id="installation-without-docker-native-mode">Installation without Docker (native mode)</h3>
+<p>This linter can run without Docker, see <a href="https://megalinter.io/latest/install-native/">native mode</a>.</p>
+<ul>
+<li>Install method: Verified release download</li>
+<li>Requires the php runtime ~8.1.31 || ~8.2.27 || ~8.3.16 || ~8.4.3 || &gt;=8.5</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">NATIVE_LINTERS</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">PHP_PSALM</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Platform</th>
+<th style="text-align: left;">Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Linux (x86-64)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">Linux (ARM64)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">macOS (Intel)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">macOS (Apple Silicon)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">Windows (Git Bash)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+</tbody>
+</table>
 <h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
 <p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
 <h3 id="php_psalm_error_memory_exhausted">PHP_PSALM_ERROR_MEMORY_EXHAUSTED</h3>

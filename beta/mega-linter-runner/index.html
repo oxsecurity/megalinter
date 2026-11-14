@@ -12497,6 +12497,7 @@
 <span class="w">        </span><span class="nt">stages</span><span class="p">:</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">push</span>
 </code></pre></div>
+<p>To lint without Docker, use the <code>megalinter-native-incremental</code> and <code>megalinter-native-full</code> hooks instead: see <a href="https://megalinter.io/latest/install-native/#pre-commit-hook">Pre-commit hook in native mode</a>.</p>
 <p>See <a href="https://github.com/oxsecurity/megalinter/blob/main/.pre-commit-hooks.yaml"><code>.pre-commit-hooks.yaml</code></a> for more details.</p>
 <h2 id="usage">Usage</h2>
 <div class="highlight"><pre><span></span><code>mega-linter-runner<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span><span class="w"> </span><span class="o">[</span>FILES<span class="o">]</span>
@@ -12594,6 +12595,31 @@
 <tr>
 <td><code>-i</code> <br/> <code>--install</code></td>
 <td>Generate <a href="https://megalinter.io/beta/install-assisted/">MegaLinter local configuration</a> files and CI/CD workflows. Combine with <code>--no-prompt</code> and <code>--setup-*</code> options to run non-interactively; pre-existing files are then backed up as <code>&lt;file&gt;.megalinter-setup.bak</code> before being overwritten</td>
+<td><!-- --></td>
+</tr>
+<tr>
+<td><code>--native</code></td>
+<td>[beta] Run MegaLinter on this machine <strong>without Docker</strong>, with the linters listed in <code>NATIVE_LINTERS</code> of <code>.mega-linter.yml</code>. Requires <code>uv</code> (and Git Bash on Windows). Use <code>--release beta</code>. See <a href="https://megalinter.io/latest/install-native/">native mode</a>. Docker remains the recommended mode for code you do not fully trust</td>
+<td><!-- --></td>
+</tr>
+<tr>
+<td><code>--install-linters</code></td>
+<td>[beta] Install the linters for <code>--native</code>: the ones given as arguments (<code>--install-linters PYTHON_BLACK JAVASCRIPT_ES</code>) or the ones of <code>NATIVE_LINTERS</code>. Not to be confused with <code>--install</code>, which sets up MegaLinter in your repository</td>
+<td><!-- --></td>
+</tr>
+<tr>
+<td><code>--all</code></td>
+<td>With <code>--install-linters</code>: install every linter matching your configuration. Discouraged (slower, and you must fully trust the security of all of them)</td>
+<td><!-- --></td>
+</tr>
+<tr>
+<td><code>--runtimes</code></td>
+<td>With <code>--native</code> / <code>--install-linters</code>: what to do when a language runtime (node, java, dotnet...) is missing: <code>ask</code>, <code>auto</code> (install it in <code>~/.megalinter/runtimes</code>) or <code>never</code></td>
+<td><code>ask</code></td>
+</tr>
+<tr>
+<td><code>--trust-repo-commands</code></td>
+<td>With <code>--native</code>: run the <code>PRE_COMMANDS</code> / <code>POST_COMMANDS</code>, load the <code>PLUGINS</code> and fetch the remote <code>EXTENDS</code> declared by the analyzed repository. Only for repositories you fully trust</td>
 <td><!-- --></td>
 </tr>
 <tr>

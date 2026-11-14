@@ -4086,6 +4086,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#installation-without-docker-native-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Installation without Docker (native mode)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -12481,6 +12492,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#installation-without-docker-native-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Installation without Docker (native mode)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -13123,6 +13145,44 @@ Environment<span class="w"> </span>variables:
 </ul>
 </li>
 </ul>
+<h3 id="installation-without-docker-native-mode">Installation without Docker (native mode)</h3>
+<p>This linter can run without Docker, see <a href="https://megalinter.io/latest/install-native/">native mode</a>.</p>
+<ul>
+<li>Install method: Python package (isolated virtual environment)</li>
+<li>Requires the python runtime &gt;=3.9</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">NATIVE_LINTERS</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">PYTHON_MYPY</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Platform</th>
+<th style="text-align: left;">Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Linux (x86-64)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">Linux (ARM64)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">macOS (Intel)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">macOS (Apple Silicon)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">Windows (Git Bash)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+</tbody>
+</table>
 <h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
 <p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
 <h3 id="python_mypy_error_stubs_install_failed">PYTHON_MYPY_ERROR_STUBS_INSTALL_FAILED</h3>

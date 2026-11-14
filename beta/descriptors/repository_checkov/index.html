@@ -9381,6 +9381,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#installation-without-docker-native-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Installation without Docker (native mode)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -12409,6 +12420,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#installation-without-docker-native-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Installation without Docker (native mode)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -12747,7 +12769,7 @@
 <span class="w">               </span><span class="o">[</span>--secrets-scan-file-type<span class="w"> </span>SECRETS_SCAN_FILE_TYPE<span class="o">]</span>
 <span class="w">               </span><span class="o">[</span>--enable-secret-scan-all-files<span class="o">]</span>
 <span class="w">               </span><span class="o">[</span>--block-list-secret-scan<span class="w"> </span>BLOCK_LIST_SECRET_SCAN<span class="o">]</span>
-<span class="w">               </span><span class="o">[</span>--summary-position<span class="w"> </span><span class="o">{</span>bottom,top<span class="o">}]</span>
+<span class="w">               </span><span class="o">[</span>--summary-position<span class="w"> </span><span class="o">{</span>top,bottom<span class="o">}]</span>
 <span class="w">               </span><span class="o">[</span>--skip-resources-without-violations<span class="o">]</span><span class="w"> </span><span class="o">[</span>--deep-analysis<span class="o">]</span>
 <span class="w">               </span><span class="o">[</span>--no-fail-on-crash<span class="o">]</span><span class="w"> </span><span class="o">[</span>--mask<span class="w"> </span>MASK<span class="o">]</span><span class="w"> </span><span class="o">[</span>--scan-secrets-history<span class="o">]</span>
 <span class="w">               </span><span class="o">[</span>--secrets-history-timeout<span class="w"> </span>SECRETS_HISTORY_TIMEOUT<span class="o">]</span>
@@ -13073,7 +13095,7 @@ options:
 <span class="w">  </span>--block-list-secret-scan<span class="w"> </span>BLOCK_LIST_SECRET_SCAN
 <span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>files<span class="w"> </span>to<span class="w"> </span>filter<span class="w"> </span>out<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>secret<span class="w"> </span>scanner
 <span class="w">                        </span><span class="o">[</span>env<span class="w"> </span>var:<span class="w"> </span>CKV_SECRETS_SCAN_BLOCK_LIST<span class="o">]</span>
-<span class="w">  </span>--summary-position<span class="w"> </span><span class="o">{</span>bottom,top<span class="o">}</span>
+<span class="w">  </span>--summary-position<span class="w"> </span><span class="o">{</span>top,bottom<span class="o">}</span>
 <span class="w">                        </span>Chose<span class="w"> </span>whether<span class="w"> </span>the<span class="w"> </span>summary<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>appended<span class="w"> </span>on<span class="w"> </span>top
 <span class="w">                        </span><span class="o">(</span>before<span class="w"> </span>the<span class="w"> </span>checks<span class="w"> </span>results<span class="o">)</span><span class="w"> </span>or<span class="w"> </span>on<span class="w"> </span>bottom<span class="w"> </span><span class="o">(</span>after<span class="w"> </span>check
 <span class="w">                        </span>results<span class="o">)</span>,<span class="w"> </span>default<span class="w"> </span>is<span class="w"> </span>on<span class="w"> </span>top.
@@ -13122,6 +13144,44 @@ config<span class="w"> </span>file<span class="w"> </span>values<span class="w">
 </ul>
 </li>
 </ul>
+<h3 id="installation-without-docker-native-mode">Installation without Docker (native mode)</h3>
+<p>This linter can run without Docker, see <a href="https://megalinter.io/latest/install-native/">native mode</a>.</p>
+<ul>
+<li>Install method: Python package (isolated virtual environment)</li>
+<li>Requires the python runtime &gt;=3.9</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">NATIVE_LINTERS</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">REPOSITORY_CHECKOV</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Platform</th>
+<th style="text-align: left;">Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Linux (x86-64)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">Linux (ARM64)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">macOS (Intel)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">macOS (Apple Silicon)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">Windows (Git Bash)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+</tbody>
+</table>
 
 
 

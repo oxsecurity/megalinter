@@ -7098,6 +7098,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#installation-without-docker-native-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Installation without Docker (native mode)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -12417,6 +12428,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#installation-without-docker-native-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Installation without Docker (native mode)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -12800,6 +12822,48 @@ Libxml<span class="w"> </span>project<span class="w"> </span>home<span class="w"
 <li><a href="https://pkgs.alpinelinux.org/packages?branch=v3.24&amp;arch=x86_64&amp;name=libgcc">libgcc</a></li>
 </ul>
 </li>
+</ul>
+<h3 id="installation-without-docker-native-mode">Installation without Docker (native mode)</h3>
+<p>This linter can run without Docker, see <a href="https://megalinter.io/latest/install-native/">native mode</a>.</p>
+<ul>
+<li>Install method: Provided by the host</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">NATIVE_LINTERS</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">XML_XMLLINT</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Platform</th>
+<th style="text-align: left;">Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Linux (x86-64)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">Linux (ARM64)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">macOS (Intel)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">macOS (Apple Silicon)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">Windows (Git Bash)</td>
+<td style="text-align: left;">❌ xmllint (libxml2) has no official Windows distribution. Use Docker.</td>
+</tr>
+</tbody>
+</table>
+<p>This tool is not downloaded by MegaLinter, install it yourself:</p>
+<ul>
+<li>darwin: <code>xmllint is preinstalled on macOS (brew install libxml2 for a recent version)</code></li>
+<li>linux: <code>Install libxml2 utilities from your distribution (example: sudo apt install libxml2-utils)</code></li>
 </ul>
 
 

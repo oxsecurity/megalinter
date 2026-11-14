@@ -8739,6 +8739,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#installation-without-docker-native-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Installation without Docker (native mode)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -12459,6 +12470,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#installation-without-docker-native-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Installation without Docker (native mode)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -12879,7 +12901,7 @@
 <span class="w">                 </span><span class="o">[</span>--apptainer-args<span class="w"> </span>ARGS<span class="o">]</span><span class="w"> </span><span class="o">[</span>--use-envmodules<span class="o">]</span>
 <span class="w">                 </span><span class="o">[</span>--deploy-sources<span class="w"> </span>QUERY<span class="w"> </span>CHECKSUM<span class="o">]</span>
 <span class="w">                 </span><span class="o">[</span>--target-jobs<span class="w"> </span>TARGET_JOBS<span class="w"> </span><span class="o">[</span>TARGET_JOBS<span class="w"> </span>...<span class="o">]]</span>
-<span class="w">                 </span><span class="o">[</span>--mode<span class="w"> </span><span class="o">{</span>remote,subprocess,default<span class="o">}]</span>
+<span class="w">                 </span><span class="o">[</span>--mode<span class="w"> </span><span class="o">{</span>default,remote,subprocess<span class="o">}]</span>
 <span class="w">                 </span><span class="o">[</span>--scheduler-solver-path<span class="w"> </span>SCHEDULER_SOLVER_PATH<span class="o">]</span>
 <span class="w">                 </span><span class="o">[</span>--max-jobs-per-second<span class="w"> </span>MAX_JOBS_PER_SECOND<span class="o">]</span>
 <span class="w">                 </span><span class="o">[</span>--report-html-path<span class="w"> </span>VALUE<span class="o">]</span>
@@ -13777,7 +13799,7 @@ INTERNAL:
 <span class="w">  </span>--target-jobs<span class="w"> </span>TARGET_JOBS<span class="w"> </span><span class="o">[</span>TARGET_JOBS<span class="w"> </span>...<span class="o">]</span>
 <span class="w">                        </span>Internal<span class="w"> </span>use<span class="w"> </span>only:<span class="w"> </span>Target<span class="w"> </span>particular<span class="w"> </span><span class="nb">jobs</span><span class="w"> </span>by
 <span class="w">                        </span>RULE:WILDCARD1<span class="o">=</span>VALUE,WILDCARD2<span class="o">=</span>VALUE,...
-<span class="w">  </span>--mode<span class="w"> </span><span class="o">{</span>remote,subprocess,default<span class="o">}</span>
+<span class="w">  </span>--mode<span class="w"> </span><span class="o">{</span>default,remote,subprocess<span class="o">}</span>
 <span class="w">                        </span>Internal<span class="w"> </span>use<span class="w"> </span>only:<span class="w"> </span>Set<span class="w"> </span>execution<span class="w"> </span>mode<span class="w"> </span>of<span class="w"> </span>Snakemake.
 <span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>default<span class="o">)</span>
 <span class="w">  </span>--scheduler-solver-path<span class="w"> </span>SCHEDULER_SOLVER_PATH
@@ -13834,6 +13856,44 @@ defaults.
 </ul>
 </li>
 </ul>
+<h3 id="installation-without-docker-native-mode">Installation without Docker (native mode)</h3>
+<p>This linter can run without Docker, see <a href="https://megalinter.io/latest/install-native/">native mode</a>.</p>
+<ul>
+<li>Install method: Python package (isolated virtual environment)</li>
+<li>Requires the python runtime &gt;=3.11</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">NATIVE_LINTERS</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">SNAKEMAKE_LINT</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Platform</th>
+<th style="text-align: left;">Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Linux (x86-64)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">Linux (ARM64)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">macOS (Intel)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">macOS (Apple Silicon)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">Windows (Git Bash)</td>
+<td style="text-align: left;">❌ Snakemake does not run natively on Windows (upstream only supports it through WSL). Use Docker.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
 <p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
 <h3 id="snakemake_lint_error_workflow_parse">SNAKEMAKE_LINT_ERROR_WORKFLOW_PARSE</h3>

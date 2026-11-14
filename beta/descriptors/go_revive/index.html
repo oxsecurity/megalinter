@@ -2541,6 +2541,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#installation-without-docker-native-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Installation without Docker (native mode)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -12439,6 +12450,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#installation-without-docker-native-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Installation without Docker (native mode)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -12691,7 +12713,7 @@ Usage<span class="w"> </span>of<span class="w"> </span>revive:
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># Parent descriptor install</span>
 <span class="c"># renovate: datasource=repology depName=alpine_3_24/go versioning=loose</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">GO_ALPINE_VERSION</span><span class="o">=</span><span class="m">1</span>.26.10-r0
+<span class="k">ARG</span><span class="w"> </span><span class="nv">GO_ALPINE_VERSION</span><span class="o">=</span><span class="m">1</span>.26.11-r0
 <span class="k">RUN</span><span class="w"> </span>apk<span class="w"> </span>add<span class="w"> </span>--no-cache<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="nv">go</span><span class="o">=</span><span class="si">${</span><span class="nv">GO_ALPINE_VERSION</span><span class="si">}</span>
 <span class="c"># Linter install</span>
@@ -12708,6 +12730,43 @@ Usage<span class="w"> </span>of<span class="w"> </span>revive:
 <span class="k">COPY</span><span class="w"> </span>--link<span class="w"> </span>--from<span class="o">=</span>revive<span class="w"> </span>/usr/bin/revive<span class="w"> </span>/usr/bin/revive
 </code></pre></div></li>
 </ul>
+<h3 id="installation-without-docker-native-mode">Installation without Docker (native mode)</h3>
+<p>This linter can run without Docker, see <a href="https://megalinter.io/latest/install-native/">native mode</a>.</p>
+<ul>
+<li>Install method: Verified release download</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">NATIVE_LINTERS</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">GO_REVIVE</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Platform</th>
+<th style="text-align: left;">Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Linux (x86-64)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">Linux (ARM64)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">macOS (Intel)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">macOS (Apple Silicon)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">Windows (Git Bash)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+</tbody>
+</table>
 
 
 

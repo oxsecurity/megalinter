@@ -7817,6 +7817,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#installation-without-docker-native-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Installation without Docker (native mode)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -12439,6 +12450,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#installation-without-docker-native-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Installation without Docker (native mode)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -12668,16 +12690,14 @@
 <span class="w">    </span><span class="s2">"</span>
 </code></pre></div>
 <h3 id="help-content">Help content</h3>
-<div class="highlight"><pre><span></span><code>cmdlet<span class="w"> </span>Import-Module<span class="w"> </span>at<span class="w"> </span><span class="nb">command</span><span class="w"> </span>pipeline<span class="w"> </span>position<span class="w"> </span><span class="m">1</span>
-Supply<span class="w"> </span>values<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>parameters:
-Name<span class="o">[</span><span class="m">0</span><span class="o">]</span>:
-Import-Module:<span class="w"> </span>Cannot<span class="w"> </span>process<span class="w"> </span><span class="nb">command</span><span class="w"> </span>because<span class="w"> </span>of<span class="w"> </span>one<span class="w"> </span>or<span class="w"> </span>more<span class="w"> </span>missing<span class="w"> </span>mandatory<span class="w"> </span>parameters:<span class="w"> </span>Name.
+<div class="highlight"><pre><span></span><code>A<span class="w"> </span>newer<span class="w"> </span>version<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>ARM-TTK<span class="w"> </span>is<span class="w"> </span>available<span class="w"> </span>at:<span class="w"> </span>https://github.com/Azure/arm-ttk/releases
+Installed<span class="w"> </span>Version:<span class="w"> </span><span class="m">0</span>.26
+Latest<span class="w"> </span>Version:<span class="w"> </span><span class="m">0</span>.27
 Test-AzTemplate:<span class="w"> </span>
 Line<span class="w"> </span><span class="p">|</span>
 <span class="w">   </span><span class="m">2</span><span class="w"> </span><span class="p">|</span><span class="w">  </span><span class="nv">$TAZ_V</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span>Test-AzTemplate<span class="w"> </span>-help<span class="o">)</span><span class="p">;</span>
-<span class="w">     </span><span class="p">|</span><span class="w">            </span>~~~~~~~~~~~~~~~
-<span class="w">     </span><span class="p">|</span><span class="w"> </span>The<span class="w"> </span>term<span class="w"> </span><span class="s1">'Test-AzTemplate'</span><span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>recognized<span class="w"> </span>as<span class="w"> </span>a<span class="w"> </span>name<span class="w"> </span>of<span class="w"> </span>a<span class="w"> </span>cmdlet,<span class="w"> </span><span class="k">function</span>,<span class="w"> </span>script<span class="w"> </span>file,<span class="w"> </span>or<span class="w"> </span>executable<span class="w"> </span>program.
-Check<span class="w"> </span>the<span class="w"> </span>spelling<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>name,<span class="w"> </span>or<span class="w"> </span><span class="k">if</span><span class="w"> </span>a<span class="w"> </span>path<span class="w"> </span>was<span class="w"> </span>included,<span class="w"> </span>verify<span class="w"> </span>that<span class="w"> </span>the<span class="w"> </span>path<span class="w"> </span>is<span class="w"> </span>correct<span class="w"> </span>and<span class="w"> </span>try<span class="w"> </span>again.
+<span class="w">     </span><span class="p">|</span><span class="w">                            </span>~~~~~
+<span class="w">     </span><span class="p">|</span><span class="w"> </span>A<span class="w"> </span>parameter<span class="w"> </span>cannot<span class="w"> </span>be<span class="w"> </span>found<span class="w"> </span>that<span class="w"> </span>matches<span class="w"> </span>parameter<span class="w"> </span>name<span class="w"> </span><span class="s1">'help'</span>.
 </code></pre></div>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
@@ -12710,6 +12730,44 @@ Check<span class="w"> </span>the<span class="w"> </span>spelling<span class="w">
 <span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>chmod<span class="w"> </span>a+x<span class="w"> </span>/usr/bin/arm-ttk
 </code></pre></div></li>
 </ul>
+<h3 id="installation-without-docker-native-mode">Installation without Docker (native mode)</h3>
+<p>This linter can run without Docker, see <a href="https://megalinter.io/latest/install-native/">native mode</a>.</p>
+<ul>
+<li>Install method: Verified release download</li>
+<li>Requires the powershell runtime &gt;=7.4</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">NATIVE_LINTERS</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">ARM_ARM_TTK</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Platform</th>
+<th style="text-align: left;">Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Linux (x86-64)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">Linux (ARM64)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">macOS (Intel)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">macOS (Apple Silicon)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">Windows (Git Bash)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+</tbody>
+</table>
 
 
 

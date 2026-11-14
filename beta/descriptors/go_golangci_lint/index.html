@@ -2510,6 +2510,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#installation-without-docker-native-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Installation without Docker (native mode)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -12492,6 +12503,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#installation-without-docker-native-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Installation without Docker (native mode)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -12881,7 +12903,7 @@ Use<span class="w"> </span><span class="s2">"golangci-lint [command] --help"</sp
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># Parent descriptor install</span>
 <span class="c"># renovate: datasource=repology depName=alpine_3_24/go versioning=loose</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">GO_ALPINE_VERSION</span><span class="o">=</span><span class="m">1</span>.26.10-r0
+<span class="k">ARG</span><span class="w"> </span><span class="nv">GO_ALPINE_VERSION</span><span class="o">=</span><span class="m">1</span>.26.11-r0
 <span class="k">RUN</span><span class="w"> </span>apk<span class="w"> </span>add<span class="w"> </span>--no-cache<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="nv">go</span><span class="o">=</span><span class="si">${</span><span class="nv">GO_ALPINE_VERSION</span><span class="si">}</span>
 <span class="c"># Linter install</span>
@@ -12891,6 +12913,44 @@ Use<span class="w"> </span><span class="s2">"golangci-lint [command] --help"</sp
 <span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>golangci-lint<span class="w"> </span>--version
 </code></pre></div></li>
 </ul>
+<h3 id="installation-without-docker-native-mode">Installation without Docker (native mode)</h3>
+<p>This linter can run without Docker, see <a href="https://megalinter.io/latest/install-native/">native mode</a>.</p>
+<ul>
+<li>Install method: Verified release download</li>
+<li>Requires the go runtime</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">NATIVE_LINTERS</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">GO_GOLANGCI_LINT</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Platform</th>
+<th style="text-align: left;">Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Linux (x86-64)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">Linux (ARM64)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">macOS (Intel)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">macOS (Apple Silicon)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">Windows (Git Bash)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+</tbody>
+</table>
 <h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
 <p>When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.</p>
 <h3 id="go_golangci_lint_error_module_download">GO_GOLANGCI_LINT_ERROR_MODULE_DOWNLOAD</h3>
