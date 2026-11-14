@@ -58,6 +58,8 @@ path = "megalinter/__about__.py"
 [tool.hatch.build.targets.wheel]
 packages = ["megalinter"]
 exclude = ["megalinter/tests", "**/__pycache__"]
+# Generated at publish time (deploy-megalinter-pypi.yml) and ignored by git, which hatchling skips otherwise
+artifacts = ["megalinter/_templates/", "megalinter/_core-requirements.lock"]
 
 [tool.hatch.envs.default]
 installer = "uv"
