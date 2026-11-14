@@ -427,10 +427,12 @@ class Megalinter:
         # Check if a MegaLinter flavor can be used for this repo, except if:
         # - FLAVOR_SUGGESTIONS: false is defined
         # - VALIDATE_ALL_CODE_BASE is false, or diff failed (we don't have all the files to calculate the suggestion)
+        # - native mode, where flavors (Docker images) do not apply
         if (
             self.validate_all_code_base is True
             and config.get(self.request_id, "FLAVOR_SUGGESTIONS", "true") == "true"
             and not flavor_factory.is_custom_flavor()
+            and self.native_mode is not True
         ):
             self.flavor_suggestions = flavor_factory.get_megalinter_flavor_suggestions(
                 self.active_linters

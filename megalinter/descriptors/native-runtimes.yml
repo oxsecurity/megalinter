@@ -26,7 +26,7 @@ runtimes:
     detect:
       executables: [python3, python]
       version_command: ["{{EXECUTABLE}}", "--version"]
-      version_regex: 'Python (\d+[\d.]*)'
+      version_regex: 'Python (\d+(?:\.\d+)*)'
     suggest:
       windows: "winget install --id Python.Python.3.13 -e"
       darwin: "brew install python"
@@ -37,7 +37,7 @@ runtimes:
     detect:
       executables: [node]
       version_command: ["{{EXECUTABLE}}", "--version"]
-      version_regex: 'v(\d+[\d.]*)'
+      version_regex: 'v(\d+(?:\.\d+)*)'
     suggest:
       windows: "winget install --id OpenJS.NodeJS.LTS -e"
       darwin: "brew install node"
@@ -82,7 +82,7 @@ runtimes:
     detect:
       executables: [java]
       version_command: ["{{EXECUTABLE}}", "-version"]
-      version_regex: 'version "(\d+[\d.]*)'
+      version_regex: 'version "(\d+(?:\.\d+)*)'
     suggest:
       windows: "winget install --id EclipseAdoptium.Temurin.21.JDK -e"
       darwin: "brew install --cask temurin@21"
@@ -125,7 +125,7 @@ runtimes:
     detect:
       executables: [dotnet]
       version_command: ["{{EXECUTABLE}}", "--version"]
-      version_regex: '(\d+[\d.]*)'
+      version_regex: '(\d+(?:\.\d+)*)'
       # .NET tool launchers locate the runtime through DOTNET_ROOT
       env:
         DOTNET_ROOT: "{{EXECUTABLE_DIR}}"
@@ -168,7 +168,7 @@ runtimes:
     detect:
       executables: [go]
       version_command: ["{{EXECUTABLE}}", "version"]
-      version_regex: 'go(\d+[\d.]*)'
+      version_regex: 'go(\d+(?:\.\d+)*)'
     suggest:
       windows: "winget install --id GoLang.Go -e"
       darwin: "brew install go"
@@ -209,7 +209,7 @@ runtimes:
     detect:
       executables: [pwsh]
       version_command: ["{{EXECUTABLE}}", "-NoLogo", "-NoProfile", "-Command", "$PSVersionTable.PSVersion.ToString()"]
-      version_regex: '(\d+[\d.]*)'
+      version_regex: '(\d+(?:\.\d+)*)'
     suggest:
       windows: "winget install --id Microsoft.PowerShell -e"
       darwin: "brew install --cask powershell"
@@ -247,7 +247,7 @@ runtimes:
     detect:
       executables: [dart]
       version_command: ["{{EXECUTABLE}}", "--version"]
-      version_regex: 'Dart SDK version: (\d+[\d.]*)'
+      version_regex: 'Dart SDK version: (\d+(?:\.\d+)*)'
     suggest:
       windows: "winget install --id Google.DartSDK -e"
       darwin: "brew install dart-sdk"
@@ -285,7 +285,7 @@ runtimes:
     detect:
       executables: [php]
       version_command: ["{{EXECUTABLE}}", "--version"]
-      version_regex: 'PHP (\d+[\d.]*)'
+      version_regex: 'PHP (\d+(?:\.\d+)*)'
     suggest:
       windows: "winget install --id PHP.PHP.8.4 -e"
       darwin: "brew install php"
@@ -307,7 +307,7 @@ runtimes:
     detect:
       executables: [perl]
       version_command: ["{{EXECUTABLE}}", "-e", "printf q(%vd), $^V"]
-      version_regex: '(\d+[\d.]*)'
+      version_regex: '(\d+(?:\.\d+)*)'
     suggest:
       windows: "winget install --id StrawberryPerl.StrawberryPerl -e"
       darwin: "brew install perl"
@@ -329,7 +329,7 @@ runtimes:
     detect:
       executables: [ruby]
       version_command: ["{{EXECUTABLE}}", "--version"]
-      version_regex: 'ruby (\d+[\d.]*)'
+      version_regex: 'ruby (\d+(?:\.\d+)*)'
     suggest:
       windows: "winget install --id RubyInstallerTeam.RubyWithDevKit.3.4 -e"
       darwin: "brew install ruby"
@@ -338,7 +338,7 @@ runtimes:
     detect:
       executables: [Rscript]
       version_command: ["{{EXECUTABLE}}", "--version"]
-      version_regex: 'version (\d+[\d.]*)'
+      version_regex: 'version (\d+(?:\.\d+)*)'
     suggest:
       windows: "winget install --id RProject.R -e"
       darwin: "brew install --cask r"
@@ -347,7 +347,7 @@ runtimes:
     detect:
       executables: [cargo]
       version_command: ["{{EXECUTABLE}}", "--version"]
-      version_regex: 'cargo (\d+[\d.]*)'
+      version_regex: 'cargo (\d+(?:\.\d+)*)'
     suggest:
       windows: "winget install --id Rustlang.Rustup -e"
       darwin: "brew install rustup && rustup-init"
@@ -356,7 +356,7 @@ runtimes:
     detect:
       executables: [swift]
       version_command: ["{{EXECUTABLE}}", "--version"]
-      version_regex: 'Swift version (\d+[\d.]*)'
+      version_regex: 'Swift version (\d+(?:\.\d+)*)'
     suggest:
       windows: "winget install --id Swift.Toolchain -e"
       darwin: "xcode-select --install"
@@ -365,7 +365,7 @@ runtimes:
     detect:
       executables: [git]
       version_command: ["{{EXECUTABLE}}", "--version"]
-      version_regex: 'git version (\d+[\d.]*)'
+      version_regex: 'git version (\d+(?:\.\d+)*)'
     suggest:
       windows: "winget install --id Git.Git -e"
       darwin: "brew install git"

@@ -5,6 +5,7 @@ import fs from "fs";
 import os from "os";
 import path from "path";
 import { NativeRunner } from "../lib/native.js";
+import { optionsDefinition } from "../lib/options.js";
 
 function jsonResponse(body) {
   return { ok: true, status: 200, json: async () => body };
@@ -49,6 +50,32 @@ describe("mega-linter-runner native mode", () => {
       ]) {
         assert.throws(() => runner.assertSupportedOptions(options), /Docker/);
       }
+    });
+
+    // Options as parsed from the command line, with their defaults: a Docker-only option with a
+    // default value would make every native command fail
+    it("accepts the parsed options of a native command", () => {
+      const runner = makeRunner(async () => {});
+      for (const args of [
+        ["--native", "--release", "beta"],
+        ["--install-linters", "--release", "beta"],
+        ["--native", "--fix", "--filesonly", "src/app.py"],
+      ]) {
+        const options = optionsDefinition.parse([
+          "node",
+          "mega-linter-runner",
+          ...args,
+        ]);
+        assert.doesNotThrow(() => runner.assertSupportedOptions(options));
+      }
+      const docker = optionsDefinition.parse([
+        "node",
+        "mega-linter-runner",
+        "--native",
+        "--platform",
+        "linux/arm64",
+      ]);
+      assert.throws(() => runner.assertSupportedOptions(docker), /--platform/);
     });
 
     it("rejects an unknown runtime policy", () => {
