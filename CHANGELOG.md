@@ -12,6 +12,15 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Core
 
+  - **Faster start of each run**, most visible in native mode and on Windows:
+    - MegaLinter reads its linter definitions with PyYAML's C parser, about 10 times faster
+    - A run that has a single group of linters to run (for example a pre-commit hook on one Python file, with fixes) runs them directly instead of starting worker processes, and a run never starts more worker processes than it has linter groups
+
+    | Native run on Windows (6 linters, 4-core laptop)  | Before      | After       | Delta        |
+    |---------------------------------------------------|-------------|-------------|--------------|
+    | One Python file with fixes (pre-commit hook case) | 12.3–15.2 s | 3.5–5.6 s   | about -70 %  |
+    | Whole demo repository                             | 14–16 s     | 11.8–12.8 s | about -2.5 s |
+
   - **Run MegaLinter without Docker (beta)**: pick the linters you need and lint directly on Linux, macOS, WSL or Windows (Git Bash), with no multi-GB image to pull. See [Native mode](https://megalinter.io/latest/install-native/)
     - List the linters allowed to run natively in **`NATIVE_LINTERS`** (example: `[PYTHON_BLACK, JAVASCRIPT_ES]`). The value `all` exists but is discouraged: it is slower, and you must fully trust every matching linter
     - Linters are installed in `~/.megalinter` from **verified downloads** pinned by sha256, without administrator rights

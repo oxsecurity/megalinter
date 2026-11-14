@@ -7,6 +7,7 @@ import sys
 
 import yaml
 from megalinter import config
+from megalinter.constants import DESCRIPTOR_YAML_LOADER
 from megalinter.native import extract
 from megalinter.native.context import (
     NativeError,
@@ -42,7 +43,7 @@ def load_runtime_catalog():
     with open(
         os.path.join(get_descriptor_dir(), "native-runtimes.yml"), "r", encoding="utf-8"
     ) as f:
-        return yaml.safe_load(f)["runtimes"]
+        return yaml.load(f, Loader=DESCRIPTOR_YAML_LOADER)["runtimes"]
 
 
 def version_tuple(version):
