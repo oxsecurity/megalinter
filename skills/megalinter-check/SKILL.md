@@ -87,7 +87,26 @@ timeout 10 podman info --format '{{.Version.Version}}'
 
 - Chosen engine answers → proceed (pass `--container-engine podman` when using podman).
 - Chosen engine errors or times out → probe the other engine the same way; if it answers, use it instead.
-- Neither answers → do **not** start a run (it would hang the same way). Tell the user what you found ("Docker Desktop appears installed but is not responding - is it running?") and **ask** whether you should install or start an engine — then (and only then) load `container-engine.md` from this skill's directory for the setup instructions (prefer podman: free of charge even in enterprise contexts). If the user declines, offer **native mode** (beta, no container engine): `npx mega-linter-runner@beta --native --release beta`, after the user has listed the linters to allow in `NATIVE_LINTERS` of `.mega-linter.yml` (never use `all` without explicit, informed consent: it installs every matching linter and trusts all of them) and installed them with `npx mega-linter-runner@beta --install-linters --release beta`. It needs `uv` (and Git Bash on Windows) and runs linters directly on the user's machine, so use it only on a repository the user trusts; never pass `--trust-repo-commands` on your own. If the user also declines, fall back to watch mode.
+- Neither answers → do **not** start a run (it would hang the same way). Tell the user what you found ("Docker Desktop appears installed but is not responding - is it running?") and **ask** whether you should install or start an engine — then (and only then) load `container-engine.md` from this skill's directory for the setup instructions (prefer podman: free of charge even in enterprise contexts). If the user declines, offer **native mode** (see "Native mode" below). If the user also declines, fall back to watch mode.
+
+### Native mode (beta, no container engine)
+
+Native mode runs the linters directly on the user's machine, without Docker: no image to pull, and a run takes seconds. Offer it when no container engine answers, or use it directly when `.mega-linter.yml` already lists `NATIVE_LINTERS` and the user asks for a local run.
+
+- Only the linters listed in `NATIVE_LINTERS` of `.mega-linter.yml` run; the other active linters are **skipped**. Say so in the results: a native run is not a full equivalent of the CI job. When `NATIVE_LINTERS` is missing, propose the list from the linters the repository needs and let the user confirm it. Never use `all` without explicit, informed consent: it installs every matching linter and trusts all of them.
+- Install, then run (while native mode is in beta, always the `@beta` runner and `--release beta`):
+
+```bash
+npx mega-linter-runner@beta --install-linters --release beta
+npx mega-linter-runner@beta --native --release beta -e JSON_REPORTER=true
+```
+
+- Requirements: `uv` and Node.js, plus Git Bash on Windows. A missing `uv` is reported with the command that installs it.
+- Linters run with the user's privileges: use native mode only on a repository the user trusts, and never pass `--trust-repo-commands` on your own (repository `PRE_COMMANDS`, `POST_COMMANDS` and `PLUGINS` are ignored without it).
+- Installs failing with `invalid peer certificate: UnknownIssuer` mean the network inspects HTTPS: re-run with `UV_NATIVE_TLS=1` (and `NODE_USE_SYSTEM_CA=1` for Node.js linters) in the environment of the command. Never write these to `.mega-linter.yml`.
+- `Unknown linter(s) in NATIVE_LINTERS: X (removed in ..., use Y instead)`: replace the key in `.mega-linter.yml` after telling the user.
+- The reports are the same as with Docker (`megalinter-reports/`), so read them as described below. `PARALLEL_PROCESS_NUMBER` and the time bound apply too.
+- For fix → re-check loops, install the runner once (`npm install -g mega-linter-runner@beta`) and call `mega-linter-runner --native --release beta`: `npx` spends several seconds per call checking its copy of the runner and of its dependencies.
 
 Flavor and version are resolved automatically from `MEGALINTER_FLAVOR` / `MEGALINTER_VERSION` in `.mega-linter.yml` — do not pass `--flavor` or `--release` yourself.
 

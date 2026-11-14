@@ -15,6 +15,7 @@ Run the command you were given, or build it as follows (container engine require
 
 - **Full run**: `npx mega-linter-runner` — flavor and version are resolved automatically from `MEGALINTER_FLAVOR` / `MEGALINTER_VERSION` in `.mega-linter.yml`.
 - **Standalone linter run**: `npx mega-linter-runner --linter <LINTER_KEY> [files...]` — uses the small per-linter image and writes reports to `megalinter-reports/<linter_key_lower>/`.
+- **Native run** (only when the caller asks for native mode, no container engine needed): `npx mega-linter-runner@beta --native --release beta` (install first with `npx mega-linter-runner@beta --install-linters --release beta` if the caller says so). Only the linters of `NATIVE_LINTERS` run: add a `"skipped_linters"` field with the active linters that were skipped because they are not listed there. Install failures with `invalid peer certificate: UnknownIssuer` (HTTPS inspection): report them with the hint `UV_NATIVE_TLS=1` instead of retrying. Never add `--trust-repo-commands`.
 - **Prerun analysis** (only when the caller asks for it): `npx mega-linter-runner --prerun` — no linter is run; return the content of `megalinter-reports/prerun-report.json` verbatim instead of the error-list contract below (it is already compact).
 - Add `--fix` when the caller asks for fixes to be applied.
 - On full runs, when running on a local computer and not in CI (no `CI`/`GITHUB_ACTIONS`/`GITLAB_CI`-style environment variable set): add `-e PARALLEL_PROCESS_NUMBER=4` (or the machine's CPU core count if lower) so the run does not saturate the machine — MegaLinter otherwise runs one parallel linter process per core. Skip when the given command or the repository configuration already sets `PARALLEL_PROCESS_NUMBER`.
@@ -66,4 +67,4 @@ A compact JSON object, nothing else:
 
 - Do NOT edit source files (running with `--fix` is allowed when requested — the linters themselves modify files, not you).
 - Do NOT dump full logs in your response.
-- If no container engine is installed and running (`docker info` and `podman info` both fail), do NOT install or start anything yourself: return `{"status": "failure", "failure_reason": "no container engine available (docker/podman)"}` immediately — the calling skill will ask the user how to proceed.
+- If no container engine is installed and running (`docker info` and `podman info` both fail) and the caller did not ask for native mode, do NOT install or start anything yourself: return `{"status": "failure", "failure_reason": "no container engine available (docker/podman)"}` immediately — the calling skill will ask the user how to proceed.

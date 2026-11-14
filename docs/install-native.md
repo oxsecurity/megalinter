@@ -111,6 +111,17 @@ export NODE_USE_SYSTEM_CA=1        # Node.js linters
 | `megalinter doctor`                   | Check Git Bash, uv, runtimes and the install folder          |
 | `megalinter cache prune`              | Empty the download cache                                     |
 
+### Faster commands
+
+`npx` checks its copy of `mega-linter-runner` and of its dependencies on each call, which adds several seconds to every run. When you run MegaLinter often, install the runner once:
+
+```shell
+npm install -g mega-linter-runner@beta
+mega-linter-runner --native --release beta
+```
+
+Upgrade it with the same `npm install -g` command.
+
 ## Pre-commit hook
 
 Native mode makes MegaLinter fast enough to run on each commit with [pre-commit](https://pre-commit.com/):
@@ -129,7 +140,8 @@ repos:
 ```
 
 - Only the linters of `NATIVE_LINTERS` run, on the files of the commit, and their fixes are applied
-- Install them once with `npx mega-linter-runner@beta --install-linters --release beta`: a hook can not ask whether to install a missing language runtime
+- The hooks of `rev: vX.Y.Z` run version X.Y.Z of `mega-linter-runner` and of MegaLinter. pre-commit installs the runner once (Node.js is required), instead of resolving it with npx on each commit
+- Install the linters once with the same version: `npx mega-linter-runner@X.Y.Z --install-linters --release X.Y.Z`, as a hook can not ask whether to install a missing language runtime
 - `megalinter-incremental` and `megalinter-full` are the same hooks with Docker
 
 ## Configuration
