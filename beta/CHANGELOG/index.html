@@ -15646,6 +15646,42 @@
 <li>
 <p>Core</p>
 <ul>
+<li>
+<p><strong>Faster runs</strong>, most visible in native mode and on Windows:</p>
+<ul>
+<li>MegaLinter reads its linter definitions with PyYAML's C parser, about 10 times faster</li>
+<li>A run that has a single group of linters to run (for example a pre-commit hook on one Python file, with fixes) runs them directly instead of starting worker processes, and a run never starts more worker processes than it has linter groups</li>
+<li>On Linux (Python 3.14, Docker images included), worker processes no longer load MegaLinter again one by one</li>
+<li>Native mode reads the version of each installed linter once instead of running its <code>--version</code> command on every run, and looks for the language runtimes of the machine once per run instead of once per linter</li>
+<li><code>mega-linter-runner --native</code> starts an installed exact <code>--release</code> without contacting PyPI, and keeps working offline with the beta it already installed</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Native run on Windows (6 linters, 4-core laptop)</th>
+<th>Before</th>
+<th>After</th>
+<th>Delta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>One Python file with fixes (pre-commit hook case)</td>
+<td>11.1–11.9 s</td>
+<td>2.9–3.3 s</td>
+<td>about -73 %</td>
+</tr>
+<tr>
+<td>Whole demo repository</td>
+<td>11.7–14.8 s</td>
+<td>8.9–10.3 s</td>
+<td>about -25 %</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<ul>
 <li><strong>Run MegaLinter without Docker (beta)</strong>: pick the linters you need and lint directly on Linux, macOS, WSL or Windows (Git Bash), with no multi-GB image to pull. See <a href="https://megalinter.io/latest/install-native/">Native mode</a><ul>
 <li>List the linters allowed to run natively in <strong><code>NATIVE_LINTERS</code></strong> (example: <code>[PYTHON_BLACK, JAVASCRIPT_ES]</code>). The value <code>all</code> exists but is discouraged: it is slower, and you must fully trust every matching linter</li>
 <li>Linters are installed in <code>~/.megalinter</code> from <strong>verified downloads</strong> pinned by sha256, without administrator rights</li>
