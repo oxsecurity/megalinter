@@ -12,14 +12,17 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Core
 
-  - **Faster start of each run**, most visible in native mode and on Windows:
+  - **Faster runs**, most visible in native mode and on Windows:
     - MegaLinter reads its linter definitions with PyYAML's C parser, about 10 times faster
     - A run that has a single group of linters to run (for example a pre-commit hook on one Python file, with fixes) runs them directly instead of starting worker processes, and a run never starts more worker processes than it has linter groups
+    - On Linux (Python 3.14, Docker images included), worker processes no longer load MegaLinter again one by one
+    - Native mode reads the version of each installed linter once instead of running its `--version` command on every run, and looks for the language runtimes of the machine once per run instead of once per linter
+    - `mega-linter-runner --native` starts an installed exact `--release` without contacting PyPI, and keeps working offline with the beta it already installed
 
-    | Native run on Windows (6 linters, 4-core laptop)  | Before      | After       | Delta        |
-    |---------------------------------------------------|-------------|-------------|--------------|
-    | One Python file with fixes (pre-commit hook case) | 12.3–15.2 s | 3.5–5.6 s   | about -70 %  |
-    | Whole demo repository                             | 14–16 s     | 11.8–12.8 s | about -2.5 s |
+    | Native run on Windows (6 linters, 4-core laptop)  | Before      | After       | Delta       |
+    |---------------------------------------------------|-------------|-------------|-------------|
+    | One Python file with fixes (pre-commit hook case) | 11.1–11.9 s | 2.9–3.3 s   | about -73 % |
+    | Whole demo repository                             | 11.7–14.8 s | 8.9–10.3 s  | about -25 % |
 
   - **Run MegaLinter without Docker (beta)**: pick the linters you need and lint directly on Linux, macOS, WSL or Windows (Git Bash), with no multi-GB image to pull. See [Native mode](https://megalinter.io/latest/install-native/)
     - List the linters allowed to run natively in **`NATIVE_LINTERS`** (example: `[PYTHON_BLACK, JAVASCRIPT_ES]`). The value `all` exists but is discouraged: it is slower, and you must fully trust every matching linter
