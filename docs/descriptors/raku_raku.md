@@ -199,3 +199,28 @@ esac \
 ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$PATH"
 ```
 
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: Provided by the host
+
+```yaml
+NATIVE_LINTERS: [RAKU_RAKU]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+
+This tool is not downloaded by MegaLinter, install it yourself:
+
+- windows: `Install Rakudo Star with the MSI installer from https://rakudo.org/downloads/star`
+- darwin: `brew install rakudo-star`
+- linux: `Install Rakudo from https://rakudo.org/downloads (example: sudo apt install rakudo)`
+

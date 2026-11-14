@@ -323,6 +323,25 @@ RUN apk add --no-cache --virtual .lua-build-deps gcc make musl-dev lua5.3-dev re
   - [lua5.3](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=lua5.3)
   - [openssl](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=openssl)
 
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: Verified release download
+
+```yaml
+NATIVE_LINTERS: [LUA_LUACHECK]
+```
+
+| Platform              | Support                                                                                                  |
+|:----------------------|:---------------------------------------------------------------------------------------------------------|
+| Linux (x86-64)        | ✅                                                                                                       |
+| Linux (ARM64)         | ❌ luacheck publishes a Linux binary for x86_64 only. Use Docker.                                        |
+| macOS (Intel)         | ❌ luacheck publishes no macOS binary (it is a LuaRocks package that needs a Lua toolchain). Use Docker. |
+| macOS (Apple Silicon) | ❌ luacheck publishes no macOS binary (it is a LuaRocks package that needs a Lua toolchain). Use Docker. |
+| Windows (Git Bash)    | ✅                                                                                                       |
+
+
 ## Known errors and resolutions
 
 When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.

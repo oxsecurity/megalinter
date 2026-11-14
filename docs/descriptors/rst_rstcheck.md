@@ -179,3 +179,23 @@ ARG PIP_RSTCHECK_CLICK_VERSION=8.5.0
 - PIP packages (Python):
   - [click==8.5.0](https://pypi.org/project/click/8.5.0)
   - [rstcheck[toml,sphinx]==6.3.0](https://pypi.org/project/rstcheck[toml,sphinx]/6.3.0)
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: Python package (isolated virtual environment)
+- Requires the python runtime >=3.10
+
+```yaml
+NATIVE_LINTERS: [RST_RSTCHECK]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+

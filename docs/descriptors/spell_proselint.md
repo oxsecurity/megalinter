@@ -147,3 +147,23 @@ ARG PIP_PROSELINT_VERSION=0.16.0
   - [re2](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=re2)
 - PIP packages (Python):
   - [proselint==0.16.0](https://pypi.org/project/proselint/0.16.0)
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: Python package (isolated virtual environment)
+- Requires the python runtime >=3.10
+
+```yaml
+NATIVE_LINTERS: [SPELL_PROSELINT]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+

@@ -124,6 +124,26 @@ ARG NPM_GHERKIN_LINT_VERSION=4.2.4
 - NPM packages (node.js):
   - [gherkin-lint@4.2.4](https://www.npmjs.com/package/gherkin-lint/v/4.2.4)
 
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: npm packages (isolated folder)
+- Requires the node runtime >=10.0.0
+
+```yaml
+NATIVE_LINTERS: [GHERKIN_GHERKIN_LINT]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+
+
 ## Known errors and resolutions
 
 When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.

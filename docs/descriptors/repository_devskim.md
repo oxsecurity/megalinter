@@ -158,6 +158,26 @@ RUN dotnet tool install --allow-roll-forward --tool-path /usr/local/dotnet-tools
 ```
 
 
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: .NET tool
+- Requires the dotnet runtime >=8
+
+```yaml
+NATIVE_LINTERS: [REPOSITORY_DEVSKIM]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+
+
 ## Known errors and resolutions
 
 When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.

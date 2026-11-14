@@ -164,3 +164,23 @@ ARG PIP_RUMDL_VERSION=0.3.2
 
 - PIP packages (Python):
   - [rumdl==0.3.2](https://pypi.org/project/rumdl/0.3.2)
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: Python package (isolated virtual environment)
+- Requires the python runtime >=3.9
+
+```yaml
+NATIVE_LINTERS: [MARKDOWN_RUMDL]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+

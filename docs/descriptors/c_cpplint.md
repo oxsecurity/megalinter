@@ -330,3 +330,23 @@ ARG PIP_CPPLINT_VERSION=2.0.2
 
 - PIP packages (Python):
   - [cpplint==2.0.2](https://pypi.org/project/cpplint/2.0.2)
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: Python package (isolated virtual environment)
+- Requires the python runtime >=3.9
+
+```yaml
+NATIVE_LINTERS: [C_CPPLINT]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+

@@ -199,3 +199,23 @@ Generic Options:
 
 - APK packages (Linux):
   - [cmd:clang-format](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=cmd:clang-format)
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: Python package (isolated virtual environment)
+- Requires the python runtime >=3.7
+
+```yaml
+NATIVE_LINTERS: [C_CLANG_FORMAT]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+

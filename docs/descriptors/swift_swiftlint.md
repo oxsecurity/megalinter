@@ -150,6 +150,30 @@ RUN case "${TARGETARCH}" in \
 - APK packages (Linux):
   - [unzip](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=unzip)
 
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: Provided by the host
+
+```yaml
+NATIVE_LINTERS: [SWIFT_SWIFTLINT]
+```
+
+| Platform              | Support                                              |
+|:----------------------|:-----------------------------------------------------|
+| Linux (x86-64)        | ✅                                                   |
+| Linux (ARM64)         | ✅                                                   |
+| macOS (Intel)         | ✅                                                   |
+| macOS (Apple Silicon) | ✅                                                   |
+| Windows (Git Bash)    | ❌ SwiftLint publishes no Windows build. Use Docker. |
+
+This tool is not downloaded by MegaLinter, install it yourself:
+
+- darwin: `brew install swiftlint`
+- linux: `Install SwiftLint from https://github.com/realm/SwiftLint#installation (Homebrew on Linux: brew install swiftlint, or the swiftlint_linux zip of a release)`
+
+
 ## Known errors and resolutions
 
 When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.

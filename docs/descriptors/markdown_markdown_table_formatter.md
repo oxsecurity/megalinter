@@ -137,3 +137,23 @@ ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=2.1.0
 
 - NPM packages (node.js):
   - [markdown-table-formatter@2.1.0](https://www.npmjs.com/package/markdown-table-formatter/v/2.1.0)
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: npm packages (isolated folder)
+- Requires the node runtime >=22.17.0
+
+```yaml
+NATIVE_LINTERS: [MARKDOWN_MARKDOWN_TABLE_FORMATTER]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+

@@ -192,3 +192,23 @@ ARG NPM_PRANTLF_JSONLINT_VERSION=17.0.1
 
 - NPM packages (node.js):
   - [@prantlf/jsonlint@17.0.1](https://www.npmjs.com/package/@prantlf/jsonlint/v/17.0.1)
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: npm packages (isolated folder)
+- Requires the node runtime >=22.2.0
+
+```yaml
+NATIVE_LINTERS: [JSON_JSONLINT]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+

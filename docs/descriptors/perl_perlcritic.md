@@ -137,6 +137,32 @@ RUN apk add --no-cache --virtual .perl-build-deps gcc make musl-dev perl-dev \
 ```
 
 
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: Provided by the host
+- Requires the perl runtime >=5.10.1
+
+```yaml
+NATIVE_LINTERS: [PERL_PERLCRITIC]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+
+This tool is not downloaded by MegaLinter, install it yourself:
+
+- windows: `cpan -T Perl::Critic`
+- darwin: `cpan -T Perl::Critic`
+- linux: `cpan -T Perl::Critic (or, on Debian/Ubuntu: sudo apt install libperl-critic-perl)`
+
+
 ## Known errors and resolutions
 
 When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.

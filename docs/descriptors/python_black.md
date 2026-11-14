@@ -294,3 +294,23 @@ ARG PIP_BLACK_VERSION=26.10.1
 
 - PIP packages (Python):
   - [black[jupyter]==26.10.1](https://pypi.org/project/black[jupyter]/26.10.1)
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: Python package (isolated virtual environment)
+- Requires the python runtime >=3.10
+
+```yaml
+NATIVE_LINTERS: [PYTHON_BLACK]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+

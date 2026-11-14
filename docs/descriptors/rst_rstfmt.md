@@ -124,3 +124,23 @@ ARG PIP_RSTFMT_VERSION=0.0.14
 
 - PIP packages (Python):
   - [rstfmt==0.0.14](https://pypi.org/project/rstfmt/0.0.14)
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: Python package (isolated virtual environment)
+- Requires the python runtime >=3.10
+
+```yaml
+NATIVE_LINTERS: [RST_RSTFMT]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+

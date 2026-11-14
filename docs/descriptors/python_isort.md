@@ -504,3 +504,23 @@ ARG PIP_ISORT_VERSION=9.0.2
 - PIP packages (Python):
   - [black==26.10.1](https://pypi.org/project/black/26.10.1)
   - [isort==9.0.2](https://pypi.org/project/isort/9.0.2)
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: Python package (isolated virtual environment)
+- Requires the python runtime >=3.10
+
+```yaml
+NATIVE_LINTERS: [PYTHON_ISORT]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+

@@ -137,3 +137,23 @@ Manifest Options:
 
 - Cargo packages (Rust):
   - [clippy](https://crates.io/crates/clippy)
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: Provided by the host
+- Requires the rust runtime
+
+```yaml
+NATIVE_LINTERS: [RUST_CLIPPY]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+

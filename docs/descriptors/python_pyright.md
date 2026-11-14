@@ -150,3 +150,23 @@ ARG NPM_PYRIGHT_VERSION=1.1.414
 
 - NPM packages (node.js):
   - [pyright@1.1.414](https://www.npmjs.com/package/pyright/v/1.1.414)
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: npm packages (isolated folder)
+- Requires the node runtime >=14
+
+```yaml
+NATIVE_LINTERS: [PYTHON_PYRIGHT]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+

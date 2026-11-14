@@ -145,3 +145,23 @@ See 'git help git' for an overview of the system.
 ### Installation on mega-linter Docker image
 
 None
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: Provided by the host
+- Requires the git runtime
+
+```yaml
+NATIVE_LINTERS: [REPOSITORY_GIT_DIFF]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+

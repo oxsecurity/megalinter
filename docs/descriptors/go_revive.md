@@ -129,7 +129,7 @@ Usage of revive:
 ```dockerfile
 # Parent descriptor install
 # renovate: datasource=repology depName=alpine_3_24/go versioning=loose
-ARG GO_ALPINE_VERSION=1.26.10-r0
+ARG GO_ALPINE_VERSION=1.26.11-r0
 RUN apk add --no-cache \
     go=${GO_ALPINE_VERSION}
 # Linter install
@@ -145,4 +145,23 @@ ARG GO_REVIVE_VERSION
 RUN GOBIN=/usr/bin go install github.com/mgechev/revive@$GO_REVIVE_VERSION
 COPY --link --from=revive /usr/bin/revive /usr/bin/revive
 ```
+
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: Verified release download
+
+```yaml
+NATIVE_LINTERS: [GO_REVIVE]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
 

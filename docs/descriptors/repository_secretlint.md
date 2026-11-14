@@ -204,3 +204,23 @@ ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=13.1.0
   - [secretlint@13.1.0](https://www.npmjs.com/package/secretlint/v/13.1.0)
   - [@secretlint/secretlint-rule-preset-recommend@13.1.0](https://www.npmjs.com/package/@secretlint/secretlint-rule-preset-recommend/v/13.1.0)
   - [@secretlint/secretlint-formatter-sarif@13.1.0](https://www.npmjs.com/package/@secretlint/secretlint-formatter-sarif/v/13.1.0)
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: npm packages (isolated folder)
+- Requires the node runtime >=22
+
+```yaml
+NATIVE_LINTERS: [REPOSITORY_SECRETLINT]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+

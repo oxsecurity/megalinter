@@ -140,3 +140,23 @@ Commands:
 
 ### Installation on mega-linter Docker image
 
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: Provided by the host
+- Requires the dotnet runtime >=8
+
+```yaml
+NATIVE_LINTERS: [CSHARP_DOTNET_FORMAT]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+

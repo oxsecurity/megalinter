@@ -260,3 +260,23 @@ ARG NPM_CSPELL_VERSION=10.4.0
 
 - NPM packages (node.js):
   - [cspell@10.4.0](https://www.npmjs.com/package/cspell/v/10.4.0)
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: npm packages (isolated folder)
+- Requires the node runtime >=22.18.0
+
+```yaml
+NATIVE_LINTERS: [SPELL_CSPELL]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+
