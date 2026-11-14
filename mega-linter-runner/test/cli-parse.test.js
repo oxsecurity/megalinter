@@ -374,9 +374,11 @@ describe("CLI parsing — platform", () => {
     assert.strictEqual(o.platform, "linux/amd64");
   });
 
-  it("defaults platform to linux/amd64", () => {
+  // No parser default: native mode rejects --platform when it is set. Docker runs use
+  // linux/amd64 when it is not given
+  it("leaves platform unset by default", () => {
     const o = parse([]);
-    assert.strictEqual(o.platform, "linux/amd64");
+    assert.strictEqual(o.platform, undefined);
   });
 });
 
@@ -431,7 +433,7 @@ describe("CLI parsing — defaults", () => {
     // release and flavor are resolved at runtime: CLI > .mega-linter.yml > latest/all
     assert.strictEqual(o.release, undefined);
     assert.strictEqual(o.flavor, undefined);
-    assert.strictEqual(o.platform, "linux/amd64");
+    assert.strictEqual(o.platform, undefined);
     assert.strictEqual(o.containerEngine, "docker");
     assert.strictEqual(o.codetotalUrl, "http://localhost:8081/");
     assert.ok(o.path);
