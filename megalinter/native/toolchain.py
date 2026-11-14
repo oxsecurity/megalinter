@@ -3,6 +3,7 @@ import os
 from megalinter import config
 from megalinter.native.context import NativeError, current_platform
 from megalinter.native.lock import compute_spec_hash
+from megalinter.native.resolve import platform_native_install
 from megalinter.native.runtimes import resolve_requirements
 from megalinter.native.state import read_state
 
@@ -85,11 +86,15 @@ PATH_NAME = "PATH"
 
 
 class Toolchain:
-    def __init__(self, path_dirs=None, env=None, install_dir=None, version=None):
+    def __init__(
+        self, path_dirs=None, env=None, install_dir=None, version=None, host_tool=False
+    ):
         self.path_dirs = path_dirs or []
         self.env = env or {}
         self.install_dir = install_dir
         self.version = version
+        # The tool comes from the host (runtime_provided): it can be upgraded at any time
+        self.host_tool = host_tool
 
 
 def is_allowed_env_name(name, extra_allowed):
@@ -143,7 +148,19 @@ def installed_toolchain(home, key, resolved_native_install, policy="never"):
             path_dirs.append(os.path.dirname(runtime.executable))
         path_dirs.extend(runtime.path_dirs)
         env.update(runtime.env)
-    return Toolchain(path_dirs, env, entry["dir"], entry.get("version"))
+    return Toolchain(
+        path_dirs,
+        env,
+        entry["dir"],
+        entry.get("version"),
+        host_tool="runtime_provided"
+        in (
+            resolved_native_install.get("method"),
+            platform_native_install(resolved_native_install, current_platform()).get(
+                "method"
+            ),
+        ),
+    )
 
 
 def build_subprocess_env(base_env, toolchain, request_id, unsecured_variables=None):

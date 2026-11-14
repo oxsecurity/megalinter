@@ -1,3 +1,4 @@
+import copy
 import logging
 import os
 import re
@@ -39,11 +40,20 @@ class RuntimeInfo:
         self.env = env or {}
 
 
+# The catalog and the runtimes found on the host do not change during a run: they were
+# read again for each native linter (one "--version" process per linter and runtime)
+RUNTIME_CATALOG_CACHE = {}
+HOST_RUNTIME_CACHE = {}
+
+
 def load_runtime_catalog():
-    with open(
-        os.path.join(get_descriptor_dir(), "native-runtimes.yml"), "r", encoding="utf-8"
-    ) as f:
-        return yaml.load(f, Loader=DESCRIPTOR_YAML_LOADER)["runtimes"]
+    catalog_file = os.path.join(get_descriptor_dir(), "native-runtimes.yml")
+    if catalog_file not in RUNTIME_CATALOG_CACHE:
+        with open(catalog_file, "r", encoding="utf-8") as f:
+            RUNTIME_CATALOG_CACHE[catalog_file] = yaml.load(
+                f, Loader=DESCRIPTOR_YAML_LOADER
+            )["runtimes"]
+    return copy.deepcopy(RUNTIME_CATALOG_CACHE[catalog_file])
 
 
 def version_tuple(version):
@@ -91,7 +101,19 @@ def satisfies(version, constraint):
     return False
 
 
+# Only found runtimes are cached: a missing one can be installed during the same process
+# (.automation/native_ci.py), and looking for it again is cheap (no process started)
 def detect_on_host(name, definition, search_path=None):
+    cache_key = (name, search_path or os.environ.get("PATH", ""))
+    if cache_key in HOST_RUNTIME_CACHE:
+        return HOST_RUNTIME_CACHE[cache_key]
+    found_runtime = find_on_host(name, definition, search_path)
+    if found_runtime is not None:
+        HOST_RUNTIME_CACHE[cache_key] = found_runtime
+    return found_runtime
+
+
+def find_on_host(name, definition, search_path=None):
     detect = definition["detect"]
     for executable in detect["executables"]:
         found = shutil.which(executable, path=search_path)
