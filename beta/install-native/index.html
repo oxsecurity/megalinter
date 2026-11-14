@@ -12462,7 +12462,7 @@
 <p><strong>Beta:</strong> native mode is in beta. <a href="../install-docker/">Docker</a> remains the default and the recommended way to run MegaLinter, especially on code you do not fully trust: linters (and the configuration files they load) can execute the code of the analyzed repository, and in Docker this happens inside a container.</p>
 </blockquote>
 <p>MegaLinter can run directly on your machine, without a container engine and without downloading a multi-GB image. Only the linters you list are installed, so a run starts in seconds.</p>
-<p>Supported platforms: Linux (x86-64 and ARM64), macOS (Intel and Apple Silicon), Windows with Git Bash, and WSL (Linux).</p>
+<p>Supported platforms: Linux (x86-64 and ARM64), macOS (Apple Silicon), Windows with Git Bash, and WSL (Linux). Intel Macs are not supported: <code>cryptography</code>, needed to verify the MegaLinter package, no longer publishes builds for them. Use Docker there.</p>
 <h2 id="quick-start">Quick start</h2>
 <p>Requirements:</p>
 <ul>

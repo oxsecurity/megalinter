@@ -15656,6 +15656,7 @@
 <li>Works behind <strong>proxies inspecting HTTPS</strong>: set <code>UV_NATIVE_TLS=1</code> (and <code>NODE_USE_SYSTEM_CA=1</code>) to trust the certificates of your system, see <a href="https://megalinter.io/latest/install-native/#corporate-proxies">Corporate proxies</a></li>
 <li>Linters installed by MegaLinter always run the version of its Docker image. For <strong>tools provided by your machine</strong> (SwiftLint, Raku, scalafix...), a warning shows when their version differs from the Docker image</li>
 <li>New <code>megalinter</code> command on PyPI: <code>run</code>, <code>install-linters</code>, <code>list-linters</code>, <code>doctor</code></li>
+<li>Not available on <strong>Intel Macs</strong>: <code>cryptography</code>, needed to verify the MegaLinter package, no longer publishes builds for them, and <code>mega-linter-runner --native</code> says so instead of failing during the install. Use Docker there</li>
 </ul>
 </li>
 <li><strong>Lighter Docker images</strong>: the main image download shrinks by <strong>21%</strong>, with the same linters and the same behavior (#9497)<ul>
@@ -15729,6 +15730,8 @@
 <p>Fixes</p>
 <ul>
 <li>Restore the <strong>GitHub repository cards</strong> on linter documentation pages and on the users page, after the <code>gh-card.dev</code> service shut down (#9433)</li>
+<li><strong>phplint</strong>: the default configuration uses <code>file-extensions</code>, removing the deprecation warning printed by phplint 9.8 on every run</li>
+<li>Windows: the <strong>Fixed</strong> column of the summary counts the files fixed in subfolders (it showed 0 for them)</li>
 </ul>
 </li>
 </ul>
