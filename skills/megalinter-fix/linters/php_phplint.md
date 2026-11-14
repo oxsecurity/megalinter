@@ -43,13 +43,13 @@ the file via the configuration file (see below) or fix the syntax.
 ## Ignore via configuration
 
 Exclude paths in the configuration file with the `exclude` key (paths are relative to
-the scanned base path). Other useful keys: `path` (what to scan), `extensions`
-(file extensions checked, default `php`) and `jobs` (parallel processes).
+the scanned base path). Other useful keys: `path` (what to scan), `file-extensions`
+(file extensions checked, default `php`; `extensions` before phplint 9.8) and `jobs` (parallel processes).
 
 ```yaml
 path: ./src
 jobs: 10
-extensions:
+file-extensions:
   - php
 exclude:
   - vendor

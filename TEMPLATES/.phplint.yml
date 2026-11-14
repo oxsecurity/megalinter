@@ -1,6 +1,6 @@
 path: .
 jobs: 5
-extensions:
+file-extensions:
   - php
 exclude: []
 warning: false
