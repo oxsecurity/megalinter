@@ -94,6 +94,36 @@ linters:
           RUN curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/clj-kondo/clj-kondo/refs/tags/v${CLJ_KONDO_VERSION}/script/install-clj-kondo \
               && chmod +x install-clj-kondo \
               && ./install-clj-kondo --version "$CLJ_KONDO_VERSION"
+    native_install:
+      method: binary
+      version: "${CLJ_KONDO_VERSION}"
+      assets:
+        linux/amd64:
+          url: https://github.com/clj-kondo/clj-kondo/releases/download/v{{VERSION}}/clj-kondo-{{VERSION}}-linux-static-amd64.zip
+          archive: zip
+        linux/arm64:
+          url: https://github.com/clj-kondo/clj-kondo/releases/download/v{{VERSION}}/clj-kondo-{{VERSION}}-linux-aarch64.zip
+          archive: zip
+        darwin/amd64:
+          url: https://github.com/clj-kondo/clj-kondo/releases/download/v{{VERSION}}/clj-kondo-{{VERSION}}-macos-amd64.zip
+          archive: zip
+        darwin/arm64:
+          url: https://github.com/clj-kondo/clj-kondo/releases/download/v{{VERSION}}/clj-kondo-{{VERSION}}-macos-aarch64.zip
+          archive: zip
+        windows/amd64:
+          url: https://github.com/clj-kondo/clj-kondo/releases/download/v{{VERSION}}/clj-kondo-{{VERSION}}-windows-amd64.zip
+          archive: zip
+      provenance:
+        checksums_url: https://github.com/clj-kondo/clj-kondo/releases/download/v{{VERSION}}/{{ASSET_NAME}}.sha256
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
+      overrides:
+        linux/arm64:
+          libc: glibc
     supported_platforms:
       platform:
         - linux/amd64
@@ -173,6 +203,28 @@ linters:
           RUN curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/greglook/cljstyle/main/util/install-cljstyle \
               && chmod +x install-cljstyle \
               && ./install-cljstyle --static --version "$CLJ_STYLE_VERSION"
+    native_install:
+      method: binary
+      version: "${CLJ_STYLE_VERSION}"
+      assets:
+        linux/amd64:
+          url: https://github.com/greglook/cljstyle/releases/download/{{VERSION}}/cljstyle_{{VERSION}}_linux_amd64_static.zip
+          archive: zip
+        darwin/amd64:
+          url: https://github.com/greglook/cljstyle/releases/download/{{VERSION}}/cljstyle_{{VERSION}}_macos_amd64.zip
+          archive: zip
+        darwin/arm64:
+          url: https://github.com/greglook/cljstyle/releases/download/{{VERSION}}/cljstyle_{{VERSION}}_macos_arm64.zip
+          archive: zip
+      provenance:
+        unverified: "greglook/cljstyle publishes no checksum file, signature or attestation next to its release zips"
+      platforms:
+        - linux/amd64
+        - darwin/amd64
+        - darwin/arm64
+      unsupported:
+        linux/arm64: "cljstyle publishes no Linux arm64 build. Use Docker."
+        windows/amd64: "cljstyle publishes no Windows build. Use Docker."
     supported_platforms:
       platform:
         - linux/amd64

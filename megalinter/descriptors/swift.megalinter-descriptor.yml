@@ -105,6 +105,20 @@ linters:
               unzip -o /tmp/swiftlint.zip -d /tmp/swiftlint && \
               install -m 0755 /tmp/swiftlint/swiftlint-static /usr/bin/swiftlint && \
               rm -rf /tmp/swiftlint /tmp/swiftlint.zip
+    native_install:
+      method: runtime_provided
+      # Version of the Docker image: a different host version triggers a warning
+      version: "${SWIFT_SWIFTLINT_VERSION}"
+      suggest:
+        darwin: "brew install swiftlint"
+        linux: "Install SwiftLint from https://github.com/realm/SwiftLint#installation (Homebrew on Linux: brew install swiftlint, or the swiftlint_linux zip of a release)"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+      unsupported:
+        windows/amd64: "SwiftLint publishes no Windows build. Use Docker."
     supported_platforms:
       platform:
         - linux/amd64

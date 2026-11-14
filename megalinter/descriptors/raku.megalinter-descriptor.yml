@@ -41,6 +41,20 @@ linters:
       - "-c"
     examples:
       - "raku -I ./lib -c myfile.raku"
+    native_install:
+      method: runtime_provided
+      # Version of the Docker image: a different host version triggers a warning
+      version: "${RAKU_RAKU_VERSION}"
+      suggest:
+        windows: "Install Rakudo Star with the MSI installer from https://rakudo.org/downloads/star"
+        darwin: "brew install rakudo-star"
+        linux: "Install Rakudo from https://rakudo.org/downloads (example: sudo apt install rakudo)"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     install:
       dockerfile:
         - ARG TARGETPLATFORM

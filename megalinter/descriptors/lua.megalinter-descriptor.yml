@@ -75,6 +75,31 @@ linters:
               && cd / \
               && apk del .lua-build-deps \
               && rm -rf /root/.cache/luarocks
+    native_install:
+      method: binary
+      # renovate: datasource=github-releases depName=lunarmodules/luacheck extractVersion=^v(?<version>.+)$
+      version: "1.2.0"
+      libc: glibc
+      assets:
+        linux/amd64:
+          url: https://github.com/lunarmodules/luacheck/releases/download/v{{VERSION}}/luacheck
+          archive: none
+          name: luacheck
+        windows/amd64:
+          url: https://github.com/lunarmodules/luacheck/releases/download/v{{VERSION}}/luacheck.exe
+          archive: none
+          name: luacheck.exe
+      provenance:
+        gpg:
+          keyring: luacheck.asc
+          signature_url: https://github.com/lunarmodules/luacheck/releases/download/v{{VERSION}}/{{ASSET_NAME}}.asc
+      platforms:
+        - linux/amd64
+        - windows/amd64
+      unsupported:
+        linux/arm64: "luacheck publishes a Linux binary for x86_64 only. Use Docker."
+        darwin/amd64: "luacheck publishes no macOS binary (it is a LuaRocks package that needs a Lua toolchain). Use Docker."
+        darwin/arm64: "luacheck publishes no macOS binary (it is a LuaRocks package that needs a Lua toolchain). Use Docker."
     supported_platforms:
       platform:
         - linux/amd64
@@ -155,6 +180,33 @@ linters:
               rm /tmp/stylua.zip && \
               chmod +x /out/bin/stylua
         - COPY --link --from=cargo-bin-stylua /out/bin/stylua /usr/bin/stylua
+    native_install:
+      method: binary
+      version: "${CARGO_STYLUA_VERSION}"
+      assets:
+        linux/amd64:
+          url: https://github.com/JohnnyMorganz/StyLua/releases/download/v{{VERSION}}/stylua-linux-x86_64-musl.zip
+          archive: zip
+        linux/arm64:
+          url: https://github.com/JohnnyMorganz/StyLua/releases/download/v{{VERSION}}/stylua-linux-aarch64-musl.zip
+          archive: zip
+        darwin/amd64:
+          url: https://github.com/JohnnyMorganz/StyLua/releases/download/v{{VERSION}}/stylua-macos-x86_64.zip
+          archive: zip
+        darwin/arm64:
+          url: https://github.com/JohnnyMorganz/StyLua/releases/download/v{{VERSION}}/stylua-macos-aarch64.zip
+          archive: zip
+        windows/amd64:
+          url: https://github.com/JohnnyMorganz/StyLua/releases/download/v{{VERSION}}/stylua-windows-x86_64.zip
+          archive: zip
+      provenance:
+        github_attestation: JohnnyMorganz/StyLua
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64

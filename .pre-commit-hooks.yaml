@@ -58,3 +58,51 @@
     encounter permission errors, try running Docker in rootless mode (c.f.,
     https://github.com/marketplace/actions/rootless-docker/). Linter results are
     logged to the megalinter-reports directory, so list it in your .gitignore.
+
+- id: megalinter-native-incremental
+  name: Run MegaLinter without Docker (skipping linters that run in project mode)
+  entry: npx --
+  language: system
+  require_serial: true
+  args:
+    - mega-linter-runner
+    - --native
+    - --fix
+    - --env
+    - "CLEAR_REPORT_FOLDER=true"
+    - --env
+    - "LOG_LEVEL=warning"
+    - --filesonly
+  description: >
+    Native mode (beta): the linters run directly on your machine, without Docker,
+    so the hook is much faster. Only the linters listed in NATIVE_LINTERS of
+    .mega-linter.yml run. Install them once with
+    `npx mega-linter-runner --install-linters` (it also offers to install the
+    language runtimes they need), as a hook can not ask questions.
+    See https://megalinter.io/latest/install-native/. Depends on npx (npm 7+)
+    and uv, plus Git Bash on Windows. Linter results are logged to the
+    megalinter-reports directory, so list it in your .gitignore. Skip linters
+    that run in project mode since they don't run incrementally.
+
+- id: megalinter-native-full
+  name: Run MegaLinter without Docker
+  entry: npx --
+  language: system
+  require_serial: true
+  args:
+    - mega-linter-runner
+    - --native
+    - --fix
+    - --env
+    - "CLEAR_REPORT_FOLDER=true"
+    - --env
+    - "LOG_LEVEL=warning"
+  description: >
+    Native mode (beta): the linters run directly on your machine, without Docker,
+    so the hook is much faster. Only the linters listed in NATIVE_LINTERS of
+    .mega-linter.yml run. Install them once with
+    `npx mega-linter-runner --install-linters` (it also offers to install the
+    language runtimes they need), as a hook can not ask questions.
+    See https://megalinter.io/latest/install-native/. Depends on npx (npm 7+)
+    and uv, plus Git Bash on Windows. Linter results are logged to the
+    megalinter-reports directory, so list it in your .gitignore.

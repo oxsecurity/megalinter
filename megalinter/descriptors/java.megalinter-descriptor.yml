@@ -95,6 +95,34 @@ linters:
           RUN curl --retry 5 --retry-delay 5 -sSL \
               "https://github.com/checkstyle/checkstyle/releases/download/checkstyle-${JAVA_CHECKSTYLE_VERSION}/checkstyle-${JAVA_CHECKSTYLE_VERSION}-all.jar" \
               --output /usr/bin/checkstyle
+    native_install:
+      method: binary
+      version: "${JAVA_CHECKSTYLE_VERSION}"
+      requires:
+        - runtime: java
+          version: ">=17"
+      assets:
+        any:
+          url: "https://github.com/checkstyle/checkstyle/releases/download/checkstyle-{{VERSION}}/checkstyle-{{VERSION}}-all.jar"
+          archive: none
+          name: checkstyle-all.jar
+      executables:
+        checkstyle:
+          launcher: java
+          args: ["-jar", "{{NATIVE_INSTALL_DIR}}/checkstyle-all.jar"]
+      linter_overrides:
+        cli_lint_extra_args: ["-jar", "{{NATIVE_INSTALL_DIR}}/checkstyle-all.jar"]
+        cli_version_extra_args: ["-jar", "{{NATIVE_INSTALL_DIR}}/checkstyle-all.jar"]
+        # Both path separators (Windows)
+        cli_lint_mode_project_exclude_arg_value: '[/\\]{{DIR}}([/\\]|$)'
+      provenance:
+        unverified: "Checkstyle publishes the all-in-one jar only as a GitHub release asset, without signature, checksum file or attestation (Maven Central only carries the thin jar)"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -164,6 +192,35 @@ linters:
               rm pmd-dist-${PMD_VERSION}-bin.zip || echo "Error rm" && \
               mv pmd-bin-${PMD_VERSION} /usr/bin/pmd || echo "Error mv" && \
               chmod +x /usr/bin/pmd/bin/pmd || echo "Error chmod"
+    native_install:
+      method: binary
+      version: "${PMD_VERSION}"
+      requires:
+        - runtime: java
+          version: ">=8"
+      assets:
+        any:
+          url: "https://github.com/pmd/pmd/releases/download/pmd_releases%2F{{VERSION}}/pmd-dist-{{VERSION}}-bin.zip"
+          archive: zip
+          strip_components: 1
+      executables:
+        pmd: bin/pmd
+      linter_overrides:
+        cli_executable: pmd
+      provenance:
+        gpg:
+          keyring: pmd.asc
+          signature_url: "https://github.com/pmd/pmd/releases/download/pmd_releases%2F{{VERSION}}/{{ASSET_NAME}}.asc"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
+      overrides:
+        windows/amd64:
+          executables:
+            pmd: bin/pmd.bat
     supported_platforms:
       platform:
         - linux/amd64

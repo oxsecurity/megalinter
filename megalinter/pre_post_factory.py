@@ -7,6 +7,7 @@ import subprocess
 import sys
 
 from megalinter import config, utils
+from megalinter.native.context import find_git_bash
 
 
 # User defined commands to run before running linters
@@ -93,6 +94,28 @@ def run_commands(all_commands, log_key, mega_linter, linter=None):
     if all_commands is None:
         logging.debug(f"{log_key} No commands declared in user configuration")
         return pre_commands_results
+    if config.native_repo_untrusted():
+        # Commands added by MegaLinter linter classes (tflint --init...) are not repository content
+        repository_commands = [
+            command_info
+            for command_info in all_commands
+            if not (
+                isinstance(command_info, dict)
+                and command_info.get("megalinter_internal") is True
+            )
+        ]
+        if len(repository_commands) > 0:
+            logging.warning(
+                f"{log_key} Skipped {len(repository_commands)} command(s) declared in the "
+                "repository configuration (native mode): trust the repository with "
+                "--trust-repo-commands (or NATIVE_TRUST_REPO_COMMANDS=true in the environment) "
+                "to run them on this machine"
+            )
+        all_commands = [
+            command_info
+            for command_info in all_commands
+            if command_info not in repository_commands
+        ]
     for command_info in all_commands:
         pre_command_result = run_command(command_info, log_key, mega_linter, linter)
         pre_commands_results += [pre_command_result]
@@ -127,15 +150,25 @@ def run_command(command_info, log_key, mega_linter, linter=None):
         [f"{log_key} run: [{command_info['command']}] in cwd [{cwd}]"],
     )
     # Run command
-    process = subprocess.run(
-        command_info["command"],
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
-        shell=True,
-        cwd=os.path.realpath(cwd),
-        executable=shutil.which("bash") if sys.platform == "win32" else "/bin/bash",
-        env=subprocess_env,
-    )
+    if sys.platform == "win32":
+        # Windows: shell=True would wrap the command for cmd.exe, call Git Bash directly
+        process = subprocess.run(
+            [find_git_bash() or shutil.which("bash"), "-c", command_info["command"]],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            cwd=os.path.realpath(cwd),
+            env=subprocess_env,
+        )
+    else:
+        process = subprocess.run(
+            command_info["command"],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            shell=True,
+            cwd=os.path.realpath(cwd),
+            executable="/bin/bash",
+            env=subprocess_env,
+        )
     return_code = process.returncode
     return_stdout = utils.clean_string(process.stdout)
     if return_code == 0:
@@ -204,13 +237,18 @@ def build_command_env(command_info, mega_linter, linter=None):
                     if isinstance(var_src_value, str)
                     else str(var_src_value)
                 )
+    if linter is not None:
+        # Native mode: linter commands need the linter toolchain (PATH, runtime variables)
+        subprocess_env = linter.native_environment(subprocess_env)
     return subprocess_env
 
 
 def complete_command(command_info: dict):
     # Force npm install in /node-deps ONLY if cwd is root
     command: str = command_info["command"]
-    if command.startswith("npm i") and command_info.get("cwd", "root") == "root":
+    if os.environ.get("MEGALINTER_NATIVE", "false") == "true":
+        pass
+    elif command.startswith("npm i") and command_info.get("cwd", "root") == "root":
         command_info["command"] = "cd /node-deps && " + command_info["command"]
     # Pip dependencies case
     elif command_info.get("venv", None) is not None:

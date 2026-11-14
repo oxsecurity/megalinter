@@ -55,6 +55,7 @@ from megalinter.constants import (
     ML_REPO,
     ML_REPO_URL,
 )
+from megalinter.native.spec import validate_all
 from megalinter.removed_linters import (
     REMOVED_DESCRIPTORS,
     REMOVED_LINTER_ALIASES,
@@ -2225,6 +2226,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         item = vars(linter)
         merge_install_attr(item)
         linter_doc_md += get_install_md(item)
+        linter_doc_md += ["", "### Installation without Docker (native mode)", ""]
+        linter_doc_md += get_native_install_md(item, linter.name)
         # Example log files
         test_report_folder = (
             REPO_HOME
@@ -2665,6 +2668,65 @@ def get_install_md(item):
             item["install"]["gem"], "gem", "  ", "https://rubygems.org/gems/"
         )
     return linter_doc_md
+
+
+NATIVE_PLATFORM_LABELS = {
+    "linux/amd64": "Linux (x86-64)",
+    "linux/arm64": "Linux (ARM64)",
+    "darwin/amd64": "macOS (Intel)",
+    "darwin/arm64": "macOS (Apple Silicon)",
+    "windows/amd64": "Windows (Git Bash)",
+}
+NATIVE_METHOD_LABELS = {
+    "pip": "Python package (isolated virtual environment)",
+    "npm": "npm packages (isolated folder)",
+    "gem": "Ruby gems",
+    "go": "Go module",
+    "dotnet_tool": ".NET tool",
+    "powershell_module": "PowerShell module",
+    "binary": "Verified release download",
+    "runtime_provided": "Provided by the host",
+}
+
+
+def get_native_install_md(item, linter_key):
+    native = item.get("native_install")
+    if not native:
+        return ["Not available."]
+    linter_doc_md = [
+        "This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).",
+        "",
+        f"- Install method: {NATIVE_METHOD_LABELS.get(native['method'], native['method'])}",
+    ]
+    for requirement in native.get("requires", []):
+        constraint = f" {requirement['version']}" if requirement.get("version") else ""
+        linter_doc_md += [
+            f"- Requires the {requirement['runtime']} runtime{constraint}"
+        ]
+    linter_doc_md += [
+        "",
+        "```yaml",
+        f"NATIVE_LINTERS: [{linter_key}]",
+        "```",
+        "",
+        "| Platform | Support |",
+        "| :------- | :------ |",
+    ]
+    for platform, label in NATIVE_PLATFORM_LABELS.items():
+        if platform in native.get("platforms", []):
+            support = "✅"
+        else:
+            support = "❌ " + (native.get("unsupported") or {}).get(platform, "")
+        linter_doc_md += [f"| {label} | {support} |"]
+    if native["method"] == "runtime_provided" and native.get("suggest"):
+        linter_doc_md += [
+            "",
+            "This tool is not downloaded by MegaLinter, install it yourself:",
+            "",
+        ]
+        for system, command in native["suggest"].items():
+            linter_doc_md += [f"- {system}: `{command}`"]
+    return linter_doc_md + [""]
 
 
 def doc_url(href):
@@ -3523,6 +3585,17 @@ def validate_descriptors():
             raise ValueError(
                 "Errors have been found while validating descriptor YML files, please check logs"
             )
+
+
+# Every linter must declare its native install on every native platform
+def validate_native_install():
+    _specs, native_errors = validate_all()
+    for native_error in native_errors:
+        logging.error(native_error)
+    if len(native_errors) > 0:
+        raise ValueError(
+            "Errors have been found in native_install declarations, please check logs"
+        )
 
 
 def finalize_doc_build():
@@ -4650,6 +4723,7 @@ if __name__ == "__main__":
         ensure_removed_linters_flagged_in_config_schema()
         generate_documentation_removed_linters()
         validate_descriptors()
+        validate_native_install()
         if UPDATE_DEPENDENTS is True:
             update_dependents_info()
         generate_all_flavors()

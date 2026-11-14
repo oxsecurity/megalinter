@@ -88,6 +88,39 @@ linters:
           ARG DOCKERFILE_HADOLINT_VERSION=v2.15.1-alpine
         - FROM hadolint/hadolint:${DOCKERFILE_HADOLINT_VERSION} AS hadolint
         - COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
+    native_install:
+      method: binary
+      # renovate: datasource=github-releases depName=hadolint/hadolint extractVersion=^v(?<version>.+)$
+      version: "2.15.1"
+      assets:
+        linux/amd64:
+          url: https://github.com/hadolint/hadolint/releases/download/v{{VERSION}}/hadolint-linux-x86_64
+          archive: none
+          name: hadolint
+        linux/arm64:
+          url: https://github.com/hadolint/hadolint/releases/download/v{{VERSION}}/hadolint-linux-arm64
+          archive: none
+          name: hadolint
+        darwin/amd64:
+          url: https://github.com/hadolint/hadolint/releases/download/v{{VERSION}}/hadolint-macos-x86_64
+          archive: none
+          name: hadolint
+        darwin/arm64:
+          url: https://github.com/hadolint/hadolint/releases/download/v{{VERSION}}/hadolint-macos-arm64
+          archive: none
+          name: hadolint
+        windows/amd64:
+          url: https://github.com/hadolint/hadolint/releases/download/v{{VERSION}}/hadolint-windows-x86_64.exe
+          archive: none
+          name: hadolint.exe
+      provenance:
+        github_attestation: hadolint/hadolint
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64

@@ -50,6 +50,33 @@ linters:
           ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=4.0.2
         - FROM mstruebing/editorconfig-checker:${EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION} AS editorconfig-checker
         - COPY --link --from=editorconfig-checker /usr/bin/editorconfig-checker /usr/bin/editorconfig-checker
+    native_install:
+      method: binary
+      version: "${EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION}"
+      assets:
+        linux/amd64:
+          url: https://github.com/editorconfig-checker/editorconfig-checker/releases/download/v{{VERSION}}/editorconfig-checker-linux-amd64.tar.gz
+          archive: tar.gz
+        linux/arm64:
+          url: https://github.com/editorconfig-checker/editorconfig-checker/releases/download/v{{VERSION}}/editorconfig-checker-linux-arm64.tar.gz
+          archive: tar.gz
+        darwin/amd64:
+          url: https://github.com/editorconfig-checker/editorconfig-checker/releases/download/v{{VERSION}}/editorconfig-checker-darwin-all.tar.gz
+          archive: tar.gz
+        darwin/arm64:
+          url: https://github.com/editorconfig-checker/editorconfig-checker/releases/download/v{{VERSION}}/editorconfig-checker-darwin-all.tar.gz
+          archive: tar.gz
+        windows/amd64:
+          url: https://github.com/editorconfig-checker/editorconfig-checker/releases/download/v{{VERSION}}/editorconfig-checker-windows-amd64.zip
+          archive: zip
+      provenance:
+        github_attestation: editorconfig-checker/editorconfig-checker
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64

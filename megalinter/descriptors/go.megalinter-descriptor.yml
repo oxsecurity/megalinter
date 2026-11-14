@@ -131,6 +131,41 @@ linters:
         - |
           RUN wget -O- -nv https://golangci-lint.run/install.sh | sh -s "v${GO_GOLANGCI_LINT_VERSION}" \
               && golangci-lint --version
+    native_install:
+      method: binary
+      version: "${GO_GOLANGCI_LINT_VERSION}"
+      # golangci-lint loads the packages with the go toolchain
+      requires:
+        - runtime: go
+      assets:
+        linux/amd64:
+          url: https://github.com/golangci/golangci-lint/releases/download/v{{VERSION}}/golangci-lint-{{VERSION}}-linux-amd64.tar.gz
+          archive: tar.gz
+          strip_components: 1
+        linux/arm64:
+          url: https://github.com/golangci/golangci-lint/releases/download/v{{VERSION}}/golangci-lint-{{VERSION}}-linux-arm64.tar.gz
+          archive: tar.gz
+          strip_components: 1
+        darwin/amd64:
+          url: https://github.com/golangci/golangci-lint/releases/download/v{{VERSION}}/golangci-lint-{{VERSION}}-darwin-amd64.tar.gz
+          archive: tar.gz
+          strip_components: 1
+        darwin/arm64:
+          url: https://github.com/golangci/golangci-lint/releases/download/v{{VERSION}}/golangci-lint-{{VERSION}}-darwin-arm64.tar.gz
+          archive: tar.gz
+          strip_components: 1
+        windows/amd64:
+          url: https://github.com/golangci/golangci-lint/releases/download/v{{VERSION}}/golangci-lint-{{VERSION}}-windows-amd64.zip
+          archive: zip
+          strip_components: 1
+      provenance:
+        github_attestation: golangci/golangci-lint
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -215,6 +250,33 @@ linters:
           ARG GO_REVIVE_VERSION
           RUN GOBIN=/usr/bin go install github.com/mgechev/revive@$GO_REVIVE_VERSION
         - COPY --link --from=revive /usr/bin/revive /usr/bin/revive
+    native_install:
+      method: binary
+      version: "${GO_REVIVE_VERSION}"
+      assets:
+        linux/amd64:
+          url: https://github.com/mgechev/revive/releases/download/{{VERSION}}/revive_linux_amd64.tar.gz
+          archive: tar.gz
+        linux/arm64:
+          url: https://github.com/mgechev/revive/releases/download/{{VERSION}}/revive_linux_arm64.tar.gz
+          archive: tar.gz
+        darwin/amd64:
+          url: https://github.com/mgechev/revive/releases/download/{{VERSION}}/revive_darwin_amd64.tar.gz
+          archive: tar.gz
+        darwin/arm64:
+          url: https://github.com/mgechev/revive/releases/download/{{VERSION}}/revive_darwin_arm64.tar.gz
+          archive: tar.gz
+        windows/amd64:
+          url: https://github.com/mgechev/revive/releases/download/{{VERSION}}/revive_windows_amd64.tar.gz
+          archive: tar.gz
+      provenance:
+        github_attestation: mgechev/revive
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64

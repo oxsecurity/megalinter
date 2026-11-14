@@ -27,6 +27,21 @@ cli_lint_errors_regex: code should be clang-formatted
 install:
   apk:
     - cmd:clang-format
+native_install:
+  method: pip
+  # Docker uses the Alpine clang-format package (LLVM 21): the PyPI wheels of the same major version are the official portable builds
+  packages:
+    # renovate: datasource=pypi depName=clang-format versioning=pep440
+    - clang-format==21.1.8
+  requires:
+    - runtime: python
+      version: ">=3.7"
+  platforms:
+    - linux/amd64
+    - linux/arm64
+    - darwin/amd64
+    - darwin/arm64
+    - windows/amd64
 supported_platforms:
   platform:
     - linux/amd64

@@ -11,6 +11,16 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Breaking changes
 
 - Core
+
+  - **Run MegaLinter without Docker (beta)**: pick the linters you need and lint directly on Linux, macOS, WSL or Windows (Git Bash), with no multi-GB image to pull. See [Native mode](https://megalinter.io/latest/install-native/)
+    - List the linters allowed to run natively in **`NATIVE_LINTERS`** (example: `[PYTHON_BLACK, JAVASCRIPT_ES]`). The value `all` exists but is discouraged: it is slower, and you must fully trust every matching linter
+    - Linters are installed in `~/.megalinter` from **verified downloads** pinned by sha256, without administrator rights
+    - Missing language runtimes can be installed for you with **`NATIVE_INSTALL_RUNTIMES`** (`ask`, `auto`, `never`)
+    - Commands, plugins and remote `EXTENDS` declared by the analyzed repository are **ignored** unless you pass `--trust-repo-commands`
+    - Docker remains the default and the recommended mode, especially for code you do not fully trust
+    - New **pre-commit hooks** `megalinter-native-incremental` and `megalinter-native-full` lint the files of each commit without Docker
+    - Linters installed by MegaLinter always run the version of its Docker image. For **tools provided by your machine** (SwiftLint, Raku, scalafix...), a warning shows when their version differs from the Docker image
+    - New `megalinter` command on PyPI: `run`, `install-linters`, `list-linters`, `doctor`
   - **Lighter Docker images**: the main image download shrinks by **21%**, with the same linters and the same behavior (#9497)
     - The Rust toolchain used by `RUST_CLIPPY` is now installed once instead of twice
     - Files never used at runtime are no longer shipped: leftover download archives, duplicate .NET tool packages and unused .NET framework builds, source maps and type declarations of Node.js linters and Salesforce CLI plugins, unused Rust and Dart runtime extras, and build caches
@@ -58,9 +68,20 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - mega-linter-runner
 
+  - New **`--native`** option to run MegaLinter without Docker, and **`--install-linters`** to install the linters it needs (not to be confused with `--install`, which sets up MegaLinter in your repository)
+    - With `--native`, the files given as arguments are the only ones linted, and `--env` accepts the same quoted values as with Docker (`"'ENABLE=MARKDOWN,YAML'"`)
+
 - Agent Skills
 
+  - **megalinter-check** can now lint locally without a container engine, using native mode, after asking you
+
 - Dev
+
+  - New linter-level descriptor property **`native_install`** (how a linter is installed without Docker, per platform), documented in `.claude/rules/native-install.md`, with the runtime catalog `native-runtimes.yml` and the generated `megalinter/descriptors/native-locks/`. The build fails when a linter does not declare it for the 5 native platforms. Generated Dockerfiles are unchanged
+  - New package `megalinter/native/` (verified downloads, safe archive extraction, per-method installers, runtime provisioning, environment allowlist, trust gating) and the `megalinter` command (`megalinter/cli.py`)
+  - `native_install.linter_overrides` replaces linter properties only in native mode (container paths, executables), with `{{NATIVE_INSTALL_DIR}}`
+  - Linter tests run unchanged against native installs (`MEGALINTER_NATIVE=true`)
+  - `.automation/native_lock.py` generates the locks and verifies upstream provenance (GitHub attestation, cosign, GPG, checksums files); `.automation/native_ci.py` computes the CI matrix
   - Generated npm installs: the `.map` / `.d.ts` cleanup never ran, because an inline `# fix for ...` comment after `chown` commented out every following command once Docker joined the continued `RUN` lines. Fixed, and the cleanup now keeps `typescript/lib` and `@types` declarations used by type-aware linting
   - Rust: `build.py` no longer runs `rustup default stable` after installing the pinned `RUST_RUST_VERSION` toolchain (it installed a second, identical toolchain of ~800 MB). `ClippyLinter` now reads the rustup settings from `RUSTUP_HOME`, so it no longer switches to `stable` at runtime
   - Cleanups moved inside the `RUN` that creates the files (overlayfs never reclaims files deleted in a later layer): coursier now installs scalafix from `/tmp` in a single `RUN`, and the PowerShell tarball, detekt archive, luarocks cache, `sf` caches and npm logs are deleted where they are created
@@ -69,6 +90,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - LLM providers rewritten on `requests`: shared `LLMProvider` HTTP helper (retries on connection errors, 429 and 5xx with `Retry-After`, masked API keys in errors, `SSL_CERT_FILE` / `SSL_CERT_DIR` support) and `llm_provider_openai_compatible.py` adapter, covered by offline tests in `test_llm_providers_http.py`. The `llm` extra is removed, and so is the `build.py` override that stripped it from standalone images
 
 - CI
+
+  - **Test native mode**: installs every linter natively, then runs the usual linter tests against the native installs: on Linux x86-64 for pull requests and pushes to main, on the 5 native platforms (Linux x86-64 and ARM64, macOS Intel and Apple Silicon, Windows) nightly, on manual runs and for pull requests labeled `native-full-matrix`. **Native locks** regenerates the install locks after descriptor changes. **Deploy MegaLinter to PyPI** publishes the package with Trusted Publishing and attestations, like mega-linter-runner: beta on each push to main, release on each GitHub release, both approved in the `release-runner` environment
+  - Renovate also bumps the pinned versions of native installs (`native_install` in descriptors, runtimes in `native-runtimes.yml`)
   - Dependency updates wait longer: Renovate (`minimumReleaseAge`) and Dependabot (`cooldown`) now propose an upgrade only once the release is **14 days old** (was 7). Security fixes are not delayed and still open immediately
 
 - Linter versions upgrades (N)

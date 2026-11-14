@@ -1,0 +1,134 @@
+---
+# Publishes the megalinter Python package (native mode: `megalinter` command) to PyPI
+#
+# Same model as mega-linter-runner (deploy-mega-linter-runner.yml):
+# - beta: on each push to main (deploy-BETA.yml), pre-release `<last release>.post0.dev<timestamp>`.
+#   pip and uv ignore it unless asked (`--pre`), `mega-linter-runner --native --release beta` installs it
+# - stable: on each GitHub release (deploy-RELEASE.yml), version of megalinter/__about__.py
+# Both are published from the release-runner environment, which requires a manual approval
+#
+# PyPI Trusted Publishing (OIDC, no token stored) with attestations: the runner verifies that the wheel
+# was published by this workflow of oxsecurity/megalinter before installing it.
+name: "Deploy MegaLinter to PyPI"
+on:
+  workflow_dispatch:
+    inputs:
+      channel:
+        description: "beta or stable"
+        type: choice
+        options:
+          - beta
+          - stable
+        default: beta
+
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build the wheel (${{ inputs.channel }})
+    if: github.repository == 'oxsecurity/megalinter'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - name: Setup Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version-file: .python-version
+
+      - name: Setup uv
+        uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+
+      - name: Compute the version
+        id: version
+        env:
+          CHANNEL: ${{ inputs.channel }}
+        run: |
+          python - <<'EOF'
+          import datetime, os, re
+
+          about = open("megalinter/__about__.py", encoding="utf-8").read()
+          version = re.search(r'__version__ = "([^"]+)"', about).group(1)
+          if os.environ["CHANNEL"] == "beta":
+              now = datetime.datetime.now(datetime.timezone.utc)
+              version = f"{version}.post0.dev{now:%Y%m%d%H%M%S}"
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:
+              output.write(f"version={version}" + chr(10))
+          with open("megalinter/__about__.py", "w", encoding="utf-8") as f:
+              f.write(f'__version__ = "{version}"' + chr(10))
+          EOF
+
+      # The default linter configurations (TEMPLATES) are shipped inside the package. They are
+      # copied at publish time only, so that editable installs (Docker images) are unchanged
+      - name: Bundle the default configurations
+        run: cp -r TEMPLATES megalinter/_templates
+
+      # The wheel carries every Python dependency of the core, pinned with hashes (from uv.lock)
+      - name: Export the hashed core requirements
+        run: uv export --frozen --no-dev --no-emit-project --format requirements-txt --output-file megalinter/_core-requirements.lock
+
+      - name: Build the wheel
+        run: uv build --wheel --out-dir dist
+
+      - name: Check the wheel content
+        run: |
+          python - <<'EOF'
+          import glob, zipfile
+
+          wheel = glob.glob("dist/*.whl")[0]
+          names = zipfile.ZipFile(wheel).namelist()
+          for required in (
+              "megalinter/cli.py",
+              "megalinter/_core-requirements.lock",
+              "megalinter/_templates/mega-linter.yml",
+              "megalinter/descriptors/native-runtimes.yml",
+          ):
+              assert required in names, f"{required} missing from {wheel}"
+          assert any(n.startswith("megalinter/descriptors/native-locks/") for n in names), "native locks missing"
+          assert not any(n.startswith("megalinter/tests/") for n in names), "tests must not be packaged"
+          print(f"{wheel}: {len(names)} files")
+          EOF
+
+      - name: Upload the wheel
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: megalinter-wheel
+          path: dist/
+          if-no-files-found: error
+
+  publish:
+    name: Publish to PyPI (${{ inputs.channel }})
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    # Same protected environment as mega-linter-runner: each publish is approved manually
+    environment:
+      name: release-runner
+      url: https://pypi.org/project/megalinter/
+    permissions:
+      # Trusted Publishing (OIDC): no PyPI token is stored anywhere
+      id-token: write
+    steps:
+      - name: Download the wheel
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: megalinter-wheel
+          path: dist/
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086 # v1.14.3
+        with:
+          packages-dir: dist/
+          attestations: true

@@ -58,6 +58,33 @@ linters:
           ARG PROTOBUF_PROTOLINT_VERSION=0.58.0
         - FROM yoheimuta/protolint:${PROTOBUF_PROTOLINT_VERSION} AS protolint
         - COPY --link --from=protolint /usr/local/bin/protolint /usr/bin/
+    native_install:
+      method: binary
+      version: "${PROTOBUF_PROTOLINT_VERSION}"
+      assets:
+        linux/amd64:
+          url: https://github.com/yoheimuta/protolint/releases/download/v{{VERSION}}/protolint_{{VERSION}}_linux_amd64.tar.gz
+          archive: tar.gz
+        linux/arm64:
+          url: https://github.com/yoheimuta/protolint/releases/download/v{{VERSION}}/protolint_{{VERSION}}_linux_arm64.tar.gz
+          archive: tar.gz
+        darwin/amd64:
+          url: https://github.com/yoheimuta/protolint/releases/download/v{{VERSION}}/protolint_{{VERSION}}_darwin_amd64.tar.gz
+          archive: tar.gz
+        darwin/arm64:
+          url: https://github.com/yoheimuta/protolint/releases/download/v{{VERSION}}/protolint_{{VERSION}}_darwin_arm64.tar.gz
+          archive: tar.gz
+        windows/amd64:
+          url: https://github.com/yoheimuta/protolint/releases/download/v{{VERSION}}/protolint_{{VERSION}}_windows_amd64.tar.gz
+          archive: tar.gz
+      provenance:
+        checksums_url: https://github.com/yoheimuta/protolint/releases/download/v{{VERSION}}/checksums.txt
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64

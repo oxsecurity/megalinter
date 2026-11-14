@@ -97,6 +97,19 @@ linters:
         - rubocop-rails:${GEM_RUBOCOP_RAILS_VERSION}
         - rubocop-rake:${GEM_RUBOCOP_RAKE_VERSION}
         - rubocop-rspec:${GEM_RUBOCOP_RSPEC_VERSION}
+    native_install:
+      method: gem
+      requires:
+        - runtime: ruby
+          version: ">=3.4.2"
+      allow_source_build:
+        reason: "rubocop-rails pulls activesupport, whose bigdecimal and json dependencies compile C extensions: a C compiler is needed (on Windows, install Ruby with the DevKit)."
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64

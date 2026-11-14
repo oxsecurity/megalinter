@@ -1,0 +1,175 @@
+import os
+import unittest
+
+import megalinter
+from megalinter.MegaLinter import Megalinter
+from megalinter.native.catalog import load_native_specs
+from megalinter.native.installer import NativeInstaller, host_version_matches
+from megalinter.native.resolve import (
+    NativeLinterSpec,
+    apply_native_overrides,
+    platform_native_install,
+    resolve_native_install,
+    resolve_version_reference,
+)
+from megalinter.native.runtimes import satisfies, version_tuple
+
+MEGALINTER_DESCRIPTORS = os.path.join(
+    os.path.dirname(megalinter.__file__), "descriptors"
+)
+DOCKERFILE = [
+    "# renovate: datasource=pypi depName=black\nARG PIP_BLACK_VERSION=26.10.1",
+    "FROM hadolint/hadolint:v2.14.0 AS hadolint\nCOPY --from=hadolint /bin/hadolint /usr/bin/",
+]
+
+
+def make_spec(native_install, install=None):
+    linter = {
+        "linter_name": "black",
+        "install": install
+        or {"dockerfile": DOCKERFILE, "pip": ["black==${PIP_BLACK_VERSION}"]},
+        "native_install": native_install,
+    }
+    return NativeLinterSpec("PYTHON", {}, linter, None)
+
+
+class ResolveTest(unittest.TestCase):
+    def test_arg_reference(self):
+        spec = make_spec({"method": "pip"})
+        self.assertEqual(
+            resolve_version_reference("${PIP_BLACK_VERSION}", spec), "26.10.1"
+        )
+
+    def test_from_tag_reference_keeps_v_prefix(self):
+        spec = make_spec({"method": "binary"})
+        self.assertEqual(
+            resolve_version_reference("${FROM_TAG:hadolint/hadolint}", spec), "v2.14.0"
+        )
+
+    def test_unknown_reference_is_an_error(self):
+        with self.assertRaises(KeyError):
+            resolve_version_reference("${NOPE_VERSION}", make_spec({"method": "pip"}))
+
+    def test_packages_default_to_docker_install(self):
+        resolved = resolve_native_install(make_spec({"method": "pip"}))
+        self.assertEqual(resolved["packages"], ["black==26.10.1"])
+
+    def test_platform_overrides_replace_keys(self):
+        native = {
+            "method": "binary",
+            "executables": {"tool": "tool"},
+            "overrides": {"windows/amd64": {"executables": {"tool": "tool.exe"}}},
+        }
+        self.assertEqual(
+            platform_native_install(native, "linux/amd64")["executables"],
+            {"tool": "tool"},
+        )
+        self.assertEqual(
+            platform_native_install(native, "windows/amd64")["executables"],
+            {"tool": "tool.exe"},
+        )
+        self.assertEqual(
+            platform_native_install(native, "windows/arm64")["executables"],
+            {"tool": "tool.exe"},
+        )
+
+    def test_linter_overrides_replace_install_dir_placeholder(self):
+        descriptor = {
+            "linter_name": "pmd",
+            "native_install": {
+                "method": "binary",
+                "linter_overrides": {
+                    "cli_executable": "{{NATIVE_INSTALL_DIR}}/bin/pmd"
+                },
+            },
+        }
+        result = apply_native_overrides(
+            descriptor, "linux/amd64", "JAVA", {}, "/home/user/.megalinter"
+        )
+        self.assertIn(".megalinter", result["cli_executable"])
+        self.assertNotIn("{{", result["cli_executable"])
+
+    def test_no_override_leaves_the_descriptor_untouched(self):
+        descriptor = {"linter_name": "x", "native_install": {"method": "pip"}}
+        self.assertIs(
+            apply_native_overrides(descriptor, "linux/amd64", "X", {}, "/h"), descriptor
+        )
+
+
+class VersionTest(unittest.TestCase):
+    def test_constraints(self):
+        self.assertTrue(satisfies("21.0.9", ">=21"))
+        self.assertTrue(satisfies("22", ">=21"))
+        self.assertFalse(satisfies("17.0.1", ">=21"))
+        self.assertTrue(satisfies("3.12.1", ">=3.9,<4"))
+        self.assertFalse(satisfies("4.0", ">=3.9,<4"))
+        self.assertTrue(satisfies("1.2.3", None))
+
+    def test_unsupported_constraint(self):
+        with self.assertRaises(Exception):
+            satisfies("1.0", "~=1.0")
+
+    def test_version_tuple_ignores_build_metadata(self):
+        self.assertEqual(version_tuple("21.0.13+9"), (21, 0, 13))
+
+
+# The complete native_install validation (JSON schema, platforms, versions) runs in the build
+# and in the "Native descriptors and locks" CI job: these tests only use the core dependencies,
+# so that they can run inside the Docker images
+class DescriptorsTest(unittest.TestCase):
+    def test_every_linter_resolves_its_native_install(self):
+        # The descriptors of MegaLinter itself: in the Docker images, test plugins are also
+        # downloaded in the descriptors folder, and plugins do not declare native installs
+        specs = load_native_specs(descriptor_dir=MEGALINTER_DESCRIPTORS)
+        self.assertGreater(len(specs), 100)
+        for spec in specs:
+            self.assertIsNotNone(spec.native_install, spec.key)
+            resolve_native_install(spec)
+
+    def test_linter_keys_are_unique(self):
+        keys = [spec.key for spec in load_native_specs()]
+        self.assertEqual(len(keys), len(set(keys)))
+
+
+class FakeHostLinter:
+    name = "SWIFT_SWIFTLINT"
+    linter_name = "swiftlint"
+
+    def __init__(self, version):
+        self.version = version
+
+    def get_linter_version(self):
+        return self.version
+
+
+class HostVersionTest(unittest.TestCase):
+    def test_versions_match_without_v_prefix(self):
+        self.assertTrue(host_version_matches("v2026.09", "2026.09"))
+        self.assertTrue(host_version_matches("0.65.1", "0.65.1"))
+        self.assertFalse(host_version_matches("0.63.0", "0.65.1"))
+
+    def test_pinned_version_only_for_host_tools(self):
+        specs = {spec.key: spec for spec in load_native_specs(MEGALINTER_DESCRIPTORS)}
+        installer = NativeInstaller()
+        self.assertRegex(
+            installer.pinned_host_version(specs["SWIFT_SWIFTLINT"]), r"^\d+\.\d+"
+        )
+        self.assertIsNone(installer.pinned_host_version(specs["PYTHON_BLACK"]))
+        self.assertIsNone(installer.pinned_host_version(specs["XML_XMLLINT"]))
+
+    def test_different_host_version_is_a_warning(self):
+        with self.assertLogs(level="WARNING") as logs:
+            Megalinter.check_host_linter_version(
+                None, FakeHostLinter("0.63.0"), "0.65.1"
+            )
+        self.assertIn("swiftlint 0.63.0 found on this machine", logs.output[0])
+        self.assertIn("uses 0.65.1", logs.output[0])
+
+    def test_same_or_unknown_host_version_is_silent(self):
+        for version in ("0.65.1", "ERROR"):
+            with self.assertNoLogs(level="WARNING"):
+                Megalinter.check_host_linter_version(
+                    None, FakeHostLinter(version), "0.65.1"
+                )
+        with self.assertNoLogs(level="WARNING"):
+            Megalinter.check_host_linter_version(None, FakeHostLinter("1.0"), None)

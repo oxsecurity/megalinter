@@ -28,6 +28,25 @@ supported_platforms:
   platform:
     - linux/amd64
     - linux/arm64
+native_install:
+  method: npm
+  overrides:
+    # v8r matches its ignore patterns against Windows paths with backslashes, so excluded
+    # directories can not be forwarded in project mode: list_of_files mode only
+    windows/amd64:
+      linter_overrides:
+        supported_cli_lint_modes:
+          - file
+          - list_of_files
+  requires:
+    - runtime: node
+      version: ">=22.0.0"
+  platforms:
+    - linux/amd64
+    - linux/arm64
+    - darwin/amd64
+    - darwin/arm64
+    - windows/amd64
 ide:
   eclipse:
     - name: native support

@@ -735,16 +735,17 @@ def file_is_generated(file_name: str) -> bool:
 
 
 def get_default_rules_location() -> str:
-    default_rules_location = (
-        "/action/lib/.automation"
-        if os.path.isdir("/action/lib/.automation")
-        else os.path.relpath(
-            os.path.relpath(
-                os.path.dirname(os.path.abspath(__file__)) + "/../TEMPLATES"
-            )
-        )
+    if os.path.isdir("/action/lib/.automation"):
+        return "/action/lib/.automation"
+    # Templates bundled in the PyPI package (native mode)
+    bundled_templates = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)), "_templates"
     )
-    return default_rules_location
+    if os.path.isdir(bundled_templates):
+        return bundled_templates
+    return os.path.relpath(
+        os.path.relpath(os.path.dirname(os.path.abspath(__file__)) + "/../TEMPLATES")
+    )
 
 
 def clean_string(stdout, sanitize=True) -> str:
@@ -1254,3 +1255,11 @@ def blue(text):
 
 def cyan(text):
     return f"\033[36m{text}\033[0m"
+
+
+def add_workspace_replacements(workspace: str) -> None:
+    normalized = os.path.abspath(workspace).rstrip("/\\")
+    for separator in ("/", "\\"):
+        prefix = normalized.replace("\\", "/").replace("/", separator) + separator
+        if [prefix, ""] not in LIST_OF_REPLACEMENTS:
+            LIST_OF_REPLACEMENTS.insert(0, [prefix, ""])

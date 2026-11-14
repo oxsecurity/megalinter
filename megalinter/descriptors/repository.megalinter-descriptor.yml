@@ -79,6 +79,17 @@ linters:
           ARG PIP_CHECKOV_VERSION=3.4.0
       pip:
         - checkov==${PIP_CHECKOV_VERSION}
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.9"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -196,6 +207,20 @@ linters:
                      case "$(basename "$tfm_dir")" in "net${keep}".*) ;; *) rm -rf "$tfm_dir" ;; esac; \
                    done; \
                  done
+    native_install:
+      method: dotnet_tool
+      version: "${REPOSITORY_DEVSKIM_VERSION}"
+      packages:
+        - Microsoft.CST.DevSkim.CLI
+      requires:
+        - runtime: dotnet
+          version: ">=8"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -258,6 +283,19 @@ linters:
           ARG REPOSITORY_DUSTILOCK_VERSION
           RUN GOBIN=/usr/bin go install github.com/checkmarx/dustilock@v${REPOSITORY_DUSTILOCK_VERSION}
         - COPY --link --from=dustilock /usr/bin/dustilock /usr/bin/dustilock
+    native_install:
+      method: go
+      version: "${REPOSITORY_DUSTILOCK_VERSION}"
+      packages:
+        - "github.com/checkmarx/dustilock@v${REPOSITORY_DUSTILOCK_VERSION}"
+      requires:
+        - runtime: go
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -291,6 +329,16 @@ linters:
     cli_help_arg_name: "--help"
     examples:
       - "git diff --check"
+    native_install:
+      method: runtime_provided
+      requires:
+        - runtime: git
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -442,6 +490,39 @@ linters:
           ARG REPOSITORY_BETTERLEAKS_VERSION=v1.7.3
         - FROM ghcr.io/betterleaks/betterleaks:${REPOSITORY_BETTERLEAKS_VERSION} AS betterleaks
         - COPY --link --from=betterleaks /usr/bin/betterleaks /usr/bin/
+    native_install:
+      method: binary
+      version: "${REPOSITORY_BETTERLEAKS_VERSION}"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
+      assets:
+        linux/amd64:
+          url: https://github.com/betterleaks/betterleaks/releases/download/{{VERSION}}/betterleaks_{{VERSION_NO_V}}_linux_x64.tar.gz
+          archive: tar.gz
+        linux/arm64:
+          url: https://github.com/betterleaks/betterleaks/releases/download/{{VERSION}}/betterleaks_{{VERSION_NO_V}}_linux_arm64.tar.gz
+          archive: tar.gz
+        darwin/amd64:
+          url: https://github.com/betterleaks/betterleaks/releases/download/{{VERSION}}/betterleaks_{{VERSION_NO_V}}_darwin_x64.tar.gz
+          archive: tar.gz
+        darwin/arm64:
+          url: https://github.com/betterleaks/betterleaks/releases/download/{{VERSION}}/betterleaks_{{VERSION_NO_V}}_darwin_arm64.tar.gz
+          archive: tar.gz
+        windows/amd64:
+          url: https://github.com/betterleaks/betterleaks/releases/download/{{VERSION}}/betterleaks_{{VERSION_NO_V}}_windows_x64.zip
+          archive: zip
+      executables:
+        betterleaks: betterleaks
+      overrides:
+        windows/amd64:
+          executables:
+            betterleaks: betterleaks.exe
+      provenance:
+        github_attestation: betterleaks/betterleaks
     supported_platforms:
       platform:
         - linux/amd64
@@ -542,6 +623,39 @@ linters:
           # renovate: datasource=github-tags depName=anchore/grype
           ARG REPOSITORY_GRYPE_VERSION=0.121.0
         - RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin
+    native_install:
+      method: binary
+      version: "${REPOSITORY_GRYPE_VERSION}"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
+      assets:
+        linux/amd64:
+          url: https://github.com/anchore/grype/releases/download/v{{VERSION}}/grype_{{VERSION}}_linux_amd64.tar.gz
+          archive: tar.gz
+        linux/arm64:
+          url: https://github.com/anchore/grype/releases/download/v{{VERSION}}/grype_{{VERSION}}_linux_arm64.tar.gz
+          archive: tar.gz
+        darwin/amd64:
+          url: https://github.com/anchore/grype/releases/download/v{{VERSION}}/grype_{{VERSION}}_darwin_amd64.tar.gz
+          archive: tar.gz
+        darwin/arm64:
+          url: https://github.com/anchore/grype/releases/download/v{{VERSION}}/grype_{{VERSION}}_darwin_arm64.tar.gz
+          archive: tar.gz
+        windows/amd64:
+          url: https://github.com/anchore/grype/releases/download/v{{VERSION}}/grype_{{VERSION}}_windows_amd64.zip
+          archive: zip
+      executables:
+        grype: grype
+      overrides:
+        windows/amd64:
+          executables:
+            grype: grype.exe
+      provenance:
+        github_attestation: anchore/grype
     supported_platforms:
       platform:
         - linux/amd64
@@ -607,6 +721,45 @@ linters:
               curl --retry 5 --retry-delay 5 -fsSL -o /usr/bin/ls-lint \
                 "https://github.com/loeffel-io/ls-lint/releases/download/v${REPOSITORY_LS_LINT_VERSION}/ls-lint-linux-${ARCH}" && \
               chmod +x /usr/bin/ls-lint
+    native_install:
+      method: binary
+      version: "${REPOSITORY_LS_LINT_VERSION}"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
+      assets:
+        linux/amd64:
+          url: https://github.com/loeffel-io/ls-lint/releases/download/v{{VERSION}}/ls-lint-linux-amd64
+          archive: none
+          name: ls-lint
+        linux/arm64:
+          url: https://github.com/loeffel-io/ls-lint/releases/download/v{{VERSION}}/ls-lint-linux-arm64
+          archive: none
+          name: ls-lint
+        darwin/amd64:
+          url: https://github.com/loeffel-io/ls-lint/releases/download/v{{VERSION}}/ls-lint-darwin-amd64
+          archive: none
+          name: ls-lint
+        darwin/arm64:
+          url: https://github.com/loeffel-io/ls-lint/releases/download/v{{VERSION}}/ls-lint-darwin-arm64
+          archive: none
+          name: ls-lint
+      executables:
+        ls-lint: ls-lint
+      overrides:
+        windows/amd64:
+          assets:
+            windows/amd64:
+              url: https://github.com/loeffel-io/ls-lint/releases/download/v{{VERSION}}/ls-lint-windows-amd64.exe
+              archive: none
+              name: ls-lint.exe
+          executables:
+            ls-lint: ls-lint.exe
+      provenance:
+        checksums_url: https://github.com/loeffel-io/ls-lint/releases/download/v{{VERSION}}/checksums.txt
     supported_platforms:
       platform:
         - linux/amd64
@@ -699,6 +852,49 @@ linters:
         - |-
           RUN apk add --no-cache \
               osv-scanner=${REPOSITORY_OSV_SCANNER_VERSION}
+    native_install:
+      method: binary
+      # renovate: datasource=github-releases depName=google/osv-scanner extractVersion=^v(?<version>.+)$
+      version: "2.7.1"
+      # The official binary exits 0 on --help (the Alpine package used in Docker exits 127)
+      linter_overrides:
+        help_command_return_code: 0
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
+      assets:
+        linux/amd64:
+          url: https://github.com/google/osv-scanner/releases/download/v{{VERSION}}/osv-scanner_linux_amd64
+          archive: none
+          name: osv-scanner
+        linux/arm64:
+          url: https://github.com/google/osv-scanner/releases/download/v{{VERSION}}/osv-scanner_linux_arm64
+          archive: none
+          name: osv-scanner
+        darwin/amd64:
+          url: https://github.com/google/osv-scanner/releases/download/v{{VERSION}}/osv-scanner_darwin_amd64
+          archive: none
+          name: osv-scanner
+        darwin/arm64:
+          url: https://github.com/google/osv-scanner/releases/download/v{{VERSION}}/osv-scanner_darwin_arm64
+          archive: none
+          name: osv-scanner
+      executables:
+        osv-scanner: osv-scanner
+      overrides:
+        windows/amd64:
+          assets:
+            windows/amd64:
+              url: https://github.com/google/osv-scanner/releases/download/v{{VERSION}}/osv-scanner_windows_amd64.exe
+              archive: none
+              name: osv-scanner.exe
+          executables:
+            osv-scanner: osv-scanner.exe
+      provenance:
+        checksums_url: https://github.com/google/osv-scanner/releases/download/v{{VERSION}}/osv-scanner_SHA256SUMS
     supported_platforms:
       platform:
         - linux/amd64
@@ -781,6 +977,17 @@ linters:
         - secretlint@${NPM_SECRETLINT_VERSION}
         - "@secretlint/secretlint-rule-preset-recommend@${NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION}"
         - "@secretlint/secretlint-formatter-sarif@${NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION}"
+    native_install:
+      method: npm
+      requires:
+        - runtime: node
+          version: ">=22"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -865,6 +1072,18 @@ linters:
       - name: REPOSITORY_SEMGREP_RULESETS_TYPE
         description: "MegaLinter semgrep ruleset list preset id . Available values: security"
         default_value: ""
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.10"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/arm64
+        - windows/amd64
+      unsupported:
+        darwin/amd64: "Semgrep publishes no macOS Intel wheel on PyPI and its OCaml core is not built from source. Use Docker."
     supported_platforms:
       platform:
         - linux/amd64
@@ -933,6 +1152,39 @@ linters:
           # renovate: datasource=github-tags depName=anchore/syft
           ARG REPOSITORY_SYFT_VERSION=1.55.0
         - RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOSITORY_SYFT_VERSION}/install.sh | sh -s -- -b /usr/local/bin
+    native_install:
+      method: binary
+      version: "${REPOSITORY_SYFT_VERSION}"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
+      assets:
+        linux/amd64:
+          url: https://github.com/anchore/syft/releases/download/v{{VERSION}}/syft_{{VERSION}}_linux_amd64.tar.gz
+          archive: tar.gz
+        linux/arm64:
+          url: https://github.com/anchore/syft/releases/download/v{{VERSION}}/syft_{{VERSION}}_linux_arm64.tar.gz
+          archive: tar.gz
+        darwin/amd64:
+          url: https://github.com/anchore/syft/releases/download/v{{VERSION}}/syft_{{VERSION}}_darwin_amd64.tar.gz
+          archive: tar.gz
+        darwin/arm64:
+          url: https://github.com/anchore/syft/releases/download/v{{VERSION}}/syft_{{VERSION}}_darwin_arm64.tar.gz
+          archive: tar.gz
+        windows/amd64:
+          url: https://github.com/anchore/syft/releases/download/v{{VERSION}}/syft_{{VERSION}}_windows_amd64.zip
+          archive: zip
+      executables:
+        syft: syft
+      overrides:
+        windows/amd64:
+          executables:
+            syft: syft.exe
+      provenance:
+        github_attestation: anchore/syft
     supported_platforms:
       platform:
         - linux/amd64
@@ -1060,6 +1312,45 @@ linters:
                    [ "${attempt}" -eq 5 ] || sleep $((attempt * 10)); \
                  done \
               && test -f "${HOME}/.cache/trivy/db/trivy.db"
+    native_install:
+      method: binary
+      version: "${REPOSITORY_TRIVY_VERSION}"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
+      assets:
+        linux/amd64:
+          url: https://github.com/aquasecurity/trivy/releases/download/v{{VERSION}}/trivy_{{VERSION}}_Linux-64bit.tar.gz
+          archive: tar.gz
+        linux/arm64:
+          url: https://github.com/aquasecurity/trivy/releases/download/v{{VERSION}}/trivy_{{VERSION}}_Linux-ARM64.tar.gz
+          archive: tar.gz
+        darwin/amd64:
+          url: https://github.com/aquasecurity/trivy/releases/download/v{{VERSION}}/trivy_{{VERSION}}_macOS-64bit.tar.gz
+          archive: tar.gz
+        darwin/arm64:
+          url: https://github.com/aquasecurity/trivy/releases/download/v{{VERSION}}/trivy_{{VERSION}}_macOS-ARM64.tar.gz
+          archive: tar.gz
+        windows/amd64:
+          url: https://github.com/aquasecurity/trivy/releases/download/v{{VERSION}}/trivy_{{VERSION}}_windows-64bit.zip
+          archive: zip
+      executables:
+        trivy: trivy
+      overrides:
+        windows/amd64:
+          executables:
+            trivy: trivy.exe
+      # The aquasecurity organization restricts its GitHub API by IP allow list: attestations can not
+      # be fetched from CI runners, the checksums file is verified with its cosign sigstore bundle
+      provenance:
+        checksums_url: "https://github.com/aquasecurity/trivy/releases/download/v{{VERSION}}/trivy_{{VERSION}}_checksums.txt"
+        cosign:
+          bundle_url: "https://github.com/aquasecurity/trivy/releases/download/v{{VERSION}}/trivy_{{VERSION}}_checksums.txt.sigstore.json"
+          identity_regexp: '^https://github\.com/aquasecurity/trivy/\.github/workflows/.+@refs/tags/v{{VERSION}}$'
+          issuer: https://token.actions.githubusercontent.com
     supported_platforms:
       platform:
         - linux/amd64
@@ -1164,6 +1455,45 @@ linters:
                    [ "${attempt}" -eq 5 ] || sleep $((attempt * 10)); \
                  done \
               && test -f "${HOME}/.cache/trivy/db/trivy.db"
+    native_install:
+      method: binary
+      version: "${REPOSITORY_TRIVY_SBOM_VERSION}"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
+      assets:
+        linux/amd64:
+          url: https://github.com/aquasecurity/trivy/releases/download/v{{VERSION}}/trivy_{{VERSION}}_Linux-64bit.tar.gz
+          archive: tar.gz
+        linux/arm64:
+          url: https://github.com/aquasecurity/trivy/releases/download/v{{VERSION}}/trivy_{{VERSION}}_Linux-ARM64.tar.gz
+          archive: tar.gz
+        darwin/amd64:
+          url: https://github.com/aquasecurity/trivy/releases/download/v{{VERSION}}/trivy_{{VERSION}}_macOS-64bit.tar.gz
+          archive: tar.gz
+        darwin/arm64:
+          url: https://github.com/aquasecurity/trivy/releases/download/v{{VERSION}}/trivy_{{VERSION}}_macOS-ARM64.tar.gz
+          archive: tar.gz
+        windows/amd64:
+          url: https://github.com/aquasecurity/trivy/releases/download/v{{VERSION}}/trivy_{{VERSION}}_windows-64bit.zip
+          archive: zip
+      executables:
+        trivy: trivy
+      overrides:
+        windows/amd64:
+          executables:
+            trivy: trivy.exe
+      # The aquasecurity organization restricts its GitHub API by IP allow list: attestations can not
+      # be fetched from CI runners, the checksums file is verified with its cosign sigstore bundle
+      provenance:
+        checksums_url: "https://github.com/aquasecurity/trivy/releases/download/v{{VERSION}}/trivy_{{VERSION}}_checksums.txt"
+        cosign:
+          bundle_url: "https://github.com/aquasecurity/trivy/releases/download/v{{VERSION}}/trivy_{{VERSION}}_checksums.txt.sigstore.json"
+          identity_regexp: '^https://github\.com/aquasecurity/trivy/\.github/workflows/.+@refs/tags/v{{VERSION}}$'
+          issuer: https://token.actions.githubusercontent.com
     supported_platforms:
       platform:
         - linux/amd64
@@ -1227,6 +1557,44 @@ linters:
           ARG REPOSITORY_TRUFFLEHOG_VERSION=3.99.7
         - FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
         - COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
+    native_install:
+      method: binary
+      version: "${REPOSITORY_TRUFFLEHOG_VERSION}"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
+      assets:
+        linux/amd64:
+          url: https://github.com/trufflesecurity/trufflehog/releases/download/v{{VERSION}}/trufflehog_{{VERSION}}_linux_amd64.tar.gz
+          archive: tar.gz
+        linux/arm64:
+          url: https://github.com/trufflesecurity/trufflehog/releases/download/v{{VERSION}}/trufflehog_{{VERSION}}_linux_arm64.tar.gz
+          archive: tar.gz
+        darwin/amd64:
+          url: https://github.com/trufflesecurity/trufflehog/releases/download/v{{VERSION}}/trufflehog_{{VERSION}}_darwin_amd64.tar.gz
+          archive: tar.gz
+        darwin/arm64:
+          url: https://github.com/trufflesecurity/trufflehog/releases/download/v{{VERSION}}/trufflehog_{{VERSION}}_darwin_arm64.tar.gz
+          archive: tar.gz
+        windows/amd64:
+          url: https://github.com/trufflesecurity/trufflehog/releases/download/v{{VERSION}}/trufflehog_{{VERSION}}_windows_amd64.tar.gz
+          archive: tar.gz
+      executables:
+        trufflehog: trufflehog
+      overrides:
+        windows/amd64:
+          executables:
+            trufflehog: trufflehog.exe
+      provenance:
+        cosign:
+          identity: "https://github.com/trufflesecurity/trufflehog/.github/workflows/release.yml@refs/tags/v{{VERSION}}"
+          issuer: https://token.actions.githubusercontent.com
+          signature_url: https://github.com/trufflesecurity/trufflehog/releases/download/v{{VERSION}}/trufflehog_{{VERSION}}_checksums.txt.sig
+          certificate_url: https://github.com/trufflesecurity/trufflehog/releases/download/v{{VERSION}}/trufflehog_{{VERSION}}_checksums.txt.pem
+        checksums_url: https://github.com/trufflesecurity/trufflehog/releases/download/v{{VERSION}}/trufflehog_{{VERSION}}_checksums.txt
     supported_platforms:
       platform:
         - linux/amd64
@@ -1313,6 +1681,39 @@ linters:
           ARG REPOSITORY_KINGFISHER_VERSION=2.14.0
         - |
           RUN curl --silent --location https://raw.githubusercontent.com/mongodb/kingfisher/main/scripts/install-kingfisher.sh | bash -s -- /usr/local/bin --tag "v${REPOSITORY_KINGFISHER_VERSION}"
+    native_install:
+      method: binary
+      version: "${REPOSITORY_KINGFISHER_VERSION}"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
+      assets:
+        linux/amd64:
+          url: https://github.com/mongodb/kingfisher/releases/download/v{{VERSION}}/kingfisher-linux-x64.tgz
+          archive: tar.gz
+        linux/arm64:
+          url: https://github.com/mongodb/kingfisher/releases/download/v{{VERSION}}/kingfisher-linux-arm64.tgz
+          archive: tar.gz
+        darwin/amd64:
+          url: https://github.com/mongodb/kingfisher/releases/download/v{{VERSION}}/kingfisher-darwin-x64.tgz
+          archive: tar.gz
+        darwin/arm64:
+          url: https://github.com/mongodb/kingfisher/releases/download/v{{VERSION}}/kingfisher-darwin-arm64.tgz
+          archive: tar.gz
+        windows/amd64:
+          url: https://github.com/mongodb/kingfisher/releases/download/v{{VERSION}}/kingfisher-windows-x64.zip
+          archive: zip
+      executables:
+        kingfisher: kingfisher
+      overrides:
+        windows/amd64:
+          executables:
+            kingfisher: kingfisher.exe
+      provenance:
+        github_attestation: mongodb/kingfisher
     supported_platforms:
       platform:
         - linux/amd64

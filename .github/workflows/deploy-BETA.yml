@@ -65,6 +65,30 @@ jobs:
               },
             });
 
+  # Native mode: pre-release of the megalinter Python package, like mega-linter-runner (manual approval)
+  publish_pypi:
+    name: Publish megalinter to PyPI (beta)
+    if: github.repository == 'oxsecurity/megalinter' && !contains(github.event.head_commit.message, 'skip deploy') && !contains(github.event.head_commit.message, 'Release MegaLinter v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: write
+    steps:
+      - name: Trigger deploy-megalinter-pypi workflow
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: ".github/workflows/deploy-megalinter-pypi.yml",
+              ref: "main",
+              inputs: {
+                channel: "beta"
+              },
+            });
+
   build:
     # Name the Job
     name: Deploy Docker Image - BETA

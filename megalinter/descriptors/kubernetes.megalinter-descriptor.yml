@@ -94,6 +94,39 @@ linters:
           ARG KUBERNETES_KUBECONFORM_VERSION=v0.8.0-alpine
         - FROM ghcr.io/yannh/kubeconform:${KUBERNETES_KUBECONFORM_VERSION} AS kubeconform
         - COPY --link --from=kubeconform /kubeconform /usr/bin/
+    native_install:
+      method: binary
+      # renovate: datasource=github-releases depName=yannh/kubeconform extractVersion=^v(?<version>.+)$
+      version: "0.8.0"
+      assets:
+        linux/amd64:
+          url: https://github.com/yannh/kubeconform/releases/download/v{{VERSION}}/kubeconform-linux-amd64.tar.gz
+          archive: tar.gz
+        linux/arm64:
+          url: https://github.com/yannh/kubeconform/releases/download/v{{VERSION}}/kubeconform-linux-arm64.tar.gz
+          archive: tar.gz
+        darwin/amd64:
+          url: https://github.com/yannh/kubeconform/releases/download/v{{VERSION}}/kubeconform-darwin-amd64.tar.gz
+          archive: tar.gz
+        darwin/arm64:
+          url: https://github.com/yannh/kubeconform/releases/download/v{{VERSION}}/kubeconform-darwin-arm64.tar.gz
+          archive: tar.gz
+        windows/amd64:
+          url: https://github.com/yannh/kubeconform/releases/download/v{{VERSION}}/kubeconform-windows-amd64.zip
+          archive: zip
+      provenance:
+        checksums_url: https://github.com/yannh/kubeconform/releases/download/v{{VERSION}}/CHECKSUMS
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
+      linter_overrides:
+        cli_lint_extra_args:
+          - -summary
+        # Both path separators (Windows)
+        cli_lint_mode_project_exclude_arg_value: '(^|[/\\]){{DIR}}[/\\]'
     supported_platforms:
       platform:
         - linux/amd64
@@ -157,6 +190,43 @@ linters:
     install:
       apk:
         - helm
+    native_install:
+      method: binary
+      # renovate: datasource=github-releases depName=helm/helm extractVersion=^v(?<version>.+)$
+      version: "4.3.1"
+      # helm 4 requires the chart path (helm 3 defaulted to the current folder)
+      linter_overrides:
+        cli_lint_mode_project_extra_args_after:
+          - "."
+      assets:
+        linux/amd64:
+          url: https://get.helm.sh/helm-v{{VERSION}}-linux-amd64.tar.gz
+          archive: tar.gz
+          strip_components: 1
+        linux/arm64:
+          url: https://get.helm.sh/helm-v{{VERSION}}-linux-arm64.tar.gz
+          archive: tar.gz
+          strip_components: 1
+        darwin/amd64:
+          url: https://get.helm.sh/helm-v{{VERSION}}-darwin-amd64.tar.gz
+          archive: tar.gz
+          strip_components: 1
+        darwin/arm64:
+          url: https://get.helm.sh/helm-v{{VERSION}}-darwin-arm64.tar.gz
+          archive: tar.gz
+          strip_components: 1
+        windows/amd64:
+          url: https://get.helm.sh/helm-v{{VERSION}}-windows-amd64.zip
+          archive: zip
+          strip_components: 1
+      provenance:
+        checksums_url: https://get.helm.sh/{{ASSET_NAME}}.sha256sum
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -228,6 +298,33 @@ linters:
                 "https://github.com/kubescape/kubescape/releases/download/v${KUBERNETES_KUBESCAPE_VERSION}/kubescape_${KUBERNETES_KUBESCAPE_VERSION}_linux_${ARCH}.apk" && \
               apk add --no-cache --allow-untrusted /tmp/kubescape.apk && \
               rm /tmp/kubescape.apk
+    native_install:
+      method: binary
+      version: "${KUBERNETES_KUBESCAPE_VERSION}"
+      assets:
+        linux/amd64:
+          url: https://github.com/kubescape/kubescape/releases/download/v{{VERSION}}/kubescape_{{VERSION}}_linux_amd64.tar.gz
+          archive: tar.gz
+        linux/arm64:
+          url: https://github.com/kubescape/kubescape/releases/download/v{{VERSION}}/kubescape_{{VERSION}}_linux_arm64.tar.gz
+          archive: tar.gz
+        darwin/amd64:
+          url: https://github.com/kubescape/kubescape/releases/download/v{{VERSION}}/kubescape_{{VERSION}}_darwin_amd64.tar.gz
+          archive: tar.gz
+        darwin/arm64:
+          url: https://github.com/kubescape/kubescape/releases/download/v{{VERSION}}/kubescape_{{VERSION}}_darwin_arm64.tar.gz
+          archive: tar.gz
+        windows/amd64:
+          url: https://github.com/kubescape/kubescape/releases/download/v{{VERSION}}/kubescape_{{VERSION}}_windows_amd64.tar.gz
+          archive: tar.gz
+      provenance:
+        github_attestation: kubescape/kubescape
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64

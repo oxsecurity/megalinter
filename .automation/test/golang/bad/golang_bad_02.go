@@ -1,3 +1,5 @@
-if len(in) == 0 {
-	return "", fmt.Errorf("Input is empty")
+package main
+
+func unusedHelper() int {
+	return 1
 }

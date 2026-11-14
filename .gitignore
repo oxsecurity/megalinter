@@ -205,3 +205,7 @@ pyrightconfig.json
 
 # Salesforce CLI files
 .sf/
+
+# Generated when publishing the megalinter package to PyPI (native mode)
+megalinter/_templates/
+megalinter/_core-requirements.lock
