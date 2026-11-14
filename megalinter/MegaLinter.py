@@ -507,6 +507,16 @@ class Megalinter:
         )
         return process_number
 
+    # Same as a pool worker (run_linters): the linter pre/post commands and the console
+    # reports are handled by the caller, as for a parallel run
+    def process_linters_group_in_process(self, linters):
+        for linter in linters:
+            linter.run(
+                run_commands_before_linters=False,
+                run_commands_after_linters=False,
+                skip_console_reporter=True,
+            )
+
     def process_linters_parallel(self, active_linters, linters_do_fixes):
         initial_groups = []
         follower_groups = {}
@@ -541,8 +551,18 @@ class Megalinter:
             for linter in active_linters:
                 initial_groups += [[linter]]
         initial_groups = linter_factory.sort_linters_groups_by_speed(initial_groups)
-        # Execute linters in asynchronous pool to improve overall performances
-        process_number = self.get_parallel_process_number()
+        group_count = len(initial_groups) + sum(
+            len(groups) for groups in follower_groups.values()
+        )
+        # A single group (e.g. the fixers of one language) runs in this process: each
+        # worker process imports MegaLinter on start (about a second with the "spawn"
+        # start method of Windows and macOS), more than a pool can save for one group
+        if group_count == 1:
+            self.process_linters_group_in_process(initial_groups[0])
+            return
+        # Execute linters in asynchronous pool to improve overall performances.
+        # Never more workers than groups: an idle worker still costs its start
+        process_number = min(self.get_parallel_process_number(), group_count)
         # Tunnel log records of worker processes through a multiprocessing queue,
         # so they are emitted by the initial handlers in the main process without
         # being garbled (stdlib equivalent of the former multiprocessing_logging dep)
@@ -555,6 +575,11 @@ class Megalinter:
         )
         root_logger.handlers = [QueueHandler(log_queue)]
         log_queue_listener.start()
+        # With "forkserver" (the default start method on Linux since Python 3.14, Docker
+        # images included), the server imports MegaLinter once and every worker is forked
+        # from it, instead of each worker importing it again (about a second each)
+        if mp.get_start_method() == "forkserver":
+            mp.set_forkserver_preload(["megalinter"])
         pool = mp.Pool(
             process_number,
             initializer=init_worker,
