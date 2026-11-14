@@ -15788,6 +15788,8 @@
 <ul>
 <li><strong>Test native mode</strong>: installs every linter natively, then runs the usual linter tests against the native installs: on Linux x86-64 for pull requests and pushes to main, on the 5 native platforms (Linux x86-64 and ARM64, macOS Intel and Apple Silicon, Windows) nightly, on manual runs and for pull requests labeled <code>native-full-matrix</code>. <strong>Native locks</strong> regenerates the install locks after descriptor changes. <strong>Deploy MegaLinter to PyPI</strong> publishes the package with Trusted Publishing and attestations, like mega-linter-runner: beta on each push to main, release on each GitHub release, both approved in the <code>release-runner</code> environment</li>
 <li>Renovate also bumps the pinned versions of native installs (<code>native_install</code> in descriptors, runtimes in <code>native-runtimes.yml</code>)</li>
+<li>The npm (mega-linter-runner) and PyPI (megalinter) publish jobs end only once the new version can be downloaded from the registry, with its dist-tag and provenance attestation: npm processes uploads for several minutes after accepting them</li>
+<li>The PyPI package includes the default configurations and the core dependencies lock generated at publish time (ignored by git, so skipped by hatchling)</li>
 <li>Dependency updates wait longer: Renovate (<code>minimumReleaseAge</code>) and Dependabot (<code>cooldown</code>) now propose an upgrade only once the release is <strong>14 days old</strong> (was 7). Security fixes are not delayed and still open immediately</li>
 </ul>
 </li>
