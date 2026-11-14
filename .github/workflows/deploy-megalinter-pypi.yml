@@ -112,7 +112,7 @@ jobs:
     name: Publish to PyPI (${{ inputs.channel }})
     needs: build
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 45
     # Same protected environment as mega-linter-runner: each publish is approved manually
     environment:
       name: release-runner
@@ -132,3 +132,33 @@ jobs:
         with:
           packages-dir: dist/
           attestations: true
+
+      # The job only ends once the wheel can be downloaded from PyPI, identical to the one built here,
+      # with the attestation that mega-linter-runner checks before installing it
+      - name: Wait until the version is available on PyPI
+        timeout-minutes: 35
+        shell: bash
+        env:
+          VERSION: ${{ needs.build.outputs.version }}
+        run: |
+          WHEEL=$(ls dist/*.whl)
+          FILENAME=$(basename "${WHEEL}")
+          SHA256=$(sha256sum "${WHEEL}" | cut -d' ' -f1)
+          for attempt in $(seq 1 60); do
+            PYPI_SHA256=$(curl -sf -H "Cache-Control: no-cache" "https://pypi.org/pypi/megalinter/${VERSION}/json?nocache=${attempt}" \
+              | jq -r --arg file "${FILENAME}" '.urls[] | select(.filename == $file) | .digests.sha256' || true)
+            if [ "${PYPI_SHA256}" = "${SHA256}" ] \
+              && curl -sfIL "https://files.pythonhosted.org/packages/py3/m/megalinter/${FILENAME}" > /dev/null \
+              && curl -sf "https://pypi.org/integrity/megalinter/${VERSION}/${FILENAME}/provenance" > /dev/null; then
+              echo "megalinter ${VERSION} is available on PyPI (${FILENAME}, sha256 ${SHA256}) with its attestation"
+              exit 0
+            fi
+            if [ -n "${PYPI_SHA256}" ] && [ "${PYPI_SHA256}" != "${SHA256}" ]; then
+              echo "::error::PyPI serves ${FILENAME} with sha256 ${PYPI_SHA256}, the published wheel is ${SHA256}"
+              exit 1
+            fi
+            echo "Attempt ${attempt}/60: megalinter ${VERSION} not available on PyPI yet"
+            sleep 30
+          done
+          echo "::error::megalinter ${VERSION} was published but is still not available on PyPI after 30 minutes"
+          exit 1
