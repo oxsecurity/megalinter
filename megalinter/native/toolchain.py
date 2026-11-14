@@ -50,6 +50,12 @@ ALLOWED_ENV_NAMES = {
     "CURL_CA_BUNDLE",
     "NODE_EXTRA_CA_CERTS",
     "GIT_SSL_CAINFO",
+    # Trust settings of the package managers behind proxies inspecting HTTPS (not secrets)
+    "UV_NATIVE_TLS",
+    "UV_SYSTEM_CERTS",
+    "PIP_CERT",
+    "NPM_CONFIG_CAFILE",
+    "NODE_USE_SYSTEM_CA",
     "FORCE_COLOR",
     "NO_COLOR",
     "CI",

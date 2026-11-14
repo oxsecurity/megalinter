@@ -32,9 +32,11 @@ Requirements:
 2. Install them, then run:
 
     ```shell
-    npx mega-linter-runner --install-linters --release beta
-    npx mega-linter-runner --native --release beta
+    npx mega-linter-runner@beta --install-linters --release beta
+    npx mega-linter-runner@beta --native --release beta
     ```
+
+While native mode is in beta, use the beta of `mega-linter-runner` (`@beta`): released versions older than native mode do not know these options.
 
 The linter keys are the ones used everywhere else in MegaLinter (`ENABLE_LINTERS`, `DISABLE_LINTERS`...). Each [linter page](supported-linters.md) has a "native mode" section with its key and the platforms it supports.
 
@@ -78,6 +80,17 @@ Some linters need a runtime (Node.js, Java, .NET, Go, PowerShell, Dart, PHP...).
 
 Ruby, R and Rust have no portable, verifiable download: install them with your package manager.
 
+## Corporate proxies
+
+Downloads go through `HTTP_PROXY` / `HTTPS_PROXY`. When your network or antivirus inspects HTTPS connections (uv fails with `invalid peer certificate: UnknownIssuer`), tell the installers to trust the certificates of your system:
+
+```shell
+export UV_NATIVE_TLS=1             # uv (MegaLinter itself and Python linters)
+export NODE_USE_SYSTEM_CA=1        # Node.js linters
+```
+
+`SSL_CERT_FILE`, `REQUESTS_CA_BUNDLE`, `NODE_EXTRA_CA_CERTS`, `PIP_CERT` and `NPM_CONFIG_CAFILE` are given to the installers too.
+
 ## Security model
 
 - Commands declared by the analyzed repository (`PRE_COMMANDS`, `POST_COMMANDS`), `PLUGINS` and remote `EXTENDS` are **ignored** in native mode, because they would run on your machine with your privileges. Use `--trust-repo-commands` (or `NATIVE_TRUST_REPO_COMMANDS=true` in the environment, never in `.mega-linter.yml`) only for a repository you fully trust.
@@ -116,7 +129,7 @@ repos:
 ```
 
 - Only the linters of `NATIVE_LINTERS` run, on the files of the commit, and their fixes are applied
-- Install them once with `npx mega-linter-runner --install-linters`: a hook can not ask whether to install a missing language runtime
+- Install them once with `npx mega-linter-runner@beta --install-linters --release beta`: a hook can not ask whether to install a missing language runtime
 - `megalinter-incremental` and `megalinter-full` are the same hooks with Docker
 
 ## Configuration

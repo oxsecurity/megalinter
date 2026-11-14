@@ -19,6 +19,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Commands, plugins and remote `EXTENDS` declared by the analyzed repository are **ignored** unless you pass `--trust-repo-commands`
     - Docker remains the default and the recommended mode, especially for code you do not fully trust
     - New **pre-commit hooks** `megalinter-native-incremental` and `megalinter-native-full` lint the files of each commit without Docker
+    - Works behind **proxies inspecting HTTPS**: set `UV_NATIVE_TLS=1` (and `NODE_USE_SYSTEM_CA=1`) to trust the certificates of your system, see [Corporate proxies](https://megalinter.io/latest/install-native/#corporate-proxies)
     - Linters installed by MegaLinter always run the version of its Docker image. For **tools provided by your machine** (SwiftLint, Raku, scalafix...), a warning shows when their version differs from the Docker image
     - New `megalinter` command on PyPI: `run`, `install-linters`, `list-linters`, `doctor`
   - **Lighter Docker images**: the main image download shrinks by **21%**, with the same linters and the same behavior (#9497)

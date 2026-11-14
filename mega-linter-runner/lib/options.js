@@ -169,9 +169,10 @@ export const optionsDefinition = optionator.default({
       option: "platform",
       alias: "z",
       type: "String",
-      default: "linux/amd64",
+      // No default value here: native mode rejects this Docker-only option when it is set.
+      // Docker runs use linux/amd64 when it is not given
       description:
-        "Container image platform forwarded to `docker --platform`.\n" +
+        "Container image platform forwarded to `docker --platform` (default: linux/amd64).\n" +
         `Allowed values: ${KNOWN_PLATFORMS.join(", ")} (linux/arm64 support is partial — see docs).`,
       example: KNOWN_PLATFORMS,
     },

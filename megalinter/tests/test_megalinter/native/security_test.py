@@ -161,6 +161,12 @@ class SelectionTest(unittest.TestCase):
         with self.assertRaises(NativeError):
             selection.select_native_linters(None, self.active, self.known, ["NOPE"])
 
+    def test_removed_linter_names_its_replacement(self):
+        with self.assertRaisesRegex(NativeError, "REPOSITORY_BETTERLEAKS"):
+            selection.select_native_linters(
+                None, self.active, self.known, ["REPOSITORY_GITLEAKS"]
+            )
+
     def test_all_selects_everything_and_warns(self):
         with self.assertLogs(level="WARNING") as logs:
             result = selection.select_native_linters(

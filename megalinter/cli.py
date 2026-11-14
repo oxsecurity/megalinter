@@ -181,6 +181,10 @@ def command_list_linters(arguments):
     installer = NativeInstaller()
     rows = []
     for spec in load_native_specs():
+        if spec.linter.get("disabled") is True:
+            reason = spec.linter.get("disabled_reason", "disabled in MegaLinter")
+            rows.append({"linter": spec.key, "status": "disabled", "reason": reason})
+            continue
         status, reason = installer.status(spec)
         row = {"linter": spec.key, "status": status, "reason": reason}
         if resolve_native_install(spec)["method"] == "runtime_provided":
@@ -231,6 +235,9 @@ def command_doctor(arguments):
         )
     stale = 0
     for spec in load_native_specs():
+        # Disabled linters have no lock: they can not be installed at all
+        if spec.linter.get("disabled") is True:
+            continue
         try:
             from_lock = os.path.isfile(lock_path(spec.key))
             if not from_lock:
@@ -266,6 +273,11 @@ COMMANDS = {
 
 
 def main(argv=None):
+    # Redirected output (pre-commit, CI logs) uses the legacy code page on Windows: messages of
+    # tools with other characters (uv errors...) made logging fail instead of showing them
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure") and not stream.isatty():
+            stream.reconfigure(encoding="utf-8", errors="backslashreplace")
     logging.basicConfig(level=logging.INFO, format="%(message)s", stream=sys.stdout)
     arguments = build_parser().parse_args(argv)
     try:

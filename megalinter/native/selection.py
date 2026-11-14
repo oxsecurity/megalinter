@@ -2,6 +2,7 @@ import logging
 
 from megalinter import config
 from megalinter.native.context import NativeError
+from megalinter.removed_linters import REMOVED_LINTERS, REMOVED_LINTERS_DOC_URL
 
 ALL_KEYWORD = "all"
 ALL_WARNING = (
@@ -27,6 +28,26 @@ class NativeSelection:
         self.wants_all = wants_all
 
 
+# Removed linters are named with their replacement, as in the rest of MegaLinter
+def unknown_linters_message(unknown):
+    descriptions = []
+    for key in unknown:
+        removed = REMOVED_LINTERS.get(key)
+        if removed is None:
+            descriptions.append(key)
+            continue
+        replacement = removed.get("replacement")
+        descriptions.append(
+            f"{key} (removed in {removed['removed_in']}"
+            + (f", use {replacement} instead" if replacement else "")
+            + ")"
+        )
+    message = "Unknown linter(s) in NATIVE_LINTERS: " + ", ".join(descriptions)
+    if any(key in REMOVED_LINTERS for key in unknown):
+        message += f". See {REMOVED_LINTERS_DOC_URL}"
+    return message
+
+
 def configured_native_linters(request_id):
     return [
         str(item).strip()
@@ -45,7 +66,7 @@ def select_native_linters(
     listed = [item for item in configured if item.lower() != ALL_KEYWORD]
     unknown = sorted(set(listed) - set(known_linter_keys))
     if unknown:
-        raise NativeError("Unknown linter(s) in NATIVE_LINTERS: " + ", ".join(unknown))
+        raise NativeError(unknown_linters_message(unknown))
     if wants_all:
         logging.warning(ALL_WARNING)
         return NativeSelection(list(active_linters), [], [], True)
