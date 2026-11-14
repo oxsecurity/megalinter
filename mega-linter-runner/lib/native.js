@@ -49,14 +49,39 @@ const UV_INSTALL_HELP = {
 };
 
 export class NativeRunner {
-  constructor({ spawnSyncFn, fetchFn, whichFn, home } = {}) {
+  constructor({ spawnSyncFn, fetchFn, whichFn, home, platform, arch } = {}) {
     this.spawnSyncFn = spawnSyncFn || spawnSync;
     this.fetchFn = fetchFn || globalThis.fetch;
     this.whichFn = whichFn || which;
+    this.platform = platform || process.platform;
+    this.arch = arch || process.arch;
     this.home =
       home ||
       process.env.MEGALINTER_HOME ||
       path.join(os.homedir(), ".megalinter");
+  }
+
+  // cryptography, needed to verify the attestation of the megalinter package (sigstore) and
+  // by MegaLinter itself, publishes no build for Intel Macs since version 49, and the older
+  // versions have known vulnerabilities in certificate verification. Node.js reports x64 on
+  // an Apple Silicon Mac when it runs under Rosetta: the hardware is asked instead
+  assertSupportedPlatform() {
+    if (this.platform !== "darwin" || this.arch !== "x64") {
+      return;
+    }
+    const appleSilicon = this.spawnSyncFn(
+      "sysctl",
+      ["-n", "hw.optional.arm64"],
+      {
+        encoding: "utf8",
+      },
+    );
+    if (String(appleSilicon.stdout || "").trim() === "1") {
+      return;
+    }
+    throw new Error(
+      "Native mode is not available on Intel Macs: cryptography, used to verify the MegaLinter package and by MegaLinter itself, no longer publishes builds for them. Use Docker (npx mega-linter-runner without --native).",
+    );
   }
 
   assertSupportedOptions(options) {
@@ -354,6 +379,7 @@ export class NativeRunner {
 
   async run(options) {
     this.assertSupportedOptions(options);
+    this.assertSupportedPlatform();
     const uv = await this.findUv();
     const binDir = await this.ensureCore(options.release, uv);
     const executable = path.join(

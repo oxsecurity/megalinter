@@ -78,6 +78,36 @@ describe("mega-linter-runner native mode", () => {
       assert.throws(() => runner.assertSupportedOptions(docker), /--platform/);
     });
 
+    it("refuses Intel Macs, not Apple Silicon under Rosetta", () => {
+      const sysctl = (answer) => () => ({ status: 0, stdout: answer });
+      const intel = makeRunner(async () => {}, {
+        platform: "darwin",
+        arch: "x64",
+        spawnSyncFn: () => ({ status: 1, stdout: "" }),
+      });
+      assert.throws(() => intel.assertSupportedPlatform(), /Intel Macs/);
+      const rosetta = makeRunner(async () => {}, {
+        platform: "darwin",
+        arch: "x64",
+        spawnSyncFn: sysctl("1\n"),
+      });
+      assert.doesNotThrow(() => rosetta.assertSupportedPlatform());
+      for (const [platform, arch] of [
+        ["darwin", "arm64"],
+        ["linux", "x64"],
+        ["win32", "x64"],
+      ]) {
+        const runner = makeRunner(async () => {}, {
+          platform,
+          arch,
+          spawnSyncFn: () => {
+            throw new Error("sysctl is only asked on Intel macOS");
+          },
+        });
+        assert.doesNotThrow(() => runner.assertSupportedPlatform());
+      }
+    });
+
     it("rejects an unknown runtime policy", () => {
       const runner = makeRunner(async () => {});
       assert.throws(
