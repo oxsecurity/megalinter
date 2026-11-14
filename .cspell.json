@@ -1921,6 +1921,8 @@
         "backslashreplace",
         "machdep",
         "maxrss",
+        "libyaml",
+        "getpid",
         "SYSTEMROOT",
         "taskkill",
         "temurin",

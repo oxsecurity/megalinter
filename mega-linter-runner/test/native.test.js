@@ -220,6 +220,58 @@ describe("mega-linter-runner native mode", () => {
       await assert.rejects(runner.resolveVersion("v10"), /--release beta/);
     });
 
+    function installCore(runner, version) {
+      const coreDir = path.join(runner.home, "core", version);
+      fs.mkdirSync(coreDir, { recursive: true });
+      fs.writeFileSync(path.join(coreDir, ".ok"), "sha256");
+    }
+
+    it("uses an installed exact version without network access", async () => {
+      const runner = makeRunner(async () => {
+        throw new Error("no network expected");
+      });
+      installCore(runner, "10.2.0.post0.dev20261101000000");
+      assert.strictEqual(
+        await runner.resolveCoreVersion("10.2.0.post0.dev20261101000000"),
+        "10.2.0.post0.dev20261101000000",
+      );
+    });
+
+    it("asks PyPI for the latest beta when it is reachable", async () => {
+      const runner = makeRunner(async () => jsonResponse(project(releases)));
+      installCore(runner, "10.2.0.post0.dev20261101000000");
+      assert.strictEqual(
+        await runner.resolveCoreVersion("beta"),
+        "10.2.0.post0.dev20261110000000",
+      );
+    });
+
+    it("keeps the most recent installed beta when PyPI is unreachable", async () => {
+      const runner = makeRunner(async () => {
+        throw new TypeError("fetch failed");
+      });
+      installCore(runner, "10.2.0.post0.dev20261101000000");
+      installCore(runner, "10.2.0.post0.dev20261110000000");
+      fs.mkdirSync(
+        path.join(runner.home, "core", "10.2.0.post0.dev20261111000000"),
+      );
+      assert.strictEqual(
+        await runner.resolveCoreVersion("beta"),
+        "10.2.0.post0.dev20261110000000",
+      );
+    });
+
+    it("fails when PyPI is unreachable and nothing is installed", async () => {
+      const runner = makeRunner(async () => {
+        throw new TypeError("fetch failed");
+      });
+      await assert.rejects(runner.resolveCoreVersion("beta"), /fetch failed/);
+      await assert.rejects(
+        runner.resolveCoreVersion("10.2.0.post0.dev20261101000000"),
+        /fetch failed/,
+      );
+    });
+
     it("fails clearly when no beta was published", async () => {
       const runner = makeRunner(async () => jsonResponse(project({})));
       await assert.rejects(

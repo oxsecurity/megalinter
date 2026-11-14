@@ -1600,6 +1600,10 @@ class Linter:
             if prebuilt_version is not None:
                 self.linter_version_cache = prebuilt_version
                 return self.linter_version_cache
+            native_version = self.read_native_version_cache()
+            if native_version is not None:
+                self.linter_version_cache = native_version
+                return self.linter_version_cache
         version_output = self.get_linter_version_output()
         reg = self.version_extract_regex
         if isinstance(reg, str):
@@ -1607,6 +1611,7 @@ class Linter:
         m = reg.search(version_output)
         if m:
             self.linter_version_cache = ".".join(m.group().split())
+            self.write_native_version_cache(self.linter_version_cache)
         elif self.native_toolchain is not None and self.native_toolchain.version:
             # Native mode: some release builds report no version (phplint: dev-main)
             self.linter_version_cache = self.native_toolchain.version
@@ -1616,6 +1621,60 @@ class Linter:
             )
             self.linter_version_cache = "ERROR"
         return self.linter_version_cache
+
+    # Native mode: a linter installed by MegaLinter never changes inside its install folder
+    # (one folder per resolved install), so its version is read once and kept there, like
+    # the versions collected when Docker images are built. Tools provided by the host can be
+    # upgraded at any time: never cached. The version command and regex are part of the key
+    def native_version_cache_file(self):
+        toolchain = self.native_toolchain
+        if toolchain is None or toolchain.install_dir is None or toolchain.host_tool:
+            return None
+        return os.path.join(toolchain.install_dir, ".megalinter-version.json")
+
+    def native_version_cache_key(self):
+        reg = self.version_extract_regex
+        command = self.build_version_command()
+        # The program actually called (pwsh reports its own version for PSScriptAnalyzer):
+        # replacing or upgrading it invalidates the cache
+        executable = shutil.which(command[0], path=self.native_search_path())
+        return {
+            "command": command,
+            "regex": reg if isinstance(reg, str) else reg.pattern,
+            "executable": executable,
+            "executable_mtime": (
+                os.path.getmtime(executable) if executable is not None else None
+            ),
+        }
+
+    def read_native_version_cache(self):
+        cache_file = self.native_version_cache_file()
+        if cache_file is None or not os.path.isfile(cache_file):
+            return None
+        try:
+            with open(cache_file, "r", encoding="utf-8") as f:
+                cached = json.load(f)
+        except (OSError, ValueError):
+            return None
+        key = self.native_version_cache_key()
+        if key["executable"] is None or cached.get("key") != key:
+            return None
+        return cached.get("version")
+
+    def write_native_version_cache(self, version):
+        cache_file = self.native_version_cache_file()
+        if cache_file is None:
+            return
+        # Written then renamed: linters of a run can be processed by several workers
+        temp_file = f"{cache_file}.{os.getpid()}.tmp"
+        try:
+            with open(temp_file, "w", encoding="utf-8") as f:
+                json.dump(
+                    {"key": self.native_version_cache_key(), "version": version}, f
+                )
+            os.replace(temp_file, cache_file)
+        except OSError as e:
+            logging.debug(f"[native] Unable to cache the version of {self.name}: {e}")
 
     # Returns the version of the associated linter (can be overridden in special cases, like version has special format)
     def get_linter_version_output(self):
