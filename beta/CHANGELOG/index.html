@@ -15652,7 +15652,7 @@
 <li>Missing language runtimes can be installed for you with <strong><code>NATIVE_INSTALL_RUNTIMES</code></strong> (<code>ask</code>, <code>auto</code>, <code>never</code>)</li>
 <li>Commands, plugins and remote <code>EXTENDS</code> declared by the analyzed repository are <strong>ignored</strong> unless you pass <code>--trust-repo-commands</code></li>
 <li>Docker remains the default and the recommended mode, especially for code you do not fully trust</li>
-<li>New <strong>pre-commit hooks</strong> <code>megalinter-native-incremental</code> and <code>megalinter-native-full</code> lint the files of each commit without Docker</li>
+<li>New <strong>pre-commit hooks</strong> <code>megalinter-native-incremental</code> and <code>megalinter-native-full</code> lint the files of each commit without Docker. They run the MegaLinter version of their <code>rev</code>, and pre-commit installs the runner once instead of calling npx on each commit</li>
 <li>Works behind <strong>proxies inspecting HTTPS</strong>: set <code>UV_NATIVE_TLS=1</code> (and <code>NODE_USE_SYSTEM_CA=1</code>) to trust the certificates of your system, see <a href="https://megalinter.io/latest/install-native/#corporate-proxies">Corporate proxies</a></li>
 <li>Linters installed by MegaLinter always run the version of its Docker image. For <strong>tools provided by your machine</strong> (SwiftLint, Raku, scalafix...), a warning shows when their version differs from the Docker image</li>
 <li>New <code>megalinter</code> command on PyPI: <code>run</code>, <code>install-linters</code>, <code>list-linters</code>, <code>doctor</code></li>
@@ -15761,7 +15761,11 @@
 <li>
 <p>Agent Skills</p>
 <ul>
-<li><strong>megalinter-check</strong> can now lint locally without a container engine, using native mode, after asking you</li>
+<li><strong>megalinter-check</strong> can now lint locally without a container engine, using native mode, after asking you<ul>
+<li>It tells you which linters a native run skipped (the ones missing from <code>NATIVE_LINTERS</code>), and how to fix installs behind a proxy inspecting HTTPS</li>
+</ul>
+</li>
+<li><strong>megalinter-setup</strong> can add <code>NATIVE_LINTERS</code> to <code>.mega-linter.yml</code> when you want to lint without Docker</li>
 </ul>
 </li>
 </ul>
@@ -15769,6 +15773,7 @@
 <li>
 <p>Dev</p>
 <ul>
+<li>The release build pins the native pre-commit hooks to the released version. Contributor skills cover native mode: <code>/prepare-release</code> (PyPI publish, pinned hooks, smoke test), <code>/review-descriptor</code> (<code>native_install</code> checklist), <code>/fix-linter-test</code> (native test failures), <code>/diagnose-config</code> (<code>NATIVE_*</code> variables), <code>/update-linter-version</code> (lock commits)</li>
 <li>New linter-level descriptor property <strong><code>native_install</code></strong> (how a linter is installed without Docker, per platform), documented in <code>.claude/rules/native-install.md</code>, with the runtime catalog <code>native-runtimes.yml</code> and the generated <code>megalinter/descriptors/native-locks/</code>. The build fails when a linter does not declare it for the 5 native platforms. Generated Dockerfiles are unchanged</li>
 <li>New package <code>megalinter/native/</code> (verified downloads, safe archive extraction, per-method installers, runtime provisioning, environment allowlist, trust gating) and the <code>megalinter</code> command (<code>megalinter/cli.py</code>)</li>
 <li><code>native_install.linter_overrides</code> replaces linter properties only in native mode (container paths, executables), with <code>{{NATIVE_INSTALL_DIR}}</code></li>
