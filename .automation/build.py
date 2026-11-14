@@ -4490,6 +4490,22 @@ def generate_json_schema_docs():
     )
 
 
+# The native pre-commit hooks of a release run that version of mega-linter-runner (installed
+# once by pre-commit) and of MegaLinter: `rev: vX.Y.Z` gives the same results everywhere
+def pin_native_pre_commit_hooks(version):
+    hooks_file = f"{REPO_HOME}/.pre-commit-hooks.yaml"
+    content = Path(hooks_file).read_text(encoding="utf-8")
+    pinned = re.sub(
+        r"mega-linter-runner@(beta|\d+\.\d+\.\d+)",
+        f"mega-linter-runner@{version}",
+        content,
+    )
+    pinned = re.sub(
+        r"(--release(?:\n\s+- |\s+))(beta|\d+\.\d+\.\d+)", rf"\g<1>{version}", pinned
+    )
+    Path(hooks_file).write_text(pinned, encoding="utf-8", newline="\n")
+
+
 def generate_version():
     # npm version
     logging.info("Updating npm package version…")
@@ -4518,6 +4534,7 @@ def generate_version():
         shell=True,
         check=True,
     )
+    pin_native_pre_commit_hooks(VERSION)
     # Update changelog
     if UPDATE_CHANGELOG is True:
         changelog_file = f"{REPO_HOME}/CHANGELOG.md"

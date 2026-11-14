@@ -19,7 +19,8 @@ You orchestrate MegaLinter on this repository. MegaLinter is a mega-linter aggre
 2. **Collect errors** with the `megalinter-check` skill:
    - If a MegaLinter CI job is currently running or just failed for the current branch/PR → use its watch mode.
    - Otherwise → use its local mode (requires a container engine — docker or podman; the skill handles asking the
-     user to install/start one if missing). Local runs are **resource-consuming** (MegaLinter is Docker-based, needs
+     user to install/start one if missing, and offers native mode (beta, linters installed on the machine, no
+     container) when no engine is wanted; native mode only runs the linters listed in `NATIVE_LINTERS`). Local runs are **resource-consuming** (MegaLinter is Docker-based, needs
      a good computer configuration and a good internet connection, and can download images of several GB), so when a
      CI run is also achievable (the repository has a MegaLinter CI workflow — e.g. by pushing the branch or opening a
      PR), **using CI is usually recommended**: ask the user which one they want (structured question when your
