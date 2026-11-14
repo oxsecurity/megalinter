@@ -913,7 +913,8 @@ def check_updated_file(file, repo_home, changed_files=None):
         changed_files = list_updated_files(repo_home)
     file_absolute = os.path.abspath(file)
     for changed_file in changed_files:
-        if changed_file in file_absolute:
+        # git lists paths with "/": on Windows, the linted file paths use "\"
+        if os.path.normpath(changed_file) in file_absolute:
             return True
     return False
 
