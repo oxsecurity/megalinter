@@ -204,6 +204,26 @@ ARG PIP_ANSIBLE_LINT_VERSION=26.10.1
 - PIP packages (Python):
   - [ansible-lint==26.10.1](https://pypi.org/project/ansible-lint/26.10.1)
 
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: Python package (isolated virtual environment)
+- Requires the python runtime >=3.10
+
+```yaml
+NATIVE_LINTERS: [ANSIBLE_ANSIBLE_LINT]
+```
+
+| Platform              | Support                                                                                                   |
+|:----------------------|:----------------------------------------------------------------------------------------------------------|
+| Linux (x86-64)        | ✅                                                                                                        |
+| Linux (ARM64)         | ✅                                                                                                        |
+| macOS (Intel)         | ❌ ansible-lint depends on cryptography, which only publishes Apple Silicon wheels for macOS. Use Docker. |
+| macOS (Apple Silicon) | ✅                                                                                                        |
+| Windows (Git Bash)    | ❌ ansible-lint does not support Windows (Ansible requires a POSIX system). Use Docker.                   |
+
+
 ## Known errors and resolutions
 
 When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.

@@ -141,3 +141,23 @@ ARG NPM_COFFEELINT_CLI_VERSION=5.2.15
 
 - NPM packages (node.js):
   - [@coffeelint/cli](https://www.npmjs.com/package/@coffeelint/cli)
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: npm packages (isolated folder)
+- Requires the node runtime >=20.19.0
+
+```yaml
+NATIVE_LINTERS: [COFFEE_COFFEELINT]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+

@@ -157,3 +157,23 @@ ARG NPM_TS_STANDARD_VERSION=12.0.2
 - NPM packages (node.js):
   - [typescript@6.0.3](https://www.npmjs.com/package/typescript/v/6.0.3)
   - [ts-standard@12.0.2](https://www.npmjs.com/package/ts-standard/v/12.0.2)
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: npm packages (isolated folder)
+- Requires the node runtime >=16.0.0
+
+```yaml
+NATIVE_LINTERS: [TYPESCRIPT_STANDARD]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+

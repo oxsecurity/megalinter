@@ -161,6 +161,26 @@ RUN npm --no-cache install --ignore-scripts --omit=dev --prefix /node-deps-spect
   - [npm](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=npm)
   - [nodejs-current](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=nodejs-current)
 
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: npm packages (isolated folder)
+- Requires the node runtime >=22.0.0
+
+```yaml
+NATIVE_LINTERS: [API_SPECTRAL]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+
+
 ## Known errors and resolutions
 
 When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.

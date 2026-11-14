@@ -237,3 +237,23 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/detekt/detekt/releas
 
 ```
 
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: Verified release download
+- Requires the java runtime >=8
+
+```yaml
+NATIVE_LINTERS: [KOTLIN_DETEKT]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+

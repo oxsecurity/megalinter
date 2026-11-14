@@ -233,3 +233,23 @@ ARG PIP_DJLINT_VERSION=1.49.2
 
 - PIP packages (Python):
   - [djlint==1.49.2](https://pypi.org/project/djlint/1.49.2)
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: Python package (isolated virtual environment)
+- Requires the python runtime >=3.11
+
+```yaml
+NATIVE_LINTERS: [HTML_DJLINT]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+

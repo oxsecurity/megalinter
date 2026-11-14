@@ -183,3 +183,28 @@ COPY --link --from=chktex /usr/bin/chktex /usr/bin/
 RUN cd ~ && touch .chktexrc && cd /
 ```
 
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: Provided by the host
+
+```yaml
+NATIVE_LINTERS: [LATEX_CHKTEX]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+
+This tool is not downloaded by MegaLinter, install it yourself:
+
+- windows: `winget install --id MiKTeX.MiKTeX -e (then: mpm --install=chktex), or install TeX Live from https://tug.org/texlive/windows.html`
+- darwin: `brew install chktex`
+- linux: `Install chktex from your distribution (example: sudo apt install chktex)`
+

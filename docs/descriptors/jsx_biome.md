@@ -164,3 +164,23 @@ ARG NPM_BIOMEJS_BIOME_VERSION=2.6.3
 
 - NPM packages (node.js):
   - [@biomejs/biome@2.6.3](https://www.npmjs.com/package/@biomejs/biome/v/2.6.3)
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: npm packages (isolated folder)
+- Requires the node runtime >=14.21.3
+
+```yaml
+NATIVE_LINTERS: [JSX_BIOME]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+

@@ -141,3 +141,22 @@ RUN curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/greglo
 
 ```
 
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: Verified release download
+
+```yaml
+NATIVE_LINTERS: [CLOJURE_CLJSTYLE]
+```
+
+| Platform              | Support                                                 |
+|:----------------------|:--------------------------------------------------------|
+| Linux (x86-64)        | ✅                                                      |
+| Linux (ARM64)         | ❌ cljstyle publishes no Linux arm64 build. Use Docker. |
+| macOS (Intel)         | ✅                                                      |
+| macOS (Apple Silicon) | ✅                                                      |
+| Windows (Git Bash)    | ❌ cljstyle publishes no Windows build. Use Docker.     |
+

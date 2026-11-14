@@ -143,3 +143,23 @@ ARG NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION=10.0.0
 - NPM packages (node.js):
   - [npm-package-json-lint@11.0.1](https://www.npmjs.com/package/npm-package-json-lint/v/11.0.1)
   - [npm-package-json-lint-config-default@10.0.0](https://www.npmjs.com/package/npm-package-json-lint-config-default/v/10.0.0)
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: npm packages (isolated folder)
+- Requires the node runtime >=22.0.0
+
+```yaml
+NATIVE_LINTERS: [JSON_NPM_PACKAGE_JSON_LINT]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+

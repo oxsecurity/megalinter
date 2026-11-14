@@ -266,6 +266,32 @@ RUN curl --retry-all-errors --retry 10 -fLo /tmp/coursier https://github.com/cou
 ```
 
 
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: Provided by the host
+- Requires the java runtime >=8
+
+```yaml
+NATIVE_LINTERS: [SCALA_SCALAFIX]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+
+This tool is not downloaded by MegaLinter, install it yourself:
+
+- windows: `Install Coursier (https://get-coursier.io/docs/cli-installation#windows) then run: cs install scalafix`
+- darwin: `brew install coursier/formulas/coursier && cs setup && cs install scalafix`
+- linux: `Install Coursier (https://get-coursier.io/docs/cli-installation) then run: cs install scalafix`
+
+
 ## Known errors and resolutions
 
 When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.

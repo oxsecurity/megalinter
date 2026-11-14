@@ -188,3 +188,23 @@ ARG PIP_SNAKEFMT_VERSION=2.1.0
 
 - PIP packages (Python):
   - [snakefmt==2.1.0](https://pypi.org/project/snakefmt/2.1.0)
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: Python package (isolated virtual environment)
+- Requires the python runtime >=3.11
+
+```yaml
+NATIVE_LINTERS: [SNAKEMAKE_SNAKEFMT]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+

@@ -20596,6 +20596,11 @@
         "auto",
         "never"
       ],
+      "enumNames": [
+        "Ask",
+        "Auto",
+        "Never"
+      ],
       "title": "Native mode runtimes installation",
       "type": "string",
       "x-category": "GENERAL",
@@ -20629,6 +20634,11 @@
         "install",
         "skip",
         "fail"
+      ],
+      "enumNames": [
+        "Install",
+        "Skip",
+        "Fail"
       ],
       "title": "Native mode missing linters",
       "type": "string",
