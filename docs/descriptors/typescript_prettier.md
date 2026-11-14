@@ -266,6 +266,26 @@ ARG NPM_PRETTIER_VERSION=3.9.10
   - [typescript@6.0.3](https://www.npmjs.com/package/typescript/v/6.0.3)
   - [prettier@3.9.10](https://www.npmjs.com/package/prettier/v/3.9.10)
 
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: npm packages (isolated folder)
+- Requires the node runtime >=14.0.0
+
+```yaml
+NATIVE_LINTERS: [TYPESCRIPT_PRETTIER]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+
+
 ## Known errors and resolutions
 
 When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.

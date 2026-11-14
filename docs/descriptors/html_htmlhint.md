@@ -162,3 +162,23 @@ ARG NPM_HTMLHINT_VERSION=1.9.2
 
 - NPM packages (node.js):
   - [htmlhint@1.9.2](https://www.npmjs.com/package/htmlhint/v/1.9.2)
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: npm packages (isolated folder)
+- Requires the node runtime >=18.0.0
+
+```yaml
+NATIVE_LINTERS: [HTML_HTMLHINT]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+

@@ -198,7 +198,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--apptainer-args ARGS] [--use-envmodules]
                  [--deploy-sources QUERY CHECKSUM]
                  [--target-jobs TARGET_JOBS [TARGET_JOBS ...]]
-                 [--mode {remote,subprocess,default}]
+                 [--mode {default,remote,subprocess}]
                  [--scheduler-solver-path SCHEDULER_SOLVER_PATH]
                  [--max-jobs-per-second MAX_JOBS_PER_SECOND]
                  [--report-html-path VALUE]
@@ -1096,7 +1096,7 @@ INTERNAL:
   --target-jobs TARGET_JOBS [TARGET_JOBS ...]
                         Internal use only: Target particular jobs by
                         RULE:WILDCARD1=VALUE,WILDCARD2=VALUE,...
-  --mode {remote,subprocess,default}
+  --mode {default,remote,subprocess}
                         Internal use only: Set execution mode of Snakemake.
                         (default: default)
   --scheduler-solver-path SCHEDULER_SOLVER_PATH
@@ -1151,6 +1151,26 @@ ARG PIP_SNAKEMAKE_VERSION=9.27.1
 
 - PIP packages (Python):
   - [snakemake==9.27.1](https://pypi.org/project/snakemake/9.27.1)
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: Python package (isolated virtual environment)
+- Requires the python runtime >=3.11
+
+```yaml
+NATIVE_LINTERS: [SNAKEMAKE_LINT]
+```
+
+| Platform              | Support                                                                                            |
+|:----------------------|:---------------------------------------------------------------------------------------------------|
+| Linux (x86-64)        | ✅                                                                                                 |
+| Linux (ARM64)         | ✅                                                                                                 |
+| macOS (Intel)         | ✅                                                                                                 |
+| macOS (Apple Silicon) | ✅                                                                                                 |
+| Windows (Git Bash)    | ❌ Snakemake does not run natively on Windows (upstream only supports it through WSL). Use Docker. |
+
 
 ## Known errors and resolutions
 

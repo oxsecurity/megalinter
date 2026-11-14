@@ -311,3 +311,23 @@ ARG NPM_JSCPD_VERSION=5.4.2
 
 - NPM packages (node.js):
   - [jscpd@5.4.2](https://www.npmjs.com/package/jscpd/v/5.4.2)
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: npm packages (isolated folder)
+- Requires the node runtime >=18.0.0
+
+```yaml
+NATIVE_LINTERS: [COPYPASTE_JSCPD]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+

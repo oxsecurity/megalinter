@@ -190,3 +190,27 @@ Libxml project home page: https://gitlab.gnome.org/GNOME/libxml2
   - [libxml2](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=libxml2)
   - [libxml2-utils](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=libxml2-utils)
   - [libgcc](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=libgcc)
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: Provided by the host
+
+```yaml
+NATIVE_LINTERS: [XML_XMLLINT]
+```
+
+| Platform              | Support                                                                |
+|:----------------------|:-----------------------------------------------------------------------|
+| Linux (x86-64)        | ✅                                                                     |
+| Linux (ARM64)         | ✅                                                                     |
+| macOS (Intel)         | ✅                                                                     |
+| macOS (Apple Silicon) | ✅                                                                     |
+| Windows (Git Bash)    | ❌ xmllint (libxml2) has no official Windows distribution. Use Docker. |
+
+This tool is not downloaded by MegaLinter, install it yourself:
+
+- darwin: `xmllint is preinstalled on macOS (brew install libxml2 for a recent version)`
+- linux: `Install libxml2 utilities from your distribution (example: sudo apt install libxml2-utils)`
+

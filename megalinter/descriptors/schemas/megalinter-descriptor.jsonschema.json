@@ -280,32 +280,6 @@
             },
             "cosign": {
               "additionalProperties": false,
-              "properties": {
-                "bundle_url": {
-                  "type": "string",
-                  "description": "Sigstore bundle (.sigstore.json) of the signed file"
-                },
-                "certificate_url": {
-                  "type": "string"
-                },
-                "identity": {
-                  "type": "string"
-                },
-                "identity_regexp": {
-                  "type": "string",
-                  "description": "Regular expression matching the signer identity, when it varies (release workflow ref)"
-                },
-                "issuer": {
-                  "type": "string"
-                },
-                "signature_url": {
-                  "type": "string"
-                }
-              },
-              "required": [
-                "issuer"
-              ],
-              "type": "object",
               "anyOf": [
                 {
                   "required": [
@@ -317,7 +291,33 @@
                     "identity_regexp"
                   ]
                 }
-              ]
+              ],
+              "properties": {
+                "bundle_url": {
+                  "description": "Sigstore bundle (.sigstore.json) of the signed file",
+                  "type": "string"
+                },
+                "certificate_url": {
+                  "type": "string"
+                },
+                "identity": {
+                  "type": "string"
+                },
+                "identity_regexp": {
+                  "description": "Regular expression matching the signer identity, when it varies (release workflow ref)",
+                  "type": "string"
+                },
+                "issuer": {
+                  "type": "string"
+                },
+                "signature_url": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "issuer"
+              ],
+              "type": "object"
             },
             "github_attestation": {
               "description": "owner/repo publishing GitHub artifact attestations",

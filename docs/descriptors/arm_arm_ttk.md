@@ -110,17 +110,14 @@ pwsh -NoProfile -NoLogo -Command "
 ### Help content
 
 ```shell
-
-cmdlet Import-Module at command pipeline position 1
-Supply values for the following parameters:
-Name[0]:
-Import-Module: Cannot process command because of one or more missing mandatory parameters: Name.
+A newer version of the ARM-TTK is available at: https://github.com/Azure/arm-ttk/releases
+Installed Version: 0.26
+Latest Version: 0.27
 Test-AzTemplate: 
 Line |
    2 |  $TAZ_V = (Test-AzTemplate -help);
-     |            ~~~~~~~~~~~~~~~
-     | The term 'Test-AzTemplate' is not recognized as a name of a cmdlet, function, script file, or executable program.
-Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+     |                            ~~~~~
+     | A parameter cannot be found that matches parameter name 'help'.
 ```
 
 ### Installation on mega-linter Docker image
@@ -155,4 +152,24 @@ RUN curl --retry 5 --retry-delay 5 -sLO "https://github.com/Azure/arm-ttk/releas
     && chmod a+x /usr/bin/arm-ttk
 
 ```
+
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: Verified release download
+- Requires the powershell runtime >=7.4
+
+```yaml
+NATIVE_LINTERS: [ARM_ARM_TTK]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
 

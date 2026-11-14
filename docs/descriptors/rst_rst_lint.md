@@ -132,3 +132,23 @@ ARG PIP_RESTRUCTUREDTEXT_LINT_VERSION=2.0.2
 - PIP packages (Python):
   - [Pygments==2.21.0](https://pypi.org/project/Pygments/2.21.0)
   - [restructuredtext_lint==2.0.2](https://pypi.org/project/restructuredtext_lint/2.0.2)
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: Python package (isolated virtual environment)
+- Requires the python runtime >=3.9
+
+```yaml
+NATIVE_LINTERS: [RST_RST_LINT]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+

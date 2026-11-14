@@ -440,3 +440,28 @@ Many thanks to the 3rd party libraries we use:
 
 - APK packages (Linux):
   - [cppcheck](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=cppcheck)
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: Provided by the host
+
+```yaml
+NATIVE_LINTERS: [CPP_CPPCHECK]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+
+This tool is not downloaded by MegaLinter, install it yourself:
+
+- windows: `winget install --id Cppcheck.Cppcheck -e`
+- darwin: `brew install cppcheck`
+- linux: `Install cppcheck from your distribution (example: sudo apt install cppcheck)`
+

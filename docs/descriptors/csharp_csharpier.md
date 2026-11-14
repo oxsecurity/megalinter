@@ -151,3 +151,23 @@ RUN dotnet tool install --allow-roll-forward --tool-path /usr/local/dotnet-tools
        done
 ```
 
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: .NET tool
+- Requires the dotnet runtime >=8
+
+```yaml
+NATIVE_LINTERS: [CSHARP_CSHARPIER]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+

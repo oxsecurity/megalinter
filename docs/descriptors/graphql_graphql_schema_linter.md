@@ -125,6 +125,26 @@ ARG NPM_GRAPHQL_SCHEMA_LINTER_VERSION=3.0.1
   - [graphql](https://www.npmjs.com/package/graphql)
   - [graphql-schema-linter](https://www.npmjs.com/package/graphql-schema-linter)
 
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: npm packages (isolated folder)
+- Requires the node runtime >=22.0.0
+
+```yaml
+NATIVE_LINTERS: [GRAPHQL_GRAPHQL_SCHEMA_LINTER]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+
+
 ## Known errors and resolutions
 
 When this linter fails for a known non-lint reason (remote service unavailable, malformed config, missing credentials, etc.), MegaLinter detects the pattern below in the linter output and surfaces the matching guidance.

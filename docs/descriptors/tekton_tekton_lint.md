@@ -140,3 +140,23 @@ ARG NPM_IBM_TEKTON_LINT_VERSION=1.2.4
 
 - NPM packages (node.js):
   - [@ibm/tekton-lint@1.2.4](https://www.npmjs.com/package/@ibm/tekton-lint/v/1.2.4)
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: npm packages (isolated folder)
+- Requires the node runtime >=22.0.0
+
+```yaml
+NATIVE_LINTERS: [TEKTON_TEKTON_LINT]
+```
+
+| Platform              | Support                                                                                                                     |
+|:----------------------|:----------------------------------------------------------------------------------------------------------------------------|
+| Linux (x86-64)        | ✅                                                                                                                          |
+| Linux (ARM64)         | ✅                                                                                                                          |
+| macOS (Intel)         | ✅                                                                                                                          |
+| macOS (Apple Silicon) | ✅                                                                                                                          |
+| Windows (Git Bash)    | ❌ tekton-lint builds the paths of its own files incorrectly on Windows (the drive letter is repeated, ENOENT). Use Docker. |
+

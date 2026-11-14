@@ -798,3 +798,23 @@ RUN mv /venvs/semgrep/bin/semgrep /venvs/semgrep/bin/semgrep-bin \
 
 - PIP packages (Python):
   - [semgrep==1.183.0](https://pypi.org/project/semgrep/1.183.0)
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: Python package (isolated virtual environment)
+- Requires the python runtime >=3.10
+
+```yaml
+NATIVE_LINTERS: [REPOSITORY_SEMGREP]
+```
+
+| Platform              | Support                                                                                                    |
+|:----------------------|:-----------------------------------------------------------------------------------------------------------|
+| Linux (x86-64)        | ✅                                                                                                         |
+| Linux (ARM64)         | ✅                                                                                                         |
+| macOS (Intel)         | ❌ Semgrep publishes no macOS Intel wheel on PyPI and its OCaml core is not built from source. Use Docker. |
+| macOS (Apple Silicon) | ✅                                                                                                         |
+| Windows (Git Bash)    | ✅                                                                                                         |
+

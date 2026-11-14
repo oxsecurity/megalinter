@@ -174,3 +174,22 @@ COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
 
 - APK packages (Linux):
   - [py3-pyflakes](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=py3-pyflakes)
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: Verified release download
+
+```yaml
+NATIVE_LINTERS: [ACTION_ACTIONLINT]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+

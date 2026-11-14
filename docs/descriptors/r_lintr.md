@@ -119,3 +119,29 @@ RUN apk add --no-cache --virtual .r-build-deps gcc g++ make musl-dev linux-heade
   - [libxml2](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=libxml2)
   - [libxml2-utils](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=libxml2-utils)
   - [R](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=R)
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: Provided by the host
+- Requires the r runtime >=4.1
+
+```yaml
+NATIVE_LINTERS: [R_LINTR]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+
+This tool is not downloaded by MegaLinter, install it yourself:
+
+- windows: `Rscript -e "install.packages(c('lintr', 'purrr', 'jsonlite'), repos = 'https://cloud.r-project.org/')"`
+- darwin: `Rscript -e "install.packages(c('lintr', 'purrr', 'jsonlite'), repos = 'https://cloud.r-project.org/')"`
+- linux: `Rscript -e "install.packages(c('lintr', 'purrr', 'jsonlite'), repos = 'https://cloud.r-project.org/')"`
+

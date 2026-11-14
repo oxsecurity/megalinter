@@ -27,14 +27,14 @@ Add a label named after the Jira ticket key (ex: `PROJ-123`) to your Pull Reques
 
 `JIRA_REPORTER_LABEL_REGEX` is a regular expression matched against the whole label. If it has a capturing group, the first group is the ticket key (converted to upper case), otherwise the whole label is used.
 
-| Label convention  | `JIRA_REPORTER_LABEL_REGEX`                          | Matches (ticket key)        |
-|-------------------|------------------------------------------------------|-----------------------------|
-| Default           | `^(?:jira[:/])?([A-Za-z][A-Za-z0-9_]+-\d+)$`         | `PROJ-123`, `jira:PROJ-123` |
-| Prefix `ticket-`  | `^ticket-([A-Za-z][A-Za-z0-9_]+-\d+)$`               | `ticket-PROJ-123`           |
-| Prefix `jira_`    | `^jira_([A-Za-z][A-Za-z0-9_]+-\d+)$`                 | `jira_PROJ-123`             |
-| Label with space  | `^Jira: ([A-Za-z][A-Za-z0-9_]+-\d+)$`                | `Jira: PROJ-123`            |
-| Only some projects | `^((?:PROJ\|OPS)-\d+)$`                             | `PROJ-1`, `OPS-42` only     |
-| Key anywhere in label | `(?i)\b([A-Z][A-Z0-9_]+-\d+)\b`                  | `fix-PROJ-123-login`        |
+| Label convention      | `JIRA_REPORTER_LABEL_REGEX`                  | Matches (ticket key)        |
+|-----------------------|----------------------------------------------|-----------------------------|
+| Default               | `^(?:jira[:/])?([A-Za-z][A-Za-z0-9_]+-\d+)$` | `PROJ-123`, `jira:PROJ-123` |
+| Prefix `ticket-`      | `^ticket-([A-Za-z][A-Za-z0-9_]+-\d+)$`       | `ticket-PROJ-123`           |
+| Prefix `jira_`        | `^jira_([A-Za-z][A-Za-z0-9_]+-\d+)$`         | `jira_PROJ-123`             |
+| Label with space      | `^Jira: ([A-Za-z][A-Za-z0-9_]+-\d+)$`        | `Jira: PROJ-123`            |
+| Only some projects    | `^((?:PROJ\|OPS)-\d+)$`                      | `PROJ-1`, `OPS-42` only     |
+| Key anywhere in label | `(?i)\b([A-Z][A-Z0-9_]+-\d+)\b`              | `fix-PROJ-123-login`        |
 
 Example in `.mega-linter.yml`:
 
@@ -56,14 +56,14 @@ Jira Server / Data Center:
 
 The Pull Request labels are read with the platform token already used by the comment reporters: `GITHUB_TOKEN` (permission `pull-requests: read`), `CI_JOB_TOKEN` / `GITLAB_ACCESS_TOKEN_MEGALINTER`, or `SYSTEM_ACCESSTOKEN`.
 
-| Variable                          | Description                                                                                           | Default value                                   |
-|-----------------------------------|-------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| JIRA_REPORTER                     | Activates/deactivates reporter                                                                        | `true` (active only if Jira variables are set)  |
-| JIRA_URL                          | Jira base URL                                                                                         | <!-- -->                                        |
-| JIRA_USERNAME                     | Jira Cloud account e-mail                                                                             | <!-- -->                                        |
-| JIRA_API_TOKEN                    | Jira Cloud API token                                                                                  | <!-- -->                                        |
-| JIRA_PERSONAL_ACCESS_TOKEN        | Jira Server / Data Center Personal Access Token                                                       | <!-- -->                                        |
-| JIRA_REPORTER_LABEL_REGEX         | Regular expression matching the labels that reference a ticket                                        | `^(?:jira[:/])?([A-Za-z][A-Za-z0-9_]+-\d+)$`    |
-| JIRA_REPORTER_OVERWRITE_COMMENT   | Set to false to not overwrite existing comments in case of new runs on the same ticket                | `true`                                          |
-| REPORTERS_ACTION_RUN_URL          | Override default URL of the CI job visualization page                                                 | <!-- -->                                        |
-| MEGALINTER_MULTIRUN_KEY           | Key to identify multirun when multiple MegaLinter runs are executed in the same pipeline (ex: `java`) | <!-- -->                                        |
+| Variable                        | Description                                                                                           | Default value                                  |
+|---------------------------------|-------------------------------------------------------------------------------------------------------|------------------------------------------------|
+| JIRA_REPORTER                   | Activates/deactivates reporter                                                                        | `true` (active only if Jira variables are set) |
+| JIRA_URL                        | Jira base URL                                                                                         | <!-- -->                                       |
+| JIRA_USERNAME                   | Jira Cloud account e-mail                                                                             | <!-- -->                                       |
+| JIRA_API_TOKEN                  | Jira Cloud API token                                                                                  | <!-- -->                                       |
+| JIRA_PERSONAL_ACCESS_TOKEN      | Jira Server / Data Center Personal Access Token                                                       | <!-- -->                                       |
+| JIRA_REPORTER_LABEL_REGEX       | Regular expression matching the labels that reference a ticket                                        | `^(?:jira[:/])?([A-Za-z][A-Za-z0-9_]+-\d+)$`   |
+| JIRA_REPORTER_OVERWRITE_COMMENT | Set to false to not overwrite existing comments in case of new runs on the same ticket                | `true`                                         |
+| REPORTERS_ACTION_RUN_URL        | Override default URL of the CI job visualization page                                                 | <!-- -->                                       |
+| MEGALINTER_MULTIRUN_KEY         | Key to identify multirun when multiple MegaLinter runs are executed in the same pipeline (ex: `java`) | <!-- -->                                       |
