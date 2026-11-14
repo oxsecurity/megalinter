@@ -85,7 +85,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                             | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:----------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor               |       133        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor               |       134        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/) | Optimized for Salesforce based projects |        58        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
 
 ## Behind the scenes
@@ -114,7 +114,7 @@ sf code-analyzer run --rule-selector apexguru --workspace . --include-suggestion
 ### Help content
 
 ```shell
- ›   Warning: @salesforce/cli update available from 2.157.7 to 2.157.8.
+ ›   Warning: @salesforce/cli update available from 2.157.7 to 2.158.7.
 Analyze your code with a selection of rules to ensure good coding practices.
 
 USAGE
@@ -174,14 +174,16 @@ ENV XDG_DATA_HOME=/usr/local/share
 RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION} \
     && echo y|sf plugins install sfdx-hardis@${SFDX_HARDIS_VERSION} \
     && (npm cache clean --force || true) \
-    && rm -rf /root/.npm/_cacache
+    && find /usr/local/share/sf/node_modules -type f \( -name "*.map" -o -name "*.d.ts" -o -name "*.d.mts" -o -name "*.d.cts" \) -not -path "*/typescript/lib/*" -not -path "*/@types/*" -delete \
+    && rm -rf /root/.npm /root/.cache/sf /tmp/v8-compile-cache-*
 ENV SF_AUTOUPDATE_DISABLE=true SF_CLI_DISABLE_AUTOUPDATE=true
 # Linter install
 # renovate: datasource=npm depName=@salesforce/plugin-code-analyzer
 ARG SALESFORCE_CODE_ANALYZER_VERSION=5.16.0
 RUN sf plugins install code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION} \
     && (npm cache clean --force || true) \
-    && rm -rf /root/.npm/_cacache
+    && find /usr/local/share/sf/node_modules -type f \( -name "*.map" -o -name "*.d.ts" -o -name "*.d.mts" -o -name "*.d.cts" \) -not -path "*/typescript/lib/*" -not -path "*/@types/*" -delete \
+    && rm -rf /root/.npm /root/.cache/sf /tmp/v8-compile-cache-*
 ```
 
 

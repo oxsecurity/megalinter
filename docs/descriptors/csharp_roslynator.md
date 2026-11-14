@@ -68,7 +68,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                                              | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                                |       133        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                                |       134        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)         | Optimized for C, C++, C# or VB based projects            |        66        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)   | Optimized for C, C++, C# or VB based projects with JS/TS |        81        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
 |     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/formatters.ico" alt="" height="32px" class="megalinter-icon"></a>      | [formatters](https://megalinter.io/beta/flavors/formatters/) | Contains only formatters                                 |        20        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-formatters/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-formatters) |
@@ -129,6 +129,20 @@ ENV PATH="${PATH}:/usr/local/dotnet-tools"
 # Linter install
 # renovate: datasource=nuget depName=roslynator.dotnet.cli
 ARG CSHARP_ROSLYNATOR_VERSION=0.13.0
-RUN dotnet tool install --allow-roll-forward --tool-path /usr/local/dotnet-tools roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}"
+RUN dotnet tool install --allow-roll-forward --tool-path /usr/local/dotnet-tools roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}" \
+    && find /usr/local/dotnet-tools/.store -name "*.nupkg" -delete \
+    && DOTNET_SDK_MAJOR="$(dotnet --version | cut -d. -f1)" \
+    && for tools_dir in /usr/local/dotnet-tools/.store/*/*/*/*/tools; do \
+         keep=""; \
+         for tfm_dir in "$tools_dir"/net[0-9]*.[0-9]*; do \
+           tfm_major="${tfm_dir##*/net}"; tfm_major="${tfm_major%%.*}"; \
+           case "$tfm_major" in ""|*[!0-9]*) continue ;; esac; \
+           if [ "$tfm_major" -le "$DOTNET_SDK_MAJOR" ] && [ "$tfm_major" -gt "${keep:-0}" ]; then keep="$tfm_major"; fi; \
+         done; \
+         [ -n "$keep" ] || continue; \
+         for tfm_dir in "$tools_dir"/net[0-9]*; do \
+           case "$(basename "$tfm_dir")" in "net${keep}".*) ;; *) rm -rf "$tfm_dir" ;; esac; \
+         done; \
+       done
 ```
 

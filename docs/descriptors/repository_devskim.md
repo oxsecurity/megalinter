@@ -79,7 +79,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                   | Description               | Embedded linters |                                                                                                                                                                                         Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor |       133        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor |       134        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/) | Optimized for security    |        24        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 
 ## Behind the scenes
@@ -140,7 +140,21 @@ devskim 1.0.70+d69541fde7
 ARG REPOSITORY_DEVSKIM_VERSION=1.0.70
 RUN apk add --no-cache dotnet10-sdk && install -d /usr/local/dotnet-tools
 ENV PATH="${PATH}:/usr/local/dotnet-tools"
-RUN dotnet tool install --allow-roll-forward --tool-path /usr/local/dotnet-tools Microsoft.CST.DevSkim.CLI --version ${REPOSITORY_DEVSKIM_VERSION}
+RUN dotnet tool install --allow-roll-forward --tool-path /usr/local/dotnet-tools Microsoft.CST.DevSkim.CLI --version ${REPOSITORY_DEVSKIM_VERSION} \
+    && find /usr/local/dotnet-tools/.store -name "*.nupkg" -delete \
+    && DOTNET_SDK_MAJOR="$(dotnet --version | cut -d. -f1)" \
+    && for tools_dir in /usr/local/dotnet-tools/.store/*/*/*/*/tools; do \
+         keep=""; \
+         for tfm_dir in "$tools_dir"/net[0-9]*.[0-9]*; do \
+           tfm_major="${tfm_dir##*/net}"; tfm_major="${tfm_major%%.*}"; \
+           case "$tfm_major" in ""|*[!0-9]*) continue ;; esac; \
+           if [ "$tfm_major" -le "$DOTNET_SDK_MAJOR" ] && [ "$tfm_major" -gt "${keep:-0}" ]; then keep="$tfm_major"; fi; \
+         done; \
+         [ -n "$keep" ] || continue; \
+         for tfm_dir in "$tools_dir"/net[0-9]*; do \
+           case "$(basename "$tfm_dir")" in "net${keep}".*) ;; *) rm -rf "$tfm_dir" ;; esac; \
+         done; \
+       done
 ```
 
 

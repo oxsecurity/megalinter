@@ -47,7 +47,8 @@ ENV XDG_DATA_HOME=/usr/local/share
 RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION} \
     && echo y|sf plugins install sfdx-hardis@${SFDX_HARDIS_VERSION} \
     && (npm cache clean --force || true) \
-    && rm -rf /root/.npm/_cacache
+    && find /usr/local/share/sf/node_modules -type f \( -name "*.map" -o -name "*.d.ts" -o -name "*.d.mts" -o -name "*.d.cts" \) -not -path "*/typescript/lib/*" -not -path "*/@types/*" -delete \
+    && rm -rf /root/.npm /root/.cache/sf /tmp/v8-compile-cache-*
 ENV SF_AUTOUPDATE_DISABLE=true SF_CLI_DISABLE_AUTOUPDATE=true
 ```
 
