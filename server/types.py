@@ -58,7 +58,7 @@ class AnalysisRequestOutput(BaseModel):
         arbitrary_types_allowed = True
 
     request_id: str | None = (
-        Field(  # type: ignore
+        Field(
             description="Unique identifier of the request",
             example="",
         ),

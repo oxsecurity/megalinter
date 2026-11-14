@@ -117,6 +117,25 @@ linters:
           Generate a starter config with: sf code-analyzer config -f code-analyzer.yml
     examples:
       - "sf code-analyzer run --rule-selector pmd:Recommended --workspace . --output-file results.csv"
+    native_install:
+      method: npm
+      packages:
+        - "@salesforce/cli@${NPM_SALESFORCE_CLI_VERSION}"
+        - "@salesforce/plugin-code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION}"
+      requires:
+        - runtime: node
+          version: ">=22"
+        - runtime: java
+          version: ">=11"
+      env:
+        SF_AUTOUPDATE_DISABLE: "true"
+        SF_CLI_DISABLE_AUTOUPDATE: "true"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     install:
       dockerfile:
         - |-
@@ -253,6 +272,25 @@ linters:
           Raise the `api_timeout_ms` setting of the apexguru engine in your code-analyzer.yml, or reduce the analyzed scope with FILTER_REGEX_EXCLUDE.
     examples:
       - "sf code-analyzer run --rule-selector apexguru --workspace . --include-suggestions --output-file results.csv"
+    native_install:
+      method: npm
+      packages:
+        - "@salesforce/cli@${NPM_SALESFORCE_CLI_VERSION}"
+        - "@salesforce/plugin-code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION}"
+      requires:
+        - runtime: node
+          version: ">=22"
+        - runtime: java
+          version: ">=11"
+      env:
+        SF_AUTOUPDATE_DISABLE: "true"
+        SF_CLI_DISABLE_AUTOUPDATE: "true"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     install:
       dockerfile:
         - |-
@@ -355,6 +393,25 @@ linters:
           Verify that your Aura components live under the workspace (default `force-app`) and that `SALESFORCE_CODE_ANALYZER_AURA_DIRECTORY` points to the correct root.
     examples:
       - "sf code-analyzer run --rule-selector eslint --workspace . --file-glob '**/aura/**/*.js' --output-file results.csv"
+    native_install:
+      method: npm
+      packages:
+        - "@salesforce/cli@${NPM_SALESFORCE_CLI_VERSION}"
+        - "@salesforce/plugin-code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION}"
+      requires:
+        - runtime: node
+          version: ">=22"
+        - runtime: java
+          version: ">=11"
+      env:
+        SF_AUTOUPDATE_DISABLE: "true"
+        SF_CLI_DISABLE_AUTOUPDATE: "true"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     install:
       dockerfile:
         - |-
@@ -456,6 +513,25 @@ linters:
           Verify that your Lightning Web Components live under the workspace (default `force-app`) and that `SALESFORCE_CODE_ANALYZER_LWC_DIRECTORY` points to the correct root.
     examples:
       - "sf code-analyzer run --rule-selector eslint:LWC --workspace . --target '**/lwc/**/*.js' --output-file report.csv"
+    native_install:
+      method: npm
+      packages:
+        - "@salesforce/cli@${NPM_SALESFORCE_CLI_VERSION}"
+        - "@salesforce/plugin-code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION}"
+      requires:
+        - runtime: node
+          version: ">=22"
+        - runtime: java
+          version: ">=11"
+      env:
+        SF_AUTOUPDATE_DISABLE: "true"
+        SF_CLI_DISABLE_AUTOUPDATE: "true"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     install:
       dockerfile:
         - |-
@@ -556,6 +632,27 @@ linters:
           Verify Python 3.10+ is installed, or set the `python_command` setting for the flow engine in your `code-analyzer.yml`.
     examples:
       - "sf code-analyzer run --rule-selector flow --workspace . --output-file results.csv"
+    native_install:
+      method: npm
+      packages:
+        - "@salesforce/cli@${NPM_SALESFORCE_CLI_VERSION}"
+        - "@salesforce/plugin-code-analyzer@${SALESFORCE_CODE_ANALYZER_VERSION}"
+      requires:
+        - runtime: node
+          version: ">=22"
+        - runtime: java
+          version: ">=11"
+        - runtime: python
+          version: ">=3.10"
+      env:
+        SF_AUTOUPDATE_DISABLE: "true"
+        SF_CLI_DISABLE_AUTOUPDATE: "true"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     install:
       dockerfile:
         - |-

@@ -70,6 +70,28 @@ linters:
             Test-AzTemplate @config -TemplatePath myfile.json;
             if (${Error}.Count) {exit 1}
             "
+    native_install:
+      linter_overrides:
+        cli_executable: pwsh
+      method: binary
+      version: "${ARM_TTK_VERSION}"
+      requires:
+        - runtime: powershell
+          version: ">=7.4"
+      assets:
+        any:
+          url: https://github.com/Azure/arm-ttk/releases/download/{{VERSION}}/arm-ttk.zip
+          archive: zip
+      env:
+        ARM_TTK_PSD1: "{{NATIVE_INSTALL_DIR}}/arm-ttk/arm-ttk/arm-ttk.psd1"
+      provenance:
+        unverified: "Azure/arm-ttk publishes arm-ttk.zip without signature, attestation or checksum file: the sha256 is pinned on first download by the lock"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     install:
       dockerfile:
         - |-

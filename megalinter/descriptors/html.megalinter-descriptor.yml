@@ -58,6 +58,17 @@ linters:
       platform:
         - linux/amd64
         - linux/arm64
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.11"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     ide:
       sublime:
         - name: SublimeLinter-contrib-djlint
@@ -121,6 +132,17 @@ linters:
       platform:
         - linux/amd64
         - linux/arm64
+    native_install:
+      method: npm
+      requires:
+        - runtime: node
+          version: ">=18.0.0"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     ide:
       brackets:
         - name: brackets-htmlhint

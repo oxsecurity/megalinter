@@ -34,6 +34,13 @@ class SalesforceCodeAnalyzerApexGuruLinter(SalesforceCodeAnalyzerLinter):
     # argument parsing errors, which would print the org refresh token in the
     # job log. With `--sfdx-url-file` an error can only quote the file path.
     def before_lint_files(self):
+        # Native mode: the login would change the global sf CLI configuration of the
+        # user, who runs ApexGuru with their own authenticated org
+        if self.native_toolchain is not None:
+            logging.info(
+                "[ApexGuru] Native mode: using the org already authenticated in your sf CLI"
+            )
+            return
         if SFDX_AUTH_URL_VAR not in self.unsecured_env_variables:
             self.unsecured_env_variables += [SFDX_AUTH_URL_VAR]
         # mktemp creates the file with 0600 permissions, readable by root only

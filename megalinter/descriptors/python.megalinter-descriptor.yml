@@ -115,6 +115,17 @@ linters:
       pip:
         - pylint==${PIP_PYLINT_VERSION}
         - typing-extensions==${PIP_TYPING_EXTENSIONS_VERSION}
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.10"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -218,6 +229,17 @@ linters:
           ARG PIP_BLACK_VERSION=26.10.1
       pip:
         - black[jupyter]==${PIP_BLACK_VERSION}
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.10"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -305,6 +327,17 @@ linters:
           ARG PIP_FLAKE8_VERSION=7.5.0
       pip:
         - flake8==${PIP_FLAKE8_VERSION}
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.11"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -381,6 +414,17 @@ linters:
       pip:
         - black==${PIP_BLACK_VERSION}
         - isort==${PIP_ISORT_VERSION}
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.10"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -495,7 +539,8 @@ linters:
           Resolutions:
             - Check the profile name in your config.
             - Make sure `tests` / `skips` lists reference valid plugin IDs (B101, B602, ...).
-    version_extract_regex: "(?<=bandit )\\d+(\\.\\d+)+"
+    # On Windows, bandit prints the path of its bandit.EXE launcher
+    version_extract_regex: "(?i)(?<=bandit )\\d+(\\.\\d+)+|(?<=bandit\\.exe )\\d+(\\.\\d+)+"
     test_folder: python_bandit
     examples:
       - "bandit myfile.py"
@@ -512,6 +557,17 @@ linters:
         - bandit==${PIP_BANDIT_VERSION}
         - bandit_sarif_formatter==${PIP_BANDIT_SARIF_FORMATTER_VERSION}
         - bandit[toml]==${PIP_BANDIT_VERSION}
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.10"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -612,6 +668,19 @@ linters:
         - ENV MYPY_CACHE_DIR=/tmp # Avoid mypy cache to mess with other linters
       pip:
         - mypy==${PIP_MYPY_VERSION}
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.9"
+      env:
+        MYPY_CACHE_DIR: "{{NATIVE_INSTALL_DIR}}/mypy-cache"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -720,6 +789,19 @@ linters:
       pip:
         - nbqa==${PIP_NBQA_VERSION}
         - mypy==${PIP_MYPY_VERSION}
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.9"
+      env:
+        MYPY_CACHE_DIR: "{{NATIVE_INSTALL_DIR}}/mypy-cache"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -810,6 +892,17 @@ linters:
           ARG NPM_PYRIGHT_VERSION=1.1.414
       npm:
         - pyright@${NPM_PYRIGHT_VERSION}
+    native_install:
+      method: npm
+      requires:
+        - runtime: node
+          version: ">=14"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -904,6 +997,17 @@ linters:
           ARG PIP_RUFF_VERSION=0.17.2
       pip:
         - ruff==${PIP_RUFF_VERSION}
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.7"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -976,6 +1080,17 @@ linters:
           ARG PIP_RUFF_VERSION=0.17.2
       pip:
         - ruff==${PIP_RUFF_VERSION}
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.7"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -1076,6 +1191,17 @@ linters:
           ARG PIP_TY_VERSION=0.0.100
       pip:
         - ty==${PIP_TY_VERSION}
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.8"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64

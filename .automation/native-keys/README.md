@@ -1,0 +1,13 @@
+# Native mode GPG keyrings
+
+Public keys used to verify the runtimes and tools downloaded by native mode (`gpg: {keyring, signature_url}` in `native-runtimes.yml` and in linter `native_install.provenance`).
+
+Each keyring is an armored `.asc` file. Add a line below with its origin and fingerprints, verified against the vendor's own published value, when adding one.
+
+- `nodejs.asc`: the 8 active Node.js releaser keys, exported from [nodejs/release-keys](https://github.com/nodejs/release-keys) (`keys/<fingerprint>.asc`). Fingerprints match the "Release keys" list of the [Node.js README](https://github.com/nodejs/node#release-keys): 5BE8A3F6C8A5C01D106C0AD820B1A390B168D356, DD792F5973C6DE52C432CBDAC77ABFA00DDBF2B7, CC68F5A3106FF448322E48ED27F5E38D5B0A215F, 890C08DB8579162FEE0DF9DB8BEAB4DFCF555EF4, C82FA3AE1CBEDC6BE46B9360C43CEC45C17AB93C, 108F52B48DB57BB0CC439B2997B01419BD92F80A, 655F3B5C1FB3FA8D1A0CA6BDE4A7D232B936D2FD, A363A499291CBBC940DD62E41F10027AF002F8B0. Verified: the `SHASUMS256.txt.sig` of Node.js 24.22.2 is a good signature of key 5BE8A3F6...D356.
+- `adoptium.asc`: Eclipse Temurin signing key, downloaded from <https://packages.adoptium.net/artifactory/api/gpg/key/public> (fingerprint 3B04D753C9050D9A5D343F39843C48A565F8F04B, the fingerprint pinned by the official adoptium/temurin-build and adoptium/installer repositories). Verified: the `.sig` of `OpenJDK21U-jdk_x64_linux_hotspot_21.0.13_9.tar.gz` is a good signature of this key.
+- `pmd.asc`: PMD Release Signing Key (primary A0B5CA1A4E086838, release signatures made by the subkey with fingerprint 1E046C19ED2873D8C08AF7B8A0632691B78E3422), exported from keys.openpgp.org. Verified: the `.asc` of `pmd-dist-7.29.0-bin.zip` is a good signature of this key.
+- `ktlint.asc`: Ktlint signing key (fingerprint ADBC987D1A7B91DB6B0AAA81995EFBF4A3D20BEB, <ktlint-admin@pinterest.com>), exported from pgpkeys.eu (keys.openpgp.org strips its user ID, which makes it unusable by gpg). Verified: `ktlint.asc` of the ktlint 1.8.0 release is a good signature of the `ktlint` asset.
+- `detekt.asc`: detekt signing key (fingerprint 5F6C2148AD4911FE308110E5F0D0AE433308B042, <arturbosch@gmx.de>), exported from pgpkeys.eu. Verified: the Maven Central `.asc` of `detekt-cli-1.23.8-all.jar` is a good signature of this key.
+- `hashicorp.asc`: HashiCorp release signing key, downloaded from <https://www.hashicorp.com/.well-known/pgp-key.txt>. Fingerprint C874 011F 0AB4 0511 0D02 1055 3436 5D94 72D7 468F (matches the fingerprint published on <https://www.hashicorp.com/en/trust/security>)
+- `luacheck.asc`: signing key of the luacheck releases (lunarmodules/luacheck), downloaded from keys.openpgp.org by fingerprint 8979 3084 D5E6 49FA B8B6 1C65 B538 286D E04E CFE5

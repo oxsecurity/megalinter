@@ -75,6 +75,17 @@ linters:
       platform:
         - linux/amd64
         - linux/arm64
+    native_install:
+      method: npm
+      requires:
+        - runtime: node
+          version: ">=22.0.0"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     ide:
       sublime:
         - name: SublimeLinter-contrib-markdownlint
@@ -132,6 +143,17 @@ linters:
       platform:
         - linux/amd64
         - linux/arm64
+    native_install:
+      method: npm
+      requires:
+        - runtime: node
+          version: ">=22.17.0"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     ide:
       vscode:
         - name: Markdown Table Prettify Extension
@@ -202,6 +224,17 @@ linters:
       platform:
         - linux/amd64
         - linux/arm64
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.9"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     ide:
       vscode:
         - name: rumdl - Markdown Linter

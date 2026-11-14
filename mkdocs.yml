@@ -95,6 +95,7 @@ nav:
     - "Concourse CI": "install-concourse.md"
     - "Drone CI": "install-drone.md"
     - "Docker (CLI)": "install-docker.md"
+    - "Without Docker (beta)": "install-native.md"
     - "Run locally": "install-locally.md"
   - "Configuration": 
     - ".mega-linter.yml file": "config-file.md"

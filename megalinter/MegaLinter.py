@@ -34,6 +34,14 @@ from megalinter.constants import (
     ML_DOC_URL,
 )
 from megalinter.logger import display_header, initialize_logger, manage_upgrade_message
+from megalinter.native import selection as native_selection
+from megalinter.native.context import (
+    NativeError,
+    is_native_mode,
+    require_git_bash,
+)
+from megalinter.native.installer import NativeInstaller, host_version_matches
+from megalinter.native.resolve import spec_from_linter
 from megalinter.prerun_report import run_prerun
 from megalinter.removed_linters import (
     REMOVED_LINTERS_DOC_URL,
@@ -126,6 +134,11 @@ class Megalinter:
 
         # Initialization for lint request cases
         self.workspace = self.get_workspace(params)
+        self.native_mode = is_native_mode()
+        if self.native_mode is True:
+            utils.add_workspace_replacements(self.workspace)
+            if sys.platform == "win32":
+                require_git_bash()
         # Do not send secrets to linter executables
         config.init_config(self.request_id, self.workspace, params)
 
@@ -414,10 +427,12 @@ class Megalinter:
         # Check if a MegaLinter flavor can be used for this repo, except if:
         # - FLAVOR_SUGGESTIONS: false is defined
         # - VALIDATE_ALL_CODE_BASE is false, or diff failed (we don't have all the files to calculate the suggestion)
+        # - native mode, where flavors (Docker images) do not apply
         if (
             self.validate_all_code_base is True
             and config.get(self.request_id, "FLAVOR_SUGGESTIONS", "true") == "true"
             and not flavor_factory.is_custom_flavor()
+            and self.native_mode is not True
         ):
             self.flavor_suggestions = flavor_factory.get_megalinter_flavor_suggestions(
                 self.active_linters
@@ -492,6 +507,16 @@ class Megalinter:
         )
         return process_number
 
+    # Same as a pool worker (run_linters): the linter pre/post commands and the console
+    # reports are handled by the caller, as for a parallel run
+    def process_linters_group_in_process(self, linters):
+        for linter in linters:
+            linter.run(
+                run_commands_before_linters=False,
+                run_commands_after_linters=False,
+                skip_console_reporter=True,
+            )
+
     def process_linters_parallel(self, active_linters, linters_do_fixes):
         initial_groups = []
         follower_groups = {}
@@ -526,8 +551,18 @@ class Megalinter:
             for linter in active_linters:
                 initial_groups += [[linter]]
         initial_groups = linter_factory.sort_linters_groups_by_speed(initial_groups)
-        # Execute linters in asynchronous pool to improve overall performances
-        process_number = self.get_parallel_process_number()
+        group_count = len(initial_groups) + sum(
+            len(groups) for groups in follower_groups.values()
+        )
+        # A single group (e.g. the fixers of one language) runs in this process: each
+        # worker process imports MegaLinter on start (about a second with the "spawn"
+        # start method of Windows and macOS), more than a pool can save for one group
+        if group_count == 1:
+            self.process_linters_group_in_process(initial_groups[0])
+            return
+        # Execute linters in asynchronous pool to improve overall performances.
+        # Never more workers than groups: an idle worker still costs its start
+        process_number = min(self.get_parallel_process_number(), group_count)
         # Tunnel log records of worker processes through a multiprocessing queue,
         # so they are emitted by the initial handlers in the main process without
         # being garbled (stdlib equivalent of the former multiprocessing_logging dep)
@@ -540,6 +575,11 @@ class Megalinter:
         )
         root_logger.handlers = [QueueHandler(log_queue)]
         log_queue_listener.start()
+        # With "forkserver" (the default start method on Linux since Python 3.14, Docker
+        # images included), the server imports MegaLinter once and every worker is forked
+        # from it, instead of each worker importing it again (about a second each)
+        if mp.get_start_method() == "forkserver":
+            mp.set_forkserver_preload(["megalinter"])
         pool = mp.Pool(
             process_number,
             initializer=init_worker,
@@ -919,10 +959,87 @@ class Megalinter:
                     "Some linters were skipped due to activation rules:\n"
                     + reasons_lines
                 )
+        if self.native_mode is True:
+            self.apply_native_selection(
+                {linter.name for linter in all_linters}, self.linter_version_only
+            )
         # Sort linters by language and linter_name
         self.linters = sorted(
             self.linters, key=lambda lamb: (lamb.processing_order, lamb.descriptor_id)
         )
+
+    # Keep only the linters explicitly enabled for native mode, install the missing ones
+    def apply_native_selection(self, known_linter_keys, versions_only=False):
+        if versions_only is True:
+            return
+        selection = native_selection.select_native_linters(
+            self.request_id, self.linters, known_linter_keys
+        )
+        if len(selection.selected) == 0 and selection.wants_all is False:
+            logging.warning(native_selection.EMPTY_MESSAGE)
+        if len(selection.listed_not_active) > 0:
+            logging.info(
+                "Listed in NATIVE_LINTERS but not active for this repository "
+                "(activation rules, ENABLE/DISABLE...): "
+                + ", ".join(selection.listed_not_active)
+            )
+        if len(selection.not_listed) > 0 and self.show_skipped_native_linters():
+            logging.info(
+                "Skipped linters (not listed in NATIVE_LINTERS): "
+                + ", ".join(sorted(linter.name for linter in selection.not_listed))
+            )
+        installer = NativeInstaller(self.request_id)
+        missing_policy = config.get(
+            self.request_id, "NATIVE_MISSING_LINTERS", "install"
+        )
+        ready_linters = []
+        errors = []
+        for linter in selection.selected:
+            spec = spec_from_linter(linter)
+            try:
+                status, reason = installer.status(spec)
+                if status == "unsupported":
+                    raise NativeError(reason)
+                if status == "not installed":
+                    if missing_policy == "skip":
+                        logging.warning(f"{linter.name} is not installed: skipped")
+                        continue
+                    if missing_policy == "fail":
+                        raise NativeError(
+                            f"{linter.name} is not installed: run `megalinter install-linters`"
+                        )
+                    installer.install(spec)
+                linter.native_toolchain = installer.toolchain(spec)
+                self.check_host_linter_version(
+                    linter, installer.pinned_host_version(spec)
+                )
+                ready_linters.append(linter)
+            except NativeError as e:
+                if selection.wants_all is True:
+                    logging.warning(f"{linter.name} skipped in native mode: {e}")
+                else:
+                    errors.append(f"{linter.name}: {e}")
+        if len(errors) > 0:
+            raise NativeError("\n".join(errors))
+        self.linters = ready_linters
+
+    # A tool taken from the host can differ from the one of the Docker image used in CI
+    def check_host_linter_version(self, linter, pinned_version):
+        if pinned_version is None:
+            return
+        host_version = linter.get_linter_version()
+        if host_version == "ERROR" or host_version_matches(
+            host_version, pinned_version
+        ):
+            return
+        logging.warning(
+            f"{linter.name}: {linter.linter_name} {host_version} found on this machine, "
+            f"but the MegaLinter Docker image uses {pinned_version}: results may differ from CI. "
+            f"Install {linter.linter_name} {pinned_version} to get the same results"
+        )
+
+    def show_skipped_native_linters(self):
+        return config.get(self.request_id, "SHOW_SKIPPED_LINTERS", "true") == "true"
 
     # List all reporters, then instantiate each of them
     def load_reporters(self):

@@ -11,6 +11,30 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Breaking changes
 
 - Core
+
+  - **Faster runs**, most visible in native mode and on Windows:
+    - MegaLinter reads its linter definitions with PyYAML's C parser, about 10 times faster
+    - A run that has a single group of linters to run (for example a pre-commit hook on one Python file, with fixes) runs them directly instead of starting worker processes, and a run never starts more worker processes than it has linter groups
+    - On Linux (Python 3.14, Docker images included), worker processes no longer load MegaLinter again one by one
+    - Native mode reads the version of each installed linter once instead of running its `--version` command on every run, and looks for the language runtimes of the machine once per run instead of once per linter
+    - `mega-linter-runner --native` starts an installed exact `--release` without contacting PyPI, and keeps working offline with the beta it already installed
+
+    | Native run on Windows (6 linters, 4-core laptop)  | Before      | After      | Delta       |
+    |---------------------------------------------------|-------------|------------|-------------|
+    | One Python file with fixes (pre-commit hook case) | 11.1–11.9 s | 2.9–3.3 s  | about -73 % |
+    | Whole demo repository                             | 11.7–14.8 s | 8.9–10.3 s | about -25 % |
+
+  - **Run MegaLinter without Docker (beta)**: pick the linters you need and lint directly on Linux, macOS, WSL or Windows (Git Bash), with no multi-GB image to pull. See [Native mode](https://megalinter.io/latest/install-native/)
+    - List the linters allowed to run natively in **`NATIVE_LINTERS`** (example: `[PYTHON_BLACK, JAVASCRIPT_ES]`). The value `all` exists but is discouraged: it is slower, and you must fully trust every matching linter
+    - Linters are installed in `~/.megalinter` from **verified downloads** pinned by sha256, without administrator rights
+    - Missing language runtimes can be installed for you with **`NATIVE_INSTALL_RUNTIMES`** (`ask`, `auto`, `never`)
+    - Commands, plugins and remote `EXTENDS` declared by the analyzed repository are **ignored** unless you pass `--trust-repo-commands`
+    - Docker remains the default and the recommended mode, especially for code you do not fully trust
+    - New **pre-commit hooks** `megalinter-native-incremental` and `megalinter-native-full` lint the files of each commit without Docker. They run the MegaLinter version of their `rev`, and pre-commit installs the runner once instead of calling npx on each commit
+    - Works behind **proxies inspecting HTTPS**: set `UV_NATIVE_TLS=1` (and `NODE_USE_SYSTEM_CA=1`) to trust the certificates of your system, see [Corporate proxies](https://megalinter.io/latest/install-native/#corporate-proxies)
+    - Linters installed by MegaLinter always run the version of its Docker image. For **tools provided by your machine** (SwiftLint, Raku, scalafix...), a warning shows when their version differs from the Docker image
+    - New `megalinter` command on PyPI: `run`, `install-linters`, `list-linters`, `doctor`
+    - Not available on **Intel Macs**: `cryptography`, needed to verify the MegaLinter package, no longer publishes builds for them, and `mega-linter-runner --native` says so instead of failing during the install. Use Docker there
   - **Lighter Docker images**: the main image download shrinks by **21%**, with the same linters and the same behavior (#9497)
     - The Rust toolchain used by `RUST_CLIPPY` is now installed once instead of twice
     - Files never used at runtime are no longer shipped: leftover download archives, duplicate .NET tool packages and unused .NET framework builds, source maps and type declarations of Node.js linters and Salesforce CLI plugins, unused Rust and Dart runtime extras, and build caches
@@ -47,6 +71,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Fixes
 
   - Restore the **GitHub repository cards** on linter documentation pages and on the users page, after the `gh-card.dev` service shut down (#9433)
+  - **phplint**: the default configuration uses `file-extensions`, removing the deprecation warning printed by phplint 9.8 on every run
+  - Windows: the **Fixed** column of the summary counts the files fixed in subfolders (it showed 0 for them)
 
 - Reporters
 
@@ -59,9 +85,23 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - mega-linter-runner
 
+  - New **`--native`** option to run MegaLinter without Docker, and **`--install-linters`** to install the linters it needs (not to be confused with `--install`, which sets up MegaLinter in your repository)
+    - With `--native`, the files given as arguments are the only ones linted, and `--env` accepts the same quoted values as with Docker (`"'ENABLE=MARKDOWN,YAML'"`)
+
 - Agent Skills
 
+  - **megalinter-check** can now lint locally without a container engine, using native mode, after asking you
+    - It tells you which linters a native run skipped (the ones missing from `NATIVE_LINTERS`), and how to fix installs behind a proxy inspecting HTTPS
+  - **megalinter-setup** can add `NATIVE_LINTERS` to `.mega-linter.yml` when you want to lint without Docker
+
 - Dev
+
+  - The release build pins the native pre-commit hooks to the released version. Contributor skills cover native mode: `/prepare-release` (PyPI publish, pinned hooks, smoke test), `/review-descriptor` (`native_install` checklist), `/fix-linter-test` (native test failures), `/diagnose-config` (`NATIVE_*` variables), `/update-linter-version` (lock commits)
+  - New linter-level descriptor property **`native_install`** (how a linter is installed without Docker, per platform), documented in `.claude/rules/native-install.md`, with the runtime catalog `native-runtimes.yml` and the generated `megalinter/descriptors/native-locks/`. The build fails when a linter does not declare it for the 5 native platforms. Generated Dockerfiles are unchanged
+  - New package `megalinter/native/` (verified downloads, safe archive extraction, per-method installers, runtime provisioning, environment allowlist, trust gating) and the `megalinter` command (`megalinter/cli.py`)
+  - `native_install.linter_overrides` replaces linter properties only in native mode (container paths, executables), with `{{NATIVE_INSTALL_DIR}}`
+  - Linter tests run unchanged against native installs (`MEGALINTER_NATIVE=true`)
+  - `.automation/native_lock.py` generates the locks and verifies upstream provenance (GitHub attestation, cosign, GPG, checksums files); `.automation/native_ci.py` computes the CI matrix
   - Generated npm installs: the `.map` / `.d.ts` cleanup never ran, because an inline `# fix for ...` comment after `chown` commented out every following command once Docker joined the continued `RUN` lines. Fixed, and the cleanup now keeps `typescript/lib` and `@types` declarations used by type-aware linting
   - Rust: `build.py` no longer runs `rustup default stable` after installing the pinned `RUST_RUST_VERSION` toolchain (it installed a second, identical toolchain of ~800 MB). `ClippyLinter` now reads the rustup settings from `RUSTUP_HOME`, so it no longer switches to `stable` at runtime
   - Cleanups moved inside the `RUN` that creates the files (overlayfs never reclaims files deleted in a later layer): coursier now installs scalafix from `/tmp` in a single `RUN`, and the PowerShell tarball, detekt archive, luarocks cache, `sf` caches and npm logs are deleted where they are created
@@ -70,7 +110,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - LLM providers rewritten on `requests`: shared `LLMProvider` HTTP helper (retries on connection errors, 429 and 5xx with `Retry-After`, masked API keys in errors, `SSL_CERT_FILE` / `SSL_CERT_DIR` support) and `llm_provider_openai_compatible.py` adapter, covered by offline tests in `test_llm_providers_http.py`. The `llm` extra is removed, and so is the `build.py` override that stripped it from standalone images
 
 - CI
+
+  - **Test native mode**: installs every linter natively, then runs the usual linter tests against the native installs: on Linux x86-64 for pull requests and pushes to main, on the 5 native platforms (Linux x86-64 and ARM64, macOS Intel and Apple Silicon, Windows) nightly, on manual runs and for pull requests labeled `native-full-matrix`. **Native locks** regenerates the install locks after descriptor changes. **Deploy MegaLinter to PyPI** publishes the package with Trusted Publishing and attestations, like mega-linter-runner: beta on each push to main, release on each GitHub release, both approved in the `release-runner` environment
+  - Renovate also bumps the pinned versions of native installs (`native_install` in descriptors, runtimes in `native-runtimes.yml`)
+  - The npm (mega-linter-runner) and PyPI (megalinter) publish jobs end only once the new version can be downloaded from the registry, with its dist-tag and provenance attestation: npm processes uploads for several minutes after accepting them
+  - The PyPI package includes the default configurations and the core dependencies lock generated at publish time (ignored by git, so skipped by hatchling)
   - Dependency updates wait longer: Renovate (`minimumReleaseAge`) and Dependabot (`cooldown`) now propose an upgrade only once the release is **14 days old** (was 7). Security fixes are not delayed and still open immediately
+  - **Benchmark native mode**: manual workflow comparing native and Docker runs (install, run times, npx overhead, disk, memory, per-linter times and errors) on the 5 native platforms, with the published beta packages and a demo repository with planted problems
 
 - Linter versions upgrades (N)
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.58.0 to **1.59.0** on 2026-11-09

@@ -22,6 +22,17 @@ install:
       ARG PIP_CPPLINT_VERSION=2.0.2
   pip:
     - cpplint==${PIP_CPPLINT_VERSION}
+native_install:
+  method: pip
+  requires:
+    - runtime: python
+      version: ">=3.9"
+  platforms:
+    - linux/amd64
+    - linux/arm64
+    - darwin/amd64
+    - darwin/arm64
+    - windows/amd64
 supported_platforms:
   platform:
     - linux/amd64

@@ -115,6 +115,20 @@ linters:
                      case "$(basename "$tfm_dir")" in "net${keep}".*) ;; *) rm -rf "$tfm_dir" ;; esac; \
                    done; \
                  done
+    native_install:
+      method: dotnet_tool
+      version: "${CSHARP_CSHARPIER_VERSION}"
+      packages:
+        - csharpier
+      requires:
+        - runtime: dotnet
+          version: ">=8"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -194,6 +208,20 @@ linters:
                      case "$(basename "$tfm_dir")" in "net${keep}".*) ;; *) rm -rf "$tfm_dir" ;; esac; \
                    done; \
                  done
+    native_install:
+      method: dotnet_tool
+      version: "${CSHARP_ROSLYNATOR_VERSION}"
+      packages:
+        - roslynator.dotnet.cli
+      requires:
+        - runtime: dotnet
+          version: ">=8"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
