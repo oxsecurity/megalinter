@@ -22,6 +22,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Works behind **proxies inspecting HTTPS**: set `UV_NATIVE_TLS=1` (and `NODE_USE_SYSTEM_CA=1`) to trust the certificates of your system, see [Corporate proxies](https://megalinter.io/latest/install-native/#corporate-proxies)
     - Linters installed by MegaLinter always run the version of its Docker image. For **tools provided by your machine** (SwiftLint, Raku, scalafix...), a warning shows when their version differs from the Docker image
     - New `megalinter` command on PyPI: `run`, `install-linters`, `list-linters`, `doctor`
+    - Not available on **Intel Macs**: `cryptography`, needed to verify the MegaLinter package, no longer publishes builds for them, and `mega-linter-runner --native` says so instead of failing during the install. Use Docker there
   - **Lighter Docker images**: the main image download shrinks by **21%**, with the same linters and the same behavior (#9497)
     - The Rust toolchain used by `RUST_CLIPPY` is now installed once instead of twice
     - Files never used at runtime are no longer shipped: leftover download archives, duplicate .NET tool packages and unused .NET framework builds, source maps and type declarations of Node.js linters and Salesforce CLI plugins, unused Rust and Dart runtime extras, and build caches
