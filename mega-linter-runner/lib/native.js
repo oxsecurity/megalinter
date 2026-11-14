@@ -48,6 +48,11 @@ const UV_INSTALL_HELP = {
     "pipx install uv (or see https://docs.astral.sh/uv/getting-started/installation/)",
 };
 
+// Timestamp of a beta version (X.Y.Z.post0.devYYYYMMDDHHMMSS), comparable as a string
+function devTimestamp(version) {
+  return (version.split(".dev")[1] || "").padStart(14, "0");
+}
+
 export class NativeRunner {
   constructor({ spawnSyncFn, fetchFn, whichFn, home } = {}) {
     this.spawnSyncFn = spawnSyncFn || spawnSync;
@@ -284,8 +289,44 @@ export class NativeRunner {
     );
   }
 
+  // MegaLinter versions installed in MEGALINTER_HOME (each one verified when installed)
+  installedCoreVersions() {
+    const coreRoot = path.join(this.home, "core");
+    if (!fs.existsSync(coreRoot)) {
+      return [];
+    }
+    return fs
+      .readdirSync(coreRoot)
+      .filter((version) => fs.existsSync(path.join(coreRoot, version, ".ok")));
+  }
+
+  // An exact version already installed needs no network access (pre-commit hooks pinned to
+  // a release). For beta, PyPI is asked for the latest one, and when it can not be reached
+  // the most recent installed beta keeps working offline
+  async resolveCoreVersion(release) {
+    const wanted = release || NATIVE_DEFAULT_RELEASE;
+    const installed = this.installedCoreVersions();
+    if (wanted !== "beta" && installed.includes(wanted)) {
+      return wanted;
+    }
+    try {
+      return await this.resolveVersion(release);
+    } catch (error) {
+      const betas = installed
+        .filter((version) => version.includes(".dev"))
+        .sort((a, b) => devTimestamp(b).localeCompare(devTimestamp(a)));
+      if (wanted !== "beta" || betas.length === 0) {
+        throw error;
+      }
+      console.warn(
+        `Unable to check the latest MegaLinter beta on PyPI (${error.message}): using the installed ${betas[0]}`,
+      );
+      return betas[0];
+    }
+  }
+
   async ensureCore(release, uv) {
-    const version = await this.resolveVersion(release);
+    const version = await this.resolveCoreVersion(release);
     const coreDir = path.join(this.home, "core", version);
     const venv = path.join(coreDir, "venv");
     const marker = path.join(coreDir, ".ok");
