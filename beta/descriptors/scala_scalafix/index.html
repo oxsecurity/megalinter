@@ -4020,6 +4020,33 @@
 
                 
               
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python_ty/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  ty
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
             </ul>
           </nav>
         
@@ -12606,7 +12633,7 @@
 <td style="text-align: center;"><a class="glightbox" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" data-type="image"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/supported-linters/">all</a></td>
 <td style="text-align: left;">Default MegaLinter Flavor</td>
-<td style="text-align: center;">133</td>
+<td style="text-align: center;">134</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta" /></a> <a class="glightbox" data-type="image" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter" /></a></td>
 </tr>
 </tbody>
@@ -12785,15 +12812,15 @@ Common<span class="w"> </span>options:
 <div class="highlight"><pre><span></span><code><span class="c"># Parent descriptor install</span>
 <span class="k">ENV</span><span class="w"> </span><span class="nv">JAVA_HOME</span><span class="o">=</span>/usr/lib/jvm/java-21-openjdk
 <span class="k">ENV</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$JAVA_HOME</span><span class="s2">/bin:</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span><span class="s2">"</span>
-<span class="c"># renovate: datasource=github-tags depName=coursier/coursier</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">SCALA_COURSIER_VERSION</span><span class="o">=</span><span class="m">2</span>.1.26
-<span class="k">RUN</span><span class="w"> </span>curl<span class="w"> </span>--retry-all-errors<span class="w"> </span>--retry<span class="w"> </span><span class="m">10</span><span class="w"> </span>-fLo<span class="w"> </span>coursier<span class="w"> </span>https://github.com/coursier/coursier/releases/download/v<span class="si">${</span><span class="nv">SCALA_COURSIER_VERSION</span><span class="si">}</span>/coursier.jar<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">        </span>chmod<span class="w"> </span>+x<span class="w"> </span>coursier
-
 <span class="c"># Linter install</span>
 <span class="c"># renovate: datasource=github-tags depName=scalacenter/scalafix</span>
 <span class="k">ARG</span><span class="w"> </span><span class="nv">SCALA_SCALAFIX_VERSION</span><span class="o">=</span><span class="m">0</span>.14.9
-<span class="k">RUN</span><span class="w"> </span>./coursier<span class="w"> </span>install<span class="w"> </span>scalafix:<span class="si">${</span><span class="nv">SCALA_SCALAFIX_VERSION</span><span class="si">}</span><span class="w"> </span>--quiet<span class="w"> </span>--install-dir<span class="w"> </span>/usr/bin<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/root/.cache
+<span class="c"># renovate: datasource=github-tags depName=coursier/coursier</span>
+<span class="k">ARG</span><span class="w"> </span><span class="nv">SCALA_COURSIER_VERSION</span><span class="o">=</span><span class="m">2</span>.1.26
+<span class="k">RUN</span><span class="w"> </span>curl<span class="w"> </span>--retry-all-errors<span class="w"> </span>--retry<span class="w"> </span><span class="m">10</span><span class="w"> </span>-fLo<span class="w"> </span>/tmp/coursier<span class="w"> </span>https://github.com/coursier/coursier/releases/download/v<span class="si">${</span><span class="nv">SCALA_COURSIER_VERSION</span><span class="si">}</span>/coursier.jar<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>chmod<span class="w"> </span>+x<span class="w"> </span>/tmp/coursier<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>/tmp/coursier<span class="w"> </span>install<span class="w"> </span>scalafix:<span class="si">${</span><span class="nv">SCALA_SCALAFIX_VERSION</span><span class="si">}</span><span class="w"> </span>--quiet<span class="w"> </span>--install-dir<span class="w"> </span>/usr/bin<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>rm<span class="w"> </span>-rf<span class="w"> </span>/tmp/coursier<span class="w"> </span>/root/.cache
 </code></pre></div></li>
 </ul>
 <h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>

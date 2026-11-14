@@ -4018,6 +4018,33 @@
 
                 
               
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python_ty/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  ty
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
             </ul>
           </nav>
         
@@ -12602,7 +12629,7 @@
 <td style="text-align: center;"><a class="glightbox" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" data-type="image"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/supported-linters/">all</a></td>
 <td style="text-align: left;">Default MegaLinter Flavor</td>
-<td style="text-align: center;">133</td>
+<td style="text-align: center;">134</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta" /></a> <a class="glightbox" data-type="image" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter" /></a></td>
 </tr>
 <tr>
@@ -12657,7 +12684,21 @@
 <span class="k">ARG</span><span class="w"> </span><span class="nv">REPOSITORY_DEVSKIM_VERSION</span><span class="o">=</span><span class="m">1</span>.0.70
 <span class="k">RUN</span><span class="w"> </span>apk<span class="w"> </span>add<span class="w"> </span>--no-cache<span class="w"> </span>dotnet10-sdk<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>install<span class="w"> </span>-d<span class="w"> </span>/usr/local/dotnet-tools
 <span class="k">ENV</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span><span class="s2">:/usr/local/dotnet-tools"</span>
-<span class="k">RUN</span><span class="w"> </span>dotnet<span class="w"> </span>tool<span class="w"> </span>install<span class="w"> </span>--allow-roll-forward<span class="w"> </span>--tool-path<span class="w"> </span>/usr/local/dotnet-tools<span class="w"> </span>Microsoft.CST.DevSkim.CLI<span class="w"> </span>--version<span class="w"> </span><span class="si">${</span><span class="nv">REPOSITORY_DEVSKIM_VERSION</span><span class="si">}</span>
+<span class="k">RUN</span><span class="w"> </span>dotnet<span class="w"> </span>tool<span class="w"> </span>install<span class="w"> </span>--allow-roll-forward<span class="w"> </span>--tool-path<span class="w"> </span>/usr/local/dotnet-tools<span class="w"> </span>Microsoft.CST.DevSkim.CLI<span class="w"> </span>--version<span class="w"> </span><span class="si">${</span><span class="nv">REPOSITORY_DEVSKIM_VERSION</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>find<span class="w"> </span>/usr/local/dotnet-tools/.store<span class="w"> </span>-name<span class="w"> </span><span class="s2">"*.nupkg"</span><span class="w"> </span>-delete<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nv">DOTNET_SDK_MAJOR</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>dotnet<span class="w"> </span>--version<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d.<span class="w"> </span>-f1<span class="k">)</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>tools_dir<span class="w"> </span><span class="k">in</span><span class="w"> </span>/usr/local/dotnet-tools/.store/*/*/*/*/tools<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="se">\</span>
+<span class="w">         </span><span class="nv">keep</span><span class="o">=</span><span class="s2">""</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">         </span><span class="k">for</span><span class="w"> </span>tfm_dir<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">"</span><span class="nv">$tools_dir</span><span class="s2">"</span>/net<span class="o">[</span><span class="m">0</span>-9<span class="o">]</span>*.<span class="o">[</span><span class="m">0</span>-9<span class="o">]</span>*<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="se">\</span>
+<span class="w">           </span><span class="nv">tfm_major</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">tfm_dir</span><span class="p">##*/net</span><span class="si">}</span><span class="s2">"</span><span class="p">;</span><span class="w"> </span><span class="nv">tfm_major</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">tfm_major</span><span class="p">%%.*</span><span class="si">}</span><span class="s2">"</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">           </span><span class="k">case</span><span class="w"> </span><span class="s2">"</span><span class="nv">$tfm_major</span><span class="s2">"</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">""</span><span class="p">|</span>*<span class="o">[</span>!0-9<span class="o">]</span>*<span class="o">)</span><span class="w"> </span><span class="k">continue</span><span class="w"> </span><span class="p">;;</span><span class="w"> </span><span class="k">esac</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">           </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">"</span><span class="nv">$tfm_major</span><span class="s2">"</span><span class="w"> </span>-le<span class="w"> </span><span class="s2">"</span><span class="nv">$DOTNET_SDK_MAJOR</span><span class="s2">"</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">"</span><span class="nv">$tfm_major</span><span class="s2">"</span><span class="w"> </span>-gt<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">keep</span><span class="k">:-</span><span class="nv">0</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nv">keep</span><span class="o">=</span><span class="s2">"</span><span class="nv">$tfm_major</span><span class="s2">"</span><span class="p">;</span><span class="w"> </span><span class="k">fi</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">         </span><span class="k">done</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">         </span><span class="o">[</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">"</span><span class="nv">$keep</span><span class="s2">"</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">         </span><span class="k">for</span><span class="w"> </span>tfm_dir<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">"</span><span class="nv">$tools_dir</span><span class="s2">"</span>/net<span class="o">[</span><span class="m">0</span>-9<span class="o">]</span>*<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="se">\</span>
+<span class="w">           </span><span class="k">case</span><span class="w"> </span><span class="s2">"</span><span class="k">$(</span>basename<span class="w"> </span><span class="s2">"</span><span class="nv">$tfm_dir</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">"net</span><span class="si">${</span><span class="nv">keep</span><span class="si">}</span><span class="s2">"</span>.*<span class="o">)</span><span class="w"> </span><span class="p">;;</span><span class="w"> </span>*<span class="o">)</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span><span class="s2">"</span><span class="nv">$tfm_dir</span><span class="s2">"</span><span class="w"> </span><span class="p">;;</span><span class="w"> </span><span class="k">esac</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">         </span><span class="k">done</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">       </span><span class="k">done</span>
 </code></pre></div></li>
 </ul>
 <h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>

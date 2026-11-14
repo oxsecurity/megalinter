@@ -418,6 +418,9 @@
         <loc>https://megalinter.io/beta/descriptors/python_ruff_format/</loc>
       </url>
       <url>
+        <loc>https://megalinter.io/beta/descriptors/python_ty/</loc>
+      </url>
+      <url>
         <loc>https://megalinter.io/beta/descriptors/r/</loc>
       </url>
       <url>

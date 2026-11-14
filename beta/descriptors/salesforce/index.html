@@ -4020,6 +4020,33 @@
 
                 
               
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python_ty/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  ty
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
             </ul>
           </nav>
         
@@ -12357,7 +12384,8 @@
 <span class="k">RUN</span><span class="w"> </span>sf<span class="w"> </span>plugins<span class="w"> </span>install<span class="w"> </span>@salesforce/plugin-packaging@<span class="si">${</span><span class="nv">NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span>y<span class="p">|</span>sf<span class="w"> </span>plugins<span class="w"> </span>install<span class="w"> </span>sfdx-hardis@<span class="si">${</span><span class="nv">SFDX_HARDIS_VERSION</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">(</span>npm<span class="w"> </span>cache<span class="w"> </span>clean<span class="w"> </span>--force<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span><span class="o">)</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/root/.npm/_cacache
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>find<span class="w"> </span>/usr/local/share/sf/node_modules<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span><span class="se">\(</span><span class="w"> </span>-name<span class="w"> </span><span class="s2">"*.map"</span><span class="w"> </span>-o<span class="w"> </span>-name<span class="w"> </span><span class="s2">"*.d.ts"</span><span class="w"> </span>-o<span class="w"> </span>-name<span class="w"> </span><span class="s2">"*.d.mts"</span><span class="w"> </span>-o<span class="w"> </span>-name<span class="w"> </span><span class="s2">"*.d.cts"</span><span class="w"> </span><span class="se">\)</span><span class="w"> </span>-not<span class="w"> </span>-path<span class="w"> </span><span class="s2">"*/typescript/lib/*"</span><span class="w"> </span>-not<span class="w"> </span>-path<span class="w"> </span><span class="s2">"*/@types/*"</span><span class="w"> </span>-delete<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/root/.npm<span class="w"> </span>/root/.cache/sf<span class="w"> </span>/tmp/v8-compile-cache-*
 <span class="k">ENV</span><span class="w"> </span><span class="nv">SF_AUTOUPDATE_DISABLE</span><span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="nv">SF_CLI_DISABLE_AUTOUPDATE</span><span class="o">=</span><span class="nb">true</span>
 </code></pre></div></li>
 </ul>

@@ -4020,6 +4020,33 @@
 
                 
               
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python_ty/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  ty
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
             </ul>
           </nav>
         
@@ -12704,7 +12731,7 @@
 <td style="text-align: center;"><a class="glightbox" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" data-type="image"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/supported-linters/">all</a></td>
 <td style="text-align: left;">Default MegaLinter Flavor</td>
-<td style="text-align: center;">133</td>
+<td style="text-align: center;">134</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta" /></a> <a class="glightbox" data-type="image" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter" /></a></td>
 </tr>
 <tr>
@@ -12734,7 +12761,7 @@
 <div class="highlight"><pre><span></span><code>sf<span class="w"> </span>code-analyzer<span class="w"> </span>run<span class="w"> </span>--rule-selector<span class="w"> </span>apexguru<span class="w"> </span>--workspace<span class="w"> </span>.<span class="w"> </span>--include-suggestions<span class="w"> </span>--output-file<span class="w"> </span>results.csv
 </code></pre></div>
 <h3 id="help-content">Help content</h3>
-<div class="highlight"><pre><span></span><code><span class="w"> </span>›<span class="w">   </span>Warning:<span class="w"> </span>@salesforce/cli<span class="w"> </span>update<span class="w"> </span>available<span class="w"> </span>from<span class="w"> </span><span class="m">2</span>.157.7<span class="w"> </span>to<span class="w"> </span><span class="m">2</span>.157.8.
+<div class="highlight"><pre><span></span><code><span class="w"> </span>›<span class="w">   </span>Warning:<span class="w"> </span>@salesforce/cli<span class="w"> </span>update<span class="w"> </span>available<span class="w"> </span>from<span class="w"> </span><span class="m">2</span>.157.7<span class="w"> </span>to<span class="w"> </span><span class="m">2</span>.158.7.
 Analyze<span class="w"> </span>your<span class="w"> </span>code<span class="w"> </span>with<span class="w"> </span>a<span class="w"> </span>selection<span class="w"> </span>of<span class="w"> </span>rules<span class="w"> </span>to<span class="w"> </span>ensure<span class="w"> </span>good<span class="w"> </span>coding<span class="w"> </span>practices.
 
 USAGE
@@ -12791,14 +12818,16 @@ GLOBAL<span class="w"> </span>FLAGS
 <span class="k">RUN</span><span class="w"> </span>sf<span class="w"> </span>plugins<span class="w"> </span>install<span class="w"> </span>@salesforce/plugin-packaging@<span class="si">${</span><span class="nv">NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span>y<span class="p">|</span>sf<span class="w"> </span>plugins<span class="w"> </span>install<span class="w"> </span>sfdx-hardis@<span class="si">${</span><span class="nv">SFDX_HARDIS_VERSION</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">(</span>npm<span class="w"> </span>cache<span class="w"> </span>clean<span class="w"> </span>--force<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span><span class="o">)</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/root/.npm/_cacache
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>find<span class="w"> </span>/usr/local/share/sf/node_modules<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span><span class="se">\(</span><span class="w"> </span>-name<span class="w"> </span><span class="s2">"*.map"</span><span class="w"> </span>-o<span class="w"> </span>-name<span class="w"> </span><span class="s2">"*.d.ts"</span><span class="w"> </span>-o<span class="w"> </span>-name<span class="w"> </span><span class="s2">"*.d.mts"</span><span class="w"> </span>-o<span class="w"> </span>-name<span class="w"> </span><span class="s2">"*.d.cts"</span><span class="w"> </span><span class="se">\)</span><span class="w"> </span>-not<span class="w"> </span>-path<span class="w"> </span><span class="s2">"*/typescript/lib/*"</span><span class="w"> </span>-not<span class="w"> </span>-path<span class="w"> </span><span class="s2">"*/@types/*"</span><span class="w"> </span>-delete<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/root/.npm<span class="w"> </span>/root/.cache/sf<span class="w"> </span>/tmp/v8-compile-cache-*
 <span class="k">ENV</span><span class="w"> </span><span class="nv">SF_AUTOUPDATE_DISABLE</span><span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="nv">SF_CLI_DISABLE_AUTOUPDATE</span><span class="o">=</span><span class="nb">true</span>
 <span class="c"># Linter install</span>
 <span class="c"># renovate: datasource=npm depName=@salesforce/plugin-code-analyzer</span>
 <span class="k">ARG</span><span class="w"> </span><span class="nv">SALESFORCE_CODE_ANALYZER_VERSION</span><span class="o">=</span><span class="m">5</span>.16.0
 <span class="k">RUN</span><span class="w"> </span>sf<span class="w"> </span>plugins<span class="w"> </span>install<span class="w"> </span>code-analyzer@<span class="si">${</span><span class="nv">SALESFORCE_CODE_ANALYZER_VERSION</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">(</span>npm<span class="w"> </span>cache<span class="w"> </span>clean<span class="w"> </span>--force<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span><span class="o">)</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/root/.npm/_cacache
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>find<span class="w"> </span>/usr/local/share/sf/node_modules<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span><span class="se">\(</span><span class="w"> </span>-name<span class="w"> </span><span class="s2">"*.map"</span><span class="w"> </span>-o<span class="w"> </span>-name<span class="w"> </span><span class="s2">"*.d.ts"</span><span class="w"> </span>-o<span class="w"> </span>-name<span class="w"> </span><span class="s2">"*.d.mts"</span><span class="w"> </span>-o<span class="w"> </span>-name<span class="w"> </span><span class="s2">"*.d.cts"</span><span class="w"> </span><span class="se">\)</span><span class="w"> </span>-not<span class="w"> </span>-path<span class="w"> </span><span class="s2">"*/typescript/lib/*"</span><span class="w"> </span>-not<span class="w"> </span>-path<span class="w"> </span><span class="s2">"*/@types/*"</span><span class="w"> </span>-delete<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/root/.npm<span class="w"> </span>/root/.cache/sf<span class="w"> </span>/tmp/v8-compile-cache-*
 </code></pre></div></li>
 </ul>
 <h2 id="known-errors-and-resolutions">Known errors and resolutions</h2>
