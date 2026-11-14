@@ -20655,6 +20655,15 @@
       "x-order": 910070,
       "x-section": "MISC"
     },
+    "NATIVE_SUGGESTIONS": {
+      "default": true,
+      "description": "When MegaLinter runs in Docker and NATIVE_LINTERS is not defined, suggests trying native mode (MegaLinter without Docker) to lint faster on your machine. Set to false to hide the suggestion",
+      "title": "Native mode suggestions",
+      "type": "boolean",
+      "x-category": "GENERAL",
+      "x-order": 700115,
+      "x-section": "OUTPUT"
+    },
     "OLLAMA_BASE_URL": {
       "default": "http://localhost:11434",
       "description": "Base URL to connect to Ollama server, with or without the /api segment. /api/generate is appended to it",

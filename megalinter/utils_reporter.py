@@ -288,6 +288,17 @@ def build_markdown_summary_footer(reporter_self, action_run_url=""):
             if not is_custom_flavor():
                 blocks.append(custom_flavor_message)
 
+    if reporter_self.master.native_suggestion is not None:
+        native_lines = build_native_suggestion_lines(
+            reporter_self.master.native_suggestion, markdown=True
+        )
+        blocks.append(
+            native_lines[0]
+            + os.linesep
+            + os.linesep
+            + os.linesep.join(f"  {line}" for line in native_lines[1:])
+        )
+
     blocks += [
         _build_markdown_summary_promotion(reporter_self),
         config.get(
@@ -295,6 +306,41 @@ def build_markdown_summary_footer(reporter_self, action_run_url=""):
         ),
     ]
     return _join_markdown_blocks(blocks)
+
+
+# Invite Docker users who have not set up native mode yet to try it on their machine
+def build_native_suggestion(request_id, native_mode):
+    if (
+        config.get(request_id, "NATIVE_SUGGESTIONS", "true") != "true"
+        or native_mode is True
+        or len(config.get_list(request_id, "NATIVE_LINTERS", [])) > 0
+    ):
+        return None
+    return {
+        "documentation": f"{ML_DOC_URL}/install-native/",
+        "agent_plugin_documentation": f"{ML_DOC_URL}/agent-plugins/",
+        "skill": "megalinter-setup",
+    }
+
+
+def build_native_suggestion_lines(suggestion, markdown=False):
+    documentation = suggestion["documentation"]
+    agent_plugin = (
+        f"MegaLinter agent plugin ({suggestion['agent_plugin_documentation']})"
+    )
+    if markdown:
+        documentation = f"[Native mode]({documentation})"
+        agent_plugin = (
+            f"[MegaLinter agent plugin]({suggestion['agent_plugin_documentation']})"
+        )
+    return [
+        "Lint faster on your machine with MegaLinter native mode (beta, without Docker): "
+        "only the linters you list in `NATIVE_LINTERS` are installed, and a run starts in seconds. "
+        "(Skip this info by defining `NATIVE_SUGGESTIONS: false`)",
+        f"- Documentation: {documentation}",
+        f"- With a coding agent: install the {agent_plugin}, "
+        f"then ask your agent to set up native mode with the `{suggestion['skill']}` skill",
+    ]
 
 
 def _build_markdown_summary_promotion(reporter_self) -> str:
