@@ -42,8 +42,8 @@ class RuntimeInfo:
 
 # The catalog and the runtimes found on the host do not change during a run: they were
 # read again for each native linter (one "--version" process per linter and runtime)
-RUNTIME_CATALOG_CACHE = {}
-HOST_RUNTIME_CACHE = {}
+RUNTIME_CATALOG_CACHE: dict[str, dict] = {}
+HOST_RUNTIME_CACHE: dict[tuple[str, str], RuntimeInfo] = {}
 
 
 def load_runtime_catalog():

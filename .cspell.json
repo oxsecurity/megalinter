@@ -1920,6 +1920,7 @@
         "CAFILE",
         "backslashreplace",
         "libyaml",
+        "getpid",
         "SYSTEMROOT",
         "temurin",
         "Temurin",
