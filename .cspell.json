@@ -1917,6 +1917,8 @@
         "ALLUSERSPROFILE",
         "SYSTEMDRIVE",
         "ucrt",
+        "CAFILE",
+        "backslashreplace",
         "SYSTEMROOT",
         "temurin",
         "Temurin",
