@@ -1919,9 +1919,12 @@
         "ucrt",
         "CAFILE",
         "backslashreplace",
+        "machdep",
+        "maxrss",
         "libyaml",
         "getpid",
         "SYSTEMROOT",
+        "taskkill",
         "temurin",
         "Temurin",
         "WRONLY"
