@@ -1180,6 +1180,7 @@
         "nolintafter",
         "nolock",
         "nonblocking",
+        "noformat",
         "nonfrenchspacing",
         "noninteractive",
         "Nonwords",
