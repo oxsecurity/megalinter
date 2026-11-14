@@ -95,6 +95,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [npm-package-json-lint](https://npmpackagejsonlint.org/) from 11.0.0 to **11.0.1** on 2026-11-11
   - [phpstan](https://phpstan.org/) from 2.3.2 to **2.3.5** on 2026-11-11
   - [git_diff](https://git-scm.com) from 2.54.0 to **2.54.1** on 2026-11-11
+  - [rumdl](https://github.com/rvben/rumdl) from 0.3.0 to **0.3.2** on 2026-11-13
 <!-- linter-versions-end -->
 
 ## [v10.2.0] - 2026-10-31
