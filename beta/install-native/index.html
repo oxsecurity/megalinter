@@ -806,6 +806,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#corporate-proxies" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Corporate proxies
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#security-model" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -12325,6 +12336,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#corporate-proxies" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Corporate proxies
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#security-model" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -12425,11 +12447,12 @@
 </li>
 <li>
 <p>Install them, then run:</p>
-<div class="highlight"><pre><span></span><code>npx<span class="w"> </span>mega-linter-runner<span class="w"> </span>--install-linters<span class="w"> </span>--release<span class="w"> </span>beta
-npx<span class="w"> </span>mega-linter-runner<span class="w"> </span>--native<span class="w"> </span>--release<span class="w"> </span>beta
+<div class="highlight"><pre><span></span><code>npx<span class="w"> </span>mega-linter-runner@beta<span class="w"> </span>--install-linters<span class="w"> </span>--release<span class="w"> </span>beta
+npx<span class="w"> </span>mega-linter-runner@beta<span class="w"> </span>--native<span class="w"> </span>--release<span class="w"> </span>beta
 </code></pre></div>
 </li>
 </ol>
+<p>While native mode is in beta, use the beta of <code>mega-linter-runner</code> (<code>@beta</code>): released versions older than native mode do not know these options.</p>
 <p>The linter keys are the ones used everywhere else in MegaLinter (<code>ENABLE_LINTERS</code>, <code>DISABLE_LINTERS</code>...). Each <a href="../supported-linters/">linter page</a> has a "native mode" section with its key and the platforms it supports.</p>
 <blockquote>
 <p><strong>Note:</strong> <code>--install-linters</code> installs linters for native mode. It is not <code>--install</code>, which sets up MegaLinter in your repository (configuration and CI files).</p>
@@ -12495,6 +12518,12 @@ npx<span class="w"> </span>mega-linter-runner<span class="w"> </span>--native<sp
 </tbody>
 </table>
 <p>Ruby, R and Rust have no portable, verifiable download: install them with your package manager.</p>
+<h2 id="corporate-proxies">Corporate proxies</h2>
+<p>Downloads go through <code>HTTP_PROXY</code> / <code>HTTPS_PROXY</code>. When your network or antivirus inspects HTTPS connections (uv fails with <code>invalid peer certificate: UnknownIssuer</code>), tell the installers to trust the certificates of your system:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">UV_NATIVE_TLS</span><span class="o">=</span><span class="m">1</span><span class="w">             </span><span class="c1"># uv (MegaLinter itself and Python linters)</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">NODE_USE_SYSTEM_CA</span><span class="o">=</span><span class="m">1</span><span class="w">        </span><span class="c1"># Node.js linters</span>
+</code></pre></div>
+<p><code>SSL_CERT_FILE</code>, <code>REQUESTS_CA_BUNDLE</code>, <code>NODE_EXTRA_CA_CERTS</code>, <code>PIP_CERT</code> and <code>NPM_CONFIG_CAFILE</code> are given to the installers too.</p>
 <h2 id="security-model">Security model</h2>
 <ul>
 <li>Commands declared by the analyzed repository (<code>PRE_COMMANDS</code>, <code>POST_COMMANDS</code>), <code>PLUGINS</code> and remote <code>EXTENDS</code> are <strong>ignored</strong> in native mode, because they would run on your machine with your privileges. Use <code>--trust-repo-commands</code> (or <code>NATIVE_TRUST_REPO_COMMANDS=true</code> in the environment, never in <code>.mega-linter.yml</code>) only for a repository you fully trust.</li>
@@ -12553,7 +12582,7 @@ npx<span class="w"> </span>mega-linter-runner<span class="w"> </span>--native<sp
 </code></pre></div>
 <ul>
 <li>Only the linters of <code>NATIVE_LINTERS</code> run, on the files of the commit, and their fixes are applied</li>
-<li>Install them once with <code>npx mega-linter-runner --install-linters</code>: a hook can not ask whether to install a missing language runtime</li>
+<li>Install them once with <code>npx mega-linter-runner@beta --install-linters --release beta</code>: a hook can not ask whether to install a missing language runtime</li>
 <li><code>megalinter-incremental</code> and <code>megalinter-full</code> are the same hooks with Docker</li>
 </ul>
 <h2 id="configuration">Configuration</h2>

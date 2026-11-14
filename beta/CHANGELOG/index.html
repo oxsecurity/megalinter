@@ -15653,6 +15653,7 @@
 <li>Commands, plugins and remote <code>EXTENDS</code> declared by the analyzed repository are <strong>ignored</strong> unless you pass <code>--trust-repo-commands</code></li>
 <li>Docker remains the default and the recommended mode, especially for code you do not fully trust</li>
 <li>New <strong>pre-commit hooks</strong> <code>megalinter-native-incremental</code> and <code>megalinter-native-full</code> lint the files of each commit without Docker</li>
+<li>Works behind <strong>proxies inspecting HTTPS</strong>: set <code>UV_NATIVE_TLS=1</code> (and <code>NODE_USE_SYSTEM_CA=1</code>) to trust the certificates of your system, see <a href="https://megalinter.io/latest/install-native/#corporate-proxies">Corporate proxies</a></li>
 <li>Linters installed by MegaLinter always run the version of its Docker image. For <strong>tools provided by your machine</strong> (SwiftLint, Raku, scalafix...), a warning shows when their version differs from the Docker image</li>
 <li>New <code>megalinter</code> command on PyPI: <code>run</code>, <code>install-linters</code>, <code>list-linters</code>, <code>doctor</code></li>
 </ul>
