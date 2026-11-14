@@ -15836,6 +15836,7 @@
 <li>The npm (mega-linter-runner) and PyPI (megalinter) publish jobs end only once the new version can be downloaded from the registry, with its dist-tag and provenance attestation: npm processes uploads for several minutes after accepting them</li>
 <li>The PyPI package includes the default configurations and the core dependencies lock generated at publish time (ignored by git, so skipped by hatchling)</li>
 <li>Dependency updates wait longer: Renovate (<code>minimumReleaseAge</code>) and Dependabot (<code>cooldown</code>) now propose an upgrade only once the release is <strong>14 days old</strong> (was 7). Security fixes are not delayed and still open immediately</li>
+<li><strong>Benchmark native mode</strong>: manual workflow comparing native and Docker runs (install, run times, npx overhead, disk, memory, per-linter times and errors) on the 5 native platforms, with the published beta packages and a demo repository with planted problems</li>
 </ul>
 </li>
 </ul>
