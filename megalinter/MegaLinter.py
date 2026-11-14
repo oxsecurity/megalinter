@@ -48,6 +48,7 @@ from megalinter.removed_linters import (
     find_removed_references,
 )
 from megalinter.utils_reporter import (
+    build_native_suggestion,
     log_section_end,
     log_section_start,
     register_user_notification,
@@ -226,6 +227,7 @@ class Megalinter:
         self.updated_sources_failure = False
         self.fail_if_updated_sources = self.read_fail_if_updated_sources()
         self.flavor_suggestions = None
+        self.native_suggestion = None
 
         # Initialize plugins
         self.pre_commands_results = pre_post_factory.run_pre_commands(
@@ -437,6 +439,10 @@ class Megalinter:
             self.flavor_suggestions = flavor_factory.get_megalinter_flavor_suggestions(
                 self.active_linters
             )
+
+        self.native_suggestion = build_native_suggestion(
+            self.request_id, self.native_mode
+        )
 
         # Run user-defined commands
         self.post_commands_results = pre_post_factory.run_post_commands(self)

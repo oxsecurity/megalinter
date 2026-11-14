@@ -158,6 +158,8 @@ repos:
 | `NATIVE_OFFLINE`              | `false`         | Install only from the local download cache                            |
 | `MEGALINTER_HOME`             | `~/.megalinter` | Where linters, runtimes and downloads are stored                      |
 
+When MegaLinter runs in Docker and your `.mega-linter.yml` has no `NATIVE_LINTERS`, its reports suggest trying native mode. Define `NATIVE_SUGGESTIONS: false` to hide this suggestion.
+
 ## Differences with Docker
 
 - Results can differ from Docker: operating system, tool versions provided by the host, file system case sensitivity and path separators.

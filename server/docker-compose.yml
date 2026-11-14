@@ -35,6 +35,7 @@ services:
     environment:
       # Megalinter variables
       - FLAVOR_SUGGESTIONS=false
+      - NATIVE_SUGGESTIONS=false
       # Worker variables
       - MEGALINTER_SERVER=true
       - MEGALINTER_SERVER_REDIS_HOST=megalinter_server_redis

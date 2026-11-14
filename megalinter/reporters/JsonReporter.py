@@ -28,6 +28,7 @@ class JsonReporter(Reporter):
         "return_code",
         "has_updated_sources",
         "flavor_suggestions",
+        "native_suggestion",
         "pre_commands_results",
         "post_commands_results",
     ]

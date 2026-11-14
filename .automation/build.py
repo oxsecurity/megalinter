@@ -835,6 +835,7 @@ def generate_linter_dockerfiles():
             extra_lines = [
                 f"ENV ENABLE_LINTERS={linter.name} \\",
                 "    FLAVOR_SUGGESTIONS=false \\",
+                "    NATIVE_SUGGESTIONS=false \\",
                 f"    SINGLE_LINTER={linter.name} \\",
                 "    PRINT_ALPACA=false \\",
                 "    LOG_FILE=none \\",

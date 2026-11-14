@@ -104,6 +104,7 @@ def linter_test_setup(params=None):
     config.set_value(request_id, "GITHUB_COMMENT_REPORTER", "false")
     config.set_value(request_id, "CONFIG_REPORTER", "false")
     config.set_value(request_id, "FLAVOR_SUGGESTIONS", "false")
+    config.set_value(request_id, "NATIVE_SUGGESTIONS", "false")
     config.set_value(request_id, "IGNORE_GITIGNORED_FILES", "true")
     config.set_value(request_id, "VALIDATE_ALL_CODEBASE", "true")
     config.set_value(request_id, "CLEAR_REPORT_FOLDER", "true")

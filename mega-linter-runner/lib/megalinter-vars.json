@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "variable_count": 2917,
+    "variable_count": 2918,
     "categories": {
       "ACTION": 4,
       "ACTION_ACTIONLINT": 17,
@@ -55,7 +55,7 @@
       "ENV": 4,
       "ENV_DOTENV_LINTER": 15,
       "FILEIO_REPORTER": 2,
-      "GENERAL": 65,
+      "GENERAL": 66,
       "GHERKIN": 4,
       "GHERKIN_GHERKIN_LINT": 17,
       "GITHUB_COMMENT_REPORTER": 5,
@@ -15771,6 +15771,15 @@
       "default": false,
       "category": "GENERAL",
       "section": "MISC"
+    },
+    "NATIVE_SUGGESTIONS": {
+      "name": "NATIVE_SUGGESTIONS",
+      "type": "boolean",
+      "title": "Native mode suggestions",
+      "description": "When MegaLinter runs in Docker and NATIVE_LINTERS is not defined, suggests trying native mode (MegaLinter without Docker) to lint faster on your machine. Set to false to hide the suggestion",
+      "default": true,
+      "category": "GENERAL",
+      "section": "OUTPUT"
     },
     "OLLAMA_BASE_URL": {
       "name": "OLLAMA_BASE_URL",

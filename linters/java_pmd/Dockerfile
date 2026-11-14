@@ -241,6 +241,7 @@ LABEL com.github.actions.name="MegaLinter" \
 #EXTRA_DOCKERFILE_LINES__START
 ENV ENABLE_LINTERS=JAVA_PMD \
     FLAVOR_SUGGESTIONS=false \
+    NATIVE_SUGGESTIONS=false \
     SINGLE_LINTER=JAVA_PMD \
     PRINT_ALPACA=false \
     LOG_FILE=none \
