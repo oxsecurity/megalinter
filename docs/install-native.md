@@ -122,6 +122,8 @@ mega-linter-runner --native --release beta
 
 Upgrade it with the same `npm install -g` command.
 
+On Windows and macOS, each parallel worker process starts by loading MegaLinter (about a second). With a few fast linters, fewer workers are quicker: set `PARALLEL_PROCESS_NUMBER` (for example `2`) in your environment, not in `.mega-linter.yml`, where it would also apply to CI. Measured on a 4-core Windows laptop with 6 linters: 5.0–5.7 s with 2 workers, 9.2–9.9 s with 6.
+
 ## Pre-commit hook
 
 Native mode makes MegaLinter fast enough to run on each commit with [pre-commit](https://pre-commit.com/):

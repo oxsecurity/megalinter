@@ -575,6 +575,11 @@ class Megalinter:
         )
         root_logger.handlers = [QueueHandler(log_queue)]
         log_queue_listener.start()
+        # With "forkserver" (the default start method on Linux since Python 3.14, Docker
+        # images included), the server imports MegaLinter once and every worker is forked
+        # from it, instead of each worker importing it again (about a second each)
+        if mp.get_start_method() == "forkserver":
+            mp.set_forkserver_preload(["megalinter"])
         pool = mp.Pool(
             process_number,
             initializer=init_worker,
