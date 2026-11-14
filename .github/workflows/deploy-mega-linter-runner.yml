@@ -81,8 +81,28 @@ jobs:
           NPM_CONFIG_REGISTRY: https://registry.npmjs.org
         run: npm publish --provenance --tag "${DIST_TAG}"
 
-      - name: Report published version
+      # npm accepts the upload, then processes it for a few minutes: the job only ends once the
+      # version can be installed, with its dist-tag and its provenance attestation
+      - name: Wait until the version is available on npm
         working-directory: ${{ env.PACKAGE_DIR }}
+        timeout-minutes: 35
+        shell: bash
         run: |
+          NAME=$(node -p "require('./package.json').name")
           VERSION=$(node -p "require('./package.json').version")
-          echo "Published ${VERSION} with dist-tag ${DIST_TAG}"
+          REGISTRY=https://registry.npmjs.org
+          for attempt in $(seq 1 60); do
+            METADATA=$(curl -sf -H "Cache-Control: no-cache" "${REGISTRY}/${NAME}/${VERSION}?nocache=${attempt}" || true)
+            TAGGED=$(curl -sf -H "Cache-Control: no-cache" "${REGISTRY}/-/package/${NAME}/dist-tags?nocache=${attempt}" | jq -r --arg tag "${DIST_TAG}" '.[$tag] // empty' || true)
+            TARBALL=$(echo "${METADATA}" | jq -r '.dist.tarball // empty' 2>/dev/null || true)
+            ATTESTATIONS=$(echo "${METADATA}" | jq -r '.dist.attestations.url // empty' 2>/dev/null || true)
+            if [ -n "${TARBALL}" ] && [ "${TAGGED}" = "${VERSION}" ] && [ -n "${ATTESTATIONS}" ] \
+              && curl -sfIL "${TARBALL}" > /dev/null && curl -sf "${ATTESTATIONS}" > /dev/null; then
+              echo "${NAME}@${VERSION} is available on npm with dist-tag ${DIST_TAG} and its provenance attestation"
+              exit 0
+            fi
+            echo "Attempt ${attempt}/60: ${NAME}@${VERSION} not available yet (dist-tag ${DIST_TAG}: ${TAGGED:-none})"
+            sleep 30
+          done
+          echo "::error::${NAME}@${VERSION} was published but is still not available on npm after 30 minutes"
+          exit 1
