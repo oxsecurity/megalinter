@@ -1171,6 +1171,9 @@
         <loc>https://megalinter.io/beta/reporters/GitlabCommentReporter/</loc>
       </url>
       <url>
+        <loc>https://megalinter.io/beta/reporters/JiraReporter/</loc>
+      </url>
+      <url>
         <loc>https://megalinter.io/beta/reporters/JsonReporter/</loc>
       </url>
       <url>
