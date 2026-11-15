@@ -113,6 +113,8 @@ def build_plan(prs):
             "branch": pr["branch"],
             "title": pr["title"],
             "head_sha": pr["head_sha"],
+            # renovate/stability-days pending: never merge before it clears
+            "waiting_renovate": pr.get("waiting_renovate", False),
         }
     return {
         "groups": [

@@ -85,7 +85,8 @@ Monitor:
     while true; do
       pending=0
       for n in $prs; do
-        c="$(gh pr checks "$n" --json bucket -q '[.[] | select(.bucket=="pending")] | length' 2>/dev/null)"
+        # renovate/stability-days is not CI: it only clears when Renovate runs
+        c="$(gh pr checks "$n" --json name,bucket -q '[.[] | select(.bucket=="pending" and .name!="renovate/stability-days")] | length' 2>/dev/null)"
         pending=$((pending + ${c:-1}))   # no answer (API blip) counts as still pending
       done
       if [ "$pending" = "0" ]; then echo "[final] no pending check"; break; fi
@@ -106,7 +107,8 @@ python "$SWEEP" plan "$TEMP/fp.json" > "$TEMP/plan.json"
 A **fingerprint** is either:
 
 - for the MegaLinter lint job: `check + blocking (❌) linter + normalized first error line` (paths made relative, versions, line numbers, hashes and timestamps replaced; rule codes like `E501` kept);
-- for a security scan job (check name containing the word `scan`, `audit`, `vulnerability` or `security`, e.g. `Trivy scan - DEV`): `check + the sorted set of CVE/GHSA ids in its log` (`linter_key` `SECURITY_SCAN`).
+- for a security scan job (check name containing the word `scan`, `audit`, `vulnerability` or `security`, e.g. `Trivy scan - DEV`): `check + the sorted set of CVE/GHSA ids in its log` (`linter_key` `SECURITY_SCAN`);
+- for a test job (check name containing the word `test`, `tests` or `pytest`, e.g. `Run Test Cases - DEV`): `check + the sorted set of failing pytest node ids` (the `FAILED <node id>` lines, `linter_key` `TEST_FAILURES`). The same tests failing on several PRs usually share one cause (a new tool version breaking a fixture, a cache written where tests run...).
 
 Two PRs with the same fingerprint fail for the same reason. A fingerprint shared by **2 or more** PRs forms a **group**, with no upper bound. The carrier of a `SECURITY_SCAN` group fixes the advisories by upgrading the dependency (never by adding CVE ignores); when `main` already fixed them, the fix is to bring the branch up to date with `main`.
 
@@ -121,6 +123,8 @@ Two PRs with the same fingerprint fail for the same reason. A fingerprint shared
 | `green`   | Nothing failing, nothing pending                                          | no — reported `GREEN`                     |
 
 Two lists sit outside the roles: PRs in `pending` (checks still running when you stopped waiting) get a plain `/pr-watch-fix` agent; PRs in `no_checks` have no check at all — their CI never started (typically a workflow waiting for approval) — so they get **no** agent and are reported `NO CHECKS — CI never ran, approve the workflow run?`.
+
+A PR with `waiting_renovate: true` only waits for Renovate's own `renovate/stability-days` status (the release is younger than `minimumReleaseAge`). It is not CI: report it `GREEN — waiting for renovate/stability-days, do not merge yet`, and never merge past it.
 
 The carrier is the PR best placed to take the fix: no failure of its own beyond the shared ones, then a PR whose bump is **unrelated** to the failing linter, then not a major bump, then the fewest changed files, then the lowest number. A PR already carrying another group is preferred, to keep the number of PRs to merge down.
 
@@ -268,6 +272,13 @@ Monitor:
 ```
 
 A PR whose head does not contain the merge commit is **not** a failure to fix: the shared error is expected to still be there until the rebase lands. Do not start any fix cycle on it before `[rebased]`.
+
+### When Renovate does not act
+
+On `[stalled]`, check whether Renovate is running at all: the ticked dashboard boxes are still `[x]`, and no Renovate PR was updated by Renovate itself recently (`gh pr list --author "app/renovate" --state all --search "sort:updated-desc"` — your own merges and pushes also bump `updatedAt`, so look at what changed). If Renovate is down, say so (its logs are linked from the dashboard's *Repository Problems* section) and ask the user before falling back:
+
+- **`gh pr update-branch <N>`** brings a member up to date with a merge of `main` (no force-push, no rebase). It works only when the branch does not conflict with `main` (`Cannot update PR branch due to conflicts` otherwise: that member keeps waiting for Renovate). Renovate then treats the branch as **edited** and stops rebasing it on its own: say so when asking.
+- A member that bumps the **same package as the carrier** to an older version (carrier on mypy 2, member on mypy 1.x) is **superseded** once the carrier is merged: it would downgrade the package. Do not update it — propose closing it with a comment naming the carrier (Renovate would autoclose it on its next run anyway).
 
 ## Step 8 — Watch the rebased members again
 

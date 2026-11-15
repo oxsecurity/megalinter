@@ -37,6 +37,12 @@ SECURITY_CHECK = re.compile(
 )
 SECURITY_KEY = "SECURITY_SCAN"
 ADVISORY = re.compile(r"CVE-\d{4}-\d{4,}|GHSA(?:-[a-z0-9]{4}){3}")
+# A test job ("Run Test Cases - DEV"), fingerprinted by its failing pytest node ids
+TEST_CHECK = re.compile(r"\b(?:tests?|pytest)\b", re.IGNORECASE)
+TEST_KEY = "TEST_FAILURES"
+FAILED_TEST = re.compile(r"^FAILED (\S+)", re.MULTILINE)
+# Statuses Renovate sets itself: not CI, they only clear when Renovate runs
+RENOVATE_STATUSES = {"renovate/stability-days"}
 # The ESC character is dropped by `gh run view`, leaving a bare "[31m"
 ANSI = re.compile(r"\x1b?\[\d+(?:;\d+)*m")
 LINTED = re.compile(r"❌ Linted \[([^\]]+)\] files with \[([^\]]+)\]")
@@ -191,24 +197,33 @@ def job_log(job_id, repo):
     return run_gh(["api", path], required=False)
 
 
-def security_fingerprint(check, log, run_url):
-    # The same scan failing on the same advisories is the same failure, whatever
+def set_fingerprint(check, key, ids, run_url):
+    # The same job failing on the same set of ids is the same failure, whatever
     # the order or the number of times each id is printed
-    ids = sorted(set(ADVISORY.findall(log)))
+    ids = sorted(set(ids))
     if not ids:
         return []
     line = " ".join(ids)[:MAX_LINE_LENGTH]
     return [
         {
-            "id": fingerprint_id(check, SECURITY_KEY, line),
+            "id": fingerprint_id(check, key, line),
             "check": check,
-            "linter_key": SECURITY_KEY,
+            "linter_key": key,
             "linter": "",
             "line": line,
             "raw": line,
             "run_url": run_url,
         }
     ]
+
+
+def security_fingerprint(check, log, run_url):
+    return set_fingerprint(check, SECURITY_KEY, ADVISORY.findall(log), run_url)
+
+
+def test_fingerprint(check, log, run_url):
+    failed = FAILED_TEST.findall("\n".join(clean_log_lines(log)))
+    return set_fingerprint(check, TEST_KEY, failed, run_url)
 
 
 def is_related(fingerprint, title, branch, files):
@@ -255,7 +270,13 @@ def fingerprint_pr(number, repo):
         "update_type": update_type(pr.get("body")),
         "changed_files": len(files),
         "checks": len(checks),
-        "pending": any(c["bucket"] == "pending" for c in checks),
+        "pending": any(
+            c["bucket"] == "pending" and c["name"] not in RENOVATE_STATUSES
+            for c in checks
+        ),
+        "waiting_renovate": any(
+            c["bucket"] == "pending" and c["name"] in RENOVATE_STATUSES for c in checks
+        ),
         "fingerprints": [],
         "other_failures": [],
     }
@@ -277,8 +298,12 @@ def fingerprint_pr(number, repo):
             log = job_log(failed_job.group(2), repo)
             found = security_fingerprint(check["name"], log, check["link"])
             reason = "log unavailable" if not log.strip() else "no CVE/GHSA id in log"
+        elif failed_job and TEST_CHECK.search(check["name"]):
+            log = job_log(failed_job.group(2), repo)
+            found = test_fingerprint(check["name"], log, check["link"])
+            reason = "log unavailable" if not log.strip() else "no FAILED test in log"
         elif failed_job:
-            reason = "not a MegaLinter or security scan check"
+            reason = "not a MegaLinter, security scan or test check"
         result["fingerprints"] += found
         if not found:
             result["other_failures"].append(
@@ -347,6 +372,25 @@ def selftest():
     assert scan_a[0]["id"] == scan_b[0]["id"], (scan_a, scan_b)
     assert scan_a[0]["line"] == "CVE-2026-1001 CVE-2026-2002 GHSA-p3jp-9v83-76w9"
     assert security_fingerprint("Trivy scan - DEV", "no advisory", "u") == []
+
+    for name in ("Run Test Cases - DEV", "mega-linter-runner tests - DEV"):
+        assert TEST_CHECK.search(name), name
+    assert not TEST_CHECK.search("Build Docker Image - DEV")
+    stamp = "2026-11-15T01:00:00.0000000Z "
+    tests_a = test_fingerprint(
+        "Run Test Cases - DEV",
+        f"{stamp}FAILED a_test.py::t::test_x - AssertionError: boom\n"
+        f"{stamp}FAILED b_test.py::t::test_y\n",
+        "u",
+    )
+    tests_b = test_fingerprint(
+        "Run Test Cases - DEV",
+        "FAILED b_test.py::t::test_y - ValueError\nFAILED a_test.py::t::test_x\n",
+        "v",
+    )
+    assert tests_a[0]["id"] == tests_b[0]["id"], (tests_a, tests_b)
+    assert tests_a[0]["line"] == "a_test.py::t::test_x b_test.py::t::test_y"
+    assert test_fingerprint("Run Test Cases - DEV", "all passed", "u") == []
 
     same = fingerprint_id(
         "C", "K", normalize("a/b.py:12:3 - bad thing v1.2.3 at 2026-11-14T10:00:00Z")

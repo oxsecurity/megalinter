@@ -48,6 +48,8 @@ Classify each check by `bucket`/`state`:
 - `fail`, `cancel`, `skipping` → failure (treat `skipping` as success if the user wants — default: only `fail` and `cancel` count as failures)
 - `pending`, `in_progress`, `queued`, `waiting`, `requested` → still running
 
+`renovate/stability-days` is **not** CI: it is Renovate's own status, pending while the release is younger than `minimumReleaseAge`, and it only clears when Renovate runs. Leave it out of every pending count (here and in the step 3 monitor). When it is the only pending check and everything else passes, **STOP** and report the PR green but waiting for `renovate/stability-days` — never merge past it.
+
 Decide:
 
 - **All `pass`** → **STOP**. Report success and the PR URL.
@@ -82,7 +84,7 @@ Monitor:
 
       state="$(gh pr checks 7790 --json name,bucket 2>/dev/null || echo '[]')"
       counts="$(jq -r '[.[] | .bucket] | group_by(.) | map("\(.[0])=\(length)") | join(" ")' <<<"$state")"
-      pending="$(jq -r '[.[] | select(.bucket=="pending")] | length' <<<"$state")"
+      pending="$(jq -r '[.[] | select(.bucket=="pending" and .name!="renovate/stability-days")] | length' <<<"$state")"
       fail_now="$(jq -r '[.[] | select(.bucket=="fail" or .bucket=="cancel") | .name] | sort | join(",")' <<<"$state")"
 
       # Emit on new failures
@@ -161,7 +163,7 @@ MAIN_ROOT="$(cd "$(git rev-parse --git-common-dir)/.." && pwd)"
 python "$MAIN_ROOT/.claude/skills/pr-watch-fix/fingerprint.py" "$PR_NUMBER"
 ```
 
-The JSON lists `fingerprints[]` (each with a stable `id`, the `linter_key` and the normalized `line`) and `other_failures[]` (failing checks that are neither a blocking MegaLinter linter nor a security scan reporting CVE/GHSA ids — a scan's fingerprint is its sorted set of advisory ids, `linter_key` `SECURITY_SCAN`). Ids are deterministic, so they match the ones the orchestrator computed.
+The JSON lists `fingerprints[]` (each with a stable `id`, the `linter_key` and the normalized `line`) and `other_failures[]` (failing checks that are neither a blocking MegaLinter linter, nor a security scan reporting CVE/GHSA ids, nor a test job reporting `FAILED` pytest node ids — a scan's fingerprint is its sorted set of advisory ids, `linter_key` `SECURITY_SCAN`; a test job's is its sorted set of failing node ids, `linter_key` `TEST_FAILURES`). Ids are deterministic, so they match the ones the orchestrator computed.
 
 - **`--defer <ids>`** — the listed fingerprints are fixed elsewhere (in the carrier PR). Remove them from the list of failures to fix; do not edit anything for them and do not ask the user about them. They never count toward the 3-cycle cap. Keep fixing everything else normally. Once the only failures left are deferred ones, **STOP** and report `deferred still failing: <ids>`.
 - **`--must-be-gone <ids>`** — the carrier fix was merged and this PR was rebased on it, so the listed fingerprints must be gone. If one is still failing after CI finished, do **not** try to fix it again: **STOP** and report `shared fix did not resolve <id>: <line>`. Fix every other failure normally.
