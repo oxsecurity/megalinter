@@ -15873,6 +15873,10 @@
 <li>The PyPI package includes the default configurations and the core dependencies lock generated at publish time (ignored by git, so skipped by hatchling)</li>
 <li>Dependency updates wait longer: Renovate (<code>minimumReleaseAge</code>) and Dependabot (<code>cooldown</code>) now propose an upgrade only once the release is <strong>14 days old</strong> (was 7). Security fixes are not delayed and still open immediately</li>
 <li><strong>Benchmark native mode</strong>: manual workflow comparing native and Docker runs (install, run times, npx overhead, disk, memory, per-linter times and errors) on the 5 native platforms, with the published beta packages and a demo repository with planted problems</li>
+<li>Stale <strong>native locks</strong> no longer fail pull requests: a warning, and the native install tests are skipped until the locks are refreshed. They block the alpha, beta and release deploys instead (Docker images, mega-linter-runner, PyPI), through the reusable <code>check-native-locks.yml</code> workflow, and <code>/prepare-release</code> checks them before tagging</li>
+<li><code>native_lock.py --check</code> also checks the <strong>runtime locks</strong> (<code>native-locks/runtimes/</code>), shipped in the PyPI package too</li>
+<li><strong>Auto-Update Linters</strong> now also refreshes the native locks on main, in a job running in parallel with the versions and docs update, and opens a single pull request for both (without automerge when the locks changed, so pinned hashes are reviewed). <strong>Native locks</strong> only runs on feature branches and on manual runs; both share the <code>native-lock-setup</code> composite action</li>
+<li>The Auto-Update Linters container now gets a read-only token: only the pull request job writes</li>
 </ul>
 </li>
 </ul>
