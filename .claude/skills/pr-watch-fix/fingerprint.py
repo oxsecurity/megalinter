@@ -123,8 +123,8 @@ def blocking_sections(lines):
 
 def first_error_line(body):
     if ERROR_DETAIL in body:
-        after = body[body.index(ERROR_DETAIL) + 1 :]
-        for line in after:
+        start = body.index(ERROR_DETAIL) + 1
+        for line in body[start:]:
             if line.strip():
                 return line
     candidates = [ln for ln in body if ln.strip() and not ln.startswith("- ")]
@@ -264,17 +264,20 @@ def fingerprint_pr(number, repo):
     return result
 
 
+SELFTEST_PREFIX = "MegaLinter\tMegaLinter\t2026-11-14T17:44:18.4095554Z "
 SELFTEST_LOG = "\n".join(
-    [
-        "MegaLinter\tMegaLinter\t2026-11-14T17:44:18.4095554Z ##[endgroup]",
-        "MegaLinter\tMegaLinter\t2026-11-14T17:44:18.4095956Z ##[group][31m❌ Linted [SPELL] files with [cspell]: Found 4 error(s) and 0 warning(s) - (10.99s)[0m (expand for details)",
-        "MegaLinter\tMegaLinter\t2026-11-14T17:44:18.4096112Z - Using [cspell v10.4.0] https://megalinter.io/x",
-        "MegaLinter\tMegaLinter\t2026-11-14T17:44:18.4096200Z - MegaLinter key: [SPELL_CSPELL]",
-        "MegaLinter\tMegaLinter\t2026-11-14T17:44:18.4097217Z --Error detail:",
-        "MegaLinter\tMegaLinter\t2026-11-14T17:44:18.4097468Z /tmp/lint/megalinter/Jira.py:218:21    - Unknown word (noformat)",
-        "MegaLinter\tMegaLinter\t2026-11-14T17:44:18.4097500Z ##[endgroup]",
-        "MegaLinter\tMegaLinter\t2026-11-14T17:44:19.0000000Z ##[group][32m✅ Linted [YAML] files with [yamllint] successfully - (1s)[0m",
-        "MegaLinter\tMegaLinter\t2026-11-14T17:44:19.0000001Z - MegaLinter key: [YAML_YAMLLINT]",
+    SELFTEST_PREFIX + line
+    for line in [
+        "##[endgroup]",
+        "##[group][31m❌ Linted [SPELL] files with [cspell]: Found 4 error(s)"
+        " and 0 warning(s) - (10.99s)[0m (expand for details)",
+        "- Using [cspell v10.4.0] https://megalinter.io/x",
+        "- MegaLinter key: [SPELL_CSPELL]",
+        "--Error detail:",
+        "/tmp/lint/megalinter/Jira.py:218:21    - Unknown word (noformat)",
+        "##[endgroup]",
+        "##[group][32m✅ Linted [YAML] files with [yamllint] successfully - (1s)[0m",
+        "- MegaLinter key: [YAML_YAMLLINT]",
     ]
 )
 
