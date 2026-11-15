@@ -67,13 +67,24 @@ def normalize_sarif_files(linter):
 
 
 def clear_default_workspace_prefix(file_path, default_workspace):
-    def_ws_pattern = r'(?P<def_ws_context>\s+"uri"\:\s")' + default_workspace + "/"
-    def_ws_pattern2 = (
-        r'(?P<def_ws_context>\s+"uri"\:\s"file://)' + default_workspace + "/"
-    )
-    def_ws_pattern3 = r'(?P<def_ws_context>\s+")' + default_workspace + "/"
-
-    patterns = [def_ws_pattern, def_ws_pattern2, def_ws_pattern3]
+    # The workspace is matched literally. On Windows (native mode) it can appear
+    # with forward slashes (URIs) or with JSON-escaped backslashes
+    workspace_patterns = []
+    for variant, separator in (
+        (default_workspace, "/"),
+        (default_workspace.replace("\\", "/"), "/"),
+        (default_workspace.replace("\\", "\\\\"), "\\\\"),
+    ):
+        pattern = re.escape(variant) + re.escape(separator)
+        if pattern not in workspace_patterns:
+            workspace_patterns.append(pattern)
+    patterns = []
+    for workspace_pattern in workspace_patterns:
+        patterns += [
+            r'(?P<def_ws_context>\s+"uri"\:\s")' + workspace_pattern,
+            r'(?P<def_ws_context>\s+"uri"\:\s"file://)' + workspace_pattern,
+            r'(?P<def_ws_context>\s+")' + workspace_pattern,
+        ]
 
     # Create temp file
     fh, abs_path = mkstemp()

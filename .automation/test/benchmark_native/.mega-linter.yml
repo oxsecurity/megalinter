@@ -1,0 +1,21 @@
+---
+# Demo repository of the native mode benchmark (.github/workflows/benchmark-native.yml)
+# Every file has planted problems: the lint runs are expected to fail
+NATIVE_LINTERS:
+  - PYTHON_RUFF
+  - PYTHON_BLACK
+  - YAML_YAMLLINT
+  - MARKDOWN_MARKDOWNLINT
+  - BASH_SHELLCHECK
+  - REPOSITORY_BETTERLEAKS
+# Same linters in Docker, for a like-for-like comparison
+ENABLE_LINTERS:
+  - PYTHON_RUFF
+  - PYTHON_BLACK
+  - YAML_YAMLLINT
+  - MARKDOWN_MARKDOWNLINT
+  - BASH_SHELLCHECK
+  - REPOSITORY_BETTERLEAKS
+SHOW_ELAPSED_TIME: true
+JSON_REPORTER: true
+FLAVOR_SUGGESTIONS: false

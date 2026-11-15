@@ -17,6 +17,7 @@ from megalinter.flavor_factory import is_custom_flavor
 from megalinter.utils import blue
 from megalinter.utils_reporter import (
     build_ascii_table,
+    build_native_suggestion_lines,
     build_user_notifications,
     get_linter_status_icon,
     log_section_end,
@@ -178,4 +179,10 @@ class ConsoleReporter(Reporter):
                     logging.warning(flavor_msg)
                 if not is_custom_flavor():
                     logging.warning(custom_flavor_message)
+            logging.info("")
+        if self.master.native_suggestion is not None:
+            native_lines = build_native_suggestion_lines(self.master.native_suggestion)
+            logging.warning(blue(native_lines[0]))
+            for line in native_lines[1:]:
+                logging.warning(line)
             logging.info("")

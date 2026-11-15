@@ -3,9 +3,8 @@
 LLM Provider package for MegaLinter
 """
 
-# Provider classes are resolved lazily (PEP 562): each one imports a heavy LLM SDK
-# (langchain_openai, langchain_anthropic, google.genai, ...) that would add several
-# seconds to EVERY MegaLinter startup, even when LLM Advisor is disabled.
+# Provider classes are resolved lazily (PEP 562): they are only needed when
+# LLM Advisor is enabled, so they stay out of MegaLinter startup.
 # pylint: disable=undefined-all-variable
 from importlib import import_module
 

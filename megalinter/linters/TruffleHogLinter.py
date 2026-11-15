@@ -53,9 +53,16 @@ class TruffleHogLinter(Linter):
             # (^|/) keeps the regex matching the directory at any nesting level,
             # consistently with EXCLUDED_DIRECTORIES behavior in file listing,
             # while not matching a directory merely ENDING with the name: a
-            # bare "dist" entry must not silence findings in "my-dist/"
+            # bare "dist" entry must not silence findings in "my-dist/".
+            # Both separators: trufflehog matches Windows paths with backslashes
+            separator = "[/\\\\]"
             excluded_dir_regex = (
-                "(^|/)" + re.escape(excluded_dir.replace("\\", "/")) + "/"
+                f"(^|{separator})"
+                + separator.join(
+                    re.escape(part)
+                    for part in excluded_dir.replace("\\", "/").split("/")
+                )
+                + separator
             )
             if excluded_dir_regex not in exclude_regexes:
                 exclude_regexes += [excluded_dir_regex]
