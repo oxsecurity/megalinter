@@ -32,6 +32,6 @@ jobs:
       - name: Check locks are up to date
         run: |
           if ! python .automation/native_lock.py --check; then
-            echo "::error title=Native locks are stale::Merge the \"[automation] Auto-update linters version, help, documentation and native locks\" pull request (or run the \"Native locks\" workflow manually), then deploy again"
+            echo "::error title=Native locks are stale::Merge the \"[automation] Auto-update linters version, help, documentation and native locks\" pull request (or run the \"Native locks\" workflow manually), then deploy again. A release checks its tagged commit: it needs a new tag (/prepare-release checks the locks before tagging)"
             exit 1
           fi
